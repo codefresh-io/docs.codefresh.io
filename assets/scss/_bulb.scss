@@ -1,0 +1,100 @@
+.bulb {
+  position: relative;
+  &::before,
+  &::after {
+    content: "";
+  }
+  &::before {
+    position: absolute;
+    top: -9px;
+    left: 16px;
+    display: inline-block;
+    padding: 2px 5px;
+    font-size: 10px;
+    line-height: 11px;
+    color: $bd-white;
+    content: attr(data-bulb-text);
+    background: $bd-dark;
+    border-radius: 3px;
+  }
+  &::after {
+    position: absolute;
+    top: 6px;
+    left: 34px;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-top: 4px solid $bd-dark;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+  }
+  &.bulb-above-left {
+    &::before {
+      left: 0;
+    }
+    &::after {
+      left: 6px;
+    }
+  }
+  &.bulb-above-right {
+    &::before {
+      right: 0;
+      left: auto;
+    }
+    &::after {
+      right: 6px;
+      left: auto;
+    }
+  }
+  &.bulb-pos-after {
+    &::before {
+      top: -15px;
+    }
+    &::after {
+      top: 0;
+    }
+  }
+  &.bulb-left {
+    &::before {
+      top: 0;
+      left: -56px;
+      transform: translateY(4px);
+    }
+    &::after {
+      top: 0;
+      left: -25px;
+      border-top: 4px solid transparent;
+      border-right: 4px solid transparent;
+      border-bottom: 4px solid transparent;
+    }
+  }
+  &.bulb-red {
+    &::before {
+      color: $bd-white;
+      background: rgba($bd-bulb-red, .9);
+    }
+    &::after {
+      color: $bd-white;
+      border-top: 4px solid rgba($bd-bulb-red, .9);
+    }
+    &.bulb-left {
+      &::after {
+        border-top-color: transparent;
+        border-left: 4px solid rgba($bd-bulb-red, .9);
+        transform: translateY(7.5px);
+      }
+    }
+  }
+}
+
+.cf-badge {
+  padding: 2px 5px;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 11px;
+  &.cf-badge-new {
+    color: $white;
+    background-color: $bd-bulb-red;
+  }
+}
+

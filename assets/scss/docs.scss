@@ -1,0 +1,44 @@
+/*!
+ * Codefresh Docs (https://codefresh.io)
+ * Copyright 2018 Codefresh, Inc.
+ */
+
+// Load Bootstrap variables and mixins
+
+//@import "../../scss/functions";
+@import "../../node_modules/bootstrap/scss/functions";
+
+//@import "../../scss/variables";
+@import "../../node_modules/bootstrap/scss/variables";
+
+//@import "../../scss/mixins";
+@import "../../node_modules/bootstrap/scss/mixins";
+
+// Load docs components
+@import "variables";
+@import "root";
+@import "reboot";
+@import "code";
+@import "type";
+@import "nav";
+@import "masthead";
+@import "ads";
+@import "content";
+@import "skiplink";
+@import "footer";
+@import "component-examples";
+@import "buttons";
+@import "sidebar";
+@import "callouts";
+@import "examples";
+@import "browser-bugs";
+@import "brand";
+@import "colors";
+@import "clipboard-js";
+@import "bulb";
+
+// Load docs dependencies
+@import "syntax";
+@import "anchor";
+@import "links";
+@import "algolia";

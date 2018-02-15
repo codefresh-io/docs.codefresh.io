@@ -1,0 +1,7 @@
+end: '</div>'
+
+callout_default: '<div class="bd-callout bd-callout-default" markdown="1">'
+callout_info: '<div class="bd-callout bd-callout-info" markdown="1">'
+callout_warning: '<div class="bd-callout bd-callout-warning" markdown="1">'
+callout_danger: '<div class="bd-callout bd-callout-danger" markdown="1">'
+callout_success: '<div class="bd-callout bd-callout-success" markdown="1">'

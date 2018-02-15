@@ -1,0 +1,69 @@
+// Local docs variables
+$bd-white:         $white !default;
+$bd-black:         #000 !default;
+
+$bd-purple:        #563d7c !default;
+$bd-purple-bright: lighten(saturate($bd-purple, 5%), 15%) !default;
+$bd-purple-light:  lighten(saturate($bd-purple, 5%), 45%) !default;
+$bd-dark:          #231f20 !default;
+$bd-download:      #ffe484 !default;
+$bd-info:          #5bc0de !default;
+$bd-warning:       #f0ad4e !default;
+$bd-danger:        #d9534f !default;
+$bd-success:       #11b5a4 !default;
+
+$bd-topaz-extra-light:    #e4f3f1 !default;
+
+$bd-topaz-main:    #11b5a4 !default;
+$bd-topaz-bright: lighten(saturate($bd-topaz-main, 5%), 15%) !default;
+$bd-topaz-light:  lighten(saturate($bd-topaz-main, 5%), 45%) !default;
+$bd-topaz-dark:    rgb(11, 111, 99) !default;
+
+$bd-greenish-blue: #2a897d;
+
+// Navbar colors
+$bd-topaz-navbar-g1: #0f9c8d;
+$bd-topaz-navbar-g2: #11b5a4;
+$bd-topaz-navbar-g3: #4ebbd3;
+
+$cf-navbar-link-color: $bd-white;
+
+$bd-bulb-white:      $bd-white;
+$bd-bulb-red:        #ca2133;
+
+$btn-get-started:   #235f5d;
+
+// Body
+// Settings for the `<body>` element.
+
+$body-bg:                   #fcfcfc;
+$body-color:                #4c4c4c;
+
+// Doc Sidebar colors
+$bd-doc-sidebar-link: $body-color;
+$bd-doc-sidebar-link-active: #0f9d8e;
+
+// Doc TOC
+
+$bd-doc-toc-link: $body-color;
+$bd-doc-toc-link-active: #10aa9a;
+
+// Doc Content
+$bd-doc-content-bg: $body-bg;
+$bd-doc-content-border: #dadada;
+
+// Links
+//
+// Style anchor elements.
+
+$bd-link-color:                $bd-topaz-main !default;
+$bd-link-hover-color:          darken($bd-link-color, 15%) !default;
+
+// Fonts
+// stylelint-disable value-keyword-case
+$font-family-sans-serif:      "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+$font-family-monospace:       "Source Coe Pro", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+$font-family-base:            $font-family-sans-serif;
+// stylelint-enable value-keyword-case
+
+$headings-color:              #2f2f2f;

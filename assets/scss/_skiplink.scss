@@ -1,0 +1,14 @@
+// stylelint-disable selector-max-id
+
+#skippy {
+  display: block;
+  padding: 1em;
+  color: $bd-white;
+  background-color: $bd-topaz-dark;
+  outline: 0;
+
+  .skiplink-text {
+    padding: .5em;
+    outline: 1px dotted;
+  }
+}

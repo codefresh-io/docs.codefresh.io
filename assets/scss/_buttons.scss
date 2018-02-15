@@ -1,0 +1,60 @@
+// Buttons
+//
+// Custom buttons for the docs.
+
+.btn-link {
+  color: $bd-link-color;
+
+  @include hover {
+    color: $bd-link-color;
+    border-color: transparent;
+  }
+}
+
+.btn-bd-primary {
+  font-weight: 500;
+  color: $bd-purple-bright;
+  border-color: $bd-purple-bright;
+
+  &:hover,
+  &:active {
+    color: #fff;
+    background-color: $bd-purple-bright;
+    border-color: $bd-purple-bright;
+  }
+}
+
+.btn-bd-download {
+  font-weight: 500;
+  color: $bd-download;
+  border-color: $bd-download;
+
+  &:hover,
+  &:active {
+    color: $bd-dark;
+    background-color: $bd-download;
+    border-color: $bd-download;
+  }
+}
+
+.btn-get-started {
+  color: $btn-get-started;
+  background-color: $bd-white;
+  border-radius: 5px;
+  &:hover,
+  &:active {
+    color: $bd-white;
+    background-color: lighten($btn-get-started, 15%);
+  }
+}
+
+.btn-get-beta {
+  color: $white;
+  background-color: $btn-get-started;
+  border-radius: 5px;
+  &:hover,
+  &:active {
+    color: $bd-white;
+    background-color: lighten($btn-get-started, 15%);
+  }
+}

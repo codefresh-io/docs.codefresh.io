@@ -1,0 +1,159 @@
+{% comment %}
+<form class="bd-search d-flex align-items-center">
+  <input type="search" class="form-control doc-search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+  <button class="btn btn-link bd-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#bd-docs-nav" aria-controls="bd-docs-nav" aria-expanded="false" aria-label="Toggle docs navigation">
+    {%- include icons/menu.svg width="30" height="30" -%}
+  </button>
+</form>
+{% endcomment %}
+
+<nav class="collapse bd-links" id="bd-docs-nav">
+  {%- assign page_url = page.url | split: '/' -%}
+
+  {% if page_url.size == 5 %}
+    {%- assign page_slug_index = page_url.size | minus: 2 -%}
+    {%- assign page_slug = page_url[page_slug_index] -%}
+    {%- assign sub_page_slug = page_url | last -%}
+  {% else %}
+    {%- assign page_slug = page_url | last -%}
+  {% endif %}
+
+  {% comment %}
+  <!--
+  page_slug_index: {{ page_slug_index }}
+  page_slug: {{ page_slug }}
+  sub_page_slug: {{ sub_page_slug }}
+  -->
+  {% endcomment %}
+
+  {%- for navItem in site.data.nav -%}
+
+    {% if navItem.url %}
+      {%- assign group_slug = navItem.url | slugify -%}
+    {% else %}
+      {%- assign group_slug = navItem.title | slugify -%}
+    {% endif %}
+
+    {%- assign link = navItem.pages | first -%}
+
+    {% if link.url %}
+      {%- assign link_slug = link.url | slugify -%}
+    {% else %}
+      {%- assign link_slug = link.title | slugify -%}
+    {% endif %}
+
+    {%- assign active = nil -%}
+
+    {% comment %}
+    <!--
+      page.group: {{ page.group }}
+      group_slug: {{ group_slug }}
+    -->
+    {% endcomment %}
+
+    {%- if page.group == group_slug -%}
+      {%- assign active = 'active' -%}
+    {%- endif -%}
+
+    <div class="bd-toc-item bd-nav-links-item opened{% unless active == nil %} {{ active }}{% endunless %}">
+      <!-- first lvl - group -->
+      <span class="h6 bd-toc-link font-weight-bold" data-href="{{ site.baseurl }}/docs/{{ group_slug }}/{{ link_slug }}{% if link_slug %}/{% endif %}">
+        {{ navItem.title }}
+      </span>
+      <!-- 2nd lvl menu -->
+      <ul class="nav bd-sidenav">
+        {%- for doc in navItem.pages -%}
+
+          {% if doc.url contains '/docs/'%}
+            {% assign doc_disabled = true %}
+          {% else %}
+            {% assign doc_disabled = false %}
+          {% endif %}
+
+          {% if doc.url %}
+            {%- assign doc_slug = doc.url | slugify -%}
+          {% else %}
+            {%- assign doc_slug = doc.title | slugify -%}
+          {% endif %}
+
+          {%- assign active = nil -%}
+
+          {%- if page.group == group_slug and page_slug == doc_slug -%}
+            {%- assign active = 'active bd-sidenav-active' -%}
+          {%- endif -%}
+          <!-- 2nd lvl menu item -->
+          <li class="opened{% unless active == nil %} {{ active }}{% endunless %} {% if doc_disabled == true %}disabled{% endif %}">
+            <a href="{{ site.baseurl }}/docs/{{ group_slug }}/{{ doc_slug }}/" data-doc-slug="{{ doc_slug }}"
+              {% if doc_disabled == true %} class="disabled"{% endif %}
+            >
+              {{ doc.title }}
+            </a>
+
+            {% unless doc.sub-pages == nil %}
+              <!--3rd lvl menu -->
+              <ul class="nav bd-sidenav">
+                {%- for subdoc in doc.sub-pages -%}
+
+                  {% if subdoc.url contains '/docs/'%}
+                    {% assign subdoc_disabled = true %}
+                  {% else %}
+                    {% assign subdoc_disabled = false %}
+                  {% endif %}
+
+                  {% if subdoc.url %}
+                    {%- assign sub_doc_slug = subdoc.url | slugify -%}
+                  {% else %}
+                    {%- assign sub_doc_slug = subdoc.title | slugify -%}
+                  {% endif %}
+
+                  {%- assign sub_active = nil -%}
+
+                  {% comment %}
+                  <!--
+                    page.sub_group: {{ page.sub_group }}
+                    group_slug: {{ group_slug }}
+                    doc_slug: {{ doc_slug }}
+                    sub_page_slug: {{ sub_page_slug }}
+                    sub_doc_slug: {{ sub_doc_slug }}
+                  -->
+                  {% endcomment %}
+
+                  {%- if page.sub_group == doc_slug and sub_page_slug == sub_doc_slug -%}
+                    {%- assign sub_active = 'active bd-sidenav-active' -%}
+                  {%- endif -%}
+
+                  <li class="bd-sidenav-item{% unless sub_active == nil %} {{ sub_active }}{% endunless %}{% if subdoc_disabled == true %} disabled{% endif %} ">
+                    <a href="{{ site.baseurl }}/docs/{{ group_slug }}/{{ doc_slug }}/{{ sub_doc_slug }}/"
+                      {% if subdoc_disabled == true %} class="disabled"{% endif %}
+                    >
+                      {{ subdoc.title }}
+                    </a>
+                  </li>
+
+                {%- endfor -%}
+              </ul>
+              <!--/3rd lvl menu-->
+            {% endunless %}
+
+            {%- comment -%}
+
+            {% unless doc.sub-pages == nil %}
+              <ul class="nav">
+                {% for section in doc.sections %}
+                  <li>
+                    <a href="#{{ section.title | downcase | replace: ' ', '-' }}">
+                      {{ section.title }}
+                    </a>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endunless %}
+
+            {%- endcomment -%}
+
+          </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  {%- endfor -%}
+</nav>

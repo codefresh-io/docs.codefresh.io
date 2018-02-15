@@ -1,0 +1,132 @@
+title:              Codefresh | Docs
+description:        "Codefresh is a Docker-native CI/CD platform. Instantly build , test and deploy Docker images."
+
+# Server
+source:         "."
+destination:    ./_gh_pages
+host:           127.0.0.1
+port:           3131
+baseurl:        "/docs.codefresh.io"
+
+locale:         "en-US"
+
+# Sitemap
+url:            "https://codefresh-io.github.io"
+encoding:       UTF-8
+markdown_ext:   "markdown,mkdown,mkdn,mkd,md"
+
+# Social
+twitter:            codefresh
+authors:            ""
+social_image_path:  /assets/brand/codefresh-social.png
+social_logo_path:   /assets/brand/codefresh-social-logo.png
+
+# Dependencies
+markdown:       kramdown
+highlighter:    rouge
+
+kramdown:
+  auto_ids: true
+  input: GFM
+  hard_wrap: false
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 2..4
+  smart_quotes: lsquo,rsquo,ldquo,rdquo
+  enable_coderay: false
+
+# Permalinks
+permalink:      pretty
+
+# Reading Files
+include:
+  - .htaccess
+  - _pages
+
+exclude:
+  - .idea/
+  - .git/
+  - .github/
+  - assets/scss/
+  - build/
+  - js/
+  - node_modules/
+  - nuget/
+  - scss/
+  - vendor/
+  - CODE_OF_CONDUCT.md
+  - composer.json
+  - Gemfile
+  - Gemfile.lock
+  - package.js
+  - package.json
+  - package-lock.json
+  - README.md
+
+plugins:
+  - jekyll-redirect-from
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-github-metadata
+  - jemoji
+
+repository: codefresh-io/docs.codefresh.io
+
+# Collections
+collections:
+  docs:
+    output: true
+  pages:
+    output: true
+    permalink: /:collection/:path/
+
+# Defaults
+defaults:
+  # _posts
+  - scope:
+      path: "_posts"
+      type: posts
+    values:
+      layout: simple
+  # _pages
+  - scope:
+      path: "_pages"
+      type: pages
+    values:
+      layout: simple
+  # docs
+  - scope:
+      path: "docs"
+      type: docs
+    values:
+      layout: docs
+
+
+# Custom variables
+repo:                 "https://github.com/codefresh-io/docs.codefresh.io"
+features:             "https://codefresh.io/features/"
+enterprise:           "https://codefresh.io/enterprise/"
+pricing:              "https://codefresh.io/pricing/"
+schedule_demo:        "https://codefresh.io/schedule-a-demo/"
+codefresh_login:      "http://g.codefresh.io/login"
+codefresh_signup:     "https://g.codefresh.io/signup"
+
+ga_tracking_code:     "UA-112283329-1"
+
+cdn:
+  # See https://www.srihash.org for info on how to generate the hashes
+  css:              "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+  css_hash:         "sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+  js:               "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+  js_hash:          "sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+  jquery:           "https://code.jquery.com/jquery-3.2.1.min.js"
+  jquery_hash:      "sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  popper:           "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+  popper_hash:      "sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+
+# HTML Compression
+# - http://jch.penibelst.de/
+compress_html:
+  clippings: all
+  ignore:
+    envs: development

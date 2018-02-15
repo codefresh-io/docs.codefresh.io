@@ -1,0 +1,136 @@
+//
+// Main navbar
+//
+
+.bd-navbar {
+  min-height: 4rem;
+  padding: .43rem 1rem;
+  //background-color: $bd-purple;
+  background: $bd-topaz-navbar-g1; /* Old browsers */
+  background: linear-gradient(to right, $bd-topaz-navbar-g1 15.57%, $bd-topaz-navbar-g2 83.9%);
+  box-shadow: none; //0 .5rem 1rem rgba(0, 0, 0, .05), inset 0 -1px 0 rgba(0, 0, 0, .1);
+
+  @include media-breakpoint-down(md) {
+    padding-right: .5rem;
+    padding-left: .5rem;
+
+    .navbar-nav-scroll {
+      max-width: 100%;
+      //height: 2.5rem;
+      height: 3.5rem;
+      //margin-top: .25rem;
+      margin-top: 0;
+      overflow: hidden;
+      font-size: .875rem;
+
+      .navbar-nav {
+        padding-top: .6rem;
+        padding-bottom: 2rem;
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+    }
+  }
+
+  @include media-breakpoint-up(md) {
+    @supports (position: sticky) {
+      position: sticky;
+      top: 0;
+      z-index: 1071; // over everything in bootstrap
+    }
+  }
+
+  .navbar-brand {
+    span {
+      font-size: 18px;
+      font-weight: 700;
+      color: $white;
+      opacity: .4;
+    }
+  }
+
+  .navbar-nav {
+    .nav-link {
+      padding-right: .5rem;
+      padding-left: .5rem;
+      color: $bd-topaz-extra-light;
+      background-color: transparent;
+      transition: background-color .1s linear, color .1s linear;
+
+      &.active,
+      &:hover {
+        color: #fff;
+        background-color: rgba($bd-dark, .03);
+        box-shadow: 0 1px 0 rgba($bd-white, .15);
+      }
+
+      &.active {
+        font-weight: 500;
+      }
+    }
+  }
+
+  .navbar-nav-svg {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    vertical-align: text-top;
+  }
+
+  .dropdown-menu {
+    font-size: .875rem;
+  }
+
+  .dropdown-item.active {
+    font-weight: 500;
+    color: $gray-900;
+    background-color: transparent;
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%23292b2c' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: .4rem .6rem;
+    background-size: .75rem .75rem;
+  }
+
+  .form-control {
+    // Placeholder
+    &::placeholder {
+      color: rgba($bd-topaz-extra-light, .75);
+      // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526.
+      opacity: .75;
+    }
+    &.form-control-dark {
+      color: $bd-topaz-extra-light;
+      background-color: $bd-greenish-blue;
+      border-color: $bd-greenish-blue;
+      &:focus {
+        border-color: transparent;
+        box-shadow: 0 0 0 1px rgba($bd-topaz-extra-light, .25);
+        &::placeholder {
+          color: rgba($bd-topaz-extra-light, .55);
+          // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526.
+          opacity: .55;
+        }
+      }
+    }
+  }
+
+  .bd-search {
+    padding: 0;
+    margin-right: 0;
+    margin-left: 0;
+    border: 0;
+  }
+
+  @include media-breakpoint-down(sm) {
+    .bd-search {
+      width: 100%;
+      padding: 0 8px;
+      margin-right: -8px;
+      margin-left: -8px;
+      .form-control {
+        width: 100%;
+      }
+    }
+  }
+}

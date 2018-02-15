@@ -1,0 +1,11 @@
+// stylelint-disable declaration-no-important, selector-list-comma-newline-after
+
+//
+// Headings
+//
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-weight: $font-weight-bold;
+  color: $headings-color;
+}

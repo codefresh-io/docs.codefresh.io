@@ -1,0 +1,123 @@
+- title: Getting Started
+  icon: https://codefresh.io/wp-content/uploads/2017/11/started.png
+  url: ''
+  links:
+  - title: Setup Codefresh Account
+    localurl: /docs/create-an-account
+  - title: Step by step turtorial
+    localurl: /docs/getting-started-create-a-basic-pipeline
+  - title: Invite Collaborators
+    localurl: /docs/invite-your-team-member
+- title: Pipelines
+  icon: https://codefresh.io/wp-content/uploads/2017/11/pipelines.png
+  url: ''
+  links:
+  - title: Introduction to Pipeline
+    localurl: /docs/introduction-to-codefresh-pipelines
+  - title: Pipeline configuration using the UI
+    localurl: /docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#pipeline-configuration
+  - title: Yaml Pipeline configuration
+    localurl: /docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#pipeline-triggers-and-webhook
+  - title: Webhooks, Badges and General settings
+    localurl: /docs/configure-ci-cd-pipeline/build-status/
+- title: Yaml file
+  icon: https://codefresh.io/wp-content/uploads/2017/11/yaml.png
+  url: ''
+  links:
+  - title: Introduction to Codefresh Yaml
+    localurl: /docs/what-is-the-codefresh-yaml
+  - title: Yaml steps
+    localurl: /docs/steps
+  - title: Variables
+    localurl: /docs/variables
+  - title: Working Directories
+    localurl: /docs/working-directories
+  - title: Examples
+    url: https://docs.codefresh.io/docs/examples-v01
+  - title: "*NEW* Custom YAML steps"
+    new: true
+    localurl: /docs/ready-to-use-yaml-steps
+- title: Deployment
+  icon: https://codefresh.io/wp-content/uploads/2017/11/deployment.png
+  url: ''
+  links:
+  - title: Deploy to GKE
+    localurl: /docs/deploy-to-kubernetes/get-ready-to-deploy/
+  - title: Deploy to Kubernetes
+    localurl: /docs/deploy-to-kubernetes/codefresh-kubernetes-integration-beta/
+  - title: Deploy to ECS
+    localurl: /docs/deploy-your-containers/amazon-ecs/
+  - title: Deploy to Swarm
+    localurl: /docs/deploy-your-containers/docker-swarm/
+  - title: Elastic Beanstock
+    localurl: /docs/deploy-your-containers/elastic-beanstalk/
+  - title: Deploy to Azure
+    localurl: /docs/deploy-your-containers/microsoft-azure/
+- title: Testing & Image Certification
+  icon: https://codefresh.io/wp-content/uploads/2017/11/image.png
+  url: ''
+  links:
+  - title: Add Unit Test to pipeline
+    localurl: /docs/configure-ci-cd-pipeline/unit-tests/
+  - title: Unit Test with DB
+    localurl: /docs/configure-ci-cd-pipeline/unit-tests/unit-tests-with-database/
+  - title: Integration Tests
+    localurl: /docs/configure-ci-cd-pipeline/integration-tests/
+  - title: Annotate Image with tests
+    localurl: /docs/codefresh-yaml/metadata-annotations/
+  - title: Pull & Push images to Codefresh’s Registry
+    localurl: /docs/docker-registries/codefresh-registry/
+- title: Integrations
+  icon: https://codefresh.io/wp-content/uploads/2017/11/integrations.png
+  url: ''
+  links:
+  - title: Docker registry integration
+    localurl: /docs/docker-registries/external-docker-registries/
+  - title: On Premise Git integration
+    url: https://docs.codefresh.io/docs/git-provider
+  - title: Jenkins integration
+    url: https://docs.codefresh.io/docs/jenkins-integration
+  - title: Slack integration
+    url: https://docs.codefresh.io/docs/slack-integration
+  - title: Jira integration
+    url: https://docs.codefresh.io/docs/jira-integration-1
+- title: On-Demand Dev / Staging Env
+  icon: https://codefresh.io/wp-content/uploads/2017/11/demand.png
+  url: ''
+  links:
+  - title: Create composition
+    localurl: /docs/on-demand-test-environment/composition-dialog/
+  - title: Run environment on any branch
+    localurl: /docs/on-demand-test-environment/test-your-feature/
+  - title: Share environment with your team
+    localurl: /docs/on-demand-test-environment/share-environment-with-your-test/
+- title: "HELM"
+  new: true
+  icon: https://codefresh.io/wp-content/uploads/2017/12/Helm.png
+  url: ''
+  links:
+  - title: Install chart using Codefresh pipeline
+    localurl: /docs/new-helm/install-helm-chart-using-codefresh-pipeline/
+  - title: Work with HELM Repositores
+    localurl: /docs/new-helm/add-helm-repository/
+  - title: Integration tests with HELM
+    localurl: /docs/new-helm/integration-tests-with-helm/
+  - title: Best Practices
+    localurl: /docs/new-helm/docs/best-practices/
+- title: Codefresh plugins
+  icon: https://codefresh.io/wp-content/uploads/2018/01/plugins.png
+  url: ''
+  links:
+  - title: Plugins
+    localurl: /docs/codefresh-plugins/plugins/
+  - title: Contribute Codefresh Plugin
+    localurl: /docs/codefresh-plugins/contribute-codefresh-plugin/
+- title: "Codefresh CLI"
+  new: true
+  icon: https://codefresh.io/wp-content/uploads/2018/01/cli.png
+  url: ''
+  links:
+  - title: Installation
+    url: http://cli.codefresh.io/installation/
+  - title: Documentation
+    url: http://cli.codefresh.io/

@@ -1,0 +1,325 @@
+- title: Getting started
+  pages:
+  - title: Create a Codefresh Account
+  - title: Create a Basic Pipeline
+
+- title: Codefresh Plugins
+  pages:
+    - title: Plugins
+    - title: Contribute Codefresh Plugin
+
+- title: Whats new?
+  url: "/whats-new"
+  pages:
+    - title: Whats New In Codefresh?
+      url: "/whats-new"
+
+- title: Configure a CI/CD pipeline
+  url: "/configure-ci-cd-pipeline"
+  pages:
+    - title: "Introduction to Codefresh pipelines"
+      url: "/introduction-to-codefresh-pipelines"
+    - title: Unit Tests
+      url: "/unit-tests"
+      sub-pages:
+        - title: "Unit Tests with Composition"
+          url: "/unit-tests-with-composition"
+        - title: "Unit Tests with Database"
+          url: "/unit-tests-with-database"
+    - title: "Push an image to a Docker registry"
+      url: "/push-image-to-a-docker-registry"
+    - title: "Integration Tests"
+      url: "/integration-tests"
+    - title: "Build badges"
+      url: "/build-status"
+    - title: "What's next?"
+      url: "/whats-next"
+
+- title: Codefresh YAML
+  url: "/codefresh-yaml"
+  pages:
+    - title: "Introduction"
+      url: "/what-is-the-codefresh-yaml"
+    - title: Steps
+      url: "/steps"
+      sub-pages:
+        - title: "Freestyle"
+          url: "/freestyle"
+        - title: "Git-Clone"
+          url: "/git-clone"
+        - title: "Build"
+          url: "/build-1"
+        - title: "Push"
+          url: "/push-1"
+        - title: "Composition"
+          url: "/composition-1"
+        - title: "Launch-Composition"
+          url: "launch-composition-2"
+        - title: "Deploy"
+          url: "/deploy"
+    - title: "Post-Step Operations"
+      url: "/post-step-operations"
+    - title: "Working Directories"
+      url: "/working-directories"
+    - title: "Execution Flow"
+      url: "/execution-flow"
+    - title: "Variables"
+      url: "/variables"
+    - title: "Conditional Execution of Steps"
+      url: "/conditional-execution-of-steps"
+    - title: "Expression Condition Syntax"
+      url: "/expression-condition-syntax"
+    - title: "Image Metadata Annotations"
+      url: "/metadata-annotations"
+    - title: "Codefresh inline YAML"
+      url: "/codefresh-inline-yaml"
+
+- title: "YAML Examples"
+  url: "/yaml-examples"
+  pages:
+    - title: "Custom YAML steps"
+      url: "/ready-to-use-yaml-steps"
+    - title: Examples
+      url: "/examples"
+      sub-pages:
+        - title: Build an Image with the Dockerfile in Root Directory
+          url: "/build-an-image-dockerfile-in-root-directory"
+        - title: Build an Image - Specify Dockerfile Location
+          url: "/build-an-image-specify-dockerfile-location"
+        - title: Build an Image from a Different Git Repository
+          url: "/build-an-image-from-a-different-git-repository"
+        - title: Build and Push an Image
+          url: "/build-and-push-an-image"
+        - title: Build an Image with Build Arguments
+          url: "/build-an-image-with-build-arguments"
+        - title: Run Unit Tests
+          url: "/run-unit-tests"
+        - title: Run Unit Tests with composition
+          url: "/run-unit-tests-with-composition"
+        - title: Run Integration Tests
+          url: "/run-integration-tests"
+        - title: Shared volumes of service from composition step for other yml steps
+          url: "/shared-volumes-of-service-from-composition-step-for-other-yml-steps"
+        - title: Shared volumes between builds
+          url: "/shared-volumes-between-builds"
+        - title: Launch Composition
+          url: "/launch-composition"
+        - title: Clone private repository using freestyle step
+          url: "/git-clone-private-repository-using-freestyle-step"
+        - title: Sending the notification to Slack
+          url: "/sending-the-notification-to-slack"
+        - title: Populate a database with existing data
+          url: "/populate-a-database-with-existing-data"
+        - title: Use kubectl as part of Freestyle step
+          url: "/use-kubectl-as-part-of-freestyle-step"
+
+- title: Deploy to Kubernetes
+  url: "/deploy-to-kubernetes"
+  pages:
+    - title: Getting started with GKE
+      url: "/get-ready-to-deploy"
+      sub-pages:
+        - title: Create GKE Cluster
+          url: "/create-cluster"
+        - title: Build an image
+          url: "/build-an-image"
+    - title: Deploy to Kubernetes
+      url: "/codefresh-kubernetes-integration-beta"
+    - title: Add Kubernetes cluster
+      url: "/adding-non-gke-kubernetes-cluster"
+    - title: Example - Deploy demochat to Kubernetes cluster
+      url: "/codefresh-kubernetes-integration-demochat-example"
+    - title: Add config maps to your namespaces
+      url: "/add-config-maps-to-your-namespaces"
+
+- title: "*NEW* HELM"
+  url: "/new-helm"
+  pages:
+    - title: Helm Charts and repositories
+      url: "/add-helm-repository"
+    - title: Helm Releases management
+      url: "/helm-releases-management"
+    - title: Install HELM chart using Codefresh pipeline
+      url: "/install-helm-chart-using-codefresh-pipeline"
+    - title: Create Helm artifacts using Codefresh pipeline
+      url: "/create-helm-artifacts-using-codefresh-pipeline"
+    - title: Integration tests with HELM
+      url: "/integration-tests-with-helm"
+    - title: HELM Best practices
+      url: "/best-practices"
+
+- title: Deploy your containers
+  url: "/deploy-your-containers"
+  pages:
+    - title: Amazon ECS
+      url: "/amazon-ecs"
+    - title: Docker SWARM
+      url: "/docker-swarm"
+    - title: Elastic Beanstalk
+      url: "/elastic-beanstalk"
+    - title: Microsoft Azure
+      url: "/microsoft-azure"
+
+- title: Pipelines
+  url: "/pipelines"
+  pages:
+    - title: Introduction
+      url: "/introduction"
+    - title: Examples
+      url: "/pipeline-examples"
+      sub-pages:
+        - title: Continuous integration
+          url: "/build-and-test"
+        - title: Build and Push to Docker registry
+          url: "/build-and-push-to-docker-registry"
+        - title: Continuous Delivery - GKE, Docker SWARM, Amazon ECS
+          url: "/build-and-deploy-to-kubernetes"
+
+- title: Learn by example
+  url: "/learn-by-example"
+  pages:
+    - title: Node.js
+      url: "/nodejs"
+      sub-pages:
+        - title: Let's Chat
+          url: "/lets-chat"
+        - title: Voting app
+          url: "/voting-app"
+    - title: Scala
+      url: "/scala"
+      sub-pages:
+        - title: 'Scala: Hello World'
+          url: "/scala-hello-world"
+    - title: Python
+      url: "/python"
+      sub-pages:
+        - title: Djanga
+          url: "/djanga"
+        - title: Voting app
+          url: "/voting-app"
+    - title: Java
+      url: "/java"
+      sub-pages:
+        - title: Spring MVC JDBC Template
+          url: "/spring-mvc-jdbc-template"
+        - title: Gradle
+          url: "/gradle"
+    - title: Go
+      url: "/golang"
+      sub-pages:
+        - title: 'Go: Hello World'
+          url: "/golang-hello-world"
+    - title: General
+      url: "/general"
+      sub-pages:
+        - title: Selenium test
+          url: "/selenium-test"
+
+- title: On Demand Test Environment
+  url: "/on-demand-test-environment"
+  pages:
+    - title: Create composition
+      url: "/composition-dialog"
+    - title: Test Your Feature
+      url: "/test-your-feature"
+    - title: Share Your Environment with Your Team
+      url: "/share-environment-with-your-test"
+    - title: Composition Service Discovery (Experimental)
+      url: "/composition-service-discovery"
+    - title: Useful compositions
+      url: "/examples-compositions"
+      sub-pages:
+        - title: Web terminal
+          url: "/web-terminal"
+        - title: Import data to MongoDB
+          url: "/import-data-to-mongodb-in-composition"
+        - title: NodeJS + Angular2 + MongoDB
+          url: "/nodejs-angular2-mongodb"
+        - title: Secure a Docker Container Using HTTP Basic Auth
+          url: "/securing-docker-container-with-http-basic-auth"
+        - title: Spring Boot + Kafka + Zookeeper
+          url: "/spring-boot-kafka-zookeeper"
+
+- title: "Docker Registries"
+  url: "/docker-registries"
+  pages:
+    - title: "Codefresh Docker Registry"
+      url: "/codefresh-registry"
+    - title: "External Docker Registries"
+      url: "/external-docker-registries"
+      sub-pages:
+        - title: "Docker Hub"
+          url: "/docker-hub"
+        - title: "Amazon EC2 Container Registry"
+          url: "/amazon-ec2-container-registry"
+        - title: "Google Container Registry"
+          url: "/google-container-registry"
+        - title: "JFrog Bintray.io"
+          url: "/bintray-io"
+        - title: "Quay.io"
+          url: "/quay-io"
+        - title: "Other Registries"
+          url: "/other-registries"
+
+- title: Integrations
+  url: "/integrations"
+  pages:
+    - title: Git providers
+      url: "/git-providers"
+      sub-pages:
+        - title: Activate integration with your self hosted Git server
+          url: "/activate-integration-with-your-self-hosted-git-server"
+        - title: Configure a Bitbucket Server Webhook
+          url: "/configure-a-bitbucket-server-webhook"
+    - title: Notifications
+      url: "/notifications"
+      sub-pages:
+        - title: Slack
+          url: "/slack-integration"
+    - title: Jira Integration
+      url: "/jira-integration"
+    - title: Jenkins Integration
+      url: "/jenkins-integration"
+
+- title: Accounts
+  url: "/accounts"
+  pages:
+    - title: Invite your team members
+      url: "/invite-your-team-member"
+
+- title: Troubleshooting
+  url: "/troubleshooting"
+  pages:
+    - title: Common Issues
+      url: "/common-issues"
+      sub-pages:
+        - title: Can't find your organization repositories
+          url: "/cant-find-your-organization-repositories"
+        - title: Can’t find your private repositories
+          url: "/cant-find-your-private-repositories"
+        - title: No Dockerfile found
+          url: "/no-dockerfile-found"
+        - title: Validation Port warnings
+          url: "/validation-port-warnings"
+        - title: Restoring data from pre-existing image hangs on
+          url: "/restoring-data-from-pre-existing-image-hangs-on"
+        - title: Disabling codefresh caching mechanisms
+          url: "/disabling-codefresh-caching-mechanisms"
+        - title: Handling commit messages with a quote character
+          url: "/handling-commit-messages-with-quotes"
+        - title: The terminating the workflow by system
+          url: "/the-terminating-the-workflow-by-system"
+        - title: The docker image does not exist or no pull access
+          url: "/the-docker-image-does-not-exist-or-no-pull-access"
+        - title: 'Build step: No such file or directory'
+          url: "/build-step-no-such-file-or-directory"
+        - title: Failed to get accounts clusters during workflow
+          url: "/failed-to-get-accounts-clusters-during-workflow"
+
+- title: Terms and Privacy Policy
+  url: "/terms-and-privacy-policy"
+  pages:
+    - title: Terms of Service
+      url: "/terms-of-service"
+    - title: Privacy Policy
+      url: "/privacy-policy"

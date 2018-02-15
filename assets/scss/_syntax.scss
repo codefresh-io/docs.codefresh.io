@@ -1,0 +1,96 @@
+// stylelint-disable declaration-block-single-line-max-declarations
+
+.highlight { background-color: #343438; }
+.hll { background-color: #ffc; }
+.c { color: #999; }
+.k { color: #d8b7e8; }
+.o { color: #fff; }
+.p { color: #3da693; }
+.cm { color: #999; }
+.cp { color: #099; }
+.c1 { color: #999; }
+.cs { color: #999; }
+.gd { background-color: #fcc; border: 1px solid #c00; }
+.ge { font-style: italic; }
+.gr { color: #f00; }
+.gh { color: #030; }
+.gi { background-color: #cfc; border: 1px solid #0c0; }
+.go { color: #aaa; }
+.gp { color: #009; }
+.gu { color: #fcc; }
+.gt { color: #9c6; }
+.kc { color: #069; }
+.kd { color: #d8b7e8; }
+.kn { color: #069; }
+.kp { color: #069; }
+.kr { color: #069; }
+.kt { color: #078; }
+.m { color: #f60; }
+.s { color: #d44950; }
+.na { color: #d8b7e8; }
+.nb { color: #d8b7e8; }
+.nc { color: #f57f7f; }
+.no { color: #360; }
+.nd { color: #99f; }
+.ni { color: #999; }
+.ne { color: #c00; }
+.nf { color: #c0f; }
+.nl { color: #99f; }
+.nn { color: #0cf; }
+.nt { color: #f57f7f; }
+.nv { color: #c30; }
+.nx { color: #68bbde; }
+.ow { color: #000; }
+.pi { color: #fff; }
+.w { color: #bbb; }
+.mf { color: #f60; }
+.mh { color: #f60; }
+.mi { color: #f60; }
+.mo { color: #f60; }
+.sb { color: #c30; }
+.sc { color: #c30; }
+.sd { font-style: italic; color: #c30; }
+.s2 { color: #76c47e; }
+.se { color: #c30; }
+.sh { color: #c30; }
+.si { color: #3da693; }
+.sx { color: #c30; }
+.sr { color: #3aa; }
+.s1 { color: #c30; }
+.ss { color: #fc3; }
+.bp { color: #366; }
+.vc { color: #033; }
+.vg { color: #033; }
+.vi { color: #033; }
+.il { color: #f60; }
+
+
+.si + .nx,
+.nx + .p + .nx,
+.si + .nx + .p + .nx{
+  color: #fff;
+}
+
+.css .o,
+.css .o + .nt,
+.css .nt + .nt { color: #999; }
+
+.highlight pre {
+  code.language-bash,
+  code.language-sh {
+    color: #c1be61;
+  }
+}
+
+.language-bash::before,
+.language-sh::before {
+  color: #f57f7f;
+  content: "$ ";
+  user-select: none;
+}
+
+.language-powershell::before {
+  color: #f57f7f;
+  content: "PM> ";
+  user-select: none;
+}

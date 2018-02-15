@@ -1,0 +1,15 @@
+---
+layout: default
+---
+
+<div class="container my-5 simple-layout">
+  <main class="bd-content" role="main">
+    <div class="bd-content-inner">
+      <h1 class="bd-title" id="content">{{ page.title | smartify }}</h1>
+      <p class="bd-lead">{{ page.description | smartify }}</p>
+
+      {{ content }}
+
+    </div>
+  </main>
+</div>

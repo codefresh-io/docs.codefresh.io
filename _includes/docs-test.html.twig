@@ -1,0 +1,34 @@
+<nav class="collapse bd-links" id="bd-docs-nav">
+  {% assign url_parts = page.url | split: '/' %}
+  {% assign url_parts_size = url_parts | size %}
+  {% assign rm = url_parts | last %}
+  {% assign base_url = page.url | replace: rm %}
+
+  <ul>
+    {% for node in site.docs %}
+      <pre><code>{{ node.path }}</code></pre><br/>
+
+        {% assign node_url_parts = node.url | split: '/' %}
+        {% assign node_url_parts_size = node_url_parts | size %}
+        {% assign filename = node_url_parts | last %}
+        {% if url_parts_size == node_url_parts_size and filename != 'index.html' %}
+          <li><a href='{{node.url}}'>{{node.title}}</a></li>
+        {% endif %}
+
+    {% endfor %}
+  </ul>
+
+  {% comment %}
+  <ul>
+    {% for page in site.docs %}
+      {% unless page.exclude %}
+        {% if page.title %}
+          <li>
+          <a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+          </li>
+        {% endif %}
+      {% endunless %}
+    {% endfor %}
+  </ul>
+  {% endcomment %}
+</nav>

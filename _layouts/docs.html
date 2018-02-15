@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {% include header.html %}
+  </head>
+  <body data-spy="scroll" data-target=".bd-toc" data-offset="100">
+    <a id="skippy" class="sr-only sr-only-focusable" href="#content">
+      <div class="container">
+        <span class="skiplink-text">Skip to main content</span>
+      </div>
+    </a>
+
+    {% include docs-navbar.html %}
+
+    <div class="container-fluid docs-layout">
+      <div class="row flex-xl-nowrap">
+        <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+          {% include docs-sidebar.html.twig %}
+        </div>
+
+        {% if page.toc %}
+        <div class="d-none d-xl-block col-xl-2 bd-toc">
+          <div class="toc-inner">
+            {% include docs-toc.html.twig sanitize=true html=content h_min=2 h_max=4 class="section-nav" item_class="toc-entry nav" item_link_class="nav-link" %}
+          </div>
+        </div>
+        {% endif %}
+
+        <main class="col-12 col-md-9 col-xl-8 py-3 pl-3 bd-content" role="main">
+          <div class="bd-content-inner py-md-3 pl-4 pl-md-5 pr-4">
+            <h1 class="bd-title" id="content">{{ page.title | smartify }}</h1>
+            <p class="bd-lead">{{ page.description | smartify }}</p>
+            {{ content }}
+          </div>
+        </main>
+      </div>
+    </div>
+
+    {% include scripts.html %}
+  </body>
+</html>
