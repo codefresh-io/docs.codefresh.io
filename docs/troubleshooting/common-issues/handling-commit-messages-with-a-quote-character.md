@@ -7,7 +7,6 @@ sub_group: common-issues
 permalink: /:path/handling-commit-messages-with-quotes/
 redirect_from:
   - /docs/handling-commit-messages-with-quotes
-  - /docs/handling-commit-messages-with-quotes
 toc: true
 ---
 Sometimes it is necessary to use commit messages to decide the logical flow of a pipeline. One such example is skipping continuous integration if the commit message contains "--skip-ci".

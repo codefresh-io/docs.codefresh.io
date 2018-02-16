@@ -5,7 +5,6 @@ description: ""
 group: how-to-guides
 redirect_from:
   - /docs/catalog-examples
-  - /docs/catalog-examples
 toc: true
 old_url: /docs/catalog-examples
 was_hidden: true

@@ -6,7 +6,6 @@ group: troubleshooting
 sub_group: common-issues
 redirect_from:
   - /docs/disabling-codefresh-caching-mechanisms
-  - /docs/disabling-codefresh-caching-mechanisms
 toc: true
 ---
 Codefresh facilitates everything that is related to restoring the best suited image back to the Docker daemon as part of the build step. 

@@ -14,10 +14,10 @@ was_hidden: true
 Congratulations! You've complete the Codefresh basics.
 
 So, what's next?
-- [Define your build flow using the Codefresh YAML](doc:what-is-the-codefresh-yaml) 
-- [Invite your team members](doc:invite-your-team-member) 
-- [Learn by example using NodeJS](doc:nodejs) 
-- [Learn by example using Python](doc:python)
-- [Learn by example using Java](doc:java) 
+- [Define your build flow using the Codefresh YAML]({{ site.baseurl }}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) 
+- [Invite your team members]({{ site.baseurl }}/docs/accounts/invite-your-team-member/) 
+- [Learn by example using NodeJS]({{ site.baseurl }}/docs/learn-by-example/nodejs/)  
+- [Learn by example using Python]({{ site.baseurl }}/docs/learn-by-example/python/)
+- [Learn by example using Java]({{ site.baseurl }}/docs/learn-by-example/java/) 
 
-If you have further questions, check out our [Troubleshooting Center](doc:introduction-3)
+If you have further questions, check out our [Troubleshooting Center]({{ site.baseurl}}/docs/troubleshooting/common-issues/)

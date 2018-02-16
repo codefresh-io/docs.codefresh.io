@@ -7,7 +7,6 @@ sub_group: deploy-to-kubernetes
 redirect_from:
   - /docs/create-image-pull-secret
   - /docs/create-image-pull-secret/
-  - /docs/create-image-pull-secret/
 toc: true
 old_url: /docs/create-image-pull-secret
 was_hidden: true

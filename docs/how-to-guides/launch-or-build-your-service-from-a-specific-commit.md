@@ -5,7 +5,6 @@ description: ""
 group: how-to-guides
 redirect_from:
   - /docs/launchbuild-your-service-from-certain-commit
-  - /docs/launchbuild-your-service-from-certain-commit
 toc: true
 old_url: /docs/launchbuild-your-service-from-certain-commit
 was_hidden: true

@@ -5,7 +5,6 @@ description: ""
 group: how-to-guides
 redirect_from:
   - /docs/implementing-canary-release-with-kubernetes
-  - /docs/implementing-canary-release-with-kubernetes
 toc: true
 old_url: /docs/implementing-canary-release-with-kubernetes
 ---

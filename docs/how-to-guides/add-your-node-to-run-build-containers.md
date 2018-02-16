@@ -5,7 +5,6 @@ description: ""
 group: how-to-guides
 redirect_from:
   - /docs/add-your-node-to-runbuild-containers
-  - /docs/add-your-node-to-runbuild-containers
 toc: true
 old_url: /docs/add-your-node-to-runbuild-containers
 ---

@@ -6,7 +6,6 @@ group: codefresh-yaml
 sub_group: steps
 redirect_from:
   - /docs/freestyle-beta
-  - /docs/freestyle-beta
 toc: true
 old_url: /docs/freestyle-beta
 was_hidden: true

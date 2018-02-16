@@ -5,7 +5,6 @@ description: ""
 group: how-to-guides
 redirect_from:
   - /docs/migrating-from-travis
-  - /docs/migrating-from-travis
 toc: true
 old_url: /docs/migrating-from-travis
 was_hidden: true

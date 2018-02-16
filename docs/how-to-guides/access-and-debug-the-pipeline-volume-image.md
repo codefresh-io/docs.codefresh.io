@@ -5,7 +5,6 @@ description: ""
 group: how-to-guides
 redirect_from:
   - /docs/access-the-pipeline-volume-image
-  - /docs/access-the-pipeline-volume-image
 toc: true
 old_url: /docs/access-the-pipeline-volume-image
 ---

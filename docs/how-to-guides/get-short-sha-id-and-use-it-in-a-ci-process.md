@@ -4,7 +4,7 @@ title: "Get Short SHA ID and Use it in a CI Process"
 description: ""
 group: how-to-guides
 redirect_from:
-  - /docs/how-get-first-8-digits-of-sha
+  - /docs/how-to-guides
   - /docs/how-get-first-8-digits-of-sha
 toc: true
 old_url: /docs/how-get-first-8-digits-of-sha

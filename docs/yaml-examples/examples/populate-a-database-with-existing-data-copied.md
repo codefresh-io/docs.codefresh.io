@@ -6,7 +6,6 @@ group: yaml-examples
 sub_group: examples
 redirect_from:
   - /docs/populate-a-database-with-existing-data-copied
-  - /docs/populate-a-database-with-existing-data-copied
 toc: true
 old_url: /docs/populate-a-database-with-existing-data-copied
 was_hidden: true

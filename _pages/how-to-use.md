@@ -68,8 +68,13 @@ Fenced code blocks require a blank line before and after.
 
 If you're using an HTML file, you can also use the `highlight` command with Liquid markup.
 
-Make sure expressions like {% raw %}`${{step_id}}`{% endraw %} should be wrapped with special delimiters &#123;% raw %&#125; and &#123;% endraw %&#125; to prevent its erroneous translations.  
-See more [https://shopify.github.io/liquid/tags/raw/](https://shopify.github.io/liquid/tags/raw/){:target="_blank"}  
+
+{{site.data.callout.callout_danger}}
+##### Important 
+
+Make sure expressions like {% raw %}`${{step_id}}`{% endraw %} should be wrapped with special delimiters <code class="highlighter-rouge">&#123;% raw %&#125;</code> and <code class="highlighter-rouge">&#123;% endraw %&#125;</code> to prevent its erroneous translations.  
+See more [https://shopify.github.io/liquid/tags/raw/](https://shopify.github.io/liquid/tags/raw/){:target="_blank"}
+{{site.data.callout.end}}
 
 <figure class="highlight"><pre><code class="language-yaml" data-lang="yaml">
 &#123;% highlight yaml %&#125;

@@ -6,7 +6,6 @@ group: troubleshooting
 sub_group: common-issues
 redirect_from:
   - /docs/cant-find-your-organization-repos
-  - /docs/cant-find-your-organization-repos
 toc: true
 ---
 ***Problem***: I want to add a repository that belongs to one of my Github organizations, but can't find it in the repository list.

@@ -5,7 +5,6 @@ description: ""
 group: how-to-guides
 redirect_from:
   - /docs/running-multiple-microservices-in-one-repo
-  - /docs/running-multiple-microservices-in-one-repo
 toc: true
 old_url: /docs/running-multiple-microservices-in-one-repo
 was_hidden: true

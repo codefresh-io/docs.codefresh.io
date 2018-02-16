@@ -5,7 +5,6 @@ description: ""
 group: how-to-guides
 redirect_from:
   - /docs/launching-a-composition-and-passing-a-service-environment-variable-using-a-file
-  - /docs/launching-a-composition-and-passing-a-service-environment-variable-using-a-file
 toc: true
 old_url: /docs/launching-a-composition-and-passing-a-service-environment-variable-using-a-file
 ---

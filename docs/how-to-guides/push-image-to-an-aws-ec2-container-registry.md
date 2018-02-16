@@ -5,7 +5,6 @@ description: ""
 group: how-to-guides
 redirect_from:
   - /docs/push-image-to-an-aws-ec2-container-registry
-  - /docs/push-image-to-an-aws-ec2-container-registry
 toc: true
 old_url: /docs/push-image-to-an-aws-ec2-container-registry
 ---

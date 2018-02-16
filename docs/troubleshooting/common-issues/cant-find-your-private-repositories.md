@@ -6,7 +6,6 @@ group: troubleshooting
 sub_group: common-issues
 redirect_from:
   - /docs/cant-find-your-private-repositories
-  - /docs/cant-find-your-private-repositories
 toc: true
 ---
 ***Problem***: I want to add a private repository to Codefresh, but can't find it in the repository list.

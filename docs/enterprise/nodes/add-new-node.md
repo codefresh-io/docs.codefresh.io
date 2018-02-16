@@ -6,7 +6,6 @@ group: enterprise
 sub_group: nodes
 redirect_from:
   - /docs/add-new-node
-  - /docs/add-new-node
 toc: true
 old_url: /docs/add-new-node
 ---

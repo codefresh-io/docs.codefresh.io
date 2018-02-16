@@ -5,7 +5,6 @@ description: ""
 group: accounts
 redirect_from:
   - /docs/invite-your-team-member
-  - /docs/invite-your-team-member
   - /docs/accounts
 toc: true
 ---

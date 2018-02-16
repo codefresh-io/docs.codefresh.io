@@ -5,7 +5,6 @@ description: ""
 group: how-to-guides
 redirect_from:
   - /docs/use-snyk-cli-for-your-nodejs-project
-  - /docs/use-snyk-cli-for-your-nodejs-project
 toc: true
 old_url: /docs/use-snyk-cli-for-your-nodejs-project
 was_hidden: true

@@ -6,7 +6,6 @@ excerpt: ""
 group: learn-by-example
 sub_group: nodejs
 redirect_from:
-  - /docs/introduction
   - /docs/introduction/
 toc: true
 old_url: /docs/introduction

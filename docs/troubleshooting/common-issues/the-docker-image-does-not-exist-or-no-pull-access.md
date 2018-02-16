@@ -7,7 +7,6 @@ sub_group: common-issues
 permalink: /:path/the-docker-image-does-not-exist-or-no-pull-access/
 redirect_from:
   - /docs/the-docker-image-does-not-exist-or-no-pull-access
-  - /docs/the-docker-image-does-not-exist-or-no-pull-access
 toc: true
 ---
 When your workflow's process failed with the similar error message: 

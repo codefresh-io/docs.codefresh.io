@@ -5,7 +5,6 @@ description: ""
 group: how-to-guides
 redirect_from:
   - /docs/deploy-to-docker-swarm
-  - /docs/deploy-to-docker-swarm
 toc: true
 old_url: /docs/deploy-to-docker-swarm
 ---

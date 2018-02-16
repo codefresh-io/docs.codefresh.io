@@ -74,7 +74,7 @@ max-width="40%"
 Try the following:
 * Started your free trial, so you can add private repositories.
 * If the free trial finished you can upgrade your account or contact us to extend the free trial.
-* [Visit our Troubleshooting Center](doc:introduction-3)
+* [Visit our Troubleshooting Center]({{ site.baseurl}}/docs/troubleshooting/common-issues/)
 {{site.data.callout.end}}
 
 {{site.data.callout.callout_info}}

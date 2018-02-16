@@ -5,8 +5,8 @@ description: ""
 group: integrations
 redirect_from:
   - /docs/kubernetes-frequently-asked-questions
-  - /docs/kubernetes-deployment-frequently-asked-questions
   - /docs/kubernetes-frequently-asked-questions/
+  - /docs/kubernetes-deployment-frequently-asked-questions
 toc: true
 old_url: /docs/kubernetes-deployment-frequently-asked-questions
 was_hidden: true

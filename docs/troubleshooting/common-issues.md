@@ -5,7 +5,6 @@ description: ""
 group: troubleshooting
 redirect_from:
   - /docs/common-issues
-  - /docs/common-issues
   - /docs/troubleshooting/
 toc: true
 ---

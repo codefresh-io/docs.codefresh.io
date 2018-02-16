@@ -5,7 +5,6 @@ description: ""
 group: how-to-guides
 redirect_from:
   - /docs/notifications-1
-  - /docs/notifications-1
 toc: true
 old_url: /docs/notifications-1
 was_hidden: true

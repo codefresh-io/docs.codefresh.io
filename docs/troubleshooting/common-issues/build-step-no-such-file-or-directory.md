@@ -7,7 +7,6 @@ sub_group: common-issues
 permalink: /:path/build-step-no-such-file-or-directory/
 redirect_from:
   - /docs/build-step-no-such-file-or-directory
-  - /docs/build-step-no-such-file-or-directory
 toc: true
 ---
 

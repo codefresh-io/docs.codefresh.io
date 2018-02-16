@@ -5,7 +5,7 @@ description: ""
 group: yaml-examples
 permalink: /:path/ready-to-use-yaml-steps/
 redirect_from:
-  - docs/ready-to-use-yaml-steps
+  - /docs/ready-to-use-yaml-steps
   - /docs/yaml-examples/
 toc: true
 ---

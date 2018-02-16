@@ -3,17 +3,17 @@
   url: ''
   links:
   - title: Setup Codefresh Account
-    localurl: /docs/create-an-account
+    localurl: /docs/getting-started/create-a-codefresh-account/
   - title: Step by step turtorial
-    localurl: /docs/getting-started-create-a-basic-pipeline
+    localurl: /docs/getting-started/create-a-basic-pipeline/
   - title: Invite Collaborators
-    localurl: /docs/invite-your-team-member
+    localurl: /docs/accounts/invite-your-team-member/
 - title: Pipelines
   icon: https://codefresh.io/wp-content/uploads/2017/11/pipelines.png
   url: ''
   links:
   - title: Introduction to Pipeline
-    localurl: /docs/introduction-to-codefresh-pipelines
+    localurl: /docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/
   - title: Pipeline configuration using the UI
     localurl: /docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#pipeline-configuration
   - title: Yaml Pipeline configuration
@@ -25,18 +25,18 @@
   url: ''
   links:
   - title: Introduction to Codefresh Yaml
-    localurl: /docs/what-is-the-codefresh-yaml
+    localurl: /docs/codefresh-yaml/what-is-the-codefresh-yaml/
   - title: Yaml steps
-    localurl: /docs/steps
+    localurl: /docs/codefresh-yaml/steps/
   - title: Variables
-    localurl: /docs/variables
+    localurl: /docs/codefresh-yaml/variables/
   - title: Working Directories
-    localurl: /docs/working-directories
+    localurl: /docs/codefresh-yaml/working-directories/
   - title: Examples
-    url: https://docs.codefresh.io/docs/examples-v01
+    localurl: /docs/yaml-examples/examples/
   - title: "*NEW* Custom YAML steps"
     new: true
-    localurl: /docs/ready-to-use-yaml-steps
+    localurl: /docs/yaml-examples/ready-to-use-yaml-steps/
 - title: Deployment
   icon: https://codefresh.io/wp-content/uploads/2017/11/deployment.png
   url: ''
@@ -74,13 +74,13 @@
   - title: Docker registry integration
     localurl: /docs/docker-registries/external-docker-registries/
   - title: On Premise Git integration
-    url: https://docs.codefresh.io/docs/git-provider
+    localurl: /docs/integrations/git-providers/
   - title: Jenkins integration
-    url: https://docs.codefresh.io/docs/jenkins-integration
+    localurl: /docs/integrations/jenkins-integration/
   - title: Slack integration
-    url: https://docs.codefresh.io/docs/slack-integration
+    localurl: /docs/integrations/notifications/slack-integration/
   - title: Jira integration
-    url: https://docs.codefresh.io/docs/jira-integration-1
+    localurl: /docs/integrations/jira-integration/
 - title: On-Demand Dev / Staging Env
   icon: https://codefresh.io/wp-content/uploads/2017/11/demand.png
   url: ''
@@ -103,7 +103,7 @@
   - title: Integration tests with HELM
     localurl: /docs/new-helm/integration-tests-with-helm/
   - title: Best Practices
-    localurl: /docs/new-helm/docs/best-practices/
+    localurl: /docs/new-helm/best-practices/
 - title: Codefresh plugins
   icon: https://codefresh.io/wp-content/uploads/2018/01/plugins.png
   url: ''

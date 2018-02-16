@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: "Build Your First Docker Image"
-excerpt: "Create your first Docker image by adding a service to Codefresh. A service includes a repository and a [**Dockerfile**](https://www.docker.com/) or [**codefresh.yml**](doc:what-is-the-codefresh-yaml). Otherwise if you don't have Dockerfile or codefresh.yml in your repository you can use the codefresh templates."
+excerpt: "Create your first Docker image by adding a service to Codefresh. A service includes a repository and a [**Dockerfile**](https://www.docker.com/) or [**codefresh.yml**]({{ site.baseurl }}/docs/codefresh-yaml/what-is-the-codefresh-yaml/). Otherwise if you don't have Dockerfile or codefresh.yml in your repository you can use the codefresh templates."
 description: ""
 group: getting-started
 redirect_from:
@@ -15,7 +15,7 @@ To build your first Docker image, the first step is to add a service to Codefres
 {{site.data.callout.callout_info}}
 What's a Dockerfile? Learn more at the [Docker Documentation Center](https://docs.docker.com/engine/reference/builder/).
 
-What's a codefresh.yml? Learn more at the [Introduction Codefresh YAML](doc:what-is-the-codefresh-yaml) 
+What's a codefresh.yml? Learn more at the [Introduction Codefresh YAML]({{ site.baseurl }}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
 {{site.data.callout.end}}
 
 ## 1. Add a service
@@ -58,7 +58,7 @@ max-width="40%"
 Try the following:
 * Started your free trial, so you can add private repositories.
 * If the free trial finished you can upgrade your account or contact us to extend the free trial.
-* [Visit our Troubleshooting Center](doc:introduction-3) 
+* [Visit our Troubleshooting Center]({{ site.baseurl}}/docs/troubleshooting/common-issues/) 
 {{site.data.callout.end}}
 
 {{site.data.callout.callout_info}}
@@ -96,9 +96,9 @@ alt="codefresh_new_wizard_2"
 max-width="40%"
 %}
 
-* [**Codefresh.yml build method**](doc:build-your-first-docker-image-new#section-31-codefreshyml-build-method)
-* [**Dockerfile build method**](doc:build-your-first-docker-image-new#section-32-dockerfile-build-method)
-* [**Template build method**](doc:build-your-first-docker-image-new#section-33-template-build-method)
+* [**Codefresh.yml build method**](/#section-31-codefreshyml-build-method)
+* [**Dockerfile build method**](/#section-32-dockerfile-build-method)
+* [**Template build method**](/#section-33-template-build-method)
 
 ## 3.1 Codefresh.yml build method
 
@@ -115,7 +115,7 @@ By default, Codefresh searches for your codefresh.yml at the root level of your 
 2. Click **NEXT**
 
 {{site.data.callout.callout_info}}
-More information about codefresh.yml you can read [**here**](doc:doc:what-is-the-codefresh-yaml). Also you can look at the [__list of codefresh.yml examples__](doc:examples-v01) 
+More information about codefresh.yml you can read [**here**]({{ site.baseurl }}/docs/codefresh-yaml/what-is-the-codefresh-yaml/). Also you can look at the [__list of codefresh.yml examples__]({{ site.baseurl }}/docs/yaml-examples/examples/) 
 {{site.data.callout.end}}
 
 {% include image.html 

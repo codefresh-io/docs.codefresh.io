@@ -5,7 +5,6 @@ description: ""
 group: how-to-guides
 redirect_from:
   - /docs/forking-the-demo-project-on-github
-  - /docs/forking-the-demo-project-on-github
 toc: true
 old_url: /docs/forking-the-demo-project-on-github
 ---

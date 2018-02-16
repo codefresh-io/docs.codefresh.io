@@ -71,7 +71,7 @@ Read more about how to obtain the kubernetes credentials and using the codefresh
 
 ## What's next?
 - [Define your build flow using the Codefresh YAML]({{ site.baseurl }}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
-- [Invite your team members]({{ site.baseurl }}/docs/invite-your-team-member) 
-- [Learn by example using NodeJS](doc:nodejs) 
-- [Learn by example using Python](doc:python)
-- [Learn by example using Java](doc:java)
+- [Invite your team members]({{ site.baseurl }}/docs/accounts/invite-your-team-member/) 
+- [Learn by example using NodeJS]({{ site.baseurl }}/docs/learn-by-example/nodejs/) 
+- [Learn by example using Python]({{ site.baseurl }}/docs/learn-by-example/python/)
+- [Learn by example using Java]({{ site.baseurl }}/docs/learn-by-example/java/)

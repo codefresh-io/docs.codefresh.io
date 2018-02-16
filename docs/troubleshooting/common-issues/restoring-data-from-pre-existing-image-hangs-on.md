@@ -6,7 +6,6 @@ group: troubleshooting
 sub_group: common-issues
 redirect_from:
   - /docs/restoring-data-from-pre-existing-image-hangs-on
-  - /docs/restoring-data-from-pre-existing-image-hangs-on
 toc: true
 ---
 One of the best strengths of Codefresh is the ability to work on a single file system between different builds. In order to provide this capability, Codefresh will make sure to provision a volume per pipeline and to restore it upon starting a new build. 

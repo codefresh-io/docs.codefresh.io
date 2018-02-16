@@ -6,7 +6,6 @@ group: codefresh-yaml
 permalink: /:path/metadata-annotations/
 redirect_from:
   - /docs/metadata-annotations
-  - /docs/metadata-annotations
 toc: true
 ---
 Images built by Codefresh can be annotated with customized metadata.

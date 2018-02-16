@@ -5,7 +5,6 @@ description: ""
 group: how-to-guides
 redirect_from:
   - /docs/how-to-define-pipeline-for-multiple-micro-services-are-located-in-one-repo
-  - /docs/how-to-define-pipeline-for-multiple-micro-services-are-located-in-one-repo
 toc: true
 old_url: /docs/how-to-define-pipeline-for-multiple-micro-services-are-located-in-one-repo
 ---

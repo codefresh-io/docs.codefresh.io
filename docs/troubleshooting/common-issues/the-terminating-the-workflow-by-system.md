@@ -7,7 +7,6 @@ sub_group: common-issues
 permalink: /:path/the-terminating-the-workflow-by-system/
 redirect_from:
   - /docs/the-terminating-the-workflow-by-system
-  - /docs/the-terminating-the-workflow-by-system
 toc: true
 ---
 

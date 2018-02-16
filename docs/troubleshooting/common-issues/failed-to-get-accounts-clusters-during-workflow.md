@@ -7,7 +7,6 @@ sub_group: common-issues
 permalink: /:path/failed-to-get-accounts-clusters-during-workflow/
 redirect_from:
   - /docs/failed-to-get-accounts-clusters-during-workflow
-  - /docs/failed-to-get-accounts-clusters-during-workflow
 toc: true
 ---
 When we are preparing your workflow, we are trying to add all your clusters to the workflow.

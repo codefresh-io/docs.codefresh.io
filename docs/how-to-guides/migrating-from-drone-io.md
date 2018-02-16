@@ -5,7 +5,6 @@ description: ""
 group: how-to-guides
 redirect_from:
   - /docs/migrating-from-droneio
-  - /docs/migrating-from-droneio
 toc: true
 old_url: /docs/migrating-from-droneio
 was_hidden: true

@@ -316,6 +316,28 @@
         - title: Failed to get accounts clusters during workflow
           url: "/failed-to-get-accounts-clusters-during-workflow"
 
+- title: How-To Guides
+  url: "/how-to-guides"
+  pages:
+    - title: Get Short SHA ID and Use it in a CI Process
+      url: "/get-short-sha-id-and-use-it-in-a-ci-process"
+    - title: Define CI/CD for Multiple Docker files in one repository
+      url: "/define-ci-cd-for-multiple-docker-files-in-one-repository"
+    - title: Push Image to an AWS EC2 Container Registry
+      url: "/push-image-to-an-aws-ec2-container-registry"
+    - title: Forking the Demo Project on Github
+      url: "/forking-the-demo-project-on-github"
+    - title: Deploy to docker swarm
+      url: "/deploy-to-docker-swarm"
+    - title: Access and debug the pipeline volume image
+      url: "/access-and-debug-the-pipeline-volume-image"
+    - title: Add your Node to run/build containers
+      url: "/add-your-node-to-run-build-containers"
+    - title: Launching a composition and defining a service environment variables using a file
+      url: "/launching-a-composition-and-defining-a-service-environment-variables-using-a-file"
+    - title: Codefresh API
+      url: "/codefresh-api"
+
 - title: Terms and Privacy Policy
   url: "/terms-and-privacy-policy"
   pages:

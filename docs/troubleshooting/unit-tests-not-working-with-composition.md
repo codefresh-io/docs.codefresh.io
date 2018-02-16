@@ -5,7 +5,6 @@ description: ""
 group: troubleshooting
 redirect_from:
   - /docs/unit-tests-not-working-with-composition
-  - /docs/unit-tests-not-working-with-composition
 toc: true
 old_url: /docs/unit-tests-not-working-with-composition
 was_hidden: true

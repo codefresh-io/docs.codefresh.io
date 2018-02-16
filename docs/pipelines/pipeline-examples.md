@@ -5,7 +5,6 @@ description: ""
 group: pipelines
 redirect_from:
   - /docs/pipeline-examples
-  - /docs/pipeline-examples
 toc: true
 ---
 A pipeline defines the set of operations for a service, such as `Docker image build`, `Push to Docker registry`, `unit tests`, `deployment` and so on.

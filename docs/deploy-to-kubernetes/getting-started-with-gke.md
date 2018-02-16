@@ -8,7 +8,6 @@ redirect_from:
   - /docs/get-ready-to-deploy
   - /docs/get-ready-to-deploy/
   - /docs/deploy-to-kubernetes/
-  - /docs/get-ready-to-deploy/
 toc: true
 ---
 Google Container Engine is a powerful cluster manager and orchestration system for running your Docker containers built on Kubernetes. We’ve setup a deep integration with Google Container Engine that enables to create streamlined deployment to Kubernetes as part of a CI/CD pipeline.

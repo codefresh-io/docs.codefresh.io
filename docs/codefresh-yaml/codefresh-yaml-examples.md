@@ -83,7 +83,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
  
-You can also utilize the [User Provided Variables](doc:variables#section-user-provided) instead of hard-coding the credentials within the descriptor.
+You can also utilize the [User Provided Variables]({{ site.baseurl }}/docs/codefresh-yaml/variables/#custom-user-provided-variables) instead of hard-coding the credentials within the descriptor.
 
 ## Build and Push an Image
 In this example, the **push** step references the image built by the **build** step using the ```candidate``` attribute.

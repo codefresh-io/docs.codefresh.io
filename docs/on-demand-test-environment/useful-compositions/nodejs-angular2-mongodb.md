@@ -8,7 +8,6 @@ sub_group: examples-compositions
 permalink: /docs/on-demand-test-environment/examples-compositions/nodejs-angular2-mongodb/ 
 redirect_from:
   - /docs/nodejs-angular2-mongodb
-  - /docs/nodejs-angular2-mongodb
 toc: true
 ---
 This tutorial will walk you through the process of adding the following:

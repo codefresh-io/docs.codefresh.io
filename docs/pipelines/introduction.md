@@ -83,7 +83,7 @@ Go to [Build badges]({{ site.baseurl }}/docs/configure-ci-cd-pipeline/build-stat
 
 ## Volume Image
 Each of our pipelines uses a dedicated volume image. This volume allows us to speed up the build process. If the need arises you can access that volume to help you debug your build process.
-Go to [Access and debug the pipeline volume image](doc:access-the-pipeline-volume-image)  to learn more about it.
+Go to [Access and debug the pipeline volume image]({{ site.baseurl }}/docs/how-to-guides/access-and-debug-the-pipeline-volume-image/)  to learn more about it.
 
 ## Name Your Docker Image
 On the pipeline configuration page, in the **Image Name** text box, type a name for the Docker image that is built in the pipeline.

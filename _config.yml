@@ -6,12 +6,12 @@ source:         "."
 destination:    ./_gh_pages
 host:           127.0.0.1
 port:           3131
-baseurl:        "/docs.codefresh.io"
+baseurl:        ""
 
 locale:         "en-US"
 
 # Sitemap
-url:            "https://codefresh-io.github.io"
+url:            "https://docs.codefresh.io"
 encoding:       UTF-8
 markdown_ext:   "markdown,mkdown,mkdn,mkd,md"
 

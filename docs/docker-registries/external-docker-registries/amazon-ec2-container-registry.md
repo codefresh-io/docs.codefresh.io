@@ -68,5 +68,5 @@ push_to_aws_ecr:
 <div class="bd-callout bd-callout-warning" markdown="1">
 ##### See, the example how to push Image to an AWS EC2 Container Registry
 
-[Push Image to an AWS EC2 Container Registry](doc:push-image-to-an-aws-ec2-container-registry)
+[Push Image to an AWS EC2 Container Registry]({{ site.baseurl}}/docs/how-to-guides/push-image-to-an-aws-ec2-container-registry/)
 </div>

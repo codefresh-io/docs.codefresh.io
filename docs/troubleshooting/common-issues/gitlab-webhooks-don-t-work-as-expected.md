@@ -7,7 +7,6 @@ group: troubleshooting
 sub_group: common-issues
 redirect_from:
   - /docs/the-webhooks-of-gitlab-doesnt-work-as-expected
-  - /docs/the-webhooks-of-gitlab-doesnt-work-as-expected
 toc: true
 old_url: /docs/the-webhooks-of-gitlab-doesnt-work-as-expected
 was_hidden: true

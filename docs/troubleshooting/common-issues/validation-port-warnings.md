@@ -6,7 +6,6 @@ group: troubleshooting
 sub_group: common-issues
 redirect_from:
   - /docs/validation-port-warnings
-  - /docs/validation-port-warnings
 toc: true
 ---
 When you try to launch a service or composition you may see warning regarding the validation port. The validation port is a port that Codefresh uses to verify that your application is up.
