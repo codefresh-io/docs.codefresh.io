@@ -9,12 +9,12 @@ redirect_from:
 toc: true
 ---
 
-# Prerequisites
+## Prerequisites
 Make sure the you have the following before you start deploying with HELM:
 * Kubernetes Cluster - [Learn how to add Kubernetes cluster using our Kubernetes Integration](https://docs.codefresh.io/v1.0/docs/adding-non-gke-kubernetes-cluster)
 * HELM Chart associated with your application
 
-# Overriding Helm Variables
+## Overriding Helm Variables
 
 To supply value file, add an environment variable with the name prefix of `CUSTOMFILE_` (case *in*sensitive), and the value should point to an existing values file.
 To override specific values, add an environment variable with the name prefix of `CUSTOM_` (case *in*sensitive), and replace any `.` characters in the name with `_`. The value should be the value for the variable.
@@ -39,7 +39,7 @@ custom_env_open_STORAGE__AMAZON__BUCKET=my-s3-bucket
 ```
 
 
-# Environment Variables
+## Environment Variables
 
 | Variables      | Required | Default | Description                                                                             |
 |----------------|----------|---------|-----------------------------------------------------------------------------------------|
@@ -55,11 +55,11 @@ custom_env_open_STORAGE__AMAZON__BUCKET=my-s3-bucket
 | TIMEOUT        | NO       | 5 Min   | Wait Timeout                                                                            |
 
 
-# Kubernetes Configuration
+## Kubernetes Configuration
 
 Add Kubernetes integration to Codefresh: `> Account Settings > Integration > Kubernetes`. From now on, you can use added Kubernetes cluster in Codefresh pipeline, addressing its context by the name you see in `Clusters` menu.
 
-# Example
+## Example
 
 Set required and optional environment variable and add the following step to your Codefresh pipeline:
 
