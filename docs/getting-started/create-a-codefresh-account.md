@@ -7,9 +7,6 @@ redirect_from:
   - /docs/
   - /docs/create-an-account
   - /docs/getting-started/
-  - /docs/getting-started//introduction/
-  - /docs/
-  - /docs/getting-started/
   - /docs/getting-started/introduction/
 toc: true
 ---
