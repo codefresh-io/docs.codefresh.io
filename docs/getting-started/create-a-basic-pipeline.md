@@ -175,7 +175,7 @@ We are almost there. The last step in configuring the pipeline is to configure t
 {% include image.html lightbox="true" file="/images/38e2b04-integrations-page.png" url="/images/38e2b04-integrations-page.png" alt="" max-width="40%" %}
 
 {:start="4"}
-4. Configure your registry according to the [Docker Registry Integration Guide](https://docs.codefresh.io/v1.0/docs/docker-registry)
+4. Configure your registry according to the [Docker Registry Integration Guide](({{ site.baseurl }}/docs/docker-registries/external-docker-registries/))
 
 {:.text-secondary}
 ### Activate Push to Docker Hub option in the **Pipelines** view:

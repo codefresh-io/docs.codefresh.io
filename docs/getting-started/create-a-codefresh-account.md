@@ -8,7 +8,6 @@ redirect_from:
   - /docs/create-an-account
   - /docs/getting-started/
   - /docs/getting-started/introduction/
-toc: true
 ---
 Welcome to Codefresh! 
 

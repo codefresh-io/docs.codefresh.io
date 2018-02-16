@@ -116,6 +116,8 @@
 - title: Deploy to Kubernetes
   url: "/deploy-to-kubernetes"
   pages:
+    - title: "Deployment to Kubernetes: Quick Start Guide"
+      url: "/deployment-to-kubernetes-quick-start-guide"
     - title: Getting started with GKE
       url: "/get-ready-to-deploy"
       sub-pages:
