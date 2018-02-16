@@ -3,39 +3,6 @@
     {%- include icons/codefresh.svg width="196" height="40" class="d-inline-block align-middle" -%}
     <span>Docs</span>
   </a>
-  {% comment %}
-  <!--
-  <div class="navbar-nav-scroll">
-    <ul class="navbar-nav bd-navbar-nav flex-row">
-      <li class="nav-item">
-        <a class="nav-link {% if page.layout == "home" %}active{% endif %}" href="{{ site.baseurl }}/" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Home');">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link {% if page.layout == "docs" %}active{% endif %}" href="{{ site.baseurl }}/docs/getting-started/create-a-codefresh-account/" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Docs');">Documentation</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{ site.features }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Features');" target="_blank" rel="noopener">Features</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{ site.enterprise }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Enterprise');" target="_blank" rel="noopener">Enterprise</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{ site.pricing }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Pricing');" target="_blank" rel="noopener">Pricing</a>
-      </li>
-      <li class="nav-item bulb bulb-red" data-bulb-text="LIVE">
-        <a class="nav-link" href="{{ site.schedule_demo }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Schedule Demo');" target="_blank" rel="noopener">Schedule demo</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{ site.codefresh_login }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Login');" target="_blank" rel="noopener">Login</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{ site.codefresh_signup }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'SignUp');" target="_blank" rel="noopener">SignUp</a>
-      </li>
-    </ul>
-  </div>
-  -->
-  <!--<form class="form-inline mt-2 mt-md-0 mr-md-auto order-2 order-md-1">-->
-  {% endcomment %}
 
   <form class="bd-search d-flex mt-1 mb-1 mt-md-0 ml-md-auto order-2 order-md-2 align-items-center">
     <input type="search" class="form-control form-control-dark mr-sm-2 doc-search-input" id="navbar-search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
@@ -48,6 +15,23 @@
   <ul class="navbar-nav flex-row ml-md-auto">
     <li class="nav-item">
       <a class="nav-link {% if page.layout == "docs" %}active{% endif %}" href="{{ site.baseurl }}/docs/getting-started/create-a-codefresh-account/" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Docs');">Documentation</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{ site.link_main }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Open Codefresh');" target="_blank" rel="noopener">Codefresh</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{ site.link_git_examples }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Open GIT Examples');" target="_blank" rel="noopener">Examples</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{ site.link_cli }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Open CLI Docs');" target="_blank" rel="noopener">CLI</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{ site.link_api }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Open API Swagger');" target="_blank" rel="noopener">API</a>
+    </li>
+
+    {% comment %}
+    <li class="nav-item">
+      <a class="nav-link" href="{{ site.link_api }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Open API Swagger');" target="_blank" rel="noopener">Plugins</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="{{ site.features }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Features');" target="_blank" rel="noopener">Features</a>
@@ -67,7 +51,6 @@
     <li class="nav-item">
       <a class="nav-link" href="{{ site.codefresh_signup }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'SignUp');" target="_blank" rel="noopener">SignUp</a>
     </li>
-    {% comment %}
     <!--
     <li class="nav-item dropdown">
       <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-versions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

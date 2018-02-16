@@ -52,17 +52,32 @@
 
   .navbar-nav {
     .nav-link {
-      padding-right: .5rem;
-      padding-left: .5rem;
+      position: relative;
+      padding-right: 1.5rem;
+      padding-left: 1.5rem;
       color: $bd-topaz-extra-light;
       background-color: transparent;
       transition: background-color .1s linear, color .1s linear;
-
+      &::after {
+        position: absolute;
+        right: 0;
+        bottom: -12px;
+        left: 0;
+        height: 0;
+        content: "";
+        background-color: transparent;
+        transition: background-color .1s linear, height .1s linear;
+      }
       &.active,
       &:hover {
-        color: #fff;
-        background-color: rgba($bd-dark, .03);
-        box-shadow: 0 1px 0 rgba($bd-white, .15);
+        color: $bd-white;
+        //background-color: rgba($bd-dark, .03);
+        //box-shadow: 0 1px 0 rgba($bd-white, .15);
+        &::after {
+          height: 6px;
+          content: "";
+          background-color: $bd-white;
+        }
       }
 
       &.active {

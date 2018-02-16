@@ -111,6 +111,11 @@ schedule_demo:        "https://codefresh.io/schedule-a-demo/"
 codefresh_login:      "http://g.codefresh.io/login"
 codefresh_signup:     "https://g.codefresh.io/signup"
 
+link_main:            "http://codefresh.io"
+link_cli:             "http://cli.codefresh.io"
+link_git_examples:    "https://github.com/codefresh-examples/examples/"
+link_api:             "https://g.codefresh.io/api/"
+
 ga_tracking_code:     "UA-112283329-1"
 
 cdn:
