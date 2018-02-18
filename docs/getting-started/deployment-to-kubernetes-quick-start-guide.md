@@ -2,9 +2,9 @@
 layout: docs
 title: "Deployment to Kubernetes"
 description: ""
-group: deploy-to-kubernetes
+group: getting-started
 redirect_from:
-  - /docs/deployment-to-kubernetes-quick-start-guide
+  - /docs/getting-started-deployment-to-kubernetes-quick-start-guide
 toc: true
 ---
 
@@ -43,8 +43,8 @@ steps:
 Using this YAML example, we'll add an additional step to deploy the image in Dockerhub to Kubernetes.
 
 ## Describe your deployment
-The follwoing instructions describe how to create a new service in your Kubernetes cluster in order to deploy to it.
->Note: If you're deploying to an exisitng service in your Kubernetes cluster please skip to the [next step]({{ site.baseurl }}/docs/deploy-to-kubernetes/deployment-to-kubernetes-quick-start-guide/#add-a-deployment-step)
+The following instructions describe how to create a new service in your Kubernetes cluster in order to deploy to it from Codefresh pipeline.
+**Note**: If you're deploying to an exisitng service in your Kubernetes cluster please skip to the [next step]({{ site.baseurl }}/docs/deploy-to-kubernetes/deployment-to-kubernetes-quick-start-guide/#add-a-deployment-step)
 
 {:start="1"}
  1. Go to the **`Kubernetes` &#8594; `Services page`**
@@ -65,19 +65,17 @@ The follwoing instructions describe how to create a new service in your Kubernet
 6. Specify the **number of replicas**
  
 {:start="7"}
-7. Type the name of your **pushed image**
+7. Type the name of your **pushed image** and **tag** 
  
 {:start="8"}
-8. In the **“Internal Ports”** field specify the port which your application listens to.
+8. Add an image pull secret from the list per your desired registry
  
 {:start="9"}
-9. In the **“Expose port”** field specify the port to be exposed to the Internet and check the checkbox
+9. Configure your application internal and external ports based on your needs
  
 {:start="10"}
 10. Click the button **“Deploy”** to deploy the application.
   
-Wait until the deployment is finished and you will be able to open the deployed application in your browser by clicking on the "endpoint" link.
-
 {% include image.html 
 lightbox="true" 
 file="/images/3f36367-Screenshot_from_2018-02-16_17-09-54.png" 
@@ -86,8 +84,10 @@ alt="Screenshot from 2018-02-16 17-09-54.png"
 max-width="40%" 
 %}
 
+Now that you have the desired service ready you can add the appropriate deployment step in your pipeline.
+
 ## Add a Deployment step
-So now you have deployed your image manually, which is great. But how to trigger the deployment within your pipeline? For that you will need to add a step of a “Deploy” type to the Codefresh YAML manifest file:
+In order to trigger the deployment within your pipeline you will need to add a step of a “Deploy” type to the Codefresh YAML manifest file:
 
   `YAML`
 {% highlight yaml %}

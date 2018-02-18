@@ -11,7 +11,7 @@ toc: true
 ---
 
 ## Add a Kubernetes Cluster
-On your Account settings, go to Kubernetes Integration tab.
+On your Account settings, go to the **Integration** tab and choose **Kubernetes**.
 
 {% include image.html 
 lightbox="true" 
