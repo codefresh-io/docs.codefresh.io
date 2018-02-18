@@ -3,7 +3,7 @@
   - title: Create a Codefresh Account
   - title: Create a Basic Pipeline
   - title: Deployment to Kubernetes
-    url: "/deployment-to-kubernetes-quick-start-guide"
+    url: "/deploy-to-kubernetes/deployment-to-kubernetes-quick-start-guide"
 
 - title: Codefresh Plugins
   pages:
