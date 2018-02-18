@@ -9,7 +9,7 @@ redirect_from:
   - /docs/adding-non-gke-kubernetes-cluster/
 toc: true
 ---
-In this article, we will show how to add any Kubernetes cluster.
+In this article, we will show how to add any type of Kubernetes cluster to your Codefresh account.
 
 Kuberentes supports a wide range of authentication options, you can read more about Kubernetes authentication [here](https://kubernetes.io/docs/admin/authentication/){:target="_blank"} 
 
@@ -19,7 +19,7 @@ A service account is an object that created upon cluster creation, we will ask y
 {{site.data.callout.callout_info}}
 ##### Note
 
-By default we're asking for service account named 'default', you can provide your service account credentials, note that those credentials might have limited permissions. 
+In the instructions below, we're reffering for a service account named 'default'. You can provide any service account credentials you use, the minimal permissions requirement is that it'll be able to get all namespaces in your cluster. Please note that those credentials might have limited permissions based on the service account permissions you set in Kubernetes RBAC. 
 {{site.data.callout.end}}
 
 {{site.data.callout.callout_warning}}
