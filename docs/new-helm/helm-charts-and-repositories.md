@@ -17,61 +17,43 @@ By default, we show you charts from the [official Helm repository](https://githu
 
 In the "Helm Charts" page, click on the "Add Repository" button on the top right.
 
-{% include 
-image.html 
-lightbox="true" 
-file="/images/1b9743d-4e0d943-Screen_Shot_2017-12-11_at_12.50.38_PM.png" 
-url="/images/1b9743d-4e0d943-Screen_Shot_2017-12-11_at_12.50.38_PM.png"
-alt="4e0d943-Screen_Shot_2017-12-11_at_12.50.38_PM.png" 
-max-width="30%"
-caption="Add Repository button" 
-%}
+In the dialog that opened, name your repository, and specify it's URL. The URL should not include the specific path to `index.yaml`
+If your repository is publicly authenticated, click 'Save' and you are done. To add a private repository keep reading.
 
-In the dialog that opened, name your repository, and specify it's location.
-The location should be publicly accessible, and should not include a specific link to `index.yaml`
-Finally, click on Save.
+### Private repository - S3
 
-{% include 
-image.html 
-lightbox="true" 
-file="/images/56ca919-add-helm-repo.png" 
-url="/images/56ca919-add-helm-repo.png"
-alt="add-helm-repo.png" 
-max-width="30%"
-caption="Add Repository button" 
-%}
+We support connecting to Helm repositories hosted on authenticated S3.
 
-That's it!
-You will now see you r charts on the Helm Charts page.
+- In the 'Add Helm Respository Dialog, select 'Amazon AWS S3'.
+- Add your S3 bucket URL in the follwing scheme: `s3://bucketname`.
+- Supply the AWS authentication variables as you would for the AWS CLI, or the S3 plugin for Helm. See details here: [Configuring the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html)
+
+Variables:
+
+Name|Description
+---|---
+AWS_ACCESS_KEY_ID|ID of the key with permissions for the bucket
+AWS_SECRET_ACCESS_KEY|Secret of the key with permissions for the bucket
+AWS_DEFAULT_REGION|region where the bucket was created
 
 ## Install chart from your Helm repository
 In the "Helm Charts" page, locate the chart you would like to install, and click on the Install button
 
-{% include 
-image.html 
-lightbox="true" 
-file="/images/4e0d943-Screen_Shot_2017-12-11_at_12.50.38_PM.png" 
-url="/images/4e0d943-Screen_Shot_2017-12-11_at_12.50.38_PM.png"
-alt="Screen Shot 2017-12-11 at 12.50.38 PM.png" 
-max-width="30%"
-caption="Helm charts view" 
-%}
-
 In the dialog that opened:
 - Name your release and choose a version of the chart to install.
-- Select a Kubernetes cluster and namespace to install to. 
-  - This should be pre-configured in the Kubernetes Integration, see [here]({{ site.baseurl }}/docs/deploy-to-kubernetes/adding-non-gke-kubernetes-cluster/) 
-- Select the values file to install the chart with. Open the Values drop down, and select "Add new context of type: YAML". Insert your values YAML here, and save. The YAML will be saved for future usage so in the future you can simply select it from the drop down.
-- Optionally, you can override some values by adding them in the "Override set variables section"
+- Cluster information:
+  - Select a Kubernetes cluster and namespace to install to. This should be pre-configured in the Kubernetes Integration, see [here]({{ site.baseurl }}/docs/deploy-to-kubernetes/adding-non-gke-kubernetes-cluster/) 
+  - optionally, select the namespace where Tiller is at
+- Values:
+  - The default values that was provided with the chart will show up, you can press the edit button to view and override them.
+  - when the default values yaml was changed, it will be provided to helm install as a values file. You can revert back your overriding changed by clicking on the revert button (next to the edit button).
+  - You can provide additional values files by opening the 'Import from configuration' drop down list, and selecting "Add new context of type: YAML". Insert your values YAML here, and save. The YAML will be saved for future usage so that next time simply select it from the drop down list.
+  - additionally, you can override some values by adding them in the "Override set variables section"
 
-{% include 
-image.html 
-lightbox="true" 
-file="/images/36e5a16-Screen_Shot_2018-01-14_at_15.38.47.png" 
-url="/images/36e5a16-Screen_Shot_2018-01-14_at_15.38.47.png"
-alt="Screen Shot 2018-01-14 at 15.38.47.png" 
-max-width="30%"
-caption="Installing a chart" 
-%}
+> The order of values configurations matter for helm, values provided last overrides values provided earlier. In the Chart Install wizard values are provided in the following order:
+1. Default Values in the chart (implicitly part of the chart)
+2. Overidden default values (provided as values file, provided only if edited by the user)
+3. Supplied values files from Yaml Shared Configuration
+4. Override variables are provided as `--set` arguments
 
 Finally click on Install. You can observe the newly installed release on the "Helm Releases" page
