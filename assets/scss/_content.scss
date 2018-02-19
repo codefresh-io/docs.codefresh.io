@@ -4,8 +4,22 @@
 // Automatically style Markdown-based tables like a Bootstrap `.table`.
 //
 
+@keyframes intro {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
 .docs-layout {
+  z-index: 20;
   background: $bd-doc-content-bg;
+
+  animation: intro 300ms both;
+  animation-delay: .15s;
 }
 
 .simple-layout {

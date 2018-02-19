@@ -105,7 +105,7 @@
       $('#bd-docs-nav').animate({
         scrollTop: $('#bd-docs-nav').scrollTop() + ($('#bd-docs-nav li.active').last().position().top - (window.localStorage.getItem('scrollto') || 72))
       }, {
-        duration: 10,
+        duration: 0,
         easing: 'linear'
       })
     }
