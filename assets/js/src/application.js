@@ -96,6 +96,20 @@
         .tooltip('_fixTitle')
     })
 
+    $('#bd-docs-nav')
+      .on('click', 'a', function () {
+        window.localStorage.setItem('scrollto', $(this).position().top)
+      })
+
+    if ($('#bd-docs-nav li.active').length > 0) {
+      $('#bd-docs-nav').animate({
+        scrollTop: $('#bd-docs-nav').scrollTop() + ($('#bd-docs-nav li.active').last().position().top - (window.localStorage.getItem('scrollto') || 72))
+      }, {
+        duration: 10,
+        easing: 'linear'
+      })
+    }
+
     anchors.options = {
       icon: '#'
     }
