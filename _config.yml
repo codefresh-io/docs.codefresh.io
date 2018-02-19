@@ -3,7 +3,7 @@ description:        "Codefresh is a Docker-native CI/CD platform. Instantly buil
 
 # Server
 source:         "."
-destination:    ./_gh_pages
+destination:    ./_site
 host:           127.0.0.1
 port:           3131
 baseurl:        ""
@@ -78,7 +78,7 @@ collections:
     output: true
   pages:
     output: true
-    permalink: /:collection/:path/
+    permalink: /:name
 
 # Defaults
 defaults:
