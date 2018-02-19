@@ -1,9 +1,16 @@
 ---
-layout: simple
+title: "How to Use: Code snippets"
+description: ""
 permalink: /how-to-use.html
 ---
-## Callout snippet
 
+## 1. Callout snippets
+
+You have a few option how to specify/provide callout message
+
+### Callout as data variable
+
+  `Example:`
 {% highlight markdown %}
 {% raw %}
 
@@ -16,15 +23,76 @@ Just head over to the example [__repository__](https://github.com/codefreshdemo/
 {% endraw %}
 {% endhighlight %}
 
-Result:
+  `Result:`
 
 {{site.data.callout.callout_info}}
-##### Example 
+##### Example
 
 Just head over to the example [__repository__](https://github.com/codefreshdemo/example-springboot-kafka){:target="_blank"} in Github and follow the instructions there.
 {{site.data.callout.end}}
 
-## Syntax highlighting
+#### Available styles:
+
+* {% raw %}`{{site.data.callout.callout_info}}`{% endraw %} - callout with `info` style
+* {% raw %}`{{site.data.callout.callout_success}}`{% endraw %} - callout with `success` style
+* {% raw %}`{{site.data.callout.callout_warning}}`{% endraw %} - callout with `warning` style 
+* {% raw %}`{{site.data.callout.callout_danger}}`{% endraw %} - callout with `danger` style 
+
+---
+
+### Callout as `>` (blockquote)
+
+  `Example:`
+{% highlight markdown %}
+{% raw %}
+
+> List of options:
+1. Option 1
+2. Option 2
+3. Option 3
+4. Option 4
+
+{% endraw %}
+{% endhighlight %}
+
+  `Result:`
+
+* Default `blockquote`
+> List of options:
+1. Option 1
+2. Option 2
+3. Option 3
+4. Option 4 
+
+#### Available styles for blockquote:
+
+* {% raw %}`{:.bd-callout-info}`{% endraw %}
+* {% raw %}`{:.bd-callout-success}`{% endraw %}
+* {% raw %}`{:.bd-callout-warning}`{% endraw %}
+* {% raw %}`{:.bd-callout-danger}`{% endraw %}
+
+
+  `Example`
+{% highlight markdown %}
+{% raw %}
+
+{:.bd-callout-success}
+> Info blockquote:
+1. Option 1
+2. Option 2
+
+{% endraw %}
+{% endhighlight %}
+
+Result:
+
+{:.bd-callout-success}
+> Info blockquote:
+1. Option 1
+2. Option 2
+
+
+## 2. Syntax highlighting
 
 ### About syntax highlighting
 
@@ -112,7 +180,7 @@ The theme has syntax highlighting specified in the configuration file as follows
 highlighter: rouge
 ```
 
-The syntax highlighting is done via the scss/syntax.scss file.
+The syntax highlighting is done via the `scss/_syntax.scss` file.
 
 ### Available lexers 
 

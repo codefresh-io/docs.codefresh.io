@@ -6,8 +6,9 @@ layout: default
   <main class="bd-content" role="main">
     <div class="bd-content-inner">
       <h1 class="bd-title" id="content">{{ page.title | smartify }}</h1>
+      {% if page.description %}
       <p class="bd-lead">{{ page.description | smartify }}</p>
-
+      {% endif %}
       {{ content }}
 
     </div>

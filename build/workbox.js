@@ -5,7 +5,7 @@ const path = require('path')
 const swBuild = require('workbox-build')
 const config = require('./workbox.config.json')
 
-const buildPrefix = '_gh_pages/'
+const buildPrefix = '_site/'
 
 const workboxSWSrcPath = require.resolve('workbox-sw')
 const wbFileName = path.basename(workboxSWSrcPath)
