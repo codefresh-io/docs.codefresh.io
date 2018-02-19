@@ -1,6 +1,6 @@
 ---
 layout: docs
-title: "Deploy to Kubernetes"
+title: "Manage your Kubernetes cluster in Codefresh"
 description: ""
 group: deploy-to-kubernetes
 permalink: /:path/codefresh-kubernetes-integration-beta/
@@ -9,41 +9,9 @@ redirect_from:
   - /docs/codefresh-kubernetes-integration-beta/
 toc: true
 ---
-
-## Add a Kubernetes Cluster
-On your Account settings, go to the **Integration** tab and choose **Kubernetes**.
-
-{% include image.html 
-lightbox="true" 
-file="/images/c7b958e-Screen_Shot_2017-10-23_at_7.31.49_PM.png" 
-url="/images/c7b958e-Screen_Shot_2017-10-23_at_7.31.49_PM.png" 
-alt="Screen Shot 2017-10-23 at 7.31.49 PM.png" 
-max-width="40%" 
-%}
- 
-If you would like to switch google account, you can remove this integration from [here](https://myaccount.google.com/permissions){:target="_blank"}.
-
-## Add a Kubernetes cluster
-In the kubernetes integration window, you will be able to add your K8 clusters for view and deployment. 
-
-{:.text-secondary}
-### Adding GKE Cluster
-This will be done by clicking the “Add cluster” button and selecting desired project and cluster.
-
-{:.text-secondary}
-### Adding other clusters
-Follow the following guide to add any kubernetes cluster - [Add Kubernetes cluster]({{ site.baseurl }}/docs/deploy-to-kubernetes/adding-non-gke-kubernetes-cluster/)
- 
-{% include image.html 
-lightbox="true" 
-file="/images/9095bec-Screen_Shot_2017-10-23_at_7.35.06_PM.png" 
-url="/images/9095bec-Screen_Shot_2017-10-23_at_7.35.06_PM.png" 
-alt="Screen Shot 2017-10-23 at 7.35.06 PM.png" 
-max-width="40%" 
-%}
- 
+  
 ## Explore your services on Kubernetes Cluster
-After adding a cluster, a Kubernetes Tab will be added to your Left pane. Clicking on Kubernetes icon will take you to your services dashboard.
+After adding a cluster, you'll be able to manage your Kubernetes assets via the **Kubernetes tab** on the left pane. Clicking on Kubernetes icon will take you to your services dashboard.
 
 {:.text-secondary}
 ### Access your clusters
