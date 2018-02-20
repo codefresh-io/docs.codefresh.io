@@ -98,15 +98,18 @@
 
     $('#bd-docs-nav')
       .on('click', 'a', function () {
-        window.localStorage.setItem('scrollto', $(this).position().top)
+        window.localStorage.setItem('scrollto', $(this).offset().top)
       })
 
     if ($('#bd-docs-nav li.active').length > 0) {
       $('#bd-docs-nav').animate({
-        scrollTop: $('#bd-docs-nav').scrollTop() + ($('#bd-docs-nav li.active').last().position().top - (window.localStorage.getItem('scrollto') || 72))
+        scrollTop: $('#bd-docs-nav').scrollTop() + ($('#bd-docs-nav li.active').last().offset().top - (window.localStorage.getItem('scrollto') || $('#bd-docs-nav').height() / 2))
       }, {
         duration: 0,
-        easing: 'linear'
+        easing: 'linear',
+        complete: function () {
+          window.localStorage.removeItem('scrollto')
+        }
       })
     }
 

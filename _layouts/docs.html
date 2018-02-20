@@ -12,9 +12,9 @@
 
     {% include docs-navbar.html %}
 
-    <div class="container-fluid docs-layout">
+    <div class="container docs-layout">
       <div class="row flex-xl-nowrap">
-        <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+        <div class="col-12 col-md-4 col-xl-3 col-xxl-3 bd-sidebar">
           {% include docs-sidebar.html.twig %}
         </div>
 
@@ -24,13 +24,13 @@
         {% endif %}
         {% endcomment %}
 
-        <div class="d-none d-xl-block col-xl-2 bd-toc">
+        <div class="d-none d-xl-block col-xl-3 col-xxl-3 bd-toc">
           <div class="toc-inner">
             {% include docs-toc.html.twig sanitize=true html=content h_min=2 h_max=4 class="section-nav" item_class="toc-entry nav" item_link_class="nav-link" %}
           </div>
         </div>
 
-        <main class="col-12 col-md-9 col-xl-8 py-3 pl-3 bd-content" role="main">
+        <main class="col-12 col-md-8 col-xl-6 col-xxl-6 py-3 pl-3 bd-content" role="main">
           <div class="bd-content-inner py-md-3 pl-4 pl-md-5 pr-4">
             <h1 class="bd-title" id="content">{{ page.title | smartify }}</h1>
             <p class="bd-lead">{{ page.description | smartify }}</p>

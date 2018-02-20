@@ -53,15 +53,17 @@
   .navbar-nav {
     .nav-link {
       position: relative;
-      padding-right: 1.5rem;
-      padding-left: 1.5rem;
+      padding-right: 1rem;
+      padding-left: 1rem;
+      font-size: .75rem;
+      font-weight: 600;
       color: $bd-topaz-extra-light;
       background-color: transparent;
       transition: background-color .1s linear, color .1s linear;
       &::after {
         position: absolute;
         right: 0;
-        bottom: -12px;
+        bottom: -15px;
         left: 0;
         height: 0;
         content: "";
@@ -74,15 +76,12 @@
         //background-color: rgba($bd-dark, .03);
         //box-shadow: 0 1px 0 rgba($bd-white, .15);
         &::after {
-          height: 6px;
+          height: 3px;
           content: "";
           background-color: $bd-white;
         }
       }
 
-      &.active {
-        font-weight: 500;
-      }
     }
   }
 
@@ -109,6 +108,7 @@
 
   .form-control {
     // Placeholder
+    font-size: .8rem;
     &::placeholder {
       color: rgba($bd-topaz-extra-light, .75);
       // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526.
@@ -137,12 +137,18 @@
     border: 0;
   }
 
+  @include media-breakpoint-up(md) {
+    .bd-search {
+      width: 18.2%;
+    }
+  }
+
   @include media-breakpoint-down(sm) {
     .bd-search {
       width: 100%;
       padding: 0 8px;
       margin-right: -8px;
-      margin-left: -8px;
+      margin-left: -8  px;
       .form-control {
         width: 100%;
       }

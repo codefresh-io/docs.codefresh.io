@@ -4,8 +4,8 @@
     <span>Docs</span>
   </a>
 
-  <form class="bd-search d-flex mt-1 mb-1 mt-md-0 ml-md-auto order-2 order-md-2 align-items-center">
-    <input type="search" class="form-control form-control-dark mr-sm-2 doc-search-input" id="navbar-search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+  <form class="bd-search d-flex mt-1 mb-1 mt-md-0 order-2 order-md-2 align-items-center">
+    <input type="search" class="form-control form-control-dark mr-sm-2 doc-search-input" id="navbar-search-input" placeholder="{{ site.data.translations[site.locale].search_placeholder_text }}" aria-label="{{ site.data.translations[site.locale].search_placeholder_text }}" autocomplete="off">
     <button class="btn btn-link bd-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#bd-docs-nav" aria-controls="bd-docs-nav" aria-expanded="false" aria-label="Toggle docs navigation">
       {%- include icons/menu.svg width="30" height="30" -%}
     </button>
@@ -14,24 +14,24 @@
   <div class="navbar-nav-scroll order-1 order-md-1 ml-md-auto mr-md-auto">
   <ul class="navbar-nav flex-row ml-md-auto">
     <li class="nav-item">
-      <a class="nav-link {% if page.layout == "docs" %}active{% endif %}" href="{{ site.baseurl }}/docs/getting-started/create-a-codefresh-account/" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Docs');">Documentation</a>
+      <a class="nav-link text-uppercase {% if page.layout == "docs" %}active{% endif %}" href="{{ site.baseurl }}/docs/getting-started/create-a-codefresh-account/" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Docs');">Documentation</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="{{ site.link_main }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Open Codefresh');" target="_blank" rel="noopener">Codefresh</a>
+      <a class="nav-link text-uppercase" href="{{ site.link_main }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Open Codefresh');" target="_blank" rel="noopener">Codefresh</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="{{ site.baseurl }}/examples.html" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Open Examples');" target="_blank" rel="noopener">Examples</a>
+      <a class="nav-link text-uppercase" href="{{ site.baseurl }}/examples.html" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Open Examples');" target="_blank" rel="noopener">Examples</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="{{ site.link_cli }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Open CLI Docs');" target="_blank" rel="noopener">CLI</a>
+      <a class="nav-link text-uppercase" href="{{ site.link_cli }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Open CLI Docs');" target="_blank" rel="noopener">CLI</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="{{ site.link_api }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Open API Swagger');" target="_blank" rel="noopener">API</a>
+      <a class="nav-link text-uppercase" href="{{ site.link_api }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Open API Swagger');" target="_blank" rel="noopener">API</a>
     </li>
 
     {% comment %}
     <li class="nav-item">
-      <a class="nav-link" href="{{ site.link_api }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Open API Swagger');" target="_blank" rel="noopener">Plugins</a>
+      <a class="nav-link rte" href="{{ site.link_api }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Open API Swagger');" target="_blank" rel="noopener">Plugins</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="{{ site.features }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Features');" target="_blank" rel="noopener">Features</a>
