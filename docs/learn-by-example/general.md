@@ -5,7 +5,6 @@ description: ""
 group: learn-by-example
 redirect_from:
   - /docs/general
-  - /docs/learn-by-example/general
   - /docs/learn-by-example/
   - /docs/learn-by-example/general
 toc: true

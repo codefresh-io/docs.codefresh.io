@@ -16,6 +16,9 @@
 
 // Load docs components
 @import "variables";
+
+@import "../../node_modules/bootstrap/scss/bootstrap-grid";
+
 @import "root";
 @import "reboot";
 @import "code";

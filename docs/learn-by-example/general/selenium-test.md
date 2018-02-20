@@ -4,10 +4,9 @@ title: "Selenium test"
 description: ""
 excerpt: ""
 group: learn-by-example
-sub_group: golang
+sub_group: general
 redirect_from:
   - /docs/selenium-test
-  - /docs/general/selenium-test
   - /docs/general/selenium-test
 toc: true
 ---
