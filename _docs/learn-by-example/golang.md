@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Go"
 description: ""
 group: learn-by-example

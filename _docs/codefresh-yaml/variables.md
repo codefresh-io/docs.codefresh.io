@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Variables"
 description: ""
 group: codefresh-yaml

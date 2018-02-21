@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Restoring data from pre-existing image hangs on"
 description: ""
 group: troubleshooting

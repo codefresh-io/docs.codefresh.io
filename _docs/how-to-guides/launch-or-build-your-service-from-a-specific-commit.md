@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Launch or Build Your Service From a Specific Commit"
 description: ""
 group: how-to-guides

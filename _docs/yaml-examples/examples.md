@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Examples"
 description: ""
 group: yaml-examples

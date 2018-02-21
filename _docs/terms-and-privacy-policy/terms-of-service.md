@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Terms of Service"
 description: ""
 group: terms-and-privacy-policy

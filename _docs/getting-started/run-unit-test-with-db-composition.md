@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Run Unit Test with DB / Composition"
 excerpt: ""
 description: ""

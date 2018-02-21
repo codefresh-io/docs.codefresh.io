@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Web terminal"
 description: ""
 group: on-demand-test-environment

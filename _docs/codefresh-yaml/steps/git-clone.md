@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Git-Clone"
 description: ""
 group: codefresh-yaml

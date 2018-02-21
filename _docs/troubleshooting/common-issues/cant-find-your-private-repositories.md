@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Can't find your private repositories"
 description: ""
 group: troubleshooting

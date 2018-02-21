@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Use kubectl as part of Freestyle step"
 description: ""
 group: yaml-examples

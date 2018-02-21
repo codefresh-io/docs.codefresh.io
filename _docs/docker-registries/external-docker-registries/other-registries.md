@@ -1,11 +1,10 @@
 ---
-layout: docs
 title: "Other Registries"
 description: ""
 group: docker-registries
 sub_group: external-docker-registries
 redirect_from:
-  - /docs/other-registries
+  - /docs/other-registries/
 toc: true
 ---
 To configure some other registry which is not officially provided by Codefresh first select **Other Registries** from the new registry drop down and then provide the following

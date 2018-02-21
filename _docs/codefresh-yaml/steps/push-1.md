@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Push"
 description: ""
 group: codefresh-yaml

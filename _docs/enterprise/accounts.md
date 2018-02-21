@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Accounts"
 description: ""
 group: enterprise

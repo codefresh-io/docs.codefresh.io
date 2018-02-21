@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Node.js"
 description: ""
 group: learn-by-example

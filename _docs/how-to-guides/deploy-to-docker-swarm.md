@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Deploy to docker swarm"
 description: ""
 group: how-to-guides

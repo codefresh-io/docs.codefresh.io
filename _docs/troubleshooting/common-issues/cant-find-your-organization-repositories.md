@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Can't find your organization repositories"
 description: ""
 group: troubleshooting

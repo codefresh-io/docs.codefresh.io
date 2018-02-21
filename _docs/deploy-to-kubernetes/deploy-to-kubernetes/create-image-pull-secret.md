@@ -1,10 +1,11 @@
 ---
-layout: docs
 title: "Create Image pull secret"
 description: ""
 group: deploy-to-kubernetes
 sub_group: deploy-to-kubernetes
 permalink: /:collection/deploy-to-kubernetes/deploy-to-kubernetes/create-image-pull-secret/
+redirect_from:
+  - /docs/deploy-to-kubernetes/deploy-to-kubernetes/
 toc: true
 old_url: /docs/create-image-pull-secret
 was_hidden: true

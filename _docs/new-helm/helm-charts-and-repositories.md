@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Helm Charts and repositories"
 description: ""
 group: new-helm

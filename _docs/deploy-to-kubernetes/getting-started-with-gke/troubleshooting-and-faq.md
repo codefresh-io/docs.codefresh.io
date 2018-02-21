@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Troubleshooting and FAQ"
 description: ""
 group: deploy-to-kubernetes

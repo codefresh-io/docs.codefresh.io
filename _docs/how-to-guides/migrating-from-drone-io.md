@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Migrating from Drone.io"
 description: ""
 group: how-to-guides

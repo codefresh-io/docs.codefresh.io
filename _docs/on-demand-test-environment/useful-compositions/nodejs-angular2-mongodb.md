@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "NodeJS + Angular2 + MongoDB"
 description: ""
 group: on-demand-test-environment

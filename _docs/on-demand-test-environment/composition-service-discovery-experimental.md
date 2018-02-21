@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Composition Service Discovery (Experimental)"
 description: ""
 group: on-demand-test-environment

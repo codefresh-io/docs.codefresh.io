@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Execution Flow"
 description: ""
 group: codefresh-yaml

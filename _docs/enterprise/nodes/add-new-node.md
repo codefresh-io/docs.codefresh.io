@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Add New Node"
 description: ""
 group: enterprise

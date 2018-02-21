@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Integration Tests"
 description: ""
 group: configure-ci-cd-pipeline

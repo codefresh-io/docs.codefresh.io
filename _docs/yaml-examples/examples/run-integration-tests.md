@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Run Integration Tests"
 description: ""
 group: yaml-examples

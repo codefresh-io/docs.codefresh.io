@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "GitLab webhooks don't work as expected"
 description: ""
 excerpt: "Instructions for troubleshooting Gitlab webhooks."

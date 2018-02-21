@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Build an image"
 description: "If you are new to codefresh, use Codefresh \"Getting started\" guides to create an account and build an image."
 excerpt: "If you are new to codefresh, use Codefresh \"Getting started\" guides to create an account and build an image."

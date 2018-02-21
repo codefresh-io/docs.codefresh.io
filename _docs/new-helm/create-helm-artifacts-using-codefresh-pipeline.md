@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Create Helm artifacts using Codefresh pipeline"
 description: ""
 group: new-helm

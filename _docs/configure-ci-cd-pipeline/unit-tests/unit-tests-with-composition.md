@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Unit Tests with Composition"
 description: ""
 group: configure-ci-cd-pipeline

@@ -1,11 +1,10 @@
 ---
-layout: docs
 title: "Amazon ECS"
 description: ""
 group: deploy-your-containers
 redirect_from:
   - /docs/amazon-ecs/
-  - /docs/deploy-your-containers
+  - /docs/deploy-your-containers/
 toc: true
 ---
 ## Deploy Codefresh to Amazon ECS Service

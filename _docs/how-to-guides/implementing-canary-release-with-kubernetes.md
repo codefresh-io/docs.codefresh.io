@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Implementing Canary Release with Kubernetes"
 description: ""
 group: how-to-guides

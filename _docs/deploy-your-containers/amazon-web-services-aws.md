@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Amazon Web Services (AWS)"
 description: ""
 group: deploy-your-containers

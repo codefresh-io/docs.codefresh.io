@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Launch Composition"
 description: ""
 group: yaml-examples

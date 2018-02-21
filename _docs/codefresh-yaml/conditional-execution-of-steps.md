@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Conditional Execution of Steps"
 description: ""
 group: codefresh-yaml

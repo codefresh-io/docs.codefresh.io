@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Steps"
 description: ""
 group: codefresh-yaml

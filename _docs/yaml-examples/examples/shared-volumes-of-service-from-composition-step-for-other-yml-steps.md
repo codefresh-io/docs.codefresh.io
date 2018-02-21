@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Shared volumes of service from composition step for other yml steps"
 description: ""
 group: yaml-examples

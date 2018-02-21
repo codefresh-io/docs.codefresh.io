@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Codefresh - Kubernetes integration - BETA"
 description: ""
 group: deploy-your-containers

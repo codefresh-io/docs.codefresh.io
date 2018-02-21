@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Activate integration with your self hosted Git server"
 description: ""
 group: integrations

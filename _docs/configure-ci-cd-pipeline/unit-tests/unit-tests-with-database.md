@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Unit Test with Database"
 description: ""
 group: configure-ci-cd-pipeline

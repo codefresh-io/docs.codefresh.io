@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Amazon EC2 Container Registry"
 description: ""
 group: docker-registries

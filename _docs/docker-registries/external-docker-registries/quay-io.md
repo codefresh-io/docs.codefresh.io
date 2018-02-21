@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Quay.io"
 description: ""
 group: docker-registries

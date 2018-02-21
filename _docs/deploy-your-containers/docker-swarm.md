@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Docker SWARM"
 description: ""
 group: deploy-your-containers

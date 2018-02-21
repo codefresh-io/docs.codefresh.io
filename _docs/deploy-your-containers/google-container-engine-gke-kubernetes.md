@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Google Container Engine (GKE) - Kubernetes"
 description: ""
 group: deploy-your-containers

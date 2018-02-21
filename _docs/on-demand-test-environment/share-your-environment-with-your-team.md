@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Share Your Environment with Your Team"
 description: ""
 group: on-demand-test-environment

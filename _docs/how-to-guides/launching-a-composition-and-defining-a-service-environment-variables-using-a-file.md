@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Launching a composition and defining a service environment variables using a file"
 description: ""
 group: how-to-guides

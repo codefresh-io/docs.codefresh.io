@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "In Depth"
 description: ""
 group: codefresh-yaml

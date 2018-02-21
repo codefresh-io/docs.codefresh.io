@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Sending the notification to Slack"
 description: ""
 group: yaml-examples

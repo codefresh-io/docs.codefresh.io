@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Image Metadata Annotations"
 description: ""
 group: codefresh-yaml

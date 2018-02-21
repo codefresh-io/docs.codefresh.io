@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Create GKE Cluster"
 description: "Create Kubernetes cluster on Google Cloud platform"
 excerpt: "Create Kubernetes cluster on Google Cloud platform"

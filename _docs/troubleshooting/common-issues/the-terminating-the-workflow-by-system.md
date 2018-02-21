@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "The terminating the workflow by system"
 description: ""
 group: troubleshooting

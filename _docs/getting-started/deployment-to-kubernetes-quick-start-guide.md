@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Deployment to Kubernetes"
 description: ""
 group: getting-started

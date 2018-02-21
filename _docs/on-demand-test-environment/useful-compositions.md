@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Useful compositions"
 description: ""
 group: on-demand-test-environment

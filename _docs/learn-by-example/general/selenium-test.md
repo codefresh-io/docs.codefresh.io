@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Selenium test"
 description: ""
 excerpt: ""

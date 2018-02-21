@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Failed to get accounts clusters during workflow"
 description: ""
 group: troubleshooting

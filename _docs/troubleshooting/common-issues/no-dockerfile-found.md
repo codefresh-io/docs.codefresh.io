@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "No Dockerfile found"
 description: ""
 group: troubleshooting

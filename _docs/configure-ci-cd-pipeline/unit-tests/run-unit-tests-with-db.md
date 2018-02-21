@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Run Unit Tests with DB"
 description: ""
 group: configure-ci-cd-pipeline

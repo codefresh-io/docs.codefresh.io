@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Whats New In Codefresh?"
 description: ""
 group: whats-new

@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Integration tests with HELM"
 description: ""
 group: new-helm

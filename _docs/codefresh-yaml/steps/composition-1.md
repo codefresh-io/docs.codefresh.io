@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Composition"
 description: ""
 group: codefresh-yaml

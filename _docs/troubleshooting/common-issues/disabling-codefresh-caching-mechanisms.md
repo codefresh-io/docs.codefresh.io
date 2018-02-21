@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Disabling codefresh caching mechanisms"
 description: ""
 group: troubleshooting

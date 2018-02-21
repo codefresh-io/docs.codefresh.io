@@ -1,8 +1,9 @@
 ---
-layout: docs
 title: "Introduction"
 description: ""
 group: codefresh-yaml
+redirect_from:
+  - /docs/codefresh-yaml/
 toc: true
 ---
 Quick example:

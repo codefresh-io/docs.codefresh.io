@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Getting Started - Adding a Deploy Process to the Pipeline"
 excerpt: ""
 description: ""

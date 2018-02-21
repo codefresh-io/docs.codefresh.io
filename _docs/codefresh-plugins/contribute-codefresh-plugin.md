@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Contribute Codefresh Plugin"
 description: ""
 group: codefresh-plugins

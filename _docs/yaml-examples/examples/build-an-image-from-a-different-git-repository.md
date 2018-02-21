@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Build an Image from a Different Git Repository"
 description: ""
 group: yaml-examples

@@ -1,13 +1,11 @@
 ---
-layout: docs
 title: "Spring MVC JDBC Template"
 description: ""
 excerpt: ""
 group: learn-by-example
 sub_group: java
 redirect_from:
-  - /docs/spring-mvc-jdbc-template
-  - /docs/java/spring-mvc-jdbc-template
+  - /docs/spring-mvc-jdbc-template/
   - /docs/java/spring-mvc-jdbc-template/
 toc: true
 ---

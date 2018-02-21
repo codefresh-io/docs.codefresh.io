@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Test Your Feature"
 description: ""
 excerpt: "You can run your composition and run environment for feature testing purposes."

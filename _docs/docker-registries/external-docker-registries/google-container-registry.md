@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Google Container Registry"
 description: ""
 group: docker-registries

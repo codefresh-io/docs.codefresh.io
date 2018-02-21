@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Jira Integration"
 description: ""
 group: integrations

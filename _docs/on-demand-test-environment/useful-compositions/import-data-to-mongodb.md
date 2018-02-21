@@ -1,5 +1,5 @@
 ---
-layout: docs
+
 title: "Import data to MongoDB"
 description: ""
 group: on-demand-test-environment

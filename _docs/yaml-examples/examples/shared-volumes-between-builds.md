@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Shared volumes between builds"
 description: ""
 group: yaml-examples

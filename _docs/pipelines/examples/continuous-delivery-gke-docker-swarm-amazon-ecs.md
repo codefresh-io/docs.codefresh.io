@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Continuous Delivery - GKE, Docker SWARM, Amazon ECS"
 description: ""
 group: pipelines

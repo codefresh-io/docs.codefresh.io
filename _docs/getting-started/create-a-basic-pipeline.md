@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Getting Started - Create a Basic Pipeline"
 description: "Configure a basic single-service container-based CI/CD pipeline."
 excerpt: ""

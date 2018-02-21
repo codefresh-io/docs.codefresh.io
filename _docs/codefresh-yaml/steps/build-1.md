@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Build"
 description: ""
 group: codefresh-yaml

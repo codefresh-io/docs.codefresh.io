@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Validation Port warnings"
 description: ""
 group: troubleshooting

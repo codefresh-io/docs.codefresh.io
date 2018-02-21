@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Push Image to an AWS EC2 Container Registry"
 description: ""
 group: how-to-guides

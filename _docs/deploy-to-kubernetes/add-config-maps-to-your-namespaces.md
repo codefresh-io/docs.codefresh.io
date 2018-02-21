@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Add config maps to your namespaces"
 description: ""
 group: deploy-to-kubernetes

@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Install HELM chart using Codefresh pipeline"
 description: ""
 group: new-helm

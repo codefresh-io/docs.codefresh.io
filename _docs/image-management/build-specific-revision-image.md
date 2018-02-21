@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Build specific revision image"
 description: ""
 group: image-management

@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Build an Image with the Dockerfile in Root Directory"
 description: ""
 group: yaml-examples

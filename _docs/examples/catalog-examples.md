@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Catalog Examples"
 description: ""
 group: how-to-guides

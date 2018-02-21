@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Migrating from Travis CI"
 description: ""
 group: how-to-guides

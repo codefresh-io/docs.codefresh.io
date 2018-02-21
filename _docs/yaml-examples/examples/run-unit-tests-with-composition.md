@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Run Unit Tests with composition"
 description: ""
 group: yaml-examples

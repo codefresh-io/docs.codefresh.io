@@ -1,9 +1,9 @@
 ---
-layout: docs
 title: "Deployment to Kubernetes"
 description: ""
 group: deploy-to-kubernetes
 redirect_from:
+  - /docs/deploy-to-kubernetes/
   - /docs/deployment-to-kubernetes-quick-start-guide/
 toc: true
 ---

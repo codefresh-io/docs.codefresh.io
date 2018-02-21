@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Example - Deploy demochat to Kubernetes cluster"
 description: ""
 group: deploy-to-kubernetes

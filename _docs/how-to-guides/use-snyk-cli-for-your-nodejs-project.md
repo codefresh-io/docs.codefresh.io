@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Use Snyk CLI for your Nodejs project"
 description: ""
 group: how-to-guides

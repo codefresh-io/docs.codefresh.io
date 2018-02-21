@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Spring Boot + Kafka + Zookeeper"
 description: ""
 group: on-demand-test-environment

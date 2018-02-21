@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Populate a database with existing data - copied"
 description: ""
 group: yaml-examples

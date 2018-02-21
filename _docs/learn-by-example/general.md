@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "General"
 description: ""
 group: learn-by-example

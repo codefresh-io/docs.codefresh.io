@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Freestyle Beta"
 description: ""
 group: codefresh-yaml

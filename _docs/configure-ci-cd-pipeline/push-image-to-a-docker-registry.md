@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Push an image to a Docker registry"
 description: ""
 group: configure-ci-cd-pipeline

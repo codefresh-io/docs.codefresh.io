@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Continuous integration"
 description: ""
 group: pipelines

@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Build badges-old"
 description: ""
 group: configure-ci-cd-pipeline

@@ -1,10 +1,9 @@
 ---
-layout: docs
 title: "Deploy with Kubernetes Helm"
 description: ""
 group: deploy-to-kubernetes
 redirect_from:
-  - /docs/deploy-with-kubernetes-helm
+  - /docs/deploy-with-kubernetes-helm/
 toc: true
 old_url: /docs/deploy-with-kubernetes-helm/
 was_hidden: true

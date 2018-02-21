@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Handling commit messages with a quote character"
 description: ""
 group: troubleshooting

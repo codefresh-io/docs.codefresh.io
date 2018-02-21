@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Python"
 description: ""
 group: learn-by-example

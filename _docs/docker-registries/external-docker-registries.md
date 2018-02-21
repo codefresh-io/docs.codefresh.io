@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "External Docker Registries"
 description: ""
 group: docker-registries

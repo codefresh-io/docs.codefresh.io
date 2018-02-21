@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Push Your Image to Docker Registry"
 excerpt: ""
 description: ""

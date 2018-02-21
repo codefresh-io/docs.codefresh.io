@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Invite your team members"
 description: ""
 group: accounts

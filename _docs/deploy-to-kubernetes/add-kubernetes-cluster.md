@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Add Kubernetes Cluster"
 description: ""
 group: deploy-to-kubernetes

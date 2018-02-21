@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Build Your First Docker Image"
 excerpt: "Create your first Docker image by adding a service to Codefresh. A service includes a repository and a [**Dockerfile**](https://www.docker.com/) or [**codefresh.yml**]({{ site.baseurl }}/docs/codefresh-yaml/what-is-the-codefresh-yaml/). Otherwise if you don't have Dockerfile or codefresh.yml in your repository you can use the codefresh templates."
 description: ""

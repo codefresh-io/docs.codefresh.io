@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Define CI/CD for Multiple Docker files in one repository"
 description: ""
 group: how-to-guides

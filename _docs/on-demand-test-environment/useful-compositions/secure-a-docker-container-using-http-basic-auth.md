@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Secure a Docker Container Using HTTP Basic Auth"
 description: ""
 group: on-demand-test-environment

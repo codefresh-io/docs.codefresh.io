@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Kubernetes Frequently Asked Questions"
 description: ""
 group: integrations

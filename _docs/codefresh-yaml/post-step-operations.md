@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Post-Step Operations"
 description: ""
 group: codefresh-yaml

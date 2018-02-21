@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Integration Test"
 description: ""
 group: codefresh-yaml

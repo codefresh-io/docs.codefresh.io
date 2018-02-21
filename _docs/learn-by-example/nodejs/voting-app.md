@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Voting app"
 description: ""
 excerpt: ""

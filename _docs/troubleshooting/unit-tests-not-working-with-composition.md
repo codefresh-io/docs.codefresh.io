@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Unit tests not working with composition"
 description: ""
 group: troubleshooting

@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Helm Releases management"
 description: ""
 group: new-helm

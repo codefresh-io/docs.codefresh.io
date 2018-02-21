@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "The docker image does not exist or no pull access"
 description: ""
 group: troubleshooting

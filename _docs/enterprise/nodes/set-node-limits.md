@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Set Node Limits"
 description: ""
 group: enterprise

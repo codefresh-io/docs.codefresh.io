@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "What's next?"
 description: ""
 group: configure-ci-cd-pipeline

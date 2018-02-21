@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Custom YAML steps"
 description: ""
 group: yaml-examples

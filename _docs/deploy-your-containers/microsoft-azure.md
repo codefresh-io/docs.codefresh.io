@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Microsoft Azure"
 description: ""
 group: deploy-your-containers

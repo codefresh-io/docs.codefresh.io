@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Add your Node to run/build containers"
 description: ""
 group: how-to-guides

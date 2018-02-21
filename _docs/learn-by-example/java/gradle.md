@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Gradle"
 description: ""
 excerpt: ""

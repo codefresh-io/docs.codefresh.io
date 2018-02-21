@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "How to Create GKE Cluster?"
 description: ""
 group: deploy-to-kubernetes

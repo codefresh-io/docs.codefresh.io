@@ -1,9 +1,9 @@
 ---
-layout: docs
 title: "Codefresh Docker Registry"
 description: ""
 group: docker-registries
 redirect_from:
+  - /docs/docker-registries/
   - /docs/codefresh-registry/
 toc: true
 ---

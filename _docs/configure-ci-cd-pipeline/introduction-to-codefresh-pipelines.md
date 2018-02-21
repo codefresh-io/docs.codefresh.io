@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Introduction to Codefresh pipelines"
 description: ""
 group: configure-ci-cd-pipeline

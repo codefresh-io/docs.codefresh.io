@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Google Cloud"
 description: ""
 group: deploy-your-containers

@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "How to share volumes of service in composition step between other yml steps"
 description: ""
 group: how-to-guides

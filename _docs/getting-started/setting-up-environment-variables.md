@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Setting up environment variables"
 excerpt: ""
 description: ""

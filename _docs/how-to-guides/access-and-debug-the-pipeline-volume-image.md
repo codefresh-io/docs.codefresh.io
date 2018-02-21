@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Access and debug the pipeline volume image"
 description: ""
 group: how-to-guides

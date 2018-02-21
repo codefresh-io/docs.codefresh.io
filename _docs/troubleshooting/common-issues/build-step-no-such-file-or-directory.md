@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Build step: No such file or directory"
 description: ""
 group: troubleshooting

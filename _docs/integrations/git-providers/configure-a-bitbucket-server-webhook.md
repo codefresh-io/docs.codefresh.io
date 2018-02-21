@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Configure a Bitbucket Server Webhook"
 description: ""
 group: integrations

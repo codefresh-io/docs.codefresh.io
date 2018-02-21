@@ -1,10 +1,10 @@
 ---
-layout: docs
 title: "Git providers"
 description: ""
 group: integrations
 redirect_from:
   - /docs/git-provider/
+  - /docs/integrations/
   - /docs/integrations/git-provider/
 toc: true
 ---

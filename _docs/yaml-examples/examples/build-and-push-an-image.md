@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Build and Push an Image"
 description: ""
 group: yaml-examples

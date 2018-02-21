@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Running multiple microservices in one repo"
 description: ""
 group: how-to-guides

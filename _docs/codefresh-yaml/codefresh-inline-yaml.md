@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Codefresh inline YAML"
 description: ""
 group: codefresh-yaml

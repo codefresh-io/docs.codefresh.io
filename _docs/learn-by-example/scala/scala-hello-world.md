@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Scala: Hello World"
 description: ""
 excerpt: ""

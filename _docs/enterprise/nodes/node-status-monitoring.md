@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Node Status Monitoring"
 description: ""
 group: enterprise

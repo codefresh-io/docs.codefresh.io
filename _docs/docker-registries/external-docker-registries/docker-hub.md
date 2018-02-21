@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Docker Hub"
 description: ""
 group: docker-registries

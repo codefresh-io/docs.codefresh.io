@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Go: Hello World"
 description: ""
 excerpt: ""

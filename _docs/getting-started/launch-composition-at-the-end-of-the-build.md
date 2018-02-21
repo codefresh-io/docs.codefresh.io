@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Launch Composition at The End of The Build"
 excerpt: ""
 description: ""

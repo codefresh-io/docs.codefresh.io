@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "HELM Best practices"
 description: ""
 group: new-helm

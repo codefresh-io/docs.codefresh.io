@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Expression Condition Syntax"
 description: ""
 group: codefresh-yaml

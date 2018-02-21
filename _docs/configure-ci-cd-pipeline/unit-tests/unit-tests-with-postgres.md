@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Unit Tests with Postgres"
 description: ""
 group: configure-ci-cd-pipeline

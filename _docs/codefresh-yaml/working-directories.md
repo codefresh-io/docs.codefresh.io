@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Working Directories"
 description: ""
 group: codefresh-yaml

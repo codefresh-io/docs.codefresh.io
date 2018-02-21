@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Codefresh - Getting Started - Create a Multi-service Pipeline"
 excerpt: ""
 description: ""

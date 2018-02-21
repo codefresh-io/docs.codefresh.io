@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Jenkins Integration"
 description: ""
 group: integrations

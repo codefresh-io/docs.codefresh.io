@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Codefresh API"
 description: ""
 group: how-to-guides

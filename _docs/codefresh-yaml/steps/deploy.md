@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Deploy"
 description: ""
 group: codefresh-yaml

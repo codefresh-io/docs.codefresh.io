@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Nodes"
 description: ""
 group: enterprise

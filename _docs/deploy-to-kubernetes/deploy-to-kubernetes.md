@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Manage your Kubernetes cluster in Codefresh"
 description: ""
 group: deploy-to-kubernetes

@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Build an Image with Build Arguments"
 description: ""
 group: yaml-examples

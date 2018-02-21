@@ -1,9 +1,10 @@
 ---
-layout: docs
 title: "Create composition"
 description: ""
 excerpt: "Composition can be launched as part of unit test step, integration test or for running an image for manual testing. Also based on your `docker-compose.yml` automatically can be created services that were described in this file.\nBelow how to create a composition."
 group: on-demand-test-environment
+redirect_from:
+  - /docs/on-demand-test-environment/
 toc: true
 ---
 

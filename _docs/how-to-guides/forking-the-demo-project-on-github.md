@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Forking the Demo Project on Github"
 description: ""
 group: how-to-guides

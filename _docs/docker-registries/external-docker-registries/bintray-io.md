@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Bintray.io"
 description: "Adding Jfrog Bintray to Codefresh and using it as a registry."
 group: docker-registries

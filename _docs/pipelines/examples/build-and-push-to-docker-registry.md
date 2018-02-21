@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Build and Push to Docker registry"
 description: ""
 group: pipelines

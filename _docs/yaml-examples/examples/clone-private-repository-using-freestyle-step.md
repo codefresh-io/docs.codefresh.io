@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Clone private repository using freestyle step"
 description: ""
 group: yaml-examples

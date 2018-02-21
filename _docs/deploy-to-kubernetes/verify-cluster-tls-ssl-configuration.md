@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Verify cluster TLS/SSL configuration"
 description: ""
 group: deploy-to-kubernetes

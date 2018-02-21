@@ -1,12 +1,11 @@
 ---
-layout: docs
 title: "Integration Test Script"
 excerpt: ""
 description: ""
 excerpt: ""
 group: getting-started
 redirect_from:
-  - /docs/integration-test-script
+  - /docs/integration-test-script/
 toc: true
 old_url: /docs/integration-test-script
 was_hidden: true

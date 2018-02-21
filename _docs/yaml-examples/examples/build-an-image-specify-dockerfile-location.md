@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Build an Image - Specify Dockerfile Location"
 description: ""
 group: yaml-examples

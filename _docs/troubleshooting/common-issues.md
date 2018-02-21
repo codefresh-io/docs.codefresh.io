@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Common Issues"
 description: ""
 group: troubleshooting

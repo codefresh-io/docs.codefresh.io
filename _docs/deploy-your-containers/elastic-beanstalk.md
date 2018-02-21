@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Elastic Beanstalk"
 description: ""
 group: deploy-your-containers

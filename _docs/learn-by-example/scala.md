@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: "Scala"
 description: ""
 group: learn-by-example
