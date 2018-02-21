@@ -2,11 +2,13 @@
 // Callouts
 //
 
-.bd-callout,
-blockquote {
+blockquote,
+.blockquote,
+.bd-callout {
   padding: 1.25rem;
   margin-top: 1.25rem;
   margin-bottom: 1.25rem;
+  font-size: 1rem;
   border: 1px solid #eee;
   border-left-width: .25rem;
   border-radius: .25rem;

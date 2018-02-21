@@ -74,11 +74,15 @@ repository: codefresh-io/docs.codefresh.io
 
 # Collections
 collections:
-  docs:
+  posts:
     output: true
+    permalink: /:collection/:year/:month/:day/:title/
   pages:
     output: true
-    permalink: /:name
+    permalink: /:collection/:path
+  docs:
+    output: true
+    permalink: /:collection/:path/
 
 # Defaults
 defaults:
@@ -94,9 +98,9 @@ defaults:
       type: pages
     values:
       layout: simple
-  # docs
+  # _docs
   - scope:
-      path: "docs"
+      path: "_docs"
       type: docs
     values:
       layout: docs
@@ -115,6 +119,7 @@ link_main:            "http://codefresh.io"
 link_cli:             "http://cli.codefresh.io"
 link_git_examples:    "https://github.com/codefresh-examples/examples/"
 link_api:             "https://g.codefresh.io/api/"
+link_plugins:         "https://github.com/codefresh-io/plugins"
 
 ga_tracking_code:     "UA-112283329-1"
 
