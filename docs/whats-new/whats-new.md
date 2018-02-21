@@ -8,6 +8,16 @@ redirect_from:
   - /docs/whats-new/
 toc: true
 ---
+
+### Helm Improvements (February 2018)
+- Chart install:
+  - can now see default values for the chart, and override them
+  - can now specify tiller namespace
+- Can now connect to private authenticated chart repositories hosted in S3 or GCS bucket
+- Helm release badge
+- We can now integrate with Kubernetes clusters behind firewalls
+- Can now provide context (shared configuration) to pipelines from the CLI
+
 ### Helm Improvements (January 2018)
 - Chart install: 
   - can now specify release name (useful for installing same chart multiple times)
