@@ -20,11 +20,19 @@ In the "Helm Charts" page, click on the "Add Repository" button on the top right
 In the dialog that opened, name your repository, and specify it's URL. The URL should not include the specific path to `index.yaml`
 If your repository is publicly authenticated, click 'Save' and you are done. To add a private repository keep reading.
 
+In addition to public repositories, we also support connecting to Helm repositories hosted on privated authenticated stores.
+
+You connect to a private repository from the same dialog you would connect to a public one, by selecting any of the authentication options, like S3, or CGS.
+
+The bucket URL should be provided with a protocol scheme relevant to the selected provider, for example for S3, the url would look like `s3://mybucketname`.
+
+The rest of the required parameters varies based on the selected provider (see below)
+
+Once connected, the private Helm repository context can be injected into pipelines by selecting "Import from shared configuration" (under "Environment Variables" section), and selecting the name of the repository.  
+The repository settings will be injected as environment variables into the pipeline so you can use them as you wish. In addition, the Codefresh Helm step can use these settings to install charts. More info on the Codefresh Helm step can be found here: [https://github.com/codefresh-contrib/cfstep-helm](https://github.com/codefresh-contrib/cfstep-helm)
+
 ### Private repository - S3
 
-We support connecting to Helm repositories hosted on authenticated S3.
-
-- In the 'Add Helm Respository Dialog, select 'Amazon AWS S3'.
 - Add your S3 bucket URL in the follwing scheme: `s3://bucketname`.
 - Supply the AWS authentication variables as you would for the AWS CLI, or the S3 plugin for Helm. See details here: [Configuring the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html)
 
@@ -37,6 +45,7 @@ AWS_SECRET_ACCESS_KEY|Secret of the key with permissions for the bucket
 AWS_DEFAULT_REGION|region where the bucket was created
 
 ## Install chart from your Helm repository
+
 In the "Helm Charts" page, locate the chart you would like to install, and click on the Install button
 
 In the dialog that opened:
