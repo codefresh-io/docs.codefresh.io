@@ -4,7 +4,6 @@ description: ""
 group: integrations
 redirect_from:
   - /docs/stash/
-  - /docs/integrations/
 toc: true
 ---
 To activate your Stash account on Codefresh you need to contact Codefresh team or just to create a conversation using the button in the right bottom corner.

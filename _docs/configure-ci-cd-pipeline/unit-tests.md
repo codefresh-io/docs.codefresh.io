@@ -3,7 +3,7 @@ title: "Unit Tests"
 description: ""
 group: configure-ci-cd-pipeline
 redirect_from:
-  - /docs/setup-unit-tests/
+  - /docs/unit-tests/
 toc: true
 ---
 With Codefresh, you can easily set your unit tests to run on every build.
