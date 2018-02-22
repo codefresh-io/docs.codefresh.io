@@ -105,7 +105,7 @@ defaults:
       type: docs
     values:
       layout: docs
-
+      toc: true
 
 # Custom variables
 repo:                 "https://github.com/codefresh-io/docs.codefresh.io"
@@ -113,11 +113,11 @@ features:             "https://codefresh.io/features/"
 enterprise:           "https://codefresh.io/enterprise/"
 pricing:              "https://codefresh.io/pricing/"
 schedule_demo:        "https://codefresh.io/schedule-a-demo/"
-codefresh_login:      "http://g.codefresh.io/login"
+codefresh_login:      "https://g.codefresh.io/login"
 codefresh_signup:     "https://g.codefresh.io/signup"
 
-link_main:            "http://codefresh.io"
-link_cli:             "http://cli.codefresh.io"
+link_main:            "https://codefresh.io"
+link_cli:             "https://cli.codefresh.io"
 link_git_examples:    "https://github.com/codefresh-examples/examples/"
 link_api:             "https://g.codefresh.io/api/"
 link_plugins:         "https://github.com/codefresh-io/plugins"
@@ -139,5 +139,7 @@ cdn:
 # - http://jch.penibelst.de/
 compress_html:
   clippings: all
+  profile: false
+  startings: [head, body]
   ignore:
     envs: development
