@@ -1,7 +1,7 @@
 ---
 title: "Examples"
-layout: "default"
 description: ""
+permalink: /examples.html
 ---
 <div style="margin:10px 0px 0px 10px; background-color: #ebf5f3" class="backButton">
 <a href="/examples" class="btn btn-get-beta">Examples home</a>

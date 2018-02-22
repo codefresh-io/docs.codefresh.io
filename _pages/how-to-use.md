@@ -197,3 +197,66 @@ The keywords you must add to specify the highlighting (in the previous example, 
 * `dotnet`
 * `xml`
 * `http`
+
+## 3. Permalinks
+
+Our documentation site supports jekyll `docs` collection which has default permalink set to `/:collection/:path/`
+
+### Default Permalink
+
+{% highlight yaml %}
+{% raw %}
+collections:
+  docs:
+    output: true
+    permalink: /:collection/:path/
+{% endraw %}
+{% endhighlight %}
+
+See more in `_config.yml`
+
+### Change permalink
+Add `permalink:` property into FrontMatter section of markdown file to set custom url for a page
+ 
+Review following **example** folder structure
+
+{% highlight md %}
+{% raw %}
+_site/
+├── COLLECTION_NAME //in our case will be docs
+│   └── super-page
+│       └── test
+│           └── hello-world.md
+{% endraw %}
+{% endhighlight %}
+
+Check `hello-world.md` which is a child of the following folder structure:
+ 
+`/COLLECTION_NAME/super-page/test/` 
+
+correspondingly the page url will be equal to
+ 
+`http://URL_OF_SITE/COLLECTION_NAME/super-page/test/hello-world/`
+
+Set permalink like given below to have custom file name in the url:
+
+ `hello-world.md`
+{% highlight md %}
+{% raw %}
+---
+title: "Hello World!" 
+permalink: /:collection/super-page/test/slack-integration/
+---
+
+## Hello
+This is hello world file
+{% endraw %}
+{% endhighlight %}
+
+where: 
+* `:collection` - build-in variable in Jekyll
+* `slack-integration` - new chunk of file name in url
+
+so result will be `http://URL_OF_SITE/COLLECTION_NAME/super-page/test/slack-integration/`
+
+Read more [Jekyll Collections](https://jekyllrb.com/docs/collections/){:target="_blank"} and [Jekyll Permalinks](https://jekyllrb.com/docs/permalinks/){:target="_blank"} 
