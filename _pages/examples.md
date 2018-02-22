@@ -1,6 +1,7 @@
 ---
 title: "Examples"
 description: ""
+layout: default
 permalink: /examples.html
 ---
 <div style="margin:10px 0px 0px 10px; background-color: #ebf5f3" class="backButton">
