@@ -52,6 +52,9 @@
     > a {
       pointer-events: auto;
     }
+    > a {
+      word-break: break-all;
+    }
 
     &::before {
       display: block;
