@@ -42,6 +42,17 @@ AWS_ACCESS_KEY_ID|ID of the key with permissions for the bucket
 AWS_SECRET_ACCESS_KEY|Secret of the key with permissions for the bucket
 AWS_DEFAULT_REGION|region where the bucket was created
 
+### Private repository - GCS
+
+- Add your GCS bucket URL in the follwing scheme: `gs://bucketname`.
+- Supply the Google authentication variable as you would for the GCloud CLI, or the GCS plugin for Helm. See details here: [Creating Service Account](https://cloud.google.com/docs/authentication/getting-started)
+
+Variables:
+
+Name|Description
+---|---
+GOOGLE_APPLICATION_CREDENTIALS_JSON|The JSON content of the service account credentials
+
 ## Install chart from your Helm repository
 
 In the "Helm Charts" page, locate the chart you would like to install, and click on the Install button
