@@ -37,6 +37,17 @@
     - title: "What's next?"
       url: "/whats-next"
 
+- title: Pipeline Triggers
+  url: "/pipeline-triggers"
+  pages:
+    - title: "Pipeline Triggers"
+      url: "/introduction-triggers"
+    - title: "DockerHub Triggers"
+      url: "/configure-dockerhub-trigger"
+    - title: "Timer (Cron) Triggers"
+      url: "/configure-cron-trigger"
+
+
 - title: Codefresh YAML
   url: "/codefresh-yaml"
   pages:
