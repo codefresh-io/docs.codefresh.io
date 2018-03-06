@@ -16,7 +16,8 @@ By default, we show you charts from the [official Helm repository](https://githu
 In the "Helm Charts" page, click on the "Add Repository" button on the top right.
 
 In the dialog that opened, name your repository, and specify it's URL. The URL should not include the specific path to `index.yaml`
-If your repository is publicly authenticated, click 'Save' and you are done. To add a private repository keep reading.
+
+If your repository doesn't require authentication, click 'Save' and you are done. To add an authenticated repository keep reading.
 
 In addition to public repositories, we also support connecting to Helm repositories hosted on privated authenticated stores.
 
@@ -27,7 +28,9 @@ The bucket URL should be provided with a protocol scheme relevant to the selecte
 The rest of the required parameters varies based on the selected provider (see below)
 
 Once connected, the private Helm repository context can be injected into pipelines by selecting "Import from shared configuration" (under "Environment Variables" section), and selecting the name of the repository.  
-The repository settings will be injected as environment variables into the pipeline so you can use them as you wish. In addition, the Codefresh Helm step can use these settings to install charts. More info on the Codefresh Helm step can be found here: [https://github.com/codefresh-contrib/cfstep-helm](https://github.com/codefresh-contrib/cfstep-helm)
+The repository settings will be injected as environment variables into the pipeline so you can use them as you wish. 
+
+If you are using the Helm step, it will use these settings to connect to your authenticated repository automatically. More info on the Codefresh Helm step can be found here: [https://github.com/codefresh-contrib/cfstep-helm](https://github.com/codefresh-contrib/cfstep-helm)
 
 ### Private repository - S3
 
