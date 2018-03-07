@@ -37,6 +37,17 @@
     - title: "What's next?"
       url: "/whats-next"
 
+- title: Pipeline Triggers
+  url: "/pipeline-triggers"
+  pages:
+    - title: "Pipeline Triggers"
+      url: "/introduction-triggers"
+    - title: "DockerHub Triggers"
+      url: "/configure-dockerhub-trigger"
+    - title: "Timer (Cron) Triggers"
+      url: "/configure-cron-trigger"
+
+
 - title: Codefresh YAML
   url: "/codefresh-yaml"
   pages:
@@ -125,12 +136,10 @@
       sub-pages:
         - title: Create GKE Cluster
           url: "/create-cluster"
-        - title: Build an image
-          url: "/build-an-image"
-    - title: Deploy to Kubernetes
-      url: "/codefresh-kubernetes-integration-beta"
     - title: Add Kubernetes cluster
       url: "/adding-non-gke-kubernetes-cluster"
+    - title: Manage your Kubernetes cluster in Codefresh
+      url: "/codefresh-kubernetes-integration-beta"
     - title: Example - Deploy demochat to Kubernetes cluster
       url: "/codefresh-kubernetes-integration-demochat-example"
     - title: Add config maps to your namespaces
