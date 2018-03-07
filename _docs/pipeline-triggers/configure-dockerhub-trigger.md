@@ -1,6 +1,6 @@
 ---
 title: "DockerHub Trigger"
-description: "",
+description: ""
 group: pipeline-triggers
 redirect_from:
   - /docs/configure-dockerhub-trigger/

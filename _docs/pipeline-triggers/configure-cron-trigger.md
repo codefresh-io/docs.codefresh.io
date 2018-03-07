@@ -1,6 +1,6 @@
 ---
 title: "Cron Trigger"
-description: "",
+description: ""
 group: pipeline-triggers
 redirect_from:
   - /docs/configure-cron-trigger/

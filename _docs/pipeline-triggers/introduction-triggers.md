@@ -1,6 +1,6 @@
 ---
 title: "Pipeline Triggers"
-description: "",
+description: ""
 group: pipeline-triggers
 redirect_from:
   - /docs/pipeline-triggers/
