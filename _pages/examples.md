@@ -8,7 +8,7 @@ permalink: /examples.html
   <div class="row d-flex align-items-start">
     <div class="col-12">
       <div style="padding:10px 0px 10px 10px;" class="backButton">
-        <a href="/examples" class="btn btn-get-beta">Examples home</a>
+        <a href="/docs/examples.html" class="btn btn-get-beta">Examples home</a>
       </div>
     </div>
     <div class="col-12">
@@ -16,7 +16,7 @@ permalink: /examples.html
     </div>
     <div class="col-12">
       <div style="padding:10px 0px 10px 10px;" class="backButton">
-        <a href="/examples" class="btn btn-get-beta">Examples home</a>
+        <a href="/docs/examples.html" class="btn btn-get-beta">Examples home</a>
       </div>
     </div>
   </div>
