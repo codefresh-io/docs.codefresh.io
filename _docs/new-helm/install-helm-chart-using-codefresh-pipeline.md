@@ -7,7 +7,7 @@ redirect_from:
 toc: true
 ---
 
-You can always use the `helm` command line in a freestyle step, like any other command line tool, but for Helm, You might want to check out out helm deployment step.
+You can always use the `helm` command line in a freestyle step, like any other command line tool, but for better integration with Codefresh, you might want to check out out helm deployment step.
 
 ## Usage
 
@@ -17,6 +17,8 @@ Set required and optional environment variable and add the following step to you
 Helm Upgrade:
     image: 'codefresh/cfstep-helm:2.8.0'
 ``` 
+
+(the Docker image tag refers to the version of Helm you need)
 
 ## Environment Variables
 

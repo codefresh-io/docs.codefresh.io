@@ -32,6 +32,20 @@ The repository settings will be injected as environment variables into the pipel
 
 If you are using the Helm step, it will use these settings to connect to your authenticated repository automatically. More info on the Codefresh Helm step can be found here: [https://github.com/codefresh-contrib/cfstep-helm](https://github.com/codefresh-contrib/cfstep-helm)
 
+### Private repository - HTTP
+
+You can connect to your repository using HTTP Basic authentication.
+
+- Add your repo url as usually with HTTP protocol
+- Supply the User and Password for HTTP Basic authentication.
+
+Variables:
+
+Name|Description
+---|---
+HELMREPO_USERNAME|The username to authenticate with
+HELMREPO_PASSWORD|The password for the username provided
+
 ### Private repository - S3
 
 - Add your S3 bucket URL in the follwing scheme: `s3://bucketname`.
