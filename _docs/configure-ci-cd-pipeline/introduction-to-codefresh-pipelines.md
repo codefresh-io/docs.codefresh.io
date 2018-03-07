@@ -1,6 +1,6 @@
 ---
 title: "Introduction to Codefresh pipelines"
-description: "",
+description: ""
 group: configure-ci-cd-pipeline
 redirect_from:
   - /docs/introduction-to-codefresh-pipelines/
