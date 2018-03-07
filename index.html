@@ -47,33 +47,37 @@ layout: home
 </main>
 
 <div class="masthead-followup row m-0 border border-white">
-  {% for homeContent in site.data.home-content %}
-  <div class="col-12 col-md-3 p-4 p-md-4 bg-light border border-white">
-    <div class="d-flex justify-content-start align-items-center">
-      <div class="p-2 align-self-center">
-        <img src="{{ homeContent.icon }}" alt="{{ homeContent.title }}" />
+  <div class="container">
+    <div class="row">
+    {% for homeContent in site.data.home-content %}
+    <div class="col-12 col-md-3 p-4 p-md-4 followup-card-item border border-white">
+      <div class="d-flex justify-content-start align-items-center">
+        <div class="p-2 align-self-center">
+          <img src="{{ homeContent.icon }}" alt="{{ homeContent.title }}" />
+        </div>
+        <div class="p-2 align-self-center">
+          <h4 {% unless homeContent.new == nil or homeContent.new == false %} class="bulb bulb-red bulb-above-left bulb-pos-after" data-bulb-text="NEW"{% endunless %}>{{ homeContent.title }}</h4>
+        </div>
       </div>
-      <div class="p-2 align-self-center">
-        <h4 {% unless homeContent.new == nil or homeContent.new == false %} class="bulb bulb-red bulb-above-left bulb-pos-after" data-bulb-text="NEW"{% endunless %}>{{ homeContent.title }}</h4>
-      </div>
+      <ul>
+        {% for homeContentLink in homeContent.links %}
+          {% if homeContentLink.localurl %}
+            {% assign localurl = homeContentLink.localurl %}
+          {% else %}
+            {% assign localurl = nil %}
+          {% endif %}
+        <li>
+          <a {% if localurl %}href="{{site.baseurl}}{{ localurl }}"{% elsif homeContentLink.url %}href="{{ homeContentLink.url }}"{% endif %} title="{{ homeContentLink.title }}">
+            {{ homeContentLink.title }}
+            {% unless homeContentLink.new == nil or homeContentLink.new == false %}
+            <span class="badge cf-badge cf-badge-new align-top text-uppercase">New</span>
+            {% endunless %}
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
     </div>
-    <ul>
-      {% for homeContentLink in homeContent.links %}
-        {% if homeContentLink.localurl %}
-          {% assign localurl = homeContentLink.localurl %}
-        {% else %}
-          {% assign localurl = nil %}
-        {% endif %}
-      <li>
-        <a {% if localurl %}href="{{site.baseurl}}{{ localurl }}"{% elsif homeContentLink.url %}href="{{ homeContentLink.url }}"{% endif %} title="{{ homeContentLink.title }}">
-          {{ homeContentLink.title }}
-          {% unless homeContentLink.new == nil or homeContentLink.new == false %}
-          <span class="badge cf-badge cf-badge-new align-top text-uppercase">New</span>
-          {% endunless %}
-        </a>
-      </li>
-      {% endfor %}
-    </ul>
+    {% endfor %}
+    </div>
   </div>
-  {% endfor %}
 </div>

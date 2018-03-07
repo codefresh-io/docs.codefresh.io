@@ -50,6 +50,7 @@
 
   &.bd-masthead-home {
     position: relative;
+    overflow: hidden;
     h2 {
       font-size: 40px;
       text-shadow: 0 1px 2px rgba($bd-dark, .35);
@@ -123,6 +124,11 @@
 }
 
 .masthead-followup {
+  background: $bd-doc-content-bg;
+
+  .followup-card-item {
+    background-color: $bd-doc-content-bg;
+  }
   .bd-clipboard { display: none; }
 
   .highlight {
