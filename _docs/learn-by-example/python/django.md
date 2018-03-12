@@ -1,12 +1,12 @@
 ---
-title: "Djanga"
+title: "Django"
 description: ""
 excerpt: ""
 group: learn-by-example
 sub_group: python
 redirect_from:
-  - /docs/djanga/
-  - /docs/python/djanga/
+  - /docs/django/
+  - /docs/python/django/
 toc: true
 ---
 Using this repository we’ll help you get up to speed with basic functionality such as: compiling, testing and building Docker images.

@@ -206,8 +206,8 @@
     - title: Python
       url: "/python"
       sub-pages:
-        - title: Djanga
-          url: "/djanga"
+        - title: Django
+          url: "/django"
         - title: Voting app
           url: "/voting-app"
     - title: Java
@@ -320,8 +320,8 @@
           url: "/disabling-codefresh-caching-mechanisms"
         - title: Handling commit messages with a quote character
           url: "/handling-commit-messages-with-quotes"
-        - title: The terminating the workflow by system
-          url: "/the-terminating-the-workflow-by-system"
+        - title: Workflow terminated by the system
+          url: "/workflow-terminated-by-system"
         - title: The docker image does not exist or no pull access
           url: "/the-docker-image-does-not-exist-or-no-pull-access"
         - title: 'Build step: No such file or directory'
