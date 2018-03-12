@@ -10,7 +10,7 @@ toc: true
 ## Deployment to Elastic Beanstalk
 
 {:.text-secondary}
-### Prerequiests
+### Prerequisites
 
 - Configured Application in Elastic Beanstalk service <br>
   See: [http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/GettingStarted.html](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/GettingStarted.html){:target="_blank"}
