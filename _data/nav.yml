@@ -5,11 +5,6 @@
   - title: Deployment to Kubernetes
     url: "/deployment-to-kubernetes-quick-start-guide"
 
-- title: Codefresh Plugins
-  pages:
-    - title: Plugins
-    - title: Contribute Codefresh Plugin
-
 - title: Whats new?
   url: "/whats-new"
   pages:
@@ -90,8 +85,6 @@
 - title: "YAML Examples"
   url: "/yaml-examples"
   pages:
-    - title: "Custom YAML steps"
-      url: "/ready-to-use-yaml-steps"
     - title: Examples
       url: "/examples"
       sub-pages:
