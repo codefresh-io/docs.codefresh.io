@@ -60,7 +60,7 @@ custom_env_open_SOME__VAR__REF=myvalue
 
 ## Kubernetes Configuration
 
-Add Kubernetes integration to Codefresh: `> Account Settings > Integration > Kubernetes`. From now on, you can use added Kubernetes cluster in Codefresh pipeline, addressing its context by the name you see in `Clusters` menu.
+In order to work with the Helm plugin you need to configure a Kubernetes cluster with Codefresh as described here: [Add Kubernetes Cluster](https://codefresh.io/docs/docs/deploy-to-kubernetes/adding-non-gke-kubernetes-cluster/).
 
 ## Helm Reposiroty Configuration
 
