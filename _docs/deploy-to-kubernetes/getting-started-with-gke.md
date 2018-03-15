@@ -5,6 +5,9 @@ group: deploy-to-kubernetes
 permalink: /:collection/deploy-to-kubernetes/get-ready-to-deploy/
 # Permalink Example: will be like
 # /docs/CATEGORY_OF_FILE/NEW_PAGE_NAME__INSTEAD_FILE_NAME/
+redirect_from:
+  - /docs/get-ready-to-deploy
+  - /docs/get-ready-to-deploy/
 toc: true
 ---
 Google Container Engine is a powerful cluster manager and orchestration system for running your Docker containers built on Kubernetes. We’ve setup a deep integration with Google Container Engine that enables to create streamlined deployment to Kubernetes as part of a CI/CD pipeline.
