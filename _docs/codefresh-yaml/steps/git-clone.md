@@ -8,9 +8,6 @@ redirect_from:
 toc: true
 ---
 Clones a Git repository to the filesystem.
-<div class="bd-callout bd-callout-warning" markdown="1">
-This step is not required and is added automatically for the main repository.
-</div> 
 
   `YAML`
 {% highlight yaml %}
@@ -55,3 +52,26 @@ step_name:
 {{site.data.callout.callout_info}}
 If you want to extend the git-clone step you can use the freestyle step. Example how to do it you can find [here]({{ site.baseurl }}/docs/yaml-examples/examples/git-clone-private-repository-using-freestyle-step/) 
 {{site.data.callout.end}}
+
+## Skip or customize default clone
+
+A git clone step is transparently added to git attached pipelines without you having to explicitly add a step into the pipeline. This is a convenience to enable easy CI pipelines.  
+If you do not require git cloning, or you would like to customize the implicit git cloning behaviour, you can choose to skip the automatically added git clone step.
+
+There are 2 ways to do that:
+
+1. Add a pipeline environment variable called `CF_SKIP_MAIN_CLONE` with value of `true`.
+
+-or-
+
+2. Add a step with key `main_clone` to your pipeline. This step can be of any type and can do any action. This step will override the default clone implementation. for example:
+
+```yaml
+steps:
+  main_clone:
+    image: alpine/git:latest
+    commands:
+      - git clone ...
+  another_step:
+    ...
+```
