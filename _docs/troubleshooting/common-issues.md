@@ -8,3 +8,15 @@ redirect_from:
 toc: true
 ---
 In this section, we offer helpful information about issues you may encounter and questions you might have.
+
+- [Can't find your organization repositories]({{ site.baseurl }}/docs/troubleshooting/common-issues/cant-find-your-organization-repositories/)
+- [Can't find your private repositories]({{ site.baseurl }}/docs/troubleshooting/common-issues/cant-find-your-private-repositories/)
+- [No Dockerfile found]({{ site.baseurl }}/docs/troubleshooting/common-issues/no-dockerfile-found/)
+- [Validation Port warnings]({{ site.baseurl }}/docs/troubleshooting/common-issues/validation-port-warnings/)
+- [Restoring data from pre-existing image hangs on]({{ site.baseurl }}/docs/troubleshooting/common-issues/restoring-data-from-pre-existing-image-hangs-on/)
+- [Disabling codefresh caching mechanisms]({{ site.baseurl }}/docs/troubleshooting/common-issues/disabling-codefresh-caching-mechanisms/)
+- [Handling commit messages with quotes]({{ site.baseurl }}/docs/troubleshooting/common-issues/handling-commit-messages-with-quotes/)
+- [The terminating the workflow by system]({{ site.baseurl }}/docs/troubleshooting/common-issues/workflow-terminated-by-system/)
+- [The docker image does not exist or no pull access]({{ site.baseurl }}/docs/troubleshooting/common-issues/the-docker-image-does-not-exist-or-no-pull-access/)
+- [Build step: No such file or directory]({{ site.baseurl }}/docs/troubleshooting/common-issues/build-step-no-such-file-or-directory/)
+- [The webhooks of GitLab doesn't work as expected]({{ site.baseurl }}/docs/troubleshooting/common-issues/failed-to-get-accounts-clusters-during-workflow/)
