@@ -5,7 +5,7 @@ group: configure-ci-cd-pipeline
 toc: true
 redirect_from:
   - /docs/build-status
-  - /docs/build-status
+  - /docs/build-status/
 ---
 ## Overview
 
