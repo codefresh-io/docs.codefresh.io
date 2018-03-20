@@ -3,6 +3,7 @@
 //
 // Automatically style Markdown-based tables like a Bootstrap `.table`.
 //
+@import "../../node_modules/bootstrap/scss/images"; //;_images.scss;
 
 @keyframes intro {
   0% {
@@ -103,6 +104,13 @@
       white-space: nowrap;
     }
   }
+
+  > p {
+    > img {
+      //@include img-fluid;
+      @extend .img-thumbnail;
+    }
+  }
 }
 
 //
@@ -127,7 +135,7 @@
     > ul,
     > ol,
     > p {
-      max-width: 85%;
+      max-width: 100%;
     }
   }
 }
