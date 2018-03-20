@@ -33,6 +33,7 @@ CHART_VERSION|required|application chart version to install
 CHART_REPO_URL|required|Helm chart repository URL (overriden by injected Helm repository context)
 CUSTOMFILE_|optional|Values file to provide to Helm (as --file). see usage information below.
 CUSTOM_|optional|Value to provide to Helm (as --set). see usage information below.
+CMD_PS|optional|Command Postscript - this will be appended to the command string. Can be used to set additional parameters supported by the command but not exposed as variables.
 
 ## Helm Values
 
@@ -60,7 +61,7 @@ custom_env_open_SOME__VAR__REF=myvalue
 
 ## Kubernetes Configuration
 
-Add Kubernetes integration to Codefresh: `> Account Settings > Integration > Kubernetes`. From now on, you can use added Kubernetes cluster in Codefresh pipeline, addressing its context by the name you see in `Clusters` menu.
+In order to work with the Helm plugin you need to configure a Kubernetes cluster with Codefresh as described here: [Add Kubernetes Cluster](https://codefresh.io/docs/docs/deploy-to-kubernetes/adding-non-gke-kubernetes-cluster/).
 
 ## Helm Reposiroty Configuration
 

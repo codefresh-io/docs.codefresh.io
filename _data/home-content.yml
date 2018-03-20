@@ -104,14 +104,6 @@
     localurl: /docs/new-helm/integration-tests-with-helm/
   - title: Best Practices
     localurl: /docs/new-helm/best-practices/
-- title: Codefresh plugins
-  icon: https://codefresh.io/wp-content/uploads/2018/01/plugins.png
-  url: ''
-  links:
-  - title: Plugins
-    localurl: /docs/codefresh-plugins/plugins/
-  - title: Contribute Codefresh Plugin
-    localurl: /docs/codefresh-plugins/contribute-codefresh-plugin/
 - title: "Codefresh CLI"
   new: true
   icon: https://codefresh.io/wp-content/uploads/2018/01/cli.png

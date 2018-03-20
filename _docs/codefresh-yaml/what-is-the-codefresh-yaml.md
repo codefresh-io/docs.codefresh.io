@@ -4,6 +4,8 @@ description: ""
 group: codefresh-yaml
 redirect_from:
   - /docs/codefresh-yaml/
+  - /docs/what-is-the-codefresh-yaml
+  - /docs/what-is-the-codefresh-yaml/
 toc: true
 ---
 Quick example:

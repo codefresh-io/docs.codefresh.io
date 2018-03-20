@@ -3,6 +3,9 @@ title: "Add Kubernetes Cluster"
 description: ""
 group: deploy-to-kubernetes
 permalink: /:collection/deploy-to-kubernetes/adding-non-gke-kubernetes-cluster/
+redirect_from:
+  - /docs/adding-non-gke-kubernetes-cluster
+  - /docs/adding-non-gke-kubernetes-cluster/
 toc: true
 ---
   
@@ -41,13 +44,20 @@ alt="codefresh_add_custom_cluster.png"
 max-width="40%"
   %}
   
-  The integration between Codefresh and your Kubernetes cluster is API based and relies on a Kubernetes service account of your choosing that will be used to manage the integration.
-  The configurations you'll be required to add are:
+The integration between Codefresh and your Kubernetes cluster is API based and relies on a Kubernetes service account of your choosing that will be used to manage the integration.
+
+The configurations you'll be required to add are:
 
 {:start="1"}
- 1. Name - Any name of your choosing, that will represent your cluster context in Codefresh.
+1. Name - Any name of your choosing, that will represent your cluster context in Codefresh.
+ 
+{:start="2"}
 2. Host - The endpoint for your Kubernetes API
+
+{:start="3"} 
 3. Certificate - The Kubernetes service account certificate used for the integration with Codefresh
+
+{:start="4"}
 4. Token - The Kubernetes service account token used for the integration with Codefresh
 
 {% include image.html
@@ -113,6 +123,7 @@ So, what's next?
 - [Deployment to Kubernetes - Quick start guide]({{ site.baseurl }}/docs/deploy-to-kubernetes/deployment-to-kubernetes-quick-start-guide/)
 - [Example - Deploy demochat to Kubernetes cluster]({{ site.baseurl }}/docs/deploy-to-kubernetes/codefresh-kubernetes-integration-demochat-example/)
 
+
 ## Debugging issues with adding cluster
 
 After adding your cluster configurations and in case the test fails, click "Save" to get the error message back.
@@ -126,7 +137,7 @@ After adding your cluster configurations and in case the test fails, click "Save
     %}
 
 {:.text-secondary}
-#### Namespaces is forbidden
+### Namespaces is forbidden
 
   `Add Cluster Error`
 {% highlight shell %}
