@@ -64,16 +64,16 @@ help: >-
 1. add a new Webhook with previously copied `endpoint` URL
 
 
-#### Link Codefresh trigger-event to the pipeline
+#### Setup pipeline trigger
 
-Now, link previously defined DockerHub push `codefresh/fortune` `trigger-event` to one ore more Codefresh pipelines.
+Now, lets setup a new pipeline trigger, linking previously defined DockerHub push `codefresh/fortune` `trigger-event` to one ore more Codefresh pipelines.
 
 ```sh
-# link trigger-event UID to the pipeline UID
-codefresh link "registry:dockerhub:codefresh:fortune:push:107e9db97062" 7a5622e4b1ad5ba0018a3c9c
+# create trigger, linking trigger-event UID to the pipeline UID
+codefresh create trigger "registry:dockerhub:codefresh:fortune:push:107e9db97062" 7a5622e4b1ad5ba0018a3c9c
 
-# link the same trigger-event to another pipeline
-codefresh link "registry:dockerhub:codefresh:fortune:push:107e9db97062" 4a5634e4b2cd6baf021a3c0a
+# create another trigger, linking the same trigger-event to another pipeline
+codefresh create trigger "registry:dockerhub:codefresh:fortune:push:107e9db97062" 4a5634e4b2cd6baf021a3c0a
 ```
 
 From now on, Codefresh will trigger pipeline execution when new `codefresh/fortune` image is pushed to the DockerHub.
