@@ -5,10 +5,12 @@ group: sso
 permalink: /:collection/sso/federated-sso-overview/
 toc: true
 ---
+  
+  Customers in our **enterprise plan** (please [contact sales]({{ site.baseurl }}/contact-sales/) to learn more) can log in to Codefresh using Federated Single Sign-On (SSO).
 
-Federated identity management enables the cross organizational exchange of identity information across Internet domains, without migrating credential information or consolidating several security domains. With federation, Codefresh customers can authenticate with their corporate credentials to gain access to Codefresh.  
-
-  Customers in our **enterprise plan** can log in to Codefresh using Federated Single Sign-On (SSO). This means that you will be able to access your Codefresh account by signing with your corporate credentials. 
+  Federated identity management enables the cross organizational exchange of identity information across Internet domains, without migrating credential information or consolidating several security domains. With federation, Codefresh customers can authenticate with their corporate credentials to gain access to Codefresh.  
+  This means that you will be able to access your Codefresh account by signing with your corporate credentials. 
+  
   To set up Federated SSO, your organization identity management must use either of the following:
 
   - **A security Assertion Markup Language 2.0 (SAML 2.0)** compliant Identity Provider (IdP) that is configured to communicate with Codefresh Service Provider (SP). For example, ADFS, Auth0, Okta and Ping Identity. 
