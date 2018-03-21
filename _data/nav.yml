@@ -289,6 +289,16 @@
     - title: Jenkins Integration
       url: "/jenkins-integration"
 
+- title: Single Sign-On
+  url: "/sso"
+  pages:
+    - title: Federated Single Sign-On Overview
+      url: "/federated-sso-overview"
+    - title: Setting Up SAML2 Federated Single Sign-On (SSO)
+      url: "/sso-setup-saml2"
+    - title: Setting Up OpenID Connect Federated Single Sign-On (SSO)
+      url: "/sso-setup-oauth2"
+
 - title: Accounts
   url: "/accounts"
   pages:
