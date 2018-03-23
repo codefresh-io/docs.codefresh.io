@@ -137,6 +137,8 @@
       url: "/codefresh-kubernetes-integration-demochat-example"
     - title: Add config maps to your namespaces
       url: "/add-config-maps-to-your-namespaces"
+    - title: Accessing Codefresh Docker registry from your Kubernetes cluster
+      url: "/access-codefresh-docker-registry-from-kubernetes"
 
 - title: "*NEW* HELM"
   url: "/new-helm"
