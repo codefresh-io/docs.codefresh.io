@@ -104,6 +104,17 @@
     localurl: /docs/new-helm/integration-tests-with-helm/
   - title: Best Practices
     localurl: /docs/new-helm/best-practices/
+- title: "Single Sign-On"
+  new: true
+  icon: https://codefresh.io/wp-content/uploads/2017/11/started.png
+  url: ''
+  links:
+  - title: Federated Single Sign-On Overview
+    localurl: /docs/sso/federated-sso-overview
+  - title: Setting Up SAML2 Federated Single Sign-On (SSO)
+    localurl: /docs/sso/sso-setup-saml2
+  - title: Setting Up OpenID Connect Federated Single Sign-On (SSO)
+    localurl: /docs/sso/sso-setup-oauth2
 - title: "Codefresh CLI"
   new: true
   icon: https://codefresh.io/wp-content/uploads/2018/01/cli.png

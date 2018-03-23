@@ -3,6 +3,9 @@ title: "Introduction"
 description: ""
 group: pipelines
 redirect_from:
+  - /docs/pipeline
+  - /docs/pipeline/
+  - /docs/pipelines
   - /docs/pipelines/
 toc: true
 ---

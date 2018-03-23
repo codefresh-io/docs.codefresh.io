@@ -3,6 +3,9 @@ title: "Share Your Environment with Your Team"
 description: ""
 group: on-demand-test-environment
 toc: true
+redirect_from:
+  - /docs/share-environment-with-your-test
+  - /docs/share-environment-with-your-test/
 ---
 After you successfully spin up a composition, click the **Environments** view icon in the left pane, to view the record for the running environment and all containers for the environment.
 

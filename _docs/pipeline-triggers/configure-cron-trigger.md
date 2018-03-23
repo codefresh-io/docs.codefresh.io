@@ -29,16 +29,16 @@ When creating a `cron`` trigger-event`, it is possible to specify a short text m
 
 Visit [this page](https://github.com/codefresh-io/cronus/blob/master/docs/expression.md) to learn about supported `cron` expression format and aliases.
 
-#### Link Codefresh trigger-event to the pipeline
+#### Setup pipeline trigger
 
-Now, link previously defined `cron` `trigger-event` to one ore more Codefresh pipelines.
+Now, lets create a new pipeline trigger, linking previously defined `cron` `trigger-event` to one ore more Codefresh pipelines.
 
 ```sh
-# link trigger-event UID to the pipeline UID
-codefresh link "cron:codefresh:codefresh:0 */20 * * * *:hello-once-in-20-min:107e9db97062" 7a5622e4b1ad5ba0018a3c9c
+# create trigger, linking trigger-event UID to the pipeline UID
+codefresh create trigger "cron:codefresh:codefresh:0 */20 * * * *:hello-once-in-20-min:107e9db97062" 7a5622e4b1ad5ba0018a3c9c
 
-# link the same trigger-event to another pipeline
-codefresh link "cron:codefresh:codefresh:0 */20 * * * *:hello-once-in-20-min:107e9db97062" 4a5634e4b2cd6baf021a3c0a
+# create another trigger, linking the same trigger-event to another pipeline
+codefresh create trigger "cron:codefresh:codefresh:0 */20 * * * *:hello-once-in-20-min:107e9db97062" 4a5634e4b2cd6baf021a3c0a
 ```
 
 From now on, every 20 minutes Codefresh will trigger pipeline execution for 2 pipeline linked to the previously specified `cron` `trigger-event` (once in 20 minutes)
