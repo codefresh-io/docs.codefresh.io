@@ -160,6 +160,28 @@
         // console.log(event)
         // Do something when the dropdown menu is opened
       })
+
+      var searchInputTrigger = {
+        getUrlParameter: function getUrlParameter(name) {
+          name = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]')
+          var regex = new RegExp('[\\?&]' + name + '=([^&#]*)')
+          var results = regex.exec(location.search)
+          return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '))
+        },
+        triggerSearch: function triggerSearch(docSearch) {
+          var value = this.getUrlParameter('q')
+          if (value.length > 0 && docSearch && docSearch.input) {
+            var input = $(docSearch.input[0])
+            input.focus().trigger('input').trigger('keypress')
+            docSearch.input.autocomplete.setVal(value)
+            setTimeout(function () {
+              docSearch.input.autocomplete.open()
+            }, 500)
+          }
+        }
+      }
+
+      searchInputTrigger.triggerSearch(docSearch)
     }
 
     // Holder

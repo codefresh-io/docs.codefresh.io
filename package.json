@@ -16,6 +16,7 @@
     "css-prefix-docs": "postcss --config build/postcss.config.js --replace \"assets/css/docs.min.css\" \"docs/**/*.css\"",
     "css-minify-docs": "cleancss --level 1 --source-map --source-map-inline-sources --output assets/css/docs.min.css assets/css/docs.min.css",
     "js": "npm-run-all js-lint* js-minify",
+    "js-compile": "npm-run-all --parallel js-docs",
     "js-docs": "npm-run-all js-lint-docs js-minify-docs",
     "js-lint-docs": "eslint assets/js/ docs/ sw.js",
     "js-minify": "npm-run-all --parallel js-minify-*",
@@ -31,7 +32,8 @@
     "docs-workbox-precache": "node build/workbox.js",
     "maintenance-dependencies": "ncu -a -x jquery && npm update && bundle update && shx echo \"Manually update assets/js/vendor/*, js/tests/vendor/* and .travis.yml\"",
     "dist": "npm-run-all --parallel css js",
-    "watch-css": "nodemon --ignore js/ --ignore dist/ -e scss -x \"npm run css-docs\""
+    "watch-css": "nodemon --ignore js/ --ignore dist/ -e scss -x \"npm run css-docs\"",
+    "watch-js": "nodemon --ignore scss/ --ignore js/docs.min.js --ignore dist/ -e js -x \"npm run js-compile\""
   },
   "repository": {
     "type": "git",
