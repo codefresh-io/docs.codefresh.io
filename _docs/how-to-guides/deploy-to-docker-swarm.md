@@ -54,7 +54,7 @@ deploy_to_swarm:
     commands:
       - rdocker ${{RDOCKER_HOST}} docker stack deploy --compose-file docker-stack.yml ${{STACK_NAME}}
     environment:
-      - SSH_KEY=${SSH_KEY}
+      - SSH_KEY=${{SSH_KEY}}
     when:
       branch:
         only:
