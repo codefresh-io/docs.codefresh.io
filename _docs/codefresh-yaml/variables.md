@@ -55,6 +55,14 @@ Once a variable has been created it will:
 
 Custom variables are wiped clean on every pipeline execution, but are not modified as the steps progress.
 
+User provided variables can be defined at 4 levels:
+1. Freestyle step definition: using the `environment` field.
+1. Pipeline execution: after clicking the "Build" button, open the "Advanced options" section.
+1. Pipeline definition: under "Environment variables" section in the pipeline view.
+1. Shared Configuration: defined under your account settings, and used using the "Import from shared configuration" button under the "Environment Variables" section in the pipeline view.
+
+The options are listed in order of importance, so in case of multiple variables defined at different location with the same name, the order of overriding will be as listed here.
+
 <div class="bd-callout bd-callout-info" markdown="1">
 ##### Exporting environment variables from a freestyle step
 
