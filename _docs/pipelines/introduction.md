@@ -186,18 +186,3 @@ url="/images/3d74965-codefresh_deploy_script.png"
 alt="codefresh_deploy_script.png" 
 max-width="40%"
 %}
-
-## Environment Variables
-You can define the environment variables available to your service when Codefresh creates a container from its Docker image. Also, you can make your variables encrypted.
-To define the environment variables, navigate to the environment variables section on the pipeline configuration view.
-
-{% include 
-image.html 
-lightbox="true" 
-file="/images/bf9ecbb-codefresh_environment_variables.png" 
-url="/images/bf9ecbb-codefresh_environment_variables.png"
-alt="codefresh_environment_variables.png" 
-max-width="40%"
-%}
-
-You can also configure environment variables in the [codefresh.yml]({{ site.baseurl }}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)  file, by using {% raw %}```${{YOUR_ENV_VAR}}```{% endraw %}.

@@ -69,7 +69,7 @@ steps:
 
 Note that this pipeline references some pre-defined environment variables like GOOGLE_BUCKET_NAME, GOOGLE_PROJECT_ID and GOOGLE_CREDENTIALS. For this example, we created a service account with appropriate permissions in Google Cloud, and saved that credentials into GOOGLE_CREDENTIALS as a Codefresh Secret. <br>
 For more information on authenticating with Google services, see [here](https://cloud.google.com/storage/docs/authentication#service_accounts){:target="_blank"}. <br>
-For more information on Codefresh pipeline configuration and secrets, see [here](https://docs.codefresh.io/v1.0/docs/pipeline#section-environment-variables){:target="_blank"}. <br> 
+For more information on Codefresh pipeline configuration and secrets, see [here](https://codefresh.io/docs/docs/codefresh-yaml/variables/#user-provided-variables){:target="_blank"}. <br> 
 {{site.data.callout.end}}
 
 ## Example 2: Push the chart to Chart Museum
