@@ -21,6 +21,7 @@ step_name:
   tag: develop
   build_arguments:
     - key=value
+  target: stage1
   fail_fast: false
   metadata:
     set:
