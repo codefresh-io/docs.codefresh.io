@@ -17,7 +17,7 @@ You can choose to opt out of each cache mechanism, both at the step definition l
 
 ### Disabling temporarily for the current build execution
 
-In the Build execution dialog, click on the "Advanced Options" button, under "More Options", select "Ignore Codefresh cache optimizations for build".
+In the Build execution dialog, click on the "Advanced Options" button, under "More Options", select "Ignore Codefresh cache optimizations for build" or "Ignore Docker engine cache for build".
 
 ### Disabling consistently at the build definition
 
