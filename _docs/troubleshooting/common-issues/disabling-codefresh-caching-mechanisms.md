@@ -20,15 +20,6 @@ You can choose to opt out of each cache mechanism, both at the step definition l
 
 In the Build execution dialog, click on the "Advanced Options" button, under "More Options", select the appropriate checkbox to ignore docker cache or cf cache.
 
-{% include 
-image.html 
-lightbox="true" 
-file="/images/921e51a-cache.png" 
-url="/images/921e51a-cache.png"
-alt="cache.png" 
-max-width="40%"
-%}
-
 ### Disabling consistently at the build definition
 
 In the build step YAML, set `no_cache: true` to disable docker local cache, and `no_cf_cache: true` to disable codefresh's additional optimizations such as cache-from.
