@@ -1,8 +1,8 @@
 ---
 ---
 {
-    "name": "Bootstrap",
-    "short_name": "Bootstrap",
+    "name": "Codefresh Docs",
+    "short_name": "Codefresh Docs",
     "icons": [
         {
             "src": "{{ site.baseurl }}/assets/img/favicons/android-chrome-192x192.png",
@@ -16,7 +16,7 @@
         }
     ],
     "start_url": "/",
-    "theme_color": "#563d7c",
+    "theme_color": "#ffffff",
     "background_color": "#ffffff",
     "display": "standalone"
 }
