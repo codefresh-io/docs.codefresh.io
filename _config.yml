@@ -19,8 +19,8 @@ markdown_ext:   "markdown,mkdown,mkdn,mkd,md"
 # Social
 twitter:            codefresh
 authors:            ""
-social_image_path:  /assets/brand/codefresh-social.png
-social_logo_path:   /assets/brand/codefresh-social-logo.png
+social_image_path:  /docs/assets/brand/codefresh-social.png
+social_logo_path:   /docs/assets/brand/codefresh-social-logo.png
 
 # Dependencies
 markdown:       kramdown
