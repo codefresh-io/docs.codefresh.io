@@ -4,10 +4,10 @@
 <browserconfig>
     <msapplication>
         <tile>
-            <square70x70logo src="{{ site.baseurl }}/assets/img/favicons/mstile-70x70.png"/>
-            <square150x150logo src="{{ site.baseurl }}/assets/img/favicons/mstile-150x150.png"/>
-            <square310x310logo src="{{ site.baseurl }}/assets/img/favicons/mstile-310x310.png"/>
-            <wide310x150logo src="{{ site.baseurl }}/assets/img/favicons/mstile-310x150.png"/>
+            <square70x70logo src="{{ site.baseurl }}/assets/img/favicons/mstile-70x70.png?v={{ site.time | date: '%s' | uri_encode }}"/>
+            <square150x150logo src="{{ site.baseurl }}/assets/img/favicons/mstile-150x150.png?v={{ site.time | date: '%s' | uri_encode }}"/>
+            <square310x310logo src="{{ site.baseurl }}/assets/img/favicons/mstile-310x310.png?v={{ site.time | date: '%s' | uri_encode }}"/>
+            <wide310x150logo src="{{ site.baseurl }}/assets/img/favicons/mstile-310x150.png?v={{ site.time | date: '%s' | uri_encode }}"/>
             <TileColor>#4d545d</TileColor>
         </tile>
     </msapplication>
