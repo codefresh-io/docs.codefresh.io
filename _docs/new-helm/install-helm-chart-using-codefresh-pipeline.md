@@ -25,7 +25,7 @@ Helm Upgrade:
 Name|Required|Description
 ---|---|---
 KUBE_CONTEXT|required|Kubernetes context to use (the name of the cluster as configured in Codefresh)
-CHART_NAME|required|Helm chart name to release (path to chart folder, or name of packaged chart)
+CHART_NAME|required|Helm chart name to install (path to chart folder, or name of packaged chart)
 RELEASE_NAME|required|Helm release name
 NAMESPACE|required|target Kubernetes namespace
 TILLER_NAMESPACE|required|Kubernetes namespace where tiller is at
@@ -87,18 +87,12 @@ version: '1.0'
 steps:
 
   ...
-
-  Helm Upgrade:
-    title: Helm Upgrade
-    image: 'codefresh/plugin-helm:2.8.0'
+  helm:
+    image: 'codefresh/cfstep-helm:2.8.0'
     environment:
       - CHART_NAME=${{CHART_NAME}}
       - RELEASE_NAME=${{RELEASE_NAME}}
       - KUBE_CONTEXT=${{KUBE_CONTEXT}}
-      - NAMESPACE=${{NAMESPACE}}
-      - DEBUG_CHART=${{DEBUG_CHART}}
-      - CHART_REPO_URL=${{CHART_REPO_URL}}
-
   ...
 
 ```
