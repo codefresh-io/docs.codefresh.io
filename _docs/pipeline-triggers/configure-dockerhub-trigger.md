@@ -7,7 +7,45 @@ redirect_from:
 toc: true
 ---
 
-### DockerHub Trigger
+## Manage DockerHub Triggers with Codefresh UI
+
+It is possible to define and manage DockerHub pipeline triggers with Codefresh UI.
+
+### Create a new DockerHub Trigger
+
+To add a new DockerHub trigger, navigate to Codefresh Pipeline *Configuration* view and expand *Triggers* section. Press the `Add Trigger` button and select a `Registry` trigger type to add.
+
+![Create Trigger](/images/create_trigger.png)
+
+Fill the following information:
+
+* Registry Provider - select `DockerHub`
+* *Namespace* - put DockerHub user name or organization name here
+* *Name* - DockerHub image repository name
+* *Action* - select `Push Image` action
+* *Filter* - optional filter to specify which image *tags* will trigger pipeline execution: [Re2](https://github.com/google/re2/wiki/Syntax) regular expression
+
+![Add Registry Trigger](/images/dockerhub_trigger_1.png)
+
+### Setup DockerHub Webhook
+
+Currently Codefresh does not support to automatically setup a DockerHub webhook. You need to do this manually. Press `View Trigger` button and see detailed instructions with URL links and secrets of how-to setup a DockerHub Webhook.
+
+![Edit DockerHub Trigger](/images/dockerhub_trigger_edit.png)
+
+1. copy `Endpoint` URL
+1. visit DockerHub image settings page following link in help
+1. add a new DockerHub Webhook with previously copied `Endpoint` URL
+
+### Triggering Codefresh pipeline with DockerHub push
+
+Now, every time you push a new Docker image to selected DockerHub repository, manually, with Codefresh or any other CI/CD tool, Codefresh will trigger execution of all pipelines associated with this DockerHub Push trigger event.
+
+## Manage DockerHub Triggers with Codefresh CLI
+
+It is possible to use `codefresh` command line client (`CLI`) to manage DockerHub pipeline triggers.
+
+### Docker Hub Trigger
 
 It is possible to trigger a Codefresh CD pipeline(s) when a new Docker image pushed into DockerHub.
 
