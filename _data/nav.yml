@@ -143,6 +143,8 @@
 - title: "*NEW* HELM"
   url: "/new-helm"
   pages:
+    - title: Codefresh Managed Helm Repos
+      url: "/managed-helm-repository"
     - title: Helm Charts and repositories
       url: "/add-helm-repository"
     - title: Helm Releases management
