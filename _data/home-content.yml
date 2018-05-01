@@ -92,10 +92,11 @@
   - title: Share environment with your team
     localurl: /docs/on-demand-test-environment/share-environment-with-your-test/
 - title: "HELM"
-  new: true
   icon: https://codefresh.io/wp-content/uploads/2017/12/Helm.png
   url: ''
   links:
+  - title: Codefresh Managed Helm Repositories
+    localurl: /docs/new-helm/managed-helm-repositories/
   - title: Install chart using Codefresh pipeline
     localurl: /docs/new-helm/install-helm-chart-using-codefresh-pipeline/
   - title: Work with HELM Repositores
