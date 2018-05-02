@@ -15,7 +15,7 @@ It is possible to define and manage DockerHub pipeline triggers with Codefresh U
 
 To add a new DockerHub trigger, navigate to Codefresh Pipeline *Configuration* view and expand *Triggers* section. Press the `Add Trigger` button and select a `Registry` trigger type to add.
 
-![Create Trigger](/images/create_trigger.png)
+![Create Trigger](/docs/images/create_trigger.png)
 
 Fill the following information:
 
@@ -25,13 +25,13 @@ Fill the following information:
 * *Action* - select `Push Image` action
 * *Filter* - optional filter to specify which image *tags* will trigger pipeline execution: [Re2](https://github.com/google/re2/wiki/Syntax) regular expression
 
-![Add Registry Trigger](/images/dockerhub_trigger_1.png)
+![Add Registry Trigger](/docs/images/dockerhub_trigger_1.png)
 
 ### Setup DockerHub Webhook
 
 Currently Codefresh does not support to automatically setup a DockerHub webhook. You need to do this manually. Press `View Trigger` button and see detailed instructions with URL links and secrets of how-to setup a DockerHub Webhook.
 
-![Edit DockerHub Trigger](/images/dockerhub_trigger_edit.png)
+![Edit DockerHub Trigger](/docs/images/dockerhub_trigger_edit.png)
 
 1. copy `Endpoint` URL
 1. visit DockerHub image settings page following link in help
