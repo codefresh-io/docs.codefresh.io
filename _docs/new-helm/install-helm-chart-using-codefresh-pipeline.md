@@ -53,7 +53,7 @@ First, you'll need to connect your Kubernetes cluster with Codefresh as describe
 ## Helm Values
 
 To supply value file, add an environment variable with the name prefix of `VALUESFILE_`, and the value should point to an existing values file.  
-To override specific values, add an environment variable with the name prefix of `VALUE_` followed by the path to the value to set. For example `VALUE_myservice_imageTag`. Note that `.` should be replaced with `_`. The value of the variable will be used to override or set the templated property.
+To override specific values, add an environment variable with the name prefix of `VALUE_` followed by the path to the value to set. For example `VALUE_myservice_imageTag`. Note that `.` (dot) should be replaced with `_` (underscore). The value of the variable will be used to override or set the templated property.
 
 Examples:
 ```text
@@ -66,7 +66,7 @@ results in:
 --values values-prod.yaml
 ```
 
-If a variable contains a `_` in it's name, replace the `_` character with `__`.
+If a variable contains a `_` (underscore) in it's name, replace it character with `__` (double underscore).
 
 ## Examples
 
