@@ -54,8 +54,8 @@ First, you'll need to connect your Kubernetes cluster with Codefresh as describe
 
 ## Helm Values
 
-To supply value file, add an environment variable with the name prefix of `CUSTOMFILE_`, and the value should point to an existing values file.  
-To override specific values, add an environment variable with the name prefix of `CUSTOM_` followed by the path to the value to set. For example `CUSTOM_myservice_imageTag`. Note that `.` should be replaced with `_`. The value of the variable will be used to override or set the templated property.
+To supply value file, add an environment variable with the name prefix of `VALUESFILE_`, and the value should point to an existing values file.  
+To override specific values, add an environment variable with the name prefix of `VALUE_` followed by the path to the value to set. For example `VALUE_myservice_imageTag`. Note that `.` should be replaced with `_`. The value of the variable will be used to override or set the templated property.
 
 Examples:
 ```text
@@ -132,13 +132,13 @@ Notes:
 Name|Required|Description
 ---|---|---
 ACTION|defaults to 'install'|operation mode: `install`/`push`/`auth`
-CHART_REF|required for install/push|Chart reference to use, adhering to Helm's lookup rules (path to chart folder, or name of packaged chart). There's no need to prefix with `/reponame` if referencing a chart in a repository. This is handled automatically
+CHART_REF|required for install/push|Chart reference to use, adhering to Helm's lookup rules (path to chart folder, or name of packaged chart). There's no need to prefix with `/reponame` if referencing a chart in a repository, this is handled automatically. a.k.a CHART_NAME but CHART_NAME shouldn't be used anymore.
 KUBE_CONTEXT|required for install|Kubernetes context to use. The name of the cluster as configured in Codefresh
 RELEASE_NAME|required for install|Helm release name. If the release exists it will be upgraded
 NAMESPACE|optional|target Kubernetes namespace to deploy to
 TILLER_NAMESPACE|optional|Kubernetes namespace where tiller is installed
 CHART_VERSION|optional|override or set the chart version
 CHART_REPO_URL|optional|Helm chart repository URL. If a Helm repository context is attached to the pipeline, this setting is ignored
-CUSTOMFILE_|optional|Values file to provide to Helm (as --file)
-CUSTOM_|optional|Value to provide to Helm (as --set)
+VALUESFILE_|optional|Values file to provide to Helm (as --file). a.k.a CUSTOMFILE but CUSTOMFILE should be used anymore.
+VALUE_|optional|Value to provide to Helm (as --set). a.k.a CUSTOM but CUSTOM shouldn't be used anymore.
 CMD_PS|optional|Command Postscript - this will be appended as is to the generated helm command string. Can be used to set additional parameters supported by the command but not exposed as configuration options.
