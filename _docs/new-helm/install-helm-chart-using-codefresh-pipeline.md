@@ -1,5 +1,5 @@
 ---
-title: "Install HELM chart using Codefresh pipeline"
+title: "Using Helm in Codefresh pipeline"
 description: ""
 group: new-helm
 redirect_from:
@@ -7,14 +7,14 @@ redirect_from:
 toc: true
 ---
 
-We have created a special Helm for easy integration of Helm in Codefresh pipelines. The Helm step facilitates all Authentication, configuration and execution of Helm commands.
+We have created a special Helm step for easy integration of Helm in Codefresh pipelines. The Helm step facilitates authentication, configuration and execution of Helm commands.
 
-> You can always use the regular `helm` cli in a freestyle step, in case you have a very customized use case. In this case, you can use the simpler container `codefresh/kube-helm` which includes only the kubectl and helm tools. kube-helm is available on DockerHub: [https://hub.docker.com/r/codefresh/kube-helm/](https://hub.docker.com/r/codefresh/kube-helm/)
+> You can always use the regular `helm` cli in a freestyle step, in case you have a special use case. In this case, you can use the simpler container `codefresh/kube-helm` which includes only the kubectl and helm tools. kube-helm is available on DockerHub: [https://hub.docker.com/r/codefresh/kube-helm/](https://hub.docker.com/r/codefresh/kube-helm/)
 
 ## Usage
 
 Add a Freestyle step, with the `codefresh/cfstep-helm` image.  
-The Helm step is configured using environment variables, which can be provided in any of the various ways provided by Codefresh. For more info on providing environment variables, [see here](https://codefresh.io/docs/docs/codefresh-yaml/variables/#user-provided-variables).  
+The Helm step is configured using environment variables, which can be provided in any of the various ways supported by Codefresh as described [here](https://codefresh.io/docs/docs/codefresh-yaml/variables/#user-provided-variables).  
 For example, here's how to provide variables as part of the freestyle step definition:
 
 ```yaml
@@ -31,8 +31,8 @@ Helm Upgrade:
 The Helm step can operate in one of 3 modes:
 
 1. Install - will install the chart into a Kubernetes cluster. This is the default mode if not explicitly set.
-1. Authentication - will only setup authentication, and add the repo to the helm. This is useful if you want to write your own helm commands using the freestyle step's `commands` property, but you still want the step to handle authentication.
-1. Push - will package chart and push it to the repository.
+2. Push - will package chart and push it to the repository.
+3. Authentication only - will only setup authentication, and add the repo to the helm. This is useful if you want to write your own helm commands using the freestyle step's `commands` property, but you still want the step to handle authentication.
 
 The operation mode is set by the `ACTION` variable, where the value is `install`/`auth`/`push`.
 
@@ -42,15 +42,13 @@ You should configure a Helm repository for the step to work with. Besides public
 
 First, you'll need to connect your repository with Codefresh as described [here](https://codefresh.io/docs/docs/new-helm/add-helm-repository/), or obtain your managed Helm repository URL as described [here](https://codefresh.io/docs/docs/new-helm/managed-helm-repository/#chart-repository-url).
 
-Once you have a Helm repository connected, you attach it to the pipeline by selecting it under "Environment Variables" -> "Import from shared configuration".  
-The Helm step automatically facilitated authenticating and configuring the repository with the helm cli for you.
-
+Once you have a Helm repository connected, attach it to the pipeline by selecting it in the pipeline editing page, under "Environment Variables" -> "Import from shared configuration".
 
 ## Kubernetes Configuration
 
 You can configure a Kubernetes cluster to deploy to using the `KUBE_CONTEXT` variable.
 
-First, you'll need to connect your Kubernetes cluster with Codefresh as described [here](https://codefresh.io/docs/docs/deploy-to-kubernetes/adding-non-gke-kubernetes-cluster/). Once you have a Kubernetes cluster connected, provide it to the Helm step by adding the `KUBE-CONTEXT` variable, where the value is the *connection name* that you've configured.
+First, you'll need to connect your Kubernetes cluster with Codefresh as described [here](https://codefresh.io/docs/docs/deploy-to-kubernetes/adding-non-gke-kubernetes-cluster/). Once you have a Kubernetes cluster connected, provide it to the Helm step by adding the `KUBE-CONTEXT` variable, where the value is the connection *name* that you've entered when creating the connection. The connection name also appears as the title of the cluster in Kubernetes integration settings (Account Settings -> Integration -> Kubernetes).
 
 ## Helm Values
 
@@ -74,7 +72,7 @@ If a variable contains a `_` in it's name, replace the `_` character with `__`.
 
 ### Example: Installing a Chart
 
-The following example demonstrates the minimum configuration for installing a chart from a repository. For more configuration options, see the [Configuration section](#Configuration).  
+The following example demonstrates the minimum configuration for installing a chart from a repository. For more configuration options, see the [Configuration reference](#configuration).  
 
 ```yaml
 deploy:
