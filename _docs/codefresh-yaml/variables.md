@@ -25,6 +25,8 @@ All system provided variables will also be automatically injected to any freesty
 | {% raw %}`${{CF_BASE_BRANCH}}`{% endraw %}      | The base branch used during creation of Tag
 | {% raw %}`${{CF_PULL_REQUEST_ACTION}}`{% endraw %}      | The pull request action
 | {% raw %}`${{CF_PULL_REQUEST_TARGET}}`{% endraw %}      | The pull request target branch
+| {% raw %}`${{CF_PULL_REQUEST_NUMBER}}`{% endraw %}      | The pull request number
+| {% raw %}`${{CF_PULL_REQUEST_ID}}`{% endraw %}      | The pull request id
 | {% raw %}`${{CF_COMMIT_AUTHOR}}`{% endraw %}      | Commit author.                                                                                                                                                                                                                                                                                    |
 | {% raw %}`${{CF_COMMIT_URL}}`{% endraw %}         | Commit url.                                                                                                                                                                                                                                                                                       |
 | {% raw %}`${{CF_COMMIT_MESSAGE}}`{% endraw %}     | Commit message of the git repository revision, at the time of execution.<br/> The messages quotes are escaped (i.e. ' is not \', " is now \").                                                                                                                                                         |
