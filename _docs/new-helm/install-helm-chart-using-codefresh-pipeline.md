@@ -57,11 +57,11 @@ To override specific values, add an environment variable with the name prefix of
 
 Examples:
 ```text
-CUSTOM_myimage_pullPolicy=Always
+VALUE_myimage_pullPolicy=Always
 results in:
 --set myimage.pullPolicy=Always
 
-CUSTOMFILE_prod='values-prod.yaml'
+VALUESFILE_prod='values-prod.yaml'
 results in:
 --values values-prod.yaml
 ```
