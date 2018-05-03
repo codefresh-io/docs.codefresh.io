@@ -7,92 +7,138 @@ redirect_from:
 toc: true
 ---
 
-You can always use the `helm` command line in a freestyle step, like any other command line tool, but for better integration with Codefresh, you might want to check out out helm deployment step.
+We have created a special Helm for easy integration of Helm in Codefresh pipelines. The Helm step facilitates all Authentication, configuration and execution of Helm commands.
+
+> You can always use the regular `helm` cli in a freestyle step, in case you have a very customized use case. In this case, you can use the simpler container `codefresh/kube-helm` which includes only the kubectl and helm tools. kube-helm is available on DockerHub: [https://hub.docker.com/r/codefresh/kube-helm/](https://hub.docker.com/r/codefresh/kube-helm/)
 
 ## Usage
 
-Set required and optional environment variable and add the following step to your Codefresh pipeline like so:
+Add a Freestyle step, with the `codefresh/cfstep-helm` image.  
+The Helm step is configured using environment variables, which can be provided in any of the various ways provided by Codefresh. For more info on providing environment variables, [see here](https://codefresh.io/docs/docs/codefresh-yaml/variables/#user-provided-variables).  
+For example, here's how to provide variables as part of the freestyle step definition:
 
 ```yaml
 Helm Upgrade:
-    image: 'codefresh/cfstep-helm:2.8.0'
+    image: 'codefresh/cfstep-helm:2.9.0'
+    environment:
+      - key=value
 ``` 
 
 (the Docker image tag refers to the version of Helm you need)
 
-## Environment Variables
+## Operation modes
 
-Name|Required|Description
----|---|---
-KUBE_CONTEXT|required|Kubernetes context to use (the name of the cluster as configured in Codefresh)
-CHART_NAME|required|Helm chart name to install (path to chart folder, or name of packaged chart)
-RELEASE_NAME|required|Helm release name
-NAMESPACE|required|target Kubernetes namespace
-TILLER_NAMESPACE|required|Kubernetes namespace where tiller is at
-CHART_VERSION|required|application chart version to install
-CHART_REPO_URL|required|Helm chart repository URL (overriden by injected Helm repository context)
-CUSTOMFILE_|optional|Values file to provide to Helm (as --file). see usage information below.
-CUSTOM_|optional|Value to provide to Helm (as --set). see usage information below.
-CMD_PS|optional|Command Postscript - this will be appended to the command string. Can be used to set additional parameters supported by the command but not exposed as variables.
+The Helm step can operate in one of 3 modes:
+
+1. Install - will install the chart into a Kubernetes cluster. This is the default mode if not explicitly set.
+1. Authentication - will only setup authentication, and add the repo to the helm. This is useful if you want to write your own helm commands using the freestyle step's `commands` property, but you still want the step to handle authentication.
+1. Push - will package chart and push it to the repository.
+
+The operation mode is set by the `ACTION` variable, where the value is `install`/`auth`/`push`.
+
+## Helm Repository Configuration
+
+You should configure a Helm repository for the step to work with. Besides public HTTP repositories, we support a variety of private, authenticated Helm repositories. Codefresh also provide a free, managed Helm repository for every account.
+
+First, you'll need to connect your repository with Codefresh as described [here](https://codefresh.io/docs/docs/new-helm/add-helm-repository/), or obtain your managed Helm repository URL as described [here](https://codefresh.io/docs/docs/new-helm/managed-helm-repository/#chart-repository-url).
+
+Once you have a Helm repository connected, you attach it to the pipeline by selecting it under "Environment Variables" -> "Import from shared configuration".  
+The Helm step automatically facilitated authenticating and configuring the repository with the helm cli for you.
+
+
+## Kubernetes Configuration
+
+You can configure a Kubernetes cluster to deploy to using the `KUBE_CONTEXT` variable.
+
+First, you'll need to connect your Kubernetes cluster with Codefresh as described [here](https://codefresh.io/docs/docs/deploy-to-kubernetes/adding-non-gke-kubernetes-cluster/). Once you have a Kubernetes cluster connected, provide it to the Helm step by adding the `KUBE-CONTEXT` variable, where the value is the *connection name* that you've configured.
 
 ## Helm Values
 
-To supply value file, add an environment variable with the name prefix of `CUSTOMFILE_` (case *in*sensitive), and the value should point to an existing values file.
-To override specific values, add an environment variable with the name prefix of `CUSTOM_` (case *in*sensitive), and replace any `.` characters in the name with `_`. The value should be the value for the variable.
+To supply value file, add an environment variable with the name prefix of `CUSTOMFILE_`, and the value should point to an existing values file.  
+To override specific values, add an environment variable with the name prefix of `CUSTOM_` followed by the path to the value to set. For example `CUSTOM_myservice_imageTag`. Note that `.` should be replaced with `_`. The value of the variable will be used to override or set the templated property.
 
 Examples:
 ```text
 CUSTOM_myimage_pullPolicy=Always
-# Codefresh Helm plugin will add option below to the 'helm update --install' command
+results in:
 --set myimage.pullPolicy=Always
 
 CUSTOMFILE_prod='values-prod.yaml'
-# Codefresh Helm plugin will add option below to the 'helm update --install' command
+results in:
 --values values-prod.yaml
 ```
 
-If a variable contains a `_`, replace the `_` character with `__`.
+If a variable contains a `_` in it's name, replace the `_` character with `__`.
 
-```text
-custom_env_open_SOME__VAR__REF=myvalue
-# translates to ...
---set env.open.SOME_VAR_REF=myvalue
-```
+## Examples
 
-## Kubernetes Configuration
+### Example: Installing a Chart
 
-In order to work with the Helm plugin you need to configure a Kubernetes cluster with Codefresh as described here: [Add Kubernetes Cluster](https://codefresh.io/docs/docs/deploy-to-kubernetes/adding-non-gke-kubernetes-cluster/).
-
-## Helm Reposiroty Configuration
-
-To install a chart from a private repository, add your repository in Codefresh, and inject it into the pipeline by selecting it under "Environment Variables" -> "Import from shared configuration".
-Then you can simple select the chart with the `CHART_NAME` variable. No additional configuration needed.
-
-## Example
-
-The example below will run `helm upgrade` using Helm chart with the name `mychart` located in `https://helmrepo.codefresh.io/codefresh/helm` Helm chart repository using the `myrelease` Helm release name against `mycluster` Kubernetes cluster in the `mynamespace` Kubernetes Namespace.
-
-```text
-CHART_NAME=mychart
-RELEASE_NAME=myrelease
-KUBE_CONTEXT=mycluster
-NAMESPACE=mynamespace
-CHART_REPO_URL=https://helmrepo.codefresh.io/codefresh/helm
-```
+The following example demonstrates the minimum configuration for installing a chart from a repository. For more configuration options, see the [Configuration section](#Configuration).  
 
 ```yaml
----
-version: '1.0'
-
-steps:
-
-  ...
-  helm:
-    image: 'codefresh/cfstep-helm:2.8.0'
-    environment:
-      - CHART_NAME=${{CHART_NAME}}
-      - RELEASE_NAME=${{RELEASE_NAME}}
-      - KUBE_CONTEXT=${{KUBE_CONTEXT}}
-  ...
-
+deploy:
+  image: codefresh/cfstep-helm:2.9.0
+  environment:
+    - CHART_REF=mychart
+    - RELEASE_NAME=mychart-prod
+    - KUBE_CONTEXT=kube-prod
 ```
+
+Notes:
+- Helm repository connection was attached to the pipeline
+- mychart is a chart that exists in the connected repository
+- no ACTION is provided, meaning `install` by default
+
+### Example: Pushing a Chart
+
+The following example demonstrates packaging and pushing a chart into a repository.
+
+```yaml
+push:
+  image: codefresh/cfstep-helm:2.9.0
+  environment:
+    - ACTION=push
+    - CHART_REF=mychart
+```
+
+Notes:
+- Helm repository connection was attached to the pipeline
+- assuming a git repository with the Helm chart files
+- the repo container the chart files under `mychart` directory
+
+### Example: Authenticating only
+
+The following example demonstrates executing custom commands.
+
+```yaml
+helm:
+  image: codefresh/cfstep-helm:2.9.0
+  environment:
+    - ACTION=auth
+  commands:
+    - source /opt/bin/release_chart
+    - helm fetch $CHART_REF --repo $CF_CTX_myrepo_URL --untar
+```
+
+Notes:
+- Helm repository connection was attached to the pipeline
+- The attached repo will be added to helm cli under the name `repo`.
+- The attached repo URL will be available as a variable called `CF_CTX_<reponame>_URL` (where `<reponame>` is the name of the repo).
+- The credentials used to setup the repo will be available in the container under the name they were provided when you connected the repo.
+
+## Configuration
+
+Name|Required|Description
+---|---|---
+ACTION|defaults to 'install'|operation mode: `install`/`push`/`auth`
+CHART_REF|required for install/push|Chart reference to use, adhering to Helm's lookup rules (path to chart folder, or name of packaged chart). There's no need to prefix with `/reponame` if referencing a chart in a repository. This is handled automatically
+KUBE_CONTEXT|required for install|Kubernetes context to use. The name of the cluster as configured in Codefresh
+RELEASE_NAME|required for install|Helm release name. If the release exists it will be upgraded
+NAMESPACE|optional|target Kubernetes namespace to deploy to
+TILLER_NAMESPACE|optional|Kubernetes namespace where tiller is installed
+CHART_VERSION|optional|override or set the chart version
+CHART_REPO_URL|optional|Helm chart repository URL. If a Helm repository context is attached to the pipeline, this setting is ignored
+CUSTOMFILE_|optional|Values file to provide to Helm (as --file)
+CUSTOM_|optional|Value to provide to Helm (as --set)
+CMD_PS|optional|Command Postscript - this will be appended as is to the generated helm command string. Can be used to set additional parameters supported by the command but not exposed as configuration options.
