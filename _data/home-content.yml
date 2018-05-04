@@ -97,8 +97,8 @@
   links:
   - title: Codefresh Managed Helm Repositories
     localurl: /docs/new-helm/managed-helm-repository/
-  - title: Install chart using Codefresh pipeline
-    localurl: /docs/new-helm/install-helm-chart-using-codefresh-pipeline/
+  - title: Using Helm in Codefresh pipeline
+    localurl: /docs/new-helm/using-helm-in-codefresh-pipeline/
   - title: Work with HELM Repositores
     localurl: /docs/new-helm/add-helm-repository/
   - title: Integration tests with HELM

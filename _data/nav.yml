@@ -149,8 +149,8 @@
       url: "/add-helm-repository"
     - title: Helm Releases management
       url: "/helm-releases-management"
-    - title: Install HELM chart using Codefresh pipeline
-      url: "/install-helm-chart-using-codefresh-pipeline"
+    - title: Using Helm in Codefresh pipeline
+      url: "/using-helm-in-codefresh-pipeline"
     - title: Create Helm artifacts using Codefresh pipeline
       url: "/create-helm-artifacts-using-codefresh-pipeline"
     - title: Integration tests with HELM
