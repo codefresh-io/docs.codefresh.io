@@ -303,6 +303,12 @@
     - title: Setting Up OpenID Connect Federated Single Sign-On (SSO)
       url: "/sso-setup-oauth2"
 
+- title: Enterprise Account Management
+  url: "/enterprise-account-mng"
+  pages:
+    - title: Enterprise Account Management Overview
+      url: "/ent-account-mng"
+
 - title: Accounts
   url: "/accounts"
   pages:
