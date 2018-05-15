@@ -125,3 +125,10 @@
     url: http://cli.codefresh.io/installation/
   - title: Documentation
     url: http://cli.codefresh.io/
+- title: "Enterprise Account Management"
+  new: true
+  icon: https://codefresh.io/wp-content/uploads/2017/11/started.png
+  url: ''
+  links:
+  - title: Enterprise Account Management Overview
+    localurl: /docs/enterprise-account-mng/ent-account-mng
