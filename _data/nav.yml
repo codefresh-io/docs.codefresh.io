@@ -343,6 +343,8 @@
           url: "/build-step-no-such-file-or-directory"
         - title: Failed to get accounts clusters during workflow
           url: "/failed-to-get-accounts-clusters-during-workflow"
+        - title: 'Clone step failed: Command [git checkout $REVISION] exited with code [1]'
+          url: "/git-clone-step-issue"
 
 - title: How-To Guides
   url: "/how-to-guides"
