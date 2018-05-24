@@ -132,3 +132,10 @@
   links:
   - title: Enterprise Account Management Overview
     localurl: /docs/enterprise-account-mng/ent-account-mng
+- title: "Windows Containers Support (Beta)"
+  new: true
+  icon: https://codefresh.io/wp-content/uploads/2017/11/started.png
+  url: ''
+  links:
+  - title: Windows Containers Support Overview (Beta)
+    localurl: /docs/windows/windows-beta

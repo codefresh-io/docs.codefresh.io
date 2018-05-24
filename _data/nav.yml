@@ -309,6 +309,12 @@
     - title: Enterprise Account Management Overview
       url: "/ent-account-mng"
 
+- title: Windows Container Support (Beta)
+  url: "/windows"
+  pages:
+    - title: Windows Container Support Overview (Beta)
+      url: "/windows-beta"
+
 - title: Accounts
   url: "/accounts"
   pages:
