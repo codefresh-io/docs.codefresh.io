@@ -233,7 +233,7 @@
     - title: Test Your Feature
       url: "/test-your-feature"
     - title: Share Your Environment with Your Team
-      url: "/share-environment-with-your-test"
+      url: "/share-your-environment-with-your-team"
     - title: Composition Service Discovery (Experimental)
       url: "/composition-service-discovery"
     - title: Useful compositions
