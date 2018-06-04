@@ -35,13 +35,23 @@ max-width="40%"
 ## 3. Get access to Google Cloud resources
  
 Enable [Billing](https://console.cloud.google.com/billing){:target="_blank"}
-* If you are a new user, you will get $500 credit. After sign up you will receive an email prompting you to apply for and claim your credits. 
+
 * Notice that you are paying for running resources. Therefore, If you are not planning to use them after this tutorial, it is suggested to delete them.
-* For more information - Check GKE pricing
+* For more information - Check [GKE pricing](https://cloud.google.com/kubernetes-engine/pricing){:target="_blank"}
  
 Enable [Container Engine API](https://console.cloud.google.com/apis/api/container/overview){:target="_blank"}
 
 Enable [Compute Engine API](https://console.cloud.google.com/apis/api/compute_component/overview){:target="_blank"}
+
+
+
+{{site.data.callout.callout_info}}
+If you are a new user, you will get $500 credit. You need to create a Kubernetes cluster on Google Cloud and connect it to Codefresh to be eligible. After the cluster is connected to your Codefresh account you will receive an email prompting you to apply and claim your credits. 
+
+Follow the link in the email to fill in the application. You will receive your free credits
+as soon as Google approves it. The process usually takes a couple of days. Make sure to look in your spam folder if you can't see the email in your mailbox.
+
+{{site.data.callout.end}}
 
 ## 4. Create your cluster
 
