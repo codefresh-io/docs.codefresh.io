@@ -25,10 +25,15 @@ In the Kubernetes integration window, you will be able to add a cluster from kno
 ## Adding GKE Cluster
 Adding a cluster in GKE can be done by clicking the **Add cluster** button under **Google Cloud Provider** and selecting the desired project and cluster.
 
-{{site.data.callout.callout_info}}
-##### Note
+If this is your first time you'll be prompted to authenticate using your google credentials, make sure you're doing so with a user that have access to your GKE projects.
 
-If this is your first time you'll be prompted to authenticate using your google cradentails, make sure you're doing so with a user that have access to your GKE projects.
+
+{{site.data.callout.callout_info}}
+
+If you are a new customer of Google Cloud, you will also receive an email with a Codefresh offer to get up to $500 in Google credits. As soon at the integration is complete, you will get an email with extra details on how to claim your credits. 
+
+Follow the link in the email to fill in an application for the free credits. Once Google approves the application (usually within 1-2 days) your credits will be available to your account. Make sure to check your spam folder for that email.
+
 {{site.data.callout.end}}
 
 {:.text-secondary}
