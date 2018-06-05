@@ -119,6 +119,12 @@
         - title: Use kubectl as part of Freestyle step
           url: "/use-kubectl-as-part-of-freestyle-step"
 
+
+- title: Codefresh Plugins
+  pages:
+    - title: Plugins
+    - title: Contribute Codefresh Plugin
+
 - title: Deploy to Kubernetes
   url: "/deploy-to-kubernetes"
   pages:
