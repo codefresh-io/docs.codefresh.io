@@ -23,7 +23,7 @@ This repository is used by Plugin developers for maintaining the official plugin
 1. Fork this [repository](https://github.com/codefresh-io/plugins), develop and test your Plugin
 2. Choose the correct folder for your plugin based on the information in the [Repository Structure](https://github.com/codefresh-io/plugins/blob/master/README.md#repository-structure) section
 3. Ensure your Plugin follows the [technical](https://github.com/codefresh-io/plugins/blob/master/CONTRIBUTING.md#technical-requirements) and [documentation](https://github.com/codefresh-io/plugins/blob/master/CONTRIBUTING.md#documentation-requirements) guidelines, described below
-4. Update [Plugin Catalog](https://github.com/codefresh-io/plugins/blob/master/CATALOG.md)
+4. Update [Plugin Catalog](https://github.com/codefresh-io/plugins/blob/master/README.md)
 5. Submit a pull request
 
 ***NOTE***: In order to make testing and merging of PRs easier, please submit changes to multiple plugins in separate PRs.
