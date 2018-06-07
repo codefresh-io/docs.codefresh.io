@@ -298,6 +298,8 @@
       url: "/jira-integration"
     - title: Jenkins Integration
       url: "/jenkins-integration"
+    - title: SonarQube Integration
+      url: "/sonarqube-integration"
 
 - title: Single Sign-On
   url: "/sso"
