@@ -28,7 +28,7 @@ Add a new registry configuration from the drop down.
 
 {% include image.html lightbox="true" file="/images/cf0975d-add-registry.png" url="/images/cf0975d-add-registry.png" alt="Add Docker Registry" max-width="45%" %}
 
-Each configuration must be given a unique name, which you can later reference in a Codefresh.yaml file.
+Each configuration must be given a unique name, which you can later reference in a codefresh.yml file.
 
 {% include image.html lightbox="true" file="/images/2924d81-registry-name.png" url="/images/2924d81-registry-name.png" alt="Specify Docker Registry Name" max-width="65%" %}
 
@@ -48,10 +48,10 @@ Codefresh provides you with two options of how to push an image to a registry.
 {% include image.html lightbox="true" file="/images/22ecd84-pipeline-registry.png" url="/images/22ecd84-pipeline-registry.png" alt="Pipeline Registry" max-width="45%" %}
 
 {:.text-secondary}
-### Using a Codefresh.yaml file
+### Using a codefresh.yml file
 In a push step you can place your registry configuration name in the `registry` field
 
-  `Codefresh.yaml`
+  `codefresh.yml`
 {% highlight yaml %}
 push_step:
   type: push

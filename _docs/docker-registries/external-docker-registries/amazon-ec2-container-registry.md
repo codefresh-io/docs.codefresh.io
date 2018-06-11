@@ -39,8 +39,8 @@ More information and examples can be found [here](http://docs.aws.amazon.com/Ama
 2. For resource-based users require permissions to call ecr:GetAuthorizationToken before they can authenticate to a registry and push or pull any images from any Amazon ECR repository, than you need provide push/pull permissions to specific registry. More information and examples can be found [here](http://docs.aws.amazon.com/AmazonECR/latest/userguide/RepositoryPolicies.html){:target="_blank"}.
 </div>
 
-## Using in Codefresh.yaml (old way)
-You can configure your `Codefresh.yaml` file directly by first providing
+## Using in codefresh.yml (old way)
+You can configure your `codefresh.yml` file directly by first providing
 the following in the **Environment Variables** section of the Pipelines view
 
 * AWS_REGISTRY - the registry url (including the repository name)
@@ -50,7 +50,7 @@ the following in the **Environment Variables** section of the Pipelines view
 
 and then you can reference those variables in your file like so
 
-  `Codefresh.yaml`
+  `codefresh.yml`
 {% highlight yaml %}
 push_to_aws_ecr:
   type: push
