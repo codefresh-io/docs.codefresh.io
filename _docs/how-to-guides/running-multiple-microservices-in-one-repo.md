@@ -33,7 +33,7 @@ If you don't have that service you can try to do it using our example.
 ## Define CI/CD for Multiple micro-services in one repository through YML
 The each of micro-services has the own Dockerfile. You just need to specify the build context path using ```working_directory```
 
-  `codefresh.yaml`
+  `codefresh.yml`
 {% highlight yaml %}
 {% raw %}
 version: '1.0'
