@@ -121,7 +121,16 @@ The next step is learning how to [build your first application]({{ site.baseurl 
 Codefresh also supports Atlassian Stash/Bitbucket Server. You need to [contact us](https://codefresh.io/contact-us/) to enable this integration before you can use it for your account.
 
 
-![Codefresh and Atlassian Stash](/images/getting-started/create-account/stash.png)
+{% include 
+image.html 
+lightbox="true" 
+file="/images/getting-started/create-account/stash.png" 
+url="/images/getting-started/create-account/stash.png" 
+alt="Codefresh and Atlassian Stash" 
+caption="Codefresh and Atlassian Stash" 
+max-width="100%" 
+%}
+
 
 Once that is done, follow the [Stash instructions]({{ site.baseurl }}/docs/integrations/stash/) for more information. 
 
@@ -131,7 +140,15 @@ Once that is done, follow the [Stash instructions]({{ site.baseurl }}/docs/integ
 
 If your source code repositories are in a private Git account that lies behind your company firewall firewall, or simply has no access to the internet, we can still help you!
 
-![Git behind firewall](/images/getting-started/create-account/git-firewall.png)
+{% include 
+image.html 
+lightbox="true" 
+file="/images/getting-started/create-account/git-firewall.png" 
+url="/images/getting-started/create-account/git-firewall.png" 
+alt="Git behind firewall" 
+caption="Git behind firewall" 
+max-width="100%" 
+%}
 
 We can establish a VPN / tunnel to your network, or discuss options for an on-premises Codefresh deployment. Please [contact us to get started](https://codefresh.io/contact-us/)
 
