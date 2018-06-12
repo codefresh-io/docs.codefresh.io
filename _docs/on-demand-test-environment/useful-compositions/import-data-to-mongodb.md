@@ -16,7 +16,7 @@ If you want to import/restore or to do something else before using mongo db in y
 You just need to create Dockerfile for mongo seed service and provide the command to prepare mongo db. In this case it's command `mongoimport`
 
   `Dockerfile mongo_seed`
-{% highlight bash %}
+{% highlight docker %}
 FROM mongo
 COPY init.json /init.json
 CMD mongoimport --host mongodb --db exampleDb --collection contacts --type json --file /init.json --jsonArray
