@@ -30,7 +30,7 @@ If this is your first time you'll be prompted to authenticate using your google 
 
 {{site.data.callout.callout_info}}
 
-If you are a new customer of Google Cloud, you will also receive an email with a Codefresh offer to get up to $500 in Google credits. As soon at the integration is complete, you will get an email with extra details on how to claim your credits. 
+If you are a new customer of Google Cloud, you are also eligible to receive a Codefresh offer to get up to $500 in Google credits. As soon at the GKE integration is complete within Codefresh, you will get an email with extra details on how to claim your credits. 
 
 Follow the link in the email to fill in an application for the free credits. Once Google approves the application (usually within 1-2 days) your credits will be available to your account. Make sure to check your spam folder for that email.
 

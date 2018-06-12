@@ -151,7 +151,7 @@ ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app/spring
 
 This docker build does the following:
 
-1. Start from the standard Maven Docker image
+1. Starts from the standard Maven Docker image
 1. Copies only the `pom.xml` file inside the container
 1. Runs a mvn command to download all dependencies found in the `pom.xml`
 1. Copies the rest of the source code in the container
