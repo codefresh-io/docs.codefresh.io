@@ -4,7 +4,7 @@
   links:
   - title: Setup Codefresh Account
     localurl: /docs/getting-started/create-a-codefresh-account/
-  - title: Step by step turtorial
+  - title: Step by step tutorial
     localurl: /docs/getting-started/create-a-basic-pipeline/
   - title: Invite Collaborators
     localurl: /docs/accounts/invite-your-team-member/
@@ -33,7 +33,7 @@
   - title: Working Directories
     localurl: /docs/codefresh-yaml/working-directories/
   - title: Examples
-    localurl: /docs/yaml-examples/examples/
+    localurl: /docs/codefresh-plugins/plugins/
   - title: "*NEW* Custom YAML steps"
     new: true
     localurl: /docs/yaml-examples/ready-to-use-yaml-steps/
