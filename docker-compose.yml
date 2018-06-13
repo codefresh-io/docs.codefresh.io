@@ -1,0 +1,12 @@
+version: "2"
+services:
+  site:
+    command: jekyll serve
+    image: jekyll/jekyll:3.7.2
+    volumes:
+      - $PWD:/srv/jekyll
+      - $PWD/vendor/bundle:/usr/local/bundle
+    ports:
+      - 3131:3131
+      - 35729:35729
+      - 3000:3000
