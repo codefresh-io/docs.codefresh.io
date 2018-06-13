@@ -33,10 +33,10 @@
   - title: Working Directories
     localurl: /docs/codefresh-yaml/working-directories/
   - title: Examples
-    localurl: /docs/codefresh-plugins/plugins/
+    localurl: /docs/yaml-examples/examples/
   - title: "*NEW* Custom YAML steps"
     new: true
-    localurl: /docs/yaml-examples/ready-to-use-yaml-steps/
+    localurl: /docs/codefresh-plugins/plugins/
 - title: Deployment
   icon: https://codefresh.io/wp-content/uploads/2017/11/deployment.png
   url: ''
