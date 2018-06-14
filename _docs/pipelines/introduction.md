@@ -9,7 +9,7 @@ redirect_from:
   - /docs/pipelines/
 toc: true
 ---
-A pipeline defines the set of operations for a service, such as `Docker image build, push to Docker registry, integration tests, unit tests, deployment` and so on. You can trigger pipelines manually by clicking **BUILD**, or automatically by setting a webhook on your repository (see [setting pipeline's webhook](doc:configure-a-services-pipeline#section-enabling-auto-build-webhook-settings)). 
+A pipeline defines the set of operations for a service, such as `Docker image build, push to Docker registry, integration tests, unit tests, deployment` and so on. You can trigger pipelines manually by clicking **BUILD**, or automatically by [different triggers]({{ site.baseurl }}/docs/pipeline-triggers/introduction-triggers/). 
 
 To navigate to the service's pipeline configuration page, click the **Pipeline** button for the service.
 

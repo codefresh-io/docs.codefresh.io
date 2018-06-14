@@ -125,8 +125,8 @@ max-width="40%"
 
 {% include image.html
 lightbox="true"
-file="/images/324f2ba-codefresh_demochat_endpoint.png"
-url="/images/324f2ba-codefresh_demochat_endpoint.png"
+file="/images/324f2ba-codefresh_demochat_endpoint.jpg"
+url="/images/324f2ba-codefresh_demochat_endpoint.jpg"
 alt="codefresh_demochat_endpoint.png"
 max-width="40%"
 %}

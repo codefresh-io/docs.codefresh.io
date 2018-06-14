@@ -17,7 +17,14 @@ It is possible to define and manage Cron-based pipeline triggers with Codefresh 
 
 To add a new Cron trigger, navigate to Codefresh Pipeline *Configuration* view and expand *Triggers* section. Press the `Add Trigger` button and select a `Cron` trigger type to add.
 
-![Create Trigger](/docs/images/create_trigger.png)
+{% include image.html
+lightbox="true"
+file="/images/create_trigger.png"
+url="/images/create_trigger.png"
+alt="Create Trigger"
+max-width="70%"
+%}
+
 
 Visit [this page](https://github.com/codefresh-io/cronus/blob/master/docs/expression.md) to learn about supported `cron` expression format and aliases.
 
@@ -27,7 +34,14 @@ Fill the following information:
 * Use Cron helper wizard to build a valid `cron` expression or write custom `cron` expression on last tab
 * Add a free text message, that will be sent as additional event payload every time `cron` is executed
 
-![Add Cron Trigger](/docs/images/cron_trigger.png)
+{% include image.html
+lightbox="true"
+file="/images/cron_trigger.png"
+url="/images/cron_trigger.png"
+alt="Add Cron Trigger"
+max-width="70%"
+%}
+
 
 ### Triggering Codefresh pipeline with cron timer
 
