@@ -68,8 +68,8 @@ First, let's look at an overview of the process that we will create:
   {% include 
 image.html 
 lightbox="true" 
-file="/images/getting-started/quick-start-ci/pipeline-overview.png" 
-url="/images/getting-started/quick-start-ci/pipeline-overview.png" 
+file="/images/getting-started/quick-start-ci/pipeline-overview.jpg" 
+url="/images/getting-started/quick-start-ci/pipeline-overview.jpg" 
 alt="Pipeline Overview" 
 caption="Pipeline Overview (click image to enlarge)" 
 max-width="100%" 
@@ -96,8 +96,8 @@ We will start by focusing on the first part of the pipeline overview, the creati
 {% include 
 image.html 
 lightbox="true" 
-file="/images/getting-started/quick-start-ci/docker-build-steps.png" 
-url="/images/getting-started/quick-start-ci/docker-build-steps.png" 
+file="/images/getting-started/quick-start-ci/docker-build-steps.jpg" 
+url="/images/getting-started/quick-start-ci/docker-build-steps.jpg" 
 alt="Preparing a Docker image" 
 caption="Preparing a Docker image (click image to enlarge)" 
 max-width="60%" 
@@ -264,8 +264,8 @@ This is the next step in the build process described at the beginning of this tu
 {% include 
 image.html 
 lightbox="true" 
-file="/images/getting-started/quick-start-ci/unit-test-stage.png" 
-url="/images/getting-started/quick-start-ci/unit-test-stage.png" 
+file="/images/getting-started/quick-start-ci/unit-test-stage.jpg" 
+url="/images/getting-started/quick-start-ci/unit-test-stage.jpg" 
 alt="Unit tests workflow" 
 caption="Unit tests workflow (click image to enlarge)" 
 max-width="80%" 
@@ -337,8 +337,8 @@ Codefresh has the unique feature of offering its own built-in storage for Docker
 {% include 
 image.html 
 lightbox="true" 
-file="/images/getting-started/quick-start-ci/docker-store-stage.png" 
-url="/images/getting-started/quick-start-ci/docker-store-stage.png" 
+file="/images/getting-started/quick-start-ci/docker-store-stage.jpg" 
+url="/images/getting-started/quick-start-ci/docker-store-stage.jpg" 
 alt="Automatic storage of Docker images" 
 caption="Automatic storage of Docker images" 
 max-width="80%" 
@@ -404,8 +404,8 @@ Kubernetes will then fetch those Docker images from the registry in a well disci
 {% include 
 image.html 
 lightbox="true" 
-file="/images/getting-started/quick-start-ci/docker-push-stage.png" 
-url="/images/getting-started/quick-start-ci/docker-push-stage.png" 
+file="/images/getting-started/quick-start-ci/docker-push-stage.jpg" 
+url="/images/getting-started/quick-start-ci/docker-push-stage.jpg" 
 alt="Pushing a Docker image" 
 caption="Pushing a Docker image (click image to enlarge)" 
 max-width="80%" 
