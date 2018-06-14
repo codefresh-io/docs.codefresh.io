@@ -49,7 +49,7 @@
     localurl: /docs/deploy-your-containers/amazon-ecs/
   - title: Deploy to Swarm
     localurl: /docs/deploy-your-containers/docker-swarm/
-  - title: Elastic Beanstock
+  - title: Elastic Beanstalk
     localurl: /docs/deploy-your-containers/elastic-beanstalk/
   - title: Deploy to Azure
     localurl: /docs/deploy-your-containers/microsoft-azure/
