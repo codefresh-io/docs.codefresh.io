@@ -61,5 +61,5 @@ Go to [Unit Tests]({{ site.baseurl }}/docs/configure-ci-cd-pipeline/unit-tests/)
 - [Unit Test with Database]({{ site.baseurl }}/docs/configure-ci-cd-pipeline/unit-tests/unit-tests-with-database/)
 
 ## What's next?
-- [Build and Push to Docker registry]({{ site.baseurl }}/docs/pipelines/examples/build-and-push-to-docker-registry/) 
-- [Build and Deploy to Kubernetes]({{ site.baseurl }}/docs/pipelines/examples/build-and-deploy-to-kubernetes/)
+- [Build and Push to Docker registry]({{ site.baseurl }}/docs/pipelines/pipeline-examples/build-and-push-to-docker-registry/) 
+- [Build and Deploy to Kubernetes]({{ site.baseurl }}/docs/pipelines/pipeline-examples/build-and-deploy-to-kubernetes/)

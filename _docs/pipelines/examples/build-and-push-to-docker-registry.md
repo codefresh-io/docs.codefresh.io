@@ -9,7 +9,7 @@ redirect_from:
   - /docs/build-and-push-to-docker-registry/
 toc: true
 ---
-Codefresh enables you to integrate with several Docker container registries. You can add new Docker registry on the **Integration page**. Go to [Docker Registry]({{ site.baseurl }}/docs/pipelines/examples/build-and-push-to-docker-registry/) to learn more about how to configure it.
+Codefresh enables you to integrate with several Docker container registries. You can add new Docker registries on the **Integration page**. See [External Docker Registries]({{ site.baseurl }}/docs/docker-registries/external-docker-registries/) to learn more about their configuration.
 
 {{site.data.callout.callout_info}}
 Fork this example to try it.  [https://github.com/codefreshdemo/demochat](https://github.com/codefreshdemo/demochat){:target="_blank"}
@@ -50,4 +50,4 @@ caption="Pushing to Docker Registry"
 %}
 
 ## What's next?
-- [Build and Deploy to Kubernetes]({{ site.baseurl }}/docs/pipelines/examples/build-and-deploy-to-kubernetes/)
+- [Build and Deploy to Kubernetes]({{ site.baseurl }}/docs/pipelines/pipeline-examples/build-and-deploy-to-kubernetes/)

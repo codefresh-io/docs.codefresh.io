@@ -80,7 +80,7 @@ docker login -u <USERNAME> -p <ACCESS_TOKEN> r.cfcr.io
 {% endhighlight %}
 
 __Pull Docker Image__
-Use this Docker pull command to download the image[](ni)
+Use this Docker pull command to download the image
 
   `docker pull`
 {% highlight terminal %}
