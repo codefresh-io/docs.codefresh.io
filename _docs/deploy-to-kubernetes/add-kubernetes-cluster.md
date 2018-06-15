@@ -37,6 +37,84 @@ Follow the link in the email to fill in an application for the free credits. Onc
 {{site.data.callout.end}}
 
 {:.text-secondary}
+## Adding EKS Cluster
+To add an Amazon EKS cluster, you must first create a service account and obtain a token used to manage the integration.
+
+The official Amazon-provided guide on EKS can be found [here](https://docs.aws.amazon.com/eks/latest/userguide/).
+
+In order to use your cluster locally with `kubectl`, you must first install the [heptio-authenticator-aws](https://github.com/heptio/authenticator) binary. Your version of kubectl must also be 1.10+ for this to work.
+
+Next, create a kubeconfig file, such as `~/.kube/eks`, replacing `<endpoint-url>`, `<base64-encoded-ca-cert>`, and `<cluster-name>` with information on your EKS cluster obtained in the AWS console:
+
+{% highlight yaml %}
+{% raw %}
+apiVersion: v1
+clusters:
+- cluster:
+    server: <endpoint-url>
+    certificate-authority-data: <base64-encoded-ca-cert>
+  name: kubernetes
+contexts:
+- context:
+    cluster: kubernetes
+    user: aws
+  name: aws
+current-context: aws
+kind: Config
+preferences: {}
+users:
+- name: aws
+  user:
+    exec:
+      apiVersion: client.authentication.k8s.io/v1alpha1
+      command: heptio-authenticator-aws
+      args:
+        - "token"
+        - "-i"
+        - "<cluster-name>"
+{% endraw %}
+{% endhighlight %}
+
+Then, in an environment that has access to your AWS account, run the following command to create an admin user service account and necessary role binding:
+
+{% highlight shell %}
+{% raw %}
+cat <<EOF | kubectl --kubeconfig="$HOME/.kube/eks" apply -f -
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: admin-user
+  namespace: kube-system
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  name: admin-user
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+- kind: ServiceAccount
+  name: admin-user
+  namespace: kube-system
+EOF
+{% endraw %}
+{% endhighlight %}
+
+Finally, use the following command to obtain the service account token:
+
+{% highlight shell %}
+{% raw %}
+kubectl --kubeconfig="$HOME/.kube/eks" -n="kube-system" get secret \
+  $(kubectl --kubeconfig="$HOME/.kube/eks" -n="kube-system" get secret | \
+    grep admin-user | awk '{print $1}') -o jsonpath="{.data.token}"
+{% endraw %}
+{% endhighlight %}
+
+Once you have this token, follow the steps in the section below, using this token for item #4.
+
+{:.text-secondary}
 ## Adding any other cluster type (not dependent on any provider)
   
 In order to add any other type of cluster, outside of GKE, use **Custom Providers**
