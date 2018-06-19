@@ -9,14 +9,14 @@ redirect_from:
 toc: true
 ---
   
-On your Account settings, go to the **Integration** tab and choose **Kubernetes**.
+On your Configuration settings, go to the **Integration** tab and choose **Kubernetes**.
 
 {% include image.html
   lightbox="true"
-  file="/images/c7b958e-Screen_Shot_2017-10-23_at_7.31.49_PM.png"
-  url="/images/c7b958e-Screen_Shot_2017-10-23_at_7.31.49_PM.png"
-  alt="Screen Shot 2017-10-23 at 7.31.49 PM.png"
-  max-width="40%"
+  file="/images/integrations/codefresh-integrations.png"
+  url="/images/integrations/codefresh-integrations.png"
+  alt="Codefresh integrations"
+  max-width="80%"
     %}
 
 In the Kubernetes integration window, you will be able to add a cluster from known providers such as GKE or by manually adding your cluster settings.

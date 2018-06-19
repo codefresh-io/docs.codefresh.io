@@ -14,4 +14,4 @@ To configure some other registry which is not officially provided by Codefresh f
 * Password - Your registry encrypted password
 * Domain - Your registry address e.g. `mydomain.com`
 
-{% include image.html lightbox="true" file="/images/6324c49-add-other.png" url="/images/6324c49-add-other.png" alt="Add Other Registries" max-width="45%" %}
+{% include image.html lightbox="true" file="/images/artifacts/registry/add-other-docker-registry.png" url="/images/artifacts/registry/add-other-docker-registry.png" alt="Add Other Registries" max-width="60%" %}

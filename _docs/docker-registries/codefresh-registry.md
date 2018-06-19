@@ -57,7 +57,7 @@ To integrate with Codefresh Registry, first select **Codefresh Registry** from t
 * Username - Your username in Codefresh
 * Access token - Your generated access token
 
-{% include image.html lightbox="true" file="/images/541c633-codefresh_cfcr_registry.png" url="/images/541c633-codefresh_cfcr_registry.png" alt="Codefresh cfcr registry" max-width="65%" %}
+{% include image.html lightbox="true" file="/images/artifacts/registry/codefresh-registry.png" url="/images/artifacts/registry/codefresh-registry.png" alt="Codefresh Docker registry registry" max-width="65%" %}
 
 __Images built in Codefresh__
 
