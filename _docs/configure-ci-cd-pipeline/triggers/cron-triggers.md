@@ -1,9 +1,11 @@
 ---
 title: "Cron Trigger"
 description: ""
-group: pipeline-triggers
+group: configure-ci-cd-pipeline
+sub_group: triggers
 redirect_from:
   - /docs/configure-cron-trigger/
+  - /docs/pipeline-triggers/configure-cron-trigger/
 toc: true
 ---
 
@@ -19,10 +21,10 @@ To add a new Cron trigger, navigate to Codefresh Pipeline *Configuration* view a
 
 {% include image.html
 lightbox="true"
-file="/images/create_trigger.png"
-url="/images/create_trigger.png"
-alt="Create Trigger"
-max-width="70%"
+file="/images/pipeline/triggers/add-trigger-dialog.png"
+url="/images/pipeline/triggers/add-trigger-dialog.png"
+alt="Adding new Trigger dialog"
+max-width="60%"
 %}
 
 

@@ -5,17 +5,22 @@
   - title: Deployment to Kubernetes
     url: "/deployment-to-kubernetes-quick-start-guide"
 
-- title: Whats new?
-  url: "/whats-new"
-  pages:
-    - title: Whats New In Codefresh?
-      url: "/whats-new"
+
 
 - title: Configure a CI/CD pipeline
   url: "/configure-ci-cd-pipeline"
   pages:
     - title: "Introduction to Codefresh pipelines"
       url: "/introduction-to-codefresh-pipelines"
+    - title: "Triggers"
+      url: "/triggers"
+      sub-pages:
+        - title: "Git Triggers"
+          url: "/git-triggers"
+        - title: "DockerHub Triggers"
+          url: "/dockerhub-triggers"
+        - title: "Timer (Cron) Triggers"
+          url: "/cron-triggers"
     - title: Unit Tests
       url: "/unit-tests"
       sub-pages:
@@ -31,17 +36,6 @@
       url: "/build-status"
     - title: "What's next?"
       url: "/whats-next"
-
-- title: Pipeline Triggers
-  url: "/pipeline-triggers"
-  pages:
-    - title: "Pipeline Triggers"
-      url: "/introduction-triggers"
-    - title: "DockerHub Triggers"
-      url: "/configure-dockerhub-trigger"
-    - title: "Timer (Cron) Triggers"
-      url: "/configure-cron-trigger"
-
 
 - title: Codefresh YAML
   url: "/codefresh-yaml"
@@ -383,6 +377,13 @@
       url: "/launching-a-composition-and-defining-a-service-environment-variables-using-a-file"
     - title: Codefresh API
       url: "/codefresh-api"
+
+
+- title: Whats new?
+  url: "/whats-new"
+  pages:
+    - title: Whats New In Codefresh?
+      url: "/whats-new"
 
 - title: Terms and Privacy Policy
   url: "/terms-and-privacy-policy"
