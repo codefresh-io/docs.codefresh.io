@@ -64,7 +64,7 @@ In a more advanced example you could add regular expressions in the branch field
 
 ## Using YAML and the Codefresh CLI to filter specific Webhook events
 
-The default GUI options exposed by Codefresh are just a starting point for GIT triggers and pull requests. Using [Codefresh YAML]({{ site.baseurl }}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) and the [Codefresh CLI plugin](https://codefresh-io.github.io) you can further create two-phase pipelines where the first one decides
+The default GUI options exposed by Codefresh are just a starting point for GIT triggers and pull requests. Using [Codefresh YAML]({{ site.baseurl }}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) and the [Codefresh CLI plugin](https://codefresh-io.github.io/cli/) you can further create two-phase pipelines where the first one decides
 which webwook events will be honored and the second one contains the actual build.
 
 
@@ -82,7 +82,6 @@ Some of the YAML variables that you might find useful (from the [full list]({{ s
 
 * `CF_PULL_REQUEST_ACTION` - open, close, accept etc
 * `CF_PULL_REQUEST_TARGET` - target branch of the pull request
-* `CF_MODIFIED_FILES` - list of all modified files
 * `CF_BRANCH` - the branch that contains the pull request
 
 As an example, here is the `codefresh.yml` file of pipeline A where we want to run pipeline B only when a Pull Requested is opened against a branch named *production*.
