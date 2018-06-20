@@ -8,20 +8,23 @@ toc: true
 ---
 Follow these steps to add collaborators to your account.
 
-{:start="1"}
-1. Click the arrow next to your avatar.
+First click at your profile at the bottom left of the UI and select *Account settings*. The select the *Collaborators* 
+tab.
 
-{:start="2"}
-2. Click **`Account Management`** &#8594; **`Collaborators`** tab.
 
-{:start="3"}
-3. In the **Username** text box, type the Codefresh user name or email address of the user you want to add.
+{% include image.html lightbox="true" file="/images/account/account-settings.png" url="/images/account/account-settings.png" alt="Codefresh account settings" max-width="30%" %}
 
-{:start="4"}
-4. Click the **Add** button.
-{% include image.html lightbox="true" file="/images/50b5ed2-codefresh_account_settings_new.png" url="/images/50b5ed2-codefresh_account_settings_new.png" alt="codefresh_account_settings_new.png" max-width="40%" %}
+1. In the *Username* text box, type the Codefresh user name or email address of the user you want to add.
+1. Click the *Add* button.
 
-{{site.data.callout.callout_info}}
-##### Note
-Your team member should use the same provider (github/bitbucket) as you. 
-{{site.data.callout.end}}
+{% include image.html lightbox="true" file="/images/account/collaborators.png" url="/images/account/collaborators.png" alt="Collaborators" max-width="70%" %}
+
+
+An message will be sent to the person that holds the email account. Once approved you will see the collaborator
+in the list below.
+
+You can also change the role of each team member or remove them from the team by using
+the action buttons next to their names.
+
+>Your team member should use the same provider (github/bitbucket) as you. 
+
