@@ -39,6 +39,7 @@ You can select the following information:
 * *Commit checkbox* - If enabled will trigger this pipeline for any commit
 * *PR checkbox* - If enabled will trigger for any events that belong to a pull request
 * *Branch field* - This is a regular expression and will only trigger for branches that match this naming pattern
+* *Modified files* - This allows you to constrain the build and trigger it only if the modified files from the commit match this [glob expression](https://en.wikipedia.org/wiki/Glob_(programming))
 
 {% include image.html
 lightbox="true"
@@ -61,6 +62,64 @@ As a simple example you can have a *production* pipeline that runs only on *mast
 In a more advanced example you could add regular expressions in the branch field with names such as *feature-*, *hotfix-* etc and the PR checkbox active on different pipelines. This way you could trigger the pull requests only when they happen on specific branches. So a developer that creates a temporary feature with a name that doesn't match these naming patterns will not trigger those pipelines.
 
 >If the PR checkbox is enabled Codefresh will also trigger a pipeline if a pull request is rejected/closed. While at first glance this seems counterintuitive, in practice it allows you to tear down test environments when the code from a Pull request is no longer needed. See below for a way to decide exactly what types of webhook events are used for triggers.
+
+The *modified files* field is a very powerful Codefresh feature that allows you to trigger a build only if the
+files affected by a commit are in a specific folder (or match a specific naming pattern)
+
+## Using the Modified files field to constrain triggers to specific folder/files
+
+The *modified field* accepts glob expressions. The paths are relative to the root folder of the project (where the git repository was checked out). Some possible examples are:
+
+```
+**/package.json
+**/Dockerfile*
+my-subproject/**
+my-subproject/sub-subproject/package.json
+my-subproject/**/pom.xml
+
+```
+
+>You can also use relative paths with dot-slash. Therefore `./package.json` and `package.json` are exactly the same thing. They both refer to the file `package.json` found at the root of the git project that was checked out as part of the build.
+
+Once a commit happens to a code repository, Codefresh will see which files are changed from the git provider and trigger the build **only** if the changed files match the glob expression. If there is no match no build will be triggered.
+
+This is a very useful feature for organizations who have chosen to have multiple projects on the same GIT repository (monorepos). Let's assume for example that a single system has a Java backend, a NestJS frontend and a Ruby-on-Rails internal dashboard.
+
+{% include image.html
+lightbox="true"
+file="/images/pipeline/triggers/monorepo.png"
+url="/images/pipeline/triggers/monorepo.png"
+alt="GIT monorepo"
+max-width="60%"
+%}
+
+Now we can define 3 different pipelines in Codefresh where each one builds the respective project
+
+{% include image.html
+lightbox="true"
+file="/images/pipeline/triggers/monorepo-pipelines.png"
+url="/images/pipeline/triggers/monorepo-pipelines.png"
+alt="GIT monorepo pipelines"
+max-width="70%"
+%}
+
+And then in the GIT trigger for each one we set the modified files field to the following values
+
+* For the *build-nestjs-only* pipeline *MODIFIED FILES* has `my-nestjs-project/**`
+* For the *build-java-only* pipeline *MODIFIED FILES* has `my-java-project/**`
+* For the *build-rails-only* pipeline *MODIFIED FILES* has `my-rails-project/**`
+
+This way as multiple developers work on the git repository only the affected projects will actually build. A change to the NestJS project will *not* build the Rails project as well. Also if somebody changes *only* the README file and nothing else, no build will be triggered at all (which is a good thing as the source code is exactly the same).
+
+You can also use Glob expressions for files. For example
+
+*  an expression such `my-subproject/sub-subproject/package.json` will trigger a build **only** if the dependencies of this specific project are changed. 
+* A pipeline with the expression `my-subproject/**/pom.xml` will trigger only if the Java dependencies for any project that belongs to `my-subproject` actually change. 
+
+Glob expressions have many more options not shown here. Visit the [official documentation](https://en.wikipedia.org/wiki/Glob_(programming)) to learn more. You can also use the [Glob Tester web application](http://www.globtester.com/) to test your glob expressions beforehand so that you are certain they match the 
+files you expect them to match.
+
+
 
 ## Using YAML and the Codefresh CLI to filter specific Webhook events
 
