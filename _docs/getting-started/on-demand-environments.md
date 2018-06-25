@@ -31,8 +31,8 @@ Codefresh has the unique capability of launching a docker image (using [Docker S
 {% include 
 image.html 
 lightbox="true" 
-file="/images/getting-started/quick-start-test-pr/demo-stage.png" 
-url="/images/getting-started/quick-start-test-pr/demo-stage.png" 
+file="/images/getting-started/quick-start-test-pr/demo-stage.jpg" 
+url="/images/getting-started/quick-start-test-pr/demo-stage.jpg" 
 max-width="80%" 
 %}
 
