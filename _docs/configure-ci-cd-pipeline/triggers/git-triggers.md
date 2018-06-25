@@ -61,10 +61,14 @@ As a simple example you can have a *production* pipeline that runs only on *mast
 
 In a more advanced example you could add regular expressions in the branch field with names such as *feature-*, *hotfix-* etc and the PR checkbox active on different pipelines. This way you could trigger the pull requests only when they happen on specific branches. So a developer that creates a temporary feature with a name that doesn't match these naming patterns will not trigger those pipelines.
 
->If the PR checkbox is enabled Codefresh will also trigger a pipeline if a pull request is rejected/closed. While at first glance this seems counterintuitive, in practice it allows you to tear down test environments when the code from a Pull request is no longer needed. See below for a way to decide exactly what types of webhook events are used for triggers.
+>If the PR checkbox is enabled, Codefresh will also trigger a pipeline if a pull request is rejected/closed. While at first glance this seems counterintuitive, in practice it allows you to tear down test environments when the code from a Pull request is no longer needed. See below for a way to decide exactly what types of webhook events are used for triggers.
 
 The *modified files* field is a very powerful Codefresh feature that allows you to trigger a build only if the
-files affected by a commit are in a specific folder (or match a specific naming pattern)
+files affected by a commit are in a specific folder (or match a specific naming pattern). This means that
+you can have a big GIT repository with multiple projects and build only the parts that actually change.
+
+>Currently the field *modified files* is available only for Github repositories, since Github is the only GIT provider
+that sends this information in the webhook. We will support other GIT providers as soon as they add the respective feature.
 
 ## Using the Modified files field to constrain triggers to specific folder/files
 
