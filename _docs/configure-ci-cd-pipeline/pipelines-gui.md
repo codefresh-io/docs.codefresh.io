@@ -1,12 +1,14 @@
 ---
-title: "Introduction"
+title: "Creating pipelines from the GUI"
 description: ""
-group: pipelines
+group: configure-ci-cd-pipeline
 redirect_from:
   - /docs/pipeline
   - /docs/pipeline/
   - /docs/pipelines
   - /docs/pipelines/
+  - /docs/pipelines/introduction/
+  - /docs/pipelines/introduction
 toc: true
 ---
 A pipeline defines the set of operations for a service, such as `Docker image build, push to Docker registry, integration tests, unit tests, deployment` and so on. You can trigger pipelines manually by clicking **BUILD**, or automatically by [different triggers]({{ site.baseurl }}/docs/pipeline-triggers/introduction-triggers/). 
@@ -186,3 +188,10 @@ url="/images/3d74965-codefresh_deploy_script.png"
 alt="codefresh_deploy_script.png" 
 max-width="40%"
 %}
+
+
+## What to read next
+
+- [Build and Test](continuous-integration) 
+- [Build and Push to Docker registry](build-and-push-to-docker-registry) 
+- [Build and Deploy to Kubernetes](continuous-delivery-gke-docker-swarm-amazon-ecs)

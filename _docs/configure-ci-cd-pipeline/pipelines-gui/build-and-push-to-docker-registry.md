@@ -1,12 +1,11 @@
 ---
 title: "Build and Push to Docker registry"
 description: ""
-group: pipelines
-sub_group: pipeline-examples
-# hack/workaround for sub elements, because parent has permalink
-permalink: /docs/pipelines/pipeline-examples/build-and-push-to-docker-registry/
+group: configure-ci-cd-pipeline
+sub_group: pipelines-gui
 redirect_from:
   - /docs/build-and-push-to-docker-registry/
+  - /docs/pipelines-gui/build-and-push-to-docker-registry/
 toc: true
 ---
 Codefresh enables you to integrate with several Docker container registries. You can add new Docker registries on the **Integration page**. See [External Docker Registries]({{ site.baseurl }}/docs/docker-registries/external-docker-registries/) to learn more about their configuration.
@@ -50,4 +49,4 @@ caption="Pushing to Docker Registry"
 %}
 
 ## What's next?
-- [Build and Deploy to Kubernetes]({{ site.baseurl }}/docs/pipelines/pipeline-examples/build-and-deploy-to-kubernetes/)
+- [Build and Deploy to Kubernetes]({{ site.baseurl }}/docs/configure-ci-cd-pipeline/pipelines-gui/continuous-delivery-gke-docker-swarm-amazon-ecs/)
