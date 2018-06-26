@@ -7,6 +7,21 @@ redirect_from:
 toc: true
 ---
 
+### June 2018
+
+- Ability to trigger builds only if a specific folder/file on a repository changes
+
+
+### May 2018
+- Integrated Helm repositories for each Codefresh account
+- Ability to specify custom triggers for each pipeline
+- Ability to specify cron-like triggers
+- Advanced Docker caching for faster builds
+- Support for Enterprise Single Sign On
+- Enterprise account management support
+- Added Social Onboarding widget
+
+
 ### March 2018
 - Ability to specify `entry_point` in freestyle steps
 - Ability to specify `CMD` commands to work with images with entrypoints
