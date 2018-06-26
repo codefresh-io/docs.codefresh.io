@@ -15,9 +15,9 @@
   - title: Introduction to Pipeline
     localurl: /docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/
   - title: Pipeline configuration using the UI
-    localurl: /docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#pipeline-configuration
-  - title: Yaml Pipeline configuration
-    localurl: /docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#pipeline-triggers-and-webhook
+    localurl: /docs/configure-ci-cd-pipeline/pipelines-gui/
+  - title: Pipeline triggers
+    localurl: /docs/configure-ci-cd-pipeline/triggers/
   - title: Webhooks, Badges and General settings
     localurl: /docs/configure-ci-cd-pipeline/build-status/
 - title: Yaml file
@@ -87,6 +87,8 @@
   icon: https://codefresh.io/wp-content/uploads/2017/11/demand.png
   url: ''
   links:
+  - title: Launch a Docker image
+    localurl: /docs/getting-started/on-demand-environments/
   - title: Create composition
     localurl: /docs/on-demand-test-environment/composition-dialog/
   - title: Run environment on any branch
