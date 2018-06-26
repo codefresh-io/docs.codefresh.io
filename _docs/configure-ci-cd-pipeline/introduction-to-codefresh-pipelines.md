@@ -56,7 +56,7 @@ max-width="70%"
 
 
 1. The first step runs under the context of a Node image that prepares the application and runs unit tests.
-1. The second step uses an image with s3 command line tools and uploads the test resuls to a bucket that holds test reports
+1. The second step uses an image with s3 command line tools and uploads the test results to a bucket that holds test reports
 1. The helm step creates a Helm chart and pushes it to a Helm repository
 
 You don't need to contact Codefresh and ask them to add the s3 executable on the build runners. You just use a premade Docker image that contains it. The version used for Node is defined by you and if you wish to upgrade to another version
@@ -265,7 +265,7 @@ inside the pipeline they are actually needed. This ensures that both the applica
 ### How caching works in Codefresh
 
 Making your builds as fast a possible is an on-going goal for a sound CI/CD solution. Quick builds allow for short 
-feedback development cycles which is always a desiranble trait for locating bugs early in the process.
+feedback development cycles which is always a desirable trait for locating bugs early in the process.
 
 Codefresh can help you with caching in 3 ways
 

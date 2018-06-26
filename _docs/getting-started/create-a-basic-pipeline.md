@@ -107,7 +107,7 @@ Docker images play a central role in Codefresh pipelines. They are the basic bui
 between what your source code is producing and what gets deployed. If your own application is not "dockerized" yet, you 
 need to create a Dockerfile for it first, before moving it into the Codefresh infrastructure. 
 
-Because all Codefresh capabilities are based on Docker images, Docker is also serving as an abstraction layer over any the implementation language of your source code. Codefresh can work with projects written in Ruby, Python, Java, Node or any other programming language as long as they produce a Docker image. Docker images are a first clas citizen in Codefresh pipelines and not just an afterthought.
+Because all Codefresh capabilities are based on Docker images, Docker is also serving as an abstraction layer over any the implementation language of your source code. Codefresh can work with projects written in Ruby, Python, Java, Node or any other programming language as long as they produce a Docker image. Docker images are a first class citizen in Codefresh pipelines and not just an afterthought.
 
 
 The example application already comes with its own Dockerfile, making the creation of a Codefresh pipeline very easy.
@@ -201,7 +201,7 @@ max-width="60%"
 
 The final step asks you which branch you want to use for the main build. Leave the default (master) and click *Create Pipeline*.
 
-The Git repository is now successully added into Codefresh. From now on you can find the project in the main Codefresh Dashboard (*repositories*)
+The Git repository is now successfully added into Codefresh. From now on you can find the project in the main Codefresh Dashboard (*repositories*)
 
 ### Starting the first build
 
@@ -379,7 +379,7 @@ caption="Docker Image timeline (click image to enlarge)"
 max-width="50%" 
 %}
 
-Codefresh also includes a graphical display of all the layers contained in the Docker image. This can help you identify big layers in your build process and hopefull give you some pointers on how to reduce the size of your deployment binaries.
+Codefresh also includes a graphical display of all the layers contained in the Docker image. This can help you identify big layers in your build process and hopefully give you some pointers on how to reduce the size of your deployment binaries.
 
 {% include 
 image.html 
@@ -391,7 +391,7 @@ caption="Docker Layer Analysis (click image to enlarge)"
 max-width="70%" 
 %}
 
-The built-in Docker image storage is very helpful on its own, but it becomes even more impressive when it is coupled with the capability to use it as a basis for temporary demo enviroments, as we will see in the next section.
+The built-in Docker image storage is very helpful on its own, but it becomes even more impressive when it is coupled with the capability to use it as a basis for temporary demo environments, as we will see in the next section.
 
 
 

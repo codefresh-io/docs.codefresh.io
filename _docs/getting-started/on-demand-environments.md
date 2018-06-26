@@ -26,7 +26,7 @@ if you want to quickly share a feature with a colleague or a customer.
 Docker images play a central role in Codefresh. The [basic CI tutorial]({{ site.baseurl }}/docs/getting-started/create-a-basic-pipeline/) describes how you can easily create a Docker image from your source code.
 
 In this section we will take this one step further and actually launch the result Docker image.
-Codefresh has the unique capability of launching a docker image (using [Docker Swarm](https://docs.docker.com/engine/swarm/) behind the scenes) on the same hosted enviroment that Codefresh itself runs.
+Codefresh has the unique capability of launching a docker image (using [Docker Swarm](https://docs.docker.com/engine/swarm/) behind the scenes) on the same hosted environment that Codefresh itself runs.
 
 {% include 
 image.html 
@@ -36,7 +36,7 @@ url="/images/getting-started/quick-start-test-pr/demo-stage.jpg"
 max-width="80%" 
 %}
 
-This means that with zero effort from your side you can quickly inspect the status of your application using the Codefresh instrustructure. 
+This means that with zero effort from your side you can quickly inspect the status of your application using the Codefresh infrastructure. 
 
 As a first step you need to tell Codefresh what is the port exposed by your application. Codefresh needs this information
 in order to launch the Docker image and allow you to access it via your web browser. 
@@ -86,7 +86,7 @@ max-width="80%"
 %}
 
 
-Our sample application is self-contained (it consists of only a single Docker image) so choose *standalone* for the popup menu. Codefresh can also launch demo enviroments for applications that consist of multiple images (e.g. a service image and a database image). This capability happens with Codefresh *compositions* which are described in detail in section [On-Demand Environments]({{ site.baseurl }}/docs/on-demand-test-environment/composition-dialog/).
+Our sample application is self-contained (it consists of only a single Docker image) so choose *standalone* for the popup menu. Codefresh can also launch demo environments for applications that consist of multiple images (e.g. a service image and a database image). This capability happens with Codefresh *compositions* which are described in detail in section [On-Demand Environments]({{ site.baseurl }}/docs/on-demand-test-environment/composition-dialog/).
 
 Once your application is launched, Codefresh will present the run log. You will see the same messages that would appear if you executed the `docker run` command locally. 
 
@@ -102,7 +102,7 @@ max-width="60%"
 
 ### Accessing the test environment
 
-Once launch is complete, Codefresh will print a dynamic URL that contains the deployed enviroment. Now you have a demo enviroment created just for you! You can send this link with an email to a colleague to ask for feedback or to a customer to show progress.
+Once launch is complete, Codefresh will print a dynamic URL that contains the deployed environment. Now you have a demo environment created just for you! You can send this link with an email to a colleague to ask for feedback or to a customer to show progress.
 
 
 
@@ -117,12 +117,12 @@ max-width="60%"
 %}
 
 
-The number of concurrent test enviroments that you can have depends on your Codefresh account. Remember that you should never treat
+The number of concurrent test environments that you can have depends on your Codefresh account. Remember that you should never treat
 these on demand environments as production ones. They were never designed that way.
 
 If the environment is not functioning correctly for your own application make sure that the port exposed by Codefresh in the *Launch settings* is the one that is actually used in your application as an HTTP endpoint. 
 
-To find your existing on-demand enviroments, click *Docker Swarm* `->` *Environments* on the left part of the screen. You will get a list of your active environments. You can see details such as
+To find your existing on-demand environments, click *Docker Swarm* `->` *Environments* on the left part of the screen. You will get a list of your active environments. You can see details such as
 
 * Which branch is this environment from
 * Which Git commit represents this environment
@@ -138,11 +138,11 @@ caption="Details for an environment (click image to enlarge)"
 max-width="70%" 
 %}
 
-On the right side, you can find a list of buttons that allow you to visit the environment directly, share the link on Slack and most importantly stop the enviroment, so that it doesn't count against your account. It is a good practice to launch environments only when you need them and clean them up once you are done with them.
+On the right side, you can find a list of buttons that allow you to visit the environment directly, share the link on Slack and most importantly stop the environment, so that it doesn't count against your account. It is a good practice to launch environments only when you need them and clean them up once you are done with them.
 
 ## Collaborating with Pull requests
 
-Continuous Integration (CI) is based on two pillarstones:
+Continuous Integration (CI) is based on two pillar stones:
 
 1. The merging of all features into a shared mainline (this is the *integration* part)
 2. The capability to auto-build all commits and have a deployable artifact at any given point in time (this is the *continuous* part)
@@ -167,7 +167,7 @@ By default Codefresh will connect to your Git provider and do the following:
 1. Auto-build every new commit that happens in master or any other branch
 1. Auto-build every new branch when it is created
 
-You can change the default behaviour so that it matches your own workflow using extra [GIT Triggers]({{ site.baseurl }}/docs/configure-ci-cd-pipeline/triggers/git-triggers/).
+You can change the default behavior so that it matches your own workflow using extra [GIT Triggers]({{ site.baseurl }}/docs/configure-ci-cd-pipeline/triggers/git-triggers/).
 
 You don't have to anything special to setup this communication between Codefresh and your Git provider. It was setup automatically for you when you connected your Codefresh account to your Git provider.
 

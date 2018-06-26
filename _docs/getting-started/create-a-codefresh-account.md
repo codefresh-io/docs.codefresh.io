@@ -138,7 +138,7 @@ Once that is done, follow the [Stash instructions]({{ site.baseurl }}/docs/integ
 
 ## Using Codefresh in a secure corporate environment
 
-If your source code repositories are in a private Git account that lies behind your company firewall firewall, or simply has no access to the internet, we can still help you!
+If your source code repositories are in a private Git account that lies behind your company firewall firewall, or simply has no access to the Internet, we can still help you!
 
 {% include 
 image.html 

@@ -43,7 +43,7 @@ Using this YAML example, we'll add an additional step to deploy the image in Doc
 
 ## Describe your deployment
 The following instructions describe how to create a new service in your Kubernetes cluster in order to deploy to it from Codefresh pipeline.
-**Note**: If you're deploying to an exisitng service in your Kubernetes cluster please skip to the [next step]({{ site.baseurl }}/docs/deploy-to-kubernetes/deployment-to-kubernetes-quick-start-guide/#add-a-deployment-step)
+**Note**: If you're deploying to an existing service in your Kubernetes cluster please skip to the [next step]({{ site.baseurl }}/docs/deploy-to-kubernetes/deployment-to-kubernetes-quick-start-guide/#add-a-deployment-step)
 
 {:start="1"}
  1. Go to the **`Kubernetes` &#8594; `Services page`**
