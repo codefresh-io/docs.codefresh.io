@@ -1,12 +1,11 @@
 ---
 title: "Continuous integration"
 description: ""
-group: pipelines
-sub_group: pipeline-examples
-# hack/workaround for sub elements, because parent has permalink
-permalink: /docs/pipelines/pipeline-examples/build-and-test/
+group: configure-ci-cd-pipeline
+sub_group: pipelines-gui
 redirect_from:
   - /docs/build-and-test/
+  - /docs/pipelines-gui/build-and-test/
 toc: true
 ---
 You can optionally add the unit test to the pipeline. The unit test is a bash-like script that will run in the root of the repository, inside the Docker container, using any testing tool that supports your framework. You can either configure your unit test script within the pipeline configuration page itself. In this example, we will show how to add it within the pipeline configuration page.
@@ -61,5 +60,5 @@ Go to [Unit Tests]({{ site.baseurl }}/docs/configure-ci-cd-pipeline/unit-tests/)
 - [Unit Test with Database]({{ site.baseurl }}/docs/configure-ci-cd-pipeline/unit-tests/unit-tests-with-database/)
 
 ## What's next?
-- [Build and Push to Docker registry]({{ site.baseurl }}/docs/pipelines/pipeline-examples/build-and-push-to-docker-registry/) 
-- [Build and Deploy to Kubernetes]({{ site.baseurl }}/docs/pipelines/pipeline-examples/build-and-deploy-to-kubernetes/)
+- [Build and Push to Docker registry]({{ site.baseurl }}/docs/configure-ci-cd-pipeline/pipelines-gui/build-and-push-to-docker-registry/) 
+- [Build and Deploy to Kubernetes]({{ site.baseurl }}/docs/configure-ci-cd-pipeline/pipelines-gui/continuous-delivery-gke-docker-swarm-amazon-ecs)

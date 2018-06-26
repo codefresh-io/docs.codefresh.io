@@ -1,12 +1,11 @@
 ---
 title: "Continuous Delivery - GKE, Docker SWARM, Amazon ECS"
 description: ""
-group: pipelines
-sub_group: pipeline-examples
-# hack/workaround for sub elements, because parent has permalink
-permalink: /docs/pipelines/pipeline-examples/build-and-deploy-to-kubernetes/
+group: configure-ci-cd-pipeline
+sub_group: pipelines-gui
 redirect_from:
   - /docs/build-and-deploy-to-kubernetes/
+  - /docs/pipelines-gui/build-and-deploy-to-kubernetes/
 toc: true
 ---
 Using Codefresh's Deploy Images you can easily deploy to

@@ -5,9 +5,6 @@
   - title: On-demand environments
   - title: Deployment to Kubernetes
     url: "/deployment-to-kubernetes-quick-start-guide"
-
-
-
 - title: Configure a CI/CD pipeline
   url: "/configure-ci-cd-pipeline"
   pages:
@@ -22,6 +19,13 @@
           url: "/dockerhub-triggers"
         - title: "Timer (Cron) Triggers"
           url: "/cron-triggers"
+    - title: "Creating pipelines using a GUI"
+      url: "/pipelines-gui"
+      sub-pages:
+        - title: "Continuous integration"
+        - title: "Build and Push to Docker registry"
+        - title: "Continuous Delivery - GKE, Docker SWARM, Amazon ECS"
+          url: "/continuous-delivery-gke-docker-swarm-amazon-ecs"
     - title: Unit Tests
       url: "/unit-tests"
       sub-pages:
@@ -170,21 +174,6 @@
       url: "/elastic-beanstalk"
     - title: Microsoft Azure
       url: "/microsoft-azure"
-
-- title: Pipelines
-  url: "/pipelines"
-  pages:
-    - title: Introduction
-      url: "/introduction"
-    - title: Examples
-      url: "/pipeline-examples"
-      sub-pages:
-        - title: Continuous integration
-          url: "/build-and-test"
-        - title: Build and Push to Docker registry
-          url: "/build-and-push-to-docker-registry"
-        - title: Continuous Delivery - GKE, Docker SWARM, Amazon ECS
-          url: "/build-and-deploy-to-kubernetes"
 
 - title: Learn by example
   url: "/learn-by-example"
