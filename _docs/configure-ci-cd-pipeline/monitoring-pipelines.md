@@ -91,6 +91,10 @@ max-width="80%"
 
 There are also two extra options if you click the small "3-dot" menu button on the right. You can rebuild a pipeline or launch a [test environment]({{ site.baseurl }}/docs/getting-started/on-demand-environments/#launching-a-docker-image-using-codefresh) from the resulting Docker image.
 
+Notice that is you rebuild a pipeline it will trigger with the exact settings it originally had. So 
+if this was a manual trigger where you [disabled caching]({{ site.baseurl }}/docs/troubleshooting/common-issues/disabling-codefresh-caching-mechanisms/) or changed the [notification options](#monitoring-pipelines-that-check-pull-requests), the new
+execution will still honor those settings (even if you have changed them for later builds).
+
 
 ## Viewing logs from an individual pipeline
 
