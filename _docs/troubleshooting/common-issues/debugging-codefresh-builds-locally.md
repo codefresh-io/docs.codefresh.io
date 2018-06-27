@@ -7,27 +7,30 @@ toc: true
 ---
 
 Codefresh provides detailed logs for each pipeline that show all the execution results. If however, you wish to run
-a build step locally you can easily install Docker on your workstation and simulate the same executions the Codefresh performs on its platform runners.
+a build step locally you can easily install Docker on your workstation and simulate the same executions Codefresh performs on its platform runners.
 
 ## Prerequisites 
 
-You need to have Docker installed in your local workstation. You can follow the [official instructions](https://docs.docker.com/install/) to install it. Notice that if you use Linux, the Docker version offered by your native
+You need to have Docker installed on your local workstation. You can follow the [official instructions](https://docs.docker.com/install/) to install it. Notice that if you use Linux, the Docker version offered by your native
 package manager is not always the latest version.
 
-Once docker is installed check that it runs with
+Once docker is installed, check that it runs correctly with:
 
 ```
 docker run hello-world
 ```
 
+You should get a short welcome message.
+
 ## Simulating a Codefresh build step
+
 
 Codefresh is running each build step in the context of a Docker container. To fully replicate a build step locally you need to:
 
 1. use the same docker image as a build context
-1. mount the shared codefresh volume at /codefresh/volume
+1. mount the shared codefresh volume at `/codefresh/volume`
 1. place your git source project inside the volume
-1. execute the same command defined in your codefresh.yml file
+1. execute the same command defined in your `codefresh.yml` file
 
 For more details on how Codefresh runs build steps see the [introduction to pipelines]({{ site.baseurl }}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines).
 
@@ -38,24 +41,26 @@ Detailed steps are shown below.
 Clone your git repository and checkout the branch the build in Codefresh failed on.
 
 If your repository is already cloned locally, make sure to run `git pull` so your local cloned
-repository will be updated with the latest changes (make sure you’re checked out to
-the correct branch)
+repository will be updated with the latest changes (make sure you have checked out 
+the correct branch first).
 
 ### Step 2 - Login to your Docker registry
 
-If the docker image that you use is a public one (such as node, python, maven, etc.) you can skip this step
+If the docker image that you use is a public one (such as node, python, maven, etc.) you can skip this step.
 
-If the docker image you use is a private one, you should log in to it from the command line.
+If the docker image you use is a private one, you should log in to the respective registry from the command line.
 
 For example if your image is in the Codefresh Docker registry, you can [create a Token]({{ site.baseurl }}/docs/docker-registries/codefresh-registry/#use-codefresh-registry-locally) from the Codefresh UI 
-and use locally
+and use it locally.
 
-Check the documentation of your own Docker registry (e.g. GRC, Quay.io, Bintray) on how to achieve this
+Check the documentation of your own Docker registry (e.g. GRC, Quay.io, Bintray) on how to achieve this.
+
+The docker login command should return with a success message.
 
 ### Step 3 - Mount your git project inside the container 
 
 
-To mount your project inside the Docker container run the following command
+To mount your project inside the Docker container run the following command:
 
 ```
 docker run -it -v $(pwd):/codefresh/volume/<your_repo_name> <image_name_and_tag> /bin/bash
@@ -75,7 +80,7 @@ max-width="60%"
 caption="Getting the full name of a Docker image (click image to enlarge)" 
 %}
 
-Notice that if your image does not have bash available you can use `/bin/sh` instead as the last part of the command
+Notice that if your image does not have bash available you can use `/bin/sh` instead, as the last part of the command.
 
 ### Step 4 - Change the work directory to the root project
 
@@ -90,7 +95,7 @@ Working directory refers to your starting point within the container. By default
 not referring to it in the Codefresh step) it’ll be your cloned repository path which is
 `/codefresh/volume/<your_repo_name>`.
 
-Navigate to your working directory within the container
+Navigate to your working directory within the container:
 
 ```
 cd /codefresh/volume/<your_repo_name>
