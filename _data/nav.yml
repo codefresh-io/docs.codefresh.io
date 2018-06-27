@@ -26,6 +26,7 @@
         - title: "Build and Push to Docker registry"
         - title: "Continuous Delivery - GKE, Docker SWARM, Amazon ECS"
           url: "/continuous-delivery-gke-docker-swarm-amazon-ecs"
+    - title: "Monitoring Pipelines"
     - title: Unit Tests
       url: "/unit-tests"
       sub-pages:
