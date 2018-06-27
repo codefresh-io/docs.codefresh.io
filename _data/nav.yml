@@ -331,6 +331,8 @@
           url: "/validation-port-warnings"
         - title: Restoring data from pre-existing image hangs on
           url: "/restoring-data-from-pre-existing-image-hangs-on"
+        - title: Debugging Codefresh builds locally
+          url: "/debugging-codefresh-builds-locally"
         - title: Disabling codefresh caching mechanisms
           url: "/disabling-codefresh-caching-mechanisms"
         - title: Handling commit messages with a quote character
