@@ -10,6 +10,7 @@ toc: true
 ### June 2018
 
 - Ability to trigger builds only if a specific folder/file on a repository changes
+- Ability to filter builds by the person that was the respective committer 
 
 
 ### May 2018
