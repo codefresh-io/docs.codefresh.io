@@ -37,8 +37,9 @@ You can select the following information:
 * *Git Provider* - select that one that is linked with your account
 * *Repository* - You can select any repository even something different than the one that is used for the code checkout
 * *Commit checkbox* - If enabled will trigger this pipeline for any commit
-* *PR checkbox* - If enabled will trigger for any events that belong to a pull request
+* *PR checkboxes* - Various checkboxes for filtering the Pull request event 
 * *Branch field* - This is a regular expression and will only trigger for branches that match this naming pattern
+* *Pull Request target* branch - This is a regular expression and will trigger only when a Pull request is created against any branch that matches it
 * *Modified files* - This allows you to constrain the build and trigger it only if the modified files from the commit match this [glob expression](https://en.wikipedia.org/wiki/Glob_(programming))
 
 {% include image.html
@@ -46,22 +47,24 @@ lightbox="true"
 file="/images/pipeline/triggers/add-git-trigger.png"
 url="/images/pipeline/triggers/add-git-trigger.png"
 alt="Adding GIT Trigger"
-max-width="60%"
+max-width="50%"
 %}
 
 The commit checkbox (by default it is enabled) means that this pipeline will run for *any* commit as long as its source branch matches the naming scheme. This includes commits on pull requests.
 
-The PR checkbox (by default it is disabled) means that this pipeline will run only on events that happen on a Pull Request. This includes opening the Pull Request itself as well as any commits that happen to the branch while a Pull request is active.
+The PR checkboxes mean that this pipeline will run only on the respective events that happen on a Pull Request. You can select multiple checkboxes to further fine-tune the exact event. If you are interested in all events select the checkbox *Any Pull Request event*.
 
 
-In most cases you will have either of these checkboxes active. Enabling both at the same time will result in some duplicate builds (e.g. when commits happen to pull request branches).
-The concept behind these two checkboxes (and in conjunction with the branch text field) is to allow you to define which pipelines run for various workflows in your organization.
+The Pull request target field allows you to trigger this pipeline only when the target of a Pull Request matches the
+branch name regular expression. Common examples here would be `master` or `production`.
 
-As a simple example you can have a *production* pipeline that runs only on *master* branch (and therefore the branch field says "master") and a *testing* pipeline that runs user acceptance tests where only the Pull Request checkbox is active. This means that User Acceptance tests will run whenever a PR is created or modified. Once it is merged the p*roduction* pipeline will deploy the changes.
+>The field *Pull request target* is available for all Git providers apart from Atlassian stash
+
+The concept behind these checkboxes and branch name fields is to allow you to define which pipelines run for various workflows in your organization.
+
+As a simple example you can have a *production* pipeline that runs only on *master* branch (and therefore the branch field says "master") and a *testing* pipeline that runs user acceptance tests where only the Pull Request Open checkbox is active. This means that User Acceptance tests will run whenever a PR is created. Once it is merged the *production* pipeline will deploy the changes.
 
 In a more advanced example you could add regular expressions in the branch field with names such as *feature-*, *hotfix-* etc and the PR checkbox active on different pipelines. This way you could trigger the pull requests only when they happen on specific branches. So a developer that creates a temporary feature with a name that doesn't match these naming patterns will not trigger those pipelines.
-
->If the PR checkbox is enabled, Codefresh will also trigger a pipeline if a pull request is rejected/closed. While at first glance this seems counterintuitive, in practice it allows you to tear down test environments when the code from a Pull request is no longer needed. See below for a way to decide exactly what types of webhook events are used for triggers.
 
 The *modified files* field is a very powerful Codefresh feature that allows you to trigger a build only if the
 files affected by a commit are in a specific folder (or match a specific naming pattern). This means that

@@ -165,7 +165,7 @@ This way the pipeline status *will* change the build status even with manual bui
 The same behavior is also available to the [Codefresh CLI](https://codefresh-io.github.io/cli/). In that case use the parameter `--enable-notifications`
 to specify if manually triggering a build will also change the GIT status.
 
-### Viewing Pipelines status from text/html files
+### Viewing Pipeline status from text/html files
 
 Codefresh also supports build badges that allow you to show the
 status of Pipeline in Text files or web pages.
