@@ -138,7 +138,11 @@ caption="Pull Request Status (click image to enlarge)"
 max-width="50%" 
 %}
 
-If you have setup a GIT trigger in Codefresh then by default this happens automatically without any other configuration
+
+
+
+
+If you have setup a [GIT trigger]({{ site.baseurl }}/docs/configure-ci-cd-pipeline/triggers/git-triggers/) in Codefresh then by default this happens automatically without any other configuration
 for all automated commits (that are coming from webhooks).
 
 If you start a build manually then by default the git status will **not** be updated (i.e. the result of the pipeline
@@ -158,7 +162,10 @@ max-width="50%"
 
 This way the pipeline status *will* change the build status even with manual builds.
 
-### Viewing Pipelines status from Readme files
+The same behavior is also available to the [Codefresh CLI](https://codefresh-io.github.io/cli/). In that case use the parameter `--enable-notifications`
+to specify if manually triggering a build will also change the GIT status.
+
+### Viewing Pipelines status from text/html files
 
 Codefresh also supports build badges that allow you to show the
 status of Pipeline in Text files or web pages.
