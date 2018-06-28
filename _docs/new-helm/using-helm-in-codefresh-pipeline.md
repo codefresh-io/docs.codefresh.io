@@ -14,7 +14,7 @@ We have created a special Helm step for easy integration of Helm in Codefresh pi
 ## Usage
 
 Add a Freestyle step, with the `codefresh/cfstep-helm` image.  
-The Helm step is configured using environment variables, which can be provided in any of the various ways supported by Codefresh as described [here](https://codefresh.io/docs/docs/codefresh-yaml/variables/#user-provided-variables).  
+The Helm step is configured using environment variables, which can be provided in any of the various ways supported by Codefresh as described [here]({{ site.baseurl }}/docs/codefresh-yaml/variables/#user-provided-variables).  
 For example, here's how to provide variables as part of the freestyle step definition:
 
 ```yaml
@@ -40,7 +40,7 @@ The operation mode is set by the `ACTION` variable, where the value is `install`
 
 You should configure a Helm repository for the step to work with. Besides public HTTP repositories, we support a variety of private, authenticated Helm repositories. Codefresh also provide a free, managed Helm repository for every account.
 
-First, you'll need to connect your repository with Codefresh as described [here](https://codefresh.io/docs/docs/new-helm/add-helm-repository/), or obtain your managed Helm repository URL as described [here](https://codefresh.io/docs/docs/new-helm/managed-helm-repository/#chart-repository-url).
+First, you'll need to connect your repository with Codefresh as described [here]({{ site.baseurl }}/docs/new-helm/add-helm-repository/), or obtain your managed Helm repository URL as described [here]({{ site.baseurl }}/docs/new-helm/managed-helm-repository/#chart-repository-url).
 
 Once you have a Helm repository connected, attach it to the pipeline by selecting it in the pipeline editing page, under "Environment Variables" -> "Import from shared configuration".
 
@@ -48,7 +48,7 @@ Once you have a Helm repository connected, attach it to the pipeline by selectin
 
 You can configure a Kubernetes cluster to deploy to using the `KUBE_CONTEXT` variable.
 
-First, you'll need to connect your Kubernetes cluster with Codefresh as described [here](https://codefresh.io/docs/docs/deploy-to-kubernetes/adding-non-gke-kubernetes-cluster/). Once you have a Kubernetes cluster connected, provide it to the Helm step by adding the `KUBE-CONTEXT` variable, where the value is the connection *name* that you've entered when creating the connection. The connection name also appears as the title of the cluster in Kubernetes integration settings (Account Settings -> Integration -> Kubernetes).
+First, you'll need to connect your Kubernetes cluster with Codefresh as described [here]({{ site.baseurl }}/docs/deploy-to-kubernetes/adding-non-gke-kubernetes-cluster/). Once you have a Kubernetes cluster connected, provide it to the Helm step by adding the `KUBE-CONTEXT` variable, where the value is the connection *name* that you've entered when creating the connection. The connection name also appears as the title of the cluster in Kubernetes integration settings (Account Settings -> Integration -> Kubernetes).
 
 ## Helm Values
 

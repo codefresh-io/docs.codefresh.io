@@ -23,7 +23,7 @@ You can find your managed repository URL in the Helm integration section. The UR
 
 ## Codefresh Helm dashboards
 
-The Codefresh Helm Charts and Helm Releases dashboards are automatically configured to work with your default managed repo so you can easily install charts and manage releases. For more information see: [Install chart from Helm repository](https://codefresh.io/docs/docs/new-helm/add-helm-repository/#install-chart-from-your-helm-repository) and [Helm release management](https://codefresh.io/docs/docs/new-helm/helm-releases-management/) articles.
+The Codefresh Helm Charts and Helm Releases dashboards are automatically configured to work with your default managed repo so you can easily install charts and manage releases. For more information see: [Install chart from Helm repository]({{ site.baseurl }}/docs/new-helm/add-helm-repository/#install-chart-from-your-helm-repository) and [Helm release management]({{ site.baseurl }}/docs/new-helm/helm-releases-management/) articles.
 
 ## Use Codefresh CLI for advanced management
 
@@ -83,4 +83,4 @@ Notice the protocol is `cm://` instead of `https://` this indicates the custom a
 
 ## Using in a Codefresh pipeline
 
-The Codefresh Helm plugin automatically handles authentication for managed repositories. You can use the plugin as you usually would. For more information on the Codefresh Helm plugin, see [here](https://codefresh.io/docs/docs/new-helm/install-helm-chart-using-codefresh-pipeline/).
+The Codefresh Helm plugin automatically handles authentication for managed repositories. You can use the plugin as you usually would. For more information on the Codefresh Helm plugin, see [here]({{ site.baseurl }}/docs/new-helm/using-helm-in-codefresh-pipeline/).
