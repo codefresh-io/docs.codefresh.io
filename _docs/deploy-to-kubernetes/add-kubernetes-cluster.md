@@ -116,15 +116,18 @@ Once you have this token, follow the steps in the section below, using this toke
 
 {:.text-secondary}
 ## Adding any other cluster type (not dependent on any provider)
-  
+ 
+On your Configuration settings (left-menu), go to the **Integration** tab and choose **Kubernetes**  
 In order to add any other type of cluster, outside of GKE, use **Custom Providers**
+
 
 {% include image.html
 lightbox="true"
-file="/images/eb1795e-codefresh_add_custom_cluster.png"
-url="/images/eb1795e-codefresh_add_custom_cluster.png"
-alt="codefresh_add_custom_cluster.png"
-max-width="40%"
+file="/images/kubernetes/add-cluster/add-cluster-button.png"
+url="/images/kubernetes/add-cluster/add-cluster-button.png"
+alt="Adding a custom cluster in Codefresh"
+caption="Adding a custom K8s cluster in Codefresh"
+max-width="60%"
   %}
   
 The integration between Codefresh and your Kubernetes cluster is API based and relies on a Kubernetes service account of your choosing that will be used to manage the integration.
@@ -145,10 +148,10 @@ The configurations you'll be required to add are:
 
 {% include image.html
   lightbox="true"
-  file="/images/6e92733-Screen_Shot_2017-10-16_at_9.40.32_PM.png"
-  url="/images/6e92733-Screen_Shot_2017-10-16_at_9.40.32_PM.png"
-  alt="Screen Shot 2017-10-16 at 9.40.32 PM.png"
-  max-width="40%"
+  file="/images/kubernetes/add-cluster/add-cluster-details.png"
+  url="/images/kubernetes/add-cluster/add-cluster-details.png"
+  alt="Adding a custom cluster in Codefresh - details"
+  max-width="60%"
     %}
     
  In the section below we'll provide you with easy instructions how to get all your cluster configurations in order to add it to Codefresh.   
@@ -192,14 +195,6 @@ In the instructions above, we're reffering for a service account named 'default'
 {{site.data.callout.end}}
 
 Once the cluster been added successfully you can go to the `Kubernetes` tab to start working with the services of your cluster.
-
-{% include image.html
-  lightbox="true"
-  file="/images/eb2e31b-codefresh_kubernetes_tab.png"
-  url="/images/eb2e31b-codefresh_kubernetes_tab.png"
-  alt="codefresh_kubernetes_tab.png"
-  max-width="40%"
-    %}
 
 So, what's next?
 - [Manage your Kubernetes cluster in Codefresh]({{ site.baseurl }}/docs/deploy-to-kubernetes/codefresh-kubernetes-integration-beta/)
