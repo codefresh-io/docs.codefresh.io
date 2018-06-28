@@ -1,21 +1,41 @@
 ---
 title: "Deployment to Kubernetes"
-description: ""
+description: "Using the Codefresh GUI to deploy to a Kubernetes cluster"
 group: getting-started
 redirect_from:
   - /docs/getting-started-deployment-to-kubernetes-quick-start-guide/
 toc: true
 ---
 
+In this tutorial we will see how you can use Codefresh to deploy a Docker image to a Kubernetes cluster
+and also how to to setup an automated pipeline to automatically redeploy it when the source code changes
+
+>Even though, in this tutorial we use Codefresh to deploy docker images directly to the Kubernetes cluster,
+in production we suggest you use [Helm](https://helm.sh/) instead. Helm is a package manager for Kubernetes that allows you to
+deploy multiple applications at once as a single entity (Helm Charts) and also perform rollbacks to previous versions.
+Like Kubernetes, [Codefresh has native support for Helm deployments]({{ site.baseurl }}/docs/new-helm/using-helm-in-codefresh-pipeline/) including a [release dashboard]({{ site.baseurl }}/docs/new-helm/helm-releases-management/).
+
+Notice that for this tutorial we will use the GUI provided by Codefresh to both create the Kubernetes service inside the cluster and also to create the CI/CD pipeline that keeps it up-to-date. In a real world scenario it is best if you use  [Codefresh YAML]({{ site.baseurl }}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) which is much more powerful and flexible.
+
 ## Overview
-This guide will walk you through the most common Kubernetes deployment scenario.
+
+At then end of this tutorial we will have a pipeline that 
+
+1. checks out code from Github and creates a Docker image
+1. stores it in the internal Codefresh Docker registry
+1. Notifies the K8s cluster that a new version of the application is present. Kubernetes will pull the new image and deploy it.
+
+IMAGE here.
+
+For simplicity reasons, we will use the built-in Docker registry that is available to all Codefresh accounts. For your own application you can also integrate with any of the popular Docker registries.
 
 ## Prerequisites
 
 It is assumed that:
-  - you have already [added your K8 cluster]({{ site.baseurl }}/docs/deploy-to-kubernetes/adding-non-gke-kubernetes-cluster/) into Codefresh
-  - you are familiar with [Codefresh YAML]({{ site.baseurl }}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) and basic [pipeline steps ]({{ site.baseurl }}/docs/codefresh-yaml/steps/)and know how to describe it 
-  - you know how to [integrate your docker registry]({{ site.baseurl }}/docs/docker-registries/external-docker-registries/) with Codefresh
+  - you have already [added your K8s cluster]({{ site.baseurl }}/docs/deploy-to-kubernetes/adding-non-gke-kubernetes-cluster/) into Codefresh
+  - You have already an application that has a Dockerfile. In not, see the [previous tutorial]({{ site.baseurl }}docs/getting-started/create-a-basic-pipeline/)
+
+Notice that for this tutorial you **don't** need a Kubernetes deployment file. Codefresh will create one for you via its friendly GUI. If you already have an existing deployment file for your own application, [consult the main K8s documentation]({{ site.baseurl }}/docs/deploy-to-kubernetes/deployment-to-kubernetes-quick-start-guide/) on how to use it.
   
 ## Build and Push your image
 The following describe a basic Codefresh pipeline scenario to build and push your image to Dockerhub registry.
