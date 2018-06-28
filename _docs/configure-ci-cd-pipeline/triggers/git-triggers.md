@@ -54,6 +54,8 @@ The commit checkbox (by default it is enabled) means that this pipeline will run
 
 The PR checkboxes mean that this pipeline will run only on the respective events that happen on a Pull Request. You can select multiple checkboxes to further fine-tune the exact event. If you are interested in all events select the checkbox *Any Pull Request event*.
 
+>The individual Pull request checkboxes are available only for Github repositories.
+
 
 The Pull request target field allows you to trigger this pipeline only when the target of a Pull Request matches the
 branch name regular expression. Common examples here would be `master` or `production`.
@@ -70,8 +72,8 @@ The *modified files* field is a very powerful Codefresh feature that allows you 
 files affected by a commit are in a specific folder (or match a specific naming pattern). This means that
 you can have a big GIT repository with multiple projects and build only the parts that actually change.
 
->Currently the field *modified files* is available only for Github repositories, since Github is the only GIT provider
-that sends this information in the webhook. We will support other GIT providers as soon as they add the respective feature.
+>Currently the field *modified files* is available only for Github and Gitlab repositories, since they are the only GIT providers
+that send this information in the webhook. We will support other GIT providers as soon as they add the respective feature.
 
 ## Using the Modified files field to constrain triggers to specific folder/files
 
