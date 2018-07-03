@@ -152,3 +152,11 @@ max-width="100%"
 
 We can establish a VPN / tunnel to your network, or discuss options for an on-premises Codefresh deployment. Please [contact us to get started](https://codefresh.io/contact-us/)
 
+
+## What to read next
+
+* [Create a Basic pipeline]({{ site.baseurl }}/docs/getting-started/create-a-basic-pipeline/)
+* [Deploy to Kubernetes]({{ site.baseurl }}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/)
+* [Internal Docker Registry]({{ site.baseurl }}/docs/docker-registries/codefresh-registry/)
+* [Codefresh YAML]({{ site.baseurl }}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
+

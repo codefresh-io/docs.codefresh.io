@@ -417,7 +417,7 @@ the build process instead of the build result.
 
 For the purposes of this tutorial we will push our sample application to [DockerHub](https://cloud.docker.com/) which is the free public Docker hosting from Docker Inc. You need to create a free account with the service first and note down your username and password.
 
-Once you create your Docker Cloud account, go to your Codefresh Account Settings, by clicking on your username at the bottom left corner. Then open the *Integration* tab and click the *Add Registry* button.
+Once you create your Docker Cloud account, go to your Account Configuration, by clicking on *Configuration* on the left sidebar. Then open the *Integration* tab and click the *Add Registry* button.
 
 {% include 
 image.html 
@@ -477,7 +477,13 @@ max-width="50%"
 
 Pushing to the Docker Registry is the last step in the build pipeline. Now that we have the basic functionality ready we can see how Codefresh handles [Continuous Integration](https://en.wikipedia.org/wiki/Continuous_integration) with Pull requests and automatic builds.
 
-This concludes the basic CI tutorial. The next step it use Codefresh for [Deployments]({{ site.baseurl }}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/) 
+
+## What to read next
+
+* [Deploy to Kubernetes]({{ site.baseurl }}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/)
+* [Introduction to Pipelines]({{ site.baseurl }}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
+* [Codefresh YAML]({{ site.baseurl }}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
+* [On demand environments]({{ site.baseurl }}/docs/getting-started/on-demand-environments/)
 
 
 
