@@ -122,7 +122,7 @@ link_git_examples:    "https://github.com/codefresh-examples/examples/"
 link_api:             "https://g.codefresh.io/api/"
 link_plugins:         "https://github.com/codefresh-io/plugins"
 
-ga_tracking_code:     "UA-112283329-1"
+ga_tracking_code:     "UA-53554200-2"
 
 cdn:
   # See https://www.srihash.org for info on how to generate the hashes
