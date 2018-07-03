@@ -293,6 +293,12 @@ max-width="50%"
 
 You now have a complete CI/CD pipeline in Codefresh for fully automated builds to Kubernetes!
 
+## What to read next
+
+* [Introduction to Pipelines]({{ site.baseurl }}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
+* [Internal Docker Registry]({{ site.baseurl }}/docs/docker-registries/codefresh-registry/)
+* [Codefresh YAML]({{ site.baseurl }}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
+
 
 
 
