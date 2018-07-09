@@ -7,6 +7,11 @@ redirect_from:
 toc: true
 ---
 
+### July 2018
+
+- Added new variable `CF_BUILD_INITIATOR` for the person that started a build
+- Improved retrying of push/pull actions after failures with timeouts and general connectivity issues.
+
 ### June 2018
 
 - Ability to trigger builds only if a specific folder/file on a repository changes
@@ -14,8 +19,6 @@ toc: true
 - Ability to select if a manual trigger of a pipeline will change the git status of a pull request or not
 - Ability to define a trigger based on the target branch of a pull request
 - Ability to filter builds by the person that was the respective committer 
-
-
 
 ### May 2018
 - Integrated Helm repositories for each Codefresh account
