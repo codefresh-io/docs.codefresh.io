@@ -111,7 +111,7 @@
     localurl: /docs/new-helm/best-practices/
 - title: "Single Sign-On"
   new: true
-  icon: https://codefresh.io/wp-content/uploads/2017/11/started.png
+  icon: images/home-icons/login.png
   url: ''
   links:
   - title: Federated Single Sign-On Overview
@@ -131,7 +131,7 @@
     url: http://cli.codefresh.io/
 - title: "Enterprise Account Management"
   new: true
-  icon: /images/home-icons/started.png
+  icon: images/home-icons/enterprise1.png
   url: ''
   links:
   - title: Enterprise Account Management Overview
