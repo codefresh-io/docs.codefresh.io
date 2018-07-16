@@ -5,6 +5,8 @@
   - title: On-demand environments
   - title: Deployment to Kubernetes
     url: "/deployment-to-kubernetes-quick-start-guide"
+  - title: Deployment to Kubernetes with Helm
+    url: "/helm-quick-start-guide"
 - title: Configure a CI/CD pipeline
   url: "/configure-ci-cd-pipeline"
   pages:
