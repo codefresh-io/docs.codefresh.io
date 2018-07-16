@@ -11,7 +11,7 @@ In this tutorial we will see how you can use Codefresh to deploy a Docker image 
 and also how to to setup an automated pipeline to automatically redeploy it when the source code changes.
 
 >Even though, in this tutorial we use Codefresh to deploy docker images directly to the Kubernetes cluster,
-in production we suggest you use [Helm](https://helm.sh/) instead. Helm is a package manager for Kubernetes that allows you to
+in production we suggest you use [Helm]({{ site.baseurl }}/docs/getting-started/helm-quick-start-guide/)  instead. Helm is a package manager for Kubernetes that allows you to
 deploy multiple applications at once as a single entity (Helm Charts) and also perform rollbacks to previous versions.
 Like Kubernetes, [Codefresh has native support for Helm deployments]({{ site.baseurl }}/docs/new-helm/using-helm-in-codefresh-pipeline/) including a [release dashboard]({{ site.baseurl }}/docs/new-helm/helm-releases-management/).
 
@@ -295,6 +295,7 @@ You now have a complete CI/CD pipeline in Codefresh for fully automated builds t
 
 ## What to read next
 
+* [Deploying to Kubernetes with Helm]({{ site.baseurl }}/docs/getting-started/helm-quick-start-guide/)
 * [Introduction to Pipelines]({{ site.baseurl }}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
 * [Internal Docker Registry]({{ site.baseurl }}/docs/docker-registries/codefresh-registry/)
 * [Codefresh YAML]({{ site.baseurl }}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
