@@ -108,3 +108,9 @@ kubectl create secret docker-registry cfcr\
  --docker-email=$DOCKER_EMAIL
 {% endraw %}
 {% endhighlight %}
+
+## Giving access to a Docker Registry via the Codefresh CLI
+
+The Codefresh CLI can also create pull secrets in an automated manner.
+
+See the Image pull Secret [documentation](https://codefresh-io.github.io/cli/more/image-pull-secret/).
