@@ -122,10 +122,26 @@
           url: "/use-kubectl-as-part-of-freestyle-step"
 
 
-- title: Codefresh Plugins
+- title: "Artifacts Management"
+  url: "/docker-registries"
   pages:
-    - title: Plugins
-    - title: Contribute Codefresh Plugin
+    - title: "Codefresh Docker Registry"
+      url: "/codefresh-registry"
+    - title: "External Docker Registries"
+      url: "/external-docker-registries"
+      sub-pages:
+        - title: "Docker Hub"
+          url: "/docker-hub"
+        - title: "Amazon EC2 Container Registry"
+          url: "/amazon-ec2-container-registry"
+        - title: "Google Container Registry"
+          url: "/google-container-registry"
+        - title: "JFrog Bintray.io"
+          url: "/bintray-io"
+        - title: "Quay.io"
+          url: "/quay-io"
+        - title: "Other Registries"
+          url: "/other-registries"
 
 - title: Deploy to Kubernetes
   url: "/deploy-to-kubernetes"
@@ -245,26 +261,7 @@
         - title: Spring Boot + Kafka + Zookeeper
           url: "/spring-boot-kafka-zookeeper"
 
-- title: "Docker Registries"
-  url: "/docker-registries"
-  pages:
-    - title: "Codefresh Docker Registry"
-      url: "/codefresh-registry"
-    - title: "External Docker Registries"
-      url: "/external-docker-registries"
-      sub-pages:
-        - title: "Docker Hub"
-          url: "/docker-hub"
-        - title: "Amazon EC2 Container Registry"
-          url: "/amazon-ec2-container-registry"
-        - title: "Google Container Registry"
-          url: "/google-container-registry"
-        - title: "JFrog Bintray.io"
-          url: "/bintray-io"
-        - title: "Quay.io"
-          url: "/quay-io"
-        - title: "Other Registries"
-          url: "/other-registries"
+
 
 - title: Integrations
   url: "/integrations"

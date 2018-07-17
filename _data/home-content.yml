@@ -34,9 +34,8 @@
     localurl: /docs/codefresh-yaml/working-directories/
   - title: Examples
     localurl: /docs/yaml-examples/examples/
-  - title: "*NEW* Custom YAML steps"
-    new: true
-    localurl: /docs/codefresh-plugins/plugins/
+  - title: "Custom YAML steps"
+    url: https://github.com/codefresh-io/plugins
 - title: Deployment
   icon: https://codefresh.io/wp-content/uploads/2017/11/deployment.png
   url: ''
@@ -100,6 +99,7 @@
   url: ''
   links:
   - title: Codefresh Managed Helm Repositories
+    new: true
     localurl: /docs/new-helm/managed-helm-repository/
   - title: Using Helm in Codefresh pipeline
     localurl: /docs/new-helm/using-helm-in-codefresh-pipeline/
