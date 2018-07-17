@@ -13,7 +13,7 @@ Helm is a package manager for Kubernetes. It behaves similar to other package ma
 
 Helm offers several extra features on top of vanilla Kubernetes deployments, some of which are:
 
-* The ability to group multiple Kubernetes manifests together and treat as a single entity (for deployments, rollbacks, and storage). Groups of Manifests are called [Helm Charts](https://github.com/kubernetes/helm/blob/master/docs/charts.md).
+* The ability to group multiple Kubernetes manifests together and treat them as a single entity (for deployments, rollbacks, and storage). Groups of Manifests are called [Helm Charts](https://github.com/kubernetes/helm/blob/master/docs/charts.md).
 * Built-in templating for Kubernetes manifests, putting an end to custom template systems that you might use for replacing things such as the Docker tag inside a manifest.
 * The ability to create Charts of Charts which contain the templates as well as default values. This means
 that you can describe the dependencies of an application in the service level and deploy everything at the same time.
@@ -214,7 +214,7 @@ steps:
     type: build
     image_name: kostis-codefresh/python-flask-sampleapp
     working_directory: ./
-    tag: ${{CF_BRANCH_TAG_NORMALIZED}}
+    tag: '${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_SHORT_REVISION}}'
     dockerfile: Dockerfile
   StoreChart:
     title: Storing Helm chart

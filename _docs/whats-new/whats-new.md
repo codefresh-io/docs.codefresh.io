@@ -9,6 +9,7 @@ toc: true
 
 ### July 2018
 
+- Build status for Pull requests are now per pipeline giving better feedback
 - Added new variable `CF_BUILD_INITIATOR` for the person that started a build
 - Improved retrying of push/pull actions after failures with timeouts and general connectivity issues.
 
