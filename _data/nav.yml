@@ -286,6 +286,8 @@
       url: "/jenkins-integration"
     - title: SonarQube Integration
       url: "/sonarqube-integration"
+    - title: Codefresh API
+      url: "/codefresh-api"
 
 - title: Single Sign-On
   url: "/sso"
@@ -367,8 +369,7 @@
       url: "/add-your-node-to-run-build-containers"
     - title: Launching a composition and defining a service environment variables using a file
       url: "/launching-a-composition-and-defining-a-service-environment-variables-using-a-file"
-    - title: Codefresh API
-      url: "/codefresh-api"
+
 
 
 - title: Whats new?
