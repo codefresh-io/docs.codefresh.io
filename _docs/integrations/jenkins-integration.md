@@ -17,4 +17,4 @@ max-width="40%"
 
 Codefresh can integrate with Jenkins in various ways
 - [Using the Codefresh plugin for Jenkins](https://wiki.jenkins.io/display/JENKINS/Codefresh+Plugin){:target="_blank"}
-- [Calling codefresh pipeline's webhook from the jenkins job]({{ site.baseurl }}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#pipeline-triggers-and-webhook)
+- [Calling codefresh pipeline's webhook from the jenkins job](https://codefresh-io.github.io/cli/pipelines/run-pipeline/)
