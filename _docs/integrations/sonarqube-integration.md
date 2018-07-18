@@ -1,6 +1,7 @@
 ---
 title: "Sonarqube Integration"
 description: "How to trigger a SonarQube Analysis from Codefresh"
+group: integrations
 toc: true
 ---
 

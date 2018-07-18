@@ -2,7 +2,6 @@
 title: "Jira Integration"
 description: ""
 group: integrations
-sub_group: git-providers
 redirect_from:
   - /docs/jira-integration-1/
   - /docs/integrations/jira-integration-1/

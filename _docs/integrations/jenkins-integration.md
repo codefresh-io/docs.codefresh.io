@@ -2,7 +2,6 @@
 title: "Jenkins Integration"
 description: ""
 group: integrations
-sub_group: git-providers
 redirect_from:
   - /docs/jenkins-integration/
 toc: true
