@@ -5,7 +5,7 @@ excerpt: ""
 group: getting-started
 redirect_from:
   - /docs/getting-started-create-a-basic-pipeline/
-  - /docs/build-your-image
+  - /docs/build-your-image/
 toc: true
 ---
 
