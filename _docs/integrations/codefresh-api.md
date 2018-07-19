@@ -76,9 +76,9 @@ From the same screen you can also revoke tokens if you don't need them anymore.
 
 Then once you have the token use it in the Codefresh Cli like this
 
-```
+{% highlight bash %}
 codefresh auth create-context --api-key <your_key_here>
-```
+{% endhighlight %}
 
 
 Now the Codefresh CLI is fully authenticated. The key is stored in `~/.cfconfig` so you only need to run this command once. The CLI
@@ -92,26 +92,26 @@ declared in the UI)
 
 Triggering a pipeline via the Codefresh CLI
 
-```
+{% highlight bash %}
 codefresh run kostis-codefresh/nestjs-example/ci-build -b master
-```
+{% endhighlight %}
 
 You can pass extra environment variables as well:
-```
+{% highlight bash %}
 codefresh run kostis-codefresh/nestjs-example/ci-build -b master -v sample-var1=sample1 -v SAMPLE_VAR2=SAMPLE2 
-```
+{% endhighlight %}
 
 For the API you can trigger a pipeline by finding its serviceId from the UI
 
-```
+{% highlight bash %}
 curl 'https://g.codefresh.io/api/builds/5b1a78d1bdbf074c8a9b3458' --compressed -H 'content-type:application/json; charset=utf-8' -H 'x-access-token: <your_token_here>' --data-binary '{"serviceId":"5b1a78d1bdbf074c8a9b3458","type":"build","repoOwner":"kostis-codefresh","branch":"master","repoName":"nestjs-example"}'
-```
+{% endhighlight %}
 
 You can also pass extra environment variables using an array
 
-```
+{% highlight bash %}
 curl 'https://g.codefresh.io/api/builds/5b1a78d1bdbf074c8a9b3458' --compressed -H 'content-type:application/json; charset=utf-8' -H 'x-access-token: <your_token_here>' --data-binary '{"serviceId":"5b1a78d1bdbf074c8a9b3458","type":"build","repoOwner":"kostis-codefresh","branch":"master","repoName":"nestjs-example","variables":{"sample-var1":"sample1","SAMPLE_VAR2":"SAMPLE2"}}'
-```
+{% endhighlight %}
 
 The exact webhook can be easily found on the build settings for each pipeline.
 
@@ -131,17 +131,88 @@ If you press the copy button you will have in your clipboard the whole request (
 
 You can get the status of a build from the cli by using its ID:
 
-```
+{% highlight bash %}
 codefresh get builds 5b4f927dc70d080001536fe3
-```
+{% endhighlight %}
 
 Same thing with the API
 
-```
+{% highlight bash %}
 curl -X GET --header "Accept: application/json" --header "x-access-token: <your_token_here>" "https://g.codefresh.io/api/builds/5b4f927dc70d080001536fe3"
-```
+{% endhighlight %}
+
+## Example - creating Codefresh pipelines externally
+
+Codefresh has a great UI for creating pipelines for each of your projects. If you wish, you can also create pipelines
+programmatically in an external manner. This allows you to use your own templating solution for re-using pipelines
+and creating them from an external system.
+
+First you need a yaml file that defines the pipeline. This is a pipeline [spec](https://codefresh-io.github.io/cli/pipelines/spec/)
+
+Here is an example
+
+`Pipeline Spec`
+{% highlight yaml %}
+{% raw %}
+version: "1.0"
+kind: "pipeline"
+metadata:
+  name: "kostis-codefresh/nestjs-example/my-basic-pipeline"
+  description: "my description"
+  labels:
+    key1: "value1"
+    key2: "value2"
+  deprecate:
+    applicationPort: '8080'
+    repoPipeline: true
+spec:
+  triggers:
+    - type: "git"
+      provider: "github"
+      repo: "kostis-codefresh/nestjs-example"
+      events: ["push"]
+      branchRegex: '/./'
+  contexts: []
+  variables:
+    - key: "PORT"
+      value: 5000
+      encrypted: false
+    - key: "SECRET"
+      value: "secret-value"
+      encrypted: true
+  steps:
+    test_step_1:
+      image: "alpine"
+      commands:
+      - ls -a
+      - echo "hello world"
+      - echo "plain value $PORT"
+{% endraw %}
+{% endhighlight %}
+
+Save this spec into a file with an arbitrary name like `my-pipeline-spec.yml`.
+
+Now you can create the pipeline with the cli
+
+{% highlight bash %}
+codefresh create pipeline -f my-pipeline-spec.yml
+{% endhighlight %}
 
 
+And your pipeline will be available in the GUI
+
+{% include image.html 
+lightbox="true" 
+file="/images/integrations/api/creation-of-pipeline.png" 
+url="/images/integrations/api/creation-of-pipeline.png" 
+alt="Created Pipeline" 
+caption="New pipeline created" 
+max-width="70%" 
+%}
+
+
+Notice that you must prefix the name of the pipeline with your username and repository so that it becomes
+visible in the GUI under the correct project.
 
 
 ## Using Codefresh from within Codefresh
