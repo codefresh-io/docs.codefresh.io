@@ -75,7 +75,7 @@ __Login To CFCR__
 In order to pull images from Codefresh's registry you must first login. Use this Docker command to authenticate.
 
   `docker login`
-{% highlight terminal %}
+{% highlight bash %}
 docker login -u <USERNAME> -p <ACCESS_TOKEN> r.cfcr.io
 {% endhighlight %}
 
@@ -83,9 +83,9 @@ __Pull Docker Image__
 Use this Docker pull command to download the image
 
   `docker pull`
-{% highlight terminal %}
+{% highlight bash %}
 docker pull r.cfcr.io/<ACCOUNT>/<IMAGE>:<TAG>
 {% endhighlight %}
 
 ### See also
-[Accessing Codefresh Docker registry from your Kubernetes cluster]({{ site.baseurl }}/docs/deploy-to-kubernetes/access-codefresh-docker-registry-from-kubernetes/)
+[Accessing Docker registry from your Kubernetes cluster]({{ site.baseurl }}/docs/deploy-to-kubernetes/access-docker-registry-from-kubernetes/)
