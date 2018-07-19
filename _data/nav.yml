@@ -42,8 +42,6 @@
       url: "/integration-tests"
     - title: "Build badges"
       url: "/build-status"
-    - title: "What's next?"
-      url: "/whats-next"
 
 - title: Codefresh YAML
   url: "/codefresh-yaml"
