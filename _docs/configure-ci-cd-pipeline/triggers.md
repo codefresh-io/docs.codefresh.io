@@ -11,7 +11,9 @@ toc: true
 
 To create an effective CI/CD process, it should be possible to trigger a Codefresh pipeline execution not only on code repository events (like `push` or `PR`), but also on any "interesting" CD-related event, coming from some external system.
 
-Codefresh not only allows you to define different pipelines on a single project but it also offers you the capabilility to trigger them with completely separate mechanisms.
+Codefresh not only allows you to define different pipelines on a single project but it also offers you the capability to trigger them with completely separate mechanisms.
+
+>Note that before you add any trigger to a new pipeline you must save it first
 
 ## Codefresh Trigger Types
 
