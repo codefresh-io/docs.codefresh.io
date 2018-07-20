@@ -58,13 +58,13 @@ The **Unit test** step executes any command of your choosing *inside* the Docker
 The **Push to registry** steps pushes the Docker image to any registry of your choosing as defined in [external registry integrations]({{ site.baseurl }}/docs/docker-registries/external-docker-registries/).
 Notice that your image will be uploaded always to the integrated [Codefresh Docker registry]({{ site.baseurl }}/docs/docker-registries/codefresh-registry/) if you don't do something special.
 
-The **Integrations steps** executes any command of your choosing *inside* the Docker image that was created in the *Build* step so the same caveats as unit tests apply. If the integration tests fail however, the Docker image is *already* uploaded in the image registry.
+The **Integrations tests** step executes any command of your choosing *inside* the Docker image that was created in the *Build* step so the same caveats as unit tests apply. If the integration tests fail however, the Docker image is *already* uploaded in the image registry.
 
 > For both unit and integration tests you can use Codefresh compositions which allow you to launch your container
 with other external services (such as a database) and run a more complete environment. For more details
 see the [compositions documentation]({{ site.baseurl }}/docs/codefresh-yaml/steps/composition-1/).
 
-The *Deploy Script* step contains some templates for deployment. You can deploy to Kubernetes, ECS and Docker swarm or run a custom deployment command on the container that was created in the build step or any other image of your choosing.
+The **Deploy Script** step contains some templates for deployment. You can deploy to Kubernetes, ECS and Docker swarm or run a custom deployment command on the container that was created in the build step or any other image of your choosing.
 
 You can find a complete tutorial on how to use the predefined steps in the [basic pipeline guide]({{ site.baseurl }}/docs/getting-started/create-a-basic-pipeline/). Specifically
 for Kubernetes deployments you can also see the [basic deployment guide]({{ site.baseurl }}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/)
@@ -157,9 +157,9 @@ The third step is a [push step]({{ site.baseurl }}/docs/codefresh-yaml/steps/pus
 > Remember that all Docker images of successful builds are always pushed to the Codefresh registry. The push step here is
 shown for demonstration purposes. It can be removed and the image will still be uploaded to the Codefresh registry. The push step is mostly useful for [external Docker registries]({{ site.baseurl }}/docs/docker-registries/external-docker-registries/).
 
-The last step is another freestyle that runs integration tests, again inside the Docker image that was created in the first step.
+The last step is another freestyle step that runs integration tests, again inside the Docker image that was created in the first step.
 
-For more information see the complete [YML syntax]({{ site.baseurl }}/docs/codefresh-yaml/what-is-the-codefresh-yaml/).
+For more information, see the [complete YML syntax]({{ site.baseurl }}/docs/codefresh-yaml/what-is-the-codefresh-yaml/).
 
 ## What to read next
 
