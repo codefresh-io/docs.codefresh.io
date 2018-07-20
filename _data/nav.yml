@@ -12,6 +12,8 @@
   pages:
     - title: "Introduction to Codefresh pipelines"
       url: "/introduction-to-codefresh-pipelines"
+    - title: "Creating pipelines"
+      url: "/pipelines"
     - title: "Triggers"
       url: "/triggers"
       sub-pages:
@@ -21,13 +23,6 @@
           url: "/dockerhub-triggers"
         - title: "Timer (Cron) Triggers"
           url: "/cron-triggers"
-    - title: "Creating pipelines using a GUI"
-      url: "/pipelines-gui"
-      sub-pages:
-        - title: "Continuous integration"
-        - title: "Build and Push to Docker registry"
-        - title: "Continuous Delivery - GKE, Docker SWARM, Amazon ECS"
-          url: "/continuous-delivery-gke-docker-swarm-amazon-ecs"
     - title: "Monitoring Pipelines"
     - title: Unit Tests
       url: "/unit-tests"
