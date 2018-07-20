@@ -106,6 +106,7 @@ defaults:
     values:
       layout: docs
       toc: true
+      wide: true
 
 # Custom variables
 repo:                 "https://github.com/codefresh-io/docs.codefresh.io"

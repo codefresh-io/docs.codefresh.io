@@ -1,11 +1,3 @@
-/*!
- * JavaScript for Bootstrap's docs (https://getbootstrap.com)
- * Copyright 2011-2017 The Bootstrap Authors
- * Copyright 2011-2017 Twitter, Inc.
- * Licensed under the Creative Commons Attribution 3.0 Unported License. For
- * details, see https://creativecommons.org/licenses/by/3.0/.
- */
-
 /* global Clipboard: false, anchors: false, Holder: false */
 
 (function ($) {
@@ -191,5 +183,49 @@
       font: 'Helvetica',
       fontweight: 'normal'
     })
+
+    function changeLayout(wide) {
+      var $docsLayout = $('.docs-layout')
+      // eslint-disable-next-line no-unused-vars
+      // var $bdContext = $('.bd-content')
+      // var $bdToc = $('bd-toc')
+      if (wide) {
+        $docsLayout.removeClass('container').addClass('container-fluid')
+      } else {
+        $docsLayout.removeClass('container-fluid').addClass('container')
+      }
+    }
+
+    $('#layoutModeSwitcher')
+      .on('change', function () {
+        var chckd = this.checked ? '1' : '0'
+        changeLayout(this.checked)
+        window.Cookies.set('layoutMode', chckd)
+        $(this).next().html(this.checked ? 'Wide layout' : 'Boxed layout')
+      })
+      .each(function () {
+        var layoutMode = window.Cookies.get('layoutMode')
+        // eslint-disable-next-line no-undefined
+        if (layoutMode === undefined) {
+          var defaultMode = $('.docs-layout').data('layout-mode')
+          if (defaultMode === 'wide') {
+            changeLayout(true)
+            $(this).prop('checked', true)
+            $(this).next().html('Wide layout')
+          } else if (defaultMode === 'boxed') {
+            changeLayout(false)
+            $(this).prop('checked', false)
+            $(this).next().html('Boxed layout')
+          }
+        } else if (Number(layoutMode) === 1) {
+          $(this).prop('checked', true)
+          changeLayout(true)
+          $(this).next().html('Wide layout')
+        } else if (Number(layoutMode) === 0) {
+          $(this).prop('checked', false)
+          changeLayout(false)
+          $(this).next().html('Boxed layout')
+        }
+      })
   })
 }(jQuery))
