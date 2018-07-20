@@ -12,12 +12,14 @@
   icon: https://codefresh.io/wp-content/uploads/2017/11/pipelines.png
   url: ''
   links:
-  - title: Introduction to Pipeline
+  - title: Introduction to Pipelines
     localurl: /docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/
-  - title: Pipeline configuration using the UI
-    localurl: /docs/configure-ci-cd-pipeline/pipelines-gui/
+  - title: Creating Pipelines
+    localurl: /docs/configure-ci-cd-pipeline/pipelines/
   - title: Pipeline triggers
     localurl: /docs/configure-ci-cd-pipeline/triggers/
+  - title: Monitoring pipelines
+    localurl: /docs/configure-ci-cd-pipeline/monitoring-pipelines/
   - title: Webhooks, Badges and General settings
     localurl: /docs/configure-ci-cd-pipeline/build-status/
 - title: Yaml file
