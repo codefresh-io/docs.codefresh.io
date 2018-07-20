@@ -21,6 +21,9 @@ step_name:
   tag: develop
   build_arguments:
     - key=value
+  target: stage1
+  no_cache: false
+  no_cf_cache: false
   fail_fast: false
   metadata:
     set:
@@ -46,8 +49,10 @@ step_name:
 | `dockerfile`                               | The path to the `Dockerfile` from which the image is built. The default is `Dockerfile`.                                                                                                                                             | Default                   |
 | `image_name`                               | The name for the image you build.                                                                                                                                                                                                    | Required                  |
 | `tag`                                      | The tag that is assigned to the image you build. <br>The default is the name of the branch or revision that is built.                                                                                                                | Default                   |
-| `no_cache`                                 | Do not use cache when building the image                                                                                                                                                                                             | Optional                  |
+| `no_cache`                                 | Disable Docker engine cache for the build [more info](https://codefresh.io/docs/docs/troubleshooting/common-issues/disabling-codefresh-caching-mechanisms/)                                                                                                                                                                                             | Optional                  |
+| `no_cf_cache`                                 | Disable Codefresh build optimization for the build [more info](https://codefresh.io/docs/docs/troubleshooting/common-issues/disabling-codefresh-caching-mechanisms/) 
 | `build_arguments`                          | A set of [Docker build arguments](https://docs.docker.com/engine/reference/commandline/build/#set-build-time-variables-build-arg) to pass to the build process.                                                                      | Optional                  |
+| `target`                          | target stage in a multistage build (build will run until this stage)                                                                      | Optional                  |
 | `fail_fast`                                | If a step fails, and the process is halted. The default value is `true`.                                                                                                                                                             | Default                   |
 | `when`                                     | Define a set of conditions that need to be satisfied in order to execute this step.<br>You can find more information in the [Conditional Execution of Steps]({{ site.baseurl }}/docs/codefresh-yaml/conditional-execution-of-steps/) article.                           | Optional                  |
 | `metadata`                                 | Annotate the built image with [key-value metadata]({{ site.baseurl }}/docs/codefresh-yaml/metadata-annotations/).                                                                                                                             | Optional                  |

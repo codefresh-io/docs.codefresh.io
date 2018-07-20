@@ -40,18 +40,18 @@ More info about how to add, build and push docker image you can find in the read
 ### **Deploy the Demochat service to K8 cluster**
 
 {:start="1"}
-1. Go to the `Account Settings` &#8594; `Integration` &#8594; `Enable Kubernetes`
+1. Go to the `Configuration` &#8594; `Integration` &#8594; `Enable Kubernetes`
 
 {:start="2"}
 2. And then add the cluster
 
 {% include image.html
-lightbox="true"
-file="/images/0e26729-codefresh_add_cluster.png"
-url="/images/0e26729-codefresh_add_cluster.png"
-alt="codefresh_add_cluster.png"
-max-width="40%"
-%}
+  lightbox="true"
+  file="/images/integrations/codefresh-integrations.png"
+  url="/images/integrations/codefresh-integrations.png"
+  alt="Codefresh integrations"
+  max-width="80%"
+    %}
 
 {:start="3"}
 3. Go to the tab `Kubernetes` and click on the button `Add New Service`
@@ -125,8 +125,8 @@ max-width="40%"
 
 {% include image.html
 lightbox="true"
-file="/images/324f2ba-codefresh_demochat_endpoint.png"
-url="/images/324f2ba-codefresh_demochat_endpoint.png"
+file="/images/324f2ba-codefresh_demochat_endpoint.jpg"
+url="/images/324f2ba-codefresh_demochat_endpoint.jpg"
 alt="codefresh_demochat_endpoint.png"
 max-width="40%"
 %}

@@ -15,6 +15,7 @@ Google Container Engine is a powerful cluster manager and orchestration system f
 Use this short guide to ensure that you are ready to go.
 
 {{site.data.callout.callout_info}}
+
 ##### Get $500 in Google Cloud Credits when starting with Codefresh
 
 We'll email you instructions on how to claim your credits after the integration is enabled. Terms and conditions apply. [Contact us](https://codefresh.io/contact-us/) for more information. 

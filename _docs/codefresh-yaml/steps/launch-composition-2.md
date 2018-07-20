@@ -8,7 +8,7 @@ redirect_from:
 toc: true
 ---
 The launch composition step provides the ability to launch long term running environment that can live outside the context of the running flow.
-You can use this step to automate your environment creation through codefresh.yaml file instead of manually launching an environment from the ui.
+You can use this step to automate your environment creation through codefresh.yml file instead of manually launching an environment from the ui.
 
   `ui defined composition`
 {% highlight yaml %}

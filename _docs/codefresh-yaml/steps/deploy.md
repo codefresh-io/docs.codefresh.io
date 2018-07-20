@@ -7,13 +7,13 @@ redirect_from:
   - /docs/deploy/
 toc: true
 ---
-Deploy step can be used as a step to deploy build image to user's cluster
+The *Deploy* step can be used as a step to deploy a pre-built Docker image to a cluster
 
 ## Deploy to Kubernetes cluster hosted in Google cloud
 
 {{site.data.callout.callout_info}}
 ##### Example
-In this example will show you how to build image, push it to your registry and then deploy it to Kubernetes cluster 
+In this example will show you how to build an image, push it to your registry and then deploy it to Kubernetes cluster 
 {{site.data.callout.end}}
 
   `YAML`
@@ -50,7 +50,7 @@ steps:
     file_path: ./deployment.yml
     # In seconds, how long the step will wait until the rolling update is complete (default is 120)
     timeout: 150
-    # Canidate is optional, if not spesified will redeploy the same image that spesified in the deployment file
+    # Candidate is optional, if not specified will redeploy the same image that specified in the deployment file
     # When candidate exist it should have both: image and registry
     candidate:
       # The image that will replace the original deployment image 
@@ -69,4 +69,5 @@ steps:
 ## Related topics
 - [Use kubectl as part of Freestyle step]({{ site.baseurl }}/docs/yaml-examples/examples/use-kubectl-as-part-of-freestyle-step/) 
 - [Deploy to Kubernetes]({{ site.baseurl }}/docs/deploy-to-kubernetes/codefresh-kubernetes-integration-beta/) 
-- [Install HELM chart using Codefresh pipeline]({{ site.baseurl }}/docs/new-helm/install-helm-chart-using-codefresh-pipeline/)
+- [Install HELM chart using Codefresh pipeline]({{ site.baseurl }}/docs/new-helm/using-helm-in-codefresh-pipeline/)
+

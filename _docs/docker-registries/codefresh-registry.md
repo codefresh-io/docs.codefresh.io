@@ -57,7 +57,7 @@ To integrate with Codefresh Registry, first select **Codefresh Registry** from t
 * Username - Your username in Codefresh
 * Access token - Your generated access token
 
-{% include image.html lightbox="true" file="/images/541c633-codefresh_cfcr_registry.png" url="/images/541c633-codefresh_cfcr_registry.png" alt="Codefresh cfcr registry" max-width="65%" %}
+{% include image.html lightbox="true" file="/images/artifacts/registry/codefresh-registry.png" url="/images/artifacts/registry/codefresh-registry.png" alt="Codefresh Docker registry registry" max-width="65%" %}
 
 __Images built in Codefresh__
 
@@ -75,17 +75,17 @@ __Login To CFCR__
 In order to pull images from Codefresh's registry you must first login. Use this Docker command to authenticate.
 
   `docker login`
-{% highlight terminal %}
+{% highlight bash %}
 docker login -u <USERNAME> -p <ACCESS_TOKEN> r.cfcr.io
 {% endhighlight %}
 
 __Pull Docker Image__
-Use this Docker pull command to download the image[](ni)
+Use this Docker pull command to download the image
 
   `docker pull`
-{% highlight terminal %}
+{% highlight bash %}
 docker pull r.cfcr.io/<ACCOUNT>/<IMAGE>:<TAG>
 {% endhighlight %}
 
 ### See also
-[Kubernetes: Pull an Image from a Private Registry](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/){:target="_blank"}
+[Accessing Docker registry from your Kubernetes cluster]({{ site.baseurl }}/docs/deploy-to-kubernetes/access-docker-registry-from-kubernetes/)

@@ -9,14 +9,14 @@ redirect_from:
 toc: true
 ---
   
-On your Account settings, go to the **Integration** tab and choose **Kubernetes**.
+On your Configuration settings, go to the **Integration** tab and choose **Kubernetes**.
 
 {% include image.html
   lightbox="true"
-  file="/images/c7b958e-Screen_Shot_2017-10-23_at_7.31.49_PM.png"
-  url="/images/c7b958e-Screen_Shot_2017-10-23_at_7.31.49_PM.png"
-  alt="Screen Shot 2017-10-23 at 7.31.49 PM.png"
-  max-width="40%"
+  file="/images/integrations/codefresh-integrations.png"
+  url="/images/integrations/codefresh-integrations.png"
+  alt="Codefresh integrations"
+  max-width="80%"
     %}
 
 In the Kubernetes integration window, you will be able to add a cluster from known providers such as GKE or by manually adding your cluster settings.
@@ -25,23 +25,109 @@ In the Kubernetes integration window, you will be able to add a cluster from kno
 ## Adding GKE Cluster
 Adding a cluster in GKE can be done by clicking the **Add cluster** button under **Google Cloud Provider** and selecting the desired project and cluster.
 
-{{site.data.callout.callout_info}}
-##### Note
+If this is your first time you'll be prompted to authenticate using your google credentials, make sure you're doing so with a user that have access to your GKE projects.
 
-If this is your first time you'll be prompted to authenticate using your google cradentails, make sure you're doing so with a user that have access to your GKE projects.
+
+{{site.data.callout.callout_info}}
+
+If you are a new customer of Google Cloud, you are also eligible to receive a Codefresh offer to get up to $500 in Google credits. As soon at the GKE integration is complete within Codefresh, you will get an email with extra details on how to claim your credits. 
+
+Follow the link in the email to fill in an application for the free credits. Once Google approves the application (usually within 1-2 days) your credits will be available to your account. Make sure to check your spam folder for that email.
+
 {{site.data.callout.end}}
 
 {:.text-secondary}
+## Adding EKS Cluster
+To add an Amazon EKS cluster, you must first create a service account and obtain a token used to manage the integration.
+
+The official Amazon-provided guide on EKS can be found [here](https://docs.aws.amazon.com/eks/latest/userguide/).
+
+In order to use your cluster locally with `kubectl`, you must first install the [heptio-authenticator-aws](https://github.com/heptio/authenticator) binary. Your version of kubectl must also be 1.10+ for this to work.
+
+Next, create a kubeconfig file, such as `~/.kube/eks`, replacing `<endpoint-url>`, `<base64-encoded-ca-cert>`, and `<cluster-name>` with information on your EKS cluster obtained in the AWS console:
+
+{% highlight yaml %}
+{% raw %}
+apiVersion: v1
+clusters:
+- cluster:
+    server: <endpoint-url>
+    certificate-authority-data: <base64-encoded-ca-cert>
+  name: kubernetes
+contexts:
+- context:
+    cluster: kubernetes
+    user: aws
+  name: aws
+current-context: aws
+kind: Config
+preferences: {}
+users:
+- name: aws
+  user:
+    exec:
+      apiVersion: client.authentication.k8s.io/v1alpha1
+      command: heptio-authenticator-aws
+      args:
+        - "token"
+        - "-i"
+        - "<cluster-name>"
+{% endraw %}
+{% endhighlight %}
+
+Then, in an environment that has access to your AWS account, run the following command to create an admin user service account and necessary role binding:
+
+{% highlight shell %}
+{% raw %}
+cat <<EOF | kubectl --kubeconfig="$HOME/.kube/eks" apply -f -
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: admin-user
+  namespace: kube-system
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  name: admin-user
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+- kind: ServiceAccount
+  name: admin-user
+  namespace: kube-system
+EOF
+{% endraw %}
+{% endhighlight %}
+
+Finally, use the following command to obtain the service account token:
+
+{% highlight shell %}
+{% raw %}
+kubectl --kubeconfig="$HOME/.kube/eks" -n="kube-system" get secret \
+  $(kubectl --kubeconfig="$HOME/.kube/eks" -n="kube-system" get secret | \
+    grep admin-user | awk '{print $1}') -o jsonpath="{.data.token}"
+{% endraw %}
+{% endhighlight %}
+
+Once you have this token, follow the steps in the section below, using this token for item #4.
+
+{:.text-secondary}
 ## Adding any other cluster type (not dependent on any provider)
-  
+ 
+On your Configuration settings (left-menu), go to the **Integration** tab and choose **Kubernetes**  
 In order to add any other type of cluster, outside of GKE, use **Custom Providers**
+
 
 {% include image.html
 lightbox="true"
-file="/images/eb1795e-codefresh_add_custom_cluster.png"
-url="/images/eb1795e-codefresh_add_custom_cluster.png"
-alt="codefresh_add_custom_cluster.png"
-max-width="40%"
+file="/images/kubernetes/add-cluster/add-cluster-button.png"
+url="/images/kubernetes/add-cluster/add-cluster-button.png"
+alt="Adding a custom cluster in Codefresh"
+caption="Adding a custom K8s cluster in Codefresh"
+max-width="60%"
   %}
   
 The integration between Codefresh and your Kubernetes cluster is API based and relies on a Kubernetes service account of your choosing that will be used to manage the integration.
@@ -62,10 +148,10 @@ The configurations you'll be required to add are:
 
 {% include image.html
   lightbox="true"
-  file="/images/6e92733-Screen_Shot_2017-10-16_at_9.40.32_PM.png"
-  url="/images/6e92733-Screen_Shot_2017-10-16_at_9.40.32_PM.png"
-  alt="Screen Shot 2017-10-16 at 9.40.32 PM.png"
-  max-width="40%"
+  file="/images/kubernetes/add-cluster/add-cluster-details.png"
+  url="/images/kubernetes/add-cluster/add-cluster-details.png"
+  alt="Adding a custom cluster in Codefresh - details"
+  max-width="60%"
     %}
     
  In the section below we'll provide you with easy instructions how to get all your cluster configurations in order to add it to Codefresh.   
@@ -109,14 +195,6 @@ In the instructions above, we're reffering for a service account named 'default'
 {{site.data.callout.end}}
 
 Once the cluster been added successfully you can go to the `Kubernetes` tab to start working with the services of your cluster.
-
-{% include image.html
-  lightbox="true"
-  file="/images/eb2e31b-codefresh_kubernetes_tab.png"
-  url="/images/eb2e31b-codefresh_kubernetes_tab.png"
-  alt="codefresh_kubernetes_tab.png"
-  max-width="40%"
-    %}
 
 So, what's next?
 - [Manage your Kubernetes cluster in Codefresh]({{ site.baseurl }}/docs/deploy-to-kubernetes/codefresh-kubernetes-integration-beta/)

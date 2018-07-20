@@ -6,6 +6,9 @@ toc: true
 redirect_from:
   - /docs/share-environment-with-your-test
   - /docs/share-environment-with-your-test/
+  - /docs/on-demand-test-environment/share-environment-with-your-test
+  - /docs/on-demand-test-environment/share-environment-with-your-test/
+ 
 ---
 After you successfully spin up a composition, click the **Environments** view icon in the left pane, to view the record for the running environment and all containers for the environment.
 

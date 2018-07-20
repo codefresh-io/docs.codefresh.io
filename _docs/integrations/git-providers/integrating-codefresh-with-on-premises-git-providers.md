@@ -39,30 +39,30 @@ There you can assign roles to the users and delete them from the collaborators l
 {:start="2"}
 2. Create an account with the corresponding on-prem git provider. For that go to the **`Admin Management` &#8594; `Accounts`** page, click on the *`plus`* button and select the needed on-prem git  provider (Stash, GitHub OnPrem, GitLab OnPrem):
 
-  `Custom HTML / CSS`
-{% highlight html %}
-{% raw %} 
-<figure align="center">
-  <a href="https://files.readme.io/5f1f234-Screenshot_from_2018-02-09_14-57-21.png" class="block-display-image-parent block-display-image-size-original">
-    <img src="https://files.readme.io/5f1f234-Screenshot_from_2018-02-09_14-57-21.png">
-  </a>
-</figure>
-{% endraw %}
-{% endhighlight %}
+
+{% include image.html 
+lightbox="true" 
+file="/images/5f1f234-Screenshot_from_2018-02-09_14-57-21.png"
+url="/images/5f1f234-Screenshot_from_2018-02-09_14-57-21.png" 
+alt="Screen Shot 2017-10-18 at 12.53.09 PM.png" 
+max-width="60%" 
+%}
+
+
 
 {:start="3"}
 3. Create a user and link it with the account. For that go to the **`Admin Management` &#8594; `Users`** page, click on the *`Create new user`* button, fill in the username and email, select the on-prem git provider (the same as for the account), select the name of the account you created above, click the *`Add`* button.
 
-  `Custom HTML / CSS`
-{% highlight html %}
-{% raw %} 
-<figure align="center">
-  <a href="https://files.readme.io/ffc028a-Screenshot_from_2018-02-09_15-33-09.png" class="block-display-image-parent block-display-image-size-smart">
-    <img src="https://files.readme.io/ffc028a-Screenshot_from_2018-02-09_15-33-09.png">
-  </a>
-</figure>
-{% endraw %}
-{% endhighlight %}
+
+{% include image.html 
+lightbox="true" 
+file="/images/ffc028a-Screenshot_from_2018-02-09_15-33-09.png" 
+url="/images/ffc028a-Screenshot_from_2018-02-09_15-33-09.png" 
+alt="Screen Shot 2017-10-18 at 12.53.09 PM.png" 
+max-width="60%" 
+%}
+
+
 
 Click on the *`Set the user as admin of this account`*.
 

@@ -62,14 +62,11 @@ max-width="40%"
 %}
 
 ## Enabling Auto Build / Webhook Settings
-You can configure your pipeline to automatically trigger by setting a webhook on your git repository. To enable the auto build, on the Pipeline configuration page, toggle the AUTO BUILD setting to the ON position.
-**NOTE**: Only the repository owners can set webhooks.
-You can refine the webhook configuration to trigger only on specific branches by selecting the **CUSTOM REGEX** option in the TRIGGER FLOW ON field, and then set a regular expression. Only branches that match the regular expression trigger the pipeline.
+You can configure your pipeline to automatically trigger by setting a webhook on your git repository. 
 
-{% include image.html 
-lightbox="true" 
-file="/images/5aaea3a-codefresh_stash_webhook-1.png" 
-url="/images/5aaea3a-codefresh_stash_webhook-1.png" 
-alt="codefresh_stash_webhook-1.png" 
-max-width="40%" 
-%}
+See the [Git Trigger documentation]({{ site.baseurl }}/docs/configure-ci-cd-pipeline/triggers/git-triggers/) for more details.
+
+**NOTE**: Only the repository owners can set webhooks.
+
+
+

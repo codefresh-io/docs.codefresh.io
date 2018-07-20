@@ -23,8 +23,12 @@ All system provided variables will also be automatically injected to any freesty
 | {% raw %}`${{CF_REPO_NAME}}`{% endraw %}          | Repository name. |
 | {% raw %}`${{CF_BRANCH}}`{% endraw %}             | Branch name (or Tag depending on the payload json) of the Git repository of the main pipeline, at the time of execution. <br/>You can also use {% raw %}`${{CF_BRANCH_TAG_NORMALIZED}}`{% endraw %} to get the branch name normalized. It will be without any chars that are illegal in case the branch name were to be used as the Docker image tag name. |
 | {% raw %}`${{CF_BASE_BRANCH}}`{% endraw %}      | The base branch used during creation of Tag
-| {% raw %}`${{CF_PULL_REQUEST_ACTION}}`{% endraw %}      | The pull request action 
+| {% raw %}`${{CF_PULL_REQUEST_ACTION}}`{% endraw %}      | The pull request action
+| {% raw %}`${{CF_PULL_REQUEST_TARGET}}`{% endraw %}      | The pull request target branch
+| {% raw %}`${{CF_PULL_REQUEST_NUMBER}}`{% endraw %}      | The pull request number
+| {% raw %}`${{CF_PULL_REQUEST_ID}}`{% endraw %}      | The pull request id
 | {% raw %}`${{CF_COMMIT_AUTHOR}}`{% endraw %}      | Commit author.                                                                                                                                                                                                                                                                                    |
+| {% raw %}`${{CF_BUILD_INITIATOR}}`{% endraw %}      | The person (username) that started the build. If the build was started by a Git webhook (e.g. from a Pull request) it will hold the webhook user. Notice that if a build is restarted manually it will always hold the username of the person that restarted it.                                                                                                                                                                                                                                                                                    |
 | {% raw %}`${{CF_COMMIT_URL}}`{% endraw %}         | Commit url.                                                                                                                                                                                                                                                                                       |
 | {% raw %}`${{CF_COMMIT_MESSAGE}}`{% endraw %}     | Commit message of the git repository revision, at the time of execution.<br/> The messages quotes are escaped (i.e. ' is not \', " is now \").                                                                                                                                                         |
 | {% raw %}`${{CF_REVISION}}`{% endraw %}           | Revision of the Git repository of the main pipeline, at the time of execution. <br/> You can also use {% raw %}`${{CF_SHORT_REVISION}}`{% endraw %}  to get the abbreviated 7-character revision hash, as used in git. Note: use this variable as string with quotes to tag the image {% raw %}`${{CF_SHORT_REVISION}}`{% endraw %}                 |
@@ -46,32 +50,27 @@ Context related variables are created dynamically during the workflow execution 
 | **Working Directories**                           | For example, you can set the working directory of step `A` with a variable named after a previously executed step, step `B`. Therefore, setting step `A` with {% raw %}`working-directory:${{B}}`{% endraw %} means that step `A` executes in the same working directory as step `B`.                |
 | **Images**                                        | You can set the candidate field of the push step with a variable named after a previously executed build step. Since the details of a created image are not necessarily known ahead of time, the variable can create an association to an optionally dynamic image name. Therefore, setting push step `A` with {% raw %}`candidate:${{B}}`{% endraw %} means that step `A` will push the image build buy step `B`.                |
 
-## Custom User Provided Variables
-Custom variables can be created during the workflow execution inside of a freestyle step.
-Once a variable has been created it will:
-- automatically be injected into any future freestyle step.
-- automatically be used as composition variables for composition steps.
-- will be used for substitutions in the yaml file just like the `system provided` variables are used in the compilation phase.
+## User Provided Variables
 
-Custom variables are wiped clean on every pipeline execution, but are not modified as the steps progress.
+User provided variables can be defined at 4 levels:
+1. Freestyle step definition: using the `environment` field.
+1. Pipeline execution: after clicking the "Build" button, open the "Advanced options" section.
+1. Pipeline definition: under "Environment variables" section in the pipeline view.
+1. Shared Configuration: defined under your account settings, and used using the "Import from shared configuration" button under the "Environment Variables" section in the pipeline view.
 
-<div class="bd-callout bd-callout-info" markdown="1">
-##### Exporting environment variables from a freestyle step
+The options are listed in order of importance, so in case of multiple variables defined at different location with the same name, the order of overriding will be as listed here.
 
-In case you want to export environment variables from an existing step this is the way to do it
-</div>
+## Exporting environment variables from a freestyle step
 
-Codefresh exposes a file for each freestyle step that custom variables can be registered to.
-There are two ways to add variables to this file
+Steps defined inside steps are scoped to the step they were created in (even if you used the `export` command). In order to allow using variables across steps, we provide a shared file that facilitates variables importing and exporting. There are two ways to add variables to this file:
 
-## Custom Variables Option a: Using cf_export cli
-In case your freestyle step has sh installed, you can use our prepared cli that will enable you to easily add new variables.
+### Using cf_export command
+Inside every freestyle step there's a command called `cf_export` that allows you to export variables across steps (by writing to the shared variables file).
 
 You can either:
 - explicitly state a VAR=VAL pair  
 - state the name of an existing environment variable (like EXISTING_VAR).
 
-  `Using the bash utility`
 {% highlight yaml %}
 version: '1.0'
 steps:
@@ -91,14 +90,12 @@ steps:
       - curl http://$EXISTING_VAR/index.php
 {% endhighlight %}
  
-## Custom Variables Options b: Manually appending to the file
-Appending variables manually can be useful in more complicated scenarios.
+### Directly writing to the file
 
-The variables file will be exposed inside the freestyle container in the following path: **`{% raw %}${{CF_VOLUME_PATH}}{% endraw %}/env_vars_to_export`** 
+For more advanced use cases, you can write directly to the shared file.
 
-You can use this technique to even inject a file with multiple variables.
+The variables file will be availble inside the freestyle container in the following path: **`{% raw %}${{CF_VOLUME_PATH}}{% endraw %}/env_vars_to_export`** 
 
-  `manually appending`
 {% highlight yaml %}
 version: '1.0'
 steps:

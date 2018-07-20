@@ -2,20 +2,33 @@
   pages:
   - title: Create a Codefresh Account
   - title: Create a Basic Pipeline
+  - title: On-demand environments
   - title: Deployment to Kubernetes
     url: "/deployment-to-kubernetes-quick-start-guide"
-
-- title: Whats new?
-  url: "/whats-new"
-  pages:
-    - title: Whats New In Codefresh?
-      url: "/whats-new"
-
+  - title: Deployment to Kubernetes with Helm
+    url: "/helm-quick-start-guide"
 - title: Configure a CI/CD pipeline
   url: "/configure-ci-cd-pipeline"
   pages:
     - title: "Introduction to Codefresh pipelines"
       url: "/introduction-to-codefresh-pipelines"
+    - title: "Triggers"
+      url: "/triggers"
+      sub-pages:
+        - title: "Git Triggers"
+          url: "/git-triggers"
+        - title: "DockerHub Triggers"
+          url: "/dockerhub-triggers"
+        - title: "Timer (Cron) Triggers"
+          url: "/cron-triggers"
+    - title: "Creating pipelines using a GUI"
+      url: "/pipelines-gui"
+      sub-pages:
+        - title: "Continuous integration"
+        - title: "Build and Push to Docker registry"
+        - title: "Continuous Delivery - GKE, Docker SWARM, Amazon ECS"
+          url: "/continuous-delivery-gke-docker-swarm-amazon-ecs"
+    - title: "Monitoring Pipelines"
     - title: Unit Tests
       url: "/unit-tests"
       sub-pages:
@@ -29,19 +42,6 @@
       url: "/integration-tests"
     - title: "Build badges"
       url: "/build-status"
-    - title: "What's next?"
-      url: "/whats-next"
-
-- title: Pipeline Triggers
-  url: "/pipeline-triggers"
-  pages:
-    - title: "Pipeline Triggers"
-      url: "/introduction-triggers"
-    - title: "DockerHub Triggers"
-      url: "/configure-dockerhub-trigger"
-    - title: "Timer (Cron) Triggers"
-      url: "/configure-cron-trigger"
-
 
 - title: Codefresh YAML
   url: "/codefresh-yaml"
@@ -119,6 +119,28 @@
         - title: Use kubectl as part of Freestyle step
           url: "/use-kubectl-as-part-of-freestyle-step"
 
+
+- title: "Artifacts Management"
+  url: "/docker-registries"
+  pages:
+    - title: "Codefresh Docker Registry"
+      url: "/codefresh-registry"
+    - title: "External Docker Registries"
+      url: "/external-docker-registries"
+      sub-pages:
+        - title: "Docker Hub"
+          url: "/docker-hub"
+        - title: "Amazon EC2 Container Registry"
+          url: "/amazon-ec2-container-registry"
+        - title: "Google Container Registry"
+          url: "/google-container-registry"
+        - title: "JFrog Bintray.io"
+          url: "/bintray-io"
+        - title: "Quay.io"
+          url: "/quay-io"
+        - title: "Other Registries"
+          url: "/other-registries"
+
 - title: Deploy to Kubernetes
   url: "/deploy-to-kubernetes"
   pages:
@@ -137,16 +159,20 @@
       url: "/codefresh-kubernetes-integration-demochat-example"
     - title: Add config maps to your namespaces
       url: "/add-config-maps-to-your-namespaces"
+    - title: Accessing a Docker registry from your Kubernetes cluster
+      url: "/access-docker-registry-from-kubernetes"
 
 - title: "*NEW* HELM"
   url: "/new-helm"
   pages:
+    - title: Codefresh Managed Helm Repos
+      url: "/managed-helm-repository"
     - title: Helm Charts and repositories
       url: "/add-helm-repository"
     - title: Helm Releases management
       url: "/helm-releases-management"
-    - title: Install HELM chart using Codefresh pipeline
-      url: "/install-helm-chart-using-codefresh-pipeline"
+    - title: Using Helm in Codefresh pipeline
+      url: "/using-helm-in-codefresh-pipeline"
     - title: Create Helm artifacts using Codefresh pipeline
       url: "/create-helm-artifacts-using-codefresh-pipeline"
     - title: Integration tests with HELM
@@ -165,21 +191,6 @@
       url: "/elastic-beanstalk"
     - title: Microsoft Azure
       url: "/microsoft-azure"
-
-- title: Pipelines
-  url: "/pipelines"
-  pages:
-    - title: Introduction
-      url: "/introduction"
-    - title: Examples
-      url: "/pipeline-examples"
-      sub-pages:
-        - title: Continuous integration
-          url: "/build-and-test"
-        - title: Build and Push to Docker registry
-          url: "/build-and-push-to-docker-registry"
-        - title: Continuous Delivery - GKE, Docker SWARM, Amazon ECS
-          url: "/build-and-deploy-to-kubernetes"
 
 - title: Learn by example
   url: "/learn-by-example"
@@ -206,6 +217,8 @@
     - title: Java
       url: "/java"
       sub-pages:
+        - title: Spring Boot 2
+          url: "/spring-boot-2"
         - title: Spring MVC JDBC Template
           url: "/spring-mvc-jdbc-template"
         - title: Gradle
@@ -229,7 +242,7 @@
     - title: Test Your Feature
       url: "/test-your-feature"
     - title: Share Your Environment with Your Team
-      url: "/share-environment-with-your-test"
+      url: "/share-your-environment-with-your-team"
     - title: Composition Service Discovery (Experimental)
       url: "/composition-service-discovery"
     - title: Useful compositions
@@ -246,26 +259,7 @@
         - title: Spring Boot + Kafka + Zookeeper
           url: "/spring-boot-kafka-zookeeper"
 
-- title: "Docker Registries"
-  url: "/docker-registries"
-  pages:
-    - title: "Codefresh Docker Registry"
-      url: "/codefresh-registry"
-    - title: "External Docker Registries"
-      url: "/external-docker-registries"
-      sub-pages:
-        - title: "Docker Hub"
-          url: "/docker-hub"
-        - title: "Amazon EC2 Container Registry"
-          url: "/amazon-ec2-container-registry"
-        - title: "Google Container Registry"
-          url: "/google-container-registry"
-        - title: "JFrog Bintray.io"
-          url: "/bintray-io"
-        - title: "Quay.io"
-          url: "/quay-io"
-        - title: "Other Registries"
-          url: "/other-registries"
+
 
 - title: Integrations
   url: "/integrations"
@@ -288,6 +282,10 @@
       url: "/jira-integration"
     - title: Jenkins Integration
       url: "/jenkins-integration"
+    - title: SonarQube Integration
+      url: "/sonarqube-integration"
+    - title: Codefresh API
+      url: "/codefresh-api"
 
 - title: Single Sign-On
   url: "/sso"
@@ -298,6 +296,18 @@
       url: "/sso-setup-saml2"
     - title: Setting Up OpenID Connect Federated Single Sign-On (SSO)
       url: "/sso-setup-oauth2"
+
+- title: Enterprise Account Management
+  url: "/enterprise-account-mng"
+  pages:
+    - title: Enterprise Account Management Overview
+      url: "/ent-account-mng"
+
+- title: Windows Container Support (Beta)
+  url: "/windows"
+  pages:
+    - title: Windows Container Support Overview (Beta)
+      url: "/windows-beta"
 
 - title: Accounts
   url: "/accounts"
@@ -321,6 +331,8 @@
           url: "/validation-port-warnings"
         - title: Restoring data from pre-existing image hangs on
           url: "/restoring-data-from-pre-existing-image-hangs-on"
+        - title: Debugging Codefresh builds locally
+          url: "/debugging-codefresh-builds-locally"
         - title: Disabling codefresh caching mechanisms
           url: "/disabling-codefresh-caching-mechanisms"
         - title: Handling commit messages with a quote character
@@ -333,6 +345,8 @@
           url: "/build-step-no-such-file-or-directory"
         - title: Failed to get accounts clusters during workflow
           url: "/failed-to-get-accounts-clusters-during-workflow"
+        - title: 'Clone step failed: Command [git checkout $REVISION] exited with code [1]'
+          url: "/git-clone-step-issue"
 
 - title: How-To Guides
   url: "/how-to-guides"
@@ -353,8 +367,14 @@
       url: "/add-your-node-to-run-build-containers"
     - title: Launching a composition and defining a service environment variables using a file
       url: "/launching-a-composition-and-defining-a-service-environment-variables-using-a-file"
-    - title: Codefresh API
-      url: "/codefresh-api"
+
+
+
+- title: Whats new?
+  url: "/whats-new"
+  pages:
+    - title: Whats New In Codefresh?
+      url: "/whats-new"
 
 - title: Terms and Privacy Policy
   url: "/terms-and-privacy-policy"

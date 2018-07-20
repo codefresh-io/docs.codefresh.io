@@ -27,7 +27,8 @@ Sign in to [Google Cloud Console](https://console.cloud.google.com/)
 
 {:.text-secondary}
 ### Enable [Billing](https://console.cloud.google.com/billing)
-* If you are a new user, you will get $300 credit on your sign up
+* If you are a new user, you will get $300 credit on your sign up. You can also get an [additional $200 credit](https://codefresh.io/google-cloud/)
+when you connect your Kubernetes cluster in your Codefresh account.
 * Notice that you are paying for running resources. Therefore, If you are not planning to use them after this tutorial, it is suggested to delete them.
 * For more information - Check GKE pricing
 

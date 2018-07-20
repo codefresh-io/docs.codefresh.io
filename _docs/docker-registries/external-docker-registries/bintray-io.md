@@ -21,7 +21,7 @@ To configure Bintray.io first select **Other Registries** from the new registry 
 * API Key - Your Bintray.io API key
 * Domain - Your Bintray.io registry address e.g. `docker-new-repository.bintray.io`
 
-{% include image.html lightbox="true" file="/images/47bfed1-add-bintray-new.png" url="/images/47bfed1-add-bintray-new.png" alt="Add Bintray.io" max-width="45%" %}
+{% include image.html lightbox="true" file="/images/artifacts/registry/add-bintray-registry.png" url="/images/artifacts/registry/add-bintray-registry.png" alt="Add Bintray.io Registry" max-width="60%" %}
 
 ## Finding your API key
 

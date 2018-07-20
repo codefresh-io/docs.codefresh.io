@@ -7,6 +7,40 @@ redirect_from:
 toc: true
 ---
 
+### July 2018
+
+- Build status for Pull requests are now per pipeline giving better feedback
+- Added new variable `CF_BUILD_INITIATOR` for the person that started a build
+- Improved retrying of push/pull actions after failures with timeouts and general connectivity issues.
+
+### June 2018
+
+- Ability to trigger builds only if a specific folder/file on a repository changes
+- Ability to use the GUI for filtering specific Pull request events for triggers
+- Ability to select if a manual trigger of a pipeline will change the git status of a pull request or not
+- Ability to define a trigger based on the target branch of a pull request
+- Ability to filter builds by the person that was the respective committer 
+
+### May 2018
+- Integrated Helm repositories for each Codefresh account
+- Ability to specify custom triggers for each pipeline
+- Ability to specify cron-like triggers
+- Advanced Docker caching for faster builds
+- Support for Enterprise Single Sign On
+- Enterprise account management support
+- Added Social Onboarding widget
+
+
+### March 2018
+- Ability to specify `entry_point` in freestyle steps
+- Ability to specify `CMD` commands to work with images with entrypoints
+- Ability to skip git clone step in pipelines
+- Ability to specify Docker build option `target` for multi-stage builds
+- Support for building containers for ARM processors (contact us)
+- Pipeline initialization optimizations
+
+
+
 ### Helm Improvements (February 2018)
 - Chart install:
   - can now see default values for the chart, and override them
@@ -28,7 +62,7 @@ toc: true
   - can visually see differences between releases
 - Misc:
   - UI and bug fixes
-  - reorganised Helm docs, including samples on how package charts and push to registry: [Create Helm artifacts using Codefresh pipeline]({{ site.baseurl }}/docs/new-helm/create-helm-artifacts-using-codefresh-pipeline/)
+  - reorganized Helm docs, including samples on how package charts and push to registry: [Create Helm artifacts using Codefresh pipeline]({{ site.baseurl }}/docs/new-helm/create-helm-artifacts-using-codefresh-pipeline/)
   
 ### Parallel execution of pipelines (January 2018)
 Using our new cli, you can now execute many pipelines in parallel with different configurations for each
@@ -40,7 +74,7 @@ Pre-release of our brand new CLI at [https://github.com/codefresh-io/cli](https:
 You can now add your own Helm repositories to the Helm Charts page
 
 ### Shared configurations (December 2017)
-Mange your configurations in a centralised place, and inject them into pipelines as needed. supports secrets as well
+Mange your configurations in a centralized place, and inject them into pipelines as needed. supports secrets as well
 
 ### Helm releases (December 2017)
 Real time dashboard of the Helm releases in your connected Kubernetes cluster. Supports rollback to a previous release

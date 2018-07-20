@@ -119,7 +119,7 @@ You can update it from your Kubernetes services window - Just hit the "edit" ico
 ## Automate your deployment
 After your service is deployed to your Kubernetes cluster, you can automate image deployment using Codefresh pipelines.
 
-Just add the following to your [pipeline definition](https://dash.readme.io/project/codefresh-docs/v1.0/docs/pipeline):
+Just add the following to your [pipeline definition]({{ site.baseurl }}/docs/configure-ci-cd-pipeline/pipelines-gui/):
 {:start="1"}
 1. In build step - define Docker registry to push
 

@@ -34,9 +34,6 @@ step_file_generation:
           - {% raw %}${{CF_VOLUME}}{% endraw %}:/codefresh/volume
         image: {% raw %}${{build_step}}{% endraw %}
         command: bash -c "echo hello > /codefresh/volume/myfile.txt"
-    volumes:
-      {% raw %}${{CF_VOLUME}}{% endraw %}:
-        external: true
   composition_candidates:
     test:
       image: {% raw %}${{build_step}}{% endraw %}
