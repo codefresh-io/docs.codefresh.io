@@ -112,7 +112,11 @@ The repository option is the recommended on. It reads the `codefresh.yml` file f
 The third option allows you to load the yml from any location, even from a different repository. This allows you to create yml files in a central repository or web server and reuse them in multiple Codefresh pipelines. So if you want
 to keep a separation between the code and the pipeline definitions you can select this method instead of having the `codefresh.yml` file in the same place as the source code.
 
-### A starting Codefresh yml file
+### Switching between YAML and GUI steps
+
+Once you switch to YAML mode, Codefresh will convert the existing GUI steps in the respective YAML syntax. This way you can
+easily upgrade a pipeline to YAML mode, after using the GUI steps and keep your custom commands. Note, that the opposite (going from YAML to GUI steps) is not supported or recommended. You will have start over if you switch to GUI mode.
+
 
 You can easily recreate the predefined GUI steps with the following yml file.
 
