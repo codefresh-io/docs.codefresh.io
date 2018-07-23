@@ -38,21 +38,7 @@ layout: compress
           <div class="bd-content-inner py-md-3 pl-4 pl-md-5 pr-4 pr-md-5">
             <h1 class="bd-title" id="content">{{ page.title | smartify }}</h1>
             <p class="bd-lead">{{ page.description | smartify }}</p>
-            <div class="bd-content-top-controls">
-              <div class="btn-group dropleft">
-                <button type="button" class="btn dropdown-toggle btn-control-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="fas fa-cog"></i>
-                </button>
-                <div class="dropdown-menu">
-                  <div class="form-group">
-                    <span class="switch switch-sm">
-                      <input type="checkbox" class="switch" id="layoutModeSwitcher">
-                      <label for="layoutModeSwitcher">Wide layout</label>
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
+            
             {{ content }}
           </div>
         </main>
