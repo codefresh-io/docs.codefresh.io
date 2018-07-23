@@ -301,9 +301,10 @@ you should know that only steps within the same pipeline can share artifacts.
 
 ## What to read next
 
+* [Creating pipelines]({{ site.baseurl }}/docs/configure-ci-cd-pipeline/pipelines/)
 * [Codefresh YAML]({{ site.baseurl }}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
 * [Pipeline steps]({{ site.baseurl }}/docs/codefresh-yaml/steps/)
 * [Internal Docker Registry]({{ site.baseurl }}/docs/docker-registries/codefresh-registry/)
-* [YAML Examples]({{ site.baseurl }}/docs/yaml-examples/examples/)
+
 
 
