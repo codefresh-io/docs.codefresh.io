@@ -17,10 +17,14 @@
 
 .docs-layout {
   z-index: 20;
+
   background: $bd-doc-content-bg;
 
   animation: intro 300ms both;
   animation-delay: .15s;
+  &.container-fluid {
+    max-width: 1920px;
+  }
 }
 
 .simple-layout {
@@ -118,6 +122,7 @@
 //
 
 .bd-content-inner {
+  position: relative;
   > h2:not(:first-child) {
     margin-top: 3rem;
   }
@@ -136,6 +141,88 @@
     > ol,
     > p {
       max-width: 100%;
+    }
+  }
+  .bd-content-top-controls {
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    left: 0;
+    min-width: 50px;
+    overflow: hidden;
+    text-align: right;
+    background: transparent;
+    .dropdown-toggle {
+      &.btn-control-dropdown {
+        padding: .375rem;
+        color: lighten($body-color, 29%);
+        text-decoration: none;
+        background-color: $body-bg;
+
+        border: 1px solid $bd-doc-content-border;
+        border-radius: 4px;
+        border-top-left-radius: 0;
+        border-bottom-right-radius: 0;
+
+        &::before {
+          content: none;
+        }
+        &.focus,
+        &:focus {
+          box-shadow: none;
+        }
+      }
+    }
+    .dropleft {
+      display: none;
+      @media (min-width: 768px) {
+        display: inline-flex;
+      }
+      .dropdown-toggle {
+        &.btn-control-dropdown {
+          z-index: 1;
+          i.fas {
+            transition: all .2s linear;
+            transform: rotate(0deg);
+          }
+        }
+      }
+      &.show {
+        .dropdown-toggle {
+          border-bottom-left-radius: 0;
+          &.btn-control-dropdown {
+            i.fas {
+              //transition: all .2s linear;
+              transform: rotate(62deg);
+            }
+          }
+        }
+      }
+      .dropdown-menu {
+        top: 0 !important;
+        right: 0;
+        left: auto !important;
+        z-index: 0;
+        display: inline-block;
+        min-height: 38px;
+        padding: .25rem 0;
+        margin-right: -.115rem;
+        visibility: hidden;
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-top-left-radius: 0;
+        border-bottom-right-radius: 0;
+        transition: all .3s ease-in-out;
+        transform: translateX(130px) !important;
+        &.show {
+          visibility: visible;
+          transform: translateX(-30px) !important;
+        }
+        .form-group {
+          padding: 0 5px;
+          margin-bottom: 0;
+        }
+      }
     }
   }
 }
