@@ -1,0 +1,28 @@
+version: '1.0'
+steps:
+  MyDepDockerImage:
+    title: Building Docker Image with Jekyll Deps
+    type: build
+    image_name: docs-jekyll-deps
+    working_directory: ./
+    tag: ${{CF_BRANCH_TAG_NORMALIZED}}
+    dockerfile: Dockerfile.dep
+  DocGeneration:
+    title: Creating static site
+    image: ${{MyDepDockerImage}}
+    commands: 
+      - chmod 777 -R .
+      - "sed -i 's|^url:.*|url: \"${{JEKYLL_URL}}\"|' _config.yml"
+      - "sed -i 's|^baseurl:.*|baseurl: \"${{MY_JEKYLL_BASEURL}}\"|' _config.yml"
+      - cat _config.yml
+      - jekyll build --destination _site
+  S3WebsiteDeploy:
+    title: Copying static site to s3 website
+    image: mesosphere/aws-cli
+    commands:
+      - aws s3 sync ./_site/ s3://${{S3_BUCKETNAME}}/docs --delete
+    when:
+      branch:
+        only:
+          - master
+          #- /^feature-.*/i

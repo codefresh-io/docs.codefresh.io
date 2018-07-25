@@ -1,0 +1,10 @@
+from jekyll/jekyll:3.8.3
+
+
+# copy gemfiles for docker caching
+COPY Gemfile* /srv/jekyll/
+
+WORKDIR /srv/jekyll
+
+RUN chown jekyll:jekyll -R . && bundle install
+
