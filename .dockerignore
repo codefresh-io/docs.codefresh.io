@@ -2,3 +2,4 @@
 node_modules
 _site
 docker-compose.yml
+vendor
