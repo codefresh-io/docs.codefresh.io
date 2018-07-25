@@ -41,9 +41,8 @@ max-width="40%"
 Click on the provider that contains your Git repositories.
 
 
->Currently, it is possible to have only one Git provider per account. You have to create a separate Codefresh account for each of your Git providers if you have repositories in more than one. 
->
->For example if you have repositories on both GitHub and Bitbucket, you need to create one Codefresh account for GitHub and a separate Codefresh account for Bitbucket.
+>If you wish to add repositories that exist in other GIT providers, you can add them after creating
+your account via the [GIT integrations]({{ site.baseurl }}/docs/integrations/git-providers/).
 
 
 ## 2. Accept the Permissions Request
