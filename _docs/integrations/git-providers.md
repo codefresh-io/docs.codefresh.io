@@ -112,13 +112,13 @@ now save the git integration.
 ## Atlassian Stash 
 
 Atlassian stash is only available for an on-premise connection. Follow the same instructions as Bitbucket.
-You also need to enter to provide the URL of the Stash server in your organization 
+You also need to provide the URL of the Stash server in your organization 
 
 
 ## Using your git provider
 
-Once your provider is active, you can add a new project into Codefresh and the during the repository selection
-screen you will have access to the additional setting providers
+Once your provider is active, you can add a new project into Codefresh and then during the repository selection
+screen you will have access to the additional git providers.
 
 {% include image.html 
 lightbox="true" 
@@ -131,7 +131,7 @@ alt="Select GIT provider"
 
 
 After adding the repository Codefresh will behave exactly the same, regardless of the selected git provider.
-You will be able to create pipelines for different git providers in exactly the same manner
+You will be able to create pipelines for different git providers in exactly the same manner.
 
 
 
