@@ -158,12 +158,4 @@ See detailed explanation [here]({{ site.baseurl }}/docs/codefresh-yaml/steps/dep
 ### Example:
 Click [here](https://docs.codefresh.io/docs/codefresh-kubernetes-integration-demochat-example) to see an example of deploying our Demochat app to Kubernetes cluster.
 
-{{site.data.callout.callout_warning}}
-##### Beta disclaimer
 
-Please note that this is a beta version of the Codefresh GKE integration which is still undergoing final testing before its official release. The website, its software and all content found on it are provided on an “as is” and “as available” basis. Codefresh does not give any warranties, whether express or implied, as to the suitability or usability of the website, its software or any of its content.
-
-Codefresh will not be liable for any loss, whether such loss is direct, indirect, special or consequential, suffered by any party as a result of their use of the Codefresh website, its software or content. <br><br>Should you encounter any bugs, glitches, lack of functionality or other problems on the website, please let us know immediately so we can rectify these accordingly. please contact us on email: [support@codefresh.io](mailto:support@codefresh.io) 
-
-Your help in this regard is greatly appreciated. 
-{{site.data.callout.end}}
