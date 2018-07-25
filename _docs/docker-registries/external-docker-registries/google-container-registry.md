@@ -40,15 +40,15 @@ projects​​**.
 * ​Registry name: `<arbitrary_name>`
 * ​Username: `_json_key` (literally)
 * Password: `<contents_of_the_keyfile.json>`
-* ​Domain: `gcr.io`
+* ​Domain: `eu.gcr.io` or `us.gcr.io`
 
 Then you can [refer to the registry​](https://cloud.google.com/container-registry/docs/pushing-and-pulling?hl=en_US) like this in [Codefresh YAML]({{ site.baseurl }}/docs/codefresh-yaml/what-is-the-codefresh-yaml/):
 
 ```
-PushStep:
+MyPushStep:
   title: pushing to Google Docker registry
   type: push
-  image_name: <project_id>/<image_name>
+  candidate: <project_id>/<image_name>
   tag: <your_tag>
   registry: <registry_name_you_gave_in_step_5>
 ```
