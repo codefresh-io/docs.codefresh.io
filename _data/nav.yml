@@ -261,15 +261,6 @@
   pages:
     - title: Git providers
       url: "/git-providers"
-      sub-pages:
-        - title: Integration with multiple git providers
-          url: "/integrating-codefresh-with-multiple-git-providers"
-        - title: Integration with self-hosted (on-prem) git providers
-          url: "/integrating-codefresh-with-on-premises-git-providers"
-        - title: Activate integration with your self hosted Git server
-          url: "/activate-integration-with-your-self-hosted-git-server"
-        - title: Configure a Bitbucket Server Webhook
-          url: "/configure-a-bitbucket-server-webhook"
     - title: Notifications
       url: "/notifications"
       sub-pages:
