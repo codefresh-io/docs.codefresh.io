@@ -15,14 +15,14 @@ You can add repositories from the other git providers regardless of the one that
 
 You can even add multiple accounts from each Git provider (if you have more than one) allowing you to use Codefresh as a central CI/CD solution that can access all your git repositories regardless of the backing git provider
 
-Currently Codefresh supports
+Currently Codefresh supports:
 
-* Atlassian Stash
 * Github Cloud
 * Github On premises
 * Bitbucket
 * Gitlab Cloud
 * Gitlab On premises
+* Atlassian Stash
 
 Atlassian Stash as well as the on-premise version of Gitlab and Github are only available to Codefresh enterprise customers
 
@@ -60,7 +60,22 @@ For each git provider you need to setup authentication, so Codefresh can get acc
 In the case of an on-premise GIT provider you also need to fill in the URL where the provider is installed.
 
 
+## Github
 
+For Github you need:
+
+* a friendly name for the git context. It can be anything you want
+* an access token
+
+
+To create an access token, go to your Github *settings* and select the *Developer settings* option from the left
+sidebar. The select *Personal access tokens* from the .
+For more information see the [Github Documentation page](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/){:target="_blank"}
+
+The "token description" you enter in your Github account in order to create the token is completely arbitrary (use "Codefresh" for an example).Once you have the token, paste it in the Codefresh UI and click *Test connection*. If everything is OK can
+now save the git integration.
+
+For Github on-premise you also need to provide the URL of the GitHub server in your organization.
 
 ## Gitlab
 
@@ -79,24 +94,6 @@ Once you have the token, paste it in the Codefresh UI and click *Test connection
 now save the git integration.
 
 For Gitlab on-premise you also need to provide the URL of the GitHub server in your organization.
-
-
-## Github
-
-For Github you need:
-
-* a friendly name for the git context. It can be anything you want
-* an access token
-
-
-To create an access token, go to your Github *settings* and select the *Developer settings* option from the left
-sidebar. The select *Personal access tokens* from the .
-For more information see the [Github Documentation page](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/){:target="_blank"}
-
-The "token description" you enter in your Github account in order to create the token is completely arbitrary (use "Codefresh" for an example).Once you have the token, paste it in the Codefresh UI and click *Test connection*. If everything is OK can
-now save the git integration.
-
-For Github on-premise you also need to provide the URL of the GitHub server in your organization.
 
 ## Bitbucket
 

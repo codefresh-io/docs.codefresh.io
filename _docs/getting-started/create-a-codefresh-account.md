@@ -131,7 +131,7 @@ max-width="100%"
 %}
 
 
-Once that is done, follow the [Stash instructions]({{ site.baseurl }}/docs/integrations/stash/) for more information. 
+Once that is done, follow the [Stash instructions]{{ site.baseurl }}/docs/integrations/git-providers/#atlassian-stash) for more information. 
 
 
 
