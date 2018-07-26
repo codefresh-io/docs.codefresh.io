@@ -1,8 +1,10 @@
 ---
 title: "Setting Up SAML2 Federated Single Sign-On (SSO)"
 description: ""
-group: sso
-permalink: /:collection/sso/sso-setup-saml2/
+group: enterprise
+sub_group: single-sign-on
+redirect_from:
+  - /docs/sso/sso-setup-saml2/
 toc: true
 ---
 
@@ -35,7 +37,7 @@ Codefresh expects the following user attributes to be passed through SAML betwee
   - User first name
   - User last name
   - User full name
-  - User unique id that isn't subject to change in your identity managment environment
+  - User unique id that isn't subject to change in your identity management environment
 
 {:.text-secondary}
 ## How does the connection process works?

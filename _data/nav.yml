@@ -284,18 +284,15 @@
   pages:
     - title: Hybrid installation
       url: "/codefresh-hybrid"
-    - title: Enterprise Account Management Overview
+    - title: Enterprise Account Management
       url: "/ent-account-mng"
-
-- title: Single Sign-On
-  url: "/sso"
-  pages:
-    - title: Federated Single Sign-On Overview
-      url: "/federated-sso-overview"
-    - title: Setting Up SAML2 Federated Single Sign-On (SSO)
-      url: "/sso-setup-saml2"
-    - title: Setting Up OpenID Connect Federated Single Sign-On (SSO)
-      url: "/sso-setup-oauth2"
+    - title: Single Sign-On
+      url: "/single-sign-on"
+      sub-pages:
+        - title: Setting Up SAML2 Federated Single Sign-On 
+          url: "/sso-setup-saml2"
+        - title: Setting Up OpenID Connect Federated Single Sign-On 
+          url: "/sso-setup-oauth2"
 
 
 

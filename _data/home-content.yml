@@ -113,17 +113,6 @@
     localurl: /docs/new-helm/integration-tests-with-helm/
   - title: Best Practices
     localurl: /docs/new-helm/best-practices/
-- title: "Single Sign-On"
-  new: true
-  icon: images/home-icons/login.png
-  url: ''
-  links:
-  - title: Federated Single Sign-On Overview
-    localurl: /docs/sso/federated-sso-overview
-  - title: Setting Up SAML2 Federated Single Sign-On (SSO)
-    localurl: /docs/sso/sso-setup-saml2
-  - title: Setting Up OpenID Connect Federated Single Sign-On (SSO)
-    localurl: /docs/sso/sso-setup-oauth2
 - title: "Codefresh CLI"
   new: true
   icon: https://codefresh.io/wp-content/uploads/2018/01/cli.png
@@ -139,8 +128,10 @@
   links:
   - title: Codefresh hybrid installation
     localurl: /docs/enterprise/codefresh-hybrid
-  - title: Enterprise Account Management Overview
+  - title: Enterprise Account Management
     localurl: /docs/enterprise/ent-account-mng
+  - title: Single Sign on
+    localurl: /docs/enterprise/single-sign-on
 - title: "Windows Containers Support (Beta)"
   new: true
   icon: images/home-icons/started.png
