@@ -1,7 +1,7 @@
 ---
-title: "Add your Node to run/build containers"
-description: ""
-group: how-to-guides
+title: "Codefresh Hybrid installation"
+description: "Add your own Node to run/build containers"
+group: enterprise
 redirect_from:
   - /docs/add-your-node-to-runbuild-containers/
 toc: true

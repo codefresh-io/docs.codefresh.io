@@ -133,13 +133,14 @@
     url: http://cli.codefresh.io/installation/
   - title: Documentation
     url: http://cli.codefresh.io/
-- title: "Enterprise Account Management"
-  new: true
+- title: "Enterprise Features"
   icon: images/home-icons/enterprise1.png
   url: ''
   links:
+  - title: Codefresh hybrid installation
+    localurl: /docs/enterprise/codefresh-hybrid
   - title: Enterprise Account Management Overview
-    localurl: /docs/enterprise-account-mng/ent-account-mng
+    localurl: /docs/enterprise/ent-account-mng
 - title: "Windows Containers Support (Beta)"
   new: true
   icon: images/home-icons/started.png

@@ -279,6 +279,14 @@
     - title: Codefresh API
       url: "/codefresh-api"
 
+- title: Enterprise features
+  url: "/enterprise"
+  pages:
+    - title: Hybrid installation
+      url: "/codefresh-hybrid"
+    - title: Enterprise Account Management Overview
+      url: "/ent-account-mng"
+
 - title: Single Sign-On
   url: "/sso"
   pages:
@@ -289,11 +297,7 @@
     - title: Setting Up OpenID Connect Federated Single Sign-On (SSO)
       url: "/sso-setup-oauth2"
 
-- title: Enterprise Account Management
-  url: "/enterprise-account-mng"
-  pages:
-    - title: Enterprise Account Management Overview
-      url: "/ent-account-mng"
+
 
 - title: Windows Container Support (Beta)
   url: "/windows"
@@ -341,17 +345,6 @@
           url: "/git-clone-step-issue"
         - title: Access and debug the pipeline volume image
           url: "/access-and-debug-the-pipeline-volume-image"
-
-- title: How-To Guides
-  url: "/how-to-guides"
-  pages:
- 
-
-    - title: Add your Node to run/build containers
-      url: "/add-your-node-to-run-build-containers"
-
-
-
 
 - title: Whats new?
   url: "/whats-new"

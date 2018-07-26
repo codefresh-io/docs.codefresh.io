@@ -1,8 +1,9 @@
 ---
 title: "Enterprise Account Management Overview"
 description: ""
-group: enterprise-account-mng
-permalink: /:collection/enterprise-account-mng/ent-account-mng/
+group: enterprise
+redirect_from:
+  - /docs/enterprise-account-mng/ent-account-mng/
 toc: true
 ---
 
