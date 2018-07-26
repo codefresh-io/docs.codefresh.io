@@ -113,6 +113,10 @@
           url: "/populate-a-database-with-existing-data"
         - title: Use kubectl as part of Freestyle step
           url: "/use-kubectl-as-part-of-freestyle-step"
+        - title: Launching a composition and defining a service environment variables using a file
+          url: "/launching-a-composition-and-defining-a-service-environment-variables-using-a-file"
+        - title: Get Short SHA ID and Use it in a CI Process
+          url: "/get-short-sha-id-and-use-it-in-a-ci-process"
 
 
 - title: "Artifacts Management"
@@ -335,18 +339,17 @@
           url: "/failed-to-get-accounts-clusters-during-workflow"
         - title: 'Clone step failed: Command [git checkout $REVISION] exited with code [1]'
           url: "/git-clone-step-issue"
+        - title: Access and debug the pipeline volume image
+          url: "/access-and-debug-the-pipeline-volume-image"
 
 - title: How-To Guides
   url: "/how-to-guides"
   pages:
-    - title: Get Short SHA ID and Use it in a CI Process
-      url: "/get-short-sha-id-and-use-it-in-a-ci-process"
-    - title: Access and debug the pipeline volume image
-      url: "/access-and-debug-the-pipeline-volume-image"
+ 
+
     - title: Add your Node to run/build containers
       url: "/add-your-node-to-run-build-containers"
-    - title: Launching a composition and defining a service environment variables using a file
-      url: "/launching-a-composition-and-defining-a-service-environment-variables-using-a-file"
+
 
 
 

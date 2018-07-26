@@ -1,7 +1,8 @@
 ---
 title: "Launching a composition and defining a service environment variables using a file"
 description: ""
-group: how-to-guides
+group: yaml-examples
+sub_group: examples
 redirect_from:
   - /docs/launching-a-composition-and-passing-a-service-environment-variable-using-a-file/
 toc: true

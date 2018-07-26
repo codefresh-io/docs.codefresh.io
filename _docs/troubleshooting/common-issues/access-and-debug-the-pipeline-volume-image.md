@@ -1,7 +1,8 @@
 ---
 title: "Access and debug the pipeline volume image"
 description: ""
-group: how-to-guides
+group: troubleshooting
+sub_group: common-issues
 redirect_from:
   - /docs/access-the-pipeline-volume-image/
 toc: true
