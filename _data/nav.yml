@@ -343,10 +343,6 @@
       url: "/get-short-sha-id-and-use-it-in-a-ci-process"
     - title: Define CI/CD for Multiple Docker files in one repository
       url: "/define-ci-cd-for-multiple-docker-files-in-one-repository"
-    - title: Push Image to an AWS EC2 Container Registry
-      url: "/push-image-to-an-aws-ec2-container-registry"
-    - title: Forking the Demo Project on Github
-      url: "/forking-the-demo-project-on-github"
     - title: Access and debug the pipeline volume image
       url: "/access-and-debug-the-pipeline-volume-image"
     - title: Add your Node to run/build containers
