@@ -37,6 +37,7 @@ Follow the link in the email to fill in an application for the free credits. Onc
 {{site.data.callout.end}}
 
 {:.text-secondary}
+
 ## Adding EKS Cluster
 To add an Amazon EKS cluster, you must first create a service account and obtain a token used to manage the integration.
 
@@ -189,20 +190,38 @@ echo $(kubectl get secret -o go-template='{{index .data "token" }}' $(kubectl ge
 {% endhighlight %}
 
 {{site.data.callout.callout_info}}
+
 ##### Note
 
-In the instructions above, we're reffering for a service account named 'default' in regards to the **certificate** and **token**. You can provide any service account configurations you may have on any namespace, the minimal permissions requirement is that it'll be able to get all namespaces in your cluster. The cluster actions you'll be limited to in Codefresh are based on the Kubernetes service account permissions you set in Kubernetes RBAC. 
+In the instructions above, we're reffering for a service account named 'default' in regards to the **certificate** and **token**. You can provide any service account configurations you may have on any namespace, as long as it has the correct permissions. The cluster actions you'll be limited to in Codefresh are based on the Kubernetes service account permissions you set in Kubernetes RBAC. 
 {{site.data.callout.end}}
+
+The minimum permissions Codefresh needs to work with the cluster are the following:
+
+`codefresh-role.yml`
+{% highlight yaml %}
+{% raw %}
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: codefresh-role
+rules:
+  - apiGroups: [""]
+    resources: ["*"]
+    verbs: ["list", "watch", "get"] 
+{% endraw %}
+{% endhighlight %}
 
 Once the cluster been added successfully you can go to the `Kubernetes` tab to start working with the services of your cluster.
 
 So, what's next?
+- [Deploy to Kubernetes - quick start]({{ site.baseurl }}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/)
+- [Deploying to Kubernetes with Helm]({{ site.baseurl }}/docs/getting-started/helm-quick-start-guide/)
 - [Manage your Kubernetes cluster in Codefresh]({{ site.baseurl }}/docs/deploy-to-kubernetes/codefresh-kubernetes-integration-beta/)
-- [Deployment to Kubernetes - Quick start guide]({{ site.baseurl }}/docs/deploy-to-kubernetes/deployment-to-kubernetes-quick-start-guide/)
 - [Example - Deploy demochat to Kubernetes cluster]({{ site.baseurl }}/docs/deploy-to-kubernetes/codefresh-kubernetes-integration-demochat-example/)
 
 
-## Debugging issues with adding cluster
+## Troubleshooting cluster addition
 
 After adding your cluster configurations and in case the test fails, click "Save" to get the error message back.
 
@@ -215,7 +234,7 @@ After adding your cluster configurations and in case the test fails, click "Save
     %}
 
 {:.text-secondary}
-### Namespaces is forbidden
+### Error: Cannot list namespaces
 
   `Add Cluster Error`
 {% highlight shell %}
@@ -224,8 +243,9 @@ Failed to add cluster: namespaces is forbidden: User "system:serviceaccount:defa
 {% endraw %}
 {% endhighlight %}
 
-The service account used for the integration doesn't have the minimal permissions required (get all cluster namespaces). To fix this add a service account that have the required permissions.' +
-The following command gives an example on how to create a cluster binding role between the default service account and cluster-admin role:
+The service account used for the integration doesn't have the minimal permissions required. To fix this add a service account that have the required permissions.
+
+The easiest way to do this is to create a cluster binding role between the default service account and cluster-admin role:
 
   `Create cluster binding with admin permissions`
 {% highlight shell %}

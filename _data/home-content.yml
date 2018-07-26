@@ -69,12 +69,12 @@
   - title: Pull & Push images to Codefresh’s Registry
     localurl: /docs/docker-registries/codefresh-registry/
 - title: Integrations
-  icon: https://codefresh.io/wp-content/uploads/2017/11/integrations.png
+  icon: images/home-icons/integrations.png
   url: ''
   links:
   - title: Docker registry integration
     localurl: /docs/docker-registries/external-docker-registries/
-  - title: On Premise Git integration
+  - title: GIT integration
     localurl: /docs/integrations/git-providers/
   - title: Jenkins integration
     localurl: /docs/integrations/jenkins-integration/
