@@ -341,8 +341,6 @@
   pages:
     - title: Get Short SHA ID and Use it in a CI Process
       url: "/get-short-sha-id-and-use-it-in-a-ci-process"
-    - title: Define CI/CD for Multiple Docker files in one repository
-      url: "/define-ci-cd-for-multiple-docker-files-in-one-repository"
     - title: Access and debug the pipeline volume image
       url: "/access-and-debug-the-pipeline-volume-image"
     - title: Add your Node to run/build containers

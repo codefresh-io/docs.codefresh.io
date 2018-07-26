@@ -127,30 +127,3 @@ max-width="40%"
 
 
 
-## Using the registry directly in a push step in codefresh.yml (old/legacy way)
-
-You can configure your `codefresh.yml` file directly by first providing
-the following in the **Environment Variables** section of the Pipelines view
-
-* AWS_REGISTRY - the registry url (including the repository name)
-* AWS_ACCESS_KEY - your access key id
-* AWS_SECRET_KEY - your secret key
-* AWS_REGION - the region of your registry
-
-and then you can reference those variables in your file like so
-
-  `codefresh.yml`
-{% highlight yaml %}
-push_to_aws_ecr:
-  type: push
-  description: Free text description
-  candidate: {% raw %}${{build_step}}{% endraw %}
-  tag: {% raw %}${{CF_BRANCH}}{% endraw %}
-  provider: 'ecr'
-  registry: {% raw %}${{AWS_REGISTRY}}{% endraw %}
-  accessKeyId: {% raw %}${{AWS_ACCESS_KEY}}{% endraw %}
-  secretAccessKey: {% raw %}${{AWS_SECRET_KEY}}{% endraw %}
-  region: {% raw %}${{AWS_REGION}}{% endraw %}
-{% endhighlight %}
-
-
