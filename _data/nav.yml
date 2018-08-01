@@ -64,8 +64,6 @@
       url: "/post-step-operations"
     - title: "Working Directories"
       url: "/working-directories"
-    - title: "Execution Flow"
-      url: "/execution-flow"
     - title: "Variables"
       url: "/variables"
     - title: "Conditional Execution of Steps"
@@ -74,8 +72,6 @@
       url: "/expression-condition-syntax"
     - title: "Image Metadata Annotations"
       url: "/metadata-annotations"
-    - title: "Codefresh inline YAML"
-      url: "/codefresh-inline-yaml"
 
 - title: "YAML Examples"
   url: "/yaml-examples"
