@@ -368,7 +368,7 @@ Among the information shown, you can clearly see:
 This information can help you to easily correlate the changes that exist in each Docker images, which is very important knowledge when it comes to deployments (explained in detail in the next tutorial).
 
 If you click on a Docker image you will get many more details about it including a timeline of the labels for this Docker image. You also have the ability to enter custom comments that describe any event that you consider important. Codefresh
-really shines when it comes to annotating your Docker images with metadata. For more details read the section [Annotations]({{ site.baseurl }}/docs/codefresh-yaml/metadata-annotations/)
+really shines when it comes to annotating your Docker images with metadata. For more details read the section [Annotations]({{ site.baseurl }}/docs/docker-registries/metadata-annotations/)
 
 {% include 
 image.html 

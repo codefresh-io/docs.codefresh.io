@@ -65,7 +65,7 @@
   - title: Integration Tests
     localurl: /docs/configure-ci-cd-pipeline/integration-tests/
   - title: Annotate Image with tests
-    localurl: /docs/codefresh-yaml/metadata-annotations/
+    localurl: /docs/docker-registries/metadata-annotations/
   - title: Pull & Push images to Codefresh’s Registry
     localurl: /docs/docker-registries/codefresh-registry/
 - title: Integrations

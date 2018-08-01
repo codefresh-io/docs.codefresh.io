@@ -70,8 +70,7 @@
       url: "/conditional-execution-of-steps"
     - title: "Expression Condition Syntax"
       url: "/expression-condition-syntax"
-    - title: "Image Metadata Annotations"
-      url: "/metadata-annotations"
+
 
 - title: "YAML Examples"
   url: "/yaml-examples"
@@ -120,6 +119,8 @@
   pages:
     - title: "Codefresh Docker Registry"
       url: "/codefresh-registry"
+    - title: "Image Metadata Annotations"
+      url: "/metadata-annotations"
     - title: "External Docker Registries"
       url: "/external-docker-registries"
       sub-pages:

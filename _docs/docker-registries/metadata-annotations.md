@@ -1,7 +1,7 @@
 ---
 title: "Image Metadata Annotations"
 description: ""
-group: codefresh-yaml
+group: docker-registries
 redirect_from:
   - /docs/metadata-annotations/
 toc: true
