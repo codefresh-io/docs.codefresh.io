@@ -3,9 +3,7 @@
 title: "Import data to MongoDB"
 description: ""
 group: on-demand-test-environment
-sub_group: examples-compositions
-# hack/workaround for sub elements, because parent has permalink
-permalink: /docs/on-demand-test-environment/examples-compositions/import-data-to-mongodb-in-composition/
+sub_group: example-compositions
 redirect_from:
   - /docs/import-data-to-mongodb-in-composition/
 toc: true

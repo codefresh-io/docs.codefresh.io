@@ -2,9 +2,7 @@
 title: "Secure a Docker Container Using HTTP Basic Auth"
 description: ""
 group: on-demand-test-environment
-sub_group: examples-compositions
-# hack/workaround for sub elements, because parent has permalink
-permalink: /docs/on-demand-test-environment/examples-compositions/securing-docker-container-with-http-basic-auth/ 
+sub_group: example-compositions
 redirect_from:
   - /docs/securing-docker-container-with-http-basic-auth/
 toc: true

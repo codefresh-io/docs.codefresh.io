@@ -2,9 +2,7 @@
 title: "Spring Boot + Kafka + Zookeeper"
 description: ""
 group: on-demand-test-environment
-sub_group: examples-compositions
-# hack/workaround for sub elements, because parent has permalink
-permalink: /docs/on-demand-test-environment/examples-compositions/spring-boot-kafka-zookeeper/ 
+sub_group: example-compositions
 redirect_from:
   - /docs/spring-boot-kafka-zookeeper/
 toc: true

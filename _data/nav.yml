@@ -241,17 +241,17 @@
       url: "/share-your-environment-with-your-team"
     - title: Composition Service Discovery (Experimental)
       url: "/composition-service-discovery"
-    - title: Useful compositions
-      url: "/examples-compositions"
+    - title: Example compositions
+      url: "/example-compositions"
       sub-pages:
         - title: Web terminal
           url: "/web-terminal"
         - title: Import data to MongoDB
-          url: "/import-data-to-mongodb-in-composition"
+          url: "/import-data-to-mongodb"
         - title: NodeJS + Angular2 + MongoDB
           url: "/nodejs-angular2-mongodb"
         - title: Secure a Docker Container Using HTTP Basic Auth
-          url: "/securing-docker-container-with-http-basic-auth"
+          url: "/secure-a-docker-container-using-http-basic-auth"
         - title: Spring Boot + Kafka + Zookeeper
           url: "/spring-boot-kafka-zookeeper"
 

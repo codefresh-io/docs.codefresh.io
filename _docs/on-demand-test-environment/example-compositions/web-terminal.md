@@ -2,9 +2,7 @@
 title: "Web terminal"
 description: ""
 group: on-demand-test-environment
-sub_group: examples-compositions
-# hack/workaround for sub elements, because parent has permalink
-permalink: /docs/on-demand-test-environment/examples-compositions/web-terminal/ 
+sub_group: example-compositions
 redirect_from:
   - /docs/web-terminal/
 toc: true
