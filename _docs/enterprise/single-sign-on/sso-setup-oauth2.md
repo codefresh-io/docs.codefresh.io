@@ -8,8 +8,7 @@ redirect_from:
 toc: true
 ---
 
-  Codefresh natively supports login using Github, Bitbucket and Gitlab using OpenID Connect (OAUTH 2.0) protocol.
-  For additional login integrations based on OAUTH 2.0, like using Google identities, you'll need to provide Codefresh your client ID and client secret.
+Codefresh natively supports login using Github, Bitbucket and Gitlab using OpenID Connect (OAUTH 2.0) protocol. This guide will review how to add additional SSO integrations based on OAUTH 2.0 as part of Codefresh Enterprise plan.
 
   
 ## Prerequisites
@@ -34,9 +33,9 @@ Codefresh currently supports
 
 You can setup each provider
 
- 1. At the Codefresh customer level 
+ 1. At the [Codefresh customer level]({{ site.baseurl }}/docs/enterprise/ent-account-mng/) 
  1. At the Codefresh account level 
- 1. At both levels. In that case you will only be able to edit the customer one, if you don't have admin privilages in the account level.
+ 1. At both levels. Integrations that were created from the customer level can only be edited or removed by the customer administrator from that customer management view. The Account administrator won’t be able to edit those.
 
 The specific way depends on your own organization and how you have chosen to give Codefresh access to your users.
 
@@ -146,7 +145,7 @@ caption="Azure App Change Permissions"
 max-width="70%"
 %}
 
-The next step is to modify permissions for the app. Under *DELEGATED PERMISSIONS* check next to *Sign in and read user profile* and *Read directory data*.
+The next step is to modify permissions for the app. Under *DELEGATED PERMISSIONS* check next to *Sign in and read user profile* and *Read directory data*. Finally click the *Save* button.
 
 {:start="3"}
 1. Create the key
