@@ -191,8 +191,11 @@ max-width="70%"
 Next you need to ensure that your Codefresh callback URL is listed in allowed reply URLs for the created application. Navigate to *Azure Active Directory* -> *Apps registrations* and select your app. Then click *Settings -> Reply URLs* and add:
 
 ```
-https://codefresh-login.auth0.com/login/callback
+https://g.codefresh.io/api/auth/<your_codefresh_sso_client_name>/callback/withoutVerification
+
 ```
+
+where `<your_codefresh_sso_client_name>` is the same name you give the client in Codefresh SSO setup. 
 
 {% include image.html 
 lightbox="true" 
@@ -204,12 +207,13 @@ max-width="70%"
 %}
 
 {:start="5"}
-1. Send the following data to Codefresh:
+1. Go back to the SSO settings screen described in the first part of this guide inside the Codefresh GUI
+and enter the following:
 
-* The application ID in Azure AD (shown below)
-* The key value from step 3
-* Your Microsoft Azure AD Domain
-* Email domains that are authorized to use this connection
+1. client name - same name as was given in step 4
+2. client host - `https://login.microsoftonline.com/<Your Microsoft Azure AD Domain>/.well-known/openid-configuration`
+3. client id - your Azure Apllication ID (see below)
+4. client secret - the key from step 3
 
 {% include image.html 
 lightbox="true" 
@@ -227,3 +231,40 @@ Coming soon...
 ### Setting Okta as an Identity provider
 
 Coming soon...
+
+
+## Testing your Identity provider
+
+Once you setup the Identity provider do the following
+
+1. Go to the collaborators screen by clicking on *Collaborators* on the left sidebar
+1. Add an active user that will be used for testing. We recommend you use your own user
+ 
+
+
+{% include image.html 
+lightbox="true" 
+file="/images/enterprise/sso/collaborators.png" 
+url="/images/enterprise/sso/collaborators.png"
+alt="Adding collaborators"
+caption="Adding collaborators"
+max-width="70%"
+%}
+
+
+{:start="3"}
+1. Keep the browser session open, and login via Corporate SSO in an incognito tab.
+
+
+
+{% include image.html 
+lightbox="true" 
+file="/images/enterprise/sso/sign-with-sso.png" 
+url="/images/enterprise/sso/sign-with-sso.png"
+alt="Sign-in with SSO"
+caption="Sign-in with SSO"
+max-width="70%"
+%}
+
+{:start="4"}
+1. If everything works ok add more users
