@@ -84,3 +84,14 @@ Notice the protocol is `cm://` instead of `https://` this indicates the custom a
 ## Using in a Codefresh pipeline
 
 The Codefresh Helm plugin automatically handles authentication for managed repositories. You can use the plugin as you usually would. For more information on the Codefresh Helm plugin, see [here]({{ site.baseurl }}/docs/new-helm/using-helm-in-codefresh-pipeline/).
+
+## Removing a Helm chart from a private Codefresh repository
+
+You can delete a Helm chart from your own Helm repository with the following HTTP call.
+
+```bash
+curl -X DELETE -v -H "Authorization: Bearer <codefresh--token>" https://h.cfcr.io/api/<codefresh-account-name>/<codefresh-helm-repo-name>/charts/<chart-name>/<chart-version>
+```
+Replace values in `<>` with your own (also removing `<>` in the process).
+
+Generate a token from [https://g.codefresh.io/account-conf/tokens](https://g.codefresh.io/account-conf/tokens) as explained in the [API page]({{ site.baseurl }}/docs/integrations/codefresh-api/).
