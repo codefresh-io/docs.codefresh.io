@@ -72,6 +72,9 @@ From now on, this cluster on this namespace will be able to deploy Docker images
 From this screen you don't really need to finish the deployment in order to apply the secrets changes. Feel free to
 close the screen and go to another Codefresh page.
 
+>Note that Codefresh will automatically use the secret you defined in all deployments
+that are performed via the GUI (Codefresh is dynamically creating the correct manifests for you behind the scenes in that case).
+If you wish to use your own manifests, you need to include the secret yourself, as explained in the next section.
 
 
 ## Giving access to a Docker Registry with kubectl
@@ -79,6 +82,8 @@ close the screen and go to another Codefresh page.
 You can also use the `kubectl` command directly to give access to a Docker registry.
 This way is not specific to Codefresh so read the [official kubernetes documentation](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/).
 
+
+### Creating the Docker registry secret
 
 For the internal Codefresh registry:
 
@@ -109,8 +114,19 @@ kubectl create secret docker-registry cfcr\
 {% endraw %}
 {% endhighlight %}
 
+### Using the Docker registry secret
+
+To use the secret you just created, you need to either
+
+* include it in [your pod manifests](https://kubernetes.io/docs/concepts/containers/#specifying-imagepullsecrets-on-a-pod)
+* or include it in [the service account level](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#add-imagepullsecrets-to-a-service-account).
+
+There is nothing specific to Codefresh regarding the usage of Docker registry secrets, and therefore
+following the official Kubernetes documentation is the recommended approach.
+
 ## Giving access to a Docker Registry via the Codefresh CLI
 
 The Codefresh CLI can also create pull secrets in an automated manner.
 
 See the Image pull Secret [documentation](https://codefresh-io.github.io/cli/more/image-pull-secret/).
+
