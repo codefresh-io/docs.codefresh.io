@@ -7,6 +7,12 @@ redirect_from:
 toc: true
 ---
 
+
+### August 2018
+
+- Ability to configure SSO both in the customer and the account level (Enterprise)
+- Azure SSO integration (Enterprise)
+
 ### July 2018
 
 - Can use any GIT provider (github, gitlab, bitbucket, stash) with the same Codefresh account
