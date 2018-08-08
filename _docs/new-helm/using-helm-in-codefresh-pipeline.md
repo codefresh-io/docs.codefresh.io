@@ -66,7 +66,7 @@ results in:
 --values values-prod.yaml
 ```
 
-If a variable contains a `_` (underscore) in it's name, replace it character with `__` (double underscore).
+If a variable already contains a `_` (underscore) in it's name, replace it with `__` (double underscore).
 
 ## Examples
 
@@ -138,5 +138,5 @@ TILLER_NAMESPACE|optional|Kubernetes namespace where tiller is installed
 CHART_VERSION|optional|override or set the chart version
 CHART_REPO_URL|optional|Helm chart repository URL. If a Helm repository context is attached to the pipeline, this setting is ignored
 VALUESFILE_|optional|Values file to provide to Helm (as --file). a.k.a CUSTOMFILE but CUSTOMFILE shouldn't be used anymore.
-VALUE_|optional|Value to provide to Helm (as --set). a.k.a CUSTOM but CUSTOM shouldn't be used anymore.
+VALUE_|optional|Value to provide to Helm (as --set). a.k.a CUSTOM but CUSTOM shouldn't be used anymore. If a variable already contains a `_` (underscore) in it's name, replace it with `__` (double underscore).
 CMD_PS|optional|Command Postscript - this will be appended as is to the generated helm command string. Can be used to set additional parameters supported by the command but not exposed as configuration options.
