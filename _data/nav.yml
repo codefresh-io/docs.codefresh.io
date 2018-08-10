@@ -158,7 +158,7 @@
     - title: Accessing a Docker registry from your Kubernetes cluster
       url: "/access-docker-registry-from-kubernetes"
 
-- title: "*NEW* HELM"
+- title: "Helm Deployments"
   url: "/new-helm"
   pages:
     - title: Codefresh Managed Helm Repos

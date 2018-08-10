@@ -156,6 +156,6 @@ See detailed explanation [here]({{ site.baseurl }}/docs/codefresh-yaml/steps/dep
 
 {:.text-secondary}
 ### Example:
-Click [here](https://docs.codefresh.io/docs/codefresh-kubernetes-integration-demochat-example) to see an example of deploying our Demochat app to Kubernetes cluster.
+Click [here]({{ site.baseurl }}/docs/deploy-to-kubernetes/codefresh-kubernetes-integration-demochat-example/) to see an example of deploying our Demochat app to Kubernetes cluster.
 
 
