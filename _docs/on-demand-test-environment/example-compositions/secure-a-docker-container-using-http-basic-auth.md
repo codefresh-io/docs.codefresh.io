@@ -5,6 +5,7 @@ group: on-demand-test-environment
 sub_group: example-compositions
 redirect_from:
   - /docs/securing-docker-container-with-http-basic-auth/
+  - /docs/on-demand-test-environment/examples-compositions/securing-docker-container-with-http-basic-auth/
 toc: true
 ---
 Before making a product publicly available, you might want to restrict access to certain users. These are some options to accomplish this goal:
