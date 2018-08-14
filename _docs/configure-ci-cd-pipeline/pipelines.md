@@ -9,6 +9,7 @@ redirect_from:
   - /docs/pipelines/
   - /docs/pipelines/introduction/
   - /docs/pipelines/introduction
+  - /docs/inline-yaml-editing
 toc: true
 ---
 
@@ -102,15 +103,50 @@ Once you switch to YML mode you have 3 more options on how to select the yml con
 1. Read yml from repository (recommended)
 1. Read yml from URL (allows re-use of yml files between different projects)
 
+### Writing Codefresh YML in the GUI
+
 The inline option allows you to define the build yml right there in the Codefresh UI. This is great when you are starting a new project because it offers you really quick feedback. You can edit the yml steps, run a build, edit again, run a build and so on. Even though this is very convenient in the beginning, it makes your pipeline definition only exist with the Codefresh UI and therefore goes against the basic principles of [infrastructure as code](https://en.wikipedia.org/wiki/Infrastructure_as_Code). Once you are happy with how your pipeline works you should commit it to your repository and use the second option.
 
 > You can also import directly yml steps from a file on your computer as a starting point by clicking the *import
 from file* button.
 
+### Using a codefresh.yml for the source code repository
+
 The repository option is the recommended on. It reads the `codefresh.yml` file from the repository that contains your source code. This way when you change the file you also get history and auditing for free via the GIT functionality. Both the name and location of the file are configurable.
+
+### Share single codefresh YAML across different pipelines
 
 The third option allows you to load the yml from any location, even from a different repository. This allows you to create yml files in a central repository or web server and reuse them in multiple Codefresh pipelines. So if you want
 to keep a separation between the code and the pipeline definitions you can select this method instead of having the `codefresh.yml` file in the same place as the source code.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/e6a4188-Screen_Shot_2017-10-23_at_6.58.06_PM.png" 
+url="/images/e6a4188-Screen_Shot_2017-10-23_at_6.58.06_PM.png"
+alt="Using an external YAML file" 
+caption="Using an external YAML file"
+max-width="70%"
+%}
+
+
+
+The url that you enter must be a public url of a raw YAML file. For example, if you want to add a link to a yaml file located in a public Github repo, you can use the 'Raw' option from the editor menu:
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/b4edbf2-Screen_Shot_2017-10-25_at_11.31.21_AM.png" 
+url="/images/b4edbf2-Screen_Shot_2017-10-25_at_11.31.21_AM.png"
+alt="Getting the raw link of a github file" 
+caption="Getting the raw link of a github file"
+max-width="70%"
+%}
+
+This way you can use a single `codefresh.yml` file for different pipelines even in different repos.
+
+
+
 
 ### Switching between YAML and GUI steps
 

@@ -69,10 +69,10 @@ For Github you need:
 
 
 To create an access token, go to your Github *settings* and select the *Developer settings* option from the left
-sidebar. The select *Personal access tokens* from the .
+sidebar. The select *Personal access tokens* from the left menu.
 For more information see the [Github Documentation page](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/){:target="_blank"}
 
-The "token description" you enter in your Github account in order to create the token is completely arbitrary (use "Codefresh" for an example).Once you have the token, paste it in the Codefresh UI and click *Test connection*. If everything is OK can
+The "token description" you enter in your Github account in order to create the token is completely arbitrary (use "Codefresh" for an example). Once you have the token, paste it in the Codefresh UI and click *Test connection*. If everything is OK you can
 now save the git integration.
 
 For Github on-premise you also need to provide the URL of the GitHub server in your organization.

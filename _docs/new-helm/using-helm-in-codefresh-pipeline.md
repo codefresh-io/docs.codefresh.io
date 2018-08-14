@@ -39,7 +39,7 @@ max-width="70%"
 
 ### Step 2 - Define a Helm repository
 
-You should configure a Helm repository for the step to work with. Besides public HTTP repositories, we support a variety of private, authenticated Helm repositories. Codefresh also provide a free, managed Helm repository for every account.
+You should configure a Helm repository for the step to work with. Besides public HTTP repositories, we support a variety of private, authenticated Helm repositories. Codefresh also provides a free, managed Helm repository for every account.
 
 You will need to connect your repository with Codefresh as described [here]({{ site.baseurl }}/docs/new-helm/add-helm-repository/), or obtain your managed Helm repository URL as described [here]({{ site.baseurl }}/docs/new-helm/managed-helm-repository/#chart-repository-url).
 
@@ -83,8 +83,6 @@ The Helm step can operate in one of 3 modes:
 3. Authentication only - will only setup authentication, and add the repo to the helm. This is useful if you want to write your own helm commands using the freestyle step's `commands` property, but you still want the step to handle authentication.
 
 The operation mode is set by the `ACTION` variable, where the value is `install`/`auth`/`push`.
-
-
 
 ### Helm Values
 
