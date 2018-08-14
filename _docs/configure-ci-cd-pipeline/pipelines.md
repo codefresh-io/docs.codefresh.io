@@ -10,6 +10,7 @@ redirect_from:
   - /docs/pipelines/introduction/
   - /docs/pipelines/introduction
   - /docs/inline-yaml-editing
+  - /docs/inline-yaml-editing/
 toc: true
 ---
 
