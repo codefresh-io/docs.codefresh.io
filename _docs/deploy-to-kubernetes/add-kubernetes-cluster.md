@@ -8,8 +8,8 @@ redirect_from:
   - /docs/adding-non-gke-kubernetes-cluster/
 toc: true
 ---
-  
-On your Configuration settings, go to the **Integration** tab and choose **Kubernetes**.
+First click *Integrations* from the left sidebar and select the *integration* tab.
+Then choose **Kubernetes**.
 
 {% include image.html
   lightbox="true"

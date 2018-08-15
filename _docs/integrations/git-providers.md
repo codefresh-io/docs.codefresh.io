@@ -31,16 +31,9 @@ Atlassian Stash as well as the on-premise version of Gitlab and Github are only 
 
 By default, you have direct access to git repositories that exist in the GIT provider that you used while signing up for Codefresh. You can easily create Codefresh projects that checkout code from that GIT provider without any extra configurations.
 
-To add additional GIT providers click *Configuration* from the left sidebar and from the *integrations* tab, select *Git providers*.
+To add additional GIT providers click *Integrations* from the left sidebar and from the *integrations* tab, select *Git providers*.
 
-{% include image.html 
-lightbox="true" 
-file="/images/integrations/git/git-integrations.png" 
-url="/images/integrations/git/git-integrations.png"
-max-width="60%"
-caption="GIT integrations"
-alt="GIT integrations"
-%}
+{% include image.html lightbox="true" file="/images/integrations/codefresh-integrations.png" url="/images/integrations/codefresh-integrations.png" alt="Codefresh Account Integration" max-width="80%" %}
 
 You can add a new git provider using the *Add Git provider* drop-down.
 
