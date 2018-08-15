@@ -69,7 +69,7 @@ __Images built in Codefresh__
 
 In the tab  __Images__ for each image, you can find the command to pull this image from Codefresh Registry.
 
-{% include image.html lightbox="true" file="/images/265ae4b-codefresh_images_pull_img.png" url="/images/265ae4b-codefresh_images_pull_img.png" alt="Codefresh Pull Images" max-width="65%" %}
+{% include image.html lightbox="true" file="/images/artifacts/registry/copy-image.png" url="/images/artifacts/registry/copy-image.png" alt="Codefresh Docker registry registry" max-width="65%" %}
 
 __Login To CFCR__
 In order to pull images from Codefresh's registry you must first login. Use this Docker command to authenticate.
@@ -86,6 +86,16 @@ Use this Docker pull command to download the image
 {% highlight bash %}
 docker pull r.cfcr.io/<ACCOUNT>/<IMAGE>:<TAG>
 {% endhighlight %}
+
+## Remove images from Codefresh Registry
+
+The Codefresh Registry is fully managed for you and the amount of space it consumes does not affect you in any way (Codefresh pricing does not depend on the space you consume for Docker images).
+
+If you stll want to remove an image from the respective view you can just untag it.
+
+{% include image.html lightbox="true" file="/images/artifacts/registry/remove-image-tag.png" url="/images/artifacts/registry/remove-image-tag.png" alt="Codefresh Docker registry registry" max-width="65%" %}
+
+Once you remove all of its tags, the image will not be shown in the internal Codefresh registry list.
 
 ### See also
 [Accessing Docker registry from your Kubernetes cluster]({{ site.baseurl }}/docs/deploy-to-kubernetes/access-docker-registry-from-kubernetes/)
