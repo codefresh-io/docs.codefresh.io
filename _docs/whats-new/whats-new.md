@@ -12,6 +12,7 @@ toc: true
 
 - Ability to configure SSO both in the customer and the account level (Enterprise)
 - Azure SSO integration (Enterprise)
+- Favorite Repositories are now persistent across sessions
 
 ### July 2018
 
