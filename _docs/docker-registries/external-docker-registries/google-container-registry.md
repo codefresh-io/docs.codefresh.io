@@ -25,9 +25,13 @@ The JSON key file holds your credentials for a given [Service Account](https://c
 
 You can find the complete guide [here](https://support.google.com/cloud/answer/6158849#serviceaccounts).
 
-## Adding a second Google registry and/or eu.gcr.io
+## Working with multiple projects
 
-If you want to add a second Google registry or wish to use the European one at *eu.gcr.io* follow these steps:
+If you have more than one repositories/projects in Google cloud, you have to configure a Google Service Account so that it can access all projects and then use it for the Codefresh integration.
+
+Then you refer to the images according to the repository names, which correspond to the project names
+
+Follow these steps:
 
 1. Create a Service Account in GCP to use with Codefresh, if you have not created it
 yet.
