@@ -17,6 +17,7 @@ step_name:
   description: Step description
   working_directory: /path
   repo: github.com/owner/repo
+  git: my-git-provider
   revision: abcdef12345
   credentials:
     username: subject
@@ -33,12 +34,15 @@ step_name:
     ...
 {% endhighlight %}
 
+
+
 {: .table .table-bordered .table-hover}
 | Field                                      | Description                                                                                                                                                                                                                        | Required/Optional/Default |
 | ------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- |
 | `title`                                    | The free-text display name of the step.                                                                                                                                                                                            | Optional                  |
 | `description`                              | A basic, free-text description of the step.                                                                                                                                                                                        | Optional                  |
 | `working_directory`                        | The directory to which the repository is cloned. It can be an explicit path in the container's file system, or a variable that references another step. The default value is {% raw %}`${{main_clone}}`{% endraw %}.                | Default                   |
+| `git` | The name of the [git integration]({{ site.baseurl }}/docs/integrations/git-providers/) you want to use | Required| 
 | `repo`                                     | URL of the Git repository you are cloning.                                                                                                                                                                                         | Required                  |
 | `revision`                                 | The revision of the repository you are checking out. It can be a revision has or a branch name. The default value is `master`.                                                                                                     | Default                   |
 | `credentials`                              | Credentials to access the repository, if it requires authentication. It can an object containing `username` and `password` fields.                                                                                                 | Optional                  |
