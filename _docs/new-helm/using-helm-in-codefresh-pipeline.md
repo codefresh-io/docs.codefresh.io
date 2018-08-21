@@ -59,6 +59,10 @@ max-width="70%"
 
 This concludes the Helm setup for Codefresh. Now you can use the Helm freestyle step in the pipeline `codefresh.yml` file.
 
+>Currently only one Helm configuration can be used in the same pipeline. We are aware
+of this limitation and will soon improve the way Codefresh works with multiple Helm configurations.
+
+
 ## Helm Usage
 
 Add a Freestyle step, with the `codefresh/cfstep-helm` image.  
