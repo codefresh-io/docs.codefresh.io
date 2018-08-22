@@ -38,6 +38,28 @@ Follow the link in the email to fill in an application for the free credits. Onc
 
 {:.text-secondary}
 
+## Adding AKS cluster
+
+To add an Azure cluster, select *Microsoft AKS* from the drop-down menu. Click the *Authenticate button* and enter your Azure credentials. You will see a description of all permissions that Codefresh needs
+in order to access your cluster. Accept them and Codefresh will connect to Azure to get the cluster information.
+
+>If you experience difficulties at this point try logging into Azure first in your browser *before* clicking
+the authenticate button. Also make sure that you are using an organizational/company Azure account and not a personal one.
+
+If everything is ready you will see a dialog that allows you to select your Azure subscription and the 
+cluster name that you wish to use.
+
+{% include image.html
+lightbox="true"
+file="/images/kubernetes/add-cluster/select-aks-cluster.png"
+url="/images/kubernetes/add-cluster/select-aks-cluster.png"
+alt="Selecting the Azure cluster"
+caption="Selecting the Azure cluster"
+max-width="60%"
+  %}
+
+Codefresh will query the cluster and show its nodes. You are now ready to [deploy to Azure kubernetes]({{ site.baseurl }}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/).
+
 ## Adding EKS Cluster
 To add an Amazon EKS cluster, you must first create a service account and obtain a token used to manage the integration.
 
