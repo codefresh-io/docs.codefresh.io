@@ -40,7 +40,7 @@ We'll email you instructions on how to claim your credits after the integration 
 [Contact us](https://codefresh.io/contact-us/){:target="_blank"} to join dedicated support slack channel.
 
 ## Try our tutorial
-You can also use [this tutorial](https://www.slideshare.net/JennyPassi/deploy-with-codefresh-to-kubernetes-in-3-steps){:target="_blank"} to see full Kubernetes deployment flow.
+You can also use [this tutorial]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/) to see full Kubernetes deployment flow.
 
 {% include image.html 
 lightbox="true" 

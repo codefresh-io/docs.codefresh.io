@@ -17,6 +17,8 @@ Like Kubernetes, [Codefresh has native support for Helm deployments]({{ site.bas
 
 Notice that for this tutorial we will use the GUI provided by Codefresh to both create the Kubernetes service inside the cluster and also to create the CI/CD pipeline that keeps it up-to-date. In a real world scenario it is best if you use  [Codefresh YAML]({{ site.baseurl }}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) which is much more powerful and flexible.
 
+Codefresh also offers [several alternative ways]({{site.baseurl}}/docs/deploy-to-kubernetes/deployment-options-to-kubernetes/) of deploying to Kubernetes.
+
 ## Overview
 
 At the end of this tutorial we will have a pipeline that 
@@ -296,6 +298,7 @@ You now have a complete CI/CD pipeline in Codefresh for fully automated builds t
 ## What to read next
 
 * [Deploying to Kubernetes with Helm]({{ site.baseurl }}/docs/getting-started/helm-quick-start-guide/)
+* [Kubernetes deployment meethods]({{site.baseurl}}/docs/deploy-to-kubernetes/deployment-options-to-kubernetes/)
 * [Introduction to Pipelines]({{ site.baseurl }}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
 * [Internal Docker Registry]({{ site.baseurl }}/docs/docker-registries/codefresh-registry/)
 * [Codefresh YAML]({{ site.baseurl }}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
