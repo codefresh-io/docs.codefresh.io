@@ -1,20 +1,28 @@
 ---
-title: "Deployment to Kubernetes"
+title: "Deployment Options for Kubernetes"
 description: ""
 group: deploy-to-kubernetes
 redirect_from:
   - /docs/deploy-to-kubernetes/
   - /docs/deployment-to-kubernetes-quick-start-guide/
+  - /docs/deploy-to-kubernetes/deployment-to-kubernetes-quick-start-guide/
 toc: true
 ---
 
-## Overview
-This guide will walk you through the most common Kubernetes deployment scenario.
+Codefresh offers a lot of options when it comes to Kubernetes deployments. These are
+
+1. Using the Codefresh GUI to deploy on demand. This is the easiest way and was described in the [quick start guide]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/)
+1. Using the [predefined steps](docs/getting-started/deployment-to-kubernetes-quick-start-guide/#automating-deployments-to-kubernetes) of the GUI pipeline. This is also very easy if you are not yet familiar with [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)  
+1. Using the dedicated [deploy step]({{site.baseurl}}/docs/codefresh-yaml/steps/deploy/) in a pipeline. Explained in detail in this page
+1. Using a [freestyle]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) step with your own `kubectl` commands. This is very flexible, but assumes that you know how to work with `kubectl`
+1. Using Helm as a package manager. See the [Helm quick start guide]({{site.baseurl}}/docs/getting-started/helm-quick-start-guide/) for more details.
+
+
 
 ## Prerequisites
 
 It is assumed that:
-  - you have already [added your K8 cluster]({{ site.baseurl }}/docs/deploy-to-kubernetes/adding-non-gke-kubernetes-cluster/) into Codefresh
+  - you have already [added your K8s cluster]({{ site.baseurl }}/docs/deploy-to-kubernetes/add-kubernetes-cluster/) into Codefresh
   - you are familiar with [Codefresh YAML]({{ site.baseurl }}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) and basic [pipeline steps ]({{ site.baseurl }}/docs/codefresh-yaml/steps/)and know how to describe it 
   - you know how to [integrate your docker registry]({{ site.baseurl }}/docs/docker-registries/external-docker-registries/) with Codefresh
   
@@ -44,7 +52,7 @@ Using this YAML example, we'll add an additional step to deploy the image in Doc
 
 ## Describe your deployment
 The follwoing instructions describe how to create a new service in your Kubernetes cluster in order to deploy to it.
->Note: If you're deploying to an exisitng service in your Kubernetes cluster please skip to the [next step]({{ site.baseurl }}/docs/deploy-to-kubernetes/deployment-to-kubernetes-quick-start-guide/#add-a-deployment-step)
+>Note: If you're deploying to an existing service in your Kubernetes cluster please skip to the [next step]({{ site.baseurl }}/docs/deploy-to-kubernetes/deployment-to-kubernetes-quick-start-guide/#add-a-deployment-step)
 
 {:start="1"}
  1. Go to the **`Kubernetes` &#8594; `Services page`**

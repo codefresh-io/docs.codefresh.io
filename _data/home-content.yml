@@ -45,7 +45,7 @@
   - title: Deploy to GKE
     localurl: /docs/deploy-to-kubernetes/get-ready-to-deploy/
   - title: Deploy to Kubernetes
-    localurl: /docs/deploy-to-kubernetes/codefresh-kubernetes-integration-beta/
+    localurl: /docs/getting-started/deployment-to-kubernetes-quick-start-guide/
   - title: Deploy to ECS
     localurl: /docs/deploy-your-containers/amazon-ecs/
   - title: Deploy to Swarm
@@ -102,8 +102,9 @@
   icon: https://codefresh.io/wp-content/uploads/2017/12/Helm.png
   url: ''
   links:
+  - title: Helm Quick start guide
+    localurl: /docs/getting-started/helm-quick-start-guide/
   - title: Codefresh Managed Helm Repositories
-    new: true
     localurl: /docs/new-helm/managed-helm-repository/
   - title: Using Helm in Codefresh pipeline
     localurl: /docs/new-helm/using-helm-in-codefresh-pipeline/

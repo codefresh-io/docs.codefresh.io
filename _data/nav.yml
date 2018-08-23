@@ -140,8 +140,8 @@
 - title: Deploy to Kubernetes
   url: "/deploy-to-kubernetes"
   pages:
-    - title: "Deployment to Kubernetes: Quick Start Guide"
-      url: "/deployment-to-kubernetes-quick-start-guide"
+    - title: "Deployment options for Kubernetes"
+      url: "/deployment-options-to-kubernetes"
     - title: Getting started with GKE
       url: "/get-ready-to-deploy"
       sub-pages:
@@ -149,13 +149,13 @@
           url: "/create-cluster"
     - title: Add Kubernetes cluster
       url: "/add-kubernetes-cluster"
-    - title: Manage your Kubernetes cluster in Codefresh
+    - title: Manage your Kubernetes cluster
       url: "/manage-kubernetes"
     - title: Example - Deploy demochat to Kubernetes cluster
       url: "/codefresh-kubernetes-integration-demochat-example"
     - title: Add config maps to your namespaces
       url: "/add-config-maps-to-your-namespaces"
-    - title: Accessing a Docker registry from your Kubernetes cluster
+    - title: Accessing a Docker registry from Kubernetes
       url: "/access-docker-registry-from-kubernetes"
 
 - title: "Helm Deployments"
