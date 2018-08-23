@@ -2,10 +2,10 @@
 title: "Add Kubernetes Cluster"
 description: ""
 group: deploy-to-kubernetes
-permalink: /:collection/deploy-to-kubernetes/adding-non-gke-kubernetes-cluster/
 redirect_from:
   - /docs/adding-non-gke-kubernetes-cluster
   - /docs/adding-non-gke-kubernetes-cluster/
+  - /docs/deploy-to-kubernetes/adding-non-gke-kubernetes-cluster/
 toc: true
 ---
 First click *Integrations* from the left sidebar and select the *integration* tab.

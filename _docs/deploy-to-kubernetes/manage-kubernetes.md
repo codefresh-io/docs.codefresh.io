@@ -2,7 +2,9 @@
 title: "Manage your Kubernetes cluster in Codefresh"
 description: ""
 group: deploy-to-kubernetes
-permalink: /:collection/deploy-to-kubernetes/codefresh-kubernetes-integration-beta/
+redirect_from:
+  - /docs/deploy-to-kubernetes/codefresh-kubernetes-integration-beta/
+  - /docs/codefresh-kubernetes-integration-beta/
 toc: true
 ---
   
