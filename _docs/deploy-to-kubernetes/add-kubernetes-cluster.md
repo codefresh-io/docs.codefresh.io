@@ -60,6 +60,8 @@ max-width="60%"
 
 Codefresh will query the cluster and show its nodes. You are now ready to [deploy to Azure kubernetes]({{ site.baseurl }}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/).
 
+>If you wish for any reason to revoke the granted access from the Azure side, visit [https://account.activedirectory.windowsazure.com/r#/applications](https://account.activedirectory.windowsazure.com/r#/applications) and remove "Codefresh" from the list.
+
 ## Adding EKS Cluster
 To add an Amazon EKS cluster, you must first create a service account and obtain a token used to manage the integration.
 
