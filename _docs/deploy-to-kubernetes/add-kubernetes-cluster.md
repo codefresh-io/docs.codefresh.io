@@ -40,11 +40,11 @@ Follow the link in the email to fill in an application for the free credits. Onc
 
 ## Adding AKS cluster
 
-To add an Azure cluster, select *Microsoft AKS* from the drop-down menu. Click the *Authenticate button* and enter your Azure credentials. You will see a description of all permissions that Codefresh needs
+To add an Azure cluster, select *Azure AKS* from the drop-down menu. Click the *Authenticate button* and enter your Azure credentials. You will see a description of all permissions that Codefresh needs
 in order to access your cluster. Accept them and Codefresh will connect to Azure to get the cluster information.
 
 >If you experience difficulties at this point try logging into Azure first in your browser *before* clicking
-the authenticate button. Also make sure that you are using an organizational/company Azure account and not a personal one.
+the authenticate button. Also make sure that you are using an organizational/company Azure account and not a personal one. We are currently working with Microsoft to improve this integration.
 
 If everything is ready you will see a dialog that allows you to select your Azure subscription and the 
 cluster name that you wish to use.

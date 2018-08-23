@@ -287,12 +287,12 @@ To use the Docker cache effectively in Codefresh you should follow the [standard
 Regarding the caching of your work space you also need to remember that 
 
 1. Only the Codefresh volume at `/codefresh/volume` is cached between builds. This includes your project git repository but excludes common work directories such as `/tmp/`, `/root/`, `/home/`, `/var` that you might be using in your builds
-1. Codefresh runs a `git reset` and a `git clean` in your project repository everytime a pipeline starts. This means that all artifacts that you wish to be cached should be in your `.gitignore` file. A common example would be the `node_modules` folder. If you don't place it in `.gitignore`, it will be deleted at the start of each build making it much slower
+1. Codefresh runs a `git reset` and a `git clean` in your project repository everytime a pipeline starts. This means that all artifacts that you wish to be cached should be in your `.gitignore` file. A common example would be the `node_modules` folder. If you don't place it in `.gitignore`, it will be deleted at the start of each build making it much slower.
 
-The first rule is very important as it affects your build system. Some environment such as `npm/node` cache their
-dependencies in the project folder and for them caching works out of the box. But other builds systems such as `maven` use the user folder under `HOME` which is **NOT** part of the Codefresh volume. In those cases you need to instruct your build system to store their dependencies somewhere in the Codefresh volume (the exact folder name does not really matter).
+The first rule is very important as it affects your build system. Some environments such as `npm/node` cache their
+dependencies in the project folder and for them, caching works out of the box. But other build systems such as `maven` use the user folder under `HOME` which is **NOT** part of the Codefresh volume. In those cases you need to instruct your build system to store their dependencies somewhere in the Codefresh volume (the exact folder name does not really matter).
 
-For example
+For example:
 
  * For Maven use `mvn -Dmaven.repo.local=/codefresh/volume/m2_repository package` as shown in the [example]({{site.baseurl}}/docs/learn-by-example/java/spring-boot-2/)
  * For Gradle use `gradle -g /codefresh/volume/.gradle` as explained in the [blog post](https://codefresh.io/containers/caching-build-dependencies-codefresh-volumes/)
