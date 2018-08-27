@@ -65,14 +65,17 @@ To connect an identity provider click the *add single-sign-on* button and select
 
 ## Codefresh SSO setup
 
-Regardless of the Identity provider that you have chosen, the Codefresh setup is the same for all of them. You need to provide
+Regardless of the Identity provider that you have chosen, the Codefresh setup is the similar for all of them. You need to provide several fields to Codefresh to activate SSO. The common ones are:
 
-* A name for your Identity provider
-* The host that contains the provider
-* An ID that will be used for the connection
-* A secret associated with the ID
+* *Display Name* - A name for your Identity provider 
+* *Client ID* - An ID that will be used for the connection
+* *Client Secret* - A secret associated with the ID
 
-To obtain the ID/Secret you need to follow a different procedure for each provider
+Some providers also need
+additional fields which are specific to that provider. 
+
+The process to obtain the values for these fields depends on the individual Identity provider. In the following
+sections we will outline the details for each one.
 
 
 ### Setting Azure as an Identity provider
@@ -185,17 +188,50 @@ caption="Create key"
 max-width="70%"
 %}
 
+
 {:start="4"}
+1. Go back to the SSO settings screen described in the first part of this guide inside the Codefresh GUI.
+
+You need to enter the following:
+
+* *Display Name* - Shown as display name in Azure
+* *client id* - your Azure Application ID (see below)
+* *client secret* - the key from step 3
+* *tenant* - `<Your Microsoft Azure AD Domain>.onmicrosoft.com`
+* *Object ID* - your Azure Object ID (see below)
+
+
+{% include image.html 
+lightbox="true" 
+file="/images/enterprise/sso/azure-step10.png" 
+url="/images/enterprise/sso/azure-step10.png"
+alt="Application ID"
+caption="Application ID"
+max-width="70%"
+%}
+
+Once you save the Identity provider, Codefresh will assign a `client-name` to it which identifies the SSO configuration.
+
+{% include image.html 
+lightbox="true" 
+file="/images/enterprise/sso/client-name.png" 
+url="/images/enterprise/sso/client-name.png"
+alt="SSO Client Name"
+caption="SSO Client Name"
+max-width="50%"
+%}
+
+{:start="5"}
 1. Configure reply URLs
 
-Next you need to ensure that your Codefresh callback URL is listed in allowed reply URLs for the created application. Navigate to *Azure Active Directory* -> *Apps registrations* and select your app. Then click *Settings -> Reply URLs* and add:
+As a last step you need to ensure that your Codefresh callback URL is listed in allowed reply URLs for the created application. Navigate to *Azure Active Directory* -> *Apps registrations* and select your app. Then click *Settings -> Reply URLs* and add:
 
 ```
 https://g.codefresh.io/api/auth/<your_codefresh_sso_client_name>/callback/withoutVerification
 
 ```
 
-where `<your_codefresh_sso_client_name>` is the same name you give the client in Codefresh SSO setup. 
+where `<your_codefresh_sso_client_name>` is the client name shown in the SSO configuration.
 
 {% include image.html 
 lightbox="true" 
@@ -206,24 +242,7 @@ caption="Reply URLs"
 max-width="70%"
 %}
 
-{:start="5"}
-1. Go back to the SSO settings screen described in the first part of this guide inside the Codefresh GUI.
 
-You need to enter the following:
-
-* client name - same name as was given in step 4
-* client host - `https://login.microsoftonline.com/<Your Microsoft Azure AD Domain>/.well-known/openid-configuration`
-* client id - your Azure Apllication ID (see below)
-* client secret - the key from step 3
-
-{% include image.html 
-lightbox="true" 
-file="/images/enterprise/sso/azure-step10.png" 
-url="/images/enterprise/sso/azure-step10.png"
-alt="Application ID"
-caption="Application ID"
-max-width="70%"
-%}
 
 ### Setting Auth0 as an Identity provider
 
@@ -269,3 +288,53 @@ max-width="50%"
 
 {:start="4"}
 1. If everything works ok add more users
+
+## Syncing of teams after initial SSO setup
+
+Once the initial setup is done, you can also sync your teams between Codefresh and the Identity provider.
+You can do this via the [Codefresh Cli](https://codefresh-io.github.io/cli/) and specifically the [sync command](https://codefresh-io.github.io/cli/teams/synchronize-teams/).
+
+For example to sync you azure teams you can execute
+
+```
+codefresh synchronize teams my-client-name -t azure
+
+```
+
+You can find the client-name from the SSO UI.
+
+{% include image.html 
+lightbox="true" 
+file="/images/enterprise/sso/client-name.png" 
+url="/images/enterprise/sso/client-name.png"
+alt="SSO Client Name"
+caption="SSO Client Name"
+max-width="50%"
+%}
+
+Even though you can run this command manually it makes more sense to run it periodically as a job. And the obvious
+way to perform this, is with a Codefresh pipeline. The CLI can be used as a [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/).
+
+You can create a git repository with a [codefresh.yml]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) file with the following contents:
+
+`YAML`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+steps:
+  syncMyTeams:
+    title: syncTeams
+    image: codefresh/cli
+    commands:
+      - 'codefresh synchronize teams my-client-name -t azure'
+    when:
+      branch:
+        only:
+          - master
+{% endraw %}
+{% endhighlight %}
+
+To fully automate this pipeline you should set a [cron trigger]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/cron-triggers/) for this pipeline. The cron-trigger will be responsible for running this pipeline (and therefore synchronizing the teams) in a fully automated manner.
+
+This way you can synchronize your teams every day/week/hour depending on you cron trigger setup.
+
