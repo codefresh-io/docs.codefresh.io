@@ -65,14 +65,17 @@ To connect an identity provider click the *add single-sign-on* button and select
 
 ## Codefresh SSO setup
 
-Regardless of the Identity provider that you have chosen, the Codefresh setup is the same for all of them. You need to provide
+Regardless of the Identity provider that you have chosen, the Codefresh setup is the similar for all of them. You need to provide several fields to Codefresh to activate SSO. The common ones are:
 
-* A name for your Identity provider
-* The host that contains the provider
-* An ID that will be used for the connection
-* A secret associated with the ID
+* *Display Name* - A name for your Identity provider 
+* *Client ID* - An ID that will be used for the connection
+* *Client Secret* - A secret associated with the ID
 
-To obtain the ID/Secret you need to follow a different procedure for each provider
+Some providers also need
+additional fields which are specific to that provider. 
+
+The process to obtain the values for these fields depends on the individual Identity provider. In the following
+sections we will outline the details for each one.
 
 
 ### Setting Azure as an Identity provider
@@ -211,10 +214,13 @@ max-width="70%"
 
 You need to enter the following:
 
-* client name - same name as was given in step 4
-* client host - `https://login.microsoftonline.com/<Your Microsoft Azure AD Domain>/.well-known/openid-configuration`
-* client id - your Azure Apllication ID (see below)
-* client secret - the key from step 3
+* *Display Name* - Shown as display name in Azure
+* *client id* - your Azure Application ID (see below)
+* *client secret* - the key from step 3
+* *tenant* - `<Your Microsoft Azure AD Domain>.onmicrosoft.com`
+* *Object ID* - your Azure Object ID (see below)
+
+
 
 {% include image.html 
 lightbox="true" 
@@ -281,6 +287,17 @@ For example to sync you azure teams you can execute
 codefresh synchronize teams my-client-name -t azure
 
 ```
+
+You can find the client-name from the SSO UI.
+
+{% include image.html 
+lightbox="true" 
+file="/images/enterprise/sso/client-name.png" 
+url="/images/enterprise/sso/client-name.png"
+alt="SSO Client Name"
+caption="SSO Client Name"
+max-width="50%"
+%}
 
 Even though you can run this command manually it makes more sense to run it periodically as a job. And the obvious
 way to perform this, is with a Codefresh pipeline. The CLI can be used as a [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/).
