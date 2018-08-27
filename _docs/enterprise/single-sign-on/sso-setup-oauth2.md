@@ -188,28 +188,8 @@ caption="Create key"
 max-width="70%"
 %}
 
+
 {:start="4"}
-1. Configure reply URLs
-
-Next you need to ensure that your Codefresh callback URL is listed in allowed reply URLs for the created application. Navigate to *Azure Active Directory* -> *Apps registrations* and select your app. Then click *Settings -> Reply URLs* and add:
-
-```
-https://g.codefresh.io/api/auth/<your_codefresh_sso_client_name>/callback/withoutVerification
-
-```
-
-where `<your_codefresh_sso_client_name>` is the same name you give the client in Codefresh SSO setup. 
-
-{% include image.html 
-lightbox="true" 
-file="/images/enterprise/sso/azure-step09.png" 
-url="/images/enterprise/sso/azure-step09.png"
-alt="Reply URLs"
-caption="Reply URLs"
-max-width="70%"
-%}
-
-{:start="5"}
 1. Go back to the SSO settings screen described in the first part of this guide inside the Codefresh GUI.
 
 You need to enter the following:
@@ -221,7 +201,6 @@ You need to enter the following:
 * *Object ID* - your Azure Object ID (see below)
 
 
-
 {% include image.html 
 lightbox="true" 
 file="/images/enterprise/sso/azure-step10.png" 
@@ -230,6 +209,40 @@ alt="Application ID"
 caption="Application ID"
 max-width="70%"
 %}
+
+Once you save the Identity provider, Codefresh will assign a `client-name` to it which identifies the SSO configuration.
+
+{% include image.html 
+lightbox="true" 
+file="/images/enterprise/sso/client-name.png" 
+url="/images/enterprise/sso/client-name.png"
+alt="SSO Client Name"
+caption="SSO Client Name"
+max-width="50%"
+%}
+
+{:start="5"}
+1. Configure reply URLs
+
+As a last step you need to ensure that your Codefresh callback URL is listed in allowed reply URLs for the created application. Navigate to *Azure Active Directory* -> *Apps registrations* and select your app. Then click *Settings -> Reply URLs* and add:
+
+```
+https://g.codefresh.io/api/auth/<your_codefresh_sso_client_name>/callback/withoutVerification
+
+```
+
+where `<your_codefresh_sso_client_name>` is the client name shown in the SSO configuration.
+
+{% include image.html 
+lightbox="true" 
+file="/images/enterprise/sso/azure-step09.png" 
+url="/images/enterprise/sso/azure-step09.png"
+alt="Reply URLs"
+caption="Reply URLs"
+max-width="70%"
+%}
+
+
 
 ### Setting Auth0 as an Identity provider
 
