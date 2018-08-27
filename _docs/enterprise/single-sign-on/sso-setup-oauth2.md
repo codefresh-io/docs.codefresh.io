@@ -269,3 +269,42 @@ max-width="50%"
 
 {:start="4"}
 1. If everything works ok add more users
+
+## Syncing of teams after initial SSO setup
+
+Once the initial setup is done, you can also sync your teams between Codefresh and the Identity provider.
+You can do this via the [Codefresh Cli](https://codefresh-io.github.io/cli/) and specifically the [sync command](https://codefresh-io.github.io/cli/teams/synchronize-teams/).
+
+For example to sync you azure teams you can execute
+
+```
+codefresh synchronize teams my-client-name -t azure
+
+```
+
+Even though you can run this command manually it makes more sense to run it periodically as a job. And the obvious
+way to perform this, is with a Codefresh pipeline. The CLI can be used as a [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/).
+
+You can create a git repository with a [codefresh.yml]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) file with the following contents:
+
+`YAML`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+steps:
+  syncMyTeams:
+    title: syncTeams
+    image: codefresh/cli
+    commands:
+      - 'codefresh synchronize teams my-client-name -t azure'
+    when:
+      branch:
+        only:
+          - master
+{% endraw %}
+{% endhighlight %}
+
+To fully automate this pipeline you should set a [cron trigger]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/cron-triggers/) for this pipeline. The cron-trigger will be responsible for running this pipeline (and therefore synchronizing the teams) in a fully automated manner.
+
+This way you can synchronize your teams every day/week/hour depending on you cron trigger setup.
+
