@@ -88,8 +88,8 @@ Login to *Microsoft Azure* and choose *Azure Active Directory* from the sidebar.
 
 {% include image.html 
 lightbox="true" 
-file="/images/enterprise/sso/azure-step01.png" 
-url="/images/enterprise/sso/azure-step01.png"
+file="/images/enterprise/sso/azure/azure-step01.png" 
+url="/images/enterprise/sso/azure/azure-step01.png"
 alt="Azure Active Directory"
 caption="Azure Active Directory"
 max-width="70%"
@@ -99,8 +99,8 @@ Then under *MANAGE*, select *App registrations*.
 
 {% include image.html 
 lightbox="true" 
-file="/images/enterprise/sso/azure-step02.png" 
-url="/images/enterprise/sso/azure-step02.png"
+file="/images/enterprise/sso/azure/azure-step02.png" 
+url="/images/enterprise/sso/azure/azure-step02.png"
 alt="Azure App Registrations"
 caption="Azure App Registrations"
 max-width="70%"
@@ -112,8 +112,8 @@ Enter a name for the application (e.g. *Codefresh*), select *Web app/API* as the
 
 {% include image.html 
 lightbox="true" 
-file="/images/enterprise/sso/azure-step03.png" 
-url="/images/enterprise/sso/azure-step03.png"
+file="/images/enterprise/sso/azure/azure-step03.png" 
+url="/images/enterprise/sso/azure/azure-step03.png"
 alt="Azure App Registration create"
 caption="Azure App Registration create"
 max-width="70%"
@@ -129,8 +129,8 @@ Click *Required permissions*.
 
 {% include image.html 
 lightbox="true" 
-file="/images/enterprise/sso/azure-step04.png" 
-url="/images/enterprise/sso/azure-step04.png"
+file="/images/enterprise/sso/azure/azure-step04.png" 
+url="/images/enterprise/sso/azure/azure-step04.png"
 alt="Azure App Permissions"
 caption="Azure App Permissions"
 max-width="70%"
@@ -141,8 +141,8 @@ Then click on *Windows Azure Active Directory* to change the access levels.
 
 {% include image.html 
 lightbox="true" 
-file="/images/enterprise/sso/azure-step05.png" 
-url="/images/enterprise/sso/azure-step05.png"
+file="/images/enterprise/sso/azure/azure-step05.png" 
+url="/images/enterprise/sso/azure/azure-step05.png"
 alt="Azure App Change Permissions"
 caption="Azure App Change Permissions"
 max-width="70%"
@@ -157,8 +157,8 @@ Next you will need to create a key which will be used as the Client Secret in Co
 
 {% include image.html 
 lightbox="true" 
-file="/images/enterprise/sso/azure-step06.png" 
-url="/images/enterprise/sso/azure-step06.png"
+file="/images/enterprise/sso/azure/azure-step06.png" 
+url="/images/enterprise/sso/azure/azure-step06.png"
 alt="Change keys"
 caption="Change keys"
 max-width="70%"
@@ -170,8 +170,8 @@ Enter a name for the key and choose the desired duration.
 
 {% include image.html 
 lightbox="true" 
-file="/images/enterprise/sso/azure-step07.png" 
-url="/images/enterprise/sso/azure-step07.png"
+file="/images/enterprise/sso/azure/azure-step07.png" 
+url="/images/enterprise/sso/azure/azure-step07.png"
 alt="Create key"
 caption="Create key"
 max-width="70%"
@@ -181,8 +181,8 @@ Click on *Save* and the key will be displayed. **Make sure to copy the value of 
 
 {% include image.html 
 lightbox="true" 
-file="/images/enterprise/sso/azure-step08.png" 
-url="/images/enterprise/sso/azure-step08.png"
+file="/images/enterprise/sso/azure/azure-step08.png" 
+url="/images/enterprise/sso/azure/azure-step08.png"
 alt="Create key"
 caption="Create key"
 max-width="70%"
@@ -203,8 +203,8 @@ You need to enter the following:
 
 {% include image.html 
 lightbox="true" 
-file="/images/enterprise/sso/azure-step10.png" 
-url="/images/enterprise/sso/azure-step10.png"
+file="/images/enterprise/sso/azure/azure-step10.png" 
+url="/images/enterprise/sso/azure/azure-step10.png"
 alt="Application ID"
 caption="Application ID"
 max-width="70%"
@@ -214,8 +214,8 @@ Once you save the Identity provider, Codefresh will assign a `client-name` to it
 
 {% include image.html 
 lightbox="true" 
-file="/images/enterprise/sso/client-name.png" 
-url="/images/enterprise/sso/client-name.png"
+file="/images/enterprise/sso/azure/client-name.png" 
+url="/images/enterprise/sso/azure/client-name.png"
 alt="SSO Client Name"
 caption="SSO Client Name"
 max-width="50%"
@@ -235,8 +235,8 @@ where `<your_codefresh_sso_client_name>` is the client name shown in the SSO con
 
 {% include image.html 
 lightbox="true" 
-file="/images/enterprise/sso/azure-step09.png" 
-url="/images/enterprise/sso/azure-step09.png"
+file="/images/enterprise/sso/azure/azure-step09.png" 
+url="/images/enterprise/sso/azure/azure-step09.png"
 alt="Reply URLs"
 caption="Reply URLs"
 max-width="70%"
