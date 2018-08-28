@@ -289,6 +289,25 @@ max-width="50%"
 {:start="4"}
 1. If everything works ok add more users
 
+## Selecting SSO method for collaborators
+
+To add users and select their SSO method, go to *Collaborators* from the left sidebar. Then add the email or Codefresh username of a user. 
+
+In addition to their role you can now select the SSO method they will use
+
+
+{% include image.html 
+lightbox="true" 
+file="/images/enterprise/sso/select-user-sso.png" 
+url="/images/enterprise/sso/select-user-sso.png"
+alt="Selecting SSO method"
+caption="Selecting SSO method"
+max-width="50%"
+%}
+
+It possible to use a different SSO method for each user (if you have multiple SSO configurations).
+
+
 ## Syncing of teams after initial SSO setup
 
 Once the initial setup is done, you can also sync your teams between Codefresh and the Identity provider.
