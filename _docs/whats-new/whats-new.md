@@ -10,9 +10,13 @@ toc: true
 
 ### August 2018
 
-- Native Integration with Azure Kuberentes Service
+- Native Integration with Azure Kubernetes Service
 - Ability to configure SSO both in the customer and the account level (Enterprise)
 - Azure SSO integration (Enterprise)
+- OKTA SSO integration (Enterprise)
+- Added Azure and Google as login/sign-up options
+- You can now invite a collaborator who had signed up with a different GIT provider than yours
+- Codefresh will now automatically merge accounts with the same email address
 - Favorite Repositories are now persistent across sessions
 
 ### July 2018
