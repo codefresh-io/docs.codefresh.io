@@ -22,32 +22,33 @@ alt="Codefresh account creation steps"
 max-width="90%" 
 %}
 
-## 1. Select your Source Control (Git) provider
+## 1. Select your Identity Provider
 
 First, navigate to the [Codefresh Sign Up page](https://g.codefresh.io/signup).  
 Codefresh currently supports Github, Bitbucket and Gitlab as a Git provider. If you are using another Git provider
-please [contact us](https://codefresh.io/contact-us/) to discuss alternative options.
+please [contact us](https://codefresh.io/contact-us/) to discuss alternative options. You can also select
+Azure or Google as an identity provider.
 
 {% include 
 image.html 
 lightbox="true" 
-file="/images/getting-started/create-account/select-git-provider.png" 
-url="/images/getting-started/create-account/select-git-provider.png"
+file="/images/getting-started/create-account/select-identity-provider.png" 
+url="/images/getting-started/create-account/select-identity-provider.png"
 alt="Codefresh sign-up page" 
 caption="Sign-up page (click image to enlarge)" 
 max-width="40%" 
 %}
 
-Click on the provider that contains your Git repositories.
+The login method is not really important when it comes to git repositories as regardless of your sign-up process
+you can add git repositories from any of your GIT accounts in  [GIT integrations]({{ site.baseurl }}/docs/integrations/git-providers/).
 
-
->If you wish to add repositories that exist in other GIT providers, you can add them after creating
-your account via the [GIT integrations]({{ site.baseurl }}/docs/integrations/git-providers/).
+> Don't worry if by mistake you use multiple sign-up methods. As long as your email
+address is the same, Codefresh will automatically forward you to your account dashboard.
 
 
 ## 2. Accept the Permissions Request
 
-After you select the Git provider that has your repositories, Codefresh requests permission to access your Git account details.
+After you select the Identity provider, Codefresh requests permission to access your basic details (and for GIT providers to access your Git repositories).
 
 Don't worry, Codefresh will not do anything without your explicit approval, so don't be scared by the permissions shown
 in the request window. The permissions requested by Codefresh are needed in order to build and deploy your projects.
@@ -96,7 +97,7 @@ Once you accept the respective permissions window, Codefresh will automatically 
 
 ## 3. Verify Your Account Details
 
-Once Codefresh reads your details from your Git provider it will present to you the account details for your new account Review your account details, make the relevant changes, and click *SIGN UP*. 
+Once Codefresh reads your details from your Identity provider it will present to you the account details for your new account Review your account details, make the relevant changes, and click *SIGN UP*. 
 
 {% include 
 image.html 

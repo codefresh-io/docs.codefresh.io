@@ -28,7 +28,6 @@ in the list below.
 You can also change the role of each team member or remove them from the team by using
 the action buttons next to their names.
 
->Your team member should use the same provider (Github/Bitbucket/Gitlab) as you. 
 
 Once you are finished click on *Back to application* on the top right corner.
 
