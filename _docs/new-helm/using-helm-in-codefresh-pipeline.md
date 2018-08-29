@@ -26,7 +26,7 @@ Let's see these steps in order
 
 You can configure a Kubernetes cluster to deploy to using the `KUBE_CONTEXT` variable.
 
-First, you'll need to connect your Kubernetes cluster with Codefresh as described [here]({{ site.baseurl }}/docs/deploy-to-kubernetes/adding-non-gke-kubernetes-cluster/). Once you have a Kubernetes cluster connected, provide it to the Helm step by adding the `KUBE_CONTEXT` variable, where the value is the connection *name* that you've entered when creating the connection. The connection name also appears as the title of the cluster in Kubernetes integration settings (from the left sidebar go to Integrations -> Kubernetes).
+First, you'll need to connect your Kubernetes cluster with Codefresh as described [here]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/). Once you have a Kubernetes cluster connected, provide it to the Helm step by adding the `KUBE_CONTEXT` variable, where the value is the connection *name* that you've entered when creating the connection. The connection name also appears as the title of the cluster in Kubernetes integration settings (from the left sidebar go to Integrations -> Kubernetes).
 
 {% include image.html 
 lightbox="true" 

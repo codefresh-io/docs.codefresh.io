@@ -17,6 +17,15 @@ In the "Helm Charts" page, click on the "Add Repository" button on the top right
 
 In the dialog that opened, name your repository, and specify it's URL. The URL should not include the specific path to `index.yaml`
 
+{% include image.html 
+lightbox="true" 
+file="/images/kubernetes-helm/add-helm-repository.png" 
+url="/images/kubernetes-helm/add-helm-repository.png" 
+alt="Adding a Helm repository"
+caption="Adding a Helm repository" 
+max-width="50%" 
+%}
+
 If your repository doesn't require authentication, click 'Save' and you are done. To add an authenticated repository keep reading.
 
 In addition to public repositories, we also support connecting to Helm repositories hosted on privated authenticated stores.
@@ -27,10 +36,6 @@ The bucket URL should be provided with a protocol scheme relevant to the selecte
 
 The rest of the required parameters varies based on the selected provider (see below)
 
-Once connected, the private Helm repository context can be injected into pipelines by selecting "Import from shared configuration" (under "Environment Variables" section), and selecting the name of the repository.  
-The repository settings will be injected as environment variables into the pipeline so you can use them as you wish. 
-
-If you are using the Helm step, it will use these settings to connect to your authenticated repository automatically. More info on the Codefresh Helm step can be found here: [https://github.com/codefresh-contrib/cfstep-helm](https://github.com/codefresh-contrib/cfstep-helm)
 
 ### Private repository - HTTP
 
@@ -70,6 +75,22 @@ Name|Description
 ---|---
 GOOGLE_APPLICATION_CREDENTIALS_JSON|The JSON content of the service account credentials
 
+## Using a Helm Repository in a Codefresh pipeline
+
+Once connected, the private Helm repository context can be injected into pipelines by selecting "Import from shared configuration" (under "Environment Variables" section), and selecting the name of the repository.  
+The repository settings will be injected as environment variables into the pipeline so you can use them as you wish. 
+
+{% include image.html 
+lightbox="true" 
+file="/images/kubernetes-helm/connect-helm-repo.png" 
+url="/images/kubernetes-helm/connect-helm-repo.png" 
+alt="Connecting a Helm repository in the pipeline"
+caption="Connecting a Helm repository in the pipeline" 
+max-width="70%" 
+%}
+
+If you are using the Helm step, it will use these settings to connect to your authenticated repository automatically. More info on the Codefresh Helm step can be found in the [Helm Usage Guide]({{site.baseurl}}/docs/new-helm/using-helm-in-codefresh-pipeline/).
+
 ## Install chart from your Helm repository
 
 In the "Helm Charts" page, locate the chart you would like to install, and click on the Install button
@@ -77,7 +98,7 @@ In the "Helm Charts" page, locate the chart you would like to install, and click
 In the dialog that opened:
 - Name your release and choose a version of the chart to install.
 - Cluster information:
-  - Select a Kubernetes cluster and namespace to install to. This should be pre-configured in the Kubernetes Integration, see [here]({{ site.baseurl }}/docs/deploy-to-kubernetes/adding-non-gke-kubernetes-cluster/) 
+  - Select a Kubernetes cluster and namespace to install to. This should be pre-configured in the Kubernetes Integration, see [here]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/) 
   - optionally, select the namespace where Tiller is at
 - Values:
   - The default values that was provided with the chart will show up, you can press the edit button to view and override them.
