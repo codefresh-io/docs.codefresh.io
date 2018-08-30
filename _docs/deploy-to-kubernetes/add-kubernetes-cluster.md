@@ -163,13 +163,13 @@ The configurations you'll be required to add are:
 1. Name - Any name of your choosing, that will represent your cluster context in Codefresh.
  
 {:start="2"}
-2. Host - The endpoint for your Kubernetes API
+2. Host - The full URL of the Kubernetes API endpoints including protocol and port
 
 {:start="3"} 
-3. Certificate - The Kubernetes service account certificate used for the integration with Codefresh
+3. Certificate - The Kubernetes service account certificate used for the integration with Codefresh (base64 encoded)
 
 {:start="4"}
-4. Token - The Kubernetes service account token used for the integration with Codefresh
+4. Token - The Kubernetes service account token used for the integration with Codefresh (base64 encoded)
 
 {% include image.html
   lightbox="true"
