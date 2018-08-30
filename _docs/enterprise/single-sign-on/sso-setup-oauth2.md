@@ -227,7 +227,7 @@ max-width="50%"
 As a last step you need to ensure that your Codefresh callback URL is listed in allowed reply URLs for the created application. Navigate to *Azure Active Directory* -> *Apps registrations* and select your app. Then click *Settings -> Reply URLs* and add:
 
 ```
-https://g.codefresh.io/api/auth/<your_codefresh_sso_client_name>/callback/withoutVerification
+https://g.codefresh.io/api/auth/<your_codefresh_sso_client_name>/callback
 
 ```
 
