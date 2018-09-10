@@ -4,13 +4,15 @@ description: ""
 group: configure-ci-cd-pipeline
 redirect_from:
   - /docs/integration-tests/
+  - /docs/integration-test-script/
 toc: true
 ---
-If your service is part of a micro-services type of application, Codefresh enables you to run your image as part of a composition, and then run your integration tests against it. There are two pre-requisites for this step:
+If your service is part of a micro-service type of application, Codefresh enables you to run your image as part of a composition, and then run your integration tests against it. There are two prerequisites for this step:
 
-## Pre-Requisites
+## Prerequisites
+
 **Define a Composition**\\
-You must define a composition in the Codefresh composition module. This composition dictates how to spin up your micro-services application before running the integration tests. For more information about compositions, see [Create a Composition](https://docs.codefresh.io/docs/create-composition).
+You must define a composition in the Codefresh composition module. This composition dictates how to spin up your micro-services application before running the integration tests. For more information about compositions, see [Create a Composition]({{site.baseurl}}/docs/on-demand-test-environment/create-composition/).
 
 {% include image.html lightbox="true" file="/images/fb724ab-Screen_Shot_2016-11-10_at_11.37.07_AM.png" url="/images/fb724ab-Screen_Shot_2016-11-10_at_11.37.07_AM.png" alt="Create composition" max-width="40%" %}
 
