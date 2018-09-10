@@ -8,6 +8,10 @@ toc: true
 ---
 
 
+### September 2018
+
+- New dedicated *Pipelines* view for pipelines not linked to GIT repositories
+
 ### August 2018
 
 - Native Integration with Azure Kubernetes Service

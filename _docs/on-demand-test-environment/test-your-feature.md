@@ -8,15 +8,15 @@ redirect_from:
 toc: true
 ---
 {:start="1"}
-1. Click the **Composition** view icon in the left pane, and select a composition.
+1. From the left sidebar expand the *Docker Swarm* menu and click the **Compositions** sub menu. Then select a composition.
 
 {% include 
 image.html 
 lightbox="true" 
-file="/images/abb2549-compose-general-view.png" 
-url="/images/abb2549-compose-general-view.png"
-alt="compose-general-view.png" 
-max-width="40%"
+file="/images/compositions/composition-list.png" 
+url="/images/compositions/composition-list.png"
+alt="Composition list" 
+max-width="70%"
 %}
 
 {:start="2"}
@@ -28,7 +28,7 @@ lightbox="true"
 file="/images/e620ba6-compose-launch-button.png" 
 url="/images/e620ba6-compose-launch-button.png"
 alt="compose-launch-button.png" 
-max-width="40%"
+max-width="70%"
 caption="click on image to enlarge"
 %}
 
@@ -41,7 +41,7 @@ lightbox="true"
 file="/images/b84878c-composition-launch-log.png" 
 url="/images/b84878c-composition-launch-log.png"
 alt="composition-launch-log.png" 
-max-width="40%"
+max-width="70%"
 %}
 
 **What to do next**:    
