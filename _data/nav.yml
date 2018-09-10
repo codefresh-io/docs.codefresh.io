@@ -234,7 +234,7 @@
   url: "/on-demand-test-environment"
   pages:
     - title: Create composition
-      url: "/composition-dialog"
+      url: "/create-composition"
     - title: Test Your Feature
       url: "/test-your-feature"
     - title: Share Your Environment with Your Team

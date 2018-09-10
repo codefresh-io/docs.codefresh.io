@@ -93,7 +93,7 @@
   - title: Launch a Docker image
     localurl: /docs/getting-started/on-demand-environments/
   - title: Create composition
-    localurl: /docs/on-demand-test-environment/composition-dialog/
+    localurl: /docs/on-demand-test-environment/create-composition/
   - title: Run environment on any branch
     localurl: /docs/on-demand-test-environment/test-your-feature/
   - title: Share environment with your team
