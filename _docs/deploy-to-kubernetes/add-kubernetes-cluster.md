@@ -1,6 +1,6 @@
 ---
 title: "Add Kubernetes Cluster"
-description: ""
+description: "How to connect your Kubernetes cluster to the Codefresh dashboard"
 group: deploy-to-kubernetes
 redirect_from:
   - /docs/adding-non-gke-kubernetes-cluster
@@ -8,8 +8,13 @@ redirect_from:
   - /docs/deploy-to-kubernetes/adding-non-gke-kubernetes-cluster/
 toc: true
 ---
-First click *Integrations* from the left sidebar and select the *integration* tab.
-Then choose **Kubernetes**.
+
+Codefresh offers its own Kubernetes dashboard that allows you to inspect the services and namespaces
+in your cluster. To active this dashboard you need to connect your cluster to your Codefresh account first.
+
+
+Start by clicking on  *Integrations* from the left sidebar and selecting the *Integration* tab.
+Then choose *Kubernetes*.
 
 {% include image.html
   lightbox="true"
@@ -19,13 +24,25 @@ Then choose **Kubernetes**.
   max-width="80%"
     %}
 
-In the Kubernetes integration window, you will be able to add a cluster from known providers such as GKE or by manually adding your cluster settings.
+In the Kubernetes integration window, you will be able to add a cluster from known providers such as Google, Azure, Amazon etc. You can also add any generic kubernetes cluster by manually entering your cluster settings.
 
 {:.text-secondary}
 ## Adding GKE Cluster
 Adding a cluster in GKE can be done by clicking the **Add cluster** button under **Google Cloud Provider** and selecting the desired project and cluster.
 
 If this is your first time you'll be prompted to authenticate using your google credentials, make sure you're doing so with a user that have access to your GKE projects.
+
+Make sure that your cluster has basic authentication enabled. You can change this setting after cluster creation
+by editing and changing the setting from the drop-down list.
+
+{% include image.html
+  lightbox="true"
+  file="/images/kubernetes/add-cluster/gke-basic-auth.png"
+  url="/images/kubernetes/add-cluster/gke-basic-auth.png"
+  alt="Enabling GKE basic authentication"
+  caption="Enabling GKE basic authentication"
+  max-width="60%"
+    %}
 
 
 {{site.data.callout.callout_info}}
@@ -181,14 +198,14 @@ The configurations you'll be required to add are:
     
  In the section below we'll provide you with easy instructions how to get all your cluster configurations in order to add it to Codefresh.   
 
-### Get cluster configurations
+### Get cluster configuration manually
 
-Copy and paste the below commands into your local shell, then save the outputs and paste them into Codefresh. The commands rely on kubectl so make sure it is configured against your cluster.
+Copy and paste the following commands into your local shell, then save the outputs and paste them into the Codefresh fields. The commands rely on `kubectl` so make sure it is configured correctly against your cluster.
 
 {{site.data.callout.callout_info}}
 ##### More than one cluster in kubeconfig?
 
-  Before starting, make sure that you local context is the one you'de like to add to Codefresh.<br>
+  Before starting, make sure that your local context is the one you would like to add to Codefresh.<br>
 Switch to the desired context before continue
 {{site.data.callout.end}}
 
@@ -217,7 +234,7 @@ echo $(kubectl get secret -o go-template='{{index .data "token" }}' $(kubectl ge
 
 ##### Note
 
-In the instructions above, we're reffering for a service account named 'default' in regards to the **certificate** and **token**. You can provide any service account configurations you may have on any namespace, as long as it has the correct permissions. The cluster actions you'll be limited to in Codefresh are based on the Kubernetes service account permissions you set in Kubernetes RBAC. 
+In the instructions above, we're referring for a service account named 'default' in regards to the **certificate** and **token**. You can provide any service account configurations you may have on any namespace, as long as it has the correct permissions. The cluster actions you'll be limited to in Codefresh are based on the Kubernetes service account permissions you set in Kubernetes RBAC. 
 {{site.data.callout.end}}
 
 The minimum permissions Codefresh needs to work with the cluster are the following:
@@ -280,6 +297,6 @@ kubectl create clusterrolebinding default-admin --clusterrole cluster-admin --se
 
 ## Kubernetes cluster - using an external reverse proxy (edge case)
 
-In case you're using an external reverse proxy to manage inbound traffic to your Kubernetes API, please read [this article]({{ site.baseurl }}/docs/deploy-to-kubernetes/verify-cluster-tls-ssl-configuration/) to make sure your certificate setup are managed correctly in order to add your cluster successfully to Codefresh.
+In case you're using an external reverse proxy to manage inbound traffic to your Kubernetes API, please read [this article]({{site.baseurl}}/docs/deploy-to-kubernetes/verify-cluster-tls-ssl-configuration/) to make sure your certificate setup are managed correctly in order to add your cluster successfully to Codefresh.
 
 

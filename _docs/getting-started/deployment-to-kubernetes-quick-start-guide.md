@@ -11,11 +11,11 @@ In this tutorial we will see how you can use Codefresh to deploy a Docker image 
 and also how to to setup an automated pipeline to automatically redeploy it when the source code changes.
 
 >Even though, in this tutorial we use Codefresh to deploy docker images directly to the Kubernetes cluster,
-in production we suggest you use [Helm]({{ site.baseurl }}/docs/getting-started/helm-quick-start-guide/)  instead. Helm is a package manager for Kubernetes that allows you to
+in production we suggest you use [Helm]({{site.baseurl}}/docs/getting-started/helm-quick-start-guide/)  instead. Helm is a package manager for Kubernetes that allows you to
 deploy multiple applications at once as a single entity (Helm Charts) and also perform rollbacks to previous versions.
-Like Kubernetes, [Codefresh has native support for Helm deployments]({{ site.baseurl }}/docs/new-helm/using-helm-in-codefresh-pipeline/) including a [release dashboard]({{ site.baseurl }}/docs/new-helm/helm-releases-management/).
+Like Kubernetes, [Codefresh has native support for Helm deployments]({{site.baseurl}}/docs/new-helm/using-helm-in-codefresh-pipeline/) including a [release dashboard]({{site.baseurl}}/docs/new-helm/helm-releases-management/).
 
-Notice that for this tutorial we will use the GUI provided by Codefresh to both create the Kubernetes service inside the cluster and also to create the CI/CD pipeline that keeps it up-to-date. In a real world scenario it is best if you use  [Codefresh YAML]({{ site.baseurl }}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) which is much more powerful and flexible.
+Notice that for this tutorial we will use the GUI provided by Codefresh to both create the Kubernetes service inside the cluster and also to create the CI/CD pipeline that keeps it up-to-date. In a real world scenario it is best if you use  [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) which is much more powerful and flexible.
 
 Codefresh also offers [several alternative ways]({{site.baseurl}}/docs/deploy-to-kubernetes/deployment-options-to-kubernetes/) of deploying to Kubernetes.
 
@@ -37,16 +37,16 @@ caption="A complete CI/CD pipeline"
 max-width="80%" 
 %}
 
-For simplicity reasons, we will use the [built-in Docker registry]({{ site.baseurl }}/docs/docker-registries/codefresh-registry/) that is available to all Codefresh accounts. For your own application you can also integrate with any other [external Docker registry]({{ site.baseurl }}/docs/docker-registries/external-docker-registries/).
+For simplicity reasons, we will use the [built-in Docker registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/) that is available to all Codefresh accounts. For your own application you can also integrate with any other [external Docker registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/).
 
 
 ## Prerequisites
 
 It is assumed that:
-  - you have already [added your K8s cluster]({{ site.baseurl }}/docs/deploy-to-kubernetes/adding-non-gke-kubernetes-cluster/) into Codefresh
-  - you have already an application that has a Dockerfile. In not, see the [previous tutorial]({{ site.baseurl }}/docs/getting-started/create-a-basic-pipeline/)
+  - you have already [added your K8s cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/) into Codefresh
+  - you have already an application that has a Dockerfile. In not, see the [previous tutorial]({{site.baseurl}}/docs/getting-started/create-a-basic-pipeline/)
 
-Notice that for this tutorial you **don't** need a Kubernetes deployment file. Codefresh will create one for you via its friendly GUI. If you already have an existing deployment file for your own application, [consult the main K8s documentation]({{ site.baseurl }}/docs/deploy-to-kubernetes/deployment-to-kubernetes-quick-start-guide/) on how to use it.
+Notice that for this tutorial you **don't** need a Kubernetes deployment file. Codefresh will create one for you via its friendly GUI. If you already have an existing deployment file for your own application, [consult the main K8s documentation]({{site.baseurl}}/docs/deploy-to-kubernetes/deployment-to-kubernetes-quick-start-guide/) on how to use it.
 
 
 ## Giving the Kubernetes cluster read access to the internal Codefresh registry
