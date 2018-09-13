@@ -11,6 +11,7 @@ toc: true
 ### September 2018
 
 - New dedicated *Pipelines* view for pipelines not linked to GIT repositories
+- New redesigned Logs view with persistent header and icons for steps
 
 ### August 2018
 

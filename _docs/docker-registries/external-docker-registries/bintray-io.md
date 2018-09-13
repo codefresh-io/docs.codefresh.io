@@ -8,11 +8,10 @@ redirect_from:
 toc: true
 ---
 
-<div class="bd-callout bd-callout-info" markdown="1">
-##### Passing Custom Metadata
 
-Passing Codefresh metadata to Bintray is supported through Grafeas. More info is available [in this blogpost](https://codefresh.io/blog/write-this-down-grafeas/){:target="_blank"}.
-</div>
+
+>Passing Codefresh metadata to Bintray is supported through Grafeas. More info is available [in this blogpost](https://codefresh.io/blog/write-this-down-grafeas/){:target="_blank"}.
+
 
 To configure Bintray.io first select **Other Registries** from the new registry drop down and then provide the following
 
@@ -30,7 +29,7 @@ To configure Bintray.io first select **Other Registries** from the new registry 
 
 {:start="2"}
 2. Select **API Key** from the side menu
-{% include image.html lightbox="true" file="/images/da3579e-bintray-api-key.png" url="/images/da3579e-bintray-api-key.png" alt="Bintray.io API key" max-width="45%" %}
+{% include image.html lightbox="true" file="/images/da3579e-bintray-api-key.png" url="/images/da3579e-bintray-api-key.png" alt="Bintray.io API key" max-width="60%" %}
 
 ## Finding your registry domain"
 
@@ -44,3 +43,17 @@ To configure Bintray.io first select **Other Registries** from the new registry 
 {:start="3"}
 3. Copy the registry address
 {% include image.html lightbox="true" file="/images/9e068f4-bintray-domain.png" url="/images/9e068f4-bintray-domain.png" alt="Bintray.io registry address" max-width="45%" %}
+
+## Basic metadata
+
+Codefresh will automatically set some version attributes in Bintray every time you upload a Docker image.
+
+{% 
+	include image.html lightbox="true" 
+	file="/images/artifacts/registry/bintray-metadata.png" 
+	url="/images/artifacts/registry/bintray-metadata.png" 
+	alt="Basic Bintray metadata" 
+	caption="Basic Bintray metadata" 
+	max-width="50%" 
+	%}
+
