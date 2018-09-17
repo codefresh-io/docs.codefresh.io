@@ -88,22 +88,45 @@
         .tooltip('_fixTitle')
     })
 
-    $('#bd-docs-nav')
-      .on('click', 'a', function () {
-        window.localStorage.setItem('scrollto', $(this).offset().top)
-      })
-
-    if ($('#bd-docs-nav li.active').length > 0) {
-      $('#bd-docs-nav').animate({
-        scrollTop: $('#bd-docs-nav').scrollTop() + ($('#bd-docs-nav li.active').last().offset().top - (window.localStorage.getItem('scrollto') || $('#bd-docs-nav').height() / 2))
-      }, {
-        duration: 0,
-        easing: 'linear',
-        complete: function () {
-          window.localStorage.removeItem('scrollto')
+    // eslint-disable-next-line no-unused-vars
+    var sidebarMenuList = $('#bd-docs-nav-list').navgoco({
+      caretHtml: '<i class="fa fa-angle-right"></i>',
+      accordion: false,
+      openClass: 'opened',
+      save: true,
+      storageType: 'local',
+      cookie: {
+        name: 'codefresh-menu',
+        expires: false,
+        path: '/'
+      },
+      slide: {
+        duration: 400,
+        easing: 'swing'
+      },
+      onInitAfter: function (initial) {
+        var bdDocsNav = $('#bd-docs-nav')
+        var bdDocsNavActiveList = $('#bd-docs-nav li.active')
+        if (bdDocsNavActiveList.length > 0) {
+          var scrollTo = bdDocsNav.scrollTop() + (bdDocsNavActiveList.last().offset().top - (window.localStorage.getItem('scrollto') || bdDocsNav.height() / 2))
+          scrollTo = scrollTo.toFixed()
+          setTimeout(function () {
+            bdDocsNav.animate({
+              scrollTop: scrollTo
+            }, {
+              duration: 0,
+              easing: 'linear',
+              complete: function () {
+                window.localStorage.removeItem('scrollto')
+              }
+            })
+          }, 0)
         }
-      })
-    }
+      },
+      onClickAfter: function (event, submenu) {
+        window.localStorage.setItem('scrollto', $(event.currentTarget).offset().top)
+      }
+    })
 
     anchors.options = {
       icon: '#'

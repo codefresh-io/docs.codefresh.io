@@ -26,6 +26,7 @@
   -->
   {% endcomment %}
 
+  <ul id="bd-docs-nav-list" class="list-unstyled">
   {%- for navItem in site.data.nav -%}
 
     {% if navItem.url %}
@@ -55,11 +56,13 @@
       {%- assign active = 'active' -%}
     {%- endif -%}
 
-    <div class="bd-toc-item bd-nav-links-item opened{% unless active == nil %} {{ active }}{% endunless %}">
+    <li class="bd-toc-item bd-nav-links-item {% unless active == nil %} {{ active }}{% endunless %}{% unless navItem.pages.size != 0%} has-children {% endunless %}">
       <!-- first lvl - group -->
-      <span class="h6 bd-toc-link font-weight-bold" data-href="{{ site.baseurl }}/docs/{{ group_slug }}/{{ link_slug }}{% if link_slug %}/{% endif %}">
+      <a class="h6 bd-nav-links-item-group bd-toc-link font-weight-bold"
+         data-size="{{ navItem.pages.size }}"
+         data-href="{{ site.baseurl }}/docs/{{ group_slug }}/{{ link_slug }}{% if link_slug %}/{% endif %}">
         {{ navItem.title }}
-      </span>
+      </a>
       <!-- 2nd lvl menu -->
       <ul class="nav bd-sidenav">
         {%- for doc in navItem.pages -%}
@@ -79,11 +82,13 @@
           {%- assign active = nil -%}
 
           {%- if page.group == group_slug and page_slug == doc_slug -%}
-            {%- assign active = 'active bd-sidenav-active' -%}
+            {%- assign active = 'bd-sidenav-active active' -%}
           {%- endif -%}
           <!-- 2nd lvl menu item -->
-          <li class="opened{% unless active == nil %} {{ active }}{% endunless %} {% if doc_disabled == true %}disabled{% endif %}">
-            <a href="{{ site.baseurl }}/docs/{{ group_slug }}/{{ doc_slug }}/" data-doc-slug="{{ doc_slug }}"
+          <li class="{% unless active == nil %} {{ active }} {% endunless %} {% if doc.sub-pages.size > 0%} has-children {% endif %} {% if doc_disabled == true %}disabled{% endif %} ">
+            <a href="{{ site.baseurl }}/docs/{{ group_slug }}/{{ doc_slug }}/"
+               data-size="{{ doc.sub-pages.size }}"
+               data-doc-slug="{{ doc_slug }}"
               {% if doc_disabled == true %} class="disabled"{% endif %}
             >
               {{ doc.title }}
@@ -154,6 +159,7 @@
           </li>
         {%- endfor -%}
       </ul>
-    </div>
+    </li>
   {%- endfor -%}
+    </ul>
 </nav>
