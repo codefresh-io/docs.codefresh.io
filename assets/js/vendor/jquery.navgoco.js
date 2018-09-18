@@ -69,7 +69,7 @@
 			self._trigger(caret, false);
 			self._trigger(links, true);
 			self.$el.find("li:has(ul) > a").prepend(caret);
-      self.options.onInitAfter.call(this, this, {});
+			self.options.onInitAfter.call(this, this, {});
 		},
 		/**
 		 * Add the main event trigger to toggle menu items to the given sources

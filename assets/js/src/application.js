@@ -90,7 +90,7 @@
 
     // eslint-disable-next-line no-unused-vars
     var sidebarMenuList = $('#bd-docs-nav-list').navgoco({
-      caretHtml: '<i class="fa fa-angle-right"></i>',
+      caretHtml: '<i class="fa fa-cf-arrow"></i>',
       accordion: false,
       openClass: 'opened',
       save: true,
