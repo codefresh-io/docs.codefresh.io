@@ -55,7 +55,9 @@ max-width="80%"
 This dropdown shows all the existing pull secrets for that namespace. You can select the *Create Registry Pull secret* Option to create a new one.
 
 You will get a list of all the connected Docker registries in Codefresh. Select the one that you like and Codefresh will
-automatically create a secret for you.
+automatically create a secret for you. 
+
+>The creation of the secret is instant and will happen as soon as you select your Docker registry from the drop down. There is no need to actually deploy anything from this screen for the changes to take effect.
 
  {% include 
 image.html 
