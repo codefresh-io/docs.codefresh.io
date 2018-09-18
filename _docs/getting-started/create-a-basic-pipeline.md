@@ -33,7 +33,7 @@ example if you prefer (don't forget to write unit tests).
 For this tutorial you will need
 
  * a free [Github account](https://github.com/join)
- * a free [Codefresh account]({{ site.baseurl }}/docs/getting-started/create-a-codefresh-account/) 
+ * a free [Codefresh account]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/) 
  * the source code of the sample application.
  * (Optional) Git and Docker installed on your local workstation 
  * (Optional) an account to a Docker registry (e.g. Dockerhub)
@@ -112,7 +112,7 @@ Because all Codefresh capabilities are based on Docker images, Docker is also se
 
 
 The example application already comes with its own Dockerfile, making the creation of a Codefresh pipeline very easy.
-Let's start by going into the [Codefresh dashboard](https://g.codefresh.io/repositories) (after [creating your account]({{ site.baseurl }}/docs/getting-started/create-a-codefresh-account/))
+Let's start by going into the [Codefresh dashboard](https://g.codefresh.io/repositories) (after [creating your account]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/))
 
 ###  Selecting your Git repository
 
@@ -326,7 +326,7 @@ max-width="60%"
 %}
 
 This concludes the basic build for the example application. Codefresh offers several more capabilities 
-than the ones shown here. If you have an application that has a more complex build process than a single Dockerfile, you should instead spend some time to read the [YAML documentation]({{ site.baseurl }}/docs/codefresh-yaml/what-is-the-codefresh-yaml/).
+than the ones shown here. If you have an application that has a more complex build process than a single Dockerfile, you should instead spend some time to read the [YAML documentation]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/).
 
 
 ## Storing Docker images in Codefresh
@@ -368,7 +368,7 @@ Among the information shown, you can clearly see:
 This information can help you to easily correlate the changes that exist in each Docker images, which is very important knowledge when it comes to deployments (explained in detail in the next tutorial).
 
 If you click on a Docker image you will get many more details about it including a timeline of the labels for this Docker image. You also have the ability to enter custom comments that describe any event that you consider important. Codefresh
-really shines when it comes to annotating your Docker images with metadata. For more details read the section [Annotations]({{ site.baseurl }}/docs/docker-registries/metadata-annotations/)
+really shines when it comes to annotating your Docker images with metadata. For more details read the section [Annotations]({{site.baseurl}}/docs/docker-registries/metadata-annotations/)
 
 {% include 
 image.html 
@@ -416,9 +416,10 @@ max-width="80%"
 Docker images are one of the central concepts in Codefresh pipelines as everything revolves around them. Powerful Codefresh pipelines can be created by using Docker images as build tools, so it is perfectly normal if you manage a large number of images which are not strictly packaged applications. You may create Docker images that contain building or deployment tools and are used as part of
 the build process instead of the build result.
 
-For the purposes of this tutorial we will push our sample application to [DockerHub](https://cloud.docker.com/) which is the free public Docker hosting from Docker Inc. You need to create a free account with the service first and note down your username and password.
+For the purposes of this tutorial we will push our sample application to [DockerHub](https://cloud.docker.com/) which is the free public Docker hosting from Docker Inc. You need to create a free account with the service first and note down your username and password. In your own projects you can use any other [external registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) you wish.
 
-Once you create your Docker Cloud account, go to your Account Configuration, by clicking on *Configuration* on the left sidebar. Then open the *Integration* tab and click the *Add Registry* button.
+Once you create your Docker Cloud account, go to your Account Configuration, by clicking on *Integrations* on the left sidebar. Then open the *Integration* tab and click the *Configure* button next to *Docker Registry*.
+Finally click the *Add Registry* drop-down menu and select *Docker Hub*.
 
 {% include 
 image.html 
@@ -481,10 +482,10 @@ Pushing to the Docker Registry is the last step in the build pipeline. Now that 
 
 ## What to read next
 
-* [Deploy to Kubernetes]({{ site.baseurl }}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/)
-* [Introduction to Pipelines]({{ site.baseurl }}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
-* [Codefresh YAML]({{ site.baseurl }}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
-* [On demand environments]({{ site.baseurl }}/docs/getting-started/on-demand-environments/)
+* [Deploy to Kubernetes]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/)
+* [Introduction to Pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
+* [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
+* [On demand environments]({{site.baseurl}}/docs/getting-started/on-demand-environments/)
 
 
 
