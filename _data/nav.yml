@@ -60,6 +60,8 @@
           url: "/django"
         - title: Voting app
           url: "/voting-app"
+    - title: Ruby On Rails
+      url: "/ruby"
     - title: Java
       url: "/java"
       sub-pages:
