@@ -37,6 +37,50 @@
       url: "/integration-tests"
     - title: "Build badges"
       url: "/build-status"
+      
+- title: Learn by example
+  url: "/learn-by-example"
+  pages:
+    - title: Node.js
+      url: "/nodejs"
+      sub-pages:
+        - title: Let's Chat
+          url: "/lets-chat"
+        - title: Voting app
+          url: "/voting-app"
+    - title: Scala
+      url: "/scala"
+      sub-pages:
+        - title: 'Scala: Hello World'
+          url: "/scala-hello-world"
+    - title: Python
+      url: "/python"
+      sub-pages:
+        - title: Django
+          url: "/django"
+        - title: Voting app
+          url: "/voting-app"
+    - title: Java
+      url: "/java"
+      sub-pages:
+        - title: Spring Boot 2
+          url: "/spring-boot-2"
+        - title: Spring MVC JDBC Template
+          url: "/spring-mvc-jdbc-template"
+        - title: Gradle
+          url: "/gradle"
+    - title: Go
+      url: "/golang"
+      sub-pages:
+        - title: 'Go: Hello World'
+          url: "/golang-hello-world"
+    - title: General
+      url: "/general"
+      sub-pages:
+        - title: Selenium test
+          url: "/selenium-test"
+
+
 
 - title: Codefresh YAML
   url: "/codefresh-yaml"
@@ -190,47 +234,7 @@
     - title: Microsoft Azure
       url: "/microsoft-azure"
 
-- title: Learn by example
-  url: "/learn-by-example"
-  pages:
-    - title: Node.js
-      url: "/nodejs"
-      sub-pages:
-        - title: Let's Chat
-          url: "/lets-chat"
-        - title: Voting app
-          url: "/voting-app"
-    - title: Scala
-      url: "/scala"
-      sub-pages:
-        - title: 'Scala: Hello World'
-          url: "/scala-hello-world"
-    - title: Python
-      url: "/python"
-      sub-pages:
-        - title: Django
-          url: "/django"
-        - title: Voting app
-          url: "/voting-app"
-    - title: Java
-      url: "/java"
-      sub-pages:
-        - title: Spring Boot 2
-          url: "/spring-boot-2"
-        - title: Spring MVC JDBC Template
-          url: "/spring-mvc-jdbc-template"
-        - title: Gradle
-          url: "/gradle"
-    - title: Go
-      url: "/golang"
-      sub-pages:
-        - title: 'Go: Hello World'
-          url: "/golang-hello-world"
-    - title: General
-      url: "/general"
-      sub-pages:
-        - title: Selenium test
-          url: "/selenium-test"
+
 
 - title: On Demand Test Environment
   url: "/on-demand-test-environment"

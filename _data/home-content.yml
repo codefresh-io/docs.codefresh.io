@@ -1,5 +1,5 @@
 - title: Getting Started
-  icon: https://codefresh.io/wp-content/uploads/2017/11/started.png
+  icon: images/home-icons/started.png
   url: ''
   links:
   - title: Setup Codefresh Account
@@ -9,7 +9,7 @@
   - title: Invite Collaborators
     localurl: /docs/accounts/invite-your-team-member/
 - title: Pipelines
-  icon: https://codefresh.io/wp-content/uploads/2017/11/pipelines.png
+  icon: images/home-icons/pipeline.png
   url: ''
   links:
   - title: Introduction to Pipelines
@@ -22,8 +22,24 @@
     localurl: /docs/configure-ci-cd-pipeline/monitoring-pipelines/
   - title: Webhooks, Badges and General settings
     localurl: /docs/configure-ci-cd-pipeline/build-status/
+- title: Learn by example
+  icon: images/home-icons/tutorial.png
+  url: ''
+  links:
+  - title: Go
+    localurl: /docs/learn-by-example/golang/golang-hello-world/
+  - title: Java
+    localurl: /docs/learn-by-example/java/
+  - title: Node.js
+    localurl: /docs/learn-by-example/nodejs/
+  - title: Python
+    localurl: /docs/learn-by-example/python/
+  - title: Scala
+    localurl: /docs/learn-by-example/scala/scala-hello-world/
+  - title: Selenium
+    localurl: /docs/learn-by-example/general/selenium-test/       
 - title: Yaml file
-  icon: https://codefresh.io/wp-content/uploads/2017/11/yaml.png
+  icon: images/home-icons/yaml.png
   url: ''
   links:
   - title: Introduction to Codefresh Yaml
@@ -39,7 +55,7 @@
   - title: "Custom YAML steps"
     url: https://github.com/codefresh-io/plugins
 - title: Deployment
-  icon: https://codefresh.io/wp-content/uploads/2017/11/deployment.png
+  icon: images/home-icons/deployment.png
   url: ''
   links:
   - title: Deploy to GKE
@@ -55,7 +71,7 @@
   - title: Deploy to Azure
     localurl: /docs/deploy-your-containers/microsoft-azure/
 - title: Testing & Image Certification
-  icon: https://codefresh.io/wp-content/uploads/2017/11/image.png
+  icon: images/home-icons/image.png
   url: ''
   links:
   - title: Add Unit Test to pipeline
@@ -87,7 +103,7 @@
   - title: Codefresh API
     localurl: /docs/integrations/codefresh-api/
 - title: On-Demand Dev / Staging Env
-  icon: https://codefresh.io/wp-content/uploads/2017/11/demand.png
+  icon: images/home-icons/demand.png
   url: ''
   links:
   - title: Launch a Docker image
@@ -99,7 +115,7 @@
   - title: Share environment with your team
     localurl: /docs/on-demand-test-environment/share-environment-with-your-test/
 - title: "HELM"
-  icon: https://codefresh.io/wp-content/uploads/2017/12/Helm.png
+  icon: images/home-icons/helm.png
   url: ''
   links:
   - title: Helm Quick start guide
@@ -116,7 +132,7 @@
     localurl: /docs/new-helm/best-practices/
 - title: "Codefresh CLI"
   new: true
-  icon: https://codefresh.io/wp-content/uploads/2018/01/cli.png
+  icon: images/home-icons/cli.png
   url: ''
   links:
   - title: Installation
