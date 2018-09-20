@@ -10,14 +10,14 @@ toc: true
 
 ### September 2018
 
-- New dedicated *Pipelines* view for pipelines not linked to GIT repositories
+- New dedicated *Pipelines* view for pipelines not linked to GIT repositories - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-creation-modes)
 - New redesigned Logs view with persistent header and icons for steps
 
 ### August 2018
 
-- Native Integration with Azure Kubernetes Service
+- Native Integration with Azure Kubernetes Service - [documentation]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/#adding-aks-cluster)
 - Ability to configure SSO both in the customer and the account level (Enterprise)
-- Azure SSO integration (Enterprise)
+- Azure SSO integration (Enterprise) - [documentation]({{site.baseurl}}/docs/enterprise/single-sign-on/sso-setup-oauth2/)
 - OKTA SSO integration (Enterprise)
 - Added Azure and Google as login/sign-up options
 - You can now invite a collaborator who had signed up with a different GIT provider than yours
@@ -42,6 +42,7 @@ toc: true
 - Ability to filter builds by the person that was the respective committer 
 
 ### May 2018
+
 - Integrated Helm repositories for each Codefresh account
 - Ability to specify custom triggers for each pipeline
 - Ability to specify cron-like triggers
