@@ -9,6 +9,32 @@ toc: true
 ---
 The composition step runs a Docker Composition as a means to execute finite commands in a more complex interaction of services.
 
+## Motivation for Compositions
+
+The primary purpose of compositions is to run integration tests or any kind of tests that require multiple services for their execution.
+
+The syntax offered by Codefresh closely follows the syntax for [Docker-compose](https://docs.docker.com/compose/overview/) files, so if already know how Docker compose works, you will be immediately familiar with Codefresh compositions.
+
+The big difference between the two, is that Codefresh is distinguishing between two kinds of services
+
+* Composition Services
+* Composition Candidates
+
+Composition services are helper services that are needed for the tests to run. These can be a database, a queue, a cache, or the back-end docker image of your application.
+
+Composition candidates are special services that will execute the tests. Codefresh will monitor their execution and fail the build if they do not succeed. Almost always composition candidates are Docker images that contain unit/integration tests or other kinds of tests (e.g. performance)
+
+You need at least one composition service and one candidate for the composition step.
+
+
+## Composition step syntax
+
+Here is an example of a composition. There is one composition service (PostgreSQL database) and one candidate (tests executed with gulp)
+
+The most important part is the `command` line that executes the tests. If it fails, then the whole composition step will fail.
+
+
+
   `YAML`
 {% highlight yaml %}
 step_name:
@@ -50,18 +76,24 @@ step_name:
 | `description`                              | A basic, free-text description of the step.                                                                                                                                                                                              | Optional                  |
 | `working_directory`                        | The directory in which to search for the composition file. It can be an explicit path in the container's file system, or a variable that references another step.<br> The default is {% raw %}`${{main_clone}}`{% endraw %}.               | Default                   |
 | `composition`                              | The composition you want to run. It can be an inline YAML definition, a path to a composition file on the file system, or the logical name of a composition stored in the Codefresh system.                                              | Required                  |
-| `composition_candidates`                   | The definition of the service to monitor.                                                                                                                                                                                                | Required                  |
+| `composition_candidates`                   | The definition of the service to monitor. Each candidate has a **single** `command` parameter that decides what will be tested.                                                                                                                                                                                              | Required                  |
 | `environment`                              | environment that will be accessible to the container                                                                                                                                                                                     | Optional                  |
 | `composition_variables`                    | A set of environment variables to substitute in the composition.                                                                                                                                                                         | Optional                  |
 | `fail_fast`                                | If a step fails, and the process is halted. The default value is `true`.                                                                                                                                                                 | Default                   |
 | `when`                                     | Define a set of conditions which need to be satisfied in order to execute this step.<br>You can find more information in the [Conditional Execution of Steps]({{ site.baseurl }}/docs/codefresh-yaml/conditional-execution-of-steps/) article.                               | Optional                  |
 | `on_success`, `on_fail` and `on_finish`    | Define operations to perform upon step completion using a set of predefined [Post-Step Operations]({{ site.baseurl }}/docs/codefresh-yaml/post-step-operations/).                                                                                                            | Optional                  |
 
-**Composition vs. Composition Candidates:**
+## Composition versus Composition Candidates
 
 For Codefresh to determine if the step and operations were successfully executed, you must specify at least one `composition_candidate`.
+
 A `composition_candidate` is a single service component of the normal Docker composition that is monitored for a successful exit code, and determines the outcome of the step. During runtime, the `composition_candidate` is merged into the specified `composition`, and is monitored for successful execution.
+
+The critical part of each candidate is the `command` parameter. This takes [a single command](https://docs.docker.com/compose/compose-file/#command) that will
+be executed inside the Docker container of the candidate and will decide if the whole composition is successful or not. Only one command is allowed (similar to Docker compose). If you wish to test multiple commands you need to connect them with `&&`.
+
 If the `composition` already contains a service with the same name as the `composition_candidate`, the two service definitions are combined, with preference given to the `composition_candidate`'s definition.
+
 For example, we create a new Codefresh composition named 'test_composition':
 
   `test-composition.yml`
