@@ -14,6 +14,6 @@ A step may be **typed** or **untyped**
 {: .table .table-bordered .table-hover}
 | Step type      | Description                                                                                                                                                                                  |
 | -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Typed**      | Single-purpose steps designed to perform specific operation, and requires minimal configuration. <br/>**Typed** steps include:<br/>{::nomarkdown}<ul><li>Build</li><li>Push</li><li>Git Clone</li><li>Composition</li><li>Launch Composition</li></ul>{:/} |
+| **Typed**      | Single-purpose steps designed to perform specific operation, and requires minimal configuration. <br/>**Typed** steps include:<br/>{::nomarkdown}<ul><li>Git clone</li><li>Build</li><li>Push</li><li>Composition</li><li>Launch Composition</li><li>Deploy</li></ul>{:/} |
 | **Untyped**    | Defined by a base image and are affected by the specified image. <br/>**Untyped** steps include: <br/> {::nomarkdown}<ul><li>Freestyle</li></ul>{:/} |
 
