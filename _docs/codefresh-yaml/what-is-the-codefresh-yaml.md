@@ -87,4 +87,139 @@ To build your pipeline using a ```codefresh.yml``` file, in the General Settings
 
 ## Grouping steps with pipeline stages
 
+By default all pipeline steps are shown one after the other.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/yaml/linear-view.png" 
+url="/images/pipeline/yaml/linear-view.png"
+alt="Default pipeline view" 
+caption="Default pipeline view"
+max-width="50%"
+%}
+
+This view works ok for small pipelines, but for a big number of steps it is better to group them into pipeline *stages* like shown below:
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/yaml/example.png" 
+url="/images/pipeline/yaml/example.png"
+alt="Different pipeline stages" 
+caption="Different pipeline stages"
+max-width="80%"
+%}
+
+The number of stages (i.e columns) and their titles is completely configurable. 
+To enable this view you need to make two modifications at the `codefresh.yml` file:
+
+Here is the skeleton:
+
+  `codefresh.yml`
+{% highlight yaml %}
+version: '1.0'
+stages:
+ - [stage-name-1]
+ - [stage-name-2]
+
+steps:
+  step-name:
+    [step-contents]
+    stage: [name-of-stage]
+  another-step:
+    [step-contents]
+    stage: [name-of-stage]
+  the-very-last-step:
+    [step-contents]
+    stage: [name-of-stage]
+{% endhighlight %}
+
+As you can see the modifications needed are:
+
+1. List all the stage names at the root of the pipeline file
+1. Use the `stage` property on each step to assign it to a stage.
+
+>This updated pipeline view is only a nice way to visualize the pipeline. It does not affect the order of step execution. Steps will still execute in the same order listed in the `codefresh.yml` file.
+
+Here is a more concrete example that you can use as a starting point:
+
+  `codefresh.yml`
+{% highlight yaml %}
+version: '1.0'
+stages:
+ - prepare
+ - test
+ - build
+ - scan
+ - integration
+ - deploy
+steps:
+    step1:
+        stage: 'prepare'
+        image: node
+        commands:
+            - 'echo "Hello Step 1!"'
+    step2:
+       image: node
+       stage: 'prepare'
+       commands:
+            - 'echo "Hello Step 2!"'
+    step3:
+        image: node
+        stage: 'test'
+        commands:
+            - 'echo "Hello Step 3!"'
+    step4:
+        image: node
+        stage: 'build'
+        commands:
+            - 'echo "Hello Step 4!"'
+    step5:
+        image: node
+        stage: 'scan'
+        commands:
+            - 'echo "Hello Step 5!"'
+    step6:
+        image: node
+        stage: 'scan'
+        commands:
+            - 'echo "Hello Step 6!"'
+    step7:
+        image: node
+        stage: 'integration'
+        commands:
+            - 'echo "Hello Step 7!"'        
+    step8:
+        image: node
+        stage: 'deploy'
+        commands:
+            - 'echo "Hello Step 8!"'    
+    step9:
+        image: node
+        stage: 'deploy'
+        commands:
+            - 'echo "Hello Step 9!"'    
+{% endhighlight %}
+
+If you run the pipeline you will see this view
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/yaml/complex.png" 
+url="/images/pipeline/yaml/complex.png"
+alt="Complex Pipeline view" 
+caption="Complex Pipeline view"
+max-width="80%"
+%}
+
+Remember that the assignment of a step to a stage is happening only for graphical grouping purposes. It does
+not affect the way your steps run. All steps will still run in the same order mentioned in the `codefresh.yml` file.
+
+
+
+
+
+
 
