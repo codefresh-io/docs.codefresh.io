@@ -117,9 +117,14 @@ Each section in this screen corresponds to each pipeline step. The first two ste
 
 are Codefresh built-in steps and will appear for most builds (you can create a pipeline that doesn't clone a git repository by default). The rest of the step names depend on your `codefresh.yml` (or the default step names provided by Codefresh)
 
+Click on each step in order to see the respective log.
 
-For each individual step you can see the running time as well the respective logs. You can expand each individual section
-by clicking on its name and copy its logs with the *copy to clipboard* at the bottom.
+
+You can expand each individual section
+by clicking on its name and copy its logs with the *copy to clipboard* at the top right corner of the log window.
+
+
+You can also search the logs by clicking at magnifying glass icon in the log window.
 
 ## Monitoring Pipelines outside the Codefresh UI
 
