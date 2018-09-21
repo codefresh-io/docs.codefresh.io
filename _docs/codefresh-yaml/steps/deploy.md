@@ -71,6 +71,7 @@ Fields
 | ------------------------------------------ | ----------------------------------------------------------  -------- | ------------------------- |
 | `title`                                    | The free-text display name of the step                               | Optional                  |
 | `description`                              | A basic, free-text description of the step.                          | Optional                  |
+| `stage`                              | Parent group of this step. See [using stages]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/#grouping-steps-with-pipeline-stages) for more information.                                                                                                                                                                                          | Optional                  |
 | `kind`                        | Currently only `kubernetes` is supported                | Required                   |
 | `cluster`                        | Name of your K8s cluster as found in the dashboard               | Required                   |
 | `namespace`                        | Namespace where the deployment will take place           | Required                   |
