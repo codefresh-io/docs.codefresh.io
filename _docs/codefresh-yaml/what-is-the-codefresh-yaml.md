@@ -217,6 +217,8 @@ max-width="80%"
 Remember that the assignment of a step to a stage is happening only for graphical grouping purposes. It does
 not affect the way your steps run. All steps will still run in the same order mentioned in the `codefresh.yml` file.
 
+Also notice if you enable this view a stage called *default* will show all build steps that are not explicitly assigned to a stage.
+
 
 
 
