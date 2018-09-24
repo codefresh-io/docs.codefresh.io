@@ -20,6 +20,9 @@
     localurl: /docs/configure-ci-cd-pipeline/triggers/
   - title: Monitoring pipelines
     localurl: /docs/configure-ci-cd-pipeline/monitoring-pipelines/
+
+  - title: Test reports
+    localurl: /docs/configure-ci-cd-pipeline/test-reports/
   - title: Public logs and status badges
     localurl: /docs/configure-ci-cd-pipeline/build-status/
 - title: Learn by example
