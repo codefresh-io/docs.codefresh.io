@@ -16,7 +16,7 @@ step_name:
   title: Step Title
   description: Step description
   working_directory: /path
-  repo: github.com/owner/repo
+  repo: owner/repo
   git: my-git-provider
   revision: abcdef12345
   credentials:
@@ -44,7 +44,7 @@ step_name:
 | `stage`                              | Parent group of this step. See [using stages]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/#grouping-steps-with-pipeline-stages) for more information.                                                                                                                                                                                          | Optional                  |
 | `working_directory`                        | The directory to which the repository is cloned. It can be an explicit path in the container's file system, or a variable that references another step. The default value is {% raw %}`${{main_clone}}`{% endraw %}.                | Default                   |
 | `git` | The name of the [git integration]({{ site.baseurl }}/docs/integrations/git-providers/) you want to use | Required| 
-| `repo`                                     | URL of the Git repository you are cloning.                                                                                                                                                                                         | Required                  |
+| `repo`                                     | path of the repository without the domain name in the form of `my_username/my_repo`                                                                                                                                                                                       | Required                  |
 | `revision`                                 | The revision of the repository you are checking out. It can be a revision has or a branch name. The default value is `master`.                                                                                                     | Default                   |
 | `credentials`                              | Credentials to access the repository, if it requires authentication. It can an object containing `username` and `password` fields.                                                                                                 | Optional                  |
 | `fail_fast`                                | If a step fails and the process is halted. The default value is `true`.                                                                                                                                                            | Default                   |
