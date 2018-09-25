@@ -1,7 +1,7 @@
 ---
 title: "Windows Containers Support Overview (Beta)"
-description: ""
-group: windows
+description: "Using Docker on Windows in Codefresh"
+group: incubation
 redirect_from:
   - /docs/windows/
 toc: true
@@ -9,8 +9,8 @@ toc: true
   
 > Note: To learn more regarding how to participate in our beta release please [contact sales](https://codefresh.io/contact-sales/)
 
-Codefresh pipeline has the option to support Windows based containers.
-If you’ve projects in your organisation like .NET Framework or are in transition from Windows to Linux based projects and still need to have CI\CD pipelines for Windows containers, you’ll now be able to achieve this by using Codefresh.
+Codefresh pipelines have the option to support Windows based containers.
+If you have projects in your organisation based on the  .NET Framework or are in transition from Windows to Linux based projects and still need to have CI/CD pipelines for Windows containers, you’ll now be able to achieve this by using Codefresh.
 
 As part of the beta program Codefresh will supply you with an account which will be able to support Windows pipelines and a dedicated Windows Server version 1709 VM which Codefresh will host for you. 
 Please keep in mind that this account will only be able to run Windows containers based pipelines, you’ll still have the full option to switch to your regular Codefresh account that supports Linux containers based pipelines.

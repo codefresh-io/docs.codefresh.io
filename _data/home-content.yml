@@ -151,10 +151,12 @@
     localurl: /docs/enterprise/ent-account-mng
   - title: Single Sign on
     localurl: /docs/enterprise/single-sign-on
-- title: "Windows Containers Support (Beta)"
-  new: true
+- title: "Incubation features"
   icon: images/home-icons/started.png
   url: ''
   links:
-  - title: Windows Containers Support Overview (Beta)
-    localurl: /docs/windows/windows-beta
+  - title: Windows Containers Support(Beta)
+    localurl: /docs/incubation/windows-beta
+  - title: ARM architecture Support (Alpha)
+    new: true
+    localurl: /docs/incubation/arm-support

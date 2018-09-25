@@ -301,11 +301,13 @@
 
 
 
-- title: Windows Container Support (Beta)
-  url: "/windows"
+- title: Incubation features
+  url: "/incubation"
   pages:
     - title: Windows Container Support Overview (Beta)
       url: "/windows-beta"
+    - title: ARM architecture support (Alpha)
+      url: "/arm-support"
 
 - title: Accounts
   url: "/accounts"
