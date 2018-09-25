@@ -114,4 +114,4 @@ caption="Launching Docker ARM images"
 max-width="60%"
 %}
 
-In summary, the workflow for ARM image is exactly the same as the usual Linux/x86 images.
+In summary, the workflow for ARM images is exactly the same as the usual Linux/x86 images.
