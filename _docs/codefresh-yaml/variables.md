@@ -50,6 +50,22 @@ Context related variables are created dynamically during the workflow execution 
 | **Working Directories**                           | For example, you can set the working directory of step `A` with a variable named after a previously executed step, step `B`. Therefore, setting step `A` with {% raw %}`working-directory:${{B}}`{% endraw %} means that step `A` executes in the same working directory as step `B`.                |
 | **Images**                                        | You can set the candidate field of the push step with a variable named after a previously executed build step. Since the details of a created image are not necessarily known ahead of time, the variable can create an association to an optionally dynamic image name. Therefore, setting push step `A` with {% raw %}`candidate:${{B}}`{% endraw %} means that step `A` will push the image build buy step `B`.                |
 
+## Github Release Variables
+
+Github allows you to create [releases](https://help.github.com/articles/creating-releases/) for marking specific git tags for general availability.
+
+You can set a [trigger]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/) for Github releases. When a Github release happens the following variables are also available:
+
+
+
+{: .table .table-bordered .table-hover}
+| Variable        | Description                                            |
+| --------------- | ------------------------------------------------------ |
+| {% raw %}`${{CF_RELEASE_NAME}}`{% endraw %}     | Name of Github release   |
+| {% raw %}`${{CF_RELEASE_TAG}}`{% endraw %}      | GIT tag for this release   |
+| {% raw %}`${{CF_RELEASE_ID}}`{% endraw %}       | Internal ID for this release   |
+| {% raw %}`${{CF_PRERELEASE_FLAG}}`{% endraw %}  | true if the release if marked as pre-release, false if it is final   |
+
 ## User Provided Variables
 
 User provided variables can be defined at 4 levels:
