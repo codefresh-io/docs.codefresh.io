@@ -61,10 +61,10 @@ You can set a [trigger]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/
 {: .table .table-bordered .table-hover}
 | Variable        | Description                                            |
 | --------------- | ------------------------------------------------------ |
-| {% raw %}`${{CF_RELEASE_NAME}}`{% endraw %}     | Name of Github release   |
-| {% raw %}`${{CF_RELEASE_TAG}}`{% endraw %}      | GIT tag for this release   |
+| {% raw %}`${{CF_RELEASE_NAME}}`{% endraw %}     | Github release title   |
+| {% raw %}`${{CF_RELEASE_TAG}}`{% endraw %}      | GIT tag version   |
 | {% raw %}`${{CF_RELEASE_ID}}`{% endraw %}       | Internal ID for this release   |
-| {% raw %}`${{CF_PRERELEASE_FLAG}}`{% endraw %}  | true if the release if marked as pre-release, false if it is final   |
+| {% raw %}`${{CF_PRERELEASE_FLAG}}`{% endraw %}  | true if the release if marked as non-production ready, false if it ready for production   |
 
 ## User Provided Variables
 
