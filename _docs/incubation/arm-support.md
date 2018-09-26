@@ -41,7 +41,7 @@ max-width="60%"
 %}
 
 Dockerhub has a lot of public images that are offered in multiple architectures.
-You will get errors only if you use a less popular image that has no ARM support
+You will get errors only if you use a less popular image that has no ARM support.
 
 
 
@@ -49,7 +49,7 @@ You will get errors only if you use a less popular image that has no ARM support
 
 The [Python sample application](https://github.com/codefresh-contrib/python-flask-sample-app) used in the [quick start guide]({{site.baseurl}}/docs/getting-started/create-a-basic-pipeline/) is based on an official Docker image that already has ARM support.
 
-Create a pipeline for it with the following YAML content
+Create a pipeline for it with the following YAML content:
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -90,7 +90,7 @@ caption="Running Unit tests"
 max-width="60%"
 %}
 
-Once the pipeline is finished you will see the Docker image stored in the Codefresh Registry:
+Once the pipeline is finished you will see the Docker image stored in the [Codefresh Registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/):
 
 {% include 
 image.html 

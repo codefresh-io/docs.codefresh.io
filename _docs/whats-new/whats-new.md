@@ -13,6 +13,7 @@ toc: true
 - New ability to group steps into pipeline steps - [documentation]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/#grouping-steps-with-pipeline-stages)
 - New dedicated *Pipelines* view for pipelines not linked to GIT repositories - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-creation-modes)
 - New redesigned Logs view with persistent header and icons for steps
+- ARM build support (alpha) - [documentation]({{site.baseurl}}/docs/incubation/arm-support/)
 
 ### August 2018
 
