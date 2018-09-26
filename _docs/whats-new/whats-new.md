@@ -14,6 +14,7 @@ toc: true
 - New dedicated *Pipelines* view for pipelines not linked to GIT repositories - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-creation-modes)
 - New redesigned Logs view with persistent header and icons for steps
 - ARM build support (alpha) - [documentation]({{site.baseurl}}/docs/incubation/arm-support/)
+- New pipeline variables for Github releases - [documentation]({{site.baseurl}}/docs/codefresh-yaml/variables/#github-release-variables)
 
 ### August 2018
 
