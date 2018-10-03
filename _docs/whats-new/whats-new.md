@@ -8,6 +8,10 @@ toc: true
 ---
 
 
+### October 2018
+
+- New integration for Azure Helm repositories - [documentation]({{site.baseurl}}/docs/new-helm/add-helm-repository/#private-repository---azure)
+
 ### September 2018
 
 - New ability to group steps into pipeline steps - [documentation]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/#grouping-steps-with-pipeline-stages)

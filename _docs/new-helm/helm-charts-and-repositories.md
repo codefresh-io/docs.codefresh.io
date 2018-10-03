@@ -75,6 +75,32 @@ Name|Description
 ---|---
 GOOGLE_APPLICATION_CREDENTIALS_JSON|The JSON content of the service account credentials
 
+
+### Private repository - Azure
+
+First make sure that you [create the Helm repository](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-helm-repos) in Azure
+
+Then click *Authenticate*. You will get a permissions dialog for allowing Codefresh to access
+the Azure services. Click *Accept*.
+
+>Make sure that you are using an organizational/company Azure account and not a personal one. We are currently working with Microsoft to improve this integration.
+
+{% include image.html 
+lightbox="true" 
+file="/images/kubernetes-helm/azure-helm-integration.png" 
+url="/images/kubernetes-helm/azure-helm-integration.png" 
+alt="Selecting an Azure Helm repository"
+caption="Selecting an Azure Helm repository" 
+max-width="70%" 
+%}
+
+Select your Azure subscription on the left drop-down menu and your Helm repository on the right drop-down menu.
+
+>If you are already authenticated to Azure, and cannot find your Helm repository in the list, try revoking access and authenticating again.
+
+The Azure Helm integration is now ready.
+
+
 ## Using a Helm Repository in a Codefresh pipeline
 
 Once connected, the private Helm repository context can be injected into pipelines by selecting "Import from shared configuration" (under "Environment Variables" section), and selecting the name of the repository.  
