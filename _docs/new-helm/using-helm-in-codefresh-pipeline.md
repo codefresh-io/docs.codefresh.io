@@ -165,6 +165,27 @@ Notes:
 - The attached repo URL will be available as a variable called `CF_CTX_<reponame>_URL` (where `<reponame>` is the name of the repo).
 - The credentials used to setup the repo will be available in the container under the name they were provided when you connected the repo.
 
+### Example: Custom Helm Commands
+
+The following example demonstrates executing custom commands.
+
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+helm:
+  image: codefresh/cfstep-helm:2.9.0
+  commands:
+    - export HELM_REPO_ACCESS_TOKEN=${{CF_API_KEY}}
+    - export HELM_REPO_AUTH_HEADER=x-access-token
+    - helm repo add incubator https://kubernetes-charts-incubator.storage.googleapis.com/
+    - helm repo add myrepo ${{CF_CTX_CF_HELM_DEFAULT_URL}}
+    - helm push chart-example/ myrepo
+{% endraw %}
+{% endhighlight %}
+
+Notes:
+- The directory that contains a chart MUST have the same name as the chart. Thus, a chart named `my-chart` MUST be created in a directory called `my-chart/`. This is a requirement of the [Helm Chart format](https://docs.helm.sh/developing_charts).
+
 ## Configuration
 
 Name|Required|Description

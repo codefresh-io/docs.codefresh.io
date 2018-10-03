@@ -5,17 +5,17 @@ group: incubation
 toc: true
 ---
   
-Codefresh is offering alpha support for building Docker images for the ARM architecture. The support is currently in Alpha stage.
+Codefresh is offering initial support for building Docker images for the ARM architecture. The support is currently in Alpha stage.
 
 ## Enabling ARM support
 
-To try ARM support in Codefresh, [open a free account]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/) and then [contact sales](https://codefresh.io/contact-sales/) in order to enable ARM support.
+To run ARM pipeline in Codefresh, [open a free account]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/) and then [contact sales](https://codefresh.io/contact-sales/) in order to enable ARM support.
 
-Once approved, your build environment will move to an ARM cluster, and therefore *all* your builds will be ready for ARM. This means that if you also want to keep using the normal Linux/x86 builds, it is best to create a second Codefresh account just for trying ARM support.
+Once approved, your build environment will move to an ARM cluster, and therefore *all* your builds will be ARM enabled. This means that if you also want to keep using the normal Linux/x86 builds, it is best to create a second Codefresh account just for trying ARM support.
 
 ## Using ARM builders in Codefresh
 
-Once ARM support is enabled for your account, there is no other requirement to start building ARM images.
+Once ARM support is enabled for your account, there is no other special requirement to start building ARM images.
 
 Just read the normal Codefresh documentation
 
