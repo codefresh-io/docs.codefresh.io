@@ -1,6 +1,6 @@
 ---
 title: "Quay Trigger"
-description: "How to trigger Codefresh pipelines from Codefresh"
+description: "How to trigger Codefresh pipelines from Quay"
 group: configure-ci-cd-pipeline
 sub_group: triggers
 redirect_from:
@@ -8,8 +8,8 @@ redirect_from:
 toc: true
 ---
 
-It is possible to define and manage Quay pipeline triggers with Codefresh UI.
-This allows you to trigger Codefresh pipeline when a Quay event happens (e.g. a new Docker image is uploaded)
+It is possible to define and manage Quay pipeline triggers with the Codefresh UI.
+This allows you to trigger Codefresh pipelines when a Quay event happens (e.g. a new Docker image is uploaded).
 
 ## Manage Quay Triggers with Codefresh UI
 
@@ -19,12 +19,12 @@ The process involves two parts
 1. Creating a trigger in Codefresh. This will result in a special Codefresh webhook URL
 1. Creating a new notification in Quay that will use this URL to call Codefresh
 
-Make sure that you have Quay account and have already [created a repository](https://docs.quay.io/guides/create-repo.html) (or pushed a Docker image at least once).
+Make sure that you have a Quay account and have already [created a repository](https://docs.quay.io/guides/create-repo.html) (or pushed a Docker image at least once).
 
 
 ### Create a new Quay Trigger
 
-To add a new Quay trigger, navigate to Codefresh Pipeline *Configuration* view and expand *Triggers* section. Press the `Add Trigger` button and select a `Registry` trigger type to add.
+To add a new Quay trigger, navigate to a Codefresh Pipeline *Configuration* view and expand the *Triggers* section. Press the `Add Trigger` button and select a `Registry` trigger type to add.
 
 {% include image.html
 lightbox="true"
@@ -36,7 +36,7 @@ max-width="40%"
 
 Fill the following information:
 
-* Registry Provider - select `DockerHub`
+* Registry Provider - select `Quay`
 * *Namespace* - put Quay user name or organization name here
 * *Name* - Quay image repository name
 * *Action* - select `Push Image` action
@@ -50,7 +50,7 @@ alt="Quay Registry settings"
 max-width="50%"
 %}
 
-Click next and a new Dialog will appear that shows you the Codefresh webhoop URL. Copy it to your clipboard. 
+Click next and a new Dialog will appear that shows you the Codefresh webhook URL. Copy it to your clipboard. 
 
 
 {% include image.html
@@ -61,7 +61,7 @@ alt="Codefresh webhook URL"
 max-width="50%"
 %}
 
-Now we must set Quay to use this URL when an event takes place.
+Now we must set Quay to call this URL when an event takes place.
 
 ### Setup Quay Notification
 
