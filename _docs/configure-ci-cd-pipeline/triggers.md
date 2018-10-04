@@ -21,6 +21,7 @@ Trigger types currently supported by Codefresh are:
 
 * [Git Triggers](git-triggers)
 * [Dockerhub Triggers](dockerhub-triggers)
+* [Quay Triggers](quay-triggers)
 * [Cron Trigger](cron-triggers)
 
 As an example, this project contains 4 pipelines:
@@ -77,5 +78,6 @@ For more information see:
 
 * [Git Triggers](git-triggers)
 * [Dockerhub Triggers](dockerhub-triggers)
+* [Quay Triggers](quay-triggers)
 * [Cron Trigger](cron-triggers)
 

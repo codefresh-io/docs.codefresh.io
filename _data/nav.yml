@@ -21,6 +21,8 @@
           url: "/git-triggers"
         - title: "DockerHub Triggers"
           url: "/dockerhub-triggers"
+        - title: "Quay Triggers"
+          url: "/quay-triggers"
         - title: "Timer (Cron) Triggers"
           url: "/cron-triggers"
     - title: "Monitoring Pipelines"
