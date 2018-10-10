@@ -44,7 +44,7 @@ Before you can use the API from your application you need an authentication toke
 
 ## Authentication instructions
 
-If you just want to play around with the API a token is already created for you in Swagger. You can make any call
+If you just want to play around with the API a token is already created for you in [Swagger](https://swagger.io/) at [https://g.codefresh.io/api/](https://g.codefresh.io/api/). You can make any call
 interactively and see results right from the browser.
 
 {% include image.html 
@@ -59,7 +59,7 @@ max-width="70%"
 
 You can also copy the `curl` command shown in the UI. It includes the token in the request.
 
-If you want to create your own token then click *Account Settings* on the left sidebar and select the *tokens* tab.
+If you want to create your own token then click *Integrations* on the left sidebar and select the *tokens* tab.
 Click the *generate* button and copy your token. 
 
 
