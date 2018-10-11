@@ -11,7 +11,7 @@ toc: true
 ---
 Creating an account with Codefresh using one of the supported Git providers (Github, Gitlab, Bitbucket) gives you immediate access to the repositories of the linked provider.
 
-You can add repositories from the other git providers regardless of the one that you used for sign-up. For example, you can use Gitlab to signup with Codefresh, but still build repositories that exist in bitbucket.
+You can add repositories from the other git providers regardless of the one that you used for sign-up. For example, you can use Gitlab to signup with Codefresh, but still build repositories that exist in Bitbucket.
 
 You can even add multiple accounts from each Git provider (if you have more than one) allowing you to use Codefresh as a central CI/CD solution that can access all your git repositories regardless of the backing git provider
 
@@ -98,6 +98,17 @@ For Bitbucket you need
 
 To create an application password go to your *Bitbucket settings* and select *App passwords* from the sidebar.
 Click the button to create one. For more information see the [Bitbucket Documentation page](https://confluence.atlassian.com/bitbucket/app-passwords-828781300.html){:target="_blank"}
+
+The minimum permissions needed by Codefresh are shown below.
+
+{% include image.html 
+lightbox="true" 
+file="/images/integrations/git/bitbucket-permissions.png" 
+url="/images/integrations/git/bitbucket-permissions.png"
+max-width="60%"
+caption="Bitbucket permissions"
+alt="Bitbucket permissions"
+%}
 
 The "label" you enter in your Bitbucket account in order to create the application password is completely arbitrary (use "Codefresh" for an example). Once you have the token, paste it in the Codefresh UI and click *Test connection*. If everything is OK can
 now save the git integration.
