@@ -28,7 +28,7 @@ git_clone_private_repo:
         - ls -l /codefresh/volume/{repo_name}
 {% endhighlight %}
 
-You can try the example bellow just replace the following variables
+You can try the example below just replace the following variables
 
 {: .table .table-bordered .table-hover}
 | Variable                                     | Description                                                                                       |
