@@ -110,6 +110,8 @@
           url: "/deploy"
     - title: "Post-Step Operations"
       url: "/post-step-operations"
+    - title: "Parallel steps"
+      url: "/advanced-workflows"
     - title: "Working Directories"
       url: "/working-directories"
     - title: "Variables"
