@@ -240,9 +240,9 @@ This illustrates the side effects for both parallel steps that were executed on 
 
 >It is therefore your responsibility to make sure that steps that run in parallel place nice with each other. Currently Codefresh performs no conflict detection at all. If there are race conditions between your parallel steps (e.g multiple steps writing at the same files) the final behavior is undefined. It is best to start with a fully sequential pipeline and use parallelism in a gradual manner if you are unsure about the side effects of your steps
 
-## Pipeline parallel mode
+## Parallel pipeline mode
 
-To activate parallel mode for the whole pipeline you need to declare it excplitily at the root of the codefresh.yml file:
+To activate parallel mode for the whole pipeline you need to declare it explicitly at the root of the codefresh.yml file:
 
 ```
 version: '1.0'
@@ -259,9 +259,123 @@ In Parallel mode, the order of steps inside the `codefresh.yml` is **not** affec
 
 This means that in parallel mode the conditions of a step are evaluated **multiple times** as the Codefresh execution engine is trying to find which steps it should run next. This implication is very important when you try to understand the order of step execution.
 
+Notice also that in parallel mode, if you don't define any step conditions, Codefresh will try to run **all** steps at once, which is probably not what you want in most cases.
+
+With parallel mode you are expected to define the order of steps in the yaml file, and the Codefresh engine will create a *graph* of execution that satisfies your instructions. This means that writing the `codefresh.yml` file requires more effort on your part, but on the other hand allows you to define the step order in ways not possible with the sequential mode.
+
+In the next sections we describe how you can define the steps dependencies in a parallel pipeline.
+
 ### Single Step dependencies
 
+At the most basic level, you can define that a steps *depends on* the execution of another step. This dependency is very flexible as Codefresh allows you run a second step once
+
+1. The first step is finished with success
+1. The first step is finished with failure
+1. The first completes (regardless of exit) status
+
+The syntax for this is the following post-condition
+
+```
+second_step
+  title: Second step
+  when:
+    steps:
+     - name: first_step
+       on:
+         - success
+```
+
+If you want to run the second step only if the first one fails the syntax is :
+
+```
+second_step
+  title: Second step
+  when:
+    steps:
+     - name: first_step
+       on:
+         - failure
+```
+
+Finally if you don't care about the completion status the syntax is:
+
+```
+second_step
+  title: Second step
+  when:
+    steps:
+     - name: first_step
+       on:
+         - finished
+```
+
+Notice that `finished` is the default behavior so you can omit the last two lines (i.e. the `on:` part).
+
+As an example let's assume that you have the following steps in a pipeline
+
+1. A build step that creates a docker image
+1. A freestyle steps that runs unit tests inside the docker image
+1. A freestyle steps that runs integrations tests *After* the unit tests, even if they fail
+1. A cleanup step that runs after unit tests if they fail
+
+Here is the full pipeline
+
+`YAML`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+mode: parallel
+steps:
+  MyAppDockerImage:
+    title: Building Docker Image
+    type: build
+    image_name: my-node-js-app
+    working_directory: ./
+    tag: '${{CF_BRANCH_TAG_NORMALIZED}}'
+    dockerfile: Dockerfile
+  MyUnitTests:
+    title: Running unit tests
+    image: ${{MyAppDockerImage}}
+    fail_fast: false
+    commands: 
+      - npm run test 
+    when:
+      steps:
+       - name: MyAppDockerImage
+         on:
+           - success 
+  MyIntegrationTests:
+    title: Running integration tests
+    image: ${{MyAppDockerImage}}
+    commands: 
+      - npm run integration-test  
+    when:
+      steps:
+       - name: MyUnitTests
+         on:
+           - finished
+  MyCleanupPhase:
+    title: Cleanup unit test results
+    image: alpine
+    commands: 
+      - ./cleanup.sh 
+    when:
+      steps:
+       - name: MyUnitTests
+         on:
+           - failure   
+{% endraw %}
+{% endhighlight %}
+
+If you run the pipeline you will see that Codefresh automatically understands that `MyIntegrationTests` and `MyCleanupPhase` can run in parallel right after the unit tests finish.
+
+Also notice the `fail_fast: false` line in the unit tests. By default if *any* steps fails in a pipeline the whole pipeline is marked as a failure. With the `fail_fast` directive we can allow the pipeline to continue so that other steps that depend on the failed step can still run even.
+
+
+
 ### Multiple Step dependencies
+
+### Custom steps dependencies
 
 ### Example: workflow with multiple parallel phases
 
