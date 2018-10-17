@@ -386,7 +386,7 @@ third_step:
        - name: first_step
          on:
            - success
-       - name: second_second
+       - name: second_step
          on:
            - finished     
 {% endhighlight %}
@@ -592,7 +592,7 @@ my_cleanup_step:
           myCondition: workflow.result == 'failure'
 {% endhighlight %}
 
-As an another example we have a special that will send an email if the pipeline succeeds or if load tests fail:
+As an another example we have a special step that will send an email if the pipeline succeeds or if load tests fail:
 
 {% highlight yaml %}
 my_email_step:
