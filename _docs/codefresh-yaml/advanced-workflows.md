@@ -268,7 +268,7 @@ In the next sections we describe how you can define the steps dependencies in a 
 
 ### Single Step dependencies
 
-At the most basic level, you can define that a steps *depends on* the execution of another step. This dependency is very flexible as Codefresh allows you run a second step once:
+At the most basic level, you can define that a step *depends on* the execution of another step. This dependency is very flexible as Codefresh allows you run a second step once:
 
 1. The first step is finished with success
 1. The first step is finished with failure
@@ -503,6 +503,7 @@ It is hard to describe all possible cases, because Codefresh support a [mini DSL
 For example run this step only if a PR is opened against the production branch:
 
 {% highlight yaml %}
+{% raw %}
 my_step:
   title: My step
     when:
@@ -510,11 +511,13 @@ my_step:
         all:
           validateTargetBranch: '"${{CF_PULL_REQUEST_TARGET}}" == "production"'
           validatePRAction: '''${{CF_PULL_REQUEST_ACTION}}'' == ''opened'''
+{% endraw %}
 {% endhighlight %}
 
 Run this step only for the master branch and when the commit message does not include "skip ci":
 
 {% highlight yaml %}
+{% raw %}
 my_step:
   title: My step
     when:
@@ -522,6 +525,7 @@ my_step:
         all:
           noSkipCiInCommitMessage: 'includes(lower("${{CF_COMMIT_MESSAGE}}"), "skip ci") == false'
           masterBranch: '"${{CF_BRANCH}}" == "master"'
+{% endraw %}
 {% endhighlight %}
 
 You can now add extra conditions regarding the completion state of specific steps. A global object called `steps` contains all steps by name along with a `result` property with the following possible completion states
@@ -529,9 +533,11 @@ You can now add extra conditions regarding the completion state of specific step
 * success
 * failure
 * skipped
+* finished (regardless of status)
 * pending
 * running
 
+Finished is a shorthand for `success` or `failure` or `skipped`.
 You can mix and match completion states from any other step in your pipeline. Here are some examples:
 
 {% highlight yaml %}
@@ -597,6 +603,8 @@ my_email_step:
           myCondition: workflow.result === 'success'
           myTestCondition: steps.MyLoadTesting.result === 'failure'
 {% endhighlight %}
+
+Notice that both examples assume that `fail_fast: false` is at the root of the `codefresh.yaml` file.
 
 
 ## What to read next
