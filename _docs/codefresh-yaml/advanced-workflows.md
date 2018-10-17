@@ -546,7 +546,7 @@ my_step:
     when:
       condition:
         all:
-          myCondition: steps.MyUnitTests.result === 'error' || steps.MyIntegrationTests.result === 'error'
+          myCondition: steps.MyUnitTests.result == 'error' || steps.MyIntegrationTests.result == 'error'
 {% endhighlight %}
 
 {% highlight yaml %}
@@ -555,8 +555,8 @@ my_step:
     when:
       condition:
         any:
-          myCondition: steps.MyLoadTesting.result === ‘success’
-          myOtherCondition: steps.MyCleanupStep.result === skipped
+          myCondition: steps.MyLoadTesting.result == ‘success’
+          myOtherCondition: steps.MyCleanupStep.result == skipped
 {% endhighlight %}
 
 
@@ -589,7 +589,7 @@ my_cleanup_step:
     when:
       condition:
         all:
-          myCondition: workflow.result === 'failure'
+          myCondition: workflow.result == 'failure'
 {% endhighlight %}
 
 As an another example we have a special that will send an email if the pipeline succeeds or if load tests fail:
@@ -600,8 +600,8 @@ my_email_step:
     when:
       condition:
         any:
-          myCondition: workflow.result === 'success'
-          myTestCondition: steps.MyLoadTesting.result === 'failure'
+          myCondition: workflow.result == 'success'
+          myTestCondition: steps.MyLoadTesting.result == 'failure'
 {% endhighlight %}
 
 Notice that both examples assume that `fail_fast: false` is at the root of the `codefresh.yaml` file.
