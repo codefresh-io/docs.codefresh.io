@@ -56,6 +56,7 @@ The PR checkboxes mean that this pipeline will run only on the respective events
 
 >The individual Pull request checkboxes are available only for Github repositories.
 
+### Pull request Target field and branch name
 
 The Pull request target field allows you to trigger this pipeline only when the target of a Pull Request matches the
 branch name regular expression. Common examples here would be `master` or `production`.
@@ -67,6 +68,13 @@ The concept behind these checkboxes and branch name fields is to allow you to de
 As a simple example you can have a *production* pipeline that runs only on *master* branch (and therefore the branch field says "master") and a *testing* pipeline that runs user acceptance tests where only the Pull Request Open checkbox is active. This means that User Acceptance tests will run whenever a PR is created. Once it is merged the *production* pipeline will deploy the changes.
 
 In a more advanced example you could add regular expressions in the branch field with names such as *feature-*, *hotfix-* etc and the PR checkbox active on different pipelines. This way you could trigger the pull requests only when they happen on specific branches. So a developer that creates a temporary feature with a name that doesn't match these naming patterns will not trigger those pipelines.
+
+Notice also that you can use Negative Lookahead in your Branch (Regex Expression) filter. An example to exclude tag events: `/^((?!tag)).*/gi` (the pattern here for tags to exclude is that they begin with `tag…`).
+
+This will make all push-events (including tags) that do follow the `tag...` pattern to be excluded.
+Therefore all tags like `tag1`, `tag-X` **won't** trigger the pipeline.
+
+### Monorepo support (Modified files)
 
 The *modified files* field is a very powerful Codefresh feature that allows you to trigger a build only if the
 files affected by a commit are in a specific folder (or match a specific naming pattern). This means that
