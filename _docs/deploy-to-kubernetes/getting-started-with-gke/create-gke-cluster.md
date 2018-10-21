@@ -57,6 +57,19 @@ as soon as Google approves it. The process usually takes a couple of days. Make 
 
 To create a Kubernetes cluster, visit this [short guide](https://cloud.google.com/container-engine/docs/quickstart).
 
+Don't forget to enable basic authentication, as it is needed for Codefresh to access your cluster.
+You can change this setting after cluster creation
+by editing and changing the setting from the drop-down list.
+
+{% include image.html
+  lightbox="true"
+  file="/images/kubernetes/add-cluster/gke-basic-auth.png"
+  url="/images/kubernetes/add-cluster/gke-basic-auth.png"
+  alt="Enabling GKE basic authentication"
+  caption="Enabling GKE basic authentication"
+  max-width="60%"
+    %}
+
 {{site.data.callout.callout_info}}
 ##### Verify your Kubernetes version
 
