@@ -85,6 +85,33 @@ To build your pipeline using a ```codefresh.yml``` file, in the General Settings
 
 {% include image.html lightbox="true" file="/images/5c37025-Screen_Shot_2017-10-16_at_9.50.48_PM.png" url="/images/5c37025-Screen_Shot_2017-10-16_at_9.50.48_PM.png" alt="pipeline definition options" caption="Switching between the legacy build engine and the YAML build engine" max-width="40%" %}
 
+## Execution flow
+
+By default Codefresh will execute all steps in the yaml file and instantly fail the build, if any step
+presents an error. To change this behavior add the `fail_fast:false` property in any step that you wish to be ignored
+in case of errors. 
+
+For example, if you have a [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) that runs integration tests, and you don't want the whole pipeline
+to fail if any of the tests fail, add the `fail_fast` line to that step:
+
+  
+{% highlight yaml %}
+perform_tests:
+    image: node:9
+    description: Running integration tests
+    fail_fast: false
+    commands:
+      - gulp integration_test
+{% endhighlight %}
+
+Now the pipeline will continue to run even if the step `perform_tests` fails.
+
+Notice also that by default Codefresh pipelines run in *sequential mode*. All steps will be executed one after
+the other and in the same order as included in the `codefresh.yml` file.
+
+If you wish to use parallel steps in your pipelines, see the [parallel steps]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/) page.
+
+
 ## Grouping steps with pipeline stages
 
 By default all pipeline steps are shown one after the other.
@@ -140,7 +167,7 @@ As you can see the modifications needed are:
 1. List all the stage names at the root of the pipeline file
 1. Use the `stage` property on each step to assign it to a stage.
 
->This updated pipeline view is only a nice way to visualize the pipeline. It does not affect the order of step execution. Steps will still execute in the same order listed in the `codefresh.yml` file.
+>This updated pipeline view is only a nice way to visualize the pipeline. It does not affect the order of step execution. Steps will still execute in the same order listed in the `codefresh.yml` file. If you wish to use parallel execution and advanced workflows see the [parallel steps]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/) page.
 
 Here is a more concrete example that you can use as a starting point:
 
@@ -218,6 +245,12 @@ Remember that the assignment of a step to a stage is happening only for graphica
 not affect the way your steps run. All steps will still run in the same order mentioned in the `codefresh.yml` file.
 
 Also notice if you enable this view a stage called *default* will show all build steps that are not explicitly assigned to a stage.
+
+## What to read next
+
+* [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
+* [Variables]({{site.baseurl}}/docs/codefresh-yaml/variables/)
+* [Advanced workflows]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/)
 
 
 
