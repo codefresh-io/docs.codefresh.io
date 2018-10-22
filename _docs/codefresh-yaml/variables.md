@@ -6,15 +6,71 @@ redirect_from:
   - /docs/variables/
 toc: true
 ---
-Variables in the YAML follow this format: {% raw %}`${{VAR_NAME}}`{% endraw %}.
-The flow provides three forms of variable substitution:
-- system provided: substituted during the workflow compilation phase.
-- context related: substituted in real time during the workflow execution.
-- custom user provided: created and substituted in real time during the workflow execution
+Codefresh provides a set of predefined variables automatically in each build, that you can use to parameterize the way your pipeline works. You can also define your own variables. Some common examples of predefined variables include:
+
+* `CF_BRANCH` is the git branch that was used for this pipeline
+* `CF_REVISION` is the git hash that was used for this pipeline
+* `CF_BUILD_URL` is the url of the pipeline build 
+
+## Using Codefresh variables in your pipelines
+
+There are two ways to use a Codefresh variable in your pipelines.
+
+1. By default all variables will be exposed as UNIX environment variables in all freestyle steps
+1. Variables can be used within the `codefresh.yml` itself with the syntax {% raw %}`${{MY_VARIABLE_EXAMPLE}}`{% endraw %}.
+
+For example you can print out the branch as an environment variable like this:
+
+`YAML`
+{% highlight yaml %}
+{% raw %}
+MyOwnStep:
+  title: Variable example
+  image: alpine
+  commands: 
+    - echo $CF_BUILD_ID 
+    - echo $CF_BRANCH_TAG_NORMALIZED 
+{% endraw %}
+{% endhighlight %}
+
+In the example above we are using simple `echo` commands, but any program or script that reads environment variables could also read them in the same manner.
+
+Using variables directly in yaml properties can be done like this:
+
+`YAML`
+{% highlight yaml %}
+{% raw %}
+MyAppDockerImage:
+  title: Building Docker Image
+  type: build
+  image_name: my-own-app
+  tag: ${{CF_BRANCH_TAG_NORMALIZED}}
+{% endraw %}
+{% endhighlight %}
+
+You can also concatenate variables:
+
+`YAML`
+{% highlight yaml %}
+{% raw %}
+MyAppDockerImage:
+  title: Building Docker Image
+  type: build
+  image_name: my-own-app
+  tag: '${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_SHORT_REVISION}}'
+{% endraw %}
+{% endhighlight %}
+
+Notice that this syntax is specific to Codefresh and is **only** available within the Codefresh YAML file itself. If you want to write scripts or programs that use the Codefresh variables, you need to make them aware of the environment variable form.
+
+
+
+
+
 
 ## System Provided Variables
 
-All system provided variables will also be automatically injected to any freestyle step.
+All system provided variables will also be automatically injected to any freestyle step as environment variables.
 
 {: .table .table-bordered .table-hover}
 | Variable                                          | Description                                                                                                                                                                                                                                                                                        |
@@ -34,7 +90,7 @@ All system provided variables will also be automatically injected to any freesty
 | {% raw %}`${{CF_REVISION}}`{% endraw %}           | Revision of the Git repository of the main pipeline, at the time of execution. <br/> You can also use {% raw %}`${{CF_SHORT_REVISION}}`{% endraw %}  to get the abbreviated 7-character revision hash, as used in git. Note: use this variable as string with quotes to tag the image {% raw %}`${{CF_SHORT_REVISION}}`{% endraw %}                 |
 | {% raw %}`${{CF_VOLUME_NAME}}`{% endraw %}        | Will refer to the volume that was generated for the specific flow. Can be used in conjunction with a composition to provide access to your cloned repository.For example:test-server:  volumes: {% raw %}`- ${{CF_VOLUME}}:/cloned/repo`{% endraw %}                                                                   |
 | {% raw %}`${{CF_VOLUME_PATH}}`{% endraw %}        | Will refer to the mounted path of the workflow volume inside a Freestyle container.                                                                                                                                                                                                               |
-| {% raw %}`${{CF_BUILD_TRIGGER}}`{% endraw %}      | Will be an indication of the current build was triggered: *build: The build was triggered from the build button * webhook: The build was triggered from a control version webhook                                                                                                                  |
+| {% raw %}`${{CF_BUILD_TRIGGER}}`{% endraw %}      | Will be an indication of the current build was triggered: *build: The build was triggered from the build button* webhook: The build was triggered from a control version webhook                                                                                                                  |
 | {% raw %}`${{CF_BUILD_ID}}`{% endraw %}           | The build id. Note: use this variable as string with quotes to tag the image {% raw %}`${{CF_BUILD_ID}}`{% endraw %}                                                                                                                                                                                                |
 | {% raw %}`${{CF_BUILD_TIMESTAMP}}`{% endraw %}    | The timestamp the build was created. Note: use this variable as string with quotes to tag the image {% raw %}`${{CF_BUILD_TIMESTAMP}}`{% endraw %}                                                                                                                                                                   |
 | {% raw %}`${{CF_BUILD_URL}}`{% endraw %}          | The URL to the build in Codefresh                                                                                                                                                                                                                                                                 |
@@ -49,6 +105,28 @@ Context related variables are created dynamically during the workflow execution 
 | ------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Working Directories**                           | For example, you can set the working directory of step `A` with a variable named after a previously executed step, step `B`. Therefore, setting step `A` with {% raw %}`working-directory:${{B}}`{% endraw %} means that step `A` executes in the same working directory as step `B`.                |
 | **Images**                                        | You can set the candidate field of the push step with a variable named after a previously executed build step. Since the details of a created image are not necessarily known ahead of time, the variable can create an association to an optionally dynamic image name. Therefore, setting push step `A` with {% raw %}`candidate:${{B}}`{% endraw %} means that step `A` will push the image build buy step `B`.                |
+
+A very common pattern in Codefresh pipelines, is to create a Docker image in one step, and then run a command on its container in the next step (e.g. run unit tests):
+
+`YAML`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+steps:
+  MyAppDockerImage:
+    title: Building Docker Image
+    type: build
+    image_name: my-own-app
+  MyUnitTests:
+    title: Running Unit tests
+    image: ${{MyAppDockerImage}}
+    commands: 
+      - ./my-unit-tests.sh
+{% endraw %}
+{% endhighlight %}
+
+In the example above you can see the `MyAppDockerImage` variable that denotes a Docker image created dynamically within this single pipeline. In the second step we use it as a Docker context in order to run unit tests.
+
 
 ## Github Release Variables
 
@@ -110,7 +188,7 @@ steps:
 
 For more advanced use cases, you can write directly to the shared file.
 
-The variables file will be availble inside the freestyle container in the following path: **`{% raw %}${{CF_VOLUME_PATH}}{% endraw %}/env_vars_to_export`** 
+The variables file will be available inside the freestyle container in the following path: **`{% raw %}${{CF_VOLUME_PATH}}{% endraw %}/env_vars_to_export`** 
 
 {% highlight yaml %}
 version: '1.0'
@@ -134,3 +212,9 @@ steps:
 When passing special characters through environmental variables `\` can be used as an escape character. For example if you were passing a cassandra connection string you might do something like `Points\=hostname\;Port\=16376\;Username\=user\;Password\=password`
 
 This will safely escape `;` and `=`.
+
+## What to read next
+
+* [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
+* [Codefresh Conditionals]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/)
+* [Expression Syntax]({{site.baseurl}}/docs/codefresh-yaml/expression-condition-syntax/)
