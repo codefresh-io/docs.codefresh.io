@@ -115,9 +115,9 @@ steps:
     dockerfile: Dockerfile
   PushingToRegistries:
     type: parallel
+    stage: 'push'
     steps:
       jfrog_PushingTo_jfrog_BintrayRegistry:
-        stage: 'push'
         type: push
         title: jfrog_Pushing To Bintray Registry
         candidate: ${{MyAppDockerImage}}
@@ -125,14 +125,12 @@ steps:
         registry: bintray 
       PushingToGoogleRegistry:
         type: push
-        stage: 'push'
         title: Pushing To Google Registry
         candidate: ${{MyAppDockerImage}}
         tag: '${{CF_SHORT_REVISION}}'
         registry: gcr
       PushingToDockerRegistry:
         type: push
-        stage: 'push'
         title: Pushing To Dockerhub Registry
         candidate: ${{MyAppDockerImage}}
         tag: '${{CF_SHORT_REVISION}}'
@@ -191,11 +189,76 @@ steps:
         title: Running Front End tests
         image: ${{MyAppDockerImage}}
         commands: 
-          - npm test
+          - npm run test
 {% endraw %}
 {% endhighlight %}
 
 Running different types of tests (unit/integration/load/acceptance) in parallel is a very common use case for parallelism inside an otherwise sequential pipeline.
+
+### Defining success criteria for a parallel step
+
+By default, any failed step in a Codefresh pipeline will fail the whole pipeline. There are ways to change this behavior (the `fail_fast` property is explained later in this page), but specifically for parallel steps you can define exactly when the whole step succeeds of fails.
+
+You can define steps that will be used to decide if a parallel step succeeds with this syntax:
+
+{% highlight yaml %}
+second_step:
+  title: Second step
+  success_criteria:
+    steps:
+      only:
+        - my_unit_tests
+  type: parallel
+    steps:
+      my_unit_tests:
+        title: Running Back end tests
+        image: node
+        commands: 
+          - npm run test
+      my_integration_tests:
+        title: Running Integration tests
+        image: node
+        commands: 
+          - npm run int-test
+      my_acceptance_tests:
+        title: Running Acceptance tests
+        image: node
+        commands: 
+          - npm run acceptance-test    
+{% endhighlight %}
+
+In the example above, if integration and/or acceptance tests fail, the whole pipeline will continue, because we have defined that only the results of unit test matter for the whole parallel step.
+
+The reverse relationship (i.e. defining steps to be ignored) can be defined with the following syntax
+
+{% highlight yaml %}
+second_step:
+  title: Second step
+  success_criteria:
+    steps:
+      ignore:
+        - my_integration_tests
+        - my_acceptance_tests
+  type: parallel
+    steps:
+      my_unit_tests:
+        title: Running Back end tests
+        image: node
+        commands: 
+          - npm run test
+      my_integration_tests:
+        title: Running Integration tests
+        image: node
+        commands: 
+          - npm run int-test
+      my_acceptance_tests:
+        title: Running Acceptance tests
+        image: node
+        commands: 
+          - npm run acceptance-test    
+{% endhighlight %}
+
+In the example above we have explicitly defined that even if the integration or acceptance tests fail the whole pipeline will continue.
 
 ### Shared Codefresh volume and race conditions
 
@@ -558,6 +621,51 @@ my_step:
           myCondition: steps.MyLoadTesting.result == ‘success’
           myOtherCondition: steps.MyCleanupStep.result == skipped
 {% endhighlight %}
+
+You can also use conditions in the success criteria for a parallel step. Here is an example
+
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+stages:
+- start
+- tests
+- cleanup
+steps:
+  MyAppDockerImage:
+    stage: 'start'
+    title: Building Docker Image
+    type: build
+    image_name: my-full-stack-app
+    working_directory: ./01_sequential/
+    tag: '${{CF_BRANCH_TAG_NORMALIZED}}'
+    dockerfile: Dockerfile
+  MyTestingPhases:
+    type: parallel
+    stage: 'tests'
+    success_criteria:
+      condition:
+        all:
+          myCondition: ${{steps.my_back_end_tests.result}} === 'success' && ${{steps.my_front_end_tests.result}} === 'success'
+    steps:
+      my_back_end_tests:
+        title: Running Back end tests
+        image: ${{MyAppDockerImage}}
+        commands: 
+          - exit 1
+      my_front_end_tests:
+        title: Running Front End tests
+        image: ${{MyAppDockerImage}}
+        commands: 
+          - echo "Second"
+  MyCleanupPhase:
+    stage: 'cleanup'
+    title: Cleanup unit test results
+    image: alpine
+    commands: 
+      - echo "Finished"
+{% endraw %}
+{% endhighlight %}         
 
 
 ## Handling error conditions in a pipeline
