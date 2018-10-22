@@ -285,6 +285,8 @@
       url: "/jenkins-integration"
     - title: SonarQube Integration
       url: "/sonarqube-integration"
+    - title: Google Marketplace Installation
+      url: "/google-marketplace"
     - title: Codefresh API
       url: "/codefresh-api"
 

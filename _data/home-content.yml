@@ -104,6 +104,8 @@
     localurl: /docs/integrations/jira-integration/
   - title: SonarQube integration
     localurl: /docs/integrations/sonarqube-integration/
+  - title: Google Marketplace Installation
+    localurl: /docs/integrations/google-marketplace/
   - title: Codefresh API
     localurl: /docs/integrations/codefresh-api/
 - title: On-Demand Dev / Staging Env
