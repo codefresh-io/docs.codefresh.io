@@ -43,7 +43,7 @@ run inside your own cluster.
 
 The builder is responsible for executing all your builds and notifying the Codefresh GUI for their status. You can also access internal cluster resources that are normally not accessible to the SAAS hosted Codefresh builders.
 
-You can still run builds in the Codefresh SAAS infrastructure if you wish so both approaches are valid at the same time.
+You can still run builds in the Codefresh SAAS infrastructure if you wish, and therefore both approaches are valid at the same time.
 
 ## Usage and Billing
 
@@ -56,7 +56,7 @@ Current pricing for Codefresh builds is always shown in the [marketplace page](h
 
 ## Step 0 - Create a Codefresh access token
 
-To start the installation process log into your Codefresh account a visit the [tokens](https://g.codefresh.io/account-conf/tokens) area by selecting *Integrations* from the left sidebar and then clicking on the *tokens* tab.
+To start the installation process log into your Codefresh account and visit the [tokens](https://g.codefresh.io/account-conf/tokens) area by selecting *Integrations* from the left sidebar and then clicking on the *tokens* tab.
 
 Then click the *generate* button to create a new token.
 
@@ -64,26 +64,26 @@ Then click the *generate* button to create a new token.
 lightbox="true" 
 file="/images/integrations/google-marketplace/generate-token.png" 
 url="/images/integrations/google-marketplace/generate-token.png"
-max-width="60%"
+max-width="40%"
 caption="Generating a Codefresh API token"
 alt="Generating a Codefresh API token"
 %}
 
-You can give your token any name you wish so that you can remember its purpose. The token is tied to your Codefresh account and should be considered as sensitive information. After you copy the token there no way to get it back. Copy it into your clipboard.
+You can give your token any name you wish so that you can remember its purpose. The token is tied to your Codefresh account and should be considered as sensitive information. After you copy the token there is no way to get it back. Copy it into your clipboard before closing the dialog.
 
 With the token at hand we can go to the Google marketplace.
 
 ## Step 1 - Install the Codefresh application in your Google Cloud cluster
 
-Navigate to [https://console.cloud.google.com/marketplace/details/codefresh-gke/codefresh](https://console.cloud.google.com/marketplace/details/codefresh-gke/codefresh) and select a Google project that has billing enabled from drop-down menu at the top of the page.
+Navigate to [https://console.cloud.google.com/marketplace/details/codefresh-gke/codefresh](https://console.cloud.google.com/marketplace/details/codefresh-gke/codefresh) and select a Google project that has billing enabled from the drop-down menu at the top of the page.
 
-The click the *Configure* button:
+Then click the *Configure* button:
 
 {% include image.html 
 lightbox="true" 
 file="/images/integrations/google-marketplace/configure-plan.png" 
 url="/images/integrations/google-marketplace/configure-plan.png"
-max-width="80%"
+max-width="50%"
 caption="Installing the Codefresh application"
 alt="Installing the Codefresh application"
 %}
@@ -92,9 +92,18 @@ On the next screen you define the general settings for the installation. These i
 
 * The cluster that will be used for installation
 * An existing or new namespace where the Codefresh builder will reside
-* A name for your installation (arbitrary)
+* A name for your installation (arbitrary choice)
 * Your Codefresh API token that you created in the previous section
 * The selection of the account that will be used for the cluster management.
+
+{% include image.html 
+lightbox="true" 
+file="/images/integrations/google-marketplace/settings.png" 
+url="/images/integrations/google-marketplace/settings.png"
+max-width="50%"
+caption="Codefresh installation settings"
+alt="Codefresh installation settings"
+%}
 
 Once you set everything click the *Deploy* button and wait some minutes for the installation to take place
 
@@ -102,14 +111,16 @@ Once you set everything click the *Deploy* button and wait some minutes for the 
 lightbox="true" 
 file="/images/integrations/google-marketplace/deploying.png" 
 url="/images/integrations/google-marketplace/deploying.png"
-max-width="80%"
+max-width="50%"
 caption="Deploying the Codefresh application"
 alt="Deploying the Codefresh application"
 %}
 
+The Codefresh application is now installed on your cluster.
+
 ## Step 2 - Setup communication with Codefresh SAAS
 
-The Codefresh application is now installed on your cluster. To finish the installation we need to make Codefresh SAAS aware of the new builder.
+To finish the installation we need to make Codefresh SAAS aware of the new builder.
 
 On the right hand side, a full command is shown that completes the installation.
 
@@ -117,7 +128,7 @@ On the right hand side, a full command is shown that completes the installation.
 lightbox="true" 
 file="/images/integrations/google-marketplace/run-command.png" 
 url="/images/integrations/google-marketplace/run-command.png"
-max-width="80%"
+max-width="60%"
 caption="Endpoint command"
 alt="Endpoint command"
 %}
@@ -160,13 +171,13 @@ pod "codefresh-kostis-kube-agent-86dbcc67c4-9gqqb" deleted
 {% endraw %}
 {% endhighlight %}
 
-Once the command is finished you can visit the Codefresh Kubernetes dashboard and you will see your Google cloud cluster already configured.
+Once the command is finished you can visit the [Codefresh Kubernetes dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/) and you will see your Google cloud cluster already configured.
 
 {% include image.html 
 lightbox="true" 
 file="/images/integrations/google-marketplace/cluster-details.png" 
 url="/images/integrations/google-marketplace/cluster-details.png"
-max-width="80%"
+max-width="60%"
 caption="Codefresh Kubernetes dashboard"
 alt="Codefresh Kubernetes dashboard"
 %}
@@ -175,7 +186,7 @@ The full integration is now ready and you can start running Codefresh pipelines 
 
 ## Step 3 - Start running pipelines
 
-Now whenever you setup a Codefresh pipeline you can choose its execution environment. You can still use the Codefresh SAAS in addition to your own cluster.
+Now whenever you setup a [Codefresh pipeline]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/) you can choose its execution environment and point it to your own cluster with the Codefresh builder. You can still use the Codefresh SAAS in addition to your own cluster.
 
 
 ## Removing the installation.
@@ -184,14 +195,21 @@ If you want to remove the Codefresh builder from your cluster, navigate to the "
 
 {% include image.html 
 lightbox="true" 
-file="/images/integrations/google-marketplace/removal.png" 
-url="/images/integrations/google-marketplace/removal.png"
-max-width="80%"
+file="/images/integrations/google-marketplace/remove.png" 
+url="/images/integrations/google-marketplace/remove.png"
+max-width="60%"
 caption="Removing the Codefresh application"
 alt="Removing the Codefresh application"
 %}
 
 You can install again the Codefresh builder from the [marketplace](https://console.cloud.google.com/marketplace/details/codefresh-gke/codefresh).
+
+## What to read next
+
+* [Manage your cluster]({{site.baseurl}}docs/deploy-to-kubernetes/manage-kubernetes/)
+* [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
+* [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
+
 
 
 
