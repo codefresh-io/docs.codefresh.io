@@ -101,8 +101,8 @@ my-subproject/**/pom.xml
 You can also define [multiple expressions](http://tldp.org/LDP/GNU-Linux-Tools-Summary/html/x11655.htm) like this (but notice that there is a limit of 150 characters for the field):
 
 ```
-{app/**, test/**}
-{**/package.json, my-subproject/** }
+{app/**,test/**}
+{**/package.json,my-subproject/** }
 ```
 
 Once a commit happens to a code repository, Codefresh will see which files are changed from the git provider and trigger the build **only** if the changed files match the glob expression. If there is no match no build will be triggered.
