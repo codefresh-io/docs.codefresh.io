@@ -57,15 +57,20 @@ MyAppDockerImage:
   title: Building Docker Image
   type: build
   image_name: my-own-app
-  tag: '${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_SHORT_REVISION}}'
+  tag: ${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_SHORT_REVISION}}
 {% endraw %}
 {% endhighlight %}
 
+This will create docker images with tags such as:
+
+```
+master-df6a04c
+develop-ba1cd68
+feature-vb145dh
+```
+
+
 Notice that this syntax is specific to Codefresh and is **only** available within the Codefresh YAML file itself. If you want to write scripts or programs that use the Codefresh variables, you need to make them aware of the environment variable form.
-
-
-
-
 
 
 ## System Provided Variables
