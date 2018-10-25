@@ -373,7 +373,7 @@ second_step:
          - finished
 {% endhighlight %}
 
-Notice that `finished` is the default behavior so you can omit the last two lines (i.e. the `on:` part).
+Notice that `finished` is the default behavior so you can omit the last two lines (i.e. the `on:` part). Also notice that the name `main_clone` is reserved for the automatic clone that takes place in the beginning of pipelines that are linked to a git repository.
 
 As an example let's assume that you have the following steps in a pipeline
 
@@ -397,6 +397,11 @@ steps:
     working_directory: ./
     tag: '${{CF_BRANCH_TAG_NORMALIZED}}'
     dockerfile: Dockerfile
+    when:
+      steps:
+        - name: main_clone
+          on:
+            - success
   MyUnitTests:
     title: Running unit tests
     image: ${{MyAppDockerImage}}
