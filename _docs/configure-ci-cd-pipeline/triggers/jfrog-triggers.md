@@ -33,7 +33,7 @@ max-width="40%"
 
 Fill the following information:
 
-* Registry Provider - select `Quay`
+* Registry Provider - select `JFrog`
 * *Namespace* - put JFrog name of repository
 * *Name* - put name of Docker image
 * *Action* - select `Push Image` action
@@ -92,5 +92,5 @@ Here is an example for Codefresh.
 
 ### Triggering a Codefresh pipeline with an Artifactory push
 
-Now, every time you push a new Docker image to the selected Artifactory repository, manually, with Codefresh or any other CI/CD tool, Codefresh will trigger execution of all pipelines associated with that Artifactory Push trigger event.
+Now, every time you push/tag a Docker image to the selected Artifactory repository, manually, with Codefresh or any other CI/CD tool, Codefresh will trigger execution of all pipelines associated with that Artifactory Push trigger event.
 
