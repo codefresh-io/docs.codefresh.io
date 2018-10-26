@@ -20,7 +20,7 @@ step_name:
   git: my-git-provider
   revision: abcdef12345
   credentials:
-    username: subject
+    username: user
     password: credentials
   fail_fast: false
   when:
@@ -45,7 +45,7 @@ step_name:
 | `working_directory`                        | The directory to which the repository is cloned. It can be an explicit path in the container's file system, or a variable that references another step. The default value is {% raw %}`${{main_clone}}`{% endraw %}.                | Default                   |
 | `git` | The name of the [git integration]({{ site.baseurl }}/docs/integrations/git-providers/) you want to use. You can also use `CF-default` as a value for the default git provider that was used during Codefresh sign-up | Required| 
 | `repo`                                     | path of the repository without the domain name in the form of `my_username/my_repo`                                                                                                                                                                                       | Required                  |
-| `revision`                                 | The revision of the repository you are checking out. It can be a revision has or a branch name. The default value is `master`.                                                                                                     | Default                   |
+| `revision`                                 | The revision of the repository you are checking out. It can be a revision hash or a branch name. The default value is `master`.                                                                                                     | Default                   |
 | `credentials`                              | Credentials to access the repository, if it requires authentication. It can an object containing `username` and `password` fields.                                                                                                 | Optional                  |
 | `fail_fast`                                | If a step fails and the process is halted. The default value is `true`.                                                                                                                                                            | Default                   |
 | `when`                                     | Define a set of conditions that need to be satisfied in order to execute this step. You can find more information in the [Conditional Execution of Steps]({{ site.baseurl }}/docs/codefresh-yaml/conditional-execution-of-steps/) article.                            | Optional                  |
@@ -69,6 +69,7 @@ There are 2 ways to do that:
 
 -or-
 
+{:start="2"}
 2. Add a step with key `main_clone` to your pipeline. This step can be of any type and can do any action. This step will override the default clone implementation. for example:
 
 ```yaml
