@@ -23,6 +23,8 @@
           url: "/dockerhub-triggers"
         - title: "Quay Triggers"
           url: "/quay-triggers"
+        - title: "Artifactory Triggers"
+          url: "/jfrog-triggers"
         - title: "Timer (Cron) Triggers"
           url: "/cron-triggers"
     - title: "Monitoring Pipelines"
