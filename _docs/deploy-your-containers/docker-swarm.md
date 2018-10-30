@@ -116,6 +116,28 @@ deploy_to_swarm:
 {% endraw %}
 {% endhighlight %}
 
+You can also pass custom credentials like this:
+
+  `codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+
+deploy_to_swarm:
+    image: codefresh/remote-docker
+    working_directory: ${{main_clone}}
+    commands:
+      - rdocker ${{RDOCKER_HOST}} docker login ${{CFCR_REGISTRY}} -u ${{CF_USER_NAME}} -p ${{CFCR_PASSWORD}} \&\& docker stack deploy --compose-file docker-compose.yml --with-registry-auth ${{STACK_NAME}}
+    environment:
+      - SSH_KEY=${{SSH_KEY}}
+    when:
+      branch:
+        only:
+          - master
+{% endraw %}
+{% endhighlight %}
+
+
+
 
 
 
