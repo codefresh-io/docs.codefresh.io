@@ -8,6 +8,10 @@ toc: true
 ---
 
 
+### November 2018
+
+- Retry individual pipeline steps - [documentation]({{site.baseurl}}/codefresh-yaml/what-is-the-codefresh-yaml/#retrying-a-step)
+
 ### October 2018
 
 - Parallel steps and advanced pipeline workflows - [documentation]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/)

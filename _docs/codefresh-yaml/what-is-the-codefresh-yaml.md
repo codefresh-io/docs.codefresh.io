@@ -144,6 +144,7 @@ Here is a full example:
 
   `codefresh.yml`
 {% highlight yaml %}
+{% raw %}
 version: '1.0'
 steps:
   MyAppDockerImage:
@@ -170,6 +171,7 @@ steps:
       maxAttempts: 3
       delay: 3
       exponentialFactor: 2
+{% endraw %}      
 {% endhighlight %}
 
 Notice that Codefresh also provides the following variables that allow you change your script/applications according to the retry attempts:
