@@ -75,7 +75,7 @@ caption="Selecting the Azure cluster"
 max-width="60%"
   %}
 
-Codefresh will query the cluster and show its nodes. You are now ready to [deploy to Azure kubernetes]({{ site.baseurl }}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/).
+Codefresh will query the cluster and show its nodes. You are now ready to [deploy to Azure kubernetes]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/).
 
 >If you wish for any reason to revoke the granted access from the Azure side, visit [https://account.activedirectory.windowsazure.com/r#/applications](https://account.activedirectory.windowsazure.com/r#/applications) and remove "Codefresh" from the list.
 
@@ -256,10 +256,10 @@ rules:
 Once the cluster been added successfully you can go to the `Kubernetes` tab to start working with the services of your cluster.
 
 So, what's next?
-- [Deploy to Kubernetes - quick start]({{ site.baseurl }}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/)
-- [Deploying to Kubernetes with Helm]({{ site.baseurl }}/docs/getting-started/helm-quick-start-guide/)
-- [Manage your Kubernetes cluster in Codefresh]({{ site.baseurl }}/docs/deploy-to-kubernetes/codefresh-kubernetes-integration-beta/)
-- [Example - Deploy demochat to Kubernetes cluster]({{ site.baseurl }}/docs/deploy-to-kubernetes/codefresh-kubernetes-integration-demochat-example/)
+- [Deploy to Kubernetes - quick start]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/)
+- [Deploying to Kubernetes with Helm]({{site.baseurl}}/docs/getting-started/helm-quick-start-guide/)
+- [Manage your Kubernetes cluster in Codefresh]({{site.baseurl}}/docs/deploy-to-kubernetes/codefresh-kubernetes-integration-beta/)
+- [Example - Deploy demochat to Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/codefresh-kubernetes-integration-demochat-example/)
 
 
 ## Troubleshooting cluster addition
@@ -299,4 +299,17 @@ kubectl create clusterrolebinding default-admin --clusterrole cluster-admin --se
 
 In case you're using an external reverse proxy to manage inbound traffic to your Kubernetes API, please read [this article]({{site.baseurl}}/docs/deploy-to-kubernetes/verify-cluster-tls-ssl-configuration/) to make sure your certificate setup are managed correctly in order to add your cluster successfully to Codefresh.
 
+## Multiple CAs in certificate chain
+
+If you have more than one [CA](https://en.wikipedia.org/wiki/Certificate_authority) in your certification chain, you need to provide Codefresh with a [Certificate bundle](https://en.wikipedia.org/wiki/Chain_of_trust) (a file that containers the intermediate CAs as well)
+
+The steps needed are:
+
+1. Get your CA bundle file and the Kubernetes API server certificate file and run the following to check the validity of the certificate:
+`openssl verify -verbose -CAfile ca_bundle.pem k8_server_cert`
+1.  If the check above passes fine, go on and run the following on your CA bundle file:
+`base64 ca_budle.pem | tr -d '\n'`
+1. Copy the output string (be careful when copying) and check whether you have copied it correctly:
+`openssl x509 -text -in <(echo <copied_string> | base64 -d)` - you should see the contents of your CA budle file
+1. Put the copied string into the Codefresh Kubernetes integration form and test the connection.
 

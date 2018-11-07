@@ -27,7 +27,7 @@ file="/images/troubleshooting/cache-options.png"
 url="/images/troubleshooting/cache-options.png"
 alt="Cache options for a pipeline build" 
 caption="Cache options for a pipeline build"
-max-width="60%"
+max-width="50%"
 %}
 
 Notice that these selections only affect the *specific* build that is launched from this dialog.
