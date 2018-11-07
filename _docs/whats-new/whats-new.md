@@ -14,6 +14,7 @@ toc: true
 - New integration for Azure Helm repositories - [documentation]({{site.baseurl}}/docs/new-helm/add-helm-repository/#private-repository---azure)
 - Trigger integration with Quay Events - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/quay-triggers/)
 - Trigger integration with Artifactory Events - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/jfrog-triggers/)
+- Public build logs for open source projects - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/build-status/#public-build-logs)
 
 ### September 2018
 

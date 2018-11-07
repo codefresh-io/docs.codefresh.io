@@ -39,7 +39,7 @@
       url: "/push-image-to-a-docker-registry"
     - title: "Integration Tests"
       url: "/integration-tests"
-    - title: "Build badges"
+    - title: "Public logs and status badges"
       url: "/build-status"
       
 - title: Learn by example

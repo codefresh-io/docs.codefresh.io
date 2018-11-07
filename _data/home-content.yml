@@ -20,7 +20,7 @@
     localurl: /docs/configure-ci-cd-pipeline/triggers/
   - title: Monitoring pipelines
     localurl: /docs/configure-ci-cd-pipeline/monitoring-pipelines/
-  - title: Webhooks, Badges and General settings
+  - title: Public logs and status badges
     localurl: /docs/configure-ci-cd-pipeline/build-status/
 - title: Learn by example
   icon: images/home-icons/tutorial.png
