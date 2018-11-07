@@ -19,6 +19,20 @@ You can choose to opt out of each cache mechanism, both at the step definition l
 
 In the Build execution dialog, click on the "Advanced Options" button, under "More Options", select "Ignore Codefresh cache optimizations for build" or "Ignore Docker engine cache for build".
 
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/troubleshooting/cache-options.png" 
+url="/images/troubleshooting/cache-options.png"
+alt="Cache options for a pipeline build" 
+caption="Cache options for a pipeline build"
+max-width="60%"
+%}
+
+Notice that these selections only affect the *specific* build that is launched from this dialog.
+Any subsequent/automated builds will still use the default caching behavior.
+
 ### Disabling consistently at the build definition
 
 In the build step YAML, set `no_cache: true` to disable docker local cache, and `no_cf_cache: true` to disable codefresh's additional optimizations such as cache-from.
