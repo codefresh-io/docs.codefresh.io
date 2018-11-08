@@ -18,7 +18,7 @@ Using Codefresh yaml is the recommended way to [create pipelines]({{site.baseurl
 
 Here is a very minimal example:
 
-  `Text`
+  `codefresh.yml`
 {% highlight yaml %}
 version: '1.0'
 steps:
@@ -110,6 +110,75 @@ Notice also that by default Codefresh pipelines run in *sequential mode*. All st
 the other and in the same order as included in the `codefresh.yml` file.
 
 If you wish to use parallel steps in your pipelines, see the [parallel steps]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/) page.
+
+## Retrying a step
+
+Sometimes you want to retry a step that has a problem. Network hiccups, transient failures and flaky test environments are common problems that prevent pipelines from working in a predictable manner.
+
+Codefresh allows you to retry any of your steps with the built-in syntax:
+
+  `yaml`
+{% highlight yaml %}
+{% raw %}
+step-name:
+    [step-contents]
+    retry:
+      maxAttempts: 5
+      delay: 5
+      exponentialFactor: 2
+{% endraw %}
+{% endhighlight %}
+
+The `retry:` block has the following parameters:
+
+  * `maxAttempts` defines how many times this step will run again if there are execution errors. Default is 1.
+  * `delay` is the number of seconds to wait before each attempt. Default is 5 seconds
+  * `exponentialFactor` defines how many times the delay should be multiplied by itself after each attempt. default is 1
+
+All parameters are optional. The exponentialFactor works like this:
+* exponentialFactor=1, delay=5 => each time wait 5 seconds before trying again, no matter the number of attempts
+* exponentialFactor=2, delay=5 => first retry will have a delay of 25 seconds, third will have 125 and so on
+
+
+Here is a full example:
+
+  `codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+steps:
+  MyAppDockerImage:
+    title: Building Docker Image
+    type: build
+    image_name: my-own-app
+    retry:
+      maxAttempts: 2
+  MyUnitTests:
+    title: Running Unit tests
+    image: alpine:3.8
+    image: ${{MyAppDockerImage}}
+    commands:
+    - ./my_unit_tests.sh
+    retry:
+      maxAttempts: 3
+      delay: 5
+  PushingToRegistry:
+    type: push
+    title: Pushing To Registry
+    candidate: ${{MyAppDockerImage}}
+    tag: '${{CF_BRANCH}}'
+    retry:
+      maxAttempts: 3
+      delay: 3
+      exponentialFactor: 2
+{% endraw %}      
+{% endhighlight %}
+
+Notice that Codefresh also provides the following variables that allow you change your script/applications according to the retry attempts:
+
+* `CF_CURRENT_ATTEMPT` contains the number of current retry attempt
+* `CF_MAX_ATTEMPTS` contains all the number of total attempts defined
+
 
 
 ## Grouping steps with pipeline stages
