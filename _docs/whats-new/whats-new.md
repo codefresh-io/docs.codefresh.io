@@ -10,7 +10,7 @@ toc: true
 
 ### November 2018
 
-- Retry individual pipeline steps - [documentation]({{site.baseurl}}/codefresh-yaml/what-is-the-codefresh-yaml/#retrying-a-step)
+- Retry individual pipeline steps - [documentation]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/#retrying-a-step)
 
 ### October 2018
 
