@@ -155,7 +155,6 @@ steps:
       maxAttempts: 2
   MyUnitTests:
     title: Running Unit tests
-    image: alpine:3.8
     image: ${{MyAppDockerImage}}
     commands:
     - ./my_unit_tests.sh
@@ -178,6 +177,8 @@ Notice that Codefresh also provides the following variables that allow you chang
 
 * `CF_CURRENT_ATTEMPT` contains the number of current retry attempt
 * `CF_MAX_ATTEMPTS` contains all the number of total attempts defined
+
+The retry mechanism is available for all kinds of [steps]({{site.baseurl}}/docs/codefresh-yaml/steps/).
 
 
 
