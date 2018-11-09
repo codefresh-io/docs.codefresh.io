@@ -316,6 +316,69 @@ not affect the way your steps run. All steps will still run in the same order me
 
 Also notice if you enable this view a stage called *default* will show all build steps that are not explicitly assigned to a stage.
 
+
+## Using YAML anchors to avoid repetition
+
+Codefresh also supports yaml anchors, references and extends. These allow you to keep
+your pipeline [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself).
+
+For example, let's say that you have two freestyle steps:
+
+1. The first one fills a MySQL server with data
+1. The second one runs integration tests that use the MySQL server
+
+Here is the respective pipeline:
+
+  `codefresh.yml`
+{% highlight yaml %}
+version: '1.0'
+steps:
+  preLoadDatabase:
+    title: Loading Data
+    image: alpine
+    commands:
+      - printenv
+      - echo "Loading DB"
+    environment: &my_common_envs
+      - MYSQL_HOST=mysql
+      - MYSQL_USER=user
+      - MYSQL_PASS=password
+      - MYSQL_PORT=3351  
+  runTests:
+    title: Integration tests
+    image: alpine
+    commands:
+      - printenv
+      - echo "Running tests"
+    environment: *my_common_envs  # Same MYSQL_HOST, MYSQL_USER etc.
+{% endhighlight %}   
+
+Instead of repeating the same environment variables in both steps, we can create them once and then just reference them in the second step with the `*` character.
+
+You also extend steps like below:
+
+  `codefresh.yml`
+{% highlight yaml %}
+version: '1.0'
+steps:
+  deploy_to_k8_staging: &my_basic_deployment
+    title: deploying to cluster
+    type: deploy
+    kind: kubernetes 
+    cluster:  myStagingCluster
+    namespace: sales
+    service: my-python-app
+  deploy_to_k8_prod: 
+    <<: *my_basic_deployment
+    cluster:  myProdCluster # only cluster differs, everything else is the same
+
+{% endhighlight %}  
+
+Here we deploy to two kubernetes clusters. The first step defines the staging deployment.
+For the second step, we extend the first one and only change the name of the cluster
+to point to production. Everything else (i.e. namespace and service ) are exactly the same.
+
+
 ## What to read next
 
 * [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
