@@ -81,9 +81,9 @@ step_name:
 | `composition`                              | The composition you want to run. It can be an inline YAML definition, a path to a composition file on the file system, or the logical name of a composition stored in the Codefresh system. We support most features of [Docker compose version 2.0](https://docs.docker.com/compose/compose-file/compose-file-v2/)                                             | Required                  |
 | `composition_candidates`                   | The definition of the service to monitor. Each candidate has a **single** `command` parameter that decides what will be tested.                                                                                                                                                                                              | Required                  |
 | `environment`                              | environment that will be accessible to the container                                                                                                                                                                                     | Optional                  |
-| `composition_variables`                    | A set of environment variables to substitute in the composition.                                                                                                                                                                         | Optional                  |
+| `composition_variables`                    | A set of environment variables to substitute in the composition. Notice that these veriables are docker-compose variables and **NOT** envirvonment variables                                                                                                                                                                         | Optional                  |
 | `fail_fast`                                | If a step fails, and the process is halted. The default value is `true`.                                                                                                                                                                 | Default                   |
-| `when`                                     | Define a set of conditions which need to be satisfied in order to execute this step.<br>You can find more information in the [Conditional Execution of Steps]({{ site.baseurl }}/docs/codefresh-yaml/conditional-execution-of-steps/) article.                               | Optional                  |
+| `when`                                     | Define a set of conditions which need to be satisfied in order to execute this step.<br>You can find more information in the [Conditional Execution of Steps]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/) article.                               | Optional                  |
 | `on_success`, `on_fail` and `on_finish`    | Define operations to perform upon step completion using a set of predefined [Post-Step Operations]({{ site.baseurl }}/docs/codefresh-yaml/post-step-operations/).                                                                                                            | Optional                  |
 | `retry`   | Define retry behavior as described in [Retrying a step]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/#retrying-a-step).                                                                               | Optional                  |
 
@@ -125,3 +125,54 @@ run_tests:
 {% endhighlight %}
 
 In the above example, both `composition` and `composition_candidates` define a service named `test_service`. After merging these definitions, `test_service` will maintain the `command` that was defined in the original composition, but will refer to the image built by the step named `build_step`.
+
+## Composition variables versus environment variables
+
+Docker compose supports [two kinds of variables in its syntax](https://docs.docker.com/compose/environment-variables/).
+
+* There are environment variables that are used in the docker-compose file itself (`${VAR}` syntax)
+* There are environment variables that are passed in containers (`environment:` yaml group)
+
+Codefresh supports both kinds, but notice that variables mentioned in the 
+`composition_variables` yaml group refer to the *first* kind. Any variables defined there are **NOT** passed automatically to containers (use the `environment` yaml group for that purpose).
+
+This can be illustrated with the following example:
+
+  `codefresh.yml`
+{% highlight yaml %}
+version: '1.0'
+steps:
+  comp1:
+    type: composition
+    title: Composition example 1
+    description: Free text description
+    composition:
+      version: '2'
+      services:
+        db:
+          image: alpine
+    composition_candidates:
+      test_service:
+        image: alpine
+        command: printenv
+        environment:
+          - FIRST_KEY=VALUE
+    composition_variables:
+      - ANOTHER_KEY=ANOTHER_VALUE
+{% endhighlight %}
+
+If you run the composition you will see that the `printenv` command shows the following:
+
+```
+test_service_1  | FIRST_KEY=VALUE
+```
+
+The `FIRST_KEY` variable which is defined explicitly in the `environment` yaml part is correctly passed to the alpine container. The `ANOTHER_KEY` is not visible in the container at all.
+
+You should use the `composition_variables` yaml group for variables that you wish to reuse in other parts of your composition using the `${ANOTHER_KEY}` syntax.
+
+## What to read next
+
+* [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
+* [Variables]({{site.baseurl}}/docs/codefresh-yaml/variables/)
+* [Introduction to pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
