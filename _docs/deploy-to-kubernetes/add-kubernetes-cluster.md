@@ -21,7 +21,8 @@ Then choose *Kubernetes*.
   file="/images/integrations/codefresh-integrations.png"
   url="/images/integrations/codefresh-integrations.png"
   alt="Codefresh integrations"
-  max-width="80%"
+  caption="Codefresh integrations"
+  max-width="70%"
     %}
 
 In the Kubernetes integration window, you will be able to add a cluster from known providers such as Google, Azure, Amazon etc. You can also add any generic kubernetes cluster by manually entering your cluster settings.
@@ -193,6 +194,7 @@ The configurations you'll be required to add are:
   file="/images/kubernetes/add-cluster/add-cluster-details.png"
   url="/images/kubernetes/add-cluster/add-cluster-details.png"
   alt="Adding a custom cluster in Codefresh - details"
+  caption="Adding a custom cluster in Codefresh - details"
   max-width="60%"
     %}
     
@@ -255,11 +257,29 @@ rules:
 
 Once the cluster been added successfully you can go to the `Kubernetes` tab to start working with the services of your cluster.
 
-So, what's next?
-- [Deploy to Kubernetes - quick start]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/)
-- [Deploying to Kubernetes with Helm]({{site.baseurl}}/docs/getting-started/helm-quick-start-guide/)
-- [Manage your Kubernetes cluster in Codefresh]({{site.baseurl}}/docs/deploy-to-kubernetes/codefresh-kubernetes-integration-beta/)
-- [Example - Deploy demochat to Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/codefresh-kubernetes-integration-demochat-example/)
+## Adding a Rancher cluster
+
+Rancher clusters are currently supported as generic clusters. Rancher clusters have a specific authentication configuration (the details are here: [https://rancher.com/kubernetes-authentication-in-rancher-and-rbac](https://rancher.com/kubernetes-authentication-in-rancher-and-rbac)). 
+
+Authentication using a token of a Kubernetes Service Account, which is usually used by Codefresh, doesn't work with Rancher clusters. Also, Rancher doesn't do proper TLS termination out-of-the-box for Kubernetes clusters hosted on it, so one needs to configure a load balancer for that purpose.
+
+In summary, the following conditions should be met in order to add the cluster, hosted on Rancher to Codefresh:
+
+1. The token should be taken from the kubeconfig provided by Rancher and it has to be encoded with base64 before putting it into Codefresh. Be careful with the '\n' characters when encoding. The command for Linux is: `echo <rancher_token> | tr -d '\n' | base64 | tr -d '\n'`
+1. The CA certificate should be the CA of the Load Balancer standing in front of Rancher 
+1. The hostname and port should be corresponding to your Load Balancer
+
+{% include image.html
+  lightbox="true"
+  file="/images/kubernetes/add-cluster/rancher-token.png"
+  url="/images/kubernetes/add-cluster/rancher-token.png"
+  alt="Getting the Rancher token"
+  caption="Getting the Rancher token"
+  max-width="40%"
+    %}
+
+
+Once you have all the information follow the instructions for adding a generic Kubernetes cluster in Codefresh as described in the previous section.
 
 
 ## Troubleshooting cluster addition
@@ -312,4 +332,11 @@ The steps needed are:
 1. Copy the output string (be careful when copying) and check whether you have copied it correctly:
 `openssl x509 -text -in <(echo <copied_string> | base64 -d)` - you should see the contents of your CA budle file
 1. Put the copied string into the Codefresh Kubernetes integration form and test the connection.
+
+## What to read next
+
+- [Deploy to Kubernetes - quick start]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/)
+- [Deploying to Kubernetes with Helm]({{site.baseurl}}/docs/getting-started/helm-quick-start-guide/)
+- [Manage your Kubernetes cluster in Codefresh]({{site.baseurl}}/docs/deploy-to-kubernetes/codefresh-kubernetes-integration-beta/)
+- [Example - Deploy demochat to Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/codefresh-kubernetes-integration-demochat-example/)
 

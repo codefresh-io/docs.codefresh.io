@@ -9,7 +9,7 @@ Codefresh is offering initial support for building Docker images for the ARM arc
 
 ## Enabling ARM support
 
-To run ARM pipeline in Codefresh, [open a free account]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/) and then [contact sales](https://codefresh.io/contact-sales/) in order to enable ARM support.
+To run ARM pipelines in Codefresh, [open a free account]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/) and then [contact sales](https://codefresh.io/contact-sales/) in order to enable ARM support.
 
 Once approved, your build environment will move to an ARM cluster, and therefore *all* your builds will be ARM enabled. This means that if you also want to keep using the normal Linux/x86 builds, it is best to create a second Codefresh account just for trying ARM support.
 
