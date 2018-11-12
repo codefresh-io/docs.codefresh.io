@@ -21,6 +21,7 @@ Trigger types currently supported by Codefresh are:
 
 * [Git Triggers](git-triggers)
 * [Dockerhub Triggers](dockerhub-triggers)
+* [Azure Registry Triggers](azure-triggers)
 * [Quay Triggers](quay-triggers)
 * [Artifactory Triggers](jfrog-triggers)
 * [Cron Trigger](cron-triggers)
@@ -79,6 +80,7 @@ For more information see:
 
 * [Git Triggers](git-triggers)
 * [Dockerhub Triggers](dockerhub-triggers)
+* [Azure Registry Triggers](azure-triggers)
 * [Quay Triggers](quay-triggers)
 * [Artifactory Triggers](jfrog-triggers)
 * [Cron Trigger](cron-triggers)

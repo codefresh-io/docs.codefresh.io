@@ -21,6 +21,8 @@
           url: "/git-triggers"
         - title: "DockerHub Triggers"
           url: "/dockerhub-triggers"
+        - title: "Azure Triggers"
+          url: "/azure-triggers"
         - title: "Quay Triggers"
           url: "/quay-triggers"
         - title: "Artifactory Triggers"

@@ -11,6 +11,7 @@ toc: true
 ### November 2018
 
 - Retry individual pipeline steps - [documentation]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/#retrying-a-step)
+- Trigger integration with Azure Events - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/azure-triggers/)
 
 ### October 2018
 
