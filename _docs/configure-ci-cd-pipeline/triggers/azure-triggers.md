@@ -3,6 +3,8 @@ title: "Azure Registry Trigger"
 description: "Learn how to trigger Codefresh pipelines from Azure Registry events"
 group: configure-ci-cd-pipeline
 sub_group: triggers
+redirect_from:
+  - /docs/pipeline-triggers/configure-azure-trigger/
 toc: true
 ---
 
