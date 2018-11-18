@@ -90,8 +90,8 @@ The Codefresh Helm plugin automatically handles authentication for managed repos
 You can delete a Helm chart from your own Helm repository with the following HTTP call.
 
 ```bash
-curl -X DELETE -v -H "Authorization: Bearer <codefresh--token>" https://h.cfcr.io/api/<codefresh-account-name>/<codefresh-helm-repo-name>/charts/<chart-name>/<chart-version>
+curl -X DELETE -v -H "Authorization: Bearer <api-key>" https://h.cfcr.io/api/<codefresh-account-name>/<codefresh-helm-repo-name>/charts/<chart-name>/<chart-version>
 ```
 Replace values in `<>` with your own (also removing `<>` in the process).
 
-Generate a token from [https://g.codefresh.io/account-conf/tokens](https://g.codefresh.io/account-conf/tokens) as explained in the [API page]({{ site.baseurl }}/docs/integrations/codefresh-api/).
+Generate an api key from [https://g.codefresh.io/account-conf/tokens](https://g.codefresh.io/account-conf/tokens) as explained in the [API page]({{ site.baseurl }}/docs/integrations/codefresh-api/).

@@ -40,11 +40,11 @@ There are several ways to use the API. Some of the most popular ones are:
 1. Creating pipelines externally. You don't have to use the Codefresh GUI to create pipelines. You can create them programmatically using your favorite template mechanism. You can reuse pipelines using your own custom implementation
 if you have special needs in your organization.
 
-Before you can use the API from your application you need an authentication token that will give programmatic access to Codefresh from an external application.
+Before you can use the API from your application you need an authentication key that will give programmatic access to Codefresh from an external application.
 
 ## Authentication instructions
 
-If you just want to play around with the API a token is already created for you in [Swagger](https://swagger.io/) at [https://g.codefresh.io/api/](https://g.codefresh.io/api/). You can make any call
+If you just want to play around with the API, a key is already created for you in [Swagger](https://swagger.io/) at [https://g.codefresh.io/api/](https://g.codefresh.io/api/). You can make any call
 interactively and see results right from the browser.
 
 {% include image.html 
@@ -57,24 +57,24 @@ max-width="70%"
 %}
 
 
-You can also copy the `curl` command shown in the UI. It includes the token in the request.
+You can also copy the `curl` command shown in the UI. It includes the key in the request.
 
-If you want to create your own token then click *Integrations* on the left sidebar and select the *tokens* tab.
-Click the *generate* button and copy your token. 
+If you want to create your own key then click *Integrations* on the left sidebar and select the *tokens* tab.
+Click the *generate* button and copy your key. 
 
 
 {% include image.html 
 lightbox="true" 
 file="/images/integrations/api/generate-token.png" 
 url="/images/integrations/api/generate-token.png" 
-alt="Generating a token for the API" 
-caption="Generating a token for the API" 
+alt="Generating a key for the API" 
+caption="Generating a key for the API" 
 max-width="70%" 
 %}
 
-From the same screen you can also revoke tokens if you don't need them anymore.
+From the same screen you can also revoke keys if you don't need them anymore.
 
-Then once you have the token use it in the Codefresh Cli like this
+Then once you have the key use it in the Codefresh Cli like this
 
 {% highlight bash %}
 codefresh auth create-context --api-key <your_key_here>
@@ -104,16 +104,16 @@ codefresh run kostis-codefresh/nestjs-example/ci-build -b master -v sample-var1=
 For the API you can trigger a pipeline by finding its serviceId from the UI
 
 {% highlight bash %}
-curl 'https://g.codefresh.io/api/builds/5b1a78d1bdbf074c8a9b3458' --compressed -H 'content-type:application/json; charset=utf-8' -H 'Authorization: <your_token_here>' --data-binary '{"serviceId":"5b1a78d1bdbf074c8a9b3458","type":"build","repoOwner":"kostis-codefresh","branch":"master","repoName":"nestjs-example"}'
+curl 'https://g.codefresh.io/api/builds/5b1a78d1bdbf074c8a9b3458' --compressed -H 'content-type:application/json; charset=utf-8' -H 'Authorization: <your_key_here>' --data-binary '{"serviceId":"5b1a78d1bdbf074c8a9b3458","type":"build","repoOwner":"kostis-codefresh","branch":"master","repoName":"nestjs-example"}'
 {% endhighlight %}
 
 You can also pass extra environment variables using an array
 
 {% highlight bash %}
-curl 'https://g.codefresh.io/api/builds/5b1a78d1bdbf074c8a9b3458' --compressed -H 'content-type:application/json; charset=utf-8' -H 'Authorization: <your_token_here>' --data-binary '{"serviceId":"5b1a78d1bdbf074c8a9b3458","type":"build","repoOwner":"kostis-codefresh","branch":"master","repoName":"nestjs-example","variables":{"sample-var1":"sample1","SAMPLE_VAR2":"SAMPLE2"}}'
+curl 'https://g.codefresh.io/api/builds/5b1a78d1bdbf074c8a9b3458' --compressed -H 'content-type:application/json; charset=utf-8' -H 'Authorization: <your_key_here>' --data-binary '{"serviceId":"5b1a78d1bdbf074c8a9b3458","type":"build","repoOwner":"kostis-codefresh","branch":"master","repoName":"nestjs-example","variables":{"sample-var1":"sample1","SAMPLE_VAR2":"SAMPLE2"}}'
 {% endhighlight %}
 
-Specifically for triggering pipelines remotely you can find a premade Curl command (including an api token) in the build settings for each each pipeline:
+Specifically for triggering pipelines remotely you can find a premade Curl command (including an api key) in the build settings for each each pipeline:
 
 
 {% include image.html 
@@ -126,7 +126,7 @@ max-width="70%"
 %}
 
 
-If you press the copy button you will have in your clipboard the whole request (including a token).
+If you press the copy button you will have in your clipboard the whole request (including a key).
 
 ## Example - getting status from builds
 
@@ -139,7 +139,7 @@ codefresh get builds 5b4f927dc70d080001536fe3
 Same thing with the API
 
 {% highlight bash %}
-curl -X GET --header "Accept: application/json" --header "Authorization: <your_token_here>" "https://g.codefresh.io/api/builds/5b4f927dc70d080001536fe3"
+curl -X GET --header "Accept: application/json" --header "Authorization: <your_key_here>" "https://g.codefresh.io/api/builds/5b4f927dc70d080001536fe3"
 {% endhighlight %}
 
 ## Example - creating Codefresh pipelines externally
