@@ -76,6 +76,10 @@ max-width="80%"
 
 Then click Save and Codefresh will ask extra permissions from your Google account. Accept the permissions and the integration is ready.
 
+An alternative way of authentication is to use a [Google service account key](https://console.cloud.google.com/apis/credentials/serviceaccountkey). In that case download the JSON file locally that represent the key and paste its contents in the *JSON config* field.
+
+For more information see the [official documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys). 
+
 
 ## Producing Allure test reports from Codefresh pipelines
 
@@ -197,6 +201,23 @@ max-width="70%"
 %}
 
 In a similar manner you can upload reports from any other custom tool you have in your pipeline.
+
+If your report is only one file then simply use the `REPORT_INDEX_FILE` environment variable on its own like below:
+
+{% highlight yaml %}
+{% raw %}
+ unit_test_reporting_step:
+   title: Upload single html file report
+   image: codefresh/cf-docker-test-reporting
+   working_directory: /codefresh/volume/my-app/
+   environment:
+     - REPORT_INDEX_FILE=my-test-report/my-result.html
+     - BUCKET_NAME=my-bucket-name
+     - CF_STORAGE_INTEGRATION=google
+{% endraw %}
+{% endhighlight %}
+
+
 
 ### Cleaning the reports from the previous run 
 
