@@ -103,7 +103,7 @@ The second step is similar to the first, but this time we run integration tests.
 
 >Notice that because the [Maven lifecycle](https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html) also executes the previous steps in a build, the `mvn verify` command essentially will run `mvn package` as well. In theory we could just have the _Integration_ step in this pipeline on its own. That step would build the code, run unit and integration tests all in one stage. For demonstration purposes however, we include two steps so that you can see the correct usage of Maven cache.
 
-The Spring Boot 2 project is setup so that the `verify` phase automatically starts the application, runs the integration tests and stops it. This is defined in the [pom.xm](https://github.com/codefresh-contrib/spring-boot-2-sample-app/blob/master/pom.xml#L81) with the standard Maven lifecycle bindings.
+The Spring Boot 2 project is setup so that the `verify` phase automatically starts the application, runs the integration tests and stops it. This is defined in the [pom.xml](https://github.com/codefresh-contrib/spring-boot-2-sample-app/blob/master/pom.xml#L81) with the standard Maven lifecycle bindings.
 
 The last step is a Docker build. We name our image **spring-boot-2-sample-app** and tag it using a combination of the branch name and its hash. For demonstration purposes we also assign Codefresh metadata on this image, marking it as non-multi-stage (Multi-stage builds are explained later in this page.)
 
