@@ -10,6 +10,7 @@ toc: true
 
 ### November 2018
 
+- Integrated test reports - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/test-reports/)
 - Retry individual pipeline steps - [documentation]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/#retrying-a-step)
 - Trigger integration with Azure Events - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/azure-triggers/)
 

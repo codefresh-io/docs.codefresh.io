@@ -41,6 +41,8 @@
       url: "/push-image-to-a-docker-registry"
     - title: "Integration Tests"
       url: "/integration-tests"
+    - title: "Test Reports"
+      url: "/test-reports"
     - title: "Public logs and status badges"
       url: "/build-status"
       
