@@ -8,8 +8,8 @@ toc: true
 Codefresh offers the capability to store your test results for every build and view them
 at any point in time.
 
-Currently Codefresh supports the storage of test reports in [Google buckets](https://cloud.google.com/storage/docs/key-terms#buckets). Support 
-for [S3 buckets](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html) is also being planned.
+Currently Codefresh supports the storage of test reports in [Google buckets](https://cloud.google.com/storage/docs/key-terms#buckets) or  
+ [S3 buckets](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html).
 
 ## Test report modes
 
@@ -43,11 +43,12 @@ You can find more details in the [official Allure documentation](https://docs.qa
 
 If you use the custom reporting mode then you can select any kind of tool that you want (as long as it produces a static website in the end). You can also use the custom reporting mode for things that are not test reports (such as security reports or quality reports).
 
-## Connecting your Google storage account
+## Connecting your storage account
 
-As a first step you need a Google bucket to store your test results. You can create a bucket either from the Google cloud console or the `gsutil` command line tool. See the [official documentation](https://cloud.google.com/storage/docs/creating-buckets#storage-create-bucket-console) for the exact details.
+As a first step you need a cloud bucket to store your test results. You can use
+Google or AWS for this purpose.
 
-Once the bucket is installed, click on *Integrations* from the left sidebar in your Codefresh account and scroll down to *Cloud Storage*:
+First click on *Integrations* from the left sidebar in your Codefresh account and scroll down to *Cloud Storage*:
 
 {% include 
 image.html 
@@ -59,7 +60,14 @@ caption="Cloud storage Integrations"
 max-width="80%"
 %}
 
-Click the *configure* button and in following screen choose *Google Cloud Storage* from the drop-down menu.
+Click the *configure* button and in following screen enter your cloud settings according to your cloud provider.
+
+### Connecting a Google bucket
+
+You can create a bucket either from the Google cloud console or the `gsutil` command line tool. See the [official documentation](https://cloud.google.com/storage/docs/creating-buckets#storage-create-bucket-console) for the exact details.
+
+Once the bucket is created, return to your Codefresh account and choose
+*Google Cloud Storage* from the drop-down menu.
 
 The easiest way is to select the *OAuth2* connection method. Enter an arbitrary name for your integration and check the box for read/write access (as Codefresh needs to both write and read from the bucket). 
 
@@ -79,6 +87,22 @@ Then click Save and Codefresh will ask extra permissions from your Google accoun
 An alternative way of authentication is to use a [Google service account key](https://console.cloud.google.com/apis/credentials/serviceaccountkey). In that case download the JSON file locally that represent the key and paste its contents in the *JSON config* field.
 
 For more information see the [official documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys). 
+
+### Connecting an S3 bucket
+
+For AWS, create an S3 bucket as explained in the documentation from the [GUI](https://docs.aws.amazon.com/quickstarts/latest/s3backup/step-1-create-bucket.html) or the [CLI](https://docs.aws.amazon.com/cli/latest/reference/s3api/create-bucket.html). Then once you have the Access and Secret keys, 
+enter an arbitrary name for your integration and paste the following JSON segment into the integration field:
+
+{% highlight json %}
+{% raw %}
+{
+ "accessKeyId": "MY-OWN-ACCESS-KEY",
+ "secretAccessKey": "MY-OWN-SECRET-KEY"
+}
+{% endraw %}
+{% endhighlight %}
+
+Then click save to apply settings.
 
 
 ## Producing Allure test reports from Codefresh pipelines
