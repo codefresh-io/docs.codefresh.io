@@ -82,7 +82,8 @@ max-width="80%"
 %}
 
 
-Then click Save and Codefresh will ask extra permissions from your Google account. Accept the permissions and the integration is ready.
+Then click Save and Codefresh will ask extra permissions from your Google account. Accept the permissions and the integration is ready. You will use the name of the integration as an 
+environment variable in your Codefresh pipeline.
 
 An alternative way of authentication is to use a [Google service account key](https://console.cloud.google.com/apis/credentials/serviceaccountkey). In that case download the JSON file locally that represent the key and paste its contents in the *JSON config* field.
 
@@ -102,7 +103,8 @@ enter an arbitrary name for your integration and paste the following JSON segmen
 {% endraw %}
 {% endhighlight %}
 
-Then click save to apply settings.
+Then click save to apply settings. You will use the name of the integration as an 
+environment variable in your Codefresh pipeline.
 
 
 ## Producing Allure test reports from Codefresh pipelines
@@ -161,6 +163,10 @@ Once the test results are collected the next step is the same regardless of your
 
 Here we execute the special `cf-docker-test-reporting` image as a [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/). The important point is that this image will search for `allure-results` on its working directory. This is why we pass `/codefresh/volume/` as the working directory as this is the parent folder of the test results.
 
+The required environment variables are:
+ * `BUCKET_NAME` the name of the bucket that you created in your cloud provider
+ * `CF_STORAGE_INTEGRATION` the name of the cloud integration as was entered in the Codefresh UI in the cloud storage integration page
+
 If you used another directory name then you can configure the test reporting step like this:
 
 {% highlight yaml %}
@@ -211,6 +217,12 @@ Here is an example for a custom reporting via [Mocha](https://mochajs.org/). The
      - CF_STORAGE_INTEGRATION=google
 {% endraw %}
 {% endhighlight %}
+
+The environment variables are:
+ * `BUCKET_NAME` the name of the bucket that you created in your cloud provider
+ * `CF_STORAGE_INTEGRATION` the name of the cloud integration as was entered in the Codefresh UI in the cloud storage integration page
+ * `REPORT_DIR` the name of the folder that will be uploaded
+ * `REPORT_INDEX_FILE` the name of file that will serve as index file
 
 In the example above we define a non-allure report directory and also which file will serve as the index file. Here is the result:
 
@@ -270,10 +282,33 @@ Here is an example:
 
 >Notice that in the Allure reporting mode, the test results are automatically cleared by Codefresh. There is no need to define the `CLEAR_TEST_REPORT` variable by yourself.
 
+## Running the test reporting step in parallel mode
+
+Test reporting goes really well with the [parallel pipeline mode]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/) where each step
+is evaluated any time there is workflow change. 
+
+Here is how you can define the test reporting step to run regardless of pipeline result.
+
+{% highlight yaml %}
+{% raw %}
+ unit_test_reporting_step:
+   [...]
+   when:
+     condition:
+       any:
+         mySuccessCondition: workflow.status == 'success'
+         myFailureCondition: workflow.status == 'failure'
+{% endraw %}
+{% endhighlight %}
+
+See [handling errors in a pipeline]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/#handling-error-conditions-in-a-pipeline) for more details.
+
+
 
 ## What to read next
 
 
 * [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
 * [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
+* [Parallel workflows]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/)
 
