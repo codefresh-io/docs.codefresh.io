@@ -92,19 +92,20 @@ For more information see the [official documentation](https://cloud.google.com/i
 ### Connecting an S3 bucket
 
 For AWS, create an S3 bucket as explained in the documentation from the [GUI](https://docs.aws.amazon.com/quickstarts/latest/s3backup/step-1-create-bucket.html) or the [CLI](https://docs.aws.amazon.com/cli/latest/reference/s3api/create-bucket.html). Then once you have the Access and Secret keys, 
-enter an arbitrary name for your integration and paste the following JSON segment into the integration field:
+enter an arbitrary name for your integration and fill the keys in the respective fields:
 
-{% highlight json %}
-{% raw %}
-{
- "accessKeyId": "MY-OWN-ACCESS-KEY",
- "secretAccessKey": "MY-OWN-SECRET-KEY"
-}
-{% endraw %}
-{% endhighlight %}
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/test-reports/cloud-storage-s3.png" 
+url="/images/pipeline/test-reports/cloud-storage-s3.png"
+alt="S3 cloud storage" 
+caption="S3 cloud storage"
+max-width="80%"
+%}
 
-Then click save to apply settings. You will use the name of the integration as an 
-environment variable in your Codefresh pipeline.
+Then click *Save* to apply settings. You will use the name of the integration as an 
+environment variable in your Codefresh pipeline as explained in the next sections.
 
 
 ## Producing Allure test reports from Codefresh pipelines
