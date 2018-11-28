@@ -680,8 +680,8 @@ It is important to understand the capabilities offered by Codefresh when it come
 By default, *any* failed step in a pipeline will abort the whole pipeline and mark it as failure.
 
 You can use the directive `fail_fast: false`
-* in a specific step to mark it is ignored it if fails
-* at the root level of the pipeline if you want to apply it to all steps.
+* in a specific step to mark it as ignored if it fails
+* at the root level of the pipeline if you want to apply it to all steps
 
 Therefore if you want your pipeline to keep running to completion regardless of errors the following syntax is possible:
 
@@ -692,9 +692,9 @@ steps:
 [...]
 ```
 
-You also have the capability to define special steps that will run when the whole pipeline has a special completion status. Codefresh offers a special object called `workflow` that represents the whole pipeline and allows you to evaluate its status in a step
+You also have the capability to define special steps that will run when the whole pipeline has a special completion status. Codefresh offers a special object called `workflow` that represents the whole pipeline and allows you to evaluate its status in a step.
 
-For example you can have a cleanup stage that will run only if the workflow fails (regardless of the actual step that created the error) with the following syntax:
+For example, you can have a cleanup step that will run only if the workflow fails (regardless of the actual step that created the error) with the following syntax:
 
 {% highlight yaml %}
 my_cleanup_step:
@@ -705,7 +705,7 @@ my_cleanup_step:
           myCondition: workflow.result == 'failure'
 {% endhighlight %}
 
-As an another example we have a special step that will send an email if the pipeline succeeds or if load tests fail:
+As an another example we have a special step that will send an email if the pipeline succeeds or if load-tests fail:
 
 {% highlight yaml %}
 my_email_step:
