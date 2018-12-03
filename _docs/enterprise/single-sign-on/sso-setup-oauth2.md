@@ -27,13 +27,14 @@ Note that SSO is only available to Enterprise customers. Please [contact sales](
 
 Codefresh currently supports
 
+  * Auth0
   * Azure 
   * Okta
-  * Auth0
+  * OneLogin
 
 You can setup each provider
 
- 1. At the [Codefresh customer level]({{ site.baseurl }}/docs/enterprise/ent-account-mng/) 
+ 1. At the [Codefresh customer level]({{site.baseurl}}/docs/enterprise/ent-account-mng/) 
  1. At the Codefresh account level 
  1. At both levels. Integrations that were created from the customer level can only be edited or removed by the customer administrator from that customer management view. The Account administrator won’t be able to edit those.
 
