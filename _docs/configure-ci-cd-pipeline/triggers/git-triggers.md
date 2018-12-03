@@ -61,6 +61,12 @@ The PR checkboxes mean that this pipeline will run only on the respective events
 The Pull request target field allows you to trigger this pipeline only when the target of a Pull Request matches the
 branch name regular expression. Common examples here would be `master` or `production`.
 
+Here are some more examples:
+
+* `/qa-release/gi` - only run if branch is named `qa-release`
+* `/feature-.*/gi` - only run if branch is `feature-foo`, `feature-bar`, `feature-123` etc.
+* `/^((?!^feature).)*$/gi` - only run if branch name does **not** start with `feature`
+
 >The field *Pull request target* is available for all Git providers apart from Atlassian stash
 
 The concept behind these checkboxes and branch name fields is to allow you to define which pipelines run for various workflows in your organization.
