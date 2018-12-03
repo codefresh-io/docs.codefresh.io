@@ -93,6 +93,8 @@ The final order of execution will be:
 
 This is the recommended way to start using parallelism in your Codefresh pipelines and it will be enough for most scenarios that require parallelism.
 
+>Notice that step names should be unique within the same pipeline. The parent and child steps should NOT share the same name.
+
 ### Example: pushing multiple Docker images in parallel
 
 Let's see an example where a Docker image is created and then we push it to more than one registry. This is a perfect candidate for parallelization. Here is the `codefresh.yml`:
