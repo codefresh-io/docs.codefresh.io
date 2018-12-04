@@ -144,9 +144,13 @@ Notice that any images you push externally in this manner will NOT appear in the
 >Part of the rationale actually relates to security. The only images we show in the UI are ones that were built with Codefresh. Building images locally doesn't follow best practices since those images can contain anything and aren't tied to source code. 
 
 
-## Use Codefresh Registry in codefresh
+## Use Codefresh Registry in Codefresh
 
-To integrate with Codefresh Registry (e.g. for [deploying to a Kubernetes cluster]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/)), first select *Integrations* from the left sidebar and then click on *Docker Registry*. Click *Add Registry* and select *Codefresh Registry* from the new registry drop down and then provide the following
+To integrate with Codefresh Registry (e.g. for [deploying to a Kubernetes cluster]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/)), first 
+go to your Account Configuration, by clicking on *Account Settings* on the left sidebar. 
+On the first section called *Integrations* click the *Configure* button next to *Docker Registry*.
+
+Finally click *Add Registry* and select *Codefresh Registry* from the new registry drop down and then provide the following
 
 * Registry Name - A unique name for this configuration
 * Username - Your username in Codefresh

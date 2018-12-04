@@ -9,7 +9,15 @@ toc: true
 Images built by Codefresh can be annotated with customized metadata.
 This article explains how to create advanced view of your images and enrich them with custom metadata which perfectly fits your flow and image management process.
 
-{% include image.html lightbox="true" file="/images/72f58a8-Screen_Shot_2017-10-17_at_1.55.17_PM.png" url="/images/72f58a8-Screen_Shot_2017-10-17_at_1.55.17_PM.png" alt="Screen Shot 2017-10-17 at 1.55.17 PM.png" max-width="40%" %}
+{% 
+  include image.html 
+  lightbox="true" 
+  file="/images/artifacts/metadata/metadata.png" 
+  url="/images/artifacts/metadata/metadata.png" 
+  alt="Codefresh Docker registry metadata" 
+  max-width="65%" 
+%}
+
 
 ## Metadata types
 Images built by Codefresh can be annotated with an array of key-value metadata.
@@ -24,14 +32,14 @@ Metadata values may be of the following types:
 | Percentage bar  | use 0-100 value ending with %                     | 85%                                                     |
 | Link            | use url                                           | {% raw %}`${{CF_COMMIT_URL}}`{% endraw %}               |
                                            
-You can also use [Expression evaluations]({{ site.baseurl }}/docs/codefresh-yaml/expression-condition-syntax/) to set metadata.
+You can also use [Expression evaluations]({{site.baseurl}}/docs/codefresh-yaml/expression-condition-syntax/) to set metadata.
 
 ## Annotate your images using codefresh YAML
 You can annotate an image as part of it's builds process and also on post build steps.
 
 {:.text-secondary}
 ### Build step Image Metadata Annotation
-You can annotate an image as part of its build process by declaring the metadata value on the [Build step]({{ site.baseurl }}/docs/codefresh-yaml/steps/build-1/):
+You can annotate an image as part of its build process by declaring the metadata value on the [Build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build-1/):
 1. The `metadata` attribute
 2. The `set` operation
 3. An array of key-value metadata
@@ -52,7 +60,7 @@ build_step:
 
 {:.text-secondary}
 ### Adding annotations to Built images on post-build steps
-Any step in the YAML workflow can annotate built images by using [Post-Step Operations]({{ site.baseurl }}/docs/codefresh-yaml/post-step-operations/).
+Any step in the YAML workflow can annotate built images by using [Post-Step Operations]({{site.baseurl}}/docs/codefresh-yaml/post-step-operations/).
 To annotate a built image, configure any step with:
 1. The post-step operation
 2. The `metadata` attribute
@@ -94,7 +102,14 @@ You can view an image's metadata annotation by:
 2. Selecting the target image
 3. Selecting the `Annotations` tab
 
-{% include image.html lightbox="true" file="/images/7d4f8f7-Screen_Shot_2017-10-08_at_8.28.35_AM.png" url="/images/7d4f8f7-Screen_Shot_2017-10-08_at_8.28.35_AM.png" alt="Screen Shot 2017-10-08 at 8.28.35 AM.png" max-width="40%" %}
+{% 
+  include image.html 
+  lightbox="true" 
+  file="/images/artifacts/metadata/annotations.png" 
+  url="/images/artifacts/metadata/annotations.png" 
+  alt="Image annotations" 
+  max-width="65%" 
+%}
 
 In addition, you can add selected annotations to the images table on images page. To display an annotation in the image table, click on the gear icon at the top right corner of image page and then select all annotations you want to display.
 
@@ -136,3 +151,9 @@ Image quality has 3 indicators:
 * no value (nobody set the annotation) - this image has no quality indicator
 
 {% include image.html lightbox="true" file="/images/c39a9a2-QUALI.png" url="/images/c39a9a2-QUALI.png" alt="QUALI" max-width="40%" %}
+
+### See also
+
+* [Codefresh Registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/)
+* [External Docker Registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/)
+* [Accessing Docker registry from your Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/access-docker-registry-from-kubernetes/)
