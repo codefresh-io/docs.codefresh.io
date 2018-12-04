@@ -48,7 +48,7 @@ If you use the custom reporting mode then you can select any kind of tool that y
 As a first step you need a cloud bucket to store your test results. You can use
 Google or AWS for this purpose. Codefresh will create subfolders in the bucket with names from every build id. It will then upload the reports for that build to the respective folder.
 
-First click on *Integrations* from the left sidebar in your Codefresh account and scroll down to *Cloud Storage*:
+First go to your Account Configuration, by clicking on *Account Settings* on the left sidebar. On the first section called *Integrations* scroll down to *Cloud Storage*:
 
 {% include 
 image.html 
@@ -60,7 +60,7 @@ caption="Cloud storage Integrations"
 max-width="80%"
 %}
 
-Click the *configure* button and in following screen enter your cloud settings according to your cloud provider.
+Click the *configure* button and in the following screen enter your cloud settings according to your cloud provider.
 
 ### Connecting a Google bucket
 
