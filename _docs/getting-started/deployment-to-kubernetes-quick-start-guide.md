@@ -60,7 +60,7 @@ To make this registry "external" we need to declare it first as an integration.
 
 ### Creating an API key for the Codefresh internal registry
 
-Click your account name at the bottom left of the screen and select *User settings* from the popup menu. At the User
+Click *User settings* on the left sidebar. At the bottom of the User
 settings screen, click the button *Generate* at the Codefresh Registry section.
 
  {% include 
@@ -89,8 +89,7 @@ max-width="50%"
 
 ### Making the internal Codefresh Registry available to your Kubernetes cluster
 
-After you have the API key, 
-from the side menu, select *Configuration*, and in the *Integration* tab, click the *Configure* button under *Docker Registry*
+After you have the API key, go to your Account Configuration, by clicking on *Account Settings* on the left sidebar. On the first section called *Integrations* click the *Configure* button next to *Docker Registry*.
 
  {% include 
 image.html 
@@ -124,7 +123,7 @@ The Codefresh Internal registry is now ready to be used by your Kubernetes clust
 
 Codefresh offers a dedicated GUI that allows you to deploy any Docker image to your cluster without writing any configuration files at all.
 
-Click the *Kubernetes* button from the left side bar and select the *services* item.
+Click the *Kubernetes* button from the left side bar.
 The screen that appears is the Codefresh overview of your Kubernetes cluster that shows all your deployments (pods and namespaces)
 
  {% include 
