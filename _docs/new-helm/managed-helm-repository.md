@@ -94,4 +94,4 @@ curl -X DELETE -v -H "Authorization: Bearer <api-key>" https://h.cfcr.io/api/<co
 ```
 Replace values in `<>` with your own (also removing `<>` in the process).
 
-Generate an api key from [https://g.codefresh.io/account-conf/tokens](https://g.codefresh.io/account-conf/tokens) as explained in the [API page]({{ site.baseurl }}/docs/integrations/codefresh-api/).
+Generate an api key from [https://g.codefresh.io/account-admin/account-conf/tokens](https://g.codefresh.io/account-admin/account-conf/tokens) as explained in the [API page]({{site.baseurl}}/docs/integrations/codefresh-api/).

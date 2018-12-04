@@ -9,7 +9,7 @@ excerpt: "Integrate Codefresh with Slack to get updates on development and testi
 ---
 Follow these steps to integrate Codefresh with Slack
 
-First click *Integrations* from the left sidebar and select the *integrations* tab
+First go to your Account Configuration, by clicking on *Account Settings* on the left sidebar. 
 
 {% include image.html 
 lightbox="true" 

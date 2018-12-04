@@ -59,7 +59,7 @@ max-width="70%"
 
 You can also copy the `curl` command shown in the UI. It includes the key in the request.
 
-If you want to create your own key then click *Integrations* on the left sidebar and select the *tokens* tab.
+If you want to create your own key then click *Account Settings* on the left sidebar and select the *tokens* tab.
 Click the *generate* button and copy your key. 
 
 
