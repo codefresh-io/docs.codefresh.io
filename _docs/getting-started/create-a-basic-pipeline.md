@@ -20,10 +20,10 @@ within Codefresh using an example application. You will learn:
 Codefresh is the fastest way to get from your source code to a Docker image. Codefresh allows you
 to create a Docker image from its friendly UI without any local Docker installation (Docker building as a service).
 
-You can store the resulting image on a public or private Docker registry that your organization already uses, or in the built-in Docker storage. Each Codefresh account comes with its own free native Docker registry that works exactly like public
+You can store the resulting image on a public or private Docker registry that your organization already uses, or in the built-in Docker storage. Each Codefresh account comes with its own [free native Docker registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/) that works exactly like public
 registries that you are already familiar with (e.g. [Dockerhub](https://hub.docker.com/)).
 
-Codefresh also has built-in support for unit and integration testing allowing you to only push Docker images that pass your testing suite. Finally, you can add annotations to your Docker images to better track your releases (e.g. you can mark a Docker image with an annotation that shows a successful unit test run)
+Codefresh also has built-in support for unit and integration testing allowing you to only push Docker images that pass your testing suite. Finally, you can [add annotations]({{site.baseurl}}/docs/docker-registries/metadata-annotations/) to your Docker images to better track your releases (e.g. you can mark a Docker image with an annotation that shows a successful unit test run).
 
 You can use either the sample application we provide here to follow along or create your own Docker based
 example if you prefer (don't forget to write unit tests).
@@ -35,7 +35,6 @@ For this tutorial you will need
  * a free [Github account](https://github.com/join)
  * a free [Codefresh account]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/) 
  * the source code of the sample application.
- * (Optional) Git and Docker installed on your local workstation 
  * (Optional) an account to a Docker registry (e.g. Dockerhub)
 
  We also assume that you are familiar with Docker and the build/run workflow it supports. Your applications should already come with their own Dockerfiles. If not, then read the [official documentation first](https://docs.docker.com/get-started/). 
@@ -76,7 +75,7 @@ caption="Pipeline Overview (click image to enlarge)"
 max-width="100%" 
 %}
 
-The diagram above shows a full Continuous Integration pipeline for the sample application. Starting from left to right the critical path is
+The diagram above shows a full Continuous Integration pipeline for the sample application. Starting from left to right the critical path is:
 
 1. Codefresh connects to Github and checks out the source code of the application
 1. Codefresh uses the Dockerfile of the application to create a Docker image
@@ -116,7 +115,8 @@ Let's start by going into the [Codefresh dashboard](https://g.codefresh.io/repos
 
 ###  Selecting your Git repository
 
-Click the *Add new repository* button to get started.
+Make sure that you have selectec *Repositories* from the left sidebar.
+Then click the *Add new repository* button to get started.
 
 {% include 
 image.html 
@@ -418,7 +418,7 @@ the build process instead of the build result.
 
 For the purposes of this tutorial we will push our sample application to [DockerHub](https://cloud.docker.com/) which is the free public Docker hosting from Docker Inc. You need to create a free account with the service first and note down your username and password. In your own projects you can use any other [external registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) you wish.
 
-Once you create your Docker Cloud account, go to your Account Configuration, by clicking on *Integrations* on the left sidebar. Then open the *Integration* tab and click the *Configure* button next to *Docker Registry*.
+Once you create your Docker Cloud account, go to your Account Configuration, by clicking on *Account Settings* on the left sidebar. On the first section called *Integrations* click the *Configure* button next to *Docker Registry*.
 Finally click the *Add Registry* drop-down menu and select *Docker Hub*.
 
 {% include 

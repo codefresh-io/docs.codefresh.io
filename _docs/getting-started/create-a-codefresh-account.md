@@ -97,7 +97,7 @@ Once you accept the respective permissions window, Codefresh will automatically 
 
 ## 3. Verify Your Account Details
 
-Once Codefresh reads your details from your Identity provider it will present to you the account details for your new account Review your account details, make the relevant changes, and click *SIGN UP*. 
+Once Codefresh reads your details from your Identity provider it will present to you the account details for your new account. Review your account details, make the relevant changes, and click *SIGN UP*. 
 
 {% include 
 image.html 
@@ -150,13 +150,14 @@ caption="Git behind firewall"
 max-width="100%" 
 %}
 
-We can establish a VPN / tunnel to your network, or discuss options for an on-premises Codefresh deployment. Please [contact us to get started](https://codefresh.io/contact-us/)
+We can establish a VPN / tunnel to your network, or discuss options for an on-premises Codefresh deployment. Please [contact us to get started](https://codefresh.io/contact-us/).
 
 
 ## What to read next
 
-* [Create a Basic pipeline]({{ site.baseurl }}/docs/getting-started/create-a-basic-pipeline/)
-* [Deploy to Kubernetes]({{ site.baseurl }}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/)
-* [Internal Docker Registry]({{ site.baseurl }}/docs/docker-registries/codefresh-registry/)
-* [Codefresh YAML]({{ site.baseurl }}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
+* [Create a Basic pipeline]({{site.baseurl}}/docs/getting-started/create-a-basic-pipeline/)
+* [Deploy to Kubernetes]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/)
+* [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
+* [Internal Docker Registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/)
+
 
