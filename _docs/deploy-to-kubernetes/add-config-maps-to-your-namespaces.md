@@ -17,12 +17,14 @@ In order to access the list of existing config maps, open the Kubernetes Service
 
 Select a namespace and hover your mouse pointer on it. Click the gear button which appears at the end of the row. You will see a list of all config maps inside this namespace, including date of creation and number of configuration variables inside these maps.
 
-{% include image.html
-lightbox="true"
-file="/images/65b5f4b-Screen_Shot_2017-10-08_at_9.10.09_AM.png"
-url="/images/65b5f4b-Screen_Shot_2017-10-08_at_9.10.09_AM.png"
-alt="Screen Shot 2017-10-08 at 9.10.09 AM.png"
-max-width="40%"
+{% include 
+image.html 
+lightbox="true" 
+file="/images/kubernetes/config-maps/change-view.png" 
+url="/images/kubernetes/config-maps/change-view.png" 
+alt="Change View" 
+caption="Change View" 
+max-width="50%" 
 %}
 
 ## Add a new config map

@@ -40,17 +40,17 @@ More info about how to add, build and push docker image you can find in the read
 ### **Deploy the Demochat service to K8 cluster**
 
 {:start="1"}
-1. Go to the `Configuration` &#8594; `Integration` &#8594; `Enable Kubernetes`
+1. Go to your Account Configuration, by clicking on *Account Settings* on the left sidebar. On the first section called *Integrations* click the *Configure* button next to *Kubernetes*.
 
 {:start="2"}
-2. And then add the cluster
+2. Add [your Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/).
 
 {% include image.html
   lightbox="true"
   file="/images/integrations/codefresh-integrations.png"
   url="/images/integrations/codefresh-integrations.png"
   alt="Codefresh integrations"
-  max-width="80%"
+  max-width="60%"
     %}
 
 {:start="3"}
@@ -61,10 +61,11 @@ More info about how to add, build and push docker image you can find in the read
 
 {% include image.html
 lightbox="true"
-file="/images/10e6303-codefresh_mongo_service.png"
-url="/images/10e6303-codefresh_mongo_service.png"
-alt="codefresh_mongo_service.png"
-max-width="40%"
+file="/images/kubernetes/demo/mongo-service.png"
+url="/images/kubernetes/demo/mongo-service.png"
+alt="Deploy mongo service"
+caption="Deploy mongo service"
+max-width="50%"
 %}
 
 {:start="5"}
@@ -92,10 +93,11 @@ max-width="40%"
 
 {% include image.html
 lightbox="true"
-file="/images/29fbc78-codefresh_configure_kubernates_service.png"
-url="/images/29fbc78-codefresh_configure_kubernates_service.png"
-alt="codefresh_configure_kubernates_service.png"
-max-width="40%"
+file="/images/kubernetes/demo/configure-service.png"
+url="/images/kubernetes/demo/configure-service.png"
+alt="Configure mongo service"
+caption="Configure mongo service"
+max-width="50%"
 %}
 
 {:.text-secondary}
@@ -105,10 +107,11 @@ On the `Kubernetes` tab you can see the `demochat` and `mongo` services.
 
 {% include image.html
 lightbox="true"
-file="/images/2c78c74-codefresh_k8_services.png"
-url="/images/2c78c74-codefresh_k8_services.png"
-alt="codefresh_k8_services.png"
-max-width="40%"
+file="/images/kubernetes/demo/services.png"
+url="/images/kubernetes/demo/services.png"
+alt="Kubernetes Services"
+caption="Kubernetes Services"
+max-width="50%"
 %}
 
 {:.text-secondary}
@@ -120,7 +123,7 @@ lightbox="true"
 file="/images/1f7db93-codefresh_external_endpoints.png"
 url="/images/1f7db93-codefresh_external_endpoints.png"
 alt="codefresh_external_endpoints.png"
-max-width="40%"
+max-width="50%"
 %}
 
 {% include image.html
@@ -128,7 +131,7 @@ lightbox="true"
 file="/images/324f2ba-codefresh_demochat_endpoint.jpg"
 url="/images/324f2ba-codefresh_demochat_endpoint.jpg"
 alt="codefresh_demochat_endpoint.png"
-max-width="40%"
+max-width="50%"
 %}
 
 {:.text-secondary}
@@ -141,7 +144,7 @@ lightbox="true"
 file="/images/cc66c8f-codefresh_demochat_repo.png"
 url="/images/cc66c8f-codefresh_demochat_repo.png"
 alt="codefresh_demochat_repo.png"
-max-width="40%"
+max-width="50%"
 %}
 
 On the next screen, you need to enable the `Push to Docker registry`. Just integrate with the docker registry that you use for images on the Integration page and then select this docker registry in the dropdown list of the push step.
@@ -151,14 +154,14 @@ This image will be used in the Deploy script.
 lightbox="true"
 file="/images/10b3692-codefresh_push_step.png"
 url="/images/10b3692-codefresh_push_step.png"
-alt="codefresh_push_step.png"
-max-width="40%"
+alt="codefresh_push_step.pnadd-g"
+max-width="50%"
 %}
 
 In the next step, you need to configure the __Deploy Script__
 
 {:start="1"}
-1. Choose the option __Kubernetes (Beta)__
+1. Choose the option __Kubernetes__
 
 {:start="2"}
 2. Choose the cluster on which will be deployed the service
@@ -177,7 +180,7 @@ lightbox="true"
 file="/images/9829274-codefresh_deploy_script.png"
 url="/images/9829274-codefresh_deploy_script.png"
 alt="codefresh_deploy_script.png"
-max-width="40%"
+max-width="50%"
 %}
 
 __Save__ and __Build__ the pipeline.
@@ -187,5 +190,5 @@ lightbox="true"
 file="/images/22cd0c7-codefresh_deploy_script_process.png"
 url="/images/22cd0c7-codefresh_deploy_script_process.png"
 alt="codefresh_deploy_script_process.png"
-max-width="40%"
+max-width="50%"
 %}
