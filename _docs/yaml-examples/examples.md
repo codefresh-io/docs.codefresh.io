@@ -4,6 +4,7 @@ description: ""
 group: yaml-examples
 redirect_from:
   - /docs/examples-v01/
+  - examples.html
 toc: true
 ---
 Codefresh enables you to define the steps of your pipeline in a [YAML file]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/). By default, the file is named ```codefresh.yml```, and is located in the root directory of the repository.
