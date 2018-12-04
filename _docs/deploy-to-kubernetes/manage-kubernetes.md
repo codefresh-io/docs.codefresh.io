@@ -29,13 +29,15 @@ In this view, you will be able to perform the following actions
 * Edit/Update existing services
 * Remove service
 
-{% include image.html 
-lightbox="true" 
-file="/images/1f46c20-Screen_Shot_2017-07-31_at_10.06.32_PM.png" 
-url="/images/1f46c20-Screen_Shot_2017-07-31_at_10.06.32_PM.png" 
-alt="Screen Shot 2017-07-31 at 10.06.32 PM.png" 
-max-width="40%" 
-%}
+
+{% include image.html
+lightbox="true"
+file="/images/kubernetes/kubernetes-management.png"
+url="/images/kubernetes/kubernetes-management.png"
+alt="Codefresh Kubernetes Dashboard"
+caption="Codefresh Kubernetes Dashboard"
+max-width="60%"
+  %}
 
 ## Deploy new service
 

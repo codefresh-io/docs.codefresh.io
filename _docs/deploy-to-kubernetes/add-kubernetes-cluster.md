@@ -13,8 +13,7 @@ Codefresh offers its own Kubernetes dashboard that allows you to inspect the ser
 in your cluster. To active this dashboard you need to connect your cluster to your Codefresh account first.
 
 
-Start by clicking on  *Integrations* from the left sidebar and selecting the *Integration* tab.
-Then choose *Kubernetes*.
+Start by going into your Account Configuration, by clicking on *Account Settings* on the left sidebar. On the first section called *Integrations* click the *Configure* button next to *Kubernetes*.
 
 {% include image.html
   lightbox="true"
@@ -160,7 +159,8 @@ Once you have this token, follow the steps in the section below, using this toke
 {:.text-secondary}
 ## Adding any other cluster type (not dependent on any provider)
  
-On your Configuration settings (left-menu), go to the **Integration** tab and choose **Kubernetes**  
+Go to your Account Configuration, by clicking on *Account Settings* on the left sidebar. On the first section called *Integrations* click the *Configure* button next to *Kubernetes*.
+ 
 In order to add any other type of cluster, outside of GKE, use **Custom Providers**
 
 
