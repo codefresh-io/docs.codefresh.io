@@ -232,7 +232,7 @@ You can install again the Codefresh builder from the [marketplace](https://conso
 
 ## What to read next
 
-* [Manage your cluster]({{site.baseurl}}docs/deploy-to-kubernetes/manage-kubernetes/)
+* [Manage your cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/)
 * [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
 * [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
 
