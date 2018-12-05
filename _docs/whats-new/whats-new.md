@@ -7,6 +7,10 @@ redirect_from:
 toc: true
 ---
 
+### November 2018
+
+- Added OneLogin SSO support - [documentation]({{site.baseurl}}/docs/enterprise/single-sign-on/sso-onelogin/)
+
 
 ### November 2018
 
