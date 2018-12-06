@@ -116,7 +116,9 @@ now save the git integration.
 ## Atlassian Stash 
 
 Atlassian stash is only available for an on-premise connection. Follow the same instructions as Bitbucket.
-You also need to provide the URL of the Stash server in your organization 
+You also need to provide the URL of the Stash server in your organization.
+
+Codefresh supports Bitbucket server versions 5.4.0+ since those expose the API used by the integration.
 
 
 ## Using your git provider
