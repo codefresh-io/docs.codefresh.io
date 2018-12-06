@@ -13,7 +13,7 @@ Creating an account with Codefresh using one of the supported Git providers (Git
 
 You can add repositories from the other git providers regardless of the one that you used for sign-up. For example, you can use Gitlab to signup with Codefresh, but still build repositories that exist in Bitbucket.
 
-You can even add multiple accounts from each Git provider (if you have more than one) allowing you to use Codefresh as a central CI/CD solution that can access all your git repositories regardless of the backing git provider
+You can even add multiple accounts from each Git provider (if you have more than one) allowing you to use Codefresh as a central CI/CD solution that can access all your git repositories regardless of the backing git provider.
 
 Currently Codefresh supports:
 
@@ -22,9 +22,10 @@ Currently Codefresh supports:
 * Bitbucket
 * Gitlab Cloud
 * Gitlab On premises
-* Atlassian Stash
+* Atlassian Stash (old version of Bibucket Server)
+* Bitbucket Server (new version of Stash)
 
-Atlassian Stash as well as the on-premise version of Gitlab and Github are only available to Codefresh enterprise customers
+Atlassian Stash/Bitbucket server as well as the on-premise version of Gitlab and Github are only available to Codefresh enterprise customers.
 
 
 ## Adding more GIT providers to your Codefresh account.
@@ -117,6 +118,15 @@ now save the git integration.
 
 Atlassian stash is only available for an on-premise connection. Follow the same instructions as Bitbucket.
 You also need to provide the URL of the Stash server in your organization.
+
+This option is only for Atlassian stash until version 3.10 which is the old version. It was then renamed
+to Bitbucket server.
+
+
+## Bitbucket Server
+
+Bitbucket server is the new and current name of Atlassian Stash. Again, it is only available for an on-premise
+installation.
 
 Codefresh supports Bitbucket server versions 5.4.0+ since those expose the API used by the integration.
 
