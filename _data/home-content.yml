@@ -59,8 +59,8 @@
     localurl: /docs/codefresh-yaml/working-directories/
   - title: Examples
     localurl: /docs/yaml-examples/examples/
-  - title: "Custom YAML steps"
-    url: https://github.com/codefresh-io/plugins
+  - title: "Plugin steps"
+    url: https://steps.codefresh.io/
 - title: Deployment
   icon: images/home-icons/deployment.png
   url: ''
