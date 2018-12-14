@@ -17,3 +17,15 @@ A step may be **typed** or **untyped**
 | **Typed**      | Single-purpose steps designed to perform specific operation, and requires minimal configuration. <br/>**Typed** steps include:<br/>{::nomarkdown}<ul><li>Git clone</li><li>Build</li><li>Push</li><li>Composition</li><li>Launch Composition</li><li>Deploy</li></ul>{:/} |
 | **Untyped**    | Defined by a base image and are affected by the specified image. <br/>**Untyped** steps include: <br/> {::nomarkdown}<ul><li>Freestyle</li></ul>{:/} |
 
+Remember that we also offer a [plugin marketplace](https://steps.codefresh.io/) with several existing plugins for popular integrations.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/plugin-directory.png" 
+url="/images/pipeline/plugin-directory.png"
+alt="Codefresh steps directory" 
+caption="Codefresh steps directory" 
+max-width="80%" 
+%}
+

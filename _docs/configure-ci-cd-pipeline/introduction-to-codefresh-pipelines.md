@@ -85,6 +85,22 @@ or your own) to use a build context in your step. This makes Codefresh a future-
 that exist now and all of them that will appear in the future. As long as there is a Docker image for a tool, Codefresh
 can use it in a pipeline without any extra configuration.
 
+Codefresh also offers a [plugin marketplace](https://steps.codefresh.io/) with several existing plugins.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/plugin-directory.png" 
+url="/images/pipeline/plugin-directory.png"
+alt="Codefresh steps directory" 
+caption="Codefresh steps directory" 
+max-width="80%" 
+%}
+
+
+All plugins in the marketplace are open-source and we accept external contributions so you can easily add your own.
+
+
 ### Sharing the workspace between build steps
 
 We have seen in the previous section that Codefresh can use Docker images as the context of a build step. The second
@@ -224,7 +240,19 @@ CollectAllMyDeps:
   commands:
     - pip install .
 ```
+For the plugins in the [Step Marketplace](https://steps.codefresh.io/) we already give an example of the YAML part that must be included in your pipeline:
 
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/plugin-example.png" 
+url="/images/pipeline/plugin-example.png"
+alt="Codefresh steps directory" 
+caption="Codefresh steps directory" 
+max-width="50%" 
+%}
+
+Each plugin also defines its input/output in the form of environment variables and files.
 
 ### Creating Docker images dynamically as build tools
 
