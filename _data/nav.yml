@@ -225,14 +225,11 @@
       url: "/add-helm-repository"
     - title: Helm Releases management
       url: "/helm-releases-management"
-    - title: Using Helm in Codefresh pipeline
+    - title: Using Helm in a Codefresh pipeline
       url: "/using-helm-in-codefresh-pipeline"
-    - title: Create Helm artifacts using Codefresh pipeline
+    - title: Create Helm artifacts using Codefresh pipelines
       url: "/create-helm-artifacts-using-codefresh-pipeline"
-    - title: Integration tests with HELM
-      url: "/integration-tests-with-helm"
-    - title: HELM Best practices
-      url: "/best-practices"
+
 
 - title: Deploy your containers
   url: "/deploy-your-containers"

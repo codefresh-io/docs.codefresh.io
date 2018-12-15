@@ -22,8 +22,10 @@
     localurl: /docs/configure-ci-cd-pipeline/monitoring-pipelines/
 
   - title: Test reports
+    new: true
     localurl: /docs/configure-ci-cd-pipeline/test-reports/
   - title: Public logs and status badges
+    new: true
     localurl: /docs/configure-ci-cd-pipeline/build-status/
 - title: Learn by example
   icon: images/home-icons/tutorial.png
@@ -54,6 +56,7 @@
   - title: Variables
     localurl: /docs/codefresh-yaml/variables/
   - title: Parallel Pipelines
+    new: true
     localurl: /docs/codefresh-yaml/advanced-workflows/
   - title: Working Directories
     localurl: /docs/codefresh-yaml/working-directories/
@@ -108,6 +111,7 @@
   - title: SonarQube integration
     localurl: /docs/integrations/sonarqube-integration/
   - title: Google Marketplace Installation
+    new: true
     localurl: /docs/integrations/google-marketplace/
   - title: Codefresh API
     localurl: /docs/integrations/codefresh-api/
@@ -131,14 +135,14 @@
     localurl: /docs/getting-started/helm-quick-start-guide/
   - title: Codefresh Managed Helm Repositories
     localurl: /docs/new-helm/managed-helm-repository/
-  - title: Using Helm in Codefresh pipeline
-    localurl: /docs/new-helm/using-helm-in-codefresh-pipeline/
-  - title: Work with HELM Repositores
+  - title: Helm Charts and repositories
     localurl: /docs/new-helm/add-helm-repository/
-  - title: Integration tests with HELM
-    localurl: /docs/new-helm/integration-tests-with-helm/
-  - title: Best Practices
-    localurl: /docs/new-helm/best-practices/
+  - title: Helm Releases management
+    localurl: /docs/new-helm/helm-releases-management/
+  - title: Using Helm in a Codefresh pipeline
+    localurl: /docs/new-helm/using-helm-in-codefresh-pipeline/
+  - title: Create Helm artifacts using Codefresh pipelines
+    localurl: /docs/new-helm/create-helm-artifacts-using-codefresh-pipeline/  
 - title: "Codefresh CLI"
   new: true
   icon: images/home-icons/cli.png
