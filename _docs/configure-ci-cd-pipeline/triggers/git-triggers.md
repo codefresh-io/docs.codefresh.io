@@ -38,7 +38,9 @@ You can select the following information:
 * *Repository* - You can select any repository even something different than the one that is used for the code checkout
 * *Commit checkbox* - If enabled will trigger this pipeline for any commit
 * *PR checkboxes* - Various checkboxes for filtering the Pull request event 
+* *Support PR events from forks* - Useful for opensource projects
 * *Branch field* - This is a regular expression and will only trigger for branches that match this naming pattern
+* *PR comment field* - Useful for open source projects
 * *Pull Request target* branch - This is a regular expression and will trigger only when a Pull request is created against any branch that matches it
 * *Modified files* - This allows you to constrain the build and trigger it only if the modified files from the commit match this [glob expression](https://en.wikipedia.org/wiki/Glob_(programming))
 
@@ -79,6 +81,30 @@ Notice also that you can use Negative Lookahead in your Branch (Regex Expression
 
 This will make all push-events (including tags) that do follow the `tag...` pattern to be excluded.
 Therefore all tags like `tag1`, `tag-X` **won't** trigger the pipeline.
+
+### Support for building pull requests from forks
+
+By default the git trigger will only work for events coming from your personal repository. You can also use triggers from events that are coming from forks. This is a very useful feature for open source projects, as it allows you to run your own unit tests and other checks against a new feature *before* actually merging it in your repo.
+
+To enable this behavior
+* Toggle the *support pull request events from forks* switch
+* In the *pr comment* field enter a custom string (accepts regex)
+
+Then once a contributor creates a fork of your repository and submits a pull request, you can review the code and then add a comment on your own that matches the PR comment expression.
+
+{% include image.html
+lightbox="true"
+file="/images/pipeline/triggers/pr-from-fork.png"
+url="/images/pipeline/triggers/pr-from-fork.png"
+alt="Triggering a public build from a comment"
+caption="Triggering a public build from a comment"
+max-width="50%"
+%}
+
+Once that is done, Codefresh will launch your pipeline against the Pull Request. If you manage an open source project with Codefresh, remember to enable [public builds]({{site.baseurl}}/docs/configure-ci-cd-pipeline/build-status/#public-build-logs) as well.
+
+
+
 
 ### Monorepo support (Modified files)
 

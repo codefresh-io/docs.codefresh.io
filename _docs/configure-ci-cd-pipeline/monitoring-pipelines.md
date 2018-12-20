@@ -147,11 +147,7 @@ caption="Pull Request Status (click image to enlarge)"
 max-width="50%" 
 %}
 
-
-
-
-
-If you have setup a [GIT trigger]({{ site.baseurl }}/docs/configure-ci-cd-pipeline/triggers/git-triggers/) in Codefresh then by default this happens automatically without any other configuration
+If you have setup a [GIT trigger]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/) in Codefresh then by default this happens automatically without any other configuration
 for all automated commits (that are coming from webhooks).
 
 If you start a build manually then by default the git status will **not** be updated (i.e. the result of the pipeline
@@ -173,6 +169,8 @@ This way the pipeline status *will* change the build status even with manual bui
 
 The same behavior is also available to the [Codefresh CLI](https://codefresh-io.github.io/cli/). In that case use the parameter `--enable-notifications`
 to specify if manually triggering a build will also change the GIT status.
+
+For open source projects you also have the ability to [trigger builds from external forks]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/#support-for-building-pull-requests-from-forks).
 
 ### Viewing Pipeline status from text/html files
 
