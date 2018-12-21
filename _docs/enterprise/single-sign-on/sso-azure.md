@@ -81,6 +81,19 @@ max-width="70%"
 
 The next step is to modify permissions for the app. Under *DELEGATED PERMISSIONS* check next to *Sign in and read user profile* and *Read directory data*. Finally click the *Save* button.
 
+You should also add the "Microsoft Graph" as an API and make sure that *Read directory data* is enabled.
+
+{% include image.html 
+lightbox="true" 
+file="/images/enterprise/sso/azure/graph-permissions.png" 
+url="/images/enterprise/sso/azure/graph-permissions.png"
+alt="Microsoft Graph API permissions"
+caption="Microsoft Graph API permissions"
+max-width="70%"
+%}
+
+Remember to click the *Save* button once finished.
+
 {:start="3"}
 1. Create the key
 
