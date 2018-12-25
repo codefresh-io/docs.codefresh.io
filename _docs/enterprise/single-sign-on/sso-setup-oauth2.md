@@ -158,6 +158,8 @@ It possible to use a different SSO method for each user (if you have multiple SS
 Once the initial setup is done, you can also sync your teams between Codefresh and the Identity provider.
 You can do this via the [Codefresh Cli](https://codefresh-io.github.io/cli/) and specifically the [sync command](https://codefresh-io.github.io/cli/teams/synchronize-teams/).
 
+>Note that currently teams/groups that contain spaces in their names are *not* synced. We will soon fix this limitation.
+
 For example to sync you azure teams you can execute
 
 ```
