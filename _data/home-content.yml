@@ -142,7 +142,10 @@
   - title: Using Helm in a Codefresh pipeline
     localurl: /docs/new-helm/using-helm-in-codefresh-pipeline/
   - title: Create Helm artifacts using Codefresh pipelines
-    localurl: /docs/new-helm/create-helm-artifacts-using-codefresh-pipeline/  
+    localurl: /docs/new-helm/create-helm-artifacts-using-codefresh-pipeline/ 
+  - title: Helm Environment Promotion
+    new: true
+    localurl: /docs/new-helm/helm-environment-promotion/     
 - title: "Codefresh CLI"
   new: true
   icon: images/home-icons/cli.png

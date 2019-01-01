@@ -229,7 +229,8 @@
       url: "/using-helm-in-codefresh-pipeline"
     - title: Create Helm artifacts using Codefresh pipelines
       url: "/create-helm-artifacts-using-codefresh-pipeline"
-
+    - title: Helm environment promotion
+      url: "/helm-environment-promotion"
 
 - title: Deploy your containers
   url: "/deploy-your-containers"

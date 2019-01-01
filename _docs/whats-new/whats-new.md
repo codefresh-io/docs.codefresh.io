@@ -7,6 +7,12 @@ redirect_from:
 toc: true
 ---
 
+
+### January 2019
+
+- Helm Environment Promotion boards (Enterprise) - [documentation]({{site.baseurl}}/docs/new-helm/helm-environment-promotion)
+
+
 ### December 2018
 
 - Run builds from external forks - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/#support-for-building-pull-requests-from-forks)

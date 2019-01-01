@@ -201,3 +201,9 @@ CHART_REPO_URL|optional|Helm chart repository URL. If a Helm repository context 
 VALUESFILE_|optional|Values file to provide to Helm (as --file). a.k.a CUSTOMFILE but CUSTOMFILE shouldn't be used anymore.
 VALUE_|optional|Value to provide to Helm (as --set). a.k.a CUSTOM but CUSTOM shouldn't be used anymore. If a variable already contains a `_` (underscore) in it's name, replace it with `__` (double underscore).
 CMD_PS|optional|Command Postscript - this will be appended as is to the generated helm command string. Can be used to set additional parameters supported by the command but not exposed as configuration options.
+
+## What to read next
+
+* [Helm Charts and repositories]({{site.baseurl}}/docs/new-helm/add-helm-repository/)
+* [Codefresh Managed Helm Repositories]({{site.baseurl}}/docs/new-helm/managed-helm-repository/)
+* [Helm Promotion boards]({{site.baseurl}}/docs/new-helm/helm-environment-promotion)

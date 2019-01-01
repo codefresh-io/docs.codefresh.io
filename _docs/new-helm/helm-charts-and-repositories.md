@@ -138,4 +138,15 @@ In the dialog that opened:
 3. Supplied values files from Yaml Shared Configuration
 4. Override variables are provided as `--set` arguments
 
-Finally click on Install. You can observe the newly installed release on the "Helm Releases" page
+Finally click on Install. You can observe the newly installed release on the "Helm Releases" page.
+
+You can also install Helm releases from [any Helm environment board]({{site.baseurl}}/docs/new-helm/helm-environment-promotion).
+
+
+## What to read next
+
+* [Using Helm in a Codefresh pipeline]({{site.baseurl}}/docs/new-helm/using-helm-in-codefresh-pipeline/)
+* [Helm Dashboard]({{site.baseurl}}/docs/new-helm/helm-releases-management)
+* [Helm Promotion boards]({{site.baseurl}}/docs/new-helm/helm-environment-promotion)
+
+

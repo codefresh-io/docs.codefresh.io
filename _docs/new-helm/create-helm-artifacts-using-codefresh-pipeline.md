@@ -107,3 +107,10 @@ steps:
         - curl --data-binary "@$PACKAGE" $HELM_URL/api/charts
 {% endraw %}
 {% endhighlight %}
+
+
+## What to read next
+
+* [Using Helm in a Codefresh pipeline]({{site.baseurl}}/docs/new-helm/using-helm-in-codefresh-pipeline/)
+* [Codefresh Managed Helm Repositories]({{site.baseurl}}/docs/new-helm/managed-helm-repository/)
+* [Helm Promotion boards]({{site.baseurl}}/docs/new-helm/helm-environment-promotion)
