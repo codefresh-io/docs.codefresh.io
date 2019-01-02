@@ -1,6 +1,6 @@
 ---
 title: "Whats New In Codefresh?"
-description: ""
+description: "A changelog of new features"
 group: whats-new
 redirect_from:
   - /docs/whats-new/
@@ -15,6 +15,7 @@ toc: true
 
 ### December 2018
 
+- YAML validation without the GUI - [documentation]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/#yaml-validation)
 - Run builds from external forks - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/#support-for-building-pull-requests-from-forks)
 - Added OneLogin SSO support - [documentation]({{site.baseurl}}/docs/enterprise/single-sign-on/sso-onelogin/)
 

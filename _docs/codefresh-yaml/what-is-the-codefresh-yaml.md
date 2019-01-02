@@ -1,6 +1,6 @@
 ---
-title: "Introduction"
-description: ""
+title: "Codefresh YAML"
+description: "How to define Codefresh pipelines in a declarative manner"
 group: codefresh-yaml
 redirect_from:
   - /docs/codefresh-yaml/
@@ -86,6 +86,34 @@ Steps chaining and referencing is possible due to implementation of variables in
 To build your pipeline using a ```codefresh.yml``` file, in the General Settings section, toggle the ```Use YML build``` option to the **ON** position.
 
 {% include image.html lightbox="true" file="/images/5c37025-Screen_Shot_2017-10-16_at_9.50.48_PM.png" url="/images/5c37025-Screen_Shot_2017-10-16_at_9.50.48_PM.png" alt="pipeline definition options" caption="Switching between the legacy build engine and the YAML build engine" max-width="40%" %}
+
+## Yaml validation
+
+If you are editing Codefresh yaml within the Codefresh GUI, the editor will automatically highlight errors as they happen.
+
+This allows you to make quick edits (and possibly run some builds) straight from the GUI. Once you are happy with your pipeline you should commit it to your repository as `codefresh.yml` (pipeline as code).
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/codefresh-yaml/inline-editor.png" 
+url="/images/codefresh-yaml/inline-editor.png"
+alt="Graphical Inline Yaml Editor" 
+caption="Graphical Inline Yaml Editor"
+max-width="40%"
+%}
+
+You can also validate the pipeline yaml outside of the UI by using the [Codefresh CLI](https://codefresh-io.github.io/cli/). The CLI has a [validate parameter](https://codefresh-io.github.io/cli/validation/) that can check one or more files for syntax errors
+
+{% highlight shell %}
+{% raw %}
+$codefresh validate codefresh.yml
+Yaml not valid:
+  - "invalid-property" is not allowed
+{% endraw %}
+{% endhighlight %}
+
+For more information on where the YAML file can be stored see the [creating pipelines page]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/).
 
 ## Execution flow
 
@@ -386,6 +414,7 @@ to point to production. Everything else (i.e. namespace and service ) are exactl
 * [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
 * [Variables]({{site.baseurl}}/docs/codefresh-yaml/variables/)
 * [Advanced workflows]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/)
+* [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/).
 
 
 
