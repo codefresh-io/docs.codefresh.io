@@ -131,6 +131,8 @@ You will be able to select the target cluster and namespace as well as the chart
 
 A Helm environment board can be used by different stakeholders in order to get the detailed status of all defined environments. In that aspect it can act as a read-only tool that simply shows the results of Codefresh pipelines that deploy Helm applications.
 
+### Promoting Helm releases with the GUI
+
 You can also use the board as an action tool in order to promote/demote a Helm release between individual environments. To move a Helm release between environments just drag-n-drop it to a different column.
 
 {% include 
@@ -159,6 +161,35 @@ Once you click the *update* button, a new build will run that will perform the d
 
 Note that you can move releases to any column both on the right and on the left of the current column. This is helpful if for example you find a bug in your production environment and you want to bring it back to a staging environment for debugging.
 
+### Promoting Helm releases programmatically
+
+You can also promote Helm releases with the [Codefresh CLI](https://codefresh-io.github.io/cli/predefined-pipelines/promote-helm-release/).
+
+Once you have [installed](https://codefresh-io.github.io/cli/getting-started/) the CLI you can use it from an external script or terminal with the `helm-promotion` parameter:
+
+{% highlight shell %}
+{% raw %}
+codefresh helm-promotion --board MySampleBoard --source Staging --target Production --source-release my-app --set myenv=prod
+{% endraw %}
+{% endhighlight %}
+
+Here we promote the Helm release `my-app` to the *Production* column overriding also the `myenv` value.
+
+Remember that the Codefresh CLI can also run in a Codefresh pipeline with a [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/). Here is an example of a Helm promotion from within a Codefresh pipeline.
+
+
+`codefresh.yml` 
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+steps:
+  triggerstep:
+    title: trigger
+    image: codefresh/cli
+    commands:
+      - 'codefresh helm-promotion --board MySampleBoard --source Staging --target Production --source-release my-app --namespace my-namespace --set myenv=prod'
+{% endraw %}
+{% endhighlight %}
 
 
 ## Editing your Helm boards
