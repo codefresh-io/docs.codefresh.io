@@ -83,12 +83,13 @@ All system provided variables will also be automatically injected to any freesty
 | {% raw %}`${{CF_REPO_OWNER}} `{% endraw %}        | Repository owner.                                                                                                                                                                                                          |
 | {% raw %}`${{CF_REPO_NAME}}`{% endraw %}          | Repository name. |
 | {% raw %}`${{CF_BRANCH}}`{% endraw %}             | Branch name (or Tag depending on the payload json) of the Git repository of the main pipeline, at the time of execution. <br/>You can also use {% raw %}`${{CF_BRANCH_TAG_NORMALIZED}}`{% endraw %} to get the branch name normalized. It will be without any chars that are illegal in case the branch name were to be used as the Docker image tag name. |
-| {% raw %}`${{CF_BASE_BRANCH}}`{% endraw %}      | The base branch used during creation of Tag
-| {% raw %}`${{CF_PULL_REQUEST_ACTION}}`{% endraw %}      | The pull request action
-| {% raw %}`${{CF_PULL_REQUEST_TARGET}}`{% endraw %}      | The pull request target branch
-| {% raw %}`${{CF_PULL_REQUEST_NUMBER}}`{% endraw %}      | The pull request number
-| {% raw %}`${{CF_PULL_REQUEST_ID}}`{% endraw %}      | The pull request id
-| {% raw %}`${{CF_COMMIT_AUTHOR}}`{% endraw %}      | Commit author.                                                                                                                                                                                                                                                                                    |
+| {% raw %}`${{CF_BASE_BRANCH}}`{% endraw %}      | The base branch used during creation of Tag |
+| {% raw %}`${{CF_PULL_REQUEST_ACTION}}`{% endraw %}      | The pull request action |
+| {% raw %}`${{CF_PULL_REQUEST_TARGET}}`{% endraw %}      | The pull request target branch |
+| {% raw %}`${{CF_PULL_REQUEST_NUMBER}}`{% endraw %}      | The pull request number |
+| {% raw %}`${{CF_PULL_REQUEST_ID}}`{% endraw %}      | The pull request id |
+| {% raw %}`${{CF_PULL_REQUEST_LABELS}}`{% endraw %}      | The labels of pull request (Github and Gitlab only) |
+| {% raw %}`${{CF_COMMIT_AUTHOR}}`{% endraw %}      | Commit author.                                                                                              |
 | {% raw %}`${{CF_BUILD_INITIATOR}}`{% endraw %}      | The person (username) that started the build. If the build was started by a Git webhook (e.g. from a Pull request) it will hold the webhook user. Notice that if a build is restarted manually it will always hold the username of the person that restarted it.                                                                                                                                                                                                                                                                                    |
 | {% raw %}`${{CF_COMMIT_URL}}`{% endraw %}         | Commit url.                                                                                                                                                                                                                                                                                       |
 | {% raw %}`${{CF_COMMIT_MESSAGE}}`{% endraw %}     | Commit message of the git repository revision, at the time of execution.<br/> The messages quotes are escaped (i.e. ' is not \', " is now \").                                                                                                                                                         |
