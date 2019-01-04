@@ -283,6 +283,57 @@ Here is an example:
 
 >Notice that in the Allure reporting mode, the test results are automatically cleared by Codefresh. There is no need to define the `CLEAR_TEST_REPORT` variable by yourself.
 
+## Creating multiple reports
+
+It is also possible to create multiple reports from a single pipeline. As an example you can create
+a single pipeline that creates two reports, one for code coverage and another one for security vulnerabilities.
+
+To achieve this, you only need to repeat the variables mentioned in this page with an index number that matches them to the report, `REPORT_DIR.0`, `REPORT_DIR.1`, `REPORT_DIR.2` and so on.
+
+The following variables can be indexed:
+ * `REPORT_DIR`
+ * `REPORT_INDEX_FILE`
+ * `ALLURE_DIR`
+ * `CLEAR_TEST_REPORT`
+ * `REPORT_TYPE` (explained later on)
+
+Here is an example of a pipeline that has two reports. One is for code coverage and one for unit tests. Notice the index number (`.0` and `.1`) used in the variables.
+ 
+
+{% highlight yaml %}
+{% raw %}
+ unit_test_reporting_step:
+   title: Upload Mocha test reports
+   image: codefresh/cf-docker-test-reporting
+   working_directory: /codefresh/volume/demochat/
+   environment:
+      - BUCKET_NAME=codefresh-test-report
+      - CF_STORAGE_INTEGRATION=testReporting
+      - REPORT_DIR.0=coverage
+      - REPORT_INDEX_FILE.0=lcov-report/index.html
+      - REPORT_TYPE.0=coverage
+      - ALLURE_DIR.1=allure-results
+      - REPORT_TYPE.1=allure
+{% endraw %}
+{% endhighlight %}
+
+This is the top level HTML file created by the reporting step:
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/test-reports/multiple-test-reports.png" 
+url="/images/pipeline/test-reports/multiple-test-reports.png"
+alt="Multiple test reports" 
+caption="Multiple test reports"
+max-width="60%"
+%}
+
+The icons shown are specified by the `REPORT_TYPE` variable. The following options are possible: `allure, mocha, spock, coverage, junit, testng, cucumber, pytest, rspec, phpunit, nunit, spectest`.
+If you don't provide it, a default icon will be used.
+
+
+
 ## Running the test reporting step in parallel mode
 
 Test reporting goes really well with the [parallel pipeline mode]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/) where each step
