@@ -69,6 +69,19 @@ For more information see the [Github Documentation page](https://help.github.com
 The "token description" you enter in your Github account in order to create the token is completely arbitrary (use "Codefresh" for an example). Once you have the token, paste it in the Codefresh UI and click *Test connection*. If everything is OK you can
 now save the git integration.
 
+The minimum permissions for the token are:
+- `repo.*`
+- `admin:repo_hook.*`
+
+{% include image.html 
+lightbox="true" 
+file="/images/integrations/git/github-required-scopes.png" 
+url="/images/integrations/git/github-required-scopes.png"
+max-width="40%"
+caption="Github permissions"
+alt="Github permissions"
+%}
+
 For Github on-premise you also need to provide the URL of the GitHub server in your organization.
 
 ## Gitlab
@@ -106,7 +119,7 @@ The minimum permissions needed by Codefresh are shown below.
 lightbox="true" 
 file="/images/integrations/git/bitbucket-permissions.png" 
 url="/images/integrations/git/bitbucket-permissions.png"
-max-width="60%"
+max-width="40%"
 caption="Bitbucket permissions"
 alt="Bitbucket permissions"
 %}
