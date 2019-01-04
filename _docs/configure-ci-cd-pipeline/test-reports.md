@@ -198,6 +198,8 @@ caption="Test report button"
 max-width="80%"
 %}
 
+Note the behind the scenes Codefresh automatically handles Allure history for you. At each test run, Codefresh will find the history results from previous runs and recreate them. All folders inside the storage bucket are handled by Codefresh and you should not tamper with them. Make sure also that the account/role you are using for the bucket has delete privileges.
+
 ## Using the custom mode for generic reporting
 
 If you don't want to use Allure or wish to create some other kind of report, you can use the alternative mode of the Codefresh reporting step.
