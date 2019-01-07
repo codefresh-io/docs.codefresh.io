@@ -418,6 +418,10 @@ the build process instead of the build result.
 
 For the purposes of this tutorial we will push our sample application to [DockerHub](https://cloud.docker.com/) which is the free public Docker hosting from Docker Inc. You need to create a free account with the service first and note down your username and password. In your own projects you can use any other [external registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) you wish.
 
+>Note that Docker.io only allows you to push images that are tagged with your username. If you have a choice, create
+a Dockerhub account with the same username that you have in Codefresh. If not, you need to change the Docker image
+created to match your username
+
 Once you create your Docker Cloud account, go to your Account Configuration, by clicking on *Account Settings* on the left sidebar. On the first section called *Integrations* click the *Configure* button next to *Docker Registry*.
 Finally click the *Add Registry* drop-down menu and select *Docker Hub*.
 

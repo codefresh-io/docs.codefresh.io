@@ -20,3 +20,7 @@ To configure Docker Hub first select **Docker Hub** from the new registry drop d
 
 You can only have one Docker Hub configuration.
 </div>
+
+>Note that Docker.io only allows you to push images that are tagged with your username. If you have a choice, create
+a Dockerhub account with the same username that you have in Codefresh. If not, you need to change the Docker image
+created to match your username 
