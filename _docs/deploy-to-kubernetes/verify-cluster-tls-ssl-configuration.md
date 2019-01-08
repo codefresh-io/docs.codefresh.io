@@ -31,7 +31,7 @@ Codefresh connects to your cluster via secure TLS channel, therefore make sure y
    Let it be, for example: ```https://104.198.163.162```
 
 {:start="2"}
-2. Open Chrome Developer Tools->Security. Export the certificate to a file named loadbalancer_cert.
+2. Open Chrome Developer Tools->Security. Export the server and the CA certificates to file named `loadbalancer_cert` and `ca_cert`. If there is more than one CA, export all of them and combine them into a single bundle file.
 
 {:start="3"}
 3. See the contents of the certificate using the following command:
