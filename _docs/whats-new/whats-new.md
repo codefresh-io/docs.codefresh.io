@@ -10,6 +10,7 @@ toc: true
 
 ### January 2019
 
+- Custom volumes for freestyle steps - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/#custom-volumes)
 - Helm Environment Promotion boards (Enterprise) - [documentation]({{site.baseurl}}/docs/new-helm/helm-environment-promotion)
 
 

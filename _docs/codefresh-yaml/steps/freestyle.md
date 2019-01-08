@@ -123,14 +123,14 @@ image: mwendler/cowsay
 commands:
   - cowsay "Hello"
 ```
+
 ## Custom volumes
 
+If you are familiar with [Codefresh pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) you should know that all freestyle steps automatically share a [volume](https://docs.docker.com/storage/) mounted at `/codefresh/volume` which can be used to transfer data (e.g. dependencies and test results) from each step to the next.
 
-If you are familiar with [Codefresh pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) you should know that all freestyle steps automatically share a volume mounted at `/codefresh/volume` which can be used to transfer data (e.g. dependencies and test results) from each step to the next.
+**This volume is automatically mounted by Codefresh and needs no configuration at all**. All you have to do to access it, is read/write the `/codefresh/volume` folder from your application. This folder also [includes by default the source code]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#cloning-the-source-code) of the git repository connected to the pipeline (at the `/codefresh/volume/<repo_name>` subfolder)
 
-**This volume is automatically mounted by Codefresh and needs no configuration at all**. All you have to do to access it, is reading/writing the `/codefresh/volume` folder from your application. This folder also [includes by default the source code]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#cloning-the-source-code) of the git repository connected to the pipeline (at the `/codefresh/volume/<repo_name>` subfolder)
-
-You can use the `volumes` property to create your own custom volumes that can be mounted in different folders. **For security reasons however all source volume data (i.e. the "host" folder) still need to be bound with `/codefresh/volume` or any of its subdirectories**:
+You can use the `volumes` property to create your own custom volumes that can be mounted in different folders. **For security reasons however all source volume data (i.e. the "host" folder) still needs to be bound with `/codefresh/volume` or any of its subdirectories**:
 
 Attempting to mount a folder outside of `/codefresh/volume` will result in an error.
 
@@ -143,15 +143,15 @@ You can still run your application without any code changes by doing the followi
 ```yaml
 title: Running my application with custom volume
 image: my-docker-app:latest
-  volumes:
-    - ./my-app-repo/my-sample-config:/config # host path is relative to /codefresh/volume
+volumes:
+  - ./my-app-repo/my-sample-config:/config # host path is relative to /codefresh/volume
 ```
 
 Now the `my-docker-app` application will run and find all its needed files at `/config`.
 
 Notice that we use a relative path here but even if you used an absolute one (`/my-app/my-sample-config`) the result would be the same because Codefresh does not allow you to bind anything outside the shared Codefresh volume.
 
-### Injecting custom folders in a running container 
+### Injecting custom folders in a running container  
 
 Here is another example pipeline with two steps. The first one creates a custom config file in the shared Codefresh volume (that is always available) at `/codefresh/volume/my-config`. The second step reads the config file at a different folder in `/my-own-config-folder-injected`.
 
@@ -173,8 +173,8 @@ steps:
     - ls /my-own-config-folder-injected # Special volume just for this container
     - cat /my-own-config-folder-injected/custom.txt
     volumes:
-    - ./my-config:/my-own-config-folder-injected
-   
+    - ./my-config:/my-own-config-folder-injected  
 ```
-When the second steps runs the `custom.txt` is available both at `/codefresh/volume/my-config` (the shared volume of all steps) as well as the `/my-own-config-folder-injected` which was mounted specifically for this step.
+
+When the second steps runs, the `custom.txt` file is available both at `/codefresh/volume/my-config` (the shared volume of all steps) as well as the `/my-own-config-folder-injected` folder which was mounted specifically for this step.
 
