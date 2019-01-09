@@ -73,4 +73,4 @@ openssl verify -verbose -CAfile ca_cert loadbalancer_cert
 {% endhighlight %}
 
 {:start="6"}
-6. If everything is fine then try to add the cluster, giving to Codefresh the CA cert base64 hash (see {% raw %}```<copied_string>```{% endraw %} above), and the service account token.
+6. If everything is fine then add the cluster, giving to Codefresh the CA cert base64 encoded and the service account token. 
