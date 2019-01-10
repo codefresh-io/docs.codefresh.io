@@ -316,6 +316,8 @@
           url: "/sso-okta"
         - title: OneLogin
           url: "/sso-onelogin"
+    - title: Installation Options
+      url: "/installation-security"    
 
 
 - title: Incubation

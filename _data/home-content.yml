@@ -165,6 +165,9 @@
     localurl: /docs/enterprise/ent-account-mng
   - title: Single Sign on
     localurl: /docs/enterprise/single-sign-on
+  - title: Installation Options
+    new: true
+    localurl: /docs/enterprise/installation-security
 - title: "Incubation"
   icon: images/home-icons/started.png
   url: ''
