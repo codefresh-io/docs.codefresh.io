@@ -162,7 +162,7 @@ caption="Pipeline Yaml"
 max-width="60%"
 %}
 
-In both cases you can copy to clickboard the yaml shown using the button at the top left corner.
+In both cases you can copy to clipboard the yaml shown using the button at the top left corner.
 
 ### Viewing pipeline metrics
 
@@ -237,7 +237,7 @@ caption="Restart from a failed step"
 max-width="70%"
 %}
 
->Notice that in all cases *Restart* means restarting the pipeline with the exact state that is had at the point in time (including the original git commit).
+>Notice that in all cases *Restart* means restarting the pipeline with the exact state that it had at the point in time (including the original git commit).
 
 If your pipeline has some flaky steps, you can also use the [retry syntax]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/#retrying-a-step) in your yaml instead of restarting them manually each time they fail.
 
