@@ -10,7 +10,7 @@ All pipeline activity in Codefresh can be viewed on the *Builds* tab.
 There is one global view from the left-side menu that shows builds for all projects
 across your organization and a project-based view from the settings inside an individual project.
 
-Both views has the same controls and filters..
+Both views has the same controls and filters.
 
 ## Viewing pipeline status
 
@@ -24,7 +24,7 @@ file="/images/pipeline/monitoring/builds.png"
 url="/images/pipeline/monitoring/builds.png"
 alt="Pipeline Activity in Codefresh" 
 caption="Pipeline activity (click to enlarge)"
-max-width="80%"
+max-width="70%"
 %}
 
 By default it shows all builds that happening in Codefresh. To narrow the list you can use the filters on the top
@@ -91,14 +91,36 @@ max-width="80%"
 
 There are also two extra options if you click the small "3-dot" menu button on the right. You can rebuild a pipeline or launch a [test environment]({{ site.baseurl }}/docs/getting-started/on-demand-environments/#launching-a-docker-image-using-codefresh) from the resulting Docker image.
 
-Notice that is you rebuild a pipeline it will trigger with the exact settings it originally had. So 
+Notice that if you restart a pipeline it will trigger with the exact settings it originally had. So 
 if this was a manual trigger where you [disabled caching]({{ site.baseurl }}/docs/troubleshooting/common-issues/disabling-codefresh-caching-mechanisms/) or changed the [notification options](#monitoring-pipelines-that-check-pull-requests), the new
 execution will still honor those settings (even if you have changed them for later builds).
 
 
-## Viewing logs from an individual pipeline
+## Viewing details for an individual pipeline build
 
-If you click on any individual pipeline you will see a screen that shows the logs of each individual step.
+If you click on any individual pipeline you will enter the pipeline build information screen.
+From here you can see more details for a build such as the logs, running time and resource metrics.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/monitoring/pipeline-view.png" 
+url="/images/pipeline/monitoring/pipeline-view.png"
+alt="Pipeline view" 
+caption="Pipeline view"
+max-width="80%"
+%}
+
+Each section in this screen corresponds to each pipeline step. There are two special steps:
+
+* *Initializing Process*
+* *Cloning main repository*
+
+These are Codefresh built-in steps and will appear for most builds (you can also create a pipeline that doesn't clone a git repository by default). The rest of the step names depend on your `codefresh.yml` (or the default step names provided by Codefresh).
+
+### Viewing logs from pipeline steps
+
+Click on each step in order to see the respective log.
 
 {% include 
 image.html 
@@ -110,21 +132,115 @@ caption="Step details (click to enlarge)"
 max-width="80%"
 %}
 
-Each section in this screen corresponds to each pipeline step. The first two steps
 
-* *Initializing Process*
-* *Cloning main repository*
+You can copy the step logs with the *copy to clipboard* button at the top left corner of the log window.
+You can also search the logs by clicking at magnifying glass icon at the top right corner in the log window.
 
-are Codefresh built-in steps and will appear for most builds (you can create a pipeline that doesn't clone a git repository by default). The rest of the step names depend on your `codefresh.yml` (or the default step names provided by Codefresh)
+### Reviewing the yaml for the pipeline
 
-Click on each step in order to see the respective log.
+From the step details you can also click on the yaml tab to see the yaml segment for that individual step:
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/monitoring/yaml-from-step.png" 
+url="/images/pipeline/monitoring/yaml-from-step.png"
+alt="Step Yaml" 
+caption="Step Yaml"
+max-width="60%"
+%}
+
+Ff you want to see the yaml for the whole pipeline, click the *YAML* tab on the bottom left corner without selecting a step first.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/monitoring/view-pipeline-yaml.png" 
+url="/images/pipeline/monitoring/view-pipeline-yaml.png"
+alt="Pipeline Yaml" 
+caption="Pipeline Yaml"
+max-width="60%"
+%}
+
+In both cases you can copy to clickboard the yaml shown using the button at the top left corner.
+
+### Viewing pipeline metrics
+
+Codefresh offers several metrics for pipeline steps that allow you to get a better overview on the resources
+consumed by your pipeline.
+
+At the most basic level Codefresh will show some quick metrics while the pipeline is running that include
+memory consumed and size of logs:
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/monitoring/quick-pipeline-metrics.png" 
+url="/images/pipeline/monitoring/quick-pipeline-metrics.png"
+alt="Pipeline running metrics" 
+caption="Pipeline running metrics"
+max-width="70%"
+%}
+
+You can then get the memory usage for the whole pipeline by clicking on the metrics tab at the bottom of the screen.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/monitoring/pipeline-metrics.png" 
+url="/images/pipeline/monitoring/pipeline-metrics.png"
+alt="Pipeline detailed metrics" 
+caption="Pipeline detailed metrics"
+max-width="70%"
+%}
 
 
-You can expand each individual section
-by clicking on its name and copy its logs with the *copy to clipboard* at the top right corner of the log window.
+If you click on an individual step before clicking the *Metrics* tab you will get metrics for that specific step only.
 
 
-You can also search the logs by clicking at magnifying glass icon in the log window.
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/monitoring/step-metrics.png" 
+url="/images/pipeline/monitoring/step-metrics.png"
+alt="Step metrics" 
+caption="Step metrics"
+max-width="70%"
+%}
+
+
+### Restarting the pipeline 
+
+You can choose to restart any pipeline by clicking the button at the top right corner.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/monitoring/restart-pipeline.png" 
+url="/images/pipeline/monitoring/restart-pipeline.png"
+alt="Restart a pipeline" 
+caption="Restart a pipeline"
+max-width="70%"
+%}
+
+If the pipeline has failed you can choose to restart it only from the failed step and onwards.
+
+You can also also restart from a failed step right from the graphical view:
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/monitoring/restart-failed.png" 
+url="/images/pipeline/monitoring/restart-failed.png"
+alt="Restart from a failed step" 
+caption="Restart from a failed step"
+max-width="70%"
+%}
+
+>Notice that in all cases *Restart* means restarting the pipeline with the exact state that is had at the point in time (including the original git commit).
+
+If your pipeline has some flaky steps, you can also use the [retry syntax]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/#retrying-a-step) in your yaml instead of restarting them manually each time they fail.
+
 
 ## Monitoring Pipelines outside the Codefresh UI
 
@@ -187,7 +303,15 @@ caption="Codefresh build badges"
 max-width="100%" 
 %}
 
-See the [build badges page]({{ site.baseurl }}/docs/configure-ci-cd-pipeline/build-status/) for more information.
+See the [build badges page]({{site.baseurl}}/docs/configure-ci-cd-pipeline/build-status/) for more information.
+
+
+## What to read next
+
+* [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
+* [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
+* [Test report]({{site.baseurl}}/docs/configure-ci-cd-pipeline/test-reports/)
+* [Status badges]({{site.baseurl}}/docs/configure-ci-cd-pipeline/build-status/)
 
 
 
