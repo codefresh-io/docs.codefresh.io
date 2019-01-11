@@ -25,6 +25,7 @@ toc: true
 - Added OneLogin SSO support - [documentation]({{site.baseurl}}/docs/enterprise/single-sign-on/sso-onelogin/)
 - Multiple test reports from a single pipeline - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/test-reports/#creating-multiple-reports)
 - Historical data in Allure test reports are now available
+- Inline YAML editor can now expand/collapse code blocks - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#writing-codefresh-yml-in-the-gui)
 
 
 ### November 2018

@@ -139,7 +139,7 @@ file="/images/pipeline/create/custom-yml.png"
 url="/images/pipeline/create/custom-yml.png"
 alt="Switching to custom yml" 
 caption="Switching to custom yml"
-max-width="70%"
+max-width="60%"
 %}
 
 Once you switch to YML mode you have 3 more options on how to select the yml content
@@ -154,6 +154,21 @@ The inline option allows you to define the build yml right there in the Codefres
 
 > You can also import directly yml steps from a file on your computer as a starting point by clicking the *import
 from file* button.
+
+Notice that in the editor you can expand/collapse individual yaml blocks using the arrow triangles on the left.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/create/editor.png" 
+url="/images/pipeline/create/editor.png"
+alt="Inline Editor with collapsed blocks" 
+caption="Inline Editor with collapsed blocks"
+max-width="60%"
+%}
+
+
+Also you can comment/uncomment any block of code that you select either with the on-screen button or the `Ctrl-/` keyboard shortcut.
 
 ### Using a codefresh.yml for the source code repository
 
