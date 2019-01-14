@@ -27,6 +27,9 @@
   - title: Public logs and status badges
     new: true
     localurl: /docs/configure-ci-cd-pipeline/build-status/
+  - title: Running pipelines locally
+    new: true
+    localurl: /docs/configure-ci-cd-pipeline/running-pipelines-locally/  
 - title: Learn by example
   icon: images/home-icons/tutorial.png
   url: ''
@@ -147,14 +150,13 @@
     new: true
     localurl: /docs/new-helm/helm-environment-promotion/     
 - title: "Codefresh CLI"
-  new: true
   icon: images/home-icons/cli.png
   url: ''
   links:
   - title: Installation
     url: http://cli.codefresh.io/installation/
-  - title: Documentation
-    url: http://cli.codefresh.io/
+  - title: Reference Documentation
+    url: http://cli.codefresh.io/  
 - title: "Enterprise Features"
   icon: images/home-icons/enterprise1.png
   url: ''

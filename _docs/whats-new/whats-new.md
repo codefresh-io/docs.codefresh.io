@@ -10,6 +10,7 @@ toc: true
 
 ### January 2019
 
+- Running pipelines locally - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/running-pipelines-locally/)
 - Installation options (Enterprise) - [documentation]({{site.baseurl}}/docs/enterprise/installation-security)
 - Custom volumes for freestyle steps - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/#custom-volumes)
 - Helm Environment Promotion boards (Enterprise) - [documentation]({{site.baseurl}}/docs/new-helm/helm-environment-promotion)

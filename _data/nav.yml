@@ -45,6 +45,8 @@
       url: "/test-reports"
     - title: "Public logs and status badges"
       url: "/build-status"
+    - title: Running pipelines locally
+      url: "/running-pipelines-locally"  
       
 - title: Learn by example
   url: "/learn-by-example"
@@ -317,8 +319,7 @@
         - title: OneLogin
           url: "/sso-onelogin"
     - title: Installation Options
-      url: "/installation-security"    
-
+      url: "/installation-security"       
 
 - title: Incubation
   url: "/incubation"
