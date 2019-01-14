@@ -94,5 +94,5 @@ While Codefresh can still help with maintenance of the whole platform, the hybri
 
 ### See also
 
-* [Codefresh Pricing](https://codefresh.io/features/)
-* [Codefresh features](https://codefresh.io/pricing/)
+* [Codefresh Pricing](https://codefresh.io/pricing/)
+* [Codefresh features](https://codefresh.io/features/)
