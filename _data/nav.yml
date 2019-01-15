@@ -211,12 +211,12 @@
       url: "/add-kubernetes-cluster"
     - title: Manage your Kubernetes cluster
       url: "/manage-kubernetes"
-    - title: Example - Deploy demochat to Kubernetes cluster
-      url: "/codefresh-kubernetes-integration-demochat-example"
-    - title: Add config maps to your namespaces
-      url: "/add-config-maps-to-your-namespaces"
     - title: Accessing a Docker registry from Kubernetes
       url: "/access-docker-registry-from-kubernetes"
+    - title: Add config maps to your namespaces
+      url: "/add-config-maps-to-your-namespaces"
+    - title: Example - Deploy demochat to Kubernetes cluster
+      url: "/codefresh-kubernetes-integration-demochat-example"      
 
 - title: "Helm Deployments"
   url: "/new-helm"

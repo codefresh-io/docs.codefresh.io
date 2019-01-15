@@ -67,14 +67,73 @@
     localurl: /docs/yaml-examples/examples/
   - title: "Plugin steps"
     url: https://steps.codefresh.io/
+- title: Artifact Management
+  icon: images/home-icons/data.png
+  url: ''
+  links:
+  - title: Codefresh private Docker Registry
+    localurl: /docs/docker-registries/codefresh-registry/
+  - title: Custom image annotations
+    localurl: /docs/docker-registries/metadata-annotations/  
+  - title: DockerHub
+    localurl: /docs/docker-registries/external-docker-registries/docker-hub/
+  - title: Amazon Elastic Container Registry
+    localurl: /docs/docker-registries/external-docker-registries/amazon-ec2-container-registry/
+  - title: Azure Container Registry
+    localurl: /docs/docker-registries/external-docker-registries/azure-docker-registry/   
+  - title: Google Container Registry
+    localurl: /docs/docker-registries/external-docker-registries/google-container-registry/   
+  - title: JFrog Bintray.io
+    localurl: /docs/docker-registries/external-docker-registries/bintray-io/ 
+- title: Unit and Integration testing
+  icon: images/home-icons/testing.png
+  url: ''
+  links:
+  - title: Add Unit Test to pipeline
+    localurl: /docs/configure-ci-cd-pipeline/unit-tests/
+  - title: Unit Test with DB
+    localurl: /docs/configure-ci-cd-pipeline/unit-tests/unit-tests-with-database/
+  - title: Integration Tests
+    localurl: /docs/configure-ci-cd-pipeline/integration-tests/  
+- title: Kubernetes
+  icon: images/home-icons/k8s.png
+  url: ''
+  links:
+  - title: Quick start guide
+    localurl: /docs/getting-started/deployment-to-kubernetes-quick-start-guide/
+  - title: Kubernetes deployment options
+    localurl: /docs/deploy-to-kubernetes/deployment-options-to-kubernetes/
+  - title: Connecting to your cluster
+    localurl: /docs/deploy-to-kubernetes/add-kubernetes-cluster/
+  - title: Managing your cluster
+    localurl: /docs/deploy-to-kubernetes/manage-kubernetes/
+  - title: Accessing a Docker registry from your cluster
+    localurl: /docs/deploy-to-kubernetes/access-docker-registry-from-kubernetes/  
+  - title: End-to-end deployment example (demochat)
+    localurl: /docs/deploy-to-kubernetes/codefresh-kubernetes-integration-demochat-example/      
+- title: "HELM"
+  icon: images/home-icons/helm.png
+  url: ''
+  links:
+  - title: Helm Quick start guide
+    localurl: /docs/getting-started/helm-quick-start-guide/
+  - title: Codefresh Managed Helm Repositories
+    localurl: /docs/new-helm/managed-helm-repository/
+  - title: Helm Charts and repositories
+    localurl: /docs/new-helm/add-helm-repository/
+  - title: Helm Releases management
+    localurl: /docs/new-helm/helm-releases-management/
+  - title: Using Helm in a Codefresh pipeline
+    localurl: /docs/new-helm/using-helm-in-codefresh-pipeline/
+  - title: Create Helm artifacts using Codefresh pipelines
+    localurl: /docs/new-helm/create-helm-artifacts-using-codefresh-pipeline/ 
+  - title: Helm Environment Promotion
+    new: true
+    localurl: /docs/new-helm/helm-environment-promotion/            
 - title: Deployment
   icon: images/home-icons/deployment.png
   url: ''
   links:
-  - title: Deploy to GKE
-    localurl: /docs/deploy-to-kubernetes/get-ready-to-deploy/
-  - title: Deploy to Kubernetes
-    localurl: /docs/getting-started/deployment-to-kubernetes-quick-start-guide/
   - title: Deploy to ECS
     localurl: /docs/deploy-your-containers/amazon-ecs/
   - title: Deploy to Swarm
@@ -83,20 +142,21 @@
     localurl: /docs/deploy-your-containers/elastic-beanstalk/
   - title: Deploy to Azure
     localurl: /docs/deploy-your-containers/microsoft-azure/
-- title: Testing & Image Certification
-  icon: images/home-icons/image.png
+
+
+- title: On-Demand Dev / Staging Env
+  icon: images/home-icons/demand.png
   url: ''
   links:
-  - title: Add Unit Test to pipeline
-    localurl: /docs/configure-ci-cd-pipeline/unit-tests/
-  - title: Unit Test with DB
-    localurl: /docs/configure-ci-cd-pipeline/unit-tests/unit-tests-with-database/
-  - title: Integration Tests
-    localurl: /docs/configure-ci-cd-pipeline/integration-tests/
-  - title: Annotate Image with tests
-    localurl: /docs/docker-registries/metadata-annotations/
-  - title: Pull & Push images to Codefresh’s Registry
-    localurl: /docs/docker-registries/codefresh-registry/
+  - title: Launch a Docker image
+    localurl: /docs/getting-started/on-demand-environments/
+  - title: Create composition
+    localurl: /docs/on-demand-test-environment/create-composition/
+  - title: Run environment on any branch
+    localurl: /docs/on-demand-test-environment/test-your-feature/
+  - title: Share environment with your team
+    localurl: /docs/on-demand-test-environment/share-environment-with-your-test/
+ 
 - title: Integrations
   icon: images/home-icons/integrations.png
   url: ''
@@ -117,46 +177,8 @@
     new: true
     localurl: /docs/integrations/google-marketplace/
   - title: Codefresh API
-    localurl: /docs/integrations/codefresh-api/
-- title: On-Demand Dev / Staging Env
-  icon: images/home-icons/demand.png
-  url: ''
-  links:
-  - title: Launch a Docker image
-    localurl: /docs/getting-started/on-demand-environments/
-  - title: Create composition
-    localurl: /docs/on-demand-test-environment/create-composition/
-  - title: Run environment on any branch
-    localurl: /docs/on-demand-test-environment/test-your-feature/
-  - title: Share environment with your team
-    localurl: /docs/on-demand-test-environment/share-environment-with-your-test/
-- title: "HELM"
-  icon: images/home-icons/helm.png
-  url: ''
-  links:
-  - title: Helm Quick start guide
-    localurl: /docs/getting-started/helm-quick-start-guide/
-  - title: Codefresh Managed Helm Repositories
-    localurl: /docs/new-helm/managed-helm-repository/
-  - title: Helm Charts and repositories
-    localurl: /docs/new-helm/add-helm-repository/
-  - title: Helm Releases management
-    localurl: /docs/new-helm/helm-releases-management/
-  - title: Using Helm in a Codefresh pipeline
-    localurl: /docs/new-helm/using-helm-in-codefresh-pipeline/
-  - title: Create Helm artifacts using Codefresh pipelines
-    localurl: /docs/new-helm/create-helm-artifacts-using-codefresh-pipeline/ 
-  - title: Helm Environment Promotion
-    new: true
-    localurl: /docs/new-helm/helm-environment-promotion/     
-- title: "Codefresh CLI"
-  icon: images/home-icons/cli.png
-  url: ''
-  links:
-  - title: Installation
-    url: http://cli.codefresh.io/installation/
-  - title: Reference Documentation
-    url: http://cli.codefresh.io/  
+    localurl: /docs/integrations/codefresh-api/        
+ 
 - title: "Enterprise Features"
   icon: images/home-icons/enterprise1.png
   url: ''
@@ -170,6 +192,14 @@
   - title: Installation Options
     new: true
     localurl: /docs/enterprise/installation-security
+- title: "Codefresh CLI"
+  icon: images/home-icons/cli.png
+  url: ''
+  links:
+  - title: Installation
+    url: http://cli.codefresh.io/installation/
+  - title: Reference Documentation
+    url: http://cli.codefresh.io/     
 - title: "Incubation"
   icon: images/home-icons/started.png
   url: ''
