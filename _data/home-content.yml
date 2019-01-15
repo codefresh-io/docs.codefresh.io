@@ -100,7 +100,7 @@
   icon: images/home-icons/k8s.png
   url: ''
   links:
-  - title: Quick start guide
+  - title: Kubernetes Quick start guide
     localurl: /docs/getting-started/deployment-to-kubernetes-quick-start-guide/
   - title: Kubernetes deployment options
     localurl: /docs/deploy-to-kubernetes/deployment-options-to-kubernetes/
@@ -112,7 +112,7 @@
     localurl: /docs/deploy-to-kubernetes/access-docker-registry-from-kubernetes/  
   - title: End-to-end deployment example (demochat)
     localurl: /docs/deploy-to-kubernetes/codefresh-kubernetes-integration-demochat-example/      
-- title: "HELM"
+- title: "Helm"
   icon: images/home-icons/helm.png
   url: ''
   links:
@@ -145,11 +145,11 @@
     localurl: /docs/deploy-your-containers/microsoft-azure/
 
 
-- title: On-Demand Dev / Staging Env
+- title: Dynamic test environments
   icon: images/home-icons/demand.png
   url: ''
   links:
-  - title: Launch a Docker image
+  - title: On-demand environment tutorial
     localurl: /docs/getting-started/on-demand-environments/
   - title: Create composition
     localurl: /docs/on-demand-test-environment/create-composition/
