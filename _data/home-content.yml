@@ -20,10 +20,6 @@
     localurl: /docs/configure-ci-cd-pipeline/triggers/
   - title: Monitoring pipelines
     localurl: /docs/configure-ci-cd-pipeline/monitoring-pipelines/
-
-  - title: Test reports
-    new: true
-    localurl: /docs/configure-ci-cd-pipeline/test-reports/
   - title: Public logs and status badges
     new: true
     localurl: /docs/configure-ci-cd-pipeline/build-status/
@@ -73,6 +69,8 @@
   links:
   - title: Codefresh private Docker Registry
     localurl: /docs/docker-registries/codefresh-registry/
+  - title: "Pushing images"
+    localurl: "/docs/docker-registries/push-image-to-a-docker-registry"  
   - title: Custom image annotations
     localurl: /docs/docker-registries/metadata-annotations/  
   - title: DockerHub
@@ -90,11 +88,14 @@
   url: ''
   links:
   - title: Add Unit Test to pipeline
-    localurl: /docs/configure-ci-cd-pipeline/unit-tests/
+    localurl: /docs/testing/unit-tests/
   - title: Unit Test with DB
-    localurl: /docs/configure-ci-cd-pipeline/unit-tests/unit-tests-with-database/
+    localurl: /docs/testing/unit-tests/unit-tests-with-database/
   - title: Integration Tests
-    localurl: /docs/configure-ci-cd-pipeline/integration-tests/  
+    localurl: /docs/testing/integration-tests/ 
+  - title: Test reports
+    new: true
+    localurl: /docs/testing/test-reports/   
 - title: Kubernetes
   icon: images/home-icons/k8s.png
   url: ''

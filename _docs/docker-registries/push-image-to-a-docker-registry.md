@@ -1,7 +1,7 @@
 ---
-title: "Push an image to a Docker registry"
-description: ""
-group: configure-ci-cd-pipeline
+title: "Push an image"
+description: "Using the Codefresh UI to push Docker images to a Registry"
+group: docker-registries
 redirect_from:
   - /docs/push-image-to-a-docker-registry/
 toc: true

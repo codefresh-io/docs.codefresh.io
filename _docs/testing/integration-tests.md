@@ -1,7 +1,7 @@
 ---
 title: "Integration Tests"
 description: ""
-group: configure-ci-cd-pipeline
+group: testing
 redirect_from:
   - /docs/integration-tests/
   - /docs/integration-test-script/

@@ -4,7 +4,7 @@ description: "How to build a Ruby On Rails project in Codefresh"
 group: learn-by-example
 toc: true
 ---
-Ruby on Rails is a very popular development framework that combines ease of use and a great amount of programming languages. In Codefresh, ROR projects behave like any other web application. You can easily build them, run [integration tests]({{site.baseurl}}/docs/configure-ci-cd-pipeline/integration-tests/) and launch them on [demo environments]({{site.baseurl}}/docs/getting-started/on-demand-environments/).
+Ruby on Rails is a very popular development framework that combines ease of use and a great amount of programming languages. In Codefresh, ROR projects behave like any other web application. You can easily build them, run [integration tests]({{site.baseurl}}/docs/testing/integration-tests/) and launch them on [demo environments]({{site.baseurl}}/docs/getting-started/on-demand-environments/).
 
 The example application is located at [https://github.com/codefresh-contrib/ruby-on-rails-sample-app](https://github.com/codefresh-contrib/ruby-on-rails-sample-app).
 
@@ -173,6 +173,6 @@ You can share this link with other people in your team.
 * [Introduction to Pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
 * [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
 * [On demand environments]({{site.baseurl}}/docs/getting-started/on-demand-environments/)
-* [Integration tests]({{site.baseurl}}/docs/configure-ci-cd-pipeline/integration-tests/)
+* [Integration tests]({{site.baseurl}}/docs/testing/integration-tests/)
 
 

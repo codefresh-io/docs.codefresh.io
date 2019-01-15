@@ -1,7 +1,9 @@
 ---
 title: "Test reports"
 description: "How to create and view Test reports in Codefresh"
-group: configure-ci-cd-pipeline
+group: testing
+redirect_from:
+  - /docs/configure-ci-cd-pipeline/test-reports/
 toc: true
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "Unit Tests with Composition"
 description: ""
-group: configure-ci-cd-pipeline
+group: testing
 sub_group: unit-tests
 redirect_from:
   - /docs/setup-unit-tests/
@@ -95,7 +95,7 @@ services:
 6. __Save__ and __Build__ this pipeline.
 
 ### See examples of unit tests with databases
-- [Unit Tests with Redis]({{ site.baseurl }}/docs/configure-ci-cd-pipeline/unit-tests/unit-tests-with-redis/)
-- [Unit Tests with Postgres]({{ site.baseurl }}/docs/configure-ci-cd-pipeline/unit-tests/unit-tests-with-postgres/)
-- [Unit Tests with MySQL]({{ site.baseurl }}/docs/configure-ci-cd-pipeline/unit-tests/unit-tests-with-mysql/)
-- [Unit Tests with Mongo]({{ site.baseurl }}/docs/configure-ci-cd-pipeline/unit-tests/unit-tests-with-mongo/)
+- [Unit Tests with Redis]({{site.baseurl}}/docs/testing/unit-tests/unit-tests-with-redis/)
+- [Unit Tests with Postgres]({{site.baseurl}}/docs/testing/unit-tests/unit-tests-with-postgres/)
+- [Unit Tests with MySQL]({{site.baseurl}}/docs/testing/unit-tests/unit-tests-with-mysql/)
+- [Unit Tests with Mongo]({{site.baseurl}}/docs/testing/unit-tests/unit-tests-with-mongo/)

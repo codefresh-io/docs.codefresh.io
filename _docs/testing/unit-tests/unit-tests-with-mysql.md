@@ -1,7 +1,7 @@
 ---
 title: "Unit Tests with MySQL"
 description: ""
-group: configure-ci-cd-pipeline
+group: testing
 sub_group: unit-tests
 redirect_from:
   - /docs/nodejsmysql/

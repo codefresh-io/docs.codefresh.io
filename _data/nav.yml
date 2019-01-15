@@ -30,19 +30,6 @@
         - title: "Timer (Cron) Triggers"
           url: "/cron-triggers"
     - title: "Monitoring Pipelines"
-    - title: Unit Tests
-      url: "/unit-tests"
-      sub-pages:
-        - title: "Unit Tests with Composition"
-          url: "/unit-tests-with-composition"
-        - title: "Unit Tests with Database"
-          url: "/unit-tests-with-database"
-    - title: "Push an image to a Docker registry"
-      url: "/push-image-to-a-docker-registry"
-    - title: "Integration Tests"
-      url: "/integration-tests"
-    - title: "Test Reports"
-      url: "/test-reports"
     - title: "Public logs and status badges"
       url: "/build-status"
     - title: Running pipelines locally
@@ -177,6 +164,8 @@
   pages:
     - title: "Codefresh Docker Registry"
       url: "/codefresh-registry"
+    - title: "Pushing images"
+      url: "/push-image-to-a-docker-registry"    
     - title: "Image Metadata Annotations"
       url: "/metadata-annotations"
     - title: "External Docker Registries"
@@ -196,7 +185,20 @@
           url: "/quay-io"
         - title: "Other Registries"
           url: "/other-registries"
-
+- title: "Testing"
+  url: "/testing"
+  pages:
+    - title: "Unit testing"
+      url: "/unit-tests"
+      sub-pages:
+        - title: "Unit Tests with Composition"
+          url: "/unit-tests-with-composition"
+        - title: "Unit Tests with Database"
+          url: "/unit-tests-with-database"
+    - title: "Integration Tests"
+      url: "/integration-tests"
+    - title: "Test Reports"
+      url: "/test-reports"     
 - title: Deploy to Kubernetes
   url: "/deploy-to-kubernetes"
   pages:

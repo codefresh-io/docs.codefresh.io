@@ -1,7 +1,7 @@
 ---
-title: "Unit Tests"
-description: ""
-group: configure-ci-cd-pipeline
+title: "Unit Testing"
+description: "How to run Unit tests in Codefresh pipelines"
+group: testing
 redirect_from:
   - /docs/unit-tests/
 toc: true
