@@ -129,7 +129,7 @@ favorite:
   food: pizza
 {% endhighlight %}
 
-Here is a pipeline step that is reading the yaml snippet and extract a value
+Here is a pipeline step that is reading the yaml snippet and extracts a value
 
   `YAML`
 {% highlight yaml %}
@@ -147,7 +147,7 @@ steps:
 Once the pipeline runs, you will see in the logs: 
 
 ```
-I love pizza
+I love eating pizza
 ```
 
 
