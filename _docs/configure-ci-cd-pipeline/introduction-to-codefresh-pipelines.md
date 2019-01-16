@@ -26,7 +26,7 @@ Codefresh offers two unique characteristics in pipelines that serve as the corne
 1. All [steps]({{site.baseurl}}/docs/codefresh-yaml/steps/) in Codefresh pipelines are executed inside a Docker container of your choosing
 1. All steps in Codefresh share the same "workspace" in the form of a shared Docker volume
 1. The shared Docker volume is automatically cached between pipeline executions
-1. Each successful pipeline automatically pushes its Docker image to the [private registry]({{site.baseurl}}docs/docker-registries/codefresh-registry/).
+1. Each successful pipeline automatically pushes its Docker image to the [private registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/).
 
 ### Using Docker containers as build tooling
 

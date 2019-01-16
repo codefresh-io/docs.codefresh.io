@@ -153,7 +153,7 @@ I love eating pizza
 
 ## What to read next
 
-* [Variables]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines)
-* [Codefresh YAML]({{site.baseurl}}docs/codefresh-yaml/variables/)
+* [Variables]({{site.baseurl}}/docs/codefresh-yaml/variables/)
+* [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
 * [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
 
