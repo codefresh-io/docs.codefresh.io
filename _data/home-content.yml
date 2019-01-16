@@ -20,8 +20,10 @@
     localurl: /docs/configure-ci-cd-pipeline/triggers/
   - title: Monitoring pipelines
     localurl: /docs/configure-ci-cd-pipeline/monitoring-pipelines/
-  - title: Public logs and status badges
+  - title: Shared Configuration
     new: true
+    localurl: /docs/configure-ci-cd-pipeline/shared-configuration/  
+  - title: Public logs and status badges
     localurl: /docs/configure-ci-cd-pipeline/build-status/
   - title: Running pipelines locally
     new: true

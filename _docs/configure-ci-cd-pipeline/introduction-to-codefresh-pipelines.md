@@ -14,7 +14,7 @@ Each step is responsible for a specific action in the process. Pipelines can be 
 
 * compile and package code
 * build Docker images
-* push Docker images (either to an [external Registry]({{ site.baseurl }}/docs/docker-registries/external-docker-registries/) or the [built-in Codefresh registry]({{ site.baseurl }}/docs/docker-registries/codefresh-registry/))
+* push Docker images (either to an [external Registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) or the [built-in Codefresh registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/))
 * deploy applications/artifacts to VMs, Kubernetes clusters, FTP sites, S3 buckets etc.
 * run unit tests, integration tests, acceptance tests etc.
 * any custom action that you define
@@ -23,8 +23,10 @@ Each step is responsible for a specific action in the process. Pipelines can be 
 
 Codefresh offers two unique characteristics in pipelines that serve as the cornerstone of the build/deploy process
 
-1. All [steps]({{ site.baseurl }}/docs/codefresh-yaml/steps/) in Codefresh pipelines are executed inside a Docker container of your choosing
+1. All [steps]({{site.baseurl}}/docs/codefresh-yaml/steps/) in Codefresh pipelines are executed inside a Docker container of your choosing
 1. All steps in Codefresh share the same "workspace" in the form of a shared Docker volume
+1. The shared Docker volume is automatically cached between pipeline executions
+1. Each successful pipeline automatically pushes its Docker image to the [private registry]({{site.baseurl}}docs/docker-registries/codefresh-registry/).
 
 ### Using Docker containers as build tooling
 

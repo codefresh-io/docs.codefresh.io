@@ -157,7 +157,7 @@ User provided variables can be defined at 4 levels:
 1. Freestyle step definition: using the `environment` field.
 1. Pipeline execution: after clicking the "Build" button, open the "Advanced options" section.
 1. Pipeline definition: under "Environment variables" section in the pipeline view.
-1. Shared Configuration: defined under your account settings, and used using the "Import from shared configuration" button under the "Environment Variables" section in the pipeline view.
+1. [Shared Configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/): defined under your account settings, and used using the "Import from shared configuration" button under the "Environment Variables" section in the pipeline view.
 
 The options are listed in order of importance, so in case of multiple variables defined at different location with the same name, the order of overriding will be as listed here.
 
