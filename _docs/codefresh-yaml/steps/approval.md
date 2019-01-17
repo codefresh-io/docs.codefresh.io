@@ -37,12 +37,6 @@ step_name:
   when:
     branch:
       only: [ master ]
-  on_success:
-    ...
-  on_fail:
-    ...
-  on_finish:
-    ...
 
 {% endraw %}
 {% endhighlight %}
@@ -57,11 +51,6 @@ step_name:
 | `stage`                              | Parent group of this step. See [using stages]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/#grouping-steps-with-pipeline-stages) for more information.                                                                                                                                                                                          | Optional                  |
 | `fail_fast`                                | If a step fails, and the process is halted. The default value is `true`.                                                                                                                                                                                                                                                                                                    | Default                   |
 | `when`                                     | Define a set of conditions that need to be satisfied in order to execute this step. You can find more information in the [Conditional Execution of Steps]({{ site.baseurl }}/docs/codefresh-yaml/conditional-execution-of-steps/) article.                                                                                                                                                                     | Optional                  |
-| `on_success`, `on_fail` and `on_finish`    | Define operations to perform upon step completion using a set of predefined [Post-Step Operations]({{site.baseurl}}/docs/codefresh-yaml/post-step-operations/).                                                                                                                                                                                                                                             | Optional                  |
-
-
-
-
 
 
 ## Pausing the pipeline
