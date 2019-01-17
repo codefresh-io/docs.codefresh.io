@@ -94,9 +94,10 @@ steps:
    commands:
    - echo "Destroy command running"
    when:
-     condition:
-       all:
-         approved: steps.askForPermission.result == 'approved'
+     steps:
+     - name: askForPermission
+       on:
+       - approved
 {% endraw %}
 {% endhighlight %}
 
@@ -112,8 +113,8 @@ Here is a full example with both cases.
 version: '1.0'
 stages:
 - prepare
-- approved
-- denied
+- yesPleaseDo
+- noDont
 
 steps:
  step_1:
@@ -122,51 +123,55 @@ steps:
    stage: prepare
    commands:
    - echo "prepare"
- approve:
+ deployToProdNow:
    type: pending-approval
-   title: wait for approval
+   title: Should we deploy to prod
    stage: prepare
    fail_fast: false
  step_2:
    image: alpine:3.8
    title: prepare environment
-   stage: approved
+   stage: yesPleaseDo
    commands:
    - echo "world"
    when:
-     condition:
-       all:
-         approved: steps.approve.result == 'approved'
+     steps:
+     - name: deployToProdNow
+       on:
+       - approved
  step_3:
    image: alpine:3.8
    title: deploy to production
-   stage: approved
+   stage: yesPleaseDo
    commands:
    - echo "world"
    when:
-     condition:
-       all:
-         approved: steps.approve.result == 'approved'
+     steps:
+     - name: deployToProdNow
+       on:
+       - approved
  step_4:
    image: alpine:3.8
    title: prepare environment
-   stage: denied
+   stage: noDont
    commands:
    - echo "world"
    when:
-     condition:
-       all:
-         approved: steps.approve.result == 'denied'
+     steps:
+     - name: deployToProdNow
+       on:
+       - denied
  step_5:
    image: alpine:3.8
    title: deploy to staging
-   stage: denied
+   stage: noDont
    commands:
    - echo "world"
    when:
-     condition:
-       all:
-         approved: steps.approve.result == 'denied'         
+     steps:
+     - name: deployToProdNow
+       on:
+       - denied         
 {% endraw %}
 {% endhighlight %}
 
