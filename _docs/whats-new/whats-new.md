@@ -10,6 +10,7 @@ toc: true
 
 ### January 2019
 
+- Manual approval step - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/)
 - Shared configuration - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/)
 - Running pipelines locally - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/running-pipelines-locally/)
 - Installation options (Enterprise) - [documentation]({{site.baseurl}}/docs/enterprise/installation-security)

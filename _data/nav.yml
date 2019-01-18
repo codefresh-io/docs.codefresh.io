@@ -104,6 +104,8 @@
           url: "launch-composition-2"
         - title: "Deploy"
           url: "/deploy"
+        - title: "Approval"
+          url: "/approval"  
     - title: "Post-Step Operations"
       url: "/post-step-operations"
     - title: "Parallel steps"
