@@ -33,7 +33,6 @@ step_name:
   type: pending-approval
   title: Step Title
   description: Step description
-  fail_fast: false
   when:
     branch:
       only: [ master ]
@@ -49,8 +48,8 @@ step_name:
 | `title`                                    | The free-text display name of the step.                                                                                                                                                                                                                                                                                                                                     | Optional                  |
 | `description`                              | A basic, free-text description of the step.                                                                                                                                                                                                                                                                                                                                 | Optional                  |
 | `stage`                              | Parent group of this step. See [using stages]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/#grouping-steps-with-pipeline-stages) for more information.                                                                                                                                                                                          | Optional                  |
-| `fail_fast`                                | If a step fails, and the process is halted. The default value is `true`.                                                                                                                                                                                                                                                                                                    | Default                   |
-| `when`                                     | Define a set of conditions that need to be satisfied in order to execute this step. You can find more information in the [Conditional Execution of Steps]({{ site.baseurl }}/docs/codefresh-yaml/conditional-execution-of-steps/) article.                                                                                                                                                                     | Optional                  |
+
+| `when`                                     | Define a set of conditions that need to be satisfied in order to execute this step. You can find more information in the [Conditional Execution of Steps]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/) article.                                                                                                                                                                     | Optional                  |
 
 
 ## Pausing the pipeline
@@ -126,7 +125,6 @@ steps:
    type: pending-approval
    title: Should we deploy to prod
    stage: prepare
-   fail_fast: false
  step_2:
    image: alpine:3.8
    title: prepare environment
