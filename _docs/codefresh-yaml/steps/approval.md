@@ -192,6 +192,22 @@ max-width="80%"
 You can see that only two steps were ignored. If you rerun the pipeline and approve
 it, the other two steps will be ignored.
 
+## Slack integration
+
+If you also enable Slack integration in Codefresh you will have the choice of approving/rejecting a pipeline
+via a Slack channel
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/codefresh-yaml/approval/slack-approval.png" 
+url="/images/codefresh-yaml/approval/slack-approval.png"
+alt="Approval step in a slack channel" 
+caption="Approval step in a slack channel"
+max-width="80%"
+%}
+
+
 ## What to read next
 
 - [Post-Step Operations]({{site.baseurl}}/docs/codefresh-yaml/post-step-operations/) 
