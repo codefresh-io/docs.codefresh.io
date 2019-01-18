@@ -33,7 +33,6 @@ step_name:
   type: pending-approval
   title: Step Title
   description: Step description
-  fail_fast: false
   when:
     branch:
       only: [ master ]
@@ -49,8 +48,7 @@ step_name:
 | `title`                                    | The free-text display name of the step.                                                                                                                                                                                                                                                                                                                                     | Optional                  |
 | `description`                              | A basic, free-text description of the step.                                                                                                                                                                                                                                                                                                                                 | Optional                  |
 | `stage`                              | Parent group of this step. See [using stages]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/#grouping-steps-with-pipeline-stages) for more information.                                                                                                                                                                                          | Optional                  |
-| `fail_fast`                                | If a step fails, and the process is halted. The default value is `true`.                                                                                                                                                                                                                                                                                                    | Default                   |
-| `when`                                     | Define a set of conditions that need to be satisfied in order to execute this step. You can find more information in the [Conditional Execution of Steps]({{ site.baseurl }}/docs/codefresh-yaml/conditional-execution-of-steps/) article.                                                                                                                                                                     | Optional                  |
+| `when`                                     | Define a set of conditions that need to be satisfied in order to execute this step. You can find more information in the [Conditional Execution of Steps]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/) article.                                                                                                                                                                     | Optional                  |
 
 
 ## Pausing the pipeline
@@ -87,7 +85,6 @@ steps:
  askForPermission:
    type: pending-approval
    title: Destroy QA environment?
-   fail_fast: false
  destroyQaEnvNow:
    image: alpine:3.8
    title: Destroying env
@@ -127,7 +124,6 @@ steps:
    type: pending-approval
    title: Should we deploy to prod
    stage: prepare
-   fail_fast: false
  step_2:
    image: alpine:3.8
    title: prepare environment
@@ -206,6 +202,23 @@ alt="Approval step in a slack channel"
 caption="Approval step in a slack channel"
 max-width="80%"
 %}
+
+To enable this behavior you need to activate it in the Slack settings page:
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/codefresh-yaml/approval/slack-settings.png" 
+url="/images/codefresh-yaml/approval/slack-settings.png"
+alt="Slack settings" 
+caption="Slack settings"
+max-width="50%"
+%}
+
+Also if you run a pipeline manually that includes an approval step you should check
+the "Report notification of pipeline execution" checkbox as explained in [Monitoring Pipelines](
+{{site.baseurl}}/docs/configure-ci-cd-pipeline/monitoring-pipelines/#monitoring-pipelines-outside-the-codefresh-ui).
+
 
 
 ## What to read next
