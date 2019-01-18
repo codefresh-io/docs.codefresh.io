@@ -207,6 +207,23 @@ caption="Approval step in a slack channel"
 max-width="80%"
 %}
 
+To enable this behavior you need to activate it in the Slack settings page:
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/codefresh-yaml/approval/slack-settings.png" 
+url="/images/codefresh-yaml/approval/slack-settings.png"
+alt="Slack settings" 
+caption="Slack settings"
+max-width="50%"
+%}
+
+Also if you run a pipeline manually that includes an approval step you should check
+the "Report notification of pipeline execution" checkbox as explained in [Monitoring Pipelines](
+{{site.baseurl}}/docs/configure-ci-cd-pipeline/monitoring-pipelines/#monitoring-pipelines-outside-the-codefresh-ui).
+
+
 
 ## What to read next
 
