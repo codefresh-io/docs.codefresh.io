@@ -87,7 +87,6 @@ steps:
  askForPermission:
    type: pending-approval
    title: Destroy QA environment?
-   fail_fast: false
  destroyQaEnvNow:
    image: alpine:3.8
    title: Destroying env
