@@ -1,6 +1,6 @@
 ---
 title: "Composition"
-description: ""
+description: "Run a Docker container with its dependencies in Codefresh infrastructure"
 group: codefresh-yaml
 sub_group: steps
 redirect_from:
@@ -13,7 +13,9 @@ The composition step runs a Docker Composition as a means to execute finite comm
 
 The primary purpose of compositions is to run integration tests or any kind of tests that require multiple services for their execution.
 
-The syntax offered by Codefresh closely follows the syntax for [Docker-compose](https://docs.docker.com/compose/overview/) files ([version 2](https://docs.docker.com/compose/compose-file/compose-file-v2/)), so if already know how Docker compose works, you will be immediately familiar with Codefresh compositions.
+The syntax offered by Codefresh closely follows the syntax for [Docker-compose](https://docs.docker.com/compose/overview/) files, so if you already know how Docker compose works, you will be immediately familiar with Codefresh compositions.
+
+> Codefresh understands Docker compose versions [2.0](https://docs.docker.com/compose/compose-file/compose-file-v2/) and [3.0](https://docs.docker.com/compose/compose-file/), but not point releases (such as 2.1)
 
 The big difference between the two, is that Codefresh is distinguishing between two kinds of services
 
