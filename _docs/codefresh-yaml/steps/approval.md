@@ -194,7 +194,7 @@ it, the other two steps will be ignored.
 
 ## Slack integration
 
-If you also enable Slack integration in Codefresh you will have the choice of approving/rejecting a pipeline
+If you also enable [Slack integration]({{site.baseurl}}/docs/integrations/notifications/slack-integration/)  in Codefresh you will have the choice of approving/rejecting a pipeline
 via a Slack channel
 
 {% include 
