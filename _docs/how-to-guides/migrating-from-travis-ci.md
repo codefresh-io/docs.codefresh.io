@@ -402,11 +402,11 @@ after_success:
 {{site.data.callout.callout_info}}
 ##### More about push step
 
-[Push step]({{ site.baseurl }}/docs/codefresh-yaml/steps/push-1/)
+[Push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push-1/)
 {{site.data.callout.end}}
 
-## Deploy on example of AWS Elastic Beastalk
-To deploy to AWS Elastic Beastalk need to use the following step in Travis and Codefresh
+## Deploy on example of AWS Elastic Beanstalk
+To deploy to AWS Elastic Beanstalk need to use the following step in Travis and Codefresh
 
   `.travis.yml`
 {% highlight yaml %}
