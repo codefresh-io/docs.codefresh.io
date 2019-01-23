@@ -57,7 +57,7 @@ After some brief time, the repository should appear in your own Github account.
 Now you are ready to start building code with Codefresh!
 
 
-> Codefresh supports Gitlab and Bitbucker repositories apart from Github. The
+> Codefresh supports Gitlab and Bitbucket repositories apart from Github. The
 same principles presented in this tutorial apply for all Git providers.
 
 
@@ -115,7 +115,7 @@ Let's start by going into the [Codefresh dashboard](https://g.codefresh.io/repos
 
 ###  Selecting your Git repository
 
-Make sure that you have selectec *Repositories* from the left sidebar.
+Make sure that you have selected *Repositories* from the left sidebar.
 Then click the *Add new repository* button to get started.
 
 {% include 
