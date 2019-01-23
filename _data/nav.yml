@@ -372,8 +372,6 @@
           url: "/failed-to-get-accounts-clusters-during-workflow"
         - title: 'Clone step failed: Command [git checkout $REVISION] exited with code [1]'
           url: "/git-clone-step-issue"
-        - title: Access and debug the pipeline volume image
-          url: "/access-and-debug-the-pipeline-volume-image"
 
 - title: Whats new?
   url: "/whats-new"
