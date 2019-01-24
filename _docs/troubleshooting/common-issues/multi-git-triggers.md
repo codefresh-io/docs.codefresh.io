@@ -32,7 +32,7 @@ Sometimes however, you want a pipeline to be triggered by another git repository
 
 In those cases, Codefresh supports adding [multiple git triggers]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/) on the same pipeline. This way pipeline A will be triggered by commits to both repository A and repository B. Notice however that the `codefresh.yml` file used will still be fetched as mentioned in the webhook.
 
-This creates issues with pipeline definitions because repository B might not have a `codefresh.yml` at all, or it might have the wrong one in the branch that actually created the webhook.
+This creates issues with pipeline definitions because repository B might not have a `codefresh.yml` at all, or it might have the wrong one in the branch that actually created the webhook. Another bad scenario is when the branch mentioned in the webhook from repository B does not even exist in repository A.
 
 To solve this issue you can pin down the branch that will be used for the source of `codefresh.yml`. In the example above, you can specify that no matter the branch of repository B that triggered the commit, the pipeline should only use the `master` branch of pipeline A regardless of what is mentioned in the webhook.
 
@@ -81,24 +81,24 @@ To apply your changes, replace the pipeline in Codefresh from your local copy
 codefresh replace pipelines kostis-codefresh/trivial-go-web/from-repo -f custom-spec.yaml
 ```
 
-You should get a message that your pipeline is updated.
+You should get a message that your pipeline is updated. This concludes the setup of the pipeline specification. Now you also need to override the clone step of the pipeline itself as explained in the next section.
 
 ## Overriding the implicit clone step
 
-All pipelines in Codefresh that are connected to a git repo have an automatic git clone step defined for them. 
+All pipelines in Codefresh that are connected to a git repository have an automatic git clone step defined for them. 
 This clone step will also fetch the code from the branch mentioned in the webhook.
 
-If you want to override this default behavior as well and force a specific branch, you can use a [custom clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) like this:
+To override this default behavior as well and force a specific branch, you can use a [custom clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) like this:
 
 
 {% highlight yaml %}
 {% raw %}
 main_clone:
-  type: git-clone
-  title: Checking out git repository
-  repo: owner/repo
-  git: my-git-provider
-  revision: master
+    type: git-clone
+    title: Checking out git repository
+    repo: ${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}
+    git: github
+    revision: ${{CF_REVISION}}
 {% endraw %}
 {% endhighlight %}
 
