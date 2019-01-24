@@ -350,28 +350,26 @@
           url: "/cant-find-your-organization-repositories"
         - title: Can’t find your private repositories
           url: "/cant-find-your-private-repositories"
-        - title: No Dockerfile found
-          url: "/no-dockerfile-found"
-        - title: Validation Port warnings
-          url: "/validation-port-warnings"
-        - title: Restoring data from pre-existing image hangs on
-          url: "/restoring-data-from-pre-existing-image-hangs-on"
-        - title: Debugging Codefresh builds locally
-          url: "/debugging-codefresh-builds-locally"
-        - title: Disabling codefresh caching mechanisms
-          url: "/disabling-codefresh-caching-mechanisms"
+        - title: 'Clone step failed: Command [git checkout $REVISION] exited with code [1]'
+          url: "/git-clone-step-issue"  
         - title: Handling commit messages with a quote character
-          url: "/handling-commit-messages-with-quotes"
-        - title: Workflow terminated by the system
-          url: "/workflow-terminated-by-system"
+          url: "/handling-commit-messages-with-quotes"         
         - title: The docker image does not exist or no pull access
           url: "/the-docker-image-does-not-exist-or-no-pull-access"
         - title: 'Build step: No such file or directory'
-          url: "/build-step-no-such-file-or-directory"
+          url: "/build-step-no-such-file-or-directory"          
+        - title: No Dockerfile found
+          url: "/no-dockerfile-found"
+        - title: Restoring data from pre-existing image hangs on
+          url: "/restoring-data-from-pre-existing-image-hangs-on"
+        - title: Disabling codefresh caching mechanisms
+          url: "/disabling-codefresh-caching-mechanisms"
+        - title: Workflow terminated by the system
+          url: "/workflow-terminated-by-system"
+        - title: Validation Port warnings
+          url: "/validation-port-warnings"
         - title: Failed to get accounts clusters during workflow
           url: "/failed-to-get-accounts-clusters-during-workflow"
-        - title: 'Clone step failed: Command [git checkout $REVISION] exited with code [1]'
-          url: "/git-clone-step-issue"
 
 - title: Whats new?
   url: "/whats-new"
