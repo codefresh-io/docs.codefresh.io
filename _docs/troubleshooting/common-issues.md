@@ -27,6 +27,7 @@ In this section, we offer helpful information about issues you may encounter and
 
 - [Restoring data from pre-existing image hangs on]({{site.baseurl}}/docs/troubleshooting/common-issues/restoring-data-from-pre-existing-image-hangs-on/)
 - [Disabling codefresh caching mechanisms]({{site.baseurl}}/docs/troubleshooting/common-issues/disabling-codefresh-caching-mechanisms/)
+- [Pinning codefresh.yml for multi-git triggers]({{site.baseurl}}/docs/troubleshooting/common-issues/multi-git-triggers)
 - [Workflow process terminated by the system]({{site.baseurl}}/docs/troubleshooting/common-issues/workflow-terminated-by-system/)
 
 ## Dynamic environment issues

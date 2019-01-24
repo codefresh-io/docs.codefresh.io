@@ -364,6 +364,8 @@
           url: "/restoring-data-from-pre-existing-image-hangs-on"
         - title: Disabling codefresh caching mechanisms
           url: "/disabling-codefresh-caching-mechanisms"
+        - title: Pinning codefresh.yml for multi-git triggers
+          url: "/multi-git-triggers"
         - title: Workflow terminated by the system
           url: "/workflow-terminated-by-system"
         - title: Validation Port warnings
