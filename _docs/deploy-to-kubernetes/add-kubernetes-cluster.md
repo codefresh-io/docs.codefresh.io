@@ -259,14 +259,32 @@ Once the cluster been added successfully you can go to the `Kubernetes` tab to s
 
 ## Adding a Rancher cluster
 
-Rancher clusters are currently supported as generic clusters. Rancher clusters have a specific authentication configuration (the details are here: [https://rancher.com/kubernetes-authentication-in-rancher-and-rbac](https://rancher.com/kubernetes-authentication-in-rancher-and-rbac)). 
+Rancher clusters are currently supported as generic clusters. Rancher clusters have a specific authentication configuration (the details are here: [https://rancher.com/kubernetes-authentication-in-rancher-and-rbac](https://rancher.com/kubernetes-authentication-in-rancher-and-rbac) for Rancher 1.x and at [https://rancher.com/blog/2018/2018-05-04-authentication-authorization-rancher2/](https://rancher.com/blog/2018/2018-05-04-authentication-authorization-rancher2/) for Rancher 2.x). 
 
 Authentication using a token of a Kubernetes Service Account, which is usually used by Codefresh, doesn't work with Rancher clusters. Also, Rancher doesn't do proper TLS termination out-of-the-box for Kubernetes clusters hosted on it, so one needs to configure a load balancer for that purpose.
 
 In summary, the following conditions should be met in order to add the cluster, hosted on Rancher to Codefresh:
 
+### For Rancher version 1.x
+
 1. The token should be taken from the kubeconfig provided by Rancher and it has to be encoded with base64 before putting it into Codefresh. Be careful with the '\n' characters when encoding. The command for Linux is: `echo <rancher_token> | tr -d '\n' | base64 | tr -d '\n'`
 1. The CA certificate should be the CA of the Load Balancer standing in front of Rancher 
+1. The hostname and port should be corresponding to your Load Balancer
+
+{% include image.html
+  lightbox="true"
+  file="/images/kubernetes/add-cluster/rancher-token.png"
+  url="/images/kubernetes/add-cluster/rancher-token.png"
+  alt="Getting the Rancher token"
+  caption="Getting the Rancher token"
+  max-width="40%"
+    %}
+
+### For Rancher version 2.x
+
+1. Kubernetes HOST is in the kubeconfig provided by Rancher for the Kubernetes cluster based on the domain name of Rancher + the Kubernetes cluster endpoint exposed through Rancher in cluster -> server. Example: https://rancher.localhost/k8s/clusters/c-npft4
+1. The token should be taken from the kubeconfig provided by Rancher under user -> token section of YAML and it has to be encoded with base64 before putting it into Codefresh. Be careful with the '\n' characters when encoding, do not wrap token in quotes when running echo command. The command for Linux is: `echo <rancher_token> | tr -d '\n' | base64 | tr -d '\n'` Example: kubeconfig-user-xtnt4:cppxv6db…
+1. The CA certificate should be the CA of the Load Balancer standing in front of Rancher base64 encoded `openssl base64 -in cert -out b64`
 1. The hostname and port should be corresponding to your Load Balancer
 
 {% include image.html
@@ -332,6 +350,8 @@ The steps needed are:
 1. Copy the output string (be careful when copying) and check whether you have copied it correctly:
 `openssl x509 -text -in <(echo <copied_string> | base64 -d)` - you should see the contents of your CA budle file
 1. Put the copied string into the Codefresh Kubernetes integration form and test the connection.
+
+Please make sure the certs are in order Root -> Intermediate -> Server.
 
 ## What to read next
 
