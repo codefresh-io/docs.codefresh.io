@@ -40,7 +40,7 @@ max-width="40%"
 %}
 
 The login method is not really important when it comes to git repositories as regardless of your sign-up process
-you can add git repositories from any of your GIT accounts in  [GIT integrations]({{ site.baseurl }}/docs/integrations/git-providers/).
+you can add git repositories from any of your GIT accounts in  [GIT integrations]({{site.baseurl}}/docs/integrations/git-providers/).
 
 > Don't worry if by mistake you use multiple sign-up methods. As long as your email
 address is the same, Codefresh will automatically forward you to your account dashboard.
@@ -111,7 +111,7 @@ max-width="40%"
 
 Congratulations! Your new Codefresh account is now ready.
 
-The next step is learning how to [build your first application]({{ site.baseurl }}/docs/getting-started/create-a-basic-pipeline/).
+The next step is learning how to [build your first application]({{site.baseurl}}/docs/getting-started/create-a-basic-pipeline/).
 
 
 ## Other Git connection options
@@ -132,7 +132,7 @@ max-width="100%"
 %}
 
 
-Once that is done, follow the [Stash instructions]{{ site.baseurl }}/docs/integrations/git-providers/#atlassian-stash) for more information. 
+Once that is done, follow the [Stash instructions]({{site.baseurl}}/docs/integrations/git-providers/#atlassian-stash) for more information. 
 
 
 
