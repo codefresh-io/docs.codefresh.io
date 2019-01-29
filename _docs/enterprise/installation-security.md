@@ -3,7 +3,8 @@ title: "Codefresh Installation Options"
 description: "How to run Codefresh in the Enterprise"
 group: enterprise
 toc: true
-
+redirect_from:
+  - /docs/enterprise/nodes/set-node-limits/
 ---
 Codefresh offers 3 installation options that can cater to any size of organization. These are:
 
