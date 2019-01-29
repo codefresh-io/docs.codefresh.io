@@ -25,6 +25,7 @@ Trigger types currently supported by Codefresh are:
 * [Quay Triggers](quay-triggers)
 * [Artifactory Triggers](jfrog-triggers)
 * [Cron Trigger](cron-triggers)
+* [API/CLI Trigger]({{site.baseurl}}/docs/integrations/codefresh-api/)
 
 As an example, this project contains 4 pipelines:
 
