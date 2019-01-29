@@ -12,6 +12,7 @@ Codefresh offers 3 installation options that can cater to any size of organizati
 * On-premise version where Codefresh runs inside the customer datacenter/cloud
 * Hybrid version where the UI runs in the Codefresh cloud but builds are running on customer premises
 
+On-premise and Hybrid versions are available to Enterprise customers that are looking for a "behind-the-firewall" solution.
 
 
 
@@ -83,14 +84,15 @@ While Codefresh can still help with maintenance of the whole platform, the hybri
 ## Comparison table
 
 {: .table .table-bordered .table-hover}
-| Feature      | Cloud | Hybrid | On Premise                   |
+| Characteristic      | Cloud | Hybrid | On Premise                   |
 | -------------- | ---------------------------- |-------------------------|
 | Managed by     | Codefresh | Codefresh and Customer | Customer |
 | UI runs on  | public cloud | public cloud | private cluster |
-| Builds run | public cloud | private cluster | private cluster |
-| Access to secure services | no | yes | yes |
+| Builds run on | public cloud | private cluster | private cluster |
+| Access to secure/private services | no | yes | yes |
 | Customer maintenance effort | none | some | full |
 | Best for | most companies | companies with security constraints | Large scale installations |
+| Available to | all customers | [enterprise plans](https://codefresh.io/contact-us/) | [enterprise plans](https://codefresh.io/contact-us/) |
 
 
 ### See also
