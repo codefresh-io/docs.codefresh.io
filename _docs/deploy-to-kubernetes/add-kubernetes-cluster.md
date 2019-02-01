@@ -284,7 +284,7 @@ In summary, the following conditions should be met in order to add the cluster, 
 
 1. Kubernetes HOST is in the kubeconfig provided by Rancher for the Kubernetes cluster based on the domain name of Rancher + the Kubernetes cluster endpoint exposed through Rancher in cluster -> server. Example: `https://rancher.localhost/k8s/clusters/c-npft4`
 1. The token should be taken from the kubeconfig provided by Rancher under user -> token section of YAML and it has to be encoded with base64 before putting it into Codefresh. Be careful with the '\n' characters when encoding, do not wrap token in quotes when running echo command. The command for Linux is: `echo <rancher_token> | tr -d '\n' | base64 | tr -d '\n'` Example: `kubeconfig-user-xtnt4:cppxv6db…`
-1. The CA certificate should be the CA of the Load Balancer standing in front of Rancher base64 encoded `openssl base64 -in cert -out b64`
+1. The CA certificate should be the CA of the Load Balancer standing in front of Rancher base64 encoded `openssl base64 -in cert -out b64`.  And then run this command on the file to remove any white space.  `cat b64 | tr -d '\040\011\012\015' > b64_cert` then copy and paste this base64 encoded value into Codefresh UI Cert field.
 1. The hostname and port should be corresponding to your Load Balancer
 
 {% include image.html
