@@ -451,8 +451,8 @@ A pipeline step can also depend on multiple other steps. The syntax is:
 third_step:
   title: Third step
   when:
-    all:
-      steps:
+    steps:
+      all:
        - name: first_step
          on:
            - success
@@ -485,8 +485,8 @@ Codefresh also allows you to define *ANY* behavior in an explicit manner:
 third_step:
   title: Third step
   when:
-    any:
-      steps:
+    steps:
+      any:
        - name: first_step
          on:
            - success
@@ -536,8 +536,8 @@ steps:
     commands: 
       - npm run integration-test  
     when:
-      any:
-        steps:
+      steps:
+        any:
          - name: MyUnitTests
            on:
              - finished
@@ -550,8 +550,8 @@ steps:
     commands: 
       - ./cleanup.sh 
     when:
-      all:
-        steps:
+      steps:
+        all:
          - name: MyUnitTests
            on:
              - finished  
