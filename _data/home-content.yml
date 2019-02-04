@@ -210,6 +210,5 @@
   links:
   - title: Windows Containers Support(Beta)
     localurl: /docs/incubation/windows-beta
-  - title: ARM architecture Support (Alpha)
-    new: true
+  - title: ARM architecture Support 
     localurl: /docs/incubation/arm-support

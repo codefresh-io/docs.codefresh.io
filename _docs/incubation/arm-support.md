@@ -5,7 +5,8 @@ group: incubation
 toc: true
 ---
   
-Codefresh is offering initial support for building Docker images for the ARM architecture. The support is currently in Alpha stage.
+Codefresh is offering initial support for building Docker images for the ARM architecture. ARM support
+is only available to Enterprise customers.
 
 ## Enabling ARM support
 
