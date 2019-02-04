@@ -7,6 +7,7 @@ redirect_from:
   - /docs/integrations/
   - /docs/integrations/git-provider/
   - /docs/integrations/git-providers/integrating-codefresh-with-multiple-git-providers/
+  - /docs/integrations/git-providers/configure-a-bitbucket-server-webhook/  
 toc: true
 ---
 Creating an account with Codefresh using one of the supported Git providers (Github, Gitlab, Bitbucket) gives you immediate access to the repositories of the linked provider.
