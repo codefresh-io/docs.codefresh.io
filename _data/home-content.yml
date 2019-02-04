@@ -54,10 +54,11 @@
     localurl: /docs/codefresh-yaml/what-is-the-codefresh-yaml/
   - title: Yaml steps
     localurl: /docs/codefresh-yaml/steps/
+  - title: Pipeline stages
+    localurl: /docs/codefresh-yaml/stages/   
   - title: Variables
     localurl: /docs/codefresh-yaml/variables/
   - title: Parallel Pipelines
-    new: true
     localurl: /docs/codefresh-yaml/advanced-workflows/
   - title: Working Directories
     localurl: /docs/codefresh-yaml/working-directories/

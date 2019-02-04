@@ -106,6 +106,8 @@
           url: "/deploy"
         - title: "Approval"
           url: "/approval"  
+    - title: Stages
+      url: "/stages"
     - title: "Post-Step Operations"
       url: "/post-step-operations"
     - title: "Parallel steps"

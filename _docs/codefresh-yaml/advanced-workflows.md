@@ -13,7 +13,7 @@ Codefresh is very flexible when it comes to pipeline complexity and depth. You c
 
 With the parallel execution mode you can define complex pipelines with fan-in/out configurations capable of matching even the most complicated workflows within an organization.
 
->Notice that in Codefresh parallel execution is unrelated with [stages]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/#grouping-steps-with-pipeline-stages). Stages are only a way to visually organize your pipeline steps. The actual execution is independent from the visual layout in the logs view.
+>Notice that in Codefresh parallel execution is unrelated with [stages]({{site.baseurl}}/docs/codefresh-yaml/stages/). Stages are only a way to visually organize your pipeline steps. The actual execution is independent from the visual layout in the logs view.
 
 Before going any further make sure that you are familiar with the [basics of Codefresh pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/).
 
@@ -158,7 +158,7 @@ caption="Parallel Docker push"
 max-width="80%"
 %}
 
-As you can see we have also marked the steps with [stages]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/#grouping-steps-with-pipeline-stages) so that we get a visualization that matches the execution.
+As you can see we have also marked the steps with [stages]({{site.baseurl}}/docs/codefresh-yaml/stages/) so that we get a visualization that matches the execution.
 
 
 ### Example: running multiple test suites in parallel

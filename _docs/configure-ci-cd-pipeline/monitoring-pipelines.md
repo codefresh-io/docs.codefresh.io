@@ -58,7 +58,7 @@ The available filters are:
 * *Branches* - any of the available branches
 * *Committers* - person that made the commit that triggered the build
 * *Status* - success, error, in-progress, pending, terminated
-* *Type* - build, [launch a test environment]({{ site.baseurl }}/docs/getting-started/on-demand-environments/#launching-a-docker-image-using-codefresh)
+* *Type* - build, [launch a test environment]({{site.baseurl}}/docs/getting-started/on-demand-environments/#launching-a-docker-image-using-codefresh)
 
 
 Notice that all filters are multiple-choice so you can select multiple values for each filter category.
@@ -116,7 +116,7 @@ Each section in this screen corresponds to each pipeline step. There are two spe
 * *Initializing Process*
 * *Cloning main repository*
 
-These are Codefresh built-in steps and will appear for most builds (you can also create a pipeline that doesn't clone a git repository by default). The rest of the step names depend on your `codefresh.yml` (or the default step names provided by Codefresh).
+These are Codefresh built-in steps and will appear for most builds (you can also create a pipeline that doesn't clone a git repository by default). The rest of the step names depend on your `codefresh.yml` (or the default step names provided by Codefresh). The different columns take the names from the defined [pipeline stages]({{site.baseurl}}/docs/codefresh-yaml/stages/).
 
 ### Viewing logs from pipeline steps
 
