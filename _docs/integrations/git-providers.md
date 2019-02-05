@@ -101,7 +101,7 @@ The name you enter in order to create the token in the Gitlab UI is completely a
 Once you have the token, paste it in the Codefresh UI and click *Test connection*. If everything is OK can
 now save the git integration.
 
-For Gitlab on-premise you also need to provide the URL of the GitHub server in your organization.
+For Gitlab on-premise you also need to provide the URL of the Gitlab server in your organization.
 
 ## Bitbucket
 
