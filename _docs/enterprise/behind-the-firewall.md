@@ -49,14 +49,72 @@ Regarding firewall security:
 
 
 
-## Codefresh Agent installation
+## Using the Codefresh Build Agent 
 
-The Codefresh agent installer is available at [https://github.com/codefresh-io/venona](https://github.com/codefresh-io/venona). Venona is the name of the installer
-that can be used to place the Codefresh agent in a Kubernetes cluster.
+The Codefresh agent installer is available at [https://github.com/codefresh-io/venona](https://github.com/codefresh-io/venona). You can use Venona to create, upgrade and remove agent installations on any internal Kubernetes cluster.
 
-It is possible to install the Codefresh Agent in the same cluster that will run pipelines or in a different one.
+Notice that an agent installation is needed for each cluster that will _run_ Codefresh pipelines. An agent is **not** needed
+in clusters that are used for _deployment_. It is possible to deploy applications on different clusters other than the ones the agent is running on.
 
-### Prerequisites
+The [installation process](https://github.com/codefresh-io/venona/blob/master/README.md) takes care of all the components of the agent as well as the other resources (config-maps, secrets, volumes) needed by them.
 
-Installation can happen from any workstation or laptop that has access (i.e. via `kubectl`) to the kubernetes cluster that will run Codefresh builds. 
+Once installed the agent is fully automated. It polls on its own the Codefresh SAAS (by default every ten seconds) and 
+creates automatically all resources needed for running pipelines.
 
+You can always see what the agent is doing by listing the resources inside the namespace you chose during installation:
+
+```
+$ kubectl get pods -n codefresh-runtime
+NAME                                             READY     STATUS    RESTARTS   AGE
+dind-5c5afbb02e9fd02917b33f06                    1/1       Running   0          1m
+dind-lv-monitor-venona-kkkwr                     1/1       Running   1          7d
+dind-volume-provisioner-venona-646cdcdc9-dqh8k   1/1       Running   2          7d
+engine-5c5afbb02e9fd02917b33f06                  1/1       Running   0          1m
+venona-8b5f787c5-ftbnd                           1/1       Running   2          7d
+```
+In the same manner you can list secrets, config-maps, logs, volumes etc. for the Codefresh builds.
+
+
+### Registering the agent to your Codefresh account
+
+Installation can happen from any workstation or laptop that has access (i.e. via `kubectl`) to the kubernetes cluster that will run Codefresh builds. The Codefresh agent will authenticate to your Codefresh account by using the [Codefresh CLI token]({{site.baseurl}}/docs/integrations/codefresh-api/#authentication-instructions). It is therefore necessary to setup [Codefresh CLI access](https://codefresh-io.github.io/cli/getting-started/) first, in the machine where you install the agent from.
+
+Notice that access to the Codefresh CLI is only needed during the agent installation. After that, the agent with authenticate on it own using the details provided. You do *NOT* need to install the Codefresh CLI on the cluster that is running Codefresh pipelines.
+
+### Verifying the agent installation
+
+Once installation is complete, you should see the cluster of the agent as a new [Runtime environment](https://g.codefresh.io/account-admin/account-conf/runtime-environments) in Codefresh at your *Account Settings*, in the respective tab.
+
+{% include image.html
+  lightbox="true"
+  file="/images/enterprise/behind-the-firewall/runtime-environments.png"
+  url="/images/enterprise/behind-the-firewall/runtime-environments.png"
+  alt="Available runtime environments"
+  caption="Available runtime environments"
+  max-width="60%"
+    %} 
+
+If you have multiple environments available you can change the default one (shown with a thin blue border) by clicking on the 3 dot menu on the right of each environment.
+
+You can even override the runtime environment for a specific pipeline by specifying in the respective section in the [pipeline settings]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/). 
+
+{% include image.html
+  lightbox="true"
+  file="/images/enterprise/behind-the-firewall/environment-per-pipeline.png"
+  url="/images/enterprise/behind-the-firewall/environment-per-pipeline.png"
+  alt="Running a pipeline on a specific environment"
+  caption="Running a pipeline on a specific environment"
+  max-width="60%"
+    %} 
+
+## Using Secure services in your pipelines
+
+### Checking out code from a private GIT repository
+
+### Accessing an internal docker registry
+
+### See also
+
+* [Codefresh installation options]({{site.baseurl}}/docs/enterprise/installation-security/)
+* [Google marketplace integration]({{site.baseurl}}/docs/integrations/google-marketplace/)
+* [Managing your Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/)
