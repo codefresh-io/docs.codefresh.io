@@ -82,10 +82,10 @@ At this point, you will take the information you just collected and send to Code
 
 On the app configuration tab configure the following:
 
-* Audience - `urn:auth0:codefresh-login:frontline`
-* Recipient - `https://codefresh-login.auth0.com/login/callback?connection=frontline`
+* Audience - `urn:auth0:codefresh-login:<company_name>`
+* Recipient - `https://codefresh-login.auth0.com/login/callback?connection=<company_name>`
 * ACS (Consumer) URL Validator - `[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)`
-* ACS (Consumer) URL - `https://codefresh-login.auth0.com/login/callback?connection=frontline`
+* ACS (Consumer) URL - `https://codefresh-login.auth0.com/login/callback?connection=<company_name>`
 
 {% include image.html 
 lightbox="true" 
