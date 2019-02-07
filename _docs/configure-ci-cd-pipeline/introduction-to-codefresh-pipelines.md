@@ -121,7 +121,7 @@ caption="All steps share the same volume"
 max-width="90%" 
 %}
 
-Anything is that is placed on this volume will be available to all steps of the pipeline (as well as to subsequent executions of the same pipeline as we will see later).
+Anything that is placed on this volume will be available to all steps of the pipeline (as well as to subsequent executions of the same pipeline as we will see later).
 
 Again, this places Codefresh ahead of traditional solutions that execute build steps in a completely isolated manner. 
 In traditional VM-based builds, using artifacts produced from one step to another, is a complicated process as one 
