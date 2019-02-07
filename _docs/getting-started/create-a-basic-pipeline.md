@@ -206,7 +206,24 @@ The Git repository is now successfully added into Codefresh. From now on you can
 
 ### Starting the first build
 
-Codefresh will then present to you the configuration settings for your first pipeline. Again, the defaults are fine
+Codefresh will then present to you the configuration settings for your first pipeline. 
+By default the pipeline is set to be configured by [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/). For the purposes of this tutorial we will use the much easier *Basic* mode
+that pre-configures the pipeline with some basic steps.
+
+Find the toggle switch on the right of the editor and click it to activate basic mode. A warning will appear, where you should answer *yes*. 
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/getting-started/quick-start-ci/yaml-toggle.png" 
+url="/images/getting-started/quick-start-ci/yaml-toggle.png" 
+alt="Switching to Basic mode" 
+caption="Switching to Basic mode" 
+max-width="100%" 
+%}
+
+
+The defaults of the *basic mode* are fine
 for the sample application. Click the *Build* button and then confirm the next dialog to start your first build with Codefresh!
 
 {% include 
