@@ -167,9 +167,9 @@ By default Codefresh will connect to your Git provider and do the following:
 1. Auto-build every new commit that happens in master or any other branch
 1. Auto-build every new branch when it is created
 
-You can change the default behavior so that it matches your own workflow using extra [GIT Triggers]({{ site.baseurl }}/docs/configure-ci-cd-pipeline/triggers/git-triggers/).
+You can change the default behavior so that it matches your own workflow using extra [GIT Triggers]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/).
 
-You don't have to anything special to setup this communication between Codefresh and your Git provider. It was setup automatically for you when you connected your Codefresh account to your Git provider.
+You don't have to do anything special to setup this communication between Codefresh and your Git provider. It was setup automatically for you when you connected your Codefresh account to your Git provider.
 
 Codefresh also creates for you a default GIT trigger the first time you create a project.
 

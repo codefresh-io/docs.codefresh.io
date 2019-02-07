@@ -75,7 +75,9 @@
   - title: "Pushing images"
     localurl: "/docs/docker-registries/push-image-to-a-docker-registry"  
   - title: Custom image annotations
-    localurl: /docs/docker-registries/metadata-annotations/  
+    localurl: /docs/docker-registries/metadata-annotations/ 
+  - title: Docker registry integration
+    localurl: /docs/docker-registries/external-docker-registries/   
   - title: DockerHub
     localurl: /docs/docker-registries/external-docker-registries/docker-hub/
   - title: Amazon Elastic Container Registry
@@ -165,8 +167,6 @@
   icon: images/home-icons/integrations.png
   url: ''
   links:
-  - title: Docker registry integration
-    localurl: /docs/docker-registries/external-docker-registries/
   - title: GIT integration
     localurl: /docs/integrations/git-providers/
   - title: Jenkins integration
