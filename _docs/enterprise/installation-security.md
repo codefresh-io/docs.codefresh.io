@@ -79,7 +79,7 @@ The UI part is still compliant with Soc2.
 
 For customers that wish to have full control over everything, Codefresh also offers an on-premise option. In this case everything (UI and builds) are running on an environment (Kubernetes cluster) fully managed by the customer.
 
-While Codefresh can still help with maintenance of the whole platform, the hybrid solution is most times better suited for the flexibility it offers.
+While Codefresh can still help with maintenance of the on-premise platform, we would recommend trying the Hybrid solution first as it offers the most flexibility while maintaining high security.
 
 ## Comparison table
 
