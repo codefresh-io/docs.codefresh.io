@@ -114,9 +114,7 @@
   - title: Managing your cluster
     localurl: /docs/deploy-to-kubernetes/manage-kubernetes/
   - title: Accessing a Docker registry from your cluster
-    localurl: /docs/deploy-to-kubernetes/access-docker-registry-from-kubernetes/  
-  - title: End-to-end deployment example (demochat)
-    localurl: /docs/deploy-to-kubernetes/codefresh-kubernetes-integration-demochat-example/      
+    localurl: /docs/deploy-to-kubernetes/access-docker-registry-from-kubernetes/       
 - title: "Helm"
   icon: images/home-icons/helm.png
   url: ''
@@ -140,6 +138,8 @@
   icon: images/home-icons/deployment.png
   url: ''
   links:
+  - title: Deploy to Kubernetes
+    localurl: /docs/deploy-to-kubernetes/codefresh-kubernetes-integration-demochat-example/ 
   - title: Deploy to ECS
     localurl: /docs/deploy-your-containers/amazon-ecs/
   - title: Deploy to Swarm
