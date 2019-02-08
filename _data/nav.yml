@@ -326,7 +326,9 @@
         - title: OneLogin
           url: "/sso-onelogin"
     - title: Installation Options
-      url: "/installation-security"       
+      url: "/installation-security"  
+    - title: Codefresh behind the firewall
+      url: "/behind-the-firewall"      
 
 - title: Incubation
   url: "/incubation"
