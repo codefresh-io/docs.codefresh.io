@@ -6,7 +6,7 @@ toc: true
 
 ---
 
-As explained in the [installation page]({{site.baseurl}}/docs/enterprise/installation-security/) Codefresh offers 3 installation options SAAS, on-premise and Hybrid.
+As explained in the [installation page]({{site.baseurl}}/docs/enterprise/installation-security/) Codefresh offers 3 installation options: pure cloud, on-premise and Hybrid.
 In this page we are going to describe the Hybrid option and all the advantages it offers.
 
 ## Running Codefresh in secure environments

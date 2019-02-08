@@ -187,18 +187,18 @@
   icon: images/home-icons/enterprise1.png
   url: ''
   links:
-  - title: Codefresh hybrid installation
-    localurl: /docs/enterprise/codefresh-hybrid
-  - title: Enterprise Account Management
-    localurl: /docs/enterprise/ent-account-mng
-  - title: Single Sign on
-    localurl: /docs/enterprise/single-sign-on
   - title: Installation Options
     new: true
     localurl: /docs/enterprise/installation-security
   - title: Codefresh behind the firewall
     new: true
-    localurl: /docs/enterprise/behind-the-firewall
+    localurl: /docs/enterprise/behind-the-firewall  
+  - title: Enterprise Account Management
+    localurl: /docs/enterprise/ent-account-mng
+  - title: Single Sign on
+    localurl: /docs/enterprise/single-sign-on
+  - title: Codefresh hybrid installation (legacy)
+    localurl: /docs/enterprise/codefresh-hybrid
 - title: "Codefresh CLI"
   icon: images/home-icons/cli.png
   url: ''

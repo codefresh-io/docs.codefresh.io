@@ -306,8 +306,10 @@
 - title: Enterprise features
   url: "/enterprise"
   pages:
-    - title: Hybrid installation
-      url: "/codefresh-hybrid"
+    - title: Installation Options
+      url: "/installation-security"  
+    - title: Codefresh behind the firewall
+      url: "/behind-the-firewall"  
     - title: Enterprise Account Management
       url: "/ent-account-mng"
     - title: Single Sign-On
@@ -325,10 +327,8 @@
           url: "/sso-okta"
         - title: OneLogin
           url: "/sso-onelogin"
-    - title: Installation Options
-      url: "/installation-security"  
-    - title: Codefresh behind the firewall
-      url: "/behind-the-firewall"      
+    - title: Hybrid installation (legacy)
+      url: "/codefresh-hybrid"   
 
 - title: Incubation
   url: "/incubation"

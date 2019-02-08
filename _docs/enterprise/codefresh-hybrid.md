@@ -1,5 +1,5 @@
 ---
-title: "Codefresh Hybrid installation"
+title: "Codefresh Hybrid installation (legacy)"
 description: "Add your own Node to run/build containers"
 group: enterprise
 redirect_from:
@@ -7,6 +7,9 @@ redirect_from:
 toc: true
 old_url: /docs/add-your-node-to-runbuild-containers
 ---
+
+>Note that this page is now describing the legacy hybrid mode. For the new version look at [behind-the-firewall]({{site.baseurl}}/docs/enterprise/behind-the-firewall/) documentation.
+
 Codefresh lets you use your own host as a node to run/build containers.
 
 {:start="1"} 
