@@ -123,7 +123,7 @@ All pipelines that are executed in the private Kubernetes cluster have access to
  Any of these pipelines will work out the box and no extra configuration is needed. In all cases
  all data will stay with the private local network and will never exit the firewall.
 
- >Notice that [long running compositions]({{site.baseurl}}/({{site.baseurl}}/docs/codefresh-yaml/steps/composition-1/)) (preview test environments) are not yet available via the Codefresh
+ >Notice that [long running compositions]({{site.baseurl}}/docs/codefresh-yaml/steps/composition-1/) (preview test environments) are not yet available via the Codefresh
  build agent.
 
 
