@@ -56,7 +56,7 @@ The Codefresh agent installer is available at [https://github.com/codefresh-io/v
 Notice that an agent installation is needed for each cluster that will _run_ Codefresh pipelines. An agent is **not** needed
 in clusters that are used for _deployment_. It is possible to deploy applications on different clusters other than the ones the agent is running on.
 
-The [installation process](https://github.com/codefresh-io/venona/blob/master/README.md) takes care of all the components of the agent as well as the other resources (config-maps, secrets, volumes) needed by them.
+The [installation process](https://github.com/codefresh-io/venona/blob/master/README.md) takes care of all the components of the agent as well as the other resources (config-maps, secrets, volumes) needed by them. For Mac environments there is also a brew package.
 
 Once installed the agent is fully automated. It polls on its own the Codefresh SAAS (by default every ten seconds) and 
 creates automatically all resources needed for running pipelines.
@@ -94,7 +94,7 @@ Once installation is complete, you should see the cluster of the agent as a new 
   max-width="60%"
     %} 
 
-If you have multiple environments available you can change the default one (shown with a thin blue border) by clicking on the 3 dot menu on the right of each environment.
+If you have multiple environments available you can change the default one (shown with a thin blue border) by clicking on the 3 dot menu on the right of each environment. The Codefresh agent installer comes with an option `set-default` that will automatically set as default the new runtime environment.
 
 You can even override the runtime environment for a specific pipeline by specifying in the respective section in the [pipeline settings]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/). 
 
@@ -107,19 +107,24 @@ You can even override the runtime environment for a specific pipeline by specify
   max-width="60%"
     %} 
 
+You can also verify your environment from the terminal with the `venona status` command.
+
 ## Using Secure services in your pipelines
 
 All pipelines that are executed in the private Kubernetes cluster have access to all other internal services that are network reachable. It is therefore very easy to create pipelines that
 
  * Use databases internal to the company
  * run integration tests against services internal to the company
- * launch [compositions]({{site.baseurl}}/ docs/codefresh-yaml/steps/composition-1/) that communicate with other secure services
+ * launch [compositions]({{site.baseurl}}/docs/codefresh-yaml/steps/composition-1/) that communicate with other secure services
  * Upload and download artifacts from a private artifact repository (e.g. Nexus or Artifactory)
  * deploy to any other cluster accessible in the secure network
  * create infrastructure such as machines, load balancers, auto-scaling groups etc.
 
  Any of these pipelines will work out the box and no extra configuration is needed. In all cases
  all data will stay with the private local network and will never exit the firewall.
+
+ >Notice that [long running compositions]({{site.baseurl}}/({{site.baseurl}}/docs/codefresh-yaml/steps/composition-1/)) (preview test environments) are not yet available via the Codefresh
+ build agent.
 
 
 
