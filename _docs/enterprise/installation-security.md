@@ -8,7 +8,7 @@ redirect_from:
 ---
 Codefresh offers 3 installation options that can cater to any size of organization. These are:
 
-* SAAS version that runs in the cloud and is 100% managed by Codefresh
+* Full cloud version that runs 100% in the cloud and is fully managed by Codefresh
 * On-premise version where Codefresh runs inside the customer datacenter/cloud
 * Hybrid version where the UI runs in the Codefresh cloud but builds are running on customer premises
 
@@ -16,15 +16,15 @@ On-premise and Hybrid versions are available to Enterprise customers that are lo
 
 
 
-### SAAS version 
+### Cloud version 
 
-The SAAS version is the easiest way to start using Codefresh as it is fully managed. All maintenance and updates
+The Cloud version is the easiest way to start using Codefresh as it is fully managed and runs 100% on the cloud. All maintenance and updates
 are executed by the Codefresh DevOps team.
 
 You can also create a [free account]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/) on the SAAS version right away. The account is forever free with some limitations
 on number of builds.
 
-The SAAS versions runs on multiple clouds:
+The cloud version runs on multiple clouds:
 
 {% include image.html
   lightbox="true"
@@ -34,7 +34,7 @@ The SAAS versions runs on multiple clouds:
   max-width="60%"
     %}
 
-Codefresh SAAS is also compliant with [SOC2 - Type2](https://www.aicpa.org/SOC) showing our commitment to security and availability.
+Codefresh Cloud is also compliant with [SOC2 - Type2](https://www.aicpa.org/SOC) showing our commitment to security and availability.
 
 {% include image.html
   lightbox="true"
@@ -44,7 +44,7 @@ Codefresh SAAS is also compliant with [SOC2 - Type2](https://www.aicpa.org/SOC) 
   max-width="40%"
     %}    
 
-The SAAS version has multi-account support with most git providers (Gitlab, Github, Bitbucket) as well as Azure and Google.
+The Cloud version has multi-account support with most git providers (Gitlab, Github, Bitbucket) as well as Azure and Google.
 
 
 ### Hybrid installation
