@@ -61,6 +61,8 @@ The [installation process](https://github.com/codefresh-io/venona/blob/master/RE
 Once installed the agent is fully automated. It polls on its own the Codefresh SAAS (by default every ten seconds) and 
 creates automatically all resources needed for running pipelines.
 
+Only the agent pod is long-living insider your cluster. All other components (such as the engine) are short lived and exist only during pipeline builds.
+
 You can always see what the agent is doing by listing the resources inside the namespace you chose during installation:
 
 ```
@@ -77,7 +79,7 @@ In the same manner you can list secrets, config-maps, logs, volumes etc. for the
 
 ### Registering the agent to your Codefresh account
 
-Installation can happen from any workstation or laptop that has access (i.e. via `kubectl`) to the kubernetes cluster that will run Codefresh builds. The Codefresh agent will authenticate to your Codefresh account by using the [Codefresh CLI token]({{site.baseurl}}/docs/integrations/codefresh-api/#authentication-instructions). It is therefore necessary to setup [Codefresh CLI access](https://codefresh-io.github.io/cli/getting-started/) first, in the machine where you install the agent from.
+Installation can happen from any workstation or laptop that has access (i.e. via `kubectl`) to the Kubernetes cluster that will run Codefresh builds. The Codefresh agent will authenticate to your Codefresh account by using the [Codefresh CLI token]({{site.baseurl}}/docs/integrations/codefresh-api/#authentication-instructions). It is therefore necessary to setup [Codefresh CLI access](https://codefresh-io.github.io/cli/getting-started/) first, in the machine where you install the agent from.
 
 Notice that access to the Codefresh CLI is only needed during the agent installation. After that, the agent with authenticate on it own using the details provided. You do *NOT* need to install the Codefresh CLI on the cluster that is running Codefresh pipelines.
 
@@ -143,7 +145,7 @@ need to mark it as *behind the firewall* as well:
     %} 
 
 Once you do that save your provider and make sure that it has the correct tags. The name you used for the git provider will also be used in the pipeline. You cannot "test the connection" because 
-the Codefresh SAAS doesn't have access to your on-premise GIT repo.
+the Codefresh SAAS doesn't have access to your on-premise GIT repository.
 
 {% include image.html
   lightbox="true"
@@ -180,9 +182,11 @@ steps:
 
 Once you trigger the pipeline, the Codefresh builder will communicate with your private GIT instance and checkout code.
 
+>Note that currently there is a limitation in regards to the location of the `codefresh.yml` file. Only the [inline mode]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#writing-codefresh-yml-in-the-gui) is supported. Soon we will allow the loading of the pipeline from the git repository itself.
+
 #### Adding triggers from private GIT repositories
 
-In the previous section we have seen how a pipeline can checkout code from the internal git repo. We also need to setup a trigger
+In the previous section we have seen how a pipeline can checkout code from the internal git repository. We also need to setup a trigger
 so that every time a commit happens (or any other supported event), the Codefresh pipeline will be triggered automatically.
 
 This is a two step process:
@@ -260,6 +264,32 @@ steps:
     registry: my-internal-docker-registry  
 {% endraw %}
 {% endhighlight %}
+
+
+### Deploying to an internal Kubernetes cluster
+
+To connect a cluster that is behind the firewall follow the [connecting cluster guide]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/), paying attention to the following two points.
+
+1. You cluster should be added as a [Custom provider]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/#adding-any-other-cluster-type-not-dependent-on-any-provider)
+1. You need to mark the cluster as internal by using the toggle switch.
+
+
+
+
+{% include image.html
+  lightbox="true"
+  file="/images/enterprise/behind-the-firewall/cluster-behind-firewall.png"
+  url="/images/enterprise/behind-the-firewall/cluster-behind-firewall.png"
+  alt="Marking a Kubernetes cluster as internal"
+  caption="Marking a Kubernetes cluster as internal"
+  max-width="60%"
+    %}
+
+The cluster where the build agent runs should have network connectivity with the cluster you wish to deploy to.
+
+>Notice that the service account used in the cluster configuration is completely independent from the privileges granted to the Codefresh build agent. The privileges needed by the agent are only used to launch Codefresh pipelines within your cluster. The Service account used in the "custom provider" setting should have the needed privileges for deployment.
+
+Once your cluster is connected you can use any of the familiar deployment methods such as the [dedicated deploy step]({{site.baseurl}}/docs/deploy-to-kubernetes/deployment-options-to-kubernetes/) or [custom kubectl commands]({{site.baseurl}}/docs/deploy-to-kubernetes/custom-kubectl-commands/).
 
 ### See also
 
