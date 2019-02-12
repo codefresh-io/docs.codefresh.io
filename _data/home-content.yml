@@ -114,7 +114,9 @@
   - title: Managing your cluster
     localurl: /docs/deploy-to-kubernetes/manage-kubernetes/
   - title: Accessing a Docker registry from your cluster
-    localurl: /docs/deploy-to-kubernetes/access-docker-registry-from-kubernetes/       
+    localurl: /docs/deploy-to-kubernetes/access-docker-registry-from-kubernetes/    
+  - title: Run custom kubectl commands
+    localurl: "/docs/deploy-to-kubernetes/custom-kubectl-commands/"     
 - title: "Helm"
   icon: images/home-icons/helm.png
   url: ''

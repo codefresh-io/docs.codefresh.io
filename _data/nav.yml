@@ -214,7 +214,7 @@
       sub-pages:
         - title: Create GKE Cluster
           url: "/create-cluster"
-    - title: Add Kubernetes cluster
+    - title: Connect your Kubernetes cluster
       url: "/add-kubernetes-cluster"
     - title: Manage your Kubernetes cluster
       url: "/manage-kubernetes"
@@ -222,6 +222,8 @@
       url: "/access-docker-registry-from-kubernetes"
     - title: Add config maps to your namespaces
       url: "/add-config-maps-to-your-namespaces"
+    - title: Run custom kubectl commands
+      url: "/custom-kubectl-commands"  
     - title: Example - Deploy demochat to Kubernetes cluster
       url: "/codefresh-kubernetes-integration-demochat-example"      
 
