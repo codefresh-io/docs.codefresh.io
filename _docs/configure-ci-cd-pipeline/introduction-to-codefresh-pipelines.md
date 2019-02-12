@@ -221,11 +221,11 @@ Usually you want to run a docker command for four reasons
 
 For all these situations Codefresh gives you special pipeline steps that perform the respective action. These are:
 
-1. The [build step]({{ site.baseurl }}/docs/codefresh-yaml/steps/build-1/)
-1. The [push step]({{ site.baseurl }}/docs/codefresh-yaml/steps/push-1/)
-1. The [compositions step]({{ site.baseurl }} /docs/codefresh-yaml/steps/composition-1/)
+1. The [build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build-1/)
+1. The [push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push-1/)
+1. The [compositions step]({{site.baseurl}}/docs/codefresh-yaml/steps/composition-1/)
 
-To actually run a docker container you just use the [freestyle step]({{ site.baseurl }}/docs/codefresh-yaml/steps/freestyle/). The commands you define in a freestyle step run automatically in a Docker container that is attached to that step once the pipeline executes.
+To actually run a docker container you just use the [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/). The commands you define in a freestyle step run automatically in a Docker container that is attached to that step once the pipeline executes.
 
 Therefore this command on your local workstation:
 

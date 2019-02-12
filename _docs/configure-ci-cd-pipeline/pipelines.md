@@ -102,7 +102,7 @@ and compile/package all needed resources on its own. If you have a Dockerfile th
 The **Unit test** step executes any command of your choosing *inside* the Docker image that was created in the previous step. This means that if you need any special unit test libraries, your Dockerfile should keep them intact (So if you are using multi-stage Docker builds, you cannot execute tests using the GUI way). If your unit tests fail, the pipeline stops and the Docker image is not uploaded in any Docker registry.
 
 The **Push to registry** steps pushes the Docker image to any registry of your choosing as defined in [external registry integrations]({{site.baseurl}}/docs/docker-registries/external-docker-registries/).
-Notice that your image will be uploaded always to the integrated [Codefresh Docker registry]({{site.baseur}}/docs/docker-registries/codefresh-registry/) if you don't do something special.
+Notice that your image will be uploaded always to the integrated [Codefresh Docker registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/) if you don't do something special.
 
 The **Integrations tests** step executes any command of your choosing *inside* the Docker image that was created in the *Build* step so the same caveats as unit tests apply. If the integration tests fail however, the Docker image is *already* uploaded in the image registry.
 
