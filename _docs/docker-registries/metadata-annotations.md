@@ -1,6 +1,6 @@
 ---
 title: "Image Metadata Annotations"
-description: ""
+description: "How to use custom metadata in your Docker images"
 group: docker-registries
 redirect_from:
   - /docs/metadata-annotations/
@@ -34,7 +34,7 @@ Metadata values may be of the following types:
                                            
 You can also use [Expression evaluations]({{site.baseurl}}/docs/codefresh-yaml/expression-condition-syntax/) to set metadata.
 
-## Annotate your images using codefresh YAML
+## Annotate your images using Codefresh YAML
 You can annotate an image as part of it's builds process and also on post build steps.
 
 {:.text-secondary}
@@ -96,26 +96,7 @@ any_step:
               evaluate: "{% raw %}'${{CF_BRANCH}}'{% endraw %} == 'main'"
 {% endhighlight %}
 
-## Viewing Image Metadata Annotations
-You can view an image's metadata annotation by:
-1. Navigating to the `Images` view
-2. Selecting the target image
-3. Selecting the `Annotations` tab
-
-{% 
-  include image.html 
-  lightbox="true" 
-  file="/images/artifacts/metadata/annotations.png" 
-  url="/images/artifacts/metadata/annotations.png" 
-  alt="Image annotations" 
-  max-width="65%" 
-%}
-
-In addition, you can add selected annotations to the images table on images page. To display an annotation in the image table, click on the gear icon at the top right corner of image page and then select all annotations you want to display.
-
-{% include image.html lightbox="true" file="/images/aec92e8-Screen_Shot_2017-10-17_at_3.01.26_PM.png" url="/images/aec92e8-Screen_Shot_2017-10-17_at_3.01.26_PM.png" alt="Screen Shot 2017-10-08 at 8.28.35 AM.png" max-width="40%" %}
-
-## Example - Quality Image Metadata Annotation
+### Example - Quality Image Metadata Annotation
 You can set a quality indicator to images to show if they passed or failed tests. An image with the boolean annotation `CF_QUALITY` set to true will have a quality indicator in the 'Images' view. 
 
   `YAML`
@@ -151,6 +132,81 @@ Image quality has 3 indicators:
 * no value (nobody set the annotation) - this image has no quality indicator
 
 {% include image.html lightbox="true" file="/images/c39a9a2-QUALI.png" url="/images/c39a9a2-QUALI.png" alt="QUALI" max-width="40%" %}
+
+
+## Viewing Image Metadata Annotations
+You can view an image's metadata annotation by:
+1. Navigating to the `Images` view
+2. Selecting the target image
+3. Selecting the `Annotations` tab
+
+{% 
+  include image.html 
+  lightbox="true" 
+  file="/images/artifacts/metadata/annotations.png" 
+  url="/images/artifacts/metadata/annotations.png" 
+  alt="Image annotations" 
+  max-width="65%" 
+%}
+
+In addition, you can add selected annotations to the images table on images page. To display an annotation in the image table, click on the gear icon at the top right corner of image page and then select all annotations you want to display.
+
+{% include image.html lightbox="true" file="/images/aec92e8-Screen_Shot_2017-10-17_at_3.01.26_PM.png" url="/images/aec92e8-Screen_Shot_2017-10-17_at_3.01.26_PM.png" alt="Screen Shot 2017-10-08 at 8.28.35 AM.png" max-width="40%" %}
+
+
+## Annotating images programmatically
+
+It is also possible to annotate images with the [Codefresh CLI](https://codefresh-io.github.io/cli/).
+
+First find the id of an image that you wish to annotate with the command
+
+```
+codefresh get images
+```
+
+You can also search for a specific image by name:
+
+```
+$ codefresh get images --image-name custom
+ID           NAME                   TAG CREATED          SIZE     PULL
+b5f103a87856 my-custom-docker-image bla Fri Feb 01 2019  91.01 MB r.cfcr.io/kostis-codefresh/my-custom-docker-image:bla
+```
+Then once you have the ID of the image you can use the [annotate command](https://codefresh-io.github.io/cli/images/annotate-image/) to add extra metadata:
+
+```
+codefresh annotate image b5f103a87856 -l coverage=75
+```
+
+## Using custom metadata in Codefresh pipelines
+
+You can also use the Codefresh CLI to fetch existing metadata from images. It is then very easy to extract and process specific fields with [yq](https://github.com/kislyuk/yq)
+
+Here is an example
+```
+$ codefresh get image b5f103a87856 --output=yaml | yq -r .annotations.coverage
+75
+```
+
+You can then easily process the metadata (e.g. with scripts) and take decisions according to them. Here is an example
+step that will fail the build if test coverage on an image is less than 80%
+
+  `YAML`
+{% highlight yaml %}
+version: '1.0'
+steps:
+  findLabel:
+    title: Get image label for coverage
+    image: codefresh/cli
+    commands:
+      - export MY_COVERAGE=$(codefresh get image b5f103a87856 --output=yaml | yq -r .annotations.coverage)
+      - echo "Coverage is $MY_COVERAGE"
+      - if [[ $MY_COVERAGE -lt "80" ]]; then exit 1 ; fi
+
+{% endhighlight %}
+
+The possibilities are endless as you can take any combination of image metadata and use any complex conditional
+in order to process them in a Codefresh pipeline.
+
 
 ### See also
 
