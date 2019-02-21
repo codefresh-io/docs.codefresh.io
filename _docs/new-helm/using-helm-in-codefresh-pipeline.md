@@ -176,7 +176,7 @@ helm:
   image: codefresh/cfstep-helm:2.9.0
   commands:
     - export HELM_REPO_ACCESS_TOKEN=${{CF_API_KEY}}
-    - export HELM_REPO_AUTH_HEADER=x-access-token
+    - export HELM_REPO_AUTH_HEADER=Authorization
     - helm repo add incubator https://kubernetes-charts-incubator.storage.googleapis.com/
     - helm repo add myrepo ${{CF_CTX_CF_HELM_DEFAULT_URL}}
     - helm push chart-example/ myrepo
