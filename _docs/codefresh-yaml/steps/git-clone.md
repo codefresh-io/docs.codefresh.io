@@ -45,7 +45,7 @@ step_name:
 | `description`                              | A basic, free-text description of the step.                                                                                                                                                                                        | Optional                  |
 | `stage`                              | Parent group of this step. See [using stages]({{site.baseurl}}/docs/codefresh-yaml/stages/) for more information.                                                                                                                                                                                          | Optional                  |
 | `working_directory`                        | The directory to which the repository is cloned. It can be an explicit path in the container's file system, or a variable that references another step. The default value is {% raw %}`${{main_clone}}`{% endraw %}.                | Default                   |
-| `git` | The name of the [git integration]({{ site.baseurl }}/docs/integrations/git-providers/) you want to use. You can also use `CF-default` as a value for the default git provider that was used during Codefresh sign-up | Required| 
+| `git` | The name of the [git integration]({{site.baseurl}}/docs/integrations/git-providers/) you want to use. You can also use `CF-default` as a value for the default git provider that was used during Codefresh sign-up | Required| 
 | `repo`                                     | path of the repository without the domain name in the form of `my_username/my_repo`                                                                                                                                                                                       | Required                  |
 | `revision`                                 | The revision of the repository you are checking out. It can be a revision hash or a branch name. The default value is `master`.                                                                                                     | Default                   |
 | `credentials`                              | Credentials to access the repository, if it requires authentication. It can an object containing `username` and `password` fields.                                                                                                 | Optional                  |
@@ -58,7 +58,7 @@ step_name:
 -  Working Directory
 
 {{site.data.callout.callout_info}}
-If you want to extend the git-clone step you can use the freestyle step. Example how to do it you can find [here]({{ site.baseurl }}/docs/yaml-examples/examples/git-clone-private-repository-using-freestyle-step/) 
+If you want to extend the git-clone step you can use the freestyle step. Example how to do it you can find [here]({{site.baseurl}}/docs/yaml-examples/examples/git-clone-private-repository-using-freestyle-step/) 
 {{site.data.callout.end}}
 
 ## Skip or customize default clone
@@ -76,11 +76,74 @@ There are 2 ways to do that:
 2. Add a step with key `main_clone` to your pipeline. This step can be of any type and can do any action. This step will override the default clone implementation. for example:
 
 ```yaml
+version: '1.0'
 steps:
   main_clone:
+    title: Checking out code
     image: alpine/git:latest
     commands:
       - git clone ...
   another_step:
     ...
 ```
+
+### Reuse a Git token from Codefresh integrations
+
+If you customize the git clone step, you also have the capability to use one of your existing [git integrations]({{site.baseurl}}/docs/integrations/git-providers/)
+as an authentication mechanism.
+
+The [Codefresh CLI](https://codefresh-io.github.io/cli/) can read one of the connected [git authentication contexts](https://codefresh-io.github.io/cli/contexts/get-context/) and use that token for a custom clone step.
+
+Here is an example for Github
+
+```yaml
+version: '1.0'
+steps:
+  get_git_token
+    title: Reading Github token
+    image: codefresh/cli
+    commands:
+      - cf_export GITHUB_TOKEN=$(codefresh get context github --decrypt -o yaml | yq -y .spec.data.auth.password)
+  main_clone:
+    title: Checking out code
+    image: alpine/git:latest
+    commands:
+      - git clone https://my-github-username:$GITHUB_TOKEN@github.com/my-github-username/my-repo.git
+  another_step:
+    ...
+```
+
+### Use an SSH key with Git
+
+It is also possible to use an SSH key with git. When [creating your pipeline]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/) add your SSH key as an encrypted 
+environment variable after processing it with `tr`:
+
+```
+cat ~/.ssh/my_ssh_key_file | tr '\n' ','
+```
+
+
+Then in pipeline use it like this:
+
+```yaml
+version: '1.0'
+steps:
+  main_clone:
+    title: Checking out code
+    image: alpine/git:latest
+    commands:
+      - mkdir -p ~/.ssh
+      - echo "${SSH_KEY}" | tr \'"${SPLIT_CHAR}"\' '\n' > ~/.ssh/id_rsa
+      - chmod 600 ~/.ssh/id_rsa
+      - git clone git@github.com:my-github-username/my-repo.git
+      # can also use go get or other similar command that uses git internally
+  another_step:
+    ...
+```
+
+
+
+
+
+
+

@@ -172,7 +172,8 @@ steps:
 
 ## Related topics
 - [Kubernetes Quick start guide]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/) 
-- [Use kubectl as part of Freestyle step]({{site.baseurl}}/docs/yaml-examples/examples/use-kubectl-as-part-of-freestyle-step/) 
+- [Custom kubectl commands]({{site.baseurl}}/docs/deploy-to-kubernetes/custom-kubectl-commands/) 
 - [Deploy to Kubernetes]({{site.baseurl}}/docs/deploy-to-kubernetes/codefresh-kubernetes-integration-beta/) 
 - [Install HELM chart using Codefresh pipeline]({{site.baseurl}}/docs/new-helm/using-helm-in-codefresh-pipeline/)
+
 
