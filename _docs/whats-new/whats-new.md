@@ -9,6 +9,7 @@ toc: true
 
 ### February 2019
 
+- Accessing the shared volume in compositions - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/composition-1/#accesing-your-project-folder-from-a-composition)
 - Reuse Git integration in custom clone step - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/#reuse-a-git-token-from-codefresh-integrations)
 - Run custom kubectl commands - [documentation]({{site.baseurl}}/docs/deploy-to-kubernetes/custom-kubectl-commands/)
 - Reading Image metadata - [documentation]({{site.baseurl}}/docs/docker-registries/metadata-annotations/#using-custom-metadata-in-codefresh-pipelines)

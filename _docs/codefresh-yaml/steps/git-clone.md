@@ -99,7 +99,7 @@ Here is an example for Github
 ```yaml
 version: '1.0'
 steps:
-  get_git_token
+  get_git_token:
     title: Reading Github token
     image: codefresh/cli
     commands:
@@ -125,7 +125,9 @@ cat ~/.ssh/my_ssh_key_file | tr '\n' ','
 
 Then in pipeline use it like this:
 
-```yaml
+`YAML`
+{% highlight yaml %}
+{% raw %}
 version: '1.0'
 steps:
   main_clone:
@@ -139,7 +141,8 @@ steps:
       # can also use go get or other similar command that uses git internally
   another_step:
     ...
-```
+{% endraw %}
+{% endhighlight %}
 
 
 
