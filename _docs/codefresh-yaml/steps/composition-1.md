@@ -107,37 +107,6 @@ be executed inside the Docker container of the candidate and will decide if the 
     command: bash -c "sleep 60 && pwd && npm run test"
 {% endhighlight %}
 
-## Merging services
-
-If the `composition` already contains a service with the same name as the `composition_candidate`, the two service definitions are combined, with preference given to the `composition_candidate`'s definition.
-
-For example, we create a new Codefresh composition named 'test_composition':
-
-  `test-composition.yml`
-{% highlight yaml %}
-version: '2'
-  services:
-    db:
-      image: postgres
-    test_service:
-      image: myuser/mytestservice:latest
-      command: gulp integration_test
-{% endhighlight %}
-
-Now we want to reuse this composition during our build for testing purposes.
-We can add the following composition step to our `codefresh.yml` file, and define the composition step so that `test_service` always uses the latest image that was built.
-
-  `YAML`
-{% highlight yaml %}
-run_tests:
-  type: composition
-  composition: test_composition
-  composition_candidates:
-    test_service:
-      image: {% raw %}${{build_step}}{% endraw %}
-{% endhighlight %}
-
-In the above example, both `composition` and `composition_candidates` define a service named `test_service`. After merging these definitions, `test_service` will maintain the `command` that was defined in the original composition, but will refer to the image built by the step named `build_step`.
 
 ## Working directories in a composition
 
@@ -173,7 +142,93 @@ my_service_1       | /tmp
 my_test_service_1  | /root
 ```
 
-## Accesing your project folder from a composition
+## Composition networking
+
+The networking in Codefresh compositions works just like normal Docker-compose. Each service is assigned a hostname that matches
+its name and is accessible by other services.
+
+Here is an example
+
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+steps:
+  build_step:
+    type: build
+    image_name: my-node-app
+    dockerfile: Dockerfile
+    tag: ${{CF_BRANCH}}
+  my_db_tests:
+    type: composition
+    composition:
+        version: '2'
+        services:
+          db:
+            image: mysql:latest
+            ports:
+              - 3306
+            environment:
+              MYSQL_ROOT_PASSWORD: admin
+              MYSQL_USER: my_user
+              MYSQL_PASSWORD: admin
+              MYSQL_DATABASE: nodejs
+    composition_candidates:
+        test:
+          image: ${{build_step}}
+          links:
+            - db
+            command: bash -c 'sleep 30 && MYSQL_ROOT_PASSWORD=admin MYSQL_USER=my_user MYSQL_HOST=db MYSQL_PASSWORD=admin MYSQL_DATABASE=nodejs npm test'
+{% endraw %}
+{% endhighlight %}
+
+In this composition the MySql instance will be available at host `db:3306` accessible from the node image. When the node tests run they will be pointed to that host and port combination to access it.
+
+Notice also that like docker compose the order that the services are launched is not guaranteed. A quick way to solve this issue
+is with a sleep statement like shown above. This will make sure that the database is truly up before the tests run.
+
+A better approach would be to use solutions such as [wait-for-it](https://github.com/vishnubob/wait-for-it) which are much more robust. Here is an example:
+
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+steps:
+  build_image:
+    type: build
+    description: Building the image...
+    image_name: my-spring-boot-app
+    tag: ${{CF_BRANCH_TAG_NORMALIZED}}
+  build_image_with_tests:
+    type: build
+    description: Building the Test image...
+    image_name: maven-integration-tests
+    dockerfile: Dockerfile.testing
+  integration_tests:
+    type: composition
+    title: Launching QA environment
+    description: Temporary test environment
+    composition:
+      version: '2'
+      services:
+        app:
+          image: ${{build_image}}
+          ports:
+           - 8080
+    composition_candidates:
+      test_service: 
+        image: ${{build_image_with_tests}}
+        links:
+          - app
+        command: bash -c '/usr/bin/wait-for-it.sh -t 20 app:8080 -- mvn verify -Dserver.host=app'
+{% endraw %}
+{% endhighlight %}
+
+In this composition a Java application is launched at `app:8080` and then a second image is used for integration tests that target that URL (passed as a parameter to Maven).
+
+The `wait-for-it.sh` script will make sure that the Java application is truly up before the tests are started. Notice that in the example above the script is included in the testing image (created by `Dockerfile.testing`)
+     
+## Accessing your project folder from a composition
 
 By default, the services of a composition run in a completely isolated manner. There are several scenarios however where you wish to access your git files such as:
 
@@ -221,7 +276,7 @@ steps:
     commands:
       - ls -l /codefresh/volume
       - cat /codefresh/volume/test_result.txt 
-{% endraw %}       
+{% endraw %}
 {% endhighlight %}
 
 In this pipeline
@@ -234,7 +289,8 @@ In this pipeline
 
 Therefore in this pipeline you can see both ways of data sharing, bringing files into a composition and getting results out of it. Notice that we need to mount the shared volume only in the composition services. The freestyle steps automatically mount `/codefresh/volume` on their own.
 
->Note: it is not compulsory to mount the shared volume in all services of a composition. Only those that actually use it for file tranfer, should mount it.
+>Note: it is not compulsory to mount the shared volume in all services of a composition. Only those that actually use it for file transfer, should mount it.
+
 
 ## Composition variables versus environment variables
 
@@ -282,6 +338,38 @@ test_service_1  | FIRST_KEY=VALUE
 The `FIRST_KEY` variable which is defined explicitly in the `environment` yaml part is correctly passed to the alpine container. The `ANOTHER_KEY` is not visible in the container at all.
 
 You should use the `composition_variables` yaml group for variables that you wish to reuse in other parts of your composition using the `${ANOTHER_KEY}` syntax.
+
+## Merging services
+
+If the `composition` already contains a service with the same name as the `composition_candidate`, the two service definitions are combined, with preference given to the `composition_candidate`'s definition.
+
+For example, we create a new Codefresh composition named 'test_composition':
+
+  `test-composition.yml`
+{% highlight yaml %}
+version: '2'
+  services:
+    db:
+      image: postgres
+    test_service:
+      image: myuser/mytestservice:latest
+      command: gulp integration_test
+{% endhighlight %}
+
+Now we want to reuse this composition during our build for testing purposes.
+We can add the following composition step to our `codefresh.yml` file, and define the composition step so that `test_service` always uses the latest image that was built.
+
+  `YAML`
+{% highlight yaml %}
+run_tests:
+  type: composition
+  composition: test_composition
+  composition_candidates:
+    test_service:
+      image: {% raw %}${{build_step}}{% endraw %}
+{% endhighlight %}
+
+In the above example, both `composition` and `composition_candidates` define a service named `test_service`. After merging these definitions, `test_service` will maintain the `command` that was defined in the original composition, but will refer to the image built by the step named `build_step`.
 
 ## What to read next
 
