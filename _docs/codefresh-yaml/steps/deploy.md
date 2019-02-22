@@ -168,9 +168,7 @@ steps:
 
 
 
-
-
-## Related topics
+## What to read next
 - [Kubernetes Quick start guide]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/) 
 - [Custom kubectl commands]({{site.baseurl}}/docs/deploy-to-kubernetes/custom-kubectl-commands/) 
 - [Deploy to Kubernetes]({{site.baseurl}}/docs/deploy-to-kubernetes/codefresh-kubernetes-integration-beta/) 

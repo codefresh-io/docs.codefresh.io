@@ -1,6 +1,6 @@
 ---
 title: "Git-Clone"
-description: ""
+description: "Customizing the git checkout process"
 group: codefresh-yaml
 sub_group: steps
 redirect_from:
@@ -8,6 +8,8 @@ redirect_from:
 toc: true
 ---
 Clones a Git repository to the filesystem.
+
+>Note that this step is completely *optional*. Codefresh will automatically checkout the code from a [connected git repository]({{site.baseurl}}/docs/integrations/git-providers/) when a pipeline is created on that repository.
 
   `YAML`
 {% highlight yaml %}
@@ -144,6 +146,12 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
+
+## What to read next
+
+- [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/) 
+- [Git integrations]({{site.baseurl}}/docs/integrations/git-providers/) 
+- [YAML steps]({{site.baseurl}}/docs/codefresh-yaml/steps/) 
 
 
 
