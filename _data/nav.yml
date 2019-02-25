@@ -339,7 +339,7 @@
   pages:
     - title: Windows Container Support Overview (Beta)
       url: "/windows-beta"
-    - title: ARM architecture support (Alpha)
+    - title: ARM architecture support
       url: "/arm-support"
 
 - title: Accounts

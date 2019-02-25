@@ -1,18 +1,42 @@
 ---
 title: "Freestyle"
-description: ""
+description: "Run commands inside a Docker container"
 group: codefresh-yaml
 sub_group: steps
 redirect_from:
   - /docs/freestyle/
 toc: true
 ---
-The Freestyle step is designed so you can execute a series of commands in a container.
+The Freestyle step is designed so you can execute a series of commands in a container. Freestyle steps
+are the bread and butter of [Codefresh pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/).
+
+## Purpose of freestyle steps
+
+In Codefresh, docker containers are first-class citizens
+and special typed steps are offered for the most usual docker commands. Freestyle steps are a secure replacement for `docker run` commands.
+
+
+Therefore this command on your local workstation:
+
+```
+docker run python:3.6.4-alpine3.6 pip install .
+```
+
+will become in Codefresh the following freestyle step.
+
+```
+CollectAllMyDeps:
+  title: Install dependencies
+  image: python:3.6.4-alpine3.6
+  commands:
+    - pip install .
+```
+
+
 Select an image to start a container, then you can specify a working directory, and commands.
 If you do not specify a working directory or commands, the step runs the organic commands specified by the image.
+In all freestyle steps Codefresh automatically [uses a shared docker volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) that contains your git source code.
 
-{: .blockquote}
-> Using complex commands in the untyped step requires use of [YAML block scalars](http://stackoverflow.com/questions/3790454/in-yaml-how-do-i-break-a-string-over-multiple-lines).
 
   `YAML`
 {% highlight yaml %}
@@ -68,11 +92,60 @@ step_name:
 | `fail_fast`                                | If a step fails, and the process is halted. The default value is `true`.                                                                                                                                                                                                                                                                                                    | Default                   |
 | `volumes` | One or more volumes for the container. All volumes must be mounted from the existing shared volume (see details below) |Optional 
 | `when`                                     | Define a set of conditions that need to be satisfied in order to execute this step. You can find more information in the [Conditional Execution of Steps]({{ site.baseurl }}/docs/codefresh-yaml/conditional-execution-of-steps/) article.                                                                                                                                                                     | Optional                  |
-| `on_success`, `on_fail` and `on_finish`    | Define operations to perform upon step completion using a set of predefined [Post-Step Operations]({{ site.baseurl }}/docs/codefresh-yaml/post-step-operations/).                                                                                                                                                                                                                                             | Optional                  |
+| `on_success`, `on_fail` and `on_finish`    | Define operations to perform upon step completion using a set of predefined [Post-Step Operations]({{site.baseurl}}/docs/codefresh-yaml/post-step-operations/).                                                                                                                                                                                                                                             | Optional                  |
 | `retry`   | Define retry behavior as described in [Retrying a step]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/#retrying-a-step).                                                                               | Optional                  |
 
 **Exported resources:**
 - Working Directory.
+
+
+
+
+## Examples 
+
+Here are some full pipelines with freestyle steps. Notice that in all cases the pipelines are connected to [git repositories]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-creation-modes)
+so the source code is already checked out and available to all pipeline steps.
+
+Creating a [JAR file]({{site.baseurl}}/docs/learn-by-example/java/spring-boot-2/):
+
+`codefresh.yml`
+{% highlight yaml %}
+version: '1.0'
+steps:
+  my_jar_compilation:
+    title: Compile/Unit test
+    image: maven:3.5.2-jdk-8-alpine
+    commands:
+     - mvn -Dmaven.repo.local=/codefresh/volume/m2_repository package
+{% endhighlight %}
+
+Running unit tests in [Node.JS]({{site.baseurl}}/docs/learn-by-example/nodejs/):
+
+`codefresh.yml`
+{% highlight yaml %}
+version: '1.0'
+steps:
+  my_node_app:
+    title: Running unit tests
+    image: node:11
+    commands:
+     - npm install
+     - npm run test
+{% endhighlight %}
+
+Packaging a [GO application]({{site.baseurl}}/docs/learn-by-example/golang/golang-hello-world/):
+
+`codefresh.yml`
+{% highlight yaml %}
+version: '1.0'
+steps:
+  my_go_app:
+    title: Compiling GO code
+    image: golang:1.7.1
+    commands:
+     - go get github.com/example-user/example-repo
+     - go build
+{% endhighlight %}
 
 ## Entry point
 
@@ -102,6 +175,8 @@ image: mwendler/cowsay
 When you use the `commands` field, it will override the container original `entrypoint` and will execute the commands in a shell inside the container.    
 The provided commands are concatenated into a single command using the shell's `;` operator, and are run using the default shell `/bin/sh` as an entry point.  
 Additional settings that are set only when using commands are `set -e`, and the `cf_export` utility.
+
+> Using complex commands in the freestyle step requires use of [YAML block scalars](http://stackoverflow.com/questions/3790454/in-yaml-how-do-i-break-a-string-over-multiple-lines).
 
 ### Commands and Entry point
 
@@ -177,4 +252,10 @@ steps:
 ```
 
 When the second steps runs, the `custom.txt` file is available both at `/codefresh/volume/my-config` (the shared volume of all steps) as well as the `/my-own-config-folder-injected` folder which was mounted specifically for this step.
+
+## What to read next
+
+* [Introduction to Pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
+* [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
+* [Pipeline Steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
 
