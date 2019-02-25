@@ -88,6 +88,10 @@ To add a new tag/attribute, hover your mouse on a cluster and click on the *Edit
 The tag names are arbitrary and can be anything you choose that matches your company process. You can mark your clusters with product names, software lifecycle phases, department names or anything that helps your security policies. Note that each cluster
 can be assigned multiple tags, so it very easy to define multiple policies on the same cluster (e.g per project and per team).
 
+There are currently two reserved tag tames
+* `untagged` is a "tag" which refers to all clusters that don't have any tag
+* `*` (the star character) means *all tags* and is only valid for *Read access*
+
 >Notice that by default, all untagged clusters are seen and can be edited by all users (but not deleted). As soon as you add at least one tag on a cluster, this cluster will only be accessible to people that match the affected policy rules (explained in the next sections).
 
 Once your clusters are tagged, you should create teams that work on these clusters.
