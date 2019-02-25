@@ -126,13 +126,13 @@ version: '1.0'
 steps:
   BuildNodeImage:
     title: Building My Node app
-    image_name: my-node-image
+    image_name: my-department/my-team/my-node-image
     dockerfile: Dockerfile
     working_directory: ./project1
     tag: ${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_SHORT_REVISION}}
   BuildGoImage:
     title: Building My Go app
-    image_name: my-go-image
+    image_name: my-company/my-go-image
     dockerfile: Dockerfile
     working_directory: ./project2
     tag: ${{CF_BRANCH_TAG_NORMALIZED}}
