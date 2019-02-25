@@ -199,6 +199,8 @@
     localurl: /docs/enterprise/ent-account-mng
   - title: Single Sign on
     localurl: /docs/enterprise/single-sign-on
+  - title: Access Control
+    localurl: /docs/enterprise/access-control 
   - title: Codefresh hybrid installation (legacy)
     localurl: /docs/enterprise/codefresh-hybrid
 - title: "Codefresh CLI"

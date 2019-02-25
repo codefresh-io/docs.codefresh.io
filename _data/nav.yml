@@ -329,6 +329,8 @@
           url: "/sso-okta"
         - title: OneLogin
           url: "/sso-onelogin"
+    - title: Access Control
+      url: "/access-control"     
     - title: Hybrid installation (legacy)
       url: "/codefresh-hybrid"   
 
