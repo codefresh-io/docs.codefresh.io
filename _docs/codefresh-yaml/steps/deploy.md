@@ -22,7 +22,7 @@ suggest you look at [Helm]({{site.baseurl}}/docs/getting-started/helm-quick-star
 You need to define either one of these fields in the deploy step. If you define `service` you also can select the exact Docker image
 with the `candidate` field (otherwise Codefresh will just reuse the docker image defined in the existing deployment)
 
-## Syntax
+## Usage
 
   `YAML`
 {% highlight yaml %}    
@@ -66,7 +66,7 @@ with the `candidate` field (otherwise Codefresh will just reuse the docker image
     ...        
 {% endhighlight %}
 
-Fields
+## Fields
 
 {: .table .table-bordered .table-hover}
 | Field                                      | Description                                                                                                                                                                                                                        | Required/Optional/Default |

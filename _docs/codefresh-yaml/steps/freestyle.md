@@ -24,7 +24,7 @@ docker run python:3.6.4-alpine3.6 pip install .
 
 will become in Codefresh the following freestyle step.
 
-```
+```yaml
 CollectAllMyDeps:
   title: Install dependencies
   image: python:3.6.4-alpine3.6
@@ -37,6 +37,7 @@ Select an image to start a container, then you can specify a working directory, 
 If you do not specify a working directory or commands, the step runs the organic commands specified by the image.
 In all freestyle steps Codefresh automatically [uses a shared docker volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) that contains your git source code.
 
+## Usage
 
   `YAML`
 {% highlight yaml %}
@@ -75,7 +76,7 @@ step_name:
 {% endraw %}
 {% endhighlight %}
 
-**Fields:**
+## Fields
 
 {: .table .table-bordered .table-hover}
 | Field                                      | Description                                                                                                                                                                                                                                                                                                                                                                 | Required/Optional/Default |
@@ -155,7 +156,7 @@ Performing a [blue/green deployment](https://github.com/codefresh-io/k8s-blue-gr
 version: '1.0'
 steps:
   blueGreenDeploy:
-    title: "Deploying new version"
+    title: Deploying new version
     image: codefresh/k8s-blue-green:master
     environment:
       - SERVICE_NAME=my-demo-app
@@ -195,7 +196,7 @@ steps:
 {% endhighlight %}
 
 Here the `UseMyCustomImage` freestyle step is running in the [context]({{site.baseurl}}/docs/codefresh-yaml/variables/#context-related-variables) of the Docker image that was created in the previous step.
-In fact a very common pattern that you will see in Codefresh pipelines is the executions of unit tests in the image that was created in the build step:
+In fact a very common pattern that you will see in Codefresh pipelines is the executions of unit tests in the image that was created in a build step:
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -214,6 +215,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
+Here the `MyAppDockerImage` step is creating a custom docker image. That image is used to run the `MyUnitTests` step.
 This pattern works very well for cases where testing tools are already part of the image (usually with dynamic languages).
 In other case you can have a second Dockerfile in your application that is designed explicitly to hold all your testing tools.
 

@@ -29,7 +29,7 @@ Composition candidates are special services that will execute the tests. Codefre
 You need at least one composition service and one candidate for the composition step.
 
 
-## Composition step syntax
+## Usage
 
 Here is an example of a composition. There is one composition service (PostgreSQL database) and one candidate (tests executed with gulp)
 
@@ -72,6 +72,8 @@ step_name:
   retry:
     ...  
 {% endhighlight %}
+
+## Fields
 
 {: .table .table-bordered .table-hover}
 | Field                                      | Description                                                                                                                                                                                                                              | Required/Optional/Default |

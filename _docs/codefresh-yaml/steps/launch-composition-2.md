@@ -10,6 +10,8 @@ toc: true
 The launch composition step provides the ability to launch long term running environment that can live outside the context of the running flow.
 You can use this step to automate your environment creation through codefresh.yml file instead of manually launching an environment from the ui.
 
+## Usage
+
   `ui defined composition`
 {% highlight yaml %}
 step_name:
@@ -61,6 +63,8 @@ step_name:
   on_finish:
     ...
 {% endhighlight %}
+
+## Fields
 
 {: .table .table-bordered .table-hover}
 | Field                                      | Description                                                                                                                                                                                                                             | Required/Optional/Default |

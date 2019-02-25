@@ -11,6 +11,8 @@ Clones a Git repository to the filesystem.
 
 >Note that this step is completely *optional*. Codefresh will automatically checkout the code from a [connected git repository]({{site.baseurl}}/docs/integrations/git-providers/) when a pipeline is created on that repository.
 
+## Usage
+
   `YAML`
 {% highlight yaml %}
 step_name:
@@ -38,7 +40,7 @@ step_name:
     ...  
 {% endhighlight %}
 
-
+## Fields
 
 {: .table .table-bordered .table-hover}
 | Field                                      | Description                                                                                                                                                                                                                        | Required/Optional/Default |
