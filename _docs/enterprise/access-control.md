@@ -88,9 +88,9 @@ To add a new tag/attribute, hover your mouse on a cluster and click on the *Edit
 The tag names are arbitrary and can be anything you choose that matches your company process. You can mark your clusters with product names, software lifecycle phases, department names or anything that helps your security policies. Note that each cluster
 can be assigned multiple tags, so it very easy to define multiple policies on the same cluster (e.g per project and per team).
 
->Notice that by default, all untagged clusters are seen and can be edited by all users (but not deleted). As soon as you add at least on tag on a cluster, this cluster will only be accessible to people that match the affected policy rules (explained in the next sections).
+>Notice that by default, all untagged clusters are seen and can be edited by all users (but not deleted). As soon as you add at least one tag on a cluster, this cluster will only be accessible to people that match the affected policy rules (explained in the next sections).
 
-Once your clusters are tagged, you should create teams that work on clusters.
+Once your clusters are tagged, you should create teams that work on these clusters.
 
 
 
@@ -142,7 +142,7 @@ Here you can create new security rules using the *who, what, where* pattern. For
 1. Cluster privileges (Create/delete/read/update)
 1. The effective tags (multiple tags can be used).
 
-This way you can define any policy you wish per departments, projects, roles for cluster access
+This way you can define any policy you wish per departments, projects, roles etc. for cluster access.
 
 > Note that you cannot add any rules for administrators. Administrators by default have access to all clusters.
 

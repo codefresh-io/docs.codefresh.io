@@ -33,6 +33,7 @@ toc: true
 - New variable for labels of a pull request - [documentation]({{site.baseurl}}/docs/codefresh-yaml/variables/#system-provided-variables)
 - YAML validation without the GUI - [documentation]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/#yaml-validation)
 - Run builds from external forks - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/#support-for-building-pull-requests-from-forks)
+- Google Marketplace Integration - [documentation]({{site.baseurl}}/docs/integrations/google-marketplace/)
 - Added OneLogin SSO support - [documentation]({{site.baseurl}}/docs/enterprise/single-sign-on/sso-onelogin/)
 - Multiple test reports from a single pipeline - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/test-reports/#creating-multiple-reports)
 - Historical data in Allure test reports are now available

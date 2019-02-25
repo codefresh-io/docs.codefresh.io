@@ -21,7 +21,6 @@
   - title: Monitoring pipelines
     localurl: /docs/configure-ci-cd-pipeline/monitoring-pipelines/
   - title: Shared Configuration
-    new: true
     localurl: /docs/configure-ci-cd-pipeline/shared-configuration/  
   - title: Public logs and status badges
     localurl: /docs/configure-ci-cd-pipeline/build-status/
@@ -180,7 +179,6 @@
   - title: SonarQube integration
     localurl: /docs/integrations/sonarqube-integration/
   - title: Google Marketplace Installation
-    new: true
     localurl: /docs/integrations/google-marketplace/
   - title: Codefresh API
     localurl: /docs/integrations/codefresh-api/        
@@ -190,7 +188,6 @@
   url: ''
   links:
   - title: Installation Options
-    new: true
     localurl: /docs/enterprise/installation-security
   - title: Codefresh behind the firewall
     new: true
@@ -200,6 +197,7 @@
   - title: Single Sign on
     localurl: /docs/enterprise/single-sign-on
   - title: Access Control
+    new: true
     localurl: /docs/enterprise/access-control 
   - title: Codefresh hybrid installation (legacy)
     localurl: /docs/enterprise/codefresh-hybrid
