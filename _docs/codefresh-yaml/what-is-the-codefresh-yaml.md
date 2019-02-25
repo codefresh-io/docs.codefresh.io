@@ -76,16 +76,19 @@ Steps chaining and referencing is possible due to implementation of variables in
 {: .table .table-bordered .table-hover}
 | Step Type                                                                                                         | Description                                    |
 | ----------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
-| [Build]({{site.baseurl}}/docs/codefresh-yaml/steps/build-1/)                            | Builds a Docker image.                         |
-| [Push]({{site.baseurl}}/docs/codefresh-yaml/steps/push-1/)                              | Pushes a Docker image to a Docker registry.    |
-| [Git Clone]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)                      | That step not required and added automatically |
-| [Composition]({{site.baseurl}}/docs/codefresh-yaml/steps/composition-1/)                | Start a finite Docker Composition.             |
-| [Launch Composition]({{site.baseurl}}/docs/codefresh-yaml/steps/launch-composition-2/)  | Start a long term Docker composition           |
-| [Freestyle]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/)                      | Execute one or more shell commands.            |
+| [Freestyle]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/)                      | Executes one or more shell commands in a container similar to `docker run`.            |
+| [Build]({{site.baseurl}}/docs/codefresh-yaml/steps/build-1/)                            | Builds a Docker image like `docker build`                         |
+| [Push]({{site.baseurl}}/docs/codefresh-yaml/steps/push-1/)                              | Pushes a Docker image to a Docker registry similar to `docker tag` and `docker push` |
+| [Git Clone]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)                      | Overrides the default git clone behavior |
+| [Composition]({{site.baseurl}}/docs/codefresh-yaml/steps/composition-1/)                | Starts a Docker Composition like `docker-compose`. Discarded once pipelines finishes.             |
+| [Launch Composition]({{site.baseurl}}/docs/codefresh-yaml/steps/launch-composition-2/)  | Starts a long term Docker composition that stays up after the end of the pipeline        |
+| [Deploy]({{site.baseurl}}/docs/codefresh-yaml/steps/deploy/)  | Deploys to Kubernetes clusters         |
+| [Approval]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/)  | Pauses a pipeline and waits for human intervention          |
+
 
 To build your pipeline using a ```codefresh.yml``` file, in the General Settings section, toggle the ```Use YML build``` option to the **ON** position.
 
-{% include image.html lightbox="true" file="/images/5c37025-Screen_Shot_2017-10-16_at_9.50.48_PM.png" url="/images/5c37025-Screen_Shot_2017-10-16_at_9.50.48_PM.png" alt="pipeline definition options" caption="Switching between the legacy build engine and the YAML build engine" max-width="40%" %}
+{% include image.html lightbox="true" file="/images/5c37025-Screen_Shot_2017-10-16_at_9.50.48_PM.png" url="/images/5c37025-Screen_Shot_2017-10-16_at_9.50.48_PM.png" alt="pipeline definition options" caption="Switching between basic steps and YAML syntax" max-width="60%" %}
 
 ## Yaml validation
 
@@ -100,7 +103,7 @@ file="/images/codefresh-yaml/inline-editor.png"
 url="/images/codefresh-yaml/inline-editor.png"
 alt="Graphical Inline Yaml Editor" 
 caption="Graphical Inline Yaml Editor"
-max-width="40%"
+max-width="50%"
 %}
 
 You can also validate the pipeline yaml outside of the UI by using the [Codefresh CLI](https://codefresh-io.github.io/cli/). The CLI has a [validate parameter](https://codefresh-io.github.io/cli/validation/) that can check one or more files for syntax errors
