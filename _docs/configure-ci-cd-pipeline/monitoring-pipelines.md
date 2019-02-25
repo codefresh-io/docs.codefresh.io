@@ -150,7 +150,7 @@ caption="Step Yaml"
 max-width="60%"
 %}
 
-Ff you want to see the yaml for the whole pipeline, click the *YAML* tab on the bottom left corner without selecting a step first.
+If you want to see the yaml for the whole pipeline, click the *YAML* tab on the bottom left corner without selecting a step first.
 
 {% include 
 image.html 
