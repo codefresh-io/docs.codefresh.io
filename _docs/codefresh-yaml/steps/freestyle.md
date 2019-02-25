@@ -1,4 +1,4 @@
-\---
+---
 title: "Freestyle"
 description: "Run commands inside a Docker container"
 group: codefresh-yaml

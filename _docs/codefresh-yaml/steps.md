@@ -11,6 +11,16 @@ Codefresh [pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introductio
 
 You can create your own pipelines by writing a  [codefresh.yml]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) file that describes your pipeline. This file can then be version controlled on it own.
 
+{% include 
+image.html 
+lightbox="true" 
+file="/images/codefresh-yaml/stages/complex-pipeline.png" 
+url="/images/codefresh-yaml/stages/complex-pipeline.png"
+alt="Pipeline steps" 
+caption="Pipeline steps"
+max-width="90%"
+%}
+
 The steps offered by Codefresh are:
 
 * [Freestyle]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/)

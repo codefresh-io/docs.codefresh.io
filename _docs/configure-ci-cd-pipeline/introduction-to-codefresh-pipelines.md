@@ -19,6 +19,16 @@ Each step is responsible for a specific action in the process. Pipelines can be 
 * run unit tests, integration tests, acceptance tests etc.
 * any custom action that you define
 
+{% include 
+image.html 
+lightbox="true" 
+file="/images/codefresh-yaml/stages/complex-pipeline.png" 
+url="/images/codefresh-yaml/stages/complex-pipeline.png"
+alt="Codefresh pipelines" 
+caption="Codefresh pipelines"
+max-width="90%"
+%}
+
 ## Why Codefresh is different
 
 Codefresh offers two unique characteristics in pipelines that serve as the cornerstone of the build/deploy process
