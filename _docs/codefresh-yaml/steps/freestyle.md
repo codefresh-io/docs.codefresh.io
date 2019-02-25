@@ -147,6 +147,76 @@ steps:
      - go build
 {% endhighlight %}
 
+Performing a [blue/green deployment](https://github.com/codefresh-io/k8s-blue-green-deployment):
+
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+steps:
+  blueGreenDeploy:
+    title: "Deploying new version"
+    image: codefresh/k8s-blue-green:master
+    environment:
+      - SERVICE_NAME=my-demo-app
+      - DEPLOYMENT_NAME=my-demo-app
+      - NEW_VERSION=${{CF_SHORT_REVISION}}
+      - HEALTH_SECONDS=60
+      - NAMESPACE=colors
+      - KUBE_CONTEXT=myDemoAKSCluster
+{% endraw %}      
+{% endhighlight %}
+
+## Dynamic freestyle steps
+
+Codefresh has the unique ability to allow you to run freestyle steps in the context of a docker image
+created on the same pipeline. This means that you can dynamically [create docker images]({{site.baseurl}}/docs/codefresh-yaml/steps/build-1/) on demand within the pipeline
+that needs them.
+
+Creating a custom docker image with extra tools (Terraform and Ansible)
+
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+steps:
+  CreateMyCustomImage:
+    title: Creating custom Docker image
+    type: build
+    dockerfile: tf_and_ansible.Dockerfile
+    image_name: my-iac-tools-container
+  UseMyCustomImage:
+    title: Running IAC tools
+    image: ${{CreateMyCustomImage}}
+    commands:
+      - terraform --version
+      - ansible --version  
+{% endraw %} 
+{% endhighlight %}
+
+Here the `UseMyCustomImage` freestyle step is running in the [context]({{site.baseurl}}/docs/codefresh-yaml/variables/#context-related-variables) of the Docker image that was created in the previous step.
+In fact a very common pattern that you will see in Codefresh pipelines is the executions of unit tests in the image that was created in the build step:
+
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+steps:
+  MyAppDockerImage:
+    title: Building Docker Image
+    type: build
+    image_name: my-own-app
+  MyUnitTests:
+    title: Running Unit tests
+    image: ${{MyAppDockerImage}}
+    commands: 
+      - ./my-unit-tests.sh
+{% endraw %}
+{% endhighlight %}
+
+This pattern works very well for cases where testing tools are already part of the image (usually with dynamic languages).
+In other case you can have a second Dockerfile in your application that is designed explicitly to hold all your testing tools.
+
 ## Entry point
 
 When using the original container entrypoint, you can use the `cmd` field to specify additional agruments to be used with the entrypoint. This can be a string, or an array of strings. For example:  
@@ -252,6 +322,24 @@ steps:
 ```
 
 When the second steps runs, the `custom.txt` file is available both at `/codefresh/volume/my-config` (the shared volume of all steps) as well as the `/my-own-config-folder-injected` folder which was mounted specifically for this step.
+
+
+## More freestyle steps
+
+You can use in a freestyle step any Docker image available in a public repository such as Dockerhub. This makes the integration of Codefresh and various cloud tools very easy.
+
+Codefresh also offers a plugin directory at [http://steps.codefresh.io/](http://steps.codefresh.io/) created specifically for CI/CD operations.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/plugin-directory.png" 
+url="/images/pipeline/plugin-directory.png"
+alt="Codefresh steps directory" 
+caption="Codefresh steps directory" 
+max-width="80%" 
+%}
+
 
 ## What to read next
 
