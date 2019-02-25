@@ -1,33 +1,47 @@
 ---
 title: "Invite your team members"
-description: ""
+description: "Add other Codefresh users to your account"
 group: accounts
 redirect_from:
   - /docs/accounts/
 toc: true
 ---
-Follow these steps to add collaborators to your account.
 
-First click on *User Management* under the *Settings* section in the left sidebar. 
+You can easily add additional people to your account to work with your repositories or pipelines. You also define the level of access they have in your account resources.
 
+## Managing users in your account
 
-{% include image.html lightbox="true" file="/images/account/account-settings.png" url="/images/account/account-settings.png" alt="Codefresh account settings" max-width="25%" %}
+On the left sidebar of the Codefresh UI choose *Account Settings* and then click on the *People* menu item under *User Management*
 
-Then select the *Collaborators* 
-tab.
-
-1. In the *Username* text box, type the Codefresh user name or email address of the user you want to add.
-1. Click the *Add* button.
 
 {% include image.html lightbox="true" file="/images/account/collaborators.png" url="/images/account/collaborators.png" alt="Collaborators" max-width="70%" %}
 
 
+1. In the *Username* text box, type the Codefresh user name or email address of the user you want to add.
+1. Click the *Add* button.
+
+
+
 A message will be sent to the person that holds the email account. Once approved you will see the collaborator
-in the list below.
-
-You can also change the role of each team member or remove them from the team by using
-the action buttons next to their names.
+in the user list.
 
 
-Once you are finished click on *Back to application* on the top right corner.
+## Setting a role for each collaborator
+
+You can also change the role of each team member by using the drop-down next to their name.
+
+* People with the **User** role will be able to work with your repositories and pipelines, but will not be able to change settings
+on clusters, docker registries, git integrations, shared configurations etc.
+* People with the **Administrator** role have full access to your account and can change all your settings, so make sure that they are trusted colleagues.
+
+You can completely remove a user from your account by clicking on the *bin* icon on the far right.
+
+
+
+
+## What to read next
+
+* [Access control]({{site.baseurl}}/docs/enterprise/access-control/)
+* [Account management]({{site.baseurl}}/docs/enterprise/ent-account-mng/)
+* [Single Sign on]({{site.baseurl}}/docs/enterprise/single-sign-on/)
 

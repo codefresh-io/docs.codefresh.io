@@ -13,6 +13,8 @@ The first mechanism is a way to restrict access to parts of the UI that are inte
 
 The second mechanism is policy based access control via attributes (ABAC) on Kubernetes clusters. This allows account administrators to define exactly which teams have access to which clusters. For example, access to production clusters should only be granted to a subset of trusted developers/operators. On the other hand access to a QA/staging cluster can be less strict.
 
+There is also the additional layer of permissions for resources (such as concurrent builds and environments) as explained in the [Enterprise Account Management]({{site.baseurl}}/docs/enterprise/ent-account-mng/) page. 
+
 ## Users and administrators
 
 You can define the level of access (**user** or **administrator**) from the same screen where you [add collaborators]({{site.baseurl}}/docs/accounts/invite-your-team-member/) to your account. From the left sidebar of the Codefresh UI choose *Account Settings* and then click on the *People* menu item under *User Management*.
