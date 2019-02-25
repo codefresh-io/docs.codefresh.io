@@ -291,7 +291,7 @@ The cluster where the build agent runs should have network connectivity with the
 
 Once your cluster is connected you can use any of the familiar deployment methods such as the [dedicated deploy step]({{site.baseurl}}/docs/deploy-to-kubernetes/deployment-options-to-kubernetes/) or [custom kubectl commands]({{site.baseurl}}/docs/deploy-to-kubernetes/custom-kubectl-commands/).
 
-### See also
+## What to read next
 
 * [Codefresh installation options]({{site.baseurl}}/docs/enterprise/installation-security/)
 * [Google marketplace integration]({{site.baseurl}}/docs/integrations/google-marketplace/)

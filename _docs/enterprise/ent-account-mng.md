@@ -75,6 +75,7 @@ From the users page you’re able to manage users in different accounts, invite 
     %}
 
 {:.text-secondary}
+
 ## Billing
 
 From the billing page you’re able to view your Codefresh plan and usage. The plan will update dynamically based on the customer admin allocation of resources between accounts.
@@ -86,5 +87,11 @@ From the billing page you’re able to view your Codefresh plan and usage. The p
   alt="sso-diagram.png"
   max-width="100%"
     %}
+
+## What to read next
+
+* [Codefresh installation options]({{site.baseurl}}/docs/enterprise/installation-security/)
+* [Access control]({{site.baseurl}}/docs/enterprise/access-control/)
+
 
 

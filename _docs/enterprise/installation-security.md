@@ -95,7 +95,7 @@ While Codefresh can still help with maintenance of the on-premise platform, we w
 | Available to | all customers | [enterprise plans](https://codefresh.io/contact-us/) | [enterprise plans](https://codefresh.io/contact-us/) |
 
 
-### See also
+## What to read next
 
 * [Codefresh Pricing](https://codefresh.io/pricing/)
 * [Codefresh features](https://codefresh.io/features/)
