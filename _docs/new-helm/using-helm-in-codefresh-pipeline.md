@@ -18,7 +18,7 @@ In order to use Helm in your Codefresh pipeline you must do the following
 1. Add a Kubernetes cluster
 1. Define a Helm repository or use the one offered by Codefresh to all accounts
 1. Import the Helm configuration in your pipeline variables
-1. Use the `codefresh/cfstep-helm` in your yml build definition.
+1. Use the `codefresh/cfstep-helm` in your [yml build definition]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/).
 
 Let's see these steps in order
 
@@ -41,7 +41,7 @@ max-width="70%"
 
 You should configure a Helm repository for the step to work with. Besides public HTTP repositories, we support a variety of private, authenticated Helm repositories. Codefresh also provides a free, managed Helm repository for every account.
 
-You will need to connect your repository with Codefresh as described [here]({{ site.baseurl }}/docs/new-helm/add-helm-repository/), or obtain your managed Helm repository URL as described [here]({{ site.baseurl }}/docs/new-helm/managed-helm-repository/#chart-repository-url).
+You will need to connect your repository with Codefresh as described [here]({{site.baseurl}}/docs/new-helm/add-helm-repository/), or obtain your managed Helm repository URL as described [here]({{site.baseurl}}/docs/new-helm/managed-helm-repository/#chart-repository-url).
 
 
 ### Step 3 - Import the Helm Configuration in your pipeline definition
@@ -66,7 +66,7 @@ of this limitation and will soon improve the way Codefresh works with multiple H
 ## Helm Usage
 
 Add a Freestyle step, with the `codefresh/cfstep-helm` image.  
-The Helm step is configured using environment variables, which can be provided in any of the various ways supported by Codefresh as described [here]({{ site.baseurl }}/docs/codefresh-yaml/variables/#user-provided-variables).  
+The Helm step is configured using environment variables, which can be provided in any of the various ways supported by Codefresh as described [here]({{site.baseurl}}/docs/codefresh-yaml/variables/#user-provided-variables).  
 For example, here's how to provide variables as part of the freestyle step definition:
 
 ```yaml
@@ -190,16 +190,16 @@ Notes:
 
 Name|Required|Description
 ---|---|---
-ACTION|defaults to 'install'|operation mode: `install`/`push`/`auth`
-CHART_REF|required for install/push|Chart reference to use, adhering to Helm's lookup rules (path to chart folder, or name of packaged chart). There's no need to prefix with `/reponame` if referencing a chart in a repository, this is handled automatically. a.k.a CHART_NAME but CHART_NAME shouldn't be used anymore.
-KUBE_CONTEXT|required for install|Kubernetes context to use. The name of the cluster as configured in Codefresh
+ACTION|defaults to 'install'|Operation mode: `install`/`push`/`auth`
+CHART_REF|required for install/push|Chart reference to use, adhering to Helm's lookup rules (path to chart folder, or name of packaged chart). There's no need to prefix with `/reponame` if referencing a chart in a repository, this is handled automatically. a.k.a `CHART_NAME` but `CHART_NAME` shouldn't be used anymore.
+KUBE_CONTEXT|required for install|Kubernetes context to use. The name of the cluster as [configured in Codefresh]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/)
 RELEASE_NAME|required for install|Helm release name. If the release exists it will be upgraded
-NAMESPACE|optional|target Kubernetes namespace to deploy to
-TILLER_NAMESPACE|optional|Kubernetes namespace where tiller is installed
-CHART_VERSION|optional|override or set the chart version
-CHART_REPO_URL|optional|Helm chart repository URL. If a Helm repository context is attached to the pipeline, this setting is ignored
-VALUESFILE_|optional|Values file to provide to Helm (as --file). a.k.a CUSTOMFILE but CUSTOMFILE shouldn't be used anymore.
-VALUE_|optional|Value to provide to Helm (as --set). a.k.a CUSTOM but CUSTOM shouldn't be used anymore. If a variable already contains a `_` (underscore) in it's name, replace it with `__` (double underscore).
+NAMESPACE|optional|Target Kubernetes namespace to deploy to
+TILLER_NAMESPACE|optional|Kubernetes namespace where Tiller is installed
+CHART_VERSION|optional|Override or set the chart version
+CHART_REPO_URL|optional|Helm chart repository URL. If a [Helm repository configuration](#step-3---import-the-helm-configuration-in-your-pipeline-definition) is attached to the pipeline, this setting is ignored
+VALUESFILE_|optional|Values file to provide to Helm (as --file). a.k.a `CUSTOMFILE` but `CUSTOMFILE` shouldn't be used anymore.
+VALUE_|optional|Value to provide to Helm (as --set). a.k.a `CUSTOM` but `CUSTOM` shouldn't be used anymore. If a variable already contains a `_` (underscore) in it's name, replace it with `__` (double underscore).
 CMD_PS|optional|Command Postscript - this will be appended as is to the generated helm command string. Can be used to set additional parameters supported by the command but not exposed as configuration options.
 
 ## What to read next
