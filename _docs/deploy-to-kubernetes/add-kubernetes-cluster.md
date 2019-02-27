@@ -339,16 +339,38 @@ In case you're using an external reverse proxy to manage inbound traffic to your
 
 ## Multiple CAs in certificate chain
 
-If you have more than one [CA](https://en.wikipedia.org/wiki/Certificate_authority) in your certification chain, you need to provide Codefresh with a [Certificate bundle](https://en.wikipedia.org/wiki/Chain_of_trust) (a file that containers the intermediate CAs as well)
+Ideally your Kubernetes cluster will have a single certificate which is used directly on the API endpoint. Some organizations
+place clusters behind a load balancer or other proxy mechanism that uses a chain or certificates.
+
+When that happens and you more than one [CA](https://en.wikipedia.org/wiki/Certificate_authority) in your certification chain, you need to provide Codefresh with a [Certificate bundle](https://en.wikipedia.org/wiki/Chain_of_trust) (a file that containers the intermediate CAs as well).
+
+You will know when this is the case as this error will appear when you try to connect your cluster:
+
+```
+{"status":400,"code":"1004","name":"BAD_REQUEST_ERROR","message":"Failed to add cluster: unable to get local issuer certificate","context":{}}
+```
+
+To get the whole certificate open the URL of your Kubernetes in Chrome or Firefox and export all individual certificates as files
+
+{% include image.html
+  lightbox="true"
+  file="/images/kubernetes/add-cluster/cert-hierarchy.png"
+  url="/images/kubernetes/add-cluster/cert-hierarchy.png"
+  alt="A Certificate chain"
+  caption="A Certificate chain"
+  max-width="60%"
+    %}
 
 The steps needed are:
 
-1. Get your CA bundle file and the Kubernetes API server certificate file and run the following to check the validity of the certificate:
-`openssl verify -verbose -CAfile ca_bundle.pem k8_server_cert`
+1. Connect all certificates (apart from the API/endpoint one) to a bundle:
+`cat rootCA.crt intermediateCA.crt > ca_bundle_cert`
+1. Run the following to check the validity of the certificate:
+`openssl verify -verbose -CAfile ca_bundle_cert k8_server_cert`
 1.  If the check above passes fine, go on and run the following on your CA bundle file:
-`base64 ca_budle.pem | tr -d '\n'`
+`base64 ca_bundle_cert | tr -d '\n'`
 1. Copy the output string (be careful when copying) and check whether you have copied it correctly:
-`openssl x509 -text -in <(echo <copied_string> | base64 -d)` - you should see the contents of your CA budle file
+`openssl x509 -text -in <(echo <copied_string> | base64 -d)` - you should see the contents of your CA bundle file
 1. Put the copied string into the Codefresh Kubernetes integration form and test the connection.
 
 Please make sure the certs are in order Root -> Intermediate -> Server.
