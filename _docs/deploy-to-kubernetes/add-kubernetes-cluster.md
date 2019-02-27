@@ -24,13 +24,13 @@ Start by going into your Account Configuration, by clicking on *Account Settings
   max-width="70%"
     %}
 
-In the Kubernetes integration window, you will be able to add a cluster from known providers such as Google, Azure, Amazon etc. You can also add any generic kubernetes cluster by manually entering your cluster settings.
+In the Kubernetes integration window, you will be able to add a cluster from known providers such as Google, Azure, Amazon etc. You can also add any generic Kubernetes cluster by manually entering your cluster settings.
 
 {:.text-secondary}
 ## Adding GKE Cluster
 Adding a cluster in GKE can be done by clicking the **Add cluster** button under **Google Cloud Provider** and selecting the desired project and cluster.
 
-If this is your first time you'll be prompted to authenticate using your google credentials, make sure you're doing so with a user that have access to your GKE projects.
+If this is your first time you'll be prompted to authenticate using your Google credentials, make sure you're doing so with a user that have access to your GKE projects.
 
 Make sure that your cluster has basic authentication enabled. You can change this setting after cluster creation
 by editing and changing the setting from the drop-down list.
@@ -208,7 +208,7 @@ Copy and paste the following commands into your local shell, then save the outpu
 ##### More than one cluster in kubeconfig?
 
   Before starting, make sure that your local context is the one you would like to add to Codefresh.<br>
-Switch to the desired context before continue
+Switch to the desired context before continuing by running `kubectl config use-context <my-cluster-name>`.
 {{site.data.callout.end}}
 
 `Host IP`

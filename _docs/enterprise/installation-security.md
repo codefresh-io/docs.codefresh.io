@@ -16,7 +16,7 @@ On-premise and Hybrid versions are available to Enterprise customers that are lo
 
 
 
-### Cloud version 
+## Cloud version 
 
 The Cloud version is the easiest way to start using Codefresh as it is fully managed and runs 100% on the cloud. All maintenance and updates
 are executed by the Codefresh DevOps team.
@@ -47,9 +47,9 @@ Codefresh Cloud is also compliant with [SOC2 - Type2](https://www.aicpa.org/SOC)
 The Cloud version has multi-account support with most git providers (Gitlab, Github, Bitbucket) as well as Azure and Google.
 
 
-### Hybrid installation
+## Hybrid installation
 
-For organizations that don't want their source code to leave their premises, or have other security constraints, Codefresh offers the hybrid installation.
+For organizations that don't want their source code to leave their premises, or have other security constraints, Codefresh offers the [hybrid installation]({{site.baseurl}}/docs/enterprise/behind-the-firewall/).
 
 The User Interface still runs on Codefresh infrastructure, while the actual builds happen in the location of the customer (Codefresh builders run on a Kubernetes cluster).
 
@@ -64,7 +64,7 @@ The User Interface still runs on Codefresh infrastructure, while the actual buil
 
 The hybrid installation strikes the perfect balance between security, flexibility and ease of use. Codefresh still does the heavy lifting for maintaining most of the platform parts. The sensitive data (such as source code and internal services) never leave the premises of the customers.
 
-With the hybrid installation mode, Codefresh can easily connect to internal secure service that have no public presence.
+With the hybrid installation mode, Codefresh can easily connect to internal [secure services]({{site.baseurl}}/docs/enterprise/behind-the-firewall/#using-secure-services-in-your-pipelines) that have no public presence.
 The UI part is still compliant with Soc2.
 
 {% include image.html
@@ -75,7 +75,7 @@ The UI part is still compliant with Soc2.
   max-width="40%"
     %}    
 
-### On-premise Installation    
+## On-premise Installation    
 
 For customers that wish to have full control over everything, Codefresh also offers an on-premise option. In this case everything (UI and builds) are running on an environment (Kubernetes cluster) fully managed by the customer.
 
