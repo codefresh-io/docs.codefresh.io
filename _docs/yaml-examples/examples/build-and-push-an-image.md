@@ -1,94 +1,113 @@
 ---
 title: "Build and Push an Image"
-description: ""
+description: "How to build Docker images and push them to registries with Codefresh"
 group: yaml-examples
 sub_group: examples
 redirect_from:
   - /docs/build-and-push-an-image/
 toc: true
 ---
-Using this repository we'll help you get up to speed with basic functionality such as: *building Docker images* and *pushing*.
 
-This project uses `Node JS` to build an application which will eventually become a distributable Docker image.
+Building a Docker image and then pushing it to a registry is one of the most basic scenarios for creating a Pipeline.
+In this example we will use a demo Node.js application that will be packaged in a Docker image.
 
-## Looking around
-In the root of this repository you'll find a file named `codefresh.yml`, this is our [build descriptor]({{ site.baseurl }}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) and it describes the different steps that comprise our process.
+>The source code of the repository is located at [https://github.com/codefreshdemo/cf-example-build-and-push](https://github.com/codefreshdemo/cf-example-build-and-push). Feel free to fork it if you want to follow along.
 
-In this example, the **push-the-image** step references the image built by the **build-the-image** step, using the ```candidate``` attribute.
-Make sure to configure your account’s Docker registry details and credentials before you execute a push.
+If you don't already have a Codefresh account, you can easily create a free one from the [sign-up page]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/).
 
-  `codefresh.yml`
+
+## Building a Docker image and pushing it to the Codefresh registry
+
+All Codefresh accounts come with a [private integrated Docker registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/). The nice thing about this registry is that it is fully automated. All successfull pipelines in Codefresh automatically push to that registy without any other configuration.
+
+So in the most simple case, you only need a [single build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build-1/) and  Codefresh will automatically push the image for you!
+
+Here is the full pipeline:
+
+`codefresh.yml`
 {% highlight yaml %}
 version: '1.0'
-
 steps:
-
   build_image:
     title: Building Voting Image
     type: build
-    #Important: rename this image to to a valid repository in your registry. For example: myUserName/vote
-    image_name: codefresh/vote
-    #The directory should be relative to git repository that is used for cloning
-    working_directory: {% raw %}${{main_clone}}{% endraw %}
-    #Dockerfile location should be relative to the working directory
+    image_name: my-voting-image
     dockerfile: Dockerfile
-
-  push_to_registry:
-    title: Pushing to Docker Registry (with credentials)
-    type: push
-
-    #A candidate is the image that we want to push to registry
-    candidate: {% raw %}'${{build_image}}'{% endraw %}
-
-    # You can push the image with whatever tag you want. In our example we use CF_BRANCH, which is a variable in
-    # the build process, accessible throughout the entire flow.
-    tag: {% raw %}'${{CF_BRANCH}}'{% endraw %}
-
-    #uncomment the registry and add your own registry if you want to use any registry other than dockerhub. See docs.codefresh.io for more information
-    #registry:
-    credentials:
-      #make sure that you have a dockerUsername and dockerPassword define on the pipeline.
-      username: {% raw %}'${{dockerUsername}}'{% endraw %}
-      password: {% raw %}'${{dockerPassword}}'{% endraw %}
 {% endhighlight %}
 
-{{site.data.callout.callout_info}}
-##### Example
+If you [create this pipeline]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/) in Codefresh and run it you will see the automatic pushing of the image in the Codefresh registry:
 
-Just head over to the example [**repository**](https://github.com/codefreshdemo/cf-example-build-and-push){:target="_blank"} in Github and follow the instructions there. 
-{{site.data.callout.end}}
+```
+The push refers to repository [r.cfcr.io/kostis-codefresh/my-voting-image]                                                                 
+Layer '4624212f67bc' successfully pushed
+Layer '573f5d62f821' successfully pushed    
+Layer '573f5d62f821' successfully pushed
+...
+```
 
-For more information about the fields for the **push-the-image** step, [see]({{ site.baseurl }}/docs/codefresh-yaml/steps/push-1/).
+You can then visit the Codefresh Registry and view your image:
 
-{{site.data.callout.callout_info}}
-##### Push to Dockerhub
+{% include image.html
+  lightbox="true"
+  file="/images/examples/push-to-private-registry.png"
+  url="/images/examples/push-to-private-registry.png"
+  alt="Pushing to the built-in registry"
+  caption="Pushing to the built-in registry"
+  max-width="70%"
+    %}
 
-If you want to push your image to Dockerhub, change the ```myuser``` field for your ```image-name``` on your name of Dockerhub account. 
-{{site.data.callout.end}}
 
-{{site.data.callout.callout_info}}
-##### Docker registries
+That's it. Using the Codefresh Registry is very easy and no extra configuration is needed.
 
-You can integrate with other [docker registries]({{ site.baseurl }}/docs/docker-registries/external-docker-registries/) .
-If you want to push your image to Dockerhub, change the ```myuser``` field for your ```image-name``` on your name of Dockerhub account. 
-{{site.data.callout.end}}
+## Building a Docker image and pushing it to an external registry.
 
-After adding this repository as new service to codefresh, go to pipelines of this service and provide your dockerhub credentials as environment variables.
+You can also push your image to any [external Registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/). First you need to connect your external registry
+in the integrations page. Here are the instructions for:
 
-{% include image.html 
-lightbox="true" 
-file="/images/dd06fa9-codefresh_push_credentials.png" 
-url="/images/dd06fa9-codefresh_push_credentials.png" 
-alt="codefresh_push_credentials.png" 
-max-width="40%" 
-%}
+  * [Docker Hub]({{site.baseurl}}/docs/docker-registries/external-docker-registries/docker-hub/)
+  * [Google Container Registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/google-container-registry/)
+  * [Amazon EC2 Container Registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/amazon-ec2-container-registry/)
+  * [Bintray.io]({{site.baseurl}}/docs/docker-registries/external-docker-registries/bintray-io/)
+  * [Quay.io]({{site.baseurl}}/docs/docker-registries/external-docker-registries/quay-io/)
+  * [Other Registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/other-registries/)
 
-If your credentials are correct you can see that the created image was pushed to your dockerhub account
+Once that is done, you only need to add a [push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push-1/) in your pipeline and use the registry name of your integration.
 
-{% include image.html 
-lightbox="true" 
-file="/images/ae0409d-codefresh_push_dockerhub.png" 
-url="/images/ae0409d-codefresh_push_dockerhub.png" 
-alt="codefresh_push_credentials.png" 
-max-width="40%" 
-%}
+Here is the full example:
+
+`codefresh.yml`
+{% highlight yaml %}
+version: '1.0'
+steps:
+  build_image:
+    title: Building Voting Image
+    type: build
+    image_name: my-voting-image
+    dockerfile: Dockerfile
+  push_to_registry:
+    title: Pushing to Docker Registry 
+    type: push
+    #A candidate is the image that we want to push to registry
+    candidate: {% raw %}'${{build_image}}'{% endraw %}
+    # You can push the image with whatever tag you want. In our example we use CF_BRANCH that holds the git branch name
+    tag: {% raw %}'${{CF_BRANCH}}'{% endraw %}
+    registry: <your-registry-configuration-name>    
+{% endhighlight %}
+
+Codefresh has several other variables that can be used for tagging images. Other common examples that you can use are `CF_SHORT_REVISION` or `CF_BUILD_ID`. See the [variables page]({{site.baseurl}}/docs/codefresh-yaml/variables/) for more information.
+
+## More options for push
+
+Codefresh has several more options when it comes to pushing
+ 
+* You can specify multiple tags to be pushed
+* You can use directly ECR registries
+* You can embed credentials in the push steps
+
+See the [push step documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/push-1/) for more details.
+
+
+
+
+
+
