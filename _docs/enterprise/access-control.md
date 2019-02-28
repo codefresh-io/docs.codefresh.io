@@ -11,7 +11,7 @@ of users and teams with proper access level.
 
 The first mechanism is a way to restrict access to parts of the UI that are intended for account administrators. For example, only an account administrator should be able to change integrations with [git providers]({{site.baseurl}}/docs/integrations/git-providers/) and [cloud services]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/). 
 
-The second mechanism is policy based access control via attributes (ABAC) on Kubernetes clusters. This allows account administrators to define exactly which teams have access to which clusters. For example, access to production clusters should only be granted to a subset of trusted developers/operators. On the other hand access to a QA/staging cluster can be less strict.
+The second mechanism is policy based access control via attributes (ABAC) on Kubernetes clusters and pipelines. This allows account administrators to define exactly which teams have access to which clusters and pipelines. For example, access to production clusters should only be granted to a subset of trusted developers/operators. On the other hand access to a QA/staging cluster can be less strict.
 
 There is also the additional layer of permissions for resources (such as concurrent builds and environments) as explained in the [Enterprise Account Management]({{site.baseurl}}/docs/enterprise/ent-account-mng/) page. 
 
@@ -53,11 +53,11 @@ Only people with **Administrator** level have access to the respective UI screen
 Note however that **Users** can still control their own email notification settings, as well as access the [internal Codefresh registry externally]({{site.baseurl}}/docs/docker-registries/codefresh-registry/#generate-cfcr-login-token).
 
 
-## Access to Kubernetes clusters
+## Access to Kubernetes clusters and Pipelines
 
-Codefresh also provides fine-grained control to Kubernetes clusters via attributes ([ABAC](https://en.wikipedia.org/wiki/Attribute-based_access_control)). The process involves 3 steps:
+Codefresh also provides fine-grained control to Kubernetes clusters and pipelines via attributes ([ABAC](https://en.wikipedia.org/wiki/Attribute-based_access_control)). The process involves 3 steps:
 
-1. Assigning custom attributes to your Kubernetes clusters
+1. Assigning custom attributes to your Kubernetes clusters and/or pipelines
 1. Creating teams and assigning users to them
 1. Defining policies using teams, clusters and attribute (who, what, where)
 
@@ -92,8 +92,24 @@ can be assigned multiple tags, so it very easy to define multiple policies on th
 
 >Notice that by default, all untagged clusters are seen and can be edited by all users (but not deleted). As soon as you add at least one tag on a cluster, this cluster will only be accessible to people that match the affected policy rules (explained in the next sections).
 
-Once your clusters are tagged, you should create teams that work on these clusters.
+### Marking pipelines with policy attributes
 
+You can also mark specific pipelines with tags. To do this click on the *Configure* menu on a pipeline and select *edit tags*
+
+
+{% include image.html
+  lightbox="true"
+  file="/images/enterprise/access-control/pipeline-tags.png"
+  url="/images/enterprise/access-control/pipeline-tags.png"
+  alt="Assigning attributes to a pipeline"
+  caption="Assigning attributes to a pipeline"
+  max-width="80%"
+    %}
+
+Tagging pipelines works in a similar manner to Kubernetes clusters.
+
+
+Once your clusters and pipelines are tagged, you should create teams that work on these clusters.
 
 
 ### Creating teams 
@@ -141,15 +157,15 @@ On this screen you can:
 Here you can create new security rules using the *who, what, where* pattern. For each rule you select
 
 1. The team the rule applies to
-1. Cluster privileges (*Create/delete/read/update*)
+1. Cluster privileges (*Create/delete/read/update*) or Pipeline privilages (*Create/delete/read/run/update*)
 1. The effective tags (multiple tags can be used).
 
-This way you can define any policy you wish per departments, projects, roles etc. for cluster access.
+This way you can define any policy you wish per departments, projects, roles etc. for cluster/pipeline access.
 
 There are two custom tags that you can use in rules which are "special":
 
 * `untagged` is a "tag" which refers to all clusters that don't have any tag
-* `*` (the star character) means *all tags* and is only valid for *Read access*
+* `*` (the star character) means *all tags* 
 
 > Note that you cannot add any rules for administrators. Administrators by default have access to all clusters.
 
