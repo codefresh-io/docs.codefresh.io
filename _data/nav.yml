@@ -368,6 +368,8 @@
           url: "/build-step-no-such-file-or-directory"          
         - title: No Dockerfile found
           url: "/no-dockerfile-found"
+        - title: Could not tag image
+          url: "/could-not-tag-image"  
         - title: Restoring data from pre-existing image hangs on
           url: "/restoring-data-from-pre-existing-image-hangs-on"
         - title: Disabling codefresh caching mechanisms

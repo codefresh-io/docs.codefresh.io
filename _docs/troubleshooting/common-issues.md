@@ -22,6 +22,7 @@ In this section, we offer helpful information about issues you may encounter and
 - [The docker image does not exist or no pull access]({{site.baseurl}}/docs/troubleshooting/common-issues/the-docker-image-does-not-exist-or-no-pull-access/)
 - [Build step: No such file or directory]({{site.baseurl}}/docs/troubleshooting/common-issues/build-step-no-such-file-or-directory/)
 - [No Dockerfile found]({{site.baseurl}}/docs/troubleshooting/common-issues/no-dockerfile-found/)
+- [Could not tag image](could-not-tag-image)
 
 ## Build/pipeline issues
 
