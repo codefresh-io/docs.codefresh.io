@@ -117,6 +117,27 @@ steps:
     ...
 ```
 
+### Working with GIT submodules
+
+To checkout a git project including its submodules you can use the [Codefresh submodule plugin](https://github.com/codefresh-io/plugins/tree/master/plugins/gitsubmodules). This plugin is already offered as a public docker image at [Dockerhub](https://hub.docker.com/r/codefresh/cfstep-gitsubmodules/tags).
+
+To use this module in your pipeline add a new step like the one shown below.
+
+```yaml
+version: '1.0'
+steps:
+  updateSubmodules:
+    image: codefresh/cfstep-gitsubmodules
+    environment:
+      - GITHUB_TOKEN=<github_token>
+      - CF_SUBMODULE_SYNC=<boolean to determine if modules should be synced>
+      - CF_SUBMODULE_UPDATE_RECURSIVE=<boolean to determine if modules should be recursively updated>
+```      
+
+The Github token can be either defined in the pipeline on its own as an environment variable, or fetched from
+the existing [GIT integration]({{site.baseurl}}/docs/integrations/git-providers/) as shown in the previous section.
+
+
 ### Use an SSH key with Git
 
 It is also possible to use an SSH key with git. When [creating your pipeline]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/) add your SSH key as an encrypted 
