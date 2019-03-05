@@ -1,13 +1,13 @@
 ---
 title: "Amazon ECS"
-description: ""
+description: "How to use Codefresh to deploy Docker containers to ECS"
 group: deploy-your-containers
 redirect_from:
   - /docs/amazon-ecs/
   - /docs/deploy-your-containers/
 toc: true
 ---
-## Deploy Codefresh to Amazon ECS Service
+## Deploy with Codefresh to Amazon ECS Service
 
 {:.text-secondary}
 ### Prerequisites
