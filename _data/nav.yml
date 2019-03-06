@@ -230,14 +230,14 @@
 - title: "Helm Deployments"
   url: "/new-helm"
   pages:
+    - title: Using Helm in a Codefresh pipeline
+      url: "/using-helm-in-codefresh-pipeline" 
+    - title: Helm Releases management
+      url: "/helm-releases-management"
     - title: Codefresh Managed Helm Repos
       url: "/managed-helm-repository"
     - title: Helm Charts and repositories
       url: "/add-helm-repository"
-    - title: Helm Releases management
-      url: "/helm-releases-management"
-    - title: Using Helm in a Codefresh pipeline
-      url: "/using-helm-in-codefresh-pipeline"
     - title: Create Helm artifacts using Codefresh pipelines
       url: "/create-helm-artifacts-using-codefresh-pipeline"
     - title: Helm environment promotion

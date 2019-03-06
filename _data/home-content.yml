@@ -122,14 +122,14 @@
   links:
   - title: Helm Quick start guide
     localurl: /docs/getting-started/helm-quick-start-guide/
+  - title: Using Helm in a Codefresh pipeline
+    localurl: /docs/new-helm/using-helm-in-codefresh-pipeline/
+  - title: Helm Releases management
+    localurl: /docs/new-helm/helm-releases-management/    
   - title: Codefresh Managed Helm Repositories
     localurl: /docs/new-helm/managed-helm-repository/
   - title: Helm Charts and repositories
     localurl: /docs/new-helm/add-helm-repository/
-  - title: Helm Releases management
-    localurl: /docs/new-helm/helm-releases-management/
-  - title: Using Helm in a Codefresh pipeline
-    localurl: /docs/new-helm/using-helm-in-codefresh-pipeline/
   - title: Create Helm artifacts using Codefresh pipelines
     localurl: /docs/new-helm/create-helm-artifacts-using-codefresh-pipeline/ 
   - title: Helm Environment Promotion
