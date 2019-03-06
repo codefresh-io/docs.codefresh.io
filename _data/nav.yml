@@ -230,6 +230,8 @@
 - title: "Helm Deployments"
   url: "/new-helm"
   pages:
+    - title: Helm best practices
+      url: "/helm-best-practices"    
     - title: Using Helm in a Codefresh pipeline
       url: "/using-helm-in-codefresh-pipeline" 
     - title: Helm Releases management
