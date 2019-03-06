@@ -3,7 +3,8 @@ title: "Using Helm in a Codefresh pipeline"
 description: "Deploying and pushing Helm charts with Codefresh"
 group: new-helm
 redirect_from:
-  - /docs/install-helm-chart-using-codefresh-pipeline/
+  - /docs/new-helm/create-helm-artifacts-using-codefresh-pipeline/
+  - /docs/install-helm-chart-using-codefresh-pipeline/  
 toc: true
 ---
 

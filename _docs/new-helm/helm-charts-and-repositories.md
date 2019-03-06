@@ -1,6 +1,6 @@
 ---
 title: "Helm Charts and repositories"
-description: ""
+description: "How to use external Helm repositories in Codefresh pipelines"
 group: new-helm
 permalink: /:collection/new-helm/add-helm-repository/
 redirect_from:
@@ -8,9 +8,9 @@ redirect_from:
   - /docs/add-helm-repository/
 toc: true
 ---
-The "Helm Charts" page allows you to integrate with Helm repositories and Helm charts.
+The "Helm Charts" page allows you to integrate with external Helm repositories and Helm charts. Note that all Codefresh accounts already include a [built-in Helm repository]({{site.baseurl}}/docs/new-helm/managed-helm-repository/). Using external Helm repositories is optional.
 
-## Adding a Helm repository
+## Adding an external Helm repository
 By default, we show you charts from the [official Helm repository](https://github.com/kubernetes/charts){:target="_blank"} but you can easily add your own:
 
 In the "Helm Charts" page, click on the "Add Repository" button on the top right.

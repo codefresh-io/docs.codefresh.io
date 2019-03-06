@@ -238,8 +238,8 @@
       url: "/managed-helm-repository"
     - title: Helm Charts and repositories
       url: "/add-helm-repository"
-    - title: Create Helm artifacts using Codefresh pipelines
-      url: "/create-helm-artifacts-using-codefresh-pipeline"
+    - title: Custom Helm uploads
+      url: "/custom-helm-uploads"
     - title: Helm environment promotion
       url: "/helm-environment-promotion"
 

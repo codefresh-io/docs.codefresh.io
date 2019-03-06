@@ -130,8 +130,8 @@
     localurl: /docs/new-helm/managed-helm-repository/
   - title: Helm Charts and repositories
     localurl: /docs/new-helm/add-helm-repository/
-  - title: Create Helm artifacts using Codefresh pipelines
-    localurl: /docs/new-helm/create-helm-artifacts-using-codefresh-pipeline/ 
+  - title: Custom Helm uploads
+    localurl: /docs/new-helm/custom-helm-uploads/ 
   - title: Helm Environment Promotion
     new: true
     localurl: /docs/new-helm/helm-environment-promotion/            

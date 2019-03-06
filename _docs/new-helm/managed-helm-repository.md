@@ -1,6 +1,6 @@
 ---
 title: "Managed Helm Repository"
-description: ""
+description: "How to to use the Codefresh integrated Helm repository"
 group: new-helm
 toc: true
 ---
