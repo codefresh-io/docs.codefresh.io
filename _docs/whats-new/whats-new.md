@@ -7,6 +7,10 @@ redirect_from:
 toc: true
 ---
 
+### March 2019
+
+- Pipeline ABAC (Enterprise) - [documentation]({{site.baseurl}}/docs/enterprise/access-control/#marking-pipelines-with-policy-attributes)
+
 ### February 2019
 
 - Access Control (Enterprise) - [documentation]({{site.baseurl}}/docs/enterprise/access-control/)
