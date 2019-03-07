@@ -236,7 +236,7 @@ echo $(kubectl get secret -o go-template='{{index .data "token" }}' $(kubectl ge
 
 ##### Note
 
-In the instructions above, we're referring for a service account named 'default' in regards to the **certificate** and **token**. You can provide any service account configurations you may have on any namespace, as long as it has the correct permissions. The cluster actions you'll be limited to in Codefresh are based on the Kubernetes service account permissions you set in Kubernetes RBAC. 
+In the instructions above, we're referring for a service account named 'default' in regards to the **certificate** and **token**. You can provide any service account configurations you may have on any namespace, as long as it has the correct permissions. The cluster actions you'll be limited to in Codefresh are based on the Kubernetes service account permissions you set in [Kubernetes RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/). 
 {{site.data.callout.end}}
 
 The minimum permissions Codefresh needs to work with the cluster are the following:
@@ -254,6 +254,44 @@ rules:
     verbs: ["list", "watch", "get"] 
 {% endraw %}
 {% endhighlight %}
+
+And here is an example with role + service account + binding (can be applied with `kubectl -f`):
+
+`codefresh-role-sa-bind.yml`
+{% highlight yaml %}
+{% raw %}
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: codefresh-role
+rules:
+  - apiGroups: [""]
+    resources: ["*"]
+    verbs: ["list", "watch", "get"] 
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: codefresh-user
+  namespace: kube-system
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  name: codefresh-user
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: codefresh-role
+subjects:
+- kind: ServiceAccount
+  name: codefresh-user
+  namespace: kube-system
+{% endraw %}
+{% endhighlight %}
+
+
+
 
 Once the cluster been added successfully you can go to the `Kubernetes` tab to start working with the services of your cluster.
 
