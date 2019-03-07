@@ -9,7 +9,9 @@ toc: true
 
 ### March 2019
 
+- OAuth2 Connections for supported git providers - [documentation]({{site.baseurl}}/docs/integrations/git-providers/#adding-more-git-providers-to-your-codefresh-account)
 - Pipeline ABAC (Enterprise) - [documentation]({{site.baseurl}}/docs/enterprise/access-control/#marking-pipelines-with-policy-attributes)
+
 
 ### February 2019
 

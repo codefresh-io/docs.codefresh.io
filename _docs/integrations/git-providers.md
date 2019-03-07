@@ -52,12 +52,20 @@ alt="Add GIT provider"
 
 For each git provider you need to setup authentication, so Codefresh can get access to the public and private repositories of the respective platform. 
 
+The easiest way to setup authentication is with OAuth2 if supported by the git provider. You only need to name your integration
+and Codefresh will automatically set it up once you accept the permissions required. If you have problems with OAuth2
+or the provider does not support it, you need to manually create credentials by yourself in your git account and then enter them into Codefresh.
+
 In the case of an on-premise GIT provider you also need to fill in the URL where the provider is installed.
 
 
 ## Github
 
-For Github you need:
+For the **OAuth2 method** you only need to decide on public/private repository access, enter a name for your connection and click *Save*. Then accept the permissions dialog. This is the easiest and recommended way to integrate Github. Notice that if
+you used Github when you [created your Codefresh account]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/), this integration is already setup for you.
+
+
+For the **Access Token** method you need:
 
 * a friendly name for the git context. It can be anything you want
 * an access token
@@ -87,10 +95,13 @@ For Github on-premise you also need to provide the URL of the GitHub server in y
 
 ## Gitlab
 
-For Gitlab you need:
+For the **OAuth2 method** you only need to enable private repository access, enter a name for your connection and click *Save*. Then accept the permissions dialog. This is the easiest and recommended way to integrate Gitlab. Notice that if
+you used Gitlab when you [created your Codefresh account]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/), this integration is already setup for you.
+
+For the **Access Key** method you need:
 
 * a friendly name for the git context. It can be anything you want
-* an access token
+* an access token/key
 
 
 To create an access token, go to your Gitlab *settings* and select the *Access tokens* options.
@@ -105,7 +116,10 @@ For Gitlab on-premise you also need to provide the URL of the Gitlab server in y
 
 ## Bitbucket
 
-For Bitbucket you need
+For the **OAuth2 method** you only need to enter a name for your connection and click *Save*. Then accept the permissions dialog. This is the easiest and recommended way to integrate Bitbucket. Notice that if
+you used Bitbucket when you [created your Codefresh account]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/), this integration is already setup for you.
+
+For the **Application Password** method you need:
 
 * a friendly name for the git context. It can be anything you want
 * the name of your Bitbucket account/email address
@@ -162,6 +176,13 @@ alt="Select GIT provider"
 
 After adding the repository Codefresh will behave exactly the same, regardless of the selected git provider.
 You will be able to create pipelines for different git providers in exactly the same manner.
+
+## What to read next
+
+- [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/) 
+- [Git triggers]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/) 
+- [Git clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) 
+
 
 
 
