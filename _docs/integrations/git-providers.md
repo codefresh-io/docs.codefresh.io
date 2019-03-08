@@ -145,7 +145,7 @@ now save the git integration.
 
 ## Azure DevOps
 
-For Azure you need to create a personal access token. Sign in your Azure Devops account and click on your profile icon on the top right corner. Then select *Security*:
+For Azure you need to create a [personal access token](https://docs.microsoft.com/en-us/azure/devops/integrate/get-started/authentication/pats?view=azure-devops). Sign in your Azure Devops account and click on your profile icon on the top right corner. Then select *Security*:
 
 
 {% include image.html 
