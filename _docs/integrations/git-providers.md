@@ -23,6 +23,7 @@ Currently Codefresh supports:
 * Bitbucket
 * Gitlab Cloud
 * Gitlab On premises
+* Azure DevOps Git
 * Atlassian Stash (old version of Bibucket Server)
 * Bitbucket Server (new version of Stash)
 
@@ -141,6 +142,39 @@ alt="Bitbucket permissions"
 
 The "label" you enter in your Bitbucket account in order to create the application password is completely arbitrary (use "Codefresh" for an example). Once you have the token, paste it in the Codefresh UI and click *Test connection*. If everything is OK can
 now save the git integration.
+
+## Azure DevOps
+
+For Azure you need to create a personal access token. Login in Azure Devops and click on your profile icon on the top right corner. Then select *Security*
+
+
+IMAGE HERE
+
+
+On the screen that will appear click the *New token* Button. Enter an arbitraty name for the token and select the correct
+**Organization** from the drop down menu. Remember your organization name as you will use it later in the Codefresh side.
+Select an expiration date for your token
+
+> At the time of writing Azure DevOps does not have the option to create a token that is valid for ever. Choose a large
+time period and make sure that you have a policy in place for re-newing your tokens so that Codefresh can continue to read your git repo.
+
+From the *Scope* section choose the option *Show all scopes* and choose the following 
+
+* Code - Read
+* Code - Status
+* Graph - Read
+* Project and Team - Read
+* User profile - Read
+
+Finally click the *Create* button and copy your token (it will never be shown again).
+
+Then at the Codefresh configuration enter your organization name and your token.
+
+IMAGE
+
+Click on *Test connection* to verify your settings and finally click save. Now you can [create pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
+that use Azure DevOps Git repos.
+
 
 ## Atlassian Stash 
 
