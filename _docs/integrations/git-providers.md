@@ -229,8 +229,7 @@ Codefresh supports Bitbucket server versions 5.4.0+ since those expose the API u
 
 ## Using your git provider
 
-Once your provider is active, you can add a new project into Codefresh and then during the repository selection
-screen you will have access to the additional git providers.
+Once your provider is active, you can add a new project into Codefresh and then during the [repository selection screen]({{site.baseurl}}/docs/getting-started/create-a-basic-pipeline/) you will have access to the additional git providers.
 
 {% include image.html 
 lightbox="true" 
@@ -241,9 +240,11 @@ caption="Select GIT provider"
 alt="Select GIT provider"
 %}
 
+>Notice that for all supported Git providers Codefresh will automatically create all the webhooks needed for
+triggering pipelines when a commit (or other event) happens. 
 
 After adding the repository Codefresh will behave exactly the same, regardless of the selected git provider.
-You will be able to create pipelines for different git providers in exactly the same manner.
+You will be able to [create pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/) for different git providers in exactly the same manner.
 
 ## What to read next
 
