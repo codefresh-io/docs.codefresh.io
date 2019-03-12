@@ -116,15 +116,17 @@ Once your clusters and pipelines are tagged, you should create teams that work o
 
 To create and manage teams of people, from the left sidebar of the Codefresh UI choose *Account Settings* and then click on the *Team* menu item under *User Management*.
 
+
 > Only Enterprise customers can add new teams. Other Codefresh plans can only use the predefined *Users* and *Admin* teams. [Contact us](https://codefresh.io/contact-us/) if you wish to upgrade to an Enterprise plan.
 
+**Note that team names should only contain lower case alphanumeric characters and hyphens. Spaces are not allowed**. See the screenshot below for some sample team names.
 
 {% include image.html
   lightbox="true"
   file="/images/enterprise/access-control/teams.png"
   url="/images/enterprise/access-control/teams.png"
   alt="Managing teams"
-  caption="Managing teams"
+  caption="Example teams in Codefresh"
   max-width="80%"
     %}
 
