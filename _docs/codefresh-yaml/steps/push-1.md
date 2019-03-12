@@ -14,7 +14,7 @@ If you use the [Codefresh Docker Registry]({{site.baseurl}}/docs/docker-registri
 
 Push a built image to a remote Docker registry with one or more tags. Supports standard Docker registries and ECR.
 
-Notice that when you use [any external registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/), your Codefresh username should match your account at that registry, otherwise the build step will fail. For example if your Codefresh image is tagged as `foo_username/my_image` but your Dockerhub account is `bar_username` then the build will fail and you need to customize the push step to use `bar_username` instead.
+Notice that when you use [any external registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/), you need to comply to the naming pattern used by that registry, otherwise the build step will fail. For example if your Codefresh image is tagged as `foo_username/my_image` but your Dockerhub account is `bar_username` then the build will fail and you need to customize the push step to use `bar_username` instead. This is a limitation of external registries such as Dockerhub.
 
 ## Usage
 
