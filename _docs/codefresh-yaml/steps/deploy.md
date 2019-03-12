@@ -90,6 +90,7 @@ with the `candidate` field (otherwise Codefresh will just reuse the docker image
 
 Update an existing service using the same Docker image (tagged with branch)
 
+`codefresh.yml`
 {% highlight yaml %} 
 {% raw %}
 version: '1.0'
@@ -113,6 +114,7 @@ steps:
 
 Update an existing service using a different Docker image (tagged with git hash)
 
+`codefresh.yml`
 {% highlight yaml %} 
 {% raw %}
 version: '1.0'
@@ -144,7 +146,7 @@ steps:
 
 Deploy a custom Kuberentes Manifest as is. (Only a deployment will be created)
 
-
+`codefresh.yml`
 {% highlight yaml %} 
 {% raw %}
 version: '1.0'

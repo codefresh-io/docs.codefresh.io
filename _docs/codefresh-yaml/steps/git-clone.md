@@ -150,7 +150,7 @@ cat ~/.ssh/my_ssh_key_file | tr '\n' ','
 
 Then in pipeline use it like this:
 
-`YAML`
+`codefresh.yml`
 {% highlight yaml %}
 {% raw %}
 version: '1.0'

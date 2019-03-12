@@ -57,12 +57,143 @@ step_name:
 | `image_name`                               | The tagged image name that will be used The default value will be the same image name as of the candidate.                                                                      | Default                   |
 | `registry`                                 | The registry logical name of one of the inserted registries from the integration view. <br>The default value will be your default registry.                                     | Default                   |
 | `fail_fast`                                | If a step fails, and the process is halted. The default value is `true`.                                                                                                        | Default                   |
-| `when`                                     | Define a set of conditions which need to be satisfied in order to execute this step.<br>You can find more information in the [Conditional Execution of Steps]({{ site.baseurl }}/docs/codefresh-yaml/conditional-execution-of-steps/) article.          | Optional                  |
-| `on_success`, `on_fail` and `on_finish`    | Define operations to perform upon step completion using a set of predefined [Post-Step Operations]({{ site.baseurl }}/docs/codefresh-yaml/post-step-operations/).                                                                               | Optional                  |
+| `when`                                     | Define a set of conditions which need to be satisfied in order to execute this step.<br>You can find more information in the [Conditional Execution of Steps]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/) article.          | Optional                  |
+| `on_success`, `on_fail` and `on_finish`    | Define operations to perform upon step completion using a set of predefined [Post-Step Operations]({{site.baseurl}}/docs/codefresh-yaml/post-step-operations/).                                                                               | Optional                  |
 | `retry`   | Define retry behavior as described in [Retrying a step]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/#retrying-a-step).                                                                               | Optional                  |
 
+## Examples
+
+Push an image to a registry connected with the [integration name]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) of  `myazureregistry`.
+
+`codefresh.yml`
+{% highlight yaml %} 
+{% raw %}
+version: '1.0'
+stages:
+- 'my build phase'
+- 'my push phase'
+steps:
+  MyAppDockerImage:
+    title: Building Docker Image
+    stage: 'my build phase'
+    type: build
+    image_name: my-app-image
+    dockerfile: Dockerfile
+  pushToMyRegistry:
+    stage: 'my push phase'
+    type: push
+    title: Pushing to a registry
+    candidate: ${{MyAppDockerImage}}
+    tag: ${{CF_SHORT_REVISION}}
+    registry: myazureregistry 
+{% endraw %}
+{% endhighlight %}
+
+Push an image as the name of the branch in the [external registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) and also use a different image than the default. The same image will also by pushed as `latest` in the internal Codefresh registry (with the defaut name of `my-app-image`).
+
+`codefresh.yml`
+{% highlight yaml %} 
+{% raw %}
+version: '1.0'
+stages:
+- 'my build phase'
+- 'my push phase'
+steps:
+  MyAppDockerImage:
+    title: Building Docker Image
+    stage: 'my build phase'
+    type: build
+    image_name: my-app-image
+    dockerfile: Dockerfile
+    tag: latest
+  pushToMyRegistry:
+    stage: 'my push phase'
+    type: push
+    title: Pushing to a registry
+    candidate: ${{MyAppDockerImage}}
+    tag: ${{CF_BRANCH_TAG_NORMALIZED}}
+    registry: myazureregistry
+    image_name: my-user-name/a-different-image-name 
+{% endraw %}
+{% endhighlight %}
+
+
+Push an image with multiple tags.
+
+`codefresh.yml`
+{% highlight yaml %} 
+{% raw %}
+version: '1.0'
+stages:
+- 'my build phase'
+- 'my push phase'
+steps:
+  MyAppDockerImage:
+    title: Building Docker Image
+    stage: 'my build phase'
+    type: build
+    image_name: my-app-image
+    dockerfile: Dockerfile
+  pushToMyRegistry:
+    stage: 'my push phase'
+    type: push
+    title: Pushing to a registry
+    candidate: ${{MyAppDockerImage}}
+    tags: 
+    - ${{CF_SHORT_REVISION}}
+    - latest
+    - 2.0.0
+    registry: myazureregistry 
+{% endraw %}
+{% endhighlight %}
+
+Push an image with multiple tags to multiple Docker registries in [parallel]({{site.baseurl}}/docs/docs/codefresh-yaml/advanced-workflows/).
+Both registries are connected first in the [integrations page]({{site.baseurl}}/docs/docker-registries/external-docker-registries/).
+
+
+`codefresh.yml`
+{% highlight yaml %} 
+{% raw %}
+version: '1.0'
+stages:
+- 'my build phase'
+- 'my push phase'
+steps:
+  MyAppDockerImage:
+    title: Building Docker Image
+    stage: 'my build phase'
+    type: build
+    image_name: my-app-image
+    dockerfile: Dockerfile
+  PushingToRegistries:
+    type: parallel
+    stage: 'push'
+    steps:
+      PushingToGoogleRegistry:
+        type: push
+        title: Pushing To Google Registry
+        candidate: ${{MyAppDockerImage}}
+        tags: 
+        - ${{CF_BUILD_ID}}
+        - latest
+        - production
+        registry: gcr
+      PushingToDockerRegistry:
+        type: push
+        title: Pushing To Dockerhub Registry
+        candidate: ${{MyAppDockerImage}}
+        tag: '${{CF_SHORT_REVISION}}'
+        image_name: my-docker-hub-username/my-app-name
+        registry: dockerhub 
+{% endraw %}
+{% endhighlight %}
+
+
 ## Using passed credentials without pre-saving them
+
 This option enables you to push your images without pre-saving the credentials in Codefresh's registry integration view.
+
+>Note that this method of pushing images is offered as a workaround. The suggested way is to use the [central Codefresh integration for registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) as explained in the previous section.
 
   `YAML`
 {% highlight yaml %}
@@ -106,8 +237,14 @@ step_name:
 | `secretAccessKey`                          | Your AWS secret access key.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | Optional <br>**Ignored when provider is** `docker`  |
 | `region`                                   | The region where the ECR registry is accessible.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Optional <br>**Ignored when provider is** `docker`  |
 | `fail_fast`                                | If a step fails, and the process is halted. The default value is `true`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Default                                        |
-| `when`                                     | Define a set of conditions which need to be satisfied in order to execute this step. <br>You can find more information in the [Conditional Execution of Steps]({{ site.baseurl }}/docs/codefresh-yaml/conditional-execution-of-steps/) article.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | Optional                                       |
-| `on_success`, `on_fail` and `on_finish`    | Define operations to perform upon step completion using a set of predefined [Post-Step Operations]({{ site.baseurl }}/docs/codefresh-yaml/post-step-operations/).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | Optional                                       |
+| `when`                                     | Define a set of conditions which need to be satisfied in order to execute this step. <br>You can find more information in the [Conditional Execution of Steps]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/) article.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | Optional                                       |
+| `on_success`, `on_fail` and `on_finish`    | Define operations to perform upon step completion using a set of predefined [Post-Step Operations]({{site.baseurl}}/docs/codefresh-yaml/post-step-operations/).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | Optional                                       |
                                        
 **Exported resources:**
 - Image ID.
+
+## What to read next
+- [Codefresh Managed Registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/) 
+- [External Registry integrations]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) 
+- [Custom Image annotations]({{site.baseurl}}/docs/docker-registries/metadata-annotations/) 
+- [Pipeline steps]({{site.baseurl}}/docs/docs/codefresh-yaml/steps/) 
