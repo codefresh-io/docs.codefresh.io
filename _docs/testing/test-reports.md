@@ -337,6 +337,88 @@ The icons shown are specified by the `REPORT_TYPE` variable. The following optio
 If you don't provide it, a default icon will be used.
 
 
+## Getting results from tests that fail
+
+By default it unit tests fail the whole pipeline will stop. If you want the pipeline to keep running even if the tests fail
+you need to add the [fail_fast property]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/#execution-flow) in the pipeline and set it to false. Here is an example
+
+{% highlight yaml %}
+{% raw %}
+  RunMyUnitTests:
+    image: node:latest
+    title: Running my UnitTests 
+    fail_fast: false
+    commands:
+    - npm run test
+{% endraw %}
+{% endhighlight %}
+
+This will allow the pipeline to continue running. Therefore any steps you have later that collect reports
+will run normally and have access to test results.
+
+## Marking the whole pipeline as failed if tests failed
+
+If you have used the `fail_fast:false` property in your pipeline as explained in the previous section you will notice
+that the pipeline "succeeds" even if the tests fail (because by using that property their result is essentially ignored).
+
+If you don't like this behavior you can still mark the whole pipeline as failed by using [pipeline conditionals]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/).
+
+Add as a last step in your pipeline the following step:
+
+{% highlight yaml %}
+{% raw %}
+  MarkMyPipelineStatus:
+    image: alpine:latest
+    title: Marking pipeline status
+    commands:
+    - echo "Unit tests failed"
+    - exit 1
+    when:
+      condition:
+        all:
+          myCondition: RunMyUnitTests.result == 'failure'
+{% endraw %}
+{% endhighlight %}
+
+This step checks the result of your unit tests and stops the whole pipeline by exiting with an error.
+Replace `RunMyUnitTests` with the name of your step that runs unit tests. 
+
+Here is a full pipeline example:
+
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+steps:
+  RunMyUnitTests:
+    image: alpine:latest
+    title: Running my UnitTests that will fail
+    fail_fast: false
+    commands:
+    - exit 1 #simulate test fail
+  CollectingMyTestresults:
+    image: alpine:latest
+    title: Collecting test results
+    commands:
+    - echo "collecting/copy test results"  
+  MarkMyPipelineStatus:
+    image: alpine:latest
+    title: Checking Unit test result
+    commands:
+    - echo "Unit tests failed, marking the whole pipeline as failed"
+    - exit 1
+    when:
+      condition:
+        all:
+          myCondition: RunMyUnitTests.result == 'failure'
+{% endraw %}
+{% endhighlight %}
+
+If you run this pipeline you will see 
+
+1. The `RunMyUnitTests` will fail but the pipeline will continue
+1. The `CollectingMyTestresults` step will always run even if tests fail
+1. The `MarkMyPipelineStatus` step will mark the whole pipeline as failed.
 
 ## Running the test reporting step in parallel mode
 
