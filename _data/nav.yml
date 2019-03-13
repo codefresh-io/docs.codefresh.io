@@ -184,7 +184,7 @@
           url: "/amazon-ec2-container-registry"
         - title: "Google Container Registry"
           url: "/google-container-registry"
-        - title: "JFrog Bintray.io"
+        - title: "JFrog Bintray.io/Artifactory"
           url: "/bintray-io"
         - title: "Quay.io"
           url: "/quay-io"

@@ -85,7 +85,7 @@
     localurl: /docs/docker-registries/external-docker-registries/azure-docker-registry/   
   - title: Google Container Registry
     localurl: /docs/docker-registries/external-docker-registries/google-container-registry/   
-  - title: JFrog Bintray.io
+  - title: JFrog Bintray.io/Artifactory
     localurl: /docs/docker-registries/external-docker-registries/bintray-io/ 
 - title: Unit and Integration testing
   icon: images/home-icons/testing.png

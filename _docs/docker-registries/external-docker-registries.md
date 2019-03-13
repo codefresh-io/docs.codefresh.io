@@ -11,11 +11,11 @@ Codefresh enables you to integrate with several Docker container registries, inc
   * [Docker Hub]({{ site.baseurl }}/docs/docker-registries/external-docker-registries/docker-hub/)
   * [Google Container Registry]({{ site.baseurl }}/docs/docker-registries/external-docker-registries/google-container-registry/)
   * [Amazon EC2 Container Registry]({{ site.baseurl }}/docs/docker-registries/external-docker-registries/amazon-ec2-container-registry/)
-  * [Bintray.io]({{ site.baseurl }}/docs/docker-registries/external-docker-registries/bintray-io/)
+  * [Bintray.io/Artifactory]({{ site.baseurl }}/docs/docker-registries/external-docker-registries/bintray-io/)
   * [Quay.io]({{ site.baseurl }}/docs/docker-registries/external-docker-registries/quay-io/)
   * [Other Registries]({{ site.baseurl }}/docs/docker-registries/external-docker-registries/other-registries/)
 
-For a different registry choose to configure using the [Other]({{ site.baseurl }}/docs/docker-registries/external-docker-registries/other-registries/) option.
+For a different registry choose to configure using the [Other]({{site.baseurl}}/docs/docker-registries/external-docker-registries/other-registries/) option.
 
 The registries can either be public or private.
 
@@ -60,3 +60,11 @@ push_step:
   tag: {% raw %}${{CF_BRANCH}}{% endraw %}
   registry: <your-registry-configuration-name>
 {% endhighlight %}
+
+
+
+## What to read next
+
+- [Push pipeline step]({{site.baseurl}}/docs/codefresh-yaml/steps/push-1/) 
+- [Pushing docker images with the UI]({{site.baseurl}}/docs/docker-registries/push-image-to-a-docker-registry/) 
+- [Examples of pushing Docker images]({{site.baseurl}}/docs/yaml-examples/examples/build-and-push-an-image/) 
