@@ -59,14 +59,14 @@ any other terminal that has access to your cluster via `kubectl`.
 
 To verify that your cluster is setup for Helm select the *Helm Releases* item from the left sidebar in the Codefresh UI. You should see the Helm releases in your cluster or an empty screen if you just started using Helm. 
 
-### Step 2 - Define a Helm repository
+### Step 3 - Define a Helm repository
 
 You should configure a Helm repository for the step to work with. Besides public HTTP repositories, we support a variety of private, authenticated Helm repositories. Codefresh also provides a free, managed Helm repository for every account.
 
 You will need to connect your repository with Codefresh as described [here]({{site.baseurl}}/docs/new-helm/add-helm-repository/), or obtain your managed Helm repository URL as described [here]({{site.baseurl}}/docs/new-helm/managed-helm-repository/#chart-repository-url).
 
 
-### Step 3 - Import the Helm Configuration in your pipeline definition
+### Step 4 - Import the Helm Configuration in your pipeline definition
 
 Once you have a Helm repository connected, attach it to the pipeline by selecting it in the pipeline editing page, under "Environment Variables" -> "Import from shared configuration".
 
@@ -80,6 +80,8 @@ max-width="70%"
 %}
 
 This concludes the Helm setup for Codefresh. Now you can use the Helm freestyle step in the pipeline `codefresh.yml` file.
+
+Note that this step is only needed in pipelines that actually upload/fetch Helm charts from/to Helm repositories. If you have a pipeline that directly installs a Helm chart from the git filesystem, there is no need to import a Helm configuration.
 
 >Currently only one Helm configuration can be used in the same pipeline. We are aware
 of this limitation and will soon improve the way Codefresh works with multiple Helm configurations.
