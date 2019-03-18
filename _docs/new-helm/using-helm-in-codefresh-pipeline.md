@@ -10,20 +10,35 @@ toc: true
 
 We have created a special Helm step for easy integration of Helm in Codefresh pipelines. The Helm step facilitates authentication, configuration and execution of Helm commands.
 
-> You can always use the regular `helm` cli in a freestyle step, if you have a special use case that is not covered by the Codefresh Helm step. In this case, you can use the simpler container `codefresh/kube-helm` which includes only the kubectl and helm tools. kube-helm is available on DockerHub: [https://hub.docker.com/r/codefresh/kube-helm/](https://hub.docker.com/r/codefresh/kube-helm/)
+> You can always use the regular `helm` cli in a freestyle step, if you have a special use case that is not covered by the Codefresh Helm step. In this case, you can use the simpler container `codefresh/kube-helm` which includes only the kubectl and helm tools. kube-helm is available on DockerHub: [https://hub.docker.com/r/codefresh/kube-helm/](https://hub.docker.com/r/codefresh/kube-helm/).
+
+If you are just starting using Helm please also consult the [Helm quick start guide]({{site.baseurl}}/docs/getting-started/helm-quick-start-guide/).
 
 ## Helm setup
 
 In order to use Helm in your Codefresh pipeline you must do the following
 
-1. Add a Kubernetes cluster
+1. Create a Helm package for your application
+1. Add a Kubernetes cluster enabled with Helm/Tiller
 1. Define a Helm repository or use the one offered by Codefresh to all accounts
 1. Import the Helm configuration in your pipeline variables
 1. Use the `codefresh/cfstep-helm` in your [yml build definition]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/).
 
 Let's see these steps in order
 
-### Step 1 - Kubernetes Configuration
+### Step 1 - Create a Helm chart for your application
+
+Helm applications are bundled in special archives called *Charts*. You can create a Helm
+chart for your application by following [the official documentation on charts](https://helm.sh/docs/developing_charts/).
+
+The example Codefresh application also comes with a [sample chart](https://github.com/codefresh-contrib/python-flask-sample-app/tree/with-helm/charts/python) that is used in the [Helm quick start guide]({{site.baseurl}}/docs/getting-started/helm-quick-start-guide/).
+
+You can create the chart manually or by using the [helm create](https://helm.sh/docs/helm/#helm-create) command on your workstation. There are also several third part tools that can create Helm packages for you such as [Draft](https://draft.sh/).
+
+Once you have your Helm chart ready, commit it to the same git repository that contains the source code of your application. It should be in a folder called `charts`. Codefresh can also work with Helm charts that are in different Git repositories. We suggest however that you keep both the source code and the Helm chart of an application in the same git repository as this makes chart management much easier.
+
+
+### Step 2 - Kubernetes Configuration
 
 You can configure a Kubernetes cluster to deploy to using the `KUBE_CONTEXT` variable.
 
@@ -37,6 +52,12 @@ alt="Name of Kubernetes cluster"
 caption="Name of Kubernetes cluster" 
 max-width="70%" 
 %}
+
+Make sure also that your Kubernetes cluster has the server part of Helm installed (called Tiller).
+The easiest way to do that is to run `helm init` from the command shell of your cloud provider or
+any other terminal that has access to your cluster via `kubectl`.
+
+To verify that your cluster is setup for Helm select the *Helm Releases* item from the left sidebar in the Codefresh UI. You should see the Helm releases in your cluster or an empty screen if you just started using Helm. 
 
 ### Step 2 - Define a Helm repository
 
