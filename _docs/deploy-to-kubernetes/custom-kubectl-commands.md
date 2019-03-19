@@ -87,7 +87,7 @@ steps:
     image: codefresh/kubectl
     commands: 
       - kubectl config get-contexts
-      - kubectl config use-context gke-kostisdemo-codefresh-kostis
+      - kubectl config use-context "gke-kostisdemo-codefresh-kostis"
       - kubectl get nodes
 {% endraw %}
 {% endhighlight %}
@@ -148,7 +148,7 @@ steps:
         working_directory: ./my-nestjs-project/
         commands: 
           - kubectl config get-contexts
-          - kubectl config use-context gke-kostisdemo-codefresh-kostis
+          - kubectl config use-context "gke-kostisdemo-codefresh-kostis"
           - kubectl apply -f service.yml deployment.yml
       DeployApp2:
         title: Deploying App 2
@@ -157,7 +157,7 @@ steps:
         working_directory: ./my-rails-project/
         commands: 
           - kubectl config get-contexts
-          - kubectl config use-context kostis-demo@FirstKubernetes  
+          - kubectl config use-context "kostis-demo@FirstKubernetes"  
           - kubectl apply -f service.yml deployment.yml configmap.yml
 {% endraw %}
 {% endhighlight %}
