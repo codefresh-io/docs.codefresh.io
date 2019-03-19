@@ -31,7 +31,7 @@ The [official docs](https://helm.sh/docs/using_helm/) do a good job of explainin
 Helm Concept|Description| Important point
 ---|--- | ---
 Chart (unpackaged) | A folder with files that follow the Helm chart guidelines. | Can be deployed as is |
-Chart (packaged) | A tar.gz package of the above | Can be deployed as is |
+Chart (packaged) | A `tar.gz` archive of the above | Can be deployed as is |
 Chart name | Name of the package as defined in `Chart.yaml` | Part of package identification |
 Templates | A set of Kubernetes manifests that form an application | Go templates can be used |
 Values | Settings that can be parameterized in Kubernetes manifests | Used for templating of manifests |
@@ -92,7 +92,7 @@ Technically Helm can be used as only a templating engine by stopping the deploym
 
 At the time of writing Helm is the only package manager for Kubernetes, so if you want a way to group your manifests and a registry of your running applications, there are no off-the-shelf alternative apart from Helm.
 
-Here is table that higlights the comparison:
+Here is table that highlights the comparison:
 
 Helm Feature|Alternative| 
 ---|--- 
