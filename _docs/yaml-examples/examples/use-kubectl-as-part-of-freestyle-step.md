@@ -1,6 +1,6 @@
 ---
 title: "Use kubectl as part of Freestyle step"
-description: ""
+description: "How to run manually kubectl in a Codefresh pipeline"
 group: yaml-examples
 sub_group: examples
 redirect_from:
@@ -8,11 +8,12 @@ redirect_from:
 toc: true
 ---
 
-## Kubernetes in Freestyle step
 
-Running Kubernetes cmd in Codefresh as part of the workflow is easy.
-Codefresh adding all you clusters into the workflow to be used as part of your CI/CD pipeline.
-The context remains the same as it appears in Codefresh
+Running Kubernetes commands in Codefresh as part of the workflow is very easy.
+
+
+Codefresh is adding all your clusters into the workflow ready to be used as part of your CI/CD pipeline.
+The context remains the same as it appears in the [Codefresh Kubernetes dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/).
 
 >If your cluster name includes spaces then make sure that you use quotes in the `kubectl` command
 
@@ -25,7 +26,8 @@ The context remains the same as it appears in Codefresh
 
 
 ## Follow the example
-* Add this [repo](){:target="_blank"} to your account
+
+* Add this [Git repo](https://github.com/Codefresh-Examples/kubectl-in-freestyle-step){:target="_blank"} to your account
 * Change the pipeline configuration to use `codefresh.yml`.
 * Build.
 
