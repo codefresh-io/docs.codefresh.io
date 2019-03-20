@@ -113,11 +113,37 @@ With the basics out of the way we can now see some typical Helm usage patterns. 
 
 ### Deploy from unpackaged chart
 
-### Deploy and package/push
+This is the most simple pipeline for Helm. The Helm chart is in the same git repository as the source code of the application.
 
-### Double push and Rollback
+IMAGE here
 
-### Separate Helm pipelines 
+The steps are the following:
+
+1. Code/Dockerfile/Chart is checked out from Git
+1. Docker image is built (and pushed to internal [Codefresh registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/))
+1. Chart is [deployed directly]({{site.baseurl}}/docs/new-helm/using-helm-in-codefresh-pipeline/#example-installing-a-chart) to a Kuberentes Cluster
+
+Notice that in this pipeline there is no Helm repository involved.
+
+> We recommend this workflow only while you are learning Helm. However storing your Helm charts in a Helm repository is a better practice as described in the next section.
+
+### package/push and then deploy
+
+This is the recommended approach when using Helm. First you package and push the Helm chart in a repository and then you deploy it to your cluster. This way your Helm repository shows a registry of the applications that run on your cluster. You can also re-use the charts to deploy to other environments (described later in this page).
+
+IMAGE HERE
+
+The Helm chart can be either in the same GIT repository as the source code (as shown above) or in a different one.
+Note that this workflow assumes that you [have attached a Helm repository]({{site.baseurl}}/docs/new-helm/using-helm-in-codefresh-pipeline/#step-4---import-the-helm-configuration-in-your-pipeline-definition) configuration in the pipeline.
+
+If you use the [Codefresh Helm repository]({{site.baseurl}}/docs/new-helm/managed-helm-repository/) you can see all your releases from the Codefresh UI.
+
+IMAGE here.
+
+
+### Using Helm rollbacks
+
+### Separate Helm pipelines
 
 ## Helm packaging strategies
 

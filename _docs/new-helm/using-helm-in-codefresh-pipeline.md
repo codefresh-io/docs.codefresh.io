@@ -148,7 +148,7 @@ deploy:
 ```
 
 Notes:
-- Helm repository connection was attached to the pipeline (see step 3 above)
+- Helm repository connection was attached to the pipeline (see step 4 above)
 - mychart is a chart that exists in the connected repository
 - no ACTION is provided, meaning `install` by default
 
