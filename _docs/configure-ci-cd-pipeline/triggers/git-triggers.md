@@ -60,10 +60,20 @@ The PR checkboxes mean that this pipeline will run only on the respective events
 
 ### Pull request Target field and branch name
 
-The Pull request target field allows you to trigger this pipeline only when the target of a Pull Request matches the
+The Pull request target field allows you to trigger this pipeline only when the target of a Pull Request (i.e. where the pr is going to be merged at) matches the
 branch name regular expression. Common examples here would be `master` or `production`.
 
-Here are some more examples:
+This field has only meaning when a commit happens in the context of a pull request and in that case:
+
+1. The branch field will look at the branch that the commit is happening on
+1. The PR target branch field will look at the branch is the PR is happening against
+
+For example if you create a commit on a branch that is named `my-feature` which is currently part of PR against branch `staging` (i.e. somebody wants to merge `my-feature` **TO** `staging`) then
+
+1. The `BRANCH` field value will try to match against `my-feature`
+1. The `PULL REQUEST TARGET BRANCH` will try to match against `staging`
+
+Here are some more syntax examples:
 
 * `/qa-release/gi` - only run if branch is named `qa-release`
 * `/feature-.*/gi` - only run if branch is `feature-foo`, `feature-bar`, `feature-123` etc.
