@@ -202,14 +202,38 @@ The configurations you'll be required to add are:
 
 ### Get cluster configuration manually
 
-Copy and paste the following commands into your local shell, then save the outputs and paste them into the Codefresh fields. The commands rely on `kubectl` so make sure it is configured correctly against your cluster.
+Codefresh accesses any custom cluster using a [service account](https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/). You can define the privileges Codefresh has on your cluster
+using the standard authorization methods (i.e. [RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)) supported by your Kubernetes infrastructure. 
 
-{{site.data.callout.callout_info}}
-##### More than one cluster in kubeconfig?
+You need a terminal with `kubectl` access on your cluster. You can even use the "cloud shell" of your
+cloud provider for this purpose.
 
-  Before starting, make sure that your local context is the one you would like to add to Codefresh.<br>
-Switch to the desired context before continuing by running `kubectl config use-context <my-cluster-name>`.
-{{site.data.callout.end}}
+#### The easy and insecure way
+
+If you are evaluating Codefresh and want to connect your cluster as fast as possible with no issues
+follow these steps:
+
+>Note that this method is only suggested for non-production clusters, and quick demos. 
+
+First make sure that you are giving commands to the appropriate cluster if you have more than one:
+
+`Choose cluster`
+{% highlight shell %}
+{% raw %}
+kubectl config use-context <my-cluster-name>
+{% endraw %}
+{% endhighlight %}
+
+Then give full admin privileges to the default account.
+
+`Make default account cluster administrator`
+{% highlight shell %}
+{% raw %}
+kubectl create clusterrolebinding default-admin --clusterrole cluster-admin --serviceaccount=default:default
+{% endraw %}
+{% endhighlight %}
+
+Finally run the following commands and copy-paste the result to each Codefresh field in the UI:
 
 `Host IP`
 {% highlight shell %}
@@ -232,13 +256,11 @@ echo $(kubectl get secret -o go-template='{{index .data "token" }}' $(kubectl ge
 {% endraw %}
 {% endhighlight %}
 
-{{site.data.callout.callout_info}}
+Once the cluster been added successfully you can go to the `Kubernetes` tab to start working with the services of your cluster.
 
-##### Note
+#### The proper/secure way
 
-In the instructions above, we're referring for a service account named 'default' in regards to the **certificate** and **token**. You can provide any service account configurations you may have on any namespace, as long as it has the correct permissions. The cluster actions you'll be limited to in Codefresh are based on the Kubernetes service account permissions you set in [Kubernetes RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/). 
-{{site.data.callout.end}}
-
+For production environments you should create a service account and/or role for Codefresh access.
 The minimum permissions Codefresh needs to work with the cluster are the following:
 
 `codefresh-role.yml`
@@ -255,7 +277,9 @@ rules:
 {% endraw %}
 {% endhighlight %}
 
-And here is an example with role + service account + binding (can be applied with `kubectl -f`):
+Note that these permissions will only allow Codefresh to read the cluster resources and populate the respective dashboards. You need to give more privileges for actual deployments.
+
+Here is an example with role + service account + binding.
 
 `codefresh-role-sa-bind.yml`
 {% highlight yaml %}
@@ -290,10 +314,50 @@ subjects:
 {% endraw %}
 {% endhighlight %}
 
+Select the appropriate cluster if you have more than one:
+
+`Choose cluster`
+{% highlight shell %}
+{% raw %}
+kubectl config use-context <my-cluster-name>
+{% endraw %}
+{% endhighlight %}
+
+Create the Codefresh user/role:
+
+`Apply Codefresh access rules`
+{% highlight shell %}
+{% raw %}
+kubectl apply -f codefresh-role-sa-bind.yml
+{% endraw %}
+{% endhighlight %}
+
+Finally run the following commands and copy-paste the result to each Codefresh field in the UI:
+
+`Host IP`
+{% highlight shell %}
+{% raw %}
+export CURRENT_CONTEXT=$(kubectl config current-context) && export CURRENT_CLUSTER=$(kubectl config view -o go-template="{{\$curr_context := \"$CURRENT_CONTEXT\" }}{{range .contexts}}{{if eq .name \$curr_context}}{{.context.cluster}}{{end}}{{end}}") && echo $(kubectl config view -o go-template="{{\$cluster_context := \"$CURRENT_CLUSTER\"}}{{range .clusters}}{{if eq .name \$cluster_context}}{{.cluster.server}}{{end}}{{end}}")
+{% endraw %}
+{% endhighlight %}
+
+`Certificate`
+{% highlight shell %}
+{% raw %}
+echo $(kubectl get secret -n kube-system -o go-template='{{index .data "ca.crt" }}' $(kubectl get sa codefresh-user -n kube-system -o go-template="{{range .secrets}}{{.name}}{{end}}"))
+{% endraw %}
+{% endhighlight %}
+
+`Token`
+{% highlight shell %}
+{% raw %}
+echo $(kubectl get secret -n kube-system -o go-template='{{index .data "token" }}' $(kubectl get sa codefresh-user -n kube-system -o go-template="{{range .secrets}}{{.name}}{{end}}"))
+{% endraw %}
+{% endhighlight %}
 
 
 
-Once the cluster been added successfully you can go to the `Kubernetes` tab to start working with the services of your cluster.
+
 
 ## Adding a Rancher cluster
 
