@@ -125,7 +125,7 @@ The steps are the following:
 
 Notice that in this pipeline there is no Helm repository involved.
 
-> We recommend this workflow only while you are learning Helm. However storing your Helm charts in a Helm repository is a better practice as described in the next section.
+> We recommend this workflow only while you are learning Helm. Storing your Helm charts in a Helm repository is a better practice as described in the next section.
 
 ### Package/push and then deploy
 
@@ -175,13 +175,43 @@ Integrating automatic Helm rollbacks can be used in all kinds of Helm workflows 
 
 ## Helm packaging strategies
 
+As mentioned before a Helm chart version is completely different than the application version it contains. This means that you can track versions on the Helm chart itself. 
+
 ### Simple 1-1 versioning
+
+This is the most basic versioning approach and it is the suggested one if you are starting out with Helm.
+Don't use the `appVersion` field at all (it is optionally anyway) and just keep the chart version in sync with your actual application
+
+IMAGE here
+
+This approach makes version bumping very easy (you bump everything up) and also allows you to quickly track
+what application version is deployed on your cluster (same as chart version).
+
+The downside of this approach is that you can track chart changes separately.
 
 ### Chart versus application versioning
 
+This is advanced approach which you should adopt if changes are happening in the charts themselves all the time (i.e. in the templates) and you want to track them separately from the application.
+
+IMAGE here
+
+The first problem is that you need to adopt a policy in your team on what a "chart change means". Helm does not enforce chart version changes. You can deploy a different chart with the same version as the previous one. So if this is something that you want to audio, you need to make sure that all teams are on the same page.
+
+On the plus side, this workflow allows you to individually version charts and applications and is very flexible for companies with teams that manage separately the charts.
+
+
 ### Umbrella charts
 
+Umbrella charts are charts of charts. They add an extra layer of complexity on both previous approaches.
+You can follow the same paradigms in umbrella charts. Either the parent chart has the same version as everything else (first approach) or it has a version on its own.
+
+In the second case, you need to agree with your team on when exactly the parent chart version should be bumped. Is it only when a child chart changes? Only when an application changes? or both?
+
+The answer does not really matter as long as your team follows the same rules.
+
 ## Helm promotion strategies
+
+A Helm chart (like a Docker image) should be promoted between environments. It should start with testing and staging environments and gradually move to production ones.
 
 ### Single repository with multiple environments
 
