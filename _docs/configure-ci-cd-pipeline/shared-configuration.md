@@ -150,9 +150,9 @@ Once the pipeline runs, you will see in the logs:
 I love eating pizza
 ```
 
-## Manipulating shared configuration via the CLI
+## Manipulating shared configuration programmatically
 
-You can also create/update/delete shared configuration via the [Codefresh CLI](https://codefresh-io.github.io/cli/).
+You can also create/update/delete shared configuration via the [Codefresh CLI](https://codefresh-io.github.io/cli/) or [API]({{site.baseurl}}/docs/integrations/codefresh-api/).
 
 See the [context section](https://codefresh-io.github.io/cli/contexts/create-context/) in the CLI documentation.
 
