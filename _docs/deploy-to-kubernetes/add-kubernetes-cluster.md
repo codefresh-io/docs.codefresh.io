@@ -156,7 +156,6 @@ kubectl --kubeconfig="$HOME/.kube/eks" -n="kube-system" get secret \
 
 Once you have this token, follow the steps in the section below, using this token for item #4.
 
-{:.text-secondary}
 ## Adding any other cluster type (not dependent on any provider)
  
 Go to your Account Configuration, by clicking on *Account Settings* on the left sidebar. On the first section called *Integrations* click the *Configure* button next to *Kubernetes*.
@@ -213,7 +212,7 @@ cloud provider for this purpose.
 If you are evaluating Codefresh and want to connect your cluster as fast as possible with no issues
 follow these steps:
 
->Note that this method is only suggested for non-production clusters, and quick demos. 
+>Note that this method is only suggested for non-production clusters, and quick demos. See the next section for the proper way to use Codefresh in production environments.
 
 First make sure that you are giving commands to the appropriate cluster if you have more than one:
 
