@@ -98,7 +98,6 @@
   - title: Integration Tests
     localurl: /docs/testing/integration-tests/ 
   - title: Test reports
-    new: true
     localurl: /docs/testing/test-reports/   
 - title: Kubernetes
   icon: images/home-icons/k8s.png
