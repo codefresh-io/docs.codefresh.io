@@ -131,7 +131,14 @@ With the basics out of the way we can now see some typical Helm usage patterns. 
 
 This is the most simple pipeline for Helm. The Helm chart is in the same git repository as the source code of the application.
 
-IMAGE here
+{% include image.html 
+lightbox="true" 
+file="/images/kubernetes-helm/best-practices/helm-no-repo.png" 
+url="/images/kubernetes-helm/best-practices/helm-no-repo.png" 
+alt="Using Helm without a Helm repository"
+caption="Using Helm without a Helm repository" 
+max-width="70%" 
+%}
 
 The steps are the following:
 
@@ -147,16 +154,31 @@ Notice that in this pipeline there is no Helm repository involved.
 
 This is the recommended approach when using Helm. First you package and push the Helm chart in a repository and then you deploy it to your cluster. This way your Helm repository shows a registry of the applications that run on your cluster. You can also re-use the charts to deploy to other environments (described later in this page).
 
-IMAGE HERE
+{% include image.html 
+lightbox="true" 
+file="/images/kubernetes-helm/best-practices/basic-helm-pipeline.png" 
+url="/images/kubernetes-helm/best-practices/basic-helm-pipeline.png" 
+alt="Basic Helm application pipeline"
+caption="Basic Helm application pipeline" 
+max-width="70%" 
+%}
 
 The Helm chart can be either in the same GIT repository as the source code (as shown above) or in a different one.
 Note that this workflow assumes that you [have attached a Helm repository]({{site.baseurl}}/docs/new-helm/using-helm-in-codefresh-pipeline/#step-4---import-the-helm-configuration-in-your-pipeline-definition) configuration in the pipeline.
 
 If you use the [Codefresh Helm repository]({{site.baseurl}}/docs/new-helm/managed-helm-repository/) you can see all your releases from the Codefresh UI.
 
-IMAGE here.
+{% include image.html 
+lightbox="true" 
+file="/images/kubernetes-helm/best-practices/helm-catalog.png" 
+url="/images/kubernetes-helm/best-practices/helm-catalog.png" 
+alt="Helm application catalog"
+caption="Helm application catalog" 
+max-width="70%" 
+%}
 
-This approach allows you also to reuse the Helm charts. After you publish a Helm chart, in the Helm repository you can deploy it to another environment (with a pipeline or manually) using different values.
+
+This approach allows you also to reuse Helm charts. After you publish a Helm chart, in the Helm repository you can deploy it to another environment (with a pipeline or manually) using different values.
 
 
 ### Separate Helm pipelines
@@ -165,7 +187,14 @@ Even though packaging a deploying a release in a single pipeline is the recommen
 
 In this case you can create two pipelines. One that packages the Helm chart and uploads it to a Helm repository and another one that deploys to cluster from the Helm chart.
 
-IMAGE here
+{% include image.html 
+lightbox="true" 
+file="/images/kubernetes-helm/best-practices/push-and-deploy.png" 
+url="/images/kubernetes-helm/best-practices/push-and-deploy.png" 
+alt="Push and deploy in different pipelines"
+caption="Push and deploy in different pipelines" 
+max-width="70%" 
+%}
 
 While this approach offers flexible releases (as one can choose exactly what is released and what is not), it also raises the complexity of deployments. You need to pass parameters on the deployment pipeline to decide which chart version will be deployed.
 
@@ -179,7 +208,14 @@ manually or via the [Codefresh UI]({{site.baseurl}}/docs/new-helm/helm-releases-
 
 A more advanced usage would be to automatically rollback a release if it "fails".
 
-IMAGE here
+{% include image.html 
+lightbox="true" 
+file="/images/kubernetes-helm/best-practices/helm-rollback.png" 
+url="/images/kubernetes-helm/best-practices/helm-rollback.png" 
+alt="Automatic Helm rollback"
+caption="Automatic Helm rollback" 
+max-width="70%" 
+%}
 
 In the example pipeline above, after deployment we run some smoke tests. If they fail
 then the rollback step is executed using [pipeline conditionals]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/).
