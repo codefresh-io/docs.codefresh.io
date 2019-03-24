@@ -215,6 +215,40 @@ A Helm chart (like a Docker image) should be promoted between environments. It s
 
 ### Single repository with multiple environments
 
+This is the most basic deployment workflow. You have a single Helm chart (which is exactly the same across all environments).
+It is deployed to multiple targets using a different set of values.
+
+IMAGE HERE
+
+Codefresh has several ways to override the values for each environment either in the [pipeline itself]({{site.baseurl}}/docs/new-helm/using-helm-in-codefresh-pipeline/#helm-values).
+
+
 ### Chart promotion between environments
 
+This is the recommended deployment workflow. Codefresh can store different Helm values per environment in the [shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/#using-shared-helm-values) mechanism.
+
+IMAGE here
+
+Then once you promote a Helm release either from the GUI, or the pipeline you can select exactly which configuration set of parameters you want to use
+
+IMAGE here
+
+This workflow has two big advantages:
+
+1. You get a visual overview on what Helm release is installed where
+1. You can promote releases without running the initial CI/CD pipeline (that created the chart)
+
 ### Chart promotion between repositories and environments
+
+A more advanced workflow (useful in organizations with multi-location deployments) is the promotion of Helm releases between both repositories and environments.
+
+IMAGE here
+
+There are different pipelines for:
+
+1. Creating the Helm chart and storing it to a staging Helm repository (i.e. the Codefresh Helm repository)
+1. Deployment of the Helm chart to a staging environment
+1. Promotion of Helm chart to one or more "production" HElm repositories 
+1. Deployment of the Helm chart to the production environments 
+
+While this workflow is very flexible, it add complexity on the number of Helm charts available (since they exist in multiple Helm repositories). You also need to setup the parameters between the different pipelines so that Helm charts to be deployed can be indeed found in the expected Helm repository.
