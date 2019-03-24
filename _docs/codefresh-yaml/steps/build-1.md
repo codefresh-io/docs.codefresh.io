@@ -26,6 +26,7 @@ will become in Codefresh the following build step.
 ```yaml
 BuildMyImage:
   title: Building My Docker image
+  type: build
   image_name: my-app-image
   tag: 1.0.1
 ```
