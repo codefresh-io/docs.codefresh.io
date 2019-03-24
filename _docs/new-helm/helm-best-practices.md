@@ -30,8 +30,8 @@ The [official docs](https://helm.sh/docs/using_helm/) do a good job of explainin
 
 Helm Concept|Description| Important point
 ---|--- | ---
-Chart (unpackaged) | A folder with files that follow the Helm chart guidelines. | Can be deployed as is |
-Chart (packaged) | A `tar.gz` archive of the above | Can be deployed as is |
+Chart (unpackaged) | A folder with files that follow the Helm chart guidelines. | Can be deployed directly to a cluster |
+Chart (packaged) | A `tar.gz` archive of the above | Can be deployed directly to a cluster |
 Chart name | Name of the package as defined in `Chart.yaml` | Part of package identification |
 Templates | A set of Kubernetes manifests that form an application | Go templates can be used |
 Values | Settings that can be parameterized in Kubernetes manifests | Used for templating of manifests |
@@ -40,9 +40,9 @@ App version | The version of the application contained in the chart | **Independ
 Release | A deployed package in a Kubernetes cluster | **Multiple releases of the same chart can be active**|
 Release name | An arbitrary name given to the release | **Independent from name of chart** |
 Release Revision | A number that gets incremented each time an application is deployed/upgraded | **Unrelated to chart version**|
-Repository | A file structure (HTTP server) with packages and an `index.yaml` file | Helm charts can be deployed **without** being in a repository first |
+Repository | A file structure (HTTP server) with packages and an `index.yaml` file | Helm charts can be deployed **without** being fetched from a repository first |
 Installing | Creating a brand new release from a Helm chart (either unpackaged, packaged or from a repo) | |
-Upgrading | Changing an existing release in a cluster | Can upgrade to any version (even the same) | 
+Upgrading | Changing an existing release in a cluster | Can be upgraded to any version (even the same) | 
 Rolling back | Going back to a previous revision of a release | Helm handles the rollback, no need to re-rerun pipeline |
 Pushing | Storing a Helm package on a repository | Chart will be automatically packaged | 
 Fetching | Downloading a Helm package from a repository to the local filesystem | |
@@ -62,6 +62,15 @@ Helm can install a chart either in the package (`.tgz`) or unpackaged form (tree
 1. Checkout from git a Helm chart described in uncompressed files
 1. Install this chart to a Kubernetes cluster
 
+{% include image.html 
+lightbox="true" 
+file="/images/kubernetes-helm/best-practices/helm-direct-deployment.png" 
+url="/images/kubernetes-helm/best-practices/helm-direct-deployment.png" 
+alt="Simplest Helm pipeline"
+caption="Simplest Helm pipeline" 
+max-width="70%" 
+%}
+
 You will see in the next section more efficient workflows, but the fact remains that Helm repositories are optional. There is  **no** technical requirement that a Helm chart must be uploaded to a Helm repository before being deployed to a cluster.
 
 ### Chart versions and appVersions
@@ -75,11 +84,18 @@ These are unrelated and can be bumped up in any manner that you see fit. You can
 
 ### Charts and sub-charts
 
-The most basic way to use Helm is by having a single chart that holds your application. The single chart will contain all resources needed by your application such as deployments, services, config-maps etc.
+The most basic way to use Helm is by having a single chart that holds a single application. The single chart will contain all resources needed by your application such as deployments, services, config-maps etc.
 
 However, you can also create a chart with dependencies to other charts (a.k.a. umbrella chart) which are completely external using the `requirements.yaml` file. Using this strategy is optional and can work well in several organizations. Again, there is no definitive answer on right and wrong here, it depends on your team process.
 
-IMAGE here.
+{% include image.html 
+lightbox="true" 
+file="/images/kubernetes-helm/best-practices/chart-structure.png" 
+url="/images/kubernetes-helm/best-practices/chart-structure.png" 
+alt="Possible Helm structures"
+caption="Possible Helm structures" 
+max-width="70%" 
+%}
 
 We will see some scenarios in the next sections on why you would want to use umbrella charts.
 
@@ -88,7 +104,7 @@ We will see some scenarios in the next sections on why you would want to use umb
 
 Helm is a package manager that also happens to include templating capabilities. Unfortunately a lot of people focus only on the usage of Helm as a template manager and nothing else.
 
-Technically Helm can be used as only a templating engine by stopping the deployment process in the manifest level. It is perfectly possible to use Helm only to create plain Kubernetes manifests and then install them on the cluster using the standard methods (such as `kubectl`). But then you miss all the advantages of Helm (especially the application registry aspect).
+Technically Helm can be used as only a templating engine by stopping the deployment process in the manifest level. It is perfectly possible to use Helm only to [create plain Kubernetes manifests](https://helm.sh/docs/helm/#helm-template) and then install them on the cluster using the standard methods (such as `kubectl`). But then you miss all the advantages of Helm (especially the application registry aspect).
 
 At the time of writing Helm is the only package manager for Kubernetes, so if you want a way to group your manifests and a registry of your running applications, there are no off-the-shelf alternative apart from Helm.
 
