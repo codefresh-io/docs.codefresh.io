@@ -204,7 +204,7 @@ In Codefresh you can also have the two pipelines automatically [linked together]
 
 Helm has the native capability of [rolling back](https://helm.sh/docs/helm/#helm-rollback) a *release* to any previous *revision*. This can be done
 manually or via the [Codefresh UI]({{site.baseurl}}/docs/new-helm/helm-releases-management/#helm-releases-overview
-)
+).
 
 A more advanced usage would be to automatically rollback a release if it "fails".
 
@@ -330,15 +330,28 @@ This workflow has two big advantages:
 
 ### Chart promotion between repositories and environments
 
-A more advanced workflow (useful in organizations with multi-location deployments) is the promotion of Helm releases between both repositories and environments.
+A more advanced workflow (useful in organizations with multi-location deployments) is the promotion of Helm releases between both [repositories]({{site.baseurl}}/docs/new-helm/add-helm-repository/) and environments.
 
-IMAGE here
+{% include 
+image.html 
+lightbox="true" 
+file="/images/kubernetes-helm/best-practices/advanced-promote.png" 
+url="/images/kubernetes-helm/best-practices/advanced-promote.png"
+alt="Advanced Helm promotion" 
+caption="Advanced Helm promotion" 
+max-width="90%"
+%}
 
 There are different pipelines for:
 
 1. Creating the Helm chart and storing it to a staging Helm repository (i.e. the Codefresh Helm repository)
-1. Deployment of the Helm chart to a staging environment
-1. Promotion of Helm chart to one or more "production" Helm repositories 
-1. Deployment of the Helm chart to the production environments 
+1. Deployment of the Helm chart to a staging environment. After it is tested *the chart* is promoted to one or more "production" Helm repositories 
+1. Deployment of the promoted Helm chart to the production environments 
 
 While this workflow is very flexible, it add complexity on the number of Helm charts available (since they exist in multiple Helm repositories). You also need to setup the parameters between the different pipelines so that Helm charts to be deployed can be indeed found in the expected Helm repository.
+
+## What to read next
+
+* [Using Helm in a Codefresh pipeline]({{site.baseurl}}/docs/new-helm/using-helm-in-codefresh-pipeline/)
+* [Helm Dashboard]({{site.baseurl}}/docs/new-helm/helm-releases-management)
+* [Helm Promotion boards]({{site.baseurl}}/docs/new-helm/helm-environment-promotion)
