@@ -234,18 +234,32 @@ As mentioned before a Helm chart version is completely different than the applic
 This is the most basic versioning approach and it is the suggested one if you are starting out with Helm.
 Don't use the `appVersion` field at all (it is optionally anyway) and just keep the chart version in sync with your actual application
 
-IMAGE here
+{% include image.html 
+lightbox="true" 
+file="/images/kubernetes-helm/best-practices/chart-version-single.png" 
+url="/images/kubernetes-helm/best-practices/chart-version-single.png" 
+alt="Synced versions in Helm"
+caption="Synced versions in Helm" 
+max-width="60%" 
+%}
 
 This approach makes version bumping very easy (you bump everything up) and also allows you to quickly track
 what application version is deployed on your cluster (same as chart version).
 
-The downside of this approach is that you can track chart changes separately.
+The downside of this approach is that you can't track chart changes separately.
 
 ### Chart versus application versioning
 
-This is advanced approach which you should adopt if changes are happening in the charts themselves all the time (i.e. in the templates) and you want to track them separately from the application.
+This is an advanced approach which you should adopt if changes are happening in the charts themselves all the time (i.e. in the templates) and you want to track them separately from the application.
 
-IMAGE here
+{% include image.html 
+lightbox="true" 
+file="/images/kubernetes-helm/best-practices/chart-version-multiple.png" 
+url="/images/kubernetes-helm/best-practices/chart-version-multiple.png" 
+alt="Independent Helm versioning"
+caption="Independent Helm versioning" 
+max-width="90%" 
+%}
 
 The first problem is that you need to adopt a policy in your team on what a "chart change means". Helm does not enforce chart version changes. You can deploy a different chart with the same version as the previous one. So if this is something that you want to audio, you need to make sure that all teams are on the same page.
 
@@ -270,20 +284,44 @@ A Helm chart (like a Docker image) should be promoted between environments. It s
 This is the most basic deployment workflow. You have a single Helm chart (which is exactly the same across all environments).
 It is deployed to multiple targets using a different set of values.
 
-IMAGE HERE
+{% include image.html 
+lightbox="true" 
+file="/images/kubernetes-helm/best-practices/multiple-environments.png" 
+url="/images/kubernetes-helm/best-practices/multiple-environments.png" 
+alt="Deploy to multiple environments with Helm"
+caption="Deploy to multiple environments with Helm" 
+max-width="90%" 
+%}
 
-Codefresh has several ways to override the values for each environment either in the [pipeline itself]({{site.baseurl}}/docs/new-helm/using-helm-in-codefresh-pipeline/#helm-values).
+Codefresh has several ways to override the values for each environment within a [pipeline]({{site.baseurl}}/docs/new-helm/using-helm-in-codefresh-pipeline/#helm-values).
 
 
 ### Chart promotion between environments
 
 This is the recommended deployment workflow. Codefresh can store different Helm values per environment in the [shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/#using-shared-helm-values) mechanism.
+Then you view and manage releases from the [Helm environments dashboard]({{site.baseurl}}/docs/new-helm/helm-environment-promotion/).
 
-IMAGE here
+{% include 
+image.html 
+lightbox="true" 
+file="/images/kubernetes-helm/promotion/board.png" 
+url="/images/kubernetes-helm/promotion/board.png"
+alt="Helm Environment Dashboard" 
+caption="Helm Environment Dashboard" 
+max-width="80%"
+%}
 
-Then once you promote a Helm release either from the GUI, or the pipeline you can select exactly which configuration set of parameters you want to use
+Then once you promote a Helm release either from the GUI, or the pipeline you can select exactly which configuration set of parameters you want to use:
 
-IMAGE here
+{% include 
+image.html 
+lightbox="true" 
+file="/images/kubernetes-helm/promotion/value-options.png" 
+url="/images/kubernetes-helm/promotion/value-options.png"
+alt="Changing deployment values" 
+caption="Changing deployment values" 
+max-width="40%"
+%}
 
 This workflow has two big advantages:
 
@@ -300,7 +338,7 @@ There are different pipelines for:
 
 1. Creating the Helm chart and storing it to a staging Helm repository (i.e. the Codefresh Helm repository)
 1. Deployment of the Helm chart to a staging environment
-1. Promotion of Helm chart to one or more "production" HElm repositories 
+1. Promotion of Helm chart to one or more "production" Helm repositories 
 1. Deployment of the Helm chart to the production environments 
 
 While this workflow is very flexible, it add complexity on the number of Helm charts available (since they exist in multiple Helm repositories). You also need to setup the parameters between the different pipelines so that Helm charts to be deployed can be indeed found in the expected Helm repository.
