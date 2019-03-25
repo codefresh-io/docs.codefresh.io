@@ -121,6 +121,9 @@
   links:
   - title: Helm Quick start guide
     localurl: /docs/getting-started/helm-quick-start-guide/
+  - title: Helm best practices
+    new: true
+    localurl: /docs/new-helm/helm-best-practices/    
   - title: Using Helm in a Codefresh pipeline
     localurl: /docs/new-helm/using-helm-in-codefresh-pipeline/
   - title: Helm Releases management
@@ -132,7 +135,6 @@
   - title: Custom Helm uploads
     localurl: /docs/new-helm/custom-helm-uploads/ 
   - title: Helm Environment Promotion
-    new: true
     localurl: /docs/new-helm/helm-environment-promotion/            
 - title: Deployment
   icon: images/home-icons/deployment.png
