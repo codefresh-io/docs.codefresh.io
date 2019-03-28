@@ -307,7 +307,7 @@ This illustrates the side effects for both parallel steps that were executed on 
 
 ## Parallel pipeline mode
 
-To activate parallel mode for the whole pipeline you need to declare it explicitly at the root of the codefresh.yml file:
+To activate advanced parallel mode for the whole pipeline you need to declare it explicitly at the root of the `codefresh.yml` file:
 
 ```
 version: '1.0'
@@ -316,7 +316,9 @@ steps:
 [...]
 ```
 
-In Parallel mode, the order of steps inside the `codefresh.yml` is **not** affecting the order of execution at all. The Codefresh engine instead:
+>Note that full parallel mode is a way to run pipelines that is  **incompatible** with the parallel steps shown in the previous section (which used the `type: parallel` attribute). The two modes *cannot* be mixed together. You *must* use one or the other in a single CI/CD pipeline but not both at the same time.
+
+In full parallel mode, the order of steps inside the `codefresh.yml` is **not** affecting the order of execution at all. The Codefresh pipeline engine instead:
 
 1. Evaluates all steps conditions *at the same* time
 2. Executes those that have their requirements met
