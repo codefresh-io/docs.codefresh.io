@@ -77,6 +77,7 @@ As you can see the modifications needed are:
 
 >This updated pipeline view is only a nice way to visualize the pipeline. It does not affect the order of step execution. Steps will still execute in the same order listed in the `codefresh.yml` file. If you wish to use parallel execution and advanced workflows see the [parallel steps]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/) page.
 
+
 ## Example pipeline with several stages
 
 Here is a more concrete example that you can use as a starting point:
@@ -155,6 +156,32 @@ Remember that the assignment of a step to a stage is happening only for graphica
 not affect the way your steps run. All steps will still run in the same order mentioned in the `codefresh.yml` file.
 
 Also notice if you enable this view a stage called *default* will show all build steps that are not explicitly assigned to a stage.
+
+## Using spaces in stage names
+
+If you wish to have spaces in stage names you need to quote them like this:
+
+  `codefresh.yml`
+{% highlight yaml %}
+version: '1.0'
+stages:
+- 'my build phase'
+- 'my test phase'
+steps:
+  MyAppDockerImage:
+    title: Building Docker Image
+    stage: 'my build phase'
+    type: build
+    image_name: my-app
+    dockerfile: Dockerfile
+  MyUnitTests:
+    title: Unit testing
+    stage: 'my test phase'
+    image: ${{MyAppDockerImage}}
+    commands: 
+    - echo "npm run test"
+{% endhighlight %}
+
 
 ## What to read next
 
