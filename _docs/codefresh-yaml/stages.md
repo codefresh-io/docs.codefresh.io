@@ -84,6 +84,7 @@ Here is a more concrete example that you can use as a starting point:
 
   `codefresh.yml`
 {% highlight yaml %}
+{% raw %}
 version: '1.0'
 stages:
  - prepare
@@ -137,7 +138,8 @@ steps:
         image: node
         stage: 'deploy'
         commands:
-            - 'echo "Hello Step 9!"'    
+            - 'echo "Hello Step 9!"'
+{% endraw %}                
 {% endhighlight %}
 
 If you run the pipeline you will see this view
@@ -163,6 +165,7 @@ If you wish to have spaces in stage names you need to quote them like this:
 
   `codefresh.yml`
 {% highlight yaml %}
+{% raw %}
 version: '1.0'
 stages:
 - 'my build phase'
@@ -179,7 +182,8 @@ steps:
     stage: 'my test phase'
     image: ${{MyAppDockerImage}}
     commands: 
-    - echo "npm run test"
+    - npm run test
+{% endraw %}
 {% endhighlight %}
 
 
