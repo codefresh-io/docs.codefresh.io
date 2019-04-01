@@ -10,7 +10,7 @@ toc: true
 ---
 
 Codefresh offers its own Kubernetes dashboard that allows you to inspect the services and namespaces
-in your cluster. To active this dashboard you need to connect your cluster to your Codefresh account first.
+in your cluster. To activate this dashboard you need to connect your cluster to your Codefresh account first.
 
 
 Start by going into your Account Configuration, by clicking on *Account Settings* on the left sidebar. On the first section called *Integrations* click the *Configure* button next to *Kubernetes*.
