@@ -2,6 +2,8 @@
 title: "HELM Best practices"
 description: "A high level overview of Helm workflows"
 group: new-helm
+redirect_from:
+  - /docs/new-helm/best-practices/
 toc: true
 ---
 
