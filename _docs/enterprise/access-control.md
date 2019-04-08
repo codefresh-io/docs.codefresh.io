@@ -159,7 +159,7 @@ On this screen you can:
 Here you can create new security rules using the *who, what, where* pattern. For each rule you select
 
 1. The team the rule applies to
-1. Cluster privileges (*Create/delete/read/update*) or Pipeline privilages (*Create/delete/read/run/update*)
+1. Cluster privileges (*Create/delete/read/update*) or Pipeline privileges (*Create/delete/read/run/update*)
 1. The effective tags (multiple tags can be used).
 
 This way you can define any policy you wish per departments, projects, roles etc. for cluster/pipeline access.
@@ -171,9 +171,22 @@ There are two custom tags that you can use in rules which are "special":
 
 > Note that you cannot add any rules for administrators. Administrators by default have access to all clusters.
 
+#### Description of privileges 
 
+For clusters:
 
+* `Create` - cluster creation requires someone to be account administrator anyway so currently this permission isn’t really necessary 
+* `Read` - can only see existing allowed clusters without any ability to change them
+* `Update` - can see and edit existing allowed cluster resources (which means also perform [installation and rollbacks of Helm charts]({{site.baseurl}}/docs/new-helm/helm-best-practices/)). Tags are managed from account settings so this permission doesn’t apply to it currently.
+* `Delete` - cluster removal requires someone to be account administrator anyway so currently this permissions isn’t really necessary
 
+For pipelines:
+
+* `Create` - can only create create new pipelines, not see, edit (which includes tagging them) or delete them. This permission should also go hand in hand with additional permissions like read/edit untagged pipelines
+* `Read` - view allowed pipelines only
+* `Update` - see and edit allowed pipelines only (including tagging them)
+* `Delete` - can delete allowed pipelines only
+* `Run` - can run allowed pipelines only
 
 ## What to read next
 
