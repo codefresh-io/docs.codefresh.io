@@ -48,7 +48,7 @@ If you use the custom reporting mode then you can select any kind of tool that y
 ## Connecting your storage account
 
 As a first step you need a cloud bucket to store your test results. You can use
-Google or AWS for this purpose. Codefresh will create subfolders in the bucket with names from every build id. It will then upload the reports for that build to the respective folder.
+Google or AWS for this purpose. Codefresh will create subfolders in the bucket with names from every build id. It will then upload the reports for that build to the respective folder. Multiple pipelines can use the same bucket.
 
 First go to your Account Configuration, by clicking on *Account Settings* on the left sidebar. On the first section called *Integrations* scroll down to *Cloud Storage*:
 
@@ -167,7 +167,7 @@ Once the test results are collected the next step is the same regardless of your
 Here we execute the special `cf-docker-test-reporting` image as a [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/). The important point is that this image will search for `allure-results` on its working directory. This is why we pass `/codefresh/volume/` as the working directory as this is the parent folder of the test results.
 
 The required environment variables are:
- * `BUCKET_NAME` the name of the bucket that you created in your cloud provider
+ * `BUCKET_NAME` the name of the bucket that you created in your cloud provider. Multiple pipelines can use the same bucket.
  * `CF_STORAGE_INTEGRATION` the name of the cloud integration as was entered in the Codefresh UI in the cloud storage integration page
 
 If you used another directory name then you can configure the test reporting step like this:
