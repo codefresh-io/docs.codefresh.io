@@ -67,7 +67,6 @@ exclude:
 plugins:
   - jekyll-redirect-from
   - jekyll-sitemap
-  - jekyll-feed
   - jekyll-github-metadata
   - jemoji
 
