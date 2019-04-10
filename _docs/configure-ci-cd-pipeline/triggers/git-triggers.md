@@ -75,8 +75,10 @@ For example if you create a commit on a branch that is named `my-feature` which 
 
 Here are some more syntax examples:
 
-* `/qa-release/gi` - only run if branch is named `qa-release`
-* `/feature-.*/gi` - only run if branch is `feature-foo`, `feature-bar`, `feature-123` etc.
+* `/^((qa-release)$).*/g` - only run if branch is named `qa-release`
+* `/^((production)$).*/g` - only run if branch is named `production`
+* `/release/g` - only run if branch is contains `release` in the name
+* `/feature-/gi` - only run if branch is `feature-foo`, `feature-bar`, `my-feature-123` etc.
 * `/^((?!^feature).)*$/gi` - only run if branch name does **not** start with `feature`
 
 >The field *Pull request target* is available for all Git providers apart from Atlassian stash
@@ -189,7 +191,7 @@ files you expect them to match.
 
 ## Using YAML and the Codefresh CLI to filter specific Webhook events
 
-The default GUI options exposed by Codefresh are just a starting point for GIT triggers and pull requests. Using [Codefresh YAML]({{ site.baseurl }}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) and the [Codefresh CLI plugin](https://codefresh-io.github.io/cli/) you can further create two-phase pipelines where the first one decides
+The default GUI options exposed by Codefresh are just a starting point for GIT triggers and pull requests. Using [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) and the [Codefresh CLI plugin](https://codefresh-io.github.io/cli/) you can further create two-phase pipelines where the first one decides
 which webwook events will be honored and the second one contains the actual build.
 
 
@@ -201,9 +203,9 @@ alt="Two phase pipeline"
 max-width="80%"
 %}
 
-The generic GIT trigger is placed on Pipeline A. This pipeline then filters the applicable webooks using [conditional expressions]({{ site.baseurl }}/docs/codefresh-yaml/conditional-execution-of-steps/). Then it uses the Codefresh CLI plugin (and specifically the [run pipeline capability](https://codefresh-io.github.io/cli/pipelines/run-pipeline/)) to trigger pipeline B that performs build.
+The generic GIT trigger is placed on Pipeline A. This pipeline then filters the applicable webooks using [conditional expressions]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/). Then it uses the Codefresh CLI plugin (and specifically the [run pipeline capability](https://codefresh-io.github.io/cli/pipelines/run-pipeline/)) to trigger pipeline B that performs build.
 
-Some of the YAML variables that you might find useful (from the [full list]({{ site.baseurl }}/docs/codefresh-yaml/variables/))
+Some of the YAML variables that you might find useful (from the [full list]({{site.baseurl}}/docs/codefresh-yaml/variables/))
 
 * `CF_PULL_REQUEST_ACTION` - open, close, accept etc
 * `CF_PULL_REQUEST_TARGET` - target branch of the pull request
@@ -236,4 +238,8 @@ It has only a single step which uses conditionals that check the name of the bra
 
 The build step calls the second pipeline. The end result is that pipeline B runs only when the Pull Request is opened the first time. Any further commits on the pull request branch will **not** trigger pipeline B (pipeline A will still run but the conditionals will fail).
 
+## What to read next
+- [Cron triggers]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/cron-triggers/) 
+- [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/) 
+- [Multi-git trigger]({{site.baseurl}}/docs/troubleshooting/common-issues/multi-git-triggers/) 
 

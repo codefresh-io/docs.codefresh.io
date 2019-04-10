@@ -114,6 +114,7 @@
   - title: Accessing a Docker registry from your cluster
     localurl: /docs/deploy-to-kubernetes/access-docker-registry-from-kubernetes/ 
   - title: Kubernetes manifest templates
+    new: true
     localurl: "/docs/deploy-to-kubernetes/kubernetes-templating/"      
   - title: Run custom kubectl commands
     localurl: "/docs/deploy-to-kubernetes/custom-kubectl-commands/"     
