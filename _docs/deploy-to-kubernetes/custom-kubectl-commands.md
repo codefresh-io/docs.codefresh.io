@@ -14,6 +14,8 @@ Codefresh helps you even in this scenario by automatically setting up your [conf
 The config context is automatically placed for you at the path of the [variable]({{site.baseurl}}/docs/codefresh-yaml/variables/) `$CF_KUBECONFIG_PATH`.
 In the current Codefresh implementation this expands to `/codefresh/volume/sensitive/.kube/config`, inside the [shared step volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps).
 
+Notice that when you use custom kubectl commands, it is your responsibility to template your manifests using any of the available options. If you wish to employ Codefresh for templating it is better to use the dedicated [cf-deploy-kubernetes step]({{site.baseurl}}/docs/deploy-to-kubernetes/kubernetes-templating/) which provides simple templating capabilities.
+
 ## Using the Codefresh kubectl image
 
 Codefresh already offers a public docker image with kubectl at [https://hub.docker.com/r/codefresh/kubectl/tags](https://hub.docker.com/r/codefresh/kubectl/tags). You can choose a specific version of `kubectl` with the appropriate tag or just select `latest` of the most up-to-date version.
