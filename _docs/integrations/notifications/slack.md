@@ -51,6 +51,6 @@ You can also select the checkboxes on the right for the type of messages you wan
 
 If you wish for more fine-grained control over slack notifications, then take a look at any of the available slack plugins
 
-* [http://steps.codefresh.io/step/notify-slack-channel](http://steps.codefresh.io/step/notify-slack-channel)
-* [http://steps.codefresh.io/step/custom-slack-send-message](http://steps.codefresh.io/step/custom-slack-send-message)
+* [https://steps.codefresh.io/plugin/slack-message-sender](https://steps.codefresh.io/plugin/slack-message-sender)
+* [https://steps.codefresh.io/plugin/slack-notifier](https://steps.codefresh.io/plugin/slack-notifier)
 * [https://github.com/cloudposse/slack-notifier](https://github.com/cloudposse/slack-notifier)
