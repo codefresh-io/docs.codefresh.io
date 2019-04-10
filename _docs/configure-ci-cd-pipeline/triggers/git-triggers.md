@@ -61,7 +61,7 @@ The PR checkboxes mean that this pipeline will run only on the respective events
 ### Pull request Target field and branch name
 
 The Pull request target field allows you to trigger this pipeline only when the target of a Pull Request (i.e. where the pr is going to be merged at) matches the
-branch name regular expression. Common examples here would be `master` or `production`.
+branch name regular expression. Common examples for branch names would be `master` or `production`.
 
 This field has only meaning when a commit happens in the context of a pull request and in that case:
 
@@ -77,7 +77,7 @@ Here are some more syntax examples:
 
 * `/^((qa-release)$).*/g` - only run if branch is named `qa-release`
 * `/^((production)$).*/g` - only run if branch is named `production`
-* `/release/g` - only run if branch is contains `release` in the name
+* `/release/g` - only run if branch name contains `release` as substring
 * `/feature-/gi` - only run if branch is `feature-foo`, `feature-bar`, `my-feature-123` etc.
 * `/^((?!^feature).)*$/gi` - only run if branch name does **not** start with `feature`
 

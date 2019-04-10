@@ -138,7 +138,7 @@ steps:
     dockerfile: Dockerfile
   MyDeploy:
     title: K8s Deploy
-    image: codefresh/cf-deploy-kubernetes
+    image: codefresh/cf-deploy-kubernetes:master
     commands:
       - /cf-deploy-kubernetes deployment.yml  
     environment:
@@ -156,7 +156,7 @@ In the environment section you can see the values for the custom variables. We s
 
 By default the deploy step will only do replacements in a single manifest. If you have multiple Kubernetes manifests you can merge all of them in a single file, or use multiple times the deploy commands like this:
 
-`YAML`
+`codefresh.yml`
 {% highlight yaml %}
 {% raw %}
   MyDeploy:
