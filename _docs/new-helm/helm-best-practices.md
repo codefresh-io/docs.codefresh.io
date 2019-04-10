@@ -1,13 +1,13 @@
 ---
 title: "HELM Best practices"
-description: "A high level overview of Helm workflows"
+description: "A high-level overview of Helm workflows"
 group: new-helm
 redirect_from:
   - /docs/new-helm/best-practices/
 toc: true
 ---
 
-[Helm](https://helm.sh) is a package manager for Kubernetes (think apt or yum). It works by combining several manifests into a single package that is called [a chart](https://helm.sh/docs/developing_charts/). Helm also supports chart storage in remote or local Helm repositories that function like package registries such as maven central, ruby gems, npm registry etc.
+[Helm](https://helm.sh) is a package manager for Kubernetes (think apt or yum). It works by combining several manifests into a single package that is called [a chart](https://helm.sh/docs/developing_charts/). Helm also supports chart storage in remote or local Helm repositories that function like package registries such as maven central, ruby gems, npm registry, etc.
 
 Helm is currently the only solution that supports
 
@@ -21,10 +21,10 @@ Helm is currently the only solution that supports
 
 You can find a list of public curated charts in the default [Helm repository](https://github.com/helm/charts/tree/master/stable).
 
-Several third part tools support Helm chart creation such as [Draft](https://draft.sh/). Local Helm development
-is also supported with [garden.io](https://docs.garden.io/using-garden/using-helm-charts) and/or [skaffold](https://skaffold.dev/docs/how-tos/deployers/#deploying-with-helm). Check your favorite tool for native Helm support.
+Several third party tools support Helm chart creation such as [Draft](https://draft.sh/). Local Helm development
+is also supported by [garden.io](https://docs.garden.io/using-garden/using-helm-charts) and/or [skaffold](https://skaffold.dev/docs/how-tos/deployers/#deploying-with-helm). Check your favorite tool for native Helm support.
 
-Codefresh also has built-in support for Helm [packages]({{site.baseurl}}/docs/new-helm/helm-releases-management/), [deployments]({{site.baseurl}}/docs/new-helm/using-helm-in-codefresh-pipeline/), [repositories]({{site.baseurl}}/docs/new-helm/managed-helm-repository/) and [environments]({{site.baseurl}}/docs/new-helm/helm-environment-promotion/).
+Codefresh also has built-in support for Helm [packages]({{site.baseurl}}/docs/new-helm/helm-releases-management/), [deployments]({{site.baseurl}}/docs/new-helm/using-helm-in-codefresh-pipeline/), [repositories]({{site.baseurl}}/docs/new-helm/managed-helm-repository/), and [environments]({{site.baseurl}}/docs/new-helm/helm-environment-promotion/).
 
 ## Helm concepts
 
@@ -51,7 +51,7 @@ Fetching | Downloading a Helm package from a repository to the local filesystem 
 
 ## Common Helm misconceptions
 
-Any new technology requires training on how to use effectively. If you have already worked with any type of package manager you should be familiar with how Helm works. 
+Any new technology requires training on how to use it effectively. If you have already worked with any type of package manager you should be familiar with how Helm works. 
 
 Here is a list of important Helm points that are often controversial between teams.
 
@@ -86,7 +86,7 @@ These are unrelated and can be bumped up in any manner that you see fit. You can
 
 ### Charts and sub-charts
 
-The most basic way to use Helm is by having a single chart that holds a single application. The single chart will contain all resources needed by your application such as deployments, services, config-maps etc.
+The most basic way to use Helm is by having a single chart that holds a single application. The single chart will contain all the resources needed by your application such as deployments, services, config-maps etc.
 
 However, you can also create a chart with dependencies to other charts (a.k.a. umbrella chart) which are completely external using the `requirements.yaml` file. Using this strategy is optional and can work well in several organizations. Again, there is no definitive answer on right and wrong here, it depends on your team process.
 
@@ -104,13 +104,13 @@ We will see some scenarios in the next sections on why you would want to use umb
 
 ### Helm vs K8s templates
 
-Helm is a package manager that also happens to include templating capabilities. Unfortunately a lot of people focus only on the usage of Helm as a template manager and nothing else.
+Helm is a package manager that also happens to include templating capabilities. Unfortunately, a lot of people focus only on the usage of Helm as a template manager and nothing else.
 
 Technically Helm can be used as only a templating engine by stopping the deployment process in the manifest level. It is perfectly possible to use Helm only to [create plain Kubernetes manifests](https://helm.sh/docs/helm/#helm-template) and then install them on the cluster using the standard methods (such as `kubectl`). But then you miss all the advantages of Helm (especially the application registry aspect).
 
 At the time of writing Helm is the only package manager for Kubernetes, so if you want a way to group your manifests and a registry of your running applications, there are no off-the-shelf alternative apart from Helm.
 
-Here is table that highlights the comparison:
+Here is a table that highlights the comparison:
 
 Helm Feature|Alternative| 
 ---|--- 
@@ -126,10 +126,10 @@ Direct rollbacks and Upgrades  | None
 
 ## Helm pipelines
 
-With the basics out of the way we can now see some typical Helm usage patterns. Depending on the size of your company and your level of involvement with Helm you need to decide which practice is best for you.
+With the basics out of the way, we can now see some typical Helm usage patterns. Depending on the size of your company and your level of involvement with Helm you need to decide which practice is best for you.
 
 
-### Deploy from unpackaged chart
+### Deploy from an un-packaged chart
 
 This is the most simple pipeline for Helm. The Helm chart is in the same git repository as the source code of the application.
 
@@ -154,7 +154,7 @@ Notice that in this pipeline there is no Helm repository involved.
 
 ### Package/push and then deploy
 
-This is the recommended approach when using Helm. First you package and push the Helm chart in a repository and then you deploy it to your cluster. This way your Helm repository shows a registry of the applications that run on your cluster. You can also re-use the charts to deploy to other environments (described later in this page).
+This is the recommended approach when using Helm. First, you package and push the Helm chart in a repository and then you deploy it to your cluster. This way your Helm repository shows a registry of the applications that run on your cluster. You can also re-use the charts to deploy to other environments (described later in this page).
 
 {% include image.html 
 lightbox="true" 
@@ -187,7 +187,7 @@ This approach allows you also to reuse Helm charts. After you publish a Helm cha
 
 Even though packaging a deploying a release in a single pipeline is the recommended approach, several companies have two different processes for packaging and releasing.
 
-In this case you can create two pipelines. One that packages the Helm chart and uploads it to a Helm repository and another one that deploys to a cluster from the Helm chart.
+In this case, you can create two pipelines. One that packages the Helm chart and uploads it to a Helm repository and another one that deploys to a cluster from the Helm chart.
 
 {% include image.html 
 lightbox="true" 
@@ -219,10 +219,10 @@ caption="Automatic Helm rollback"
 max-width="70%" 
 %}
 
-In the example pipeline above, after deployment we run some smoke tests/health checks. If they fail,
+In the example pipeline above, after deployment, we run some smoke tests/health checks. If they fail,
 then the rollback step is executed using [pipeline conditionals]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/).
 
-Alternatively you can run any other [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) after a deployment such as health checks, metric collection, load testing etc that decides if a deployment if a Helm rollback is needed or not.
+Alternatively, you can run any other [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) after a deployment such as health checks, metric collection, load testing, etc that decides if a deployment if a Helm rollback is needed or not.
 
 Integrating automatic Helm rollbacks can be used in all kinds of Helm workflows that were described in this section. 
 
@@ -350,7 +350,7 @@ There are different pipelines for:
 1. Deployment of the Helm chart to a staging environment. After it is tested *the chart* is promoted to one or more "production" Helm repositories 
 1. Deployment of the promoted Helm chart happens to one of the production environments 
 
-While this workflow is very flexible, it adds complexity on the number of Helm charts available (since they exist in multiple Helm repositories). You also need to setup the parameters between the different pipelines so that Helm charts to be deployed can be indeed found in the expected Helm repository.
+While this workflow is very flexible, it adds complexity on the number of Helm charts available (since they exist in multiple Helm repositories). You also need to set up the parameters between the different pipelines so that Helm charts to be deployed can be indeed found in the expected Helm repository.
 
 ## What to read next
 
