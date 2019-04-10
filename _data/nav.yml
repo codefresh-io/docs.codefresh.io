@@ -222,6 +222,8 @@
       url: "/access-docker-registry-from-kubernetes"
     - title: Add config maps to your namespaces
       url: "/add-config-maps-to-your-namespaces"
+    - title: Kubernetes manifest templates
+      url: "/kubernetes-templating"    
     - title: Run custom kubectl commands
       url: "/custom-kubectl-commands"  
     - title: Example - Deploy demochat to Kubernetes cluster

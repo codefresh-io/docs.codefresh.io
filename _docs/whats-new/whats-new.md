@@ -7,6 +7,10 @@ redirect_from:
 toc: true
 ---
 
+### April 2019
+
+- Simple Kubernetes templates - [documentation]({{site.baseurl}}/docs/deploy-to-kubernetes/kubernetes-templating/)
+
 ### March 2019
 
 - Helm best practices - [documentation]({{site.baseurl}}/docs/new-helm/helm-best-practices/)

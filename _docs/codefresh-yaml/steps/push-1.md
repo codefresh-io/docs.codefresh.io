@@ -147,7 +147,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-Push an image with multiple tags to multiple Docker registries in [parallel]({{site.baseurl}}/docs/docs/codefresh-yaml/advanced-workflows/).
+Push an image with multiple tags to multiple Docker registries in [parallel]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/).
 Both registries are connected first in the [integrations page]({{site.baseurl}}/docs/docker-registries/external-docker-registries/).
 
 
@@ -247,4 +247,4 @@ step_name:
 - [Codefresh Managed Registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/) 
 - [External Registry integrations]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) 
 - [Custom Image annotations]({{site.baseurl}}/docs/docker-registries/metadata-annotations/) 
-- [Pipeline steps]({{site.baseurl}}/docs/docs/codefresh-yaml/steps/) 
+- [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/) 

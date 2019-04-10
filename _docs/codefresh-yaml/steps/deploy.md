@@ -16,7 +16,7 @@ If has two modes:
 1. Using the `service` option. In this case it will redeploy to an [existing service/deployment in your cluster]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/) . Codefresh will
 automatically update the service/deployment with the new docker image
 1. Using the `file_path` option. In this case you provide your own Kubernetes manifest and Codefresh deploys it as-is. It is **your
-own responsibility** to do custom replacements here (for example using [awk](https://en.wikipedia.org/wiki/AWK), [sed](https://www.gnu.org/software/sed/manual/sed.html) or [yq](http://mikefarah.github.io/yq/)). For a full templating solution we also
+own responsibility** to do [custom replacements]({{site.baseurl}}/docs/deploy-to-kubernetes/kubernetes-templating/) here (for example using [awk](https://en.wikipedia.org/wiki/AWK), [sed](https://www.gnu.org/software/sed/manual/sed.html) or [yq](http://mikefarah.github.io/yq/)). For a full templating solution we also
 suggest you look at [Helm]({{site.baseurl}}/docs/getting-started/helm-quick-start-guide/)
 
 You need to define either one of these fields in the deploy step. If you define `service` you also can select the exact Docker image
@@ -168,11 +168,16 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
+## Advanced Kubernetes deployments
 
+If you find the deploy step limited, feel free to look at the other deployment options offered by Codefresh:
+
+* [The cf-deploy-kubernetes step]({{site.baseurl}}/docs/deploy-to-kubernetes/kubernetes-templating/) 
+* [Custom kubectl commands]({{site.baseurl}}/docs/deploy-to-kubernetes/custom-kubectl-commands/) 
+* [Helm]({{site.baseurl}}/docs/getting-started/helm-quick-start-guide/) 
 
 ## What to read next
-- [Kubernetes Quick start guide]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/) 
-- [Custom kubectl commands]({{site.baseurl}}/docs/deploy-to-kubernetes/custom-kubectl-commands/) 
+- [Kubernetes Quick start guide]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/)  
 - [Deploy to Kubernetes]({{site.baseurl}}/docs/deploy-to-kubernetes/codefresh-kubernetes-integration-beta/) 
 - [Install HELM chart using Codefresh pipeline]({{site.baseurl}}/docs/new-helm/using-helm-in-codefresh-pipeline/)
 
