@@ -213,8 +213,8 @@ your build step can run commands exactly as you would run them locally (e.g. `np
 Secondly, notice that the project folder is placed on the codefresh volume, so by default it is also available to all other steps. The code that you checkout in the beginning, as well as all other files that are created on it, will
 be available to all steps. Once you create `node_modules`, or any other folder that exists inside the project folder, it will automatically persist for all other steps.
 
-Finally `/codefresh/volume` is an internal folder name and you should use  `{% raw %}${{CF_VOLUME}}{% endraw %}` in your codefresh.yml file
-if you really want to reference this folder. You can also reference your project folder as {% raw %}${{main_clone}}{% endraw %} if you need it.
+Finally `/codefresh/volume` is an internal folder name and you should use  `{% raw %}${{CF_VOLUME_PATH}}{% endraw %}` in your codefresh.yml file
+if you really want to reference this folder. You can also reference your project folder as `{% raw %}${{CF_VOLUME_PATH}}/${{CF_REPO_NAME}}{% endraw %}` if you need it.
 
 ### Working with Docker inside a Codefresh pipeline
 
