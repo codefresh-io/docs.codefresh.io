@@ -307,14 +307,16 @@ inside the pipeline they are actually needed. This ensures that both the applica
 Making your builds as fast a possible is an on-going goal for a sound CI/CD solution. Quick builds allow for short 
 feedback development cycles which is always a desirable trait for locating bugs early in the process.
 
-Codefresh can help you with caching in 3 ways
+Codefresh can help you with caching in 3 ways:
 
 1. The Docker daemon used in a pipeline caches all layers by default (exactly as you would build images in your local workstation)
 1. The last image that was successfully built in a pipeline will be used in the next run of the pipeline (`--cache-from`)
 further reducing the build times
 1. The shared Codefresh volume is also persisted at the end of a build and restored at the beginning of the next. Therefore any folders that are contained in it (such as `node_modules`) will automatically be available to the next pipeline.
 
-All these caching mechanisms are enabled by default and you can [freely disable them]({{ site.baseurl }}/docs/troubleshooting/common-issues/disabling-codefresh-caching-mechanisms/) if you encounter any issues with caching.
+All these caching mechanisms are enabled by default and you can [freely disable them]({{ site.baseurl }}/docs/troubleshooting/common-issues/disabling-codefresh-caching-mechanisms/) if you encounter any issues with caching. 
+
+Notice also that volume caching and Docker caching are completely independent. They do not affect each other. The former affects mainly [freestyle steps]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) while the latter affects [build steps]({{site.baseurl}}/docs/codefresh-yaml/steps/build-1/).
 
 You can also use the internal Docker registry explicitly by pushing intermediate Docker images and reusing them in future pipelines either as a base image in another Dockerfile or as a freestyle step.
 
