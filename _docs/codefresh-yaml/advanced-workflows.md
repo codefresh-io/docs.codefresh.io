@@ -327,9 +327,9 @@ In full parallel mode, the order of steps inside the `codefresh.yml` is **not** 
 
 This means that in parallel mode the conditions of a step are evaluated **multiple times** as the Codefresh execution engine is trying to find which steps it should run next. This implication is very important when you try to understand the order of step execution.
 
-Notice also that in parallel mode, if you don't define any step conditions, Codefresh will try to run **all** steps at once, which is probably not what you want in most cases.
+Notice also that in parallel mode, if you don't define any step conditions, Codefresh will try to run **all** steps at once, which is probably not what you want in most cases. 
 
-With parallel mode you are expected to define the order of steps in the yaml file, and the Codefresh engine will create a *graph* of execution that satisfies your instructions. This means that writing the `codefresh.yml` file requires more effort on your part, but on the other hand allows you to define the step order in ways not possible with the sequential mode.
+With parallel mode you are expected to define the order of steps in the yaml file, and the Codefresh engine will create a *graph* of execution that satisfies your instructions. This means that writing the `codefresh.yml` file requires more effort on your part, but on the other hand allows you to define the step order in ways not possible with the sequential mode. You also need to define which steps should depend on the automatic cloning of the pipeline (which is special step named `main_clone`).
 
 In the next sections we describe how you can define the steps dependencies in a parallel pipeline.
 
@@ -377,7 +377,9 @@ second_step:
          - finished
 {% endhighlight %}
 
-Notice that `finished` is the default behavior so you can omit the last two lines (i.e. the `on:` part). Also notice that the name `main_clone` is reserved for the automatic clone that takes place in the beginning of pipelines that are linked to a git repository.
+Notice that `finished` is the default behavior so you can omit the last two lines (i.e. the `on:` part). 
+
+>Also notice that the name `main_clone` is reserved for the automatic clone that takes place in the beginning of pipelines that are linked to a git repository. You need to define which steps depend on it (probably the start of your graph) so that `git checkout` happens before the other steps.
 
 As an example let's assume that you have the following steps in a pipeline
 
@@ -386,7 +388,7 @@ As an example let's assume that you have the following steps in a pipeline
 1. A freestyle step that runs integrations tests *After* the unit tests, even if they fail
 1. A cleanup step that runs after unit tests if they fail
 
-Here is the full pipeline
+Here is the full pipeline. Notice the explicit dependency to the `main_clone` step that checks out the code.
 
 `YAML`
 {% highlight yaml %}
