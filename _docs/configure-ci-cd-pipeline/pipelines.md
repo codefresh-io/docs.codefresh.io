@@ -44,6 +44,34 @@ With these basic building blocks you can define many complex workflows.
 
 You can create new projects by clicking on *Projects* in the left sidebar and then selecting the *Add Project* button on the top right corner. A dialog will appear that will ask you for the project name and optional tags that you can use for [access control]({{site.baseurl}}/docs/enterprise/access-control/).
 
+Once you are inside the project view you can start editing pipelines with a UI environment that works similar to a traditional IDE.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/create/pipeline-manager.png" 
+url="/images/pipeline/create/pipeline-manager.png"
+alt="Pipeline manager" 
+caption="Pipeline manager"
+max-width="70%"
+%}
+
+1. On the top left you can see your current project. You can also change it by clicking on the drop-down on the top left corner.
+
+1. On the left side of the screen you can see all pipelines that currently belong to this project. Click on each one to edit it.
+On the bottom part of this panel the *Add pipeline* button allows you to create a new pipeline on the same project either from scratch
+or by copying an existing one from the same project or a completely different project.
+
+1. The name of the currently edited pipeline is shown at the top of the window
+
+1. The main window shows the definition of the current pipeline. The screenshot shows the inline editor but pipeline can also be defined from external files (checked into source control) as explained later.
+
+1. The right part of the window shows extra settings for this pipeline such as triggers and launch variables/parameters.
+
+
+
+
+
 
 ## Pipeline creation modes
 
