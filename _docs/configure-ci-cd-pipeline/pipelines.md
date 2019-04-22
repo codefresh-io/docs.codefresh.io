@@ -16,6 +16,35 @@ toc: true
 
 Now that we know the [theory behind Codefresh pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/), we can see how you can create pipelines for your own project.
 
+## Pipeline Concepts
+
+The main concepts are shown below:
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/create/concepts.png" 
+url="/images/pipeline/create/concepts.png"
+alt="Pipeline concepts" 
+caption="Pipeline concepts"
+max-width="70%"
+%}
+
+* **Projects** are the top level concept in Codefresh. You can create projects to group pipelines that are related. In most cases a single project will be a single application (that itself contains many micro-services). You are free to use projects as you see fit. For example you could create a project for a specific Kubernetes cluster or a specific team/department.
+
+* Each project can have multiple **pipelines**. Pipelines that belong to a single project are easily managed all together. It is also very easy to create a new pipeline in a project by copying an existing pipeline.
+
+* Each pipeline has a definition that defines the [pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/) that are executed each time this pipeline is triggered. The definition of a pipeline is described in special [codefresh.yml]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) file. The `codefresh.yml` file can be fetched from the same repository of the source code, from a completely different repository or even defined in-place in the Codefresh pipeline editor.
+
+* Each pipeline can have zero, one or more [triggers]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/). Codefresh supports several kind of triggers such as Git, Cron or Docker push triggers. Triggers that happen with Git webhooks can come from the same git repository that contains the git code **OR** any other completely different repository.
+
+With these basic building blocks you can define many complex workflows.
+
+## Creating new pipelines
+
+You can create new projects by clicking on *Projects* in the left sidebar and then selecting the *Add Project* button on the top right corner. A dialog will appear that will ask you for the project name and optional tags that you can use for [access control]({{site.baseurl}}/docs/enterprise/access-control/).
+
+
 ## Pipeline creation modes
 
 You can start the creation of a pipeline from two places in the Codefresh UI
