@@ -226,6 +226,65 @@ VALUESFILE_|optional|Values file to provide to Helm (as --file). a.k.a `CUSTOMFI
 VALUE_|optional|Value to provide to Helm (as --set). a.k.a `CUSTOM` but `CUSTOM` shouldn't be used anymore. If a variable already contains a `_` (underscore) in it's name, replace it with `__` (double underscore).
 CMD_PS|optional|Command Postscript - this will be appended as is to the generated helm command string. Can be used to set additional parameters supported by the command but not exposed as configuration options.
 
+## Full Helm pipeline example
+
+This pipeline builds a docker image, runs unit tests, stores the Helm chart in the Codefresh private Helm repository and finally deploys the Helm chart to a cluster.
+
+{% include image.html 
+lightbox="true" 
+file="/images/kubernetes-helm/full-helm-pipeline.png" 
+url="/images/kubernetes-helm/full-helm-pipeline.png" 
+alt="Helm pipeline"
+caption="Helm pipeline" 
+max-width="90%" 
+%}
+
+This is the pipeline definition:
+
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+stages:
+  - build
+  - test
+  - deploy
+steps:
+  MyAppDockerImage:
+    title: Building Docker Image
+    stage: build
+    type: build
+    image_name: kostis-codefresh/python-flask-sampleapp
+    working_directory: ./
+    tag: '${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_SHORT_REVISION}}'
+    dockerfile: Dockerfile
+  MyUnitTests:
+    title: Running Unit tests
+    stage: test
+    image: ${{MyAppDockerImage}}
+    commands: 
+      - python setup.py test   
+  StoreChart:
+    title: Storing Helm chart
+    stage: deploy
+    image: 'codefresh/cfstep-helm:2.9.1'
+    environment:
+      - ACTION=push
+      - CHART_REF=charts/python    
+  DeployMyChart:
+    image: 'codefresh/cfstep-helm:2.9.1'
+    title: Deploying Helm chart
+    stage: deploy
+    environment:
+      - CHART_REF=charts/python
+      - RELEASE_NAME=mypython-chart-prod
+      - KUBE_CONTEXT=kostis-demo@FirstKubernetes 
+      - VALUE_image_pullPolicy=Always
+      - VALUE_image_tag='${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_SHORT_REVISION}}'
+{% endraw %}
+{% endhighlight %}
+
+
 ## What to read next
 
 * [Helm Charts and repositories]({{site.baseurl}}/docs/new-helm/add-helm-repository/)
