@@ -69,8 +69,29 @@ or by copying an existing one from the same project or a completely different pr
 1. The right part of the window shows extra settings for this pipeline such as triggers and launch variables/parameters.
 
 
+### Using the inline pipeline editor
+
+When first creating a pipeline you will see an inline editor that allows you to define the [pipeline yml]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) right there in the Codefresh UI. This is great when you are starting a new project because it offers you really quick feedback. You can edit the yml steps, run a build, edit again, run a build and so on. 
 
 
+
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/create/inline-editor.png" 
+url="/images/pipeline/create/inline-editor.png"
+alt="Inline Pipeline editor" 
+caption="Inline Pipeline editor"
+max-width="60%"
+%}
+
+Notice that in the editor you can expand/collapse individual yaml blocks using the arrow triangles on the left of each blocks
+
+
+## 
+
+Even though this is very convenient in the beginning, it makes your pipeline definition only exist with the Codefresh UI and therefore goes against the basic principles of [infrastructure as code](https://en.wikipedia.org/wiki/Infrastructure_as_Code). Once you are happy with how your pipeline works you should commit it to your repository and use the second option.
 
 
 ## Pipeline creation modes
