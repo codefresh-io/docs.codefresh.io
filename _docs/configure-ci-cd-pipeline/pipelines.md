@@ -86,15 +86,66 @@ caption="Inline Pipeline editor"
 max-width="60%"
 %}
 
+On the top right of the panel you have additional controls
+
+* The *import* button allows you to bring a `codefresh.yml` from your local workstation into the editor
+* The *comment* button allows you to quickly comment/uncomment the currently selected text. The hotkey `Ctrl-/` also performs the same action
+* The *formatting* button enriches the editor with special symbols for linebreaks, spaces and tabs. This allows you to easily fix common formatting errors
+* The *copy* button quickly copies the **whole** pipeline text in your clipboard.
+
+
 Notice that in the editor you can expand/collapse individual yaml blocks using the arrow triangles on the left of each blocks
 
 
-## 
+## Loading codefresh.yml from version control
 
-Even though this is very convenient in the beginning, it makes your pipeline definition only exist with the Codefresh UI and therefore goes against the basic principles of [infrastructure as code](https://en.wikipedia.org/wiki/Infrastructure_as_Code). Once you are happy with how your pipeline works you should commit it to your repository and use the second option.
+Working with the inline editor is very convenient in the beginning, but it makes your pipeline definition only exist with the Codefresh UI and therefore goes against the basic principles of [infrastructure as code](https://en.wikipedia.org/wiki/Infrastructure_as_Code). Once you are happy with how your pipeline works you should commit it to your repository.
+
+You can click on the *Inline YAML* header and switch it to *Use YAML from repository*.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/create/pipeline-from-internal-repo.png" 
+url="/images/pipeline/create/pipeline-from-internal-repo.png"
+alt="Pipeline from internal repo" 
+caption="Pipeline from internal repo"
+max-width="60%"
+%}
+
+You can then select **any** git repository accessible to you and load the `codefresh.yml` from there. You also setup two additional settings:
+
+* The path of the file inside the repository. This allows you to have special folders for pipeline definitions
+* The branch of the repository to use for loading the `codefresh.yml` file if you have more than one.
+
+In the branch drop down you can also choose the option **DYNAMIC**. This will use the same branch as the one mentioned in the trigger event. If for example your pipeline is triggered by a commit in the `staging` branch of the source code, the pipeline definition will also be loaded from the `staging` branch of the git repository that contains the `codefresh.yml` file.
+
+This allows you to have complex pipeline definitions per branch but you have to be careful to match git branch names between the repository that holds the source code and the repository that holds the pipeline definition. It is much easier to pick a specific branch for the pipeline definitions that will always be the same.
+
+It is also possible to switch the header to *Use YAML from URL*. This will allow you to load a codefresh yaml from any public URL. Notice that a raw URL is needed in the case of github. As an example instead of using `https://github.com/codefresh-contrib/example-voting-app/blob/master/codefresh.yml` you should enter `https://raw.githubusercontent.com/codefresh-contrib/example-voting-app/master/codefresh.yml`
+
+## Legacy Repository pipelines
+
+If you have a Codefresh account created before May 2019 you will still get access to the *Repository* view. This view will still be available for a transition period to help you migrate to the project concept. Both views are still valid and operating on the same pipelines behind the scenes.
+
+All you repositories should be migrated on projects with the same name so you can edit your pipelines from either view.
+
+You can also add detached pipelines (i.e. pipelines not connected to a repository or project) manually from the 
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/create/add-pipeline-to-project.png" 
+url="/images/pipeline/create/add-pipeline-to-project.png"
+alt="Changing the project of a pipeline" 
+caption="Changing the project of a pipeline"
+max-width="90%"
+%}
+
+This procedure is only needed for detached pipelines which do not belong to a repository. Pipelines that were connected to a git repository will also be connected to the project with the same name.
 
 
-## Pipeline creation modes
+## Pipeline creation modes (Legacy)
 
 You can start the creation of a pipeline from two places in the Codefresh UI
 
@@ -136,7 +187,7 @@ If you are unsure which way is appropriate for you, then choose the first one an
 
 Regardless of the method you select, you will reach the same pipeline definition screen that allows you to define the individual build steps.
 
-## Pipeline definition modes
+## Pipeline definition modes (Legacy)
 
 There are 3 ways to define the build steps of pipelines in Codefresh
 
@@ -146,7 +197,7 @@ There are 3 ways to define the build steps of pipelines in Codefresh
 
 We recommend you start with the GUI way if are you still learning about containers and deployments, but for any non trivial project you will soon discover that using the Codefresh YML file is the most flexible way.
 
-## Creating pipelines using the Codefresh GUI
+## Creating pipelines using the Codefresh GUI (Legacy)
 
 Creating a pipeline via the GUI is the fastest way of getting a Docker image from your source code and optionally
 deploying into Kubernetes if your application matches the expectation of Codefresh.
@@ -195,7 +246,7 @@ for Kubernetes deployments you can also see the [basic deployment guide]({{site.
 
 
 
-## Creating pipelines using Codefresh YML
+## Creating pipelines using Codefresh YML (Legacy)
 
 The Codefresh YML option offers a special syntax for defining your builds in ways that are not possible with the predefined pipeline steps. With the YML option you can
 
