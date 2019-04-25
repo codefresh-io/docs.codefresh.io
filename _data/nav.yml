@@ -90,14 +90,14 @@
     - title: Steps
       url: "/steps"
       sub-pages:
+        - title: "Git-Clone"
+          url: "/git-clone"      
         - title: "Freestyle"
           url: "/freestyle"
         - title: "Build"
           url: "/build-1"  
         - title: "Push"
           url: "/push-1"           
-        - title: "Git-Clone"
-          url: "/git-clone"
         - title: "Composition"
           url: "/composition-1"
         - title: "Launch-Composition"

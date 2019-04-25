@@ -25,14 +25,16 @@ max-width="80%"
 
 The steps offered by Codefresh are:
 
+* [Git clone]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)
 * [Freestyle]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/)
 * [Build]({{site.baseurl}}/docs/codefresh-yaml/steps/build-1/)
 * [Push]({{site.baseurl}}/docs/codefresh-yaml/steps/push-1/)
-* [Git clone]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)
 * [Composition]({{site.baseurl}}/docs/codefresh-yaml/steps/composition-1/)
 * [Launch test environment]({{site.baseurl}}/docs/codefresh-yaml/steps/launch-composition-2/)
 * [Deploy]({{site.baseurl}}/docs/codefresh-yaml/steps/deploy/)
 * [Approval]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/)
+
+**Git clone** steps allow you to checkout code in your pipeline from any internal or external repository. Existing accounts that still use repositories instead of [projects]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-concepts) have an implicit clone step in the pipelines. 
 
 **Freestyle** steps are the cornerstone of Codefresh pipelines. They allow you to run any command within the context of a Docker container. A lot of Codefresh optimizations such as the [shared docker volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) are designed specifically for freestyle steps.
 Freestyle steps are a secure replacement for `docker run` commands.
@@ -40,8 +42,6 @@ Freestyle steps are a secure replacement for `docker run` commands.
 **Build** steps are the main way where you get access to the Docker daemon (Docker as a service) in Codefresh pipelines. Build steps take as input any Dockerfile and run it on the cloud in a similar manner to what you do on your workstation. Build steps automatically push the result to the [internal Docker registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/) (no need for docker login commands). Codefresh also comes with a global Docker cache that automatically gets attached to all build nodes. Build steps are a secure replacement for `docker build` commands.
 
 **Push** steps allow you to push and tag your docker images (created by the build step) in any [external Docker registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/). Push steps are *not* needed at all if you work with only the internal Codefresh registry. Push steps are a secure replacement for the `docker tag` and `docker push` commands.
-
-**Git clone** steps allow you to override the default checkout behavior of Codefresh. They are optional, since pipelines which are connected to [git repositories]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-creation-modes) will automatically check out their respective branch before the pipeline executed.
 
 **Composition** steps allow you to run multiple services together in the Codefresh infrastructure and execute unit tests or other commands against them. They are discarded once a pipeline finishes. Composition steps are a secure replacement for `docker-compose` definitions.
 
