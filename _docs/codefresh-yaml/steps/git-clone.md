@@ -51,7 +51,7 @@ step_name:
 | `description`                              | A basic, free-text description of the step.                                                                                                                                                                                        | Optional                  |
 | `stage`                              | Parent group of this step. See [using stages]({{site.baseurl}}/docs/codefresh-yaml/stages/) for more information.                                                                                                                                                                                          | Optional                  |
 | `working_directory`                        | The directory to which the repository is cloned. It can be an explicit path in the container's file system, or a variable that references another step. The default value is {% raw %}`${{main_clone}}`{% endraw %}.                | Default                   |
-| `git` | The name of the [git integration]({{site.baseurl}}/docs/integrations/git-providers/) you want to use. You can also use `CF-default` as a value for the default git provider that was used during Codefresh sign-up | Required| 
+| `git` | The name of the [git integration]({{site.baseurl}}/docs/integrations/git-providers/) you want to use. You can also use `CF-default` as a value for the default git provider that was used during Codefresh sign-up | Optional| 
 | `repo`                                     | path of the repository without the domain name in the form of `my_username/my_repo`                                                                                                                                                                                       | Required                  |
 | `revision`                                 | The revision of the repository you are checking out. It can be a revision hash or a branch name. The default value is `master`.                                                                                                     | Default                   |
 | `credentials`                              | Credentials to access the repository, if it requires authentication. It can an object containing `username` and `password` fields. Credentials are optional if you are using the [built-in git integrations]({{site.baseurl}}/docs/integrations/git-providers/) .                                                                                             | Optional                  |
@@ -67,7 +67,7 @@ step_name:
 If you want to extend the git-clone step you can use the freestyle step. Example how to do it you can find [here]({{site.baseurl}}/docs/yaml-examples/examples/git-clone-private-repository-using-freestyle-step/) 
 {{site.data.callout.end}}
 
-## Basic clone step
+## Basic clone step (project based pipeline)
 
 The easiest way to use a git clone step is to use your default git provider as configured in [built-in git integrations]({{site.baseurl}}/docs/integrations/git-providers/).
 
@@ -93,7 +93,7 @@ steps:
 
 The CF values will be automatically filled by Codefresh from the git trigger. See the [variables page]({{site.baseurl}}/docs/codefresh-yaml/variables/) for more details.
 
-## Choosing a specific git provider
+## Choosing a specific git provider (project based pipeline)
 
 If you don't want to use the default git provider you can explicitly set the provider by using the same name of the integration as it is shown in [the git integrations page]({{site.baseurl}}/docs/integrations/git-providers/).
 
@@ -128,7 +128,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-## Checkout a specific repository/revision
+## Checkout a specific repository/revision (project based pipeline)
 
 If you want to checkout a specific git repository regardless on what repository actually created the trigger
 you can just define all values in a non static manner. For example if you want your pipeline to always checkout git repository `foo` even when the trigger happened from repository `bar` you can define the checkout step as below:
@@ -173,7 +173,7 @@ steps:
 {% endhighlight %}
 
 
-## Skip or customize default clone (legacy) 
+## Skip or customize default clone (repository-based pipeline) 
 
 If you have existing pipelines connected to repositories (only for Codefresh accounts created before May 2019)
 a git clone step is transparently added to git attached pipelines without you having to explicitly add a step into the pipeline. This is a convenience to enable easy CI pipelines.  
