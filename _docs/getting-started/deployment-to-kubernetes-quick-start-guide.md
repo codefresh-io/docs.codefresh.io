@@ -297,7 +297,7 @@ You now have a complete CI/CD pipeline in Codefresh for fully automated builds t
 ## What to read next
 
 * [Deploying to Kubernetes with Helm]({{ site.baseurl }}/docs/getting-started/helm-quick-start-guide/)
-* [Kubernetes deployment meethods]({{site.baseurl}}/docs/deploy-to-kubernetes/deployment-options-to-kubernetes/)
+* [Kubernetes deployment methods]({{site.baseurl}}/docs/deploy-to-kubernetes/deployment-options-to-kubernetes/)
 * [Introduction to Pipelines]({{ site.baseurl }}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
 * [Internal Docker Registry]({{ site.baseurl }}/docs/docker-registries/codefresh-registry/)
 * [Codefresh YAML]({{ site.baseurl }}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
