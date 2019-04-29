@@ -124,7 +124,7 @@ Enter a name for your project (e.g. `my-first-project`) and choose a sample icon
 Click the *Create* button once you are done.
 You now have a new project and can start adding pipelines in it.
 
-### Creating a new pipeline.
+### Creating a new pipeline
 
 Click the *Add pipeline* button in order to create a pipeline.
 Enter a name (e.g. `basic-build`). Make sure that the option *Add Git commit trigger* is selected.
