@@ -10,7 +10,7 @@ toc: true
 
 
 The central component of the Codefresh Platform are pipelines. Pipelines are workflows that contain individual steps.
-Each step is responsible for a specific action in the process. Pipelines can be used to 
+Each step is responsible for a specific action in the process. Pipelines can be used to:
 
 * compile and package code
 * build Docker images
@@ -37,6 +37,7 @@ Codefresh offers two unique characteristics in pipelines that serve as the corne
 1. All steps in Codefresh share the same "workspace" in the form of a shared Docker volume
 1. The shared Docker volume is automatically cached between pipeline executions
 1. Each successful pipeline automatically pushes its Docker image to the [private registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/).
+1. Codefresh has a distributed Docker cache for all build nodes and caches layers similar to the docker daemon on you workstation. This is fully automated and no configuration is needed in order to activate it. 
 
 ### Using Docker containers as build tooling
 
@@ -187,7 +188,7 @@ to build and deploy your projects.
 
 ### Cloning the source code
 
-Even though you can define your own [git-clone step]({{ site.baseurl }}/docs/codefresh-yaml/steps/git-clone/) as the first step in a Pipeline, Codefresh does it automatically for you when you have connected a Git repository to your pipeline.
+You can clone source code using the built-in [git-clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) as the first step in a Pipeline or run manually your own git clone commands in a freestyle step. Codefresh has built-in [Git integration]({{site.baseurl}}/docs/integrations/git-providers/) with all popular git providers (both cloud and on-premise installations).
 
 Codefresh uses the shared volume as the parent folder of the project. So if your pipeline is connected to a git repo that contains `my-project` the following will happen:
 
@@ -220,7 +221,7 @@ if you really want to reference this folder. You can also reference your project
 
 We have already seen that Codefresh pipelines are based on Docker images and that each step runs inside the context of a Docker container. You might be wondering how you can run directly Docker commands inside a Codefresh pipeline.
 
-The answer is that you don't. Even though in the future Codefresh might allow for Docker-in-Docker capabilities, at the moment this is not supported. Any scripts that you already have that run Docker commands on their own will need to be adapted to Codefresh pipelines.
+The answer is that you don't. Even though in the future Codefresh might allow for Docker-in-Docker capabilities, at the moment this is not supported for security reason (only enterprise customers have access to the underlying Docker daemon). Any scripts that you already have that run Docker commands on their own will need to be adapted to Codefresh pipelines.
 
 Usually you want to run a docker command for four reasons
 
