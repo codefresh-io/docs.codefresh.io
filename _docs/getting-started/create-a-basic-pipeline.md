@@ -199,7 +199,7 @@ file="/images/getting-started/quick-start-ci/building.png"
 url="/images/getting-started/quick-start-ci/building.png" 
 alt="Monitoring the build" 
 caption="Monitoring the build (click image to enlarge)" 
-max-width="40%" 
+max-width="50%" 
 %}
 
 The build output is split into sections. Expand the section *Building Docker Image* and look at the logs. 
@@ -275,14 +275,10 @@ steps:
 {% endraw %}      
 {% endhighlight %}
 
-Here we have added a new [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) in its own stage that runs unit tests. Freestyle steps are running custom commands inside docker containers and in this case we run the python command inside the docker image that was just created from the previous step (mentioned by the `image` property)
-
-
+Here we have added a new [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) in its own [stage]({{site.baseurl}}/docs/codefresh-yaml/stages/) that runs unit tests. Freestyle steps are running custom commands inside docker containers and in this case we run the python command [inside the docker image]({{site.baseurl}}/docs/codefresh-yaml/variables/#context-related-variables) that was just created from the previous step (mentioned by the `image` property)
 
 
 Notice that Codefresh also has the capability to run [integration tests]({{site.baseurl}}/docs/codefresh-yaml/steps/composition-1/) and get [test results]({{site.baseurl}}/docs/testing/test-reports/) as well. Therefore, regardless of the type of tests you employ, Codefresh can accommodate your testing process in a fully automated manner as part of the main build.
-
-Click first the *Save* button to apply your changes and then the *Run* button to restart the build.
 
 This time the build results will contain a new section labeled *Running unit tests*. It will contain the 
 test output of the application.
@@ -407,25 +403,53 @@ caption="Docker Hub credentials (click image to enlarge)"
 max-width="50%" 
 %}
 
-Enter your Docker Hub credentials and click the *TEST* button to verify the connection details. You should see a success message. We have now connected our Docker Hub account to our Codefresh account.
+Enter your Docker Hub credentials and click the *TEST* button to verify the connection details. You should see a success message. We have now connected our Docker Hub account to our Codefresh account. Make sure that you note down the *Registry Name* you used.
 
-To actually use the Docker Hub account in a specific project, go to the configuration screen of the sample application, by clicking on the "gear" icon found on the Codefresh dashboard under the project name. This is the same screen that we added the unit tests.
+To actually use the Docker Hub account in a specific project, go back to your pipeline editor. Change the editor contents to:
 
-Scroll a bit down and directly under the "Unit test" step you will find the "Push to Registry" Step.
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+stages:
+  - checkout
+  - package
+  - test 
+  - upload    
+steps:
+  main_clone:
+    title: Cloning main repository...
+    type: git-clone
+    repo: '${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}'
+    revision: '${{CF_REVISION}}'
+    stage: checkout
+  MyAppDockerImage:
+    title: Building Docker Image
+    type: build
+    stage: package
+    image_name: my-app-image
+    working_directory: ./
+    tag: v1.0.1
+    dockerfile: Dockerfile
+  MyUnitTests:
+    title: Running Unit tests
+    image: '${{MyAppDockerImage}}'
+    stage: test 
+    commands:
+      - python setup.py test    
+  MyPushStep:
+    title: Pushing to Docker Registry
+    type: push
+    stage: upload
+    tag: '${{CF_BRANCH}}'
+    candidate: '${{MyAppDockerImage}}'
+    image_name: kkapelon/pythonflasksampleapp #Change kkapelon to your dockerhub username
+    registry: dockerhub # Name of your integration as was defined in the Registry screen
+{% endraw %}      
+{% endhighlight %}
 
-{% include 
-image.html 
-lightbox="true" 
-file="/images/getting-started/quick-start-ci/push-to-registry.png" 
-url="/images/getting-started/quick-start-ci/push-to-registry.png" 
-alt="Setting the Docker Registry" 
-caption="Setting the Docker Registry (click image to enlarge)" 
-max-width="50%" 
-%}
+We now have added a [push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push-1/) at the end of the pipeline. The image is tagged with the name of the branch.
 
-Select the DockerHub entry for the list (which is the one that we defined in the Codefresh Account Setting screen). That's it!
-Now your build will automatically use this Docker Registry as a target. Click the *Save* button to apply the changes and then the *Build* button to start another build.
-
+Click *Save* to apply your changes and *Run* to start the pipeline again.
 In the build logs a new panel will appear that shows the push progress:
 
 {% include 
