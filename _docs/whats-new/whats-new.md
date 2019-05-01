@@ -9,6 +9,7 @@ toc: true
 
 ### April 2019
 
+- New project/pipeline view - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
 - Git clone steps are now required - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)
 - Simple Kubernetes templates - [documentation]({{site.baseurl}}/docs/deploy-to-kubernetes/kubernetes-templating/)
 

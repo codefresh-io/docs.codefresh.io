@@ -185,7 +185,7 @@ This approach allows you also to reuse Helm charts. After you publish a Helm cha
 
 ### Separate Helm pipelines
 
-Even though packaging a deploying a release in a single pipeline is the recommended approach, several companies have two different processes for packaging and releasing.
+Even though packaging and deploying a release in a single pipeline is the recommended approach, several companies have two different processes for packaging and releasing.
 
 In this case, you can create two pipelines. One that packages the Helm chart and uploads it to a Helm repository and another one that deploys to a cluster from the Helm chart.
 
