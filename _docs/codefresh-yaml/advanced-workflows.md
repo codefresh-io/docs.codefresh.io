@@ -339,6 +339,7 @@ At the most basic level, you can define that a step *depends on* the execution o
 
 1. The first step is finished with success
 1. The first step is finished with failure
+1. The first step was skipped
 1. The first completes (regardless of exit) status
 
 The syntax for this is the following post-condition
@@ -365,6 +366,18 @@ second_step:
          - failure
 {% endhighlight %}
 
+If you want to run the second step only if the first one was skipped (because its own condition said so) :
+
+{% highlight yaml %}
+second_step:
+  title: Second step
+  when:
+    steps:
+     - name: first_step
+       on:
+         - skipped
+{% endhighlight %}
+
 Finally if you don't care about the completion status the syntax is:
 
 {% highlight yaml %}
@@ -377,7 +390,8 @@ second_step:
          - finished
 {% endhighlight %}
 
-Notice that `finished` is the default behavior so you can omit the last two lines (i.e. the `on:` part). 
+Notice that `skipped/success` is the default behavior so if omit the last two lines (i.e. the `on:` part) the second step
+will wait for the next step to either run successfully or be skipped.
 
 >Also notice that the name `main_clone` is reserved for the automatic clone that takes place in the beginning of pipelines that are linked to a git repository. You need to define which steps depend on it (probably the start of your graph) so that `git checkout` happens before the other steps.
 
