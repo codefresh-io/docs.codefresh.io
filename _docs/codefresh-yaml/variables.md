@@ -156,6 +156,18 @@ You can set a [trigger]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/
 | {% raw %}`${{CF_RELEASE_ID}}`{% endraw %}       | Internal ID for this release   |
 | {% raw %}`${{CF_PRERELEASE_FLAG}}`{% endraw %}  | true if the release if marked as non-production ready, false if it is ready for production   |
 
+## Github Pull Request Variables
+
+When a pull request is closed in Github, the following variables are also available
+
+{: .table .table-bordered .table-hover}
+| Variable        | Description                                            |
+| --------------- | ------------------------------------------------------ |
+| {% raw %}`${{CF_PULL_REQUEST_MERGED}}`{% endraw %}     | true if the pull request was merged to base branch    |
+| {% raw %}`${{CF_PULL_REQUEST_HEAD_BRANCH}}`{% endraw %}      | the head branch of the PR (the branch that we want to merge to master)  |
+| {% raw %}`${{CF_PULL_REQUEST_MERGED_COMMIT_SHA}}`{% endraw %}       | the commit SHA on the base branch after the pull request was merged (in most cases it will be master)   |
+| {% raw %}`${{CF_PRERELEASE_FLAG}}`{% endraw %}  | the commit SHA on the head branch (the branch that we want to push)  |
+
 ## User Provided Variables
 
 User provided variables can be defined at 4 levels:

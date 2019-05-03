@@ -7,6 +7,10 @@ redirect_from:
 toc: true
 ---
 
+### May 2019
+
+- New Github PR variables - [documentation]({{site.baseurl}}/docs/codefresh-yaml/variables/#github-pull-request-variables)
+
 ### April 2019
 
 - New project/pipeline view - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
