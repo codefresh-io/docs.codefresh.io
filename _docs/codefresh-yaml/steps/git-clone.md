@@ -73,7 +73,9 @@ The easiest way to use a git clone step is to use your default git provider as c
 
 Here is an example of a pipeline that will automatically check out the repository that triggered it (i.e. a commit happened on that repository).
 
->Notice that the name of the clone step is `main_clone`. This will automatically set the working directory of all other steps that follow it **inside** the folder of the project that was checked out. This is normally what you want for a pipeline that only checks out a single project
+>Notice that the name of the clone step is `main_clone`. This will automatically set the working directory of all other steps that follow it **inside** the folder of the project that was checked out. This is normally what you want for a pipeline that only checks out a single project. If you use any other name apart from `main_clone` the working directory for all subsequent steps will not be affected and it will default on the [shared volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) which is the [parent folder]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#cloning-the-source-code) of checkouts.
+
+
 
 `codefresh.yml`
 {% highlight yaml %}
