@@ -73,6 +73,8 @@ The easiest way to use a git clone step is to use your default git provider as c
 
 Here is an example of a pipeline that will automatically check out the repository that triggered it (i.e. a commit happened on that repository).
 
+>Notice that the name of the clone step is `main_clone`. This will automatically set the working directory of all other steps that follow it **inside** the folder of the project that was checked out. This is normally what you want for a pipeline that only checks out a single project
+
 `codefresh.yml`
 {% highlight yaml %}
 {% raw %}
@@ -164,6 +166,37 @@ steps:
         type: git-clone
         repo: '${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}'
         revision: 'master'
+    PrintFileList:
+        title: 'Listing files'
+        image: alpine:latest
+        commands:
+            - 'ls -l'
+{% endraw %}
+{% endhighlight %}
+
+## Checking multiple git repositories
+
+It is very easy to checkout additional repositories in a single pipeline by adding more `git-clone` steps.
+In that case you should use different names for the steps (instead of `main_clone`) as this will make the working
+folder for all steps the [shared volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps).
+
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+steps:
+    my_first_checkout:
+        title: 'Cloning first repository...'
+        type: git-clone
+        repo: 'my-gitlab-username/foo'
+        revision: '${{CF_REVISION}}'
+        git: my-gitlab-integration
+    my_second_checkout:
+        title: 'Cloning second repository...'
+        type: git-clone
+        repo: 'my-github-username/bar'
+        revision: '${{CF_REVISION}}'
+        git: my-github-integration
     PrintFileList:
         title: 'Listing files'
         image: alpine:latest
