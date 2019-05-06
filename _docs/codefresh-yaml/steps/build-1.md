@@ -103,6 +103,7 @@ steps:
   BuildMyImage:
     title: Building My Docker image
     image_name: my-app-image
+    type: build
 {% endhighlight %}
 
 Build an image using a different Dockerfile and a specific version tag
@@ -113,6 +114,7 @@ version: '1.0'
 steps:
   BuildMyImage:
     title: Building My Docker image
+    type: build
     image_name: my-app-image
     dockerfile: my-custom.Dockerfile
     tag: 1.0.1
@@ -127,12 +129,14 @@ version: '1.0'
 steps:
   BuildNodeImage:
     title: Building My Node app
+    type: build    
     image_name: my-department/my-team/my-node-image
     dockerfile: Dockerfile
     working_directory: ./project1
     tag: ${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_SHORT_REVISION}}
   BuildGoImage:
     title: Building My Go app
+    type: build    
     image_name: my-company/my-go-image
     dockerfile: Dockerfile
     working_directory: ./project2
@@ -142,6 +146,39 @@ steps:
 
 It also possible to build Docker images in [parallel]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/) for faster builds.
 
+### Inline Dockerfile
+
+If your project does not already have a Dockerfile, you can also define one within the pipeline:
+
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+steps:
+  BuildingDockerImage:
+    title: Building Docker Image
+    type: build
+    image_name: my-own-go-app
+    working_directory: ./
+    tag: '${{CF_BRANCH_TAG_NORMALIZED}}'
+    dockerfile:
+      content: >-
+       # ---
+       # Go Builder Image
+       FROM golang:1.8-alpine AS builder
+       # set build arguments: GitHub user and repository
+       ARG GH_USER
+       ARG GH_REPO
+       # Create and set working directory
+       RUN mkdir -p /go/src/github.com/$GH_USER/$GH_REPO
+       # copy file from builder image
+       COPY --from=builder /go/src/github.com/$GH_USER/$GH_REPO/dist/myapp
+       /usr/bin/myapp
+       CMD ["myapp", "--help"]
+{% endraw %}         
+{% endhighlight %}
+
+Use this technique only as a last resort. It is better if the Dockerfile existing as an actual file in source control.
 
 ## Automatic pushing
 

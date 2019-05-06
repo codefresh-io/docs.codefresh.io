@@ -10,6 +10,7 @@ toc: true
 ### May 2019
 
 - New Github PR variables - [documentation]({{site.baseurl}}/docs/codefresh-yaml/variables/#github-pull-request-variables)
+- Inline Dockerfiles in build steps - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/build-1/#inline-dockerfile)
 
 ### April 2019
 
