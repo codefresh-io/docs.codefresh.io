@@ -164,9 +164,9 @@ step-name:
 
 The `retry:` block has the following parameters:
 
-  * `maxAttempts` defines how many times this step will run again if there are execution errors. Default is 1.
-  * `delay` is the number of seconds to wait before each attempt. Default is 5 seconds
-  * `exponentialFactor` defines how many times the delay should be multiplied by itself after each attempt. default is 1
+  * `maxAttempts` defines how many times this step will run again if there are execution errors. Default is 1. Max is 10.
+  * `delay` is the number of seconds to wait before each attempt. Default is 5 seconds. Max is 60 seconds.
+  * `exponentialFactor` defines how many times the delay should be multiplied by itself after each attempt. default is 1. Max is 5.
 
 All parameters are optional. The exponentialFactor works like this:
 * exponentialFactor=1, delay=5 => each time wait 5 seconds before trying again, no matter the number of attempts
