@@ -329,6 +329,8 @@
           url: "/sso-auth0"
         - title: Azure 
           url: "/sso-azure"
+        - title: LDAP 
+          url: "/sso-ldap"          
         - title: Okta 
           url: "/sso-okta"
         - title: OneLogin
