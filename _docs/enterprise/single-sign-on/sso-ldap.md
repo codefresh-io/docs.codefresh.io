@@ -66,12 +66,12 @@ max-width="70%"
 * *Search Base* - The scope to search other users in LDAP notation
 * *Certificate* - The security certificate of the LDAP server. Paste the value directly on the field. Do not convert to base64 or any other encoding by hand. Needed only for `ldaps`. Leave the field empty if you use `ldap`
 
-Click the *Save* button. Codefresh users should now be able to login to Codefresh using LDAP.
+Click the *Save* button. LDAP users should now be able to login to Codefresh using LDAP.
 
 Each user that logins into Codefresh must:
 
 1. Have a defined email address in the LDAP server
-1. The email used during sign-in should be same as LDAP server
+1. use an email address that is the same as defined in the LDAP server
 1. use as login information their LDAP email, password and `cn` value of username
 
 
