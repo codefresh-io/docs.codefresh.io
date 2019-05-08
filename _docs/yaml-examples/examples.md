@@ -39,7 +39,6 @@ Codefresh has native support for [building]({{site.baseurl}}/docs/codefresh-yaml
 - [Build and Push an Image]({{site.baseurl}}/docs/yaml-examples/examples/build-and-push-an-image)
 - [Build an Image With Build Arguments]({{site.baseurl}}/docs/yaml-examples/examples/build-an-image-with-build-arguments)
 - [Shared volumes between builds]({{site.baseurl}}/docs/yaml-examples/examples/shared-volumes-between-builds)
-- [Clone private repository using freestyle step]({{site.baseurl}}/docs/yaml-examples/examples/git-clone-private-repository-using-freestyle-step)
 - [Get Short SHA ID and Use it in a CI Process]({{site.baseurl}}/docs/yaml-examples/examples/get-short-sha-id-and-use-it-in-a-ci-process)
 
 

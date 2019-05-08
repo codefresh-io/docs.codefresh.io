@@ -154,8 +154,6 @@
           url: "/shared-volumes-between-builds"
         - title: Launch Composition
           url: "/launch-composition"
-        - title: Clone private repository using freestyle step
-          url: "/git-clone-private-repository-using-freestyle-step"
         - title: Sending the notification to Slack
           url: "/sending-the-notification-to-slack"
         - title: Populate a database with existing data
