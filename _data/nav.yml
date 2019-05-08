@@ -132,6 +132,8 @@
           url: "/git-checkout"
         - title: Custom Git commmands
           url: "/git-checkout-custom"
+        - title: Non git checkouts
+          url: "/non-git-checkout"
         - title: Build an Image with the Dockerfile in Root Directory
           url: "/build-an-image-dockerfile-in-root-directory"
         - title: Build an Image - Specify Dockerfile Location

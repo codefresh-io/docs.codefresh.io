@@ -26,8 +26,7 @@ You can checkout code from one or more repositories in any pipeline phase. Codef
 
 - [Cloning Git repositories using the built-in integration]({{site.baseurl}}/docs/yaml-examples/examples/git-checkout/)
 - [Cloning Git repositories using manual git commands]({{site.baseurl}}/docs/yaml-examples/examples/git-checkout-custom/)
-
-[comment]: # - [Checking out from Subversion, Perforce, Mercurial, etc ]({{site.baseurl}}/docs/learn-by-example/golang/golang-hello-world/)
+- [Checking out from Subversion, Perforce, Mercurial, etc ]({{site.baseurl}}/docs/yaml-examples/examples/non-git-checkout/)
 
 ## Build/Package
 
