@@ -72,12 +72,20 @@ steps:
         title: 'BuildingDockerImage'
         type: build
         image_name: my-app-image
-        tag: from-master-branch
+        tag: ${{CF_BRANCH_TAG_NORMALIZED}}
 {% endraw %}
 {% endhighlight %}
 
 The big advantage of this pipeline is that it can be reused for *ALL* your projects the follow the same pattern of having a Dockerfile in the root of the git repository.
 
+{% include image.html 
+lightbox="true" 
+file="/images/examples/checkout/simulate-trigger.png" 
+url="/images/examples/checkout/simulate-trigger.png"
+alt="Simulating a GIT trigger"
+caption="Simulating a GIT trigger"
+max-width="60%"
+%}
 
 
 ## Working in the cloned directory
