@@ -33,17 +33,18 @@ Here is a pipeline that clones a git repository and creates a Docker image from 
 {% raw %}
 version: '1.0'
 steps:
-    main_clone:
-        title: 'Cloning main repository...'
-        type: git-clone
-        repo: kostis-codefresh/example_nodejs_postgres
-        revision: master
-        git: github-1
-    myDockerImage:
-        title: 'BuildingDockerImage'
-        type: build
-        image_name: my-app-image
-        tag: from-master-branch
+  main_clone:
+    title: 'Cloning main repository...'
+    type: git-clone
+    repo: kostis-codefresh/example_nodejs_postgres
+    revision: master
+    git: github-1
+  myDockerImage:
+    title: 'Building My Docker Image'
+    type: build
+    dockerfile: Dockerfile
+    image_name: my-app-image
+    tag: from-master-branch
 {% endraw %}
 {% endhighlight %}
 
@@ -62,21 +63,35 @@ Here is the same pipeline as before, written in a generic way:
 {% raw %}
 version: '1.0'
 steps:
-    main_clone:
-        title: 'Cloning main repository...'
-        type: git-clone
-        repo: '${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}'
-        revision: '${{CF_REVISION}}'
-        git: github-1
-    myDockerImage:
-        title: 'BuildingDockerImage'
-        type: build
-        image_name: my-app-image
-        tag: ${{CF_BRANCH_TAG_NORMALIZED}}
+  main_clone:
+    title: 'Cloning main repository...'
+    type: git-clone
+    repo: '${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}'
+    revision: '${{CF_REVISION}}'
+    git: github-1
+  myDockerImage:
+    title: 'Building My Docker Image'
+    type: build
+    dockerfile: Dockerfile
+    image_name: my-app-image
+    tag: ${{CF_BRANCH_TAG_NORMALIZED}}
 {% endraw %}
 {% endhighlight %}
 
-The big advantage of this pipeline is that it can be reused for *ALL* your projects the follow the same pattern of having a Dockerfile in the root of the git repository.
+The big advantage of this pipeline is that it can be reused for *ALL* your projects that follow the same pattern of having a Dockerfile in the root of the git repository.
+
+{% include image.html 
+lightbox="true" 
+file="/images/examples/checkout/add-new-microservice.png" 
+url="/images/examples/checkout/add-new-microservice.png"
+alt="Reusing a pipeline between microservices"
+caption="Reusing a pipeline between microservices"
+max-width="50%"
+%}
+
+Thus you can have a single pipeline and when you want to enable it for a new micro-service you can simply add a new [git trigger]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/) for it.
+
+You still run the pipeline manually if you wish. In this case you will be asked which trigger you want to "simulate" so that the variable pipelines are correctly replaced by Codefresh.
 
 {% include image.html 
 lightbox="true" 
@@ -84,15 +99,71 @@ file="/images/examples/checkout/simulate-trigger.png"
 url="/images/examples/checkout/simulate-trigger.png"
 alt="Simulating a GIT trigger"
 caption="Simulating a GIT trigger"
-max-width="60%"
+max-width="50%"
 %}
 
+This is the recommended way of creating re-usable pipelines in Codefresh.
 
-## Working in the cloned directory
 
+## Working inside the cloned directory
 
+Normally each [pipeline step]({{site.baseurl}}/docs/codefresh-yaml/steps/) in Codefresh can be named as you want. Specifically for the git-clone step however the name `main_clone` is special.
+
+If you name your clone step as `main_clone` the Codefresh will automatically change the working directory for all the next pipelines steps, to be the same as the project that was just checked out.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/introduction/checkout.png" 
+url="/images/pipeline/introduction/checkout.png"
+alt="Checkout structure" 
+caption="Checkout structure"
+max-width="50%" 
+%}
+
+This is probably what you want anyway, so make sure that you name your git-clone steps as `main_clone`. If you use any other name, then the working folder will be the parent of the checked-out project which is the [shared Codefresh volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) at `/codefresh/volume`.
 
 ## Cloning multiple repositories
+
+You can use as many clone steps as you want and at any position in the pipeline. They don't have to be the first step.
+
+Here is an example where two repositories are checked out and two docker images are then built. 
+
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+steps:
+  checkoutApp1:
+    title: 'Cloning first repository...'
+    type: git-clone
+    repo: kostis-codefresh/example_nodejs_postgres
+    revision: experiment1
+    git: github-1
+  myFirstDockerImage:
+    title: 'BuildingDockerImage'
+    type: build
+    dockerfile: Dockerfile
+    image_name: my-nodejs-image
+    tag: from-develop-branch
+    working_directory: './example_nodejs_postgres'
+  checkoutApp2:
+    title: 'Cloning second repository...'
+    type: git-clone
+    repo: kostis-codefresh/trivial-go-web
+    revision: master
+    git: github-1
+  mySecondDockerImage:
+    title: 'BuildingDockerImage'
+    type: build
+    dockerfile: Dockerfile
+    working_directory: './trivial-go-web'
+    image_name: my-app-image
+    tag: from-master-branch         
+{% endraw %}
+{% endhighlight %}
+
+Notice that in this case the git-clone steps are **not** named `main_clone` and therefore we specify exactly what is the working directory for each one.
 
 
 ## What to read next
@@ -101,3 +172,4 @@ max-width="60%"
 * [Git triggers]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/)
 * [Git Clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)
 * [Build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build-1/)
+* [Custom git commands]({{site.baseurl}}/docs/yaml-examples/examples/git-checkout-custom/)

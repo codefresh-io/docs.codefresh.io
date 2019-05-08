@@ -128,6 +128,10 @@
     - title: Examples
       url: "/examples"
       sub-pages:
+        - title: Checking out Git repositories
+          url: "/git-checkout"
+        - title: Custom Git commmands
+          url: "/git-checkout-custom"
         - title: Build an Image with the Dockerfile in Root Directory
           url: "/build-an-image-dockerfile-in-root-directory"
         - title: Build an Image - Specify Dockerfile Location
