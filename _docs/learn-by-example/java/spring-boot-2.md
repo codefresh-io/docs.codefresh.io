@@ -49,7 +49,7 @@ one should create the Docker image.
 
 #### Building the project with Codefresh
 
-The repository also contains a premade [Codefresh YAML file]({{ site.baseurl }}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) that you can use as a starting point in your own Spring Boot 2 projects.
+The repository also contains a premade [Codefresh YAML file]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) that you can use as a starting point in your own Spring Boot 2 projects.
 
 Here are the full contents of the file.
 
@@ -84,7 +84,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-When a Codefresh build runs, by default it clones the git repo from your GIT provider in the local directory. The yaml file above works on that directory. The first two steps are [freestyle]({{ site.baseurl }}/docs/codefresh-yaml/steps/freestyle/), while the third one is a [build step]({{ site.baseurl }}/docs/codefresh-yaml/steps/build-1/).
+When a Codefresh build runs, by default it clones the git repo from your GIT provider in the local directory. The yaml file above works on that directory. The first two steps are [freestyle]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/), while the third one is a [build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build-1/).
 
 {% include image.html 
 lightbox="true" 
@@ -190,9 +190,12 @@ Docker layers (it uses the Docker image of a previous build as a cache for the n
 much faster after the first one finishes.
 
 
-### Next steps
+## What to read next
 
-The Docker images are now fully tested and placed in the Registry. Next step is to deploy them with [Kubernetes/Helm]({{ site.baseurl }}/docs/deploy-to-kubernetes/deployment-to-kubernetes-quick-start-guide/).
+* [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
+* [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
+* [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
+* [How pipelines work]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
 
 
 
