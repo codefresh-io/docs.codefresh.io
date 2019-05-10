@@ -15,10 +15,11 @@ Codefresh is agnostic as far as programming languages are concerned. All major p
 
 - [Node.JS app]({{site.baseurl}}/docs/learn-by-example/nodejs/lets-chat/)
 - [Spring Java app]({{site.baseurl}}/docs/learn-by-example/java/spring-boot-2/)
+- [Go App]({{site.baseurl}}/docs/learn-by-example/golang/golang-hello-world/)
 - [Scala app]({{site.baseurl}}/docs/learn-by-example/scala/scala-hello-world/)
 - [Python Django app]({{site.baseurl}}/docs/learn-by-example/python/django/)
 - [Ruby On Rails app]({{site.baseurl}}/docs/learn-by-example/ruby/)
-- [Go App]({{site.baseurl}}/docs/learn-by-example/golang/golang-hello-world/)
+- [Php App]({{site.baseurl}}/docs/learn-by-example/php)
 
 ## Checking out source code
 

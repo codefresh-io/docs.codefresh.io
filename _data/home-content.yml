@@ -41,6 +41,8 @@
     localurl: /docs/learn-by-example/python/
   - title: Ruby On Rails
     localurl: /docs/learn-by-example/ruby/
+  - title: Php
+    localurl: /docs/learn-by-example/php/
   - title: Scala
     localurl: /docs/learn-by-example/scala/scala-hello-world/
   - title: Selenium
