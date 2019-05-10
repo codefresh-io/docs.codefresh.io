@@ -15,7 +15,7 @@ for self-contained Java Archives (JAR files).
 
 Codefresh can easily handle Spring Boot applications that are dockerized either in the traditional way or using multi-stage builds. 
 
-### The example project
+### The example Java project
 
 You can see the example project at [https://github.com/codefresh-contrib/spring-boot-2-sample-app](https://github.com/codefresh-contrib/spring-boot-2-sample-app). The repository contains a Spring Boot 2 project built with Maven with the following goals
 
