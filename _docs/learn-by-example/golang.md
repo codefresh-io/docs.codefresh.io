@@ -1,6 +1,6 @@
 ---
 title: "Go"
-description: ""
+description: "How to build Golang applications with Codefresh CI/CD pipelines"
 group: learn-by-example
 redirect_from:
   - /docs/go/
@@ -8,4 +8,4 @@ redirect_from:
 toc: true
 ---
 This section contains Codefresh examples based on Go (aka golang).
-- [Hello World]({{ site.baseurl }}/docs/learn-by-example/golang/golang-hello-world/)
+- [Hello World]({{site.baseurl}}/docs/learn-by-example/golang/golang-hello-world/)
