@@ -18,7 +18,7 @@ You can see the example project at [https://github.com/codefresh-contrib/golang-
 * [Dockerfile with Go modules](https://github.com/codefresh-contrib/golang-sample-app/blob/master/Dockerfile.mod) (optimized for Docker caching)
 * [Multi-stage Dockerfile](https://github.com/codefresh-contrib/golang-sample-app/blob/master/Dockerfile.multistage) (with Go modules and unit tests)
 
-Let's see these in order workflows in order.
+Let's see these workflows in order.
 
 ## Simple Docker image pipeline
 
