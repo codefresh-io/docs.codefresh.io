@@ -111,7 +111,7 @@ file="/images/troubleshooting/migration/monolithic-pipelines.png"
 url="/images/troubleshooting/migration/monolithic-pipelines.png" 
 alt="Pipeline limited to a single GIT repository" 
 caption="Pipeline limited to a single GIT repository" 
-max-width="60%" 
+max-width="50%" 
 %}
 
 This made pipeline re-use very difficult. With the new project grouping the pipeline is not linked to specific repository. Instead it gets all information from triggers.
@@ -122,7 +122,7 @@ file="/images/troubleshooting/migration/add-new-microservice.png"
 url="/images/troubleshooting/migration/add-new-microservice.png" 
 alt="Reusing pipelines for microservices" 
 caption="Reusing pipelines for microservices" 
-max-width="60%" 
+max-width="50%" 
 %}
 
 This means that you can easily re-use a single pipeline among different microservices by just adding more triggers.
