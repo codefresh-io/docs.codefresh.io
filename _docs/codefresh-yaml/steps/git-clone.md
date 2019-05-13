@@ -169,6 +169,7 @@ steps:
         type: git-clone
         repo: '${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}'
         revision: 'master'
+        git: my-git-provider
     PrintFileList:
         title: 'Listing files'
         image: alpine:latest
