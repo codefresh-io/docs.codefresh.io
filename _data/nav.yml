@@ -65,10 +65,10 @@
       sub-pages:
         - title: Spring Boot 2
           url: "/spring-boot-2"
-        - title: Spring MVC JDBC Template
-          url: "/spring-mvc-jdbc-template"
         - title: Gradle
           url: "/gradle"
+        - title: Spring MVC JDBC Template
+          url: "/spring-mvc-jdbc-template"
     - title: Go
       url: "/golang"
       sub-pages:

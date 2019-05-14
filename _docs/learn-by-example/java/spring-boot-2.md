@@ -1,6 +1,6 @@
 ---
 title: "Spring Boot 2"
-description: ""
+description: "Create Docker images for Spring/Maven"
 excerpt: ""
 group: learn-by-example
 sub_group: java
@@ -126,7 +126,7 @@ caption="Spring Boot Docker image"
 max-width="80%" 
 %}
 
-Once the pipeline is finished you will see the Spring Boot 2 Docker image in the Codefresh Docker registry (or any other registry that you have linked within Codefresh).
+Once the pipeline is finished you will see the Spring Boot 2 Docker image in the [Codefresh Docker registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/) (or any other registry that you have linked within Codefresh).
 
 ## Spring Boot 2 and Docker (multi-stage builds)
 
@@ -178,7 +178,7 @@ Again, we define a custom location for the Maven cache (using the `settings-dock
 
 ### Create a CI pipeline for Spring (multi-stage Docker builds)
 
-Because in multi-stage builds Docker itself handles most of the build process, moving the project to Codefresh is straightforward. We just need [a single step](https://github.com/codefresh-contrib/spring-boot-2-sample-app/blob/multi-stage-docker/codefresh.yml) the creates the Docker image after checking out the code.
+Because in multi-stage builds Docker itself handles most of the build process, moving the project to Codefresh is straightforward. We just need [a single step](https://github.com/codefresh-contrib/spring-boot-2-sample-app/blob/multi-stage-docker/codefresh.yml) that creates the Docker image after checking out the code.
 
  `codefresh.yml`
 {% highlight yaml %}
@@ -213,6 +213,7 @@ much faster after the first one finishes.
 
 ## What to read next
 
+* [Gradle example]({{site.baseurl}}/docs/learn-by-example/java/gradle/)
 * [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
 * [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
 * [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
