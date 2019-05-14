@@ -7,7 +7,7 @@ redirect_from:
   - examples.html
 toc: true
 ---
-Codefresh enables you to define the steps of your pipeline in a [YAML file]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/). By default, the file is named ```codefresh.yml```, and is located in the root directory of the repository.
+Codefresh enables you to define the steps of your pipeline in a [YAML file]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/). By default, the file is named `codefresh.yml`, and is located in the root directory of the repository.
 
 ## Programming Language specific
 
@@ -15,10 +15,19 @@ Codefresh is agnostic as far as programming languages are concerned. All major p
 
 - [Node.JS app]({{site.baseurl}}/docs/learn-by-example/nodejs/lets-chat/)
 - [Spring Java app]({{site.baseurl}}/docs/learn-by-example/java/spring-boot-2/)
+- [Go App]({{site.baseurl}}/docs/learn-by-example/golang/golang-hello-world/)
 - [Scala app]({{site.baseurl}}/docs/learn-by-example/scala/scala-hello-world/)
 - [Python Django app]({{site.baseurl}}/docs/learn-by-example/python/django/)
 - [Ruby On Rails app]({{site.baseurl}}/docs/learn-by-example/ruby/)
-- [Go App]({{site.baseurl}}/docs/learn-by-example/golang/golang-hello-world/)
+- [Php App]({{site.baseurl}}/docs/learn-by-example/php)
+
+## Checking out source code
+
+You can checkout code from one or more repositories in any pipeline phase. Codefresh includes [built-in GIT integration]({{site.baseurl}}/docs/integrations/git-providers/) with all the popular GIT providers and can be used with [git-clone]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) steps.
+
+- [Cloning Git repositories using the built-in integration]({{site.baseurl}}/docs/yaml-examples/examples/git-checkout/)
+- [Cloning Git repositories using manual git commands]({{site.baseurl}}/docs/yaml-examples/examples/git-checkout-custom/)
+- [Checking out from Subversion, Perforce, Mercurial, etc ]({{site.baseurl}}/docs/yaml-examples/examples/non-git-checkout/)
 
 ## Build/Package
 
@@ -30,7 +39,6 @@ Codefresh has native support for [building]({{site.baseurl}}/docs/codefresh-yaml
 - [Build and Push an Image]({{site.baseurl}}/docs/yaml-examples/examples/build-and-push-an-image)
 - [Build an Image With Build Arguments]({{site.baseurl}}/docs/yaml-examples/examples/build-an-image-with-build-arguments)
 - [Shared volumes between builds]({{site.baseurl}}/docs/yaml-examples/examples/shared-volumes-between-builds)
-- [Clone private repository using freestyle step]({{site.baseurl}}/docs/yaml-examples/examples/git-clone-private-repository-using-freestyle-step)
 - [Get Short SHA ID and Use it in a CI Process]({{site.baseurl}}/docs/yaml-examples/examples/get-short-sha-id-and-use-it-in-a-ci-process)
 
 

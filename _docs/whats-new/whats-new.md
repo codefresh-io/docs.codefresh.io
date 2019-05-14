@@ -11,6 +11,9 @@ toc: true
 
 - New Github PR variables - [documentation]({{site.baseurl}}/docs/codefresh-yaml/variables/#github-pull-request-variables)
 - Inline Dockerfiles in build steps - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/build-1/#inline-dockerfile)
+- LDAP SSO support (Enterprise) - [documentation]({{site.baseurl}}/docs/enterprise/single-sign-on/sso-ldap/)
+- Checking out code with Subversion, HG, Perforce etc. - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/non-git-checkout/)
+- Migrating to explicit git clone steps - [documentation]({{site.baseurl}}/docs/troubleshooting/git-step-migration/)
 
 ### April 2019
 

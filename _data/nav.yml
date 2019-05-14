@@ -74,6 +74,8 @@
       sub-pages:
         - title: 'Go: Hello World'
           url: "/golang-hello-world"
+    - title: Php
+      url: "/php"     
     - title: General
       url: "/general"
       sub-pages:
@@ -128,6 +130,12 @@
     - title: Examples
       url: "/examples"
       sub-pages:
+        - title: Checking out Git repositories
+          url: "/git-checkout"
+        - title: Custom Git commmands
+          url: "/git-checkout-custom"
+        - title: Non git checkouts
+          url: "/non-git-checkout"
         - title: Build an Image with the Dockerfile in Root Directory
           url: "/build-an-image-dockerfile-in-root-directory"
         - title: Build an Image - Specify Dockerfile Location
@@ -150,8 +158,6 @@
           url: "/shared-volumes-between-builds"
         - title: Launch Composition
           url: "/launch-composition"
-        - title: Clone private repository using freestyle step
-          url: "/git-clone-private-repository-using-freestyle-step"
         - title: Sending the notification to Slack
           url: "/sending-the-notification-to-slack"
         - title: Populate a database with existing data
@@ -329,6 +335,8 @@
           url: "/sso-auth0"
         - title: Azure 
           url: "/sso-azure"
+        - title: LDAP 
+          url: "/sso-ldap"          
         - title: Okta 
           url: "/sso-okta"
         - title: OneLogin
@@ -386,7 +394,8 @@
           url: "/validation-port-warnings"
         - title: Failed to get accounts clusters during workflow
           url: "/failed-to-get-accounts-clusters-during-workflow"
-
+    - title: Git step migration
+      url: "/git-step-migration"
 - title: Whats new?
   url: "/whats-new"
   pages:

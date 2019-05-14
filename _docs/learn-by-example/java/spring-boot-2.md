@@ -15,7 +15,7 @@ for self-contained Java Archives (JAR files).
 
 Codefresh can easily handle Spring Boot applications that are dockerized either in the traditional way or using multi-stage builds.
 
-## The example project
+## The example Java project
 
 You can see the example project at [https://github.com/codefresh-contrib/spring-boot-2-sample-app](https://github.com/codefresh-contrib/spring-boot-2-sample-app). The repository contains a Spring Boot 2 project built with Maven with the following goals
 
@@ -48,7 +48,7 @@ one should create the Docker image.
 
 ### Create a CI pipeline for Spring
 
-The repository also contains a premade [Codefresh YAML file]({{ site.baseurl }}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) that you can use as a starting point in your own Spring Boot 2 projects.
+The repository also contains a premade [Codefresh YAML file]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) that you can use as a starting point in your own Spring Boot 2 projects.
 
 Here are the full contents of the file.
 
@@ -98,7 +98,7 @@ The pipeline starts by checking out the code using a [git clone step]({{site.bas
 lightbox="true" 
 file="/images/learn-by-example/java/spring-boot-steps.png" 
 url="/images/learn-by-example/java/spring-boot-steps.png" 
-alt="Spring Boot Docker Build steps"
+alt="Spring boot pipeline"
 caption="Spring boot pipeline"
 max-width="80%" 
 %}
@@ -210,9 +210,13 @@ This will compile/test/package the Spring Boot application and create a Docker i
 Docker layers (it uses the Docker image of a previous build as a cache for the next) and therefore builds will become
 much faster after the first one finishes.
 
-## Next steps
 
-The Docker images are now fully tested and placed in the Registry. Next step is to deploy them with [Kubernetes/Helm]({{ site.baseurl }}/docs/deploy-to-kubernetes/deployment-to-kubernetes-quick-start-guide/).
+## What to read next
+
+* [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
+* [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
+* [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
+* [How pipelines work]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
 
 
 
