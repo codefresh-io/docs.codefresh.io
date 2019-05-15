@@ -14,7 +14,7 @@ Codefresh enables you to define the steps of your pipeline in a [YAML file]({{si
 Codefresh is agnostic as far as programming languages are concerned. All major programming languages are supported.
 
 - [Node.JS app]({{site.baseurl}}/docs/learn-by-example/nodejs/lets-chat/)
-- [Spring Java app]({{site.baseurl}}/docs/learn-by-example/java/spring-boot-2/)
+- [Spring Java app with Maven]({{site.baseurl}}/docs/learn-by-example/java/spring-boot-2/) or [Gradle]({{site.baseurl}}/docs/learn-by-example/java/gradle/)
 - [Go App]({{site.baseurl}}/docs/learn-by-example/golang/golang-hello-world/)
 - [Scala app]({{site.baseurl}}/docs/learn-by-example/scala/scala-hello-world/)
 - [Python Django app]({{site.baseurl}}/docs/learn-by-example/python/django/)

@@ -14,4 +14,4 @@ links not available in base documentation
 - [How to run composition using cf-cli](doc:how-to-run-composition-using-cf-cli-1) 
 - [How to spin up image using cf-cli](doc:how-to-spin-up-image-using-cf-cli)
 {% endcomment %}
-- [Selenium test]({{ site.baseurl }}/docs/learn-by-example/general/selenium-test/)
+- [Selenium test]({{site.baseurl}}/docs/learn-by-example/general/selenium-test/)
