@@ -354,6 +354,7 @@ While this workflow is very flexible, it adds complexity on the number of Helm c
 
 ## What to read next
 
+* [Helm quick start guide]({{site.baseurl}}/docs/getting-started/helm-quick-start-guide/)
 * [Using Helm in a Codefresh pipeline]({{site.baseurl}}/docs/new-helm/using-helm-in-codefresh-pipeline/)
 * [Helm Dashboard]({{site.baseurl}}/docs/new-helm/helm-releases-management)
 * [Helm Promotion boards]({{site.baseurl}}/docs/new-helm/helm-environment-promotion)

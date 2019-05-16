@@ -40,7 +40,7 @@ Codefresh expects the following user attributes to be passed through SAML betwee
   - User unique id that isn't subject to change in your identity management environment
 
 {:.text-secondary}
-## How does the connection process works?
+## How does the connection process work?
 
   {% include image.html
 lightbox="true"
