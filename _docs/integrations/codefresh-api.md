@@ -10,7 +10,7 @@ old_url: /docs/codefresh-api
 
 Codefresh offers a comprehensive [API](https://en.wikipedia.org/wiki/Application_programming_interface) that you can use to integrate with any other application or solution you already have.
 
-The full details of the API are documented using [Swagger](https://swagger.io/) at [https://g.codefresh.io/api/](https://g.codefresh.io/api/)
+The full details of the API are documented at [https://g.codefresh.io/api/](https://g.codefresh.io/api/)
 
 {% include image.html 
 lightbox="true" 
@@ -44,22 +44,21 @@ Before you can use the API from your application you need an authentication key 
 
 ## Authentication instructions
 
-If you just want to play around with the API, a key is already created for you in [Swagger](https://swagger.io/) at [https://g.codefresh.io/api/](https://g.codefresh.io/api/). You can make any call
-interactively and see results right from the browser.
+You can browse the current API at [https://g.codefresh.io/api/](https://g.codefresh.io/api/). 
 
 {% include image.html 
 lightbox="true" 
-file="/images/integrations/api/get-build.png" 
-url="/images/integrations/api/get-build.png" 
-alt="Interactive API requests" 
-caption="Interactive API requests" 
+file="/images/integrations/api/codefresh-api-example.png" 
+url="/images/integrations/api/codefresh-api-example.png" 
+alt="Browsing the Codefresh API" 
+caption="Browsing the Codefresh API" 
 max-width="70%" 
 %}
 
+For each call you will also see an example with `curl`.
 
-You can also copy the `curl` command shown in the UI. It includes the key in the request.
 
-If you want to create your own key then click *Account Settings* on the left sidebar and select the *tokens* tab.
+In order to create your own API key then click *Account Settings* on the left sidebar and select the *tokens* tab.
 Click the *generate* button and copy your key. 
 
 
@@ -170,6 +169,7 @@ spec:
   triggers:
     - type: "git"
       provider: "github"
+      name: my-trigger
       repo: "kostis-codefresh/nestjs-example"
       events: ["push"]
       branchRegex: '/./'
@@ -188,6 +188,7 @@ spec:
       - ls -a
       - echo "hello world"
       - echo "plain value $PORT"
+  stages: []      
 {% endraw %}
 {% endhighlight %}
 
