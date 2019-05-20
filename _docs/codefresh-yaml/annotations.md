@@ -121,9 +121,9 @@ steps:
               - qa: pending
               - commit_message: ${{CF_COMMIT_MESSAGE}}
               - is_main_branch: 
-                evaluate: "'${{CF_BRANCH}}' == 'main'"
+                  evaluate: "'${{CF_BRANCH}}' == 'main'"
               - my_json_file: "file:${{CF_VOLUME_PATH}}/path/file.json"  
-              - my_docker_file: "file:Dockerfile" 
+              - my_docker_file: "file:Dockerfile"  
 {% endraw %}            
 {% endhighlight %}
 

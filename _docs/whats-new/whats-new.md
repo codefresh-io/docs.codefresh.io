@@ -14,6 +14,7 @@ toc: true
 - LDAP SSO support (Enterprise) - [documentation]({{site.baseurl}}/docs/enterprise/single-sign-on/sso-ldap/)
 - Checking out code with Subversion, HG, Perforce etc. - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/non-git-checkout/)
 - Migrating to explicit git clone steps - [documentation]({{site.baseurl}}/docs/troubleshooting/git-step-migration/)
+- Custom annotations on projects, pipelines, builds - [documentation]({{site.baseurl}}/docs/codefresh-yaml/annotations/)
 
 ### April 2019
 
