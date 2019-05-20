@@ -127,7 +127,10 @@ steps:
 {% endraw %}            
 {% endhighlight %}
 
-The last two annotations add the text of a file as a value. You can define an absolute or relative path. No processing is done on the file before being stored. We suggest you only store small text files in this manner as annotations values.
+>Notice that this pipeline is using dynamic git repository variables, so it must be linked to a least one [git trigger]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/) in order to work.
+
+The last two annotations add the text of a file as a value. You can define an absolute or relative path. No processing is done on the file before being stored. If a file is not found, the annotation will still be added verbatim.
+We suggest you only store small text files in this manner as annotations values.
 
 ## Removing annotations
 
@@ -224,3 +227,4 @@ Note that this syntax is optional. You can still define metadata for a build usi
 
 * [Image annotations]({{site.baseurl}}/docs/docker-registries/metadata-annotations/)
 * [Post-Step Operations]({{site.baseurl}}/docs/codefresh-yaml/post-step-operations/)
+* [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
