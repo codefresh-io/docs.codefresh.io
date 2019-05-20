@@ -59,10 +59,14 @@
     localurl: /docs/codefresh-yaml/stages/   
   - title: Variables
     localurl: /docs/codefresh-yaml/variables/
-  - title: Parallel Pipelines
-    localurl: /docs/codefresh-yaml/advanced-workflows/
+  - title: Step conditions
+    localurl: /docs/codefresh-yaml/conditional-execution-of-steps/
   - title: Working Directories
     localurl: /docs/codefresh-yaml/working-directories/
+  - title: Parallel Pipelines
+    localurl: /docs/codefresh-yaml/advanced-workflows/    
+  - title: Annotations
+    localurl: /docs/codefresh-yaml/annotations/
   - title: Examples
     localurl: /docs/yaml-examples/examples/
   - title: "Plugin steps"

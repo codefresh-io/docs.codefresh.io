@@ -42,4 +42,6 @@ step_name:
 {% endhighlight %}
 
 ## Available Post-Step Operations
-- [Metadata Annotations]({{ site.baseurl }}/docs/docker-registries/metadata-annotations/).
+
+- [Image Metadata]({{site.baseurl}}/docs/docker-registries/metadata-annotations/)
+- [Custom Annotations]({{site.baseurl}}/docs/codefresh-yaml/annotations/)
