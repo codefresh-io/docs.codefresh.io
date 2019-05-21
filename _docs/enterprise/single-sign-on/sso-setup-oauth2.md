@@ -100,7 +100,7 @@ See the [OneLogin instructions]({{site.baseurl}}/docs/enterprise/single-sign-on/
 
 Once you setup the Identity provider do the following
 
-1. Go to the collaborators screen by clicking on *Collaborators* on the left sidebar
+1. Go to the collaborators screen by clicking on *People* on the left sidebar (under User Management)
 1. Add an active user that will be used for testing. We recommend you use your own user
  
 
