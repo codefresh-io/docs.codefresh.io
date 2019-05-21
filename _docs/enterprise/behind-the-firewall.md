@@ -15,7 +15,7 @@ Codefresh has an on-premise installation where the whole platform is installed i
 this solution is very effective as far as security is concerned, it places a lot of overhead on the customer as all updates
 and improvements done in the platform must also be transferred to the customer premises.
 
-The hybrid approach places only a Codefresh agent within customer premises while the UI (and management platform) stays in the Codefresh SAAS.
+The hybrid approach places only a Codefresh runner within customer premises while the UI (and management platform) stays in the Codefresh SAAS.
 
 Here is the overall architecture:
 
@@ -33,7 +33,7 @@ The advantages for this scenario are multi-fold. Regarding platform maintenance:
  1. The heavy lifting for platform maintenance is still happening by Codefresh instead of the customer
  1. Updates to the UI, build engine, integrations etc are happening automatically without any customer involvement
  1. Actual builds are happening in the customer premises under fully controlled conditions
- 1. The Codefresh agent is fully automated. It handles volume claims and build scheduling on its own within the Kubernetes cluster it is placed.
+ 1. The Codefresh runner is fully automated. It handles volume claims and build scheduling on its own within the Kubernetes cluster it is placed.
 
 Regarding security of services:
 
@@ -43,27 +43,27 @@ Regarding security of services:
 
 Regarding firewall security:
 
- 1. Communication between the Codefresh agent and Codefresh SAAS is uni-directional. The agent is polling the Codefresh platform for jobs. 
- 1. Communication between the Codefresh agent and Codefresh SAAS is only outgoing. The Codefresh SAAS never connects to the customer network. No ports need to be open in the customer firewall for the agent to work.
- 1. The Codefresh agent it fully open-source, so its code can by scrutinized by any stakeholder.
+ 1. Communication between the Codefresh runner and Codefresh SAAS is uni-directional. The runner is polling the Codefresh platform for jobs. 
+ 1. Communication between the Codefresh runner and Codefresh SAAS is only outgoing. The Codefresh SAAS never connects to the customer network. No ports need to be open in the customer firewall for the runner to work.
+ 1. The Codefresh runner is fully open-source, so its code can by scrutinized by any stakeholder.
 
 
 
-## Using the Codefresh Build Agent 
+## Using the Codefresh Build Runner 
 
-The Codefresh agent installer is available at [https://github.com/codefresh-io/venona](https://github.com/codefresh-io/venona). You can use Venona to create, upgrade and remove agent installations on any internal Kubernetes cluster.
+The Codefresh runner installer is available at [https://github.com/codefresh-io/venona](https://github.com/codefresh-io/venona). You can use Venona to create, upgrade and remove runner installations on any internal Kubernetes cluster.
 
-Notice that an agent installation is needed for each cluster that will _run_ Codefresh pipelines. An agent is **not** needed
-in clusters that are used for _deployment_. It is possible to deploy applications on different clusters other than the ones the agent is running on.
+Notice that a runner installation is needed for each cluster that will _run_ Codefresh pipelines. A runner is **not** needed
+in clusters that are used for _deployment_. It is possible to deploy applications on different clusters other than the ones the runner is running on.
 
-The [installation process](https://github.com/codefresh-io/venona/blob/master/README.md) takes care of all the components of the agent as well as the other resources (config-maps, secrets, volumes) needed by them. For Mac environments there is also a brew package.
+The [installation process](https://github.com/codefresh-io/venona/blob/master/README.md) takes care of all the components of the runner as well as the other resources (config-maps, secrets, volumes) needed by them. For Mac environments there is also a brew package.
 
-Once installed the agent is fully automated. It polls on its own the Codefresh SAAS (by default every ten seconds) and 
+Once installed the runner is fully automated. It polls on its own the Codefresh SAAS (by default every ten seconds) and 
 creates automatically all resources needed for running pipelines.
 
-Only the agent pod is long-living insider your cluster. All other components (such as the engine) are short lived and exist only during pipeline builds.
+Only the runner pod is long-living insider your cluster. All other components (such as the engine) are short lived and exist only during pipeline builds.
 
-You can always see what the agent is doing by listing the resources inside the namespace you chose during installation:
+You can always see what the runner is doing by listing the resources inside the namespace you chose during installation:
 
 ```
 $ kubectl get pods -n codefresh-runtime
@@ -77,15 +77,15 @@ venona-8b5f787c5-ftbnd                           1/1       Running   2          
 In the same manner you can list secrets, config-maps, logs, volumes etc. for the Codefresh builds.
 
 
-### Registering the agent to your Codefresh account
+### Registering the runner to your Codefresh account
 
-Installation can happen from any workstation or laptop that has access (i.e. via `kubectl`) to the Kubernetes cluster that will run Codefresh builds. The Codefresh agent will authenticate to your Codefresh account by using the [Codefresh CLI token]({{site.baseurl}}/docs/integrations/codefresh-api/#authentication-instructions). It is therefore necessary to setup [Codefresh CLI access](https://codefresh-io.github.io/cli/getting-started/) first, in the machine where you install the agent from.
+Installation can happen from any workstation or laptop that has access (i.e. via `kubectl`) to the Kubernetes cluster that will run Codefresh builds. The Codefresh runner will authenticate to your Codefresh account by using the [Codefresh CLI token]({{site.baseurl}}/docs/integrations/codefresh-api/#authentication-instructions). It is therefore necessary to setup [Codefresh CLI access](https://codefresh-io.github.io/cli/getting-started/) first, in the machine where you install the runner from.
 
-Notice that access to the Codefresh CLI is only needed during the agent installation. After that, the agent with authenticate on it own using the details provided. You do *NOT* need to install the Codefresh CLI on the cluster that is running Codefresh pipelines.
+Notice that access to the Codefresh CLI is only needed during the runner installation. After that, the runner with authenticate on it own using the details provided. You do *NOT* need to install the Codefresh CLI on the cluster that is running Codefresh pipelines.
 
-### Verifying the agent installation
+### Verifying the runner installation
 
-Once installation is complete, you should see the cluster of the agent as a new [Runtime environment](https://g.codefresh.io/account-admin/account-conf/runtime-environments) in Codefresh at your *Account Settings*, in the respective tab.
+Once installation is complete, you should see the cluster of the runner as a new [Runtime environment](https://g.codefresh.io/account-admin/account-conf/runtime-environments) in Codefresh at your *Account Settings*, in the respective tab.
 
 {% include image.html
   lightbox="true"
@@ -96,7 +96,7 @@ Once installation is complete, you should see the cluster of the agent as a new 
   max-width="60%"
     %} 
 
-If you have multiple environments available you can change the default one (shown with a thin blue border) by clicking on the 3 dot menu on the right of each environment. The Codefresh agent installer comes with an option `set-default` that will automatically set as default the new runtime environment.
+If you have multiple environments available you can change the default one (shown with a thin blue border) by clicking on the 3 dot menu on the right of each environment. The Codefresh runner installer comes with an option `set-default` that will automatically set as default the new runtime environment.
 
 You can even override the runtime environment for a specific pipeline by specifying in the respective section in the [pipeline settings]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/). 
 
@@ -126,7 +126,7 @@ All pipelines that are executed in the private Kubernetes cluster have access to
  all data will stay with the private local network and will never exit the firewall.
 
  >Notice that [long running compositions]({{site.baseurl}}/docs/codefresh-yaml/steps/composition-1/) (preview test environments) are not yet available via the Codefresh
- build agent.
+ build runner.
 
 
 
@@ -285,9 +285,9 @@ To connect a cluster that is behind the firewall follow the [connecting cluster 
   max-width="60%"
     %}
 
-The cluster where the build agent runs should have network connectivity with the cluster you wish to deploy to.
+The cluster where the runner works on should have network connectivity with the cluster you wish to deploy to.
 
->Notice that the service account used in the cluster configuration is completely independent from the privileges granted to the Codefresh build agent. The privileges needed by the agent are only used to launch Codefresh pipelines within your cluster. The Service account used in the "custom provider" setting should have the needed privileges for deployment.
+>Notice that the service account used in the cluster configuration is completely independent from the privileges granted to the Codefresh build runner. The privileges needed by the runner are only used to launch Codefresh pipelines within your cluster. The Service account used in the "custom provider" setting should have the needed privileges for deployment.
 
 Once your cluster is connected you can use any of the familiar deployment methods such as the [dedicated deploy step]({{site.baseurl}}/docs/deploy-to-kubernetes/deployment-options-to-kubernetes/) or [custom kubectl commands]({{site.baseurl}}/docs/deploy-to-kubernetes/custom-kubectl-commands/).
 
