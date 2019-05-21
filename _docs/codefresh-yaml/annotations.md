@@ -191,7 +191,7 @@ As a convenience feature if
 1. your pipeline has a build step
 1. and you want to add annotations to the present build or image
 
-you can also define annotations in the root level of the build step and not mention the entity id of the build. Annotations will be added in the present build.
+you can also define annotations in the root level of the build step and not mention the entity id and type. Annotations will then be added in the present build.
 
 
 `codefresh.yml`
@@ -230,7 +230,7 @@ codefresh get annotation build 5ce26f5ff2ed0edd561fa2fc
 You can also define `entity_type` as `image` and don't enter any `entity_id`. In this case the image created from the build step will be annotated.
 
 
-Note that this syntax is optional. You can still define annotations for a build using the post operations of any step and specifically mentioning `entity_type` as `build`.
+Note that this syntax is optional. You can still define annotations for a build/image or any other entity using the post operations of any step by mentioning explicitly the target id and type.
 
 ## What to read next
 
