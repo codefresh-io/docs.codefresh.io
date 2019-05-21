@@ -187,9 +187,10 @@ Inside every freestyle step there's a command called `cf_export` that allows you
 
 You can either:
 - explicitly state a VAR=VAL pair  
-- state the name of an existing environment variable (like EXISTING_VAR).
+- state the name of an existing *exported* environment variable (like EXISTING_VAR).
 
 {% highlight yaml %}
+{% raw %}
 version: '1.0'
 steps:
   freestyle-step-1:
@@ -197,24 +198,41 @@ steps:
     title: Free styling
     image: alpine:latest
     commands:
-      - cf_export VAR1=VALUE1 VAR2=VALUE2 EXISTING_VAR
+      # Normal export will only work in a single step
+      - export EXISTING_VAR=www.example.com
+
+      # CF export will now work in all other subsequent steps
+      - cf_export VAR1=alpine:latest VAR2=VALUE2 EXISTING_VAR
 
   freestyle-step-2:
     description: Freestyle step..
     title: Free styling 2
-    image: {% raw %}${{VAR1}}{% endraw %}
+    image: ${{VAR1}}
     commands:
       - echo $VAR2
-      - curl http://$EXISTING_VAR/index.php
+      - echo http://$EXISTING_VAR/index.php
+{% endraw %}
 {% endhighlight %}
+
+Notice that `cf_export` has the same semantics as the [bash export command](https://www.gnu.org/software/bash/manual/html_node/Environment.html). This means that when you use it you **don't** need any dollar signs for the variable created/assigned.
+
+```
+cf_export $MY_VAR # Don't do this
+cf_export MY_VAR # Correct syntax
+```
+
+>There is nothing really magic about `cf_export`. It is a normal script. You can see its contents on your own by entering the commmand `cat /codefresh/volume/cf_export` on any [Codefresh freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) inside a pipeline.
+
+
  
 ### Directly writing to the file
 
-For more advanced use cases, you can write directly to the shared file.
+For more advanced use cases, you can write directly to the shared variable file that Codefresh reads to understand which variables need to be available to all steps. This file has a simple format where each line is a variable and its value in the form of `VARIABLE=VALUE`. The `cf_export` command mentioned in the previous section is just a shorthand for writing on this file.
 
-The variables file will be available inside the freestyle container in the following path: **`{% raw %}${{CF_VOLUME_PATH}}{% endraw %}/env_vars_to_export`** 
+The variables file is available inside freestyle steps in the following path: **`{% raw %}${{CF_VOLUME_PATH}}{% endraw %}/env_vars_to_export`** 
 
 {% highlight yaml %}
+{% raw %}
 version: '1.0'
 steps:
   freestyle-step-1:
@@ -222,15 +240,19 @@ steps:
     title: Free styling
     image: alpine:latest
     commands:
-      - echo VAR1=192.168.0.1 >> {% raw %}${{CF_VOLUME_PATH}}{% endraw %}/env_vars_to_export
+      - echo VAR1=192.168.0.1 >> ${{CF_VOLUME_PATH}}/env_vars_to_export
+      - echo hey=alpine:3.9 >> ${{CF_VOLUME_PATH}}/env_vars_to_export
           
   freestyle-step-2:
     description: Freestyle step..
     title: Free styling 2
-    image: {% raw %}${{hey}}{% endraw %}
+    image: ${{hey}}
     commands:
-      - curl http://$VAR1/index.php
+      - echo http://$VAR1/index.php
+{% endraw %}      
 {% endhighlight %}
+
+Use this technique if you have complex expressions that have issues with the `cf_export` command.
 
 ## Escape Characters
 When passing special characters through environmental variables `\` can be used as an escape character. For example if you were passing a cassandra connection string you might do something like `Points\=hostname\;Port\=16376\;Username\=user\;Password\=password`
