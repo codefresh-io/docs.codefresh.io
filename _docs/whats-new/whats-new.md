@@ -16,6 +16,7 @@ toc: true
 - Checking out code with Subversion, HG, Perforce etc. - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/non-git-checkout/)
 - Migrating to explicit git clone steps - [documentation]({{site.baseurl}}/docs/troubleshooting/git-step-migration/)
 - Custom annotations on projects, pipelines, builds - [documentation]({{site.baseurl}}/docs/codefresh-yaml/annotations/)
+- Deployments with Pulumi - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/pulumi/)
 
 ### April 2019
 

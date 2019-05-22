@@ -5,6 +5,7 @@ group: yaml-examples
 redirect_from:
   - /docs/examples-v01/
   - examples.html
+  - /docs/catalog-examples/
 toc: true
 ---
 Codefresh enables you to define the steps of your pipeline in a [YAML file]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/). By default, the file is named `codefresh.yml`, and is located in the root directory of the repository.
@@ -60,6 +61,7 @@ Codefresh can deploy to any platform such as VMs, FTP/SSH/S3 sites, app servers 
 
 - [Deploy Demochat to a Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/codefresh-kubernetes-integration-demochat-example/) 
 - [Use kubectl as part of Freestyle step]({{site.baseurl}}/docs/yaml-examples/examples/use-kubectl-as-part-of-freestyle-step) 
+- [Deploy with Pulumi]({{site.baseurl}}/docs/yaml-examples/examples/pulumi) 
 
 ## Notifications
 

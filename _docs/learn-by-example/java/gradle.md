@@ -9,7 +9,7 @@ redirect_from:
 toc: true
 ---
 
-Codefresh can work with Gradle builds in a similar manner as with [Maven builds]({{site.baseurl}}/docs/learn-by-example/java/spring-boot-2//what-is-the-codefresh-yaml/).
+Codefresh can work with Gradle builds in a similar manner as with [Maven builds]({{site.baseurl}}/docs/learn-by-example/java/spring-boot-2/).
 
 ## The example Gradle project
 

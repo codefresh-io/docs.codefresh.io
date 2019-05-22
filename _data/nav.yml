@@ -138,6 +138,7 @@
           url: "/git-checkout-custom"
         - title: Non git checkouts
           url: "/non-git-checkout"
+
         - title: Build an Image with the Dockerfile in Root Directory
           url: "/build-an-image-dockerfile-in-root-directory"
         - title: Build an Image - Specify Dockerfile Location
@@ -148,28 +149,35 @@
           url: "/build-and-push-an-image"
         - title: Build an Image with Build Arguments
           url: "/build-an-image-with-build-arguments"
+        - title: Shared volumes between builds
+          url: "/shared-volumes-between-builds" 
+        - title: Use Git Hash in CI
+          url: "/get-short-sha-id-and-use-it-in-a-ci-process"    
+
         - title: Run Unit Tests
           url: "/run-unit-tests"
         - title: Run Unit Tests with composition
           url: "/run-unit-tests-with-composition"
         - title: Run Integration Tests
           url: "/run-integration-tests"
-        - title: Shared volumes of service from composition step for other yml steps
+        - title: Shared volumes for composition
           url: "/shared-volumes-of-service-from-composition-step-for-other-yml-steps"
-        - title: Shared volumes between builds
-          url: "/shared-volumes-between-builds"
         - title: Launch Composition
           url: "/launch-composition"
-        - title: Sending the notification to Slack
-          url: "/sending-the-notification-to-slack"
+        - title: Use Docker compose
+          url: "/launching-a-composition-and-defining-a-service-environment-variables-using-a-file"  
         - title: Populate a database with existing data
           url: "/populate-a-database-with-existing-data"
+
         - title: Use kubectl as part of Freestyle step
           url: "/use-kubectl-as-part-of-freestyle-step"
-        - title: Launching a composition and defining a service environment variables using a file
-          url: "/launching-a-composition-and-defining-a-service-environment-variables-using-a-file"
-        - title: Get Short SHA ID and Use it in a CI Process
-          url: "/get-short-sha-id-and-use-it-in-a-ci-process"
+        - title: Deploy with Pulumi
+          url: "/pulumi"
+
+        - title: Sending the notification to Slack
+          url: "/sending-the-notification-to-slack"
+
+
 
 
 - title: "Artifacts Management"
