@@ -1,5 +1,5 @@
 ---
-title: "Examples"
+title: "CI/CD pipeline Examples"
 description: "A collection of examples for Codefresh pipelines"
 group: yaml-examples
 redirect_from:
