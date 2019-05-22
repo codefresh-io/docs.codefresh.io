@@ -36,6 +36,8 @@ Codefresh automatically creates a kubeconfig in any [Freestyle step]({{site.base
 
 Create a [stack](https://pulumi.io/reference/stack.html) in Pulumi or use the one provided in the example.
 
+Finally add you Pulumi token as a pipeline variable called `PULUMI_ACCESS_TOKEN`. All freestyle steps have automatic access to all pipeline variables, and Pulumi will search for a token by default with this name when logging in.
+
 
 ## Running Pulumi with Codefresh
 
