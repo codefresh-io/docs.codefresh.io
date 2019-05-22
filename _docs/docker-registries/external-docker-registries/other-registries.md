@@ -15,3 +15,8 @@ To configure some other registry which is not officially provided by Codefresh f
 * Domain - Your registry address e.g. `mydomain.com`
 
 {% include image.html lightbox="true" file="/images/artifacts/registry/add-other-docker-registry.png" url="/images/artifacts/registry/add-other-docker-registry.png" alt="Add Other Registries" max-width="60%" %}
+
+## What to read next
+
+* [Push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push-1/)
+* [Building and pushing an image]({{site.baseurl}}/docs/yaml-examples/examples/build-and-push-an-image/)

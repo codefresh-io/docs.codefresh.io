@@ -15,3 +15,8 @@ To configure Quay.io first select **Other Registries** from the new registry dro
 * Domain - quay.io
 
 {% include image.html lightbox="true" file="/images/artifacts/registry/add-quay-registry.png" url="/images/artifacts/registry/add-quay-registry.png" alt="Add Quay.io Docker Registry" max-width="60%" %}
+
+## What to read next
+
+* [Push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push-1/)
+* [Building and pushing an image]({{site.baseurl}}/docs/yaml-examples/examples/build-and-push-an-image/)

@@ -61,3 +61,7 @@ Codefresh will automatically set some version attributes in Bintray every time y
 	max-width="50%" 
 	%}
 
+## What to read next
+
+* [Push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push-1/)
+* [Building and pushing an image]({{site.baseurl}}/docs/yaml-examples/examples/build-and-push-an-image/)
