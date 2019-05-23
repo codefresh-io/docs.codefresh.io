@@ -88,8 +88,8 @@ Then in the settings of your Identity Provider create a new Service Provider and
 
 The mandatory fields needed for SAML assertions are:
 
-1. firstname - user first name
-1. lastname - user last name
+1. firstName - user first name
+1. lastName - user last name
 1. email - user email
 
 >Notice that these settings are for the SAAS version of Codefresh. For an on-premise Codefresh setup you need to use the URLs that match your installation.
