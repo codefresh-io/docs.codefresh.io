@@ -171,5 +171,5 @@ Notice that in this case the git-clone steps are **not** named `main_clone` and 
 * [Git integrations]({{site.baseurl}}/docs/integrations/git-providers/)
 * [Git triggers]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/)
 * [Git Clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)
-* [Build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build-1/)
+* [Build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/)
 * [Custom git commands]({{site.baseurl}}/docs/yaml-examples/examples/git-checkout-custom/)

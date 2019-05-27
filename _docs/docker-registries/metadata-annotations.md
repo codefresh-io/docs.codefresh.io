@@ -39,7 +39,7 @@ You can annotate an image as part of it's builds process and also on post build 
 
 {:.text-secondary}
 ### Build step Image Metadata Annotation
-You can annotate an image as part of its build process by declaring the metadata value on the [Build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build-1/):
+You can annotate an image as part of its build process by declaring the metadata value on the [Build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/):
 1. The `metadata` attribute
 2. The `set` operation
 3. An array of key-value metadata

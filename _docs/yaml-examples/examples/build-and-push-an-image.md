@@ -20,7 +20,7 @@ If you don't already have a Codefresh account, you can easily create a free one 
 
 All Codefresh accounts come with a [private integrated Docker registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/). The nice thing about this registry is that it is fully automated. All successfull pipelines in Codefresh automatically push to that registy without any other configuration.
 
-So in the most simple case, you only need a [single build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build-1/) and  Codefresh will automatically push the image for you!
+So in the most simple case, you only need a [single build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) and  Codefresh will automatically push the image for you!
 
 Here is the full pipeline:
 
@@ -71,7 +71,7 @@ in the integrations page. Here are the instructions for:
   * [Quay.io]({{site.baseurl}}/docs/docker-registries/external-docker-registries/quay-io/)
   * [Other Registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/other-registries/)
 
-Once that is done, you only need to add a [push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push-1/) in your pipeline and use the registry name of your integration.
+Once that is done, you only need to add a [push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/) in your pipeline and use the registry name of your integration.
 
 Here is the full example:
 
@@ -104,7 +104,7 @@ Codefresh has several more options when it comes to pushing
 * You can use directly ECR registries
 * You can embed credentials in the push steps
 
-See the [push step documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/push-1/) for more details.
+See the [push step documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/push/) for more details.
 
 
 

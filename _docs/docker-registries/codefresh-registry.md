@@ -38,7 +38,7 @@ For each image you get some basic details such as the git branch, commit message
 
 Notice that the last Docker image produced by any **successful** Codefresh pipeline will automatically be pushed to the Codefresh registry. This behavior is completely automated and requires zero configuration on your part.
 
->You can still use the [push pipeline step]({{site.baseurl}}/docs/codefresh-yaml/steps/push-1/) if you wish to customize the image details or want to use an [external registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) such as Azure, Google, Bintray etc.
+>You can still use the [push pipeline step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/) if you wish to customize the image details or want to use an [external registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) such as Azure, Google, Bintray etc.
 
 On the top left of the screen you can find several filters that allow you to search for a specific subset of Docker images:
 
@@ -220,7 +220,7 @@ Once you remove all of its tags, the image will not be shown in the internal Cod
 
 ### See also
 
-* [Push pipeline step]({{site.baseurl}}/docs/codefresh-yaml/steps/push-1/)
+* [Push pipeline step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/)
 * [External Docker Registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/)
 * [Accessing Docker registry from your Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/access-docker-registry-from-kubernetes/)
 

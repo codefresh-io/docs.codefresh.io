@@ -41,7 +41,7 @@ COPY --from=vendor /tmp/vendor/ /var/www/html/vendor/
 ## Create a Docker image for Php project
 
 An [example pipeline](https://github.com/codefresh-contrib/php-composer-sample-app/blob/master/codefresh.yml) is also offered in the git repository.
-It contains just two [steps]({{site.baseurl}}/docs/codefresh-yaml/steps/). A [clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) to fetch the code and a [build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build-1/) to create a Docker image.
+It contains just two [steps]({{site.baseurl}}/docs/codefresh-yaml/steps/). A [clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) to fetch the code and a [build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) to create a Docker image.
 
  `codefresh.yml`
 {% highlight yaml %}

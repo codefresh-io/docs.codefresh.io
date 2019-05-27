@@ -25,7 +25,7 @@ steps:
     tag: develop # {% raw %}${{CF_BRANCH}}{% endraw %}
 {% endhighlight %}
 
-For more information about the steps for the ```build-the-image``` command, click [HERE]({{ site.baseurl }}/docs/codefresh-yaml/steps/build-1/).
+For more information about the steps for the ```build-the-image``` command, click [HERE]({{site.baseurl}}/docs/codefresh-yaml/steps/build/).
 
 {{site.data.callout.callout_info}}
 If you need to specify path to build context, you can do it through `working_directory` like in example below.\nBuild context is where we can find your Dockerfile as well as running commands. Your Dockerfile must be relative to this directory. 

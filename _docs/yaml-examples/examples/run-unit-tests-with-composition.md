@@ -10,7 +10,7 @@ toc: true
 Using this repository we'll help you get up to speed with basic functionality such as: compiling, testing and building Docker images.
 
 This project uses `Node Js` to build an application which will eventually become a distributable Docker image.
-You can use the [**composition**]({{ site.baseurl }}/docs/codefresh-yaml/steps/composition-1/) step to run unit tests with a composition. The most common use case is to run unit tests on your code.
+You can use the [**composition**]({{site.baseurl}}/docs/codefresh-yaml/steps/composition/) step to run unit tests with a composition. The most common use case is to run unit tests on your code.
 
 ## Looking around
 

@@ -402,7 +402,7 @@ after_success:
 {{site.data.callout.callout_info}}
 ##### More about push step
 
-[Push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push-1/)
+[Push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/)
 {{site.data.callout.end}}
 
 ## Deploy on example of AWS Elastic Beanstalk

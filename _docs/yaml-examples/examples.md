@@ -32,7 +32,7 @@ You can checkout code from one or more repositories in any pipeline phase. Codef
 
 ## Build/Package
 
-Codefresh has native support for [building]({{site.baseurl}}/docs/codefresh-yaml/steps/build-1/) and [pushing]({{site.baseurl}}/docs/codefresh-yaml/steps/push-1/) Docker containers.
+Codefresh has native support for [building]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) and [pushing]({{site.baseurl}}/docs/codefresh-yaml/steps/push/) Docker containers.
 
 - [Build an Image with the Dockerfile in Root Directory]({{site.baseurl}}/docs/yaml-examples/examples/build-an-image-dockerfile-in-root-directory/)
 - [Build an Image by Specifying the Dockerfile Location]({{site.baseurl}}/docs/yaml-examples/examples/build-an-image-specify-dockerfile-location)

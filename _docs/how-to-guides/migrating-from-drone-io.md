@@ -192,7 +192,7 @@ CMD ["npm", "start"]
 {{site.data.callout.callout_info}}
 ##### Build step of codefresh.yml
 
-More information about `build` step you can find [_here_]({{ site.baseurl }}/docs/codefresh-yaml/steps/build-1/). 
+More information about `build` step you can find [_here_]({{site.baseurl}}/docs/codefresh-yaml/steps/build/). 
 {{site.data.callout.end}}
 
 The `publish` step of .drone.yml in codefresh.yml can be look like `push` step 
@@ -220,5 +220,5 @@ push_to_dockerhub:
 {{site.data.callout.callout_info}}
 ##### Push step of codefresh.yml
 
-More information about `push` step you can find [_here_]({{ site.baseurl }}/docs/codefresh-yaml/steps/push-1/). 
+More information about `push` step you can find [_here_]({{site.baseurl}}/docs/codefresh-yaml/steps/push/). 
 {{site.data.callout.end}}

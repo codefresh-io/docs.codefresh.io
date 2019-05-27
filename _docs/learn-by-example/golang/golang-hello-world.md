@@ -22,7 +22,7 @@ Let's see these workflows in order.
 
 ## Simple Docker image pipeline
 
-The most [simple pipeline](https://github.com/codefresh-contrib/golang-sample-app/blob/master/codefresh.yml) that you can create is just two [steps]({{site.baseurl}}/docs/codefresh-yaml/steps/). A [clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) to fetch the code and a [build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build-1/) to create a Docker image.
+The most [simple pipeline](https://github.com/codefresh-contrib/golang-sample-app/blob/master/codefresh.yml) that you can create is just two [steps]({{site.baseurl}}/docs/codefresh-yaml/steps/). A [clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) to fetch the code and a [build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) to create a Docker image.
 
  `codefresh.yml`
 {% highlight yaml %}

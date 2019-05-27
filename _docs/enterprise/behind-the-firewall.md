@@ -117,7 +117,7 @@ All pipelines that are executed in the private Kubernetes cluster have access to
 
  * Use databases internal to the company
  * run integration tests against services internal to the company
- * launch [compositions]({{site.baseurl}}/docs/codefresh-yaml/steps/composition-1/) that communicate with other secure services
+ * launch [compositions]({{site.baseurl}}/docs/codefresh-yaml/steps/composition/) that communicate with other secure services
  * Upload and download artifacts from a private artifact repository (e.g. Nexus or Artifactory)
  * deploy to any other cluster accessible in the secure network
  * create infrastructure such as machines, load balancers, auto-scaling groups etc.
@@ -125,7 +125,7 @@ All pipelines that are executed in the private Kubernetes cluster have access to
  Any of these pipelines will work out the box and no extra configuration is needed. In all cases
  all data will stay with the private local network and will never exit the firewall.
 
- >Notice that [long running compositions]({{site.baseurl}}/docs/codefresh-yaml/steps/composition-1/) (preview test environments) are not yet available via the Codefresh
+ >Notice that [long running compositions]({{site.baseurl}}/docs/codefresh-yaml/steps/composition/) (preview test environments) are not yet available via the Codefresh
  build runner.
 
 
@@ -238,7 +238,7 @@ After the setup is finished, the Codefresh pipeline will be executed every time 
 To access an internal registry just follow the instructions for [adding registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) . Like GIT repositories
 you need to mark the Docker registry as *Behind the firewall*.
 
-Once that is done, use the [push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push-1/) as usual with the name you gave to the registry during the integration setup.
+Once that is done, use the [push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/) as usual with the name you gave to the registry during the integration setup.
 
 
 `YAML`

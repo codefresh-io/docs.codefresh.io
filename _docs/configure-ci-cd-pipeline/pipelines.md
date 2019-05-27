@@ -237,7 +237,7 @@ The **Integrations tests** step executes any command of your choosing *inside* t
 
 > For both unit and integration tests you can use Codefresh compositions which allow you to launch your container
 with other external services (such as a database) and run a more complete environment. For more details
-see the [compositions documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/composition-1/).
+see the [compositions documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/composition/).
 
 The **Deploy Script** step contains some templates for deployment. You can deploy to Kubernetes, ECS and Docker swarm or run a custom deployment command on the container that was created in the build step or any other image of your choosing.
 
@@ -378,25 +378,25 @@ steps:
 
 This file contains 4 steps named, *MyAppDockerImage*, *MyUnitTests*, *PushingToRegistry*, *MyIntegrationTests*. Steps in Codefresh can have arbitrary names.
 
-The first step is a [build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build-1/) that creates a Docker image, using a Dockerfile that is located at the root folder of your repository. The image is tagged with the name of the branch. More information for other ways of tagging can be found in the [variables documentation]({{site.baseurl}}/docs/codefresh-yaml/variables/).
+The first step is a [build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) that creates a Docker image, using a Dockerfile that is located at the root folder of your repository. The image is tagged with the name of the branch. More information for other ways of tagging can be found in the [variables documentation]({{site.baseurl}}/docs/codefresh-yaml/variables/).
 
 The second step is a [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) that runs your unit tests in the context of the image that was just created.
 
-The third step is a [push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push-1/) that pushes the image with the same tag. Since we haven't defined a registry explicitly, the integrated Codefresh registry is used instead.
+The third step is a [push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/) that pushes the image with the same tag. Since we haven't defined a registry explicitly, the integrated Codefresh registry is used instead.
 
 > Remember that all Docker images of successful builds are always pushed to the Codefresh registry. The push step here is
 shown for demonstration purposes. It can be removed and the image will still be uploaded to the Codefresh registry. The push step is mostly useful for [external Docker registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/).
 
 The last step is another freestyle step that runs integration tests, again inside the Docker image that was created in the first step.
 
-For more information, see the [complete YML syntax]({{ site.baseurl }}/docs/codefresh-yaml/what-is-the-codefresh-yaml/).
+For more information, see the [complete YML syntax]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/).
 
 ## What to read next
 
-* [Codefresh YAML]({{ site.baseurl }}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
-* [Pipeline steps]({{ site.baseurl }}/docs/codefresh-yaml/steps/)
-* [External Docker Registries]({{ site.baseurl }}/docs/docker-registries/external-docker-registries/)
-* [YAML Examples]({{ site.baseurl }}/docs/yaml-examples/examples/)
+* [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
+* [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
+* [External Docker Registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/)
+* [YAML Examples]({{site.baseurl}}/docs/yaml-examples/examples/)
 
 
 

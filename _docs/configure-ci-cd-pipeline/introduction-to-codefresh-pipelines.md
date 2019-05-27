@@ -232,9 +232,9 @@ Usually you want to run a docker command for four reasons
 
 For all these situations Codefresh gives you special pipeline steps that perform the respective action. These are:
 
-1. The [build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build-1/)
-1. The [push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push-1/)
-1. The [compositions step]({{site.baseurl}}/docs/codefresh-yaml/steps/composition-1/)
+1. The [build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/)
+1. The [push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/)
+1. The [compositions step]({{site.baseurl}}/docs/codefresh-yaml/steps/composition/)
 
 To actually run a docker container you just use the [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/). The commands you define in a freestyle step run automatically in a Docker container that is attached to that step once the pipeline executes.
 
@@ -315,9 +315,9 @@ Codefresh can help you with caching in 3 ways:
 further reducing the build times
 1. The shared Codefresh volume is also persisted at the end of a build and restored at the beginning of the next. Therefore any folders that are contained in it (such as `node_modules`) will automatically be available to the next pipeline.
 
-All these caching mechanisms are enabled by default and you can [freely disable them]({{ site.baseurl }}/docs/troubleshooting/common-issues/disabling-codefresh-caching-mechanisms/) if you encounter any issues with caching. 
+All these caching mechanisms are enabled by default and you can [freely disable them]({{site.baseurl}}/docs/troubleshooting/common-issues/disabling-codefresh-caching-mechanisms/) if you encounter any issues with caching. 
 
-Notice also that volume caching and Docker caching are completely independent. They do not affect each other. The former affects mainly [freestyle steps]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) while the latter affects [build steps]({{site.baseurl}}/docs/codefresh-yaml/steps/build-1/).
+Notice also that volume caching and Docker caching are completely independent. They do not affect each other. The former affects mainly [freestyle steps]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) while the latter affects [build steps]({{site.baseurl}}/docs/codefresh-yaml/steps/build/).
 
 You can also use the internal Docker registry explicitly by pushing intermediate Docker images and reusing them in future pipelines either as a base image in another Dockerfile or as a freestyle step.
 

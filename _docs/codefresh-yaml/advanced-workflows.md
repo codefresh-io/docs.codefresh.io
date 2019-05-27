@@ -143,8 +143,8 @@ steps:
 
 The order of execution is the following
 
-1. MyAppDockerImage ([build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build-1/))
-1. jfrog_PushingTo_jfrog_BintrayRegistry, PushingToGoogleRegistry, PushingToDockerRegistry ([push steps]({{site.baseurl}}/docs/codefresh-yaml/steps/push-1/))
+1. MyAppDockerImage ([build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/))
+1. jfrog_PushingTo_jfrog_BintrayRegistry, PushingToGoogleRegistry, PushingToDockerRegistry ([push steps]({{site.baseurl}}/docs/codefresh-yaml/steps/push/))
 
 The pipeline view for this yaml file is the following.
 

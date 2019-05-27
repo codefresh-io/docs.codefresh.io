@@ -178,7 +178,7 @@ steps:
 This pipeline contains just two steps.
 
 * A [Git clone step]({{site.baseurl}}/docs/codefresh-yaml/variables/) for checking out the code
-* a [Build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build-1/) for building the docker image.
+* a [Build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) for building the docker image.
 
 The clone step is also using some [built-in pipeline variables]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/). They instruct the pipeline to checkout the exact code that is described from the commit of the trigger. Don't worry if the exact details are not clear to you yet. 
 
@@ -278,7 +278,7 @@ steps:
 Here we have added a new [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) in its own [stage]({{site.baseurl}}/docs/codefresh-yaml/stages/) that runs unit tests. Freestyle steps are running custom commands inside docker containers and in this case we run the python command [inside the docker image]({{site.baseurl}}/docs/codefresh-yaml/variables/#context-related-variables) that was just created from the previous step (mentioned by the `image` property)
 
 
-Notice that Codefresh also has the capability to run [integration tests]({{site.baseurl}}/docs/codefresh-yaml/steps/composition-1/) and get [test results]({{site.baseurl}}/docs/testing/test-reports/) as well. Therefore, regardless of the type of tests you employ, Codefresh can accommodate your testing process in a fully automated manner as part of the main build.
+Notice that Codefresh also has the capability to run [integration tests]({{site.baseurl}}/docs/codefresh-yaml/steps/composition/) and get [test results]({{site.baseurl}}/docs/testing/test-reports/) as well. Therefore, regardless of the type of tests you employ, Codefresh can accommodate your testing process in a fully automated manner as part of the main build.
 
 This time the build results will contain a new section labeled *Running unit tests*. It will contain the 
 test output of the application.
@@ -447,7 +447,7 @@ steps:
 {% endraw %}      
 {% endhighlight %}
 
-We now have added a [push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push-1/) at the end of the pipeline. The image is tagged with the name of the branch.
+We now have added a [push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/) at the end of the pipeline. The image is tagged with the name of the branch.
 
 Click *Save* to apply your changes and *Run* to start the pipeline again.
 In the build logs a new panel will appear that shows the push progress:

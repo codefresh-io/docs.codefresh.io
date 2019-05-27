@@ -89,7 +89,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-The first step is a [build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build-1/) named `BuildingDockerImage`. It reads the Dockerfile and creates a Docker image out of it. The second step is a [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) called `RunningUnitTests`. It uses the image mentioned in the first step and executes custom commands inside it.
+The first step is a [build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) named `BuildingDockerImage`. It reads the Dockerfile and creates a Docker image out of it. The second step is a [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) called `RunningUnitTests`. It uses the image mentioned in the first step and executes custom commands inside it.
 
 
 ## Inspecting your Docker image

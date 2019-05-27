@@ -18,5 +18,5 @@ To configure some other registry which is not officially provided by Codefresh f
 
 ## What to read next
 
-* [Push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push-1/)
+* [Push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/)
 * [Building and pushing an image]({{site.baseurl}}/docs/yaml-examples/examples/build-and-push-an-image/)

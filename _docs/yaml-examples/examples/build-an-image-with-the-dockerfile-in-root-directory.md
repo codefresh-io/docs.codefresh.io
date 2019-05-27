@@ -30,7 +30,7 @@ steps:
     dockerfile: Dockerfile
 {% endhighlight %}
 
-For more information about the steps and fields in the ```codefresh.yml``` file, [see]({{ site.baseurl }}/docs/codefresh-yaml/steps/build-1/).
+For more information about the steps and fields in the ```codefresh.yml``` file, [see]({{ site.baseurl }}/docs/codefresh-yaml/steps/build/).
 
 {{site.data.callout.callout_info}}
 ##### Example

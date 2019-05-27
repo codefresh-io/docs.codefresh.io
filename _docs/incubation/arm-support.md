@@ -76,7 +76,7 @@ This pipeline creates a Docker image for a python application and then runs unit
 
 It contains two [steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
 
-1. A [build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build-1/) that reads a Dockerfile and creates a Docker image
+1. A [build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) that reads a Dockerfile and creates a Docker image
 1. A [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) that runs unit tests
 
 The logs verify that this is an ARM image:

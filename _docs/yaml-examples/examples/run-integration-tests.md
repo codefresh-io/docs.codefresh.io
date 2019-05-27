@@ -10,7 +10,7 @@ toc: true
 Using this repository we'll help you get up to speed with basic functionality such as: compiling, testing and building Docker images.
 
 This project uses `Node Js` to build an application which will eventually become a distributable Docker image.
-You can use the [**composition**]({{ site.baseurl }}/docs/codefresh-yaml/steps/composition-1/) step to run a complex interaction of services. For example, run integration tests on an already built image.
+You can use the [**composition**]({{site.baseurl}}/docs/codefresh-yaml/steps/composition/) step to run a complex interaction of services. For example, run integration tests on an already built image.
 
 ## Looking around
 In the root of this repository you'll find a file named codefresh.yml, this is our build descriptor and it describes the different steps that comprise our process. Let's quickly review the contents of this file:

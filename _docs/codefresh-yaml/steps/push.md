@@ -5,6 +5,7 @@ group: codefresh-yaml
 sub_group: steps
 redirect_from:
   - /docs/push-1/
+  - /docs/codefresh-yaml/steps/push-1/ 
 toc: true
 ---
 

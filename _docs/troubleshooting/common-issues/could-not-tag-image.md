@@ -5,7 +5,7 @@ group: troubleshooting
 sub_group: common-issues
 toc: true
 ---
-You have a [push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push-1/) in your pipeline that fails with the following error:
+You have a [push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/) in your pipeline that fails with the following error:
 
 
 ```

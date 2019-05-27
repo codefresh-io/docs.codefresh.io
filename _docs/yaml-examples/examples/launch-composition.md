@@ -40,7 +40,7 @@ steps:
 {% endhighlight %}
 
 {{site.data.callout.callout_info}}
-More about launch_composition step you can read [**here**]({{ site.baseurl }}/docs/codefresh-yaml/steps/launch-composition-2/) 
+More about launch_composition step you can read [**here**]({{site.baseurl}}/docs/codefresh-yaml/steps/launch-composition/) 
 {{site.data.callout.end}}
 
 {{site.data.callout.callout_warning}}

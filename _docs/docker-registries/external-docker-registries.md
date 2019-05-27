@@ -8,12 +8,12 @@ toc: true
 ---
 Codefresh enables you to integrate with several Docker container registries, including:
 
-  * [Docker Hub]({{ site.baseurl }}/docs/docker-registries/external-docker-registries/docker-hub/)
-  * [Google Container Registry]({{ site.baseurl }}/docs/docker-registries/external-docker-registries/google-container-registry/)
-  * [Amazon EC2 Container Registry]({{ site.baseurl }}/docs/docker-registries/external-docker-registries/amazon-ec2-container-registry/)
-  * [Bintray.io/Artifactory]({{ site.baseurl }}/docs/docker-registries/external-docker-registries/bintray-io/)
-  * [Quay.io]({{ site.baseurl }}/docs/docker-registries/external-docker-registries/quay-io/)
-  * [Other Registries]({{ site.baseurl }}/docs/docker-registries/external-docker-registries/other-registries/)
+  * [Docker Hub]({{site.baseurl}}/docs/docker-registries/external-docker-registries/docker-hub/)
+  * [Google Container Registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/google-container-registry/)
+  * [Amazon EC2 Container Registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/amazon-ec2-container-registry/)
+  * [Bintray.io/Artifactory]({{site.baseurl}}/docs/docker-registries/external-docker-registries/bintray-io/)
+  * [Quay.io]({{site.baseurl}}/docs/docker-registries/external-docker-registries/quay-io/)
+  * [Other Registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/other-registries/)
 
 For a different registry choose to configure using the [Other]({{site.baseurl}}/docs/docker-registries/external-docker-registries/other-registries/) option.
 
@@ -65,6 +65,6 @@ push_step:
 
 ## What to read next
 
-- [Push pipeline step]({{site.baseurl}}/docs/codefresh-yaml/steps/push-1/) 
+- [Push pipeline step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/) 
 - [Pushing docker images with the UI]({{site.baseurl}}/docs/docker-registries/push-image-to-a-docker-registry/) 
 - [Examples of pushing Docker images]({{site.baseurl}}/docs/yaml-examples/examples/build-and-push-an-image/) 

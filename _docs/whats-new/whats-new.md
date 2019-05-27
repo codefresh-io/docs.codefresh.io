@@ -10,7 +10,7 @@ toc: true
 ### May 2019
 
 - New Github PR variables - [documentation]({{site.baseurl}}/docs/codefresh-yaml/variables/#github-pull-request-variables)
-- Inline Dockerfiles in build steps - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/build-1/#inline-dockerfile)
+- Inline Dockerfiles in build steps - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/build/#inline-dockerfile)
 - LDAP SSO support (Enterprise) - [documentation]({{site.baseurl}}/docs/enterprise/single-sign-on/sso-ldap/)
 - SAML SSO support (Enterprise) - [documentation]({{site.baseurl}}/docs/enterprise/single-sign-on/sso-setup-saml2/#setting-up-saml-integration)
 - Checking out code with Subversion, HG, Perforce etc. - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/non-git-checkout/)
@@ -29,7 +29,7 @@ toc: true
 ### March 2019
 
 - Helm best practices - [documentation]({{site.baseurl}}/docs/new-helm/helm-best-practices/)
-- Pushing images in parallel with multiple tags - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/push-1/#examples)
+- Pushing images in parallel with multiple tags - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/push/#examples)
 - Integration with Azure DevOps Repositories - [documentation]({{site.baseurl}}/docs/integrations/git-providers/#azure-devops)
 - OAuth2 Connections for supported git providers - [documentation]({{site.baseurl}}/docs/integrations/git-providers/#adding-more-git-providers-to-your-codefresh-account)
 - Pipeline ABAC (Enterprise) - [documentation]({{site.baseurl}}/docs/enterprise/access-control/#marking-pipelines-with-policy-attributes)
@@ -38,7 +38,7 @@ toc: true
 ### February 2019
 
 - Access Control (Enterprise) - [documentation]({{site.baseurl}}/docs/enterprise/access-control/)
-- Accessing the shared volume in compositions - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/composition-1/#accesing-your-project-folder-from-a-composition)
+- Accessing the shared volume in compositions - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/composition/#accesing-your-project-folder-from-a-composition)
 - Reuse Git integration in custom clone step - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/#reuse-a-git-token-from-codefresh-integrations)
 - Run custom kubectl commands - [documentation]({{site.baseurl}}/docs/deploy-to-kubernetes/custom-kubectl-commands/)
 - Reading Image metadata - [documentation]({{site.baseurl}}/docs/docker-registries/metadata-annotations/#using-custom-metadata-in-codefresh-pipelines)

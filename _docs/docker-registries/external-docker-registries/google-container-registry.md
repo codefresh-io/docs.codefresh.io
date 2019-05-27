@@ -46,7 +46,7 @@ projects​​**.
 * Password: `<contents_of_the_keyfile.json>`
 * ​Domain: `eu.gcr.io` or `us.gcr.io`
 
-Then you can [refer to the registry​](https://cloud.google.com/container-registry/docs/pushing-and-pulling?hl=en_US) like this in [Codefresh YAML]({{ site.baseurl }}/docs/codefresh-yaml/what-is-the-codefresh-yaml/):
+Then you can [refer to the registry​](https://cloud.google.com/container-registry/docs/pushing-and-pulling?hl=en_US) like this in [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/):
 
 ```
 MyPushStep:
@@ -59,5 +59,5 @@ MyPushStep:
 
 ## What to read next
 
-* [Push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push-1/)
+* [Push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/)
 * [Building and pushing an image]({{site.baseurl}}/docs/yaml-examples/examples/build-and-push-an-image/)

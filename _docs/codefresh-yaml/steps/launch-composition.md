@@ -5,6 +5,7 @@ group: codefresh-yaml
 sub_group: steps
 redirect_from:
   - /docs/launch-composition-2/
+  - /docs/codefresh-yaml/steps/launch-composition-2/
 toc: true
 ---
 The launch composition step provides the ability to launch long term running environment that can live outside the context of the running flow.

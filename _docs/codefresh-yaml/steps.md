@@ -27,10 +27,10 @@ The steps offered by Codefresh are:
 
 * [Git clone]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)
 * [Freestyle]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/)
-* [Build]({{site.baseurl}}/docs/codefresh-yaml/steps/build-1/)
-* [Push]({{site.baseurl}}/docs/codefresh-yaml/steps/push-1/)
-* [Composition]({{site.baseurl}}/docs/codefresh-yaml/steps/composition-1/)
-* [Launch test environment]({{site.baseurl}}/docs/codefresh-yaml/steps/launch-composition-2/)
+* [Build]({{site.baseurl}}/docs/codefresh-yaml/steps/build/)
+* [Push]({{site.baseurl}}/docs/codefresh-yaml/steps/push/)
+* [Composition]({{site.baseurl}}/docs/codefresh-yaml/steps/composition/)
+* [Launch test environment]({{site.baseurl}}/docs/codefresh-yaml/steps/launch-composition/)
 * [Deploy]({{site.baseurl}}/docs/codefresh-yaml/steps/deploy/)
 * [Approval]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/)
 
@@ -71,6 +71,6 @@ max-width="80%"
 
 * [Introduction to Pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
 * [Freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/)
-* [Build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build-1/)
-* [Push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push-1/)
+* [Build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/)
+* [Push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/)
 

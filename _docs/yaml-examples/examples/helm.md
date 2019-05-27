@@ -89,7 +89,7 @@ steps:
 This pipeline does the following:
 
 1. Clones the source code with a [Git clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)
-1. Build a docker image using a [Build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build-1/)
+1. Build a docker image using a [Build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/)
 1. Deploys the Helm chart to a cluster named `my-demo-k8s-cluster`
 
 Note that in this example `charts/helm-example` refers to the filesystem location in the code that was just checked out.

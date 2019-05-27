@@ -92,7 +92,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-The pipeline starts by checking out the code using a [git clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/). The next two steps are [freestyle]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/), while the last one is a [build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build-1/).
+The pipeline starts by checking out the code using a [git clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/). The next two steps are [freestyle]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/), while the last one is a [build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/).
 
 {% include image.html 
 lightbox="true" 

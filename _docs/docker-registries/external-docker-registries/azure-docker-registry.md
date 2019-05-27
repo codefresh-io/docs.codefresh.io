@@ -38,7 +38,7 @@ Click the *Test* button to verify the settings and then the *Save* button to app
 
 ## Using the Azure Registry
 
-You can now use the Azure Registry in the pipelines either via the GUI  or with the by the YAML [push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push-1/) (recommended).
+You can now use the Azure Registry in the pipelines either via the GUI  or with the by the YAML [push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/) (recommended).
 
 It is also possible to use the registry from the command line with
 
@@ -55,5 +55,5 @@ az acr repository list --name <registry_name> --output table
 
 ## What to read next
 
-* [Push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push-1/)
+* [Push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/)
 * [Building and pushing an image]({{site.baseurl}}/docs/yaml-examples/examples/build-and-push-an-image/)

@@ -18,5 +18,5 @@ To configure Quay.io first select **Other Registries** from the new registry dro
 
 ## What to read next
 
-* [Push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push-1/)
+* [Push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/)
 * [Building and pushing an image]({{site.baseurl}}/docs/yaml-examples/examples/build-and-push-an-image/)

@@ -172,7 +172,7 @@ steps:
 ## Dynamic freestyle steps
 
 Codefresh has the unique ability to allow you to run freestyle steps in the context of a docker image
-created on the same pipeline. This means that you can dynamically [create docker images]({{site.baseurl}}/docs/codefresh-yaml/steps/build-1/) on demand within the pipeline
+created on the same pipeline. This means that you can dynamically [create docker images]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) on demand within the pipeline
 that needs them.
 
 Creating a custom docker image with extra tools (Terraform and Ansible)

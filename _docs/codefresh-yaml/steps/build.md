@@ -5,6 +5,7 @@ group: codefresh-yaml
 sub_group: steps
 redirect_from:
   - /docs/build-1/
+  - /docs/codefresh-yaml/steps/build-1/
 toc: true
 ---
 Use Docker to build an image and store it in Codefresh.
@@ -184,7 +185,7 @@ Use this technique only as a last resort. It is better if the Dockerfile existin
 
 All images built successfully with the build step, will be automatically pushed to the [internal Codefresh registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/). This behavior is completely automatic and happens without any extra configuration on your part. 
 
->Notice that the [push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push-1/) in Codefresh is optional and is only needed for [external Docker registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/). 
+>Notice that the [push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/) in Codefresh is optional and is only needed for [external Docker registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/). 
 
 {% 
   include image.html 

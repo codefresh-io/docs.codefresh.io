@@ -40,7 +40,7 @@ More information and examples can be found [here](http://docs.aws.amazon.com/Ama
 
 There are 3 ways to push images 
 
-1. Using the YAML [push step]({{ site.baseurl }}/docs/codefresh-yaml/steps/push-1/) (recommended)
+1. Using the YAML [push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/) (recommended)
 1. Using the GUI pipeline (shown below)
 1. Promoting manually an image (shown below)
 
@@ -129,5 +129,5 @@ max-width="40%"
 
 ## What to read next
 
-* [Push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push-1/)
+* [Push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/)
 * [Building and pushing an image]({{site.baseurl}}/docs/yaml-examples/examples/build-and-push-an-image/)

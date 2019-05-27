@@ -65,7 +65,7 @@ You must define a step type for each step. Each step uses Docker images and cont
 
 The step names should be unique within the same pipeline. This mainly affects the visualization of the pipeline when it runs.
 
-Each step produces a resource, which you can reference in other steps, and are executed in real-time. For example, a [**Freestyle**]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) step can reference an image that was produced by a [**Build**]({{site.baseurl}}/docs/codefresh-yaml/steps/build-1/) step. This allows you to chain steps together, and create highly-customized builds.
+Each step produces a resource, which you can reference in other steps, and are executed in real-time. For example, a [**Freestyle**]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) step can reference an image that was produced by a [**Build**]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) step. This allows you to chain steps together, and create highly-customized builds.
 
 <div class="bd-callout bd-callout-info" markdown="1">
 ##### Variables
@@ -77,11 +77,11 @@ Steps chaining and referencing is possible due to implementation of variables in
 | Step Type                                                                                                         | Description                                    |
 | ----------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
 | [Freestyle]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/)                      | Executes one or more shell commands in a container similar to `docker run`.            |
-| [Build]({{site.baseurl}}/docs/codefresh-yaml/steps/build-1/)                            | Builds a Docker image like `docker build`                         |
-| [Push]({{site.baseurl}}/docs/codefresh-yaml/steps/push-1/)                              | Pushes a Docker image to a Docker registry similar to `docker tag` and `docker push` |
+| [Build]({{site.baseurl}}/docs/codefresh-yaml/steps/build/)                            | Builds a Docker image like `docker build`                         |
+| [Push]({{site.baseurl}}/docs/codefresh-yaml/steps/push/)                              | Pushes a Docker image to a Docker registry similar to `docker tag` and `docker push` |
 | [Git Clone]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)                      | Overrides the default git clone behavior |
-| [Composition]({{site.baseurl}}/docs/codefresh-yaml/steps/composition-1/)                | Starts a Docker Composition like `docker-compose`. Discarded once pipelines finishes.             |
-| [Launch Composition]({{site.baseurl}}/docs/codefresh-yaml/steps/launch-composition-2/)  | Starts a long term Docker composition that stays up after the end of the pipeline        |
+| [Composition]({{site.baseurl}}/docs/codefresh-yaml/steps/composition/)                | Starts a Docker Composition like `docker-compose`. Discarded once pipelines finishes.             |
+| [Launch Composition]({{site.baseurl}}/docs/codefresh-yaml/steps/launch-composition/)  | Starts a long term Docker composition that stays up after the end of the pipeline        |
 | [Deploy]({{site.baseurl}}/docs/codefresh-yaml/steps/deploy/)  | Deploys to Kubernetes clusters         |
 | [Approval]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/)  | Pauses a pipeline and waits for human intervention          |
 
