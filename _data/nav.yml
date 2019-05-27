@@ -173,6 +173,8 @@
           url: "/use-kubectl-as-part-of-freestyle-step"
         - title: Deploy with Helm
           url: "/helm"   
+        - title: Deploy with Terraform
+          url: "/terraform"
         - title: Deploy with Pulumi
           url: "/pulumi"
 
