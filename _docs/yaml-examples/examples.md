@@ -62,6 +62,7 @@ Codefresh can deploy to any platform such as VMs, FTP/SSH/S3 sites, app servers 
 - [Deploy Demochat to a Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/codefresh-kubernetes-integration-demochat-example/) 
 - [Use kubectl as part of Freestyle step]({{site.baseurl}}/docs/yaml-examples/examples/use-kubectl-as-part-of-freestyle-step) 
 - [Deploy with Helm]({{site.baseurl}}/docs/yaml-examples/examples/helm) 
+- [Deploy with Terraform]({{site.baseurl}}/docs/yaml-examples/examples/terraform) 
 - [Deploy with Pulumi]({{site.baseurl}}/docs/yaml-examples/examples/pulumi) 
 
 ## Notifications
