@@ -68,7 +68,7 @@ max-width="50%"
 
 You can either delete this trigger, modify it, or add new ones.
 
-To add a new trigger expand the "Triggers" section in your pipeline and click the "Add Trigger button". This will bring up the respective dialog where you are add a new trigger.
+To add a new trigger go to the *Triggers* tab in your pipeline editor and click the *Add Trigger* button. This will bring up the respective dialog where you are add a new trigger.
 
 {% include image.html
 lightbox="true"
@@ -103,7 +103,8 @@ max-width="70%"
 %}
 
 
-Then click the toggle switch on each trigger that you want to enable/disable. 
+Then click the toggle switch on each trigger that you want to enable/disable. You can later enable the same trigger again
+by clicking the same switch.
 
 ## What to read next
 
