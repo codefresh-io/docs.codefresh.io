@@ -1,6 +1,6 @@
 ---
 title: "Pipeline Triggers"
-description: ""
+description: "Choose when your pipelines should run"
 group: configure-ci-cd-pipeline
 redirect_from:
   - /docs/pipeline-triggers/
@@ -13,7 +13,6 @@ To create an effective CI/CD process, it should be possible to trigger a Codefre
 
 Codefresh not only allows you to define different pipelines on a single project but it also offers you the capability to trigger them with completely separate mechanisms.
 
->Note that before you add any trigger to a new pipeline you must save it first
 
 ## Codefresh Trigger Types
 
@@ -34,7 +33,8 @@ lightbox="true"
 file="/images/pipeline/triggers/pipeline-examples.png"
 url="/images/pipeline/triggers/pipeline-examples.png"
 alt="Sample pipelines"
-max-width="100%"
+caption="Sample pipelines"
+max-width="70%"
 %}
 
 Behind the scenes these pipelines are triggered from different events
@@ -62,6 +62,7 @@ lightbox="true"
 file="/images/pipeline/triggers/default-git-trigger.png"
 url="/images/pipeline/triggers/default-git-trigger.png"
 alt="Default GIT Trigger"
+caption="Default GIT Trigger"
 max-width="50%"
 %}
 
@@ -74,7 +75,8 @@ lightbox="true"
 file="/images/pipeline/triggers/add-trigger-dialog.png"
 url="/images/pipeline/triggers/add-trigger-dialog.png"
 alt="Adding new Trigger dialog"
-max-width="60%"
+caption="Adding new Trigger dialog"
+max-width="70%"
 %}
 
 For more information see:
@@ -85,4 +87,27 @@ For more information see:
 * [Quay Triggers](quay-triggers)
 * [Artifactory Triggers](jfrog-triggers)
 * [Cron Trigger](cron-triggers)
+
+## Disabling triggers
+
+You can easily disable a trigger manually if you don't want to be active anymore.
+On the triggers tab click the gear icon on the top right (*Open advanced options*).
+
+{% include image.html
+lightbox="true"
+file="/images/pipeline/triggers/enable-triggers.png"
+url="/images/pipeline/triggers/enable-triggers.png"
+alt="Toggle a trigger on/off"
+caption="Toggle a trigger on/off"
+max-width="70%"
+%}
+
+
+Then click the toggle switch on each trigger that you want to enable/disable. 
+
+## What to read next
+
+* [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
+* [Git triggers](git-triggers)
+* [Running pipelines locally]({{site.baseurl}}/docs/configure-ci-cd-pipeline/running-pipelines-locally/)
 
