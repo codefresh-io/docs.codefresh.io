@@ -25,7 +25,6 @@
   - title: Public logs and status badges
     localurl: /docs/configure-ci-cd-pipeline/build-status/
   - title: Running pipelines locally
-    new: true
     localurl: /docs/configure-ci-cd-pipeline/running-pipelines-locally/  
 - title: Learn by example
   icon: images/home-icons/tutorial.png
@@ -120,7 +119,6 @@
   - title: Accessing a Docker registry from your cluster
     localurl: /docs/deploy-to-kubernetes/access-docker-registry-from-kubernetes/ 
   - title: Kubernetes manifest templates
-    new: true
     localurl: "/docs/deploy-to-kubernetes/kubernetes-templating/"      
   - title: Run custom kubectl commands
     localurl: "/docs/deploy-to-kubernetes/custom-kubectl-commands/"     
@@ -200,7 +198,6 @@
   - title: Installation Options
     localurl: /docs/enterprise/installation-security
   - title: Codefresh behind the firewall
-    new: true
     localurl: /docs/enterprise/behind-the-firewall  
   - title: Enterprise Account Management
     localurl: /docs/enterprise/ent-account-mng
@@ -209,6 +206,9 @@
   - title: Access Control
     new: true
     localurl: /docs/enterprise/access-control 
+  - title: Audit Logs
+    new: true
+    localurl: /docs/enterprise/audit-logs 
   - title: Codefresh hybrid installation (legacy)
     localurl: /docs/enterprise/codefresh-hybrid
 - title: "Codefresh CLI"

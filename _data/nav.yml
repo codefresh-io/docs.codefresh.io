@@ -357,6 +357,8 @@
           url: "/sso-onelogin"
     - title: Access Control
       url: "/access-control"     
+    - title: Audit Logs
+      url: "/audit-logs" 
     - title: Hybrid installation (legacy)
       url: "/codefresh-hybrid"   
 
