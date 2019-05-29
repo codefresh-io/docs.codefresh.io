@@ -49,69 +49,9 @@ Regarding firewall security:
 
 
 
-## Using the Codefresh Build Runner 
-
-The Codefresh runner installer is available at [https://github.com/codefresh-io/venona](https://github.com/codefresh-io/venona). You can use Venona to create, upgrade and remove runner installations on any internal Kubernetes cluster.
-
-Notice that a runner installation is needed for each cluster that will _run_ Codefresh pipelines. A runner is **not** needed
-in clusters that are used for _deployment_. It is possible to deploy applications on different clusters other than the ones the runner is running on.
-
-The [installation process](https://github.com/codefresh-io/venona/blob/master/README.md) takes care of all the components of the runner as well as the other resources (config-maps, secrets, volumes) needed by them. For Mac environments there is also a brew package.
-
-Once installed the runner is fully automated. It polls on its own the Codefresh SAAS (by default every ten seconds) and 
-creates automatically all resources needed for running pipelines.
-
-Only the runner pod is long-living insider your cluster. All other components (such as the engine) are short lived and exist only during pipeline builds.
-
-You can always see what the runner is doing by listing the resources inside the namespace you chose during installation:
-
-```
-$ kubectl get pods -n codefresh-runtime
-NAME                                             READY     STATUS    RESTARTS   AGE
-dind-5c5afbb02e9fd02917b33f06                    1/1       Running   0          1m
-dind-lv-monitor-venona-kkkwr                     1/1       Running   1          7d
-dind-volume-provisioner-venona-646cdcdc9-dqh8k   1/1       Running   2          7d
-engine-5c5afbb02e9fd02917b33f06                  1/1       Running   0          1m
-venona-8b5f787c5-ftbnd                           1/1       Running   2          7d
-```
-In the same manner you can list secrets, config-maps, logs, volumes etc. for the Codefresh builds.
-
-
-### Registering the runner to your Codefresh account
-
-Installation can happen from any workstation or laptop that has access (i.e. via `kubectl`) to the Kubernetes cluster that will run Codefresh builds. The Codefresh runner will authenticate to your Codefresh account by using the [Codefresh CLI token]({{site.baseurl}}/docs/integrations/codefresh-api/#authentication-instructions). It is therefore necessary to setup [Codefresh CLI access](https://codefresh-io.github.io/cli/getting-started/) first, in the machine where you install the runner from.
-
-Notice that access to the Codefresh CLI is only needed during the runner installation. After that, the runner with authenticate on it own using the details provided. You do *NOT* need to install the Codefresh CLI on the cluster that is running Codefresh pipelines.
-
-### Verifying the runner installation
-
-Once installation is complete, you should see the cluster of the runner as a new [Runtime environment](https://g.codefresh.io/account-admin/account-conf/runtime-environments) in Codefresh at your *Account Settings*, in the respective tab.
-
-{% include image.html
-  lightbox="true"
-  file="/images/enterprise/behind-the-firewall/runtime-environments.png"
-  url="/images/enterprise/behind-the-firewall/runtime-environments.png"
-  alt="Available runtime environments"
-  caption="Available runtime environments"
-  max-width="60%"
-    %} 
-
-If you have multiple environments available you can change the default one (shown with a thin blue border) by clicking on the 3 dot menu on the right of each environment. The Codefresh runner installer comes with an option `set-default` that will automatically set as default the new runtime environment.
-
-You can even override the runtime environment for a specific pipeline by specifying in the respective section in the [pipeline settings]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/). 
-
-{% include image.html
-  lightbox="true"
-  file="/images/enterprise/behind-the-firewall/environment-per-pipeline.png"
-  url="/images/enterprise/behind-the-firewall/environment-per-pipeline.png"
-  alt="Running a pipeline on a specific environment"
-  caption="Running a pipeline on a specific environment"
-  max-width="60%"
-    %} 
-
-You can also verify your environment from the terminal with the `venona status` command.
-
 ## Using Secure services in your pipelines
+
+First make sure that you have installed the [Codefresh runner]({{site.baseurl}}/docs/enterprise/codefresh-runner/) on your own infrastructure (i.e. your private Kubernetes cluster).
 
 All pipelines that are executed in the private Kubernetes cluster have access to all other internal services that are network reachable. It is therefore very easy to create pipelines that
 

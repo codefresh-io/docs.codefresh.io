@@ -21,6 +21,7 @@ Recent Codefresh updates:
 - Custom annotations on projects, pipelines, builds - [documentation]({{site.baseurl}}/docs/codefresh-yaml/annotations/)
 - Deployments with Pulumi - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/pulumi/)
 - Deployments with Terraform - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/terraform/)
+- Codefresh Runner installation - [documentation]({{site.baseurl}}/docs/enterprise/codefresh-runner/)
 - Multiple Dockerhub integrations - [documentation]({{site.baseurl}}/docs/docker-registries/external-docker-registries/docker-hub/#adding-more-dockerhub-integrations)
 
 ### April 2019

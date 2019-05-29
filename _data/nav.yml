@@ -336,6 +336,8 @@
       url: "/installation-security"  
     - title: Codefresh behind the firewall
       url: "/behind-the-firewall"  
+    - title: Codefresh Runner
+      url: "/codefresh-runner"   
     - title: Enterprise Account Management
       url: "/ent-account-mng"
     - title: Single Sign-On
