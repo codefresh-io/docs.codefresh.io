@@ -75,6 +75,35 @@ The UI part is still compliant with Soc2.
   max-width="40%"
     %}    
 
+Here are the security implications of the hybrid solution:
+
+{: .table .table-bordered .table-hover}
+| Company Asset          | Flow/Storage of data                 | Comments                  |
+| -------------- | ---------------------------- |-------------------------|
+| Source code       | Stays behind the firewall | |
+| Binary artifacts  | Stay behind the firewall |   |
+| Build logs        | Also sent to Codefresh UI |  |
+| Pipeline volumes   | Stay behind the firewall | Same security as docker images |
+| Deployment docker images | Stay behind the firewall|  |
+| Development docker images | Stay behind the firewall | |
+| Testing docker images | Stay behind the firewall|  |
+| Inline pipeline defitinion | Defined in Codefresh UI |  |
+| Pipelines as YAML file | Stay behind the firewall |  |
+| Test results | Stay behind the firewall | | 
+| HTML Test reports | Shown on Codefresh UI |  Stored in your S3 or Google bucket storage  |
+| Production database data | Stays behind the firewall | |
+| Test database data | Stays behind the firewall | |
+| Other services (e.g. Queue, ESB) | Stay behind the firewall | |
+| Kubernetes deployment specs | Stays behind the firewall | |
+| Helm charts | Stays behind the firewall | |
+| Other deployment resources/script (e.g. terraform) | Stays behind the firewall | |
+| Shared configuration variables | Defined in Codefresh UI |  |
+| Deployment secrets (from git/Puppet/Vault etc) | Stay behind the firewall|  |
+| Audit logs | Also sent to Codefresh UI |  |
+| Access control rules | Shown on Codefresh UI | |
+
+
+
 ## On-premise Installation    
 
 For customers that wish to have full control over everything, Codefresh also offers an on-premise option. In this case everything (UI and builds) are running on an environment (Kubernetes cluster) fully managed by the customer.
