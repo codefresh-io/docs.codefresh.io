@@ -193,10 +193,6 @@ steps:
     image: codefresh/cli
     commands:
       - 'codefresh synchronize teams my-client-name -t azure'
-    when:
-      branch:
-        only:
-          - master
 {% endraw %}
 {% endhighlight %}
 
