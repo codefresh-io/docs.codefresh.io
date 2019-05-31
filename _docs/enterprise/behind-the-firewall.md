@@ -106,7 +106,7 @@ The only thing to remember is that the GIT URL must be fully qualified. You need
 {% raw %}
 version: '1.0'
 steps:
-  gitClone:
+  main_clone:
     type: git-clone
     description: Step description
     repo: https://github-internal.example.com/my-username/my-app

@@ -34,7 +34,7 @@ You need to create a Codefresh account and a Google account first. Then you need
 Add you service account json  as a pipeline variable called `ACCOUNT_JSON_CONTENT`. The content of this variable will be used
 in order to authenticate to Google cloud.
 
-## Running Terraform with Codefresh
+## Create a CI/CD pipeline for Terraform
 
 Here is the whole pipeline:
 

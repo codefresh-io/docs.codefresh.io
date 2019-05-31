@@ -39,7 +39,7 @@ Create a [stack](https://pulumi.io/reference/stack.html) in Pulumi or use the on
 Finally add you Pulumi token as a pipeline variable called `PULUMI_ACCESS_TOKEN`. All freestyle steps have automatic access to all pipeline variables, and Pulumi will search for a token by default with this name when logging in.
 
 
-## Running Pulumi with Codefresh
+## Create a CI/CD pipeline for Pulumi
 
 Here is the whole pipeline:
 
