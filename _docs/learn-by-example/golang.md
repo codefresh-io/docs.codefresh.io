@@ -7,5 +7,7 @@ redirect_from:
   - /docs/golang/
 toc: true
 ---
-This section contains Codefresh examples based on Go (aka golang).
-- [Hello World]({{site.baseurl}}/docs/learn-by-example/golang/golang-hello-world/)
+This section contains Codefresh examples based on Go.
+
+- [Golang Docker Example]({{site.baseurl}}/docs/learn-by-example/golang/golang-hello-world/)
+- [Golang with goreleaser]({{site.baseurl}}/docs/learn-by-example/golang/goreleaser/)

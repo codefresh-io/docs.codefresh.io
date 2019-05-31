@@ -72,8 +72,10 @@
     - title: Go
       url: "/golang"
       sub-pages:
-        - title: 'Go: Hello World'
+        - title: 'Go Web Docker'
           url: "/golang-hello-world"
+        - title: 'Go CLI'
+          url: "/goreleaser"
     - title: Php
       url: "/php"     
     - title: General

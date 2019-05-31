@@ -31,7 +31,7 @@
   url: ''
   links:
   - title: Go
-    localurl: /docs/learn-by-example/golang/golang-hello-world/
+    localurl: /docs/learn-by-example/golang/
   - title: Java
     localurl: /docs/learn-by-example/java/
   - title: Node.js
