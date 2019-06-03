@@ -62,6 +62,8 @@
           url: "/lets-chat"
         - title: Voting app
           url: "/voting-app"
+        - title: React
+          url: "/react"
     - title: Php
       url: "/php"            
     - title: Python

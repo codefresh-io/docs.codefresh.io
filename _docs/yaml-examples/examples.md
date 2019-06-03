@@ -14,13 +14,13 @@ Codefresh enables you to define the steps of your pipeline in a [YAML file]({{si
 
 Codefresh is agnostic as far as programming languages are concerned. All major programming languages are supported.
 
-- [Node.JS app]({{site.baseurl}}/docs/learn-by-example/nodejs/lets-chat/)
-- [Spring Java app with Maven]({{site.baseurl}}/docs/learn-by-example/java/spring-boot-2/) or [Gradle]({{site.baseurl}}/docs/learn-by-example/java/gradle/)
 - [Go Web App]({{site.baseurl}}/docs/learn-by-example/golang/golang-hello-world/) or [Go CLI]({{site.baseurl}}/docs/learn-by-example/golang/goreleaser) 
-- [Scala app]({{site.baseurl}}/docs/learn-by-example/scala/scala-hello-world/)
+- [Spring Java app with Maven]({{site.baseurl}}/docs/learn-by-example/java/spring-boot-2/) or [Gradle]({{site.baseurl}}/docs/learn-by-example/java/gradle/)
+- Node [Express.js app]({{site.baseurl}}/docs/learn-by-example/nodejs/lets-chat/) or [React.js app]({{site.baseurl}}/docs/learn-by-example/nodejs/react/)
+- [Php App]({{site.baseurl}}/docs/learn-by-example/php)
 - [Python Django app]({{site.baseurl}}/docs/learn-by-example/python/django/)
 - [Ruby On Rails app]({{site.baseurl}}/docs/learn-by-example/ruby/)
-- [Php App]({{site.baseurl}}/docs/learn-by-example/php)
+- [Scala app]({{site.baseurl}}/docs/learn-by-example/scala/scala-hello-world/)
 
 ## Checking out source code
 
