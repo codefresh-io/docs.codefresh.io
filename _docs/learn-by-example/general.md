@@ -3,7 +3,6 @@ title: "General"
 description: ""
 group: learn-by-example
 redirect_from:
-  - /docs/learn-by-example/
   - /docs/learn-by-example/general/
 toc: true
 ---

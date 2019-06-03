@@ -39,6 +39,22 @@
 - title: Learn by example
   url: "/learn-by-example"
   pages:
+    - title: Go
+      url: "/golang"
+      sub-pages:
+        - title: 'Go Web Docker'
+          url: "/golang-hello-world"
+        - title: 'Go CLI'
+          url: "/goreleaser"    
+    - title: Java
+      url: "/java"
+      sub-pages:
+        - title: Spring Boot 2
+          url: "/spring-boot-2"
+        - title: Gradle
+          url: "/gradle"
+        - title: Spring Tomcat
+          url: "/spring-mvc-jdbc-template"          
     - title: Node.js
       url: "/nodejs"
       sub-pages:
@@ -46,11 +62,8 @@
           url: "/lets-chat"
         - title: Voting app
           url: "/voting-app"
-    - title: Scala
-      url: "/scala"
-      sub-pages:
-        - title: 'Scala: Hello World'
-          url: "/scala-hello-world"
+    - title: Php
+      url: "/php"            
     - title: Python
       url: "/python"
       sub-pages:
@@ -60,24 +73,11 @@
           url: "/voting-app"
     - title: Ruby On Rails
       url: "/ruby"
-    - title: Java
-      url: "/java"
+    - title: Scala
+      url: "/scala"
       sub-pages:
-        - title: Spring Boot 2
-          url: "/spring-boot-2"
-        - title: Gradle
-          url: "/gradle"
-        - title: Spring MVC JDBC Template
-          url: "/spring-mvc-jdbc-template"
-    - title: Go
-      url: "/golang"
-      sub-pages:
-        - title: 'Go Web Docker'
-          url: "/golang-hello-world"
-        - title: 'Go CLI'
-          url: "/goreleaser"
-    - title: Php
-      url: "/php"     
+        - title: 'Scala: Hello World'
+          url: "/scala-hello-world" 
     - title: General
       url: "/general"
       sub-pages:
