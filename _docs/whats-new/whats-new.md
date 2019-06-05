@@ -8,6 +8,10 @@ toc: true
 ---
 Recent Codefresh updates:
 
+### June 2019
+
+- Root pipeline anchors - [documentation]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/#using-yaml-anchors-to-avoid-repetition)
+
 ### May 2019
 
 - Triggers can now be enabled/disabled - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/#disabling-triggers)

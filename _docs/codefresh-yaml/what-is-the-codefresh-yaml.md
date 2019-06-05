@@ -252,7 +252,39 @@ steps:
 
 Instead of repeating the same environment variables in both steps, we can create them once and then just reference them in the second step with the `*` character.
 
-You also extend steps like below:
+You also define anchors at the top of the pipeline in the special `indicators` block:
+
+  `codefresh.yml`
+{% highlight yaml %}
+version: '1.0'
+
+indicators:
+ - environment: &my_common_envs
+      - MYSQL_HOST=mysql
+      - MYSQL_USER=user
+      - MYSQL_PASS=password
+      - MYSQL_PORT=3351
+ 
+steps:
+  preLoadDatabase:
+    title: Loading Data
+    image: alpine
+    commands:
+      - printenv
+      - echo "Loading DB"
+    environment: *my_common_envs # Same MYSQL_HOST, MYSQL_USER etc.
+  runTests:
+    title: Integration tests
+    image: alpine
+    commands:
+      - printenv
+      - echo "Running tests"
+    environment: *my_common_envs  # Same MYSQL_HOST, MYSQL_USER etc.
+
+{% endhighlight %}  
+
+
+Finally. you also extend steps like below:
 
   `codefresh.yml`
 {% highlight yaml %}
