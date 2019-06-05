@@ -92,7 +92,7 @@
     localurl: /docs/docker-registries/external-docker-registries/google-container-registry/   
   - title: JFrog Bintray.io/Artifactory
     localurl: /docs/docker-registries/external-docker-registries/bintray-io/ 
-- title: Quality assurance
+- title: Quality Assurance
   icon: images/home-icons/testing.png
   url: ''
   links:
@@ -104,8 +104,10 @@
     localurl: /docs/testing/integration-tests/ 
   - title: Test reports
     localurl: /docs/testing/test-reports/  
-  - title: SonarQube integration
+  - title: SonarQube Scanning
     localurl: /docs/testing/sonarqube-integration/   
+  - title: Security Scanning
+    localurl: /docs/testing/security-scanning/ 
 - title: Kubernetes
   icon: images/home-icons/k8s.png
   url: ''

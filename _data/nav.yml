@@ -214,7 +214,7 @@
           url: "/quay-io"
         - title: "Other Registries"
           url: "/other-registries"
-- title: "Quality assurance"
+- title: "Quality Assurance"
   url: "/testing"
   pages:
     - title: "Unit testing"
@@ -230,6 +230,8 @@
       url: "/test-reports"     
     - title: SonarQube Scanning
       url: "/sonarqube-integration"   
+    - title: Security Scanning
+      url: "/security-scanning" 
 - title: Deploy to Kubernetes
   url: "/deploy-to-kubernetes"
   pages:
