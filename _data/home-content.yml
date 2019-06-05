@@ -92,7 +92,7 @@
     localurl: /docs/docker-registries/external-docker-registries/google-container-registry/   
   - title: JFrog Bintray.io/Artifactory
     localurl: /docs/docker-registries/external-docker-registries/bintray-io/ 
-- title: Unit and Integration testing
+- title: Quality assurance
   icon: images/home-icons/testing.png
   url: ''
   links:
@@ -103,7 +103,9 @@
   - title: Integration Tests
     localurl: /docs/testing/integration-tests/ 
   - title: Test reports
-    localurl: /docs/testing/test-reports/   
+    localurl: /docs/testing/test-reports/  
+  - title: SonarQube integration
+    localurl: /docs/testing/sonarqube-integration/   
 - title: Kubernetes
   icon: images/home-icons/k8s.png
   url: ''
@@ -184,8 +186,6 @@
     localurl: /docs/integrations/notifications/slack-integration/
   - title: Jira integration
     localurl: /docs/integrations/jira-integration/
-  - title: SonarQube integration
-    localurl: /docs/integrations/sonarqube-integration/
   - title: Google Marketplace Installation
     localurl: /docs/integrations/google-marketplace/
   - title: Codefresh API

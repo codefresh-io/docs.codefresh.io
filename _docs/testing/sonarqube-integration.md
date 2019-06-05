@@ -1,7 +1,9 @@
 ---
-title: "Sonarqube Integration"
+title: "Sonarqube Scanning"
 description: "How to trigger a SonarQube Analysis from Codefresh"
-group: integrations
+group: testing
+redirect_from:
+  - /docs/integrations/sonarqube-integration/
 toc: true
 ---
 
@@ -11,8 +13,8 @@ common code issues such as bugs and vulnerabilities.
 
 {% include image.html 
 lightbox="true" 
-file="/images/integrations/sonarqube/sonarqube-logo.png" 
-url="/images/integrations/sonarqube/sonarqube-logo.png" 
+file="/images/testing/sonarqube/sonarqube-logo.png" 
+url="/images/testing/sonarqube/sonarqube-logo.png" 
 alt="SonarQube logo" 
 max-width="40%" 
 %}
@@ -39,8 +41,8 @@ Login into SonarQube with your account and navigate to *Help -> Tutorials -> Ana
 
 {% include image.html 
 lightbox="true" 
-file="/images/integrations/sonarqube/generate-token.png" 
-url="/images/integrations/sonarqube/generate-token.png" 
+file="/images/testing/sonarqube/generate-token.png" 
+url="/images/testing/sonarqube/generate-token.png" 
 alt="SonarQube generate token" 
 max-width="50%" 
 %}
@@ -49,8 +51,8 @@ Enter a name for your project and click the generate button to obtain a token. T
 
 {% include image.html 
 lightbox="true" 
-file="/images/integrations/sonarqube/sonar-instructions.png" 
-url="/images/integrations/sonarqube/sonar-instructions.png" 
+file="/images/testing/sonarqube/sonar-instructions.png" 
+url="/images/testing/sonarqube/sonar-instructions.png" 
 alt="SonarQube analysis instructions" 
 max-width="80%" 
 %}
@@ -64,8 +66,8 @@ Assuming that your project has already a Dockerfile that uses Maven to compile c
 
 {% include image.html 
 lightbox="true" 
-file="/images/integrations/sonarqube/simplified-codefresh-pipeline.png" 
-url="/images/integrations/sonarqube/simplified-codefresh-pipeline.png" 
+file="/images/testing/sonarqube/simplified-codefresh-pipeline.png" 
+url="/images/testing/sonarqube/simplified-codefresh-pipeline.png" 
 alt="SonarQube analysis for predefined Codefresh steps" 
 max-width="80%" 
 %}
@@ -82,8 +84,8 @@ Add another step in your pipeline that accesses a Maven image and runs the Sonar
 
 {% include image.html 
 lightbox="true" 
-file="/images/integrations/sonarqube/codefresh-yaml-sonar.png" 
-url="/images/integrations/sonarqube/codefresh-yaml-sonar.png" 
+file="/images/testing/sonarqube/codefresh-yaml-sonar.png" 
+url="/images/testing/sonarqube/codefresh-yaml-sonar.png" 
 alt="SonarQube analysis for custom Codefresh YAML" 
 max-width="80%" 
 %}
@@ -99,8 +101,8 @@ and monitor the analysis progress.
 
 {% include image.html 
 lightbox="true" 
-file="/images/integrations/sonarqube/analysis-log.png" 
-url="/images/integrations/sonarqube/analysis-log.png" 
+file="/images/testing/sonarqube/analysis-log.png" 
+url="/images/testing/sonarqube/analysis-log.png" 
 alt="SonarQube analysis" 
 max-width="80%" 
 %}
@@ -109,8 +111,8 @@ Once the analysis is complete you can visit the SonarQube dashboard and see the 
 
 {% include image.html 
 lightbox="true" 
-file="/images/integrations/sonarqube/sonar-project.png" 
-url="/images/integrations/sonarqube/sonar-project.png" 
+file="/images/testing/sonarqube/sonar-project.png" 
+url="/images/testing/sonarqube/sonar-project.png" 
 alt="SonarQube project" 
 max-width="80%" 
 %}
@@ -120,8 +122,8 @@ Then you can drill down and view the various statistics.
 
 {% include image.html 
 lightbox="true" 
-file="/images/integrations/sonarqube/sonar-analysis-details.png" 
-url="/images/integrations/sonarqube/sonar-analysis-details.png" 
+file="/images/testing/sonarqube/sonar-analysis-details.png" 
+url="/images/testing/sonarqube/sonar-analysis-details.png" 
 alt="SonarQube Analysis details" 
 max-width="80%" 
 %}
