@@ -10,6 +10,7 @@ Recent Codefresh updates:
 
 ### June 2019
 
+- Security scanning - [documentation]({{site.baseurl}}/docs/testing/security-scanning/)
 - Root pipeline anchors - [documentation]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/#using-yaml-anchors-to-avoid-repetition)
 
 ### May 2019
