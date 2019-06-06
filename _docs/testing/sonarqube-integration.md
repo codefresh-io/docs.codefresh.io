@@ -127,3 +127,10 @@ url="/images/testing/sonarqube/sonar-analysis-details.png"
 alt="SonarQube Analysis details" 
 max-width="80%" 
 %}
+
+## What to read next
+
+* [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
+* [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
+* [Unit tests]({{site.baseurl}}/docs/testing/unit-tests/)
+* [Integration tests]({{site.baseurl}}/docs/testing/integration-tests/)
