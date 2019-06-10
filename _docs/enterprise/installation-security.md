@@ -82,25 +82,26 @@ Here are the security implications of the hybrid solution:
 | -------------- | ---------------------------- |-------------------------|
 | Source code       | Stays behind the firewall | |
 | Binary artifacts  | Stay behind the firewall |   |
-| Build logs        | Also sent to Codefresh UI |  |
-| Pipeline volumes   | Stay behind the firewall | Same security as docker images |
+| Build logs        | Also sent to Codefresh Web application |  |
+| Pipeline volumes   | Stay behind the firewall | |
 | Deployment docker images | Stay behind the firewall|  |
 | Development docker images | Stay behind the firewall | |
+| Images created with Codefresh pipelines | Auto-pushed to internal registry | This is a secure private registry in GCR|
 | Testing docker images | Stay behind the firewall|  |
-| Inline pipeline defitinion | Defined in Codefresh UI |  |
+| Inline pipeline definition | Defined in Codefresh Web application |  |
 | Pipelines as YAML file | Stay behind the firewall |  |
 | Test results | Stay behind the firewall | | 
-| HTML Test reports | Shown on Codefresh UI |  Stored in your S3 or Google bucket storage  |
+| HTML Test reports | Shown on Web application |  Stored in your S3 or Google bucket storage  |
 | Production database data | Stays behind the firewall | |
 | Test database data | Stays behind the firewall | |
 | Other services (e.g. Queue, ESB) | Stay behind the firewall | |
 | Kubernetes deployment specs | Stays behind the firewall | |
 | Helm charts | Stays behind the firewall | |
 | Other deployment resources/script (e.g. terraform) | Stays behind the firewall | |
-| Shared configuration variables | Defined in Codefresh UI |  |
+| Shared configuration variables | Defined in Codefresh Web application |  |
 | Deployment secrets (from git/Puppet/Vault etc) | Stay behind the firewall|  |
-| Audit logs | Also sent to Codefresh UI |  |
-| Access control rules | Shown on Codefresh UI | |
+| Audit logs | Managed via Codefresh Web application |  |
+| Access control rules | Managed via Codefresh Web application | |
 
 
 
