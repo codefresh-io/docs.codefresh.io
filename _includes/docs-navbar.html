@@ -17,7 +17,10 @@
   <ul class="navbar-nav flex-row ml-md-auto">
 
     <li class="nav-item">
-      <a class="nav-link text-uppercase {% if page.layout == "docs" %}active{% endif %}" href="{{ site.baseurl }}/docs/getting-started/create-a-codefresh-account/" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Docs');">Product</a>
+      <a class="nav-link text-uppercase" href="{{ site.link_main }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Product');">Product</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-uppercase {% if page.layout == "docs" %}active{% endif %}" href="{{ site.baseurl }}/docs/getting-started/create-a-codefresh-account/" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Docs');">Docs</a>
     </li>
     <li class="nav-item">
       <a class="nav-link text-uppercase" href="{{ site.baseurl }}/docs/yaml-examples/examples/" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Open Examples');">Examples</a>
