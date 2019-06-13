@@ -21,7 +21,7 @@ You can see the example project at [https://github.com/codefresh-contrib/android
 
 ## Create a CI pipeline that compiles/releases Android
 
-In most cases you want to just reuse the Git integration already defined in Codefresh.
+In most cases you would create a similar pipeline to a Gradle project.
 
 {% include image.html 
 lightbox="true" 
