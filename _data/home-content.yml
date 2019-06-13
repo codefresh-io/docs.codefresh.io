@@ -48,7 +48,7 @@
     localurl: /docs/learn-by-example/mobile/android/  
   - title: Selenium
     localurl: /docs/learn-by-example/general/selenium-test/       
-- title: Yaml file
+- title: Yaml Syntax
   icon: images/home-icons/yaml.png
   url: ''
   links:

@@ -228,7 +228,7 @@ CMD_PS|optional|Command Postscript - this will be appended as is to the generate
 
 ## Full Helm pipeline example
 
-This pipeline builds a docker image, runs unit tests, stores the Helm chart in the Codefresh private Helm repository and finally deploys the Helm chart to a cluster.
+This pipeline builds a docker image, runs unit tests, stores the Helm chart in the Codefresh private Helm repository and finally deploys the Helm chart to a cluster. 
 
 {% include image.html 
 lightbox="true" 
@@ -250,6 +250,12 @@ stages:
   - test
   - deploy
 steps:
+  main_clone:
+    title: Cloning main repository...
+    type: git-clone
+    repo: 'codefresh-contrib/python-flask-sampleapp'
+    revision: with-helm
+    git: github  
   MyAppDockerImage:
     title: Building Docker Image
     stage: build
@@ -284,9 +290,12 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
+You can see the source code in our [example section]({{site.baseurl}}/docs/yaml-examples/examples/helm/).
+
 
 ## What to read next
 
+* [Helm pipeline example]({{site.baseurl}}/docs/yaml-examples/examples/helm/)
 * [Helm Charts and repositories]({{site.baseurl}}/docs/new-helm/add-helm-repository/)
 * [Codefresh Managed Helm Repositories]({{site.baseurl}}/docs/new-helm/managed-helm-repository/)
 * [Helm Promotion boards]({{site.baseurl}}/docs/new-helm/helm-environment-promotion)
