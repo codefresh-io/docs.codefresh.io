@@ -44,6 +44,8 @@
     localurl: /docs/learn-by-example/ruby/
   - title: Scala
     localurl: /docs/learn-by-example/scala/scala-hello-world/
+  - title: Android (Mobile)
+    localurl: /docs/learn-by-example/mobile/android/  
   - title: Selenium
     localurl: /docs/learn-by-example/general/selenium-test/       
 - title: Yaml file

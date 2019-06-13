@@ -21,6 +21,7 @@ Codefresh is agnostic as far as programming languages are concerned. All major p
 - [Python Django app]({{site.baseurl}}/docs/learn-by-example/python/django/)
 - [Ruby On Rails app]({{site.baseurl}}/docs/learn-by-example/ruby/)
 - [Scala app]({{site.baseurl}}/docs/learn-by-example/scala/scala-hello-world/)
+- [Android (Mobile)]({{site.baseurl}}/docs/learn-by-example/mobile/android/)
 
 ## Checking out source code
 
