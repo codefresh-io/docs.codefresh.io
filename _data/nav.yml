@@ -80,6 +80,11 @@
       sub-pages:
         - title: 'Scala: Hello World'
           url: "/scala-hello-world" 
+    - title: Mobile
+      url: "/mobile"
+      sub-pages:
+        - title: 'Android'
+          url: "/android"             
     - title: General
       url: "/general"
       sub-pages:
