@@ -147,54 +147,64 @@ Codefresh has a great UI for creating pipelines for each of your projects. If yo
 programmatically in an external manner. This allows you to use your own templating solution for re-using pipelines
 and creating them from an external system.
 
-First you need a yaml file that defines the pipeline. This is a pipeline [spec](https://codefresh-io.github.io/cli/pipelines/spec/)
+First you need a yaml file that defines the pipeline. This is a pipeline [specification](https://codefresh-io.github.io/cli/pipelines/spec/).
 
 Here is an example
 
 `Pipeline Spec`
 {% highlight yaml %}
 {% raw %}
-version: "1.0"
-kind: "pipeline"
+version: '1.0'
+kind: pipeline
 metadata:
-  name: "kostis-codefresh/nestjs-example/my-basic-pipeline"
-  description: "my description"
+  name: my-project/my-basic-pipeline
+  description: my description
   labels:
-    key1: "value1"
-    key2: "value2"
+    key1: value1
+    key2: value2
   deprecate:
     applicationPort: '8080'
-    repoPipeline: true
+  project: my-project
 spec:
   triggers:
-    - type: "git"
-      provider: "github"
+    - type: git
+      provider: github
       name: my-trigger
-      repo: "kostis-codefresh/nestjs-example"
-      events: ["push"]
-      branchRegex: '/./'
+      repo: kostis-codefresh/nestjs-example
+      events:
+        - push
+      branchRegex: /./
   contexts: []
   variables:
-    - key: "PORT"
+    - key: PORT
       value: 5000
       encrypted: false
-    - key: "SECRET"
+    - key: SECRET
       value: "secret-value"
       encrypted: true
   steps:
-    test_step_1:
-      image: "alpine"
+    main_clone:
+      title: Cloning main repository...
+      type: git-clone
+      repo: '${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}'
+      revision: '${{CF_REVISION}}'
+      git: github-1
+    PrintFileList:
+      title: Listing files
+      image: 'alpine:latest'
       commands:
-      - ls -a
-      - echo "hello world"
-      - echo "plain value $PORT"
-  stages: []      
+        - ls -l
+  stages: []
 {% endraw %}
 {% endhighlight %}
 
-Save this spec into a file with an arbitrary name like `my-pipeline-spec.yml`.
+Save this spec into a file with an arbitrary name like `my-pipeline-spec.yml`. First create the new project (if it doesn't exist already):
 
-Now you can create the pipeline with the cli
+{% highlight bash %}
+codefresh create project my-project
+{% endhighlight %}
+
+Then you can create the pipeline with the cli
 
 {% highlight bash %}
 codefresh create pipeline -f my-pipeline-spec.yml
