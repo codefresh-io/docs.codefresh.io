@@ -89,7 +89,7 @@ This way is not specific to Codefresh so read the [official kubernetes documenta
 
 For the internal Codefresh registry:
 
-- the Docker server to use is `r.cfcf.io`
+- the Docker server to use is `r.cfcr.io`
 - the username is your Codefresh username
 - the password is a valid [CFCR Login Token]({{ site.baseurl }}/docs/docker-registries/codefresh-registry/#generate-cfcr-login-token).
 
