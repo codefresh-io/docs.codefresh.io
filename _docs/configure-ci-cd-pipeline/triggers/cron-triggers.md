@@ -1,6 +1,6 @@
 ---
 title: "Cron Trigger"
-description: ""
+description: "Run pipelines with a time schedule"
 group: configure-ci-cd-pipeline
 sub_group: triggers
 redirect_from:
@@ -9,9 +9,11 @@ redirect_from:
 toc: true
 ---
 
-## Manage Cron Triggers with Codefresh UI
+Cron triggers allow you to create pipelines that start on a specific time schedule. This this very useful for cleanup jobs or periodic checks or any other workflow that needs to run after a time interval.
 
-Use Cron trigger to create a recurrent execution of Codefresh pipeline(s).
+>All times mentioned in Cron triggers are using the UTC timezone. 
+
+## Manage Cron Triggers with Codefresh UI
 
 It is possible to define and manage Cron-based pipeline triggers with Codefresh UI.
 
@@ -47,11 +49,11 @@ max-width="70%"
 
 ### Triggering Codefresh pipeline with cron timer
 
-Now, `cron` will trigger a recurrent pipeline execution based on defined `cron expression`.
+Now, `cron` will trigger a recurrent pipeline execution based on the defined `cron expression`.
 
 ## Manage Cron Triggers with Codefresh CLI
 
-It is possible to use `codefresh` command line client (`CLI`) to manage Cron based pipeline triggers.
+It is also possible to use the Codefresh Command Line client (`CLI`) to manage Cron based pipeline triggers.
 
 ### Cron Trigger
 
@@ -71,9 +73,9 @@ codefresh create trigger-event --type cron --kind codefresh --value expression="
 Trigger event: "cron:codefresh:codefresh:0 */20 * * * *:hello-once-in-20-min:107e9db97062" was successfully created.
 ```
 
-When creating a `cron`` trigger-event`, it is possible to specify a short text message, that will be passed to linked pipelines, every time the specified `cron` timer is triggered.
+When creating a `cron trigger-event`, it is possible to specify a short text message, that will be passed to linked pipelines, every time the specified `cron` timer is triggered.
 
-Visit [this page](https://github.com/codefresh-io/cronus/blob/master/docs/expression.md) to learn about supported `cron` expression format and aliases.
+Visit [this page](https://github.com/codefresh-io/cronus/blob/master/docs/expression.md) to learn about the supported `cron` expression format and aliases.
 
 #### Setup pipeline trigger
 
@@ -95,3 +97,8 @@ The following variables will be available for any Codefresh pipeline linked to a
 
 - `EVENT_MESSAGE` - free text message (specified during creation)
 - `EVENT_TIMESTAMP` - event timestamp in RFC 3339 format
+
+## What to read next
+- [Git triggers]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/) 
+- [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/) 
+
