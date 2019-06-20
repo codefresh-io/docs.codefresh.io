@@ -10,6 +10,7 @@ Recent Codefresh updates:
 
 ### June 2019
 
+- Added `CI=true` environment variable - [documentation]({{site.baseurl}}/docs/codefresh-yaml/variables/#system-provided-variables)
 - Security scanning - [documentation]({{site.baseurl}}/docs/testing/security-scanning/)
 - Root pipeline anchors - [documentation]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/#using-yaml-anchors-to-avoid-repetition)
 - Building Android Apps - [documentation]({{site.baseurl}}/docs/learn-by-example/mobile/android/)
