@@ -140,7 +140,7 @@ caption="Bitbucket permissions"
 alt="Bitbucket permissions"
 %}
 
-The "label" you enter in your Bitbucket account in order to create the application password is completely arbitrary (use "Codefresh" for an example). Once you have the token, paste it in the Codefresh UI and click *Test connection*. If everything is OK can
+The "label" you enter in your Bitbucket account in order to create the application password is completely arbitrary (use "Codefresh" for an example). Once you have the token, paste it in the Codefresh UI and click *Test connection*. If everything is OK you can
 now save the git integration.
 
 ## Azure DevOps

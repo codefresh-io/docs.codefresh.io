@@ -40,7 +40,7 @@ Notice the `rm` command before the clone step. This makes sure that everytime th
 
 ## Checking out Mercurial or CVS Code
 
-It is very simple to use any other Source control system in a Codefresh pipeline. The easiest way is to just call the respective executable.
+It is very simple to use any other Source control system in a Codefresh pipeline. The easiest way is to just call the respective executable. Here are two examples:
 
 {% highlight yaml %}
 {% raw %}
@@ -52,12 +52,14 @@ steps:
     commands:
       - apk add --no-cache mercurial
       - hg --version
+      - hg clone https://www.mercurial-scm.org/repo/hg mercurial-repo
   myCvsStep:
     title: Using CVS 
     image: alpine:latest
     commands:
       - apk add --no-cache cvs
       - cvs --version
+      - cvs -d :pserver:anonymous@cvs.project-open.net:/home/cvsroot checkout -c
 {% endraw %}
 {% endhighlight %}
 
