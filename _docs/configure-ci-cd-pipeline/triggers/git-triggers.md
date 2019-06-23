@@ -17,7 +17,7 @@ At the trigger level you have the option of selecting
  Note that you can select another repository other than the one the project itself belongs to. It is possible
  to trigger a build on project A even though a commit happened on project B.
 
-You can also use [Conditional expressions]({{ site.baseurl }}/docs/codefresh-yaml/conditional-execution-of-steps/) at the pipeline level to further fine-tune the way specific steps (or other transitive pipelines) are executed.
+You can also use [Conditional expressions]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/) at the pipeline level to further fine-tune the way specific steps (or other transitive pipelines) are executed.
 
 
 ## Manage GIT Triggers with Codefresh UI
@@ -207,7 +207,7 @@ The generic GIT trigger is placed on Pipeline A. This pipeline then filters the 
 
 Some of the YAML variables that you might find useful (from the [full list]({{site.baseurl}}/docs/codefresh-yaml/variables/))
 
-* `CF_PULL_REQUEST_ACTION` - open, close, accept etc
+* `CF_PULL_REQUEST_ACTION` - open, close, synchronize, assign  etc.
 * `CF_PULL_REQUEST_TARGET` - target branch of the pull request
 * `CF_BRANCH` - the branch that contains the pull request
 
