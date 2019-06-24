@@ -167,6 +167,8 @@
     localurl: /docs/yaml-examples/examples/terraform/
   - title: Deploy with Pulumi
     localurl: /docs/yaml-examples/examples/pulumi/
+  - title: Deploy to Nomad 
+    localurl: /docs/yaml-examples/examples/nomad/
 
 - title: Dynamic test environments
   icon: images/home-icons/demand.png
