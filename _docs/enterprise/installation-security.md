@@ -84,6 +84,7 @@ Here are the security implications of the hybrid solution:
 | Binary artifacts  | Stay behind the firewall |   |
 | Build logs        | Also sent to Codefresh Web application |  |
 | Pipeline volumes   | Stay behind the firewall | |
+| Pipeline variables   | Defined in Codefresh Web application | |
 | Deployment docker images | Stay behind the firewall|  |
 | Development docker images | Stay behind the firewall | |
 | Images created with Codefresh pipelines | Auto-pushed to internal registry | This is a secure private registry in GCR|
