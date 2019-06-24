@@ -14,6 +14,7 @@ Recent Codefresh updates:
 - Security scanning - [documentation]({{site.baseurl}}/docs/testing/security-scanning/)
 - Root pipeline anchors - [documentation]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/#using-yaml-anchors-to-avoid-repetition)
 - Building Android Apps - [documentation]({{site.baseurl}}/docs/learn-by-example/mobile/android/)
+- Deployment to Nomad clusters - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/nomad/)
 
 ### May 2019
 

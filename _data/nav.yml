@@ -186,6 +186,8 @@
           url: "/terraform"
         - title: Deploy with Pulumi
           url: "/pulumi"
+        - title: Deploy to Nomad
+          url: "/nomad"
 
         - title: Sending the notification to Slack
           url: "/sending-the-notification-to-slack"
