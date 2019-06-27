@@ -67,6 +67,7 @@
   - title: Parallel Pipelines
     localurl: /docs/codefresh-yaml/advanced-workflows/    
   - title: Annotations
+    new: true
     localurl: /docs/codefresh-yaml/annotations/
   - title: Examples
     localurl: /docs/yaml-examples/examples/
@@ -164,10 +165,13 @@
   - title: Deploy to Azure
     localurl: /docs/deploy-your-containers/microsoft-azure/
   - title: Deploy with Terraform
+    new: true
     localurl: /docs/yaml-examples/examples/terraform/
   - title: Deploy with Pulumi
+    new: true
     localurl: /docs/yaml-examples/examples/pulumi/
-  - title: Deploy to Nomad 
+  - title: Deploy to Nomad
+    new: true 
     localurl: /docs/yaml-examples/examples/nomad/
 
 - title: Dynamic test environments
@@ -216,7 +220,6 @@
   - title: Single Sign on
     localurl: /docs/enterprise/single-sign-on
   - title: Access Control
-    new: true
     localurl: /docs/enterprise/access-control 
   - title: Audit Logs
     new: true

@@ -15,6 +15,8 @@ Recent Codefresh updates:
 - Root pipeline anchors - [documentation]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/#using-yaml-anchors-to-avoid-repetition)
 - Building Android Apps - [documentation]({{site.baseurl}}/docs/learn-by-example/mobile/android/)
 - Deployment to Nomad clusters - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/nomad/)
+- Editing of annotations - [documentation]({{site.baseurl}}/docs/codefresh-yaml/annotations/#viewingediting-annotations)
+
 
 ### May 2019
 

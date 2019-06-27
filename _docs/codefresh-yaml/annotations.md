@@ -14,7 +14,7 @@ Currently Codefresh supports extra annotations for:
 * Builds 
 * Docker images
 
-You can view/edit annotations using the [Codefresh CLI](https://codefresh-io.github.io/cli/annotations/).
+You can view/edit annotations using the [Codefresh CLI](https://codefresh-io.github.io/cli/annotations/) or directly in the Codefresh Web UI.
 
 
 ## Adding annotations 
@@ -46,11 +46,6 @@ steps:
 
 This pipeline adds three annotations to a project called `annotate-examples`. The name of each annotation can only contain letters (upper and lowercase), numbers and the underscore character. The name of each annotation must start with a letter.
 
-You can view the annotations using the Codefresh CLI
-
-```shell
-codefresh get annotation project annotate-examples
-```
 
 For the `entity_id` value you can also use an actual ID instead of a name. The `entity_id` and `entity_type` are define which entity will hold the annotations. The possible entity types are:
 
@@ -94,8 +89,73 @@ steps:
 
 It is therefore possible to store annotations on any Codefresh entity (and not just the ones that are connected to the build that is adding annotations).
 
+## Viewing/Editing annotations
+
+You can view the annotations using the Codefresh CLI
+
+```shell
+codefresh get annotation project annotate-examples
+```
+
+You can also view annotations within the Codefresh UI.
+
+For build annotations click the *Annotations* on the build details:
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/codefresh-yaml/annotations/view-build-annotations.png" 
+url="/images/codefresh-yaml/annotations/view-build-annotations.png"
+alt="Viewing Build annotations" 
+caption="Viewing Build annotations"
+max-width="80%"
+%}
+
+For pipeline annotations click the *Annotations* button in the pipeline list view:
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/codefresh-yaml/annotations/view-pipeline-annotations.png" 
+url="/images/codefresh-yaml/annotations/view-pipeline-annotations.png"
+alt="Viewing Pipeline annotations" 
+caption="Viewing Pipeline annotations"
+max-width="80%"
+%}
+
+For project annotations click the *Annotations* button in the project list view:
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/codefresh-yaml/annotations/view-project-annotations.png" 
+file="/images/codefresh-yaml/annotations/view-project-annotations.png" 
+url="/images/codefresh-yaml/annotations/view-build-annotations.png"
+alt="Viewing project annotations" 
+caption="Viewing project annotations"
+max-width="80%"
+%}
+
+In all cases you will see a dialog with all existing annotations. 
 
 
+{% include 
+image.html 
+lightbox="true" 
+file="/images/codefresh-yaml/annotations/edit-project-annotations.png" 
+url="/images/codefresh-yaml/annotations/edit-project-annotations.png"
+alt="Editing annotations" 
+caption="Editing annotations"
+max-width="50%"
+%}
+
+You can add additional annotations manually by clicking the *Add annotation* button and entering
+
+* the name of the annotation
+* the type of the annotation (text, number, percentage, link, boolean)
+* the desired value.
+
+Click *Save* to apply your changes.
 
 ## Complex annotation values
 
