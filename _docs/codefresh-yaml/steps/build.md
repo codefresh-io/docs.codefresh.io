@@ -181,6 +181,7 @@ steps:
 
 Use this technique only as a last resort. It is better if the Dockerfile existing as an actual file in source control.
 
+
 ## Automatic pushing
 
 All images built successfully with the build step, will be automatically pushed to the [internal Codefresh registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/). This behavior is completely automatic and happens without any extra configuration on your part. 
@@ -196,6 +197,98 @@ All images built successfully with the build step, will be automatically pushed 
   caption="Docker Images pushed automatically" 
   max-width="80%" 
 %}
+
+## Buildkit support
+
+Codefresh also allows you to use [builkit](https://github.com/moby/buildkit) with all its [enhancements](https://docs.docker.com/develop/develop-images/build_enhancements/).
+
+Using buildkit you can get
+
+* improved build output logs
+* mounting of external secrets that will never be stored in the image
+* access to SSH keys and sockets from within the Dockerfile.
+
+These capabilities are offered as extra arguments in the build step and using any of them will automatically enable buildkit. 
+
+The simplest way to use buildkit is is to use `progress` property:
+
+`codefresh.yml`
+{% highlight yaml %}
+version: '1.0'
+steps:
+  BuildMyImage:
+    title: Building My Docker image
+    image_name: my-app-image
+    type: build
+    progress: tty
+{% endhighlight %}
+
+Possible values for `progress` are `tty` and `plain`. 
+
+For secrets you can either mention them in a single line:
+
+`codefresh.yml`
+{% highlight yaml %}
+version: '1.0'
+steps:
+  BuildMyImage:
+    title: Building My Docker image
+    image_name: my-app-image
+    type: build
+    secrets:
+      - id=secret1,src=./my-secret-file1.txt
+      - id=secret2,src=./my-secret-file2.txt
+{% endhighlight %}
+
+or multiple lines:
+
+`codefresh.yml`
+{% highlight yaml %}
+version: '1.0'
+steps:
+  BuildMyImage:
+    title: Building My Docker image
+    image_name: my-app-image
+    type: build
+    secrets:
+      - id: secret1
+        src: ./my-secret-file1.txt
+      - id: secret2
+        src: ./my-secret-file2.txt
+{% endhighlight %}
+
+For the SSH connection you can either use the default:
+
+`codefresh.yml`
+{% highlight yaml %}
+version: '1.0'
+steps:
+  BuildMyImage:
+    title: Building My Docker image
+    image_name: my-app-image
+    type: build
+    ssh: default
+{% endhighlight %}
+
+
+or define different keys:
+
+`codefresh.yml`
+{% highlight yaml %}
+version: '1.0'
+steps:
+  BuildMyImage:
+    title: Building My Docker image
+    image_name: my-app-image
+    type: build
+    ssh:
+      - github=~/.ssh/github_rsa
+      - bitbucket=~/.ssh/bitbucket_rsa
+{% endhighlight %}
+
+You can combine all options (`ssh`, `progress`, `secrets`) in a single build step if desired.
+
+
 
 ## What to read next
 
