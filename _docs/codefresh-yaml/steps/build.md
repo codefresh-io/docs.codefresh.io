@@ -210,7 +210,20 @@ Using buildkit you can get
 
 These capabilities are offered as extra arguments in the build step and using any of them will automatically enable buildkit. 
 
-The simplest way to use buildkit is is to use `progress` property:
+The simplest way to use buildkit is by enabling it explicitly:
+
+`codefresh.yml`
+{% highlight yaml %}
+version: '1.0'
+steps:
+  BuildMyImage:
+    title: Building My Docker image
+    image_name: my-app-image
+    type: build
+    buildkit: true
+{% endhighlight %}
+
+Buildkit is also automatically enabled if you use any of its features such as the `progress` property:
 
 `codefresh.yml`
 {% highlight yaml %}
