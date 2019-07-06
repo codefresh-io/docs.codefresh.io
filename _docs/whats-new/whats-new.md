@@ -8,6 +8,10 @@ toc: true
 ---
 Recent Codefresh updates:
 
+### July 2019
+
+- New custom step creation process - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/#creating-your-own-step)
+
 ### June 2019
 
 - Added `CI=true` environment variable - [documentation]({{site.baseurl}}/docs/codefresh-yaml/variables/#system-provided-variables)
