@@ -1,6 +1,6 @@
 ---
 title: "Shared volumes of service from composition step for other yml steps"
-description: ""
+description: "How to share data in compositions"
 group: yaml-examples
 sub_group: examples
 redirect_from:
@@ -10,7 +10,7 @@ toc: true
 Using this repository we'll help you get up to speed with basic functionality such as: building Docker images and use the shared volumes feature.
 
 This project uses Node Js to build an application which will eventually become a distributable Docker image.
-If you want to share volumes of service in composition step for other yml steps you can use the variable {% raw %}```${{CF_VOLUME}}```{% endraw %}. It will refer to the volume that was generated for the specific flow. Can be used in conjunction with a composition to provide access to your cloned repository.
+If you want to share volumes of service in composition step for other yml steps you can use the variable {% raw %}```${{CF_VOLUME_NAME}}```{% endraw %}. It will refer to the volume that was generated for the specific flow. Can be used in conjunction with a composition to provide access to your cloned repository.
 
 {{site.data.callout.callout_info}}
 ##### Caching build dependencies
@@ -31,7 +31,7 @@ step_file_generation:
     services:
       service1:
         volumes:
-          - {% raw %}${{CF_VOLUME}}{% endraw %}:/codefresh/volume
+          - {% raw %}${{CF_VOLUME_NAME}}{% endraw %}:/codefresh/volume
         image: {% raw %}${{build_step}}{% endraw %}
         command: bash -c "echo hello > /codefresh/volume/myfile.txt"
   composition_candidates:
