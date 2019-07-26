@@ -69,7 +69,7 @@ caption="Generating a Codefresh API token"
 alt="Generating a Codefresh API token"
 %}
 
-You can give your token any name you wish so that you can remember its purpose. The token is tied to your Codefresh account and should be considered sensitive information. Give access to all scopes (Check all boxes) After you copy the token there is no way to get it back. Copy it into your clipboard before closing the dialog.
+You can give your token any name you wish so that you can remember its purpose. The token is tied to your Codefresh account and should be considered sensitive information. Give access to all scopes (i.e. check all boxes). After you copy the token there is no way to get it back. Copy it into your clipboard before closing the dialog.
 
 With the token at hand we can go to the Google marketplace.
 

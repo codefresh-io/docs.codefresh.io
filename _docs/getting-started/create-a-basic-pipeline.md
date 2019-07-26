@@ -57,7 +57,7 @@ After some brief time, the repository should appear in your own Github account.
 Now you are ready to start building code with Codefresh!
 
 
-> Codefresh supports Gitlab and Bitbucket repositories apart from Github. The
+> Codefresh supports Gitlab, Bitbucket and Azure GIT repositories apart from Github. The
 same principles presented in this tutorial apply for all Git providers.
 
 
@@ -71,7 +71,7 @@ lightbox="true"
 file="/images/getting-started/quick-start-ci/pipeline-overview.jpg" 
 url="/images/getting-started/quick-start-ci/pipeline-overview.jpg" 
 alt="Pipeline Overview" 
-caption="Pipeline Overview (click image to enlarge)" 
+caption="Pipeline Overview" 
 max-width="100%" 
 %}
 
@@ -99,7 +99,7 @@ lightbox="true"
 file="/images/getting-started/quick-start-ci/docker-build-steps.jpg" 
 url="/images/getting-started/quick-start-ci/docker-build-steps.jpg" 
 alt="Preparing a Docker image" 
-caption="Preparing a Docker image (click image to enlarge)" 
+caption="Preparing a Docker image" 
 max-width="60%" 
 %}
 
@@ -111,13 +111,13 @@ Because all Codefresh capabilities are based on Docker images, Docker is also se
 
 
 The example application already comes with its own Dockerfile, making the creation of a Codefresh pipeline very easy.
-Let's start by going into the [Codefresh dashboard](https://g.codefresh.io/repositories) (after [creating your account]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/))
+Let's start by going into the [Codefresh dashboard](https://g.codefresh.io/projects/) (after [creating your account]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/)).
 
 ### Creating a new project
 
 Codefresh pipelines are grouped under [projects]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-concepts). Project names can be anything you want with the most common example being the name of an application where all pipelines in the project are packaging/deploying the different microservices. You can think of projects as "folders/directories" for your pipelines.
 
-Make sure that you have selected *Projects* from the left sidebar. Then click on the *Add project* button on the top right corner to get started.
+Make sure that you have selected *Projects* from the left sidebar. Then click on the *New project* button on the top right corner to get started.
 
 Enter a name for your project (e.g. `my-first-project`) and choose a sample icon that you like. You can also optionally add tags that will be used for [access control]({{site.baseurl}}/docs/enterprise/access-control/) (most useful in a organization). For now leave the tags empty.
 
@@ -126,7 +126,7 @@ You now have a new project and can start adding pipelines in it.
 
 ### Creating a new pipeline
 
-Click the *Add pipeline* button in order to create a pipeline.
+Click the *New pipeline* button in order to create a pipeline.
 Enter a name (e.g. `basic-build`). Make sure that the option *Add Git commit trigger* is selected.
 
 {% include 
@@ -141,13 +141,14 @@ max-width="50%"
 
 Find your repository from the list and select it. This way your pipeline will be automatically launched when a commit happens on this repository. 
 
-You can also select a template for the pipeline. The Python one is relevant for this project, but we will not use it anyway so feel free to select anything from the list.
 
 Click the *Create* button. Your pipeline was created and you should now see the pipeline editor. Here you can describe what the pipeline will do using [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/).
 
 ###  Build the docker image
 
-You will create a very simple pipeline that checks out the source code and build a docker image.
+Codefresh has already created a sample pipeline which we will not use for this tutorial.
+
+You will create a very simple pipeline that checks out the source code and builds a docker image.
 Delete the existing contents on the editor and paste the following:
 
 `codefresh.yml`
@@ -190,7 +191,7 @@ On the dialog that will appear leave the default selections.
 
 ### Starting the first build
 
-Once the build is started you Codefresh will navigate you to the build progress of the sample application.
+Once the build is started Codefresh will navigate you to the build progress of the sample application.
 
 {% include 
 image.html 
@@ -336,7 +337,7 @@ Among the information shown, you can clearly see:
 This information can help you to easily correlate the changes that exist in each Docker images, which is very important knowledge when it comes to deployments (explained in detail in the next tutorial).
 
 If you click on a Docker image you will get many more details about it including a timeline of the labels for this Docker image. You also have the ability to enter custom comments that describe any event that you consider important. Codefresh
-really shines when it comes to annotating your Docker images with metadata. For more details read the section [Annotations]({{site.baseurl}}/docs/docker-registries/metadata-annotations/)
+really shines when it comes to annotating your Docker images with metadata. For more details read the section [Annotations]({{site.baseurl}}/docs/docker-registries/metadata-annotations/).
 
 {% include 
 image.html 
