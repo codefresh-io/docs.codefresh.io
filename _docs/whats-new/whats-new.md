@@ -12,6 +12,8 @@ Recent Codefresh updates:
 
 - New custom step creation process - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/#creating-your-own-step)
 - Approval steps have now timeouts - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/#automatic-approvalsrejections)
+- Approval steps have now access control - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/#approval-restrictions)
+
 
 ### June 2019
 

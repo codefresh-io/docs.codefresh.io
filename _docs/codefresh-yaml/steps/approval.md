@@ -94,6 +94,39 @@ steps:
 This pipeline will wait for approval for two hours. If somebody approves it, it will continue. If nothing happens after two hours
 the approval step will be automatically rejected.
 
+## Approval Restrictions
+
+By default any Codefresh user can approve any pipeline that is paused at the approval state. If you want to restrict
+the approval action to a subset of people, you can use the [Access Control facilities]({{site.baseurl}}/docs/enterprise/access-control/) that Codefresh provides.
+
+This is a two step process. First you need to tag your pipeline with one or more tags (tag names are arbitrary). You can edit tags in the pipeline settings screen.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/codefresh-yaml/approval/pipeline-tag.png" 
+url="/images/codefresh-yaml/approval/pipeline-tag.png"
+alt="Marking a pipeline with tags" 
+caption="Marking a pipeline with tags"
+max-width="40%"
+%}
+
+Once you have tagged your pipelines you can create one or more access rules that restrict approval to specific teams within your organization.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/codefresh-yaml/approval/approval-rule.png" 
+url="/images/codefresh-yaml/approval/approval-rule.png"
+alt="Rules for approvals" 
+caption="Rules for approvals"
+max-width="80%"
+%}
+
+
+For more details on access control and users see also the [account management page]({{site.baseurl}}/docs/enterprise/ent-account-mng/).
+
+
 ## Getting the approval result
 
 As also explained in [step dependencies]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/#custom-steps-dependencies) all steps in the Codefresh pipeline belong to a global object
@@ -250,6 +283,6 @@ the "Report notification of pipeline execution" checkbox as explained in [Monito
 - [Post-Step Operations]({{site.baseurl}}/docs/codefresh-yaml/post-step-operations/) 
 - [Advanced Workflows ]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/) 
 - [Conditional Execution of Steps]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/) 
-- [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/).
+- [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
 
 

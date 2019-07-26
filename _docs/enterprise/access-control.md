@@ -187,6 +187,7 @@ For pipelines:
 * `Update` - see and edit allowed pipelines only (including tagging them)
 * `Delete` - can delete allowed pipelines only
 * `Run` - can run allowed pipelines only
+* `Approve` - resume pipelines that are waiting for manual [approval]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/)
 
 ## What to read next
 
