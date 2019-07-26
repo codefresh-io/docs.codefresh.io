@@ -369,7 +369,7 @@ The built-in Docker image storage is very helpful on its own, but it becomes eve
 
 The built-in Docker image storage by Codefresh is ideal for an overview of your images and quick demos. When it comes to production deployments however, your Docker images should be pushed into your own private or public Docker registry.
 
-Kubernetes will then fetch those Docker images from the registry in a well disciplined manner. Remember that Codefresh will automatically keep images from **all** your builds. It is best to decide which images are actually worth deploying and only push those to a production registry. 
+Kubernetes will then fetch those Docker images from the registry in a secure way. Remember that Codefresh will automatically keep images from **all** your builds. It is best to decide which images are actually worth deploying and only push those to a production registry. 
 
 {% include 
 image.html 
@@ -385,7 +385,7 @@ max-width="80%"
 Docker images are one of the central concepts in Codefresh pipelines as everything revolves around them. Powerful Codefresh pipelines can be created by using Docker images as build tools, so it is perfectly normal if you manage a large number of images which are not strictly packaged applications. You may create Docker images that contain building or deployment tools and are used as part of
 the build process instead of the build result.
 
-For the purposes of this tutorial we will push our sample application to [DockerHub](https://cloud.docker.com/) which is the free public Docker hosting from Docker Inc. You need to create a free account with the service first and note down your username and password. In your own projects you can use any other [external registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) you wish.
+For the purposes of this tutorial we will push our sample application to [DockerHub](https://cloud.docker.com/) which  is the free public Docker hosting registry of Docker Inc. You need to create a free account with the service first and note down your username and password. In your own projects you can use any other [external registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) you wish.
 
 >Note that Docker.io only allows you to push images that are tagged with your username. If you have a choice, create
 a Dockerhub account with the same username that you have in Codefresh. If not, you need to change the Docker image
