@@ -58,7 +58,7 @@ max-width="70%"
 For each call you will also see an example with `curl`.
 
 
-In order to create your own API key then click *Account Settings* on the left sidebar and select the *tokens* tab.
+In order to create your own API key then click *User Settings* on the left sidebar and scroll down until you find the *API Keys* section.
 Click the *generate* button and copy your key. 
 
 
