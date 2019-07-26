@@ -33,6 +33,9 @@ step_name:
   type: pending-approval
   title: Step Title
   description: Step description
+  timeout:
+    duration: 2
+    finalState: approved
   when:
     branch:
       only: [ master ]
@@ -45,10 +48,11 @@ step_name:
 {: .table .table-bordered .table-hover}
 | Field                                      | Description                                                                                                                                                                                                                                                                                                                                                                 | Required/Optional/Default |
 | ------------------------------------------ | ---------------------------------------------- | ------------------------- |
-| `title`                                    | The free-text display name of the step.                                                                                                                                                                                                                                                                                                                                     | Optional                  |
-| `description`                              | A basic, free-text description of the step.                                                                                                                                                                                                                                                                                                                                 | Optional                  |
-| `stage`                              | Parent group of this step. See [using stages]({{site.baseurl}}/docs/codefresh-yaml/stages/) for more information.                                                                                                                                                                                          | Optional                  |
-| `when`                                     | Define a set of conditions that need to be satisfied in order to execute this step. You can find more information in the [Conditional Execution of Steps]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/) article.                                                                                                                                                                     | Optional                  |
+| `title`                                    | The free-text display name of the step.        | Optional                  |
+| `description`                              | A basic, free-text description of the step.    | Optional                  |
+| `timeout`                                  | Defines an automatic approval/rejection if a specified amount of time has passed. The `duration` field is hours. The `finalState` field defines what will happen after the duration time has elapsed. Possible values are `approved`/`denied`/`terminated`    | Optional                  |
+| `stage`                              | Parent group of this step. See [using stages]({{site.baseurl}}/docs/codefresh-yaml/stages/) for more information.    | Optional                  |
+| `when`                                     | Define a set of conditions that need to be satisfied in order to execute this step. You can find more information in the [Conditional Execution of Steps]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/) article. | Optional                  |
 
 
 ## Pausing the pipeline
@@ -69,6 +73,26 @@ max-width="80%"
 Once you click any of them the pipeline will continue. Further steps in the pipeline can be enabled/disabled
 according to the approval result.
 
+## Automatic approvals/rejections
+
+By default, a pipeline that contains an approval step will pause for ever onces it reaches that step. If you want some automatic action to happen after a specified time period you can defined it in advance with the `timeout` property:
+
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+steps:
+ waitForInputBeforeProduction:
+   type: pending-approval
+   title: Deploy to Production?
+   timeout:
+     duration: 2
+     finalState: denied
+{% endraw %}
+{% endhighlight %}
+
+This pipeline will wait for approval for two hours. If somebody approves it, it will continue. If nothing happens after two hours
+the approval step will be automatically rejected.
 
 ## Getting the approval result
 
