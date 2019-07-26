@@ -14,11 +14,13 @@ redirect_from:
 toc: true
 ---
 
-Now that we know the [theory behind Codefresh pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/), we can see how you can create pipelines for your own project.
+Before reading this page make sure that you are familiar with the [theory behind Codefresh pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/).
 
 ## Pipeline Concepts
 
-The main concepts are shown below:
+The aim of Codefresh pipelines is to have re-usable sequences of steps that can be used for different applications (or micro-services) via the use of git triggers.
+
+All the main concepts are shown below:
 
 {% include 
 image.html 
@@ -27,18 +29,25 @@ file="/images/pipeline/create/concepts.png"
 url="/images/pipeline/create/concepts.png"
 alt="Pipeline concepts" 
 caption="Pipeline concepts"
-max-width="70%"
+max-width="60%"
 %}
 
 * **Projects** are the top level concept in Codefresh. You can create projects to group pipelines that are related. In most cases a single project will be a single application (that itself contains many micro-services). You are free to use projects as you see fit. For example you could create a project for a specific Kubernetes cluster or a specific team/department.
 
-* Each project can have multiple **pipelines**. Pipelines that belong to a single project are easily managed all together. It is also very easy to create a new pipeline in a project by copying an existing pipeline.
+* Each project can have multiple **pipelines**. Pipelines that belong to a single project are easily managed all together. It is also very easy to create a new pipeline in a project by copying an existing pipeline. Notice that unlike other CI solutions a pipeline in Codefresh is **NOT** tied to a specific git repository. You should try to make your pipelines generic enough so that they can be reused for similar applications even when they exist in different git repositories (a fairly typical setup for microservices).
 
-* Each pipeline has a definition that defines the [pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/) that are executed each time this pipeline is triggered. The definition of a pipeline is described in a special [codefresh.yml]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) file. The `codefresh.yml` file can be fetched from the same repository of the source code, from a completely different repository or even defined in-place in the Codefresh pipeline editor.
+* Each pipeline has a definition that defines the [pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/) that are executed each time this pipeline is triggered. The definition of a pipeline is described in a special [codefresh.yml]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) file. The `codefresh.yml` file can be fetched from the same repository of the source code, from a completely different repository or even defined in-place in the Codefresh pipeline editor. Again, notice that it is possible to have a pipeline that checks out its source code from git repository A, but actually defines its steps in a `codefresh.yml` file that is fetched from git repository B.
 
-* Each pipeline can have zero, one or more [triggers]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/). Codefresh supports several kind of triggers such as Git, Cron or Docker push triggers. Triggers that happen with Git webhooks can come from the same git repository that contains the git code **OR** any other completely different repository.
+* Each pipeline can have zero, one or more [triggers]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/). Codefresh supports several kind of triggers such as Git, Cron or Docker push triggers. Triggers that happen with Git webhooks can come from the same git repository that contains the git code **OR** any other completely different repository. Triggers are the linking medium between a pipeline and a git repository. You can have a pipeline with many triggers so it will be executed when a code happens to any of them.
 
-With these basic building blocks you can define many complex workflows.
+With these basic building blocks you can define many complex workflows. In particular, it is very easy in Codefresh a scenario where
+
+1. A pipeline is launched because a trigger exists for Git repository A
+1. The pipeline reads its `codefresh.yml` file from Git repository B
+1. The pipeline clones source code from Git repository C (and starts packaging/compiling it).
+
+Of course, it also possible to have a simpler scenario where the trigger, the pipeline steps and the source code of the application are all defined for the same GIT repository.
+
 
 ## Creating new pipelines
 
@@ -66,14 +75,14 @@ or by copying an existing one from the same project or a completely different pr
 
 1. The main window shows the definition of the current pipeline. The screenshot shows the inline editor but pipelines can also be defined from external files (checked into source control) as explained later.
 
-1. The right part of the window shows extra settings for this pipeline such as triggers and launch variables/parameters.
+1. The right part of the window shows extra settings for this pipeline such as [premade steps]({{site.baseurl}}/docs/codefresh-yaml/steps/), [triggers]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/) and launch variables/parameters.
+
+
 
 
 ### Using the inline pipeline editor
 
 When first creating a pipeline you will see an inline editor that allows you to define the [pipeline yml]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) right there in the Codefresh UI. This is great when you are starting a new project because it offers you really quick feedback. You can edit the yml steps, run a build, edit again, run a build and so on. 
-
-
 
 
 {% include 
@@ -94,12 +103,14 @@ On the top right of the panel you have additional controls
 * The *copy* button quickly copies the **whole** pipeline text in your clipboard.
 
 
-Notice that in the editor you can expand/collapse individual yaml blocks using the arrow triangles on the left of each blocks
+Notice that in the editor you can expand/collapse individual yaml blocks using the arrow triangles on the left of each blocks. The initial pipeline presented in the editor is suggested by Codefresh according to the contents of your Git repository.
+
+> You can also see the suggested Codefresh pipeline for any public git repository by using the [analyze option](https://codefresh-io.github.io/cli/analyzer/) of the Codefresh CLI.
 
 
 ## Loading codefresh.yml from version control
 
-Working with the inline editor is very convenient in the beginning, but it makes your pipeline definition only exist with the Codefresh UI and therefore goes against the basic principles of [infrastructure as code](https://en.wikipedia.org/wiki/Infrastructure_as_Code). Once you are happy with how your pipeline works you should commit it to your repository.
+Working with the inline editor is very convenient in the beginning, but it makes your pipeline definition only exist within the Codefresh UI and therefore goes against the basic principles of [infrastructure as code](https://en.wikipedia.org/wiki/Infrastructure_as_Code). Once you are happy with how your pipeline works you should commit it to a Git repository (which can be the same one that has the source code of the application or a completely different one).
 
 You can click on the *Inline YAML* header and switch it to *Use YAML from repository*.
 
@@ -113,24 +124,57 @@ caption="Pipeline from internal repo"
 max-width="60%"
 %}
 
-You can then select **any** git repository accessible to you and load the `codefresh.yml` from there. You also setup two additional settings:
+You can then select **any** Git repository accessible to you and load the `codefresh.yml` from there. You also setup two additional settings:
 
 * The path of the file inside the repository. This allows you to have special folders for pipeline definitions
 * The branch of the repository to use for loading the `codefresh.yml` file if you have more than one.
 
 In the branch drop down you can also choose the option **DYNAMIC**. This will use the same branch as the one mentioned in the trigger event. If for example your pipeline is triggered by a commit in the `staging` branch of the source code, the pipeline definition will also be loaded from the `staging` branch of the git repository that contains the `codefresh.yml` file.
 
-This allows you to have complex pipeline definitions per branch but you have to be careful to match git branch names between the repository that holds the source code and the repository that holds the pipeline definition. It is much easier to pick a specific branch for the pipeline definitions that will always be the same.
+This allows you to have complex pipeline definitions per branch but you have to be careful to match Git branch names between the repository that holds the source code and the repository that holds the pipeline definition. It is much easier to pick a specific branch for the pipeline definitions that will always be the same.
 
 It is also possible to switch the header to *Use YAML from URL*. This will allow you to load a codefresh yaml from any public URL. Notice that a raw URL is needed in the case of github. As an example instead of using `https://github.com/codefresh-contrib/example-voting-app/blob/master/codefresh.yml` you should enter `https://raw.githubusercontent.com/codefresh-contrib/example-voting-app/master/codefresh.yml`
 
-## Legacy Repository pipelines
+## Pipeline settings
 
-If you have a Codefresh account created before May 2019 you will still get access to the *Repository* view. This view will still be available for a transition period to help you migrate to the project concept. Both views are still valid and operating on the same pipelines behind the scenes.
+Once you create your pipeline you can also click on the top tab called *Settings* for some extra parameters.
 
-All you repositories should be migrated on projects with the same name so you can edit your pipelines from either view.
+Here you can also see the name and ID of the pipeline (useful information if you want to work with the [Codefresh CLI](https://codefresh-io.github.io/cli/)).
 
-You can also add detached pipelines (i.e. pipelines not connected to a repository or project) manually from the 
+The other options are
+
+* A freetext pipeline description
+* One or more tags used for [access control]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
+* Concurrency limits
+* The [runtime environment]({{site.baseurl}}/docs/enterprise/behind-the-firewall/) that will run this pipeline
+* The size of the machine that will run this pipeline (available options depend on your pricing plan)
+* The [public logs and badges]({{site.baseurl}}/docs/configure-ci-cd-pipeline/build-status/) information which are very useful for open source projects developed with Codefresh
+
+The concurrency limits are very important as they allow you to define how many instances of a pipeline can run in parallel when multiple commits or multiple pull requests take place.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/create/restrict-parallelism.png" 
+url="/images/pipeline/create/restrict-parallelism.png"
+alt="Setting concurrency limits" 
+caption="Setting concurrency limits"
+max-width="50%"
+%}
+
+Some common scenarios are 
+
+* a pipeline that uses a shared resource such as a database or queue and you want to limit how many pipelines can access it
+* a pipeline that deploys to a single production environment (in most cases you only want one active pipeline touching production)
+
+You can set these parameters either on the trigger level or on the pipeline level (if the pipeline has multiple triggers defined).
+
+## Pipelines that do not belong to any project
+
+Although we recommend adding all your pipelines to a project, this is not a hard requirement. You can create pipelines that do not belong to a project from the *Pipelines* section on the left sidebar.
+If you have a Codefresh account created before May 2019 you might already have several pipelines that are like this.
+
+If you change your mind, you can also add detached pipelines (i.e. pipelines that are not part of a project) manually from the 3-dot menu that is found on the right of each pipeline. 
 
 {% include 
 image.html 
@@ -142,254 +186,8 @@ caption="Changing the project of a pipeline"
 max-width="90%"
 %}
 
-This procedure is only needed for detached pipelines which do not belong to a repository. Pipelines that were connected to a git repository will also be connected to the project with the same name.
+Pipelines that belong to a project will mention it bellow their name so it is very easy to understand which pipelines belong to a project and which do not.
 
-
-## Pipeline creation modes (Legacy)
-
-You can start the creation of a pipeline from two places in the Codefresh UI
-
-1. From a specific repository as found in the repositories view 
-1. From the dedicated pipelines view on the left sidebar
-
-Both ways are equally valid and differ only in the way the created pipeline is accessing a git repository.
-
-{% include 
-image.html 
-lightbox="true" 
-file="/images/pipeline/create/pipelines-from-repository.png" 
-url="/images/pipeline/create/pipelines-from-repository.png"
-alt="Pipeline attached to GIT repository" 
-caption="Pipeline attached to GIT repository"
-max-width="60%"
-%}
-
-Creating a pipeline from a GIT repository gives you immediate access to the contents of that repository. When you run the pipeline, Codefresh will automatically checkout the contents of the GIT repository inside the workspace folder. Your pipeline can then focus
-on building and packaging the source code.
-
-Creating a pipeline directly attached to a GIT repository is the recommended way to start using Codefresh pipelines that deal with source code. In most cases, this is the type of pipeline you will use when you start using Codefresh.
-
-If you choose to create instead a pipeline from the *Pipelines* view from the left sidebar, the workspace will start completely empty and it is your responsibility to manually checkout code by using the [git clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/).
-
-{% include 
-image.html 
-lightbox="true" 
-file="/images/pipeline/create/pipelines-no-repository.png" 
-url="/images/pipeline/create/pipelines-no-repository.png"
-alt="Pipeline without GIT repository" 
-caption="Pipeline without GIT repository"
-max-width="80%"
-%}
-
-This is a more advanced way of creating pipelines. It is ideal if you are creating pipelines that don't deal strictly with source code (e.g. a pipeline that promotes artifacts between Docker repositories) or pipelines that work with multiple git repositories.
-
-If you are unsure which way is appropriate for you, then choose the first one and create your pipelines starting from a GIT repository.
-
-Regardless of the method you select, you will reach the same pipeline definition screen that allows you to define the individual build steps.
-
-## Pipeline definition modes (Legacy)
-
-There are 3 ways to define the build steps of pipelines in Codefresh
-
-1. Using the GUI (easy but not very flexible)
-1. Using a [Codefresh YML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) file (recommended)
-1. Programmatically using the [API]({{site.baseurl}}/docs/integrations/codefresh-api/) (Advanced)
-
-We recommend you start with the GUI way if are you still learning about containers and deployments, but for any non trivial project you will soon discover that using the Codefresh YML file is the most flexible way.
-
-## Creating pipelines using the Codefresh GUI (Legacy)
-
-Creating a pipeline via the GUI is the fastest way of getting a Docker image from your source code and optionally
-deploying into Kubernetes if your application matches the expectation of Codefresh.
-
-The GUI steps in Codefresh assume that 
-
-1. Your git repository contains a single application with a single Dockerfile
-1. The Dockerfile contains both the application as well as any libraries needed for unit testing
-1. The docker image that will be created will be tagged with the name of the branch that built it
-1. Your Kubernetes cluster either contains a deployed service already or you have a deployment manifest in the repository
-
-If your application does not match these expectations, then you need to use a `codefresh.yml` file instead (explained later in this page).
-
-The predefined steps for the GUI are shown in the pipeline screen as different sections. You can expand any of these
-and change their settings.
-
-
-{% include 
-image.html 
-lightbox="true" 
-file="/images/pipeline/create/predefined-steps.png" 
-url="/images/pipeline/create/predefined-steps.png"
-alt="Predefined pipeline steps" 
-caption="Predefined pipeline steps"
-max-width="70%"
-%}
-
-The **Build** step creates a Docker image from your Dockerfile. Note that the Dockerfile should be self-contained
-and compile/package all needed resources on its own. If you have a Dockerfile that expects something to be prepared in advance, you need to switch your build to use a `codefresh.yml` file instead.
-
-The **Unit test** step executes any command of your choosing *inside* the Docker image that was created in the previous step. This means that if you need any special unit test libraries, your Dockerfile should keep them intact (So if you are using multi-stage Docker builds, you cannot execute tests using the GUI way). If your unit tests fail, the pipeline stops and the Docker image is not uploaded in any Docker registry.
-
-The **Push to registry** steps pushes the Docker image to any registry of your choosing as defined in [external registry integrations]({{site.baseurl}}/docs/docker-registries/external-docker-registries/).
-Notice that your image will be uploaded always to the integrated [Codefresh Docker registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/) if you don't do something special.
-
-The **Integrations tests** step executes any command of your choosing *inside* the Docker image that was created in the *Build* step so the same caveats as unit tests apply. If the integration tests fail however, the Docker image is *already* uploaded in the image registry.
-
-> For both unit and integration tests you can use Codefresh compositions which allow you to launch your container
-with other external services (such as a database) and run a more complete environment. For more details
-see the [compositions documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/composition/).
-
-The **Deploy Script** step contains some templates for deployment. You can deploy to Kubernetes, ECS and Docker swarm or run a custom deployment command on the container that was created in the build step or any other image of your choosing.
-
-You can find a complete tutorial on how to use the predefined steps in the [basic pipeline guide]({{site.baseurl}}/docs/getting-started/create-a-basic-pipeline/). Specifically
-for Kubernetes deployments you can also see the [basic deployment guide]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/)
-
-
-
-## Creating pipelines using Codefresh YML (Legacy)
-
-The Codefresh YML option offers a special syntax for defining your builds in ways that are not possible with the predefined pipeline steps. With the YML option you can
-
-* create multiple Docker images
-* customize the Docker tags
-* upload to multiple Docker repositories
-* control exactly the services that run during your unit/integration tests
-* re-arrange the order of steps
-* Use custom images for compilation/package steps
-* and much more
-
-
-To switch to the flexible yml configuration, click the *YAML* toggle on the top right of the interface
-
-{% include 
-image.html 
-lightbox="true" 
-file="/images/pipeline/create/custom-yml.png" 
-url="/images/pipeline/create/custom-yml.png"
-alt="Switching to custom yml" 
-caption="Switching to custom yml"
-max-width="60%"
-%}
-
-Once you switch to YML mode you have 3 more options on how to select the yml content
-
-1. Inline yml (This is for the initial creation of the project)
-1. Read yml from repository (recommended)
-1. Read yml from URL (allows re-use of yml files between different projects)
-
-### Writing Codefresh YML in the GUI
-
-The inline option allows you to define the build yml right there in the Codefresh UI. This is great when you are starting a new project because it offers you really quick feedback. You can edit the yml steps, run a build, edit again, run a build and so on. Even though this is very convenient in the beginning, it makes your pipeline definition only exist with the Codefresh UI and therefore goes against the basic principles of [infrastructure as code](https://en.wikipedia.org/wiki/Infrastructure_as_Code). Once you are happy with how your pipeline works you should commit it to your repository and use the second option.
-
-> You can also import directly yml steps from a file on your computer as a starting point by clicking the *import
-from file* button.
-
-Notice that in the editor you can expand/collapse individual yaml blocks using the arrow triangles on the left.
-
-{% include 
-image.html 
-lightbox="true" 
-file="/images/pipeline/create/editor.png" 
-url="/images/pipeline/create/editor.png"
-alt="Inline Editor with collapsed blocks" 
-caption="Inline Editor with collapsed blocks"
-max-width="60%"
-%}
-
-
-Also you can comment/uncomment any block of code that you select either with the on-screen button or the `Ctrl-/` keyboard shortcut.
-
-### Using a codefresh.yml for the source code repository
-
-The repository option is the recommended on. It reads the `codefresh.yml` file from the repository that contains your source code. This way when you change the file you also get history and auditing for free via the GIT functionality. Both the name and location of the file are configurable.
-
->This choice is only available if the pipeline was created from a git repository. It is not available for pipelines created from the dedicated *Pipelines* view of the left sidebar.
-
-### Share single Codefresh YAML across different pipelines
-
-The third option allows you to load the yml from any location, even from a different repository. This allows you to create yml files in a central repository or web server and reuse them in multiple Codefresh pipelines. So if you want
-to keep a separation between the code and the pipeline definitions you can select this method instead of having the `codefresh.yml` file in the same place as the source code.
-
-{% include 
-image.html 
-lightbox="true" 
-file="/images/e6a4188-Screen_Shot_2017-10-23_at_6.58.06_PM.png" 
-url="/images/e6a4188-Screen_Shot_2017-10-23_at_6.58.06_PM.png"
-alt="Using an external YAML file" 
-caption="Using an external YAML file"
-max-width="70%"
-%}
-
-
-The url that you enter must be a public url of a raw YAML file. For example, if you want to add a link to a yaml file located in a public Github repository, you can use the 'Raw' option from the editor menu:
-
-{% include 
-image.html 
-lightbox="true" 
-file="/images/b4edbf2-Screen_Shot_2017-10-25_at_11.31.21_AM.png" 
-url="/images/b4edbf2-Screen_Shot_2017-10-25_at_11.31.21_AM.png"
-alt="Getting the raw link of a github file" 
-caption="Getting the raw link of a github file"
-max-width="70%"
-%}
-
-This way you can use a single `codefresh.yml` file for different pipelines even in different repositories.
-
-
-
-
-### Switching between YAML and GUI steps
-
-Once you switch to YAML mode, Codefresh will convert the existing GUI steps in the respective YAML syntax. This way you can
-easily upgrade a pipeline to YAML mode, after using the GUI steps and keep your custom commands. Note, that the opposite (going from YAML to GUI steps) is not supported or recommended. You will have start over if you switch to GUI mode.
-
-
-You can easily recreate the predefined GUI steps with the following yml file.
-
-`YAML`
-{% highlight yaml %}
-{% raw %}
-version: '1.0'
-steps:
-  MyAppDockerImage:
-    title: Building Docker Image
-    type: build
-    image_name: kostis-codefresh/my-own-app
-    working_directory: ./
-    tag: ${{CF_BRANCH_TAG_NORMALIZED}}
-    dockerfile: Dockerfile
-  MyUnitTests:
-    title: Running Unit tests
-    image: ${{MyAppDockerImage}}
-    commands: 
-      - ./my-unit-tests.sh
-  PushingToRegistry:
-    type: push
-    title: Pushing To Registry
-    candidate: ${{MyAppDockerImage}}
-    tag: '${{CF_BRANCH}}'
-  MyIntegrationTests:
-    title: Running Integration tests
-    image: ${{MyAppDockerImage}}
-    commands: 
-      - ./my-integration-tests.sh
-{% endraw %}
-{% endhighlight %}
-
-This file contains 4 steps named, *MyAppDockerImage*, *MyUnitTests*, *PushingToRegistry*, *MyIntegrationTests*. Steps in Codefresh can have arbitrary names.
-
-The first step is a [build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) that creates a Docker image, using a Dockerfile that is located at the root folder of your repository. The image is tagged with the name of the branch. More information for other ways of tagging can be found in the [variables documentation]({{site.baseurl}}/docs/codefresh-yaml/variables/).
-
-The second step is a [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) that runs your unit tests in the context of the image that was just created.
-
-The third step is a [push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/) that pushes the image with the same tag. Since we haven't defined a registry explicitly, the integrated Codefresh registry is used instead.
-
-> Remember that all Docker images of successful builds are always pushed to the Codefresh registry. The push step here is
-shown for demonstration purposes. It can be removed and the image will still be uploaded to the Codefresh registry. The push step is mostly useful for [external Docker registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/).
-
-The last step is another freestyle step that runs integration tests, again inside the Docker image that was created in the first step.
-
-For more information, see the [complete YML syntax]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/).
 
 ## What to read next
 
