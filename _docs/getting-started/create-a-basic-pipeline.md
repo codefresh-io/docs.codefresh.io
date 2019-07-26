@@ -369,7 +369,7 @@ The built-in Docker image storage is very helpful on its own, but it becomes eve
 
 The built-in Docker image storage by Codefresh is ideal for an overview of your images and quick demos. When it comes to production deployments however, your Docker images should be pushed into your own private or public Docker registry.
 
-Kubernetes will then fetch those Docker images from the registry in a well disciplined manner. Remember that Codefresh will automatically keep images from **all** your builds. It is best to decide which images are actually worth to be deployed and only push those to a production registry. 
+Kubernetes will then fetch those Docker images from the registry in a well disciplined manner. Remember that Codefresh will automatically keep images from **all** your builds. It is best to decide which images are actually worth deploying and only push those to a production registry. 
 
 {% include 
 image.html 
