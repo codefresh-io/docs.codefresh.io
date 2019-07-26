@@ -56,7 +56,7 @@ Current pricing for Codefresh builds is always shown in the [marketplace page](h
 
 ## Step 0 - Create a Codefresh access token
 
-To start the installation process log into your Codefresh account and visit the [tokens](https://g.codefresh.io/account-admin/account-conf/tokens) area by selecting *Account Settings* from the left sidebar and then clicking on the *tokens* tab. 
+To start the installation process log into your Codefresh account and visit the [API Keys](https://g.codefresh.io/user/settings) area by selecting *User Settings* from the left sidebar and then scrolling down to the  *API Keys* section.
 
 Then click the [generate](https://g.codefresh.io/account-admin/account-conf/tokens#autogen=google-marketplace) button to create a new token.
 
@@ -69,7 +69,7 @@ caption="Generating a Codefresh API token"
 alt="Generating a Codefresh API token"
 %}
 
-You can give your token any name you wish so that you can remember its purpose. The token is tied to your Codefresh account and should be considered sensitive information. After you copy the token there is no way to get it back. Copy it into your clipboard before closing the dialog.
+You can give your token any name you wish so that you can remember its purpose. The token is tied to your Codefresh account and should be considered sensitive information. Give access to all scopes (Check all boxes) After you copy the token there is no way to get it back. Copy it into your clipboard before closing the dialog.
 
 With the token at hand we can go to the Google marketplace.
 
