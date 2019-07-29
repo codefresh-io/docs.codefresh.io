@@ -290,7 +290,7 @@ metadata:
 rules:
   - apiGroups: [""]
     resources: ["*"]
-    verbs: ["list", "watch", "get"] 
+    verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
 ---
 apiVersion: v1
 kind: ServiceAccount
