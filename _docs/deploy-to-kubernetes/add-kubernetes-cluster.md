@@ -177,7 +177,7 @@ The integration between Codefresh and your Kubernetes cluster is API based and r
 The configurations you'll be required to add are:
 
 {:start="1"}
-1. Name - Any name of your choosing, that will represent your cluster context in Codefresh.
+1. Name - Any name of your choosing, that will represent your cluster context in Codefresh. Do not use spaces, dots or other strange characters in the name. 
  
 {:start="2"}
 2. Host - The full URL of the Kubernetes API endpoints including protocol and port
