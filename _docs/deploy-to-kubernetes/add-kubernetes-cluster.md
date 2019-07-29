@@ -276,7 +276,7 @@ rules:
 {% endraw %}
 {% endhighlight %}
 
-Note that these permissions will only allow Codefresh to read the cluster resources and populate the respective dashboards. You need to give more privileges for actual deployments.
+Note that these permissions will only allow Codefresh to read the cluster resources and populate the respective dashboards. You need to give more privileges for actual deployments. For more information see the [Kubernetes RBAC documentation page](https://kubernetes.io/docs/reference/access-authn-authz/rbac/).
 
 Here is an example with role + service account + binding.
 
