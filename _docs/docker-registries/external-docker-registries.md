@@ -33,23 +33,9 @@ Each configuration must be given a unique name, which you can later reference in
 {% include image.html lightbox="true" file="/images/2924d81-registry-name.png" url="/images/2924d81-registry-name.png" alt="Specify Docker Registry Name" max-width="65%" %}
 
 ## Pushing an image
-Once your registry configuration is all set up you can start pushing you images to it.
+Once your registry configuration is all set up you can start pushing your images to it.
 
-Codefresh provides you with two options of how to push an image to a registry.
-
-{:.text-secondary}
-### Using the Pipelines view
-
-{:start="1"}
-1. Navigate to a repository **Pipelines** view
-
-{:start="2"}
-2. Under **Build and Unit Test** select your preconfigured registry.
-{% include image.html lightbox="true" file="/images/22ecd84-pipeline-registry.png" url="/images/22ecd84-pipeline-registry.png" alt="Pipeline Registry" max-width="45%" %}
-
-{:.text-secondary}
-### Using a codefresh.yml file
-In a push step you can place your registry configuration name in the `registry` field
+In a [push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/)  you can place your registry configuration name in the `registry` field
 
   `codefresh.yml`
 {% highlight yaml %}
@@ -60,6 +46,8 @@ push_step:
   tag: {% raw %}${{CF_BRANCH}}{% endraw %}
   registry: <your-registry-configuration-name>
 {% endhighlight %}
+
+For more details see the [image pushing page]({{site.baseurl}}/docs/docker-registries/push-image-to-a-docker-registry/).
 
 
 

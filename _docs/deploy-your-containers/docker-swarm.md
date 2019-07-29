@@ -8,9 +8,9 @@ redirect_from:
 toc: true
 ---
 
-Codefresh can easily deploy your application to [Docker Swarm](https://docs.docker.com/engine/swarm/) using either [GUI or YAML]({{ site.baseurl }}/docs/configure-ci-cd-pipeline/pipelines/)  pipelines.
+Codefresh can easily deploy your application to [Docker Swarm](https://docs.docker.com/engine/swarm/) using [Codefresh pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/).
 
-You will need to provide
+You will need to provide:
 
 1. The `docker-stack.yml` that contains the definition of the application
 1. The host where your Docker Swarm is running
@@ -93,9 +93,9 @@ max-width="70%"
 %}
 
 
-### Deploy to Docker Swarm with a YML step
+## Deploy to Docker Swarm with a YML step
 
-Once all the variables are set you can use the following [freestyle step]({{ site.baseurl }}/docs/codefresh-yaml/steps/freestyle/) to deploy to your cluster.
+Once all the variables are set you can use the following [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) to deploy to your cluster.
 
   `codefresh.yml`
 {% highlight yaml %}
@@ -141,27 +141,85 @@ deploy_to_swarm:
 
 
 
-### Deploy to Docker Swarm using the pipeline's UI deploy step
+## Create a CI/CD pipeine for Docker swarm
 
-You can also use the [GUI pipeline]({{ site.baseurl }}/docs/getting-started/create-a-basic-pipeline/) within Codefresh to deploy to Docker swarm.
-
-
-1. Select **Codefresh's Deploy Images** in the pipeline's and select `codefresh/remote-docker:latest`.
-1. As a deploy command use <br>
-   {% raw %}`rdocker ${{RDOCKER_HOST}} docker stack deploy --compose-file docker-stack.yml ${{STACK_NAME}}`{% endraw %}.
-
+Here is the full pipeline:
 
 {% include 
 image.html 
 lightbox="true" 
-file="/images/0a66a41-image3.png" 
-url="/images/0a66a41-image3.png"
-alt="image3.png" 
-caption="GUI Deploy Step"
-max-width="70%"
+file="/images/examples/docker-swarm/docker-swarm-pipeline.png" 
+url="/images/examples/docker-swarm/docker-swarm-pipeline.png"
+alt="Docker Swarm pipeline" 
+caption="Docker Swarm pipeline"
+max-width="100%"
 %}
+
+And here is the pipeline definition:
+
+ `codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+stages:
+  - prepare   
+  - build
+  - deploy
+steps:
+  main_clone:
+    title: Cloning main repository...
+    stage: prepare
+    type: git-clone
+    repo: 'codefreshdemo/example-voting-app'
+    revision: master
+    git: github-1    
+  MyResultDockerImage:
+    title: Building Result Docker Image
+    stage: build
+    type: build
+    image_name: resultApp
+    working_directory: ./result/
+    tag: master
+    dockerfile: Dockerfile  
+  MyVoteDockerImage:
+    title: Building Vote Docker Image
+    stage: build
+    type: build
+    image_name: voteApp
+    working_directory: ./vote/
+    tag: master
+    dockerfile: Dockerfile  
+  MyWorkerDockerImage:
+    title: Building Worker Docker Image
+    stage: build
+    type: build
+    image_name: workedApp
+    working_directory: ./worker/
+    tag: master
+    dockerfile: Dockerfile 
+  DeployToSwarmNow:
+    image: codefresh/remote-docker
+    working_directory: ${{main_clone}}
+    stage: deploy
+    commands:
+      - rdocker ${{RDOCKER_HOST}} docker login ${{CFCR_REGISTRY}} -u ${{CF_USER_NAME}} -p ${{CFCR_PASSWORD}} \&\& docker stack deploy --compose-file docker-compose.yml --with-registry-auth ${{STACK_NAME}}
+    environment:
+      - SSH_KEY=${{SSH_KEY}}
+{% endraw %}
+{% endhighlight %}
+
+In this example we use the [internal Codefresh resistry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/). You can also use any other [external registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) to store your images.
+
+## What to read next
+
+* [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
+* [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
+* [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
+* [How pipelines work]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
+
+
      
 
-**Notice:** The UI deploy step will run on any build. Make sure that your automated builds run only on a specific branch trigger.
+
 
 
