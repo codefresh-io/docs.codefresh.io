@@ -23,7 +23,7 @@ if you want to quickly share a feature with a colleague or a customer.
 
 ## Launching a Docker image using Codefresh
 
-Docker images play a central role in Codefresh. The [basic CI tutorial]({{ site.baseurl }}/docs/getting-started/create-a-basic-pipeline/) describes how you can easily create a Docker image from your source code.
+Docker images play a central role in Codefresh. The [basic CI tutorial]({{site.baseurl}}/docs/getting-started/create-a-basic-pipeline/) describes how you can easily create a Docker image from your source code.
 
 In this section we will take this one step further and actually launch the result Docker image.
 Codefresh has the unique capability of launching a docker image (using [Docker Swarm](https://docs.docker.com/engine/swarm/) behind the scenes) on the same hosted environment that Codefresh itself runs.
@@ -38,39 +38,9 @@ max-width="80%"
 
 This means that with zero effort from your side you can quickly inspect the status of your application using the Codefresh infrastructure. 
 
-As a first step you need to tell Codefresh what is the port exposed by your application. Codefresh needs this information
-in order to launch the Docker image and allow you to access it via your web browser. 
-
-The launch settings are at the same screen as the build settings.  Find your project in the Codefresh dashboard and click on the small gear icon:
-
-{% include 
-image.html 
-lightbox="true" 
-file="/images/getting-started/quick-start-ci/dashboard.png" 
-url="/images/getting-started/quick-start-ci/dashboard.png" 
-alt="Changing build settings" 
-caption="Changing build settings (click image to enlarge)" 
-max-width="40%" 
-%}
-
-### Selecting the exposed port
-
-This time we will select the tab *Launch settings*: 
 
 
-{% include 
-image.html 
-lightbox="true" 
-file="/images/getting-started/quick-start-test-pr/port-setting.png" 
-url="/images/getting-started/quick-start-test-pr/port-setting.png" 
-alt="Selecting a service port" 
-caption="Selecting a service port (click image to enlarge)" 
-max-width="60%" 
-%}
 
-The sample application we are using here is exposing its web interface at port 5000. We therefore
-set this value in the respective option. Now Codefresh knows which port should be exposed in the test environment
-(i.e. which port of the Docker container should be made available for external connections).
 
 
 To start a Docker image as a demo environment, locate it in the *Images* section and click the *launch* button.
@@ -86,7 +56,10 @@ max-width="80%"
 %}
 
 
-Our sample application is self-contained (it consists of only a single Docker image) so choose *standalone* for the popup menu. Codefresh can also launch demo environments for applications that consist of multiple images (e.g. a service image and a database image). This capability happens with Codefresh *compositions* which are described in detail in section [On-Demand Environments]({{ site.baseurl }}/docs/on-demand-test-environment/create-composition/).
+Our sample application is self-contained (it consists of only a single Docker image) so choose *standalone* for the popup menu. Codefresh can also launch demo environments for applications that consist of multiple images (e.g. a service image and a database image). This capability happens with Codefresh *compositions* which are described in detail in section [On-Demand Environments]({{site.baseurl}}/docs/on-demand-test-environment/create-composition/).
+
+Codefresh automatically knows which port should be exposed in the test environment
+(i.e. which port of the Docker container should be made available for external connections). The sample application we are using here is exposing its web interface at port 5000 (but a random port will actually be assigned for external connections).
 
 Once your application is launched, Codefresh will present the run log. You will see the same messages that would appear if you executed the `docker run` command locally. 
 
