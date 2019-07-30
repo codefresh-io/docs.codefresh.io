@@ -10,31 +10,31 @@ redirect_from:
   - /docs/integrations/git-providers/configure-a-bitbucket-server-webhook/  
 toc: true
 ---
-Creating an account with Codefresh using one of the supported Git providers (Github, Gitlab, Bitbucket) gives you immediate access to the repositories of the linked provider.
+Creating an account with Codefresh using one of the supported Git providers (GitHub, GitLab, Bitbucket) gives you immediate access to the repositories of the linked provider.
 
-You can add repositories from the other git providers regardless of the one that you used for sign-up. For example, you can use Gitlab to signup with Codefresh, but still build repositories that exist in Bitbucket.
+You can add repositories from the other git providers regardless of the one that you used for sign-up. For example, you can use GitLab to sign up with Codefresh, but still build repositories that exist in Bitbucket.
 
 You can even add multiple accounts from each Git provider (if you have more than one) allowing you to use Codefresh as a central CI/CD solution that can access all your git repositories regardless of the backing git provider.
 
 Currently Codefresh supports:
 
-* Github Cloud
-* Github On premises
+* GitHub Cloud
+* GitHub On premises
 * Bitbucket
-* Gitlab Cloud
-* Gitlab On premises
+* GitLab Cloud
+* GitLab On premises
 * Azure DevOps Git
 * Atlassian Stash (old version of Bibucket Server)
 * Bitbucket Server (new version of Stash)
 
-Atlassian Stash/Bitbucket server as well as the on-premise version of Gitlab and Github are only available to Codefresh enterprise customers.
+Atlassian Stash/Bitbucket server as well as the on-premise version of GiTlab and GitHub are only available to Codefresh enterprise customers.
 
 
 ## Adding more GIT providers to your Codefresh account.
 
 By default, you have direct access to git repositories that exist in the GIT provider that you used while signing up for Codefresh. You can easily create Codefresh projects that checkout code from that GIT provider without any extra configurations.
 
-To add additional GIT providers go to your Account Configuration, by clicking on *Account Settings* on the left sidebar. On the first section called *Integrations* click the *Configure* button next to *Git providers*.
+To add additional GIT providers, go to your Account Configuration, by clicking on *Account Settings* on the left sidebar. On the first section called *Integrations* click the *Configure* button next to *Git providers*.
 
 {% include image.html lightbox="true" file="/images/integrations/codefresh-integrations.png" url="/images/integrations/codefresh-integrations.png" alt="Codefresh Account Integration" max-width="80%" %}
 
@@ -60,10 +60,10 @@ or the provider does not support it, you need to manually create credentials by 
 In the case of an on-premise GIT provider you also need to fill in the URL where the provider is installed.
 
 
-## Github
+## GitHub
 
-For the **OAuth2 method** you only need to decide on public/private repository access, enter a name for your connection and click *Save*. Then accept the permissions dialog. This is the easiest and recommended way to integrate Github. Notice that if
-you used Github when you [created your Codefresh account]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/), this integration is already setup for you.
+For the **OAuth2 method** you only need to decide on public/private repository access, enter a name for your connection and click *Save*. Then accept the permissions dialog. This is the easiest and recommended way to integrate GitHub. Notice that if
+you used GitHub when you [created your Codefresh account]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/), this integration is already setup for you.
 
 
 For the **Access Token** method you need:
@@ -72,11 +72,11 @@ For the **Access Token** method you need:
 * an access token
 
 
-To create an access token, go to your Github *settings* and select the *Developer settings* option from the left
+To create an access token, go to your GitHub *settings* and select the *Developer settings* option from the left
 sidebar. The select *Personal access tokens* from the left menu.
-For more information see the [Github Documentation page](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/){:target="_blank"}
+For more information see the [GitHub Documentation page](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/){:target="_blank"}
 
-The "token description" you enter in your Github account in order to create the token is completely arbitrary (use "Codefresh" for an example). Once you have the token, paste it in the Codefresh UI and click *Test connection*. If everything is OK you can
+The "token description" you enter in your GitHub account in order to create the token is completely arbitrary (use "Codefresh" for an example). Once you have the token, paste it in the Codefresh UI and click *Test connection*. If everything is OK, you can
 now save the git integration.
 
 The minimum permissions for the token are:
@@ -126,7 +126,7 @@ For the **Application Password** method you need:
 * the name of your Bitbucket account/email address
 * A Bitbucket application password.
 
-To create an application password go to your *Bitbucket settings* and select *App passwords* from the sidebar.
+To create an application password, go to your *Bitbucket settings* and select *App passwords* from the sidebar.
 Click the button to create one. For more information see the [Bitbucket Documentation page](https://confluence.atlassian.com/bitbucket/app-passwords-828781300.html){:target="_blank"}
 
 The minimum permissions needed by Codefresh are shown below.
@@ -145,7 +145,7 @@ now save the git integration.
 
 ## Azure DevOps
 
-For Azure you need to create a [personal access token](https://docs.microsoft.com/en-us/azure/devops/integrate/get-started/authentication/pats?view=azure-devops). Sign in your Azure Devops account and click on your profile icon on the top right corner. Then select *Security*:
+For Azure you need to create a [personal access token](https://docs.microsoft.com/en-us/azure/devops/integrate/get-started/authentication/pats?view=azure-devops). Sign in your Azure DevOps account and click on your profile icon on the top right corner. Then select *Security*:
 
 
 {% include image.html 
@@ -158,12 +158,12 @@ alt="Azure DevOps Security"
 %}
 
 
-On the screen that will appear click the *New token* Button. Enter an arbitraty name for the token and select the correct
-**Organization** from the drop down menu. Remember your organization name as you will use it later in the Codefresh side.
+On the screen that will appear click the *New token* Button. Enter an arbitrary name for the token and select the correct
+**Organization** from the drop-down menu. Remember your organization name as you will use it later in the Codefresh side.
 Select an expiration date for your token
 
 > At the time of writing Azure DevOps does not have the option to create a token that is valid for ever. Choose a large
-time period and make sure that you have a policy in place for re-newing your tokens so that Codefresh can continue to read your git repo.
+time period and make sure that you have a policy in place for renewing your tokens so that Codefresh can continue to read your GIT repo.
 
 {% include image.html 
 lightbox="true" 
@@ -241,7 +241,7 @@ alt="Select GIT provider"
 %}
 
 >Notice that for all supported Git providers Codefresh will automatically create all the webhooks needed for
-triggering pipelines when a commit (or other event) happens. 
+triggering pipelines when a commit (or another event) happens. 
 
 After adding the repository Codefresh will behave exactly the same, regardless of the selected git provider.
 You will be able to [create pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/) for different git providers in exactly the same manner.

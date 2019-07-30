@@ -9,7 +9,7 @@ redirect_from:
   - /docs/python/django/
 toc: true
 ---
-Using this repository we’ll help you get up to speed with basic functionality such as: compiling, testing and building Docker images.
+Using this repository, we’ll help you get up to speed with basic functionality such as: compiling, testing and building Docker images.
 
 This project uses `Python` and `Django` to build an application which will eventually become a distributable Docker image.
  
@@ -40,5 +40,5 @@ steps:
 {{site.data.callout.callout_info}}
 ##### Example
 
-Just head over to the example [__repository__](https://github.com/codefreshdemo/cf-example-python-djanga){:target="_blank"} in Github and follow the instructions there. 
+Just head over to the example [__repository__](https://github.com/codefreshdemo/cf-example-python-djanga){:target="_blank"} in GitHub and follow the instructions there. 
 {{site.data.callout.end}}

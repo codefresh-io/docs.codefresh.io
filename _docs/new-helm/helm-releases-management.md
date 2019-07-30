@@ -86,7 +86,7 @@ max-width="50%"
 
 ## Helm GUI actions
 
-From the main release screen you have some additional actions.
+From the main release screen, you have some additional actions.
 
 You can issue a [Helm test](https://github.com/kubernetes/helm/blob/master/docs/chart_tests.md){:target="_blank"} by clicking on the 'Run Test' button on the desired chart row.
 

@@ -24,7 +24,7 @@ Once launched the application presents a simple message at localhost:8080 and al
 
 The easiest way to use Gradle is with [multi-stage builds](https://blog.docker.com/2017/07/multi-stage-builds/). With multi-stage builds a Docker build can use one base image for compilation/packaging/unit tests and a different one that will hold the runtime of the application. This makes the final image more secure and smaller in size (as it does not contain any development/debugging tools).
 
-In the case of Gradle, you can use a base image that has the full JDK and gradle itself, while the final image has the JRE and nothing else.
+In the case of Gradle, you can use a base image that has the full JDK and Gradle itself, while the final image has the JRE and nothing else.
 
 The example project is actually using multi-stage builds by default.
 
@@ -52,9 +52,9 @@ ENTRYPOINT ["java", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseCGroupMemoryLim
 
 This docker build does the following:
 
-1. Starts from the gradle image
+1. Starts from the Gradle image
 1. Copies the Java source code inside the container
-1. Compiles the code and runs unit tests (with `gradle build`)
+1. Compiles the code and runs unit tests (with `Gradle build`)
 1. Discards the Gradle image with all the compiled classes/unit test results etc.
 1. Starts again from the JRE image and copies **only** the JAR file created before
 
@@ -116,7 +116,7 @@ ENTRYPOINT ["java", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseCGroupMemoryLim
 {% endraw %}
 {% endhighlight %}
 
-This means that _before_ building the Docker image, the compilation step (`gradle build`) is expected to be finished already. Therefore in the `codefresh.yml` file we need at least two steps. The first one should prepare the JAR file and the second
+This means that _before_ building the Docker image, the compilation step (`gradle build`) is expected to be finished already. Therefore, in the `codefresh.yml` file we need at least two steps. The first one should prepare the JAR file and the second
 one should create the Docker image.
 
 ### Create a CI pipeline for a Gradle JAR 

@@ -21,7 +21,7 @@ There are two ways to use a Codefresh variable in your pipelines.
 
 > If you are unsure about which form you need to use, feel free to use {% raw %}`${{MY_VARIABLE_EXAMPLE}}`{% endraw %} everywhere. This is the Codefresh specific form and should function in all section of `codefresh.yml`. 
 
-For example you can print out the branch as an environment variable like this:
+For example, you can print out the branch as an environment variable like this:
 
 `YAML`
 {% highlight yaml %}
@@ -141,11 +141,11 @@ steps:
 In the example above you can see the `MyAppDockerImage` variable that denotes a Docker image created dynamically within this single pipeline. In the second step we use it as a Docker context in order to run unit tests.
 
 
-## Github Release Variables
+## GitHub Release Variables
 
-Github allows you to create [releases](https://help.github.com/articles/creating-releases/) for marking specific git tags for general availability.
+GitHub allows you to create [releases](https://help.github.com/articles/creating-releases/) for marking specific git tags for general availability.
 
-You can set a [trigger]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/) for Github releases. When a Github release happens the following variables are also available:
+You can set a [trigger]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/) for GitHub releases. When a GitHub release happens, the following variables are also available:
 
 
 
@@ -157,9 +157,9 @@ You can set a [trigger]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/
 | {% raw %}`${{CF_RELEASE_ID}}`{% endraw %}       | Internal ID for this release   |
 | {% raw %}`${{CF_PRERELEASE_FLAG}}`{% endraw %}  | true if the release if marked as non-production ready, false if it is ready for production   |
 
-## Github Pull Request Variables
+## GitHub Pull Request Variables
 
-When a pull request is closed in Github, the following variables are also available
+When a pull request is closed in GitHub, the following variables are also available
 
 {: .table .table-bordered .table-hover}
 | Variable        | Description                                            |
@@ -222,7 +222,7 @@ cf_export $MY_VAR # Don't do this
 cf_export MY_VAR # Correct syntax
 ```
 
->There is nothing really magic about `cf_export`. It is a normal script. You can see its contents on your own by entering the commmand `cat /codefresh/volume/cf_export` on any [Codefresh freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) inside a pipeline.
+>There is nothing really magic about `cf_export`. It is a normal script. You can see its contents on your own by entering the command `cat /codefresh/volume/cf_export` on any [Codefresh freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) inside a pipeline.
 
 
  

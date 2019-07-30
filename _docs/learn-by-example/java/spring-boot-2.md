@@ -43,7 +43,7 @@ ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app/spring
 {% endraw %}
 {% endhighlight %}
 
-This means that _before_ building the Docker image, the compilation step (`mvn package`) is expected to be finished already. Therefore in the `codefresh.yml` file we need at least two steps. The first one should prepare the JAR file and the second
+This means that _before_ building the Docker image, the compilation step (`mvn package`) is expected to be finished already. Therefore, in the `codefresh.yml` file we need at least two steps. The first one should prepare the JAR file and the second
 one should create the Docker image.
 
 ### Create a CI pipeline for Spring

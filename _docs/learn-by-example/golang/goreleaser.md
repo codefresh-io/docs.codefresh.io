@@ -10,16 +10,16 @@ toc: true
 
 * Binary packages for each OS/arch
 * Archives
-* Github releases
+* GitHub releases
 * Docker images
 * Snap/RPM/deb/Homebrew
 
 for Go applications.
 
-Codefresh can also create Docker images on its own, but goreleaser is still useful for the binary artifact creation capability.
+Codefresh can also create Docker images on its own, but Goreleaser is still useful for the binary artifact creation capability.
 
 
-## Run goreleaser with docker
+## Run Goreleaser with docker
 
 You can see the example project at [https://github.com/codefresh-contrib/goreleaser-sample-app](https://github.com/codefresh-contrib/goreleaser-sample-app). The repository contains a simple Golang web application with a [goreleaser configuration](https://github.com/codefresh-contrib/goreleaser-sample-app/blob/master/.goreleaser.yml)
 
@@ -39,7 +39,7 @@ In the most simple case you case run goreleaser in a [freestyle step]({{site.bas
 {% endraw %}
 {% endhighlight %}
 
-More typically however you also need to provide a GIThub token so that github releases are also available. There are two ways to do that.
+More typically however you also need to provide a GitHub token so that GitHub releases are also available. There are two ways to do that.
 
 
 ## Create a CI pipeline that compiles/releases Go
@@ -86,7 +86,7 @@ steps:
 
 Here we use [cf_export]({{site.baseurl}}/docs/codefresh-yaml/variables/#exporting-environment-variables-from-a-freestyle-step) and the [codefresh CLI](https://codefresh-io.github.io/cli/) in order to ask Codefresh about the existing token (that was used in git integrations). In your case you need to change `github-1` with the name of your [Github integration]({{site.baseurl}}/docs/integrations/git-providers/).
 
-It also possible to pass a GITHUB_TOKEN directly in the pipeline, if you don't want to re-use the existing one. This is an alternative way of allowing goreleaser to create github releases.
+It also possible to pass a GITHUB_TOKEN directly in the pipeline, if you don't want to re-use the existing one. This is an alternative way of allowing Goreleaser to create GitHub releases.
 
 {% include image.html 
 lightbox="true" 
@@ -98,7 +98,7 @@ max-width="70%"
 %}
 
 You could also store the token in [shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/).
-Regardless of the way you choose to pass the Github token, the final step is to make sure that your pipeline is only executed for tag events.
+Regardless of the way you choose to pass the GitHub token, the final step is to make sure that your pipeline is only executed for tag events.
 
 
 {% include image.html 

@@ -7,7 +7,7 @@ redirect_from:
   - /docs/launch-composition-1/
 toc: true
 ---
-Using this repository we'll help you get up to speed with basic functionality such as: `building Docker images` and `launching composition`.
+Using this repository, we'll help you get up to speed with basic functionality such as: `building Docker images` and `launching composition`.
 
 This project uses `Node JS` to build an application which will eventually become a distributable Docker image. 
 
@@ -45,7 +45,7 @@ More about launch_composition step you can read [**here**]({{site.baseurl}}/docs
 
 {{site.data.callout.callout_warning}}
 ##### Your environments are limited 
-Be aware that the number of environment you can run is limited. When using the same environment name the old one would terminate before launching the the new environment. That way you can control the number of environments running in your account. 
+Be aware that the number of environments you can run is limited. When using the same environment name the old one would terminate before launching the new environment. That way you can control the number of environments running in your account. 
 {{site.data.callout.end}}
 
 {{site.data.callout.callout_info}}

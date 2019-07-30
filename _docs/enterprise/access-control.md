@@ -11,7 +11,7 @@ of users and teams with proper access level.
 
 The first mechanism is a way to restrict access to parts of the UI that are intended for account administrators. For example, only an account administrator should be able to change integrations with [git providers]({{site.baseurl}}/docs/integrations/git-providers/) and [cloud services]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/). 
 
-The second mechanism is policy based access control via attributes (ABAC) on Kubernetes clusters and pipelines. This allows account administrators to define exactly which teams have access to which clusters and pipelines. For example, access to production clusters should only be granted to a subset of trusted developers/operators. On the other hand access to a QA/staging cluster can be less strict.
+The second mechanism is policy-based access control via attributes (ABAC) on Kubernetes clusters and pipelines. This allows account administrators to define exactly which teams have access to which clusters and pipelines. For example, access to production clusters should only be granted to a subset of trusted developers/operators. On the other hand, access to a QA/staging cluster can be less strict.
 
 There is also the additional layer of permissions for resources (such as concurrent builds and environments) as explained in the [Enterprise Account Management]({{site.baseurl}}/docs/enterprise/ent-account-mng/) page. 
 
@@ -76,7 +76,7 @@ You can mark your clusters in the [Cloud provider integration page]({{site.baseu
   max-width="70%"
     %}
 
-To add a new tag/attribute, hover your mouse on a cluster and click on the *Edit tags* button on the right. You will get a new dialog where you can add multiple tags on a single clusters.
+To add a new tag/attribute, hover your mouse on a cluster and click on the *Edit tags* button on the right. You will get a new dialog where you can add multiple tags on a single cluster.
 
 {% include image.html
   lightbox="true"
@@ -177,12 +177,12 @@ For clusters:
 
 * `Create` - cluster creation requires someone to be account administrator anyway so currently this permission isn’t really necessary 
 * `Read` - can only see existing allowed clusters without any ability to change them
-* `Update` - can see and edit existing allowed cluster resources (which means also perform [installation and rollbacks of Helm charts]({{site.baseurl}}/docs/new-helm/helm-best-practices/)). Tags are managed from account settings so this permission doesn’t apply to it currently.
-* `Delete` - cluster removal requires someone to be account administrator anyway so currently this permissions isn’t really necessary
+* `Update` - can see and edit existing allowed cluster resources (which means also perform [installation and rollbacks of Helm charts]({{site.baseurl}}/docs/new-helm/helm-best-practices/)). Tags are managed from account settings, so this permission doesn’t apply to it currently.
+* `Delete` - cluster removal requires someone to be account administrator anyway so currently this permission isn’t really necessary
 
 For pipelines:
 
-* `Create` - can only create create new pipelines, not see, edit (which includes tagging them) or delete them. This permission should also go hand in hand with additional permissions like read/edit untagged pipelines
+* `Create` - can only create new pipelines, not see, edit (which includes tagging them) or delete them. This permission should also go hand in hand with additional permissions like read/edit untagged pipelines
 * `Read` - view allowed pipelines only
 * `Update` - see and edit allowed pipelines only (including tagging them)
 * `Delete` - can delete allowed pipelines only

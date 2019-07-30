@@ -11,7 +11,7 @@ Codefresh is very flexible when it comes to pipeline complexity and depth. You c
  * Sequential pipelines that have some parallel parts (intermediate)
  * Parallel pipelines where step order is explicitly defined (advanced)
 
-With the parallel execution mode you can define complex pipelines with fan-in/out configurations capable of matching even the most complicated workflows within an organization.
+With the parallel execution mode, you can define complex pipelines with fan-in/out configurations capable of matching even the most complicated workflows within an organization.
 
 >Notice that in Codefresh parallel execution is unrelated with [stages]({{site.baseurl}}/docs/codefresh-yaml/stages/). Stages are only a way to visually organize your pipeline steps. The actual execution is independent from the visual layout in the logs view.
 
@@ -267,7 +267,7 @@ In the example above we have explicitly defined that even if the integration or 
 In any pipeline step, Codefresh automatically attaches a [shared volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) that is used to transfer artifacts between steps. The same volume is also shared between steps that run in parallel.
 
 
-Here is an example where two parallel steps are writing two files. After they finish execution we list the contents of the project folder.
+Here is an example where two parallel steps are writing two files. After they finish execution, we list the contents of the project folder.
 
 `YAML`
 {% highlight yaml %}
@@ -378,7 +378,7 @@ second_step:
          - skipped
 {% endhighlight %}
 
-Finally if you don't care about the completion status the syntax is:
+Finally, if you don't care about the completion status the syntax is:
 
 {% highlight yaml %}
 second_step:
@@ -395,7 +395,7 @@ will wait for the next step to either run successfully or be skipped.
 
 >Also notice that the name `main_clone` is reserved for the automatic clone that takes place in the beginning of pipelines that are linked to a git repository. You need to define which steps depend on it (probably the start of your graph) so that `git checkout` happens before the other steps.
 
-As an example let's assume that you have the following steps in a pipeline
+As an example, let's assume that you have the following steps in a pipeline
 
 1. A build step that creates a docker image
 1. A freestyle step that runs unit tests inside the docker image
@@ -458,7 +458,7 @@ steps:
 
 If you run the pipeline you will see that Codefresh automatically understands that `MyIntegrationTests` and `MyCleanupPhase` can run in parallel right after the unit tests finish.
 
-Also notice the `fail_fast: false` line in the unit tests. By default if *any* steps fails in a pipeline the whole pipeline is marked as a failure. With the `fail_fast` directive we can allow the pipeline to continue so that other steps that depend on the failed step can still run even.
+Also notice the `fail_fast: false` line in the unit tests. By default, if *any* steps fails in a pipeline the whole pipeline is marked as a failure. With the `fail_fast` directive we can allow the pipeline to continue so that other steps that depend on the failed step can still run even.
 
 
 ### Multiple Step dependencies
@@ -588,7 +588,7 @@ For maximum flexibility you can define a custom conditional for a step.
 
 It is hard to describe all possible cases, because Codefresh support a [mini DSL]({{site.baseurl}}/docs/codefresh-yaml/expression-condition-syntax/) for conditions. All examples mentioned in [conditional execution]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/) are still valid in parallel pipelines.
 
-For example run this step only if a PR is opened against the production branch:
+For example, run this step only if a PR is opened against the production branch:
 
 {% highlight yaml %}
 {% raw %}
@@ -703,7 +703,7 @@ You can use the directive `fail_fast: false`
 * in a specific step to mark it as ignored if it fails
 * at the root level of the pipeline if you want to apply it to all steps
 
-Therefore if you want your pipeline to keep running to completion regardless of errors the following syntax is possible:
+Therefore, if you want your pipeline to keep running to completion regardless of errors the following syntax is possible:
 
 ```
 version: '1.0'
@@ -725,7 +725,7 @@ my_cleanup_step:
           myCondition: workflow.result == 'failure'
 {% endhighlight %}
 
-As an another example we have a special step that will send an email if the pipeline succeeds or if load-tests fail:
+As another example we have a special step that will send an email if the pipeline succeeds or if load-tests fail:
 
 {% highlight yaml %}
 my_email_step:

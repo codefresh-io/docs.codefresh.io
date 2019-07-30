@@ -7,7 +7,7 @@ redirect_from:
   - /docs/run-unit-tests/
 toc: true
 ---
-Using this repository we'll help you get up to speed with basic functionality such as: compiling, testing and building Docker images.
+Using this repository, we'll help you get up to speed with basic functionality such as: compiling, testing and building Docker images.
 
 This project uses Node Js to build an application which will eventually become a distributable Docker image.
 You can use the [**freestyle**]({{ site.baseurl }}/docs/codefresh-yaml/steps/freestyle/) step to execute a series of shell commands. The most common use case is to run unit tests on your code.

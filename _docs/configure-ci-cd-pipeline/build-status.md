@@ -24,7 +24,7 @@ caption="Build badge example"
 max-width="80%"
 %}
 
-Clicking  the badge takes you into the build view of the pipeline.
+Clicking the badge takes you into the build view of the pipeline.
 
 ## Finding the build badge of your project 
 
@@ -67,9 +67,9 @@ Copy the snippet in your clipboard.
 
 ## Using the build badge
 
-Paste the snippet in the file/document where you want the badge to be visible (e.g. in a Readme file in Github).
+Paste the snippet in the file/document where you want the badge to be visible (e.g. in a Readme file in GitHub).
 
-For example the markdown syntax is 
+For example, the markdown syntax is 
 
 ```
 [![Codefresh build status]( BADGE_LINK )]( URL_TO_PIPELINE )
@@ -102,7 +102,7 @@ Public logs are disabled by default and you need to explicitly enable them.
 
 >This happens for security reasons. Make sure that the logs you are exposing to the Internet do not have any sensitive information. If you are unsure, you can still use the private badge that shows project status only as explained in the previous section.
 
-To enable the public logs toggle the respective switch in the pipeline settings:
+To enable the public logs, toggle the respective switch in the pipeline settings:
 
 {% include 
 image.html 

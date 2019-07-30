@@ -8,7 +8,7 @@ toc: true
 
 Android applications are using Java/Gradle for their build system. Because Codefresh already supports [Gradle]({{site.baseurl}}/docs/learn-by-example/java/gradle/) it is also very easy to build Android projects.
 
-Any Gradle command can run inside a Docker image that contains the Android SDK. As an example we will use a [Nextcloud](https://hub.docker.com/r/nextcloudci/android) image from Dockerhub.
+Any Gradle command can run inside a Docker image that contains the Android SDK. As an example, we will use a [Nextcloud](https://hub.docker.com/r/nextcloudci/android) image from Dockerhub.
 
 
 ## The example project

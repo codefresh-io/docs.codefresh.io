@@ -49,7 +49,7 @@ caption="Changing the display name"
 max-width="70%"
 %}
 
-Go to the SSO tab, and copy the values for SAML 2.0 Endpoint (HTTP) and SLO Endpoint (HTTP). Click on the View Details link at the X.509 Certificate field.
+Go to the SSO tab and copy the values for SAML 2.0 Endpoint (HTTP) and SLO Endpoint (HTTP). Click on the View Details link at the X.509 Certificate field.
 
 
 {% include image.html 

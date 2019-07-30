@@ -8,9 +8,9 @@ redirect_from:
 toc: true
 ---
 
-It is possible to define and manage Azure Registrypipeline triggers with the Codefresh UI.
+It is possible to define and manage Azure Registry Pipeline triggers with the Codefresh UI.
 
-This allows you to trigger Codefresh pipelines when an Azure Registy event happens (e.g. a new Docker image is uploaded).
+This allows you to trigger Codefresh pipelines when an Azure Registry event happens (e.g. a new Docker image is uploaded).
 
 ## Manage Azure Triggers with Codefresh UI
 

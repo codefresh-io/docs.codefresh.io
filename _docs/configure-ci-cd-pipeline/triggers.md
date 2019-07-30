@@ -55,7 +55,7 @@ For all trigger types you can also use the [Codefresh CLI](https://codefresh-io.
 
 ## Creating a new trigger for a pipeline
 
-By default when you create a new project from a GIT provider it will start with a GIT trigger that runs on every commit.
+By default, when you create a new project from a GIT provider it will start with a GIT trigger that runs on every commit.
 
 {% include image.html
 lightbox="true"
@@ -68,7 +68,7 @@ max-width="50%"
 
 You can either delete this trigger, modify it, or add new ones.
 
-To add a new trigger go to the *Triggers* tab in your pipeline editor and click the *Add Trigger* button. This will bring up the respective dialog where you are add a new trigger.
+To add a new trigger, go to the *Triggers* tab in your pipeline editor and click the *Add Trigger* button. This will bring up the respective dialog where you are adding a new trigger.
 
 {% include image.html
 lightbox="true"

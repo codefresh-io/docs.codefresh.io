@@ -25,7 +25,7 @@ steps:
   build_image_vote:
     title: Building Voting Image
     type: build
-    #Important: rename this image to to a valid repository in your registry. For example: myUserName/vote
+    #Important: rename this image to a valid repository in your registry. For example: myUserName/vote
     image_name: containers101/vote
     #The directory should be relative to git repository that is used for cloning
     working_directory: ./vote/
@@ -76,5 +76,5 @@ steps:
 {{site.data.callout.callout_info}}
 ##### Example
 
-Just head over to the example [__repository__](https://github.com/containers101/voting-app){:target="_blank"} in Github and follow the instructions there. 
+Just head over to the example [__repository__](https://github.com/containers101/voting-app){:target="_blank"} in GitHub and follow the instructions there. 
 {{site.data.callout.end}}

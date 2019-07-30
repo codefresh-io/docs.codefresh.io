@@ -12,16 +12,16 @@ toc: true
 If you have a long workflow that takes more than several minutes to finish, you might discover that it is automatically
 terminated by the system.
 
-By default the system will terminate a build step that seems "inactive" after 15 minutes. If your
+By default, the system will terminate a build step that seems "inactive" after 15 minutes. If your
 step does not print anything in the log for 15 minutes, it will be considered inactive.
 
-Therefore the build will be terminated if in more than 15 minutes there isn't any update in the build process logs.
+Therefore, the build will be terminated if in more than 15 minutes there isn't any update in the build process logs.
 
 ## Solution
 
 You can choose one of the following suggestions to resolve it:
 
-- Review your Dockerfile, and steps of your workflow to decrease a time of performing of the workflow
+- Review your Dockerfile and steps of your workflow to decrease a time of performing of the workflow
 - Move to the dedicated infrastructure (Codefresh on-premise version)
 - Add an additional log to the process (see below for an example)
 - Contact us to talk about startup pricing
@@ -30,7 +30,7 @@ You can choose one of the following suggestions to resolve it:
 If your workflow process has been terminated by the system for another reason that is not listed here, please let us know.
 {{site.data.callout.end}}
 
-As an example if you have a long running process that takes more than 15 minutes you can try adding
+As an example, if you have a long running process that takes more than 15 minutes you can try adding
 a command that echoes something every 10 minutes to STDOUT before your command, like this:
 
 

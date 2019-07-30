@@ -5,7 +5,7 @@ group: enterprise
 toc: true
 ---
 
-The Codefresh runner is a helper application that can be installed on your own Kuberentes cluster (behind a company firewall).
+The Codefresh runner is a helper application that can be installed on your own Kubernetes cluster (behind a company firewall).
 It can then build Codefresh pipelines, with full access to secure internal services, without actually compromising the requirements
 of the on-premise installation.
 
@@ -50,7 +50,7 @@ brew tap codefresh-io/venona
 brew install venona
 ```
 
-Create a namespace in your cluster where you want the codefresh runner to be installed:
+Create a namespace in your cluster where you want the Codefresh runner to be installed:
 
 ```
 kubectl create namespace codefresh-runtime
@@ -64,7 +64,7 @@ venona install --kube-namespace codefresh-runtime
 
 After a while you should see a message that the installation process has finished with success. You can run `venona --help` to get additional installation options.
 
-As an example you can define your own location for kubeconfig and/or CLI config:
+As an example, you can define your own location for kubeconfig and/or CLI config:
 
 ```
 venona install --kube-namespace my-codefresh-runtime --verbose --kube-config-path c:/users/kostis/.kube/config --cfconfig c:/Users/Kostis/.cfconfig
@@ -74,7 +74,7 @@ To check the installation result type `venona status --verbose` and you will get
 
 ### Installing on Kubernetes clusters with version earlier than 1.10
 
-If your Kuberentes cluster is using a version earlier than 1.10 you also need to do the following:
+If your Kubernetes cluster is using a version earlier than 1.10 you also need to do the following:
 
 Make sure the `PersistentLocalVolumes` [feature gate](https://kubernetes.io/docs/reference/command-line-tools-reference/feature-gates/) is turned on
 
@@ -121,7 +121,7 @@ Here is a list of the resources that are created during a Runner installation:
 
 * Agent (grouped by `/.*.venona.yaml/`)
   * `service-account.venona.yaml` - The service account that the agent's pod will use at the end
-  * `cluster-role-binding.venona.yaml` - The agent discovering K8S apis by calling to `openapi/v2`, this ClusterRoleBinding binds  bootstraped ClusterRole by Kubernetes `system:discovery` to `service-account.venona.yaml`. This role has only permissions to make a GET calls to non resources urls
+  * `cluster-role-binding.venona.yaml` - The agent discovering K8S apis by calling to `openapi/v2`, this ClusterRoleBinding binds  bootstraped ClusterRole by Kubernetes `system:discovery` to `service-account.venona.yaml`. This role has only permissions to make a GET calls to non-resources URLs
   * `role.venona.yaml` - Allow to `GET`, `CREATE` and `DELETE` pods and persistent volume claims
   * `role-binding.venona.yaml` - The agent is spinning up pods and pvc, this binding binds `role.venona.yaml` to `service-account.venona.yaml`
 * Runtime-environment (grouped by `/.*.re.yaml/`) - Kubernetes controller that spins up all required resources to provide a good caching experience during pipeline execution
@@ -148,7 +148,7 @@ Once installation is complete, you should see the cluster of the runner as a new
   max-width="60%"
     %} 
 
-If you have multiple environments available you can change the default one (shown with a thin blue border) by clicking on the 3 dot menu on the right of each environment. The Codefresh runner installer comes with an option `set-default` that will automatically set as default the new runtime environment.
+If you have multiple environments available, you can change the default one (shown with a thin blue border) by clicking on the 3 dot menu on the right of each environment. The Codefresh runner installer comes with an option `set-default` that will automatically set as default the new runtime environment.
 
 You can even override the runtime environment for a specific pipeline by specifying in the respective section in the [pipeline settings]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/). 
 
@@ -167,7 +167,7 @@ You can even override the runtime environment for a specific pipeline by specify
 
 Once installed, the runner is a normal Kubernetes application like all other applications. You can use your existing tools to monitor it.
 
-Only the runner pod is long-living inside your cluster. All other components (such as the engine) are short lived and exist only during pipeline builds.
+Only the runner pod is long living inside your cluster. All other components (such as the engine) are short lived and exist only during pipeline builds.
 You can always see what the Runner is doing by listing the resources inside the namespace you chose during installation:
 
 ```

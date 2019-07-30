@@ -49,7 +49,7 @@ Freestyle steps are a secure replacement for `docker run` commands.
 
 **Deploy steps** allow to [perform Kubernetes deployments]({{site.baseurl}}/docs/deploy-to-kubernetes/deployment-options-to-kubernetes/) in a declarative manner. They embody the Continuous Deployment aspect of Codefresh.
 
-**Approval steps** allow you to pause pipelines, and wait for human intervention before resuming. They allow you to embrace the concepts of Continuous Delivery.
+**Approval steps** allow you to pause pipelines and wait for human intervention before resuming. They allow you to embrace the concepts of Continuous Delivery.
 
 >Note that Codefresh also supports [parallel workflows]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/) as well as running pipelines [locally on your workstation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/running-pipelines-locally/).
 
@@ -77,7 +77,7 @@ You can use any your pipelines any of the public steps already in the marketplac
 
 ## Using custom pipeline steps
 
-When you create a pipeline you will have access to two categories of steps
+When you create a pipeline, you will have access to two categories of steps
 
 * public steps that exist in the marketplace.
 * steps that you or your team have created (visible only to you)
@@ -217,21 +217,21 @@ For each step you define the following sections
 
 * metadata to describe the characteristics of the step
 * the description of its arguments
-* the implementation (i.e. what yaml gets inserted in the pipline)
+* the implementation (i.e. what yaml gets inserted in the pipeline)
 
 For the metadata section note the following:
 
 * `isPublic` decides if this step is visible only to your and your team, or visible to all (in the marketplace)
-* The `name` of the step must be prefixed with your codefresh username. Steps created by the Codefresh team are on the root level of the hierarchy (without prefix). This is the same pattern that Dockerhub is using for images.
+* The `name` of the step must be prefixed with your Codefresh username. Steps created by the Codefresh team are on the root level of the hierarchy (without prefix). This is the same pattern that Dockerhub is using for images.
 * `stage` shown if this step is ready for production or still incubating. This is just an indication to users. It doesn't affect the implementation of the step in any way
-* `icon`. Ideally you provide a transparent svg so that the icon is scalable. The icon for a step is used both in the marketplace as well as the pipeline view. You can also select a default background to be used. Alternatively you can define jpg/png icons for large/medium/small sizes. We suggest the svg approach
+* `icon`. Ideally you provide a transparent svg so that the icon is scalable. The icon for a step is used both in the marketplace as well as the pipeline view. You can also select a default background to be used. Alternatively, you can define jpg/png icons for large/medium/small sizes. We suggest the svg approach
 * the `examples` section will be shown in the marketplace as documentation for your step
 
 For the argument section we follow the [JSON Schema](http://json-schema.org/learn/miscellaneous-examples.html). You can use the [Schema generator](https://jsonschema.net/) to easily create a schema. Currently only the inputs for a step are modelled inside the step definition.
 
 The final part is the implementation. Here you can define exactly that yaml that this step will insert in the pipeline. You can use any of the built-in steps in Codefresh and even add multiple steps.
 
-Once you are done with your step, use the codefresh CLI to upload it to the marketplace. If you want the step to be available only to you and your team make sure that the property `isPublic` is false (and then it will not be shown in the marketplace).
+Once you are done with your step, use the Codefresh CLI to upload it to the marketplace. If you want the step to be available only to you and your team make sure that the property `isPublic` is false (and then it will not be shown in the marketplace).
 
 {% highlight bash %}
 codefresh create step-type kostis-codefresh/sample -f my-custom-step.yml

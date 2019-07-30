@@ -17,7 +17,7 @@ You must define a composition in the Codefresh composition module. This composit
 {% include image.html lightbox="true" file="/images/fb724ab-Screen_Shot_2016-11-10_at_11.37.07_AM.png" url="/images/fb724ab-Screen_Shot_2016-11-10_at_11.37.07_AM.png" alt="Create composition" max-width="40%" %}
 
 **Create a Composition test image, which is a Docker image with the integration test’s execution engine and scripts**\\
-You can create a service, with the git repo that contains your integration tests scripts, in Codefresh that automatically builds a Docker image with your testing framework’s execution engine.  You can add the integration test scripts as commands in the Dockerfile. Alternatively, you can create the image locally, and make it available to Codefresh in your Docker registry.
+You can create a service, with the GIT repo that contains your integration tests scripts, in Codefresh that automatically builds a Docker image with your testing framework’s execution engine.  You can add the integration test scripts as commands in the Dockerfile. Alternatively, you can create the image locally, and make it available to Codefresh in your Docker registry.
  
 ## Run the Integration Tests
 

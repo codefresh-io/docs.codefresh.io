@@ -9,7 +9,7 @@ redirect_from:
   - /docs/java/spring-mvc-jdbc-template/
 toc: true
 ---
-Using this repository we'll help you get up to speed with basic functionality such as: compiling, testing and building Docker images.
+Using this repository, we'll help you get up to speed with basic functionality such as: compiling, testing and building Docker images.
 
 This project uses `JAVA, SpringMVC, Tomcat, MySQL, Maven` to build an application which will eventually become a distributable Docker image.
 

@@ -17,7 +17,7 @@ On the left sidebar of the Codefresh UI choose *Account Settings* and then click
 {% include image.html lightbox="true" file="/images/account/collaborators.png" url="/images/account/collaborators.png" alt="Collaborators" max-width="70%" %}
 
 
-1. In the *Username* text box, type the Codefresh user name or email address of the user you want to add.
+1. In the *Username* text box, type the Codefresh username or email address of the user you want to add.
 1. Click the *Add* button.
 
 

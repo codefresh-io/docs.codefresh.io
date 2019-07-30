@@ -23,7 +23,7 @@ The big difference between the two, is that Codefresh is distinguishing between 
 * Composition Services
 * Composition Candidates
 
-Composition services are helper services that are needed for the tests to run. These can be a database, a queue, a cache, or the back-end docker image of your application.
+Composition services are helper services that are needed for the tests to run. These can be a database, a queue, a cache, or the backend docker image of your application.
 
 Composition candidates are special services that will execute the tests. Codefresh will monitor their execution and fail the build if they do not succeed. Almost always composition candidates are Docker images that contain unit/integration tests or other kinds of tests (e.g. performance)
 
@@ -87,7 +87,7 @@ step_name:
 | `composition_candidates`                   | The definition of the service to monitor. Each candidate has a **single** `command` parameter that decides what will be tested.                                                                                                                                                                                              | Required                  |
 | `environment` (service level)                             | environment that will be accessible to the container                                                                                                                                                                                     | Optional                  |
 | `working_dir` (service level)                             | defines the working directory that will be used in a service before running a command. By default it is defined by the docker image that is used by the service.                                                                                                                             | Optional                  |
-| `volumes` (service level)                             | Extra volumes for individual services. Used for transfering information between your steps. Explained in detail later in this page.                                                                                                                             | Optional                  |
+| `volumes` (service level)                             | Extra volumes for individual services. Used for transferring information between your steps. Explained in detail later in this page.                                                                                                                             | Optional                  |
 | `composition_variables`                    | A set of environment variables to substitute in the composition. Notice that these variables are docker-compose variables and **NOT** environment variables                                                                                                                                                                         | Optional                  |
 | `fail_fast`                                | If a step fails, and the process is halted. The default value is `true`.                                                                                                                                                                 | Default                   |
 | `when`                                     | Define a set of conditions which need to be satisfied in order to execute this step.<br>You can find more information in the [Conditional Execution of Steps]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/) article.                               | Optional                  |
@@ -98,7 +98,7 @@ step_name:
 
 For Codefresh to determine if the step and operations were successfully executed, you must specify at least one `composition_candidate`.
 
-A `composition_candidate` is a single service component of the normal Docker composition that is monitored for a successful exit code, and determines the outcome of the step. During runtime, the `composition_candidate` is merged into the specified `composition`, and is monitored for successful execution.
+A `composition_candidate` is a single service component of the normal Docker composition that is monitored for a successful exit code and determines the outcome of the step. During runtime, the `composition_candidate` is merged into the specified `composition`and is monitored for successful execution.
 
 The critical part of each candidate is the `command` parameter. This takes [a single command](https://docs.docker.com/compose/compose-file/#command) that will
 be executed inside the Docker container of the candidate and will decide if the whole composition is successful or not. Only one command is allowed (similar to Docker compose). If you wish to test multiple commands you need to connect them with `&&` like this.
@@ -113,7 +113,7 @@ be executed inside the Docker container of the candidate and will decide if the 
 
 ## Working directories in a composition
 
-By default all services that take part in a composition will use as working directory the one defined by the respective image. If you want to change that, you need to use the `working_dir` parameter at the service level.
+By default, all services that take part in a composition will use as working directory the one defined by the respective image. If you want to change that, you need to use the `working_dir` parameter at the service level.
 
 Here is an example:
 
@@ -138,7 +138,7 @@ steps:
         command: 'pwd'
 {% endhighlight %}
 
-If you run this composition you will see in the logs that the alpine image will use `/tmp` as a working directory and the python one will use `/root`
+If you run this composition, you will see in the logs that the alpine image will use `/tmp` as a working directory and the python one will use `/root`
 
 ```
 my_service_1       | /tmp
@@ -185,7 +185,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-In this composition the MySql instance will be available at host `db:3306` accessible from the node image. When the node tests run they will be pointed to that host and port combination to access it.
+In this composition the MySql instance will be available at host `db:3306` accessible from the node image. When the node tests run, they will be pointed to that host and port combination to access it.
 
 Notice also that like docker compose the order that the services are launched is not guaranteed. A quick way to solve this issue
 is with a sleep statement like shown above. This will make sure that the database is truly up before the tests run.
@@ -290,7 +290,7 @@ In this pipeline
 1. The sample unit test service writes to the shared volume (emulating test results)
 1. The last freestyle step reads the file that was written by the composition
 
-Therefore in this pipeline you can see both ways of data sharing, bringing files into a composition and getting results out of it. Notice that we need to mount the shared volume only in the composition services. The freestyle steps automatically mount `/codefresh/volume` on their own.
+Therefore, in this pipeline you can see both ways of data sharing, bringing files into a composition and getting results out of it. Notice that we need to mount the shared volume only in the composition services. The freestyle steps automatically mount `/codefresh/volume` on their own.
 
 >Note: it is not compulsory to mount the shared volume in all services of a composition. Only those that actually use it for file transfer, should mount it.
 
@@ -332,7 +332,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-If you run the composition you will see that the `printenv` command shows the following:
+If you run the compositio,n you will see that the `printenv` command shows the following:
 
 ```
 test_service_1  | FIRST_KEY=VALUE
@@ -360,7 +360,7 @@ version: '2'
 {% endhighlight %}
 
 Now we want to reuse this composition during our build for testing purposes.
-We can add the following composition step to our `codefresh.yml` file, and define the composition step so that `test_service` always uses the latest image that was built.
+We can add the following composition step to our `codefresh.yml` file and define the composition step so that `test_service` always uses the latest image that was built.
 
   `YAML`
 {% highlight yaml %}
@@ -372,7 +372,7 @@ run_tests:
       image: {% raw %}${{build_step}}{% endraw %}
 {% endhighlight %}
 
-In the above example, both `composition` and `composition_candidates` define a service named `test_service`. After merging these definitions, `test_service` will maintain the `command` that was defined in the original composition, but will refer to the image built by the step named `build_step`.
+In the above example, both `composition` and `composition_candidates` define a service named `test_service`. After merging these definitions, `test_service` will maintain the `command` that was defined in the original composition but will refer to the image built by the step named `build_step`.
 
 ## What to read next
 

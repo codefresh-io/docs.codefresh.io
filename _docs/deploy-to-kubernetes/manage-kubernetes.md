@@ -48,7 +48,7 @@ Insert basic definitions for your new Service
 
 {:.text-secondary}
 ### Select your image
-You can add images built in Codefresh which were pushed to Codefresh registry, or provide a name for Docker image that will be pulled from external Docker registry.
+You can add images built in Codefresh which were pushed to Codefresh registry or provide a name for Docker image that will be pulled from external Docker registry.
 
 {% include image.html 
 lightbox="true" 

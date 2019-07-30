@@ -48,7 +48,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-This syntax is very simple to use, but has the disadvantage that ties your pipeline to a specific repository. This makes
+This syntax is very simple to use, but it has the disadvantage that ties your pipeline to a specific repository. This makes
 the pipeline impossible to re-use among different micro-services (that are built in a similar manner).
 
 ## Cloning the triggered repository (recommended)
@@ -107,7 +107,7 @@ This is the recommended way of creating re-usable pipelines in Codefresh.
 
 ## Working inside the cloned directory
 
-Normally each [pipeline step]({{site.baseurl}}/docs/codefresh-yaml/steps/) in Codefresh can be named as you want. Specifically for the git-clone step however the name `main_clone` is special.
+Normally each [pipeline step]({{site.baseurl}}/docs/codefresh-yaml/steps/) in Codefresh can be named as you want. Specifically, for the git-clone step however the name `main_clone` is special.
 
 If you name your clone step as `main_clone` the Codefresh will automatically change the working directory for all the next pipelines steps, to be the same as the project that was just checked out.
 

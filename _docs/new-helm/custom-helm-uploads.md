@@ -7,7 +7,7 @@ redirect_from:
 toc: true
 ---
 
-Helm packages are just Tar files. Helm repositories are simple file hierachies with an extra [index.yaml](https://helm.sh/docs/developing_charts/#the-chart-repository-structure).
+Helm packages are just Tar files. Helm repositories are simple file hierarchies with an extra [index.yaml](https://helm.sh/docs/developing_charts/#the-chart-repository-structure).
 It is perfectly possible to run custom commands and upload manually indexes and packages to a Helm repo.
 
 >Notice that this page shows some non-standard Helm examples. For the basic use cases, (and if you are just getting started with Helm), see the [quick start guide]({{site.baseurl}}/docs/getting-started/helm-quick-start-guide/) and the [main documentation]({{site.baseurl}}/docs/new-helm/using-helm-in-codefresh-pipeline/) instead.
@@ -32,7 +32,7 @@ See [helm package docs](https://github.com/kubernetes/helm/blob/master/docs/helm
 Note the usage of `cf_export` to make the variable available for other steps in the pipeline as described here: [Codefresh Yaml Variables]({{site.baseurl}}/docs/variables). 
 {{site.data.callout.end}}
 
-## Exampe 1: Push the chart to GCS based Helm Repository
+## Example 1: Push the chart to GCS based Helm Repository
 The first example will push the packaged chart into a public cloud storage service, like AWS S3, Azure Storage, or Google Cloud Storage. We chose Google Cloud Storage (GCS) for this example.
 Our pipeline will have 3 steps:
 

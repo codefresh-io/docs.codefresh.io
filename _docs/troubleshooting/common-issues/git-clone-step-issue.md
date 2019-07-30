@@ -17,7 +17,7 @@ Aborting
 Command [git checkout $REVISION] exited with code [1]
   [SYSTEM] Error: Failed to run git-clone step: Cloning main repository...; caused by NonZeroExitCodeError
   : Container for step title: Cloning main repository..., step type: git-clone, operation: Cloning reposit
-ory failed with exit code: 1
+  ory failed with exit code: 1
 {% endhighlight %}
 
 ## Solution

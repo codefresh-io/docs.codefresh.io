@@ -8,14 +8,14 @@ toc: true
 ---
 
 In this tutorial we will see how you can use Codefresh to deploy a Docker image to a Kubernetes cluster
-and also how to to setup an automated pipeline to automatically redeploy it when the source code changes.
+and also how to setup an automated pipeline to automatically redeploy it when the source code changes.
 
 >Even though, in this tutorial we use Codefresh to deploy docker images directly to the Kubernetes cluster,
 in production we suggest you use [Helm]({{site.baseurl}}/docs/getting-started/helm-quick-start-guide/)  instead. Helm is a package manager for Kubernetes that allows you to
 deploy multiple applications at once as a single entity (Helm Charts) and also perform rollbacks to previous versions.
 Like Kubernetes, [Codefresh has native support for Helm deployments]({{site.baseurl}}/docs/new-helm/using-helm-in-codefresh-pipeline/) including a [release dashboard]({{site.baseurl}}/docs/new-helm/helm-releases-management/).
 
-Notice that for this tutorial we will use the GUI provided by Codefresh to both create the Kubernetes service inside the cluster and also to create the CI/CD pipeline that keeps it up-to-date. In a real world scenario it is best if you use  [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) which is much more powerful and flexible.
+Notice that for this tutorial we will use the GUI provided by Codefresh to both create the Kubernetes service inside the cluster and also to create the CI/CD pipeline that keeps it up to date. In a real world scenario it is best if you use  [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) which is much more powerful and flexible.
 
 Codefresh also offers [several alternative ways]({{site.baseurl}}/docs/deploy-to-kubernetes/deployment-options-to-kubernetes/) of deploying to Kubernetes.
 
@@ -23,7 +23,7 @@ Codefresh also offers [several alternative ways]({{site.baseurl}}/docs/deploy-to
 
 At the end of this tutorial we will have a pipeline that 
 
-1. checks out code from Github and creates a Docker image
+1. checks out code from GitHub and creates a Docker image
 1. stores it in the internal Codefresh Docker registry
 1. Notifies the K8s cluster that a new version of the application is present. Kubernetes will pull the new image and deploy it.
 
@@ -176,7 +176,7 @@ caption="Finding the full name of a Docker image (click image to enlarge)"
 max-width="60%" 
 %}
 
-By default Codefresh appends the branch name of a git commit to the resulting Docker image. This is why
+By default, Codefresh appends the branch name of a git commit to the resulting Docker image. This is why
 in the *Image* field we used the branch name as tag
 
 >Do not use `latest` for your deployments. This doesn't help you to understand which version is deployed. Use
@@ -217,7 +217,7 @@ writing any YAML files at all! The next step is to automate this process so that
 ## Automating deployments to Kubernetes
 
 The application is now running successfully in the Kubernetes cluster. We will setup a pipeline in Codefresh
-so that any commits that happen in Github, are automatically redeploying the application, giving us a true CI/CD pipeline.
+so that any commits that happen in GitHub, are automatically redeploying the application, giving us a true CI/CD pipeline.
 
 To do this, we will add two extra steps in the basic pipeline created in the [previous tutorial]({{ site.baseurl }}/docs/getting-started/create-a-basic-pipeline/).
 
@@ -246,11 +246,11 @@ caption="Kubernetes deploy step (click image to enlarge)"
 max-width="70%" 
 %}
 
-Notice that by default Codefresh tags Docker images with the name of the GIt branch they were created from.
+Notice that by default Codefresh tags Docker images with the name of the GIT branch they were created from.
 In the example above we use the `production` branch so that the name of the Docker image matches the one
 that we defined in Kubernetes in the previous section.
 
-Once all all details are filled in, click the *Save* button.
+Once all the details are filled in, click the *Save* button.
 
 Now we will change the application in the production branch and commit/push the change to Git.
 

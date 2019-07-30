@@ -16,14 +16,14 @@ toc: true
 
   - **A security Assertion Markup Language 2.0 (SAML 2.0)** compliant Identity Provider (IdP) that is configured to communicate with Codefresh Service Provider (SP). For example, ADFS, Auth0, Okta and Ping Identity. 
   
-  - **OpenID Connect (OAuth 2.0)** identity management. For example, Google, Github, Bitbucket and Gitlab.
+  - **OpenID Connect (OAuth 2.0)** identity management. For example, Google, GitHub, Bitbucket and Gitlab.
   
   This enables seamless SSO from a browser, by asserting the identity of the user to Codefresh.
 
 A SAML2 based federated system comprises the following main components:
 
   - **Identity Provider (IdP)** – The identity provider belongs in the corporation that manages accounts for a large number of users who need secure Internet access to the services or Web- based applications of another organization. In our case a customer's organization that requires access to Codefresh.
-    - The IdP manages the corporate users, and integrates with Identity Management systems in the customers organization responsible for authentication. The Identity Management systems will integrate with authentication providers such as LDAP or AD.
+    - The IdP manages the corporate users and integrates with Identity Management systems in the customers organization responsible for authentication. The Identity Management systems will integrate with authentication providers such as LDAP or AD.
     - All user authentication is carried out via Identity Management systems integrated with the IdP
     - For successfully authenticated users, the IdP sends a SAML assertion to Codefresh service provider that enables the user to access Codefresh.
 
@@ -38,7 +38,7 @@ A SAML2 based federated system comprises the following main components:
 
 Using federated SSO significantly simplifies cross-domain user management as follows:
   
-  - You use your corporate credentials to access Codefresh.That means you can access all your systems with one password.
+  - You use your corporate credentials to access Codefresh. That means you can access all your systems with one password.
   - There is no need to migrate identity information or consolidate between the two security domains.
   - Corporate credentials aren't exposed to the SaaS provider.
 

@@ -11,7 +11,7 @@ toc: true
 Go to your Account Configuration, by clicking on *Account Settings* on the left sidebar. On the first section called *Integrations* click the *Configure* button next to *Docker Registry*.
 
 To configure ECR first select **Amazon ECR** from the new registry drop down
-and then provide the following
+and then provided the following
 
 * Registry Name - A unique name for this configuration
 * Access Key ID - AWS accessKeyId

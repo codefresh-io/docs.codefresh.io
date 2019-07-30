@@ -37,7 +37,7 @@ Codefresh expects the following user attributes to be passed through SAML betwee
   - User first name
   - User last name
   - User full name
-  - User unique id that isn't subject to change in your identity management environment
+  - User unique ID that isn't subject to change in your identity management environment
 
 {:.text-secondary}
 ## How does the connection process work?
@@ -55,7 +55,7 @@ Once Federated SSO has been configured, the process works as follows:
 <div class="bd-callout bd-callout-info" markdown="1">
   Note
 
-  Steps 2 to 7 happen in the background, and are transparent to the user.
+  Steps 2 to 7 happen in the background and are transparent to the user.
 </div>
 
 1. A user logs in to Codefresh and enters their email

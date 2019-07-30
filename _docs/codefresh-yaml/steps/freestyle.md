@@ -16,7 +16,7 @@ In Codefresh, docker containers are first-class citizens
 and special typed steps are offered for the most usual docker commands. Freestyle steps are a secure replacement for `docker run` commands.
 
 
-Therefore this command on your local workstation:
+Therefore, this command on your local workstation:
 
 ```
 docker run python:3.6.4-alpine3.6 pip install .
@@ -87,8 +87,8 @@ step_name:
 | `image`                                    | The image from which the executable container is created. It can be an explicit ID of a Docker image, or a variable that references a **Build** or **Push** step.                                                                                                                                                                                                           | Required                  |
 | `working_directory`                        | The directory from which the commands are executed. It can be an explicit path in the container's file system, or a variable that references another step. The default `working_directory` is the cloned repository directory and not the working directory specified by the image. If you need to use the default working directory of the image use `IMAGE_WORK_DIR`.     | Default                   |
 | `commands`                                 | One or more commands to execute in a shell in the container, as array of strings.                                                                                                                                                                                                                                                                                                                                        | Optional                  |
-| `cmd`                                 | docker CMD arguments to use along with the container entrypoint. can be string or array of strings.                                                                                                                                                                                                                                                                                                                                       | Optional                  |
-| `entry_point`                                 | Override the default container entrypoint. can be string or array of strings.                                                                                                                                                                                                                                                                                                                                      | Optional                  |
+| `cmd`                                 | docker CMD arguments to use along with the container entry point. can be string or array of strings.                                                                                                                                                                                                                                                                                                                                       | Optional                  |
+| `entry_point`                                 | Override the default container entry point. can be string or array of strings.                                                                                                                                                                                                                                                                                                                                      | Optional                  |
 | `shell`                                    | Explicitly set the executing shell to bash or sh. If not set the default will be sh.                                                                                                                                                                                                                                                                                                                                     | Optional                  |
 | `environment`                              | A set of environment variables for the container.                                                                                                                                                                                                                                                                                                                           | Optional                  |
 | `fail_fast`                                | If a step fails, and the process is halted. The default value is `true`.                                                                                                                                                                                                                                                                                                    | Default                   |
@@ -197,7 +197,7 @@ steps:
 {% endhighlight %}
 
 Here the `UseMyCustomImage` freestyle step is running in the [context]({{site.baseurl}}/docs/codefresh-yaml/variables/#context-related-variables) of the Docker image that was created in the previous step.
-In fact a very common pattern that you will see in Codefresh pipelines is the executions of unit tests in the image that was created in a build step:
+In fact, a very common pattern that you will see in Codefresh pipelines is the executions of unit tests in the image that was created in a build step:
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -222,7 +222,7 @@ In other case you can have a second Dockerfile in your application that is desig
 
 ## Entry point
 
-When using the original container entrypoint, you can use the `cmd` field to specify additional agruments to be used with the entrypoint. This can be a string, or an array of strings. For example:  
+When using the original container entry point, you can use the `cmd` field to specify additional arguments to be used with the entry point. This can be a string, or an array of strings. For example:  
 
 ```yaml
 image: mwendler/cowsay
@@ -233,7 +233,7 @@ cmd:
 is equivalent to running `docker run mwendler/cowsay Hello` which is equivalent to running `cowsay Hello` inside the container.
 
 
-You can override the container's default entrypoint using the `entry_point` field. This can be a string, or an array of strings. For example:
+You can override the container's default entry point using the `entry_point` field. This can be a string, or an array of strings. For example:
 
 ```yaml
 
@@ -253,7 +253,7 @@ Additional settings that are set only when using commands are `set -e`, and the 
 
 ### Commands and Entry point
 
-If you want to retain the original entrypoint, do not use the `commands` field.  
+If you want to retain the original entry point, do not use the `commands` field.  
 
 However, this example:
 
@@ -264,7 +264,7 @@ commands:
 ```
 
 will cause and error because the engine will attempt to run the command `Hello` in a shell inside the container, and the command `Hello` is not a valid command.  
-In order to use the `commands` form with an `entrypoint` enabled container, you can add the commands from the entrypoint to the list of commands, like so:
+In order to use the `commands` form with an `entrypoint` enabled container, you can add the commands from the entry point to the list of commands, like so:
 
 ```yaml
 image: mwendler/cowsay

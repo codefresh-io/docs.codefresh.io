@@ -10,7 +10,7 @@ toc: true
 ---
 
 Codefresh offers its own Kubernetes dashboard that allows you to inspect the services and namespaces
-in your cluster. To activate this dashboard you need to connect your cluster to your Codefresh account first.
+in your cluster. To activate this dashboard, you need to connect your cluster to your Codefresh account first.
 
 
 Start by going into your Account Configuration, by clicking on *Account Settings* on the left sidebar. On the first section called *Integrations* click the *Configure* button next to *Kubernetes*.
@@ -30,7 +30,7 @@ In the Kubernetes integration window, you will be able to add a cluster from kno
 ## Adding GKE Cluster
 Adding a cluster in GKE can be done by clicking the **Add cluster** button under **Google Cloud Provider** and selecting the desired project and cluster.
 
-If this is your first time you'll be prompted to authenticate using your Google credentials, make sure you're doing so with a user that have access to your GKE projects.
+If this is your first time, you'll be prompted to authenticate using your Google credentials, make sure you're doing so with a user that have access to your GKE projects.
 
 Make sure that your cluster has basic authentication enabled. You can change this setting after cluster creation
 by editing and changing the setting from the drop-down list.

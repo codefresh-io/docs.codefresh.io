@@ -7,7 +7,7 @@ redirect_from:
   - /docs/cant-find-your-organization-repos/
 toc: true
 ---
-***Problem***: I want to add a repository that belongs to one of my Github organizations, but can't find it in the repository list.
+***Problem***: I want to add a repository that belongs to one of my GitHub organizations but can't find it in the repository list.
 
 {% include 
 image.html 
@@ -19,10 +19,10 @@ max-width="40%"
 caption="Pick a repository empty list(click image to enlarge)"
 %}
 
-## 1. Navigate to your Github user settings page
+## 1. Navigate to your GitHub user settings page
 
 {:start="1"}
-1. Log in to Github using your credentials.
+1. Log in to GitHub using your credentials.
 
 {:start="1"}
 2. Navigate to your **Settings** page.

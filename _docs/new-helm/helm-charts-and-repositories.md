@@ -28,11 +28,11 @@ max-width="50%"
 
 If your repository doesn't require authentication, click 'Save' and you are done. To add an authenticated repository keep reading.
 
-In addition to public repositories, we also support connecting to Helm repositories hosted on privated authenticated stores.
+In addition to public repositories, we also support connecting to Helm repositories hosted on private authenticated stores.
 
 You connect to a private repository from the same dialog you would connect to a public one, by selecting any of the authentication options, like S3, or CGS.
 
-The bucket URL should be provided with a protocol scheme relevant to the selected provider, for example for S3, the url would look like `s3://mybucketname`.
+The bucket URL should be provided with a protocol scheme relevant to the selected provider, for example for S3, the URL would look like `s3://mybucketname`.
 
 The rest of the required parameters varies based on the selected provider (see below)
 
@@ -41,7 +41,7 @@ The rest of the required parameters varies based on the selected provider (see b
 
 You can connect to your repository using HTTP Basic authentication.
 
-- Add your repo url as usually with HTTP protocol
+- Add your repo URL as usually with HTTP protocol
 - Supply the User and Password for HTTP Basic authentication.
 
 Variables:
@@ -53,7 +53,7 @@ HELMREPO_PASSWORD|The password for the username provided
 
 ### Private repository - S3
 
-- Add your S3 bucket URL in the follwing scheme: `s3://bucketname`.
+- Add your S3 bucket URL in the following scheme: `s3://bucketname`.
 - Supply the AWS authentication variables as you would for the AWS CLI, or the S3 plugin for Helm. See details here: [Configuring the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html)
 
 Variables:
@@ -66,7 +66,7 @@ AWS_DEFAULT_REGION|region where the bucket was created
 
 ### Private repository - GCS
 
-- Add your GCS bucket URL in the follwing scheme: `gs://bucketname`.
+- Add your GCS bucket URL in the following scheme: `gs://bucketname`.
 - Supply the Google authentication variable as you would for the GCloud CLI, or the GCS plugin for Helm. See details here: [Creating Service Account](https://cloud.google.com/docs/authentication/getting-started)
 
 Variables:
@@ -103,7 +103,7 @@ The Azure Helm integration is now ready.
 
 ## Using a Helm Repository in a Codefresh pipeline
 
-Once connected, the private Helm repository context can be injected into pipelines by selecting "Import from shared configuration" (under "Environment Variables" section), and selecting the name of the repository.  
+Once connected, the private Helm repository context can be injected into pipelines by selecting "Import from shared configuration" (under "Environment Variables" section) and selecting the name of the repository.  
 The repository settings will be injected as environment variables into the pipeline so you can use them as you wish. 
 
 {% include image.html 
@@ -129,12 +129,12 @@ In the dialog that opened:
 - Values:
   - The default values that was provided with the chart will show up, you can press the edit button to view and override them.
   - when the default values yaml was changed, it will be provided to helm install as a values file. You can revert back your overriding changed by clicking on the revert button (next to the edit button).
-  - You can provide additional values files by opening the 'Import from configuration' drop down list, and selecting "Add new context of type: YAML". Insert your values YAML here, and save. The YAML will be saved for future usage so that next time simply select it from the drop down list.
+  - You can provide additional values files by opening the 'Import from configuration' drop down list and selecting "Add new context of type: YAML". Insert your values YAML here and save. The YAML will be saved for future usage so that next time simply select it from the drop-down list.
   - additionally, you can override some values by adding them in the "Override set variables section"
 
 > The order of values configurations matter for helm, values provided last overrides values provided earlier. In the Chart Install wizard values are provided in the following order:
 1. Default Values in the chart (implicitly part of the chart)
-2. Overidden default values (provided as values file, provided only if edited by the user)
+2. Overridden default values (provided as values file, provided only if edited by the user)
 3. Supplied values files from Yaml Shared Configuration
 4. Override variables are provided as `--set` arguments
 

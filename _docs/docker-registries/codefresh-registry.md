@@ -112,7 +112,7 @@ First, you need a Codefresh API token. To get it, login into Codefresh and navig
 	max-width="50%" 
 %}
 
-You can create multiple tokens for different uses. From the same screen you can also revoke any existing token if it is not used anymore, or has been compromised.
+You can create multiple tokens for different uses. From the same screen you can also revoke any existing token if it is not used anymore or has been compromised.
 
 ## Use Codefresh Registry Locally
 

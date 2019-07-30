@@ -60,7 +60,7 @@ kubectl apply -f deployment.yml
 ## Deploy to GKE from Codefresh pipeline
 The deployment script makes the following assumptions about your application and Kubernetes configuration:
 
-- The application is deployed using the Kubernetes deployment API (versus the the replication controller directly). For more information read [http://kubernetes.io/docs/user-guide/deployments/](http://kubernetes.io/docs/user-guide/deployments/){:target="_blank"}
+- The application is deployed using the Kubernetes deployment API (versus the replication controller directly). For more information read [http://kubernetes.io/docs/user-guide/deployments/](http://kubernetes.io/docs/user-guide/deployments/){:target="_blank"}
 - The tested codebase has a yaml file that describes the Kubernetes deployment parameters and configuration of your application.
 - At the moment, only the basic username/pass authentication is supported.
 

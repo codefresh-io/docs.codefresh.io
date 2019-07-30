@@ -24,14 +24,14 @@ alt="2016-09-29_13-19-16.png"
 max-width="40%"
 %}
   
-When launching a pipeline, Codefresh exposes the ports specified in the repository’s Dockerfile. Codefresh enables you to validate that your application is up by running a '**health check**' to test the connection to one of the exposed ports. When you receive this error message, the pipeline was launched successfully, but the Codefresh **health check** couldn't identify which URL to validate, or didn’t get a response from the specified application port.  
+When launching a pipeline, Codefresh exposes the ports specified in the repository’s Dockerfile. Codefresh enables you to validate that your application is up by running a '**health check**' to test the connection to one of the exposed ports. When you receive this error message, the pipeline was launched successfully, but the Codefresh **health check** couldn't identify which URL to validate or didn’t get a response from the specified application port.  
 
 **Solution:**
 
 {:start="1"}
 1. Make sure that you listen to one of your exposed ports:
   * If you use a Dockerfile, listen to a port in your application.
-  * If you use a template, listen to one of of the exposed ports in either the template, or in the ports list. (If you are not using a Dockerfile, you can find the ports list in the **Pipeline** view.
+  * If you use a template, listen to one of the exposed ports in either the template, or in the ports list. (If you are not using a Dockerfile, you can find the ports list in the **Pipeline** view.
 
 {:start="2"}
 2. Navigate to **`Repositories`** &#8594; **_`Your Repository`_** &#8594; **`Launch Settings`**, and verify that the **`Application Port`** is the same one that your application exposes, and listen to it. This is the port on which Codefresh runs the **health check**.

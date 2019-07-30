@@ -8,7 +8,7 @@ redirect_from:
   - /docs/general/selenium-test/
 toc: true
 ---
-Using this repository we'll help you get up to speed with basic functionality such as: compiling, testing and building Docker images.
+Using this repository, we'll help you get up to speed with basic functionality such as: compiling, testing and building Docker images.
 
 This project uses `JavaScript, Selenium, Protractor` to build an application which will eventually become a distributable Docker image.
  

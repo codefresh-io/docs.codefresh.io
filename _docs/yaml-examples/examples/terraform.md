@@ -31,7 +31,7 @@ You can play with it locally after installing the `terraform` executable.
 You need to create a Codefresh account and a Google account first. Then you need to create a [Service account Key](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) which will allows terraform to communicate with Google cloud.
 
 
-Add you service account json  as a pipeline variable called `ACCOUNT_JSON_CONTENT`. The content of this variable will be used
+Add you service account json as a pipeline variable called `ACCOUNT_JSON_CONTENT`. The content of this variable will be used
 in order to authenticate to Google cloud.
 
 ## Create a CI/CD pipeline for Terraform

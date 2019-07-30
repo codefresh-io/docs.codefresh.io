@@ -12,7 +12,7 @@ was_hidden: true
 In case you are running a [composition step]({{site.baseurl}}/docs/codefresh-yaml/steps/composition/), it will be run by default from the repository working directory. This means that you should be able to do anything you do locally from your repository.
 
 There are several ways to store data used by applications that run in Docker containers. We encourage users to familiarize themselves with the options available, including:
-- Create a data directory on the host system (outside the container) and mount this to a directory visible from inside the container. This places the database files in a known location on the host system, and makes it easy for tools and applications on the host system to access the files. The downside is that the user needs to make sure that the directory exists, and that e.g. directory permissions and other security mechanisms on the host system are set up correctly.
+- Create a data directory on the host system (outside the container) and mount this to a directory visible from inside the container. This will place the database files in a known location on the host system, and makes it easy for tools and applications on the host system to access the files. The downside is that the user needs to make sure that the directory exists, and that e.g. directory permissions and other security mechanisms on the host system are set up correctly.
 
 ## Postgres
 

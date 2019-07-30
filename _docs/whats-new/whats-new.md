@@ -30,7 +30,7 @@ Recent Codefresh updates:
 ### May 2019
 
 - Triggers can now be enabled/disabled - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/#disabling-triggers)
-- New Github PR variables - [documentation]({{site.baseurl}}/docs/codefresh-yaml/variables/#github-pull-request-variables)
+- New GitHub PR variables - [documentation]({{site.baseurl}}/docs/codefresh-yaml/variables/#github-pull-request-variables)
 - Inline Dockerfiles in build steps - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/build/#inline-dockerfile)
 - LDAP SSO support (Enterprise) - [documentation]({{site.baseurl}}/docs/enterprise/single-sign-on/sso-ldap/)
 - SAML SSO support (Enterprise) - [documentation]({{site.baseurl}}/docs/enterprise/single-sign-on/sso-setup-saml2/#setting-up-saml-integration)
@@ -63,7 +63,7 @@ Recent Codefresh updates:
 - Access Control (Enterprise) - [documentation]({{site.baseurl}}/docs/enterprise/access-control/)
 - Accessing the shared volume in compositions - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/composition/#accesing-your-project-folder-from-a-composition)
 - Reuse Git integration in custom clone step - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/#reuse-a-git-token-from-codefresh-integrations)
-- Run custom kubectl commands - [documentation]({{site.baseurl}}/docs/deploy-to-kubernetes/custom-kubectl-commands/)
+- Run custom Kubectl commands - [documentation]({{site.baseurl}}/docs/deploy-to-kubernetes/custom-kubectl-commands/)
 - Reading Image metadata - [documentation]({{site.baseurl}}/docs/docker-registries/metadata-annotations/#using-custom-metadata-in-codefresh-pipelines)
 - Codefresh build agent - [documentation]({{site.baseurl}}/docs/enterprise/behind-the-firewall/)
 
@@ -111,7 +111,7 @@ Recent Codefresh updates:
 - New dedicated *Pipelines* view for pipelines not linked to GIT repositories - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-creation-modes)
 - New redesigned Logs view with persistent header and icons for steps
 - ARM build support (alpha) - [documentation]({{site.baseurl}}/docs/incubation/arm-support/)
-- New pipeline variables for Github releases - [documentation]({{site.baseurl}}/docs/codefresh-yaml/variables/#github-release-variables)
+- New pipeline variables for GitHub releases - [documentation]({{site.baseurl}}/docs/codefresh-yaml/variables/#github-release-variables)
 
 ### August 2018
 
@@ -154,7 +154,7 @@ Recent Codefresh updates:
 
 ### March 2018
 - Ability to specify `entry_point` in freestyle steps
-- Ability to specify `CMD` commands to work with images with entrypoints
+- Ability to specify `CMD` commands to work with images with entry points
 - Ability to skip git clone step in pipelines
 - Ability to specify Docker build option `target` for multi-stage builds
 - Support for building containers for ARM processors (contact us)
@@ -190,7 +190,7 @@ Recent Codefresh updates:
   - Using our new cli, you can now execute many pipelines in parallel with different configurations for each
 
 ### December 2017
- - Manage your configurations in a centralized place, and inject them into pipelines as needed. supports secrets as well
+ - Manage your configurations in a centralized place and inject them into pipelines as needed. supports secrets as well
  - Real time dashboard of the Helm releases in your connected Kubernetes cluster. Supports rollback to a previous release
  - Connect to helm charts repositories, and install them on your connected Kubernetes cluster
 
@@ -202,8 +202,8 @@ Recent Codefresh updates:
  - Easily manage your cluster configuration using Codefresh by creating, importing and sharing Config maps between your Kubernetes namespaces and clusters.
  - If you want to trigger Codefresh pipelines from other tool, use our pipeline hook to build, test and deploy from any command line / script / 3rd party.
  - Test your cluster Credentials and connectivity in one click.
- - We added integration with main self hosted GIT providers to our PRO plan. You can now use Codefresh with your repos from:
-   - Github enterprise
+ - We added integration with main self-hosted GIT providers to our PRO plan. You can now use Codefresh with your repos from:
+   - GitHub enterprise
    - Bitbucket Enterprise
    - Gitlab enterprise.
 

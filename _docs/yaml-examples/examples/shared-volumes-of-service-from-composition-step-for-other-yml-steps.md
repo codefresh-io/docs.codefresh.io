@@ -7,7 +7,7 @@ redirect_from:
   - /docs/shared-volumes-of-service-from-composition-step-for-other-yml-steps/
 toc: true
 ---
-Using this repository we'll help you get up to speed with basic functionality such as: building Docker images and use the shared volumes feature.
+Using this repository, we'll help you get up to speed with basic functionality such as: building Docker images and use the shared volumes feature.
 
 This project uses Node Js to build an application which will eventually become a distributable Docker image.
 If you want to share volumes of service in composition step for other yml steps you can use the variable {% raw %}```${{CF_VOLUME_NAME}}```{% endraw %}. It will refer to the volume that was generated for the specific flow. Can be used in conjunction with a composition to provide access to your cloned repository.
@@ -43,10 +43,10 @@ step_file_generation:
 {{site.data.callout.callout_info}}
 ##### Example
 
-Just head over to the example [**repository**](https://github.com/codefreshdemo/cf-example-shared-volumes-composition-step){:target="_blank"} in Github and follow the instructions there. 
+Just head over to the example [**repository**](https://github.com/codefreshdemo/cf-example-shared-volumes-composition-step){:target="_blank"} in GitHub and follow the instructions there. 
 {{site.data.callout.end}}
 
 {{site.data.callout.callout_warning}}
-The way the volume is shared between builds is that upon build completion we create an image of the volume state to be used in the next builds. If you run 2 builds in parallel from the same pipeline and at the same time, each will use the same last volume image but it’ll run separately on both. The volume image you’ll get upon completion is the state of the build that finished last.
+The way the volume is shared between builds is that upon build completion we create an image of the volume state to be used in the next builds. If you run 2 builds in parallel from the same pipeline and at the same time, each will use the same last volume image, but it’ll run separately on both. The volume image you’ll get upon completion is the state of the build that finished last.
 {{site.data.callout.end}}
 
