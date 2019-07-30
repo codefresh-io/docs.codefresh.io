@@ -34,7 +34,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-Notice the `rm` command before the clone step. This makes sure that everytime the pipeline will run the `svn checkout` step will happen in an empty directory. 
+Notice the `rm` command before the clone step. This makes sure that every time the pipeline will run the `svn checkout` step will happen in an empty directory. 
 
 
 

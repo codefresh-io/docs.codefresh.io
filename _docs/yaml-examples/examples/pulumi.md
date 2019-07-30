@@ -6,7 +6,7 @@ sub_group: examples
 toc: true
 ---
 
-[Pulumi](https://pulumi.io/) is a platform for *Infrastructure as Code*. It works like Terraform but allows you to use a proper programming language (Typescript , Python, Go) in order to describe your infrastructure (instead of a configuration language).
+[Pulumi](https://pulumi.io/) is a platform for *Infrastructure as Code*. It works like Terraform but allows you to use a proper programming language (Typescript, Python, Go) in order to describe your infrastructure (instead of a configuration language).
 
 You can use Pulumi to deploy to Kubernetes or any other supported cloud platform. Because Pulumi itself is already offered [in a Docker container](https://hub.docker.com/r/pulumi/pulumi), it is very easy to run Pulumi in a Codefresh pipeline.
 

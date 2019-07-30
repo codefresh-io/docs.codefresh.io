@@ -11,7 +11,7 @@ toc: true
 
 Cron triggers allow you to create pipelines that start on a specific time schedule. This this very useful for cleanup jobs or periodic checks or any other workflow that needs to run after a time interval.
 
->All times mentioned in Cron triggers are using the UTC timezone. 
+>All times mentioned in Cron triggers are using the UTC time zone. 
 
 ## Manage Cron Triggers with Codefresh UI
 

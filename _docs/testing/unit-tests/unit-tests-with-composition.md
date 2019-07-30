@@ -8,7 +8,7 @@ redirect_from:
 toc: true
 ---
 
-Sometimes running unit tests require some additional services such as a Database (Mongo, MySql, Postgres etc) or third-party components like Redis, Memcache, etc.
+Sometimes running unit tests require some additional services such as a Database (Mongo, MySql, Postgres etc.) or third-party components like Redis, Memcache, etc.
 
 Codefresh provides you an easy way to do this by using a Codefresh pipeline and docker-compose.
 
@@ -19,7 +19,7 @@ Simple, right?
 <div class="bd-callout bd-callout-info" markdown="1">
 ##### Example repository
 
-Fork this [__repository__](https://github.com/codefreshdemo/cf-example-unit-tests-with-composition){:target="_blank"} in Github to continue
+Fork this [__repository__](https://github.com/codefreshdemo/cf-example-unit-tests-with-composition){:target="_blank"} in GitHub to continue
 </div>
 
 ## How to do it using option \"Replace Service\"

@@ -64,7 +64,7 @@ We assume you already forked this repo and create a service for it
 2. Switch to Use YML build
 3. Change the YML File Location to be ./codefresh.git.clone.example.yml
 4. Under Environment variables fill the next variables:
- - GIT_TOKEN your personal access token that you generated on github
+ - GIT_TOKEN your personal access token that you generated on GitHub
  - REPO_OWNER owner of repository that you want to clone
  - REPO_NAME name of repository that you want to clone
  - BRANCH branch of repo

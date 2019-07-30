@@ -31,7 +31,7 @@ max-width="70%"
 This screen contains a reverse chronological list of all Codefresh events that happened on your account. For each event, the following are recorded:
 
 * `Entity ID/Name` - which entity was affected
-* `Entity type` - types of entities are  build, pipeline, project, etc.
+* `Entity type` - types of entities are build, pipeline, project, etc.
 * `Action` - what happened to that entity
 * `Status` - what use the result of the API call
 * `User` - name of user that performed the action

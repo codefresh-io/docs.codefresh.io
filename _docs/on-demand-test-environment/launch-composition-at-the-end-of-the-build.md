@@ -14,7 +14,7 @@ If your service is one of many micro-services, after all your automatic tests on
 
 ## Pre-Requisites
 
-You should already done one the tutorial
+You should already have done the tutorial
 
 ## Launching The Composition
 
@@ -36,7 +36,7 @@ launch_composition_step:
 2. Commit and push the changes to git repository
 
 {:start="3"}
-3. Build your service with codefresh
+3. Build your service with Codefresh
 
 {:start="4"}
 4. Go to the environment page

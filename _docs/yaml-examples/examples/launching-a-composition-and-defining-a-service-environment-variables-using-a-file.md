@@ -1,5 +1,5 @@
 ---
-title: "Launching a composition and defining a service environment variables using a file"
+title: "Launching a composition and defining a service environment variable using a file"
 description: ""
 group: yaml-examples
 sub_group: examples

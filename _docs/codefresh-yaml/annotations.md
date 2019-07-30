@@ -239,7 +239,7 @@ steps:
 {% endraw %}            
 {% endhighlight %}
 
-You can also use both `unset` and `set` block in a single `annotations` block. And of course you can remove annotations from multiple entities.
+You can also use both `unset` and `set` block in a single `annotations` block. And of course, you can remove annotations from multiple entities.
 
 The `unset` annotation can be used with all post-step operations (`on_success`, `on_fail`, `on_finish`).
 

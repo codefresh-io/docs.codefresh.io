@@ -37,7 +37,7 @@ Codefresh offers two unique characteristics in pipelines that serve as the corne
 1. All steps in Codefresh share the same "workspace" in the form of a shared Docker volume
 1. The shared Docker volume is automatically cached between pipeline executions
 1. Each successful pipeline automatically pushes its Docker image to the [private registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/).
-1. Codefresh has a distributed Docker cache for all build nodes and caches layers similar to the docker daemon on you workstation. This is fully automated and no configuration is needed in order to activate it. 
+1. Codefresh has a distributed Docker cache for all build nodes and caches layers similar to the docker daemon on your workstation. This is fully automated, and no configuration is needed in order to activate it. 
 
 ### Using Docker containers as build tooling
 
@@ -136,10 +136,10 @@ Anything that is placed on this volume will be available to all steps of the pip
 
 Again, this places Codefresh ahead of traditional solutions that execute build steps in a completely isolated manner. 
 In traditional VM-based builds, using artifacts produced from one step to another, is a complicated process as one 
-must declare which artifact folders should be re-used. Artifact re-use sometimes happens with compression/uncompression 
+must declare which artifact folders should be re-used. Artifact re-use sometimes happens with compression/decompression 
 of the respective folder resulting in really slow builds if a project is very big.
 
-Codefresh does not need to bother the user with artifact reuse across steps. *Anything* that is placed in the shared codefresh volume will automatically be available to the next steps in the pipeline without any extra configuration.
+Codefresh does not need to bother the user with artifact reuse across steps. *Anything* that is placed in the shared Codefresh volume will automatically be available to the next steps in the pipeline without any extra configuration.
 
 Example 1
 
@@ -182,7 +182,7 @@ extra environment variables.
 
 ## Working with Codefresh pipelines
 
-Now that we know the basics we can see how you can take advantage of Docker-based pipelines in order 
+Now that we know the basics, we can see how you can take advantage of Docker-based pipelines in order 
 to build and deploy your projects.
 
 
@@ -190,7 +190,7 @@ to build and deploy your projects.
 
 You can clone source code using the built-in [git-clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) as the first step in a Pipeline or run manually your own git clone commands in a freestyle step. Codefresh has built-in [Git integration]({{site.baseurl}}/docs/integrations/git-providers/) with all popular git providers (both cloud and on-premise installations).
 
-Codefresh uses the shared volume as the parent folder of the project. So if your pipeline is connected to a git repo that contains `my-project` the following will happen:
+Codefresh uses the shared volume as the parent folder of the project. So if your pipeline is connected to a GIT repo that contains `my-project` the following will happen:
 
 * `/codefresh/volume` is the shared directory for all steps
 * `/codefresh/volume/my-project` is where the source code exists. This is also the current working directory
@@ -211,7 +211,7 @@ There are three important points to consider regarding these folders.
 First, the [working directory]({{ site.baseurl }}/docs/codefresh-yaml/working-directories/) of each step is by default the project folder (e.g. `/codefresh/volume/my-project`). Therefore
 your build step can run commands exactly as you would run them locally (e.g. `npm install, pip install, mvn package, bundle install`).
 
-Secondly, notice that the project folder is placed on the codefresh volume, so by default it is also available to all other steps. The code that you checkout in the beginning, as well as all other files that are created on it, will
+Secondly, notice that the project folder is placed on the Codefresh volume, so by default it is also available to all other steps. The code that you checkout in the beginning, as well as all other files that are created on it, will
 be available to all steps. Once you create `node_modules`, or any other folder that exists inside the project folder, it will automatically persist for all other steps.
 
 Finally `/codefresh/volume` is an internal folder name and you should use  `{% raw %}${{CF_VOLUME_PATH}}{% endraw %}` in your codefresh.yml file
@@ -238,7 +238,7 @@ For all these situations Codefresh gives you special pipeline steps that perform
 
 To actually run a docker container you just use the [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/). The commands you define in a freestyle step run automatically in a Docker container that is attached to that step once the pipeline executes.
 
-Therefore this command on your local workstation:
+Therefore, this command on your local workstation:
 
 ```
 docker run python:3.6.4-alpine3.6 pip install .
@@ -327,7 +327,7 @@ For example, if you have 4 Node projects that share a similar codebase, you coul
 
 To use the Docker cache effectively in Codefresh you should follow the [standard best practices](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/) for minimizing layers.
 
-Regarding the caching of your work space you also need to remember that 
+Regarding the caching of your workspace you also need to remember that 
 
 1. Only the Codefresh volume at `/codefresh/volume` is cached between builds. This includes your project git repository but excludes common work directories such as `/tmp/`, `/root/`, `/home/`, `/var` that you might be using in your builds
 1. Codefresh runs a `git reset` and a `git clean` in your project repository everytime a pipeline starts. This means that all artifacts that you wish to be cached should be in your `.gitignore` file. A common example would be the `node_modules` folder. If you don't place it in `.gitignore`, it will be deleted at the start of each build making it much slower.

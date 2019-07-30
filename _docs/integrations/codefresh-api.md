@@ -112,7 +112,7 @@ You can also pass extra environment variables using an array
 curl 'https://g.codefresh.io/api/builds/5b1a78d1bdbf074c8a9b3458' --compressed -H 'content-type:application/json; charset=utf-8' -H 'Authorization: <your_key_here>' --data-binary '{"serviceId":"5b1a78d1bdbf074c8a9b3458","type":"build","repoOwner":"kostis-codefresh","branch":"master","repoName":"nestjs-example","variables":{"sample-var1":"sample1","SAMPLE_VAR2":"SAMPLE2"}}'
 {% endhighlight %}
 
-Specifically for triggering pipelines remotely you can find a premade Curl command (including an api key) in the build settings for each each pipeline:
+Specifically, for triggering pipelines remotely you can find a premade Curl command (including an api key) in the build settings for each pipeline:
 
 
 {% include image.html 
@@ -232,7 +232,7 @@ visible in the GUI under the correct project.
 The Codefresh CLI is also packaged in a [Docker image on its own](https://hub.docker.com/r/codefresh/cli/). This makes it
 very easy to use it from within Codefresh in a [free style step]({{ site.baseurl }}/docs/codefresh-yaml/steps/freestyle/).
 
-For example you can easily call pipeline B from pipeline A  
+For example, you can easily call pipeline B from pipeline A  
 with the following step:
 
 `codefresh.yml` of pipeline A

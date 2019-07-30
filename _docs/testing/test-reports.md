@@ -20,7 +20,7 @@ There are two modes for processing test reports in Codefresh.
 1. Built-in test reporting based in [Allure framework](http://allure.qatools.ru/)
 1. Custom reporting for any static website content (i.e. HTML)
 
-Allure is an open source test framework that can  produce HTML reports like the following:
+Allure is an open source test framework that can produce HTML reports like the following:
 
 {% include 
 image.html 
@@ -43,7 +43,7 @@ You can find more details in the [official Allure documentation](https://docs.qa
 * Scala/Scalatest
 * PHP/PhpUnit
 
-If you use the custom reporting mode then you can select any kind of tool that you want (as long as it produces a static website in the end). You can also use the custom reporting mode for things that are not test reports (such as security reports or quality reports).
+If you use the custom reporting mode, you can select any kind of tool that you want (as long as it produces a static website in the end). You can also use the custom reporting mode for things that are not test reports (such as security reports or quality reports).
 
 ## Connecting your storage account
 
@@ -125,7 +125,7 @@ Let's see these requirements in order:
 The first step is to run your unit/integration tests and use Allure to gather the test results. The process is different for every programming language. Follow the [official Allure documentation](https://docs.qameta.io/allure/). 
 You can also take a look at any of the [examples](https://github.com/allure-examples). 
 
-By default Allure creates a folder named `allure-results` with all the tests. The Codefresh reporting step will look for that folder in order to upload it to the cloud storage. If you change the default name, then you also need to add an extra parameter in the Codefresh reporting step.
+By default, Allure creates a folder named `allure-results` with all the tests. The Codefresh reporting step will look for that folder in order to upload it to the cloud storage. If you change the default name, then you also need to add an extra parameter in the Codefresh reporting step.
 
 To pass the reports to the next step you need to place them anywhere in the [Codefresh volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) that is automatically shared between all Codefresh steps.
 
@@ -170,7 +170,7 @@ The required environment variables are:
  * `BUCKET_NAME` the name of the bucket that you created in your cloud provider. Multiple pipelines can use the same bucket.
  * `CF_STORAGE_INTEGRATION` the name of the cloud integration as was entered in the Codefresh UI in the cloud storage integration page
 
-If you used another directory name then you can configure the test reporting step like this:
+If you used another directory name, you can configure the test reporting step like this:
 
 {% highlight yaml %}
 {% raw %}
@@ -243,7 +243,7 @@ max-width="70%"
 
 In a similar manner you can upload reports from any other custom tool you have in your pipeline.
 
-If your report is only one file then simply use the `REPORT_INDEX_FILE` environment variable on its own like below:
+If your report is only one file, simply use the `REPORT_INDEX_FILE` environment variable on its own like below:
 
 {% highlight yaml %}
 {% raw %}
@@ -289,7 +289,7 @@ Here is an example:
 
 ## Creating multiple reports
 
-It is also possible to create multiple reports from a single pipeline. As an example you can create
+It is also possible to create multiple reports from a single pipeline. As an example, you can create
 a single pipeline that creates two reports, one for code coverage and another one for security vulnerabilities.
 
 To achieve this, you only need to repeat the variables mentioned in this page with an index number that matches them to the report, `REPORT_DIR.0`, `REPORT_DIR.1`, `REPORT_DIR.2` and so on.
@@ -321,7 +321,7 @@ Here is an example of a pipeline that has two reports. One is for code coverage 
 {% endraw %}
 {% endhighlight %}
 
-This is the top level HTML file created by the reporting step:
+This is the top-level HTML file created by the reporting step:
 
 {% include 
 image.html 
@@ -333,13 +333,13 @@ caption="Multiple test reports"
 max-width="60%"
 %}
 
-The icons shown are specified by the `REPORT_TYPE` variable. The following options are possible: `allure, mocha, spock, coverage, junit, testng, cucumber, pytest, rspec, phpunit, nunit, spectest`.
+The icons shown are specified by the `REPORT_TYPE` variable. The following options are possible: `Allure, Mocha, Spock, Coverage, Junit, Testng, Cucumber, Pytest, Rspec, Phpunit, Nunit, Spectest`.
 If you don't provide it, a default icon will be used.
 
 
 ## Getting results from tests that fail
 
-By default it unit tests fail the whole pipeline will stop. If you want the pipeline to keep running even if the tests fail
+By default, it unit tests fail the whole pipeline will stop. If you want the pipeline to keep running even if the tests fail
 you need to add the [fail_fast property]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/#execution-flow) in the pipeline and set it to false. Here is an example
 
 {% highlight yaml %}
@@ -423,7 +423,7 @@ If you run this pipeline you will see
 ## Running the test reporting step in parallel mode
 
 Test reporting goes really well with the [parallel pipeline mode]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/) where each step
-is evaluated any time there is workflow change. 
+is evaluated any time there is a workflow change. 
 
 Here is how you can define the test reporting step to run regardless of pipeline result.
 

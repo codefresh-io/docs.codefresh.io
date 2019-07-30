@@ -8,7 +8,7 @@ toc: true
 
 On May 2019, Codefresh introduced **Projects** as a way to group pipelines, instead of using *Repositories*. If you create a Codefresh account after this date, then you only get access to Projects and all the pipelines you create are under projects.
 
-If however, you have an existing Codefresh account, you will still get access to both dashboards (Projects and repositories) and you can work create/edit pipelines using both methods.
+If, however, you have an existing Codefresh account, you will still get access to both dashboards (Projects and repositories) and you can work create/edit pipelines using both methods.
 
 
 ## Git steps are now required
@@ -24,7 +24,7 @@ caption="Git clone warning on existing pipeline"
 max-width="80%" 
 %}
 
-First of all we need to make clear that **your pipeline will still work as before, without any changes**. The migration to projects is a gradual one and Codefresh does not force you to do anything in order to make things work.
+First of all, we need to make clear that **your pipeline will still work as before, without any changes**. The migration to projects is a gradual one and Codefresh does not force you to do anything in order to make things work.
 
 The warning message explains how new pipelines need a git-clone step. Codefresh pipelines based on repositories automatically cloned the source code for you.
 
@@ -37,7 +37,7 @@ caption="Automatic git clone step in repository based pipelines"
 max-width="60%" 
 %}
 
-This means that the repository based pipelines used to check out the code automatically, and all subsequent pipeline steps could start work with it right away.
+This means that the repository-based pipelines used to check out the code automatically, and all subsequent pipeline steps could start work with it right away.
 
  `codefresh.yml` (old syntax)
 {% highlight yaml %}
@@ -87,7 +87,7 @@ caption="Triggers connected to pipeline"
 max-width="60%" 
 %}
 
-When you run your pipeline you can select the trigger that will be used to fill in the values of all the Codefresh variables.
+When you run your pipeline, you can select the trigger that will be used to fill in the values of all the Codefresh variables.
 
 
 {% include image.html 

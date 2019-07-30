@@ -20,7 +20,7 @@ This issue occurs because of a race condition when trying to [push to a docker r
 
 It is not possible to push the same image at the same time to the same registry. Your pipeline configuration has probably [multiple triggers]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/) (such as a commit and tag) that trigger the pipeline twice.
 
-Review the trigger setup according to the pipeline logic and verify that is is triggered only once when an event happens.
+Review the trigger setup according to the pipeline logic and verify that is triggered only once when an event happens.
 
 
 

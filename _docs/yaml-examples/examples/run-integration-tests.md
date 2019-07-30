@@ -7,7 +7,7 @@ redirect_from:
   - /docs/run-integration-tests/
 toc: true
 ---
-Using this repository we'll help you get up to speed with basic functionality such as: compiling, testing and building Docker images.
+Using this repository, we'll help you get up to speed with basic functionality such as: compiling, testing and building Docker images.
 
 This project uses `Node Js` to build an application which will eventually become a distributable Docker image.
 You can use the [**composition**]({{site.baseurl}}/docs/codefresh-yaml/steps/composition/) step to run a complex interaction of services. For example, run integration tests on an already built image.

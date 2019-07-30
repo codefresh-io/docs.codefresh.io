@@ -10,7 +10,7 @@ toc: true
 
 We have created a special Helm step for easy integration of Helm in Codefresh pipelines. The Helm step facilitates authentication, configuration and execution of Helm commands.
 
-> You can always use the regular `helm` cli in a freestyle step, if you have a special use case that is not covered by the Codefresh Helm step. In this case, you can use the simpler container `codefresh/kube-helm` which includes only the kubectl and helm tools. kube-helm is available on DockerHub: [https://hub.docker.com/r/codefresh/kube-helm/](https://hub.docker.com/r/codefresh/kube-helm/).
+> You can always use the regular `helm` cli in a freestyle step, if you have a special use case that is not covered by the Codefresh Helm step. In this case, you can use the simpler container `codefresh/kube-helm` which includes only the Kubectl and helm tools. kube-helm is available on DockerHub: [https://hub.docker.com/r/codefresh/kube-helm/](https://hub.docker.com/r/codefresh/kube-helm/).
 
 If you are just starting using Helm please also consult the [Helm quick start guide]({{site.baseurl}}/docs/getting-started/helm-quick-start-guide/).
 
@@ -40,7 +40,7 @@ Once you have your Helm chart ready, commit it to the same git repository that c
 
 ### Step 2 - Kubernetes Configuration
 
-You can configure a Kubernetes cluster to deploy to using the `KUBE_CONTEXT` variable.
+You can configure a Kubernetes cluster to deploy using the `KUBE_CONTEXT` variable.
 
 First, you'll need to connect your Kubernetes cluster with Codefresh as described [here]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/). Once you have a Kubernetes cluster connected, provide it to the Helm step by adding the `KUBE_CONTEXT` variable, where the value is the connection *name* that you've entered when creating the connection. The connection name also appears as the title of the cluster in Kubernetes integration settings (from the left sidebar go to Integrations -> Kubernetes).
 
@@ -108,14 +108,14 @@ The Helm step can operate in one of 3 modes:
 
 1. Install - will install the chart into a Kubernetes cluster. This is the default mode if not explicitly set.
 2. Push - will package chart and push it to the repository.
-3. Authentication only - will only setup authentication, and add the repo to the helm. This is useful if you want to write your own helm commands using the freestyle step's `commands` property, but you still want the step to handle authentication.
+3. Authentication only - will only setup authentication and add the repo to the helm. This is useful if you want to write your own helm commands using the freestyle step's `commands` property, but you still want the step to handle authentication.
 
 The operation mode is set by the `ACTION` variable, where the value is `install`/`auth`/`push`.
 
 ### Helm Values
 
 To supply value file, add an environment variable with the name prefix of `VALUESFILE_`, and the value should point to an existing values file.  
-To override specific values, add an environment variable with the name prefix of `VALUE_` followed by the path to the value to set. For example `VALUE_myservice_imageTag`. Note that `.` (dot) should be replaced with `_` (underscore). The value of the variable will be used to override or set the templated property.
+To override specific values, add an environment variable with the name prefix of `VALUE_` followed by the path to the value to set. For example, `VALUE_myservice_imageTag`. Note that `.` (dot) should be replaced with `_` (underscore). The value of the variable will be used to override or set the templated property.
 
 Examples:
 ```text
@@ -128,7 +128,7 @@ results in:
 --values values-prod.yaml
 ```
 
-If a variable already contains a `_` (underscore) in it's name, replace it with `__` (double underscore).
+If a variable already contains a `_` (underscore) in its name, replace it with `__` (double underscore).
 
 ## Examples
 
@@ -217,7 +217,7 @@ Name|Required|Description
 ACTION|defaults to 'install'|Operation mode: `install`/`push`/`auth`
 CHART_REF|required for install/push|Chart reference to use, adhering to Helm's lookup rules (path to chart folder, or name of packaged chart). There's no need to prefix with `/reponame` if referencing a chart in a repository, this is handled automatically. a.k.a `CHART_NAME` but `CHART_NAME` shouldn't be used anymore.
 KUBE_CONTEXT|required for install|Kubernetes context to use. The name of the cluster as [configured in Codefresh]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/)
-RELEASE_NAME|required for install|Helm release name. If the release exists it will be upgraded
+RELEASE_NAME|required for install|Helm release name. If the release exists, it will be upgraded
 NAMESPACE|optional|Target Kubernetes namespace to deploy to
 TILLER_NAMESPACE|optional|Kubernetes namespace where Tiller is installed
 CHART_VERSION|optional|Override or set the chart version

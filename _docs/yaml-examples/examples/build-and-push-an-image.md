@@ -18,7 +18,7 @@ If you don't already have a Codefresh account, you can easily create a free one 
 
 ## Building a Docker image and pushing it to the Codefresh registry
 
-All Codefresh accounts come with a [private integrated Docker registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/). The nice thing about this registry is that it is fully automated. All successfull pipelines in Codefresh automatically push to that registy without any other configuration.
+All Codefresh accounts come with a [private integrated Docker registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/). The nice thing about this registry is that it is fully automated. All successful pipelines in Codefresh automatically push to that registry without any other configuration.
 
 So in the most simple case, you only need a [single build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) and  Codefresh will automatically push the image for you!
 
@@ -57,7 +57,7 @@ You can then visit the Codefresh Registry and view your image:
     %}
 
 
-That's it. Using the Codefresh Registry is very easy and no extra configuration is needed.
+That's it. Using the Codefresh Registry is very easy, and no extra configuration is needed.
 
 ## Building a Docker image and pushing it to an external registry.
 

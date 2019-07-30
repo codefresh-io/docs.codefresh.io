@@ -22,7 +22,7 @@ caption="Helm Environment Dashboard"
 max-width="80%"
 %}
 
-This board has 3 environments that correspond to kubernetes clusters:
+This board has 3 environments that correspond to Kubernetes clusters:
  * A Load-testing environment where applications are stress-tested
  * A Staging environment where smoke tests are performed
  * The production environment where applications go live.
@@ -44,18 +44,18 @@ caption="Helm environments column structure"
 max-width="80%"
 %}
 
-You can use different clusters for each column or different namespaces from the same cluster. You can even mix and match both approaches. As an example you could create a Helm board with the following environments
+You can use different clusters for each column or different namespaces from the same cluster. You can even mix and match both approaches. As an example, you could create a Helm board with the following environments
 
 * Column 1 - dev cluster showing all namespaces (DEV)
 * Column 2 - namespace qa from cluster staging (QA)
 * Column 3 - namespace staging from cluster staging (STAGING)
 * Column 4 - namespace production from cluster prod (PRODUCTION)
 
-Once you have your columns in place, you can move Helm releases between clusters/namespaces by drag-n-drop. Each Helm release can be dragged to any other column either promoting it (e.g. qa to production) or shitfing it left (e.g. prod to qa)
+Once you have your columns in place, you can move Helm releases between clusters/namespaces by drag-n-drop. Each Helm release can be dragged to any other column either promoting it (e.g. qa to production) or shifting it left (e.g. prod to qa)
 
 ## Creating your own Helm board
 
-To create your own boards select *Helm -> Boards* from the left sidebar. You can have as many boards as you want. Each board can deal with a single or multiple Helm applications.
+To create your own boards, select *Helm -> Boards* from the left sidebar. You can have as many boards as you want. Each board can deal with a single or multiple Helm applications.
 
 {% include 
 image.html 
@@ -94,9 +94,9 @@ max-width="50%"
 For each environment you can select
 
 * A name for that column
-* The kubernetes cluster it corresponds to
+* The Kubernetes cluster it corresponds to
 * One or more namespaces that define this environment. You can even toggle the switch for a regex match
-* A presentation color to easily identify the environment on the board. For example a "production" environment should have a red color. 
+* A presentation color to easily identify the environment on the board. For example, a "production" environment should have a red color. 
 
 You can also select no namespace at all. In that case the column will show Helm releases for all namespaces in that cluster.
 You can change all these options after creation, so feel free to change your mind.
@@ -122,7 +122,7 @@ caption="Helm release details"
 max-width="50%"
 %}
 
-You can even install manually a Helm release from any external repository by clicking on the *PLUS* button at the header of each column. In that case you will see a list possible Helm applications to choose from.
+You can even install manually a Helm release from any external repository by clicking on the *PLUS* button at the header of each column. In that case you will see a list of possible Helm applications to choose from.
 
 You will be able to select the target cluster and namespace as well as the chart values [as any other Helm release]({{site.baseurl}}/docs/new-helm/add-helm-repository/#install-chart-from-your-helm-repository).
 
@@ -194,7 +194,7 @@ steps:
 
 ## Editing your Helm boards
 
-For any existing Helm board you have the following options:
+For any existing Helm board, you have the following options:
 
 {% include 
 image.html 

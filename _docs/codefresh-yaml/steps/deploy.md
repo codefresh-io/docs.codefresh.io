@@ -9,7 +9,7 @@ toc: true
 ---
 The *Deploy* step can be used as a step to deploy a pre-built Docker image to a cluster
 
-This step allows to (re)deploy a kubernetes application in your cluster
+This step allows to (re)deploy a Kubernetes application in your cluster
 
 If has two modes:
 
@@ -36,14 +36,14 @@ with the `candidate` field (otherwise Codefresh will just reuse the docker image
     namespace: default
     
     ## Two ways to distinguish which deployment YAML to deploy - service or file_path:    
-    # The kubernetes service that associated with the deployment using selector
+    # The Kubernetes service that associated with the deployment using selector
     service: --my-service--
     # Path to deployment.yml location inside the image volume
     file_path: ./deployment.yml
     # In seconds, how long the step will wait until the rolling update is complete (default is 120)
     timeout: '150'
     # Candidate is optional, if not specified will redeploy the same image that specified in the deployment file
-    # When candidate exist it should have both: image and registry
+    # When candidate exists it should have both: image and registry
     candidate:
       # The image that will replace the original deployment image 
       # The image that been build using Build step

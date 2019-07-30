@@ -7,7 +7,7 @@ redirect_from:
   - /docs/unit-tests-with-database/
 toc: true
 ---
-Sometimes running unit tests requires some additional services like a Database (Mongo, MySql, Postgres etc), or third-party components like Redis, Memcache, etc.
+Sometimes running unit tests requires some additional services like a Database (Mongo, MySql, Postgres etc.), or third-party components like Redis, Memcache, etc.
 
 Codefresh provides you an easy way to do it by using the Codefresh pipeline and docker-compose.
 
@@ -49,7 +49,7 @@ Fork this [__repository__](https://github.com/codefreshdemo/cf-example-unit-test
   {% include image.html lightbox="true" file="/images/7605c78-codefresh_unit_test_script.png" url="/images/7605c78-codefresh_unit_test_script.png" alt="Codefresh unit test script" max-width="65%" %}
 
 {:start="2"}
-2. Go to composition module and create a new composition just press ("+"), the wizard will propose you a few options. The most useful options is to create a new one or add `docker-compose.yml` from your repository. For this example just copy paste the following `docker-compose.yml`
+2. Go to composition module and create a new composition just press ("+"), the wizard will propose you a few options. The most useful options is to create a new one or add `docker-compose.yml` from your repository. For this example, just copy paste the following `docker-compose.yml`
 
   `docker-compose.yml`
 {% highlight yaml %}

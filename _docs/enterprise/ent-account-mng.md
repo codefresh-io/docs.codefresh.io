@@ -39,7 +39,7 @@ The customer admin will see a new **CUSTOMERS** item under its profile menu. Fro
 ## Accounts
 
 As a customer admin you’re able to create multiple accounts, according to the license you purchased from Codefresh. Each account is fully segregated from the other.
-  When creating an account you’ll be required to choose the account name, GIT provider and limits based on your Codefresh license.
+  When creating an account, you’ll be required to choose the account name, GIT provider and limits based on your Codefresh license.
   
   For example, if you purchased 6 concurrent builds, you’re able to set one account with all 6 concurrent builds or balance it between different accounts (2 accounts, each having 3 concurrent builds).
 
@@ -51,7 +51,7 @@ As a customer admin you’re able to create multiple accounts, according to the 
   max-width="100%"
     %}
 
-Codefresh also allow you to edit the account limit configurations after the creation of an account so you aren’t locked to the limits you set initially and can always be flexible according to your teams usage.
+Codefresh also allow you to edit the account limit configurations after the creation of an account so you aren’t locked to the limits you set initially and can always be flexible according to your team's usage.
 
 {% include image.html
   lightbox="true"

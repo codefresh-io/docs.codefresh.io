@@ -9,7 +9,7 @@ Codefresh provides fully managed, hosted Helm repositories for users.
 A default managed repo is created automatically for every account.
 The managed repo is private by default, allowing access only via Codefresh or using a Codefresh API token.
 
-> You may be familiar with the popular open source Helm repository implementation called 'ChartMuseum' that Codefresh sponsors.   Codefresh managed repositories are based on, and therefore compatible with ChartMuseum and it's unique features. For more info on ChartMuseum: [https://github.com/kubernetes-helm/chartmuseum](https://github.com/kubernetes-helm/chartmuseum). 
+> You may be familiar with the popular open source Helm repository implementation called 'ChartMuseum' that Codefresh sponsors.   Codefresh managed repositories are based on, and therefore compatible with ChartMuseum and its unique features. For more info on ChartMuseum: [https://github.com/kubernetes-helm/chartmuseum](https://github.com/kubernetes-helm/chartmuseum). 
 
 ## Helm repository integration
 
@@ -32,7 +32,7 @@ The Codefresh CLI can be used for advanced management of your managed repository
 ## Repo access level
 
 The managed Helm repository supports two modes of access level: Private and Public.  
-By default it is created as private which means read/write access is protected by Codefresh authentication.  
+By default, it is created as private which means read/write access is protected by Codefresh authentication.  
 You can switch the access level to Public which will make the repository accessible to anonymous users only *for read operations*. write operations always require authentication even when in public access mode.
 
 ### Setting access level

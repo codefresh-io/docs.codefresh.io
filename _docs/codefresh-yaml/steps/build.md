@@ -16,7 +16,7 @@ In Codefresh, docker containers are first-class citizens
 and special typed steps are offered for the most usual docker commands. Build steps are a secure replacement for `docker build` commands.
 
 
-Therefore this command on your local workstation:
+Therefore, this command on your local workstation:
 
 ```
 docker build . -t my-app-image:1.0.1

@@ -132,7 +132,7 @@ In Codefresh you can also use any other [external registry]({{site.baseurl}}/doc
 
 Codefresh has the unique capability of launching Docker images within its infrastructure for a quick demonstration (e.g. to customers and colleagues). 
 
-In the example Rails repository the default development "environment" is self-contained (it uses sqlite for a database). This makes it very easy to preview.
+In the example Rails repository, the default development "environment" is self-contained (it uses sqlite for a database). This makes it very easy to preview.
 
 Launch the environment by clicking at the rocket icon in the images view.
 
@@ -170,7 +170,7 @@ max-width="50%"
 
 You can share this link with other people in your team.
 
->Demo environments are not intended for production purposes. Use them only for quick feedback. They also shut-down automatically after a period of inactivity.
+>Demo environments are not intended for production purposes. Use them only for quick feedback. They also shutdown automatically after a period of inactivity.
 
 
 

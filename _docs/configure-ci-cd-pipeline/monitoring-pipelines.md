@@ -10,7 +10,7 @@ All pipeline activity in Codefresh can be viewed on the *Builds* tab.
 There is one global view from the left-side menu that shows builds for all projects
 across your organization and a project-based view from the settings inside an individual project.
 
-Both views has the same controls and filters.
+Both views have the same controls and filters.
 
 ## Viewing pipeline status
 
@@ -27,7 +27,7 @@ caption="Pipeline activity (click to enlarge)"
 max-width="70%"
 %}
 
-By default it shows all builds that happening in Codefresh. To narrow the list you can use the filters on the top
+By default, it shows all builds that happening in Codefresh. To narrow the list you can use the filters on the top
 of the screen.
 
 ### Applying filters on the build view
@@ -223,9 +223,9 @@ caption="Restart a pipeline"
 max-width="70%"
 %}
 
-If the pipeline has failed you can choose to restart it only from the failed step and onwards.
+If the pipeline has failed, you can choose to restart it only from the failed step and onwards.
 
-You can also also restart from a failed step right from the graphical view:
+You can also restart from a failed step right from the graphical view:
 
 {% include 
 image.html 
@@ -269,7 +269,7 @@ for all automated commits (that are coming from webhooks).
 If you start a build manually then by default the git status will **not** be updated (i.e. the result of the pipeline
 will not affect the status of Pull request)
 
-If you don't want this behavior to happen you can enable the git status update checkbox when you launch a pipeline.
+If you don't want this behavior to happen, you can enable the git status update checkbox when you launch a pipeline.
 
 {% include 
 image.html 

@@ -44,7 +44,7 @@ If you want to know more about how steps work in Codefresh make sure to read [th
 
 ## Basic skeleton of a codefresh.yml file.
 
-You can customize your build environment (pipeline) by using the Codefresh YAML file, ```codefresh.yml```. Codefresh uses the build specifications in the ```codefresh.yml``` file to execute your build. The ```codefresh.yml``` can be basic, or include intricate build specifications.
+You can customize your build environment (pipeline) by using the Codefresh YAML file, ```codefresh.yml```. Codefresh uses the build specifications in the ```codefresh.yml``` file to execute your build. The ```codefresh.yml``` can be basic or it can include intricate build specifications.
 
 A YAML file is comprised of a series of steps that are executed in the order in which they are specified.
 
@@ -65,7 +65,7 @@ You must define a step type for each step. Each step uses Docker images and cont
 
 The step names should be unique within the same pipeline. This mainly affects the visualization of the pipeline when it runs.
 
-Each step produces a resource, which you can reference in other steps, and are executed in real-time. For example, a [**Freestyle**]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) step can reference an image that was produced by a [**Build**]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) step. This allows you to chain steps together, and create highly-customized builds.
+Each step produces a resource, which you can reference in other steps, and are executed in real-time. For example, a [**Freestyle**]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) step can reference an image that was produced by a [**Build**]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) step. This allows you to chain steps together and create highly-customized builds.
 
 <div class="bd-callout bd-callout-info" markdown="1">
 ##### Variables
@@ -120,7 +120,7 @@ For more information on where the YAML file can be stored see the [creating pipe
 
 ## Execution flow
 
-By default Codefresh will execute all steps in the yaml file and instantly fail the build, if any step
+By default, Codefresh will execute all steps in the yaml file and instantly fail the build, if any step
 presents an error. To change this behavior add the `fail_fast:false` property in any step that you wish to be ignored
 in case of errors. 
 
@@ -305,7 +305,7 @@ steps:
 
 Here we deploy to two kubernetes clusters. The first step defines the staging deployment.
 For the second step, we extend the first one and only change the name of the cluster
-to point to production. Everything else (i.e. namespace and service ) are exactly the same.
+to point to production. Everything else (i.e. namespace and service) are exactly the same.
 
 
 ## What to read next

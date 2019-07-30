@@ -81,7 +81,7 @@ spec:
 {% endraw %}
 {% endhighlight %}
 
-In this case the image will get the replacement for your Codefresh account name and the tag will use the git revision. Metadata annotations are also defined with value from the branc name and the git repository name.
+In this case the image will get the replacement for your Codefresh account name and the tag will use the git revision. Metadata annotations are also defined with value from the branch name and the git repository name.
 
 Notice that the variables are declared as  {% raw %}`{{MY_VARIABLE}}`{% endraw %} form and **NOT** {% raw %}`${{MY_VARIABLE}}`{% endraw %} which is how they are used inside the [Codefresh yaml]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) definition.
 
@@ -154,7 +154,7 @@ In the environment section you can see the values for the custom variables. We s
 
 ## Using replacements in multiple manifests
 
-By default the deploy step will only do replacements in a single manifest. If you have multiple Kubernetes manifests you can merge all of them in a single file, or use multiple times the deploy commands like this:
+By default, the deploy step will only do replacements in a single manifest. If you have multiple Kubernetes manifests you can merge all of them in a single file, or use multiple times the deploy commands like this:
 
 `codefresh.yml`
 {% highlight yaml %}

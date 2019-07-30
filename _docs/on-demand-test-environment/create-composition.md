@@ -134,7 +134,7 @@ max-width="70%"
 Your composition is now ready and should appear in the Compositions list.
 
 ### 3.2 From template
-If your repository doesn't include a `docker-compose.yml` file , you can use one of our templates to see how it works!
+If your repository doesn't include a `docker-compose.yml` file, you can use one of our templates to see how it works!
 
 {:start="1"}
 1. Choose the template
@@ -205,6 +205,6 @@ max-width="70%"
 %}
 
 
-Once you are ready click the small "rocket" button to launch your composition. This will create create a temporary
+Once you are ready click the small "rocket" button to launch your composition. This will create a temporary
 test environment in your Codefresh account that you can use to inspect your application.
  

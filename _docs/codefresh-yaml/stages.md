@@ -22,7 +22,7 @@ In this example there are 4 pipeline stages.
 ## Assigning steps to a stage.
 
 Stages are completely optional and for really small pipelines they are not needed at all.
-By default all pipeline steps are shown one after the other.
+By default, all pipeline steps are shown one after the other.
 
 {% include 
 image.html 
@@ -47,7 +47,7 @@ max-width="80%"
 %}
 
 The number of stages (i.e columns) and their titles is completely configurable. 
-To enable this view you need to make two modifications at the `codefresh.yml` file:
+To enable this view, you need to make two modifications at the `codefresh.yml` file:
 
 Here is the skeleton:
 

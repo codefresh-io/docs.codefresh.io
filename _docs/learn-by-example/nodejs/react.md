@@ -161,7 +161,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-Notice that for demonstration purposes we uses node 11 for the tests, and node 8 for the packaging. Normally you should should use the same version of node/Yarn for all your steps, but Codefresh pipelines are flexible on version of tools.
+Notice that for demonstration purposes we uses node 11 for the tests, and node 8 for the packaging. Normally you should use the same version of node/Yarn for all your steps, but Codefresh pipelines are flexible on version of tools.
 
 Even when you don't create a Docker image, Codefresh still caches your workspace volume. This means that `node_modules` are downloaded only once. All subsequent builds will be much faster.
 

@@ -10,7 +10,7 @@ Codefresh offers 3 installation options that can cater to any size of organizati
 
 * Full cloud version that runs 100% in the cloud and is fully managed by Codefresh
 * On-premise version where Codefresh runs inside the customer datacenter/cloud
-* Hybrid version where the UI runs in the Codefresh cloud but builds are running on customer premises
+* Hybrid version where the UI runs in the Codefresh cloud, but builds are running on customer premises
 
 On-premise and Hybrid versions are available to Enterprise customers that are looking for a "behind-the-firewall" solution.
 
@@ -44,7 +44,7 @@ Codefresh Cloud is also compliant with [SOC2 - Type2](https://www.aicpa.org/SOC)
   max-width="40%"
     %}    
 
-The Cloud version has multi-account support with most git providers (Gitlab, Github, Bitbucket) as well as Azure and Google.
+The Cloud version has multi-account support with most git providers (GitLab, GitHub, Bitbucket) as well as Azure and Google.
 
 
 ## Hybrid installation

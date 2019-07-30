@@ -39,7 +39,7 @@ Regarding security of services:
 
  1. Pipelines can run in behind-the-firewall clusters with internal services
  1. Pipelines can use integrations (such as docker registries) that are private and secure
- 1. Source code does not ever leaves the customer premises
+ 1. Source code does not ever leave the customer premises
 
 Regarding firewall security:
 
@@ -72,7 +72,7 @@ All pipelines that are executed in the private Kubernetes cluster have access to
 
 ### Checking out code from a private GIT repository
 
-To check-out code from your private GIT repository, you need to connect first to Codefresh via the [GIT integrations]({{site.baseurl}}/docs/integrations/git-providers/). However once you define your GIT provider as *on premise* you also
+To check-out code from your private GIT repository, you need to connect first to Codefresh via the [GIT integrations]({{site.baseurl}}/docs/integrations/git-providers/). However, once you define your GIT provider as *on premise* you also
 need to mark it as *behind the firewall* as well:
 
 {% include image.html
@@ -129,7 +129,7 @@ Once you trigger the pipeline, the Codefresh builder will communicate with your 
 In the previous section we have seen how a pipeline can checkout code from the internal git repository. We also need to setup a trigger
 so that every time a commit happens (or any other supported event), the Codefresh pipeline will be triggered automatically.
 
-This is a two step process:
+This is a two-step process:
 1. First we setup a webhook endpoint in Codefresh
 1. Then we create the webhook call in the side of the the GIT provider.
 
@@ -146,7 +146,7 @@ Once you select your GIT provider, you need to manually enter your username and 
   max-width="60%"
     %}
 
-All other details (git events, branch naming, monorepo pattern etc) are still the same as normal SAAS GIT providers.
+All other details (git events, branch naming, monorepo pattern, etc.) are still the same as normal SAAS GIT providers.
 Once that is done, Codefresh will show you the webhook endpoint along with a secret for triggering this pipeline. Note them down.
 
 
@@ -168,7 +168,7 @@ The instructions are different per GIT provider.
 
 In all cases make sure that the payload is JSON, because this is what Codefresh expects.
 
-* For Github the events monitored should be `Pull requests` and `Pushes`.
+* For GitHub the events monitored should be `Pull requests` and `Pushes`.
 * For Gitlab the events monitored should be `Push events`,`Tag push events` and `Merge request events`.
 
 After the setup is finished, the Codefresh pipeline will be executed every time a git event happens.

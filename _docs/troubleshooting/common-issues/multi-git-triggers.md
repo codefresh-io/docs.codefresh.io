@@ -6,7 +6,7 @@ sub_group: common-issues
 toc: true
 ---
 
-Codefresh has the capability to store the the [pipeline definition]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#using-a-codefreshyml-for-the-source-code-repository) in the same git repository as the source code.
+Codefresh has the capability to store the [pipeline definition]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#using-a-codefreshyml-for-the-source-code-repository) in the same git repository as the source code.
 
 
 {% include 
@@ -21,7 +21,7 @@ max-width="50%"
 
 
 
-By default when a git trigger is happening, Codefresh will fetch the `codefresh.yml` file from the branch that is mentioned in the webhook. This is the behavior you expect most of the times as it allows you to version your pipelines and have different versions for different branches.
+By default, when a git trigger is happening, Codefresh will fetch the `codefresh.yml` file from the branch that is mentioned in the webhook. This is the behavior you expect most of the times as it allows you to version your pipelines and have different versions for different branches.
 
 ## Overriding the branch of codefresh.yml
 
@@ -34,7 +34,7 @@ In those cases, Codefresh supports adding [multiple git triggers]({{site.baseurl
 
 This creates issues with pipeline definitions because repository B might not have a `codefresh.yml` at all, or it might have the wrong one in the branch that actually created the webhook. Another bad scenario is when the branch mentioned in the webhook from repository B does not even exist in repository A.
 
-To solve this issue you can pin down the branch that will be used for the source of `codefresh.yml`. In the example above, you can specify that no matter the branch of repository B that triggered the commit, the pipeline should only use the `master` branch of pipeline A regardless of what is mentioned in the webhook.
+To solve this issue, you can pin down the branch that will be used for the source of `codefresh.yml`. In the example above, you can specify that no matter the branch of repository B that triggered the commit, the pipeline should only use the `master` branch of pipeline A regardless of what is mentioned in the webhook.
 
 To perform this pinning you need to use the [Codefresh CLI](https://codefresh-io.github.io/cli/installation/) and [setup authentication](https://codefresh-io.github.io/cli/getting-started/) with your Codefresh account.
 

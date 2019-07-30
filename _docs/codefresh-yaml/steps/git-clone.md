@@ -67,7 +67,7 @@ step_name:
 If you want to extend the git-clone step you can use the freestyle step. Example how to do it you can find [here]({{site.baseurl}}/docs/yaml-examples/examples/git-clone-private-repository-using-freestyle-step/) 
 {{site.data.callout.end}}
 
-## Basic clone step (project based pipeline)
+## Basic clone step (project-based pipeline)
 
 The easiest way to use a git clone step is to use your default git provider as configured in [built-in git integrations]({{site.baseurl}}/docs/integrations/git-providers/).
 
@@ -98,7 +98,7 @@ steps:
 
 The CF values will be automatically filled by Codefresh from the git trigger. See the [variables page]({{site.baseurl}}/docs/codefresh-yaml/variables/) for more details.
 
-## Choosing a specific git provider (project based pipeline)
+## Choosing a specific git provider (project-based pipeline)
 
 If you don't want to use the default git provider you can explicitly set the provider by using the same name of the integration as it is shown in [the git integrations page]({{site.baseurl}}/docs/integrations/git-providers/).
 
@@ -135,8 +135,8 @@ steps:
 
 ## Checkout a specific repository/revision (project based pipeline)
 
-If you want to checkout a specific git repository regardless on what repository actually created the trigger
-you can just define all values in a non static manner. For example if you want your pipeline to always checkout git repository `foo` even when the trigger happened from repository `bar` you can define the checkout step as below:
+If you want to check out a specific git repository regardless of what repository actually created the trigger
+you can just define all values in a non-static manner. For example, if you want your pipeline to always checkout git repository `foo` even when the trigger happened from repository `bar` you can define the checkout step as below:
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -214,7 +214,7 @@ steps:
 
 If you have existing pipelines connected to repositories (only for Codefresh accounts created before May 2019)
 a git clone step is transparently added to git attached pipelines without you having to explicitly add a step into the pipeline. This is a convenience to enable easy CI pipelines.  
-If you do not require git cloning, or you would like to customize the implicit git cloning behaviour, you can choose to skip the automatically added git clone step.
+If you do not require git cloning, or you would like to customize the implicit git cloning behavior, you can choose to skip the automatically added git clone step.
 
 There are 2 ways to do that:
 
@@ -244,7 +244,7 @@ as an authentication mechanism.
 
 The [Codefresh CLI](https://codefresh-io.github.io/cli/) can read one of the connected [git authentication contexts](https://codefresh-io.github.io/cli/contexts/get-context/) and use that token for a custom clone step.
 
-Here is an example for Github
+Here is an example for GitHub
 
 
 ```yaml
@@ -268,7 +268,7 @@ steps:
 
 To checkout a git project including its submodules you can use the [Codefresh submodule plugin](https://github.com/codefresh-io/plugins/tree/master/plugins/gitsubmodules). This plugin is already offered as a public docker image at [Dockerhub](https://hub.docker.com/r/codefresh/cfstep-gitsubmodules/tags).
 
-To use this module in your pipeline add a new step like the one shown below.
+To use this module in your pipeline, add a new step like the one shown below.
 
 ```yaml
 version: '1.0'
@@ -281,7 +281,7 @@ steps:
       - CF_SUBMODULE_UPDATE_RECURSIVE=<boolean to determine if modules should be recursively updated>
 ```      
 
-The Github token can be either defined in the pipeline on its own as an environment variable, or fetched from
+The GitHub token can be either defined in the pipeline on its own as an environment variable, or fetched from
 the existing [GIT integration]({{site.baseurl}}/docs/integrations/git-providers/) as shown in the previous section.
 
 
@@ -295,7 +295,7 @@ cat ~/.ssh/my_ssh_key_file | tr '\n' ','
 ```
 
 
-Then in pipeline use it like this:
+Then in the pipeline use it like this:
 
 `codefresh.yml`
 {% highlight yaml %}

@@ -22,7 +22,7 @@ caption="This error indicates that the repository doesn’t have a Dockerfile in
 ***Solution:*** There are two ways to address this error:
 
 {:start="1"}
-1. Add a Dockerfile to the repository, or verify that you configured the correct path to the Dockerfile. 
+1. Add a Dockerfile to the repository or verify that you configured the correct path to the Dockerfile. 
    
    To configure the Dockerfile path in the pipeline configuration, navigate to **`Repositories`** &#8594; **`Your Repository`** &#8594; **`Pipelines`**.
 

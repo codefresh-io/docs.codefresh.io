@@ -25,7 +25,7 @@ max-width="90%"
 ## 1. Select your Identity Provider
 
 First, navigate to the [Codefresh Sign Up page](https://g.codefresh.io/signup).  
-Codefresh currently supports Github, Bitbucket and Gitlab as a Git provider. If you are using another Git provider
+Codefresh currently supports GitHub, Bitbucket and Gitlab as a Git provider. If you are using another Git provider
 please [contact us](https://codefresh.io/contact-us/) to discuss alternative options. You can also select
 Azure or Google as an identity provider.
 
@@ -54,7 +54,7 @@ Don't worry, Codefresh will not do anything without your explicit approval, so d
 in the request window. The permissions requested by Codefresh are needed in order to build and deploy your projects.
 
 
-This is the Github permissions window. Click the button labeled *Authorize access* to continue.
+This is the GitHub permissions window. Click the button labeled *Authorize access* to continue.
 
 {% include 
 image.html 
@@ -79,7 +79,7 @@ caption="Bitbucket authorization page (click image to enlarge)"
 max-width="50%" 
 %}
 
-Finally if you use Gitlab you will see  the permissions window shown below. Click the button labeled *Authorize* to continue.
+Finally if you use Gitlab you will see the permissions window shown below. Click the button labeled *Authorize* to continue.
 
 
 {% include 
@@ -138,7 +138,7 @@ Once that is done, follow the [Stash instructions]({{site.baseurl}}/docs/integra
 
 ## Using Codefresh in a secure corporate environment
 
-If your source code repositories are in a private Git account that lies behind your company firewall firewall, or simply has no access to the Internet, we can still help you!
+If your source code repositories are in a private Git account that lies behind your company firewall, or simply has no access to the Internet, we can still help you!
 
 {% include 
 image.html 
@@ -150,7 +150,7 @@ caption="Git behind firewall"
 max-width="100%" 
 %}
 
-We can establish a VPN / tunnel to your network, or discuss options for an on-premises Codefresh deployment. Please [contact us to get started](https://codefresh.io/contact-us/).
+We can establish a VPN / tunnel to your network or discuss options for an on-premises Codefresh deployment. Please [contact us to get started](https://codefresh.io/contact-us/).
 
 
 ## What to read next

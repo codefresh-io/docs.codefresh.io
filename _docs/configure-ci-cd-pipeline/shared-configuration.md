@@ -5,7 +5,7 @@ group: configure-ci-cd-pipeline
 toc: true
 ---
   
-After creating several pipelines in Codefresh you will start to notice several common values between them. Common examples are access tokens, environment urls, configuration properties e.t.c.
+After creating several pipelines in Codefresh you will start to notice several common values between them. Common examples are access tokens, environment URLs, configuration properties etc.
 
 Codefresh allows you to create those shared values in a central place and then reuse them in your pipelines
 avoiding the use of copy-paste.
@@ -92,7 +92,7 @@ caption="Importing Helm values"
 max-width="50%"
 %}
 
-From the same dialog you can also create a brand new shared configuration snippet of type YAML.
+From the same dialog you can also create a brand-new shared configuration snippet of type YAML.
 Not only it will be used for this Helm chart, but it will be added in your global shared configuration as well.
 
 ## Sharing any kind of YAML data in pipelines

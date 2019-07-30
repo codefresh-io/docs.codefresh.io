@@ -11,7 +11,7 @@ Even though Codefresh has great support for Kubernetes and Helm deployments, the
 
 [Nomad](https://www.nomadproject.io/) is an alternative scheduling platform from Hashicorp. It supports docker containers (like Kubernetes) but you can also use Nomad to schedule VMs, Java apps, Go apps or any other standalone executable. 
 
-There are several public Docker image with Nomad, so it is very easy to use Codefresh pipelines to deploy to a Nomad cluster.
+There are several public Docker Images with Nomad, so it is very easy to use Codefresh pipelines to deploy to a Nomad cluster.
 
  
 {% include image.html 

@@ -62,7 +62,7 @@ max-width="70%"
 
 * App name (e.g. Codefresh)
 * App logo (optional). Feel free to download and add this [picture]({{site.baseurl}}/images/enterprise/sso/okta/codefresh-logo.png)
-* Login redirect URI: `https://g.codefresh.io/api/auth/<your_codefresh_client_name>/callback` you’ll be able to extract your codefresh client name a bit later in the process so we’ll need to come back to this and update it again - for now please use a temp value such as `https://g.codefresh.io/api/auth/temp/callback`
+* Login redirect URI: `https://g.codefresh.io/api/auth/<your_codefresh_client_name>/callback` you’ll be able to extract your Codefresh client name a bit later in the process so we’ll need to come back to this and update it again - for now please use a temp value such as `https://g.codefresh.io/api/auth/temp/callback`
 
 
 {% include image.html 
@@ -84,9 +84,9 @@ You need to enter the following:
 * *Display Name* - Shown as application name in OKTA
 * *client id* - your OKTA application client ID (see below)
 * client secret* - your OKTA application client secret (see below)
-* Client Host - your OKTA organisation url (e.g `https://<company>.okta.com`). Keep in mind you don’t copy it from the admin view (e.g. `https://<company>-admin.okta.com`) because it’ll not work.
+* Client Host - your OKTA organization url (e.g `https://<company>.okta.com`). Keep in mind you don’t copy it from the admin view (e.g. `https://<company>-admin.okta.com`) because it’ll not work.
 * *Access Token* (optional) - OKTA API token that will be used to sync groups and users from OKTA to Codefresh. The token can be generated in OKTA by going to the security tab->API (see below)
-* *App ID* - your Codefresh application ID in your OKTA organization that will be used to sync groups and users from OKTA to Codefresh. This ID can be taken by navigating to your Codefresh APP in OKTA and copy it from the url (see below)
+* *App ID* - your Codefresh application ID in your OKTA organization that will be used to sync groups and users from OKTA to Codefresh. This ID can be taken by navigating to your Codefresh APP in OKTA and copy it from the URL (see below)
 
 {% include image.html 
 lightbox="true" 

@@ -8,7 +8,7 @@ toc: true
 old_url: /docs/unit-tests-not-working-with-composition
 was_hidden: true
 ---
-**Problem***: I want run unit tests with my composition, but nothing is happen.
+**Problem***: I want run unit tests with my composition, but nothing is happening.
 ***Solution:*** In order to use unit tests you need mark your service as "test" in composition:
 
 {% include 

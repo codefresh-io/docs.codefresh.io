@@ -16,11 +16,11 @@ Codefresh is agnostic as far as programming languages are concerned. All major p
 
 - [Go Web App]({{site.baseurl}}/docs/learn-by-example/golang/golang-hello-world/) or [Go CLI]({{site.baseurl}}/docs/learn-by-example/golang/goreleaser) 
 - [Spring Java app with Maven]({{site.baseurl}}/docs/learn-by-example/java/spring-boot-2/) or [Gradle]({{site.baseurl}}/docs/learn-by-example/java/gradle/)
-- Node [Express.js app]({{site.baseurl}}/docs/learn-by-example/nodejs/lets-chat/) or [React.js app]({{site.baseurl}}/docs/learn-by-example/nodejs/react/)
+- Node [Express.js App]({{site.baseurl}}/docs/learn-by-example/nodejs/lets-chat/) or [React.js App]({{site.baseurl}}/docs/learn-by-example/nodejs/react/)
 - [Php App]({{site.baseurl}}/docs/learn-by-example/php)
-- [Python Django app]({{site.baseurl}}/docs/learn-by-example/python/django/)
-- [Ruby On Rails app]({{site.baseurl}}/docs/learn-by-example/ruby/)
-- [Scala app]({{site.baseurl}}/docs/learn-by-example/scala/scala-hello-world/)
+- [Python Django App]({{site.baseurl}}/docs/learn-by-example/python/django/)
+- [Ruby On Rails App]({{site.baseurl}}/docs/learn-by-example/ruby/)
+- [Scala App]({{site.baseurl}}/docs/learn-by-example/scala/scala-hello-world/)
 - [Android (Mobile)]({{site.baseurl}}/docs/learn-by-example/mobile/android/)
 
 ## Checking out source code
@@ -28,7 +28,7 @@ Codefresh is agnostic as far as programming languages are concerned. All major p
 You can checkout code from one or more repositories in any pipeline phase. Codefresh includes [built-in GIT integration]({{site.baseurl}}/docs/integrations/git-providers/) with all the popular GIT providers and can be used with [git-clone]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) steps.
 
 - [Cloning Git repositories using the built-in integration]({{site.baseurl}}/docs/yaml-examples/examples/git-checkout/)
-- [Cloning Git repositories using manual git commands]({{site.baseurl}}/docs/yaml-examples/examples/git-checkout-custom/)
+- [Cloning Git repositories using manual Git commands]({{site.baseurl}}/docs/yaml-examples/examples/git-checkout-custom/)
 - [Checking out from Subversion, Perforce, Mercurial, etc ]({{site.baseurl}}/docs/yaml-examples/examples/non-git-checkout/)
 
 ## Build/Package
@@ -40,7 +40,7 @@ Codefresh has native support for [building]({{site.baseurl}}/docs/codefresh-yaml
 - [Build an Image from a Different Git Repository]({{site.baseurl}}/docs/yaml-examples/examples/build-an-image-from-a-different-git-repository)
 - [Build and Push an Image]({{site.baseurl}}/docs/yaml-examples/examples/build-and-push-an-image)
 - [Build an Image With Build Arguments]({{site.baseurl}}/docs/yaml-examples/examples/build-an-image-with-build-arguments)
-- [Shared volumes between builds]({{site.baseurl}}/docs/yaml-examples/examples/shared-volumes-between-builds)
+- [Shared Volumes Between Builds]({{site.baseurl}}/docs/yaml-examples/examples/shared-volumes-between-builds)
 - [Get Short SHA ID and Use it in a CI Process]({{site.baseurl}}/docs/yaml-examples/examples/get-short-sha-id-and-use-it-in-a-ci-process)
 
 
@@ -53,8 +53,8 @@ Codefresh has support for both [unit]({{site.baseurl}}/docs/testing/unit-tests/)
 - [Run Integration Tests]({{site.baseurl}}/docs/yaml-examples/examples/run-integration-tests) 
 - [Shared volumes of service from composition step for other yml steps]({{site.baseurl}}/docs/yaml-examples/examples/shared-volumes-of-service-from-composition-step-for-other-yml-steps)
 - [Launch Composition]({{site.baseurl}}/docs/yaml-examples/examples/launch-composition) 
-- [Launching a composition and defining a service environment variables using a file]({{site.baseurl}}/docs/yaml-examples/examples/launching-a-composition-and-defining-a-service-environment-variables-using-a-file) 
-- [Populate a database with existing data]({{site.baseurl}}/docs/yaml-examples/examples/populate-a-database-with-existing-data) 
+- [Launching a Composition and Defining a Service Environment Variables using a file]({{site.baseurl}}/docs/yaml-examples/examples/launching-a-composition-and-defining-a-service-environment-variables-using-a-file) 
+- [Populate a Database with Existing Data]({{site.baseurl}}/docs/yaml-examples/examples/populate-a-database-with-existing-data) 
 
 ## Deployment
 

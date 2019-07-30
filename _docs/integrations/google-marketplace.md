@@ -12,12 +12,12 @@ Once you configure Codefresh to use your own Kubernetes cluster for builds you w
 The major benefits are the following:
 
  * You define exactly what resources are used for your builds instead of relying on Codefresh infrastructure
- * The management UI is still running on the  Codefresh premises and is managed by the Codefresh team allowing you to focus on your builds
+ * The management UI is still running on the Codefresh premises and is managed by the Codefresh team allowing you to focus on your builds
  * The Codefresh builder can have access to all private resources that run in your cluster so it is very easy to use resources that should not be exposed to the Internet for any reason
  * Unified billing. You pay a single bill to Google that includes the price for your Kubernetes cluster as well as the Codefresh pipelines.
 
 
-To start the integration you need the following
+To start the integration, you need the following
 
 1. A [Google Cloud account](https://cloud.google.com/) with billing enabled
 1. A [GKE cluster](https://cloud.google.com/kubernetes-engine/docs/quickstart) that will run all builds and pipelines
@@ -122,9 +122,9 @@ The Codefresh application is now installed on your cluster.
 
 ## Step 2 - Setup communication with Codefresh SAAS
 
-To finish the installation we need to make Codefresh SAAS aware of the new builder.
+To finish the installation, we need to make Codefresh SAAS aware of the new builder.
 
-On the right hand side, a full command is shown that completes the installation.
+On the right hand-side, a full command is shown that completes the installation.
 
 {% include image.html 
 lightbox="true" 
@@ -185,7 +185,7 @@ caption="Codefresh Kubernetes dashboard"
 alt="Codefresh Kubernetes dashboard"
 %}
 
-The full integration is now ready and you can start running Codefresh pipelines in your own cluster.
+The full integration is now ready, and you can start running Codefresh pipelines in your own cluster.
 
 ## Step 3 - Start running pipelines
 

@@ -83,7 +83,7 @@ DeployMyChart:
 {% endhighlight %}
 
 We use the `cfstep-helm` image to deploy a chart. There are 3 environment variables that are required. The `CHART_REF` points to the chart inside the git repository. The `RELEASE_NAME` defines the name of the deployment that will be created
-in the cluster. And finally the `KUBE_CONTEXT` defines which cluster will be used. The name is the same as defined in Codefresh Integrations.
+in the cluster. And finally, the `KUBE_CONTEXT` defines which cluster will be used. The name is the same as defined in Codefresh Integrations.
 
 For the full list of variables and modes see the section [using Helm in Codefresh pipelines]({{site.baseurl}}/docs/new-helm/using-helm-in-codefresh-pipeline/)
 
@@ -177,7 +177,7 @@ max-width="70%"
 
 The server part of Helm keeps a history of all releases and knows the exact contents of each respective Helm package.
 
-Codefresh allows you to do this right from the GUI. Select the History tab in the Helm release and from the list of revisions you can select any of them as the rollback target. Notice that rolling back will actually create a new revision. So you can go backward and forward in time to any revision possible.
+Codefresh allows you to do this right from the GUI. Select the History tab in the Helm release and from the list of revisions you can select any of them as the rollback target. Notice that rolling back will actually create a new revision. So, you can go backward and forward in time to any revision possible.
 
 
 

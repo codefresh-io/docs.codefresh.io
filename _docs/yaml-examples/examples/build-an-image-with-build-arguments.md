@@ -8,7 +8,7 @@ redirect_from:
 toc: true
 ---
 
-Using this repository we'll help you get up to speed with basic functionality such as: building Docker images with build arguments.
+Using this repository, we'll help you get up to speed with basic functionality such as: building Docker images with build arguments.
 The ```build-arguments``` field uses the same logic as ARG in Dockerfile. For more information, see [description of ARG](https://docs.docker.com/engine/reference/builder/#/arg){:target="_blank"} 
 
 ## Looking around

@@ -14,7 +14,7 @@ This is possible, in part, because Docker can map ports from a container to a ra
 ##### Availability 
 
 This feature is available for users with a Pro subscription. <br>
-Already a Pro subscriber? Contact us to opt in to this feature.
+Already a Pro subscriber? Contact us to opt into this feature.
 {{site.data.callout.end}}
    
 Codefresh utilizes `Dynamic Composition Service Routing` to deliver seamless service discovery within a composition.
@@ -28,7 +28,7 @@ Every service URL environment variable is prefixed with `CF_URL_` and is uniquel
 If your service exposes multiple ports, an environment variable will be injected for every port, and will be comprised of a combination of the service name and the service's port:
 `CF_URL_SERVICENAME_PORTNUMBER=http://foo.cf-cd.com/unique-url-1`
 
-Also, every service would be have a domain that would direct to each service. The domains can be uniquely identifiable with environments variables:
+Also, every service would be having a domain that would direct to each service. The domains can be uniquely identifiable with environments variables:
 `CF_DOMAIN_SERVICENAME=unique-prefix.foo.cf-cd.com`.
 
 For services that exposes multiple ports the environment variable should have the port number as a suffix:
@@ -65,7 +65,7 @@ services:
 
 The `db` service does not expose any ports. The `api` service exposes port `9000`, and the `web` service exposes port `80` and port `8080`.
 
-So every container produced by this composition will be injected with:
+So, every container produced by this composition will be injected with:
 
 ```
 CF_URL_API=http://foo.cf-cd.com/someurl

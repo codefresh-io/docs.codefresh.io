@@ -54,9 +54,9 @@ max-width="50%"
 
 The commit checkbox (by default it is enabled) means that this pipeline will run for *any* commit as long as its source branch matches the naming scheme. This includes commits on pull requests.
 
-The PR checkboxes mean that this pipeline will run only on the respective events that happen on a Pull Request. You can select multiple checkboxes to further fine-tune the exact event. If you are interested in all events select the checkbox *Any Pull Request event*.
+The PR checkboxes mean that this pipeline will run only on the respective events that happen on a Pull Request. You can select multiple checkboxes to further fine-tune the exact event. If you are interested in all events, select the checkbox *Any Pull Request event*.
 
->The individual Pull request checkboxes are available only for Github repositories.
+>The individual Pull request checkboxes are available only for GitHub repositories.
 
 ### Pull request Target field and branch name
 
@@ -68,7 +68,7 @@ This field has only meaning when a commit happens in the context of a pull reque
 1. The branch field will look at the branch that the commit is happening on
 1. The PR target branch field will look at the branch is the PR is happening against
 
-For example if you create a commit on a branch that is named `my-feature` which is currently part of PR against branch `staging` (i.e. somebody wants to merge `my-feature` **TO** `staging`) then
+For example, if you create a commit on a branch that is named `my-feature` which is currently part of PR against branch `staging` (i.e. somebody wants to merge `my-feature` **TO** `staging`) then
 
 1. The `BRANCH` field value will try to match against `my-feature`
 1. The `PULL REQUEST TARGET BRANCH` will try to match against `staging`
@@ -87,16 +87,16 @@ The concept behind these checkboxes and branch name fields is to allow you to de
 
 As a simple example you can have a *production* pipeline that runs only on *master* branch (and therefore the branch field says "master") and a *testing* pipeline that runs user acceptance tests where only the Pull Request Open checkbox is active. This means that User Acceptance tests will run whenever a PR is created. Once it is merged the *production* pipeline will deploy the changes.
 
-In a more advanced example you could add regular expressions in the branch field with names such as *feature-*, *hotfix-* etc and the PR checkbox active on different pipelines. This way you could trigger the pull requests only when they happen on specific branches. So a developer that creates a temporary feature with a name that doesn't match these naming patterns will not trigger those pipelines.
+In a more advanced example, you could add regular expressions in the branch field with names such as *feature-*, *hotfix-* etc. and the PR checkbox active on different pipelines. This way you could trigger the pull requests only when they happen on specific branches. So, a developer that creates a temporary feature with a name that doesn't match these naming patterns will not trigger those pipelines.
 
 Notice also that you can use Negative Lookahead in your Branch (Regex Expression) filter. An example to exclude tag events: `/^((?!tag)).*/gi` (the pattern here for tags to exclude is that they begin with `tag…`).
 
 This will make all push-events (including tags) that do follow the `tag...` pattern to be excluded.
-Therefore all tags like `tag1`, `tag-X` **won't** trigger the pipeline.
+Therefore, all tags like `tag1`, `tag-X` **won't** trigger the pipeline.
 
 ### Support for building pull requests from forks
 
-By default the git trigger will only work for events coming from your personal repository. You can also use triggers from events that are coming from forks. This is a very useful feature for open source projects, as it allows you to run your own unit tests and other checks against a new feature *before* actually merging it in your repo.
+By default, the git trigger will only work for events coming from your personal repository. You can also use triggers from events that are coming from forks. This is a very useful feature for open source projects, as it allows you to run your own unit tests and other checks against a new feature *before* actually merging it in your repo.
 
 To enable this behavior
 * Toggle the *support pull request events from forks* switch
@@ -124,8 +124,8 @@ The *modified files* field is a very powerful Codefresh feature that allows you 
 files affected by a commit are in a specific folder (or match a specific naming pattern). This means that
 you can have a big GIT repository with multiple projects and build only the parts that actually change.
 
->Currently the field *modified files* is available only for Github, Gitlab and Bitbucket SAAS repositories, since they are the only GIT providers
-that send this information in the webhook. We will support other GIT providers as soon as they add the respective feature. Also the *modified files* field is only available for push events (i.e. not PR open events), since GIT providers only send it on these events.
+>Currently the field *modified files* is available only for GitHub, Gitlab and Bitbucket SAAS repositories, since they are the only GIT providers
+that send this information in the webhook. We will support other GIT providers as soon as they add the respective feature. Also, the *modified files* field is only available for push events (i.e. not PR open events), since GIT providers only send it on these events.
 
 ## Using the Modified files field to constrain triggers to specific folder/files
 
@@ -177,7 +177,7 @@ And then in the GIT trigger for each one we set the modified files field to the 
 * For the *build-java-only* pipeline *MODIFIED FILES* has `my-java-project/**`
 * For the *build-rails-only* pipeline *MODIFIED FILES* has `my-rails-project/**`
 
-This way as multiple developers work on the git repository only the affected projects will actually build. A change to the NestJS project will *not* build the Rails project as well. Also if somebody changes *only* the README file and nothing else, no build will be triggered at all (which is a good thing as the source code is exactly the same).
+This way as multiple developers work on the git repository only the affected projects will actually build. A change to the NestJS project will *not* build the Rails project as well. Also, if somebody changes *only* the README file and nothing else, no build will be triggered at all (which is a good thing as the source code is exactly the same).
 
 You can also use Glob expressions for files. For example
 
@@ -192,7 +192,7 @@ files you expect them to match.
 ## Using YAML and the Codefresh CLI to filter specific Webhook events
 
 The default GUI options exposed by Codefresh are just a starting point for GIT triggers and pull requests. Using [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) and the [Codefresh CLI plugin](https://codefresh-io.github.io/cli/) you can further create two-phase pipelines where the first one decides
-which webwook events will be honored and the second one contains the actual build.
+which webhook events will be honored and the second one contains the actual build.
 
 
 {% include image.html
@@ -203,11 +203,11 @@ alt="Two phase pipeline"
 max-width="80%"
 %}
 
-The generic GIT trigger is placed on Pipeline A. This pipeline then filters the applicable webooks using [conditional expressions]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/). Then it uses the Codefresh CLI plugin (and specifically the [run pipeline capability](https://codefresh-io.github.io/cli/pipelines/run-pipeline/)) to trigger pipeline B that performs build.
+The generic GIT trigger is placed on Pipeline A. This pipeline then filters the applicable webhooks using [conditional expressions]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/). Then it uses the Codefresh CLI plugin (and specifically the [run pipeline capability](https://codefresh-io.github.io/cli/pipelines/run-pipeline/)) to trigger pipeline B that performs build.
 
 Some of the YAML variables that you might find useful (from the [full list]({{site.baseurl}}/docs/codefresh-yaml/variables/))
 
-* `CF_PULL_REQUEST_ACTION` - open, close, synchronize, assign  etc.
+* `CF_PULL_REQUEST_ACTION` - open, close, synchronize, assign etc.
 * `CF_PULL_REQUEST_TARGET` - target branch of the pull request
 * `CF_BRANCH` - the branch that contains the pull request
 

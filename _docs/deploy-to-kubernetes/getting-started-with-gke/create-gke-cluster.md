@@ -76,5 +76,5 @@ by editing and changing the setting from the drop-down list.
 1. Ensure that you are running the latest version of Kubernetes
 2. Ensure that your Permissions are at least "Project Editor"
 
-If you creating a new project/cluster, these whould be the default settings. 
+If you create a new project/cluster, these whould be the default settings. 
 {{site.data.callout.end}}

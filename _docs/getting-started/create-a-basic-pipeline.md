@@ -32,7 +32,7 @@ example if you prefer (don't forget to write unit tests).
 
 For this tutorial you will need
 
- * a free [Github account](https://github.com/join)
+ * a free [GitHub account](https://github.com/join)
  * a free [Codefresh account]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/) 
  * the source code of the sample application.
  * (Optional) an account to a Docker registry (e.g. Dockerhub)
@@ -53,11 +53,11 @@ caption="Forking the example project (click image to enlarge)"
 max-width="80%" 
 %}
 
-After some brief time, the repository should appear in your own Github account.
+After some brief time, the repository should appear in your own GitHub account.
 Now you are ready to start building code with Codefresh!
 
 
-> Codefresh supports Gitlab, Bitbucket and Azure GIT repositories apart from Github. The
+> Codefresh supports Gitlab, Bitbucket and Azure GIT repositories apart from GitHub. The
 same principles presented in this tutorial apply for all Git providers.
 
 
@@ -77,7 +77,7 @@ max-width="100%"
 
 The diagram above shows a full Continuous Integration pipeline for the sample application. Starting from left to right the critical path is:
 
-1. Codefresh connects to Github and checks out the source code of the application
+1. Codefresh connects to GitHub and checks out the source code of the application
 1. Codefresh uses the Dockerfile of the application to create a Docker image
 1. Unit tests are run in the same Docker image to verify the correctness of the code
 1. The Docker image is stored in the internal Codefresh Registry
@@ -300,7 +300,7 @@ than the ones shown here. You can read more about pipelines in the [YAML documen
 
 ## Storing Docker images in Codefresh
 
-If you have been following along so far, you might already be wondering what happens with the resulting Docker image of the each build. The Codefresh build logs show that a Docker image is created after each successful build. Where does this image go?
+If you have been following along so far, you might already be wondering what happens with the resulting Docker image of each build. The Codefresh build logs show that a Docker image is created after each successful build. Where does this image go?
 
 Codefresh has the unique feature of offering its own built-in storage for Docker images! All the images that we have created so far, are stored within your Codefresh account.
 

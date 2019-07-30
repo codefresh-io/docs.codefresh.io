@@ -11,7 +11,7 @@ toc: true
 
 >Notice that running git commands manually is an advanced technique. For most use cases you should use the [Native Git checkout]({{site.baseurl}}/docs/yaml-examples/examples/git-checkout/) offered by Codefresh.
 
-If you want to do complex cloning you can still use custom clone commands in a freestyle step. Notice however that in this case
+If you want to do complex cloning, you can still use custom clone commands in a freestyle step. Notice however that in this case
 you lose the native Codefresh integration such as git authentication and automatic workdir setup. Use custom clone commands only as a last resort.
 
 
@@ -38,7 +38,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-Notice the `rm` command before the clone step. This makes sure that everytime the pipeline will run the `git clone` step will happen in an empty directory. Otherwise the `git clone` command will fail (git will refuse to clone on an existing directory).
+Notice the `rm` command before the clone step. This makes sure that every time the pipeline will run the `git clone` step will happen in an empty directory. Otherwise the `git clone` command will fail (git will refuse to clone on an existing directory).
 
 You can enter your own git username/password or [reuse the credentials]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/#reuse-a-git-token-from-codefresh-integrations) from the Codefresh integration.
 
@@ -75,7 +75,7 @@ If there are any errors with the merge the pipeline will automatically fail. Cod
 
 ## Other forms of cloning
 
-There is nothing special about running GIT it in a freestyle step. In fact you can checkout code with any other command that you would run locally in your terminal.
+There is nothing special about running GIT it in a freestyle step. In fact, you can checkout code with any other command that you would run locally in your terminal.
 
 Here is an example with Golang.
 

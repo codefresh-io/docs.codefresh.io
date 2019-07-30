@@ -8,22 +8,22 @@ redirect_from:
 toc: true
 ---
 
-Codefresh natively supports login using Github, Bitbucket and Gitlab using OpenID Connect (OAUTH 2.0) protocol. This guide will review how to add additional SSO integrations based on OAUTH 2.0 as part of Codefresh Enterprise plan.
+Codefresh natively supports login using GitHub, Bitbucket and Gitlab using OpenID Connect (OAUTH 2.0) protocol. This guide will review how to add additional SSO integrations based on OAUTH 2.0 as part of Codefresh Enterprise plan.
 
   
 ## Prerequisites
 
-In order to add successfully an identity provider in Codefresh you need to do some preparatory work with both Codefresh and the provider.
+In order to add successfully an identity Provider in Codefresh you need to do some preparatory work with both Codefresh and the provider.
 
 1. You need to inform your Identify provider that it will provide SSO services to Codefresh
-1. You need to setup Codefresh and point it to your identity provider.
+1. You need to setup Codefresh and point it to your Identity Provider.
 
-The first procedure differs according to you Identity provider, but the second one is common for all providers.
+The first procedure differs according to you Identity Provider, but the second one is common for all providers.
 
 Note that SSO is only available to Enterprise customers. Please [contact sales](https://codefresh.io/contact-sales/) in order to enable it for your Codefresh account.
 
 
-## Identity provider options
+## Identity Provider options
 
 Codefresh currently supports
 
@@ -61,21 +61,21 @@ caption="SSO provider settings"
 max-width="70%"
 %}
 
-To connect an identity provider click the *add single-sign-on* button and select your provider from the drop-down menu.
+To connect an Identity Provider, click the *add single-sign-on* button and select your provider from the drop-down menu.
 
 
 ## Codefresh SSO setup
 
-Regardless of the Identity provider that you have chosen, the Codefresh setup is the similar for all of them. You need to provide several fields to Codefresh to activate SSO. The common ones are:
+Regardless of the Identity Provider that you have chosen, the Codefresh setup is the similar for all of them. You need to provide several fields to Codefresh to activate SSO. The common ones are:
 
-* *Display Name* - A name for your Identity provider 
+* *Display Name* - A name for your Identity Provider 
 * *Client ID* - An ID that will be used for the connection
 * *Client Secret* - A secret associated with the ID
 
 Some providers also need
 additional fields which are specific to that provider. 
 
-The process to obtain the values for these fields depends on the individual Identity provider. In the following
+The process to obtain the values for these fields depends on the individual Identity Provider. In the following
 sections we will outline the details for each one.
 
 ### Setting Auth0 as an Identity provider
@@ -87,18 +87,18 @@ See the [Auth0 instructions]({{site.baseurl}}/docs/enterprise/single-sign-on/sso
 See the [Azure instructions]({{site.baseurl}}/docs/enterprise/single-sign-on/sso-azure/). 
 
 
-### Setting Okta as an Identity provider
+### Setting Okta as an Identity Provider
 
 See the [Okta instructions]({{site.baseurl}}/docs/enterprise/single-sign-on/sso-okta/). 
 
-### Setting OneLogin as an Identity provider
+### Setting OneLogin as an Identity Provider
 
 See the [OneLogin instructions]({{site.baseurl}}/docs/enterprise/single-sign-on/sso-onelogin/).
 
 
 ## Testing your Identity provider
 
-Once you setup the Identity provider do the following
+Once you setup the Identity Provider, do the following
 
 1. Go to the collaborators screen by clicking on *People* on the left sidebar (under User Management)
 1. Add an active user that will be used for testing. We recommend you use your own user
@@ -160,7 +160,7 @@ You can do this via the [Codefresh Cli](https://codefresh-io.github.io/cli/) and
 
 >Note that currently teams/groups that contain spaces in their names are *not* synced. We will soon fix this limitation.
 
-For example to sync you azure teams you can execute
+For example, to sync you azure teams you can execute
 
 ```
 codefresh synchronize teams my-client-name -t azure

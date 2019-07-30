@@ -99,7 +99,7 @@ Reference: [http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-meta
 
 __JMX__
 
-For monitoring purposes you may wish to configure JMX. Additional to the standard JMX parameters, problems could arise from the underlying RMI protocol used to connect
+For monitoring purposes, you may wish to configure JMX. Additional to the standard JMX parameters, problems could arise from the underlying RMI protocol used to connect
 
 * java.rmi.server.hostname - interface to bind listening port
 * com.sun.management.jmxremote.rmi.port - The port to service RMI requests
@@ -181,7 +181,7 @@ Maven will download the needed dependencies, compile the code and run the unit t
 08:37:00.240 [main] ERROR o.a.zookeeper.server.ZooKeeperServer - ZKShutdownHandler is not registered, so ZooKeeper server won't take any action on ERROR or SHUTDOWN server state changes
 Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.871 sec - in com.codenotfound.kafka.SpringKafkaApplicationTest
 
-Results :
+Results:
 
 Tests run: 3, Failures: 0, Errors: 0, Skipped: 0
 

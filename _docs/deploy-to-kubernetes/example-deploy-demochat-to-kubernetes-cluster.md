@@ -32,7 +32,7 @@ Become familiar with basic Codefresh pipelines as explained in the [quick start 
 
 1. Add your forked `demochat` repo in Codefresh (use the url above to find the repo).
 1. Choose the branch for your first build (in this case `master`).
-1. Select how you would like to setup your repository. In this case, our repo already has a Dockerfile, so we we will select the middle option.
+1. Select how you would like to setup your repository. In this case, our repo already has a Dockerfile, so we will select the middle option.
 1. Clicking on `Build` button will trigger a regular build.
 1. When the docker image will be created, go to the tab `Images` to find the image `containers101/demochat`
 
@@ -77,7 +77,7 @@ max-width="50%"
 5. Then just click on the button `Deploy`
 
 {:start="6"}
-6. The mongo service will appear on your kubernetes dashboard
+6. The mongo service will appear on your Kubernetes dashboard
 
 {:start="7"}
 7. Click on the button `Add New Service` to create a Demochat service
@@ -121,7 +121,7 @@ max-width="70%"
 
 
 The Demochat application is now successfully deployed!
-You can see the external endpoints of this service  in the service view and access the application using its endpoint and port.
+You can see the external endpoints of this service in the service view and access the application using its endpoint and port.
 
 {% include image.html
 lightbox="true"

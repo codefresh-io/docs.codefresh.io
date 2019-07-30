@@ -44,6 +44,6 @@ services:
 {{site.data.callout.callout_info}}
 ##### Example 
 
-Just head over to the example [__repository__](https://github.com/codefreshdemo/nodejs-angular2-mongo){:target="_blank"} in Github and follow the instructions there.
+Just head over to the example [__repository__](https://github.com/codefreshdemo/nodejs-angular2-mongo){:target="_blank"} in GitHub and follow the instructions there.
 {{site.data.callout.end}}
 
