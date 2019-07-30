@@ -73,6 +73,12 @@ Here is the example [codefresh.yml](https://github.com/codefresh-contrib/ruby-on
 {% raw %}
 version: '1.0'
 steps:
+  main_clone:
+    title: Cloning main repository...
+    type: git-clone
+    repo: 'codefresh-contrib/ruby-on-rails-sample-app'
+    revision: master
+    git: github
   BuildingDockerImage:
     title: Building Docker Image
     type: build

@@ -40,7 +40,7 @@ max-width="60%"
 
 * Each pipeline can have zero, one or more [triggers]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/). Codefresh supports several kind of triggers such as Git, Cron or Docker push triggers. Triggers that happen with Git webhooks can come from the same git repository that contains the git code **OR** any other completely different repository. Triggers are the linking medium between a pipeline and a git repository. You can have a pipeline with many triggers so it will be executed when a code happens to any of them.
 
-With these basic building blocks you can define many complex workflows. In particular, it is very easy in Codefresh a scenario where
+With these basic building blocks you can define many complex workflows. In particular, it is very easy in Codefresh to create a scenario where
 
 1. A pipeline is launched because a trigger exists for Git repository A
 1. The pipeline reads its `codefresh.yml` file from Git repository B

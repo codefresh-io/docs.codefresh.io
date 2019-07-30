@@ -219,7 +219,7 @@ if you really want to reference this folder. You can also reference your project
 
 ### Working with Docker inside a Codefresh pipeline
 
-We have already seen that Codefresh pipelines are based on Docker images and that each step runs inside the context of a Docker container. You might be wondering how you can run directly Docker commands inside a Codefresh pipeline.
+We have already seen that Codefresh pipelines are based on Docker images and that each step runs inside the context of a Docker container. You might be wondering how you can run Docker commands directly inside a Codefresh pipeline.
 
 The answer is that you don't. Even though in the future Codefresh might allow for Docker-in-Docker capabilities, at the moment this is not supported for security reason (only enterprise customers have access to the underlying Docker daemon). Any scripts that you already have that run Docker commands on their own will need to be adapted to Codefresh pipelines.
 
