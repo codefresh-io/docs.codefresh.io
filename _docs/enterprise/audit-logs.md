@@ -7,9 +7,9 @@ toc: true
 
 Codefresh keeps a log of all actions that happen at all times. The log is actually based on API calls that reach Codefresh, so it includes
 
-* GUI actions from users
-* [CLI](https://codefresh-io.github.io/cli/) invocations
-* Any [external integrations]({{site.baseurl}}/docs/integrations/codefresh-api/) you are using with Codefresh
+* GUI actions from users,
+* [CLI](https://codefresh-io.github.io/cli/) invocations, and
+* any [external integrations]({{site.baseurl}}/docs/integrations/codefresh-api/) you are using with Codefresh
 
 The time period offered by audit logs depends on the pricing tier of your Codefresh account.
 
@@ -30,12 +30,12 @@ max-width="70%"
 
 This screen contains a reverse chronological list of all Codefresh events that happened on your account. For each event, the following are recorded:
 
-* `Entity ID/Name` - which entity was affected
+* `Entity ID/Name` - which entity was affected.
 * `Entity type` - types of entities are build, pipeline, project, etc.
-* `Action` - what happened to that entity
-* `Status` - what use the result of the API call
-* `User` - name of user that performed the action
-* `Last` Request - time of the event
+* `Action` - what happened to that entity.
+* `Status` - what use the result of the API call.
+* `User` - name of user that performed the action.
+* `Last` Request - time of the event.
 
 
 

@@ -20,22 +20,22 @@ that you can describe the dependencies of an application in the service level an
 * The ability to create catalogs of applications (Helm repositories) that function similar to traditional package repositories (think npm registry, cpan, maven central, ruby gems etc).
 
 
-Codefresh has native support for Helm in a number of ways.
+Codefresh has native support for Helm in a number of ways:
 
-1. You can easily deploy existing Helm packages to your Kubernetes cluster overriding the default values
-1. You can easily create new Helm packages and push them to a Helm repository
-1. Like the [integrated Docker registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/) Codefresh also gives you an [integrated Helm Repository]({{site.baseurl}}/docs/new-helm/managed-helm-repository/)
-1. You can see the Helm releases and even [perform rollbacks]({{site.baseurl}}/docs/new-helm/helm-releases-management/) from the Helm Dashboard
-1. You can [browse Helm packages]({{site.baseurl}}/docs/new-helm/add-helm-repository/)  both from public repositories and your internal Helm repository
+1. You can easily deploy existing Helm packages to your Kubernetes cluster overriding the default values.
+1. You can easily create new Helm packages and push them to a Helm repository.
+1. Like the [integrated Docker registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/) Codefresh also gives you an [integrated Helm Repository]({{site.baseurl}}/docs/new-helm/managed-helm-repository/).
+1. You can see the Helm releases and even [perform rollbacks]({{site.baseurl}}/docs/new-helm/helm-releases-management/) from the Helm Dashboard.
+1. You can [browse Helm packages]({{site.baseurl}}/docs/new-helm/add-helm-repository/)  both from public repositories and your internal Helm repository.
 
 
 ## Overview
 
 In this guide we will see how you can 
 
-1. deploy a Helm application with Codefresh in an automated manner
-1. manage your Helm releases from within Codefresh
-1. store a Helm package inside the integrated Codefresh repository
+1. deploy a Helm application with Codefresh in an automated manner,
+1. manage your Helm releases from within Codefresh, and
+1. store a Helm package inside the integrated Codefresh repository.
 
 
 
@@ -45,9 +45,9 @@ For simplicity reasons, we will use the [built-in Docker registry]({{site.baseur
 ## Prerequisites
 
 It is assumed that:
-  - you have already [added your K8s cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/adding-non-gke-kubernetes-cluster/) into Codefresh
-  - you have already an application that has a Dockerfile and a Helm chart
-  - the server part of Helm is installed in your cluster (Tiller)
+  - you have already [added your K8s cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/adding-non-gke-kubernetes-cluster/) into Codefresh,
+  - you have already an application that has a Dockerfile and a Helm chart,
+  - the server part of Helm is installed in your cluster (Tiller), and
   - your cluster has pull access to the Codefresh registry. If not read the [previous guide]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/#giving-the-kubernetes-cluster-read-access-to-the-internal-codefresh-registry) or look at the [documentation]({{site.baseurl}}/docs/deploy-to-kubernetes/deploy-to-kubernetes/create-image-pull-secret/).
 
 To verify that your cluster is setup for Helm select the *Helm Releases* item from the left sidebar. You should see the Helm releases in your cluster or an empty screen if you just started.

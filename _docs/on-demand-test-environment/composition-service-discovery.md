@@ -23,10 +23,10 @@ After you enable this feature for your account, Codefresh injects the URLs of ev
 
 ## What do these environment variables look like?
 Every service URL environment variable is prefixed with `CF_URL_` and is uniquely identifiable using the service name:
-`CF_URL_SERVICENAME=http://foo.cf-cd.com/unique-url`
+`CF_URL_SERVICENAME=http://foo.cf-cd.com/unique-url`.
 
 If your service exposes multiple ports, an environment variable will be injected for every port, and will be comprised of a combination of the service name and the service's port:
-`CF_URL_SERVICENAME_PORTNUMBER=http://foo.cf-cd.com/unique-url-1`
+`CF_URL_SERVICENAME_PORTNUMBER=http://foo.cf-cd.com/unique-url-1`.
 
 Also, every service would be having a domain that would direct to each service. The domains can be uniquely identifiable with environments variables:
 `CF_DOMAIN_SERVICENAME=unique-prefix.foo.cf-cd.com`.

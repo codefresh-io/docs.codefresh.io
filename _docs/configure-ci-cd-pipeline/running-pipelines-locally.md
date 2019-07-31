@@ -41,11 +41,11 @@ The Codefresh Command Line Interface (CLI) comes with a [run parameter](https://
 
 Normally, if you run a pipeline this way the CLI will just trigger it remotely (the pipeline itself will still run in the Codefresh infrastructure).
 
-You can pass however the `--local` option, and this will instruct the CLI to automatically :
+You can pass however the `--local` option, and this will instruct the CLI to automatically 
 
-1. Download the Codefresh build engine locally to your workstation (which itself is a docker image at [codefresh/engine](https://hub.docker.com/r/codefresh/engine))
-1. Run the build locally using the Codefresh engine on your workstation
-1. Print all build logs to your terminal
+1. download the Codefresh build engine locally to your workstation (which itself is a docker image at [codefresh/engine](https://hub.docker.com/r/codefresh/engine)),
+1. run the build locally using the Codefresh engine on your workstation, and
+1. print all build logs to your terminal.
 
 Note that the engine has transparent network access to all the other settings in your Codefresh account and therefore will work exactly the same way as if it was run on Codefresh infrastructure (e.g. use the connected Docker registries you have setup in the UI)
 

@@ -12,9 +12,9 @@ toc: true
 In this tutorial we will setup a [Continuous Integration](https://en.wikipedia.org/wiki/Continuous_integration) pipeline
 within Codefresh using an example application. You will learn:
 
-* how to connect your Git repository
-* how to build a Docker image from the source code
-* how to use the Codefresh internal registry for Docker images
+* how to connect your Git repository,
+* how to build a Docker image from the source code,
+* how to use the Codefresh internal registry for Docker images, and
 * how to run unit tests for your application
 
 Codefresh is the fastest way to get from your source code to a Docker image. Codefresh allows you
@@ -32,9 +32,9 @@ example if you prefer (don't forget to write unit tests).
 
 For this tutorial you will need
 
- * a free [GitHub account](https://github.com/join)
- * a free [Codefresh account]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/) 
- * the source code of the sample application.
+ * a free [GitHub account](https://github.com/join),
+ * a free [Codefresh account]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/), 
+ * the source code of the sample application, and
  * (Optional) an account to a Docker registry (e.g. Dockerhub)
 
  We also assume that you are familiar with Docker and the build/run workflow it supports. Your applications should already come with their own Dockerfiles. If not, then read the [official documentation first](https://docs.docker.com/get-started/). 
@@ -77,17 +77,17 @@ max-width="100%"
 
 The diagram above shows a full Continuous Integration pipeline for the sample application. Starting from left to right the critical path is:
 
-1. Codefresh connects to GitHub and checks out the source code of the application
-1. Codefresh uses the Dockerfile of the application to create a Docker image
+1. Codefresh connects to GitHub and checks out the source code of the application.
+1. Codefresh uses the Dockerfile of the application to create a Docker image.
 1. Unit tests are run in the same Docker image to verify the correctness of the code
-1. The Docker image is stored in the internal Codefresh Registry
-1. The Docker image is pushed to a Docker registry
+1. The Docker image is stored in the internal Codefresh Registry.
+1. The Docker image is pushed to a Docker registry.
 
 
 The sample application that we are using is a [Python/Flask](https://www.palletsprojects.com/p/flask/) project with the following key points
 
- * It already has its own [Dockerfile](https://github.com/codefresh-contrib/python-flask-sample-app/blob/master/Dockerfile) in the root of the repository
- * It has unit tests
+ * It already has its own [Dockerfile](https://github.com/codefresh-contrib/python-flask-sample-app/blob/master/Dockerfile) in the root of the repository.
+ * It has unit tests.
 
 ## Creating a Docker Image
 
@@ -179,7 +179,7 @@ steps:
 This pipeline contains just two steps.
 
 * A [Git clone step]({{site.baseurl}}/docs/codefresh-yaml/variables/) for checking out the code
-* a [Build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) for building the docker image.
+* A [Build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) for building the docker image.
 
 The clone step is also using some [built-in pipeline variables]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/). They instruct the pipeline to checkout the exact code that is described from the commit of the trigger. Don't worry if the exact details are not clear to you yet. 
 

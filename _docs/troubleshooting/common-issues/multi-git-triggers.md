@@ -27,8 +27,8 @@ By default, when a git trigger is happening, Codefresh will fetch the `codefresh
 
 Sometimes however, you want a pipeline to be triggered by another git repository (other than the main one). An example would be:
 
-1. Repository A contains a deployment pipeline with associated `codefresh.yml`
-1. Repository B is creating binary artifacts that are deployed by pipeline A
+1. Repository A contains a deployment pipeline with associated `codefresh.yml`.
+1. Repository B is creating binary artifacts that are deployed by pipeline A.
 
 In those cases, Codefresh supports adding [multiple git triggers]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/) on the same pipeline. This way pipeline A will be triggered by commits to both repository A and repository B. Notice however that the `codefresh.yml` file used will still be fetched as mentioned in the webhook.
 

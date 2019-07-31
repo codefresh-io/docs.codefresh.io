@@ -12,9 +12,9 @@ Codefresh can work with React projects as with any [Node.js project]({{site.base
 
 You can see the example project at [https://github.com/codefresh-contrib/react-sample-app](https://github.com/codefresh-contrib/react-sample-app). The repository contains a React starter project with the following tasks:
 
-* `yarn test` runs unit tests
-* `yarn start` to start the application locally
-* `yarn build` to create a production deployment
+* `yarn test` runs unit tests.
+* `yarn start` to start the application locally.
+* `yarn build` to create a production deployment.
 
 Once launched the application presents a simple page at localhost:3000. 
 
@@ -47,11 +47,11 @@ CMD ["nginx", "-g", "daemon off;"]
 
 This docker build does the following:
 
-1. Starts from the Node/Yarn image
-1. Copies the dependencies inside the container
-1. Copies the source code and creates all static files
-1. Discards the Node.js image with all the Javascript libraries.
-1. Starts again from the nginx image and copies **static build result** created before
+1. starts from the Node/Yarn image,
+1. copies the dependencies inside the container,
+1. copies the source code and creates all static files,
+1. discards the Node.js image with all the Javascript libraries, and
+1. starts again from the nginx image and copies **static build result** created before.
 
 The resulting is very small, as it contains only packaged/minified files.
 

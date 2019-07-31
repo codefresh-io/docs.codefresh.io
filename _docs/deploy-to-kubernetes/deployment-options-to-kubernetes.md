@@ -9,10 +9,10 @@ redirect_from:
 toc: true
 ---
 
-Codefresh offers a lot of options when it comes to Kubernetes deployments. These are
+Codefresh offers a lot of options when it comes to Kubernetes deployments:
 
-1. Using the Codefresh GUI to deploy on demand. This is the easiest way and was described in the [quick start guide]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/)
-1. Using the [predefined steps]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/#automating-deployments-to-kubernetes) of the GUI pipeline. This is also very easy if you are not yet familiar with [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)  
+1. Using the Codefresh GUI to deploy on demand. This is the easiest way and was described in the [quick start guide]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/).
+1. Using the [predefined steps]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/#automating-deployments-to-kubernetes) of the GUI pipeline. This is also very easy if you are not yet familiar with [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/).  
 1. Using the dedicated [deploy step]({{site.baseurl}}/docs/codefresh-yaml/steps/deploy/) in a pipeline. Explained in detail in the present page.
 1. Using the [cd-deploy-kubernetes step]({{site.baseurl}}/docs/deploy-to-kubernetes/kubernetes-templating/) in a pipeline. This can also perform simple templating on Kubernetes manifests.
 1. Using a [freestyle]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) step with your own `kubectl` commands. This is very flexible, but assumes that you know how to work with `kubectl`. Described in details in [this page]({{site.baseurl}}/docs/deploy-to-kubernetes/custom-kubectl-commands/).
@@ -22,10 +22,10 @@ Codefresh offers a lot of options when it comes to Kubernetes deployments. These
 
 ## Prerequisites
 
-It is assumed that:
-  - you have already [added your K8s cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/) into Codefresh
-  - you are familiar with [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) and basic [pipeline steps ]({{site.baseurl}}/docs/codefresh-yaml/steps/)and know how to describe it 
-  - you know how to [integrate your docker registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) with Codefresh
+It is assumed that
+  - you have already [added your K8s cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/) into Codefresh,
+  - you are familiar with [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) and basic [pipeline steps ]({{site.baseurl}}/docs/codefresh-yaml/steps/)and know how to describe it, and
+  - you know how to [integrate your docker registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) with Codefresh.
   
 ## Build and Push your image
 The following describe a basic Codefresh pipeline scenario to build and push your image to Dockerhub registry.
@@ -56,31 +56,31 @@ The following instructions describe how to create a new service in your Kubernet
 >Note: If you're deploying to an existing service in your Kubernetes cluster please skip to the [next step]({{ site.baseurl }}/docs/deploy-to-kubernetes/deployment-to-kubernetes-quick-start-guide/#add-a-deployment-step)
 
 {:start="1"}
- 1. Go to the **`Kubernetes` &#8594; `Services page`**
+ 1. Go to the **`Kubernetes` &#8594; `Services page`**.
  
 {:start="2"}
- 2. Click the button **“Add Service”**
+ 2. Click the button **“Add Service”**.
  
 {:start="3"}
-3. Select the **cluster**
+3. Select the **cluster**.
 
 {:start="4"}
-4. Select the **namespace**
- 
+4. Select the **namespace**.
+
 {:start="5"}
-5. Type an arbitrary **service name**
+5. Type an arbitrary **service name**.
  
 {:start="6"}
-6. Specify the **number of replicas**
+6. Specify the **number of replicas**.
  
 {:start="7"}
-7. Type the name of your **pushed image**
+7. Type the name of your **pushed image**.
  
 {:start="8"}
 8. In the **“Internal Ports”** field specify the port which your application listens to.
  
 {:start="9"}
-9. In the **“Expose port”** field specify the port to be exposed to the Internet and check the checkbox
+9. In the **“Expose port”** field specify the port to be exposed to the Internet and check the checkbox.
  
 {:start="10"}
 10. Click the button **“Deploy”** to deploy the application.

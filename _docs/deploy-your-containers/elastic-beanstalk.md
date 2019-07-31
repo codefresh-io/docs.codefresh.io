@@ -17,7 +17,7 @@ toc: true
 
 {:.text-secondary}
 ### Deployment with Codefresh
-- Add encrypted environment variables for aws credentials.
+- Add encrypted environment variables for AWS credentials:
      * `AWS_ACCESS_KEY_ID`
      * `AWS_SECRET_ACCESS_KEY`
      
@@ -38,7 +38,7 @@ max-width="40%"
 
 {{site.data.callout.callout_info}}
 {% raw %}
-The ``${{AWS_VERSION}}`` of application you can find in the Elastic Beanstalk service
+The ``${{AWS_VERSION}}`` of application you can find in the Elastic Beanstalk service.
 {% endraw %}
 {{site.data.callout.end}}
 
@@ -53,7 +53,7 @@ max-width="40%"
 
 {{site.data.callout.callout_info}}
 {% raw %}
-The ``${{AWS_ENV_NAME}}`` of application you can find in the Elastic Beanstalk service
+The ``${{AWS_ENV_NAME}}`` of application you can find in the Elastic Beanstalk service.
 {% endraw %}
 {{site.data.callout.end}}
 
@@ -66,7 +66,7 @@ alt="codefresh_eb_environment.png"
 max-width="40%"
 %}
 
-Add the following step to codefresh.yml
+Add the following step to codefresh.yml:
 
   `deploy_step`
 {% highlight yaml %}
@@ -85,7 +85,7 @@ deploy-elastic-beanstalk:
 
 {:.text-secondary}
 ### Deployment Flow
-- go to the Elastic Beanstalk service and create an application and environment
+- Go to the Elastic Beanstalk service and create an application and environment.
 
 
 {% include 
@@ -97,7 +97,7 @@ alt="codefresh_eb_environment.png"
 max-width="40%"
 %}
 
-- perform the following commands from root of your project
+- Perform the following commands from root of your project:
     * eb init
     * eb create {% raw %}`${{AWS_ENV_NAME}}`{% endraw %}
 
@@ -105,7 +105,7 @@ max-width="40%"
 {% raw %}
 ##### Note:
 
-If you don't have awsebcli - install EB CLI [http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html){:target="_blank"}
+If you don't have awsebcli - install EB CLI [http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html){:target="_blank"}.
 {% endraw %}
 {{site.data.callout.end}}
 
@@ -118,7 +118,7 @@ alt="codefresh_eb_health.png"
 max-width="40%"
 %}
 
-- add this repository to Codefresh, provide the necessary environments variables and build this service
+- Add this repository to Codefresh, provide the necessary environments variables and build this service
 
 {% include 
 image.html 

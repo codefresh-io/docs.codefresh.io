@@ -29,23 +29,23 @@ To obtain the needed information follow the steps.
 ### Finding your API key
 
 {:start="1"}
-1. Go to your Bitray.io profile
+1. Go to your Bitray.io profile.
 
 {:start="2"}
-2. Select **API Key** from the side menu
+2. Select **API Key** from the side menu.
 {% include image.html lightbox="true" file="/images/da3579e-bintray-api-key.png" url="/images/da3579e-bintray-api-key.png" alt="Bintray.io API key" max-width="60%" %}
 
 ### Finding your registry domain
 
 {:start="1"}
-1. Navigate to your bintray.com repository (or add a new one)
+1. Navigate to your bintray.com repository (or add a new one).
 
 {:start="2"}
-2. Click the **SET ME UP!** button
+2. Click the **SET ME UP!** button.
 {% include image.html lightbox="true" file="/images/f0dcfc3-set-me-up.png" url="/images/f0dcfc3-set-me-up.png" alt="Bintray.io SET ME UP" max-width="45%" %}
 
 {:start="3"}
-3. Copy the registry address
+3. Copy the registry address.
 {% include image.html lightbox="true" file="/images/9e068f4-bintray-domain.png" url="/images/9e068f4-bintray-domain.png" alt="Bintray.io registry address" max-width="45%" %}
 
 ### Basic metadata upload

@@ -30,16 +30,16 @@ Here is the overall architecture:
 
 The advantages for this scenario are multi-fold. Regarding platform maintenance:
 
- 1. The heavy lifting for platform maintenance is still happening by Codefresh instead of the customer
- 1. Updates to the UI, build engine, integrations etc are happening automatically without any customer involvement
- 1. Actual builds are happening in the customer premises under fully controlled conditions
+ 1. The heavy lifting for platform maintenance is still happening by Codefresh instead of the customer.
+ 1. Updates to the UI, build engine, integrations etc are happening automatically without any customer involvement.
+ 1. Actual builds are happening in the customer premises under fully controlled conditions.
  1. The Codefresh runner is fully automated. It handles volume claims and build scheduling on its own within the Kubernetes cluster it is placed.
 
 Regarding security of services:
 
- 1. Pipelines can run in behind-the-firewall clusters with internal services
- 1. Pipelines can use integrations (such as docker registries) that are private and secure
- 1. Source code does not ever leave the customer premises
+ 1. Pipelines can run in behind-the-firewall clusters with internal services.
+ 1. Pipelines can use integrations (such as docker registries) that are private and secure.
+ 1. Source code does not ever leave the customer premises.
 
 Regarding firewall security:
 
@@ -55,11 +55,11 @@ First make sure that you have installed the [Codefresh runner]({{site.baseurl}}/
 
 All pipelines that are executed in the private Kubernetes cluster have access to all other internal services that are network reachable. It is therefore very easy to create pipelines that
 
- * Use databases internal to the company
- * run integration tests against services internal to the company
- * launch [compositions]({{site.baseurl}}/docs/codefresh-yaml/steps/composition/) that communicate with other secure services
- * Upload and download artifacts from a private artifact repository (e.g. Nexus or Artifactory)
- * deploy to any other cluster accessible in the secure network
+ * use databases internal to the company,
+ * run integration tests against services internal to the company,
+ * launch [compositions]({{site.baseurl}}/docs/codefresh-yaml/steps/composition/) that communicate with other secure services,
+ * Upload and download artifacts from a private artifact repository (e.g. Nexus or Artifactory),
+ * deploy to any other cluster accessible in the secure network, and
  * create infrastructure such as machines, load balancers, auto-scaling groups etc.
 
  Any of these pipelines will work out the box and no extra configuration is needed. In all cases
@@ -130,7 +130,7 @@ In the previous section we have seen how a pipeline can checkout code from the i
 so that every time a commit happens (or any other supported event), the Codefresh pipeline will be triggered automatically.
 
 This is a two-step process:
-1. First we setup a webhook endpoint in Codefresh
+1. First we setup a webhook endpoint in Codefresh.
 1. Then we create the webhook call in the side of the the GIT provider.
 
 For the Codefresh side, follow the usual instructions for creating a [basic git trigger]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/).
@@ -160,7 +160,7 @@ Once that is done, Codefresh will show you the webhook endpoint along with a sec
     %}
 
 This concludes the setup on the Codefresh side. The final step is create a webhook call on the side of your GIT provider.
-The instructions are different per GIT provider.
+The instructions are different per GIT provider:
 
 * [Github webhooks](https://developer.github.com/webhooks/)
 * [Gitlab webhooks](https://docs.gitlab.com/ee/user/project/integrations/webhooks.html)
@@ -208,7 +208,7 @@ steps:
 
 ### Deploying to an internal Kubernetes cluster
 
-To connect a cluster that is behind the firewall follow the [connecting cluster guide]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/), paying attention to the following two points.
+To connect a cluster that is behind the firewall follow the [connecting cluster guide]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/), paying attention to the following two points:
 
 1. You cluster should be added as a [Custom provider]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/#adding-any-other-cluster-type-not-dependent-on-any-provider)
 1. You need to mark the cluster as internal by using the toggle switch.

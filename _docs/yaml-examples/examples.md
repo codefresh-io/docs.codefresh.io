@@ -12,7 +12,7 @@ Codefresh enables you to define the steps of your pipeline in a [YAML file]({{si
 
 ## Programming Language specific
 
-Codefresh is agnostic as far as programming languages are concerned. All major programming languages are supported.
+Codefresh is agnostic as far as programming languages are concerned. All major programming languages are supported:
 
 - [Go Web App]({{site.baseurl}}/docs/learn-by-example/golang/golang-hello-world/) or [Go CLI]({{site.baseurl}}/docs/learn-by-example/golang/goreleaser) 
 - [Spring Java app with Maven]({{site.baseurl}}/docs/learn-by-example/java/spring-boot-2/) or [Gradle]({{site.baseurl}}/docs/learn-by-example/java/gradle/)
@@ -58,7 +58,7 @@ Codefresh has support for both [unit]({{site.baseurl}}/docs/testing/unit-tests/)
 
 ## Deployment
 
-Codefresh can deploy to any platform such as VMs, FTP/SSH/S3 sites, app servers but of course it has great support for [Kubernetes clusters]({{site.baseurl}}/docs/deploy-to-kubernetes/deployment-options-to-kubernetes/) and [Helm releases]({{site.baseurl}}/docs/new-helm/helm-releases-management/)
+Codefresh can deploy to any platform such as VMs, FTP/SSH/S3 sites, app servers but of course it has great support for [Kubernetes clusters]({{site.baseurl}}/docs/deploy-to-kubernetes/deployment-options-to-kubernetes/) and [Helm releases]({{site.baseurl}}/docs/new-helm/helm-releases-management/):
 
 - [Deploy Demochat to a Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/codefresh-kubernetes-integration-demochat-example/) 
 - [Use kubectl as part of Freestyle step]({{site.baseurl}}/docs/yaml-examples/examples/use-kubectl-as-part-of-freestyle-step) 

@@ -26,11 +26,11 @@ max-width="60%"
 Then:
 
 
-1. Click on *configure* in the Slack section
+1. Click on *configure* in the Slack section.
 1. Select the Slack check box.
 1. Click the **`Add to Slack`** button.<br> You are redirected to the Slack sign-in page.
 1. Log in with your Slack credentials.
-1. Select the check box to enable notifications for Slack
+1. Select the check box to enable notifications for Slack.
 1. Click **`Save`**.
 
 

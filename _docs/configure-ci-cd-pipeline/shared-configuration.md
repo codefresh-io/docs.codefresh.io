@@ -10,11 +10,11 @@ After creating several pipelines in Codefresh you will start to notice several c
 Codefresh allows you to create those shared values in a central place and then reuse them in your pipelines
 avoiding the use of copy-paste.
 
-You can share:
+You can share
 
-* Environment parameters (easy)
-* Helm values (easy)
-* Any kind of YAML data (advanced)
+* environment parameters (easy),
+* Helm values (easy), and
+* any kind of YAML data (advanced).
 
 
 ## Creating shared configuration
@@ -33,8 +33,8 @@ max-width="50%"
 
 You can create two types of shared configuration:
 
-* Shared configuration/ Shared secret
-* yaml/ secret yaml
+* Shared Configuration/ Shared Secret and 
+* yaml/ secret yaml.
 
 The shared configuration is for environment variables. The secret variant is the same thing but with encrypted values for sensitive data (such as access tokens).
 
@@ -76,8 +76,8 @@ you have in your pipelines. In case of similar values the shared configuration w
 
 To use a shared YAML snippet for Helm values you can install a new Helm chart either from
 
-* The [Helm chart list]({{site.baseurl}}/docs/new-helm/add-helm-repository/#install-chart-from-your-helm-repository)
-* The [Helm environment board]({{site.baseurl}}/docs/new-helm/helm-environment-promotion/#moving-releases-between-environments)
+* the [Helm chart list]({{site.baseurl}}/docs/new-helm/add-helm-repository/#install-chart-from-your-helm-repository) or
+* the [Helm environment board]({{site.baseurl}}/docs/new-helm/helm-environment-promotion/#moving-releases-between-environments).
 
 In both cases, when you see the Helm installation dialog you can import any of your YAML snippets
 to override the default chart values.

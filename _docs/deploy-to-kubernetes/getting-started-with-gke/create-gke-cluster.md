@@ -19,7 +19,7 @@ max-width="40%"
 %}
  
 ## 1. Create Google Account
-If you don't have Google account, you can create it from [here](https://accounts.google.com/SignUp){:target="_blank"} 
+If you don't have Google account, you can create it from [here](https://accounts.google.com/SignUp){:target="_blank"}.
  
 ## 2. Create Project
 Sign in to [Google Cloud Console](https://console.cloud.google.com/){:target="_blank"} and select an existing project or create a new one:
@@ -34,14 +34,14 @@ max-width="40%"
 
 ## 3. Get access to Google Cloud resources
  
-Enable [Billing](https://console.cloud.google.com/billing){:target="_blank"}
+Enable [Billing](https://console.cloud.google.com/billing){:target="_blank"}:
 
 * Notice that you are paying for running resources. Therefore, If you are not planning to use them after this tutorial, it is suggested to delete them.
-* For more information - Check [GKE pricing](https://cloud.google.com/kubernetes-engine/pricing){:target="_blank"}
+* For more information - Check [GKE pricing](https://cloud.google.com/kubernetes-engine/pricing){:target="_blank"}.
  
-Enable [Container Engine API](https://console.cloud.google.com/apis/api/container/overview){:target="_blank"}
+Enable [Container Engine API](https://console.cloud.google.com/apis/api/container/overview){:target="_blank"}.
 
-Enable [Compute Engine API](https://console.cloud.google.com/apis/api/compute_component/overview){:target="_blank"}
+Enable [Compute Engine API](https://console.cloud.google.com/apis/api/compute_component/overview){:target="_blank"}.
 
 
 

@@ -7,7 +7,7 @@ redirect_from:
   - /docs/other-registries/
 toc: true
 ---
-To configure some other registry which is not officially provided by Codefresh first select **Other Registries** from the new registry drop down and then provide the following
+To configure some other registry which is not officially provided by Codefresh first select **Other Registries** from the new registry drop down and then provide the following:
 
 * Registry Name - A unique name for this configuration
 * Username - Your registry username

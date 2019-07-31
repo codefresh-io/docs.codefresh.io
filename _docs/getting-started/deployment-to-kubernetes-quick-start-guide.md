@@ -23,9 +23,9 @@ Codefresh also offers [several alternative ways]({{site.baseurl}}/docs/deploy-to
 
 At the end of this tutorial we will have a pipeline that 
 
-1. checks out code from GitHub and creates a Docker image
-1. stores it in the internal Codefresh Docker registry
-1. Notifies the K8s cluster that a new version of the application is present. Kubernetes will pull the new image and deploy it.
+1. checks out code from GitHub and creates a Docker image,
+1. stores it in the internal Codefresh Docker registry, and
+1. notifies the K8s cluster that a new version of the application is present. Kubernetes will pull the new image and deploy it.
 
  {% include 
 image.html 
@@ -44,7 +44,7 @@ For simplicity reasons, we will use the [built-in Docker registry]({{site.baseur
 
 It is assumed that:
   - you have already [added your K8s cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/) into Codefresh
-  - you have already an application that has a Dockerfile. In not, see the [previous tutorial]({{site.baseurl}}/docs/getting-started/create-a-basic-pipeline/)
+  - you have already an application that has a Dockerfile. If not, see the [previous tutorial]({{site.baseurl}}/docs/getting-started/create-a-basic-pipeline/).
 
 Notice that for this tutorial you **don't** need a Kubernetes deployment file. Codefresh will create one for you via its friendly GUI. If you already have an existing deployment file for your own application, [consult the main K8s documentation]({{site.baseurl}}/docs/deploy-to-kubernetes/deployment-to-kubernetes-quick-start-guide/) on how to use it.
 
@@ -153,14 +153,14 @@ max-width="70%"
 
 The fields in this screen are:
 
-* *Cluster* - select your cluster if you have more than one
-* *Namespace* - select the namespace where the application will be deployed to.(*default* will work just fine).
-* *Service Name* - enter any arbitrary name for your service
-* *replicas* - how many replicas you want for resiliency. This affects pricing, so 1 is a good value for a demo
-* *Expose port* - check it so that your application is available outside the cluster 
-* *Image* - Enter the fully qualified name of your Docker image
-* *Image pull request* - Select the Codefresh registry and create a pull secret for it
-* *Internal ports* - which port is exposed from your application. The example Python app we deploy, exposes 5000
+* *Cluster* - select your cluster if you have more than one.
+* *Namespace* - select the namespace where the application will be deployed to (*default* will work just fine).
+* *Service Name* - enter any arbitrary name for your service.
+* *Replicas* - how many replicas you want for resiliency. This affects pricing, so 1 is a good value for a demo.
+* *Expose Port* - check it so that your application is available outside the cluster .
+* *Image* - Enter the fully qualified name of your Docker image.
+* *Image Pull Request* - select the Codefresh registry and create a pull secret for it.
+* *Internal Ports* - which port is exposed from your application. The example Python app we deploy, exposes 5000.
 
 From the same screen you can also define environment variables and cpu/mem limits.
 

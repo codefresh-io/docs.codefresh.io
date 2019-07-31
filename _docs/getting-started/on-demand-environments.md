@@ -8,9 +8,9 @@ toc: true
 
 In this tutorial we will see how Codefresh can be used by many developers who work on multiple features and how to create separate demo environments for each feature. You will learn how to:
 
-* launch On-Demand test environments for Docker containers
-* use pull requests for feature-based development
-* make sure that Codefresh builds automatically whenever a commit happens
+* launch On-Demand test environments for Docker containers,
+* use pull requests for feature-based development, and
+* make sure that Codefresh builds automatically whenever a commit happens.
 
 Using Pull Requests for feature development is one of the tenets of a sound Continuous Integration process.
 Codefresh can be instructed to build pull requests in an automatic manner (or any other source code branch) making
@@ -97,9 +97,9 @@ If the environment is not functioning correctly for your own application, make s
 
 To find your existing on-demand environments, click *Docker Swarm* `->` *Environments* on the left part of the screen. You will get a list of your active environments. You can see details such as
 
-* Which branch is this environment from
-* Which Git commit represents this environment
-* What is the URL endpoint created by Codefresh
+* which branch is this environment from,
+* which Git commit represents this environment, and 
+* what is the URL endpoint created by Codefresh.
 
 {% include 
 image.html 
@@ -137,7 +137,7 @@ Your Git provider (e.g. GitHub) is the one responsible for the Integration part.
 
 By default Codefresh will connect to your Git provider and do the following:
 
-1. Auto-build every new commit that happens in master or any other branch
+1. Auto-build every new commit that happens in master or any other branch and
 2. Auto-build every new branch when it is created
 
 You can change the default behavior so that it matches your own workflow using extra [GIT Triggers]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/).
@@ -215,8 +215,8 @@ max-width="50%"
 
 So far, we have used the same build options for all branches and pull requests. Codefresh allows you to define more than one groups of settings. The build settings can then be individually fine-tuned with regards to:
 
-* the build steps (e.g. unit tests and/or integration tests)
-* the branch names they affect
+* the build steps (e.g. unit tests and/or integration tests),
+* the branch names they affect, and
 * whether they run automatically or manually
 
 
@@ -235,15 +235,15 @@ Here are two extreme examples.
 
 Early Start-up company:
 
-* Main pipeline that runs automatically and deploys to production from *master* branch
-* Testing pipeline that runs automatically and runs unit tests whenever a Pull request is opened
+* A main pipeline that runs automatically and deploys to production from *master* branch.
+* A testing pipeline that runs automatically and runs unit tests whenever a Pull request is opened.
 
 
 Fortune 500 company with complex approval process:
 
-* Main pipeline that runs manually from *master* and executes both unit and integration tests. Deploys to production
-* Testing pipeline that runs manually for *staging* and runs integration tests. Deploys to staging environment
-* Code review pipeline that runs automatically from branches named *feature-x* and runs code quality and static analysis tools
+* A main pipeline that runs manually from *master* and executes both unit and integration tests. It deploys to production.
+* A testing pipeline that runs manually for *staging* and runs integration tests. It deploys to staging environment.
+* A code review pipeline that runs automatically from branches named *feature-x* and runs code quality and static analysis tools.
 
 
 ## What to read next

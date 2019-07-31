@@ -24,7 +24,7 @@ A SAML2 based federated system comprises the following main components:
 
   - **Identity Provider (IdP)** – The identity provider belongs in the corporation that manages accounts for a large number of users who need secure Internet access to the services or Web- based applications of another organization. In our case a customer's organization that requires access to Codefresh.
     - The IdP manages the corporate users and integrates with Identity Management systems in the customers organization responsible for authentication. The Identity Management systems will integrate with authentication providers such as LDAP or AD.
-    - All user authentication is carried out via Identity Management systems integrated with the IdP
+    - All user authentication is carried out via Identity Management systems integrated with the IdP.
     - For successfully authenticated users, the IdP sends a SAML assertion to Codefresh service provider that enables the user to access Codefresh.
 
   - **Service Provider (SP)** – An SP belongs in the SaaS provider that wants to provide access to its web applications and services.

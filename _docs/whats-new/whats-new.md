@@ -165,12 +165,12 @@ Recent Codefresh updates:
 ### February 2018
 
 - Chart install:
-  - can now see default values for the chart, and override them
-  - can now specify tiller namespace
-- Can now connect to private authenticated chart repositories hosted in S3 or GCS bucket
-- Helm release badge
-- We can now integrate with Kubernetes clusters behind firewalls
-- Can now provide context (shared configuration) to pipelines from the CLI
+  - Can now see default values for the chart, and override them
+  - Can now specify tiller namespace
+- Can now connect to private authenticated chart repositories hosted in S3 or GCS bucket.
+- Helm release badge.
+- We can now integrate with Kubernetes clusters behind firewalls.
+- Can now provide context (shared configuration) to pipelines from the CLI.
 
 ### January 2018
 - Chart install: 
@@ -184,15 +184,15 @@ Recent Codefresh updates:
   - can rollback to previous release
   - can visually see differences between releases
 - Misc:
-  - UI and bug fixes
+  - UI and bug fixes.
   - reorganized Helm docs, including samples on how package charts and push to registry: [Create Helm artifacts using Codefresh pipeline]({{ site.baseurl }}/docs/new-helm/create-helm-artifacts-using-codefresh-pipeline/)
-  - Pre-release of our brand new CLI at [https://github.com/codefresh-io/cli](https://github.com/codefresh-io/cli) 
-  - Using our new cli, you can now execute many pipelines in parallel with different configurations for each
+  - Pre-release of our brand new CLI at [https://github.com/codefresh-io/cli](https://github.com/codefresh-io/cli)
+  - Using our new cli, you can now execute many pipelines in parallel with different configurations for each.
 
 ### December 2017
- - Manage your configurations in a centralized place and inject them into pipelines as needed. supports secrets as well
- - Real time dashboard of the Helm releases in your connected Kubernetes cluster. Supports rollback to a previous release
- - Connect to helm charts repositories, and install them on your connected Kubernetes cluster
+ - Manage your configurations in a centralized place and inject them into pipelines as needed. supports secrets as well.
+ - Real time dashboard of the Helm releases in your connected Kubernetes cluster. Supports rollback to a previous release.
+ - Connect to helm charts repositories, and install them on your connected Kubernetes cluster.
 
 
 ### October 2017
@@ -205,7 +205,7 @@ Recent Codefresh updates:
  - We added integration with main self-hosted GIT providers to our PRO plan. You can now use Codefresh with your repos from:
    - GitHub enterprise
    - Bitbucket Enterprise
-   - Gitlab enterprise.
+   - Gitlab enterprise
 
 
 

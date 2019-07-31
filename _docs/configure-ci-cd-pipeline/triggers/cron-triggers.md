@@ -35,8 +35,8 @@ Visit [this page](https://github.com/codefresh-io/cronus/blob/master/docs/expres
 
 Fill the following information:
 
-* Use Cron helper wizard to build a valid `cron` expression or write custom `cron` expression on last tab
-* Add a free text message, that will be sent as additional event payload every time `cron` is executed
+* Use Cron helper wizard to build a valid `cron` expression or write custom `cron` expression on last tab.
+* Add a free text message, that will be sent as additional event payload every time `cron` is executed.
 
 {% include image.html
 lightbox="true"
@@ -93,10 +93,10 @@ From now on, every 20 minutes Codefresh will trigger pipeline execution for 2 pi
 
 #### Cron Event payload
 
-The following variables will be available for any Codefresh pipeline linked to a `cron` `trigger-event`.
+The following variables will be available for any Codefresh pipeline linked to a `cron` `trigger-event`:
 
-- `EVENT_MESSAGE` - free text message (specified during creation)
-- `EVENT_TIMESTAMP` - event timestamp in RFC 3339 format
+- `EVENT_MESSAGE` - free text message (specified during creation) and
+- `EVENT_TIMESTAMP` - event timestamp in RFC 3339 format.
 
 ## What to read next
 - [Git triggers]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/) 

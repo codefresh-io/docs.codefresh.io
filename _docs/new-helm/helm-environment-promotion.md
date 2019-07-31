@@ -23,9 +23,9 @@ max-width="80%"
 %}
 
 This board has 3 environments that correspond to Kubernetes clusters:
- * A Load-testing environment where applications are stress-tested
- * A Staging environment where smoke tests are performed
- * The production environment where applications go live.
+ * a Load-testing environment where applications are stress-tested,
+ * a Staging environment where smoke tests are performed, and
+ * the production environment where applications go live.
 
 You can see that a Python example app at version 0.2.0 is already in production. Version 0.3.0 is awaiting in the staging environment for smoke tests. Once it is tested it can be dragged to the production column therefore *promoting* it to production status.
 
@@ -44,12 +44,12 @@ caption="Helm environments column structure"
 max-width="80%"
 %}
 
-You can use different clusters for each column or different namespaces from the same cluster. You can even mix and match both approaches. As an example, you could create a Helm board with the following environments
+You can use different clusters for each column or different namespaces from the same cluster. You can even mix and match both approaches. As an example, you could create a Helm board with the following environments:
 
-* Column 1 - dev cluster showing all namespaces (DEV)
-* Column 2 - namespace qa from cluster staging (QA)
-* Column 3 - namespace staging from cluster staging (STAGING)
-* Column 4 - namespace production from cluster prod (PRODUCTION)
+* Column 1 - dev cluster showing all namespaces (DEV).
+* Column 2 - namespace qa from cluster staging (QA).
+* Column 3 - namespace staging from cluster staging (STAGING).
+* Column 4 - namespace production from cluster prod (PRODUCTION).
 
 Once you have your columns in place, you can move Helm releases between clusters/namespaces by drag-n-drop. Each Helm release can be dragged to any other column either promoting it (e.g. qa to production) or shifting it left (e.g. prod to qa)
 
@@ -70,8 +70,8 @@ max-width="80%"
 To create a new board click the *Add board* button from the top right corner.
 There are two fields in the dialog that will appear
 
-* *board name* - the title of your board
-* *release name regex* - if present, this board will automatically filter all its environments to show only Helm releases that match this regular expression
+* *board name* - the title of your board.
+* *release name regex* - if present, this board will automatically filter all its environments to show only Helm releases that match this regular expression.
 
 The second option is very helpful if you want your environment board to only focus on a single Helm application (or set of applications that match). For the most usual case leave it empty, so that you can see all Helm releases of your clusters.
 
@@ -93,10 +93,10 @@ max-width="50%"
 
 For each environment you can select
 
-* A name for that column
-* The Kubernetes cluster it corresponds to
-* One or more namespaces that define this environment. You can even toggle the switch for a regex match
-* A presentation color to easily identify the environment on the board. For example, a "production" environment should have a red color. 
+* a name for that column,
+* the Kubernetes cluster it corresponds to,
+* one or more namespaces that define this environment (You can even toggle the switch for a regex match), and
+* a presentation color to easily identify the environment on the board (For example, a "production" environment should have a red color). 
 
 You can also select no namespace at all. In that case the column will show Helm releases for all namespaces in that cluster.
 You can change all these options after creation, so feel free to change your mind.
@@ -207,16 +207,16 @@ max-width="80%"
 %}
 
 
-1. The refresh button will update the board with the current state of the clusters
-1. The filtering menu can be used to further constrain the Helm releases shown on each column
-1. The *edit properties* button allows you to change again the title of the board as well as a global filter for Helm releases
-1. The *remove board* completely deletes the present board from the Codefresh UI
+1. The refresh button will update the board with the current state of the clusters.
+1. The filtering menu can be used to further constrain the Helm releases shown on each column.
+1. The *edit properties* button allows you to change again the title of the board as well as a global filter for Helm releases.
+1. The *remove board* completely deletes the present board from the Codefresh UI.
 1. The environment details on the environment header are:
 * The edit button to change again the options for this column (shown on mouse hover)
 * The delete button to remove this column from the board (shown on mouse hover)
 * The plus button to install a new chart
 * A numeric value that shows how many releases are contained on this environment
-1. The delete button allows you to uninstall a Helm release for an environment
+1. The delete button allows you to uninstall a Helm release for an environment.
 
 The filtering options allow you to further constrain the Helm release shown for the whole board.
 
