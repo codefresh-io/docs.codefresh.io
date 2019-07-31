@@ -54,9 +54,9 @@ alt="Edit DockerHub Trigger"
 max-width="70%"
 %}
 
-1. copy `Endpoint` URL
-1. visit DockerHub image settings page following link in help
-1. add a new DockerHub Webhook with previously copied `Endpoint` URL
+1. copy `Endpoint` URL,
+1. visit DockerHub image settings page following link in help, and 
+1. add a new DockerHub Webhook with previously copied `Endpoint` URL.
 
 ### Triggering Codefresh pipeline with DockerHub push
 
@@ -118,8 +118,8 @@ help: >-
   https://g.codefresh.io/nomios/dockerhub?account=107e9db97062&secret=aGao5weuez2G6WF9
 ```
 
-1. copy `endpoint` URL
-1. visit DockerHub settings page [https://hub.docker.com/r/codefresh/fortune/~/settings/webhooks/](https://hub.docker.com/r/codefresh/fortune/~/settings/webhooks/)
+1. copy `endpoint` URL,
+1. visit DockerHub settings page [https://hub.docker.com/r/codefresh/fortune/~/settings/webhooks/](https://hub.docker.com/r/codefresh/fortune/~/settings/webhooks/), and
 1. add a new Webhook with previously copied `endpoint` URL
 
 

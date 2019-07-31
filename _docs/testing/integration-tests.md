@@ -33,7 +33,7 @@ Follow these steps to run the the integration test
 {% include image.html lightbox="true" file="/images/56fe408-Screen_Shot_2016-11-10_at_11.58.06_AM.png" url="/images/56fe408-Screen_Shot_2016-11-10_at_11.58.06_AM.png" alt="Create composition" max-width="40%" %}
 
 {:start="3"}
-3. Add a Composition test image, which will be added as a new service to your composition 
+3. Add a Composition test image, which will be added as a new service to your composition.
 {% include image.html lightbox="true" file="/images/683f195-Screen_Shot_2016-11-10_at_11.58.39_AM.png" url="/images/683f195-Screen_Shot_2016-11-10_at_11.58.39_AM.png" alt="Create composition" caption="This is our test image, which contains the integration test code" max-width="40%" %}
 
 {:start="4"}
@@ -42,8 +42,8 @@ Follow these steps to run the the integration test
 
 ## Important Notes
 
-* the Composition test image will be added to your existing composition as a new service. 
-* at the moment it is not possible to control other docker-compose fields for the test image service.
+* The Composition test image will be added to your existing composition as a new service. 
+* At the moment it is not possible to control other docker-compose fields for the test image service.
 
 <div class="bd-callout bd-callout-info" markdown="1">
 If you have a more complicated scenario, you can use the [Codefresh YAML]({{ site.baseurl }}/docs/codefresh-yaml/what-is-the-codefresh-yaml/){:target="_blank"} to define your pipeline

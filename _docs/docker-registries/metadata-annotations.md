@@ -40,9 +40,9 @@ You can annotate an image as part of it's builds process and also on post build 
 {:.text-secondary}
 ### Build step Image Metadata Annotation
 You can annotate an image as part of its build process by declaring the metadata value on the [Build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/):
-1. The `metadata` attribute
-2. The `set` operation
-3. An array of key-value metadata
+1. the `metadata` attribute,
+2. the `set` operation, and
+3. an array of key-value metadata.
 
   `build-metadata-annotation`
 {% highlight yaml %}
@@ -61,12 +61,12 @@ build_step:
 {:.text-secondary}
 ### Adding annotations to Built images on post-build steps
 Any step in the YAML workflow can annotate built images by using [Post-Step Operations]({{site.baseurl}}/docs/codefresh-yaml/post-step-operations/).
-To annotate a built image, configure any step with:
-1. The post-step operation
-2. The `metadata` attribute
-3. The `set` operation
-4. A list of target images with the variable syntax of {% raw %}`${{build_step_name.imageId}}`{% endraw %}
-5. An array of key-value metadata
+To annotate a built image, configure any step with
+1. the post-step operation,
+2. the `metadata` attribute,
+3. the `set` operation,
+4. a list of target images with the variable syntax of {% raw %}`${{build_step_name.imageId}}`{% endraw %}, and
+5. an array of key-value metadata.
 
   `annotating-step`
 {% highlight yaml %}
@@ -127,9 +127,9 @@ steps:
 {% endhighlight %}
 
 Image quality has 3 indicators:
-* true - this image is considered a quality image (ex. passed tests)
-* false - this image is not considered a quality image  (ex. when tests failed but the image was already built)
-* no value (nobody set the annotation) - this image has no quality indicator
+* true - this image is considered a quality image (ex. passed tests),
+* false - this image is not considered a quality image  (ex. when tests failed but the image was already built), and
+* no value (nobody set the annotation) - this image has no quality indicator.
 
 {% include image.html lightbox="true" file="/images/c39a9a2-QUALI.png" url="/images/c39a9a2-QUALI.png" alt="QUALI" max-width="40%" %}
 

@@ -16,7 +16,7 @@ If you are just starting using Helm please also consult the [Helm quick start gu
 
 ## Helm setup
 
-In order to use Helm in your Codefresh pipeline you must do the following
+In order to use Helm in your Codefresh pipeline you must do the following:
 
 1. Create a Helm package for your application
 1. Add a Kubernetes cluster enabled with Helm/Tiller
@@ -149,8 +149,8 @@ deploy:
 
 Notes:
 - Helm repository connection was attached to the pipeline (see step 4 above)
-- mychart is a chart that exists in the connected repository
-- no ACTION is provided, meaning `install` by default
+- mychart is a chart that exists in the connected repository.
+- no ACTION is provided, meaning `install` by default.
 
 ### Example: Pushing a Chart
 
@@ -166,8 +166,8 @@ push:
 
 Notes:
 - Helm repository connection was attached to the pipeline (see step 3 above)
-- assuming a git repository with the Helm chart files
-- the repo container the chart files under `mychart` directory
+- Assuming a git repository with the Helm chart files.
+- The repo container the chart files under `mychart` directory.
 
 ### Example: Authenticating only
 

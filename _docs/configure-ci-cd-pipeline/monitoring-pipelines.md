@@ -36,8 +36,8 @@ Directly above the list you can find several filters.
 
 At the most basic level you can choose between
 
- * *Running* builds that are currently executing
- * *Pending* builds which are queued and waiting to start
+ * *Running* builds that are currently executing,
+ * *Pending* builds which are queued and waiting to start, and 
  * *All* builds regardless of running stage (this is the default)
 
 You can further filter the builds by choosing the various filter types that specify the build job
@@ -54,11 +54,11 @@ max-width="40%"
 
 The available filters are:
 
-* *Repositories* - any of the linked repositories
-* *Branches* - any of the available branches
-* *Committers* - person that made the commit that triggered the build
-* *Status* - success, error, in-progress, pending, terminated
-* *Type* - build, [launch a test environment]({{site.baseurl}}/docs/getting-started/on-demand-environments/#launching-a-docker-image-using-codefresh)
+* *Repositories* - any of the linked repositories.
+* *Branches* - any of the available branches.
+* *Committers* - person that made the commit that triggered the build.
+* *Status* - success, error, in-progress, pending, terminated.
+* *Type* - build, [launch a test environment]({{site.baseurl}}/docs/getting-started/on-demand-environments/#launching-a-docker-image-using-codefresh).
 
 
 Notice that all filters are multiple-choice so you can select multiple values for each filter category.
@@ -113,8 +113,8 @@ max-width="80%"
 
 Each section in this screen corresponds to each pipeline step. There are two special steps:
 
-* *Initializing Process*
-* *Cloning main repository*
+* *Initializing Process* and 
+* *Cloning Main Repository*
 
 These are Codefresh built-in steps and will appear for most builds (you can also create a pipeline that doesn't clone a git repository by default). The rest of the step names depend on your `codefresh.yml` (or the default step names provided by Codefresh). The different columns take the names from the defined [pipeline stages]({{site.baseurl}}/docs/codefresh-yaml/stages/).
 

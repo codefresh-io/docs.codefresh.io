@@ -20,9 +20,9 @@ max-width="80%"
 
 Some example scenarios for using the approval step:
 
-* Pause before deploying to production
-* Pause before destroying an environment
-* Pause for some manual smoke tests or metric collection
+* Pause before deploying to production.
+* Pause before destroying an environment.
+* Pause for some manual smoke tests or metric collection.
 
 ## Usage
 

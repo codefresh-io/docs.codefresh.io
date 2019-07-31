@@ -11,13 +11,13 @@ toc: true
 
 Helm is currently the only solution that supports
 
-* The grouping of related Kubernetes manifests in a single entity (the chart)
-* Basic templating and value support for Kubernetes manifests
-* Dependency declaration between applications (chart of charts)
-* A registry of available applications to be deployed (Helm repository)
-* A view of a Kubernetes cluster in the application/chart level
-* Management of installation/upgrades of charts as a whole
-* Built-in rollback of a chart to a previous version without running a CI/CD pipeline again
+* the grouping of related Kubernetes manifests in a single entity (the chart),
+* basic templating and value support for Kubernetes manifests,
+* dependency declaration between applications (chart of charts),
+* a registry of available applications to be deployed (Helm repository),
+* a view of a Kubernetes cluster in the application/chart level,
+* management of installation/upgrades of charts as a whole, and
+* built-in rollback of a chart to a previous version without running a CI/CD pipeline again.
 
 You can find a list of public curated charts in the default [Helm repository](https://github.com/helm/charts/tree/master/stable).
 
@@ -61,8 +61,8 @@ Using Helm repositories is a recommended practice, but completely optional. You 
 
 Helm can install a chart either in the package (`.tgz`) or unpackaged form (tree of files) to a Kubernetes cluster right away. Thus, the most minimal Helm pipeline has only two steps:
 
-1. Checkout from git a Helm chart described in uncompressed files
-1. Install this chart to a Kubernetes cluster
+1. Checkout from git a Helm chart described in uncompressed files.
+1. Install this chart to a Kubernetes cluster.
 
 {% include image.html 
 lightbox="true" 
@@ -79,8 +79,8 @@ You will see in the next section more efficient workflows, but the fact remains 
 
 Each Helm chart has the ability to define two separate versions:
 
-1. The version of the chart itself (`version` field in `Chart.yaml`)
-1. The version of the application contained in the chart (`appVersion` field in `Chart.yaml`)
+1. The version of the chart itself (`version` field in `Chart.yaml`).
+1. The version of the application contained in the chart (`appVersion` field in `Chart.yaml`).
 
 These are unrelated and can be bumped up in any manner that you see fit. You can sync them together or have them increase independently. There is no right or wrong practice here as long as you stick into one. We will see some versioning strategies in the next section.
 
@@ -327,8 +327,8 @@ max-width="40%"
 
 This workflow has two big advantages:
 
-1. You get a visual overview on what Helm release is installed where
-1. You can promote releases without running the initial CI/CD pipeline (that created the chart)
+1. you get a visual overview on what and where each Helm release is installed on and
+1. you can promote releases without running the initial CI/CD pipeline (that created the chart).
 
 ### Chart promotion between repositories and environments
 
@@ -344,11 +344,11 @@ caption="Advanced Helm promotion"
 max-width="90%"
 %}
 
-There are different pipelines for:
+There are different pipelines for
 
-1. Creating the Helm chart and storing it to a staging Helm repository (i.e. the Codefresh Helm repository)
-1. Deployment of the Helm chart to a staging environment. After it is tested *the chart* is promoted to one or more "production" Helm repositories 
-1. Deployment of the promoted Helm chart happens to one of the production environments 
+1. creating the Helm chart and storing it to a staging Helm repository (i.e. the Codefresh Helm repository),
+1. deployment of the Helm chart to a staging environment. After it is tested *the chart* is promoted to one or more "production" Helm repositories, and
+1. deployment of the promoted Helm chart happens to one of the production environments.
 
 While this workflow is very flexible, it adds complexity on the number of Helm charts available (since they exist in multiple Helm repositories). You also need to set up the parameters between the different pipelines so that Helm charts to be deployed can be indeed found in the expected Helm repository.
 

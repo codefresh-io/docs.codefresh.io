@@ -22,6 +22,6 @@ More information about the `KUBECONFIG` environment variable can be found at the
 If your Kubernetes cluster appears in the Codefresh Dashboard (`Integrations` &#8594; `Kubernetes` &#8594; `Configure`) but is not accessible in a pipeline, then maybe:
 
 * The cluster is not accessible anymore via Codefresh. Try running `kubectl get node -owide` in your cloud shell to see the status of the nodes.
-* The cluster has been deleted externally
+* The cluster has been deleted externally.
 
 Contact us via the Intercom window on the bottom right of the Codefresh interface for additional assistance.

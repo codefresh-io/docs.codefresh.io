@@ -53,10 +53,10 @@ max-width="40%"
 {:.text-secondary}
 ### Add a single variable in config map
 
-This is the easiest way to add a variable inside the config map. It's very useful when you want to quickly create a small configmap with 1-2 variables inside. 
-1. enter key name
-1. enter key value
-1. click "ADD VARIABLE"
+This is the easiest way to add a variable inside the config map (It's very useful when you want to quickly create a small configmap with 1-2 variables inside):
+1. Enter key name
+1. Enter key value
+1. Click "ADD VARIABLE"
 
 {% include image.html
 lightbox="true"
@@ -71,9 +71,9 @@ max-width="40%"
 If you already have configuration variables inside a `*.property` file you can easily import it inside your configmap.
 
 To import from text:
-1. click "IMPORT FROM TEXT"
-1. copy text from file and insert inside text area 
-1. click apply
+1. Click "IMPORT FROM TEXT"
+1. Copy text from file and insert inside text area 
+1. Click apply
 
 {% include image.html
 lightbox="true"
@@ -84,17 +84,17 @@ max-width="40%"
 %}
 
 To import from file:
-1. click "IMPORT FROM FILE"
-1. select file from your computer and click open button
+1. Click "IMPORT FROM FILE"
+1. Select file from your computer and click open button
 
 {:.text-secondary}
 ### Copy from existing config map
 
 You can easily copy a previously created config map file and use it in other namespaces using the following steps:
 
-1. click "COPY FROM EXISTING CONFIG MAP"
-1. select cluster and namespace which contains configmap that you want to copy
-1. find this configmap inside the list and click "SELECT" button
+1. Click "COPY FROM EXISTING CONFIG MAP"
+1. Select cluster and namespace which contains configmap that you want to copy
+1. Find this configmap inside the list and click "SELECT" button
 
 {% include image.html
 lightbox="true"

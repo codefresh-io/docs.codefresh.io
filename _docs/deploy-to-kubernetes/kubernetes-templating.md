@@ -5,13 +5,13 @@ group: deploy-to-kubernetes
 toc: true
 ---
 
-Once you start working with Kubernetes you will see the need for using templates in Kubernetes manifests for common parameters such as
+Once you start working with Kubernetes you will see the need for using templates in Kubernetes manifests for common parameters such as:
 
 * The docker image name of a deployment
 * The docker image tag of a deployment
 * Number of replicas
 * Service labels
-* Configmaps and other settings.
+* Configmaps and other settings
 
 Kubernetes does not provide any templating mechanism on its own. Deployed manifests are expected to be static yaml files. An external solution is needed if you want to pass parameters in your manifests.
 
@@ -39,12 +39,12 @@ Codefresh offers a public docker image at [https://hub.docker.com/r/codefresh/cf
 {% endraw %}
 {% endhighlight %}
 
-The step accepts the following environment variables.
+The step accepts the following environment variables:
 
 * `KUBECONTEXT` - corresponds to the name of a cluster added to codefresh.
-* `KUBERNETES_NAMESPACE` - The namespace to deploy
-* `KUBECTL_ACTION` - means an action for `kubectl <action>`. Valid values are `apply|create|replace`. Default is `apply`
-* `KUBERNETES_DEPLOYMENT_TIMEOUT` - How much to wait for a successful deployment before failing the build. Defaults to 120 (secs).
+* `KUBERNETES_NAMESPACE` - The namespace to deploy.
+* `KUBECTL_ACTION` - means an action for `kubectl <action>`. Valid values are `apply|create|replace` (Default is `apply`).
+* `KUBERNETES_DEPLOYMENT_TIMEOUT` - How much to wait for a successful deployment before failing the build (Defaults to 120 secs).
 
 The step will deploy your deployment to the cluster specified by the context and namespace given. The name of the context is the name of your cluster as seen in the [Kubernetes dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/#work-with-your-services).
 

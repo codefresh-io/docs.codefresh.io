@@ -180,13 +180,13 @@ The configurations you'll be required to add are:
 1. Name - Any name of your choosing, that will represent your cluster context in Codefresh. Do not use spaces, dots or other strange characters in the name. 
  
 {:start="2"}
-2. Host - The full URL of the Kubernetes API endpoints including protocol and port
+2. Host - The full URL of the Kubernetes API endpoints including protocol and port.
 
 {:start="3"} 
-3. Certificate - The Kubernetes service account certificate used for the integration with Codefresh (base64 encoded)
+3. Certificate - The Kubernetes service account certificate used for the integration with Codefresh (base64 encoded).
 
 {:start="4"}
-4. Token - The Kubernetes service account token used for the integration with Codefresh (base64 encoded)
+4. Token - The Kubernetes service account token used for the integration with Codefresh (base64 encoded).
 
 {% include image.html
   lightbox="true"
@@ -368,9 +368,9 @@ In summary, the following conditions should be met in order to add the cluster, 
 
 ### For Rancher version 1.x
 
-1. The token should be taken from the kubeconfig provided by Rancher and it has to be encoded with base64 before putting it into Codefresh. Be careful with the '\n' characters when encoding. The command for Linux is: `echo <rancher_token> | tr -d '\n' | base64 | tr -d '\n'`
-1. The CA certificate should be the CA of the Load Balancer standing in front of Rancher 
-1. The hostname and port should be corresponding to your Load Balancer
+1. The token should be taken from the kubeconfig provided by Rancher and it has to be encoded with base64 before putting it into Codefresh. Be careful with the '\n' characters when encoding. The command for Linux is: `echo <rancher_token> | tr -d '\n' | base64 | tr -d '\n'`.
+1. The CA certificate should be the CA of the Load Balancer standing in front of Rancher. 
+1. The hostname and port should be corresponding to your Load Balancer.
 
 {% include image.html
   lightbox="true"
@@ -383,10 +383,10 @@ In summary, the following conditions should be met in order to add the cluster, 
 
 ### For Rancher version 2.x
 
-1. Kubernetes HOST is in the kubeconfig provided by Rancher for the Kubernetes cluster based on the domain name of Rancher + the Kubernetes cluster endpoint exposed through Rancher in cluster -> server. Example: `https://rancher.localhost/k8s/clusters/c-npft4`
-1. The token should be taken from the kubeconfig provided by Rancher under user -> token section of YAML and it has to be encoded with base64 before putting it into Codefresh. Be careful with the '\n' characters when encoding, do not wrap token in quotes when running echo command. The command for Linux is: `echo <rancher_token> | tr -d '\n' | base64 | tr -d '\n'` Example: `kubeconfig-user-xtnt4:cppxv6db…`
+1. Kubernetes HOST is in the kubeconfig provided by Rancher for the Kubernetes cluster based on the domain name of Rancher + the Kubernetes cluster endpoint exposed through Rancher in cluster -> server. Example: `https://rancher.localhost/k8s/clusters/c-npft4`.
+1. The token should be taken from the kubeconfig provided by Rancher under user -> token section of YAML and it has to be encoded with base64 before putting it into Codefresh. Be careful with the '\n' characters when encoding, do not wrap token in quotes when running echo command. The command for Linux is: `echo <rancher_token> | tr -d '\n' | base64 | tr -d '\n'` Example: `kubeconfig-user-xtnt4:cppxv6db…`.
 1. The CA certificate should be the CA of the Load Balancer standing in front of Rancher base64 encoded `openssl base64 -in cert -out b64`.  And then run this command on the file to remove any white space.  `cat b64 | tr -d '\040\011\012\015' > b64_cert` then copy and paste this base64 encoded value into Codefresh UI Cert field.
-1. The hostname and port should be corresponding to your Load Balancer
+1. The hostname and port should be corresponding to your Load Balancer.
 
 {% include image.html
   lightbox="true"
@@ -465,13 +465,13 @@ To get the whole certificate open the URL of your Kubernetes in Chrome or Firefo
 The steps needed are:
 
 1. Connect all certificates (apart from the API/endpoint one) to a bundle:
-`cat rootCA.crt intermediateCA.crt > ca_bundle_cert`
+`cat rootCA.crt intermediateCA.crt > ca_bundle_cert`.
 1. Run the following to check the validity of the certificate:
-`openssl verify -verbose -CAfile ca_bundle_cert k8_server_cert`
+`openssl verify -verbose -CAfile ca_bundle_cert k8_server_cert`.
 1.  If the check above passes fine, go on and run the following on your CA bundle file:
-`base64 ca_bundle_cert | tr -d '\n'`
+`base64 ca_bundle_cert | tr -d '\n'`.
 1. Copy the output string (be careful when copying) and check whether you have copied it correctly:
-`openssl x509 -text -in <(echo <copied_string> | base64 -d)` - you should see the contents of your CA bundle file
+`openssl x509 -text -in <(echo <copied_string> | base64 -d)` - you should see the contents of your CA bundle file.
 1. Put the copied string into the Codefresh Kubernetes integration form and test the connection.
 
 Please make sure the certs are in order Root -> Intermediate -> Server.

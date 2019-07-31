@@ -24,7 +24,7 @@ max-width="70%"
 %}
 
 ## 2. Enter the name of composition
-In the **Composition Name** text box, type a name for your composition and click __NEXT__
+In the **Composition Name** text box, type a name for your composition and click __NEXT__.
 
 {% include 
 image.html 
@@ -102,7 +102,7 @@ max-width="70%"
 %}
 
 {:start="5"}
-5. Click **NEXT**
+5. Click **NEXT**.
 
 {{site.data.callout.callout_info}}
 We don’t support the `build` property of Docker compose. We will replace it with images automatically by a pipeline that is automatically created.
@@ -118,7 +118,7 @@ max-width="70%"
 %}
 
 {:start="6"}
-6. Click **CREATE**
+6. Click **CREATE**.
 
 {% include 
 image.html 
@@ -137,10 +137,10 @@ Your composition is now ready and should appear in the Compositions list.
 If your repository doesn't include a `docker-compose.yml` file, you can use one of our templates to see how it works!
 
 {:start="1"}
-1. Choose the template
+1. Choose the template.
 
 {:start="2"}
-2. Click **CREATE**
+2. Click **CREATE**.
 
 {% include 
 image.html 

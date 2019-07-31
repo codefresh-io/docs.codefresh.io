@@ -59,7 +59,7 @@ More info about how to add, build and push docker image you can find in the read
     %}
 
 {:start="3"}
-3. Exit your account settings and then select `Kubernetes` from the left sidebar to access your [Kubernetes dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/). Click on the button `Add New Service`
+3. Exit your account settings and then select `Kubernetes` from the left sidebar to access your [Kubernetes dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/). Click on the button `Add New Service`.
 
 {:start="4"}
 4. The `demochat` application uses a Mongo database, therefore we need to add a `mongo` service with the following params (see the screenshot below).
@@ -74,16 +74,16 @@ max-width="50%"
 %}
 
 {:start="5"}
-5. Then just click on the button `Deploy`
+5. Then just click on the button `Deploy`.
 
 {:start="6"}
-6. The mongo service will appear on your Kubernetes dashboard
+6. The mongo service will appear on your Kubernetes dashboard.
 
 {:start="7"}
-7. Click on the button `Add New Service` to create a Demochat service
+7. Click on the button `Add New Service` to create a Demochat service.
 
 {:start="8"}
-8. Use the screenshot below to specify the parameters of Demochat service
+8. Use the screenshot below to specify the parameters of Demochat service.
 
 {: .table .table-bordered .table-hover}
 | Parameter          | Value                                     |
@@ -165,22 +165,22 @@ alt="codefresh_push_step.pnadd-g"
 max-width="50%"
 %}
 
-In the next step, you need to configure the __Deploy Script__
+In the next step, you need to configure the __Deploy Script__:
 
 {:start="1"}
-1. Choose the option __Kubernetes__
+1. Choose the option __Kubernetes__.
 
 {:start="2"}
-2. Choose the cluster on which will be deployed the service
+2. Choose the cluster on which will be deployed the service.
 
 {:start="3"}
-3. Choose the namespace
+3. Choose the namespace.
 
 {:start="4"}
-4. Select the service that will be redeployed
+4. Select the service that will be redeployed.
 
 {:start="5"}
-5. Select the branch as condition when the Deploy Script will be performed
+5. Select the branch as condition when the Deploy Script will be performed.
 
 {% include image.html
 lightbox="true"

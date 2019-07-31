@@ -10,9 +10,9 @@ GIT triggers are the most basic types of trigger for performing [Continuous Inte
 
 At the trigger level you have the option of selecting
 
- * Which code repository will be used as a trigger
- * which branches will be affected by a pipeline
- * If a trigger will apply to a Pull Request or not
+ * which code repository will be used as a trigger,
+ * which branches will be affected by a pipeline, and
+ * if a trigger will apply to a Pull Request or not.
 
  Note that you can select another repository other than the one the project itself belongs to. It is possible
  to trigger a build on project A even though a commit happened on project B.
@@ -34,15 +34,15 @@ max-width="60%"
 
 You can select the following information:
 
-* *Git Provider* - select that one that is linked with your account
-* *Repository* - You can select any repository even something different than the one that is used for the code checkout
-* *Commit checkbox* - If enabled will trigger this pipeline for any commit
-* *PR checkboxes* - Various checkboxes for filtering the Pull request event 
-* *Support PR events from forks* - Useful for opensource projects
-* *Branch field* - This is a regular expression and will only trigger for branches that match this naming pattern
-* *PR comment field* - Useful for open source projects
-* *Pull Request target* branch - This is a regular expression and will trigger only when a Pull request is created against any branch that matches it
-* *Modified files* - This allows you to constrain the build and trigger it only if the modified files from the commit match this [glob expression](https://en.wikipedia.org/wiki/Glob_(programming))
+* *Git Provider* - select that one that is linked with your account.
+* *Repository* - you can select any repository even something different than the one that is used for the code checkout.
+* *Commit Checkbox* - if enabled will trigger this pipeline for any commit.
+* *PR Checkboxes* - various checkboxes for filtering the Pull request event.
+* *Support PR Events From Forks* - useful for opensource projects.
+* *Branch Field* - This is a regular expression and will only trigger for branches that match this naming pattern.
+* *PR Comment Field* - useful for open source projects.
+* *Pull Request Target* branch - This is a regular expression and will trigger only when a Pull request is created against any branch that matches it.
+* *Modified Files* - This allows you to constrain the build and trigger it only if the modified files from the commit match this [glob expression](https://en.wikipedia.org/wiki/Glob_(programming)).
 
 {% include image.html
 lightbox="true"
@@ -63,25 +63,25 @@ The PR checkboxes mean that this pipeline will run only on the respective events
 The Pull request target field allows you to trigger this pipeline only when the target of a Pull Request (i.e. where the pr is going to be merged at) matches the
 branch name regular expression. Common examples for branch names would be `master` or `production`.
 
-This field has only meaning when a commit happens in the context of a pull request and in that case:
+This field has only meaning when a commit happens in the context of a pull request and in that case
 
-1. The branch field will look at the branch that the commit is happening on
-1. The PR target branch field will look at the branch is the PR is happening against
+1. the branch field will look at the branch that the commit is happening on and 
+1. the PR target branch field will look at the branch is the PR is happening against.
 
 For example, if you create a commit on a branch that is named `my-feature` which is currently part of PR against branch `staging` (i.e. somebody wants to merge `my-feature` **TO** `staging`) then
 
-1. The `BRANCH` field value will try to match against `my-feature`
-1. The `PULL REQUEST TARGET BRANCH` will try to match against `staging`
+1. the `BRANCH` field value will try to match against `my-feature` and
+1. the `PULL REQUEST TARGET BRANCH` will try to match against `staging`.
 
 Here are some more syntax examples:
 
-* `/^((qa-release)$).*/g` - only run if branch is named `qa-release`
-* `/^((production)$).*/g` - only run if branch is named `production`
-* `/release/g` - only run if branch name contains `release` as substring
+* `/^((qa-release)$).*/g` - only run if branch is named `qa-release`.
+* `/^((production)$).*/g` - only run if branch is named `production`.
+* `/release/g` - only run if branch name contains `release` as substring.
 * `/feature-/gi` - only run if branch is `feature-foo`, `feature-bar`, `my-feature-123` etc.
-* `/^((?!^feature).)*$/gi` - only run if branch name does **not** start with `feature`
+* `/^((?!^feature).)*$/gi` - only run if branch name does **not** start with `feature`.
 
->The field *Pull request target* is available for all Git providers apart from Atlassian stash
+>The field *Pull Request Target* is available for all Git providers apart from Atlassian stash.
 
 The concept behind these checkboxes and branch name fields is to allow you to define which pipelines run for various workflows in your organization.
 
@@ -99,8 +99,8 @@ Therefore, all tags like `tag1`, `tag-X` **won't** trigger the pipeline.
 By default, the git trigger will only work for events coming from your personal repository. You can also use triggers from events that are coming from forks. This is a very useful feature for open source projects, as it allows you to run your own unit tests and other checks against a new feature *before* actually merging it in your repo.
 
 To enable this behavior
-* Toggle the *support pull request events from forks* switch
-* In the *pr comment* field enter a custom string (accepts regex)
+* toggle the *support pull request events from forks* switch and 
+* in the *pr comment* field enter a custom string (accepts regex)
 
 Then once a contributor creates a fork of your repository and submits a pull request, you can review the code and then add a comment on your own that matches the PR comment expression.
 
@@ -171,18 +171,18 @@ alt="GIT monorepo pipelines"
 max-width="70%"
 %}
 
-And then in the GIT trigger for each one we set the modified files field to the following values
+And then in the GIT trigger for each one we set the modified files field to the following values:
 
-* For the *build-nestjs-only* pipeline *MODIFIED FILES* has `my-nestjs-project/**`
-* For the *build-java-only* pipeline *MODIFIED FILES* has `my-java-project/**`
-* For the *build-rails-only* pipeline *MODIFIED FILES* has `my-rails-project/**`
+* For the *build-nestjs-only* pipeline *MODIFIED FILES* has `my-nestjs-project/**`.
+* For the *build-java-only* pipeline *MODIFIED FILES* has `my-java-project/**`.
+* For the *build-rails-only* pipeline *MODIFIED FILES* has `my-rails-project/**`.
 
 This way as multiple developers work on the git repository only the affected projects will actually build. A change to the NestJS project will *not* build the Rails project as well. Also, if somebody changes *only* the README file and nothing else, no build will be triggered at all (which is a good thing as the source code is exactly the same).
 
-You can also use Glob expressions for files. For example
+You can also use Glob expressions for files. For example,
 
-*  an expression such `my-subproject/sub-subproject/package.json` will trigger a build **only** if the dependencies of this specific project are changed. 
-* A pipeline with the expression `my-subproject/**/pom.xml` will trigger only if the Java dependencies for any project that belongs to `my-subproject` actually change. 
+*  an expression such `my-subproject/sub-subproject/package.json` will trigger a build **only** if the dependencies of this specific project are changed, and  
+* a pipeline with the expression `my-subproject/**/pom.xml` will trigger only if the Java dependencies for any project that belongs to `my-subproject` actually change. 
 
 Glob expressions have many more options not shown here. Visit the [official documentation](https://en.wikipedia.org/wiki/Glob_(programming)) to learn more. You can also use the [Glob Tester web application](http://www.globtester.com/) to test your glob expressions beforehand so that you are certain they match the 
 files you expect them to match.
@@ -205,11 +205,11 @@ max-width="80%"
 
 The generic GIT trigger is placed on Pipeline A. This pipeline then filters the applicable webhooks using [conditional expressions]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/). Then it uses the Codefresh CLI plugin (and specifically the [run pipeline capability](https://codefresh-io.github.io/cli/pipelines/run-pipeline/)) to trigger pipeline B that performs build.
 
-Some of the YAML variables that you might find useful (from the [full list]({{site.baseurl}}/docs/codefresh-yaml/variables/))
+Some of the YAML variables that you might find useful (from the [full list]({{site.baseurl}}/docs/codefresh-yaml/variables/)):
 
 * `CF_PULL_REQUEST_ACTION` - open, close, synchronize, assign etc.
-* `CF_PULL_REQUEST_TARGET` - target branch of the pull request
-* `CF_BRANCH` - the branch that contains the pull request
+* `CF_PULL_REQUEST_TARGET` - target branch of the pull request.
+* `CF_BRANCH` - the branch that contains the pull request.
 
 As an example, here is the `codefresh.yml` file of pipeline A where we want to run pipeline B only when a Pull Requested is opened against a branch named *production*.
 

@@ -22,9 +22,9 @@ The installation process takes care of all the components of the runner as well 
 
 ### Prerequisites
 
-In order to use the Codefresh runner you need the following
+In order to use the Codefresh runner you need the following:
 
-1. A Kubernetes cluster with outgoing Internet access (preferably with version 1.10). Each node should have 50GB disk size
+1. A Kubernetes cluster with outgoing Internet access (preferably with version 1.10). Each node should have 50GB disk size.
 1. A [Codefresh account]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/) with the Hybrid feature enabled.
 1. A [Codefresh CLI token]({{site.baseurl}}/docs/integrations/codefresh-api/#authentication-instructions) that will be used to authenticate to your Codefresh account.
 
@@ -100,10 +100,10 @@ Use `kubectl` or any other management tool to perform this change to the role.
 
 ### Installing on Google Kubernetes Engine
 
-If you are installing Codefresh runner on the Kubernetes cluster on [GKE](https://cloud.google.com/kubernetes-engine/):
+If you are installing Codefresh runner on the Kubernetes cluster on [GKE](https://cloud.google.com/kubernetes-engine/)
 
-* Make sure your user has `Kubernetes Engine Cluster Admin` role in google console
-* Bind your user with `cluster-admin` Kubernetes cluster role
+* make sure your user has `Kubernetes Engine Cluster Admin` role in google console and
+* bind your user with `cluster-admin` Kubernetes cluster role.
 
 ```
 kubectl create clusterrolebinding NAME --clusterrole cluster-admin --user <YOUR_USER>
@@ -120,14 +120,14 @@ You can see the exact resource descriptors [on Github](https://github.com/codefr
 Here is a list of the resources that are created during a Runner installation:
 
 * Agent (grouped by `/.*.venona.yaml/`)
-  * `service-account.venona.yaml` - The service account that the agent's pod will use at the end
-  * `cluster-role-binding.venona.yaml` - The agent discovering K8S apis by calling to `openapi/v2`, this ClusterRoleBinding binds  bootstraped ClusterRole by Kubernetes `system:discovery` to `service-account.venona.yaml`. This role has only permissions to make a GET calls to non-resources URLs
-  * `role.venona.yaml` - Allow to `GET`, `CREATE` and `DELETE` pods and persistent volume claims
-  * `role-binding.venona.yaml` - The agent is spinning up pods and pvc, this binding binds `role.venona.yaml` to `service-account.venona.yaml`
-* Runtime-environment (grouped by `/.*.re.yaml/`) - Kubernetes controller that spins up all required resources to provide a good caching experience during pipeline execution
-  * `service-account.dind-volume-provisioner.re.yaml` - The service account that the controller will use
-  * `cluster-role.dind-volume-provisioner.re.yaml` Defines all the permission needed for the controller to operate correctly
-  * `cluster-role-binding.dind-volume-provisioner.yaml` - Binds the ClusterRole to `service-account.dind-volume-provisioner.re.yaml`
+  * `service-account.venona.yaml` - The service account that the agent's pod will use at the end.
+  * `cluster-role-binding.venona.yaml` - The agent discovering K8S apis by calling to `openapi/v2`, this ClusterRoleBinding binds  bootstraped ClusterRole by Kubernetes `system:discovery` to `service-account.venona.yaml`. This role has only permissions to make a GET calls to non-resources URLs.
+  * `role.venona.yaml` - Allow to `GET`, `CREATE` and `DELETE` pods and persistent volume claims.
+  * `role-binding.venona.yaml` - The agent is spinning up pods and pvc, this binding binds `role.venona.yaml` to `service-account.venona.yaml`.
+* Runtime-environment (grouped by `/.*.re.yaml/`) - Kubernetes controller that spins up all required resources to provide a good caching experience during pipeline execution.
+  * `service-account.dind-volume-provisioner.re.yaml` - The service account that the controller will use.
+  * `cluster-role.dind-volume-provisioner.re.yaml` Defines all the permission needed for the controller to operate correctly.
+  * `cluster-role-binding.dind-volume-provisioner.yaml` - Binds the ClusterRole to `service-account.dind-volume-provisioner.re.yaml`.
 
 
 

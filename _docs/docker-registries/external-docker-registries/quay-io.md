@@ -7,7 +7,7 @@ redirect_from:
   - /docs/quayio/
 toc: true
 ---
-To configure Quay.io first select **Other Registries** from the new registry drop down and then provide the following
+To configure Quay.io first select **Other Registries** from the new registry drop down and then provide the following:
 
 * Registry Name - A unique name for this configuration
 * Username - Your Quay.io username

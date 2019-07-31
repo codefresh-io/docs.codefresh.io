@@ -42,9 +42,9 @@ max-width="60%"
 
 With these basic building blocks, you can define many complex workflows. In particular, it is very easy in Codefresh to create a scenario where
 
-1. A pipeline is launched because a trigger exists for Git repository A
-1. The pipeline reads its `codefresh.yml` file from Git repository B
-1. The pipeline clones source code from Git repository C (and starts packaging/compiling it).
+1. a pipeline is launched because a trigger exists for Git repository A,
+1. the pipeline reads its `codefresh.yml` file from Git repository B, and
+1. the pipeline clones source code from Git repository C (and starts packaging/compiling it).
 
 Of course, it also possible to have a simpler scenario where the trigger, the pipeline steps and the source code of the application are all defined for the same GIT repository.
 
@@ -71,7 +71,7 @@ max-width="70%"
 On the bottom part of this panel the *New pipeline* button allows you to create a new pipeline on the same project either from scratch
 or by copying an existing one from the same project or a completely different project.
 
-1. The name of the currently edited pipeline is shown at the top of the window
+1. The name of the currently edited pipeline is shown at the top of the window.
 
 1. The main window shows the definition of the current pipeline. The screenshot shows the inline editor but pipelines can also be defined from external files (checked into source control) as explained later.
 
@@ -95,12 +95,12 @@ caption="Inline Pipeline editor"
 max-width="60%"
 %}
 
-On the top right of the panel you have additional controls
+On the top right of the panel you have additional controls:
 
-* The *import* button allows you to bring a `codefresh.yml` from your local workstation into the editor
-* The *comment* button allows you to quickly comment/uncomment the currently selected text. The hotkey `Ctrl-/` also performs the same action
-* The *formatting* button enriches the editor with special symbols for line breaks, spaces and tabs. This allows you to easily fix common formatting errors
-* The *copy* button quickly copies the **whole** pipeline text in your clipboard.
+* the *import* button allows you to bring a `codefresh.yml` from your local workstation into the editor,
+* the *comment* button allows you to quickly comment/uncomment the currently selected text. The hotkey `Ctrl-/` also performs the same action,
+* the *formatting* button enriches the editor with special symbols for line breaks, spaces and tabs. This allows you to easily fix common formatting errors, and 
+* the *copy* button quickly copies the **whole** pipeline text in your clipboard.
 
 
 Notice that in the editor you can expand/collapse individual yaml blocks using the arrow triangles on the left of each blocks. The initial pipeline presented in the editor is suggested by Codefresh according to the contents of your Git repository.
@@ -126,8 +126,8 @@ max-width="60%"
 
 You can then select **any** Git repository accessible to you and load the `codefresh.yml` from there. You also setup two additional settings:
 
-* The path of the file inside the repository. This allows you to have special folders for pipeline definitions
-* The branch of the repository to use for loading the `codefresh.yml` file if you have more than one.
+* the path of the file inside the repository. This allows you to have special folders for pipeline definitions and
+* the branch of the repository to use for loading the `codefresh.yml` file if you have more than one.
 
 In the branch drop down you can also choose the option **DYNAMIC**. This will use the same branch as the one mentioned in the trigger event. If for example your pipeline is triggered by a commit in the `staging` branch of the source code, the pipeline definition will also be loaded from the `staging` branch of the git repository that contains the `codefresh.yml` file.
 
@@ -143,12 +143,12 @@ Here you can also see the name and ID of the pipeline (useful information if you
 
 The other options are
 
-* A freetext pipeline description
-* One or more tags used for [access control]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
-* Concurrency limits
-* The [runtime environment]({{site.baseurl}}/docs/enterprise/behind-the-firewall/) that will run this pipeline
-* The size of the machine that will run this pipeline (available options depend on your pricing plan)
-* The [public logs and badges]({{site.baseurl}}/docs/configure-ci-cd-pipeline/build-status/) information which are very useful for open source projects developed with Codefresh
+* a freetext pipeline description,
+* one or more tags used for [access control]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/),
+* concurrency limits,
+* the [runtime environment]({{site.baseurl}}/docs/enterprise/behind-the-firewall/) that will run this pipeline,
+* the size of the machine that will run this pipeline (available options depend on your pricing plan), and
+* the [public logs and badges]({{site.baseurl}}/docs/configure-ci-cd-pipeline/build-status/) information which are very useful for open source projects developed with Codefresh.
 
 The concurrency limits are very important as they allow you to define how many instances of a pipeline can run in parallel when multiple commits or multiple pull requests take place.
 
@@ -164,8 +164,8 @@ max-width="50%"
 
 Some common scenarios are 
 
-* a pipeline that uses a shared resource such as a database or queue and you want to limit how many pipelines can access it
-* a pipeline that deploys to a single production environment (in most cases you only want one active pipeline touching production)
+* a pipeline that uses a shared resource such as a database or queue and you want to limit how many pipelines can access it and
+* a pipeline that deploys to a single production environment (in most cases you only want one active pipeline touching production).
 
 You can set these parameters either on the trigger level or on the pipeline level (if the pipeline has multiple triggers defined).
 

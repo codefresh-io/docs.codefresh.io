@@ -23,7 +23,7 @@ There are several ways to store data used by applications that run in Docker con
 {{site.data.callout.end}}
 
 - Create a data directory on a suitable volume on your host system, e.g. `/my/own/datadir`.
-- Add the following volumes to postgres container
+- Add the following volumes to postgres container:
 
   `YAML`
 {% highlight yaml %}
@@ -100,7 +100,7 @@ To create the folder `./data` locally you can just build and run this [docker-co
 {{site.data.callout.end}}
 
 - Create a data directory on a suitable volume on your host system, e.g. /my/own/datadir.
-- Add the following volumes to mongo container
+- Add the following volumes to mongo container:
 
   `YAML`
 {% highlight yaml %}

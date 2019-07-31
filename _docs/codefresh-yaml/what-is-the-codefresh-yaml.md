@@ -77,13 +77,13 @@ Steps chaining and referencing is possible due to implementation of variables in
 | Step Type                                                                                                         | Description                                    |
 | ----------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
 | [Freestyle]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/)                      | Executes one or more shell commands in a container similar to `docker run`.            |
-| [Build]({{site.baseurl}}/docs/codefresh-yaml/steps/build/)                            | Builds a Docker image like `docker build`                         |
-| [Push]({{site.baseurl}}/docs/codefresh-yaml/steps/push/)                              | Pushes a Docker image to a Docker registry similar to `docker tag` and `docker push` |
-| [Git Clone]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)                      | Overrides the default git clone behavior |
+| [Build]({{site.baseurl}}/docs/codefresh-yaml/steps/build/)                            | Builds a Docker image like `docker build`.                         |
+| [Push]({{site.baseurl}}/docs/codefresh-yaml/steps/push/)                              | Pushes a Docker image to a Docker registry similar to `docker tag` and `docker push`. |
+| [Git Clone]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)                      | Overrides the default git clone behavior. |
 | [Composition]({{site.baseurl}}/docs/codefresh-yaml/steps/composition/)                | Starts a Docker Composition like `docker-compose`. Discarded once pipelines finishes.             |
-| [Launch Composition]({{site.baseurl}}/docs/codefresh-yaml/steps/launch-composition/)  | Starts a long term Docker composition that stays up after the end of the pipeline        |
-| [Deploy]({{site.baseurl}}/docs/codefresh-yaml/steps/deploy/)  | Deploys to Kubernetes clusters         |
-| [Approval]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/)  | Pauses a pipeline and waits for human intervention          |
+| [Launch Composition]({{site.baseurl}}/docs/codefresh-yaml/steps/launch-composition/)  | Starts a long term Docker composition that stays up after the end of the pipeline.        |
+| [Deploy]({{site.baseurl}}/docs/codefresh-yaml/steps/deploy/)  | Deploys to Kubernetes clusters.         |
+| [Approval]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/)  | Pauses a pipeline and waits for human intervention.          |
 
 
 To build your pipeline using a ```codefresh.yml``` file, in the General Settings section, toggle the ```Use YML build``` option to the **ON** position.
@@ -164,13 +164,13 @@ step-name:
 
 The `retry:` block has the following parameters:
 
-  * `maxAttempts` defines how many times this step will run again if there are execution errors. Default is 1. Max is 10.
-  * `delay` is the number of seconds to wait before each attempt. Default is 5 seconds. Max is 60 seconds.
-  * `exponentialFactor` defines how many times the delay should be multiplied by itself after each attempt. default is 1. Max is 5.
+  * `maxAttempts` defines how many times this step will run again if there are execution errors (default is 1 and the Max. is 10),
+  * `delay` is the number of seconds to wait before each attempt (default is 5 seconds and the Max. is 60 seconds), and 
+  * `exponentialFactor` that defines how many times the delay should be multiplied by itself after each attempt (default is 1 and Max. is 5).
 
 All parameters are optional. The exponentialFactor works like this:
-* exponentialFactor=1, delay=5 => each time wait 5 seconds before trying again, no matter the number of attempts
-* exponentialFactor=2, delay=5 => first retry will have a delay of 25 seconds, third will have 125 and so on
+* exponentialFactor=1, delay=5 => each time wait 5 seconds before trying again, no matter the number of attempts.
+* exponentialFactor=2, delay=5 => first retry will have a delay of 25 seconds, third will have 125 and so on.
 
 
 Here is a full example:
@@ -208,8 +208,8 @@ steps:
 
 Notice that Codefresh also provides the following variables that allow you change your script/applications according to the retry attempts:
 
-* `CF_CURRENT_ATTEMPT` contains the number of current retry attempt
-* `CF_MAX_ATTEMPTS` contains all the number of total attempts defined
+* `CF_CURRENT_ATTEMPT` contains the number of current retry attempt and
+* `CF_MAX_ATTEMPTS` contains all the number of total attempts defined.
 
 The retry mechanism is available for all kinds of [steps]({{site.baseurl}}/docs/codefresh-yaml/steps/).
 
@@ -221,8 +221,8 @@ your pipeline [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself).
 
 For example, let's say that you have two freestyle steps:
 
-1. The first one fills a MySQL server with data
-1. The second one runs integration tests that use the MySQL server
+1. the first one fills a MySQL server with data and 
+1. the second one runs integration tests that use the MySQL server.
 
 Here is the respective pipeline:
 

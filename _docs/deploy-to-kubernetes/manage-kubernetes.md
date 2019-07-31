@@ -24,7 +24,7 @@ You will be able to see the following parameters for each service:
 
 {:.text-secondary}
 ### Work with your services
-In this view, you will be able to perform the following actions
+In this view, you will be able to perform the following actions:
 * Add new service
 * Edit/Update existing services
 * Remove service
@@ -125,7 +125,7 @@ After your service is deployed to your Kubernetes cluster, you can automate imag
 
 Just add the following to your [pipeline definition]({{ site.baseurl }}/docs/configure-ci-cd-pipeline/pipelines/):
 {:start="1"}
-1. In build step - define Docker registry to push
+1. In build step - define Docker registry to push.
 
 {% include image.html 
 lightbox="true" 

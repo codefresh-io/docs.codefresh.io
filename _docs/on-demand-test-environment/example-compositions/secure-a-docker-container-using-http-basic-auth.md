@@ -45,7 +45,7 @@ max-width="40%"
 To secure the web-app we are going to specify these commands in the ```docker-compose.yml``` file.
 
 1. Remove the port that maps from the web-app (it won't be directly accessible)
-2. Add an extra NGINX container with custom configuration (proxy all traffic),
+2. Add an extra NGINX container with custom configuration (proxy all traffic)
 3. Configure NGINX to communicate with the web-app
 
   `docker-compose.yml`

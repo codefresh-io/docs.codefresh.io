@@ -204,8 +204,8 @@ Codefresh also allows you to use [builkit](https://github.com/moby/buildkit) wit
 
 Using buildkit you can get
 
-* improved build output logs
-* mounting of external secrets that will never be stored in the image
+* improved build output logs,
+* mounting of external secrets that will never be stored in the image, and
 * access to SSH keys and sockets from within the Dockerfile.
 
 These capabilities are offered as extra arguments in the build step and using any of them will automatically enable buildkit. 

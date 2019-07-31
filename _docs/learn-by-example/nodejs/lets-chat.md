@@ -10,9 +10,9 @@ toc: true
 
 Let’s Chat is self-hosted chat app for small to big teams.
 This tutorial will walk you through the process of adding the following:
-- `Build step` - that will build docker image for your let’s chat app
-- `Push to registry step` - that will push your image to docker hub
-- `Unit Test step` - A freestyle step that runs the unit test of the demo chat after the build
+- `Build step` - that will build docker image for your let’s chat app.
+- `Push to registry step` - that will push your image to docker hub.
+- `Unit Test step` - A freestyle step that runs the unit test of the demo chat after the build.
 - `Composition step` - This step will run a composition which use your chat image from the build step, docker image of curl and check if your application is responsive. It will do so by printing "works" if a curl command to our app at port 5000 succeed.
  
 ## Looking around

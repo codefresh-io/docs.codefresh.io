@@ -15,10 +15,10 @@ This allows you to trigger Codefresh pipelines when an Azure Registry event happ
 ## Manage Azure Triggers with Codefresh UI
 
 
-The process involves two parts
+The process involves two parts:
 
-1. Creating a trigger in Codefresh. This will result in a special Codefresh webhook URL
-1. Creating a new notification in the Azure Registry that will use this URL to call Codefresh
+1. creating a trigger in Codefresh. This will result in a special Codefresh webhook URL and
+1. creating a new notification in the Azure Registry that will use this URL to call Codefresh.
 
 Make sure that you have an Azure cloud account and have already [created a registry](https://docs.microsoft.com/en-us/azure/container-registry/).
 
@@ -37,11 +37,11 @@ max-width="40%"
 
 Fill the following information:
 
-* Registry Provider - select `Azure`
-* *Namespace* - put Azure name of registry (without `.azurecr.io`)
-* *Name* - Azure image repository name
-* *Action* - select `Push Image` action
-* *Filter* - optional filter to specify which image *tags* will trigger pipeline execution: [Re2](https://github.com/google/re2/wiki/Syntax) regular expression
+* Registry Provider - select `Azure`.
+* *Namespace* - put Azure name of registry (without `.azurecr.io`).
+* *Name* - Azure image repository name.
+* *Action* - select `Push Image` action.
+* *Filter* - optional filter to specify which image *tags* will trigger pipeline execution: [Re2](https://github.com/google/re2/wiki/Syntax) regular expression.
 
 {% include image.html
 lightbox="true"

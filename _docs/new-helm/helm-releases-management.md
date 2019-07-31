@@ -11,7 +11,7 @@ Codefresh has built-in Helm integration that provides a unique view into your pr
 Codefresh also offers [an environment view for Helm releases]({{site.baseurl}}/docs/new-helm/helm-environment-promotion).
 
 ## Helm Releases overview
-You can view your installed Helm releases from the Helm Releases page (Expand the Helm menu from the left sidebar)
+You can view your installed Helm releases from the Helm Releases page (Expand the Helm menu from the left sidebar).
 
 {% include 
 image.html 
@@ -71,7 +71,7 @@ caption="Rolling back to a previous release"
 max-width="40%"
 %}
 
-There are other tabs that show you the chart used, the values as well as the final manifests that were actually deployed
+There are other tabs that show you the chart used, the values as well as the final manifests that were actually deployed.
 
 {% include 
 image.html 

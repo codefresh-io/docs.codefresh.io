@@ -28,7 +28,7 @@ in the user list.
 
 ## Setting a role for each collaborator
 
-You can also change the role of each team member by using the drop-down next to their name.
+You can also change the role of each team member by using the drop-down next to their name:
 
 * People with the **User** role will be able to work with your repositories and pipelines, but will not be able to change settings
 on clusters, docker registries, git integrations, shared configurations etc.

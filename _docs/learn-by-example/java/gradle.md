@@ -15,8 +15,8 @@ Codefresh can work with Gradle builds in a similar manner as with [Maven builds]
 
 You can see the example project at [https://github.com/codefresh-contrib/gradle-sample-app](https://github.com/codefresh-contrib/spring-boot-2-sample-app). The repository contains a Spring Boot 2 project built with Gradle with the following tasks:
 
-* `gradle test` runs unit tests
-* `gradle build` creates a self-container jar file (using Spring boot)
+* `gradle test` runs unit tests and
+* `gradle build` creates a self-container jar file (using Spring boot).
 
 Once launched the application presents a simple message at localhost:8080 and also at the various `/actuator/health` endpoints. 
 
@@ -52,11 +52,11 @@ ENTRYPOINT ["java", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseCGroupMemoryLim
 
 This docker build does the following:
 
-1. Starts from the Gradle image
-1. Copies the Java source code inside the container
-1. Compiles the code and runs unit tests (with `Gradle build`)
-1. Discards the Gradle image with all the compiled classes/unit test results etc.
-1. Starts again from the JRE image and copies **only** the JAR file created before
+1. starts from the Gradle image,
+1. copies the Java source code inside the container,
+1. compiles the code and runs unit tests (with `Gradle build`),
+1. discards the Gradle image with all the compiled classes/unit test results etc., and
+1. starts again from the JRE image and copies **only** the JAR file created before.
 
 We start Gradle without the long-running daemon, as the deamon is best used during local development only and not in CI/CD pipelines.
 

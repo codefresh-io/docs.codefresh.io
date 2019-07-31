@@ -17,7 +17,7 @@ You can find how to integrate with slack here [https://api.slack.com/incoming-we
 {{site.data.callout.end}}
 
 {:start="2"}
-2. Add the following step to your `codefresh.yml`
+2. Add the following step to your `codefresh.yml`:
 
   `slack step`
 {% highlight yaml %}

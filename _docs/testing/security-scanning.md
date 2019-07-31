@@ -31,12 +31,12 @@ You can find more integrations as they are being added in the [plugin directory]
 
 ## Security scanning strategies
 
-Because you can insert a scanning step anywhere in your pipeline, you have great flexibility on when a security scan is happening. Common strategies are.
+Because you can insert a scanning step anywhere in your pipeline, you have great flexibility on when a security scan is happening. Common strategies are:
 
-1. Scanning the source code before being packaged in a Container
-1. Scanning a container before it is being stored to a registry
-1. Scanning a container before being deployed to production
-1. A Combination of the above.
+1. scanning the source code before being packaged in a Container,
+1. scanning a container before it is being stored to a registry,
+1. scanning a container before being deployed to production, and
+1. a Combination of the above.
 
 Here is an example pipeline that scans a Docker image with [Aqua]https://www.aquasec.com/ after being pushed to the [internal Codefresh registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/) but before being promoted to the [external Azure Registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/azure-docker-registry/).
 

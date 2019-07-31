@@ -6,13 +6,13 @@ sub_group: golang
 toc: true
 ---
 
-[Goreleaser](https://github.com/goreleaser/goreleaser) is a helper utility that allows you to easily create:
+[Goreleaser](https://github.com/goreleaser/goreleaser) is a helper utility that allows you to easily create
 
-* Binary packages for each OS/arch
-* Archives
-* GitHub releases
-* Docker images
-* Snap/RPM/deb/Homebrew
+* binary packages for each OS/arch,
+* archives,
+* GitHub releases,
+* Docker images, and
+* Snap/RPM/deb/Homebrew.
 
 for Go applications.
 

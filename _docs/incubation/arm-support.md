@@ -18,7 +18,7 @@ Once approved, your build environment will move to an ARM cluster, and therefore
 
 Once ARM support is enabled for your account, there is no other special requirement to start building ARM images.
 
-Just read the normal Codefresh documentation
+Just read the normal Codefresh documentation:
 
 * [Introduction to Pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
 * [Creating a pipeline]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
@@ -74,10 +74,10 @@ steps:
 
 This pipeline creates a Docker image for a python application and then runs unit tests inside it.
 
-It contains two [steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
+It contains two [steps]({{site.baseurl}}/docs/codefresh-yaml/steps/):
 
-1. A [build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) that reads a Dockerfile and creates a Docker image
-1. A [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) that runs unit tests
+1. A [build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) that reads a Dockerfile and creates a Docker image.
+1. A [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) that runs unit tests.
 
 The logs verify that this is an ARM image:
 

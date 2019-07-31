@@ -6,11 +6,11 @@ toc: true
 redirect_from:
   - /docs/enterprise/nodes/set-node-limits/
 ---
-Codefresh offers 3 installation options that can cater to any size of organization. These are:
+Codefresh offers 3 installation options that can cater to any size of organization:
 
-* Full cloud version that runs 100% in the cloud and is fully managed by Codefresh
-* On-premise version where Codefresh runs inside the customer datacenter/cloud
-* Hybrid version where the UI runs in the Codefresh cloud, but builds are running on customer premises
+* Full cloud version that runs 100% in the cloud and is fully managed by Codefresh.
+* On-premise version where Codefresh runs inside the customer datacenter/cloud.
+* Hybrid version where the UI runs in the Codefresh cloud, but builds are running on customer premises.
 
 On-premise and Hybrid versions are available to Enterprise customers that are looking for a "behind-the-firewall" solution.
 

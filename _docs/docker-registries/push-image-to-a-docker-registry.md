@@ -7,11 +7,11 @@ redirect_from:
 toc: true
 ---
 
-In Codefresh there are several ways that you can use to push Docker images to a registry
+In Codefresh there are several ways that you can use to push Docker images to a registry:
 
-1. Using the graphical pipeline steps as explained in this page
-1. Using the [push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/) in a [YAML pipeline]({{site.baseurl}}/docs/codefresh-yaml/steps/)
-1. By [promoting]({{site.baseurl}}/docs/docker-registries/codefresh-registry/#promoting-docker-images) an existing image to another registry.
+1. by using the graphical pipeline steps as explained in this page
+1. by using the [push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/) in a [YAML pipeline]({{site.baseurl}}/docs/codefresh-yaml/steps/), and
+1. by [promoting]({{site.baseurl}}/docs/docker-registries/codefresh-registry/#promoting-docker-images) an existing image to another registry.
 
 > Notice that all successful builds automatically push their image to built-in Codefresh registry. If you use only this internal registry
 all push steps are optional (they are needed only for [external registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/)).
@@ -26,10 +26,10 @@ With Codefresh, you can automatically push your build images to your Docker regi
 ### Access Your Pipeline
 
 {:start="1"}
-1. Navigate to the **Repositories** view and find your repository
+1. Navigate to the **Repositories** view and find your repository.
 
 {:start="2"}
-2. Click the **Gear** icon to navigate to the **Pipelines** view
+2. Click the **Gear** icon to navigate to the **Pipelines** view.
 
 {% include image.html 
 	lightbox="true" 
@@ -45,7 +45,7 @@ You will see all pipelines connected to this repository. Select the pipeline tha
 ### Name your Docker image
 
 {:start="1"}
-1. Scroll down and navigate to the **Build and Unit Test** section
+1. Scroll down and navigate to the **Build and Unit Test** section.
 
 {:start="2"}
 2. In the **Image Name** text box, type a name for your image.
@@ -65,10 +65,10 @@ You will see all pipelines connected to this repository. Select the pipeline tha
 ### Select Your Registry
 
 {:start="1"}
-1. Scroll down to the **Push to Docker registry** section
+1. Scroll down to the **Push to Docker registry** section.
 
 {:start="2"}
-2. Select your configured registry
+2. Select your configured registry.
 
 {% include image.html 
 	lightbox="true" 

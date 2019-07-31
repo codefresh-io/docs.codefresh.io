@@ -11,7 +11,7 @@ The *Deploy* step can be used as a step to deploy a pre-built Docker image to a 
 
 This step allows to (re)deploy a Kubernetes application in your cluster
 
-If has two modes:
+It has two modes:
 
 1. Using the `service` option. In this case it will redeploy to an [existing service/deployment in your cluster]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/) . Codefresh will
 automatically update the service/deployment with the new docker image

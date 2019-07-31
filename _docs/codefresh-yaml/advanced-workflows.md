@@ -5,11 +5,11 @@ group: codefresh-yaml
 toc: true
 ---
 
-Codefresh is very flexible when it comes to pipeline complexity and depth. You can easily create:
+Codefresh is very flexible when it comes to pipeline complexity and depth. You can easily create
 
- * Sequential pipelines where step order is same as the listing order in yaml (simple)
- * Sequential pipelines that have some parallel parts (intermediate)
- * Parallel pipelines where step order is explicitly defined (advanced)
+ * sequential pipelines where step order is same as the listing order in yaml (simple),
+ * sequential pipelines that have some parallel parts (intermediate), and
+ * arallel pipelines where step order is explicitly defined (advanced).
 
 With the parallel execution mode, you can define complex pipelines with fan-in/out configurations capable of matching even the most complicated workflows within an organization.
 
@@ -17,10 +17,10 @@ With the parallel execution mode, you can define complex pipelines with fan-in/o
 
 Before going any further make sure that you are familiar with the [basics of Codefresh pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/).
 
-Codefresh offers two modes of execution
+Codefresh offers two modes of execution:
 
-1. Sequential mode (which is the default)
-1. Parallel mode
+1. Sequential Mode (which is the default) and
+1. Parallel Mode.
 
 ## Sequential execution mode
 
@@ -85,11 +85,11 @@ steps:
 In this case tasks 2A and 2B will run in parallel. 
 The step name that defines the parallel phase (`my_parallel_tasks` in the example above), is completely arbitrary. 
 
-The final order of execution will be:
+The final order of execution will be
 
-1. Task 1
-1. Task 2A and Task2B at the same time
-1. Task 3
+1. Task 1,
+1. Task 2A and Task2B at the same time, and
+1. Task 3.
 
 This is the recommended way to start using parallelism in your Codefresh pipelines and it will be enough for most scenarios that require parallelism.
 
@@ -141,9 +141,9 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-The order of execution is the following
+The order of execution is the following:
 
-1. MyAppDockerImage ([build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/))
+1. MyAppDockerImage ([build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/)) 
 1. jfrog_PushingTo_jfrog_BintrayRegistry, PushingToGoogleRegistry, PushingToDockerRegistry ([push steps]({{site.baseurl}}/docs/codefresh-yaml/steps/push/))
 
 The pipeline view for this yaml file is the following.
@@ -318,12 +318,12 @@ steps:
 
 >Note that full parallel mode is a way to run pipelines that is  **incompatible** with the parallel steps shown in the previous section (which used the `type: parallel` attribute). The two modes *cannot* be mixed together. You *must* use one or the other in a single CI/CD pipeline but not both at the same time.
 
-In full parallel mode, the order of steps inside the `codefresh.yml` is **not** affecting the order of execution at all. The Codefresh pipeline engine instead:
+In full parallel mode, the order of steps inside the `codefresh.yml` is **not** affecting the order of execution at all. The Codefresh pipeline engine instead
 
-1. Evaluates all steps conditions *at the same* time
-2. Executes those that have their requirements met
-3. Starts over with the remaining steps
-4. Stops when there no more steps to evaluate
+1. evaluates all steps conditions *at the same* time,
+2. executes those that have their requirements met,
+3. starts over with the remaining steps, and
+4. stops when there no more steps to evaluate.
 
 This means that in parallel mode the conditions of a step are evaluated **multiple times** as the Codefresh execution engine is trying to find which steps it should run next. This implication is very important when you try to understand the order of step execution.
 
@@ -335,12 +335,12 @@ In the next sections we describe how you can define the steps dependencies in a 
 
 ### Single Step dependencies
 
-At the most basic level, you can define that a step *depends on* the execution of another step. This dependency is very flexible as Codefresh allows you run a second step once:
+At the most basic level, you can define that a step *depends on* the execution of another step. This dependency is very flexible as Codefresh allows you run a second step once
 
-1. The first step is finished with success
-1. The first step is finished with failure
-1. The first step was skipped
-1. The first completes (regardless of exit) status
+1. the first step is finished with success,
+1. the first step is finished with failure,
+1. the first step was skipped, or
+1. the first completes (regardless of exit) status.
 
 The syntax for this is the following post-condition
 
@@ -395,12 +395,12 @@ will wait for the next step to either run successfully or be skipped.
 
 >Also notice that the name `main_clone` is reserved for the automatic clone that takes place in the beginning of pipelines that are linked to a git repository. You need to define which steps depend on it (probably the start of your graph) so that `git checkout` happens before the other steps.
 
-As an example, let's assume that you have the following steps in a pipeline
+As an example, let's assume that you have the following steps in a pipeline:
 
-1. A build step that creates a docker image
-1. A freestyle step that runs unit tests inside the docker image
-1. A freestyle step that runs integrations tests *After* the unit tests, even if they fail
-1. A cleanup step that runs after unit tests if they fail
+1. A build step that creates a docker image.
+1. A freestyle step that runs unit tests inside the docker image.
+1. A freestyle step that runs integrations tests *After* the unit tests, even if they fail.
+1. A cleanup step that runs after unit tests if they fail.
 
 Here is the full pipeline. Notice the explicit dependency to the `main_clone` step that checks out the code.
 
@@ -515,12 +515,12 @@ third_step:
 
 Here the third step will run when either the first one *OR* the second one have finished.
 
-As an example let's assume this time that we have:
+As an example let's assume this time that we have
 
-1. A build step that creates a docker image
-1. Unit tests that will run when the docker image is ready
-1. Integration tests that run either after unit tests or if the docker image is ready (contrived example)
-1. A cleanup step that runs when both kinds of tests are finished
+1. a build step that creates a docker image,
+1. unit tests that will run when the docker image is ready,
+1. integration tests that run either after unit tests or if the docker image is ready (contrived example), and
+1. a cleanup step that runs when both kinds of tests are finished.
 
 Here is the full pipeline
 
@@ -616,7 +616,7 @@ my_step:
 {% endraw %}
 {% endhighlight %}
 
-You can now add extra conditions regarding the completion state of specific steps. A global object called `steps` contains all steps by name along with a `result` property with the following possible completion states
+You can now add extra conditions regarding the completion state of specific steps. A global object called `steps` contains all steps by name along with a `result` property with the following possible completion states:
 
 * success
 * failure
@@ -700,8 +700,8 @@ It is important to understand the capabilities offered by Codefresh when it come
 By default, *any* failed step in a pipeline will abort the whole pipeline and mark it as failure.
 
 You can use the directive `fail_fast: false`
-* in a specific step to mark it as ignored if it fails
-* at the root level of the pipeline if you want to apply it to all steps
+* in a specific step to mark it as ignored if it fails and 
+* at the root level of the pipeline if you want to apply it to all steps.
 
 Therefore, if you want your pipeline to keep running to completion regardless of errors the following syntax is possible:
 

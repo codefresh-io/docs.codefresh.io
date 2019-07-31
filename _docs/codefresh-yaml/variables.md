@@ -8,16 +8,16 @@ toc: true
 ---
 Codefresh provides a set of predefined variables automatically in each build, that you can use to parameterize the way your pipeline works. You can also define your own variables. Some common examples of predefined variables include:
 
-* `CF_BRANCH` is the git branch that was used for this pipeline
-* `CF_REVISION` is the git hash that was used for this pipeline
-* `CF_BUILD_URL` is the url of the pipeline build 
+* `CF_BRANCH` is the git branch that was used for this pipeline,
+* `CF_REVISION` is the git hash that was used for this pipeline, and
+* `CF_BUILD_URL` is the url of the pipeline build.
 
 ## Using Codefresh variables in your pipelines
 
-There are two ways to use a Codefresh variable in your pipelines.
+There are two ways to use a Codefresh variable in your pipelines:
 
-1. By default all variables will be exposed as UNIX environment variables in all freestyle steps as $MY_VARIABLE_EXAMPLE
-1. Variables can be used in YAML properties with the syntax {% raw %}`${{MY_VARIABLE_EXAMPLE}}`{% endraw %}.
+1. by default all variables will be exposed as UNIX environment variables in all freestyle steps as $MY_VARIABLE_EXAMPLE and 
+1. variables can be used in YAML properties with the syntax {% raw %}`${{MY_VARIABLE_EXAMPLE}}`{% endraw %}.
 
 > If you are unsure about which form you need to use, feel free to use {% raw %}`${{MY_VARIABLE_EXAMPLE}}`{% endraw %} everywhere. This is the Codefresh specific form and should function in all section of `codefresh.yml`. 
 
@@ -172,10 +172,10 @@ When a pull request is closed in GitHub, the following variables are also availa
 ## User Provided Variables
 
 User provided variables can be defined at 4 levels:
-1. Freestyle step definition: using the `environment` field.
-1. Pipeline execution: after clicking the "Build" button, open the "Advanced options" section.
-1. Pipeline definition: under "Environment variables" section in the pipeline view.
-1. [Shared Configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/): defined under your account settings, and used using the "Import from shared configuration" button under the "Environment Variables" section in the pipeline view.
+1. Freestyle Step Definition (using the `environment` field),
+1. Pipeline Execution (after clicking the "Build" button, open the "Advanced options" section),
+1. Pipeline Definition (under "Environment variables" section in the pipeline view), and
+1. [Shared Configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/) (defined under your account settings, and used using the "Import from shared configuration" button under the "Environment Variables" section in the pipeline view).
 
 The options are listed in order of importance, so in case of multiple variables defined at different location with the same name, the order of overriding will be as listed here.
 
@@ -186,8 +186,8 @@ Steps defined inside steps are scoped to the step they were created in (even if 
 ### Using cf_export command
 Inside every freestyle step there's a command called `cf_export` that allows you to export variables across steps (by writing to the shared variables file).
 
-You can either:
-- explicitly state a VAR=VAL pair  
+You can either
+- explicitly state a VAR=VAL pair or  
 - state the name of an existing *exported* environment variable (like EXISTING_VAR).
 
 {% highlight yaml %}

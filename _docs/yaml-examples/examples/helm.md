@@ -8,10 +8,10 @@ toc: true
 
 [Helm](https://helm.sh/) is the package manager for Kubernetes. Codefresh has comprehensive support for Helm:
 
-* You get a free [built-in Helm repository]({{site.baseurl}}/docs/new-helm/managed-helm-repository/) with each Codefresh account
-* You can track your charts in the [Helm chart dashboard]({{site.baseurl}}/docs/new-helm/add-helm-repository/)
-* You can view your deployments in your [Helm Release dashboard]({{site.baseurl}}/docs/new-helm/helm-releases-management/)
-* You can promote Helm releases in your [Helm environment dashboard]({{site.baseurl}}/docs/new-helm/helm-environment-promotion/)
+* You get a free [built-in Helm repository]({{site.baseurl}}/docs/new-helm/managed-helm-repository/) with each Codefresh account.
+* You can track your charts in the [Helm chart dashboard]({{site.baseurl}}/docs/new-helm/add-helm-repository/).
+* You can view your deployments in your [Helm Release dashboard]({{site.baseurl}}/docs/new-helm/helm-releases-management/).
+* You can promote Helm releases in your [Helm environment dashboard]({{site.baseurl}}/docs/new-helm/helm-environment-promotion/).
 * You can add any external Helm repository on any other cloud provider.
 
 Codefresh also provides a [pipeline step]({{site.baseurl}}/docs/new-helm/using-helm-in-codefresh-pipeline/) for deploying with Helm.
@@ -89,7 +89,7 @@ steps:
 This pipeline does the following:
 
 1. Clones the source code with a [Git clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)
-1. Build a docker image using a [Build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/)
+1. Builds a docker image using a [Build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/)
 1. Deploys the Helm chart to a cluster named `my-demo-k8s-cluster`
 
 Note that in this example `charts/helm-example` refers to the filesystem location in the code that was just checked out.

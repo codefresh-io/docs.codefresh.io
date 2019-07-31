@@ -42,9 +42,9 @@ max-width="50%"
 
 Click on it and you will get a new dialog where you can select
 
- * the branch that will be used for monitoring
- * the graphical style of the badge (two styles are offered)
- * the syntax for the badge
+ * the branch that will be used for monitoring,
+ * the graphical style of the badge (two styles are offered), and
+ * the syntax for the badge.
 
 {% include 
 	image.html 
@@ -55,12 +55,12 @@ Click on it and you will get a new dialog where you can select
 	caption="Codefresh badges syntax"
 	max-width="50%" %}
 
- The following embedding options are available
+ The following embedding options are available:
 
- * Markdown for usage in text files (e.g. `README.MD`)
- * plain HTML for normal websites
- * AsciiDoc for documentation pages
- * Image for any other document type
+ * markdown for usage in text files (e.g. `README.MD`), 
+ * plain HTML for normal websites,
+ * AsciiDoc for documentation pages, and 
+ * image for any other document type
 
 
 Copy the snippet in your clipboard.

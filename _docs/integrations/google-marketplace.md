@@ -11,13 +11,13 @@ Once you configure Codefresh to use your own Kubernetes cluster for builds you w
 
 The major benefits are the following:
 
- * You define exactly what resources are used for your builds instead of relying on Codefresh infrastructure
- * The management UI is still running on the Codefresh premises and is managed by the Codefresh team allowing you to focus on your builds
- * The Codefresh builder can have access to all private resources that run in your cluster so it is very easy to use resources that should not be exposed to the Internet for any reason
+ * You define exactly what resources are used for your builds instead of relying on Codefresh infrastructure.
+ * The management UI is still running on the Codefresh premises and is managed by the Codefresh team allowing you to focus on your builds.
+ * The Codefresh builder can have access to all private resources that run in your cluster so it is very easy to use resources that should not be exposed to the Internet for any reason.
  * Unified billing. You pay a single bill to Google that includes the price for your Kubernetes cluster as well as the Codefresh pipelines.
 
 
-To start the integration, you need the following
+To start the integration, you need the following:
 
 1. A [Google Cloud account](https://cloud.google.com/) with billing enabled
 1. A [GKE cluster](https://cloud.google.com/kubernetes-engine/docs/quickstart) that will run all builds and pipelines

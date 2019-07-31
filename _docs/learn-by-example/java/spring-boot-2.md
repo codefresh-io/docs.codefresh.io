@@ -17,7 +17,7 @@ Codefresh can easily handle Spring Boot applications that are dockerized either 
 
 ## The example Java project
 
-You can see the example project at [https://github.com/codefresh-contrib/spring-boot-2-sample-app](https://github.com/codefresh-contrib/spring-boot-2-sample-app). The repository contains a Spring Boot 2 project built with Maven with the following goals
+You can see the example project at [https://github.com/codefresh-contrib/spring-boot-2-sample-app](https://github.com/codefresh-contrib/spring-boot-2-sample-app). The repository contains a Spring Boot 2 project built with Maven with the following goals:
 
 * `mvn package` creates a jar file that can be run on its own (exposes port 8080). It also runs unit tests.
 * `mvn verify` runs integration tests as well. The application is launched locally as part of the Maven lifecycle.
@@ -162,13 +162,13 @@ ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app/spring
 
 This docker build does the following:
 
-1. Starts from the standard Maven Docker image
-1. Copies only the `pom.xml` file inside the container
-1. Runs a mvn command to download all dependencies found in the `pom.xml`
-1. Copies the rest of the source code in the container
-1. Compiles the code, runs unit tests and then integration tests (with `mvn verify`)
+1. Starts from the standard Maven Docker image.
+1. Copies only the `pom.xml` file inside the container.
+1. Runs a mvn command to download all dependencies found in the `pom.xml`.
+1. Copies the rest of the source code in the container.
+1. Compiles the code, runs unit tests and then integration tests (with `mvn verify`).
 1. Discards the Maven image with all the compiled classes/unit test results etc.
-1. Starts again from the JRE image and copies **only** the JAR file created before
+1. Starts again from the JRE image and copies **only** the JAR file created before.
 
 The order of the steps is tuned so that it takes advantage of the layer caching built-in to Docker.
 If you change something in the source code Docker already has a layer with Maven dependencies so they

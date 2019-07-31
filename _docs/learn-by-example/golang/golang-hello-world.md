@@ -12,11 +12,11 @@ Codefresh can work with Go projects of any version using built-in modules or any
 
 ## The example golang project
 
-You can see the example project at [https://github.com/codefresh-contrib/golang-sample-app](https://github.com/codefresh-contrib/golang-sample-app). The repository contains a simple Golang web application including unit tests. There are 3 Dockerfiles available
+You can see the example project at [https://github.com/codefresh-contrib/golang-sample-app](https://github.com/codefresh-contrib/golang-sample-app). The repository contains a simple Golang web application including unit tests. There are 3 Dockerfiles available:
 
-* [Simple Dockerfile](https://github.com/codefresh-contrib/golang-sample-app/blob/master/Dockerfile) (with old Go version that requires `GOPATH` building)
-* [Dockerfile with Go modules](https://github.com/codefresh-contrib/golang-sample-app/blob/master/Dockerfile.mod) (optimized for Docker caching)
-* [Multi-stage Dockerfile](https://github.com/codefresh-contrib/golang-sample-app/blob/master/Dockerfile.multistage) (with Go modules and unit tests)
+* [Simple Dockerfile](https://github.com/codefresh-contrib/golang-sample-app/blob/master/Dockerfile) (with old Go version that requires `GOPATH` building),
+* [Dockerfile with Go modules](https://github.com/codefresh-contrib/golang-sample-app/blob/master/Dockerfile.mod) (optimized for Docker caching), and
+* [Multi-stage Dockerfile](https://github.com/codefresh-contrib/golang-sample-app/blob/master/Dockerfile.multistage) (with Go modules and unit tests).
 
 Let's see these workflows in order.
 

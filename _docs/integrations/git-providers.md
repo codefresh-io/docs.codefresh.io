@@ -66,10 +66,10 @@ For the **OAuth2 method** you only need to decide on public/private repository a
 you used GitHub when you [created your Codefresh account]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/), this integration is already setup for you.
 
 
-For the **Access Token** method you need:
+For the **Access Token** method you need
 
-* a friendly name for the git context. It can be anything you want
-* an access token
+* a friendly name for the git context (It can be anything you want.) and
+* an access token.
 
 
 To create an access token, go to your GitHub *settings* and select the *Developer settings* option from the left
@@ -101,8 +101,8 @@ you used Gitlab when you [created your Codefresh account]({{site.baseurl}}/docs/
 
 For the **Access Key** method you need:
 
-* a friendly name for the git context. It can be anything you want
-* an access token/key
+* a friendly name for the git context (It can be anything you want.) and
+* an access token/key.
 
 
 To create an access token, go to your Gitlab *settings* and select the *Access tokens* options.
@@ -122,9 +122,9 @@ you used Bitbucket when you [created your Codefresh account]({{site.baseurl}}/do
 
 For the **Application Password** method you need:
 
-* a friendly name for the git context. It can be anything you want
-* the name of your Bitbucket account/email address
-* A Bitbucket application password.
+* a friendly name for the git context (It can be anything you want.),
+* the name of your Bitbucket account/email address, and 
+* a Bitbucket application password.
 
 To create an application password, go to your *Bitbucket settings* and select *App passwords* from the sidebar.
 Click the button to create one. For more information see the [Bitbucket Documentation page](https://confluence.atlassian.com/bitbucket/app-passwords-828781300.html){:target="_blank"}
@@ -174,7 +174,7 @@ caption="Azure DevOps Token"
 alt="Azure DevOps Token"
 %}
 
-From the *Scope* section choose the option *Show all scopes* and choose the following 
+From the *Scope* section choose the option *Show all scopes* and choose the following:
 
 * Code - Read
 * Code - Status
