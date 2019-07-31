@@ -54,11 +54,11 @@ You will pay for the cluster resources to Google, plus the Codefresh builds. Cod
 Current pricing for Codefresh builds is always shown in the [marketplace page](https://console.cloud.google.com/marketplace/details/codefresh-gke/codefresh).
 
 
-## Step 0 - Create a Codefresh access token
+## Step 0 - Create a Codefresh API key
 
 To start the installation process log into your Codefresh account and visit the [API Keys](https://g.codefresh.io/user/settings) area by selecting *User Settings* from the left sidebar and then scrolling down to the  *API Keys* section.
 
-Then click the [generate](https://g.codefresh.io/account-admin/account-conf/tokens#autogen=google-marketplace) button to create a new token.
+Then click the *Generate* button to create a new API KEY.
 
 {% include image.html 
 lightbox="true" 
