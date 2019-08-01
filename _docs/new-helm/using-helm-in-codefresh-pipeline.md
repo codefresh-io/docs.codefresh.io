@@ -68,7 +68,7 @@ You will need to connect your repository with Codefresh as described [here]({{si
 
 ### Step 4 - Import the Helm Configuration in your pipeline definition
 
-Once you have a Helm repository connected, attach it to the pipeline by selecting it in the pipeline editing page, under "Environment Variables" -> "Import from shared configuration".
+Once you have a Helm repository connected, attach it to the pipeline. Do this by opening the advanced options (the gear icon) in the variables section in the right sidebard. Then click on *Import from shared configuration* and choose the `CF_HELM_DEFAULT` [shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/).
 
 {% include image.html 
 lightbox="true" 
@@ -76,7 +76,7 @@ file="/images/kubernetes-helm/connect-helm-repo.png"
 url="/images/kubernetes-helm/connect-helm-repo.png" 
 alt="Connecting a Helm repository in the pipeline"
 caption="Connecting a Helm repository in the pipeline" 
-max-width="70%" 
+max-width="50%" 
 %}
 
 This concludes the Helm setup for Codefresh. Now you can use the Helm freestyle step in the pipeline `codefresh.yml` file.
