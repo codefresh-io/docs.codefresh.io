@@ -9,7 +9,7 @@ Codefresh is very flexible when it comes to pipeline complexity and depth. You c
 
  * sequential pipelines where step order is same as the listing order in yaml (simple),
  * sequential pipelines that have some parallel parts (intermediate), and
- * arallel pipelines where step order is explicitly defined (advanced).
+ * Parallel pipelines where step order is explicitly defined (advanced).
 
 With the parallel execution mode, you can define complex pipelines with fan-in/out configurations capable of matching even the most complicated workflows within an organization.
 

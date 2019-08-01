@@ -22,17 +22,11 @@ max-width="70%"
 
 You can use the API in various ways:
 
-<<<<<<< HEAD
-* From your local workstation with any tool that speaks HTTP (such as [postman](https://github.com/postmanlabs), [httpie](https://httpie.org/), [curl](https://curl.haxx.se/) etc.)
-* From another HTTP enabled system such as Jenkins. You can trigger Codefresh pipelines from Jenkins jobs
-* Using the [Codefresh command line interface](https://codefresh-io.github.io/cli/) which itself uses the API
-* Calling it programmatically from any other system. You can use your favorite programming language to make HTTP calls to Codefresh
-=======
 * From your local workstation with any tool that speaks HTTP (such as [postman](https://github.com/postmanlabs), [httpie](https://httpie.org/), [curl](https://curl.haxx.se/) etc.).
 * From another HTTP enabled system such as Jenkins. You can trigger Codefresh pipelines from Jenkins jobs.
 * Using the [Codefresh command line interface](https://codefresh-io.github.io/cli/) which itself uses the API .
 * Calling it programmatically from any other system. You can use your favorite programming language to make HTTP calls to Codefresh.
->>>>>>> 0663fbb... no message
+
 
 The Codefresh API is updated when new features are added in the Codefresh platform so you can expect any new functionality
 to appear to the API as well.
@@ -41,13 +35,9 @@ to appear to the API as well.
 
 There are several ways to use the API. Some of the most popular ones are:
 
-<<<<<<< HEAD
-1. Triggering builds from another system. You can start a Codefresh pipeline from any other internal system that you already have in your organization
-1. Getting the status of builds in another system.
-=======
+
 1. Triggering builds from another system. You can start a Codefresh pipeline from any other internal system that you already have in your organization.
 1. Getting the status of builds in another system. 
->>>>>>> 0663fbb... no message
 1. Creating pipelines externally. You don't have to use the Codefresh GUI to create pipelines. You can create them programmatically using your favorite template mechanism. You can reuse pipelines using your own custom implementation
 if you have special needs in your organization.
 
