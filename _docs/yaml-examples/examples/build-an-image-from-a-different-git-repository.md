@@ -41,15 +41,15 @@ Just head over to the example [**repository**](https://github.com/codefreshdemo/
 {:.text-secondary}
 ### Using This Example
 
-To use this example
+To use this example:
 
-* fork this repository to your own [INSERT_SCM_SYSTEM (git, bitbucket)] account,
-* log in to Codefresh using your [INSERT_SCM_SYSTEM (git, bitbucket)] account,
-* click the `Add Service` button,
-* select the forked repository,
-* select the `I have a Codefresh.yml file` option,
-* Complete the wizard, and
-* rejoice!
+* Fork this repository to your own [INSERT_SCM_SYSTEM (git, bitbucket)] account
+* Log in to Codefresh using your [INSERT_SCM_SYSTEM (git, bitbucket)] account
+* Click the `Add Service` button
+* Select the forked repository
+* Select the `I have a Codefresh.yml file` option
+* Complete the wizard
+* Rejoice!
 
 ## Git-clone step with github token
 **How to generate the github token**
@@ -64,10 +64,10 @@ We assume you already forked this repo and create a service for it
 2. Switch to Use YML build.
 3. Change the YML File Location to be ./codefresh.git.clone.example.yml
 4. Under Environment variables fill the next variables:
- - GIT_TOKEN your personal access token that you generated on GitHub
- - REPO_OWNER owner of repository that you want to clone
- - REPO_NAME name of repository that you want to clone
- - BRANCH branch of repo
+ - GIT_TOKEN- your personal access token that you generated on GitHub.
+ - REPO_OWNER- owner of repository that you want to clone.
+ - REPO_NAME- name of repository that you want to clone.
+ - BRANCH- branch of repo.
 
   `codefresh.yml`
 {% highlight yaml %}

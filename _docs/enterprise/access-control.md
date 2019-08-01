@@ -130,10 +130,10 @@ To create and manage teams of people, from the left sidebar of the Codefresh UI 
   max-width="80%"
     %}
 
-On this screen you can
- * create a new team by clicking on the respective button on the top right,
- * search for a specific team by typing on the top left field, and
- * Edit a team by clicking on it and assigning people.
+On this screen you can:
+ * Create a new team by clicking on the respective button on the top right
+ * Search for a specific team by typing on the top left field
+ * Edit a team by clicking on it and assigning people
 
  You can only assign existing collaborators that were added in the *People* screen as explained in the first part of this page.
  You can (and should) assign the same person to multiple teams. In most companies, people have multiple overlapping roles. 
@@ -156,11 +156,11 @@ On this screen you can
   max-width="80%"
     %}
 
-Here you can create new security rules using the *who, what, where* pattern. For each rule you select
+Here you can create new security rules using the *who, what, where* pattern. For each rule you select:
 
-1. the team the rule applies to,
-1. cluster privileges (*Create/delete/read/update*) or pipeline privileges (*Create/delete/read/run/update*), and
-1. the effective tags (multiple tags can be used).
+1. The team the rule applies to,
+1. Cluster privileges (*Create/delete/read/update*) or pipeline privileges (*Create/delete/read/run/update*), and
+1. The effective tags (multiple tags can be used).
 
 This way you can define any policy you wish per departments, projects, roles etc. for cluster/pipeline access.
 

@@ -202,11 +202,11 @@ All images built successfully with the build step, will be automatically pushed 
 
 Codefresh also allows you to use [builkit](https://github.com/moby/buildkit) with all its [enhancements](https://docs.docker.com/develop/develop-images/build_enhancements/).
 
-Using buildkit you can get
+Using buildkit you can get:
 
-* improved build output logs,
-* mounting of external secrets that will never be stored in the image, and
-* access to SSH keys and sockets from within the Dockerfile.
+* Improved build output logs
+* Mounting of external secrets that will never be stored in the image
+* Access to SSH keys and sockets from within the Dockerfile
 
 These capabilities are offered as extra arguments in the build step and using any of them will automatically enable buildkit. 
 

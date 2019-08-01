@@ -7,7 +7,7 @@ toc: true
 
 Codefresh supports the annotations of several entities with custom annotations. You can use these annotations to store any optional information that you wish to keep associated with each entity. Examples would be storing the test coverage for a particular build, or a special settings file for a pipeline.
 
-Currently Codefresh supports extra annotations for
+Currently Codefresh supports extra annotations for:
 
 * Projects
 * Pipelines
@@ -49,14 +49,14 @@ This pipeline adds three annotations to a project called `annotate-examples`. Th
 
 For the `entity_id` value you can also use an actual ID instead of a name. The `entity_id` and `entity_type` are define which entity will hold the annotations. The possible entity types are:
 
-* `project` (for a project, even a different one),
-* `pipeline` (for a pipeline, even a different one),
-* `build` (for a build, even a different one), and
-* `image` (for a docker image).
+* `project` (for a project, even a different one)
+* `pipeline` (for a pipeline, even a different one)
+* `build` (for a build, even a different one)
+* `image` (for a docker image)
 
 If you don't define them, then by default the current build will be used with these values:
-* `entity_id` is `{% raw %}${{CF_BUILD_ID}}{% endraw %}` (i.e. the current build), and
-* `entity_type` is `build`.
+* `entity_id` is `{% raw %}${{CF_BUILD_ID}}{% endraw %}` (i.e. the current build)
+* `entity_type` is `build`
 
 Here is another example where we add annotations to another pipeline as well as another build (instead of the current one)
 
@@ -149,11 +149,11 @@ caption="Editing annotations"
 max-width="50%"
 %}
 
-You can add additional annotations manually by clicking the *Add annotation* button and entering
+You can add additional annotations manually by clicking the *Add annotation* button and entering:
 
-* the name of the annotation,
-* the type of the annotation (text, number, percentage, link, boolean), and
-* the desired value.
+* The name of the annotation
+* The type of the annotation (text, number, percentage, link, boolean)
+* The desired value
 
 Click *Save* to apply your changes.
 
@@ -246,10 +246,10 @@ The `unset` annotation can be used with all post-step operations (`on_success`, 
 
 ## Adding annotations to the current build/image
 
-As a convenience feature, if 
+As a convenience feature:
 
-1. your pipeline has a build step, and
-1. you want to add annotations to the present build or image,
+1. If your pipeline has a build step
+1. If you want to add annotations to the present build or image
 
 you can also define annotations in the root level of the build step and not mention the entity id and type. Annotations will then be added in the present build.
 

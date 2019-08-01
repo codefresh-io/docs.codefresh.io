@@ -55,12 +55,12 @@ First make sure that you have installed the [Codefresh runner]({{site.baseurl}}/
 
 All pipelines that are executed in the private Kubernetes cluster have access to all other internal services that are network reachable. It is therefore very easy to create pipelines that
 
- * use databases internal to the company,
- * run integration tests against services internal to the company,
- * launch [compositions]({{site.baseurl}}/docs/codefresh-yaml/steps/composition/) that communicate with other secure services,
- * Upload and download artifacts from a private artifact repository (e.g. Nexus or Artifactory),
- * deploy to any other cluster accessible in the secure network, and
- * create infrastructure such as machines, load balancers, auto-scaling groups etc.
+ * Use databases internal to the company
+ * Run integration tests against services internal to the company
+ * Launch [compositions]({{site.baseurl}}/docs/codefresh-yaml/steps/composition/) that communicate with other secure services
+ * Upload and download artifacts from a private artifact repository (e.g. Nexus or Artifactory)
+ * Deploy to any other cluster accessible in the secure network
+ * Create infrastructure such as machines, load balancers, auto-scaling groups etc
 
  Any of these pipelines will work out the box and no extra configuration is needed. In all cases
  all data will stay with the private local network and will never exit the firewall.

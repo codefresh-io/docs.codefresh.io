@@ -81,7 +81,7 @@ Click *Save* to proceed.
 
 You need to enter the following:
 
-* *Display Name* - Shown as application name in OKTA.
+* *Display Name* - shown as application name in OKTA.
 * *client id* - your OKTA application client ID (see below).
 * client secret* - your OKTA application client secret (see below).
 * Client Host - your OKTA organization url (e.g `https://<company>.okta.com`). Keep in mind you don’t copy it from the admin view (e.g. `https://<company>-admin.okta.com`) because it’ll not work.

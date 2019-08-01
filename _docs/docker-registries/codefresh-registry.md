@@ -11,10 +11,10 @@ When creating [a Codefresh account]({{site.baseurl}}/docs/getting-started/create
 
 All images built in Codefresh are automatically pushed to your Codefresh registry.
 
-With the integrated Codefresh registry you will be able to
-- control where your images are being stored,
-- fully own your images distribution pipeline, and
-- integrate image storage and distribution into your in-house development workflow.
+With the integrated Codefresh registry you will be able to:
+- Control where your images are being stored
+- Fully own your images distribution pipeline
+- Integrate image storage and distribution into your in-house development workflow
 
 Notice that despite the extra features, the Codefresh registry is using the official Docker registry API and is usable even outside of Codefresh, using any of your existing Docker tools.
 
@@ -52,23 +52,23 @@ On the top left of the screen you can find several filters that allow you to sea
 	max-width="40%" 
 %}
 
-Filters include
+Filters include:
 
-* tagged/untagged images,
-* base image name,
-* git branch,
-* tag, and
-* pipeline volumes.
+* Tagged/untagged images
+* Base image name
+* Git branch
+* Tag
+* Pipeline volumes
 
 You can add multiple filters and they will work in an `AND` manner.
 
 On the right side of the screen you also have a list of buttons for actions on each Docker image.
 These are:
 
-* launching a Docker image as a [test environment]({{site.baseurl}}/docs/getting-started/on-demand-environments/),
-* promoting a Docker image (explained below),
-* looking at the docker commands that allow you to pull the image locally on your workstation, and
-* re-running the pipeline that created this image.
+* Launching a Docker image as a [test environment]({{site.baseurl}}/docs/getting-started/on-demand-environments/)
+* Promoting a Docker image (explained below)
+* Looking at the docker commands that allow you to pull the image locally on your workstation
+* Re-running the pipeline that created this image
 
 ## Promoting Docker images 
 
@@ -152,9 +152,9 @@ On the first section called *Integrations* click the *Configure* button next to 
 
 Finally click *Add Registry* and select *Codefresh Registry* from the new registry drop down and then provide the following:
 
-* Registry Name - A unique name for this configuration
-* Username - Your username in Codefresh
-* Access token - Your generated access token
+* Registry Name - a unique name for this configuration.
+* Username - your username in Codefresh.
+* Access token - your generated access token.
 
 {% 
 	include image.html 

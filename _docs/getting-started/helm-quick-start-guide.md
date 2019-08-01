@@ -31,11 +31,11 @@ Codefresh has native support for Helm in a number of ways:
 
 ## Overview
 
-In this guide we will see how you can 
+In this guide we will see how you can:
 
-1. deploy a Helm application with Codefresh in an automated manner,
-1. manage your Helm releases from within Codefresh, and
-1. store a Helm package inside the integrated Codefresh repository.
+1. Deploy a Helm application with Codefresh in an automated manner
+1. Manage your Helm releases from within Codefresh
+1. Store a Helm package inside the integrated Codefresh repository
 
 
 
@@ -45,10 +45,10 @@ For simplicity reasons, we will use the [built-in Docker registry]({{site.baseur
 ## Prerequisites
 
 It is assumed that:
-  - you have already [added your K8s cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/adding-non-gke-kubernetes-cluster/) into Codefresh,
-  - you have already an application that has a Dockerfile and a Helm chart,
-  - the server part of Helm is installed in your cluster (Tiller), and
-  - your cluster has pull access to the Codefresh registry. If not read the [previous guide]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/#giving-the-kubernetes-cluster-read-access-to-the-internal-codefresh-registry) or look at the [documentation]({{site.baseurl}}/docs/deploy-to-kubernetes/deploy-to-kubernetes/create-image-pull-secret/).
+  - You have already [added your K8s cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/adding-non-gke-kubernetes-cluster/) into Codefresh
+  - You have already an application that has a Dockerfile and a Helm chart
+  - The server part of Helm is installed in your cluster (Tiller)
+  - Your cluster has pull access to the Codefresh registry. If not read the [previous guide]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/#giving-the-kubernetes-cluster-read-access-to-the-internal-codefresh-registry) or look at the [documentation]({{site.baseurl}}/docs/deploy-to-kubernetes/deploy-to-kubernetes/create-image-pull-secret/)
 
 To verify that your cluster is setup for Helm select the *Helm Releases* item from the left sidebar. You should see the Helm releases in your cluster or an empty screen if you just started.
 

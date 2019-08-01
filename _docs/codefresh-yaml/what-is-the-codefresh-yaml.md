@@ -164,9 +164,9 @@ step-name:
 
 The `retry:` block has the following parameters:
 
-  * `maxAttempts` defines how many times this step will run again if there are execution errors (default is 1 and the Max. is 10),
-  * `delay` is the number of seconds to wait before each attempt (default is 5 seconds and the Max. is 60 seconds), and 
-  * `exponentialFactor` that defines how many times the delay should be multiplied by itself after each attempt (default is 1 and Max. is 5).
+  * `maxAttempts` defines how many times this step will run again if there are execution errors (default is 1 and the Max. is 10).
+  * `delay` is the number of seconds to wait before each attempt (default is 5 seconds and the Max. is 60 seconds).
+  * `exponentialFactor` defines how many times the delay should be multiplied by itself after each attempt (default is 1 and Max. is 5).
 
 All parameters are optional. The exponentialFactor works like this:
 * exponentialFactor=1, delay=5 => each time wait 5 seconds before trying again, no matter the number of attempts.
@@ -208,7 +208,7 @@ steps:
 
 Notice that Codefresh also provides the following variables that allow you change your script/applications according to the retry attempts:
 
-* `CF_CURRENT_ATTEMPT` contains the number of current retry attempt and
+* `CF_CURRENT_ATTEMPT` contains the number of current retry attempt.
 * `CF_MAX_ATTEMPTS` contains all the number of total attempts defined.
 
 The retry mechanism is available for all kinds of [steps]({{site.baseurl}}/docs/codefresh-yaml/steps/).
@@ -221,8 +221,8 @@ your pipeline [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself).
 
 For example, let's say that you have two freestyle steps:
 
-1. the first one fills a MySQL server with data and 
-1. the second one runs integration tests that use the MySQL server.
+1. The first one fills a MySQL server with data.
+1. The second one runs integration tests that use the MySQL server.
 
 Here is the respective pipeline:
 

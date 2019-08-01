@@ -23,9 +23,9 @@ max-width="80%"
 %}
 
 This board has 3 environments that correspond to Kubernetes clusters:
- * a Load-testing environment where applications are stress-tested,
- * a Staging environment where smoke tests are performed, and
- * the production environment where applications go live.
+ * A Load-testing environment where applications are stress-tested
+ * A Staging environment where smoke tests are performed
+ * The production environment where applications go live
 
 You can see that a Python example app at version 0.2.0 is already in production. Version 0.3.0 is awaiting in the staging environment for smoke tests. Once it is tested it can be dragged to the production column therefore *promoting* it to production status.
 
@@ -93,10 +93,10 @@ max-width="50%"
 
 For each environment you can select
 
-* a name for that column,
-* the Kubernetes cluster it corresponds to,
-* one or more namespaces that define this environment (You can even toggle the switch for a regex match), and
-* a presentation color to easily identify the environment on the board (For example, a "production" environment should have a red color). 
+* A name for that column
+* The Kubernetes cluster it corresponds to
+* One or more namespaces that define this environment (You can even toggle the switch for a regex match)
+* A presentation color to easily identify the environment on the board (For example, a "production" environment should have a red color).
 
 You can also select no namespace at all. In that case the column will show Helm releases for all namespaces in that cluster.
 You can change all these options after creation, so feel free to change your mind.

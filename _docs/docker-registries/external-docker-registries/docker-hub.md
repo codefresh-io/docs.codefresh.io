@@ -9,9 +9,9 @@ toc: true
 ---
 To configure Docker Hub so that your pipelines can push images to it, first select **Docker Hub** from the new registry drop down and then provide the following:
 
-* Registry Name - A unique name for this configuration
-* Username - Docker Hub username
-* Password - Docker Hub password
+* Registry Name - a unique name for this configuration.
+* Username - Docker Hub username.
+* Password - Docker Hub password.
 
 {% include image.html 
 	lightbox="true" 

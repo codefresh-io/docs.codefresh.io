@@ -15,10 +15,10 @@ toc: true
 
 To configure *Bintray.io* and/or *Artifactory* first select *JFrog Bintray* from the *Add registry* registry drop down and then provide the following:
 
-* Registry Name - A unique name for this configuration (arbitrary name)
-* Username - Your Bintray.io username/ Your Artifactory username
-* API Key - Your Bintray.io API key / Your Artifactory API key
-* Domain - Your Bintray.io registry address e.g. `docker-new-repository.bintray.io` or Artifactory such as `my-company-docker-snapshot.jfrog.io`
+* Registry Name - a unique name for this configuration (arbitrary name).
+* Username - your Bintray.io username/ Your Artifactory username.
+* API Key - your Bintray.io API key / Your Artifactory API key.
+* Domain - your Bintray.io registry address e.g. `docker-new-repository.bintray.io` or Artifactory such as `my-company-docker-snapshot.jfrog.io`.
 
 {% include image.html lightbox="true" file="/images/artifacts/registry/add-bintray-registry.png" url="/images/artifacts/registry/add-bintray-registry.png" alt="Add Bintray.io Registry" max-width="60%" %}
 

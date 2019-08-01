@@ -27,11 +27,11 @@ max-width="60%"
 
 Fill the following information:
 
-* Registry Provider - select `DockerHub`
-* *Namespace* - put DockerHub user name or organization name here
-* *Name* - DockerHub image repository name
-* *Action* - select `Push Image` action
-* *Filter* - optional filter to specify which image *tags* will trigger pipeline execution: [Re2](https://github.com/google/re2/wiki/Syntax) regular expression
+* Registry Provider - select `DockerHub`.
+* *Namespace* - put DockerHub user name or organization name here.
+* *Name* - DockerHub image repository name.
+* *Action* - select `Push Image` action.
+* *Filter* - optional filter to specify which image *tags* will trigger pipeline execution: [Re2](https://github.com/google/re2/wiki/Syntax) regular expression.
 
 {% include image.html
 lightbox="true"
@@ -54,9 +54,9 @@ alt="Edit DockerHub Trigger"
 max-width="70%"
 %}
 
-1. copy `Endpoint` URL,
-1. visit DockerHub image settings page following link in help, and 
-1. add a new DockerHub Webhook with previously copied `Endpoint` URL.
+1. Copy `Endpoint` URL
+1. Visit DockerHub image settings page following link in help
+1. Add a new DockerHub Webhook with previously copied `Endpoint` URL
 
 ### Triggering Codefresh pipeline with DockerHub push
 
@@ -118,9 +118,9 @@ help: >-
   https://g.codefresh.io/nomios/dockerhub?account=107e9db97062&secret=aGao5weuez2G6WF9
 ```
 
-1. copy `endpoint` URL,
-1. visit DockerHub settings page [https://hub.docker.com/r/codefresh/fortune/~/settings/webhooks/](https://hub.docker.com/r/codefresh/fortune/~/settings/webhooks/), and
-1. add a new Webhook with previously copied `endpoint` URL
+1. Copy `endpoint` URL
+1. Visit DockerHub settings page [https://hub.docker.com/r/codefresh/fortune/~/settings/webhooks/](https://hub.docker.com/r/codefresh/fortune/~/settings/webhooks/)
+1. Add a new Webhook with previously copied `endpoint` URL
 
 
 #### Setup pipeline trigger
@@ -139,11 +139,11 @@ From now on, Codefresh will trigger pipeline execution when new `codefresh/fortu
 
 #### DockerHub Event payload
 
-The following variables will be available for any Codefresh pipeline linked to a DockerHub `trigger-event`.
+The following variables will be available for any Codefresh pipeline linked to a DockerHub `trigger-event`:
 
-- `EVENT_NAMESPACE` - DockerHub namespace (alias `organization`)
-- `EVENT_NAME` - DockerHub image name (alias `repository`)
-- `EVENT_TAG` - Docker image tag
-- `EVENT_PUSHER` - user who pushed this Docker image
-- `EVENT_PUSHED_AT` - timestamp for push event
-- `EVENT_PAYLOAD` - original DockerHub Webhook JSON payload
+- `EVENT_NAMESPACE` - DockerHub namespace (alias `organization`).
+- `EVENT_NAME` - DockerHub image name (alias `repository`).
+- `EVENT_TAG` - Docker image tag.
+- `EVENT_PUSHER` - user who pushed this Docker image.
+- `EVENT_PUSHED_AT` - timestamp for push event.
+- `EVENT_PAYLOAD` - original DockerHub Webhook JSON payload.

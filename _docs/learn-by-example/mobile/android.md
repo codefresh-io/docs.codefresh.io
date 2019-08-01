@@ -15,8 +15,8 @@ Any Gradle command can run inside a Docker image that contains the Android SDK. 
 
 You can see the example project at [https://github.com/codefresh-contrib/android-sample-app](https://github.com/codefresh-contrib/android-sample-app). The repository contains a Hello World Android project with the following tasks:
 
-* `./gradlew test` runs unit tests and
-* `./gradlew build` builds the application.
+* `./gradlew test` runs unit tests
+* `./gradlew build` builds the application
 
 
 ## Create a CI pipeline that compiles/releases Android

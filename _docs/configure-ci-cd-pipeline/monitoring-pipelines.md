@@ -36,8 +36,8 @@ Directly above the list you can find several filters.
 
 At the most basic level you can choose between
 
- * *Running* builds that are currently executing,
- * *Pending* builds which are queued and waiting to start, and 
+ * *Running* builds that are currently executing
+ * *Pending* builds which are queued and waiting to start
  * *All* builds regardless of running stage (this is the default)
 
 You can further filter the builds by choosing the various filter types that specify the build job
@@ -113,7 +113,7 @@ max-width="80%"
 
 Each section in this screen corresponds to each pipeline step. There are two special steps:
 
-* *Initializing Process* and 
+* *Initializing Process* 
 * *Cloning Main Repository*
 
 These are Codefresh built-in steps and will appear for most builds (you can also create a pipeline that doesn't clone a git repository by default). The rest of the step names depend on your `codefresh.yml` (or the default step names provided by Codefresh). The different columns take the names from the defined [pipeline stages]({{site.baseurl}}/docs/codefresh-yaml/stages/).

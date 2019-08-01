@@ -62,16 +62,16 @@ max-width="70%"
 * *Display Name* - any arbitrary name you want to give in this integration.
 * *Password* - password of the user mentioned in the *Distinguished name* field that will be used to search other users.
 * *Server URL* - Codefresh supports both the `ldap` and `ldaps` protocol. You also need a certificate for `ldaps`.
-* *Distinguished name* - The username of the user that will search other users in LDAP notation (combination of `cn`, `ou`,`dc`).
-* *Search Base* - The scope to search other users in LDAP notation.
-* *Certificate* - The security certificate of the LDAP server. Paste the value directly on the field. Do not convert to base64 or any other encoding by hand. Needed only for `ldaps`. Leave the field empty if you use `ldap`.
+* *Distinguished name* - the username of the user that will search other users in LDAP notation (combination of `cn`, `ou`,`dc`).
+* *Search Base* - the scope to search other users in LDAP notation.
+* *Certificate* - the security certificate of the LDAP server. Paste the value directly on the field. Do not convert to base64 or any other encoding by hand. Needed only for `ldaps`. Leave the field empty if you use `ldap`.
 
 Click the *Save* button. LDAP users should now be able to login to Codefresh using LDAP.
 
 Each user that logins into Codefresh must:
 
 1. Have a defined email address in the LDAP server
-1. use an email address that is the same as defined in the LDAP server
-1. use as login information their LDAP email, password and `cn` value of username
+1. Use an email address that is the same as defined in the LDAP server
+1. Use as login information their LDAP email, password and `cn` value of username
 
 

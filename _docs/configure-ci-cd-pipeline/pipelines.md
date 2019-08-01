@@ -40,11 +40,11 @@ max-width="60%"
 
 * Each pipeline can have zero, one or more [triggers]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/). Codefresh supports several kinds of triggers such as Git, Cron or Docker push triggers. Triggers that happen with Git webhooks can come from the same git repository that contains the git code **OR** any other completely different repository. Triggers are the linking medium between a pipeline and a git repository. You can have a pipeline with many triggers so it will be executed when a code happens to any of them.
 
-With these basic building blocks, you can define many complex workflows. In particular, it is very easy in Codefresh to create a scenario where
+With these basic building blocks, you can define many complex workflows. In particular, it is very easy in Codefresh to create a scenario where:
 
-1. a pipeline is launched because a trigger exists for Git repository A,
-1. the pipeline reads its `codefresh.yml` file from Git repository B, and
-1. the pipeline clones source code from Git repository C (and starts packaging/compiling it).
+1. A pipeline is launched because a trigger exists for Git repository A
+1. The pipeline reads its `codefresh.yml` file from Git repository B
+1. The pipeline clones source code from Git repository C (and starts packaging/compiling it)
 
 Of course, it also possible to have a simpler scenario where the trigger, the pipeline steps and the source code of the application are all defined for the same GIT repository.
 
@@ -97,10 +97,10 @@ max-width="60%"
 
 On the top right of the panel you have additional controls:
 
-* the *import* button allows you to bring a `codefresh.yml` from your local workstation into the editor,
-* the *comment* button allows you to quickly comment/uncomment the currently selected text. The hotkey `Ctrl-/` also performs the same action,
-* the *formatting* button enriches the editor with special symbols for line breaks, spaces and tabs. This allows you to easily fix common formatting errors, and 
-* the *copy* button quickly copies the **whole** pipeline text in your clipboard.
+* The *import* button allows you to bring a `codefresh.yml` from your local workstation into the editor
+* The *comment* button allows you to quickly comment/uncomment the currently selected text. The hotkey `Ctrl-/` also performs the same action
+* The *formatting* button enriches the editor with special symbols for line breaks, spaces and tabs. This allows you to easily fix common formatting errors
+* The *copy* button quickly copies the **whole** pipeline text in your clipboard
 
 
 Notice that in the editor you can expand/collapse individual yaml blocks using the arrow triangles on the left of each blocks. The initial pipeline presented in the editor is suggested by Codefresh according to the contents of your Git repository.
@@ -126,8 +126,8 @@ max-width="60%"
 
 You can then select **any** Git repository accessible to you and load the `codefresh.yml` from there. You also setup two additional settings:
 
-* the path of the file inside the repository. This allows you to have special folders for pipeline definitions and
-* the branch of the repository to use for loading the `codefresh.yml` file if you have more than one.
+* The path of the file inside the repository. This allows you to have special folders for pipeline definitions 
+* The branch of the repository to use for loading the `codefresh.yml` file if you have more than one
 
 In the branch drop down you can also choose the option **DYNAMIC**. This will use the same branch as the one mentioned in the trigger event. If for example your pipeline is triggered by a commit in the `staging` branch of the source code, the pipeline definition will also be loaded from the `staging` branch of the git repository that contains the `codefresh.yml` file.
 
@@ -141,15 +141,15 @@ Once you create your pipeline you can also click on the top tab called *Settings
 
 Here you can also see the name and ID of the pipeline (useful information if you want to work with the [Codefresh CLI](https://codefresh-io.github.io/cli/)).
 
-The other options are
+The other options are:
 
-* a freetext pipeline description,
-* one or more tags used for [access control]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/),
-* concurrency limits,
-* build termination settings.
-* the [runtime environment]({{site.baseurl}}/docs/enterprise/behind-the-firewall/) that will run this pipeline,
-* the size of the machine that will run this pipeline (available options depend on your pricing plan), and
-* the [public logs and badges]({{site.baseurl}}/docs/configure-ci-cd-pipeline/build-status/) information which are very useful for open source projects developed with Codefresh.
+* A freetext pipeline description
+* One or more tags used for [access control]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
+* Concurrency limits
+* Build termination settings
+* The [runtime environment]({{site.baseurl}}/docs/enterprise/behind-the-firewall/) that will run this pipeline
+* The size of the machine that will run this pipeline (available options depend on your pricing plan)
+* The [public logs and badges]({{site.baseurl}}/docs/configure-ci-cd-pipeline/build-status/) information which are very useful for open source projects developed with Codefresh
 
 The concurrency limits are very important as they allow you to define how many instances of a pipeline can run in parallel when multiple commits or multiple pull requests take place.
 
@@ -173,17 +173,17 @@ The first setting *Pipeline concurrency* specifies how many builds for this pipe
 The second set of parameters for build termination are useful for pipelines where you commit too fast (i.e. faster then the actual 
 runtime of the pipeline).
 
-Some commong scenarios here are
+Some commong scenarios here are:
 
-* you are interested only on the latest commit of a branch. If pipelines from earlier commits are still running you want to terminate them
-* you don't want for children pipeline to finish (i.e. when a pipeline calls another pipeline), when a new build starts for a parent pipeline.
+* You are interested only on the latest commit of a branch. If pipelines from earlier commits are still running you want to terminate them.
+* You don't want for children pipeline to finish (i.e. when a pipeline calls another pipeline), when a new build starts for a parent pipeline.
 
 These settings are:
 
-* terminate all other builds from the **same** branch when a new commit happens
-* terminate all other builds from a **specific** branch (name matches a regular expression)
-* terminate all other pipeline from a pipeline regardless of branches when a new build starts
-* terminate all children pipelines if the parent is also terminated
+* Terminate all other builds from the **same** branch when a new commit happens
+* Terminate all other builds from a **specific** branch (name matches a regular expression)
+* Terminate all other pipeline from a pipeline regardless of branches when a new build starts
+* Terminate all children pipelines if the parent is also terminated
 
 All these settings allow you to lesser the build instance for pipelines when too many triggers are launched at the same time.
 You will find them very useful in cases where too many developers are performing small commits and builds take a long time to finish (i.e. build takes 10 minutes to finish and developers perform multiple pushes every 2 minutes)

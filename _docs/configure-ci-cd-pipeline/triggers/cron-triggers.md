@@ -95,8 +95,8 @@ From now on, every 20 minutes Codefresh will trigger pipeline execution for 2 pi
 
 The following variables will be available for any Codefresh pipeline linked to a `cron` `trigger-event`:
 
-- `EVENT_MESSAGE` - free text message (specified during creation) and
-- `EVENT_TIMESTAMP` - event timestamp in RFC 3339 format.
+- `EVENT_MESSAGE` - free text message (specified during creation)
+- `EVENT_TIMESTAMP` - event timestamp in RFC 3339 format
 
 ## What to read next
 - [Git triggers]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/) 
