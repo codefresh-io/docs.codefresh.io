@@ -14,6 +14,7 @@ Recent Codefresh updates:
 - Approval steps have now timeouts - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/#automatic-approvalsrejections)
 - Approval steps have now access control - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/#approval-restrictions)
 - Concurrency limits on pipelines - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-settings)
+- Termination setttings on pipelines - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-settings)
 - API keys have now different access scopes - [documentation]({{site.baseurl}}/docs/integrations/codefresh-api/#access-scopes)
 
 ### June 2019

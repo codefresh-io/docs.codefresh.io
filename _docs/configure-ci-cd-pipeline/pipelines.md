@@ -146,6 +146,7 @@ The other options are
 * a freetext pipeline description,
 * one or more tags used for [access control]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/),
 * concurrency limits,
+* build termination settings.
 * the [runtime environment]({{site.baseurl}}/docs/enterprise/behind-the-firewall/) that will run this pipeline,
 * the size of the machine that will run this pipeline (available options depend on your pricing plan), and
 * the [public logs and badges]({{site.baseurl}}/docs/configure-ci-cd-pipeline/build-status/) information which are very useful for open source projects developed with Codefresh.
@@ -167,7 +168,27 @@ Some common scenarios are
 * a pipeline that uses a shared resource such as a database or queue and you want to limit how many pipelines can access it and
 * a pipeline that deploys to a single production environment (in most cases you only want one active pipeline touching production).
 
-You can set these parameters either on the trigger level or on the pipeline level (if the pipeline has multiple triggers defined).
+The first setting *Pipeline concurrency* specifies how many builds for this pipeline can run at any given time. If your pipeline has only one trigger this is the setting that you need to change to enforce concurrency. If your pipeline has multiple triggers then the second setting *Trigger concurrency* allows you to restrict pipeline builds for **each** trigger.
+
+The second set of parameters for build termination are useful for pipelines where you commit too fast (i.e. faster then the actual 
+runtime of the pipeline).
+
+Some commong scenarios here are
+
+* you are interested only on the latest commit of a branch. If pipelines from earlier commits are still running you want to terminate them
+* you don't want for children pipeline to finish (i.e. when a pipeline calls another pipeline), when a new build starts for a parent pipeline.
+
+These settings are:
+
+* terminate all other builds from the **same** branch when a new commit happens
+* terminate all other builds from a **specific** branch (name matches a regular expression)
+* terminate all other pipeline from a pipeline regardless of branches when a new build starts
+* terminate all children pipelines if the parent is also terminated
+
+All these settings allow you to lesser the build instance for pipelines when too many triggers are launched at the same time.
+You will find them very useful in cases where too many developers are performing small commits and builds take a long time to finish (i.e. build takes 10 minutes to finish and developers perform multiple pushes every 2 minutes)
+
+
 
 ## Pipelines that do not belong to any project
 
