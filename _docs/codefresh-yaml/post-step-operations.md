@@ -13,7 +13,8 @@ Post-step operations are a set of optional predefined processes that can be conf
 You may execute post-step operations conditionally, based on the outcome of the step itself.
 
 To execute operations only when the step has completed successfully, use `on_success`:
-  `on_success`
+
+
 {% highlight yaml %}
 step_name:
   ...
@@ -22,7 +23,8 @@ step_name:
 {% endhighlight %}
 
 To execute operations only when the step has failed, use `on_fail`:
-  `on_success`
+
+ 
 {% highlight yaml %}
 step_name:
   ...
@@ -34,7 +36,8 @@ step_name:
 You may execute post-step operations regardless of the outcome of the step itself.
 
 To execute operations regardless of the result, use `on_finish`:
-  `on_finish`
+
+
 {% highlight yaml %}
 step_name:
   ...
