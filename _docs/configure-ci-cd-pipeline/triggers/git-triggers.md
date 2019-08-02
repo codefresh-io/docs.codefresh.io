@@ -223,7 +223,7 @@ steps:
     title: trigger
     image: codefresh/cli
     commands:
-      - 'codefresh run <pipeline_B> -b=${{CF_BRANCH}}'
+      - 'codefresh run <pipeline_B> -b=${{CF_BRANCH}}' -t <pipeline-b-trigger-name>
     when:
       condition:
         all:

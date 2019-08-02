@@ -116,12 +116,12 @@ declared in the UI)
 Triggering a pipeline via the Codefresh CLI
 
 {% highlight bash %}
-codefresh run kostis-codefresh/nestjs-example/ci-build -b master
+codefresh run kostis-codefresh/nestjs-example/ci-build -b master -t nestjs-example-trigger-name
 {% endhighlight %}
 
 You can pass extra environment variables as well:
 {% highlight bash %}
-codefresh run kostis-codefresh/nestjs-example/ci-build -b master -v sample-var1=sample1 -v SAMPLE_VAR2=SAMPLE2
+codefresh run kostis-codefresh/nestjs-example/ci-build -b master -t nestjs-example-trigger-name -v sample-var1=sample1 -v SAMPLE_VAR2=SAMPLE2
 {% endhighlight %}
 
 For the API you can trigger a pipeline by finding its serviceId from the UI
@@ -170,6 +170,8 @@ programmatically in an external manner. This allows you to use your own templati
 and creating them from an external system.
 
 First you need a yaml file that defines the pipeline. This is a pipeline [specification](https://codefresh-io.github.io/cli/pipelines/spec/).
+
+>It is also very to create a a dummy pipeline in the Codefresh Web UI and then get its specification by running `codefresh get pipeline my-project/my-pipeline -o yaml > my-pipeline-spec.yml`
 
 Here is an example
 
@@ -263,7 +265,7 @@ steps:
     title: triggering another pipeline
     image: codefresh/cli
     commands:
-      - 'codefresh run <pipeline_B> -b=${{CF_BRANCH}}'
+      - 'codefresh run <pipeline_B> -b=${{CF_BRANCH}}' -t <pipeline-b-trigger-name>
     when:
       condition:
         all:

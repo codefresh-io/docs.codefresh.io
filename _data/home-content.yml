@@ -202,7 +202,9 @@
   - title: Google Marketplace Installation
     localurl: /docs/integrations/google-marketplace/
   - title: Codefresh API
-    localurl: /docs/integrations/codefresh-api/        
+    localurl: /docs/integrations/codefresh-api/  
+  - title: Codefresh CLI
+    url: http://cli.codefresh.io/          
  
 - title: "Enterprise Features"
   icon: images/home-icons/enterprise1.png
@@ -225,15 +227,7 @@
     new: true
     localurl: /docs/enterprise/audit-logs 
   - title: Codefresh hybrid installation (legacy)
-    localurl: /docs/enterprise/codefresh-hybrid
-- title: "Codefresh CLI"
-  icon: images/home-icons/cli.png
-  url: ''
-  links:
-  - title: Installation
-    url: http://cli.codefresh.io/installation/
-  - title: Reference Documentation
-    url: http://cli.codefresh.io/     
+    localurl: /docs/enterprise/codefresh-hybrid    
 - title: "Incubation"
   icon: images/home-icons/started.png
   url: ''
