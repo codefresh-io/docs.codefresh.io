@@ -7,9 +7,9 @@ toc: true
 
 Codefresh keeps a log of all actions that happen at all times. The log is actually based on API calls that reach Codefresh, so it includes
 
-* GUI actions from users,
-* [CLI](https://codefresh-io.github.io/cli/) invocations, and
-* any [external integrations]({{site.baseurl}}/docs/integrations/codefresh-api/) you are using with Codefresh
+* GUI actions from users
+* [CLI](https://codefresh-io.github.io/cli/) invocations
+* Any [external integrations]({{site.baseurl}}/docs/integrations/codefresh-api/) you are using with Codefresh
 
 The time period offered by audit logs depends on the pricing tier of your Codefresh account.
 

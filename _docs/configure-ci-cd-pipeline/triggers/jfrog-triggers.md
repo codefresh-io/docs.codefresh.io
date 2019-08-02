@@ -16,8 +16,8 @@ This allows you to trigger Codefresh pipelines when a Artifactory event happens 
 
 The process involves two parts:
 
-1. creating a trigger in Codefresh. This will result in a special Codefresh webhook URL, and 
-1. activating the [webhook plugin](https://github.com/jfrog/artifactory-user-plugins/tree/master/webhook) in Artifactory and setting it up to call the Codefresh URL.
+1. Creating a trigger in Codefresh. This will result in a special Codefresh webhook URL
+1. Activating the [webhook plugin](https://github.com/jfrog/artifactory-user-plugins/tree/master/webhook) in Artifactory and setting it up to call the Codefresh URL
 
 Make sure that you have admin access to your Artifactory instance in order to setup its webhook plugin.
 
@@ -67,8 +67,8 @@ Now we must set JFrog Artifactory to call this URL when an event takes place.
 The [webhook functionality](https://github.com/jfrog/artifactory-user-plugins/tree/master/webhook) in JFrog artifactory comes in plugin.
 You can read [detailed documentation](https://www.jfrog.com/confluence/display/RTF/User+Plugins) for JFrog plugins but in summary:
 
-* the file `webhook.groovy` needs to be copied to `ARTIFACTORY_HOME/etc/plugins` (the plugin itself) and
-* a file `webhook.config.json` should also be placed in the same folder (the plugin setup).
+* The file `webhook.groovy` needs to be copied to `ARTIFACTORY_HOME/etc/plugins` (the plugin itself)
+* A file `webhook.config.json` should also be placed in the same folder (the plugin setup)
 
 Here is an example for Codefresh.
 

@@ -68,8 +68,8 @@ you used GitHub when you [created your Codefresh account]({{site.baseurl}}/docs/
 
 For the **Access Token** method you need
 
-* a friendly name for the git context (It can be anything you want.) and
-* an access token.
+* A friendly name for the git context (it can be anything you want)
+* An access token
 
 
 To create an access token, go to your GitHub *settings* and select the *Developer settings* option from the left
@@ -101,8 +101,8 @@ you used Gitlab when you [created your Codefresh account]({{site.baseurl}}/docs/
 
 For the **Access Key** method you need:
 
-* a friendly name for the git context (It can be anything you want.) and
-* an access token/key.
+* A friendly name for the git context (it can be anything you want.)
+* An access token/key
 
 
 To create an access token, go to your Gitlab *settings* and select the *Access tokens* options.
@@ -122,9 +122,9 @@ you used Bitbucket when you [created your Codefresh account]({{site.baseurl}}/do
 
 For the **Application Password** method you need:
 
-* a friendly name for the git context (It can be anything you want.),
-* the name of your Bitbucket account/email address, and 
-* a Bitbucket application password.
+* A friendly name for the git context (It can be anything you want.)
+* The name of your Bitbucket account/email address
+* A Bitbucket application password
 
 To create an application password, go to your *Bitbucket settings* and select *App passwords* from the sidebar.
 Click the button to create one. For more information see the [Bitbucket Documentation page](https://confluence.atlassian.com/bitbucket/app-passwords-828781300.html){:target="_blank"}
@@ -176,11 +176,11 @@ alt="Azure DevOps Token"
 
 From the *Scope* section choose the option *Show all scopes* and choose the following:
 
-* Code - Read
-* Code - Status
-* Graph - Read
-* Project and Team - Read
-* User profile - Read
+* Code - read
+* Code - status
+* Graph - read
+* Project and Team - read
+* User profile - read
 
 Finally click the *Create* button and copy your token (it will never be shown again).
 

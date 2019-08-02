@@ -12,10 +12,10 @@ toc: true
 In this tutorial we will setup a [Continuous Integration](https://en.wikipedia.org/wiki/Continuous_integration) pipeline
 within Codefresh using an example application. You will learn:
 
-* how to connect your Git repository,
-* how to build a Docker image from the source code,
-* how to use the Codefresh internal registry for Docker images, and
-* how to run unit tests for your application
+* How to connect your Git repository
+* How to build a Docker image from the source code
+* How to use the Codefresh internal registry for Docker images
+* How to run unit tests for your application
 
 Codefresh is the fastest way to get from your source code to a Docker image. Codefresh allows you
 to create a Docker image from its friendly UI without any local Docker installation (Docker building as a service).
@@ -30,11 +30,11 @@ example if you prefer (don't forget to write unit tests).
 
 ## Prerequisites for this tutorial
 
-For this tutorial you will need
+For this tutorial you will need:
 
- * a free [GitHub account](https://github.com/join),
- * a free [Codefresh account]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/), 
- * the source code of the sample application, and
+ * A free [GitHub account](https://github.com/join)
+ * A free [Codefresh account]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/)
+ * The source code of the sample application
  * (Optional) an account to a Docker registry (e.g. Dockerhub)
 
  We also assume that you are familiar with Docker and the build/run workflow it supports. Your applications should already come with their own Dockerfiles. If not, then read the [official documentation first](https://docs.docker.com/get-started/). 
@@ -179,7 +179,7 @@ steps:
 This pipeline contains just two steps.
 
 * A [Git clone step]({{site.baseurl}}/docs/codefresh-yaml/variables/) for checking out the code
-* A [Build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) for building the docker image.
+* A [Build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) for building the docker image
 
 The clone step is also using some [built-in pipeline variables]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/). They instruct the pipeline to checkout the exact code that is described from the commit of the trigger. Don't worry if the exact details are not clear to you yet. 
 

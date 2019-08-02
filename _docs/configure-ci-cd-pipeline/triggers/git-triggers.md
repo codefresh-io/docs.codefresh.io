@@ -8,11 +8,11 @@ toc: true
 
 GIT triggers are the most basic types of trigger for performing [Continuous Integration](https://en.wikipedia.org/wiki/Continuous_integration) with Codefresh.
 
-At the trigger level you have the option of selecting
+At the trigger level you have the option of selecting:
 
- * which code repository will be used as a trigger,
- * which branches will be affected by a pipeline, and
- * if a trigger will apply to a Pull Request or not.
+ * Which code repository will be used as a trigger
+ * Which branches will be affected by a pipeline
+ * If a trigger will apply to a Pull Request or not
 
  Note that you can select another repository other than the one the project itself belongs to. It is possible
  to trigger a build on project A even though a commit happened on project B.
@@ -39,10 +39,10 @@ You can select the following information:
 * *Commit Checkbox* - if enabled will trigger this pipeline for any commit.
 * *PR Checkboxes* - various checkboxes for filtering the Pull request event.
 * *Support PR Events From Forks* - useful for opensource projects.
-* *Branch Field* - This is a regular expression and will only trigger for branches that match this naming pattern.
+* *Branch Field* - this is a regular expression and will only trigger for branches that match this naming pattern.
 * *PR Comment Field* - useful for open source projects.
-* *Pull Request Target* branch - This is a regular expression and will trigger only when a Pull request is created against any branch that matches it.
-* *Modified Files* - This allows you to constrain the build and trigger it only if the modified files from the commit match this [glob expression](https://en.wikipedia.org/wiki/Glob_(programming)).
+* *Pull Request Target* branch - this is a regular expression and will trigger only when a Pull request is created against any branch that matches it.
+* *Modified Files* - allows you to constrain the build and trigger it only if the modified files from the commit match this [glob expression](https://en.wikipedia.org/wiki/Glob_(programming)).
 
 {% include image.html
 lightbox="true"
@@ -63,15 +63,15 @@ The PR checkboxes mean that this pipeline will run only on the respective events
 The Pull request target field allows you to trigger this pipeline only when the target of a Pull Request (i.e. where the pr is going to be merged at) matches the
 branch name regular expression. Common examples for branch names would be `master` or `production`.
 
-This field has only meaning when a commit happens in the context of a pull request and in that case
+This field has only meaning when a commit happens in the context of a pull request and in that case:
 
-1. the branch field will look at the branch that the commit is happening on and 
-1. the PR target branch field will look at the branch is the PR is happening against.
+1. The branch field will look at the branch that the commit is happening on 
+1. The PR target branch field will look at the branch is the PR is happening against
 
-For example, if you create a commit on a branch that is named `my-feature` which is currently part of PR against branch `staging` (i.e. somebody wants to merge `my-feature` **TO** `staging`) then
+For example, if you create a commit on a branch that is named `my-feature` which is currently part of PR against branch `staging` (i.e. somebody wants to merge `my-feature` **TO** `staging`) then:
 
-1. the `BRANCH` field value will try to match against `my-feature` and
-1. the `PULL REQUEST TARGET BRANCH` will try to match against `staging`.
+1. The `BRANCH` field value will try to match against `my-feature` 
+1. the `PULL REQUEST TARGET BRANCH` will try to match against `staging`
 
 Here are some more syntax examples:
 
@@ -98,9 +98,9 @@ Therefore, all tags like `tag1`, `tag-X` **won't** trigger the pipeline.
 
 By default, the git trigger will only work for events coming from your personal repository. You can also use triggers from events that are coming from forks. This is a very useful feature for open source projects, as it allows you to run your own unit tests and other checks against a new feature *before* actually merging it in your repo.
 
-To enable this behavior
-* toggle the *support pull request events from forks* switch and 
-* in the *pr comment* field enter a custom string (accepts regex)
+To enable this behavior:
+* Toggle the *support pull request events from forks* switch  
+* In the *pr comment* field enter a custom string (accepts regex)
 
 Then once a contributor creates a fork of your repository and submits a pull request, you can review the code and then add a comment on your own that matches the PR comment expression.
 
@@ -179,10 +179,10 @@ And then in the GIT trigger for each one we set the modified files field to the 
 
 This way as multiple developers work on the git repository only the affected projects will actually build. A change to the NestJS project will *not* build the Rails project as well. Also, if somebody changes *only* the README file and nothing else, no build will be triggered at all (which is a good thing as the source code is exactly the same).
 
-You can also use Glob expressions for files. For example,
+You can also use Glob expressions for files. For example:
 
-*  an expression such `my-subproject/sub-subproject/package.json` will trigger a build **only** if the dependencies of this specific project are changed, and  
-* a pipeline with the expression `my-subproject/**/pom.xml` will trigger only if the Java dependencies for any project that belongs to `my-subproject` actually change. 
+*  An expression such `my-subproject/sub-subproject/package.json` will trigger a build **only** if the dependencies of this specific project are changed
+* A pipeline with the expression `my-subproject/**/pom.xml` will trigger only if the Java dependencies for any project that belongs to `my-subproject` actually change
 
 Glob expressions have many more options not shown here. Visit the [official documentation](https://en.wikipedia.org/wiki/Glob_(programming)) to learn more. You can also use the [Glob Tester web application](http://www.globtester.com/) to test your glob expressions beforehand so that you are certain they match the 
 files you expect them to match.

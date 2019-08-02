@@ -20,8 +20,8 @@ The syntax offered by Codefresh closely follows the syntax for [Docker-compose](
 
 The big difference between the two, is that Codefresh is distinguishing between two kinds of services:
 
-* Composition Services and
-* Composition Candidates.
+* Composition Services
+* Composition Candidates
 
 Composition services are helper services that are needed for the tests to run. These can be a database, a queue, a cache, or the backend docker image of your application.
 
@@ -235,9 +235,9 @@ The `wait-for-it.sh` script will make sure that the Java application is truly up
 
 By default, the services of a composition run in a completely isolated manner. There are several scenarios however where you wish to access your Git files such as:
 
-* using test data that is available in the project folder,
-* preloading a database with a data script found in Git, and
-* running integration tests and then using their [results for reporting]({{site.baseurl}}/docs/testing/test-reports/).
+* Using test data that is available in the project folder
+* Preloading a database with a data script found in Git
+* Running integration tests and then using their [results for reporting]({{site.baseurl}}/docs/testing/test-reports/)
 
 The Codefresh [shared volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) is automatically mounted in [freestyle steps]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) but **NOT** in compositions. You have to mount it yourself if you use that functionality.
 
@@ -282,13 +282,13 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-In this pipeline
+In this pipeline:
 
-1. the first freestyle step writes a simple test file in the shared volume,
-1. the composition starts and both services (`my_sample_service` and `my_unit_tests`) attach the same volume,
-1. the sample service reads from the shared volume (i.e. using test data that was created before),
-1. the sample unit test service writes to the shared volume (emulating test results), and
-1. the last freestyle step reads the file that was written by the composition.
+1. The first freestyle step writes a simple test file in the shared volume.
+1. The composition starts and both services (`my_sample_service` and `my_unit_tests`) attach the same volume.
+1. The sample service reads from the shared volume (i.e. using test data that was created before).
+1. The sample unit test service writes to the shared volume (emulating test results).
+1. The last freestyle step reads the file that was written by the composition.
 
 Therefore, in this pipeline you can see both ways of data sharing, bringing files into a composition and getting results out of it. Notice that we need to mount the shared volume only in the composition services. The freestyle steps automatically mount `/codefresh/volume` on their own.
 
@@ -299,8 +299,8 @@ Therefore, in this pipeline you can see both ways of data sharing, bringing file
 
 Docker compose supports [two kinds of variables in its syntax](https://docs.docker.com/compose/environment-variables/):
 
-* there are environment variables that are used in the docker-compose file itself (`${VAR}` syntax) and
-* there are environment variables that are passed in containers (`environment:` yaml group).
+* There are environment variables that are used in the docker-compose file itself (`${VAR}` syntax).
+* There are environment variables that are passed in containers (`environment:` yaml group).
 
 Codefresh supports both kinds, but notice that variables mentioned in the 
 `composition_variables` yaml group refer to the *first* kind. Any variables defined there are **NOT** passed automatically to containers (use the `environment` yaml group for that purpose).

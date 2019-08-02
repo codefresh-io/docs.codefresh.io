@@ -42,9 +42,9 @@ max-width="50%"
 
 Click on it and you will get a new dialog where you can select
 
- * the branch that will be used for monitoring,
- * the graphical style of the badge (two styles are offered), and
- * the syntax for the badge.
+ * The branch that will be used for monitoring
+ * The graphical style of the badge (two styles are offered)
+ * The syntax for the badge
 
 {% include 
 	image.html 
@@ -57,10 +57,10 @@ Click on it and you will get a new dialog where you can select
 
  The following embedding options are available:
 
- * markdown for usage in text files (e.g. `README.MD`), 
- * plain HTML for normal websites,
- * AsciiDoc for documentation pages, and 
- * image for any other document type
+ * Markdown for usage in text files (e.g. `README.MD`)
+ * Plain HTML for normal websites
+ * AsciiDoc for documentation pages 
+ * Image for any other document type
 
 
 Copy the snippet in your clipboard.

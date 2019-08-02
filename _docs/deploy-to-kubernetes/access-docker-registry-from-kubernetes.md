@@ -34,8 +34,8 @@ This happens by using [Docker registry secrets](https://kubernetes.io/docs/tasks
 Codefresh allows you to create easily pull secrets for your cluster. The first step is to define your Docker registry
 inside Codefresh. It is important to know that
 
-* the [internal Docker registry]({{ site.baseurl }}/docs/docker-registries/codefresh-registry/#use-codefresh-registry-in-codefresh) is managed completely from within Codefresh and
-* [external registries]({{ site.baseurl }}/docs/docker-registries/external-docker-registries/) can also be connected to Codefresh.
+* The [internal Docker registry]({{ site.baseurl }}/docs/docker-registries/codefresh-registry/#use-codefresh-registry-in-codefresh) is managed completely from within Codefresh and
+* [External registries]({{ site.baseurl }}/docs/docker-registries/external-docker-registries/) can also be connected to Codefresh.
 
 Once your Registry is connected to Codefresh, select *Kubernetes* from the left sidebar to view your Kubernetes Dashboard. Then click
 the *Add Service* Button.
@@ -120,8 +120,8 @@ kubectl create secret docker-registry cfcr\
 
 To use the secret you just created, you need to either
 
-* include it in [your pod manifests](https://kubernetes.io/docs/concepts/containers/#specifying-imagepullsecrets-on-a-pod)
-* or include it in [the service account level](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#add-imagepullsecrets-to-a-service-account).
+* Include it in [your pod manifests](https://kubernetes.io/docs/concepts/containers/#specifying-imagepullsecrets-on-a-pod)
+* Include it in [the service account level](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#add-imagepullsecrets-to-a-service-account)
 
 There is nothing specific to Codefresh regarding the usage of Docker registry secrets, and therefore
 following the official Kubernetes documentation is the recommended approach.

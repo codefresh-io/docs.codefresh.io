@@ -37,7 +37,7 @@ caption="Sample pipelines"
 max-width="70%"
 %}
 
-Behind the scenes these pipelines are triggered from different events
+Behind the scenes these pipelines are triggered from different events:
 
 * Pipeline "CI-build" is using a GIT trigger and starts after every commit to the code repository
 * Pipeline "Sonarcloud" is executed every weekend using a cron (timed) trigger

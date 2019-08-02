@@ -13,10 +13,10 @@ Go to your Account Configuration, by clicking on *Account Settings* on the left 
 To configure ECR first select **Amazon ECR** from the new registry drop down
 and then provided the following:
 
-* Registry Name - A unique name for this configuration
-* Access Key ID - AWS accessKeyId
-* Secret Access Key - AWS accessKeyId
-* Region - AWS region
+* Registry Name -  unique name for this configuration.
+* Access Key ID - AWS accessKeyId.
+* Secret Access Key - AWS accessKeyId.
+* Region - AWS region.
 
 {% include image.html lightbox="true" file="/images/artifacts/registry/add-amazon-ecr-registry.png" url="/images/artifacts/registry/add-amazon-ecr-registry.png" alt="Add Amazon EC2 Container Registry" max-width="60%" %}
 

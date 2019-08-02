@@ -25,10 +25,10 @@ Since Docker images for all popular build systems already exist, Codefresh can e
 
 ## Prerequisites for SonarQube integration
 
-Before starting an analysis, you need to make sure that
+Before starting an analysis, you need to make sure that:
 
- * you have an account on your SonarQube instance that can create new projects (and not just view them, Ask your SonarQube administrator if you are not sure about your privileges) and
- * that there is network connectivity between Codefresh and SonarQube (Codefresh needs to communicate with SonarQube in order to send the analysis results, so depending on your installation you might need to contact your network administrator). 
+ * You have an account on your SonarQube instance that can create new projects (and not just view them, Ask your SonarQube administrator if you are not sure about your privileges)
+ * That there is network connectivity between Codefresh and SonarQube (Codefresh needs to communicate with SonarQube in order to send the analysis results, so depending on your installation you might need to contact your network administrator)
 
  SonarQube is also offered as a [Helm Chart](https://github.com/kubernetes/charts/tree/master/stable/sonarqube) so if you already have a Kubernetes cluster defined in Codefresh you can deploy SonarQube there as well. For *demonstration purposes only* it is also very easy to run SonarQube in a Codefresh Swarm demo environment.
 

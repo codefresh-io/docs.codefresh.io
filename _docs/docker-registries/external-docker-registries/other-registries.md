@@ -9,10 +9,10 @@ toc: true
 ---
 To configure some other registry which is not officially provided by Codefresh first select **Other Registries** from the new registry drop down and then provide the following:
 
-* Registry Name - A unique name for this configuration
-* Username - Your registry username
-* Password - Your registry encrypted password
-* Domain - Your registry address e.g. `mydomain.com`
+* Registry Name - a unique name for this configuration.
+* Username - your registry username.
+* Password - your registry encrypted password.
+* Domain - your registry address e.g. `mydomain.com`.
 
 {% include image.html lightbox="true" file="/images/artifacts/registry/add-other-docker-registry.png" url="/images/artifacts/registry/add-other-docker-registry.png" alt="Add Other Registries" max-width="60%" %}
 

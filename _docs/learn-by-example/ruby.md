@@ -62,8 +62,8 @@ Once you have a Dockerfile, [creating a pipeline in Codefresh]({{site.baseurl}}/
 
 A very simple pipeline is one that has only two steps:
 
-1. We build the docker image and 
-1. We run the tests inside the docker image that was just build.
+1. Build the docker image 
+1. Run the tests inside the docker image that was just build
 
 Here is the example [codefresh.yml](https://github.com/codefresh-contrib/ruby-on-rails-sample-app/blob/master/codefresh.yml) file.
 

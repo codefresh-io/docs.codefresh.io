@@ -98,7 +98,7 @@ Codefresh has several other variables that can be used for tagging images. Other
 
 ## More options for push
 
-Codefresh has several more options when it comes to pushing
+Codefresh has several more options when it comes to pushing:
  
 * You can specify multiple tags to be pushed
 * You can use directly ECR registries

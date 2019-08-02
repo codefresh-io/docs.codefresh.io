@@ -10,12 +10,12 @@ toc: true
 
 Codefresh can easily deploy your application to [Docker Swarm](https://docs.docker.com/engine/swarm/) using [Codefresh pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/).
 
-You will need to provide
+You will need to provide:
 
-1. the `docker-stack.yml` that contains the definition of the application,
-1. the host where your Docker Swarm is running,
-1. an SSH key that Codefresh can use to access remotely the Docker Swarm host, and
-1. the stack name that will be used once the application is deployed.
+1. The `docker-stack.yml` that contains the definition of the application
+1. The host where your Docker Swarm is running
+1. An SSH key that Codefresh can use to access remotely the Docker Swarm host
+1. The stack name that will be used once the application is deployed
 
 All this information will be passed to the pipeline in the form of build parameters.
 

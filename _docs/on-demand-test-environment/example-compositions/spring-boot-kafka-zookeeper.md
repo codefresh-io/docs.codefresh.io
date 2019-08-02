@@ -61,8 +61,8 @@ __Broker IDs__
 
 You can configure the broker id in different ways:
 
-1. explicitly, using ```KAFKA_BROKER_ID``` and
-2. via a command, using ```BROKER_ID_COMMAND```, e.g. ```BROKER_ID_COMMAND: "hostname | awk -F'-' '{print $2}'"```
+1. Explicitly, using ```KAFKA_BROKER_ID```
+2. Via a command, using ```BROKER_ID_COMMAND```, e.g. ```BROKER_ID_COMMAND: "hostname | awk -F'-' '{print $2}'"```
 
 If you don't specify a broker id in your docker-compose file, it will automatically be generated (see [https://issues.apache.org/jira/browse/KAFKA-1070](https://issues.apache.org/jira/browse/KAFKA-1070){:target="_blank"}. This allows scaling up and down. In this case it is recommended to use the ```--no-recreate``` option of docker-compose to ensure that containers are not re-created and thus keep their names and ids.
 
@@ -84,8 +84,8 @@ __Advertised hostname__
 
 You can configure the advertised hostname in different ways:
 
-1. explicitly, using ```KAFKA_ADVERTISED_HOST_NAME``` and
-2. via a command, using ```HOSTNAME_COMMAND```, e.g. ```HOSTNAME_COMMAND: "route -n | awk '/UG[ \t]/{print $$2}'"```
+1. Explicitly, using ```KAFKA_ADVERTISED_HOST_NAME```
+2. Via a command, using ```HOSTNAME_COMMAND```, e.g. ```HOSTNAME_COMMAND: "route -n | awk '/UG[ \t]/{print $$2}'"```
 
 When using commands, make sure you review the "Variable Substitution" section in [https://docs.docker.com/compose/compose-file/](https://docs.docker.com/compose/compose-file/){:target="_blank"}
 
@@ -102,7 +102,7 @@ __JMX__
 For monitoring purposes, you may wish to configure JMX. Additional to the standard JMX parameters, problems could arise from the underlying RMI protocol used to connect
 
 * java.rmi.server.hostname - interface to bind listening port.
-* com.sun.management.jmxremote.rmi.port - The port to service RMI requests.
+* com.sun.management.jmxremote.rmi.port - the port to service RMI requests.
 
 For example, to connect to a kafka running locally (assumes exposing port 1099)
 

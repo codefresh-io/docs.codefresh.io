@@ -22,7 +22,7 @@ In order to use Helm in your Codefresh pipeline you must do the following:
 1. Add a Kubernetes cluster enabled with Helm/Tiller
 1. Define a Helm repository or use the one offered by Codefresh to all accounts
 1. Import the Helm configuration in your pipeline variables
-1. Use the `codefresh/cfstep-helm` in your [yml build definition]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/).
+1. Use the `codefresh/cfstep-helm` in your [yml build definition]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
 
 Let's see these steps in order
 

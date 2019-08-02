@@ -23,9 +23,9 @@ Codefresh offers a lot of options when it comes to Kubernetes deployments:
 ## Prerequisites
 
 It is assumed that
-  - you have already [added your K8s cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/) into Codefresh,
-  - you are familiar with [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) and basic [pipeline steps ]({{site.baseurl}}/docs/codefresh-yaml/steps/)and know how to describe it, and
-  - you know how to [integrate your docker registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) with Codefresh.
+  - You have already [added your K8s cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/) into Codefresh
+  - You are familiar with [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) and basic [pipeline steps ]({{site.baseurl}}/docs/codefresh-yaml/steps/)and know how to describe it
+  - You know how to [integrate your docker registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) with Codefresh
   
 ## Build and Push your image
 The following describe a basic Codefresh pipeline scenario to build and push your image to Dockerhub registry.

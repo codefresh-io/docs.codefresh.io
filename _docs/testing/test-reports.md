@@ -17,8 +17,8 @@ Currently Codefresh supports the storage of test reports in [Google buckets](htt
 
 There are two modes for processing test reports in Codefresh:
 
-1. built-in test reporting based in [Allure framework](http://allure.qatools.ru/) and
-1. custom reporting for any static website content (i.e. HTML).
+1. Built-in test reporting based in [Allure framework](http://allure.qatools.ru/) 
+1. Custom reporting for any static website content (i.e. HTML).
 
 Allure is an open source test framework that can produce HTML reports like the following:
 
@@ -224,10 +224,10 @@ Here is an example for a custom reporting via [Mocha](https://mochajs.org/). The
 {% endhighlight %}
 
 The environment variables are:
- * `BUCKET_NAME` the name of the bucket that you created in your cloud provider.
- * `CF_STORAGE_INTEGRATION` the name of the cloud integration as was entered in the Codefresh UI in the cloud storage integration page.
- * `REPORT_DIR` the name of the folder that will be uploaded.
- * `REPORT_INDEX_FILE` the name of file that will serve as index file.
+ * `BUCKET_NAME` is the name of the bucket that you created in your cloud provider.
+ * `CF_STORAGE_INTEGRATION` is the name of the cloud integration as was entered in the Codefresh UI in the cloud storage integration page.
+ * `REPORT_DIR` is the name of the folder that will be uploaded.
+ * `REPORT_INDEX_FILE` is the name of file that will serve as index file.
 
 In the example above we define a non-allure report directory and also which file will serve as the index file. Here is the result:
 
@@ -416,9 +416,9 @@ steps:
 
 If you run this pipeline you will see 
 
-1. the `RunMyUnitTests` will fail but the pipeline will continue,
-1. the `CollectingMyTestresults` step will always run even if tests fail, and
-1. the `MarkMyPipelineStatus` step will mark the whole pipeline as failed.
+1. The `RunMyUnitTests` will fail but the pipeline will continue
+1. The `CollectingMyTestresults` step will always run even if tests fail
+1. The `MarkMyPipelineStatus` step will mark the whole pipeline as failed
 
 ## Running the test reporting step in parallel mode
 

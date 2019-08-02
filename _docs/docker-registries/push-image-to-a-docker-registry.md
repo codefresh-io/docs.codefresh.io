@@ -9,9 +9,9 @@ toc: true
 
 In Codefresh there are several ways that you can use to push Docker images to a registry:
 
-1. by using the graphical pipeline steps as explained in this page
-1. by using the [push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/) in a [YAML pipeline]({{site.baseurl}}/docs/codefresh-yaml/steps/), and
-1. by [promoting]({{site.baseurl}}/docs/docker-registries/codefresh-registry/#promoting-docker-images) an existing image to another registry.
+1. By using the graphical pipeline steps as explained in this page
+1. By using the [push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/) in a [YAML pipeline]({{site.baseurl}}/docs/codefresh-yaml/steps/)
+1. By [promoting]({{site.baseurl}}/docs/docker-registries/codefresh-registry/#promoting-docker-images) an existing image to another registry
 
 > Notice that all successful builds automatically push their image to built-in Codefresh registry. If you use only this internal registry
 all push steps are optional (they are needed only for [external registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/)).

@@ -67,20 +67,20 @@ caption="Codefresh steps directory"
 max-width="80%" 
 %}
 
-Codefresh steps can be 
+Codefresh steps can be:
 
-* private (visible only to you and your team) or public (visible to everybody via the marketplace)
-* official (supported by the Codefresh team) or community based
-* ready for production or still incubating.
+* Private (visible only to you and your team) or public (visible to everybody via the marketplace)
+* Official (supported by the Codefresh team) or community based
+* Ready for production or still incubating.
 
 You can use any your pipelines any of the public steps already in the marketplace, any steps created by your team and any steps that you create for yourself.
 
 ## Using custom pipeline steps
 
-When you create a pipeline, you will have access to two categories of steps
+When you create a pipeline, you will have access to two categories of steps:
 
-* public steps that exist in the marketplace.
-* steps that you or your team have created (visible only to you)
+* Public steps that exist in the marketplace
+* Steps that you or your team have created (visible only to you)
 
 {% include 
 image.html 
@@ -96,11 +96,11 @@ To use a step, first click on the pipeline section where you want to insert the 
 You will get a new dialog with all the details of the step along with a live preview of the exact
 [yaml]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) that will be inserted in your pipeline.
 
-For all steps you can define
+For all steps you can define:
 
 * The title of the text (which will also be visible in the pipeline UI)
 * A freetext description 
-* The [stage]({{site.baseurl}}/docs/codefresh-yaml/stages/) that will contain the step.
+* The [stage]({{site.baseurl}}/docs/codefresh-yaml/stages/) that will contain the step
 
 The rest of the fields are specific to each step. See the documentation of each step in order to understand what each field should contain. There are fields for each step that are marked as required and are essential for the step to work. These are marked with an asterisk.
 
@@ -108,7 +108,7 @@ Once a step is added to the pipeline, you are fee to change the resulting yaml e
 
 ## Creating your own step
 
-You can use the [Codefresh CLI](https://codefresh-io.github.io/cli/) and more specifically the [step-type resource](https://codefresh-io.github.io/cli/steps/) to create your own step. Each Codefresh step is composed from two parts.
+You can use the [Codefresh CLI](https://codefresh-io.github.io/cli/) and more specifically the [step-type resource](https://codefresh-io.github.io/cli/steps/) to create your own step. Each Codefresh step is composed from two parts:
 
 1. The step description in the special yaml syntax for describing Codefresh steps
 1. A Docker images that implements the step (optional)
@@ -213,11 +213,11 @@ spec:
 {% endraw %}
 {% endhighlight %}
 
-For each step you define the following sections
+For each step you define the following sections:
 
-* metadata to describe the characteristics of the step
-* the description of its arguments
-* the implementation (i.e. what yaml gets inserted in the pipeline)
+* Metadata to describe the characteristics of the step
+* The description of its arguments
+* The implementation (i.e. what yaml gets inserted in the pipeline)
 
 For the metadata section note the following:
 
@@ -225,7 +225,7 @@ For the metadata section note the following:
 * The `name` of the step must be prefixed with your Codefresh username. Steps created by the Codefresh team are on the root level of the hierarchy (without prefix). This is the same pattern that Dockerhub is using for images.
 * `stage` shown if this step is ready for production or still incubating. This is just an indication to users. It doesn't affect the implementation of the step in any way
 * `icon`. Ideally you provide a transparent svg so that the icon is scalable. The icon for a step is used both in the marketplace as well as the pipeline view. You can also select a default background to be used. Alternatively, you can define jpg/png icons for large/medium/small sizes. We suggest the svg approach
-* the `examples` section will be shown in the marketplace as documentation for your step
+* The `examples` section will be shown in the marketplace as documentation for your step
 
 For the argument section we follow the [JSON Schema](http://json-schema.org/learn/miscellaneous-examples.html). You can use the [Schema generator](https://jsonschema.net/) to easily create a schema. Currently only the inputs for a step are modelled inside the step definition.
 

@@ -21,10 +21,10 @@ Click the *enable* button on the "Admin user" section. Change the username (opti
 
 Then in the integration page in Codefresh, select **Other Registries** from the new registry drop down and then provide the following
 
-* Registry Name - A unique name for this configuration
-* Username - Your Azure Registry username
-* Password - Your Azure Registry password
-* Domain - `<registry_name>.azure.io`
+* Registry Name - a unique name for this configuration.
+* Username - your Azure Registry username.
+* Password - your Azure Registry password.
+* Domain - `<registry_name>.azure.io`.
 
 {% include image.html 
 	lightbox="true" 
