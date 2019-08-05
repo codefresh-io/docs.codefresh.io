@@ -1,0 +1,48 @@
+---
+title: "Deprecation of Personal Git integrations"
+description: "Moving git integrations to accounts instead of individual users"
+group: troubleshooting
+toc: true
+---
+
+
+Codefresh supports several git providers (Github, Gitlab, Bitbucket etc.) via the [Git integration page]({{site.baseurl}}/docs/integrations/git-providers/) that allows you to define a connection to the respective git provider. Signing up with Codefresh typically requires you to use a Git provider for your basic information (and in the past, an automatic integration was created with the git provider that you used during initial sign-up).
+
+
+At Codefresh, a single user [can belong to]({{site.baseurl}}/docs/enterprise/ent-account-mng/) multiple *Accounts* (think Github organizations). Typically a Codefresh user represents a single person while an *Account* represents a company or team.
+
+Until August 2019 Codefresh allowed you to create a git integration either at the account level or at the user level. This has been problematic with several customer scenarios.
+
+## The problem of personal Git integrations
+
+While on paper the flexibility of adding Git integrations in different levels (account or user) looks good, in practice it has been very confusing for users/customers
+
+* Several people create both a personal account with Codefresh (e.g. with a Gmail address) and a company account and then are confused when trying to use
+them at the same time 
+* People created pipelines on a company account, then left the company, leaving behind them repositories that were not available any more (because they were created with a personal git connection)
+* People use the wrong access scopes and privileges on personal vs company git integrations, mixing the two and getting several errors and no-access warnings
+* People were trying to create a company git integration and created a personal one by mistake without understanding the impact of such decision.
+
+These problems were exacerbated with the introduction of [explicit clone steps]({{site.baseurl}}/docs/troubleshooting/git-step-migration/).
+
+To this end, personal git providers (i.e. git integration tied to a person instead of an *account*/company) were deprecated in August 2019. This change makes Git integrations much more consistent, especially for people that work within a company organization.
+
+
+
+
+## How to migrate your Git integration and move away from a personal Git provider
+
+>Note that if you created a Codefresh account in August 2019 and later, there is nothing to do. Your account doesn't have a personal git provider any more. No action is needed on your part.
+
+First of all for all existing [pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/):
+
+* make sure that they have an [explicit git clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)
+* the git clone step has an explicit `git` property that defines the provider (do not leave empty this property )
+* the `git` provider has an actual value and not `CF-default`. This value used to represent the personal git provider of a user and is now deprecated. Use the name of an actual git integration as is defined in the [providers page]({{site.baseurl}}/docs/integrations/git-providers/)
+
+Make sure that you have at least one Git integration defined in your account (if until now you only used the implicit one that was created when you signed-up with Codefresh)
+
+Once that is done, contact Codefresh via intercom or email, and we can take care of automatic migration of all your existing [triggers]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/) that exist in pipelines that are still using a personal Git provider.
+
+
+

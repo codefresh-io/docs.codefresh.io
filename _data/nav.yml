@@ -429,6 +429,8 @@
           url: "/failed-to-get-accounts-clusters-during-workflow"
     - title: Git step migration
       url: "/git-step-migration"
+    - title: Personal Git Deprecation
+      url: "/personal-git-deprecation"   
 - title: Whats new?
   url: "/whats-new"
   pages:
