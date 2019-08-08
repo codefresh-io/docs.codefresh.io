@@ -9,7 +9,27 @@ toc: true
 
 Intro
 
-## First paragraph
+## How Codefresh builders work
+
+### Choosing tools as Docker images
+
+### Multiple tool versions
+
+## Sharing data in pipelines
+
+### Using the shared volume
+
+### Build caching
+
+### Uploading and Downloading artifacts
+
+## Creating reusable steps
+
+### Reusing steps in a pipeline
+
+### Reusing steps in a team
+
+### Reusing open-source steps
 
 
 
