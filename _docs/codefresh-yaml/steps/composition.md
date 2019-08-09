@@ -84,6 +84,7 @@ step_name:
 | `stage`                              | Parent group of this step. See [using stages]({{site.baseurl}}/docs/codefresh-yaml/stages/) for more information.                                                                                                                                                                                          | Optional                  |
 | `working_directory`                        | The directory in which to search for the composition file. It can be an explicit path in the container's file system, or a variable that references another step. The default is {% raw %}`${{main_clone}}`{% endraw %}. Note that this is completely different from `working_dir` which is on the service level.             | Default                   |
 | `composition`                              | The composition you want to run. It can be an inline YAML definition, a path to a composition file on the file system, or the logical name of a composition stored in the Codefresh system. We support most features of [Docker compose version 2.0](https://docs.docker.com/compose/compose-file/compose-file-v2/) and [3.0](https://docs.docker.com/compose/compose-file/)                                            | Required                  |
+| `version`                              | Version for docker compose. Use `2` or `3`                                          | Required                  |
 | `composition_candidates`                   | The definition of the service to monitor. Each candidate has a **single** `command` parameter that decides what will be tested.                                                                                                                                                                                              | Required                  |
 | `environment` (service level)                             | environment that will be accessible to the container                                                                                                                                                                                     | Optional                  |
 | `working_dir` (service level)                             | defines the working directory that will be used in a service before running a command. By default it is defined by the docker image that is used by the service.                                                                                                                             | Optional                  |
@@ -181,7 +182,7 @@ steps:
           image: ${{build_step}}
           links:
             - db
-            command: bash -c 'sleep 30 && MYSQL_ROOT_PASSWORD=admin MYSQL_USER=my_user MYSQL_HOST=db MYSQL_PASSWORD=admin MYSQL_DATABASE=nodejs npm test'
+          command: bash -c 'sleep 30 && MYSQL_ROOT_PASSWORD=admin MYSQL_USER=my_user MYSQL_HOST=db MYSQL_PASSWORD=admin MYSQL_DATABASE=nodejs npm test'
 {% endraw %}
 {% endhighlight %}
 
