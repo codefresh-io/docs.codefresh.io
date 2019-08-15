@@ -9,7 +9,7 @@ toc: true
 
 When you use Codefresh for Continuous Integration, one of the most basic tasks is compiling and packaging applications. Even though Codefresh has native support for Docker artifacts, it still works great with traditional (non-dockerized) applications that don't use a Dockerfile for the actual build.
 
-## How Codefresh build machines work
+## Using Docker as a CI/CD environment
 
 Unlike other CI solutions that you might be familiar with, Codefresh builders are very simple. They have only Docker installed and nothing else. When you run a Codefresh pipeline you choose a Docker image that will be used as a CI/CD environment. Once the pipeline runs, the Docker image is automatically launched by Codefresh and thus you have access to all the tools that it contains. Once the pipeline finishes, all Docker images that were used for the pipeline are discarded and the build machine reverts back to the original state.
 
@@ -21,7 +21,7 @@ This approach has a lot of advantages:
  * You can use different versions of the same tool in the same pipeline
  * It is very easy to upgrade a tool to a new version (just change the tag of the Docker container used)
 
-### Choosing tools as Docker images
+### Choosing programming tools as Docker images
 
 In practice this means that if you have a Node application, you need to use a Node image to package your application, a Maven image if you are working with a Java, a Python image for python applications and so on. You launch the image using the Codefresh freestyle step. Here is an example for Node:
 
@@ -89,6 +89,87 @@ Unlike other CI solutions, you don't need to wait for the Codefresh team to add 
 
 ### Multiple tool versions
 
+The corollary to docker based pipelines is that you can use the same tool but with a different version in the **same** pipeline.
+As an example here is a pipeline that runs both Python 2.x and Python 3.x in the same pipeline and it just works.
+
+`codefresh.yml`
+{% highlight yaml %}
+version: '1.0'
+steps:
+  my_bazel_app:
+    title: Running a Bazel build
+    image: gcr.io/my-registry/bazel
+    commands:
+     - bazel build //:MyProject
+  my_jar_compilation:
+    title: Running Mocha Test
+    image: r.cfcr.io/kostis-codefresh/my-jasmine-runner:1.0.1 
+    commands:
+     - jasmine init
+{% endhighlight %}
+
+This means that you can easily choose the specific version that matches each of your projects. Here is another example
+where two different applications use Node.js 11 and Node.js 9 in the same pipeline.
+
+`codefresh.yml`
+{% highlight yaml %}
+version: '1.0'
+stages:
+ - packaging
+ - deploying
+steps:
+  PackageMyNode1App:
+    title: Packaging Node application 1
+    stage: packaging
+    image: node:11.1
+    working_directory: ./brand-new-project
+    commands:
+      - echo "My Node version is"
+      - node --version
+      #- npm install
+  PackageMyNode2App:
+    title: Packaging Node application 2
+    stage: packaging
+    image: node:9.3.0-slim
+    working_directory: ./legacy-project
+    commands:
+      - echo "My Node version is"
+      - node --version
+      #- npm install  
+{% endhighlight %}
+
+Notice that these versions are per pipeline. So you can have each team using the versions they like for their projects
+without affecting each other.
+
+So one team in your company might use terraform 0.10 in their pipelines
+
+
+{% highlight yaml %}
+  PlanWithTerraform:
+    image: hashicorp/terraform:0.10.0
+    title: Deploying Terraform plan
+    stage: deploy
+    commands:
+      - terraform plan
+{% endhighlight %}
+
+...while another team is using terraform 0.12 just by changing the YAML of their codefresh.yml
+
+{% highlight yaml %}
+  DeployWithTerraform:
+    image: hashicorp/terraform:0.12.0
+    title: Deploying Terraform plan
+    stage: deploy
+    commands:
+      - terraform apply -auto-approve 
+{% endhighlight %}
+
+
+In summary, it is very easy to use any version of any programming tool in a Codefresh pipeline without the fear of breaking 
+another unrelated pipeline.
+
+{% comment %} 
+
 ## Sharing data in pipelines
 
 ### Using the shared volume
@@ -104,6 +185,8 @@ Unlike other CI solutions, you don't need to wait for the Codefresh team to add 
 ### Reusing steps in a team
 
 ### Reusing open-source steps
+
+{% endcomment %}
 
 
 
