@@ -96,7 +96,7 @@
 - title: Codefresh YAML
   url: "/codefresh-yaml"
   pages:
-    - title: "Introduction"
+    - title: "Pipeline definition"
       url: "/what-is-the-codefresh-yaml"
     - title: Steps
       url: "/steps"
@@ -119,14 +119,14 @@
           url: "/approval"  
     - title: Stages
       url: "/stages"
-    - title: "Post-Step Operations"
-      url: "/post-step-operations"
     - title: "Variables"
       url: "/variables"  
     - title: "Conditional Execution of Steps"
       url: "/conditional-execution-of-steps"   
     - title: "Working Directories"
       url: "/working-directories"
+    - title: "Post-Step Operations"
+      url: "/post-step-operations"      
     - title: "Parallel steps"
       url: "/advanced-workflows"
     - title: "Expression Condition Syntax"

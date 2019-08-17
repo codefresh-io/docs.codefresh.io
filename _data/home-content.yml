@@ -4,7 +4,7 @@
   links:
   - title: Setup Codefresh Account
     localurl: /docs/getting-started/create-a-codefresh-account/
-  - title: Step by step tutorial
+  - title: Your first CI/CD pipeline
     localurl: /docs/getting-started/create-a-basic-pipeline/
   - title: Invite Collaborators
     localurl: /docs/accounts/invite-your-team-member/
@@ -45,6 +45,7 @@
   - title: Scala
     localurl: /docs/learn-by-example/scala/scala-hello-world/
   - title: Android (Mobile)
+    new: true
     localurl: /docs/learn-by-example/mobile/android/  
   - title: Selenium
     localurl: /docs/learn-by-example/general/selenium-test/       
@@ -52,9 +53,9 @@
   icon: images/home-icons/yaml.png
   url: ''
   links:
-  - title: Introduction to Codefresh Yaml
+  - title: Pipeline definition
     localurl: /docs/codefresh-yaml/what-is-the-codefresh-yaml/
-  - title: Yaml steps
+  - title: Pipeline steps
     localurl: /docs/codefresh-yaml/steps/
   - title: Pipeline stages
     localurl: /docs/codefresh-yaml/stages/   
@@ -62,8 +63,6 @@
     localurl: /docs/codefresh-yaml/variables/
   - title: Step conditions
     localurl: /docs/codefresh-yaml/conditional-execution-of-steps/
-  - title: Working Directories
-    localurl: /docs/codefresh-yaml/working-directories/
   - title: Parallel Pipelines
     localurl: /docs/codefresh-yaml/advanced-workflows/    
   - title: Annotations
