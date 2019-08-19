@@ -222,7 +222,7 @@ For each step you define the following sections:
 For the metadata section note the following:
 
 * `isPublic` decides if this step is visible only to your and your team, or visible to all (in the marketplace)
-* The `name` of the step must be prefixed with your Codefresh username. Steps created by the Codefresh team are on the root level of the hierarchy (without prefix). This is the same pattern that Dockerhub is using for images.
+* The `name` of the step must be prefixed with your Codefresh account name. Steps created by the Codefresh team are on the root level of the hierarchy (without prefix). This is the same pattern that Dockerhub is using for images.
 * `stage` shown if this step is ready for production or still incubating. This is just an indication to users. It doesn't affect the implementation of the step in any way
 * `icon`. Ideally you provide a transparent svg so that the icon is scalable. The icon for a step is used both in the marketplace as well as the pipeline view. You can also select a default background to be used. Alternatively, you can define jpg/png icons for large/medium/small sizes. We suggest the svg approach
 * The `examples` section will be shown in the marketplace as documentation for your step
