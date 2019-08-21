@@ -16,10 +16,10 @@ Codefresh provides a set of predefined variables automatically in each build, th
 
 There are two ways to use a Codefresh variable in your pipelines:
 
-1. By default all variables will be exposed as UNIX environment variables in all freestyle steps as $MY_VARIABLE_EXAMPLE.
+1. By default all variables will be exposed as UNIX environment variables in all freestyle steps as `$MY_VARIABLE_EXAMPLE`.
 1. Variables can be used in YAML properties with the syntax {% raw %}`${{MY_VARIABLE_EXAMPLE}}`{% endraw %}.
 
-> If you are unsure about which form you need to use, feel free to use {% raw %}`${{MY_VARIABLE_EXAMPLE}}`{% endraw %} everywhere. This is the Codefresh specific form and should function in all section of `codefresh.yml`. 
+> If you are unsure about which form you need to use, feel free to use {% raw %}`${{MY_VARIABLE_EXAMPLE}}`{% endraw %} everywhere. This is the Codefresh specific form and should function in all sections of `codefresh.yml`. 
 
 For example, you can print out the branch as an environment variable like this:
 
