@@ -72,8 +72,8 @@ For the **Access Token** method you need
 * An access token
 
 
-To create an access token, go to your GitHub *settings* and select the *Developer settings* option from the left
-sidebar. The select *Personal access tokens* from the left menu.
+To create an [access token](https://github.com/settings/tokens), go to your GitHub *settings* and select the *Developer settings* option from the left
+sidebar. Then select *Personal access tokens* from the left menu.
 For more information see the [GitHub Documentation page](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/){:target="_blank"}
 
 The "token description" you enter in your GitHub account in order to create the token is completely arbitrary (use "Codefresh" for an example). Once you have the token, paste it in the Codefresh UI and click *Test connection*. If everything is OK, you can
