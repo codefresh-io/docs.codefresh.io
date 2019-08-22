@@ -487,44 +487,23 @@ You can define much more complex conditions using the [Codefresh expression lang
 
 ### Migrating Jenkins credentials
 
-withCredentials(bindings: [sshUserPrivateKey(credentialsId: 'jenkins-ssh-key-for-abc', \
-                                             keyFileVariable: 'SSH_KEY_FOR_ABC', \
-                                             passphraseVariable: '', \
-                                             usernameVariable: '')]) {
-  // some block
-}
+Codefresh contains a central repository for user variables and secrets in the form of [shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/). You can also
+inject variables on a specific project or a specific pipeline.
 
-pipeline {
-    agent {
-        // Define agent details here
-    }
-    environment {
-        AWS_ACCESS_KEY_ID     = credentials('jenkins-aws-secret-key-id')
-        AWS_SECRET_ACCESS_KEY = credentials('jenkins-aws-secret-access-key')
-    }
-    stages {
-        stage('Example stage 1') {
-            steps {
-                // 
-            }
-        }
-        stage('Example stage 2') {
-            steps {
-                // 
-            }
-        }
-    }
-}
+All injected variables *are automatically available to all Codefresh freestyle steps*. You don't need a special syntax or directive to enable this behavior (unlike Jenkins where you have to use a `withCredentials` block or something similar).
 
+In Jenkins you have to explicitly ask for a secret:
+
+  `Jenkinsfile`
+{% highlight groovy %}
+{% raw %}
 pipeline {
     agent any
-    environment { 
-        CC = 'clang'
-    }
     stages {
         stage('Example') {
             environment { 
-                AN_ACCESS_KEY = credentials('my-prefined-secret-text') 
+                  AWS_ACCESS_KEY_ID     = credentials('jenkins-aws-secret-key-id')
+                  AWS_SECRET_ACCESS_KEY = credentials('jenkins-aws-secret-access-key')
             }
             steps {
                 sh 'printenv'
@@ -532,6 +511,64 @@ pipeline {
         }
     }
 }
+{% endraw %}
+{% endhighlight %}
+
+In Codefresh if you setup your variables in the pipeline settings, then the pipeline itself needs nothing special.
+
+{% include image.html 
+lightbox="true" 
+file="/images/integrations/jenkins/pipeline-variables.png" 
+url="/images/integrations/jenkins/pipeline-variables.png" 
+alt="Pipeline variables"
+caption="Pipeline variables" 
+max-width="80%" 
+%}
+
+You can simply run the pipeline on its own:
+
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+steps:
+  my_first_step:
+    title: Example1
+    image: alpine:latest
+    commands:
+     - printenv # Injected variables are always available 
+  my_second_step:
+    title: Example2 
+    image: alpine:latest
+    commands:
+     - echo $AWS_ACCESS_KEY_ID
+     - echo $AWS_SECRET_ACCESS_KEY
+{% endraw %}
+{% endhighlight %}
+
+If you want to use a different name for each variable/secret then you can simply assign them to your desired names:
+
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+steps:
+  my_first_step:
+    title: Example
+    image: alpine:latest
+    environment:
+     - MY_KEY=${{AWS_ACCESS_KEY_ID}}
+     - MY_ACCESS_KEY=${{AWS_SECRET_ACCESS_KEY}}
+    commands:
+     - echo $MY_KEY
+     - echo $MY_ACCESS_KEY
+{% endraw %}
+{% endhighlight %}
+
+In the example above,  even though the secrets are already available as environment variables `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`, we instead pass them to the pipeline step as `MY_KEY` and `MY_ACCESS_KEY`.
+
+
+
 
 ### Migrating Jenkins shared libraries
 
