@@ -568,13 +568,35 @@ steps:
 In the example above,  even though the secrets are already available as environment variables `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`, we instead pass them to the pipeline step as `MY_KEY` and `MY_ACCESS_KEY`.
 
 
-
-
 ### Migrating Jenkins shared libraries
 
+Creating a Jenkins shared library has a lot of challenged
+
+* The library must be written in Groovy/Java
+* The library must use the Jenkins API
+* It is very hard to write unit tests for it
+* Installing it requires admin access in the Jenkins master
+
+Codefresh plugins on the other hand are just Docker images written in any programming language. 
+
+First of all look at [Dockerhub](https://hub.docker.com/) and see it there is already a utility or CLI that has the same functionality with your 
+shared library. Codefresh also has a [free marketplace](https://steps.codefresh.io/) for pipeline steps (which are Docker images essentially).
+
+As a last resort you need to rewrite your shared library and convert it to a Docker image. The process is the following
+
+1. Start from a base image that contains Groovy and any other tool you need
+1. Convert your sharer library to a single Groovy executable that reads input from environment variables and/or files and writes output data to files
+1. Remove all Jenkins specific APIs
+1. Package the image with a simple Dockerfile that just compiles your executable.
+
+Note that there is nothing Codefresh specific to the end-result. You should end up with a standard Docker image that would be usable in a any environment that has Docker installed.
+
+Once you have that image you can use it like any other Codefresh freestyle step as described in the previous section.
+
+### Migration of Jenkins pipelines that create Docker images
 
 
-### Migration Jenkins Kubernetes deployments
+### Migration of Jenkins pipelines that deploy to Kubernetes
 
 withDockerRegistry
 
