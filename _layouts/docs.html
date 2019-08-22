@@ -36,6 +36,13 @@ layout: compress
 
         <main class="col-12 col-md-8 {% if page.toc == true %}col-xl-8 col-xxl-8{% else %}col-xl-10 col-xxl-10{% endif%} py-3 pl-3 bd-content" role="main">
           <div class="bd-content-inner py-md-3 pl-4 pl-md-5 pr-4 pr-md-5">
+            <div class="bd-improve-link">
+              {% if page.url contains '/docs/' %}
+                {% assign url_size = page.url | size | minus: 1 %}
+                {% capture edit_url %}https://github.com/codefresh-io/docs.codefresh.io/edit/master/_docs/{{ page.url | slice: 0, url_size | replace: '/docs/', ''  }}.md{% endcapture %}
+                <a href="{{ edit_url }}" target="_blank">Improve this page on GitHub</a>
+              {% endif %}
+            </div>
             <h1 class="bd-title" id="content">{{ page.title | smartify }}</h1>
             <p class="bd-lead">{{ page.description | smartify }}</p>
             {{ content }}
