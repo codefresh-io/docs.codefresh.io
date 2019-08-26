@@ -192,7 +192,7 @@
   links:
   - title: GIT integration
     localurl: /docs/integrations/git-providers/
-  - title: Jenkins integration
+  - title: Jenkins integration/migration
     localurl: /docs/integrations/jenkins-integration/
   - title: Slack integration
     localurl: /docs/integrations/notifications/slack-integration/
