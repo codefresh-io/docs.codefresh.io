@@ -601,10 +601,15 @@ Codefresh has native support for
 1. Running commands inside Docker images
 1. Pushing Docker images to different registries
 
+It is important to understand that each Codefresh account also includes [a free private Docker registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/). So by using Codefresh
+you can start pushing Docker images right away.
+
 If you are using Docker commands directly in your Jenkins file or prefer to take advantage of the scripted
 variant of Docker image management then you can easily convert both approaches to Codefresh YAML like below:
 
 #### Building Docker images
+
+The most basic Docker operation is building an image. You will need a Dockerfile and a directory to use as build context (usually the same folder that contains the Dockerfile).
 
 `docker command`
 ```
@@ -788,7 +793,7 @@ steps:
   main_clone:
     type: "git-clone"
     description: "Clone repository"
-    repo: "nodegui/react-nodegui"
+    repo: "my-account/my-git-repo"
     revision: "${{CF_BRANCH}}"
     git: github
   my_first_step:
@@ -818,8 +823,41 @@ is followed with Kubernetes deployments as we will see in the next section.
 
 ### Migration of Jenkins pipelines that deploy to Kubernetes
 
-withDockerRegistry
+Codefresh has first class support for Kubernetes deployments. Codefresh can deploy on its own [using different options]({{site.baseurl}}/docs/deploy-to-kubernetes/deployment-options-to-kubernetes/) and no external tools (i.e. Ansible or `kubectl`) are needed.
 
+Specifically for [Kubernetes]({{site.baseurl}}/docs/deploy-to-kubernetes/deployment-options-to-kubernetes/) and [Helm]({{site.baseurl}}/docs/new-helm/using-helm-in-codefresh-pipeline/) Codefresh has declarative pipeline steps:
+
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+steps:
+  RunningDeploy:
+    title: Kubernetes Deployment
+    type: deploy
+    kind: kubernetes
+    cluster: myDemoGKEcluster
+    namespace: production 
+    service: my-service
+    candidate:
+      image: 'my-app-image:1.0.1'
+      registry: 'dockerhub'
+  DeployMyChart:
+    image: 'codefresh/cfstep-helm:2.9.1'
+    environment:
+    - CHART_REF=charts/python
+    - RELEASE_NAME=mypython-chart-prod
+    - KUBE_CONTEXT=myDemoAKSCluster    
+{% endraw %}
+{% endhighlight %}
+
+As with Docker registries (described in the previous section) Codefresh makes available to all pipelines all [added Kubernetes clusters]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/). You don't need any special plugin or directive (such as `withKubeConfig`) to work with Kubernetes clusters in Codefresh. You can see that the Codefresh pipeline simply mentions Kubernetes clusters and registries without any credential information.
+
+Of course it is also very easy to convert any existing Jenkins pipeline by just using any image that contains the `kubectl` executable.
+
+  `Jenkinsfile`
+{% highlight groovy %}
+{% raw %}
 node {
   stage('Apply Kubernetes files') {
     withKubeConfig([credentialsId: 'user1', serverUrl: 'https://api.k8s.my-company.com']) {
@@ -827,19 +865,35 @@ node {
     }
   }
 }
+{% endraw %}
+{% endhighlight %}
 
-agent {
-    // Equivalent to "docker build -f Dockerfile.build --build-arg version=1.0.2 ./build/
-    dockerfile {
-        filename 'Dockerfile.build'
-        dir 'build'
-        label 'my-defined-label'
-        additionalBuildArgs  '--build-arg version=1.0.2'
-        args '-v /tmp:/tmp'
-    }
-}
+Codefresh will automatically setup Kube config access to the pipeline behind the scenes. Zero configuration is needed for this behavior.
 
 
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+steps:
+  MyCustomKubectlCommands:
+    title: Running Kubectl
+    image: codefresh/kubectl
+    commands: 
+      - kubectl config use-context "my-k8s-my-company"
+      - kubectl apply -f my-kubernetes-directory
+{% endraw %}
+{% endhighlight %}
+
+Once you use Codefresh for your deployments you also get access to:
+
+* The [Kubernetes Dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/)
+* A free [built-in Helm repository]({{site.baseurl}}/docs/new-helm/managed-helm-repository/) with each Codefresh account.
+* The [Helm chart dashboard]({{site.baseurl}}/docs/new-helm/add-helm-repository/).
+* The [Helm Release dashboard]({{site.baseurl}}/docs/new-helm/helm-releases-management/).
+* The [Helm environment dashboard]({{site.baseurl}}/docs/new-helm/helm-environment-promotion/).
+
+For some easy templating see also the [cf-deploy]({{site.baseurl}}/deploy-to-kubernetes/kubernetes-templating/) plugin.
 
 ## What to read next
 
