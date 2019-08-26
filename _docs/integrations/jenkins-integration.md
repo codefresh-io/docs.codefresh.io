@@ -1,5 +1,5 @@
 ---
-title: "Jenkins Integration"
+title: "Jenkins Integration/Migration"
 description: "Migration from Jenkins to Codefresh"
 group: integrations
 redirect_from:
@@ -595,7 +595,7 @@ Once you have that image you can use it like any other Codefresh freestyle step 
 
 ### Migration of Jenkins pipelines that create Docker images
 
-Codefresh has native support for 
+Codefresh has native support for:
 
 1. Building docker images
 1. Running commands inside Docker images
