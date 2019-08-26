@@ -595,6 +595,226 @@ Once you have that image you can use it like any other Codefresh freestyle step 
 
 ### Migration of Jenkins pipelines that create Docker images
 
+Codefresh has native support for 
+
+1. Building docker images
+1. Running commands inside Docker images
+1. Pushing Docker images to different registries
+
+If you are using Docker commands directly in your Jenkins file or prefer to take advantage of the scripted
+variant of Docker image management then you can easily convert both approaches to Codefresh YAML like below:
+
+#### Building Docker images
+
+`docker command`
+```
+docker build . -t my-app-image:1.0.1
+```
+
+or if you use Jenkins scripted pipelines
+
+  `Jenkinsfile`
+{% highlight groovy %}
+{% raw %}
+node {
+    docker.build("my-app-image:1.0.1") 
+    docker.build("test-image", "./tests") 
+}
+{% endraw %}
+{% endhighlight %}
+
+will become in Codefresh the following [build steps]({{site.baseurl}}/docs/codefresh-yaml/steps/build/).
+
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+steps:
+  my_first_step:
+    title: Building My App image
+    type: build
+    image: my-app-image
+    tag: 1.0.1
+  my_second_step:
+    title: Building My Test image
+    type: build
+    image: test-image
+    working_directory: "./tests"
+{% endraw %}
+{% endhighlight %}
+
+#### Running commands in created containers
+
+Several times you want to run commands inside a docker image. Either to have access to specialized tools or to run tests.
+
+`docker command`
+```
+docker build . -t my-app-image:1.0.1
+docker run my-app-image:1.0.1 npm install
+```
+
+or if you use Jenkins scripted pipelines
+
+  `Jenkinsfile`
+{% highlight groovy %}
+{% raw %}
+node {
+    def customImage = docker.build("my-app-image:1.0.1")
+
+    customImage.inside {
+        sh 'npm install'
+    }
+}
+{% endraw %}
+{% endhighlight %}
+
+will become in Codefresh the following [freestyle steps]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/).
+
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+steps:
+  my_first_step:
+    title: Building My App image
+    type: build
+    image: my-app-image
+    tag: 1.0.1
+  my_second_step:
+    title: Install Node dependencies
+    image: ${{my_first_step}}
+    commands:
+      - npm install
+{% endraw %}
+{% endhighlight %}
+
+Notice that the second pipeline step actually mentions the first one by name as a running context.
+
+#### Pushing Docker images
+
+Notice that in Codefresh [all connected registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) are automatically available to all pipelines.
+You don't need special directives such as `withRegistry`. All registries can be mentioned
+by their name in any push step (and will be used automatically for pulls when an image uses their domain).
+
+`docker command`
+```
+docker build . -t my-app-image:1.0.1
+docker tag my-app-image:1.0.1 registry.example.com/my-app-image:1.0.1
+docker push registry.example.com/my-app-image:1.0.1
+```
+
+or if you use Jenkins scripted pipelines
+
+  `Jenkinsfile`
+{% highlight groovy %}
+{% raw %}
+node {
+    def customImage = docker.build("my-app-image:1.0.1")
+
+    docker.withRegistry('https://registry.example.com', 'example-registry-credentials') {
+            customImage.push("1.0.1")
+            customImage.push("latest")
+        }
+}
+{% endraw %}
+{% endhighlight %}
+
+will become in Codefresh the following [push steps]({{site.baseurl}}/docs/codefresh-yaml/steps/push/).
+
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+steps:
+  my_first_step:
+    title: Building My App image
+    type: build
+    image: my-app-image
+    tag: 1.0.1
+  my_second_step:
+    title: Pushing image
+    type: push
+    candidate: ${{my_first_step}}
+    tags: 
+    - 1.0.1
+    - latest
+    registry: example-registry
+{% endraw %}
+{% endhighlight %}
+
+Notice again that the second step pushes the image created by the first one.
+
+##### Complete Docker pipeline
+
+Here is a full example with a pipeline that builds an image, runs tests and pushes it to Dockerhub.
+
+  `Jenkinsfile`
+{% highlight groovy %}
+{% raw %}
+node {
+    def app
+
+    stage('Clone repository') {
+        checkout scm
+    }
+
+    stage('Build image') {
+        app = docker.build("my-app-image:1.0.1")
+    }
+
+    stage('Test image') {
+        app.inside {
+            sh 'npm run test'
+        }
+    }
+
+    stage('Push image') {
+        docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
+            app.push("1.0.1")
+            app.push("latest")
+        }
+    }
+}
+{% endraw %}
+{% endhighlight %}
+
+Here is the same pipeline in Codefresh
+
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+steps:
+  main_clone:
+    type: "git-clone"
+    description: "Clone repository"
+    repo: "nodegui/react-nodegui"
+    revision: "${{CF_BRANCH}}"
+    git: github
+  my_first_step:
+    title: Build image
+    type: build
+    image: my-app-image
+    tag: 1.0.1
+  my_second_step:
+    title: Test image
+    image: ${{my_first_step}}
+    commands:
+      - npm run test
+  my_third_step:
+    title: Push image
+    type: push
+    candidate: ${{my_first_step}}
+    tags:
+    - 1.0.1
+    - latest
+    registry: dockerhub
+{% endraw %}
+{% endhighlight %}
+
+Notice that Codefresh has much more context regarding docker registries and credentials. The same approach 
+is followed with Kubernetes deployments as we will see in the next section.
+
 
 ### Migration of Jenkins pipelines that deploy to Kubernetes
 
