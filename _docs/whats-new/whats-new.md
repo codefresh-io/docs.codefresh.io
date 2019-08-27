@@ -11,6 +11,7 @@ Recent Codefresh updates:
 ### August 2019
 
 - Personal Git providers are deprecated - [documentation]({{site.baseurl}}/docs/troubleshooting/personal-git-deprecation/)
+- Migrate from Jenkins to Codefresh - [documentation]({{site.baseurl}}/docs/integrations/jenkins-integration/#migrating-from-jenkins-to-codefresh)
 
 ### July 2019
 
