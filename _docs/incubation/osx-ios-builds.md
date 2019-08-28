@@ -1,6 +1,6 @@
 ---
 title: "MacOSX and iOS builds"
-description: "Using Codefresh for Mac/iPhone application"
+description: "Using Codefresh for Mac/iPhone applications"
 group: incubation
 toc: true
 ---
