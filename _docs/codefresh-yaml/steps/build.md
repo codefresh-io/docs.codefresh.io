@@ -200,15 +200,16 @@ All images built successfully with the build step, will be automatically pushed 
 
 ## Buildkit support
 
-Codefresh also allows you to use [builkit](https://github.com/moby/buildkit) with all its [enhancements](https://docs.docker.com/develop/develop-images/build_enhancements/).
+Codefresh also allows you to use [builkit](https://github.com/moby/buildkit) with all its [enhancements](https://docs.docker.com/develop/develop-images/build_enhancements/) and [experimental features](https://github.com/moby/buildkit/blob/master/frontend/dockerfile/docs/experimental.md#experimental-syntaxes).
 
 Using buildkit you can get:
 
 * Improved build output logs
 * Mounting of external secrets that will never be stored in the image
 * Access to SSH keys and sockets from within the Dockerfile
+* Use cache and bind-mounts at build time
 
-These capabilities are offered as extra arguments in the build step and using any of them will automatically enable buildkit. 
+These capabilities are offered as extra arguments in the build step and using any of them will automatically enable buildkit. You can utilize the different mount-options for the Dockerfile instruction `RUN` as long as buildkit is enabled for your build step. Mounts of type [`cache`](https://github.com/moby/buildkit/blob/master/frontend/dockerfile/docs/experimental.md#example-cache-go-packages) work out of the box and are persisted between pipeline runs.
 
 The simplest way to use buildkit is by enabling it explicitly:
 
@@ -298,6 +299,32 @@ steps:
       - github=~/.ssh/github_rsa
       - bitbucket=~/.ssh/bitbucket_rsa
 {% endhighlight %}
+
+You might want to use an environment variable to store and retrieve a ssh key. This can be achieved by converting you ssh key into a one-line string:
+```
+tr '\n' ',' < /path/to/id_rsa
+```
+
+Copy the output and place it an [environment variable]({{site.baseurl}}/docs/codefresh-yaml/variables/#user-provided-variables). To make the SSH key availabe to the build step, you can write it to the codefresh volume:
+`codefresh.yml`
+{% highlight yaml %}
+version: '1.0'
+steps:
+  SetupSshKeys:
+    title: Setting up ssh key
+    image: alpine:latest
+    stage: build
+    commands:
+      - echo "${SSH_KEY}" | tr  ',' '\n' > "${{CF_VOLUME_PATH}}/github_rsa"
+
+  BuildMyImage:
+    title: Building My Docker image
+    image_name: my-app-image
+    type: build
+    ssh:
+      - github=~/.ssh/github_rsa
+{% endhighlight %}
+
 
 You can combine all options (`ssh`, `progress`, `secrets`) in a single build step if desired.
 
