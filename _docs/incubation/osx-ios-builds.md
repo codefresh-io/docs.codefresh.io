@@ -11,24 +11,33 @@ Codefresh is offering alpha support for MacOS and/or iOS as a CI/CD environment.
 
 Once approved, you will get access to a special runtime environment environment that will run your MacOS/iOS builds. To use this environment [create a new pipeline]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/) and select it in the pipeline settings screen.
 
-IMAGE here
+{% include 
+image.html 
+lightbox="true" 
+file="/images/incubation/osx-builds/osx-build-settings.png" 
+url="/images/incubation/osx-builds/osx-build-settings.png"
+alt="Running a pipeline on the OSX environment" 
+caption="Running a pipeline on the OSX environment"
+max-width="60%"
+%}
 
-## Building MacOS/iOS application with Codefresh
+The OSX runtime environment has all the necessary tools (e.g. xcode) already installed for your iOS and/or macOS builds.
+
+## Building MacOS/iOS applications with Codefresh
 
 Once you assign the special MacOS runtime to your pipeline, you can write your [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) as usual, keeping in mind the following points
 
 * The git-clone step is available
 * Freestyle steps must use the `freestyle-ssh` type
 * The manual approval step is available
-* All Docker related pipeline steps build, push, deploy, composition are **NOT** available.
+* All Docker-related pipeline steps such build, push, deploy, composition are **NOT** available.
 * Parallel steps are supported
 
 As part of the alpha version the nodes that run your MacOS builds are actual nodes (i.e. not containers), so all changes you make there are permanent (unlike docker based builds, where everything runs in an isolated docker container that is discarded after the build has finished).
 
+## MacOS build pipeline example
 
-## Example for an MacOS build
-
-The [Python sample application](https://github.com/codefresh-contrib/python-flask-sample-app) used in the [quick start guide]({{site.baseurl}}/docs/getting-started/create-a-basic-pipeline/) is based on an official Docker image that already has ARM support.
+You can find a full Codefresh example at [https://github.com/alex-codefresh/osx-demo-webserver](https://github.com/alex-codefresh/osx-demo-webserver).
 
 Create a pipeline for it with the following YAML content:
 
@@ -37,62 +46,52 @@ Create a pipeline for it with the following YAML content:
 {% raw %}
 version: '1.0'
 steps:
-  MyArmDockerImage:
-    title: Building Docker ARM Image
-    type: build
-    image_name: python-flask-sampleapp-arm
-    tag: '${{CF_BRANCH_TAG_NORMALIZED}}'
-    dockerfile: Dockerfile
-  MyUnitTests:
-    title: Running Unit tests
-    image: ${{MyArmDockerImage}}
-    commands: 
-      - uname -a
-      - python setup.py test
+  CloneRepo:
+    type: git-clone
+    repo: alex-codefresh/osx-demo-webserver
+    git: github
+    revision: master
+  
+  RunTests:
+    type: 'freestyle-ssh'
+    working_directory: '${{CloneRepo}}/GCDWebServer'
+    commands:
+      - ./Run-Tests.sh
+    fail_fast: false
+  
+  BuildApp:
+    type: 'freestyle-ssh'
+    working_directory: '${{CloneRepo}}'
+    commands:
+      - xcodebuild -workspace DemoWebServer.xcworkspace -scheme DemoWebServer archive -archivePath build/DemoWebServer.xcarchive | xcpretty
+    
+  RunApp:
+    type: 'freestyle-ssh'
+    working_directory: '${{CloneRepo}}'
+    commands:
+      - killall DemoWebServer 2>/dev/null || echo "No instances currently running, continuing" #just in case there is instance already running
+      - bash -c "build/DemoWebServer.xcarchive/Products/Applications/DemoWebServer.app/Contents/MacOS/DemoWebServer &"
+      - sleep 60
+      - kill $(jobs -p) 2>/dev/null || exit 0
 {% endraw %}
 {% endhighlight %}
 
-This pipeline creates a Docker image for a python application and then runs unit tests inside it.
+This pipeline clones the sample application, builds it with xcode and then runs it. Notice that the run step
+cleans up on its own (because MacOSX builds are not docker based so nothing is cleaned up automatically when the pipeline has finished).
 
-It contains two [steps]({{site.baseurl}}/docs/codefresh-yaml/steps/):
+Notice also that `freestyle-ssh` steps do not define a docker image (unlike normal freestyle steps).
 
-1. A [build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) that reads a Dockerfile and creates a Docker image.
-1. A [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) that runs unit tests.
-
-The logs verify that this is an ARM image:
+The logs will show all build information:
 
 {% include 
 image.html 
 lightbox="true" 
-file="/images/incubation/arm-support/logs-arm.png" 
-url="/images/incubation/arm-support/logs-arm.png"
-alt="Running Unit tests" 
-caption="Running Unit tests"
-max-width="60%"
+file="/images/incubation/osx-builds/osx-pipeline.png" 
+url="/images/incubation/osx-builds/osx-pipeline.png"
+alt="OSX build log" 
+caption="OSX build log"
+max-width="90%"
 %}
 
-Once the pipeline is finished you will see the Docker image stored in the [Codefresh Registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/):
+Currently, we are working on offering configurable versions of Xcode, Swift, and OSX so that pipelines can define exactly what development environment they need. We also plan [fastlane](https://fastlane.tools/) integration.
 
-{% include 
-image.html 
-lightbox="true" 
-file="/images/incubation/arm-support/arm-images.png" 
-url="/images/incubation/arm-support/arm-images.png"
-alt="Private Registry for ARM docker images" 
-caption="Private Registry for ARM docker images"
-max-width="60%"
-%}
-
-You can also launch it as a [demo environment]({{site.baseurl}}/docs/getting-started/on-demand-environments/)
-
-{% include 
-image.html 
-lightbox="true" 
-file="/images/incubation/arm-support/arm-environment.png" 
-url="/images/incubation/arm-support/arm-environment.png"
-alt="Launching Docker ARM images" 
-caption="Launching Docker ARM images"
-max-width="60%"
-%}
-
-In summary, the workflow for ARM images is exactly the same as the usual Linux/x86 images.
