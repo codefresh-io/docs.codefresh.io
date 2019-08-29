@@ -6,7 +6,7 @@ redirect_from:
   - /docs/codefresh-yaml/
   - /docs/what-is-the-codefresh-yaml
   - /docs/what-is-the-codefresh-yaml/
-  - /docs/what-is-the-codefresh-yaml/working-directories/
+  - /docs/codefresh-yaml/working-directories/
   - /docs/working-directories/  
 toc: true
 ---
@@ -44,7 +44,7 @@ It contains two [steps]({{site.baseurl}}/docs/codefresh-yaml/steps/), one named 
 
 If you want to know more about how steps work in Codefresh make sure to read [the introduction to Pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/) first, before moving on.
 
-## Basic skeleton of a codefresh.yml file.
+## Basic pipeline syntax
 
 You can customize your build environment (pipeline) by using the Codefresh YAML file, ```codefresh.yml```. Codefresh uses the build specifications in the ```codefresh.yml``` file to execute your build. The ```codefresh.yml``` can be basic or it can include intricate build specifications.
 
@@ -88,9 +88,7 @@ Steps chaining and referencing is possible due to implementation of variables in
 | [Approval]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/)  | Pauses a pipeline and waits for human intervention.          |
 
 
-To build your pipeline using a ```codefresh.yml``` file, in the General Settings section, toggle the ```Use YML build``` option to the **ON** position.
-
-{% include image.html lightbox="true" file="/images/5c37025-Screen_Shot_2017-10-16_at_9.50.48_PM.png" url="/images/5c37025-Screen_Shot_2017-10-16_at_9.50.48_PM.png" alt="pipeline definition options" caption="Switching between basic steps and YAML syntax" max-width="60%" %}
+For more information on creating your own step, see the [steps page]({{site.baseurl}}/docs/codefresh-yaml/steps/).
 
 ## Yaml validation
 
@@ -329,7 +327,7 @@ to point to production. Everything else (i.e. namespace and service) are exactly
 * [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
 * [Variables]({{site.baseurl}}/docs/codefresh-yaml/variables/)
 * [Advanced workflows]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/)
-* [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/).
+* [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
 
 
 
