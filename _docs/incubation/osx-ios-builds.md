@@ -21,7 +21,7 @@ caption="Running a pipeline on the macOS environment"
 max-width="60%"
 %}
 
-The macOS runtime environment has all the necessary tools (e.g. Xcode) already installed for your iOS and/or macOS builds.
+The macOS runtime environment has Xcode already installed for your iOS and/or macOS builds.
 
 ## Building macOS/iOS applications with Codefresh
 
@@ -32,8 +32,9 @@ Once you assign the special macOS runtime to your pipeline, you can write your [
 * The manual approval step is available
 * All Docker-related pipeline steps such build, push, deploy, composition are **NOT** available.
 * Parallel steps are supported
+* Only one active build is supported at any given time.
 
-As part of the alpha version the nodes that run your macOS builds are actual nodes (i.e. not containers), so all changes you make there are permanent (unlike docker based builds, where everything runs in an isolated docker container that is discarded after the build has finished).
+As part of the alpha version the nodes that run your macOS builds are actual nodes (i.e. not containers), so all changes you make there are permanent. This is a temporary limitation of the current Alpha release and will not be present in the General Availability version of the build service.
 
 ## macOS build pipeline example
 
@@ -45,32 +46,53 @@ Create a pipeline for it with the following YAML content:
 {% highlight yaml %}
 {% raw %}
 version: '1.0'
+stages:
+  - 'Clone Repo'
+  - 'Test & Build'
+  - 'Approve'
+  - 'Run the App'
+  
 steps:
   CloneRepo:
     type: git-clone
     repo: alex-codefresh/osx-demo-webserver
     git: github
     revision: master
+    stage: 'Clone Repo'
   
-  RunTests:
-    type: 'freestyle-ssh'
-    working_directory: '${{CloneRepo}}/GCDWebServer'
-    commands:
-      - ./Run-Tests.sh
-    fail_fast: false
-  
-  BuildApp:
-    type: 'freestyle-ssh'
-    working_directory: '${{CloneRepo}}'
-    commands:
-      - xcodebuild -workspace DemoWebServer.xcworkspace -scheme DemoWebServer archive -archivePath build/DemoWebServer.xcarchive | xcpretty
-    
+  TestParallel:
+    type: parallel
+    stage: 'Test & Build'
+    steps:
+      RunTests:
+        type: 'freestyle-ssh'
+        description: 'Run dummy unit tests..'
+        working_directory: '${{CloneRepo}}/GCDWebServer'
+        commands:
+          - ./Run-Tests.sh
+        fail_fast: false   # ignore if the tests fail, just for the demo purposes
+      BuildApp:
+        type: 'freestyle-ssh'
+        description: 'Build the application...'
+        working_directory: '${{CloneRepo}}'
+        
+        commands:
+          - xcodebuild -workspace DemoWebServer.xcworkspace -scheme DemoWebServer archive -archivePath ../build/DemoWebServer.xcarchive | xcpretty
+
+  pending-approval:
+    type: pending-approval
+    description: 'Stop pipeline until approval. Just as an example'
+    stage: 'Approve'
+    fail_fast: true
+
   RunApp:
     type: 'freestyle-ssh'
+    description: 'Run the built sample web-server binary on the same node'
     working_directory: '${{CloneRepo}}'
+    stage: 'Run the App'
     commands:
       - killall DemoWebServer 2>/dev/null || echo "No instances currently running, continuing" #just in case there is instance already running
-      - bash -c "build/DemoWebServer.xcarchive/Products/Applications/DemoWebServer.app/Contents/MacOS/DemoWebServer &"
+      - bash -c "../build/DemoWebServer.xcarchive/Products/Applications/DemoWebServer.app/Contents/MacOS/DemoWebServer &"
       - sleep 60
       - kill $(jobs -p) 2>/dev/null || exit 0
 {% endraw %}
@@ -79,7 +101,7 @@ steps:
 This pipeline clones the sample application, builds it with Xcode and then runs it. Notice that the run step
 cleans up on its own (because macOS builds are not docker based so nothing is cleaned up automatically when the pipeline has finished).
 
-Notice also that `freestyle-ssh` steps do not define a docker image (unlike normal freestyle steps).
+Notice also that `freestyle-ssh` steps do not define a docker image (unlike normal [freestyle steps]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/)).
 
 The logs will show all build information:
 
