@@ -123,8 +123,6 @@
       url: "/variables"  
     - title: "Conditional Execution of Steps"
       url: "/conditional-execution-of-steps"   
-    - title: "Working Directories"
-      url: "/working-directories"
     - title: "Post-Step Operations"
       url: "/post-step-operations"      
     - title: "Parallel steps"
