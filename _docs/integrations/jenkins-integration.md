@@ -893,7 +893,7 @@ Once you use Codefresh for your deployments you also get access to:
 * The [Helm Release dashboard]({{site.baseurl}}/docs/new-helm/helm-releases-management/)
 * The [Helm environment dashboard]({{site.baseurl}}/docs/new-helm/helm-environment-promotion/)
 
-For some easy templating see also the [cf-deploy]({{site.baseurl}}/deploy-to-kubernetes/kubernetes-templating/) plugin.
+For some easy templating see also the [cf-deploy]({{site.baseurl}}/docs/deploy-to-kubernetes/kubernetes-templating/) plugin.
 
 ## What to read next
 

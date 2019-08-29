@@ -37,7 +37,7 @@ Then, for all existing [pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipelin
 * the git clone step has an explicit `git` property that defines the provider (do not leave empty this property )
 * the `git` provider has an actual value and **not** `CF-default`. This value used to represent the personal git provider of a user and is now deprecated. Use the name of an actual git integration as is defined in the [providers page]({{site.baseurl}}/docs/integrations/git-providers/)
 
-Once that is done, contact Codefresh via [support.codefresh.io](support.codefresh.io) or email, and we can take care of automatic migration of all your existing [triggers]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/) that exist in pipelines that are still using a personal Git provider.
+Once that is done, contact Codefresh via [http://support.codefresh.io](http://support.codefresh.io) or email, and we can take care of automatic migration of all your existing [triggers]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/) that exist in pipelines that are still using a personal Git provider.
 
 
 
