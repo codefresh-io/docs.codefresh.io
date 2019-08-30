@@ -426,8 +426,91 @@ In this pipeline, the Redis instance is only launched during the Unit test step,
 
 ### Launching a custom service
 
+So far all the examples of extra services used predefined docker images (i.e. Redis and Mongo). You are free however to launch any custom docker image you have already created or even the main application of the pipeline.
+
+This happens by mentioning a build step as a service image. Here is an example:
+
+ `codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: "1.0"
+steps:
+  main_clone:
+    type: "git-clone"
+    description: "Cloning main repository..."
+    repo: "kostis-codefresh/trivial-go-web"
+    revision: "master"
+  build_image:
+    title: "Building Docker Image"
+    type: "build"
+    image_name: "trivial-go-web"
+    tag: latest
+    dockerfile: "Dockerfile"
+  quick_health_check:
+    title: HTTP check
+    image: 'alpine:latest'
+    commands:
+      - 'apk update'
+      - 'apk add curl'
+      - 'curl my_golang_app:8080'
+      - 'echo Application is up'
+    services:
+      composition:
+        my_golang_app:
+          image: '${{build_image}}'
+          ports:
+            - 8080
+{% endraw %}      
+{% endhighlight %}
+
+Here a Dockerfile for a Go application is built on the spot and then is launched as sidecar container in the next step (with a hostname of `my_golang_app`). Notice that the `image` property in the sidecar service actually refers to a [Codefresh variable]({{site.baseurl}}/docs/codefresh-yaml/variables/) that holds the name of the build step.
+
+We then run a `curl` command against the sidecar container to verify the correct health of the application. This is a great way to run integration tests against your application by keeping all test tools in a completely separate docker image (`alpine` in the example above). 
+
+{% comment %} 
 ### Checking readiness of a service
 
+When you launch multiple services in your pipelines, you don't know exactly when they will start. Maybe they will be ready once you expect them, but maybe they take too long to start. For example if you use a MySQL database in your integration tests, your integration tests need to know that the database is actually up before trying to use it.
+
+This is the same issue that is present in [vanilla Docker compose](https://docs.docker.com/compose/startup-order/). You can use solutions such as [wait-for-it](https://github.com/vishnubob/wait-for-it) to overcome this limitation, but Codefresh offers a better way in the form of *service readiness*
+
+With a readiness block you can guarantee that a sidecar service will be actually up before the pipeline will continue. Here is an example:
+
+
+ `codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: "1.0"
+steps:
+  main_clone:
+    type: "git-clone"
+    description: "Cloning main repository..."
+    repo: "kostis-codefresh/trivial-go-web"
+    revision: "master"
+  build_image:
+    title: "Building Docker Image"
+    type: "build"
+    image_name: "trivial-go-web"
+    tag: latest
+    dockerfile: "Dockerfile"
+  quick_health_check:
+    title: HTTP check
+    image: 'alpine:latest'
+    commands:
+      - 'apk update'
+      - 'apk add curl'
+      - 'curl my_golang_app:8080'
+      - 'echo Application is up'
+    services:
+      composition:
+        my_golang_app:
+          image: '${{build_image}}'
+          ports:
+            - 8080
+{% endraw %}      
+{% endhighlight %}
+
+{% endcomment %}
 
 
 
