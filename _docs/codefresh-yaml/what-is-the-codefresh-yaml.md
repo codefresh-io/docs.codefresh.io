@@ -281,10 +281,11 @@ steps:
     type: "git-clone"
     description: "Cloning main repository..."
     repo: "kostis-codefresh/my-java-app"
+    git: github
     revision: "master"
   my_tests:
     image: maven:3.5.2-jdk-8-alpine
-    title: "Unit tests"
+    title: "Running Integration tests"
     commands:
       - 'mvn integration-test'
 {% endraw %}      
@@ -305,8 +306,9 @@ steps:
   main_clone:
     type: "git-clone"
     description: "Cloning main repository..."
-    repo: "kostis-codefresh/nestjs-example"
+    repo: "kostis-codefresh/my-java-app"
     revision: "master"
+    git: github
   my_tests:
     image: maven:3.5.2-jdk-8-alpine
     title: "Unit tests"
@@ -317,7 +319,15 @@ steps:
 
 This pipeline mentions an existing composition called `redis_and_mongo`:
 
-IMAGE Here
+{% include 
+image.html 
+lightbox="true" 
+file="/images/codefresh-yaml/existing-composition.png" 
+url="/images/codefresh-yaml/existing-composition.png"
+alt="Using an existing composition" 
+caption="Using an existing composition"
+max-width="70%"
+%}
 
 This makes very easy to reuse compositions that you have already defined for other reasons in the Codefresh UI
 
@@ -338,7 +348,7 @@ services:
         - 6379
 steps:
   my_first_step:
-    image: nginx:alpine
+    image: alpine:latest
     title: Storing Redis data
     commands:
       - apk --update add redis
@@ -347,7 +357,7 @@ steps:
     services:
       - my_database
   my_second_step:
-    image: nginx:alpine
+    image: alpine:latest
     commands:
       - echo "Another step in the middle of the pipeline"    
   my_third_step:
@@ -370,7 +380,15 @@ This pipeline:
 
 If you run this pipeline you will see that that data read in the third step of the pipeline was the same one as the data saved in the first step.
 
-IMAGE Here
+{% include 
+image.html 
+lightbox="true" 
+file="/images/codefresh-yaml/redis-example.png" 
+url="/images/codefresh-yaml/redis-example.png"
+alt="Redis read/write example" 
+caption="Redis read/write example"
+max-width="90%"
+%}
 
 This means that you can easily use the extra services in different steps of a single pipeline, without relaunching them each time (which is what happens with composition steps).
 
@@ -388,12 +406,13 @@ steps:
   main_clone:
     type: "git-clone"
     description: "Cloning main repository..."
-    repo: "kostis-codefresh/trivial-go-web"
+    repo: "kostis-codefresh/my-java-example"
     revision: "master"
+    git: github
   build_image:
     title: "Building Docker Image"
     type: "build"
-    image_name: "trivial-go-web"
+    image_name: "my-java-app"
     dockerfile: "Dockerfile"
     tag: latest
   my_unit_tests:
@@ -440,6 +459,7 @@ steps:
     description: "Cloning main repository..."
     repo: "kostis-codefresh/trivial-go-web"
     revision: "master"
+    git: github
   build_image:
     title: "Building Docker Image"
     type: "build"
