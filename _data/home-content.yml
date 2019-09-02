@@ -77,9 +77,7 @@
   url: ''
   links:
   - title: Codefresh private Docker Registry
-    localurl: /docs/docker-registries/codefresh-registry/
-  - title: "Pushing images"
-    localurl: "/docs/docker-registries/push-image-to-a-docker-registry"  
+    localurl: /docs/docker-registries/codefresh-registry/ 
   - title: Custom image annotations
     localurl: /docs/docker-registries/metadata-annotations/ 
   - title: Docker registry integration

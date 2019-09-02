@@ -5,6 +5,7 @@ group: yaml-examples
 sub_group: examples
 redirect_from:
   - /docs/build-and-push-an-image/
+  - /docs/docker-registries/push-image-to-a-docker-registry/ 
 toc: true
 ---
 
