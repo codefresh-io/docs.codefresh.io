@@ -536,7 +536,6 @@ steps:
 
 This is an improvement over the previous example because the healthcheck of the back-end is managed by Codefresh. The added `readiness` block makes sure that the back-end service is actually up before the integration tests start by using a `curl` command to check that `my_backend_app:8080` is up and running. Codefresh will run the commands defined in the `readiness` in a loop until they succeed. You are free to use any of your favorite commands there (ping, curl, nc etc) that check one or more services. We also define a timeout for the healthcheck. The `readiness` block supports the following options:
 
-* `initialDelaySeconds`: Number of seconds after the container has started before liveness or readiness probes are initiated. Default is 5.
 * `periodSeconds`: How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
 * `timeoutSeconds`: Number of seconds after which the probe times out. Defaults to 10 seconds. Minimum value is 1.
 * `successThreshold`: Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for readiness. Minimum value is 1.
@@ -577,7 +576,6 @@ steps:
             - 5432 
       readiness:
         timeoutSeconds: 30
-        initialDelaySeconds: 10
         periodSeconds: 15
         image: 'postgres:latest'
         commands:
