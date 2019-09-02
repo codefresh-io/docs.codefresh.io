@@ -42,7 +42,7 @@ lightbox="true"
 file="/images/integrations/slack/add-slack-integration.png" 
 url="/images/integrations/slack/add-slack-integration.png" 
 alt="Add Slack integration" 
-max-width="60%" 
+max-width="50%" 
 %}
 
 You can also select the checkboxes on the right for the type of messages you want to have.
