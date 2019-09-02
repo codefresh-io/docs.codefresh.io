@@ -15,11 +15,12 @@ After you successfully spin up a composition, click the **Environments** view ic
 {% include 
 image.html 
 lightbox="true" 
-file="/images/6786b75-environment-running.png" 
-url="/images/6786b75-environment-running.png"
+file="/images/compositions/environment-running.png" 
+url="/images/compositions/environment-running.png"
 alt="environment-running.png" 
-max-width="50%"
-caption="to enlarge click on image"
+max-width="70%"
+caption="Active test environments"
+alt="Active test environments"
 %}
 
 Click the **Hashtag** icon to share your environment with your team.
@@ -29,6 +30,7 @@ image.html
 lightbox="true" 
 file="/images/1fbb802-Screen_Shot_2017-01-31_at_2.58.58_PM.png" 
 url="/images/1fbb802-Screen_Shot_2017-01-31_at_2.58.58_PM.png"
-alt="Screen Shot 2017-01-31 at 2.58.58 PM.png" 
-max-width="50%"
+alt="Sharing environment link" 
+caption="Sharing environment link" 
+max-width="70%"
 %}
