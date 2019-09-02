@@ -144,61 +144,12 @@ max-width="50%"
 
 ## Automating Demochat deployment using Codefresh pipelines
 
-To configure the __Deploy Script__ in the pipeline you just need to go to the tab `Repositories` and click on the button `Pipelines` of the __demochat__ service.
+For automated Kubernetes deployments check the documentation for
 
-{% include image.html
-lightbox="true"
-file="/images/cc66c8f-codefresh_demochat_repo.png"
-url="/images/cc66c8f-codefresh_demochat_repo.png"
-alt="codefresh_demochat_repo.png"
-max-width="50%"
-%}
-
-On the next screen, you need to enable the `Push to Docker registry`. First integrate [with the docker registry that you use for images]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) on the Integration page and then select this docker registry in the dropdown list of the push step.
-This image will be used in the Deploy script.
-
-{% include image.html
-lightbox="true"
-file="/images/10b3692-codefresh_push_step.png"
-url="/images/10b3692-codefresh_push_step.png"
-alt="codefresh_push_step.pnadd-g"
-max-width="50%"
-%}
-
-In the next step, you need to configure the __Deploy Script__:
-
-{:start="1"}
-1. Choose the option __Kubernetes__.
-
-{:start="2"}
-2. Choose the cluster on which will be deployed the service.
-
-{:start="3"}
-3. Choose the namespace.
-
-{:start="4"}
-4. Select the service that will be redeployed.
-
-{:start="5"}
-5. Select the branch as condition when the Deploy Script will be performed.
-
-{% include image.html
-lightbox="true"
-file="/images/9829274-codefresh_deploy_script.png"
-url="/images/9829274-codefresh_deploy_script.png"
-alt="codefresh_deploy_script.png"
-max-width="50%"
-%}
-
-__Save__ and __Build__ the pipeline.
-
-{% include image.html
-lightbox="true"
-file="/images/22cd0c7-codefresh_deploy_script_process.png"
-url="/images/22cd0c7-codefresh_deploy_script_process.png"
-alt="codefresh_deploy_script_process.png"
-max-width="50%"
-%}
+1. The dedicated [deploy step]({{site.baseurl}}/docs/codefresh-yaml/steps/deploy/) in a pipeline. 
+1. The [cf-deploy-kubernetes step]({{site.baseurl}}/docs/deploy-to-kubernetes/kubernetes-templating/) in a pipeline. This can also perform simple templating on Kubernetes manifests.
+1. Using a [freestyle]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) step with [custom kubectl commands]({{site.baseurl}}/docs/deploy-to-kubernetes/custom-kubectl-commands/).
+1. Using The Helm package manager. See the [Helm quick start guide]({{site.baseurl}}/docs/getting-started/helm-quick-start-guide/).
 
 ## What to read next
 
