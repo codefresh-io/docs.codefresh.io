@@ -457,42 +457,41 @@ steps:
   main_clone:
     type: "git-clone"
     description: "Cloning main repository..."
-    repo: "kostis-codefresh/trivial-go-web"
+    repo: "kostis-codefresh/my-back-end"
     revision: "master"
     git: github
   build_image:
     title: "Building Docker Image"
     type: "build"
-    image_name: "trivial-go-web"
+    image_name: "my-backend-app"
     tag: latest
     dockerfile: "Dockerfile"
-  quick_health_check:
-    title: HTTP check
-    image: 'alpine:latest'
+  run_integration_tests:
+    title: Test backend
+    image: 'my-front-end:latest'
     commands:
-      - 'apk update'
-      - 'apk add curl'
-      - 'curl my_golang_app:8080'
-      - 'echo Application is up'
+      - 'curl my_backend_app:8080'
+      - 'echo Backend is up. Starting tests'
+      - npm run integration-test
     services:
       composition:
-        my_golang_app:
+        my_backend_app:
           image: '${{build_image}}'
           ports:
             - 8080
 {% endraw %}      
 {% endhighlight %}
 
-Here a Dockerfile for a Go application is built on the spot and then is launched as sidecar container in the next step (with a hostname of `my_golang_app`). Notice that the `image` property in the sidecar service actually refers to a [Codefresh variable]({{site.baseurl}}/docs/codefresh-yaml/variables/) that holds the name of the build step.
+Here a Dockerfile for a backedn application is built on the spot and then is launched as sidecar container in the next step (with a hostname of `my_backend_app`). Notice that the `image` property in the sidecar service actually refers to a [Codefresh variable]({{site.baseurl}}/docs/codefresh-yaml/variables/) that holds the name of the build step.
 
-We then run a `curl` command against the sidecar container to verify the correct health of the application. This is a great way to run integration tests against your application by keeping all test tools in a completely separate docker image (`alpine` in the example above). 
+We then run a `curl` command against the sidecar container to verify the correct health of the application. This is a great way to run integration tests against multilple microservices.
 
-{% comment %} 
+
 ### Checking readiness of a service
 
 When you launch multiple services in your pipelines, you don't know exactly when they will start. Maybe they will be ready once you expect them, but maybe they take too long to start. For example if you use a MySQL database in your integration tests, your integration tests need to know that the database is actually up before trying to use it.
 
-This is the same issue that is present in [vanilla Docker compose](https://docs.docker.com/compose/startup-order/). You can use solutions such as [wait-for-it](https://github.com/vishnubob/wait-for-it) to overcome this limitation, but Codefresh offers a better way in the form of *service readiness*
+This is the same issue that is present in [vanilla Docker compose](https://docs.docker.com/compose/startup-order/). You can use solutions such as [wait-for-it](https://github.com/vishnubob/wait-for-it) to overcome this limitation, but Codefresh offers a better way in the form of *service readiness*.
 
 With a readiness block you can guarantee that a sidecar service will be actually up before the pipeline will continue. Here is an example:
 
@@ -505,36 +504,88 @@ steps:
   main_clone:
     type: "git-clone"
     description: "Cloning main repository..."
-    repo: "kostis-codefresh/trivial-go-web"
+    repo: "kostis-codefresh/my-back-end"
+    revision: "master"
+    git: github
+  build_image:
+    title: "Building Docker Image"
+    type: "build"
+    image_name: "my-backend-app"
+    tag: latest
+    dockerfile: "Dockerfile"
+  run_integration_tests:
+    title: Test backend
+    image: 'my-front-end:latest'
+    commands:
+      # Backend is certainly up at this point.
+      - npm run integration-test
+    services:
+      composition:
+        my_backend_app:
+          image: '${{build_image}}'
+          ports:
+            - 8080
+      readiness:
+        image: 'byrnedo/alpine-curl'
+        timeoutSeconds: 30
+        commands:
+          - "curl my_backend_app:8080"       
+{% endraw %}      
+{% endhighlight %}
+
+
+This is an improvement over the previous example because the healthcheck of the back-end is managed by Codefresh. The added `readiness` block makes sure that the back-end service is actually up before the integration tests start by using a `curl` command to check that `my_backend_app:8080` is up and running. Codefresh will run the commands defined in the `readiness` in a loop until they succeed. You are free to use any of your favorite commands there (ping, curl, nc etc) that check one or more services. We also define a timeout for the healthcheck. The `readiness` block supports the following options:
+
+* `initialDelaySeconds`: Number of seconds after the container has started before liveness or readiness probes are initiated. Default is 5.
+* `periodSeconds`: How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
+* `timeoutSeconds`: Number of seconds after which the probe times out. Defaults to 10 seconds. Minimum value is 1.
+* `successThreshold`: Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for readiness. Minimum value is 1.
+* `failureThreshold`: failureThreshold times before giving up. In case of readiness probe the Pod will be marked Unready. Defaults to 3. Minimum value is 1
+
+If you know already how [Kubernetes readiness probes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/) work, then these settings will be very familiar to you.
+
+Here is another example where we use the `pg_isready` command to make sure that a PostgreSQL database is ready to accept connections
+before we run the integration tests.
+
+ `codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: "1.0"
+steps:
+  main_clone:
+    type: "git-clone"
+    description: "Cloning main repository..."
+    repo: "kostis-codefresh/my-rails-app"
     revision: "master"
   build_image:
     title: "Building Docker Image"
     type: "build"
-    image_name: "trivial-go-web"
-    tag: latest
+    image_name: "my-rails-app"
+    tag: "latest"
     dockerfile: "Dockerfile"
-  quick_health_check:
-    title: HTTP check
-    image: 'alpine:latest'
+  run_integration_tests:
+    image: '${{build_image}}'
     commands:
-      - 'apk update'
-      - 'apk add curl'
-      - 'curl my_golang_app:8080'
-      - 'echo Application is up'
+      # PostgreSQL is certainly up at this point
+      - rails db:migrate
+      - rails test
     services:
       composition:
-        my_golang_app:
-          image: '${{build_image}}'
+        my_postgresql_db:
+          image: postgres:latest
           ports:
-            - 8080
+            - 5432 
+      readiness:
+        timeoutSeconds: 30
+        initialDelaySeconds: 10
+        periodSeconds: 15
+        image: 'postgres:latest'
+        commands:
+          - "pg_isready -h my_postgresql_db"   
 {% endraw %}      
 {% endhighlight %}
 
-{% endcomment %}
-
-
-
-
+In summary `readiness` make sure that your services are actually up before you use them in a Codefresh pipeline.
 
 ## Using YAML anchors to avoid repetition
 
