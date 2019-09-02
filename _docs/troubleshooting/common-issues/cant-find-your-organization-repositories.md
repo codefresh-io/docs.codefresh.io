@@ -1,31 +1,28 @@
 ---
 title: "Can't find your organization repositories"
-description: ""
+description: "Issues with adding Git triggers"
 group: troubleshooting
 sub_group: common-issues
 redirect_from:
   - /docs/cant-find-your-organization-repos/
 toc: true
 ---
-***Problem***: I want to add a repository that belongs to one of my GitHub organizations but can't find it in the repository list.
+***Problem***: I want to add a [git trigger]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/) for a repository that belongs to one of my GitHub organizations but can't find it in the repository list.
 
 {% include 
 image.html 
 lightbox="true" 
-file="/images/88ec329-Screen_Shot_2016-09-29_at_3.13.51_PM.png" 
-url="/images/88ec329-Screen_Shot_2016-09-29_at_3.13.51_PM.png"
-alt="Screen Shot 2016-09-29 at 3.13.51 PM.png" 
-max-width="40%"
-caption="Pick a repository empty list(click image to enlarge)"
+file="/images/troubleshooting/cannot-find-repo.png" 
+url="/images/troubleshooting/cannot-find-repo.png"
+alt="Repository not found" 
+max-width="60%"
+caption="Repository not found"
 %}
 
 ## 1. Navigate to your GitHub user settings page
 
-{:start="1"}
 1. Log in to GitHub using your credentials.
-
-{:start="1"}
-2. Navigate to your **Settings** page.
+2. Navigate to your *Settings* page.
 
 {% include 
 image.html 
@@ -38,7 +35,8 @@ caption="Github user menu (click image to enlarge)"
 %}
 
 ## 2. Navigate to your Authorized applications
-In your **Personal settings** view, click **Authorized applications**.
+
+In your *Personal settings* view, click *Authorized applications*.
 
 {% include 
 image.html 
@@ -51,6 +49,7 @@ caption="Personal settings (click image to enlarge)"
 %}
 
 ## 3. Select the Codefresh application
+
 Locate and click the Codefresh authorized application.
 
 {% include 
@@ -67,8 +66,8 @@ caption="Authorized applications (click image to enlarge)"
 In the Organization access section find your organization.
 
 {:.text-secondary}
-### I'm Not an Organization Administrator?
-If you do not have Admin privileges for your organization, click **Request access**, to request the necessary privileges from your administrator.
+### I am Not an Organization Administrator
+If you do not have Admin privileges for your organization, click *Request access*, to request the necessary privileges from your administrator.
 
 {% include 
 image.html 
@@ -91,8 +90,9 @@ caption="Access requested (click image to enlarge)"
 %}
 
 {:.text-secondary}
-### I'm an Organization Administrator###
-If you are an organization administrator, click **Grant access**.
+### I'm an Organization Administrator
+
+If you are an organization administrator, click *Grant access*.
 You can always have the option to revoke access.
 
 {% include 
