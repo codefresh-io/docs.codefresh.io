@@ -139,9 +139,9 @@ steps:
     type: git-clone
     repo: kostis-codefresh/example_nodejs_postgres
     revision: experiment1
-    git: github-1
+    git: github
   myFirstDockerImage:
-    title: 'BuildingDockerImage'
+    title: 'Building First Docker Image'
     type: build
     dockerfile: Dockerfile
     image_name: my-nodejs-image
@@ -152,9 +152,9 @@ steps:
     type: git-clone
     repo: kostis-codefresh/trivial-go-web
     revision: master
-    git: github-1
+    git: github
   mySecondDockerImage:
-    title: 'BuildingDockerImage'
+    title: 'Building Second Docker Image'
     type: build
     dockerfile: Dockerfile
     working_directory: './trivial-go-web'
