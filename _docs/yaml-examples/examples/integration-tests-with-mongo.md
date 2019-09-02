@@ -1,10 +1,11 @@
 ---
-title: "Unit Tests with Mongo"
+title: "Integration Tests with Mongo"
 description: ""
-group: testing
-sub_group: unit-tests
+group: yaml-examples
+sub_group: examples
 redirect_from:
   - /docs/nodejsmongo/
+  - /docs/testing/unit-tests/unit-tests-with-mongo/   
 toc: true
 ---
 
@@ -77,3 +78,10 @@ Just head over to the example [__repository__](https://github.com/codefreshdemo/
 ## Expected result
 
 {% include image.html lightbox="true" file="/images/5033cde-codefresh_unit_test_mongo.png" url="/images/5033cde-codefresh_unit_test_mongo.png" alt="Codefresh unit test Mongo" max-width="65%" %}
+
+## What to read next
+
+- [Integration Tests with Redis]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-redis/)
+- [Integration Tests with Postgres]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-postgres/)
+- [Integration Tests with MySQL]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mysql/)
+- [Integration Tests with Mongo]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mongo/)

@@ -1,10 +1,11 @@
 ---
-title: "Unit Test with Database"
+title: "Integration Tests with Database"
 description: ""
-group: testing
-sub_group: unit-tests
+group: yaml-examples
+sub_group: examples
 redirect_from:
   - /docs/unit-tests-with-database/
+  - /docs/testing/unit-tests/unit-tests-with-database/  
 toc: true
 ---
 Sometimes running unit tests requires some additional services like a Database (Mongo, MySql, Postgres etc.), or third-party components like Redis, Memcache, etc.
@@ -79,8 +80,9 @@ services:
 {:start="6"}
 6. __Save__ and __Build__ this pipeline
 
-### See unit test examples with other databases
-- [Unit Tests with Redis]({{site.baseurl}}/docs/testing/unit-tests/unit-tests-with-redis/) 
-- [Unit Tests with Postgres]({{site.baseurl}}/docs/testing/unit-tests/unit-tests-with-postgres/)
-- [Unit Tests with MySQL]({{site.baseurl}}/docs/testing/unit-tests/unit-tests-with-mysql/)
-- [Unit Tests with Mongo]({{site.baseurl}}/docs/testing/unit-tests/unit-tests-with-mongo/)
+## What to read next
+
+- [Integration Tests with Redis]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-redis/)
+- [Integration Tests with Postgres]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-postgres/)
+- [Integration Tests with MySQL]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mysql/)
+- [Integration Tests with Mongo]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mongo/)

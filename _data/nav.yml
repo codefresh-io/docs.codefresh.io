@@ -167,6 +167,22 @@
           url: "/run-unit-tests-with-composition"
         - title: Run Integration Tests
           url: "/run-integration-tests"
+
+        - title: Run Integration Tests with Composition
+          url: "/integration-tests-with-composition"
+        - title: Run Integration Tests with a DB
+          url: "/integration-tests-with-database"
+        - title: Run Integration Tests with Mongo
+          url: "/integration-tests-with-mongo"
+        - title: Run Integration Tests with MySQL
+          url: "/integration-tests-with-mysql"
+        - title: Run Integration Tests with PostgreSQL
+          url: "/integration-tests-with-postgres"
+        - title: Run Integration Tests with Redis
+          url: "/integration-tests-with-redis"
+
+
+
         - title: Shared volumes for composition
           url: "/shared-volumes-of-service-from-composition-step-for-other-yml-steps"
         - title: Launch Composition
@@ -224,11 +240,6 @@
   pages:
     - title: "Unit testing"
       url: "/unit-tests"
-      sub-pages:
-        - title: "Unit Tests with Composition"
-          url: "/unit-tests-with-composition"
-        - title: "Unit Tests with Database"
-          url: "/unit-tests-with-database"
     - title: "Integration Tests"
       url: "/integration-tests"
     - title: "Test Reports"

@@ -98,10 +98,8 @@
   icon: images/home-icons/testing.png
   url: ''
   links:
-  - title: Add Unit Test to pipeline
+  - title: Unit tests
     localurl: /docs/testing/unit-tests/
-  - title: Unit Test with DB
-    localurl: /docs/testing/unit-tests/unit-tests-with-database/
   - title: Integration Tests
     localurl: /docs/testing/integration-tests/ 
   - title: Test reports

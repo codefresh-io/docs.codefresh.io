@@ -50,7 +50,15 @@ Codefresh has support for both [unit]({{site.baseurl}}/docs/testing/unit-tests/)
 
 - [Run Unit Tests]({{site.baseurl}}/docs/yaml-examples/examples/run-unit-tests) 
 - [Run Unit Tests with Composition]({{site.baseurl}}/docs/yaml-examples/examples/run-unit-tests-with-composition) 
-- [Run Integration Tests]({{site.baseurl}}/docs/yaml-examples/examples/run-integration-tests) 
+
+- [Run Integration Tests]({{site.baseurl}}/docs/yaml-examples/examples/run-integration-tests/) 
+- [Run Integration Tests with Composition]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-composition/) 
+- [Run Integration Tests with Database]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-database/) 
+- [Run Integration Tests with MongoDB]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mongo/) 
+- [Run Integration Tests with MySQL]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mysql/) 
+- [Run Integration Tests with PostgreSQL]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-postgres/) 
+- [Run Integration Tests with Redis]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-redis/) 
+
 - [Shared volumes of service from composition step for other yml steps]({{site.baseurl}}/docs/yaml-examples/examples/shared-volumes-of-service-from-composition-step-for-other-yml-steps)
 - [Launch Composition]({{site.baseurl}}/docs/yaml-examples/examples/launch-composition) 
 - [Launching a Composition and Defining a Service Environment Variables using a file]({{site.baseurl}}/docs/yaml-examples/examples/launching-a-composition-and-defining-a-service-environment-variables-using-a-file) 

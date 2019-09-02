@@ -1,10 +1,11 @@
 ---
-title: "Unit Tests with Redis"
+title: "Integration Tests with Redis"
 description: ""
-group: testing
-sub_group: unit-tests
+group: yaml-examples
+sub_group: examples
 redirect_from:
   - /docs/python-redis/
+  - /docs/testing/unit-tests/unit-tests-with-redis/   
 toc: true
 ---
 
@@ -94,3 +95,10 @@ fi
 ## Expected result
 
 {% include image.html lightbox="true" file="/images/6a3d9d1-codefresh_unit_test_redis.png" url="/images/6a3d9d1-codefresh_unit_test_redis.png" alt="Codefresh unit test Redis" max-width="65%" %}
+
+## What to read next
+
+- [Integration Tests with Redis]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-redis/)
+- [Integration Tests with Postgres]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-postgres/)
+- [Integration Tests with MySQL]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mysql/)
+- [Integration Tests with Mongo]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mongo/)

@@ -1,10 +1,11 @@
 ---
-title: "Unit Tests with MySQL"
+title: "Integration Tests with MySQL"
 description: ""
-group: testing
-sub_group: unit-tests
+group: yaml-examples
+sub_group: examples
 redirect_from:
   - /docs/nodejsmysql/
+  - /docs/testing/unit-tests/unit-tests-with-mysql/     
 toc: true
 ---
 
@@ -160,3 +161,11 @@ Just head over to the example [__repository__](https://github.com/codefreshdemo/
 ## Expected result
 
 {% include image.html lightbox="true" file="/images/7afb3f6-codefresh_example_mysql.png" url="/images/7afb3f6-codefresh_example_mysql.png" alt="Codefresh unit test MySQL" max-width="65%" %}
+
+
+## What to read next
+
+- [Integration Tests with Redis]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-redis/)
+- [Integration Tests with Postgres]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-postgres/)
+- [Integration Tests with MySQL]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mysql/)
+- [Integration Tests with Mongo]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mongo/)

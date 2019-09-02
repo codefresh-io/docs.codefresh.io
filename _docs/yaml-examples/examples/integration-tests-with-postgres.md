@@ -1,10 +1,11 @@
 ---
-title: "Unit Tests with Postgres"
+title: "Integration Tests with Postgres"
 description: ""
-group: testing
-sub_group: unit-tests
+group: yaml-examples
+sub_group: examples
 redirect_from:
   - /docs/unit-tests-with-postgres/
+  - /docs/testing/unit-tests/unit-tests-with-postgres/   
 toc: true
 ---
 
@@ -83,3 +84,11 @@ Just head over to the example [__repository__](https://github.com/codefreshdemo/
 ## Expected result
 
 {% include image.html lightbox="true" file="/images/84e92ab-codefresh_example_postgres.png" url="/images/84e92ab-codefresh_example_postgres.png" alt="Codefresh unit test Postgres" max-width="65%" %}
+
+
+## What to read next
+
+- [Integration Tests with Redis]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-redis/)
+- [Integration Tests with Postgres]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-postgres/)
+- [Integration Tests with MySQL]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mysql/)
+- [Integration Tests with Mongo]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mongo/)
