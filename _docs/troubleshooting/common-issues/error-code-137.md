@@ -32,7 +32,7 @@ The error usually happens when Docker does not have enough memory, but it can al
 
 ## The solution
 
-You need to either simplify your application (e.g. slit it with microservices) or run the pipeline on a larger machine. For example if the build fails on a `SMALL` machine you should run it on a `MEDIUM`  one. You can upgrade your account to get access to more resource by visiting your [Billing Settings](https://g.codefresh.io/account-admin/billing/).
+You need to either simplify your application (e.g. split it to microservices) or run the pipeline on a larger machine. For example if the build fails on a `SMALL` machine you should run it on a `MEDIUM`  one. You can upgrade your account to get access to more resource by visiting your [Billing Settings](https://g.codefresh.io/account-admin/billing/).
 
 
 

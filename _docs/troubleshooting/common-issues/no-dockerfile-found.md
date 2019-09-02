@@ -1,48 +1,79 @@
 ---
 title: "No Dockerfile found"
-description: ""
+description: "Failed to fetch the Dockerfile from path"
 group: troubleshooting
 sub_group: common-issues
 redirect_from:
   - /docs/no-dockerfile-found/
 toc: true
 ---
-***Problem:*** When I tried to build a repository, I received this error message: “Repository does not contain a Dockerfile. Please check the pipeline configuration”.
 
-{% include 
-image.html 
-lightbox="true" 
-file="/images/92c8d50-2016-09-29_12-29-10.png" 
-url="/images/92c8d50-2016-09-29_12-29-10.png"
-alt="2016-09-29_12-29-10.png" 
-max-width="40%"
-caption="This error indicates that the repository doesn’t have a Dockerfile in it or the path for the Dockerfile was incorrect."
-%}
+You have a [build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) in your pipeline that fails with the  error message: "Repository does not contain a Dockerfile. Please check the pipeline configuration" or "Failed to fetch the Dockerfile from path"
 
-***Solution:*** There are two ways to address this error:
+## Problem description
 
-{:start="1"}
-1. Add a Dockerfile to the repository or verify that you configured the correct path to the Dockerfile. 
-   
-   To configure the Dockerfile path in the pipeline configuration, navigate to **`Repositories`** &#8594; **`Your Repository`** &#8594; **`Pipelines`**.
+This error happens when you are trying to build a Docker image and the pipeline step cannot find a Dockerfile. It might be helpful to include a dummy step in your pipeline that prints all files in the workspace. This way you can verify what files are available to the pipeline.
 
-{% include 
-image.html 
-lightbox="true" 
-file="/images/3c8f08e-2016-09-29_12-57-55.png" 
-url="/images/3c8f08e-2016-09-29_12-57-55.png"
-alt="2016-09-29_12-57-55.png" 
-max-width="40%"
-%}
+`pipeline step`
+{% highlight yaml %}
+{% raw %}
+print_pwd_files:
+  title: 'Listing files'
+  image: alpine:latest
+  commands:
+    - 'ls -l'
+{% endraw %}
+{% endhighlight %}
 
-{:start="2"}
-2. Use a pre-configured Codefresh Dockerfile template from the template selector on the Pipeline view. Navigate to **`Repositories`** &#8594; **`Your Repository`** &#8594; **`Pipelines`**.
+## The solution
 
-{% include 
-image.html 
-lightbox="true" 
-file="/images/6b035ff-2016-09-29_13-03-58.png" 
-url="/images/6b035ff-2016-09-29_13-03-58.png"
-alt="2016-09-29_13-03-58.png" 
-max-width="40%"
-%}
+There are two ways to address this error:
+
+First make sure that you have at least one [clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) in your pipeline and that its name is `main_clone`. This way the current folder will automatically be setup in the project folder of the git repository.
+
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+steps:
+  main_clone:
+    title: 'Cloning main repository...'
+    type: git-clone
+    repo: kostis-codefresh/example_nodejs_postgres
+    revision: master
+    git: github
+  myDockerImage:
+    title: 'Building My Docker Image'
+    type: build
+    dockerfile: Dockerfile
+    image_name: my-app-image
+    tag: from-master-branch
+{% endraw %}
+{% endhighlight %}
+
+Secondly, if you checkout multiple git repositories or use another name in your git clone step, make sure that the build step looks at the correct directory:
+
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+steps:
+  checkoutApp:
+    title: 'Cloning a repository...'
+    type: git-clone
+    repo: kostis-codefresh/trivial-go-web
+    revision: master
+    git: github
+  myDockerImage:
+    title: 'Building Docker Image'
+    type: build
+    dockerfile: Dockerfile
+    working_directory: './trivial-go-web'
+    image_name: my-app-image
+    tag: from-master-branch         
+{% endraw %}
+{% endhighlight %}
+
+Notice the `working_directory` property of the build step that searches for the Dockefile in the folder named `trivial-go-web` instead of the root folder of the pipeline workspace.
+
+
