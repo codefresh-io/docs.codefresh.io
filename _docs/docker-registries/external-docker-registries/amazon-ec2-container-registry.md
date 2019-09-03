@@ -38,49 +38,16 @@ More information and examples can be found [here](http://docs.aws.amazon.com/Ama
 
 ## Pushing Docker images to Amazon ECR
 
-There are 3 ways to push images 
+There are 2 ways to push images 
 
 1. Using the YAML [push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/) (recommended)
-1. Using the GUI pipeline (shown below)
 1. Promoting manually an image (shown below)
 
-An example repository can be found at [https://github.com/codefreshdemo/react-starter-kit](https://github.com/codefreshdemo/react-starter-kit)
-
-### Pushing a Docker image via the Pipeline GUI
-
-In the *Pipelines* view, you can configure to which registry the build image will be pushed to.
-
-{:start="1"}
-1. Select your repository
-
-{% include image.html 
-lightbox="true" 
-file="/images/db8ba11-select_repo.png" 
-url="/images/db8ba11-select_repo.png"
-alt="select repo.png"
-max-width="40%"
-%}
-
-{:start="2"}
-2. Select the registry to where the build image will be pushed
-
->Make sure the repository exists in ECR
+For more details on how to push a Docker image in a pipeline see the [build and push example]({{site.baseurl}}/docs/yaml-examples/examples/build-and-push-an-image/).
 
 
-{% include image.html 
-lightbox="true" 
-file="/images/bf72fa4-save-reg.png" 
-url="/images/bf72fa4-save-reg.png"
-alt="save-reg.png"
-max-width="40%"
-%}
 
-{:start="3"}
-3. Save and build the pipeline
-
-The image will be pushed to your registry. You can see the build log to for details.
-
-### Manually promoting an image
+## Manually promoting an image
 
 The **Images** view has an option to manually push images to a registry.
 
