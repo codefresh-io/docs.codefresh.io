@@ -31,7 +31,7 @@ You can play with it locally after installing the `terraform` executable.
 You need to create a Codefresh account and a Google account first. Then you need to create a [Service account Key](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) which will allows terraform to communicate with Google cloud.
 
 
-Add you service account json as a pipeline variable called `ACCOUNT_JSON_CONTENT`. The content of this variable will be used
+Add your service account json as a pipeline variable called `ACCOUNT_JSON_CONTENT`. The content of this variable will be used
 in order to authenticate to Google cloud.
 
 ## Create a CI/CD pipeline for Terraform
@@ -81,11 +81,11 @@ This pipeline does the following:
 
 Run the pipeline and see your deployment succeed.
 
-Note that in a production pipeline you should also handle the Terraform state in a proper manner. The example provided is using a file for stage storage which is not appropriate for using Terraform in a team environment.
+Note that in a production pipeline you should also handle the [Terraform state](https://www.terraform.io/docs/state/) in a proper manner. The example provided is using a file for [state storage](https://www.terraform.io/docs/backends/index.html) which is not appropriate when using Terraform in a team environment.
 
 ## Handling Pull requests
 
-You can easily use the same pipeline or a different one for pull requests. In this case replace the `terraform apply` command with `terraform plan`. Even better you can add an [approval step]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/) to allows humans to inspect the pipeline first.
+You can easily use the same pipeline or a different one for pull requests. In this case replace the `terraform apply` command with `terraform plan`. Even better, you can add an [approval step]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/) to allow humans to inspect the pipeline first.
 
 
 ## What to read next
