@@ -82,3 +82,8 @@ step_name:
 | `on_success`, `on_fail` and `on_finish`    | Define operations to perform upon step completion using a set of predefined [Post-Step Operations]({{ site.baseurl }}/docs/codefresh-yaml/post-step-operations/).                                                                                                           | Optional                  |
 | entry_point                                | The name of main service                                                                                                                                                                                                                | Optional                 |
 | `retry`   | Define retry behavior as described in [Retrying a step]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/#retrying-a-step).                                                                               | Optional                  |
+
+## What to read next
+
+* [Preview environments]({{site.baseurl}}/docs/getting-started/on-demand-environments/)
+* [Launch Composition example]({{site.baseurl}}/docs/yaml-examples/examples/launch-composition/)
