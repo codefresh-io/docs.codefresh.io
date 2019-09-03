@@ -9,14 +9,14 @@ toc: true
 With Codefresh, you can easily set your unit tests to run on every build.
 There are several ways to run unit tests within a Codefresh pipeline.
 
->For the purposes of this guide "unit tests" are the tests that use only the source code of the application and nothing else. If you are interested in running tests with external services (such as databases) then see the page about [integration tests]({{site.baseurl}}/docs/testing/integration-tests/).
+>For the purposes of this guide, "unit tests" are the tests that use only the source code of the application and nothing else. If you are interested in running tests with external services (such as databases) then see the page about [integration tests]({{site.baseurl}}/docs/testing/integration-tests/).
 
 Different companies have different types of unit tests and in several cases the type of programming language also affects when/what tests are run. Codefresh supports all test frameworks (including mocking frameworks) for all popular programming languages.
 
 ## Running Unit tests as part of a Docker build
 
-A handy way to quickly test a Docker images is by placing one or more smoke tests in the Dockerfile itself. The unit
-test then execute when the image is built, and if they fail the image is not even created. Here is an example:
+A handy way to quickly test a Docker image, is by placing one or more smoke tests in the Dockerfile itself. The unit
+tests then execute when the image is built, and if they fail the image is not even created. Here is an example:
 
  `Dockerfile`
 {% highlight docker %}
@@ -24,20 +24,16 @@ test then execute when the image is built, and if they fail the image is not eve
 FROM python:3.6.4-alpine3.6
 
 ENV FLASK_APP=minitwit
-
 COPY . /app
-
 WORKDIR /app
 
 RUN pip install --editable .
-
 RUN flask initdb
 
 # Unit tests
-python setup.py test
+RUN python setup.py test
 
 EXPOSE 5000
-
 CMD [ "flask", "run", "--host=0.0.0.0" ]
 {% endraw %}
 {% endhighlight %}
@@ -45,15 +41,45 @@ CMD [ "flask", "run", "--host=0.0.0.0" ]
 This kind of unit tests are transparent to Codefresh. They will just execute in a [build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) in the same manner
 as if you would build the image on your workstation.
 
-IMAGE here.
+{%
+  include image.html
+  lightbox="true"
+  file="/images/testing/unit-testing/unit-tests-in-dockerfile.png"
+  url="/images/testing/unit-testing/unit-tests-in-dockerfile.png"
+  alt="Unit tests inside a Dockerfile"
+  caption="Unit tests inside a Dockerfile"
+  max-width="90%"
+%}
 
-A big disadvantage of this unit testing method, is that getting reports out of the docker image is not a straightforward process. On the other hand they are very easy to integrate in any workflow.
+A big disadvantage of this unit testing method, is that getting reports out of the docker image is not a straightforward process. On the other hand they are very easy to integrate in any workflow. The Codefresh pipeline simply checks out the code and builds a Dockerfile.
+
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+stages:
+  - prepare
+  - build
+steps:
+  main_clone:
+    title: Cloning main repository...
+    type: git-clone
+    repo: 'codefresh-contrib/python-flask-sample-app'
+    revision: 'with-tests-in-dockerfile'
+    stage: prepare
+    git: github
+  MyAppDockerImage:
+    title: Building Docker Image
+    type: build
+    stage: build
+    image_name: my-app-image
+    working_directory: ./
+    tag: with-tests-in-dockerfile
+    dockerfile: Dockerfile
+{% endraw %}
+{% endhighlight %}
 
 This technique is best used for a very small subset of unit tests that check the overall well being of a Docker image. The bulk of the tests should be executed outside the Docker build process as we will see in the next sections:
-
-
-
-
 
 ## Running Unit tests using an external Docker image
 
