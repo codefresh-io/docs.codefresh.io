@@ -219,38 +219,74 @@ writing any YAML files at all! The next step is to automate this process so that
 The application is now running successfully in the Kubernetes cluster. We will setup a pipeline in Codefresh
 so that any commits that happen in GitHub, are automatically redeploying the application, giving us a true CI/CD pipeline.
 
-To do this, we will add two extra steps in the basic pipeline created in the [previous tutorial]({{ site.baseurl }}/docs/getting-started/create-a-basic-pipeline/).
+To do this, we will add two extra steps in the basic pipeline created in the [previous tutorial]({{site.baseurl}}/docs/getting-started/create-a-basic-pipeline/).
 
-First, we will make sure that the Docker image created is sent to the registry. In the pipeline definition
-expand the *Push to Registry* section and make sure that the Codefresh Registry is selected from the popup menu
+Here is the complete pipeline:
 
- {% include 
-image.html 
-lightbox="true" 
-file="/images/getting-started/quick-start-k8s/push-to-registry.png" 
-url="/images/getting-started/quick-start-k8s/push-to-registry.png" 
-alt="Push to registry step" 
-caption="Push to registry step (click image to enlarge)" 
-max-width="60%" 
-%}
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+stages:
+  - checkout
+  - package
+  - test 
+  - upload
+  - deploy
+steps:
+  main_clone:
+    title: Cloning main repository...
+    type: git-clone
+    repo: '${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}'
+    revision: '${{CF_REVISION}}'
+    stage: checkout
+  MyAppDockerImage:
+    title: Building Docker Image
+    type: build
+    stage: package
+    image_name: my-app-image
+    working_directory: ./
+    tag: '${{CF_BRANCH}}'
+    dockerfile: Dockerfile
+  MyUnitTests:
+    title: Running Unit tests
+    image: '${{MyAppDockerImage}}'
+    stage: test 
+    commands:
+      - python setup.py test    
+  MyPushStep:
+    title: Pushing to DockerHub Registry
+    type: push
+    stage: upload
+    tag: '${{CF_BRANCH}}'
+    candidate: '${{MyAppDockerImage}}'
+    image_name: kkapelon/pythonflasksampleapp #Change kkapelon to your dockerhub username
+    registry: dockerhub # Name of your integration as was defined in the Registry screen
+  DeployToMyCluster:
+    title: deploying to cluster
+    type: deploy
+    stage: deploy
+    kind: kubernetes  
+    ## cluster name as the shown in account's integration page
+    cluster:  my-demo-k8s-cluster
+    # desired namespace
+    namespace: default
+    service: python-demo
+    candidate:
+      # The image that will replace the original deployment image 
+      # The image that been build using Build step
+      image: kkapelon/pythonflasksampleapp:${{CF_BRANCH}}
+      # The registry that the user's Kubernetes cluster can pull the image from
+      # Codefresh will generate (if not found) secret and add it to the deployment so the Kubernetes master can pull it
+      registry: dockerhub   
+{% endraw %}      
+{% endhighlight %}
 
-Next expand the *Deploy Script stage*. From the popup menu select *Kubernetes* and fill the details of the service.
+You can see that we have added a new [deploy step]({{site.baseurl}}/docs/codefresh-yaml/steps/deploy/) at the end of the pipeline. Deploy steps allow you to deploy Kubernetes applications in a declarative manner. Codefresh offers many more [ways for Kubernetes deployments]({{site.baseurl}}/docs/deploy-to-kubernetes/deployment-options-to-kubernetes/).
 
- {% include 
-image.html 
-lightbox="true" 
-file="/images/getting-started/quick-start-k8s/deployment-step.png" 
-url="/images/getting-started/quick-start-k8s/deployment-step.png" 
-alt="Kubernetes deploy step" 
-caption="Kubernetes deploy step (click image to enlarge)" 
-max-width="70%" 
-%}
+The deploy step will update an *existing* Kubernetes deployment and will optionally create a [pull secret]({{site.baseurl}}/docs/deploy-to-kubernetes/access-docker-registry-from-kubernetes/) for the image if needed, but it will not create any Kubernetes services (which is ok in our case as we created it manually in the previous section).
 
-Notice that by default Codefresh tags Docker images with the name of the GIT branch they were created from.
-In the example above we use the `production` branch so that the name of the Docker image matches the one
-that we defined in Kubernetes in the previous section.
-
-Once all the details are filled in, click the *Save* button.
+Once all the details are filled in the pipeline editor, click the *Save* button.
 
 Now we will change the application in the production branch and commit/push the change to Git.
 
@@ -264,7 +300,7 @@ caption="Git change (click image to enlarge)"
 max-width="70%" 
 %}
 
-Codefresh will pick the change automatically and [trigger]({{ site.baseurl }}/docs/configure-ci-cd-pipeline/triggers/) a new build that deploys the new version
+Codefresh will pick the change automatically and [trigger]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/) a new build that deploys the new version:
 
 
 
@@ -275,7 +311,7 @@ file="/images/getting-started/quick-start-k8s/deployment-build.png"
 url="/images/getting-started/quick-start-k8s/deployment-build.png" 
 alt="Codefresh K8s deployment" 
 caption="Codefresh K8s deployment (click image to enlarge)" 
-max-width="60%" 
+max-width="90%" 
 %}
 
 
@@ -296,11 +332,11 @@ You now have a complete CI/CD pipeline in Codefresh for fully automated builds t
 
 ## What to read next
 
-* [Deploying to Kubernetes with Helm]({{ site.baseurl }}/docs/getting-started/helm-quick-start-guide/)
+* [Deploying to Kubernetes with Helm]({{site.baseurl}}/docs/getting-started/helm-quick-start-guide/)
 * [Kubernetes deployment methods]({{site.baseurl}}/docs/deploy-to-kubernetes/deployment-options-to-kubernetes/)
-* [Introduction to Pipelines]({{ site.baseurl }}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
-* [Internal Docker Registry]({{ site.baseurl }}/docs/docker-registries/codefresh-registry/)
-* [Codefresh YAML]({{ site.baseurl }}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
+* [Introduction to Pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
+* [Internal Docker Registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/)
+* [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
 
 
 
