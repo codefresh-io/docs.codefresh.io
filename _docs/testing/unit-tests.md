@@ -48,7 +48,7 @@ as if you would build the image on your workstation.
   url="/images/testing/unit-testing/unit-tests-in-dockerfile.png"
   alt="Unit tests inside a Dockerfile"
   caption="Unit tests inside a Dockerfile"
-  max-width="90%"
+  max-width="80%"
 %}
 
 A big disadvantage of this unit testing method, is that getting reports out of the docker image is not a straightforward process. On the other hand they are very easy to integrate in any workflow. The Codefresh pipeline simply checks out the code and builds a Dockerfile.
@@ -82,6 +82,57 @@ steps:
 This technique is best used for a very small subset of unit tests that check the overall well being of a Docker image. The bulk of the tests should be executed outside the Docker build process as we will see in the next sections:
 
 ## Running Unit tests using an external Docker image
+
+The recommended way to run unit tests in Codefresh pipelines is to select a Docker image that has all the test tools that you need and define an explicit testing step in your pipeline (usually a [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/)).
+
+Here is an example where a JDK/Maven image is used to run unit tests:
+
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+stages:
+  - prepare
+  - test
+  - package
+steps:
+  main_clone:
+    title: Cloning main repository...
+    stage: prepare
+    type: git-clone
+    repo: 'codefresh-contrib/spring-boot-2-sample-app'
+    revision: master
+    git: github
+  MyUnitTests:
+    title: JUnit tests
+    stage: test
+    image: 'maven:3.5.2-jdk-8-alpine'
+    commands:
+      - mvn -Dmaven.repo.local=/codefresh/volume/m2_repository test
+  MyAppDockerImage:
+    title: Building Docker Image
+    type: build
+    stage: package
+    image_name: spring-boot-2-sample-app
+    working_directory: ./
+    tag: 'non-multi-stage'
+    dockerfile: Dockerfile     
+{% endraw %}
+{% endhighlight %}
+
+The big advantage of this approach is that you can easily replicate your test environment in the Codefresh pipeline by selecting the appropriate image for your tests. You also get a clear overview on the test results. If they fail, the pipeline will automatically stop. You can change this behavior with the [fail_fast]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/#execution-flow) property.
+
+{%
+  include image.html
+  lightbox="true"
+  file="/images/testing/unit-testing/unit-tests-with-external-image.png"
+  url="/images/testing/unit-testing/unit-tests-with-external-image.png"
+  alt="Unit tests with external Docker image"
+  caption="Unit tests with external Docker image"
+  max-width="80%"
+%}
+
+Notice that even if the example above, creates eventually a Docker image, you can still use this way of running unit tests for traditional applications that are not dockerized yet (e.g. VM-based applications).
 
 ## Running Unit tests with the Application Docker image
 
