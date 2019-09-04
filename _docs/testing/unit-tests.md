@@ -7,11 +7,11 @@ redirect_from:
 toc: true
 ---
 With Codefresh, you can easily set your unit tests to run on every build.
-There are several ways to run unit tests within a Codefresh pipeline.
+
 
 >For the purposes of this guide, "unit tests" are the tests that use only the source code of the application and nothing else. If you are interested in running tests with external services (such as databases) then see the page about [integration tests]({{site.baseurl}}/docs/testing/integration-tests/).
 
-Different companies have different types of unit tests and in several cases the type of programming language also affects when/what tests are run. Codefresh supports all test frameworks (including mocking frameworks) for all popular programming languages.
+There are several ways to run unit tests within a Codefresh pipeline.Different companies have different types of unit tests and in several cases the type of programming language also affects when/what tests are run. Codefresh supports all test frameworks (including mocking frameworks) for all popular programming languages.
 
 ## Running Unit tests as part of a Docker build
 
@@ -79,7 +79,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-This technique is best used for a very small subset of unit tests that check the overall well being of a Docker image. The bulk of the tests should be executed outside the Docker build process as we will see in the next sections:
+This technique is best used for a very small subset of unit tests that check the overall well being of a Docker image. The bulk of the tests should be executed outside the Docker build process as we will see in the next sections.
 
 ## Running Unit tests using an external Docker image
 
@@ -136,89 +136,149 @@ Notice that even if the example above, creates eventually a Docker image, you ca
 
 ## Running Unit tests with the Application Docker image
 
+In several cases (especially with dynamic languages) the Docker image that holds the application can also be re-used for unit tests. This is a very common technique for Node, Python and Ruby applications. In this case you can use the [context feature]({{site.baseurl}}/docs/codefresh-yaml/variables/#context-related-variables) of Codefresh to run a unit test step in the image that was created in a previous step:
+
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+stages:
+  - prepare
+  - build
+  - test
+steps:
+  main_clone:
+    title: Cloning main repository...
+    type: git-clone
+    repo: 'codefresh-contrib/python-flask-sample-app'
+    revision: 'master'
+    git: github
+    stage: prepare
+  MyAppDockerImage:
+    title: Building Docker Image
+    type: build
+    stage: build
+    image_name: my-app-image
+    working_directory: ./
+    tag: 'master'
+    dockerfile: Dockerfile
+  MyUnitTests:
+    title: Running Unit tests
+    stage: test
+    image: '${{MyAppDockerImage}}'
+    commands:
+      - python setup.py test     
+{% endraw %}
+{% endhighlight %}
+
+Notice that here we use a [Codefresh variable]({{site.baseurl}}/docs/codefresh-yaml/variables/) as the value of the `image` property in the last step. This will make the unit test execute in the same docker container that was created in the second step of the pipeline.
+
+{%
+  include image.html
+  lightbox="true"
+  file="/images/testing/unit-testing/unit-tests-with-app-image.png"
+  url="/images/testing/unit-testing/unit-tests-with-app-image.png"
+  alt="Reusing the app image for unit tests"
+  caption="Reusing the app image for unit tests"
+  max-width="80%"
+%}
+
+This technique is certainly useful, but can be easily abused if you end up shipping testing tools in your production image (which is not recommended). If you find your production images filled with test tools and libraries it is better to use the technique in the next section which uses a different image for tests.
+
+
 ## Running Unit tests with a dynamic Docker image
+
+The ultimate way of running unit tests in Codefresh is by creating a specific image dedicated to unit tests. If Dockerhub doesn't already contain an image that suits you, you should instead create your own.
+
+This means that your application has *two Dockerfiles*. The main one that holds the application as a deployment artifact and a separate one that holds all the unit test libraries and tools that you need. Here is an example:
+
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+stages:
+  - prepare
+  - 'Test tools'
+  - test
+  - build
+steps:
+  main_clone:
+    title: Cloning main repository...
+    type: git-clone
+    repo: 'codefreshdemo/demochat'
+    revision: 'master'
+    git: github
+    stage: prepare
+  MyUnitTestDockerImage:
+    title: Building Test image
+    type: build
+    stage: 'Test tools'
+    image_name: my-test-image
+    working_directory: ./
+    tag: 'master'
+    dockerfile: Dockerfile.dev
+  MyUnitTests:
+    title: Running Unit tests
+    stage: test
+    image: '${{MyUnitTestDockerImage}}'
+    commands:
+      - npm run test
+  MyAppDockerImage:
+    title: Building Docker Image
+    type: build
+    stage: build
+    image_name: my-app-image
+    working_directory: ./
+    tag: 'master'
+    dockerfile: Dockerfile    
+{% endraw %}
+{% endhighlight %}
+
+Notice that here we create two Docker images.
+
+1. The first docker image is created from `Dockerfile.dev`
+1. Unit tests run in the context of that image (`MyUnitTestDockerImage`)
+1. The production application uses another Dockerfile
+
+{%
+  include image.html
+  lightbox="true"
+  file="/images/testing/unit-testing/unit-tests-with-dedicated-image.png"
+  url="/images/testing/unit-testing/unit-tests-with-dedicated-image.png"
+  alt="Dedicated unit test image"
+  caption="Dedicated unit test image"
+  max-width="80%"
+%}
+
+This is one of the best ways to run unit tests (as well as integration tests) as it allows you to fine tune the test environment while still shipping to production only what is needed.
+
+In the example above we used two different dockerfiles, but you could also use a single dockerfile with multi-stage builds and use the `target` directive to stop the image build process at a previous layer (that has all the testing tools).
 
 ## Creating Test reports
 
+All the ways mentioned above for running unit tests (apart of the first one), can also be used for test reporting.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/test-reports/sample-test-report.png" 
+url="/images/pipeline/test-reports/sample-test-report.png"
+alt="Sample Allure test report" 
+caption="Sample Allure test report"
+max-width="70%"
+%}
+
+Read all about test results and graphs in the [test reports page]({{site.baseurl}}/docs/testing/test-reports/).
+
+
+## What to read next
+
+* [Introduction to Pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
+* [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
+* [On demand environments]({{site.baseurl}}/docs/getting-started/on-demand-environments/)
+* [Integration tests]({{site.baseurl}}/docs/testing/integration-tests/)
 
 
 
 
 
-## Run Unit Tests from the Codefresh UI
-1. Click **Pipelines** (gear icon) on your service.
-{% include image.html lightbox="true" file="/images/a3236fd-2016-10-14_13-28-57.png" url="/images/a3236fd-2016-10-14_13-28-57.png" alt="Add repository" max-width="40%" %}
-2. Define your unit test script.
-{% include image.html lightbox="true" file="/images/e70a039-2016-10-14_13-35-42.png" url="/images/e70a039-2016-10-14_13-35-42.png" alt="Add repository" max-width="40%" %}
-<div class="bd-callout bd-callout-warning" markdown="1">
-##### IMPORTANT:
-
-Make sure your testing frameworks are installed in your service Docker image. For full documentation on Dockerfile commands, visit the [Docker documentation](https://docs.docker.com/engine/reference/builder/).
-</div>
-
-3.  Click **Save** and **Build** the project.
-
-## **What to do next**: 
-Expand the **Running Unit Tests** section to view the actions taken during the test.
-{% include image.html lightbox="true" file="/images/2b48af2-2016-10-14_13-46-53.png" url="/images/2b48af2-2016-10-14_13-46-53.png" alt="Add repository" max-width="40%" %}
-
-## Run unit tests using the codefresh.yml file
-
-{:.text-secondary}
-### What is a YAML file?
-For more information about the ```codefresh.yml``` file, click [here]({{ site.baseurl }}/docs/codefresh-yaml/what-is-the-codefresh-yaml/).
-
-{:start="1"}
-1. Add a unit-test step to your ```codefresh.yml``` file.
-
-  Example: `codefresh.yml`
-{% highlight yaml %}
-version: '1.0'
-
-steps:
-  build-prj-name:
-    type: build
-    description: codefresh example
-    image-name: codefreshexamples/expressangular
-    dockerfile: Dockerfile
-    tag: latest
-  unit-tests:
-    image: node:latest # image that contains installed tools for performing test commands
-    commands:
-      - echo $(date)
-{% endhighlight %}
-
-{:start="2"} 
-2. In your pipeline switch to the **Use YML build**
-{% include image.html lightbox="true" file="/images/dd47675-codefresh_yml_build.png" url="/images/dd47675-codefresh_yml_build.png" alt="Codefresh YML Build" max-width="40%" %}
-
-{:start="3"}
-3. Click **Save** and **Build**
-{% include image.html lightbox="true" file="/images/eca7ebb-2016-10-14_14-10-09.png" url="/images/eca7ebb-2016-10-14_14-10-09.png" alt="Codefresh YML Build" max-width="40%" %}
-
-{:.text-secondary}
-### **What to do next**: 
-Expand the **Running Unit Tests** section to view the actions taken during the test.
-
-## Run tests with composition
-A **Composition** is a number of containers that define a micro-services based application. For example, it can include all services, or a sub-subset of services.
-
-{:start="1"}
-1. Select the `Run tests with composition` check box.
-{% include image.html lightbox="true" file="/images/d4b5997-6c54eef-2016-10-13_20-09-41.png" url="/images/d4b5997-6c54eef-2016-10-13_20-09-41.png" alt="Codefresh YML Build" max-width="40%" %}
-
-{:start="2"}
-2. Select a composition.
-{% include image.html lightbox="true" file="/images/fde5fc0-acce127-2016-10-13_20-15-53.png" url="/images/fde5fc0-acce127-2016-10-13_20-15-53.png" alt="Codefresh YML Build" max-width="40%" %}
-
-{:start="3"}
-3. There are two ways to run with composition: 
-   *    **Attach to Composition** - The image will be attached to the composition as a new service named `cf_unit_test` and the script will run inside it.
-   *    **Replace service** - Choose a candidate service from your composition which Codefresh will use to run your unit tests on. Notice that the image of that candidate will be replaced with the built image from the previous step and the command will be overridden by the unit test script. 
-
-{% include image.html lightbox="true" file="/images/5052f19-image4.png" url="/images/5052f19-image4.png" alt="Selecting the Replace Service option" caption="Selecting the Replace Service option" max-width="40%" %}
-
-{:start="4"}
-4. In Pipelines your service click **Save** and build your project.
-
-##### **Result**: In the log of process “Unit tests”, we can see which actions the test makes.
