@@ -6,12 +6,21 @@ redirect_from:
   - /docs/unit-tests/
 toc: true
 ---
-With Codefresh, you can easily set your unit tests to run on every build.
+With Codefresh, you can easily run  unit tests for every commit or pull request.
 
 
 >For the purposes of this guide, "unit tests" are the tests that use only the source code of the application and nothing else. If you are interested in running tests with external services (such as databases) then see the page about [integration tests]({{site.baseurl}}/docs/testing/integration-tests/).
 
-There are several ways to run unit tests within a Codefresh pipeline.Different companies have different types of unit tests and in several cases the type of programming language also affects when/what tests are run. Codefresh supports all test frameworks (including mocking frameworks) for all popular programming languages.
+Different companies have different types of unit tests and in several cases the type of programming language also affects when/what tests are run. Codefresh supports all test frameworks (including mocking frameworks) for all popular programming languages.
+
+In this page we will see 4 ways of running unit tests in Codefresh:
+
+1. Running unit tests in a dockerfile (recommended only for smoke tests)
+1. Running unit tests with an external image (best for traditional applications)
+1. Running unit tests in the application image (not recommended, but very popular)
+1. Running unit tests using a special testing image (the recommended solution)
+
+
 
 ## Running Unit tests as part of a Docker build
 
