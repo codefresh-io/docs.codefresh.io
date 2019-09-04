@@ -179,7 +179,7 @@ steps:
 {% endraw %}         
 {% endhighlight %}
 
-Use this technique only as a last resort. It is better if the Dockerfile existing as an actual file in source control.
+Use this technique only as a last resort. It is better if the Dockerfile exists as an actual file in source control.
 
 
 ## Automatic pushing

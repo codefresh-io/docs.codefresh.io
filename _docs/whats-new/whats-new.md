@@ -8,6 +8,10 @@ toc: true
 ---
 Recent Codefresh updates:
 
+### September 2019
+
+- Unit testing guide - [documentation]({{site.baseurl}}/docs/testing/unit-tests)
+
 ### August 2019
 
 - Sidecar services in pipelines - [documentation]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/#using-extra-services-in-a-pipeline)
