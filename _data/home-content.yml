@@ -45,7 +45,6 @@
   - title: Scala
     localurl: /docs/learn-by-example/scala/scala-hello-world/
   - title: Android (Mobile)
-    new: true
     localurl: /docs/learn-by-example/mobile/android/  
   - title: Selenium
     localurl: /docs/learn-by-example/general/selenium-test/       
@@ -63,6 +62,9 @@
     localurl: /docs/codefresh-yaml/variables/
   - title: Step conditions
     localurl: /docs/codefresh-yaml/conditional-execution-of-steps/
+  - title: Service Containers
+    new: true
+    localurl: /docs/codefresh-yaml/service-containers/    
   - title: Parallel Pipelines
     localurl: /docs/codefresh-yaml/advanced-workflows/    
   - title: Annotations
@@ -131,7 +133,6 @@
   - title: Helm Quick start guide
     localurl: /docs/getting-started/helm-quick-start-guide/
   - title: Helm best practices
-    new: true
     localurl: /docs/new-helm/helm-best-practices/    
   - title: Using Helm in a Codefresh pipeline
     localurl: /docs/new-helm/using-helm-in-codefresh-pipeline/
@@ -210,7 +211,6 @@
   - title: Codefresh behind the firewall
     localurl: /docs/enterprise/behind-the-firewall  
   - title: Codefresh Runner
-    new: true
     localurl: /docs/enterprise/codefresh-runner     
   - title: Enterprise Account Management
     localurl: /docs/enterprise/ent-account-mng

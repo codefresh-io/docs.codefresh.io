@@ -10,6 +10,8 @@ toc: true
 ---
 The composition step runs a Docker Composition as a means to execute finite commands in a more complex interaction of services.
 
+>Note that while composition steps are still supported, the recommended way to run integrations tests going forward is with [service containers]({{site.baseurl}}/docs/codefresh-yaml/service-containers/).
+
 ## Motivation for Compositions
 
 The primary purpose of compositions is to run integration tests or any kind of tests that require multiple services for their execution.
