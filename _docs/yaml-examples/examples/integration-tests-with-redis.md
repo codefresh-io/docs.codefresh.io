@@ -1,6 +1,6 @@
 ---
 title: "Integration Tests with Redis"
-description: ""
+description: "Launching a Redis service container"
 group: yaml-examples
 sub_group: examples
 redirect_from:
@@ -9,79 +9,105 @@ redirect_from:
 toc: true
 ---
 
-Using this repository, we'll help you get up to speed with basic functionality such as: compiling, testing and building Docker images.
+In this example we will see a Python project that is using Redis for storing a web counter. For the integration test phase we will launch both the application and an instance of Redis in order to run a simple integration test.
 
-This project uses `Python, Redis` to build an application which will eventually become a distributable Docker image. 
+{% include image.html 
+lightbox="true" 
+file="/images/examples/integration-tests/redis-integration-tests.png"
+url="/images/examples/integration-tests/redis-integration-tests.png"
+alt="Redis integration tests with Codefresh"
+caption="Redis integration tests with Codefresh"
+max-width="90%"
+%}
 
-## Looking around
-In the root of this repository you'll find a file named codefresh.yml, this is our build descriptor and it describes the different steps that comprise our process. Let's quickly review the contents of this file:
+The application will be launched with a hostname `web` while Redis will be at `redis:6379`.
 
-  `codefresh.yml`
+## The example Python project
+
+You can see the example project at [https://github.com/codefreshdemo/example_python_redis](https://github.com/codefreshdemo/example_python_redis). The repository contains the Python source code and a test script.
+
+You can play with it locally by using Docker compose to launch both the applicaton and the Redis datastore. 
+
+## Create a pipeline with Redis integration tests
+
+Here is the whole pipeline:
+
+ `codefresh.yml`
 {% highlight yaml %}
-version: '1.0'
+{% raw %}
+version: "1.0"
+stages:
+  - prepare
+  - build
+  - test
 steps:
-  build_prj:
-    type: build
-    dockerfile: Dockerfile
-    image_name: web
-    tag: {% raw %}${{CF_BRANCH}}{% endraw %}
-
-  build_test:
-    type: build
-    dockerfile: Dockerfile.test
-    image_name: test
-    tag: {% raw %}${{CF_BRANCH}}{% endraw %}
-
-  unit_test:
-    type: composition
-    composition:
-      version: '2'
-      services:
+  main_clone:
+    type: "git-clone"
+    description: "Cloning main repository..."
+    repo: "codefreshdemo/example_python_redis"
+    revision: "master"
+    git: github
+    stage: prepare
+  build_app_image:
+    title: "Building Docker Image"
+    type: "build"
+    image_name: "python-redis-app"
+    tag: "latest"
+    dockerfile: "Dockerfile"
+    stage: build
+  build_test_image:
+    title: "Building Docker Test Image"
+    type: "build"
+    image_name: "python-redis-app-tests"
+    tag: "latest"
+    dockerfile: "Dockerfile.test"
+    stage: test
+  run_integration_tests:
+    title: "Running integration tests"
+    stage: test
+    image: '${{build_test_image}}'
+    commands:
+      # Redis and app are certainly up at this point
+      - sh ./test.sh
+    services:
+      composition:
+        redis:
+          image: redis:latest
+          ports:
+            - 6379
         web:
-          image: {% raw %}${{build_prj}}{% endraw %}
-          links:
-            - redis
+          image: '${{build_app_image}}'
           ports:
             - 80
-        redis:
-          image: redis
-    composition_candidates:
-      test:
-        image: {% raw %}${{build_test}}{% endraw %}
-{% endhighlight %} 
-  
-<div class="bd-callout bd-callout-info" markdown="1">
-##### Example
+      readiness:
+        timeoutSeconds: 30
+        periodSeconds: 15
+        image: '${{build_test_image}}'
+        commands:
+          - "nslookup redis"
+          - "nslookup web"
+          - "nc -z redis 6379"
+          - "nc -z web 80"
+{% endraw %}
+{% endhighlight %}
 
-Just head over to the example [__repository__](https://github.com/codefreshdemo/example_python_redis){:target="_blank"} in Github.
-</div>
+This pipeline does the following:
 
-In this test script, we wait for `web` service and `database` is ready for testing
+1. Clones the source code with a [Git clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)
+1. [Builds a Docker image]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) with the application itself
+1. Builds a helper image that contains `nc` and `curl` that will be used for the integration tests
+1. Runs the test script while launching two [service containers]({{site.baseurl}}/docs/codefresh-yaml/service-containers/) (one for the app and one for Redis)
 
-  `script.sh`
+Notice that we also use the `readiness` property in the testing phase so that we can verify that both the application
+as well as Redis are up, before running the tests.
+
+## The integration test script
+
+The integration test is very simple. It just uses `curl` to hit the Python endpoint and `grep` to check for a well known string.
+
+  `test.sh`
 {% highlight sh %}
 #!bin/bash
-
-wait_for_db() {
-  nslookup redis
-  if ! nc -z redis 6379; then
-    echo "Waiting for db..."
-    sleep 2
-    wait_for_db
-  fi
-}
-
-wait_for_web() {
-  nslookup web
-  if ! nc -z web 80; then
-    echo "Waiting for web..."
-    sleep 2
-    wait_for_web
-  fi
-}
-
-wait_for_db
-wait_for_web
 
 if curl web | grep -q '<b>Visits:</b> '; then
   echo "Tests passed!"
@@ -91,14 +117,12 @@ else
   exit 1
 fi
 {% endhighlight %} 
-  
-## Expected result
 
-{% include image.html lightbox="true" file="/images/6a3d9d1-codefresh_unit_test_redis.png" url="/images/6a3d9d1-codefresh_unit_test_redis.png" alt="Codefresh unit test Redis" max-width="65%" %}
+Notice that we use the helper image both for running the test (because of `curl`) and for testing the readiness (because of `nc`). In a more complex application these could be two completely different images.
 
 ## What to read next
 
-- [Integration Tests with Redis]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-redis/)
+- [Service Containers]({{site.baseurl}}/docs/codefresh-yaml/service-containers/)
 - [Integration Tests with Postgres]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-postgres/)
 - [Integration Tests with MySQL]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mysql/)
 - [Integration Tests with Mongo]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mongo/)
