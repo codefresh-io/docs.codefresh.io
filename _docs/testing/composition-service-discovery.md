@@ -1,7 +1,10 @@
 ---
 title: "Composition Service Discovery (Experimental)"
 description: ""
-group: on-demand-test-environment
+group: testing
+redirect_from:
+  - /docs/integration-tests/
+  - /docs/on-demand-test-environment/composition-service-discovery/
 toc: true
 ---
 Codefresh enables you to launch multiple instances of the same composition utilizing Docker.

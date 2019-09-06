@@ -1,14 +1,14 @@
 ---
-title: "Launch Composition at The End of The Build"
+title: "Automatic preview environments"
 excerpt: ""
 description: ""
 excerpt: ""
-group: getting-started
+group: testing
 redirect_from:
   - /docs/launch-composition/
+  - /docs/on-demand-test-environment/launch-composition-at-the-end-of-the-build/
 toc: true
 old_url: /docs/launch-composition
-was_hidden: true
 ---
 If your service is one of many micro-services, after all your automatic tests on your service you would probably want to check the new service with your whole system. In this case you can launch the composition of your system as part of your build. At the end of this build you would be able to open the composition.
 

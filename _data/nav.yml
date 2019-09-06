@@ -247,6 +247,7 @@
           url: "/quay-io"
         - title: "Other Registries"
           url: "/other-registries"
+
 - title: "Quality Assurance"
   url: "/testing"
   pages:
@@ -255,11 +256,18 @@
     - title: "Integration Tests"
       url: "/integration-tests"
     - title: "Test Reports"
-      url: "/test-reports"     
-    - title: SonarQube Scanning
-      url: "/sonarqube-integration"   
+      url: "/test-reports" 
+    - title: Creating compositions
+      url: "/create-composition"
+    - title: Dynamic preview environments
+      url: "/automatic-preview-environments"
+    - title: Composition Service Discovery 
+      url: "/composition-service-discovery"                
     - title: Security Scanning
-      url: "/security-scanning" 
+      url: "/security-scanning"
+    - title: SonarQube Scanning
+      url: "/sonarqube-integration"        
+
 - title: Deploy to Kubernetes
   url: "/deploy-to-kubernetes"
   pages:
@@ -314,22 +322,6 @@
       url: "/elastic-beanstalk"
     - title: Microsoft Azure
       url: "/microsoft-azure"
-
-
-
-- title: On Demand Test Environment
-  url: "/on-demand-test-environment"
-  pages:
-    - title: Create composition
-      url: "/create-composition"
-    - title: Test Your Feature
-      url: "/test-your-feature"
-    - title: Share Your Environment with Your Team
-      url: "/share-your-environment-with-your-team"
-    - title: Composition Service Discovery (Experimental)
-      url: "/composition-service-discovery"
-
-
 
 - title: Integrations
   url: "/integrations"

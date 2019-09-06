@@ -2,10 +2,16 @@
 title: "Create composition"
 description: "How to create environment configurations in Codefresh"
 
-group: on-demand-test-environment
+group: testing
 redirect_from:
   - /docs/on-demand-test-environment/
   - /docs/create-composition/
+  - /docs/on-demand-test-environment/create-composition/
+  - /docs/share-environment-with-your-test
+  - /docs/share-environment-with-your-test/
+  - /docs/on-demand-test-environment/share-environment-with-your-test
+  - /docs/on-demand-test-environment/share-environment-with-your-test/ 
+  - /docs/test-your-feature/     
 toc: true
 ---
 
@@ -204,7 +210,71 @@ alt="codefresh_first_composition.png"
 max-width="70%"
 %}
 
+## Launching manually compositions
 
 Once you are ready click the small "rocket" button to launch your composition. This will create a temporary
 test environment in your Codefresh account that you can use to inspect your application.
- 
+
+{:start="1"}
+1. From the left sidebar expand the *Docker Swarm* menu and click the **Compositions** sub menu. Then select a composition.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/compositions/composition-list.png" 
+url="/images/compositions/composition-list.png"
+alt="Composition list" 
+max-width="70%"
+%}
+
+{:start="2"}
+2. Click the **Launch** icon button.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/e620ba6-compose-launch-button.png" 
+url="/images/e620ba6-compose-launch-button.png"
+alt="compose-launch-button.png" 
+max-width="70%"
+caption="click on image to enlarge"
+%}
+
+{:start="3"}
+3. Review the log to verify that the launch completed successfully.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/b84878c-composition-launch-log.png" 
+url="/images/b84878c-composition-launch-log.png"
+alt="composition-launch-log.png" 
+max-width="70%"
+%}
+
+## Sharing the environment URL
+
+After you successfully spin up a composition, click the **Environments** view icon in the left pane, to view the record for the running environment and all containers for the environment.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/compositions/environment-running.png" 
+url="/images/compositions/environment-running.png"
+alt="environment-running.png" 
+max-width="70%"
+caption="Active test environments"
+alt="Active test environments"
+%}
+
+Click the **Hashtag** icon to share your environment with your team.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/1fbb802-Screen_Shot_2017-01-31_at_2.58.58_PM.png" 
+url="/images/1fbb802-Screen_Shot_2017-01-31_at_2.58.58_PM.png"
+alt="Sharing environment link" 
+caption="Sharing environment link" 
+max-width="70%"
+%}

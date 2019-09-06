@@ -103,11 +103,20 @@
   - title: Integration Tests
     localurl: /docs/testing/integration-tests/ 
   - title: Test reports
-    localurl: /docs/testing/test-reports/  
-  - title: SonarQube Scanning
-    localurl: /docs/testing/sonarqube-integration/   
+    localurl: /docs/testing/test-reports/
+  - title: Preview environment tutorial
+    localurl: /docs/getting-started/on-demand-environments/      
+  - title: Creating compositions
+    localurl: /docs/testing/create-composition/
+  - title: Dynamic preview environments
+    localurl: /docs/testing/automatic-preview-environments/
+  - title: Composition Service Discovery
+    localurl: /docs/testing/composition-service-discovery/  
   - title: Security Scanning
     localurl: /docs/testing/security-scanning/ 
+  - title: SonarQube Scanning
+    localurl: /docs/testing/sonarqube-integration/
+  
 - title: Kubernetes
   icon: images/home-icons/k8s.png
   url: ''
@@ -169,19 +178,6 @@
   - title: Deploy to Nomad
     new: true 
     localurl: /docs/yaml-examples/examples/nomad/
-
-- title: Dynamic test environments
-  icon: images/home-icons/demand.png
-  url: ''
-  links:
-  - title: On-demand environment tutorial
-    localurl: /docs/getting-started/on-demand-environments/
-  - title: Create composition
-    localurl: /docs/on-demand-test-environment/create-composition/
-  - title: Run environment on any branch
-    localurl: /docs/on-demand-test-environment/test-your-feature/
-  - title: Share environment with your team
-    localurl: /docs/on-demand-test-environment/share-your-environment-with-your-team/
  
 - title: Integrations
   icon: images/home-icons/integrations.png
