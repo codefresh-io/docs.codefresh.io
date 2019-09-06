@@ -1,5 +1,5 @@
 ---
-title: "Populate a database with existing data - copied"
+title: "Populate a database with existing data"
 description: ""
 group: yaml-examples
 sub_group: examples

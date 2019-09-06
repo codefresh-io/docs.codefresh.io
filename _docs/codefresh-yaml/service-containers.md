@@ -377,6 +377,7 @@ steps:
     description: "Cloning main repository..."
     repo: "kostis-codefresh/my-rails-app"
     revision: "master"
+    git: github
   build_image:
     title: "Building Docker Image"
     type: "build"
@@ -405,6 +406,66 @@ steps:
 {% endhighlight %}
 
 In summary `readiness` make sure that your services are actually up before you use them in a Codefresh pipeline.
+
+## Preloading data to databases
+
+A very common scenario when using databases in integration tests is the need to preload some test data in the database.
+While you could do that in a normal pipeline step, sidecar services have a special `setup` block for this purpose. This way not only you can make sure that the database is up (using the `readiness` property explained in the previous section) but also that it is preloaded with the correct data.
+
+To use this capabily add a `setup` block in your pipeline service container:
+
+ `codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: "1.0"
+steps:
+  main_clone:
+    type: "git-clone"
+    description: "Cloning main repository..."
+    repo: "kostis-codefresh/my-rails-app"
+    revision: "master"
+    git: github
+  build_image:
+    title: "Building Docker Image"
+    type: "build"
+    image_name: "my-rails-app"
+    tag: "latest"
+    dockerfile: "Dockerfile"
+  run_integration_tests:
+    image: '${{build_image}}'
+    commands:
+      # PostgreSQL is certainly up at this point and has the correct data
+      - rails test
+    services:
+      composition:
+        my_postgresql_db:
+          image: postgres:latest
+          ports:
+            - 5432 
+      readiness:
+        timeoutSeconds: 30
+        periodSeconds: 15
+        image: 'postgres:latest'
+        commands:
+          - "pg_isready -h my_postgresql_db"   
+      setup:
+        image: 'postgres:latest'
+        commands:
+          - "wget my-staging-server.exaple.com/testdata/preload.sql"
+          - "psql -h my_postgresql_db < testdata/preload.sql" 
+{% endraw %}      
+{% endhighlight %}
+
+Notice that in that case the sequence of events is the following
+
+1. Codefresh will launch the container image(s) mentioned in the composition block
+1. The `readiness` block will run until the service image is ready to accept connections
+1. The `setup` block will run and preload data or setup any custom commands you have placed in the property
+1. The actual pipeline step will now run with the service container attached in the same network.
+
+
+
+
 
 
 ## What to read next
