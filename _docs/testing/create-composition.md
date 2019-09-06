@@ -11,6 +11,8 @@ redirect_from:
   - /docs/share-environment-with-your-test/
   - /docs/on-demand-test-environment/share-environment-with-your-test
   - /docs/on-demand-test-environment/share-environment-with-your-test/ 
+  - /docs/on-demand-test-environment/share-your-environment-with-your-team/
+  - /docs/on-demand-test-environment/test-your-feature/
   - /docs/test-your-feature/     
 toc: true
 ---

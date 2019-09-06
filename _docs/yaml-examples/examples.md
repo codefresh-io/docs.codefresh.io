@@ -66,7 +66,7 @@ Codefresh has support for both [unit]({{site.baseurl}}/docs/testing/unit-tests/)
 
 ## Preview environments
 
-Codefresh can automatically launch environments (powered by Docker swarm) to [preview a Pull Reqest or feature]({{site.baseurl}}/docs/getting-started/on-demand-environments/). The definition of the environment can come from an existing composition, a docker-compose file or an inline YAML. Preview environments can be launched manually or [automatically from pipelines]({{site.baseurl}}/docs/codefresh-yaml/steps/launch-composition/).
+Codefresh can automatically launch environments (powered by Docker swarm) to [preview a Pull Reqest or feature]({{site.baseurl}}/docs/getting-started/on-demand-environments/). The definition of the environment can come from an [existing composition]({{site.baseurl}}/docs/testing/create-composition/), a docker-compose file or an inline YAML. Preview environments can be launched manually or [automatically from pipelines]({{site.baseurl}}/docs/codefresh-yaml/steps/launch-composition/).
 
 - [MongoDB preload data]({{site.baseurl}}/docs/yaml-examples/examples/import-data-to-mongodb/) 
 - [NodeJS + Angular2 + MongoDB]({{site.baseurl}}/docs/yaml-examples/examples/nodejs-angular2-mongodb/) 

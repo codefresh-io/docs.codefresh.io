@@ -5,6 +5,7 @@ group: testing
 redirect_from:
   - /docs/integration-tests/
   - /docs/integration-test-script/
+  - /docs/testing/run-unit-test-with-db-composition/
 toc: true
 ---
 If your service is part of a micro-service type of application, Codefresh enables you to run your image as part of a composition, and then run your integration tests against it. There are two prerequisites for this step:
