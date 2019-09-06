@@ -107,7 +107,8 @@ caption="Using an existing composition"
 max-width="70%"
 %}
 
-This makes very easy to reuse compositions that you have already defined for other reasons in the Codefresh UI
+This makes very easy to reuse compositions that you have already defined for other reasons in the Codefresh UI.
+
 
 ## Running services for the duration of the pipeline
 
@@ -219,6 +220,48 @@ steps:
 {% endhighlight %}
 
 In this pipeline, the Redis instance is only launched during the Unit test step, while the MongoDB service is activate only during integration tests. 
+
+You can also use a `docker-compose.yml` file that you might have in your git repository.
+
+ `codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: "1.0"
+steps:
+  main_clone:
+    type: "git-clone"
+    description: "Cloning main repository..."
+    repo: "kostis-codefresh/my-java-example"
+    revision: "master"
+    git: github
+  build_image:
+    title: "Building Docker Image"
+    type: "build"
+    image_name: "my-java-app"
+    dockerfile: "Dockerfile"
+    tag: latest
+  my_unit_tests:
+    image: '${{build_image}}'
+    title: "Unit tests"
+    commands:
+      - 'echo start testing my app'
+    services:
+      composition:
+        my_redis_service:
+          image: 'redis:latest'
+          ports:
+            - 6379
+  my_integration_tests:
+    image: '${{build_image}}'
+    title: "Integration tests"
+    commands:
+      - 'echo start testing my app'
+    services:
+      composition: 'docker-compose.yml'
+{% endraw %}      
+{% endhighlight %}
+
+Note that in this case the `docker-compose.yml` file must mention [speficic images](https://docs.docker.com/compose/compose-file/#image) (and not use [build propertes](https://docs.docker.com/compose/compose-file/#build)).
 
 
 ## Launching a custom service
