@@ -194,6 +194,18 @@
         - title: Populate a database with existing data
           url: "/populate-a-database-with-existing-data"
 
+
+        - title: Import data to MongoDB
+          url: "/import-data-to-mongodb"
+        - title: NodeJS + Angular2 + MongoDB
+          url: "/nodejs-angular2-mongodb"
+        - title: Secure a Docker Container Using HTTP Basic Auth
+          url: "/secure-a-docker-container-using-http-basic-auth"
+        - title: Spring Boot + Kafka + Zookeeper
+          url: "/spring-boot-kafka-zookeeper"
+        - title: Web terminal
+          url: "/web-terminal"  
+
         - title: Use kubectl as part of Freestyle step
           url: "/use-kubectl-as-part-of-freestyle-step"
         - title: Deploy with Helm
@@ -316,19 +328,6 @@
       url: "/share-your-environment-with-your-team"
     - title: Composition Service Discovery (Experimental)
       url: "/composition-service-discovery"
-    - title: Example compositions
-      url: "/example-compositions"
-      sub-pages:
-        - title: Web terminal
-          url: "/web-terminal"
-        - title: Import data to MongoDB
-          url: "/import-data-to-mongodb"
-        - title: NodeJS + Angular2 + MongoDB
-          url: "/nodejs-angular2-mongodb"
-        - title: Secure a Docker Container Using HTTP Basic Auth
-          url: "/secure-a-docker-container-using-http-basic-auth"
-        - title: Spring Boot + Kafka + Zookeeper
-          url: "/spring-boot-kafka-zookeeper"
 
 
 

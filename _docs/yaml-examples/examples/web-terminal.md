@@ -1,10 +1,11 @@
 ---
 title: "Web terminal"
 description: ""
-group: on-demand-test-environment
-sub_group: example-compositions
+group: yaml-examples
+sub_group: examples
 redirect_from:
   - /docs/web-terminal/
+  - /docs/on-demand-test-environment/example-compositions/web-terminal/
 toc: true
 ---
 This example shows you how to access containers running in a Codefresh standup environment.

@@ -1,10 +1,11 @@
 ---
 title: "NodeJS + Angular2 + MongoDB"
 description: ""
-group: on-demand-test-environment
-sub_group: example-compositions
+group: yaml-examples
+sub_group: examples
 redirect_from:
   - /docs/nodejs-angular2-mongodb/
+  - /docs/on-demand-test-environment/example-compositions/nodejs-angular2-mongodb/  
 toc: true
 ---
 This tutorial will walk you through the process of adding the following:

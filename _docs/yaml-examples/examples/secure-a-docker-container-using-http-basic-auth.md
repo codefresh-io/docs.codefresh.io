@@ -1,11 +1,12 @@
 ---
 title: "Secure a Docker Container Using HTTP Basic Auth"
 description: ""
-group: on-demand-test-environment
-sub_group: example-compositions
+group: yaml-examples
+sub_group: examples
 redirect_from:
   - /docs/securing-docker-container-with-http-basic-auth/
   - /docs/on-demand-test-environment/examples-compositions/securing-docker-container-with-http-basic-auth/
+  - /docs/on-demand-test-environment/example-compositions/secure-a-docker-container-using-http-basic-auth/ 
 toc: true
 ---
 Before making a product publicly available, you might want to restrict access to certain users. These are some options to accomplish this goal:

@@ -64,6 +64,16 @@ Codefresh has support for both [unit]({{site.baseurl}}/docs/testing/unit-tests/)
 - [Launching a Composition and Defining a Service Environment Variables using a file]({{site.baseurl}}/docs/yaml-examples/examples/launching-a-composition-and-defining-a-service-environment-variables-using-a-file) 
 - [Populate a Database with Existing Data]({{site.baseurl}}/docs/yaml-examples/examples/populate-a-database-with-existing-data) 
 
+## Preview environments
+
+Codefresh can automatically launch environments (powered by Docker swarm) to [preview a Pull Reqest or feature]({{site.baseurl}}/docs/getting-started/on-demand-environments/). The definition of the environment can come from an existing composition, a docker-compose file or an inline YAML. Preview environments can be launched manually or [automatically from pipelines]({{site.baseurl}}/docs/codefresh-yaml/steps/launch-composition/).
+
+- [MongoDB preload data]({{site.baseurl}}/docs/yaml-examples/examples/import-data-to-mongodb/) 
+- [NodeJS + Angular2 + MongoDB]({{site.baseurl}}/docs/yaml-examples/examples/nodejs-angular2-mongodb/) 
+- [NGINX Basic Auth]({{site.baseurl}}/docs/yaml-examples/examples/secure-a-docker-container-using-http-basic-auth/)
+- [Spring Boot + Kafka + Zookeeper]({{site.baseurl}}/docs/yaml-examples/examples/spring-boot-kafka-zookeeper/)
+- [Web terminal]({{site.baseurl}}/docs/yaml-examples/examples/web-terminal/)
+
 ## Deployment
 
 Codefresh can deploy to any platform such as VMs, FTP/SSH/S3 sites, app servers but of course it has great support for [Kubernetes clusters]({{site.baseurl}}/docs/deploy-to-kubernetes/deployment-options-to-kubernetes/) and [Helm releases]({{site.baseurl}}/docs/new-helm/helm-releases-management/):

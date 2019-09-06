@@ -2,10 +2,11 @@
 
 title: "Import data to MongoDB"
 description: ""
-group: on-demand-test-environment
-sub_group: example-compositions
+group: yaml-examples
+sub_group: examples
 redirect_from:
   - /docs/import-data-to-mongodb-in-composition/
+  - /docs/on-demand-test-environment/example-compositions/import-data-to-mongodb/   
 toc: true
 ---
 

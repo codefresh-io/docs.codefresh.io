@@ -1,10 +1,11 @@
 ---
 title: "Spring Boot + Kafka + Zookeeper"
 description: ""
-group: on-demand-test-environment
-sub_group: example-compositions
+group: yaml-examples
+sub_group: examples
 redirect_from:
   - /docs/spring-boot-kafka-zookeeper/
+  - /docs/on-demand-test-environment/example-compositions/spring-boot-kafka-zookeeper/  
 toc: true
 ---
 This project uses `Java, Spring Boot, Kafka, Zookeeper` to show you how to integrate these services in the composition.
