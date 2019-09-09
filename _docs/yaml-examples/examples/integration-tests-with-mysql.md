@@ -5,7 +5,10 @@ group: yaml-examples
 sub_group: examples
 redirect_from:
   - /docs/nodejsmysql/
-  - /docs/testing/unit-tests/unit-tests-with-mysql/     
+  - /docs/testing/unit-tests/unit-tests-with-mysql/
+  - /docs/setup-unit-tests/
+  - /docs/testing/unit-tests/unit-tests-with-composition/
+  - /docs/run-unit-tests-with-composition/         
 toc: true
 ---
 

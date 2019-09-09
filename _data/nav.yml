@@ -165,13 +165,11 @@
 
         - title: Run Unit Tests
           url: "/run-unit-tests"
-        - title: Run Unit Tests with composition
-          url: "/run-unit-tests-with-composition"
+
         - title: Run Integration Tests
           url: "/run-integration-tests"
 
-        - title: Run Integration Tests with Composition
-          url: "/integration-tests-with-composition"
+
         - title: Run Integration Tests with a DB
           url: "/integration-tests-with-database"
         - title: Run Integration Tests with Mongo

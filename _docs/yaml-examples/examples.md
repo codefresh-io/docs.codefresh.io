@@ -49,10 +49,7 @@ Codefresh has native support for [building]({{site.baseurl}}/docs/codefresh-yaml
 Codefresh has support for both [unit]({{site.baseurl}}/docs/testing/unit-tests/) and [integration tests]({{site.baseurl}}/docs/testing/integration-tests/) as well as [test reporting]({{site.baseurl}}/docs/testing/test-reports/).
 
 - [Run Unit Tests]({{site.baseurl}}/docs/yaml-examples/examples/run-unit-tests) 
-- [Run Unit Tests with Composition]({{site.baseurl}}/docs/yaml-examples/examples/run-unit-tests-with-composition) 
-
 - [Run Integration Tests]({{site.baseurl}}/docs/yaml-examples/examples/run-integration-tests/) 
-- [Run Integration Tests with Composition]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-composition/) 
 - [Run Integration Tests with Database]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-database/) 
 - [Run Integration Tests with MongoDB]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mongo/) 
 - [Run Integration Tests with MySQL]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mysql/) 

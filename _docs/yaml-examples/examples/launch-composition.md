@@ -84,4 +84,4 @@ max-width="90%"
 
 * [Unit tests]({{site.baseurl}}/docs/yaml-examples/examples/run-integration-tests/)
 * [Integration tests]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-database/)
-* [Integration tests with composition]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-composition/)
+* [Preview environments]({{site.baseurl}}/docs/getting-started/on-demand-environments/)
