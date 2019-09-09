@@ -169,9 +169,6 @@
         - title: Run Integration Tests
           url: "/run-integration-tests"
 
-
-        - title: Run Integration Tests with a DB
-          url: "/integration-tests-with-database"
         - title: Run Integration Tests with Mongo
           url: "/integration-tests-with-mongo"
         - title: Run Integration Tests with MySQL

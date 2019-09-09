@@ -8,7 +8,10 @@ redirect_from:
   - /docs/testing/unit-tests/unit-tests-with-mysql/
   - /docs/setup-unit-tests/
   - /docs/testing/unit-tests/unit-tests-with-composition/
-  - /docs/run-unit-tests-with-composition/         
+  - /docs/run-unit-tests-with-composition/
+  - /docs/unit-tests-with-database/
+  - /docs/testing/unit-tests/unit-tests-with-database/
+  - /docs/yaml-examples/examples/integration-tests-with-database/             
 toc: true
 ---
 

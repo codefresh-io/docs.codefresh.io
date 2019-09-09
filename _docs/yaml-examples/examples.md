@@ -50,7 +50,6 @@ Codefresh has support for both [unit]({{site.baseurl}}/docs/testing/unit-tests/)
 
 - [Run Unit Tests]({{site.baseurl}}/docs/yaml-examples/examples/run-unit-tests) 
 - [Run Integration Tests]({{site.baseurl}}/docs/yaml-examples/examples/run-integration-tests/) 
-- [Run Integration Tests with Database]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-database/) 
 - [Run Integration Tests with MongoDB]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mongo/) 
 - [Run Integration Tests with MySQL]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mysql/) 
 - [Run Integration Tests with PostgreSQL]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-postgres/) 
