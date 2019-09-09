@@ -11,6 +11,11 @@ Recent Codefresh updates:
 ### September 2019
 
 - Unit testing guide - [documentation]({{site.baseurl}}/docs/testing/unit-tests)
+- Integration test example - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/run-integration-tests/)
+- Redis Integration test example - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-redis/)
+- MongoDB Integration test example - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mongo/)
+- MySQL Integration test example - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mysql/)
+- PostgreSQL Integration test example - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-postgres/)
 
 ### August 2019
 

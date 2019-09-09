@@ -105,6 +105,7 @@ Notice that we also use the `readiness` property in the testing phase so that we
 ## What to read next
 
 - [Service Containers]({{site.baseurl}}/docs/codefresh-yaml/service-containers/)
+- [Integration test example]({{site.baseurl}}/docs/yaml-examples/examples/run-integration-tests/)
 - [Integration Tests with Postgres]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-postgres/)
 - [Integration Tests with Redis]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-redis/)
 - [Integration Tests with Mongo]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mongo/)
