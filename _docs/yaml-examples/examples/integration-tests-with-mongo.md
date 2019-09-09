@@ -1,6 +1,6 @@
 ---
 title: "Integration Tests with Mongo"
-description: ""
+description: "Launching a MongoDB service container"
 group: yaml-examples
 sub_group: examples
 redirect_from:
@@ -9,79 +9,92 @@ redirect_from:
 toc: true
 ---
 
-Using this repository, we'll help you get up to speed with basic functionality such as: compiling, testing and building Docker images.
+In this example we will see a NodeJS project that is using MongoDB for data storage. For the integration test phase we will launch an instance of MongoDB in order to run a set of [Mocha tests](https://mochajs.org/).
 
-This project uses `Node.js, Mongo` to build an application which will eventually become a distributable Docker image.
+{% include image.html 
+lightbox="true" 
+file="/images/examples/integration-tests/mongodb-integration-tests.png"
+url="/images/examples/integration-tests/mongodb-integration-tests.png"
+alt="MongoDB integration tests with Codefresh"
+caption="MongoDB integration tests with Codefresh"
+max-width="90%"
+%}
 
-## Looking around
+The Mocha tests are looking for a MongoDB connection at `mongo:27017`.
 
-In the root of this repository, you'll find a file named `codefresh.yml`, this is our build descriptor and it describes the different steps that comprise our process. Let's quickly review the contents of this file:
+## The example NodeJS project
 
-  `codefresh.yml`
+You can see the example project at [https://github.com/codefreshdemo/example_nodejs_mongo](https://github.com/codefreshdemo/example_nodejs_mongo). The repository contains the NodeJS source code and the Mocha tests.
+
+You can play with it locally by using Docker compose to launch both the applicaton and the MongoDB datastore. 
+
+## Create a pipeline with MongoDB integration tests
+
+Here is the whole pipeline:
+
+ `codefresh.yml`
 {% highlight yaml %}
-version: '1.0'
+{% raw %}
+version: "1.0"
+stages:
+  - prepare
+  - build
+  - test
 steps:
-  build_step:
-    type: build
-    image_name: codefreshio/example_nodejs_mongo
-    dockerfile: Dockerfile
-    tag: {% raw %}${{CF_BRANCH}}{% endraw %}
-
-  unit_test:
-    type: composition
-    working_directory: {% raw %}${{build_step}}{% endraw %}
-    composition:
-      version: '2'
-      services:
+  main_clone:
+    type: "git-clone"
+    description: "Cloning main repository..."
+    repo: "codefreshdemo/example_nodejs_mongo"
+    revision: "master"
+    git: github
+    stage: prepare
+  build_app_image:
+    title: "Building Docker Image"
+    type: "build"
+    image_name: "node-mongo-app"
+    tag: "master"
+    dockerfile: "Dockerfile"
+    stage: build
+  run_integration_tests:
+    title: "Running integration tests"
+    stage: test
+    image: '${{build_app_image}}'
+    environment:
+      - MONGO_PORT=27017    
+    commands:
+      # MongoDB is certainly up at this point
+        - cd /src
+        - npm test
+    services:
+      composition:
         mongo:
-          image: mongo
-    composition_candidates:
-      test:
-        image: {% raw %}${{build_step}}{% endraw %}
-        links:
-          - mongo
-        command: bash -c "/src/test-script.sh"
-        environment:
-          - MONGO_PORT=27017
-{% endhighlight %} 
+          image: mongo:latest
+          ports:
+            - 27017             
+      readiness:
+        timeoutSeconds: 30
+        periodSeconds: 15
+        image: '${{build_app_image}}'
+        commands:
+          - "nslookup mongo"   
+          - "nc -z mongo 27017"
+{% endraw %}
+{% endhighlight %}
 
-In this test script, we wait for  `mongo` is ready, then we can run the tests
+This pipeline does the following:
 
-  `script.sh`
-{% highlight sh %}
-#!/usr/bin/env bash
-wait_for_db() {
-  nslookup mongo
-  if ! nc -z mongo 27017; then
-    echo "Waiting for db..."
-    sleep 2
-    wait_for_db
-  fi
-}
+1. Clones the source code with a [Git clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)
+1. [Builds a Docker image]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) with the application source code as well as the Mocha tests
+1. Runs mocha tests while launching a [service container]({{site.baseurl}}/docs/codefresh-yaml/service-containers/) for an active MongoDB instance
 
-wait_for_db
-
-export MONGO_PORT=27017
-
-cd /src
-npm install
-npm install -g mocha
-npm test
-{% endhighlight %} 
-
-<div class="bd-callout bd-callout-info" markdown="1">
-##### Example
-
-Just head over to the example [__repository__](https://github.com/codefreshdemo/example_nodejs_mongo){:target="_blank"} in Github.
-</div>
-
-## Expected result
-
-{% include image.html lightbox="true" file="/images/5033cde-codefresh_unit_test_mongo.png" url="/images/5033cde-codefresh_unit_test_mongo.png" alt="Codefresh unit test Mongo" max-width="65%" %}
+Notice that we also use the `readiness` property in the testing phase so that we can verify MongoDB is ready and listening, before running the tests.
 
 ## What to read next
 
-- [Integration Tests with Redis]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-redis/)
+- [Service Containers]({{site.baseurl}}/docs/codefresh-yaml/service-containers/)
 - [Integration Tests with Postgres]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-postgres/)
 - [Integration Tests with MySQL]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mysql/)
-- [Integration Tests with Mongo]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mongo/)
+- [Integration Tests with Redis]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-redis/)
+
+
+
