@@ -26,7 +26,7 @@ The Mocha tests are looking for a MongoDB connection at `mongo:27017`.
 
 You can see the example project at [https://github.com/codefreshdemo/example_nodejs_mongo](https://github.com/codefreshdemo/example_nodejs_mongo). The repository contains the NodeJS source code and the Mocha tests.
 
-You can play with it locally by using Docker compose to launch both the applicaton and the MongoDB datastore. 
+You can play with it locally by using Docker compose to launch both the application and the MongoDB datastore. 
 
 ## Create a pipeline with MongoDB integration tests
 

@@ -26,7 +26,7 @@ The Integration tests are looking for a MySQL connection at `test_mysql_db:3306`
 
 You can see the example project at [https://github.com/codefreshdemo/cf-example-unit-tests-with-composition](https://github.com/codefreshdemo/cf-example-unit-tests-with-composition). The repository contains the NodeJS source code and the simple integration test.
 
-You can play with it locally by using Docker compose to launch both the applicaton and the MySQL Database. 
+You can play with it locally by using Docker compose to launch both the application and the MySQL Database. 
 
 ## Create a pipeline with MySQL integration tests
 

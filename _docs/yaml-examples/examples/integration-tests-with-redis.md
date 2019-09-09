@@ -26,7 +26,7 @@ The application will be launched with a hostname `web` while Redis will be at `r
 
 You can see the example project at [https://github.com/codefreshdemo/example_python_redis](https://github.com/codefreshdemo/example_python_redis). The repository contains the Python source code and a test script.
 
-You can play with it locally by using Docker compose to launch both the applicaton and the Redis datastore. 
+You can play with it locally by using Docker compose to launch both the application and the Redis datastore. 
 
 ## Create a pipeline with Redis integration tests
 
