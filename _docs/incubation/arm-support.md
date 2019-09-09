@@ -57,6 +57,12 @@ Create a pipeline for it with the following YAML content:
 {% raw %}
 version: '1.0'
 steps:
+  main_clone:
+    title: 'Cloning main repository...'
+    type: git-clone
+    repo: '${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}'
+    revision: '${{CF_REVISION}}'
+    git: github
   MyArmDockerImage:
     title: Building Docker ARM Image
     type: build
@@ -74,8 +80,9 @@ steps:
 
 This pipeline creates a Docker image for a python application and then runs unit tests inside it.
 
-It contains two [steps]({{site.baseurl}}/docs/codefresh-yaml/steps/):
+It contains three [steps]({{site.baseurl}}/docs/codefresh-yaml/steps/):
 
+1. A [clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) that checks out code from the Git repository.
 1. A [build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) that reads a Dockerfile and creates a Docker image.
 1. A [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) that runs unit tests.
 
@@ -103,7 +110,7 @@ caption="Private Registry for ARM docker images"
 max-width="60%"
 %}
 
-You can also launch it as a [demo environment]({{site.baseurl}}/docs/getting-started/on-demand-environments/)
+You can also launch it as a [demo environment]({{site.baseurl}}/docs/getting-started/on-demand-environments/).
 
 {% include 
 image.html 
@@ -116,3 +123,9 @@ max-width="60%"
 %}
 
 In summary, the workflow for ARM images is exactly the same as the usual Linux/x86 images.
+
+## What to read next
+
+* [Windows container support]({{site.baseurl}}/docs/incubation/windows-beta/)
+* [MacOSX and iOS builds]({{site.baseurl}}/docs/incubation/osx-ios-builds/)
+
