@@ -45,11 +45,11 @@ freestyle_step:
       - cp path/to/file /codefresh/volume/filename
 {% endhighlight %}
 
-#### Caching build dependencies
+### Caching build dependencies
 
 More information about caching build dependencies you can find [in this blog post](https://codefresh.io/blog/caching-build-dependencies-codefresh-volumes/){:target="_blank"}.
 
-#### Example Source code
+### Example Source code
 
 Just head over to the example [**repository**](https://github.com/codefreshdemo/cf-example-shared-volumes-between-builds){:target="_blank"} in Github and follow the instructions there. 
 
