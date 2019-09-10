@@ -220,7 +220,7 @@
   - title: Codefresh hybrid installation (legacy)
     localurl: /docs/enterprise/codefresh-hybrid    
 - title: "Incubation"
-  icon: images/home-icons/started.png
+  icon: images/home-icons/plugins.png
   url: ''
   links:
   - title: Windows Containers Support(Beta)
