@@ -12,7 +12,7 @@ is only available to Enterprise customers.
 
 To run ARM pipelines in Codefresh, [open a free account]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/) and then [contact sales](https://codefresh.io/contact-sales/) in order to enable ARM support.
 
-Once approved, your build environment will move to an ARM cluster, and therefore *all* your builds will be ARM enabled. This means that if you also want to keep using the normal Linux/x86 builds, it is best to create a second Codefresh account just for trying ARM support.
+Once approved, you will get access to a new runtime environment installed on an ARM cluster. This means that you will be able to run both ARM and Linux/x86 builds from the same Codefresh account by choosing the appropriate [pipeline settings]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-settings).
 
 ## Using ARM builders in Codefresh
 
