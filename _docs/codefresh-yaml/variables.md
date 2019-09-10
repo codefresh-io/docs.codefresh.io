@@ -119,7 +119,7 @@ Context related variables are created dynamically during the workflow execution 
 | **Working Directories**                           | For example, you can set the working directory of step `A` with a variable named after a previously executed step, step `B`. Therefore, setting step `A` with {% raw %}`working-directory:${{B}}`{% endraw %} means that step `A` executes in the same working directory as step `B`.                |
 | **Images**                                        | You can set the candidate field of the push step with a variable named after a previously executed build step. Since the details of a created image are not necessarily known ahead of time, the variable can create an association to an optionally dynamic image name. Therefore, setting push step `A` with {% raw %}`candidate:${{B}}`{% endraw %} means that step `A` will push the image built by step `B`.                |
 
-A very common pattern in Codefresh pipelines, is to create a Docker image in one step, and then run a command on its container in the next step (e.g. run unit tests):
+A very common pattern in Codefresh pipelines, is to create a Docker image in one step, and then run a command on its container in the next step (e.g. run [unit tests]({{site.baseurl}}/docs/testing/unit-tests/)):
 
 `YAML`
 {% highlight yaml %}
@@ -138,7 +138,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-In the example above you can see the `MyAppDockerImage` variable that denotes a Docker image created dynamically within this single pipeline. In the second step we use it as a Docker context in order to run unit tests.
+In the example above you can see the `MyAppDockerImage` variable that denotes a Docker image created dynamically within this single pipeline. In the second step we use it as a Docker context in order to run unit tests. See also the [unit testing example app]({{site.baseurl}}/docs/yaml-examples/examples/run-unit-tests/).
 
 
 ## GitHub Release Variables

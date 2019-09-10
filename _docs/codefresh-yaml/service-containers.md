@@ -219,7 +219,7 @@ steps:
 {% endraw %}      
 {% endhighlight %}
 
-In this pipeline, the Redis instance is only launched during the Unit test step, while the MongoDB service is activate only during integration tests. 
+In this pipeline, the Redis instance is only launched during the Unit test step, while the MongoDB service is active only during integration tests. 
 
 You can also use a `docker-compose.yml` file that you might have in your git repository.
 

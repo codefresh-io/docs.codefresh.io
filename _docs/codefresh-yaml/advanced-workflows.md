@@ -49,7 +49,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-Here we have two steps, one that creates a Docker image and a second one that runs unit tests inside it. The order of execution is the same order of the steps in the YAML file. This means that unit tests will always run after the Docker image creation.
+Here we have two steps, one that creates a Docker image and a second one that runs [unit tests]({{site.baseurl}}/docs/testing/unit-tests/) inside it. The order of execution is the same order of the steps in the YAML file. This means that unit tests will always run after the Docker image creation.
 
 Notice that the line `mode: sequential` is shown only for illustration purposes. Sequential mode is the default, and therefore this line can be omitted.
 
@@ -398,8 +398,8 @@ will wait for the next step to either run successfully or be skipped.
 As an example, let's assume that you have the following steps in a pipeline:
 
 1. A build step that creates a docker image
-1. A freestyle step that runs unit tests inside the docker image
-1. A freestyle step that runs integrations tests *After* the unit tests, even if they fail
+1. A freestyle step that runs [unit tests]({{site.baseurl}}/docs/testing/unit-tests/) inside the docker image
+1. A freestyle step that runs [integrations tests]({{site.baseurl}}/docs/testing/integration-tests/) *After* the unit tests, even if they fail
 1. A cleanup step that runs after unit tests if they fail
 
 Here is the full pipeline. Notice the explicit dependency to the `main_clone` step that checks out the code.

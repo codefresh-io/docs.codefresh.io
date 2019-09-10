@@ -197,7 +197,7 @@ steps:
 {% endhighlight %}
 
 Here the `UseMyCustomImage` freestyle step is running in the [context]({{site.baseurl}}/docs/codefresh-yaml/variables/#context-related-variables) of the Docker image that was created in the previous step.
-In fact, a very common pattern that you will see in Codefresh pipelines is the executions of unit tests in the image that was created in a build step:
+In fact, a very common pattern that you will see in Codefresh pipelines is the executions of [unit tests]({{site.baseurl}}/docs/testing/unit-tests/) in the image that was created in a build step:
 
 `codefresh.yml`
 {% highlight yaml %}

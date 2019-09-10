@@ -23,7 +23,7 @@ to create a Docker image from its friendly UI without any local Docker installat
 You can store the resulting image on a public or private Docker registry that your organization already uses, or in the built-in Docker storage. Each Codefresh account comes with its own [free native Docker registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/) that works exactly like public
 registries that you are already familiar with (e.g. [Dockerhub](https://hub.docker.com/)).
 
-Codefresh also has built-in support for unit and integration testing allowing you to only push Docker images that pass your testing suite. Finally, you can [add annotations]({{site.baseurl}}/docs/docker-registries/metadata-annotations/) to your Docker images to better track your releases (e.g. you can mark a Docker image with an annotation that shows a successful unit test run).
+Codefresh also has built-in support for [unit]({{site.baseurl}}/docs/testing/unit-tests/) and [integration testing]({{site.baseurl}}/docs/testing/integration-tests/) allowing you to only push Docker images that pass your testing suite. Finally, you can [add annotations]({{site.baseurl}}/docs/docker-registries/metadata-annotations/) to your Docker images to better track your releases (e.g. you can mark a Docker image with an annotation that shows a successful unit test run).
 
 You can use either the sample application we provide here to follow along or create your own Docker based
 example if you prefer (don't forget to write unit tests).

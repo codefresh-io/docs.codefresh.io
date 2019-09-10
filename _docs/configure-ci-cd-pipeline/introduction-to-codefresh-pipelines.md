@@ -16,7 +16,7 @@ Each step is responsible for a specific action in the process. Pipelines can be 
 * Build Docker images
 * Push Docker images (either to an [external Registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) or the [built-in Codefresh registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/))
 * Deploy applications/artifacts to VMs, Kubernetes clusters, FTP sites, S3 buckets etc.
-* Run unit tests, integration tests, acceptance tests etc.
+* Run [unit tests]({{site.baseurl}}/docs/testing/unit-tests/), [integration tests]({{site.baseurl}}/docs/testing/integration-tests/), acceptance tests etc.
 * Any custom action that you define
 
 {% include 
@@ -68,7 +68,7 @@ max-width="70%"
 %}
 
 
-1. The first step runs under the context of a Node image that prepares the application and runs unit tests.
+1. The first step runs under the context of a Node image that prepares the application and runs [unit tests]({{site.baseurl}}/docs/testing/unit-tests/).
 1. The second step uses an image with s3 command line tools and uploads the test results to a bucket that holds test reports.
 1. The helm step creates a Helm chart and pushes it to a Helm repository.
 

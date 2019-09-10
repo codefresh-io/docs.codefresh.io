@@ -19,7 +19,7 @@ In this page we will see 4 ways of running unit tests in Codefresh:
 1. Running unit tests in the application image (not recommended, but very popular)
 1. Running unit tests using a special testing image (the recommended solution for complex applications)
 
-
+For an example application of the second and third ways see the [unit test example page]({{site.baseurl}}/docs/yaml-examples/examples/run-unit-tests/) 
 
 ## Running Unit tests as part of a Docker build
 
@@ -281,6 +281,7 @@ Read all about test results and graphs in the [test reports page]({{site.baseurl
 
 ## What to read next
 
+* [Unit test example]({{site.baseurl}}/docs/yaml-examples/examples/run-unit-tests/)
 * [Introduction to Pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
 * [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
 * [On demand environments]({{site.baseurl}}/docs/getting-started/on-demand-environments/)
