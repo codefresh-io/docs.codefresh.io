@@ -26,14 +26,75 @@ why
 
 ### Source code to mysql
 
+{%
+  include image.html
+  lightbox="true"
+  file="/images/testing/integration-testing/from-source-code.png"
+  url="/images/testing/integration-testing/from-source-code.png"
+  alt="Testing directly from source code"
+  caption="Testing directly from source code"
+  max-width="70%"
+%}
+
 ### Source code to app to mysql
+
+{%
+  include image.html
+  lightbox="true"
+  file="/images/testing/integration-testing/to-app.png"
+  url="/images/testing/integration-testing/to-app.png"
+  alt="Launching the application to be tested"
+  caption="Launching the application to be tested"
+  max-width="70%"
+%}
 
 
 ### Docker image for tests
 
+{%
+  include image.html
+  lightbox="true"
+  file="/images/testing/integration-testing/special-image.png"
+  url="/images/testing/integration-testing/special-image.png"
+  alt="Using a dedicated testing image"
+  caption="Using a dedicated testing image"
+  max-width="70%"
+%}
+
 ### Multiple services tree
+
+{%
+  include image.html
+  lightbox="true"
+  file="/images/testing/integration-testing/complex-tests.png"
+  url="/images/testing/integration-testing/complex-tests.png"
+  alt="Microservice testing"
+  caption="Microservice testing"
+  max-width="70%"
+%}
 
 
 ## Service scope (all pipeline or none)
+
+
+{%
+  include image.html
+  lightbox="true"
+  file="/images/testing/integration-testing/single-scope.png"
+  url="/images/testing/integration-testing/single-scope.png"
+  alt="Service containers for individual steps"
+  caption="Service containers for individual steps"
+  max-width="60%"
+%}
+
+{%
+  include image.html
+  lightbox="true"
+  file="/images/testing/integration-testing/multi-scope.png"
+  url="/images/testing/integration-testing/multi-scope.png"
+  alt="Service containers for the whole pipeline"
+  caption="Service containers for the whole pipeline"
+  max-width="60%"
+%}
 
 ## Reuse compositions.
