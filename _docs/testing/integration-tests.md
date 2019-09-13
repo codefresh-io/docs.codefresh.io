@@ -38,7 +38,7 @@ Also make sure that your tests do **NOT** use `localhost` for an API endpoint. T
 >Notices that the services you launch in a Codefresh pipeline, consume resources (memory/CPU) from the pipeline running environment. The more services you launch the less resources you have for the actual pipeline. We also suggest that you do **NOT** use service containers for running load testing or performance testing. 
 
 
-### Running integration tests directly from source code
+## Running integration tests directly from source code
 
 The simplest way to run integration tests is to check out the source code of your tests and launch the services that they need.
 
@@ -91,7 +91,7 @@ We suggest using this technique only if your application is not dockerized yet (
 
 See more examples with [MySQL]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mysql/) or [Postgres]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-postgres/).
 
-### Running tests after launching the application
+## Running tests after launching the application
 
 A better approach (that mimics what happens in reality) is to actually launch your application as a Docker image and then run tests against it. Of course this approach is only possible if you have adopted containers as deployment artifacts:
 
@@ -148,7 +148,7 @@ steps:
 See more examples with [launching the application]({{site.baseurl}}/docs/yaml-examples/examples/run-integration-tests/) or [Postgres]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-postgres/).
 
 
-### Using a custom test image
+## Using a custom test image
 
 In all the previous examples the tests were running in a public Dockerhub image that has the programming language/framework that your tests require. In more complex cases, you might need to create your own Docker image that contains exactly the tools that you wish. 
 
@@ -212,7 +212,7 @@ This is the recommended way to run integration tests in Codefresh. It creates a 
 
 See more examples with using a separate testing image [for the application]({{site.baseurl}}/docs/yaml-examples/examples/run-integration-tests/) or [a MySQL instance]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mysql/). 
 
-### Integration tests for microservices
+## Integration tests for microservices
 
 If you have enough pipeline resources, you can keep adding service containers that form a complex running environment. Service containers support [launch dependency order]({{site.baseurl}}/docs/codefresh-yaml/service-containers/#checking-readiness-of-a-service) as well as [post-launch phases]({{site.baseurl}}/docs/codefresh-yaml/service-containers/#preloading-data-to-databases) making possible any complex infrastructure that you have in mind.
 
@@ -371,7 +371,6 @@ you can also launch service containers at the beginning of the pipeline making t
 You can use this technique by putting the service container definition [at the root of the pipeline]({{site.baseurl}}/docs/codefresh-yaml/service-containers/#running-services-for-the-duration-of-the-pipeline)
 instead of a specific step:
 
-
 Here is an example that follows this technique:
 
 `codefresh.yml`
@@ -420,4 +419,14 @@ steps:
 {% endraw %}      
 {% endhighlight %}
 
-## Reusing test configurations with your team
+The Redis and PostgreSQL instances are now available to all pipeline steps.
+
+## What to read next
+
+* [Service Containers]({{site.baseurl}}/docs/testing/unit-tests/)
+* [Run Integration Tests]({{site.baseurl}}/docs/yaml-examples/examples/run-integration-tests/) 
+* [Run Integration Tests with MongoDB]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mongo/) 
+* [Run Integration Tests with MySQL]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mysql/) 
+* [Run Integration Tests with PostgreSQL]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-postgres/) 
+* [Run Integration Tests with Redis]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-redis/)
+* [Run Unit Tests]({{site.baseurl}}/docs/yaml-examples/examples/run-unit-tests)  
