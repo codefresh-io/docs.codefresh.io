@@ -29,7 +29,7 @@ For brand new pipelines we suggest you use service containers. They are much mor
 
 ## How integration tests work in Codefresh
 
-Service containers work similar to docker-compose. A set of containers are launched on the same network with configurable hostnames and ports. Once they are up, you decide what to do with a freestyle step what is part of the network as well. In the most typical pipeline you can use your existing test framework (regardless of programming language) in the same manner as you would run your tests locally.
+Service containers work similar to docker-compose. A set of containers are launched on the same network with configurable hostnames and ports. Once they are up, you decide what to do with a freestyle step that is part of the network as well. In the most typical pipeline you can use your existing test framework (regardless of programming language) in the same manner as you would run your tests locally.
 
 A best practice is to make sure that the hostnames used by your integration tests to access external services are not hard-coded. Even though with Codefresh you can decide the name of hostnames used in the pipeline (i.e. the hostname of a MySQL or Redis instance), in the long run it is better if you can choose that information freely without having the limitation of what is mentioned in the source code.
 
@@ -52,7 +52,7 @@ The simplest way to run integration tests is to check out the source code of you
   max-width="70%"
 %}
 
-This is a very popular way of running integration tests, but not the most flexible one. It works only when your tests have very low requirements on their testing environment. It also doesn't make a clear distinction on source code that gets shipped to production with source code that is used only for testing.Make sure that you don't fall into the slippery slope of shipping testing tools with your docker container.  
+This is a very popular way of running integration tests, but not the most flexible one. It works only when your tests have very simple requirements on their testing environment. It also doesn't make a clear distinction on source code that gets shipped to production with source code that is used only for testing. Make sure that you don't fall into the common trap of shipping testing tools with your docker container in production.  
 
 Here is the respective pipeline:
 
@@ -79,7 +79,7 @@ steps:
       - 'npm test'
     services:
       composition:
-        my_redis_service:
+        my_redis:
           image: 'redis:latest'
           ports:
             - 6379
@@ -150,7 +150,7 @@ See more examples with [launching the application]({{site.baseurl}}/docs/yaml-ex
 
 ### Using a custom test image
 
-In all the previous examples the tests were running in a public Dockerhub that has the programming language/framework that your tests require. In more complex cases, you might need to create your own Docker image that contains exactly the tools that you wish. 
+In all the previous examples the tests were running in a public Dockerhub image that has the programming language/framework that your tests require. In more complex cases, you might need to create your own Docker image that contains exactly the tools that you wish. 
 
 In this case you can create a special Docker image that will be used just for testing and nothing else.
 
@@ -179,13 +179,13 @@ steps:
     revision: "master"
     git: github
   build_app_image:
-    title: "Building Docker Image"
+    title: "Building App Docker Image"
     type: "build"
     image_name: "my-web-app"
     tag: "master"
     dockerfile: "Dockerfile"    
   build_test_image:
-    title: "Building Docker Image"
+    title: "Building Test Docker Image"
     type: "build"
     image_name: "my-test-image"
     tag: "master"
@@ -210,9 +210,11 @@ steps:
 
 This is the recommended way to run integration tests in Codefresh. It creates a clear distinction on source code that gets shipped to production with source code that is needed only for tests. It also allows you to define exactly how the test environment looks like (maybe you need multiple or exotic testing tools that are not available in dockerhub).
 
-See more examples with using a separate testing image [for the application]]({{site.baseurl}}/docs/yaml-examples/examples/run-integration-tests/) or [a MySQL instance]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mysql/). 
+See more examples with using a separate testing image [for the application]({{site.baseurl}}/docs/yaml-examples/examples/run-integration-tests/) or [a MySQL instance]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mysql/). 
 
-### Multiple services tree
+### Integration tests for microservices
+
+If you have enough pipeline resources, you can keep adding service containers that form a complex running environment. Service containers support [launch dependency order]({{site.baseurl}}/docs/codefresh-yaml/service-containers/#checking-readiness-of-a-service) as well as [post-launch phases]({{site.baseurl}}/docs/codefresh-yaml/service-containers/#preloading-data-to-databases) making possible any complex infrastructure that you have in mind.
 
 {%
   include image.html
@@ -224,9 +226,70 @@ See more examples with using a separate testing image [for the application]]({{s
   max-width="70%"
 %}
 
+Here is the pipeline:
 
-## Service scope (all pipeline or none)
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: "1.0"
+steps:
+  main_clone:
+    type: "git-clone"
+    description: "Cloning main repository..."
+    repo: "kostis-codefresh/my-app-example"
+    revision: "master"
+    git: github
+  build_frontend_image:
+    title: "Building Frontend Docker Image"
+    type: "build"
+    image_name: "my-web-app"
+    working_directory: './frontend'
+    tag: "master"
+    dockerfile: "Dockerfile"
+  build_backend_image:
+    title: "Building Backend Docker Image"
+    type: "build"
+    image_name: "my-backend-app"
+    working_directory: './backend'
+    tag: "master"
+    dockerfile: "Dockerfile"        
+  build_test_image:
+    title: "Building Test Docker Image"
+    type: "build"
+    image_name: "my-test-image"
+    tag: "master"
+    dockerfile: "Dockerfile.testing"
+  my_tests:
+    image: '${{build_test_image}}'
+    title: "Integration tests"
+    commands:
+      - 'sh ./my-tests.sh'
+    services:
+      composition:
+        my_postgres:
+          image: 'postgres:11.5'
+          ports:
+            - 5432 
+        redis_ds:
+          image: 'redis:latest'
+          ports:
+            - 6379           
+        backend:
+          image: '${{build_backend_image}}'
+          ports:
+            - 9000
+        frontend:
+          image: '${{build_frontend_image}}'
+          ports:
+            - 8080            
+{% endraw %}      
+{% endhighlight %}
 
+Keep in the mind that extra services use memory from the pipeline itself, so if you follow this route make sure that the pipeline is running on the appropriate runtime environment.
+
+## Running service containers for the whole pipeline.
+
+In most cases service containers should be only attached to the pipeline step that is using them. 
 
 {%
   include image.html
@@ -238,6 +301,63 @@ See more examples with using a separate testing image [for the application]]({{s
   max-width="60%"
 %}
 
+This not only helps with pipeline resources (as service containers are discarded when they are not needed) but also allows you to mix and match different service containers for different steps.
+
+Here is an example pipeline:
+
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: "1.0"
+steps:
+  main_clone:
+    type: "git-clone"
+    description: "Cloning main repository..."
+    repo: "kostis-codefresh/my-app-example"
+    revision: "master"
+    git: github
+  build_backend_image:
+    title: "Building Backend Docker Image"
+    type: "build"
+    image_name: "my-backend-app"
+    working_directory: './backend'
+    tag: "master"
+    dockerfile: "Dockerfile"
+  backend_tests:
+    image: 'maven:3.5.2-jdk-8-alpine'
+    title: "Running Backend tests"
+    commands:
+      - 'mvn -Dmaven.repo.local=/codefresh/volume/m2_repository integration-test'
+    services:
+      composition:         
+        backend:
+          image: '${{build_backend_image}}'
+          ports:
+            - 9000     
+  build_frontend_image:
+    title: "Building Frontend Docker Image"
+    type: "build"
+    image_name: "my-web-app"
+    working_directory: './frontend'
+    tag: "master"
+    dockerfile: "Dockerfile"            
+  my_tests:
+    image: 'node:11'
+    title: "Running front-end tests"
+    commands:
+      - 'npm test'
+    services:
+      composition:
+        frontend:
+          image: '${{build_frontend_image}}'
+          ports:
+            - 8080            
+{% endraw %}      
+{% endhighlight %}
+
+In some cases however, you would like to execute multiple steps with integration tests that share the same environment. In this case
+you can also launch service containers at the beginning of the pipeline making them available to all pipeline steps:
+
 {%
   include image.html
   lightbox="true"
@@ -248,4 +368,57 @@ See more examples with using a separate testing image [for the application]]({{s
   max-width="60%"
 %}
 
-## Reuse compositions.
+You can use this technique by putting the service container definition [at the root of the pipeline]({{site.baseurl}}/docs/codefresh-yaml/service-containers/#running-services-for-the-duration-of-the-pipeline)
+instead of a specific step:
+
+
+Here is an example that follows this technique:
+
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: "1.0"
+services:
+  name: my_database
+  composition:
+    my-redis-ds:
+      image: redis:latest
+      ports:
+        - 6379
+    my_postgres:
+      image: 'postgres:11.5'
+      ports:
+        - 5432
+steps:
+  main_clone:
+    type: "git-clone"
+    description: "Cloning main repository..."
+    repo: "kostis-codefresh/my-app-example"
+    revision: "master"
+    git: github
+  build_app_image:
+    title: "Building Docker Image"
+    type: "build"
+    image_name: "my-web-app"
+    tag: "master"
+    dockerfile: "Dockerfile"
+  my_api_tests:
+    image: '${{build_app_image}}'
+    title: "Running API tests"
+    commands:
+      - 'npm run test'
+  my_fuzzy_tests:
+    image: 'node:11'
+    title: "Fuzzy testing"
+    commands:
+      - 'npm run fuzzy-tests' 
+  my_e2e_tests:
+    image: cypress/base
+    title: "Running E2E tests"
+    commands:
+      - 'cypress run'     
+{% endraw %}      
+{% endhighlight %}
+
+
+## Reuse compositions
