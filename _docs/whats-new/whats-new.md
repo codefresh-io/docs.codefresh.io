@@ -12,6 +12,7 @@ Recent Codefresh updates:
 
 - Unit testing guide - [documentation]({{site.baseurl}}/docs/testing/unit-tests)
 - Unit test example - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/run-unit-tests/)
+- Integration testing guide - [documentation]({{site.baseurl}}/docs/testing/integration-tests/)
 - Integration test example - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/run-integration-tests/)
 - Redis Integration test example - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-redis/)
 - MongoDB Integration test example - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mongo/)
