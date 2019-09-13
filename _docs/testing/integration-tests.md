@@ -421,6 +421,22 @@ steps:
 
 The Redis and PostgreSQL instances are now available to all pipeline steps.
 
+## Creating Test reports
+
+All the techniques shown above are also applicable for Test reports.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/test-reports/sample-test-report.png" 
+url="/images/pipeline/test-reports/sample-test-report.png"
+alt="Sample Allure test report" 
+caption="Sample Allure test report"
+max-width="70%"
+%}
+
+Read all about test results and graphs in the [test reports page]({{site.baseurl}}/docs/testing/test-reports/).
+
 ## What to read next
 
 * [Service Containers]({{site.baseurl}}/docs/testing/unit-tests/)
