@@ -420,5 +420,4 @@ steps:
 {% endraw %}      
 {% endhighlight %}
 
-
-## Reuse compositions
+## Reusing test configurations with your team
