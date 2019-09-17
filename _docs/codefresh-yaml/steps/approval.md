@@ -165,7 +165,6 @@ Here is a full example with both cases.
 {% highlight yaml %}
 {% raw %}
 version: '1.0'
-mode: parallel
 stages:
 - prepare
 - yesPleaseDo
