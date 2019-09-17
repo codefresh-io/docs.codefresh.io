@@ -173,7 +173,7 @@ Now that you know how to mix pipelines from both platforms, it is helpful to und
 | Architecture       | VM based | [container-based]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)|
 | Pipeline definition  | Groovy | [YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)  |
 | Tool installation        | installed on build node | dynamically launched |
-| Plugin mechanism   | Java/Groovy using Jenkins API | [Docker image](https://steps.codefresh.io/) (any programming language)|
+| Plugin mechanism   | Java/Groovy using Jenkins API | [Docker image](https://codefresh.io/steps/) (any programming language)|
 | Plugin installation | Central (requires admin access) | Per pipeline (no admin access needed) |
 | Docker agent builds   | Extra plugin | Built-in |
 | Kubernetes agent builds   | Extra plugin | Built-in |
@@ -580,7 +580,7 @@ Creating a Jenkins shared library has a lot of challenges:
 Codefresh plugins, on the other hand, are just Docker images written in any programming language. 
 
 First of all, look at [Dockerhub](https://hub.docker.com/) and see if there is already a utility or CLI that has the same functionality with your 
-shared library. Codefresh also has a [free marketplace](https://steps.codefresh.io/) for pipeline steps (which are Docker images essentially).
+shared library. Codefresh also has a [free marketplace](https://codefresh.io/steps/) for pipeline steps (which are Docker images essentially).
 
 As a last resort, you need to rewrite your shared library and convert it to a Docker image. The process is the following:
 

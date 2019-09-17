@@ -20,13 +20,13 @@ Since all security solutions offer an API, Codefresh can essentially use any sca
 
 Codefresh already offers Docker images for the following security platforms:
 
-1. [Anchore](https://steps.codefresh.io/plugin/anchore-plugin)
-1. [Aqua Security](https://steps.codefresh.io/plugin/cfstep-aqua)
-1. [Clair](https://steps.codefresh.io/plugin/cfstep-paclair)
-1. [Twistlock](https://steps.codefresh.io/plugin/cf-twistlock)
+1. [Anchore](https://codefresh.io/steps/step/anchore-plugin)
+1. [Aqua Security](https://codefresh.io/steps/step/cfstep-aqua)
+1. [Clair](https://codefresh.io/steps/step/cfstep-paclair)
+1. [Twistlock](https://codefresh.io/steps/step/cf-twistlock)
 
 
-You can find more integrations as they are being added in the [plugin directory](https://steps.codefresh.io/).
+You can find more integrations as they are being added in the [plugin directory](https://codefresh.io/steps/).
 
 
 ## Security scanning strategies
