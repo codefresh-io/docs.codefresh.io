@@ -165,6 +165,7 @@ Here is a full example with both cases.
 {% highlight yaml %}
 {% raw %}
 version: '1.0'
+mode: parallel
 stages:
 - prepare
 - yesPleaseDo
@@ -178,6 +179,7 @@ steps:
    commands:
    - echo "prepare"
  deployToProdNow:
+   fail_fast: false
    type: pending-approval
    title: Should we deploy to prod
    stage: prepare
