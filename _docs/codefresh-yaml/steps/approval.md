@@ -178,6 +178,7 @@ steps:
    commands:
    - echo "prepare"
  deployToProdNow:
+   fail_fast: false
    type: pending-approval
    title: Should we deploy to prod
    stage: prepare
