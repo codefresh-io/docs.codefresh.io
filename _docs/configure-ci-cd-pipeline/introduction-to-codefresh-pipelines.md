@@ -98,7 +98,7 @@ or your own) to use a build context in your step. This makes Codefresh a future-
 that exist now and all of them that will appear in the future. As long as there is a Docker image for a tool, Codefresh
 can use it in a pipeline without any extra configuration.
 
-Codefresh also offers a [plugin marketplace](https://steps.codefresh.io/) with several existing plugins.
+Codefresh also offers a [plugin marketplace](https://codefresh.io/steps/) with several existing plugins.
 
 {% include 
 image.html 
@@ -253,7 +253,7 @@ CollectAllMyDeps:
   commands:
     - pip install .
 ```
-For the plugins in the [Step Marketplace](https://steps.codefresh.io/) we already give an example of the YAML part that must be included in your pipeline:
+For the plugins in the [Step Marketplace](https://codefresh.io/steps/) we already give an example of the YAML part that must be included in your pipeline:
 
 {% include 
 image.html 

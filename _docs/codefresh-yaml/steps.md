@@ -55,7 +55,7 @@ Freestyle steps are a secure replacement for `docker run` commands.
 
 ## Step directory
 
-In the case of freestyle steps we also offer a [plugin marketplace](https://steps.codefresh.io/) with several existing plugins for popular integrations.
+In the case of freestyle steps we also offer a [plugin marketplace](https://codefresh.io/steps/) with several existing plugins for popular integrations.
 
 {% include 
 image.html 

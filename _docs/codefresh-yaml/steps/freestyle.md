@@ -331,7 +331,7 @@ When the second steps runs, the `custom.txt` file is available both at `/codefre
 
 You can use in a freestyle step any Docker image available in a public repository such as Dockerhub. This makes the integration of Codefresh and various cloud tools very easy.
 
-Codefresh also offers a plugin directory at [http://steps.codefresh.io/](http://steps.codefresh.io/) created specifically for CI/CD operations.
+Codefresh also offers a plugin directory at [http://codefresh.io/steps/](http://codefresh.io/steps/) created specifically for CI/CD operations.
 
 {% include 
 image.html 
