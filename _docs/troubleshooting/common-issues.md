@@ -38,6 +38,7 @@ In this section, we offer helpful information about issues you may encounter and
 
 ## Deployment issues
 
+- [Forbidden Cluster Resources]({{site.baseurl}}/docs/troubleshooting/common-issues/forbidden-cluster-resources/)
 - [Failed to get accounts clusters during workflow]({{site.baseurl}}/docs/troubleshooting/common-issues/failed-to-get-accounts-clusters-during-workflow/)
 
 

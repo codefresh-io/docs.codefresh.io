@@ -422,6 +422,8 @@
           url: "/workflow-terminated-by-system"
         - title: Validation Port warnings
           url: "/validation-port-warnings"
+        - title: Forbidden Cluster Resources
+          url: "/forbidden-cluster-resources"
         - title: Failed to get accounts clusters during workflow
           url: "/failed-to-get-accounts-clusters-during-workflow"
     - title: Git step migration
