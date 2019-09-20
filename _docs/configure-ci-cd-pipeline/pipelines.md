@@ -150,8 +150,13 @@ The other options are:
 * The [runtime environment]({{site.baseurl}}/docs/enterprise/behind-the-firewall/) that will run this pipeline
 * The size of the machine that will run this pipeline (available options depend on your pricing plan)
 * The [public logs and badges]({{site.baseurl}}/docs/configure-ci-cd-pipeline/build-status/) information which are very useful for open source projects developed with Codefresh
+* External resources 
 
-The concurrency limits are very important as they allow you to define how many instances of a pipeline can run in parallel when multiple commits or multiple pull requests take place.
+
+### Concurrency policy
+
+The concurrency limits are very important as they allow you to define how many instances of a pipeline can run in parallel when multiple commits or multiple pull requests take place. Notice these limits are *unrelated* with parallelism [within a single pipeline]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/). 
+
 
 {% include 
 image.html 
@@ -188,6 +193,29 @@ These settings are:
 All these settings allow you to lesser the build instance for pipelines when too many triggers are launched at the same time.
 You will find them very useful in cases where too many developers are performing small commits and builds take a long time to finish (i.e. build takes 10 minutes to finish and developers perform multiple pushes every 2 minutes)
 
+### External resources
+
+In a big organization you might have some reusable scripts or other resources (such as dockerfiles) that you want to use in multiple pipelines. Instead of fetching them manually in freestyle steps you can simply define them as *external resources*. When a pipeline runs, Codefresh will fetch them automatically and once the pipeline starts the files/folders will already be available in the paths that you define.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/create/external-resources.png" 
+url="/images/pipeline/create/external-resources.png"
+alt="Bringing external resources into a pipeline" 
+caption="Bringing external resources into a pipeline"
+max-width="80%"
+%}
+
+Currently Codefresh supports the automatic fetching of files or folders from another Git repository. To create an external resource click the *Add Resource* button and choose
+
+* The Git repository that contains the files/folder you wish to bring in the pipeline workspace
+* The branch from the Git repository that contains the files/folders you wish to bring in the pipeline workspace
+* The source folder in the GIT repo (use relative path)
+* The target folder in the pipeline workspace where the file folder will be copied to (use absolute path)
+
+Once the pipeline starts, all files will be available to all freestyle steps in the paths mentioned in the target folder field.
+You can define multiple external resources in a single pipeline.
 
 
 ## Pipelines that do not belong to any project

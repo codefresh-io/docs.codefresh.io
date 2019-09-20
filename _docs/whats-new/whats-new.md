@@ -18,6 +18,7 @@ Recent Codefresh updates:
 - MongoDB Integration test example - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mongo/)
 - MySQL Integration test example - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mysql/)
 - PostgreSQL Integration test example - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-postgres/)
+- Explicit External Resources - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#external-resources)
 - Kubernetes connection issues - [documentation]({{site.baseurl}}/docs/troubleshooting/common-issues/forbidden-cluster-resources/)
 
 ### August 2019
