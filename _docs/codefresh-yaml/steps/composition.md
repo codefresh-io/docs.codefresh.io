@@ -295,7 +295,8 @@ In this pipeline:
 
 Therefore, in this pipeline you can see both ways of data sharing, bringing files into a composition and getting results out of it. Notice that we need to mount the shared volume only in the composition services. The freestyle steps automatically mount `/codefresh/volume` on their own.
 
->Note: it is not compulsory to mount the shared volume in all services of a composition. Only those that actually use it for file transfer, should mount it.
+
+>Note: In order to mount the shared volume in one of your composition services, you must mount it in the `composition_candidate` also. It is not compulsory to mount the shared volume in all services of a composition. Only those that actually use it for file transfer, should mount it.
 
 
 ## Composition variables versus environment variables
