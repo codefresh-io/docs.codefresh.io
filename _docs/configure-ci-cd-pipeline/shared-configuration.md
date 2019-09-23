@@ -44,7 +44,8 @@ You can create as many shared snippets as you want (with unique names).
 
 ## Using shared environment variables
 
-Each pipeline has a set of environment variables that can be defined in its configuration screen.
+Each pipeline has a set of environment variables that can be defined in the *Workflow* screen.
+To import a shared configuration open the pipeline editor, and from the tabs on the right side select *VARIABLES*. Then click the gear icon to *Open Advanced Options*:
 
 {% include 
 image.html 
@@ -56,7 +57,7 @@ caption="Pipeline environment variables"
 max-width="50%"
 %}
 
-To use your shared configuration, click the import button and select the snippet from the list:
+To use your shared configuration, click the *Import from shared configuration* button and select the snippet from the list:
 
 {% include 
 image.html 
@@ -68,7 +69,7 @@ caption="Importing shared configuration"
 max-width="50%"
 %}
 
-Once you click *Select* the values from the shared configuration will be appended to the ones
+Once you click *Add* the values from the shared configuration will be appended to the ones
 you have in your pipelines. In case of similar values the shared configuration will follow the [precedence rules]({{site.baseurl}}/docs/codefresh-yaml/variables/#user-provided-variables).
 
 
