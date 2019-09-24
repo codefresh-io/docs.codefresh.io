@@ -2,6 +2,8 @@
   pages:
   - title: Create a Codefresh Account
   - title: Create a Basic Pipeline
+  - title: Frequently Asked Questions
+    url: "/faq"  
   - title: On-demand environments
   - title: Deployment to Kubernetes
     url: "/deployment-to-kubernetes-quick-start-guide"
