@@ -98,35 +98,36 @@ A. Yes, everything that has an API or CLI can be called in a Codefresh pipeline 
 
 ## Deployment features
 
-different environments
+**Q. Can I deploy to different environments (dev/staging/prod)?**    
+A. Yes, you can even deploy in parallel to several environments. If you also use Helm you get a [nice graphical dashboard]({{site.baseurl}}/docs/new-helm/helm-environment-promotion/).
 
-parallel builds
 
-non-Kubernetes support
+**Q. Can I pause a pipeline and wait for approval before deploying to production?**    
+A. Yes, there is a built-in [approval step]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/).
 
-behind the firewall
+**Q. Can I deploy to non-Kubernetes targets?**    
+A. Yes, you can deploy to a VM, an FTP site, an application server or even a behind-the-firewall [Nomad cluster]({{site.baseurl}}/docs/yaml-examples/examples/nomad/). You can deploy to anything that has an API or CLI. 
 
-support for Nomad
+**Q. Does Codefresh support infrastructure as code?**    
+A. Yes, there is nothing special to it. See the [Terraform]({{site.baseurl}}/docs/yaml-examples/examples/terraform/) and [Pulumi]({{site.baseurl}}/docs/yaml-examples/examples/pulumi/) examples.
 
-support for Terraform
+**Q. Can I connect my own Docker registry instead of the internal one?**    
+A. Yes, the [built-in Docker registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/) is automatically available to all pipelines, but you can still connect your [own external registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/).
 
-Kubernetes/Helm features
+**Q. My Kubernetes cluster has automatic scaling/monitoring/logging. Will Codefresh have issues with it?**    
+A. Codefresh is using the standard Kubernetes API available to all compliant Kubernetes distributions. After a deployment is finished, Codefresh does not tamper with the cluster in any way.
+
 
 ## Enterprise support
 
-support 
+**Q. Does Codefresh support SSO?**    
+A. Yes, we support several [popular SSO providers]({{site.baseurl}}/docs/enterprise/single-sign-on/).
 
-professional services
+**Q. Does Codefresh access control?**    
+A. Yes, we support both UI and ABAC on [pipelines, projects and clusters]({{site.baseurl}}/docs/enterprise/access-control/).
 
-SSO
-
-Security in hybrid
-
-User accounts
-
-Access control
-
-Audit logs
+**Q. Does Codefresh support auditing?**    
+A. Yes, audit logs are  [built-in]({{site.baseurl}}/docs/enterprise/audit-logs/).
 
 
 ## What to read next
