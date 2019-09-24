@@ -6,6 +6,8 @@
     localurl: /docs/getting-started/create-a-codefresh-account/
   - title: Your first CI/CD pipeline
     localurl: /docs/getting-started/create-a-basic-pipeline/
+  - title: Frequently Asked Questions
+    localurl: /docs/getting-started/faq/   
   - title: Invite Collaborators
     localurl: /docs/accounts/invite-your-team-member/
 - title: Pipelines
