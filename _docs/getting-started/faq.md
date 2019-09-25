@@ -2,6 +2,10 @@
 title: "Frequently Asked Questions"
 description: ""
 group: getting-started
+redirect_from:
+  - /docs/kubernetes-frequently-asked-questions/
+  - /docs/kubernetes-deployment-frequently-asked-questions/
+  - /docs/faq/kubernetes-frequently-asked-questions/
 ---
 
 This is a collection of common questions we get when people are trying Codefresh for the first time.
@@ -116,6 +120,15 @@ A. Yes, the [built-in Docker registry]({{site.baseurl}}/docs/docker-registries/c
 
 **Q. My Kubernetes cluster has automatic scaling/monitoring/logging. Will Codefresh have issues with it?**    
 A. Codefresh is using the standard Kubernetes API available to all compliant Kubernetes distributions. After a deployment is finished, Codefresh does not tamper with the cluster in any way.
+
+**Q. Do you support deployment to Kubernetes clusters on Azure, Amazon, etc?**  
+A. Yes, we do! If your master is publicly accessible you can access it through custom provider, just follow the [cluster connection]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/) instructions.
+In addition, we have native integration with GKE, Azure, Amazon, and Digital Ocean. 
+Native Integration with more cloud providers is coming soon.
+
+**Q. Can I run Codefresh pipelines on my Kubernetes cluster?**  
+You can but you don't need to. The SAAS version of Codefresh is fully managed and pipelines are running on the cloud.
+You can run Codefresh pipelines on your own cluster using the [Codefresh Runner]({{site.baseurl}}/docs/enterprise/codefresh-runner/) in [Hybrid mode]({{site.baseurl}}/docs/enterprise/behind-the-firewall/). This is normally only needed if you want to access services behind your firewall. If you simply want to *deploy* to a Kubernetes cluster, the SAAS version of Codefresh is enough.
 
 
 ## Enterprise support
