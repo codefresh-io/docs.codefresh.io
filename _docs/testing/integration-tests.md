@@ -6,6 +6,7 @@ redirect_from:
   - /docs/integration-tests/
   - /docs/integration-test-script/
   - /docs/testing/run-unit-test-with-db-composition/
+  - /docs/run-unit-test-with-db-composition/  
 toc: true
 ---
 
