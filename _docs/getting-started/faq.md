@@ -48,7 +48,7 @@ A. Yes. Even though Codefresh has great support for Docker and Kubernetes, you c
 **Q. How is Codefresh different that another CI solution?**  
 A. This is a long discussion. The quick answer is :
 1. Codefresh is a full CI/CD solution and not just CI
-1. Codefresh has [several unique features]({{site.baseurl}}/({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/)) such as a distributed docker layer cache, an automounted shared volume, a private Docker registry and a private Helm repository.
+1. Codefresh has [several unique features]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/) such as a distributed docker layer cache, an automounted shared volume, a private Docker registry and a private Helm repository.
 1. Codefresh covers the full software lifecycle. You can see a release on the cluster dashboard, click on it, go to the docker image, click on it and go the build that created it, all from a single interface. Codefresh is batteries-included CI/CD
 
 **Q. How is Codefresh different than Jenkins?**  
