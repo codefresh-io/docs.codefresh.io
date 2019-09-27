@@ -25,7 +25,7 @@ A. The Web UI is not open source. All the [pipeline plugins](https://codefresh.i
 A. Pricing is per concurrent build. In practice this means how many pull requests you can process *at the same time*. See the [pricing page](https://codefresh.io/pricing/) for more details.
 
 **Q. Is there a pay as you go model?**     
-A. We are always considering new pricing options. The pay as you go model has flaws as well. One of the big selling points of Codefresh is the different types of caches we employ in order to speed up builds. When a company charges for build minutes, it has no further motivation to cut down on build times. Several CI solutions offer no caching mechanisms, forcing you to download application dependencies on each build. Please contact us to discuss about pricing.
+A. We are always considering new pricing options. The pay as you go model has flaws as well. One of the big selling points of Codefresh is the different types of caches we employ in order to speed up builds. When a company charges for build minutes, it has no further motivation to cut down on build times. Several CI solutions offer no caching mechanisms, forcing you to download application dependencies on each build. Please contact us to discuss about pricing if this is your main blocker from adopting Codefresh.
 
 **Q. How does the user limit work?**    
 A. Unlike other CI solutions, the user limit in Codefresh plan does **not** refer to committers. It simply mentions how many people
@@ -48,13 +48,13 @@ A. Yes. Even though Codefresh has great support for Docker and Kubernetes, you c
 **Q. How is Codefresh different that another CI solution?**  
 A. This is a long discussion. The quick answer is :
 1. Codefresh is a full CI/CD solution and not just CI
-1. Codefresh has several unique features such as a distributed docker layer cache, a private Docker registry and a private Helm repository.
+1. Codefresh has [several unique features]({{site.baseurl}}/({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/)) such as a distributed docker layer cache, an automounted shared volume, a private Docker registry and a private Helm repository.
 1. Codefresh covers the full software lifecycle. You can see a release on the cluster dashboard, click on it, go to the docker image, click on it and go the build that created it, all from a single interface. Codefresh is batteries-included CI/CD
 
 **Q. How is Codefresh different than Jenkins?**  
 A. Codefresh is a superset of Jenkins. Jenkins is only CI. You need to write custom scripts or use another tool such as Ansible to deploy with Jenkins. See the [comparison matrix](https://codefresh.io/compare-codefresh-jenkins/) and the [detailed blog post](https://codefresh.io/continuous-deployment/codefresh-versus-jenkins/). There is also [a comparison with Jenkins X](https://codefresh.io/continuous-deployment/codefresh-versus-jenkins-x/). 
 
-**Q. How is Codefresh different than my custom deployment scripts in bash/Ansible/Chef/puppet/python?**  
+**Q. How is Codefresh different than my custom deployment scripts in bash/Ansible/Chef/Puppet/Python?**  
 A. These scripts are custom made, complex to maintain and difficult to read. One of the reasons that developers and operators have difficulties in communication is the in-house nature of deployment scripts. Codefresh allows you to create standard declarative pipelines
 where each step is a reusable Docker image.
 
@@ -76,10 +76,10 @@ A. Yes. Even though Codefresh is especially powerful with containers, you can st
 A. Codefresh supports all kinds of tests such as [unit tests]({{site.baseurl}}/docs/testing/unit-tests/) and [integration tests]({{site.baseurl}}/docs/testing/integration-tests/) as well as [test reports]({{site.baseurl}}/docs/testing/test-reports/).
 
 **Q. Does Codefresh support parallelism?**    
-A. Yes, Codefresh supports both [parallel steps]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/) and [integration tests]({{site.baseurl}}/docs/testing/integration-tests/) (parallelism within a pipeline) as well as parallel pipelines.
+A. Yes, Codefresh supports both [parallel steps]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/) (parallelism within a pipeline) as well as [parallel pipelines]({{site.baseurl}}/docs/integrations/codefresh-api/#using-codefresh-from-within-codefresh).
 
 **Q. Does Codefresh support preview environments for pull requests?**    
-A. Yes, although notice that these are powered by Docker swarm. If you want preview environments in a Kubernetes namespace you need to connect your own cluster.
+A. Yes, although notice that these [are powered by Docker swarm]({{site.baseurl}}/docs/getting-started/on-demand-environments/). If you want preview environments in a Kubernetes namespace you need to connect your own cluster.
 
 **Q. Can I checkout code from non-git sources?**    
 A. Yes, you can checkout code [from other source control systems]({{site.baseurl}}/docs/yaml-examples/examples/non-git-checkout/). 
@@ -91,7 +91,7 @@ A. Yes, there is a [git submodule plugin](https://codefresh.io/steps/step/git-su
 A. Yes, there is built-in support for [monorepos]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/#monorepo-support-modified-files).
 
 **Q. Does Codefresh support pipeline-as-code?**    
-A. Yes, all pipelines can be stored in a git repository (the same one as the application code or a different one). You can also create pipelines programmatically with our [CLI](https://codefresh-io.github.io/cli/).
+A. Yes, all pipelines can be stored in a git repository (the same one as the application code or a different one). You can also [create pipelines]({{site.baseurl}}/docs/integrations/codefresh-api/#example---creating-codefresh-pipelines-externally) programmatically with our [CLI](https://codefresh-io.github.io/cli/).
 
 **Q. Does Codefresh support secrets?**    
 A. For basic usage, feel free to use the [shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/) facility. For production grade security we suggest a dedicated solution such as [Hashicorp Vault](https://www.vaultproject.io/). We offer a [vault plugin](https://codefresh.io/steps/step/vault) for this purpose.
@@ -122,7 +122,7 @@ A. Yes, the [built-in Docker registry]({{site.baseurl}}/docs/docker-registries/c
 A. Codefresh is using the standard Kubernetes API available to all compliant Kubernetes distributions. After a deployment is finished, Codefresh does not tamper with the cluster in any way.
 
 **Q. Do you support deployment to Kubernetes clusters on Azure, Amazon, etc?**  
-A. Yes, we do! If your master is publicly accessible you can access it through custom provider, just follow the [cluster connection]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/) instructions.
+A. Yes, we do! If your master node is publicly accessible you can access it as a custom provider, just follow the [cluster connection]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/) instructions.
 In addition, we have native integration with GKE, Azure, Amazon, and Digital Ocean. 
 Native Integration with more cloud providers is coming soon.
 
@@ -142,10 +142,13 @@ A. Yes, we support both UI and ABAC on [pipelines, projects and clusters]({{site
 **Q. Does Codefresh support auditing?**    
 A. Yes, audit logs are  [built-in]({{site.baseurl}}/docs/enterprise/audit-logs/).
 
+**Q. Do you offer professional services to help us migrate to containers/Kubernetes?**    
+A. Yes, we do.
 
 ## What to read next
 
 * [Your first CI/CD pipeline]({{site.baseurl}}/docs/getting-started/create-a-basic-pipeline/)
+* [How Codefresh pipelines work]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
 * [Kubernetes Deployment tutorial]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/)
 * [Helm Deployment Tutorial tutorial]({{site.baseurl}}/docs/getting-started/helm-quick-start-guide/)
 
