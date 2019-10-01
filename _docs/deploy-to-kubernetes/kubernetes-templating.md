@@ -174,7 +174,7 @@ By default, the deploy step will only do replacements in a single manifest. If y
 {% endraw %}
 {% endhighlight %}
 
-Variable replacements will have in all manifests before they are deployed.
+Variable replacements will happen in all manifests before they are deployed.
 
 
 ## Using Unix command line tools for templates

@@ -33,6 +33,7 @@ Each configuration must be given a unique name, which you can later reference in
 {% include image.html lightbox="true" file="/images/2924d81-registry-name.png" url="/images/2924d81-registry-name.png" alt="Specify Docker Registry Name" max-width="65%" %}
 
 ## Pushing an image
+
 Once your registry configuration is all set up you can start pushing your images to it.
 
 In a [push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/)  you can place your registry configuration name in the `registry` field
@@ -48,6 +49,12 @@ push_step:
 {% endhighlight %}
 
 For more details see the [image pushing page]({{site.baseurl}}/docs/docker-registries/push-image-to-a-docker-registry/).
+
+## The default registry
+
+If you define more than one registries you can also click the *default* button in the UI to define the registry that will be used in [push steps]({{site.baseurl}}/docs/codefresh-yaml/steps/push/) if they don't already contain a `registry` property.
+
+Notice that successful [build steps]({{site.baseurl}}/docs/codefresh-yaml/steps/build/)  will always push to the [internal Codefresh registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/)  regardless of the "default" selection. This behavior happens without any configuration.
 
 
 

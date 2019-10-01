@@ -178,7 +178,7 @@ If you find the deploy step limited, feel free to look at the other deployment o
 
 ## What to read next
 - [Kubernetes Quick start guide]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/)  
-- [Deploy to Kubernetes]({{site.baseurl}}/docs/deploy-to-kubernetes/codefresh-kubernetes-integration-beta/) 
+- [Manage your Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/)
 - [Install HELM chart using Codefresh pipeline]({{site.baseurl}}/docs/new-helm/using-helm-in-codefresh-pipeline/)
 
 
