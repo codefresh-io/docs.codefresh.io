@@ -120,3 +120,9 @@ max-width="40%"
 %}
 
 To remove a config map, click on "remove" icon in the selected row. After your confirmation, the configmap will be removed.
+
+## What to read next
+
+- [Connect to your Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/)
+- [Manage your Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/)
+- [Deploy to Kubernetes - quick start]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/)

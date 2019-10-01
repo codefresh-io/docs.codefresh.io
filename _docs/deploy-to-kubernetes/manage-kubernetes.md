@@ -1,34 +1,18 @@
 ---
-title: "Manage your Kubernetes cluster in Codefresh"
-description: ""
+title: "Manage your Kubernetes cluster"
+description: "Using the graphical Kubernetes Dashboard in Codefresh"
 group: deploy-to-kubernetes
 redirect_from:
   - /docs/deploy-to-kubernetes/codefresh-kubernetes-integration-beta/
   - /docs/codefresh-kubernetes-integration-beta/
 toc: true
 ---
-  
-## Explore your services on Kubernetes Cluster
-After adding a cluster, you'll be able to manage your Kubernetes assets via the **Kubernetes tab** on the left pane. Clicking on Kubernetes icon will take you to your services dashboard.
 
-{:.text-secondary}
-### Access your clusters
-Watch the services currently running on your clusters. You can use the filter in order to refine your view according to preferred clusters / namespaces.
+Codefresh includes a built-in Kubernetes Dashboard that allows you to see the state of your cluster(s) and even make changes if you have the appropriate access privileges.
 
-You will be able to see the following parameters for each service:
-* Name
-* IP
-* Cluster
-* Namespace
-* Selector
+## Accessing the Kubernetes Dashboard
 
-{:.text-secondary}
-### Work with your services
-In this view, you will be able to perform the following actions:
-* Add new service
-* Edit/Update existing services
-* Remove service
-
+After [adding a cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/), you will be able to manage your Kubernetes assets via the *Kubernetes tab* on the left pane. Clicking on the Kubernetes icon will take you to your services dashboard.
 
 {% include image.html
 lightbox="true"
@@ -39,127 +23,144 @@ caption="Codefresh Kubernetes Dashboard"
 max-width="60%"
   %}
 
-## Deploy new service
+With the graphical dashboard it is very easy to locate problematic services or deploy new ones quickly.
 
-{:.text-secondary}
-### Add service
-To add a service, click the "Add Service" button.
-Insert basic definitions for your new Service
+## Viewing your Kubernetes services
 
-{:.text-secondary}
-### Select your image
-You can add images built in Codefresh which were pushed to Codefresh registry or provide a name for Docker image that will be pulled from external Docker registry.
+If you have too many clusters you can choose the *add filter* button at the top of the window to hide specific clusters or namespaces.
+
+You will be able to see the following parameters for each service:
+* Name
+* Cluster
+* Namespace
+* Replica count
+* Docker image
+* Selector
+* A status check
+
+You can also switch to a Grid view if you prefer that over the default List view:
+
+
+{% include image.html
+lightbox="true"
+file="/images/kubernetes/kubernetes-dashboard-grid.png"
+url="/images/kubernetes/kubernetes-dashboard-grid.png"
+alt="Kubernetes Dashboard grid view"
+caption="Kubernetes Dashboard grid view"
+max-width="60%"
+  %}
+
+
+
+## Work with your services
+
+In this view, you will be able to perform the following actions:
+
+* Add new service
+* Edit/Update existing services
+* Remove service
+
+
+## Deploying a new service
+
+The Kubernetes dashboard provides a GUI dialog to quickly deploy new services in your cluster.
+
+### Choose a Docker image
+
+To add a service, click the "Add Service" button on the top or the "plus" button on a specific namespace. Then fill in the details for your new service.
+
+You can add images built in Codefresh which were pushed to Codefresh registry or provide a name for Docker image that will be pulled from an [external Docker registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/). Notice that images which are not from Dockerhub must be mentioned with their full domain name. 
 
 {% include image.html 
 lightbox="true" 
 file="/images/d07104d-Screen_Shot_2017-07-23_at_6.46.17_PM.png" 
 url="/images/d07104d-Screen_Shot_2017-07-23_at_6.46.17_PM.png" 
-alt="Screen Shot 2017-07-23 at 6.46.17 PM.png" 
-max-width="40%" 
+alt="Deploying with the quick GUI dialog"
+caption="Deploying with the quick GUI dialog"
+max-width="60%" 
 %}
 
-Use the following steps in order to add Image and pull secrets from [Codefresh Registry]({{ site.baseurl }}/docs/docker-registries/codefresh-registry/):
+
+Use the following steps in order to add Image and pull secrets from the internal [Codefresh Registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/):
 * Specify the image name in the format `r.cfcr.io/<ACCOUNT>/<IMAGE>:<TAG>`
-* Provide image pull secret - this shall be done for each namespace
+* Provide and image pull secret - this will be done for each namespace
 
 {% include image.html 
 lightbox="true" 
 file="/images/11c15f3-Screen_Shot_2017-09-06_at_6.28.30_PM.png" 
 url="/images/11c15f3-Screen_Shot_2017-09-06_at_6.28.30_PM.png" 
-alt="Screen Shot 2017-09-06 at 6.28.30 PM.png" 
-max-width="40%" 
+alt="Deploying from the private Codefresh registry"
+caption="Deploying from the private Codefresh registry"
+max-width="60%" 
 %}
 
-{:.text-secondary}
-### Set Environment variables
+From this screen you can also [create Kubernetes image secrets]({{site.baseurl}}/docs/deploy-to-kubernetes/access-docker-registry-from-kubernetes/) without actually deploying anything.
+
+
+### Set Environment variables and resources
+
+You can add extra environment variables that will passed to the deployment image.
 
 {% include image.html 
 lightbox="true" 
 file="/images/58ac43c-Screen_Shot_2017-07-23_at_6.42.58_PM.png" 
 url="/images/58ac43c-Screen_Shot_2017-07-23_at_6.42.58_PM.png" 
-alt="Screen Shot 2017-07-23 at 6.42.58 PM.png" 
-max-width="40%" 
+alt="Environment variables for the deployment"
+caption="Environment variables for the deployment" 
+max-width="60%" 
 %}
 
-{:.text-secondary}
-### Set required resources for your service (optional) - CPU, Memory
 
-{% include image.html 
-lightbox="true" 
-file="/images/d072267-Screen_Shot_2017-07-31_at_10.12.53_PM.png" 
-url="/images/d072267-Screen_Shot_2017-07-31_at_10.12.53_PM.png" 
-alt="Screen Shot 2017-07-31 at 10.12.53 PM.png" 
-max-width="40%" 
-%}
 
-{:.text-secondary}
-### To add service using K8 yaml file:
-Toggle the Deployment option button to the “Advanced” position (different naming in composition, not consistent)
-Copy and paste your existing K8 yaml files:
-  * Service
-  * Deployment
+You can also define resource limits for your pods.
+It is a good practice to place maximum limits so that your services do not experience resource starvation.
+
+
+### Adding a service with a manifest file
+
+If you are an advance Kubernetes user, toggle the Deployment option button to the `YAML` position on the top right corner of the screen.
+In this mode you can define exactly the contents for the service and deployment Kubernetes resources.
   
 {% include image.html 
 lightbox="true" 
 file="/images/cc01a9f-Pasted_image_at_2017_07_23_03_17_PM.png" 
 url="/images/cc01a9f-Pasted_image_at_2017_07_23_03_17_PM.png" 
-alt="Pasted image at 2017_07_23 03_17 PM.png" 
-max-width="40%" 
+alt="Define a Kubernetes Service Resource"
+caption="Define a Kubernetes Service Resource" 
+max-width="60%" 
 %}
+
+You can type directly in the browser window or paste content from a text editor.
 
 {% include image.html 
 lightbox="true" 
 file="/images/7238315-Pasted_image_at_2017_07_23_03_18_PM.png" 
 url="/images/7238315-Pasted_image_at_2017_07_23_03_18_PM.png" 
-alt="Pasted image at 2017_07_23 03_18 PM.png" 
-max-width="40%" 
+alt="Define a Kubernetes Deployment Resource"
+caption="Define a Kubernetes Deployment Resource" 
+max-width="60%" 
 %}
 
-{:.text-secondary}
-### Congratulations! Your service is now deployed to your K8 cluster!
 
-You can update it from your Kubernetes services window - Just hit the "edit" icon and update your service using the same steps as in "Add new service" section.
+Congratulations! Your service is now deployed to your Kubernetes cluster.
+
+You can update an existing service in a similar manner from your Kubernetes services window - Just hit the "edit" icon and update your service using the same steps as in "Add new service" section.
 
 ## Automate your deployment
+
 After your service is deployed to your Kubernetes cluster, you can automate image deployment using Codefresh pipelines.
 
-Just add the following to your [pipeline definition]({{ site.baseurl }}/docs/configure-ci-cd-pipeline/pipelines/):
-{:start="1"}
-1. In build step - define Docker registry to push.
+Some of the possible options are:
 
-{% include image.html 
-lightbox="true" 
-file="/images/023f2ba-Screen_Shot_2017-08-01_at_12.09.31_PM.png" 
-url="/images/023f2ba-Screen_Shot_2017-08-01_at_12.09.31_PM.png" 
-alt="Screen Shot 2017-08-01 at 12.09.31 PM.png" 
-max-width="40%" 
-%}
+1. The dedicated [deploy step]({{site.baseurl}}/docs/codefresh-yaml/steps/deploy/) in a pipeline. 
+1. The [cf-deploy-kubernetes step]({{site.baseurl}}/docs/deploy-to-kubernetes/kubernetes-templating/) in a pipeline. This can also perform simple templating on Kubernetes manifests.
 
-{:start="2"}
-2. Select *Kubernetes (Beta)* option in the deployment step drop down, and define desired cluster, namespace, service and branches for deployment.
+See more choices in the [Deployment options page]({{site.baseurl}}/docs/deploy-to-kubernetes/deployment-options-to-kubernetes/).
 
-{% include image.html 
-lightbox="true" 
-file="/images/ee8330b-Screen_Shot_2017-07-31_at_10.10.46_PM.png" 
-url="/images/ee8330b-Screen_Shot_2017-07-31_at_10.10.46_PM.png" 
-alt="Screen Shot 2017-07-31 at 10.10.46 PM.png" 
-max-width="40%" 
-%}
+## What to read next
 
-{% include image.html 
-lightbox="true" 
-file="/images/3f7c1cf-Screen_Shot_2017-07-31_at_10.19.23_PM.png" 
-url="/images/3f7c1cf-Screen_Shot_2017-07-31_at_10.19.23_PM.png" 
-alt="Screen Shot 2017-07-31 at 10.19.23 PM.png" 
-max-width="40%" 
-%}
-
-{:.text-secondary}
-### Adding step to Codefresh yaml
-See detailed explanation [here]({{ site.baseurl }}/docs/codefresh-yaml/steps/deploy/)
-
-{:.text-secondary}
-### Example:
-Click [here]({{ site.baseurl }}/docs/deploy-to-kubernetes/codefresh-kubernetes-integration-demochat-example/) to see an example of deploying our Demochat app to Kubernetes cluster.
+- [Add Config Maps]({{site.baseurl}}/docs/deploy-to-kubernetes/add-config-maps-to-your-namespaces/)
+- [Manage your Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/)
+- [Deploy to Kubernetes - quick start]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/)
 
 

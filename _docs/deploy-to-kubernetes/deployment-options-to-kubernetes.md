@@ -1,6 +1,6 @@
 ---
 title: "Deployment Options for Kubernetes"
-description: ""
+description: "Learn how to deploy to Kubernetes with the declarative deploy step"
 group: deploy-to-kubernetes
 redirect_from:
   - /docs/deploy-to-kubernetes/
