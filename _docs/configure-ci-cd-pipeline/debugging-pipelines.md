@@ -19,7 +19,7 @@ The Codefresh pipeline debugger works similar to your IDE debugger. You can plac
   url="/images/pipeline/debug/debug-session.png"
   alt="A debugging session"
   caption="A debugging session"
-  max-width="80%"
+  max-width="70%"
 %}
 
 There are several option for defining exactly when a step will stop.
@@ -47,7 +47,7 @@ Alternatively if a pipeline is already running normally, you can enter debugging
   url="/images/pipeline/debug/enter-debug-mode.png"
   alt="Switching to debug mode"
   caption="Switching to debug mode"
-  max-width="80%"
+  max-width="60%"
 %}
 
 You can restart a pipeline that has already finished in debug mode:
@@ -59,7 +59,7 @@ You can restart a pipeline that has already finished in debug mode:
   url="/images/pipeline/debug/restart-in-debug.png"
   alt="Restart in debug mode"
   caption="Restart in debug mode"
-  max-width="80%"
+  max-width="70%"
 %}
 
 Now you are ready to place breakpoints in steps.
@@ -76,7 +76,7 @@ Once the debugging mode is active all pipeline steps will get an extra breakpoin
   url="/images/pipeline/debug/breakpoint.png"
   alt="A step breakpoint"
   caption="A step breakpoint"
-  max-width="80%"
+  max-width="70%"
 %}
 
 
@@ -114,7 +114,7 @@ You can now manually type commands to inspect your container. Useful commands ar
 
 If you have placed a breakpoint in the `override` phase of a freestyle step then the container image is the same as the one defined in the step. Therefore you can execute all tools that you have placed in the image (e.g. compilers, linters, test frameworks etc.)
 
-In all case the [Shared Codefresh Volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) is automounted so you can examine your source code or any other intermediate artifacts placed in your project folder or the pipeline cache.
+In all cases the [shared Codefresh volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) is automounted so you can examine your source code or any other intermediate artifacts placed in your project folder or the pipeline cache.
 
 If the breakpoint is on a `before` or `after` phase, the command line terminal is powered by an [alpine](https://alpinelinux.org/) image. The image has already useful tools such as `wget`, `nc` and `vi`. You can then install additional tools on your own directly in the terminal with [apk](https://wiki.alpinelinux.org/wiki/Alpine_Linux_package_management). Examples:
 
@@ -143,13 +143,13 @@ Once you are happy with your debugging session, click the continue button to res
 
 The pipeline will continue and then stop for the next breakpoint (if any). You can still revisit the debugger window for previous steps to see what debugging commands you had executed.
 
->Notice that to conserve resources, there is a 15 minute limit on each open debug session. If you don't resume the pipeline withing 15 minutes the whole pipeline will stop with a timeout error.
+>Notice that to conserve resources, there is a 15 minute limit on each open debug session. If you don't resume the pipeline within 15 minutes after hitting a breakpoint the whole pipeline will stop with a timeout error.
 
 It is important to understand that if you have chosen the `override` phase in a freestyle step, then the commands mentioned in the pipeline definition are completely ignored.
 
-## Mentioning breakpoints in the pipeline definition
+## Inserting breakpoints in the pipeline definition
 
-It is also possible to mention breakpoints in the Codefresh YAML. These have no effect when the pipeline is not running in Debug mode. You need to run the pipeline in debug mode in order for them to stop the pipeline.
+It is also possible to mention breakpoints in the Codefresh YAML instead of using the UI. Breakpoints mentioned in the `codefresh.yml` file have no effect when the pipeline is not running in Debug mode. You need to run the pipeline in debug mode in order for them to stop the pipeline.
 
 Here is the syntax:
 
@@ -180,7 +180,6 @@ steps:
     debug:
       phases:
         before: true
-        override: false
         after: false   
   MyUnitTests:
     title: Running Unit tests
@@ -196,7 +195,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-Once you run this pipeline in debug mode, it will automatically have breakpoints in the respective steps:
+Once you run this pipeline in debug mode, it will automatically have breakpoints in the respective steps.
 
 
 ## Troubleshooting
