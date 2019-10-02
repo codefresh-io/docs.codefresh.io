@@ -37,6 +37,8 @@
       url: "/build-status"
     - title: Running pipelines locally
       url: "/running-pipelines-locally"  
+    - title: Debugging pipelines
+      url: "/debugging-pipelines" 
       
 - title: Learn by example
   url: "/learn-by-example"

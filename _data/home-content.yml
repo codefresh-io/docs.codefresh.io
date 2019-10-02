@@ -28,6 +28,9 @@
     localurl: /docs/configure-ci-cd-pipeline/build-status/
   - title: Running pipelines locally
     localurl: /docs/configure-ci-cd-pipeline/running-pipelines-locally/  
+  - title: Debugging pipelines
+    new: true
+    localurl: /docs/configure-ci-cd-pipeline/debugging-pipelines/ 
 - title: Learn by example
   icon: images/home-icons/tutorial.png
   url: ''
