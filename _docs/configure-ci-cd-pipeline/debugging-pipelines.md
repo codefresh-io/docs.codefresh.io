@@ -12,7 +12,15 @@ In addition to [running pipelines locally]({{site.baseurl}}/docs/configure-ci-cd
 The Codefresh pipeline debugger works similar to your IDE debugger. You can place breakpoints on one or more pipeline steps and once the pipeline hits one of them, it will stop. You will then get a terminal like interface inside your pipeline step where you can run any commands that you wish in order to understand the state of the container
 
 
-IMAGE here
+{%
+  include image.html
+  lightbox="true"
+  file="/images/pipeline/debug/debug-session.png"
+  url="/images/pipeline/debug/debug-session.png"
+  alt="A debugging session"
+  caption="A debugging session"
+  max-width="80%"
+%}
 
 There are several option for defining exactly when a step will stop.
 
@@ -20,22 +28,57 @@ There are several option for defining exactly when a step will stop.
 
 There are threes ways to enter the debugging mode in a pipeline. You can activate the debugging toggle button when your run the pipeline:
 
-IMAGE here
+{%
+  include image.html
+  lightbox="true"
+  file="/images/pipeline/debug/run-pipeline-debug.png"
+  url="/images/pipeline/debug/run-pipeline-debug.png"
+  alt="Running a pipeline in debug mode"
+  caption="Running a pipeline in debug mode"
+  max-width="30%"
+%}
 
-Alternatively if a pipeline is already running normally you can enter debugging mode by clicking on the bug icon on the top right.
+Alternatively if a pipeline is already running normally, you can enter debugging mode by clicking on the bug icon on the top right.
 
-IMAGE here
+{%
+  include image.html
+  lightbox="true"
+  file="/images/pipeline/debug/enter-debug-mode.png"
+  url="/images/pipeline/debug/enter-debug-mode.png"
+  alt="Switching to debug mode"
+  caption="Switching to debug mode"
+  max-width="80%"
+%}
 
 You can restart a pipeline that has already finished in debug mode:
 
-IMAGE here
+{%
+  include image.html
+  lightbox="true"
+  file="/images/pipeline/debug/restart-in-debug.png"
+  url="/images/pipeline/debug/restart-in-debug.png"
+  alt="Restart in debug mode"
+  caption="Restart in debug mode"
+  max-width="80%"
+%}
+
+Now you are ready to place breakpoints in steps.
 
 
 ## Placing breakpoints
 
 Once the debugging mode is active all pipeline steps will get an extra breakpoint icon on the far right of their box.
 
-IMAGE here
+{%
+  include image.html
+  lightbox="true"
+  file="/images/pipeline/debug/breakpoint.png"
+  url="/images/pipeline/debug/breakpoint.png"
+  alt="A step breakpoint"
+  caption="A step breakpoint"
+  max-width="80%"
+%}
+
 
 You can click on this icon and define a breakpoint for this particular step. You have the following options
 
@@ -53,7 +96,15 @@ The `after` phase is useful if you want to verify files or variables after a ste
 
 Once the pipeline reaches a step that has a breakpoint, execution will pause and a new debugger terminal will become available:
 
-IMAGE here
+{%
+  include image.html
+  lightbox="true"
+  file="/images/pipeline/debug/debug-window.png"
+  url="/images/pipeline/debug/debug-window.png"
+  alt="The debugging terminal"
+  caption="The debugging terminal"
+  max-width="60%"
+%}
 
 You can now manually type commands to inspect your container. Useful commands are
 
@@ -80,7 +131,15 @@ Use the command `apk search foo` to search for a package named foo.
 
 Once you are happy with your debugging session, click the continue button to resume.
 
-IMAGE here
+{%
+  include image.html
+  lightbox="true"
+  file="/images/pipeline/debug/resume-button.png"
+  url="/images/pipeline/debug/resume-button.png"
+  alt="Continue execution button"
+  caption="Continue execution button"
+  max-width="60%"
+%}
 
 The pipeline will continue and then stop for the next breakpoint (if any). You can still revisit the debugger window for previous steps to see what debugging commands you had executed.
 
@@ -139,12 +198,8 @@ steps:
 
 Once you run this pipeline in debug mode, it will automatically have breakpoints in the respective steps:
 
-IMAGE here.
-
 
 ## Troubleshooting
-
-
 
 The debugger windows needs some extra tools in a docker image in order to work (such as the `bash` shell). Codefresh automatically installs these tools on your image without any configuration.
 
