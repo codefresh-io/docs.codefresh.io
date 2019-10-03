@@ -203,6 +203,8 @@
         - title: Web terminal
           url: "/web-terminal"  
 
+        - title: Deploy to VM
+          url: "/packer-gcloud"   
         - title: Use kubectl as part of Freestyle step
           url: "/use-kubectl-as-part-of-freestyle-step"
         - title: Deploy with Helm

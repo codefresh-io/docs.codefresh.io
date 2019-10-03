@@ -74,6 +74,7 @@ Codefresh can automatically launch environments (powered by Docker swarm) to [pr
 
 Codefresh can deploy to any platform such as VMs, FTP/SSH/S3 sites, app servers but of course it has great support for [Kubernetes clusters]({{site.baseurl}}/docs/deploy-to-kubernetes/deployment-options-to-kubernetes/) and [Helm releases]({{site.baseurl}}/docs/new-helm/helm-releases-management/):
 
+- [Deploy to a VM with packer]({{site.baseurl}}/docs/yaml-examples/examples/packer-gcloud/) 
 - [Deploy Demochat to a Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/codefresh-kubernetes-integration-demochat-example/) 
 - [Use kubectl as part of Freestyle step]({{site.baseurl}}/docs/yaml-examples/examples/use-kubectl-as-part-of-freestyle-step) 
 - [Deploy with Helm]({{site.baseurl}}/docs/yaml-examples/examples/helm) 
