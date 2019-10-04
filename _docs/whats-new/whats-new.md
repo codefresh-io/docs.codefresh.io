@@ -8,6 +8,10 @@ toc: true
 ---
 Recent Codefresh updates:
 
+### October 2019
+
+- Deployments with Packer - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/packer-gcloud/)
+
 ### September 2019
 
 - Unit testing guide - [documentation]({{site.baseurl}}/docs/testing/unit-tests)

@@ -32,7 +32,7 @@ A. Unlike other CI solutions, the user limit in Codefresh plan does **not** refe
 have access to the Codefresh Web Interface. You could work in a company with 100 developers committing code in Git while only 2 people are actually logging in the Codefresh UI.
 
 **Q. Does Codefresh offer infrastructure for running builds?**   
-A. Yes, the cloud version of Codefresh is fully [SAAS](https://en.wikipedia.org/wiki/Software_as_a_service). You only need to open an account and all builds are running on our cloud. You can still use a [Codefresh runner]({{site.baseurl}}/docs/enterprise/codefresh-runner/), but this is completely optional.
+A. Yes, the cloud version of Codefresh is fully [SAAS](https://en.wikipedia.org/wiki/Software_as_a_service). You only need to open an account and all builds are running on our cloud. You can still use a [Codefresh runner]({{site.baseurl}}/docs/enterprise/codefresh-runner/) to run builds on your own infrastructure, but this is completely optional.
 
 **Q. Does Codefresh offer infrastructure for test environments?**  
 A. Yes, each Codefresh account has access to [preview environments]({{site.baseurl}}/docs/getting-started/on-demand-environments/) that are powered by Docker Swarm. You can also run [integration tests]({{site.baseurl}}/docs/testing/integration-tests/) with Databases, Key-Value stores, message queues etc.
@@ -41,17 +41,18 @@ A. Yes, each Codefresh account has access to [preview environments]({{site.baseu
 A. No. You need to connect your own cloud provider either in the form of VMs, or Kubernetes cluster or Docker Swarm etc.
 
 **Q. Can I deploy with Codefresh to non-Kubernetes targets?**  
-A. Yes. Even though Codefresh has great support for Docker and Kubernetes, you can still use it to deploy plain VMs, JAR files, static websites, Wordpress instances, Database changesets etc.
+A. Yes. Even though Codefresh has great support for Docker and Kubernetes, you can still use it to deploy plain VMs, JAR files, static websites, Wordpress instances, Database changesets etc. Here is an example with [a traditional VM deployment]({{site.baseurl}}/docs/yaml-examples/examples/packer-gcloud/).
 
 ## Competitors
 
 **Q. How is Codefresh different that another CI solution?**  
 A. This is a long discussion. The quick answer is :
-1. Codefresh is a full CI/CD solution and not just CI
+1. Codefresh is a full CI/CD solution and not just CI.
+1. Codefresh works with all major Git platforms and Cloud providers. There is no lock-in with any particular vendor.
 1. Codefresh has [several unique features]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/) such as a distributed docker layer cache, an automounted shared volume, a private Docker registry and a private Helm repository.
 1. Specifically for Kubernetes/Helm, Codefresh has a [Kubernetes dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/), a [Helm dashboard]({{site.baseurl}}/docs/new-helm/helm-releases-management/), a [Helm charts browser]({{site.baseurl}}/docs/new-helm/add-helm-repository/) and a [Helm environment board]({{site.baseurl}}/docs/new-helm/helm-environment-promotion/).
 1. The private Docker registry and all cluster integrations are automatically available to all pipelines. You don't need `docker login` commands or `kubectl` commands to setup a Kube config inside your pipeline.
-1. Codefresh covers the full software lifecycle. You can see a release on the cluster dashboard, click on it, go to the docker image, click on it and go the build that created it, all from a single interface. Codefresh is batteries-included CI/CD
+1. Codefresh covers the full software lifecycle. You can see a release on the cluster dashboard, click on it, go to the docker image, click on it and go the build that created it, all from a single interface. Codefresh is batteries-included CI/CD.
 
 **Q. How is Codefresh different than Jenkins?**  
 A. Codefresh is a superset of Jenkins. Jenkins is only CI. You need to write custom scripts or use another tool such as Ansible to deploy with Jenkins. See the [comparison matrix](https://codefresh.io/compare-codefresh-jenkins/) and the [detailed blog post](https://codefresh.io/continuous-deployment/codefresh-versus-jenkins/). There is also [a comparison with Jenkins X](https://codefresh.io/continuous-deployment/codefresh-versus-jenkins-x/). 
@@ -112,7 +113,7 @@ A. Yes, you can even deploy in parallel to several environments. If you also use
 A. Yes, there is a built-in [approval step]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/).
 
 **Q. Can I deploy to non-Kubernetes targets?**    
-A. Yes, you can deploy to a VM, an FTP site, an application server or even a behind-the-firewall [Nomad cluster]({{site.baseurl}}/docs/yaml-examples/examples/nomad/). You can deploy to anything that has an API or CLI. 
+A. Yes, you can deploy [to a VM]({{site.baseurl}}/docs/yaml-examples/examples/packer-gcloud/), an FTP site, an application server or even a behind-the-firewall [Nomad cluster]({{site.baseurl}}/docs/yaml-examples/examples/nomad/). You can deploy to anything that has an API or CLI. 
 
 **Q. Does Codefresh support infrastructure as code?**    
 A. Yes, there is nothing special to it. See the [Terraform]({{site.baseurl}}/docs/yaml-examples/examples/terraform/) and [Pulumi]({{site.baseurl}}/docs/yaml-examples/examples/pulumi/) examples.
