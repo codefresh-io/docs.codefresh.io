@@ -24,7 +24,7 @@ file="/images/pipeline/monitoring/builds.png"
 url="/images/pipeline/monitoring/builds.png"
 alt="Pipeline Activity in Codefresh" 
 caption="Pipeline activity (click to enlarge)"
-max-width="70%"
+max-width="60%"
 %}
 
 By default, it shows all builds that happening in Codefresh. To narrow the list you can use the filters on the top
@@ -38,9 +38,10 @@ At the most basic level you can choose between
 
  * *Running* builds that are currently executing
  * *Pending* builds which are queued and waiting to start
+ * *Delayed* builds which cannot run yet, because there are not free pipeline builders
  * *All* builds regardless of running stage (this is the default)
 
-You can further filter the builds by choosing the various filter types that specify the build job
+You can further filter the builds by choosing the various filter types that specify the build job.
 
 {% include 
 image.html 
@@ -54,11 +55,13 @@ max-width="40%"
 
 The available filters are:
 
-* *Repositories* - any of the linked repositories.
-* *Branches* - any of the available branches.
-* *Committers* - person that made the commit that triggered the build.
-* *Status* - success, error, in-progress, pending, terminated.
+* *Pipeline* - any of the pipelines available.
+* *Provider* - type of [Git provider]({{site.baseurl}}/docs/integrations/git-providers/).
+* *Repository* - Git repository from the attached [trigger]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/).
 * *Type* - build, [launch a test environment]({{site.baseurl}}/docs/getting-started/on-demand-environments/#launching-a-docker-image-using-codefresh).
+* *Branch* - any of the available branches from the attached Git trigger.
+* *Committer* - person that made the commit that triggered the build.
+* *Status* - success, error, in-progress, pending, terminated etc.
 
 
 Notice that all filters are multiple-choice so you can select multiple values for each filter category.
@@ -71,10 +74,33 @@ file="/images/pipeline/monitoring/possible-filters.png"
 url="/images/pipeline/monitoring/possible-filters.png"
 alt="Pipeline filters in Codefresh" 
 caption="Active filters (click to enlarge)"
-max-width="80%"
+max-width="40%"
 %}
 
 You can easily remove active filters, by clicking on them and adding/removing values.
+
+### Creating build views
+
+Once you have a set of filters that you use regularly, you can save them as a custom *Build View* by clicking the *Save as View* button
+and providing a name.
+
+Now you can select at the top of the window any of the available build views to automatically filter results according to the respective set of filters.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/monitoring/build-view-selection.png" 
+url="/images/pipeline/monitoring/build-view-selection.png"
+alt="Build View selection" 
+caption="Build View selection (click to enlarge)"
+max-width="40%"
+%}
+
+You can delete existing build-views by clicking on the *manage views* button.
+You can change the filters of an existing build view by making a new filter selection and then saving the view with an existing name (effectively overwriting it).
+
+
+### Build details
 
 
 For each individual build you can see several details such as the git hash, the person that made the commit, the pipeline that was triggered as well as how much time it took. On the right side you can see the docker images that belong to this pipeline, the `codefresh.yml` file that was executed behind the scenes as well as the logs (explained later on).
@@ -89,11 +115,13 @@ caption="Build details (click to enlarge)"
 max-width="80%"
 %}
 
-There are also two extra options if you click the small "3-dot" menu button on the right. You can rebuild a pipeline or launch a [test environment]({{ site.baseurl }}/docs/getting-started/on-demand-environments/#launching-a-docker-image-using-codefresh) from the resulting Docker image.
+There are also two extra options if you click the small "3-dot" menu button on the right. You can rebuild a pipeline or launch a [test environment]({{site.baseurl}}/docs/getting-started/on-demand-environments/#launching-a-docker-image-using-codefresh) from the resulting Docker image.
 
 Notice that if you restart a pipeline it will trigger with the exact settings it originally had. So 
-if this was a manual trigger where you [disabled caching]({{ site.baseurl }}/docs/troubleshooting/common-issues/disabling-codefresh-caching-mechanisms/) or changed the [notification options](#monitoring-pipelines-that-check-pull-requests), the new
+if this was a manual trigger where you [disabled caching]({{site.baseurl}}/docs/troubleshooting/common-issues/disabling-codefresh-caching-mechanisms/) or changed the [notification options](#monitoring-pipelines-that-check-pull-requests), the new
 execution will still honor those settings (even if you have changed them for later builds).
+
+An extra button for test reports will be visible if you are using the [test report feature]({{site.baseurl}}/docs/testing/test-reports/) of Codefresh.
 
 
 ## Viewing details for an individual pipeline build
