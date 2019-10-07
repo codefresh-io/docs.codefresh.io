@@ -73,7 +73,6 @@
   - title: Parallel Pipelines
     localurl: /docs/codefresh-yaml/advanced-workflows/    
   - title: Annotations
-    new: true
     localurl: /docs/codefresh-yaml/annotations/
   - title: Examples
     localurl: /docs/yaml-examples/examples/
@@ -178,10 +177,8 @@
     new: true
     localurl: /docs/yaml-examples/examples/packer-gcloud/
   - title: Deploy with Terraform
-    new: true
     localurl: /docs/yaml-examples/examples/terraform/
   - title: Deploy with Pulumi
-    new: true
     localurl: /docs/yaml-examples/examples/pulumi/
   - title: Deploy to Nomad
     new: true 
@@ -223,7 +220,6 @@
   - title: Access Control
     localurl: /docs/enterprise/access-control 
   - title: Audit Logs
-    new: true
     localurl: /docs/enterprise/audit-logs 
   - title: Codefresh hybrid installation (legacy)
     localurl: /docs/enterprise/codefresh-hybrid    

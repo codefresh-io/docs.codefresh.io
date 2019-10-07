@@ -10,6 +10,7 @@ Recent Codefresh updates:
 
 ### October 2019
 
+- Debugging pipelines with breakpoints - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/debugging-pipelines/)
 - Deployments with Packer - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/packer-gcloud/)
 
 ### September 2019
