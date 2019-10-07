@@ -136,19 +136,6 @@ You can also pass extra environment variables using an array
 curl 'https://g.codefresh.io/api/builds/5b1a78d1bdbf074c8a9b3458' --compressed -H 'content-type:application/json; charset=utf-8' -H 'Authorization: <your_key_here>' --data-binary '{"serviceId":"5b1a78d1bdbf074c8a9b3458","type":"build","repoOwner":"kostis-codefresh","branch":"master","repoName":"nestjs-example","variables":{"sample-var1":"sample1","SAMPLE_VAR2":"SAMPLE2"}}'
 {% endhighlight %}
 
-Specifically, for triggering pipelines remotely you can find a premade Curl command (including an api key) in the build settings for each pipeline:
-
-{% include image.html
-lightbox="true"
-file="/images/integrations/api/webhook-url.png"
-url="/images/integrations/api/webhook-url.png"
-alt="Getting the webhook URL"
-caption="Getting the webhook URL"
-max-width="70%"
-%}
-
-If you press the copy button you will have in your clipboard the whole request (including a key).
-
 ## Example - getting status from builds
 
 You can get the status of a build from the cli by using its ID:

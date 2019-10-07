@@ -52,7 +52,7 @@ Note that the engine has transparent network access to all the other settings in
 Here is a full example:
 
 ```
-codefresh run francisco-codefresh/jan_19/my-basic-pipeline --local -b master
+codefresh run francisco-codefresh/jan_19/my-basic-pipeline --local -b master -t my-trigger
 ```
 
 
@@ -77,7 +77,7 @@ max-width="80%"
 By default, if you run a Codefresh pipeline locally, this shared volume will automatically be discarded at the end of the build. You can still keep the volume after the build by adding the `--local-volume` parameter in your [run command](https://codefresh-io.github.io/cli/pipelines/run-pipeline/). Here is an example:
 
 ```
-codefresh run francisco-codefresh/jan_19/my-basic-pipeline --local --local-volume -b master
+codefresh run francisco-codefresh/jan_19/my-basic-pipeline --local --local-volume -b master -t my-trigger
 ```
 
 
@@ -113,7 +113,7 @@ The extra parameter is `--yaml` in that case.
 Here is a complete example
 
 ```
-codefresh run francisco-codefresh/jan_19/my-basic-pipeline --local --local-volume --yaml=my-codefresh.yml -b master
+codefresh run francisco-codefresh/jan_19/my-basic-pipeline --local --local-volume --yaml=my-codefresh.yml -b master -t my-trigger
 ```
 
 When this pipeline runs locally, it will use whatever steps exist in `my-codefresh.yml` instead of the git version. The shared data volume will also be left intact after the build is finished as explained in the previous section.
