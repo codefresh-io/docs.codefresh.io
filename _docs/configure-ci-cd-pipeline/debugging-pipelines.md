@@ -122,7 +122,6 @@ If the breakpoint is on a `before` or `after` phase, the command line terminal i
 
 * `apk add curl`
 * `apk add nano`
-* `apk add nodejs-current`
 * `apk add go`
 * `apk add python`
 
@@ -197,7 +196,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-Once you run this pipeline in debug mode, it will automatically have breakpoints in the respective steps.
+Once you run this pipeline in debug mode, it will automatically have breakpoints in the respective steps (but you can still override/change them using the GUI).
 
 
 ## Troubleshooting
