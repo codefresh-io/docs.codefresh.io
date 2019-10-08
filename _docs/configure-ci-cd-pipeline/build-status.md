@@ -6,6 +6,8 @@ toc: true
 redirect_from:
   - /docs/build-status
   - /docs/build-status/
+  - /docs/build-badges-1
+  - /docs/build-badges-1/
 ---
 
 
