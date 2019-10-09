@@ -88,7 +88,7 @@ All system provided variables will also be automatically injected to any freesty
 | {% raw %}`${{CF_REPO_NAME}}`{% endraw %}          | Repository name. |
 | {% raw %}`${{CF_BRANCH}}`{% endraw %}             | Branch name (or Tag depending on the payload json) of the Git repository of the main pipeline, at the time of execution. <br/>You can also use {% raw %}`${{CF_BRANCH_TAG_NORMALIZED}}`{% endraw %} to get the branch name normalized. It will be without any chars that are illegal in case the branch name were to be used as the Docker image tag name. |
 | {% raw %}`${{CF_BASE_BRANCH}}`{% endraw %}      | The base branch used during creation of Tag |
-| {% raw %}`${{CF_PULL_REQUEST_ACTION}}`{% endraw %}      | The pull request action |
+| {% raw %}`${{CF_PULL_REQUEST_ACTION}}`{% endraw %}      | The pull request action. Values are those defined by your Git provider such as [Github](https://developer.github.com/webhooks/), [Gitlab](https://docs.gitlab.com/ee/user/project/integrations/webhooks.html), [Bitbucket](https://confluence.atlassian.com/bitbucket/manage-webhooks-735643732.html) etc. |
 | {% raw %}`${{CF_PULL_REQUEST_TARGET}}`{% endraw %}      | The pull request target branch |
 | {% raw %}`${{CF_PULL_REQUEST_NUMBER}}`{% endraw %}      | The pull request number |
 | {% raw %}`${{CF_PULL_REQUEST_ID}}`{% endraw %}      | The pull request id |
