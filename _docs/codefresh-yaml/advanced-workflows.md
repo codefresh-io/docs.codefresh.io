@@ -305,6 +305,220 @@ This illustrates the side effects for both parallel steps that were executed on 
 
 >It is therefore your responsibility to make sure that steps that run in parallel place nice with each other. Currently Codefresh performs no conflict detection at all. If there are race conditions between your parallel steps (e.g. multiple steps writing at the same files) the final behavior is undefined. It is best to start with a fully sequential pipeline and use parallelism in a gradual manner if you are unsure about the side effects of your steps
 
+## Implicit parallel steps
+
+In all the previous examples, all parallel steps have been defined explicitly in a pipeline. This works well for a small number of steps, but in some cases it can be cumbersome to write such as a pipeline, especially when the parallel steps are similar.
+
+Codefresh offers two handy ways to lessen the amount of YAML you have to write and get automatic parallelization with minimum effort.
+
+* The `scale` syntax allows you to quickly create parallel steps that are mostly similar (but still differ)
+* The `matrix` syntax allows you to quickly create parallel steps for multiple combinations of properties 
+
+###  Scale parallel steps (one dimension)
+
+If you look back at the parallel docker push example you will see that all push steps are the same. The only thing that changes is the registry that they push to.
+
+`YAML`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+stages:
+- build
+- push
+steps:
+  MyAppDockerImage:
+    title: Building Docker Image
+    stage: 'build'
+    type: build
+    image_name: trivialgoweb
+    working_directory: ./
+    tag: '${{CF_BRANCH_TAG_NORMALIZED}}'
+    dockerfile: Dockerfile
+  PushingToRegistries:
+    type: parallel
+    stage: 'push'
+    steps:
+      jfrog_PushingTo_jfrog_BintrayRegistry:
+        type: push
+        title: jfrog_Pushing To Bintray Registry
+        candidate: ${{MyAppDockerImage}}
+        tag: '${{CF_SHORT_REVISION}}'
+        registry: bintray 
+      PushingToGoogleRegistry:
+        type: push
+        title: Pushing To Google Registry
+        candidate: ${{MyAppDockerImage}}
+        tag: '${{CF_SHORT_REVISION}}'
+        registry: gcr
+      PushingToDockerRegistry:
+        type: push
+        title: Pushing To Dockerhub Registry
+        candidate: ${{MyAppDockerImage}}
+        tag: '${{CF_SHORT_REVISION}}'
+        image_name: kkapelon/trivialgoweb
+        registry: dockerhub  
+{% endraw %}
+{% endhighlight %}
+
+
+This pipeline can be simplified by using the special `scale` syntax to create a common parent step with all similarities:
+
+
+`YAML`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+stages:
+- build
+- push
+steps:
+  MyAppDockerImage:
+    title: Building Docker Image
+    stage: 'build'
+    type: build
+    image_name: trivialgoweb
+    working_directory: ./
+    tag: '${{CF_BRANCH_TAG_NORMALIZED}}'
+    dockerfile: Dockerfile
+  PushingToRegistries:
+    stage: 'push'
+    type: push
+    tag: '${{CF_SHORT_REVISION}}'
+    candidate: ${{MyAppDockerImage}}
+    scale:
+      jfrog_PushingTo_jfrog_BintrayRegistry:
+        registry: bintray 
+      PushingToGoogleRegistry:
+        registry: gcr
+      PushingToDockerRegistry:
+        image_name: kkapelon/trivialgoweb
+        registry: dockerhub  
+{% endraw %}
+{% endhighlight %}
+
+You can see now that all common properties are defined once in the parent step (`PushingToRegistries`) while each push step only contains what differs. Codefresh will automatically create parallel steps when it encounters the `scale` syntax.
+
+The resulting pipeline is more concise but runs in the same manner as the original YAML. For a big number of parallel steps, the `scale` syntax is very helpful for making the pipeline definition more clear.
+
+You can use the `scale` syntax with all kinds of steps in Codefresh and not just push steps. Another classic example would be running tests in parallel with different environment variables. 
+
+
+`YAML`
+{% highlight yaml %}
+{% raw %}
+  run_tests_in_parallel:
+    stage: 'Microservice A'
+    working_directory: './my-front-end-code'
+    image: node:latest
+    commands:
+     - npm run test
+    scale:
+      first:       
+        environment:
+          - TEST_NODE=0        
+      second:
+        environment:
+          - TEST_NODE=1
+      third:
+        environment:
+          - TEST_NODE=2
+      fourth:
+        environment:
+          - TEST_NODE=3          
+{% endraw %}
+{% endhighlight %}
+
+This pipeline will automatically create 4 parallel freestyle steps. All of them will use the same Docker image and executed the same command (`npm run test`) but each one will receive a different value for the environment variable called `TEST_NODE`. 
+
+
+### Matrix parallel steps (multiple dimensions)
+
+The `scale` syntax allows you to easily create multiple parallel steps that differ only in a single dimension. If you have multiple dimensions of properties that differ and you want to run all possible combinations (Cartesian product) then the `matrix` syntax will do that for you automatically.
+
+`YAML`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+stages:
+  - prepare
+  - test
+steps:
+  main_clone:
+    title: Cloning main repository...
+    type: git-clone
+    repo: 'codefreshdemo/cf-example-unit-test'
+    revision: 'master'
+    git: github
+    stage: prepare
+  run_my_tests_before_build:
+    stage: test
+    working_directory: './golang-app-A'
+    commands:
+     - go test -v
+    matrix:
+      image:
+        - golang:1.11
+        - golang:1.12
+        - golang:1.13
+      environment:
+        - [CGO_ENABLED=1]
+        - [CGO_ENABLED=0]         
+{% endraw %}
+{% endhighlight %}
+
+Here we want run unit tests with 3 different versions of GO and also try with CGO enabled or not. Instead of manually writing 6 parallel steps in your pipeline with all possible combinations, we can simply use the `matrix` syntax to create the following parallel steps:
+
+* Go 1.11 with CGO enabled
+* Go 1.11 with CGO disabled
+* Go 1.12 with CGO enabled
+* Go 1.12 with CGO disabled
+* Go 1.13 with CGO enabled
+* Go 1.13 with CGO disabled
+
+The resulting Codefresh YAML is much more compact. Notice that because the `environment` property in Codefresh is already an array on its own, when we use it with the `matrix` syntax we need to enclose its value with `[]` (array of arrays).
+
+You can add more dimensions to a matrix build (and not just two as shown in the example). Here is another example with 3 dimensions:
+
+`YAML`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+stages:
+  - prepare
+  - test
+steps:
+  main_clone:
+    title: Cloning main repository...
+    stage: prepare
+    type: git-clone
+    repo: 'codefresh-contrib/spring-boot-2-sample-app'
+    revision: master
+    git: github
+  MyUnitTests:
+    stage: test
+    matrix:
+      image:
+        - 'maven:3.5.2-jdk-8-alpine'
+        - 'maven:3.6.2-jdk-11-slim'
+        - 'maven:3-jdk-8'
+      commands:
+        - ["mvn --version", "mvn -Dmaven.repo.local=/codefresh/volume/m2_repository test"]
+        - ["mvn --version", "mvn -Dmaven.test.skip -Dmaven.repo.local=/codefresh/volume/m2_repository package"]
+      environment:
+        - [MAVEN_OPTS=-Xms1024m]
+        - [MAVEN_OPTS=-Xms512m]       
+{% endraw %}
+{% endhighlight %}
+
+This pipeline creates 3 x 2 x 2 = 12 parallel steps with all the possible combinations of:
+
+* Maven version
+* Running or disabling tests
+* Using 1GB or 512MBs of memory.
+
+Remember that all parallel steps run within the same pipeline executor so make sure that you have enough resources as the number
+of matrix variations can quickly grow if you add too many dimensions.
+
 ## Parallel pipeline mode
 
 To activate advanced parallel mode for the whole pipeline you need to declare it explicitly at the root of the `codefresh.yml` file:
