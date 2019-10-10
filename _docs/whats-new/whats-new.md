@@ -14,7 +14,7 @@ Recent Codefresh updates:
 - Matrix builds and implicit paralllel steps - [documentation]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/#implicit-parallel-steps)
 - New Build view filters - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/monitoring-pipelines/#creating-build-views)
 - Deployments with Packer - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/packer-gcloud/)
-
+- Calling child pipelines - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/call-child-pipelines/)
 
 
 ### September 2019

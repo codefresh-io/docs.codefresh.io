@@ -166,6 +166,8 @@
           url: "/shared-volumes-between-builds" 
         - title: Use Git Hash in CI
           url: "/get-short-sha-id-and-use-it-in-a-ci-process"    
+        - title: Calling other pipelines
+          url: "/call-child-pipelines" 
 
         - title: Run Unit Tests
           url: "/run-unit-tests"
