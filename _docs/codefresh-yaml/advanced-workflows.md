@@ -430,6 +430,8 @@ You can use the `scale` syntax with all kinds of steps in Codefresh and not just
 
 This pipeline will automatically create 4 parallel freestyle steps. All of them will use the same Docker image and executed the same command (`npm run test`) but each one will receive a different value for the environment variable called `TEST_NODE`. 
 
+Notice that if you define environment variables on the parent step (`run_tests_in_parallel` in the example above), they will also be available on the children parallel steps. And if those define, environment variables as well, all environment variables will be available.
+
 
 ### Matrix parallel steps (multiple dimensions)
 
@@ -518,6 +520,8 @@ This pipeline creates 3 x 2 x 2 = 12 parallel steps with all the possible combin
 
 Remember that all parallel steps run within the same pipeline executor so make sure that you have enough resources as the number
 of matrix variations can quickly grow if you add too many dimensions.
+
+Notice that, as with the `scale` syntax, the defined values/properties are merged between parent step (`MyUnitTests` in the example above) and children steps. For example, if you set an environment variable on the parent and also on child matrix steps , the result will a merged environment where all values are available.
 
 ## Parallel pipeline mode
 
