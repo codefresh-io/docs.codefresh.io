@@ -34,7 +34,7 @@ Service containers work similar to docker-compose. A set of containers are launc
 
 A best practice is to make sure that the hostnames used by your integration tests to access external services are not hard-coded. Even though with Codefresh you can decide the name of hostnames used in the pipeline (i.e. the hostname of a MySQL or Redis instance), in the long run it is better if you can choose that information freely without having the limitation of what is mentioned in the source code.
 
-Also make sure that your tests do **NOT** use `localhost` for an API endpoint. This technique does not work with docker-compose and will not work with Codefresh either.
+Also make sure that your tests do **NOT** use `localhost` for an API endpoint. This technique does not work with docker-compose and will not work with Codefresh either. Instead, use the hostname defined in the docker-compose/codefresh.yml file. For example if you launch a MySQL service at hostname `my_db`, then your tests should use `my_db:3306` as a target. Even better make the hostname completely configurable with an environment variable (so that you can change it within the Codefresh pipeline at wish). Basically make sure that your integration tests work fine with docker compose locally on your workstation, before converting them to a Codefresh pipeline.
 
 >Notices that the services you launch in a Codefresh pipeline, consume resources (memory/CPU) from the pipeline running environment. The more services you launch the less resources you have for the actual pipeline. We also suggest that you do **NOT** use service containers for running load testing or performance testing. 
 
