@@ -68,7 +68,7 @@ steps:
     repo: "kostis-codefresh/my-npm-example"
     revision: "master"
     git: github
-  my_tests:
+  my_deps:
     image: 'node:11'
     title: "Download Deps"
     commands:
