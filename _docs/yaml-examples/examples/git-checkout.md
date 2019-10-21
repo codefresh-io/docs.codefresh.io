@@ -109,7 +109,7 @@ This is the recommended way of creating re-usable pipelines in Codefresh.
 
 Normally each [pipeline step]({{site.baseurl}}/docs/codefresh-yaml/steps/) in Codefresh can be named as you want. Specifically, for the git-clone step however the name `main_clone` is special.
 
-If you name your clone step as `main_clone` the Codefresh will automatically change the working directory for all the next pipelines steps, to be the same as the project that was just checked out.
+If you name your clone step as `main_clone` the Codefresh will automatically change the working directory for all the next (non git-clone) pipeline steps, to be the same as the project that was just checked out.
 
 {% include 
 image.html 
@@ -122,6 +122,9 @@ max-width="50%"
 %}
 
 This is probably what you want anyway, so make sure that you name your git-clone steps as `main_clone`. If you use any other name, then the working folder will be the parent of the checked-out project which is the [shared Codefresh volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) at `/codefresh/volume`.
+
+If you have more then one clone steps in a pipeline it is recommended to define the working directory explicitly (see next example), instead
+of depending on the `main_clone` naming convention, which is best used in pipelines with a single clone step.
 
 ## Cloning multiple repositories
 
