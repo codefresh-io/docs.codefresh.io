@@ -308,21 +308,23 @@ tr '\n' ',' < /path/to/id_rsa
 Copy the output and place it an [environment variable]({{site.baseurl}}/docs/codefresh-yaml/variables/#user-provided-variables). To make the SSH key availabe to the build step, you can write it to the codefresh volume:
 `codefresh.yml`
 {% highlight yaml %}
+{% raw %}
 version: '1.0'
 steps:
   SetupSshKeys:
     title: Setting up ssh key
     image: alpine:latest
-    stage: build
     commands:
-      - echo "${SSH_KEY}" | tr  ',' '\n' > "${{CF_VOLUME_PATH}}/github_rsa"
+      - echo "${SSH_KEY}" | tr  ',' '\n' > ~/.ssh/github_rsa
 
   BuildMyImage:
     title: Building My Docker image
     image_name: my-app-image
     type: build
+    tag: latest
     ssh:
       - github=~/.ssh/github_rsa
+{% endraw %}
 {% endhighlight %}
 
 
