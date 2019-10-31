@@ -315,7 +315,8 @@ steps:
     title: Setting up ssh key
     image: alpine:latest
     commands:
-      - echo "${SSH_KEY}" | tr  ',' '\n' > ~/.ssh/github_rsa
+      - mkdir /codefresh/volume/keys
+      - echo "${SSH_KEY}" | tr  ',' '\n' > /codefresh/volume/keys/github_rsa
 
   BuildMyImage:
     title: Building My Docker image
@@ -323,7 +324,7 @@ steps:
     type: build
     tag: latest
     ssh:
-      - github=~/.ssh/github_rsa
+      - github=/codefresh/volume/keys/github_rsa
 {% endraw %}
 {% endhighlight %}
 
