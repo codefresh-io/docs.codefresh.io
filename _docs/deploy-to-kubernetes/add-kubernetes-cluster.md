@@ -156,46 +156,46 @@ kubectl --kubeconfig="$HOME/.kube/eks" -n="kube-system" get secret \
 
 Once you have this token, follow the steps in the section below, using this token for item #4.
 
-## Adding a Digital Ocean cluster
+## Adding a DigitalOcean cluster
 
-Digital Ocean is also offering a hosted solution for Kubernetes. 
+DigitalOcean is also offering a hosted solution for Kubernetes. 
 
-To add a DO cluster select *Digital Ocean* from the *Add provider* menu in your [integration settings](https://g.codefresh.io/account-admin/account-conf/integration/kubernetes). Click the authenticate button and enter your DO account credentials:
+To add a DO cluster select *DigitalOcean* from the *Add provider* menu in your [integration settings](https://g.codefresh.io/account-admin/account-conf/integration/kubernetes). Click the authenticate button and enter your DO account credentials:
 
 {% include image.html
 lightbox="true"
 file="/images/kubernetes/add-cluster/authorize-do.png"
 url="/images/kubernetes/add-cluster/authorize-do.png"
-alt="Authorizing Digital Ocean Integration"
-caption="Authorizing Digital Ocean Integration"
+alt="Authorizing DigitalOcean Integration"
+caption="Authorizing DigitalOcean Integration"
 max-width="35%"
   %}
 
-Click on the checkbox next to your account name and select the *Authorize application* button. Codefresh has now access to your Digital Ocean cluster. You need to authenticate only once.
+Click on the checkbox next to your account name and select the *Authorize application* button. Codefresh has now access to your DigitalOcean cluster. You need to authenticate only once.
 
 {% include image.html
 lightbox="true"
 file="/images/kubernetes/add-cluster/do-authorized.png"
 url="/images/kubernetes/add-cluster/do-authorized.png"
-alt="Digital Ocean is now authorized"
-caption="Digital Ocean is now authorized"
+alt="DigitalOcean is now authorized"
+caption="DigitalOcean is now authorized"
 max-width="70%"
   %}
 
-Next, expand the Digital Ocean row from the triangle icon on the right and click on the *Add cluster* button. The drop-down menu should contain all your Digital Ocean Kubernetes clusters. Select the one that you want to connect into Codefresh and click the *Add* button.
+Next, expand the DigitalOcean row from the triangle icon on the right and click on the *Add cluster* button. The drop-down menu should contain all your DigitalOcean Kubernetes clusters. Select the one that you want to connect into Codefresh and click the *Add* button.
 
 {% include image.html
 lightbox="true"
 file="/images/kubernetes/add-cluster/add-do-cluster.png"
 url="/images/kubernetes/add-cluster/add-do-cluster.png"
-alt="Selecing the Digital Ocean cluster"
-caption="Selecing the Digital Ocean cluster"
+alt="Selecing the DigitalOcean cluster"
+caption="Selecing the DigitalOcean cluster"
 max-width="40%"
   %}
 
 Your cluster is now connected. You should be able to see it your [Kubernetes dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/) and start [deploying]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/) on it. 
 
-Note that you can als add a Digital Ocean cluster as a generic  cluster as well (explained below).
+Note that you can als add a DigitalOcean cluster as a generic  cluster as well (explained below).
 
 
 ## Adding any other cluster type (not dependent on any provider)
