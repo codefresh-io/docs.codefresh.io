@@ -28,7 +28,7 @@ There are several option for defining exactly when a step will stop.
 
 ## Entering the debugger mode
 
-There are threes ways to enter the debugging mode in a pipeline. You can activate the debugging toggle button when your run the pipeline:
+There are threes ways to enter the debugging mode in a pipeline. You can activate the debugging button when your run the pipeline:
 
 {%
   include image.html
@@ -108,17 +108,20 @@ Once the pipeline reaches a step that has a breakpoint, execution will pause and
   max-width="60%"
 %}
 
-You can now manually type commands to inspect your container. Useful commands are
+You can now manually type commands to inspect your container. If your Codefresh plan has the basic debugging capabilities you can run the following commands:
 
 * `cd, ls` to see files
 * `printenv` to see environment variables
 * `cat` to read files
+* `top` to see what is running
+* `export` and [cf_export]({{site.baseurl}}/docs/codefresh-yaml/variables/#using-cf_export-command) to create environment variables
+* `exit` to finish the debugging session
 
 If you have placed a breakpoint in the `override` phase of a freestyle step then the container image is the same as the one defined in the step. Therefore you can execute all tools that you have placed in the image (e.g. compilers, linters, test frameworks etc.)
 
 In all cases the [shared Codefresh volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) is automounted so you can examine your source code or any other intermediate artifacts placed in your project folder or the pipeline cache.
 
-If the breakpoint is on a `before` or `after` phase, the command line terminal is powered by an [alpine](https://alpinelinux.org/) image. The image has already useful tools such as `wget`, `nc` and `vi`. You can then install additional tools on your own directly in the terminal with [apk](https://wiki.alpinelinux.org/wiki/Alpine_Linux_package_management). Examples:
+If the breakpoint is on a `before` or `after` phase, the command line terminal is powered by an [alpine](https://alpinelinux.org/) image. The image has already useful tools such as `wget`, `nc` and `vi`. If you have the advanced debugging capabilities in your Codefresh plan you can then install additional tools on your own directly in the terminal with [apk](https://wiki.alpinelinux.org/wiki/Alpine_Linux_package_management). Examples:
 
 * `apk add curl`
 * `apk add nano`
