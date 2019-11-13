@@ -33,6 +33,8 @@
           url: "/cron-triggers"
     - title: "Monitoring Pipelines"
     - title: "Shared Configuration"
+    - title: "Caching"
+      url: "/pipeline-caching"    
     - title: "Public logs and status badges"
       url: "/build-status"
     - title: Running pipelines locally

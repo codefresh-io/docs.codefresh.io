@@ -24,6 +24,9 @@
     localurl: /docs/configure-ci-cd-pipeline/monitoring-pipelines/
   - title: Shared Configuration
     localurl: /docs/configure-ci-cd-pipeline/shared-configuration/  
+  - title: Pipeline caching
+    new: true
+    localurl: /docs/configure-ci-cd-pipeline/pipeline-caching/
   - title: Public logs and status badges
     localurl: /docs/configure-ci-cd-pipeline/build-status/
   - title: Running pipelines locally
