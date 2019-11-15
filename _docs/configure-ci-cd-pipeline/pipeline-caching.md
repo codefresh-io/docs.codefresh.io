@@ -20,7 +20,7 @@ Here is a quick overview of all types of caching used in a Codefresh pipeline:
 | Distributed Docker step caching       | Automatic | All pipeline [steps]({{site.baseurl}}/docs/codefresh-yaml/steps/) | |
 | Distributed Docker layer caching  | Automatic |  Pipeline [build steps]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) | Mimics local Docker layer cache|
 | Caching from previous built image  | Automatic |  Pipeline build steps | Distributed version of `--cache-from`|
-| Docker registry caching  | Automatic |  Pipeline build steps | Works only for [integrated Docker registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/)|
+| Docker registry caching  | Automatic |  Pipeline build steps | Works only for the [integrated Docker registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/)|
 | Traditional build caching  | Automatic/manual |  Pipeline [freestyle steps]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) | See notes for [parallel builds]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/)|
 
 All these caching mechanisms are enabled by default and you can [freely disable them]({{site.baseurl}}/docs/troubleshooting/common-issues/disabling-codefresh-caching-mechanisms/) if you encounter any issues with caching. 
@@ -29,7 +29,8 @@ Let's see these caches in order and how to use them effectively.
 
 ## Distributed Docker image caching
 
-This is the simplest mode of caching available. All Codefresh steps are in [fact docker images]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/). Once a pipeline runs for the first time, Codefresh will pull all required images from their registries (either public or private) and will cache them for the next build
+This is the simplest mode of caching available. All Codefresh steps are in [fact docker images]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/). Once a pipeline runs for the first time, Codefresh will pull all required images from their registries (either public or private) and will cache them for the next build:
+
 
 IMAGE here
 
@@ -46,7 +47,27 @@ This type of caching is **only** applicable to [build steps]({{site.baseurl}}/do
 
 When you build images locally docker will cache intermediate layers making future builds much faster. You can see when caches are used in your build logs.
 
-CODE HERE
+{% highlight shell %}
+{% raw %}
+> docker build . -t my-app
+Sending build context to Docker daemon  81.92kB
+Step 1/10 : FROM golang:1.12-alpine
+ ---> 6a17089e5a3a
+Step 2/10 : RUN apk add --no-cache git
+ ---> Using cache
+ ---> 7b65bc6a6690
+Step 3/10 : WORKDIR /app/go-sample-app
+ ---> Using cache
+ ---> 8755d1490fe2
+Step 4/10 : COPY go.mod .
+ ---> Using cache
+ ---> 476d868ceddd
+Step 5/10 : COPY go.sum .
+ ---> Using cache
+ ---> 3239097e9bde
+[...]
+{% endraw %}
+{% endhighlight %}
 
 In a distributed build environment however things work much differently as each build node has its own cache. If you run a pipeline on one node and then run a second build on another node everything will be downloaded again because (normally) build nodes don't share any cache.
 
@@ -58,11 +79,25 @@ IMAGE here
 
 You can see if this cache is used in your [pipeline logs]({{site.baseurl}}/docs/codefresh-yaml/steps/build/):
 
-IMAGE here
+{% include image.html
+lightbox="true"
+file="/images/pipeline/caching/distributed-docker-layer-cache.png"
+url="/images/pipeline/caching/distributed-docker-layer-cache.png"
+alt="Docker layer caching regardless of build node"
+caption="Docker layer caching regardless of build node"
+max-width="60%"
+%}
 
 Codefresh will also automatically pass the `--cache-from` directive to docker builds with the previous successful build artifacts:
 
-IMAGE here
+{% include image.html
+lightbox="true"
+file="/images/pipeline/caching/cache-from.png"
+url="/images/pipeline/caching/cache-from.png"
+alt="Distributed version of `--cache-from`"
+caption="Distributed version of `--cache-from`"
+max-width="60%"
+%}
 
 To take advantage of this build cache just follow the official Docker guidelines and best practices such as
 
@@ -82,7 +117,14 @@ This is a caching mechanism unique to Codefresh and applicable only for [build s
 
 Codefresh will check the internal Docker registry *before* a build step and if the exact same image is found (using the image hash), it will skip the build step completely:
 
-IMAGE here.
+{% include image.html
+lightbox="true"
+file="/images/pipeline/caching/skip-build.png"
+url="/images/pipeline/caching/skip-build.png"
+alt="Skipping a previously built Docker image"
+caption="Skipping a previously built Docker image"
+max-width="60%"
+%}
 
 This is a very effective way to cut down the amount of time needed by pipelines but it obviously works only for Docker images that don't change often (help images, plugins, build tools etc.) as the deployment docker images will always be different when a new git commit happens in the source code.
 
@@ -125,7 +167,7 @@ file="/images/pipeline/caching/codefresh-shared-volume.png"
 url="/images/pipeline/caching/codefresh-shared-volume.png" 
 alt="Shared volume after 3 builds of the same pipeline"
 caption="Shared volume after 3 builds of the same pipeline"
-max-width="50%" 
+max-width="60%" 
 %}
 
 Notice also the complete lack of `volume` directives. The volume is mounted and cached/restored by Codefresh with no configuration on your part.
@@ -162,7 +204,7 @@ Parallel steps inside the same pipeline use the same volume. Codefresh [does not
 
 Also notice that if you make too many commits very fast (triggering a second build while the previous one is still running), Codefresh will allocate a brand new volume for the subsequent builds.
 
-IMAGE
+IMAGE here
 
 This will force all builds to start with a clean shared volume, resulting in longer build times. Be sure to set your [build termination settings]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-settings) correctly.
 
