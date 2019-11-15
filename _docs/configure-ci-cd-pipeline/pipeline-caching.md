@@ -23,6 +23,8 @@ Here is a quick overview of all types of caching used in a Codefresh pipeline:
 | Docker registry caching  | Automatic |  Pipeline build steps | Works only for [integrated Docker registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/)|
 | Traditional build caching  | Automatic/manual |  Pipeline [freestyle steps]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) | See notes for [parallel builds]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/)|
 
+All these caching mechanisms are enabled by default and you can [freely disable them]({{site.baseurl}}/docs/troubleshooting/common-issues/disabling-codefresh-caching-mechanisms/) if you encounter any issues with caching. 
+
 Let's see these caches in order and how to use them effectively.
 
 ## Distributed Docker image caching
@@ -89,9 +91,80 @@ You can take advantage of this mechanism by [not mixing deployment docker images
 
 ## Traditional build caching
 
-### How to use it
+If you have read the [introduction to pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines) page you will already be familiar with the shared volume that is automatically mounted on all pipeline steps (apart from build steps). This is volume is not only use for data exchange of steps within the same pipeline, but is also stored/fetched for each subsequent build as well.
 
-## Disabling caching mechanisms
+IMAGE here
+
+This means that unlike other CI solutions where you have to manually describe what folder you wish to cache, in Codefresh **everything that exists in `/codefresh/volume` and its subfolders is automatically cached between different builds** of the same pipeline. The volume mounting and caching/restoring process is completely automatic. You don't need any configuration about it. 
+The choice that you have is which files to place on the volume. For example Node.js uses the folder `node_modules` for its dependencies which are placed under the project folder [which is automatically placed under the volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#cloning-the-source-code). So all contents of `node_modules` will be cached by default.
+
+The simplest way to see this caching in action is this pipeline:
+
+ `codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+steps:
+  write_sample_file:
+    title: Writing to shared volume
+    image: alpine
+    commands:
+     - date >> /codefresh/volume/sample.txt
+  read_sample_file:
+    title: Reading from shared volume
+    image: alpine
+    commands:
+     - cat /codefresh/volume/sample.txt
+{% endraw %}
+{% endhighlight %}
+
+If you run this pipeline multiple times you will see multiple entries in the file `sample.txt`.
+
+{% include image.html 
+lightbox="true" 
+file="/images/pipeline/caching/codefresh-shared-volume.png" 
+url="/images/pipeline/caching/codefresh-shared-volume.png" 
+alt="Shared volume after 3 builds of the same pipeline"
+caption="Shared volume after 3 builds of the same pipeline"
+max-width="50%" 
+%}
+
+Notice also the complete lack of `volume` directives. The volume is mounted and cached/restored by Codefresh with no configuration on your part.
+
+Some important points on this caching mechanism:
+
+* The volume is handled and managed by Codefresh in a completely transparent manner. You **DO NOT** need any `volume` directives in your pipelines to take advantage of it. The volume is even present in [service containers]({{site.baseurl}}/docs/codefresh-yaml/service-containers/) for integration tests.
+* On each build the clone step will purge/delete everything that is not placed in `.gitignore`. So make sure that your `.gitignore` files contains all the things that you want to see cached (e.g. `node_modules`)
+* The volume is different for each pipeline **AND** for each Git branch. Different pipelines have completely different volumes. Different git branches of the same pipeline have completely different volumes as well. This is by design as a branch called `develop` will have different dependency libraries from a branch called `production`.
+* The volume is **NOT available** in [build steps]({{site.baseurl}}/docs/codefresh-yaml/steps/build/). This is not a Codefresh limitation. Docker itself [does not allow volumes during builds](https://github.com/moby/moby/issues/14080). There is no folder `/codefresh/volume` inside a Dockerfile for you to access.
+* This is the only caching mechanism that is not related to Docker images. So if you compile/package a traditional application with Codefresh it is the only way to get faster builds
+
+### Caching folders which are outside your project folder
+
+By default if you checkout a Git project named `foo`, the source code is placed under `/codefresh/volume/foo`. This means that with zero configuration the following things are cached:
+
+* your source code of `foo` project
+* all dependencies under the project folder (e.g. `foo/node_modules`)
+* all project logs, test results that are inside the project module.
+
+Everything else found in external folders is NOT cached by default. So if you have things in folders such as `/root`, `/tmp/`, `/home/`, `/var/` that you need to cache you need to manually copy them to the volume.
+
+In practice, this means that you need to look at the documentation of your build system and test framework and make sure that all folders you want cached are placed under the Codefresh volume. This is a typical pattern with Java applications.
+
+ * For Maven use `mvn -Dmaven.repo.local=/codefresh/volume/m2_repository package` as shown in the [example]({{site.baseurl}}/docs/learn-by-example/java/spring-boot-2/).
+ * For Gradle use `gradle -g /codefresh/volume/.gradle -Dmaven.repo.local=/codefresh/volume/m2` as explained in the [example]({{site.baseurl}}/docs/learn-by-example/java/gradle/).
+ * For SBT use `-Dsbt.ivy.home=/codefresh/volume/ivy_cache`.
+
+ This is only needed for traditional applications that are not dockerized. If you already use Docker containers the previous caching mechanisms are already enough.
+
+### Issues with parallel builds and parallel pipelines
+
+
+
+
+
+
+
 
 ## What to read next
 
