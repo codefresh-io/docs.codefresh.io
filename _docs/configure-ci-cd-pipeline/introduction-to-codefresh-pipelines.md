@@ -305,43 +305,7 @@ inside the pipeline they are actually needed. This ensures that both the applica
 
 ### How caching works in Codefresh
 
-Making your builds as fast a possible is an on-going goal for a sound CI/CD solution. Quick builds allow for short 
-feedback development cycles which is always a desirable trait for locating bugs early in the process.
-
-Codefresh can help you with caching in 3 ways:
-
-1. The Docker daemon used in a pipeline caches all layers by default (exactly as you would build images in your local workstation).
-1. The last image that was successfully built in a pipeline will be used in the next run of the pipeline (`--cache-from`)
-further reducing the build times.
-1. The shared Codefresh volume is also persisted at the end of a build and restored at the beginning of the next. Therefore any folders that are contained in it (such as `node_modules`) will automatically be available to the next pipeline.
-
-All these caching mechanisms are enabled by default and you can [freely disable them]({{site.baseurl}}/docs/troubleshooting/common-issues/disabling-codefresh-caching-mechanisms/) if you encounter any issues with caching. 
-
-Notice also that volume caching and Docker caching are completely independent. They do not affect each other. The former affects mainly [freestyle steps]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) while the latter affects [build steps]({{site.baseurl}}/docs/codefresh-yaml/steps/build/).
-
-You can also use the internal Docker registry explicitly by pushing intermediate Docker images and reusing them in future pipelines either as a base image in another Dockerfile or as a freestyle step.
-
-For example, if you have 4 Node projects that share a similar codebase, you could create a Docker image that contains the folder `node_modules` common to all 4 of them, push it to the internal Codefresh registry and then use it in freestyle steps for building those projects. 
-
-#### Caching the artifacts of your build system
-
-To use the Docker cache effectively in Codefresh you should follow the [standard best practices](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/) for minimizing layers.
-
-Regarding the caching of your workspace you also need to remember that 
-
-1. Only the Codefresh volume at `/codefresh/volume` is cached between builds. This includes your project git repository but excludes common work directories such as `/tmp/`, `/root/`, `/home/`, `/var` that you might be using in your builds. 
-1. Codefresh runs a `git reset` and a `git clean` in your project repository everytime a pipeline starts. This means that all artifacts that you wish to be cached should be in your `.gitignore` file. A common example would be the `node_modules` folder. If you don't place it in `.gitignore`, it will be deleted at the start of each build making it much slower.
-
-The first rule is very important as it affects your build system. Some environments such as `npm/node` cache their
-dependencies in the project folder and for them, caching works out of the box. But other build systems such as `maven` use the user folder under `HOME` which is **NOT** part of the Codefresh volume. In those cases you need to instruct your build system to store their dependencies somewhere in the Codefresh volume (the exact folder name does not really matter).
-
-For example:
-
- * For Maven use `mvn -Dmaven.repo.local=/codefresh/volume/m2_repository package` as shown in the [example]({{site.baseurl}}/docs/learn-by-example/java/spring-boot-2/).
- * For Gradle use `gradle -g /codefresh/volume/.gradle` as explained in the [blog post](https://codefresh.io/containers/caching-build-dependencies-codefresh-volumes/).
- * For SBT use `-Dsbt.ivy.home=/codefresh/volume/ivy_cache`.
-
-See the documentation of your specific build system on how to change the folder that caches dependencies.
+Codefresh employs several caching mechanisms for both Dockerized and non-dockerized applications. The shared volume is also cached behind the scenes automatically. See our [caching guide]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipeline-caching/) for more details.
 
 ### Calling other pipelines
 
@@ -366,7 +330,7 @@ you should know that only steps within the same pipeline can share artifacts.
 * [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
 * [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
 * [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
-* [Internal Docker Registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/)
+* [Build and Docker caching]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipeline-caching/)
 
 
 

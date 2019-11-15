@@ -40,7 +40,6 @@ This cache mechanism is completely automatic and invisible to you. Some ways tha
 * If you use well known images in your pipeline (such as `alpine`, `node`,`mvn` etc) they have more probabilities to be already cached by the Codefresh platform
 * Using small images in the pipeline will make caching/restoring of pipeline steps much faster.
 
-
 ## Distributed Docker layer caching
 
 This type of caching is **only** applicable to [build steps]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) and mimics the ways docker layer caching behaves locally on your workstation.
@@ -91,14 +90,14 @@ You can take advantage of this mechanism by [not mixing deployment docker images
 
 ## Traditional build caching
 
-If you have read the [introduction to pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines) page you will already be familiar with the shared volume that is automatically mounted on all pipeline steps (apart from build steps). This is volume is not only use for data exchange of steps within the same pipeline, but is also stored/fetched for each subsequent build as well.
+If you have read the [introduction to pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines) page you will already be familiar with the shared volume that is automatically mounted on all pipeline steps. This is volume is not only use for data exchange of steps within the same pipeline, but is also stored/fetched for each subsequent build as well.
 
 IMAGE here
 
 This means that unlike other CI solutions where you have to manually describe what folder you wish to cache, in Codefresh **everything that exists in `/codefresh/volume` and its subfolders is automatically cached between different builds** of the same pipeline. The volume mounting and caching/restoring process is completely automatic. You don't need any configuration about it. 
-The choice that you have is which files to place on the volume. For example Node.js uses the folder `node_modules` for its dependencies which are placed under the project folder [which is automatically placed under the volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#cloning-the-source-code). So all contents of `node_modules` will be cached by default.
+The choice that you have is which files to place on the volume. For example, Node.js uses the folder `node_modules` for its dependencies which are placed under the project folder [which is automatically placed under the volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#cloning-the-source-code). So all contents of `node_modules` will be cached by default.
 
-The simplest way to see this caching in action is this pipeline:
+The simplest way to see this caching mechanism in action is this pipeline:
 
  `codefresh.yml`
 {% highlight yaml %}
@@ -134,14 +133,14 @@ Notice also the complete lack of `volume` directives. The volume is mounted and 
 Some important points on this caching mechanism:
 
 * The volume is handled and managed by Codefresh in a completely transparent manner. You **DO NOT** need any `volume` directives in your pipelines to take advantage of it. The volume is even present in [service containers]({{site.baseurl}}/docs/codefresh-yaml/service-containers/) for integration tests.
-* On each build the clone step will purge/delete everything that is not placed in `.gitignore`. So make sure that your `.gitignore` files contains all the things that you want to see cached (e.g. `node_modules`)
-* The volume is different for each pipeline **AND** for each Git branch. Different pipelines have completely different volumes. Different git branches of the same pipeline have completely different volumes as well. This is by design as a branch called `develop` will have different dependency libraries from a branch called `production`.
+* On each build the [clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) will purge/delete everything that is not placed in `.gitignore`. So make sure that your `.gitignore` files contains all the things that you want to see cached (e.g. `node_modules`)
+* The volume is different for each pipeline **AND** for each Git branch. Different pipelines have completely different volumes. Different Git branches of the same pipeline have completely different volumes as well. This is by design as a branch called `develop` will probably need different dependency libraries from a branch called `production`.
 * The volume is **NOT available** in [build steps]({{site.baseurl}}/docs/codefresh-yaml/steps/build/). This is not a Codefresh limitation. Docker itself [does not allow volumes during builds](https://github.com/moby/moby/issues/14080). There is no folder `/codefresh/volume` inside a Dockerfile for you to access.
 * This is the only caching mechanism that is not related to Docker images. So if you compile/package a traditional application with Codefresh it is the only way to get faster builds
 
 ### Caching folders which are outside your project folder
 
-By default if you checkout a Git project named `foo`, the source code is placed under `/codefresh/volume/foo`. This means that with zero configuration the following things are cached:
+By default if you checkout a Git project named `foo`, the source code [is placed under]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#cloning-the-source-code) `/codefresh/volume/foo`. This means that with zero configuration the following things are cached:
 
 * your source code of `foo` project
 * all dependencies under the project folder (e.g. `foo/node_modules`)
@@ -159,16 +158,26 @@ In practice, this means that you need to look at the documentation of your build
 
 ### Issues with parallel builds and parallel pipelines
 
+Parallel steps inside the same pipeline use the same volume. Codefresh [does not perform any conflict detection in that case]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/#shared-codefresh-volume-and-race-conditions). 
 
+Also notice that if you make too many commits very fast (triggering a second build while the previous one is still running), Codefresh will allocate a brand new volume for the subsequent builds.
 
+IMAGE
 
+This will force all builds to start with a clean shared volume, resulting in longer build times. Be sure to set your [build termination settings]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-settings) correctly.
 
+## Codefresh cache size and eviction policy
 
+If you use the SAAS version of Codefresh, then you don't have any control of cache policies.
+The SAAS version is fully controlled by Codefresh personnel and the cache policies in place might clear caches more sooner than you think.
 
+If you run a pipeline very infrequently it is possible to suffer many cache misses. If you also use obsure Docker images you might see them downloaded again and again.
+
+If you run the [hybrid or on-prem versions]({{site.baseurl}}/docs/enterprise/installation-security/) of Codefresh, then your system administrator is responsible for fine-tuning the cache settings.
 
 ## What to read next
 
 * [Introduction to Codefresh pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines)
 * [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
 * [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
-
+* [Parallel pipelines]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/)
