@@ -184,7 +184,6 @@
   - title: Deploy with Pulumi
     localurl: /docs/yaml-examples/examples/pulumi/
   - title: Deploy to Nomad
-    new: true 
     localurl: /docs/yaml-examples/examples/nomad/
  
 - title: Integrations

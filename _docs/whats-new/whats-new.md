@@ -11,6 +11,7 @@ Recent Codefresh updates:
 ### November 2019
 
 - Digital Ocean cluster integration - [documentation]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/#adding-a-digital-ocean-cluster)
+- Build caching guide - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipeline-caching/)
 
 ### October 2019
 

@@ -236,6 +236,7 @@ Some important points on this caching mechanism:
 * The volume is handled and managed by Codefresh in a completely transparent manner. You **DO NOT** need any `volume` directives in your pipelines to take advantage of it. The volume is even present in [service containers]({{site.baseurl}}/docs/codefresh-yaml/service-containers/) for integration tests.
 * On each build the [clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) will purge/delete everything that is not placed in `.gitignore`. So make sure that your `.gitignore` files contain all the things that you want to see cached (e.g. `node_modules`)
 * The volume is different for each pipeline **AND** for each Git branch. Different pipelines have completely different volumes. Different Git branches of the same pipeline have completely different volumes as well. This is by design as a branch called `develop` will probably need different dependency libraries from a branch called `production`.
+* The volume is only saved when the pipeline is successful. You need at least one successful build of your pipeline in order for the cache mechanism to take any effect.
 * The volume is **NOT available** in [build steps]({{site.baseurl}}/docs/codefresh-yaml/steps/build/). This is not a Codefresh limitation. Docker itself [does not allow volumes during builds](https://github.com/moby/moby/issues/14080). There is no folder `/codefresh/volume` inside a Dockerfile for you to access.
 * This is the only caching mechanism that is not related to Docker images. So if you compile/package a traditional application with Codefresh that is not packaged as a Docker image this is the only way to get faster builds.
 
@@ -259,13 +260,33 @@ In practice, this means that you need to look at the documentation of your build
 
 ### Issues with parallel builds and parallel pipelines
 
-Parallel steps inside the same pipeline use the same volume. Codefresh [does not perform any conflict detection in that case]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/#shared-codefresh-volume-and-race-conditions). 
+Codefresh supports two form of parallelism, parallel steps within the same pipeline and parallel pipelines (and also concurrent builds).
+All parallel steps inside the same pipeline use the same volume. Codefresh [does not perform any conflict detection in that case]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/#shared-codefresh-volume-and-race-conditions). 
 
-Also notice that if you make too many commits very fast (triggering a second build while the previous one is still running), Codefresh will allocate a brand new volume for the subsequent builds.
+For concurrent builds of the same pipeline, notice that if you make too many commits very fast (triggering a second build while the previous one is still running), Codefresh will allocate a brand new volume for the subsequent builds. This will force all builds to start with a clean shared volume, resulting in longer build times. Be sure to set your [build termination settings]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-settings) correctly.
 
-IMAGE here
+{% include image.html 
+lightbox="true" 
+file="/images/pipeline/caching/concurrent-build-caching.png" 
+url="/images/pipeline/caching/concurrent-build-caching.png" 
+alt="Concurrent build caching"
+caption="Concurrent build caching"
+max-width="80%" 
+%}
 
-This will force all builds to start with a clean shared volume, resulting in longer build times. Be sure to set your [build termination settings]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-settings) correctly.
+The diagram above shows the following sequence of events:
+
+1. The first build of a pipeline is triggered. Codefresh allocated a brand new volume and automatically mounts is as a workspace at `/codefres/volume`.
+1. The first build runs and stores artifacts on the volume
+1. The first build finishes. Codefresh stores the volume in the cache
+1. A second build is triggered for the same pipeline and same git branch. Codefresh sees that there is already a volume in the cache and passes it to the second build. The second build correctly finds all artifacts in the cache
+1. *Before the second build finishes*, a third build is triggered.
+1. The pipeline volume is still locked by the second build and Codefresh cannot use it in the third build. Codefresh allocates a **brand new volume** that has no artifacts at all and passes it to the third build
+1. The second build finishes and its volume is saved into cache
+1. The third build finishes and its volume is saved into cache *overwriting* the volume of the second build.
+1. If a fourth build starts it will use the volume from the third build since this was the last saved volume.
+
+
 
 ## Codefresh cache size and eviction policy
 
