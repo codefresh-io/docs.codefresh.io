@@ -50,7 +50,7 @@ This cache mechanism is completely automatic and is not user configurable. Some 
 * Using small images in the pipeline will make caching/restoring of pipeline steps much faster.
 
 
-You can see in the build logs if the images of your steps are found in cache or not. Here is an example of a cache hit:
+You can see in the [pipeline build logs]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) if the images of your steps are found in cache or not. Here is an example of a cache hit:
 
 {% include image.html
 lightbox="true"
@@ -72,7 +72,7 @@ caption="Docker image cache miss"
 max-width="50%"
 %}
 
-
+This cache mechanism is applicable to all Codefresh pipelines and steps.
 
 
 ## Distributed Docker layer caching
@@ -103,13 +103,31 @@ Step 5/10 : COPY go.sum .
 {% endraw %}
 {% endhighlight %}
 
-In a distributed build environment however things work much differently as each build node has its own cache. If you run a pipeline on one node and then run a second build on another node everything will be downloaded again because (normally) build nodes don't share any cache.
+In a distributed build environment however, things work much differently as each build node has its own cache. If you run a pipeline on one node and then run a second build on another node everything will be downloaded again because (normally) build nodes don't share any cache.
 
-IMAGE here
+{% include image.html
+lightbox="true"
+file="/images/pipeline/caching/no-distributed-layer-cache.png"
+url="/images/pipeline/caching/no-distributed-layer-cache.png"
+alt="Without a distributed docker layer cache"
+caption="Without a distributed docker layer cache"
+max-width="60%"
+%}
+
+In the example above if you run another build that is picked up by build node 18 all Docker filesystem layers will be downloaded again even though they are already present in other nodes.
 
 Codefresh is one of the few CI/CD solutions that has a *distributed* docker layer cache. This makes layer caching available to all build nodes. It doesn't matter any more which build node runs which pipeline as all of them are equal regarding their caching capabilities.
 
-IMAGE here
+{% include image.html
+lightbox="true"
+file="/images/pipeline/caching/distributed-layer-cache.png"
+url="/images/pipeline/caching/distributed-layer-cache.png"
+alt="Wit a distributed docker layer cache"
+caption="With a distributed docker layer cache"
+max-width="60%"
+%}
+
+With the distributed docker layer cache all build nodes are now equal. Any of the available nodes can pick your next pipeline build as all of them have access to all the previous docker filesystem layers.
 
 You can see if this cache is used in your [pipeline logs]({{site.baseurl}}/docs/codefresh-yaml/steps/build/):
 
