@@ -32,14 +32,48 @@ Let's see these caches in order and how to use them effectively.
 This is the simplest mode of caching available. All Codefresh steps are in [fact docker images]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/). Once a pipeline runs for the first time, Codefresh will pull all required images from their registries (either public or private) and will cache them for the next build:
 
 
-IMAGE here
+{% include image.html
+lightbox="true"
+file="/images/pipeline/caching/image-caching.png"
+url="/images/pipeline/caching/image-caching.png"
+alt="Caching pipeline steps"
+caption="Caching pipeline steps"
+max-width="60%"
+%}
 
 The next time the pipeline runs all images wil be fetched from cache. This includes built-in steps (e.g the [clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)), custom steps from [the marketplace](https://codefresh.io/steps/) or your own [dynamic pipeline steps]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#creating-docker-images-dynamically-as-build-tools).
 
-This cache mechanism is completely automatic and invisible to you. Some ways that you can affect it are:
+This cache mechanism is completely automatic and is not user configurable. Some ways that you can affect it are:
 
-* If you use well known images in your pipeline (such as `alpine`, `node`,`mvn` etc) they have more probabilities to be already cached by the Codefresh platform
+* If you use well known images in your pipeline (such as `alpine`, `node`, `maven` etc) they have more probabilities to be already cached by the Codefresh platform
+* Use specific tags for your images (e.g. `alpine:3.9.2` and `maven:3-jdk-11-openj9`) instead of generic ones (e.g `alpine:latest` and `node:buster`) that change all the time
 * Using small images in the pipeline will make caching/restoring of pipeline steps much faster.
+
+
+You can see in the build logs if the images of your steps are found in cache or not. Here is an example of a cache hit:
+
+{% include image.html
+lightbox="true"
+file="/images/pipeline/caching/image-cache-hit.png"
+url="/images/pipeline/caching/image-cache-hit.png"
+alt="Docker image cache hit"
+caption="Docker image cache hit"
+max-width="50%"
+%}
+
+and a cache miss:
+
+{% include image.html
+lightbox="true"
+file="/images/pipeline/caching/image-cache-miss.png"
+url="/images/pipeline/caching/image-cache-miss.png"
+alt="Docker image cache miss"
+caption="Docker image cache miss"
+max-width="50%"
+%}
+
+
+
 
 ## Distributed Docker layer caching
 
