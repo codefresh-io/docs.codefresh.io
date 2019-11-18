@@ -3,9 +3,7 @@ title: "Pipeline caching"
 description: "Faster builds with Codefresh caching"
 group: configure-ci-cd-pipeline
 toc: true
-redirect_from:
-  - /docs/troubleshooting/common-issues/debugging-codefresh-builds-locally/
-  - /docs/troubleshooting/common-issues/access-and-debug-the-pipeline-volume-image/
+
 ---
   
 One of the unique features of Codefresh is the multitude of caching systems that take part in a pipeline and in particular the caching mechanisms targeted specifically at Docker builds. Most types of caching are completely automatic and require zero configuration in order to activate. Caching is a built-in feature in all Codefresh accounts regardless of pricing tier (even free accounts).
@@ -41,7 +39,7 @@ caption="Caching pipeline steps"
 max-width="60%"
 %}
 
-The next time the pipeline runs all images wil be fetched from cache. This includes built-in steps (e.g the [clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)), custom steps from [the marketplace](https://codefresh.io/steps/) or your own [dynamic pipeline steps]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#creating-docker-images-dynamically-as-build-tools).
+The next time the pipeline runs all images will be fetched from cache. This includes built-in steps (e.g the [clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)), custom steps from [the marketplace](https://codefresh.io/steps/) or your own [dynamic pipeline steps]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#creating-docker-images-dynamically-as-build-tools).
 
 This cache mechanism is completely automatic and is not user configurable. Some ways that you can affect it are:
 
@@ -276,7 +274,7 @@ max-width="80%"
 
 The diagram above shows the following sequence of events:
 
-1. The first build of a pipeline is triggered. Codefresh allocated a brand new volume and automatically mounts is as a workspace at `/codefres/volume`.
+1. The first build of a pipeline is triggered. Codefresh allocated a brand new volume and automatically mounts is as a workspace at `/codefresh/volume`.
 1. The first build runs and stores artifacts on the volume
 1. The first build finishes. Codefresh stores the volume in the cache
 1. A second build is triggered for the same pipeline and same git branch. Codefresh sees that there is already a volume in the cache and passes it to the second build. The second build correctly finds all artifacts in the cache
@@ -293,7 +291,7 @@ The diagram above shows the following sequence of events:
 If you use the SAAS version of Codefresh, then you don't have any control of cache policies.
 The SAAS version is fully controlled by Codefresh personnel and the cache policies in place might clear caches more sooner than you think.
 
-If you run a pipeline very infrequently it is possible to suffer many cache misses. If you also use obsure Docker images you might see them downloaded again and again.
+If you run a pipeline very infrequently it is possible to suffer many cache misses. If you also use obscure Docker images you might see them downloaded again and again.
 
 If you run the [hybrid or on-prem versions]({{site.baseurl}}/docs/enterprise/installation-security/) of Codefresh, then your system administrator is responsible for fine-tuning the cache settings.
 
