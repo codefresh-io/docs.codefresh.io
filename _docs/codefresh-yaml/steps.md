@@ -108,7 +108,126 @@ Once a step is added to the pipeline, you are fee to change the resulting yaml e
 
 ## Creating your own step
 
-You can use the [Codefresh CLI](https://codefresh-io.github.io/cli/) and more specifically the [step-type resource](https://codefresh-io.github.io/cli/steps/) to create your own step. Each Codefresh step is composed from two parts:
+There are two ways to create custom steps in Codefresh. The simplest way is to package an existing CLI tool into a Docker image and use it as a freestyle step. The more advanced way is creating a typed step with explicit input and output parameters.
+
+Here is a summary on the two ways:
+
+{: .table .table-bordered .table-hover}
+|           | Custom freestyle step                 | Codefresh typed plugin  |
+| -------------- | ---------------------------- |-------------------------|
+| Assets needed       | A Docker image | A Docker image and a plugin manifest|
+| Knowledge required  | Docker building/pushing | Docker and Codefresh CLI  |
+| Step can be used        | In any Docker based CI/CD platform | In Codefresh |
+| Effort required   | Minimal | Medium |
+| Distribution via  | Dockerhub | Codefresh marketplace |
+| Input variables   | Yes | Yes|
+| Output variables   | No | Yes |
+| Versioning via | Docker tags | Manifest entry |
+| Grouping of multiple steps | No | Yes |
+| Marketplace entry | Not possible| Possible/optional |
+| Best for sharing steps |  with your team/company | with the world |
+
+
+
+We suggest that you start with custom freestyle steps first and only create typed plugins once you are familiar with Codefresh pipelines or want your plugin to appear in the marketplace.
+
+
+### Creating a custom freestyle step
+
+As an example let's say that you need to use the [JFrog CLI]https://jfrog.com/getcli/) in a pipeline in order to interact with a Artifactory or Bintray. JFrog does not offer any Docker image that contains the CLI and you already know that all Codefresh steps [are actually Docker images]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/).
+
+Therefore you can easily package the CLI into a Docker image and then make it available to any Codefresh pipeline that wishes to use it.
+First you create [a Dockerfile](https://github.com/kostis-codefresh/step-examples/blob/master/jfrog-cli-wrapper/Dockerfile) that packages the CLI
+
+ `Dockerfile`
+{% highlight docker %}
+{% raw %}
+FROM debian:stable-slim
+
+WORKDIR /jfrog-cli
+
+ENV DEBIAN_FRONTEND noninteractive
+
+RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/* 
+
+RUN curl -fL https://getcli.jfrog.io | sh
+
+ENV JFROG_CLI_OFFER_CONFIG false
+ENV BINTRAY_LICENCES MIT
+
+RUN /jfrog-cli/jfrog bt config --licenses $BINTRAY_LICENCES
+
+RUN ln -s /jfrog-cli/jfrog /usr/local/bin/jfrog
+
+CMD ["/jfrog-cli/jfrog"]
+{% endraw %}
+{% endhighlight %}
+
+This is a standard Dockerfile. There is nothing specific to Codefresh in the image that gets created. You can test this Dockerfile locally with 
+
+{% highlight shell %}
+{% raw %}
+docker build . -t jfrog-cli
+docker run jfrog-cli
+{% endraw %}
+{% endhighlight %}
+
+In a similar manner you can package any other executable and its dependencies. You could even just package `curl` with an external URL that hosts the service that you want to interact in a Codefresh pipeline.
+
+Once the Dockerfile is ready, you need to push it to Dockerhub. You can either do it manually from your workstation, but it is best if you actually create a [Codefresh pipeline](https://github.com/kostis-codefresh/step-examples/blob/master/jfrog-cli-wrapper/codefresh.yml) that does it for you.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/codefresh-yaml/steps/create-custom-step.png" 
+url="/images/codefresh-yaml/steps/create-custom-step.png"
+alt="Creating a custom freestyle step" 
+caption="Creating a custom freestyle step" 
+max-width="80%" 
+%}
+
+Now that the image is ready and public you can notify your team that the new plugin is ready.
+Everybody who wants to interact with JFrog Bintray and/or Artifactory can place [the following snippet](https://github.com/kostis-codefresh/step-examples/blob/master/jfrog-cli-wrapper/codefresh-example.yml) in a pipeline:
+
+ `codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+steps:
+  run_frog_cli:
+    title: Running jfrog CLI inside Docker
+    image: kkapelon/jfrog-cli
+    commands:
+      - jfrog bt --help
+      - jfrog rt --help
+{% endraw %}
+{% endhighlight %}
+
+You can then customize the exact command(s) that you want to run with the tool. All capabilities of freestyle steps are possible, such as passing environment variables as input parameters.
+
+ `codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+steps:
+  run_frog_cli:
+    title: Running jfrog CLI inside Docker
+    image: kkapelon/jfrog-cli
+    commands:
+      - jfrog bt package-show google/tensorflow/tensorflow
+    environment:
+      - BINTRAY_USER=my-user
+      - BINTRAY_KEY=my-secret-key
+{% endraw %}
+{% endhighlight %}
+
+If you want to use multiple versions of the step in the same pipeline, you can just create different docker tags. Notice  that you can also use a [private registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) instead of Dockerhub if you wish your step to be used only within your organization. 
+
+
+
+### Creating a typed Codefresh plugin
+
+You can use the [Codefresh CLI](https://codefresh-io.github.io/cli/) and more specifically the [step-type resource](https://codefresh-io.github.io/cli/steps/) to create your own typed step. Each Codefresh step is composed from two parts:
 
 1. The step description in the special yaml syntax for describing Codefresh steps
 1. A Docker images that implements the step (optional)
