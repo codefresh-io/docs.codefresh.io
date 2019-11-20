@@ -99,7 +99,8 @@ Therefore, all tags like `tag1`, `tag-X` **won't** trigger the pipeline.
 By default, the git trigger will only work for events coming from your personal repository. You can also use triggers from events that are coming from forks. This is a very useful feature for open source projects, as it allows you to run your own unit tests and other checks against a new feature *before* actually merging it in your repo.
 
 To enable this behavior:
-* Toggle the *support pull request events from forks* switch  
+* Toggle the *support pull request events from forks* switch
+* Check the *Pull request comment added* checkbox
 * In the *pr comment* field enter a custom string (accepts regex)
 
 Then once a contributor creates a fork of your repository and submits a pull request, you can review the code and then add a comment on your own that matches the PR comment expression.
@@ -115,7 +116,10 @@ max-width="50%"
 
 Once that is done, Codefresh will launch your pipeline against the Pull Request. If you manage an open source project with Codefresh, remember to enable [public builds]({{site.baseurl}}/docs/configure-ci-cd-pipeline/build-status/#public-build-logs) as well.
 
-
+When supporting building of pull requests from forks there are a few "gotchas" to look out for:
+* Only comments made by repository owners and collaborators will result in the pipeline being triggered
+* If the repository is in a GitHub organization, comments made by private members of the organization will not activate the trigger, even if they are set as an owner or collaborator.
+* The *Pull request comment added* checkbox should likely be the only one checked, or your pipeline may trigger on other events that you don't anticipate.
 
 
 ### Monorepo support (Modified files)
