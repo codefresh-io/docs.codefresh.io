@@ -263,7 +263,7 @@ metadata:
   icon:
     type: svg
     url: 'https://cdn.jsdelivr.net/gh/codefresh-io/steps/incubating/vault/icon.svg'
-    background: '#FFFFFF'
+    background: '#f4f4f4'
   examples:
     - description: example-1
       workflow:
@@ -279,7 +279,9 @@ metadata:
               VAULT_CLIENT_CERT_BASE64: '${{VAULT_CLIENT_CERT_BASE64}}'
               VAULT_CLIENT_KEY_BASE64: '${{VAULT_CLIENT_KEY_BASE64}}'
   created_at: '2019-07-03T14:57:02.057Z'
-  updated_at: '2019-07-06T13:27:09.518Z'
+  updated_at: '2019-09-18T08:15:28.476Z'
+  latest: true
+  version: 0.0.1
   id: 5d1cc23ea7e22e40227ea75d
 spec:
   arguments: |-
@@ -327,8 +329,6 @@ spec:
         - 'VAULT_AUTH_TOKEN=${{VAULT_AUTH_TOKEN}}'
         - 'VAULT_CLIENT_CERT_BASE64=${{VAULT_CLIENT_CERT_BASE64}}'
         - 'VAULT_CLIENT_KEY_BASE64=${{VAULT_CLIENT_KEY_BASE64}}'
-
-
 {% endraw %}
 {% endhighlight %}
 
@@ -344,6 +344,7 @@ For the metadata section note the following:
 * The `name` of the step must be prefixed with your Codefresh account name. Steps created by the Codefresh team are on the root level of the hierarchy (without prefix). This is the same pattern that Dockerhub is using for images.
 * `stage` shown if this step is ready for production or still incubating. This is just an indication to users. It doesn't affect the implementation of the step in any way
 * `icon`. Ideally you provide a transparent svg so that the icon is scalable. The icon for a step is used both in the marketplace as well as the pipeline view. You can also select a default background to be used. Alternatively, you can define jpg/png icons for large/medium/small sizes. We suggest the svg approach
+* The `version` property allows you to update your plugin and keep multiple variants of it in the marketplace
 * The `examples` section will be shown in the marketplace as documentation for your step
 
 For the argument section we follow the [JSON Schema](http://json-schema.org/learn/miscellaneous-examples.html). You can use the [Schema generator](https://jsonschema.net/) to easily create a schema. Currently only the inputs for a step are modelled inside the step definition.
@@ -356,11 +357,60 @@ Once you are done with your step, use the Codefresh CLI to upload it to the mark
 codefresh create step-type kostis-codefresh/sample -f my-custom-step.yml
 {% endhighlight %}
 
-If you want to remove your step from the marketplace, you can delete it
+If you make further changes to your step you can update it:
+
+{% highlight bash %}
+codefresh replace step-types kostis-codefresh/sample -f my-custom-step.yml
+{% endhighlight %}
+
+If you want to remove your step from the marketplace, you can delete it completely:
 
 {% highlight bash %}
 codefresh delete step-type kostis-codefresh/sample
 {% endhighlight %}
+
+### Versioning of typed steps
+
+The top-level `version` property in the plugin manifest allows you to publish multiple releases of the same plugin in the marketplace. Codefresh will keep all previous plugins and users are free to choose which version they want.
+
+You can see all versions of a plugin in the step marketplace drop-down:
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/codefresh-yaml/steps/step-versions.png" 
+url="/images/codefresh-yaml/steps/step-versions.png"
+alt="Different step versions" 
+caption="Different step versions" 
+max-width="60%" 
+%}
+
+You can also use the Codefresh CLI to list all version:
+
+{% highlight bash %}
+codefresh get step-types kostis-codefresh/sample --versions
+{% endhighlight %}
+
+Note that Codefresh step versions function like Docker tags in the sense that they are *mutable*. You can overwrite an existing plugin version with a new plugin manifest.
+
+If users do not define a version once they use the plugin, the latest one (according to [semantic versioning](https://semver.org/)) will be used. Alternatively they can specify the exact version they need (even different versions within the same pipeline.)
+
+
+ `codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+steps:
+  my_step_1:
+    title: Running old custom step 
+    type: kostis-codefresh/sample:1.2.1
+  my_step_2:
+    title: Running new custom step
+    type: kostis-codefresh/sample:1.3.5
+{% endraw %}
+{% endhighlight %}
+
+
 
 ## What to read next
 
