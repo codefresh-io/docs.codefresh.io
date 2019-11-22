@@ -175,7 +175,9 @@ max-width="90%"
 The common volume shared among build steps makes it very easy to create pipelines that work in a gradual manner
 where any step in the pipeline is using artifacts produced by a previous one.
 
-You can also use [environment variables]({{ site.baseurl }}/docs/codefresh-yaml/variables/) to share information between steps. All predefined environment variables
+>The shared volume is **NOT available** in [build steps]({{site.baseurl}}/docs/codefresh-yaml/steps/build/). This is not a Codefresh limitation. Docker itself [does not allow volumes during builds](https://github.com/moby/moby/issues/14080). There is no folder `/codefresh/volume` inside a Dockerfile for you to access.
+
+You can also use [environment variables]({{site.baseurl}}/docs/codefresh-yaml/variables/) to share information between steps. All predefined environment variables
 are available to all steps, and each individual step can use `cf_export` to inject dynamically during the build process
 extra environment variables.
 
