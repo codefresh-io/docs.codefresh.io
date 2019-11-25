@@ -55,6 +55,9 @@
   - title: C/C++
     new: true
     localurl: /docs/learn-by-example/cc/
+  - title: C# (.NET core)
+    new: true
+    localurl: /docs/learn-by-example/dotnet/
   - title: Android (Mobile)
     localurl: /docs/learn-by-example/mobile/android/  
   - title: Selenium

@@ -12,8 +12,10 @@ Recent Codefresh updates:
 
 - Digital Ocean cluster integration - [documentation]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/#adding-a-digital-ocean-cluster)
 - Build caching guide - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipeline-caching/)
+- Versioning for plugins - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/#versioning-of-typed-steps)
 - Example with C and make - [documentation]({{site.baseurl}}/docs/learn-by-example/cc/c-make/)
 - Example with C++ and cmake - [documentation]({{site.baseurl}}/docs/learn-by-example/cc/cpp-cmake/)
+- Example with C# and .NET core - [documentation]({{site.baseurl}}/docs/learn-by-example/dotnet/)
 
 ### October 2019
 

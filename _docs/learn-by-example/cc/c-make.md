@@ -68,7 +68,7 @@ This pipeline clones the source code, compiles the code and runs unit tests. In 
 
 ## What to read next
 
-* [C++ example]({{site.baseurl}}/docs/learn-by-example/cc/cpp-cmake)
+* [C++ example]({{site.baseurl}}/docs/learn-by-example/cc/cpp-cmake/)
 * [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
 * [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
 * [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)

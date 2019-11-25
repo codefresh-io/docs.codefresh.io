@@ -119,7 +119,7 @@ change the version of Gcc/g++ by starting from a different public or private Doc
 
 ## What to read next
 
-* [C example]({{site.baseurl}}/docs/learn-by-example/cc/c-make)
+* [C example]({{site.baseurl}}/docs/learn-by-example/cc/c-make/)
 * [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
 * [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
 * [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
