@@ -52,6 +52,8 @@
     localurl: /docs/learn-by-example/ruby/
   - title: Scala
     localurl: /docs/learn-by-example/scala/scala-hello-world/
+  - title: C/C++
+    localurl: /docs/learn-by-example/cc/
   - title: Android (Mobile)
     localurl: /docs/learn-by-example/mobile/android/  
   - title: Selenium

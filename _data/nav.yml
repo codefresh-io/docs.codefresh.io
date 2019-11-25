@@ -81,6 +81,13 @@
           url: "/voting-app"
     - title: Ruby On Rails
       url: "/ruby"
+    - title: "C/C++"
+      url: "/cc"
+      sub-pages:
+        - title: 'C'
+          url: "/c-make"
+        - title: 'C++'
+          url: "/cpp-cmake"        
     - title: Scala
       url: "/scala"
       sub-pages:
