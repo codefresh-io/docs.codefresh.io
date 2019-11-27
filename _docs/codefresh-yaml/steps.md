@@ -134,7 +134,7 @@ We suggest that you start with custom freestyle steps first and only create type
 
 ### Creating a custom freestyle step
 
-As an example let's say that you need to use the [JFrog CLI]https://jfrog.com/getcli/) in a pipeline in order to interact with a Artifactory or Bintray. JFrog does not offer any Docker image that contains the CLI and you already know that all Codefresh steps [are actually Docker images]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/).
+As an example let's say that you need to use the [JFrog CLI](https://jfrog.com/getcli/) in a pipeline in order to interact with a Artifactory or Bintray. JFrog does not offer any Docker image that contains the CLI and you already know that all Codefresh steps [are actually Docker images]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/).
 
 Therefore you can easily package the CLI into a Docker image and then make it available to any Codefresh pipeline that wishes to use it.
 First you create [a Dockerfile](https://github.com/kostis-codefresh/step-examples/blob/master/jfrog-cli-wrapper/Dockerfile) that packages the CLI

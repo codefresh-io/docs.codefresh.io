@@ -78,6 +78,18 @@ This pipeline does the following:
 1. Runs [cf_export]({{site.baseurl}}/docs/codefresh-yaml/variables/#exporting-environment-variables-from-a-freestyle-step) to create a pipeline variable with the path of the google service account
 1. Runs `terraform init/apply` to create the VM on Google cloud.
 
+The pipeline needs a [single environment variable]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-settings) that holds the content of the service account.
+
+
+{% include image.html 
+lightbox="true" 
+file="/images/examples/terraform/google_cloud_json.png" 
+url="/images/examples/terraform/google_cloud_json.png" 
+alt="Passing the Google account in the pipeline parameters"
+caption="Passing the Google account in the pipeline parameters"
+max-width="60%" 
+%}
+
 
 Run the pipeline and see your deployment succeed.
 
