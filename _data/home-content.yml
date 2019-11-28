@@ -59,9 +59,7 @@
     new: true
     localurl: /docs/learn-by-example/dotnet/
   - title: Android (Mobile)
-    localurl: /docs/learn-by-example/mobile/android/  
-  - title: Selenium
-    localurl: /docs/learn-by-example/general/selenium-test/       
+    localurl: /docs/learn-by-example/mobile/android/      
 - title: Yaml Syntax
   icon: images/home-icons/yaml.png
   url: ''
