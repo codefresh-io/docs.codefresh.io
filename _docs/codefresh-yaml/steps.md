@@ -240,7 +240,7 @@ codefresh get step-type vault -o yaml > vault-step.yml
 
 Here is the resulting yaml:
 
-  `codefresh.yml`
+  `vault-step.yml`
 {% highlight yaml %}
 {% raw %}
 version: '1.0'
@@ -410,6 +410,146 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
+### Example with input parameters
+
+Let's create a very simple step called *node-version*. This step will read the application version from a NodeJS project and expose it as an environment variable. This way we can use the application version later in the pipeline (for example to tag a docker image).
+
+Here is the respective [step yaml](https://github.com/kostis-codefresh/step-examples/blob/master/node-version-plugin/read-app-version.yml).
+
+  `plugin.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+kind: step-type
+metadata:
+  name: kostis-codefresh/node-version
+  isPublic: true
+  description: >-
+    The plugin exports as an environment variable the application version from package.json
+  sources:
+    - 'https://github.com/kostis-codefresh/step-examples'
+  stage: incubating
+  maintainers:
+    - name: Kostis Kapelonis
+  categories:
+    - utility
+  official: false
+  tags: []
+  icon:
+    type: svg
+    url: https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg
+    background: '#f4f4f4'
+  examples:
+    - description: example-1
+      workflow:
+        version: '1.0'
+        steps:
+          main_clone:
+            title: Cloning main repository...
+            type: git-clone
+            repo: 'my-github-user/my-github-repo'
+            revision: 'master'
+            git: github 
+          read_app_version:
+            title: Reading app version
+            type: kostis-codefresh/node-version
+            arguments:
+              PACKAGE_JSON_FOLDER: './my-github-repo'
+          print_app_version:
+            title: Printing app version
+            image: alpine
+            commands:
+              - echo $APP_VERSION
+  latest: true
+  version: 1.0.0
+spec:
+  arguments: |-
+    {
+        "definitions": {},
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "additionalProperties": false,
+        "patterns": [],
+        "required": [
+          "PACKAGE_JSON_FOLDER"
+        ],        
+        "properties": {
+            "PACKAGE_JSON_FOLDER": {
+                "type": "string",
+                "description": "folder where package.json is located"
+            }
+        }
+    }
+  steps:
+    main:
+      name: kostis-codefresh/node-version
+      image: node
+      commands:
+        - cd $WORK_DIR
+        - pwd
+        - APP_VERSION=$(node -p -e "require('./package.json').version")
+        - echo $APP_VERSION
+        - export APP_VERSION
+        - cf_export APP_VERSION
+      environment:
+        - 'WORK_DIR=${{PACKAGE_JSON_FOLDER}}'
+{% endraw %}
+{% endhighlight %}
+
+If you look at the `spec` section you will see that the plugin expects a single parameter called `PACKAGE_JSON_FOLDER`. This will
+be passed by the plugin user to specify the folder that contains the `package.json` file. This way this plugin can be used for multiple applications. For example, the plugin user might check out 3 different Node.js projects and use the plugin to read the versions of all of them.
+
+The plugin implementation is specified in the `steps` sections. We use the standard [Node Docker image](https://hub.docker.com/_/node) to read the version from the `package.json` file. Notice how we convert the plugin argument to an environment variable called `WORK_DIR`
+
+By default all plugins start with the Codefresh volume at `/codefresh/volume` as a working folder. So with the `cd` command we enter the project folder (which we assume was checked out in a previous pipeline step). Once the version is read it is made available to all the other pipeline steps with the [cf_export command]({{site.baseurl}}/docs/codefresh-yaml/variables/#using-cf_export-command).
+
+We now insert our plugin in the marketplace with the following command:
+
+{% highlight bash %}
+codefresh create step-type kostis-codefresh/node-version -f read-app-version.yml
+{% endhighlight %}
+
+The step is now ready to be used by anybody.
+
+An example user pipeline is shown at [codefresh.yml](https://github.com/kostis-codefresh/step-examples/blob/master/node-version-plugin/codefresh.yml)
+
+  `codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+steps:
+  main_clone:
+    title: Cloning main repository...
+    type: git-clone
+    repo: 'codefreshdemo/example_nodejs_postgres'
+    revision: 'master'
+    git: github    
+  read_app_version:
+    title: Reading app version
+    type: kostis-codefresh/node-version
+    arguments:
+      PACKAGE_JSON_FOLDER: './example_nodejs_postgres'
+  print_app_version:
+    title: Printing app version
+    image: alpine
+    commands:
+      - echo $APP_VERSION
+{% endraw %}
+{% endhighlight %}
+
+This is a very simple pipeline that checks out a NodeJS project and uses our plugin. Notice how we pass as argument the required parameter `example_nodejs_postgres` to tell the plugin where our `package.json` file is located. Once the plugin runs the application version is available as an environment variable that we can use in other steps as `APP_VERSION`.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/codefresh-yaml/steps/input-parameters.png" 
+url="/images/codefresh-yaml/steps/input-parameters.png"
+alt="Step input parameters" 
+caption="Step input parameters" 
+max-width="50%" 
+%}
+
+This is a trivial example, but is still shows how Codefresh pipeline can be declarative while actually doing a lot of imperative actions behind the scenes.
 
 
 ## What to read next
