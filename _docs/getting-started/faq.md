@@ -145,6 +145,9 @@ A. Yes, we support both UI and ABAC on [pipelines, projects and clusters]({{site
 **Q. Does Codefresh support auditing?**    
 A. Yes, audit logs are  [built-in]({{site.baseurl}}/docs/enterprise/audit-logs/).
 
+**Q. Is Codefresh security certified?**    
+A. We are currently SOC2 compliant and are working to get other certifications as well.
+
 **Q. Do you offer professional services to help us migrate to containers/Kubernetes?**    
 A. Yes, we do.
 

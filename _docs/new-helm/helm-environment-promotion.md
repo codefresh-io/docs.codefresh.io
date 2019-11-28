@@ -8,8 +8,6 @@ Apart from the [basic Helm board]({{site.baseurl}}/docs/new-helm/helm-releases-m
 
 The environment board can function both as an overview of the whole lifecycle of the application as well as a tool to shift-left/right Helm releases between environments.
 
->Currently the Helm environment boards are only available to Enterprise customers. If you want to evaluate this feature, feel free to [contact us](https://codefresh.io/contact-us/).
-
 Here is an example board:
 
 {% include 
