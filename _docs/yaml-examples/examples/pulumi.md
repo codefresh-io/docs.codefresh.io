@@ -90,6 +90,17 @@ This pipeline does the following:
 1. Chooses the cluster that will be used for deployments (if you have more than one). Use your own cluster name as seen in the [Kubernetes dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/) of Codefresh
 1. Runs `pulumi up` with the same target cluster
 
+The pipeline needs a [single environment variable]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-settings) that holds the content of your Pulumi Token.
+
+
+{% include image.html 
+lightbox="true" 
+file="/images/examples/pulumi/pulumi-access-token.png" 
+url="/images/examples/pulumi/pulumi-access-token.png" 
+alt="Passing the Pulumi Token in the pipeline parameters"
+caption="Passing the Pulumi Token in the pipeline parameters"
+max-width="60%" 
+%}
 
 Run the pipeline and see your deployment succeed.
 
