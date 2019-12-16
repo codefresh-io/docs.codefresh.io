@@ -1,6 +1,6 @@
 ---
 title: "Composition"
-description: "Run a Docker container with its dependencies in Codefresh infrastructure"
+description: "Run a Docker container with its dependencies inside a pipeline"
 group: codefresh-yaml
 sub_group: steps
 redirect_from:

@@ -1,6 +1,6 @@
 ---
 title: "Launch-Composition"
-description: ""
+description: "Create a test environment with its dependencies in Codefresh infrastructure"
 group: codefresh-yaml
 sub_group: steps
 redirect_from:
@@ -8,8 +8,10 @@ redirect_from:
   - /docs/codefresh-yaml/steps/launch-composition-2/
 toc: true
 ---
-The launch composition step provides the ability to launch long term running environment that can live outside the context of the running flow.
-You can use this step to automate your environment creation through codefresh.yml file instead of manually launching an environment from the UI.
+The launch composition step provides the ability to launch long term running environments that can live outside the context of a running pipeline.
+You can use this step to automate your test environment creation through a codefresh.yml file instead of manually launching an environment from the UI.
+
+>Note that "launch-composition" creates a permanent test environment that keeps running even after a pipeline has finished. If you just want temporary test environments that run *only while* a pipeline is running, see [service containers]({{site.baseurl}}/docs/codefresh-yaml/service-containers/) and the documentation page for [integration tests]({{site.baseurl}}/docs/testing/integration-tests/).
 
 ## Usage
 
@@ -87,3 +89,5 @@ step_name:
 
 * [Preview environments]({{site.baseurl}}/docs/getting-started/on-demand-environments/)
 * [Launch Composition example]({{site.baseurl}}/docs/yaml-examples/examples/launch-composition/)
+* [Integration tests]({{site.baseurl}}/docs/testing/integration-tests/)
+* [Service Containers]({{site.baseurl}}/docs/codefresh-yaml/service-containers/)
