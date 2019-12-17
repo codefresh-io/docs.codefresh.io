@@ -563,6 +563,148 @@ max-width="40%"
 
 This is a trivial example, but is still shows how Codefresh pipeline can be declarative while actually doing a lot of imperative actions behind the scenes.
 
+### Example with output parameters
+
+In the previous example our plugin had an output parameter (`APP_VERSION`) that is created by the custom step and given back to the user. Even though creating an output parameter using only `cf_export` will work just fine in the technical level, it is best to formally define output parameters in the step definition.
+
+If you define output parameters in the step definition their names will appear on the marketplace and users will have an easier time understand what your step produces. You will be able to define complete JSON objects in addition to output strings. Formal output parameters are also available under a special notation (`step.outputs`) that we will explain in this example.
+
+We suggest you always formalize your output parameters in your step definition, especially when your steps is having a large number of output parameters.
+
+The same [JSON Schema](http://json-schema.org/learn/miscellaneous-examples.html) is also used for output parameters as with input ones.
+Here is a [very simple example](https://github.com/kostis-codefresh/step-examples/blob/master/output-parameters/output-parameters-sample.yml) that shows the different types of output parameters you can have.
+
+  `plugin.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+kind: step-type
+metadata:
+  name: kostis-codefresh/output-parameters-example
+  isPublic: true
+  description: >-
+    The plugin shows how you can export output parameters
+  sources:
+    - 'https://github.com/kostis-codefresh/step-examples'
+  stage: incubating
+  maintainers:
+    - name: Kostis Kapelonis
+  categories:
+    - utility
+  official: false
+  tags: []
+  icon:
+    type: svg
+    url: https://cdn.worldvectorlogo.com/logos/bash-1.svg
+    background: '#f4f4f4'
+  examples:
+    - description: example-1
+      workflow:
+        version: '1.0'
+        steps:
+          dummy_parameters:
+            title: Creating output parameters
+            type: kostis-codefresh/output-parameters-example
+          print_my_variables:
+            title: Printing dummy content
+            image: alpine
+            commands:
+              - echo $MY_NUMBER
+              - echo $MY_CITY
+              - echo $MY_FAVORITE_FOOD
+              - echo ${{steps.dummy_parameters.output.MY_NUMBER}}
+              - echo ${{steps.dummy_parameters.output.MY_CITY}}
+              - echo ${{steps.dummy_parameters.output.MY_FAVORITE_FOOD}}
+  latest: true
+  version: 1.0.0
+spec:
+  returns: |-
+    {
+        "definitions": {},
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "additionalProperties": true,
+        "patterns": [],
+        "required": [
+          "MY_NUMBER",
+          "MY_CITY",
+          "MY_FAVORITE_FOOD"
+        ]
+        ,
+        "properties": {
+            "MY_NUMBER": {
+                "type": "number",
+                "description": "an example variable that holds a number"
+            },
+            "MY_CITY": {
+                "type": "object",
+                "description": "an example variable that holds a JSON object",
+                "required": ["city_name", "country", "population"],
+                "properties": {
+                    "city_name": {"type": "string"},
+                    "country": {"type": "string"},
+                    "population": {"type": "integer"}
+                }
+            },
+            "MY_FAVORITE_FOOD": {
+              "description": "an example variable that holds a number",
+              "type": "array",
+              "maxItems": 3,
+              "items": {
+                        "type": "string"
+              }
+        }
+      }
+    }    
+  steps:
+    main:
+      name: kostis-codefresh/output-parameters-example
+      image: alpine
+      commands:
+        - cf_export MY_NUMBER=42
+        - cf_export MY_CITY='{"city_name":"San Francisco", "country":"usa","population":884363}' 
+        - cf_export MY_FAVORITE_FOOD='["pizza", "ramen", "hot dogs"]'
+
+{% endraw %}
+{% endhighlight %}
+
+This plugin exports 3 output parameters
+
+* `MY_NUMBER` - a single number
+* `MY_CITY` - an object with fields `city_name`, `country`, `population`
+* `MY_FAVORITE_FOOD` - an array.
+
+Output parameters are defined in the `returns` block.
+The output parameters of the step are now shown in the marketplace so consumers of this plugin know what to expect when they use it.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/codefresh-yaml/steps/output-parameters-definition.png" 
+url="/images/codefresh-yaml/steps/output-parameters-definition.png"
+alt="Output parameters on marketplace" 
+caption="Output parameters on marketplace" 
+max-width="40%" 
+%}
+
+As can be seen from the `examples` block, when you have formal output parameters you can also access them by mentioning the specific steps in your pipeline that creates it. The following are two equal ways to use an output parameter in your pipeline:
+
+```
+{% raw %}
+echo $MY_NUMBER
+echo ${{steps.dummy_parameters.output.MY_NUMBER}}
+{% endraw %}
+```
+
+In the case of output parameters that are objects you can also use `jq` to get specific properties like this:
+
+```
+{% raw %}
+echo ${{steps.dummy_parameters.output.MY_CITY}} | jq '.city_name'
+{% endraw %}
+```
+
+This will print "San Francisco".
 
 ## What to read next
 
