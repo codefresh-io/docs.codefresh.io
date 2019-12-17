@@ -347,9 +347,9 @@ For the metadata section note the following:
 * The `version` property allows you to update your plugin and keep multiple variants of it in the marketplace
 * The `examples` section will be shown in the marketplace as documentation for your step
 
-For the argument section we follow the [JSON Schema](http://json-schema.org/learn/miscellaneous-examples.html). You can use the [Schema generator](https://jsonschema.net/) to easily create a schema. Currently only the inputs for a step are modelled inside the step definition.
+For the argument section we follow the [JSON Schema](http://json-schema.org/learn/miscellaneous-examples.html). You can use the [Schema generator](https://jsonschema.net/) to easily create a schema. JSON schema is used for arguments (i.e. input parameters) as well as output parameters as we will see later on.
 
-The final part is the implementation. Here you can define exactly that yaml that this step will insert in the pipeline. You can use any of the built-in steps in Codefresh and even add multiple steps.
+The final part is the step implementation. Here you can define exactly the yaml that this step will insert in the pipeline. You can use any of the built-in steps in Codefresh and even add multiple steps.
 
 Once you are done with your step, use the Codefresh CLI to upload it to the marketplace. If you want the step to be available only to you and your team make sure that the property `isPublic` is false (and then it will not be shown in the marketplace).
 
@@ -391,7 +391,7 @@ You can also use the Codefresh CLI to list all version:
 codefresh get step-types kostis-codefresh/sample --versions
 {% endhighlight %}
 
-Note that Codefresh step versions function like Docker tags in the sense that they are *mutable*. You can overwrite an existing plugin version with a new plugin manifest.
+Note that Codefresh step versions function like Docker tags in the sense that they are *mutable*. You can overwrite an existing plugin version with a new plugin manifest by using the `codefresh replace step-types` command.
 
 If users do not define a version once they use the plugin, the latest one (according to [semantic versioning](https://semver.org/)) will be used. Alternatively they can specify the exact version they need (even different versions within the same pipeline.)
 
@@ -546,7 +546,19 @@ file="/images/codefresh-yaml/steps/input-parameters.png"
 url="/images/codefresh-yaml/steps/input-parameters.png"
 alt="Step input parameters" 
 caption="Step input parameters" 
-max-width="50%" 
+max-width="60%" 
+%}
+
+The input parameter is also shown as required in the marketplace.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/codefresh-yaml/steps/input-parameters-definition.png" 
+url="/images/codefresh-yaml/steps/input-parameters-definition.png"
+alt="Input parameters on marketplace" 
+caption="Input parameters on marketplace" 
+max-width="40%" 
 %}
 
 This is a trivial example, but is still shows how Codefresh pipeline can be declarative while actually doing a lot of imperative actions behind the scenes.

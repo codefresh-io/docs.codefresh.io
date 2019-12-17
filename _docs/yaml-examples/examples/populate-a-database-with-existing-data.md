@@ -144,10 +144,10 @@ All containers are discarded after the pipeline has finished
 ## What to read next
 
 - [Service Containers]({{site.baseurl}}/docs/codefresh-yaml/service-containers/)
-- [Integration test example]({{site.baseurl}}/docs/yaml-examples/examples/run-integration-tests/)
+- [Integration Tests with Postgres]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-postgres/)
 - [Integration Tests with MySQL]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mysql/)
 - [Integration Tests with Redis]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-redis/)
 - [Integration Tests with Mongo]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mongo/)
-
+- [Integration test example]({{site.baseurl}}/docs/yaml-examples/examples/run-integration-tests/)
 
 

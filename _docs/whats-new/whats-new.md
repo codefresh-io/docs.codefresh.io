@@ -10,7 +10,7 @@ Recent Codefresh updates:
 
 ### December 2019
 
-- Preload a DB with test data before integration tests- [documentation]({{site.baseurl}}/docs/yaml-examples/examples/populate-a-database-with-existing-data/)
+- Preload a DB with test data before integration tests - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/populate-a-database-with-existing-data/)
 
 ### November 2019
 
