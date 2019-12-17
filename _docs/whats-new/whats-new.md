@@ -8,6 +8,10 @@ toc: true
 ---
 Recent Codefresh updates:
 
+### December 2019
+
+- Preload a DB with test data before integration tests- [documentation]({{site.baseurl}}/docs/yaml-examples/examples/populate-a-database-with-existing-data/)
+
 ### November 2019
 
 - Digital Ocean cluster integration - [documentation]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/#adding-a-digital-ocean-cluster)

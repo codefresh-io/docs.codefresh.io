@@ -1,6 +1,6 @@
 ---
 title: "Populate a database with existing data"
-description: ""
+description: "Preloading test data before integration tests"
 group: yaml-examples
 sub_group: examples
 redirect_from:
@@ -9,143 +9,145 @@ toc: true
 old_url: /docs/populate-a-database-with-existing-data-copied
 was_hidden: true
 ---
-In case you are running a [composition step]({{site.baseurl}}/docs/codefresh-yaml/steps/composition/), it will be run by default from the repository working directory. This means that you should be able to do anything you do locally from your repository.
+In an another example we have seen how you can run [integration tests with a database]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-postgres/) such as PostgreSQL. Sometimes however the integration tests require the database to already have some test data beforehand. With Codefresh you can use the [setup block]({{site.baseurl}}/docs/codefresh-yaml/service-containers/#preloading-data-to-databases) in service containers to preload data to a db.
 
-There are several ways to store data used by applications that run in Docker containers. We encourage users to familiarize themselves with the options available, including:
-- Create a data directory on the host system (outside the container) and mount this to a directory visible from inside the container. This will place the database files in a known location on the host system, and makes it easy for tools and applications on the host system to access the files. The downside is that the user needs to make sure that the directory exists, and that e.g. directory permissions and other security mechanisms on the host system are set up correctly.
 
-## Postgres
+{% include image.html 
+lightbox="true" 
+file="/images/examples/integration-tests/preload-data-to-db.png"
+url="/images/examples/integration-tests/preload-data-to-db.png"
+alt="Preloading test data to a DB"
+caption="Preloading test data to a DB"
+max-width="90%"
+%}
 
-{{site.data.callout.callout_info}}
-##### Official repository of Docker postgres image
+In this pipeline the database is populated with data from an SQL file.
 
-[https://hub.docker.com/\_/postgres/](https://hub.docker.com/_/postgres/){:target="_blank"} 
-{{site.data.callout.end}}
+## The example PostgreSQL project
 
-- Create a data directory on a suitable volume on your host system, e.g. `/my/own/datadir`.
-- Add the following volumes to postgres container:
+You can see the example project at [https://github.com/codefresh-contrib/preload-db-integration-tests](https://github.com/codefresh-contrib/preload-db-integration-tests). The repository contains a simple integration test and an SQL file that inserts test data.
 
-  `YAML`
-{% highlight yaml %}
+The SQL file creates a single table in the db:
+
+ `preload.sql`
+{% highlight sql %}
 {% raw %}
-postgres:
-  image: postgres:latest
-  ports:
-    - 5432
-  volumes:
-    - /my/own/datadir:/var/lib/postgresql/data
-  environment:
-    POSTGRES_USER: $POSTGRES_USER
-    POSTGRES_PASSWORD: $POSTGRES_PASSWORD
-    POSTGRES_DB: $POSTGRES_DB
+CREATE TABLE link (
+   ID serial PRIMARY KEY,
+   url VARCHAR (255) NOT NULL,
+   name VARCHAR (255) NOT NULL,
+   description VARCHAR (255),
+   rel VARCHAR (50)
+);
+
+INSERT INTO link (url, name)
+VALUES
+ ('http://www.google.com','Google'),
+ ('http://www.azure.microsoft.com','Azure'),
+ ('http://www.codefresh.io','Codefresh');
 {% endraw %}
 {% endhighlight %}
 
-The - `/my/own/datadir:/data/db` part of the command mounts the `/my/own/datadir` directory from the underlying host system as `/data/db` inside the container, where Postgres by default will write its data files.
 
-{{site.data.callout.callout_info}}
-##### Example of repository 
+To work with the project locally, you need to have `docker`, `golang` and `postgres-client` installed on your workstation first.
 
-Just head over to the example [__repository__](https://github.com/codefreshdemo/example_nodejs_postgres/tree/dataset){:target="_blank"} in Github.
-{{site.data.callout.end}}
- 
-{{site.data.callout.callout_warning}}
-To create the folder `./data` locally you can just build and run this [docker-compose.yml](https://github.com/codefreshdemo/example_nodejs_postgres/blob/dataset/docker-compose-test.yml){:target="_blank"} locally
-{{site.data.callout.end}}
+```
+$ docker run -p 5432:5432 postgres:11.5
+```
 
-  `YAML`
+Then open another terminal and load the test data:
+
+```
+$ psql -h localhost -U postgres < testdata/preload.sql
+```
+
+A Postgres instance is now running at `localhost:5432` and you can run the tests with:
+
+```
+$ go test -v
+```
+
+
+## Create a pipeline the preloads test data to PostgreSQL
+
+Here is the whole pipeline:
+
+ `codefresh.yml`
 {% highlight yaml %}
 {% raw %}
-  unit_test:
-    type: composition
-    working_directory: ${{main_clone}}
-    composition:
-      version: '2'
-      services:
-        postgres:
-          image: postgres:latest
+version: "1.0"
+stages:
+- prepare
+- package
+- test
+steps:
+  main_clone:
+    type: "git-clone"
+    description: "Cloning main repository..."
+    repo: "codefresh-contrib/preload-db-integration-tests"
+    revision: "master"
+    title: "Checking out source code"
+    git: github
+    stage: prepare
+  package_my_app:
+    stage: package
+    image: 'golang:1.13'
+    title: "Compile code"
+    commands:
+      - 'go build'
+  run_my_db_tests:
+    stage: test
+    image: 'golang:1.13'
+    title: "Running integration tests"
+    commands:
+      - 'go test -v'
+    environment:
+    - POSTGRES_HOST=my_postgresql_db
+    services:
+      composition:
+        my_postgresql_db:
+          image: postgres:11.5
           ports:
-            - 5432
-          volumes:
-            - ./data:/var/lib/postgresql/data
-          environment:
-            POSTGRES_USER: $POSTGRES_USER
-            POSTGRES_PASSWORD: $POSTGRES_PASSWORD
-            POSTGRES_DB: $POSTGRES_DB
-    composition_candidates:
-      test:
-        image: ${{build_step}}
-        links:
-          - postgres
-        command: bash -c '/dataset/test-script.sh'
-        environment:
-          - POSTGRES_USER=$POSTGRES_USER
-          - POSTGRES_PASSWORD=$POSTGRES_PASSWORD
-          - POSTGRES_DB=$POSTGRES_DB
-          - POSTGRES_HOST=$POSTGRES_HOST
-    composition_variables:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=my_db
-      - POSTGRES_HOST=postgres
+            - 5432 
+      readiness:
+        timeoutSeconds: 30
+        initialDelaySeconds: 10
+        periodSeconds: 15
+        image: 'postgres:11.5'
+        commands:
+          - "pg_isready -h my_postgresql_db -U postgres"
+      setup:
+        image: 'postgres:11.5'
+        commands:
+          - "psql -h my_postgresql_db -U postgres < /codefresh/volume/preload-db-integration-tests/testdata/preload.sql"
 {% endraw %}
 {% endhighlight %}
 
-## Mongo
+This pipeline does the following:
 
-{{site.data.callout.callout_info}}
-##### Official repository of Docker mongo image
+1. Clones the source code with a [Git clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/).
+1. Compiles the code with a [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) that runs `go build`
+1. Runs the tests while launching a [service container]({{site.baseurl}}/docs/codefresh-yaml/service-containers/) for an active PostgreSQL instance. Before tests are run we launch another container with the `psql` executable to load db data
 
-[https://hub.docker.com/\_/mongo/](https://hub.docker.com/_/mongo/){:target="_blank"} 
-{{site.data.callout.end}}
 
-- Create a data directory on a suitable volume on your host system, e.g. /my/own/datadir.
-- Add the following volumes to mongo container:
+> In this simple example we use `psql` to preload the database. In a production application you might also use dedicated db tools such as [liquibase](https://hub.docker.com/r/liquibase/liquibase) or [flyway](https://hub.docker.com/r/flyway/flyway) or other command line tools that communicate with your database.
 
-  `YAML`
-{% highlight yaml %}
-{% raw %}
-mongo:
-  image: mongo
-  volumes:
-    - /my/own/datadir:/data/db
-{% endraw %}
-{% endhighlight %}
+Notice that we also use the `readiness` property in the testing phase so that we can verify PostgreSQL is ready and listening, before running the tests. The exact order of events is:
 
-The - `/my/own/datadir:/data/db` part of the command mounts the `/my/own/datadir` directory from the underlying host system as `/data/db` inside the container, where MongoDB by default will write its data files.
+1. Codefresh launches `postgres:11.5` at port 5432. 
+1. It then launches another container in the same network with `pg_isready` in order to wait for the DB to be up. 
+1. Then it launches a third container with `psql` to preload data. 
+1. Finally it launches a container with `golang:1.13` to run the actual tests.
 
-{{site.data.callout.callout_info}}
-##### Example of repository 
+All containers are discarded after the pipeline has finished
 
-Just head over to the example [__repository__](https://github.com/codefreshdemo/example_nodejs_mongo/tree/dataset){:target="_blank"} in Github.
-{{site.data.callout.end}}
- 
-{{site.data.callout.callout_warning}}
-To create the folder `./data` locally you can just build and run this [docker-compose.yml](https://github.com/codefreshdemo/example_nodejs_mongo/blob/dataset/docker-compose.yml){:target="_blank"} locally
-{{site.data.callout.end}}
+## What to read next
 
-  `YAML`
-{% highlight yaml %}
-{% raw %}
-  unit_test:
-    type: composition
-    working_directory: ${{build_step}}
-    composition:
-      version: '2'
-      services:
-        mongo:
-          image: mongo
-          volumes:
-            - ./data:/data/db
-    composition_candidates:
-      test:
-        image: ${{build_step}}
-        links:
-          - mongo
-        command: bash -c "/src/test-script.sh"
-        environment:
-          - MONGO_PORT=27017
-          - MONGO_HOST=mongo
-          - MONGO_DB=demo
-{% endraw %}
-{% endhighlight %}
+- [Service Containers]({{site.baseurl}}/docs/codefresh-yaml/service-containers/)
+- [Integration test example]({{site.baseurl}}/docs/yaml-examples/examples/run-integration-tests/)
+- [Integration Tests with MySQL]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mysql/)
+- [Integration Tests with Redis]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-redis/)
+- [Integration Tests with Mongo]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mongo/)
+
+
+

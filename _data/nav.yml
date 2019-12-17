@@ -194,7 +194,8 @@
           url: "/integration-tests-with-postgres"
         - title: Run Integration Tests with Redis
           url: "/integration-tests-with-redis"
-
+        - title: Populate a database with existing data
+          url: "/populate-a-database-with-existing-data"
 
 
         - title: Shared volumes for composition
@@ -203,8 +204,7 @@
           url: "/launch-composition"
         - title: Use Docker compose
           url: "/launching-a-composition-and-defining-a-service-environment-variables-using-a-file"  
-        - title: Populate a database with existing data
-          url: "/populate-a-database-with-existing-data"
+
 
 
         - title: Import data to MongoDB

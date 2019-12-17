@@ -94,6 +94,6 @@ Notice that we also use the `readiness` property in the testing phase so that we
 - [Integration Tests with MySQL]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mysql/)
 - [Integration Tests with Redis]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-redis/)
 - [Integration Tests with Mongo]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mongo/)
-
+- [Preload a DB with tests data]({{site.baseurl}}/docs/yaml-examples/examples/populate-a-database-with-existing-data/)
 
 
