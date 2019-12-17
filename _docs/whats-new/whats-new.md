@@ -10,6 +10,7 @@ Recent Codefresh updates:
 
 ### December 2019
 
+- Output parameters in plugins - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/#example-with-output-parameters)
 - Preload a DB with test data before integration tests - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/populate-a-database-with-existing-data/)
 
 ### November 2019
