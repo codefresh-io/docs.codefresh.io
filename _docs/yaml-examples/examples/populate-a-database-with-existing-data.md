@@ -9,7 +9,7 @@ toc: true
 old_url: /docs/populate-a-database-with-existing-data-copied
 was_hidden: true
 ---
-In an another example we have seen how you can run [integration tests with a database]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-postgres/) such as PostgreSQL. Sometimes however the integration tests require the database to already have some test data beforehand. With Codefresh you can use the [setup block]({{site.baseurl}}/docs/codefresh-yaml/service-containers/#preloading-data-to-databases) in service containers to preload data to a db.
+In an another example we have seen how you can run [integration tests with a database]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-postgres/) such as PostgreSQL. Sometimes however, the integration tests require the database to already have some test data beforehand. With Codefresh you can use the [setup block]({{site.baseurl}}/docs/codefresh-yaml/service-containers/#preloading-data-to-databases) in service containers to preload data to a db.
 
 
 {% include image.html 
@@ -139,7 +139,7 @@ Notice that we also use the `readiness` property in the testing phase so that we
 1. Then it launches a third container with `psql` to preload data. 
 1. Finally it launches a container with `golang:1.13` to run the actual tests.
 
-All containers are discarded after the pipeline has finished
+All containers are discarded after the pipeline has finished.
 
 ## What to read next
 

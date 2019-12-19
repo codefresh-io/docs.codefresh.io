@@ -569,7 +569,7 @@ In the previous example our plugin had an output parameter (`APP_VERSION`) that 
 
 If you define output parameters in the step definition their names will appear on the marketplace and users will have an easier time understand what your step produces. You will be able to define complete JSON objects in addition to output strings. Formal output parameters are also available under a special notation (`step.outputs`) that we will explain in this example.
 
-We suggest you always formalize your output parameters in your step definition, especially when your steps is having a large number of output parameters.
+We suggest you always formalize your output parameters in your step definition, especially when your step is having a large number of output parameters.
 
 The same [JSON Schema](http://json-schema.org/learn/miscellaneous-examples.html) is also used for output parameters as with input ones.
 Here is a [very simple example](https://github.com/kostis-codefresh/step-examples/blob/master/output-parameters/output-parameters-sample.yml) that shows the different types of output parameters you can have.
