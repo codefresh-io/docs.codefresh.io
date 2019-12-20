@@ -230,7 +230,7 @@ If you want to use multiple versions of the step in the same pipeline, you can j
 You can use the [Codefresh CLI](https://codefresh-io.github.io/cli/) and more specifically the [step-type resource](https://codefresh-io.github.io/cli/steps/) to create your own typed step. Each Codefresh step is composed from two parts:
 
 1. The step description in the special yaml syntax for describing Codefresh steps
-1. A Docker images that implements the step (optional)
+1. A Docker image that implements the step (optional)
 
 The easiest way to create your own step is to start by using the definition of an existing step.
 
