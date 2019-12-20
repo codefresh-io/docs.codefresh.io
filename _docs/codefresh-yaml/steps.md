@@ -706,6 +706,232 @@ echo ${{steps.dummy_parameters.output.MY_CITY}} | jq '.city_name'
 
 This will print "San Francisco".
 
+
+### Example with input/output parameters
+
+Let's take everything we learned from the previous examples and create a custom step that has
+
+1. A custom Docker image
+1. Formal input parameters
+1. Format output parameters
+
+In this simple example we will create a custom step that reads the Maven coordinates from a `pom.xml` file. Unlike `package.json`, a Maven file has 3 characteristics (group, artifact name and version). First we create a [very simple executable](https://github.com/kostis-codefresh/step-examples/blob/master/maven-version-plugin/mvncoords.go) that reads a Maven file and gives us these coordinates in JSON format.
+
+
+{% highlight shell %}
+{% raw %}
+mvncoords -f pom.xml
+{"groupId":"com.example.codefresh","artifactId":"my-java-app","version":"3.0.2"}
+{% endraw %}
+{% endhighlight %}
+
+Next, we package this executable in a [Dockerfile](https://github.com/kostis-codefresh/step-examples/blob/master/maven-version-plugin/Dockerfile).
+
+ `Dockerfile`
+{% highlight docker %}
+{% raw %}
+FROM golang:1.12-alpine AS build_base
+
+WORKDIR /tmp/
+
+COPY . .
+
+# Unit tests
+RUN go test -v
+
+# Build the Go app
+RUN go build -o ./out/mvncoords .
+
+# Start fresh from a smaller image
+FROM alpine:3.9 
+
+COPY --from=build_base /tmp/out/mvncoords /usr/local/bin/mvncoords
+
+CMD ["mvncoords"]
+{% endraw %}
+{% endhighlight %}
+
+We now have a custom Docker image that contains our executable. If we want other people to use it, we need to push it to Dockerhub. You can do this manually from your workstation using `docker login` and `docker push` commands, but it is much better to automate this with a Codefresh pipeline.
+
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/codefresh-yaml/steps/create-plugin-image.png" 
+url="/images/codefresh-yaml/steps/create-plugin-image.png"
+alt="Building a public Docker image" 
+caption="Building a public Docker image" 
+max-width="60%" 
+%}
+
+This [pipeline](https://github.com/kostis-codefresh/step-examples/blob/master/maven-version-plugin/codefresh.yml) checks out the Dockerfile plus source code, builds the docker image and then pushes it to Dockerhub (so that the image is public).
+
+Finally we are ready to create our Codefresh plugin. Here is the [specification](https://github.com/kostis-codefresh/step-examples/blob/master/maven-version-plugin/read-maven-version.yml):
+
+
+
+  `plugin.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+kind: step-type
+metadata:
+  name: kostis-codefresh/mvn-version
+  isPublic: true
+  description: >-
+    The plugin exports as an environment variable the mvn coordinates from pom.xml
+  sources:
+    - 'https://github.com/kostis-codefresh/step-examples'
+  stage: incubating
+  maintainers:
+    - name: Kostis Kapelonis
+  categories:
+    - utility
+  official: false
+  tags: []
+  icon:
+    type: svg
+    url: https://cdn.worldvectorlogo.com/logos/java-4.svg
+    background: '#f4f4f4'
+  examples:
+    - description: example-1
+      workflow:
+        version: '1.0'
+        steps:
+          main_clone:
+            title: Cloning main repository...
+            type: git-clone
+            repo: 'my-github-user/my-github-repo'
+            revision: 'master'
+            git: github 
+          read_app_version:
+            title: Reading app version
+            type: kostis-codefresh/mvn-version
+            arguments:
+              POM_XML_FOLDER: './my-github-repo'
+          print_app_version:
+            title: Printing app coordinates
+            image: alpine
+            commands:
+              - echo $MVN_COORDS
+              - echo ${{steps.read_app_version.output.MVN_COORDS}}
+  latest: true
+  version: 1.0.0
+spec:
+  arguments: |-
+    {
+        "definitions": {},
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "additionalProperties": false,
+        "patterns": [],
+        "required": [
+          "POM_XML_FOLDER"
+        ],
+        "properties": {
+            "POM_XML_FOLDER": {
+                "type": "string",
+                "description": "folder where pom.xml is located"
+            }
+        }
+    }
+  returns: |-
+    {
+        "definitions": {},
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "additionalProperties": true,
+        "patterns": [],
+        "required": [
+          "MVN_COORDS"
+        ],
+        "properties": {
+            "MVN_COORDS": {
+                "type": "object",
+                "required": ["groupId", "artifactId", "version"],
+                "properties": {
+                    "groupId": {"type": "string"},
+                    "artifactId": {"type": "string"},
+                    "version": {"type": "string"}
+                }
+            }
+        }
+    }  
+  steps:
+    main:
+      name: kostis-codefresh/mvn-version
+      image: kkapelon/maven-version-extract
+      commands:
+        - cd $WORK_DIR
+        - MVN_COORDS=$(mvncoords -json)
+        - export MVN_COORDS
+        - cf_export MVN_COORDS
+      environment:
+        - 'WORK_DIR=${{POM_XML_FOLDER}}'
+{% endraw %}
+{% endhighlight %}
+
+We place this plugin into the marketplace with
+
+```
+codefresh create step-type kostis-codefresh/mvn-version -f read-maven-version.yml
+```
+
+If you look at the plugin entry in the marketplace you will see both input (the folder of the pom.xml) and output parameters (mvn coordinates) defined:
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/codefresh-yaml/steps/plugin-parameters.png" 
+url="/images/codefresh-yaml/steps/plugin-parameters.png"
+alt="Input and output parameters" 
+caption="Input and output parameters" 
+max-width="60%" 
+%}
+
+
+The plugin is now ready to be used in a pipeline:
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/codefresh-yaml/steps/plugin-usage.png" 
+url="/images/codefresh-yaml/steps/plugin-usage.png"
+alt="Plugin usage" 
+caption="Plugin usage" 
+max-width="60%" 
+%}
+
+If you look at the [pipeline definition](https://github.com/kostis-codefresh/step-examples/blob/master/maven-version-plugin/codefresh-example.yml) you will see how we pass arguments in the plugin and get its output with the `steps.output` syntax.
+
+
+  `codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+steps:
+  main_clone:
+    title: Cloning main repository...
+    type: git-clone
+    repo: 'codefresh-contrib/spring-boot-2-sample-app'
+    revision: 'master'
+    git: github
+  read_app_version:
+    title: Reading app version
+    type: kostis-codefresh/mvn-version
+    arguments:
+      POM_XML_FOLDER: './spring-boot-2-sample-app'
+  print_app_version:
+    title: Printing app version
+    image: alpine
+    commands:
+      - echo $MVN_COORDS
+      - echo ${{steps.read_app_version.output.MVN_COORDS}}
+{% endraw %}
+{% endhighlight %}
+
+This was a trivial example, but it clearly demonstrates how a custom step communicates with the rest of the pipeline by getting input from the previous steps and preparing output for the steps that follow it.
+
 ## What to read next
 
 * [Introduction to Pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
