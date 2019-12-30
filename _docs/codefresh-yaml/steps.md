@@ -375,14 +375,14 @@ The top-level `version` property in the plugin manifest allows you to publish mu
 
 You can see all versions of a plugin in the step marketplace drop-down:
 
-{% include 
-image.html 
-lightbox="true" 
-file="/images/codefresh-yaml/steps/step-versions.png" 
+{% include
+image.html
+lightbox="true"
+file="/images/codefresh-yaml/steps/step-versions.png"
 url="/images/codefresh-yaml/steps/step-versions.png"
-alt="Different step versions" 
-caption="Different step versions" 
-max-width="60%" 
+alt="Different step versions"
+caption="Different step versions"
+max-width="60%"
 %}
 
 You can also use the Codefresh CLI to list all version:
@@ -717,7 +717,6 @@ Let's take everything we learned from the previous examples and create a custom 
 
 In this simple example we will create a custom step that reads the Maven coordinates from a `pom.xml` file. Unlike `package.json`, a Maven file has 3 characteristics (group, artifact name and version). First we create a [very simple executable](https://github.com/kostis-codefresh/step-examples/blob/master/maven-version-plugin/mvncoords.go) that reads a Maven file and gives us these coordinates in JSON format.
 
-
 {% highlight shell %}
 {% raw %}
 mvncoords -f pom.xml
@@ -889,17 +888,16 @@ caption="Input and output parameters"
 max-width="60%" 
 %}
 
-
 The plugin is now ready to be used in a pipeline:
 
-{% include 
-image.html 
-lightbox="true" 
-file="/images/codefresh-yaml/steps/plugin-usage.png" 
+{% include
+image.html
+lightbox="true"
+file="/images/codefresh-yaml/steps/plugin-usage.png"
 url="/images/codefresh-yaml/steps/plugin-usage.png"
-alt="Plugin usage" 
-caption="Plugin usage" 
-max-width="60%" 
+alt="Plugin usage"
+caption="Plugin usage"
+max-width="60%"
 %}
 
 If you look at the [pipeline definition](https://github.com/kostis-codefresh/step-examples/blob/master/maven-version-plugin/codefresh-example.yml) you will see how we pass arguments in the plugin and get its output with the `steps.output` syntax.
@@ -932,10 +930,183 @@ steps:
 
 This was a trivial example, but it clearly demonstrates how a custom step communicates with the rest of the pipeline by getting input from the previous steps and preparing output for the steps that follow it.
 
+### Example with step templating
+
+As an advanced technique, Codefresh allows you to define a custom step using templating instead of fixed YAML. We support templates inside the `spec:` block of a plugin definition by taking advantage of the [Gomplate](https://github.com/hairyhenderson/gomplate) library that offers additional templating functions on top of vanilla [Go templates](https://golang.org/pkg/text/template/).
+
+As a simple example lets say we want to create a single step that checks out any number of git repositories. Of course you could just copy-paste the git clone step multiple times in a single pipeline. To make things easier we will create a single step that takes an array of git repositories and checks them out on its own:
+
+{% highlight yaml %}
+{% raw %}
+checkout_many_projects:
+  title: Checking out my Git projects
+  type: kostis-codefresh/multi-git-clone
+  arguments:
+    GIT_PROJECTS: 
+    - 'codefresh-contrib/ruby-on-rails-sample-app'
+    - 'kubernetes/sample-apiserver'
+    - 'kostis-codefresh/nestjs-example'
+    - 'spring-projects/spring-petclinic'
+{% endraw %}
+{% endhighlight %}
+
+The Github projects are passed as an array, so if we want to check out an additional project, we simply add items to that array.
+
+Here is the [step specification](https://github.com/kostis-codefresh/step-examples/blob/master/multi-clone/multi-clone-step.yml):
+
+  `plugin.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+kind: step-type
+metadata:
+  name: kostis-codefresh/multi-git-clone
+  isPublic: true
+  description: >-
+    This pipeline plugin shows templating of custom steps
+  sources:
+    - 'https://github.com/kostis-codefresh/step-examples'
+  stage: incubating
+  maintainers:
+    - name: Kostis Kapelonis
+  categories:
+    - git
+  official: false
+  tags: []
+  icon:
+    type: svg
+    url: https://cdn.worldvectorlogo.com/logos/git.svg
+    background: '#f4f4f4'
+  examples:
+    - description: example-1
+      workflow:
+        version: '1.0'
+        steps:
+          checkout_many_projects:
+            title: Checking out my Git projects
+            type: kostis-codefresh/multi-git-clone
+            arguments:
+              GIT_REVISION: 'master'
+              GIT_PROVIDER: 'github'
+              GIT_PROJECTS: 
+                - 'codefresh-contrib/ruby-on-rails-sample-app'
+                - 'kubernetes/sample-apiserver'
+                - 'kostis-codefresh/nestjs-example'
+                - 'spring-projects/spring-petclinic'
+  latest: true
+  version: 1.0.0
+spec:
+  arguments: |-
+    {
+        "definitions": {},
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "additionalProperties": false,
+        "patterns": [],
+        "required": [
+          "GIT_PROJECTS",
+          "GIT_REVISION",
+          "GIT_PROVIDER"
+        ],
+        "properties": {
+            "GIT_REVISION": {
+                "type": "string",
+                "description": "branch or tag or revision to checkout (same for all projects)"
+            },
+            "GIT_PROVIDER": {
+                "type": "string",
+                "description": "Name of git provider to use from Codefresh integrations screen"
+            },
+            "GIT_PROJECTS": {
+              "description": "A list/array of git projects to checkout",
+              "type": "array",
+              "maxItems": 10,
+              "items": {
+                        "type": "string"
+                        }
+            }
+        }
+    }
+  delimiters:
+    left: '[['
+    right: ']]'
+  stepsTemplate: |-
+    print_info_message:
+      name: kostis-codefresh/multi-git-clone
+      title: Info message
+      image: alpine
+      commands:
+        - echo "Checking out [[ len  .Arguments.GIT_PROJECTS ]] git projects"   
+    [[ range $index, $git_project :=.Arguments.GIT_PROJECTS ]]
+    clone_project_[[$index]]:
+      title: Cloning [[$git_project]] ...
+      type: git-clone
+      repo: '[[$git_project]]'
+      revision: [[$.Arguments.GIT_REVISION]]
+      git: [[$.Arguments.GIT_PROVIDER]]
+    [[end]]          
+{% endraw %}
+{% endhighlight %}
+
+There are two important points here:
+
+1. Instead of using a `steps:` block, we instead define a block called `stepsTemplate:`. This block name instructs Codefresh that we will use templates
+1. Because the Codefresh runtime is already using the double curly braces for variables mentioned as {% raw %}`${{MY_VARIABLE_EXAMPLE}}`{% endraw %}, we instead define templates with the characters {% raw %}`[[]]`{% endraw %}. You can see  the definitions for these characters inside the `delimiters:` block. You are free to use any other replacement characters of your choosing.
+
+In the `stepsTemplate` block we use Golang template keywoards such as `range`, `len` and template variables (such as `git_project`). You can use all the capabilities of Go templates (e.g. `if`, `range`, `with`) as well as the extra methods of [gomplate](https://docs.gomplate.ca/) such as math and net functions.
+
+Creating the [marketplace entry](https://codefresh.io/steps/step/kostis-codefresh%2Fmulti-git-clone) for a step with templates is exactly the same as any other step:
+
+```
+codefresh create step-type kostis-codefresh/multi-git-clone -f multi-clone-step.yml
+```
+
+You can then use the step in [any pipeline](https://github.com/kostis-codefresh/step-examples/blob/master/multi-clone/codefresh.yml) and pass the arguments that will fill the template:
+
+  `codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+steps:
+    checkout_many_projects:
+      title: Checking out my Git projects
+      type: kostis-codefresh/multi-git-clone
+      arguments:
+        GIT_REVISION: 'master'
+        GIT_PROVIDER: 'github'
+        GIT_PROJECTS: 
+          - 'codefresh-contrib/ruby-on-rails-sample-app'
+          - 'kubernetes/sample-apiserver'
+          - 'kostis-codefresh/nestjs-example'
+          - 'spring-projects/spring-petclinic'
+    print_my_workspace:
+      title: Show projects
+      image: alpine
+      commands:
+        - ls -l
+        - pwd
+{% endraw %}
+{% endhighlight %}
+
+We have also added two extra parameters, one for the git revision and one for the [git provider](({{site.baseurl}}/docs/integrations/git-providers/) ) that will be used during checkout.
+
+The end result is that with a single step you can checkout many projects. Checking out an additional project is as simple as adding a new entry in the `GIT_PROJECTS` array.
+
+{% include
+image.html
+lightbox="true"
+file="/images/codefresh-yaml/steps/multi-checkout.png"
+url="/images/codefresh-yaml/steps/multi-checkout.png"
+alt="Checking out multiple Git repositories in a single step"
+caption="Checking out multiple Git repositories in a single step"
+max-width="60%"
+%}
+
+This was a contrived example to demonstrate how you can use templates in the Codefresh plugin specification. Note that using templates in Codefresh steps is an advanced technique and should be used sparingly.
+
 ## What to read next
 
 * [Introduction to Pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
 * [Freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/)
 * [Build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/)
 * [Push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/)
-
