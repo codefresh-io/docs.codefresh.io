@@ -111,8 +111,8 @@ environment variable in your Codefresh pipeline as explained in the next section
 
 ### Connecting Azure storage
 
-For Azure, create an storage account as explained in the [documentation](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create) and find one of the [two access keys](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-keys-manage) already created. Then once you have the storage account name and account key,
-enter an arbitrary name for your integration and fill the keys in the respective fields:
+For Azure, create a storage account as explained in the [documentation](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create) and find one of the [two access keys](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-keys-manage) already created. Then once you have the storage account name and account key,
+enter an arbitrary name for your integration and fill in the name and key in the respective fields:
 
 {% include
 image.html
