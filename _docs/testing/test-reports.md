@@ -11,7 +11,7 @@ Codefresh offers the capability to store your test results for every build and v
 at any point in time.
 
 Currently Codefresh supports the storage of test reports in [Google buckets](https://cloud.google.com/storage/docs/key-terms#buckets) or  
- [S3 buckets](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html).
+ [S3 buckets](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html) or Azure Storage(https://docs.microsoft.com/en-us/azure/storage/).
 
 ## Test report modes
 
@@ -48,7 +48,7 @@ If you use the custom reporting mode, you can select any kind of tool that you w
 ## Connecting your storage account
 
 As a first step you need a cloud bucket to store your test results. You can use
-Google or AWS for this purpose. Codefresh will create subfolders in the bucket with names from every build id. It will then upload the reports for that build to the respective folder. Multiple pipelines can use the same bucket.
+Google or AWS or Azure for this purpose. Codefresh will create subfolders in the bucket with names from every build id. It will then upload the reports for that build to the respective folder. Multiple pipelines can use the same bucket.
 
 First go to your Account Configuration, by clicking on *Account Settings* on the left sidebar. On the first section called *Integrations* scroll down to *Cloud Storage*:
 
@@ -107,6 +107,24 @@ max-width="80%"
 %}
 
 Then click *Save* to apply settings. You will use the name of the integration as an 
+environment variable in your Codefresh pipeline as explained in the next sections.
+
+### Connecting Azure storage
+
+For Azure, create an storage account as explained in the [documentation](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create) and find one of the [two access keys](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-keys-manage) already created. Then once you have the storage account name and account key,
+enter an arbitrary name for your integration and fill the keys in the respective fields:
+
+{% include
+image.html
+lightbox="true"
+file="/images/pipeline/test-reports/cloud-storage-azure.png"
+url="/images/pipeline/test-reports/cloud-storage-azure.png"
+alt="Azure cloud storage"
+caption="Azure cloud storage"
+max-width="60%"
+%}
+
+Then click *Save* to apply settings. You will use the name of the integration as an
 environment variable in your Codefresh pipeline as explained in the next sections.
 
 

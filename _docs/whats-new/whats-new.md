@@ -8,6 +8,11 @@ toc: true
 ---
 Recent Codefresh updates:
 
+### January 2020
+
+- Support for Azure Storage in test reports - [documentation]({{site.baseurl}}/docs/testing/test-reports/#connecting-azure-storage)
+
+
 ### December 2019
 
 - Output parameters in plugins - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/#example-with-output-parameters)
