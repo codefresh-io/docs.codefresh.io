@@ -210,7 +210,7 @@ steps:
 
 To connect a cluster that is behind the firewall follow the [connecting cluster guide]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/), paying attention to the following two points:
 
-1. You cluster should be added as a [Custom provider]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/#adding-any-other-cluster-type-not-dependent-on-any-provider)
+1. Your cluster should be added as a [Custom provider]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/#adding-any-other-cluster-type-not-dependent-on-any-provider)
 1. You need to mark the cluster as internal by using the toggle switch.
 
 

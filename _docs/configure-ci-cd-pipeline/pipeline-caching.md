@@ -6,7 +6,7 @@ toc: true
 
 ---
   
-One of the unique features of Codefresh is the multitude of caching systems that take part in a pipeline and in particular the caching mechanisms targeted specifically at Docker builds. Most types of caching are completely automatic and require zero configuration in order to activate. Caching is a built-in feature in all Codefresh accounts regardless of pricing tier (even free accounts).
+One of the unique features of Codefresh is the multitude of caching systems that take part in a pipeline, and in particular the caching mechanisms targeted specifically at Docker builds. Most types of caching are completely automatic and require zero configuration in order to activate. Caching is a built-in feature in all Codefresh accounts regardless of pricing tier (even free accounts have all types of caching enabled).
 
 ## Types of caching
 
@@ -21,13 +21,13 @@ Here is a quick overview of all types of caching used in a Codefresh pipeline:
 | Docker registry caching  | Automatic |  Pipeline build steps | Works only for the [integrated Docker registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/)|
 | Traditional build caching  | Automatic/manual |  Pipeline [freestyle steps]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) | See notes for [parallel builds]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/)|
 
-All these caching mechanisms are enabled by default and you can [freely disable them]({{site.baseurl}}/docs/troubleshooting/common-issues/disabling-codefresh-caching-mechanisms/) if you encounter any issues with caching. 
+All these caching mechanisms are enabled by default and you can [freely disable them]({{site.baseurl}}/docs/troubleshooting/common-issues/disabling-codefresh-caching-mechanisms/) if you encounter any issues with caching.
 
 Let's see these caches in order and how to use them effectively.
 
 ## Distributed Docker image caching
 
-This is the simplest mode of caching available. All Codefresh steps are in [fact docker images]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/). Once a pipeline runs for the first time, Codefresh will pull all required images from their registries (either public or private) and will cache them for the next build:
+This is the simplest mode of caching available. All Codefresh steps [are in fact docker images]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/). Once a pipeline runs for the first time, Codefresh will pull all required images from their registries (either public or private) and will cache them for the next build:
 
 
 {% include image.html
@@ -114,7 +114,7 @@ max-width="60%"
 
 In the example above if you run another build that is picked up by build node 18 all Docker filesystem layers will be downloaded again even though they are already present in other nodes.
 
-Codefresh is one of the few CI/CD solutions that has a *distributed* docker layer cache. This makes layer caching available to all build nodes. It doesn't matter any more which build node runs which pipeline as all of them are equal regarding their caching capabilities.
+Codefresh is one of the few CI/CD solutions that has a *distributed* Docker layer cache. This makes layer caching available to all build nodes. It doesn't matter any more which build node runs which pipeline as all of them are equal regarding their caching capabilities.
 
 {% include image.html
 lightbox="true"
@@ -153,7 +153,7 @@ To take advantage of this build cache just follow the official Docker guidelines
 
 * Download dependencies in a separate docker layer
 * Put layers that will not change frequently at the top of dockerfile (e.g. OS libs)
-* Put thing that will change frequently at the bottom of the dockerfile (e.g. source code)
+* Put things that will change frequently at the bottom of the dockerfile (e.g. source code)
 * Don't use side effects in Dockerfiles
 
 Basically if your Dockerfile is already optimized on your local workstation, it should also be optimized for Codefresh. More information can be found in the official documentation:
@@ -163,7 +163,7 @@ Basically if your Dockerfile is already optimized on your local workstation, it 
 
 ## Docker registry caching
 
-This is a caching mechanism unique to Codefresh and applicable only for [build steps]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) when the [private Docker registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/) is used.
+This is a caching mechanism unique to Codefresh and applicable only to [build steps]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) when the [private Docker registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/) is used.
 
 Codefresh will check the internal Docker registry *before* a build step and if the exact same image is found (using the image hash), it will skip the build step completely:
 
@@ -176,7 +176,7 @@ caption="Skipping a previously built Docker image"
 max-width="60%"
 %}
 
-This is a very effective way to cut down the amount of time needed by pipelines but it obviously works only for Docker images that don't change often (help images, plugins, build tools etc.) as the deployment docker images will always be different when a new git commit happens in the source code.
+This is a very effective way to cut down the amount of time needed by pipelines but it obviously works only for Docker images that don't change often (helper images, plugins, build tools etc.) as the deployment docker images will always be different when a new git commit happens in the source code.
 
 You can take advantage of this mechanism by [not mixing deployment docker images with development docker images](https://codefresh.io/containers/docker-anti-patterns/). The former will change all the time, while the latter should be recreated less often.
 
@@ -258,8 +258,9 @@ In practice, this means that you need to look at the documentation of your build
 
 ### Issues with parallel builds and parallel pipelines
 
-Codefresh supports two form of parallelism, parallel steps within the same pipeline and parallel pipelines (and also concurrent builds).
-All parallel steps inside the same pipeline use the same volume. Codefresh [does not perform any conflict detection in that case]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/#shared-codefresh-volume-and-race-conditions). 
+Codefresh supports two forms of parallelism, parallel steps within the same pipeline and parallel pipelines (as well as concurrent builds).
+
+All parallel steps inside the same pipeline use the same volume. Codefresh [does not perform any conflict detection in that case]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/#shared-codefresh-volume-and-race-conditions).
 
 For concurrent builds of the same pipeline, notice that if you make too many commits very fast (triggering a second build while the previous one is still running), Codefresh will allocate a brand new volume for the subsequent builds. This will force all builds to start with a clean shared volume, resulting in longer build times. Be sure to set your [build termination settings]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-settings) correctly.
 
@@ -274,7 +275,7 @@ max-width="80%"
 
 The diagram above shows the following sequence of events:
 
-1. The first build of a pipeline is triggered. Codefresh allocated a brand new volume and automatically mounts is as a workspace at `/codefresh/volume`.
+1. The first build of a pipeline is triggered. Codefresh allocates a brand new volume and automatically mounts is as a workspace at `/codefresh/volume`.
 1. The first build runs and stores artifacts on the volume
 1. The first build finishes. Codefresh stores the volume in the cache
 1. A second build is triggered for the same pipeline and same git branch. Codefresh sees that there is already a volume in the cache and passes it to the second build. The second build correctly finds all artifacts in the cache
