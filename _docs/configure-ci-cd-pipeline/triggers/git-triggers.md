@@ -117,9 +117,12 @@ max-width="50%"
 Once that is done, Codefresh will launch your pipeline against the Pull Request. If you manage an open source project with Codefresh, remember to enable [public builds]({{site.baseurl}}/docs/configure-ci-cd-pipeline/build-status/#public-build-logs) as well.
 
 When supporting building of pull requests from forks there are a few "gotchas" to look out for:
-* Only comments made by repository owners and collaborators will result in the pipeline being triggered
+
+* Only comments made by repository owners and [collaborators](https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/adding-outside-collaborators-to-repositories-in-your-organization) will result in the pipeline being triggered
+* Only git pushes by collaborators will result in the pipeline being triggered
 * If the repository is in a GitHub organization, comments made by private members of the organization will not activate the trigger, even if they are set as an owner or collaborator.
 * The *Pull request comment added* checkbox should likely be the only one checked, or your pipeline may trigger on other events that you don't anticipate.
+
 
 
 ### Monorepo support (Modified files)
