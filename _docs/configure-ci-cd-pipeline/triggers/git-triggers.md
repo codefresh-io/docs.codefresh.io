@@ -10,15 +10,14 @@ GIT triggers are the most basic types of trigger for performing [Continuous Inte
 
 At the trigger level you have the option of selecting:
 
- * Which code repository will be used as a trigger
- * Which branches will be affected by a pipeline
- * If a trigger will apply to a Pull Request or not
+* Which code repository will be used as a trigger
+* Which branches will be affected by a pipeline
+* If a trigger will apply to a Pull Request or not
 
  Note that you can select another repository other than the one the project itself belongs to. It is possible
  to trigger a build on project A even though a commit happened on project B.
 
 You can also use [Conditional expressions]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/) at the pipeline level to further fine-tune the way specific steps (or other transitive pipelines) are executed.
-
 
 ## Manage GIT Triggers with Codefresh UI
 
@@ -70,7 +69,7 @@ This field has only meaning when a commit happens in the context of a pull reque
 
 For example, if you create a commit on a branch that is named `my-feature` which is currently part of PR against branch `staging` (i.e. somebody wants to merge `my-feature` **TO** `staging`) then:
 
-1. The `BRANCH` field value will try to match against `my-feature` 
+1. The `BRANCH` field value will try to match against `my-feature`
 1. the `PULL REQUEST TARGET BRANCH` will try to match against `staging`
 
 Here are some more syntax examples:
@@ -99,6 +98,7 @@ Therefore, all tags like `tag1`, `tag-X` **won't** trigger the pipeline.
 By default, the git trigger will only work for events coming from your personal repository. You can also use triggers from events that are coming from forks. This is a very useful feature for open source projects, as it allows you to run your own unit tests and other checks against a new feature *before* actually merging it in your repo.
 
 To enable this behavior:
+
 * Toggle the *support pull request events from forks* switch
 * Check the *Pull request comment added* checkbox
 * In the *pr comment* field enter a custom string (accepts regex)
@@ -119,11 +119,9 @@ Once that is done, Codefresh will launch your pipeline against the Pull Request.
 When supporting building of pull requests from forks there are a few "gotchas" to look out for:
 
 * Only comments made by repository owners and [collaborators](https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/adding-outside-collaborators-to-repositories-in-your-organization) will result in the pipeline being triggered
-* Only git pushes by collaborators will result in the pipeline being triggered
+* Only git pushes by collaborators within the Github organization will result in the pipeline being triggered
 * If the repository is in a GitHub organization, comments made by private members of the organization will not activate the trigger, even if they are set as an owner or collaborator.
 * The *Pull request comment added* checkbox should likely be the only one checked, or your pipeline may trigger on other events that you don't anticipate.
-
-
 
 ### Monorepo support (Modified files)
 
@@ -188,19 +186,15 @@ This way as multiple developers work on the git repository only the affected pro
 
 You can also use Glob expressions for files. For example:
 
-*  An expression such `my-subproject/sub-subproject/package.json` will trigger a build **only** if the dependencies of this specific project are changed
+* An expression such `my-subproject/sub-subproject/package.json` will trigger a build **only** if the dependencies of this specific project are changed
 * A pipeline with the expression `my-subproject/**/pom.xml` will trigger only if the Java dependencies for any project that belongs to `my-subproject` actually change
 
-Glob expressions have many more options not shown here. Visit the [official documentation](https://en.wikipedia.org/wiki/Glob_(programming)) to learn more. You can also use the [Glob Tester web application](http://www.globtester.com/) to test your glob expressions beforehand so that you are certain they match the 
-files you expect them to match.
-
-
+Glob expressions have many more options not shown here. Visit the [official documentation](https://en.wikipedia.org/wiki/Glob_(programming)) to learn more. You can also use the [Glob Tester web application](http://www.globtester.com/) to test your glob expressions beforehand so that you are certain they match the files you expect them to match.
 
 ## Using YAML and the Codefresh CLI to filter specific Webhook events
 
 The default GUI options exposed by Codefresh are just a starting point for GIT triggers and pull requests. Using [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) and the [Codefresh CLI plugin](https://codefresh-io.github.io/cli/) you can further create two-phase pipelines where the first one decides
 which webhook events will be honored and the second one contains the actual build.
-
 
 {% include image.html
 lightbox="true"
@@ -220,7 +214,6 @@ Some of the YAML variables that you might find useful (from the [full list]({{si
 
 As an example, here is the `codefresh.yml` file of pipeline A where we want to run pipeline B only when a Pull Requested is opened against a branch named *production*.
 
-
 `codefresh.yml` of pipeline A
 {% highlight yaml %}
 {% raw %}
@@ -239,14 +232,13 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-
 This is the build definition for the first pipeline that has a GIT trigger (with the Pull request checkbox enabled).
 It has only a single step which uses conditionals that check the name of the branch where the pull request is targeted to, as well as the pull request action. Only if *both* of these conditions are true then the build step is executed.
 
 The build step calls the second pipeline. The end result is that pipeline B runs only when the Pull Request is opened the first time. Any further commits on the pull request branch will **not** trigger pipeline B (pipeline A will still run but the conditionals will fail).
 
 ## What to read next
-- [Cron triggers]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/cron-triggers/) 
-- [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/) 
-- [Multi-git trigger]({{site.baseurl}}/docs/troubleshooting/common-issues/multi-git-triggers/) 
 
+* [Cron triggers]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/cron-triggers/)
+* [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
+* [Multi-git trigger]({{site.baseurl}}/docs/troubleshooting/common-issues/multi-git-triggers/)
