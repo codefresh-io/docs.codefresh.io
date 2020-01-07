@@ -408,19 +408,19 @@ Codefresh has a dedicated [git clone step]({{site.baseurl}}/docs/codefresh-yaml/
 `codefresh.yml`
 {% highlight yaml %}
 {% raw %}
-version: "1.0"
+version: '1.0'
 steps:
   first_project:
-    type: "git-clone"
-    description: "Cloning first project..."
-    repo: "nodegui/react-nodegui"
-    revision: "${{CF_BRANCH}}"
+    type: 'git-clone'
+    description: 'Cloning first project...'
+    repo: 'nodegui/react-nodegui'
+    revision: '${{CF_BRANCH}}'
     git: github
   second_project:
-    type: "git-clone"
-    description: "Cloning second..."
-    repo: "jglick/simple-maven-project-with-tests"
-    revision: "master"
+    type: 'git-clone'
+    description: 'Cloning second...'
+    repo: 'jglick/simple-maven-project-with-tests'
+    revision: 'master'
     git: github
 {% endraw %}
 {% endhighlight %}
