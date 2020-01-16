@@ -90,7 +90,19 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-This will compile/test/package the Gradle application and create a Docker image. Codefresh is automatically caching
+This will compile/test/package the Gradle application and create a Docker image. 
+
+
+{% include image.html 
+lightbox="true" 
+file="/images/learn-by-example/java/gradle-multistage.png" 
+url="/images/learn-by-example/java/gradle-multistage.png" 
+alt="Gradle Multi-stage Docker build"
+caption="Gradle Multi-stage Docker build"
+max-width="80%" 
+%}
+
+Codefresh is automatically caching
 Docker layers (it uses the Docker image of a previous build as a cache for the next) and therefore builds will become
 much faster after the first one finishes.
 
