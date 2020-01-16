@@ -8,16 +8,13 @@ toc: true
 
 In Codefresh you can easily create nested pipelines by calling other pipelines from within an existing pipeline. This is easily accomplished with the [codefresh-run plugin](https://codefresh.io/steps/step/codefresh-run) that allows you to launch another pipeline and optionally wait for its completion.
 
-
-
- 
-{% include image.html 
-lightbox="true" 
-file="/images/examples/nested-pipelines/call-other-pipeline.png" 
-url="/images/examples/nested-pipelines/call-other-pipeline.png" 
+{% include image.html
+lightbox="true"
+file="/images/examples/nested-pipelines/call-other-pipeline.png"
+url="/images/examples/nested-pipelines/call-other-pipeline.png"
 alt="Parent and child pipelines"
 caption="Parent and child pipelines"
-max-width="80%" 
+max-width="80%"
 %}
 
 A very common pattern in Codefresh is to have a parent pipeline responsible for Continuous Integration (packaging code) that calls a child pipeline for Continuous Delivery (taking care of deployment).
@@ -25,7 +22,6 @@ A very common pattern in Codefresh is to have a parent pipeline responsible for 
 ## The example Project
 
 You can see the example project at [https://github.com/codefresh-contrib/call-child-pipeline-sample-app](https://github.com/codefresh-contrib/call-child-pipeline-sample-app). The repository contains a NodeJs app as well as 3 pipelines (one parent and two children).
-
 
 ## Create a pipeline that calls other pipelines
 
@@ -76,7 +72,7 @@ steps:
         only:
           - develop      
   call_prod_pipeline:
-    title: Deploy to QA
+    title: Deploy to Prod
     stage: deploy
     type: codefresh-run
     arguments:
@@ -104,11 +100,7 @@ This pipeline does the following:
 
 The last two steps use [pipeline conditionals]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/) to decide if they will run or not.
 
-
-
-
 ## What to read next
-
 
 * [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
 * [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
