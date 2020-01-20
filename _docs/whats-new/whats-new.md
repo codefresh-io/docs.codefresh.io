@@ -11,6 +11,7 @@ Recent Codefresh updates:
 ### January 2020
 
 - Support for Azure Storage in test reports - [documentation]({{site.baseurl}}/docs/testing/test-reports/#connecting-azure-storage)
+- Promoting Docker images - [documentation]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/#promoting-docker-images)
 
 
 ### December 2019

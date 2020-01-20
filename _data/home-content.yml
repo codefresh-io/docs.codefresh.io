@@ -91,6 +91,8 @@
   links:
   - title: Codefresh private Docker Registry
     localurl: /docs/docker-registries/codefresh-registry/ 
+  - title: Working with Docker registries
+    localurl: /docs/docker-registries/working-with-docker-registries/ 
   - title: Custom image annotations
     localurl: /docs/docker-registries/metadata-annotations/ 
   - title: Docker registry integration
@@ -181,7 +183,6 @@
   - title: Deploy to Azure
     localurl: /docs/deploy-your-containers/microsoft-azure/
   - title: Deploy to a VM with Packer
-    new: true
     localurl: /docs/yaml-examples/examples/packer-gcloud/
   - title: Deploy with Terraform
     localurl: /docs/yaml-examples/examples/terraform/

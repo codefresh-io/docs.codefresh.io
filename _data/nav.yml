@@ -242,6 +242,8 @@
   pages:
     - title: "Codefresh Docker Registry"
       url: "/codefresh-registry"    
+    - title: "Working with Docker registries"
+      url: "/working-with-docker-registries"    
     - title: "Image Metadata Annotations"
       url: "/metadata-annotations"
     - title: "External Docker Registries"
