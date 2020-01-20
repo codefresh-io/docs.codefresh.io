@@ -183,7 +183,6 @@
   - title: Deploy to Azure
     localurl: /docs/deploy-your-containers/microsoft-azure/
   - title: Deploy to a VM with Packer
-    new: true
     localurl: /docs/yaml-examples/examples/packer-gcloud/
   - title: Deploy with Terraform
     localurl: /docs/yaml-examples/examples/terraform/
