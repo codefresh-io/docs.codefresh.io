@@ -11,7 +11,7 @@ To configure Docker Hub so that your pipelines can push images to it, first sele
 
 * Registry Name - a unique name for this configuration.
 * Username - Docker Hub username.
-* Password - Docker Hub password.
+* Password - Docker Hub [personal account token](https://docs.docker.com/docker-hub/access-tokens/) or Dockerhub account password (not recommended)
 
 {% include image.html 
 	lightbox="true" 
@@ -25,7 +25,11 @@ To configure Docker Hub so that your pipelines can push images to it, first sele
 
 >Note that Docker.io only allows you to push images that are tagged with your username. If you have a choice, create
 a Dockerhub account with the same username that you have in Codefresh. If not, you need to change the Docker image
-created to match your username 
+created to match your username in every [push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/#examples).
+
+If you have enabled [two-factor-authentication in Dockerhub](https://docs.docker.com/docker-hub/2fa/), then in the password field above you must put a Docker personal access token (instead of your Dockerhub master password). Otherwise Codefresh will not be able to push your image.
+
+If you don't have 2FA enabled in Dockerhub, then you can also use your Dockerhub account password. But in all cases we suggest you create a personal access token for Codefresh (personal access tokens are more secure as you can revoke them on demand and see when they were last used).
 
 ## Adding more Dockerhub integrations
 
