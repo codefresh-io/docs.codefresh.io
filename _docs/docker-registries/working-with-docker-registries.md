@@ -55,8 +55,8 @@ You can find the full name of any docker image by visiting your registry and loo
 {% 
 	include image.html 
 	lightbox="true" 
-	file="/images/artifacts/cfcr/remove-image-tag.png" 
-	url="/images/artifacts/cfcr/remove-image-tag.png" 
+	file="/images/artifacts/working-with-images/private-image-tag.png" 
+	url="/images/artifacts/working-with-images/private-image-tag.png" 
 	alt="Looking at tag of a private image" 
 	caption="Looking at tag of a private image"
 	max-width="65%" 
@@ -130,25 +130,121 @@ You can see the automatic pull inside the Codefresh logs.
 Therefore in most cases you don't need to specifically mention `r.cfcr.io` inside your pipelines (only in Dockerfiles).
 
 
-
 ### Pulling images from external registries
 
+To pull images from external registries you need to connect them first to Codefresh. This happens via the [external registry configuration screen]({{site.baseurl}}/docs/docker-registries/external-docker-registries/). The credentials are defined centrally there
+and then all pipelines are credential free.
+
+To pull an image from an external registry, you simply mention the image by name as shown in the previous sections. Codefresh will use the domain prefix of each image to understand which integration it will use. It will then take care of all `docker login` and `docker pull` commands on its own behind the scenes.
+
+For example if you have connected [Azure]({{site.baseurl}}/docs/docker-registries/external-docker-registries/azure-docker-registry/), [AWS]({{site.baseurl}}/docs/docker-registries/external-docker-registries/amazon-ec2-container-registry/) and [Google]({{site.baseurl}}/docs/docker-registries/external-docker-registries/google-container-registry/) registries, you can pull 3 images for each in a pipeline like this:
+
+
+ `codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+steps:
+  my_go_unit_tests:
+    title: Running Go Unit tests
+    image: 'us.gcr.io/project-k8s-sample-123454/my-golang-app:prod'
+    commands:
+      - go test -v
+  my_mvn_unit_tests:
+    title: Running Maven Unit tests
+    image: '123456789012.dkr.ecr.us-west-2.amazonaws.com/my-java-app:latest'
+    commands:
+      - mvn test
+  my_python_unit_tests:
+    title: Running Python Unit tests
+    image: 'my-azure-registry.azurecr.io/kostis-codefresh/my-python-app:master'
+    commands:
+      - python setup.py test        
+{% endraw %}
+{% endhighlight %}
+
+Codefresh will automatically login to each registry using the credentials you have defined centrally and pull all the images. The same thing will happen with Dockerfiles that mention any valid docker image in their `FROM` directive.
 
 
 ## Pushing Docker images
 
-### Using multiple tags
+Pushing to the built-in registry is completely automatic. All successful [build steps]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) automatically push the private Docker registry without any extra configuration.
 
-### Pushing images in parallel
+To push to an external registry you only need to know how this registry is [linked into Codefresh]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) and more specifically what is unique name of the integration. You can see that name by visiting your [integrations screen](https://g.codefresh.io/account-admin/account-conf/integration/registry) or asking your Codefresh administrator.
+
+
+{% 
+	include image.html 
+	lightbox="true" 
+	file="/images/artifacts/working-with-images/linked-docker-registries.png" 
+	url="/images/artifacts/working-with-images/linked-docker-registries.png" 
+	alt="Name of linked Docker Registries" 
+	caption="Name of linked Docker Registries" 
+	max-width="50%" 
+%}
+
+Once you know the registry identifier you can use it an [push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/) by mentioning the registry with that name:
+
+ `codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+  build_image:
+    title: Building my app image
+    type: build
+    image_name: my-app-image
+    dockerfile: Dockerfile
+    tag: 'master'
+  push_to_registry:
+    title: Pushing to Docker Registry 
+    type: push
+    #Name of the build step that is building the image
+    candidate: '${{build_image}}'
+    tag: '1.2.3'
+    # Unique registry name
+    registry: azure-demo       
+{% endraw %}
+{% endhighlight %}
+
+Notice that
+ * the `candidate` field of the push step mentions the name of the build step (`build_image`) that will be used for the image to be pushed
+ * The registry is only identified by name (i.e. `azure-demo`). The domain and credentials are not part of the pipeline (they are already known to Codefresh by the Docker registry integration)
+
+ You can also override the name of the image with any custom name. This way the push step can choose any image name regardless of what was used in the build step.
+
+  `codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+  build_image:
+    title: Building my app image
+    type: build
+    image_name: my-app-image
+    dockerfile: Dockerfile
+    tag: 'master'
+  push_to_registry:
+    title: Pushing to Docker Registry 
+    type: push
+    #Name of the build step that is building the image
+    candidate: '${{build_image}}'
+    tag: '1.2.3'
+    # Unique registry name
+    registry: azure-demo
+    image_name: my-company/web-app       
+{% endraw %}
+{% endhighlight %}
+
+Here the build step is creating an image named `my-app-image:master` but the push step will actually push it as `my-company/web-app:1.2.3`
+
+For more examples such as using multiple tags, or pushing in parallel see the [push examples]({{site.baseurl}}/docs/codefresh-yaml/steps/push/#examples)
 
 ## Promoting Docker images
 
 ### Tagging images after deployment
 
-### See also
+## What to read next
 
 * [Codefresh Registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/)
 * [Push pipeline step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/)
 * [External Docker Registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/)
 * [Accessing Docker registry from your Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/access-docker-registry-from-kubernetes/)
+* [Build and Push an image example]({{site.baseurl}}/docs/yaml-examples/examples/build-and-push-an-image/)
 
