@@ -238,7 +238,43 @@ For more examples such as using multiple tags, or pushing in parallel see the [p
 
 ## Promoting Docker images
 
-### Tagging images after deployment
+Apart from building and pushing a brand new docker image, you can also "promote" a docker image by copying it from one registry to another. This is accomplished by specifying an existing image in the `candidate` field of the push step.
+
+For example:
+
+  `codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+  promote_to_production_registry:
+    title: Promoting to Azure registry 
+    type: push
+    candidate: r.cfcr.io/kostis-codefresh/my-app-image:master
+    tag: '1.2.3'
+    # Unique registry name
+    registry: azure-demo      
+{% endraw %}
+{% endhighlight %}
+
+In the example above we promote an image from the internal Codefresh registry to an external Azure registry (which is already setup as `azure-demo`).
+
+You can also "promote" docker images within the same registry by simply creating new tags. 
+For example:
+
+  `codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+  promote_to_production:
+    title: Marking image with prod tag
+    type: push
+    candidate: my-azure-registry.azurecr.io/kostis-codefresh/my-python-app:1.2.3
+    tag: 'production'
+    # Unique registry name
+    registry: azure-demo      
+{% endraw %}
+{% endhighlight %}
+
+In the example above the image `my-azure-registry.azurecr.io/kostis-codefresh/my-python-app:1.2.3` is re-tagged as `my-azure-registry.azurecr.io/kostis-codefresh/my-python-app:prod`. A very common pattern is to mark images with a special tag such as `prod` **after** the image has been deployed successfully.
+
 
 ## What to read next
 
