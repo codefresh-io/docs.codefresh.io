@@ -120,7 +120,7 @@ After checking out the code we use the standard [Maven Docker image](https://hub
 
 ### Caching the Maven dependencies
 
-Codefresh is smart enough that [caches automatically]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipeline-caching/) for us the workspace of a build (`/codefresh/volume`). This works great for build tools that keep their cache in the project folder, but not for Maven/Gradle which keep their cache externally. By changing the location of the Maven use on the project folder (the `m2_repository` name is arbitrary) we make sure that Codefresh will cache automatically the Maven libraries resulting in much faster builds.
+Codefresh is smart enough that [caches automatically]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipeline-caching/) for us the workspace of a build (`/codefresh/volume`). This works great for build tools that keep their cache in the project folder, but not for Maven/Gradle which keep their cache externally. By changing the location of the Maven repo on the project folder (the `m2_repository` name is arbitrary) we make sure that Codefresh will cache automatically the Maven libraries resulting in much faster builds.
 
 The next step is a Docker build. We name our image **spring-boot-2-sample-app** and tag it with a string `non-multi-stage` but of course you can use any other tag name that you wish.
 

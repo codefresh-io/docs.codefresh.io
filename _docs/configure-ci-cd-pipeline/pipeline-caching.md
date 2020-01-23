@@ -253,6 +253,7 @@ In practice, this means that you need to look at the documentation of your build
  * For Maven use `mvn -Dmaven.repo.local=/codefresh/volume/m2_repository package` as shown in the [example]({{site.baseurl}}/docs/learn-by-example/java/spring-boot-2/).
  * For Gradle use `gradle -g /codefresh/volume/.gradle -Dmaven.repo.local=/codefresh/volume/m2` as explained in the [example]({{site.baseurl}}/docs/learn-by-example/java/gradle/).
  * For SBT use `-Dsbt.ivy.home=/codefresh/volume/ivy_cache`.
+ * For Pip use `pip install -r requirements.txt --cache-dir=/codefresh/volume/pip-cache` as shown in the [example]({{site.baseurl}}/docs/learn-by-example/python/django/)
 
  This is only needed for traditional applications that are not dockerized. If you already use Docker containers the previous caching mechanisms are already enough.
 
