@@ -1,5 +1,5 @@
 ---
-title: "Python example Django"
+title: "Python Django example"
 description: "Create Docker images for Python applications"
 excerpt: ""
 group: learn-by-example
@@ -22,7 +22,7 @@ You can see the example project at [https://github.com/codefreshdemo/cf-example-
 
 Once launched the application presents the Django starter page at localhost:8000. 
 
-## Python and Docker 
+## Django and Docker 
 
 The easiest way to build a Django application is with a Dockerfile that contains everything. This is very convenient as the Docker image can contain everything you need (i.e. app plus test frameworks) inside a pipeline.
 
@@ -61,7 +61,7 @@ This docker build does the following:
 
 You can build this image locally on your workstation and then launch it to test the application.
 
-### Create a CI pipeline for Python
+### Create a CI pipeline for Python/Django
 
 Creating a CI/CD pipeline for Django is very easy if you already have the Dockerfile with all required dependencies.
 
@@ -114,7 +114,7 @@ Docker layers (it uses the Docker image of a previous build as a cache for the n
 much faster after the first one finishes.
 
 
-## Running tests before building the docker image
+### Running tests before building the docker image
 
 Sometimes if you have a complex application you might want to run integration tests (or other Python commands), *before* building the Docker image. This scenario is also supported natively by Codefresh.
 
