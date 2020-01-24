@@ -14,33 +14,33 @@ The composition step runs a Docker Composition as a means to execute finite comm
 
 ## Motivation for Compositions
 
-The primary purpose of compositions is to run integration tests or any kind of tests that require multiple services for their execution.
+The primary purpose of compositions is to run tests that require multiple services for their execution (often known as integration tests).
 
-The syntax offered by Codefresh closely follows the syntax for [Docker-compose](https://docs.docker.com/compose/overview/) files, so if you already know how Docker compose works, you will be immediately familiar with Codefresh compositions.
+The syntax offered by Codefresh closely follows the syntax for [Docker-compose](https://docs.docker.com/compose/overview/) files, but is technically not 100% the same (there are some important differences).  However, if you are already familiar with Docker compose, you will be immediately familiar with Codefresh compositions.
 
-> Codefresh understands Docker compose versions [2.0](https://docs.docker.com/compose/compose-file/compose-file-v2/) and [3.0](https://docs.docker.com/compose/compose-file/), but not point releases (such as 2.1)
+> Codefresh only understands Docker compose versions [2](https://docs.docker.com/compose/compose-file/compose-file-v2/) and [3](https://docs.docker.com/compose/compose-file/), but not point releases such as 2.1.
 
-The big difference between the two, is that Codefresh is distinguishing between two kinds of services:
+The big difference between the Codefresh and Docker compose is that Codefresh is distinguishes between two kinds of services:
 
 * Composition Services
 * Composition Candidates
 
-Composition services are helper services that are needed for the tests to run. These can be a database, a queue, a cache, or the backend docker image of your application.
+**Composition Services** are helper services that are needed for the tests to run. These can be a database, a queue, a cache, or the backend docker image of your application -- these closely parallel the services that you might define in Docker compose.
 
-Composition candidates are special services that will execute the tests. Codefresh will monitor their execution and fail the build if they do not succeed. Almost always composition candidates are Docker images that contain unit/integration tests or other kinds of tests (e.g. performance)
+**Composition Candidates** are special services that will execute the tests. Codefresh will monitor their execution and the build will fail if they do not succeed. Composition candidates are almost always Docker images that contain unit/integration tests or other kinds of tests (e.g. performance)
 
 You need at least one composition service and one candidate for the composition step.
 
 
 ## Usage
 
-Here is an example of a composition. There is one composition service (PostgreSQL database) and one candidate (tests executed with gulp)
+Here is an example of a composition step. Note that there is one composition service (PostgreSQL database, named `db`) and one composition candidate (tests executed with gulp)
 
-The most important part is the `command` line that executes the tests. If it fails, then the whole composition step will fail.
+The most important part is the `command` line that executes the tests: `command: gulp integration_test`. If it fails, then the whole composition step will fail.
 
 
 
-  `YAML`
+  `codefresh.yml`
 {% highlight yaml %}
 step_name:
   type: composition
@@ -76,7 +76,13 @@ step_name:
     ...  
 {% endhighlight %}
 
+## Caveats on Sharing a docker-compose.yml
+
+Although Codefresh's composition syntax closely follows the syntax used in `docker-compose.yml` files, it is not 100% the same.  If you are using `docker-compose.yml` locally, you may experience some problems if you try to have Codefresh reference the file (by passing it as an argument to `compose`, e.g. `compose: docker-compose.yml`).  One subtle difference is that Docker compose will interpolate environment variables that are quoted in single-braces, e.g. `${DATABASE_URL}`, whereas Codefresh interpolates variables that are quoted in double-braces, e.g. `${{DATABASE_URL}}`.  So if your `docker-compose.yml` file relies on the parsing of ENV variables, it may not be a good candidate for sharing with Codefresh.
+
 ## Fields
+
+The following describes the fields available in a step of type `composition`
 
 {: .table .table-bordered .table-hover}
 | Field                                      | Description                                                                                                                                                                                                                              | Required/Optional/Default |
@@ -85,7 +91,7 @@ step_name:
 | `description`                              | A basic, free-text description of the step.                                                                                                                                                                                              | Optional                  |
 | `stage`                              | Parent group of this step. See [using stages]({{site.baseurl}}/docs/codefresh-yaml/stages/) for more information.                                                                                                                                                                                          | Optional                  |
 | `working_directory`                        | The directory in which to search for the composition file. It can be an explicit path in the container's file system, or a variable that references another step. The default is {% raw %}`${{main_clone}}`{% endraw %}. Note that this is completely different from `working_dir` which is on the service level.             | Default                   |
-| `composition`                              | The composition you want to run. It can be an inline YAML definition, a path to a composition file on the file system, or the logical name of a composition stored in the Codefresh system. We support most features of [Docker compose version 2.0](https://docs.docker.com/compose/compose-file/compose-file-v2/) and [3.0](https://docs.docker.com/compose/compose-file/)                                            | Required                  |
+| `composition`                              | The composition you want to run. This can be an inline YAML definition or a path to a composition file on the file system, e.g. `docker-compose.yml`, or the logical name of a composition stored in the Codefresh system. We support most features of [Docker compose version 2.0](https://docs.docker.com/compose/compose-file/compose-file-v2/) and [3.0](https://docs.docker.com/compose/compose-file/)                                            | Required                  |
 | `version`                              | Version for docker compose. Use `2` or `3`                                          | Required                  |
 | `composition_candidates`                   | The definition of the service to monitor. Each candidate has a **single** `command` parameter that decides what will be tested.                                                                                                                                                                                              | Required                  |
 | `environment` (service level)                             | environment that will be accessible to the container                                                                                                                                                                                     | Optional                  |
@@ -244,7 +250,7 @@ By default, the services of a composition run in a completely isolated manner. T
 
 The Codefresh [shared volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) is automatically mounted in [freestyle steps]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) but **NOT** in compositions. You have to mount it yourself if you use that functionality.
 
-Here is an example where the shared volume is mounted in a composition.
+Here is an example where the shared volume is mounted in a composition -- `'${{CF_VOLUME_NAME}}:${{CF_VOLUME_PATH}}'` is listed under `volumes`:
 
 
 `codefresh.yml`
