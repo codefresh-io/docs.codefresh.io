@@ -144,6 +144,8 @@
       url: "/post-step-operations"      
     - title: "Parallel steps"
       url: "/advanced-workflows"
+    - title: "Deployment environments"
+      url: "/deployment-environments"
     - title: "Expression Condition Syntax"
       url: "/expression-condition-syntax"
     - title: "Annotations"  

@@ -79,12 +79,12 @@
     localurl: /docs/codefresh-yaml/service-containers/    
   - title: Parallel Pipelines
     localurl: /docs/codefresh-yaml/advanced-workflows/    
+  - title: Deployment environments
+    localurl: /docs/codefresh-yaml/deployment-environments/ 
   - title: Annotations
     localurl: /docs/codefresh-yaml/annotations/
   - title: Examples
     localurl: /docs/yaml-examples/examples/
-  - title: "Plugin steps"
-    url: https://steps.codefresh.io/
 - title: Artifact Management
   icon: images/home-icons/data.png
   url: ''
