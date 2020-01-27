@@ -11,9 +11,8 @@ see the [overview page]({{site.baseurl}}/docs/enterprise/single-sign-on/sso-setu
 
 ## Creating an application registration
 
-To setup Azure Active Directory for SSO, first create a new application in Azure AD
-
-Login to *Microsoft Azure* and choose *Azure Active Directory* from the sidebar.
+To setup Azure Active Directory for SSO, you should first create a new application in Azure AD.
+Login to *Azure Portal* and choose *Azure Active Directory* from the sidebar.
 
 {% include image.html 
 lightbox="true" 
