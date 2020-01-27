@@ -76,9 +76,11 @@ step_name:
     ...  
 {% endhighlight %}
 
-## Caveats on Sharing a docker-compose.yml
+## Caveats on sharing a docker-compose.yml
 
-Although Codefresh's composition syntax closely follows the syntax used in `docker-compose.yml` files, it is not 100% the same.  If you are using `docker-compose.yml` locally, you may experience some problems if you try to have Codefresh reference the file (by passing it as an argument to `compose`, e.g. `compose: docker-compose.yml`).  One subtle difference is that Docker compose will interpolate environment variables that are quoted in single-braces, e.g. `${DATABASE_URL}`, whereas Codefresh interpolates variables that are quoted in double-braces, e.g. `${{DATABASE_URL}}`.  So if your `docker-compose.yml` file relies on the parsing of ENV variables, it may not be a good candidate for sharing with Codefresh.
+Although Codefresh's composition syntax closely follows the syntax used in `docker-compose.yml` files, it is not 100% the same.  If you are using `docker-compose.yml` locally, you may experience some problems if you try to have Codefresh reference the file (by passing it as an argument to `compose`, e.g. `compose: docker-compose.yml`).  
+
+One subtle difference is that Docker compose will interpolate environment variables that are quoted in single-braces, e.g. `${DATABASE_URL}`, whereas Codefresh interpolates variables that are quoted in double-braces, e.g. {% raw %}`${{DATABASE_URL}}`{% endraw %}.  So if your `docker-compose.yml` file relies on the parsing of ENV variables, it may not be a good candidate for sharing with Codefresh.
 
 ## Fields
 
