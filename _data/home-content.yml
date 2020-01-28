@@ -80,6 +80,7 @@
   - title: Parallel Pipelines
     localurl: /docs/codefresh-yaml/advanced-workflows/    
   - title: Deployment environments
+    new: true
     localurl: /docs/codefresh-yaml/deployment-environments/ 
   - title: Annotations
     localurl: /docs/codefresh-yaml/annotations/

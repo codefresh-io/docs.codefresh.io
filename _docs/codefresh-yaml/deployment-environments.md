@@ -26,7 +26,7 @@ In any pipeline that does a deployment you can add an extra `env` property to in
 
 ## Usage
 
-Syntax for a [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) that deploys to a Kubernetes environment.
+Syntax for a [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) that deploys to a Kubernetes environment:
 
   `YAML`
 {% highlight yaml %}
@@ -52,7 +52,7 @@ step_name:
 {% endraw %}
 {% endhighlight %}
 
-Syntax for a freestyle step that deploys to a Helm environment.
+Syntax for a freestyle step that deploys to a Helm environment:
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -78,6 +78,8 @@ step_name:
 {% endraw %}            
 {% endhighlight %}
 
+You can also use environments in other Codefresh steps such as [deploy]({{site.baseurl}}/docs/codefresh-yaml/steps/deploy/). 
+
 ## Fields
 
 {: .table .table-bordered .table-hover}
@@ -93,9 +95,165 @@ In all cases the `cluster` name is the unique identifier of your cluster as seen
 
 Also notice that the relationship between environments and builds are many to many. A single environment can be affected by different pipelines, and a single pipeline might deploy to multiple environments.
 
+## Example for Kubernetes environment
+
+A pipeline that deploys to a Kubernetes cluster:
+
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+stages:
+  - "clone"
+  - "build"
+  - "deploy"
+steps:
+  main_clone:
+    type: "git-clone"
+    description: "Cloning main repository..."
+    repo: "${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}"
+    revision: "${{CF_BRANCH}}"
+    stage: "clone"
+  BuildingDockerImage:
+    stage: "build"
+    title: Building Docker Image
+    type: build
+    image_name: goapp
+    tag: '${{CF_SHORT_REVISION}}'
+    dockerfile: Dockerfile
+  Deploy:
+    stage: "deploy"
+    title: Deploy to K8s
+    type: deploy
+    kind: kubernetes
+    cluster: my-demo-k8s-cluster
+    namespace: default
+    service: goapp
+    candidate:
+      image: '${{BuildingDockerImage}}'
+      registry: cfcr
+    env:
+      name: orders-prod
+      endpoints:
+      - name: Main
+        url: http://40.113.201.163
+      type: kubernetes
+      change: Updated
+      filters:
+      - cluster: my-demo-k8s-cluster
+        namespace: default      
+{% endraw %}            
+{% endhighlight %}
+
+
+This pipeline is similar to the one described in the [Kubernetes quick start guide]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/) but has an extra `env` block that defines:
+
+* an environment called "orders-prod"
+* a single endpoint at 40.113.201.163
+* a change entry with a freetext string "updated"
+* on a cluster which is linked to Codefresh with the name `my-demo-k8s-cluster`
+* monitoring pods and deployments found in the `default` namespace
+
+Once the pipeline runs the following environment entry will appear in the environments screen:
+
+{% include
+image.html
+lightbox="true"
+file="/images/codefresh-yaml/environments/k8s-environment.png"
+url="/images/codefresh-yaml/environments/k8s-environment.png"
+alt="Kubernetes environment status"
+caption="Kubernetes environment status"
+max-width="100%"
+%}
+
+## Example for Helm environment
+
+A pipeline that deploys a Helm release:
+
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+stages:
+  - "clone"
+  - "build"
+  - "deploy"
+steps:
+  main_clone:
+    type: "git-clone"
+    description: "Cloning main repository..."
+    repo: "${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}"
+    revision: "${{CF_BRANCH}}"
+    stage: "clone"
+  BuildingDockerImage:
+    stage: "build"
+    title: Building Docker Image
+    type: build
+    image_name: goapp
+    tag: '${{CF_SHORT_REVISION}}'
+    dockerfile: Dockerfile.multistage
+  StoreChart:
+    title: Storing Helm chart
+    stage: "deploy"
+    image: 'codefresh/cfstep-helm:2.14.1'
+    environment:
+      - ACTION=push
+      - CHART_REF=charts/helm-example
+      - CHART_REPO_URL=cm://h.cfcr.io/codefreshdemo/default
+  DeployMyChart:
+    image: 'codefresh/cfstep-helm:2.14.1'
+    title: Deploying Helm chart
+    stage: "deploy"
+    environment:
+      - CHART_REF=charts/helm-example
+      - RELEASE_NAME=my-go-chart-prod
+      - KUBE_CONTEXT=my-demo-k8s-cluster
+      - VALUE_image_pullPolicy=Always
+      - VALUE_image.repository=r.cfcr.io/codefreshdemo/go-app
+      - VALUE_image.tag=${{CF_SHORT_REVISION}}
+      - VALUE_replicaCount=3
+      - VALUE_image_pullSecret=codefresh-generated-r.cfcr.io-cfcr-default
+    env:
+      name: load-testing
+      endpoints:
+      - name: Main
+        url: http://40.113.201.163
+      type: helm-release
+      change: '${{CF_COMMIT_MESSAGE}}'
+      filters:
+      - cluster: my-demo-k8s-cluster
+        releaseName: my-go-chart-prod
+
+{% endraw %}            
+{% endhighlight %}
+
+This pipeline is similar to the one described in the [Helm quick start guide]({{site.baseurl}}/docs/getting-started/helm-quick-start-guide/) but has an extra `env` block that defines:
+
+* an environment called "load testing"
+* a single endpoint at 40.113.201.163
+* a change entry that is the same as the last commit message (`CF_COMMIT_MESSAGE` variable)
+* on a cluster which is linked to Codefresh with the name `my-demo-k8s-cluster`
+* monitoring a Helm release named `my-go-chart-prod` (the release was created in the `DeployMyChart` pipeline step )
+
+Once the pipeline runs the following environment entry will appear in the environments screen:
+
+{% include
+image.html
+lightbox="true"
+file="/images/codefresh-yaml/environments/helm-environment.png"
+url="/images/codefresh-yaml/environments/helm-environment.png"
+alt="Helm environment status"
+caption="Helm environment status"
+max-width="100%"
+%}
+
+Every time that you run another build of the pipeline the environment status will be updated automatically.
+
 
 ## What to read next
 
-* [Image annotations]({{site.baseurl}}/docs/docker-registries/metadata-annotations/)
-* [Post-Step Operations]({{site.baseurl}}/docs/codefresh-yaml/post-step-operations/)
-* [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
+- [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
+- [Manage your Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/)
+- [Adding a cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/)
+- [Helm environment board]({{site.baseurl}}/docs/new-helm/helm-environment-promotion/)
+
