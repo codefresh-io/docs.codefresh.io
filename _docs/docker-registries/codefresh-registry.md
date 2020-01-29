@@ -222,5 +222,5 @@ Once you remove all of its tags, the image will not be shown in the internal Cod
 
 * [Push pipeline step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/)
 * [External Docker Registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/)
-* [Accessing Docker registry from your Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/access-docker-registry-from-kubernetes/)
+* [Accessing a Docker registry from your Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/access-docker-registry-from-kubernetes/)
 

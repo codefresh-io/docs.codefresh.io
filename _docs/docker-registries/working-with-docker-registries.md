@@ -66,7 +66,7 @@ Note however that because the Codefresh registry is fully automated (successful 
 
 ### Pulling images that were just built in the same pipeline
 
-The Codefresh private registry is deeply integrated into Codefresh pipelines and pulls/pushes to it happen in a transparent manner. In most scenarios (such as [unit tests]({{site.baseurl}}/docs/testing/unit-tests/)) you mention private Docker images there were also built in the same pipeline.
+The Codefresh private registry is deeply integrated into Codefresh pipelines and pulls/pushes to it happen in a transparent manner. In most scenarios (such as [unit tests]({{site.baseurl}}/docs/testing/unit-tests/)) you mention private Docker images that were also built in the same pipeline.
 
 In that case, as a shortcut Codefresh allows you to simply [mention the name]({{site.baseurl}}/docs/codefresh-yaml/variables/#context-related-variables) of the respective [build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/).
 
@@ -281,6 +281,6 @@ In the example above the image `my-azure-registry.azurecr.io/kostis-codefresh/my
 * [Codefresh Registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/)
 * [Push pipeline step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/)
 * [External Docker Registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/)
-* [Accessing Docker registry from your Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/access-docker-registry-from-kubernetes/)
+* [Accessing a Docker registry from your Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/access-docker-registry-from-kubernetes/)
 * [Build and Push an image example]({{site.baseurl}}/docs/yaml-examples/examples/build-and-push-an-image/)
 
