@@ -88,12 +88,12 @@ You can also use environments in other Codefresh steps such as [deploy]({{site.b
 | Field         | Description         | 
 | -------------| ------------------------|
 | `name`      | Arbitrary name of the environment. It can be anything you want. It will appear in the Environment Dashboard GUI |       
-| `endpoints`      | Array of `name`, `url` pairs that mark the accessible endpoints of this environment (if any). They appear in the Environment GUI as links and allow you to quickly visit an environment with your browser |
+| `endpoints`      | Array of `name`, `url` pairs that mark the application accessible endpoints of this environment (if any). They appear in the Environment GUI as links and allow you to quickly visit an environment with your browser. The endpoint value is a just a link/bookmark to the application endpoint that you want to associate with this environment. In most cases it is the load-balancer/ingress/Kubernetes service exposed by your application.|
 | `type`      | Type of environment. Accepted values are either `kubernetes` or `helm-release` | 
 | `change`      | Any text that you want to appear as a description on what the build did to an environment. You can use free text or any Codefresh [variable]({{site.baseurl}}/docs/codefresh-yaml/variables/) such `CF_COMMIT_MESSAGE` to get the commit message of the git trigger |
 | `filters`      | An array of cluster characteristics so that Codefresh can pull live data from the cluster to display pod and deployment status. For a Kubernetes environment you enter `cluster`, `namespace` and for Helm environments you enter `cluster`, `releaseNames` |
 
-In all cases the `cluster` name is the unique identifier of your cluster as seen in the [Kubernetes dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/#work-with-your-services) screen.
+In all cases the `cluster` name is the unique identifier of your cluster as seen in the [Kubernetes dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/#work-with-your-services) screen. 
 
 Also notice that the relationship between environments and builds are many to many. A single environment can be affected by different pipelines, and a single pipeline might deploy to multiple environments.
 
@@ -151,7 +151,7 @@ steps:
 This pipeline is similar to the one described in the [Kubernetes quick start guide]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/) but has an extra `env` block that defines:
 
 * an environment called "orders-prod"
-* a single endpoint at 40.113.201.163
+* a single application endpoint at 40.113.201.163 (Kubernetes service or ingress)
 * a change entry with a freetext string "updated"
 * on a cluster which is linked to Codefresh with the name `my-demo-k8s-cluster`
 * monitoring pods and deployments found in the `default` namespace
@@ -232,7 +232,7 @@ steps:
 This pipeline is similar to the one described in the [Helm quick start guide]({{site.baseurl}}/docs/getting-started/helm-quick-start-guide/) but has an extra `env` block that defines:
 
 * an environment called "load testing"
-* a single endpoint at 40.113.201.163
+* a single application endpoint at 40.113.201.163 (Kubernetes service or ingress)
 * a change entry that is the same as the last commit message (`CF_COMMIT_MESSAGE` variable)
 * on a cluster which is linked to Codefresh with the name `my-demo-k8s-cluster`
 * monitoring a Helm release named `my-go-chart-prod` (the release was created in the `DeployMyChart` pipeline step )
