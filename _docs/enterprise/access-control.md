@@ -177,7 +177,7 @@ For clusters:
 
 * `Create` - cluster creation requires someone to be account administrator anyway so currently this permission isn’t really necessary .
 * `Read` - can only see existing allowed clusters without any ability to change them.
-* `Update` - can see and edit existing allowed cluster resources (which means also perform [installation and rollbacks of Helm charts]({{site.baseurl}}/docs/new-helm/helm-best-practices/)). Tags are managed from account settings, so this permission doesn’t apply to it currently.
+* `Update` - can see and edit existing allowed cluster resources (which means also perform [installation, removal and rollbacks of Helm charts]({{site.baseurl}}/docs/new-helm/helm-best-practices/)). Tags are managed from account settings, so this permission doesn’t apply to it currently.
 * `Delete` - cluster removal requires someone to be account administrator anyway so currently this permission isn’t really necessary.
 
 For pipelines:
