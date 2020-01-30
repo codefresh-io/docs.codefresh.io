@@ -1088,7 +1088,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-We have also added two extra parameters, one for the git revision and one for the [git provider](({{site.baseurl}}/docs/integrations/git-providers/) ) that will be used during checkout.
+We have also added two extra parameters, one for the git revision and one for the [git provider]({{site.baseurl}}/docs/integrations/git-providers/)  that will be used during checkout.
 
 The end result is that with a single step you can checkout many projects. Checking out an additional project is as simple as adding a new entry in the `GIT_PROJECTS` array.
 

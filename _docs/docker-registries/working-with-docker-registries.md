@@ -37,7 +37,7 @@ This [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) wil
 
 The image will also be cached in the [image cache]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipeline-caching/#distributed-docker-image-caching) without any other configuration.
 
-Codefresh will also automatically pull for you any images mentioned in Dockerfiles (i.e. the `FROM` directive) as well as [service containers](docs/codefresh-yaml/service-containers/).
+Codefresh will also automatically pull for you any images mentioned in Dockerfiles (i.e. the `FROM` directive) as well as [service containers]({{site.baseurl}}/docs/codefresh-yaml/service-containers/).
 
 
 ### Pulling private images
