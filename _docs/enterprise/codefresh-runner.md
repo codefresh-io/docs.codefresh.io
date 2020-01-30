@@ -24,11 +24,59 @@ The installation process takes care of all the components of the runner as well 
 
 In order to use the Codefresh runner you need the following:
 
-1. A Kubernetes cluster with outgoing Internet access (preferably with version 1.10). Each node should have 50GB disk size.
+1. A Kubernetes cluster with outgoing Internet access (with version later than 1.10). Each node should have 50GB disk size.
 1. A [Codefresh account]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/) with the Hybrid feature enabled.
 1. A [Codefresh CLI token]({{site.baseurl}}/docs/integrations/codefresh-api/#authentication-instructions) that will be used to authenticate to your Codefresh account.
 
 Installation can happen from any workstation or laptop that has access (i.e. via `kubectl`) to the Kubernetes cluster that will run Codefresh builds. The Codefresh runner will authenticate to your Codefresh account by using the Codefresh CLI token. 
+
+### Components
+
+Once installed the runner uses the following pods:
+
+* `venona` - responsible from picking tasks from the Codefresh UI
+* `engine` - responsible running pipelines
+* `dind` - responsible building and using Docker images
+* `dind-volume-provisioner` 
+* `dind-lv-monitor` 
+
+### System requirements
+
+The following table shows **MINIMUM** resources for each component:
+
+{: .table .table-bordered .table-hover}
+| Component         | Minimum CPU| Minimum Memory | Space                  | Type | Always on
+| -------------- | --------------|------------- |-------------------------|-------|-------|
+| `venona`        | 100m          | 100Mi        | Doesn't need PV         | Pod   | Yes   |
+| `engine`         | 100m          | 100Mi        | Doesn't need PV         | Pod   | No   |
+| `dind`         | 390m          | 255Mi        | 30GB         | Pod   | No   |
+| `dind-volume-provisioner`         | 300m          | 400Mi        | Doesn't need PV         | Pod   | Yes   |
+| `dind-lv-monitor`         | 300m          | 400Mi        | Doesn't need PV         | DaemonSet   | Yes   |
+
+Components that are always on consume resources all the time. Components that are not always on only consume resource when pipelines are running (they are created and destroyed automatically for each pipeline).
+
+Node size and count will entirely depend on how many pipelines you want to be “ready” for and how many you will use “burst” capacity.  
+
+* Ready (nodes): Lower initialization time and faster build times.
+* Burst (nodes): High initialization time and slower build times. (Not recommended)
+
+The size of your nodes directly relates to the size required for your pipelines and thus it is dynamic.  If you find that only a few larger pipelines require larger nodes you may want to have two Codefresh Runners associated to different node pools.
+
+### Storage space
+
+For the storage space needed by the `dind` pod we suggest:
+
+* [Local SSD](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/local-ssd) in the case of GCP 
+* [EBS](https://aws.amazon.com/ebs/) in the case of Amazon
+
+### Networking requirements
+
+* `dind` - this pod will create an internal network in the cluster to run all the pipeline steps
+* `venona` - this pod needs outgoing/egress access to `g.codefresh.io`
+* `engine` - this pod needs outgoing/egress access to `g.codefresh.io`
+
+All CNI providers/plugins are compatible with the runner components.
+
 
 ### Command line installation
 
@@ -72,31 +120,6 @@ venona install --kube-namespace my-codefresh-runtime --verbose --kube-config-pat
 
 To check the installation result type `venona status --verbose` and you will get a list of all installations.
 
-### Installing on Kubernetes clusters with version earlier than 1.10
-
-If your Kubernetes cluster is using a version earlier than 1.10 you also need to do the following:
-
-Make sure the `PersistentLocalVolumes` [feature gate](https://kubernetes.io/docs/reference/command-line-tools-reference/feature-gates/) is turned on
-
-The runner will try to load available apis using the  `/openapi/v2` endpoint
-Add this endpoint to the ClusterRole `system:discovery` under `rules[0].nonResourceURLs`:
-
-
-```yaml
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
-metadata:
-  name: system:discovery
-rules:
-- nonResourceURLs:
-  - ...other_resources
-  - /openapi
-  - /openapi/*
-  verbs:
-  - get
-```
-
-Use `kubectl` or any other management tool to perform this change to the role.
 
 ### Installing on Google Kubernetes Engine
 

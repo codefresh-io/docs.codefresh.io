@@ -15,7 +15,7 @@ Recent Codefresh updates:
 - Promoting Docker images - [documentation]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/#promoting-docker-images)
 - Using Dockerhub personal access tokens - [documentation]({{site.baseurl}}/docs/docker-registries/external-docker-registries/docker-hub/)
 - Updated Azure SSO instructions - [documentation]({{site.baseurl}}/docs/enterprise/single-sign-on/sso-azure/)
-
+- Codefresh Runner requirements - [documentation]({{site.baseurl}}/docs/enterprise/codefresh-runner/#system-requirements)
 
 ### December 2019
 
