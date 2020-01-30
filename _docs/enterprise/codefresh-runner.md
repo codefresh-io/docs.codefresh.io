@@ -34,9 +34,9 @@ Installation can happen from any workstation or laptop that has access (i.e. via
 
 Once installed the runner uses the following pods:
 
-* `venona` - responsible from picking tasks from the Codefresh UI
-* `engine` - responsible running pipelines
-* `dind` - responsible building and using Docker images
+* `venona` - responsible for picking tasks from the Codefresh UI
+* `engine` - responsible for running pipelines
+* `dind` - responsible for building and using Docker images
 * `dind-volume-provisioner` 
 * `dind-lv-monitor` 
 
@@ -55,7 +55,7 @@ The following table shows **MINIMUM** resources for each component:
 
 Components that are always on consume resources all the time. Components that are not always on only consume resource when pipelines are running (they are created and destroyed automatically for each pipeline).
 
-Node size and count will entirely depend on how many pipelines you want to be “ready” for and how many you will use “burst” capacity.  
+Node size and count will entirely depend on how many pipelines you want to be “ready” for and how many will use “burst” capacity.  
 
 * Ready (nodes): Lower initialization time and faster build times.
 * Burst (nodes): High initialization time and slower build times. (Not recommended)
