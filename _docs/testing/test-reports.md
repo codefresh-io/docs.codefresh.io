@@ -11,7 +11,7 @@ Codefresh offers the capability to store your test results for every build and v
 at any point in time.
 
 Currently Codefresh supports the storage of test reports in [Google buckets](https://cloud.google.com/storage/docs/key-terms#buckets) or  
- [S3 buckets](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html) or Azure Storage(https://docs.microsoft.com/en-us/azure/storage/).
+ [S3 buckets](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html) or [Azure Storage](https://docs.microsoft.com/en-us/azure/storage/).
 
 ## Test report modes
 
