@@ -143,6 +143,9 @@
     localurl: /docs/deploy-to-kubernetes/add-kubernetes-cluster/
   - title: Managing your cluster
     localurl: /docs/deploy-to-kubernetes/manage-kubernetes/
+  - title: Environment Dashboard
+    new: true 
+    localurl: /docs/deploy-to-kubernetes/environment-dashboard/
   - title: Accessing a Docker registry from your cluster
     localurl: /docs/deploy-to-kubernetes/access-docker-registry-from-kubernetes/ 
   - title: Kubernetes manifest templates
