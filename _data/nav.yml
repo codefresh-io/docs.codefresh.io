@@ -300,6 +300,8 @@
       url: "/add-kubernetes-cluster"
     - title: Manage your Kubernetes cluster
       url: "/manage-kubernetes"
+    - title: Environment Dashboard
+      url: "/environment-dashboard"    
     - title: Accessing a Docker registry from Kubernetes
       url: "/access-docker-registry-from-kubernetes"
     - title: Add config maps to your namespaces
