@@ -20,11 +20,12 @@ caption="Codefresh Environment Dashboard"
 max-width="70%"
 %}
 
-The environment dashboard is configurable and each enviroment can represent a plain Kubernetes deployment or a Helm release.
+The environment dashboard is configurable and each environment can represent a plain Kubernetes deployment or a Helm release. You can access the dashboard by clicking on *Environments* from the left sidebar in Codefresh.
 
 
 ## How environments work
 
+The purpose of an environment is to give you an overview of both the cluster status as well as the builds that affect. The environment acts as a link between the status of builds and the status of the cluster.
 
 
 {% include
@@ -32,12 +33,45 @@ image.html
 lightbox="true"
 file="/images/kubernetes/environments/environment-info.png"
 url="/images/kubernetes/environments/environment-info.png"
-alt="Environment Dashboards"
-caption="Environment Dashboards"
-max-width="80%"
+alt="Components of an environment"
+caption="Components of an environment"
+max-width="100%"
 %}
 
+A Codefresh environment is based on two components
+
+* a cluster namespace that holds a deployment service (or a Helm release in the case of Helm)
+* an association between builds and this cluster
+
+When you visit the environment screen you can see consolidated information on what your environment is doing. Codefresh will pull live data from the cluster to populate the status bar of each environment entry and will automatically show the status of the last 3 builds that affected this environment.
+
+The overall status of the environment is the exit result of the last build that affected this environment.
+
+The URL shown at the environment is just a shortcut link that allows you to quickly visit the user application is exposed by the environment (if this is applicable.). It is not used by Codefresh for anything else (i.e. Codefresh does not check it to actually decide if an environment is healthy).
+
+
 ## Creating an environment
+
+You can create an environment in two ways
+
+* Describe the environment details in the any pipeline that affects it using the [special env syntax]({{site.baseurl}}/docs/codefresh-yaml/deployment-environments/). The first time the pipeline runs the environment GUI entry will be created automatically in the dashboard
+* Create the environment details yourself straight from the Codefresh UI
+
+To create an environment while in the dashboard screen, click the *New environment* button on the top right corner and fill in the required details:
+
+{% include
+image.html
+lightbox="true"
+file="/images/kubernetes/environments/create-environment.png"
+url="/images/kubernetes/environments/create-environment.png"
+alt="Creating an environment from the GUI"
+caption="Creating an environment from the GUI"
+max-width="50%"
+%}
+
+Once you create the environment Codefresh will pull automatically the status of pods/deployments/services from the cluster and show it at the environment status bar. To link specific pipelines to that environment follow the [env syntax guide]({{site.baseurl}}/docs/codefresh-yaml/deployment-environments/).
+
+You can also combine the two ways by first creating an environment in the GUI and then associating it with a pipeline. But notice that in that case the environment details you selected in the GUI must **EXACTLY** match those defined in the pipeline (so that the pipeline can detect which environment entry it should update).
 
 
 ## Understanding cluster issues
