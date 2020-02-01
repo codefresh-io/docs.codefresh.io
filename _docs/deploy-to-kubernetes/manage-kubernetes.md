@@ -159,6 +159,7 @@ See more choices in the [Deployment options page]({{site.baseurl}}/docs/deploy-t
 
 ## What to read next
 
+- [Environment dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/environment-dashboard/)
 - [Add Config Maps]({{site.baseurl}}/docs/deploy-to-kubernetes/add-config-maps-to-your-namespaces/)
 - [Manage your Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/)
 - [Deploy to Kubernetes - quick start]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/)

@@ -76,15 +76,36 @@ You can also combine the two ways by first creating an environment in the GUI an
 
 ## Understanding cluster issues
 
+There is no restriction to the number of pipelines linked to an environment (and the number of environments affected by a single pipeline). In fact the true power of the environment dashboard becomes evident when you link multiple pipelines to a single environment.
+
+One of the most common deployment issues are errors in configuration. Instead of just linking pipelines that deploy applications, you should instead link *all* types of pipelines that affect a cluster. These pipelines can contains
+
+* application deployments
+* cluster component changes
+* configuration changes (e.g. configmaps or secrets)
+* database changesets
+
+This means that the environment entry will have a history of *all* changes that happened on the cluster and not just application deployments. Ideally no manual change should happen to the cluster outside of a pipeline.
+
 {% include
 image.html
 lightbox="true"
 file="/images/kubernetes/environments/error-detection.png"
 url="/images/kubernetes/environments/error-detection.png"
-alt="Environment Dashboards"
-caption="Environment Dashboards"
-max-width="80%"
+alt="Looking at the history of an environment"
+caption="Looking at the history of an environment"
+max-width="100%"
 %}
+
+Here we have a classic deployment issue where an application is deployed on the cluster and fails, even thought the exact same application tag was previously successful.
+
+Because that team that created this dashboard also linked the pipeline that does configuration changes to the cluster, it is clear that there was a configmap change between the two application deployments. Even though the configuration change itself was successful, the application deployment failed the second time because of it.
+
+With the environment dashboard it is very easy to understand that the configuration change was responsible for breaking the next deployment. An operator can now look at the configuration change and talk with a developer that knows what the application needs and why it failed.
+
+Therefore make sure to link all pipelines that affect a cluster in the environment dashboard and not just application deployments.
+
+
 
 
 ## What to read next

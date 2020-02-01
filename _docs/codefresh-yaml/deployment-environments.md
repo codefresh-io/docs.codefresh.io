@@ -5,7 +5,7 @@ group: codefresh-yaml
 toc: true
 ---
 
-Codefresh includes an environment dashboard that can be used to monitor your applications and the builds associated with them. You can access the dashboard by clicking on *Environments* in the left sidebar of the Codefresh UI.
+Codefresh includes an [environment dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/environment-dashboard/) that can be used to monitor your applications and the builds associated with them. You can access the dashboard by clicking on *Environments* in the left sidebar of the Codefresh UI.
 
 {% include
 image.html
@@ -254,6 +254,7 @@ Every time that you run another build of the pipeline the environment status wil
 
 ## What to read next
 
+- [How environments work]({{site.baseurl}}/docs/deploy-to-kubernetes/environment-dashboard/)
 - [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
 - [Manage your Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/)
 - [Adding a cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/)
