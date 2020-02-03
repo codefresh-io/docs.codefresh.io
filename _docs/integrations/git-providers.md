@@ -1,6 +1,6 @@
 ---
 title: "Git providers"
-description: ""
+description: "Easily checkout code in your pipelines"
 group: integrations
 redirect_from:
   - /docs/git-provider/

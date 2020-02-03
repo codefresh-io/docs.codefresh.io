@@ -208,6 +208,9 @@
     localurl: /docs/integrations/jenkins-integration/
   - title: Slack integration
     localurl: /docs/integrations/notifications/slack-integration/
+  - title: Github actions
+    new: true
+    localurl: /docs/integrations/github-actions/
   - title: Jira integration
     localurl: /docs/integrations/jira-integration/
   - title: Google Marketplace Installation
