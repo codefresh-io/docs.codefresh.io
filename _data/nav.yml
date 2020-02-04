@@ -330,6 +330,8 @@
       url: "/custom-helm-uploads"
     - title: Helm environment promotion
       url: "/helm-environment-promotion"
+    - title: Helm 3 support
+      url: "/helm3"
 
 - title: Deploy your containers
   url: "/deploy-your-containers"
