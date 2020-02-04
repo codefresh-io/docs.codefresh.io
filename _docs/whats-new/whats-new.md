@@ -11,6 +11,7 @@ Recent Codefresh updates:
 ### February 2020
 
 - Beta Support for Helm 3 - [documentation]({{site.baseurl}}/docs/new-helm/helm3/)
+- Use Github actions as Codefresh pipeline steps - [documentation]({{site.baseurl}}/docs/integrations/github-actions/)
 
 
 ### January 2020

@@ -355,6 +355,8 @@
       sub-pages:
         - title: Slack
           url: "/slack-integration"
+    - title: Github actions
+      url: "/github-actions"
     - title: Jira Integration
       url: "/jira-integration"
     - title: Jenkins Integration
