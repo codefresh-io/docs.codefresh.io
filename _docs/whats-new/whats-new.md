@@ -8,6 +8,11 @@ toc: true
 ---
 Recent Codefresh updates:
 
+### February 2020
+
+- Alpha Support for Helm 3 - [documentation]({{site.baseurl}}/docs/new-helm/helm3/)
+
+
 ### January 2020
 
 - New deployment environment dashboard - [documentation]({{site.baseurl}}/docs/codefresh-yaml/deployment-environments)

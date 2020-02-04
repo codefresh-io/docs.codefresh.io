@@ -172,7 +172,7 @@
     localurl: /docs/new-helm/custom-helm-uploads/ 
   - title: Helm Environment Promotion
     localurl: /docs/new-helm/helm-environment-promotion/   
-  - title: Helm 3 support
+  - title: Helm 3 support (Beta)
     new: true
     localurl: /docs/new-helm/helm3/              
 - title: Deployment
