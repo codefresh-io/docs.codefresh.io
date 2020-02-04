@@ -24,6 +24,8 @@ caption="Helm 3 cluster settings"
 max-width="80%"
 %}
 
+>Helm 3 support is being gradually enabled in all customer accounts. If your account is not enabled yet, please talk us in intercom.
+
 You can keep other clusters with Helm 2 without any extra changes.
 
 ## Working with Helm 3 Kubernetes clusters
