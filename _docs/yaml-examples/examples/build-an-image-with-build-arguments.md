@@ -1,6 +1,6 @@
 ---
 title: "Build an Image with Build Arguments"
-description: ""
+description: "Use docker argument in Codefresh pipelines"
 group: yaml-examples
 sub_group: examples
 redirect_from:
@@ -8,26 +8,96 @@ redirect_from:
 toc: true
 ---
 
-Using this repository, we'll help you get up to speed with basic functionality such as: building Docker images with build arguments.
-The ```build-arguments``` field uses the same logic as ARG in Dockerfile. For more information, see [description of ARG](https://docs.docker.com/engine/reference/builder/#/arg){:target="_blank"} 
+Building a Docker image that requires build arguments is very easy with Codefresh pipelines.
 
-## Looking around
-In the root of this repository you'll find a file named codefresh.yml, this is our build descriptor and it describes the different steps that comprise our process. Let's quickly review the contents of this file.
+>The source code of the repository is located at [https://github.com/codefreshdemo/cf-example-build-arguments](https://github.com/codefreshdemo/cf-example-build-arguments). Feel free to fork it if you want to follow along.
+
+If you don't already have a Codefresh account, you can easily create a free one from the [sign-up page]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/).
+
+## Using Docker build arguments
+
+The example application is a very simple NodeJS application with the following dockerfile:
+
+`Dockerfile`
+{% highlight docker %}
+{% raw %}
+ARG NODE_VERSION
+FROM node:$NODE_VERSION
+
+ARG APP_DIR
+
+RUN mkdir -p $APP_DIR
+
+WORKDIR $APP_DIR
+
+COPY package.json .
+RUN npm install --silent
+COPY . .
+EXPOSE 3000
+
+ENV PORT 3000
+
+CMD [ "npm", "start" ]
+{% endraw %}
+{% endhighlight %}
+
+This Dockerfile expects two [build arguments](https://docs.docker.com/engine/reference/builder/#/arg):
+
+* `NODE_VERSION` is the version of Node image to use as base 
+* `APP_DIR` is the source directory to be used inside the container
+
+## Building a Dockerfile passing values for build arguments
+
+When you build an image locally on your workstation you can define build arguments with the `--build-arg` syntax:
+
+```
+docker build . -t my-node-app --build-arg NODE_VERSION=8 --build-arg APP_DIR=/usr/src/app
+```
+
+The same thing can also be achieved within a Codefresh pipeline:
+
 
   `codefresh.yml`
 {% highlight yaml %}
-stepname:
-  type: build
-  description: Free text description
-  dockerfile: path/to/Dockerfile
-  image_name: owner/new-image-name
-  tag: develop
-  build_arguments:
-    - key=value
+version: '1.0'
+steps:
+  main_clone:
+    title: Cloning main repository...
+    type: git-clone
+    repo: 'codefreshdemo/cf-example-build-arguments'
+    revision: 'master'
+    git: github
+  build_my_app:
+    title: Building Node.Js Docker Image
+    type: build
+    image_name: my-app
+    working_directory: '.'
+    tag: 'master'
+    dockerfile: Dockerfile
+    build_arguments:
+      - NODE_VERSION=8
+      - APP_DIR=/usr/src/app
 {% endhighlight %}
 
-{{site.data.callout.callout_info}}
-##### Example
+This pipeline checks out the source code of the repository and then builds the Dockerfile by passing the values `8` and `/usr/src/app` to the two arguments.
 
-Just head over to the example [**repository**](https://github.com/codefreshdemo/cf-example-build-arguments){:target="_blank"} in Github and follow the instructions there. 
-{{site.data.callout.end}}
+{% include image.html 
+lightbox="true" 
+file="/images/examples/docker-build/docker-build-arguments.png" 
+url="/images/examples/docker-build/docker-build-arguments.png" 
+alt="Using Docker build arguments in a pipeline"
+caption="Using Docker build arguments in a pipeline"
+max-width="100%" 
+%}
+
+In this pipeline the docker build arguments are defined in the pipeline itself, but you could also use [pipeline variables]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#creating-new-pipelines), [shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/) or any other standard mechanism you already have in place.
+
+
+## What to read next
+
+- [Pipeline Build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/)
+- [Build an Image with the Dockerfile in Root Directory]({{site.baseurl}}/docs/yaml-examples/examples/build-an-image-dockerfile-in-root-directory/)
+- [Build an Image by Specifying the Dockerfile Location]({{site.baseurl}}/docs/yaml-examples/examples/build-an-image-specify-dockerfile-location)
+- [Build an Image from a Different Git Repository]({{site.baseurl}}/docs/yaml-examples/examples/build-an-image-from-a-different-git-repository)
+- [Build and Push an Image]({{site.baseurl}}/docs/yaml-examples/examples/build-and-push-an-image)
+

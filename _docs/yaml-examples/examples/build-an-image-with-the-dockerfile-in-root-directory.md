@@ -8,7 +8,7 @@ redirect_from:
   - /docs/build-an-image-dockerfile-in-root-directory/
 toc: true
 ---
-Building a Dockerimage is one of the basic operations in Codefresh pipelines.
+Building a Docker image is one of the basic operations in Codefresh pipelines.
 
 >The source code of the repository is located at [https://github.com/codefreshdemo/cf-yml-example-build-dockerfile-inroot](https://github.com/codefreshdemo/cf-yml-example-build-dockerfile-inroot). Feel free to fork it if you want to follow along.
 
