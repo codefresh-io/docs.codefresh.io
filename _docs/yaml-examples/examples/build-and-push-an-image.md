@@ -21,40 +21,54 @@ If you don't already have a Codefresh account, you can easily create a free one 
 
 All Codefresh accounts come with a [private integrated Docker registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/). The nice thing about this registry is that it is fully automated. All successful pipelines in Codefresh automatically push to that registry without any other configuration.
 
-So in the most simple case, you only need a [single build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) and  Codefresh will automatically push the image for you!
+So in the most simple case, you only need a [build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) and  Codefresh will automatically push the image for you!
 
 Here is the full pipeline:
 
 `codefresh.yml`
 {% highlight yaml %}
 version: '1.0'
+stages:
+- checkout
+- build
 steps:
-  build_image:
-    title: Building Voting Image
+  main_clone:
+    title: Cloning main repository...
+    type: git-clone
+    stage: checkout
+    repo: 'codefreshdemo/cf-example-build-and-push'
+    revision: 'master'
+    git: github
+  build_my_app:
+    title: Building Node.Js Docker Image
     type: build
-    image_name: my-voting-image
+    stage: build
+    image_name: my-node-js-app
+    working_directory: '.'
+    tag: 'master'
     dockerfile: Dockerfile
 {% endhighlight %}
 
 If you [create this pipeline]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/) in Codefresh and run it you will see the automatic pushing of the image in the Codefresh registry:
 
-```
-The push refers to repository [r.cfcr.io/kostis-codefresh/my-voting-image]                                                                 
-Layer '4624212f67bc' successfully pushed
-Layer '573f5d62f821' successfully pushed    
-Layer '573f5d62f821' successfully pushed
-...
-```
+{% include image.html
+  lightbox="true"
+  file="/images/examples/docker-build/auto-push-to-cfcr.png"
+  url="/images/examples/docker-build/auto-push-to-cfcr.png"
+  alt="Pushing to the built-in registry"
+  caption="Pushing to the built-in registry"
+  max-width="100%"
+    %}
 
 You can then visit the Codefresh Registry and view your image:
 
 {% include image.html
   lightbox="true"
-  file="/images/examples/push-to-private-registry.png"
-  url="/images/examples/push-to-private-registry.png"
-  alt="Pushing to the built-in registry"
-  caption="Pushing to the built-in registry"
-  max-width="70%"
+  file="/images/examples/docker-build/cfcr-layers.png"
+  url="/images/examples/docker-build/cfcr-layers.png"
+  alt="Inspecting image in private registry"
+  caption="Inspecting image in private registry"
+  max-width="80%"
     %}
 
 
@@ -79,23 +93,51 @@ Here is the full example:
 `codefresh.yml`
 {% highlight yaml %}
 version: '1.0'
+stages:
+- checkout
+- build
+- push
 steps:
-  build_image:
-    title: Building Voting Image
+  main_clone:
+    title: Cloning main repository...
+    type: git-clone
+    stage: checkout
+    repo: 'codefreshdemo/cf-example-build-and-push'
+    revision: 'master'
+    git: github
+  build_my_app:
+    title: Building Node.Js Docker Image
     type: build
-    image_name: my-voting-image
+    stage: build
+    image_name: my-node-js-app
+    working_directory: '.'
+    tag: 'master'
     dockerfile: Dockerfile
-  push_to_registry:
-    title: Pushing to Docker Registry 
+  push_to_my_registry:
+    stage: 'push'
     type: push
-    #A candidate is the image that we want to push to registry
-    candidate: {% raw %}'${{build_image}}'{% endraw %}
-    # You can push the image with whatever tag you want. In our example we use CF_BRANCH that holds the git branch name
-    tag: {% raw %}'${{CF_BRANCH}}'{% endraw %}
-    registry: <your-registry-configuration-name>    
+    title: Pushing to a registry
+    candidate: ${{build_my_app}}
+    tag: 'v1.0.0'
+    registry: dockerhub
+    image_name: kkapelon/my-node-js-app
 {% endhighlight %}
 
-Codefresh has several other variables that can be used for tagging images. Other common examples that you can use are `CF_SHORT_REVISION` or `CF_BUILD_ID`. See the [variables page]({{site.baseurl}}/docs/codefresh-yaml/variables/) for more information.
+Here we use a specific tag - `v1.0.0` but 
+Codefresh has several other variables that can be used for tagging images. Common examples that you can use are `CF_BRANCH_TAG_NORMALIZED`, `CF_SHORT_REVISION` or `CF_BUILD_ID`. See the [variables page]({{site.baseurl}}/docs/codefresh-yaml/variables/) for more information.
+
+{% include image.html
+  lightbox="true"
+  file="/images/examples/docker-build/build-and-push-pipeline.png"
+  url="/images/examples/docker-build/build-and-push-pipeline.png"
+  alt="Pushing image to external registry"
+  caption="Pushing image to external registry"
+  max-width="100%"
+    %}
+
+
+If you run the pipeline the Docker image will be pushed *both* to the private Docker regisry (by the build step) *and* the external docker registry (by the push step)
+
 
 ## More options for push
 
@@ -106,6 +148,15 @@ Codefresh has several more options when it comes to pushing:
 * You can embed credentials in the push steps
 
 See the [push step documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/push/) for more details.
+
+## What to read next
+
+- [Pipeline Build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/)
+- [Pipeline Push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/)
+- [Build an Image with the Dockerfile in Root Directory]({{site.baseurl}}/docs/yaml-examples/examples/build-an-image-dockerfile-in-root-directory/)
+- [Build an Image by Specifying the Dockerfile Location]({{site.baseurl}}/docs/yaml-examples/examples/build-an-image-specify-dockerfile-location)
+- [Build an Image from a Different Git Repository]({{site.baseurl}}/docs/yaml-examples/examples/build-an-image-from-a-different-git-repository)
+- [Build an Image With Build Arguments]({{site.baseurl}}/docs/yaml-examples/examples/build-an-image-with-build-arguments)
 
 
 
