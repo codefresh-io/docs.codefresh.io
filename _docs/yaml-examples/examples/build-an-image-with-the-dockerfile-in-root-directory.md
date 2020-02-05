@@ -1,6 +1,6 @@
 ---
 title: "Build an Image with the Dockerfile in Root Directory"
-description: ""
+description: "Get started quickly with building Docker images"
 group: yaml-examples
 sub_group: examples
 permalink: /:collection/yaml-examples/examples/build-an-image-dockerfile-in-root-directory/
@@ -8,32 +8,60 @@ redirect_from:
   - /docs/build-an-image-dockerfile-in-root-directory/
 toc: true
 ---
-Using this repository, we'll help you get up to speed with basic functionality such as: building Docker images.
+Building a Dockerimage is one of the basic operations in Codefresh pipelines.
 
-This project uses `Node JS` to build an application which will eventually become a distributable Docker image.
+>The source code of the repository is located at [https://github.com/codefreshdemo/cf-yml-example-build-dockerfile-inroot](https://github.com/codefreshdemo/cf-yml-example-build-dockerfile-inroot). Feel free to fork it if you want to follow along.
 
-## Looking around
-In the root of this repository you'll find a file named codefresh.yml, this is our build descriptor and it describes the different steps that comprise our process. Let's quickly review the contents of this file:
+If you don't already have a Codefresh account, you can easily create a free one from the [sign-up page]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/).
+
+
+## Building a Dockerfile from the root folder
+
+By default docker uses the Dockerfile of the current folder if you run a single command like:
+
+```
+docker build . -t my-web-app
+```
+
+The same thing can also be achieved within a Codefresh pipeline:
+
 
   `codefresh.yml`
 {% highlight yaml %}
 version: '1.0'
 steps:
-  build_image:
-    title: Building Image
+  main_clone:
+    title: Cloning main repository...
+    type: git-clone
+    repo: 'codefreshdemo/cf-yml-example-build-dockerfile-inroot'
+    revision: 'master'
+    git: github
+  build_my_app:
+    title: Building Node.Js Docker Image
     type: build
-    #Important: rename this image to to a valid repository in your registry. For example: myUserName/vote
-    image_name: codefresh/example
-    #The directory should be relative to git repository that is used for cloning
-    working_directory: {% raw %}${{main_clone}}{% endraw %}
-    #Dockerfile location should be relative to the working directory
+    image_name: my-app
+    working_directory: '.'
+    tag: 'master'
     dockerfile: Dockerfile
 {% endhighlight %}
 
-For more information about the steps and fields in the ```codefresh.yml``` file, [see]({{ site.baseurl }}/docs/codefresh-yaml/steps/build/).
+This pipeline checks out the source code of the repository and then builds a dockerfile found at the root folder of the project.
 
-{{site.data.callout.callout_info}}
-##### Example
+{% include image.html 
+lightbox="true" 
+file="/images/examples/docker-build/build-dockerfile-root.png" 
+url="/images/examples/docker-build/build-dockerfile-root.png" 
+alt="Building a Docker image with a default Dockerfile"
+caption="Building a Docker image with a default Dockerfile"
+max-width="100%" 
+%}
 
-Just head over to the example [**repository**](https://github.com/codefreshdemo/cf-yml-example-build-dockerfile-inroot){:target="_blank"} in Github and follow the instructions there. 
-{{site.data.callout.end}}
+You could also change the Docker build context by editing the `working_directory` property. By default it is looking at the root folder of the project, but any subfolder path is also valid.
+
+## What to read next
+
+- [Pipeline Build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/)
+- [Build an Image by Specifying the Dockerfile Location]({{site.baseurl}}/docs/yaml-examples/examples/build-an-image-specify-dockerfile-location)
+- [Build an Image from a Different Git Repository]({{site.baseurl}}/docs/yaml-examples/examples/build-an-image-from-a-different-git-repository)
+- [Build and Push an Image]({{site.baseurl}}/docs/yaml-examples/examples/build-and-push-an-image)
+- [Build an Image With Build Arguments]({{site.baseurl}}/docs/yaml-examples/examples/build-an-image-with-build-arguments)
