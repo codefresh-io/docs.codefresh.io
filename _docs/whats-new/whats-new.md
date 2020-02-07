@@ -12,7 +12,25 @@ Recent Codefresh updates:
 
 - Beta Support for Helm 3 - [documentation]({{site.baseurl}}/docs/new-helm/helm3/)
 - Use Github actions as Codefresh pipeline steps - [documentation]({{site.baseurl}}/docs/integrations/github-actions/)
-
+- New build view
+  *  Ability to view the git-event name on the record
+  *  Ability to view additional information specifically for each type of event
+  *  Ability to visually see the trigger name
+  *  Ability to filter by trigger-type (git, cron, registry, helm, manual)
+  *  Ability to filter by git-event
+  *  Minimise and removal of of non required information
+- New dahboards for builds
+  *  Ability to view the git-event name on the record
+  *  Ability to view additional information specifically for each type of event
+  *  Ability to visually see the trigger name
+  *  Ability to filter by trigger-type (git, cron, registry, helm, manual)
+  *  Ability to filter by git-event
+  *  Minimise and removal of of non required information
+- Payment screen improvements
+  * More clear error messages for failed payments
+  * More clear messages for confirmation/error dialogs
+  * New in-app notifications for plan upgrades and downgrades
+  * New in-app notifications for subscription payment issues 
 
 ### January 2020
 
