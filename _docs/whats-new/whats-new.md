@@ -12,6 +12,7 @@ Recent Codefresh updates:
 
 - Beta Support for Helm 3 - [documentation]({{site.baseurl}}/docs/new-helm/helm3/)
 - Use Github actions as Codefresh pipeline steps - [documentation]({{site.baseurl}}/docs/integrations/github-actions/)
+- Publish a JAR to Artifactory/Nexus - [documentation]({{site.baseurl}}/docs/learn-by-example/java/publish-jar/)
 - New dashboards for builds
   *  Ability to view the git-event name on the record
   *  Ability to view additional information specifically for each type of event

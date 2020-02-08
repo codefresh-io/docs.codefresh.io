@@ -59,6 +59,8 @@
           url: "/spring-boot-2"
         - title: Gradle
           url: "/gradle"
+        - title: Publish JAR
+          url: "/publish-jar"  
         - title: Spring Tomcat
           url: "/spring-mvc-jdbc-template"          
     - title: Node.js
