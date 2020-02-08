@@ -6,6 +6,7 @@ sub_group: examples
 permalink: /:collection/yaml-examples/examples/build-an-image-dockerfile-in-root-directory/
 redirect_from:
   - /docs/build-an-image-dockerfile-in-root-directory/
+  - /docs/deploy-to-kubernetes/get-ready-to-deploy/build-an-image/
 toc: true
 ---
 Building a Docker image is one of the basic operations in Codefresh pipelines.

@@ -33,8 +33,8 @@ We'll email you instructions on how to claim your credits after the integration 
 3. Automate your Deployment
 
 ## What will you need before you start?
-1. [Create Kubernetes cluster on GKE]({{ site.baseurl }}/docs/deploy-to-kubernetes/get-ready-to-deploy/create-cluster/) 
-2. [Get Familiar with Codefresh and build an image]({{ site.baseurl }}/docs/deploy-to-kubernetes/get-ready-to-deploy/build-an-image/)
+1. [Create Kubernetes cluster on GKE]({{site.baseurl}}/docs/deploy-to-kubernetes/get-ready-to-deploy/create-cluster/) 
+2. [Get Familiar with Codefresh and build an image]({{site.baseurl}}/docs/yaml-examples/examples/build-and-push-an-image/)
  
 ## Join our slack channel
 [Contact us](https://codefresh.io/contact-us/){:target="_blank"} to join dedicated support slack channel.
