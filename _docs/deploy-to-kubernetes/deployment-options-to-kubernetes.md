@@ -6,6 +6,7 @@ redirect_from:
   - /docs/deploy-to-kubernetes/
   - /docs/deployment-to-kubernetes-quick-start-guide/
   - /docs/deploy-to-kubernetes/deployment-to-kubernetes-quick-start-guide/
+  - /docs/deploy-to-kubernetes/get-ready-to-deploy/
 toc: true
 ---
 

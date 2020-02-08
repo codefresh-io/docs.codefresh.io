@@ -4,6 +4,7 @@ description: ""
 group: deploy-your-containers
 redirect_from:
   - /docs/google-container-engine-gke-kubernetes/
+  - /docs/deploy-to-kubernetes/get-ready-to-deploy/create-cluster/
 toc: true
 old_url: /docs/google-container-engine-gke-kubernetes
 was_hidden: true

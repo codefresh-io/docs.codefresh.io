@@ -293,11 +293,6 @@
   pages:
     - title: "Deployment options for Kubernetes"
       url: "/deployment-options-to-kubernetes"
-    - title: Getting started with GKE
-      url: "/get-ready-to-deploy"
-      sub-pages:
-        - title: Create GKE Cluster
-          url: "/create-cluster"
     - title: Connect your Kubernetes cluster
       url: "/add-kubernetes-cluster"
     - title: Manage your Kubernetes cluster
