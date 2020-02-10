@@ -20,8 +20,8 @@ the screen there are no filters defined.
 {% include 
 image.html 
 lightbox="true" 
-file="/images/pipeline/monitoring/builds.png" 
-url="/images/pipeline/monitoring/builds.png"
+file="/images/pipeline/monitoring/builds-dashboard.png" 
+url="/images/pipeline/monitoring/builds-dashboard.png"
 alt="Pipeline Activity in Codefresh" 
 caption="Pipeline activity"
 max-width="80%"
@@ -46,8 +46,8 @@ You can further filter the builds by choosing the various filter types that spec
 {% include 
 image.html 
 lightbox="true" 
-file="/images/pipeline/monitoring/filtering.png" 
-url="/images/pipeline/monitoring/filtering.png"
+file="/images/pipeline/monitoring/build-filtering.png" 
+url="/images/pipeline/monitoring/build-filtering.png"
 alt="Pipeline filters in Codefresh" 
 caption="Available filters"
 max-width="50%"
@@ -110,10 +110,10 @@ For each individual build you can see several details such as the git hash, the 
 {% include 
 image.html 
 lightbox="true" 
-file="/images/pipeline/monitoring/build-details.png" 
-url="/images/pipeline/monitoring/build-details.png"
+file="/images/pipeline/monitoring/build-details-entry.png" 
+url="/images/pipeline/monitoring/build-details-entry.png"
 alt="build details in Codefresh" 
-caption="Build details (click to enlarge)"
+caption="Build details"
 max-width="100%"
 %}
 
