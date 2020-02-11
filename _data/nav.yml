@@ -333,14 +333,14 @@
 - title: Deploy your containers
   url: "/deploy-your-containers"
   pages:
+    - title: Microsoft Azure
+      url: "/microsoft-azure"    
     - title: Amazon ECS
       url: "/amazon-ecs"
-    - title: Docker SWARM
-      url: "/docker-swarm"
     - title: Elastic Beanstalk
       url: "/elastic-beanstalk"
-    - title: Microsoft Azure
-      url: "/microsoft-azure"
+    - title: Docker SWARM
+      url: "/docker-swarm"
 
 - title: Integrations
   url: "/integrations"

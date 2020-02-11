@@ -181,14 +181,14 @@
   links:
   - title: Deploy to Kubernetes
     localurl: /docs/deploy-to-kubernetes/codefresh-kubernetes-integration-demochat-example/ 
+  - title: Deploy to Azure
+    localurl: /docs/deploy-your-containers/microsoft-azure/    
   - title: Deploy to ECS
     localurl: /docs/deploy-your-containers/amazon-ecs/
-  - title: Deploy to Docker Swarm
-    localurl: /docs/deploy-your-containers/docker-swarm/
   - title: Elastic Beanstalk
     localurl: /docs/deploy-your-containers/elastic-beanstalk/
-  - title: Deploy to Azure
-    localurl: /docs/deploy-your-containers/microsoft-azure/
+  - title: Deploy to Docker Swarm
+    localurl: /docs/deploy-your-containers/docker-swarm/
   - title: Deploy to a VM with Packer
     localurl: /docs/yaml-examples/examples/packer-gcloud/
   - title: Deploy with Terraform
