@@ -13,7 +13,7 @@ Recent Codefresh updates:
 - Beta Support for Helm 3 - [documentation]({{site.baseurl}}/docs/new-helm/helm3/)
 - Use Github actions as Codefresh pipeline steps - [documentation]({{site.baseurl}}/docs/integrations/github-actions/)
 - Publish a JAR to Artifactory/Nexus - [documentation]({{site.baseurl}}/docs/learn-by-example/java/publish-jar/)
-- New [dashboards for builds](https://g.codefresh.io/builds)
+- New [dashboard](https://g.codefresh.io/builds) for builds - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/monitoring-pipelines/)
   *  The git-event name is now included
   *  Event-specific additional information is now included
   *  The trigger name is now included
@@ -25,6 +25,7 @@ Recent Codefresh updates:
   * Clearer messages for confirmation/error dialogs
   * New in-app notifications for plan upgrades and downgrades
   * New in-app notifications for subscription payment issues 
+- New UX flow for the signup process
 
 ### January 2020
 
