@@ -78,6 +78,8 @@ This pipeline does the following:
 1. Runs [cf_export]({{site.baseurl}}/docs/codefresh-yaml/variables/#exporting-environment-variables-from-a-freestyle-step) to create a pipeline variable with the path of the google service account
 1. Runs `terraform init/apply` to create the VM on Google cloud.
 
+>For simplicity, we auto-approve the terraform plan in the example pipeline. In a production pipeline you would instead use an [approval step ]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/) to inspect the plan, before actually applying it.
+
 The pipeline needs a [single environment variable]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-settings) that holds the content of the service account.
 
 
@@ -93,7 +95,11 @@ max-width="60%"
 
 Run the pipeline and see your deployment succeed.
 
-Note that in a production pipeline you should also handle the [Terraform state](https://www.terraform.io/docs/state/) in a proper manner. The example provided is using a file for [state storage](https://www.terraform.io/docs/backends/index.html) which is not appropriate when using Terraform in a team environment.
+
+Note that in a production pipeline you should also handle the [Terraform state](https://www.terraform.io/docs/state/) in a proper manner. The example provided is using a file for [state storage](https://www.terraform.io/docs/backends/index.html) which is not appropriate when using Terraform in a team environment. Instead you should use one of the [storage backends](https://www.terraform.io/docs/backends/types/index.html) that support High Availability and Locking.
+
+
+
 
 ## Handling Pull requests
 
