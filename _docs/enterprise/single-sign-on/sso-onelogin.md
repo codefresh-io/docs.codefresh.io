@@ -107,7 +107,7 @@ max-width="90%"
 
 Note this down.
 
-### Step 2: Setup Login and Redirect URI's
+### Step 3: Setup Login and Redirect URI's
 
 Go back to the OneLogin dashboard.
 
