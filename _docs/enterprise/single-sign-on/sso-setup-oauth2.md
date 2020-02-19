@@ -102,6 +102,7 @@ Once you setup the Identity Provider, do the following
 
 1. Go to the collaborators screen by clicking on *People* on the left sidebar (under User Management)
 1. Add an active user that will be used for testing. We recommend you use your own user
+1. Change Login methog by selecting your Auth provider in the SSO drop-down
  
 
 

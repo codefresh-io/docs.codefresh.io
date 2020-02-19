@@ -26,6 +26,7 @@ Recent Codefresh updates:
   * New in-app notifications for plan upgrades and downgrades
   * New in-app notifications for subscription payment issues 
 - New UX flow for the signup process
+- Updated OneLogin SSO support - [documentation]({{site.baseurl}}/docs/enterprise/single-sign-on/sso-onelogin/)
 
 ### January 2020
 
