@@ -20,8 +20,8 @@ Log in to the [OneLogin Administration Dashboard](https://www.onelogin.com/), an
 
 {% include image.html 
 lightbox="true" 
-file="/images/enterprise/sso/onelogin/image2.png" 
-url="/images/enterprise/sso/onelogin/image2.png"
+file="/images/enterprise/sso/onelogin/step1.png" 
+url="/images/enterprise/sso/onelogin/step1.png"
 alt="OneLogin Dashboard"
 caption="OneLogin Dashboard"
 max-width="40%"
@@ -31,8 +31,8 @@ Find the OpenId Connect App from the search field.
 
 {% include image.html 
 lightbox="true" 
-file="/images/enterprise/sso/onelogin/image11.png" 
-url="/images/enterprise/sso/onelogin/image11.png"
+file="/images/enterprise/sso/onelogin/step2.png" 
+url="/images/enterprise/sso/onelogin/step2.png"
 alt="Locating the OpenId Connect App"
 caption="Locating the OpenId Connect App"
 max-width="100%"
@@ -42,8 +42,8 @@ Setup a Codefresh application
 
 {% include image.html 
 lightbox="true" 
-file="/images/enterprise/sso/onelogin/image7.png" 
-url="/images/enterprise/sso/onelogin/image7.png"
+file="/images/enterprise/sso/onelogin/step3.png" 
+url="/images/enterprise/sso/onelogin/step3.png"
 alt="Adding a new application"
 caption="Adding a new application"
 max-width="90%"
@@ -54,8 +54,8 @@ Open the SSO tab to get the Client ID and client Secret
 
 {% include image.html 
 lightbox="true" 
-file="/images/enterprise/sso/onelogin/image8.png" 
-url="/images/enterprise/sso/onelogin/image8.png"
+file="/images/enterprise/sso/onelogin/step4.png" 
+url="/images/enterprise/sso/onelogin/step4.png"
 alt="Copying the values of Client ID and Secret"
 caption="Copying the values of Client ID and Secret"
 max-width="90%"
@@ -70,8 +70,8 @@ Go back into Codefresh and choose OneLogin at the [SSO Settings](https://g.codef
 
 {% include image.html 
 lightbox="true" 
-file="/images/enterprise/sso/onelogin/image1.png" 
-url="/images/enterprise/sso/onelogin/image1.png"
+file="/images/enterprise/sso/onelogin/step5.png" 
+url="/images/enterprise/sso/onelogin/step5.png"
 alt="Choosing OneLogin for Auth"
 caption="Choosing OneLogin for Auth"
 max-width="20%"
@@ -86,8 +86,8 @@ In the configuration screen fill in the following:
 
 {% include image.html 
 lightbox="true" 
-file="/images/enterprise/sso/onelogin/image4.png" 
-url="/images/enterprise/sso/onelogin/image4.png"
+file="/images/enterprise/sso/onelogin/step6.png" 
+url="/images/enterprise/sso/onelogin/step6.png"
 alt="Entering Codefresh Settings"
 caption="Entering Codefresh Settings"
 max-width="90%"
@@ -98,8 +98,8 @@ After clicking SAVE you’ll see the generated Client Name:
 
 {% include image.html 
 lightbox="true" 
-file="/images/enterprise/sso/onelogin/image12.png" 
-url="/images/enterprise/sso/onelogin/image12.png"
+file="/images/enterprise/sso/onelogin/step7.png" 
+url="/images/enterprise/sso/onelogin/step7.png"
 alt="Getting the auto-generated Client Name"
 caption="Getting the auto-generated Client Name"
 max-width="90%"
@@ -119,8 +119,8 @@ Use the Client Name from the previous section to generate the Login Url and Redi
 
 {% include image.html 
 lightbox="true" 
-file="/images/enterprise/sso/onelogin/image9.png" 
-url="/images/enterprise/sso/onelogin/image9.png"
+file="/images/enterprise/sso/onelogin/step8.png" 
+url="/images/enterprise/sso/onelogin/step8.png"
 alt="Login and Redirect URI"
 caption="Login and Redirect URI"
 max-width="90%"
