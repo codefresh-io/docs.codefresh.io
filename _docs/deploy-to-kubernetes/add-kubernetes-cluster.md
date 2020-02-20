@@ -31,7 +31,9 @@ make sure that you allow the following IPs to come through.
 
 All the IPs are NAT gateways, and therefore you only need to enable specific IPs instead of ranges.
 
-Note: You only need to do this if you use the SAAS version of Codefresh. For On-premise and [Hybrid installations]({{site.baseurl}}/docs/enterprise/behind-the-firewall/), there is no need to tamper with your firewall.
+>If you do use these IPs we **strongly encourage** regular monitoring of this doc page.
+
+Notice that you only need to deal with this process if you use the SAAS version of Codefresh. For On-premise and [Hybrid installations]({{site.baseurl}}/docs/enterprise/behind-the-firewall/), there is no need to tamper with your firewall.
 
 ## Visit the cluster integration screen
 
