@@ -23,7 +23,7 @@ max-width="70%"
 You can use the API in various ways:
 
 * From your local workstation with any tool that speaks HTTP (such as [postman](https://github.com/postmanlabs), [httpie](https://httpie.org/), [curl](https://curl.haxx.se/) etc.).
-* From another HTTP enabled system such as Jenkins. You can trigger Codefresh pipelines from Jenkins jobs.
+* From another HTTP enabled system such as Jenkins. For example, you can trigger [Codefresh pipelines from Jenkins jobs]({{site.baseurl}}/docs/integrations/jenkins-integration/#calling-codefresh-pipelines-from-jenkins-jobs).
 * Using the [Codefresh command line interface](https://codefresh-io.github.io/cli/) which itself uses the API .
 * Calling it programmatically from any other system. You can use your favorite programming language to make HTTP calls to Codefresh.
 

@@ -25,7 +25,6 @@
   - title: Shared Configuration
     localurl: /docs/configure-ci-cd-pipeline/shared-configuration/  
   - title: Pipeline caching
-    new: true
     localurl: /docs/configure-ci-cd-pipeline/pipeline-caching/
   - title: Public logs and status badges
     localurl: /docs/configure-ci-cd-pipeline/build-status/
@@ -53,10 +52,8 @@
   - title: Scala
     localurl: /docs/learn-by-example/scala/scala-hello-world/
   - title: C/C++
-    new: true
     localurl: /docs/learn-by-example/cc/
   - title: C# (.NET core)
-    new: true
     localurl: /docs/learn-by-example/dotnet/
   - title: Android (Mobile)
     localurl: /docs/learn-by-example/mobile/android/      
