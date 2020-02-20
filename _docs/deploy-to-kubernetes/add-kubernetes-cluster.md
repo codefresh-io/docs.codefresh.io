@@ -12,6 +12,29 @@ toc: true
 Codefresh offers its own Kubernetes dashboard that allows you to inspect the services and namespaces
 in your cluster. To activate this dashboard, you need to connect your cluster to your Codefresh account first.
 
+## Prerequisites
+
+Codefresh SAAS needs network connectivity to connect to your cluster. If your cluster is behind a restrictive firewall
+make sure that you allow the following IPs to come through.
+
+
+- 104.154.63.253    
+- 104.197.160.122    
+- 18.213.176.41    
+- 13.59.201.170    
+- 104.155.130.126    
+- 147.234.23.250    
+- 34.233.31.180   
+- 104.154.99.188     
+- 146.148.100.14    
+
+
+All the IPs are NAT gateways, and therefore you only need to enable specific IPs instead of ranges.
+
+Note: You only need to do this if you use the SAAS version of Codefresh. For On-premise and [Hybrid installations]({{site.baseurl}}/docs/enterprise/behind-the-firewall/), there is no need to tamper with your firewall.
+
+## Visit the cluster integration screen
+
 
 Start by going into your Account Configuration, by clicking on *Account Settings* on the left sidebar. On the first section called *Integrations* click the *Configure* button next to *Kubernetes*.
 
