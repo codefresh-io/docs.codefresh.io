@@ -74,28 +74,22 @@ From the same screen you can also revoke keys if you don't need them anymore.
 
 ### Access scopes
 
-The following scopes are available:
+The following resources can be targeted with the API:
 
-* *Build* - Full access to all build information
-* *Build Read* - Get all information from builds
-* *Build Read status* - Get build status
-* *Build Write* - Change Build information
-* *Cluster* - Full access to Kubernetes cluster integrations
-* *Cluster Read* - Read information from Kubernetes integrations
-* *Cluster Write* - Change Kubernetes integrations
-* *Pipeline* - Full access to pipelines
-* *Pipeline Approve* - Ability to approve pipeline
-* *Pipeline Read* - Read information from pipelines
-* *Pipeline Run* - Execute/Run pipelines
-* *Pipeline write* - Edit pipeline information
-* *Project* - Full access to projects
-* *Project Read* - Get information from projects
-* *Project Write* - Change project information
-* *Step-type* - Full access to steps
-* *Step-type Read* - Read information from existing steps
-* *Step-type Write* - Change/Edit custom steps.
+* *Agent* - Used for [Codefresh Hybrid installation]({{site.baseurl}}/docs/enterprise/behind-the-firewall/)
+* *Audit* - Read [Audit logs]({{site.baseurl}}/docs/enterprise/audit-logs/)
+* *Build* - Get/change [build status]({{site.baseurl}}/docs/configure-ci-cd-pipeline/monitoring-pipelines/)
+* *Cluster* - [Access control]({{site.baseurl}}/docs/enterprise/access-control/) for [Kubernetes clusters]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/)
+* *Environments-v2* - Read/Write [Environment Dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/environment-dashboard/) information
+* *Github Action* - Run [Github actions inside Codefresh pipelines]({{site.baseurl}}/docs/integrations/github-actions/)
+* *Pipeline* - [Access control]({{site.baseurl}}/docs/enterprise/access-control/) for [pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
+* *Repos* - Refers to [Git repositories]({{site.baseurl}}/docs/integrations/git-providers/)
+* *Step Type* - Refers to [custom pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/#creating-a-typed-codefresh-plugin)
 
-Check that ones that you wish to use with this key
+
+
+The scopes available for each resource, are different depending on the type of the resource.
+Check the ones that you wish to use with this key.
 
 ## Using the API Key with the Codefresh CLI
 
@@ -238,7 +232,7 @@ visible in the GUI under the correct project.
 ## Using Codefresh from within Codefresh
 
 The Codefresh CLI is also packaged in a [Docker image on its own](https://hub.docker.com/r/codefresh/cli/). This makes it
-very easy to use it from within Codefresh in a [free style step]({{ site.baseurl }}/docs/codefresh-yaml/steps/freestyle/).
+very easy to use it from within Codefresh in a [free style step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/).
 
 For example, you can easily call pipeline B from pipeline A  
 with the following step:
