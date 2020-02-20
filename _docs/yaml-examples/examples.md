@@ -15,8 +15,7 @@ Codefresh enables you to define the steps of your pipeline in a [YAML file]({{si
 Codefresh is agnostic as far as programming languages are concerned. All major programming languages are supported:
 
 - [Go Web App]({{site.baseurl}}/docs/learn-by-example/golang/golang-hello-world/) or [Go CLI]({{site.baseurl}}/docs/learn-by-example/golang/goreleaser) 
-- [Spring Java app with Maven]({{site.baseurl}}/docs/learn-by-example/java/spring-boot-2/) or [Gradle]({{site.baseurl}}/docs/learn-by-example/java/gradle/)
-- [Upload JAR to Nexus/Artifactory]({{site.baseurl}}/docs/learn-by-example/java/spring-boot-2/) or [Gradle]({{site.baseurl}}/docs/learn-by-example/java/publish-jar/)
+- [Spring Java app with Maven]({{site.baseurl}}/docs/learn-by-example/java/spring-boot-2/) or [Gradle]({{site.baseurl}}/docs/learn-by-example/java/gradle/). Also how to [upload JAR to Nexus/Artifactory]({{site.baseurl}}/docs/learn-by-example/java/publish-jar/) 
 - Node [Express.js App]({{site.baseurl}}/docs/learn-by-example/nodejs/lets-chat/) or [React.js App]({{site.baseurl}}/docs/learn-by-example/nodejs/react/)
 - [Php App]({{site.baseurl}}/docs/learn-by-example/php)
 - [Python Django App]({{site.baseurl}}/docs/learn-by-example/python/django/)
