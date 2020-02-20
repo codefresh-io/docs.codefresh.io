@@ -67,7 +67,7 @@ The size of your nodes directly relates to the size required for your pipelines 
 For the storage space needed by the `dind` pod we suggest:
 
 * [Local SSD](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/local-ssd) in the case of GCP 
-* [EBS](https://aws.amazon.com/ebs/) in the case of Amazon
+* [EBS](https://aws.amazon.com/ebs/) in the case of Amazon. See also the [notes](#installing-on-aws) about getting caching working.
 
 ### Networking requirements
 
@@ -131,6 +131,134 @@ If you are installing Codefresh runner on the Kubernetes cluster on [GKE](https:
 ```
 kubectl create clusterrolebinding NAME --clusterrole cluster-admin --user <YOUR_USER>
 ```
+
+### Installing on AWS
+
+If you install the Codefresh runner on [EKS](https://aws.amazon.com/eks/) or any other custom cluster (e.g. with kops) in Amazon you need to configure it properly to work with EBS volume in order to gain [caching]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipeline-caching/).
+
+Make sure that the  node group where `dind-volume-provisioner-venona` deployment is running has the appropriate permissions to create, attach, detach volumes:
+
+{% highlight json %}
+{% raw %}
+
+  {
+      "Version": "2012-10-17",
+      "Statement": [
+          {
+              "Effect": "Allow",
+              "Action": [
+                  "ec2:DescribeVolumes"
+              ],
+              "Resource": [
+                  "*"
+              ]
+          },
+          {
+              "Effect": "Allow",
+              "Action": [
+                  "ec2:CreateVolume",
+                  "ec2:ModifyVolume",
+                  "ec2:CreateTags",
+                  "ec2:DescribeTags",
+                  "ec2:DetachVolume",
+                  "ec2:AttachVolume"
+              ],
+              "Resource": [
+                  "*"
+              ]
+          }
+      ]
+  }
+{% endraw %}
+{% endhighlight %}
+
+
+Then in order to proceed with Storage Class installation please choose one of the Availability Zones you want to be used for your pipeline builds:
+
+{% highlight yaml %}
+{% raw %}
+    apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: venona-ebs
+    parameters:
+      AvailabilityZone: us-west-2c # <----(Please change it to yours)
+      volumeBackend: ebs
+    provisioner: codefresh.io/dind-volume-provisioner-venona-codefresh-runtime
+{% endraw %}
+{% endhighlight %}
+
+Finally you need to change your Codefresh runtime configuration.
+
+The same AZ you selected before should be used in nodeSelector inside Runtime Configuration:
+
+  To get a list of all available runtimes execute:
+
+```   
+codefresh get runtime-environments
+```
+
+Choose the runtime you have just added and get its yaml representation:
+
+```
+codefresh get runtime-environments ivan@wawa-ebs.us-west-2.eksctl.io/codefresh-runtime -o yaml > runtime.yaml
+```
+
+The nodeSelector `failure-domain.beta.kubernetes.io/zone: us-west-2c` (Please change it to yours) should be added to the `dockerDaemonScheduler` block. It should be at the same level as `clusterProvider` or `namespace`. Also the `pvcs` block should be modified to use the Storage Class you created above (`venona-ebs`). Here is the example:
+
+`runtime.yaml`
+{% highlight yaml %}
+{% raw %}
+version: null
+metadata:
+  agent: true
+  trial:
+    endingAt: 1577273400263
+    reason: Codefresh hybrid runtime
+    started: 1576063800333
+  name: ivan@wawa-ebs.us-west-2.eksctl.io/codefresh-runtime
+  changedBy: ivan-codefresh
+  creationTime: '2019/12/11 11:30:00'
+runtimeScheduler:
+  cluster:
+    clusterProvider:
+      accountId: 5cb563d0506083262ba1f327
+      selector: ivan@wawa-ebs.us-west-2.eksctl.io
+    namespace: codefresh-runtime
+  annotations: {}
+dockerDaemonScheduler:
+  cluster:
+    clusterProvider:
+      accountId: 5cb563d0506083262ba1f327
+      selector: ivan@wawa-ebs.us-west-2.eksctl.io
+    namespace: codefresh-runtime
+    nodeSelector:
+      failure-domain.beta.kubernetes.io/zone: us-west-2c
+  annotations: {}
+  dockerDaemonParams: null
+  pvcs:
+    - name: dind
+      volumeSize: 30Gi
+      storageClassName: venona-ebs
+      reuseVolumeSelector: 'codefresh-app,io.codefresh.accountName'
+      reuseVolumeSortOrder: 'pipeline_id,trigger'
+  userAccess: true
+extends:
+  - system/default/hybrid/k8s
+description: >-
+  Runtime environment configure to cluster: ivan@wawa-ebs.us-west-2.eksctl.io
+  and namespace: codefresh-runtime
+accountId: 5cb563d0506083262ba1f327
+{% endraw %}
+{% endhighlight %}
+
+Update your runtime environment with the [patch command](https://codefresh-io.github.io/cli/operate-on-resources/patch/):
+
+```
+codefresh patch runtime-environment ivan@wawa-ebs.us-west-2.eksctl.io/codefresh-runtime -f codefresh-runner.yaml
+```
+
+
 
 ### Security roles
 
