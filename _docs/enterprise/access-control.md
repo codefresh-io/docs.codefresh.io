@@ -42,7 +42,7 @@ People with **User** access level can still use the Codefresh UI for day-to-day 
 *  [Shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/)
 *  [API token generation]({{site.baseurl}}/docs/integrations/codefresh-api/#authentication-instructions)
 *  [SSO Settings]({{site.baseurl}}/docs/enterprise/single-sign-on/)
-*  [Runtime environment selection]({{site.baseurl}}/docs/integrations/notifications/slack-integration/)
+*  [Runtime environment selection]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-settings)
 *  [Slack settings]({{site.baseurl}}/docs/integrations/notifications/slack-integration/)
 *  [Team/Users settings]({{site.baseurl}}/docs/enterprise/ent-account-mng/)
 *  ABAC for Kubernetes clusters
