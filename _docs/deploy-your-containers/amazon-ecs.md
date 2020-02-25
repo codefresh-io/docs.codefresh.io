@@ -75,7 +75,7 @@ steps:
     repo: "${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}"
     revision: "${{CF_BRANCH}}"
     stage: "clone"
-    git: github-guy
+    git: github
   BuildingDockerImage:
     stage: "build"
     title: Building Docker Image
