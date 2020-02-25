@@ -335,7 +335,7 @@
   pages:
     - title: Microsoft Azure
       url: "/microsoft-azure"    
-    - title: Amazon ECS
+    - title: Amazon ECS/Fargate
       url: "/amazon-ecs"
     - title: Elastic Beanstalk
       url: "/elastic-beanstalk"

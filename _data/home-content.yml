@@ -180,7 +180,7 @@
     localurl: /docs/deploy-to-kubernetes/codefresh-kubernetes-integration-demochat-example/ 
   - title: Deploy to Azure
     localurl: /docs/deploy-your-containers/microsoft-azure/    
-  - title: Deploy to ECS
+  - title: Deploy to ECS/Fargate
     localurl: /docs/deploy-your-containers/amazon-ecs/
   - title: Elastic Beanstalk
     localurl: /docs/deploy-your-containers/elastic-beanstalk/

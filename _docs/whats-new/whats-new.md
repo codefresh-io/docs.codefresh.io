@@ -29,6 +29,7 @@ Recent Codefresh updates:
 - Updated OneLogin SSO support - [documentation]({{site.baseurl}}/docs/enterprise/single-sign-on/sso-onelogin/)
 - Published Codefresh Platform IPs - [documentation]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/#prerequisites)
 - Installing the Codefresh Runner in AWS - [documentation]({{site.baseurl}}/docs/enterprise/codefresh-runner/#installing-on-aws)
+- Amazon ECS/Fargate deployment example - [documentation]({{site.baseurl}}/docs/deploy-your-containers/amazon-ecs/)
 
 ### January 2020
 
