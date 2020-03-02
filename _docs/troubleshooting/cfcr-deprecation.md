@@ -56,7 +56,12 @@ Some examples of self-hosted registries are:
 
 At this phase, customers that depend on the private Codefresh should look at their pipelines and deployments and understand where the private Codefresh registry is used. 
 
-As an example a Kubernetes deployment like the following:
+
+### Locating images from the private Codefresh registry in clusters
+
+The most critical action point is to locate docker images that reside in the Codefresh registry and are actually deployed in production clusters.
+
+Here is an example of a Kubernetes deployment manifest.
 
 `example-deployment.yaml`
 {% highlight yaml %}
@@ -104,20 +109,40 @@ ingress:
  {% endraw %}
 {% endhighlight %}
 
+In all these cases, deployment manifests should be changed to mention Docker images that are found in the external Docker registry
+
+### Locating images from the private Codefresh registry in pipelines
+
+TBD
+
 
 ### Promoting images from the private registry to an external ones.
 
+TBD
+
 ### Summary of actions and results of migration phase A
+
+TBD
 
 ## Phase B Migration actions until 1st April 2020
 
+TBD
+
 ### Summary of actions and results of migration phase B
+
+TBD
 
 ## Phase C Migration actions 15th April 2020
 
+TBD
+
 ### Summary of actions and results of migration phase C
 
+TBD
+
 ## Complete removal of the Codefresh private registry on 15th April 2020
+
+TBD
 
 
 
