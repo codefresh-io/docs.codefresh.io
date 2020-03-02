@@ -464,7 +464,9 @@
     - title: Git step migration
       url: "/git-step-migration"
     - title: Personal Git Deprecation
-      url: "/personal-git-deprecation"
+      url: "/personal-git-deprecation"   
+    - title: CF Registry Deprecation
+      url: "/cfcr-deprecation" 
 - title: Whats new?
   url: "/whats-new"
   pages:
