@@ -54,7 +54,7 @@ Don't worry, Codefresh will not do anything without your explicit approval, so d
 in the request window. The permissions requested by Codefresh are needed in order to build and deploy your projects.
 
 
-This is the GitHub permissions window. Click the button labeled *Authorize access* to continue.
+This is the GitHub permissions window. Click the button labeled *Authorize codefresh-io* to continue.
 
 {% include 
 image.html 
@@ -66,7 +66,7 @@ caption="Github authorization page (click image to enlarge)"
 max-width="50%" 
 %}
 
-If you use Bitbucket the following permissions window will appear instead. Click the button labeled *grant access* to continue.
+If you use Bitbucket the following permissions window will appear instead. Click the button labeled *Grant access* to continue.
 
 
 {% include 
@@ -97,7 +97,7 @@ Once you accept the respective permissions window, Codefresh will automatically 
 
 ## 3. Verify Your Account Details
 
-Once Codefresh reads your details from your Identity provider it will present to you the account details for your new account. Review your account details, make the relevant changes, and click *SIGN UP*. 
+Once Codefresh reads your details from your Identity provider it will present to you the account details for your new account. Review your account details, make the relevant changes, and click *NEXT*. 
 
 {% include 
 image.html 
@@ -109,7 +109,43 @@ caption="Codefresh account details (click image to enlarge)"
 max-width="40%" 
 %}
 
+Name your account, and click *NEXT*.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/getting-started/create-account/codefresh-accountname.png" 
+url="/images/getting-started/create-account/codefresh-accountname.png" 
+alt="Codefresh account name" 
+caption="Codefresh account name (click image to enlarge)" 
+max-width="40%" 
+%}
+
+Finally, answer the questions to personalize your account and click *FINISH*.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/getting-started/create-account/codefresh-personalize.png" 
+url="/images/getting-started/create-account/codefresh-personalize.png" 
+alt="Codefresh personalize account" 
+caption="Codefresh personalize account (click image to enlarge)" 
+max-width="40%" 
+%}
+
 Congratulations! Your new Codefresh account is now ready.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/getting-started/create-account/codefresh-dashboard.png" 
+url="/images/getting-started/create-account/codefresh-dashboard.png" 
+alt="Codefresh dashboard" 
+caption="Codefresh dashboard (click image to enlarge)" 
+max-width="40%" 
+%}
+
+
 
 The next step is learning how to [build your first application]({{site.baseurl}}/docs/getting-started/create-a-basic-pipeline/).
 
