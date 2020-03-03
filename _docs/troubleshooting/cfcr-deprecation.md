@@ -47,8 +47,8 @@ Some examples of self-hosted registries are:
 | Migration Phase          | Date/Milestone                | Codefresh private Registry status                  |
 | -------------- | ---------------------------- |-------------------------|
 | Phase A   | Today - 15th March 2020 | Fully functional (push/pull allowed) |
-| Phase B   | 15th March- 1st April 2020 |   Fully functional (push/pull allowed) |
-| Phase C   | 1st April - 15th April 2020 |  No pushes are allowed. Registry is read-only |
+| Phase B   | 15th March- 1st April 2020 |   New build step and image API are available. |
+| Phase C   | 1st April - 15th April 2020 |  No pushes are allowed. Registry becomes read-only |
 |           | 15th April 2020 | Registry is removed from service |
 
 
@@ -97,32 +97,142 @@ service:
   type: LoadBalancer
   externalPort: 80
   internalPort: 8080
-resources:
-  limits:
-    cpu: 100m
-    memory: 128Mi
-  requests:
-    cpu: 100m
-    memory: 128Mi
-ingress:
-  enabled: false
  {% endraw %}
 {% endhighlight %}
 
-In all these cases, deployment manifests should be changed to mention Docker images that are found in the external Docker registry
+In all these cases, deployment manifests should be changed to mention Docker images that are found in the external Docker registry.
 
 ### Locating images from the private Codefresh registry in pipelines
 
-TBD
+It is also possible that images from the private Registry are used as [freestyle steps]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) directly in pipelines.
+
+Here is an example:
+
+ `codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+stages:
+  - prepare
+  - test
+steps:
+  main_clone:
+    title: Cloning main repository...
+    stage: prepare
+    type: git-clone
+    repo: 'codefresh-contrib/react-sample-app'
+    revision: master
+    git: github
+  my_unit_tests:
+    title: Unit test
+    stage: test
+    image: r.cfcr.io/kostis-codefresh/my-node-dev-image:9.0
+    commands:
+      - yarn install
+      - yarn test
+{% endraw %}
+{% endhighlight %}
+
+The second step in this pipeline is using an image from the private registry as mentioned by `r.cfcr.io/kostis-codefresh/my-node-dev-image`. Image references like this will need to be changed to mention an external registry.
+
+Explicit [push steps]({{site.baseurl}}/docs/codefresh-yaml/steps/push/) must also change to refer to an external registry:
+
+ `codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+stages:
+- checkout
+- build
+- push
+steps:
+  main_clone:
+    title: Cloning main repository...
+    type: git-clone
+    stage: checkout
+    repo: 'codefreshdemo/cf-example-build-and-push'
+    revision: 'master'
+    git: github
+  build_my_app:
+    title: Building Node.Js Docker Image
+    type: build
+    stage: build
+    image_name: my-node-js-app
+    working_directory: '.'
+    tag: 'master'
+    dockerfile: Dockerfile
+  push_to_my_registry:
+    stage: 'push'
+    type: push
+    title: Pushing to internal registry
+    candidate: ${{build_my_app}}
+    tag: 'v1.0.0'
+    registry: cfcr
+{% endraw %}
+{% endhighlight %}
+
+In this pipeline the last step is pushing a docker image to the internal Codefresh. You will need to change the `registry` property to the nane of an external registry.
+
+>Note the name `cfcr` shown above is just a convention. You can find the actual name given to the private Codefresh in the [Registry settings screen](https://g.codefresh.io/account-admin/account-conf/integration/registry). From the same screen you can also see the name of your external registry
 
 
 ### Promoting images from the private registry to an external ones.
 
-TBD
+Another migration step for this phase is to move all existing images from the private Codefresh registry to the external one. You can use the [Image dashboard](https://g.codefresh.io/images/) to locate and analyze your existing Docker images. You can then migrate Docker images in 3 ways
+
+1. If you know the pipeline that created this image, you can simply rerun the pipeline with a new push step
+1. You can promote the image directly from the private Registry to your external one
+1. You can perform mass migration with a migration script
+
+The first case is linked with the push steps mentioned in the previous section.
+
+If your existing pipeline pushes to cfcr:
+
+{% highlight yaml %}
+{% raw %}
+  push_to_my_registry:
+    stage: 'push'
+    type: push
+    title: Pushing to internal registry
+    candidate: ${{build_my_app}}
+    tag: 'v1.0.0'
+    registry: cfcr
+{% endraw %}
+{% endhighlight %}
+
+then you can simply change the `registry` property to your external registry and re-run the pipeline.
+
+{% highlight yaml %}
+{% raw %}
+  push_to_my_registry:
+    stage: 'push'
+    type: push
+    title: Pushing to external registry
+    candidate: ${{build_my_app}}
+    tag: 'v1.0.0'
+    registry: my-external-registry
+{% endraw %}
+{% endhighlight %}
+
+Note that `my-external-registry` is just the unique name assigned to your registry from the [Registry settings screen](https://g.codefresh.io/account-admin/account-conf/integration/registry).
+
+You can also promote images from the [manually from the UI]({{site.baseurl}}/docs/docker-registries/codefresh-registry/#promoting-docker-images)or with a [pipeline]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/#promoting-docker-images).
+
+If you wish to perform migration of Docker images in a batch manner, you can also use the [migration script offered by Codefresh](https://github.com/codefresh-io/cfcr-migration).
+
+
+
 
 ### Summary of actions and results of migration phase A
 
-TBD
+Here is a summary of customer actions at the end of 15th March 2020
+
+* You need to evaluate external Docker registry services and connect at least one in your Codefresh account
+* Change Kubernetes deployments and Helm releases to pull images from the external Registry instead of the private one
+* Do not use private Codefresh images in any pipeline (especially freestyle steps). Use images from the external registry only
+* Change all pipeline steps to use specifically the external Docker registry
+* Promote essential images from the internal registry to the external Docker registry
+
 
 ## Phase B Migration actions until 1st April 2020
 
