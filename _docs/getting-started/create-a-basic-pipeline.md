@@ -127,7 +127,7 @@ You now have a new project and can start adding pipelines in it.
 ### Creating a new pipeline
 
 Click the *New pipeline* button in order to create a pipeline.
-Enter a name (e.g. `basic-build`). Make sure that the option *Add Git commit trigger* is selected.
+Enter a name (e.g. `basic-build`). 
 
 {% include 
 image.html 
@@ -139,7 +139,7 @@ caption="Create a new pipeline (click image to enlarge)"
 max-width="50%" 
 %}
 
-Find your repository from the list and select it. This way your pipeline will be automatically launched when a commit happens on this repository. 
+Find your repository from the list and select it. Make sure that the option *Add Git commit trigger* is selected. This way your pipeline will be automatically launched when a commit happens on this repository. 
 
 
 Click the *Create* button. Your pipeline was created and you should now see the pipeline editor. Here you can describe what the pipeline will do using [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/).
@@ -178,10 +178,10 @@ steps:
 
 This pipeline contains just two steps.
 
-* A [Git clone step]({{site.baseurl}}/docs/codefresh-yaml/variables/) for checking out the code
-* A [Build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) for building the docker image
+* A [`git-clone`]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) step for checking out the code
+* A [`build`]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) step for building the docker image
 
-The clone step is also using some [built-in pipeline variables]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/). They instruct the pipeline to checkout the exact code that is described from the commit of the trigger. Don't worry if the exact details are not clear to you yet. 
+The clone step is also using some [built-in pipeline variables]({{site.baseurl}}/docs/codefresh-yaml/variables/). They instruct the pipeline to checkout the exact code that is described from the commit of the trigger. Don't worry if the exact details are not clear to you yet. 
 
 The build step uses a [Dockerfile](https://github.com/codefresh-contrib/python-flask-sample-app/blob/master/Dockerfile) that is located at the root folder of the project and creates a Docker image with tag `v1.0.0`.
 
