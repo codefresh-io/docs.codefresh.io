@@ -250,7 +250,7 @@ At that start of Phase B (15th March 2020) Codefresh will offer the following ne
 Once these features are available for customers, you need to inspect your pipelines and make sure you:
 
 1. Set as default registry in your Codefresh account the external one
-1. Set as default caching registry in your Codefresh account the external one
+1. Set as default caching registry in your Codefresh account the external one  (or in your Hybrid Codefresh runner)
 1. If you have more than one external registries, override the default one in any build steps that you want to use another registry other than the default (if this scenario is useful to you)
 1. Disable auto-push on pipelines that don't need it if they also have a push step.
 
@@ -283,26 +283,57 @@ For the third point, here is the syntax for disabling auto-push
 
 This way you get maximum flexibility on what build and push steps are doing in your pipelines.
 
-### Using the new Docker image dashboard
+### Using the new Docker image dashboard/API
+
+The Codefresh CLI as well as the Codefresh UI will now show images for all external registries. This means that all Docker images in pipelines and/or scripts will need to have an explicit prefix in order for Codefresh to understand which external registry they belong to (if you have more than one).
+
+If you don't have a prefix, Codefresh will assume that this image refers to Dockerhub.
+
+You will need to 
+
+* Check all custom scripts you have that use Codefresh CLI and make sure that images mentioned refer to your external registry
+* Check any API integrations you have created with the Codefresh Image API and make sure that images mentioned refer to your external registry
 
 
 
 
 ### Summary of actions and results of migration phase B
 
-TBD
+Here is a summary of customer actions at the end of 1st March 2020
 
-## Phase C Migration actions 15th April 2020
+* Setup a default registry in your Codefresh account for the registry that is used in push steps as well as caching
+* Decide if you want your build steps to push automatically to the default registry or not
+* Make sure that all your APIs calls or Codefresh CLI invocations mention images with an explicit Docker registry prefix
 
-TBD
+
+## Phase C Migration actions until 15th April 2020
+
+At this phase, the private Codefresh registry will become readonly. Pipelines will be able to pull from it, but all pushes are disallowed.
+
+If you have performed all the migration steps explained in the previous phases, nothing will break. However if you still have push steps that refer to the internal registry or have not selected yet a default registry, your pipelines will now *fail*.
+
+This is also the last opportunity for migrating images from the private Registry to the external one.
 
 ### Summary of actions and results of migration phase C
 
-TBD
+Here is a summary of customer actions at the end of 15th April 2020
+
+* Monitor your pipelines and make sure that they push to the external registry only
+* Double-check your clusters and make sure that they pull from an external registry
+* Check that caching works in your pipelines as well as Hybrid environments by making sure that the external Docker registry has enough capacity.
 
 ## Complete removal of the Codefresh private registry on 15th April 2020
 
-TBD
+The private Docker registry will be removed from service on 15th April 2020
+
+* Pipelines that still pull from it will stop working
+* Kubernetes clusters that will pull from it will have failed deployments
+
+## What to read next
+
+* [Working with Docker registries]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/)
+* [External Docker Registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/)
+* [Accessing a Docker registry from your Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/access-docker-registry-from-kubernetes/)
 
 
 
