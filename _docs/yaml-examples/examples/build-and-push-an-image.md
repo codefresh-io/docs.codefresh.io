@@ -27,6 +27,7 @@ Here is the full pipeline:
 
 `codefresh.yml`
 {% highlight yaml %}
+{% raw %}
 version: '1.0'
 stages:
 - checkout
@@ -47,6 +48,7 @@ steps:
     working_directory: '.'
     tag: 'master'
     dockerfile: Dockerfile
+{% endraw %}
 {% endhighlight %}
 
 If you [create this pipeline]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/) in Codefresh and run it you will see the automatic pushing of the image in the Codefresh registry:
@@ -92,6 +94,7 @@ Here is the full example:
 
 `codefresh.yml`
 {% highlight yaml %}
+{% raw %}
 version: '1.0'
 stages:
 - checkout
@@ -121,6 +124,7 @@ steps:
     tag: 'v1.0.0'
     registry: dockerhub
     image_name: kkapelon/my-node-js-app
+{% endraw %}    
 {% endhighlight %}
 
 Here we use a specific tag - `v1.0.0` but 
