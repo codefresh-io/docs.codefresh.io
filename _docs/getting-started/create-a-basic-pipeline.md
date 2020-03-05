@@ -239,7 +239,7 @@ We need to add the tests in the build process. To do this we will get back to th
 The sample application already has unit tests that can be executed with:
 
 ``` 
-python setup.py test
+pip install pytest && pytest
 ```
 
 Edit the pipeline as below:
@@ -271,8 +271,9 @@ steps:
     title: Running Unit tests
     image: '${{MyAppDockerImage}}'
     stage: test 
-    commands:
-      - python setup.py test    
+    commands: 
+      - pip install pytest
+      - pytest   
 {% endraw %}      
 {% endhighlight %}
 
@@ -435,8 +436,9 @@ steps:
     title: Running Unit tests
     image: '${{MyAppDockerImage}}'
     stage: test 
-    commands:
-      - python setup.py test    
+    commands: 
+      - pip install pytest
+      - pytest      
   MyPushStep:
     title: Pushing to Docker Registry
     type: push
