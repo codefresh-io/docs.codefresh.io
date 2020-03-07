@@ -5,7 +5,7 @@ group: getting-started
 toc: true
 ---
 
-In the [previous quick start guide]({{ site.baseurl }}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/) we have seen how you can deploy quickly an application directly to Kubernetes.
+In the [previous quick start guide]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/) we have seen how you can deploy quickly an application directly to Kubernetes.
 In this guide we will see how we can use [Helm](https://helm.sh/) for deployments and what facilities Codefresh offers to make
 it easier to work with Helm packages.
 
@@ -27,6 +27,8 @@ Codefresh has native support for Helm in a number of ways:
 1. Like the [integrated Docker registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/) Codefresh also gives you an [integrated Helm Repository]({{site.baseurl}}/docs/new-helm/managed-helm-repository/).
 1. You can see the Helm releases and even [perform rollbacks]({{site.baseurl}}/docs/new-helm/helm-releases-management/) from the Helm Dashboard.
 1. You can [browse Helm packages]({{site.baseurl}}/docs/new-helm/add-helm-repository/)  both from public repositories and your internal Helm repository.
+1. You can see Helm releases in the [Environment dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/environment-dashboard/)
+1. You can promote Helm releases with the [Promotion dashboard]({{site.baseurl}}/docs/new-helm/helm-environment-promotion/)
 
 
 ## Overview
@@ -45,9 +47,8 @@ For simplicity reasons, we will use the [built-in Docker registry]({{site.baseur
 ## Prerequisites
 
 It is assumed that:
-  - You have already [added your K8s cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/adding-non-gke-kubernetes-cluster/) into Codefresh
-  - You have already an application that has a Dockerfile and a Helm chart
-  - The server part of Helm is installed in your cluster (Tiller)
+  - You have already [added your Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/adding-non-gke-kubernetes-cluster/) into Codefresh
+  - You have already an application that has a Dockerfile and a Helm chart 
   - Your cluster has pull access to the Codefresh registry. If not read the [previous guide]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/#giving-the-kubernetes-cluster-read-access-to-the-internal-codefresh-registry) or look at the [documentation]({{site.baseurl}}/docs/deploy-to-kubernetes/deploy-to-kubernetes/create-image-pull-secret/)
 
 To verify that your cluster is setup for Helm select the *Helm Releases* item from the left sidebar. You should see the Helm releases in your cluster or an empty screen if you just started.
@@ -62,19 +63,19 @@ caption="Cluster with Helm installed (click image to enlarge)"
 max-width="70%" 
 %}
 
-If you want to follow along feel free to fork this [repository](https://github.com/codefresh-contrib/python-flask-sample-app) in your Git account.
+If you want to follow along feel free to fork this [repository](https://github.com/codefresh-contrib/python-flask-sample-app) in your Git account and look at the [with-helm](https://github.com/codefresh-contrib/python-flask-sample-app/tree/with-helm) branch.
 
 
 ## Deploying a Helm Release to your Kubernetes cluster
 
-Codefresh provides a premade Docker image with Helm that you can use as a [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) to perform a deployment.
+Codefresh provides a [premade Docker image with Helm](https://hub.docker.com/r/codefresh/cfstep-helm) that you can use as a [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) to perform a deployment.
 At its most basic form you can put the following step in your [codefresh.yml]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) file.
 
 `YAML`
 {% highlight yaml %}
 {% raw %}
 DeployMyChart:
-  image: 'codefresh/cfstep-helm:2.9.1'
+  image: 'codefresh/cfstep-helm:3.0.3'
   environment:
     - CHART_REF=charts/python
     - RELEASE_NAME=mypython-chart-prod
@@ -82,10 +83,12 @@ DeployMyChart:
 {% endraw %}
 {% endhighlight %}
 
-We use the `cfstep-helm` image to deploy a chart. There are 3 environment variables that are required. The `CHART_REF` points to the chart inside the git repository. The `RELEASE_NAME` defines the name of the deployment that will be created
-in the cluster. And finally, the `KUBE_CONTEXT` defines which cluster will be used. The name is the same as defined in Codefresh Integrations.
+We use the `cfstep-helm` image to deploy a chart. There are 3 environment variables that are required. The `CHART_REF` points to the [chart inside the git repository](https://github.com/codefresh-contrib/python-flask-sample-app/tree/with-helm/charts/python). The `RELEASE_NAME` defines the name of the deployment that will be created
+in the cluster. And finally, the `KUBE_CONTEXT` defines which cluster will be used. The name is the same as defined in [Codefresh Integrations](https://g.codefresh.io/account-admin/account-conf/integration/kubernetes).
 
 For the full list of variables and modes see the section [using Helm in Codefresh pipelines]({{site.baseurl}}/docs/new-helm/using-helm-in-codefresh-pipeline/)
+
+>Notice that we use Helm 3.x in the example above. If you still use Helm 2.x then select another tag of the `codefresh/cfstep-helm` image that matches your Tiller version. For example if you have installed Tiller 2.9.1 then you need to use the codefresh/cfstep-helm:2.9.1' image instead.
 
 This step will deploy the Helm chart using the default values as found in `values.yaml` inside the chart folder. It would make sense to override the defaults using some parameters in the build. For example instead of tagging your docker image with the branch name (which is always the same for each build), you could tag it with the hash of the source revision which is one of the [offered variables]({{site.baseurl}}/docs/codefresh-yaml/variables/).
 
@@ -95,34 +98,56 @@ Thus the whole pipeline is the following:
 {% highlight yaml %}
 {% raw %}
 version: '1.0'
+stages:
+  - checkout
+  - package
+  - deploy  
 steps:
+  main_clone:
+    title: Cloning main repository...
+    type: git-clone
+    repo: '${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}'
+    revision: '${{CF_REVISION}}'
+    stage: checkout
   BuildingDockerImage:
     title: Building Docker Image
     type: build
-    image_name: kostis-codefresh/python-flask-sampleapp
+    image_name: my-flask-app
     working_directory: ./
     tag: '${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_SHORT_REVISION}}'
     dockerfile: Dockerfile
+    stage: package
   DeployMyChart:
-    image: 'codefresh/cfstep-helm:2.9.1'
+    image: 'codefresh/cfstep-helm:3.0.3'
     title: Deploying Helm chart
+    stage: deploy
     environment:
       - CHART_REF=charts/python
       - RELEASE_NAME=mypython-chart-prod
-      - KUBE_CONTEXT=myDemoAKSCluster
+      - KUBE_CONTEXT=kostis-demo@FirstKubernetes 
+      - VALUE_image_repository=r.cfcr.io/kostis-codefresh/my-flask-app
       - VALUE_image_pullPolicy=Always
       - VALUE_image_tag='${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_SHORT_REVISION}}'
+      - VALUE_buildID='${{CF_BUILD_ID}}'
+      - VALUE_image_pullSecret=codefresh-generated-r.cfcr.io-cfcr-default
 {% endraw %}
 {% endhighlight %}
 
-The two extra lines that start with `VALUE` override the default chart values. The underscores are replaced with dots.
+The extra lines that start with `VALUE` override the [default chart values](https://github.com/codefresh-contrib/python-flask-sample-app/blob/with-helm/charts/python/values.yaml). The underscores are replaced with dots.
 Here we override the name of tag (to match the Docker image built in the previous step) and the pull policy.
 
-If you look at the logs of the build job you will see the following:
+You can see the value replacements in the Helm logs inside the pipeline:
 
-```
-helm upgrade mypython-chart-prod charts/python --install --force --reset-values --set image.pullPolicy=Always --set image.tag='with-helm-8b55cbc'
-```
+ {% include 
+image.html 
+lightbox="true" 
+file="/images/getting-started/quick-start-helm/helm-logs.png" 
+url="/images/getting-started/quick-start-helm/helm-logs.png" 
+alt="Helm Value replacement" 
+caption="Helm Value replacement" 
+max-width="100%" 
+%}
+
 
 This is the easiest way to deploy to Kubernetes without having to manually change values in manifests, Helm and Codefresh
 already take care of replacements using the built-in steps.
