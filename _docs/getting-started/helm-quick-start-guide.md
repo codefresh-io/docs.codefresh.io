@@ -56,10 +56,10 @@ To verify that your cluster is setup for Helm select the *Helm Releases* item fr
  {% include 
 image.html 
 lightbox="true" 
-file="/images/getting-started/quick-start-helm/helm-dashboard.png" 
-url="/images/getting-started/quick-start-helm/helm-dashboard.png" 
-alt="Codefresh Helm releases" 
-caption="Cluster with Helm installed (click image to enlarge)" 
+file="/images/getting-started/quick-start-helm/empty-helm-cluster.png" 
+url="/images/getting-started/quick-start-helm/empty-helm-cluster.png" 
+alt="Empty Helm cluster" 
+caption="Empty Helm cluster (click image to enlarge)" 
 max-width="70%" 
 %}
 
@@ -154,16 +154,28 @@ already take care of replacements using the built-in steps.
 
 ### Viewing Helm releases 
 
-Once a Helm package is deployed in your Kubernetes cluster, Codefresh will show it under Helm releases.
+Once a Helm package is deployed in your Kubernetes cluster, Codefresh will show it under [Helm releases]({{site.baseurl}}/docs/new-helm/helm-releases-management/).
 
  {% include 
 image.html 
 lightbox="true" 
-file="/images/getting-started/quick-start-helm/helm-release.png" 
-url="/images/getting-started/quick-start-helm/helm-release.png" 
+file="/images/getting-started/quick-start-helm/helm-release-details.png" 
+url="/images/getting-started/quick-start-helm/helm-release-details.png" 
 alt="Codefresh Helm release" 
 caption="A Helm release (click image to enlarge)" 
-max-width="70%" 
+max-width="90%" 
+%}
+
+If you don't see your release click on the gear icon on the top right of the cluster and make sure that you choose the correct Helm version along with the namespace of your application.
+
+ {% include 
+image.html 
+lightbox="true" 
+file="/images/getting-started/quick-start-helm/helm-version-selection.png" 
+url="/images/getting-started/quick-start-helm/helm-version-selection.png" 
+alt="Choosing a Helm version" 
+caption="Choosing a Helm version (click image to enlarge)" 
+max-width="50%" 
 %}
 
 You can click on the release and get information regarding its chart, its revisions, changed files and the resulting manifests.
@@ -209,19 +221,19 @@ Codefresh allows you to do this right from the GUI. Select the History tab in th
 
 ## Storing a Helm chart 
 
-Codefresh includes a built-in Helm repository that comes integrated to all accounts. You can use this repository
+Codefresh includes a [built-in Helm repository]({{site.baseurl}}/docs/new-helm/managed-helm-repository/) that comes integrated to all accounts. You can use this repository
 to store charts like any other public Helm repository. It is also possible to manually deploy applications from your repository.
 
 To store a Helm chart, first of all you need to import the shared configuration that defines the integrated Helm Repository.
 
-Go to the *Environment Variables* section in your build and select *Import from shared configuration*. Find the details
+Click the *Variables* taskbar in the right of the pipeline editor build and select *Import from shared configuration*. Find the details
 of the integrated Helm repository.
 
  {% include 
 image.html 
 lightbox="true" 
-file="/images/getting-started/quick-start-helm/import.png" 
-url="/images/getting-started/quick-start-helm/import.png" 
+file="/images/getting-started/quick-start-helm/import-helm-repo-conf.png" 
+url="/images/getting-started/quick-start-helm/import-helm-repo-conf.png" 
 alt="Helm settings" 
 caption="Import Helm repository configuration (click image to enlarge)" 
 max-width="70%" 
@@ -233,24 +245,46 @@ Once that is done you add the following step in your `codefresh.yml` file:
 {% highlight yaml %}
 {% raw %}
 version: '1.0'
+stages:
+  - checkout
+  - package
+  - deploy  
 steps:
+  main_clone:
+    title: Cloning main repository...
+    type: git-clone
+    repo: '${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}'
+    revision: '${{CF_REVISION}}'
+    stage: checkout
   BuildingDockerImage:
     title: Building Docker Image
     type: build
-    image_name: kostis-codefresh/python-flask-sampleapp
+    image_name: my-flask-app
     working_directory: ./
     tag: '${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_SHORT_REVISION}}'
     dockerfile: Dockerfile
+    stage: package
   StoreChart:
     title: Storing Helm chart
-    image: 'codefresh/cfstep-helm:2.9.1'
+    stage: deploy
+    image: 'codefresh/cfstep-helm:3.0.3'
     environment:
       - ACTION=push
-      - CHART_REF=charts/python
+      - CHART_REF=charts/helm-example 
 {% endraw %}
 {% endhighlight %}
 
-We use the same `cfstep-helm` as before. But this time we define `push` as the action (the default is deploying a helm package).
+We use the same `cfstep-helm` as before. But this time we define `push` as the action (the default is deploying a helm package). In this pipeline we only store the Helm chart in the internal repository.
+
+ {% include 
+image.html 
+lightbox="true" 
+file="/images/getting-started/quick-start-helm/helm-only-store.png" 
+url="/images/getting-started/quick-start-helm/helm-only-store.png" 
+alt="Storing the chart" 
+caption="Storing the chart" 
+max-width="100%" 
+%}
 
 Once the pipeline finishes, you can see your chart in the *Helm charts* part in the left sidebar.
 
@@ -267,12 +301,14 @@ max-width="70%"
 There is even an install button if you want to deploy manually the chart. Codefresh will allow to enter your own values
 in that case and also select your target cluster.
 
+You can also create a single pipeline that [both stores the chart as well as deploys it in a cluster]({{site.baseurl}}/docs/yaml-examples/examples/helm/).
 
 
 ## What to read next
 
 * [Codefresh built-in Helm repository]({{site.baseurl}}/docs/new-helm/managed-helm-repository/)
 * [Using Helm in a Pipeline]({{site.baseurl}}/docs/new-helm/using-helm-in-codefresh-pipeline/)
+* [Helm pipeline example]({{site.baseurl}}/docs/yaml-examples/examples/helm/)
 * [Internal Docker Registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/)
 * [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
 

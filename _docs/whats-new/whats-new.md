@@ -8,6 +8,11 @@ toc: true
 ---
 Recent Codefresh updates:
 
+### March 2020
+
+- Helm quick start guide for Helm 3  - [documentation]({{site.baseurl}}/docs/getting-started/helm-quick-start-guide/)
+
+
 ### February 2020
 
 - Beta Support for Helm 3 - [documentation]({{site.baseurl}}/docs/new-helm/helm3/)
