@@ -59,6 +59,22 @@ caption="Kubernetes Services"
 max-width="70%"
 %}
 
+Notice that for better service visibility we suggest you add the [recommended labels](https://helm.sh/docs/topics/chart_best_practices/labels/) in your Kubernetes service.
+
+{% highlight yaml %}
+{% raw %}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "fullname" . }}
+  labels:
+    app.kubernetes.io/name: "{{ template "name" . }}"  
+    helm.sh/chart: "{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}"
+    app.kubernetes.io/managed-by: "{{ .Release.Service  }}"
+    app.kubernetes.io/instance: "{{ .Release.Name }}"   
+{% endraw %}
+{% endhighlight %}
+
 The history tab shows all previous releases.
 
 {% include 
