@@ -5,15 +5,20 @@
 .bd-footer {
   font-size: 85%;
   text-align: center;
-  background-color: #f7f7f7;
+  background-color: $cf-dark;
 
   a {
-    font-weight: 500;
-    color: $gray-700;
+    color: $bd-topaz-main;
+    background-color: rgba($bd-topaz-main, .1);
+    border-bottom: 1px solid  rgba($cf-dark-alt, .2);
+    transition: background .2s ease, border-color, .2s ease;
 
     &:hover,
     &:focus {
-      color: $link-color;
+      color: $bd-topaz-main;
+      text-decoration: none;
+      background-color: rgba($bd-topaz-main, .16);
+      border-bottom-color: rgba($bd-topaz-main, .9);
     }
   }
 

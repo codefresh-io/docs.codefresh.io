@@ -1,6 +1,11 @@
 body {
+  position: relative;
+  overflow-x: hidden;
   font-family: $font-family-base;
+  font-size: $font-size-base;
   color: $body-color;
-  background-color: $body-bg; // 2
+  font-variant-ligatures: none;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
 }
-

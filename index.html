@@ -9,25 +9,34 @@ layout: home
         <!--<div class="mx-auto col-md-5 order-md-2 d-none d-sm-none d-md-block d-lg-block d-xlg-block">-->
         <!--<img class="img-fluid mb-3 mb-md-0" src="{{ site.baseurl }}/assets/img/favicons/android-chrome-512x512.png" alt="" width="288" height="288" />-->
         <!--</div>-->
-        <div class="col-md-7 order-md-1 text-center text-md-left pr-md-5">
-          <h2 class="mb-3 bd-text-white text-uppercase">Codefresh.io Documentation</h2>
+        <div class="col-md-7 order-md-1 text-center mx-auto pr-md-5">
+          <h2 class="mb-3 bd-text-white text-uppercase">
+            {%- include icons/codefresh-dark.svg class="align-middle" width="180" height="auto" -%}
+            <span class="badge cf-badge cf-badge-doc align-middle"> Documentation</span>
+          </h2>
           <p class="lead bd-text-white mb-4">
             Codefresh is a Docker-native CI/CD platform. <br>
             Instantly build, test and deploy Docker images.
           </p>
-          <div class="d-flex flex-column flex-md-row lead mb-3">
+          <div>
+            <form class="bd-search bd-search--home d-flex mt-1 mb-3 mt-md-0 order-2 order-md-2 align-items-center">
+              <input type="search" class="form-control form-control-dark mr-sm-2 doc-search-input" id="navbar-search-input" placeholder="{{ site.data.translations[site.locale].search_placeholder_text }}" aria-label="{{ site.data.translations[site.locale].search_placeholder_text }}" autocomplete="off">
+              <i class="fa fa-search"></i>
+            </form>
+          </div>
+          <div class="d-flex flex-column flex-md-row justify-content-center lead mb-3">
             <a href="{{ site.baseurl }}/docs/getting-started/create-a-codefresh-account/"
-               class="btn btn-get-started mb-3 mb-md-0 mr-md-3"
+               class="btn btn-primary mb-3 mb-md-0 mr-md-3"
                onclick="ga('send', 'event', 'Jumbotron actions', 'Get started', 'Get started');">
               Get started
             </a>
             <a href="{{ site.codefresh_signup }}"
-               class="btn btn-get-started mb-3 mb-md-0 mr-md-3"
+               class="btn btn-primary mb-3 mb-md-0 mr-md-3"
                onclick="ga('send', 'event', 'Main page actions', 'SignUp', 'SignUp');">
               Sign Up
             </a>
             <a href="{{ site.schedule_demo }}"
-               class="btn btn-get-beta mb-3 mb-md-0 mr-md-3"
+               class="btn btn-secondary mb-3 mb-md-0 mr-md-3"
                onclick="ga('send', 'event', 'Main page actions', 'Schedule demo', 'Schedule demo');">
               Schedule demo
             </a>
@@ -40,7 +49,6 @@ layout: home
             -->
           </div>
         </div>
-        <img src="{{ site.baseurl }}/assets/img/masthead/computer.png" class="img img-bd-masthead-cf-computer d-none d-xl-block">
       </div>
     </div>
   </div>
@@ -51,23 +59,18 @@ layout: home
     <div class="row">
       {% for homeContent in site.data.home-content %}
       <div class="col-12 col-md-3 p-4 p-md-4 followup-card-item border border-white">
-        <div class="d-flex justify-content-start align-items-center">
-          <div class="p-2 align-self-center">
-            <img src="{{ homeContent.icon }}" alt="{{ homeContent.title }}"/>
-          </div>
-          <div class="p-2 align-self-center">
-            <h4 {% unless homeContent.new== nil or homeContent.new== false %} class="bulb bulb-red bulb-above-left bulb-pos-after" data-bulb-text="NEW" {% endunless %}>{{
-              homeContent.title }}</h4>
-          </div>
-        </div>
-        <ul>
+        <img src="{{ homeContent.icon }}" alt="{{ homeContent.title }}" class="mb-1" />
+        <h4 {% unless homeContent.new== nil or homeContent.new== false %} class="bulb bulb-red bulb-above-left bulb-pos-after" data-bulb-text="NEW" {% endunless %}>
+          {{ homeContent.title }}
+        </h4>
+        <ul class="list-unstyled">
           {% for homeContentLink in homeContent.links %}
           {% if homeContentLink.localurl %}
           {% assign localurl = homeContentLink.localurl %}
           {% else %}
           {% assign localurl = nil %}
           {% endif %}
-          <li>
+          <li class="mt-2">
             <a {% if localurl %}href="{{site.baseurl}}{{ localurl }}" {% elsif homeContentLink.url %}href="{{ homeContentLink.url }}" {% endif %}
                title="{{ homeContentLink.title }}">
               {{ homeContentLink.title }}

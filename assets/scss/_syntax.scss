@@ -1,74 +1,74 @@
 // stylelint-disable declaration-block-single-line-max-declarations
 
-.highlight { background-color: #343438; }
+.highlight { background-color: #243a41; }
 .hll { background-color: #ffc; }
-.c { color: #999; }
-.k { color: #d8b7e8; }
-.o { color: #fff; }
+.c { color: #546e74; }
+.k { color: #e8f7f2; }
+.o { color: #e8f7f2; }
 .p { color: #3da693; }
-.cm { color: #999; }
+.cm { color: #546e74; }
 .cp { color: #099; }
-.c1 { color: #999; }
-.cs { color: #999; }
-.gd { background-color: #fcc; border: 1px solid #c00; }
+.c1 { color: #546e74; }
+.cs { color: #546e74; }
+.gd { background-color: #fcc; border: 1px solid #ff9da4; }
 .ge { font-style: italic; }
-.gr { color: #f00; }
+.gr { color: #f7878e; }
 .gh { color: #030; }
 .gi { background-color: #cfc; border: 1px solid #0c0; }
 .go { color: #aaa; }
 .gp { color: #009; }
 .gu { color: #fcc; }
 .gt { color: #9c6; }
-.kc { color: #069; }
-.kd { color: #d8b7e8; }
-.kn { color: #069; }
-.kp { color: #069; }
-.kr { color: #069; }
+.kc { color: #3f80d0; }
+.kd { color: #e8f7f2; }
+.kn { color: #3f80d0; }
+.kp { color: #3f80d0; }
+.kr { color: #3f80d0; }
 .kt { color: #078; }
-.m { color: #f60; }
-.s { color: #d44950; }
-.na { color: #d8b7e8; }
-.nb { color: #d8b7e8; }
+.m { color: #f78132; }
+.s { color: #d1f1a9; }
+.na { color: #e8f7f2; }
+.nb { color: #e8f7f2; }
 .nc { color: #f57f7f; }
-.no { color: #360; }
+.no { color: #5ac471; }
 .nd { color: #99f; }
 .ni { color: #999; }
-.ne { color: #c00; }
-.nf { color: #c0f; }
-.nl { color: #99f; }
+.ne { color: #ff9da4; }
+.nf { color: #de5aff; }
+.nl { color: #d695ff; }
 .nn { color: #0cf; }
 .nt { color: #f57f7f; }
-.nv { color: #c30; }
+.nv { color: #d1f1a9; }
 .nx { color: #68bbde; }
 .ow { color: #000; }
-.pi { color: #fff; }
+.pi { color: #e8f7f2; }
 .w { color: #bbb; }
-.mf { color: #f60; }
-.mh { color: #f60; }
-.mi { color: #f60; }
-.mo { color: #f60; }
-.sb { color: #c30; }
-.sc { color: #c30; }
-.sd { font-style: italic; color: #c30; }
+.mf { color: #f78132; }
+.mh { color: #f78132; }
+.mi { color: #f78132; }
+.mo { color: #f78132; }
+.sb { color: #d1f1a9; }
+.sc { color: #d1f1a9; }
+.sd { font-style: italic; color: #d1f1a9; }
 .s2 { color: #76c47e; }
-.se { color: #c30; }
-.sh { color: #c30; }
+.se { color: #d1f1a9; }
+.sh { color: #d1f1a9; }
 .si { color: #3da693; }
-.sx { color: #c30; }
+.sx { color: #d1f1a9; }
 .sr { color: #3aa; }
-.s1 { color: #c30; }
+.s1 { color: #d1f1a9; }
 .ss { color: #fc3; }
 .bp { color: #366; }
 .vc { color: #033; }
 .vg { color: #033; }
 .vi { color: #033; }
-.il { color: #f60; }
+.il { color: #f78132; }
 
 
 .si + .nx,
 .nx + .p + .nx,
 .si + .nx + .p + .nx{
-  color: #fff;
+  color: #e8f7f2;
 }
 
 .css .o,

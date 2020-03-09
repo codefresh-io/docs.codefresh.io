@@ -88,13 +88,13 @@
 }
 
 .cf-badge {
-  padding: 2px 5px;
+  padding: 3px 5px;
   font-size: 10px;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 11px;
+
   &.cf-badge-new {
     color: $white;
     background-color: $bd-bulb-red;
   }
 }
-

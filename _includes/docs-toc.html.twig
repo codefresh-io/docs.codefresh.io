@@ -97,7 +97,7 @@
 {% assign subUl = subUlTpl | append: ">" | prepend: "<" %}
 {% assign result = my_toc | markdownify | replace: '<ul>', subUl | strip  %}
 {% if result contains 'ul' %}
-  <span class="h6 text-uppercase font-weight-bold">{{ site.data.translations[site.locale].toc_label }}</span>
+  <div class="toc-title h6 mb-2 text-uppercase font-weight-bold">{{ site.data.translations[site.locale].toc_label }}</div>
 {% endif %}
 {{ result }}
 

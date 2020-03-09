@@ -14,21 +14,31 @@
 
 .btn-clipboard {
   position: absolute;
-  top: .5rem;
-  right: .5rem;
+  top: 0;
+  right: 0;
   z-index: 10;
   display: block;
   padding: .25rem .5rem;
   font-size: 75%;
-  color: #818a91;
+  color: $cf-dark-alt;
   cursor: pointer;
-  background-color: transparent;
+  background-color: $light;
   border: 0;
-  border-radius: .25rem;
+  border-top-right-radius: .25rem;
+  border-bottom-left-radius: .25rem;
+
+  @include media-breakpoint-up(md) {
+    right: -1rem;
+  }
+
+  @include media-breakpoint-up(xxl) {
+    top: 0;
+    right: -1.5rem;
+  }
 
   &:hover {
-    color: #fff;
-    background-color: #027de7;
+    color: $white;
+    background-color: $bd-topaz-main;
   }
 }
 

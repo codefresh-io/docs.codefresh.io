@@ -3,25 +3,42 @@
 .bd-masthead {
   position: relative;
   padding: 1rem ($grid-gutter-width / 2);
-  background: $bd-topaz-navbar-g1; /* Old browsers */
-  //background: linear-gradient(to bottom, $bd-topaz-navbar-g2 20%, $bd-topaz-navbar-g3 100%);
-  background: linear-gradient(to right, $bd-topaz-navbar-g1 15.57%, $bd-topaz-navbar-g2 83.9%);
+  background: $cf-dark;
 
   h1 {
     line-height: 1;
   }
 
-  .btn {
-    width: 100%;
-    padding: .4rem 1rem;
-    font-size: 1.25rem;
-    font-weight: 500;
+  .cf-badge-doc {
+    color: $cf-dark-alt;
+    background: $cf-light;
   }
 
-  @include media-breakpoint-up(md) {
-    .btn {
-      padding: .8rem 2rem;
+  .btn {
+    padding: .75rem 1.5rem;
+    font-size: .875rem;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    border-radius: .25rem;
+    box-shadow: 0 3px 12px rgba(#000, .3);
+    transition: .2s ease;
+
+    &:hover {
+      box-shadow: 0 3px 12px rgba($bd-topaz-main, .4);
     }
+  }
+
+  .btn-primary {
+    color: $white;
+    background-color: $bd-topaz-main;
+    border-color: $bd-topaz-main;
+  }
+
+  .btn-secondary {
+    color: $bd-topaz-main;
+    background-color: $white;
+    border-color: $white;
   }
 
   .carbonad {
@@ -50,17 +67,16 @@
 
   &.bd-masthead-home {
     position: relative;
-    //overflow: hidden;
+
     h2 {
       font-size: 40px;
       text-shadow: 0 1px 2px rgba($bd-dark, .35);
     }
+
     .lead {
-      margin-bottom: 0;
-      font-size: 20px;
-      font-weight: 400;
-      line-height: 24px;
+      color: $cf-light;
     }
+
     &::after,
     &::before {
       position: absolute;
@@ -74,45 +90,15 @@
       background-repeat: no-repeat;
       background-size: auto 100%;
     }
-    &::before {
-      left: 0;
-      width: 50vw;
-      background-image: url("../img/masthead/docs_masthead_home_left.png");
-      background-position: center left -20%;
-      background-size: 40%;
-    }
-    &::after {
-      right: 0;
-      width: 50vw;
-      background-image: url("../img/masthead/docs_masthead_home_right.png");
-      background-position: bottom -11% right 0;
-      background-size: 35%;
-    }
+
     .banner-home-inner {
       position: relative;
       z-index: 1;
     }
-    .img-bd-masthead-cf-computer {
-      position: absolute;
-      right: 15rem;
-      bottom: -77px;
-      left: auto;
-      z-index: 100;
-      display: block;
-      max-width: 100%;
-      height: 100%;
-    }
+
     @include media-breakpoint-down(md) {
       h2 {
         font-size: 1.875rem;
-      }
-      &::before {
-        background-position: center left -20%;
-        background-size: 100%;
-      }
-      &::after {
-        background-position: bottom -3% right 0;
-        background-size: 100%;
       }
     }
   }
@@ -129,7 +115,20 @@
 
   .followup-card-item {
     background-color: $bd-doc-content-bg;
+
+    h4 {
+      margin-bottom: 1rem;
+    }
+
+    a {
+      color: $cf-dark-alt;
+
+      &:hover {
+        color: $bd-topaz-main;
+      }
+    }
   }
+
   .bd-clipboard { display: none; }
 
   .highlight {
