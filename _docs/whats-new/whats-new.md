@@ -11,7 +11,7 @@ Recent Codefresh updates:
 ### March 2020
 
 - Helm quick start guide for Helm 3  - [documentation]({{site.baseurl}}/docs/getting-started/helm-quick-start-guide/)
-
+- Deployment example for Helm 3  - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/helm/)
 
 ### February 2020
 

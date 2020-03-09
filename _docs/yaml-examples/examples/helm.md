@@ -11,7 +11,8 @@ toc: true
 * You get a free [built-in Helm repository]({{site.baseurl}}/docs/new-helm/managed-helm-repository/) with each Codefresh account.
 * You can track your charts in the [Helm chart dashboard]({{site.baseurl}}/docs/new-helm/add-helm-repository/).
 * You can view your deployments in your [Helm Release dashboard]({{site.baseurl}}/docs/new-helm/helm-releases-management/).
-* You can promote Helm releases in your [Helm environment dashboard]({{site.baseurl}}/docs/new-helm/helm-environment-promotion/).
+* You can view Helm releases in the [Environment dashsboard]({{site.baseurl}}/docs/deploy-to-kubernetes/environment-dashboard/).
+* You can promote Helm releases in your [Helm promotion dashboard]({{site.baseurl}}/docs/new-helm/helm-environment-promotion/).
 * You can add any external Helm repository on any other cloud provider.
 
 Codefresh also provides a [pipeline step]({{site.baseurl}}/docs/new-helm/using-helm-in-codefresh-pipeline/) for deploying with Helm.
@@ -21,14 +22,14 @@ For more insights on Helm charts see also our [Helm best practices]({{site.baseu
 
 ## The example Helm project
 
-You can see the example project at [https://github.com/codefresh-contrib/helm-sample-app](https://github.com/codefresh-contrib/helm-sample-app). The repository contains a simple Go application a Dockerfile and an example chart.
+You can see the example project at [https://github.com/codefresh-contrib/helm-sample-app](https://github.com/codefresh-contrib/helm-sample-app). The repository contains a simple Go application, a Dockerfile and an example chart.
 
 
 ## Prerequisites
 
 You need to have [added at least one Kubernetes cluster](https://codefresh.io/docs/docs/deploy-to-kubernetes/add-kubernetes-cluster/) in your Codefresh account. 
 
-You should also have installed the server side of Helm 2 (Tiller) using `helm init`. This command is best run from the cloud console of your cluster.
+>Notice that if you still use Helm 2 you should also have installed the server side of Helm 2 (Tiller) using `helm init`. This command is best run from the cloud console of your cluster. The respective pipelines of this guide are in the [helm-2 branch](https://github.com/codefresh-contrib/helm-sample-app/tree/helm-2).
 
 
 
@@ -72,7 +73,7 @@ steps:
     tag: 'multi-stage'
     dockerfile: Dockerfile  
   DeployMyChart:
-    image: 'codefresh/cfstep-helm:2.12.3'
+    image: 'codefresh/cfstep-helm:3.0.3'
     title: Deploying Helm chart
     stage: deploy
     environment:
@@ -82,6 +83,7 @@ steps:
       - VALUE_image_pullPolicy=Always
       - VALUE_image_tag='multi-stage'
       - VALUE_replicaCount=3
+      - VALUE_buildID='${{CF_BUILD_ID}}'
       - VALUE_image_pullSecret=codefresh-generated-r.cfcr.io-cfcr-default
 {% endraw %}
 {% endhighlight %}
@@ -92,9 +94,18 @@ This pipeline does the following:
 1. Builds a docker image using a [Build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/)
 1. Deploys the Helm chart to a cluster named `my-demo-k8s-cluster`
 
-Note that in this example `charts/helm-example` refers to the filesystem location in the code that was just checked out.
+Note that in this example `charts/helm-example` refers to the [filesystem location in the code](https://github.com/codefresh-contrib/helm-sample-app/tree/master/charts/helm-example) that was just checked out.
 
+The deployment will be visible in the [Helm releases dashboard]({{site.baseurl}}/docs/new-helm/helm-releases-management/).
 
+{% include image.html 
+lightbox="true" 
+file="/images/examples/helm/helm-release.png" 
+url="/images/examples/helm/helm-release.png" 
+alt="Helm release view"
+caption="Helm release view"
+max-width="100%" 
+%}
 
 If you want to run this example yourself, make sure to edit the chart and put your own values there for the Docker image.
 
@@ -156,12 +167,12 @@ steps:
   StoreChart:
     title: Storing Helm chart
     stage: deploy
-    image: 'codefresh/cfstep-helm:2.12.3'
+    image: 'codefresh/cfstep-helm:3.0.3'
     environment:
       - ACTION=push
       - CHART_REF=charts/helm-example    
   DeployMyChart:
-    image: 'codefresh/cfstep-helm:2.12.3'
+    image: 'codefresh/cfstep-helm:3.0.3'
     title: Deploying Helm chart
     stage: deploy
     environment:
@@ -171,12 +182,13 @@ steps:
       - VALUE_image_pullPolicy=Always
       - VALUE_image_tag='multi-stage'
       - VALUE_replicaCount=3
+      - VALUE_buildID='${{CF_BUILD_ID}}'
       - VALUE_image_pullSecret=codefresh-generated-r.cfcr.io-cfcr-default
 {% endraw %}
 {% endhighlight %}
 
 
-After you finish running your pipeline, not only the deployment will take place, but you will also see your chart in your Helm Chart dashboard:
+After you finish running your pipeline, not only the deployment will take place, but you will also see your chart in your [Helm Chart dashboard]({{site.baseurl}}/docs/new-helm/add-helm-repository/):
 
 {% include image.html 
 lightbox="true" 
