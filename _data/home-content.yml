@@ -160,6 +160,7 @@
   - title: Using Helm in a Codefresh pipeline
     localurl: /docs/new-helm/using-helm-in-codefresh-pipeline/
   - title: Helm Releases management
+    new: true
     localurl: /docs/new-helm/helm-releases-management/    
   - title: Codefresh Managed Helm Repositories
     localurl: /docs/new-helm/managed-helm-repository/
@@ -168,10 +169,7 @@
   - title: Custom Helm uploads
     localurl: /docs/new-helm/custom-helm-uploads/ 
   - title: Helm Environment Promotion
-    localurl: /docs/new-helm/helm-environment-promotion/   
-  - title: Helm 3 support (Beta)
-    new: true
-    localurl: /docs/new-helm/helm3/              
+    localurl: /docs/new-helm/helm-environment-promotion/               
 - title: Deployment
   icon: images/home-icons/deployment.png
   url: ''
