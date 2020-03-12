@@ -27,30 +27,30 @@ max-width="60%"
 
 Fill the following information:
 
-* Registry Provider - select `DockerHub`.
-* *Namespace* - put DockerHub user name or organization name here.
-* *Name* - DockerHub image repository name.
+* *Registry Provider* - select `DockerHub`.
+* *User/Organization Name* - put DockerHub user name or organization name here.
+* *Image Repository Name* - DockerHub image repository name.
 * *Action* - select `Push Image` action.
-* *Filter* - optional filter to specify which image *tags* will trigger pipeline execution: [Re2](https://github.com/google/re2/wiki/Syntax) regular expression.
+* *Tag* - optional filter to specify which image *tags* will trigger pipeline execution: [Re2](https://github.com/google/re2/wiki/Syntax) regular expression.
 
 {% include image.html
 lightbox="true"
-file="/images/dockerhub_trigger_1.png"
-url="/images/dockerhub_trigger_1.png"
+file="/images/pipeline/triggers/dockerhub/dockerhub_trigger_1.png"
+url="/images/pipeline/triggers/dockerhub/dockerhub_trigger_1.png"
 alt="Add Registry Trigger"
 max-width="70%"
 %}
 
 ### Setup DockerHub Webhook
 
-Currently Codefresh does not support to automatically setup a DockerHub webhook. You need to do this manually. Press `View Trigger` button and see detailed instructions with URL links and secrets of how-to setup a DockerHub Webhook.
+Currently Codefresh does not support to automatically setup a DockerHub webhook. You need to do this manually. Press the *Next* button and see detailed instructions with URL links and secrets of how-to setup a DockerHub Webhook.
 
 
 {% include image.html
 lightbox="true"
-file="/images/dockerhub_trigger_edit.png"
-url="/images/dockerhub_trigger_edit.png"
-alt="Edit DockerHub Trigger"
+file="/images/pipeline/triggers/dockerhub/dockerhub_trigger_2.png"
+url="/images/pipeline/triggers/dockerhub/dockerhub_trigger_2.png"
+alt="Add Webhook"
 max-width="70%"
 %}
 
@@ -78,7 +78,7 @@ First, create a `trigger-event` for every DockerHub image, you would like to set
 
 ```sh
 # create DockerHub trigger event for codefresh/fortune
-codefresh create trigger-event --type registry --kind dockerhub --value namespace=codefresh --value name=fortune
+codefresh create trigger-event --type registry --kind dockerhub --value namespace=codefresh --value name=fortune --value action=push
 
 # on success trigger-event UID will be printed out
 Trigger event: registry:dockerhub:codefresh:fortune:push:107e9db97062 was successfully created.
