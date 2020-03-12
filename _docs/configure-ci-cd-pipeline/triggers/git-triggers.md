@@ -21,7 +21,7 @@ You can also use [Conditional expressions]({{site.baseurl}}/docs/codefresh-yaml/
 
 ## Manage GIT Triggers with Codefresh UI
 
-To add a new GIT trigger, navigate to the Codefresh Pipeline *Configuration* view and expand the *Triggers* section. Press the *Add Trigger* button and select a *GIT* trigger type to add.
+To add a new GIT trigger, navigate to the Codefresh Pipeline *Configuration* view and expand the *Triggers* section on the right side. Press the *Add Trigger* button and select a *GIT* trigger type to add.
 
 {% include image.html
 lightbox="true"
@@ -31,17 +31,7 @@ alt="Adding new Trigger dialog"
 max-width="60%"
 %}
 
-You can select the following information:
-
-* *Git Provider* - select that one that is linked with your account.
-* *Repository* - you can select any repository even something different than the one that is used for the code checkout.
-* *Commit Checkbox* - if enabled will trigger this pipeline for any commit.
-* *PR Checkboxes* - various checkboxes for filtering the Pull request event.
-* *Support PR Events From Forks* - useful for opensource projects.
-* *Branch Field* - this is a regular expression and will only trigger for branches that match this naming pattern.
-* *PR Comment Field* - useful for open source projects.
-* *Pull Request Target* branch - this is a regular expression and will trigger only when a Pull request is created against any branch that matches it.
-* *Modified Files* - allows you to constrain the build and trigger it only if the modified files from the commit match this [glob expression](https://en.wikipedia.org/wiki/Glob_(programming)).
+## General Trigger Settings
 
 {% include image.html
 lightbox="true"
@@ -51,21 +41,45 @@ alt="Adding GIT Trigger"
 max-width="50%"
 %}
 
+The Git Trigger is comprised of the following settings:
+
+* *Trigger Name* - a freetext trigger name (required).
+* *Description* - a freetext description (optional).
+* *Repository* - you can select any repository even something different than the one that is used for the code checkout.
+* *Commit Checkbox* - if enabled will trigger this pipeline for any commit.
+* *PR Checkboxes* - various checkboxes for filtering the Pull request event.
+
 The commit checkbox (by default it is enabled) means that this pipeline will run for *any* commit as long as its source branch matches the naming scheme. This includes commits on pull requests.
 
 The PR checkboxes mean that this pipeline will run only on the respective events that happen on a Pull Request. You can select multiple checkboxes to further fine-tune the exact event. If you are interested in all events, select the checkbox *Any Pull Request event*.
 
 >The individual Pull request checkboxes are available only for GitHub repositories.
 
-### Pull request Target field and branch name
+## Configure Filter Settings
 
-The Pull request target field allows you to trigger this pipeline only when the target of a Pull Request (i.e. where the pr is going to be merged at) matches the
+{% include image.html
+lightbox="true"
+file="/images/pipeline/triggers/configure-filter-settings.png"
+url="/images/pipeline/triggers/configure-filter-settings.png"
+alt="Configure Filter Settings"
+max-width="50%"
+%}
+
+* *Support pull request events from forks* - toggle that is useful for open source projects.
+* *Branch Field* - this is a regular expression and will only trigger for branches that match this naming pattern.
+* *PR Comment Field* - useful for open source projects.
+* *Pull Request Target* branch - this is a regular expression and will trigger only when a Pull request is created against any branch that matches it.
+* *Modified Files* - allows you to constrain the build and trigger it only if the modified files from the commit match this [glob expression](https://en.wikipedia.org/wiki/Glob_(programming)).
+
+### Pull Request Target Branch and Branch 
+
+The Pull Request Target Branch field allows you to trigger this pipeline only when the target of a Pull Request (i.e. where the pr is going to be merged at) matches the
 branch name regular expression. Common examples for branch names would be `master` or `production`.
 
 This field has only meaning when a commit happens in the context of a pull request and in that case:
 
-1. The branch field will look at the branch that the commit is happening on 
-1. The PR target branch field will look at the branch is the PR is happening against
+1. The Branch field will look at the branch that the commit is happening on 
+1. The PR Target Branch field will look at the branch the PR is happening against
 
 For example, if you create a commit on a branch that is named `my-feature` which is currently part of PR against branch `staging` (i.e. somebody wants to merge `my-feature` **TO** `staging`) then:
 
@@ -132,9 +146,9 @@ you can have a big GIT repository with multiple projects and build only the part
 >Currently the field *modified files* is available only for GitHub, Gitlab and Bitbucket SAAS repositories, since they are the only GIT providers
 that send this information in the webhook. We will support other GIT providers as soon as they add the respective feature. Also, the *modified files* field is only available for push events (i.e. not PR open events), since GIT providers only send it on these events.
 
-## Using the Modified files field to constrain triggers to specific folder/files
+### Using the Modified files field to constrain triggers to specific folder/files
 
-The *modified field* accepts glob expressions. The paths are relative to the root folder of the project (where the git repository was checked out). Some possible examples are:
+The *modified files* field accepts glob expressions. The paths are relative to the root folder of the project (where the git repository was checked out). Some possible examples are:
 
 ```
 **/package.json
@@ -190,6 +204,25 @@ You can also use Glob expressions for files. For example:
 * A pipeline with the expression `my-subproject/**/pom.xml` will trigger only if the Java dependencies for any project that belongs to `my-subproject` actually change
 
 Glob expressions have many more options not shown here. Visit the [official documentation](https://en.wikipedia.org/wiki/Glob_(programming)) to learn more. You can also use the [Glob Tester web application](http://www.globtester.com/) to test your glob expressions beforehand so that you are certain they match the files you expect them to match.
+
+## Advanced Options
+
+{% include image.html
+lightbox="true"
+file="/images/pipeline/triggers/advanced-options.png"
+url="/images/pipeline/triggers/advanced-options.png"
+alt="Advanced Options"
+max-width="60%"
+%}
+
+* *Commit Status Title* -
+* *Build Variables* - import a [shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/) or manually add variables
+* *More Options* 
+  * *Ignore Docker engine cache for build* - selecting this option may slow down your build.  See #1 [here]({{site.baseurl}}/docs/troubleshooting/common-issues/disabling-codefresh-caching-mechanisms/)
+  * *Ignore Codefresh cache optimizations for build* - selecting this option may slow down your build.  See #2 [here]({{site.baseurl}}/docs/troubleshooting/common-issues/disabling-codefresh-caching-mechanisms/)
+  * *Reset pipeline volume* - useful for troubleshooting a build that hangs on the first step.  See [here]({{site.baseurl}}/docs/troubleshooting/common-issues/restoring-data-from-pre-existing-image-hangs-on/)
+  * *Report notification on pipeline execution* - enabled by default
+* *Runtime Environment* - choose to use pipeline [settings]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-settings) or override them
 
 ## Using YAML and the Codefresh CLI to filter specific Webhook events
 
