@@ -86,7 +86,7 @@
   }
 
   // Links
-  a:not([data-type="image"], [data-anchorjs-icon="#"]) {
+  a:not([data-type="image"]):not([data-anchorjs-icon="#"]) {
     color: $bd-topaz-main;
     background-color: rgba($bd-topaz-main, .1);
     border-bottom: 1px solid  rgba($cf-dark-alt, .2);
