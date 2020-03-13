@@ -175,7 +175,7 @@ push:
 Notes:
 - Helm repository connection was attached to the pipeline (see step 4 above)
 - Assuming a git repository with the Helm chart files.
-- The repo container the chart files under `mychart` directory.
+- The Git repository contains the chart files under the `mychart` directory.
 
 ### Example: Authenticating only
 
