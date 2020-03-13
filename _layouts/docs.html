@@ -23,6 +23,10 @@ layout: compress
     {% endif %}
       <div class="row flex-xl-nowrap">
 
+        <div class="col-12 col-md-4 col-xl-3 col-xxl-3 bd-sidebar">
+          {% include docs-sidebar.html.twig %}
+        </div>
+
         {% if page.toc %}
         <div class="d-none d-xl-block col-xl-2 col-xxl-2 bd-toc">
           <div class="toc-inner">
@@ -30,11 +34,6 @@ layout: compress
           </div>
         </div>
         {% endif %}
-
-        <div class="col-12 col-md-4 col-xl-3 col-xxl-3 bd-sidebar">
-          {% include docs-sidebar.html.twig %}
-        </div>
-
 
         <main class="col-12 col-md-8 {% if page.toc == true %}col-xl-8 col-xxl-8{% else %}col-xl-10 col-xxl-10{% endif%} py-3 bd-content" role="main">
           <div class="bd-content-inner py-xl-3">
