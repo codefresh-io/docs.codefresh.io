@@ -32,13 +32,13 @@ caption="Pipeline concepts"
 max-width="60%"
 %}
 
-* **Projects** are the top-level concept in Codefresh. You can create projects to group pipelines that are related. In most cases a single project will be a single application (that itself contains many micro-services). You are free to use projects as you see fit. For example, you could create a project for a specific Kubernetes cluster or a specific team/department.
+* **Projects**: the top-level concept in Codefresh. You can create projects to group pipelines that are related. In most cases a single project will be a single application (that itself contains many micro-services). You are free to use projects as you see fit. For example, you could create a project for a specific Kubernetes cluster or a specific team/department.
 
-* Each project can have multiple **pipelines**. Pipelines that belong to a single project are easily managed all together. It is also very easy to create a new pipeline in a project by copying an existing pipeline. Notice that unlike other CI solutions a pipeline in Codefresh is **NOT** tied to a specific git repository. You should try to make your pipelines generic enough so that they can be reused for similar applications even when they exist in different git repositories (a fairly typical setup for microservices).
+* **Pipelines**: each project can have multiple pipelines.  Pipelines that belong to a single project are easily managed all together. It is also very easy to create a new pipeline in a project by copying an existing pipeline. Notice that unlike other CI solutions a pipeline in Codefresh is **NOT** tied to a specific git repository. You should try to make your pipelines generic enough so that they can be reused for similar applications even when they exist in different git repositories (a fairly typical setup for microservices).
 
-* Each pipeline has a definition that defines the [pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/) that are executed each time this pipeline is triggered. The definition of a pipeline is described in a special [codefresh.yml]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) file. The `codefresh.yml` file can be fetched from the same repository of the source code, from a completely different repository or even defined in-place in the Codefresh pipeline editor. Again, notice that it is possible to have a pipeline that checks out its source code from git repository A, but actually defines its steps in a `codefresh.yml` file that is fetched from git repository B.
+* **Pipeline Steps**: each pipeline has a definition that defines the [pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/) that are executed each time this pipeline is triggered. The definition of a pipeline is described in a special [codefresh.yml]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) file. The `codefresh.yml` file can be fetched from the same repository of the source code, from a completely different repository or even defined in-place in the Codefresh pipeline editor. Again, notice that it is possible to have a pipeline that checks out its source code from git repository A, but actually defines its steps in a `codefresh.yml` file that is fetched from git repository B.
 
-* Each pipeline can have zero, one or more [triggers]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/). Codefresh supports several kinds of triggers such as Git, Cron or Docker push triggers. Triggers that happen with Git webhooks can come from the same git repository that contains the git code **OR** any other completely different repository. Triggers are the linking medium between a pipeline and a git repository. You can have a pipeline with many triggers so it will be executed when a code happens to any of them.
+* **Triggers**: each pipeline can have zero, one, or more [triggers]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/). Codefresh supports several kinds of triggers such as Git, Cron or Docker push triggers. Triggers that happen with Git webhooks can come from the same git repository that contains the git code **OR** any other completely different repository. Triggers are the linking medium between a pipeline and a git repository. You can have a pipeline with many triggers so it will be executed when a code change happens to any of them.
 
 With these basic building blocks, you can define many complex workflows. In particular, it is very easy in Codefresh to create a scenario where:
 
@@ -112,7 +112,7 @@ Notice that in the editor you can expand/collapse individual yaml blocks using t
 
 Working with the inline editor is very convenient in the beginning, but it makes your pipeline definition only exist within the Codefresh UI and therefore goes against the basic principles of [infrastructure as code](https://en.wikipedia.org/wiki/Infrastructure_as_Code). Once you are happy with how your pipeline works you should commit it to a Git repository (which can be the same one that has the source code of the application or a completely different one).
 
-You can click on the *Inline YAML* header and switch it to *Use YAML from repository*.
+You can click on the *Inline YAML* header and switch it to *Use YAML from URL*.
 
 {% include 
 image.html 
@@ -124,78 +124,52 @@ caption="Pipeline from internal repo"
 max-width="60%"
 %}
 
-You can then select **any** Git repository accessible to you and load the `codefresh.yml` from there. You also setup two additional settings:
+You can then copy and paste a URL to a raw Codefresh YAML file.  This will allow you to load a Codefresh YAML from any public URL. Notice that a raw URL is needed in the case of GitHub. 
 
-* The path of the file inside the repository. This allows you to have special folders for pipeline definitions 
-* The branch of the repository to use for loading the `codefresh.yml` file if you have more than one
-
-In the branch drop down you can also choose the option **DYNAMIC**. This will use the same branch as the one mentioned in the trigger event. If for example your pipeline is triggered by a commit in the `staging` branch of the source code, the pipeline definition will also be loaded from the `staging` branch of the git repository that contains the `codefresh.yml` file.
-
-This allows you to have complex pipeline definitions per branch, but you have to be careful to match Git branch names between the repository that holds the source code and the repository that holds the pipeline definition. It is much easier to pick a specific branch for the pipeline definitions that will always be the same.
-
-It is also possible to switch the header to *Use YAML from URL*. This will allow you to load a Codefresh yaml from any public URL. Notice that a raw URL is needed in the case of GitHub. As an example, instead of using `https://github.com/codefresh-contrib/example-voting-app/blob/master/codefresh.yml` you should enter `https://raw.githubusercontent.com/codefresh-contrib/example-voting-app/master/codefresh.yml`
+As an example, instead of using `https://github.com/codefresh-contrib/example-voting-app/blob/master/codefresh.yml` you should enter `https://raw.githubusercontent.com/codefresh-contrib/example-voting-app/master/codefresh.yml`
 
 ## Pipeline settings
 
 Once you create your pipeline you can also click on the top tab called *Settings* for some extra parameters.
 
-Here you can also see the name and ID of the pipeline (useful information if you want to work with the [Codefresh CLI](https://codefresh-io.github.io/cli/)).
+### General 
 
-The other options are:
+- **Pipeline Name**: the name of your pipeline (useful for working with the [Codefresh CLI](https://codefresh-io.github.io/cli/))
+- **Pipeline ID**: the ID of your pipeline (useful for working with the [Codefresh CLI](https://codefresh-io.github.io/cli/))
+- **Pipeline Description**: a freetext pipeline description
+- **Pipeline Tags**: One or more tags used for [access control]({{site.baseurl}}/docs/enterprise/access-control/)
+- **Public Build Logs**: If enabled, the pipeline's builds will be viewable by users without a Codefresh account
+- **Badges**: simple images that show you the last build status
 
-* A freetext pipeline description
-* One or more tags used for [access control]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
-* Concurrency limits
-* Build termination settings
-* The [runtime environment]({{site.baseurl}}/docs/enterprise/behind-the-firewall/) that will run this pipeline
-* The size of the machine that will run this pipeline (available options depend on your pricing plan)
-* The [public logs and badges]({{site.baseurl}}/docs/configure-ci-cd-pipeline/build-status/) information which are very useful for open source projects developed with Codefresh
-* External resources 
+### Policies
 
+- **Pipeline Concurrency**: the maximum amount of concurrent builds (1-15 or unlimited) -- set this when your pipeline has only one trigger
+- **Trigger Concurrency**: the maximum amount of concurrent builds per trigger (1-15 or unlimited) -- set this when your pipeline has multiple triggers
+- **Build Termination**: various toggles for when a build from the pipeline should terminate
+  - Once a build is created terminate previous builds from the same branch
+  - Once a build is created terminate previous builds only from a specific branch (name matches a regular expression)
+  - Once a build is created, terminate all other running builds
+  - Once a build is terminated, terminate all child builds initiated from it
 
-### Concurrency policy
+The **Pipeline and Trigger Concurrency** limits are very important as they allow you to define how many instances of a pipeline can run in parallel when multiple commits or multiple pull requests take place. Notice these limits are *unrelated* with parallelism [within a single pipeline]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/). 
 
-The concurrency limits are very important as they allow you to define how many instances of a pipeline can run in parallel when multiple commits or multiple pull requests take place. Notice these limits are *unrelated* with parallelism [within a single pipeline]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/). 
+Some common scenarios are:
 
+* a pipeline that uses a shared resource such as a database or queue and you want to limit how many pipelines can access it 
+* a pipeline that deploys to a single production environment (in most cases you only want one active pipeline touching production
 
-{% include 
-image.html 
-lightbox="true" 
-file="/images/pipeline/create/restrict-parallelism.png" 
-url="/images/pipeline/create/restrict-parallelism.png"
-alt="Setting concurrency limits" 
-caption="Setting concurrency limits"
-max-width="50%"
-%}
-
-Some common scenarios are 
-
-* a pipeline that uses a shared resource such as a database or queue and you want to limit how many pipelines can access it and
-* a pipeline that deploys to a single production environment (in most cases you only want one active pipeline touching production).
-
-The first setting *Pipeline concurrency* specifies how many builds for this pipeline can run at any given time. If your pipeline has only one trigger this is the setting that you need to change to enforce concurrency. If your pipeline has multiple triggers then the second setting *Trigger concurrency* allows you to restrict pipeline builds for **each** trigger.
-
-The second set of parameters for build termination are useful for pipelines where you commit too fast (i.e. faster then the actual 
-runtime of the pipeline).
-
-Some commong scenarios here are:
-
-* You are interested only on the latest commit of a branch. If pipelines from earlier commits are still running you want to terminate them.
-* You don't want for children pipeline to finish (i.e. when a pipeline calls another pipeline), when a new build starts for a parent pipeline.
-
-These settings are:
-
-* Terminate all other builds from the **same** branch when a new commit happens
-* Terminate all other builds from a **specific** branch (name matches a regular expression)
-* Terminate all other pipeline from a pipeline regardless of branches when a new build starts
-* Terminate all children pipelines if the parent is also terminated
-
+The **Build Termination** settings are useful for pipelines where you commit too fast (i.e. faster then the actual runtime of the pipeline).
 All these settings allow you to lesser the build instance for pipelines when too many triggers are launched at the same time.
 You will find them very useful in cases where too many developers are performing small commits and builds take a long time to finish (i.e. build takes 10 minutes to finish and developers perform multiple pushes every 2 minutes)
 
-### External resources
+Some common scenarios are:
 
-In a big organization you might have some reusable scripts or other resources (such as dockerfiles) that you want to use in multiple pipelines. Instead of fetching them manually in freestyle steps you can simply define them as *external resources*. When a pipeline runs, Codefresh will fetch them automatically and once the pipeline starts the files/folders will already be available in the paths that you define.
+* You are interested only on the latest commit of a branch. If pipelines from earlier commits are still running you want to terminate them.
+* You don't want to wait for children pipelines to finish (i.e. when a pipeline calls another pipeline) or when a new build starts for a parent pipeline.
+
+### External Resources
+
+In a big organization you might have some reusable scripts or other resources (such as Dockerfiles) that you want to use in multiple pipelines. Instead of fetching them manually in freestyle steps you can simply define them as *external resources*. When a pipeline runs, Codefresh will fetch them automatically and once the pipeline starts the files/folders will already be available in the paths that you define.
 
 {% include 
 image.html 
@@ -217,7 +191,15 @@ Currently Codefresh supports the automatic fetching of files or folders from ano
 Once the pipeline starts, all files will be available to all freestyle steps in the paths mentioned in the target folder field.
 You can define multiple external resources in a single pipeline.
 
+### Runtime
 
+- **Runtime Environment**: (by default this is set to SAAS)
+- **Runtime OS**: (by default this is set to Linux)
+- **Resources Size**: 
+  - Small (recommended for 1-2 concurrent steps))
+  - Medium (recommended 3-4 steps)
+  - Large (recommended 5-6 steps)
+  
 ## Pipelines that do not belong to any project
 
 Although we recommend adding all your pipelines to a project, this is not a hard requirement. You can create pipelines that do not belong to a project from the *Pipelines* section on the left sidebar.
@@ -235,7 +217,7 @@ caption="Changing the project of a pipeline"
 max-width="90%"
 %}
 
-Pipelines that belong to a project will mention it bellow their name so it is very easy to understand which pipelines belong to a project and which do not.
+Pipelines that belong to a project will mention it below their name so it is very easy to understand which pipelines belong to a project and which do not.
 
 
 ## What to read next
