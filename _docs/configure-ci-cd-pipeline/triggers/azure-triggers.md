@@ -38,10 +38,10 @@ max-width="40%"
 Fill the following information:
 
 * Registry Provider - select `Azure`.
-* *Namespace* - put Azure name of registry (without `.azurecr.io`).
-* *Name* - Azure image repository name.
+* *Name of Registry* - put Azure name of registry (without `.azurecr.io`).
+* *Image Repository Name* - Azure image repository name.
 * *Action* - select `Push Image` action.
-* *Filter* - optional filter to specify which image *tags* will trigger pipeline execution: [Re2](https://github.com/google/re2/wiki/Syntax) regular expression.
+* *Tags* - optional filter to specify which image *tags* will trigger pipeline execution: [Re2](https://github.com/google/re2/wiki/Syntax) regular expression.
 
 {% include image.html
 lightbox="true"
