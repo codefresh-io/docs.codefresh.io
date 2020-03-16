@@ -64,11 +64,11 @@
 				}
 			});
 
-			var caret = $('<span></span>').prepend(self.options.caretHtml);
+			var caret = $('<span></span>').append(self.options.caretHtml);
 			var links = self.$el.find("li > a");
 			self._trigger(caret, false);
 			self._trigger(links, true);
-			self.$el.find("li:has(ul) > a").prepend(caret);
+			self.$el.find("li:has(ul) > a").append(caret);
 			self.options.onInitAfter.call(this, this, {});
 		},
 		/**

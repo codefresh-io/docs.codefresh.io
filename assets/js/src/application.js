@@ -91,7 +91,7 @@
     // eslint-disable-next-line no-unused-vars
     var sidebarMenuList = $('#bd-docs-nav-list').navgoco({
       caretHtml: '<i class="fa fa-cf-arrow"></i>',
-      accordion: false,
+      accordion: true,
       openClass: 'opened',
       save: true,
       storageType: 'local',
@@ -101,9 +101,10 @@
         path: '/'
       },
       slide: {
-        duration: 400,
-        easing: 'swing'
+        duration: 10,
+        easing: 'linear'
       },
+
       onInitAfter: function (initial) {
         var bdDocsNav = $('#bd-docs-nav')
         var bdDocsNavActiveList = $('#bd-docs-nav li.active')
@@ -123,6 +124,7 @@
           }, 0)
         }
       },
+
       onClickAfter: function (event, submenu) {
         window.localStorage.setItem('scrollto', $(event.currentTarget).offset().top)
       }
@@ -161,6 +163,7 @@
         algoliaOptions: {
           hitsPerPage: 6
         },
+
         transformData: function (hits) {
           return hits.map(function (hit) {
             if (location.href.match(/(192.168|127.0.|localhost).*:19001/)) {
@@ -169,20 +172,24 @@
             return hit
           })
         },
+
         debug: false // Set debug to true if you want to inspect the dropdown
       })
-      docSearch.autocomplete.on('autocomplete:opened', function (event) {
-        // console.log(event)
-        // Do something when the dropdown menu is opened
-      })
+
+      // docSearch.autocomplete.on('autocomplete:opened', function (event) {
+      // console.log(event)
+      // Do something when the dropdown menu is opened
+      // })
 
       var searchInputTrigger = {
+
         getUrlParameter: function getUrlParameter(name) {
           name = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]')
           var regex = new RegExp('[\\?&]' + name + '=([^&#]*)')
           var results = regex.exec(location.search)
           return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '))
         },
+
         triggerSearch: function triggerSearch(docSearch) {
           var value = this.getUrlParameter('q')
           if (value.length > 0 && docSearch && docSearch.input) {
@@ -194,6 +201,7 @@
             }, 500)
           }
         }
+
       }
 
       searchInputTrigger.triggerSearch(docSearch)

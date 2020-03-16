@@ -3,6 +3,26 @@
 // Docsearch overrides
 //
 // `!important` indicates overridden properties.
+
+.bd-search--home {
+  padding: 0;
+
+  .doc-search-input   {
+    padding: 1rem 1.5rem;
+  }
+
+  i,
+  svg {
+    position: absolute;
+    right: 1.5rem;
+    color: $cf-dark-alt;
+  }
+
+  .algolia-autocomplete .ds-dropdown-menu {
+    width: 100%;
+  }
+}
+
 .algolia-autocomplete {
   display: inline-block !important;
   flex: 1;

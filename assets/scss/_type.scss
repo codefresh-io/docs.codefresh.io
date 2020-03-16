@@ -6,6 +6,17 @@
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
+  margin-bottom: 2rem;
   font-weight: $font-weight-bold;
   color: $headings-color;
+}
+
+h2,
+.h2 {
+  font-size: 1.3rem;
+  line-height: 1.3;
+
+  @include media-breakpoint-up(lg) {
+    font-size: 2rem;
+  }
 }

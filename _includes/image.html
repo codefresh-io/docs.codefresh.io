@@ -5,8 +5,8 @@
 {% assign layout_align = site.layout.image_align %}}
 {% endif %}
 
-<figure>
-  <p>
+<figure class="my-4 my-md-5">
+  <p class="mb-2">
     {% if layout_align == 'center' %}
       {% assign align_class = 'mx-auto' %}
     {% elsif layout_align == 'left' %}
@@ -23,7 +23,7 @@
        {% if {{include.max-width}}%}style="max-width: {{include.max-width}}" {% endif %}
     >
     {% endif %}
-      <img class="img-thumbnail"
+      <img class="img-fluid"
            src="{{ site.baseurl }}{{include.file}}"
            alt="{{include.alt}}"
       />
@@ -32,6 +32,6 @@
     {% endif %}
   </p>
   {% if {{include.caption}} %}
-  <figcaption class="h6 font-italic text-{{layout_align}}">{{include.caption}}</figcaption>
+  <figcaption class="font-italic text-{{layout_align}}">{{include.caption}}</figcaption>
   {% endif %}
 </figure>

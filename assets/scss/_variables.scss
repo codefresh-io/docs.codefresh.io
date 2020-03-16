@@ -1,3 +1,9 @@
+// Colors
+$cf-light: #f7f9f9;
+$cf-dark: #123034;
+$cf-dark-alt: #3d7c84;
+$cf-border-color: #d6e2e4;
+
 // Local docs variables
 $bd-white:         $white !default;
 $bd-black:         #000 !default;
@@ -29,15 +35,15 @@ $bd-topaz-navbar-g3: #4ebbd3;
 $cf-navbar-link-color: $bd-white;
 
 $bd-bulb-white:      $bd-white;
-$bd-bulb-red:        #ca2133;
+$bd-bulb-red:        $bd-danger;
 
 $btn-get-started:   #235f5d;
 
 // Body
 // Settings for the `<body>` element.
-
-$body-bg:                   #fcfcfc;
-$body-color:                #4c4c4c;
+$font-size-base: 1.0625rem;
+$body-bg:                   #fff;
+$body-color:                #013a3f;
 
 // Doc Sidebar colors
 $bd-doc-sidebar-link: $body-color;
@@ -61,12 +67,12 @@ $bd-link-hover-color:          darken($bd-link-color, 15%) !default;
 
 // Fonts
 // stylelint-disable value-keyword-case
-$font-family-sans-serif:      "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+$font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 $font-family-monospace:       "Source Coe Pro", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
 $font-family-base:            $font-family-sans-serif;
 // stylelint-enable value-keyword-case
 
-$headings-color:              #2f2f2f;
+$headings-color:              #013a3f;
 
 
 // Override grids

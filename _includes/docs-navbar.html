@@ -1,86 +1,90 @@
-<header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
-  <a class="navbar-brand mr-0 mr-md-2" href="{{ site.baseurl }}/" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Home');" aria-label="Codefresh">
-    {%- include icons/codefresh.svg width="196" height="40" class="d-inline-block align-middle" -%}
-    <span>Docs</span>
-  </a>
+<header class="bd-navbar py-2 py-md-0">
+  <div class="container-fluid navbar navbar-dark navbar-expand flex-column flex-md-row py-0">
+    <a class="navbar-brand mr-0 mr-md-2" href="{{ site.baseurl }}/" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Home');" aria-label="Codefresh">
+      {%- include icons/codefresh-icon.svg width="50" height="auto" class="align-middle" -%}
+      <span class="badge cf-badge cf-badge-doc align-middle ml-1">Docs</span>
+    </a>
 
-  <form class="bd-search {% if page.layout == "docs" %}bd-search-docs {% endif %}d-flex mt-1 mb-1 mt-md-0 order-2 order-md-2 align-items-center">
-    <input type="search" class="form-control form-control-dark mr-sm-2 doc-search-input" id="navbar-search-input" placeholder="{{ site.data.translations[site.locale].search_placeholder_text }}" aria-label="{{ site.data.translations[site.locale].search_placeholder_text }}" autocomplete="off">
-    {% if page.layout == "docs" %}
-    <button class="btn btn-link bd-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#bd-docs-nav" aria-controls="bd-docs-nav" aria-expanded="false" aria-label="Toggle docs navigation">
-      {%- include icons/menu.svg width="30" height="30" -%}
-    </button>
+    {% if page.layout != "home" %}
+    <form class="bd-search {% if page.layout == "docs" %}bd-search-docs {% endif %}d-flex mt-1 mb-1 mt-md-0 order-2 order-md-2 align-items-center">
+      <input type="search" class="form-control form-control-dark mr-sm-2 doc-search-input" id="navbar-search-input" placeholder="{{ site.data.translations[site.locale].search_placeholder_text }}" aria-label="{{ site.data.translations[site.locale].search_placeholder_text }}" autocomplete="off">
+      <i class="fa fa-search"></i>
+      {% if page.layout == "docs" %}
+      <button class="btn btn-link bd-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#bd-docs-nav" aria-controls="bd-docs-nav" aria-expanded="false" aria-label="Toggle docs navigation">
+        {%- include icons/menu.svg width="30" height="30" -%}
+      </button>
+      {% endif %}
+    </form>
     {% endif %}
-  </form>
 
-  <div class="navbar-nav-scroll order-1 order-md-1 ml-md-auto mr-md-auto">
-  <ul class="navbar-nav flex-row ml-md-auto">
+    <div class="navbar-nav-scroll order-1 order-md-1 mr-md-auto">
+    <ul class="navbar-nav flex-row ml-md-auto">
 
-    <li class="nav-item">
-      <a class="nav-link text-uppercase" href="{{ site.link_main }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Product');">Product</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link text-uppercase {% if page.layout == "docs" %}active{% endif %}" href="{{ site.baseurl }}/docs/getting-started/create-a-codefresh-account/" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Docs');">Docs</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link text-uppercase" href="{{ site.baseurl }}/docs/yaml-examples/examples/" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Open Examples');">Examples</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link text-uppercase" href="{{ site.link_plugins }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Open Plugins');" target="_blank" rel="noopener">Plugins</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link text-uppercase" href="{{ site.link_community }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Open Community');" target="_blank" rel="noopener">Community</a>
-    </li>       
-    <li class="nav-item">
-      <a class="nav-link text-uppercase" href="{{ site.link_cli }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Open CLI Docs');" target="_blank" rel="noopener">CLI</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link text-uppercase" href="{{ site.link_api }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Open API Swagger');" target="_blank" rel="noopener">API</a>
-    </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ site.link_main }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Product');">Product</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {% if page.layout == "docs" %}active{% endif %}" href="{{ site.baseurl }}/docs/getting-started/create-a-codefresh-account/" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Docs');">Docs</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ site.baseurl }}/docs/yaml-examples/examples/" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Open Examples');">Examples</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ site.link_plugins }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Open Plugins');" target="_blank" rel="noopener">Plugins</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ site.link_community }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Open Community');" target="_blank" rel="noopener">Community</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ site.link_cli }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Open CLI Docs');" target="_blank" rel="noopener">CLI</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ site.link_api }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Open API Swagger');" target="_blank" rel="noopener">API</a>
+      </li>
 
 
-    {% comment %}
-    <li class="nav-item">
-      <a class="nav-link" href="{{ site.features }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Features');" target="_blank" rel="noopener">Features</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="{{ site.enterprise }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Enterprise');" target="_blank" rel="noopener">Enterprise</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="{{ site.pricing }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Pricing');" target="_blank" rel="noopener">Pricing</a>
-    </li>
-    <li class="nav-item bulb bulb-red" data-bulb-text="LIVE">
-      <a class="nav-link" href="{{ site.schedule_demo }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Schedule Demo');" target="_blank" rel="noopener">Schedule demo</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="{{ site.codefresh_login }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Login');" target="_blank" rel="noopener">Login</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="{{ site.codefresh_signup }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'SignUp');" target="_blank" rel="noopener">SignUp</a>
-    </li>
-    <!--
-    <li class="nav-item dropdown">
-      <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-versions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        v1.2
-      </a>
-      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="bd-versions">
-        <a class="dropdown-item active" href="{{ site.baseurl }}/docs/">Latest</a>
-      </div>
-    </li>
+      {% comment %}
+      <li class="nav-item">
+        <a class="nav-link" href="{{ site.features }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Features');" target="_blank" rel="noopener">Features</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ site.enterprise }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Enterprise');" target="_blank" rel="noopener">Enterprise</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ site.pricing }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Pricing');" target="_blank" rel="noopener">Pricing</a>
+      </li>
+      <li class="nav-item bulb bulb-red" data-bulb-text="LIVE">
+        <a class="nav-link" href="{{ site.schedule_demo }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Schedule Demo');" target="_blank" rel="noopener">Schedule demo</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ site.codefresh_login }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Login');" target="_blank" rel="noopener">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ site.codefresh_signup }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'SignUp');" target="_blank" rel="noopener">SignUp</a>
+      </li>
+      <!--
+      <li class="nav-item dropdown">
+        <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-versions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          v1.2
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="bd-versions">
+          <a class="dropdown-item active" href="{{ site.baseurl }}/docs/">Latest</a>
+        </div>
+      </li>
 
-    <li class="nav-item">
-      <a class="nav-link p-2" href="{{ site.repo }}" target="_blank" rel="noopener" aria-label="GitHub">
-        {%- include icons/github.svg class="navbar-nav-svg" -%}
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link p-2" href="https://twitter.com/{{ site.twitter }}" target="_blank" rel="noopener" aria-label="Twitter">
-        {%- include icons/twitter.svg class="navbar-nav-svg" -%}
-      </a>
-    </li>
-    -->
-    {% endcomment %}
-  </ul>
+      <li class="nav-item">
+        <a class="nav-link p-2" href="{{ site.repo }}" target="_blank" rel="noopener" aria-label="GitHub">
+          {%- include icons/github.svg class="navbar-nav-svg" -%}
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link p-2" href="https://twitter.com/{{ site.twitter }}" target="_blank" rel="noopener" aria-label="Twitter">
+          {%- include icons/twitter.svg class="navbar-nav-svg" -%}
+        </a>
+      </li>
+      -->
+      {% endcomment %}
+    </ul>
+    </div>
   </div>
-
 </header>
