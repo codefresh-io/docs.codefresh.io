@@ -6,7 +6,7 @@ toc: true
 ---
 
 
-The private Codefresh registry which is the built-in Docker registry that comes out of the box with all Codefresh accounts is being deprecated. The registry will become read-only on **April 1st 2020** and will be removed completely on **15th April 2020**.
+The private Codefresh registry which is the built-in Docker registry that comes out of the box with all Codefresh accounts is being deprecated. The registry will become read-only on **April 15th 2020** and will be removed completely on **1st May 2020**.
 
 ## Adopting an external Docker registry 
 
@@ -46,13 +46,13 @@ Some examples of self-hosted registries are:
 
 | Migration Phase          | Date/Milestone                | Codefresh private Registry status                  |
 | -------------- | ---------------------------- |-------------------------|
-| Phase A   | Today - 15th March 2020 | Fully functional (push/pull allowed) |
-| Phase B   | 15th March- 1st April 2020 |   New build step and image API are available. |
-| Phase C   | 1st April - 15th April 2020 |  No pushes are allowed. Registry becomes read-only |
-|           | 15th April 2020 | Registry is removed from service |
+| Phase A   | Today - 1st April 2020 | Fully functional (push/pull allowed) |
+| Phase B   | 1st April- 15th April 2020 |   New build step and image API are available. |
+| Phase C   | 15th April - 1st May 2020 |  No pushes are allowed. Registry becomes read-only |
+|           | 1st May 2020 | Registry is removed from service |
 
 
-## Phase A Migration actions until 15th of March 2020
+## Phase A Migration actions until 1st April 2020
 
 At this phase, customers that depend on the private Codefresh should look at their pipelines and deployments and understand where the private Codefresh registry is used. 
 
@@ -225,7 +225,7 @@ If you wish to perform migration of Docker images in a batch manner, you can als
 
 ### Summary of actions and results of migration phase A
 
-Here is a summary of customer actions at the end of 15th March 2020
+Here is a summary of customer actions at the end of 1st April 2020
 
 * You need to evaluate external Docker registry services and connect at least one in your Codefresh account
 * Change Kubernetes deployments and Helm releases to pull images from the external Registry instead of the private one
@@ -235,9 +235,9 @@ Here is a summary of customer actions at the end of 15th March 2020
 * No pipeline should push to the internal Codefresh registry.
 
 
-## Phase B Migration actions until 1st April 2020
+## Phase B Migration actions until 15th April 2020
 
-At that start of Phase B (15th March 2020) Codefresh will offer the following new features:
+At that start of Phase B (1st April 2020) Codefresh will offer the following new features:
 
 1. The ability to define a default registry for the build step to push to (currently the build step is always pushing to the private Registry) 
 1. The ability to define an explicit registry in the build step (overriding the default)
@@ -299,14 +299,14 @@ You will need to
 
 ### Summary of actions and results of migration phase B
 
-Here is a summary of customer actions at the end of 1st March 2020
+Here is a summary of customer actions at the end of 15th March 2020
 
 * Setup a default registry in your Codefresh account for the registry that is used in push steps as well as caching
 * Decide if you want your build steps to push automatically to the default registry or not
 * Make sure that all your APIs calls or Codefresh CLI invocations mention images with an explicit Docker registry prefix
 
 
-## Phase C Migration actions until 15th April 2020
+## Phase C Migration actions until 1st May 2020
 
 At this phase, the private Codefresh registry will become readonly. Pipelines will be able to pull from it, but all pushes are disallowed.
 
@@ -316,15 +316,15 @@ This is also the last opportunity for migrating images from the private Registry
 
 ### Summary of actions and results of migration phase C
 
-Here is a summary of customer actions at the end of 15th April 2020
+Here is a summary of customer actions at the end of 1st May 2020
 
 * Monitor your pipelines and make sure that they push to the external registry only
 * Double-check your clusters and make sure that they pull from an external registry
 * Check that caching works in your pipelines as well as Hybrid environments by making sure that the external Docker registry has enough capacity.
 
-## Complete removal of the Codefresh private registry on 15th April 2020
+## Complete removal of the Codefresh private registry on 1st May 2020
 
-The private Docker registry will be removed from service on 15th April 2020
+The private Docker registry will be removed from service on 1st May 2020
 
 * Pipelines that still pull from it will stop working
 * Kubernetes clusters that will pull from it will have failed deployments
