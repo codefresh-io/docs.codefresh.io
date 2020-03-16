@@ -36,11 +36,11 @@ max-width="40%"
 
 Fill the following information:
 
-* Registry Provider - select `Quay`.
-* *Namespace* - put Quay username or organization name here.
-* *Name* - Quay image repository name.
+* *Registry Provider* - select `Quay`.
+* *User/Organization Name* - put Quay username or organization name here.
+* *Image Repository Name* - Quay image repository name.
 * *Action* - select `Push Image` action.
-* *Filter* - optional filter to specify which image *tags* will trigger pipeline execution: [Re2](https://github.com/google/re2/wiki/Syntax) regular expression.
+* *Tag* - optional filter to specify which image *tags* will trigger pipeline execution: [Re2](https://github.com/google/re2/wiki/Syntax) regular expression.
 
 {% include image.html
 lightbox="true"

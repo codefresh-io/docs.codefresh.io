@@ -136,6 +136,7 @@ Once you create your pipeline you can also click on the top tab called *Settings
 
 - **Pipeline Name**: the name of your pipeline (useful for working with the [Codefresh CLI](https://codefresh-io.github.io/cli/))
 - **Pipeline ID**: the ID of your pipeline (useful for working with the [Codefresh CLI](https://codefresh-io.github.io/cli/))
+> Note that the Pipeline Name and ID are interchangeable when working with the Codefresh CLI
 - **Pipeline Description**: a freetext pipeline description
 - **Pipeline Tags**: One or more tags used for [access control]({{site.baseurl}}/docs/enterprise/access-control/)
 - **Public Build Logs**: If enabled, the pipeline's builds will be viewable by users without a Codefresh account

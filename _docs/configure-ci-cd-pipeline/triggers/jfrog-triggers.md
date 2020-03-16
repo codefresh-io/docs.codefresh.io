@@ -35,11 +35,11 @@ max-width="40%"
 
 Fill the following information:
 
-* Registry Provider - select `JFrog`.
-* *Namespace* - put JFrog name of repository.
-* *Name* - put name of Docker image.
+* *Registry Provider* - select `JFrog`.
+* *Repository Name* - put JFrog name of repository.
+* *Docker Image Name* - put name of Docker image.
 * *Action* - select `Push Image` action.
-* *Filter* - optional filter to specify which image *tags* will trigger pipeline execution: [Re2](https://github.com/google/re2/wiki/Syntax) regular expression.
+* *Tag* - optional filter to specify which image *tags* will trigger pipeline execution: [Re2](https://github.com/google/re2/wiki/Syntax) regular expression.
 
 {% include image.html
 lightbox="true"
