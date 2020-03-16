@@ -55,35 +55,17 @@ Using this YAML example, we'll add an additional step to deploy the image in Doc
 The following instructions describe how to create a new service in your Kubernetes cluster in order to deploy to it.
 >Note: If you're deploying to an existing service in your Kubernetes cluster please skip to the [next step]({{ site.baseurl }}/docs/deploy-to-kubernetes/deployment-to-kubernetes-quick-start-guide/#add-a-deployment-step)
 
-{:start="1"}
+
  1. Go to the **`Kubernetes` &#8594; `Services page`**.
- 
-{:start="2"}
- 2. Click the button **“Add Service”**.
- 
-{:start="3"}
-3. Select the **cluster**.
-
-{:start="4"}
-4. Select the **namespace**.
-
-{:start="5"}
-5. Type an arbitrary **service name**.
- 
-{:start="6"}
-6. Specify the **number of replicas**.
- 
-{:start="7"}
-7. Type the name of your **pushed image**.
- 
-{:start="8"}
-8. In the **“Internal Ports”** field specify the port which your application listens to.
- 
-{:start="9"}
-9. In the **“Expose port”** field specify the port to be exposed to the Internet and check the checkbox.
- 
-{:start="10"}
-10. Click the button **“Deploy”** to deploy the application.
+ 1. Click the button **“Add Service”**.
+ 1. Select the **cluster**.
+ 1. Select the **namespace**.
+ 1. Type an arbitrary **service name**.
+ 1. Specify the **number of replicas**.
+ 1. Type the name of your **pushed image**.
+ 1. In the **“Internal Ports”** field specify the port which your application listens to.
+ 1. In the **“Expose port”** field specify the port to be exposed to the Internet and check the checkbox.
+ 1. Click the button **“Deploy”** to deploy the application.
   
 Wait until the deployment is finished and you will be able to open the deployed application in your browser by clicking on the "endpoint" link.
 
@@ -92,7 +74,7 @@ lightbox="true"
 file="/images/3f36367-Screenshot_from_2018-02-16_17-09-54.png" 
 url="/images/3f36367-Screenshot_from_2018-02-16_17-09-54.png" 
 alt="Screenshot from 2018-02-16 17-09-54.png" 
-max-width="40%" 
+max-width="60%" 
 %}
 
 ## Add a Deployment step
