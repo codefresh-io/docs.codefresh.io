@@ -83,7 +83,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-
+Note that GoReleaser [requires a GitHub API token](https://goreleaser.com/environment/) (`GITHUB_TOKEN`) with the `repo` scope to deploy artifacts to GitHub.
 Here we use [cf_export]({{site.baseurl}}/docs/codefresh-yaml/variables/#exporting-environment-variables-from-a-freestyle-step) and the [codefresh CLI](https://codefresh-io.github.io/cli/) in order to ask Codefresh about the existing token (that was used in git integrations). In your case you need to change `github-1` with the name of your [Github integration]({{site.baseurl}}/docs/integrations/git-providers/).
 
 It also possible to pass a GITHUB_TOKEN directly in the pipeline, if you don't want to re-use the existing one. This is an alternative way of allowing Goreleaser to create GitHub releases.
