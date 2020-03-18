@@ -9,7 +9,7 @@ toc: true
 ---
 When creating [a Codefresh account]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/) you will automatically get access to your Codefresh Registry which stores and lets you distribute docker images.
 
->**Note**: The Codefresh Registry will be *read-only* from April 15 - April 30, 2020 and then *fully removed* from the service May 1, 2020.  
+>**Note**: The Codefresh Registry will be *read-only* from July 1 - July 14 and then *fully removed* from the service July 15, 2020.  
 >See [this blog post](https://codefresh.io/codefresh-news/deprecation-of-the-codefresh-private-registry/) for more information.
 
 All images built in Codefresh are automatically pushed to your Codefresh registry.
