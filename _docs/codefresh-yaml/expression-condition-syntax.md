@@ -1,6 +1,6 @@
 ---
 title: "Condition Expression Syntax"
-description: "ondition sxpressions can be included in each step in your codefresh.yml, and must be satisfied for the step to execute."
+description: "Condition expressions can be included in each step in your codefresh.yml, and must be satisfied for the step to execute."
 group: codefresh-yaml
 redirect_from:
   - /docs/expression-condition-syntax/
@@ -8,7 +8,7 @@ toc: true
 ---
 Each step in `codefresh.yml` file can contain conditions expressions that must be satisfied for the step to execute.
 
-This is a small example of where an condition expression  can be used:
+This is a small example of where a condition expression  can be used:
   `YAML`
 {% highlight yaml %}
 step-name:
