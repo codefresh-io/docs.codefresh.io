@@ -82,8 +82,8 @@ Summary of actions by customers
 
 | Migration Phase          | Action               | 
 | -------------- | ---------------------------- |
-| Phase A   | Replace Codefresh registry with External Docker registry in all pipeline | 
-| Phase B   | Choose default registry for auto-push and validate that all pipelines do NIT use the Codefresh registry |   
+| Phase A   | Replace Codefresh registry with an External Docker registry in all pipelines | 
+| Phase B   | Choose default registry for auto-push and validate that all pipelines do NOT use the Codefresh registry |   
 | Phase C   | Validate that no cluster, workflow or pipeline is still using the Codefresh registry |  
 
 
