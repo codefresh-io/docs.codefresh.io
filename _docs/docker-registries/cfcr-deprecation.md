@@ -78,11 +78,12 @@ Some examples of self-hosted registries are:
 
 Summary of actions by customers
 
-: .table .table-bordered .table-hover}
+{: .table .table-bordered .table-hover}
+
 | Migration Phase          | Action               | 
 | -------------- | ---------------------------- |
 | Phase A   | Replace Codefresh registry with External Docker registry in all pipeline | 
-| Phase B   | Choose default registry for auto-push and validate all pipeline do not use Codefresh registry |   
+| Phase B   | Choose default registry for auto-push and validate that all pipelines do NIT use the Codefresh registry |   
 | Phase C   | Validate that no cluster, workflow or pipeline is still using the Codefresh registry |  
 
 
