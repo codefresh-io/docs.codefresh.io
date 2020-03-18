@@ -15,7 +15,7 @@ Here is a quick overview of all types of caching used in a Codefresh pipeline:
 {: .table .table-bordered .table-hover}
 | Caching mechanism          | Activation              | Used in                   | Comments |
 | -------------- | ---------------------------- |-------------------------| -------------------------|
-| Distributed Docker step caching       | Automatic | All pipeline [steps]({{site.baseurl}}/docs/codefresh-yaml/steps/) | |
+| Distributed Docker step/image caching       | Automatic | All pipeline [steps]({{site.baseurl}}/docs/codefresh-yaml/steps/) | |
 | Distributed Docker layer caching  | Automatic |  Pipeline [build steps]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) | Mimics local Docker layer cache|
 | Caching from previous built image  | Automatic |  Pipeline build steps | Distributed version of `--cache-from`|
 | Docker registry caching  | Automatic |  Pipeline build steps | Works only for the [integrated Docker registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/)|
@@ -218,6 +218,8 @@ steps:
 
 If you run this pipeline multiple times you will see multiple entries in the file `sample.txt`.
 
+>Note that if you run concurrent builds too quickly after one another, the Codefresh Volume will refresh [from scratch]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipeline-caching/#issues-with-parallel-builds-and-parallel-pipelines) instead of being cached between builds.
+
 {% include image.html 
 lightbox="true" 
 file="/images/pipeline/caching/codefresh-shared-volume.png" 
@@ -292,7 +294,7 @@ The diagram above shows the following sequence of events:
 ## Codefresh cache size and eviction policy
 
 If you use the SAAS version of Codefresh, then you don't have any control of cache policies.
-The SAAS version is fully controlled by Codefresh personnel and the cache policies in place might clear caches more sooner than you think.
+The SAAS version is fully controlled by Codefresh personnel and the cache policies in place might clear caches sooner than you think.
 
 If you run a pipeline very infrequently it is possible to suffer many cache misses. If you also use obscure Docker images you might see them downloaded again and again.
 

@@ -30,7 +30,7 @@ Clicking the badge takes you into the build view of the pipeline.
 
 ## Finding the build badge of your project 
 
-In the pipeline view of a project expand the *General settings*. Next to the *badges* section you will find a link to the build badge.
+In the pipeline view of a project, select the *Settings* tab and then click *General*. Next to the *badges* section you will find a link to the build badge.
 
 {% include 
 image.html 
@@ -44,7 +44,6 @@ max-width="50%"
 
 Click on it and you will get a new dialog where you can select
 
- * The branch that will be used for monitoring
  * The graphical style of the badge (two styles are offered)
  * The syntax for the badge
 
