@@ -89,6 +89,8 @@
   links:
   - title: Codefresh private Docker Registry
     localurl: /docs/docker-registries/codefresh-registry/
+  - title: Codefresh Registry Deprecation
+    localurl: /docs/docker-registries/cfcr-deprecation/    
   - title: Working with Docker registries
     localurl: /docs/docker-registries/working-with-docker-registries/
   - title: Custom image annotations
