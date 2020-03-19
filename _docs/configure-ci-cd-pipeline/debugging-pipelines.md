@@ -11,7 +11,7 @@ In addition to [running pipelines locally]({{site.baseurl}}/docs/configure-ci-cd
 
 ## How Debugging works
 
-The Codefresh pipeline debugger works similar to your IDE debugger. You can place breakpoints on one or more pipeline steps and once the pipeline hits one of them, it will stop. You will then get a terminal like interface inside your pipeline step where you can run any commands that you wish in order to understand the state of the container
+The Codefresh pipeline debugger works similar to your IDE debugger. You can place breakpoints on one or more pipeline steps and once the pipeline hits one of them, it will stop. You will then get a terminal like interface inside your pipeline step where you can run any commands that you wish in order to understand the state of the container.
 
 
 {%

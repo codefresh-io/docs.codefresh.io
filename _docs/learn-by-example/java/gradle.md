@@ -16,7 +16,7 @@ Codefresh can work with Gradle builds in a similar manner as with [Maven builds]
 You can see the example project at [https://github.com/codefresh-contrib/gradle-sample-app](https://github.com/codefresh-contrib/gradle-sample-app). The repository contains a Spring Boot 2 project built with Gradle with the following tasks:
 
 * `gradle test` runs unit tests.
-* `gradle build` creates a self-container jar file (using Spring boot).
+* `gradle build` creates a self-contained jar file (using Spring boot).
 
 Once launched the application presents a simple message at localhost:8080 and also at the various `/actuator/health` endpoints. 
 

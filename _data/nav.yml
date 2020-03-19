@@ -3,7 +3,7 @@
   - title: Create a Codefresh Account
   - title: Create a Basic Pipeline
   - title: Frequently Asked Questions
-    url: "/faq"  
+    url: "/faq"
   - title: On-demand environments
   - title: Deployment to Kubernetes
     url: "/deployment-to-kubernetes-quick-start-guide"
@@ -15,7 +15,7 @@
     - title: "Introduction to Codefresh pipelines"
       url: "/introduction-to-codefresh-pipelines"
     - title: "Creating pipelines"
-      url: "/pipelines"  
+      url: "/pipelines"
     - title: "Triggers"
       url: "/triggers"
       sub-pages:
@@ -34,14 +34,14 @@
     - title: "Monitoring Pipelines"
     - title: "Shared Configuration"
     - title: "Caching"
-      url: "/pipeline-caching"    
+      url: "/pipeline-caching"
     - title: "Public logs and status badges"
       url: "/build-status"
     - title: Running pipelines locally
-      url: "/running-pipelines-locally"  
+      url: "/running-pipelines-locally"
     - title: Debugging pipelines
-      url: "/debugging-pipelines" 
-      
+      url: "/debugging-pipelines"
+
 - title: Learn by example
   url: "/learn-by-example"
   pages:
@@ -51,18 +51,18 @@
         - title: 'Go Web Docker'
           url: "/golang-hello-world"
         - title: 'Go CLI'
-          url: "/goreleaser"    
+          url: "/goreleaser"
     - title: Java
       url: "/java"
       sub-pages:
-        - title: Spring Boot 2
+        - title: Spring Boot 2/Maven
           url: "/spring-boot-2"
         - title: Gradle
           url: "/gradle"
         - title: Publish JAR
-          url: "/publish-jar"  
+          url: "/publish-jar"
         - title: Spring Tomcat
-          url: "/spring-mvc-jdbc-template"          
+          url: "/spring-mvc-jdbc-template"
     - title: Node.js
       url: "/nodejs"
       sub-pages:
@@ -73,7 +73,7 @@
         - title: React
           url: "/react"
     - title: Php
-      url: "/php"            
+      url: "/php"
     - title: Python
       url: "/python"
       sub-pages:
@@ -89,19 +89,19 @@
         - title: 'C'
           url: "/c-make"
         - title: 'C++'
-          url: "/cpp-cmake"        
+          url: "/cpp-cmake"
     - title: C# (.NET Core)
       url: "/dotnet"
     - title: Scala
       url: "/scala"
       sub-pages:
         - title: 'Scala: Hello World'
-          url: "/scala-hello-world" 
+          url: "/scala-hello-world"
     - title: Mobile
       url: "/mobile"
       sub-pages:
         - title: 'Android'
-          url: "/android"             
+          url: "/android"
     - title: General
       url: "/general"
       sub-pages:
@@ -119,13 +119,13 @@
       url: "/steps"
       sub-pages:
         - title: "Git-Clone"
-          url: "/git-clone"      
+          url: "/git-clone"
         - title: "Freestyle"
           url: "/freestyle"
         - title: "Build"
-          url: "/build"  
+          url: "/build"
         - title: "Push"
-          url: "/push"           
+          url: "/push"
         - title: "Composition"
           url: "/composition"
         - title: "Launch-Composition"
@@ -133,24 +133,24 @@
         - title: "Deploy"
           url: "/deploy"
         - title: "Approval"
-          url: "/approval"  
+          url: "/approval"
     - title: Stages
       url: "/stages"
     - title: "Variables"
-      url: "/variables"  
+      url: "/variables"
     - title: "Conditional Execution of Steps"
-      url: "/conditional-execution-of-steps"   
+      url: "/conditional-execution-of-steps"
     - title: "Service containers"
-      url: "/service-containers"     
+      url: "/service-containers"
     - title: "Post-Step Operations"
-      url: "/post-step-operations"      
+      url: "/post-step-operations"
     - title: "Parallel steps"
       url: "/advanced-workflows"
     - title: "Deployment environments"
       url: "/deployment-environments"
     - title: "Expression Condition Syntax"
       url: "/expression-condition-syntax"
-    - title: "Annotations"  
+    - title: "Annotations"
       url: "/annotations"
 
 
@@ -178,11 +178,11 @@
         - title: Build an Image with Build Arguments
           url: "/build-an-image-with-build-arguments"
         - title: Shared volumes between builds
-          url: "/shared-volumes-between-builds" 
+          url: "/shared-volumes-between-builds"
         - title: Use Git Hash in CI
-          url: "/get-short-sha-id-and-use-it-in-a-ci-process"    
+          url: "/get-short-sha-id-and-use-it-in-a-ci-process"
         - title: Calling other pipelines
-          url: "/call-child-pipelines" 
+          url: "/call-child-pipelines"
 
         - title: Run Unit Tests
           url: "/run-unit-tests"
@@ -207,7 +207,7 @@
         - title: Launch Composition
           url: "/launch-composition"
         - title: Use Docker compose
-          url: "/launching-a-composition-and-defining-a-service-environment-variables-using-a-file"  
+          url: "/launching-a-composition-and-defining-a-service-environment-variables-using-a-file"
 
 
 
@@ -220,14 +220,14 @@
         - title: Spring Boot + Kafka + Zookeeper
           url: "/spring-boot-kafka-zookeeper"
         - title: Web terminal
-          url: "/web-terminal"  
+          url: "/web-terminal"
 
         - title: Deploy to VM
-          url: "/packer-gcloud"   
+          url: "/packer-gcloud"
         - title: Use kubectl as part of Freestyle step
           url: "/use-kubectl-as-part-of-freestyle-step"
         - title: Deploy with Helm
-          url: "/helm"   
+          url: "/helm"
         - title: Deploy with Terraform
           url: "/terraform"
         - title: Deploy with Pulumi
@@ -245,9 +245,9 @@
   url: "/docker-registries"
   pages:
     - title: "Codefresh Docker Registry"
-      url: "/codefresh-registry"    
+      url: "/codefresh-registry"
     - title: "Working with Docker registries"
-      url: "/working-with-docker-registries"    
+      url: "/working-with-docker-registries"
     - title: "Image Metadata Annotations"
       url: "/metadata-annotations"
     - title: "External Docker Registries"
@@ -276,17 +276,17 @@
     - title: "Integration Tests"
       url: "/integration-tests"
     - title: "Test Reports"
-      url: "/test-reports" 
+      url: "/test-reports"
     - title: Creating compositions
       url: "/create-composition"
     - title: Dynamic preview environments
       url: "/automatic-preview-environments"
-    - title: Composition Service Discovery 
-      url: "/composition-service-discovery"                
+    - title: Composition Service Discovery
+      url: "/composition-service-discovery"
     - title: Security Scanning
       url: "/security-scanning"
     - title: SonarQube Scanning
-      url: "/sonarqube-integration"        
+      url: "/sonarqube-integration"
 
 - title: Deploy to Kubernetes
   url: "/deploy-to-kubernetes"
@@ -298,25 +298,25 @@
     - title: Manage your Kubernetes cluster
       url: "/manage-kubernetes"
     - title: Environment Dashboard
-      url: "/environment-dashboard"    
+      url: "/environment-dashboard"
     - title: Accessing a Docker registry from Kubernetes
       url: "/access-docker-registry-from-kubernetes"
     - title: Add config maps to your namespaces
       url: "/add-config-maps-to-your-namespaces"
     - title: Kubernetes manifest templates
-      url: "/kubernetes-templating"    
+      url: "/kubernetes-templating"
     - title: Run custom kubectl commands
-      url: "/custom-kubectl-commands"  
+      url: "/custom-kubectl-commands"
     - title: Example - Deploy demochat to Kubernetes cluster
-      url: "/codefresh-kubernetes-integration-demochat-example"      
+      url: "/codefresh-kubernetes-integration-demochat-example"
 
 - title: "Helm Deployments"
   url: "/new-helm"
   pages:
     - title: Helm best practices
-      url: "/helm-best-practices"    
+      url: "/helm-best-practices"
     - title: Using Helm in a Codefresh pipeline
-      url: "/using-helm-in-codefresh-pipeline" 
+      url: "/using-helm-in-codefresh-pipeline"
     - title: Helm Releases management
       url: "/helm-releases-management"
     - title: Codefresh Managed Helm Repos
@@ -332,7 +332,7 @@
   url: "/deploy-your-containers"
   pages:
     - title: Microsoft Azure
-      url: "/microsoft-azure"    
+      url: "/microsoft-azure"
     - title: Amazon ECS/Fargate
       url: "/amazon-ecs"
     - title: Elastic Beanstalk
@@ -365,11 +365,11 @@
   url: "/enterprise"
   pages:
     - title: Installation Options
-      url: "/installation-security"  
+      url: "/installation-security"
     - title: Codefresh behind the firewall
-      url: "/behind-the-firewall"  
+      url: "/behind-the-firewall"
     - title: Codefresh Runner
-      url: "/codefresh-runner"   
+      url: "/codefresh-runner"
     - title: Enterprise Account Management
       url: "/ent-account-mng"
     - title: Single Sign-On
@@ -377,24 +377,24 @@
       sub-pages:
         - title: SAML2
           url: "/sso-setup-saml2"
-        - title: OpenID Connect 
+        - title: OpenID Connect
           url: "/sso-setup-oauth2"
-        - title: Auth0 
+        - title: Auth0
           url: "/sso-auth0"
-        - title: Azure 
+        - title: Azure
           url: "/sso-azure"
-        - title: LDAP 
-          url: "/sso-ldap"          
-        - title: Okta 
+        - title: LDAP
+          url: "/sso-ldap"
+        - title: Okta
           url: "/sso-okta"
         - title: OneLogin
           url: "/sso-onelogin"
     - title: Access Control
-      url: "/access-control"     
+      url: "/access-control"
     - title: Audit Logs
-      url: "/audit-logs" 
+      url: "/audit-logs"
     - title: Hybrid installation (legacy)
-      url: "/codefresh-hybrid"   
+      url: "/codefresh-hybrid"
 
 - title: Incubation
   url: "/incubation"
@@ -402,7 +402,7 @@
     - title: Windows Container Support Overview (Beta)
       url: "/windows-beta"
     - title: Mac OSX and iOS builds
-      url: "/osx-ios-builds" 
+      url: "/osx-ios-builds"
     - title: ARM architecture support
       url: "/arm-support"
 
@@ -423,19 +423,19 @@
         - title: Can’t find your private repositories
           url: "/cant-find-your-private-repositories"
         - title: 'Clone step failed: Command [git checkout $REVISION] exited with code [1]'
-          url: "/git-clone-step-issue"  
+          url: "/git-clone-step-issue"
         - title: Handling commit messages with a quote character
-          url: "/handling-commit-messages-with-quotes"         
+          url: "/handling-commit-messages-with-quotes"
         - title: The docker image does not exist or no pull access
           url: "/the-docker-image-does-not-exist-or-no-pull-access"
         - title: 'Build step: No such file or directory'
-          url: "/build-step-no-such-file-or-directory"          
+          url: "/build-step-no-such-file-or-directory"
         - title: No Dockerfile found
           url: "/no-dockerfile-found"
         - title: Could not tag image
-          url: "/could-not-tag-image"  
+          url: "/could-not-tag-image"
         - title: Error Code 137
-          url: "/error-code-137" 
+          url: "/error-code-137"
         - title: Restoring data from pre-existing image hangs on
           url: "/restoring-data-from-pre-existing-image-hangs-on"
         - title: Disabling codefresh caching mechanisms
@@ -453,7 +453,7 @@
     - title: Git step migration
       url: "/git-step-migration"
     - title: Personal Git Deprecation
-      url: "/personal-git-deprecation"   
+      url: "/personal-git-deprecation"
 - title: Whats new?
   url: "/whats-new"
   pages:
