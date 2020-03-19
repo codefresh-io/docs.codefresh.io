@@ -134,13 +134,13 @@ spec:
   containers:
   - env:
     - name: HTTP_PROXY
-      value: http://192.168.199.5:8080
+      value: http://<ip of proxy server>:port
     - name: HTTPS_PROXY
-      value: http://192.168.199.5:8080
+      value: http://<ip of proxy server>:port
     - name: http_proxy
-      value: http://192.168.199.5:8080
+      value: http://<ip of proxy server>:port
     - name: https_proxy
-      value: http://192.168.199.5:8080  
+      value: http://<ip of proxy server>:port
     - name: no_proxy
       value: localhost, 127.0.0.1, <local_ip_of_machine>
     - name: NO_PROXY
@@ -152,10 +152,10 @@ spec:
 *Step 3* - Add the following variables to your runtime.yaml, both under the `runtimeScheduler:` and under `dockerDaemonScheduler:` blocks inside the `envVars:` section
 
 ```
-HTTP_PROXY: http://192.168.199.5:8080
-http_proxy: http://192.168.199.5:8080
-HTTPS_PROXY: http://192.168.199.5:8080
-https_proxy: http://192.168.199.5:8080
+HTTP_PROXY: http://<ip of proxy server>:port
+http_proxy: http://<ip of proxy server>:port
+HTTPS_PROXY: http://<ip of proxy server>:port
+https_proxy: http://<ip of proxy server>:port
 No_proxy: localhost, 127.0.0.1, <local_ip_of_machine>
 NO_PROXY: localhost, 127.0.0.1, <local_ip_of_machine>
 ```
