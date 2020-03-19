@@ -120,6 +120,60 @@ venona install --kube-namespace my-codefresh-runtime --verbose --kube-config-pat
 
 To check the installation result type `venona status --verbose` and you will get a list of all installations.
 
+### Installing behind a proxy
+
+If you want to deploy the Codefresh runner on a Kubernetes cluster that doesn’t have direct access to `g.codefresh.io`, and has to go trough a proxy server to access `g.codefresh.io`, you will need to follow these additional steps:
+
+*Step 1* - Follow the installation instructions of the previous section
+
+*Step 2* -  Run `kubectl edit deployment venona -ncodefresh-runtime` and add the proxy variables like this
+    
+{% highlight yaml %}
+{% raw %}
+spec:
+  containers:
+  - env:
+    - name: HTTP_PROXY
+      value: http://192.168.199.5:8080
+    - name: HTTPS_PROXY
+      value: http://192.168.199.5:8080
+    - name: http_proxy
+      value: http://192.168.199.5:8080
+    - name: https_proxy
+      value: http://192.168.199.5:8080  
+    - name: no_proxy
+      value: localhost, 127.0.0.1, <local_ip_of_machine>
+    - name: NO_PROXY
+      value: localhost, 127.0.0.1, <local_ip_of_machine>
+{% endraw %}
+{% endhighlight %}
+
+    
+*Step 3* - Add the following variables to your runtime.yaml, both under the `runtimeScheduler:` and under `dockerDaemonScheduler:` blocks inside the `envVars:` section
+
+```
+HTTP_PROXY: http://192.168.199.5:8080
+http_proxy: http://192.168.199.5:8080
+HTTPS_PROXY: http://192.168.199.5:8080
+https_proxy: http://192.168.199.5:8080
+No_proxy: localhost, 127.0.0.1, <local_ip_of_machine>
+NO_PROXY: localhost, 127.0.0.1, <local_ip_of_machine>
+```
+
+*Step 4* -  Add `.firebaseio.com` to the allowed-sites of the proxy server
+
+*Step 5* -  Exec into the `dind` pod and run `ifconfig`
+
+If the MTU value for `docker0` is higher than the MTU value of `eth0` (sometimes the `docker0` MTU is 1500, while `eth0` MTU is 1440 - you need to change this, the `docker0` MTU should be lower than `eth0` MTU
+
+To fix this, edit the configmap in the codefresh-runtime namespace:
+
+```
+kubectl edit cm codefresh-dind-config -ncodefresh-runtime
+```
+
+And add this after one of the commas:
+`"mtu":1440,`
 
 ### Installing on Google Kubernetes Engine
 
