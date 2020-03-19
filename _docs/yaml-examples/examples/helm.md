@@ -27,7 +27,7 @@ You can see the example project at [https://github.com/codefresh-contrib/helm-sa
 
 ## Prerequisites
 
-You need to have [added at least one Kubernetes cluster](https://codefresh.io/docs/docs/deploy-to-kubernetes/add-kubernetes-cluster/) in your Codefresh account. 
+You need to have [added at least one Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/) in your Codefresh account. 
 
 >Notice that if you still use Helm 2 you should also have installed the server side of Helm 2 (Tiller) using `helm init`. This command is best run from the cloud console of your cluster. The respective pipelines of this guide are in the [helm-2 branch](https://github.com/codefresh-contrib/helm-sample-app/tree/helm-2).
 

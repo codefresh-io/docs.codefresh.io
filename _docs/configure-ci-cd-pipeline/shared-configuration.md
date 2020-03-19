@@ -31,14 +31,12 @@ caption="Creating shared configuration snippets"
 max-width="50%"
 %}
 
-You can create two types of shared configuration:
+You can create four types of shared configuration:
 
-* Shared Configuration/ Shared Secret 
-* yaml/ secret yaml
-
-The shared configuration is for environment variables. The secret variant is the same thing but with encrypted values for sensitive data (such as access tokens).
-
-The shared yaml is for Helm value or any other generic information. The secret yaml encrypts the contents.
+* **Shared Configuration**: for environment variables
+* **Shared Secret**: for encrypted environment variables of sensitive data (access tokens, etc.) 
+* **YAML**: for Helm values or any other generic information
+* **Secret YAML**: for above, but encrypts the contents
 
 You can create as many shared snippets as you want (with unique names).
 

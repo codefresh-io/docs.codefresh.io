@@ -188,6 +188,7 @@ For pipelines:
 * `Delete` - can delete allowed pipelines only.
 * `Run` - can run allowed pipelines only.
 * `Approve` - resume pipelines that are waiting for manual [approval]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/).
+* `Debug` - allow the usage of the [pipeline debugger]({{site.baseurl}}/docs/configure-ci-cd-pipeline/debugging-pipelines/).
 
 ## What to read next
 

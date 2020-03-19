@@ -108,7 +108,7 @@ See also [advanced workflows]({{site.baseurl}}/docs/codefresh-yaml/advanced-work
 ## What to read next
 
 * [Conditional Execution of Steps]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/)
-* [Expression Condition Syntax]({{site.baseurl}}/docs/codefresh-yaml/expression-condition-syntax/)
+* [Condition Expression Syntax]({{site.baseurl}}/docs/codefresh-yaml/condition-expression-syntax/)
 * [Working Directories]({{site.baseurl}}/docs/codefresh-yaml/working-directories/)
 * [Annotations]({{site.baseurl}}/docs/codefresh-yaml/annotations/)
 

@@ -31,7 +31,7 @@ max-width="90%"
 
 ## Why Codefresh is different
 
-Codefresh offers two unique characteristics in pipelines that serve as the cornerstone of the build/deploy process:
+Codefresh offers unique characteristics in pipelines that serve as the cornerstone of the build/deploy process:
 
 1. All [steps]({{site.baseurl}}/docs/codefresh-yaml/steps/) in Codefresh pipelines are executed inside a Docker container of your choosing.
 1. All steps in Codefresh share the same "workspace" in the form of a shared Docker volume.
@@ -153,7 +153,7 @@ caption="Re-using Node Modules"
 max-width="90%" 
 %}
 
-1. The first step runs `npm install` and downloads all libraries in `node_modules`.
+1. The first step runs `npm install` and downloads all libraries in `node_modules` into the shared Codefresh volume.
 1. The second step runs `npm test`. The folder `node_modules` is still present from the previous step.
 
 Example 2
@@ -168,7 +168,7 @@ caption="Re-using Test reports"
 max-width="90%" 
 %}
 
-1. The first step runs `mvn test` and produces some test reports in `target/surefire-reports`.
+1. The first step runs `mvn test` and produces some test reports in `target/surefire-reports` into the shared Codefresh volume.
 1. The next step uploads these reports using FTP to an external site.
 
 
@@ -210,14 +210,16 @@ max-width="80%"
 
 There are three important points to consider regarding these folders.
 
-First, the [working directory]({{ site.baseurl }}/docs/codefresh-yaml/working-directories/) of each step is by default the project folder (e.g. `/codefresh/volume/my-project`). Therefore
+First, the [working directory]({{ site.baseurl }}/docs/codefresh-yaml/what-is-the-codefresh-yaml/#working-directories) of each step is by default the project folder (e.g. `/codefresh/volume/my-project`). Therefore
 your build step can run commands exactly as you would run them locally (e.g. `npm install, pip install, mvn package, bundle install`).
 
 Secondly, notice that the project folder is placed on the Codefresh volume, so by default it is also available to all other steps. The code that you checkout in the beginning, as well as all other files that are created on it, will
 be available to all steps. Once you create `node_modules`, or any other folder that exists inside the project folder, it will automatically persist for all other steps.
 
-Finally `/codefresh/volume` is an internal folder name and you should use  `{% raw %}${{CF_VOLUME_PATH}}{% endraw %}` in your codefresh.yml file
+Finally, `/codefresh/volume` is an internal folder name and you should use  `{% raw %}${{CF_VOLUME_PATH}}{% endraw %}` in your codefresh.yml file
 if you really want to reference this folder. You can also reference your project folder as `{% raw %}${{CF_VOLUME_PATH}}/${{CF_REPO_NAME}}{% endraw %}` if you need it.
+
+See the [System Provided Vriables]({{site.baseurl}}/docs/codefresh-yaml/variables/#system-provided-variables) section for more information.
 
 ### Working with Docker inside a Codefresh pipeline
 
@@ -229,16 +231,17 @@ Usually you want to run a docker command for four reasons:
 
 1. To build a Docker image
 1. To push a Docker image
-1. To run a Docker container
 1. To run a docker-compose setup
+1. To run a Docker container
 
 For all these situations Codefresh gives you special pipeline steps that perform the respective action. These are:
 
 1. The [build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/)
 1. The [push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/)
 1. The [compositions step]({{site.baseurl}}/docs/codefresh-yaml/steps/composition/)
+1. The [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/)
 
-To actually run a docker container you just use the [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/). The commands you define in a freestyle step run automatically in a Docker container that is attached to that step once the pipeline executes.
+The commands you define in a freestyle step run automatically in a Docker container that is attached to that step once the pipeline executes.
 
 Therefore, this command on your local workstation:
 

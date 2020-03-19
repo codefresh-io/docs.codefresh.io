@@ -1,14 +1,15 @@
 ---
-title: "Expression Condition Syntax"
-description: "Expression conditions can be included in each step in your codefresh.yml, and must be satisfied for the step to execute."
+title: "Condition Expression Syntax"
+description: "Condition expressions can be included in each step in your codefresh.yml, and must be satisfied for the step to execute."
 group: codefresh-yaml
 redirect_from:
-  - /docs/expression-condition-syntax/
+  - /docs/condition-expression-syntax/
+  - /docs/codefresh-yaml/expression-condition-syntax/
 toc: true
 ---
-Each step in `codefresh.yml` file can contain expression conditions that must be satisfied for the step to execute.
+Each step in `codefresh.yml` file can contain conditions expressions that must be satisfied for the step to execute.
 
-This is a small example of where an expression condition can be used:
+This is a small example of where a condition expression  can be used:
   `YAML`
 {% highlight yaml %}
 step-name:
@@ -23,7 +24,7 @@ step-name:
         executeForMasterBranch: "{% raw %}'${{CF_BRANCH}}{% endraw %}' == 'master'"
 {% endhighlight %}
 
-A expression condition is a basic expression that is evaluated to true/false (to decide whether to execute or not to execute), and can have the following syntax:
+A condition expression is a basic expression that is evaluated to true/false (to decide whether to execute or not to execute), and can have the following syntax:
 
 ### Types
 

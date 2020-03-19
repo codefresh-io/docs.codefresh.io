@@ -117,9 +117,14 @@ caption="Build details"
 max-width="100%"
 %}
 
-There are also two extra options if you click the small "3-dot" menu button on the right. You can rebuild a pipeline or launch a [test environment]({{site.baseurl}}/docs/getting-started/on-demand-environments/#launching-a-docker-image-using-codefresh) from the resulting Docker image.
+There are also extra options if you click the small "3-dot" menu button on the right. For a particular build, you can:
 
-Notice that if you restart a pipeline it will trigger with the exact settings it originally had. So 
+- View the logs 
+- View the YAML
+- View or add [annotations]({{site.baseurl}}/docs/codefresh-yaml/annotations/)
+- View the images produced (and consequently launch an on-demand [test environment]({{site.baseurl}}/docs/getting-started/on-demand-environments/#launching-a-docker-image-using-codefresh))
+
+Notice that if you restart a pipeline it will trigger with the exact settings it *originally* had. So 
 if this was a manual trigger where you [disabled caching]({{site.baseurl}}/docs/troubleshooting/common-issues/disabling-codefresh-caching-mechanisms/) or changed the [notification options](#monitoring-pipelines-that-check-pull-requests), the new
 execution will still honor those settings (even if you have changed them for later builds).
 
@@ -128,7 +133,7 @@ An extra button for test reports will be visible if you are using the [test repo
 
 ## Viewing details for an individual pipeline build
 
-If you click on any individual pipeline you will enter the pipeline build information screen.
+If you click on any individual pipeline build, you will enter the pipeline build information screen.
 From here you can see more details for a build such as the logs, running time and resource metrics.
 
 {% include 
@@ -180,7 +185,9 @@ caption="Step Yaml"
 max-width="60%"
 %}
 
-If you want to see the yaml for the whole pipeline, click the *YAML* tab on the bottom left corner without selecting a step first.
+If you want to see the yaml for the whole pipeline, 
+- Click the *YAML* tab on the bottom left corner without selecting a step first or
+- Select the three dots next to the "RESTART" button on the top-right, and click on *Show YAML*
 
 {% include 
 image.html 
@@ -313,7 +320,7 @@ max-width="50%"
 
 This way the pipeline status *will* change the build status even with manual builds.
 
-The same behavior is also available to the [Codefresh CLI](https://codefresh-io.github.io/cli/). In that case use the parameter `--enable-notifications`
+The same behavior is also available to the [Codefresh CLI](https://codefresh-io.github.io/cli/pipelines/run-pipeline/). In that case use the parameter `--enable-notifications`
 to specify if manually triggering a build will also change the GIT status.
 
 For open source projects you also have the ability to [trigger builds from external forks]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/#support-for-building-pull-requests-from-forks).

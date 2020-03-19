@@ -13,6 +13,11 @@ Recent Codefresh updates:
 - Helm quick start guide for Helm 3  - [documentation]({{site.baseurl}}/docs/getting-started/helm-quick-start-guide/)
 - Deployment example for Helm 3  - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/helm/)
 - Helm 3 release dashboard - [documentation]({{site.baseurl}}/docs/new-helm/helm-releases-management/#choosing-between-helm-2-and-helm-3-releases)
+- Helm 3 recommended labels - [documentation]({{site.baseurl}}/docs/new-helm/helm-releases-management/#viewing-details-and-history-from-a-helm-release)
+- Environment board now supports Helm 3 - [documentation]({{site.baseurl}}/docs/deploy-to-kubernetes/environment-dashboard/)
+- Promotion board now supports Helm 3 - [documentation]({{site.baseurl}}/docs/new-helm/helm-environment-promotion/)
+- New pipeline Helm step - [documentation]({{site.baseurl}}/docs/new-helm/using-helm-in-codefresh-pipeline/#examples)
+- Both Helm 2 and Helm 3 clusters can be used at the same time
 
 ### February 2020
 
