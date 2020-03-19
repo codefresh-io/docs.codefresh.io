@@ -32,7 +32,7 @@ Metadata values may be of the following types:
 | Percentage bar  | use 0-100 value ending with %                     | 85%                                                     |
 | Link            | use url                                           | {% raw %}`${{CF_COMMIT_URL}}`{% endraw %}               |
                                            
-You can also use [Expression evaluations]({{site.baseurl}}/docs/codefresh-yaml/expression-condition-syntax/) to set metadata.
+You can also use [Expression evaluations]({{site.baseurl}}/docs/codefresh-yaml/condition-expression-syntax/) to set metadata.
 
 ## Annotate your images using Codefresh YAML
 You can annotate an image as part of it's builds process and also on post build steps.

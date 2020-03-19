@@ -804,7 +804,7 @@ In this case Codefresh will make sure that cleanup happens only when both unit a
 
 For maximum flexibility you can define a custom conditional for a step.
 
-It is hard to describe all possible cases, because Codefresh support a [mini DSL]({{site.baseurl}}/docs/codefresh-yaml/expression-condition-syntax/) for conditions. All examples mentioned in [conditional execution]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/) are still valid in parallel pipelines.
+It is hard to describe all possible cases, because Codefresh support a [mini DSL]({{site.baseurl}}/docs/codefresh-yaml/condition-expression-syntax/) for conditions. All examples mentioned in [conditional execution]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/) are still valid in parallel pipelines.
 
 For example, run this step only if a PR is opened against the production branch:
 
@@ -962,7 +962,7 @@ Notice that both examples assume that `fail_fast: false` is at the root of the `
 
 * [Codefresh Conditionals]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/)
 * [Variables]({{site.baseurl}}/docs/codefresh-yaml/variables/)
-* [Expression Syntax]({{site.baseurl}}/docs/codefresh-yaml/expression-condition-syntax/)
+* [Expression Syntax]({{site.baseurl}}/docs/codefresh-yaml/condition-expression-syntax/)
 
 
 

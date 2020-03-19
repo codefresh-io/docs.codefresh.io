@@ -482,7 +482,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-You can define much more complex conditions using the [Codefresh expression language]({{site.baseurl}}/docs/codefresh-yaml/expression-condition-syntax/).
+You can define much more complex conditions using the [Codefresh expression language]({{site.baseurl}}/docs/codefresh-yaml/condition-expression-syntax/).
 
 
 ### Migrating Jenkins credentials

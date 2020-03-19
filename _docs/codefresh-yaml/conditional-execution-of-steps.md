@@ -65,10 +65,10 @@ build-step:
 The [JavaScript regular expressions](https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Regular_Expressions) flavour is the one used in branch conditions.
 {{site.data.callout.end}}
 
-## Expression Conditions
-Alternatively, you can use more advanced expression conditions.
+## Condition expressions
+Alternatively, you can use more advanced condition expressions.
 
-This follows the standard [expression condition syntax]({{ site.baseurl }}/docs/codefresh-yaml/expression-condition-syntax/). In this case, you can choose to execute if ```all``` expression conditions evaluate to ```true```, or to execute if ```any``` expression conditions evaluate to ```true```.
+This follows the standard [condition expression  syntax]({{site.baseurl}}/docs/codefresh-yaml/condition-expression-syntax/). In this case, you can choose to execute if ```all``` expression conditions evaluate to ```true```, or to execute if ```any``` expression conditions evaluate to ```true```.
 
 Here are some examples. Execute if the string ```[skip ci]``` is not part of the main repository commit message AND if the branch is ```master```
 

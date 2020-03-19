@@ -3,7 +3,8 @@ title: "Condition Expression Syntax"
 description: "Condition expressions can be included in each step in your codefresh.yml, and must be satisfied for the step to execute."
 group: codefresh-yaml
 redirect_from:
-  - /docs/expression-condition-syntax/
+  - /docs/condition-expression-syntax/
+  - /docs/codefresh-yaml/expression-condition-syntax/
 toc: true
 ---
 Each step in `codefresh.yml` file can contain conditions expressions that must be satisfied for the step to execute.
