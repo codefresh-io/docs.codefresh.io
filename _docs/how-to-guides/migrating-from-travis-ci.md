@@ -294,7 +294,7 @@ when:
 {{site.data.callout.callout_info}}
 ##### More information about conditions?
 
-[Expression Condition Syntax]({{ site.baseurl }}/docs/codefresh-yaml/expression-condition-syntax/)
+[Expression Condition Syntax]({{ site.baseurl }}/docs/codefresh-yaml/condition-expression-syntax/)
 [Conditional Execution of Steps]({{ site.baseurl }}/docs/codefresh-yaml/conditional-execution-of-steps/)
 {{site.data.callout.end}}
 

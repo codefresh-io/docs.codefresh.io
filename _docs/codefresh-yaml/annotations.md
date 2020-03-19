@@ -159,7 +159,7 @@ Click *Save* to apply your changes.
 
 ## Complex annotation values
 
-Apart from scalar values, you can also store more complex expressions in annotations. You have access to all [Codefresh variables]({{site.baseurl}}/docs/codefresh-yaml/variables/), text files from the build and even evaluations from the [expression syntax]({{site.baseurl}}/docs/codefresh-yaml/expression-condition-syntax/)
+Apart from scalar values, you can also store more complex expressions in annotations. You have access to all [Codefresh variables]({{site.baseurl}}/docs/codefresh-yaml/variables/), text files from the build and even evaluations from the [expression syntax]({{site.baseurl}}/docs/codefresh-yaml/condition-expression-syntax/)
 
 `codefresh.yml`
 {% highlight yaml %}

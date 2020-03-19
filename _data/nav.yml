@@ -148,8 +148,8 @@
       url: "/advanced-workflows"
     - title: "Deployment environments"
       url: "/deployment-environments"
-    - title: "Expression Condition Syntax"
-      url: "/expression-condition-syntax"
+    - title: "Condition Expression Syntax"
+      url: "/condition-expression-syntax"
     - title: "Annotations"
       url: "/annotations"
 

@@ -18,6 +18,7 @@ Recent Codefresh updates:
 - Promotion board now supports Helm 3 - [documentation]({{site.baseurl}}/docs/new-helm/helm-environment-promotion/)
 - New pipeline Helm step - [documentation]({{site.baseurl}}/docs/new-helm/using-helm-in-codefresh-pipeline/#examples)
 - Both Helm 2 and Helm 3 clusters can be used at the same time
+- Installing the Codefresh runner behind proxy - [documentation]({{site.baseurl}}/docs/enterprise/codefresh-runner/#installing-behind-a-proxy)
 
 ### February 2020
 

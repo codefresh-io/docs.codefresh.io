@@ -264,4 +264,4 @@ This will safely escape `;` and `=`.
 
 * [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
 * [Codefresh Conditionals]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/)
-* [Expression Syntax]({{site.baseurl}}/docs/codefresh-yaml/expression-condition-syntax/)
+* [Expression Syntax]({{site.baseurl}}/docs/codefresh-yaml/condition-expression-syntax/)
