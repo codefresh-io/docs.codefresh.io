@@ -77,6 +77,7 @@ The pipeline starts by checking out the code using a [git clone step]({{site.bas
 
 You can define the version of Maven/JDK you want to use by picking the appropriate image from Dockerhub, or using any of your own images (even from [external registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/)).
 
+Note the use of the two user-defined environment variables passed to `server.password` and `server.username`.  You will need to define those yourself.  See the documentation on [User Procided Variables]({{site.baseurl}}/docs/codefresh-yaml/variables/#user-provided-variables).
 {% include image.html 
 lightbox="true" 
 file="/images/learn-by-example/java/publish-jar-pipeline.png" 
