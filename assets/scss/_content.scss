@@ -210,46 +210,6 @@
   // List number styling
   > ol {
     padding-left: 1.3rem;
-    list-style: none;
-    counter-reset: item;
-
-    li {
-      position: relative;
-      counter-increment: item;
-
-      &::before {
-        position: absolute;
-        left: -1.3rem;
-        font-weight: 700;
-        content: counter(item) ". ";
-      }
-
-      > ol {
-        counter-reset: item-nested-1;
-
-        li {
-          list-style: none;
-          counter-increment: item-nested-1;
-
-          &::before {
-            content: counter(item-nested-1) ". ";
-          }
-
-          > ol {
-            list-style: none;
-            counter-reset: item-nested-2;
-
-            li {
-              counter-increment: item-nested-2;
-
-              &::before {
-                content: counter(item-nested-2) ". ";
-              }
-            }
-          }
-        }
-      }
-    }
   }
 
   .bd-content-top-controls {
