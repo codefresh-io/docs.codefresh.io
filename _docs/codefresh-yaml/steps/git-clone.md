@@ -50,7 +50,7 @@ step_name:
 | `title`                                    | The free-text display name of the step.                                                                                                                                                                                            | Optional                  |
 | `description`                              | A basic, free-text description of the step.                                                                                                                                                                                        | Optional                  |
 | `stage`                              | Parent group of this step. See [using stages]({{site.baseurl}}/docs/codefresh-yaml/stages/) for more information.                                                                                                                                                                                          | Optional                  |
-| `working_directory`                        | The directory to which the repository is cloned. It can be an explicit path in the container's file system, or a variable that references another step. The default value is {% raw %}`${{main_clone}}`{% endraw %}.                | Default                   |
+| `working_directory`                        | The directory to which the repository is cloned. It can be an explicit path in the container's file system, or a variable that references another step. The default value is {% raw %}`${{main_clone}}`{% endraw %}, but note that the default will only be used if you name your step `main_clone`.  See the example on [working inside the cloned directory]({{site.baseurl}}/docs/yaml-examples/examples/git-checkout/#working-inside-the-cloned-directory) for more information.                | Default                   |
 | `git` | The name of the [git integration]({{site.baseurl}}/docs/integrations/git-providers/) you want to use. If left empty, Codefresh will attempt to use the git provider that was used during account sign-up. Note that this might have unexpected results if you are changing your Git integrations.| Required| 
 | `repo`                                     | path of the repository without the domain name in the form of `my_username/my_repo`                                                                                                                                                                                       | Required                  |
 | `revision`                                 | The revision of the repository you are checking out. It can be a revision hash or a branch name. The default value is `master`.                                                                                                     | Default                   |
@@ -222,7 +222,6 @@ There are 2 ways to do that:
 
 -or-
 
-{:start="2"}
 2. Add a step with key `main_clone` to your pipeline. This step can be of any type and can do any action. This step will override the default clone implementation. for example:
 
 ```yaml
@@ -321,7 +320,8 @@ steps:
 - [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/) 
 - [Git integrations]({{site.baseurl}}/docs/integrations/git-providers/) 
 - [YAML steps]({{site.baseurl}}/docs/codefresh-yaml/steps/) 
-
+- [Git Checkout Examples]({{site.baseurl}}/docs/yaml-examples/examples/git-checkout/)
+- [Custom Git Commands]({{site.baseurl}}/docs/yaml-examples/examples/git-checkout-custom/)
 
 
 
