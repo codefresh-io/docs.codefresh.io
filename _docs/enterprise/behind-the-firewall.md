@@ -110,7 +110,7 @@ steps:
     type: git-clone
     description: Step description
     repo: https://github-internal.example.com/my-username/my-app
-    git: my-internal-git-repo
+    git: my-internal-git-provider
   BuildingDockerImage:
     title: Building Docker Image
     type: build
