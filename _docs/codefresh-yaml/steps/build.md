@@ -88,7 +88,7 @@ step_name:
 | `metadata`                                 | Annotate the built image with [key-value metadata]({{ site.baseurl }}/docs/docker-registries/metadata-annotations/).                                                                                                                             | Optional                  |
 | `on_success`, `on_fail` and `on_finish`    | Define operations to perform upon step completion using a set of predefined [Post-Step Operations]({{site.baseurl}}/docs/codefresh-yaml/post-step-operations/).                                                                                                      | Optional                  |
 | `retry`   | Define retry behavior as described in [Retrying a step]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/#retrying-a-step).                                                                               | Optional                  |
-
+| `buildkit` | Set to `true` to enable [Buildkit]({{site.baseurl}}/docs/codefresh-yaml/steps/build/#buildkit-support) and all of its enhancements | Optional | 
 **Exported resources:**
 - Working Directory
 - Image ID
@@ -200,7 +200,7 @@ All images built successfully with the build step, will be automatically pushed 
 
 ## Buildkit support
 
-Codefresh also allows you to use [builkit](https://github.com/moby/buildkit) with all its [enhancements](https://docs.docker.com/develop/develop-images/build_enhancements/) and [experimental features](https://github.com/moby/buildkit/blob/master/frontend/dockerfile/docs/experimental.md#experimental-syntaxes).
+Codefresh also allows you to use [buildkit](https://github.com/moby/buildkit) with all its [enhancements](https://docs.docker.com/develop/develop-images/build_enhancements/) and [experimental features](https://github.com/moby/buildkit/blob/master/frontend/dockerfile/docs/experimental.md#experimental-syntaxes).
 
 Using buildkit you can get:
 

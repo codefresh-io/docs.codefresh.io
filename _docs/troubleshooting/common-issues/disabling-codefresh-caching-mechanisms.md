@@ -35,4 +35,4 @@ Any subsequent/automated builds will still use the default caching behavior.
 
 ### Disabling consistently at the build definition
 
-In the build step YAML, set `no_cache: true` to disable docker local cache, and `no_cf_cache: true` to disable codefresh's additional optimizations such as cache-from.
+In the build step YAML, set `no_cache: true` to disable docker local cache, and `no_cf_cache: true` to disable codefresh's additional optimizations such as `--cache-from`.
