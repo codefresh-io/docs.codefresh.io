@@ -135,7 +135,7 @@ You can issue a [Helm test](https://github.com/kubernetes/helm/blob/master/docs/
 You can delete a release by clicking on the 'Delete' button on the desired chart row.
 For deletion options, see the [helm delete documentation](https://github.com/kubernetes/helm/blob/master/docs/helm/helm_delete.md), for example, *purge* will remove the revision from the release history.
 
-### Overriding the default Helm action
+### Overriding the default Helm actions
 
 By default Codefresh will just execute the native Helm command for each GUI action that you press
 
@@ -153,10 +153,42 @@ file="/images/kubernetes-helm/dashboard/override-helm-actions.png"
 url="/images/kubernetes-helm/dashboard/override-helm-actions.png"
 alt="Changing default Helm actions" 
 caption="Changing default Helm actions" 
-max-width="40%"
+max-width="50%"
 %}
 
 This way you can add your extra logic on top of these actions. For example your own Helm uninstall pipeline might also have a notification step that posts a message to a slack channel after the release is removed.
+
+If you do override any of these actions the following [environment variables]({{site.baseurl}}/docs/codefresh-yaml/variables/) are available in the respective pipeline, so that you can use your own custom helm command.
+
+*Helm Test pipeline*
+
+* `CF_HELM_RELEASE` - name of release
+* `CF_HELM_KUBE_CONTEXT` - kubectl context name of target cluster (cluster name from [dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/#work-with-your-services))
+* `CF_HELM_NAMESPACE` - namespace for Tiller Namespace (helm2) or namespace where release is stored (helm3) 
+* `CF_HELM_TIMEOUT` - time in seconds to wait for any individual Kubernetes operation
+* `CF_HELM_CLEANUP` - delete test pods upon completion
+* `CF_HELM_TILLER_VERSION` - version of tiller for helm2
+
+
+*Helm Rollback pipeline*
+
+* `CF_HELM_VERSION` - Helm version, ex.: 3.0.1, 2.7.0
+* `CF_HELM_RELEASE` - name of release on cluster
+* `CF_HELM_REVISION` - revision which will be used for rollback
+* `CF_HELM_KUBE_CONTEXT` - kubectl context name of target cluster (cluster name from [dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/#work-with-your-services))
+* `CF_HELM_NAMESPACE` - namespace for Tiller Namespace (helm2) or namespace where release is stored (helm3) 
+
+
+*Helm delete pipeline*
+
+* `CF_HELM_PURGE` - boolean, delete release from store
+* `CF_HELM_RELEASE` - name of release
+* `CF_HELM_TIMEOUT` - time in seconds to wait for any individual Kubernetes operation
+* `CF_HELM_HOOKS` - prevent hooks from running during install
+* `CF_HELM_KUBE_CONTEXT` - kubectl context name of target cluster (cluster name from [dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/#work-with-your-services))
+* `CF_HELM_VERSION` - Helm version, ex.: 3.0.1, 2.7.0
+* `CF_HELM_NAMESPACE` - namespace for Tiller Namespace (helm2) or namespace where release is stored (helm3)
+
 
 
 ## Helm Deployment Badge

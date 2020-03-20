@@ -17,6 +17,7 @@ Recent Codefresh updates:
 - Environment board now supports Helm 3 - [documentation]({{site.baseurl}}/docs/deploy-to-kubernetes/environment-dashboard/)
 - Promotion board now supports Helm 3 - [documentation]({{site.baseurl}}/docs/new-helm/helm-environment-promotion/)
 - New pipeline Helm step - [documentation]({{site.baseurl}}/docs/new-helm/using-helm-in-codefresh-pipeline/#examples)
+- Variables available for Helm pipelines - [documentation]({{site.baseurl}}/docs/new-helm/helm-releases-management/#overriding-the-default-helm-actions)
 - Both Helm 2 and Helm 3 clusters can be used at the same time
 - Installing the Codefresh runner behind proxy - [documentation]({{site.baseurl}}/docs/enterprise/codefresh-runner/#installing-behind-a-proxy)
 
@@ -71,7 +72,7 @@ Recent Codefresh updates:
 ### October 2019
 
 - Debugging pipelines with breakpoints - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/debugging-pipelines/)
-- Matrix builds and implicit paralllel steps - [documentation]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/#implicit-parallel-steps)
+- Matrix builds and implicit parallel steps - [documentation]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/#implicit-parallel-steps)
 - New Build view filters - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/monitoring-pipelines/#creating-build-views)
 - Deployments with Packer - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/packer-gcloud/)
 - Calling child pipelines - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/call-child-pipelines/)
@@ -105,7 +106,7 @@ Recent Codefresh updates:
 - Approval steps have now timeouts - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/#automatic-approvalsrejections)
 - Approval steps have now access control - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/#approval-restrictions)
 - Concurrency limits on pipelines - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-settings)
-- Termination setttings on pipelines - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-settings)
+- Termination settings on pipelines - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-settings)
 - API keys have now different access scopes - [documentation]({{site.baseurl}}/docs/integrations/codefresh-api/#access-scopes)
 
 
@@ -280,7 +281,7 @@ Recent Codefresh updates:
   - can visually see differences between releases
 - Misc:
   - UI and bug fixes.
-  - reorganized Helm docs, including samples on how package charts and push to registry: [Create Helm artifacts using Codefresh pipeline]({{ site.baseurl }}/docs/new-helm/create-helm-artifacts-using-codefresh-pipeline/)
+  - reorganized Helm docs, including samples on how package charts and push to registry: [Create Helm artifacts using Codefresh pipeline]({{site.baseurl}}/docs/new-helm/create-helm-artifacts-using-codefresh-pipeline/)
   - Pre-release of our brand new CLI at [https://github.com/codefresh-io/cli](https://github.com/codefresh-io/cli)
   - Using our new cli, you can now execute many pipelines in parallel with different configurations for each.
 
@@ -297,7 +298,7 @@ Recent Codefresh updates:
  - Easily manage your cluster configuration using Codefresh by creating, importing and sharing Config maps between your Kubernetes namespaces and clusters.
  - If you want to trigger Codefresh pipelines from other tool, use our pipeline hook to build, test and deploy from any command line / script / 3rd party.
  - Test your cluster Credentials and connectivity in one click.
- - We added integration with main self-hosted GIT providers to our PRO plan. You can now use Codefresh with your repos from:
+ - We added integration with main self-hosted GIT providers to our PRO plan. You can now use Codefresh with your repositories from:
    - GitHub enterprise
    - Bitbucket Enterprise
    - Gitlab enterprise
