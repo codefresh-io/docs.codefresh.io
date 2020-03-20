@@ -108,7 +108,7 @@ step_name:
 Here are some full pipelines with freestyle steps. Notice that in all cases the pipelines are connected to [git repositories]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-creation-modes)
 so the source code is already checked out and available to all pipeline steps.
 
-Creating a [JAR file]({{site.baseurl}}/docs/learn-by-example/java/spring-boot-2/):
+**Creating a [JAR file]({{site.baseurl}}/docs/learn-by-example/java/spring-boot-2/):**
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -121,7 +121,9 @@ steps:
      - mvn -Dmaven.repo.local=/codefresh/volume/m2_repository package
 {% endhighlight %}
 
-Running unit tests in [Node.JS]({{site.baseurl}}/docs/learn-by-example/nodejs/):
+Note how we [cache Maven dependencies]({{site.baseurl}}/docs/learn-by-example/java/spring-boot-2/#caching-the-maven-dependencies) using the internal Codefresh Volume.
+
+**Running unit tests in [Node.JS]({{site.baseurl}}/docs/learn-by-example/nodejs/):**
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -135,7 +137,7 @@ steps:
      - npm run test
 {% endhighlight %}
 
-Packaging a [GO application]({{site.baseurl}}/docs/learn-by-example/golang/golang-hello-world/):
+**Packaging a [GO application]({{site.baseurl}}/docs/learn-by-example/golang/golang-hello-world/):**
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -149,7 +151,7 @@ steps:
      - go build
 {% endhighlight %}
 
-Performing a [blue/green deployment](https://github.com/codefresh-io/k8s-blue-green-deployment):
+#### Performing a [blue/green deployment](https://github.com/codefresh-io/k8s-blue-green-deployment):
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -220,7 +222,7 @@ Here the `MyAppDockerImage` step is creating a custom docker image. That image i
 This pattern works very well for cases where testing tools are already part of the image (usually with dynamic languages).
 In other case you can have a second Dockerfile in your application that is designed explicitly to hold all your testing tools.
 
-## Entry point
+## Entry point 
 
 When using the original container entry point, you can use the `cmd` field to specify additional arguments to be used with the entry point. This can be a string, or an array of strings. For example:  
 
@@ -245,9 +247,9 @@ image: mwendler/cowsay
 
 ## Commands
 
-When you use the `commands` field, it will override the container original `entrypoint` and will execute the commands in a shell inside the container.    
+When you use the `commands` field, it will override the container original `entry_point` and will execute the commands in a shell inside the container.    
 The provided commands are concatenated into a single command using the shell's `;` operator, and are run using the default shell `/bin/sh` as an entry point.  
-Additional settings that are set only when using commands are `set -e`, and the `cf_export` utility.
+Additional settings that are set only when using commands are `set -e`, and the [`cf_export`]({{site.baseurl}}/docs/codefresh-yaml/variables/#using-cf_export-command) utility.
 
 > Using complex commands in the freestyle step requires use of [YAML block scalars](http://stackoverflow.com/questions/3790454/in-yaml-how-do-i-break-a-string-over-multiple-lines).
 
