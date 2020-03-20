@@ -104,6 +104,32 @@ max-width="50%"
 
 This is the recommended way of creating re-usable pipelines in Codefresh.
 
+## Cloning a repository using the Codefresh runner
+
+If you are using the [Hybrid version]({{site.baseurl}}/docs/enterprise/installation-security/#hybrid-installation) of Codefresh and a have a [Codefresh runner]({{site.baseurl}}/docs/enterprise/codefresh-runner/) installed, you need to use
+the fully qualified path of the git repository:
+
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+steps:
+    main_clone:
+        title: 'Cloning main repository...'
+        type: git-clone
+        repo: https://github-internal.example.com/my-username/my-app
+        revision: '${{CF_REVISION}}'
+        git: my-internal-git-provider
+    PrintFileList:
+        title: 'Listing files'
+        image: alpine:latest
+        commands:
+            - 'ls -l'
+{% endraw %}
+{% endhighlight %}
+
+More details can be found in the [private Git instructions page]({{site.baseurl}}/docs/enterprise/behind-the-firewall/#checking-out-code-from-a-private-git-repository).
+
 
 ## Working inside the cloned directory
 

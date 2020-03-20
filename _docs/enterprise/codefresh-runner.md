@@ -312,7 +312,64 @@ Update your runtime environment with the [patch command](https://codefresh-io.gi
 codefresh patch runtime-environment ivan@wawa-ebs.us-west-2.eksctl.io/codefresh-runtime -f codefresh-runner.yaml
 ```
 
+### Injecting AWS arn roles into the cluster
 
+Step 1 - Make sure the OIDC provider  is connected to the cluster
+
+See:
+
+ * [https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html](https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html)
+ * [https://aws.amazon.com/blogs/opensource/introducing-fine-grained-iam-roles-service-accounts/](https://aws.amazon.com/blogs/opensource/introducing-fine-grained-iam-roles-service-accounts/)
+
+Step 2 - Create IAM role and policy as explained in [https://docs.aws.amazon.com/eks/latest/userguide/create-service-account-iam-policy-and-role.html](https://docs.aws.amazon.com/eks/latest/userguide/create-service-account-iam-policy-and-role.html)
+
+Here, in addition to the policy explained, you need a Trust Relationship established between this role and the OIDC entity.
+
+{% include image.html
+  lightbox="true"
+  file="/images/enterprise/runner/edit-trust-relationship.png"
+  url="/images/enterprise/runner/edit-trust-relationship.png"
+  alt="IAM Role trust establishment with OIDC provider"
+  caption="IAM Role trust establishment with OIDC provider"
+  max-width="90%"
+    %} 
+
+Step 3 - Create a new namespace where the runner will be instlled (e.g.  `codefresh-runtime`) and annotate the default Kubernetes Service Account on the newly created namespace with the proper IAM role 
+
+{% include image.html
+  lightbox="true"
+  file="/images/enterprise/runner/sa-annotation.png"
+  url="/images/enterprise/runner/sa-annotation.png"
+  alt="Service Account annotation"
+  caption="Service Account annotation"
+  max-width="90%"
+    %}         
+
+Step 4 - Install the Codefresh runner using the instructions of the previous section
+
+Step 5 - Using the AWS assumed role identity
+
+After the Codefresh runner is installed run a pipeline to test the AWS resource access:
+
+{% highlight yaml %}
+{% raw %}
+RunAwsCli:
+      title : Communication with AWS 
+      image : mesosphere/aws-cli
+      stage: "build"
+      commands :
+         - apk update
+         - apk add jq
+         - env
+         - cat /codefresh/volume/sensitive/.kube/web_id_token
+         - aws sts assume-role-with-web-identity --role-arn $AWS_ROLE_ARN --role-session-name mh9test --web-identity-token file://$AWS_WEB_IDENTITY_TOKEN_FILE --duration-seconds 1000 > /tmp/irp-cred.txt
+         - export AWS_ACCESS_KEY_ID="$(cat /tmp/irp-cred.txt | jq -r ".Credentials.AccessKeyId")"
+         - export AWS_SECRET_ACCESS_KEY="$(cat /tmp/irp-cred.txt | jq -r ".Credentials.SecretAccessKey")"
+         - export AWS_SESSION_TOKEN="$(cat /tmp/irp-cred.txt | jq -r ".Credentials.SessionToken")"
+         - rm /tmp/irp-cred.txt
+         - aws s3api get-object --bucket jags-cf-eks-pod-secrets-bucket --key  eks-pod2019-12-10-21-18-32-560931EEF8561BC4 getObjectNotWorks.txt
+{% endraw %}
+{% endhighlight %}
 
 ### Security roles
 
