@@ -153,11 +153,12 @@
     - title: "Annotations"
       url: "/annotations"
 
-
 - title: "YAML Examples"
   url: "/yaml-examples"
   pages:
     - title: Examples
+      url: "/examples"
+    - title: "Git"
       url: "/examples"
       sub-pages:
         - title: Checking out Git repositories
@@ -166,7 +167,11 @@
           url: "/git-checkout-custom"
         - title: Non git checkouts
           url: "/non-git-checkout"
-
+        - title: Use Git Hash in CI
+          url: "/get-short-sha-id-and-use-it-in-a-ci-process"
+    - title: "Image Builds"
+      url: "/examples"
+      sub-pages:
         - title: Build an Image with the Dockerfile in Root Directory
           url: "/build-an-image-dockerfile-in-root-directory"
         - title: Build an Image - Specify Dockerfile Location
@@ -177,19 +182,16 @@
           url: "/build-and-push-an-image"
         - title: Build an Image with Build Arguments
           url: "/build-an-image-with-build-arguments"
-        - title: Shared volumes between builds
-          url: "/shared-volumes-between-builds"
-        - title: Use Git Hash in CI
-          url: "/get-short-sha-id-and-use-it-in-a-ci-process"
-        - title: Calling other pipelines
-          url: "/call-child-pipelines"
-
+    - title: "Testing"
+      url: "/examples"
+      sub-pages:
         - title: Run Unit Tests
           url: "/run-unit-tests"
-
         - title: Run Integration Tests
           url: "/run-integration-tests"
-
+    - title: "Databases"
+      url: "/examples"
+      sub-pages:
         - title: Run Integration Tests with Mongo
           url: "/integration-tests-with-mongo"
         - title: Run Integration Tests with MySQL
@@ -200,32 +202,13 @@
           url: "/integration-tests-with-redis"
         - title: Populate a database with existing data
           url: "/populate-a-database-with-existing-data"
-
-
-        - title: Shared volumes for composition
-          url: "/shared-volumes-of-service-from-composition-step-for-other-yml-steps"
-        - title: Launch Composition
-          url: "/launch-composition"
-        - title: Use Docker compose
-          url: "/launching-a-composition-and-defining-a-service-environment-variables-using-a-file"
-
-
-
         - title: Import data to MongoDB
           url: "/import-data-to-mongodb"
-        - title: NodeJS + Angular2 + MongoDB
-          url: "/nodejs-angular2-mongodb"
-        - title: Secure a Docker Container Using HTTP Basic Auth
-          url: "/secure-a-docker-container-using-http-basic-auth"
-        - title: Spring Boot + Kafka + Zookeeper
-          url: "/spring-boot-kafka-zookeeper"
-        - title: Web terminal
-          url: "/web-terminal"
-
+    - title: "Deployments"
+      url: "/examples"
+      sub-pages:
         - title: Deploy to VM
           url: "/packer-gcloud"
-        - title: Use kubectl as part of Freestyle step
-          url: "/use-kubectl-as-part-of-freestyle-step"
         - title: Deploy with Helm
           url: "/helm"
         - title: Deploy with Terraform
@@ -234,12 +217,40 @@
           url: "/pulumi"
         - title: Deploy to Nomad
           url: "/nomad"
-
+    - title: "Compositions"
+      url: "/examples"
+      sub-pages:
+        - title: Shared volumes for composition
+          url: "/shared-volumes-of-service-from-composition-step-for-other-yml-steps"
+        - title: Launch Composition
+          url: "/launch-composition"
+        - title: Use Docker compose
+          url: "/launching-a-composition-and-defining-a-service-environment-variables-using-a-file"
+    - title: "Notifications"
+      url: "/examples"
+      sub-pages:
         - title: Sending the notification to Slack
           url: "/sending-the-notification-to-slack"
-
-
-
+    - title: "Security"
+      url: "/examples"
+      sub-pages:
+        - title: Secure a Docker Container Using HTTP Basic Auth
+          url: "/secure-a-docker-container-using-http-basic-auth"
+    - title: "General"
+      url: "/examples"
+      sub-pages:
+        - title: Shared volumes between builds
+          url: "/shared-volumes-between-builds"
+        - title: Calling other pipelines
+          url: "/call-child-pipelines"
+        - title: NodeJS + Angular2 + MongoDB
+          url: "/nodejs-angular2-mongodb"
+        - title: Spring Boot + Kafka + Zookeeper
+          url: "/spring-boot-kafka-zookeeper"
+        - title: Web terminal
+          url: "/web-terminal"
+        - title: Use kubectl as part of Freestyle step
+          url: "/use-kubectl-as-part-of-freestyle-step"
 
 - title: "Artifacts Management"
   url: "/docker-registries"
