@@ -217,6 +217,13 @@
           url: "/pulumi"
         - title: Deploy to Nomad
           url: "/nomad"
+        - title: Use kubectl as part of Freestyle step
+          url: "/use-kubectl-as-part-of-freestyle-step"
+    - title: "Secrets"
+      url: "/examples"
+      sub-pages:
+        - title: Vault Secrets in the Pipeline
+          url: "/vault-secrets-in-the-pipeline"
     - title: "Compositions"
       url: "/examples"
       sub-pages:
@@ -249,8 +256,6 @@
           url: "/spring-boot-kafka-zookeeper"
         - title: Web terminal
           url: "/web-terminal"
-        - title: Use kubectl as part of Freestyle step
-          url: "/use-kubectl-as-part-of-freestyle-step"
 
 - title: "Artifacts Management"
   url: "/docker-registries"
