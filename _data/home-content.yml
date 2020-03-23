@@ -105,7 +105,7 @@
     localurl: /docs/docker-registries/external-docker-registries/google-container-registry/
   - title: JFrog Bintray.io/Artifactory
     localurl: /docs/docker-registries/external-docker-registries/bintray-io/
-- title: Quality Assurance
+- title: Testing
   icon: images/home-icons/testing.svg
   url: ''
   links:
