@@ -12,7 +12,6 @@ toc: true
 
 Simple [unit tests]({{site.baseurl}}/docs/testing/unit-tests/) that rely only on the source code of the application, are very easy to execute in Codefresh, using only [freestyle steps]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/). For integration tests however, you usually need to launch either the application itself or one or more external services (such as a database).
 
-
 Codefresh offers two ways of launching sidecar containers (similar to Docker compose) within the pipeline:
 
 1. [Compositions]({{site.baseurl}}/docs/codefresh-yaml/steps/composition/) is the old (but still supported) way
@@ -27,7 +26,6 @@ For brand new pipelines we suggest you use service containers. They are much mor
 
 >Notice that this page explains how to run additional services that are automatically discarded once the pipeline is finished. If you are interested in temporary test environments see the [preview environments]({{site.baseurl}}/docs/getting-started/on-demand-environments/) page.
 
-
 ## How integration tests work in Codefresh
 
 Service containers work similar to docker-compose. A set of containers are launched on the same network with configurable hostnames and ports. Once they are up, you decide what to do with a freestyle step that is part of the network as well. In the most typical pipeline you can use your existing test framework (regardless of programming language) in the same manner as you would run your tests locally.
@@ -37,7 +35,6 @@ A best practice is to make sure that the hostnames used by your integration test
 Also make sure that your tests do **NOT** use `localhost` for an API endpoint. This technique does not work with docker-compose and will not work with Codefresh either. Instead, use the hostname defined in the docker-compose/codefresh.yml file. For example if you launch a MySQL service at hostname `my_db`, then your tests should use `my_db:3306` as a target. Even better make the hostname completely configurable with an environment variable (so that you can change it within the Codefresh pipeline at wish). Basically make sure that your integration tests work fine with docker compose locally on your workstation, before converting them to a Codefresh pipeline.
 
 >Notice that the services you launch in a Codefresh pipeline, consume resources (memory/CPU) from the pipeline running environment. The more services you launch the less resources you have for the actual pipeline. We also suggest that you do **NOT** use service containers for running load testing or performance testing. 
-
 
 ## Running integration tests directly from source code
 
@@ -53,7 +50,7 @@ The simplest way to run integration tests is to check out the source code of you
   max-width="70%"
 %}
 
-This is a very popular way of running integration tests, but not the most flexible one. It works only when your tests have very simple requirements on their testing environment. It also doesn't make a clear distinction on source code that gets shipped to production with source code that is used only for testing. Make sure that you don't fall into the common trap of shipping testing tools with your docker container in production.  
+This is a very popular way of running integration tests but not the most flexible one. It works only when your tests have very simple requirements on their testing environment. It also doesn't make a clear distinction on source code that gets shipped to production with source code that is used only for testing. Make sure that you don't fall into the common trap of shipping testing tools with your docker container in production.  
 
 Here is the respective pipeline:
 
@@ -87,14 +84,13 @@ steps:
 {% endraw %}      
 {% endhighlight %}
 
-We suggest using this technique only if your application is not dockerized yet (i.e. you don't deploy it with a Docker image to production). 
-
+We suggest using this technique only if your application is not dockerized yet (i.e. you don't deploy it with a Docker image to production).
 
 See more examples with [MySQL]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mysql/) or [Postgres]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-postgres/).
 
 ## Running tests after launching the application
 
-A better approach (that mimics what happens in reality) is to actually launch your application as a Docker image and then run tests against it. Of course this approach is only possible if you have adopted containers as deployment artifacts:
+A better approach (that mimics what happens in reality) is to launch your application as a Docker image and then run tests against it. This approach is only possible if you have adopted containers as deployment artifacts:
 
 {%
   include image.html
@@ -145,13 +141,11 @@ steps:
 {% endraw %}      
 {% endhighlight %}
 
-
 See more examples with [launching the application]({{site.baseurl}}/docs/yaml-examples/examples/run-integration-tests/) or [Postgres]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-postgres/).
-
 
 ## Using a custom test image
 
-In all the previous examples the tests were running in a public Dockerhub image that has the programming language/framework that your tests require. In more complex cases, you might need to create your own Docker image that contains exactly the tools that you wish. 
+In all the previous examples the tests were running in a public Dockerhub image that has the programming language/framework that your tests require. In more complex cases, you might need to create your own Docker image that contains exactly the tools that you wish.
 
 In this case you can create a special Docker image that will be used just for testing and nothing else.
 
@@ -209,9 +203,9 @@ steps:
 {% endraw %}      
 {% endhighlight %}
 
-This is the recommended way to run integration tests in Codefresh. It creates a clear distinction on source code that gets shipped to production with source code that is needed only for tests. It also allows you to define exactly how the test environment looks like (maybe you need multiple or exotic testing tools that are not available in dockerhub).
+This is the recommended way to run integration tests in Codefresh. It creates a clear distinction between the source code that gets shipped to production and source code that is needed only for tests. It also allows you to define what the test environment will look like (maybe you need multiple or exotic testing tools that are not available in Dockerhub).
 
-See more examples with using a separate testing image [for the application]({{site.baseurl}}/docs/yaml-examples/examples/run-integration-tests/) or [a MySQL instance]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mysql/). 
+See more examples with using a separate testing image [for the application]({{site.baseurl}}/docs/yaml-examples/examples/run-integration-tests/) or [a MySQL instance]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mysql/).
 
 ## Integration tests for microservices
 
@@ -288,9 +282,9 @@ steps:
 
 Keep in the mind that extra services use memory from the pipeline itself, so if you follow this route make sure that the pipeline is running on the appropriate runtime environment.
 
-## Running service containers for the whole pipeline.
+## Running service containers for the whole pipeline
 
-In most cases service containers should be only attached to the pipeline step that is using them. 
+In most cases service containers should be only attached to the pipeline step that is using them.
 
 {%
   include image.html
@@ -441,9 +435,9 @@ Read all about test results and graphs in the [test reports page]({{site.baseurl
 ## What to read next
 
 * [Service Containers]({{site.baseurl}}/docs/testing/unit-tests/)
-* [Run Integration Tests]({{site.baseurl}}/docs/yaml-examples/examples/run-integration-tests/) 
-* [Run Integration Tests with MongoDB]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mongo/) 
-* [Run Integration Tests with MySQL]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mysql/) 
-* [Run Integration Tests with PostgreSQL]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-postgres/) 
+* [Run Integration Tests]({{site.baseurl}}/docs/yaml-examples/examples/run-integration-tests/)
+* [Run Integration Tests with MongoDB]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mongo/)
+* [Run Integration Tests with MySQL]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mysql/)
+* [Run Integration Tests with PostgreSQL]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-postgres/)
 * [Run Integration Tests with Redis]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-redis/)
-* [Run Unit Tests]({{site.baseurl}}/docs/yaml-examples/examples/run-unit-tests)  
+* [Run Unit Tests]({{site.baseurl}}/docs/yaml-examples/examples/run-unit-tests)
