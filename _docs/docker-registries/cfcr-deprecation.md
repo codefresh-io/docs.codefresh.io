@@ -6,6 +6,14 @@ toc: true
 ---
 
 
+| Important Date          | Codefresh private Registry status                  |
+| -------------- | ---------------------------- |
+| Until July 1st   | Fully functional (push/pull allowed) |
+| July 1st   | No pushes allowed. Registry becomes read-only|
+| 15th July 2020   | Registry is removed from service |
+
+
+
 The private Codefresh registry which is the built-in Docker registry that comes out of the box with all Codefresh accounts is being deprecated. The registry will become read-only on **July 1st 2020** and will be removed completely on **July 15th 2020**.
 
 ## Terminology for this document
@@ -82,9 +90,9 @@ Summary of actions by customers
 
 | Migration Phase          | Action               | 
 | -------------- | ---------------------------- |
-| Phase A   | Replace Codefresh registry with an External Docker registry in all pipelines | 
-| Phase B   | Choose default registry for auto-push and validate that all pipelines do NOT use the Codefresh registry |   
-| Phase C   | Validate that no cluster, workflow or pipeline is still using the Codefresh registry |  
+| Now  | Investigate external Registry options. Replace Codefresh registry with an External Docker registry in all pipelines | 
+| From April 1st to July 1st   | Choose default registry for auto-push and validate that all pipelines do NOT use the Codefresh registry. Setup meeting with CSM as needed|   
+| July 1st   | No push allowed. Validate that no cluster, workflow or pipeline is still using the Codefresh registry. Confirm migration completion with Codefresh |  
 
 
 
