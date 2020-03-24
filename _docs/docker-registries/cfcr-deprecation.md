@@ -1,20 +1,21 @@
 ---
-title: "Deprecation of the Codefresh private Registry"
+title: "Deprecation of the Codefresh Container Registry"
 description: "Migrating images and pipelines to an external registry"
 group: docker-registries
 toc: true
 ---
 
 
-| Important Date          | Codefresh private Registry status                  |
+| Important Date          | Codefresh Container Registry status                  |
 | -------------- | ---------------------------- |
-| Until July 1st   | Fully functional (push/pull allowed) |
-| July 1st   | No pushes allowed. Registry becomes read-only|
-| 15th July 2020   | Registry is removed from service |
+| 1st April 2020  | New build step and image API are available. |
+| Now until July 1st 2020  | Fully functional (push/pull allowed) |
+| July 1st  2020 | No pushes allowed. Registry becomes read-only|
+| 15th July 2020   | Codefresh Container Registry is removed from service |
 
 
 
-The private Codefresh registry which is the built-in Docker registry that comes out of the box with all Codefresh accounts is being deprecated. The registry will become read-only on **July 1st 2020** and will be removed completely on **July 15th 2020**.
+The Codefresh Container registry which is the built-in Docker registry that comes out of the box with all Codefresh accounts is being deprecated. The registry will become read-only on **July 1st 2020** and will be removed completely on **July 15th 2020**.
 
 ## Terminology for this document
 
@@ -22,32 +23,32 @@ The private Codefresh registry which is the built-in Docker registry that comes 
 
 | Term          | Description                | 
 | -------------- | ---------------------------- |
-| Codefresh registry   | The built-in registry available to all accounts. This registry is decommissioned. |
+| Codefresh Container registry   | The built-in registry available to all accounts. This registry is decommissioned. |
 | Caching registry   | Registry used for [caching]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipeline-caching/#docker-registry-caching). Currently served by the Codefresh registry|
 | Default Registry   | Registry where pipelines auto-push their docker images |
 | External Registry | Any other external registry which is linked to Codefresh such as ACR, GCR, ECR etc. |
 | Image dashboard          | The [Image registry viewer]({{site.baseurl}}/docs/docker-registries/codefresh-registry/#viewing-your-docker-images). Currently shows images from Codefresh registry only|
-| Pipeline Build step | The [build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) that currently auto-pushes to the Codefresh registry |
+| Pipeline Build step | The [build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) that currently auto-pushes to the Codefresh Container registry |
 | SAAS installation | The cloud version of Codefresh where everything is managed by Codefresh personnel |
 | Hybrid installation | Codefresh installation where customers [use the Codefresh runner]({{site.baseurl}}/docs/enterprise/behind-the-firewall/) | 
 | On-prem installation | Installation of Codefresh that is running fully on customer premises without any cloud interaction.
 
 
-## Who is affected from the removal of the Codefresh registry
+## Who is affected from the removal of the Codefresh Container registry
 
 * If you running the on-prem version of Codefresh, there is no requirement to take immediate action. Your Codefresh account manager will let you know how you will upgrade to the next version.
 * If you running the hybrid version of Codefresh, you are affected and you also need to decide which external registry you will use as caching registry
 * If you are using the SAAS version of Codefresh, you are affected and need to select an external registry to use in your account.
 
-In most case migration is trivial, unless you are using solely the Codefresh registry for your artifact storage.
+In most cases migration is trivial, unless you are using solely the Codefresh Container registry for your artifact storage.
 
 ## Adopting an external Docker registry 
 
-The migration effort depends on the usage of the private Codefresh registry in your organization.
+The migration effort depends on the usage of the Codefresh Container registry in your organization.
 
-1. Customers who use exclusively an external registry and do not depend on the Codefresh registry will have to take no action.
-1. Customers who use both the Codefresh registry as well as an external one will need to move all their critical workloads and pipelines to the external one
-1. Customers who use the private Codefresh registry for all their needs will need to evaluate and select and external Docker registry and connect it to Codefresh.
+1. Customers who use exclusively an external registry and do not depend on the Codefresh Container registry will have to take no action.
+1. Customers who use both the Codefresh Container registry as well as an external one will need to move all their critical workloads and pipelines to the external one
+1. Customers who use the Codefresh Container registry for all their needs will need to evaluate and select and external Docker registry and connect it to Codefresh.
 
 The first prerequisite is therefore to [select an external Registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/). You can use any popular cloud registry such as:
 
@@ -75,36 +76,27 @@ Some examples of self-hosted registries are:
 ## Migration schedule
 
 
-{: .table .table-bordered .table-hover}
-
-| Migration Phase          | Date/Milestone                | Codefresh private Registry status                  |
-| -------------- | ---------------------------- |-------------------------|
-| Phase A   | Today - 1st April 2020 | Fully functional (push/pull allowed) |
-| Phase B   | 1st April- 1st July 2020 |   New build step and image API are available. |
-| Phase C   | 1st July - 15th July 2020 |  No pushes are allowed. Registry becomes read-only |
-|           | 15th July 2020 | Registry is removed from service |
-
 Summary of actions by customers
 
 {: .table .table-bordered .table-hover}
 
 | Migration Phase          | Action               | 
 | -------------- | ---------------------------- |
-| Now  | Investigate external Registry options. Replace Codefresh registry with an External Docker registry in all pipelines | 
-| From April 1st to July 1st   | Choose default registry for auto-push and validate that all pipelines do NOT use the Codefresh registry. Setup meeting with CSM as needed|   
-| July 1st   | No push allowed. Validate that no cluster, workflow or pipeline is still using the Codefresh registry. Confirm migration completion with Codefresh |  
+| Now  | Investigate external Registry options. Replace Codefresh Container registry with an External Docker registry in all pipelines | 
+| From April 1st to July 1st   | Choose default registry for auto-push and validate that all pipelines do NOT use the Codefresh Container registry. Setup meeting with CSM as needed|   
+| July 1st   | No push allowed. Validate that no cluster, workflow or pipeline is still using the Codefresh Container registry. Confirm migration completion with Codefresh |  
 
 
 
 
 ## Phase A Migration actions until 1st April 2020
 
-At this phase, customers that depend on the private Codefresh should look at their pipelines and deployments and understand where the private Codefresh registry is used. 
+At this phase, customers that depend on the Codefresh Container registry should look at their pipelines and deployments and understand where the Codefresh Container registry is used. 
 
 
-### Locating images from the private Codefresh registry in clusters
+### Locating images from the Codefresh Container registry in clusters
 
-The most critical action point is to locate docker images that reside in the Codefresh registry and are actually deployed in production clusters.
+The most critical action point is to locate docker images that reside in the Codefresh Container registry and are actually deployed in production clusters.
 
 Here is an example of a Kubernetes deployment manifest.
 
@@ -128,7 +120,7 @@ spec:
 {% endraw %}
 {% endhighlight %}
 
-The deployment refers to an image to the private Codefresh registry identified by the `r.cfcr.io` prefix. For Helm deployments, images may also be referenced in the Helm values file.
+The deployment refers to an image to the Codefresh Container registry identified by the `r.cfcr.io` prefix. For Helm deployments, images may also be referenced in the Helm values file.
 
 `values.yaml`
 {% highlight yaml %}
@@ -147,9 +139,9 @@ service:
 
 In all these cases, deployment manifests should be changed to mention Docker images that are found in the external Docker registry.
 
-### Locating images from the private Codefresh registry in pipelines
+### Locating images from the Codefresh Container registry in pipelines
 
-It is also possible that images from the private Registry are used as [freestyle steps]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) directly in pipelines.
+It is also possible that images from the Codefresh Container Registry are used as [freestyle steps]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) directly in pipelines.
 
 Here is an example:
 
@@ -178,7 +170,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-The second step in this pipeline is using an image from the private registry as mentioned by `r.cfcr.io/kostis-codefresh/my-node-dev-image`. Image references like this will need to be changed to mention an external registry.
+The second step in this pipeline is using an image from the registry as mentioned by `r.cfcr.io/kostis-codefresh/my-node-dev-image`. Image references like this will need to be changed to mention an external registry.
 
 Explicit [push steps]({{site.baseurl}}/docs/codefresh-yaml/steps/push/) must also change to refer to an external registry:
 
@@ -216,17 +208,17 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-In this pipeline the last step is pushing a docker image to the internal Codefresh. You will need to change the `registry` property to the nane of an external registry.
+In this pipeline the last step is pushing a docker image to the internal Codefresh. You will need to change the `registry` property to the name of an external registry.
 
->Note the name `cfcr` shown above is just a convention. You can find the actual name given to the private Codefresh in the [Registry settings screen](https://g.codefresh.io/account-admin/account-conf/integration/registry). From the same screen you can also see the name of your external registry
+>Note the name `cfcr` shown above is just a convention. You can find the actual name given to the Codefresh Container Registry in the [Registry settings screen](https://g.codefresh.io/account-admin/account-conf/integration/registry). From the same screen you can also see the name of your external registry
 
 
-### Promoting images from the private registry to an external ones.
+### Promoting images from the Codefresh Container registry to an external ones.
 
-Another migration step for this phase is to move all existing images from the private Codefresh registry to the external one. You can use the [Image dashboard](https://g.codefresh.io/images/) to locate and analyze your existing Docker images. You can then migrate Docker images in 3 ways
+Another migration step for this phase is to move all existing images from the Codefresh Container registry to the external one. You can use the [Image dashboard](https://g.codefresh.io/images/) to locate and analyze your existing Docker images. You can then migrate Docker images in 3 ways
 
 1. If you know the pipeline that created this image, you can simply rerun the pipeline with a new push step
-1. You can promote the image directly from the private Registry to your external one
+1. You can promote the image directly from the Codefresh Container Registry to your external one
 1. You can perform mass migration with a migration script
 
 The first case is linked with the push steps mentioned in the previous section.
@@ -273,22 +265,22 @@ If you wish to perform migration of Docker images in a batch manner, you can als
 Here is a summary of customer actions at the end of 1st April 2020
 
 * You need to evaluate external Docker registry services and connect at least one in your Codefresh account
-* Change Kubernetes deployments and Helm releases to pull images from the external Registry instead of the private one
-* Do not use private Codefresh images in any pipeline (especially freestyle steps). Use images from the external registry only
+* Change Kubernetes deployments and Helm releases to pull images from the external Registry instead of the Codefresh one
+* Do not use Codefresh images in any pipeline (especially freestyle steps). Use images from the external registry only
 * Change all pipeline push steps to use specifically the external Docker registry
-* Promote essential images from the internal registry to the external Docker registry
-* No pipeline should push to the internal Codefresh registry.
+* Promote essential images from the Codefresh Container registry to the external Docker registry
+* No pipeline should push to the Codefresh Container registry.
 
 
 ## Phase B Migration actions until 1st July 2020
 
 At that start of Phase B (1st April 2020) Codefresh will offer the following new features:
 
-1. The ability to define a default registry for the build step to push to (currently the build step is always pushing to the private Registry) 
+1. The ability to define a default registry for the build step to push to (currently the build step is always pushing to the Codefresh Container Registry) 
 1. The ability to define an explicit registry in the build step (overriding the default)
-1. The ability to disable the automatic push of the build step completely (currently a build will always push to the internal Codefresh registry)
+1. The ability to disable the automatic push of the build step completely (currently a build will always push to the internal Codefresh Container registry)
 1. The ability to define an explicit registry for [caching]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipeline-caching/)
-1. A new image dashboard that will show docker images from all connected registries (and not just the private Codefresh registry)
+1. A new image dashboard that will show docker images from all connected registries (and not just the Codefresh Container registry)
 
 ### Using a default registry for pipelines
 
@@ -353,11 +345,11 @@ Here is a summary of customer actions at the end of 1st July 2020
 
 ## Phase C Migration actions until 15th July 2020
 
-At this phase, the private Codefresh registry will become readonly. Pipelines will be able to pull from it, but all pushes are disallowed.
+At this phase, the Codefresh Container registry will become readonly. Pipelines will be able to pull from it, but all pushes are disallowed.
 
-If you have performed all the migration steps explained in the previous phases, nothing will break. However if you still have push steps that refer to the internal registry or have not selected yet a default registry, your pipelines will now *fail*.
+If you have performed all the migration steps explained in the previous phases, nothing will break. However if you still have push steps that refer to the Codefresh Container registry or have not selected yet a default registry, your pipelines will now *fail*.
 
-This is also the last opportunity for migrating images from the private Registry to the external one.
+This is also the last opportunity for migrating images from the Codefresh Container Registry to the external one.
 
 ### Summary of actions and results of migration phase C
 
@@ -367,9 +359,9 @@ Here is a summary of customer actions at the end of 15th July 2020
 * Double-check your clusters and make sure that they pull from an external registry
 * Check that caching works in your pipelines as well as Hybrid environments by making sure that the external Docker registry has enough capacity.
 
-## Complete removal of the Codefresh private registry on 15th July 2020
+## Complete removal of the Codefresh Container registry on 15th July 2020
 
-The private Docker registry will be removed from service on 15th July 2020
+The Codefresh Container registry will be removed from service on 15th July 2020
 
 * Pipelines that still pull from it will stop working
 * Kubernetes clusters that will pull from it will have failed deployments
