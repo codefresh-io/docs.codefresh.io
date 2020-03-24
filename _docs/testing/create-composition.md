@@ -212,7 +212,7 @@ alt="codefresh_first_composition.png"
 max-width="70%"
 %}
 
-## Launching manually compositions
+## Manually launching compositions
 
 Once you are ready click the small "rocket" button to launch your composition. This will create a temporary
 test environment in your Codefresh account that you can use to inspect your application.
