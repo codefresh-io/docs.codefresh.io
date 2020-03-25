@@ -33,11 +33,11 @@ steps:
 {% endraw %}      
 {% endhighlight %}
 
-This pipeline will run integration tests during the freestype step called `my_integration_tests` and at that point a Redis instance will be available at hostname `my-redis-db-host` and port 6479.
+This pipeline will run integration tests during the freestype step called `my_integration_tests` and at that point a Redis instance will be available at hostname `my-redis-db-host` and port 6479. Note how in this example, the service container is placed at the root of the pipeline (as opposed to inside a specific step).  This ensures that the Redis instance is running for [the duration of the pipeline]({{site.baseurl}}/docs/codefresh-yaml/service-containers/#running-services-for-the-duration-of-the-pipeline).
 
 ## Launching multiple sidecar containers
 
-Like Docker compose it is possible to launch multiple services this way. For example let's say that a Java application needs both Redis and MongoDB during integration tests. Here is the respective pipeline:
+Like Docker compose it is possible to launch multiple services this way. For example, let's say that a Java application needs both Redis and MongoDB during integration tests. Here is the respective pipeline:
 
  `codefresh.yml`
 {% highlight yaml %}
@@ -107,7 +107,7 @@ caption="Using an existing composition"
 max-width="70%"
 %}
 
-This makes very easy to reuse compositions that you have already defined for other reasons in the Codefresh UI.
+This makes very easy to reuse compositions that you have already defined for other reasons [in the Codefresh UI](https://codefresh.io/docs/docs/testing/create-composition/).
 
 
 ## Running services for the duration of the pipeline
@@ -303,7 +303,7 @@ steps:
 {% endraw %}      
 {% endhighlight %}
 
-Here a Dockerfile for a backedn application is built on the spot and then is launched as sidecar container in the next step (with a hostname of `my_backend_app`). Notice that the `image` property in the sidecar service actually refers to a [Codefresh variable]({{site.baseurl}}/docs/codefresh-yaml/variables/) that holds the name of the build step.
+Here a Dockerfile for a backend application is built on the spot and then is launched as sidecar container in the next step (with a hostname of `my_backend_app`). Notice that the `image` property in the sidecar service actually refers to a [Codefresh variable]({{site.baseurl}}/docs/codefresh-yaml/variables/) that holds the name of the build step.
 
 We then run a `curl` command against the sidecar container to verify the correct health of the application. This is a great way to run integration tests against multilple microservices.
 
