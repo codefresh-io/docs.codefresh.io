@@ -16,7 +16,8 @@ Usually, you'll want to define a branch condition, be it of the type ```ignore``
 Here are some examples:
 
 Only execute for the ```master``` branch:
-  `only-master-branch`
+  
+  `only-master-branch.yml`
 {% highlight yaml %}
 build-step:
   description: Building the image.
@@ -31,7 +32,7 @@ build-step:
 
 Only execute for branches whose name begins with ```FB-``` prefix (feature branches):
 
-  `only-feature-branches`
+  `only-feature-branches.yml`
 {% highlight yaml %}
 build-step:
   description: Building the image.
@@ -46,7 +47,7 @@ build-step:
 
 Ignore the develop branch and master branch:
 
-  `ignore-master-and-develop-branch`
+  `ignore-master-and-develop-branch.yml`
 {% highlight yaml %}
 build-step:
   description: Building the image.
@@ -72,7 +73,7 @@ This follows the standard [condition expression  syntax]({{site.baseurl}}/docs/c
 
 Here are some examples. Execute if the string ```[skip ci]``` is not part of the main repository commit message AND if the branch is ```master```
 
-  `all-conditions`
+  `all-conditions.yml`
 {% highlight yaml %}
 build-step:
   description: Building the image.
@@ -88,7 +89,7 @@ build-step:
 
 Execute if the string ```[skip ci]``` is not part of the main repository commit message, OR if the branch is not a feature branch (i.e. name starts with FB-)
 
-  `any-condition`
+  `any-condition.yml`
 {% highlight yaml %}
 build-step:
   description: Building the image.
