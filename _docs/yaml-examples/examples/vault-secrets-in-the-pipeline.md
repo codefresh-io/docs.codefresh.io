@@ -8,8 +8,7 @@ redirect_from:
 toc: true
 ---
 
-Codefresh offers a Vault plugin you may use from the [Step Marketplace](https://codefresh.io/steps/step/vault).  The plugin imports key-value pairs from the Vault server, and exports them into the pipeline.  Since this is a custom typed-step, variables are written to `/meta/env_vars_to_export`, as opposed to `/codefresh/volume/env_vars_to_export`.
-
+Codefresh offers a Vault plugin you may use from the [Step Marketplace](https://codefresh.io/steps/step/vault).  The plugin imports key-value pairs from the Vault server, and exports them into the pipeline. 
 ## Prerequisites
 
 - A [free Codefresh account](https://codefresh.io/docs/docs/getting-started/create-a-codefresh-account/)
@@ -34,9 +33,20 @@ The example application retrieves the system variable "password," from the pipel
 
 Also in the example application is a simple unit test that ensures we are able to read and write data to the database.
 
-You cannot run the application locally, as it needs to run in the pipeline in order for the tests to pass.
+You cannot run the application locally, as it needs to run in the pipeline in order to use our environment variables to connect.
 
 ## Create the Pipeline
+
+We will be running the following pipeline that contains three step types: a vault step, a [git-clone]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) step, and a [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/).
+
+{% include image.html 
+lightbox="true" 
+file="/images/examples/secrets/vault-pipeline.png" 
+url="/images/examples/secrets/vault-pipeline.png" 
+alt="Vault pipeline"
+caption="Vault Pipeline"
+max-width="100%" 
+%}
 
 You should be able to copy and paste this YAML in the in-line editor of the Codefresh UI.  It will automatically clone the project for you.
 
@@ -88,4 +98,19 @@ The above pipeline does the following:
    - Spins up a [Service Container]({{site.baseurl}}/docs/codefresh-yaml/service-containers/) running Redis on port 6379 , and sets the password to the database using our exported environment variable
    - Sets `maven.repo.local` to cache Maven dependencies into the local codefresh volume to [speed up builds]({{site.baseurl}}/docs/learn-by-example/java/spring-boot-2/#caching-the-maven-dependencies)
    - Runs unit tests and packages the jar.  Note how you can directly refer to the service container's name (`my-redis-db-host`) when we set `server.host`
+
+You will see that the variable was correctly exported to the pipeline by running a simple `echo` command:   
+  {% include image.html 
+  lightbox="true" 
+  file="/images/examples/secrets/vault-pipeline2.png" 
+  url="/images/examples/secrets/vault-pipeline2.png" 
+  alt="Vault pipeline Variable"
+  caption="Vault Pipeline Variable"
+  max-width="100%" 
+  %}
   
+## What to Read Next
+
+- [Git-clone Step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)
+- [Freestyle Step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/)
+- [Service Containers]({{site.baseurl}}//docs/codefresh-yaml/service-containers/)
