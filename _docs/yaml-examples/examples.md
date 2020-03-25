@@ -62,6 +62,11 @@ Codefresh has support for both [unit]({{site.baseurl}}/docs/testing/unit-tests/)
 - [Launch Composition]({{site.baseurl}}/docs/yaml-examples/examples/launch-composition) 
 - [Launching a Composition and Defining a Service Environment Variables using a file]({{site.baseurl}}/docs/yaml-examples/examples/launching-a-composition-and-defining-a-service-environment-variables-using-a-file) 
 
+## Secrets
+
+Codefresh can automatically export secret key-value pairs using the Vault plugin from the [Step Marketplace](https://codefresh.io/steps/step/vault).
+
+- [Vault Secrets in the Pipeline]({{site.baseurl}}/docs/yaml-examples/examples/vault-secrets-in-the-pipeline)
 
 ## Preview environments
 
