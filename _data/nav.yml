@@ -261,7 +261,9 @@
   url: "/docker-registries"
   pages:
     - title: "Codefresh Docker Registry"
-      url: "/codefresh-registry"
+      url: "/codefresh-registry"   
+    - title: CF Registry Deprecation
+      url: "/cfcr-deprecation"      
     - title: "Working with Docker registries"
       url: "/working-with-docker-registries"
     - title: "Image Metadata Annotations"
@@ -469,7 +471,7 @@
     - title: Git step migration
       url: "/git-step-migration"
     - title: Personal Git Deprecation
-      url: "/personal-git-deprecation"
+      url: "/personal-git-deprecation"    
 - title: Whats new?
   url: "/whats-new"
   pages:
