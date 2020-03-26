@@ -366,6 +366,54 @@ The Codefresh Container registry will be removed from service on 15th July 2020
 * Pipelines that still pull from it will stop working
 * Kubernetes clusters that will pull from it will have failed deployments
 
+## Motivation behind the Registry removal
+
+Codefresh was one of the [first solutions to include a built-in Registry](https://codefresh.io/docker-registry/free-private-docker-registry/). When this started it was a unique and important feature. But over time, it’s value has diminished as Docker registries have become common.
+
+The Codefresh registry was always offered to all customers free of charge and without any (hard) storage limits. Behind the scenes, the Codefresh registry is based on Google storage (similar to GCR) but with some extra Codefresh modifications. For all intents and purposes the Codefresh registry was fully controlled by us in all aspects (domain prefix, authorization and authentication).
+
+Four years ago, having a built-in private registry was a huge competitive advantage, that helped us make users familiar with Docker images.
+
+Nowadays however, Docker (i.e. containers) are an established technology and many vendors offer [external Docker registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) that work perfectly fine with Codefresh pipelines. It therefore makes sense for us to focus on implementing brand new CI/CD features as we look into the future of the Kubernetes/Helm ecosystem.
+
+## Customer usage of the Codefresh Registry
+
+One of the factors in our decision for deprecation was customer usage of the registry. We saw that most of our customers are already using an external Docker registry in addition to the private one.
+
+We support natively [promoting Docker images]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/#promoting-docker-images) from the private Registry to an external one. This means that most of our customers will migrate their images to an external registry with minimum impact.
+
+We are also contacting customers who exclusively use the Codefresh registry for all their deployments to offer them special assistance regarding the migration.
+
+## Keeping the unique features of Codefresh regarding registries
+
+The Codefresh container registry also had some extra features unique to Codefresh such as a [smart Docker image cache]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipeline-caching/#docker-registry-caching).
+
+We know that these features are important to several customers and we wish to keep them. SAAS customers will get a caching registry out of the box. Customers with hybrid runtimes will still get caching from any external registry they connect, which in many cases will actually yield a performance improvement as well as improved security.
+
+This way customers will still be able to enjoy fast builds and dynamic pipeline steps by using their own registry. Development for this new functionality is already underway.
+
+## New features planned for Docker Registries
+
+With the removal of the Codefresh registry we are also re-evaluating some long standing features and enhancements that we always wanted to add to the Codefresh registry and are now more useful in regards to the deprecation announcement.
+
+First of all, we intend to make the registry view a universal dashboard that will be used for all external docker registries. Previously this dashboard only showed images in the Codefresh registry.
+
+This means that customers who used both the Codefresh and an external registry had to visit two distinct places to see their images. One of the main goals of Codefresh however is the full visibility of all phases of the software life cycle within a single application and having two different places to look at Docker images goes against this goal.
+
+In addition, we will offer more flexibility to customers regarding the auto-push of docker images to any external registry, as well as which external registry is considered the “default” for auto-pushes. Previously all these options were hardcoded and customers had zero flexibility on how to use the Codefresh registry.
+
+In summary, even though we are deprecating the Codefresh registry, we are committed to making Codefresh the best solution for working with external Docker registries.
+
+## Migration of images from the Codefresh container registry to the external one
+
+Among other things, we will offer an automated way to migrate Docker images from the Codefresh registry to an external one. This way if a customer has Docker images which for some reason cannot be recreated by an existing pipeline (and therefore pushed to an external registry), they will all be migrated to an external Docker registry.
+
+We will  also offer dedicated support and special assistance to customers who need help with the migration period or otherwise face significant impact from the deprecation of the private Registry
+
+## Contact information 
+
+Please do not hesitate to contact us with questions or concerns. We are here to help. Feel free to contact our special deprecation team at cfcr-removal@codefresh.io or your designated Codefresh account manager for more information.
+
 ## What to read next
 
 * [Working with Docker registries]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/)

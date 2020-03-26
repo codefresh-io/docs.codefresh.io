@@ -10,6 +10,7 @@ Recent Codefresh updates:
 
 ### March 2020
 
+- Removal of the Codefresh registry - [documentation]({{site.baseurl}}/docs/docker-registries/cfcr-deprecation/)
 - Helm quick start guide for Helm 3  - [documentation]({{site.baseurl}}/docs/getting-started/helm-quick-start-guide/)
 - Deployment example for Helm 3  - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/helm/)
 - Helm 3 release dashboard - [documentation]({{site.baseurl}}/docs/new-helm/helm-releases-management/#choosing-between-helm-2-and-helm-3-releases)
