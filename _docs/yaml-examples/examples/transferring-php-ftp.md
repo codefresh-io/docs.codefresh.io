@@ -85,7 +85,7 @@ steps:
         - HOST=<HOST>
         - PUB_FTP_DIR=<PATH/TO/DIR>
       commands:
-        - lftp -u $USER,$PASSWORD -e "cd $PUB_FTP_DIR; mkdir php-composer-sample-app; cd php-composer-sample-app; mput "*.*"; bye" $HOST
+        - lftp -e "set ftp:use-site-utime2 false; mirror -x ^\.git/$ -X flat-logo.png -p -R php-composer-sample-app $PUB_FTP_DIR/php-composer-sample-app; exit" -u $USER,$PASSWORD $HOST
     stage: "transfer"
 ```
 This pipeline does the following:
