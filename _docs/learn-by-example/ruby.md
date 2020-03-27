@@ -145,7 +145,7 @@ caption="Launching a demo environment"
 max-width="50%" 
 %}
 
-A new build will start. Once it is complete your new environment will be created. You can inspect it by clicking in the *Docker Swarm* menu on the left sidebar and then clicking *Environments*.
+A new build will start. Once it is complete your new environment will be created. You can inspect it by clicking in the *Compositions* menu on the left sidebar and then clicking *Running Compositions*.
 
 {% include image.html 
 lightbox="true" 

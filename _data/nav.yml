@@ -286,7 +286,7 @@
         - title: "Other Registries"
           url: "/other-registries"
 
-- title: "Quality Assurance"
+- title: "Testing"
   url: "/testing"
   pages:
     - title: "Unit testing"
