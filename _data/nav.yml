@@ -209,6 +209,8 @@
       sub-pages:
         - title: Deploy to VM
           url: "/packer-gcloud"
+        - title: Deploy to a VM using ftp
+          url: "/transferring-php-ftp"
         - title: Deploy with Helm
           url: "/helm"
         - title: Deploy with Terraform
@@ -256,8 +258,6 @@
           url: "/spring-boot-kafka-zookeeper"
         - title: Web terminal
           url: "/web-terminal"
-        - title: Transferring an Application via scp/ftp
-          url: "/transferring-php-ftp-scp"
 
 - title: "Artifacts Management"
   url: "/docker-registries"
