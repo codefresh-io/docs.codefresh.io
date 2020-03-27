@@ -391,6 +391,72 @@ Here is a list of the resources that are created during a Runner installation:
   * `cluster-role.dind-volume-provisioner.re.yaml` Defines all the permission needed for the controller to operate correctly.
   * `cluster-role-binding.dind-volume-provisioner.yaml` - Binds the ClusterRole to `service-account.dind-volume-provisioner.re.yaml`.
 
+## Codefresh Runner Preview release
+
+We are now preparing the next version of Codefresh runner with two major changes:
+
+* Installation happens from the [Codefresh CLI](https://codefresh-io.github.io/cli/) from now on. No need for a separate installer any more
+* You can use a single agent to manage multiple installations of the runner (even from other Kubernetes clusters)
+
+> This release is only offered as a preview. Do not use it for production deployments yet.
+
+First follow the [prerequisites](#prerequisites) and make sure that the version of Codefresh CLI is at least 0.45.0
+
+Then to install the runner on a single cluster with both the runtime and the agent:
+
+```
+kubectl create namespace codefresh
+codefresh install agent --kube-namespace codefresh --install-runtime
+
+```
+
+You can then follow the instruction for [using the runner](#using-the-codefresh-runner).
+
+### Installing multiple runtimes with a single agent
+
+It is also possible, for advanced users to install a single agent  that can manage multiple runtime environments.
+
+>NOTE: Please make sure that the cluster where the agent is installed has network access to the other clusters of the runtimes
+
+```
+# 1. Create namespace for the agent: 
+kubectl create namespace codefresh-agent
+
+# 2. Install the agent on the namespace ( give your agent a unique name as $NAME):
+# Note down the token and use it in the second command.
+codefresh create agent $NAME
+codefresh install agent --token $TOKEN --kube-namespace codefresh-agent
+codefresh get agents
+
+# 3. Create namespace for the first runtime:
+kubectl create namespace codefresh-runtime-1
+
+# 4. Install the first runtime on the namespace
+# 5. the runtime name is printed
+codefresh install runtime --kube-namespace codefresh-runtime-1
+
+# 6. Attach the first runtime to agent:
+codefresh attach runtime --agent-name $AGENT_NAME --agent-kube-namespace codefresh-agent --runtime-name $RUNTIME_NAME --kube-namespace codefresh-runtime-1
+
+# 7. Restart the venona pod in namespace `codefresh-agent`
+kubectl delete pods $VENONA_POD
+
+# 8. Create namespace for the second runtime
+kubectl create namespace codefresh-runtime-2
+
+# 9. Install the second runtime on the namespace
+codefresh install runtime --kube-namespace codefresh-runtime-2
+
+# 10. Attach the second runtime to agent and restart the Venoa pod automatically
+codefresh attach runtime --agent-name $AGENT_NAME --agent-kube-namespace codefresh-agent --runtime-name $RUNTIME_NAME --runtime-kube-namespace codefresh-runtime-1 --restart-agent
+```
+
+### Migrating to the new Codefresh runner version
+
+Migrating to the new Codefresh runner version is not happening automatically. You need to initiate the migration yourself using our [migration script](https://github.com/codefresh-io/venona/blob/release-1.0/scripts/migration.sh)
+
+> This release is only offered as a preview. Do not use it for production deployments yet.
+
 
 
 ## Using the Codefresh Runner 
