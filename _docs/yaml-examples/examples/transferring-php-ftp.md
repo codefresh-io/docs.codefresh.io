@@ -4,6 +4,8 @@ description: "Deploying a Php Application to a VM using FTP"
 group: yaml-examples
 sub_group: examples
 toc: true
+redirect_from:
+  - /docs//learn-by-example/java/spring-mvc-jdbc-template/
 ---
 
 ## Prerequisites
