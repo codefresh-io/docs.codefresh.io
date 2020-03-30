@@ -209,6 +209,8 @@
       sub-pages:
         - title: Deploy to VM
           url: "/packer-gcloud"
+          - title: Deploy to a VM using ftp
+          url: "/transferring-php-ftp"
         - title: Deploy to Tomcat using SCP
           url: "/deploy-to-tomcat-via-scp"
         - title: Deploy with Helm
