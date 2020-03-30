@@ -90,9 +90,6 @@ For any other Azure deployment you can use the [Azure CLI from a Docker image](h
     image: mcr.microsoft.com/azure-cli
     commands:
       - az vm create --resource-group TutorialResources --name TutorialVM1 --image UbuntuLTS --generate-ssh-keys     
-    environment:
-      - KUBECONTEXT=my-cluster-name
-      - KUBERNETES_NAMESPACE=my-namespace
 {% endraw %}
 {% endhighlight %}
 

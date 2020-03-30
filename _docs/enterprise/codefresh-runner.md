@@ -184,6 +184,40 @@ If you are installing Codefresh runner on the Kubernetes cluster on [GKE](https:
 
 ```
 kubectl create clusterrolebinding NAME --clusterrole cluster-admin --user <YOUR_USER>
+
+```
+
+### Docker cache support for GKE
+
+If you want to use  *LocalSSD* in GKE:
+
+*Prerequisite:* [GKE cluster with local SSD](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/local-ssd)
+
+*Install runner using GKE Local SSD:*
+```
+venonactl install [options] --set-value=Storage.LocalVolumeParentDir=/mnt/disks/ssd0/codefresh-volumes \
+                            --build-node-selector=cloud.google.com/gke-local-ssd=true
+```
+
+If you want to use  *GCE Disks*:
+
+*Prerequisite:* volume provisioner (dind-volume-provisioner) should have permissions to create/delete/get of Google disks
+
+There are 3 options to provide cloud credentials on GCE:
+
+* run venona dind-volume-provisioniner on node with iam role which is allowed to create/delete/get of Google disks
+* create Google Service Account with `ComputeEngine.StorageAdmin`, download its key and pass it to venona installed with `--set-file=Storage.GooogleServiceAccount=/path/to/google-service-account.json`
+* use [Google Workload Identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) to assign iam role to `volume-provisioner-venona` service account 
+
+Notice that builds will be running in a single availability zone, so you must specify AvailabilityZone parameters.
+
+Install Runner using GKE Disks:
+
+```
+venonactl install [options] --set-value=Storage.Backend=gcedisk \
+                            --set-value=Storage.AvailabilityZone=us-central1-a \
+                            --build-node-selector=failure-domain.beta.kubernetes.io/zone=us-central1-a \
+                            [--set-file=Storage.GoogleServiceAccount=/path/to/google-service-account.json]
 ```
 
 ### Installing on AWS
@@ -390,6 +424,72 @@ Here is a list of the resources that are created during a Runner installation:
   * `service-account.dind-volume-provisioner.re.yaml` - The service account that the controller will use.
   * `cluster-role.dind-volume-provisioner.re.yaml` Defines all the permission needed for the controller to operate correctly.
   * `cluster-role-binding.dind-volume-provisioner.yaml` - Binds the ClusterRole to `service-account.dind-volume-provisioner.re.yaml`.
+
+## Codefresh Runner Preview release
+
+We are now preparing the next version of Codefresh runner with two major changes:
+
+* Installation happens from the [Codefresh CLI](https://codefresh-io.github.io/cli/) from now on. No need for a separate installer any more
+* You can use a single agent to manage multiple installations of the runner (even from other Kubernetes clusters)
+
+> This release is only offered as a preview. Do not use it for production deployments yet.
+
+First follow the [prerequisites](#prerequisites) and make sure that the version of Codefresh CLI is at least 0.45.0
+
+Then to install the runner on a single cluster with both the runtime and the agent:
+
+```
+kubectl create namespace codefresh
+codefresh install agent --kube-namespace codefresh --install-runtime
+
+```
+
+You can then follow the instruction for [using the runner](#using-the-codefresh-runner).
+
+### Installing multiple runtimes with a single agent
+
+It is also possible, for advanced users to install a single agent  that can manage multiple runtime environments.
+
+>NOTE: Please make sure that the cluster where the agent is installed has network access to the other clusters of the runtimes
+
+```
+# 1. Create namespace for the agent: 
+kubectl create namespace codefresh-agent
+
+# 2. Install the agent on the namespace ( give your agent a unique name as $NAME):
+# Note down the token and use it in the second command.
+codefresh create agent $NAME
+codefresh install agent --token $TOKEN --kube-namespace codefresh-agent
+codefresh get agents
+
+# 3. Create namespace for the first runtime:
+kubectl create namespace codefresh-runtime-1
+
+# 4. Install the first runtime on the namespace
+# 5. the runtime name is printed
+codefresh install runtime --kube-namespace codefresh-runtime-1
+
+# 6. Attach the first runtime to agent:
+codefresh attach runtime --agent-name $AGENT_NAME --agent-kube-namespace codefresh-agent --runtime-name $RUNTIME_NAME --kube-namespace codefresh-runtime-1
+
+# 7. Restart the venona pod in namespace `codefresh-agent`
+kubectl delete pods $VENONA_POD
+
+# 8. Create namespace for the second runtime
+kubectl create namespace codefresh-runtime-2
+
+# 9. Install the second runtime on the namespace
+codefresh install runtime --kube-namespace codefresh-runtime-2
+
+# 10. Attach the second runtime to agent and restart the Venoa pod automatically
+codefresh attach runtime --agent-name $AGENT_NAME --agent-kube-namespace codefresh-agent --runtime-name $RUNTIME_NAME --runtime-kube-namespace codefresh-runtime-1 --restart-agent
+```
+
+### Migrating to the new Codefresh runner version
+
+Migrating to the new Codefresh runner version is not happening automatically. You need to initiate the migration yourself using our [migration script](https://github.com/codefresh-io/venona/blob/release-1.0/scripts/migration.sh)
+
+> This release is only offered as a preview. Do not use it for production deployments yet.
 
 
 

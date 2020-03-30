@@ -39,20 +39,13 @@ launch_composition_step:
 3. Build your service with Codefresh
 
 {:start="4"}
-4. Go to the environment page
+4. Click on *Compositions* on the left sidebar and then choose the *Running Compositions* tab.
 
-{% include image.html 
-lightbox="true" 
-file="/images/a4054be-Screen_Shot_2017-01-19_at_09.27.53.png" 
-url="/images/a4054be-Screen_Shot_2017-01-19_at_09.27.53.png"
-alt="Screen Shot 2017-01-19 at 09.27.53.png"
-max-width="40%" 
-%}
 
 {:start="5"}
-5. You can see the new environment on this page
+5. You will see the new preview environment on this page
 
-## Launching environment only on one branch
+## Launching an environment only on one branch
 
 There is a limit to the number environments you can run concurrently. That's why it's a good practice to launch the the composition only on certain condition. Usually the most relevant condition is the branch, since you probably want your environment to be updated by you main branch.
 
