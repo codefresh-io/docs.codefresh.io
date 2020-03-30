@@ -3,8 +3,6 @@ title: "Vault Secrets in the Pipeline"
 description: "Accessing and Referring to Vault Secrets in the Pipeline"
 group: yaml-examples
 sub_group: examples
-redirect_from:
-  - /docs/vault-secrets-in-the-pipeline/
 toc: true
 ---
 
@@ -71,15 +69,17 @@ steps:
   main_clone:
     title: Cloning main repository...
     type: git-clone
-    repo: 'codefresh-contrib/vault-sample-app'
-    git: github
+    arguments:
+      repo: 'codefresh-contrib/vault-sample-app'
+      git: github
     stage: clone
   package_jar:
     title: Packaging jar and running unit tests...
     stage: package
-    image: maven:3.5.2-jdk-8-alpine
-    working_directory: ./
-    commands:
+    arguments:
+      image: maven:3.5.2-jdk-8-alpine
+      working_directory: ./
+      commands:
       - mvn -Dmaven.repo.local=/codefresh/volume/m2_repository -Dserver.host=my-redis-db-host clean package
     services:
       composition:
