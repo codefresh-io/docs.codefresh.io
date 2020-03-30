@@ -61,8 +61,6 @@
           url: "/gradle"
         - title: Publish JAR
           url: "/publish-jar"
-        - title: Spring Tomcat
-          url: "/spring-mvc-jdbc-template"
     - title: Node.js
       url: "/nodejs"
       sub-pages:
