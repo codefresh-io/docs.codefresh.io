@@ -15,7 +15,7 @@ toc: true
 
 ## The Example Php Project
 
-The example project can be found on [Github](https://github.com/anna-codefresh/php-composer-sample-app).  The application is a simple Php application that displays an example timer.
+The example project can be found on [Github](hhttps://github.com/codefresh-contrib/ftp-php-app).  The application is a simple Php application that displays an example timer.
 
 {% include image.html 
 lightbox="true" 
@@ -60,13 +60,13 @@ steps:
     title: "Cloning main repository..."
     type: "git-clone"
     arguments:
-      repo: "anna-codefresh/php-composer-sample-app"
+      repo: "codefresh-contrib/ftp-php-app"
       git: "github"
     stage: "clone"
   install_dependencies:
     title: "Collecting Php dependencies..."
     type: "freestyle"
-    working_directory: "./php-composer-sample-app"
+    working_directory: "./ftp-php-app"
     arguments:
       image: "composer:1.9.3"
       commands:
@@ -76,7 +76,7 @@ steps:
     ftp_transfer:
     title: "Transferring application to VM via ftp..."
     type: "freestyle" 
-    working_directory: "./php-composer-sample-app"
+    working_directory: "./ftp-php-app"
     arguments:
       image: "dockito/lftp-client:latest"
       environment:
@@ -85,14 +85,23 @@ steps:
         - HOST=<HOST>
         - PUB_FTP_DIR=<PATH/TO/DIR>
       commands:
-        - lftp -e "set ftp:use-site-utime2 false; mirror -x ^\.git/$ -X flat-logo.png -p -R php-composer-sample-app $PUB_FTP_DIR/php-composer-sample-app; exit" -u $USER,$PASSWORD $HOST
+        - lftp -e "set ftp:use-site-utime2 false; mirror -x ^\.git/$ -X flat-logo.png -p -R ftp-php-ap $PUB_FTP_DIR/ftp-php-app; exit" -u $USER,$PASSWORD $HOST
     stage: "transfer"
 ```
 This pipeline does the following:
 
 1. A [git-clone]({{$site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) step that clones the main repository
 2. A [freestyle step]($$site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) that installs the necessary Php dependencies for our application
-3. A freestyle step that transfers our application via ftp 
+3. A freestyle step that transfers our application via ftp.  Note that you will need to change the environment variables to your respective values, either in the YAML itself (above), or through the pipeline settings:
+
+{% include image.html 
+lightbox="true" 
+file="/images/examples/php-file-transfer/variables.png"
+url="/images/examples/php-file-transfer/variables.png"
+alt="Codefresh Enbironment Variables"
+caption="Codefresh Enbironment Variables"
+max-width="90%"
+%}
 
 ## What to Read Next
 
