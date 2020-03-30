@@ -13,7 +13,7 @@ toc: true
 
 ## The Example Java Application
 
-You can find the example project on [Github](https://github.com/codefresh-contrib/sparkjava-war-example).
+You can find the example project on [Github](https://github.com/codefresh-contrib/scp-war-app).
 
 The example application is a simple Hello World Java application using the [Spark Java framework](http://sparkjava.com/):
 
@@ -69,7 +69,7 @@ steps:
     type: "git-clone"
     stage: "clone"
     arguments:
-      repo: "codefresh-contrib/sparkjava-war-example"
+      repo: "codefresh-contrib/scp-war-app"
       
   package:
     title: "Packaging war..."
@@ -103,7 +103,16 @@ The above pipeline does the following:
 
 1. A [git-clone]({{$site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) step that clones the main repository
 2. A [freestyle step]($$site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) that installs the dependencies via Maven and packages our war file
-3. A freestyle step that transfers our application via scp to a Tomcat server
+3. A freestyle step that transfers our application via scp to a Tomcat server.  Note that you will need to change the listed environment variables accordingly, either through the YAML itself, or through your pipeline settings:
+
+{% include image.html 
+lightbox="true" 
+file="/images/examples/deployments/scp-variables.png" 
+url="/images/examples/deployments/scp-variables.png" 
+alt="Pipeline variables"
+caption="Pipeline variables"
+max-width="100%" 
+%}
   
 ## What to Read Next
 
