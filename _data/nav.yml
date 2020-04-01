@@ -226,6 +226,8 @@
       sub-pages:
         - title: Vault Secrets in the Pipeline
           url: "/vault-secrets-in-the-pipeline"
+        - title: Decryption with Mozilla SOPS
+          url: "/decryption-with-mozilla-sops"
     - title: "Compositions"
       url: "/examples"
       sub-pages:
