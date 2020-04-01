@@ -122,10 +122,10 @@ steps:
   import_keys:
     title: "Importing gpg keys..."
     type: "freestyle"
-    image: "vladgh/gpg"
     stage: "import"
+    working_directory: '${{clone}}'
     arguments:
-      working_directory: '${{clone}}'
+      image: "vladgh/gpg"
       commands:
         - gpg --import public.key
         - echo -e "${{PRIV_KEY}}" > private.key

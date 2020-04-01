@@ -66,7 +66,7 @@ steps:
       VAULT_ADDR: 'http://<YOUR_VAULT_SERVER_IP>:<PORT>'
       VAULT_PATH: 'path/to/secret'
       VAULT_AUTH_TOKEN: '<YOUR_VAULT_AUTH_TOKEN>'
-  main_clone:
+  clone:
     title: Cloning main repository...
     type: git-clone
     arguments:
@@ -76,9 +76,9 @@ steps:
   package_jar:
     title: Packaging jar and running unit tests...
     stage: package
+    working_directory: ${{clone}}
     arguments:
       image: maven:3.5.2-jdk-8-alpine
-      working_directory: ./
       commands:
       - mvn -Dmaven.repo.local=/codefresh/volume/m2_repository -Dserver.host=my-redis-db-host clean package
     services:
