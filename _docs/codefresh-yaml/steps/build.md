@@ -88,7 +88,8 @@ step_name:
 | `metadata`                                 | Annotate the built image with [key-value metadata]({{ site.baseurl }}/docs/docker-registries/metadata-annotations/).                                                                                                                             | Optional                  |
 | `on_success`, `on_fail` and `on_finish`    | Define operations to perform upon step completion using a set of predefined [Post-Step Operations]({{site.baseurl}}/docs/codefresh-yaml/post-step-operations/).                                                                                                      | Optional                  |
 | `retry`   | Define retry behavior as described in [Retrying a step]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/#retrying-a-step).                                                                               | Optional                  |
-| `buildkit` | Set to `true` to enable [Buildkit]({{site.baseurl}}/docs/codefresh-yaml/steps/build/#buildkit-support) and all of its enhancements | Optional | 
+| `buildkit`                                 | Set to `true` to enable [Buildkit]({{site.baseurl}}/docs/codefresh-yaml/steps/build/#buildkit-support) and all of its enhancements                                                                                                    | Optional                 | 
+
 **Exported resources:**
 - Working Directory
 - Image ID
