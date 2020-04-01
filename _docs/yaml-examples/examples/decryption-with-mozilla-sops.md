@@ -81,7 +81,7 @@ caption="Codefresh UI Pipeline View"
 max-width="90%"
 %}
 
-First, you will need to add a pipeline variable, `PRIV_KEY`, for your private key.  You can do that in the UI by navigating to the in-line YAML editor and to the left-hand side, you will find the **Variables** tab:
+First, you will need to add a pipeline variable, `PRIV_KEY`, for your private key.  You can do that in the UI by navigating to the in-line YAML editor and to the right-hand side, you will find the **Variables** tab:
 
 {% include image.html 
 lightbox="true" 
