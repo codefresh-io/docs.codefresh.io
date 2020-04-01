@@ -97,7 +97,8 @@ You can also add this [directly in the YAML itself]({{site.baseurl}}/docs/how-to
 Here is the entire pipeline:
 
 `codefresh.yaml`
-```yaml
+{% highlight yaml %}
+{% raw %}
 # More examples of Codefresh YAML can be found at
 # https://codefresh.io/docs/docs/yaml-examples/examples/
 
@@ -156,7 +157,9 @@ steps:
           command: 'redis-server --requirepass $password'
           ports:
             - 6379
-```
+{% endraw %}
+{% endhighlight %}
+
 This pipeline does the following:
 
 1. A [git-clone]({{$site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) step that clones the main repository
