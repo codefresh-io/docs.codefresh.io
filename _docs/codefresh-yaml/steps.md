@@ -371,9 +371,18 @@ codefresh delete step-type kostis-codefresh/sample
 
 ### Versioning of typed steps
 
-The top-level `version` property in the plugin manifest allows you to publish multiple releases of the same plugin in the marketplace. Codefresh will keep all previous plugins and users are free to choose which version they want.
+The `version` property under `metadata` in the plugin manifest allows you to publish multiple releases of the same plugin in the marketplace. Codefresh will keep all previous plugins and users are free to choose which version they want.
 
-You can see all versions of a plugin in the step marketplace drop-down:
+To create a new version of your plugin:
+
+1. Update the `version` property under `metadata` in your custom YAML.
+2. Run: 
+
+{% highlight bash %}
+codefresh create step-type 'account/plugin' -f custom-plugin.yaml
+{% endhighlight %}
+
+You will now be able to see the new versions of your plugin in the step marketplace drop-down:
 
 {% include
 image.html
@@ -389,6 +398,12 @@ You can also use the Codefresh CLI to list all version:
 
 {% highlight bash %}
 codefresh get step-types kostis-codefresh/sample --versions
+{% endhighlight %}
+
+To delete a specific version, use:
+
+{% highlight bash %}
+codefresh delete step-type 'account/plugin:<version>'
 {% endhighlight %}
 
 Note that Codefresh step versions function like Docker tags in the sense that they are *mutable*. You can overwrite an existing plugin version with a new plugin manifest by using the `codefresh replace step-types` command.
