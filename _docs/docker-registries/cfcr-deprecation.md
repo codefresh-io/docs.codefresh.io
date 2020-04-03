@@ -277,8 +277,9 @@ Here is a summary of customer actions at the end of 1st April 2020
 At that start of Phase B (1st April 2020) Codefresh will offer the following new features:
 
 1. The ability to define a default registry for the build step to push to (currently the build step is always pushing to the Codefresh Container Registry) 
-1. The ability to define an explicit registry in the build step (overriding the default)
+1. The ability to define an explicit registry in the [build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) (overriding the default)
 1. The ability to disable the automatic push of the build step completely (currently a build will always push to the internal Codefresh Container registry)
+1. The ability to define multiple tags to be created in the build step.
 1. The ability to define an explicit registry for [caching]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipeline-caching/)
 1. A new image dashboard that will show docker images from all connected registries (and not just the Codefresh Container registry)
 
@@ -289,7 +290,7 @@ Once these features are available for customers, you need to inspect your pipeli
 1. Set as default registry in your Codefresh account the external one
 1. Set as default caching registry in your Codefresh account the external one  (or in your Hybrid Codefresh runner)
 1. If you have more than one external registries, override the default one in any build steps that you want to use another registry other than the default (if this scenario is useful to you)
-1. Disable auto-push on pipelines that don't need it if they also have a push step.
+1. Disable auto-push on pipelines that don't need it if they also have a push step or you only wish to use the image in the pipeline itself and don't need anywhere else.
 
 For the second point here is the syntax for the new build step:
 
@@ -300,7 +301,7 @@ For the second point here is the syntax for the new build step:
     type: build
     stage: build
     tag: ${{CF_BRANCH_TAG_NORMALIZED}}
-    image_name: codefresh/cf-api
+    image_name: my-docker-image
     registry: my-external-registry
 {% endraw %}
 {% endhighlight %}
@@ -313,12 +314,31 @@ For the third point, here is the syntax for disabling auto-push
     type: build
     stage: build
     tag: ${{CF_BRANCH_TAG_NORMALIZED}}
-    image_name: codefresh/cf-api
-    disablePush: true
+    image_name: my-docker-image
+    disable_push: true
 {% endraw %}
 {% endhighlight %}
 
 This way you get maximum flexibility on what build and push steps are doing in your pipelines.
+
+We are also adding the ability to create multiple tags in the build step. Therefore if until now you used the [push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/) for this purpose, you can simplify your pipelines even further by using only the enhanced build step.
+
+{% highlight yaml %}
+{% raw %}
+ build_step:
+    type: build
+    stage: build
+    image_name: my-docker-image
+    tags:
+      - latest
+      - ${{CF_BRANCH_TAG_NORMALIZED}}
+      - v1.1
+{% endraw %}
+{% endhighlight %}
+
+This way you get maximum flexibility on what build and push steps are doing in your pipelines.
+
+>It is important to notice that if you haven't set a default registry on your Codefresh account, or define a specific registry in the build step itself, the pipeline doesn't know where to push the created docker image.
 
 ### Using the new Docker image dashboard/API
 
