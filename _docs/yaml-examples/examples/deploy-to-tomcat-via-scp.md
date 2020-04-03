@@ -52,7 +52,8 @@ You should be able to copy and paste this YAML in the in-line editor of the Code
 Note that you need to change the environment variables under the `transfer` step to your respective values.
 
 `codefresh.yml`
-```yaml
+{% highlight yaml %}
+{% raw %}
 # More examples of Codefresh YAML can be found at
 # https://codefresh.io/docs/docs/yaml-examples/examples/
 
@@ -97,12 +98,13 @@ steps:
           - "echo | ssh-keygen -P '' -t rsa"
           - "sshpass -p $PASSWORD ssh-copy-id -i /root/.ssh/id_rsa.pub -o StrictHostKeyChecking=no $USER@$HOST"
           - "scp sparkjava-hello-world-1.0.war $USER@$HOST:$TOMCAT_DIR"
-```
+{% endraw %}
+{% endhighlight %}
 
 The above pipeline does the following:
 
-1. A [git-clone]({{$site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) step that clones the main repository
-2. A [freestyle step]($$site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) that installs the dependencies via Maven and packages our war file
+1. A [git-clone]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) step that clones the main repository
+2. A [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) that installs the dependencies via Maven and packages our war file
 3. A freestyle step that transfers our application via scp to a Tomcat server.  Note that you will need to change the listed environment variables accordingly, either through the YAML itself, or through your pipeline settings:
 
 {% include image.html 

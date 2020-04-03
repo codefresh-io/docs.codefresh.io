@@ -138,10 +138,10 @@ script: phpunit Test.php
 {% endraw %}
 {% endhighlight %}
 
-In `Codefresh` you can use the [freestyle step]({{ site.baseurl }}/docs/codefresh-yaml/steps/freestyle/) to describe it.
+In `Codefresh` you can use the [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) to describe it.
 
 {{site.data.callout.callout_info}}
-Note, in Codefresh you can run [Unit tests]({{ site.baseurl }}/docs/yaml-examples/examples/run-unit-tests-with-composition) and [Integration tests]({{ site.baseurl }}/docs/yaml-examples/examples/run-integration-tests) as separate steps of codefresh.yml
+Note, in Codefresh you can run [Unit tests]({{site.baseurl}}/docs/yaml-examples/examples/run-integration-tests/) and [Integration tests]({{site.baseurl}}/docs/yaml-examples/examples/run-integration-tests) as separate steps of codefresh.yml
 {{site.data.callout.end}}
 
   `codefresh.yml`

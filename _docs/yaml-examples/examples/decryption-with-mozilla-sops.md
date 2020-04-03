@@ -173,7 +173,7 @@ This pipeline does the following:
 ## What to Read Next
 
 - [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
-- [Git-clone Step]({{$site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)
+- [Git-clone Step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)
 - [Freestyle Step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/)
 - [Vault Secrets in the Pipeline]({{site.baseurl}}/docs/yaml-examples/examples/vault-secrets-in-the-pipeline/)
 
