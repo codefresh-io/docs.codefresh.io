@@ -8,6 +8,11 @@ toc: true
 ---
 Recent Codefresh updates:
 
+### April 2020
+
+- Helm release text message - [documentation]({{site.baseurl}}/docs/new-helm/helm-releases-management/#showing-an-upgrade-message)
+
+
 ### March 2020
 
 - Removal of the Codefresh registry - [documentation]({{site.baseurl}}/docs/docker-registries/cfcr-deprecation/)

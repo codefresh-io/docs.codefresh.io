@@ -99,6 +99,28 @@ caption="Helm diff"
 max-width="60%"
 %}
 
+### Showing an upgrade message
+
+Codefresh allows you to show a human readable description of each release in the UI of the release history. This message
+can help you showing the main reason behind each release (or any other text message that you find convenient).
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/kubernetes-helm/dashboard/helm-commit-message.png" 
+url="/images/kubernetes-helm/dashboard/helm-commit-message.png"
+alt="Helm release message" 
+caption="Helm release message" 
+max-width="70%"
+%}
+
+You can set this message for your Helm release in 3 ways:
+
+1. When you manually install a Helm release from the [Helm charts screen]({{site.baseurl}}/docs/new-helm/add-helm-repository/#install-chart-from-your-helm-repository) there is a field for this message
+1. You can setup the property `commit_message` inside the [notes.txt](https://helm.sh/docs/chart_template_guide/notes_files/) file of your chart
+1. By providing an environment variable called `COMMIT_MESSAGE` inside your [pipeline Helm step]({{site.baseurl}}/docs/new-helm/using-helm-in-codefresh-pipeline/)
+
+
 ### Rolling back a Helm release
 
 You can issue a rollback to a previous revision by clicking on the rollback button on the desired revision row.
