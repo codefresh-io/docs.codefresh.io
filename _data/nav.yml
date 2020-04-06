@@ -219,6 +219,8 @@
           url: "/pulumi"
         - title: Deploy to Nomad
           url: "/nomad"
+        - title: Deploy to Heroku
+          url: "/deploy-to-heroku"
         - title: Use kubectl as part of Freestyle step
           url: "/use-kubectl-as-part-of-freestyle-step"
     - title: "Secrets"

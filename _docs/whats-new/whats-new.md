@@ -11,7 +11,7 @@ Recent Codefresh updates:
 ### April 2020
 
 - Helm release text message - [documentation]({{site.baseurl}}/docs/new-helm/helm-releases-management/#showing-an-upgrade-message)
-
+- Deploy to Heroku - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/deploy-to-heroku/)
 
 ### March 2020
 
