@@ -37,7 +37,7 @@ The Codefresh Container registry which is the built-in Docker registry that come
 ## Who is affected from the removal of the Codefresh Container registry
 
 * If you running the on-prem version of Codefresh, there is no requirement to take immediate action. Your Codefresh account manager will let you know how you will upgrade to the next version.
-* If you running the hybrid version of Codefresh, you are affected and you also need to decide which external registry you will use as caching registry
+* If you running the hybrid version of Codefresh, you are affected and need to select an external registry to use in your account.
 * If you are using the SAAS version of Codefresh, you are affected and need to select an external registry to use in your account.
 
 In most cases migration is trivial, unless you are using solely the Codefresh Container registry for your artifact storage.
@@ -288,7 +288,6 @@ At that start of Phase B (1st April 2020) Codefresh will offer the following new
 Once these features are available for customers, you need to inspect your pipelines and make sure you:
 
 1. Set as default registry in your Codefresh account the external one
-1. Set as default caching registry in your Codefresh account the external one  (or in your Hybrid Codefresh runner)
 1. If you have more than one external registries, override the default one in any build steps that you want to use another registry other than the default (if this scenario is useful to you)
 1. Disable auto-push on pipelines that don't need it if they also have a push step or you only wish to use the image in the pipeline itself and don't need anywhere else.
 
