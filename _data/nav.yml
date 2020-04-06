@@ -211,8 +211,6 @@
           url: "/transferring-php-ftp"
         - title: Deploy to Tomcat using SCP
           url: "/deploy-to-tomcat-via-scp"
-        - title: Deploy to Heroku
-          url: "/deploy-to-heroku"
         - title: Deploy with Helm
           url: "/helm"
         - title: Deploy with Terraform
@@ -221,6 +219,8 @@
           url: "/pulumi"
         - title: Deploy to Nomad
           url: "/nomad"
+        - title: Deploy to Heroku
+          url: "/deploy-to-heroku"
         - title: Use kubectl as part of Freestyle step
           url: "/use-kubectl-as-part-of-freestyle-step"
     - title: "Secrets"
