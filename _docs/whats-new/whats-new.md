@@ -30,6 +30,7 @@ Recent Codefresh updates:
 - Deploy to a VM using FTP - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/transferring-php-ftp)
 - Deploy to Tomcat using SCP - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/deploy-to-tomcat-via-scp)
 - Decryption with Mozilla SOPS - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/decryption-with-mozilla-sops)
+- Deploy to Heroku - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/deploy-to-heroku/)
 
 ### February 2020
 
