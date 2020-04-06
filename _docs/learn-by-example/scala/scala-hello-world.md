@@ -175,7 +175,7 @@ steps:
 {% endhighlight %}
 
 1. A [git-clone]({{$site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) step that clones the main repository
-2. A [build step]($$site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) that uses an SBT image that packages the application (note how `sbt.ivy.home` is set to an arbitrarily named directory that is part of the codefresh volume).  This ensures we cache dependencies to [speed up builds]({{site.baseurl}}/docs/learn-by-example/java/spring-boot-2/#caching-the-maven-dependencies), similar to Maven.
+2. A [build step]($$site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) that builds our code into a Docker image using the Dockerfile present in the repository
 
 
 ## What to Read Next
