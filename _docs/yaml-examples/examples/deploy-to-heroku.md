@@ -6,6 +6,10 @@ sub_group: examples
 toc: true
 ---
 
+Heroku is a container-based cloud PaaS software that allows you to deploy, run, and manage your applications.  Built on top of AWS, it supports Ruby, Node.js, Java, Python, Clojure, Scala, Go and PHP.
+
+This tutorial will cover two examples, depending on your use case. If you are not using containers, your use case is covered using the Codefresh heroku-deployer plugin ([Example #1]({{site.baseurl}}docs/yaml-examples/examples/deploy-to-heroku/#pipeline-example-1-deploying-source-code-to-heroku-using-the-codefresh-heroku-plugin)). If you are using containers, you can achieve deployment by using a combination of build, push, and freestyle steps ([Example #2]({{site.baseurl}}http://localhost:3131/docs/yaml-examples/examples/deploy-to-heroku/#pipeline-example-2-deploy-a-docker-image-to-heroku)).
+
 ## The Example Django Application
 
 You can find the example project on [Github](https://github.com/codefresh-contrib/heroku-python-django-sample-app).
