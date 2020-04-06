@@ -1,5 +1,5 @@
 ---
-title: "Deploy to to Heroku"
+title: "Deploy to Heroku"
 description: "Deploying your application or image to Heroku"
 group: yaml-examples
 sub_group: examples
