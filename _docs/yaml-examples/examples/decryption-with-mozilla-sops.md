@@ -162,8 +162,8 @@ steps:
 
 This pipeline does the following:
 
-1. A [git-clone]({{$site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) step that clones the main repository
-2. A [freestyle step]($$site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) that uses a GPG image and imports the public and private key pair
+1. A [git-clone]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) step that clones the main repository
+2. A [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) that uses a GPG image and imports the public and private key pair
 3. A freestyle step that decrypts the credentials file.  At this step, SOPS is looking for the .gnupg directory (where the keyring is stored) under /root.  We need to copy it from the [Codefresh Volume]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/#custom-volumes), as /root is not saved between containers.
 4. The last step, `package_jar`, does a few special things to take note of:
    - Spins up a [Service Container]({{site.baseurl}}/docs/codefresh-yaml/service-containers/) running Redis on port 6379 , and sets the password to the database using our exported environment variable
@@ -173,7 +173,7 @@ This pipeline does the following:
 ## What to Read Next
 
 - [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
-- [Git-clone Step]({{$site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)
-- [Freestyle Step]($$site.baseurl}}/docs/codefresh-yaml/steps/freestyle/)
+- [Git-clone Step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)
+- [Freestyle Step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/)
 - [Vault Secrets in the Pipeline]({{site.baseurl}}/docs/yaml-examples/examples/vault-secrets-in-the-pipeline/)
 

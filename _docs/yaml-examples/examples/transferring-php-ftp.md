@@ -17,7 +17,7 @@ redirect_from:
 
 ## The Example Php Project
 
-The example project can be found on [Github](hhttps://github.com/codefresh-contrib/ftp-php-app).  The application is a simple Php application that displays an example timer.
+The example project can be found on [Github](https://github.com/codefresh-contrib/ftp-php-app).  The application is a simple Php application that displays an example timer.
 
 {% include image.html 
 lightbox="true" 
@@ -47,7 +47,9 @@ max-width="90%"
 
 Here is the entire pipeline:
 
-```yaml
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
 # More examples of Codefresh YAML can be found at
 # https://codefresh.io/docs/docs/yaml-examples/examples/
 
@@ -89,11 +91,13 @@ steps:
       commands:
         - lftp -e "set ftp:use-site-utime2 false; mirror -x ^\.git/$ -X flat-logo.png -p -R ftp-php-ap $PUB_FTP_DIR/ftp-php-app; exit" -u $USER,$PASSWORD $HOST
     stage: "transfer"
-```
+{% endraw %}
+{% endhighlight %}
+
 This pipeline does the following:
 
-1. A [git-clone]({{$site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) step that clones the main repository
-2. A [freestyle step]($$site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) that installs the necessary Php dependencies for our application
+1. A [git-clone]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) step that clones the main repository
+2. A [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) that installs the necessary Php dependencies for our application
 3. A freestyle step that transfers our application via ftp.  Note that you will need to change the environment variables to your respective values, either in the YAML itself (above), or through the pipeline settings:
 
 {% include image.html 
@@ -108,7 +112,7 @@ max-width="90%"
 ## What to Read Next
 
 - [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
-- [Git-clone Step]({{$site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)
-- [Freestyle Step]($$site.baseurl}}/docs/codefresh-yaml/steps/freestyle/)
+- [Git-clone Step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)
+- [Freestyle Step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/)
 
 

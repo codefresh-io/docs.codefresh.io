@@ -92,6 +92,7 @@ Codefresh can deploy to any platform such as VMs, FTP/SSH/S3 sites, app servers 
 - [Deploy with Terraform]({{site.baseurl}}/docs/yaml-examples/examples/terraform) 
 - [Deploy with Pulumi]({{site.baseurl}}/docs/yaml-examples/examples/pulumi) 
 - [Deploy to Nomad]({{site.baseurl}}/docs/yaml-examples/examples/nomad)
+- [Deploy to Heroku]({{site.baseurl}}/docs/yaml-examples/examples/deploy-to-heroku/)
 
 ## Notifications
 
