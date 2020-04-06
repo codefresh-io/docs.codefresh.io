@@ -21,13 +21,16 @@ We’ll help you get up to speed with basic functionality such as: compiling, bu
 
 This project uses `Scala` to build an application which will eventually become a distributable Docker image.
 
-You can find the example application on [Github](https://github.com/codefresh-contrib/scala-sample-app).  
+You can find the example application on [Github](https://github.com/codefresh-contrib/scala-hello-world-app). 
+
+There are two pipeline examples provided in this tutorial:
+
+- Multi-stage Docker build
+- Single stage Docker Build 
  
-## Create the Pipeline
+## Example Pipeline #1: Single stage Docker Build
 
-In the root of this repository, you'll find a file named codefresh.yml, this is our build descriptor and it describes the different steps that comprise our process. Let's quickly review the contents of this file:
-
-This pipeline will have three stages:
+This example uses a single stage Docker build. The pipeline will have three stages:
 
 - A stage for cloning 
 - A stage for packaging
@@ -35,23 +38,31 @@ This pipeline will have three stages:
 
 {% include image.html 
 lightbox="true" 
-file="/images/examples/scala/pipeline.png" 
-url="/images/examples/scala/pipeline.png" 
+file="/images/examples/scala/single-stage-pipeline.png" 
+url="/images/examples/scala/single-stage-pipeline.png" 
 alt="Codefresh UI pipeline view"
 caption="Codefresh UI pipeline view"
 max-width="100%" 
 %}
 
+Here is the Dockerfile used for this example:
 
+`Dockerfile-single-stage`
+```shell 
+FROM openjdk:8-jre-alpine3.9 
 
-  `codefresh.yml`
+COPY . . 
+
+CMD ["java", "-cp", "target/scala-2.12/*.jar:scala-library-2.12.2.jar", "HelloWorld"]
+```
+
+And here is the pipeline.  You can copy and paste it in the inline YAML editor in the UI:
+
+  `codefresh-single-stage.yml`
 {% highlight yaml %}
 {% raw %}
-# More examples of Codefresh YAML can be found at
-# https://codefresh.io/docs/docs/yaml-examples/examples/
-
 version: "1.0"
-# Stages can help you organize your steps in stages
+
 stages:
   - clone
   - package
@@ -63,38 +74,109 @@ steps:
     type: git-clone
     stage: clone
     arguments:
-      repo:  codefresh-contrib/scala-sample-app 
+      repo:   codefresh-contrib/scala-hello-world-app  
       revision: master
-      
-  generate_dockerfile:
-      title: Compiling source and generating Dockerfile...
-      image: noamt/pre-cached-sbt
-      working_directory: ${{clone}}
-      stage: package
-      arguments:
-        commands:
-          - sbt -Dsbt.ivy.home=/codefresh/volume/ivy_cache -mem 4096 clean compile package
-          - sbt docker:stage
-
+  package:
+    title: Packaging application...
+    type: freestyle
+    stage: package
+    working_directory: ./scala-hello-world-app
+    arguments:
+      image: hseeberger/scala-sbt:11.0.6_1.3.9_2.13.1
+      commands:
+        - sbt -Dsbt.ivy.home=/codefresh/volume/ivy_cache clean compile package 
+        - cp /codefresh/volume/ivy_cache/cache/org.scala-lang/scala-library/jars/scala-library-2.12.2.jar . 
   build_image:
     title: Building Docker image...
     type: build
-    working_directory: ${{clone}}/service/target/docker/stage
+    working_directory: ${{clone}}
     stage: build
     arguments:
       image_name: codefresh/scala-sample-app
       tag: 1.0.0
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile-single-stage
 {% endraw %}
 {% endhighlight %}
 
 The above pipeline does the following:
 
 1. A [git-clone]({{$site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) step that clones the main repository
-2. A [freestyle step]($$site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) that uses an SBT image that:
-   - Packages the application (note how `sbt.ivy.home` is set to an arbitrarily named directory that is part of the codefresh volume).  This ensures we cache dependencies to [speed up builds]({{site.baseurl}}/docs/learn-by-example/java/spring-boot-2/#caching-the-maven-dependencies), similar to Maven.
-   - Generates a Dockerfile
-3. The last step, `build_image`, is a [build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) that builds a Docker image using the Dockerfile we generated in the previous step.
+2. A [freestyle step]($$site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) that uses an SBT image that packages the application (note how `sbt.ivy.home` is set to an arbitrarily named directory that is part of the codefresh volume).  This ensures we cache dependencies to [speed up builds]({{site.baseurl}}/docs/learn-by-example/java/spring-boot-2/#caching-the-maven-dependencies), similar to Maven.
+3. The last step, `build_image`, is a [build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) that builds a Docker image using the Dockerfile provided in the repository.
+
+## Example Pipeline #2: Multi-stage Docker Build
+
+This example uses a multi stage Docker build. The pipeline will have only two stages this time, as packaging of the app is handled in the Dockerfile itself:
+
+- A stage for cloning 
+- A stage for building
+
+{% include image.html 
+lightbox="true" 
+file="/images/examples/scala/multi-stage-pipeline.png" 
+url="/images/examples/scala/multi-stage-pipeline.png" 
+alt="Codefresh UI pipeline view"
+caption="Codefresh UI pipeline view"
+max-width="100%" 
+%}
+
+Here, you will find the multi-stage Dockerfile, copying over only the jars we need:
+
+`Dockerfile-multi-stage`
+
+```shell
+# first stage
+
+FROM hseeberger/scala-sbt:11.0.6_1.3.9_2.13.1 AS build
+
+COPY ./ ./
+
+RUN sbt compile clean package
+
+# second stage
+
+FROM openjdk:8-jre-alpine3.9 
+
+COPY --from=build /root/target/scala-2.12/*.jar /scala-hello-world-sample-app.jar
+COPY --from=build /root/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.12.2.jar /scala-library-2.12.2.jar
+
+CMD ["java", "-cp", "scala-hello-world-sample-app.jar:scala-library-2.12.2.jar", "HelloWorld"]
+```
+Here is the pipeline, you can copy and paste it into the inline YAML editor:
+
+`codefresh-multi-stage.yml`
+
+{% highlight yaml %}
+{% raw %}
+version: "1.0"
+
+stages:
+  - clone
+  - build
+
+steps:
+  clone:
+    title: Cloning repository...
+    type: git-clone
+    stage: clone
+    arguments:
+      repo:   codefresh-contrib/scala-hello-world-app  
+      revision: master
+  build_image:
+    title: Building Docker image...
+    type: build
+    working_directory: ${{clone}}
+    stage: build
+    arguments:
+      image_name: codefresh/scala-hello-world-app
+      tag: 1.0.0
+      dockerfile: Dockerfile
+{% endraw %}
+{% endhighlight %}
+
+1. A [git-clone]({{$site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) step that clones the main repository
+2. A [build step]($$site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) that uses an SBT image that packages the application (note how `sbt.ivy.home` is set to an arbitrarily named directory that is part of the codefresh volume).  This ensures we cache dependencies to [speed up builds]({{site.baseurl}}/docs/learn-by-example/java/spring-boot-2/#caching-the-maven-dependencies), similar to Maven.
+
 
 ## What to Read Next
 
