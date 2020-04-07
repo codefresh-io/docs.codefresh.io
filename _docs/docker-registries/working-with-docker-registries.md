@@ -278,7 +278,6 @@ In the example above the image `my-azure-registry.azurecr.io/kostis-codefresh/my
 
 ## What to read next
 
-* [Codefresh Registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/)
 * [Push pipeline step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/)
 * [External Docker Registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/)
 * [Accessing a Docker registry from your Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/access-docker-registry-from-kubernetes/)

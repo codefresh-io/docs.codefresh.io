@@ -53,10 +53,9 @@ For more details see the [image pushing page]({{site.baseurl}}/docs/docker-regis
 
 ## The default registry
 
-If you define more than one registries you can also click the *default* button in the UI to define the registry that will be used in [push steps]({{site.baseurl}}/docs/codefresh-yaml/steps/push/) if they don't already contain a `registry` property.
+If you define more than one registries you can also click the *default* button in the UI to define the registry that will be used in both [build]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) and [push steps]({{site.baseurl}}/docs/codefresh-yaml/steps/push/) if they don't already contain a `registry` property.
 
-Notice that successful [build steps]({{site.baseurl}}/docs/codefresh-yaml/steps/build/)  will always push to the [internal Codefresh registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/)  regardless of the "default" selection. This behavior happens without any configuration.
-
+Notice that successful [build steps]({{site.baseurl}}/docs/codefresh-yaml/steps/build/)  will always push to the [default Codefresh registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/)  unless you also define the `disable_push` property.
 
 
 ## What to read next

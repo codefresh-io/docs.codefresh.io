@@ -50,7 +50,7 @@ People with **User** access level can still use the Codefresh UI for day-to-day 
 
 Only people with **Administrator** level have access to the respective UI screens.
 
-Note however that **Users** can still control their own email notification settings, as well as access the [internal Codefresh registry externally]({{site.baseurl}}/docs/docker-registries/codefresh-registry/#generate-cfcr-login-token).
+Note however that **Users** can still control their own email notification settings.
 
 
 ## Access to Kubernetes clusters and Pipelines

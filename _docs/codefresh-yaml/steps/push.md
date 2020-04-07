@@ -10,7 +10,8 @@ toc: true
 ---
 
 {{site.data.callout.callout_info}}
-If you use the [Codefresh Docker Registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/) this step is optional as all successful Codefresh pipelines automatically push the Docker image they create in the integrated Codefresh registry. No further configuration is needed to achieve this behavior.
+
+If you use only the default Docker registry of your account this step is optional as all successful Codefresh pipelines automatically push the Docker image they create in the default Docker registry. No further configuration is needed to achieve this behavior.
 {{site.data.callout.end}}
 
 Push a built image to a remote Docker registry with one or more tags. Supports standard Docker registries and ECR.
@@ -245,7 +246,6 @@ step_name:
 - Image ID.
 
 ## What to read next
-- [Codefresh Managed Registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/) 
 - [External Registry integrations]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) 
 - [Custom Image annotations]({{site.baseurl}}/docs/docker-registries/metadata-annotations/) 
 - [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/) 

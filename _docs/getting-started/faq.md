@@ -118,8 +118,8 @@ A. Yes, you can deploy [to a VM]({{site.baseurl}}/docs/yaml-examples/examples/pa
 **Q. Does Codefresh support infrastructure as code?**    
 A. Yes, there is nothing special to it. See the [Terraform]({{site.baseurl}}/docs/yaml-examples/examples/terraform/) and [Pulumi]({{site.baseurl}}/docs/yaml-examples/examples/pulumi/) examples.
 
-**Q. Can I connect my own Docker registry instead of the internal one?**    
-A. Yes, the [built-in Docker registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/) is automatically available to all pipelines, but you can still connect your [own external registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/).
+**Q. Can I connect my own Docker registry i?**    
+A. Yes, you can connect your [own external registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) as long as Codefresh has network access to it.
 
 **Q. My Kubernetes cluster has automatic scaling/monitoring/logging. Will Codefresh have issues with it?**    
 A. Codefresh is using the standard Kubernetes API available to all compliant Kubernetes distributions. After a deployment is finished, Codefresh does not tamper with the cluster in any way.

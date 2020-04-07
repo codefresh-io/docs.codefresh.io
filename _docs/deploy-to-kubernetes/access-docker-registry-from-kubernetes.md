@@ -32,10 +32,7 @@ This happens by using [Docker registry secrets](https://kubernetes.io/docs/tasks
 ## Giving access to a Docker Registry via the GUI
 
 Codefresh allows you to create easily pull secrets for your cluster. The first step is to define your Docker registry
-inside Codefresh. It is important to know that
-
-* The [internal Docker registry]({{ site.baseurl }}/docs/docker-registries/codefresh-registry/#use-codefresh-registry-in-codefresh) is managed completely from within Codefresh and
-* [External registries]({{ site.baseurl }}/docs/docker-registries/external-docker-registries/) can also be connected to Codefresh.
+inside Codefresh. It is important to know that Codefresh can work with any [compliant Docker registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) either on the cloud or behing the firewall.
 
 Once your Registry is connected to Codefresh, select *Kubernetes* from the left sidebar to view your Kubernetes Dashboard. Then click
 the *Add Service* Button.

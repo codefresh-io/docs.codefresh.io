@@ -30,7 +30,7 @@ In order to use a Github action in Codefresh you need to make sure that the foll
 
 1. The [Github action](https://github.com/marketplace?type=actions) you have selected is Docker based and has a self-contained and valid Dockerfile
 1. You have read the documentation of the Github action and know what arguments/input it requires
-1. You have at least one Docker registry connected to your Codefresh account. (You can use the [built-in Docker registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/) as well)
+1. You have at least one Docker registry connected to your Codefresh account. 
 
 Also notice that since Github actions are created by the community, it is your responsibility to filter and curate any Github actions that you wish to use in Codefresh pipelines. If for example you use a Github action, and then it is removed by its creator, the Codefresh pipeline that uses it will break as well.
 

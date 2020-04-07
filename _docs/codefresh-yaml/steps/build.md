@@ -222,9 +222,9 @@ Use this technique only as a last resort. It is better if the Dockerfile exists 
 
 ## Automatic pushing
 
-All images built successfully with the build step, will be automatically pushed to the [internal Codefresh registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/). This behavior is completely automatic and happens without any extra configuration on your part. 
+All images built successfully with the build step, will be automatically pushed to the default Docker registry in your account. This behavior is completely automatic and happens without any extra configuration on your part. If you want to disable this then add the `disable_push` property in your build step.
 
->Notice that the [push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/) in Codefresh is optional and is only needed for [external Docker registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/). 
+>Notice that the [push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/) in Codefresh is optional and is only needed if you want to push to [external Docker registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/). 
 
 {% 
   include image.html 
@@ -373,6 +373,5 @@ You can combine all options (`ssh`, `progress`, `secrets`) in a single build ste
 
 ## What to read next
 
-* [Codefresh Registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/)
 * [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
 * [Pipeline Steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)

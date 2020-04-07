@@ -14,7 +14,7 @@ Each step is responsible for a specific action in the process. Pipelines can be 
 
 * Compile and package code
 * Build Docker images
-* Push Docker images (either to an [external Registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) or the [built-in Codefresh registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/))
+* Push Docker images to any [Docker Registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) 
 * Deploy applications/artifacts to VMs, Kubernetes clusters, FTP sites, S3 buckets etc.
 * Run [unit tests]({{site.baseurl}}/docs/testing/unit-tests/), [integration tests]({{site.baseurl}}/docs/testing/integration-tests/), acceptance tests etc.
 * Any custom action that you define
@@ -36,7 +36,7 @@ Codefresh offers unique characteristics in pipelines that serve as the cornersto
 1. All [steps]({{site.baseurl}}/docs/codefresh-yaml/steps/) in Codefresh pipelines are executed inside a Docker container of your choosing.
 1. All steps in Codefresh share the same "workspace" in the form of a shared Docker volume.
 1. The shared Docker volume is automatically cached between pipeline executions.
-1. Each successful pipeline automatically pushes its Docker image to the [private registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/).
+1. Each successful pipeline automatically pushes its Docker image to the default Docker registry defined in your account.
 1. Codefresh has a distributed Docker cache for all build nodes and caches layers similar to the docker daemon on your workstation. This is fully automated, and no configuration is needed in order to activate it. 
 
 ### Using Docker containers as build tooling
@@ -275,10 +275,10 @@ Each plugin also defines its input/output in the form of environment variables a
 ### Creating Docker images dynamically as build tools
 
 
-Now we reach one of the most powerful features of Codefresh pipelines. We have already seen that [freestyle pipeline steps]({{ site.baseurl }}/docs/codefresh-yaml/steps/freestyle/) are just a series of commands that run inside the context of a Docker container. In most cases the images used
-for the freestyle steps are known in advance and come from public (e.g. Dockerhub) or [private Docker registries]({{ site.baseurl }}/docs/docker-registries/external-docker-registries/).
+Now we reach one of the most powerful features of Codefresh pipelines. We have already seen that [freestyle pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) are just a series of commands that run inside the context of a Docker container. In most cases the images used
+for the freestyle steps are known in advance and come from public (e.g. Dockerhub) or [private Docker registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/).
 
-Codefresh is one the few CI/CD solutions that not only offers a [built-in Docker registry]({{ site.baseurl }}/docs/docker-registries/codefresh-registry/)
+Codefresh is one the few CI/CD solutions that not only offers easy Docker registry integration
  accessible to all pipelines
 but also allows you to **build docker images on demand in the same pipeline where they are required**.
 
