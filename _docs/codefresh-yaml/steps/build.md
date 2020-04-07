@@ -139,7 +139,7 @@ steps:
     dockerfile: my-custom.Dockerfile
     tags:
       - latest
-      - ${{CF_BRANCH_TAG_NORMALIZED}}
+      - ${{CF_BRANCH_TAG_NORMALIZED_LOWER_CASE}}
       - v1.1
 {% endraw %}        
 {% endhighlight %}
@@ -179,7 +179,7 @@ steps:
     image_name: my-company/my-go-image
     dockerfile: Dockerfile
     working_directory: ./project2
-    tag: ${{CF_BRANCH_TAG_NORMALIZED}}
+    tag: ${{CF_BRANCH_TAG_NORMALIZED_LOWER_CASE}}
 {% endraw %}         
 {% endhighlight %}
 
