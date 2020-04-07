@@ -100,8 +100,8 @@ steps:
 
 The above pipeline does the following:
 
-1. A [git-clone]({{$site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) step that clones the main repository
-2. A [freestyle step]($$site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) that uses an SBT image that packages the application (note how `sbt.ivy.home` is set to an arbitrarily named directory that is part of the codefresh volume).  This ensures we cache dependencies to [speed up builds]({{site.baseurl}}/docs/learn-by-example/java/spring-boot-2/#caching-the-maven-dependencies), similar to Maven.
+1. A [git-clone]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) step that clones the main repository
+2. A [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) that uses an SBT image that packages the application (note how `sbt.ivy.home` is set to an arbitrarily named directory that is part of the codefresh volume).  This ensures we cache dependencies to [speed up builds]({{site.baseurl}}/docs/learn-by-example/java/spring-boot-2/#caching-the-maven-dependencies), similar to Maven.
 3. The last step, `build_image`, is a [build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) that builds a Docker image using the Dockerfile provided in the repository.
 
 ## Example Pipeline #2: Multi-stage Docker Build
@@ -174,12 +174,12 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-1. A [git-clone]({{$site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) step that clones the main repository
-2. A [build step]($$site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) that builds our code into a Docker image using the Dockerfile present in the repository
+1. A [git-clone]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) step that clones the main repository
+2. A [build step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) that builds our code into a Docker image using the Dockerfile present in the repository
 
 
 ## What to Read Next
 
 - [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
-- [Git-clone Step]({{$site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)
-- [Freestyle Step]($$site.baseurl}}/docs/codefresh-yaml/steps/freestyle/)
+- [Git-clone Step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)
+- [Freestyle Step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/)

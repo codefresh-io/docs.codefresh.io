@@ -283,9 +283,13 @@ At that start of Phase B (1st April 2020) Codefresh will offer the following new
 1. The ability to define an explicit registry for [caching]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipeline-caching/)
 1. A new image dashboard that will show docker images from all connected registries (and not just the Codefresh Container registry)
 
+You can find all these settings in the [Migration dashboard](https://g.codefresh.io/account-admin/account-conf/cfcr-deprecation). You need to be a Codefresh administrator to access the dashboard.
+
+From the dashboard you can change all settings (and even revert them back) and see if your pipelines are ready. You can also "simulate" the removal of the Codefresh registry (or set it read-only) in advance, and see how you will be affected when the actual removal happens.
+
 ### Using a default registry for pipelines
 
-Once these features are available for customers, you need to inspect your pipelines and make sure you:
+With the migration settings in place, you need to inspect your pipelines and make sure you:
 
 1. Set as default registry in your Codefresh account the external one
 1. If you have more than one external registries, override the default one in any build steps that you want to use another registry other than the default (if this scenario is useful to you)
@@ -349,8 +353,6 @@ You will need to
 
 * Check all custom scripts you have that use Codefresh CLI and make sure that images mentioned refer to your external registry
 * Check any API integrations you have created with the Codefresh Image API and make sure that images mentioned refer to your external registry
-
-
 
 
 ### Summary of actions and results of migration phase B
