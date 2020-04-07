@@ -24,7 +24,7 @@ Then in the integration page in Codefresh, select **Other Registries** from the 
 * Registry Name - a unique name for this configuration.
 * Username - your Azure Registry username.
 * Password - your Azure Registry password.
-* Domain - `<registry_name>.azure.io`.
+* Domain - `<registry_name>.azurecr.io`.
 
 {% include image.html 
 	lightbox="true" 
@@ -43,7 +43,7 @@ You can now use the Azure Registry in the pipelines either via the GUI  or with 
 It is also possible to use the registry from the command line with
 
 ```
-docker login <registry_name>.azure.io -u <user_name> -p<password>
+docker login <registry_name>.azurecr.io -u <user_name> -p<password>
 ```
 
 You can also inspect the pushed images either using Azure portal or with [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest)
