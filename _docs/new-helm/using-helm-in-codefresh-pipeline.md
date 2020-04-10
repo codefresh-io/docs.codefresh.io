@@ -91,45 +91,61 @@ of this limitation and will soon improve the way Codefresh works with multiple H
 
 ## Helm usage in a pipeline step
 
-Add a [Freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) in your pipeline, with the `codefresh/cfstep-helm` image.  
+You can use the helm typed step from the [Step Marketplace](https://codefresh.io/steps/step/helm)
 
-The Helm step is configured using environment variables, which can be provided in any of the various ways supported by Codefresh as described [here]({{site.baseurl}}/docs/codefresh-yaml/variables/#user-provided-variables).  
-For example, here's how to provide variables as part of the freestyle step definition:
+The Helm step can be configured using environment variables, which can be provided in any of the various ways supported by Codefresh as described [here]({{site.baseurl}}/docs/codefresh-yaml/variables/#user-provided-variables).  
+
+For example, here's how to provide variables as part of the helm step definition:
 
 ```yaml
-Helm Upgrade:
-    image: 'codefresh/cfstep-helm:3.0.3'
-    environment:
-      - key=value
+deploy:
+  type: helm
+  arguments:
+    action: install
+    chart_name: test_chart
+    release_name: first
+    helm_version: 3.0.3
+    kube_context: my-kubernetes-context
+    custom_values:
+      - 'pat.arr="{one,two,three}"'
+      - 'STR_WITH_COMAS="one\,two\,three"'
 ``` 
 
 For Helm 2, the Docker image tag refers to the version of Helm/Tiller you need. For Helm 3, just use the [newest Helm 3 image tag](https://hub.docker.com/r/codefresh/cfstep-helm/tags).
 
-### Operation modes
+### Action modes
 
 The Helm step can operate in one of 3 modes:
 
-1. Install - will install the chart into a Kubernetes cluster. This is the default mode if not explicitly set.
-2. Push - will package chart and push it to the repository.
-3. Authentication only - will only setup authentication and add the repo to the helm. This is useful if you want to write your own helm commands using the freestyle step's `commands` property, but you still want the step to handle authentication.
+1. install - will install the chart into a Kubernetes cluster. This is the default mode if not explicitly set.
+2. push - will package chart and push it to the repository.
+3. authentication only - will only setup authentication and add the repo to the helm. This is useful if you want to write your own helm commands using the freestyle step's `commands` property, but you still want the step to handle authentication.
 
-The operation mode is set by the `ACTION` variable, where the value is `install`/`auth`/`push`.
+The operation mode is set by the `action` field, where the value is `install`/`push`/`auth`.
 
 ### Helm Values
 
-To supply value file, add an environment variable with the name prefix of `VALUESFILE_`, and the value should point to an existing values file.  
-To override specific values, add an environment variable with the name prefix of `VALUE_` followed by the path to the value to set. For example, `VALUE_myservice_imageTag`. Note that `.` (dot) should be replaced with `_` (underscore). The value of the variable will be used to override or set the templated property.
+To supply value file, add to the Helm step, `custom_values_file` and the value should point to an existing values file.  
+To override specific values, add to the Helm step, `custom_values` followed by the path to the value to set. For example, `myservice_imageTag`. Note that `.` (dot) should be replaced with `_` (underscore). The value of the variable will be used to override or set the templated property.
 
 Examples:
-```text
-VALUE_myimage_pullPolicy=Always
-results in:
---set myimage.pullPolicy=Always
-
-VALUESFILE_prod='values-prod.yaml'
-results in:
---values values-prod.yaml
+```yaml
+...
+    custom_values:
+      - 'myimage_pullPolicy=Always'
+...
 ```
+results in:
+`--set myimage.pullPolicy=Always`
+
+```yaml
+...
+    custom_values_file: `values-prod.yaml`
+...
+```
+results in:
+`--values values-prod.yaml`
+
 
 If a variable already contains a `_` (underscore) in its name, replace it with `__` (double underscore).
 
@@ -144,21 +160,18 @@ You can also look at the [Github repository](https://github.com/codefresh-contri
 
 ### Example: Installing a Chart
 
-The following example demonstrates the minimum configuration for installing a chart from a repository. For more configuration options, see the [Configuration reference](#configuration).  
+The following example demonstrates the minimum configuration for installing a chart from a repository. For more configuration options, see the [Arguments reference](https://codefresh.io/steps/step/helm).  
 
 ```yaml
 deploy:
-  image: codefresh/cfstep-helm:3.0.3
-  environment:
-    - CHART_REF=mychart
-    - RELEASE_NAME=mychart-prod
-    - KUBE_CONTEXT=kube-prod
+  type: helm
+  arguments:
+    action: install
+    chart_name: path/to/charts
+    release_name: first
+    helm_version: 3.0.3
+    kube_context: my-kubernetes-context
 ```
-
-Notes:
-- Helm repository connection was attached to the pipeline (see step 4 above)
-- mychart is a chart that exists in the connected repository.
-- no ACTION is provided, meaning `install` by default.
 
 ### Example: Pushing a Chart
 
