@@ -132,3 +132,4 @@ This pipeline does the following:
 * [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
 * [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
 * [Pipeline plugins](https://codefresh.io/steps/)
+* [Triggers]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/)
