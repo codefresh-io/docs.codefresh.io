@@ -90,8 +90,8 @@ This pipeline will only contain one stage/step, for deploying.
 
 {% include image.html 
 lightbox="true" 
-file="/images/examples/deployments/k8s-deployment-cd-pipeline.png"
-url="/images/examples/deployments/k8s-deployment-cd-pipeline.png"
+file="/images/examples/deployments/k8s-deployment-CD-pipeline.png"
+url="/images/examples/deployments/k8s-deployment-CD-pipeline.png"
 alt="Codefresh UI CD Pipeline View"
 caption="Codefresh UI CD Pipeline View"
 max-width="90%"
