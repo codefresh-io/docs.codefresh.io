@@ -101,6 +101,8 @@ Here are the security implications of the hybrid solution:
 | Shared configuration variables | Defined in Codefresh Web application |  |
 | Deployment secrets (from git/Puppet/Vault etc) | Stay behind the firewall|  |
 | Audit logs | Managed via Codefresh Web application |  |
+| SSO/Idp Configuration | Managed via Codefresh Web application |  |
+| User emails | Managed via Codefresh Web application |  |
 | Access control rules | Managed via Codefresh Web application | |
 
 
