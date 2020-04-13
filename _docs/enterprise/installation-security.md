@@ -85,10 +85,9 @@ Here are the security implications of the hybrid solution:
 | Build logs        | Also sent to Codefresh Web application |  |
 | Pipeline volumes   | Stay behind the firewall | |
 | Pipeline variables   | Defined in Codefresh Web application | |
-| Deployment docker images | Stay behind the firewall|  |
-| Development docker images | Stay behind the firewall | |
-| Images created with Codefresh pipelines | Auto-pushed to internal registry | This is a secure private registry in GCR|
-| Testing docker images | Stay behind the firewall|  |
+| Deployment docker images | Stay behind the firewall| Stored on your Docker registry |
+| Development docker images | Stay behind the firewall | Stored on your Docker registry|
+| Testing docker images | Stay behind the firewall|  Stored on your Docker registry |
 | Inline pipeline definition | Defined in Codefresh Web application |  |
 | Pipelines as YAML file | Stay behind the firewall |  |
 | Test results | Stay behind the firewall | | 
