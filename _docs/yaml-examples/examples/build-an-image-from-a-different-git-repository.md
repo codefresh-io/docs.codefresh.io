@@ -71,7 +71,7 @@ steps:
 
 The pipeline first checks out two different Git repositories (which themselves contain Dockerfiles). Then it creates a Docker image for each one using the respective Dockerfile.
 
-You can see both images in the [Codefresh Docker registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/) .
+You can see both images in the [Docker image dashboard]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/#viewing-docker-images) .
 
 {% include image.html 
 lightbox="true" 

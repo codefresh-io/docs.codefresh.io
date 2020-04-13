@@ -17,9 +17,9 @@ In this example we will use a demo Node.js application that will be packaged in 
 If you don't already have a Codefresh account, you can easily create a free one from the [sign-up page]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/).
 
 
-## Building a Docker image and pushing it to the Codefresh registry
+## Building a Docker image and pushing it to the default registry
 
-All Codefresh accounts come with a [private integrated Docker registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/). The nice thing about this registry is that it is fully automated. All successful pipelines in Codefresh automatically push to that registry without any other configuration.
+On your Codefresh account you can setup [a default Docker registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/#the-default-registry). The nice thing about this registry is that it is fully automated. All successful pipelines in Codefresh automatically push to that registry without any other configuration.
 
 So in the most simple case, you only need a [build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) and  Codefresh will automatically push the image for you!
 

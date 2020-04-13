@@ -133,7 +133,7 @@ with the nomad cluster. In this simple example we just use the `NOMAD_ADDR` vari
 
 In this example the Nomad cluster is already setup on a VM at Google cloud. 
 
-You also need to create a [token for the Codefresh registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/#generate-cfcr-login-token) so that Nomad can pull your private images on the cluster. You can also use an [external Docker registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) with Nomad.
+You also need to create a [token for the Docker registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) so that Nomad can pull your private images on the cluster. 
 
 ## Create a CI/CD pipeline for Nomad deployments
 
@@ -180,9 +180,9 @@ steps:
 This pipeline does the following:
 
 1. Clones the source code with a [Git clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)
-1. Uses a [build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) to create a Docker image for a simple Go application. The image is automatically pushed to the private Codefresh registry
+1. Uses a [build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) to create a Docker image for a simple Go application. The image is automatically pushed to the default Docker registry
 1. Runs `envsubst` to replace all variables in the job spec. These include:
-   * the Registry token so that Nomad can access the Codefresh registry
+   * the Registry token so that Nomad can access the default Docker registry
    * The docker image name and tag to be deployed
 1. Runs the job with another [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) (i.e. Deploys the image to Nomad)
 

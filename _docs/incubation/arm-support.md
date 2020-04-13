@@ -98,7 +98,7 @@ caption="Running Unit tests"
 max-width="60%"
 %}
 
-Once the pipeline is finished you will see the Docker image stored in the [Codefresh Registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/):
+Once the pipeline is finished you will see the Docker image stored in the [default Docker Registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/#the-default-registry):
 
 {% include 
 image.html 

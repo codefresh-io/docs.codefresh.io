@@ -37,7 +37,7 @@ caption="A complete CI/CD pipeline"
 max-width="80%" 
 %}
 
-For simplicity reasons, we will use the [built-in Docker registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/) that is available to all Codefresh accounts. For your own application you can also integrate with any other [external Docker registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/).
+For simplicity reasons, we will use the [default Docker registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/#the-default-registry) that is setup globally in your Codefresh account. For your own application you can also use any other of your registries even if it is not the default.
 
 
 ## Prerequisites
@@ -335,7 +335,7 @@ You now have a complete CI/CD pipeline in Codefresh for fully automated builds t
 * [Deploying to Kubernetes with Helm]({{site.baseurl}}/docs/getting-started/helm-quick-start-guide/)
 * [Kubernetes deployment methods]({{site.baseurl}}/docs/deploy-to-kubernetes/deployment-options-to-kubernetes/)
 * [Introduction to Pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
-* [Internal Docker Registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/)
+* [Working with Docker registries]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/)
 * [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
 
 

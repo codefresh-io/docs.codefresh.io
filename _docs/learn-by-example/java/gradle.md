@@ -197,7 +197,7 @@ Codefresh is smart enough that [caches automatically]({{site.baseurl}}/docs/conf
 The next step is similar to the previous one, but this time we actually build the JAR file. We define again a custom cache folder so when you run the build you will see that Gradle will automatically pick the cache from the previous step. All Codefresh steps in a pipeline [run on the same workspace]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps), so the build results from one step are visible to the next.
 
 The last step is a Docker build. We name our image **gradle-sample-app** and tag it with a string `non-multi-stage` but of course you can use any other tag name that you wish.
-Once the pipeline is finished you will see the Spring Boot 2 Docker image in the [Codefresh Docker registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/) (or any other registry that you have linked within Codefresh).
+Once the pipeline is finished you will see the Spring Boot 2 Docker image your [Docker image dashboard]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/#viewing-docker-images).
 
 ## What to read next
 

@@ -126,7 +126,7 @@ deploy_to_swarm:
     image: codefresh/remote-docker
     working_directory: ${{main_clone}}
     commands:
-      - rdocker ${{RDOCKER_HOST}} docker login ${{CFCR_REGISTRY}} -u ${{CF_USER_NAME}} -p ${{CFCR_PASSWORD}} \&\& docker stack deploy --compose-file docker-compose.yml --with-registry-auth ${{STACK_NAME}}
+      - rdocker ${{RDOCKER_HOST}} docker login ${{MY_REGISTRY}} -u ${{MY_REGISTRY_USER}} -p ${{MY_REGISTRY_PASSWORD}} \&\& docker stack deploy --compose-file docker-compose.yml --with-registry-auth ${{STACK_NAME}}
     environment:
       - SSH_KEY=${{SSH_KEY}}
     when:
@@ -202,13 +202,13 @@ steps:
     working_directory: ${{main_clone}}
     stage: deploy
     commands:
-      - rdocker ${{RDOCKER_HOST}} docker login ${{CFCR_REGISTRY}} -u ${{CF_USER_NAME}} -p ${{CFCR_PASSWORD}} \&\& docker stack deploy --compose-file docker-compose.yml --with-registry-auth ${{STACK_NAME}}
+      - rdocker ${{RDOCKER_HOST}} docker login ${{MY_REGISTRY}} -u ${{MY_REGISTRY_USER}} -p ${{MY_REGISTRY_PASSWORD}} \&\& docker stack deploy --compose-file docker-compose.yml --with-registry-auth ${{STACK_NAME}}
     environment:
       - SSH_KEY=${{SSH_KEY}}
 {% endraw %}
 {% endhighlight %}
 
-In this example we use the [internal Codefresh resistry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/). You can also use any other [external registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) to store your images.
+The values of `MY_REGISTRY`, `MY_REGISTRY_USER` and `MY_REGISTRY_PASSWORD` depend upon the type of [your connected registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/).
 
 ## What to read next
 
