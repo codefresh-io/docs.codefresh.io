@@ -18,4 +18,4 @@ The site is automatically deployed when commits land in `master`, hosted by at h
 
 1. Install [docker-compose](https://docs.docker.com/compose/)
 1. Run `docker-compose up`
-1. Open `http://localhost:3131` in your browser, and voila. 
+1. Open `http://localhost:3131` in your browser, and voila! 

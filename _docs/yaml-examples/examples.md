@@ -45,6 +45,7 @@ Codefresh has native support for [building]({{site.baseurl}}/docs/codefresh-yaml
 - [Shared Volumes Between Builds]({{site.baseurl}}/docs/yaml-examples/examples/shared-volumes-between-builds)
 - [Get Short SHA ID and Use it in a CI Process]({{site.baseurl}}/docs/yaml-examples/examples/get-short-sha-id-and-use-it-in-a-ci-process)
 - [Calling a CD pipeline from a CI pipeline]({{site.baseurl}}/docs/yaml-examples/examples/call-child-pipelines)
+- [Trigger a Kubernetes Deployment from a Dockerhub Push Event]({{site.baseurl}}/docs/yaml-examples/examples/trigger-a-k8s-deployment-from-docker-registry/)
 
 ## Testing
 

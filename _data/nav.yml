@@ -180,6 +180,10 @@
           url: "/build-and-push-an-image"
         - title: Build an Image with Build Arguments
           url: "/build-an-image-with-build-arguments"
+        - title: Calling other pipelines
+          url: "/call-child-pipelines"
+        - title: Trigger a K8s Deployment from a DockerHub Push Event
+          url: "/trigger-a-k8s-deployment-from-docker-registry"
     - title: "Testing"
       url: "/examples"
       sub-pages:
@@ -254,8 +258,6 @@
       sub-pages:
         - title: Shared volumes between builds
           url: "/shared-volumes-between-builds"
-        - title: Calling other pipelines
-          url: "/call-child-pipelines"
         - title: NodeJS + Angular2 + MongoDB
           url: "/nodejs-angular2-mongodb"
         - title: Spring Boot + Kafka + Zookeeper
