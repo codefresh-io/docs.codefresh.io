@@ -183,7 +183,7 @@
         - title: Calling other pipelines
           url: "/call-child-pipelines"
         - title: Trigger a K8s Deployment from a DockerHub Push Event
-              url: "/trigger-a-k8s-deployment-from-docker-registry"
+          url: "/trigger-a-k8s-deployment-from-docker-registry"
     - title: "Testing"
       url: "/examples"
       sub-pages:
