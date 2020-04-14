@@ -17,9 +17,9 @@ In this example we will use a demo Node.js application that will be packaged in 
 If you don't already have a Codefresh account, you can easily create a free one from the [sign-up page]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/).
 
 
-## Building a Docker image
+## Building a Docker image and pushing to your default registry
 
-In the most simple case, you only need a [build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) to build the image.
+Building a Docker image with Codefresh is easy, and only requires a simple step. In addition, all successful pipelines in Codefresh automatically push to [your default Docker registry](https://codefresh.io/docs/docs/docker-registries/external-docker-registries/#the-default-registry) without any other configuration, as long as you have that.
 
 Here is the most basic pipeline that clones a repo and builds an image:
 
@@ -49,7 +49,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-## Building a Docker image and pushing it to a registry.
+## Building a Docker image and pushing it to any registry.
 
 You can push your image to any [Registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/). First you need to connect your external registry in the integrations page. Here are the instructions for:
 
@@ -133,9 +133,3 @@ See the [push step documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/pus
 - [Build an Image by Specifying the Dockerfile Location]({{site.baseurl}}/docs/yaml-examples/examples/build-an-image-specify-dockerfile-location)
 - [Build an Image from a Different Git Repository]({{site.baseurl}}/docs/yaml-examples/examples/build-an-image-from-a-different-git-repository)
 - [Build an Image With Build Arguments]({{site.baseurl}}/docs/yaml-examples/examples/build-an-image-with-build-arguments)
-
-
-
-
-
-
