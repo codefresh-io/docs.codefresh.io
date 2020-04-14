@@ -24,7 +24,7 @@ Codefresh has native support for Helm in a number of ways:
 
 1. You can easily deploy existing Helm packages to your Kubernetes cluster overriding the default values.
 1. You can easily create new Helm packages and push them to a Helm repository.
-1. Like the [integrated Docker registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/) Codefresh also gives you an [integrated Helm Repository]({{site.baseurl}}/docs/new-helm/managed-helm-repository/).
+1. Codefresh gives you an [integrated Helm Repository]({{site.baseurl}}/docs/new-helm/managed-helm-repository/).
 1. You can see the Helm releases and even [perform rollbacks]({{site.baseurl}}/docs/new-helm/helm-releases-management/) from the Helm Dashboard.
 1. You can [browse Helm packages]({{site.baseurl}}/docs/new-helm/add-helm-repository/)  both from public repositories and your internal Helm repository.
 1. You can see Helm releases in the [Environment dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/environment-dashboard/)
@@ -41,15 +41,16 @@ In this guide we will see how you can:
 
 
 
-For simplicity reasons, we will use the [built-in Docker registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/) that is available to all Codefresh accounts. For your own application you can also integrate with any other [external Docker registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/).
+For simplicity reasons, we will use the [default Docker registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/#the-default-registry) that is setup globally in your Codefresh account. For your own application you can also use any other of your registries even if it is not the default.
 
 
 ## Prerequisites
 
 It is assumed that:
   - You have already [added your Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/adding-non-gke-kubernetes-cluster/) into Codefresh
+  - You have connected at least one [Docker registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) in your Codefresh account
   - You have already an application that has a Dockerfile and a Helm chart 
-  - Your cluster has pull access to the Codefresh registry. If not read the [previous guide]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/#giving-the-kubernetes-cluster-read-access-to-the-internal-codefresh-registry) or look at the [documentation]({{site.baseurl}}/docs/deploy-to-kubernetes/deploy-to-kubernetes/create-image-pull-secret/)
+  - Your cluster has pull access to your default Docker registry registry. If not read the [previous guide]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/#deploying-a-docker-image-to-kubernetes-manually) or look at the [documentation]({{site.baseurl}}/docs/deploy-to-kubernetes/deploy-to-kubernetes/create-image-pull-secret/)
 
 To verify that your cluster is setup for Helm select the *Helm Releases* item from the left sidebar. You should see the Helm releases in your cluster or an empty screen if you just started.
 
@@ -68,7 +69,7 @@ If you want to follow along feel free to fork this [repository](https://github.c
 
 ## Deploying a Helm Release to your Kubernetes cluster
 
-Codefresh provides a [premade Docker image with Helm](https://hub.docker.com/r/codefresh/cfstep-helm) that you can use as a [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) to perform a deployment.
+Codefresh provides a [pre-made Docker image with Helm](https://hub.docker.com/r/codefresh/cfstep-helm) that you can use as a [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) to perform a deployment.
 At its most basic form you can put the following step in your [codefresh.yml]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) file.
 
 `YAML`
@@ -309,7 +310,7 @@ You can also create a single pipeline that [both stores the chart as well as dep
 * [Codefresh built-in Helm repository]({{site.baseurl}}/docs/new-helm/managed-helm-repository/)
 * [Using Helm in a Pipeline]({{site.baseurl}}/docs/new-helm/using-helm-in-codefresh-pipeline/)
 * [Helm pipeline example]({{site.baseurl}}/docs/yaml-examples/examples/helm/)
-* [Internal Docker Registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/)
+* [Working with Docker registries]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/)
 * [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
 
 

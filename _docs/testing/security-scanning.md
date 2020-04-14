@@ -38,7 +38,7 @@ Because you can insert a scanning step anywhere in your pipeline, you have great
 1. Scanning a container before being deployed to production
 1. A Combination of the above
 
-Here is an example pipeline that scans a Docker image with [Aqua](https://www.aquasec.com/) after being pushed to the [internal Codefresh registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/) but before being promoted to the [external Azure Registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/azure-docker-registry/).
+Here is an example pipeline that scans a Docker image with [Aqua](https://www.aquasec.com/) after being pushed to the [default Docker registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/#the-default-registry) but before being promoted to the [external Azure Registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/azure-docker-registry/).
 
 {% include image.html 
 lightbox="true" 

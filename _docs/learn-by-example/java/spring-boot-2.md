@@ -135,7 +135,7 @@ caption="Spring Boot Docker image"
 max-width="80%" 
 %}
 
-Once the pipeline is finished you will see the Spring Boot 2 Docker image in the [Codefresh Docker registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/) (or any other registry that you have linked within Codefresh -- note that for external registries, you will need an extra [push]({{site.baseurl}}/docs/codefresh-yaml/steps/push/) step.).
+Once the pipeline is finished you will see the Spring Boot 2 Docker image your [Docker image dashboard]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/#viewing-docker-images).
 
 The last step is similar to the unit tests, but this time we run integration tests. We define again a custom cache folder so when you run the build you will see that Maven will automatically pick the cache from the previous step. All Codefresh steps in a pipeline [run on the same workspace]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps), so the build results from one step are visible to the next.
 

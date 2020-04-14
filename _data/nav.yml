@@ -180,6 +180,14 @@
           url: "/build-and-push-an-image"
         - title: Build an Image with Build Arguments
           url: "/build-an-image-with-build-arguments"
+        - title: Shared volumes for composition
+          url: "/shared-volumes-of-service-from-composition-step-for-other-yml-steps"
+        - title: Uploading/downloading from Google Storage buckets
+          url: "/uploading-or-downloading-from-gs"
+        - title: Calling other pipelines
+          url: "/call-child-pipelines"
+        - title: Trigger a K8s Deployment from a DockerHub Push Event
+          url: "/trigger-a-k8s-deployment-from-docker-registry"
     - title: "Testing"
       url: "/examples"
       sub-pages:
@@ -233,8 +241,6 @@
     - title: "Compositions"
       url: "/examples"
       sub-pages:
-        - title: Shared volumes for composition
-          url: "/shared-volumes-of-service-from-composition-step-for-other-yml-steps"
         - title: Launch Composition
           url: "/launch-composition"
         - title: Use Docker compose
@@ -254,8 +260,6 @@
       sub-pages:
         - title: Shared volumes between builds
           url: "/shared-volumes-between-builds"
-        - title: Calling other pipelines
-          url: "/call-child-pipelines"
         - title: NodeJS + Angular2 + MongoDB
           url: "/nodejs-angular2-mongodb"
         - title: Spring Boot + Kafka + Zookeeper
