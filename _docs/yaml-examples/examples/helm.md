@@ -48,43 +48,45 @@ max-width="100%"
 
 Here is the whole pipeline:
 
- `codefresh.yml`
+ `codefresh-do-not-store.yml`
 {% highlight yaml %}
 {% raw %}
 version: '1.0'
 stages:
-  - prepare   
+  - prepare
   - build
   - deploy
 steps:
-  main_clone:
+  clone:
     title: Cloning main repository...
     stage: prepare
     type: git-clone
-    repo: 'codefresh-contrib/helm-sample-app'
-    revision: master
-    git: github    
-  MyAppDockerImage:
+    arguments:
+      repo: codefresh-contrib/helm-sample-app
+      revision: master
+      git: github
+  build:
     title: Building Docker Image
     stage: build
     type: build
-    image_name: helm-sample-app-go
-    working_directory: ./
-    tag: 'multi-stage'
-    dockerfile: Dockerfile  
-  DeployMyChart:
-    image: 'codefresh/cfstep-helm:3.0.3'
-    title: Deploying Helm chart
+    working_directory: ./helm-sample-app
+    arguments:
+      image_name: helm-sample-app-go
+      tag: multi-stage
+      dockerfile: Dockerfile
+  deploy:
+    title: Deploying Helm Chart
+    type: helm
     stage: deploy
-    environment:
-      - CHART_REF=charts/helm-example
-      - RELEASE_NAME=my-go-chart-prod
-      - KUBE_CONTEXT=my-demo-k8s-cluster
-      - VALUE_image_pullPolicy=Always
-      - VALUE_image_tag='multi-stage'
-      - VALUE_replicaCount=3
-      - VALUE_buildID='${{CF_BUILD_ID}}'
-      - VALUE_image_pullSecret=codefresh-generated-r.cfcr.io-cfcr-default
+    working_directory: ./helm-sample-app
+    arguments:
+      action: install
+      chart_name: charts/helm-example
+      release_name: my-go-chart-prod
+      helm_version: 3.0.2
+      kube_context: my-demo-k8s-cluster
+      custom_values:
+        - 'buildID=${{CF_BUILD_ID}}'
 {% endraw %}
 {% endhighlight %}
 
@@ -92,7 +94,7 @@ This pipeline does the following:
 
 1. Clones the source code with a [Git clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)
 1. Builds a docker image using a [Build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/)
-1. Deploys the Helm chart to a cluster named `my-demo-k8s-cluster`
+1. Deploys the Helm chart to a cluster named `my-demo-k8s-cluster` using the Helm step [from the Step Marketplace](https://codefresh.io/steps/step/helm).
 
 Note that in this example `charts/helm-example` refers to the [filesystem location in the code](https://github.com/codefresh-contrib/helm-sample-app/tree/master/charts/helm-example) that was just checked out.
 
