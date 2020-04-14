@@ -215,7 +215,7 @@ alt="Advanced Options"
 max-width="60%"
 %}
 
-* *Commit Status Title* -
+* *Commit Status Title* - the commit status title pushed to the GIT version control system.  By default, is the pipeline name, but you can override the name on GIT trigger.
 * *Build Variables* - import a [shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/) or manually add variables
 * *More Options* 
   * *Ignore Docker engine cache for build* - selecting this option may slow down your build.  See #1 [here]({{site.baseurl}}/docs/troubleshooting/common-issues/disabling-codefresh-caching-mechanisms/)
