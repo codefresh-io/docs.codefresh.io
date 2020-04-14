@@ -48,8 +48,9 @@ For simplicity reasons, we will use the [default Docker registry]({{site.baseurl
 
 It is assumed that:
   - You have already [added your Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/adding-non-gke-kubernetes-cluster/) into Codefresh
+  - You have connected at least one [Docker registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) in your Codefresh account
   - You have already an application that has a Dockerfile and a Helm chart 
-  - Your cluster has pull access to the Codefresh registry. If not read the [previous guide]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/#giving-the-kubernetes-cluster-read-access-to-the-internal-codefresh-registry) or look at the [documentation]({{site.baseurl}}/docs/deploy-to-kubernetes/deploy-to-kubernetes/create-image-pull-secret/)
+  - Your cluster has pull access to your default Docker registry registry. If not read the [previous guide]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/#deploying-a-docker-image-to-kubernetes-manually) or look at the [documentation]({{site.baseurl}}/docs/deploy-to-kubernetes/deploy-to-kubernetes/create-image-pull-secret/)
 
 To verify that your cluster is setup for Helm select the *Helm Releases* item from the left sidebar. You should see the Helm releases in your cluster or an empty screen if you just started.
 
@@ -68,7 +69,7 @@ If you want to follow along feel free to fork this [repository](https://github.c
 
 ## Deploying a Helm Release to your Kubernetes cluster
 
-Codefresh provides a [premade Docker image with Helm](https://hub.docker.com/r/codefresh/cfstep-helm) that you can use as a [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) to perform a deployment.
+Codefresh provides a [pre-made Docker image with Helm](https://hub.docker.com/r/codefresh/cfstep-helm) that you can use as a [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) to perform a deployment.
 At its most basic form you can put the following step in your [codefresh.yml]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) file.
 
 `YAML`
