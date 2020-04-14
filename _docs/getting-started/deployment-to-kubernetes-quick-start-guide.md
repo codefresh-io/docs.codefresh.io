@@ -24,8 +24,8 @@ Codefresh also offers [several alternative ways]({{site.baseurl}}/docs/deploy-to
 At the end of this tutorial we will have a pipeline that: 
 
 1. Checks out code from GitHub and creates a Docker image
-1. Stores it in the internal Codefresh Docker registry
-1. Notifies the K8s cluster that a new version of the application is present. Kubernetes will pull the new image and deploy it
+1. Stores it in the default Docker registry of your Codefresh account
+1. Notifies the Kubernetes cluster that a new version of the application is present. Kubernetes will pull the new image and deploy it
 
  {% include 
 image.html 
@@ -43,80 +43,11 @@ For simplicity reasons, we will use the [default Docker registry]({{site.baseurl
 ## Prerequisites
 
 It is assumed that:
-  - You have already [added your K8s cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/) into Codefresh
+  - You have already [added your Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/) into Codefresh
+  - You have connected at least one [Docker registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) in your Codefresh account
   - You have already an application that has a Dockerfile. If not, see the [previous tutorial]({{site.baseurl}}/docs/getting-started/create-a-basic-pipeline/)
 
 Notice that for this tutorial you **don't** need a Kubernetes deployment file. Codefresh will create one for you via its friendly GUI. If you already have an existing deployment file for your own application, [consult the main K8s documentation]({{site.baseurl}}/docs/deploy-to-kubernetes/deployment-to-kubernetes-quick-start-guide/) on how to use it.
-
-
-## Giving the Kubernetes cluster read access to the internal Codefresh registry
-
-A Kubernetes cluster deploys applications by *pulling* images from a Docker registry. In most cases your Docker image
-will be on a private Docker registry. Therefore, you need to grant rights to the cluster so that it has read access to the images that are pushed on the Docker registry by Codefresh.
-
-Each Codefresh account comes with its own built-in Docker registry, but by default this is not accessible externally. 
-To make this registry "external" we need to declare it first as an integration.
-
-
-### Creating an API key for the Codefresh internal registry
-
-Click *User settings* on the left sidebar. At the bottom of the User
-settings screen, click the button *Generate* at the Codefresh Registry section.
-
- {% include 
-image.html 
-lightbox="true" 
-file="/images/getting-started/quick-start-k8s/generate-api-button.png" 
-url="/images/getting-started/quick-start-k8s/generate-api-button.png" 
-alt="Generating an API key for Codefresh registry" 
-caption="Generating an API key for Codefresh registry (click image to enlarge)" 
-max-width="70%" 
-%}
-
-In the dialog that appears, enter a name for your key (this name doesn't affect anything, it is just for you to remember the purpose of the key) and click the *Create* button. Your key will be generated. You can click the "eye" button inside the text field to view its full form.
-
- {% include 
-image.html 
-lightbox="true" 
-file="/images/getting-started/quick-start-k8s/generate-api-key.png" 
-url="/images/getting-started/quick-start-k8s/generate-api-key.png" 
-alt="Copying the Codefresh Registry Key" 
-caption="Copying the Codefresh Registry Key (click image to enlarge)" 
-max-width="50%" 
-%}
-
-**Write down this token** as it will never be visible again apart from this screen.
-
-### Making the internal Codefresh Registry available to your Kubernetes cluster
-
-After you have the API key, go to your Account Configuration, by clicking on *Account Settings* on the left sidebar. On the first section called *Integrations* click the *Configure* button next to *Docker Registry*.
-
- {% include 
-image.html 
-lightbox="true" 
-file="/images/getting-started/quick-start-k8s/integrations.png" 
-url="/images/getting-started/quick-start-k8s/integrations.png" 
-alt="Codefresh Registry Integration" 
-caption="Codefresh Registry Integration (click image to enlarge)" 
-max-width="70%" 
-%}
-
-Then click the *Add Registry* button and select the Codefresh registry from the top down menu.
-Enter your Codefresh username in the respective field and enter the token that we created in the previous section.
-
- {% include 
-image.html 
-lightbox="true" 
-file="/images/getting-started/quick-start-k8s/add-codefresh-registry.png" 
-url="/images/getting-started/quick-start-k8s/add-codefresh-registry.png" 
-alt="Adding the internal Registry" 
-caption="Adding the internal Registry (click image to enlarge)" 
-max-width="70%" 
-%}
-
-
-Finally click the *Test* button to make sure that everything works ok, and then the *Save* button to apply your changes.
-The Codefresh Internal registry is now ready to be used by your Kubernetes cluster.
 
 
 ## Deploying a Docker image to Kubernetes manually
@@ -131,8 +62,8 @@ image.html
 lightbox="true" 
 file="/images/getting-started/quick-start-k8s/add-service-button.png" 
 url="/images/getting-started/quick-start-k8s/add-service-button.png" 
-alt="Codefresh K8s Dashboard" 
-caption="Codefresh K8s Dashboard (click image to enlarge)" 
+alt="Codefresh Kubernetes Dashboard" 
+caption="Codefresh Kubernetes Dashboard (click image to enlarge)" 
 max-width="70%" 
 %}
 
@@ -145,26 +76,26 @@ image.html
 lightbox="true" 
 file="/images/getting-started/quick-start-k8s/add-service.png" 
 url="/images/getting-started/quick-start-k8s/add-service.png" 
-alt="Codefresh K8s add service" 
-caption="Codefresh K8s add service (click image to enlarge)" 
+alt="Codefresh Kubernetes add service" 
+caption="Codefresh Kubernetes add service (click image to enlarge)" 
 max-width="70%" 
 %}
 
 
 The fields in this screen are:
 
-* *Cluster* - elect your cluster if you have more than one.
+* *Cluster* - choose your cluster if you have more than one.
 * *Namespace* - select the namespace where the application will be deployed to (*default* will work just fine).
 * *Service Name* - enter any arbitrary name for your service.
 * *Replicas* - how many replicas you want for resiliency. This affects pricing, so 1 is a good value for a demo.
 * *Expose Port* - check it so that your application is available outside the cluster .
 * *Image* - enter the fully qualified name of your Docker image.
-* *Image Pull Request* - select the Codefresh registry and create a pull secret for it.
+* *Image Pull Secret* - select your default Docker registry and create a pull secret for it.
 * *Internal Ports* - which port is exposed from your application. The example Python app we deploy, exposes 5000.
 
 From the same screen you can also define environment variables and cpu/mem limits.
 
-You can see the full name of the Docker image, in the *Images* tab of the Codefresh GUI of your build.
+You can see the full name of the Docker image, in the [Images tab](https://g.codefresh.io/images/) of the Codefresh GUI of your build.
 
  {% include 
 image.html 
@@ -180,7 +111,7 @@ By default, Codefresh appends the branch name of a git commit to the resulting D
 in the *Image* field we used the branch name as tag
 
 >Do not use `latest` for your deployments. This doesn't help you to understand which version is deployed. Use
-either branch names or even better git hashes so that you know exactly what is deployed on your Kubernetes cluster. Notice also that the YML
+either branch names or even better git hashes so that you know exactly what is deployed on your Kubernetes cluster. Notice also that the YML manifest
 Codefresh is creating has an image pull policy of `always`, so the cluster will always redeploy the latest image even if it has the same name as the previous one.
 
 Finally click the *deploy* button. Codefresh will create a Kubernetes YAML file behind the scenes and apply it to your
