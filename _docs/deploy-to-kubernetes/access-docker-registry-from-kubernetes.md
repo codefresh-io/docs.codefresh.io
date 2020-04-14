@@ -84,25 +84,25 @@ This way is not specific to Codefresh so read the [official kubernetes documenta
 
 ### Creating the Docker registry secret
 
-For the internal Codefresh registry:
+The credentials depend upon the [type or registry you use]({{site.baseurl}}/docs/docker-registries/external-docker-registries/). 
 
-- The Docker server to use is `r.cfcr.io`.
-- The username is your Codefresh username.
-- The password is a valid [CFCR Login Token]({{ site.baseurl }}/docs/docker-registries/codefresh-registry/#generate-cfcr-login-token).
+- The Docker server to use is a domain such `gcr.io`, `azurecr.io` etc
+- The username is your account username.
+- The password is a speficic docker registry password or any other kind of token. You need to check the documentation of your registry provider for the exact details.
 
 >Be sure to create the Secret in the namespace in which your application will run.
 Pull secrets are specific to a namespace. If you want to deploy to multiple namespaces
 you need to create a secret for each one of them.
 
-This is an example of creating a pull secret to Codefresh registry. You can use the same command to any other private registry.
+This is an example of creating a pull secret to Azure registry. You can use the same command to any other private registry.
 
   `Shell`
 {% highlight sh %}
 {% raw %}
 
-export DOCKER_REGISTRY_SERVER=r.cfcr.io
-export DOCKER_USER=YOUR_USERNAME
-export DOCKER_PASSWORD=YOUR_REGISTRY_PASSWORD
+export DOCKER_REGISTRY_SERVER=mysampleregistry.azurecr.io
+export DOCKER_USER=myregistryname
+export DOCKER_PASSWORD=myregistrytoken
 export DOCKER_EMAIL=YOUR_EMAIL
 
 kubectl create secret docker-registry cfcr\

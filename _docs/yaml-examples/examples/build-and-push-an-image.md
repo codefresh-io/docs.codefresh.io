@@ -17,13 +17,11 @@ In this example we will use a demo Node.js application that will be packaged in 
 If you don't already have a Codefresh account, you can easily create a free one from the [sign-up page]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/).
 
 
-## Building a Docker image and pushing it to the Codefresh registry
+## Building a Docker image and pushing to your default registry
 
-All Codefresh accounts come with a [private integrated Docker registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/). The nice thing about this registry is that it is fully automated. All successful pipelines in Codefresh automatically push to that registry without any other configuration.
+Building a Docker image with Codefresh is easy, and only requires a simple step. In addition, all successful pipelines in Codefresh automatically push to [your default Docker registry](https://codefresh.io/docs/docs/docker-registries/external-docker-registries/#the-default-registry) without any other configuration, as long as you have that.
 
-So in the most simple case, you only need a [build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) and  Codefresh will automatically push the image for you!
-
-Here is the full pipeline:
+Here is the most basic pipeline that clones a repo and builds an image:
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -33,7 +31,7 @@ stages:
 - checkout
 - build
 steps:
-  main_clone:
+  clone:
     title: Cloning main repository...
     type: git-clone
     stage: checkout
@@ -45,41 +43,15 @@ steps:
     type: build
     stage: build
     image_name: my-node-js-app
-    working_directory: '.'
+    working_directory: {{clone}}
     tag: 'master'
     dockerfile: Dockerfile
 {% endraw %}
 {% endhighlight %}
 
-If you [create this pipeline]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/) in Codefresh and run it you will see the automatic pushing of the image in the Codefresh registry:
+## Building a Docker image and pushing it to any registry.
 
-{% include image.html
-  lightbox="true"
-  file="/images/examples/docker-build/auto-push-to-cfcr.png"
-  url="/images/examples/docker-build/auto-push-to-cfcr.png"
-  alt="Pushing to the built-in registry"
-  caption="Pushing to the built-in registry"
-  max-width="100%"
-    %}
-
-You can then visit the Codefresh Registry and view your image:
-
-{% include image.html
-  lightbox="true"
-  file="/images/examples/docker-build/cfcr-layers.png"
-  url="/images/examples/docker-build/cfcr-layers.png"
-  alt="Inspecting image in private registry"
-  caption="Inspecting image in private registry"
-  max-width="80%"
-    %}
-
-
-That's it. Using the Codefresh Registry is very easy, and no extra configuration is needed.
-
-## Building a Docker image and pushing it to an external registry.
-
-You can also push your image to any [external Registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/). First you need to connect your external registry
-in the integrations page. Here are the instructions for:
+You can push your image to any [Registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/). First you need to connect your external registry in the integrations page. Here are the instructions for:
 
   * [Docker Hub]({{site.baseurl}}/docs/docker-registries/external-docker-registries/docker-hub/)
   * [Google Container Registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/google-container-registry/)
@@ -101,7 +73,7 @@ stages:
 - build
 - push
 steps:
-  main_clone:
+  clone:
     title: Cloning main repository...
     type: git-clone
     stage: checkout
@@ -113,7 +85,7 @@ steps:
     type: build
     stage: build
     image_name: my-node-js-app
-    working_directory: '.'
+    working_directory: {{clone}}
     tag: 'master'
     dockerfile: Dockerfile
   push_to_my_registry:
@@ -161,9 +133,3 @@ See the [push step documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/pus
 - [Build an Image by Specifying the Dockerfile Location]({{site.baseurl}}/docs/yaml-examples/examples/build-an-image-specify-dockerfile-location)
 - [Build an Image from a Different Git Repository]({{site.baseurl}}/docs/yaml-examples/examples/build-an-image-from-a-different-git-repository)
 - [Build an Image With Build Arguments]({{site.baseurl}}/docs/yaml-examples/examples/build-an-image-with-build-arguments)
-
-
-
-
-
-

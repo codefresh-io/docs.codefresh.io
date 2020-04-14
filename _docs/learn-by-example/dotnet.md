@@ -86,7 +86,7 @@ This pipeline:
 1. Uses the official `mcr.microsoft.com/dotnet/core/sdk:3.0` image to run unit/integration/functional tests in 3 different folders
 1. Builds the application docker image using the root folder as Docker context but with the Dockerfile located at `./src/Web`
 
-You can see the resulting image in the [private Codefresh registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/):
+You can see the resulting image in the [image dashboard]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/#viewing-docker-images):
 
 {% include image.html 
 lightbox="true" 

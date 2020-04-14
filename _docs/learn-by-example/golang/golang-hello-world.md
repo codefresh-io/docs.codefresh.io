@@ -246,7 +246,7 @@ You should see a much smaller Docker image at the end.
 
 ## Viewing Docker images
 
-All successful Codefresh pipelines automatically push their images to the [internal Codefresh registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/). If you look at the images created the advantages of the multi-stage build are very clear:
+If you look at your [Docker registry dashboard]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/#viewing-docker-images) created the advantages of the multi-stage build are very clear:
 
 {% include image.html 
 lightbox="true" 

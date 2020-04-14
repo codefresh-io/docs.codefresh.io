@@ -84,7 +84,7 @@ Notice that all dependencies are downloaded when the dockerfile is created.
 
 Codefresh can also launch Docker images (using Docker swarm behind the scenes). With each Codefresh account you get access to a limited number of Docker environments that can host any Docker image or Docker compose file.
 
-First find your images in the [internal Codefresh registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/).
+First find your images in the [Docker image dashboard]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/#viewing-docker-images).
 
 {% include image.html 
 lightbox="true" 

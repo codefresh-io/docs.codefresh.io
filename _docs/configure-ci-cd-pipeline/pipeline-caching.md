@@ -18,7 +18,7 @@ Here is a quick overview of all types of caching used in a Codefresh pipeline:
 | Distributed Docker step/image caching       | Automatic | All pipeline [steps]({{site.baseurl}}/docs/codefresh-yaml/steps/) | |
 | Distributed Docker layer caching  | Automatic |  Pipeline [build steps]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) | Mimics local Docker layer cache|
 | Caching from previous built image  | Automatic |  Pipeline build steps | Distributed version of `--cache-from`|
-| Docker registry caching  | Automatic |  Pipeline build steps | Works only for the [integrated Docker registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/)|
+| Docker registry caching  | Automatic |  Pipeline build steps | Works for all [connected Docker registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/)|
 | Traditional build caching  | Automatic/manual |  Pipeline [freestyle steps]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) | See notes for [parallel builds]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/)|
 
 All these caching mechanisms are enabled by default and you can [freely disable them]({{site.baseurl}}/docs/troubleshooting/common-issues/disabling-codefresh-caching-mechanisms/) if you encounter any issues with caching.
@@ -163,7 +163,7 @@ Basically if your Dockerfile is already optimized on your local workstation, it 
 
 ## Docker registry caching
 
-This is a caching mechanism unique to Codefresh and applicable only to [build steps]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) when the [private Docker registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/) is used.
+This is a caching mechanism unique to Codefresh and applicable only to [build steps]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) when any of connected Docker registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) is used.
 
 Codefresh will check the internal Docker registry *before* a build step and if the exact same image is found (using the image hash), it will skip the build step completely:
 

@@ -100,9 +100,7 @@ The first step is a [build step]({{site.baseurl}}/docs/codefresh-yaml/steps/buil
 
 ## Inspecting your Docker image
 
-All Codefresh accounts come with a [built-in Docker registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/). Codefresh automatically pushes the last successful image of a pipeline to this internal registry.
-
-You can see all your latest Docker artifacts by selecting *Images* from the left sidebar
+You can see all your latest [Docker artifacts]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/#viewing-docker-images) by selecting *Images* from the left sidebar.
 
 
 {% include image.html 

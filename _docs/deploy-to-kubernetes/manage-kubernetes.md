@@ -81,8 +81,8 @@ max-width="60%"
 %}
 
 
-Use the following steps in order to add Image and pull secrets from the internal [Codefresh Registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/):
-* Specify the image name in the format `r.cfcr.io/<ACCOUNT>/<IMAGE>:<TAG>`
+Use the following steps in order to add Image and pull secrets from the [connected Docker Registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/):
+* Specify the image name in the format `<DOMAIN>/<ACCOUNT>/<IMAGE>:<TAG>`
 * Provide and image pull secret - this will be done for each namespace
 
 {% include image.html 

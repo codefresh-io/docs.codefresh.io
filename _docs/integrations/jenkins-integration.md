@@ -318,7 +318,7 @@ Notice that for several popular tools, Dockerhub already contains several images
 * [Azure CLI](https://hub.docker.com/r/microsoft/azure-cli/)
 * [AWS CLI](https://hub.docker.com/r/mesosphere/aws-cli/)
 
-Of course, you can create your own Docker image with the exact tools that you want and then use it from the [private Codefresh registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/) or any other registry in your pipeline.
+Of course, you can create your own Docker image with the exact tools that you want and then use it from the [any Docker registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) or any other registry in your pipeline.
 
 ### Migrating Jenkins pipelines
 
@@ -600,9 +600,6 @@ Codefresh has native support for:
 1. Building Docker images
 1. Running commands inside Docker images
 1. Pushing Docker images to different registries
-
-It is important to understand that each Codefresh account also includes [a free private Docker registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/). So by using Codefresh
-you can start pushing Docker images right away.
 
 If you are using Docker commands directly in your Jenkins file, or prefer to take advantage of the scripted
 variant of Docker image management then you can easily convert both approaches to Codefresh YAML like below:

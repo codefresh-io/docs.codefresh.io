@@ -145,7 +145,7 @@ max-width="70%"
 The steps are the following:
 
 1. Code/Dockerfile/Chart is checked out from Git
-1. Docker image is built (and pushed to internal [Codefresh registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/))
+1. Docker image is built (and pushed to [default Docker registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/#the-default-registry))
 1. Chart is [deployed directly]({{site.baseurl}}/docs/new-helm/using-helm-in-codefresh-pipeline/#example-installing-a-chart) to a Kubernetes Cluster
 
 Notice that in this pipeline there is no Helm repository involved.

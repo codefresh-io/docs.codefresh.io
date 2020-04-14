@@ -85,23 +85,24 @@ Here are the security implications of the hybrid solution:
 | Build logs        | Also sent to Codefresh Web application |  |
 | Pipeline volumes   | Stay behind the firewall | |
 | Pipeline variables   | Defined in Codefresh Web application | |
-| Deployment docker images | Stay behind the firewall|  |
-| Development docker images | Stay behind the firewall | |
-| Images created with Codefresh pipelines | Auto-pushed to internal registry | This is a secure private registry in GCR|
-| Testing docker images | Stay behind the firewall|  |
+| Deployment docker images | Stay behind the firewall| Stored on your Docker registry |
+| Development docker images | Stay behind the firewall | Stored on your Docker registry|
+| Testing docker images | Stay behind the firewall|  Stored on your Docker registry |
 | Inline pipeline definition | Defined in Codefresh Web application |  |
 | Pipelines as YAML file | Stay behind the firewall |  |
 | Test results | Stay behind the firewall | | 
-| HTML Test reports | Shown on Web application |  Stored in your S3 or Google bucket storage  |
+| HTML Test reports | Shown on Web application |  Stored in your S3 or Google bucket or Azure storage  |
 | Production database data | Stays behind the firewall | |
 | Test database data | Stays behind the firewall | |
 | Other services (e.g. Queue, ESB) | Stay behind the firewall | |
-| Kubernetes deployment specs | Stays behind the firewall | |
-| Helm charts | Stays behind the firewall | |
-| Other deployment resources/script (e.g. terraform) | Stays behind the firewall | |
+| Kubernetes deployment specs | Stay behind the firewall | |
+| Helm charts | Stay behind the firewall | |
+| Other deployment resources/script (e.g. terraform) | Stay behind the firewall | |
 | Shared configuration variables | Defined in Codefresh Web application |  |
 | Deployment secrets (from git/Puppet/Vault etc) | Stay behind the firewall|  |
 | Audit logs | Managed via Codefresh Web application |  |
+| SSO/Idp Configuration | Managed via Codefresh Web application |  |
+| User emails | Managed via Codefresh Web application |  |
 | Access control rules | Managed via Codefresh Web application | |
 
 
