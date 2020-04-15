@@ -69,31 +69,33 @@ If you want to follow along feel free to fork this [repository](https://github.c
 
 ## Deploying a Helm Release to your Kubernetes cluster
 
-Codefresh provides a [pre-made Docker image with Helm](https://hub.docker.com/r/codefresh/cfstep-helm) that you can use as a [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) to perform a deployment.
+Codefresh provides a special [Helm step](https://codefresh.io/steps/step/helm) that you can use to perform a deployment.
 At its most basic form you can put the following step in your [codefresh.yml]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) file.
 
 `YAML`
 {% highlight yaml %}
 {% raw %}
-DeployMyChart:
-  image: 'codefresh/cfstep-helm:3.0.3'
-  environment:
-    - CHART_REF=charts/python
-    - RELEASE_NAME=mypython-chart-prod
-    - KUBE_CONTEXT=myDemoAKSCluster
+deploy:
+  type: helm
+  arguments:
+    action: install
+    chart_name: test_chart
+    release_name: first
+    helm_version: 3.0.1
+    kube_context: my-kubernetes-context
 {% endraw %}
 {% endhighlight %}
 
-We use the `cfstep-helm` image to deploy a chart. There are 3 environment variables that are required. The `CHART_REF` points to the [chart inside the git repository](https://github.com/codefresh-contrib/python-flask-sample-app/tree/with-helm/charts/python). The `RELEASE_NAME` defines the name of the deployment that will be created
-in the cluster. And finally, the `KUBE_CONTEXT` defines which cluster will be used. The name is the same as defined in [Codefresh Integrations](https://g.codefresh.io/account-admin/account-conf/integration/kubernetes).
+Under the hood, we use the `cfstep-helm` image to deploy a chart. There are 3 environment variables that are required. The `chart_name` points to the [chart inside the git repository](https://github.com/codefresh-contrib/python-flask-sample-app/tree/with-helm/charts/python). The `release_name` defines the name of the deployment that will be created
+in the cluster. And finally, the `kube_context` defines which cluster will be used. The name is the same as defined in [Codefresh Integrations](https://g.codefresh.io/account-admin/account-conf/integration/kubernetes).
 
 For the full list of variables and modes see the section [using Helm in Codefresh pipelines]({{site.baseurl}}/docs/new-helm/using-helm-in-codefresh-pipeline/)
 
->Notice that we use Helm 3.x in the example above. If you still use Helm 2.x then select another tag of the `codefresh/cfstep-helm` image that matches your Tiller version. For example if you have installed Tiller 2.9.1 then you need to use the codefresh/cfstep-helm:2.9.1' image instead.
+>Notice that we use Helm 3.x in the example above. If you still use Helm 2.x then select another tag of the `codefresh/cfstep-helm` image that matches your Tiller version. For example if you have installed Tiller 2.9.1 then you need to use the 2.9.1 version instead.
 
 This step will deploy the Helm chart using the default values as found in `values.yaml` inside the chart folder. It would make sense to override the defaults using some parameters in the build. For example instead of tagging your docker image with the branch name (which is always the same for each build), you could tag it with the hash of the source revision which is one of the [offered variables]({{site.baseurl}}/docs/codefresh-yaml/variables/).
 
-Thus the whole pipeline is the following:
+Thus, the whole pipeline is the following:
 
 `YAML`
 {% highlight yaml %}
@@ -104,37 +106,42 @@ stages:
   - package
   - deploy  
 steps:
-  main_clone:
+  clone:
     title: Cloning main repository...
     type: git-clone
-    repo: '${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}'
-    revision: '${{CF_REVISION}}'
+    arguments:
+      repo: '${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}'
+      revision: '${{CF_REVISION}}'
     stage: checkout
   BuildingDockerImage:
     title: Building Docker Image
     type: build
-    image_name: my-flask-app
-    working_directory: ./
-    tag: '${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_SHORT_REVISION}}'
-    dockerfile: Dockerfile
+    arguments:
+      image_name: my-flask-app
+      working_directory: ./
+      tag: '${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_SHORT_REVISION}}'
+      dockerfile: Dockerfile
     stage: package
   DeployMyChart:
-    image: 'codefresh/cfstep-helm:3.0.3'
-    title: Deploying Helm chart
-    stage: deploy
-    environment:
-      - CHART_REF=charts/python
-      - RELEASE_NAME=mypython-chart-prod
-      - KUBE_CONTEXT=kostis-demo@FirstKubernetes 
-      - VALUE_image_repository=r.cfcr.io/kostis-codefresh/my-flask-app
-      - VALUE_image_pullPolicy=Always
-      - VALUE_image_tag='${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_SHORT_REVISION}}'
-      - VALUE_buildID='${{CF_BUILD_ID}}'
-      - VALUE_image_pullSecret=codefresh-generated-r.cfcr.io-cfcr-default
+        type: helm
+        stage: deploy
+        working_directory: ./python-flask-sample-app
+        arguments:
+          action: install
+          chart_name: charts/python
+          release_name: my-python-chart
+          helm_version: 3.0.2
+          kube_context: kostis-demo@FirstKubernetes
+          repository: r.cfcr.io/kostis-codefresh/my-flask-app
+          custom_values:
+            - 'buildID=${{CF_BUILD_ID}}'
+            - 'image_pullPolicy=Always'
+            - 'image_tag=${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_SHORT_REVISION}}'
+            - 'image_pullSecret=codefresh-generated-r.cfcr.io-cfcr-default
 {% endraw %}
 {% endhighlight %}
 
-The extra lines that start with `VALUE` override the [default chart values](https://github.com/codefresh-contrib/python-flask-sample-app/blob/with-helm/charts/python/values.yaml). The underscores are replaced with dots.
+The `custom_values` override the [default chart values](https://github.com/codefresh-contrib/python-flask-sample-app/blob/with-helm/charts/python/values.yaml). The underscores are replaced with dots.
 Here we override the name of tag (to match the Docker image built in the previous step) and the pull policy.
 
 You can see the value replacements in the Helm logs inside the pipeline:
@@ -225,7 +232,7 @@ Codefresh allows you to do this right from the GUI. Select the History tab in th
 Codefresh includes a [built-in Helm repository]({{site.baseurl}}/docs/new-helm/managed-helm-repository/) that comes integrated to all accounts. You can use this repository
 to store charts like any other public Helm repository. It is also possible to manually deploy applications from your repository.
 
-To store a Helm chart, first of all you need to import the shared configuration that defines the integrated Helm Repository.
+To store a Helm chart, first of all you need to import the shared configuration that defines the integrated Helm Repository, or, you can define the repository URL directly.
 
 Click the *Variables* taskbar in the right of the pipeline editor build and select *Import from shared configuration*. Find the details
 of the integrated Helm repository.
@@ -251,31 +258,32 @@ stages:
   - package
   - deploy  
 steps:
-  main_clone:
+  clone:
     title: Cloning main repository...
     type: git-clone
-    repo: '${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}'
-    revision: '${{CF_REVISION}}'
+    arguments:
+      repo: '${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}'
+      revision: '${{CF_REVISION}}'
     stage: checkout
   BuildingDockerImage:
     title: Building Docker Image
     type: build
-    image_name: my-flask-app
-    working_directory: ./
-    tag: '${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_SHORT_REVISION}}'
-    dockerfile: Dockerfile
+    working_directory: ${{clone}}
+    arguments:
+      image_name: my-flask-app
+      tag: '${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_SHORT_REVISION}}'
+      dockerfile: Dockerfile
     stage: package
-  StoreChart:
-    title: Storing Helm chart
-    stage: deploy
-    image: 'codefresh/cfstep-helm:3.0.3'
-    environment:
-      - ACTION=push
-      - CHART_REF=charts/helm-example 
+  deploy:
+    type: helm
+    arguments:
+      action: push
+      chart_name: /charts/helm-example
+      chart_repo_url: 'cm://h.cfcr.io/useraccount/default'
 {% endraw %}
 {% endhighlight %}
 
-We use the same `cfstep-helm` as before. But this time we define `push` as the action (the default is deploying a helm package). In this pipeline we only store the Helm chart in the internal repository.
+We use the same `helm` step as before. But this time we define `push` as the action (the default is deploying a helm package). In this pipeline we only store the Helm chart in the internal repository.
 
  {% include 
 image.html 
@@ -303,7 +311,6 @@ There is even an install button if you want to deploy manually the chart. Codefr
 in that case and also select your target cluster.
 
 You can also create a single pipeline that [both stores the chart as well as deploys it in a cluster]({{site.baseurl}}/docs/yaml-examples/examples/helm/).
-
 
 ## What to read next
 

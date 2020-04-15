@@ -87,6 +87,10 @@ steps:
       kube_context: my-demo-k8s-cluster
       custom_values:
         - 'buildID=${{CF_BUILD_ID}}'
+        - 'image_pullPolicy=Always'
+        - 'image_tag=multi-stage'
+        - 'replicaCount=3'
+        - 'image_pullSecret=codefresh-generated-r.cfcr.io-cfcr-default'
 {% endraw %}
 {% endhighlight %}
 
@@ -116,18 +120,6 @@ If you want to run this example yourself, make sure to edit the chart and put yo
 It is recommended to use a Helm repository to store your chart before deploying it. This way you know what is deployed in your clusters
 and you can also reuse charts in other installations.
 
-First of all you need to import in your pipeline from the [shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/) the settings for the internal Helm repository (or any other external repository that you have setup in Codefresh).
-This will make available the internal Helm repository to your pipeline so that it can push/pull Helm charts from it.
-
-{% include image.html 
-lightbox="true" 
-file="/images/examples/helm/import-helm-configuration.png" 
-url="/images/examples/helm/import-helm-configuration.png" 
-alt="Using the default Helm repository in a Pipeline"
-caption="Using the default Helm repository in a Pipeline"
-max-width="40%" 
-%}
-
 Once that is done you can change your pipeline to also store the chart first and *then* deploying it.
 
 
@@ -147,45 +139,54 @@ Here is the whole pipeline:
 {% raw %}
 version: '1.0'
 stages:
-  - prepare   
+  - prepare
   - build
+  - store
   - deploy
 steps:
-  main_clone:
+  clone:
     title: Cloning main repository...
     stage: prepare
     type: git-clone
-    repo: 'codefresh-contrib/helm-sample-app'
-    revision: master
-    git: github    
-  MyAppDockerImage:
+    arguments:
+      repo: codefresh-contrib/helm-sample-app
+      revision: master
+      git: github
+  build:
     title: Building Docker Image
     stage: build
     type: build
-    image_name: helm-sample-app-go
-    working_directory: ./
-    tag: 'multi-stage'
-    dockerfile: Dockerfile
-  StoreChart:
-    title: Storing Helm chart
+    working_directory: ./helm-sample-app
+    arguments:
+      image_name: helm-sample-app-go
+      tag: multi-stage
+      dockerfile: Dockerfile
+  store:
+    title: Storing Helm Chart
+    type: helm
+    stage: store
+    working_directory: ./helm-sample-app
+    arguments:
+      action: push
+      chart_name: charts/helm-example
+      chart_repo_url: 'cm://h.cfcr.io/anna-codefresh/default'
+      kube_context: my-demo-k8s-cluster
+  deploy:
+    type: helm
     stage: deploy
-    image: 'codefresh/cfstep-helm:3.0.3'
-    environment:
-      - ACTION=push
-      - CHART_REF=charts/helm-example    
-  DeployMyChart:
-    image: 'codefresh/cfstep-helm:3.0.3'
-    title: Deploying Helm chart
-    stage: deploy
-    environment:
-      - CHART_REF=charts/helm-example
-      - RELEASE_NAME=my-go-chart-prod
-      - KUBE_CONTEXT=my-demo-k8s-cluster
-      - VALUE_image_pullPolicy=Always
-      - VALUE_image_tag='multi-stage'
-      - VALUE_replicaCount=3
-      - VALUE_buildID='${{CF_BUILD_ID}}'
-      - VALUE_image_pullSecret=codefresh-generated-r.cfcr.io-cfcr-default
+    working_directory: ./helm-sample-app
+    arguments:
+      action: install
+      chart_name: charts/helm-example
+      release_name: my-go-chart-prod
+      helm_version: 3.0.2
+      kube_context: my-demo-k8s-cluster
+      custom_values:
+        - 'buildID=${{CF_BUILD_ID}}'
+        - 'image_pullPolicy=Always'
+        - 'image_tag=multi-stage'
+        - 'replicaCount=3'
+        - 'image_pullSecret=codefresh-generated-r.cfcr.io-cfcr-default'
 {% endraw %}
 {% endhighlight %}
 
