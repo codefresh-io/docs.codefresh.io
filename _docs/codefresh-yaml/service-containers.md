@@ -33,7 +33,7 @@ steps:
 {% endraw %}      
 {% endhighlight %}
 
-This pipeline will run integration tests during the freestype step called `my_integration_tests` and at that point a Redis instance will be available at hostname `my-redis-db-host` and port 6479. Note how in this example, the service container is placed at the root of the pipeline (as opposed to inside a specific step).  This ensures that the Redis instance is running for [the duration of the pipeline]({{site.baseurl}}/docs/codefresh-yaml/service-containers/#running-services-for-the-duration-of-the-pipeline).
+This pipeline will run integration tests during the freestyle step called `my_integration_tests` and at that point a Redis instance will be available at hostname `my-redis-db-host` and port 6479. Note how in this example, the service container is placed at the root of the pipeline (as opposed to inside a specific step).  This ensures that the Redis instance is running for [the duration of the pipeline]({{site.baseurl}}/docs/codefresh-yaml/service-containers/#running-services-for-the-duration-of-the-pipeline).
 
 ## Launching multiple sidecar containers
 
@@ -154,7 +154,7 @@ This pipeline:
 
 1. Starts a single Redis instance
 1. Saves some data in the first step on the pipeline
-1. Runs an unrelated step (that itself is not using the redis instace)
+1. Runs an unrelated step (that itself is not using the redis instance)
 1. Reads the data saved in the third steps
 
 If you run this pipeline you will see that that data read in the third step of the pipeline was the same one as the data saved in the first step.
@@ -261,7 +261,7 @@ steps:
 {% endraw %}      
 {% endhighlight %}
 
-Note that in this case the `docker-compose.yml` file must mention [speficic images](https://docs.docker.com/compose/compose-file/#image) (and not use [build propertes](https://docs.docker.com/compose/compose-file/#build)).
+Note that in this case the `docker-compose.yml` file must mention [specific images](https://docs.docker.com/compose/compose-file/#image) (and not use [build properties](https://docs.docker.com/compose/compose-file/#build)).
 
 
 ## Launching a custom service
@@ -305,7 +305,7 @@ steps:
 
 Here a Dockerfile for a backend application is built on the spot and then is launched as sidecar container in the next step (with a hostname of `my_backend_app`). Notice that the `image` property in the sidecar service actually refers to a [Codefresh variable]({{site.baseurl}}/docs/codefresh-yaml/variables/) that holds the name of the build step.
 
-We then run a `curl` command against the sidecar container to verify the correct health of the application. This is a great way to run integration tests against multilple microservices.
+We then run a `curl` command against the sidecar container to verify the correct health of the application. This is a great way to run integration tests against multiple micro-services.
 
 
 ## Checking readiness of a service
@@ -412,7 +412,7 @@ In summary `readiness` make sure that your services are actually up before you u
 A very common scenario when using databases in integration tests is the need to preload some test data in the database.
 While you could do that in a normal pipeline step, sidecar services have a special `setup` block for this purpose. This way not only you can make sure that the database is up (using the `readiness` property explained in the previous section) but also that it is preloaded with the correct data.
 
-To use this capabily add a `setup` block in your pipeline service container:
+To use this capability add a `setup` block in your pipeline service container:
 
  `codefresh.yml`
 {% highlight yaml %}
