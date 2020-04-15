@@ -16,6 +16,7 @@ Recent Codefresh updates:
 - New variable `CF_BRANCH_TAG_NORMALIZED_LOWER_CASE` - [documentation]({{site.baseurl}}/docs/codefresh-yaml/variables/#system-provided-variables)
 - Trigger a Kubernetes Deployment from a Dockerhub Push Event - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/trigger-a-k8s-deployment-from-docker-registry/)
 - Uploading or Downloading from a Google Storage Bucket - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/uploading-or-downloading-from-gs/)
+- Use Github actions no longer requires a Registry - [documentation]({{site.baseurl}}/docs/integrations/github-actions/#how-it-works)
 
 ### March 2020
 
