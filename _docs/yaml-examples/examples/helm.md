@@ -120,7 +120,19 @@ If you want to run this example yourself, make sure to edit the chart and put yo
 It is recommended to use a Helm repository to store your chart before deploying it. This way you know what is deployed in your clusters
 and you can also reuse charts in other installations.
 
-Once that is done you can change your pipeline to also store the chart first and *then* deploying it.
+First of all you need to import in your pipeline from the [shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/) the settings for the internal Helm repository (or any other external repository that you have setup in Codefresh).
+ This will make available the internal Helm repository to your pipeline so that it can push/pull Helm charts from it.
+
+ {% include image.html 
+ lightbox="true" 
+ file="/images/examples/helm/import-helm-configuration.png" 
+ url="/images/examples/helm/import-helm-configuration.png" 
+ alt="Using the default Helm repository in a Pipeline"
+ caption="Using the default Helm repository in a Pipeline"
+ max-width="40%" 
+ %}
+
+Once that is done you can change your pipeline to also store the chart first and *then* deploy it.
 
 
 {% include image.html 
