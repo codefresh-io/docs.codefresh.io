@@ -266,49 +266,61 @@ This is the pipeline definition:
 {% raw %}
 version: '1.0'
 stages:
+  - checkout
   - build
   - test
-  - deploy
 steps:
   clone:
     title: Cloning main repository...
+    stage: checkout
     type: git-clone
-    repo: 'codefresh-contrib/python-flask-sampleapp'
-    revision: with-helm
-    git: github  
+    arguments:
+      repo: 'codefresh-contrib/python-flask-sample-app'
+      revision: with-helm
+      git: github  
   MyAppDockerImage:
     title: Building Docker Image
     stage: build
     type: build
-    image_name: kostis-codefresh/python-flask-sampleapp
-    working_directory: ./
-    tag: '${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_SHORT_REVISION}}'
-    dockerfile: Dockerfile
+    working_directory: '${{clone}}'
+    arguments:
+      image_name: kostis-codefresh/python-flask-sample-app
+      tag: 'master'
+      dockerfile: Dockerfile
   MyUnitTests:
     title: Running Unit tests
     stage: test
-    image: ${{MyAppDockerImage}}
-    commands: 
-      - python setup.py test   
+    type: freestyle
+    working_directory: '${{clone}}'
+    arguments:
+      image: ${{MyAppDockerImage}}
+      commands: 
+        - python setup.py test
   StoreChart:
-    title: Storing Helm chart
-    stage: deploy
-    image: 'codefresh/cfstep-helm:3.0.3'
-    environment:
-      - ACTION=push
-      - CHART_REF=charts/python    
+    title: Storing Helm Chart
+    type: helm
+    stage: store
+    working_directory: ./python-flask-sample-app
+    arguments:
+      action: push
+      chart_name: charts/python
+      chart_repo_url: 'cm://h.cfcr.io/anna-codefresh/default'
+      kube_context: kostis-demo@FirstKubernetes
   DeployMyChart:
-    image: 'codefresh/cfstep-helm:3.0.3'
-    title: Deploying Helm chart
-    stage: deploy
-    environment:
-      - CHART_REF=charts/python
-      - RELEASE_NAME=mypython-chart-prod
-      - KUBE_CONTEXT=kostis-demo@FirstKubernetes 
-      - VALUE_image_pullPolicy=Always
-      - VALUE_image_tag='${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_SHORT_REVISION}}'
-      - VALUE_buildID='${{CF_BUILD_ID}}'
-      - VALUE_image_pullSecret=codefresh-generated-r.cfcr.io-cfcr-default  
+      type: helm
+      stage: deploy
+      working_directory: ./python-flask-sample-app
+      arguments:
+        action: install
+        chart_name: charts/python
+        release_name: my-python-chart
+        helm_version: 3.0.2
+        kube_context: kostis-demo@FirstKubernetes
+        custom_values:
+          - 'buildID=${{CF_BUILD_ID}}'
+          - 'image_pullPolicy=Always'
+          - 'image_tag=master'
+          - 'image_pullSecret=codefresh-generated-r.cfcr.io-cfcr-default'
 {% endraw %}
 {% endhighlight %}
 
