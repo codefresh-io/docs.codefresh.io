@@ -87,7 +87,7 @@ steps:
       type: gcb
       arguments:
         cache:
-          repo: "my-golang-image-cache/kaniko-cache"
+          repo: "my-kaniko-cache"
           ttl: "10h"
 {% endraw %}            
 {% endhighlight %}
@@ -140,7 +140,7 @@ steps:
       type: gcb
       arguments:
         cache:
-          repo: "my-golang-image-cache/kaniko-cache"
+          repo: "my-kaniko-cache"
           ttl: "10h"
 {% endraw %}            
 {% endhighlight %}
@@ -177,7 +177,7 @@ steps:
       arguments:
         google_app_creds: '${{G_CREDS_B64}}'
         cache:
-          repo: "my-golang-image-cache/kaniko-cache"
+          repo: "my-kaniko-cache"
           ttl: "10h"
 {% endraw %}            
 {% endhighlight %}
