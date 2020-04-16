@@ -187,6 +187,7 @@ deploy:
 Notes:
 - Assuming a git repository with the Helm chart files was cloned as a part of the pipeline.
 - The Git repository contains the chart files under the `chart` directory.
+- `chart_repo_url` is optional. If a [Helm repository configuration](#step-3---import-the-helm-configuration-in-your-pipeline-definition) is attached to the pipeline, this setting is ignored.
 
 ### Example: Authenticating only
 
@@ -304,7 +305,6 @@ steps:
     arguments:
       action: push
       chart_name: charts/python
-      chart_repo_url: 'cm://h.cfcr.io/anna-codefresh/default'
       kube_context: kostis-demo@FirstKubernetes
   DeployMyChart:
       type: helm

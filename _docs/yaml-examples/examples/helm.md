@@ -169,7 +169,6 @@ steps:
     arguments:
       action: push
       chart_name: charts/helm-example
-      chart_repo_url: 'cm://h.cfcr.io/anna-codefresh/default'
       kube_context: my-demo-k8s-cluster
   deploy:
     type: helm

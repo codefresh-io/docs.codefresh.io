@@ -279,7 +279,6 @@ steps:
     arguments:
       action: push
       chart_name: /charts/helm-example
-      chart_repo_url: 'cm://h.cfcr.io/useraccount/default'
 {% endraw %}
 {% endhighlight %}
 
