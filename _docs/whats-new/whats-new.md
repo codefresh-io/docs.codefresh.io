@@ -18,6 +18,7 @@ Recent Codefresh updates:
 - Trigger a Kubernetes Deployment from a Dockerhub Push Event - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/trigger-a-k8s-deployment-from-docker-registry/)
 - Uploading or Downloading from a Google Storage Bucket - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/uploading-or-downloading-from-gs/)
 - Use Github actions no longer requires a Registry - [documentation]({{site.baseurl}}/docs/integrations/github-actions/#how-it-works)
+- Alternative debugging console - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/debugging-pipelines/#using-the-alternative-debug-window)
 
 ### March 2020
 
