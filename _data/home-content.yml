@@ -212,6 +212,9 @@
     localurl: /docs/integrations/jira-integration/
   - title: Google Marketplace Installation
     localurl: /docs/integrations/google-marketplace/
+  - title: Google Cloud Builder
+    new: true
+    localurl: /docs/integrations/gcloud-builder/    
   - title: Codefresh API
     localurl: /docs/integrations/codefresh-api/
   - title: Codefresh CLI

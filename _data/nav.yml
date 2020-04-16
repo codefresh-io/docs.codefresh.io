@@ -384,6 +384,8 @@
       url: "/jira-integration"
     - title: Jenkins Integration
       url: "/jenkins-integration"
+    - title: Google Cloud builder
+      url: "/gcloud-builder"
     - title: Google Marketplace Installation
       url: "/google-marketplace"
     - title: Codefresh API
