@@ -11,6 +11,7 @@ Recent Codefresh updates:
 ### April 2020
 
 - Helm release text message - [documentation]({{site.baseurl}}/docs/new-helm/helm-releases-management/#showing-an-upgrade-message)
+- Integration with Google Cloud Build - [documentation]({{site.baseurl}}/docs/integrations/gcloud-builder/)
 - Deploy to Heroku - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/deploy-to-heroku/)
 - Scala: Hello World (updated) - [documentation]({{site.baseurl}}/docs/learn-by-example/scala/scala-hello-world/)
 - New variable `CF_BRANCH_TAG_NORMALIZED_LOWER_CASE` - [documentation]({{site.baseurl}}/docs/codefresh-yaml/variables/#system-provided-variables)
