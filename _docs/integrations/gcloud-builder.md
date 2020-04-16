@@ -6,45 +6,93 @@ group: integrations
 toc: true
 ---
 
-dfdfdf
+Google Cloud builder is an online service that allows you to build Docker images using the Google infrastructure and also push them to the Google Cloud registry.
+
+You can also use Cloud builder in a Codefresh pipeline in place of the [normal build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/). This way you can take advantage of the Cloud builder in your Codefresh pipelines, but still push to other registries that are connected to Codefresh (and not just GCR).
 
 
 ## Prerequisites
 
-sdsd
+In order to use the Cloud builder service in your Codefresh pipeline you need
+
+1. A free Dockerhub account and [Dockerhub connected to Codefresh]({{site.baseurl}}/docs/docker-registries/external-docker-registries/docker-hub/).
+1. A Google Cloud subscription and a [service account for the Cloud builder service](https://cloud.google.com/cloud-build/docs/securing-builds/set-service-account-permissions).
+
+Save your service account as a JSON file and make sure you select at least the [following roles](https://cloud.google.com/container-registry/docs/access-control):
+
+* Cloud storage Admin
+* Storage Admin
+* Storage Object Viewer
+* Storage Object Creator
+
+You will use this JSON file either in the usual way of integration a [Google Docker registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/google-container-registry/) in Codefresh or directly in a pipeline as we will see later.
 
 ## How it works
 
-Codefresh offers a github-action-to-codefresh step converter. This converter has two functions
+The Google Cloud builder integration/authentication can be used in the following ways:
 
-1. When you create your pipeline it will analyze the Github action and try to find what arguments it requires. You must then fill the values needed by yourself
-1. When the pipeline runs, it will automatically find the Dockerfile of the Github action, build it and make available the docker image in any subsequent step in the same pipeline.
+1. Authentication will be retrieved from the GCR integration in your Codefresh account, and the resulting Docker image will also be pushed to GCR
+1. Authentication will be retrieved from the GCR integration in your Codefresh account but the resulting Docker image will be pushed to any other [external registry connected to Codefresh]({{site.baseurl}}/docs/docker-registries/external-docker-registries/)
+1. Authentication will be defined in the pipeline itself, and the resulting image can be pushed to any registry connected to Codefresh
 
-All this process is automatic. You just need to make sure that all arguments/inputs of the Github action as provided using [pipeline variables]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#creating-new-pipelines), [shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/) or any other standard mechanism you already use in Codefresh.
+In the first two cases, you will enter your service account file centrally in the GCR integration screen and then any pipeline can authenticate to Google Cloud builder without any further configuration.
 
-## Inserting a Github action in Codefresh pipeline
-
-[Create a Codefresh pipeline]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#creating-new-pipelines) by visiting the pipeline editor. On the right hand panel in the step tab, search for `actions`.
-
-{% include image.html 
-lightbox="true" 
-file="/images/integrations/github-actions/github-action-step-browser.png" 
-url="/images/integrations/github-actions/github-action-step-browser.png"
-max-width="50%"
-caption="Step browser"
-alt="Step browser"
+{% 
+	include image.html 
+	lightbox="true" 
+	file="/images/artifacts/registry/add-gcr-registry.png" 
+	url="/images/220c472-add-gcr-new.png" 
+	alt="Using the JSON service account in Codefresh" 
+	caption="Using the JSON service account in Codefresh"
+	max-width="50%" 
 %}
 
-From the result choose the *Github actions* step with the green check mark. From the dialog that will appear you will see a browser for Github actions. Scroll down to find the Github action that you want to use or enter a keyword to filter the list
+
+
+## Pushing to GCR using Google Cloud builder
+
+In the most straightforward scenario you want to create a Docker image with Google Cloud builder and also push to GCR.
 
 {% include image.html 
 lightbox="true" 
-file="/images/integrations/github-actions/select-github-action.png" 
-url="/images/integrations/github-actions/select-github-action.png"
+file="/images/integrations/gcloud-builder/snyk-action-arguments.png" 
+url="/images/integrations/gcloud-builder/snyk-action-arguments.png"
 max-width="70%"
-caption="Select Github action"
-alt="Select Github action"
+caption="Using Google cloud builder in Codefresh"
+alt="Using Google cloud builder in Codefresh"
 %}
+
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+steps:
+  main_clone:
+    title: Cloning main repository...
+    type: git-clone
+    repo: 'codefresh-contrib/golang-sample-app'
+    revision: master
+    git: github
+  MyAppDockerImage:
+    title: Building Docker Image
+    type: build
+    image_name: my-golang-image
+    working_directory: ./
+    tag: from-cloud-build
+    registry: gcr
+    dockerfile: Dockerfile.multistage
+    provider:
+      type: gcb
+      arguments:
+        cache:
+          repo: "my-golang-image-cache/kaniko-cache"
+          ttl: "10h"
+{% endraw %}            
+{% endhighlight %}
+
+
+
+[
 
 Then click on the Github action that you want to use in your pipeline. On the right hand side Codefresh will present that [YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)  step that you need to insert in your pipeline. 
 
