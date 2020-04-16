@@ -285,7 +285,19 @@ At that start of Phase B (1st April 2020) Codefresh will offer the following new
 
 You can find all these settings in the [Migration dashboard](https://g.codefresh.io/account-admin/account-conf/cfcr-deprecation). You need to be a Codefresh administrator to access the dashboard.
 
+{% 
+  include image.html 
+  lightbox="true" 
+  file="/images/artifacts/cfcr/build-enhancements.png" 
+  url="/images/artifacts/cfcr/build-enhancements.png" 
+  alt="New Image and Build enhancements" 
+  caption="New Image and Build enhancements" 
+  max-width="50%" 
+%}
+
 From the dashboard you can change all settings (and even revert them back) and see if your pipelines are ready. You can also "simulate" the removal of the Codefresh registry (or set it read-only) in advance, and see how you will be affected when the actual removal happens.
+
+Specifically for the new Build Step, you can also enable it on a specific pipeline with the `build_version` property (see the next section for examples).
 
 ### Using a default registry for pipelines
 
@@ -342,6 +354,37 @@ We are also adding the ability to create multiple tags in the build step. Theref
 This way you get maximum flexibility on what build and push steps are doing in your pipelines.
 
 >It is important to notice that if you haven't set a default registry on your Codefresh account, or define a specific registry in the build step itself, the pipeline doesn't know where to push the created docker image.
+
+### Using the new build step on a specific pipeline
+
+Instead of enabling globally the new build step on your account, you can also enable it on a specific pipeline (and keep all other pipelines with the previous behavior) by using the `build_version` property in the root of the pipeline:
+
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+build_version: 'v2'
+steps:
+  main_clone:
+    title: Cloning main repository...
+    type: git-clone
+    repo: 'codefreshdemo/cf-example-build-and-push'
+    revision: 'master'
+    git: github
+  build_my_app:
+    title: Building Node.Js Docker Image
+    type: build
+    image_name: my-node-js-app
+    working_directory: '.'
+    tag: 'master'
+    dockerfile: Dockerfile
+    registry: 'gcr'
+
+{% endraw %}
+{% endhighlight %}
+
+
+This pipeline is able to use the new `registry` property because we declare at the root of the pipeline that the enhanced version of the build step will be used.
+
 
 ### Using the new Docker image dashboard/API
 
