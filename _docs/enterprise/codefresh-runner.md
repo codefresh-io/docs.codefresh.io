@@ -142,9 +142,9 @@ spec:
     - name: https_proxy
       value: http://<ip of proxy server>:port
     - name: no_proxy
-      value: localhost, 127.0.0.1, <local_ip_of_machine>
+      value: localhost,127.0.0.1,<local_ip_of_machine>
     - name: NO_PROXY
-      value: localhost, 127.0.0.1, <local_ip_of_machine>
+      value: localhost,127.0.0.1,<local_ip_of_machine>
 {% endraw %}
 {% endhighlight %}
 
