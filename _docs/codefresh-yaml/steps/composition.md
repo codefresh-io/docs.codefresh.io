@@ -241,6 +241,45 @@ steps:
 In this composition a Java application is launched at `app:8080` and then a second image is used for integration tests that target that URL (passed as a parameter to Maven).
 
 The `wait-for-it.sh` script will make sure that the Java application is truly up before the tests are started. Notice that in the example above the script is included in the testing image (created by `Dockerfile.testing`)
+
+## Using public Docker images in a composition
+
+It is important to notice that Docker images used in a composition (both as services and candidates) will be looked from your connected registries first before looking at Dockerhub:
+
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: "1.0"
+steps:
+  my_composition:
+    type: composition
+    title: Sample composition
+    composition:
+      version: '2'
+      services:
+        my_service:
+          image: mysql
+          ports:
+            - 3306
+    composition_candidates:
+      my_test_service:
+        image: alpine
+        working_dir: /root
+        command: 'pwd'
+
+{% endraw %}
+{% endhighlight %}
+
+In the example above if you already have two images in your private registries named `mysql` and `alpine`, then *THEY* will be used instead of the respective images in Dockerhub.
+
+You can see which images are used in the logs of the builds:
+
+```
+Running composition step: Sample composition                                                                                              
+Pulling kostisazureregistry.azurecr.io/mysql@sha256:1ee5515fed3dae4f13d0f7320e600a38522fd7e510b225e68421e1f90                      
+Pulling kostisazureregistry.azurecr.io/alpine@sha256:eddb7866364ec96861a7eb83ae7977b3efb98e8e978c1c9277262d327                     
+```
+
      
 ## Accessing your project folder from a composition
 
