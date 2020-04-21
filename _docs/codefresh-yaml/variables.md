@@ -171,13 +171,18 @@ When a pull request is closed in GitHub, the following variables are also availa
 
 ## User Provided Variables
 
-User provided variables can be defined at 4 levels:
-1. Freestyle Step Definition (using the `environment` field)
-1. Pipeline Execution (after clicking the "Build" button, open the "Advanced options" section)
-1. Pipeline Definition (under "Environment variables" section in the pipeline view)
-1. [Shared Configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/) (defined under your account settings, and used using the "Import from shared configuration" button under the "Environment Variables" section in the pipeline view)
+User provided variables can be defined at 6 levels:
 
-The options are listed in order of importance, so in case of multiple variables defined at different location with the same name, the order of overriding will be as listed here.
+1. Manually within a step using the [export](http://linuxcommand.org/lc3_man_pages/exporth.html) command or in any **subsequent** step with the [cf_export]({{site.baseurl}}/docs/codefresh-yaml/variables/#using-cf_export-command) command
+1. [Freestyle Step Definition]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/#examples) (using the `environment` field)
+1. Specific build Execution (after clicking the "Build" button open the "Build Variables" section, or use the [CLI]({{site.baseurl}}/docs/integrations/codefresh-api/#example---triggering-pipelines))
+1. Pipeline Definition (under "Environment variables" section in the [pipeline view]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#creating-new-pipelines))
+1. [Shared Configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/) (defined under your account settings, and used using the "Import from shared configuration" button under the "Environment Variables" section in the pipeline view)
+1. Variables defined on the Project level (Under the variables tab on any project view)
+
+The options are listed in order of priority (from the most important to the least important), so in case of multiple variables defined at different locations with the same name, the order of overriding will be as listed here.
+
+For example if a pipeline variable is defined both in project level and as an execution parameter of a specific build, then the final result will be the value defined as a build parameter and the project level variable will not take effect. 
 
 ## Exporting environment variables from a freestyle step
 

@@ -103,7 +103,7 @@ step_name:
 
 
 
-## Examples 
+## Examples
 
 Here are some full pipelines with freestyle steps. Notice that in all cases the pipelines are connected to [git repositories]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-creation-modes)
 so the source code is already checked out and available to all pipeline steps.
