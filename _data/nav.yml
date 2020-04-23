@@ -41,6 +41,8 @@
       url: "/running-pipelines-locally"
     - title: Debugging pipelines
       url: "/debugging-pipelines"
+    - title: Secrets Storage
+      url: "/secrets-store"
 
 - title: Learn by example
   url: "/learn-by-example"
