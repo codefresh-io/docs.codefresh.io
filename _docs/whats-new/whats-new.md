@@ -20,7 +20,7 @@ Recent Codefresh updates:
 - Use Github actions no longer requires a Registry - [documentation]({{site.baseurl}}/docs/integrations/github-actions/#how-it-works)
 - Alternative debugging console - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/debugging-pipelines/#using-the-alternative-debug-window)
 - User variable priority rules - [documentation]({{site.baseurl}}/docs/codefresh-yaml/variables/#user-provided-variables)
-- Secret Storage - [documentation]({{site.baseurl}}/docs/codefresh-yaml/variables/#user-provided-variables)
+- Secret Storage - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/secrets-store/)
 
 ### March 2020
 
