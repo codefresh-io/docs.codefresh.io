@@ -945,6 +945,31 @@ steps:
 
 This was a trivial example, but it clearly demonstrates how a custom step communicates with the rest of the pipeline by getting input from the previous steps and preparing output for the steps that follow it.
 
+### Exporting parameters manually inside a plugin
+
+Normally in a pipeline you can either use the [cf_export]({{site.baseurl}}/docs/codefresh-yaml/variables/#using-cf_export-command) command or write directly to the [/codefresh/volume/env_vars_to_export]({{site.baseurl}}/docs/codefresh-yaml/variables/#directly-writing-to-the-file) file.
+
+However inside a plugin you can also use the `/meta/env_vars_to_export` file that has the same semantics, but is used for exporting variables in the same scope as the plugin only.
+
+{% highlight yaml %}
+{% raw %}
+  steps:
+    export_my_variable:
+       title: "Exporting custom variable"
+       image: alpine     
+       commands:
+         - echo MY_PLUGIN_VAR=SAMPLE_VALUE >> /meta/env_vars_to_export   
+    read_my_variable:
+       title: "Reading custom variable"
+       image: alpine     
+       commands:
+         - echo $MY_PLUGIN_VAR
+{% endraw %}
+{% endhighlight %}
+
+You can still use `cf_export` command inside the plugin as well (as shown in the previous examples).
+
+
 ### Example with step templating
 
 As an advanced technique, Codefresh allows you to define a custom step using templating instead of fixed YAML. We support templates inside the `spec:` block of a plugin definition by taking advantage of the [Gomplate](https://github.com/hairyhenderson/gomplate) library that offers additional templating functions on top of vanilla [Go templates](https://golang.org/pkg/text/template/).
