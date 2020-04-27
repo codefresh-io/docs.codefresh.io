@@ -10,11 +10,14 @@ Codefresh has added the additional ability to resolve variables storing secrets 
 It allows the user to keep sensitive data on his/her favorite secret-store provider, and for Codefresh to request it during pipeline execution on user's demand.
 Secret-Store is an additional context in Codefresh, which can be created, updated, deleted, etc, using Codefresh CLI: `codefresh create context secret-store --help`. 
 
-At the moment, we only support two types: Kubernetes and Runtime-Kubernetes.
+At the moment, we only support two types: Kubernetes and Runtime-Kubernetes (hybrid deployments).
 
-## Prerequisites
+> Note: This feature is for Enterprise accounts only.
+
+## Prerequisites (for Kubernetes secret store)
 
 - You need to have your Kubernetes cluster [connected to Codefresh]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/).
+(this is only for Kubernetes type secret store, for runtime-kubernetes [hybrid clusters], this is not required)
 
 ## Create a Secret
 
@@ -53,7 +56,7 @@ max-width="80%"
 
 You can toggle between ConfigMap or Secret, and also toggle the accessibility for users on this account.
 
-For **Runtime** secret store, you need to define the following fields:
+For **Runtime** secret store (hybrid deployments), you need to define the following fields:
 
 {% include 
 image.html 
@@ -105,12 +108,15 @@ Where:
 - `$TYPE` is of either `secret` or `configmap`
   - if `secret`, data will be base64 decoded during resolution
   - if `configmap`, data will be replaced as is
-- `$RESOURCE_NAME` is the name of the secret
-- `$RUNTIME_NAME` is the name of the run-time environment to be configured as secret store.  If not set, any runtime-environment will be considered.
+- `$RESOURCE_NAME` is the name of the secret (optional)
+- `$RUNTIME_NAME` is the name of the run-time environment to be configured as secret store.  If not set, *any* runtime-environment will be considered.
 
 ## Usage
 
 The syntax for using the secret is {% raw %}`${{secrets.NAME_IN_CODEFRESH.KEY}}`{% endraw %}.
+
+> Note that if you did not include the resource-name as a part of your secret store context creation, the syntax for using your secret differs slightly:
+The syntax is: {% raw %}${{secrets.NAME_IN_CODEFRESH.RESOURCE-NAME@KEY}}{% endraw %} The previous KEY portion is now made of two parts separated using @, where the left side is the name of the resource in the namespace, and the right side the key in that resource.
 
 To use the secret in your pipeline, you have two options:
 
