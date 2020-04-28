@@ -26,7 +26,7 @@
     localurl: /docs/configure-ci-cd-pipeline/shared-configuration/
   - title: Secrets Storage
     new: true
-    localurl: /docs/configure-ci-cd-pipeline/ssecrets-store
+    localurl: /docs/configure-ci-cd-pipeline/secrets-store/
   - title: Pipeline caching
     localurl: /docs/configure-ci-cd-pipeline/pipeline-caching/
   - title: Public logs and status badges
