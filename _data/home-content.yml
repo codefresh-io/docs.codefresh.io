@@ -24,6 +24,9 @@
     localurl: /docs/configure-ci-cd-pipeline/monitoring-pipelines/
   - title: Shared Configuration
     localurl: /docs/configure-ci-cd-pipeline/shared-configuration/
+  - title: Secrets Storage
+    new: true
+    localurl: /docs/configure-ci-cd-pipeline/ssecrets-store
   - title: Pipeline caching
     localurl: /docs/configure-ci-cd-pipeline/pipeline-caching/
   - title: Public logs and status badges
@@ -90,7 +93,7 @@
   - title: Codefresh private Docker Registry
     localurl: /docs/docker-registries/codefresh-registry/
   - title: Codefresh Registry Deprecation
-    localurl: /docs/docker-registries/cfcr-deprecation/    
+    localurl: /docs/docker-registries/cfcr-deprecation/
   - title: Working with Docker registries
     localurl: /docs/docker-registries/working-with-docker-registries/
   - title: Custom image annotations
@@ -214,7 +217,7 @@
     localurl: /docs/integrations/google-marketplace/
   - title: Google Cloud Builder
     new: true
-    localurl: /docs/integrations/gcloud-builder/    
+    localurl: /docs/integrations/gcloud-builder/
   - title: Codefresh API
     localurl: /docs/integrations/codefresh-api/
   - title: Codefresh CLI
