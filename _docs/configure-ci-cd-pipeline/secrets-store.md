@@ -17,7 +17,7 @@ At the moment, we only support two types: Kubernetes (SAAS version) and Runtime-
 ## Prerequisites (for Kubernetes secret store)
 
 - You need to have your Kubernetes cluster [connected to Codefresh]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/).
-(this is only for Kubernetes type secret store, for runtime-kubernetes [hybrid clusters], this is not required)
+(this is only for Kubernetes type secret store, for runtime-kubernetes [hybrid installation], this is not required)
 
 ## Create a Secret
 
@@ -31,13 +31,13 @@ kubectl create secret generic my-secret --from-literal=key1=supersecret
 kubectl create configmap my-config-map --from-literal=key1=config1
 ```
 
-## Create a Secret Store Context using the Codefresh UI
+## Kubernetes Secret Store (SAAS Version)
+
+### Using the Codefresh UI
 
 On the left-hand panel, navigate to **Account Settings** > **Integrations** > **Secret Store** and select **Configure**.
 
-Click on **Add Provider** and select whether you want a Kubernetes secret store, or a Runtime secret store.
-
-### Kubernetes Secret Store (SAAS Version)
+Click on **Add Provider** and select **Kubernetes secret store**.
 
 For **Kubernetes** secret store, you will need to define out the following fields:
 
@@ -58,29 +58,7 @@ max-width="80%"
 
 You can toggle between ConfigMap or Secret, and also toggle the accessibility for users on this account.
 
-### Runtime Secret Store (Hybrid Installation)
-
-For **Runtime** secret store, you need to define the following fields:
-
-{% include 
-image.html 
-lightbox="true" 
-file="/images/secrets-ui-view2.png" 
-url="/images/secrets-ui-view2.png"
-alt="Runtime Secret Store" 
-caption="Runtime Secret Store" 
-max-width="80%" 
-%}
-
-- Name: a unique name given to your context, which will be referenced in `codefresh.yaml` later.
-- Resource name: the name of the secret
-- Runtime environment: select from the dropdown any [runtime environments you have installed]({{site.baseurl}}/docs/enterprise/codefresh-runner/).
-
-You can toggle between ConfigMap or Secret, and also toggle the accessibility for users on this account.
-
-## Create a Secret Store Context using the Codefresh CLI
-
-### Kubernetes Secret Store (SAAS Version)
+### Using the Codefresh CLI
 
 To create a secret store context for **Kubernetes**, run: 
 
@@ -104,7 +82,33 @@ Where:
   - if `configmap`, data will be replaced as is
 - `$RESOURCE_NAME` is the name of the secret (optional)
 
-### Runtime-Kubernetes Secret Store (Hybrid Installation)
+## Runtime Secret Store (Hybrid Installation)
+
+### Using the Codefresh UI
+
+On the left-hand panel, navigate to **Account Settings** > **Integrations** > **Secret Store** and select **Configure**.
+
+Click on **Add Provider** and select **Runtime secret store**.
+
+For **Runtime** secret store, you need to define the following fields:
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/secrets-ui-view2.png" 
+url="/images/secrets-ui-view2.png"
+alt="Runtime Secret Store" 
+caption="Runtime Secret Store" 
+max-width="80%" 
+%}
+
+- Name: a unique name given to your context, which will be referenced in `codefresh.yaml` later.
+- Resource name: the name of the secret
+- Runtime environment: select from the dropdown any [runtime environments you have installed]({{site.baseurl}}/docs/enterprise/codefresh-runner/).
+
+You can toggle between ConfigMap or Secret, and also toggle the accessibility for users on this account.
+
+### Using the Codefresh CLI
 
 To create a secret store context for **Runtime-Kubernetes** environments ([behind the firewall]({{site.baseurl}}/docs/enterprise/codefresh-runner/)), run:
 
