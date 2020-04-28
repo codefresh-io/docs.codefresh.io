@@ -83,7 +83,9 @@ codefresh replace pipelines kostis-codefresh/trivial-go-web/from-repo -f custom-
 
 You should get a message that your pipeline is updated. This concludes the setup of the pipeline specification. Now you also need to override the clone step of the pipeline itself as explained in the next section.
 
-## Overriding the implicit clone step
+## Overriding the implicit clone step *Deprecated*
+
+*Deprecated*: The information below is only relevant if you are using our old Personal Git Provider system, and not our current one. Therefore, you should only use this for reference when working on old pipelines.
 
 All pipelines in Codefresh that are connected to a git repository have an automatic git clone step defined for them. 
 This clone step will also fetch the code from the branch mentioned in the webhook.
