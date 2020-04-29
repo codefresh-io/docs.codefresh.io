@@ -16,12 +16,12 @@ At the moment, we only support two types: Kubernetes (SAAS version) and Runtime-
 
 ## Prerequisites (for Kubernetes secret store)
 
-- You need to have your Kubernetes cluster [connected to Codefresh]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/).
+You need to have your Kubernetes cluster [connected to Codefresh]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/).
 (this is only for Kubernetes type secret store, for runtime-kubernetes [hybrid installation], this is not required)
 
 ## Create a Secret
 
-- Create your secret in Kubernetes, i.e.
+Create your secret in Kubernetes, i.e.
 
 ```
 kubectl create secret generic my-secret --from-literal=key1=supersecret
