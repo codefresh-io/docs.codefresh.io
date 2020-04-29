@@ -21,6 +21,8 @@ Recent Codefresh updates:
 - Alternative debugging console - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/debugging-pipelines/#using-the-alternative-debug-window)
 - User variable priority rules - [documentation]({{site.baseurl}}/docs/codefresh-yaml/variables/#user-provided-variables)
 - Secret Storage - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/secrets-store/)
+- Run multiple kinds of unit tests using fan-in-fan-out parallel pipeline - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/fan-in-fan-out) 
+
 
 ### March 2020
 

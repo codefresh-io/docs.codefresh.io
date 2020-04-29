@@ -197,6 +197,8 @@
           url: "/run-unit-tests"
         - title: Run Integration Tests
           url: "/run-integration-tests"
+        - title: Fan-in/Fan-out Example with Unit Tests
+          url: "fan-in-fan-out"
     - title: "Databases"
       url: "/examples"
       sub-pages:
