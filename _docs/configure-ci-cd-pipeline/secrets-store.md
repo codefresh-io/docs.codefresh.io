@@ -142,7 +142,7 @@ The syntax is: {% raw %}${{secrets.NAME_IN_CODEFRESH.RESOURCE-NAME@KEY}}{% endra
 
 To use the secret in your pipeline, you have two options:
 
-- Define it as a pipeline variable:
+Define it as a pipeline variable:
 
 {% include 
 image.html 
@@ -168,7 +168,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-- Or use it directly in your yaml
+Or use it directly in your yaml
 
 `codefresh.yaml`
 {% highlight yaml %}
