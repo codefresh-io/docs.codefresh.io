@@ -1,10 +1,29 @@
 ---
-title: "Fan-in-fan-out Pipeline"
+title: "Fan-out-fan-in Pipeline"
 description: "Use parallel mode to fan-in and fan-out your step dependencies"
 group: yaml-examples
 sub_group: examples
 toc: true
 ---
+
+In pipelines, the concept of fan-in/fan-out is depicted in the diagram below.  This pipeline offers parallel sub-flows in a single pipeline.  Fan-out refers to spreading a task to multiple destinations in parallel, and fan-in is the opposite, where we spread multiple different tasks to the same destination.
+
+{% include image.html 
+lightbox="true" 
+file="/images/examples/unit-tests/parallel-pipeline-examples.png" 
+url="/images/examples/unit-tests/parallel-pipeline-examples.png" 
+alt="parallel pipeline diagraam"
+caption="Parallel Mode Diagram"
+max-width="100%" 
+%}
+
+As you can see by the diagram, Step1 fans out to Step2 and Step4 (which run in parallel), while Step3 and Step4 fan-in to Step5.
+
+You can achieve parallelism in your Codefresh pipelines by using the following:
+
+- Simple parallel jobs ([inserting parallel steps into a sequential pipeline]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/#inserting-parallel-steps-in-a-sequential-pipeline))
+- [Full parallel mode]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/#parallel-pipeline-mode)
+- Fan-out/fan-in parallel pipelines, as covered here
 
 ## Prerequisites
 
@@ -24,17 +43,6 @@ file="/images/examples/unit-tests/fan-in-fan-out-pipeline.png"
 url="/images/examples/unit-tests/fan-in-fan-out-pipeline.png" 
 alt="fan-in-fan-out UI pipeline view"
 caption="Codefresh UI Pipeline View"
-max-width="100%" 
-%}
-
-This pipeline offers parallel sub-flows in a single pipeline, as shown in the following diagram:
-
-{% include image.html 
-lightbox="true" 
-file="/images/examples/unit-tests/parallel-pipeline-examples.png" 
-url="/images/examples/unit-tests/parallel-pipeline-examples.png" 
-alt="parallel pipeline diagraam"
-caption="Parallel Mode Diagram"
 max-width="100%" 
 %}
 
