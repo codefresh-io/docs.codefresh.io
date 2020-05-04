@@ -195,7 +195,7 @@ If you want to use  *LocalSSD* in GKE:
 
 *Install runner using GKE Local SSD:*
 ```
-venonactl install [options] --set-value=Storage.LocalVolumeParentDir=/mnt/disks/ssd0/codefresh-volumes \
+venona install [options] --set-value=Storage.LocalVolumeParentDir=/mnt/disks/ssd0/codefresh-volumes \
                             --build-node-selector=cloud.google.com/gke-local-ssd=true
 ```
 
@@ -214,7 +214,7 @@ Notice that builds will be running in a single availability zone, so you must sp
 Install Runner using GKE Disks:
 
 ```
-venonactl install [options] --set-value=Storage.Backend=gcedisk \
+venona install [options] --set-value=Storage.Backend=gcedisk \
                             --set-value=Storage.AvailabilityZone=us-central1-a \
                             --build-node-selector=failure-domain.beta.kubernetes.io/zone=us-central1-a \
                             [--set-file=Storage.GoogleServiceAccount=/path/to/google-service-account.json]
