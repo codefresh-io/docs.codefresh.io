@@ -124,7 +124,7 @@ steps:
 
 This pipeline does the following:
 
-1. Uses a [Deploy step]({{site.baseurl}}/docs/codefresh-yaml/steps/deploy/) to deploy the image to Kubernetes.  The deploy step uses a [Registry trigger](({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/dockerhub-triggers/#create-a-new-dockerhub-trigger)) to kick off the pipeline when the updated image is pushed to the registry.
+1. Uses a [Deploy step]({{site.baseurl}}/docs/codefresh-yaml/steps/deploy/) to deploy the image to Kubernetes.  The deploy step uses a [Registry trigger]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/dockerhub-triggers/#create-a-new-dockerhub-trigger) to kick off the pipeline when the updated image is pushed to the registry.
 
 ## What to read next
 
