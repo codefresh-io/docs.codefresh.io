@@ -257,6 +257,9 @@ You can also promote images from the [manually from the UI]({{site.baseurl}}/doc
 
 If you wish to perform migration of Docker images in a batch manner, you can also use the [migration script offered by Codefresh](https://github.com/codefresh-io/cfcr-migration).
 
+We also offer an automated way to locate all pipelines that still use the Codefresh registry. See our [tool for locating all pipelines](https://github.com/codefresh-io/cfcrmigration)
+ that are affected by the Codefresh registry removal.
+
 
 
 
@@ -270,6 +273,7 @@ Here is a summary of customer actions at the end of 1st April 2020
 * Change all pipeline push steps to use specifically the external Docker registry
 * Promote essential images from the Codefresh Container registry to the external Docker registry
 * No pipeline should push to the Codefresh Container registry.
+* Use the [dedicated script](https://github.com/codefresh-io/cfcrmigration) to detect all pipelines affected by the Codefresh registry
 
 
 ## Phase B Migration actions until 1st July 2020
@@ -405,6 +409,7 @@ Here is a summary of customer actions at the end of 1st July 2020
 * Setup a default registry in your Codefresh account for the registry that is used in push steps as well as caching
 * Decide if you want your build steps to push automatically to the default registry or not
 * Make sure that all your APIs calls or Codefresh CLI invocations mention images with an explicit Docker registry prefix
+* Use the [dedicated script](https://github.com/codefresh-io/cfcrmigration) to detect all pipelines affected by the Codefresh registry
 
 
 ## Phase C Migration actions until 15th July 2020
