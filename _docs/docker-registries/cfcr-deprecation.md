@@ -138,6 +138,7 @@ service:
 {% endhighlight %}
 
 In all these cases, deployment manifests should be changed to mention Docker images that are found in the external Docker registry.
+You can also use the [dedicated script](https://github.com/codefresh-io/cfcrmigration) for the same purpose.
 
 ### Locating images from the Codefresh Container registry in pipelines
 
@@ -212,6 +213,7 @@ In this pipeline the last step is pushing a docker image to the internal Codefre
 
 >Note the name `cfcr` shown above is just a convention. You can find the actual name given to the Codefresh Container Registry in the [Registry settings screen](https://g.codefresh.io/account-admin/account-conf/integration/registry). From the same screen you can also see the name of your external registry
 
+You can also use the [dedicated script](https://github.com/codefresh-io/cfcrmigration) for the same purpose.
 
 ### Promoting images from the Codefresh Container registry to an external ones.
 
