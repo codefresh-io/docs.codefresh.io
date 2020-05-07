@@ -1,15 +1,55 @@
-- title: Getting Started
+- title: Quick Start
   icon: images/home-icons/started.svg
   url: ''
   links:
-  - title: Setup Codefresh Account
+  - title: Create your Codefresh account
     localurl: /docs/getting-started/create-a-codefresh-account/
-  - title: Your first CI/CD pipeline
+  - title: Create your first Pipeline
     localurl: /docs/getting-started/create-a-basic-pipeline/
   - title: Frequently Asked Questions
     localurl: /docs/getting-started/faq/
-  - title: Invite Collaborators
-    localurl: /docs/accounts/invite-your-team-member/
+- title: Examples by Language
+  icon: images/home-icons/tutorial.svg
+  url: ''
+  links:
+    - title: Go
+      localurl: /docs/learn-by-example/golang/
+    - title: Java
+      localurl: /docs/learn-by-example/java/
+    - title: Node.js
+      localurl: /docs/learn-by-example/nodejs/
+    - title: Php
+      localurl: /docs/learn-by-example/php/
+    - title: Python
+      localurl: /docs/learn-by-example/python/
+    - title: Ruby On Rails
+      localurl: /docs/learn-by-example/ruby/
+    - title: Scala
+      localurl: /docs/learn-by-example/scala/scala-hello-world/
+    - title: C/C++
+      localurl: /docs/learn-by-example/cc/
+    - title: C# (.NET core)
+      localurl: /docs/learn-by-example/dotnet/
+    - title: Android (Mobile)
+      localurl: /docs/learn-by-example/mobile/android/
+- title: CI/CD Concepts
+  icon:
+  url: ''
+  links:
+  - title: Trunk-based Developments
+    localurl:
+  - title: Docker support
+    localurl:
+  - title: Handling Pull Requests
+    localurl:
+  - title: Testing
+    localurl:
+  - title: Security
+    localurl:
+  - title: Production & Staging Environments
+    localurl:
+  - title: Complex workflows
+    localurl:
 - title: Pipelines
   icon: images/home-icons/pipeline.svg
   url: ''
@@ -24,9 +64,6 @@
     localurl: /docs/configure-ci-cd-pipeline/monitoring-pipelines/
   - title: Shared Configuration
     localurl: /docs/configure-ci-cd-pipeline/shared-configuration/
-  - title: Secrets Storage
-    new: true
-    localurl: /docs/configure-ci-cd-pipeline/secrets-store/
   - title: Pipeline caching
     localurl: /docs/configure-ci-cd-pipeline/pipeline-caching/
   - title: Public logs and status badges
@@ -36,31 +73,7 @@
   - title: Debugging pipelines
     new: true
     localurl: /docs/configure-ci-cd-pipeline/debugging-pipelines/
-- title: Learn by example
-  icon: images/home-icons/tutorial.svg
-  url: ''
-  links:
-  - title: Go
-    localurl: /docs/learn-by-example/golang/
-  - title: Java
-    localurl: /docs/learn-by-example/java/
-  - title: Node.js
-    localurl: /docs/learn-by-example/nodejs/
-  - title: Php
-    localurl: /docs/learn-by-example/php/
-  - title: Python
-    localurl: /docs/learn-by-example/python/
-  - title: Ruby On Rails
-    localurl: /docs/learn-by-example/ruby/
-  - title: Scala
-    localurl: /docs/learn-by-example/scala/scala-hello-world/
-  - title: C/C++
-    localurl: /docs/learn-by-example/cc/
-  - title: C# (.NET core)
-    localurl: /docs/learn-by-example/dotnet/
-  - title: Android (Mobile)
-    localurl: /docs/learn-by-example/mobile/android/
-- title: Yaml Syntax
+- title: YAML Syntax
   icon: images/home-icons/yaml.svg
   url: ''
   links:
@@ -86,6 +99,54 @@
     localurl: /docs/codefresh-yaml/annotations/
   - title: Examples
     localurl: /docs/yaml-examples/examples/
+- title: Testing
+  icon: images/home-icons/testing.svg
+  url: ''
+  links:
+    - title: Unit tests
+      localurl: /docs/testing/unit-tests/
+    - title: Integration Tests
+      localurl: /docs/testing/integration-tests/
+    - title: Test reports
+      localurl: /docs/testing/test-reports/
+    - title: On-demand Preview environments (Docker swarm)
+      localurl: /docs/getting-started/on-demand-environments/
+    - title: Dynamic preview environments (Kubernetes)
+      localurl: /docs/testing/automatic-preview-environments/
+    - title: Security Scanning
+      localurl: /docs/testing/security-scanning/
+    - title: SonarQube Scanning
+      localurl: /docs/testing/sonarqube-integration/
+- title: Secrets
+  icon: ''
+  url: ''
+  links:
+    - title: With Vault
+      localurl:
+    - title: With Mozilla SOPS
+      localurl:
+    - title: With Vault from Azure, GCP, AWS
+      localurl:
+    - title: Secrets Storage (native)
+      new: true
+      localurl: /docs/configure-ci-cd-pipeline/secrets-store/
+- title: Dashboards
+  icon: ''
+  url: ''
+  links:
+    - title: Helm repository dashboard
+      localurl:
+    - title: Helm release dashboard
+      localurl:
+    - title: Helm promotion dashboard
+      localurl:
+    - title: Kubernetes dashboard
+      localurl:
+    - title: Environments dashboard
+      localurl: /docs/deploy-to-kubernetes/environment-dashboard/
+      new: true
+    - title: Docker image dashboard
+      localurl:
 - title: Artifact Management
   icon: images/home-icons/data.svg
   url: ''
@@ -110,29 +171,6 @@
     localurl: /docs/docker-registries/external-docker-registries/google-container-registry/
   - title: JFrog Bintray.io/Artifactory
     localurl: /docs/docker-registries/external-docker-registries/bintray-io/
-- title: Testing
-  icon: images/home-icons/testing.svg
-  url: ''
-  links:
-  - title: Unit tests
-    localurl: /docs/testing/unit-tests/
-  - title: Integration Tests
-    localurl: /docs/testing/integration-tests/
-  - title: Test reports
-    localurl: /docs/testing/test-reports/
-  - title: Preview environment tutorial
-    localurl: /docs/getting-started/on-demand-environments/
-  - title: Creating compositions
-    localurl: /docs/testing/create-composition/
-  - title: Dynamic preview environments
-    localurl: /docs/testing/automatic-preview-environments/
-  - title: Composition Service Discovery
-    localurl: /docs/testing/composition-service-discovery/
-  - title: Security Scanning
-    localurl: /docs/testing/security-scanning/
-  - title: SonarQube Scanning
-    localurl: /docs/testing/sonarqube-integration/
-
 - title: Kubernetes
   icon: images/home-icons/k8s.svg
   url: ''
@@ -154,7 +192,7 @@
     localurl: "/docs/deploy-to-kubernetes/kubernetes-templating/"
   - title: Run custom kubectl commands
     localurl: "/docs/deploy-to-kubernetes/custom-kubectl-commands/"
-- title: "Helm"
+- title: Helm
   icon: images/home-icons/helm.svg
   url: ''
   links:
@@ -175,7 +213,7 @@
     localurl: /docs/new-helm/custom-helm-uploads/
   - title: Helm Environment Promotion
     localurl: /docs/new-helm/helm-environment-promotion/
-- title: Deployment
+- title: Deployments
   icon: images/home-icons/deployment.svg
   url: ''
   links:
@@ -254,3 +292,10 @@
     localurl: /docs/incubation/osx-ios-builds
   - title: ARM architecture Support
     localurl: /docs/incubation/arm-support
+
+
+
+
+
+  - title: Invite Collaborators
+    localurl: /docs/accounts/invite-your-team-member/
