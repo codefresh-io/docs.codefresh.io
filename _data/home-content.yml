@@ -50,7 +50,6 @@
       localurl: /docs/learn-by-example/dotnet/
     - title: Android (Mobile)
       localurl: /docs/learn-by-example/mobile/android/
-
 - title: Testing
   icon: images/home-icons/testing.svg
   url: ''
@@ -74,9 +73,9 @@
   url: ''
   links:
     - title: With Vault
-      localurl:
+      localurl: /docs/yaml-examples/examples/vault-secrets-in-the-pipeline/
     - title: With Mozilla SOPS
-      localurl:
+      localurl: /docs/yaml-examples/examples/decryption-with-mozilla-sops/
     - title: With Vault from Azure, GCP, AWS
       localurl:
     - title: Secrets Storage (native)
@@ -87,21 +86,21 @@
   url: ''
   links:
     - title: Deploy to Kubernetes (native step)
-      localurl:
+      localurl: /docs/deploy-to-kubernetes/deployment-options-to-kubernetes/
     - title: Deploy to Kubernetes (cf-deploy)
-      localurl:
+      localurl: /docs/deploy-to-kubernetes/kubernetes-templating/#using-the-codefresh-deploy-image
     - title: Deploy to Kubernetes (kubectl)
-      localurl:
+      localurl: /docs/deploy-to-kubernetes/custom-kubectl-commands/
     - title: Deploy with Helm
-      localurl:
+      localurl: /docs/yaml-examples/examples/helm/
     - title: Helm Repository Dashboard
-      localurl:
+      localurl: /docs/new-helm/managed-helm-repository/
     - title: Helm Release Dashboard
-      localurl:
+      localurl: /docs/new-helm/helm-releases-management/
     - title: Helm Promotion Dashboard
-      localurl:
+      localurl: /docs/new-helm/helm-environment-promotion/
     - title: Kubernetes Dashboard
-      localurl:
+      localurl: /docs/deploy-to-kubernetes/manage-kubernetes/#accessing-the-kubernetes-dashboard
     - title: Environments Dashboard
       localurl: /docs/deploy-to-kubernetes/environment-dashboard/
       new: true
@@ -110,42 +109,61 @@
   url: ''
   links:
     - title: Deploy to VM
-      localurl:
+      localurl: /docs/yaml-examples/examples/packer-gcloud/
     - title: Deploy to Nomad
-      localurl:
+      localurl: /docs/docs/yaml-examples/examples/nomad/
     - title: Deploy with Terraform
-      localurl:
+      localurl: /docs/yaml-examples/examples/terraform/
     - title: Deploy with FTP
-      localurl:
+      localurl: /docs/yaml-examples/examples/transferring-php-ftp/
     - title: Deploy with WAR/Tomcat
-      localurl:
+      localurl: /docs/yaml-examples/examples/deploy-to-tomcat-via-scp/
 - title: Administration
-  icon: images/home-icons/integrations.svg
+  icon: ''
   url: ''
   links:
     - title: Installation Methods
+      localurl: /docs/enterprise/installation-security/
+    - title: Codefresh Runner
+    - title: On-prem Installation
+      localurl:
+    - title: AWS Installation
+      localurl: /docs/enterprise/codefresh-runner/#installing-on-aws
+    - title: Gcloud Installation
+      localurl: /docs/enterprise/codefresh-runner/#installing-on-google-kubernetes-engine
+    - title: Azure Installation
       localurl:
     - title: Docker Registry Integration
-      localurl:
+      localurl: /docs/docker-registries/working-with-docker-registries/
     - title: Kubernetes/Helm Integration
       localurl:
     - title: Shared Configuration
-      localurl:
+      localurl: /docs/configure-ci-cd-pipeline/shared-configuration/
     - title: Plugin creation
-      localurl:
+      localurl: /docs/codefresh-yaml/steps/#creating-a-typed-codefresh-plugin
+
+
+
+- title: "Enterprise Features"
+  icon: images/home-icons/enterprise1.svg
+  url: ''
+  links:
+    - title: Installation Options
+      localurl: /docs/enterprise/installation-security
+    - title: Codefresh behind the firewall
+      localurl: /docs/enterprise/behind-the-firewall
     - title: Codefresh Runner
-      - title: On-prem Installation
-        localurl:
-      - title: AWS Installation
-        localurl:
-      - title: Gcloud Installation
-        localurl:
-      - title: Azure Installation
-        localurl:
-
-
-
-
+      localurl: /docs/enterprise/codefresh-runner
+    - title: Enterprise Account Management
+      localurl: /docs/enterprise/ent-account-mng
+    - title: Single Sign on
+      localurl: /docs/enterprise/single-sign-on
+    - title: Access Control
+      localurl: /docs/enterprise/access-control
+    - title: Audit Logs
+      localurl: /docs/enterprise/audit-logs
+    - title: Codefresh hybrid installation (legacy)
+      localurl: /docs/enterprise/codefresh-hybrid
 
 
 
