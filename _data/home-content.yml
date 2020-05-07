@@ -8,7 +8,25 @@
     localurl: /docs/getting-started/create-a-basic-pipeline/
   - title: Frequently Asked Questions
     localurl: /docs/getting-started/faq/
-- title: Examples by Language
+- title: CI/CD Concepts
+  icon:
+  url: ''
+  links:
+    - title: Trunk-based Development
+      localurl:
+    - title: Docker support
+      localurl:
+    - title: Handling Pull Requests
+      localurl:
+    - title: Testing
+      localurl:
+    - title: Security
+      localurl:
+    - title: Production & Staging Environments
+      localurl:
+    - title: Complex workflows
+      localurl:
+- title: Build any language
   icon: images/home-icons/tutorial.svg
   url: ''
   links:
@@ -32,73 +50,7 @@
       localurl: /docs/learn-by-example/dotnet/
     - title: Android (Mobile)
       localurl: /docs/learn-by-example/mobile/android/
-- title: CI/CD Concepts
-  icon:
-  url: ''
-  links:
-  - title: Trunk-based Developments
-    localurl:
-  - title: Docker support
-    localurl:
-  - title: Handling Pull Requests
-    localurl:
-  - title: Testing
-    localurl:
-  - title: Security
-    localurl:
-  - title: Production & Staging Environments
-    localurl:
-  - title: Complex workflows
-    localurl:
-- title: Pipelines
-  icon: images/home-icons/pipeline.svg
-  url: ''
-  links:
-  - title: Introduction to Pipelines
-    localurl: /docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/
-  - title: Creating Pipelines
-    localurl: /docs/configure-ci-cd-pipeline/pipelines/
-  - title: Pipeline triggers
-    localurl: /docs/configure-ci-cd-pipeline/triggers/
-  - title: Monitoring pipelines
-    localurl: /docs/configure-ci-cd-pipeline/monitoring-pipelines/
-  - title: Shared Configuration
-    localurl: /docs/configure-ci-cd-pipeline/shared-configuration/
-  - title: Pipeline caching
-    localurl: /docs/configure-ci-cd-pipeline/pipeline-caching/
-  - title: Public logs and status badges
-    localurl: /docs/configure-ci-cd-pipeline/build-status/
-  - title: Running pipelines locally
-    localurl: /docs/configure-ci-cd-pipeline/running-pipelines-locally/
-  - title: Debugging pipelines
-    new: true
-    localurl: /docs/configure-ci-cd-pipeline/debugging-pipelines/
-- title: YAML Syntax
-  icon: images/home-icons/yaml.svg
-  url: ''
-  links:
-  - title: Pipeline definition
-    localurl: /docs/codefresh-yaml/what-is-the-codefresh-yaml/
-  - title: Pipeline steps
-    localurl: /docs/codefresh-yaml/steps/
-  - title: Pipeline stages
-    localurl: /docs/codefresh-yaml/stages/
-  - title: Variables
-    localurl: /docs/codefresh-yaml/variables/
-  - title: Step conditions
-    localurl: /docs/codefresh-yaml/conditional-execution-of-steps/
-  - title: Service Containers
-    new: true
-    localurl: /docs/codefresh-yaml/service-containers/
-  - title: Parallel Pipelines
-    localurl: /docs/codefresh-yaml/advanced-workflows/
-  - title: Deployment environments
-    new: true
-    localurl: /docs/codefresh-yaml/deployment-environments/
-  - title: Annotations
-    localurl: /docs/codefresh-yaml/annotations/
-  - title: Examples
-    localurl: /docs/yaml-examples/examples/
+
 - title: Testing
   icon: images/home-icons/testing.svg
   url: ''
@@ -130,47 +82,79 @@
     - title: Secrets Storage (native)
       new: true
       localurl: /docs/configure-ci-cd-pipeline/secrets-store/
-- title: Dashboards
-  icon: ''
+- title: Deploy to Kubernetes & Helm
+  icon: images/home-icons/deployment.svg
   url: ''
   links:
-    - title: Helm repository dashboard
+    - title: Deploy to Kubernetes (native step)
       localurl:
-    - title: Helm release dashboard
+    - title: Deploy to Kubernetes (cf-deploy)
       localurl:
-    - title: Helm promotion dashboard
+    - title: Deploy to Kubernetes (kubectl)
       localurl:
-    - title: Kubernetes dashboard
+    - title: Deploy with Helm
       localurl:
-    - title: Environments dashboard
+    - title: Helm Repository Dashboard
+      localurl:
+    - title: Helm Release Dashboard
+      localurl:
+    - title: Helm Promotion Dashboard
+      localurl:
+    - title: Kubernetes Dashboard
+      localurl:
+    - title: Environments Dashboard
       localurl: /docs/deploy-to-kubernetes/environment-dashboard/
       new: true
-    - title: Docker image dashboard
-      localurl:
-- title: Artifact Management
-  icon: images/home-icons/data.svg
+- title: Traditional Deployments (VM)
+  icon: images/home-icons/deployment.svg
   url: ''
   links:
-  - title: Codefresh private Docker Registry
-    localurl: /docs/docker-registries/codefresh-registry/
-  - title: Codefresh Registry Deprecation
-    localurl: /docs/docker-registries/cfcr-deprecation/
-  - title: Working with Docker registries
-    localurl: /docs/docker-registries/working-with-docker-registries/
-  - title: Custom image annotations
-    localurl: /docs/docker-registries/metadata-annotations/
-  - title: Docker registry integration
-    localurl: /docs/docker-registries/external-docker-registries/
-  - title: DockerHub
-    localurl: /docs/docker-registries/external-docker-registries/docker-hub/
-  - title: Amazon Elastic Container Registry
-    localurl: /docs/docker-registries/external-docker-registries/amazon-ec2-container-registry/
-  - title: Azure Container Registry
-    localurl: /docs/docker-registries/external-docker-registries/azure-docker-registry/
-  - title: Google Container Registry
-    localurl: /docs/docker-registries/external-docker-registries/google-container-registry/
-  - title: JFrog Bintray.io/Artifactory
-    localurl: /docs/docker-registries/external-docker-registries/bintray-io/
+    - title: Deploy to VM
+      localurl:
+    - title: Deploy to Nomad
+      localurl:
+    - title: Deploy with Terraform
+      localurl:
+    - title: Deploy with FTP
+      localurl:
+    - title: Deploy with WAR/Tomcat
+      localurl:
+- title: Administration
+  icon: images/home-icons/integrations.svg
+  url: ''
+  links:
+    - title: Installation Methods
+      localurl:
+    - title: Docker Registry Integration
+      localurl:
+    - title: Kubernetes/Helm Integration
+      localurl:
+    - title: Shared Configuration
+      localurl:
+    - title: Plugin creation
+      localurl:
+    - title: Codefresh Runner
+      - title: On-prem Installation
+        localurl:
+      - title: AWS Installation
+        localurl:
+      - title: Gcloud Installation
+        localurl:
+      - title: Azure Installation
+        localurl:
+
+
+
+
+
+
+
+
+
+
+
+
+
 - title: Kubernetes
   icon: images/home-icons/k8s.svg
   url: ''
