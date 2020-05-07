@@ -125,6 +125,9 @@
     - title: Installation Methods
       localurl: /docs/enterprise/installation-security/
     - title: Codefresh Runner
+      localurl: /docs/enterprise/codefresh-runner
+    - title: Hybrid Installation
+      localurl: /docs/enterprise/behind-the-firewall
     - title: On-prem Installation
       localurl:
     - title: AWS Installation
@@ -141,19 +144,6 @@
       localurl: /docs/configure-ci-cd-pipeline/shared-configuration/
     - title: Plugin creation
       localurl: /docs/codefresh-yaml/steps/#creating-a-typed-codefresh-plugin
-
-
-
-- title: "Enterprise Features"
-  icon: images/home-icons/enterprise1.svg
-  url: ''
-  links:
-    - title: Installation Options
-      localurl: /docs/enterprise/installation-security
-    - title: Codefresh behind the firewall
-      localurl: /docs/enterprise/behind-the-firewall
-    - title: Codefresh Runner
-      localurl: /docs/enterprise/codefresh-runner
     - title: Enterprise Account Management
       localurl: /docs/enterprise/ent-account-mng
     - title: Single Sign on
@@ -162,9 +152,99 @@
       localurl: /docs/enterprise/access-control
     - title: Audit Logs
       localurl: /docs/enterprise/audit-logs
-    - title: Codefresh hybrid installation (legacy)
-      localurl: /docs/enterprise/codefresh-hybrid
-
+- title: Integrations
+  icon: images/home-icons/integrations.svg
+  url: ''
+  links:
+    - title: GIT Providers
+      localurl: /docs/integrations/git-providers/
+    - title: Jenkins integration/migration
+      localurl: /docs/integrations/jenkins-integration/
+    - title: Slack integration
+      localurl: /docs/integrations/notifications/slack-integration/
+    - title: Github actions
+      new: true
+      localurl: /docs/integrations/github-actions/
+    - title: Jira integration
+      localurl: /docs/integrations/jira-integration/
+    - title: Google Marketplace Installation
+      localurl: /docs/integrations/google-marketplace/
+    - title: Google Cloud Builder
+      new: true
+      localurl: /docs/integrations/gcloud-builder/
+    - title: Codefresh API
+      localurl: /docs/integrations/codefresh-api/
+    - title: Codefresh CLI
+      url: http://cli.codefresh.io/
+- title: Cloud Support
+  icon: images/home-icons/cloud.png
+  url: ''
+  links:
+    - title: Amazon AWS
+      localurl: /docs/deploy-to-kubernetes/add-kubernetes-cluster/#adding-gke-cluster
+    - title: Amazon EKS
+      localurl: /docs/deploy-to-kubernetes/add-kubernetes-cluster/#adding-eks-cluster
+    - title: Azure
+      localurl: /docs/deploy-to-kubernetes/add-kubernetes-cluster/#adding-aks-cluster
+    - title: Google Cloud Platform
+      localurl: /docs/deploy-to-kubernetes/add-kubernetes-cluster/#adding-gke-cluster
+    - title: Digital Ocean
+      localurl: /docs/deploy-to-kubernetes/add-kubernetes-cluster/#adding-a-digitalocean-cluster
+    - title: IBM Cloud
+      localurl:
+    - title: Stackcloud
+      localurl:
+    - title: Custom Providers
+      localurl: /docs/deploy-to-kubernetes/add-kubernetes-cluster/#adding-any-other-cluster-type-not-dependent-on-any-provider
+- title: Examples
+  icon: ''
+  url: ''
+- title: Reference
+  icon: ''
+  url: ''
+  links:
+    - title: Introduction to Pipelines
+      localurl: /docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/
+    - title: Creating Pipelines
+      localurl: /docs/configure-ci-cd-pipeline/pipelines/
+    - title: Pipeline triggers
+      localurl: /docs/configure-ci-cd-pipeline/triggers/
+    - title: Monitoring pipelines
+      localurl: /docs/configure-ci-cd-pipeline/monitoring-pipelines/
+    - title: Shared Configuration
+      localurl: /docs/configure-ci-cd-pipeline/shared-configuration/
+    - title: Secrets Storage
+      new: true
+      localurl: /docs/configure-ci-cd-pipeline/secrets-store/
+    - title: Pipeline caching
+      localurl: /docs/configure-ci-cd-pipeline/pipeline-caching/
+    - title: Public logs and status badges
+      localurl: /docs/configure-ci-cd-pipeline/build-status/
+    - title: Running pipelines locally
+      localurl: /docs/configure-ci-cd-pipeline/running-pipelines-locally/
+    - title: Debugging pipelines
+      new: true
+      localurl: /docs/configure-ci-cd-pipeline/debugging-pipelines/
+    - title: Pipeline definition
+      localurl: /docs/codefresh-yaml/what-is-the-codefresh-yaml/
+    - title: Pipeline steps
+      localurl: /docs/codefresh-yaml/steps/
+    - title: Pipeline stages
+      localurl: /docs/codefresh-yaml/stages/
+    - title: Variables
+      localurl: /docs/codefresh-yaml/variables/
+    - title: Step conditions
+      localurl: /docs/codefresh-yaml/conditional-execution-of-steps/
+    - title: Service Containers
+      new: true
+      localurl: /docs/codefresh-yaml/service-containers/
+    - title: Parallel Pipelines
+      localurl: /docs/codefresh-yaml/advanced-workflows/
+    - title: Deployment environments
+      new: true
+      localurl: /docs/codefresh-yaml/deployment-environments/
+    - title: Annotations
+      localurl: /docs/codefresh-yaml/annotations/
 
 
 
@@ -238,51 +318,8 @@
   - title: Deploy to Nomad
     localurl: /docs/yaml-examples/examples/nomad/
 
-- title: Integrations
-  icon: images/home-icons/integrations.svg
-  url: ''
-  links:
-  - title: GIT integration
-    localurl: /docs/integrations/git-providers/
-  - title: Jenkins integration/migration
-    localurl: /docs/integrations/jenkins-integration/
-  - title: Slack integration
-    localurl: /docs/integrations/notifications/slack-integration/
-  - title: Github actions
-    new: true
-    localurl: /docs/integrations/github-actions/
-  - title: Jira integration
-    localurl: /docs/integrations/jira-integration/
-  - title: Google Marketplace Installation
-    localurl: /docs/integrations/google-marketplace/
-  - title: Google Cloud Builder
-    new: true
-    localurl: /docs/integrations/gcloud-builder/
-  - title: Codefresh API
-    localurl: /docs/integrations/codefresh-api/
-  - title: Codefresh CLI
-    url: http://cli.codefresh.io/
 
-- title: "Enterprise Features"
-  icon: images/home-icons/enterprise1.svg
-  url: ''
-  links:
-  - title: Installation Options
-    localurl: /docs/enterprise/installation-security
-  - title: Codefresh behind the firewall
-    localurl: /docs/enterprise/behind-the-firewall
-  - title: Codefresh Runner
-    localurl: /docs/enterprise/codefresh-runner
-  - title: Enterprise Account Management
-    localurl: /docs/enterprise/ent-account-mng
-  - title: Single Sign on
-    localurl: /docs/enterprise/single-sign-on
-  - title: Access Control
-    localurl: /docs/enterprise/access-control
-  - title: Audit Logs
-    localurl: /docs/enterprise/audit-logs
-  - title: Codefresh hybrid installation (legacy)
-    localurl: /docs/enterprise/codefresh-hybrid
+
 - title: "Incubation"
   icon: images/home-icons/plugins.svg
   url: ''
