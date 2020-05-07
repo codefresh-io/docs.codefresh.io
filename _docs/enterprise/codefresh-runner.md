@@ -429,14 +429,14 @@ Here is a list of the resources that are created during a Runner installation:
 
 We are now preparing the next version of Codefresh runner with two major changes:
 
-* Installation happens from the [Codefresh CLI](https://codefresh-io.github.io/cli/) from now on. No need for a separate installer any more
+* You can now install the runner from the [Codefresh CLI](https://codefresh-io.github.io/cli/). You don't need a separate installer anymore.
 * You can use a single agent to manage multiple installations of the runner (even from other Kubernetes clusters)
 
-> This release is only offered as a preview. Do not use it for production deployments yet.
+> This release is only offered as a preview. We recommend that you do not use it for production deployments yet.
 
 First follow the [prerequisites](#prerequisites) and make sure that the version of Codefresh CLI is at least 0.45.0
 
-Then to install the runner on a single cluster with both the runtime and the agent:
+Then to install the runner on a single cluster with both the runtime and the agent, execute the following:
 
 ```
 kubectl create namespace codefresh
@@ -444,11 +444,11 @@ codefresh install agent --kube-namespace codefresh --install-runtime
 
 ```
 
-You can then follow the instruction for [using the runner](#using-the-codefresh-runner).
+You can then follow the instructions for [using the runner](#using-the-codefresh-runner).
 
 ### Installing multiple runtimes with a single agent
 
-It is also possible, for advanced users to install a single agent  that can manage multiple runtime environments.
+It is also possible, for advanced users to install a single agent that can manage multiple runtime environments.
 
 >NOTE: Please make sure that the cluster where the agent is installed has network access to the other clusters of the runtimes
 
@@ -487,9 +487,9 @@ codefresh attach runtime --agent-name $AGENT_NAME --agent-kube-namespace codefre
 
 ### Migrating to the new Codefresh runner version
 
-Migrating to the new Codefresh runner version is not happening automatically. You need to initiate the migration yourself using our [migration script](https://github.com/codefresh-io/venona/blob/release-1.0/scripts/migration.sh)
+In order to migrate your existing Codefresh runner to the new version, you need to initiate the migration using our [migration script](https://github.com/codefresh-io/venona/blob/release-1.0/scripts/migration.sh)
 
-> This release is only offered as a preview. Do not use it for production deployments yet.
+> This release is only offered as a preview. We recommend that you do not use it for production deployments yet.
 
 
 
