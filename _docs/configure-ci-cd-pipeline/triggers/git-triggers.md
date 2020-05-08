@@ -170,6 +170,8 @@ You can also define [multiple expressions](http://tldp.org/LDP/GNU-Linux-Tools-S
 
 Once a commit happens to a code repository, Codefresh will see which files are changed from the git provider and trigger the build **only** if the changed files match the glob expression. If there is no match no build will be triggered.
 
+> Notice that the `{}` characters are only needed if you have more than one expressions. Do not use them if you have a single glob expression in the field.
+
 This is a very useful feature for organizations who have chosen to have multiple projects on the same GIT repository (monorepos). Let's assume for example that a single system has a Java backend, a NestJS frontend and a Ruby-on-Rails internal dashboard.
 
 {% include image.html
