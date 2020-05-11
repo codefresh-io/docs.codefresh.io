@@ -8,6 +8,10 @@ toc: true
 ---
 Recent Codefresh updates:
 
+### May 2020
+
+- Restrict Codefresh to specific namespace - [documentation]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/#restrict-codefresh-access-to-a-specific-namespace)
+
 ### April 2020
 
 - Helm release text message - [documentation]({{site.baseurl}}/docs/new-helm/helm-releases-management/#showing-an-upgrade-message)

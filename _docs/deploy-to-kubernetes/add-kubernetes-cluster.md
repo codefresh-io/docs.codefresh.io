@@ -183,16 +183,20 @@ The configurations you'll be required to add are:
 1. Name - Any name of your choosing, that will represent your cluster context in Codefresh. Do not use spaces, dots or other strange characters in the name. 
 1. Host - The full URL of the Kubernetes API endpoints including protocol and port.
 1. Certificate - The Kubernetes service account certificate used for the integration with Codefresh (base64 encoded).
-1. Token - The Kubernetes service account token used for the integration with Codefresh (base64 encoded).
+1. Token - The Kubernetes service account token used for the integration with Codefresh (base64 encoded)
+1. (Optional) Namespace - Restrict Codefresh [access to a specific namespace](#restrict-codefresh-access-to-a-specific-namespace)
+
 
 {% include image.html
   lightbox="true"
-  file="/images/kubernetes/add-cluster/add-cluster-details.png"
-  url="/images/kubernetes/add-cluster/add-cluster-details.png"
+  file="/images/kubernetes/add-cluster/add-cluster-fields.png"
+  url="/images/kubernetes/add-cluster/add-cluster-fields.png"
   alt="Adding a custom cluster in Codefresh - details"
   caption="Adding a custom cluster in Codefresh - details"
-  max-width="60%"
+  max-width="80%"
     %}
+
+There is also a toggle for [private clusters behind a firewall]({{site.baseurl}}/docs/enterprise/behind-the-firewall/).
     
  In the section below we'll provide you with easy instructions how to get all your cluster configurations in order to add it to Codefresh.   
 
@@ -351,7 +355,23 @@ echo $(kubectl get secret -n kube-system -o go-template='{{index .data "token" }
 {% endraw %}
 {% endhighlight %}
 
+### Restrict Codefresh access to a specific namespace
 
+In most cases, you want to allow Codefresh to access all namespaces inside the cluster. This is the most convenient option as it will make
+the [services dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/) (and other GUI dashboards) the central way to manage your clusters.
+
+You can also restrict Codefresh only to an specific namespace of your choosing. To achieve this, use the details of service account in the previous section that has access only to that specific namespace, and also fill the *namespace* field in the cluster details form.
+
+{% include image.html
+  lightbox="true"
+  file="/images/kubernetes/add-cluster/restrict-namespace.png"
+  url="/images/kubernetes/add-cluster/restrict-namespace.png"
+  alt="Allows Codefresh access to a single namespace only"
+  caption="Allows Codefresh access to a single namespace only"
+  max-width="80%"
+    %}
+
+Notice that if you follow this approach several built-in Codefresh capabilities will be disabled (e.g. creating new namespaces from the GUI).
 
 
 
