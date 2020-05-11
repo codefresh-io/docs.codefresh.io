@@ -351,6 +351,8 @@ For the argument section we follow the [JSON Schema](http://json-schema.org/lear
 
 The final part is the step implementation. Here you can define exactly the yaml that this step will insert in the pipeline. You can use any of the built-in steps in Codefresh and even add multiple steps.
 
+>Note that currently you cannot nest custom pipeline steps. We are aware of this limitation and are actively working on it, but at the time or writing you cannot use a typed step inside another typed step.
+
 Once you are done with your step, use the Codefresh CLI to upload it to the marketplace. If you want the step to be available only to you and your team make sure that the property `isPublic` is false (and then it will not be shown in the marketplace).
 
 {% highlight bash %}
