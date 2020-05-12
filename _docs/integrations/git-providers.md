@@ -49,8 +49,6 @@ caption="Add GIT provider"
 alt="Add GIT provider"
 %}
 
-
-
 For each git provider you need to setup authentication, so Codefresh can get access to the public and private repositories of the respective platform. 
 
 The easiest way to setup authentication is with OAuth2 if supported by the git provider. You only need to name your integration
@@ -94,6 +92,26 @@ alt="Github permissions"
 
 For Github on-premise you also need to provide the URL of the GitHub server in your organization.
 
+**Access Key Advanced Options**
+
+You have the ability to specify whether you want to clone via HTTPS or SSH.  Expand the *Advanced Options* menu and simply toggle to your desired option.
+
+{% include image.html 
+lightbox="true" 
+file="/images/integrations/git/github-ssh.png" 
+url="/images/integrations/git/github-ssh.png"
+max-width="40%"
+caption="Github SSH Options"
+alt="Github SSH Options"
+%}
+
+>Note that SSH cloning is currently only available using the On-premise version of Codefresh.
+
+For SSH, if you haven't already, you will need to generate an SSH keypair and add your public key to Github, as instructed in the [Github documentation](https://help.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent).
+
+Paste your raw, private key into the SSH Key text box.
+
+
 ## Gitlab
 
 For the **OAuth2 method** you only need to enable private repository access, enter a name for your connection and click *Save*. Then accept the permissions dialog. This is the easiest and recommended way to integrate Gitlab. Notice that if
@@ -114,6 +132,25 @@ Once you have the token, paste it in the Codefresh UI and click *Test connection
 now save the git integration.
 
 For Gitlab on-premise you also need to provide the URL of the Gitlab server in your organization.
+
+**Access Key Advanced Options**
+
+You have the ability to specify whether you want to clone via HTTPS or SSH.  Expand the *Advanced Options* menu and simply toggle to your desired option.
+
+{% include image.html 
+lightbox="true" 
+file="/images/integrations/git/github-ssh.png" 
+url="/images/integrations/git/github-ssh.png"
+max-width="40%"
+caption="Github SSH Options"
+alt="Github SSH Options"
+%}
+
+>Note that SSH cloning is currently only available using the On-premise version of Codefresh.
+
+For SSH, if you haven't already, you will need to generate an SSH keypair and add your public key to Gitlab, as instructed in the [Gitlab documentation](https://docs.gitlab.com/ee/ssh/#generating-a-new-ssh-key-pair).
+
+Paste your raw, private key into the SSH Key text box.
 
 ## Bitbucket
 
@@ -142,6 +179,25 @@ alt="Bitbucket permissions"
 
 The "label" you enter in your Bitbucket account in order to create the application password is completely arbitrary (use "Codefresh" for an example). Once you have the token, paste it in the Codefresh UI and click *Test connection*. If everything is OK you can
 now save the git integration.
+
+**Application Password Advanced Options**
+
+You have the ability to specify whether you want to clone via HTTPS or SSH.  Expand the *Advanced Options* menu and simply toggle to your desired option.
+
+{% include image.html 
+lightbox="true" 
+file="/images/integrations/git/github-ssh.png" 
+url="/images/integrations/git/github-ssh.png"
+max-width="40%"
+caption="Github SSH Options"
+alt="Github SSH Options"
+%}
+
+>Note that SSH cloning is currently only available using the On-premise version of Codefresh.
+
+For SSH, if you haven't already, you will need to generate an SSH keypair and add your public key to BitBucket, as instructed in the [Bitbucket documentation](https://confluence.atlassian.com/bitbucket/set-up-an-ssh-key-728138079.html).
+
+Paste your raw, private key into the SSH Key text box.
 
 ## Azure DevOps
 
@@ -209,6 +265,24 @@ alt="Codefresh integration with Azure Devops"
 
 Your Azure DevOps repositories will be available when [creating a new project in Codefresh]({{site.baseurl}}/docs/getting-started/create-a-basic-pipeline/).
 
+**Personal Access Token Advanced Options**
+
+You have the ability to specify whether you want to clone via HTTPS or SSH.  Expand the *Advanced Options* menu and simply toggle to your desired option.
+
+{% include image.html 
+lightbox="true" 
+file="/images/integrations/git/github-ssh.png" 
+url="/images/integrations/git/github-ssh.png"
+max-width="40%"
+caption="Github SSH Options"
+alt="Github SSH Options"
+%}
+
+>Note that SSH cloning is currently only available using the On-premise version of Codefresh.
+
+For SSH, if you haven't already, you will need to generate an SSH keypair and add your public key to Azure, as instructed in the [Azure documentation](https://docs.microsoft.com/en-us/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops&tabs=current-page).
+
+Paste your raw, private key into the SSH Key text box.
 
 ## Atlassian Stash 
 
