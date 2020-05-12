@@ -101,8 +101,8 @@ lightbox="true"
 file="/images/integrations/git/github-ssh.png" 
 url="/images/integrations/git/github-ssh.png"
 max-width="40%"
-caption="Github SSH Options"
-alt="Github SSH Options"
+caption="Git SSH Options"
+alt="Git SSH Options"
 %}
 
 >Note that SSH cloning is currently only available using the On-premise version of Codefresh.
@@ -142,8 +142,8 @@ lightbox="true"
 file="/images/integrations/git/github-ssh.png" 
 url="/images/integrations/git/github-ssh.png"
 max-width="40%"
-caption="Github SSH Options"
-alt="Github SSH Options"
+caption="Git SSH Options"
+alt="Git SSH Options"
 %}
 
 >Note that SSH cloning is currently only available using the On-premise version of Codefresh.
@@ -189,8 +189,8 @@ lightbox="true"
 file="/images/integrations/git/github-ssh.png" 
 url="/images/integrations/git/github-ssh.png"
 max-width="40%"
-caption="Github SSH Options"
-alt="Github SSH Options"
+caption="Git SSH Options"
+alt="Git SSH Options"
 %}
 
 >Note that SSH cloning is currently only available using the On-premise version of Codefresh.
@@ -274,8 +274,8 @@ lightbox="true"
 file="/images/integrations/git/github-ssh.png" 
 url="/images/integrations/git/github-ssh.png"
 max-width="40%"
-caption="Github SSH Options"
-alt="Github SSH Options"
+caption="Git SSH Options"
+alt="Git SSH Options"
 %}
 
 >Note that SSH cloning is currently only available using the On-premise version of Codefresh.
