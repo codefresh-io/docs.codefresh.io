@@ -141,9 +141,9 @@ The overall architecture of Codefresh is shown below:
 
 The most important components are the following:
 
-**The Codefresh VPC:** This is where all internal Codefresh services are running (analyzed in the next section). Codefresh is using internally Mongo and PostgreSQL for storing information such as users and configuration.
+**The Codefresh VPC:** This is where all internal Codefresh services are running (analyzed in the next section). Codefresh is using internally Mongo and PostgreSQL for storing information such as users and authentication.
 
-**The Pipeline execution environment**. This is where all pipelines run. The Codefresh engine component (analyzed in the next section) is responsible for taking pipeline definitions and running them in managed Kubernetes clusters by automatically launching the Docker containers that each pipeline needs for its steps.
+**The Pipeline execution environment**. This is where all pipelines run. The Codefresh engine component is responsible for taking pipeline definitions and running them in managed Kubernetes clusters by automatically launching the Docker containers that each pipeline needs for its steps.
 
 **External actors**. Codefresh is offering a [public API]({{site.baseurl}}/docs/integrations/codefresh-api/) that is consumed both by the Web User interface as well as the [Codefresh CLI](https://codefresh-io.github.io/cli/). The API is also available for any custom integration with external tools or services.
 
@@ -156,6 +156,8 @@ The most important components are the following:
 
 ## Topology diagram
 
+If we zoom into the Codefresh Services platform we will see the following:
+
 {% include image.html
   lightbox="true"
   file="/images/enterprise/installation/topology.png"
@@ -164,6 +166,51 @@ The most important components are the following:
   caption="Topology diagram (click to enlarge)"
   max-width="100%"
     %}  
+
+Components with green color (marked as business) are only present in the Codefresh SAAS installation. Components are listed beginning from the center of the diagram and then we go clockwise (starting from the top).
+
+
+**cf-api** is the central backend component. It functions as an API gateway for other services and is also responsible for authentication/authorization.
+
+**runtime-environment-manager** is responsible for managing the different environments where pipelines can run. The Codefresh SAAS installation has runtime environment that are fully managed by the Codefresh team. In hybrid installations, customers can add their own runtime environments using private Kubernetes clusters
+
+**onboarding-status** records and reports on the onboarding status of a user. *This component only exists in Codefresh SAAS.*
+
+**accounts-referrals** sends invites to customers that have been refereed by existing users. *This component only exists in Codefresh SAAS.*
+
+**segment-exporter** monitors internal system events and convert them to Segment events. *This component only exists in Codefresh SAAS.*
+
+**mailer** is responsible for sending emails (e.g. from failed builds) to customers. *This component only exists in Codefresh SAAS.*
+
+**salesfoce-reporter** monitors internal system events and convert them to Salesforce events. *This component only exists in Codefresh SAAS.* 
+
+**tasker-kubernetes** provides cache storage for [Kubernetes dashboards]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/) in Codefresh
+
+**kube-integration** provides an interface to retrieve all required information from a Kubernetes cluster, can be run either as a http server, or npm module
+
+**charts-manager** models the [Helm chart view]({{site.baseurl}}/docs/new-helm/helm-releases-management/) in Codefresh.
+
+**k8s-monitor** is an agent that gets installed on each Kubernetes cluster to provide information for the [Kubernetes dashboards]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/)
+
+**helm-repo-manager** is responsible for the Helm repository admin API and ChartMuseum proxy for managing [Helm charts it Codefresh]({{site.baseurl}}/docs/new-helm/managed-helm-repository/)
+
+**cluster-providers** provides an interface to define clusters contexts for connecting Kubernetes clusters in Codefresh
+
+**context-manager** manages all possible authentication/configuration that are used by Codefresh system and by Codefresh engine
+
+**cronus** enables defining [cron like triggers]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/cron-triggers/) for pipelines
+
+**nomios** enables [triggers from Dockerhub]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/dockerhub-triggers/) (when a new image/tag is pushed)
+
+**hermes** controls [trigger management]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/) in Codefresh
+
+**cf-broadcaster** stores build logs from pipelines
+
+**pipeline-manager** manages all CRUD operations regarding pipelines
+
+**cfsign** signs server tls certificates for docker daemons and generates client tls certificates for hybrid pipelines
+
+**payments** handles customer payments. *This component only exists in Codefresh SAAS.*
 
 ## What to read next
 
