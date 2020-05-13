@@ -31,7 +31,7 @@ Finally, the number of replicas in the production environment will be [scaled up
 
 ### Create the Pipeline 
 
-This pipeline will have three stages: clone and kustomize.
+This pipeline will have two stages: clone and kustomize.
 
 {% include image.html 
 lightbox="true" 
