@@ -6,7 +6,7 @@ sub_group: examples
 toc: true
 ---
 
-[Kustomize]((https://kustomize.io)) is a tool included with kubectl 1.14 that "lets you customize raw, template-free YAML files for multiple purposes, leaving the original YAML untouched and usable as is."
+[Kustomize](https://kustomize.io) is a tool included with kubectl 1.14 that "lets you customize raw, template-free YAML files for multiple purposes, leaving the original YAML untouched and usable as is."
 
 It is important to note that Kustomize differs from Helm, in that it is not a templating engine, but an overlay engine.  With Helm, you create a template file and the templating engine replaces all placeholders within that template with their actual values.  
 
