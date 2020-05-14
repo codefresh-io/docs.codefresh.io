@@ -244,3 +244,5 @@ max-width="100%"
 - [Git-clone Step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)
 - [Freestyle Step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/)
 - [Deployment options to Kubernetes]({{site.baseurl}}/docs/deploy-to-kubernetes/deployment-options-to-kubernetes)
+- [Running custom kubectl commands]({{site.baseurl}}docs/deploy-to-kubernetes/custom-kubectl-commands/)
+- [Deploy with Helm]({{site.baseurl}}/docs/yaml-examples/examples/helm/)
