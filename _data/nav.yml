@@ -235,6 +235,8 @@
           url: "/deploy-to-heroku"
         - title: Use kubectl as part of Freestyle step
           url: "/use-kubectl-as-part-of-freestyle-step"
+        - title: Deploy with Kustomize
+          url: "/deploy-with-kustomize"
     - title: "Secrets"
       url: "/examples"
       sub-pages:
