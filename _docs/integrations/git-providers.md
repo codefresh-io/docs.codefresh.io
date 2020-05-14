@@ -70,7 +70,9 @@ caption="Git SSH Options"
 alt="Git SSH Options"
 %}
 
-For SSH, if you haven't already, you will need to generate an SSH keypair and add your public key to your VCS, as instructed in its official documentation:
+Paste your **raw**, private key into the SSH Key text box and click save.
+
+For more information on generating SSH keys and adding your public key to your VCS provider, its official documentation:
  
 - [Github documentation](https://help.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent).
 - [Gitlab documentation](https://docs.gitlab.com/ee/ssh/#generating-a-new-ssh-key-pair)
