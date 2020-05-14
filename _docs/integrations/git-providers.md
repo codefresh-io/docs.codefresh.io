@@ -70,7 +70,7 @@ caption="Git SSH Options"
 alt="Git SSH Options"
 %}
 
-Paste your **raw**, private key into the SSH Key text box and click save.
+For SSH, paste your **raw**, private key into the SSH Key text box and click save.
 
 For more information on generating SSH keys and adding your public key to your VCS provider, its official documentation:
  
