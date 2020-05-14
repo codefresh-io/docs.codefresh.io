@@ -49,8 +49,6 @@ caption="Add GIT provider"
 alt="Add GIT provider"
 %}
 
-
-
 For each git provider you need to setup authentication, so Codefresh can get access to the public and private repositories of the respective platform. 
 
 The easiest way to setup authentication is with OAuth2 if supported by the git provider. You only need to name your integration
@@ -59,6 +57,27 @@ or the provider does not support it, you need to manually create credentials by 
 
 In the case of an on-premise GIT provider you also need to fill in the URL where the provider is installed.
 
+## SSH Keys
+
+You have the ability to specify whether you want to clone via HTTPS or SSH.  Under the *General* menu, simply toggle to your desired option.
+
+{% include image.html 
+lightbox="true" 
+file="/images/integrations/git/github-ssh.png" 
+url="/images/integrations/git/github-ssh.png"
+max-width="40%"
+caption="Git SSH Options"
+alt="Git SSH Options"
+%}
+
+For SSH, paste your **raw**, private key into the SSH Key text box and click save.
+
+For more information on generating SSH keys and adding your public key to your VCS provider, see its official documentation:
+ 
+- [Github documentation](https://help.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent).
+- [Gitlab documentation](https://docs.gitlab.com/ee/ssh/#generating-a-new-ssh-key-pair)
+- [Bitbucket documentation](https://confluence.atlassian.com/bitbucket/set-up-an-ssh-key-728138079.html)
+- [Azure documentation](https://docs.microsoft.com/en-us/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops&tabs=current-page)
 
 ## GitHub
 
@@ -208,7 +227,6 @@ alt="Codefresh integration with Azure Devops"
 %}
 
 Your Azure DevOps repositories will be available when [creating a new project in Codefresh]({{site.baseurl}}/docs/getting-started/create-a-basic-pipeline/).
-
 
 ## Atlassian Stash 
 
