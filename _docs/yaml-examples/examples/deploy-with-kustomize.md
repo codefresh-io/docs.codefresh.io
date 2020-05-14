@@ -29,7 +29,7 @@ public class HelloController {
 	}
 ```
 
-The project contains a [base](https://github.com/codefresh-contrib/kustomize-sample-apps/blob/master/docs/glossary.md#base) and two [overlays](https://github.com/codefresh-contrib/kustomize-sample-apps/blob/master/docs/glossary.md#overlay), one for a staging environment and one for production.
+The project contains a [base](https://github.com/kubernetes-sigs/kustomize/blob/master/docs/glossary.md#base) and two [overlays](https://github.com/kubernetes-sigs/kustomize/blob/master/docs/glossary.md#overlay), one for a staging environment and one for production.
 
 The base manifest holds a dummy variable for `MY_MYSQL_DB` which will be overlayed once we call the kustomize command in our pipeline.
 
@@ -207,7 +207,7 @@ The above pipeline does the following:
 
 ## Verification
 
-After you run these pipelines, your deployments will be visible from the [Kuebrnetes dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/#accessing-the-kubernetes-dashboard).
+After you run these pipelines, your deployments will be visible from the [Kubernetes dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/#accessing-the-kubernetes-dashboard).
 
 {% include image.html 
 lightbox="true" 
