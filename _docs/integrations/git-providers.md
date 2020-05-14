@@ -79,8 +79,6 @@ For more information on generating SSH keys and adding your public key to your V
 - [Bitbucket documentation](https://confluence.atlassian.com/bitbucket/set-up-an-ssh-key-728138079.html)
 - [Azure documentation](https://docs.microsoft.com/en-us/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops&tabs=current-page)
 
-Paste your **raw**, private key into the SSH Key text box and click save.
-
 ## GitHub
 
 For the **OAuth2 method** you only need to decide on public/private repository access, enter a name for your connection and click *Save*. Then accept the permissions dialog. This is the easiest and recommended way to integrate GitHub. Notice that if
