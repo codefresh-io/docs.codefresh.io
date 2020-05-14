@@ -8,35 +8,89 @@ toc: true
 
 [Kustomize](https://kustomize.io) is a tool included with kubectl 1.14 that "lets you customize raw, template-free YAML files for multiple purposes, leaving the original YAML untouched and usable as is."
 
-It is important to note that Kustomize differs from Helm, in that it is not a templating engine, but an overlay engine.  With Helm, you create a template file and the templating engine replaces all placeholders within that template with their actual values.  
+Kustomize is more of an overlay engine, as opposed to a templating engine.  You create a base configuration and overlays.  Your overlays contain a *kustomization.yaml* file, and any variants/changes are applied over top of the base configuration.  Kustomize does not use templates at all.  
 
-Kustomize takes a different approach, so it is hard to compare the two.  Kustomize is more of an overlay engine, as opposed to a templating engine.  You create a base configuration and overlays.  Your overlays contain a *kustomization.yaml* file, and any variants/changes are applied over top of the base configuration.  Kustomize does not use templates at all.  If you wish to use a templating mechanism, the recommended course of action is still to use Helm.
+While it is good for simple scenarios, we suggest that you use Helm for managing your Kubernetes applications.  Helm is a full package manager for Kubernetes manifests that also provides templating capabilities.  See [this example]({{site.baseurl}}/docs/yaml-examples/examples/helm/) for more information.
 
 ## The Example Application
 
-You can find the example project on [Github](https://github.com/codefresh-contrib/kustomize-sample-apps/tree/master/examples/helloWorld).
+You can find the example project on [Github](https://github.com/codefresh-contrib/kustomize-sample-app).
 
-The repository contains a [base](https://github.com/codefresh-contrib/kustomize-sample-apps/blob/master/docs/glossary.md#base) and two [overlays](https://github.com/codefresh-contrib/kustomize-sample-apps/blob/master/docs/glossary.md#overlay), one for a staging environment and one for production.
+The sample application is a simple Spring Boot web app, that displays an environment variable, `MY_MYSQL_DB` on the page:
 
-The base service will display a ["Good Morning!"](https://github.com/codefresh-contrib/kustomize-sample-apps/blob/6dd378db22b0e8e671159fafbe8c12145512acf8/examples/helloWorld/base/configMap.yaml#L6) message.  We will overlay on top of the manifests a different greeting for the staging environment, ["Have a pineapple!"](https://github.com/codefresh-contrib/kustomize-sample-apps/blob/6dd378db22b0e8e671159fafbe8c12145512acf8/examples/helloWorld/overlays/staging/map.yaml#L6)
+```java
+public class HelloController {
 
-In addition, the staging environment will [enable a risky feature](https://github.com/codefresh-contrib/kustomize-sample-apps/blob/6dd378db22b0e8e671159fafbe8c12145512acf8/examples/helloWorld/overlays/staging/map.yaml#L7) that is not enabled in production.
+	String my_sql_db = System.getenv("MY_MYSQL_DB");
 
-Finally, the number of replicas in the production environment will be [scaled up to 10](https://github.com/codefresh-contrib/kustomize-sample-apps/blob/6dd378db22b0e8e671159fafbe8c12145512acf8/examples/helloWorld/overlays/production/deployment.yaml#L6). 
+	@RequestMapping("/")
+	public String index() {
+		return my_sql_db;
+	}
+```
+
+The project contains a [base](https://github.com/codefresh-contrib/kustomize-sample-apps/blob/master/docs/glossary.md#base) and two [overlays](https://github.com/codefresh-contrib/kustomize-sample-apps/blob/master/docs/glossary.md#overlay), one for a staging environment and one for production.
+
+The base manifest holds a dummy variable for `MY_MYSQL_DB` which will be overlayed once we call the kustomize command in our pipeline.
+
+`base/deployment.yaml`
+```yaml
+...
+        env:
+        - name: MY_MYSQL_DB
+          valueFrom:
+            configMapKeyRef:
+              name: the-map
+              key: mysqlDB
+```
+
+We will overlay on top of the manifests a different value for `MY_MYSQL_DB` for the staging environment and production environment.  
+
+`overlays/staging/config-map.yaml`
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: the-map
+data:
+  mysqlDB: "staging-mysql.example.com:3306"
+```
+
+`overlays/production/config-map.yaml`
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: the-map
+data:
+  mysqlDB: "prod-mysql.example.com:3306"
+```
+
+In addition, for the production environment, the number of replicas will be overlayed to 3 instead of 1 (as [defined in the base deployment](https://github.com/codefresh-contrib/kustomize-sample-app/blob/32e683f82940de0bf2de2da40fa6b150e2b24b23/base/deployment.yaml#L8)).
+
+`overlays/production/deployment.yaml`
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: the-deployment
+spec:
+  replicas: 3
+```
 
 ## Prerequisites
 
 - A [free Codefresh account](https://codefresh.io/docs/docs/getting-started/create-a-codefresh-account/)
 - A Kubernetes cluster [connected to your Codefresh account]({{site.baeurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/)
 
-### Create the Pipeline 
+## Create the Staging Environment Pipeline 
 
-This pipeline will have two stages: clone and kustomize.
+This pipeline will have two stages: clone and deploy.
 
 {% include image.html 
 lightbox="true" 
-file="/images/examples/deployments/k8s-kustomize-pipeline.png" 
-url="/images/examples/deployments/k8s-kustomize-pipeline.png" 
+file="/images/examples/deployments/k8s-kustomize-staging-pipeline.png" 
+url="/images/examples/deployments/k8s-kustomize-staging-pipeline.png" 
 alt="Codefresh UI Pipeline View"
 caption="Codefresh UI Pipeline View"
 max-width="100%" 
@@ -44,7 +98,7 @@ max-width="100%"
 
 You should be able to copy and paste this YAML in the in-line editor of the Codefresh UI.  It will automatically clone the project for you.
 
-`codefresh.yml`
+`staging-codefresh.yml`
 {% highlight yaml %}
 {% raw %}
 # More examples of Codefresh YAML can be found at
@@ -55,7 +109,7 @@ version: "1.0"
 
 stages:
   - clone
-  - kustomize
+  - deploy
 
 steps:
   clone:
@@ -63,22 +117,80 @@ steps:
     type: git-clone
     stage: clone
     arguments:
-      repo: codefresh-contrib/kustomize-sample-apps
+      repo: https://github.com/codefresh-contrib/kustomize-sample-app.git
       git: github
       revision: master
 
-  kustomize:
-    title: Kustomize
+  deploy:
+    title: Deploying to Staging using Kustomize...
     type: freestyle
-    stage: kustomize
-    working_directory: ${{clone}}/examples/helloWorld
+    stage: deploy
+    working_directory: ${{clone}}
     arguments:
       image: codefresh/kubectl:1.14.9
       commands:
         - kubectl config use-context anna-sandbox@codefresh-support
-        - 'sed -i.bak ''s/app: hello/app: my-hello/'' base/kustomization.yaml'
-        - kubectl apply -k base
         - kubectl apply -k overlays/staging
+{% endraw %}
+{% endhighlight %}
+
+The above pipeline does the following:
+
+1. A [git-clone]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) step that clones the main repository
+2. A [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) that:
+  - Uses kubectl to connect to our Kubernetes cluster we have integrated with Codefresh
+  - Using Kustomize (the -k flag), deploys the application as a staging environment with the appropriate value for `MY_MYSQL_DB` as defined in our configMap
+
+>Note that if you are using kubectl prior to 1.14, you can use the following command to deploy with Kustomize: 
+>`kustomize build overlays/production | kubectl apply -f`
+
+## Create the Production Environment Pipeline 
+
+Likewise, this pipeline will have two stages: clone and deploy.
+
+{% include image.html 
+lightbox="true" 
+file="/images/examples/deployments/k8s-kustomize-prod-pipeline.png" 
+url="/images/examples/deployments/k8s-kustomize-prod-pipeline.png" 
+alt="Codefresh UI Pipeline View"
+caption="Codefresh UI Pipeline View"
+max-width="100%" 
+%}
+
+You should be able to copy and paste this YAML in the in-line editor of the Codefresh UI.  It will automatically clone the project for you.
+
+`prod-codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+# More examples of Codefresh YAML can be found at
+# https://codefresh.io/docs/docs/yaml-examples/examples/
+
+version: "1.0"
+# Stages can help you organize your steps in stages
+
+stages:
+  - clone
+  - deploy
+
+steps:
+  clone:
+    title: Cloning main repository...
+    type: git-clone
+    stage: clone
+    arguments:
+      repo: https://github.com/codefresh-contrib/kustomize-sample-app.git
+      git: github
+      revision: master
+
+  deploy:
+    title: Deploying to Production using Kustomize...
+    type: freestyle
+    stage: deploy
+    working_directory: ${{clone}}
+    arguments:
+      image: codefresh/kubectl:1.14.9
+      commands:
+        - kubectl config use-context anna-sandbox@codefresh-support
         - kubectl apply -k overlays/production
 {% endraw %}
 {% endhighlight %}
@@ -88,10 +200,14 @@ The above pipeline does the following:
 1. A [git-clone]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) step that clones the main repository
 2. A [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) that:
   - Uses kubectl to connect to our Kubernetes cluster we have integrated with Codefresh
-  - Modifies the app label to my-hello in our base kustomization file
-  - Deploys all 3 services to our Kubernetes cluster using kustomize (the -k flag)
-  
-After you run this pipeline, your deployments will be visible from the [Kuebrnetes dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/#accessing-the-kubernetes-dashboard).
+  - Using Kustomize (the -k flag), deploys the application as a production environment with the appropriate value for `MY_MYSQL_DB` as defined in our configMap
+
+>Note that if you are using kubectl prior to 1.14, you can use the following command to deploy with Kustomize: 
+>`kustomize build overlays/production | kubectl apply -f`
+
+## Verification
+
+After you run these pipelines, your deployments will be visible from the [Kuebrnetes dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/#accessing-the-kubernetes-dashboard).
 
 {% include image.html 
 lightbox="true" 
@@ -101,6 +217,27 @@ alt="Codefresh Kubernetes Deployments"
 caption="Codefresh Kubernetes Deployments"
 max-width="100%" 
 %}
+
+You can test that the application deployed correctly to both environments by accessing the endpoints:
+
+{% include image.html 
+lightbox="true" 
+file="/images/examples/deployments/k8s-kustomize-staging-endpoint.png" 
+url="/images/examples/deployments/k8s-kustomize-staging-endpoint.png" 
+alt="Staging endpoint"
+caption="Staging endpoint"
+max-width="100%" 
+%}
+
+{% include image.html 
+lightbox="true" 
+file="/images/examples/deployments/k8s-kustomize-prod-endpoint.png" 
+url="/images/examples/deployments/k8s-kustomize-prod-endpoint.png" 
+alt="Production endpoint"
+caption="Production endpoint"
+max-width="100%" 
+%}
+
 
 ## What to Read Next
 
