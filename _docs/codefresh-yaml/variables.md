@@ -261,6 +261,35 @@ steps:
 
 Use this technique if you have complex expressions that have issues with the `cf_export` command.
 
+## Masking variables in logs
+
+Codefresh has the built-in capabililty to automatically mask variables in logs if they are encrypted. The values of encrypted variables will be replaced with asterisks in build logs.
+
+{% include
+image.html
+lightbox="true"
+file="/images/codefresh-yaml/variables/masked-variables.png"
+url="/images/codefresh-yaml/variables/masked-variables.png"
+alt="Masked variables"
+caption="Masked variables"
+max-width="80%"
+%}
+
+The variables can be defined in any of the usual ways Codefresh offers such as [shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/) or [within the pipeline]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-settings):
+
+{% include
+image.html
+lightbox="true"
+file="/images/codefresh-yaml/variables/encrypted-variables.png"
+url="/images/codefresh-yaml/variables/encrypted-variables.png"
+alt="Encrypted variables"
+caption="Encrypted variables"
+max-width="60%"
+%}
+
+>Notice that this feature is currently available only in Enterprise accounts.
+
+
 ## Escape Characters
 When passing special characters through environmental variables `\` can be used as an escape character. For example if you were passing a cassandra connection string you might do something like `Points\=hostname\;Port\=16376\;Username\=user\;Password\=password`
 

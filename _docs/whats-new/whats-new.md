@@ -10,6 +10,7 @@ Recent Codefresh updates:
 
 ### May 2020
 
+- Masking encrypted variables in logs - [documentation]({{site.baseurl}}/docs/codefresh-yaml/variables/#masking-variables-in-logs)
 - Restrict Codefresh to specific namespace - [documentation]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/#restrict-codefresh-access-to-a-specific-namespace)
 - Deploy with Kustomize - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/deploy-with-kustomize)
 
