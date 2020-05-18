@@ -118,26 +118,26 @@ steps:
     type: build
     arguments:
       image_name: my-flask-app
-      working_directory: ./
+      working_directory: ./python-flask-sample-app
       tag: '${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_SHORT_REVISION}}'
       dockerfile: Dockerfile
     stage: package
   DeployMyChart:
-        type: helm
-        stage: deploy
-        working_directory: ./python-flask-sample-app
-        arguments:
-          action: install
-          chart_name: charts/python
-          release_name: my-python-chart
-          helm_version: 3.0.2
-          kube_context: kostis-demo@FirstKubernetes
-          repository: r.cfcr.io/kostis-codefresh/my-flask-app
-          custom_values:
-            - 'buildID=${{CF_BUILD_ID}}'
-            - 'image_pullPolicy=Always'
-            - 'image_tag=${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_SHORT_REVISION}}'
-            - 'image_pullSecret=codefresh-generated-r.cfcr.io-cfcr-default
+    type: helm
+    stage: deploy
+    working_directory: ./python-flask-sample-app
+    arguments:
+      action: install
+      chart_name: charts/python
+      release_name: my-python-chart
+      helm_version: 3.0.2
+      kube_context: kostis-demo@FirstKubernetes
+      custom_values:
+      - 'buildID=${{CF_BUILD_ID}}'
+      - 'image_pullPolicy=Always'
+      - 'repository=r.cfcr.io/kostis-codefresh/my-flask-app'
+      - 'image_tag=${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_SHORT_REVISION}}'
+      - 'image_pullSecret=codefresh-generated-r.cfcr.io-cfcr-default'
 {% endraw %}
 {% endhighlight %}
 
@@ -275,10 +275,15 @@ steps:
       dockerfile: Dockerfile
     stage: package
   deploy:
+    title: Storing Helm chart
     type: helm
+    stage: deploy
+    working_directory: ./python-flask-sample-app
     arguments:
       action: push
-      chart_name: /charts/helm-example
+      chart_name: charts/python
+      helm_version: 3.0.2
+      kube_context: 'mydemoAkscluster@BizSpark Plus'
 {% endraw %}
 {% endhighlight %}
 
