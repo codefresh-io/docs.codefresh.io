@@ -25,7 +25,6 @@ Please fill out the survey [here](https://docs.google.com/forms/d/e/1FAIpQLSf18s
     - Multi node: master(s) + 3 nodes with 4 CPU core and 8GB RAM (24 GB in total)
   
 - Helm Tiller, v1.12 or above, installed with permissions to the same namespace codefresh is going to be installed to (codefresh namespace)
-- Firebase Secret (provided by Codefresh) (deprecated)
 - Service Account file (provided by Codefresh)
 - Default app credentials (provided by Codefresh)
 - Storage size allocated for Codefresh persisted services - described in the storage section
@@ -82,8 +81,8 @@ Running the init command will create a directory containing a `config.yaml` file
 
 Edit the configuration in config.yaml and deploy to Kubernetes. The config.yaml is very descriptive and it contains an explanation for every parameter.
 
-If you install Codefresh on the air-gapped environment you will have to copy the images to your organization container registry (Kubernetes will pull the images from it as part of the installation).
-This can be done by uncommenting and set proper values in the ‘config.yaml file:
+If you install Codefresh on the air-gapped environment (without access to public Docker Hub or codefresh-enterprise registry) you will have to copy the images to your organization container registry (Kubernetes will pull the images from it as part of the installation).
+This can be done by uncommenting and setting the proper values in the ‘config.yaml file:
 
 ```yaml
 images:
@@ -102,6 +101,11 @@ Then, execute the following:
 
 ```
 kcfi images push  [-c|--config /path/to/config.yaml] 
+```
+
+Or, to push a single image, execute the following:
+```
+kcfi images push [-c|--config /path/to/config.yaml] [options] repo/image:tag [repo/image:tag]
 ```
 
 You can find a full list of options by running `kcfi images --help`.
