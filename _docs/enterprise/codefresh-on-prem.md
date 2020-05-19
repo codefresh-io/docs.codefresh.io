@@ -17,6 +17,20 @@ The following information needs to be provided to Codefresh before the installat
 
 Please fill out the survey [here](https://docs.google.com/forms/d/e/1FAIpQLSf18sfG4bEQuwMT7p11F6q70JzWgHEgoAfSFlQuTnno5Rw3GQ/viewform).
 
+## Supported Operating Systems and Git Providers
+
+The `kcfi` tool supports the operation systems:
+
+- Windows 10/7
+- Linux
+- OSX
+
+Codefresh supports the following Git providers:
+
+- GitHub: SaaS and on-premise versions
+- Bitbucket: SaaS and Bitbucket server (on-premise) 5.4.0 version and above
+- GitLab: SaaS and on-premise versions (API v4 only)
+
 ## Prerequisites
 
 - Kubernetes cluster (v1.9+)
@@ -33,17 +47,119 @@ Codefresh will need outbound connection to the internet for the following servic
 - GCR - pulling platform images
 - Dockerhub - pulling pipeline images
 
-The `kcfi` tool supports the operation systems:
+## Security Constraints
 
-- Windows 10/7
-- Linux
-- OSX
+### RBAC for Codefresh
 
-Codefresh supports the following Git providers:
+The Codefresh installer should be run with a Kubernetes RBAC role that allows object creation in a single namespace.  If, by corporate policy, you do not allow the creation of service accounts or roles, a Kubernetes administrator will need to create the role, serviceAccount, and binding as shown below.  Users with the `codefresh-app` role do not have the ability to create other roles or roleBindings.
 
-- GitHub: SaaS and on-premise versions
-- Bitbucket: SaaS and Bitbucket server (on-premise) 5.4.0 version and above
-- GitLab: SaaS and on-premise versions (API v4 only)
+`codefresh-app-service-account.yaml`
+```yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: codefresh-app
+  namespace: codefresh
+```
+
+`codefresh-app-role.yaml`
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: codefresh-app
+  namespace: codefresh
+rules:
+- apiGroups:
+  - ""
+  - apps
+  - codefresh.io
+  - autoscaling
+  - extensions
+  - batch
+  resources:
+  - '*'
+  verbs:
+  - '*'
+- apiGroups:
+  - networking.k8s.io
+  - route.openshift.io
+  - policy
+  resources:
+  - routes
+  - ingresses
+  - poddisruptionbudgets
+  verbs:
+  - '*'
+```
+
+`codefresh-app-roleBinding.yaml`
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    app: codefresh
+  name: codefresh-app-binding
+  namespace: codefresh
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: codefresh-app
+subjects:
+- kind: ServiceAccount
+  name: codefresh-app
+```
+
+To apply these changes, run:
+```
+kubectl apply -f [file]
+```
+
+### Operator CRD
+
+If, due to security rules you are not allowed to create a CRD for a client running `kfci`, have an Administrator create the RBAC (as instructed above) and the CRD as follows:
+
+`codefresh-crd.yaml`
+```yaml
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: codefreshes.codefresh.io
+  labels:
+    app: cf-onprem-operator
+spec:
+  group: codefresh.io
+  names:
+    kind: Codefresh
+    listKind: CodefreshList
+    plural: codefreshes
+    singular: codefresh
+  scope: Namespaced
+  subresources:
+    status: {}
+  versions:
+  - name: v1alpha1
+    served: true
+    storage: true
+```
+
+To apply these changes, run:
+```
+kubectl apply -f codefresh-crd.yaml
+```
+
+You will also need to modify the `config.yaml` for `kfci` by setting `skipCRD: true` and `serviceAccountName: codefresh-app`:
+
+`config.yaml`
+```yaml
+    operator:
+      #dockerRegistry: gcr.io/codefresh-enterprise
+      #image: codefresh/cf-onprem-operator
+      #imageTag:
+      serviceAccountName: codefresh-app
+      skipCRD: true
+```
 
 ## Download and Install `kcfi`
 
@@ -123,12 +239,27 @@ Deploy the Codefresh Platform by running:
 ```
 kcfi deploy [ -c config.yaml ] [ --kube-context <kube-context-name> ] [ --atomic ] [ --debug ] [ helm upgrade parameters ]
 ```
+### Step 5 -- Install the Codefresh Kubernetes Agent
+
+The cf-k8s-agent is responsible for accessing Kubernetes resources (pods, deployments, services, etc.) behind the firewall in order to display them in the Codefresh UI.
+
+Execute the following:
+
+```
+kcfi init k8s-agent
+```
+A staging directory will be created named k8s-agent with a `config.yaml`.
+Edit k8s-agent/config.yaml and run:
+
+```
+kcfi deploy [ -c config.yaml ] [-n namespace]
+```
 
 ## Additional Configurations
 
-### Setup Git Integration (Optional
+### Setup Git Integration (Optional)
 
-Codefresh supports out-of-the-box login using local username and password, or login using your git provider (per the list and instructions of providers below). You can also configure login to supported SSO providers post-install as described [in the Codefresh documentation]({{site.baseurl}}/docs/enterprise/single-sign-on/sso-setup-oauth2/).
+Codefresh supports out-of-the-box Git logins using your local username and password, or logins using your git provider (per the list and instructions of providers below). You can also configure login to supported SSO providers post-install as described [in the Codefresh documentation]({{site.baseurl}}/docs/enterprise/single-sign-on/sso-setup-oauth2/).
 
 If you’d like to set up a login to Codefresh using your git provider, first login using the local default credentials provided by Codefresh and add your git provider OAuth integration details in our admin console: 
 
@@ -240,3 +371,8 @@ Depending on the customer’s Kubernetes version we can assist with PV resizing.
 Automatic Volume Provisioning
 Codefresh installation supports automatic storage provisioning based on standard Kubernetes dynamic provisioner Storage Classes and Persistent Volume Claims. All required installation volumes will be provisioned automatically using the default storage class or custom Storage Class that can be specified as a parameter in config.yaml under storageClass: my-storage-class.
 
+## Common Problems, Solutions, and Dependencies
+
+1. **Problem:** pipeline runs, but does not show logs.
+
+**Solution:** There is a dependency between the broadcaster pod and the API pod.  Try restarting the broadcaster pod.
