@@ -178,7 +178,6 @@ global:
     NO_PROXY: "127.0.0.1,localhost,kubernetes.default.svc,.codefresh.svc,100.64.0.1,169.254.169.254,cf-builder,cf-cfapi,cf-cfui,cf-chartmuseum,cf-charts-manager,cf-cluster-providers,cf-consul,cf-consul-ui,cf-context-manager,cf-cronus,cf-helm-repo-manager,cf-hermes,cf-ingress-controller,cf-ingress-http-backend,cf-kube-integration,cf-mongodb,cf-nats,cf-nomios,cf-pipeline-manager,cf-postgresql,cf-rabbitmq,cf-redis,cf-registry,cf-runner,cf-runtime-environment-manager,cf-store"
     no_proxy: "127.0.0.1,localhost,kubernetes.default.svc,.codefresh.svc,100.64.0.1,169.254.169.254,cf-builder,cf-cfapi,cf-cfui,cf-chartmuseum,cf-charts-manager,cf-cluster-providers,cf-consul,cf-consul-ui,cf-context-manager,cf-cronus,cf-helm-repo-manager,cf-hermes,cf-ingress-controller,cf-ingress-http-backend,cf-kube-integration,cf-mongodb,cf-nats,cf-nomios,cf-pipeline-manager,cf-postgresql,cf-rabbitmq,cf-redis,cf-registry,cf-runner,cf-runtime-environment-manager,cf-store"
 ```
-
 In addition to this, you should also add your k8s api IP address (`kubectl get svc kubernetes`) to both: `NO_PROXY` and `no_proxy`.
 
 ### External Mongo Service
@@ -221,9 +220,9 @@ These are the volumes required for Codefresh on-premise:
 | cf-builder-0   | /var/lib/docker for builder | 100GB       | No***                        |
 | cf-runner-0    | /var/lib/docker for composition runner | 100GB | No***                   |
 
-* Possibility to use external service 
-** Running on netfs (nfs, cifs) is not recommended by product admin guide
-*** Docker daemon can be run on block device only
+*Possibility to use external service 
+**Running on netfs (nfs, cifs) is not recommended by product admin guide
+***Docker daemon can be run on block device only
 
 Stateful sets (cf-builder and cf-runner) process their data on separate physical volumes (PVs) and can be claimed using PVCs with default initial sizes of 100Gi. Also, those stateful sets have the ability to connect to existing pre-defined PVCs. The default initial volume size (100 Gi) can be overridden in the custom config.yaml file. Values descriptions are in the `config.yaml` file.
 The registry’s initial volume size is 100Gi. It also can be overridden in a custom `config.yaml` file. There is a possibility to use a customer-defined registry configuration file (config.yml) that allows using different registry storage back-ends (S3, Azure Blob, GCS, etc.) and other parameters. More details can be found in the [Docker documentation](https://docs.docker.com/registry/configuration/).
