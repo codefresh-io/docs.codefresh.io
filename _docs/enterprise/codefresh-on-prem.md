@@ -272,14 +272,14 @@ To get the Client ID and Client Secret for each of the supported Git providers, 
 
 #### GitHub Enterprise
 
-Navigate to your GitHub organization settings: https://github.com/organizations/<your_org_name>/settings.
+Navigate to your GitHub organization settings: https://github.com/organizations/your_org_name/settings.
 
 On the left-hand side, under **Developer settings**, select **OAuth Apps**, and click **Register an Application**.
 
 Complete the OAuth application registration as follows:
 - **Application name:** codefresh-on-prem (or a significant name)
-- **Homepage URL:** https://{% raw %}<your-codefresh-onprem-domain>{% endraw %}
-- **Authorization callback URL:** {% raw %}https://<your-codefresh-onprem-domain>/api/auth/github/callback{% endraw %}
+- **Homepage URL:** https://your-codefresh-onprem-domain
+- **Authorization callback URL:** https://your-codefresh-onprem-domain/api/auth/github/callback
 
 After registration, note down the created Client ID and Client Secret. They will be required for the settings in **Codefresh Admin**->**IDPs**
 
@@ -290,7 +290,7 @@ Navigate to your Applications menu in GitLab User Settings: https://gitlab.com/p
 Complete the application creation form as follows:
 
 - **Name:** codefresh-onprem (or a significant name)
-- **Redirect URI:** {% raw %}https://<your-codefresh-onprem-domain>/api/auth/gitlab/callback{% endraw %}
+- **Redirect URI:** https://your-codefresh-onprem-domain/api/auth/gitlab/callback
 - **Scopes (permissions):**
   - API
   - read_user
@@ -386,6 +386,8 @@ Codefresh installation supports automatic storage provisioning based on the stan
 
 ### Dependencies
 
+#### Mongo
+
 All services using the MongoDB are dependent on the `mongo` pod being up and running.  If the `mongo` pod is down, the following dependencies will not work:
 
 - runtime-environment-manager
@@ -400,13 +402,13 @@ All services using the MongoDB are dependent on the `mongo` pod being up and run
 - charts-manager
 - tasker-kubernetes
 
+#### Logs
+
+There is a dependency between the `cf-broadcaster` pod and the `cf-api` pod.  If your pipeline runs, but does not show any logs, try restarting the broadcaster pod.
+
 ### Problems and Solutions
 
-1. **Problem:** pipeline runs, but does not show logs.
-
-**Solution:** There is a dependency between the broadcaster pod and the API pod.  Try restarting the broadcaster pod.
-
-2. **Problem:** installer fails because `codefresh` database does not exist.
+**Problem:** installer fails because `codefresh` database does not exist.
 
 **Solution:** If you are using an external PostgresSQL database (instead of the internal one that the installer provides), you will first need to manually create a new database named `codefresh` inside your PostgresSQL database before running the installer.
 
