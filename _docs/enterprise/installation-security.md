@@ -128,17 +128,6 @@ While Codefresh can still help with maintenance of the on-premise platform, we w
 
 ## High level Architecture
 
-The overall architecture of Codefresh is shown below:
-
-{% include image.html
-  lightbox="true"
-  file="/images/enterprise/installation/architecture-high-level.png"
-  url="/images/enterprise/installation/architecture-high-level.png"
-  alt="High level overview"
-  caption="High level overview (click to enlarge)"
-  max-width="100%"
-    %}  
-
 The most important components are the following:
 
 **The Codefresh VPC:** This is where all internal Codefresh services are running (analyzed in the next section). Codefresh is using internally Mongo and PostgreSQL for storing information such as users and authentication.
@@ -146,13 +135,6 @@ The most important components are the following:
 **The Pipeline execution environment**. This is where all pipelines run. The Codefresh engine component is responsible for taking pipeline definitions and running them in managed Kubernetes clusters by automatically launching the Docker containers that each pipeline needs for its steps.
 
 **External actors**. Codefresh is offering a [public API]({{site.baseurl}}/docs/integrations/codefresh-api/) that is consumed both by the Web User interface as well as the [Codefresh CLI](https://codefresh-io.github.io/cli/). The API is also available for any custom integration with external tools or services.
-
-**Google Firebase**. This is used for the storage of build logs. It is fully managed by Codefresh services. 
-
-**Hybrid runtime**. This is an optional installation on a customer cluster using the [Codefresh runner]({{site.baseurl}}/docs/enterprise/codefresh-runner/). It allows customers to run the Codefresh engine inside private Kubernetes clusters. This way pipelines can be executed on customer premises instead of the Codefresh SAAS platform.
-
-**Hybrid runtime V2**. This is the upcoming version of the Codefresh runner that allows customers to use multiple internal clusters with a single Codefresh runner. This way customers can easily split their pipelines on clusters of different capabilities or even clusters from different architectures and providers.
-
 
 ## Topology diagram
 
@@ -189,7 +171,7 @@ If we zoom into the Codefresh Services platform we will see the following:
 
 ### Log Component
 
-**cf-broadcaster** stores build logs from pipelines
+**cf-broadcaster** stores build logs from pipelines (the replacement for Firebase in the previous installer).  The only component that the UI and CLI have access to through a web socket in order to stream logs.
 
 ### Kubernetes Components
 
