@@ -198,7 +198,7 @@ Running the init command will create a directory containing a `config.yaml` file
 Edit the configuration in config.yaml and deploy to Kubernetes. The config.yaml is very descriptive and it contains an explanation for every parameter.
 
 If you install Codefresh on the air-gapped environment (without access to public Docker Hub or codefresh-enterprise registry) you will have to copy the images to your organization container registry (Kubernetes will pull the images from it as part of the installation).
-This can be done by uncommenting and setting the proper values in the ‘config.yaml file:
+This can be done by uncommenting and setting the proper values in the `config.yaml` file:
 
 ```yaml
 images:
@@ -278,7 +278,7 @@ Complete the OAuth application registration as follows:
 - **Homepage URL:** https://<your-codefresh-onprem-domain>
 - **Authorization callback URL:** https://<your-codefresh-onprem-domain>/api/auth/github/callback
 
-After registration, note down the created Client ID and Client Secret. They will be required for the settings in Codefresh Admin Console-IDPs
+After registration, note down the created Client ID and Client Secret. They will be required for the settings in **Codefresh Admin**->**IDPs**
 
 #### GitLab
 
@@ -295,9 +295,15 @@ Complete the application creation form as follows:
 
 Click **Save application**.
 
-After app creation, note down the created Application ID and Client Secret. They will be required for the settings in Codefresh Admin Console-IDPs
+After app creation, note down the created Application ID and Client Secret. They will be required for the settings in **Codefresh Admin**->**IDPs** as shown below:
 
->Note: When configuring the default IDP (for GitHub, GitLab, etc), do not modify the Client Name field. Please keep them as GitHub, GitLab, bitbucket, etc. Otherwise, the signup and login views won’t work.
+{% include image.html
+  lightbox="true"
+  file="/images/enterprise/installation/git-idp.png"
+  url="/images/enterprise/installation/git-idp.png"
+    %}   
+
+>Note: When configuring the default IDP (for GitHub, GitLab, etc), do not modify the Client Name field. Please keep them as GitHub, GitLab, BitBucket, etc. Otherwise, the signup and login views won’t work.
 
 ### Proxy Configuration
 
