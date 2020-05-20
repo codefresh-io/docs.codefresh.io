@@ -278,8 +278,8 @@ On the left-hand side, under **Developer settings**, select **OAuth Apps**, and 
 
 Complete the OAuth application registration as follows:
 - **Application name:** codefresh-on-prem (or a significant name)
-- **Homepage URL:** https://<your-codefresh-onprem-domain>
-- **Authorization callback URL:** https://<your-codefresh-onprem-domain>/api/auth/github/callback
+- **Homepage URL:** https://{% raw %}<your-codefresh-onprem-domain>{% endraw %}
+- **Authorization callback URL:** {% raw %}https://<your-codefresh-onprem-domain>/api/auth/github/callback{% endraw %}
 
 After registration, note down the created Client ID and Client Secret. They will be required for the settings in **Codefresh Admin**->**IDPs**
 
@@ -290,7 +290,7 @@ Navigate to your Applications menu in GitLab User Settings: https://gitlab.com/p
 Complete the application creation form as follows:
 
 - **Name:** codefresh-onprem (or a significant name)
-- **Redirect URI:** https://<your-codefresh-onprem-domain>/api/auth/gitlab/callback
+- **Redirect URI:** {% raw %}https://<your-codefresh-onprem-domain>/api/auth/gitlab/callback{% endraw %}
 - **Scopes (permissions):**
   - API
   - read_user
@@ -298,7 +298,7 @@ Complete the application creation form as follows:
 
 Click **Save application**.
 
-After app creation, note down the created Application ID and Client Secret. They will be required for the settings in **Codefresh Admin**->**IDPs** as shown below:
+After app creation, note down the created Application ID and Client Secret. They will be required for the settings in **Codefresh Admin**->**IDPs**.
 
 {% include image.html
   lightbox="true"
