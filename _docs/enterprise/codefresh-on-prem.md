@@ -264,7 +264,7 @@ kcfi deploy [ -c config.yaml ] [-n namespace]
 
 Codefresh supports out-of-the-box Git logins using your local username and password, or logins using your git provider (per the list and instructions of providers below). You can also configure login to supported SSO providers post-install as described [in the Codefresh documentation]({{site.baseurl}}/docs/enterprise/single-sign-on/sso-setup-oauth2/).
 
-If you’d like to set up a login to Codefresh using your git provider, first login using the local default credentials provided by Codefresh and add your git provider OAuth integration details in our admin console: 
+If you’d like to set up a login to Codefresh using your git provider, first login using the default credentials (username: AdminCF, password: AdminCF) and add your git provider OAuth integration details in our admin console: 
 
 **Admin Management** > **IDPs** tab
 
