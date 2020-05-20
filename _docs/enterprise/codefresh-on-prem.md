@@ -37,8 +37,7 @@ Codefresh supports the following Git providers:
   - Minimum node sizes:
     - Single node: 8 CPU core and 16GB RAM
     - Multi node: master(s) + 3 nodes with 4 CPU core and 8GB RAM (24 GB in total)
-  
-- Helm Tiller, v1.12 or above, installed with permissions to the same namespace codefresh is going to be installed to (codefresh namespace)
+
 - Service Account file (provided by Codefresh)
 - Default app credentials (provided by Codefresh)
 - Storage size allocated for Codefresh persisted services - described in the storage section
@@ -195,7 +194,7 @@ kcfi init codefresh [-d /path/to/stage-dir]
 ```
 Running the init command will create a directory containing a `config.yaml` file, which will use us to configure our installation, and other files and directories required for the installation.
 
-Edit the configuration in config.yaml and deploy to Kubernetes. The config.yaml is very descriptive and it contains an explanation for every parameter.
+Edit the configuration in `config.yaml` and deploy to Kubernetes. The `config.yaml` is very descriptive and it contains an explanation for every parameter.
 
 If you install Codefresh on the air-gapped environment (without access to public Docker Hub or codefresh-enterprise registry) you will have to copy the images to your organization container registry (Kubernetes will pull the images from it as part of the installation).
 This can be done by uncommenting and setting the proper values in the `config.yaml` file:
@@ -211,7 +210,7 @@ images:
   lists:
   - images/images-list
 ```
-Set usePrivateRegistry: true, and set private registry address and credentials.
+Set `usePrivateRegistry: true`, and set `privateRegistry` `address`, `username` and `password`.
  
 Then, execute the following:
 
@@ -232,6 +231,8 @@ Use the flag `--codefresh-registry-secret` to pass the path to the file `sa.json
 
 It is highly recommended to use TLS certificates for secured installation. In the `config.yaml` file set `tls.selfSigned=false` and place both `ssl.crt` and `private.key` into certs/ directory.
 
+>Note: Any valid TLS certificate will work, i.e. certificates from lets-encrypt or a Corporate Signed certificate.
+
 ### Step 4 -- Deploy
 
 Deploy the Codefresh Platform by running:
@@ -241,7 +242,9 @@ kcfi deploy [ -c config.yaml ] [ --kube-context <kube-context-name> ] [ --atomic
 ```
 ### Step 5 -- Install the Codefresh Kubernetes Agent
 
-The cf-k8s-agent is responsible for accessing Kubernetes resources (pods, deployments, services, etc.) behind the firewall in order to display them in the Codefresh UI.
+The cf-k8s-agent is responsible for accessing Kubernetes resources (pods, deployments, services, etc.) behind the firewall in order to display them in the Codefresh UI.  It can be installed in a separate cluster from the installer, or in a separate namespace.
+
+The agent streams for updates on cluster resources and then sends information updates to the `k8s-monitor` service.
 
 Execute the following:
 
@@ -353,7 +356,6 @@ These are the volumes required for Codefresh on-premise:
 | cf-postgresql* | Events databases - Postgres | 8GB         | Yes**                        |
 | cf-rabbitmq*   | Message broker         | 8GB              | No**                         |
 | cf-redis*      | Cache                  | 8GB              | No**                         |
-| cf-registry*   | Internal docker registry | 100GB          | Yes                          |
 | cf-store       | Trigger Redis data     | 8GB              | No**                         |
 | cf-cronus      | Trigger crontab data   | 1GB              | Yes                          |
 | datadir-cf-consul-0 | Consul datadir    | 1GB              | Yes                          |
@@ -369,16 +371,43 @@ These are the volumes required for Codefresh on-premise:
 ***Docker daemon can be run on block device only
 {% endraw %}
 
-Stateful sets (cf-builder and cf-runner) process their data on separate physical volumes (PVs) and can be claimed using PVCs with default initial sizes of 100Gi. Also, those stateful sets have the ability to connect to existing pre-defined PVCs. The default initial volume size (100 Gi) can be overridden in the custom config.yaml file. Values descriptions are in the `config.yaml` file.
-The registry’s initial volume size is 100Gi. It also can be overridden in a custom `config.yaml` file. There is a possibility to use a customer-defined registry configuration file (config.yml) that allows using different registry storage back-ends (S3, Azure Blob, GCS, etc.) and other parameters. More details can be found in the [Docker documentation](https://docs.docker.com/registry/configuration/).
+StatefulSets (cf-builder and cf-runner) process their data on separate physical volumes (PVs) and can be claimed using PVCs with default initial sizes of 100Gi. Also, those StatefulSets have the ability to connect to existing pre-defined PVCs. 
+
+The default initial volume size (100 Gi) can be overridden in the custom `config.yaml` file. Values descriptions are in the `config.yaml` file.
+The registry’s initial volume size is 100Gi. It also can be overridden in a custom `config.yaml` file. There is a possibility to use a customer-defined registry configuration file (`config.yaml`) that allows using different registry storage back-ends (S3, Azure Blob, GCS, etc.) and other parameters. More details can be found in the [Docker documentation](https://docs.docker.com/registry/configuration/).
 
 Depending on the customer’s Kubernetes version we can assist with PV resizing. Details are can be found in this [Kubernetes blog post](https://kubernetes.io/blog/2018/07/12/resizing-persistent-volumes-using-kubernetes/).
 
-Automatic Volume Provisioning
-Codefresh installation supports automatic storage provisioning based on standard Kubernetes dynamic provisioner Storage Classes and Persistent Volume Claims. All required installation volumes will be provisioned automatically using the default storage class or custom Storage Class that can be specified as a parameter in config.yaml under storageClass: my-storage-class.
+#### Automatic Volume Provisioning
+
+Codefresh installation supports automatic storage provisioning based on the standard Kubernetes dynamic provisioner Storage Classes and Persistent Volume Claims. All required installation volumes will be provisioned automatically using the default Storage Class or custom Storage Class that can be specified as a parameter in `config.yaml` under `storageClass: my-storage-class`.
 
 ## Common Problems, Solutions, and Dependencies
+
+### Dependencies
+
+All services using the MongoDB are dependent on the `mongo` pod being up and running.  If the `mongo` pod is down, the following dependencies will not work:
+
+- runtime-environment-manager
+- pipeline-manager
+- cf-api
+- cf-broadcaster
+- context-manager
+- nomios
+- cronius
+- cluster-promoters
+- k8s-monitor
+- charts-manager
+- tasker-kubernetes
+
+### Problems and Solutions
 
 1. **Problem:** pipeline runs, but does not show logs.
 
 **Solution:** There is a dependency between the broadcaster pod and the API pod.  Try restarting the broadcaster pod.
+
+1. **Problem:** installer fails because `codefresh` database does not exist.
+
+**Solution:** If you are using an external PostgresSQL database (instead of the internal one that the installer provides), you will first need to manually create a new database named `codefresh` inside your PostgresSQL database before running the installer.
+
+
