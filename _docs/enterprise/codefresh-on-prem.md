@@ -196,6 +196,18 @@ Running the init command will create a directory containing a `config.yaml` file
 
 Edit the configuration in `config.yaml` and deploy to Kubernetes. The `config.yaml` is very descriptive and it contains an explanation for every parameter.
 
+#### Installation Methods (Helm or Codefresh CRD)
+
+You have the option to install by either the Codefresh CRD Definition (as described above), or by using Helm, which will install/upgrade the chart from the client.
+Define either **operator** or **helm** as your preferred installation method in the `config.yaml`:
+
+```yaml
+  installer:
+    # type: 
+    #   "operator" - apply codefresh crd definition
+    #   "helm" - install/upgrade helm chart from client
+```
+
 If you install Codefresh on the air-gapped environment (without access to public Docker Hub or codefresh-enterprise registry) you will have to copy the images to your organization container registry (Kubernetes will pull the images from it as part of the installation).
 This can be done by uncommenting and setting the proper values in the `config.yaml` file:
 
@@ -343,6 +355,16 @@ global:
 ```
 
 ### Storage
+
+#### Databases
+
+The following table displays the list of databases created as part of the installation:
+
+| Database | Purpose |
+|----------|---------|
+| mongoDB | storing all account data (account settings, users, projects, pipelines, builds etc.) |
+| postgresql | storing data about events that happened on the account (pipeline updates, deletes, etc.). The audit log uses the data from this database. |
+| redis | mainly used for caching, but also used as a key-value store for our trigger manager. |
 
 #### Volumes
 
