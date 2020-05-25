@@ -21,7 +21,7 @@ We’ll help you get up to speed with basic functionality such as: compiling, bu
 
 This project uses `Scala` to build an application which will eventually become a distributable Docker image.
 
-You can find the example application on [Github](https://github.com/codefresh-contrib/scala-hello-world-app). 
+You can find the example application on [GitHub](https://github.com/codefresh-contrib/scala-hello-world-app). 
 
 There are two pipeline examples provided in this tutorial:
 

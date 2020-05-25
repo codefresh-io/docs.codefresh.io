@@ -112,7 +112,7 @@ caption="Example git integrations"
 max-width="40%"
 %}
 
-Here is an example for an integration with the Gitlab provider already connected:
+Here is an example for an integration with the GitLab provider already connected:
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -277,7 +277,7 @@ Here is an example for GitHub
 version: '1.0'
 steps:
   get_git_token:
-    title: Reading Github token
+    title: Reading GitHub token
     image: codefresh/cli
     commands:
       - cf_export GITHUB_TOKEN=$(codefresh get context github --decrypt -o yaml | yq -y .spec.data.auth.password)

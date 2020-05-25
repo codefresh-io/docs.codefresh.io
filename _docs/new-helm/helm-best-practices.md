@@ -7,7 +7,7 @@ redirect_from:
 toc: true
 ---
 
-[Helm](https://helm.sh) is a package manager for Kubernetes (think apt or yum). It works by combining several manifests into a single package that is called [a chart](https://helm.sh/docs/developing_charts/). Helm also supports chart storage in remote or local Helm repositories that function like package registries such as Maven Central, Ruby Gems, NPM registry, etc.
+[Helm](https://helm.sh) is a package manager for Kubernetes (think apt or yum). It works by combining several manifests into a single package that is called [a chart](https://helm.sh/docs/developing_charts/). Helm also supports chart storage in remote or local Helm repositories that function like package registries such as Maven Central, Ruby Gems, npm registry, etc.
 
 Helm is currently the only solution that supports
 

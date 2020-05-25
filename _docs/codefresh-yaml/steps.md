@@ -992,7 +992,7 @@ checkout_many_projects:
 {% endraw %}
 {% endhighlight %}
 
-The Github projects are passed as an array, so if we want to check out an additional project, we simply add items to that array.
+The GitHub projects are passed as an array, so if we want to check out an additional project, we simply add items to that array.
 
 Here is the [step specification](https://github.com/kostis-codefresh/step-examples/blob/master/multi-clone/multi-clone-step.yml):
 

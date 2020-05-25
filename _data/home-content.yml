@@ -208,7 +208,7 @@
     localurl: /docs/integrations/jenkins-integration/
   - title: Slack integration
     localurl: /docs/integrations/notifications/slack-integration/
-  - title: Github actions
+  - title: GitHub Actions
     new: true
     localurl: /docs/integrations/github-actions/
   - title: Jira integration

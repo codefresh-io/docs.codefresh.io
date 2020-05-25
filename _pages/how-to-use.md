@@ -17,7 +17,7 @@ You have a few option how to specify/provide callout message
 {{site.data.callout.callout_info}}
 ##### Example 
 
-Just head over to the example [__repository__](https://github.com/codefreshdemo/example-springboot-kafka){:target="_blank"} in Github and follow the instructions there.
+Just head over to the example [__repository__](https://github.com/codefreshdemo/example-springboot-kafka){:target="_blank"} in GitHub and follow the instructions there.
 {{site.data.callout.end}}
 
 {% endraw %}
@@ -28,7 +28,7 @@ Just head over to the example [__repository__](https://github.com/codefreshdemo/
 {{site.data.callout.callout_info}}
 ##### Example
 
-Just head over to the example [__repository__](https://github.com/codefreshdemo/example-springboot-kafka){:target="_blank"} in Github and follow the instructions there.
+Just head over to the example [__repository__](https://github.com/codefreshdemo/example-springboot-kafka){:target="_blank"} in GitHub and follow the instructions there.
 {{site.data.callout.end}}
 
 #### Available styles:

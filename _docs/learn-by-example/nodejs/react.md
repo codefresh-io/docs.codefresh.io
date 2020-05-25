@@ -50,7 +50,7 @@ This docker build does the following:
 1. Starts from the Node/Yarn image
 1. Copies the dependencies inside the container
 1. Copies the source code and creates all static files
-1. Discards the Node.js image with all the Javascript libraries
+1. Discards the Node.js image with all the JavaScript libraries
 1. Starts again from the nginx image and copies **static build result** created before
 
 The resulting is very small, as it contains only packaged/minified files.

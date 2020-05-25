@@ -13,7 +13,7 @@ toc: true
 
 ## The Example Java Application
 
-You can find the example project on [Github](https://github.com/codefresh-contrib/scp-war-app).
+You can find the example project on [GitHub](https://github.com/codefresh-contrib/scp-war-app).
 
 The example application is a simple Hello World Java application using the [Spark Java framework](http://sparkjava.com/):
 

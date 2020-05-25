@@ -74,8 +74,8 @@ For SSH, paste your **raw**, private key into the SSH Key text box and click sav
 
 For more information on generating SSH keys and adding your public key to your VCS provider, see its official documentation:
  
-- [Github documentation](https://help.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent).
-- [Gitlab documentation](https://docs.gitlab.com/ee/ssh/#generating-a-new-ssh-key-pair)
+- [GitHub documentation](https://help.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent).
+- [GitLab documentation](https://docs.gitlab.com/ee/ssh/#generating-a-new-ssh-key-pair)
 - [Bitbucket documentation](https://confluence.atlassian.com/bitbucket/set-up-an-ssh-key-728138079.html)
 - [Azure documentation](https://docs.microsoft.com/en-us/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops&tabs=current-page)
 
@@ -107,16 +107,16 @@ lightbox="true"
 file="/images/integrations/git/github-required-scopes.png" 
 url="/images/integrations/git/github-required-scopes.png"
 max-width="40%"
-caption="Github permissions"
-alt="Github permissions"
+caption="GitHub permissions"
+alt="GitHub permissions"
 %}
 
-For Github on-premise you also need to provide the URL of the GitHub server in your organization.
+For GitHub on-premise you also need to provide the URL of the GitHub server in your organization.
 
-## Gitlab
+## GitLab
 
-For the **OAuth2 method** you only need to enable private repository access, enter a name for your connection and click *Save*. Then accept the permissions dialog. This is the easiest and recommended way to integrate Gitlab. Notice that if
-you used Gitlab when you [created your Codefresh account]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/), this integration is already setup for you.
+For the **OAuth2 method** you only need to enable private repository access, enter a name for your connection and click *Save*. Then accept the permissions dialog. This is the easiest and recommended way to integrate GitLab. Notice that if
+you used GitLab when you [created your Codefresh account]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/), this integration is already setup for you.
 
 For the **Access Key** method you need:
 
@@ -124,15 +124,15 @@ For the **Access Key** method you need:
 * An access token/key
 
 
-To create an access token, go to your Gitlab *settings* and select the *Access tokens* options.
-For more information see the [Gitlab Documentation page](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html){:target="_blank"}
+To create an access token, go to your GitLab *settings* and select the *Access tokens* options.
+For more information see the [GitLab Documentation page](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html){:target="_blank"}
 
-The name you enter in order to create the token in the Gitlab UI is completely arbitrary (use "Codefresh" for an example)
+The name you enter in order to create the token in the GitLab UI is completely arbitrary (use "Codefresh" for an example)
 
 Once you have the token, paste it in the Codefresh UI and click *Test connection*. If everything is OK can
 now save the git integration.
 
-For Gitlab on-premise you also need to provide the URL of the Gitlab server in your organization.
+For GitLab on-premise you also need to provide the URL of the GitLab server in your organization.
 
 ## Bitbucket
 

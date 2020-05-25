@@ -12,7 +12,7 @@ This tutorial will cover two examples, depending on your use case. If you are no
 
 ## The Example Django Application
 
-You can find the example project on [Github](https://github.com/codefresh-contrib/heroku-python-django-sample-app).
+You can find the example project on [GitHub](https://github.com/codefresh-contrib/heroku-python-django-sample-app).
 
 The repository contains a Django starter project with the following commands:
 

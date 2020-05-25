@@ -16,7 +16,7 @@ toc: true
 
   - **A security Assertion Markup Language 2.0 (SAML 2.0)** compliant Identity Provider (IdP) that is configured to communicate with Codefresh Service Provider (SP). For example, ADFS, Auth0, Okta and Ping Identity. 
   
-  - **OpenID Connect (OAuth 2.0)** identity management. For example, Google, GitHub, Bitbucket and Gitlab.
+  - **OpenID Connect (OAuth 2.0)** identity management. For example, Google, GitHub, Bitbucket and GitLab.
   
   This enables seamless SSO from a browser, by asserting the identity of the user to Codefresh.
 

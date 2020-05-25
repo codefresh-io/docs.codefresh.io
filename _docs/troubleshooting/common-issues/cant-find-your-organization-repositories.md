@@ -31,7 +31,7 @@ file="/images/415b5cf-2016-09-29_1530.png"
 url="/images/415b5cf-2016-09-29_1530.png"
 alt="2016-09-29_1530.png" 
 max-width="40%"
-caption="Github user menu (click image to enlarge)"
+caption="GitHub user menu (click image to enlarge)"
 %}
 
 ## 2. Navigate to your Authorized applications

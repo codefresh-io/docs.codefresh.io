@@ -133,7 +133,7 @@ Once that is done, Codefresh will launch your pipeline against the Pull Request.
 When supporting building of pull requests from forks there are a few "gotchas" to look out for:
 
 * Only comments made by repository owners and [collaborators](https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/adding-outside-collaborators-to-repositories-in-your-organization) will result in the pipeline being triggered
-* Only git pushes by collaborators within the Github organization will result in the pipeline being triggered
+* Only git pushes by collaborators within the GitHub organization will result in the pipeline being triggered
 * If the repository is in a GitHub organization, comments made by private members of the organization will not activate the trigger, even if they are set as an owner or collaborator.
 * The *Pull request comment added* checkbox should likely be the only one checked, or your pipeline may trigger on other events that you don't anticipate.
 
@@ -143,7 +143,7 @@ The *modified files* field is a very powerful Codefresh feature that allows you 
 files affected by a commit are in a specific folder (or match a specific naming pattern). This means that
 you can have a big GIT repository with multiple projects and build only the parts that actually change.
 
->Currently the field *modified files* is available only for GitHub, Gitlab and Bitbucket SAAS repositories, since they are the only GIT providers
+>Currently the field *modified files* is available only for GitHub, GitLab and Bitbucket SAAS repositories, since they are the only GIT providers
 that send this information in the webhook. We will support other GIT providers as soon as they add the respective feature. Also, the *modified files* field is only available for push events (i.e. not PR open events), since GIT providers only send it on these events.
 
 ### Using the Modified files field to constrain triggers to specific folder/files

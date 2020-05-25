@@ -100,7 +100,7 @@ A. Yes, all pipelines can be stored in a git repository (the same one as the app
 A. For basic usage, feel free to use the [shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/) facility. For production grade security we suggest a dedicated solution such as [Hashicorp Vault](https://www.vaultproject.io/). We offer a [vault plugin](https://codefresh.io/steps/step/vault) for this purpose.
 
 **Q. Can I call external service X in a pipeline?**    
-A. Yes, everything that has an API or CLI can be called in a Codefresh pipeline (Artifactory/S3/Slack/Sonarqube/Twistlock/Codecov etc)
+A. Yes, everything that has an API or CLI can be called in a Codefresh pipeline (Artifactory/S3/Slack/SonarQube/Twistlock/Codecov etc)
 
 
 ## Deployment features
