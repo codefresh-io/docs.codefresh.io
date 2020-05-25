@@ -220,6 +220,81 @@ venona install [options] --set-value=Storage.Backend=gcedisk \
                             [--set-file=Storage.GoogleServiceAccount=/path/to/google-service-account.json]
 ```
 
+#### Using multiple Availability Zones
+
+Currently, to support effective caching with GCE disks, the builds/pods need to be scheduled in a single AZ (this is more related to a GCP limitation than a Codefresh runner issue).
+
+If you have Kubernetes nodes running in multiple Availability Zones and wish to use the Codefresh runner we suggest the following:
+
+**Option A** - Provision a new Kubernetes cluster: a cluster that runs in a single AZ only. - The cluster should be dedicated for usage with the Codefresh runner. This is the preferred solution and avoids extra complexity.
+
+**Option B** - Install Codefresh runner in your multi-zone cluster, and let it run in the default Node Pool: - in this case, you must specify `--build-node-selector=<node-az-label>` (e.g.: `--build-node-selector=failure-domain.beta.kubernetes.io/zone=us-central1-a`) or simply modify the Runtime environment as below:
+
+```
+codefresh get runtime-environments gke_us-east4_my-gke-cluster/codefresh -o yaml > re.yaml
+```
+
+Edit the yaml:
+
+{% highlight yaml %}
+{% raw %}
+version: 2metadata:
+  agent: true
+  trial:
+    endingAt: 34534534
+    reason: Codefresh hybrid runtime
+    started: 23434
+  name: gke_us-east4_my-gke-cluster/codefresh
+  changedBy: kostis
+  creationTime: '2020/04/01 21:04:11'
+runtimeScheduler:
+  cluster:
+    clusterProvider:
+      accountId: 34543545456
+      selector: gke_us-east4_my-gke-cluster
+    namespace: codefresh
+    nodeSelector:
+      failure-domain.beta.kubernetes.io/zone: us-east4-a
+dockerDaemonScheduler:
+  cluster:
+    clusterProvider:
+      accountId: 5cdd8937242f167387e5aa56
+      selector: gke_us-east4_my-gke-cluster
+    namespace: codefresh
+    nodeSelector:
+      failure-domain.beta.kubernetes.io/zone: us-east4-a    
+  dockerDaemonParams: null
+  pvcs:
+    dind:
+      storageClassName: dind-gcedisk-us-east4-a-venona-codefresh
+      reuseVolumeSelector: 'codefresh-app,io.codefresh.accountName,pipeline_id'
+      volumeSize: 30Gi
+  userAccess: true
+extends:
+  - system/default/hybrid/k8s
+description: >-
+  Runtime environment configure to cluster:
+  gke_us-east4_my-gke-cluster and namespace: codefresh
+accountId: 45645k694353459
+{% endraw %}
+{% endhighlight %}
+
+Apply changes with: 
+
+```
+codefresh patch runtime-environments -f re.yaml
+```
+
+
+
+**Option C** - Like option B, but with a dedicated Node Pool
+
+**Option D** - Have 2 separate Codefresh runner Runtimes, one for zone A, and the other for zone B, and so on: this technically works, but it will require you to manually set the RE to use for the pipelines that won't use the default Codefresh runner RE. To distribute the pipeline's builds across the Codefresh runner REs.
+
+For example, let's say Venona-zoneA is the default RE, then, that means that for the pipelines that you want to run in Venona-zoneB, then you'll need to modify their RE settings, and explicitly set Venona-zoneB as the one to use.
+
+Regarding [Regional Persistent Disks](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/regional-pd), their support is not currently implemented in the Codefresh runner.
+
 ### Installing on AWS
 
 If you install the Codefresh runner on [EKS](https://aws.amazon.com/eks/) or any other custom cluster (e.g. with kops) in Amazon you need to configure it properly to work with EBS volume in order to gain [caching]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipeline-caching/).
