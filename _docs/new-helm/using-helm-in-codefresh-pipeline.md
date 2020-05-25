@@ -74,13 +74,14 @@ Once you have a Helm repository connected, attach it to the pipeline. Do this by
 
 {% include image.html 
 lightbox="true" 
-file="/images/kubernetes-helm/connect-helm-repo.png" 
-url="/images/kubernetes-helm/connect-helm-repo.png" 
+file="/images/kubernetes-helm/import-helm-configuration.png" 
+url="/images/kubernetes-helm/import-helm-configuration.png" 
 alt="Connecting a Helm repository in the pipeline"
 caption="Connecting a Helm repository in the pipeline" 
 max-width="50%" 
 %}
 
+You can also click on *Add shared configuration* directly from the three dots menu for the same functionality.
 This concludes the Helm setup for Codefresh. Now you can use the Helm freestyle step in the pipeline `codefresh.yml` file.
 
 Note that this step is only needed in pipelines that actually upload/fetch Helm charts from/to Helm repositories. If you have a pipeline that directly installs a Helm chart from the git filesystem, there is no need to import a Helm configuration.
@@ -188,7 +189,7 @@ deploy:
 Notes:
 - Assuming a git repository with the Helm chart files was cloned as a part of the pipeline.
 - The Git repository contains the chart files under the `chart` directory.
-- `chart_repo_url` is optional. If a [Helm repository configuration](#step-3---import-the-helm-configuration-in-your-pipeline-definition) is attached to the pipeline, this setting is ignored.
+- `chart_repo_url` is optional. If a [Helm repository configuration](#step-4-optional---import-the-helm-configuration-in-your-pipeline-definition) is attached to the pipeline, this setting is ignored.
 
 ### Example: Authenticating only
 
@@ -235,7 +236,7 @@ Name|Required|Description
 ---|---|---
 action|defaults to 'install'|Operation mode: `install`/`push`/`auth`
 chart_name|required for install/push|Chart reference to use, adhering to Helm's lookup rules (path to chart folder, or name of packaged chart). There's no need to prefix with `/reponame` if referencing a chart in a repository, this is handled automatically. a.k.a `CHART_NAME` but `CHART_NAME` shouldn't be used anymore.
-chart_repo_url|optional|Helm chart repository URL. If a [Helm repository configuration](#step-3---import-the-helm-configuration-in-your-pipeline-definition) is attached to the pipeline, this setting is ignored
+chart_repo_url|optional|Helm chart repository URL. If a [Helm repository configuration](#step-4-optional---import-the-helm-configuration-in-your-pipeline-definition) is attached to the pipeline, this setting is ignored
 chart_version|optional|Override or set the chart version
 cmd_ps|optional|Command Postscript - this will be appended as is to the generated helm command string. Can be used to set additional parameters supported by the command but not exposed as configuration options.
 commands|optional|commands to execute in plugin after auth action

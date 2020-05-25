@@ -166,7 +166,7 @@ max-width="70%"
 %}
 
 The Helm chart can be either in the same GIT repository as the source code (as shown above) or in a different one.
-Note that this workflow assumes that you [have attached a Helm repository]({{site.baseurl}}/docs/new-helm/using-helm-in-codefresh-pipeline/#step-4---import-the-helm-configuration-in-your-pipeline-definition) configuration in the pipeline.
+Note that this workflow assumes that you [have attached a Helm repository]({{site.baseurl}}/docs/new-helm/using-helm-in-codefresh-pipeline/#step-4-optional---import-the-helm-configuration-in-your-pipeline-definition) configuration in the pipeline.
 
 If you use the [Codefresh Helm repository]({{site.baseurl}}/docs/new-helm/managed-helm-repository/) you can see all your releases from the Codefresh UI.
 
