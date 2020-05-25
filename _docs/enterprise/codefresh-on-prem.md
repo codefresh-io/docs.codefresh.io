@@ -164,7 +164,7 @@ You will also need to modify the `config.yaml` for `kfci` by setting `skipCRD: t
 
 `kcfi` is a single binary and doesn’t have any dependencies.
 
-Download the binary from [Github](https://github.com/codefresh-io/kcfi/releases).
+Download the binary from [GitHub](https://github.com/codefresh-io/kcfi/releases).
 >Note: Darwin is for OSX
 
 Extract the file you just downloaded.

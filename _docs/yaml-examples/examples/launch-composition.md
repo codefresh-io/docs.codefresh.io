@@ -66,7 +66,7 @@ Be aware that the number of environments you can run is limited. When using the 
 {{site.data.callout.callout_info}}
 ##### Example
 
-Just head over to the example [**repository**](https://github.com/codefreshdemo/cf-example-launch-composition) in Github and follow the instructions there.
+Just head over to the example [**repository**](https://github.com/codefreshdemo/cf-example-launch-composition) in GitHub and follow the instructions there.
 {{site.data.callout.end}}
 
 Here is the end result:

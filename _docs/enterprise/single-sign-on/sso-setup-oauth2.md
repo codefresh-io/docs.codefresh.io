@@ -8,7 +8,7 @@ redirect_from:
 toc: true
 ---
 
-Codefresh natively supports login using GitHub, Bitbucket and Gitlab using OpenID Connect (OAUTH 2.0) protocol. This guide will review how to add additional SSO integrations based on OAUTH 2.0 as part of Codefresh Enterprise plan.
+Codefresh natively supports login using GitHub, Bitbucket and GitLab using OpenID Connect (OAUTH 2.0) protocol. This guide will review how to add additional SSO integrations based on OAUTH 2.0 as part of Codefresh Enterprise plan.
 
   
 ## Prerequisites

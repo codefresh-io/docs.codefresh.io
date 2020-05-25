@@ -17,7 +17,7 @@ redirect_from:
 
 ## The Example Php Project
 
-The example project can be found on [Github](https://github.com/codefresh-contrib/ftp-php-app).  The application is a simple Php application that displays an example timer.
+The example project can be found on [GitHub](https://github.com/codefresh-contrib/ftp-php-app).  The application is a simple Php application that displays an example timer.
 
 {% include image.html 
 lightbox="true" 

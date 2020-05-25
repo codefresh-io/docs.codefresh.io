@@ -51,7 +51,7 @@ More information about caching build dependencies you can find [in this blog pos
 
 ### Example Source code
 
-Just head over to the example [**repository**](https://github.com/codefreshdemo/cf-example-shared-volumes-between-builds){:target="_blank"} in Github and follow the instructions there. 
+Just head over to the example [**repository**](https://github.com/codefreshdemo/cf-example-shared-volumes-between-builds){:target="_blank"} in GitHub and follow the instructions there. 
 
 
 >The way the volume is shared between builds is that upon build completion we create an image of the volume state to be used in the next builds. If you run 2 builds in parallel from the same pipeline and at the same time, each will use the same last volume image, but it’ll run separately on both. The volume image you’ll get upon completion is the state of the build that finished last. 

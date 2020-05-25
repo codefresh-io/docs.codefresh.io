@@ -14,7 +14,7 @@ toc: true
 
 ## The Example Project
 
-The example project can be found on [Github](https://github.com/codefresh-contrib/gcloud-storage-sample-app.git).  The application is a simple Scala Hello World application contained in a jar, with a dependency on a scala-library jar which we will download from the bucket and package into a Docker image.
+The example project can be found on [GitHub](https://github.com/codefresh-contrib/gcloud-storage-sample-app.git).  The application is a simple Scala Hello World application contained in a jar, with a dependency on a scala-library jar which we will download from the bucket and package into a Docker image.
 
 Our project will contain two pipelines, one for uploading the dependency jar to our bucket, and the other for downloading the jar from the bucket.
 

@@ -61,7 +61,7 @@ After some brief time, the repository should appear in your own GitHub account.
 Now you are ready to start building code with Codefresh!
 
 
-> Codefresh supports Gitlab, Bitbucket and Azure GIT repositories apart from GitHub. The
+> Codefresh supports GitLab, Bitbucket and Azure GIT repositories apart from GitHub. The
 same principles presented in this tutorial apply for all Git providers.
 
 

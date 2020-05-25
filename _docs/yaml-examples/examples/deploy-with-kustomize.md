@@ -14,7 +14,7 @@ While it is good for simple scenarios, we suggest that you use Helm for managing
 
 ## The Example Application
 
-You can find the example project on [Github](https://github.com/codefresh-contrib/kustomize-sample-app).
+You can find the example project on [GitHub](https://github.com/codefresh-contrib/kustomize-sample-app).
 
 The sample application is a simple Spring Boot web app, that displays an environment variable, `MY_MYSQL_DB` on the page:
 

@@ -31,7 +31,7 @@ You can achieve parallelism in your Codefresh pipelines by using the following:
 
 ## The Example Project
 
-You can find the example Spring boot application on [Github](https://github.com/codefresh-contrib/fan-out-fan-in-sample-app.git).  It is a simple Hello World application that has several different types of tests we will be using to run using Codefresh's parallel mode.
+You can find the example Spring boot application on [GitHub](https://github.com/codefresh-contrib/fan-out-fan-in-sample-app.git).  It is a simple Hello World application that has several different types of tests we will be using to run using Codefresh's parallel mode.
 
 ## Create the Pipeline
 

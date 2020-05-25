@@ -165,7 +165,7 @@ As you can see we have also marked the steps with [stages]({{site.baseurl}}/docs
 
 All types of steps can by placed inside a parallel phase. Another common use case would be the parallel execution of [freestyle steps]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) for unit/integration tests.
 
-Let's say that you have a Docker image with a Python back-end and a Javascript front-end. You could run both types of tests in parallel with the following yaml syntax:
+Let's say that you have a Docker image with a Python back-end and a JavaScript front-end. You could run both types of tests in parallel with the following yaml syntax:
 
 `YAML`
 {% highlight yaml %}

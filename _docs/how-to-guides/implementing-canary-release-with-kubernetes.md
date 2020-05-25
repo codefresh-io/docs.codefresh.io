@@ -24,7 +24,7 @@ Our goal in this example is to implement the trunk-based development and deliver
 
 The Canary Pipeline
 
-First pipeline is the canary. It gets triggered by a Github webhook for each new master commit and is configured to use [codefresh-canary.yml](https://github.com/Codefresh-Examples/Examples/blob/master/canary-release/codefresh-canary.yml) as its flow definition.
+First pipeline is the canary. It gets triggered by a GitHub webhook for each new master commit and is configured to use [codefresh-canary.yml](https://github.com/Codefresh-Examples/Examples/blob/master/canary-release/codefresh-canary.yml) as its flow definition.
 
 We first build and push the images for the application and for test execution. Steps appropriately named _buildAppImage, pushAppImage, buildTestImage and pushTestImage_ take care of that:
 

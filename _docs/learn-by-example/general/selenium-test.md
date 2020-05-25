@@ -71,5 +71,5 @@ max-width="40%"
 {{site.data.callout.callout_info}}
 ##### Example
 
-Just head over to the example [__repository__](https://github.com/codefreshdemo/cf-example-selenium-test){:target="_blank"} in Github and follow the instructions there. 
+Just head over to the example [__repository__](https://github.com/codefreshdemo/cf-example-selenium-test){:target="_blank"} in GitHub and follow the instructions there. 
 {{site.data.callout.end}}

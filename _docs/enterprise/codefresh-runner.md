@@ -486,7 +486,7 @@ Installation of the Codefresh runner on a Kubernetes cluster is also setting up 
 Each one has own RBAC needs and therefore, expected created roles(and cluster-roles)
 
 
-You can see the exact resource descriptors [on Github](https://github.com/codefresh-io/venona/tree/master/venonactl/pkg/templates/kubernetes).
+You can see the exact resource descriptors [on GitHub](https://github.com/codefresh-io/venona/tree/master/venonactl/pkg/templates/kubernetes).
 
 Here is a list of the resources that are created during a Runner installation:
 

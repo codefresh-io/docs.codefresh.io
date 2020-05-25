@@ -162,14 +162,14 @@ Once that is done, Codefresh will show you the webhook endpoint along with a sec
 This concludes the setup on the Codefresh side. The final step is create a webhook call on the side of your GIT provider.
 The instructions are different per GIT provider:
 
-* [Github webhooks](https://developer.github.com/webhooks/)
-* [Gitlab webhooks](https://docs.gitlab.com/ee/user/project/integrations/webhooks.html)
+* [GitHub webhooks](https://developer.github.com/webhooks/)
+* [GitLab webhooks](https://docs.gitlab.com/ee/user/project/integrations/webhooks.html)
 * [Stash webhooks](https://confluence.atlassian.com/bitbucketserver/managing-webhooks-in-bitbucket-server-938025878.html)
 
 In all cases make sure that the payload is JSON, because this is what Codefresh expects.
 
 * For GitHub the events monitored should be `Pull requests` and `Pushes`.
-* For Gitlab the events monitored should be `Push events`,`Tag push events` and `Merge request events`.
+* For GitLab the events monitored should be `Push events`,`Tag push events` and `Merge request events`.
 
 After the setup is finished, the Codefresh pipeline will be executed every time a git event happens.
 

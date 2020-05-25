@@ -14,7 +14,7 @@ toc: true
 
 ## The Example Java Application
 
-You can find the example project on [Github](https://github.com/codefresh-contrib/mozilla-sops-app).
+You can find the example project on [GitHub](https://github.com/codefresh-contrib/mozilla-sops-app).
 
 The example application retrieves the system variable "password," from the pipeline and uses it to authenticate to a Redis database, but you are free to use any type of database of your choosing.
 

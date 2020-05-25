@@ -6,7 +6,7 @@ sub_group: examples
 toc: true
 ---
 
-[Pulumi](https://pulumi.io/) is a platform for *Infrastructure as Code*. It works like Terraform but allows you to use a proper programming language (Typescript, Python, Go) in order to describe your infrastructure (instead of a configuration language).
+[Pulumi](https://pulumi.io/) is a platform for *Infrastructure as Code*. It works like Terraform but allows you to use a proper programming language (TypeScript, Python, Go) in order to describe your infrastructure (instead of a configuration language).
 
 You can use Pulumi to deploy to Kubernetes or any other supported cloud platform. Because Pulumi itself is already offered [in a Docker container](https://hub.docker.com/r/pulumi/pulumi), it is very easy to run Pulumi in a Codefresh pipeline.
 
@@ -22,7 +22,7 @@ max-width="80%"
 
 ## The example Pulumi project
 
-You can see the example project at [https://github.com/codefresh-contrib/pulumi-sample-app](https://github.com/codefresh-contrib/pulumi-sample-app). The repository contains a simple Pulumi stack based on Kubernetes and Typescript.
+You can see the example project at [https://github.com/codefresh-contrib/pulumi-sample-app](https://github.com/codefresh-contrib/pulumi-sample-app). The repository contains a simple Pulumi stack based on Kubernetes and TypeScript.
 
 You can play with it locally after installing the `pulumi` executable.
 
@@ -86,7 +86,7 @@ steps:
 This pipeline does the following:
 
 1. Clones the source code with a [Git clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)
-1. Runs `yarn install` to download dependencies. In this example we use Typescript, but Go and Python would work as well (or any other language supported by Pulumi)
+1. Runs `yarn install` to download dependencies. In this example we use TypeScript, but Go and Python would work as well (or any other language supported by Pulumi)
 1. Chooses the cluster that will be used for deployments (if you have more than one). Use your own cluster name as seen in the [Kubernetes dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/) of Codefresh
 1. Runs `pulumi up` with the same target cluster
 

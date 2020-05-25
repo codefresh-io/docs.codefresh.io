@@ -127,5 +127,5 @@ In summary, the workflow for ARM images is exactly the same as the usual Linux/x
 ## What to read next
 
 * [Windows container support]({{site.baseurl}}/docs/incubation/windows-beta/)
-* [MacOSX and iOS builds]({{site.baseurl}}/docs/incubation/osx-ios-builds/)
+* [macOS and iOS builds]({{site.baseurl}}/docs/incubation/osx-ios-builds/)
 

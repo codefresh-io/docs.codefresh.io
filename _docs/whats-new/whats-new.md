@@ -24,7 +24,7 @@ Recent Codefresh updates:
 - New variable `CF_BRANCH_TAG_NORMALIZED_LOWER_CASE` - [documentation]({{site.baseurl}}/docs/codefresh-yaml/variables/#system-provided-variables)
 - Trigger a Kubernetes Deployment from a Dockerhub Push Event - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/trigger-a-k8s-deployment-from-docker-registry/)
 - Uploading or Downloading from a Google Storage Bucket - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/uploading-or-downloading-from-gs/)
-- Use Github actions no longer requires a Registry - [documentation]({{site.baseurl}}/docs/integrations/github-actions/#how-it-works)
+- Use GitHub Actions no longer requires a registry - [documentation]({{site.baseurl}}/docs/integrations/github-actions/#how-it-works)
 - Alternative debugging console - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/debugging-pipelines/#using-the-alternative-debug-window)
 - User variable priority rules - [documentation]({{site.baseurl}}/docs/codefresh-yaml/variables/#user-provided-variables)
 - Secret Storage - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/secrets-store/)
@@ -52,7 +52,7 @@ Recent Codefresh updates:
 ### February 2020
 
 - Beta Support for Helm 3 - [documentation]({{site.baseurl}}/docs/new-helm/helm3/)
-- Use Github actions as Codefresh pipeline steps - [documentation]({{site.baseurl}}/docs/integrations/github-actions/)
+- Use GitHub Actions as Codefresh pipeline steps - [documentation]({{site.baseurl}}/docs/integrations/github-actions/)
 - Publish a JAR to Artifactory/Nexus - [documentation]({{site.baseurl}}/docs/learn-by-example/java/publish-jar/)
 - New [dashboard](https://g.codefresh.io/builds) for builds - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/monitoring-pipelines/)
   *  The git-event name is now included
@@ -125,7 +125,7 @@ Recent Codefresh updates:
 - Sidecar services in pipelines - [documentation]({{site.baseurl}}/docs/codefresh-yaml/service-containers/)
 - Personal Git providers are deprecated - [documentation]({{site.baseurl}}/docs/troubleshooting/personal-git-deprecation/)
 - Migrate from Jenkins to Codefresh - [documentation]({{site.baseurl}}/docs/integrations/jenkins-integration/#migrating-from-jenkins-to-codefresh)
-- MacOSX and iOS builds closed Alpha - [documentation]({{site.baseurl}}/docs/incubation/osx-ios-builds/)
+- macOS and iOS builds closed Alpha - [documentation]({{site.baseurl}}/docs/incubation/osx-ios-builds/)
 
 
 ### July 2019
@@ -329,7 +329,7 @@ Recent Codefresh updates:
  - We added integration with main self-hosted GIT providers to our PRO plan. You can now use Codefresh with your repositories from:
    - GitHub enterprise
    - Bitbucket Enterprise
-   - Gitlab enterprise
+   - GitLab enterprise
 
 
 

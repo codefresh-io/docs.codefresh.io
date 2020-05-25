@@ -16,7 +16,7 @@ Codefresh offers a Vault plugin you may use from the [Step Marketplace](https://
 
 ## The Example Java Application
 
-You can find the example project on [Github](https://github.com/codefresh-contrib/vault-sample-app).
+You can find the example project on [GitHub](https://github.com/codefresh-contrib/vault-sample-app).
 
 The example application retrieves the system variable "password," from the pipeline and uses it to authenticate to a Redis database, but you are free to use any type of database of your choosing.
 

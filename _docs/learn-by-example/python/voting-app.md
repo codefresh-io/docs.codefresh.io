@@ -23,7 +23,7 @@ steps:
     image: codefresh/buildpacks:nodejs-5
     working-directory : ${{initial-clone}}
     commands:
-      - echo Installing NPM modules silent
+      - echo Installing npm modules silent
       - npm install
       - gulp test
       - echo $(date)

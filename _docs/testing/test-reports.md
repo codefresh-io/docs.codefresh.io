@@ -34,9 +34,9 @@ max-width="70%"
 
 You can find more details in the [official Allure documentation](https://docs.qameta.io/allure/). Several popular test frameworks are supported such as:
 
-* Java/jUnit/testNG/cucumber
+* Java/JUnit/TestNG/Cucumber
 * Python/pytest
-* Javascript/Jasmine/Mocha
+* JavaScript/Jasmine/Mocha
 * Ruby/Rspec
 * Groovy/Spock
 * .NET/Nunit/mstest
