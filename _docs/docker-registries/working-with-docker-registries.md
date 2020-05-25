@@ -2,6 +2,9 @@
 title: "Working with Docker Registries"
 description: "How to push, pull and tag Docker images in Codefresh pipelines"
 group: docker-registries
+redirect_from:
+  - /docs/build-specific-revision-image/
+  - /docs/image-management/build-specific-revision-image/
 toc: true
 ---
 
