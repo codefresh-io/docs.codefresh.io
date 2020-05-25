@@ -11,9 +11,9 @@ of the on-premise installation.
 
 See the [Hybrid installation]({{site.baseurl}}/docs/enterprise/installation-security/#hybrid-installation) and [behind-the-firewall]({{site.baseurl}}/docs/enterprise/behind-the-firewall/) pages for more details.
 
-## Codefresh Runner installation
+## Introduction
 
-The Codefresh runner installer is available at [https://github.com/codefresh-io/venona](https://github.com/codefresh-io/venona). You can use Venona to create, upgrade and remove runner installations on any internal Kubernetes cluster.
+The source code for the Codefresh Runner is available at [https://github.com/codefresh-io/venona](https://github.com/codefresh-io/venona). You can use Venona to create, upgrade and remove runner installations on any internal Kubernetes cluster.
 
 Notice that a runner installation is needed for each cluster that will _run_ Codefresh pipelines. A runner is **not** needed
 in clusters that are used for _deployment_. It is possible to deploy applications on different clusters other than the ones the runner is running on.
@@ -30,30 +30,19 @@ In order to use the Codefresh runner you need the following:
 
 Installation can happen from any workstation or laptop that has access (i.e. via `kubectl`) to the Kubernetes cluster that will run Codefresh builds. The Codefresh runner will authenticate to your Codefresh account by using the Codefresh CLI token. 
 
-### Components
+### Architecture
 
-Once installed the runner uses the following pods:
+The Codefresh Runner is comprised of the following components:
 
-* `venona` - responsible for picking tasks from the Codefresh UI
-* `engine` - responsible for running pipelines
-* `dind` - responsible for building and using Docker images
-* `dind-volume-provisioner` 
-* `dind-lv-monitor` 
+| Component | Pod Prefix | Purpose | Always On | Minimum CPU | Minimum Memory | Space |
+|-----------|------------|---------|-----------|-------------|----------------|-------|
+| Agent     | venona     | Responsible for getting tasks from the Codefresh platform and executing them (one per account).  Can handle multiple runtimes. | Yes |  100m | 100Mi | Doesn't need PV |
+| Volume Provisioner | dind-volume-provisioner-venona | Runtime component, responsible for volume provisioning for dind pods. | Yes | 300m          | 400Mi        | Doesn't need PV         |
+| Monitor | dind-lv-monitor-venona | Runtime component, daemonset responsible for cleaning volumes | Yes | 300m          | 400Mi        | Doesn't need PV         |
+| Engine | engine | Responsible for running pipelines. | No | 100m          | 100Mi        | Doesn't need PV         |
+| Docker builder/runner | dind | Responsible for building and running Docker images. | No | 390m          | 255Mi        | 30GB         |
 
-### System requirements
-
-The following table shows **MINIMUM** resources for each component:
-
-{: .table .table-bordered .table-hover}
-| Component         | Minimum CPU| Minimum Memory | Space                  | Type | Always on
-| -------------- | --------------|------------- |-------------------------|-------|-------|
-| `venona`        | 100m          | 100Mi        | Doesn't need PV         | Pod   | Yes   |
-| `engine`         | 100m          | 100Mi        | Doesn't need PV         | Pod   | No   |
-| `dind`         | 390m          | 255Mi        | 30GB         | Pod   | No   |
-| `dind-volume-provisioner`         | 300m          | 400Mi        | Doesn't need PV         | Pod   | Yes   |
-| `dind-lv-monitor`         | 300m          | 400Mi        | Doesn't need PV         | DaemonSet   | Yes   |
-
-Components that are always on consume resources all the time. Components that are not always on only consume resource when pipelines are running (they are created and destroyed automatically for each pipeline).
+Components that are always on (`venona`, `dind-volume-provisioner-venona`, `dind-lv-monitor-venona`) consume resources all the time. Components that are not always on (`engine` and `dind`) only consume resources when pipelines are running (they are created and destroyed automatically for each pipeline).
 
 Node size and count will entirely depend on how many pipelines you want to be “ready” for and how many will use “burst” capacity.  
 
@@ -77,56 +66,132 @@ For the storage space needed by the `dind` pod we suggest:
 
 All CNI providers/plugins are compatible with the runner components.
 
+## Codefresh Runner -- Getting Started
 
-### Command line installation
+The newest version of the Codefresh Runner has two major changes:
 
-First setup [Codefresh CLI access](https://codefresh-io.github.io/cli/getting-started/) first, in the machine where you want to install the runner from.
+* You can now install the runner from the [Codefresh CLI](https://codefresh-io.github.io/cli/). You don't need a separate installer anymore.
+* You can use a single agent to manage multiple installations of the runner (even from other Kubernetes clusters)
 
-You can see if the CLI works correctly by running any command such as:
+Watch a brief demo of an installation of the Codefresh Runner on asciinema:
+<script id="asciicast-wKIN7XcAcILiI3Rpaz3OMVhxp" src="https://asciinema.org/a/wKIN7XcAcILiI3Rpaz3OMVhxp.js" async></script>
+Or, continue reading below.
 
-```
-codefresh get pipelines
-```
+### Step 1 -- Install the Codefresh CLI
 
-This should list the pipelines of your Codefresh account. 
-Notice that access to the Codefresh CLI is only needed once during the Runner installation. After that, the Runner with authenticate on it own using the details provided. You do *NOT* need to install the Codefresh CLI on the cluster that is running Codefresh pipelines.
+You can use npm, yarn, or brew to install the CLI.  You can also download it directly.
 
-Download the Runner installer (called Venona) from the [releases page](https://github.com/codefresh-io/venona/releases) or by using homebrew if you are on a Mac:
+- **npm:** `npm install -g codefresh`
+- **yarn:** `yarn global add codefresh`
+- **brew (MacOS):** `brew tap codefresh-io/cli && brew install codefresh`
+- **Download directly:** download from our [release](https://github.com/codefresh-io/cli/releases) page.  Make sure you download version 0.64.0 or above.
 
-```
-brew tap codefresh-io/venona
-brew install venona
-```
+### Step 2 -- Get Codefresh Account Token and Authenticate with the CLI
 
-Create a namespace in your cluster where you want the Codefresh runner to be installed:
+There are two options to generating your token:
 
-```
-kubectl create namespace codefresh-runtime
-```
+1. Click the "Setup Hybrid" link [available from the dashboard](https://g.codefresh.io/welcome) of new Codefresh accounts (still in their trial period) and go through the Setup Wizard
+2. Generate a token with *all scopes* checked from your [user settings](https://g.codefresh.io/user/settings)
+  - Authenticate with the CLI by running: `codefresh auth create-context --api-key <token>`
+  - You can also pass a `--token` flag to the installation process as described in the next step
 
-And finally run the installer passing as argument the namespace you just created:
+### Step 3 -- Install the Hybrid Solution on your Kubernetes Cluster
 
-```
-venona install --kube-namespace codefresh-runtime
-```
-
-After a while you should see a message that the installation process has finished with success. You can run `venona --help` to get additional installation options.
-
-As an example, you can define your own location for kubeconfig and/or CLI config:
+Execute the following:
 
 ```
-venona install --kube-namespace my-codefresh-runtime --verbose --kube-config-path c:/users/kostis/.kube/config --cfconfig c:/Users/Kostis/.cfconfig
+codefresh runner init
 ```
 
-To check the installation result type `venona status --verbose` and you will get a list of all installations.
+You will be prompted for:
 
-### Installing behind a proxy
+- The name of the current cluster you want to use
+- The namespace you want to install to (it will be created for you if it does not exist.  The default is `codefresh`)
+- If you want to set this runtime as the default runner
+- If you want to run the demo pipeline after installation
 
-If you want to deploy the Codefresh runner on a Kubernetes cluster that doesn’t have direct access to `g.codefresh.io`, and has to go trough a proxy server to access `g.codefresh.io`, you will need to follow these additional steps:
+The `init` command will:
+
+- Install the agent, runtime, and monitor
+- Create and run a demo pipeline (if you opted in)
+
+**Additional parameters for `codefresh runner init`:**
+
+- `--name` - The name of the agent that will be created.
+- `--token` - codefresh account token to be used to install the Codefresh Runner.  This will automatically create a CLI context for you, if you did not do this separately with the CLI.
+- `--url` - Codefresh system custom url.
+- `--kube-context-name` - Name of the Kubernetes context on which the runner should be installed
+- `--kube-node-selector` - The Kubernetes node selector. "key=value" to be used by Codefresh Runner build resources (default is no node selector)
+- `--yes` - Use installation defaults (don't ask any questions during the installation)
+- `--set-default-runtime` - Set this as the default runtime environment for your Codefresh account
+- `--exec-demo-pipeline` - Run a demo pipeline after the installation completes (yes/no)
+- `--kube-namespace` - Name of the namespace on which Codefresh Runner should be installed
+- `--tolerations` - The Kubernetes [tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) as path to a JSON file. To be used by Codefresh Runner resources (default is no tolerations)
+- `--storage-class-name` - Set a name of your custom storage class
+- `--kube-config-path` - Path to kubeconfig file (default is $HOME/.kube/config)
+-- `verbose` - Print logs
+
+You can then follow the instructions for [using the runner](#using-the-codefresh-runner).
+
+### Uninstalling a Hybrid Solution from Kubernetes Cluster
+
+To uninstall the Hybrid solution, execute the following:
+
+```
+codefresh runner delete
+```
+
+The `delete` command will prompt you for:
+
+- The name of the current cluster you want to uninstall from
+- The namespace to remove Codefresh components from
+- The agent to uninstall
+
+More parameters for the delete command:
+ 
+- `--name` - Agent's name to be deleted
+- `--url` - Codefresh system custom URL
+- `--kube-context-name` - Name of the kubernetes context from which the Codefresh agent and runtime will be removed
+- `--kube-namespace` - Name of the kubernetes namespace from which the Codefresh agent and runtime will be removed
+- `--kube-config-path` - Path to kubeconfig file (default is $HOME/.kube/config)
+- `--verbose` - Print logs
+
+### Migrating to the new Codefresh Runner Version
+
+In order to migrate your existing Codefresh runner to the new version, you need to initiate the migration using our [migration script](https://github.com/codefresh-io/venona/blob/release-1.0/scripts/migration.sh)
+
+You will need to set the following environment variables:
+
+- `CODEFRESH_RUNTIME_NAME` - old runtime name (you can get the runtime environment with `codefresh get re`)
+- `VENONA_KUBE_NAMESPACE` - old Venona namespace 
+
+Note that manually added items to the Venona deployment will be deleted.  You will need to save them prior to migration and add them manually again.
+
+## Advanced Installation
+
+Here are some more complex use cases of installation methods.
+ 
+### Installing Additional Runtimes
+
+>NOTE: Please make sure that the cluster where the agent is installed has network access to the other clusters of the runtimes
+
+```
+# 1. Create namespace for the second runtime: 
+kubectl create namespace codefresh-2
+
+# 2. Install the second runtime, attach the runtime to the agent created in the Getting Started guide, and restart the Venona pod automatically
+codefresh install runtime --runtime-kube-namespace codefresh-2 --attach-runtime true --agent-name gke_codefresh-support_us-central1-c_anna-sandbox_codefresh --agent-kube-namespace codefresh --restart-agent
+
+# Repeat steps #1 and #2 for additional runtimes
+```
+
+### Installing Behind a Proxy
+
+If you want to deploy the Codefresh Runner on a Kubernetes cluster that doesn’t have direct access to `g.codefresh.io`, and has to go trough a proxy server to access `g.codefresh.io`, you will need to follow these additional steps:
 
 *Step 1* - Follow the installation instructions of the previous section
 
-*Step 2* -  Run `kubectl edit deployment venona -ncodefresh-runtime` and add the proxy variables like this
+*Step 2* -  Run `kubectl edit deployment venona -n codefresh` and add the proxy variables like this:
     
 {% highlight yaml %}
 {% raw %}
@@ -147,7 +212,6 @@ spec:
       value: localhost,127.0.0.1,<local_ip_of_machine>
 {% endraw %}
 {% endhighlight %}
-
     
 *Step 3* - Add the following variables to your runtime.yaml, both under the `runtimeScheduler:` and under `dockerDaemonScheduler:` blocks inside the `envVars:` section
 
@@ -187,7 +251,7 @@ kubectl create clusterrolebinding NAME --clusterrole cluster-admin --user <YOUR_
 
 ```
 
-### Docker cache support for GKE
+### Docker Cache Support for GKE
 
 If you want to use  *LocalSSD* in GKE:
 
@@ -346,7 +410,7 @@ Update your runtime environment with the [patch command](https://codefresh-io.gi
 codefresh patch runtime-environment ivan@wawa-ebs.us-west-2.eksctl.io/codefresh-runtime -f codefresh-runner.yaml
 ```
 
-### Injecting AWS arn roles into the cluster
+### Injecting AWS arn Roles into the Cluster
 
 Step 1 - Make sure the OIDC provider  is connected to the cluster
 
@@ -368,7 +432,7 @@ Here, in addition to the policy explained, you need a Trust Relationship establi
   max-width="90%"
     %} 
 
-Step 3 - Create a new namespace where the runner will be instlled (e.g.  `codefresh-runtime`) and annotate the default Kubernetes Service Account on the newly created namespace with the proper IAM role 
+Step 3 - Create a new namespace where the runner will be insatlled (e.g.  `codefresh-runtime`) and annotate the default Kubernetes Service Account on the newly created namespace with the proper IAM role 
 
 {% include image.html
   lightbox="true"
@@ -405,11 +469,10 @@ RunAwsCli:
 {% endraw %}
 {% endhighlight %}
 
-### Security roles
+### Security Roles
 
 Installation of the Codefresh runner on a Kubernetes cluster is also setting up 2 groups of objects.
-Each one has own RBAC needs and therefore, expected created roles(and cluster-roles)
-
+Each one has own RBAC needs and therefore, expects created roles (and cluster-roles)
 
 You can see the exact resource descriptors [on Github](https://github.com/codefresh-io/venona/tree/master/venonactl/pkg/templates/kubernetes).
 
@@ -424,174 +487,6 @@ Here is a list of the resources that are created during a Runner installation:
   * `service-account.dind-volume-provisioner.re.yaml` - The service account that the controller will use.
   * `cluster-role.dind-volume-provisioner.re.yaml` Defines all the permission needed for the controller to operate correctly.
   * `cluster-role-binding.dind-volume-provisioner.yaml` - Binds the ClusterRole to `service-account.dind-volume-provisioner.re.yaml`.
-
-## Codefresh Runner (Preview Release) -- Getting Started
-
-We are now preparing the next version of Codefresh runner with two major changes:
-
-* You can now install the runner from the [Codefresh CLI](https://codefresh-io.github.io/cli/). You don't need a separate installer anymore.
-* You can use a single agent to manage multiple installations of the runner (even from other Kubernetes clusters)
-
-> This release is only offered as a preview. We recommend that you do not use it for production deployments yet.
-
-### Architecture
-
-The Codefresh Runner is comprised of the following components:
-
-| Component | Pod Prefix | Purpose |
-|-----------|------------|---------|
-| Agent     | venona     | Responsible for getting tasks from the Codefresh platform and executing them (one per account).  Can handle multiple runtimes. |
-| Volume Provisioner | dind-volume-provisioner-venona | Runtime component, responsible for volume provisioning for dind pods. |
-| Monitor | dind-lv-monitor-venona | Runtime component, daemonset responsible for cleaning volumes |
-
-### Step 1 -- Install the Codefresh CLI
-
-You can use npm, yarn, or brew to install the CLI.  You can also download it directly.
-
-- **npm:** `npm install -g codefresh`
-- **yarn:** `yarn global add codefresh`
-- **brew (MacOS):** `brew tap codefresh-io/cli && brew install codefresh`
-- **Download directly:** download from our [release](https://github.com/codefresh-io/cli/releases) page.  Make sure you download version 0.63.9 or above.
-
-### Step 2 -- Get Codefresh Account Token and Authenticate with the CLI
-
-There are two options to generating your token:
-
-1. Click the "Setup Hybrid" link [available from the dashboard](https://g.codefresh.io/welcome) of new Codefresh accounts (still in their trial period) and go through the Setup Wizard
-2. Generate a token with *all scopes* checked from your [user settings](https://g.codefresh.io/user/settings)
-  - Authenticate with the CLI by running: `codefresh auth create-context --api-token <token>`
-  - You can also pass a `--token` flag to the installation process as described in the next step
-
-### Step 3 -- Install the Hybrid Solution on your Kubernetes Cluster
-
-Execute the following:
-
-```
-codefresh runner init
-```
-
-You will be prompted for:
-
-- The name of the current cluster you want to use
-- The namespace you want to install to (it will be created for you if it does not exist.  The default is `codefresh`)
-- If you want to set this runtime as the default runner
-- If you want to run the demo pipeline after installation
-
-The `init` command will:
-
-- Install the agent, runtime, and monitor
-- Create and run a demo pipeline (if you opted in)
-
-**Additional parameters for `codefresh runner init`:**
-
-- `--name` - The name of the agent that will be created.
-- `--token` - codefresh account token to be used to install the Codefresh Runner.  This will automatically create a CLI context for you, if you did not do this separately with the CLI.
-- `--url` - Codefresh system custom url.
-- `--kube-context-name` - Name of the Kubernetes context on which the runner should be installed
-- `--kube-node-selector` - The Kubernetes node selector. "key=value" to be used by Codefresh Runner build resources (default is no node selector)
-- `--yes` - Use installation defaults (don't ask any questions during the installation)
-- `--set-default-runtime` - Set this as the default runtime environment for your Codefresh account
-- `--exec-demo-pipeline` - Run a demo pipeline after the installation completes (yes/no)
-- `--kube-namespace` - Name of the namespace on which Codefresh Runner should be installed
-- `--tolerations` - The Kubernetes [tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) as path to a JSON file. To be used by Codefresh Runner resources (default is no tolerations)
-- `--storage-class-name` - Set a name of your custom storage class
-- `--kube-config-path` - Path to kubeconfig file (default is $HOME/.kube/config)
--- `verbose` - Print logs
-
-You can then follow the instructions for [using the runner](#using-the-codefresh-runner).
-
-### Uninstalling a Hybrid Solution from Kubernetes Cluster
-
-To uninstall the Hybrid solution, execute the following:
-
-```
-codefresh runner delete
-```
-
-The `delete` command will prompt you for:
-
-- The name of the current cluster you want to uninstall from
-- The namespace to remove Codefresh components from
-- The agent to uninstall
-
-More parameters for the delete command:
- 
-- `--name` - Agent's name to be deleted
-- `--url` - Codefresh system custom URL
-- `--kube-context-name` - Name of the kubernetes context from which the Codefresh agent and runtime will be removed
-- `--kube-namespace` - Name of the kubernetes namespace from which the Codefresh agent and runtime will be removed
-- `--kube-config-path` - Path to kubeconfig file (default is $HOME/.kube/config)
-- `--verbose` - Print logs
-
-### Migrating to the new Codefresh Runner Version
-
-In order to migrate your existing Codefresh runner to the new version, you need to initiate the migration using our [migration script](https://github.com/codefresh-io/venona/blob/release-1.0/scripts/migration.sh)
-
-You will need to set the following environment variables:
-
-- `CODEFRESH_RUNTIME_NAME` - old runtime name (you can get the runtime environment with `codefresh get re`)
-- `VENONA_KUBE_NAMESPACE` - old Venona namespace 
-
-Note that manually added items to the Venona deployment will be deleted.  You will need to save them prior to migration and add them manually again.
-
->This release is only offered as a preview. We recommend that you do not use it for production deployments yet.
-
-## Advanced: Installing Additional Runtimes
-
->NOTE: Please make sure that the cluster where the agent is installed has network access to the other clusters of the runtimes
-
-```
-# 1. Create namespace for the agent: 
-kubectl create namespace codefresh-agent
-
-# 2. Install the agent on the namespace ( give your agent a unique name as $NAME):
-# Note down the token and use it in the second command.
-codefresh create agent $NAME
-codefresh install agent --token $TOKEN --kube-namespace codefresh-agent
-codefresh get agents
-
-# 3. Create namespace for the first runtime:
-kubectl create namespace codefresh-runtime-1
-
-# 4. Install the first runtime on the namespace
-# 5. the runtime name is printed
-codefresh install runtime --kube-namespace codefresh-runtime-1
-
-# 6. Attach the first runtime to agent:
-codefresh attach runtime --agent-name $AGENT_NAME --agent-kube-namespace codefresh-agent --runtime-name $RUNTIME_NAME --kube-namespace codefresh-runtime-1
-
-# 7. Restart the venona pod in namespace `codefresh-agent`
-kubectl delete pods $VENONA_POD
-
-# 8. Create namespace for the second runtime
-kubectl create namespace codefresh-runtime-2
-
-# 9. Install the second runtime on the namespace
-codefresh install runtime --kube-namespace codefresh-runtime-2
-
-# 10. Attach the second runtime to agent and restart the Venoa pod automatically
-codefresh attach runtime --agent-name $AGENT_NAME --agent-kube-namespace codefresh-agent --runtime-name $RUNTIME_NAME --runtime-kube-namespace codefresh-runtime-1 --restart-agent
-```
-
-## Troubleshooting
-
-- **Problem:** You receive an error regarding the provided token or CLI context used for this installation might not have enough permissions.
-- **Solution:** Make sure when you generate the token used to authenticate with the CLI, you generate it with *all scopes*.
- 
- 
-- **Problem:** the cluster does not meet the minimum requirements (Kubernetes 1.10+, required memory/CPU on at least one single node, service account to create ClusterRoleBinding).
-- **Solution:** install on a different cluster
-
-
-- **Problem:** Node process crashes during the installation or installation gets stuck on “Executing pipeline.“
-- **Solution:** Try to run the `codefresh unner init` command from a different terminal window or restart your machine and try again.
-
-
-- **Problem:** Builds will not run.
-- **Solution:** Check:
-  - That there is only one Codefresh Runner per Kubernetes namespace
-  - That you selected the correct runtime for the pipeline
-  - The CPU/Memory specification in the pipeline settings
 
 ## Using the Codefresh Runner 
 
@@ -642,12 +537,6 @@ venona-7fcc8dddf9-fmhr9                           1/1     Running   0          1
 ```
 In the same manner you can list secrets, config-maps, logs, volumes etc. for the Codefresh builds. 
 
-## Upgrading the Runner
-
-To update the runner to a new version you use the `venona upgrade command`
-
-To delete a runner installation use `venona delete <installation_name>`. Make sure that you don't have any pipelines assigned to that runtime environment before the removal takes place.
-
 ## Deploying applications to the same cluster of the runner
 
 By default the Codefresh runner allows you to *build* pipelines in your private cluster. If you also want to *deploy* Docker images on your private cluster you need to use the [Codefresh API]({{site.baseurl}}/docs/integrations/codefresh-api/) or CLI to add the cluster to Codefresh.
@@ -658,6 +547,26 @@ Here is the [CLI command](https://codefresh-io.github.io/cli/clusters/create-clu
 codefresh create cluster --kube-context <CONTEXT_NAME> --namespace <NAMESPACE> --serviceaccount <SERVICE_ACCOUNT> --behind-firewall
 ```
 See the [connecting a cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/) page for more details on adding cluster.
+
+## Troubleshooting
+
+- **Problem:** You receive an error regarding the provided token or CLI context used for this installation might not have enough permissions.
+- **Solution:** Make sure when you generate the token used to authenticate with the CLI, you generate it with *all scopes*.
+ 
+ 
+- **Problem:** the cluster does not meet the minimum requirements (Kubernetes 1.10+, required memory/CPU on at least one single node, service account to create ClusterRoleBinding).
+- **Solution:** install on a different cluster
+
+
+- **Problem:** Node process crashes during the installation or installation gets stuck on “Executing pipeline.“
+- **Solution:** Try to run the `codefresh unner init` command from a different terminal window or restart your machine and try again.
+
+
+- **Problem:** Builds will not run.
+- **Solution:** Check:
+  - That there is only one Codefresh Runner per Kubernetes namespace
+  - That you selected the correct runtime for the pipeline
+  - The CPU/Memory specification in the pipeline settings
 
 ## What to read next
 
