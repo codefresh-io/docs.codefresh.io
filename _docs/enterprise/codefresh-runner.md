@@ -400,7 +400,7 @@ dockerDaemonScheduler:
   annotations: {}
   dockerDaemonParams: null
   pvcs:
-    - name: dind
+    dind:
       volumeSize: 30Gi
       storageClassName: venona-ebs
       reuseVolumeSelector: 'codefresh-app,io.codefresh.accountName'
