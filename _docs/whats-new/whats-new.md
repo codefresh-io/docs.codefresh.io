@@ -8,6 +8,10 @@ toc: true
 ---
 Recent Codefresh updates:
 
+### June 2020
+
+- Multiple Dockerhub integrations - [documentation]({{site.baseurl}}/docs/docker-registries/external-docker-registries/docker-hub/#adding-more-dockerhub-integrations)
+
 ### May 2020
 
 - Masking encrypted variables in logs - [documentation]({{site.baseurl}}/docs/codefresh-yaml/variables/#masking-variables-in-logs)
