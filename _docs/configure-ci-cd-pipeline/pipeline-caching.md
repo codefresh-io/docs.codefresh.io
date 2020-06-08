@@ -258,6 +258,7 @@ In practice, this means that you need to look at the documentation of your build
  * For SBT use `-Dsbt.ivy.home=/codefresh/volume/ivy_cache`.
  * For Pip use `pip install -r requirements.txt --cache-dir=/codefresh/volume/pip-cache` as shown in the [example]({{site.baseurl}}/docs/learn-by-example/python/django/)
  * For Golang pass an environment variable `GOPATH=/codefresh/volume/go` to the freestyle step that is running go commands
+ * For Rust pass an environment variable `CARGO_HOME=/codefresh/volume/cargo` to the freestyle step that is running rust/cargo commands
 
  This is only needed for traditional applications that are not dockerized. If you already use Docker containers the previous caching mechanisms are already enough.
 

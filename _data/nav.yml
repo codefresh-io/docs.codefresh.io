@@ -90,6 +90,8 @@
           url: "/c-make"
         - title: 'C++'
           url: "/cpp-cmake"
+    - title: Rust
+      url: "/rust"          
     - title: C# (.NET Core)
       url: "/dotnet"
     - title: Scala

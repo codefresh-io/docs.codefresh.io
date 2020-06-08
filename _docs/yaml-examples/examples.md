@@ -21,6 +21,7 @@ Codefresh is agnostic as far as programming languages are concerned. All major p
 - [Python Django App]({{site.baseurl}}/docs/learn-by-example/python/django/)
 - [Ruby On Rails App]({{site.baseurl}}/docs/learn-by-example/ruby/)
 - [C]({{site.baseurl}}/docs/learn-by-example/cc/c-make/) or [C++]({{site.baseurl}}/docs/learn-by-example/cc/cpp-cmake)
+- [Rust]({{site.baseurl}}/docs/learn-by-example/rust/) 
 - [C# .NET core]({{site.baseurl}}/docs/learn-by-example/dotnet/)
 - [Scala App]({{site.baseurl}}/docs/learn-by-example/scala/scala-hello-world/)
 - [Android (Mobile)]({{site.baseurl}}/docs/learn-by-example/mobile/android/)

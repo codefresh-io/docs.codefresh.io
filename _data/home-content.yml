@@ -56,6 +56,8 @@
     localurl: /docs/learn-by-example/scala/scala-hello-world/
   - title: C/C++
     localurl: /docs/learn-by-example/cc/
+  - title: Rust
+    localurl: /docs/learn-by-example/rust/    
   - title: C# (.NET core)
     localurl: /docs/learn-by-example/dotnet/
   - title: Android (Mobile)

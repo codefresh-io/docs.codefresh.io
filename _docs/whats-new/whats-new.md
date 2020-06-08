@@ -12,6 +12,7 @@ Recent Codefresh updates:
 
 - Multiple Dockerhub integrations - [documentation]({{site.baseurl}}/docs/docker-registries/external-docker-registries/docker-hub/#adding-more-dockerhub-integrations)
 - Global Docker registry prefix/repository - [documentation]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/#pushing-images-with-an-optional-prefix)
+- Example with Rust/Cargo - [documentation]({{site.baseurl}}/docs/learn-by-example/rust/)
 
 ### May 2020
 
