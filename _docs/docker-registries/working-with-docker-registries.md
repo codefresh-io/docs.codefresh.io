@@ -278,6 +278,61 @@ Here the build step is creating an image named `my-app-image:master` but the pus
 
 For more examples such as using multiple tags, or pushing in parallel see the [push examples]({{site.baseurl}}/docs/codefresh-yaml/steps/push/#examples)
 
+### Pushing images with an optional prefix
+
+There are some Registry providers that require a specific prefix for all your Docker images. This is often the name of an organization, account or other top level construct defined by the Registry.
+
+  `codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+  build:
+    title: "Building Docker image"
+    type: "build"
+    image_name: "acme-company/trivial-go-web"
+    working_directory: "${{clone}}"
+    tag: "latest"
+    dockerfile: "Dockerfile.multistage"
+    stage: "build"
+    registry: azure
+{% endraw %}
+{% endhighlight %}
+
+The example above will push the final Docker image as `kostisazureregistry.azurecr.io/acme-company/trivial-go-web:latest`. However, you can also setup the prefix globally once in the [Docker integration screen]({{site.baseurl}}/docs/docker-registries/external-docker-registries/#using-an-optional-repository-prefix). This way you can simplify your pipelines and have them mention only the final image name.
+
+{% 
+  include image.html 
+  lightbox="true" 
+  file="/images/artifacts/working-with-images/registry-prefix.png" 
+  url="/images/artifacts/working-with-images/registry-prefix.png" 
+  alt="Global registry prefix" 
+  caption="Global registry prefix" 
+  max-width="70%" 
+%}
+
+The example above will automatically prefix all your Docker images with `acme-company`.
+
+Now you can simplify your build/push step as below:
+
+  `codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+  build:
+    title: "Building Docker image"
+    type: "build"
+    image_name: "trivial-go-web"
+    working_directory: "${{clone}}"
+    tag: "latest"
+    dockerfile: "Dockerfile.multistage"
+    stage: "build"
+    registry: azure
+{% endraw %}
+{% endhighlight %}
+
+The final Docker image will still be `kostisazureregistry.azurecr.io/acme-company/trivial-go-web:latest`.
+
+
+
+
 ## Promoting Docker images
 
 Apart from building and pushing a brand new docker image, you can also "promote" a docker image by copying it from one registry to another. 

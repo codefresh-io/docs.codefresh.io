@@ -31,7 +31,7 @@ Add a new registry configuration from the drop down.
 
 Each configuration must be given a unique name, which you can later reference in a codefresh.yml file.
 
-{% include image.html lightbox="true" file="/images/2924d81-registry-name.png" url="/images/2924d81-registry-name.png" alt="Specify Docker Registry Name" max-width="65%" %}
+{% include image.html lightbox="true" file="/images/2924d81-registry-name.png" url="/images/2924d81-registry-name.png" alt="Specify Docker Registry Name" max-width="40%" %}
 
 ## Pushing an image
 
@@ -49,7 +49,26 @@ push_step:
   registry: <your-registry-configuration-name>
 {% endhighlight %}
 
-For more details see the [image pushing page]({{site.baseurl}}/docs/docker-registries/push-image-to-a-docker-registry/).
+For more details see the [the image pushing example]({{site.baseurl}}/docs/yaml-examples/examples/build-and-push-an-image/).
+
+## Using an optional repository prefix
+
+Codefresh allows you to setup globally for each supported Registry a prefix string for your Docker images.
+
+
+This is handy for registries that require a prefix (usually the name of an organization or repository) as you can set it once, instead
+of having each pipeline using the prefix by itself.
+
+{% include image.html 
+  lightbox="true" 
+  file="/images/artifacts/registry/repository-prefix.png" 
+  url="/images/artifacts/registry/repository-prefix.png" 
+  alt="Setting a Registry prefix" 
+  caption="Setting a Registry prefix"
+  max-width="60%" 
+  %}
+
+See more details at [pushing Docker images]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/#pushing-docker-images)
 
 ## The default registry
 
