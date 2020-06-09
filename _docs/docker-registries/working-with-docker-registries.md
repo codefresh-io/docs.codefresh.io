@@ -330,8 +330,159 @@ Now you can simplify your build/push step as below:
 
 The final Docker image will still be `kostisazureregistry.azurecr.io/acme-company/trivial-go-web:latest`.
 
+## Working with multiple registries with the same domain
+
+With Codefresh you can [connect multiple registries on a global level]({{site.baseurl}}/docs/docker-registries/external-docker-registries/). This allows you to create pipelines that push/pull images to different registries without having to deal with Docker credentials inside the pipeline itself.
+
+However, there are several times where you have multiple registries that have the same domain. For example you might have two Dockerhub accounts connected to Codefresh (so both of them can resolve images for the docker.io domain)
+
+This means that when you reference an image by domain name (e.g. in a freestyle step), Codefresh might not know which Docker registry account you want to use for the pull action.
+
+> Notice, that this is not a Codefresh limitation, but a Docker one. Even with vanilla Docker you cannot login to multiple registries at the same time if they share the same domain.
+
+To solve this problem, Codefresh will automatically detect connected registries that have the same domain and allow you to designate the primary one, that will be used for image resolution when pulling Docker images.
+
+{% 
+  include image.html 
+  lightbox="true" 
+  file="/images/artifacts/working-with-images/primary-dockerhub.png" 
+  url="/images/artifacts/working-with-images/primary-dockerhub.png" 
+  alt="Choosing a Docker registry as the primary one if they have the same domain" 
+  caption="Choosing a Docker registry as the primary one if they have the same domain"
+  max-width="90%" 
+%}
+
+In the example above, even though two Dockerhub integrations are connected to Codefresh, only the primary one will be used for pulling images from the docker.io domain (You can still use the second one in push/build steps using the `registry` property).
+
+You can override the default behavior in each pipeline, by adding the optional `registry_context` property to instruct Codefresh on how to use a specific registry for pulling Docker images (if you have more than one for the same domain).
 
 
+
+You can use the `registry_context` property in [build]({{site.baseurl}}/docs/codefresh-yaml/steps/build/), [push]({{site.baseurl}}/docs/codefresh-yaml/steps/push/), [freestyle]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) and [composition]({{site.baseurl}}/docs/codefresh-yaml/steps/composition/) steps.
+
+The `registry_context` property takes as value the name of an external connected registry. Build and composition steps accept an array of values as `registry_context`. In all cases, by using this optional property you instruct Codefresh to use a specific registry for pulling images.
+
+> Notice that the optional `registry_context` and `registry_context` properties only affect the **pulling** of Docker images. The registry used for *pushing* images is still declared explicitly in build and push pipeline steps.
+
+The syntax for the freestyle step is the following:
+
+{% highlight yaml %}
+{% raw %}
+  test:
+    title: "Running test"
+    type: "freestyle" 
+    image: "gcr.io/my-google-project/my-image:latest"
+    registry_context: my-second-gcr-registry # define what registry will be used for pulling the image
+    working_directory: "${{clone}}" 
+    commands:
+      - "ls"
+{% endraw %}
+{% endhighlight %}
+
+The syntax for the build step is the following:
+
+{% highlight yaml %}
+{% raw %}
+  build:
+    title: "Building Docker image"
+    type: "build"
+    image_name: "trivial-go-web"
+    working_directory: "${{clone}}"
+    tag: "latest"
+    dockerfile: "Dockerfile.multistage"
+    stage: "build"
+    registry_contexts: # define what registries will be used for pulling images
+      - second-dockerhub
+      - production-azure
+    registry: azure
+{% endraw %}
+{% endhighlight %}
+
+
+The syntax for the push step is the following:
+
+{% highlight yaml %}
+{% raw %}
+  push:
+    title: "Pushing 1st Docker image"
+    type: push
+    image_name: "kostiscodefresh/trivial-go-web"
+    tag: "latest"
+    stage: "push" 
+    registry: dockerhub # Docker registry to push to 
+    registry_context: second-dockerhub # Docker registry to pull images from
+    candidate: ${{build}}
+{% endraw %}
+{% endhighlight %}
+
+The syntax for the composition step is the following:
+
+{% highlight yaml %}
+{% raw %}
+  my-composition:
+    title: Running Composition
+    type: composition
+    registry_contexts: 
+      - first-gcr
+      - second-gcr
+    arguments:
+      composition:
+        version: '2'
+        services:
+          db:
+            image: postgres
+      composition_candidates:
+        test_service:
+          image: 'alpine:3.9'
+          command: printenv
+          working_dir: /app
+          environment:
+            - key=value
+{% endraw %}
+{% endhighlight %}
+
+Let's look at an example. We assume that we have two GCR integrations:
+
+{% 
+  include image.html 
+  lightbox="true" 
+  file="/images/artifacts/working-with-images/two-gcr-integrations.png" 
+  url="/images/artifacts/working-with-images/two-gcr-integrations.png" 
+  alt="Two GCR integrations" 
+  caption="Two GCR integrations" 
+  max-width="90%" 
+%}
+
+The first integration is the "production" one and the second one is the "staging" one. The production one is designated as primary. This means that by default even though both integrations work for the gcr.io domain, only the primary one will be used in Codefresh pipeline for pulling images.
+
+Let's say however that you want to build a Docker image that has a `FROM` statement from an image that exists in the staging registry. The image should be pushed to the production registry. You can use the `registry_context` property as shown below:
+
+
+{% highlight yaml %}
+{% raw %}
+  build:
+    title: "Building Docker image"
+    type: "build"
+    image_name: "gcr.io/production-project/my-image"
+    working_directory: "${{clone}}"
+    tag: "latest"
+    dockerfile: "Dockerfile"
+    stage: "build"
+    registry: production-gcr
+    registry_contexts: # define what registries will be used for pulling images
+      - staging-gcr
+{% endraw %}
+{% endhighlight %}
+
+Behind the scenes Codefresh will
+
+1. First login to the "staging" Docker registry using the "staging" credentials
+1. Build the docker image, by resolving the `FROM` statements with "staging" images, pulling them as needed using the staging credentials
+1. Tag the Docker image
+1. Login to the "production" Docker registry
+1. Push the final Docker image to the "production" registry.
+
+If your primary Docker registry is also the one that is used in your pipelines, you don't need the `registry_context` property at all, as this is the default behavior. When searching for an image to pull Codefresh will look at all your Docker registries (if they manage only a single domain), plus your "primary" Docker registries in case you have multiple Docker registries for the same domain.
 
 ## Promoting Docker images
 

@@ -27,35 +27,11 @@ You can find the complete guide [here](https://support.google.com/cloud/answer/6
 
 ## Working with multiple projects
 
-If you have more than one repositories/projects in Google cloud, you have to configure a Google Service Account so that it can access all projects and then use it for the Codefresh integration.
+If you have more than one repositories/projects in Google cloud, you can connect multiple GCR registries and define one as the "primary" for the gcr.io domain.
 
-Then you refer to the images according to the repository names, which correspond to the project names
+This means that every time Codefresh needs to pull an image it will use that integration. If you wish to use another project for pulling images,
+you can use the `registry_context` property as described in [working with multiple registries]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/#working-with-multiple-registries-with-the-same-domain).
 
-Follow these steps:
-
-1. Create a Service Account in GCP to use with Codefresh, if you have not created it
-yet.
-1. [Grant the created SA with proper privileges​](https://cloud.google.com/container-registry/docs/access-control) to access GCR ​**across different
-projects​​**.
-1. [Create a key for the SA](https://support.google.com/cloud/answer/6158849#serviceaccounts).
-1. Use the created key to check login to GCR like this: ​`docker login -u _json_key -p "$(cat keyfile.json)" https://gcr.io`.
-1. Integrate the GCR with Codefresh using​ the [Other registries]({{ site.baseurl }}/docs/docker-registries/external-docker-registries/other-registries/) option​:
-
-* ​Registry name: `<arbitrary_name>`
-* ​Username: `_json_key` (literally)
-* Password: `<contents_of_the_keyfile.json>`
-* ​Domain: `eu.gcr.io` or `us.gcr.io`
-
-Then you can [refer to the registry​](https://cloud.google.com/container-registry/docs/pushing-and-pulling?hl=en_US) like this in [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/):
-
-```
-MyPushStep:
-  title: pushing to Google Docker registry
-  type: push
-  candidate: <project_id>/<image_name>
-  tag: <your_tag>
-  registry: <registry_name_you_gave_in_step_5>
-```
 
 ## What to read next
 
