@@ -545,7 +545,7 @@ kubectl create namespace codefresh-runtime-1
 codefresh install runtime --kube-namespace codefresh-runtime-1
 
 # 6. Attach the first runtime to agent:
-codefresh attach runtime --agent-name $AGENT_NAME --agent-kube-namespace codefresh-agent --runtime-name $RUNTIME_NAME --kube-namespace codefresh-runtime-1
+codefresh attach runtime --agent-name $AGENT_NAME --agent-kube-namespace codefresh-agent --runtime-name $RUNTIME_NAME --runtime-kube-namespace codefresh-runtime-1
 
 # 7. Restart the venona pod in namespace `codefresh-agent`
 kubectl delete pods $VENONA_POD
@@ -557,7 +557,7 @@ kubectl create namespace codefresh-runtime-2
 codefresh install runtime --kube-namespace codefresh-runtime-2
 
 # 10. Attach the second runtime to agent and restart the Venoa pod automatically
-codefresh attach runtime --agent-name $AGENT_NAME --agent-kube-namespace codefresh-agent --runtime-name $RUNTIME_NAME --runtime-kube-namespace codefresh-runtime-1 --restart-agent
+codefresh attach runtime --agent-name $AGENT_NAME --agent-kube-namespace codefresh-agent --runtime-name $RUNTIME_NAME --runtime-kube-namespace codefresh-runtime-2 --restart-agent
 ```
 
 ### Migrating to the new Codefresh runner version
