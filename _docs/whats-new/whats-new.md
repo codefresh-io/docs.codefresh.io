@@ -13,6 +13,7 @@ Recent Codefresh updates:
 - Using multiple Registry integrations with the same domain - [documentation]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/#working-with-multiple-registries-with-the-same-domain)
 - Multiple Dockerhub integrations - [documentation]({{site.baseurl}}/docs/docker-registries/external-docker-registries/docker-hub/#adding-more-dockerhub-integrations)
 - Global Docker registry prefix/repository - [documentation]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/#pushing-images-with-an-optional-prefix)
+- Caching Registry selection - [documentation]({{site.baseurl}}/docs/docker-registries/external-docker-registries/#the-caching-registry)
 - Example with Rust/Cargo - [documentation]({{site.baseurl}}/docs/learn-by-example/rust/)
 
 ### May 2020

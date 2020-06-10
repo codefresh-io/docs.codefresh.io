@@ -391,27 +391,9 @@ steps:
 
 This pipeline is able to use the new `registry` property because we declare at the root of the pipeline that the enhanced version of the build step will be used.
 
-### Choosing a caching registry
+### Marking a registry as a caching registry
 
-In the [external registry screen]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) you can also select a single registry that will serve as your [caching registry]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipeline-caching/#docker-registry-caching).
-
-In most cases you want to select as caching registry the same registry that is default for your pipelines (i.e. the registry where your build steps will push an image).
-
-Codefresh will efficiently use that registry to perform advanced caching logic for your builds
-
-  * Codefresh will automatically examine the stored metadata to decide which past image is most relevant for caching purposes
-  * Codefresh will automatically pull images from this registry for cache purposes
-  * Codefresh will automatically use that registry for distributed Docker layer caching to make your Docker builds faster
-
-We give you the ability to define a separate registry for caching purposes for the following scenarios
-
-1. You don't want extra traffic to be sent to your main deployment registry.  Maybe you want to avoid bandwidth/storage limits in your production registry
-1. You have lots of build steps in pipelines with intermediate docker images that you are certain you don't need outside of the pipeline itself. 
-1. You have speed concerns regarding image pulling/pushing. For example your development team is in Europe, but your production servers are in the USA. You would probably choose a caching registry in a European region (so that developers get the best experience), where your main registry is in the USA (close to your production servers)
-
-Therefore in most cases you should make your main registry your caching registry as well. For extra control you can either define a different caching registry or disable selectively automatic pushes with the `disable_push` property.
-
->Notice that the dynamic image feature of Codefresh (creating docker images on demand in the same pipeline that is using them) will always work regardless of a caching registry.
+Make sure that one of your external registries (if you have more than one) is marked as a [caching registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/#the-caching-registry).
 
 
 ### Using the new Docker image dashboard/API
