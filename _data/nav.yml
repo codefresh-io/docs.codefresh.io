@@ -439,8 +439,8 @@
 - title: Incubation
   url: "/incubation"
   pages:
-    - title: Windows Container Support Overview (Beta)
-      url: "/windows-beta"
+    - title: Windows Container Support Overview
+      url: "/windows"
     - title: Mac OSX and iOS builds
       url: "/osx-ios-builds"
     - title: ARM architecture support

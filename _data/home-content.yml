@@ -249,8 +249,8 @@
   icon: images/home-icons/plugins.svg
   url: ''
   links:
-  - title: Windows Containers Support(Beta)
-    localurl: /docs/incubation/windows-beta
+  - title: Windows Containers Support
+    localurl: /docs/incubation/windows
   - title: Mac OSX and iOS builds
     new: true
     localurl: /docs/incubation/osx-ios-builds
