@@ -5,11 +5,9 @@ group: enterprise
 toc: true
 ---
 
-The Codefresh runner is a helper application that can be installed on your own Kubernetes cluster (behind a company firewall).
-It can then build Codefresh pipelines, with full access to secure internal services, without actually compromising the requirements
-of the on-premise installation.
+Install the Codefresh Runner on your Kubernetes cluster to run pipelines and access secure internal services without compromising on premise security requirements. These pipeliens run on your infrasture, even behind the firewall, and keep code on your Kubernetes cluster. 
 
-See the [Hybrid installation]({{site.baseurl}}/docs/enterprise/installation-security/#hybrid-installation) and [behind-the-firewall]({{site.baseurl}}/docs/enterprise/behind-the-firewall/) pages for more details.
+[Skip to quick installation &#8594;]({{site.baseurl}}/docs/docs/enterprise/codefresh-runner/#installation-with-the-quick-start-wizard)
 
 >Notice that a runner installation is needed for each cluster that will _run_ Codefresh pipelines. A runner is **not** needed
 in clusters that are used for _deployment_. It is possible to deploy applications on different clusters other than the ones the runner is running on.
@@ -28,15 +26,17 @@ Installation can happen from any workstation or laptop that has access (i.e. via
 
 ## Installation with the quick-start wizard
 
-The simplest way to install the Codefresh runner is with the wizard in the Codefresh CLI. First [install the Codefresh CLI](https://codefresh-io.github.io/cli/installation/) and make sure you are [authenticated](https://codefresh-io.github.io/cli/authentication/) to your Codefresh account.
-
-You can see if the CLI works correctly by running any command such as:
-
+Install the Codefresh CLI
 ```
-codefresh get pipelines
+npm install -g codefresh
 ```
+[Alternative install methods](https://codefresh-io.github.io/cli/installation/)
 
-This should list the pipelines of your Codefresh account. 
+Authenticate the cli
+```
+codefresh auth create-context --api-key {API_KEY}
+```
+You can obtain an API Key from your [user settings page](https://g.codefresh.io/user/settings).
 
 Notice that access to the Codefresh CLI is only needed once during the Runner installation. After that, the Runner with authenticate on it own using the details provided. You do *NOT* need to install the Codefresh CLI on the cluster that is running Codefresh pipelines.
 
