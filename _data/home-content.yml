@@ -200,7 +200,7 @@
     localurl: /docs/yaml-examples/examples/nomad/
 
 - title: Integrations
-  icon: images/home-icons/integrations.svg
+  icon: images/home-icons/cloud-integrations.png
   url: ''
   links:
   - title: GIT integration
@@ -224,8 +224,8 @@
   - title: Codefresh CLI
     url: http://cli.codefresh.io/
 
-- title: "Enterprise Features"
-  icon: images/home-icons/enterprise1.svg
+- title: "Administration"
+  icon: images/home-icons/integrations.svg
   url: ''
   links:
   - title: Installation Options
