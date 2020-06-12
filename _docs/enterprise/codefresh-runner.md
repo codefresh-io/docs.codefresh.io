@@ -733,6 +733,26 @@ Here is a list of the resources that are created during a Runner installation:
   * `cluster-role-binding.dind-volume-provisioner.yaml` - Binds the ClusterRole to `service-account.dind-volume-provisioner.re.yaml`.
 
 
+## Troubleshooting
+
+- **Problem:** You receive an error regarding the provided token or CLI context used for this installation might not have enough permissions.
+- **Solution:** Make sure when you generate the token used to authenticate with the CLI, you generate it with *all scopes*.
+
+
+- **Problem:** the cluster does not meet the minimum requirements (Kubernetes 1.10+, required memory/CPU on at least one single node, service account to create ClusterRoleBinding).
+- **Solution:** install on a different cluster
+
+
+- **Problem:** Node process crashes during the installation or installation gets stuck on “Executing pipeline.“
+- **Solution:** Try to run the `codefresh unner init` command from a different terminal window or restart your machine and try again.
+
+
+- **Problem:** Builds will not run.
+- **Solution:** Check:
+  - That there is only one Codefresh Runner per Kubernetes namespace
+  - That you selected the correct runtime for the pipeline
+  - The CPU/Memory specification in the pipeline settings
+  
 ## What to read next
 
 * [Codefresh installation options]({{site.baseurl}}/docs/enterprise/installation-security/)

@@ -9,7 +9,7 @@ toc: true
 
 This manual will guide you through the installation of Codefresh platform on your On-prem environment.  This manual is intended to cover all aspects of installation, upgrade, and maintenance.  Please read this manual carefully before installing Codefresh.
 
-`kfci` (the Kubernetes Codefresh Installer) is a one-stop-shop, while Codefresh offers multiple tools to install components, kcfi will aggregate all of them into a single tool.
+[kfci](https://github.com/codefresh-io/kcfi) (the Kubernetes Codefresh Installer) is a one-stop-shop, while Codefresh offers multiple tools to install components, kcfi will aggregate all of them into a single tool.
 
 ## Survey -- What Codefresh Needs to Know
 
@@ -42,11 +42,13 @@ Codefresh supports the following Git providers:
 - Default app credentials (provided by Codefresh)
 - Storage size allocated for Codefresh persisted services - described in the storage section
 
-Codefresh will need outbound connection to the internet for the following services:
+Codefresh will need outbound connection to the Internet for the following services:
 - GCR - pulling platform images
 - Dockerhub - pulling pipeline images
 
 ## Security Constraints
+
+Codefresh has some security assumptions for the Kubernetes cluster it is installed on.
 
 ### RBAC for Codefresh
 
@@ -272,6 +274,8 @@ kcfi deploy [ -c config.yaml ] [-n namespace]
 
 ## Additional Configurations
 
+After you install Codefresh, these are some day-2 operations that you should follow.
+
 ### Setup Git Integration (Optional)
 
 Codefresh supports out-of-the-box Git logins using your local username and password, or logins using your git provider (per the list and instructions of providers below). You can also configure login to supported SSO providers post-install as described [in the Codefresh documentation]({{site.baseurl}}/docs/enterprise/single-sign-on/sso-setup-oauth2/).
@@ -356,6 +360,8 @@ global:
 
 ### Storage
 
+Codefresh is using both cluster storage (volumes) as well as external storage.
+
 #### Databases
 
 The following table displays the list of databases created as part of the installation:
@@ -403,6 +409,46 @@ Depending on the customer’s Kubernetes version we can assist with PV resizing.
 #### Automatic Volume Provisioning
 
 Codefresh installation supports automatic storage provisioning based on the standard Kubernetes dynamic provisioner Storage Classes and Persistent Volume Claims. All required installation volumes will be provisioned automatically using the default Storage Class or custom Storage Class that can be specified as a parameter in `config.yaml` under `storageClass: my-storage-class`.
+
+
+### Managing Codefresh backups
+
+Codefresh on-premise backups can be automated by installing a specific service as an addon to your Codefresh on-premise installation. It is based on the [mgob](https://github.com/stefanprodan/mgob) open source project and can run scheduled backups with retention, S3 & SFTP upload, notifications, instrumentation with Prometheus and more.
+
+#### Configuring and Installing the Backup Manager
+
+Backup manager is installed as an addon and therefore it needs an existing Codefresh on-premise installation. Before installing it, please make sure you have selected a proper kube config pointing to the cluster, where you have Codefresh installed on.
+
+To configure backup manager, please go to the staging directory of your Codefresh installation and find a specific config file: `your-CF-stage-dir/addons/backup-manager/config.yaml`.
+
+There you will find a few configuration parameters, which you might want to change:
+
+* `metadada` - various CF-installer-specific parameters, which should not be changed in this case
+* `kubernetes` - here you can specify a kube context, kube config file and a namespace for the backup manager
+* `storage`- storage class, storage size and read modes for persistent volumes to store backups locally within your cluster
+* Backup plan configuration parameters under `jobConfigs.cfBackupPlan`:
+    * `target.uri` - target mongo URI. It is recommended to leave the mongo uri value blank - it will be taken automatically from the Codefresh release installed in your cluster
+    * `scheduler` - here you can specify cron expression for your backups schedule, backups retention and timeout values
+
+For more advanced backup plan settings, like specifying various remote cloud-based storage providers for your backups, configuring notifications and other, please refer to [this](https://github.com/stefanprodan/mgob#configure) page 
+
+To **deploy the backup manager** service, please select a correct kube context, where you have Codefresh on-premise installed and deploy backup-manager with the following command:
+
+```
+kcfi deploy -c `your-CF-stage-dir/addons/backup-manager/config.yaml`
+```
+
+#### On-demand/ad-hoc backup
+```
+kubectl port-forward cf-backup-manager-0 8090
+curl -X POST http://localhost:8090/backup/cfBackupPlan
+```
+
+#### Restore from backup
+```
+kubectl exec -it cf-backup-manager-0 bash
+mongorestore --gzip --archive=/storage/cfBackupPlan/backup-archive-name.gz --uri mongodb://root:password@mongodb:27017 --drop
+```
 
 ## Common Problems, Solutions, and Dependencies
 
