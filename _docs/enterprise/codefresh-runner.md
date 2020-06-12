@@ -9,8 +9,6 @@ The Codefresh runner is a helper application that can be installed on your own K
 It can then build Codefresh pipelines, with full access to secure internal services, without actually compromising the requirements
 of the on-premise installation.
 
-See the [Hybrid installation]({{site.baseurl}}/docs/enterprise/installation-security/#hybrid-installation) and [behind-the-firewall]({{site.baseurl}}/docs/enterprise/behind-the-firewall/) pages for more details.
-
 >Notice that a runner installation is needed for each cluster that will _run_ Codefresh pipelines. A runner is **not** needed
 in clusters that are used for _deployment_. It is possible to deploy applications on different clusters other than the ones the runner is running on.
 
@@ -752,7 +750,7 @@ Here is a list of the resources that are created during a Runner installation:
   - That there is only one Codefresh Runner per Kubernetes namespace
   - That you selected the correct runtime for the pipeline
   - The CPU/Memory specification in the pipeline settings
-  
+
 ## What to read next
 
 * [Codefresh installation options]({{site.baseurl}}/docs/enterprise/installation-security/)
