@@ -752,7 +752,7 @@ Here is a list of the resources that are created during a Runner installation:
   - That there is only one Codefresh Runner per Kubernetes namespace
   - That you selected the correct runtime for the pipeline
   - The CPU/Memory specification in the pipeline settings
-  
+
 ## What to read next
 
 * [Codefresh installation options]({{site.baseurl}}/docs/enterprise/installation-security/)
