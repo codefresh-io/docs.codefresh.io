@@ -153,12 +153,15 @@ You can always see what the Runner is doing by listing the resources inside the 
 
 ```
 $ kubectl get pods -n codefresh-runtime
-NAME                                             READY     STATUS    RESTARTS   AGE
-dind-5c5afbb02e9fd02917b33f06                    1/1       Running   0          1m
-dind-lv-monitor-venona-kkkwr                     1/1       Running   1          7d
-dind-volume-provisioner-venona-646cdcdc9-dqh8k   1/1       Running   2          7d
-engine-5c5afbb02e9fd02917b33f06                  1/1       Running   0          1m
-venona-8b5f787c5-ftbnd                           1/1       Running   2          7d
+NAME                                              READY   STATUS    RESTARTS   AGE
+dind-5ee7577017ef40908b784388                     1/1     Running   0          22s
+dind-lv-monitor-runner-hn64g                      1/1     Running   0          3d
+dind-lv-monitor-runner-pj84r                      1/1     Running   0          3d
+dind-lv-monitor-runner-v2lhc                      1/1     Running   0          3d
+dind-volume-provisioner-runner-64994bbb84-lgg7v   1/1     Running   7          3d
+engine-5ee7577017ef40908b784388                   1/1     Running   0          22s
+monitor-648b4778bd-tvzcr                          1/1     Running   0          3d
+runner-5d549f8bc5-7h5rc                           1/1     Running   0          3d
 ```
 In the same manner you can list secrets, config-maps, logs, volumes etc. for the Codefresh builds. 
 
@@ -188,7 +191,7 @@ Like the installation wizard you can pass the following options in advance as co
 
 Once installed the runner uses the following pods:
 
-* `venona` - responsible for picking tasks from the Codefresh UI
+* `runner` - responsible for picking tasks from the Codefresh UI
 * `engine` - responsible for running pipelines
 * `dind` - responsible for building and using Docker images
 * `dind-volume-provisioner` 
@@ -201,7 +204,7 @@ The following table shows **MINIMUM** resources for each component:
 {: .table .table-bordered .table-hover}
 | Component         | Minimum CPU| Minimum Memory | Space                  | Type | Always on
 | -------------- | --------------|------------- |-------------------------|-------|-------|
-| `venona`        | 100m          | 100Mi        | Doesn't need PV         | Pod   | Yes   |
+| `runner`        | 100m          | 100Mi        | Doesn't need PV         | Pod   | Yes   |
 | `engine`         | 100m          | 100Mi        | Doesn't need PV         | Pod   | No   |
 | `dind`         | 390m          | 255Mi        | 30GB         | Pod   | No   |
 | `dind-volume-provisioner`         | 300m          | 400Mi        | Doesn't need PV         | Pod   | Yes   |
@@ -226,7 +229,7 @@ For the storage space needed by the `dind` pod we suggest:
 ### Networking requirements
 
 * `dind` - this pod will create an internal network in the cluster to run all the pipeline steps
-* `venona` - this pod needs outgoing/egress access to `g.codefresh.io`
+* `runner` - this pod needs outgoing/egress access to `g.codefresh.io`
 * `engine` - this pod needs outgoing/egress access to `g.codefresh.io`
 
 All CNI providers/plugins are compatible with the runner components.
