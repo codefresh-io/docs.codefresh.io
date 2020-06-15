@@ -253,8 +253,8 @@ The Codefresh runner consists of the following:
 
 * Runner - responsible for getting tasks from the platform and executing them. One per account. Can handle multiple runtimes 
 * Runtime - the components that are responsible on runtime for the workflow execution : 
-  *  Volume provisioner - (pod’s name prefix dind-volume-provisioner-venona) - responsible for volume provisioning for dind pod
-  *  lv-monitor - (pod’s name perfix dind-lv-monitor-venona) - daemonset - responsible for cleaning volumes 
+  *  Volume provisioner - (pod’s name prefix dind-volume-provisioner-runner) - responsible for volume provisioning for dind pod
+  *  lv-monitor - (pod’s name perfix dind-lv-monitor-runner) - daemonset - responsible for cleaning volumes 
 
 To install the runner on a single cluster with both the runtime and the agent, execute the following:
 
@@ -292,8 +292,8 @@ codefresh install runtime --kube-namespace codefresh-runtime-1
 # 6. Attach the first runtime to agent:
 codefresh attach runtime --agent-name $AGENT_NAME --agent-kube-namespace codefresh-agent --runtime-name $RUNTIME_NAME --runtime-kube-namespace codefresh-runtime-1
 
-# 7. Restart the venona pod in namespace `codefresh-agent`
-kubectl delete pods $VENONA_POD
+# 7. Restart the runner pod in namespace `codefresh-agent`
+kubectl delete pods $RUNNER_POD
 
 # 8. Create namespace for the second runtime
 kubectl create namespace codefresh-runtime-2
