@@ -235,12 +235,12 @@ All CNI providers/plugins are compatible with the runner components.
 
 If you are still running the old version of the Codefresh runner (that is using the Venona installer) you can upgrade to the new version with
 
-Run the migration script on your old venona installation : https://github.com/codefresh-io/venona/blob/release-1.0/scripts/migration.sh  with the required environment vars : 
 
-* `CODEFRESH_RUNTIME_NAME` - old runtime name (you can get it with codefresh get re)
-* `VENONA_KUBE_NAMESPACE` - venona namespace 
+```
+codefresh runner upgrade
+```
 
-Note that all manually added items to the Venona deployment will be deleted. You need to save them prior migration and add them manually again.
+and follow the wizard prompts.
 
 ## Manual installation of Runner components
 
