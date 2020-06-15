@@ -35,6 +35,23 @@ steps:
 
 This pipeline will run integration tests during the freestyle step called `my_integration_tests` and at that point a Redis instance will be available at hostname `my-redis-db-host` and port 6479. Note how in this example, the service container is placed at the root of the pipeline (as opposed to inside a specific step).  This ensures that the Redis instance is running for [the duration of the pipeline]({{site.baseurl}}/docs/codefresh-yaml/service-containers/#running-services-for-the-duration-of-the-pipeline).
 
+
+## Viewing Service containers
+
+The service containers have their own output tab in Codefresh UI
+
+{% include image.html
+  lightbox="true"
+  file="/images/codefresh-yaml/services/services-tab.png"
+  url="/images/codefresh-yaml/services/services-tab.png"
+  alt="Output tab from extra services"
+  caption="Output tab from extra services"
+  max-width="100%"
+    %} 
+
+This way it is very easy to differentiate between the output logs of the step itself and its supporting container services.
+
+
 ## Launching multiple sidecar containers
 
 Like Docker compose it is possible to launch multiple services this way. For example, let's say that a Java application needs both Redis and MongoDB during integration tests. Here is the respective pipeline:
