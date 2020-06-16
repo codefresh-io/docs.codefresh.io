@@ -9,7 +9,7 @@ toc: true
 
 This manual will guide you through the installation of Codefresh platform on your On-prem environment.  This manual is intended to cover all aspects of installation, upgrade, and maintenance.  Please read this manual carefully before installing Codefresh.
 
-[kfci](https://github.com/codefresh-io/kcfi) (the Kubernetes Codefresh Installer) is a one-stop-shop, while Codefresh offers multiple tools to install components, kcfi will aggregate all of them into a single tool.
+[kcfi](https://github.com/codefresh-io/kcfi) (the Kubernetes Codefresh Installer) is a one-stop-shop, while Codefresh offers multiple tools to install components, kcfi will aggregate all of them into a single tool.
 
 ## Survey -- What Codefresh Needs to Know
 
@@ -119,7 +119,7 @@ kubectl apply -f [file]
 
 ### Operator CRD
 
-If, due to security rules you are not allowed to create a CRD for a client running `kfci`, have an Administrator create the RBAC (as instructed above) and the CRD as follows:
+If, due to security rules you are not allowed to create a CRD for a client running `kcfi`, have an Administrator create the RBAC (as instructed above) and the CRD as follows:
 
 `codefresh-crd.yaml`
 ```yaml
@@ -150,7 +150,7 @@ To apply these changes, run:
 kubectl apply -f codefresh-crd.yaml
 ```
 
-You will also need to modify the `config.yaml` for `kfci` by setting `skipCRD: true` and `serviceAccountName: codefresh-app`:
+You will also need to modify the `config.yaml` for `kcfi` by setting `skipCRD: true` and `serviceAccountName: codefresh-app`:
 
 `config.yaml`
 ```yaml
