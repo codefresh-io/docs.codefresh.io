@@ -156,6 +156,7 @@ The *modified files* field accepts glob expressions. The paths are relative to t
 my-subproject/**
 my-subproject/sub-subproject/package.json
 my-subproject/**/pom.xml
+!config/**
 
 ```
 
@@ -202,10 +203,11 @@ This way as multiple developers work on the git repository only the affected pro
 
 You can also use Glob expressions for files. For example:
 
-* An expression such `my-subproject/sub-subproject/package.json` will trigger a build **only** if the dependencies of this specific project are changed
+* An expression such as `my-subproject/sub-subproject/package.json` will trigger a build **only** if the dependencies of this specific project are changed
 * A pipeline with the expression `my-subproject/**/pom.xml` will trigger only if the Java dependencies for any project that belongs to `my-subproject` actually change
+* An expression such as `!config/manifest.yaml` will trigger a build if any file was changed *apart from* `config/manifest.yaml`
 
-Glob expressions have many more options not shown here. Visit the [official documentation](https://en.wikipedia.org/wiki/Glob_(programming)) to learn more. You can also use the [Glob Tester web application](http://www.globtester.com/) to test your glob expressions beforehand so that you are certain they match the files you expect them to match.
+Glob expressions have many more options not shown here. Visit the [official documentation](https://en.wikipedia.org/wiki/Glob_(programming)) to learn more. You can also use the [Glob Tester web application](https://www.digitalocean.com/community/tools/glob) to test your glob expressions beforehand so that you are certain they match the files you expect them to match.
 
 ## Advanced Options
 
