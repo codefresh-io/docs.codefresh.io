@@ -1,11 +1,13 @@
 ---
 title: "Codefresh Installation Options"
 description: "How to run Codefresh in the Enterprise"
-group: enterprise
-toc: true
+group: administration
 redirect_from:
   - /docs/enterprise/nodes/set-node-limits/
+  - /docs/enterprise/installation-security/
+toc: true
 ---
+
 Codefresh offers 3 installation options that can cater to any size of organization:
 
 * Full cloud version that runs 100% in the cloud and is fully managed by Codefresh.
@@ -28,8 +30,8 @@ The cloud version runs on multiple clouds:
 
 {% include image.html
   lightbox="true"
-  file="/images/enterprise/installation/codefresh-saas.png"
-  url="/images/enterprise/installation/codefresh-saas.png"
+  file="/images/administration/installation/codefresh-saas.png"
+  url="/images/administration/installation/codefresh-saas.png"
   alt="sso-diagram.png"
   max-width="60%"
     %}
@@ -38,8 +40,8 @@ Codefresh Cloud is also compliant with [SOC2 - Type2](https://www.aicpa.org/SOC)
 
 {% include image.html
   lightbox="true"
-  file="/images/enterprise/installation/soc2-type2-certified.png"
-  url="/images/enterprise/installation/soc2-type2-certified.png"
+  file="/images/administration/installation/soc2-type2-certified.png"
+  url="/images/administration/installation/soc2-type2-certified.png"
   alt="sso-diagram.png"
   max-width="40%"
     %}    
@@ -49,14 +51,14 @@ The Cloud version has multi-account support with most git providers (GitLab, Git
 
 ## Hybrid installation
 
-For organizations that don't want their source code to leave their premises, or have other security constraints, Codefresh offers the [hybrid installation]({{site.baseurl}}/docs/enterprise/behind-the-firewall/).
+For organizations that don't want their source code to leave their premises, or have other security constraints, Codefresh offers the [hybrid installation]({{site.baseurl}}/docs/administration/behind-the-firewall/).
 
 The User Interface still runs on Codefresh infrastructure, while the actual builds happen in the location of the customer (Codefresh builders run on a Kubernetes cluster).
 
 {% include image.html
   lightbox="true"
-  file="/images/enterprise/installation/hybrid-installation.png"
-  url="/images/enterprise/installation/hybrid-installation.png"
+  file="/images/administration/installation/hybrid-installation.png"
+  url="/images/administration/installation/hybrid-installation.png"
   alt="sso-diagram.png"
   max-width="70%"
     %}    
@@ -69,8 +71,8 @@ The UI part is still compliant with Soc2.
 
 {% include image.html
   lightbox="true"
-  file="/images/enterprise/installation/soc2-type2-certified.png"
-  url="/images/enterprise/installation/soc2-type2-certified.png"
+  file="/images/administration/installation/soc2-type2-certified.png"
+  url="/images/administration/installation/soc2-type2-certified.png"
   alt="sso-diagram.png"
   max-width="40%"
     %}    
@@ -142,8 +144,8 @@ If we zoom into the Codefresh Services platform we will see the following:
 
 {% include image.html
   lightbox="true"
-  file="/images/enterprise/installation/topology-new.png"
-  url="/images/enterprise/installation/topology-new.png"
+  file="/images/administration/installation/topology-new.png"
+  url="/images/administration/installation/topology-new.png"
   alt="Topology diagram"
   caption="Topology diagram (click to enlarge)"
   max-width="100%"

@@ -229,22 +229,22 @@
   url: ''
   links:
   - title: Installation Options
-    localurl: /docs/enterprise/installation-security
+    localurl: /docs/administration/installation-security
   - title: Codefresh behind the firewall
-    localurl: /docs/enterprise/behind-the-firewall
+    localurl: /docs/administration/behind-the-firewall
   - title: Codefresh Runner
     new: true
-    localurl: /docs/enterprise/codefresh-runner
+    localurl: /docs/administration/codefresh-runner
   - title: Enterprise Account Management
-    localurl: /docs/enterprise/ent-account-mng
+    localurl: /docs/administration/ent-account-mng
   - title: Single Sign on
-    localurl: /docs/enterprise/single-sign-on
+    localurl: /docs/administration/single-sign-on
   - title: Access Control
-    localurl: /docs/enterprise/access-control
+    localurl: /docs/administration/access-control
   - title: Audit Logs
-    localurl: /docs/enterprise/audit-logs
+    localurl: /docs/administration/audit-logs
   - title: Codefresh hybrid installation (legacy)
-    localurl: /docs/enterprise/codefresh-hybrid
+    localurl: /docs/administration/codefresh-hybrid
 - title: "Incubation"
   icon: images/home-icons/plugins.svg
   url: ''

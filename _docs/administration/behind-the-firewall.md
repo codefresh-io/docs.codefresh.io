@@ -1,12 +1,14 @@
 ---
 title: "Codefresh behind the firewall"
 description: "How to run Codefresh pipelines in your own secure infrastructure"
-group: enterprise
+group: administration
+redirect_from:
+  - /docs/enterprise/behind-the-firewall/
 toc: true
 
 ---
 
-As explained in the [installation page]({{site.baseurl}}/docs/enterprise/installation-security/) Codefresh offers 3 installation options: pure cloud, on-premise and Hybrid.
+As explained in the [installation page]({{site.baseurl}}/docs/administration/installation-security/) Codefresh offers 3 installation options: pure cloud, on-premise and Hybrid.
 In this page we are going to describe the Hybrid option and all the advantages it offers.
 
 ## Running Codefresh in secure environments
@@ -21,8 +23,8 @@ Here is the overall architecture:
 
 {% include image.html
   lightbox="true"
-  file="/images/enterprise/behind-the-firewall/architecture.png"
-  url="/images/enterprise/behind-the-firewall/architecture.png"
+  file="/images/administration/behind-the-firewall/architecture.png"
+  url="/images/administration/behind-the-firewall/architecture.png"
   alt="Codefresh behind the firewall"
   caption="Codefresh behind the firewall"
   max-width="100%"
@@ -51,7 +53,7 @@ Regarding firewall security:
 
 ## Using Secure services in your pipelines
 
-First make sure that you have installed the [Codefresh runner]({{site.baseurl}}/docs/enterprise/codefresh-runner/) on your own infrastructure (i.e. your private Kubernetes cluster).
+First make sure that you have installed the [Codefresh runner]({{site.baseurl}}/docs/administration/codefresh-runner/) on your own infrastructure (i.e. your private Kubernetes cluster).
 
 All pipelines that are executed in the private Kubernetes cluster have access to all other internal services that are network reachable. It is therefore very easy to create pipelines that
 
@@ -77,8 +79,8 @@ need to mark it as *behind the firewall* as well:
 
 {% include image.html
   lightbox="true"
-  file="/images/enterprise/behind-the-firewall/behind-the-firewall-toggle.png"
-  url="/images/enterprise/behind-the-firewall/behind-the-firewall-toggle.png"
+  file="/images/administration/behind-the-firewall/behind-the-firewall-toggle.png"
+  url="/images/administration/behind-the-firewall/behind-the-firewall-toggle.png"
   alt="Behind the firewall toggle"
   caption="Behind the firewall toggle"
   max-width="100%"
@@ -89,8 +91,8 @@ the Codefresh SAAS doesn't have access to your on-premise GIT repository.
 
 {% include image.html
   lightbox="true"
-  file="/images/enterprise/behind-the-firewall/behind-the-firewall-tag.png"
-  url="/images/enterprise/behind-the-firewall/behind-the-firewall-tag.png"
+  file="/images/administration/behind-the-firewall/behind-the-firewall-tag.png"
+  url="/images/administration/behind-the-firewall/behind-the-firewall-tag.png"
   alt="Behind the firewall tags"
   caption="Behind the firewall tags"
   max-width="100%"
@@ -139,8 +141,8 @@ Once you select your GIT provider, you need to manually enter your username and 
 
 {% include image.html
   lightbox="true"
-  file="/images/enterprise/behind-the-firewall/enter-repo-details.png"
-  url="/images/enterprise/behind-the-firewall/enter-repo-details.png"
+  file="/images/administration/behind-the-firewall/enter-repo-details.png"
+  url="/images/administration/behind-the-firewall/enter-repo-details.png"
   alt="Entering repository details"
   caption="Entering repository details"
   max-width="60%"
@@ -152,8 +154,8 @@ Once that is done, Codefresh will show you the webhook endpoint along with a sec
 
 {% include image.html
   lightbox="true"
-  file="/images/enterprise/behind-the-firewall/codefresh-webhook.png"
-  url="/images/enterprise/behind-the-firewall/codefresh-webhook.png"
+  file="/images/administration/behind-the-firewall/codefresh-webhook.png"
+  url="/images/administration/behind-the-firewall/codefresh-webhook.png"
   alt="Codefresh webhook details"
   caption="Codefresh webhook details"
   max-width="60%"
@@ -218,8 +220,8 @@ To connect a cluster that is behind the firewall follow the [connecting cluster 
 
 {% include image.html
   lightbox="true"
-  file="/images/enterprise/behind-the-firewall/cluster-behind-firewall.png"
-  url="/images/enterprise/behind-the-firewall/cluster-behind-firewall.png"
+  file="/images/administration/behind-the-firewall/cluster-behind-firewall.png"
+  url="/images/administration/behind-the-firewall/cluster-behind-firewall.png"
   alt="Marking a Kubernetes cluster as internal"
   caption="Marking a Kubernetes cluster as internal"
   max-width="60%"
@@ -233,6 +235,6 @@ Once your cluster is connected you can use any of the familiar deployment method
 
 ## What to read next
 
-* [Codefresh installation options]({{site.baseurl}}/docs/enterprise/installation-security/)
+* [Codefresh installation options]({{site.baseurl}}/docs/administration/installation-security/)
 * [Google marketplace integration]({{site.baseurl}}/docs/integrations/google-marketplace/)
 * [Managing your Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/)
