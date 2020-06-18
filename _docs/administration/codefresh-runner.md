@@ -1,9 +1,13 @@
 ---
 title: "Codefresh Runner"
 description: "Run Codefresh pipelines on your private Kubernetes cluster"
-group: enterprise
+group: administration
+redirect_from:
+  - /docs/enterprise/codefresh-runner/
 toc: true
 ---
+
+
 
 Install the Codefresh Runner on your Kubernetes cluster to run pipelines and access secure internal services without compromising on premise security requirements. These pipelines run on your infrastructure, even behind the firewall, and keep code on your Kubernetes cluster. 
 
@@ -56,8 +60,8 @@ The wizard will ask you some basic questions and proceed with the installation.
 
 {% include image.html
   lightbox="true"
-  file="/images/enterprise/runner/installation-wizard.png"
-  url="/images/enterprise/runner/installation-wizard.png"
+  file="/images/administration/runner/installation-wizard.png"
+  url="/images/administration/runner/installation-wizard.png"
   alt="Codefresh Runner wizard"
   caption="Codefresh Runner wizard"
   max-width="100%"
@@ -67,8 +71,8 @@ The wizard will also create and run a sample pipeline that you can see in your C
 
 {% include image.html
   lightbox="true"
-  file="/images/enterprise/runner/sample-pipeline.png"
-  url="/images/enterprise/runner/sample-pipeline.png"
+  file="/images/administration/runner/sample-pipeline.png"
+  url="/images/administration/runner/sample-pipeline.png"
   alt="Codefresh Runner example pipeline"
   caption="Codefresh Runner example pipeline"
   max-width="90%"
@@ -122,8 +126,8 @@ Once installation is complete, you should see the cluster of the runner as a new
 
 {% include image.html
   lightbox="true"
-  file="/images/enterprise/runner/runtime-environments.png"
-  url="/images/enterprise/runner/runtime-environments.png"
+  file="/images/administration/runner/runtime-environments.png"
+  url="/images/administration/runner/runtime-environments.png"
   alt="Available runtime environments"
   caption="Available runtime environments"
   max-width="60%"
@@ -135,8 +139,8 @@ You can even override the runtime environment for a specific pipeline by specify
 
 {% include image.html
   lightbox="true"
-  file="/images/enterprise/runner/environment-per-pipeline.png"
-  url="/images/enterprise/runner/environment-per-pipeline.png"
+  file="/images/administration/runner/environment-per-pipeline.png"
+  url="/images/administration/runner/environment-per-pipeline.png"
   alt="Running a pipeline on a specific environment"
   caption="Running a pipeline on a specific environment"
   max-width="60%"
@@ -671,8 +675,8 @@ Here, in addition to the policy explained, you need a Trust Relationship establi
 
 {% include image.html
   lightbox="true"
-  file="/images/enterprise/runner/edit-trust-relationship.png"
-  url="/images/enterprise/runner/edit-trust-relationship.png"
+  file="/images/administration/runner/edit-trust-relationship.png"
+  url="/images/administration/runner/edit-trust-relationship.png"
   alt="IAM Role trust establishment with OIDC provider"
   caption="IAM Role trust establishment with OIDC provider"
   max-width="90%"
@@ -682,8 +686,8 @@ Step 3 - Create a new namespace where the runner will be instlled (e.g.  `codefr
 
 {% include image.html
   lightbox="true"
-  file="/images/enterprise/runner/sa-annotation.png"
-  url="/images/enterprise/runner/sa-annotation.png"
+  file="/images/administration/runner/sa-annotation.png"
+  url="/images/administration/runner/sa-annotation.png"
   alt="Service Account annotation"
   caption="Service Account annotation"
   max-width="90%"
@@ -758,7 +762,7 @@ Here is a list of the resources that are created during a Runner installation:
 
 ## What to read next
 
-* [Codefresh installation options]({{site.baseurl}}/docs/enterprise/installation-security/)
-* [Account management]({{site.baseurl}}/docs/enterprise/ent-account-mng/)
-* [Access Control]({{site.baseurl}}/docs/enterprise/access-control/)
+* [Codefresh installation options]({{site.baseurl}}/docs/administration/installation-security/)
+* [Account management]({{site.baseurl}}/docs/administration/ent-account-mng/)
+* [Access Control]({{site.baseurl}}/docs/administration/access-control/)
 * [Codefresh API]({{site.baseurl}}/docs/integrations/codefresh-api/)

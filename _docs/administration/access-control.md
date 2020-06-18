@@ -1,7 +1,9 @@
 ---
 title: "Access control"
 description: "How to restrict resources in a company environment"
-group: enterprise
+group: administration
+redirect_from:
+  - /docs/enterprise/access-control/
 toc: true
 
 ---
@@ -13,7 +15,7 @@ The first mechanism is a way to restrict access to parts of the UI that are inte
 
 The second mechanism is policy-based access control via attributes (ABAC) on Kubernetes clusters and pipelines. This allows account administrators to define exactly which teams have access to which clusters and pipelines. For example, access to production clusters should only be granted to a subset of trusted developers/operators. On the other hand, access to a QA/staging cluster can be less strict.
 
-There is also the additional layer of permissions for resources (such as concurrent builds and environments) as explained in the [Enterprise Account Management]({{site.baseurl}}/docs/enterprise/ent-account-mng/) page. 
+There is also the additional layer of permissions for resources (such as concurrent builds and environments) as explained in the [Enterprise Account Management]({{site.baseurl}}/docs/administration/ent-account-mng/) page. 
 
 ## Users and administrators
 
@@ -21,14 +23,14 @@ You can define the level of access (**user** or **administrator**) from the same
 
 {% include image.html
   lightbox="true"
-  file="/images/enterprise/access-control/user-access-control.png"
-  url="/images/enterprise/access-control/user-access-control.png"
+  file="/images/administration/access-control/user-access-control.png"
+  url="/images/administration/access-control/user-access-control.png"
   alt="User access control"
   caption="User access control"
   max-width="80%"
     %}
 
-Next to each user you can click the drop-down box to decide the level access. There is another drop-down for the [SSO configuration]({{site.baseurl}}/docs/enterprise/single-sign-on/) as well.
+Next to each user you can click the drop-down box to decide the level access. There is another drop-down for the [SSO configuration]({{site.baseurl}}/docs/administration/single-sign-on/) as well.
 
 > Note that you need to be an administrator yourself, in order to add new users and change their roles.
 
@@ -41,10 +43,10 @@ People with **User** access level can still use the Codefresh UI for day-to-day 
 *  [Cloud storage settings]({{site.baseurl}}/docs/testing/test-reports/#connecting-your-storage-account)
 *  [Shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/)
 *  [API token generation]({{site.baseurl}}/docs/integrations/codefresh-api/#authentication-instructions)
-*  [SSO Settings]({{site.baseurl}}/docs/enterprise/single-sign-on/)
+*  [SSO Settings]({{site.baseurl}}/docs/administration/single-sign-on/)
 *  [Runtime environment selection]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-settings)
 *  [Slack settings]({{site.baseurl}}/docs/integrations/notifications/slack-integration/)
-*  [Team/Users settings]({{site.baseurl}}/docs/enterprise/ent-account-mng/)
+*  [Team/Users settings]({{site.baseurl}}/docs/administration/ent-account-mng/)
 *  ABAC for Kubernetes clusters
 *  Billing and charging
 
@@ -69,8 +71,8 @@ You can mark your clusters in the [Cloud provider integration page]({{site.baseu
 
 {% include image.html
   lightbox="true"
-  file="/images/enterprise/access-control/kubernetes-abac.png"
-  url="/images/enterprise/access-control/kubernetes-abac.png"
+  file="/images/administration/access-control/kubernetes-abac.png"
+  url="/images/administration/access-control/kubernetes-abac.png"
   alt="Cluster tags"
   caption="Cluster tags"
   max-width="70%"
@@ -80,8 +82,8 @@ To add a new tag/attribute, hover your mouse on a cluster and click on the *Edit
 
 {% include image.html
   lightbox="true"
-  file="/images/enterprise/access-control/tagging-kubernetes-clusters.png"
-  url="/images/enterprise/access-control/tagging-kubernetes-clusters.png"
+  file="/images/administration/access-control/tagging-kubernetes-clusters.png"
+  url="/images/administration/access-control/tagging-kubernetes-clusters.png"
   alt="Assigning attributes to a cluster"
   caption="Assigning attributes to a cluster"
   max-width="60%"
@@ -99,8 +101,8 @@ You can also mark specific pipelines with tags. To do this click on the *Configu
 
 {% include image.html
   lightbox="true"
-  file="/images/enterprise/access-control/pipeline-tags.png"
-  url="/images/enterprise/access-control/pipeline-tags.png"
+  file="/images/administration/access-control/pipeline-tags.png"
+  url="/images/administration/access-control/pipeline-tags.png"
   alt="Assigning attributes to a pipeline"
   caption="Assigning attributes to a pipeline"
   max-width="80%"
@@ -123,8 +125,8 @@ To create and manage teams of people, from the left sidebar of the Codefresh UI 
 
 {% include image.html
   lightbox="true"
-  file="/images/enterprise/access-control/teams.png"
-  url="/images/enterprise/access-control/teams.png"
+  file="/images/administration/access-control/teams.png"
+  url="/images/administration/access-control/teams.png"
   alt="Managing teams"
   caption="Example teams in Codefresh"
   max-width="80%"
@@ -149,8 +151,8 @@ On this screen you can:
 
  {% include image.html
   lightbox="true"
-  file="/images/enterprise/access-control/kubernetes-policies.png"
-  url="/images/enterprise/access-control/kubernetes-policies.png"
+  file="/images/administration/access-control/kubernetes-policies.png"
+  url="/images/administration/access-control/kubernetes-policies.png"
   alt="Kubernetes policies"
   caption="Kubernetes policies"
   max-width="80%"
@@ -192,6 +194,6 @@ For pipelines:
 
 ## What to read next
 
-* [Codefresh installation options]({{site.baseurl}}/docs/enterprise/installation-security/)
-* [Account management]({{site.baseurl}}/docs/enterprise/ent-account-mng/)
+* [Codefresh installation options]({{site.baseurl}}/docs/administration/installation-security/)
+* [Account management]({{site.baseurl}}/docs/administration/ent-account-mng/)
 * [Managing your Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/)

@@ -1,10 +1,11 @@
 ---
 title: "Setting Up SAML2 Federated Single Sign-On (SSO)"
 description: ""
-group: enterprise
+group: administration
 sub_group: single-sign-on
 redirect_from:
   - /docs/sso/sso-setup-saml2/
+  - /docs/enterprise/single-sign-on/sso-setup-saml2/
 toc: true
 ---
 
@@ -94,10 +95,10 @@ The mandatory fields needed for SAML assertions are:
 
 >Notice that these settings are for the SAAS version of Codefresh. For an on-premise Codefresh setup you need to use the URLs that match your installation.
 
-Once everything is finished, you [should test the integration]({{site.baseurl}}/docs/enterprise/single-sign-on/sso-setup-oauth2/#testing-your-identity-provider). Once it is working proceed to the next steps that are:
+Once everything is finished, you [should test the integration]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/#testing-your-identity-provider). Once it is working proceed to the next steps that are:
 
-* [Selecting SSO method for collaborators]({{site.baseurl}}/docs/enterprise/single-sign-on/sso-setup-oauth2/#selecting-sso-method-for-collaborators)
-* [Syncing of teams after initial SSO setup]({{site.baseurl}}/docs/enterprise/single-sign-on/sso-setup-oauth2/#syncing-of-teams-after-initial-sso-setup)
+* [Selecting SSO method for collaborators]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/#selecting-sso-method-for-collaborators)
+* [Syncing of teams after initial SSO setup]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/#syncing-of-teams-after-initial-sso-setup)
 
 
 

@@ -1,9 +1,10 @@
 ---
 title: "Enterprise Account Management Overview"
 description: ""
-group: enterprise
+group: administration
 redirect_from:
   - /docs/enterprise-account-mng/ent-account-mng/
+  - /docs/enterprise/ent-account-mng/
 toc: true
 ---
 
@@ -90,8 +91,8 @@ From the billing page you’re able to view your Codefresh plan and usage. The p
 
 ## What to read next
 
-* [Codefresh installation options]({{site.baseurl}}/docs/enterprise/installation-security/)
-* [Access control]({{site.baseurl}}/docs/enterprise/access-control/)
+* [Codefresh installation options]({{site.baseurl}}/docs/administration/installation-security/)
+* [Access control]({{site.baseurl}}/docs/administration/access-control/)
 
 
 

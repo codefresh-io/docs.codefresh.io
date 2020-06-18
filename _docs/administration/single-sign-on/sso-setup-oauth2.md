@@ -1,10 +1,11 @@
 ---
 title: "Setting Up OpenID Connect Federated Single Sign-On (SSO)"
 description: ""
-group: enterprise
+group: administration
 sub_group: single-sign-on
 redirect_from:
   - /docs/sso/sso-setup-oauth2/
+  - /docs/enterprise/single-sign-on/sso-setup-oauth2/
 toc: true
 ---
 
@@ -34,7 +35,7 @@ Codefresh currently supports
 
 You can setup each provider
 
- 1. At the [Codefresh customer level]({{site.baseurl}}/docs/enterprise/ent-account-mng/) 
+ 1. At the [Codefresh customer level]({{site.baseurl}}/docs/administration/ent-account-mng/) 
  1. At the Codefresh account level 
  1. At both levels. Integrations that were created from the customer level can only be edited or removed by the customer administrator from that customer management view. The Account administrator won’t be able to edit those.
 
@@ -54,8 +55,8 @@ In both cases you will arrive to the following screen
 
 {% include image.html 
 lightbox="true" 
-file="/images/enterprise/sso/add-sso-dropdown.png" 
-url="/images/enterprise/sso/add-sso-dropdown.png"
+file="/images/administration/sso/add-sso-dropdown.png" 
+url="/images/administration/sso/add-sso-dropdown.png"
 alt="SSO provider settings"
 caption="SSO provider settings"
 max-width="70%"
@@ -80,20 +81,20 @@ sections we will outline the details for each one.
 
 ### Setting Auth0 as an Identity provider
 
-See the [Auth0 instructions]({{site.baseurl}}/docs/enterprise/single-sign-on/sso-auth0/). 
+See the [Auth0 instructions]({{site.baseurl}}/docs/administration/single-sign-on/sso-auth0/). 
 
 ### Setting Azure as an Identity provider
 
-See the [Azure instructions]({{site.baseurl}}/docs/enterprise/single-sign-on/sso-azure/). 
+See the [Azure instructions]({{site.baseurl}}/docs/administration/single-sign-on/sso-azure/). 
 
 
 ### Setting Okta as an Identity Provider
 
-See the [Okta instructions]({{site.baseurl}}/docs/enterprise/single-sign-on/sso-okta/). 
+See the [Okta instructions]({{site.baseurl}}/docs/administration/single-sign-on/sso-okta/). 
 
 ### Setting OneLogin as an Identity Provider
 
-See the [OneLogin instructions]({{site.baseurl}}/docs/enterprise/single-sign-on/sso-onelogin/).
+See the [OneLogin instructions]({{site.baseurl}}/docs/administration/single-sign-on/sso-onelogin/).
 
 
 ## Testing your Identity provider
@@ -108,8 +109,8 @@ Once you setup the Identity Provider, do the following
 
 {% include image.html 
 lightbox="true" 
-file="/images/enterprise/sso/collaborators.png" 
-url="/images/enterprise/sso/collaborators.png"
+file="/images/administration/sso/collaborators.png" 
+url="/images/administration/sso/collaborators.png"
 alt="Adding collaborators"
 caption="Adding collaborators"
 max-width="70%"
@@ -123,8 +124,8 @@ max-width="70%"
 
 {% include image.html 
 lightbox="true" 
-file="/images/enterprise/sso/sign-with-sso.png" 
-url="/images/enterprise/sso/sign-with-sso.png"
+file="/images/administration/sso/sign-with-sso.png" 
+url="/images/administration/sso/sign-with-sso.png"
 alt="Sign-in with SSO"
 caption="Sign-in with SSO"
 max-width="50%"
@@ -142,8 +143,8 @@ In addition to their role you can now select the SSO method they will use
 
 {% include image.html 
 lightbox="true" 
-file="/images/enterprise/sso/select-user-sso.png" 
-url="/images/enterprise/sso/select-user-sso.png"
+file="/images/administration/sso/select-user-sso.png" 
+url="/images/administration/sso/select-user-sso.png"
 alt="Selecting SSO method"
 caption="Selecting SSO method"
 max-width="50%"
@@ -170,8 +171,8 @@ You can find the client-name from the SSO UI.
 
 {% include image.html 
 lightbox="true" 
-file="/images/enterprise/sso/azure/client-name.png" 
-url="/images/enterprise/sso/azure/client-name.png"
+file="/images/administration/sso/azure/client-name.png" 
+url="/images/administration/sso/azure/client-name.png"
 alt="SSO Client Name"
 caption="SSO Client Name"
 max-width="50%"

@@ -1,7 +1,9 @@
 ---
 title: "Audit Logs"
 description: "Get a list of all actions in Codefresh"
-group: enterprise
+group: administration
+redirect_from:
+  - /docs/enterprise/audit-logs/
 toc: true
 ---
 
@@ -21,8 +23,8 @@ To access the Audit logs click on *Account settings* on the left sidebar and the
 
 {% include image.html
 lightbox="true"
-file="/images/enterprise/audit/audit-logs.png"
-url="/images/enterprise/audit/audit-logs.png"
+file="/images/administration/audit/audit-logs.png"
+url="/images/administration/audit/audit-logs.png"
 alt="Audit Logs view"
 caption="Audit Logs view"
 max-width="70%"
@@ -43,8 +45,8 @@ There is also a separate tab for all the triggers/webhooks that were processed b
 
 {% include image.html
 lightbox="true"
-file="/images/enterprise/audit/audit-triggers.png"
-url="/images/enterprise/audit/audit-triggers.png"
+file="/images/administration/audit/audit-triggers.png"
+url="/images/administration/audit/audit-triggers.png"
 alt="Audit Triggers view"
 caption="Audit Triggers view"
 max-width="70%"
@@ -61,8 +63,8 @@ You can filter the list of events by using the filter menu on the top left.
 
 {% include image.html
 lightbox="true"
-file="/images/enterprise/audit/audit-filter.png"
-url="/images/enterprise/audit/audit-filter.png"
+file="/images/administration/audit/audit-filter.png"
+url="/images/administration/audit/audit-filter.png"
 alt="Filtering audit actions"
 caption="Filtering audit actions"
 max-width="40%"
@@ -81,8 +83,8 @@ You can get the exact API payload as it was sent to Codefresh by clicking on the
 
 {% include image.html
 lightbox="true"
-file="/images/enterprise/audit/api-call-details.png"
-url="/images/enterprise/audit/api-call-details.png"
+file="/images/administration/audit/api-call-details.png"
+url="/images/administration/audit/api-call-details.png"
 alt="Audit Call details"
 caption="Audit Call details"
 max-width="40%"
@@ -102,7 +104,7 @@ The Audit Log export also includes all the API call information (payload and par
 
 ## What to read next
 
-* [Codefresh installation options]({{site.baseurl}}/docs/enterprise/installation-security/)
-* [Account management]({{site.baseurl}}/docs/enterprise/ent-account-mng/)
-* [Access Control]({{site.baseurl}}/docs/enterprise/access-control/)
+* [Codefresh installation options]({{site.baseurl}}/docs/administration/installation-security/)
+* [Account management]({{site.baseurl}}/docs/administration/ent-account-mng/)
+* [Access Control]({{site.baseurl}}/docs/administration/access-control/)
 * [Codefresh API]({{site.baseurl}}/docs/integrations/codefresh-api/)

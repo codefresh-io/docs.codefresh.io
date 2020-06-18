@@ -399,8 +399,8 @@
     - title: Codefresh API
       url: "/codefresh-api"
 
-- title: Enterprise features
-  url: "/enterprise"
+- title: Administration
+  url: "/administration"
   pages:
     - title: Installation Options
       url: "/installation-security"

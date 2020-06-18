@@ -1,16 +1,17 @@
 ---
 title: "LDAP"
 description: "Setting Up LDAP Single Sign-On (SSO)"
-group: enterprise
+group: administration
 sub_group: single-sign-on
-
+redirect_from:
+  - /docs/enterprise/single-sign-on/sso-ldap/
 toc: true
 ---
 
 
 You can setup LDAP authentication:
 
- 1. At the [Codefresh customer level]({{site.baseurl}}/docs/enterprise/ent-account-mng/).
+ 1. At the [Codefresh customer level]({{site.baseurl}}/docs/administration/ent-account-mng/).
  1. At the Codefresh account level.
  1. At both levels. Integrations that were created from the customer level can only be edited or removed by the customer administrator from that customer management view. The Account administrator won’t be able to edit those.
 
@@ -30,8 +31,8 @@ In both cases you will arrive to the following screen
 
 {% include image.html 
 lightbox="true" 
-file="/images/enterprise/sso/add-sso-dropdown.png" 
-url="/images/enterprise/sso/add-sso-dropdown.png"
+file="/images/administration/sso/add-sso-dropdown.png" 
+url="/images/administration/sso/add-sso-dropdown.png"
 alt="SSO provider settings"
 caption="SSO provider settings"
 max-width="70%"
@@ -51,8 +52,8 @@ Once you have that information, fill the fields as shown below:
 
 {% include image.html 
 lightbox="true" 
-file="/images/enterprise/sso/ldap/ldap-settings.png" 
-url="/images/enterprise/sso/ldap/ldap-settings.png"
+file="/images/administration/sso/ldap/ldap-settings.png" 
+url="/images/administration/sso/ldap/ldap-settings.png"
 alt="LDAP settings"
 caption="LDAPS settings"
 max-width="70%"

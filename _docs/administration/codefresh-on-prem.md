@@ -1,7 +1,9 @@
 ---
 title: "Codefresh On-premise Installation"
 description: "Use the Kubernetes Codefresh Installer to install the Codefresh platform on-premises"
-group: enterprise
+group: administration
+redirect_from:
+  - /docs/enterprise/codefresh-on-prem/
 toc: true
 ---
 
@@ -278,7 +280,7 @@ After you install Codefresh, these are some day-2 operations that you should fol
 
 ### Setup Git Integration (Optional)
 
-Codefresh supports out-of-the-box Git logins using your local username and password, or logins using your git provider (per the list and instructions of providers below). You can also configure login to supported SSO providers post-install as described [in the Codefresh documentation]({{site.baseurl}}/docs/enterprise/single-sign-on/sso-setup-oauth2/).
+Codefresh supports out-of-the-box Git logins using your local username and password, or logins using your git provider (per the list and instructions of providers below). You can also configure login to supported SSO providers post-install as described [in the Codefresh documentation]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/).
 
 If you’d like to set up a login to Codefresh using your git provider, first login using the default credentials (username: AdminCF, password: AdminCF) and add your git provider OAuth integration details in our admin console: 
 
@@ -318,8 +320,8 @@ After app creation, note down the created Application ID and Client Secret. They
 
 {% include image.html
   lightbox="true"
-  file="/images/enterprise/installation/git-idp.png"
-  url="/images/enterprise/installation/git-idp.png"
+  file="/images/administration/installation/git-idp.png"
+  url="/images/administration/installation/git-idp.png"
     %}   
 
 >Note: When configuring the default IDP (for GitHub, GitLab, etc), do not modify the Client Name field. Please keep them as GitHub, GitLab, BitBucket, etc. Otherwise, the signup and login views won’t work.
