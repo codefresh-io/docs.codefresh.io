@@ -86,6 +86,8 @@ You can also verify your installation with
 codefresh runner info
 ```
 
+During installation you will also see which API token will be used by the runner (if you don't provide one by yourself). The token that is printed is used by the runner to talk to the Codefresh platform and it carries permissions that allows the runner to run pipelines.  If you note down the token and it can later be used if the deployment is deleted to restore the runner's permissions without creating a new runner installation.
+
 ### Customizing the wizard installation
 
 You can customize the wizard installation by passing your own values in the `init` command.
