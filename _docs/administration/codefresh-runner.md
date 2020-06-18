@@ -675,8 +675,8 @@ Here, in addition to the policy explained, you need a Trust Relationship establi
 
 {% include image.html
   lightbox="true"
-  file="/images/enterprise/runner/edit-trust-relationship.png"
-  url="/images/enterprise/runner/edit-trust-relationship.png"
+  file="/images/administration/runner/edit-trust-relationship.png"
+  url="/images/administration/runner/edit-trust-relationship.png"
   alt="IAM Role trust establishment with OIDC provider"
   caption="IAM Role trust establishment with OIDC provider"
   max-width="90%"
@@ -686,8 +686,8 @@ Step 3 - Create a new namespace where the runner will be instlled (e.g.  `codefr
 
 {% include image.html
   lightbox="true"
-  file="/images/enterprise/runner/sa-annotation.png"
-  url="/images/enterprise/runner/sa-annotation.png"
+  file="/images/administration/runner/sa-annotation.png"
+  url="/images/administration/runner/sa-annotation.png"
   alt="Service Account annotation"
   caption="Service Account annotation"
   max-width="90%"

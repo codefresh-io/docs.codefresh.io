@@ -63,7 +63,7 @@ max-width="70%"
 1. You will now create your OIDC integration. On the *General Settings* page, provide the following:
 
 * App name (e.g. Codefresh)
-* App logo (optional). Feel free to download and add this [picture]({{site.baseurl}}/images/enterprise/sso/okta/codefresh-logo.png)
+* App logo (optional). Feel free to download and add this [picture]({{site.baseurl}}/images/administration/sso/okta/codefresh-logo.png)
 * Login redirect URI: `https://g.codefresh.io/api/auth/<your_codefresh_client_name>/callback` you’ll be able to extract your Codefresh client name a bit later in the process so we’ll need to come back to this and update it again - for now please use a temp value such as `https://g.codefresh.io/api/auth/temp/callback`
 
 

@@ -23,8 +23,8 @@ You can define the level of access (**user** or **administrator**) from the same
 
 {% include image.html
   lightbox="true"
-  file="/images/enterprise/access-control/user-access-control.png"
-  url="/images/enterprise/access-control/user-access-control.png"
+  file="/images/administration/access-control/user-access-control.png"
+  url="/images/administration/access-control/user-access-control.png"
   alt="User access control"
   caption="User access control"
   max-width="80%"
