@@ -71,7 +71,7 @@ of having each pipeline using the prefix by itself.
 See more details at [pushing Docker images]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/#pushing-docker-images)
 
 
-## The caching registry
+## Internal caching registry
 
 You can also select a single registry that will serve as your [caching registry]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipeline-caching/#docker-registry-caching).
 
