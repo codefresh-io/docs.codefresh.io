@@ -75,6 +75,8 @@ See more details at [pushing Docker images]({{site.baseurl}}/docs/docker-registr
 
 You can also select a single registry that will serve as your [caching registry]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipeline-caching/#docker-registry-caching).
 
+> You cannot select Dockerhub as a caching registry, because it has very strict requirements for naming images, and our caching mechanism needs capabilities which are not possible with Dockerhub.
+
 Codefresh will efficiently use that registry to perform advanced caching logic for your builds
 
   * Codefresh will automatically examine the stored metadata to decide which past image is most relevant for caching purposes
