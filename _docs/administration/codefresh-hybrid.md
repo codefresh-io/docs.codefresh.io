@@ -4,7 +4,7 @@ description: "Add your own Node to run/build containers"
 group: administration
 redirect_from:
   - /docs/add-your-node-to-runbuild-containers/
-  - /docs/enterprise/audit-logs/
+  - /docs/enterprise/codefresh-hybrid/
 toc: true
 old_url: /docs/add-your-node-to-runbuild-containers
 ---
