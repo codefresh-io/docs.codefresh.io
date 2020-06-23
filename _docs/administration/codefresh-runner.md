@@ -311,6 +311,418 @@ codefresh install runtime --kube-namespace codefresh-runtime-2
 codefresh attach runtime --agent-name $AGENT_NAME --agent-kube-namespace codefresh-agent --runtime-name $RUNTIME_NAME --runtime-kube-namespace codefresh-runtime-2 --restart-agent
 ```
 
+## Configuration options
+
+
+### Installing to EKS with autoscaling
+
+#### Step 1-  EKS Cluster creation
+
+See below is a content of cluster.yaml file. We define separate node pools for dind, engine and other services(like runner, cluster-autoscaler etc).
+
+Before creating the cluster we have created two separate IAM policies:
+
+* one for our volume-provisioner controller(policy/runner-ebs) that should create and delete volumes
+* one for dind pods(policy/dind-ebs) that should be able to attach/detach those volumes to the appropriate nodes using [iam attachPolicyARNs options](https://eksctl.io/usage/iam-policies/). 
+
+{% highlight json %}
+{% raw %}
+policy/dind-ebs: 
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+           ### "Effect": "Allow",
+            "Action": [
+                "ec2:DescribeVolumes"
+            ],
+            "Resource": [
+                "*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ec2:DetachVolume",
+                "ec2:AttachVolume"
+            ],
+            "Resource": [
+                "*"
+            ]
+        }
+    ]
+}
+{% endraw%}
+{% endhighlight %}
+
+{% highlight json %}
+{% raw %}
+policy/runner-ebs:
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ec2:AttachVolume",
+                "ec2:CreateSnapshot",
+                "ec2:CreateTags",
+                "ec2:CreateVolume",
+                "ec2:DeleteSnapshot",
+                "ec2:DeleteTags",
+                "ec2:DeleteVolume",
+                "ec2:DescribeInstances",
+                "ec2:DescribeSnapshots",
+                "ec2:DescribeTags",
+                "ec2:DescribeVolumes",
+                "ec2:DetachVolume"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+{% endraw%}
+{% endhighlight %}
+
+
+`my-eks-cluster.yaml`
+{% highlight yaml %}
+{% raw %}
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+metadata:
+  name: my-eks
+  region: us-west-2
+  version: "1.15"
+
+nodeGroups:
+  - name: dind
+    instanceType: m5.2xlarge
+    desiredCapacity: 1
+    iam:
+      attachPolicyARNs:
+        - arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy
+        - arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy
+        - arn:aws:iam::aws:policy/ElasticLoadBalancingFullAccess
+        - arn:aws:iam::XXXXXXXXXXXX:policy/dind-ebs
+      withAddonPolicies:
+        autoScaler: true
+    ssh: # import public key from file
+      publicKeyPath: ~/.ssh/id_rsa.pub
+    minSize: 1
+    maxSize: 50
+    volumeSize: 50
+    volumeType: gp2
+    ebsOptimized: true
+    availabilityZones: ["us-west-2a"]
+    kubeletExtraConfig:
+        enableControllerAttachDetach: false
+    labels:
+      node-type: dind
+    taints:
+      codefresh.io: "dinds:NoSchedule"
+
+  - name: engine
+    instanceType: m5.large
+    desiredCapacity: 1
+    iam:
+      withAddonPolicies:
+        autoScaler: true
+    minSize: 1
+    maxSize: 10
+    volumeSize: 50
+    volumeType: gp2
+    availabilityZones: ["us-west-2a"]
+    labels:
+      node-type: engine
+    taints:
+      codefresh.io: "engine:NoSchedule"
+
+  - name: addons
+    instanceType: m5.2xlarge
+    desiredCapacity: 1
+    ssh: # import public key from file
+      publicKeyPath: ~/.ssh/id_rsa.pub
+    minSize: 1
+    maxSize: 10
+    volumeSize: 50
+    volumeType: gp2
+    ebsOptimized: true
+    availabilityZones: ["us-west-2a"]
+    labels:
+      node-type: addons
+    iam:
+      attachPolicyARNs:
+        - arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy
+        - arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy
+        - arn:aws:iam::aws:policy/ElasticLoadBalancingFullAccess
+        - arn:aws:iam::XXXXXXXXXXXX:policy/venona-ebs
+      withAddonPolicies:
+        autoScaler: true
+availabilityZones: ["us-west-2a", "us-west-2b", "us-west-2c"]
+{% endraw%}
+{% endhighlight %}
+
+Execute:
+
+```
+eksctl create cluster -f my-eks-cluster.yaml
+```
+
+#### Step 2 - Autoscaler
+
+Once the cluster is up and running we need to install the [cluster autoscaler](https://docs.aws.amazon.com/eks/latest/userguide/cluster-autoscaler.html):
+
+We used iam AddonPolicies `"autoScaler: true"` in the cluster.yaml file so there is no need to create a separate IAM policy or add Auto Scaling group tags, everything is done automatically.
+
+Deploy the Cluster Autoscaler: 
+
+```
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/autoscaler/master/cluster-autoscaler/cloudprovider/aws/examples/cluster-autoscaler-autodiscover.yaml
+```
+
+Add the `cluster-autoscaler.kubernetes.io/safe-to-evict` annotation
+
+```
+kubectl -n kube-system annotate deployment.apps/cluster-autoscaler cluster-autoscaler.kubernetes.io/safe-to-evict="false"
+```
+
+Edit the cluster-autoscaler container command to replace <YOUR CLUSTER NAME> with *my-eks*(name of the cluster from cluster.yaml file), and add the following options:
+    `--balance-similar-node-groups` and    `--skip-nodes-with-system-pods=false`
+
+```
+kubectl -n kube-system edit deployment.apps/cluster-autoscaler
+```
+
+{% highlight yaml %}
+{% raw %}
+spec:
+      containers:
+      - command:
+        - ./cluster-autoscaler
+        - --v=4
+        - --stderrthreshold=info
+        - --cloud-provider=aws
+        - --skip-nodes-with-local-storage=false
+        - --expander=least-waste
+        - --node-group-auto-discovery=asg:tag=k8s.io/cluster-autoscaler/enabled,k8s.io/cluster-autoscaler/my-eks
+        - --balance-similar-node-groups
+        - --skip-nodes-with-system-pods=false
+{% endraw%}
+{% endhighlight %}
+
+We created our EKS cluster with 1.15 version so the appropriate cluster autoscaler version from [https://github.com/kubernetes/autoscaler/releases](https://github.com/kubernetes/autoscaler/releases) is 1.15.6
+
+```
+kubectl -n kube-system set image deployment.apps/cluster-autoscaler cluster-autoscaler=us.gcr.io/k8s-artifacts-prod/autoscaling/cluster-autoscaler:v1.15.6
+```
+
+Check your own version to make sure that the autoscaler version is appropriate.
+
+
+
+#### Step 3 -  Optional: We also advise to configure overprovisioning with Cluster Autoscaler
+
+See details at the [FAQ](
+https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#how-can-i-configure-overprovisioning-with-cluster-autoscaler).
+
+
+
+#### Step 4 -  Adding an EKS cluster as a runner to the Codefresh platform with EBS support
+
+
+Make sure that you are targeting the correct cluster
+
+```
+$ kubectl config current-context 
+my-aws-runner
+```
+
+Install the runner passing additional options:
+
+```
+codefresh runner init \
+--name my-aws-runner \
+--kube-node-selector=failure-domain.beta.kubernetes.io/zone=us-west-2a \
+--kube-namespace cf --kube-context-name my-aws-runner \
+--set-value Storage.VolumeProvisioner.NodeSelector=node-type=addons \
+--set-value=Storage.Backend=ebs \
+--set-value=Storage.AvailabilityZone=us-west-2a
+```
+
+At this point the quick start wizard will start the installation.
+
+
+Once that is done we need to modify the runtime environment of `my-aws-runner` to specify the necessary toleration, nodeSelector and disk size:
+
+```
+codefresh get re --limit=100 my-aws-runner/cf -o yaml > my-runtime.yml
+```
+
+{% highlight yaml %}
+{% raw %}
+version: null
+metadata:
+  agent: true
+  trial:
+    endingAt: 1593596844167
+    reason: Codefresh hybrid runtime
+    started: 1592387244207
+  name: my-aws-runner/cf
+  changedBy: ivan-codefresh
+  creationTime: '2020/06/17 09:47:24'
+runtimeScheduler:
+  cluster:
+    clusterProvider:
+      accountId: 5cb563d0506083262ba1f327
+      selector: my-aws-runner
+    namespace: cf
+  annotations: {}
+dockerDaemonScheduler:
+  cluster:
+    clusterProvider:
+      accountId: 5cb563d0506083262ba1f327
+      selector: my-aws-runner
+    namespace: cf
+  annotations: {}
+  defaultDindResources:
+    requests: ''
+  pvcs:
+    dind:
+      storageClassName: dind-local-volumes-runner-cf
+  userAccess: true
+extends:
+  - system/default/hybrid/k8s_low_limits
+description: 'Runtime environment configure to cluster: my-aws-runner and namespace: cf'
+accountId: 5cb563d0506083262ba1f327
+{% endraw%}
+{% endhighlight %}
+
+Modify the file my-runtime.yml as shown below:
+
+{% highlight yaml %}
+{% raw %}
+version: null
+metadata:
+  agent: true
+  trial:
+    endingAt: 1593596844167
+    reason: Codefresh hybrid runtime
+    started: 1592387244207
+  name: my-aws-runner/cf
+  changedBy: ivan-codefresh
+  creationTime: '2020/06/17 09:47:24'
+runtimeScheduler:
+  cluster:
+    clusterProvider:
+      accountId: 5cb563d0506083262ba1f327
+      selector: my-aws-runner
+    namespace: cf
+    nodeSelector:
+      node-type: engine
+  tolerations:
+  - effect: NoSchedule
+    key: codefresh.io
+    operator: Equal
+    value: engine
+  annotations: {}
+dockerDaemonScheduler:
+  cluster:
+    clusterProvider:
+      accountId: 5cb563d0506083262ba1f327
+      selector: my-aws-runner
+    namespace: cf
+    nodeSelector:
+      node-type: dind
+  annotations: {}
+  defaultDindResources:
+    requests: ''
+  tolerations:
+  - effect: NoSchedule
+    key: codefresh.io
+    operator: Equal
+    value: dinds
+  pvcs:
+    dind:
+      volumeSize: 30Gi
+      reuseVolumeSelector: 'codefresh-app,io.codefresh.accountName'
+      storageClassName: dind-local-volumes-runner-cf
+  userAccess: true
+extends:
+  - system/default/hybrid/k8s_low_limits
+description: 'Runtime environment configure to cluster: my-aws-runner and namespace: cf'
+accountId: 5cb563d0506083262ba1f327
+{% endraw%}
+{% endhighlight %}
+
+Finally apply changes.
+
+```
+codefresh patch re my-aws-runner/cf -f my-runtime.yml
+```
+
+That's all. Now you can go to UI and try to run a pipeline on RE my-aws-runner/cf
+
+### Injecting AWS arn roles into the cluster
+
+Step 1 - Make sure the OIDC provider  is connected to the cluster
+
+See:
+
+ * [https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html](https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html)
+ * [https://aws.amazon.com/blogs/opensource/introducing-fine-grained-iam-roles-service-accounts/](https://aws.amazon.com/blogs/opensource/introducing-fine-grained-iam-roles-service-accounts/)
+
+Step 2 - Create IAM role and policy as explained in [https://docs.aws.amazon.com/eks/latest/userguide/create-service-account-iam-policy-and-role.html](https://docs.aws.amazon.com/eks/latest/userguide/create-service-account-iam-policy-and-role.html)
+
+Here, in addition to the policy explained, you need a Trust Relationship established between this role and the OIDC entity.
+
+{% include image.html
+  lightbox="true"
+  file="/images/administration/runner/edit-trust-relationship.png"
+  url="/images/administration/runner/edit-trust-relationship.png"
+  alt="IAM Role trust establishment with OIDC provider"
+  caption="IAM Role trust establishment with OIDC provider"
+  max-width="90%"
+    %} 
+
+Step 3 - Create a new namespace where the runner will be instlled (e.g.  `codefresh-runtime`) and annotate the default Kubernetes Service Account on the newly created namespace with the proper IAM role 
+
+{% include image.html
+  lightbox="true"
+  file="/images/administration/runner/sa-annotation.png"
+  url="/images/administration/runner/sa-annotation.png"
+  alt="Service Account annotation"
+  caption="Service Account annotation"
+  max-width="90%"
+    %}         
+
+Step 4 - Install the Codefresh runner using the instructions of the previous section
+
+Step 5 - Using the AWS assumed role identity
+
+After the Codefresh runner is installed run a pipeline to test the AWS resource access:
+
+{% highlight yaml %}
+{% raw %}
+RunAwsCli:
+      title : Communication with AWS 
+      image : mesosphere/aws-cli
+      stage: "build"
+      commands :
+         - apk update
+         - apk add jq
+         - env
+         - cat /codefresh/volume/sensitive/.kube/web_id_token
+         - aws sts assume-role-with-web-identity --role-arn $AWS_ROLE_ARN --role-session-name mh9test --web-identity-token file://$AWS_WEB_IDENTITY_TOKEN_FILE --duration-seconds 1000 > /tmp/irp-cred.txt
+         - export AWS_ACCESS_KEY_ID="$(cat /tmp/irp-cred.txt | jq -r ".Credentials.AccessKeyId")"
+         - export AWS_SECRET_ACCESS_KEY="$(cat /tmp/irp-cred.txt | jq -r ".Credentials.SecretAccessKey")"
+         - export AWS_SESSION_TOKEN="$(cat /tmp/irp-cred.txt | jq -r ".Credentials.SessionToken")"
+         - rm /tmp/irp-cred.txt
+         - aws s3api get-object --bucket jags-cf-eks-pod-secrets-bucket --key  eks-pod2019-12-10-21-18-32-560931EEF8561BC4 getObjectNotWorks.txt
+{% endraw %}
+{% endhighlight %}
+
 
 ## Legacy installation of the Runner using the Venona installer
 
@@ -662,64 +1074,6 @@ Update your runtime environment with the [patch command](https://codefresh-io.gi
 codefresh patch runtime-environment ivan@wawa-ebs.us-west-2.eksctl.io/codefresh-runtime -f codefresh-runner.yaml
 ```
 
-### Injecting AWS arn roles into the cluster
-
-Step 1 - Make sure the OIDC provider  is connected to the cluster
-
-See:
-
- * [https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html](https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html)
- * [https://aws.amazon.com/blogs/opensource/introducing-fine-grained-iam-roles-service-accounts/](https://aws.amazon.com/blogs/opensource/introducing-fine-grained-iam-roles-service-accounts/)
-
-Step 2 - Create IAM role and policy as explained in [https://docs.aws.amazon.com/eks/latest/userguide/create-service-account-iam-policy-and-role.html](https://docs.aws.amazon.com/eks/latest/userguide/create-service-account-iam-policy-and-role.html)
-
-Here, in addition to the policy explained, you need a Trust Relationship established between this role and the OIDC entity.
-
-{% include image.html
-  lightbox="true"
-  file="/images/administration/runner/edit-trust-relationship.png"
-  url="/images/administration/runner/edit-trust-relationship.png"
-  alt="IAM Role trust establishment with OIDC provider"
-  caption="IAM Role trust establishment with OIDC provider"
-  max-width="90%"
-    %} 
-
-Step 3 - Create a new namespace where the runner will be instlled (e.g.  `codefresh-runtime`) and annotate the default Kubernetes Service Account on the newly created namespace with the proper IAM role 
-
-{% include image.html
-  lightbox="true"
-  file="/images/administration/runner/sa-annotation.png"
-  url="/images/administration/runner/sa-annotation.png"
-  alt="Service Account annotation"
-  caption="Service Account annotation"
-  max-width="90%"
-    %}         
-
-Step 4 - Install the Codefresh runner using the instructions of the previous section
-
-Step 5 - Using the AWS assumed role identity
-
-After the Codefresh runner is installed run a pipeline to test the AWS resource access:
-
-{% highlight yaml %}
-{% raw %}
-RunAwsCli:
-      title : Communication with AWS 
-      image : mesosphere/aws-cli
-      stage: "build"
-      commands :
-         - apk update
-         - apk add jq
-         - env
-         - cat /codefresh/volume/sensitive/.kube/web_id_token
-         - aws sts assume-role-with-web-identity --role-arn $AWS_ROLE_ARN --role-session-name mh9test --web-identity-token file://$AWS_WEB_IDENTITY_TOKEN_FILE --duration-seconds 1000 > /tmp/irp-cred.txt
-         - export AWS_ACCESS_KEY_ID="$(cat /tmp/irp-cred.txt | jq -r ".Credentials.AccessKeyId")"
-         - export AWS_SECRET_ACCESS_KEY="$(cat /tmp/irp-cred.txt | jq -r ".Credentials.SecretAccessKey")"
-         - export AWS_SESSION_TOKEN="$(cat /tmp/irp-cred.txt | jq -r ".Credentials.SessionToken")"
-         - rm /tmp/irp-cred.txt
-         - aws s3api get-object --bucket jags-cf-eks-pod-secrets-bucket --key  eks-pod2019-12-10-21-18-32-560931EEF8561BC4 getObjectNotWorks.txt
-{% endraw %}
-{% endhighlight %}
 
 ### Security roles
 
