@@ -619,7 +619,7 @@ postgresql:
 
 ### Configuring an external MongoDB
 
-Codefresh recommends to use the Bitnami MongoDB [chart](https://github.com/bitnami/charts/tree/master/bitnami/mongodb) as a Mongo database.
+Codefresh recommends to use the Bitnami MongoDB [chart](https://github.com/bitnami/charts/tree/master/bitnami/mongodb) as a Mongo database. The supported version of Mongo is 3.6.x
 
 To configure Codefresh on-premises to use an external Mongo service one needs to provide the following values in `config.yaml`:
 
@@ -627,6 +627,7 @@ To configure Codefresh on-premises to use an external Mongo service one needs to
 Codefresh does not support [DNS Seedlist Connection Format](https://docs.mongodb.com/manual/reference/connection-string/#connections-dns-seedlist) at the moment, use the [Standard Connection Format](https://docs.mongodb.com/manual/reference/connection-string/#connections-standard-connection-string-format) instead.
 - mongo **root user** name and **password** - `mongodbRootUser`, `mongodbRootPassword`. The privileged user will be used by Codefresh only during installation for seed jobs and for automatic user addition. After installation, credentials from the provided mongo URI will be used.  Mongo root user must have permissions to create users.
 
+See the [Mongo required Access](https://docs.mongodb.com/manual/reference/method/db.createUser/#required-access) for more details.
 
 Here is an example of all the related values:
 
