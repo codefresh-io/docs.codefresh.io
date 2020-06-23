@@ -457,7 +457,7 @@ nodeGroups:
         - arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy
         - arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy
         - arn:aws:iam::aws:policy/ElasticLoadBalancingFullAccess
-        - arn:aws:iam::XXXXXXXXXXXX:policy/venona-ebs
+        - arn:aws:iam::XXXXXXXXXXXX:policy/runner-ebs
       withAddonPolicies:
         autoScaler: true
 availabilityZones: ["us-west-2a", "us-west-2b", "us-west-2c"]
