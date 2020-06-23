@@ -342,24 +342,6 @@ global:
 ```
 In addition to this, you should also add your k8s api IP address (`kubectl get svc kubernetes`) to both: `NO_PROXY` and `no_proxy`.
 
-### External Mongo Service
-
-To configure Codefresh on-premises to use an external Mongo Service, provide the following values:
-
-- **Mongo connection string (mongoURI):** This string will be used by all of the services to communicate with Mongo. Codefresh will automatically create and add a user with read-write permissions to all of the created databases with the username and password from the URI. Optionally, automatic user addition can be disabled (mongoSkipUserCreation) in order to use an already existing user. In such a case an existing user must have read-write permissions to all of the newly created databases.
-- **Mongo root user name and password (mongodbRootUser, mongodbRootPassword):** Codefresh will use privileged users only during installation for seed jobs and for automatic user addition. After installation, credentials from the provided Mongo URI will be used.
-
-Here is an example of all the related values from config.yaml:
-
-```yaml
-global:
-  mongodbRootUser: my-mongo-admin-user
-  mongodbRootPassword: yeqTeVwqVa9qDqebq
-  mongoURI: mongodb://someuser:mTiqweAsdw@my-mongo-cluster-shard-00-00-vziq1.mongodb.net:27017/?ssl=true
-  mongoSkipUserCreation: true
-  mongoDeploy: false   # disables deployment of internal mongo service
-```
-
 ### Storage
 
 Codefresh is using both cluster storage (volumes) as well as external storage.
@@ -532,6 +514,206 @@ metadata:
 ```
 
 - update your AWS Load Balancer listener for port 443 from HTTPS protocol to SSL.
+
+### TLS termination on AWS
+
+To use either a certificate from a third party issuer that was uploaded to IAM or a certificate [requested](https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-request-public.html) within AWS Certificate Manager:
+- copy a certificate ARN;
+- set the `tls.selfSigned: true` in the Codefresh's init config - __config.yaml__;
+- deploy a new installation;
+- update ingress service
+
+```sh
+kubectl edit service cf-ingress-controller
+```
+
+and add the following annotations:
+
+```yaml
+metadata:
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: http
+    service.beta.kubernetes.io/aws-load-balancer-ssl-cert: < CERTIFICATE ARN >
+    service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "443"
+spec:
+  ports:
+  - name: http
+    nodePort: 30908
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  - name: https
+    nodePort: 31088
+    port: 443
+    protocol: TCP
+    targetPort: 80
+```
+
+Both http and https target port should be set to **80**.
+
+
+## Using existing external services for data storage/messaging
+
+Normally the Codefresh installer, is taking care of all needed dependencies internally by deploying the respective services (mongo, redis etc) on its own.
+You might want however to use your own existing options if you already have those services up and running externally.
+
+### Configuring an external Postgres database
+
+It is possible to configure Codefresh to work with your existing Postgres database service, if you don't want to use the default one as provided by the Codefresh installer.
+
+#### Configuration steps
+
+All the configuration comes down to putting a set of correct values into your Codefresh configuration file `config.yaml`, which is present in `your/stage-dir/codefresh` directory. During the installation, Codefresh will run a seed job, using the values described in the following steps:
+
+1. Specify a user name `global.postgresSeedJob.user` and password `global.postgresSeedJob.password` for a seed job. This must be a privileged user allowed to create databases and roles. It will be used only by the seed job to create the needed database and a user.
+2. Specify a user name `global.postgresUser` and password `global.postgresPassword` to be used by Codefresh installation. A user with the name and password will be created by the seed job and granted with required privileges to access the created database.
+3. Specify a database name `global.postgresDatabase` to be created by the seed job and used by Codefresh installation.
+4. Specify `global.postgresHostname` and optionally `global.postgresPort` (`5432` is a default value).
+5. Disable the postgres subchart installation with the `postgresql.enabled: false` value, because it is not needed in this case.
+
+Below is an example of the relevant piece of `config.yaml`:
+
+```yaml
+global:
+  postgresSeedJob:
+    user: postgres
+    password: zDyGp79XyZEqLq7V
+  postgresUser: cf_user
+  postgresPassword: fJTFJMGV7sg5E4Bj
+  postgresDatabase: codefresh
+  postgresHostname: my-postgres.ccjog7pqzunf.us-west-2.rds.amazonaws.com
+  postgresPort: 5432
+
+postgresql:
+  enabled: false
+```
+
+#### Running the seed job manually
+
+If you would prefer running the seed job manually, you can do it by using a script present in `your/stage-dir/codefresh/addons/seed-scripts` directory named `postgres-seed.sh`. The script takes the following set of variables that you need to have set before running it:
+
+```
+POSTGRES_SEED_USER="postgres"
+POSTGRES_SEED_PASSWORD="zDyGp79XyZEqLq7V"
+POSTGRES_USER="cf_user"
+POSTGRES_PASSWORD="fJTFJMGV7sg5E4Bj"
+POSTGRES_DATABASE="codefresh"
+POSTGRES_HOST="my-postgres.ccjog7pqzunf.us-west-2.rds.amazonaws.com"
+POSTGRES_PORT="5432"
+```
+The variables have the same meaning as the configuration values described in the previous section about Postgres.
+
+However you **still need to specify a set of values** in the Codefresh config file as described in the section above, but with the whole **`postgresSeedJob` section omitted**, like this:
+
+```yaml
+global:
+  postgresUser: <POSTGRES USER>
+  postgresPassword: <POSTGRES PASSWORD>
+  postgresDatabase: codefresh
+  postgresHostname: <POSTGRES HOST>
+  postgresPort: 5432
+
+postgresql:
+  enabled: false
+```
+
+### Configuring an external MongoDB
+
+Codefresh recommends to use the Bitnami MongoDB [chart](https://github.com/bitnami/charts/tree/master/bitnami/mongodb) as a Mongo database.
+
+To configure Codefresh on-premises to use an external Mongo service one needs to provide the following values in `config.yaml`:
+
+- **mongo connection string** - `mongoURI`. This string will be used by all of the services to communicate with mongo. Codefresh will automatically create and add a user with "ReadWrite" permissions to all of the created databases with the username and password from the URI. Optionally, automatic user addition can be disabled - `mongoSkipUserCreation`, in order to use already existing user. In such a case the existing user must have **ReadWrite** permissions to all of newly created databases
+Codefresh does not support [DNS Seedlist Connection Format](https://docs.mongodb.com/manual/reference/connection-string/#connections-dns-seedlist) at the moment, use the [Standard Connection Format](https://docs.mongodb.com/manual/reference/connection-string/#connections-standard-connection-string-format) instead.
+- mongo **root user** name and **password** - `mongodbRootUser`, `mongodbRootPassword`. The privileged user will be used by Codefresh only during installation for seed jobs and for automatic user addition. After installation, credentials from the provided mongo URI will be used.  Mongo root user must have permissions to create users.
+
+
+Here is an example of all the related values:
+
+```yaml
+global:
+  mongodbRootUser: <MONGO ROOT USER>
+  mongodbRootPassword: <MONGO ROOT PASSWORD>
+  mongoURI: <MONGO URI>
+  mongoSkipUserCreation: true
+  mongoDeploy: false   # disables deployment of internal mongo service
+
+mongo:
+  enabled: false
+ ```
+
+### Configure an external Redis service
+
+Codefresh recommends to use the Bitnami Redis [chart](https://github.com/bitnami/charts/tree/master/bitnami/redis) as a Redis store.
+
+#### Limitations
+
+Codefresh does not support secure connection to Redis (TLS) and AUTH username extension.
+
+#### Configuration
+
+Codefresh requires two Redis databases:
+
+- the main - `cf-redis`, to store sessions, cache, etc;
+- `cf-store`, to store triggers;
+  
+At the time of writing nly the first one can be replaced by external Redis service,
+the `cf-store` DB is used as a local storage for triggers and should run along with the installation.
+
+
+To configure Codefresh to use an external Redis service, add the following parameters to your __config.yaml__:
+
+```yaml
+redis:
+  enabled: false
+  redisPassword: <MY REDIS PASS>
+
+global:
+  redisUrl: <MY REDIS HOST>
+  runtimeRedisHost: <MY REDIS HOST>
+  runtimeRedisPassword: <MY REDIS PASS>
+  runtimeRedisDb: 2
+```
+
+Where `redis*` - are for the main Redis storage, and `runtimeRedis*` - for storage is used to store pipeline logs in case of `OfflineLogging` feature is turned on. In most cases the host value is the same for these two values.
+
+
+### Configuring an external RabbitMQ service
+
+Codefresh recommends to use the Bitnami RabbitMQ [chart](https://github.com/bitnami/charts/tree/master/bitnami/rabbitmq) as a RabbitMQ service.
+
+To use an external RabbitMQ service instead of the local helm chart, add the following values to the __config.yaml__:
+
+```yaml
+rabbitmq:
+  enabled: false
+  rabbitmqUsername: <RABBITMQ USER>
+  rabbitmqPassword: <RABBITMQ PASSWORD> 
+
+global:
+  rabbitmqHostname: <RABBITMQ HOST>
+```
+
+### Configuring an external Consul service
+
+
+Notice that at the moment Codefresh supports only the deprecated Consul API (image __consul:1.0.0__), and does not support connection via HTTPS and any authentication.
+The Consul host must expose port `8500`.
+
+>In general, we don't recommend to take the Consul service outside the cluster.
+
+
+To configure Codefresh to use your external Consul service, add the following values to the __config.yaml__:
+
+```yaml
+global:
+  consulHost: <MY CONSUL HOST>
+
+consul:
+  enabled: false
+```
+
+
 
 
 ## Common Problems, Solutions, and Dependencies
