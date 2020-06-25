@@ -90,6 +90,7 @@ For the **Access Token** method you need
 * A friendly name for the git context (it can be anything you want)
 * An access token
 
+>Note that the access token for an organization should be created by somebody who has **Owner** role and not just **Member** role.
 
 To create an [access token](https://github.com/settings/tokens), go to your GitHub *settings* and select the *Developer settings* option from the left
 sidebar. Then select *Personal access tokens* from the left menu.
