@@ -114,6 +114,42 @@ alt="GitHub permissions"
 
 For GitHub on-premise you also need to provide the URL of the GitHub server in your organization.
 
+## GitHub-App
+
+An alternative way to authenticate with Github is via the App mechanism
+
+**Step 1** - Log in your Github account and visit [https://github.com/settings/apps](https://github.com/settings/apps). Click the *New GitHub App* button.
+
+**Step 2** - On the New app screen
+ 
+ 1. Give an arbitrary name to your app (e.g. codefresh-integration)
+ 1. Fill *Homepage URL* with `http://www.codefresh.io`
+ 1. Uncheck the *Active* checkbox under the Webhook section
+ 1. In the *Repository permissions* section give *Read/Write* access to *Contents* and *Webhooks*
+ 1. Click the *Create GitHub app* button.
+
+**Step 3** - In the next screen 
+
+1. Note down the *App ID* number under the *About* section
+1. Click the *Generate a private key* button and save the file locally
+
+**Step 4** - Click the *Install App* item from the left sidebar menu and then click the *Install* button next to your codefresh app
+
+**Step 5** - Accept the permissions and in the next screen define the repositories that you need Codefresh to access
+
+Also from the URL of the browser note the ending number (this is your installation id). For example if the URL is `https://github.com/settings/installations/10042353` then your installation number is 10042353
+
+**Step 6** - Visit [https://g.codefresh.io/account-admin/account-conf/integration/git](https://g.codefresh.io/account-admin/account-conf/integration/git) in Codefresh,  add a new Git provider and choose *Github App* from the drop-down menu
+
+For the required fields use:
+
+* **Installation id** - found in step 5
+* **App id** - found in step 3
+* **Private key** - paste the contents of the file your created in step 3
+
+Click *Test connection* to verify your integration and apply your changes with the *Save* button.
+
+
 ## GitLab
 
 For the **OAuth2 method** you only need to enable private repository access, enter a name for your connection and click *Save*. Then accept the permissions dialog. This is the easiest and recommended way to integrate GitLab. Notice that if
