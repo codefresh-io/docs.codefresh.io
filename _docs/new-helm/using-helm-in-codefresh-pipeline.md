@@ -141,7 +141,8 @@ results in:
 
 ```yaml
 ...
-    custom_values_file: `values-prod.yaml`
+    custom_value_files: 
+    - 'values-prod.yaml'
 ...
 ```
 results in:
