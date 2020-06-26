@@ -75,11 +75,13 @@ feature-vb145dh
 
 
 Notice that this syntax is specific to Codefresh and is **only** available within the Codefresh YAML file itself. If you want to write scripts or programs that use the Codefresh variables, you need to make them aware of the environment variable form.
-
+.
 
 ## System Provided Variables
 
 All system provided variables will also be automatically injected to any freestyle step as environment variables.
+
+> It is important to understand that all Git related variables such `CF_BRANCH`, `CF_COMMIT_MESSAGE`, `CF_REVISION` etc. are coming directly from the GIT provider you use and have the same limitations of that provider. For example GitLab is sending less information in pull request events than normal pushes, and Bitbucket sends only the short hash of a commit in pull request events. We suggest you read the documentation of your git provider first to understand what information is available for every git event
 
 {: .table .table-bordered .table-hover}
 | Variable                                          | Description                                                                                                                                                                                                                                                                                        |
