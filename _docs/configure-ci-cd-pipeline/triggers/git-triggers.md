@@ -228,6 +228,27 @@ max-width="60%"
   * *Report notification on pipeline execution* - enabled by default
 * *Runtime Environment* - choose to use pipeline [settings]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-settings) or override them
 
+## Accessing directly the webhook content of the trigger
+
+If your Git trigger is coming from Github, you can also access the whole payload of the webhook that was responsible for the trigger.
+The webhook content is available at `/codefresh/volume/event.json`. You can read this file in any pipeline step and process it like any other json file (e.g. with the jq utility).
+
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+steps:
+  read_trigger_webook:
+    title: "Reading Github webhook content"
+    type: "freestyle" 
+    image: "alpine:3.9" 
+    commands:
+      - 'cat /codefresh/volume/event.json'
+{% endraw %}
+{% endhighlight %}
+
+Notice however that this file is only available when the pipeline was triggered from a GitHub event. If you manually run the pipeline, the file is not present. 
+
 ## Using YAML and the Codefresh CLI to filter specific Webhook events
 
 The default GUI options exposed by Codefresh are just a starting point for GIT triggers and pull requests. Using [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) and the [Codefresh CLI plugin](https://codefresh-io.github.io/cli/) you can further create two-phase pipelines where the first one decides
