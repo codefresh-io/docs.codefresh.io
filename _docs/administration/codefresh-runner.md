@@ -115,6 +115,7 @@ Here are all the possible installation options
 | tolerations       | The Kubernetes tolerations as path to a  JSON file to be used by the runner resources (default is no tolerations) |
 | storage-class-name        |  Set a name of your custom storage class |
 | kube-config-path      |  Path to kubeconfig file (default is $HOME/.kube/config) |
+| set-value       | Pass a custom parameter/value pair |
 | verbose       | Print logs |
 
 
