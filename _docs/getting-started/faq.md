@@ -51,7 +51,7 @@ A. This is a long discussion. The quick answer is :
 1. Codefresh works with all major Git platforms and Cloud providers. There is no lock-in with any particular vendor.
 1. Codefresh has [several unique features]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/) such as a [distributed docker layer cache]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipeline-caching/), an automounted shared volume, a private Docker registry and a private Helm repository.
 1. Specifically for Kubernetes/Helm, Codefresh has a [Kubernetes dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/), a [Helm dashboard]({{site.baseurl}}/docs/new-helm/helm-releases-management/), a [Helm charts browser]({{site.baseurl}}/docs/new-helm/add-helm-repository/) and a [Helm environment board]({{site.baseurl}}/docs/new-helm/helm-environment-promotion/).
-1. The private Docker registry and all cluster integrations are automatically available to all pipelines. You don't need `docker login` commands or `kubectl` commands to setup a Kube config inside your pipeline.
+1. The Docker registry integrations and all cluster integrations are automatically available to all pipelines. You don't need `docker login` commands or `kubectl` commands to setup a Kube context inside your pipeline.
 1. Codefresh covers the full software lifecycle. You can see a release on the cluster dashboard, click on it, go to the docker image, click on it and go the build that created it, all from a single interface. Codefresh is batteries-included CI/CD.
 
 **Q. How is Codefresh different than Jenkins?**  
@@ -118,7 +118,7 @@ A. Yes, you can deploy [to a VM]({{site.baseurl}}/docs/yaml-examples/examples/pa
 **Q. Does Codefresh support infrastructure as code?**    
 A. Yes, there is nothing special to it. See the [Terraform]({{site.baseurl}}/docs/yaml-examples/examples/terraform/) and [Pulumi]({{site.baseurl}}/docs/yaml-examples/examples/pulumi/) examples.
 
-**Q. Can I connect my own Docker registry i?**    
+**Q. Can I connect my own Docker registry?**    
 A. Yes, you can connect your [own external registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) as long as Codefresh has network access to it.
 
 **Q. My Kubernetes cluster has automatic scaling/monitoring/logging. Will Codefresh have issues with it?**    
