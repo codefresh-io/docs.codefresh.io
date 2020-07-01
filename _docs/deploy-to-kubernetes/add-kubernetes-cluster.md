@@ -106,81 +106,16 @@ Codefresh will query the cluster and show its nodes. You are now ready to [deplo
 >If you wish for any reason to revoke the granted access from the Azure side, visit [https://account.activedirectory.windowsazure.com/r#/applications](https://account.activedirectory.windowsazure.com/r#/applications) and remove "Codefresh" from the list.
 
 ## Adding EKS Cluster
-To add an Amazon EKS cluster, you must first create a service account and obtain a token used to manage the integration.
 
-The official Amazon-provided guide on EKS can be found [here](https://docs.aws.amazon.com/eks/latest/userguide/).
+To add an Amazon EKS cluster, you must first obtain `kubectl` access to it. Follow the instructions for using the
+[AWS CLI](https://aws.amazon.com/premiumsupport/knowledge-center/eks-cluster-connection/) in order to obtain your kubeconfig locally.
 
-In order to use your cluster locally with `kubectl`, you must first install the [heptio-authenticator-aws](https://github.com/heptio/authenticator) binary. Your version of kubectl must also be 1.10+ for this to work.
+```
+aws eks --region region update-kubeconfig --name cluster_name
+```
 
-Next, create a kubeconfig file, such as `~/.kube/eks`, replacing `<endpoint-url>`, `<base64-encoded-ca-cert>`, and `<cluster-name>` with information on your EKS cluster obtained in the AWS console:
-
-{% highlight yaml %}
-{% raw %}
-apiVersion: v1
-clusters:
-- cluster:
-    server: <endpoint-url>
-    certificate-authority-data: <base64-encoded-ca-cert>
-  name: kubernetes
-contexts:
-- context:
-    cluster: kubernetes
-    user: aws
-  name: aws
-current-context: aws
-kind: Config
-preferences: {}
-users:
-- name: aws
-  user:
-    exec:
-      apiVersion: client.authentication.k8s.io/v1alpha1
-      command: heptio-authenticator-aws
-      args:
-        - "token"
-        - "-i"
-        - "<cluster-name>"
-{% endraw %}
-{% endhighlight %}
-
-Then, in an environment that has access to your AWS account, run the following command to create an admin user service account and necessary role binding:
-
-{% highlight shell %}
-{% raw %}
-cat <<EOF | kubectl --kubeconfig="$HOME/.kube/eks" apply -f -
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: admin-user
-  namespace: kube-system
----
-apiVersion: rbac.authorization.k8s.io/v1beta1
-kind: ClusterRoleBinding
-metadata:
-  name: admin-user
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: cluster-admin
-subjects:
-- kind: ServiceAccount
-  name: admin-user
-  namespace: kube-system
-EOF
-{% endraw %}
-{% endhighlight %}
-
-Finally, use the following command to obtain the service account token:
-
-{% highlight shell %}
-{% raw %}
-kubectl --kubeconfig="$HOME/.kube/eks" -n="kube-system" get secret \
-  $(kubectl --kubeconfig="$HOME/.kube/eks" -n="kube-system" get secret | \
-    grep admin-user | awk '{print $1}') -o jsonpath="{.data.token}"
-{% endraw %}
-{% endhighlight %}
-
-Once you have this token, follow the steps in the section below, using this token for item #4.
+Once you have access via `kubectl` then follow the [instructions]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/#get-cluster-configuration-manually) to obtain all the cluster details.
+To add the Amazon cluster, select *Amazon AWS* from the *ADD PROVIDER* drop-down menu and enter all details in the respective field in the Codefresh UI.
 
 ## Adding a DigitalOcean cluster
 
@@ -248,16 +183,20 @@ The configurations you'll be required to add are:
 1. Name - Any name of your choosing, that will represent your cluster context in Codefresh. Do not use spaces, dots or other strange characters in the name. 
 1. Host - The full URL of the Kubernetes API endpoints including protocol and port.
 1. Certificate - The Kubernetes service account certificate used for the integration with Codefresh (base64 encoded).
-1. Token - The Kubernetes service account token used for the integration with Codefresh (base64 encoded).
+1. Token - The Kubernetes service account token used for the integration with Codefresh (base64 encoded)
+1. (Optional) Namespace - Restrict Codefresh [access to a specific namespace](#restrict-codefresh-access-to-a-specific-namespace)
+
 
 {% include image.html
   lightbox="true"
-  file="/images/kubernetes/add-cluster/add-cluster-details.png"
-  url="/images/kubernetes/add-cluster/add-cluster-details.png"
+  file="/images/kubernetes/add-cluster/add-cluster-fields.png"
+  url="/images/kubernetes/add-cluster/add-cluster-fields.png"
   alt="Adding a custom cluster in Codefresh - details"
   caption="Adding a custom cluster in Codefresh - details"
-  max-width="60%"
+  max-width="80%"
     %}
+
+There is also a toggle for [private clusters behind a firewall]({{site.baseurl}}/docs/enterprise/behind-the-firewall/).
     
  In the section below we'll provide you with easy instructions how to get all your cluster configurations in order to add it to Codefresh.   
 
@@ -350,7 +289,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: codefresh-role
 rules:
-  - apiGroups: [""]
+  - apiGroups: [ "", "extensions"]
     resources: ["*"]
     verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
 ---
@@ -416,7 +355,23 @@ echo $(kubectl get secret -n kube-system -o go-template='{{index .data "token" }
 {% endraw %}
 {% endhighlight %}
 
+### Restrict Codefresh access to a specific namespace
 
+In most cases, you want to allow Codefresh to access all namespaces inside the cluster. This is the most convenient option as it will make
+the [services dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/) (and other GUI dashboards) the central way to manage your clusters.
+
+You can also restrict Codefresh only to an specific namespace of your choosing. To achieve this, use the details of service account in the previous section that has access only to that specific namespace, and also fill the *namespace* field in the cluster details form.
+
+{% include image.html
+  lightbox="true"
+  file="/images/kubernetes/add-cluster/restrict-namespace.png"
+  url="/images/kubernetes/add-cluster/restrict-namespace.png"
+  alt="Allows Codefresh access to a single namespace only"
+  caption="Allows Codefresh access to a single namespace only"
+  max-width="80%"
+    %}
+
+Notice that if you follow this approach several built-in Codefresh capabilities will be disabled (e.g. creating new namespaces from the GUI).
 
 
 

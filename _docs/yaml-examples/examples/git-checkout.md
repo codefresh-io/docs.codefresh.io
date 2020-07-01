@@ -17,7 +17,7 @@ caption="GIT integrations"
 max-width="70%"
 %}
 
-You can add new integration for any cloud provider or even [on-premise]({{site.baseurl}}/docs/enterprise/behind-the-firewall/) ones. By default you will also have a provider setup if you used one for Codefresh signup (Github, Gitlab or Bitbucket).
+You can add new integration for any cloud provider or even [on-premise]({{site.baseurl}}/docs/enterprise/behind-the-firewall/) ones. By default you will also have a provider setup if you used one for Codefresh signup (GitHub, GitLab or Bitbucket).
 
 For each Git Integration, make sure that you note down its name, as you will use in your pipeline inside a [git-clone]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) step.
 
@@ -103,6 +103,32 @@ max-width="50%"
 %}
 
 This is the recommended way of creating re-usable pipelines in Codefresh.
+
+## Cloning a repository using the Codefresh runner
+
+If you are using the [Hybrid version]({{site.baseurl}}/docs/enterprise/installation-security/#hybrid-installation) of Codefresh and a have a [Codefresh runner]({{site.baseurl}}/docs/enterprise/codefresh-runner/) installed, you need to use
+the fully qualified path of the git repository:
+
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+steps:
+    main_clone:
+        title: 'Cloning main repository...'
+        type: git-clone
+        repo: https://github-internal.example.com/my-username/my-app
+        revision: '${{CF_REVISION}}'
+        git: my-internal-git-provider
+    PrintFileList:
+        title: 'Listing files'
+        image: alpine:latest
+        commands:
+            - 'ls -l'
+{% endraw %}
+{% endhighlight %}
+
+More details can be found in the [private Git instructions page]({{site.baseurl}}/docs/enterprise/behind-the-firewall/#checking-out-code-from-a-private-git-repository).
 
 
 ## Working inside the cloned directory

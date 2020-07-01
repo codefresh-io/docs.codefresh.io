@@ -8,7 +8,7 @@ redirect_from:
 toc: true
 ---
 
-As we have explained in the [Unit tests page]({{site.baseurl}}/docs/testing/unit-tests/) Codefresh supports several ways of running unit tests. The most usual scenarios are using an existing Dockerhub image (common with compiled languages such as Java and Go) or using the application image itself (common with languages such as Javascript/Python/Ruby/PHP).
+As we have explained in the [Unit tests page]({{site.baseurl}}/docs/testing/unit-tests/) Codefresh supports several ways of running unit tests. The most usual scenarios are using an existing Docker Hub image (common with compiled languages such as Java and Go) or using the application image itself (common with languages such as JavaScript/Python/Ruby/PHP).
 
 In this example we will see both ways using two different applications in a single pipeline.
 

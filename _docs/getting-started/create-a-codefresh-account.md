@@ -25,7 +25,7 @@ max-width="90%"
 ## 1. Select your Identity Provider
 
 First, navigate to the [Codefresh Sign Up page](https://g.codefresh.io/signup).  
-Codefresh currently supports GitHub, Bitbucket and Gitlab as a Git provider. If you are using another Git provider
+Codefresh currently supports GitHub, Bitbucket and GitLab as a Git provider. If you are using another Git provider
 please [contact us](https://codefresh.io/contact-us/) to discuss alternative options. You can also select
 Azure or Google as an identity provider.
 
@@ -61,8 +61,8 @@ image.html
 lightbox="true" 
 file="/images/getting-started/create-account/github-authorize.png" 
 url="/images/getting-started/create-account/github-authorize.png"
-alt="Github authorization page" 
-caption="Github authorization page (click image to enlarge)" 
+alt="GitHub authorization page" 
+caption="GitHub authorization page (click image to enlarge)" 
 max-width="50%" 
 %}
 
@@ -79,7 +79,7 @@ caption="Bitbucket authorization page (click image to enlarge)"
 max-width="50%" 
 %}
 
-Finally if you use Gitlab you will see the permissions window shown below. Click the button labeled *Authorize* to continue.
+Finally if you use GitLab you will see the permissions window shown below. Click the button labeled *Authorize* to continue.
 
 
 {% include 
@@ -87,8 +87,8 @@ image.html
 lightbox="true" 
 file="/images/getting-started/create-account/gitlab-authorize.png" 
 url="/images/getting-started/create-account/gitlab-authorize.png"
-alt="Gitlab authorization page" 
-caption="Gitlab authorization page (click image to enlarge)" 
+alt="GitLab authorization page" 
+caption="GitLab authorization page (click image to enlarge)" 
 max-width="50%" 
 %}
 

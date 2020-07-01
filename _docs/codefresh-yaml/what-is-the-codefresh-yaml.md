@@ -63,11 +63,11 @@ steps:
     [step-contents]
 {% endhighlight %}
  
-You must define a step type for each step. Each step uses Docker images and containers as facilitators for execution. For example, the [**Freestyle**]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) step spins up a container and executes the specified shell commands from the YAML file. 
+You must define a step type for each step, unless you are using a [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/). Each step uses Docker images and containers as facilitators for execution. For example, the [**Freestyle**]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) step spins up a container and executes the specified shell commands from the YAML file. 
 
 The step names should be unique within the same pipeline. This mainly affects the visualization of the pipeline when it runs.
 
-Each step produces a resource, which you can reference in other steps, and are executed in real-time. For example, a [**Freestyle**]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) step can reference an image that was produced by a [**Build**]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) step. This allows you to chain steps together and create highly-customized builds.
+Each step produces a resource, which you can [reference](https://github.com/codefresh-contrib/python-flask-sample-app/blob/master/codefresh.yml#L23) in other steps, and are executed in real-time. For example, a [**Freestyle**]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) step can reference an image that was produced by a [**Build**]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) step. This allows you to chain steps together and create highly-customized builds.
 
 <div class="bd-callout bd-callout-info" markdown="1">
 ##### Variables
@@ -80,7 +80,7 @@ Steps chaining and referencing is possible due to implementation of variables in
 | ----------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
 | [Freestyle]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/)                      | Executes one or more shell commands in a container similar to `docker run`.            |
 | [Build]({{site.baseurl}}/docs/codefresh-yaml/steps/build/)                            | Builds a Docker image like `docker build`.                         |
-| [Push]({{site.baseurl}}/docs/codefresh-yaml/steps/push/)                              | Pushes a Docker image to a Docker registry similar to `docker tag` and `docker push`. |
+| [Push]({{site.baseurl}}/docs/codefresh-yaml/steps/push/)                              | Pushes a Docker image to an external registry similar to `docker tag` and `docker push`. |
 | [Git Clone]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)                      | Overrides the default git clone behavior. |
 | [Composition]({{site.baseurl}}/docs/codefresh-yaml/steps/composition/)                | Starts a Docker Composition like `docker-compose`. Discarded once pipelines finishes.             |
 | [Launch Composition]({{site.baseurl}}/docs/codefresh-yaml/steps/launch-composition/)  | Starts a long term Docker composition that stays up after the end of the pipeline.        |
@@ -110,7 +110,7 @@ You can also validate the pipeline yaml outside of the UI by using the [Codefres
 
 {% highlight shell %}
 {% raw %}
-$codefresh validate codefresh.yml
+$ codefresh validate codefresh.yml
 Yaml not valid:
   - "invalid-property" is not allowed
 {% endraw %}

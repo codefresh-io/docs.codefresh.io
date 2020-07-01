@@ -1,5 +1,5 @@
 ---
-title: "Spring Boot 2"
+title: "Spring Boot 2/Maven"
 description: "Create Docker images for Spring/Maven"
 excerpt: ""
 group: learn-by-example
@@ -24,7 +24,7 @@ You can see the example project at [https://github.com/codefresh-contrib/spring-
 
 Once launched the application presents a simple message at localhost:8080 and also at the various `/actuator/health` endpoints. You can use the standard `spring-boot:run` command to run it locally (without Docker).
 
-## Spring Boot 2 and Docker
+## Spring Boot 2 and Docker (package only)
 
 A Dockerfile is also provided at the same repository. It uses the base JRE image and just copies the JAR file inside the container.
 
@@ -39,6 +39,8 @@ RUN mkdir /app
 COPY target/*.jar /app/spring-boot-application.jar
 
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app/spring-boot-application.jar"]
+
+HEALTHCHECK --interval=1m --timeout=3s CMD wget -q -T 3 -s http://localhost:8080/actuator/health/ || exit 1
 
 {% endraw %}
 {% endhighlight %}
@@ -133,7 +135,7 @@ caption="Spring Boot Docker image"
 max-width="80%" 
 %}
 
-Once the pipeline is finished you will see the Spring Boot 2 Docker image in the [Codefresh Docker registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/) (or any other registry that you have linked within Codefresh).
+Once the pipeline is finished you will see the Spring Boot 2 Docker image your [Docker image dashboard]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/#viewing-docker-images).
 
 The last step is similar to the unit tests, but this time we run integration tests. We define again a custom cache folder so when you run the build you will see that Maven will automatically pick the cache from the previous step. All Codefresh steps in a pipeline [run on the same workspace]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps), so the build results from one step are visible to the next.
 

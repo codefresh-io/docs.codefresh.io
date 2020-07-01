@@ -49,8 +49,6 @@ caption="Add GIT provider"
 alt="Add GIT provider"
 %}
 
-
-
 For each git provider you need to setup authentication, so Codefresh can get access to the public and private repositories of the respective platform. 
 
 The easiest way to setup authentication is with OAuth2 if supported by the git provider. You only need to name your integration
@@ -59,6 +57,27 @@ or the provider does not support it, you need to manually create credentials by 
 
 In the case of an on-premise GIT provider you also need to fill in the URL where the provider is installed.
 
+## SSH Keys
+
+You have the ability to specify whether you want to clone via HTTPS or SSH.  Under the *General* menu, simply toggle to your desired option.
+
+{% include image.html 
+lightbox="true" 
+file="/images/integrations/git/github-ssh.png" 
+url="/images/integrations/git/github-ssh.png"
+max-width="40%"
+caption="Git SSH Options"
+alt="Git SSH Options"
+%}
+
+For SSH, paste your **raw**, private key into the SSH Key text box and click save.
+
+For more information on generating SSH keys and adding your public key to your VCS provider, see its official documentation:
+ 
+- [GitHub documentation](https://help.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent).
+- [GitLab documentation](https://docs.gitlab.com/ee/ssh/#generating-a-new-ssh-key-pair)
+- [Bitbucket documentation](https://confluence.atlassian.com/bitbucket/set-up-an-ssh-key-728138079.html)
+- [Azure documentation](https://docs.microsoft.com/en-us/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops&tabs=current-page)
 
 ## GitHub
 
@@ -71,6 +90,7 @@ For the **Access Token** method you need
 * A friendly name for the git context (it can be anything you want)
 * An access token
 
+>Note that the access token for an organization should be created by somebody who has **Owner** role and not just **Member** role.
 
 To create an [access token](https://github.com/settings/tokens), go to your GitHub *settings* and select the *Developer settings* option from the left
 sidebar. Then select *Personal access tokens* from the left menu.
@@ -88,16 +108,52 @@ lightbox="true"
 file="/images/integrations/git/github-required-scopes.png" 
 url="/images/integrations/git/github-required-scopes.png"
 max-width="40%"
-caption="Github permissions"
-alt="Github permissions"
+caption="GitHub permissions"
+alt="GitHub permissions"
 %}
 
-For Github on-premise you also need to provide the URL of the GitHub server in your organization.
+For GitHub on-premise you also need to provide the URL of the GitHub server in your organization.
 
-## Gitlab
+## GitHub-App
 
-For the **OAuth2 method** you only need to enable private repository access, enter a name for your connection and click *Save*. Then accept the permissions dialog. This is the easiest and recommended way to integrate Gitlab. Notice that if
-you used Gitlab when you [created your Codefresh account]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/), this integration is already setup for you.
+An alternative way to authenticate with Github is via the App mechanism
+
+**Step 1** - Log in your Github account and visit [https://github.com/settings/apps](https://github.com/settings/apps). Click the *New GitHub App* button.
+
+**Step 2** - On the New app screen
+ 
+ 1. Give an arbitrary name to your app (e.g. codefresh-integration)
+ 1. Fill *Homepage URL* with `http://www.codefresh.io`
+ 1. Uncheck the *Active* checkbox under the Webhook section
+ 1. In the *Repository permissions* section give *Read/Write* access to *Contents* and *Webhooks*
+ 1. Click the *Create GitHub app* button.
+
+**Step 3** - In the next screen 
+
+1. Note down the *App ID* number under the *About* section
+1. Click the *Generate a private key* button and save the file locally
+
+**Step 4** - Click the *Install App* item from the left sidebar menu and then click the *Install* button next to your codefresh app
+
+**Step 5** - Accept the permissions and in the next screen define the repositories that you need Codefresh to access
+
+Also from the URL of the browser note the ending number (this is your installation id). For example if the URL is `https://github.com/settings/installations/10042353` then your installation number is 10042353
+
+**Step 6** - Visit [https://g.codefresh.io/account-admin/account-conf/integration/git](https://g.codefresh.io/account-admin/account-conf/integration/git) in Codefresh,  add a new Git provider and choose *Github App* from the drop-down menu
+
+For the required fields use:
+
+* **Installation id** - found in step 5
+* **App id** - found in step 3
+* **Private key** - paste the contents of the file your created in step 3
+
+Click *Test connection* to verify your integration and apply your changes with the *Save* button.
+
+
+## GitLab
+
+For the **OAuth2 method** you only need to enable private repository access, enter a name for your connection and click *Save*. Then accept the permissions dialog. This is the easiest and recommended way to integrate GitLab. Notice that if
+you used GitLab when you [created your Codefresh account]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/), this integration is already setup for you.
 
 For the **Access Key** method you need:
 
@@ -105,15 +161,15 @@ For the **Access Key** method you need:
 * An access token/key
 
 
-To create an access token, go to your Gitlab *settings* and select the *Access tokens* options.
-For more information see the [Gitlab Documentation page](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html){:target="_blank"}
+To create an access token, go to your GitLab *settings* and select the *Access tokens* options.
+For more information see the [GitLab Documentation page](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html){:target="_blank"}
 
-The name you enter in order to create the token in the Gitlab UI is completely arbitrary (use "Codefresh" for an example)
+The name you enter in order to create the token in the GitLab UI is completely arbitrary (use "Codefresh" for an example)
 
 Once you have the token, paste it in the Codefresh UI and click *Test connection*. If everything is OK can
 now save the git integration.
 
-For Gitlab on-premise you also need to provide the URL of the Gitlab server in your organization.
+For GitLab on-premise you also need to provide the URL of the GitLab server in your organization.
 
 ## Bitbucket
 
@@ -208,7 +264,6 @@ alt="Codefresh integration with Azure Devops"
 %}
 
 Your Azure DevOps repositories will be available when [creating a new project in Codefresh]({{site.baseurl}}/docs/getting-started/create-a-basic-pipeline/).
-
 
 ## Atlassian Stash 
 

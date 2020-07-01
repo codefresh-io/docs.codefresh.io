@@ -11,11 +11,10 @@ toc: true
 Let’s Chat is self-hosted chat app for small to big teams.
 This tutorial will walk you through the process of adding the following:
 - `Build step` - that will build docker image for your let’s chat app.
-- `Push to registry step` - that will push your image to docker hub.
 - `Unit Test step` - A freestyle step that runs the unit test of the demo chat after the build.
 - `Composition step` - This step will run a composition which use your chat image from the build step, docker image of curl and check if your application is responsive. It will do so by printing "works" if a curl command to our app at port 5000 succeed.
  
-## Looking around
+## Example Pipeline
 In the root of this repository you'll find a file named codefresh.yml, this is our build descriptor and it describes the different steps that comprise our process. Let's quickly review the contents of this file:
 
   `codefresh.yml`
@@ -60,5 +59,5 @@ steps:
 {{site.data.callout.callout_info}}
 ##### Example
 
-Just head over to the example [__repository__](https://github.com/codefreshdemo/demochat){:target="_blank"} in Github and follow the instructions there. 
+Just head over to the example [__repository__](https://github.com/codefreshdemo/demochat){:target="_blank"} in GitHub and follow the instructions there. 
 {{site.data.callout.end}}

@@ -51,7 +51,7 @@ A. This is a long discussion. The quick answer is :
 1. Codefresh works with all major Git platforms and Cloud providers. There is no lock-in with any particular vendor.
 1. Codefresh has [several unique features]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/) such as a [distributed docker layer cache]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipeline-caching/), an automounted shared volume, a private Docker registry and a private Helm repository.
 1. Specifically for Kubernetes/Helm, Codefresh has a [Kubernetes dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/), a [Helm dashboard]({{site.baseurl}}/docs/new-helm/helm-releases-management/), a [Helm charts browser]({{site.baseurl}}/docs/new-helm/add-helm-repository/) and a [Helm environment board]({{site.baseurl}}/docs/new-helm/helm-environment-promotion/).
-1. The private Docker registry and all cluster integrations are automatically available to all pipelines. You don't need `docker login` commands or `kubectl` commands to setup a Kube config inside your pipeline.
+1. The Docker registry integrations and all cluster integrations are automatically available to all pipelines. You don't need `docker login` commands or `kubectl` commands to setup a Kube context inside your pipeline.
 1. Codefresh covers the full software lifecycle. You can see a release on the cluster dashboard, click on it, go to the docker image, click on it and go the build that created it, all from a single interface. Codefresh is batteries-included CI/CD.
 
 **Q. How is Codefresh different than Jenkins?**  
@@ -100,7 +100,7 @@ A. Yes, all pipelines can be stored in a git repository (the same one as the app
 A. For basic usage, feel free to use the [shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/) facility. For production grade security we suggest a dedicated solution such as [Hashicorp Vault](https://www.vaultproject.io/). We offer a [vault plugin](https://codefresh.io/steps/step/vault) for this purpose.
 
 **Q. Can I call external service X in a pipeline?**    
-A. Yes, everything that has an API or CLI can be called in a Codefresh pipeline (Artifactory/S3/Slack/Sonarqube/Twistlock/Codecov etc)
+A. Yes, everything that has an API or CLI can be called in a Codefresh pipeline (Artifactory/S3/Slack/SonarQube/Twistlock/Codecov etc)
 
 
 ## Deployment features
@@ -118,8 +118,8 @@ A. Yes, you can deploy [to a VM]({{site.baseurl}}/docs/yaml-examples/examples/pa
 **Q. Does Codefresh support infrastructure as code?**    
 A. Yes, there is nothing special to it. See the [Terraform]({{site.baseurl}}/docs/yaml-examples/examples/terraform/) and [Pulumi]({{site.baseurl}}/docs/yaml-examples/examples/pulumi/) examples.
 
-**Q. Can I connect my own Docker registry instead of the internal one?**    
-A. Yes, the [built-in Docker registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/) is automatically available to all pipelines, but you can still connect your [own external registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/).
+**Q. Can I connect my own Docker registry?**    
+A. Yes, you can connect your [own external registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) as long as Codefresh has network access to it.
 
 **Q. My Kubernetes cluster has automatic scaling/monitoring/logging. Will Codefresh have issues with it?**    
 A. Codefresh is using the standard Kubernetes API available to all compliant Kubernetes distributions. After a deployment is finished, Codefresh does not tamper with the cluster in any way.

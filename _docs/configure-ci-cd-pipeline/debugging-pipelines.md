@@ -11,7 +11,7 @@ In addition to [running pipelines locally]({{site.baseurl}}/docs/configure-ci-cd
 
 ## How Debugging works
 
-The Codefresh pipeline debugger works similar to your IDE debugger. You can place breakpoints on one or more pipeline steps and once the pipeline hits one of them, it will stop. You will then get a terminal like interface inside your pipeline step where you can run any commands that you wish in order to understand the state of the container
+The Codefresh pipeline debugger works similar to your IDE debugger. You can place breakpoints on one or more pipeline steps and once the pipeline hits one of them, it will stop. You will then get a terminal like interface inside your pipeline step where you can run any commands that you wish in order to understand the state of the container.
 
 
 {%
@@ -150,6 +150,44 @@ The pipeline will continue and then stop for the next breakpoint (if any). You c
 >Notice that to conserve resources, there is a 15 minute limit on each open debug session. If you don't resume the pipeline within 15 minutes after hitting a breakpoint the whole pipeline will stop with a timeout error.
 
 It is important to understand that if you have chosen the `override` phase in a freestyle step, then the commands mentioned in the pipeline definition are completely ignored.
+
+## Using the alternative debug window
+
+If you enable the debugger on a freestyle step with the "override" option, Codefresh will install some extra tooling on the Docker image that is needed for the debugger itself.
+
+By default, the internal debugger tooling is using node.js, so if your image is already based on Node.js, you might get version conflicts in your application.
+
+You can enable an alternative debugger by passing the variable `DEBUGGER_RUNNER = 2` on the whole pipeline:
+
+{%
+  include image.html
+  lightbox="true"
+  file="/images/pipeline/debug/alternative-debugger.png"
+  url="/images/pipeline/debug/alternative-debugger.png"
+  alt="Enabling the Python based debugger"
+  caption="Enabling the Python based debugger"
+  max-width="60%"
+%}
+
+This debugger is based on Python instead of Node.js and it can work with both Python 2 and 3 Docker images.
+This way the debugger tools will not affect your application. You can also use the same method in a specific freestyle step like this:
+
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+steps:
+  hello_world_step:
+    title: freestyle step
+    image: node:11.1
+    environment:
+      - 'DEBUGGER_RUNNER=2'
+{% endraw %}
+{% endhighlight %}
+
+
+
+
 
 ## Inserting breakpoints in the pipeline definition
 

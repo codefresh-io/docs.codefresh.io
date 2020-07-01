@@ -39,23 +39,17 @@ launch_composition_step:
 3. Build your service with Codefresh
 
 {:start="4"}
-4. Go to the environment page
+4. Click on *Compositions* on the left sidebar and then choose the *Running Compositions* tab.
 
-{% include image.html 
-lightbox="true" 
-file="/images/a4054be-Screen_Shot_2017-01-19_at_09.27.53.png" 
-url="/images/a4054be-Screen_Shot_2017-01-19_at_09.27.53.png"
-alt="Screen Shot 2017-01-19 at 09.27.53.png"
-max-width="40%" 
-%}
 
 {:start="5"}
-5. You can see the new environment on this page
+5. You will see the new preview environment on this page
 
-## Launching environment only on one branch
-Always remember that the number of your environment is limited. That's why it's a good practice to launch the the composition only on certain condition. Usually the most relevant condition is the branch, since you probably want your environment to be updated by you main branch.
+## Launching an environment only on one branch
 
-The following instructions would explain who to launch the environment for only the `master` branch: 
+There is a limit to the number environments you can run concurrently. That's why it's a good practice to launch the the composition only on certain condition. Usually the most relevant condition is the branch, since you probably want your environment to be updated by you main branch.
+
+The following instructions would explain how to launch the environment for only the `master` branch: 
 
 {:start="1"}
 1. Open your `codefresh.yml` file and add to the 'launch_composition_step` the following:
@@ -80,10 +74,10 @@ when:
 4. Create a new branch and push it to your git repository under a new branch
 
 {:start="5"}
-5. Build your service with codefresh with the new branch
+5. Build your service with codefresh on the new branch
 
 {:start="6"}
-6. When the build would finish, open the it's log. You should see something like:
+6. When the build would finish, open the its log. You should see something like:
 
 {% include image.html 
 lightbox="true" 
@@ -92,4 +86,3 @@ url="/images/df14346-Screen_Shot_2017-01-19_at_10.29.16.png"
 alt="Screen Shot 2017-01-19 at 10.29.16.png"
 max-width="40%" 
 %}
- 

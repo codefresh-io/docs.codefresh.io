@@ -133,7 +133,7 @@ Once that is done, Codefresh will launch your pipeline against the Pull Request.
 When supporting building of pull requests from forks there are a few "gotchas" to look out for:
 
 * Only comments made by repository owners and [collaborators](https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/adding-outside-collaborators-to-repositories-in-your-organization) will result in the pipeline being triggered
-* Only git pushes by collaborators within the Github organization will result in the pipeline being triggered
+* Only git pushes by collaborators within the GitHub organization will result in the pipeline being triggered
 * If the repository is in a GitHub organization, comments made by private members of the organization will not activate the trigger, even if they are set as an owner or collaborator.
 * The *Pull request comment added* checkbox should likely be the only one checked, or your pipeline may trigger on other events that you don't anticipate.
 
@@ -143,7 +143,7 @@ The *modified files* field is a very powerful Codefresh feature that allows you 
 files affected by a commit are in a specific folder (or match a specific naming pattern). This means that
 you can have a big GIT repository with multiple projects and build only the parts that actually change.
 
->Currently the field *modified files* is available only for GitHub, Gitlab and Bitbucket SAAS repositories, since they are the only GIT providers
+>Currently the field *modified files* is available only for GitHub, GitLab and Bitbucket SAAS repositories, since they are the only GIT providers
 that send this information in the webhook. We will support other GIT providers as soon as they add the respective feature. Also, the *modified files* field is only available for push events (i.e. not PR open events), since GIT providers only send it on these events.
 
 ### Using the Modified files field to constrain triggers to specific folder/files
@@ -156,6 +156,7 @@ The *modified files* field accepts glob expressions. The paths are relative to t
 my-subproject/**
 my-subproject/sub-subproject/package.json
 my-subproject/**/pom.xml
+!config/**
 
 ```
 
@@ -169,6 +170,8 @@ You can also define [multiple expressions](http://tldp.org/LDP/GNU-Linux-Tools-S
 ```
 
 Once a commit happens to a code repository, Codefresh will see which files are changed from the git provider and trigger the build **only** if the changed files match the glob expression. If there is no match no build will be triggered.
+
+> Notice that the `{}` characters are only needed if you have more than one expressions. Do not use them if you have a single glob expression in the field.
 
 This is a very useful feature for organizations who have chosen to have multiple projects on the same GIT repository (monorepos). Let's assume for example that a single system has a Java backend, a NestJS frontend and a Ruby-on-Rails internal dashboard.
 
@@ -200,10 +203,11 @@ This way as multiple developers work on the git repository only the affected pro
 
 You can also use Glob expressions for files. For example:
 
-* An expression such `my-subproject/sub-subproject/package.json` will trigger a build **only** if the dependencies of this specific project are changed
+* An expression such as `my-subproject/sub-subproject/package.json` will trigger a build **only** if the dependencies of this specific project are changed
 * A pipeline with the expression `my-subproject/**/pom.xml` will trigger only if the Java dependencies for any project that belongs to `my-subproject` actually change
+* An expression such as `!config/manifest.yaml` will trigger a build if any file was changed *apart from* `config/manifest.yaml`
 
-Glob expressions have many more options not shown here. Visit the [official documentation](https://en.wikipedia.org/wiki/Glob_(programming)) to learn more. You can also use the [Glob Tester web application](http://www.globtester.com/) to test your glob expressions beforehand so that you are certain they match the files you expect them to match.
+Glob expressions have many more options not shown here. Visit the [official documentation](https://en.wikipedia.org/wiki/Glob_(programming)) to learn more. You can also use the [Glob Tester web application](https://www.digitalocean.com/community/tools/glob) to test your glob expressions beforehand so that you are certain they match the files you expect them to match.
 
 ## Advanced Options
 
@@ -215,7 +219,7 @@ alt="Advanced Options"
 max-width="60%"
 %}
 
-* *Commit Status Title* -
+* *Commit Status Title* - the commit status title pushed to the GIT version control system.  By default, is the pipeline name, but you can override the name on GIT trigger.
 * *Build Variables* - import a [shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/) or manually add variables
 * *More Options* 
   * *Ignore Docker engine cache for build* - selecting this option may slow down your build.  See #1 [here]({{site.baseurl}}/docs/troubleshooting/common-issues/disabling-codefresh-caching-mechanisms/)
@@ -223,6 +227,27 @@ max-width="60%"
   * *Reset pipeline volume* - useful for troubleshooting a build that hangs on the first step.  See [here]({{site.baseurl}}/docs/troubleshooting/common-issues/restoring-data-from-pre-existing-image-hangs-on/)
   * *Report notification on pipeline execution* - enabled by default
 * *Runtime Environment* - choose to use pipeline [settings]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-settings) or override them
+
+## Accessing directly the webhook content of the trigger
+
+If your Git trigger is coming from Github, you can also access the whole payload of the webhook that was responsible for the trigger.
+The webhook content is available at `/codefresh/volume/event.json`. You can read this file in any pipeline step and process it like any other json file (e.g. with the jq utility).
+
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+steps:
+  read_trigger_webook:
+    title: "Reading Github webhook content"
+    type: "freestyle" 
+    image: "alpine:3.9" 
+    commands:
+      - 'cat /codefresh/volume/event.json'
+{% endraw %}
+{% endhighlight %}
+
+Notice however that this file is only available when the pipeline was triggered from a GitHub event. If you manually run the pipeline, the file is not present. 
 
 ## Using YAML and the Codefresh CLI to filter specific Webhook events
 

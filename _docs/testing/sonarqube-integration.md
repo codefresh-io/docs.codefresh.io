@@ -1,5 +1,5 @@
 ---
-title: "Sonarqube Scanning"
+title: "SonarQube Scanning"
 description: "How to trigger a SonarQube Analysis from Codefresh"
 group: testing
 redirect_from:

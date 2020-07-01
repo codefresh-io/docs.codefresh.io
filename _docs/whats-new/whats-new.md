@@ -8,8 +8,43 @@ toc: true
 ---
 Recent Codefresh updates:
 
+### June 2020
+
+- New Codefresh Runner installation - [documentation]({{site.baseurl}}/docs/enterprise/codefresh-runner/)
+- Using multiple Registry integrations with the same domain - [documentation]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/#working-with-multiple-registries-with-the-same-domain)
+- Multiple Dockerhub integrations - [documentation]({{site.baseurl}}/docs/docker-registries/external-docker-registries/docker-hub/#adding-more-dockerhub-integrations)
+- Global Docker registry prefix/repository - [documentation]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/#pushing-images-with-an-optional-prefix)
+- Integration with the GitHub App mechanism - [documentation]({{site.baseurl}}/docs/integrations/git-providers/#github-app)
+- Caching Registry selection - [documentation]({{site.baseurl}}/docs/docker-registries/external-docker-registries/#the-caching-registry)
+- Example with Rust/Cargo - [documentation]({{site.baseurl}}/docs/learn-by-example/rust/)
+
+### May 2020
+
+- Masking encrypted variables in logs - [documentation]({{site.baseurl}}/docs/codefresh-yaml/variables/#masking-variables-in-logs)
+- Restrict Codefresh to specific namespace - [documentation]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/#restrict-codefresh-access-to-a-specific-namespace)
+- Deploy with Kustomize - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/deploy-with-kustomize)
+- Installing the Codefresh Runner on a multi AZ GKE cluster - [documentation]({{site.baseurl}}/docs/enterprise/codefresh-runner/#using-multiple-availability-zones)
+- Masking encrypted variables in logs - [documentation]({{site.baseurl}}/docs/codefresh-yaml/variables/#masking-variables-in-logs)
+
+### April 2020
+
+- Helm release text message - [documentation]({{site.baseurl}}/docs/new-helm/helm-releases-management/#showing-an-upgrade-message)
+- Integration with Google Cloud Build - [documentation]({{site.baseurl}}/docs/integrations/gcloud-builder/)
+- Deploy to Heroku - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/deploy-to-heroku/)
+- Scala: Hello World (updated) - [documentation]({{site.baseurl}}/docs/learn-by-example/scala/scala-hello-world/)
+- New variable `CF_BRANCH_TAG_NORMALIZED_LOWER_CASE` - [documentation]({{site.baseurl}}/docs/codefresh-yaml/variables/#system-provided-variables)
+- Trigger a Kubernetes Deployment from a Dockerhub Push Event - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/trigger-a-k8s-deployment-from-docker-registry/)
+- Uploading or Downloading from a Google Storage Bucket - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/uploading-or-downloading-from-gs/)
+- Use GitHub Actions no longer requires a registry - [documentation]({{site.baseurl}}/docs/integrations/github-actions/#how-it-works)
+- Alternative debugging console - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/debugging-pipelines/#using-the-alternative-debug-window)
+- User variable priority rules - [documentation]({{site.baseurl}}/docs/codefresh-yaml/variables/#user-provided-variables)
+- Secret Storage - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/secrets-store/)
+- Run multiple kinds of unit tests using fan-in-fan-out parallel pipeline - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/fan-in-fan-out) 
+
+
 ### March 2020
 
+- Removal of the Codefresh registry - [documentation]({{site.baseurl}}/docs/docker-registries/cfcr-deprecation/)
 - Helm quick start guide for Helm 3  - [documentation]({{site.baseurl}}/docs/getting-started/helm-quick-start-guide/)
 - Deployment example for Helm 3  - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/helm/)
 - Helm 3 release dashboard - [documentation]({{site.baseurl}}/docs/new-helm/helm-releases-management/#choosing-between-helm-2-and-helm-3-releases)
@@ -17,12 +52,18 @@ Recent Codefresh updates:
 - Environment board now supports Helm 3 - [documentation]({{site.baseurl}}/docs/deploy-to-kubernetes/environment-dashboard/)
 - Promotion board now supports Helm 3 - [documentation]({{site.baseurl}}/docs/new-helm/helm-environment-promotion/)
 - New pipeline Helm step - [documentation]({{site.baseurl}}/docs/new-helm/using-helm-in-codefresh-pipeline/#examples)
+- Variables available for Helm pipelines - [documentation]({{site.baseurl}}/docs/new-helm/helm-releases-management/#overriding-the-default-helm-actions)
 - Both Helm 2 and Helm 3 clusters can be used at the same time
+- Installing the Codefresh runner behind proxy - [documentation]({{site.baseurl}}/docs/enterprise/codefresh-runner/#installing-behind-a-proxy)
+- Using Vault secrets in the Pipeline - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/vault-secrets-in-the-pipeline/)
+- Deploy to a VM using FTP - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/transferring-php-ftp)
+- Deploy to Tomcat using SCP - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/deploy-to-tomcat-via-scp)
+- Decryption with Mozilla SOPS - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/decryption-with-mozilla-sops)
 
 ### February 2020
 
 - Beta Support for Helm 3 - [documentation]({{site.baseurl}}/docs/new-helm/helm3/)
-- Use Github actions as Codefresh pipeline steps - [documentation]({{site.baseurl}}/docs/integrations/github-actions/)
+- Use GitHub Actions as Codefresh pipeline steps - [documentation]({{site.baseurl}}/docs/integrations/github-actions/)
 - Publish a JAR to Artifactory/Nexus - [documentation]({{site.baseurl}}/docs/learn-by-example/java/publish-jar/)
 - New [dashboard](https://g.codefresh.io/builds) for builds - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/monitoring-pipelines/)
   *  The git-event name is now included
@@ -70,7 +111,7 @@ Recent Codefresh updates:
 ### October 2019
 
 - Debugging pipelines with breakpoints - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/debugging-pipelines/)
-- Matrix builds and implicit paralllel steps - [documentation]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/#implicit-parallel-steps)
+- Matrix builds and implicit parallel steps - [documentation]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/#implicit-parallel-steps)
 - New Build view filters - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/monitoring-pipelines/#creating-build-views)
 - Deployments with Packer - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/packer-gcloud/)
 - Calling child pipelines - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/call-child-pipelines/)
@@ -95,7 +136,7 @@ Recent Codefresh updates:
 - Sidecar services in pipelines - [documentation]({{site.baseurl}}/docs/codefresh-yaml/service-containers/)
 - Personal Git providers are deprecated - [documentation]({{site.baseurl}}/docs/troubleshooting/personal-git-deprecation/)
 - Migrate from Jenkins to Codefresh - [documentation]({{site.baseurl}}/docs/integrations/jenkins-integration/#migrating-from-jenkins-to-codefresh)
-- MacOSX and iOS builds closed Alpha - [documentation]({{site.baseurl}}/docs/incubation/osx-ios-builds/)
+- macOS and iOS builds closed Alpha - [documentation]({{site.baseurl}}/docs/incubation/osx-ios-builds/)
 
 
 ### July 2019
@@ -104,7 +145,7 @@ Recent Codefresh updates:
 - Approval steps have now timeouts - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/#automatic-approvalsrejections)
 - Approval steps have now access control - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/#approval-restrictions)
 - Concurrency limits on pipelines - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-settings)
-- Termination setttings on pipelines - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-settings)
+- Termination settings on pipelines - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-settings)
 - API keys have now different access scopes - [documentation]({{site.baseurl}}/docs/integrations/codefresh-api/#access-scopes)
 
 
@@ -279,7 +320,7 @@ Recent Codefresh updates:
   - can visually see differences between releases
 - Misc:
   - UI and bug fixes.
-  - reorganized Helm docs, including samples on how package charts and push to registry: [Create Helm artifacts using Codefresh pipeline]({{ site.baseurl }}/docs/new-helm/create-helm-artifacts-using-codefresh-pipeline/)
+  - reorganized Helm docs, including samples on how package charts and push to registry: [Create Helm artifacts using Codefresh pipeline]({{site.baseurl}}/docs/new-helm/create-helm-artifacts-using-codefresh-pipeline/)
   - Pre-release of our brand new CLI at [https://github.com/codefresh-io/cli](https://github.com/codefresh-io/cli)
   - Using our new cli, you can now execute many pipelines in parallel with different configurations for each.
 
@@ -296,10 +337,10 @@ Recent Codefresh updates:
  - Easily manage your cluster configuration using Codefresh by creating, importing and sharing Config maps between your Kubernetes namespaces and clusters.
  - If you want to trigger Codefresh pipelines from other tool, use our pipeline hook to build, test and deploy from any command line / script / 3rd party.
  - Test your cluster Credentials and connectivity in one click.
- - We added integration with main self-hosted GIT providers to our PRO plan. You can now use Codefresh with your repos from:
+ - We added integration with main self-hosted GIT providers to our PRO plan. You can now use Codefresh with your repositories from:
    - GitHub enterprise
    - Bitbucket Enterprise
-   - Gitlab enterprise
+   - GitLab enterprise
 
 
 

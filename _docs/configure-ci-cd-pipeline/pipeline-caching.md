@@ -18,7 +18,7 @@ Here is a quick overview of all types of caching used in a Codefresh pipeline:
 | Distributed Docker step/image caching       | Automatic | All pipeline [steps]({{site.baseurl}}/docs/codefresh-yaml/steps/) | |
 | Distributed Docker layer caching  | Automatic |  Pipeline [build steps]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) | Mimics local Docker layer cache|
 | Caching from previous built image  | Automatic |  Pipeline build steps | Distributed version of `--cache-from`|
-| Docker registry caching  | Automatic |  Pipeline build steps | Works only for the [integrated Docker registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/)|
+| Docker registry caching  | Automatic |  Pipeline build steps | Works for all [connected Docker registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/)|
 | Traditional build caching  | Automatic/manual |  Pipeline [freestyle steps]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) | See notes for [parallel builds]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/)|
 
 All these caching mechanisms are enabled by default and you can [freely disable them]({{site.baseurl}}/docs/troubleshooting/common-issues/disabling-codefresh-caching-mechanisms/) if you encounter any issues with caching.
@@ -77,7 +77,7 @@ This cache mechanism is applicable to all Codefresh pipelines and steps.
 
 This type of caching is **only** applicable to [build steps]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) and mimics the ways docker layer caching behaves locally on your workstation.
 
-When you build images locally docker will cache intermediate layers making future builds much faster. You can see when caches are used in your build logs.
+When you build images locally, Docker will cache intermediate layers making future builds much faster. You can see when caches are used in your build logs.
 
 {% highlight shell %}
 {% raw %}
@@ -101,7 +101,7 @@ Step 5/10 : COPY go.sum .
 {% endraw %}
 {% endhighlight %}
 
-In a distributed build environment however, things work much differently as each build node has its own cache. If you run a pipeline on one node and then run a second build on another node everything will be downloaded again because (normally) build nodes don't share any cache.
+In a distributed build environment however, things work much differently as each build node has its own cache. If you run a pipeline on one node and then run a second build on another node everything will be recreated again because (normally) build nodes don't share any cache.
 
 {% include image.html
 lightbox="true"
@@ -112,7 +112,7 @@ caption="Without a distributed docker layer cache"
 max-width="60%"
 %}
 
-In the example above if you run another build that is picked up by build node 18 all Docker filesystem layers will be downloaded again even though they are already present in other nodes.
+In the example above if you run another build that is picked up by build node 18 all Docker filesystem layers will be recreated again even though they are already present in other nodes.
 
 Codefresh is one of the few CI/CD solutions that has a *distributed* Docker layer cache. This makes layer caching available to all build nodes. It doesn't matter any more which build node runs which pipeline as all of them are equal regarding their caching capabilities.
 
@@ -156,14 +156,14 @@ To take advantage of this build cache just follow the official Docker guidelines
 * Put things that will change frequently at the bottom of the dockerfile (e.g. source code)
 * Don't use side effects in Dockerfiles
 
-Basically if your Dockerfile is already optimized on your local workstation, it should also be optimized for Codefresh. More information can be found in the official documentation:
+Basically, if your Dockerfile is already optimized on your local workstation, it should also be optimized for Codefresh. More information can be found in the official documentation:
 
 * [https://www.docker.com/blog/intro-guide-to-dockerfile-best-practices/](https://www.docker.com/blog/intro-guide-to-dockerfile-best-practices/)
 * [https://docs.docker.com/develop/develop-images/dockerfile_best-practices/](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
 
 ## Docker registry caching
 
-This is a caching mechanism unique to Codefresh and applicable only to [build steps]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) when the [private Docker registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/) is used.
+This is a caching mechanism unique to Codefresh and applicable only to [build steps]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) when any of [connected Docker registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) is used.
 
 Codefresh will check the internal Docker registry *before* a build step and if the exact same image is found (using the image hash), it will skip the build step completely:
 
@@ -194,7 +194,8 @@ max-width="90%"
 %}
 
 This means that unlike other CI solutions where you have to manually describe what folder you wish to cache, in Codefresh **everything that exists in `/codefresh/volume` and its subfolders is automatically cached between different builds** of the same pipeline. The volume mounting and caching/restoring process is completely automatic. You don't need any configuration about it. 
-The choice that you have is which files to place on the volume. For example, Node.js uses the folder `node_modules` for its dependencies which are placed under the project folder [which is automatically placed under the volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#cloning-the-source-code). So all contents of `node_modules` will be cached by default.
+
+The main choice that you have is which files to place on the volume. For example, Node.js uses the folder `node_modules` for its dependencies which are placed under the project folder [which is automatically placed under the volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#cloning-the-source-code). So all contents of `node_modules` will be cached by default without any further action on your part.
 
 The simplest way to see this caching mechanism in action is this pipeline:
 
@@ -235,7 +236,7 @@ Some important points on this caching mechanism:
 
 * The volume is handled and managed by Codefresh in a completely transparent manner. You **DO NOT** need any `volume` directives in your pipelines to take advantage of it. The volume is even present in [service containers]({{site.baseurl}}/docs/codefresh-yaml/service-containers/) for integration tests.
 * On each build the [clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) will purge/delete everything that is not placed in `.gitignore`. So make sure that your `.gitignore` files contain all the things that you want to see cached (e.g. `node_modules`)
-* The volume is different for each pipeline **AND** for each Git branch. Different pipelines have completely different volumes. Different Git branches of the same pipeline have completely different volumes as well. This is by design as a branch called `develop` will probably need different dependency libraries from a branch called `production`.
+* If you use the SAAS version of Codefresh, volumes will be reused across all your account pipelines. If you use the On-prem or Hybrid version of Codefresh, pipeline volumes can be scoped to different pipelines or triggers as well
 * The volume is only saved when the pipeline is successful. You need at least one successful build of your pipeline in order for the cache mechanism to take any effect.
 * The volume is **NOT available** in [build steps]({{site.baseurl}}/docs/codefresh-yaml/steps/build/). This is not a Codefresh limitation. Docker itself [does not allow volumes during builds](https://github.com/moby/moby/issues/14080). There is no folder `/codefresh/volume` inside a Dockerfile for you to access.
 * This is the only caching mechanism that is not related to Docker images. So if you compile/package a traditional application with Codefresh that is not packaged as a Docker image this is the only way to get faster builds.
@@ -257,6 +258,7 @@ In practice, this means that you need to look at the documentation of your build
  * For SBT use `-Dsbt.ivy.home=/codefresh/volume/ivy_cache`.
  * For Pip use `pip install -r requirements.txt --cache-dir=/codefresh/volume/pip-cache` as shown in the [example]({{site.baseurl}}/docs/learn-by-example/python/django/)
  * For Golang pass an environment variable `GOPATH=/codefresh/volume/go` to the freestyle step that is running go commands
+ * For Rust pass an environment variable `CARGO_HOME=/codefresh/volume/cargo` to the freestyle step that is running rust/cargo commands
 
  This is only needed for traditional applications that are not dockerized. If you already use Docker containers the previous caching mechanisms are already enough.
 

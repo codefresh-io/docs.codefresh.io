@@ -39,7 +39,7 @@ The steps offered by Codefresh are:
 **Freestyle** steps are the cornerstone of Codefresh pipelines. They allow you to run any command within the context of a Docker container. A lot of Codefresh optimizations such as the [shared docker volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) are designed specifically for freestyle steps.
 Freestyle steps are a secure replacement for `docker run` commands.
 
-**Build** steps are the main way where you get access to the Docker daemon (Docker as a service) in Codefresh pipelines. Build steps take as input any Dockerfile and run it on the cloud in a similar manner to what you do on your workstation. Build steps automatically push the result to the [internal Docker registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/) (no need for docker login commands). Codefresh also comes with a global Docker cache that automatically gets attached to all build nodes. Build steps are a secure replacement for `docker build` commands.
+**Build** steps are the main way where you get access to the Docker daemon (Docker as a service) in Codefresh pipelines. Build steps take as input any Dockerfile and run it on the cloud in a similar manner to what you do on your workstation. Build steps automatically push the result to the default Docker registry of your account (no need for docker login commands). Codefresh also comes with a global Docker cache that automatically gets attached to all build nodes. Build steps are a secure replacement for `docker build` commands.
 
 **Push** steps allow you to push and tag your docker images (created by the build step) in any [external Docker registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/). Push steps are *not* needed at all if you work with only the internal Codefresh registry. Push steps are a secure replacement for the `docker tag` and `docker push` commands.
 
@@ -351,6 +351,8 @@ For the argument section we follow the [JSON Schema](http://json-schema.org/lear
 
 The final part is the step implementation. Here you can define exactly the yaml that this step will insert in the pipeline. You can use any of the built-in steps in Codefresh and even add multiple steps.
 
+>Note that currently you cannot nest custom pipeline steps. We are aware of this limitation and are actively working on it, but at the time or writing you cannot use a typed step inside another typed step.
+
 Once you are done with your step, use the Codefresh CLI to upload it to the marketplace. If you want the step to be available only to you and your team make sure that the property `isPublic` is false (and then it will not be shown in the marketplace).
 
 {% highlight bash %}
@@ -371,9 +373,18 @@ codefresh delete step-type kostis-codefresh/sample
 
 ### Versioning of typed steps
 
-The top-level `version` property in the plugin manifest allows you to publish multiple releases of the same plugin in the marketplace. Codefresh will keep all previous plugins and users are free to choose which version they want.
+The `version` property under `metadata` in the plugin manifest allows you to publish multiple releases of the same plugin in the marketplace. Codefresh will keep all previous plugins and users are free to choose which version they want.
 
-You can see all versions of a plugin in the step marketplace drop-down:
+To create a new version of your plugin:
+
+1. Update the `version` property under `metadata` in your custom YAML.
+2. Run: 
+
+{% highlight bash %}
+codefresh create step-type 'account/plugin' -f custom-plugin.yaml
+{% endhighlight %}
+
+You will now be able to see the new versions of your plugin in the step marketplace drop-down:
 
 {% include
 image.html
@@ -389,6 +400,12 @@ You can also use the Codefresh CLI to list all version:
 
 {% highlight bash %}
 codefresh get step-types kostis-codefresh/sample --versions
+{% endhighlight %}
+
+To delete a specific version, use:
+
+{% highlight bash %}
+codefresh delete step-type 'account/plugin:<version>'
 {% endhighlight %}
 
 Note that Codefresh step versions function like Docker tags in the sense that they are *mutable*. You can overwrite an existing plugin version with a new plugin manifest by using the `codefresh replace step-types` command.
@@ -930,6 +947,31 @@ steps:
 
 This was a trivial example, but it clearly demonstrates how a custom step communicates with the rest of the pipeline by getting input from the previous steps and preparing output for the steps that follow it.
 
+### Exporting parameters manually inside a plugin
+
+Normally in a pipeline you can either use the [cf_export]({{site.baseurl}}/docs/codefresh-yaml/variables/#using-cf_export-command) command or write directly to the [/codefresh/volume/env_vars_to_export]({{site.baseurl}}/docs/codefresh-yaml/variables/#directly-writing-to-the-file) file.
+
+However inside a plugin you can also use the `/meta/env_vars_to_export` file that has the same semantics, but is used for exporting variables in the same scope as the plugin only.
+
+{% highlight yaml %}
+{% raw %}
+  steps:
+    export_my_variable:
+       title: "Exporting custom variable"
+       image: alpine     
+       commands:
+         - echo MY_PLUGIN_VAR=SAMPLE_VALUE >> /meta/env_vars_to_export   
+    read_my_variable:
+       title: "Reading custom variable"
+       image: alpine     
+       commands:
+         - echo $MY_PLUGIN_VAR
+{% endraw %}
+{% endhighlight %}
+
+You can still use `cf_export` command inside the plugin as well (as shown in the previous examples).
+
+
 ### Example with step templating
 
 As an advanced technique, Codefresh allows you to define a custom step using templating instead of fixed YAML. We support templates inside the `spec:` block of a plugin definition by taking advantage of the [Gomplate](https://github.com/hairyhenderson/gomplate) library that offers additional templating functions on top of vanilla [Go templates](https://golang.org/pkg/text/template/).
@@ -950,7 +992,7 @@ checkout_many_projects:
 {% endraw %}
 {% endhighlight %}
 
-The Github projects are passed as an array, so if we want to check out an additional project, we simply add items to that array.
+The GitHub projects are passed as an array, so if we want to check out an additional project, we simply add items to that array.
 
 Here is the [step specification](https://github.com/kostis-codefresh/step-examples/blob/master/multi-clone/multi-clone-step.yml):
 

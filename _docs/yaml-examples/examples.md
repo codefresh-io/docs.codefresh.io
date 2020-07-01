@@ -21,6 +21,7 @@ Codefresh is agnostic as far as programming languages are concerned. All major p
 - [Python Django App]({{site.baseurl}}/docs/learn-by-example/python/django/)
 - [Ruby On Rails App]({{site.baseurl}}/docs/learn-by-example/ruby/)
 - [C]({{site.baseurl}}/docs/learn-by-example/cc/c-make/) or [C++]({{site.baseurl}}/docs/learn-by-example/cc/cpp-cmake)
+- [Rust]({{site.baseurl}}/docs/learn-by-example/rust/) 
 - [C# .NET core]({{site.baseurl}}/docs/learn-by-example/dotnet/)
 - [Scala App]({{site.baseurl}}/docs/learn-by-example/scala/scala-hello-world/)
 - [Android (Mobile)]({{site.baseurl}}/docs/learn-by-example/mobile/android/)
@@ -43,8 +44,10 @@ Codefresh has native support for [building]({{site.baseurl}}/docs/codefresh-yaml
 - [Build and Push an Image]({{site.baseurl}}/docs/yaml-examples/examples/build-and-push-an-image)
 - [Build an Image With Build Arguments]({{site.baseurl}}/docs/yaml-examples/examples/build-an-image-with-build-arguments)
 - [Shared Volumes Between Builds]({{site.baseurl}}/docs/yaml-examples/examples/shared-volumes-between-builds)
+- [Uploading or Downloading from a Google Storage Bucket]({{site.baseurl}}/docs/yaml-examples/examples/uploading-or-downloading-from-gs/)
 - [Get Short SHA ID and Use it in a CI Process]({{site.baseurl}}/docs/yaml-examples/examples/get-short-sha-id-and-use-it-in-a-ci-process)
 - [Calling a CD pipeline from a CI pipeline]({{site.baseurl}}/docs/yaml-examples/examples/call-child-pipelines)
+- [Trigger a Kubernetes Deployment from a Dockerhub Push Event]({{site.baseurl}}/docs/yaml-examples/examples/trigger-a-k8s-deployment-from-docker-registry/)
 
 ## Testing
 
@@ -61,7 +64,14 @@ Codefresh has support for both [unit]({{site.baseurl}}/docs/testing/unit-tests/)
 - [Shared volumes of service from composition step for other yml steps]({{site.baseurl}}/docs/yaml-examples/examples/shared-volumes-of-service-from-composition-step-for-other-yml-steps)
 - [Launch Composition]({{site.baseurl}}/docs/yaml-examples/examples/launch-composition) 
 - [Launching a Composition and Defining a Service Environment Variables using a file]({{site.baseurl}}/docs/yaml-examples/examples/launching-a-composition-and-defining-a-service-environment-variables-using-a-file) 
+- [Run multiple kinds of unit tests using fan-in-fan-out parallel pipeline]({{site.baseurl}}/docs/yaml-examples/examples/fan-in-fan-out) 
 
+## Secrets
+
+Codefresh can automatically export secret key-value pairs using the Vault plugin from the [Step Marketplace](https://codefresh.io/steps/step/vault).
+
+- [Vault Secrets in the Pipeline]({{site.baseurl}}/docs/yaml-examples/examples/vault-secrets-in-the-pipeline)
+- [Decryption with Mozilla SOPS]({{site.baseurl}}/docs/yaml-examples/examples/decryption-with-mozilla-sops)
 
 ## Preview environments
 
@@ -78,12 +88,16 @@ Codefresh can automatically launch environments (powered by Docker swarm) to [pr
 Codefresh can deploy to any platform such as VMs, FTP/SSH/S3 sites, app servers but of course it has great support for [Kubernetes clusters]({{site.baseurl}}/docs/deploy-to-kubernetes/deployment-options-to-kubernetes/) and [Helm releases]({{site.baseurl}}/docs/new-helm/helm-releases-management/):
 
 - [Deploy to a VM with packer]({{site.baseurl}}/docs/yaml-examples/examples/packer-gcloud/) 
+- [Deploy to a VM with FTP]({{site.baseurl}}/docs/yaml-examples/examples/transferring-php-ftp)
+- [Deploy to Tomcat using SCP]({{site.baseurl}}/docs/yaml-examples/examples/deploy-to-tomcat-via-scp)
 - [Deploy Demochat to a Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/codefresh-kubernetes-integration-demochat-example/) 
 - [Use kubectl as part of Freestyle step]({{site.baseurl}}/docs/yaml-examples/examples/use-kubectl-as-part-of-freestyle-step) 
+- [Deploy with Kustomize]({{site.baseurl}}/docs/yaml-examples/examples/deploy-with-kustomize)
 - [Deploy with Helm]({{site.baseurl}}/docs/yaml-examples/examples/helm) 
 - [Deploy with Terraform]({{site.baseurl}}/docs/yaml-examples/examples/terraform) 
 - [Deploy with Pulumi]({{site.baseurl}}/docs/yaml-examples/examples/pulumi) 
 - [Deploy to Nomad]({{site.baseurl}}/docs/yaml-examples/examples/nomad)
+- [Deploy to Heroku]({{site.baseurl}}/docs/yaml-examples/examples/deploy-to-heroku/)
 
 ## Notifications
 

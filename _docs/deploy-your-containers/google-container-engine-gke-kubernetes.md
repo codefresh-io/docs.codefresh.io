@@ -21,7 +21,7 @@ The deployment script makes the following assumptions about your application and
 {{site.data.callout.callout_info}}
 ##### Try this example
 
-Just head over to the example [__repository__](https://github.com/codefreshdemo/cf-deploy-kubernetes){:target="_blank"} in Github.
+Just head over to the example [__repository__](https://github.com/codefreshdemo/cf-deploy-kubernetes){:target="_blank"} in GitHub.
 {{site.data.callout.end}}
 
 {{site.data.callout.callout_info}}

@@ -7,4 +7,4 @@ redirect_from:
 toc: true
 ---
 This section contains Codefresh examples based on Scala.
-- [Scala: Hello World]({{ site.baseurl }}/docs/learn-by-example/scala/scala-hello-world/)
+- [Scala: Hello World]({{site.baseurl}}/docs/learn-by-example/scala/scala-hello-world/)

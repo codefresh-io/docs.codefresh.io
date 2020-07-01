@@ -13,15 +13,16 @@ In this tutorial we will setup a [Continuous Integration](https://en.wikipedia.o
 within Codefresh using an example application. You will learn:
 
 * How to connect your Git repository
+* How to connect your Docker registry
 * How to build a Docker image from the source code
-* How to use the Codefresh internal registry for Docker images
 * How to run unit tests for your application
+* How to publish your image to Dockerhub
 
 Codefresh is the fastest way to get from your source code to a Docker image. Codefresh allows you
 to create a Docker image from its friendly UI without any local Docker installation (Docker building as a service).
 
-You can store the resulting image on a public or private Docker registry that your organization already uses, or in the built-in Docker storage. Each Codefresh account comes with its own [free native Docker registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/) that works exactly like public
-registries that you are already familiar with (e.g. [Dockerhub](https://hub.docker.com/)).
+You can store the resulting image on a public or private Docker registry that your organization already uses, or any other Docker registry
+service that you connect to your Codefresh account.
 
 Codefresh also has built-in support for [unit]({{site.baseurl}}/docs/testing/unit-tests/) and [integration testing]({{site.baseurl}}/docs/testing/integration-tests/) allowing you to only push Docker images that pass your testing suite. Finally, you can [add annotations]({{site.baseurl}}/docs/docker-registries/metadata-annotations/) to your Docker images to better track your releases (e.g. you can mark a Docker image with an annotation that shows a successful unit test run).
 
@@ -34,10 +35,13 @@ For this tutorial you will need:
 
  * A free [GitHub account](https://github.com/join)
  * A free [Codefresh account]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/)
+ * An account to a Docker registry service
  * The source code of the sample application
- * (Optional) an account to a Docker registry (e.g. Dockerhub)
+ * (Optional) an account to Dockerhub if you also want to make your image public
 
  We also assume that you are familiar with Docker and the build/run workflow it supports. Your applications should already come with their own Dockerfiles. If not, then read the [official documentation first](https://docs.docker.com/get-started/). 
+
+ Apart from Dockerhub, you can use the registry that comes with your cloud account ([Amazon](https://aws.amazon.com/ecr/), [Azure](https://azure.microsoft.com/en-us/services/container-registry/), [Google](https://cloud.google.com/container-registry)) or you can use any other compliant service such as [Quay](https://quay.io/), [Treescale](https://treescale.com/), [Canister.io](https://canister.io/) etc. 
 
  The sample application can be found at [https://github.com/codefresh-contrib/python-flask-sample-app](https://github.com/codefresh-contrib/python-flask-sample-app). To bring the source
  code to your own account you need to "fork" the repository by clicking the respective button at the top right part of the page.
@@ -57,7 +61,7 @@ After some brief time, the repository should appear in your own GitHub account.
 Now you are ready to start building code with Codefresh!
 
 
-> Codefresh supports Gitlab, Bitbucket and Azure GIT repositories apart from GitHub. The
+> Codefresh supports GitLab, Bitbucket and Azure GIT repositories apart from GitHub. The
 same principles presented in this tutorial apply for all Git providers.
 
 
@@ -80,8 +84,8 @@ The diagram above shows a full Continuous Integration pipeline for the sample ap
 1. Codefresh connects to GitHub and checks out the source code of the application.
 1. Codefresh uses the Dockerfile of the application to create a Docker image.
 1. Unit tests are run in the same Docker image to verify the correctness of the code
-1. The Docker image is stored in the internal Codefresh Registry.
-1. The Docker image is pushed to a Docker registry.
+1. The Docker image is stored in your private Registry
+1. The Docker image is also pushed to Dockerhub (optional).
 
 
 The sample application that we are using is a [Python/Flask](https://www.palletsprojects.com/p/flask/) project with the following key points
@@ -109,11 +113,32 @@ need to create a Dockerfile for it first, before moving it into the Codefresh in
 
 Because all Codefresh capabilities are based on Docker images, Docker is also serving as an abstraction layer over any the implementation language of your source code. Codefresh can work with projects written in Ruby, Python, Java, Node or any other programming language as long as they produce a Docker image. Docker images are a first class citizen in Codefresh pipelines and not just an afterthought.
 
-
 The example application already comes with its own Dockerfile, making the creation of a Codefresh pipeline very easy.
 Let's start by going into the [Codefresh dashboard](https://g.codefresh.io/projects/) (after [creating your account]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/)).
 
+### Connecting your Docker registry to Codefresh
+
+Before we create the pipeline you need to connect at least one Docker registry in your Codefresh account. The pipeline will use this registry to store the Docker image of the application.
+
+Go to your [Registry Configuration screen](https://g.codefresh.io/account-admin/account-conf/integration/registry) and connect your Docker registry. Codefresh supports [all popular Docker registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) as well as any service that follows the registry specification.
+
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/getting-started/quick-start-ci/external-registries.png" 
+url="/images/getting-started/quick-start-ci/external-registries.png" 
+alt="Connecting a Docker registry to Codefresh" 
+caption="Connecting a Docker registry to Codefresh" 
+max-width="60%" 
+%}
+
+If you connect multiple Docker registries make sure that you select one as the "default". This will be used automatically by the pipeline as you will see later in the build stage.
+
+
 ### Creating a new project
+
+With the Docker registry connected, we can now start our pipeline.
 
 Codefresh pipelines are grouped under [projects]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-concepts). Project names can be anything you want with the most common example being the name of an application where all pipelines in the project are packaging/deploying the different microservices. You can think of projects as "folders/directories" for your pipelines.
 
@@ -127,7 +152,7 @@ You now have a new project and can start adding pipelines in it.
 ### Creating a new pipeline
 
 Click the *New pipeline* button in order to create a pipeline.
-Enter a name (e.g. `basic-build`). 
+Enter any name (e.g. `basic-build`). 
 
 {% include 
 image.html 
@@ -140,7 +165,6 @@ max-width="50%"
 %}
 
 Find your repository from the list and select it. Make sure that the option *Add Git commit trigger* is selected. This way your pipeline will be automatically launched when a commit happens on this repository. 
-
 
 Click the *Create* button. Your pipeline was created and you should now see the pipeline editor. Here you can describe what the pipeline will do using [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/).
 
@@ -303,7 +327,7 @@ than the ones shown here. You can read more about pipelines in the [YAML documen
 
 If you have been following along so far, you might already be wondering what happens with the resulting Docker image of each build. The Codefresh build logs show that a Docker image is created after each successful build. Where does this image go?
 
-Codefresh has the unique feature of offering its own built-in storage for Docker images! All the images that we have created so far, are stored within your Codefresh account.
+Codefresh has the unique feature where the build step automatically pushes the image to your default Docker registry! All the images that we have created so far, are stored in the registry you connected in the previous section.
 
 {% include 
 image.html 
@@ -315,10 +339,9 @@ caption="Automatic storage of Docker images"
 max-width="80%" 
 %}
 
-This storage does not aim to replace the Docker registry you might already be using (such as Dockerhub or a private Docker registry). It instead
-plays a complementary role allowing you to easily look at recent Docker images, and answering the age-old question of which Git commit is actually the source of a deployment.
+If you only use a single registry your pipeline is now complete.
 
-You can inspect all your images from your previous builds by clicking on *Images* on the left panel. A list of Docker images will appear sorted starting from the most recent.
+You can inspect all your images from your previous builds by clicking on *Images* on the left panel. A list of Docker images will appear sorted starting from the most recent. This dashboard is getting live information from your connected Docker registry.
 
 {% include 
 image.html 
@@ -366,11 +389,12 @@ The built-in Docker image storage is very helpful on its own, but it becomes eve
 
 
 
-## Uploading Docker images to a registry
+## Uploading Docker images to Dockerhub
 
-The built-in Docker image storage by Codefresh is ideal for an overview of your images and quick demos. When it comes to production deployments however, your Docker images should be pushed into your own private or public Docker registry.
+Using the default Docker registry for automatic pushes is great for simple pipelines. However, sometimes you might also want to push your Docker image to a second registry or make it public in Dockerhub.
 
-Kubernetes will then fetch those Docker images from the registry in a secure way. Remember that Codefresh will automatically keep images from **all** your builds. It is best to decide which images are actually worth deploying and only push those to a production registry. 
+Since the build step creates a Docker image and pushes it at the same time, Codefresh also [provides a push pipeline step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) that just pushes an existing Docker image.
+
 
 {% include 
 image.html 
@@ -386,7 +410,7 @@ max-width="80%"
 Docker images are one of the central concepts in Codefresh pipelines as everything revolves around them. Powerful Codefresh pipelines can be created by using Docker images as build tools, so it is perfectly normal if you manage a large number of images which are not strictly packaged applications. You may create Docker images that contain building or deployment tools and are used as part of
 the build process instead of the build result.
 
-For the purposes of this tutorial we will push our sample application to [DockerHub](https://cloud.docker.com/) which  is the free public Docker hosting registry of Docker Inc. You need to create a free account with the service first and note down your username and password. In your own projects you can use any other [external registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) you wish.
+For the purposes of this tutorial we will also push our sample application to [DockerHub](https://cloud.docker.com/) which  is the free public Docker hosting registry of Docker Inc. You need to create a free account with the service first and note down your username and password. In your own projects you can use any other [external registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) you wish.
 
 >Note that Docker.io only allows you to push images that are tagged with your username. If you have a choice, create
 a Dockerhub account with the same username that you have in Codefresh. If not, you need to change the Docker image
@@ -402,7 +426,7 @@ file="/images/getting-started/quick-start-ci/add-docker-hub.png"
 url="/images/getting-started/quick-start-ci/add-docker-hub.png" 
 alt="Docker Hub credentials" 
 caption="Docker Hub credentials (click image to enlarge)" 
-max-width="50%" 
+max-width="60%" 
 %}
 
 Enter your Docker Hub credentials and click the *TEST* button to verify the connection details. You should see a success message. We have now connected our Docker Hub account to our Codefresh account. Make sure that you note down the *Registry Name* you used.
@@ -462,12 +486,12 @@ file="/images/getting-started/quick-start-ci/docker-pushing.png"
 url="/images/getting-started/quick-start-ci/docker-pushing.png" 
 alt="Pushing to Docker Hub" 
 caption="Pushing to Docker Hub (click image to enlarge)" 
-max-width="50%" 
+max-width="70%" 
 %}
 
-Note that this is in addition to the internal Codefresh Docker storage. After the build is finished the Docker image of the sample application is stored **both** in the Codefresh internal registry and the public Docker Registry.
+Note that this is in addition to default Docker registry of your Codefresh account. After the build is finished the Docker image of the sample application is stored **both** in the default Docker registry and in Dockerhub.
 
-To verify the latter, you can visit your profile in Docker hub and look at the image details:
+To verify the latter, you can visit your profile in Dockerhub and look at the image details:
 
 {% include 
 image.html 
@@ -476,19 +500,20 @@ file="/images/getting-started/quick-start-ci/docker-hub.png"
 url="/images/getting-started/quick-start-ci/docker-hub.png" 
 alt="Docker Image details" 
 caption="Docker Image details (click image to enlarge)" 
-max-width="50%" 
+max-width="60%" 
 %}
 
 
-Pushing to the Docker Registry is the last step in the build pipeline. Now that we have the basic functionality ready we can see how Codefresh handles [Continuous Integration](https://en.wikipedia.org/wiki/Continuous_integration) with Pull requests and automatic builds.
+Pushing to Dockerhub is the last step in the build pipeline. Now that we have the basic functionality ready we can see how Codefresh handles [Continuous Integration](https://en.wikipedia.org/wiki/Continuous_integration) with Pull requests and automatic builds.
 
 
 ## What to read next
 
-* [Deploy to Kubernetes]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/)
 * [Introduction to Pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
+* [Working with Docker images]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/)
 * [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
 * [On demand environments]({{site.baseurl}}/docs/getting-started/on-demand-environments/)
+* [Deploy to Kubernetes]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/)
 
 
 

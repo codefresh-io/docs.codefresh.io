@@ -45,7 +45,7 @@ More typically however you also need to provide a GitHub token so that GitHub re
 ## Create a CI pipeline that compiles/releases Go
 
 In most cases you want to just reuse the Git integration already defined in Codefresh.
-This [pipeline](https://github.com/codefresh-contrib/goreleaser-sample-app/blob/master/codefresh.yml) is using the Github token from [Git integration]({{site.baseurl}}/docs/integrations/git-providers/) in order to allow github access.
+This [pipeline](https://github.com/codefresh-contrib/goreleaser-sample-app/blob/master/codefresh.yml) is using the GitHub token from [Git integration]({{site.baseurl}}/docs/integrations/git-providers/) in order to allow github access.
 
  `codefresh.yml`
 {% highlight yaml %}
@@ -69,7 +69,7 @@ steps:
     commands:
       - go build
   GetGitToken:
-    title: Reading Github token
+    title: Reading GitHub token
     stage: release
     image: codefresh/cli
     commands:
@@ -84,7 +84,7 @@ steps:
 {% endhighlight %}
 
 Note that GoReleaser [requires a GitHub API token](https://goreleaser.com/environment/) (`GITHUB_TOKEN`) with the `repo` scope to deploy artifacts to GitHub.
-Here we use [cf_export]({{site.baseurl}}/docs/codefresh-yaml/variables/#exporting-environment-variables-from-a-freestyle-step) and the [codefresh CLI](https://codefresh-io.github.io/cli/) in order to ask Codefresh about the existing token (that was used in git integrations). In your case you need to change `github-1` with the name of your [Github integration]({{site.baseurl}}/docs/integrations/git-providers/).
+Here we use [cf_export]({{site.baseurl}}/docs/codefresh-yaml/variables/#exporting-environment-variables-from-a-freestyle-step) and the [codefresh CLI](https://codefresh-io.github.io/cli/) in order to ask Codefresh about the existing token (that was used in git integrations). In your case you need to change `github-1` with the name of your [GitHub integration]({{site.baseurl}}/docs/integrations/git-providers/).
 
 It also possible to pass a GITHUB_TOKEN directly in the pipeline, if you don't want to re-use the existing one. This is an alternative way of allowing Goreleaser to create GitHub releases.
 

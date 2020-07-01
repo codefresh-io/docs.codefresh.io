@@ -23,7 +23,7 @@ Just read the normal Codefresh documentation:
 * [Introduction to Pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
 * [Creating a pipeline]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
 * [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
-* [Codefresh Registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/)
+* [Working with Docker registries]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/)
 * [On demand environments]({{site.baseurl}}/docs/getting-started/on-demand-environments/)
 
 
@@ -98,7 +98,7 @@ caption="Running Unit tests"
 max-width="60%"
 %}
 
-Once the pipeline is finished you will see the Docker image stored in the [Codefresh Registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/):
+Once the pipeline is finished you will see the Docker image stored in the [default Docker Registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/#the-default-registry):
 
 {% include 
 image.html 
@@ -127,5 +127,5 @@ In summary, the workflow for ARM images is exactly the same as the usual Linux/x
 ## What to read next
 
 * [Windows container support]({{site.baseurl}}/docs/incubation/windows-beta/)
-* [MacOSX and iOS builds]({{site.baseurl}}/docs/incubation/osx-ios-builds/)
+* [macOS and iOS builds]({{site.baseurl}}/docs/incubation/osx-ios-builds/)
 

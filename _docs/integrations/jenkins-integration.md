@@ -191,7 +191,7 @@ It is important to understand that when you are switching to Codefresh you get a
 * Jenkins pipelines can be free-style (VM based), scripted (VM/container-based) or declarative (VM/container based) meaning that there are at least 5 ways on how you can write your pipeline. In Codefresh there is only way (declarative/container-based).
 * Jenkins pipelines are connected to a single git repository. Codefresh pipelines can be connected to multiple [git triggers]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/) which
 themselves are connected to git repositories. Therefore a Codefresh pipeline can be reused for multiple projects.
-* Specifically for building Docker images, Codefresh includes [a private Docker registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/) and automatically pushes Docker images from successful builds there. There is nothing to set up to achieve this behavior. You can also connect [external Docker registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/).
+* Specifically for building Docker images, Codefresh can automatically  connect to any [external Docker registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/).
 * Specifically for Kubernetes deployments, Codefresh automatically sets up `kubectl` access in pipelines [from connected clusters]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/). There is no configuration needed to achieve this behavior. Codefresh also has several [built-in ways for Kubernetes deployments]({{site.baseurl}}/docs/deploy-to-kubernetes/deployment-options-to-kubernetes/) and a [dedicated UI dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/) to see what your cluster is doing.
 * Specifically for Helm deployments, Codefresh includes a private Helm repository and several [Helm dashboards]({{site.baseurl}}/docs/yaml-examples/examples/helm/).
 
@@ -318,7 +318,7 @@ Notice that for several popular tools, Dockerhub already contains several images
 * [Azure CLI](https://hub.docker.com/r/microsoft/azure-cli/)
 * [AWS CLI](https://hub.docker.com/r/mesosphere/aws-cli/)
 
-Of course, you can create your own Docker image with the exact tools that you want and then use it from the [private Codefresh registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/) or any other registry in your pipeline.
+Of course, you can create your own Docker image with the exact tools that you want and then use it from the [any Docker registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) or any other registry in your pipeline.
 
 ### Migrating Jenkins pipelines
 
@@ -600,9 +600,6 @@ Codefresh has native support for:
 1. Building Docker images
 1. Running commands inside Docker images
 1. Pushing Docker images to different registries
-
-It is important to understand that each Codefresh account also includes [a free private Docker registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/). So by using Codefresh
-you can start pushing Docker images right away.
 
 If you are using Docker commands directly in your Jenkins file, or prefer to take advantage of the scripted
 variant of Docker image management then you can easily convert both approaches to Codefresh YAML like below:

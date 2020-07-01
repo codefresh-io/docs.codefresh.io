@@ -75,24 +75,26 @@ feature-vb145dh
 
 
 Notice that this syntax is specific to Codefresh and is **only** available within the Codefresh YAML file itself. If you want to write scripts or programs that use the Codefresh variables, you need to make them aware of the environment variable form.
-
+.
 
 ## System Provided Variables
 
 All system provided variables will also be automatically injected to any freestyle step as environment variables.
+
+> It is important to understand that all Git related variables such `CF_BRANCH`, `CF_COMMIT_MESSAGE`, `CF_REVISION` etc. are coming directly from the GIT provider you use and have the same limitations of that provider. For example GitLab is sending less information in pull request events than normal pushes, and Bitbucket sends only the short hash of a commit in pull request events. We suggest you read the documentation of your git provider first to understand what information is available for every git event
 
 {: .table .table-bordered .table-hover}
 | Variable                                          | Description                                                                                                                                                                                                                                                                                        |
 | ------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | {% raw %}`${{CF_REPO_OWNER}} `{% endraw %}        | Repository owner.                                                                                                                                                                                                          |
 | {% raw %}`${{CF_REPO_NAME}}`{% endraw %}          | Repository name. |
-| {% raw %}`${{CF_BRANCH}}`{% endraw %}             | Branch name (or Tag depending on the payload json) of the Git repository of the main pipeline, at the time of execution. <br/>You can also use {% raw %}`${{CF_BRANCH_TAG_NORMALIZED}}`{% endraw %} to get the branch name normalized. It will be without any chars that are illegal in case the branch name were to be used as the Docker image tag name. |
+| {% raw %}`${{CF_BRANCH}}`{% endraw %}             | Branch name (or Tag depending on the payload json) of the Git repository of the main pipeline, at the time of execution. <br/>You can also use {% raw %}`${{CF_BRANCH_TAG_NORMALIZED}}`{% endraw %} to get the branch name normalized. It will be without any chars that are illegal in case the branch name were to be used as the Docker image tag name. You can also use {% raw %}`${{CF_BRANCH_TAG_NORMALIZED_LOWER_CASE}}`{% endraw %} to force lowercase. |
 | {% raw %}`${{CF_BASE_BRANCH}}`{% endraw %}      | The base branch used during creation of Tag |
-| {% raw %}`${{CF_PULL_REQUEST_ACTION}}`{% endraw %}      | The pull request action. Values are those defined by your Git provider such as [Github](https://developer.github.com/webhooks/), [Gitlab](https://docs.gitlab.com/ee/user/project/integrations/webhooks.html), [Bitbucket](https://confluence.atlassian.com/bitbucket/manage-webhooks-735643732.html) etc. |
+| {% raw %}`${{CF_PULL_REQUEST_ACTION}}`{% endraw %}      | The pull request action. Values are those defined by your Git provider such as [GitHub](https://developer.github.com/webhooks/), [GitLab](https://docs.gitlab.com/ee/user/project/integrations/webhooks.html), [Bitbucket](https://confluence.atlassian.com/bitbucket/manage-webhooks-735643732.html) etc. |
 | {% raw %}`${{CF_PULL_REQUEST_TARGET}}`{% endraw %}      | The pull request target branch |
 | {% raw %}`${{CF_PULL_REQUEST_NUMBER}}`{% endraw %}      | The pull request number |
 | {% raw %}`${{CF_PULL_REQUEST_ID}}`{% endraw %}      | The pull request id |
-| {% raw %}`${{CF_PULL_REQUEST_LABELS}}`{% endraw %}      | The labels of pull request (Github and Gitlab only) |
+| {% raw %}`${{CF_PULL_REQUEST_LABELS}}`{% endraw %}      | The labels of pull request (GitHub and GitLab only) |
 | {% raw %}`${{CF_COMMIT_AUTHOR}}`{% endraw %}      | Commit author.                                                                                              |
 | {% raw %}`${{CF_BUILD_INITIATOR}}`{% endraw %}      | The person (username) that started the build. If the build was started by a Git webhook (e.g. from a Pull request) it will hold the webhook user. Notice that if a build is restarted manually it will always hold the username of the person that restarted it.                                                                                                                                                                                                                                                                                    |
 | {% raw %}`${{CF_ACCOUNT}}`{% endraw %}         | Codefresh account for this build |
@@ -105,6 +107,7 @@ All system provided variables will also be automatically injected to any freesty
 | {% raw %}`${{CF_BUILD_ID}}`{% endraw %}           | The build id. Note: use this variable as string with quotes to tag the image {% raw %}`${{CF_BUILD_ID}}`{% endraw %}                                                                                                                                                                                                |
 | {% raw %}`${{CF_BUILD_TIMESTAMP}}`{% endraw %}    | The timestamp the build was created. Note: use this variable as string with quotes to tag the image {% raw %}`${{CF_BUILD_TIMESTAMP}}`{% endraw %}                                                                                                                                                                   |
 | {% raw %}`${{CF_BUILD_URL}}`{% endraw %}          | The URL to the build in Codefresh                                                                                                                                                                                                                                                                 |
+| {% raw %}`${{CF_PIPELINE_NAME}}`{% endraw %}      | The full path of the pipeline, i.e. "project/pipeline"                                                                                                                                                                                                                                                                |
 | {% raw %}`${{CF_URL}}`{% endraw %}          | The URL of Codefresh system                                                                                                                                                                                                                                                                 |
 | {% raw %}`${{CI}}`{% endraw %}          | The value is always `true`                                                                                                                                                                                                                                                                |
 | {% raw %}`${{CF_KUBECONFIG_PATH}}`{% endraw %}    | Path to injected kubeconfig if at least one Kubernetes cluster [is configured]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/). You can easily run [custom kubectl commands]({{site.baseurl}}/docs/deploy-to-kubernetes/custom-kubectl-commands/) since it is automatically setup by Codefresh in all pipelines.                                                                                                                                                                                                                                                                   |
@@ -152,8 +155,8 @@ You can set a [trigger]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/
 {: .table .table-bordered .table-hover}
 | Variable        | Description                                            |
 | --------------- | ------------------------------------------------------ |
-| {% raw %}`${{CF_RELEASE_NAME}}`{% endraw %}     | Github release title   |
-| {% raw %}`${{CF_RELEASE_TAG}}`{% endraw %}      | GIT tag version   |
+| {% raw %}`${{CF_RELEASE_NAME}}`{% endraw %}     | GitHub release title   |
+| {% raw %}`${{CF_RELEASE_TAG}}`{% endraw %}      | Git tag version   |
 | {% raw %}`${{CF_RELEASE_ID}}`{% endraw %}       | Internal ID for this release   |
 | {% raw %}`${{CF_PRERELEASE_FLAG}}`{% endraw %}  | true if the release if marked as non-production ready, false if it is ready for production   |
 
@@ -171,13 +174,18 @@ When a pull request is closed in GitHub, the following variables are also availa
 
 ## User Provided Variables
 
-User provided variables can be defined at 4 levels:
-1. Freestyle Step Definition (using the `environment` field)
-1. Pipeline Execution (after clicking the "Build" button, open the "Advanced options" section)
-1. Pipeline Definition (under "Environment variables" section in the pipeline view)
-1. [Shared Configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/) (defined under your account settings, and used using the "Import from shared configuration" button under the "Environment Variables" section in the pipeline view)
+User provided variables can be defined at 6 levels:
 
-The options are listed in order of importance, so in case of multiple variables defined at different location with the same name, the order of overriding will be as listed here.
+1. Manually within a step using the [export](http://linuxcommand.org/lc3_man_pages/exporth.html) command or in any **subsequent** step with the [cf_export]({{site.baseurl}}/docs/codefresh-yaml/variables/#using-cf_export-command) command
+1. [Freestyle Step Definition]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/#examples) (using the `environment` field)
+1. Specific build Execution (after clicking the "Build" button open the "Build Variables" section, or use the [CLI]({{site.baseurl}}/docs/integrations/codefresh-api/#example---triggering-pipelines))
+1. Pipeline Definition (under "Environment variables" section in the [pipeline view]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#creating-new-pipelines))
+1. [Shared Configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/) (defined under your account settings, and used using the "Import from shared configuration" button under the "Environment Variables" section in the pipeline view)
+1. Variables defined on the Project level (Under the variables tab on any project view)
+
+The options are listed in order of priority (from the most important to the least important), so in case of multiple variables defined at different locations with the same name, the order of overriding will be as listed here.
+
+For example if a pipeline variable is defined both in project level and as an execution parameter of a specific build, then the final result will be the value defined as a build parameter and the project level variable will not take effect. 
 
 ## Exporting environment variables from a freestyle step
 
@@ -254,6 +262,35 @@ steps:
 {% endhighlight %}
 
 Use this technique if you have complex expressions that have issues with the `cf_export` command.
+
+## Masking variables in logs
+
+Codefresh has the built-in capabililty to automatically mask variables in logs if they are encrypted. The values of encrypted variables will be replaced with asterisks in build logs.
+
+{% include
+image.html
+lightbox="true"
+file="/images/codefresh-yaml/variables/masked-variables.png"
+url="/images/codefresh-yaml/variables/masked-variables.png"
+alt="Masked variables"
+caption="Masked variables"
+max-width="80%"
+%}
+
+The variables can be defined in any of the usual ways Codefresh offers such as [shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/) or [within the pipeline]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-settings):
+
+{% include
+image.html
+lightbox="true"
+file="/images/codefresh-yaml/variables/encrypted-variables.png"
+url="/images/codefresh-yaml/variables/encrypted-variables.png"
+alt="Encrypted variables"
+caption="Encrypted variables"
+max-width="60%"
+%}
+
+>Notice that this feature is currently available only in Enterprise accounts.
+
 
 ## Escape Characters
 When passing special characters through environmental variables `\` can be used as an escape character. For example if you were passing a cassandra connection string you might do something like `Points\=hostname\;Port\=16376\;Username\=user\;Password\=password`

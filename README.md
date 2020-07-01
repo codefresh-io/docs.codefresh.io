@@ -10,7 +10,7 @@ The site is automatically deployed when commits land in `master`, hosted by at h
 
 1. Install Ruby and `bundler`, `jekyll` and other Ruby dependencies with `bundle install`.
 2. Run `npm install` to install Node.js dependencies.
-3. Run `npm run css` (or a specific NPM script) to rebuild distributed CSS and JavaScript files, as well as our docs assets.
+3. Run `npm run css` (or a specific npm script) to rebuild distributed CSS and JavaScript files, as well as our docs assets.
 4. From the root directory, run `npm run docs-serve-dev` in the command line.
 5. Open `http://localhost:19002` in your browser, and voila.
 
@@ -18,4 +18,4 @@ The site is automatically deployed when commits land in `master`, hosted by at h
 
 1. Install [docker-compose](https://docs.docker.com/compose/)
 1. Run `docker-compose up`
-1. Open `http://localhost:3131` in your browser, and voila. 
+1. Open `http://localhost:3131` in your browser, and voila!

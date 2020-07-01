@@ -95,7 +95,7 @@ these on demand environments as production ones. They were never designed that w
 
 If the environment is not functioning correctly for your own application, make sure that the port exposed by Codefresh in the *Launch settings* is the one that is actually used in your application as an HTTP endpoint. 
 
-To find your existing on-demand environments, click *Docker Swarm* `->` *Environments* on the left part of the screen. You will get a list of your active environments. You can see details such as:
+To find your existing on-demand environments, click *Compositions* `->` *Running Compositions* on the left part of the screen. You will get a list of your active environments. You can see details such as:
 
 * Which branch is this environment from
 * Which Git commit represents this environment
@@ -248,9 +248,8 @@ Fortune 500 company with complex approval process:
 
 ## What to read next
 
-* [Deploy to Kubernetes]({{ site.baseurl }}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/)
-* [Introduction to Pipelines]({{ site.baseurl }}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
-* [Internal Docker Registry]({{ site.baseurl }}/docs/docker-registries/codefresh-registry/)
+* [Deploy to Kubernetes]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/)
+* [Introduction to Pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
 
 
 

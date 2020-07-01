@@ -260,6 +260,10 @@ caption="Restart a pipeline"
 max-width="70%"
 %}
 
+>It is important to note that "Restart from beginning" will restart a pipeline with the **same** state that it had in its original execution (including the original git commit). If you want to execute a pipeline again with a new state instead, you need to use the *Run* button in the [pipeline editor]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#using-the-inline-pipeline-editor) and selecting any of the available [triggers]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/).
+
+
+
 If the pipeline has failed, you can choose to restart it only from the failed step and onwards.
 
 You can also restart from a failed step right from the graphical view:
@@ -274,7 +278,7 @@ caption="Restart from a failed step"
 max-width="70%"
 %}
 
->Notice that in all cases *Restart* means restarting the pipeline with the exact state that it had at the point in time (including the original git commit).
+>Notice again that restarting a pipeline from a failed step means restarting the pipeline with the **same** state that it had at the point in time (including the original git commit).
 
 If your pipeline has some flaky steps, you can also use the [retry syntax]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/#retrying-a-step) in your yaml instead of restarting them manually each time they fail.
 

@@ -24,6 +24,9 @@
     localurl: /docs/configure-ci-cd-pipeline/monitoring-pipelines/
   - title: Shared Configuration
     localurl: /docs/configure-ci-cd-pipeline/shared-configuration/
+  - title: Secrets Storage
+    new: true
+    localurl: /docs/configure-ci-cd-pipeline/secrets-store/
   - title: Pipeline caching
     localurl: /docs/configure-ci-cd-pipeline/pipeline-caching/
   - title: Public logs and status badges
@@ -53,6 +56,8 @@
     localurl: /docs/learn-by-example/scala/scala-hello-world/
   - title: C/C++
     localurl: /docs/learn-by-example/cc/
+  - title: Rust
+    localurl: /docs/learn-by-example/rust/    
   - title: C# (.NET core)
     localurl: /docs/learn-by-example/dotnet/
   - title: Android (Mobile)
@@ -72,7 +77,6 @@
   - title: Step conditions
     localurl: /docs/codefresh-yaml/conditional-execution-of-steps/
   - title: Service Containers
-    new: true
     localurl: /docs/codefresh-yaml/service-containers/
   - title: Parallel Pipelines
     localurl: /docs/codefresh-yaml/advanced-workflows/
@@ -89,6 +93,8 @@
   links:
   - title: Codefresh private Docker Registry
     localurl: /docs/docker-registries/codefresh-registry/
+  - title: Codefresh Registry Deprecation
+    localurl: /docs/docker-registries/cfcr-deprecation/
   - title: Working with Docker registries
     localurl: /docs/docker-registries/working-with-docker-registries/
   - title: Custom image annotations
@@ -105,7 +111,7 @@
     localurl: /docs/docker-registries/external-docker-registries/google-container-registry/
   - title: JFrog Bintray.io/Artifactory
     localurl: /docs/docker-registries/external-docker-registries/bintray-io/
-- title: Quality Assurance
+- title: Testing
   icon: images/home-icons/testing.svg
   url: ''
   links:
@@ -194,7 +200,7 @@
     localurl: /docs/yaml-examples/examples/nomad/
 
 - title: Integrations
-  icon: images/home-icons/integrations.svg
+  icon: images/home-icons/cloud-integrations.png
   url: ''
   links:
   - title: GIT integration
@@ -203,46 +209,49 @@
     localurl: /docs/integrations/jenkins-integration/
   - title: Slack integration
     localurl: /docs/integrations/notifications/slack-integration/
-  - title: Github actions
+  - title: GitHub Actions
     new: true
     localurl: /docs/integrations/github-actions/
   - title: Jira integration
     localurl: /docs/integrations/jira-integration/
   - title: Google Marketplace Installation
     localurl: /docs/integrations/google-marketplace/
+  - title: Google Cloud Builder
+    new: true
+    localurl: /docs/integrations/gcloud-builder/
   - title: Codefresh API
     localurl: /docs/integrations/codefresh-api/
   - title: Codefresh CLI
     url: http://cli.codefresh.io/
 
-- title: "Enterprise Features"
-  icon: images/home-icons/enterprise1.svg
+- title: "Administration"
+  icon: images/home-icons/integrations.svg
   url: ''
   links:
   - title: Installation Options
-    localurl: /docs/enterprise/installation-security
+    localurl: /docs/administration/installation-security
   - title: Codefresh behind the firewall
-    localurl: /docs/enterprise/behind-the-firewall
+    localurl: /docs/administration/behind-the-firewall
   - title: Codefresh Runner
-    localurl: /docs/enterprise/codefresh-runner
+    new: true
+    localurl: /docs/administration/codefresh-runner
   - title: Enterprise Account Management
-    localurl: /docs/enterprise/ent-account-mng
+    localurl: /docs/administration/ent-account-mng
   - title: Single Sign on
-    localurl: /docs/enterprise/single-sign-on
+    localurl: /docs/administration/single-sign-on
   - title: Access Control
-    localurl: /docs/enterprise/access-control
+    localurl: /docs/administration/access-control
   - title: Audit Logs
-    localurl: /docs/enterprise/audit-logs
+    localurl: /docs/administration/audit-logs
   - title: Codefresh hybrid installation (legacy)
-    localurl: /docs/enterprise/codefresh-hybrid
+    localurl: /docs/administration/codefresh-hybrid
 - title: "Incubation"
   icon: images/home-icons/plugins.svg
   url: ''
   links:
-  - title: Windows Containers Support(Beta)
-    localurl: /docs/incubation/windows-beta
+  - title: Windows Containers Support
+    localurl: /docs/incubation/windows
   - title: Mac OSX and iOS builds
-    new: true
     localurl: /docs/incubation/osx-ios-builds
   - title: ARM architecture Support
     localurl: /docs/incubation/arm-support

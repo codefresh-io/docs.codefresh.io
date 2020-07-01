@@ -29,6 +29,14 @@ Some examples of self-hosted registries are:
 * [Kraken](https://github.com/uber/kraken) by Uber
 * [Proget](https://inedo.com/proget) by Inedo
 
+## Heroku Registries
+
+Note that in order to authenticate to the Heroku registry, instead of using your password, you will need to use the authorization token.  You can find that by running:
+
+{% highlight bash %}
+heroku auth:token
+{% endhighlight %}
+
 ## What to read next
 
 * [Push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/)

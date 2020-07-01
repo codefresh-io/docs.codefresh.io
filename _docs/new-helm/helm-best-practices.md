@@ -7,7 +7,7 @@ redirect_from:
 toc: true
 ---
 
-[Helm](https://helm.sh) is a package manager for Kubernetes (think apt or yum). It works by combining several manifests into a single package that is called [a chart](https://helm.sh/docs/developing_charts/). Helm also supports chart storage in remote or local Helm repositories that function like package registries such as Maven Central, Ruby Gems, NPM registry, etc.
+[Helm](https://helm.sh) is a package manager for Kubernetes (think apt or yum). It works by combining several manifests into a single package that is called [a chart](https://helm.sh/docs/developing_charts/). Helm also supports chart storage in remote or local Helm repositories that function like package registries such as Maven Central, Ruby Gems, npm registry, etc.
 
 Helm is currently the only solution that supports
 
@@ -145,7 +145,7 @@ max-width="70%"
 The steps are the following:
 
 1. Code/Dockerfile/Chart is checked out from Git
-1. Docker image is built (and pushed to internal [Codefresh registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/))
+1. Docker image is built (and pushed to [default Docker registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/#the-default-registry))
 1. Chart is [deployed directly]({{site.baseurl}}/docs/new-helm/using-helm-in-codefresh-pipeline/#example-installing-a-chart) to a Kubernetes Cluster
 
 Notice that in this pipeline there is no Helm repository involved.
@@ -166,7 +166,7 @@ max-width="70%"
 %}
 
 The Helm chart can be either in the same GIT repository as the source code (as shown above) or in a different one.
-Note that this workflow assumes that you [have attached a Helm repository]({{site.baseurl}}/docs/new-helm/using-helm-in-codefresh-pipeline/#step-4---import-the-helm-configuration-in-your-pipeline-definition) configuration in the pipeline.
+Note that this workflow assumes that you [have attached a Helm repository]({{site.baseurl}}/docs/new-helm/using-helm-in-codefresh-pipeline/#step-4-optional---import-the-helm-configuration-in-your-pipeline-definition) configuration in the pipeline.
 
 If you use the [Codefresh Helm repository]({{site.baseurl}}/docs/new-helm/managed-helm-repository/) you can see all your releases from the Codefresh UI.
 

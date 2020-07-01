@@ -81,7 +81,7 @@ The following resources can be targeted with the API:
 * *Build* - Get/change [build status]({{site.baseurl}}/docs/configure-ci-cd-pipeline/monitoring-pipelines/)
 * *Cluster* - [Access control]({{site.baseurl}}/docs/enterprise/access-control/) for [Kubernetes clusters]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/)
 * *Environments-v2* - Read/Write [Environment Dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/environment-dashboard/) information
-* *Github Action* - Run [Github actions inside Codefresh pipelines]({{site.baseurl}}/docs/integrations/github-actions/)
+* *GitHub Actions* - Run [GitHub Actions inside Codefresh pipelines]({{site.baseurl}}/docs/integrations/github-actions/)
 * *Pipeline* - [Access control]({{site.baseurl}}/docs/enterprise/access-control/) for [pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
 * *Repos* - Refers to [Git repositories]({{site.baseurl}}/docs/integrations/git-providers/)
 * *Step Type* - Refers to [custom pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/#creating-a-typed-codefresh-plugin)

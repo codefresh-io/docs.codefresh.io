@@ -10,7 +10,8 @@ toc: true
 ---
 
 {{site.data.callout.callout_info}}
-If you use the [Codefresh Docker Registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/) this step is optional as all successful Codefresh pipelines automatically push the Docker image they create in the integrated Codefresh registry. No further configuration is needed to achieve this behavior.
+
+If you use only the default Docker registry of your account this step is optional as all successful Codefresh pipelines automatically push the Docker image they create in the default Docker registry. No further configuration is needed to achieve this behavior.
 {{site.data.callout.end}}
 
 Push a built image to a remote Docker registry with one or more tags. Supports standard Docker registries and ECR.
@@ -54,9 +55,10 @@ step_name:
 | `stage`                              | Parent group of this step. See [using stages]({{site.baseurl}}/docs/codefresh-yaml/stages/) for more information.                                                                                                                                                                                          | Optional                  |
 | `candidate`                                | The identifier of the image to push to the remote Docker registry. It can be an explicit identifier of an image to push, or a variable that references a `Build` step.          | Required                  |
 | `tag`                                      | The tag under which to push the image. Use either this or `tags`.<br> The default is `latest`.                                                             | Default                   |
-| `tags`                                     | Multiple tags under which to push the image. Use either this or `tag`. This is an array, so should be of the following style: <br> {::nomarkdown}<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="na">tags</span><span class="pi">:</span><br><span class="pi">-</span> <span class="s">tag1</span><br><span class="pi">-</span> <span class="s">tag2</span><br><span class="pi">-</span> <span class="s">{% raw %}${{CF_BRANCH_TAG_NORMALIZED}}{% endraw %}</span><br><span class="pi">-</span> <span class="s">tag4</span></code></pre></figure>{:/}or<br>{::nomarkdown}<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="na">tags</span><span class="pi">:</span> <span class="pi">[</span> <span class="s1">'</span><span class="s">tag1'</span><span class="pi">,</span> <span class="s1">'</span><span class="s">tag2'</span><span class="pi">,</span> <span class="s1">'</span><span class="s">{% raw %}${{CF_BRANCH_TAG_NORMALIZED}}{% endraw %}'</span><span class="pi">,</span> <span class="s1">'</span><span class="s">tag4'</span> <span class="pi">]</span></code></pre></figure>{:/}                                            | Default                   |
+| `tags`                                     | Multiple tags under which to push the image. Use either this or `tag`. This is an array, so should be of the following style: <br> {::nomarkdown}<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="na">tags</span><span class="pi">:</span><br><span class="pi">-</span> <span class="s">tag1</span><br><span class="pi">-</span> <span class="s">tag2</span><br><span class="pi">-</span> <span class="s">{% raw %}${{CF_BRANCH_TAG_NORMALIZED_LOWER_CASE}}{% endraw %}</span><br><span class="pi">-</span> <span class="s">tag4</span></code></pre></figure>{:/}or<br>{::nomarkdown}<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="na">tags</span><span class="pi">:</span> <span class="pi">[</span> <span class="s1">'</span><span class="s">tag1'</span><span class="pi">,</span> <span class="s1">'</span><span class="s">tag2'</span><span class="pi">,</span> <span class="s1">'</span><span class="s">{% raw %}${{CF_BRANCH_TAG_NORMALIZED_LOWER_CASE}}{% endraw %}'</span><span class="pi">,</span> <span class="s1">'</span><span class="s">tag4'</span> <span class="pi">]</span></code></pre></figure>{:/}                                            | Default                   |
 | `image_name`                               | The tagged image name that will be used The default value will be the same image name as of the candidate.                                                                      | Default                   |
 | `registry`                                 | The registry logical name of one of the inserted registries from the integration view. <br>The default value will be your default registry [if you have more than one]({{site.baseurl}}/docs/docker-registries/external-docker-registries/).                                     | Default                   |
+| `registry_context`                                 | Advanced property for resolving Docker images when [working with multiple registries with the same domain]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/#working-with-multiple-registries-with-the-same-domain)                            | Optional                  |
 | `fail_fast`                                | If a step fails, and the process is halted. The default value is `true`.                                                                                                        | Default                   |
 | `when`                                     | Define a set of conditions which need to be satisfied in order to execute this step.<br>You can find more information in the [Conditional Execution of Steps]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/) article.          | Optional                  |
 | `on_success`, `on_fail` and `on_finish`    | Define operations to perform upon step completion using a set of predefined [Post-Step Operations]({{site.baseurl}}/docs/codefresh-yaml/post-step-operations/).                                                                               | Optional                  |
@@ -112,7 +114,7 @@ steps:
     type: push
     title: Pushing to a registry
     candidate: ${{MyAppDockerImage}}
-    tag: ${{CF_BRANCH_TAG_NORMALIZED}}
+    tag: ${{CF_BRANCH_TAG_NORMALIZED_LOWER_CASE}}
     registry: myazureregistry
     image_name: my-user-name/a-different-image-name 
 {% endraw %}
@@ -245,7 +247,6 @@ step_name:
 - Image ID.
 
 ## What to read next
-- [Codefresh Managed Registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/) 
 - [External Registry integrations]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) 
 - [Custom Image annotations]({{site.baseurl}}/docs/docker-registries/metadata-annotations/) 
 - [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/) 

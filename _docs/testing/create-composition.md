@@ -20,7 +20,7 @@ toc: true
 Compositions can be launched as part of a unit test step, integration test step or for running an image for manual testing. You can create compositions from scratch or import an existing `docker-compose.yml` file.
 
 ## 1. Add a composition
-From the left sidebar expand the *Docker Swarm* menu and click the **Compositions** sub menu. Then click the **ADD COMPOSITION** button.
+From the left sidebar click on the *Compositions* menu. Then click the **ADD COMPOSITION** button.
 
 {% include 
 image.html 
@@ -212,13 +212,13 @@ alt="codefresh_first_composition.png"
 max-width="70%"
 %}
 
-## Launching manually compositions
+## Manually launching compositions
 
 Once you are ready click the small "rocket" button to launch your composition. This will create a temporary
 test environment in your Codefresh account that you can use to inspect your application.
 
 {:start="1"}
-1. From the left sidebar expand the *Docker Swarm* menu and click the **Compositions** sub menu. Then select a composition.
+1. From the left sidebar click on the *Compositions* menu. Then select a composition.
 
 {% include 
 image.html 
@@ -256,7 +256,7 @@ max-width="70%"
 
 ## Sharing the environment URL
 
-After you successfully spin up a composition, click the **Environments** view icon in the left pane, to view the record for the running environment and all containers for the environment.
+After you successfully spin up a composition, click the **Running compositions** tab from the *Compositions* item in the left pane, to view a record for the running environment and all containers for the environment.
 
 {% include 
 image.html 

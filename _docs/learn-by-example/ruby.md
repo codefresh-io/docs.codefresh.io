@@ -100,9 +100,7 @@ The first step is a [build step]({{site.baseurl}}/docs/codefresh-yaml/steps/buil
 
 ## Inspecting your Docker image
 
-All Codefresh accounts come with a [built-in Docker registry]({{site.baseurl}}/docs/docker-registries/codefresh-registry/). Codefresh automatically pushes the last successful image of a pipeline to this internal registry.
-
-You can see all your latest Docker artifacts by selecting *Images* from the left sidebar
+You can see all your latest [Docker artifacts]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/#viewing-docker-images) by selecting *Images* from the left sidebar.
 
 
 {% include image.html 
@@ -145,7 +143,7 @@ caption="Launching a demo environment"
 max-width="50%" 
 %}
 
-A new build will start. Once it is complete your new environment will be created. You can inspect it by clicking in the *Docker Swarm* menu on the left sidebar and then clicking *Environments*.
+A new build will start. Once it is complete your new environment will be created. You can inspect it by clicking in the *Compositions* menu on the left sidebar and then clicking *Running Compositions*.
 
 {% include image.html 
 lightbox="true" 
