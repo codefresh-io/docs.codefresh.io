@@ -116,7 +116,7 @@
   pages:
     # - title: "CI/CD concepts"
     #   url: "/concepts"
-    - title: "Basic packaging/compilation"
+    - title: "Build your app"
       url: "/packaging-compilation"  
     - title: "Building Docker images"
       url: "/building-docker-images"

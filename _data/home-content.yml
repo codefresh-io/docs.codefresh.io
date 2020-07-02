@@ -71,7 +71,7 @@
   links:
   # - title: CI/CD concepts
   #   localurl: /docs/ci-cd-guide/concepts/
-  - title: Basic packaging/compilation
+  - title: Build your app
     localurl: /docs/ci-cd-guides/packaging-compilation/
   - title: Building Docker images
     localurl: /docs/ci-cd-guides/building-docker-images/
