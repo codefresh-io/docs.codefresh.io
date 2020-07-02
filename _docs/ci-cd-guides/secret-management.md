@@ -1,7 +1,7 @@
 ---
-title: "Preview environments"
-description: "Learn how to preview features in dynamically created test environments"
-group: ci-cd-guide
+title: "Secret management"
+description: "Learn how to manage secrets in your CI/CD pipelines"
+group: ci-cd-guides
 
 
 toc: true

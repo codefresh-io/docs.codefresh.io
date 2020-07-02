@@ -10,26 +10,6 @@
   - title: Deployment to Kubernetes with Helm
     url: "/helm-quick-start-guide"
 
-- title: CI/CD Guides
-  url: "/ci-cd-guide"
-  pages:
-    # - title: "CI/CD concepts"
-    #   url: "/concepts"
-    - title: "Basic packaging/compilation"
-      url: "/packaging-compilation"  
-    - title: "Building Docker images"
-      url: "/building-docker-images"
-    # - title: "Pull Requests and branches"
-    #   url: "/pull-request-branches"
-    # - title: "Preview environments"
-    #   url: "/preview-environments"
-    # - title: "Production and Staging deployments"
-    #   url: "/environment-deployments"
-    # - title: Secrets Management
-    #   url: "/secret-management" 
-    # - title: Complex workflows
-    #   url: "/complex-workflows"
-
 - title: Configure a CI/CD pipeline
   url: "/configure-ci-cd-pipeline"
   pages:
@@ -131,7 +111,25 @@
         - title: Selenium test
           url: "/selenium-test"
 
-
+- title: CI/CD Guides
+  url: "/ci-cd-guides"
+  pages:
+    # - title: "CI/CD concepts"
+    #   url: "/concepts"
+    - title: "Basic packaging/compilation"
+      url: "/packaging-compilation"  
+    - title: "Building Docker images"
+      url: "/building-docker-images"
+    # - title: "Pull Requests and branches"
+    #   url: "/pull-request-branches"
+    # - title: "Preview environments"
+    #   url: "/preview-environments"
+    # - title: "Production and Staging deployments"
+    #   url: "/environment-deployments"
+    # - title: Secrets Management
+    #   url: "/secret-management" 
+    # - title: Complex workflows
+    #   url: "/complex-workflows"
 
 - title: Codefresh YAML
   url: "/codefresh-yaml"

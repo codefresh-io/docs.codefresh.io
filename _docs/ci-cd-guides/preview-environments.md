@@ -1,7 +1,7 @@
 ---
-title: "Production and Staging deployments"
-description: "Learn how to deploy to different environments from Codefresh pipelines"
-group: ci-cd-guide
+title: "Preview environments"
+description: "Learn how to preview features in dynamically created test environments"
+group: ci-cd-guides
 
 
 toc: true

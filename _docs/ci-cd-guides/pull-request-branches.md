@@ -1,7 +1,7 @@
 ---
-title: "Complex workflows"
-description: "Learn about complex multi-pipeline workflows"
-group: ci-cd-guide
+title: "Pull Requests and Branches"
+description: "Learn how to handle builds for Pull requests or other branches"
+group: ci-cd-guides
 
 
 toc: true

@@ -1,7 +1,7 @@
 ---
-title: "Secret management"
-description: "Learn how to manage secrets in your CI/CD pipelines"
-group: ci-cd-guide
+title: "Production and Staging deployments"
+description: "Learn how to deploy to different environments from Codefresh pipelines"
+group: ci-cd-guides
 
 
 toc: true

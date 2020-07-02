@@ -1,7 +1,7 @@
 ---
-title: "Building Docker images"
-description: "Learn how to create Docker images from Dockerfiles"
-group: ci-cd-guide
+title: "Complex workflows"
+description: "Learn about complex multi-pipeline workflows"
+group: ci-cd-guides
 
 
 toc: true
@@ -9,13 +9,7 @@ toc: true
 
 Intro
 
-## Docker packaging strategies
-
-## Production-ready Docker images with multi-stage builds
-
-## Creating self-contained Docker images 
-
-## Packaging existing artifacts in Docker images
+## First paragraph
 
 
 

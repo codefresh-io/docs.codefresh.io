@@ -1,7 +1,7 @@
 ---
-title: "CI/CD concepts"
-description: "Learn the basics of Continuous Integration and Deployments"
-group: ci-cd-guide
+title: "Building Docker images"
+description: "Learn how to create Docker images from Dockerfiles"
+group: ci-cd-guides
 
 
 toc: true
@@ -9,7 +9,13 @@ toc: true
 
 Intro
 
-## First paragraph
+## Docker packaging strategies
+
+## Production-ready Docker images with multi-stage builds
+
+## Creating self-contained Docker images 
+
+## Packaging existing artifacts in Docker images
 
 
 

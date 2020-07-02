@@ -1,7 +1,7 @@
 ---
-title: "Pull Requests and Branches"
-description: "Learn how to handle builds for Pull requests or other branches"
-group: ci-cd-guide
+title: "CI/CD concepts"
+description: "Learn the basics of Continuous Integration and Deployments"
+group: ci-cd-guides
 
 
 toc: true

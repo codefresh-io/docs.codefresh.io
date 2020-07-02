@@ -1,7 +1,7 @@
 ---
 title: "Basic Packaging/Compilation"
 description: "Learn how to compile and package traditional (non-Docker) artifacts"
-group: ci-cd-guide
+group: ci-cd-guides
 
 
 toc: true
