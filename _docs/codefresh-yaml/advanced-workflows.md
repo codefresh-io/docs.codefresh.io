@@ -608,8 +608,8 @@ second_step:
          - finished
 {% endhighlight %}
 
-Notice that `skipped/success` is the default behavior so if omit the last two lines (i.e. the `on:` part) the second step
-will wait for the next step to either run successfully or be skipped.
+Notice that `success` is the default behavior so if you omit the last two lines (i.e. the `on:` part) the second step
+will wait for the next step to run successfully.
 
 >Also notice that the name `main_clone` is reserved for the automatic clone that takes place in the beginning of pipelines that are linked to a git repository. You need to define which steps depend on it (probably the start of your graph) so that `git checkout` happens before the other steps.
 
