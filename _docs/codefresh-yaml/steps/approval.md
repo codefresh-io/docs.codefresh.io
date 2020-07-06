@@ -51,6 +51,7 @@ step_name:
 | `title`                                    | The free-text display name of the step.        | Optional                  |
 | `description`                              | A basic, free-text description of the step.    | Optional                  |
 | `timeout`                                  | Defines an automatic approval/rejection if a specified amount of time has passed. The `duration` field is hours. The `finalState` field defines what will happen after the duration time has elapsed. Possible values are `approved`/`denied`/`terminated`    | Optional                  |
+| `fail_fast`                              | If set to false, the pipeline will continue even when the step is rejected | Optional                  |
 | `stage`                              | Parent group of this step. See [using stages]({{site.baseurl}}/docs/codefresh-yaml/stages/) for more information.    | Optional                  |
 | `when`                                     | Define a set of conditions that need to be satisfied in order to execute this step. You can find more information in the [Conditional Execution of Steps]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/) article. | Optional                  |
 
@@ -125,6 +126,26 @@ max-width="80%"
 
 
 For more details on access control and users see also the [account management page]({{site.baseurl}}/docs/enterprise/ent-account-mng/).
+
+## Controlling the rejection behavior
+
+By default if you reject a pipeline, it will stop right away and it will be marked as failed. All subsequent steps after the approval one will not run at all.
+
+You might want to continue running the pipeline even when it is rejected by adding the `fail_fast` property in the approval step:
+
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+steps:
+ waitForInputBeforeProduction:
+   fail_fast: false
+   type: pending-approval
+   title: Deploy to Production?
+{% endraw %}
+{% endhighlight %}
+
+In this case you can also read the approval result and make the pipeline work differently according to each choice (demonstrated in the following section).
 
 
 ## Getting the approval result
@@ -241,6 +262,7 @@ caption="Rejecting a pipeline"
 max-width="80%"
 %}
 
+>Note that we have added the `fail_fast` property in the approval step because we want the pipeline to continue even when the step is rejected.
 
 
 You can see that only two steps were ignored. If you rerun the pipeline and approve
