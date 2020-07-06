@@ -20,11 +20,11 @@ Building a Dockerfile in a pipeline, works in the same way as building the Docke
 For more details see also the [Docker caching guide]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipeline-caching/#distributed-docker-layer-caching).
  At the very least you should understand and use [Docker multi-stage builds](https://docs.docker.com/develop/develop-images/multistage-build/) (although Codefresh supports all kinds of Dockerfiles natively). Basically, if your Dockerfile is already optimized on your local workstation, it should also be optimized for Codefresh.
 
-Codefresh is using the standard docker deamon (or optionally Buildkit) behind the scenes, so if your Dockerfile has issues when you try to build it locally, it will have the same issues in a pipeline.
+Codefresh is using the standard docker daemon (or optionally Buildkit) behind the scenes, so if your Dockerfile has issues when you try to build it locally, it will have the same issues in a pipeline.
 
 ## Docker packaging strategies
 
-There are many ways to create a Dockerfile and most organizations typically follow a different path depending on the type of application they package. Brand new applications are very easy to package into multi-stage dockerfiles, while legacy/existing applications are adapted to dockerfiles that package an existing artifact.
+There are many ways to create a Dockerfile and most organizations typically follow a different path depending on the type of application they package. Brand new applications are very easy to package into multi-stage Dockerfiles, while legacy/existing applications are adapted to dockerfiles that package an existing artifact.
 
 We suggest spending some more time and creating multi-stage builds for all applications (even legacy ones). Explaining all virtues of multi-stage docker builds is outside the scope of this page but in summary, multi-stage builds:
 
@@ -110,10 +110,82 @@ max-width="100%"
 You can find multi-stage build examples for other programming languages in the [example section]({{site.baseurl}}/docs/yaml-examples/examples/).
 
 
-
 ## Creating self-contained Docker images 
 
+Even though multi-stage Dockerfile are the optimal way to build Docker images, Codefresh stil supports "plain" Dockerfiles which do not have multiple stages.
+
+As an example, this Dockerfile for a Python application is created from a single parent image (although we use the slim variant to make the final image size smaller).
+
+ `Dockerfile`
+{% highlight docker %}
+{% raw %}
+FROM python:3.6-slim
+
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+RUN mkdir /code
+WORKDIR /code
+RUN pip install --upgrade pip
+COPY requirements.txt /code/
+
+RUN pip install -r requirements.txt
+COPY . /code/
+
+EXPOSE 8000
+
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+{% endraw %}
+{% endhighlight %}
+
+
+This Dockerfile can be built in the same way as a multi-stage one. We still need two pipeline steps, one to checkout the code and another to build the Docker image.
+
+ `codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+stages:
+ - prepare
+ - build
+steps:
+  main_clone:
+    title: Cloning main repository...
+    stage: prepare
+    type: git-clone
+    repo: 'codefreshdemo/cf-example-python-django'
+    revision: master
+    git: github  
+  build_my_image:
+    title: Building Docker Image
+    stage: build
+    type: build
+    image_name: my-django-image
+    working_directory: ./
+    tag: master
+    dockerfile: Dockerfile
+{% endraw %}
+{% endhighlight %}    
+
+The pipeline is similar to the previous one, so you can handle multi-stage and non-multistage builds in the same manner in Codefresh pipelines.
+
+{% include image.html 
+lightbox="true" 
+file="/images/guides/non-multi-stage-pipeline.png" 
+url="/images/guides/non-multi-stage-pipeline.png" 
+alt="Non Multi-stage Docker builds" 
+caption="Non Multi-stage Docker builds"
+max-width="100%" 
+%}
+
+It is important however to note that the Dockerfile is still self-contained. It depends only on the source code of the application and all instructions needed to package the code are included in the Dockerfile itself.
+
+
+
 ## Packaging existing artifacts in Docker images
+
+
+
+>Notice that even though this is a very popular way to create Dockerfiles, and Codefresh supports it, we do **NOT** recommend to write Dockerfiles like this.
 
 ## Avoiding non-standard Dockerfiles
 
