@@ -183,9 +183,86 @@ It is important however to note that the Dockerfile is still self-contained. It 
 
 ## Packaging existing artifacts in Docker images
 
+An alternative way to create Docker images is to just package an existing artifact or application which is created earlier in the CI process.
+
+>Notice that even though this is a very popular way to create Dockerfiles, and Codefresh supports it, we do **NOT** recommend to write Dockerfiles like this. Please learn about Docker multi-stage builds if you are not familiar with them.
+
+You can see this pattern in all kinds of Dockeriles that assume the application is already there (or that dependencies are already downloaded). Here is a [Dockerfile that packages an existing JAR]({{site.baseurl}}/docs/learn-by-example/java/spring-boot-2/#spring-boot-2-and-docker-package-only) file.
+
+ `Dockerfile`
+{% highlight docker %}
+{% raw %}
+FROM java:8-jre-alpine
+
+EXPOSE 8080
+
+RUN mkdir /app
+COPY target/*.jar /app/spring-boot-application.jar
+
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app/spring-boot-application.jar"]
+
+HEALTHCHECK --interval=1m --timeout=3s CMD wget -q -T 3 -s http://localhost:8080/actuator/health/ || exit 1
+{% endraw %}
+{% endhighlight %}
+
+If you have Dockerfiles like this you need to enrich the basic pipeline shown in the previous sections and run a freestyle step that prepares the artifact **BEFORE** the build of the Docker image. Read more about [freestyle steps in the basic CI process page]({{site.baseurl}}/docs/ci-cd-guides/packaging-compilation/).
 
 
->Notice that even though this is a very popular way to create Dockerfiles, and Codefresh supports it, we do **NOT** recommend to write Dockerfiles like this.
+There are several disadvantages with this kind of Dockerfiles
+
+* The Dockerfile is not self-contained anymore. You need to manually run some other command before actually running the docker build
+* A person that wants to build the docker image on their workstation is also forced to have a full dev environment (e.g. the JDK or Node.js)
+* The version of a development tool is mentioned twice (one in the Dockerfile and one in the CI/CD system)
+
+Here is the respective Codefresh pipeline
+
+ `codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+stages:
+  - prepare
+  - compile
+  - build
+steps:
+  main_clone:
+    title: Cloning main repository...
+    stage: prepare
+    type: git-clone
+    repo: 'codefresh-contrib/spring-boot-2-sample-app'
+    revision: master
+  run_unit_tests:
+    title: Compile/Unit test
+    stage: compile
+    image: 'maven:3.5.2-jdk-8-alpine'
+    commands:
+      - mvn -Dmaven.repo.local=/codefresh/volume/m2_repository package      
+  build_app_image:
+    title: Building Docker Image
+    type: build
+    stage: build
+    image_name: spring-boot-2-sample-app
+    working_directory: ./
+    tag: 'non-multi-stage'
+    dockerfile: Dockerfile.only-package
+{% endraw %}
+{% endhighlight %}  
+
+This pipeline has an intermediate [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) that runs a specific version of Maven/JDK to create the JAR file. The jar file is then available to the next step via [the Codefresh volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps).
+
+{% include image.html 
+lightbox="true" 
+file="/images/guides/package-only-pipeline.png" 
+url="/images/guides/package-only-pipeline.png" 
+alt="Package only Docker builds" 
+caption="Package only Docker builds"
+max-width="100%" 
+%}
+
+In the example above you can see that the version of JDK/JRE is mentioned twice (one in the pipeline and one it the Dockerfile). If developers decide to upgrade to Java 11 the need to change both places (and in big companies pipelines are usually managed by operators). If this was a multistage build then a developer could simply change just the Dockerfile and be certain that the pipeline is "upgraded" as well.
+
+We find that workflows like this are mostly coming from legacy CI solutions that are VM based. Codefresh is a container native solution, so if you have the opportunity you should create your pipelines from scratch when switching to Docker based pipelines.
+
 
 ## Avoiding non-standard Dockerfiles
 
