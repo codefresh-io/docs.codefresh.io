@@ -266,7 +266,121 @@ We find that workflows like this are mostly coming from legacy CI solutions that
 
 ## Avoiding non-standard Dockerfiles
 
+We already established in the previous section that Dockerfiles should be self-contained. Another best practice is to make sure that all actions inside a Dockerfile are idempotent.
+
+There are several Dockerfiles that attempt to mimic a CI/CD system and perform non standard actions such as:
+
+* performing git commits or other git actions
+* cleaning up or tampering with database data
+* calling other external services with POST/PUT operations.
+
+Not only this makes the pipeline much more complex (because retrying the pipeline now has side-effects) but you also need to pass special credentials in the Dockerfile itself via the pipeline, making the pipeline even more complicated.
+
+You should avoid these kind of directives inside a Dockerfile and simplify it so that all actions inside it are repeatable and non-destructive. A Dockerfile should mainly:
+
+* Clone extra source code (if needed)
+* Download dependencies
+* Compile/package code
+* Process/Minify/Transform local resources
+* Runn scripts and edit files on the container filesystem only
+
+As an example **TO AVOID** this Dockerfile is also trying to run a SonarQube analysis
+
+`Dockerfile`
+{% highlight docker %}
+{% raw %}
+FROM newtmitch/sonar-scanner AS sonar
+COPY src src
+RUN sonar-scanner
+FROM node:11 AS build
+WORKDIR /usr/src/app
+COPY . .
+RUN yarn install \
+ yarn run lint \
+ yarn run build \
+ yarn run generate-docs
+{% endraw %}
+{% endhighlight %}
+
+This Dockerfile has the following issues
+
+* It can run only where a SonarQube installation is available
+* It needs extra credentials for the SonarQube instance
+* If the SonarQube installation has issues, then the application build will also fail
+
+The proper way to build this Dockerfile is to make it package just the application:
+
+`Dockerfile`
+{% highlight docker %}
+{% raw %}
+FROM node:11 AS build
+WORKDIR /usr/src/app
+COPY . .
+RUN yarn install \
+ yarn run lint \
+ yarn run build \
+ yarn run generate-docs
+{% endraw %}
+{% endhighlight %}
+
+And then move the SonarQube part in the actual pipeline:
+
+ `codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+stages:
+  - prepare
+  - sonar
+  - build
+steps:
+  main_clone:
+    title: Cloning main repository...
+    stage: prepare
+    type: git-clone
+    repo: 'my-github-repo/my-node-app'
+    revision: master
+  run_sonarqube:
+    title: Run SonarQube Analysis
+    stage: sonar
+    image: 'newtmitch/sonar-scanner'
+    environment:
+    - SONAR_TOKEN=my-sonar-token
+    commands:
+      - cd src
+      - sonar-scanner     
+  build_app_image:
+    title: Building Docker Image
+    type: build
+    stage: build
+    image_name: my-node-image
+    working_directory: ./
+    tag: 'master'
+    dockerfile: Dockerfile
+{% endraw %}
+{% endhighlight %}  
+
+This makes the Docker build step as simple as possible.
+
+For more Docker best practices see our [Docker anti-patterns blog post](https://codefresh.io/containers/docker-anti-patterns/).
+
 ## Pushing Docker images
+
+The build step in Codefresh is very smart and it will automatically also push your Docker image to your [default Docker registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/#the-default-registry).
+
+Thus, if you run any of the above pipelines you will see your created image in the Docker image dashboard.
+
+
+{% include image.html 
+lightbox="true" 
+file="/images/guides/docker-image-dashboard.png" 
+url="/images/guides/docker-image-dashboard.png" 
+alt="Docker image dashboard" 
+caption="Docker image dashboard"
+max-width="100%" 
+%}
+
+For more details on how to push Docker images see the [working with Docker registries page]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/).
 
 ## Running Docker images
 
