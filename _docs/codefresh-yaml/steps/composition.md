@@ -292,7 +292,7 @@ By default, the services of a composition run in a completely isolated manner. T
 
 The Codefresh [shared volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) is automatically mounted in [freestyle steps]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) but **NOT** in compositions. You have to mount it yourself if you use that functionality.
 
-Here is an example where the shared volume is mounted in a composition -- `'${{CF_VOLUME_NAME}}:${{CF_VOLUME_PATH}}'` is listed under `volumes`:
+Here is an example where the shared volume is mounted in a composition -- {% raw %}`'${{CF_VOLUME_NAME}}:${{CF_VOLUME_PATH}}'`{% endraw %} is listed under `volumes`:
 
 
 `codefresh.yml`
