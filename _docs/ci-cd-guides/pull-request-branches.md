@@ -7,7 +7,42 @@ toc: true
 
 Intro
 
-## First paragraph
+## Building branches automatically
+
+
+automatic
+
+## Building specific branches manually
+
+## Restricting which branch to build
+
+1 ) inside step
+1) in git trigger
+
+## HAndling prs
+
+PR event, open
+
+Pr sync
+
+## Customer case 1 
+
+startup
+just deploy to master
+or staging
+
+
+## Trunk based development
+
+deploy on master
+
+PR-open, PR-sync
+
+## Git-flow
+
+## Create your own workflow
+
+
 
 
 
