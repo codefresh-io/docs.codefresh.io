@@ -384,11 +384,40 @@ For more details on how to push Docker images see the [working with Docker regis
 
 ## Running Docker images
 
+You can run Docker images inside a Codefresh pipeline using freestyle steps. You can use the freestyle step to run either an existing image from a private or public registry or even a docker image that was created in the pipeline itself.
+
+This is a [very common pattern in Codefresh]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/#dynamic-freestyle-steps) and works by simply mentioning the name of the build step that created the image.
+
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+steps:
+  main_clone:
+    title: Cloning main repository...
+    stage: prepare
+    type: git-clone
+    repo: 'my-github-repo/my-helper-project'
+    revision: master
+  my_testing_tools:
+    title: Building Docker Image
+    type: build
+    image_name: my-own-testing-framework
+  run_tests:
+    title: Running Unit tests
+    image: ${{my_testing_tools}}
+    commands: 
+      - ./my-unit-tests.sh 
+{% endraw %} 
+{% endhighlight %}
+
+For more details see the [dynamic build tools page]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#creating-docker-images-dynamically-as-build-tools) and the [context variables page]({{site.baseurl}}/docs/codefresh-yaml/variables/#context-related-variables)
 
 
 
 ## What to read next
 
+* [How Codefresh pipelines work]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
 * [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
 * [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
 * [External Docker Registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/)

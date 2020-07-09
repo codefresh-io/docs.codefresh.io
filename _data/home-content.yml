@@ -75,8 +75,8 @@
     localurl: /docs/ci-cd-guides/packaging-compilation/
   - title: Building Docker images
     localurl: /docs/ci-cd-guides/building-docker-images/
-  # - title: Pull Requests and branches
-  #   localurl: /docs/ci-cd-guide/pull-request-branches/
+  - title: Pull Requests and branches
+    localurl: /docs/ci-cd-guides/pull-request-branches/
   # - title: Preview environments
   #   localurl: /docs/ci-cd-guide/preview-environments/  
   # - title: Production and Staging deployments
