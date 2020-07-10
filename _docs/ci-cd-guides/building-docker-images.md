@@ -368,6 +368,16 @@ For more Docker best practices see our [Docker anti-patterns blog post](https://
 
 The build step in Codefresh is very smart and it will automatically also push your Docker image to your [default Docker registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/#the-default-registry).
 
+
+{% include image.html 
+lightbox="true" 
+file="/images/guides/automatic-docker-push.png" 
+url="/images/guides/automatic-docker-push.png" 
+alt="Automatic docker push" 
+caption="Automatic docker push"
+max-width="80%" 
+%}
+
 Thus, if you run any of the above pipelines you will see your created image in the Docker image dashboard.
 
 
@@ -377,7 +387,7 @@ file="/images/guides/docker-image-dashboard.png"
 url="/images/guides/docker-image-dashboard.png" 
 alt="Docker image dashboard" 
 caption="Docker image dashboard"
-max-width="100%" 
+max-width="80%" 
 %}
 
 For more details on how to push Docker images see the [working with Docker registries page]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/).
