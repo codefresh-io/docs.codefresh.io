@@ -192,13 +192,35 @@ max-width="80%"
 
 This is a more granular way to control how your branch affects your pipeline.
 
->Notice that we recommend you follow the first method of having multiple simple pipelines with different branch expressions in the trigger dialog, instead of having a single complex pipeline that is using step conditionals. Remember that in Codefresh you can create as many pipeline as you want for a single project instead of being limiter to 1 pipeline per project.
+>Notice that we recommend you follow the first method of having multiple simple pipelines with different branch expressions in the trigger dialog, instead of having a single complex pipeline that is using step conditionals. Remember that in Codefresh you can create as many pipeline as you want for a single project instead of being limited to 1 pipeline per project.
 
 ## Handling Pull Request events
 
-PR event, open
+The big power of Codefresh becomes evident when you realize that you can have extra pipelines that respond to specific Pull Request events. For example you can have a specific pipeline that runs **only** when a Pull Request is opened for the first time or when a Pull Request is closed.
 
-Pr sync
+You can see all supported Pull Request events in the trigger dialog.
+
+{% include image.html 
+lightbox="true" 
+file="/images/guides/choosing-pr-events.png" 
+url="/images/guides/choosing-pr-events.png" 
+alt="Choosing PR events for a pipeline" 
+caption="Choosing PR events for a pipeline"
+max-width="80%" 
+%}
+
+>Remember that the events shown are those supported by your Git provider. Not all Git providers support all possible Pull request events.
+
+You can select multiple Pull Request events for a single pipeline, or have multiple pipelines that respond to individual Pull Request events. There is no right or wrong answer as it mostly depends on how your team is handling Pull Requests
+
+The most useful events are:
+
+* Pull Request open
+* Pull Request sync (when a commit happens to a PR)
+* Pull Request closed 
+* Comment added on Pull Request
+
+There is also the shortcut checkbox for *any PR event* if you don't care about which specific event happened.
 
 
 ## Trunk based development
