@@ -225,9 +225,98 @@ There is also the shortcut checkbox for *any PR event* if you don't care about w
 
 ## Trunk based development
 
-deploy on master
+One of the most popular git workflows is *Trunk Based development* with short lived feature branches. 
 
-PR-open, PR-sync
+{% include image.html 
+lightbox="true" 
+file="/images/guides/trunk-based-development.png" 
+url="/images/guides/trunk-based-development.png" 
+alt="Trunk Based development" 
+caption="Trunk Based Development"
+max-width="100%" 
+%}
+
+In this process the master branch is always ready for production. The feature branches are created from master and can have several commits before being merged back to master.
+
+This process can be easily created in Codefresh with two separate pipelines
+
+* The "main" pipeline that deploys master to the production environment
+* The feature pipeline that checks each feature as it is developed (and optionally deploys it to a staging environment)
+
+As an example here is a minimal pipeline for the master branch:
+
+{% include image.html 
+lightbox="true" 
+file="/images/guides/production-pipeline.png" 
+url="/images/guides/production-pipeline.png" 
+alt="Pipeline that deploys to production" 
+caption="Pipeline that deploys to production"
+max-width="100%" 
+%}
+
+The pipeline 
+
+1. Checks out the source code
+1. Builds a docker image
+1. Creates and Stores a Helm chart
+1. Deploys the chart to Kubernetes
+
+The pipeline for feature branches is different:
+
+{% include image.html 
+lightbox="true" 
+file="/images/guides/feature-pipeline.png" 
+url="/images/guides/feature-pipeline.png" 
+alt="Pipeline for feature branches" 
+caption="Pipeline for feature branches"
+max-width="100%" 
+%}
+
+For each feature branch
+
+1. We checkout the code
+1. Run linters on the source code
+1. Build the Docker image
+1. Run some unit tests to verify the docker image (possible with [service containers]({{site.baseurl}}/docs/codefresh-yaml/service-containers/))
+
+To implement trunk based development we create two triggers for these pipelines. For the production pipeline we just make sure that the trigger is only launched when commits land on master (and only there)
+
+{% include image.html 
+lightbox="true" 
+file="/images/guides/trigger-for-production-pipeline.png" 
+url="/images/guides/trigger-for-production-pipeline.png" 
+alt="Trigger for production pipeline" 
+caption="Trigger for production pipeline"
+max-width="60%" 
+%}
+
+For the feature branch pipeline we check the events for
+
+* Pull Request Open
+* Pull Request Sync (when a commit happens on the PR)
+
+For the [branch specifications]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/#pull-request-target-branch-and-branch) we make sure that we look only for Pull Requests that are targeted **AT** `master`.
+
+{% include image.html 
+lightbox="true" 
+file="/images/guides/trigger-for-features.png" 
+url="/images/guides/trigger-for-features.png" 
+alt="Trigger for pull request pipeline" 
+caption="Trigger for pull request pipeline"
+max-width="60%" 
+%}
+
+With this configuration the whole process is as follows
+
+1. A developer creates a new branch from master. Nothing really happens at this point
+1. The developer opens a new Pull Request for this branch. The feature pipeline runs (because of the PR open checkbox)
+1. The developer commits one or more times on the branch. The feature pipeline runs again for each commit (because of the PR sync checkbox)
+1. The developer commits the branch back to master. The main pipeline runs and deploys to production.
+
+
+You can fine tune this workflow according to your needs. For example you might also specify a naming pattern on the branches for the Pull Requested (e.g. feature-xxx) to further restrict which branches are considered ready for production.
+
+> Notice that we didn't need to handle the PR close/merge events. As soon as a Pull Request is merged back to master, the GIT provider sends anyway an event that a commit has happened in master, which means that the main production pipeline will take care of releasing the contents of master.
 
 ## Git-flow
 
