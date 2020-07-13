@@ -6,17 +6,9 @@ toc: true
 
 ---
 
-In this tutorial we will see how Codefresh can be used by many developers who work on multiple features and how to create separate demo environments for each feature. You will learn how to:
+In this tutorial we will see how Codefresh can be used by many developers who work on multiple features and how to create separate demo environments for each feature. 
 
-* Launch On-Demand test environments for Docker containers
-* Use pull requests for feature-based development
-* Make sure that Codefresh builds automatically whenever a commit happens
-
-Using Pull Requests for feature development is one of the tenets of a sound Continuous Integration process.
-Codefresh can be instructed to build pull requests in an automatic manner (or any other source code branch) making
-collaboration among teams much more flexible.
-
-Codefresh also has the unique capability of launching Docker images in temporary test environments. These test environments
+Codefresh has the unique capability of launching Docker images in temporary test environments. These test environments
 are ephemeral and are not intended to be used as QA (let alone production) environments. They are perfect
 for quick demos. Use them
 if you want to quickly share a feature with a colleague or a customer.
