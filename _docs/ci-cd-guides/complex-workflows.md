@@ -7,9 +7,7 @@ group: ci-cd-guides
 toc: true
 ---
 
-Intro
-
-## First paragraph
+Coming Soon...
 
 
 

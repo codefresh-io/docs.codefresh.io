@@ -61,8 +61,8 @@ The build will clearly define its source branch:
 
 {% include image.html 
 lightbox="true" 
-file="/images/guides/auto-branch-build.png" 
-url="/images/guides/auto-branch-build.png" 
+file="/images/guides/branches-pull-requests/auto-branch-build.png" 
+url="/images/guides/branches-pull-requests/auto-branch-build.png" 
 alt="Building automatically new branches" 
 caption="Building automatically new branches"
 max-width="100%" 
@@ -87,8 +87,8 @@ Sometimes you want to run an ad-hoc build on a specific branch without actually 
 
 {% include image.html 
 lightbox="true" 
-file="/images/guides/build-specific-branch.png" 
-url="/images/guides/build-specific-branch.png" 
+file="/images/guides/branches-pull-requests/build-specific-branch.png" 
+url="/images/guides/branches-pull-requests/build-specific-branch.png" 
 alt="Building a specific branch" 
 caption="Building a specific branch"
 max-width="50%" 
@@ -104,8 +104,8 @@ This is performed by filling [the branch field]({{site.baseurl}}/docs/configure-
 
 {% include image.html 
 lightbox="true" 
-file="/images/guides/restrict-branch.png" 
-url="/images/guides/restrict-branch.png" 
+file="/images/guides/branches-pull-requests/restrict-branch.png" 
+url="/images/guides/branches-pull-requests/restrict-branch.png" 
 alt="Restrict a pipeline to a single branch" 
 caption="Restrict a pipeline to a single branch"
 max-width="50%" 
@@ -183,8 +183,8 @@ You can see that if a developer creates an unrelated branch (that doesn't match 
 
 {% include image.html 
 lightbox="true" 
-file="/images/guides/branch-step-condition.png" 
-url="/images/guides/branch-step-condition.png" 
+file="/images/guides/branches-pull-requests/branch-step-condition.png" 
+url="/images/guides/branches-pull-requests/branch-step-condition.png" 
 alt="Restrict pipeline steps according to branch" 
 caption="Restrict pipeline steps according to branch"
 max-width="80%" 
@@ -202,8 +202,8 @@ You can see all supported Pull Request events in the trigger dialog.
 
 {% include image.html 
 lightbox="true" 
-file="/images/guides/choosing-pr-events.png" 
-url="/images/guides/choosing-pr-events.png" 
+file="/images/guides/branches-pull-requests/choosing-pr-events.png" 
+url="/images/guides/branches-pull-requests/choosing-pr-events.png" 
 alt="Choosing PR events for a pipeline" 
 caption="Choosing PR events for a pipeline"
 max-width="80%" 
@@ -229,8 +229,8 @@ One of the most popular git workflows is *Trunk Based development* with short li
 
 {% include image.html 
 lightbox="true" 
-file="/images/guides/trunk-based-development.png" 
-url="/images/guides/trunk-based-development.png" 
+file="/images/guides/branches-pull-requests/trunk-based-development.png" 
+url="/images/guides/branches-pull-requests/trunk-based-development.png" 
 alt="Trunk Based development" 
 caption="Trunk Based Development"
 max-width="100%" 
@@ -247,8 +247,8 @@ As an example here is a minimal pipeline for the master branch:
 
 {% include image.html 
 lightbox="true" 
-file="/images/guides/production-pipeline.png" 
-url="/images/guides/production-pipeline.png" 
+file="/images/guides/branches-pull-requests/production-pipeline.png" 
+url="/images/guides/branches-pull-requests/production-pipeline.png" 
 alt="Pipeline that deploys to production" 
 caption="Pipeline that deploys to production"
 max-width="100%" 
@@ -265,8 +265,8 @@ The pipeline for feature branches is different:
 
 {% include image.html 
 lightbox="true" 
-file="/images/guides/feature-pipeline.png" 
-url="/images/guides/feature-pipeline.png" 
+file="/images/guides/branches-pull-requests/feature-pipeline.png" 
+url="/images/guides/branches-pull-requests/feature-pipeline.png" 
 alt="Pipeline for feature branches" 
 caption="Pipeline for feature branches"
 max-width="100%" 
@@ -283,8 +283,8 @@ To implement trunk based development we create two triggers for these pipelines.
 
 {% include image.html 
 lightbox="true" 
-file="/images/guides/trigger-for-production-pipeline.png" 
-url="/images/guides/trigger-for-production-pipeline.png" 
+file="/images/guides/branches-pull-requests/trigger-for-production-pipeline.png" 
+url="/images/guides/branches-pull-requests/trigger-for-production-pipeline.png" 
 alt="Trigger for production pipeline" 
 caption="Trigger for production pipeline"
 max-width="50%" 
@@ -299,8 +299,8 @@ For the [branch specifications]({{site.baseurl}}/docs/configure-ci-cd-pipeline/t
 
 {% include image.html 
 lightbox="true" 
-file="/images/guides/trigger-for-features.png" 
-url="/images/guides/trigger-for-features.png" 
+file="/images/guides/branches-pull-requests/trigger-for-features.png" 
+url="/images/guides/branches-pull-requests/trigger-for-features.png" 
 alt="Trigger for pull request pipeline" 
 caption="Trigger for pull request pipeline"
 max-width="50%" 
@@ -326,8 +326,8 @@ For example to run a pipeline only for pull requests from branches named `featur
 
 {% include image.html 
 lightbox="true" 
-file="/images/guides/git-flow-feature-trigger.png" 
-url="/images/guides/git-flow-feature-trigger.png" 
+file="/images/guides/branches-pull-requests/git-flow-feature-trigger.png" 
+url="/images/guides/branches-pull-requests/git-flow-feature-trigger.png" 
 alt="Git flow feature branch trigger" 
 caption="Git flow feature branch trigger"
 max-width="50%" 
@@ -337,8 +337,8 @@ To launch a pipeline that will only run when a commit happens on a release branc
 
 {% include image.html 
 lightbox="true" 
-file="/images/guides/git-flow-release-pipeline-trigger.png" 
-url="/images/guides/git-flow-release-pipeline-trigger.png" 
+file="/images/guides/branches-pull-requests/git-flow-release-pipeline-trigger.png" 
+url="/images/guides/branches-pull-requests/git-flow-release-pipeline-trigger.png" 
 alt="Git flow release branch trigger" 
 caption="Git flow release branch trigger"
 max-width="50%" 

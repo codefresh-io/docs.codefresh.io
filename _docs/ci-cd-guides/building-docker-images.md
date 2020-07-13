@@ -100,8 +100,8 @@ The beauty of this pipeline is that it is *exactly the same* for all multistage 
 
 {% include image.html 
 lightbox="true" 
-file="/images/guides/multi-stage-pipeline.png" 
-url="/images/guides/multi-stage-pipeline.png" 
+file="/images/guides/build-docker-images/multi-stage-pipeline.png" 
+url="/images/guides/build-docker-images/multi-stage-pipeline.png" 
 alt="Multi-stage Docker builds" 
 caption="Multi-stage Docker builds"
 max-width="100%" 
@@ -170,8 +170,8 @@ The pipeline is similar to the previous one, so you can handle multi-stage and n
 
 {% include image.html 
 lightbox="true" 
-file="/images/guides/non-multi-stage-pipeline.png" 
-url="/images/guides/non-multi-stage-pipeline.png" 
+file="/images/guides/build-docker-images/non-multi-stage-pipeline.png" 
+url="/images/guides/build-docker-images/non-multi-stage-pipeline.png" 
 alt="Non Multi-stage Docker builds" 
 caption="Non Multi-stage Docker builds"
 max-width="100%" 
@@ -252,8 +252,8 @@ This pipeline has an intermediate [freestyle step]({{site.baseurl}}/docs/codefre
 
 {% include image.html 
 lightbox="true" 
-file="/images/guides/package-only-pipeline.png" 
-url="/images/guides/package-only-pipeline.png" 
+file="/images/guides/build-docker-images/package-only-pipeline.png" 
+url="/images/guides/build-docker-images/package-only-pipeline.png" 
 alt="Package only Docker builds" 
 caption="Package only Docker builds"
 max-width="100%" 
@@ -371,8 +371,8 @@ The build step in Codefresh is very smart and it will automatically also push yo
 
 {% include image.html 
 lightbox="true" 
-file="/images/guides/automatic-docker-push.png" 
-url="/images/guides/automatic-docker-push.png" 
+file="/images/guides/build-docker-images/automatic-docker-push.png" 
+url="/images/guides/build-docker-images/automatic-docker-push.png" 
 alt="Automatic docker push" 
 caption="Automatic docker push"
 max-width="80%" 
@@ -383,8 +383,8 @@ Thus, if you run any of the above pipelines you will see your created image in t
 
 {% include image.html 
 lightbox="true" 
-file="/images/guides/docker-image-dashboard.png" 
-url="/images/guides/docker-image-dashboard.png" 
+file="/images/guides/build-docker-images/docker-image-dashboard.png" 
+url="/images/guides/build-docker-images/docker-image-dashboard.png" 
 alt="Docker image dashboard" 
 caption="Docker image dashboard"
 max-width="80%" 
