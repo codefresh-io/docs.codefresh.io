@@ -957,6 +957,14 @@ my_email_step:
 
 Notice that both examples assume that `fail_fast: false` is at the root of the `codefresh.yaml` file.
 
+The possible values for `workflow.result` are:
+
+* `running`
+* `terminated`
+* `failure`
+* `pending-approval`
+* `success`
+
 
 ## What to read next
 
