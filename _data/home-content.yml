@@ -30,8 +30,6 @@
     localurl: /docs/configure-ci-cd-pipeline/secrets-store/
   - title: Pipeline caching
     localurl: /docs/configure-ci-cd-pipeline/pipeline-caching/
-  - title: Public logs and status badges
-    localurl: /docs/configure-ci-cd-pipeline/build-status/
   - title: Running pipelines locally
     localurl: /docs/configure-ci-cd-pipeline/running-pipelines-locally/
   - title: Debugging pipelines
@@ -53,16 +51,12 @@
     localurl: /docs/learn-by-example/python/
   - title: Ruby On Rails
     localurl: /docs/learn-by-example/ruby/
-  - title: Scala
-    localurl: /docs/learn-by-example/scala/scala-hello-world/
   - title: C/C++
-    localurl: /docs/learn-by-example/cc/
-  - title: Rust
-    localurl: /docs/learn-by-example/rust/    
+    localurl: /docs/learn-by-example/cc/   
   - title: C# (.NET core)
     localurl: /docs/learn-by-example/dotnet/
-  - title: Android (Mobile)
-    localurl: /docs/learn-by-example/mobile/android/
+  - title: More...
+    localurl: /docs/yaml-examples/examples/
 
 
 - title: CI/CD guides

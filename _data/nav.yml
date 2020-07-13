@@ -114,8 +114,6 @@
 - title: CI/CD Guides
   url: "/ci-cd-guides"
   pages:
-    # - title: "CI/CD concepts"
-    #   url: "/concepts"
     - title: "Build your app"
       url: "/packaging-compilation"  
     - title: "Building Docker images"
@@ -126,8 +124,6 @@
     #   url: "/preview-environments"
     # - title: "Production and Staging deployments"
     #   url: "/environment-deployments"
-    # - title: Secrets Management
-    #   url: "/secret-management" 
     # - title: Complex workflows
     #   url: "/complex-workflows"
 

@@ -287,7 +287,7 @@ file="/images/guides/trigger-for-production-pipeline.png"
 url="/images/guides/trigger-for-production-pipeline.png" 
 alt="Trigger for production pipeline" 
 caption="Trigger for production pipeline"
-max-width="60%" 
+max-width="50%" 
 %}
 
 For the feature branch pipeline we check the events for
@@ -303,7 +303,7 @@ file="/images/guides/trigger-for-features.png"
 url="/images/guides/trigger-for-features.png" 
 alt="Trigger for pull request pipeline" 
 caption="Trigger for pull request pipeline"
-max-width="60%" 
+max-width="50%" 
 %}
 
 With this configuration the whole process is as follows
@@ -320,18 +320,43 @@ You can fine tune this workflow according to your needs. For example you might a
 
 ## Git-flow
 
+[Git Flow](https://nvie.com/posts/a-successful-git-branching-model/) is another popular management process for git branches. For brevity reasons we will not list all the details for all branch types, but it should be obvious that you can recreate all aspects of Git flow with Codefresh triggers.
+
+For example to run a pipeline only for pull requests from branches named `feature-XXX` that will be merged back to `develop` branch you can create a trigger like this:
+
+{% include image.html 
+lightbox="true" 
+file="/images/guides/git-flow-feature-trigger.png" 
+url="/images/guides/git-flow-feature-trigger.png" 
+alt="Git flow feature branch trigger" 
+caption="Git flow feature branch trigger"
+max-width="50%" 
+%}
+
+To launch a pipeline that will only run when a commit happens on a release branch named `release-XXX` you can create a trigger like this:
+
+{% include image.html 
+lightbox="true" 
+file="/images/guides/git-flow-release-pipeline-trigger.png" 
+url="/images/guides/git-flow-release-pipeline-trigger.png" 
+alt="Git flow release branch trigger" 
+caption="Git flow release branch trigger"
+max-width="50%" 
+%}
+
+In a similar manner, you can create the triggers for all other branch types in Git flow.
+
+
 ## Create your own workflow
 
-
-
-
+Trunk-based development and Git-flow are only some examples of what a Git workflow can look like. Your organization might follow a completely different process. Using the basic building blocks of Codefresh triggers (branch field PR checkboxes etc) you should be able to model your own workflow according to your own pipelines.
 
 
 ## What to read next
 
 * [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
 * [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
-* [External Docker Registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/)
+* [Git Triggers]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/)
 * [YAML Examples]({{site.baseurl}}/docs/yaml-examples/examples/)
 
 
