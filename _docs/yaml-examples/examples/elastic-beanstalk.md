@@ -1,9 +1,11 @@
 ---
 title: "Elastic Beanstalk"
 description: ""
-group: deploy-your-containers
+group: yaml-examples
+sub_group: examples
 redirect_from:
   - /docs/elastic-beanstalk/
+  - /docs/deploy-your-containers/elastic-beanstalk/
 toc: true
 ---
 

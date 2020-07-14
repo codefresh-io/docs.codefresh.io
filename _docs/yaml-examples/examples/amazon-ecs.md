@@ -1,10 +1,12 @@
 ---
 title: "Amazon ECS/Fargate"
 description: "How to use Codefresh to deploy Docker containers to ECS/Fargate"
-group: deploy-your-containers
+group: yaml-examples
+sub_group: examples
 redirect_from:
   - /docs/amazon-ecs/
   - /docs/deploy-your-containers/
+  - /docs/deploy-your-containers/amazon-ecs/
 toc: true
 ---
 Codefresh can deploy to any ECS or Fargate cluster created in Amazon.

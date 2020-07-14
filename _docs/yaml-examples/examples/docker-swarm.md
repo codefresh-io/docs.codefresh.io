@@ -1,10 +1,12 @@
 ---
 title: "Docker SWARM"
 description: "How to deploy to Docker Swarm with Codefresh"
-group: deploy-your-containers
+group: yaml-examples
+sub_group: examples
 redirect_from:
   - /docs/docker-swarm/
   - /docs/deploy-to-docker-swarm/
+  - /docs/deploy-your-containers/docker-swarm/
 toc: true
 ---
 

@@ -98,6 +98,9 @@ Codefresh can deploy to any platform such as VMs, FTP/SSH/S3 sites, app servers 
 - [Deploy with Pulumi]({{site.baseurl}}/docs/yaml-examples/examples/pulumi) 
 - [Deploy to Nomad]({{site.baseurl}}/docs/yaml-examples/examples/nomad)
 - [Deploy to Heroku]({{site.baseurl}}/docs/yaml-examples/examples/deploy-to-heroku/)
+- [Deploy to Docker swarm]({{site.baseurl}}/docs/yaml-examples/examples/docker-swarm/)
+- [Deploy to Elastic Beanstalk]({{site.baseurl}}/docs/yaml-examples/examples/elastic-beanstalk/)
+- [Deploy to Amazon ECS/Fargate]({{site.baseurl}}/docs/yaml-examples/examples/amazon-ecs/)
 
 ## Notifications
 

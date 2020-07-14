@@ -254,6 +254,12 @@
           url: "/use-kubectl-as-part-of-freestyle-step"
         - title: Deploy with Kustomize
           url: "/deploy-with-kustomize"
+        - title: Deploy to Docker Swarm
+          url: "/docker-swarm"  
+        - title: Amazon ECS/Fargate
+          url: "/amazon-ecs"
+        - title: Elastic Beanstalk
+          url: "/elastic-beanstalk"          
     - title: "Secrets"
       url: "/examples"
       sub-pages:
@@ -379,15 +385,6 @@
     - title: Helm environment promotion
       url: "/helm-environment-promotion"
 
-- title: Deploy your containers
-  url: "/deploy-your-containers"
-  pages:
-    - title: Amazon ECS/Fargate
-      url: "/amazon-ecs"
-    - title: Elastic Beanstalk
-      url: "/elastic-beanstalk"
-    - title: Docker SWARM
-      url: "/docker-swarm"
 
 - title: Integrations
   url: "/integrations"

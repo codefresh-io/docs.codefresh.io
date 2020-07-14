@@ -212,11 +212,11 @@
   - title: Deploy to Nomad
     localurl: /docs/yaml-examples/examples/nomad/
   - title: Deploy to ECS/Fargate
-    localurl: /docs/deploy-your-containers/amazon-ecs/
+    localurl: /docs/yaml-examples/examples/amazon-ecs/
   - title: Elastic Beanstalk
-    localurl: /docs/deploy-your-containers/elastic-beanstalk/
+    localurl: /docs/yaml-examples/examples/elastic-beanstalk/
   - title: Deploy to Docker Swarm
-    localurl: /docs/deploy-your-containers/docker-swarm/
+    localurl: /docs/yaml-examples/examples/docker-swarm/
 
 - title: Integrations
   icon: images/home-icons/cloud-integrations.png
