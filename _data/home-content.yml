@@ -10,6 +10,7 @@
     localurl: /docs/getting-started/faq/
   - title: Invite Collaborators
     localurl: /docs/accounts/invite-your-team-member/
+
 - title: Pipelines
   icon: images/home-icons/pipeline.svg
   url: ''
@@ -29,8 +30,6 @@
     localurl: /docs/configure-ci-cd-pipeline/secrets-store/
   - title: Pipeline caching
     localurl: /docs/configure-ci-cd-pipeline/pipeline-caching/
-  - title: Public logs and status badges
-    localurl: /docs/configure-ci-cd-pipeline/build-status/
   - title: Running pipelines locally
     localurl: /docs/configure-ci-cd-pipeline/running-pipelines-locally/
   - title: Debugging pipelines
@@ -52,16 +51,36 @@
     localurl: /docs/learn-by-example/python/
   - title: Ruby On Rails
     localurl: /docs/learn-by-example/ruby/
-  - title: Scala
-    localurl: /docs/learn-by-example/scala/scala-hello-world/
   - title: C/C++
-    localurl: /docs/learn-by-example/cc/
-  - title: Rust
-    localurl: /docs/learn-by-example/rust/    
+    localurl: /docs/learn-by-example/cc/   
   - title: C# (.NET core)
     localurl: /docs/learn-by-example/dotnet/
-  - title: Android (Mobile)
-    localurl: /docs/learn-by-example/mobile/android/
+  - title: More...
+    localurl: /docs/yaml-examples/examples/
+
+
+- title: CI/CD guides
+  icon: images/home-icons/guides.png
+  url: ''
+  links:
+  # - title: CI/CD concepts
+  #   localurl: /docs/ci-cd-guide/concepts/
+  - title: Build your app
+    localurl: /docs/ci-cd-guides/packaging-compilation/
+  - title: Building Docker images
+    localurl: /docs/ci-cd-guides/building-docker-images/
+  - title: Pull Requests and branches
+    localurl: /docs/ci-cd-guides/pull-request-branches/
+  - title: Pipelines for Microservices
+    localurl: /docs/ci-cd-guides/microservices/  
+  # - title: Production and Staging deployments
+  #   localurl: /docs/ci-cd-guide/environment-deployments/
+  # - title: Secrets Management
+  #   localurl: /docs/ci-cd-guide/secret-management/ 
+  # - title: Complex workflows
+  #   localurl: /docs/ci-cd-guide/complex-workflows/ 
+
+      
 - title: Yaml Syntax
   icon: images/home-icons/yaml.svg
   url: ''

@@ -1,6 +1,6 @@
 ---
-title: "Git Trigger"
-description: ""
+title: "Git Triggers"
+description: "Learn how to run pipelines from Git events"
 group: configure-ci-cd-pipeline
 sub_group: triggers
 toc: true

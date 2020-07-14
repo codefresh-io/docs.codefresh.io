@@ -9,6 +9,7 @@
     url: "/deployment-to-kubernetes-quick-start-guide"
   - title: Deployment to Kubernetes with Helm
     url: "/helm-quick-start-guide"
+
 - title: Configure a CI/CD pipeline
   url: "/configure-ci-cd-pipeline"
   pages:
@@ -110,7 +111,21 @@
         - title: Selenium test
           url: "/selenium-test"
 
-
+- title: CI/CD Guides
+  url: "/ci-cd-guides"
+  pages:
+    - title: "Build your app"
+      url: "/packaging-compilation"  
+    - title: "Building Docker images"
+      url: "/building-docker-images"
+    - title: "Pull Requests and branches"
+      url: "/pull-request-branches"
+    - title: "Pipelines for Microservices"
+      url: "/microservices"
+    # - title: "Production and Staging deployments"
+    #   url: "/environment-deployments"
+    # - title: Complex workflows
+    #   url: "/complex-workflows"
 
 - title: Codefresh YAML
   url: "/codefresh-yaml"

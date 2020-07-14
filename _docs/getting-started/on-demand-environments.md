@@ -6,17 +6,9 @@ toc: true
 
 ---
 
-In this tutorial we will see how Codefresh can be used by many developers who work on multiple features and how to create separate demo environments for each feature. You will learn how to:
+In this tutorial we will see how Codefresh can be used by many developers who work on multiple features and how to create separate demo environments for each feature. 
 
-* Launch On-Demand test environments for Docker containers
-* Use pull requests for feature-based development
-* Make sure that Codefresh builds automatically whenever a commit happens
-
-Using Pull Requests for feature development is one of the tenets of a sound Continuous Integration process.
-Codefresh can be instructed to build pull requests in an automatic manner (or any other source code branch) making
-collaboration among teams much more flexible.
-
-Codefresh also has the unique capability of launching Docker images in temporary test environments. These test environments
+Codefresh has the unique capability of launching Docker images in temporary test environments. These test environments
 are ephemeral and are not intended to be used as QA (let alone production) environments. They are perfect
 for quick demos. Use them
 if you want to quickly share a feature with a colleague or a customer.
@@ -73,7 +65,7 @@ caption="Start logs (click image to enlarge)"
 max-width="60%" 
 %}
 
-### Accessing the test environment
+## Accessing the test environment
 
 Once launch is complete, Codefresh will print a dynamic URL that contains the deployed environment. Now you have a demo environment created just for you! You can send this link with an email to a colleague to ask for feedback or to a customer to show progress.
 
@@ -112,139 +104,6 @@ max-width="70%"
 %}
 
 On the right side, you can find a list of buttons that allow you to visit the environment directly, share the link on Slack and most importantly stop the environment, so that it doesn't count against your account. It is a good practice to launch environments only when you need them and clean them up once you are done with them.
-
-## Collaborating with Pull requests
-
-Continuous Integration (CI) is based on two pillar stones:
-
-1. The merging of all features into a shared mainline (this is the *integration* part)
-2. The capability to auto-build all commits and have a deployable artifact at any given point in time (this is the *continuous* part)
-
-
-{% include 
-image.html 
-lightbox="true" 
-file="/images/getting-started/quick-start-test-pr/ci-with-merges.png" 
-url="/images/getting-started/quick-start-test-pr/ci-with-merges.png" 
-alt="CI with merges" 
-caption="Continuous Integration (click image to enlarge)" 
-max-width="80%" 
-%}
-
-Your Git provider (e.g. GitHub) is the one responsible for the Integration part. Codefresh takes care of the Continuous part in a very natural way. It uses webhooks to respond to changes that happen in source control (either in the form of new commits or when branches are created)
-
-### Auto-build of branches and pull requests
-
-By default Codefresh will connect to your Git provider and do the following:
-
-1. Auto-build every new commit that happens in master or any other branch
-2. Auto-build every new branch when it is created
-
-You can change the default behavior so that it matches your own workflow using extra [GIT Triggers]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/).
-
-You don't have to do anything special to setup this communication between Codefresh and your Git provider. It was setup automatically for you when you connected your Codefresh account to your Git provider.
-
-Codefresh also creates for you a default GIT trigger the first time you create a project.
-
-
-{% include 
-image.html 
-lightbox="true" 
-file="/images/pipeline/triggers/default-git-trigger.png" 
-url="/images/pipeline/triggers/default-git-trigger.png" 
-alt="Default GIT trigger" 
-caption="Default GIT trigger" 
-max-width="50%" 
-%}
-
-
-If you create a new branch in your repository Codefresh will automatically build it (and also store the resulting Docker image). The build will clearly define its source branch:
-
-{% include 
-image.html 
-lightbox="true" 
-file="/images/getting-started/quick-start-test-pr/auto-build-feature.png" 
-url="/images/getting-started/quick-start-test-pr/auto-build-feature.png" 
-alt="Building branches" 
-caption="Building branches (click image to enlarge)" 
-max-width="50%" 
-%}
-
-All branches are shown under the respective tab. You can build any branch on its own and you can also start a demo environment for any branch as well.
-
-{% include 
-image.html 
-lightbox="true" 
-file="/images/getting-started/quick-start-test-pr/view-branches.png" 
-url="/images/getting-started/quick-start-test-pr/view-branches.png" 
-alt="Viewing branches" 
-caption="Viewing branches (click image to enlarge)" 
-max-width="50%" 
-%}
-
-
-
-
-Codefresh also has a dedicated view for Pull Requests. When you open a Pull Request, Codefresh will show it under the respective tab. All facilities we described so far for the main branch are available for Pull requests as well. You can 
-create demo environments for Pull Requests in the same manner. Previewing the changes of a specific feature has never been easier.
-
-{% include 
-image.html 
-lightbox="true" 
-file="/images/getting-started/quick-start-test-pr/view-prs.png" 
-url="/images/getting-started/quick-start-test-pr/view-prs.png" 
-alt="View Pull Requests" 
-caption="View Pull Requests (click image to enlarge)" 
-max-width="50%" 
-%}
-
-
-When you commit to a Pull Request, not only Codefresh will auto-build it, but you will also see the build request in the GitHub UI as well:
-
-{% include 
-image.html 
-lightbox="true" 
-file="/images/getting-started/quick-start-test-pr/auto-build-pr.png" 
-url="/images/getting-started/quick-start-test-pr/auto-build-pr.png" 
-alt="Pull Request Status" 
-caption="Pull Request Status (click image to enlarge)" 
-max-width="50%" 
-%}
-
-### Different build options for branches and pull requests
-
-So far, we have used the same build options for all branches and pull requests. Codefresh allows you to define more than one groups of settings. The build settings can then be individually fine-tuned with regards to:
-
-* The build steps (e.g. unit tests and/or integration tests)
-* The branch names they affect
-* Whether they run automatically or manually
-
-
-{% include 
-image.html 
-lightbox="true" 
-file="/images/pipeline/triggers/pipeline-examples.png" 
-url="/images/pipeline/triggers/pipeline-examples.png" 
-alt="Multiple pipelines" 
-caption="Multiple pipelines (click image to enlarge)" 
-max-width="90%" 
-%}
-
-With these basic building blocks, it is possible to create any development process that matches your organization.
-Here are two extreme examples.
-
-Early Start-up company:
-
-* A main pipeline that runs automatically and deploys to production from *master* branch.
-* A testing pipeline that runs automatically and runs unit tests whenever a Pull request is opened.
-
-
-Fortune 500 company with complex approval process:
-
-* A main pipeline that runs manually from *master* and executes both unit and integration tests. It deploys to production.
-* A testing pipeline that runs manually for *staging* and runs integration tests. It deploys to staging environment.
-* A code review pipeline that runs automatically from branches named *feature-x* and runs code quality and static analysis tools.
-
 
 ## What to read next
 
