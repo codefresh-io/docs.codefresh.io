@@ -382,8 +382,6 @@
 - title: Deploy your containers
   url: "/deploy-your-containers"
   pages:
-    - title: Microsoft Azure
-      url: "/microsoft-azure"
     - title: Amazon ECS/Fargate
       url: "/amazon-ecs"
     - title: Elastic Beanstalk
@@ -407,6 +405,8 @@
       url: "/jira-integration"
     - title: Jenkins Integration
       url: "/jenkins-integration"
+    - title: Microsoft Azure
+      url: "/microsoft-azure"      
     - title: Google Cloud builder
       url: "/gcloud-builder"
     - title: Google Marketplace Installation

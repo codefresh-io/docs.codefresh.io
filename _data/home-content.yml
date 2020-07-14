@@ -201,14 +201,8 @@
   links:
   - title: Deploy to Kubernetes
     localurl: /docs/deploy-to-kubernetes/codefresh-kubernetes-integration-demochat-example/
-  - title: Deploy to Azure
-    localurl: /docs/deploy-your-containers/microsoft-azure/
-  - title: Deploy to ECS/Fargate
-    localurl: /docs/deploy-your-containers/amazon-ecs/
-  - title: Elastic Beanstalk
-    localurl: /docs/deploy-your-containers/elastic-beanstalk/
-  - title: Deploy to Docker Swarm
-    localurl: /docs/deploy-your-containers/docker-swarm/
+  - title: Deploy with Helm
+    localurl: /docs/yaml-examples/examples/helm/
   - title: Deploy to a VM with Packer
     localurl: /docs/yaml-examples/examples/packer-gcloud/
   - title: Deploy with Terraform
@@ -217,6 +211,12 @@
     localurl: /docs/yaml-examples/examples/pulumi/
   - title: Deploy to Nomad
     localurl: /docs/yaml-examples/examples/nomad/
+  - title: Deploy to ECS/Fargate
+    localurl: /docs/deploy-your-containers/amazon-ecs/
+  - title: Elastic Beanstalk
+    localurl: /docs/deploy-your-containers/elastic-beanstalk/
+  - title: Deploy to Docker Swarm
+    localurl: /docs/deploy-your-containers/docker-swarm/
 
 - title: Integrations
   icon: images/home-icons/cloud-integrations.png
@@ -231,10 +231,12 @@
   - title: GitHub Actions
     new: true
     localurl: /docs/integrations/github-actions/
+  - title: Azure
+    localurl: /docs/integrations/microsoft-azure/    
   - title: Jira integration
     localurl: /docs/integrations/jira-integration/
   - title: Google Marketplace Installation
-    localurl: /docs/integrations/google-marketplace/
+    localurl: /docs/integrations/google-marketplace/   
   - title: Google Cloud Builder
     new: true
     localurl: /docs/integrations/gcloud-builder/

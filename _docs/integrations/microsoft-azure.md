@@ -1,9 +1,10 @@
 ---
 title: "Microsoft Azure"
 description: "How to use Codefresh with Azure"
-group: deploy-your-containers
+group: integrations
 redirect_from:
   - /docs/microsoft-azure/
+  - /docs/deploy-your-containers/microsoft-azure/
 toc: true
 ---
 
