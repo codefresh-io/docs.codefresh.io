@@ -138,6 +138,20 @@ In the dialog that opened:
 3. Supplied values files from Yaml Shared Configuration.
 4. Override variables are provided as `--set` arguments.
 
+From the same dialog you can also provide your own pipeline to be used (instead of the one offered by Codefresh). If you select a custom pipeline the following variables will be available to you:
+
+* `CF_HELM_RELEASE` - name of release
+* `CF_HELM_KUBE_CONTEXT` - kubectl context name of target cluster (cluster name from [dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/#work-with-your-services))
+* `CF_HELM_NAMESPACE` - Tiller Namespace if you use Helm 2 
+* `CF_HELM_INSTALLATION_NAMESPACE` - desired namespace for the release 
+* `CF_HELM_CHART_VERSION` - Chart Version,
+* `CF_HELM_CHART_NAME` - Chart Name
+* `CF_HELM_CONTEXTS` - values from [shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/#using-shared-helm-values)
+* `CF_HELM_VALUES` - extra values
+* `CF_HELM_SET` - extra values,
+* `CF_HELM_CHART_REPO_URL` - URL of Chart repository
+* `CF_HELM_COMMIT_MESSAGE` - Message to show in Helm GUI,
+
 Finally click on Install. You can observe the newly installed release on the "Helm Releases" page.
 
 You can also install Helm releases from [any Helm environment board]({{site.baseurl}}/docs/new-helm/helm-environment-promotion).
