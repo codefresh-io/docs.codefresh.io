@@ -391,23 +391,23 @@
   pages:
     - title: Git providers
       url: "/git-providers"
+    - title: Jenkins Integration
+      url: "/jenkins-integration"  
+    - title: Microsoft Azure
+      url: "/microsoft-azure"            
+    - title: Google Cloud builder
+      url: "/gcloud-builder"
+    - title: Google Marketplace Installation
+      url: "/google-marketplace"
+    - title: GitHub Actions
+      url: "/github-actions"  
     - title: Notifications
       url: "/notifications"
       sub-pages:
         - title: Slack
           url: "/slack-integration"
-    - title: GitHub Actions
-      url: "/github-actions"
     - title: Jira Integration
-      url: "/jira-integration"
-    - title: Jenkins Integration
-      url: "/jenkins-integration"
-    - title: Microsoft Azure
-      url: "/microsoft-azure"      
-    - title: Google Cloud builder
-      url: "/gcloud-builder"
-    - title: Google Marketplace Installation
-      url: "/google-marketplace"
+      url: "/jira-integration"          
     - title: Codefresh API
       url: "/codefresh-api"
 

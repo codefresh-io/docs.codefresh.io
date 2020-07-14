@@ -226,20 +226,18 @@
     localurl: /docs/integrations/git-providers/
   - title: Jenkins integration/migration
     localurl: /docs/integrations/jenkins-integration/
-  - title: Slack integration
-    localurl: /docs/integrations/notifications/slack-integration/
-  - title: GitHub Actions
-    new: true
-    localurl: /docs/integrations/github-actions/
-  - title: Azure
+  - title: Microsoft Azure
     localurl: /docs/integrations/microsoft-azure/    
-  - title: Jira integration
-    localurl: /docs/integrations/jira-integration/
   - title: Google Marketplace Installation
     localurl: /docs/integrations/google-marketplace/   
   - title: Google Cloud Builder
     new: true
     localurl: /docs/integrations/gcloud-builder/
+  - title: GitHub Actions
+    new: true
+    localurl: /docs/integrations/github-actions/    
+  - title: Slack integration
+    localurl: /docs/integrations/notifications/slack-integration/    
   - title: Codefresh API
     localurl: /docs/integrations/codefresh-api/
   - title: Codefresh CLI
