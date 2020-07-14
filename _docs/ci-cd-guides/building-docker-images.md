@@ -430,8 +430,8 @@ For more details see the [dynamic build tools page]({{site.baseurl}}/docs/config
 * [How Codefresh pipelines work]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
 * [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
 * [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
-* [External Docker Registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/)
-* [YAML Examples]({{site.baseurl}}/docs/yaml-examples/examples/)
+* [Working with Docker registries]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/)
+* [Build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/)
 
 
 
