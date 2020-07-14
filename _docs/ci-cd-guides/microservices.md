@@ -5,7 +5,7 @@ group: ci-cd-guides
 toc: true
 ---
 
-Now that you know how to [build your app]({{site.baseurl}}/docs/ci-cd-guides/packaging-compilation/) and [create Docker images]({{site.baseurl}}/docs/ci-cd-guides/building-docker-images/), we can see how Codefresh works with Microservice application.
+Now that you know how to [build your app]({{site.baseurl}}/docs/ci-cd-guides/packaging-compilation/) and [create Docker images]({{site.baseurl}}/docs/ci-cd-guides/building-docker-images/), we can see how Codefresh works with Microservice applications.
 
 ## Organizing pipelines for monolithic applications
 

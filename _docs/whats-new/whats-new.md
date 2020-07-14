@@ -8,6 +8,13 @@ toc: true
 ---
 Recent Codefresh updates:
 
+### July 2020
+
+- Building apps guide - [documentation]({{site.baseurl}}/docs/ci-cd-guides/packaging-compilation/)
+- Creating Docker images guide - [documentation]({{site.baseurl}}/docs/ci-cd-guides/building-docker-images/)
+- Pull requests guide - [documentation]({{site.baseurl}}/docs/ci-cd-guides/pull-request-branches/)
+- Microservice guide - [documentation]({{site.baseurl}}/docs/ci-cd-guides/microservices/)
+
 ### June 2020
 
 - New Codefresh Runner installation - [documentation]({{site.baseurl}}/docs/enterprise/codefresh-runner/)
