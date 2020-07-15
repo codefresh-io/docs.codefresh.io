@@ -110,7 +110,7 @@ Here are all the possible installation options
 | kube-node-selector       | The Kubernetes node selector "key=value" to be used by runner resources (default is no node selector) |
 | yes       | Use installation defaults (don't ask any questions during the installation) |
 | set-default-runtime      | Set this as the default runtime environment for your Codefresh account |
-| exec-demo-pipeline       | Run a demo pipeline after the installation completes (yes/no) |
+| exec-demo-pipeline       | Run a demo pipeline after the installation completes (true/false) |
 | kube-namespace       | Name of the namespace on which the runner should be installed |
 | tolerations       | The Kubernetes tolerations as path to a  JSON file to be used by the runner resources (default is no tolerations) |
 | storage-class-name        |  Set a name of your custom storage class |
