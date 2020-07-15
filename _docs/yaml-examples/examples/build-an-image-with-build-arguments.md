@@ -120,7 +120,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-In the case you can also use any of the built-in [Codefresh variables]({{site.baseurl}}/docs/codefresh-yaml/variables/).
+In this case you can also use any of the built-in [Codefresh variables]({{site.baseurl}}/docs/codefresh-yaml/variables/).
 
 
 ## What to read next

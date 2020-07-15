@@ -13,6 +13,7 @@ Codefresh has native support for Azure in the following areas:
 - [Integration with Azure Git]({{site.baseurl}}/docs/integrations/git-providers/#azure-devops)
 - [Connecting to Azure registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/azure-docker-registry/)
 - [Deploying to AKS]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/#adding-aks-cluster)
+- [Using Azure Storage for Test reports]({{site.baseurl}}/docs/testing/test-reports/#connecting-azure-storage)
 - [Azure SSO]({{site.baseurl}}/docs/enterprise/single-sign-on/sso-azure/)
 
 ## Using Azure Git repositories
@@ -63,6 +64,21 @@ max-width="40%"
 
 Once the cluster is connected you can use any of the [available deployment options]({{site.baseurl}}/docs/deploy-to-kubernetes/deployment-options-to-kubernetes/) for Kubernetes clusters. You also get access to all other Kubernetes dashboards such as the [cluster dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/)  or the [environment dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/environment-dashboard/) .
 
+## Storing test reports in Azure storage
+
+Codefres has native support for test reports. You can store the reports on Azure storage.
+
+{% include
+image.html
+lightbox="true"
+file="/images/examples/azure/azure-storage.png"
+url="/images/examples/azure/azure-storage.png"
+alt="Azure cloud storage"
+caption="Azure cloud storage"
+max-width="60%"
+%}
+
+See the full documentation for [test reports]({{site.baseurl}}/docs/testing/test-reports/).
 ## Azure Single Sign-on
 
 You can use Azure Active Directory as an [SSO mechanism]({{site.baseurl}}/docs/enterprise/single-sign-on/) in Codefresh.
