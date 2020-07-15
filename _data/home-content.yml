@@ -227,7 +227,9 @@
   - title: Jenkins integration/migration
     localurl: /docs/integrations/jenkins-integration/
   - title: Microsoft Azure
-    localurl: /docs/integrations/microsoft-azure/    
+    localurl: /docs/integrations/microsoft-azure/   
+  - title: Google Cloud
+    localurl: /docs/integrations/google-cloud/       
   - title: Google Marketplace Installation
     localurl: /docs/integrations/google-marketplace/   
   - title: Google Cloud Builder

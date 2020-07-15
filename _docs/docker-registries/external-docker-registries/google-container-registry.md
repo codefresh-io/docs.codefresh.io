@@ -12,7 +12,7 @@ To configure GCR first select **Google Container Registry** from the new registr
 * Registry Name - A unique name for this configuration
 * Key File - The contents of a JSON key file. See below for [instructions](#section-generating-a-json-key-file)
 
-{% include image.html lightbox="true" file="/images/artifacts/registry/add-gcr-registry.png" url="/images/220c472-add-gcr-new.png" alt="Add Google Container Registry" max-width="60%" %}
+{% include image.html lightbox="true" file="/images/artifacts/registry/add-gcr-registry.png" url="/images/artifacts/registry/add-gcr-registry.png" alt="Add Google Container Registry" max-width="60%" %}
 
 ## Generating a JSON key file
 The JSON key file holds your credentials for a given [Service Account](https://cloud.google.com/compute/docs/access/service-accounts). To generate your key file follow these instructions:

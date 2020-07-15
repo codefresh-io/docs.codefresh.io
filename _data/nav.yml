@@ -395,6 +395,8 @@
       url: "/jenkins-integration"  
     - title: Microsoft Azure
       url: "/microsoft-azure"            
+    - title: Google Cloud
+      url: "/google-cloud"   
     - title: Google Cloud builder
       url: "/gcloud-builder"
     - title: Google Marketplace Installation
