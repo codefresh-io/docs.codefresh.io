@@ -59,6 +59,7 @@ The same thing can also be achieved within a Codefresh pipeline:
 
   `codefresh.yml`
 {% highlight yaml %}
+{% raw %}
 version: '1.0'
 steps:
   main_clone:
@@ -77,6 +78,7 @@ steps:
     build_arguments:
       - NODE_VERSION=8
       - APP_DIR=/usr/src/app
+{% endraw %}
 {% endhighlight %}
 
 This pipeline checks out the source code of the repository and then builds the Dockerfile by passing the values `8` and `/usr/src/app` to the two arguments.
@@ -90,7 +92,35 @@ caption="Using Docker build arguments in a pipeline"
 max-width="100%" 
 %}
 
-In this pipeline the docker build arguments are defined in the pipeline itself, but you could also use [pipeline variables]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#creating-new-pipelines), [shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/) or any other standard mechanism you already have in place.
+## Using Codefresh variables as build arguments
+
+In the previous pipeline the docker build arguments are defined in the pipeline itself, but you could also use [pipeline variables]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#creating-new-pipelines), [shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/) or any other standard mechanism you already have in place.
+
+  `codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+steps:
+  main_clone:
+    title: Cloning main repository...
+    type: git-clone
+    repo: 'codefreshdemo/cf-example-build-arguments'
+    revision: 'master'
+    git: github
+  build_my_app:
+    title: Building Node.Js Docker Image
+    type: build
+    image_name: my-app
+    working_directory: '.'
+    tag: 'master'
+    dockerfile: Dockerfile
+    build_arguments:
+      - NODE_VERSION=${{NODE_VERSION_FROM_SHARED_CONFIG}}
+      - APP_DIR=${{APP_DIR_PIPELINE_VARIABLE}}
+{% endraw %}
+{% endhighlight %}
+
+In the case you can also use any of the built-in [Codefresh variables]({{site.baseurl}}/docs/codefresh-yaml/variables/).
 
 
 ## What to read next
