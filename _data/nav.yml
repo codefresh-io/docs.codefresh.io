@@ -161,7 +161,7 @@
       url: "/service-containers"
     - title: "Post-Step Operations"
       url: "/post-step-operations"
-    - title: "Parallel steps"
+    - title: "Advanced Workflows"
       url: "/advanced-workflows"
     - title: "Deployment environments"
       url: "/deployment-environments"
