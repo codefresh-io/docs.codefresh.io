@@ -97,7 +97,7 @@
     localurl: /docs/codefresh-yaml/conditional-execution-of-steps/
   - title: Service Containers
     localurl: /docs/codefresh-yaml/service-containers/
-  - title: Parallel Pipelines
+  - title: Advanced Workflows
     localurl: /docs/codefresh-yaml/advanced-workflows/
   - title: Deployment environments
     new: true
