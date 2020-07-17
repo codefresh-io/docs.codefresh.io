@@ -338,8 +338,6 @@
       url: "/create-composition"
     - title: Dynamic preview environments
       url: "/automatic-preview-environments"
-    - title: Composition Service Discovery
-      url: "/composition-service-discovery"
     - title: Security Scanning
       url: "/security-scanning"
     - title: SonarQube Scanning
