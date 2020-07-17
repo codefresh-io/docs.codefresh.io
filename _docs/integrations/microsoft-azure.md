@@ -40,8 +40,8 @@ Azure Docker registries are fully compliant with the Docker registry API that Co
 {% 
 	include image.html 
 	lightbox="true" 
-file="/images/artifacts/registry/add-azure-registry.png" 
-url="/images/artifacts/registry/add-azure-registry.png" 
+file="/images/integrations/docker-registries/add-azure-registry.png" 
+url="/images/integrations/docker-registries/add-azure-registry.png" 
 alt="Adding the Azure Docker registry" 
 caption="Adding the Azure Docker registry" 
 max-width="70%" 

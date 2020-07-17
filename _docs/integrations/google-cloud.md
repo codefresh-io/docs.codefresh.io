@@ -24,8 +24,8 @@ Google Container registries are fully compliant with the Docker registry API tha
 {% 
 	include image.html 
 	lightbox="true" 
-file="/images/artifacts/registry/add-gcr-registry.png" 
-url="/images/artifacts/registry/add-gcr-registry.png" 
+file="/images/integrations/docker-registries/add-gcr-registry.png" 
+url="/images/integrations/docker-registries/add-gcr-registry.png" 
 alt="Connecting to GCR" 
 caption="Connecting to GCR" 
 max-width="70%" 

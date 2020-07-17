@@ -20,8 +20,8 @@ Amazon Container registries are fully compliant with the Docker registry API tha
 {% 
 	include image.html 
 	lightbox="true" 
-file="/images/artifacts/registry/add-amazon-ecr-registry.png" 
-url="/images/artifacts/registry/add-amazon-ecr-registry.png" 
+file="/images/integrations/docker-registries/add-amazon-ecr-registry.png" 
+url="/images/integrations/docker-registries/add-amazon-ecr-registry.png" 
 alt="Connecting to ECR" 
 caption="Connecting to ECR" 
 max-width="70%" 

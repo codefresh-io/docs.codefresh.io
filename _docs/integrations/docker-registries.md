@@ -9,15 +9,14 @@ toc: true
 ---
 Codefresh enables you to integrate with several Docker container registries, including (but not limited to):
 
-  * [Docker Hub]({{site.baseurl}}/docs/docker-registries/external-docker-registries/docker-hub/)
-  * [Azure Container Registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/azure-docker-registry/)
-  * [Google Container Registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/google-container-registry/)
-  * [Amazon EC2 Container Registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/amazon-ec2-container-registry/)
-  * [Bintray.io/Artifactory]({{site.baseurl}}/docs/docker-registries/external-docker-registries/bintray-io/)
-  * [Quay.io]({{site.baseurl}}/docs/docker-registries/external-docker-registries/quay-io/)
-  * [Other Registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/other-registries/)
+  * [Docker Hub](docker-hub)
+  * [Azure Container Registry](azure-docker-registry)
+  * [Google Container Registry](google-container-registry)
+  * [Amazon EC2 Container Registry](amazon-ec2-container-registry)
+  * [Bintray.io/Artifactory](bintray-io)
+  * [Quay.io](quay-io)
 
-For a different registry choose to configure using the [Other]({{site.baseurl}}/docs/docker-registries/external-docker-registries/other-registries/) option.
+For a different registry choose to configure using the [Other](other-registries) option.
 
 The registries can either be public or private.
 
