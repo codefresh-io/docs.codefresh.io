@@ -5,6 +5,7 @@ group: docker-registries
 redirect_from:
   - /docs/build-specific-revision-image/
   - /docs/image-management/build-specific-revision-image/
+  - /docs/docker-registries/working-with-docker-registries/
 toc: true
 ---
 
@@ -17,8 +18,8 @@ To see all images currently from [all your connected Registries]({{site.baseurl}
 {% 
   include image.html 
   lightbox="true" 
-  file="/images/artifacts/cfcr/codefresh-registry-list.png" 
-  url="/images/artifacts/cfcr/codefresh-registry-list.png" 
+  file="/images/guides/working-with-images/docker-registry-list.png" 
+  url="/images/guides/working-with-images/docker-registry-list.png" 
   alt="Codefresh Registry Image List" 
   caption="Codefresh Registry Image List" 
   max-width="70%" 
@@ -32,8 +33,8 @@ On the top left of the screen you can find several filters that allow you to sea
 {% 
   include image.html 
   lightbox="true" 
-  file="/images/artifacts/cfcr/codefresh-registry-filters.png" 
-  url="/images/artifacts/cfcr/codefresh-registry-filters.png" 
+  file="/images/guides/working-with-images/docker-registry-filters.png" 
+  url="/images/guides/working-with-images/docker-registry-filters.png" 
   alt="Codefresh Registry Image filters" 
   caption="Codefresh Registry Image filters" 
   max-width="40%" 
@@ -79,8 +80,8 @@ This [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) wil
 {% 
 	include image.html 
 	lightbox="true" 
-	file="/images/artifacts/working-with-images/pull-public-image.png" 
-	url="/images/artifacts/working-with-images/pull-public-image.png" 
+	file="/images/guides/working-with-images/pull-public-image.png" 
+	url="/images/guides/working-with-images/pull-public-image.png" 
 	alt="Pulling a public image" 
 	caption="Pulling a public image" 
 	max-width="70%" 
@@ -106,8 +107,8 @@ You can find the full name of any docker image by visiting the image dashboard a
 {% 
 	include image.html 
 	lightbox="true" 
-	file="/images/artifacts/working-with-images/image-dashboard-tag.png" 
-	url="/images/artifacts/working-with-images/image-dashboard-tag.png" 
+	file="/images/guides/working-with-images/image-dashboard-tag.png" 
+	url="/images/guides/working-with-images/image-dashboard-tag.png" 
 	alt="Looking at tag of a private image" 
 	caption="Looking at tag of a private image"
 	max-width="65%" 
@@ -198,8 +199,8 @@ You can see the automatic pull inside the Codefresh logs.
 {% 
 	include image.html 
 	lightbox="true" 
-	file="/images/artifacts/working-with-images/pull-private-image.png" 
-	url="/images/artifacts/working-with-images/pull-private-image.png" 
+	file="/images/guides/working-with-images/pull-private-image.png" 
+	url="/images/guides/working-with-images/pull-private-image.png" 
 	alt="Auto-Pulling a private image" 
 	caption="Auto-Pulling a private image" 
 	max-width="70%" 
@@ -218,8 +219,8 @@ To push to another registry you only need to know how this registry is [linked i
 {% 
 	include image.html 
 	lightbox="true" 
-	file="/images/artifacts/working-with-images/linked-docker-registries.png" 
-	url="/images/artifacts/working-with-images/linked-docker-registries.png" 
+	file="/images/guides/working-with-images/linked-docker-registries.png" 
+	url="/images/guides/working-with-images/linked-docker-registries.png" 
 	alt="Name of linked Docker Registries" 
 	caption="Name of linked Docker Registries" 
 	max-width="50%" 
@@ -302,8 +303,8 @@ The example above will push the final Docker image as `kostisazureregistry.azure
 {% 
   include image.html 
   lightbox="true" 
-  file="/images/artifacts/working-with-images/registry-prefix.png" 
-  url="/images/artifacts/working-with-images/registry-prefix.png" 
+  file="/images/guides/working-with-images/registry-prefix.png" 
+  url="/images/guides/working-with-images/registry-prefix.png" 
   alt="Global registry prefix" 
   caption="Global registry prefix" 
   max-width="70%" 
@@ -345,8 +346,8 @@ To solve this problem, Codefresh will automatically detect connected registries 
 {% 
   include image.html 
   lightbox="true" 
-  file="/images/artifacts/working-with-images/primary-dockerhub.png" 
-  url="/images/artifacts/working-with-images/primary-dockerhub.png" 
+  file="/images/guides/working-with-images/primary-dockerhub.png" 
+  url="/images/guides/working-with-images/primary-dockerhub.png" 
   alt="Choosing a Docker registry as the primary one if they have the same domain" 
   caption="Choosing a Docker registry as the primary one if they have the same domain"
   max-width="90%" 
@@ -446,8 +447,8 @@ Let's look at an example. We assume that we have two GCR integrations:
 {% 
   include image.html 
   lightbox="true" 
-  file="/images/artifacts/working-with-images/two-gcr-integrations.png" 
-  url="/images/artifacts/working-with-images/two-gcr-integrations.png" 
+  file="/images/guides/working-with-images/two-gcr-integrations.png" 
+  url="/images/guides/working-with-images/two-gcr-integrations.png" 
   alt="Two GCR integrations" 
   caption="Two GCR integrations" 
   max-width="90%" 
@@ -500,8 +501,8 @@ Visit the Docker image dashboard and click the *Promote* button for the image yo
 {% 
   include image.html 
   lightbox="true" 
-  file="/images/artifacts/cfcr/docker-image-promotion.png" 
-  url="/images/artifacts/cfcr/docker-image-promotion.png" 
+  file="/images/guides/working-with-images/docker-image-promotion.png" 
+  url="/images/guides/working-with-images/docker-image-promotion.png" 
   alt="Promoting a Docker image" 
   caption="Promoting a Docker image" 
   max-width="50%" 

@@ -118,6 +118,8 @@
       url: "/packaging-compilation"  
     - title: "Building Docker images"
       url: "/building-docker-images"
+    - title: "Working with Docker registries"
+      url: "/working-with-docker-registries"      
     - title: "Pull Requests and branches"
       url: "/pull-request-branches"
     - title: "Pipelines for Microservices"
@@ -303,8 +305,6 @@
       url: "/codefresh-registry"
     - title: CF Registry Deprecation
       url: "/cfcr-deprecation"
-    - title: "Working with Docker registries"
-      url: "/working-with-docker-registries"
     - title: "Image Metadata Annotations"
       url: "/metadata-annotations"
     - title: "External Docker Registries"

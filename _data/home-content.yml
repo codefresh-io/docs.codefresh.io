@@ -69,6 +69,8 @@
     localurl: /docs/ci-cd-guides/packaging-compilation/
   - title: Building Docker images
     localurl: /docs/ci-cd-guides/building-docker-images/
+  - title: Working with Docker registries
+    localurl: /docs/ci-cd-guides/working-with-docker-registries/    
   - title: Pull Requests and branches
     localurl: /docs/ci-cd-guides/pull-request-branches/
   - title: Pipelines for Microservices
@@ -114,8 +116,7 @@
     localurl: /docs/docker-registries/codefresh-registry/
   - title: Codefresh Registry Deprecation
     localurl: /docs/docker-registries/cfcr-deprecation/
-  - title: Working with Docker registries
-    localurl: /docs/docker-registries/working-with-docker-registries/
+
   - title: Custom image annotations
     localurl: /docs/docker-registries/metadata-annotations/
   - title: Docker registry integration
