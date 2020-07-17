@@ -1,8 +1,10 @@
 ---
 title: "Azure Docker registry"
-description: "How to use the Azure Docker Registry in Codefresh"
-group: docker-registries
-sub_group: external-docker-registries
+description: "Learn now to use the Azure Docker Registry in Codefresh"
+group: integrations
+sub_group: docker-registries
+redirect_from:
+  - /docs/docker-registries/external-docker-registries/azure-docker-registry/
 toc: true
 ---
 To configure the [Azure Docker registry](https://docs.microsoft.com/en-us/azure/container-registry/) within Codefresh, go into its settings in Azure Portal and select *Access Keys* from the left sidebar.
@@ -10,8 +12,8 @@ To configure the [Azure Docker registry](https://docs.microsoft.com/en-us/azure/
  {% include 
 image.html 
 lightbox="true" 
-file="/images/artifacts/registry/azure-registry-admin.png" 
-url="/images/artifacts/registry/azure-registry-admin.png" 
+file="/images/integrations/docker-registries/azure-registry-admin.png" 
+url="/images/integrations/docker-registries/azure-registry-admin.png" 
 alt="Docker credentials for the Azure registry" 
 caption="Docker credentials for the Azure registry" 
 max-width="80%" 
@@ -28,8 +30,8 @@ Then in the integration page in Codefresh, select **Other Registries** from the 
 
 {% include image.html 
 	lightbox="true" 
-file="/images/artifacts/registry/add-azure-registry.png" 
-url="/images/artifacts/registry/add-azure-registry.png" 
+file="/images/integrations/docker-registries/add-azure-registry.png" 
+url="/images/integrations/docker-registries/add-azure-registry.png" 
 alt="Adding the Azure Docker registry" 
 caption="Adding the Azure Docker registry" 
 max-width="60%" %}

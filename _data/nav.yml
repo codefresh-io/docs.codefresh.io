@@ -309,23 +309,7 @@
       url: "/cfcr-deprecation"
     - title: "Image Metadata Annotations"
       url: "/metadata-annotations"
-    - title: "External Docker Registries"
-      url: "/external-docker-registries"
-      sub-pages:
-        - title: "Docker Hub"
-          url: "/docker-hub"
-        - title: "Azure Docker Registry"
-          url: "/azure-docker-registry"
-        - title: "Amazon EC2 Container Registry"
-          url: "/amazon-ec2-container-registry"
-        - title: "Google Container Registry"
-          url: "/google-container-registry"
-        - title: "JFrog Bintray.io/Artifactory"
-          url: "/bintray-io"
-        - title: "Quay.io"
-          url: "/quay-io"
-        - title: "Other Registries"
-          url: "/other-registries"
+
 
 - title: "Testing"
   url: "/testing"
@@ -399,6 +383,23 @@
       url: "/microsoft-azure"            
     - title: Google Cloud
       url: "/google-cloud"   
+    - title: "Docker Registries"
+      url: "/docker-registries"
+      sub-pages:
+        - title: "Docker Hub"
+          url: "/docker-hub"
+        - title: "Azure Docker Registry"
+          url: "/azure-docker-registry"
+        - title: "Amazon EC2 Container Registry"
+          url: "/amazon-ec2-container-registry"
+        - title: "Google Container Registry"
+          url: "/google-container-registry"
+        - title: "JFrog Bintray.io/Artifactory"
+          url: "/bintray-io"
+        - title: "Quay.io"
+          url: "/quay-io"
+        - title: "Other Registries"
+          url: "/other-registries"      
     - title: Google Cloud builder
       url: "/gcloud-builder"
     - title: Google Marketplace Installation

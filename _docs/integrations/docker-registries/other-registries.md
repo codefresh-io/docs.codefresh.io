@@ -1,10 +1,11 @@
 ---
 title: "Other Registries"
-description: ""
-group: docker-registries
-sub_group: external-docker-registries
+description: "Connect any Docker registry to Codefresh"
+group: integrations
+sub_group: docker-registries
 redirect_from:
   - /docs/other-registries/
+  - /docs/docker-registries/external-docker-registries/other-registries/
 toc: true
 ---
 To configure some other registry which is not officially provided by Codefresh first select **Other Registries** from the new registry drop down and then provide the following:
@@ -14,7 +15,12 @@ To configure some other registry which is not officially provided by Codefresh f
 * Password - your registry encrypted password.
 * Domain - your registry address e.g. `mydomain.com`.
 
-{% include image.html lightbox="true" file="/images/artifacts/registry/add-other-docker-registry.png" url="/images/artifacts/registry/add-other-docker-registry.png" alt="Add Other Registries" max-width="60%" %}
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/integrations/docker-registries/add-other-docker-registry.png" 
+	url="/images/integrations/docker-registries/add-other-docker-registry.png" 
+	alt="Add Other Registries" max-width="60%" %}
 
 You can use this option for any cloud or hosted registry that follows the V2 Docker registry protocol.
 

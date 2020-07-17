@@ -118,18 +118,8 @@
     localurl: /docs/docker-registries/cfcr-deprecation/
 
 
-  - title: Docker registry integration
-    localurl: /docs/docker-registries/external-docker-registries/
-  - title: DockerHub
-    localurl: /docs/docker-registries/external-docker-registries/docker-hub/
-  - title: Amazon Elastic Container Registry
-    localurl: /docs/docker-registries/external-docker-registries/amazon-ec2-container-registry/
-  - title: Azure Container Registry
-    localurl: /docs/docker-registries/external-docker-registries/azure-docker-registry/
-  - title: Google Container Registry
-    localurl: /docs/docker-registries/external-docker-registries/google-container-registry/
-  - title: JFrog Bintray.io/Artifactory
-    localurl: /docs/docker-registries/external-docker-registries/bintray-io/
+
+
 - title: Testing
   icon: images/home-icons/testing.svg
   url: ''
@@ -227,7 +217,9 @@
   - title: Microsoft Azure
     localurl: /docs/integrations/microsoft-azure/   
   - title: Google Cloud
-    localurl: /docs/integrations/google-cloud/          
+    localurl: /docs/integrations/google-cloud/   
+  - title: Docker Registries
+    localurl: /docs/integrations/docker-registries/             
   - title: Google Cloud Builder
     new: true
     localurl: /docs/integrations/gcloud-builder/
@@ -236,8 +228,7 @@
     localurl: /docs/integrations/github-actions/       
   - title: Codefresh API
     localurl: /docs/integrations/codefresh-api/
-  - title: Codefresh CLI
-    url: http://cli.codefresh.io/
+
 
 - title: "Administration"
   icon: images/home-icons/integrations.svg
@@ -245,6 +236,8 @@
   links:
   - title: Installation Options
     localurl: /docs/administration/installation-security
+  - title: Codefresh CLI
+    url: http://cli.codefresh.io/    
   - title: Codefresh behind the firewall
     localurl: /docs/administration/behind-the-firewall
   - title: Codefresh Runner

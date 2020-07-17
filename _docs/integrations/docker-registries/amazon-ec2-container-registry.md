@@ -1,10 +1,11 @@
 ---
 title: "Amazon EC2 Container Registry"
-description: "How to use the Amazon Docker Registry in Codefresh"
-group: docker-registries
-sub_group: external-docker-registries
+description: "Learn how to use the Amazon Docker Registry in Codefresh"
+group: integrations
+sub_group: docker-registries
 redirect_from:
   - /docs/aws/
+  - /docs/docker-registries/external-docker-registries/amazon-ec2-container-registry/
 toc: true
 ---
 
@@ -18,7 +19,12 @@ and then provided the following:
 * Secret Access Key - AWS accessKeyId.
 * Region - AWS region.
 
-{% include image.html lightbox="true" file="/images/artifacts/registry/add-amazon-ecr-registry.png" url="/images/artifacts/registry/add-amazon-ecr-registry.png" alt="Add Amazon EC2 Container Registry" max-width="60%" %}
+{% include image.html 
+	lightbox="true" 
+	file="/images/integrations/docker-registries/add-amazon-ecr-registry.png" 
+	url="/images/integrations/docker-registries/add-amazon-ecr-registry.png" 
+	alt="Add Amazon EC2 Container Registry" 
+	max-width="60%" %}
 
 Codefresh makes sure to automatically refresh the AWS token for you.
 

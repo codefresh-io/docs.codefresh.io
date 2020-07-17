@@ -1,10 +1,11 @@
 ---
 title: "Google Container Registry"
-description: ""
-group: docker-registries
-sub_group: external-docker-registries
+description: "Learn how to use GCR with Codefresh pipelines"
+group: integrations
+sub_group: docker-registries
 redirect_from:
   - /docs/google-cloud-registry/
+  - /docs/docker-registries/external-docker-registries/google-container-registry/
 toc: true
 ---
 To configure GCR first select **Google Container Registry** from the new registry drop down and then provide the following:
@@ -12,7 +13,12 @@ To configure GCR first select **Google Container Registry** from the new registr
 * Registry Name - A unique name for this configuration
 * Key File - The contents of a JSON key file. See below for [instructions](#section-generating-a-json-key-file)
 
-{% include image.html lightbox="true" file="/images/artifacts/registry/add-gcr-registry.png" url="/images/artifacts/registry/add-gcr-registry.png" alt="Add Google Container Registry" max-width="60%" %}
+{% include image.html 
+	lightbox="true" 
+	file="/images/integrations/docker-registries/add-gcr-registry.png" 
+	url="/images/integrations/docker-registries/add-gcr-registry.png" 
+	alt="Add Google Container Registry" 
+	max-width="60%" %}
 
 ## Generating a JSON key file
 The JSON key file holds your credentials for a given [Service Account](https://cloud.google.com/compute/docs/access/service-accounts). To generate your key file follow these instructions:

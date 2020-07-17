@@ -1,12 +1,12 @@
 ---
-title: "External Docker Registries"
-description: ""
-group: docker-registries
+title: "Docker Registries"
+description: "Learn how to connect your Docker Registry to Codefresh"
+group: integrations
 redirect_from:
   - /docs/docker-registry/
 toc: true
 ---
-Codefresh enables you to integrate with several Docker container registries, including:
+Codefresh enables you to integrate with several Docker container registries, including (but not limited to):
 
   * [Docker Hub]({{site.baseurl}}/docs/docker-registries/external-docker-registries/docker-hub/)
   * [Azure Container Registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/azure-docker-registry/)
@@ -23,15 +23,30 @@ The registries can either be public or private.
 ## General configuration
 To configure your registries go to your Account Configuration, by clicking on *Account Settings* on the left sidebar. On the first section called *Integrations* click the *Configure* button next to *Docker Registry*.
 
-{% include image.html lightbox="true" file="/images/integrations/codefresh-integrations.png" url="/images/integrations/codefresh-integrations.png" alt="Codefresh Account Integration" max-width="80%" %}
+{% include image.html 
+  lightbox="true" 
+  file="/images/integrations/codefresh-integrations.png" 
+  url="/images/integrations/codefresh-integrations.png" 
+  alt="Codefresh Account Integration" 
+  max-width="80%" %}
 
 Add a new registry configuration from the drop down.
 
-{% include image.html lightbox="true" file="/images/artifacts/registry/add-docker-registry.png" url="/images/artifacts/registry/add-docker-registry.png" alt="Add Docker Registry" max-width="45%" %}
+{% include image.html 
+  lightbox="true" 
+  file="/images/integrations/docker-registries/add-docker-registry.png" 
+  url="/images/integrations/docker-registries/add-docker-registry.png" 
+  alt="Add Docker Registry" 
+  max-width="45%" %}
 
 Each configuration must be given a unique name, which you can later reference in a codefresh.yml file.
 
-{% include image.html lightbox="true" file="/images/2924d81-registry-name.png" url="/images/2924d81-registry-name.png" alt="Specify Docker Registry Name" max-width="40%" %}
+{% include image.html 
+  lightbox="true" 
+  file="/images/2924d81-registry-name.png" 
+  url="/images/2924d81-registry-name.png" 
+  alt="Specify Docker Registry Name" 
+  max-width="40%" %}
 
 ## Pushing an image
 
@@ -61,8 +76,8 @@ of having each pipeline using the prefix by itself.
 
 {% include image.html 
   lightbox="true" 
-  file="/images/artifacts/registry/repository-prefix.png" 
-  url="/images/artifacts/registry/repository-prefix.png" 
+  file="/images/integrations/docker-registries/repository-prefix.png" 
+  url="/images/integrations/docker-registries/repository-prefix.png" 
   alt="Setting a Registry prefix" 
   caption="Setting a Registry prefix"
   max-width="60%" 

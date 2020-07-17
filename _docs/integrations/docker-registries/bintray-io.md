@@ -1,10 +1,11 @@
 ---
 title: "Bintray.io/Artifactory"
 description: "Adding JFrog Bintray/Artifactory to Codefresh and using it as a registry."
-group: docker-registries
-sub_group: external-docker-registries
+group: integrations
+sub_group: docker-registries
 redirect_from:
   - /docs/bitrayio/
+  - /docs/docker-registries/external-docker-registries/bintray-io/
 toc: true
 ---
 
@@ -20,7 +21,12 @@ To configure *Bintray.io* and/or *Artifactory* first select *JFrog Bintray* from
 * API Key - your Bintray.io API key / Your Artifactory API key.
 * Domain - your Bintray.io registry address e.g. `docker-new-repository.bintray.io` or Artifactory such as `my-company-docker-snapshot.jfrog.io`.
 
-{% include image.html lightbox="true" file="/images/artifacts/registry/add-bintray-registry.png" url="/images/artifacts/registry/add-bintray-registry.png" alt="Add Bintray.io Registry" max-width="60%" %}
+{% include image.html 
+	lightbox="true" 
+	file="/images/integrations/docker-registries/add-bintray-registry.png" 
+	url="/images/integrations/docker-registriesadd-bintray-registry.png" 
+	alt="Add Bintray.io Registry" 
+	max-width="60%" %}
 
 ## Getting the settings for Bintray.io 
 
@@ -54,8 +60,8 @@ Codefresh will automatically set some version attributes in Bintray every time y
 
 {% 
 	include image.html lightbox="true" 
-	file="/images/artifacts/registry/bintray-metadata.png" 
-	url="/images/artifacts/registry/bintray-metadata.png" 
+	file="/images/integrations/docker-registries/bintray-metadata.png" 
+	url="/images/integrations/docker-registries/bintray-metadata.png" 
 	alt="Basic Bintray metadata" 
 	caption="Basic Bintray metadata" 
 	max-width="50%" 

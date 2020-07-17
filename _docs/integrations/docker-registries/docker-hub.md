@@ -1,10 +1,11 @@
 ---
 title: "Docker Hub"
 description: "Integrate DockerHub in Codefresh pipelines"
-group: docker-registries
-sub_group: external-docker-registries
+group: integrations
+sub_group: docker-registries
 redirect_from:
   - /docs/dockerhub/
+  - /docs/docker-registries/external-docker-registries/docker-hub/
 toc: true
 ---
 To configure Docker Hub so that your pipelines can push images to it, first select **Docker Hub** from the new registry drop down and then provide the following:
@@ -15,8 +16,8 @@ To configure Docker Hub so that your pipelines can push images to it, first sele
 
 {% include image.html 
 	lightbox="true" 
-	file="/images/artifacts/registry/dockerhub/add-dockerhub-registry.png" 
-	url="/images/artifacts/registry/dockerhub/add-dockerhub-registry.png" 
+	file="/images/integrations/docker-registries/dockerhub/add-dockerhub-registry.png" 
+	url="/images/integrations/docker-registries/dockerhub/add-dockerhub-registry.png" 
 	alt="Add Docker Hub Registry" 
 	caption="Add Docker Hub Registry" 
 	max-width="50%" 
@@ -38,8 +39,8 @@ You can add additional Dockerhub accounts using the same process.
 
 {% include image.html 
 	lightbox="true" 
-	file="/images/artifacts/registry/dockerhub/two-dockerhub-integrations.png" 
-	url="/images/artifacts/registry/dockerhub/two-dockerhub-integrations.png" 
+	file="/images/integrations/docker-registries/dockerhub/two-dockerhub-integrations.png" 
+	url="/images/integrations/docker-registries/dockerhub/two-dockerhub-integrations.png" 
 	alt="Additional Docker Hub integrations" 
 	caption="Additional Docker Hub integrations" 
 	max-width="80%" 
@@ -53,8 +54,8 @@ Here is a pipeline that is pushing to two different Dockerhub accounts:
 
 {% include image.html 
 	lightbox="true" 
-	file="/images/artifacts/registry/dockerhub/pushing-two-dockerhub-accounts.png" 
-	url="/images/artifacts/registry/dockerhub/pushing-two-dockerhub-accounts.png" 
+	file="/images/integrations/docker-registries/dockerhub/pushing-two-dockerhub-accounts.png" 
+	url="/images/integrations/docker-registries/dockerhub/pushing-two-dockerhub-accounts.png" 
 	alt="Pushing to multiple Dockerhub accounts" 
 	caption="Pushing to multiple Dockerhub accounts" 
 	max-width="90%" 
