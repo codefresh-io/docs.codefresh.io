@@ -106,7 +106,7 @@ build-step:
 
 ## Execute steps according to the presence of a variable
 
-If a variable does not exist in a Codefresh pipeline, then it will simply stay as a string inside the definition. When the ${{MY_VAR}} variable is not available, the engine will literally print ${{MyVar}}, because that variable doesn't exist.  
+If a variable does not exist in a Codefresh pipeline, then it will simply stay as a string inside the definition. When the `{% raw %}${{MY_VAR}}{% endraw %}` variable is not available, the engine will literally print `{% raw %}${{MY_VAR}}{% endraw %}`, because that variable doesn't exist.  
 
 You can use this mechanism to decide which steps will be executed if a [variable]({{site.baseurl}}/docs/codefresh-yaml/variables/) exists or not.
 
