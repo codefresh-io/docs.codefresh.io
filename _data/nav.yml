@@ -300,17 +300,6 @@
         - title: Web terminal
           url: "/web-terminal"
 
-- title: "Artifacts Management"
-  url: "/docker-registries"
-  pages:
-    - title: "Codefresh Docker Registry"
-      url: "/codefresh-registry"
-    - title: CF Registry Deprecation
-      url: "/cfcr-deprecation"
-    - title: "Image Metadata Annotations"
-      url: "/metadata-annotations"
-
-
 - title: "Testing"
   url: "/testing"
   pages:
