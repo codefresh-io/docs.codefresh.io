@@ -393,6 +393,8 @@
       url: "/git-providers"
     - title: Jenkins Integration
       url: "/jenkins-integration"  
+    - title: Amazon Services
+      url: "/amazon-web-services" 
     - title: Microsoft Azure
       url: "/microsoft-azure"            
     - title: Google Cloud

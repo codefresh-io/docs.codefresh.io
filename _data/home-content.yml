@@ -226,6 +226,8 @@
     localurl: /docs/integrations/git-providers/
   - title: Jenkins integration/migration
     localurl: /docs/integrations/jenkins-integration/
+  - title: Amazon Web Services
+    localurl: /docs/integrations/amazon-web-services/    
   - title: Microsoft Azure
     localurl: /docs/integrations/microsoft-azure/   
   - title: Google Cloud
@@ -237,9 +239,7 @@
     localurl: /docs/integrations/gcloud-builder/
   - title: GitHub Actions
     new: true
-    localurl: /docs/integrations/github-actions/    
-  - title: Slack integration
-    localurl: /docs/integrations/notifications/slack-integration/    
+    localurl: /docs/integrations/github-actions/       
   - title: Codefresh API
     localurl: /docs/integrations/codefresh-api/
   - title: Codefresh CLI
