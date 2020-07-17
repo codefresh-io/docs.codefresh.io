@@ -199,8 +199,6 @@
   links:
   - title: GIT integration
     localurl: /docs/integrations/git-providers/
-  - title: Jenkins integration/migration
-    localurl: /docs/integrations/jenkins-integration/
   - title: Amazon Web Services
     localurl: /docs/integrations/amazon-web-services/    
   - title: Microsoft Azure
@@ -208,7 +206,9 @@
   - title: Google Cloud
     localurl: /docs/integrations/google-cloud/   
   - title: Docker Registries
-    localurl: /docs/integrations/docker-registries/             
+    localurl: /docs/integrations/docker-registries/  
+  - title: Jenkins integration/migration
+    localurl: /docs/integrations/jenkins-integration/               
   - title: Google Cloud Builder
     new: true
     localurl: /docs/integrations/gcloud-builder/

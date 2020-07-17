@@ -364,8 +364,6 @@
   pages:
     - title: Git providers
       url: "/git-providers"
-    - title: Jenkins Integration
-      url: "/jenkins-integration"  
     - title: Amazon Services
       url: "/amazon-web-services" 
     - title: Microsoft Azure
@@ -388,7 +386,9 @@
         - title: "Quay.io"
           url: "/quay-io"
         - title: "Other Registries"
-          url: "/other-registries"      
+          url: "/other-registries"  
+    - title: Jenkins Integration
+      url: "/jenkins-integration"                
     - title: Google Cloud builder
       url: "/gcloud-builder"
     - title: Google Marketplace Installation
