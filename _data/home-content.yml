@@ -197,7 +197,7 @@
   icon: images/home-icons/cloud-integrations.png
   url: ''
   links:
-  - title: GIT integration
+  - title: Git Providers
     localurl: /docs/integrations/git-providers/
   - title: Amazon Web Services
     localurl: /docs/integrations/amazon-web-services/    

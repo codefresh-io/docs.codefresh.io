@@ -40,8 +40,8 @@ In the first two cases, you will enter your service account file centrally in th
 {% 
 	include image.html 
 	lightbox="true" 
-	file="/images/artifacts/registry/add-gcr-registry.png" 
-	url="/images/220c472-add-gcr-new.png" 
+	file="/images/integrations/docker-registries/add-gcr-registry.png" 
+	url="/images/integrations/docker-registries/add-gcr-registry.png" 
 	alt="Using the JSON service account in Codefresh" 
 	caption="Using the JSON service account in Codefresh"
 	max-width="50%" 

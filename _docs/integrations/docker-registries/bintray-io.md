@@ -24,7 +24,7 @@ To configure *Bintray.io* and/or *Artifactory* first select *JFrog Bintray* from
 {% include image.html 
 	lightbox="true" 
 	file="/images/integrations/docker-registries/add-bintray-registry.png" 
-	url="/images/integrations/docker-registriesadd-bintray-registry.png" 
+	url="/images/integrations/docker-registries/add-bintray-registry.png" 
 	alt="Add Bintray.io Registry" 
 	max-width="60%" %}
 
