@@ -12,6 +12,7 @@ Codefresh has native support for Google Cloud in the following areas:
 - [Connecting to Google registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/google-container-registry/)
 - [Deploying to GKE]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/#adding-gke-cluster)
 - [Using Google Storage for Test reports]({{site.baseurl}}/docs/testing/test-reports/#connecting-a-google-bucket)
+- [Using Google Storage for Helm charts]({{site.baseurl}}/docs/new-helm/add-helm-repository/#private-repository---gcs)
 - [Using Cloud Build]({{site.baseurl}}/docs/integrations/gcloud-builder/)
 - [Installing the runner via the marketplace]({{site.baseurl}}/docs/integrations/google-marketplace/)
 
@@ -59,10 +60,26 @@ file="/images/integrations/google-cloud/google-cloud-storage.png"
 url="/images/integrations/google-cloud/google-cloud-storage.png"
 alt="Google cloud storage"
 caption="Google cloud storage"
-max-width="60%"
+max-width="80%"
 %}
 
 See the full documentation for [test reports]({{site.baseurl}}/docs/testing/test-reports/).
+
+## Using Google Storage for storing Helm charts
+
+You can connect Google storage as a Helm repository in the [integrations screen]({{site.baseurl}}/docs/new-helm/add-helm-repository/).
+
+{% include
+image.html
+lightbox="true"
+file="/images/integrations/google-cloud/google-storage-helm-repo.png"
+url="/images/integrations/google-cloud/google-storage-helm-repo.png"
+alt="Using Google Cloud for Helm charts"
+caption="Using Google Cloud for Helm charts"
+max-width="60%"
+%}
+
+Once you connect your Helm repository you can use it any [Codefresh pipeline with the Helm step]({{site.baseurl}}/docs/new-helm/using-helm-in-codefresh-pipeline/). 
 
 ## Using Google Cloud build
 

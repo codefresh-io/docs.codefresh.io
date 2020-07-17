@@ -14,6 +14,7 @@ Codefresh has native support for Azure in the following areas:
 - [Connecting to Azure registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/azure-docker-registry/)
 - [Deploying to AKS]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/#adding-aks-cluster)
 - [Using Azure Storage for Test reports]({{site.baseurl}}/docs/testing/test-reports/#connecting-azure-storage)
+- [Using Azure Storage for Helm charts]({{site.baseurl}}/docs/new-helm/add-helm-repository/#private-repository---azure)
 - [Azure SSO]({{site.baseurl}}/docs/enterprise/single-sign-on/sso-azure/)
 
 ## Using Azure Git repositories
@@ -23,8 +24,8 @@ Codefresh can easily checkout code from Azure Git repositories:
 {% include 
 image.html 
 lightbox="true" 
-file="/images/examples/azure/azure-git-integration.png" 
-url="/images/examples/azure/azure-git-integration.png"
+file="/images/integrations/azure/azure-git-integration.png" 
+url="/images/integrations/azure/azure-git-integration.png"
 alt="Azure Git integration" 
 caption="Azure Git integration"
 max-width="70%"
@@ -55,8 +56,8 @@ Codefresh has native support for connecting an Azure cluster in the [cluster con
 {% 
 	include image.html 
 	lightbox="true" 
-file="/images/examples/azure/aks-integration.png" 
-url="/images/examples/azure/aks-integration.png" 
+file="/images/integrations/azure/aks-integration.png" 
+url="/images/integrations/azure/aks-integration.png" 
 alt="Connecting an Azure cluster" 
 caption="Connecting an Azure cluster" 
 max-width="40%" 
@@ -71,14 +72,31 @@ Codefres has native support for test reports. You can store the reports on Azure
 {% include
 image.html
 lightbox="true"
-file="/images/examples/azure/azure-storage.png"
-url="/images/examples/azure/azure-storage.png"
+file="/images/integrations/azure/azure-storage.png"
+url="/images/integrations/azure/azure-storage.png"
 alt="Azure cloud storage"
 caption="Azure cloud storage"
 max-width="60%"
 %}
 
 See the full documentation for [test reports]({{site.baseurl}}/docs/testing/test-reports/).
+
+## Using Azure storage for storing Helm charts
+
+You can connect Azure Storage as a Helm repository in the [integrations screen]({{site.baseurl}}/docs/new-helm/add-helm-repository/).
+
+{% include
+image.html
+lightbox="true"
+file="/images/integrations/azure/azure-helm-repo.png"
+url="/images/integrations/azure/azure-helm-repo.png"
+alt="Using Azure for Helm charts"
+caption="Using Azure for Helm charts"
+max-width="80%"
+%}
+
+Once you connect your Helm repository you can use it any [Codefresh pipeline with the Helm step]({{site.baseurl}}/docs/new-helm/using-helm-in-codefresh-pipeline/). 
+
 ## Azure Single Sign-on
 
 You can use Azure Active Directory as an [SSO mechanism]({{site.baseurl}}/docs/enterprise/single-sign-on/) in Codefresh.
@@ -86,8 +104,8 @@ You can use Azure Active Directory as an [SSO mechanism]({{site.baseurl}}/docs/e
 {% include 
 image.html 
 lightbox="true" 
-file="/images/examples/azure/azure-sso-integration.png" 
-url="/images/examples/azure/azure-sso-integration.png"
+file="/images/integrations/azure/azure-sso-integration.png" 
+url="/images/integrations/azure/azure-sso-integration.png"
 alt="Azure SSO integration" 
 caption="Azure SSO integration"
 max-width="70%"
