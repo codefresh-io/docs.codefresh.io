@@ -169,6 +169,8 @@
       url: "/deployment-environments"
     - title: "Condition Expression Syntax"
       url: "/condition-expression-syntax"
+    - title: "Docker image Metadata"
+      url: "/docker-image-metadata"      
     - title: "Annotations"
       url: "/annotations"
 

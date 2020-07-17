@@ -117,8 +117,7 @@
   - title: Codefresh Registry Deprecation
     localurl: /docs/docker-registries/cfcr-deprecation/
 
-  - title: Custom image annotations
-    localurl: /docs/docker-registries/metadata-annotations/
+
   - title: Docker registry integration
     localurl: /docs/docker-registries/external-docker-registries/
   - title: DockerHub

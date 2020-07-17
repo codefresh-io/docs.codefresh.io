@@ -1,9 +1,10 @@
 ---
-title: "Image Metadata Annotations"
+title: "Docker image Metadata"
 description: "How to use custom metadata in your Docker images"
-group: docker-registries
+group: codefresh-yaml
 redirect_from:
   - /docs/metadata-annotations/
+  - /docs/docker-registries/metadata-annotations/
 toc: true
 ---
 Images built by Codefresh can be annotated with customized metadata.
@@ -12,14 +13,16 @@ This article explains how to create advanced view of your images and enrich them
 {% 
   include image.html 
   lightbox="true" 
-  file="/images/artifacts/metadata/metadata.png" 
-  url="/images/artifacts/metadata/metadata.png" 
+  file="/images/codefresh-yaml/docker-image-metadata/metadata.png" 
+  url="/images/codefresh-yaml/docker-image-metadata/metadata.png" 
   alt="Codefresh Docker registry metadata" 
   max-width="65%" 
 %}
 
+>We have since expanded this feature and now you are able to add custom annotations to [pipelines and builds as well]({{site.baseurl}}/docs/codefresh-yaml/annotations/).
 
 ## Metadata types
+
 Images built by Codefresh can be annotated with an array of key-value metadata.
 Metadata values may be of the following types:
 
@@ -143,8 +146,8 @@ You can view an image's metadata annotation by:
 {% 
   include image.html 
   lightbox="true" 
-  file="/images/artifacts/metadata/annotations.png" 
-  url="/images/artifacts/metadata/annotations.png" 
+  file="/images/codefresh-yaml/docker-image-metadata/annotations.png" 
+  url="/images/codefresh-yaml/docker-image-metadata/annotations.png" 
   alt="Image annotations" 
   max-width="65%" 
 %}
