@@ -24,5 +24,6 @@ To configure Quay.io first select **Other Registries** from the new registry dro
 
 ## What to read next
 
+* [Working with Docker Registries]({{site.baseurl}}/docs/ci-cd-guides/working-with-docker-registries/)
 * [Push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/)
 * [Building and pushing an image]({{site.baseurl}}/docs/yaml-examples/examples/build-and-push-an-image/)
