@@ -6,10 +6,12 @@
     localurl: /docs/getting-started/create-a-codefresh-account/
   - title: Your first CI/CD pipeline
     localurl: /docs/getting-started/create-a-basic-pipeline/
+  - title: Kubernetes Quick start guide
+    localurl: /docs/getting-started/deployment-to-kubernetes-quick-start-guide/
+  - title: Helm Quick start guide
+    localurl: /docs/getting-started/helm-quick-start-guide/    
   - title: Frequently Asked Questions
-    localurl: /docs/getting-started/faq/
-  - title: Invite Collaborators
-    localurl: /docs/accounts/invite-your-team-member/
+    localurl: /docs/getting-started/faq/    
 
 - title: Pipelines
   icon: images/home-icons/pipeline.svg
@@ -134,8 +136,6 @@
   icon: images/home-icons/k8s.svg
   url: ''
   links:
-  - title: Kubernetes Quick start guide
-    localurl: /docs/getting-started/deployment-to-kubernetes-quick-start-guide/
   - title: Kubernetes deployment options
     localurl: /docs/deploy-to-kubernetes/deployment-options-to-kubernetes/
   - title: Connecting to your cluster
@@ -155,8 +155,6 @@
   icon: images/home-icons/helm.svg
   url: ''
   links:
-  - title: Helm Quick start guide
-    localurl: /docs/getting-started/helm-quick-start-guide/
   - title: Helm best practices
     localurl: /docs/new-helm/helm-best-practices/
   - title: Using Helm in a Codefresh pipeline

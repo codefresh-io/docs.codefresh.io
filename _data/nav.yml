@@ -34,6 +34,8 @@
           url: "/cron-triggers"
     - title: "Monitoring Pipelines"
     - title: "Shared Configuration"
+    - title: Secrets Storage
+      url: "/secrets-store"    
     - title: "Caching"
       url: "/pipeline-caching"
     - title: "Public logs and status badges"
@@ -42,8 +44,7 @@
       url: "/running-pipelines-locally"
     - title: Debugging pipelines
       url: "/debugging-pipelines"
-    - title: Secrets Storage
-      url: "/secrets-store"
+
 
 - title: Learn by example
   url: "/learn-by-example"
@@ -418,6 +419,8 @@
       url: "/codefresh-runner"
     - title: Codefresh On-Premises
       url: "/codefresh-on-prem"
+    - title: Add Users
+      url: "/invite-your-team-member"
     - title: Enterprise Account Management
       url: "/ent-account-mng"
     - title: Single Sign-On
@@ -453,12 +456,6 @@
       url: "/osx-ios-builds"
     - title: ARM architecture support
       url: "/arm-support"
-
-- title: Accounts
-  url: "/accounts"
-  pages:
-    - title: Invite your team members
-      url: "/invite-your-team-member"
 
 - title: Troubleshooting
   url: "/troubleshooting"

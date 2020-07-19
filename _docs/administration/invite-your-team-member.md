@@ -1,15 +1,16 @@
 ---
 title: "Invite your team members"
 description: "Add other Codefresh users to your account"
-group: accounts
+group: administration
 redirect_from:
   - /docs/accounts/
+  - /docs/accounts/invite-your-team-member/
 toc: true
 ---
 
-You can easily add additional people to your account to work with your repositories or pipelines. You also define the level of access they have in your account resources.
+You can easily add additional people to a Codefresh account to work with your repositories or pipelines. You also define the level of access they have in the  account resources.
 
-## Managing users in your account
+## Managing users in a Codefresh account
 
 On the left sidebar of the Codefresh UI choose *Account Settings* and then click on the *People* menu item under *User Management*
 
