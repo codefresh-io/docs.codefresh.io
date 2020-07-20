@@ -212,7 +212,7 @@ The following table shows **MINIMUM** resources for each component:
 | Component         | Minimum CPU| Minimum Memory | Space                  | Type | Always on
 | -------------- | --------------|------------- |-------------------------|-------|-------|
 | `runner`        | 100m          | 100Mi        | Doesn't need PV         | Pod   | Yes   |
-| `engine`         | 100m          | 100Mi        | Doesn't need PV         | Pod   | No   |
+| `engine`         | 100m          | 500Mi        | Doesn't need PV         | Pod   | No   |
 | `dind`         | 390m          | 255Mi        | 30GB         | Pod   | No   |
 | `dind-volume-provisioner`         | 300m          | 400Mi        | Doesn't need PV         | Pod   | Yes   |
 | `dind-lv-monitor`         | 300m          | 400Mi        | Doesn't need PV         | DaemonSet   | Yes   |
