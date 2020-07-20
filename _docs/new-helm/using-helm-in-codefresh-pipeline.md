@@ -156,7 +156,7 @@ All three modes of Helm usage are demonstrated in the following sections.
 
 You can also look at the [GitHub repository](https://github.com/codefresh-contrib/helm-sample-app) of [our Helm example]({{site.baseurl}}/docs/yaml-examples/examples/helm/) for full pipelines:
 
-* Pipeline YAML for deploying a chart(https://github.com/codefresh-contrib/helm-sample-app/blob/master/codefresh-do-not-store.yml)
+* Pipeline YAML for [deploying a chart](https://github.com/codefresh-contrib/helm-sample-app/blob/master/codefresh-do-not-store.yml)
 * Pipeline YAML for [both storing and deploying a chart](https://github.com/codefresh-contrib/helm-sample-app/blob/master/codefresh.yml)
 
 ### Example: Installing a Chart
