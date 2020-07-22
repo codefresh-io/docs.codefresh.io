@@ -145,7 +145,7 @@ For the required fields use:
 
 * **Installation id** - found in step 5
 * **App id** - found in step 3
-* **Private key** - paste the contents of the file your created in step 3
+* **Private key** - the contents of the file your created in step 3 (but convert it to base64 first)
 
 Click *Test connection* to verify your integration and apply your changes with the *Save* button.
 
