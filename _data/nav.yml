@@ -365,6 +365,8 @@
   pages:
     - title: Git providers
       url: "/git-providers"
+    - title: Kubernetes
+      url: "/kubernetes"
     - title: Amazon Services
       url: "/amazon-web-services" 
     - title: Microsoft Azure

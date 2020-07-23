@@ -197,6 +197,8 @@
   links:
   - title: Git Providers
     localurl: /docs/integrations/git-providers/
+  - title: Kubernetes
+    localurl: /docs/integrations/kubernetes/
   - title: Amazon Web Services
     localurl: /docs/integrations/amazon-web-services/    
   - title: Microsoft Azure

@@ -128,3 +128,9 @@ steps:
 {% endhighlight %}
 
 You can now run the whole pipeline that builds your application from source to a docker image, pushes it to a docker registry and deploys it to your Kubernetes cluster.
+
+## What to read next
+
+- [Add your cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/)
+- [Manage your Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/)
+- [The environment dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/environment-dashboard/)
