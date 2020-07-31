@@ -9,19 +9,19 @@ toc: true
 
 ## Introduction
 
-This manual will guide you through the installation of Codefresh platform on your On-prem environment.  This manual is intended to cover all aspects of installation, upgrade, and maintenance.  Please read this manual carefully before installing Codefresh.
+This manual will guide you through the installation of the Codefresh platform on your On-prem environment. This manual is intended to cover all aspects of installation, upgrading, and maintenance.  Please read this manual carefully before installing Codefresh.
 
-[kcfi](https://github.com/codefresh-io/kcfi) (the Kubernetes Codefresh Installer) is a one-stop-shop, while Codefresh offers multiple tools to install components, kcfi will aggregate all of them into a single tool.
+[kcfi](https://github.com/codefresh-io/kcfi) (the Kubernetes Codefresh Installer) is a one-stop-shop for this purpose. Even though Codefresh offers multiple tools to install components, `kcfi` aggregates all of them into a single tool.
 
 ## Survey -- What Codefresh Needs to Know
 
 The following information needs to be provided to Codefresh before the installation to make sure your on-prem environment is ready for deployment:
 
-Please fill out the survey [here](https://docs.google.com/forms/d/e/1FAIpQLSf18sfG4bEQuwMT7p11F6q70JzWgHEgoAfSFlQuTnno5Rw3GQ/viewform).
+Please fill out [this survey](https://docs.google.com/forms/d/e/1FAIpQLSf18sfG4bEQuwMT7p11F6q70JzWgHEgoAfSFlQuTnno5Rw3GQ/viewform).
 
 ## Supported Operating Systems and Git Providers
 
-The `kcfi` tool supports the operation systems:
+The `kcfi` tool supports the following operating systems:
 
 - Windows 10/7
 - Linux
@@ -45,12 +45,13 @@ Codefresh supports the following Git providers:
 - Storage size allocated for Codefresh persisted services - described in the storage section
 
 Codefresh will need outbound connection to the Internet for the following services:
+
 - GCR - pulling platform images
 - Dockerhub - pulling pipeline images
 
 ## Security Constraints
 
-Codefresh has some security assumptions for the Kubernetes cluster it is installed on.
+Codefresh has some security assumptions about the Kubernetes cluster it is installed on.
 
 ### RBAC for Codefresh
 
@@ -115,6 +116,7 @@ subjects:
 ```
 
 To apply these changes, run:
+
 ```
 kubectl apply -f [file]
 ```
@@ -189,14 +191,14 @@ kubectl config use-context my-cluster-name   # set the default context to my-clu
 kubectl config current-context               # verify the current-context`
 ```
 
-### Step 2 -- Initialize the Codefresh Platform
+### Step 2 -- Prepare the Codefresh Platform installation
 
 Run the following:
 
 ```
 kcfi init codefresh [-d /path/to/stage-dir]
 ```
-Running the init command will create a directory containing a `config.yaml` file, which will use us to configure our installation, and other files and directories required for the installation.
+Running the init command will create a directory containing a `config.yaml` file, which will be uses to configure our installation, along with other files and directories required for the installation.
 
 Edit the configuration in `config.yaml` and deploy to Kubernetes. The `config.yaml` is very descriptive and it contains an explanation for every parameter.
 
@@ -240,12 +242,14 @@ kcfi images push [-c|--config /path/to/config.yaml] [options] repo/image:tag [re
 ```
 
 You can find a full list of options by running `kcfi images --help`.
-In case you are running a Kubernetes cluster that has internet access, note that Codefresh platform images are not public and can be obtained by using `sa.json` file provided by support.
+
+Even if you are running a Kubernetes cluster that has outgoing access to the public Internet, note that Codefresh platform images are not public and can be obtained by using `sa.json` file provided by Codefresh support personnel.
+
 Use the flag `--codefresh-registry-secret` to pass the path to the file `sa.json`.
 
 ### Step 3 -- TLS Certificates (Optional)
 
-It is highly recommended to use TLS certificates for secured installation. In the `config.yaml` file set `tls.selfSigned=false` and place both `ssl.crt` and `private.key` into certs/ directory.
+It is highly recommended to use TLS certificates for a secured installation. In the `config.yaml` file set `tls.selfSigned=false` and place both `ssl.crt` and `private.key` into certs/ directory.
 
 >Note: Any valid TLS certificate will work, i.e. certificates from lets-encrypt or a Corporate Signed certificate.
 
@@ -258,9 +262,9 @@ kcfi deploy [ -c config.yaml ] [ --kube-context <kube-context-name> ] [ --atomic
 ```
 ### Step 5 -- Install the Codefresh Kubernetes Agent
 
-The cf-k8s-agent is responsible for accessing Kubernetes resources (pods, deployments, services, etc.) behind the firewall in order to display them in the Codefresh UI.  It can be installed in a separate cluster from the installer, or in a separate namespace.
+The cf-k8s-agent is responsible for accessing Kubernetes resources (pods, deployments, services, etc.) behind the firewall in order to display them in the Codefresh UI.  It can be installed in a separate cluster from the installer, or in a separate namespace in the same cluster.
 
-The agent streams for updates on cluster resources and then sends information updates to the `k8s-monitor` service.
+The agent streams updates from cluster resources and then sends information updates to the `k8s-monitor` service.
 
 Execute the following:
 
@@ -282,7 +286,7 @@ After you install Codefresh, these are some day-2 operations that you should fol
 
 Codefresh supports out-of-the-box Git logins using your local username and password, or logins using your git provider (per the list and instructions of providers below). You can also configure login to supported SSO providers post-install as described [in the Codefresh documentation]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/).
 
-If you’d like to set up a login to Codefresh using your git provider, first login using the default credentials (username: AdminCF, password: AdminCF) and add your git provider OAuth integration details in our admin console: 
+If you’d like to set up a login to Codefresh using your Git provider, first login using the default credentials (username: `AdminCF`, password: `AdminCF` and add your Git provider OAuth integration details in our admin console: 
 
 **Admin Management** > **IDPs** tab
 
@@ -295,6 +299,7 @@ Navigate to your GitHub organization settings: https://github.com/organizations/
 On the left-hand side, under **Developer settings**, select **OAuth Apps**, and click **Register an Application**.
 
 Complete the OAuth application registration as follows:
+
 - **Application name:** codefresh-on-prem (or a significant name)
 - **Homepage URL:** https://your-codefresh-onprem-domain
 - **Authorization callback URL:** https://your-codefresh-onprem-domain/api/auth/github/callback
@@ -340,7 +345,7 @@ global:
     NO_PROXY: "127.0.0.1,localhost,kubernetes.default.svc,.codefresh.svc,100.64.0.1,169.254.169.254,cf-builder,cf-cfapi,cf-cfui,cf-chartmuseum,cf-charts-manager,cf-cluster-providers,cf-consul,cf-consul-ui,cf-context-manager,cf-cronus,cf-helm-repo-manager,cf-hermes,cf-ingress-controller,cf-ingress-http-backend,cf-kube-integration,cf-mongodb,cf-nats,cf-nomios,cf-pipeline-manager,cf-postgresql,cf-rabbitmq,cf-redis,cf-registry,cf-runner,cf-runtime-environment-manager,cf-store"
     no_proxy: "127.0.0.1,localhost,kubernetes.default.svc,.codefresh.svc,100.64.0.1,169.254.169.254,cf-builder,cf-cfapi,cf-cfui,cf-chartmuseum,cf-charts-manager,cf-cluster-providers,cf-consul,cf-consul-ui,cf-context-manager,cf-cronus,cf-helm-repo-manager,cf-hermes,cf-ingress-controller,cf-ingress-http-backend,cf-kube-integration,cf-mongodb,cf-nats,cf-nomios,cf-pipeline-manager,cf-postgresql,cf-rabbitmq,cf-redis,cf-registry,cf-runner,cf-runtime-environment-manager,cf-store"
 ```
-In addition to this, you should also add your k8s api IP address (`kubectl get svc kubernetes`) to both: `NO_PROXY` and `no_proxy`.
+In addition to this, you should also add your Kubernetes API IP address (`kubectl get svc kubernetes`) to both: `NO_PROXY` and `no_proxy`.
 
 ### Storage
 
@@ -376,14 +381,16 @@ These are the volumes required for Codefresh on-premise:
 | cf-runner-0    | /var/lib/docker for composition runner | 100GB | No***                   |
 
 {% raw %}
-*Possibility to use external service 
 
-**Running on netfs (nfs, cifs) is not recommended by product admin guide
+ (*) Possibility to use external service 
 
-***Docker daemon can be run on block device only
+ (**) Running on netfs (nfs, cifs) is not recommended by product admin guide
+
+ (***) Docker daemon can be run on block device only
+
 {% endraw %}
 
-StatefulSets (cf-builder and cf-runner) process their data on separate physical volumes (PVs) and can be claimed using Persistent Volume Claims (PVCs) with default initial sizes of 100Gi. Also, those StatefulSets have the ability to connect to existing pre-defined PVCs. 
+StatefulSets (`cf-builder` and `cf-runner`) process their data on separate physical volumes (PVs) and can be claimed using Persistent Volume Claims (PVCs) with default initial sizes of 100Gi. Also, those StatefulSets have the ability to connect to existing pre-defined PVCs. 
 
 The default initial volume size (100 Gi) can be overridden in the custom `config.yaml` file. Values descriptions are in the `config.yaml` file.
 The registry’s initial volume size is 100Gi. It also can be overridden in a custom `config.yaml` file. There is a possibility to use a customer-defined registry configuration file (`config.yaml`) that allows using different registry storage back-ends (S3, Azure Blob, GCS, etc.) and other parameters. More details can be found in the [Docker documentation](https://docs.docker.com/registry/configuration/).
@@ -555,6 +562,7 @@ Both http and https target port should be set to **80**.
 ## Using existing external services for data storage/messaging
 
 Normally the Codefresh installer, is taking care of all needed dependencies internally by deploying the respective services (mongo, redis etc) on its own.
+
 You might want however to use your own existing options if you already have those services up and running externally.
 
 ### Configuring an external Postgres database
@@ -658,7 +666,7 @@ Codefresh requires two Redis databases:
 - the main - `cf-redis`, to store sessions, cache, etc;
 - `cf-store`, to store triggers;
   
-At the time of writing nly the first one can be replaced by external Redis service,
+At the time of writing only the first one can be replaced by external Redis service,
 the `cf-store` DB is used as a local storage for triggers and should run along with the installation.
 
 
@@ -715,8 +723,6 @@ consul:
 ```
 
 
-
-
 ## Common Problems, Solutions, and Dependencies
 
 ### Dependencies
@@ -725,17 +731,17 @@ consul:
 
 All services using the MongoDB are dependent on the `mongo` pod being up and running.  If the `mongo` pod is down, the following dependencies will not work:
 
-- runtime-environment-manager
-- pipeline-manager
-- cf-api
-- cf-broadcaster
-- context-manager
-- nomios
-- cronius
-- cluster-promoters
-- k8s-monitor
-- charts-manager
-- tasker-kubernetes
+- `runtime-environment-manager`
+- `pipeline-manager`
+- `cf-api`
+- `cf-broadcaster`
+- `context-manager`
+- `nomios`
+- `cronius`
+- `cluster-promoters`
+- `k8s-monitor`
+- `charts-manager`
+- `tasker-kubernetes`
 
 #### Logs
 
