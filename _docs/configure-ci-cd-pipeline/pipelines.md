@@ -146,13 +146,16 @@ Once you create your pipeline you can also click on the top tab called *Settings
 
 - **Pipeline Concurrency**: the maximum amount of concurrent builds (1-15 or unlimited) -- set this when your pipeline has only one trigger
 - **Trigger Concurrency**: the maximum amount of concurrent builds per trigger (1-15 or unlimited) -- set this when your pipeline has multiple triggers
+- **Branch Concurrency**: the maximum amount of concurrent builds per branch (1-15 or unlimited) -- set this when your pipeline can build different branches
 - **Build Termination**: various toggles for when a build from the pipeline should terminate
   - Once a build is created terminate previous builds from the same branch
   - Once a build is created terminate previous builds only from a specific branch (name matches a regular expression)
   - Once a build is created, terminate all other running builds
   - Once a build is terminated, terminate all child builds initiated from it
 
-The **Pipeline and Trigger Concurrency** limits are very important as they allow you to define how many instances of a pipeline can run in parallel when multiple commits or multiple pull requests take place. Notice these limits are *unrelated* with parallelism [within a single pipeline]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/). 
+The **Pipeline and Trigger Concurrency** limits are very important as they allow you to define how many instances of a pipeline can run in parallel when multiple commits or multiple pull requests take place. 
+
+> Notice that these limits are *unrelated* to [parallelism within a single pipeline]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/). 
 
 Some common scenarios are:
 

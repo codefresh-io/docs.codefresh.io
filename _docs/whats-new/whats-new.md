@@ -8,6 +8,10 @@ toc: true
 ---
 Recent Codefresh updates:
 
+### August 2020
+
+- Concurrency limits per branch - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#policies)
+
 ### July 2020
 
 - Building apps guide - [documentation]({{site.baseurl}}/docs/ci-cd-guides/packaging-compilation/)
