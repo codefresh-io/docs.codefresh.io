@@ -139,8 +139,9 @@ Once you create your pipeline you can also click on the top tab called *Settings
 > Note that the Pipeline Name and ID are interchangeable when working with the Codefresh CLI
 - **Pipeline Description**: a freetext pipeline description
 - **Pipeline Tags**: One or more tags used for [access control]({{site.baseurl}}/docs/enterprise/access-control/)
-- **Public Build Logs**: If enabled, the pipeline's builds will be viewable by users without a Codefresh account
-- **Badges**: simple images that show you the last build status
+- **Public Build Logs**: If enabled, the builds of this pipeline will be [viewable by users without a Codefresh account]({{site.baseurl}}/docs/configure-ci-cd-pipeline/build-status/#public-build-logs
+)
+- **Badges**: simple images that show you the last [build status]({{site.baseurl}}/docs/configure-ci-cd-pipeline/build-status/)
 
 ### Policies
 

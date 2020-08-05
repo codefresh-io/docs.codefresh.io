@@ -35,11 +35,11 @@ In the pipeline view of a project, select the *Settings* tab and then click *Gen
 {% include 
 image.html 
 lightbox="true" 
-file="/images/pipeline/badges/build-badge-setup.png" 
-url="/images/pipeline/badges/build-badge-setup.png"
+file="/images/pipeline/badges/get-build-badge.png" 
+url="/images/pipeline/badges/get-build-badge.png"
 alt="Build badge setup" 
 caption="Build badge setup"
-max-width="50%"
+max-width="80%"
 %}
 
 Click on it and you will get a new dialog where you can select
@@ -54,7 +54,8 @@ Click on it and you will get a new dialog where you can select
 	url="/images/a0c4aed-codefresh_badges_2.png" 
 	alt="Codefresh badges syntax" 
 	caption="Codefresh badges syntax"
-	max-width="50%" %}
+	max-width="70%" 
+	%}
 
  The following embedding options are available:
 
@@ -108,11 +109,11 @@ To enable the public logs, toggle the respective switch in the pipeline settings
 {% include 
 image.html 
 lightbox="true" 
-file="/images/pipeline/badges/enable-public-logs.png" 
-url="/images/pipeline/badges/enable-public-logs.png"
+file="/images/pipeline/badges/toggle-public-logs.png" 
+url="/images/pipeline/badges/toggle-public-logs.png"
 alt="Enabling public logs" 
 caption="Enabling public logs"
-max-width="60%"
+max-width="80%"
 %}
 
 Then click the *Save* button to apply changes for your pipeline. Once that is done you will also get a second badge (public) as well as the public URL to your project.
@@ -120,11 +121,11 @@ Then click the *Save* button to apply changes for your pipeline. Once that is do
 {% include 
 image.html 
 lightbox="true" 
-file="/images/pipeline/badges/view-public-url.png" 
-url="/images/pipeline/badges/view-public-url.png"
+file="/images/pipeline/badges/get-public-url.png" 
+url="/images/pipeline/badges/get-public-url.png"
 alt="Getting the public URL log view" 
 caption="Getting the public URL log view"
-max-width="60%"
+max-width="70%"
 %}
 
 Now you can use this badge and/or public URL anywhere and all users can view your logs without being logged into Codefresh at all (or having access to your pipeline).
@@ -136,9 +137,15 @@ file="/images/pipeline/badges/view-public-logs.png"
 url="/images/pipeline/badges/view-public-logs.png"
 alt="Public logs" 
 caption="Public logs"
-max-width="60%"
+max-width="90%"
 %}
 
 Your visitors can also click on each individual pipeline step and see the logs for that step only.
 
 If you are using Codefresh to manage a public project, you should also use the capability to [trigger builds from external forks]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/#support-for-building-pull-requests-from-forks).
+
+## What to read next
+
+* [Introduction to Codefresh pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines)
+* [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
+* [Monitoring pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/monitoring-pipelines/)
