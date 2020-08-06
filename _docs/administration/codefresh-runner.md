@@ -286,7 +286,7 @@ kubectl create namespace codefresh-agent
 # 2. Install the agent on the namespace ( give your agent a unique name as $NAME):
 # Note down the token and use it in the second command.
 codefresh create agent $NAME
-codefresh install agent --token $TOKEN --agent-kube-namespace codefresh-agent
+codefresh install agent --token $TOKEN --kube-namespace codefresh-agent
 codefresh get agents
 
 # 3. Create namespace for the first runtime:
