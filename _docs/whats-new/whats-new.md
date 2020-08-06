@@ -10,7 +10,9 @@ Recent Codefresh updates:
 
 ### August 2020
 
+- Pipeline templates - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#using-pipeline-templates)
 - Concurrency limits per branch - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#policies)
+
 
 ### July 2020
 

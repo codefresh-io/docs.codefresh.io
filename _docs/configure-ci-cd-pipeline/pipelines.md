@@ -141,6 +141,7 @@ Once you create your pipeline you can also click on the top tab called *Settings
 - **Pipeline Tags**: One or more tags used for [access control]({{site.baseurl}}/docs/enterprise/access-control/)
 - **Public Build Logs**: If enabled, the builds of this pipeline will be [viewable by users without a Codefresh account]({{site.baseurl}}/docs/configure-ci-cd-pipeline/build-status/#public-build-logs
 )
+- **Template**: Convert this pipeline to a template (see the next section for details on templates)
 - **Badges**: simple images that show you the last [build status]({{site.baseurl}}/docs/configure-ci-cd-pipeline/build-status/)
 
 ### Policies
@@ -204,6 +205,63 @@ You can define multiple external resources in a single pipeline.
   - Small (recommended for 1-2 concurrent steps))
   - Medium (recommended 3-4 steps)
   - Large (recommended 5-6 steps)
+
+## Using Pipeline templates
+
+Codefresh also supports the creation of pipeline "templates" which are blueprints for creating new pipelines. To enable the creation of pipelines from templates first visit the global pipeline configuration at [https://g.codefresh.io/account-admin/account-conf/pipeline-settings](https://g.codefresh.io/account-admin/account-conf/pipeline-settings) and toggle the *Enable Pipeline Templates* button.
+
+The easiest way to create a new template is by clicking the "3 dots menu" on the pipeline name:
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/create/create-template-menu.png" 
+url="/images/pipeline/create/create-template-menu.png"
+alt="The template menu" 
+caption="The template menu"
+max-width="30%"
+%}
+
+From the dialog you can select if you want to copy this pipeline as a brand new template, or simply convert the pipeline itself to a template:
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/create/template-dialog.png" 
+url="/images/pipeline/create/template-dialog.png"
+alt="The template dialog" 
+caption="The template dialog"
+max-width="80%"
+%}
+
+Once the template is created, you can edit it like any other pipeline. Pipeline templates are marked with the `template` tag and also have a special mark in the pipeline menu:
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/create/template-tag.png" 
+url="/images/pipeline/create/template-tag.png"
+alt="template identification" 
+caption="template identification"
+max-width="90%"
+%}
+
+Now when you create a new pipeline, you can also select which pipeline template will be used as an initial pipeline definition:
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/create/use-template.png" 
+url="/images/pipeline/create/use-template.png"
+alt="Using a template" 
+caption="Using a template"
+max-width="70%"
+%}
+
+>Notice that templates only take effect during pipeline creation. Changing a template afterwards, has no effect on pipelines that are already created from it.
+
+You can also quickly convert a pipeline to a template, by visiting the pipeline settings and clicking the *template* button under the *General* tab.
+
   
 ## Pipelines that do not belong to any project
 
