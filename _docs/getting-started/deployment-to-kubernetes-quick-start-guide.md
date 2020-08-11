@@ -5,6 +5,7 @@ group: getting-started
 redirect_from:
   - /docs/getting-started-deployment-to-kubernetes-quick-start-guide/
   - /docs/kubernetes
+  - /docs/kubernetes/  
 toc: true
 ---
 
