@@ -4,6 +4,7 @@ description: "Using the Codefresh GUI to deploy to a Kubernetes cluster"
 group: getting-started
 redirect_from:
   - /docs/getting-started-deployment-to-kubernetes-quick-start-guide/
+  - /docs/kubernetes
 toc: true
 ---
 
