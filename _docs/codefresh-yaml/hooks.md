@@ -336,6 +336,71 @@ steps:
 
 ## Using multiple steps for hooks
 
+In all the previous examples, each hook was a single step running on a single Docker image. You can also defined multiple steps for each hook. This is possible by inserting an extra `steps` keyword inside the hook:
+
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: "1.0"
+hooks: 
+ on_finish:
+   steps:
+     mycleanup:
+       image: alpine:3.9
+       commands:
+         - echo "echo cleanup step"
+     mynotification:
+       image: cloudposse/slack-notifier
+       commands:
+         - echo "Notify slack"
+steps:
+  step1:
+    title: "Step 1"
+    type: "freestyle"
+    image: node:10-buster
+    commands:
+      - echo "Running Integration tests on test environment"
+{% endraw %}
+{% endhighlight %}
+
+By default all steps in a single hook segment are executed one after the other. But you can also run them in [parallel]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/#inserting-parallel-steps-in-a-sequential-pipeline):
+
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: "1.0"
+steps:
+  step1:
+    title: "Compile application"
+    type: "freestyle"
+    image: node:10-buster
+    commands:
+      - echo "Building application"
+  step2:
+    title: "Unit testing"
+    type: "freestyle" 
+    image: node:10-buster
+    commands:
+      - echo "Running Integration tests"
+      - exit 1 
+    hooks:
+      on_fail:
+        mode: parallel
+        steps:
+          upload-my-artifact:
+            image: maven:3.5.2-jdk-8-alpine
+            commands:
+            - echo "uploading artifact" 
+          my-report:
+            image: alpine:3.9
+            commands:
+            - echo "creating test report" 
+{% endraw %}
+{% endhighlight %}
+
+You can use multiple steps in a hook in both the pipeline and the step level. 
+
+
 ## Using annotations and labels in hooks
 
 ## Syntactic sugar syntax
