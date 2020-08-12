@@ -84,7 +84,6 @@ hooks:
      image: alpine:3.9
      commands:
        - echo "Send a notification only if pipeline has failed"       
-
 steps:
   step1:
     title: "Step 1"
@@ -103,15 +102,167 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-
-
+Note that if you have multiple hooks like the example above, the `on_finish` segments will always execute after any `on_success`/`on_fail` segments (if they are applicable).
 
 
 ### Running a step at the start of the pipeline
 
+Similar to the end of the pipeline, you can also execute a step in the beginning of the pipeline with the `on_elected` keyword:
+
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: "1.0"
+hooks: 
+ on_elected:
+   exec:
+     image: alpine:3.9
+     commands:
+       - echo "Creating an adhoc test environment"
+ on_finish:
+   exec:
+     image: alpine:3.9
+     commands:
+       - echo "Destroying test environment"
+steps:
+  step1:
+    title: "Step 1"
+    type: "freestyle"
+    image: node:10-buster
+    commands:
+      - echo "Running Integration tests on test environment"
+  step2:
+    title: "Step 2"
+    type: "freestyle" 
+    image: node:10-buster
+    commands:
+      - echo "Running acceptance tests on test environment"
+
+{% endraw %}
+{% endhighlight %}
+
+All pipeline hooks will be shown in the "initializing process" logs:
+
+ {% include 
+image.html 
+lightbox="true" 
+file="/images/codefresh-yaml/hooks/before-pipeline.png" 
+url="/images/codefresh-yaml/hooks/before-pipeline.png" 
+alt="Hooks before a pipeline" 
+caption="Hooks before a pipeline" 
+max-width="80%" 
+%}
+
+It is possible to define all possible hooks (`on_elected`, `on_finish`, `on_success`, `on_fail`) in a single pipeline, if this is required by your workflow.
+
 ## Step hooks
 
+Hooks can also be defined for individual steps inside a pipeline. This capability allows you for more granular control on defining prepare/cleanup phases for specific steps. 
+
+The syntax for step hooks is the same as pipeline hooks (`on_elected`, `on_finish`, `on_success`, `on_fail`), you just need to put the respective segment under a step instead of the root of the pipeline.
+
+For example, this pipeline will always run a cleanup step after integration tests (even if the tests fail).
+
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: "1.0"
+steps:
+  step1:
+    title: "Compile application"
+    type: "freestyle"
+    image: node:10-buster
+    commands:
+      - echo "Building application"
+  step2:
+    title: "Unit testing"
+    type: "freestyle" 
+    image: node:10-buster
+    commands:
+      - echo "Running unit tests"
+    hooks:
+      on_finish:
+        exec:
+          image: alpine:3.9
+          commands:
+          - echo "Create test report"
+  step3:
+    title: "Uploading artifact"
+    type: "freestyle"
+    image: node:10-buster
+    commands:
+      - echo "Upload to artifactory"
+{% endraw %}
+{% endhighlight %}
+
+
+Logs for steps hooks are shown in the GUI window of the step itself.
+
+ {% include 
+image.html 
+lightbox="true" 
+file="/images/codefresh-yaml/hooks/step-after.png" 
+url="/images/codefresh-yaml/hooks/step-after" 
+alt="Hooks before a pipeline" 
+caption="Hooks before a pipeline" 
+max-width="80%" 
+%}
+
+As with pipeline hooks, it is possible to define multiple hook conditions for each step.
+
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: "1.0"
+steps:
+  step1:
+    title: "Compile application"
+    type: "freestyle"
+    image: node:10-buster
+    commands:
+      - echo "Building application"
+  step2:
+    title: "Security scanning"
+    type: "freestyle" 
+    image: node:10-buster
+    commands:
+      - echo "Running Security scan"
+    hooks:
+      on_elected:
+        exec:
+          image: alpine:3.9
+          commands:
+          - echo "Authenticating to security scanning service"    
+      on_finish:
+        exec:
+          image: alpine:3.9
+          commands:
+          - echo "Uploading security scan report"
+      on_fail:
+        exec:
+          image: alpine:3.9
+          commands:
+          - echo "Sending slack notification"          
+
+{% endraw %}
+{% endhighlight %}
+
+The order of events is the following.
+
+1. The `on_elected` segment executes first (authentication)
+1. The step itself executes (the security scan)1
+1. The `on_fail` segment executes (only if the step throws an error code)
+1. The `on_finish` segment always executes at the end
+
+
+
+## Controlling errors inside pipeline/step hooks
+
+## Using multiple steps for hooks
+
 ## Using annotations and labels in hooks
+
+## Syntactic sugar syntax
 
 ## What to read next
 
