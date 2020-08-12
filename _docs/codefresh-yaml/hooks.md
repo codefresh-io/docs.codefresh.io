@@ -255,14 +255,100 @@ The order of events is the following.
 1. The `on_finish` segment always executes at the end
 
 
-
 ## Controlling errors inside pipeline/step hooks
+
+By default if a step fails within a pipeline, the whole pipeline will stop and be marked as failed. This is also true for `on_elected` segments as well. If they fail then the whole pipeline will fail (regardless of the position of the segment in a pipeline or step).
+
+For example the following pipeline will fail right away, because the pipeline hook fails at the beginning.
+
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: "1.0"
+hooks: 
+ on_elected:
+   exec:
+     image: alpine:3.9
+     commands:
+       - echo "failing on purpose"
+       - exit 1 
+steps:
+  step1:
+    title: "Step 1"
+    type: "freestyle"
+    image: node:10-buster
+    commands:
+      - echo "Running Integration tests on test environment"
+{% endraw %}
+{% endhighlight %}
+
+You can change this behavior by using the familiar [fail_fast property]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/#execution-flow) inside an `on_elected` hook.
+
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: "1.0"
+hooks: 
+ on_elected:
+   exec:
+     image: alpine:3.9
+     fail_fast: false
+     commands:
+       - echo "failing on purpose"
+       - exit 1 
+steps:
+  step1:
+    title: "Step 1"
+    type: "freestyle"
+    image: node:10-buster
+    commands:
+      - echo "Running Integration tests on test environment"
+{% endraw %}
+{% endhighlight %}
+
+This pipeline will now execute successfully and `step1` will still run as normal, because we have used the `fail_fast` property. You can also use the `fail_fast` property on step hooks as well:
+
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: "1.0"
+steps:
+  step1:
+    title: "Step 1"
+    type: "freestyle"
+    image: node:10-buster
+    commands:
+      - echo "Running Integration tests on test environment"
+    hooks: 
+     on_elected:
+       exec:
+         image: alpine:3.9
+         fail_fast: false
+         commands:
+         - echo "failing on purpose"
+         - exit 1 
+{% endraw %}
+{% endhighlight %}
+
+
+>Notice that the `fail_fast` property is only available for `on_elected` hooks. The other types of hooks (`on_finish`, `on_success`, `on_fail`) do not affect the outcome of the pipeline in any way. Even if they fail, the pipeline will continue running to completion. This behavior is not configurable.
+
 
 ## Using multiple steps for hooks
 
 ## Using annotations and labels in hooks
 
 ## Syntactic sugar syntax
+
+## Limitations of pipeline/step hooks
+
+With the current implementation of hooks, the following limitations are known:
+
+* [Codefresh variables]({{site.baseurl}}/docs/codefresh-yaml/variables/) are not interpolated inside hook segments
+* The [debugger]({{site.baseurl}}/docs/configure-ci-cd-pipeline/debugging-pipelines/) cannot inspect commands inside hook segments
+* Hooks are not supported for [parallel steps]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/)
+
+
 
 ## What to read next
 
