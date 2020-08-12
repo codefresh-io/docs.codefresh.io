@@ -2,7 +2,7 @@
 title: "Using Custom Git commands"
 description: "Clone manually git repositories"
 group: yaml-examples
-sub_group: examples
+sub_group: git
 redirect_from:
   - /docs/git-clone-private-repository-using-freestyle-step/
   - /docs/yaml-examples/examples/git-clone-private-repository-using-freestyle-step/

@@ -106,8 +106,9 @@
   - title: Deployment environments
     new: true
     localurl: /docs/codefresh-yaml/deployment-environments/
-  - title: Annotations
-    localurl: /docs/codefresh-yaml/annotations/
+  - title: Hooks
+    new: true  
+    localurl: /docs/codefresh-yaml/hooks/
   - title: Examples
     localurl: /docs/yaml-examples/examples/
 
