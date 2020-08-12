@@ -341,7 +341,7 @@ For each step you define the following sections:
 For the metadata section note the following:
 
 * `isPublic` decides if this step is visible only to your and your team, or visible to all (in the marketplace)
-* The `name` of the step must be prefixed with your Codefresh account name. Steps created by the Codefresh team are on the root level of the hierarchy (without prefix). This is the same pattern that Dockerhub is using for images.
+* The `name` of the step **must** be prefixed with your Codefresh account name. Steps created by the Codefresh team are on the root level of the hierarchy (without prefix). This is the same pattern that Dockerhub is using for images.
 * `stage` shown if this step is ready for production or still incubating. This is just an indication to users. It doesn't affect the implementation of the step in any way
 * `icon`. Ideally you provide a transparent svg so that the icon is scalable. The icon for a step is used both in the marketplace as well as the pipeline view. You can also select a default background to be used. Alternatively, you can define jpg/png icons for large/medium/small sizes. We suggest the svg approach
 * The `version` property allows you to update your plugin and keep multiple variants of it in the marketplace
@@ -356,13 +356,13 @@ The final part is the step implementation. Here you can define exactly the yaml 
 Once you are done with your step, use the Codefresh CLI to upload it to the marketplace. If you want the step to be available only to you and your team make sure that the property `isPublic` is false (and then it will not be shown in the marketplace).
 
 {% highlight bash %}
-codefresh create step-type kostis-codefresh/sample -f my-custom-step.yml
+codefresh create step-type -f my-custom-step.yml
 {% endhighlight %}
 
 If you make further changes to your step you can update it:
 
 {% highlight bash %}
-codefresh replace step-types kostis-codefresh/sample -f my-custom-step.yml
+codefresh replace step-type -f my-custom-step.yml
 {% endhighlight %}
 
 If you want to remove your step from the marketplace, you can delete it completely:
@@ -381,7 +381,7 @@ To create a new version of your plugin:
 2. Run: 
 
 {% highlight bash %}
-codefresh create step-type 'account/plugin' -f custom-plugin.yaml
+codefresh create step-type -f custom-plugin.yaml
 {% endhighlight %}
 
 You will now be able to see the new versions of your plugin in the step marketplace drop-down:
@@ -408,7 +408,7 @@ To delete a specific version, use:
 codefresh delete step-type 'account/plugin:<version>'
 {% endhighlight %}
 
-Note that Codefresh step versions function like Docker tags in the sense that they are *mutable*. You can overwrite an existing plugin version with a new plugin manifest by using the `codefresh replace step-types` command.
+Note that Codefresh step versions function like Docker tags in the sense that they are *mutable*. You can overwrite an existing plugin version with a new plugin manifest by using the `codefresh replace step-type` command.
 
 If users do not define a version once they use the plugin, the latest one (according to [semantic versioning](https://semver.org/)) will be used. Alternatively they can specify the exact version they need (even different versions within the same pipeline.)
 
@@ -523,7 +523,7 @@ By default all plugins start with the Codefresh volume at `/codefresh/volume` as
 We now insert our plugin in the marketplace with the following command:
 
 {% highlight bash %}
-codefresh create step-type kostis-codefresh/node-version -f read-app-version.yml
+codefresh create step-type -f read-app-version.yml
 {% endhighlight %}
 
 The step is now ready to be used by anybody.
@@ -890,7 +890,7 @@ spec:
 We place this plugin into the marketplace with
 
 ```
-codefresh create step-type kostis-codefresh/mvn-version -f read-maven-version.yml
+codefresh create step-type -f read-maven-version.yml
 ```
 
 If you look at the plugin entry in the marketplace you will see both input (the folder of the pom.xml) and output parameters (mvn coordinates) defined:
@@ -1100,7 +1100,7 @@ In the `stepsTemplate` block we use Golang template keywoards such as `range`, `
 Creating the [marketplace entry](https://codefresh.io/steps/step/kostis-codefresh%2Fmulti-git-clone) for a step with templates is exactly the same as any other step:
 
 ```
-codefresh create step-type kostis-codefresh/multi-git-clone -f multi-clone-step.yml
+codefresh create step-type -f multi-clone-step.yml
 ```
 
 You can then use the step in [any pipeline](https://github.com/kostis-codefresh/step-examples/blob/master/multi-clone/codefresh.yml) and pass the arguments that will fill the template:
