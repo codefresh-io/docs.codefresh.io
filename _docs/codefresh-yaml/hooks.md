@@ -5,20 +5,20 @@ group: codefresh-yaml
 toc: true
 ---
 
-Pipeline hooks allow you to run specific actions at end and the beginning of the pipeline as well as before/after a step
+Pipeline hooks allow you to run specific actions at the end and the beginning of the pipeline as well as before/after a step.
 
 ## Pipeline hooks
 
 Codefresh allows you to run a specific step before each pipeline as well as after it has finished. Each hook is similar to a [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) as you need to define:
 
 1. A Docker image that will be used to run specific commands
-1. One or more commands to run within the context of that docker image.
+1. One or more commands to run within the context of that Docker image.
 
-For simple commands we suggest you use a small image such as alpine, but any Docker image can be used in hooks.
+For simple commands we suggest you use a small image such as `alpine`, but any Docker image can be used in hooks.
 
 ### Running a step at the end of the pipeline
 
-You can easily run a step at end of pipeline, that will execute even if one of the steps have failed
+You can easily run a step at the end of pipeline, that will execute even if one of the steps have failed (and thus the pipeline is stopped in middle):
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -48,7 +48,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-In the example above we define a hook for the whole pipeline that will run a step (the `exec` keyword) inside `alpine:3.9` and will simply execute an `echo` command. Because we have used the `on_finish` keyword, this step will execute even if the pipeline fails.
+In the example above we define a hook for the whole pipeline that will run a step (the `exec` keyword) inside `alpine:3.9` and will simply execute an `echo` command. Because we have used the `on_finish` keyword, this step will execute even if the whole pipeline fails.
 
 This scenario is very common if you have a cleanup step or a notification step that you always want to run at the end of the pipeline. You will see the cleanup logs in the top pipeline step.
 
@@ -62,7 +62,7 @@ caption="Running a cleanup step"
 max-width="80%" 
 %}
 
-Apart from the `on_finish` keyword you can also use `on_success` and `on_fail` if you want the step to only execute according to a specific workflow. It is also possible to use multiple hooks.
+Apart from the `on_finish` keyword you can also use `on_success` and `on_fail` if you want the step to only execute according to a specific result of the pipeline. It is also possible to use multiple hooks at the same time:
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -102,7 +102,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-Note that if you have multiple hooks like the example above, the `on_finish` segments will always execute after any `on_success`/`on_fail` segments (if they are applicable).
+Note that if you have multiple hooks like the example above, the `on_finish` segment will always execute after any `on_success`/`on_fail` segments (if they are applicable).
 
 
 ### Running a step at the start of the pipeline
@@ -153,15 +153,15 @@ caption="Hooks before a pipeline"
 max-width="80%" 
 %}
 
-It is possible to define all possible hooks (`on_elected`, `on_finish`, `on_success`, `on_fail`) in a single pipeline, if this is required by your workflow.
+It is possible to define all possible hooks (`on_elected`, `on_finish`, `on_success`, `on_fail`) in a single pipeline, if this is required by your development process.
 
 ## Step hooks
 
-Hooks can also be defined for individual steps inside a pipeline. This capability allows you for more granular control on defining prepare/cleanup phases for specific steps. 
+Hooks can also be defined for individual steps inside a pipeline. This capability allows for more granular control on defining prepare/cleanup phases for specific steps. 
 
 The syntax for step hooks is the same as pipeline hooks (`on_elected`, `on_finish`, `on_success`, `on_fail`), you just need to put the respective segment under a step instead of the root of the pipeline.
 
-For example, this pipeline will always run a cleanup step after integration tests (even if the tests fail).
+For example, this pipeline will always run a cleanup step after integration tests (even if the tests themselves fail).
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -196,7 +196,7 @@ steps:
 {% endhighlight %}
 
 
-Logs for steps hooks are shown in the GUI window of the step itself.
+Logs for steps hooks are shown in the log window of the step itself.
 
  {% include 
 image.html 
@@ -247,17 +247,17 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-The order of events is the following.
+The order of events in the example above is the following.
 
 1. The `on_elected` segment executes first (authentication)
-1. The step itself executes (the security scan)1
+1. The step itself executes (the security scan)
 1. The `on_fail` segment executes (only if the step throws an error code)
 1. The `on_finish` segment always executes at the end
 
 
 ## Controlling errors inside pipeline/step hooks
 
-By default if a step fails within a pipeline, the whole pipeline will stop and be marked as failed. This is also true for `on_elected` segments as well. If they fail then the whole pipeline will fail (regardless of the position of the segment in a pipeline or step).
+By default if a step fails within a pipeline, the whole pipeline will stop and be marked as failed. This is also true for `on_elected` segments as well. If they fail, then the whole pipeline will fail (regardless of the position of the segment in a pipeline or step).
 
 For example the following pipeline will fail right away, because the pipeline hook fails at the beginning.
 
@@ -282,7 +282,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-You can change this behavior by using the familiar [fail_fast property]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/#execution-flow) inside an `on_elected` hook.
+You can change this behavior by using the existing [fail_fast property]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/#execution-flow) inside an `on_elected` hook.
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -336,7 +336,7 @@ steps:
 
 ## Using multiple steps for hooks
 
-In all the previous examples, each hook was a single step running on a single Docker image. You can also defined multiple steps for each hook. This is possible by inserting an extra `steps` keyword inside the hook:
+In all the previous examples, each hook was a single step running on a single Docker image. You can also define multiple steps for each hook. This is possible by inserting an extra `steps` keyword inside the hook and listing multiple Docker images under it:
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -403,7 +403,7 @@ You can use multiple steps in a hook in both the pipeline and the step level.
 
 ## Using annotations and labels in hooks
 
-The hook syntax can also be used as a unified interface for the existing syntax of [build annotations]({{site.baseurl}}/docs/codefresh-yaml/annotations/) and [metadata]({{site.baseurl}}/docs/codefresh-yaml/docker-image-metadata/).
+The hook syntax can also be used as a unified interface for encompassing the existing syntax of [build annotations]({{site.baseurl}}/docs/codefresh-yaml/annotations/) and [metadata]({{site.baseurl}}/docs/codefresh-yaml/docker-image-metadata/).
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -450,7 +450,7 @@ Note however, that if you decide to use annotations and metadata inside hooks, y
 
 The following pipeline is **NOT** valid:
 
-`codefresh.yml`
+`invalid-codefresh.yml`
 {% highlight yaml %}
 {% raw %}
 version: "1.0"
@@ -482,7 +482,7 @@ The pipeline is not correct, because the first segment of annotations is directl
 
 To simplify the syntax for hooks, the following simplifications are also offered:
 
-If you do not want to use metadata or annotations in your hook the key exec can be omitted:
+If you do not want to use metadata or annotations in your hook the keyword `exec` can be omitted:
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -507,7 +507,7 @@ steps:
 {% endhighlight %}
 
 
-If you do not want to specify the image you can simply omit it. Codefresh will use the `alpine` image in that case to run the hook:
+If you do not want to specify the Docker image you can simply omit it. Codefresh will use the `alpine` image in that case to run the hook:
 
 
  `codefresh.yml`
@@ -536,7 +536,7 @@ steps:
 {% endhighlight %}
 
 
- If you don't use metadata or annotations, you can also completely remove the `exec` and just mention the commands you want to run (`alpine` image will be used):
+ If you don't use metadata or annotations, you can also completely remove the `exec` keyword and just mention the commands you want to run (`alpine` image will be used by default):
 
  `codefresh.yml`
 {% highlight yaml %}
@@ -559,7 +559,7 @@ steps:
 
 ## Limitations of pipeline/step hooks
 
-With the current implementation of hooks, the following limitations are known:
+With the current implementation of hooks, the following limitations are present:
 
 * [Codefresh variables]({{site.baseurl}}/docs/codefresh-yaml/variables/) are not interpolated inside hook segments
 * The [debugger]({{site.baseurl}}/docs/configure-ci-cd-pipeline/debugging-pipelines/) cannot inspect commands inside hook segments
