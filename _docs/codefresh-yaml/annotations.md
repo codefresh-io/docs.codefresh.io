@@ -297,3 +297,4 @@ Note that this syntax is optional. You can still define annotations for a build/
 * [Image annotations]({{site.baseurl}}/docs/docker-registries/metadata-annotations/)
 * [Post-Step Operations]({{site.baseurl}}/docs/codefresh-yaml/post-step-operations/)
 * [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
+* [Pipeline/Step hooks]({{site.baseurl}}/docs/codefresh-yaml/hooks/)

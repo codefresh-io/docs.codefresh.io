@@ -10,6 +10,7 @@ Recent Codefresh updates:
 
 ### August 2020
 
+- Pipeline/step hooks - [documentation]({{site.baseurl}}/docs/codefresh-yaml/hooks)
 - Pipeline templates - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#using-pipeline-templates)
 - Concurrency limits per branch - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#policies)
 
