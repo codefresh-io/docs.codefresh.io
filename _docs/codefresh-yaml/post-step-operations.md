@@ -111,5 +111,6 @@ See also [advanced workflows]({{site.baseurl}}/docs/codefresh-yaml/advanced-work
 * [Condition Expression Syntax]({{site.baseurl}}/docs/codefresh-yaml/condition-expression-syntax/)
 * [Working Directories]({{site.baseurl}}/docs/codefresh-yaml/working-directories/)
 * [Annotations]({{site.baseurl}}/docs/codefresh-yaml/annotations/)
+* [Pipeline/Step hooks]({{site.baseurl}}/docs/codefresh-yaml/hooks/)
 
 

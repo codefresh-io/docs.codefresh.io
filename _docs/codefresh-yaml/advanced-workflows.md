@@ -971,6 +971,7 @@ The possible values for `workflow.result` are:
 * [Codefresh Conditionals]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/)
 * [Variables]({{site.baseurl}}/docs/codefresh-yaml/variables/)
 * [Expression Syntax]({{site.baseurl}}/docs/codefresh-yaml/condition-expression-syntax/)
+* [Pipeline/Step hooks]({{site.baseurl}}/docs/codefresh-yaml/hooks/)
 
 
 

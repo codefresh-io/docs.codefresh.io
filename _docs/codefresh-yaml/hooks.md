@@ -403,7 +403,159 @@ You can use multiple steps in a hook in both the pipeline and the step level.
 
 ## Using annotations and labels in hooks
 
+The hook syntax can also be used as a unified interface for the existing syntax of [build annotations]({{site.baseurl}}/docs/codefresh-yaml/annotations/) and [metadata]({{site.baseurl}}/docs/codefresh-yaml/docker-image-metadata/).
+
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: "1.0"
+hooks: 
+ on_elected:
+   exec:
+     image: alpine:3.9
+     commands:
+       - echo "Creating an adhoc test environment"
+   annotations:
+     set:
+        - entity_type: build
+          annotations:
+          - my_annotation_example1: 10.45
+          - my_string_annotation: Hello World
+steps:
+  clone:
+    title: Cloning source code
+    type: git-clone
+    arguments:
+      repo: 'codefresh-contrib/golang-sample-app'
+      revision: master
+  build-image:
+    type: build
+    image_name: my-golang-image
+    working_directory: '${{clone}}'
+    tag: master
+    hooks:
+      on_success:
+        exec:
+          image: alpine:3.9
+          commands:
+            - echo "Scanning docker image"
+        metadata: # setting metadata
+          set:
+           - '${{build-image.imageId}}':
+               - status: 'Success'       
+{% endraw %}
+{% endhighlight %}
+
+Note however, that if you decide to use annotations and metadata inside hooks, you cannot mix and max the old syntax with the new syntax.
+
+The following pipeline is **NOT** valid:
+
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: "1.0"
+steps:
+ test:
+   image: alpine
+   on_success: # you cannot use old style together with hooks
+     annotations:
+       set:
+         - entity_type: build
+           annotations:
+             - status: 'success'
+   commands:
+     - echo block
+   hooks:
+     on_success:
+       annotations:
+         set:
+           - entity_type: build
+             annotations:
+               - status: 'success'  
+{% endraw %}
+{% endhighlight %}
+
+The pipeline is not correct, because the first segment of annotations is directly under `on_success` (the old syntax), while the second segment is under `hooks/on_success` (the new syntax).
+
+
 ## Syntactic sugar syntax
+
+To simplify the syntax for hooks, the following simplifications are also offered:
+
+If you do not want to use metadata or annotations in your hook the key exec can be omitted:
+
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: "1.0"
+hooks:
+ on_finish:  # no exec keyword
+   image: notifications:master
+   commands:
+     - ./send_workflow_finished.js
+steps:
+ build:
+   type: build
+   image_name: my_image
+   tag: master
+   hooks:
+     on_fail: # no exec keyword
+       image: notifications:master
+       commands:
+         - ./send_build_failed.js
+{% endraw %}
+{% endhighlight %}
+
+
+If you do not want to specify the image you can simply omit it. Codefresh will use the `alpine` image in that case to run the hook:
+
+
+ `codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: "1.0"
+hooks:
+ on_elected: 
+  exec: # no image keyword - alpine image will be used
+    - cf_export IMAGE_NAME=test
+steps:
+ build:
+   type: build
+   image_name: my_image
+   tag: master
+   hooks:
+     on_success: # no image keyword - alpine image will be used
+       exec:
+         - echo ${IMAGE_NAME} was built successfully
+       annotations:
+         set:
+           - entity_type: build
+             annotations:
+               - status: 'Success'
+{% endraw %}
+{% endhighlight %}
+
+
+ If you don't use metadata or annotations, you can also completely remove the `exec` and just mention the commands you want to run (`alpine` image will be used):
+
+ `codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: "1.0"
+hooks:
+ on_elected:  # no exec/image keyword - alpine image will be used
+   - cf_export IMAGE_NAME=test
+steps:
+ build:
+   type: build
+   image_name: my_image
+   tag: master
+   hooks:
+     on_success: # no exec/image keyword - alpine image will be used
+       - echo ${IMAGE_NAME} was built successfully
+{% endraw %}
+{% endhighlight %}
+
 
 ## Limitations of pipeline/step hooks
 

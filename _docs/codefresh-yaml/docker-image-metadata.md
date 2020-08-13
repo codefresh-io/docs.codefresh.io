@@ -215,3 +215,4 @@ in order to process them in a Codefresh pipeline.
 
 * [External Docker Registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/)
 * [Accessing a Docker registry from your Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/access-docker-registry-from-kubernetes/)
+* [Pipeline/Step hooks]({{site.baseurl}}/docs/codefresh-yaml/hooks/)

@@ -150,3 +150,4 @@ Try running the pipeline above and see how it behaves when a variable called `MY
 * [Variables]({{site.baseurl}}/docs/codefresh-yaml/variables/)
 * [Condition syntax]({{site.baseurl}}/docs/codefresh-yaml/condition-expression-syntax/)
 * [Pull Requests and Branches]({{site.baseurl}}/docs/ci-cd-guides/pull-request-branches/)
+* [Pipeline/Step hooks]({{site.baseurl}}/docs/codefresh-yaml/hooks/)
