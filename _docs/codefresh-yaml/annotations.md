@@ -16,6 +16,9 @@ Currently Codefresh supports extra annotations for:
 
 You can view/edit annotations using the [Codefresh CLI](https://codefresh-io.github.io/cli/annotations/) or directly in the Codefresh Web UI.
 
+>Notice that the syntax shown in this page is deprecated but still supported. For the new syntax
+see our [hooks documentation]({{site.baseurl}}/docs/codefresh-yaml/hooks/).
+
 
 ## Adding annotations 
 
