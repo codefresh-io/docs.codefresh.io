@@ -9,40 +9,81 @@ toc: true
 ---
 
 Let’s Chat is self-hosted chat app for small to big teams.
-This tutorial will walk you through the process of adding the following:
-- `Build step` - that will build docker image for your let’s chat app.
-- `Unit Test step` - A freestyle step that runs the unit test of the demo chat after the build.
-- `Composition step` - This step will run a composition which use your chat image from the build step, docker image of curl and check if your application is responsive. It will do so by printing "works" if a curl command to our app at port 5000 succeed.
- 
-## Example Pipeline
-In the root of this repository you'll find a file named codefresh.yml, this is our build descriptor and it describes the different steps that comprise our process. Let's quickly review the contents of this file:
 
-  `codefresh.yml`
+## The example Node.JS project
+
+You can see the example project at [https://github.com/codefreshdemo/demochat](https://github.com/codefreshdemo/demochat). The repository contains the source code of the project along with two Dockerfiles (one for unit tests) and various docker-compose configurations
+
+The project requires a Mongo Database to work and by default it uses port 5000 for its web interface.
+
+## Create a CI pipeline for Node.js 
+
+Creating a CI/CD pipeline for NodeJS is very easy, because Codefresh has built-in steps for creating Docker images and running commands with containers.
+
+{% include image.html 
+lightbox="true" 
+file="/images/learn-by-example/nodejs/nodejs-pipeline.png" 
+url="/images/learn-by-example/nodejs/nodejs-pipeline.png" 
+alt="Building and testing a Node.js application"
+caption="Building and testing a Node.js application"
+max-width="100%" 
+%}
+
+Here is the [full pipeline](https://github.com/codefreshdemo/demochat/blob/master/codefresh.yml) that creates the Docker image after checking out the code.
+
+ `codefresh.yml`
 {% highlight yaml %}
 {% raw %}
-version: '1.0'
+version: "1.0"
+stages:
+  - "clone"
+  - "unit"
+  - "build"
+  - "integration"
+
 steps:
+  clone:
+    title: "Cloning repository"
+    type: "git-clone"
+    repo: "codefreshdemo/demochat"
+    revision: "master"
+    stage: "clone"
 
-  build_step:
-    type: build
-    dockerfile: Dockerfile
-    image-name: codefreshdemo/lets-chat
-    tag: ${{CF_BRANCH}}
+  build_dev_image:
+    title: "Building Dev image"
+    type: "build"
+    image_name: "demochat"
+    working_directory: "${{clone}}"
+    tag: "dev"
+    dockerfile: "Dockerfile.dev"
+    stage: "unit"
 
-  unit_tests:
-    image: ${{build_step}}
-    fail-fast: false
+  test:
+    title: "Running test"
+    type: "freestyle" 
+    image: ${{build_dev_image}} 
+    working_directory: /root/demochat
     commands:
-      - npm install
-      - gulp test
-
+      - 'npm run test'
+    stage: "unit"
+  
+  build_image:
+    title: "Building App image"
+    type: "build"
+    image_name: "demochat"
+    working_directory: "${{clone}}"
+    tag: "dev"
+    dockerfile: "Dockerfile"
+    stage: "build"
+    
   integration_step:
     type: composition
+    stage: 'integration'
     composition:
       version: '2'
       services:
         app:
-          image: ${{build_step}}
+          image: ${{build_image}}
           links:
             - mongo
           ports:
@@ -52,12 +93,25 @@ steps:
     composition-candidates:
       main:
         image: nhoag/curl
-        command: bash -c "sleep 30 && curl http://app:5000/" | echo 'works'
+        command: bash -c "sleep 30 && curl http://app:5000/" | echo 'works'    
+
 {% endraw %}
 {% endhighlight %}
 
-{{site.data.callout.callout_info}}
-##### Example
+This pipeline has 4 [stages]({{site.baseurl}}/docs/codefresh-yaml/stages/) and performs the following:
 
-Just head over to the example [__repository__](https://github.com/codefreshdemo/demochat){:target="_blank"} in GitHub and follow the instructions there. 
-{{site.data.callout.end}}
+ 1. clones the source code using the [git-clone]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) step
+ 1. Builds a Docker image for unit tests with the [build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/)
+ 1. Runs [unit tests]({{site.baseurl}}/docs/testing/unit-tests/) in the Docker image that was just created with a [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/)
+ 1. Building a Docker image for the final application
+ 1. Runs [integration tests]({{site.baseurl}}/docs/testing/integration-tests/) using a [composition step]({{site.baseurl}}/docs/codefresh-yaml/steps/composition/)
+
+If you run the pipeline multiple times, you will also see the [Codefresh caching mechanisms]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipeline-caching/) in action for faster build times.
+
+## What to read next
+
+* [Node examples]({{site.baseurl}}/docs/learn-by-example/nodejs/)
+* [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
+* [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
+* [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
+* [How pipelines work]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
