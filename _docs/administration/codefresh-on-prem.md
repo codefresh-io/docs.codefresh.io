@@ -355,11 +355,11 @@ Codefresh is using both cluster storage (volumes) as well as external storage.
 
 The following table displays the list of databases created as part of the installation:
 
-| Database | Purpose |
-|----------|---------|
-| mongoDB | storing all account data (account settings, users, projects, pipelines, builds etc.) |
-| postgresql | storing data about events that happened on the account (pipeline updates, deletes, etc.). The audit log uses the data from this database. |
-| redis | mainly used for caching, but also used as a key-value store for our trigger manager. |
+| Database | Purpose | Latest supported version |
+|----------|---------| ---------------|
+| mongoDB | storing all account data (account settings, users, projects, pipelines, builds etc.) | 3.6.x |
+| postgresql | storing data about events that happened on the account (pipeline updates, deletes, etc.). The audit log uses the data from this database. | 9.6.x |
+| redis | mainly used for caching, but also used as a key-value store for our trigger manager. | 3.2.x |
 
 #### Volumes
 
