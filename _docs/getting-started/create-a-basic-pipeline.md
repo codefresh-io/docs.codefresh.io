@@ -197,6 +197,7 @@ steps:
     working_directory: ./
     tag: v1.0.0
     dockerfile: Dockerfile
+    disable_push: true
 {% endraw %}      
 {% endhighlight %}
 
@@ -291,6 +292,7 @@ steps:
     working_directory: ./
     tag: v1.0.1
     dockerfile: Dockerfile
+    disable_push: true
   MyUnitTests:
     title: Running Unit tests
     image: '${{MyAppDockerImage}}'
@@ -456,6 +458,7 @@ steps:
     working_directory: ./
     tag: v1.0.1
     dockerfile: Dockerfile
+    disable_push: true
   MyUnitTests:
     title: Running Unit tests
     image: '${{MyAppDockerImage}}'
