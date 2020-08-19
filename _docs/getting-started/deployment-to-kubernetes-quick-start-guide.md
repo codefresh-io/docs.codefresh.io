@@ -181,6 +181,7 @@ steps:
     working_directory: ./
     tag: '${{CF_BRANCH}}'
     dockerfile: Dockerfile
+    disable_push: true
   MyUnitTests:
     title: Running Unit tests
     image: '${{MyAppDockerImage}}'
