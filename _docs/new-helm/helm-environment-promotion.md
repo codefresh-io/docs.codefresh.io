@@ -155,6 +155,20 @@ caption="Changing deployment values"
 max-width="40%"
 %}
 
+By default Codefresh will use a built-in install/upgrade pipeline for performing the promotion. You can choose your own pipeline from the promotion dialog. That pipeline will be automatically provided with the following [environment variables]({{site.baseurl}}/docs/new-helm/helm-releases-management/#overriding-the-default-helm-actions):
+
+* `CF_HELM_RELEASE` - name of release
+* `CF_HELM_KUBE_CONTEXT` - kubectl context name of target cluster (cluster name from [dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/#work-with-your-services))
+* `CF_HELM_NAMESPACE` - namespace where release is stored now
+* `CF_HELM_INSTALLATION_NAMESPACE` - namespace where release is promoted to
+* `CF_HELM_CONTEXTS` - [shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration) Helm contexts
+* `CF_HELM_VALUES` - Helm chart values 
+* `CF_HELM_SET` - Additional values there were overriden
+* `CF_HELM_CHART_JSON_GZIP` - Gzipped JSON of Helm chart
+* `CF_HELM_CHART_JSON` - JSON of Helm chart
+
+
+
 Once you click the *update* button, a new build will run that will perform the deployment.
 
 Note that you can move releases to any column both on the right and on the left of the current column. This is helpful if for example you find a bug in your production environment and you want to bring it back to a staging environment for debugging.
