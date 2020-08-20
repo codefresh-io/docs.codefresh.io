@@ -214,7 +214,7 @@ In this screen there are toggle buttons for the following options:
 
  * Disable/Enable pipeline definitions defined using the inline editor of the Codefresh UI
  * Disable/Enable pipeline definitions from Git repositories connected to Codefresh 
- * Disable/Enable pipeline definitions from **any** public Git repository (even if it is not connected to Codefresh)
+ * Disable/Enable pipeline definitions from **any** public URL
 
  Clicking on any of the toggle buttons has a global effect. It will disable the respective GUI method during pipeline creation and will disable
  running of existing pipelines that use that method. For example if you disable the inline editor by clicking the first toggle, all existing pipelines
