@@ -8,12 +8,13 @@ toc: true
 
 ---
 
-Codefresh provides two complementary ways for access control within an organization. Both of them depend on the existence
-of users and teams with proper access level.
+Codefresh provides several complementary ways for access control within an organization. 
 
-The first mechanism is a way to restrict access to parts of the UI that are intended for account administrators. For example, only an account administrator should be able to change integrations with [git providers]({{site.baseurl}}/docs/integrations/git-providers/) and [cloud services]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/). 
+The [first mechanism](#users-and-administrators) is a way to restrict access to parts of the UI that are intended for account administrators. For example, only an account administrator should be able to change integrations with [git providers]({{site.baseurl}}/docs/integrations/git-providers/) and [cloud services]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/). 
 
-The second mechanism is policy-based access control via attributes (ABAC) on Kubernetes clusters and pipelines. This allows account administrators to define exactly which teams have access to which clusters and pipelines. For example, access to production clusters should only be granted to a subset of trusted developers/operators. On the other hand, access to a QA/staging cluster can be less strict.
+The [second mechanism](#access-to-kubernetes-clusters-and-pipelines) is policy-based access control via attributes (ABAC) on Kubernetes clusters and pipelines. This allows account administrators to define exactly which teams have access to which clusters and pipelines. For example, access to production clusters should only be granted to a subset of trusted developers/operators. On the other hand, access to a QA/staging cluster can be less strict.
+
+The [third mechanism](#pipeline-definition-restrictions) allows you to restrict the Git repositories used for loading pipeline definitions.
 
 There is also the additional layer of permissions for resources (such as concurrent builds and environments) as explained in the [Enterprise Account Management]({{site.baseurl}}/docs/administration/ent-account-mng/) page. 
 
@@ -191,6 +192,56 @@ For pipelines:
 * `Run` - can run allowed pipelines only.
 * `Approve` - resume pipelines that are waiting for manual [approval]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/).
 * `Debug` - allow the usage of the [pipeline debugger]({{site.baseurl}}/docs/configure-ci-cd-pipeline/debugging-pipelines/).
+
+## Pipeline definition restrictions
+
+By default, when a user [creates a pipeline]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/), the definition can be loaded from the inline editor or any private or public Git repository. You can restrict this behavior and allow only specific Git sources or even disable completely the loading of pipeline definitions from Git repositories.
+
+
+The global pipeline settings are available at [https://g.codefresh.io/account-admin/account-conf/pipeline-settings](https://g.codefresh.io/account-admin/account-conf/pipeline-settings)
+
+
+ {% include image.html
+  lightbox="true"
+  file="/images/administration/access-control/pipeline-restrictions.png"
+  url="/images/administration/access-control/pipeline-restrictions.png"
+  alt="Global pipeline restrictions"
+  caption="Global pipeline restrictions"
+  max-width="80%"
+    %}
+
+In this screen there are toggle buttons for the following options:
+
+ * Disable/Enable pipeline definitions defined using the inline editor of the Codefresh UI
+ * Disable/Enable pipeline definitions from Git repositories connected to Codefresh 
+ * Disable/Enable pipeline definitions from **any** public Git repository (even if it is not connected to Codefresh)
+
+ Clicking on any of the toggle buttons has a global effect. It will disable the respective GUI method during pipeline creation and will disable
+ running of existing pipelines that use that method. For example if you disable the inline editor by clicking the first toggle, all existing pipelines
+ that have their pipeline definition defined in the editor will be disabled (the run button will not be clickable).
+
+ For more fine-grained restrictions you can visit the Git integration screen of your [Git provider]({{site.baseurl}}/docs/integrations/git-providers/) and expand the *YAML Options* segment.
+
+
+ {% include image.html
+  lightbox="true"
+  file="/images/administration/access-control/pipeline-git-restrictions.png"
+  url="/images/administration/access-control/pipeline-git-restrictions.png"
+  alt="Pipeline restrictions per Git provider"
+  caption="Pipeline restrictions per Git provider"
+  max-width="80%"
+    %}    
+
+
+  Here you can restrict the Git repositories that can be used for pipeline definitions
+
+  * per git repository name (regex or manual selection)
+  * branch name (regex)
+  * folder name inside a git repository (glob pattern)
+
+
+For example if you enter `/^((pipeline-definition)$).*/g` in the second field, then users will be able to load pipeline yamls only from a branch named `pipeline-definition` in a Git repository.
+
 
 ## What to read next
 

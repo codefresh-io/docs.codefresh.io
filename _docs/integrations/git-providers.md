@@ -112,7 +112,7 @@ caption="GitHub permissions"
 alt="GitHub permissions"
 %}
 
-For GitHub on-premise you also need to provide the URL of the GitHub server in your organization.
+For GitHub on-premise you also need to provide the URL of the GitHub server in your organization. If enabled in your account you can setup [Pipeline definition restrictions]({{site.baseurl}}/docs/administration/access-control/#pipeline-definition-restrictions) by expanding the *YAML Options* segment.
 
 ## GitHub-App
 
@@ -147,7 +147,7 @@ For the required fields use:
 * **App id** - found in step 3
 * **Private key** - the contents of the file your created in step 3 (but convert it to base64 first)
 
-Click *Test connection* to verify your integration and apply your changes with the *Save* button.
+Click *Test connection* to verify your integration and apply your changes with the *Save* button.  If enabled in your account you can setup [Pipeline definition restrictions]({{site.baseurl}}/docs/administration/access-control/#pipeline-definition-restrictions) by expanding the *YAML Options* segment.
 
 
 ## GitLab
@@ -169,7 +169,7 @@ The name you enter in order to create the token in the GitLab UI is completely a
 Once you have the token, paste it in the Codefresh UI and click *Test connection*. If everything is OK can
 now save the git integration.
 
-For GitLab on-premise you also need to provide the URL of the GitLab server in your organization.
+For GitLab on-premise you also need to provide the URL of the GitLab server in your organization.  If enabled in your account you can setup [Pipeline definition restrictions]({{site.baseurl}}/docs/administration/access-control/#pipeline-definition-restrictions) by expanding the *YAML Options* segment.
 
 ## Bitbucket
 
@@ -197,7 +197,9 @@ alt="Bitbucket permissions"
 %}
 
 The "label" you enter in your Bitbucket account in order to create the application password is completely arbitrary (use "Codefresh" for an example). Once you have the token, paste it in the Codefresh UI and click *Test connection*. If everything is OK you can
-now save the git integration.
+now save the git integration. 
+
+ If enabled in your account you can setup [Pipeline definition restrictions]({{site.baseurl}}/docs/administration/access-control/#pipeline-definition-restrictions) by expanding the *YAML Options* segment.
 
 ## Azure DevOps
 
@@ -246,7 +248,7 @@ Then at the Codefresh configuration enter your organization name and your token.
 lightbox="true" 
 file="/images/integrations/git/azure-devops-verify.png" 
 url="/images/integrations/git/azure-devops-verify.png"
-max-width="60%"
+max-width="40%"
 caption="Codefresh integration with Azure Devops"
 alt="Codefresh integration with Azure Devops"
 %}
@@ -258,12 +260,14 @@ that use Azure DevOps Git repos.
 lightbox="true" 
 file="/images/integrations/git/azure-devops-connected.png" 
 url="/images/integrations/git/azure-devops-connected.png"
-max-width="60%"
+max-width="40%"
 caption="Codefresh integration with Azure Devops"
 alt="Codefresh integration with Azure Devops"
 %}
 
 Your Azure DevOps repositories will be available when [creating a new project in Codefresh]({{site.baseurl}}/docs/getting-started/create-a-basic-pipeline/).
+
+ If enabled in your account you can setup [Pipeline definition restrictions]({{site.baseurl}}/docs/administration/access-control/#pipeline-definition-restrictions) by expanding the *YAML Options* segment.
 
 ## Atlassian Stash 
 
@@ -306,6 +310,7 @@ You will be able to [create pipelines]({{site.baseurl}}/docs/configure-ci-cd-pip
 - [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/) 
 - [Git triggers]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/) 
 - [Git clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) 
+- [Checking out source code]({{site.baseurl}}/docs/docs/yaml-examples/examples/git-checkout/) 
 
 
 
