@@ -164,8 +164,8 @@ By default Codefresh will use a built-in install/upgrade pipeline for performing
 * `CF_HELM_CONTEXTS` - [shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration) Helm contexts
 * `CF_HELM_VALUES` - Helm chart values 
 * `CF_HELM_SET` - Additional values there were overriden
-* `CF_HELM_CHART_JSON_GZIP` - Gzipped JSON of Helm chart
-* `CF_HELM_CHART_JSON` - JSON of Helm chart
+* `CF_HELM_CHART_JSON_GZIP` - Gzipped JSON of Helm chart (only for Helm 3)
+* `CF_HELM_CHART_JSON` - JSON of Helm chart (only for Helm 2)
 
 
 
