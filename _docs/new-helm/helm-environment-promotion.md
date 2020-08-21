@@ -167,7 +167,7 @@ By default Codefresh will use a built-in install/upgrade pipeline for performing
 * `CF_HELM_CHART_JSON_GZIP` - Gzipped JSON of Helm chart (only for Helm 3)
 * `CF_HELM_CHART_JSON` - JSON of Helm chart (only for Helm 2)
 
-
+Note that the variable `CF_HELM_CHART_JSON_GZIP` is both compressed and base64 encoded. To get the raw value you need a command like `echo $CF_HELM_CHART_JSON_GZIP | base64 -d | gunzip`
 
 Once you click the *update* button, a new build will run that will perform the deployment.
 
