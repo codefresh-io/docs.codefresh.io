@@ -14,7 +14,7 @@ redirect_from:
 toc: true
 ---
 
-Before reading this page make sure that you are familiar with the [theory behind Codefresh pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/).
+Before reading this page make sure that you are familiar with the theory behind Codefresh pipelines at the [introduction page]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/).
 
 ## Pipeline Concepts
 
