@@ -229,7 +229,7 @@ Then give full admin privileges to the default account.
 `Make default account cluster administrator`
 {% highlight shell %}
 {% raw %}
-kubectl create clusterrolebinding default-admin --clusterrole cluster-admin --serviceaccount=default:default
+kubectl create clusterrolebinding default-admin --clusterrole cluster-admin --serviceaccount=default:default -n default
 {% endraw %}
 {% endhighlight %}
 
@@ -289,7 +289,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: codefresh-role
 rules:
-  - apiGroups: [ "", "extensions"]
+  - apiGroups: [ "", "extensions", "policy"]
     resources: ["*"]
     verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
 ---
