@@ -101,6 +101,7 @@ On the top right of the panel you have additional controls:
 * The *comment* button allows you to quickly comment/uncomment the currently selected text. The hotkey `Ctrl-/` also performs the same action
 * The *formatting* button enriches the editor with special symbols for line breaks, spaces and tabs. This allows you to easily fix common formatting errors
 * The *copy* button quickly copies the **whole** pipeline text in your clipboard
+* You can use `Ctrl-]` and `Ctrl-[` to change indentation of the current line (use the Command key instead on MacOsX)
 
 
 Notice that in the editor you can expand/collapse individual yaml blocks using the arrow triangles on the left of each blocks. The initial pipeline presented in the editor is suggested by Codefresh according to the contents of your Git repository.
