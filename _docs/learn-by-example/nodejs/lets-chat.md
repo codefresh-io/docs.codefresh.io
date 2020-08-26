@@ -52,7 +52,7 @@ steps:
   build_dev_image:
     title: "Building Dev image"
     type: "build"
-    image_name: "demochat"
+    image_name: "codefreshdemo/demochat"
     working_directory: "${{clone}}"
     tag: "dev"
     dockerfile: "Dockerfile.dev"
@@ -70,7 +70,7 @@ steps:
   build_image:
     title: "Building App image"
     type: "build"
-    image_name: "demochat"
+    image_name: "codefreshdemo/demochat"
     working_directory: "${{clone}}"
     tag: "dev"
     dockerfile: "Dockerfile"
@@ -97,6 +97,8 @@ steps:
 
 {% endraw %}
 {% endhighlight %}
+
+> Note that you should change `codefreshdemo` in the clone step with your own Github account if your fork the repository. Also in the build step you should change `codefreshdemo/demochat` with your own Dockerhub account or image name that is compliant to your registry.
 
 This pipeline has 4 [stages]({{site.baseurl}}/docs/codefresh-yaml/stages/) and performs the following:
 
