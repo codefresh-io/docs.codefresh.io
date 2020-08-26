@@ -98,7 +98,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-> Note that you should change `codefreshdemo` in the clone step with your own Github account if your fork the repository. Also in the build step you should change `codefreshdemo/demochat` with your own Dockerhub account or image name that is compliant to your registry.
+> Note that you should change `codefreshdemo` in the clone step with your own Github account if you fork the repository. Also in both build steps you should change `codefreshdemo/demochat` with your own image name that is compliant to your Dockerhub account or other connected registry.
 
 This pipeline has 4 [stages]({{site.baseurl}}/docs/codefresh-yaml/stages/) and performs the following:
 
