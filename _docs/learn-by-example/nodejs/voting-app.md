@@ -78,3 +78,11 @@ steps:
 
 Just head over to the example [__repository__](https://github.com/containers101/voting-app){:target="_blank"} in GitHub and follow the instructions there. 
 {{site.data.callout.end}}
+
+## What to read next
+
+* [Node examples]({{site.baseurl}}/docs/learn-by-example/nodejs/)
+* [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
+* [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
+* [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
+* [How pipelines work]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
