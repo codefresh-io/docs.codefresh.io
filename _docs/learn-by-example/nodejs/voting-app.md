@@ -81,7 +81,7 @@ Just head over to the example [__repository__](https://github.com/containers101/
 
 ## What to read next
 
-* [Node examples]({{site.baseurl}}/docs/learn-by-example/nodejs/)
+* [React example]({{site.baseurl}}/docs/learn-by-example/nodejs/react/)
 * [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
 * [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
 * [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)

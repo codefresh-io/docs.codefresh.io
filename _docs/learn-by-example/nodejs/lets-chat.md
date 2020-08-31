@@ -112,7 +112,7 @@ If you run the pipeline multiple times, you will also see the [Codefresh caching
 
 ## What to read next
 
-* [Node examples]({{site.baseurl}}/docs/learn-by-example/nodejs/)
+* [Voting app example]({{site.baseurl}}/docs/learn-by-example/nodejs/voting-app/)
 * [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
 * [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
 * [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
