@@ -550,9 +550,9 @@ codefresh runner init \
 --name my-aws-runner \
 --kube-node-selector=failure-domain.beta.kubernetes.io/zone=us-west-2a \
 --kube-namespace cf --kube-context-name my-aws-runner \
---set-value Storage.VolumeProvisioner.NodeSelector=<your node selector label> \
+--set-value Storage.VolumeProvisioner.NodeSelector=node-type=addons \
 --set-value=Storage.Backend=ebs \
---set-value=Storage.AvailabilityZone=<your availability zone name>
+--set-value=Storage.AvailabilityZone=us-west-2a
 ```
 
  * You should specify the zone in which you want your volumes to be created, example: `--set-value=Storage.AvailabilityZone=us-west-2a`
@@ -568,12 +568,14 @@ codefresh runner init \
 --name my-aws-runner \
 --kube-node-selector=failure-domain.beta.kubernetes.io/zone=us-west-2a \
 --kube-namespace cf --kube-context-name my-aws-runner \
---set-value Storage.VolumeProvisioner.NodeSelector=<your node selector label> \
+--set-value Storage.VolumeProvisioner.NodeSelector=node-type=addons \
 --set-value=Storage.Backend=ebs \
---set-value=Storage.AvailabilityZone=<your availability zone name> \
+--set-value=Storage.AvailabilityZone=us-west-2a\
 --set-value=Storage.Encrypted=[false|true] \
 --set-value=Storage.KmsKeyId=<key id>
 ```  
+
+For an explanation of all other options see the [global parameter table](#customizing-the-wizard-installation).
 
 At this point the quick start wizard will start the installation.
 
