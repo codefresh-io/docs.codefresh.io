@@ -208,11 +208,11 @@
     localurl: /docs/integrations/google-cloud/   
   - title: Docker Registries
     localurl: /docs/integrations/docker-registries/  
+  - title: Argo CD
+    new: true
+    localurl: /docs/integrations/argo-cd/    
   - title: Jenkins integration/migration
     localurl: /docs/integrations/jenkins-integration/               
-  - title: Google Cloud Builder
-    new: true
-    localurl: /docs/integrations/gcloud-builder/
   - title: GitHub Actions
     new: true
     localurl: /docs/integrations/github-actions/       
