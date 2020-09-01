@@ -394,6 +394,8 @@
           url: "/github-container-registry"
         - title: "Other Registries"
           url: "/other-registries"  
+    - title: ArgoCD Integration
+      url: "/argo-cd"            
     - title: Jenkins Integration
       url: "/jenkins-integration"                
     - title: Google Cloud builder
