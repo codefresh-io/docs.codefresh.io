@@ -1133,7 +1133,7 @@ Here is a list of the resources that are created during a Runner installation:
 
 
 - **Problem:** Node process crashes during the installation or installation gets stuck on “Executing pipeline.“
-- **Solution:** Try to run the `codefresh unner init` command from a different terminal window or restart your machine and try again.
+- **Solution:** Try to run the `codefresh runner init` command from a different terminal window or restart your machine and try again.
 
 
 - **Problem:** Builds will not run.
