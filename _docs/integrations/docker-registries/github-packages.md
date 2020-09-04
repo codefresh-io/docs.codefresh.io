@@ -1,5 +1,5 @@
 ---
-title: "Github Docker Registry"
+title: "GitHub Docker Registry"
 description: "Learn how to push Docker images as Github packages"
 group: integrations
 sub_group: docker-registries
