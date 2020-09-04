@@ -8,6 +8,15 @@ toc: true
 
 Before you can use Codefresh and ArgoCD together, you need to connect your ArgoCD installation in your Codefresh account. This way Codefresh will send and receive information from your ArgoCD instance. 
 
+{% include image.html 
+  lightbox="true" 
+  file="/images/guides/gitops/gitops-environment.png" 
+  url="/images/guides/gitops/gitops-environment.png" 
+  alt="GitOps deployments with Codefresh"
+  caption="GitOps deployments with Codefresh"  
+  max-width="100%"
+ %}
+
 ## Connecting to your ArgoCD cluster
 
 To configure the integration go to your Account Configuration, by clicking on *Account Settings* on the left sidebar. On the first section called *Integrations* click the *Configure* button next to *ArgoCD*.
@@ -78,12 +87,51 @@ name for the integration.
 
 ## Creating ArgoCD applications
 
+In addition to the existing [Kubernetes/Helm environments]({{site.baseurl}}/docs/deploy-to-kubernetes/environment-dashboard/), you can now create ArgoCD applications via the Codefresh UI.
 
+Visit your environments dashboard by clicking on *Environments* from the left sidebar. The click the *Add environment* drop-down and choose *ArgoCD*.
 
+If you already have an application setup in ArgoCD, you can enter its project and name and Codefresh will automatically retrieve all information from the ArgoCD instance.
 
+{% include image.html 
+  lightbox="true" 
+  file="/images/integrations/argocd/argocd-existing-app.png" 
+  url="/images/integrations/argocd/argocd-existing-app.png" 
+  alt="Using an existing ArgoCD application in a Codefresh environment"
+  caption="Using an existing ArgoCD application in a Codefresh environment"  
+  max-width="80%"
+ %}
 
+You can also create a brand-new application with _provision_ option. In this dialog you can enter the exact same details that ArgoCD asks when creating a new application.
 
+{% include image.html 
+  lightbox="true" 
+  file="/images/integrations/argocd/argocd-provision-app.png" 
+  url="/images/integrations/argocd/argocd-provision-app.png" 
+  alt="Creating a new ArgoCD application in a Codefresh environment"
+  caption="Creating a new ArgoCD application in a Codefresh environment"  
+  max-width="80%"
+ %}
+
+Codefresh will communicate with ArgoCD via its API and pass all the relevant details.
+
+The end result is a new entry for your ArgoCD application will now appear in the dashboard along with the sync status.
+
+{% include image.html 
+  lightbox="true" 
+  file="/images/integrations/argocd/argocd-environment.png" 
+  url="/images/integrations/argocd/argocd-environment.png" 
+  alt="ArgoCD environment status"
+  caption="ArgoCD environment status"  
+  max-width="100%"
+ %}
+
+To learn about the full GitOps support in Codefresh, see our GitOps deployment guide.
 
 ## What to read next
+
+- [Environment Dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/environment-dashboard/)
+- [Codefresh CLI](https://codefresh-io.github.io/cli/) 
+- [Kubernetes integration]({{site.baseurl}}/docs/integrations/kubernetes/) 
 
 
