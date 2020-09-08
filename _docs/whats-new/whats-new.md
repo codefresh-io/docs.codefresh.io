@@ -8,6 +8,10 @@ toc: true
 ---
 Recent Codefresh updates:
 
+### September 2020
+
+- Security timeout - [documentation]({{site.baseurl}}/docs/administration/access-control/#security-timeout)
+
 ### August 2020
 
 - Pipeline/step hooks - [documentation]({{site.baseurl}}/docs/codefresh-yaml/hooks)

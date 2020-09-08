@@ -20,16 +20,17 @@ There is also the additional layer of permissions for resources (such as concurr
 
 ## Users and administrators
 
-You can define the level of access (**user** or **administrator**) from the same screen where you [add collaborators]({{site.baseurl}}/docs/accounts/invite-your-team-member/) to your account. From the left sidebar of the Codefresh UI choose *Account Settings* and then click on the *People* menu item under *User Management*.
+You can define the level of access (**user** or **administrator**) from the same screen where you [add collaborators]({{site.baseurl}}/docs/accounts/invite-your-team-member/) to your account. From the left sidebar of the Codefresh UI choose *Account Settings* and then click on the *Users & Teams* menu item under *User Management*.
 
-{% include image.html
-  lightbox="true"
-  file="/images/administration/access-control/user-access-control.png"
-  url="/images/administration/access-control/user-access-control.png"
-  alt="User access control"
-  caption="User access control"
-  max-width="80%"
-    %}
+{% include 
+  image.html 
+  lightbox="true" 
+  file="/images/administration/users/invite-users.png" 
+  url="/images/administration/users/invite-users.png" 
+  alt="User Access control" 
+  caption="User Access control"
+    max-width="90%" 
+%}
 
 Next to each user you can click the drop-down box to decide the level access. There is another drop-down for the [SSO configuration]({{site.baseurl}}/docs/administration/single-sign-on/) as well.
 
@@ -117,7 +118,7 @@ Once your clusters and pipelines are tagged, you should create teams that work o
 
 ### Creating teams 
 
-To create and manage teams of people, from the left sidebar of the Codefresh UI choose *Account Settings* and then click on the *Team* menu item under *User Management*.
+To create and manage teams of people, from the left sidebar of the Codefresh UI choose *Account Settings* and then click on the *Users & Teams* menu item under *User Management*. Finally choose the second tab called *Teams*
 
 
 > Only Enterprise customers can add new teams. Other Codefresh plans can only use the predefined *Users* and *Admin* teams. [Contact us](https://codefresh.io/contact-us/) if you wish to upgrade to an Enterprise plan.
@@ -192,6 +193,21 @@ For pipelines:
 * `Run` - can run allowed pipelines only.
 * `Approve` - resume pipelines that are waiting for manual [approval]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/).
 * `Debug` - allow the usage of the [pipeline debugger]({{site.baseurl}}/docs/configure-ci-cd-pipeline/debugging-pipelines/).
+
+## Security timeout
+
+In the third tab - *Security* you can set a timeout for users that perform no action in the Codefresh GUI. The minimum time period is 15 minutes but using the drop-down menu you can also define a number for hours and days.
+
+ {% include image.html
+  lightbox="true"
+  file="/images/administration/access-control/security-timeout.png"
+  url="/images/administration/access-control/security-timeout.png"
+  alt="Security timeout"
+  caption="Security timeout"
+  max-width="90%"
+    %}
+
+Users will get a short warning 90 seconds before the last 15 minutes (if they are inactive for the defined time period). If they still perform no further actions the system will automatically log them out of Codefresh and they will have to login again in order to use the Codefresh GUI.
 
 ## Pipeline definition restrictions
 
