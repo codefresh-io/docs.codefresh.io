@@ -196,7 +196,7 @@ For pipelines:
 
 ## Security timeout
 
-In the third tab - *Security* you can set a timeout for users that perform no action in the Codefresh GUI. The minimum time period is 15 minutes but using the drop-down menu you can also define a number for hours and days.
+In the third tab - *Security* of the *Users & teams* screen you can set a timeout for users that perform no action in the Codefresh GUI. The minimum time period is 15 minutes but using the drop-down menu you can also define a number for hours and days.
 
  {% include image.html
   lightbox="true"
