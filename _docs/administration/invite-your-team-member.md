@@ -12,15 +12,22 @@ You can easily add additional people to a Codefresh account to work with your re
 
 ## Managing users in a Codefresh account
 
-On the left sidebar of the Codefresh UI choose *Account Settings* and then click on the *People* menu item under *User Management*
+On the left sidebar of the Codefresh UI choose *Account Settings* and then click on the *User & Teams* menu item under *User Management*
 
 
-{% include image.html lightbox="true" file="/images/account/collaborators.png" url="/images/account/collaborators.png" alt="Collaborators" max-width="70%" %}
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/administration/users/invite-users.png" 
+	url="/images/administration/users/invite-users.png" 
+	alt="Invite users" 
+	caption="Invite users"
+    max-width="100%" 
+%}
 
 
 1. In the *Username* text box, type the Codefresh username or email address of the user you want to add.
 1. Click the *Add* button.
-
 
 
 A message will be sent to the person that holds the email account. Once approved you will see the collaborator
@@ -29,7 +36,7 @@ in the user list.
 
 ## Setting a role for each collaborator
 
-You can also change the role of each team member by using the drop-down next to their name:
+You can also change the [role]({{site.baseurl}}/docs/administration/access-control/#users-and-administrators) of each team member by using the drop-down next to their name:
 
 * People with the **User** role will be able to work with your repositories and pipelines, but will not be able to change settings
 on clusters, docker registries, git integrations, shared configurations etc.
@@ -38,11 +45,9 @@ on clusters, docker registries, git integrations, shared configurations etc.
 You can completely remove a user from your account by clicking on the *bin* icon on the far right.
 
 
-
-
 ## What to read next
 
-* [Access control]({{site.baseurl}}/docs/enterprise/access-control/)
-* [Account management]({{site.baseurl}}/docs/enterprise/ent-account-mng/)
-* [Single Sign on]({{site.baseurl}}/docs/enterprise/single-sign-on/)
+* [Access control]({{site.baseurl}}/docs/administration/access-control/)
+* [Account management]({{site.baseurl}}/docs/administration/ent-account-mng/)
+* [Single Sign on]({{site.baseurl}}/docs/administration/single-sign-on/)
 
