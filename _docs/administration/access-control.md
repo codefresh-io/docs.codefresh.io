@@ -209,6 +209,8 @@ In the third tab - *Security* of the *Users & teams* screen you can set a timeou
 
 Users will get a short warning 90 seconds before the last 15 minutes (if they are inactive for the defined time period). If they still perform no further actions the system will automatically log them out of Codefresh and they will have to login again in order to use the Codefresh GUI.
 
+The maximum timeout you can set is 30 days.
+
 ## Pipeline definition restrictions
 
 By default, when a user [creates a pipeline]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/), the definition can be loaded from the inline editor or any private or public Git repository. You can restrict this behavior and allow only specific Git sources or even disable completely the loading of pipeline definitions from Git repositories.
