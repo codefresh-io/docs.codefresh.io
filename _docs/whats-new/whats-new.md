@@ -15,9 +15,11 @@ Recent Codefresh updates:
 ### August 2020
 
 - Pipeline/step hooks - [documentation]({{site.baseurl}}/docs/codefresh-yaml/hooks)
+- Pipeline templates - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#using-pipeline-templates)
 - Pipeline definition restrictions - [documentation]({{site.baseurl}}/docs/administration/access-control/#pipeline-definition-restrictions)
 - Concurrency limits per branch - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#policies)
 - Custom pipeline variables for Helm promotion - [documentation]({{site.baseurl}}/docs/new-helm/helm-environment-promotion/#promoting-helm-releases-with-the-gui)
+
 
 ### July 2020
 
