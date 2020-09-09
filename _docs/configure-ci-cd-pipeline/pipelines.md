@@ -155,6 +155,10 @@ Once you create your pipeline you can also click on the top tab called *Settings
   - Once a build is created terminate previous builds only from a specific branch (name matches a regular expression)
   - Once a build is created, terminate all other running builds
   - Once a build is terminated, terminate all child builds initiated from it
+- **Pending approval volume**: choose what happens with the [pipeline volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) when a pipeline is waiting for [approval]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/)
+  - Keep the volume available
+  - Discard the volume
+  - Honor the option defined globally in your Codefresh account
 
 The **Pipeline and Trigger Concurrency** limits are very important as they allow you to define how many instances of a pipeline can run in parallel when multiple commits or multiple pull requests take place. 
 
@@ -173,6 +177,8 @@ Some common scenarios are:
 
 * You are interested only on the latest commit of a branch. If pipelines from earlier commits are still running you want to terminate them.
 * You don't want to wait for children pipelines to finish (i.e. when a pipeline calls another pipeline) or when a new build starts for a parent pipeline.
+
+For the volume behavior during approvals, notice that if [you keep the volume available]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/#keeping-the-shared-volume-after-an-approval) on the pipeline while it is waiting for approval it will still count as "running" against your pricing tier limit.
 
 ### External Resources
 

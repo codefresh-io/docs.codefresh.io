@@ -125,7 +125,25 @@ max-width="80%"
 %}
 
 
-For more details on access control and users see also the [account management page]({{site.baseurl}}/docs/enterprise/ent-account-mng/).
+For more details on access control and users see also the [account management page]({{site.baseurl}}/docs/administration/ent-account-mng/).
+
+## Keeping the shared volume after an approval
+
+If you approve a pipeline and it continues to run, all contents of the [shared Codefresh volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) are lost. If you want to keep any temporary files that were there before the approval, you need to enable the respective policy in your [pipeline settings]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#policies).
+
+You can either set this option differently per pipeline, or globally in your account at your [account settings](https://g.codefresh.io/account-admin/account-conf/pipeline-settings).
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/codefresh-yaml/approval/keep-volume.png" 
+url="/images/codefresh-yaml/approval/keep-volume.png"
+alt="Preserve Codefresh volume after an approval" 
+caption="Preserve Codefresh volume after an approval"
+max-width="90%"
+%}
+
+>Notice that if you do decide to keep the volume after an approval, the pipeline will still count as "running" against your concurrency limit of your Codefresh plan. If you don't keep the volume, the pipeline is stopped/paused while it is waiting for approval and doesn't count against your concurrency limit. We advise you to keep the volume only for pipelines that really need this capability.
 
 ## Controlling the rejection behavior
 

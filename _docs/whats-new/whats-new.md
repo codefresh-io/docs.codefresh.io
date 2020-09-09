@@ -11,6 +11,7 @@ Recent Codefresh updates:
 ### September 2020
 
 - Security timeout - [documentation]({{site.baseurl}}/docs/administration/access-control/#security-timeout)
+- Preserve pipeline volume after approval - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/#keeping-the-shared-volume-after-an-approval)
 
 ### August 2020
 
