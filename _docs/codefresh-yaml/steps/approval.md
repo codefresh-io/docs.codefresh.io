@@ -129,7 +129,9 @@ For more details on access control and users see also the [account management pa
 
 ## Keeping the shared volume after an approval
 
-If you approve a pipeline and it continues to run, all contents of the [shared Codefresh volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) are lost. If you want to keep any temporary files that were there before the approval, you need to enable the respective policy in your [pipeline settings]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#policies).
+As soon as a pipeline starts waiting for an approval, all contents of the [shared Codefresh volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) are lost. Once the pipeline continues running all files that were created manually inside the volume are not available any more. 
+
+If you want to keep any temporary files that were there before the approval, you need to enable the respective policy in your [pipeline settings]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#policies).
 
 You can either set this option differently per pipeline, or globally in your account at your [account settings](https://g.codefresh.io/account-admin/account-conf/pipeline-settings).
 

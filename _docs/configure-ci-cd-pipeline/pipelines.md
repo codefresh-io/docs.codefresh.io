@@ -155,7 +155,7 @@ Once you create your pipeline you can also click on the top tab called *Settings
   - Once a build is created terminate previous builds only from a specific branch (name matches a regular expression)
   - Once a build is created, terminate all other running builds
   - Once a build is terminated, terminate all child builds initiated from it
-- **Pending approval volume**: choose what happens with the [pipeline volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) when a pipeline is waiting for [approval]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/)
+- **Pending approval volume**: choose what happens with the [pipeline volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) when a pipeline is waiting for [approval]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/#keeping-the-shared-volume-after-an-approval)
   - Keep the volume available
   - Discard the volume
   - Honor the option defined globally in your Codefresh account
