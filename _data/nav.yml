@@ -125,6 +125,8 @@
       url: "/pull-request-branches"
     - title: "Pipelines for Microservices"
       url: "/microservices"
+    - title: "GitOps deployments"
+      url: "/gitops-deployments"      
     # - title: "Production and Staging deployments"
     #   url: "/environment-deployments"
     # - title: Complex workflows
