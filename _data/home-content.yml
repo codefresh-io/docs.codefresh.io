@@ -77,6 +77,9 @@
     localurl: /docs/ci-cd-guides/pull-request-branches/
   - title: Pipelines for Microservices
     localurl: /docs/ci-cd-guides/microservices/  
+  - title: GitOps deployments
+    new: true
+    localurl: /docs/ci-cd-guides/gitops-deployments/  
   # - title: Production and Staging deployments
   #   localurl: /docs/ci-cd-guide/environment-deployments/
   # - title: Secrets Management

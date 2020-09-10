@@ -99,7 +99,7 @@ If you already have an application setup in ArgoCD, you can enter its project an
   url="/images/integrations/argocd/argocd-existing-app.png" 
   alt="Using an existing ArgoCD application in a Codefresh environment"
   caption="Using an existing ArgoCD application in a Codefresh environment"  
-  max-width="80%"
+  max-width="60%"
  %}
 
 You can also create a brand-new application with _provision_ option. In this dialog you can enter the exact same details that ArgoCD asks when creating a new application.
@@ -110,7 +110,7 @@ You can also create a brand-new application with _provision_ option. In this dia
   url="/images/integrations/argocd/argocd-provision-app.png" 
   alt="Creating a new ArgoCD application in a Codefresh environment"
   caption="Creating a new ArgoCD application in a Codefresh environment"  
-  max-width="80%"
+  max-width="60%"
  %}
 
 Codefresh will communicate with ArgoCD via its API and pass all the relevant details.
@@ -123,7 +123,7 @@ The end result is a new entry for your ArgoCD application will now appear in the
   url="/images/integrations/argocd/argocd-environment.png" 
   alt="ArgoCD environment status"
   caption="ArgoCD environment status"  
-  max-width="100%"
+  max-width="80%"
  %}
 
 To learn about the full GitOps support in Codefresh, see our GitOps deployment guide.
