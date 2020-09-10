@@ -9,7 +9,7 @@ Apart from traditional push-based Helm deployments, Codefresh can also be used f
 
 ## Connecting ArgoCD and Codefresh
 
-Follow the instructions for [connecting ArgoCD to Codefresh](({{site.baseurl}}/docs/docs/integrations/argo-cd/)) and creating a GitOps application
+Follow the instructions for [connecting ArgoCD to Codefresh](({{site.baseurl}}/docs/docs/integrations/argo-cd/)) and creating an ArgoCD application
 
 {% include image.html 
   lightbox="true" 
