@@ -196,6 +196,22 @@ Codefresh is using this information to fill the deployment history in the GitOps
 
 ## Creating a basic CD pipeline for GitOps
 
+To create a CD pipeline in Codefresh that is responsible for GitOps deployments you must first disable the auto-sync behavior of ArgoCD. You can disable auto-sync either from the GUI or via the [command line](https://argoproj.github.io/argo-cd/user-guide/auto_sync/):
+
+ {% include image.html 
+  lightbox="true" 
+  file="/images/guides/gitops/disable-auto-sync.png" 
+  url="/images/guides/gitops/disable-auto-sync.png" 
+  alt="Basic CD pipeline"
+  caption="Basic CD pipeline"  
+  max-width="80%"
+ %}
+
+ With the auto-sync behavior disabled, all Git pushes that happen on the GitOps repo will be ignored by ArgoCD (however ArgoCD will still mark your application as out-of-sync).
+
+ You can now [create a new pipeline]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/) in Codefresh using a [standard Git trigger]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/) that will monitor the GitOps repository for updates. This way Codefresh is responsible for the GitOps process instead of Argo.
+
+
  {% include image.html 
   lightbox="true" 
   file="/images/guides/gitops/argo-sync-pipeline.png" 
@@ -205,7 +221,75 @@ Codefresh is using this information to fill the deployment history in the GitOps
   max-width="80%"
  %}
 
+The big advantage here is that you can construct a full pipeline over the sync process with multiple steps before or after the sync. For example you could run some smoke tests after the deployment takes place. Here is an example pipeline:
+
+
+ `codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: "1.0"
+stages:
+  - "pre sync"
+  - "sync app"
+  - "post sync"
+steps:
+  pre_sync:
+    title: "Pre sync commands"
+    type: "freestyle" # Run any command
+    image: "alpine:3.9" # The image in which command will be executed
+    commands:
+      - echo "Sending a metrics marker"
+    stage: "pre sync"
+  sync_and_wait:
+    title: Sync ArgoCD app and wait
+    type: argocd-sync
+    arguments:
+      context: "argo-cd"
+      app_name: "${{ARGOCD_APP_NAME}}"
+      wait_healthy: true   
+    stage: "sync app"
+  post_sync:
+    title: "Post sync commands"
+    type: "freestyle" # Run any command
+    image: "alpine:3.9" # The image in which command will be executed
+    commands:
+      - echo "running smoke tests"
+    stage: "post sync"
+{% endraw %}
+{% endhighlight %}  
+
+The pipeline is using the [argo-sync plugin](https://codefresh.io/steps/step/argocd-sync) that can be used by Codefresh to start the sync process of an application from the Git repo to the cluster.
+
+The name of the `context` parameter should be the same name you used for your [ArgoCD integration]({{site.baseurl}}/docs/docs/integrations/argo-cd/).
+
+ {% include image.html 
+  lightbox="true" 
+  file="/images/guides/gitops/argo-context.png" 
+  url="/images/guides/gitops/argo-context.png" 
+  alt="Using the Argo integration name as a context"
+  caption="Using the Argo integration name as a context"  
+  max-width="80%"
+ %}
+
+The name of the application should be the same name as the ArgoCD Application.
+
+ {% include image.html 
+  lightbox="true" 
+  file="/images/guides/gitops/argo-application-name.png" 
+  url="/images/guides/gitops/argo-application-name.png" 
+  alt="Argo Application name"
+  caption="Argo Application name"  
+  max-width="80%"
+ %}
+
+ You can use pipeline variables or any other familiar Codefresh mechanism such as [shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/).
+
+ Once the pipeline has finished running the sync status will updated in your GitOps dashboard to reflect the current state.
+
+
 ## Rolling back Git versions
+
+In the GitOps dashboard you will also see a complete history of all past deployments as recorded in Git. You can select any of the previous version and rollback your application to the respective version.
 
  {% include image.html 
   lightbox="true" 
@@ -216,7 +300,9 @@ Codefresh is using this information to fill the deployment history in the GitOps
   max-width="80%"
  %}
 
-## Fully automated GitOps deployments
+The Rollback simply informs the cluster to use a different git hash for the sync process. It doesn't affect your Git repository and ArgoCD will now show your application as out-of-sync (because the last Git commit no longer matches the status of the cluster).
+
+This rollback behavior is best used as an emergency measure after a failed deployment where you want to bring the cluster back to a previous state in a temporary manner. If you wish to keep the current rollback statue as a permanent status it is best to use the standard `git reset/revert` commands and change the GitOps repository to its desired state. 
 
 
 
