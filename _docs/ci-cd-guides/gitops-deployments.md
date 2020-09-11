@@ -260,7 +260,7 @@ steps:
 
 The pipeline is using the [argo-sync plugin](https://codefresh.io/steps/step/argocd-sync) that can be used by Codefresh to start the sync process of an application from the Git repo to the cluster.
 
-The name of the `context` parameter should be the same name you used for your [ArgoCD integration]({{site.baseurl}}/docs/docs/integrations/argo-cd/).
+The name of the `context` parameter should be the same name you used for your [ArgoCD integration]({{site.baseurl}}/docs/integrations/argo-cd/).
 
  {% include image.html 
   lightbox="true" 
@@ -311,7 +311,7 @@ This rollback behavior is best used as an emergency measure after a failed deplo
 ## What to read next
 
 * [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
-* [ArgoCD integration]({{site.baseurl}}/docs/docs/integrations/argo-cd/)
+* [ArgoCD integration]({{site.baseurl}}/docs/integrations/argo-cd/)
 * [Environment dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/environment-dashboard/)
 * [Helm promotions]({{site.baseurl}}/docs/new-helm/helm-environment-promotion/)
 
