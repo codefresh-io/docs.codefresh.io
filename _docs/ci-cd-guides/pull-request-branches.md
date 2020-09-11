@@ -5,7 +5,7 @@ group: ci-cd-guides
 toc: true
 ---
 
-Codefresh has native support for working with different branches and building pull requests. In particular it has a very rich trigger model that allows you to handle specific events (such as opening a pull request or adding a comment).
+Codefresh has native support for working with different branches and building pull requests. In particular, it has a very rich trigger model that allows you to handle specific events (such as opening a pull request or adding a comment).
 
 The possible actions can be seen on the trigger dialog of your pipeline:
 
@@ -32,7 +32,7 @@ You can change the default behavior so that it matches your own workflow using e
 
 You don't have to do anything special to setup this communication between Codefresh and your Git provider. It was setup automatically for you when you connected your Codefresh account to your Git provider.
 
-Codefresh also creates for you a default GIT trigger the first time you create a project.
+Codefresh also creates for you a default Git trigger the first time you create a project.
 
 
 {% include 
@@ -94,11 +94,11 @@ caption="Building a specific branch"
 max-width="50%" 
 %}
 
-From the same dialog you can also choose a specific trigger to "emulate" for this branch, if you have connected multiple triggers on the same pipeline.
+From the same dialog, you can also choose a specific trigger to "emulate" for this branch if you have connected multiple triggers on the same pipeline.
 
 ## Restricting which branches to build
 
-While the auto-build nature of Codefresh for all branches, is what you want most times, for larger projects you might wish to restrict pipeline running only on specific branches.
+The auto-build nature of Codefresh for all branches, is what you want most times. For larger projects you might wish to restrict pipelines running only on specific branches.
 
 This is performed by filling [the branch field]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/#pull-request-target-branch-and-branch) in the trigger dialog with a regular expression.
 
@@ -175,9 +175,9 @@ steps:
 
 This pipeline will execute for **ALL** branches and pull requests, but:
 
-1. If the branch is `master` it will deploy the docker image to the production cluster and namespace `default`
+1. If the branch is `master` it will deploy the Docker image to the production cluster and namespace `default`
 1. If the branch starts with `JIRA-FEATURE-` (e.g. JIRA-FEATURE-1234, JIRA-FEATURE-testing, JIRA-FEATURE-fixbbug), it will deploy to a staging cluster to namespace `development`
-1. In all other cases of branches or pull request it will just build the docker image without deploying it anywhere
+1. In all other cases of branches or pull requests it will just build the Docker image without deploying it anywhere
 
 You can see that if a developer creates an unrelated branch (that doesn't match the expected name), no deployment will take place:
 
@@ -196,7 +196,7 @@ This is a more granular way to control how your branch affects your pipeline.
 
 ## Handling Pull Request events
 
-The big power of Codefresh becomes evident when you realize that you can have extra pipelines that respond to specific Pull Request events. For example you can have a specific pipeline that runs **only** when a Pull Request is opened for the first time or when a Pull Request is closed.
+The big power of Codefresh becomes evident when you realize that you can have extra pipelines that respond to specific Pull Request events. For example, you can have a specific pipeline that runs **only** when a Pull Request is opened for the first time or when a Pull Request is closed.
 
 You can see all supported Pull Request events in the trigger dialog.
 
@@ -236,7 +236,7 @@ caption="Trunk Based Development"
 max-width="100%" 
 %}
 
-In this process the master branch is always ready for production. The feature branches are created from master and can have several commits before being merged back to master.
+In this process, the master branch is always ready for production. The feature branches are created from master and can have several commits before being merged back to master.
 
 This process can be easily created in Codefresh with two separate pipelines
 
@@ -257,7 +257,7 @@ max-width="100%"
 The pipeline 
 
 1. Checks out the source code
-1. Builds a docker image
+1. Builds a Docker image
 1. Creates and Stores a Helm chart
 1. Deploys the chart to Kubernetes
 
@@ -272,14 +272,14 @@ caption="Pipeline for feature branches"
 max-width="100%" 
 %}
 
-For each feature branch
+For each feature branch:
 
 1. We checkout the code
 1. Run linters on the source code
 1. Build the Docker image
-1. Run some unit tests to verify the docker image (possible with [service containers]({{site.baseurl}}/docs/codefresh-yaml/service-containers/))
+1. Run some unit tests to verify the Docker image (possible with [service containers]({{site.baseurl}}/docs/codefresh-yaml/service-containers/))
 
-To implement trunk based development we create two triggers for these pipelines. For the production pipeline we just make sure that the trigger is only launched when commits land on master (and only there)
+To implement trunk-based development we create two triggers for these pipelines. For the production pipeline we just make sure that the trigger is only launched when commits land on master (and only there).
 
 {% include image.html 
 lightbox="true" 
@@ -290,7 +290,7 @@ caption="Trigger for production pipeline"
 max-width="50%" 
 %}
 
-For the feature branch pipeline we check the events for
+For the feature branch pipeline we check the events for:
 
 * Pull Request Open
 * Pull Request Sync (when a commit happens on the PR)
@@ -306,7 +306,7 @@ caption="Trigger for pull request pipeline"
 max-width="50%" 
 %}
 
-With this configuration the whole process is as follows
+With this configuration, the whole process is as follows:
 
 1. A developer creates a new branch from master. Nothing really happens at this point
 1. The developer opens a new Pull Request for this branch. The feature pipeline runs (because of the PR open checkbox)
@@ -314,15 +314,15 @@ With this configuration the whole process is as follows
 1. The developer commits the branch back to master. The main pipeline runs and deploys to production.
 
 
-You can fine tune this workflow according to your needs. For example you might also specify a naming pattern on the branches for the Pull Requested (e.g. feature-xxx) to further restrict which branches are considered ready for production.
+You can fine-tune this workflow according to your needs. For example, you might also specify a naming pattern on the branches for the Pull Requested (e.g. feature-xxx) to further restrict which branches are considered ready for production.
 
 > Notice that we didn't need to handle the PR close/merge events. As soon as a Pull Request is merged back to master, the GIT provider sends anyway an event that a commit has happened in master, which means that the main production pipeline will take care of releasing the contents of master.
 
 ## Git-flow
 
-[Git Flow](https://nvie.com/posts/a-successful-git-branching-model/) is another popular management process for git branches. For brevity reasons we will not list all the details for all branch types, but it should be obvious that you can recreate all aspects of Git flow with Codefresh triggers.
+[Git Flow](https://nvie.com/posts/a-successful-git-branching-model/) is another popular management process for git branches. For brevity reasons, we will not list all the details for all branch types, but it should be obvious that you can recreate all aspects of Git flow with Codefresh triggers.
 
-For example to run a pipeline only for pull requests from branches named `feature-XXX` that will be merged back to `develop` branch you can create a trigger like this:
+For example to run a pipeline only for pull requests from branches named `feature-XXX` that will be merged back to `develop` branch, you can create a trigger like this:
 
 {% include image.html 
 lightbox="true" 

@@ -170,7 +170,7 @@ You can follow the same pattern for any other kind of application (NodeJS, Pytho
 
 As an example, let's say that you have an application with 5 microservices. Two of them use Java and 3 use NodeJs. You can easily create 2 pipelines for the whole application (one for each programming language).
 
-However, if you take advantage of [multi-stage docker builds]({{site.baseurl}}/docs/ci-cd-guides/building-docker-images/#production-ready-docker-images-with-multi-stage-builds) you could even have a single pipeline for all 5 services:
+However, if you take advantage of [multi-stage Docker builds]({{site.baseurl}}/docs/ci-cd-guides/building-docker-images/#production-ready-docker-images-with-multi-stage-builds) you could even have a single pipeline for all 5 services:
 
  `codefresh.yml`
 {% highlight yaml %}
@@ -205,7 +205,7 @@ steps:
 This pipeline 
 
 1. Checks out source code from any connected trigger
-1. Creates a docker image (assumes a multi-stage Dockerfile)
+1. Creates a Docker image (assumes a multi-stage Dockerfile)
 1. Deploys the image to a Kubernetes cluster
 
 

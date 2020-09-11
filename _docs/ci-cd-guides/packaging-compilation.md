@@ -13,13 +13,13 @@ When you use Codefresh for Continuous Integration, one of the most basic tasks i
 
 Unlike other CI solutions that you might be familiar with, Codefresh build nodes are very simple. They have only Docker installed and nothing else. When you run a Codefresh pipeline you choose the Docker images that will be used as a CI/CD environment. Once the pipeline runs, the Docker images are automatically launched by Codefresh and thus you have access to all the tools that they contain. Once the pipeline finishes, all Docker images that were used for the pipeline are discarded and the build machine reverts back to the original state.
 
-So even if your application is not itself packaged as a Docker image, Codefresh pipelines are always "Docker based" in the sense that Docker is used for the tools that take part in the pipeline.
+So even if your application is not itself packaged as a Docker image, Codefresh pipelines are always "Docker-based" in the sense that Docker is used for the tools that take part in the pipeline.
 
 This approach has a lot of advantages:
 
  * There is no maintenance effort for build nodes. They only have Docker and nothing else.
  * You can use any tool in your pipeline that you want without actually installing it first
- * All public Docker images in Dockerhub are potential pipeline steps
+ * All public Docker images in Docker Hub are potential pipeline steps
  * You can use different versions of the same tool in the same pipeline
  * It is very easy to upgrade a tool to a new version (just change the tag of the Docker container used)
 
@@ -33,7 +33,7 @@ All [pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/) in Codefresh a
 
 ## Choosing programming tools as Docker images
 
-In practice this means that if you have a Node application, you need to use a [Node image]({{site.baseurl}}/docs/learn-by-example/nodejs)  to package your application, a [Maven image]({{site.baseurl}}/docs/learn-by-example/java/spring-boot-2/) if you are working with Java, a [Python]({{site.baseurl}}/docs/learn-by-example/python/) image for python applications and so on. You launch the image using the Codefresh freestyle step. Here is an example for Node:
+In practice this means that if you have a Node application, you need to use a [Node image]({{site.baseurl}}/docs/learn-by-example/nodejs)  to package your application, a [Maven image]({{site.baseurl}}/docs/learn-by-example/java/spring-boot-2/) if you are working with Java, a [Python]({{site.baseurl}}/docs/learn-by-example/python/) image for python applications, and so on. You launch the image using the Codefresh freestyle step. Here is an example for Node:
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -47,7 +47,7 @@ steps:
      - npm run test
 {% endhighlight %}
 
-This pipeline will download the `node:11` image on the Codefresh build machine, launch it and pass it your source code. Then it will run the commands `npm install` and `npm run test`. The result is that your source code can be packaged without actually installing Node.js on the build machine beforehand.
+This pipeline will download the `node:11` image on the Codefresh build machine, launch it, and pass it your source code. Then it will run the commands `npm install` and `npm run test`. The result is that your source code can be packaged without actually installing Node.js on the build machine beforehand.
 
 You can mix and max different images on the same pipeline. Let's say for example that you have a single repository that contains a front-end in Node.js and a back-end in Java. You can easily create a pipeline that deals with both:
 
@@ -72,9 +72,9 @@ steps:
 
 This pipeline will compile the Java code under the `back-end` folder and the Javascript Web application found in the `front-end` folder. Note that both Docker images have access to the same workspace via [the automatic Codefresh volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps).
 
-Therefore if you want to use Codefresh as fast as possible you can simply search Dockerhub for an existing image that uses the tool that you need. Top level Dockerhub images are curated by the Docker team and are considered safe. So for most popular programming languages there is already a Docker image that you can use in your pipeline.
+Therefore if you want to use Codefresh as fast as possible you can simply search Dockerhub for an existing image that uses the tool that you need. Top- level DockerHub images are curated by the Docker team and are considered safe. So for most popular programming languages, there is already a Docker image that you can use in your pipeline.
 
-Of course you can also [create your private docker image or use any existing image]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/) from a private or public Registry. In that case you need to write the full name to the image used. For example if you use an image from GCR or another private registry you mention it like this:
+Of course, you can also [create your private Docker image or use any existing image]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/) from a private or public Registry. In that case, you need to write the full name to the image used. For example, if you use an image from GCR or another private registry you mention it like this:
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -92,16 +92,16 @@ steps:
      - jasmine init
 {% endhighlight %}
 
-In this pipeline Docker images have a full prefix, so they are pulled by the respective registry instead of Dockerhub.
+In this pipeline Docker images have a full prefix, so they are pulled by the respective registry instead of DockerHub.
 
-In this manner you can run any tool in any Codefresh pipeline as long as it is offered in a Docker image. This means that Codefresh pipelines can work with any programming language and any tool that you can use on your workstation.
+In this manner, you can run any tool in any Codefresh pipeline as long as it is offered in a Docker image. This means that Codefresh pipelines can work with any programming language and any tool that you can use on your workstation.
 
 Unlike other CI solutions, you don't need to wait for the Codefresh team to add "native support" for your favorite tool in a Codefresh pipeline. You can simply package it in a Docker image yourself and use it straight away.
 
 
 ## Using multiple Docker images in a single pipeline
 
-Notice that unlike other CI solutions, there is no limit on the docker images that you can use in a single pipeline. Also all Docker images that take part in the same pipeline, have access to the same project workspace via the [shared Codefresh volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps).
+Notice that unlike other CI solutions, there is no limit on the Docker images that you can use in a single pipeline. Also, all Docker images that take part in the same pipeline, have access to the same project workspace via the [shared Codefresh volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps).
 
 This means that you have maximum flexibility on what tools you use in a single project. As an example, let's see a pipeline that is using 4 different images for a single project.
 
@@ -155,7 +155,7 @@ Notice how all Docker images use the same workspace without any extra configurat
 
 ## Using different tool versions in the same pipeline 
 
-The corollary to Docker based pipelines is that you can use the same tool but with a different version in the **same** pipeline.
+The corollary to Docker-based pipelines is that you can use the same tool but with a different version in the **same** pipeline.
 As an example here is a pipeline that runs both Python 2.x and Python 3.x in the same pipeline and it just works.
 
 `codefresh.yml`
