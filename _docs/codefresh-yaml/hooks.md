@@ -202,7 +202,7 @@ Logs for steps hooks are shown in the log window of the step itself.
 image.html 
 lightbox="true" 
 file="/images/codefresh-yaml/hooks/step-after.png" 
-url="/images/codefresh-yaml/hooks/step-after" 
+url="/images/codefresh-yaml/hooks/step-after.png" 
 alt="Hooks before a pipeline" 
 caption="Hooks before a pipeline" 
 max-width="80%" 

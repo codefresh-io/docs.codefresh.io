@@ -310,7 +310,7 @@ You will be able to [create pipelines]({{site.baseurl}}/docs/configure-ci-cd-pip
 - [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/) 
 - [Git triggers]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/) 
 - [Git clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) 
-- [Checking out source code]({{site.baseurl}}/docs/docs/yaml-examples/examples/git-checkout/) 
+- [Checking out source code]({{site.baseurl}}/docs/yaml-examples/examples/git-checkout/) 
 
 
 

@@ -255,7 +255,7 @@ If you don't want to create a pipeline from an existing one, you can also create
 | `labels`       |  `metadata` | object | Holds the `tags` array |
 | `tags`       |  `labels` | array | A list of [access control tags]({{site.baseurl}}/docs/administration/access-control/#marking-pipelines-with-policy-attributes) for this pipeline |
 | `description`       |  `metadata` | string | Human readable description of the pipeline |
-| `isPublic `       |  `metadata` | boolean | If true the pipeline logs [will be public]({{site.baseurl}}/docs/docs/configure-ci-cd-pipeline/build-status/) even for non-authenticated users |
+| `isPublic `       |  `metadata` | boolean | If true the pipeline logs [will be public]({{site.baseurl}}/docs/configure-ci-cd-pipeline/build-status/) even for non-authenticated users |
 | `template `       |  `metadata` | boolean | If true, this pipeline will be listed as a template when creating a new pipeline |
 
 Example of metadata:
