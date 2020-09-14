@@ -38,13 +38,13 @@ To connect to an existing ArgoCD installation you need to use the [Codefresh CLI
 
 You can [install the CLI](https://codefresh-io.github.io/cli/installation/) by following its documentation. Once it is installed you need to authenticate it with your Codefresh account [by creating an API token]({{site.baseurl}}/docs/integrations/codefresh-api/#authentication-instructions). Make sure that you choose all scopes if this is the first time you authenticate your CLI with Codefresh.
 
-Once the cli is authenticated, run the installation command:
+Once the CLI is authenticated, run the installation command:
 
 ```
 codefresh install argocd-agent
 ```
 
->Please note that this command must be run from a workstation that has a kubeconfig context pointing to the ArgoCD cluster. You can also run it from your cloud console if you install codefresh cli there.
+>Please note that this command must be run from a workstation that has a kubeconfig context pointing to the ArgoCD cluster. You can also run it from your cloud console if you install codefresh CLI there.
 
 Answer the questions asked by the wizard. These include:
 
@@ -89,7 +89,7 @@ name for the integration.
 
 In addition to the existing [Kubernetes/Helm environments]({{site.baseurl}}/docs/deploy-to-kubernetes/environment-dashboard/), you can now create ArgoCD applications via the Codefresh UI.
 
-Visit your environments dashboard by clicking on *Environments* from the left sidebar. The click the *Add environment* drop-down and choose *ArgoCD*.
+Visit your GitOps dashboard by clicking on *GitOps* from the left sidebar. The click the *Add App* button at the top right.
 
 If you already have an application setup in ArgoCD, you can enter its project and name and Codefresh will automatically retrieve all information from the ArgoCD instance.
 
@@ -102,7 +102,7 @@ If you already have an application setup in ArgoCD, you can enter its project an
   max-width="60%"
  %}
 
-You can also create a brand-new application with _provision_ option. In this dialog you can enter the exact same details that ArgoCD asks when creating a new application.
+You can also create a brand-new application with the *provision* option. In this dialog you can enter the exact same details that ArgoCD asks when creating a new application.
 
 {% include image.html 
   lightbox="true" 
@@ -126,10 +126,11 @@ The end result is a new entry for your ArgoCD application will now appear in the
   max-width="80%"
  %}
 
-To learn about the full GitOps support in Codefresh, see our GitOps deployment guide.
+To learn about the full GitOps support in Codefresh, see our [GitOps deployment guide]({{site.baseurl}}/docs/ci-cd-guides/gitops-deployments/).
 
 ## What to read next
 
+- [GitOps deployments]({{site.baseurl}}/docs/ci-cd-guides/gitops-deployments/)
 - [Environment Dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/environment-dashboard/)
 - [Codefresh CLI](https://codefresh-io.github.io/cli/) 
 - [Kubernetes integration]({{site.baseurl}}/docs/integrations/kubernetes/) 
