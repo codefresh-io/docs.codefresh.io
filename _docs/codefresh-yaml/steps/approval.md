@@ -76,7 +76,7 @@ according to the approval result.
 
 ## Automatic approvals/rejections
 
-By default, a pipeline that contains an approval step will pause for 7 days (168 hours) onces it reaches that step. If you want some automatic action to happen after a specified time period you can defined it in advance with the `timeout` property:
+By default, a pipeline that contains an approval step will pause for 7 days (168 hours) onces it reaches that step. If you want some automatic action to happen after a specified time period you can define it in advance with the `timeout` property:
 
 `codefresh.yml`
 {% highlight yaml %}

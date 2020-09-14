@@ -45,7 +45,7 @@ This docker build does the following:
 1. Installs cmake and boost
 1. Sets cmake as the default command
 
-### Create a CI pipeline for C++ applications
+## Create a CI pipeline for C++ applications
 
 We can now use the custom Docker image in order to compile/test the C++ application:
 

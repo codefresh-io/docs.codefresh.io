@@ -16,7 +16,7 @@ You can see the example project at [https://github.com/codefresh-contrib/rust-sa
 * `cargo clean` removes artifacts and binaries.
 
 
-### Create a CI pipeline for Rust applications
+## Create a CI pipeline for Rust applications
 
 Creating a CI/CD pipeline for Rust is very easy, because Codefresh can run any [Rust image](https://hub.docker.com/_/rust) that you wish. Rust docker images already contain the `cargo` package manager. 
 

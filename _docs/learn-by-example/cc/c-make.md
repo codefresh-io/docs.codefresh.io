@@ -18,7 +18,7 @@ You can see the example project at [https://github.com/codefresh-contrib/c-sampl
 
 There are also extra targets for `tags` and `etags`.
 
-### Create a CI pipeline for C applications
+## Create a CI pipeline for C applications
 
 Creating a CI/CD pipeline for C is very easy, because Codefresh can run any [gcc image](https://hub.docker.com/_/gcc/) that you wish. Gcc docker images already contain the `make` utility. 
 

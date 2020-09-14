@@ -55,7 +55,7 @@ This docker build does the following:
 
 The resulting is very small, as it contains only packaged/minified files.
 
-### Create a CI pipeline for React.js (Docker build)
+## Create a CI pipeline for React.js (Docker build)
 
 Creating a CI/CD pipeline for React is very easy, because Codefresh can run any [node image](https://hub.docker.com/_/node/) that you wish. 
 
