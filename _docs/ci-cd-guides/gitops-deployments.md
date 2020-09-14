@@ -20,11 +20,11 @@ Follow the instructions for [connecting ArgoCD to Codefresh]({{site.baseurl}}/do
   max-width="40%"
  %}
 
- Once you connect your application you will see it under in the [Environment dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/environment-dashboard/) in the Codefresh UI.
+ Once you connect your application you will see it under in the GitOps application screen in the Codefresh UI.
 
 ## Working with the GitOps dashboard
 
-After you create an ArgoCD application, you can click on it in the [Environments screen](https://g.codefresh.io/environment-v2/) and see the respective GitOps dashboard.
+After you create an ArgoCD application, you can click on it in the [GitOps environment overview](https://g.codefresh.io/environment-v2/) and see the respective GitOps screen.
 
 
 {% include image.html 
@@ -40,7 +40,7 @@ This dashboard is the central place for monitoring your application and contains
 
 1. Current health and sync status
 1. Deployment graph that shows successful/failed deployments on the selected time period
-1. Complete history of deployments according to Git hash. For each deployment you can also see which Pull Request was used for the commit, who was the committer and which JIRA issues this Pull request is solving.
+1. Complete history of deployments according to Git hash. For each deployment you can also see which Pull Request was used for the commit, who was the committer and which JIRA issues this Pull request is solving (provided that the image was built by a Codefresh pipeline)
 1. The Kubernetes services that belong to this application (on the services tab)
 
 The deployment status is fetched from your ArgoCD integration in a live manner. If at any point, the deployment is not synced with GIT, you will instantly see the out-of-sync status:
