@@ -58,9 +58,32 @@ For each Git hash Codefresh associates the respective Pull Request and Jira issu
 
 You can manually create these annotations with the [standard Codefresh annotation support]({{site.baseurl}}/docs/codefresh-yaml/annotations/) or via the built-in pipeline steps that we will see in the next section. 
 
-### Filtering deployment history with the search field
+### Filtering the deployment history
 
-The search field on the top right allows you to filter the deployment history table and view only a subset of deployments that match your criteria.
+You can add filters on the deployment history by using the multi-select field on the top left of the screen.
+
+{% include image.html 
+  lightbox="true" 
+  file="/images/guides/gitops/filter.png" 
+  url="/images/guides/gitops/filter.png" 
+  alt="Filtering options"
+  caption="Filtering options"  
+  max-width="40%"
+ %}
+
+ You can add filters for:
+
+ * Git committer(s)
+ * Pull Request number(s)
+ * Jira issue(s)
+
+ If you define multiple options they work in an OR manner.
+
+
+
+### Searching the deployment history
+
+For advanced filtering options, the search field on the top right allows you to view only the subset of deployments that match your custom criteria.
 
 Apart from direct text search, the text field also supports a simple query language with the following keywords:
 
