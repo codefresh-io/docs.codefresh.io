@@ -327,8 +327,126 @@ The Rollback simply informs the cluster to use a different git hash for the sync
 
 This rollback behavior is best used as an emergency measure after a failed deployment where you want to bring the cluster back to a previous state in a temporary manner. If you wish to keep the current rollback statue as a permanent status it is best to use the standard `git reset/revert` commands and change the GitOps repository to its desired state. 
 
+## Fully automated deployments with pipelines that perform Git commits
+
+Usually the Pull Requests that take part in a GitOps workflow are created and approved in a manual way (after code review). You have the option however to fully automate the whole process and rather than opening a Pull Request on both the application repository and the manifest repository, commit automatically the manifest changes inside the pipeline that creates the artifact.
 
 
+Here is an example pipeline that creates a Docker image and also commits a version change in the Kubernetes manifest to denote the new Docker tag of the application:
+
+{% include image.html 
+  lightbox="true" 
+  file="/images/guides/gitops/ci-cd-pipeline.png" 
+  url="/images/guides/gitops/ci-cd-pipeline.png" 
+  alt="Pipeline that commits manifests"
+  caption="Pipeline that commits manifests"  
+  max-width="80%"
+ %}
+
+There are many ways to change a Kubernetes manifest in a programmatic way, and for brevity reasons we use the [yq](https://github.com/mikefarah/yq) command line tool. 
+
+
+ `codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: "1.0"
+stages:
+  - "clone"
+  - "build"
+  - "metadata"
+  - "gitops"
+
+steps:
+  clone:
+    title: "Cloning repository"
+    type: "git-clone"
+    repo: "kostis-codefresh/simple-web-app"
+    revision: '${{CF_REVISION}}'
+    stage: "clone"
+
+  build:
+    title: "Building Docker image"
+    type: "build"
+    image_name: "kostiscodefresh/simple-web-app"
+    working_directory: "${{clone}}"
+    tags:
+    - "latest"
+    - '${{CF_SHORT_REVISION}}'
+    dockerfile: "Dockerfile"
+    stage: "build"
+    registry: dockerhub  
+  enrich-image:
+    title: Add PR info
+    type: image-enricher
+    stage: "metadata"
+    arguments:
+      IMAGE:  docker.io/kostiscodefresh/simple-web-app:latest
+      BRANCH: '${{CF_BRANCH}}'
+      REPO: 'kostis-codefresh/simple-web-app'
+      GIT_PROVIDER_NAME: github-1
+  jira-issue-extractor:
+    title: Enrich image with jira issues
+    type: jira-issue-extractor
+    stage: "metadata"
+    fail_fast: false
+    arguments:
+      IMAGE: docker.io/kostiscodefresh/simple-web-app:latest
+      JIRA_PROJECT_PREFIX: 'SAAS'
+      MESSAGE: SAAS-8842
+      JIRA_HOST: codefresh-io.atlassian.net
+      JIRA_EMAIL: kostis@codefresh.io
+      JIRA_API_TOKEN: '${{JIRA_TOKEN}}'
+  clone_gitops:
+    title: cloning gitops repo
+    type: git-clone
+    arguments:
+      repo: 'kostis-codefresh/simple-kubernetes-deployment'
+      revision: 'master'
+    stage: "gitops"
+    when:
+      branch:
+        only:
+          - master    
+  change_manifest:
+    title: "Update k8s manifest"
+    image: "mikefarah/yq" # The image in which command will be executed
+    commands:
+      - yq w -i deployment.yml spec.template.spec.containers[0].image docker.io/kostiscodefresh/simple-web-app:${{CF_SHORT_REVISION}}
+      - cat deployment.yml
+    working_directory: "${{clone_gitops}}" 
+    stage: "gitops"
+    when:
+      branch:
+        only:
+          - master 
+  commit_and_push:
+    title: Commit manifest
+    type: git-commit
+    stage: "gitops"
+    arguments:
+      repo: 'kostis-codefresh/simple-kubernetes-deployment'
+      git: github-1
+      working_directory: '/codefresh/volume/simple-kubernetes-deployment'
+      commit_message: Updated manifest
+      git_user_name: my-git-username
+      git_user_email: my-git-email
+    when:
+      branch:
+        only:
+          - master      
+{% endraw %}
+{% endhighlight %}  
+
+This pipeline:
+
+1. Checks out the Git repository that contains the source code
+1. Builds a Docker image and tags it with the Git hash
+1. Enriches the image with the Pull request and ticket information as explained in the previous sections
+1. Checks out the Git repository that contains the Kubernetes manifests
+1. Performs a text replacement on the manifest updating the `containers` segment with the new Docker image
+1. Commits the change back using the [Git commit plugin](https://codefresh.io/steps/step/git-commit) to the Git repository that contains the manifests.
+
+The CD pipeline (described in the previous section) will detect that commit and use the [sync plugin](https://codefresh.io/steps/step/argocd-sync) to instruct ArgoCD to deploy the new tag. Alternatively you can setup the ArgoCD project to auto-sync on its own if it detects changes in the Git repository with the manifests.
 
 
 ## What to read next
