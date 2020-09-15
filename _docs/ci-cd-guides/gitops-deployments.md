@@ -327,7 +327,7 @@ The Rollback simply informs the cluster to use a different git hash for the sync
 
 This rollback behavior is best used as an emergency measure after a failed deployment where you want to bring the cluster back to a previous state in a temporary manner. If you wish to keep the current rollback statue as a permanent status it is best to use the standard `git reset/revert` commands and change the GitOps repository to its desired state. 
 
-## Fully automated deployments with pipelines that perform Git commits
+## Performing automatic Git commits
 
 Usually the Pull Requests that take part in a GitOps workflow are created and approved in a manual way (after code review). You have the option however to fully automate the whole process and rather than opening a Pull Request on both the application repository and the manifest repository, commit automatically the manifest changes inside the pipeline that creates the artifact.
 
