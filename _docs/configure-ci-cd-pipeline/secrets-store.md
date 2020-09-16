@@ -1,23 +1,24 @@
 ---
 title: "Secrets Storage"
-description: "Keep sensitive data on your favorite secret store provider"
+description: "Manage Kubernetes secrets with Codefresh"
 group: configure-ci-cd-pipeline
 toc: true
 ---
 
 Codefresh has added the additional ability to resolve variables storing secrets from remote sources.
 
-It allows the user to keep sensitive data on his/her favorite secret-store provider, and for Codefresh to request it during pipeline execution on user's demand.
-Secret-Store is an additional context in Codefresh, which can be created, updated, deleted, etc, using Codefresh CLI: `codefresh create context secret-store --help`. 
+This allows you to keep sensitive data on your cluster, and for Codefresh to request it during pipeline execution on user's demand.
 
-At the moment, we only support two types: Kubernetes (SAAS version) and Runtime-Kubernetes (hybrid deployments).
+Secret-Store is an additional context in Codefresh, which can be created, updated, deleted, etc, using the Codefresh CLI: `codefresh create context secret-store --help`. 
+
+At the moment, we support two types of secret storage: Kubernetes (SAAS version) and Runtime-Kubernetes (hybrid deployments).
 
 > Note: This feature is for Enterprise accounts only.
 
 ## Prerequisites (for Kubernetes secret store)
 
 You need to have your Kubernetes cluster [connected to Codefresh]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/).
-(this is only for Kubernetes type secret store, for runtime-kubernetes [hybrid installation], this is not required)
+(this is only for the Kubernetes type secret store, for runtime-kubernetes [hybrid installation]({{site.baseurl}}/docs/administration/behind-the-firewall/), this is not required)
 
 ## Create a Secret
 
@@ -83,6 +84,8 @@ Where:
 - `$RESOURCE_NAME` is the name of the secret (optional)
 
 ## Runtime Secret Store (Hybrid Installation)
+
+If you are using the [hybrid installation]({{site.baseurl}}/docs/administration/behind-the-firewall/) of Codefresh with the [Runner]({{site.baseurl}}/docs/administration/codefresh-runner/)) you can also store secrets on your own runtime.
 
 ### Using the Codefresh UI
 
