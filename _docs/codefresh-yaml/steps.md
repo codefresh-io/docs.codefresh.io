@@ -246,7 +246,7 @@ Here is the resulting yaml:
 version: '1.0'
 kind: step-type
 metadata:
-  name: vault
+  name: <codefresh_account_name>/<step_name>
   isPublic: true
   description: >-
     The plugin exports KV pairs from Hashicorp Vault to Codefresh pipeline ENV
