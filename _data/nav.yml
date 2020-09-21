@@ -425,6 +425,8 @@
       url: "/codefresh-on-prem"
     - title: Add Users
       url: "/invite-your-team-member"
+    - title: User settings
+      url: "/user-settings"
     - title: Enterprise Account Management
       url: "/ent-account-mng"
     - title: Single Sign-On
