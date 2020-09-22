@@ -564,6 +564,7 @@ With the current implementation of hooks, the following limitations are present:
 * [Codefresh variables]({{site.baseurl}}/docs/codefresh-yaml/variables/) are not interpolated inside hook segments
 * The [debugger]({{site.baseurl}}/docs/configure-ci-cd-pipeline/debugging-pipelines/) cannot inspect commands inside hook segments
 * Hooks are not supported for [parallel steps]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/)
+* You cannot use [Codefresh plugins]({{site.baseurl}}/docs/codefresh-yaml/steps/#creating-your-own-step) inside hook segments
 
 
 
