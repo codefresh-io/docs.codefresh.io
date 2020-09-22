@@ -349,6 +349,8 @@ For the metadata section note the following:
 
 For the argument section we follow the [JSON Schema](http://json-schema.org/learn/miscellaneous-examples.html). You can use the [Schema generator](https://jsonschema.net/) to easily create a schema. JSON schema is used for arguments (i.e. input parameters) as well as output parameters as we will see later on.
 
+The property `additionalProperties` defines how strict the plugin will be with its arguments. If you set it to `false` (which is usually what you want) the pipeline will fail if the plugin is given more arguments that it is expecting. If you set it to `true`, then the plugin will only use the arguments it understands and will ignore the rest.
+
 The final part is the step implementation. Here you can define exactly the yaml that this step will insert in the pipeline. You can use any of the built-in steps in Codefresh and even add multiple steps.
 
 >Note that currently you cannot nest custom pipeline steps. We are aware of this limitation and are actively working on it, but at the time or writing you cannot use a typed step inside another typed step.
