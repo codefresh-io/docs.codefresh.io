@@ -16,7 +16,7 @@ see the [overview page]({{site.baseurl}}/docs/administration/single-sign-on/sso-
 
 To setup OneLogin for SSO do the following:
 
-### Step 1: Configure app on the OneLogin dashboard
+## Step 1: Configure app on the OneLogin dashboard
 
 Log in to the [OneLogin Administration Dashboard](https://www.onelogin.com/), and click Apps > Add Apps.
 
@@ -56,17 +56,19 @@ Open the SSO tab to get the Client ID and client Secret
 
 {% include image.html 
 lightbox="true" 
-file="/images/administration/sso/onelogin/step4.png" 
-url="/images/administration/sso/onelogin/step4.png"
+file="/images/administration/sso/onelogin/step4-post.png" 
+url="/images/administration/sso/onelogin/step4-post.png"
 alt="Copying the values of Client ID and Secret"
 caption="Copying the values of Client ID and Secret"
 max-width="90%"
 %}
 
+Make sure that *Application Type* is set to `Web` and *Token endpoint Authentication* is set to `POST`.
+
 Note down the values as they will be used in the next section.
 
 
-### Step 2: Configure OneLogin app with Codefresh service provider settings
+## Step 2: Configure OneLogin app with Codefresh service provider settings
 
 Go back into Codefresh and choose OneLogin at the [SSO Settings](https://g.codefresh.io/account-admin/sso)
 
@@ -109,7 +111,7 @@ max-width="90%"
 
 Note this down.
 
-### Step 3: Setup Login and Redirect URI's
+## Step 3: Setup Login and Redirect URI's
 
 Go back to the OneLogin dashboard.
 
