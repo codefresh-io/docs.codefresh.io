@@ -49,7 +49,7 @@ codefresh install argocd-agent
 Answer the questions asked by the wizard. These include:
 
  * The name of the integration (user-defined)
- * Your ArgoCD URL, username and password
+ * Your ArgoCD URL, username and password (you can also use [an auth token](https://argoproj.github.io/argo-cd/operator-manual/user-management/) instead of password)
  * The context and namespace in the cluster where ArgoCD is installed
 
 ```
