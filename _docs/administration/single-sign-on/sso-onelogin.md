@@ -83,15 +83,17 @@ max-width="20%"
 
 In the configuration screen fill in the following:
 
-* DISPLAY NAME - Friendly SSO name (arbitrary)
-* CLIENT ID - Use the value you got from the previous section
-* CLIENT SECRET - Use the value you got from the previous section
-
+* `DISPLAY NAME` - Friendly SSO name (arbitrary)
+* `CLIENT ID` - Use the value you got from the previous section
+* `CLIENT SECRET` - Use the value you got from the previous section
+* `DOMAIN` - domain to be used for authentication (optional, only for users that must connect via a custom domain)
+* `API CLIEND ID` - Used for [team sync]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/#syncing-of-teams-after-initial-sso-setup) only. See the [official documentation](https://developers.onelogin.com/api-docs/1/getting-started/working-with-api-credentials) for details
+* `API CLIENT SECRET` - Used for [team sync]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/#syncing-of-teams-after-initial-sso-setup) only. See the [official documentation](https://developers.onelogin.com/api-docs/1/getting-started/working-with-api-credentials) for details
 
 {% include image.html 
 lightbox="true" 
-file="/images/administration/sso/onelogin/step6.png" 
-url="/images/administration/sso/onelogin/step6.png"
+file="/images/administration/sso/onelogin/codefresh-settings.png" 
+url="/images/administration/sso/onelogin/codefresh-settings.png"
 alt="Entering Codefresh Settings"
 caption="Entering Codefresh Settings"
 max-width="90%"
