@@ -12,6 +12,7 @@ Recent Codefresh updates:
 
 - Security timeout - [documentation]({{site.baseurl}}/docs/administration/access-control/#security-timeout)
 - Preserve pipeline volume after approval - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/#keeping-the-shared-volume-after-an-approval)
+- DockerHub rate limit issue - [documentation]({{site.baseurl}}/docs/troubleshooting/common-issues/dockerhub-rate-limit/)
 
 ### August 2020
 

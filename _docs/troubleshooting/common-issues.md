@@ -24,6 +24,7 @@ In this section, we offer helpful information about issues you may encounter and
 - [No Dockerfile found]({{site.baseurl}}/docs/troubleshooting/common-issues/no-dockerfile-found/)
 - [Could not tag image](could-not-tag-image)
 - [Failed to build image: non-zero code 137](error-code-137/)
+- [Error pulling image configuration: toomanyrequests](dockerhub-rate-limit/)
 
 ## Build/pipeline issues
 

@@ -487,6 +487,8 @@
           url: "/could-not-tag-image"
         - title: Error Code 137
           url: "/error-code-137"
+        - title: Too many Requests
+          url: "/dockerhub-rate-limit"
         - title: Restoring data from pre-existing image hangs on
           url: "/restoring-data-from-pre-existing-image-hangs-on"
         - title: Disabling codefresh caching mechanisms
