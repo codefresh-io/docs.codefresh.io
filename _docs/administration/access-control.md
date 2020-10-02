@@ -49,6 +49,7 @@ People with **User** access level can still use the Codefresh UI for day-to-day 
 *  [Runtime environment selection]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-settings)
 *  [Slack settings]({{site.baseurl}}/docs/integrations/notifications/slack-integration/)
 *  [Team/Users settings]({{site.baseurl}}/docs/administration/ent-account-mng/)
+*  [Audit logs]({{site.baseurl}}/docs/administration/audit-logs/)
 *  ABAC for Kubernetes clusters
 *  Billing and charging
 
