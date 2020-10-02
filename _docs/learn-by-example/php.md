@@ -16,7 +16,7 @@ The dockerfile uses [multi-stage builds](https://docs.docker.com/develop/develop
 `Dockerfile`
 {% highlight docker %}
 {% raw %}
-FROM composer/composer:php7 as vendor
+FROM composer:1.9.3 as vendor
 
 WORKDIR /tmp/
 
@@ -29,6 +29,7 @@ RUN composer install \
     --no-plugins \
     --no-scripts \
     --prefer-dist
+
 
 FROM php:7.2-apache-stretch
 
