@@ -225,7 +225,7 @@ max-width="60%"
   * *Ignore Docker engine cache for build* - selecting this option may slow down your build.  See #1 [here]({{site.baseurl}}/docs/troubleshooting/common-issues/disabling-codefresh-caching-mechanisms/)
   * *Ignore Codefresh cache optimizations for build* - selecting this option may slow down your build.  See #2 [here]({{site.baseurl}}/docs/troubleshooting/common-issues/disabling-codefresh-caching-mechanisms/)
   * *Reset pipeline volume* - useful for troubleshooting a build that hangs on the first step.  See [here]({{site.baseurl}}/docs/troubleshooting/common-issues/restoring-data-from-pre-existing-image-hangs-on/)
-  * *Report notification on pipeline execution* - enabled by default
+  * *Report notification on pipeline execution* - Decide if [Slack notifications]({{site.baseurl}}/docs/integrations/notifications/slack-integration/) will be sent (as well as status updates back to your Git provider)
 * *Runtime Environment* - choose to use pipeline [settings]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-settings) or override them
 
 ## Accessing directly the webhook content of the trigger
