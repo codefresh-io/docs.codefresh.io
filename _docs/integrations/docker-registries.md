@@ -15,7 +15,7 @@ Codefresh enables you to integrate with several Docker container registries, inc
   * [Amazon EC2 Container Registry](amazon-ec2-container-registry)
   * [Bintray.io/Artifactory](bintray-io)
   * [Quay.io](quay-io)
-  * [Github packages](github-packages)
+  * [Github Container Registry](github-container-registry)
 
 
 For a different registry choose to configure using the [Other](other-registries) option.
