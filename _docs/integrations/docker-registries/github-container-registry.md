@@ -14,10 +14,12 @@ You can use [GitHub Container Registry](https://docs.github.com/en/free-pro-team
 The GitHub Container Registry allows you to host and manage your Docker container images in your personal or organisation account on GitHub. One of the benefits is that permissions can be defined for the Docker image independent from any repository. Thus, your repository could be private and your Docker image public. More [information on permissions](https://docs.github.com/en/free-pro-team@latest/packages/managing-container-images-with-github-container-registry/configuring-access-control-and-visibility-for-container-images) are on the GitHub documentation.
 
 The next sections will look at
-* How to use The GitHub Container Registry
-* Connecting the Registry to your Codefresh Pipeline
+* How to use The GitHub Container Registry manually
+* Automating the process by connecting the Registry to your Codefresh Pipeline
 
-## Using The GitHub Container Registry
+## Using The GitHub Container Registry manually
+
+In this section, we will show you how you can push your Docker image to the GitHub Container Registry manually. Note that you will be required to follow the steps every time you want to push your image. Thus, we suggest you to setup the Codefresh Pipeline to automate the process. 
 
 You will need the following
 * A GitHub account (your GitHub username)
