@@ -7,29 +7,17 @@ redirect_from:
 toc: true
 ---
 
-[GitHub Packages](https://github.com/features/packages) is an artifact storage solution that among other formats, can also be used as a Docker registry.
-
-However, Github Packages is being replaced by GitHub Container Registry. While the process is quite similar, our documentation will focus on using the GitHub Container Registry as a Docker registry in Codefresh and push images from your Codefresh pipeline to the Github Container Registry. 
+You can use [GitHub Container Registry](https://docs.github.com/en/free-pro-team@latest/packages/getting-started-with-github-container-registry) as your Docker Registry in your Codefresh pipeline. 
 
 ## Overview: GitHub Container Registry
 
 The GitHub Container Registry allows you to host and manage your Docker container images in your personal or organisation account on GitHub. One of the benefits is that permissions can be defined for the Docker image independent from any repository. Thus, your repository could be private and your Docker image public. More [information on permissions](https://docs.github.com/en/free-pro-team@latest/packages/managing-container-images-with-github-container-registry/configuring-access-control-and-visibility-for-container-images) are on the GitHub documentation.
-
-In comparison, the previously used Docker Package Registry would require you to set a repository by default. The command used for pushing your Docker image
-
-```
-docker push docker.pkg.github.com/github-account/repository/package-name:version
-```
-
-automatically connects your package with the repository.
 
 The next sections will look at
 * How to use The GitHub Container Registry
 * Connecting the Registry to your Codefresh Pipeline
 
 ## Using The GitHub Container Registry
-
-The process is quite similar to using GitHub Packages as your Docker Registry.
 
 You will need the following
 * A GitHub account (your GitHub username)
@@ -155,7 +143,7 @@ steps:
   build:
     title: "Building Docker image"
     type: "build"
-    image_name: "anais-codefresh/react-article-display"
+    image_name: "react-article-display"
     working_directory: "${{clone}}"
     tags: 
       - "${{CF_BRANCH_TAG_NORMALIZED}}"
@@ -169,8 +157,7 @@ steps:
 Notice:
 
 * The `registry: github-container-registry` property in the `build` step, which is the name of the registry that you set-up in the previous step
-* The fact that we push multiple Docker tags in a single step; you can define all tags in the `build` step
-* The prefix `anais-codefresh/react-article-display` so that the final image is compliant with GitHub naming.
+* The fact that we push multiple Docker tags in a single step; you can define all tags in the `build` step.
 
 After the pipeline has finished the Docker tags can also be seen in the GitHub packages section of the repository.
 

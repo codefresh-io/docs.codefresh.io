@@ -8,6 +8,10 @@ toc: true
 ---
 Recent Codefresh updates:
 
+### October 2020
+
+- Using the GitHub Container registry as Docker registry - [documentation]({{site.baseurl}}/docs/integrations/docker-registries/github-container-registry/)
+
 ### September 2020
 
 - Security timeout - [documentation]({{site.baseurl}}/docs/administration/access-control/#security-timeout)
@@ -29,7 +33,7 @@ Recent Codefresh updates:
 - Creating Docker images guide - [documentation]({{site.baseurl}}/docs/ci-cd-guides/building-docker-images/)
 - Pull requests guide - [documentation]({{site.baseurl}}/docs/ci-cd-guides/pull-request-branches/)
 - Microservice guide - [documentation]({{site.baseurl}}/docs/ci-cd-guides/microservices/)
-- Using GitHub Container Registry as Docker registry - [documentation]({{site.baseurl}}/docs/integrations/docker-registries/github-container-registry/)
+- Using GitHub packages as Docker registry - [documentation]({{site.baseurl}}/docs/integrations/docker-registries/github-packages/)
 - Check if a variable exists - [documentation]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/#execute-steps-according-to-the-presence-of-a-variable)
 
 ### June 2020
