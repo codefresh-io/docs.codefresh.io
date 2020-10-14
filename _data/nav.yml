@@ -390,8 +390,8 @@
           url: "/bintray-io"
         - title: "Quay.io"
           url: "/quay-io"
-        - title: "GitHub Packages"
-          url: "/github-packages"
+        - title: "GitHub Container Registry"
+          url: "/github-container-registry"
         - title: "Other Registries"
           url: "/other-registries"  
     - title: Jenkins Integration

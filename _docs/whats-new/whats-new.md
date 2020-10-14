@@ -8,6 +8,10 @@ toc: true
 ---
 Recent Codefresh updates:
 
+### October 2020
+
+- Using the GitHub Container registry as Docker registry - [documentation]({{site.baseurl}}/docs/integrations/docker-registries/github-container-registry/)
+
 ### September 2020
 
 - Security timeout - [documentation]({{site.baseurl}}/docs/administration/access-control/#security-timeout)
