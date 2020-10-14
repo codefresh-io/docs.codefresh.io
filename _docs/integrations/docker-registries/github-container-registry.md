@@ -2,6 +2,7 @@
 title: "GitHub Container Registry"
 description: "Learn how to push Docker images to your GitHub Container Registry"
 group: integrations
+sub_group: docker-registries
 redirect_from:
   - /docs/integrations/docker-registries/github-packages/
 toc: true
