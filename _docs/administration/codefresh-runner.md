@@ -118,6 +118,15 @@ Here are all the possible installation options
 | set-value       | Pass a custom parameter/value pair |
 | verbose       | Print logs |
 
+Alternatively you can pass a values.yml file to the `init` command that includes all installation settings:
+
+```
+codefresh runner init --values values.yaml
+```
+
+You can use [this example](https://github.com/codefresh-io/venona/blob/release-1.0/venonactl/example/values-example.yaml) as a starting point for your values file.
+
+
 
 ## Using the Codefresh Runner 
 
