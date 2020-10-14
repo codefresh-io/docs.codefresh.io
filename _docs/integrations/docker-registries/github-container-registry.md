@@ -19,8 +19,6 @@ The next sections will look at
 
 ## Using The GitHub Container Registry manually
 
-In this section, we will show you how you can push your Docker image to the GitHub Container Registry manually. Note that you will be required to follow the steps every time you want to push your image. Thus, we suggest you to setup the Codefresh Pipeline to automate the process. 
-
 You will need the following
 * A GitHub account (your GitHub username)
 * A personal access token
@@ -49,6 +47,8 @@ docker login ghcr.io --username github-account
 **Important** Make sure that the URL is correct, otherwise, you will receive login errors later on. The github-account is your GitHub username.
 
 ### Tag and push your Docker image
+
+After you are logged in, you can now tag and push your Docker image to the GitHub Container Registry. We will show you two ways to do so. The first one is the manual set-up, the second one uses Codefresh to automate the process.
 
 Use the following command to tag your Docker image
 
@@ -89,7 +89,6 @@ Now that you have verified your token, we can connect the registry to Codefresh.
 ## Connecting the GitHub registry to Codefresh
 
 Go the [Registry integration screen]({{site.baseurl}}/docs/integrations/docker-registries/) at [https://g.codefresh.io/account-admin/account-conf/integration/registryNew](https://g.codefresh.io/account-admin/account-conf/integration/registryNew) and add a new Registry by choosing [other Registries]({{site.baseurl}}/docs/integrations/docker-registries/other-registries/).
-
 
 {% include image.html 
 	lightbox="true" 
