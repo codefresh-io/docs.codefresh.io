@@ -19,7 +19,7 @@ Before you can use Codefresh and ArgoCD together, you need to connect your ArgoC
 
 ## Connecting to your ArgoCD cluster
 
-To configure the integration go to your Account Configuration, by clicking on *Account Settings* on the left sidebar. On the first section called *Integrations* click the *Configure* button next to *ArgoCD*.
+To configure the integration go to your Account Configuration, by clicking on *Account Settings* on the left sidebar. On the first section called *Integrations* click the *Configure* button next to *GitOps*.
 
 {% include image.html 
   lightbox="true" 
@@ -30,7 +30,7 @@ To configure the integration go to your Account Configuration, by clicking on *A
   max-width="100%"
  %}
 
-Click the *Add Server* button from the drop-down menu.
+Click the *Add GitOps Provider* button from the drop-down menu.
 
 ## Connecting to an existing ArgoCD installation
 
@@ -41,7 +41,7 @@ You can [install the CLI](https://codefresh-io.github.io/cli/installation/) by f
 Once the CLI is authenticated, run the installation command:
 
 ```
-codefresh install argocd-agent
+codefresh install gitops
 ```
 
 >Please note that this command must be run from a workstation that has a kubeconfig context pointing to the ArgoCD cluster. You can also run it from your cloud console if you install codefresh CLI there.
@@ -51,16 +51,19 @@ Answer the questions asked by the wizard. These include:
  * The name of the integration (user-defined)
  * Your ArgoCD URL, username and password (you can also use [an auth token](https://argoproj.github.io/argo-cd/operator-manual/user-management/) instead of password)
  * The context and namespace in the cluster where ArgoCD is installed
+ * If you want to automatically import your ArgoCD applications to Codefresh
 
 ```
-kostis@cloudshell$ ./codefresh install argocd-agent
+kostis@cloudshell$ codefresh install gitops
 ? Codefresh integration name argocd
 ? Argo host, example: https://example.com https://36.87.134.111/
+? Do you want use argocd auth token instead username/password auth? No
 ? Argo username admin
 ? Argo password ******************************
 Integration updated
 ? Select Kubernetes context gke_codefresh-support_us-central1-c_kostis-argo
 ? Select Kubernetes namespace argocd
+? Select argocd sync behavior please Do not import anything from Argo to Codefresh
 argocd-agent "ClusterRole" already exists
 argocd-agent "ClusterRoleBinding" already exists
 argocd-agent "Deployment" already exists
@@ -81,7 +84,6 @@ Once the installation is complete, you should see the agent health status:
  %}
 
 
-
 This concludes the basic integration. You can repeat the procedure for different ArgoCD installations by choosing a different 
 name for the integration.
 
@@ -89,7 +91,7 @@ name for the integration.
 
 In addition to the existing [Kubernetes/Helm environments]({{site.baseurl}}/docs/deploy-to-kubernetes/environment-dashboard/), you can now create ArgoCD applications via the Codefresh UI.
 
-Visit your GitOps dashboard by clicking on *GitOps* from the left sidebar. The click the *Add App* button at the top right.
+Visit your GitOps dashboard by clicking on *GitOps* from the left sidebar. The click the *Add Application* button at the top right.
 
 If you already have an application setup in ArgoCD, you can enter its project and name and Codefresh will automatically retrieve all information from the ArgoCD instance.
 
