@@ -295,6 +295,8 @@ metadata:
 | `branchConcurrency `       |  `spec` | number | How many instance of this pipeline can run at the same time per branch  |
 | `externalResources `       |  `spec` | array | Optional external files available to this pipeline |
 | `triggers`       |  `spec` | array | a list of [Git triggers]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/) that affect this pipeline |
+| `options`       |  `spec` | object | Extra options for the pipeline |
+| `enableNotifications`       |  `options` | boolean | if false the pipeline will not send notifications to [Slack]({{site.baseurl}}/docs/integrations/notifications/slack-integration/) and status updates back to the Git provider |
 
 ### Pipeline variables
 
