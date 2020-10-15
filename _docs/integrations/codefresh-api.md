@@ -291,8 +291,8 @@ metadata:
 | `runtimeEnvironment`       |  `spec` | array | where to execute this pipeline |
 | `terminationPolicy `       |  `spec` | array | Termination settings of this pipeline |
 | `concurrency `       |  `spec` | number | How many instances of this pipeline [can run at the same time]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#policies) | 
-| `triggerConcurrency `       |  `spec` | number | How many instance of this pipeline can run at the same time per trigger  |
-| `branchConcurrency `       |  `spec` | number | How many instance of this pipeline can run at the same time per branch  |
+| `triggerConcurrency `       |  `spec` | number | How many instances of this pipeline can run at the same time per trigger  |
+| `branchConcurrency `       |  `spec` | number | How many instances of this pipeline can run at the same time per branch  |
 | `externalResources `       |  `spec` | array | Optional external files available to this pipeline |
 | `triggers`       |  `spec` | array | a list of [Git triggers]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/) that affect this pipeline |
 | `options`       |  `spec` | object | Extra options for the pipeline |
