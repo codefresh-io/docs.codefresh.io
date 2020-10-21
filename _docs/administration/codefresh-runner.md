@@ -117,6 +117,7 @@ Here are all the possible installation options
 | kube-config-path      |  Path to kubeconfig file (default is $HOME/.kube/config) |
 | set-value       | Pass a custom parameter/value pair |
 | verbose       | Print logs |
+| docker-daemon-access       | Allows direct Docker daemon access (default true) |
 
 Alternatively you can pass a values.yml file to the `init` command that includes all installation settings:
 
