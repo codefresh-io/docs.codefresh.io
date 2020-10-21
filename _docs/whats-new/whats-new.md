@@ -11,6 +11,7 @@ Recent Codefresh updates:
 ### October 2020
 
 - Using the GitHub Container registry as Docker registry - [documentation]({{site.baseurl}}/docs/integrations/docker-registries/github-container-registry/)
+- Simplified Git operations with the App Proxy for the Codefresh runner - [documentation]({{site.baseurl}}/docs/administration/codefresh-runner/#optional-installation-of-the-app-proxy)
 
 ### September 2020
 

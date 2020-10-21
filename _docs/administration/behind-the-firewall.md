@@ -128,10 +128,14 @@ Once you trigger the pipeline, the Codefresh builder will communicate with your 
 
 #### Adding triggers from private GIT repositories
 
+
 In the previous section we have seen how a pipeline can checkout code from the internal git repository. We also need to setup a trigger
 so that every time a commit happens (or any other supported event), the Codefresh pipeline will be triggered automatically.
 
-This is a two-step process:
+If you have installed the [optional app-proxy]({{site.baseurl}}/docs/administration/codefresh-runner/#optional-installation-of-the-app-proxy), adding a trigger can be done exactly like the SAAS version of Codefresh, using only the Codefresh UI.
+
+If you haven't installed the app-proxy, then adding a Git trigger is a two-step process:
+
 1. First we setup a webhook endpoint in Codefresh.
 1. Then we create the webhook call in the side of the the GIT provider.
 
