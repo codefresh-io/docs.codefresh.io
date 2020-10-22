@@ -262,6 +262,53 @@ codefresh runner upgrade
 
 and follow the wizard prompts.
 
+## Optional installation of the App Proxy
+
+The App Proxy is an optional component of the runner that once installed:
+
+* Enables you to automatically create webhooks for Git in the Codefresh UI (same as the SAAS experience)
+* Sends commit status information back to your Git provider (same as the SAAS experience)
+* Makes all Git Operations in the GUI work exactly like the SAAS installation of Codefresh
+
+The requirements for the App proxy is a Kubernetes cluster that:
+
+1. has already the Codefresh runner installed 
+1. has an active [ingress controller](https://kubernetes.io/docs/concepts/services-networking/ingress/)
+1. Allows incoming connections from the VPC/VPN where users are browsing the Codefresh UI. The ingress connection must have a hostname assigned for this route
+
+>Currently the App-proxy works only for Github and Github enterprise. We are soon adding support for other Git providers such as GitLab and Bitbucket.
+
+Here is the architecture of the app-proxy:
+
+
+
+{% include image.html
+  lightbox="true"
+  file="/images/administration/runner/app-proxy-architecture.png"
+  url="/images/administration/runner/app-proxy-architecture.png"
+  alt="How App Proxy and the Codefresh runner work together"
+  caption="How App Proxy and the Codefresh runner work together"
+  max-width="80%"
+    %} 
+
+Basically when a Git GET operation takes place, the Codefresh UI will ask the app-proxy (if it is present) and it will route the request to the backing Git provider. The confidential Git information never leaves the firewall premises and the connection between the browser and the ingress is SSL/HTTPS. This means that the app-proxy does not compromise security in any way.
+
+To install the app-proxy on a Kubernetes cluster that already has a Codefresh runner use the following command:
+
+```
+codefresh install app-proxy --host=<hostname-of-ingress>
+```
+
+If you want to install the Codefresh runner and app-proxy in a single command use the following:
+
+```
+codefresh runner init --app-proxy --app-proxy-host=<hostname-of-ingress>
+
+```
+
+If you have multiple ingress controllers in the Kubernetes cluster you can use the `app-proxy-ingress-class` parameter to define which ingress will be used. For additional security you can also define a whitelist for IPs/ranges that are allowed to use the ingress (to further limit the web browsers that can access the Ingress). Check the documentation of your ingress controller for the exact details.
+
+
 ## Manual installation of Runner components
 
 If you don't want to use the wizard, you can also install the components of the runner yourself.
