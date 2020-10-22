@@ -266,8 +266,8 @@ and follow the wizard prompts.
 
 The App Proxy is an optional component of the runner that once installed:
 
-* Allows you to automatically create webhooks for Git in the Codefresh UI
-* Sends commit status information back to your Git provider (even if it is behind the firewall)
+* Enables you to automatically create webhooks for Git in the Codefresh UI (same as the SAAS experience)
+* Sends commit status information back to your Git provider (same as the SAAS experience)
 * Makes all Git Operations in the GUI work exactly like the SAAS installation of Codefresh
 
 The requirements for the App proxy is a Kubernetes cluster that:
@@ -291,7 +291,7 @@ Here is the architecture of the app-proxy:
   max-width="80%"
     %} 
 
-Basically when a Git operation takes place, the Codefresh UI will ask the app-proxy (if it is present) and it will route the request to the backing Git provider. The confidential Git information never leaves the firewall premises and the connection between the browser and the ingress is SSL/HTTPS. This means that the app-proxy does not compromise security in any way.
+Basically when a Git GET operation takes place, the Codefresh UI will ask the app-proxy (if it is present) and it will route the request to the backing Git provider. The confidential Git information never leaves the firewall premises and the connection between the browser and the ingress is SSL/HTTPS. This means that the app-proxy does not compromise security in any way.
 
 To install the app-proxy on a Kubernetes cluster that already has a Codefresh runner use the following command:
 
@@ -302,7 +302,7 @@ codefresh install app-proxy --host=<hostname-of-ingress>
 If you want to install the Codefresh runner and app-proxy in a single command use the following:
 
 ```
-codefresh runner init --app-proxy=true --app-proxy-host=<hostname-of-ingress>
+codefresh runner init --app-proxy --app-proxy-host=<hostname-of-ingress>
 
 ```
 
