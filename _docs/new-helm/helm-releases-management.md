@@ -75,6 +75,14 @@ metadata:
 {% endraw %}
 {% endhighlight %}
 
+If you want to use the instance label for something different, you can also use a release label instead:
+
+{% highlight yaml %}
+{% raw %}
+release: {{ .Release.Name }}
+{% endraw %}
+{% endhighlight %}
+
 The history tab shows all previous releases.
 
 {% include 
