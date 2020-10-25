@@ -243,7 +243,7 @@ cmd_ps|optional|Command Postscript - this will be appended as is to the generate
 commands|optional|commands to execute in plugin after auth action
 custom_value_files|optional|values file to provide to Helm as --values or -f
 custom_values|optional|values to provide to Helm as --set
-helm_version|optional|version of cfstep-helm image
+helm_version|optional|version of [cfstep-helm image](https://hub.docker.com/r/codefresh/cfstep-helm/tags)
 kube_context|required for install|Kubernetes context to use. The name of the cluster as [configured in Codefresh]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/)
 namespace|optional|Target Kubernetes namespace to deploy to
 release_name|required for install|Helm release name. If the release exists, it will be upgraded
