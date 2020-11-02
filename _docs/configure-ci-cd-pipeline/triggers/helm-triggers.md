@@ -6,6 +6,8 @@ sub_group: triggers
 toc: true
 ---
 
+Codefresh has the option to create pipelines that respond to Helm events. For instance, one pipeline can be set-up to create a Docker image and chart. Once those are created, another pipeline will be triggered that will take over the actual deployment.
+
 ## Manage Helm Triggers with Codefresh UI
 
 It is possible to define and manage Helm pipeline triggers with the Codefresh UI.
@@ -52,3 +54,9 @@ Now we must set JFrog Artifactory to call this URL when an event takes place. Th
 ### Triggering a Codefresh pipeline with an Artifactory push
 
 Now, every time you push a Helm chart to the selected Artifactory repository, manually, with Codefresh or any other CI/CD tool, Codefresh will trigger execution of all pipelines associated with that Artifactory Push trigger event.
+
+## What to read next
+
+* [Git triggers](https://codefresh.io/docs/docs/configure-ci-cd-pipeline/triggers/git-triggers/)
+* [Helm Releases management](https://codefresh.io/docs/docs/new-helm/helm-releases-management/)
+* [Custom Helm uploads](https://codefresh.io/docs/docs/new-helm/custom-helm-uploads/)
