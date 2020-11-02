@@ -557,11 +557,48 @@ steps:
 {% endhighlight %}
 
 
+## Variable Interpolation in hook segments
+
+[Codefresh variables]({{site.baseurl}}/docs/codefresh-yaml/variables/) are **not** interpolated inside the main hook segments.
+
+The following will NOT work:
+
+{% highlight yaml %}
+{% raw %}
+hooks:
+  on_finish:
+    exec:
+      image: alpine:latest
+      commands:
+      - echo $CF_BUILD_ID
+{% endraw %}
+{% endhighlight %}    
+
+However, you can use interpolations inside the `environment` block. The following WILL work:
+
+
+{% highlight yaml %}
+{% raw %}
+hooks:
+  on_finish:
+    exec:
+      image: alpine:latest
+      environment:
+      - "WCF_BUILD_ID=$CF_BUILD_ID"
+      commands:
+      -  echo ${WCF_BUILD_ID}
+{% endraw %}
+{% endhighlight %}  
+
+In other words, interpolation in the 'environment' block works just fine. And you can use the environment variables set there in the commands block.
+
+There is one MAJOR caveat. This only works for variables present when the build starts. It does NOT work for any variables created or modified in the pipeline _while it runs_. So basically the `CF_*` variables and anything sent in by the pipeline or trigger settings will work as expected, but custom variables created with `cf_export` will not work.
+
+
 ## Limitations of pipeline/step hooks
 
 With the current implementation of hooks, the following limitations are present:
 
-* [Codefresh variables]({{site.baseurl}}/docs/codefresh-yaml/variables/) are not interpolated inside hook segments
 * The [debugger]({{site.baseurl}}/docs/configure-ci-cd-pipeline/debugging-pipelines/) cannot inspect commands inside hook segments
 * Hooks are not supported for [parallel steps]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/)
 * You cannot use [Codefresh plugins]({{site.baseurl}}/docs/codefresh-yaml/steps/#creating-your-own-step) inside hook segments

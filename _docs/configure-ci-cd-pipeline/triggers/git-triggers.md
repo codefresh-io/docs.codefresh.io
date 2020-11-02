@@ -134,7 +134,8 @@ When supporting building of pull requests from forks there are a few "gotchas" t
 
 * Only comments made by repository owners and [collaborators](https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/adding-outside-collaborators-to-repositories-in-your-organization) will result in the pipeline being triggered
 * Only git pushes by collaborators within the GitHub organization will result in the pipeline being triggered
-* If the repository is in a GitHub organization, comments made by private members of the organization will not activate the trigger, even if they are set as an owner or collaborator.
+* If the repository is in a GitHub organization, comments made by private members of the organization will not activate the trigger, even if they are set as an owner or collaborator. Private members means that they need to be explicitly added to the repository. 
+Access cannot be "inherited" by the GitHub team. Currently, only comments from Admins, or Collaborators (directly added, not via teams) are allowed, in order to be caught by this filter.
 * The *Pull request comment added* checkbox should likely be the only one checked, or your pipeline may trigger on other events that you don't anticipate.
 
 ### Monorepo support (Modified files)

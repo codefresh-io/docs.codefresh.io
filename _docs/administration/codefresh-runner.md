@@ -274,7 +274,7 @@ The requirements for the App proxy is a Kubernetes cluster that:
 
 1. has already the Codefresh runner installed 
 1. has an active [ingress controller](https://kubernetes.io/docs/concepts/services-networking/ingress/)
-1. Allows incoming connections from the VPC/VPN where users are browsing the Codefresh UI. The ingress connection must have a hostname assigned for this route
+1. allows incoming connections from the VPC/VPN where users are browsing the Codefresh UI. The ingress connection **must** have a hostname assigned for this route and **must** be configured to perform SSL termination
 
 >Currently the App-proxy works only for Github and Github enterprise. We are soon adding support for other Git providers such as GitLab and Bitbucket.
 
@@ -291,7 +291,9 @@ Here is the architecture of the app-proxy:
   max-width="80%"
     %} 
 
-Basically when a Git GET operation takes place, the Codefresh UI will ask the app-proxy (if it is present) and it will route the request to the backing Git provider. The confidential Git information never leaves the firewall premises and the connection between the browser and the ingress is SSL/HTTPS. This means that the app-proxy does not compromise security in any way.
+Basically when a Git GET operation takes place, the Codefresh UI will contact the app-proxy (if it is present) and it will route the request to the backing Git provider. The confidential Git information never leaves the firewall premises and the connection between the browser and the ingress is SSL/HTTPS. 
+
+The app-proxy has to work over HTTPS and by default it will use the ingress controller to do its SSL termination. Therefore, the ingress controller will need to be configured to perform SSL termination. Check the documentation of your ingress controller (for example [nginx ingress](https://kubernetes.github.io/ingress-nginx/examples/tls-termination/)). This means that the app-proxy does not compromise security in any way.
 
 To install the app-proxy on a Kubernetes cluster that already has a Codefresh runner use the following command:
 
@@ -307,6 +309,8 @@ codefresh runner init --app-proxy --app-proxy-host=<hostname-of-ingress>
 ```
 
 If you have multiple ingress controllers in the Kubernetes cluster you can use the `app-proxy-ingress-class` parameter to define which ingress will be used. For additional security you can also define a whitelist for IPs/ranges that are allowed to use the ingress (to further limit the web browsers that can access the Ingress). Check the documentation of your ingress controller for the exact details.
+
+By default the app-proxy ingress will use the path `hostname/app-proxy`. You can change that default by using the values file in the installation with the flag `--values values.yaml`. See the `AppProxy` section in the example [values.yaml](https://github.com/codefresh-io/venona/blob/release-1.0/venonactl/example/values-example.yaml).  
 
 
 ## Manual installation of Runner components
