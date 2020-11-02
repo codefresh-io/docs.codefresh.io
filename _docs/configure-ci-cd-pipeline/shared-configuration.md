@@ -94,6 +94,54 @@ max-width="50%"
 From the same dialog you can also create a brand-new shared configuration snippet of type YAML.
 Not only it will be used for this Helm chart, but it will be added in your global shared configuration as well.
 
+## Using values from the Shared Configuration in your Helm step
+
+Additionally, you can define shared variables in your account settings and reuse those across your Helm steps.
+
+Under *Account Setting* > *Shared Configuration*, add the variable to your shared configuration. 
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/shared-configuration/helm-version-shared.png" 
+url="/images/pipeline/shared-configuration/helm-version-shared.png"
+alt="Adding shared configuration variables" 
+caption="Adding shared configuration variables"
+max-width="50%"
+%}
+
+Go to the workflow of the Codefresh pipeline to which you want to add the variable. Then select *variables* from the right sidebar. *Open advanced configuration* and select *Import from shared configuration*. 
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/shared-configuration/environment-variables.png" 
+url="/images/pipeline/shared-configuration/environment-variables.png"
+alt="Pipeline environment variables" 
+caption="Pipeline environment variables"
+max-width="50%"
+%}
+
+This will allow you to add shared variables. 
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/shared-configuration/shared-helm-variables.png" 
+url="/images/pipeline/shared-configuration/shared-helm-variables.png"
+alt="shared helm version variable" 
+caption="shared helm version variable"
+max-width="50%"
+%}
+
+Lastly, you can use the shared variables in your Helm step.
+
+{% highlight shell %}
+{% raw %}
+  helm_version: "${{HELM_VERSION}}"
+{% endraw %}
+{% endhighlight %}
+
 ## Sharing any kind of YAML data in pipelines
 
 All the snippets from shared configuration are also available as context in the [Codefresh CLI](https://codefresh-io.github.io/cli/contexts/)
