@@ -442,6 +442,8 @@
           url: "/sso-auth0"
         - title: Azure
           url: "/sso-azure"
+        - title: Google
+          url: "/sso-google"
         - title: LDAP
           url: "/sso-ldap"
         - title: Okta

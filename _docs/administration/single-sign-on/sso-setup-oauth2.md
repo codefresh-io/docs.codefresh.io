@@ -30,6 +30,7 @@ Codefresh currently supports
 
   * Auth0
   * Azure 
+  * Google
   * Okta
   * OneLogin
 
@@ -86,6 +87,11 @@ See the [Auth0 instructions]({{site.baseurl}}/docs/administration/single-sign-on
 ### Setting Azure as an Identity provider
 
 See the [Azure instructions]({{site.baseurl}}/docs/administration/single-sign-on/sso-azure/). 
+
+
+### Setting Google as an Identity provider
+
+See the [Google instructions]({{site.baseurl}}/docs/administration/single-sign-on/sso-google/). 
 
 
 ### Setting Okta as an Identity Provider
