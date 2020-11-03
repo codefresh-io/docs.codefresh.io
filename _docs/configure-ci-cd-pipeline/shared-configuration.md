@@ -96,14 +96,14 @@ Not only it will be used for this Helm chart, but it will be added in your globa
 
 ## Using values from the Shared Configuration in your Helm step
 
-Additionally, you can define shared variables in your account settings and reuse those across your Helm steps.
+Additionally, you can define shared variables in your account settings and reuse those across your Helm steps, and specifically, in your [custom Helm values](https://codefresh.io/docs/docs/new-helm/using-helm-in-codefresh-pipeline/#helm-values).
 
 Under *Account Setting* > *Shared Configuration*, add the variable to your shared configuration. 
 
 {% include 
 image.html 
 lightbox="true" 
-file="/images/pipeline/shared-configuration/helm-version-shared.png" 
+file="/images/pipeline/shared-configuration/helm-shared-variables.png" 
 url="/images/pipeline/shared-configuration/helm-version-shared.png"
 alt="Adding shared configuration variables" 
 caption="Adding shared configuration variables"
@@ -129,18 +129,31 @@ image.html
 lightbox="true" 
 file="/images/pipeline/shared-configuration/shared-helm-variables.png" 
 url="/images/pipeline/shared-configuration/shared-helm-variables.png"
-alt="shared helm version variable" 
-caption="shared helm version variable"
+alt="Shared helm variable" 
+caption="Shared helm variable"
 max-width="50%"
 %}
 
-Lastly, you can use the shared variables in your Helm step.
+Add the shared variables to your Helm step:
 
 {% highlight shell %}
 {% raw %}
-  helm_version: "${{HELM_VERSION}}"
+deploy:
+  type: "helm"
+  working_directory: "./react-article-display"
+  stage: "deploy"
+  arguments:
+    action: "install"
+    chart_name: "charts/example-chart"
+    release_name: "test-chart"
+    helm_version: "${{HELM_VERSION}}"
+    kube_context: "anais-cluster@codefresh-sa"
+  custom_values:
+        - 'pullPolicy=${{PULL_POLICY}}'
 {% endraw %}
 {% endhighlight %}
+
+The shared variables can now be used across your pipelines. 
 
 ## Sharing any kind of YAML data in pipelines
 
