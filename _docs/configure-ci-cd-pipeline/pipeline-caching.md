@@ -241,6 +241,8 @@ Some important points on this caching mechanism:
 * The volume is **NOT available** in [build steps]({{site.baseurl}}/docs/codefresh-yaml/steps/build/). This is not a Codefresh limitation. Docker itself [does not allow volumes during builds](https://github.com/moby/moby/issues/14080). There is no folder `/codefresh/volume` inside a Dockerfile for you to access.
 * This is the only caching mechanism that is not related to Docker images. So if you compile/package a traditional application with Codefresh that is not packaged as a Docker image this is the only way to get faster builds.
 
+See also a [full example]({{site.baseurl}}/docs/yaml-examples/examples/shared-volumes-between-builds/) that uses the volume at [https://github.com/codefreshdemo/cf-example-shared-volumes-between-builds](https://github.com/codefreshdemo/cf-example-shared-volumes-between-builds).
+
 ### Caching folders which are outside your project folder
 
 By default if you checkout a Git project named `foo`, the source code [is placed under]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#cloning-the-source-code) `/codefresh/volume/foo`. This means that with zero configuration the following things are cached:

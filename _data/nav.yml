@@ -208,8 +208,8 @@
           url: "/build-and-push-an-image"
         - title: Build an Image with Build Arguments
           url: "/build-an-image-with-build-arguments"
-        - title: Shared volumes for composition
-          url: "/shared-volumes-of-service-from-composition-step-for-other-yml-steps"
+        - title: Sharing data between steps
+          url: "/shared-volumes-between-builds"
         - title: Uploading/downloading from Google Storage buckets
           url: "/uploading-or-downloading-from-gs"
         - title: Calling other pipelines
@@ -238,6 +238,8 @@
           url: "/integration-tests-with-redis"
         - title: Populate a database with existing data
           url: "/populate-a-database-with-existing-data"
+        - title: Shared volumes for composition
+          url: "/shared-volumes-of-service-from-composition-step-for-other-yml-steps"          
         - title: Import data to MongoDB
           url: "/import-data-to-mongodb"
     - title: "Deployments"
@@ -296,8 +298,6 @@
     - title: "General"
       url: "/examples"
       sub-pages:
-        - title: Shared volumes between builds
-          url: "/shared-volumes-between-builds"
         - title: NodeJS + Angular2 + MongoDB
           url: "/nodejs-angular2-mongodb"
         - title: Spring Boot + Kafka + Zookeeper
