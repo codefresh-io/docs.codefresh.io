@@ -50,7 +50,7 @@ It is assumed that:
   - You have already [added your Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/adding-non-gke-kubernetes-cluster/) into Codefresh
   - You have connected at least one [Docker registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) in your Codefresh account
   - You have already an application that has a Dockerfile and a Helm chart 
-  - Your cluster has pull access to your default Docker registry registry. If not read the [previous guide]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/#deploying-a-docker-image-to-kubernetes-manually) or look at the [documentation]({{site.baseurl}}/docs/deploy-to-kubernetes/deploy-to-kubernetes/create-image-pull-secret/)
+  - Your cluster has pull access to your default Docker registry. If not read the [previous guide]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/#deploying-a-docker-image-to-kubernetes-manually) or look at the [documentation]({{site.baseurl}}/docs/deploy-to-kubernetes/deploy-to-kubernetes/create-image-pull-secret/)
 
 To verify that your cluster is setup for Helm select the *Helm Releases* item from the left sidebar. You should see the Helm releases in your cluster or an empty screen if you just started.
 

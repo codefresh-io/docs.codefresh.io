@@ -28,6 +28,8 @@
           url: "/azure-triggers"
         - title: "Quay Triggers"
           url: "/quay-triggers"
+        - title: "Helm Triggers"
+          url: "/helm-triggers"
         - title: "Artifactory Triggers"
           url: "/jfrog-triggers"
         - title: "Timer (Cron) Triggers"
