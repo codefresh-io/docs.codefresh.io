@@ -14,6 +14,7 @@ Recent Codefresh updates:
 - Setting-up Helm Triggers in your Codefresh pipeline with the Codefresh UI - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/helm-triggers/)
 - Using the GitHub Container registry as Docker registry - [documentation]({{site.baseurl}}/docs/integrations/docker-registries/github-container-registry/)
 - Simplified Git operations with the App Proxy for the Codefresh runner - [documentation]({{site.baseurl}}/docs/administration/codefresh-runner/#optional-installation-of-the-app-proxy)
+- Upgrade Codefresh on-prem - [documentation]({{site.baseurl}}/docs/administration/codefresh-on-prem/#upgrade-the-codefresh-platform)
 
 ### September 2020
 

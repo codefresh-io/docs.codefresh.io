@@ -722,6 +722,18 @@ consul:
   enabled: false
 ```
 
+## Upgrade the Codefresh platform
+
+To upgrade Codefresh to a newer version
+
+1. Locate the `config.yml` file you used in the initial installation, and change the release number inside it
+1. Perform a dry run with `kcfi upgrade --dry-run --atomic -c codefresh/config.yaml` and see if there are no errors
+1. Do the actual upgrade with `kcfi upgrade --atomic -c codefresh/config.yaml`
+1. Run `watch kubectl -ncodefresh get pods` and wait for all the pods to be in running state
+1. Log in the Codefresh UI and inspect the new version
+1. Enable/disable new feature flags if needed
+
+Notice that only `kfci` should be used for Codefresh upgrades. If you still have a `cf-onprem` script at hand, please contact us for migration instructions.
 
 ## Common Problems, Solutions, and Dependencies
 
