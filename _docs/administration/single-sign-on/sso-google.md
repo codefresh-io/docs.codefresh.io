@@ -102,8 +102,51 @@ max-width="90%"
 %}
 
 
+This concludes the basic SSO setup for Google. For team/group synchronization you also need a service account.
 
-This concludes the SSO setup for Google. 
+## Synchronize teams with the Codefresh CLI
+
+In the Codefresh configuration screen there are some optional fields that you can fill, in order to 
+get team synchronization via the Codefresh CLI. You need to create a service account and [delegate user and group permissions](https://developers.google.com/admin-sdk/directory/v1/guides/delegation) to it.
+
+Create a Service account from Google Console:
+
+{% include image.html 
+lightbox="true" 
+file="/images/administration/sso/google/serviceAccount2.png" 
+url="/images/administration/sso/google/serviceAccount2.png"
+alt="Creating a service account"
+caption="Creating a service account"
+max-width="90%"
+%}
+
+Delegate from the Google admin console the following permissions:
+
+* `https://www.googleapis.com/auth/admin.directory.user.readonly`
+* `https://www.googleapis.com/auth/admin.directory.group.readonly`
+
+For that service account you should also create a private key in JSON format.
+
+
+{% include image.html 
+lightbox="true" 
+file="/images/administration/sso/google/serviceAccount3.png" 
+url="/images/administration/sso/google/serviceAccount3.png"
+alt="Creating a JSON key"
+caption="Creating a JSON key"
+max-width="90%"
+%}
+
+
+
+
+Save the file locally. Go back to the Codefresh settings and fill in the fields
+
+* `JSON Keyfile` - enter contents of the JSON file
+* `Admin email` -  The user that has access to `admin.google.com`
+
+Now you can [synchronize teams with the Codefresh CLI]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/#syncing-of-teams-after-initial-sso-setup) .
+
 
 
 ## What to read next
