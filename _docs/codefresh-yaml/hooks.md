@@ -584,9 +584,9 @@ hooks:
     exec:
       image: alpine:latest
       environment:
-      - "WCF_BUILD_ID=$CF_BUILD_ID"
+      - WCF_BUILD_ID=${{CF_BUILD_ID}}
       commands:
-      -  echo ${WCF_BUILD_ID}
+      - echo $WCF_BUILD_ID
 {% endraw %}
 {% endhighlight %}  
 
