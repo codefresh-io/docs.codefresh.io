@@ -15,6 +15,12 @@ error pulling image configuration: toomanyrequests: Too Many Requests. Please se
 ```
 The image `codefresh/cfstep-helm` is just an example. This error can happen for other Docker images as well. 
 
+Another related error message from DockerHub is:
+
+```
+You have reached your pull rate limit. You may increase the limit by authenticating and upgrading: https://www.docker.com/increase-rate-limit
+```
+
 ## Problem description
 
 This issue occurs because your pipeline has triggered the [DockerHub limit](https://www.docker.com/blog/scaling-docker-to-serve-millions-more-developers-network-egress/) announced in August 2020. 
