@@ -290,6 +290,8 @@
       sub-pages:
         - title: Sending the notification to Slack
           url: "/sending-the-notification-to-slack"
+        - title: Sending the notification to Jira
+          url: "/sending-the-notification-to-jira"
     - title: "Security"
       url: "/examples"
       sub-pages:

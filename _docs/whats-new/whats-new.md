@@ -10,6 +10,7 @@ Recent Codefresh updates:
 
 ### October 2020
 
+- Jira integration - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/sending-the-notification-to-jira/)
 - Using Google for SSO - [documentation]({{site.baseurl}}/docs/administration/single-sign-on/sso-google/)
 - Setting-up Helm Triggers in your Codefresh pipeline with the Codefresh UI - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/helm-triggers/)
 - Using the GitHub Container registry as Docker registry - [documentation]({{site.baseurl}}/docs/integrations/docker-registries/github-container-registry/)
