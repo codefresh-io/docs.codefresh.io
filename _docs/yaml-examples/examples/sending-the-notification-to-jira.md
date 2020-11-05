@@ -14,9 +14,11 @@ Prerequisites
 * [Have a Codefresh Pipeline]({{site.baseurl}}/docs/getting-started/create-a-basic-pipeline/) set-up
 * [Have a Jira Account](https://www.atlassian.com/software/jira)
 
+This documentation is using the following [example](https://github.com/codefresh-contrib/jira-demo-app). You can either use the example provided to try out the Jira integration or follow along with your own application. 
+
 1. You need an issue in your Jira account that you want to link to your Codefresh pipeline. If you do not have one yet, please create an issue. (Note that the project type and who is creating the issue etc. does not matter.)
 
-2. Next, add the following step to your Codefresh pipeline:
+2. Next, add the following step to your Codefresh pipeline. In case that you are using the example, the  [codefresh.yml](https://github.com/codefresh-contrib/jira-demo-app/blob/master/codefresh.yml) file is already added. 
 
 {% highlight yaml %}
   JiraCommentCreate:
