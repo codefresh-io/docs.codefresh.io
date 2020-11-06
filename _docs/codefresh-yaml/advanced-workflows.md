@@ -199,7 +199,7 @@ Running different types of tests (unit/integration/load/acceptance) in parallel 
 
 ### Defining success criteria for a parallel step
 
-By default, any failed step in a Codefresh pipeline will fail the whole pipeline. There are ways to change this behavior (the `fail_fast` property is explained later in this page), but specifically for parallel steps you can define exactly when the whole step succeeds of fails.
+By default, any failed step in a Codefresh pipeline will fail the whole pipeline. There are ways to change this behavior (the `fail_fast` property is explained later in this page), but specifically for parallel steps you can define exactly when the whole step succeeds or fails.
 
 You can define steps that will be used to decide if a parallel step succeeds with this syntax:
 
