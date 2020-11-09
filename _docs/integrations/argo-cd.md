@@ -41,7 +41,7 @@ You can [install the CLI](https://codefresh-io.github.io/cli/installation/) by f
 Once the CLI is authenticated, run the installation command:
 
 ```
-codefresh install gitops
+codefresh install gitops argocd-agent
 ```
 
 >Please note that this command must be run from a workstation that has a kubeconfig context pointing to the ArgoCD cluster. You can also run it from your cloud console if you install codefresh CLI there.
@@ -54,7 +54,7 @@ Answer the questions asked by the wizard. These include:
  * If you want to automatically import your ArgoCD applications to Codefresh
 
 ```
-kostis@cloudshell$ codefresh install gitops
+kostis@cloudshell$ codefresh install gitops argocd-agent
 ? Codefresh integration name argocd
 ? Argo host, example: https://example.com https://36.87.134.111/
 ? Do you want use argocd auth token instead username/password auth? No
