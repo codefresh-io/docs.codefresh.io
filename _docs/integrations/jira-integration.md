@@ -18,6 +18,7 @@ Prerequisites needed:
 The plugin marketplace offers several freestyle steps that can be used in your Codefresh pipeline through plugins.
 
 One of those plugins is the [Jira Issue Manager](https://codefresh.io/steps/step/codefreshdemo%2Fjira-issue-manager). It can be used to:
+* Create a Jira issue
 * Comment on existing Jira issues
 * Change the status of an issue e.g. once the build is successful
 * Add a description to your issue
@@ -36,3 +37,9 @@ RUN apk add -U gcc musl-dev linux-headers openssl-dev libffi-dev && pip install 
 {% endhighlight %}
 
 And then running the Dockerfile.
+
+## What to read next
+
+* [Example for sending notifications to Jira]({{site.baseurl}}/docs/yaml-examples/examples/sending-the-notification-to-jira/)
+* Have a look at other things that you can do with your Codefresh Pipeline in the [example section]({{site.baseurl}}/docs/yaml-examples/examples/)
+* [Create a pipeline]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)

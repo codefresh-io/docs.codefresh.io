@@ -105,3 +105,4 @@ Codefresh can deploy to any platform such as VMs, FTP/SSH/S3 sites, app servers 
 ## Notifications
 
 - [Sending the notification to Slack]({{site.baseurl}}/docs/yaml-examples/examples/sending-the-notification-to-slack)
+[Sending the notification to Jira]({{site.baseurl}}/docs/yaml-examples/examples/sending-the-notification-to-jira)

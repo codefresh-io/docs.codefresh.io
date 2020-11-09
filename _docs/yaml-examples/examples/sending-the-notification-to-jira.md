@@ -16,7 +16,7 @@ Prerequisites
 
 This documentation is using the following [example](https://github.com/codefresh-contrib/jira-demo-app). You can either use the example provided to try out the Jira integration or follow along with your own application. 
 
-1. You need an issue in your Jira account that you want to link to your Codefresh pipeline. If you do not have one yet, please create an issue. (Note that the project type and who is creating the issue etc. does not matter.)
+1. You need an issue in your Jira account that you want to link to your Codefresh pipeline. If you do not have one yet, please create an issue. (Note that the project type and who is creating the issue etc. does not matter.) Alternatively, you can also create an issue first with the Jira step. However, this is not explained in this example.
 
 2. Next, add the following step to your Codefresh pipeline. In case that you are using the example, the  [codefresh.yml](https://github.com/codefresh-contrib/jira-demo-app/blob/master/codefresh.yml) file is already added. 
 
@@ -80,3 +80,9 @@ url="/images/integrations/jira/jira-comment.png"
 alt="Comment in Jira"
 max-width="50%"
 %}
+
+## What to read next
+
+* [Sending notifications to Slack]({{site.baseurl}}/docs/yaml-examples/examples/sending-the-notification-to-slack/)
+* Have a look at other things that you can do with your Codefresh Pipeline in the [example section]({{site.baseurl}}/docs/yaml-examples/examples/)
+* [Create a pipeline]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
