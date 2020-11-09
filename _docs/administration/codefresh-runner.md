@@ -246,10 +246,10 @@ For the storage space needed by the `dind` pod we suggest:
 ### Networking requirements
 
 * `dind` - this pod will create an internal network in the cluster to run all the pipeline steps
-* `dind` needs outgoing/egress access to Dockerhub/quay.io
+* `dind` needs outgoing/egress access to Dockerhub and `quay.io`
 * `runner` - this pod needs outgoing/egress access to `g.codefresh.io`
 * `runner` needs network access to [app-proxy]({{site.baseurl}}/docs/administration/codefresh-runner/#optional-installation-of-the-app-proxy) (if app-proxy is used)
-* `engine` - this pod needs outgoing/egress access to `g.codefresh.io`, firebase and quay.io
+* `engine` - this pod needs outgoing/egress access to `g.codefresh.io`, `*.firebaseio.com` and `quay.io`
 * `engine` - this pod needs network access to `dind` pod
 
 All CNI providers/plugins are compatible with the runner components.
@@ -377,6 +377,132 @@ codefresh attach runtime --agent-name $AGENT_NAME --agent-kube-namespace codefre
 ```
 
 ## Configuration options
+
+### Installing on AWS
+
+If you install the Codefresh runner on [EKS](https://aws.amazon.com/eks/) or any other custom cluster (e.g. with kops) in Amazon you need to configure it properly to work with EBS volume in order to gain [caching]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipeline-caching/).
+
+Make sure that the  node group where `dind-volume-provisioner-runner` deployment is running has the appropriate permissions to create, attach, detach volumes:
+
+{% highlight json %}
+{% raw %}
+
+  {
+      "Version": "2012-10-17",
+      "Statement": [
+          {
+              "Effect": "Allow",
+              "Action": [
+                  "ec2:DescribeVolumes"
+              ],
+              "Resource": [
+                  "*"
+              ]
+          },
+          {
+              "Effect": "Allow",
+              "Action": [
+                  "ec2:CreateVolume",
+                  "ec2:ModifyVolume",
+                  "ec2:CreateTags",
+                  "ec2:DescribeTags",
+                  "ec2:DetachVolume",
+                  "ec2:AttachVolume"
+              ],
+              "Resource": [
+                  "*"
+              ]
+          }
+      ]
+  }
+{% endraw %}
+{% endhighlight %}
+
+
+Then in order to proceed with Storage Class installation please choose one of the Availability Zones you want to be used for your pipeline builds:
+
+{% highlight yaml %}
+{% raw %}
+    apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: venona-ebs
+    parameters:
+      AvailabilityZone: us-west-2c # <----(Please change it to yours)
+      volumeBackend: ebs
+    provisioner: codefresh.io/dind-volume-provisioner-venona-codefresh-runtime
+{% endraw %}
+{% endhighlight %}
+
+Finally you need to change your Codefresh runtime configuration.
+
+The same AZ you selected before should be used in nodeSelector inside Runtime Configuration:
+
+  To get a list of all available runtimes execute:
+
+```   
+codefresh get runtime-environments
+```
+
+Choose the runtime you have just added and get its yaml representation:
+
+```
+codefresh get runtime-environments ivan@wawa-ebs.us-west-2.eksctl.io/codefresh-runtime -o yaml > runtime.yaml
+```
+
+The nodeSelector `failure-domain.beta.kubernetes.io/zone: us-west-2c` (Please change it to yours) should be added to the `dockerDaemonScheduler` block. It should be at the same level as `clusterProvider` or `namespace`. Also the `pvcs` block should be modified to use the Storage Class you created above (`venona-ebs`). Here is the example:
+
+`runtime.yaml`
+{% highlight yaml %}
+{% raw %}
+version: null
+metadata:
+  agent: true
+  trial:
+    endingAt: 1577273400263
+    reason: Codefresh hybrid runtime
+    started: 1576063800333
+  name: ivan@wawa-ebs.us-west-2.eksctl.io/codefresh-runtime
+  changedBy: ivan-codefresh
+  creationTime: '2019/12/11 11:30:00'
+runtimeScheduler:
+  cluster:
+    clusterProvider:
+      accountId: 5cb563d0506083262ba1f327
+      selector: ivan@wawa-ebs.us-west-2.eksctl.io
+    namespace: codefresh-runtime
+  annotations: {}
+dockerDaemonScheduler:
+  cluster:
+    clusterProvider:
+      accountId: 5cb563d0506083262ba1f327
+      selector: ivan@wawa-ebs.us-west-2.eksctl.io
+    namespace: codefresh-runtime
+    nodeSelector:
+      failure-domain.beta.kubernetes.io/zone: us-west-2c
+  annotations: {}
+  dockerDaemonParams: null
+  pvcs:
+    dind:
+      volumeSize: 30Gi
+      storageClassName: venona-ebs
+      reuseVolumeSelector: 'codefresh-app,io.codefresh.accountName'
+      reuseVolumeSortOrder: 'pipeline_id,trigger'
+  userAccess: true
+extends:
+  - system/default/hybrid/k8s
+description: >-
+  Runtime environment configure to cluster: ivan@wawa-ebs.us-west-2.eksctl.io
+  and namespace: codefresh-runtime
+accountId: 5cb563d0506083262ba1f327
+{% endraw %}
+{% endhighlight %}
+
+Update your runtime environment with the [patch command](https://codefresh-io.github.io/cli/operate-on-resources/patch/):
+
+```
+codefresh patch runtime-environment ivan@wawa-ebs.us-west-2.eksctl.io/codefresh-runtime -f codefresh-runner.yaml
+```
 
 
 ### Installing to EKS with autoscaling
@@ -812,6 +938,182 @@ RunAwsCli:
          - aws s3api get-object --bucket jags-cf-eks-pod-secrets-bucket --key  eks-pod2019-12-10-21-18-32-560931EEF8561BC4 getObjectNotWorks.txt
 {% endraw %}
 {% endhighlight %}
+
+### Installing behind a proxy
+
+If you want to deploy the Codefresh runner on a Kubernetes cluster that doesn’t have direct access to `g.codefresh.io`, and has to go trough a proxy server to access `g.codefresh.io`, you will need to follow these additional steps:
+
+*Step 1* - Follow the installation instructions of the previous section
+
+*Step 2* -  Run `kubectl edit deployment runner -ncodefresh-runtime` and add the proxy variables like this
+
+{% highlight yaml %}
+{% raw %}
+spec:
+  containers:
+  - env:
+    - name: HTTP_PROXY
+      value: http://<ip of proxy server>:port
+    - name: HTTPS_PROXY
+      value: http://<ip of proxy server>:port
+    - name: http_proxy
+      value: http://<ip of proxy server>:port
+    - name: https_proxy
+      value: http://<ip of proxy server>:port
+    - name: no_proxy
+      value: localhost,127.0.0.1,<local_ip_of_machine>
+    - name: NO_PROXY
+      value: localhost,127.0.0.1,<local_ip_of_machine>
+{% endraw %}
+{% endhighlight %}
+
+
+*Step 3* - Add the following variables to your runtime.yaml, both under the `runtimeScheduler:` and under `dockerDaemonScheduler:` blocks inside the `envVars:` section
+
+```
+HTTP_PROXY: http://<ip of proxy server>:port
+http_proxy: http://<ip of proxy server>:port
+HTTPS_PROXY: http://<ip of proxy server>:port
+https_proxy: http://<ip of proxy server>:port
+No_proxy: localhost, 127.0.0.1, <local_ip_of_machine>
+NO_PROXY: localhost, 127.0.0.1, <local_ip_of_machine>
+```
+
+*Step 4* -  Add `.firebaseio.com` to the allowed-sites of the proxy server
+
+*Step 5* -  Exec into the `dind` pod and run `ifconfig`
+
+If the MTU value for `docker0` is higher than the MTU value of `eth0` (sometimes the `docker0` MTU is 1500, while `eth0` MTU is 1440 - you need to change this, the `docker0` MTU should be lower than `eth0` MTU
+
+To fix this, edit the configmap in the codefresh-runtime namespace:
+
+```
+kubectl edit cm codefresh-dind-config -ncodefresh-runtime
+```
+
+And add this after one of the commas:
+`"mtu":1440,`
+
+### Installing on Google Kubernetes Engine
+
+If you are installing Codefresh runner on the Kubernetes cluster on [GKE](https://cloud.google.com/kubernetes-engine/)
+
+* make sure your user has `Kubernetes Engine Cluster Admin` role in google console and
+* bind your user with `cluster-admin` Kubernetes cluster role.
+
+```
+kubectl create clusterrolebinding NAME --clusterrole cluster-admin --user <YOUR_USER>
+```
+
+### Docker cache support for GKE
+
+If you want to use  *LocalSSD* in GKE:
+
+*Prerequisite:* [GKE cluster with local SSD](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/local-ssd)
+
+*Install runner using GKE Local SSD:*
+```
+codefresh runner init [options] --set-value=Storage.LocalVolumeParentDir=/mnt/disks/ssd0/codefresh-volumes \
+                            --build-node-selector=cloud.google.com/gke-local-ssd=true
+```
+
+If you want to use  *GCE Disks*:
+
+*Prerequisite:* volume provisioner (dind-volume-provisioner) should have permissions to create/delete/get of Google disks
+
+There are 3 options to provide cloud credentials on GCE:
+
+* run `dind-volume-provisioner-runner` on node with iam role which is allowed to create/delete/get of Google disks
+* create Google Service Account with `ComputeEngine.StorageAdmin`, download its key and pass it to venona installed with `--set-file=Storage.GooogleServiceAccount=/path/to/google-service-account.json`
+* use [Google Workload Identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) to assign iam role to `volume-provisioner-venona` service account 
+
+Notice that builds will be running in a single availability zone, so you must specify AvailabilityZone parameters.
+
+Install Runner using GKE Disks:
+
+```
+codefresh runner init [options] --set-value=Storage.Backend=gcedisk \
+                            --set-value=Storage.AvailabilityZone=us-central1-a \
+                            --build-node-selector=failure-domain.beta.kubernetes.io/zone=us-central1-a \
+                            [--set-file=Storage.GoogleServiceAccount=/path/to/google-service-account.json]
+```
+
+#### Using multiple Availability Zones
+
+Currently, to support effective caching with GCE disks, the builds/pods need to be scheduled in a single AZ (this is more related to a GCP limitation than a Codefresh runner issue).
+
+If you have Kubernetes nodes running in multiple Availability Zones and wish to use the Codefresh runner we suggest the following:
+
+**Option A** - Provision a new Kubernetes cluster: a cluster that runs in a single AZ only. - The cluster should be dedicated for usage with the Codefresh runner. This is the preferred solution and avoids extra complexity.
+
+**Option B** - Install Codefresh runner in your multi-zone cluster, and let it run in the default Node Pool: - in this case, you must specify `--build-node-selector=<node-az-label>` (e.g.: `--build-node-selector=failure-domain.beta.kubernetes.io/zone=us-central1-a`) or simply modify the Runtime environment as below:
+
+```
+codefresh get runtime-environments gke_us-east4_my-gke-cluster/codefresh -o yaml > re.yaml
+```
+
+Edit the yaml:
+
+{% highlight yaml %}
+{% raw %}
+version: 2metadata:
+  agent: true
+  trial:
+    endingAt: 34534534
+    reason: Codefresh hybrid runtime
+    started: 23434
+  name: gke_us-east4_my-gke-cluster/codefresh
+  changedBy: kostis
+  creationTime: '2020/04/01 21:04:11'
+runtimeScheduler:
+  cluster:
+    clusterProvider:
+      accountId: 34543545456
+      selector: gke_us-east4_my-gke-cluster
+    namespace: codefresh
+    nodeSelector:
+      failure-domain.beta.kubernetes.io/zone: us-east4-a
+dockerDaemonScheduler:
+  cluster:
+    clusterProvider:
+      accountId: 5cdd8937242f167387e5aa56
+      selector: gke_us-east4_my-gke-cluster
+    namespace: codefresh
+    nodeSelector:
+      failure-domain.beta.kubernetes.io/zone: us-east4-a    
+  dockerDaemonParams: null
+  pvcs:
+    dind:
+      storageClassName: dind-gcedisk-us-east4-a-venona-codefresh
+      reuseVolumeSelector: 'codefresh-app,io.codefresh.accountName,pipeline_id'
+      volumeSize: 30Gi
+  userAccess: true
+extends:
+  - system/default/hybrid/k8s
+description: >-
+  Runtime environment configure to cluster:
+  gke_us-east4_my-gke-cluster and namespace: codefresh
+accountId: 45645k694353459
+{% endraw %}
+{% endhighlight %}
+
+Apply changes with: 
+
+```
+codefresh patch runtime-environments -f re.yaml
+```
+
+
+
+**Option C** - Like option B, but with a dedicated Node Pool
+
+**Option D** - Have 2 separate Codefresh runner Runtimes, one for zone A, and the other for zone B, and so on: this technically works, but it will require you to manually set the RE to use for the pipelines that won't use the default Codefresh runner RE. To distribute the pipeline's builds across the Codefresh runner REs.
+
+For example, let's say Venona-zoneA is the default RE, then, that means that for the pipelines that you want to run in Venona-zoneB, then you'll need to modify their RE settings, and explicitly set Venona-zoneB as the one to use.
+
+Regarding [Regional Persistent Disks](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/regional-pd), their support is not currently implemented in the Codefresh runner.
+
+
 
 
 ## Troubleshooting
