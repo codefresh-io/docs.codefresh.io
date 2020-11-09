@@ -246,8 +246,11 @@ For the storage space needed by the `dind` pod we suggest:
 ### Networking requirements
 
 * `dind` - this pod will create an internal network in the cluster to run all the pipeline steps
+* `dind` needs outgoing/egress access to Dockerhub/quay.io
 * `runner` - this pod needs outgoing/egress access to `g.codefresh.io`
-* `engine` - this pod needs outgoing/egress access to `g.codefresh.io`
+* `runner` needs network access to [app-proxy]({{site.baseurl}}/docs/administration/codefresh-runner/#optional-installation-of-the-app-proxy) (if app-proxy is used)
+* `engine` - this pod needs outgoing/egress access to `g.codefresh.io`, firebase and quay.io
+* `engine` - this pod needs network access to `dind` pod
 
 All CNI providers/plugins are compatible with the runner components.
 
