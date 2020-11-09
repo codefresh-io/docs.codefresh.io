@@ -447,7 +447,7 @@ codefresh get runtime-environments
 Choose the runtime you have just added and get its yaml representation:
 
 ```
-codefresh get runtime-environments ivan@wawa-ebs.us-west-2.eksctl.io/codefresh-runtime -o yaml > runtime.yaml
+codefresh get runtime-environments ivan@acme-ebs.us-west-2.eksctl.io/codefresh-runtime -o yaml > runtime.yaml
 ```
 
 The nodeSelector `failure-domain.beta.kubernetes.io/zone: us-west-2c` (Please change it to yours) should be added to the `dockerDaemonScheduler` block. It should be at the same level as `clusterProvider` or `namespace`. Also the `pvcs` block should be modified to use the Storage Class you created above (`venona-ebs`). Here is the example:
@@ -462,21 +462,21 @@ metadata:
     endingAt: 1577273400263
     reason: Codefresh hybrid runtime
     started: 1576063800333
-  name: ivan@wawa-ebs.us-west-2.eksctl.io/codefresh-runtime
+  name: ivan@acme-ebs.us-west-2.eksctl.io/codefresh-runtime
   changedBy: ivan-codefresh
   creationTime: '2019/12/11 11:30:00'
 runtimeScheduler:
   cluster:
     clusterProvider:
       accountId: 5cb563d0506083262ba1f327
-      selector: ivan@wawa-ebs.us-west-2.eksctl.io
+      selector: ivan@acme-ebs.us-west-2.eksctl.io
     namespace: codefresh-runtime
   annotations: {}
 dockerDaemonScheduler:
   cluster:
     clusterProvider:
       accountId: 5cb563d0506083262ba1f327
-      selector: ivan@wawa-ebs.us-west-2.eksctl.io
+      selector: ivan@acme-ebs.us-west-2.eksctl.io
     namespace: codefresh-runtime
     nodeSelector:
       failure-domain.beta.kubernetes.io/zone: us-west-2c
@@ -492,7 +492,7 @@ dockerDaemonScheduler:
 extends:
   - system/default/hybrid/k8s
 description: >-
-  Runtime environment configure to cluster: ivan@wawa-ebs.us-west-2.eksctl.io
+  Runtime environment configure to cluster: ivan@acme-ebs.us-west-2.eksctl.io
   and namespace: codefresh-runtime
 accountId: 5cb563d0506083262ba1f327
 {% endraw %}
