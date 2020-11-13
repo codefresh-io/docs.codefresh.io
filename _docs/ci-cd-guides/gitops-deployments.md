@@ -39,12 +39,13 @@ This guide will explain how you can use GitOps for your own applications.
 
 One of the central ideas around GitOps is the usage of Git for ALL project resources. Even though developers are familiar with using Git for the source code of the application, adopting GitOps means that you need to store in Git every other resource of the application (and not just the source code). 
 
-In the case of Kubernetes, this means that all Kubernetes manifests should be stored in a Git repository as well. In the most simple scenario you have the main repository of your application (this is mostly interesting to developers) and a _second_ Git repository with Kubernetes manifests (this is more relevant to operators/SREs).
+In the case of Kubernetes, this means that all Kubernetes manifests should be stored in a Git repository as well. In the most simple scenario you have the main repository of your application (this is mostly interesting to developers) and [a second Git repository with Kubernetes manifests](https://argoproj.github.io/argo-cd/user-guide/best_practices/#separating-config-vs-source-code-repositories) (this is more relevant to operators/SREs).
 
 As a running example you can use:
 
 * The [https://github.com/codefresh-contrib/gitops-app-source-code](https://github.com/codefresh-contrib/gitops-app-source-code) repository for the application code
 * The [https://github.com/codefresh-contrib/gitops-kubernetes-configuration](https://github.com/codefresh-contrib/gitops-kubernetes-configuration) repository for the Kubernetes configuration
+* The [https://github.com/codefresh-contrib/gitops-pipelines](https://github.com/codefresh-contrib/gitops-pipelines) repository that holds the pipelines
 
 The application code repository contains the source code plus a dockerfile. You can use any Git workflow for this repository. We will set a pipeline in Codefresh that creates a container image on each commit.
 
@@ -54,7 +55,7 @@ The configuration repository holds the kubernetes manifests. This is one of the 
 * Every time a commit happens to the configuration repository the cluster will be notified to deploy the new version of the files (we will setup a pipeline for this)
 * Every subsequent configuration change should become a Git commit. Ad-hoc changes to the cluster (i.e. with `kubectl` commands) are **NOT** allowed
 
-
+We also have a third Git repository for pipelines, because pipelines are also part of the application.
 
 ## Connecting ArgoCD and Codefresh
 
@@ -73,105 +74,7 @@ Follow the instructions for [connecting ArgoCD to Codefresh]({{site.baseurl}}/do
 
  Once you connect your application you will see it under in the GitOps application screen in the Codefresh UI.
 
-## Working with the GitOps dashboard
 
-After you create an ArgoCD application, you can click on it in the [GitOps environment overview](https://g.codefresh.io/environment-v2/) and see the respective GitOps screen.
-
-
-{% include image.html 
-  lightbox="true" 
-  file="/images/guides/gitops/gitops-environment.png" 
-  url="/images/guides/gitops/gitops-environment.png" 
-  alt="GitOps Dashboard"
-  caption="GitOps Dashboard"  
-  max-width="100%"
- %}
-
-This dashboard is the central place for monitoring your application and contains the following information:
-
-1. Current health and sync status
-1. Deployment graph that shows successful/failed deployments on the selected time period
-1. Complete history of deployments according to Git hash. For each deployment you can also see which Pull Request was used for the commit, who was the committer and which JIRA issues this Pull request is solving (provided that the image was built by a Codefresh pipeline)
-1. The Kubernetes services that belong to this application (on the services tab)
-
-The deployment status is fetched from your ArgoCD integration in a live manner. If at any point, the deployment is not synced with GIT, you will instantly see the out-of-sync status:
-
-{% include image.html 
-  lightbox="true" 
-  file="/images/guides/gitops/out-of-sync.png" 
-  url="/images/guides/gitops/out-of-sync.png" 
-  alt="Out of sync status"
-  caption="Out of sync status"  
-  max-width="60%"
- %}
-
-For each Git hash Codefresh associates the respective Pull Request and Jira issue(s) that affected deployment. To achieve this correlation, Codefresh is enriching the Docker image(s) of the service during the CI process.
-
-You can manually create these annotations with the [standard Codefresh annotation support]({{site.baseurl}}/docs/codefresh-yaml/annotations/) or via the built-in pipeline steps that we will see in the next section. 
-
-### Filtering the deployment history
-
-You can add filters on the deployment history by using the multi-select field on the top left of the screen.
-
-{% include image.html 
-  lightbox="true" 
-  file="/images/guides/gitops/filter.png" 
-  url="/images/guides/gitops/filter.png" 
-  alt="Filtering options"
-  caption="Filtering options"  
-  max-width="40%"
- %}
-
- You can add filters for:
-
- * Git committer(s)
- * Pull Request number(s)
- * Jira issue(s)
-
- If you define multiple options they work in an OR manner.
-
-
-
-### Searching the deployment history
-
-For advanced filtering options, the search field on the top right allows you to view only the subset of deployments that match your custom criteria.
-
-Apart from direct text search, the text field also supports a simple query language with the following keywords:
-
-* `issues`
-* `issue`
-* `prs`
-* `pr`
-* `committer`
-* `committers`
-* `service`
-* `services`
-* `image`
-* `images`
-* `status`
-* `statuses`
-
-The following characters serve as delimiters
-* `:` define the value for a keyword
-* `,` define multiple values for a single keyword
-* `;` define multiple criteria
-
-{% include image.html 
-  lightbox="true" 
-  file="/images/guides/gitops/search-history.png" 
-  url="/images/guides/gitops/search-history.png" 
-  alt="Searching deployment history"
-  caption="Searching deployment history"  
-  max-width="80%"
- %}
-
-Some examples are:
-
-* `pr:2` - filter the deployment history to show only a specific Pull request 
-* `issues: SAAS-2111, SAAS-2222` - show only specific issues
-* `issue: SAAS-2111; pr:3 ; service: my-app` - searching for multiple criteria in OR behavior
-
-Using the search field allows you to quickly find a specific Git commit in the history of the application (and even rollback the deployment as explained in the next sections).
 
 ## Creating a basic CI pipeline for GitOps
 
@@ -208,7 +111,7 @@ steps:
   clone:
     title: "Cloning repository"
     type: "git-clone"
-    repo: "kostis-codefresh/simple-web-app"
+    repo: "codefresh-contrib/gitops-app-source-code"
     revision: '${{CF_REVISION}}'
     stage: "clone"
   build:
@@ -360,6 +263,106 @@ The name of the application should be the same name as the ArgoCD Application.
 
  Once the pipeline has finished running the sync status will updated in your GitOps dashboard to reflect the current state.
 
+## Working with the GitOps dashboard
+
+After you create an ArgoCD application, you can click on it in the [GitOps environment overview](https://g.codefresh.io/environment-v2/) and see the respective GitOps screen.
+
+
+{% include image.html 
+  lightbox="true" 
+  file="/images/guides/gitops/gitops-environment.png" 
+  url="/images/guides/gitops/gitops-environment.png" 
+  alt="GitOps Dashboard"
+  caption="GitOps Dashboard"  
+  max-width="100%"
+ %}
+
+This dashboard is the central place for monitoring your application and contains the following information:
+
+1. Current health and sync status
+1. Deployment graph that shows successful/failed deployments on the selected time period
+1. Complete history of deployments according to Git hash. For each deployment you can also see which Pull Request was used for the commit, who was the committer and which JIRA issues this Pull request is solving (provided that the image was built by a Codefresh pipeline)
+1. The Kubernetes services that belong to this application (on the services tab)
+
+The deployment status is fetched from your ArgoCD integration in a live manner. If at any point, the deployment is not synced with GIT, you will instantly see the out-of-sync status:
+
+{% include image.html 
+  lightbox="true" 
+  file="/images/guides/gitops/out-of-sync.png" 
+  url="/images/guides/gitops/out-of-sync.png" 
+  alt="Out of sync status"
+  caption="Out of sync status"  
+  max-width="60%"
+ %}
+
+For each Git hash Codefresh associates the respective Pull Request and Jira issue(s) that affected deployment. To achieve this correlation, Codefresh is enriching the Docker image(s) of the service during the CI process.
+
+You can manually create these annotations with the [standard Codefresh annotation support]({{site.baseurl}}/docs/codefresh-yaml/annotations/) or via the built-in pipeline steps that we will see in the next section. 
+
+### Filtering the deployment history
+
+You can add filters on the deployment history by using the multi-select field on the top left of the screen.
+
+{% include image.html 
+  lightbox="true" 
+  file="/images/guides/gitops/filter.png" 
+  url="/images/guides/gitops/filter.png" 
+  alt="Filtering options"
+  caption="Filtering options"  
+  max-width="40%"
+ %}
+
+ You can add filters for:
+
+ * Git committer(s)
+ * Pull Request number(s)
+ * Jira issue(s)
+
+ If you define multiple options they work in an OR manner.
+
+
+
+### Searching the deployment history
+
+For advanced filtering options, the search field on the top right allows you to view only the subset of deployments that match your custom criteria.
+
+Apart from direct text search, the text field also supports a simple query language with the following keywords:
+
+* `issues`
+* `issue`
+* `prs`
+* `pr`
+* `committer`
+* `committers`
+* `service`
+* `services`
+* `image`
+* `images`
+* `status`
+* `statuses`
+
+The following characters serve as delimiters
+* `:` define the value for a keyword
+* `,` define multiple values for a single keyword
+* `;` define multiple criteria
+
+{% include image.html 
+  lightbox="true" 
+  file="/images/guides/gitops/search-history.png" 
+  url="/images/guides/gitops/search-history.png" 
+  alt="Searching deployment history"
+  caption="Searching deployment history"  
+  max-width="80%"
+ %}
+
+Some examples are:
+
+* `pr:2` - filter the deployment history to show only a specific Pull request 
+* `issues: SAAS-2111, SAAS-2222` - show only specific issues
+* `issue: SAAS-2111; pr:3 ; service: my-app` - searching for multiple criteria in OR behavior
+
+Using the search field allows you to quickly find a specific Git commit in the history of the application (and even rollback the deployment as explained in the next sections). 
+
 
 ## Rolling back Git versions
 
@@ -411,7 +414,7 @@ steps:
   clone:
     title: "Cloning repository"
     type: "git-clone"
-    repo: "kostis-codefresh/simple-web-app"
+    repo: "codefresh-contrib/gitops-app-source-code"
     revision: '${{CF_REVISION}}'
     stage: "clone"
 
@@ -451,7 +454,7 @@ steps:
     title: cloning gitops repo
     type: git-clone
     arguments:
-      repo: 'kostis-codefresh/simple-kubernetes-deployment'
+      repo: 'codefresh-contrib/gitops-kubernetes-configuration'
       revision: 'master'
     stage: "gitops"
     when:
@@ -475,9 +478,9 @@ steps:
     type: git-commit
     stage: "gitops"
     arguments:
-      repo: 'kostis-codefresh/simple-kubernetes-deployment'
+      repo: 'codefresh-contrib/gitops-kubernetes-configuration'
       git: github-1
-      working_directory: '/codefresh/volume/simple-kubernetes-deployment'
+      working_directory: '/codefresh/volume/gitops-kubernetes-configuration'
       commit_message: Updated manifest
       git_user_name: my-git-username
       git_user_email: my-git-email
@@ -498,6 +501,16 @@ This pipeline:
 1. Commits the change back using the [Git commit plugin](https://codefresh.io/steps/step/git-commit) to the Git repository that contains the manifests.
 
 The CD pipeline (described in the previous section) will detect that commit and use the [sync plugin](https://codefresh.io/steps/step/argocd-sync) to instruct ArgoCD to deploy the new tag. Alternatively you can setup the ArgoCD project to auto-sync on its own if it detects changes in the Git repository with the manifests.
+
+
+## Using a Git repository for the pipelines
+
+Remember that according to GitOPs we should place *all* application resources on Git. This means that the pipelines themselves must also be present in Git.
+
+Even though Codefresh has a powerful inline editor for editing pipelines, as soon as you finish with your pipelines you [should commit them in Git](https://github.com/codefresh-contrib/gitops-pipelines)
+and load them from the repository.
+
+
 
 
 ## What to read next
