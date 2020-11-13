@@ -5,9 +5,60 @@ group: ci-cd-guides
 toc: true
 ---
 
-Apart from traditional push-based Helm deployments, Codefresh can also be used for GitOps deployments. GitOps deployments are powered by [ArgoCD](https://argoproj.github.io/argo-cd/) so you need an active ArgoCD installation in your cluster to take advantage of the GitOps dashboard in Codefresh.
+Apart from traditional push-based Helm deployments, Codefresh can also be used for [GitOps deployments](https://codefresh.io/gitops/).
+
+## What is GitOps
+
+GitOps is the practice of performing Operations via Git only. The main principles of GitOps are the following:
+
+* The state of the system/application is always stored in Git.
+* Git is always the source of truth for what happens in the system.
+* If you want to change the state of the system you need to perform a Git operation such as creating a commit or opening a pull request. Deployments, tests, and rollbacks controlled through git flow.
+* Once the Git state is changed, then the cluster (or whatever your deployment target is) state should match what is described in the Git repository.
+* No hand rolled deployments, no ad-hoc cluster changes, no live configuration changes are allowed. If a change needs to happen, it must be committed to Git first.
+
+GitOps deployments have several advantages compared to traditional imperative deployments. The main one is that the Git repo represents the state of the system, and Git history
+is essentially the same thing as deployment history. Rollbacks are very easy to perform by simply using a previous Git hash.
+
+Even though GitOps is not specific to Kubernetes, current GitOps tools work great with Kubernetes in the form of cluster controllers. The GitOps controller monitors the state of the Git repository and when a commit happens, the cluster is instructed to match the same state.
+
+Codefresh has native support for GitOps including a graphical dashboard for handling your GitOps deployments:
+
+{% include image.html 
+  lightbox="true" 
+  file="/images/guides/gitops/gitops-dashboard.png" 
+  url="/images/guides/gitops/gitops-dashboard.png" 
+  alt="The GitOps dashboard"
+  caption="The GitOps dashboard"  
+  max-width="100%"
+ %}
+
+This guide will explain how you can use GitOps for your own applications.
+
+## Setting up your Git repositories
+
+One of the central ideas around GitOps is the usage of Git for ALL project resources. Even though developers are familiar with using Git for the source code of the application, adopting GitOps means that you need to store in Git every other resource of the application (and not just the source code). 
+
+In the case of Kubernetes, this means that all Kubernetes manifests should be stored in a Git repository as well. In the most simple scenario you have the main repository of your application (this is mostly interesting to developers) and a _second_ Git repository with Kubernetes manifests (this is more relevant to operators/SREs).
+
+As a running example you can use:
+
+* The [https://github.com/codefresh-contrib/gitops-app-source-code](https://github.com/codefresh-contrib/gitops-app-source-code) repository for the application code
+* The [https://github.com/codefresh-contrib/gitops-kubernetes-configuration](https://github.com/codefresh-contrib/gitops-kubernetes-configuration) repository for the Kubernetes configuration
+
+The application code repository contains the source code plus a dockerfile. You can use any Git workflow for this repository. We will set a pipeline in Codefresh that creates a container image on each commit.
+
+The configuration repository holds the kubernetes manifests. This is one of the critical points of GitOps
+
+* The configuration repository holds the manifests that are also present in the Kubernetes cluster
+* Every time a commit happens to the configuration repository the cluster will be notified to deploy the new version of the files (we will setup a pipeline for this)
+* Every subsequent configuration change should become a Git commit. Ad-hoc changes to the cluster (i.e. with `kubectl` commands) are **NOT** allowed
+
+
 
 ## Connecting ArgoCD and Codefresh
+
+GitOps deployments are powered by [ArgoCD](https://argoproj.github.io/argo-cd/) so you need an active ArgoCD installation in your cluster to take advantage of the GitOps dashboard in Codefresh.
 
 Follow the instructions for [connecting ArgoCD to Codefresh]({{site.baseurl}}/docs/integrations/argo-cd/) and creating an ArgoCD application
 
