@@ -505,10 +505,21 @@ The CD pipeline (described in the previous section) will detect that commit and 
 
 ## Using a Git repository for the pipelines
 
-Remember that according to GitOPs we should place *all* application resources on Git. This means that the pipelines themselves must also be present in Git.
+Remember that according to GitOps we should place *all* application resources on Git. This means that the pipelines themselves must also be present in a Git repository and any change on them should pass from source control.
 
-Even though Codefresh has a powerful inline editor for editing pipelines, as soon as you finish with your pipelines you [should commit them in Git](https://github.com/codefresh-contrib/gitops-pipelines)
+Even though Codefresh has a [powerful inline editor]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#using-the-inline-pipeline-editor) for editing pipelines, as soon as you finish with your pipelines you [should commit them in Git](https://github.com/codefresh-contrib/gitops-pipelines)
 and load them from the repository.
+
+{% include image.html 
+  lightbox="true" 
+  file="/images/guides/gitops/pipeline-from-git.png" 
+  url="/images/guides/gitops/pipeline-from-git.png" 
+  alt="Loading a pipeline from GIT"
+  caption="Loading a pipeline from GIT"  
+  max-width="80%"
+ %}
+
+ Once the pipeline is in Git, you should switch the online editor to [load the pipeline from the repository]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#loading-codefreshyml-from-version-control) instead of the inline text.
 
 
 
