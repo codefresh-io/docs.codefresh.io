@@ -8,6 +8,10 @@ toc: true
 ---
 Recent Codefresh updates:
 
+### November 2020
+
+- Global volume mounts in the Codefresh runner - [documentation]({{site.baseurl}}/docs/administration/codefresh-runner/#custom-volume-mounts)
+
 ### October 2020
 
 - Using Google for SSO - [documentation]({{site.baseurl}}/docs/administration/single-sign-on/sso-google/)

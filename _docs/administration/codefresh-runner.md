@@ -378,6 +378,54 @@ codefresh attach runtime --agent-name $AGENT_NAME --agent-kube-namespace codefre
 
 ## Configuration options
 
+You can fine tune the installation of the runner to better match your environment and cloud provider.
+
+
+### Custom volume mounts
+
+You can add your own volume mounts in the runtime environment, so that all pipeline steps have access to the same set of external files. A typical
+example of this scenario is when you want to make a set of SSL certificates available to all your pipelines. Rather than manually
+downlading the certificates in each pipeline, you can provide them centrally on the runtime level.
+
+To get a list of all available runtimes execute:
+
+```   
+codefresh get runtime-environments
+```
+
+Choose the runtime that you want to modify and get its yaml representation:
+
+```
+codefresh get runtime-environments ivan@acme-ebs.us-west-2.eksctl.io/codefresh-runtime -o yaml > runtime.yaml
+```
+
+Under the `dockerDaemonScheduler` block you can add two additional elements with names `userVolumeMounts` and `userVolumes` (they follow the same syntax as normal `volumes` and `volumeMounts`) and define your own global volumes
+
+`runtime.yaml`
+{% highlight yaml %}
+{% raw %}
+dockerDaemonScheduler:
+  userVolumeMounts:
+    my-test:
+      name: test
+      mountPath: /etc/ssl/cert
+      readOnly: true
+  userVolumes:
+    test:
+      name: test
+      secret: 
+        secretName: test-secret
+
+{% endraw %}
+{% endhighlight %}
+
+Update your runtime environment with the [patch command](https://codefresh-io.github.io/cli/operate-on-resources/patch/):
+
+```
+codefresh patch runtime-environment ivan@acme-ebs.us-west-2.eksctl.io/codefresh-runtime -f runtime.yaml
+```
+
+
 ### Installing on AWS
 
 If you install the Codefresh runner on [EKS](https://aws.amazon.com/eks/) or any other custom cluster (e.g. with kops) in Amazon you need to configure it properly to work with EBS volume in order to gain [caching]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipeline-caching/).
