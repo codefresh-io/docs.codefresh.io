@@ -127,6 +127,8 @@
       url: "/pull-request-branches"
     - title: "Pipelines for Microservices"
       url: "/microservices"
+    - title: "GitOps deployments"
+      url: "/gitops-deployments"      
     # - title: "Production and Staging deployments"
     #   url: "/environment-deployments"
     # - title: Complex workflows
@@ -396,6 +398,8 @@
           url: "/github-container-registry"
         - title: "Other Registries"
           url: "/other-registries"  
+    - title: ArgoCD Integration
+      url: "/argo-cd"            
     - title: Jenkins Integration
       url: "/jenkins-integration"                
     - title: Google Cloud builder
