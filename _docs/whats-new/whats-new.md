@@ -10,6 +10,7 @@ Recent Codefresh updates:
 
 ### November 2020
 
+- GitOps deployments - [documentation]({{site.baseurl}}/docs/ci-cd-guides/gitops-deployments/)
 - Global volume mounts in the Codefresh runner - [documentation]({{site.baseurl}}/docs/administration/codefresh-runner/#custom-volume-mounts)
 
 ### October 2020

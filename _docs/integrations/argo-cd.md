@@ -17,7 +17,7 @@ Before you can use Codefresh and ArgoCD together, you need to connect your ArgoC
   max-width="100%"
  %}
 
-## Connecting to your ArgoCD cluster
+## Creating your ArgoCD integration in Codefresh
 
 To configure the integration go to your Account Configuration, by clicking on *Account Settings* on the left sidebar. On the first section called *Integrations* click the *Configure* button next to *GitOps*.
 
@@ -30,9 +30,7 @@ To configure the integration go to your Account Configuration, by clicking on *A
   max-width="100%"
  %}
 
-Click the *Add GitOps Provider* button from the drop-down menu.
-
-## Connecting to an existing ArgoCD installation
+Click the *Add GitOps Provider* button from the drop-down menu and follow the on-screen instructions.
 
 To connect to an existing ArgoCD installation you need to use the [Codefresh CLI](https://codefresh-io.github.io/cli/). The Codefresh cli will install an agent in your cluster (in the same namespace that ArgoCD runs) that will handle all communication between ArgoCd and Codefresh.
 

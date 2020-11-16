@@ -434,7 +434,7 @@ steps:
     type: image-enricher
     stage: "metadata"
     arguments:
-      IMAGE:  docker.io/kostiscodefresh/simple-web-app:latest
+      IMAGE:  docker.io/kostiscodefresh/simple-web-app:${{CF_SHORT_REVISION}}
       BRANCH: '${{CF_BRANCH}}'
       REPO: 'kostis-codefresh/simple-web-app'
       GIT_PROVIDER_NAME: github-1
@@ -444,7 +444,7 @@ steps:
     stage: "metadata"
     fail_fast: false
     arguments:
-      IMAGE: docker.io/kostiscodefresh/simple-web-app:latest
+      IMAGE: docker.io/kostiscodefresh/simple-web-app:${{CF_SHORT_REVISION}}
       JIRA_PROJECT_PREFIX: 'SAAS'
       MESSAGE: SAAS-8842
       JIRA_HOST: codefresh-io.atlassian.net
@@ -482,8 +482,8 @@ steps:
       git: github-1
       working_directory: '/codefresh/volume/gitops-kubernetes-configuration'
       commit_message: Updated manifest
-      git_user_name: my-git-username
-      git_user_email: my-git-email
+      git_user_name: ${{CF_COMMIT_AUTHOR}}
+      git_user_email: ${{CF_COMMIT_AUTHOR}}@acme-inc.com
     when:
       branch:
         only:
