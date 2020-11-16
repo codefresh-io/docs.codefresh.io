@@ -78,7 +78,7 @@ Follow the instructions for [connecting ArgoCD to Codefresh]({{site.baseurl}}/do
 
 ## Creating a basic CI pipeline for GitOps
 
-Creating a CI pipeline for GitOps is no different that a [standard pipeline]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/) that [packages your Docker images]({{site.baseurl}}/docs/ci-cd-guides/building-docker-images/), runs [tests]({{site.baseurl}}/docs/testing/unit-tests/), performs [security scans]({{site.baseurl}}/docs/testing/security-scanning/) etc.
+Creating a CI pipeline for GitOps is no different than a [standard pipeline]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/) that [packages your Docker images]({{site.baseurl}}/docs/ci-cd-guides/building-docker-images/), runs [tests]({{site.baseurl}}/docs/testing/unit-tests/), performs [security scans]({{site.baseurl}}/docs/testing/security-scanning/) etc.
 
  {% include image.html 
   lightbox="true" 
