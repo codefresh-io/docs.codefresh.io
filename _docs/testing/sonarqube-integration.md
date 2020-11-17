@@ -7,8 +7,7 @@ redirect_from:
 toc: true
 ---
 
-[SonarQube](https://www.sonarqube.org/) is a popular platform for Code Quality. It can be used for static and dynamic analysis of a codebase and can detect
-common code issues such as bugs and vulnerabilities. 
+[SonarQube](https://www.sonarqube.org/) is a popular platform for Code Quality. It can be used for static and dynamic analysis of a codebase and can detect common code issues such as bugs and vulnerabilities. 
 
 
 {% include image.html 
@@ -19,25 +18,22 @@ alt="SonarQube logo"
 max-width="40%" 
 %}
 
-There are many ways to perform an [analysis with SonarQube](https://docs.sonarqube.org/display/SCAN/Analyzing+Source+Code) but the easiest one would be to use the one that matches the build system of your application.
+There are many ways to perform an [analysis with SonarQube](https://docs.sonarqube.org/latest/setup/overview/) but the easiest one would be to use the one that matches the build system of your application.
 
-Since Docker images for all popular build systems already exist, Codefresh can easily start a code analysis by adding an additional step in the pipeline that runs the SonarQube scanner in the context of a Docker image.
+This section shows how to use the [SonarQube plugin](https://codefresh.io/steps/step/sonar-scanner-cli) on Codefresh from the plugin directory. Once set-up your code will automatically be analysed everytime your pipeline runs.  
 
 ## Prerequisites for SonarQube integration
 
 Before starting an analysis, you need to make sure that:
 
- * You have an account on your SonarQube instance that can create new projects (and not just view them, Ask your SonarQube administrator if you are not sure about your privileges)
- * That there is network connectivity between Codefresh and SonarQube (Codefresh needs to communicate with SonarQube in order to send the analysis results, so depending on your installation you might need to contact your network administrator)
-
- SonarQube is also offered as a [Helm Chart](https://github.com/kubernetes/charts/tree/master/stable/sonarqube) so if you already have a Kubernetes cluster defined in Codefresh you can deploy SonarQube there as well. For *demonstration purposes only* it is also very easy to run SonarQube in a Codefresh Swarm demo environment.
-
+ * You have at least a simple [Codefresh pipeline up and running](https://codefresh.io/docs/docs/getting-started/create-a-codefresh-account/)
+ * You have a SonarQube account (Developer, Enterprise, or on the [SonarCloud](https://sonarcloud.io/))
 
 ## Getting a security token from SonarQube
 
-First you need a security token to allow remote access to SonarQube. You can either create a new one or reuse an existing one. Security wise it is best if each project has its own token.
+To use the SonarQube plugin, you will need to provide your login credentials in your Codefresh Pipeline or you generate a security token. We recommend the latter. You can either create a new one or reuse an existing one. Security wise it is best if each project has its own token.
 
-Login into SonarQube with your account and navigate to *Help -> Tutorials -> Analyze a new project* (click the question mark on the top right of the SonarQube interface.
+Login into SonarQube with your account and navigate to *USER -> MY ACCOUNT*, which is on the top right corner of your profile. Next, select the *Security* tap and generate the security token. Save the token somewhere where you will be able to access it again easily.
 
 {% include image.html 
 lightbox="true" 
@@ -47,22 +43,25 @@ alt="SonarQube generate token"
 max-width="50%" 
 %}
 
-Enter a name for your project and click the generate button to obtain a token. This token will allow Codefresh to send information to SonarQube.
+## Setting up your sonar-project.properties file
 
-{% include image.html 
-lightbox="true" 
-file="/images/testing/sonarqube/sonar-instructions.png" 
-url="/images/testing/sonarqube/sonar-instructions.png" 
-alt="SonarQube analysis instructions" 
-max-width="80%" 
-%}
+Not all environment variables are currently [automatically defined](https://github.com/SonarSource/sonar-scanner-cli-docker/pull/50) in the SonarScanner. Thus, we have to set-up a `sonar-project.properties` file in our root directry.
 
-Then you can select the type of your project and SonarQube will present to you the exact commands you need to run in order to perform the analysis. Press the Copy button to copy them in your clipboard. We will use these commands later in the Codefresh Configuration.
+Please create the file and add the following values
 
-## Running an analysis from Codefresh (built-in predefined steps)
+{% highlight yaml %}
+# must be unique in a given SonarQube instance
+sonar.projectKey=a unique project key
+ 
+# organization name
+sonar.organization=your organisation name
+{% endhighlight %}
 
-If you are using the predefined Codefresh pipeline you just need to enter the SonarQube steps in your unit test stage.
-Assuming that your project has already a Dockerfile that uses Maven to compile code, all you need to do is copy-paste the SonarQube commands into the Unit tests stage in Codefresh
+The file is needed to run the SonarQube plugin.
+
+## Running an analysis from the Codefresh Plugin
+
+If you are using the predefined Codefresh pipeline you just need to look-up SonarQube under `STEPS` and you will find the custom plugin.
 
 {% include image.html 
 lightbox="true" 
@@ -72,32 +71,34 @@ alt="SonarQube analysis for predefined Codefresh steps"
 max-width="80%" 
 %}
 
-The Sonar Maven plugin needs the same `pom.xml` file that is used for the main compilation so make sure that you run the command in the appropriate container folder that houses your application.
+* Select the `sonar-scanner-cli`
+* Copy and past the step to your pipeline
 
+Please customise the values within the step as follows:
+* SONAR_HOST_URL: 'https://sonarcloud.io/' # this is the URL to SonarCloud, if applicable, please replace it with the Server URL
+* SONAR_LOGIN: username or access token (generated above)
+* SONAR_PASSWORD: password if username is used
+* SONAR_PROJECT_BASE_DIR: set working directory for analysis
+* SONAR_SCANNER_CLI_VERSION: latest
 
+Here is our example step:
 
-## Running an analysis from Codefresh (Custom YAML file)
+{% highlight yaml %}
+ sonarqube:
+    type: "sonar-scanner-cli"
+    stage: "push"
+    arguments:
+      SONAR_HOST_URL: 'https://sonarcloud.io/' # replace with your host url
+      SONAR_LOGIN: "insert access token" # replace with your access token
+      SONAR_PROJECT_BASE_DIR: "/codefresh/volume/sonarqube-example" #r eplace with your working directory
+      SONAR_SCANNER_CLI_VERSION: "latest"
+{% endhighlight %}
 
-If you are using a custom Codefresh YAML file, or if your container does not have access to Maven and other development tools, it is very easy to run the analysis using an external Maven Docker image.
-
-Add another step in your pipeline that accesses a Maven image and runs the SonarQube steps. SonarQube requires access to the actual binaries (not just the source code) of the application to report code coverage. If your code is not already compiled by a previous pipeline step, you need to add an extra compilation step.
-
-{% include image.html 
-lightbox="true" 
-file="/images/testing/sonarqube/codefresh-yaml-sonar.png" 
-url="/images/testing/sonarqube/codefresh-yaml-sonar.png" 
-alt="SonarQube analysis for custom Codefresh YAML" 
-max-width="80%" 
-%}
-
-Here the `mvn package` command makes sure that SonarQube has access to both binaries and sources of the application.
-
-
+Once the values are specified, save and run your pipeline.
 
 ## Viewing the SonarQube analysis
 
-Regardless of the way that you start the SonarQube analysis, once the Codefresh build is started you can check the logs
-and monitor the analysis progress.
+Once the Codefresh build is started you can check the logs and monitor the analysis progress.
 
 {% include image.html 
 lightbox="true" 
@@ -118,7 +119,6 @@ max-width="80%"
 %}
 
 Then you can drill down and view the various statistics.
-
 
 {% include image.html 
 lightbox="true" 
