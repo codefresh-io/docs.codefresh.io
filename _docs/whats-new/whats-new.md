@@ -6,7 +6,12 @@ redirect_from:
   - /docs/whats-new/
 toc: true
 ---
-Recent Codefresh updates:
+
+## Upcoming changes
+
+- The Codefresh UI will be upgraded to Angular 10. Check the details for supported browsers at our [FAQ]({{site.baseurl}}/docs/getting-started/faq/#user-interface) section.
+
+## Recent Codefresh updates:
 
 ### November 2020
 

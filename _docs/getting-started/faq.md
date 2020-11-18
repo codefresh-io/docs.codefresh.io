@@ -61,6 +61,7 @@ A. Codefresh is a superset of Jenkins. Jenkins is only CI. You need to write cus
 A. These scripts are custom made, complex to maintain and difficult to read. One of the reasons that developers and operators have difficulties in communication is the in-house nature of deployment scripts. Codefresh allows you to create standard declarative pipelines
 where each step is a reusable Docker image.
 
+
 ## Integration features
 
 **Q. Can Codefresh run a build on each push/commit?**  
@@ -133,6 +134,25 @@ Native Integration with more cloud providers is coming soon.
 You can but you don't need to. The SAAS version of Codefresh is fully managed and pipelines are running on the cloud.
 You can run Codefresh pipelines on your own cluster using the [Codefresh Runner]({{site.baseurl}}/docs/enterprise/codefresh-runner/) in [Hybrid mode]({{site.baseurl}}/docs/enterprise/behind-the-firewall/). This is normally only needed if you want to access services behind your firewall. If you simply want to *deploy* to a Kubernetes cluster, the SAAS version of Codefresh is enough.
 
+## User interface
+
+**Q. What toolkit does the Codefresh UI use?**    
+A. We use Angular JS.
+
+**Q. Can I use Codefresh without the graphical dashboards?**    
+A. Yes, all Codefresh functionality is available via our [API]({{site.baseurl}}/docs/integrations/codefresh-api/) and [CLI](https://codefresh-io.github.io/cli/).
+
+**Q. What are the browser requirements for the Codefresh UI?** 
+A. We officially support the latest version of the Chrome browser. Any browser released in the last 2 years should work without any major issues.
+The following browser versions are **NOT** supported:
+
+{: .table .table-bordered .table-hover}
+| Browser          | Version                 | Date released                  |
+| -------------- | ---------------------------- |-------------------------|
+| Chrome       | < 51 | May 2016 |
+| Firefox  | < 54 |  Jun 2017 |
+| Edge        | < 14 | Aug 2016 |
+| Safari   | < 10  | Sep 2016 |
 
 ## Enterprise support
 
