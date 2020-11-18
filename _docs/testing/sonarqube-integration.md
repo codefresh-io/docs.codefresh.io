@@ -75,11 +75,11 @@ max-width="80%"
 * Copy and past the step to your pipeline
 
 Please customise the values within the step as follows:
-* SONAR_HOST_URL: 'https://sonarcloud.io/' # this is the URL to SonarCloud, if applicable, please replace it with the Server URL
-* SONAR_LOGIN: username or access token (generated above)
-* SONAR_PASSWORD: password if username is used
-* SONAR_PROJECT_BASE_DIR: set working directory for analysis
-* SONAR_SCANNER_CLI_VERSION: latest
+* `SONAR_HOST_URL: 'https://sonarcloud.io/'` # this is the URL to SonarCloud, if applicable, please replace it with the Server URL
+* `SONAR_LOGIN: username` or access token (generated above)
+* `SONAR_PASSWORD: password` if username is used
+* `SONAR_PROJECT_BASE_DIR: set working directory for analysis`
+* `SONAR_SCANNER_CLI_VERSION: latest`
 
 Here is our example step:
 
