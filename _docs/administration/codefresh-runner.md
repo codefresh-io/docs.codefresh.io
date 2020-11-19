@@ -279,11 +279,9 @@ The requirements for the App proxy is a Kubernetes cluster that:
 1. has an active [ingress controller](https://kubernetes.io/docs/concepts/services-networking/ingress/)
 1. allows incoming connections from the VPC/VPN where users are browsing the Codefresh UI. The ingress connection **must** have a hostname assigned for this route and **must** be configured to perform SSL termination
 
->Currently the App-proxy works only for Github and Github enterprise. We are soon adding support for other Git providers such as GitLab and Bitbucket.
+>Currently the App-proxy works only for Github (SAAS and on-prem versions), and Gitlab (SAAS and on-prem versions). We are soon adding support for other Git providers.
 
 Here is the architecture of the app-proxy:
-
-
 
 {% include image.html
   lightbox="true"
