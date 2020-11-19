@@ -116,6 +116,8 @@ For GitHub on-premise you also need to provide the URL of the GitHub server in y
 
 ## GitHub-App
 
+>This is an incubating feature. Please contact us for updates.
+
 An alternative way to authenticate with Github is via the App mechanism
 
 **Step 1** - Log in your Github account and visit [https://github.com/settings/apps](https://github.com/settings/apps). Click the *New GitHub App* button.
