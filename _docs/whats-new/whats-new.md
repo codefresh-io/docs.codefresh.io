@@ -18,6 +18,7 @@ toc: true
 - SonarQube Plugin - [documentation]({{site.baseurl}}/docs/testing/sonarqube-integration/)
 - GitOps deployments - [documentation]({{site.baseurl}}/docs/ci-cd-guides/gitops-deployments/)
 - Global volume mounts in the Codefresh runner - [documentation]({{site.baseurl}}/docs/administration/codefresh-runner/#custom-volume-mounts)
+- Global environment variables in the Codefresh runner - [documentation]({{site.baseurl}}/docs/administration/codefresh-runner/#custom-global-environment-variables)
 
 ### October 2020
 

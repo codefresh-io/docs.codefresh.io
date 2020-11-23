@@ -378,6 +378,59 @@ codefresh attach runtime --agent-name $AGENT_NAME --agent-kube-namespace codefre
 
 You can fine tune the installation of the runner to better match your environment and cloud provider.
 
+### Custom global environment variables
+
+You can add your own environment variables  in the runtime environment, so that all pipeline steps have access to the same set of external files. A typical
+example would be a shared secret that you want to pass everywhere.
+
+To get a list of all available runtimes execute:
+
+```   
+codefresh get runtime-environments
+```
+
+Choose the runtime that you want to modify and get its yaml representation:
+
+```
+codefresh get runtime-environments ivan@acme-ebs.us-west-2.eksctl.io/codefresh-runtime -o yaml > runtime.yaml
+```
+
+Under the `runtimeScheduler` block you can add an additional element with names `userEnvVars` that follows the same syntax as [secret/environment variables](https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-environment-variables)
+
+`runtime.yaml`
+{% highlight yaml %}
+{% raw %}
+runtimeScheduler:
+  type: KubernetesPod
+  imagePullPolicy: Always
+  cluster:
+    namespace: codefresh
+    clusterProvider:
+      accountId: 5c1658d1736122ee1114c842
+      selector: docker-desktop
+    serviceAccount: codefresh-engine
+  envVars:
+    LOGGER_LEVEL: debug
+    NODE_ENV: kubernetes
+    NODE_TLS_REJECT_UNAUTHORIZED: '0'
+    DISABLE_WORKSPACE_CACHE: 'true'
+    NO_EXT_MONITOR: 'true'
+  userEnvVars:
+    - name: SPECIAL_LEVEL_KEY
+      valueFrom:
+        secretKeyRef:
+          name: dev-db-secret
+          key: username
+{% endraw %}
+{% endhighlight %}
+
+Update your runtime environment with the [patch command](https://codefresh-io.github.io/cli/operate-on-resources/patch/):
+
+```
+codefresh patch runtime-environment ivan@acme-ebs.us-west-2.eksctl.io/codefresh-runtime -f runtime.yaml
+```
+
+
 
 ### Custom volume mounts
 
