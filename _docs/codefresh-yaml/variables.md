@@ -143,6 +143,30 @@ steps:
 
 In the example above you can see the `MyAppDockerImage` variable that denotes a Docker image created dynamically within this single pipeline. In the second step we use it as a Docker context in order to run unit tests. See also the [unit testing example app]({{site.baseurl}}/docs/yaml-examples/examples/run-unit-tests/).
 
+## Step variables
+
+Every [step]({{site.baseurl}}/docs/codefresh-yaml/steps/) in a Codefresh pipeline also exposes several built-in variables. You can access them via the global `steps` parent variable.
+
+ * Each step  creates a variable based on the name of the step. You can then use the members of each variable for status conditions such as: `steps.MyUnitTests.result == 'error'` for a step called `MyUnitTests`.
+  * To access variables that have a non-standard (i.e. only alphanumeric and _ characters) names, use the Variable() function.
+
+### Step Member variables
+
+Variables that are created by steps can have members. The members depend on the step type. For example if you have a build step named `myBuildStep` you can get the ID of the docker image that gets created with {% raw %}`echo ${{steps.myBuildStep.imageId}}`{% endraw %}
+
+{: .table .table-bordered .table-hover}
+| Step Type                                                                                              | Members                                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| All step types                                                                                         | {::nomarkdown}<ul><li>name</li><li>type</li><li>description</li><li>failFast</li><li>workingDirectory</li><li>environment</li><li>result</li></ul>{:/}                                        |
+| [**Freestyle**]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/)        | -                                                                                                                                                                              |
+| [**Build**]({{site.baseurl}}/docs/codefresh-yaml/steps/build/)             | {::nomarkdown}<ul><li>dockerfile</li><li>imageName</li><li>tag</li><li>buildArguments</li><li>imageId</li></ul>{:/}                                                                            |
+| [**Git-clone**]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)       | {::nomarkdown}<ul><li>revision</li><li>credentials</li><li>repo</li></ul>{:/}                                                                                  |
+| [**Composition**]({{site.baseurl}}/docs/codefresh-yaml/steps/composition/) | {::nomarkdown}<ul><li>compositionCandidates</li><li>composition</li><li>startImmediately</li><li>environmentName</li><li>assets</li><li>compositionVariables</li></ul>{:/}     |
+| [**Push**]({{site.baseurl}}/docs/codefresh-yaml/steps/push/)               | {::nomarkdown}<ul><li>candidate</li><li>tag</li><li>registry</li><li>credentials</li><li>imageId</li></ul>{:/}                                                                 |
+
+
+* To access members that have a non-standard (i.e., only alphanumeric and _ characters) names, use the Member() function.
+
 
 ## GitHub Release Variables
 
