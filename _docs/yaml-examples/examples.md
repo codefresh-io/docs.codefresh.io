@@ -66,6 +66,10 @@ Codefresh has support for both [unit]({{site.baseurl}}/docs/testing/unit-tests/)
 - [Launching a Composition and Defining a Service Environment Variables using a file]({{site.baseurl}}/docs/yaml-examples/examples/launching-a-composition-and-defining-a-service-environment-variables-using-a-file) 
 - [Run multiple kinds of unit tests using fan-in-fan-out parallel pipeline]({{site.baseurl}}/docs/yaml-examples/examples/fan-in-fan-out) 
 
+
+#### Code Coverage
+- [Run coverage reports with Codecov]({{site.baseurl}}/docs/yaml-examples/examples/codecov-testing) 
+
 ## Secrets
 
 Codefresh can automatically export secret key-value pairs using the Vault plugin from the [Step Marketplace](https://codefresh.io/steps/step/vault).
