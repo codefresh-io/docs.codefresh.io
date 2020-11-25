@@ -102,7 +102,7 @@ If you already have an application setup in ArgoCD, you can enter its project an
   max-width="60%"
  %}
 
-You can also create a brand-new application with the *provision* option. In this dialog you can enter the exact same details that ArgoCD asks when creating a new application.
+You can also create a brand-new application with the *provision* option. In this dialog you can enter the exact same details that [ArgoCD asks when creating a new application](https://argoproj.github.io/argo-cd/getting_started/#6-create-an-application-from-a-git-repository).
 
 {% include image.html 
   lightbox="true" 
@@ -112,6 +112,22 @@ You can also create a brand-new application with the *provision* option. In this
   caption="Creating a new ArgoCD application in a Codefresh environment"  
   max-width="60%"
  %}
+
+The options are:
+
+* Name - User defined name of the Codefresh environment dashboard
+* Project - A way to [group/secure applications](https://argoproj.github.io/argo-cd/user-guide/projects/). Choose default if you have only one project.
+* Application - name of application 
+* Manual/automatic sync - If automatic when a git commit happens, a deployment will automatically take place.
+* Use schema - Kubernetes manifests will be checked for correctness before deployed to the cluster
+* source repository - Git repository that holds your Kubernetes manifests
+* revision - Revision to be checked out when a deployment happens
+* path - folder inside the Git repository that should be searched for manifests (if your Git repo has multiple applications)
+* cluster - Kubernetes cluster when deployment will take place
+* namespace - Kubernetes namespace where the application will be deployed to
+* directory recurse - wether to check all folders in the Git repository for manifests in a recursive way.
+
+For a sample application you can use the [https://github.com/codefresh-contrib/gitops-kubernetes-configuration](https://github.com/codefresh-contrib/gitops-kubernetes-configuration) repository (or even fork it on your own GitHub account first).
 
 Codefresh will communicate with ArgoCD via its API and pass all the relevant details.
 
