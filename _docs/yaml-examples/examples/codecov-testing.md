@@ -7,6 +7,15 @@ toc: true
 
 [Codecov account](https://codecov.io/) is a code analysis tool with which users can group, merge, archive, and compare coverage reports. Code coverage describes which lines of code were executed by the test suite and which ones were not. However, this is not to be confused with a testing tool.
 
+Analysis reports displayed within the Codecov dashboard:
+{% include image.html 
+lightbox="true" 
+file="/images/testing/codecov/analysis-report.png" 
+url="/images/testing/codecov/analysis-report.png" 
+alt="Codecov UI Analysis reports" 
+max-width="50%" 
+%}
+
 ## Prerequisites for using Codecov
 
 * A simple [Codefresh pipeline up and running](https://codefresh.io/docs/docs/getting-started/create-a-codefresh-account/)
@@ -14,6 +23,8 @@ toc: true
 * A testing tool added to your project that produces coverage reports
 
 Note that reports should ideally be written in .json, .xml, or txt. To be sure, please double check that your coverage [report format](https://docs.codecov.io/docs/supported-report-formats) is supported. You can find a variety of examples for different programming languages and suggestions for respective testing tools in the [Codecov docs](https://docs.codecov.io/docs/supported-languages).
+
+To test Codecov and follow along with the next section, you can clone our [Codecov sample app](https://github.com/codefresh-contrib/codecov-sample-app).
 
 ## Create a Codecov Account
 
@@ -32,7 +43,11 @@ max-width="50%"
 In this case, we have divided the testing and connecting Codefresh to Codecov into two different steps. If they can be run within the same image, you could also connect them. 
 
 **Testing step**
-Will run the command(s) for our testing tool. This will generate the code coverage report upon running the pipeline.
+Will run the command(s) for our testing tool. This will generate the code coverage report upon running the pipeline. Please refer to the Codecov documentation for [supported testing frameworks](https://docs.codecov.io/docs/supported-report-formats). The [README of each example](https://docs.codecov.io/docs/supported-languages) refers to possible frameworks that can be used.
+
+In general, ensure that the framework you use for testing and generating code coverage reports:
+* Produce code coverage reports in the supported file format
+* Is compatible with the programming language that your program is written in
 
 {% highlight yaml %}
 {% raw %}
@@ -47,7 +62,6 @@ Will run the command(s) for our testing tool. This will generate the code covera
     stage: "test"
 {% endraw %}
 {% endhighlight %}
-
 
 **Codecov step**
 

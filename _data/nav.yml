@@ -227,6 +227,8 @@
           url: "/run-integration-tests"
         - title: Fan-in/Fan-out Example with Unit Tests
           url: "fan-in-fan-out"
+        - title: Codecov Coverage Reports
+          url: "/codecov-testing"
     - title: "Databases"
       url: "/examples"
       sub-pages:
@@ -324,8 +326,6 @@
       url: "/security-scanning"
     - title: SonarQube Scanning
       url: "/sonarqube-integration"
-    - title: Codecov Coverage Reports
-      url: "/codecov-testing"
 
 - title: Deploy to Kubernetes
   url: "/deploy-to-kubernetes"
