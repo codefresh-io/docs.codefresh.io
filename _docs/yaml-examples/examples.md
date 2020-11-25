@@ -67,7 +67,8 @@ Codefresh has support for both [unit]({{site.baseurl}}/docs/testing/unit-tests/)
 - [Run multiple kinds of unit tests using fan-in-fan-out parallel pipeline]({{site.baseurl}}/docs/yaml-examples/examples/fan-in-fan-out) 
 
 
-#### Code Coverage
+## Code Coverage
+
 - [Run coverage reports with Codecov]({{site.baseurl}}/docs/yaml-examples/examples/codecov-testing) 
 
 ## Secrets
