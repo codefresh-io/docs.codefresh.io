@@ -57,6 +57,8 @@ The configuration repository holds the kubernetes manifests. This is one of the 
 
 We also have a third Git repository for pipelines, because pipelines are also part of the application.
 
+Before continuing fork all 3 repositories in your own GitHub account if don't have already your own example application.
+
 ## Connecting ArgoCD and Codefresh
 
 GitOps deployments are powered by [ArgoCD](https://argoproj.github.io/argo-cd/) so you need an active ArgoCD installation in your cluster to take advantage of the GitOps dashboard in Codefresh.
@@ -86,9 +88,9 @@ The options are:
 * namespace - Kubernetes namespace where the application will be deployed to
 * directory recurse - wether to check all folders in the Git repository for manifests in a recursive way.
 
-For a sample application you can use the [https://github.com/codefresh-contrib/gitops-kubernetes-configuration](https://github.com/codefresh-contrib/gitops-kubernetes-configuration) repository (or even fork it on your own GitHub account first).
+For a sample application you can use the [https://github.com/codefresh-contrib/gitops-kubernetes-configuration](https://github.com/codefresh-contrib/gitops-kubernetes-configuration) repository. Fork the project in your own GitHub account and use that link in the *Source repository* section.
 
- Once you connect your application you will see it under in the GitOps application screen in the Codefresh UI.
+Once you connect your application you will see it under in the GitOps application screen in the Codefresh UI.
 
 
 
@@ -127,7 +129,7 @@ steps:
   clone:
     title: "Cloning repository"
     type: "git-clone"
-    repo: "codefresh-contrib/gitops-app-source-code"
+    repo: "my-github-username/gitops-app-source-code"
     revision: '${{CF_REVISION}}'
     stage: "clone"
   build:
@@ -430,7 +432,7 @@ steps:
   clone:
     title: "Cloning repository"
     type: "git-clone"
-    repo: "codefresh-contrib/gitops-app-source-code"
+    repo: "my-github-username//gitops-app-source-code"
     revision: '${{CF_REVISION}}'
     stage: "clone"
 
@@ -470,7 +472,7 @@ steps:
     title: cloning gitops repo
     type: git-clone
     arguments:
-      repo: 'codefresh-contrib/gitops-kubernetes-configuration'
+      repo: 'my-github-username//gitops-kubernetes-configuration'
       revision: 'master'
     stage: "gitops"
     when:
@@ -494,7 +496,7 @@ steps:
     type: git-commit
     stage: "gitops"
     arguments:
-      repo: 'codefresh-contrib/gitops-kubernetes-configuration'
+      repo: 'my-github-username//gitops-kubernetes-configuration'
       git: github-1
       working_directory: '/codefresh/volume/gitops-kubernetes-configuration'
       commit_message: Updated manifest
