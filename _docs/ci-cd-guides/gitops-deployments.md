@@ -72,6 +72,22 @@ Follow the instructions for [connecting ArgoCD to Codefresh]({{site.baseurl}}/do
   max-width="40%"
  %}
 
+The options are:
+
+* Name - User defined name of the Codefresh environment dashboard
+* Project - A way to [group/secure applications](https://argoproj.github.io/argo-cd/user-guide/projects/). Choose default if you have only one project in ArgoCD.
+* Application - name of application 
+* Manual/automatic sync - If automatic when a git commit happens, a deployment will automatically take place.
+* Use schema - Kubernetes manifests will be checked for correctness before deployed to the cluster
+* source repository - Git repository that holds your Kubernetes manifests
+* revision - Revision to be checked out when a deployment happens
+* path - folder inside the Git repository that should be searched for manifests (if your Git repo has multiple applications)
+* cluster - Kubernetes cluster when deployment will take place
+* namespace - Kubernetes namespace where the application will be deployed to
+* directory recurse - wether to check all folders in the Git repository for manifests in a recursive way.
+
+For a sample application you can use the [https://github.com/codefresh-contrib/gitops-kubernetes-configuration](https://github.com/codefresh-contrib/gitops-kubernetes-configuration) repository (or even fork it on your own GitHub account first).
+
  Once you connect your application you will see it under in the GitOps application screen in the Codefresh UI.
 
 

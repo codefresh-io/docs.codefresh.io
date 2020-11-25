@@ -116,7 +116,7 @@ You can also create a brand-new application with the *provision* option. In this
 The options are:
 
 * Name - User defined name of the Codefresh environment dashboard
-* Project - A way to [group/secure applications](https://argoproj.github.io/argo-cd/user-guide/projects/). Choose default if you have only one project.
+* Project - A way to [group/secure applications](https://argoproj.github.io/argo-cd/user-guide/projects/). Choose default if you have only one project in ArgoCD.
 * Application - name of application 
 * Manual/automatic sync - If automatic when a git commit happens, a deployment will automatically take place.
 * Use schema - Kubernetes manifests will be checked for correctness before deployed to the cluster
