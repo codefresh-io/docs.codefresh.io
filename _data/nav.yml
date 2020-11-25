@@ -227,6 +227,9 @@
           url: "/run-integration-tests"
         - title: Fan-in/Fan-out Example with Unit Tests
           url: "fan-in-fan-out"
+    - title: "Code Coverage"
+      url: "/examples"
+      sub-pages:
         - title: Codecov Coverage Reports
           url: "/codecov-testing"
     - title: "Databases"

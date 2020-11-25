@@ -65,6 +65,9 @@ Codefresh has support for both [unit]({{site.baseurl}}/docs/testing/unit-tests/)
 - [Launch Composition]({{site.baseurl}}/docs/yaml-examples/examples/launch-composition) 
 - [Launching a Composition and Defining a Service Environment Variables using a file]({{site.baseurl}}/docs/yaml-examples/examples/launching-a-composition-and-defining-a-service-environment-variables-using-a-file) 
 - [Run multiple kinds of unit tests using fan-in-fan-out parallel pipeline]({{site.baseurl}}/docs/yaml-examples/examples/fan-in-fan-out) 
+
+
+#### Code Coverage
 - [Run coverage reports with Codecov]({{site.baseurl}}/docs/yaml-examples/examples/codecov-testing) 
 
 ## Secrets

@@ -1,7 +1,7 @@
 ---
 title: "Codecov Coverage Reports"
 description: "How to forward coverage reports to Codecov"
-group: testing
+group: yaml-examples
 toc: true
 ---
 
