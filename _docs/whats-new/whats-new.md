@@ -7,11 +7,7 @@ redirect_from:
 toc: true
 ---
 
-## Upcoming changes
-
-- The Codefresh UI will be upgraded to Angular 10. Check the details for supported browsers at our [FAQ]({{site.baseurl}}/docs/getting-started/faq/#user-interface) section.
-
-## Recent Codefresh updates:
+Recent Codefresh updates:
 
 ### November 2020
 
@@ -20,6 +16,7 @@ toc: true
 - GitOps deployments - [documentation]({{site.baseurl}}/docs/ci-cd-guides/gitops-deployments/)
 - Global volume mounts in the Codefresh runner - [documentation]({{site.baseurl}}/docs/administration/codefresh-runner/#custom-volume-mounts)
 - Global environment variables in the Codefresh runner - [documentation]({{site.baseurl}}/docs/administration/codefresh-runner/#custom-global-environment-variables)
+- The Codefresh UI was upgraded to Angular 10. Check the details for supported browsers at our [FAQ]({{site.baseurl}}/docs/getting-started/faq/#user-interface) section.
 
 ### October 2020
 
