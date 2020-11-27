@@ -401,6 +401,8 @@
           url: "/quay-io"
         - title: "GitHub Container Registry"
           url: "/github-container-registry"
+        - title: "DigitalOcean Container Registry"
+          url: "/digital-ocean-container-registry"
         - title: "Other Registries"
           url: "/other-registries"  
     - title: ArgoCD Integration

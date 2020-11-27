@@ -11,6 +11,7 @@ Recent Codefresh updates:
 
 ### November 2020
 
+- Digital Ocean Container Registry - [documentation]({{site.baseurl}}/docs/integrations/docker-registries/digital-ocean-container-registry)
 - Codecov coverage reports - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/codecov-testing)
 - SonarQube Plugin - [documentation]({{site.baseurl}}/docs/testing/sonarqube-integration/)
 - GitOps deployments - [documentation]({{site.baseurl}}/docs/ci-cd-guides/gitops-deployments/)
