@@ -22,11 +22,11 @@ You can use the [DigitalOcean Container Registry](https://www.digitalocean.com/p
 The DigitalOcean Container Registry is directly integrated into your DigitalOcean Dashboard. While it is optional to use the DigitalOcean Container registry with your DigitalOcean Kubernetes cluster, it allows for easier integration between resources. 
 
 The next sections will look at:
-* Creating the DigitalOcean Container Registry
-* Generating a DigitalOcean Access token
-* Adding the DigitalOcean Container Registry to our Docker Registry in Codefresh
-* Modifying the Build step in our Codefresh pipeline
-* Viewing the built image in the DigitalOcean Container Registry
+1. Creating the DigitalOcean Container Registry
+2. Generating a DigitalOcean Access token
+3. Adding the DigitalOcean Container Registry to our Docker Registry in Codefresh
+4. Modifying the Build step in our Codefresh pipeline
+5. Viewing the built image in the DigitalOcean Container Registry
 
 ### Building and pushing a Container image with DigitalOcean and Codefresh
 
@@ -89,13 +89,31 @@ Our full build step will look as such:
 
 {% highlight yaml %}
 {% raw %}
+version: "1.0"
+stages:
+  - "clone"
+  - "build"
+
+steps:
+  clone:
+    title: "Cloning repository"
+    type: "git-clone"
+    repo: "anais-codefresh/react-article-display"
+    # CF_BRANCH value is auto set when pipeline is triggered
+    # Learn more at codefresh.io/docs/docs/codefresh-yaml/variables/
+    revision: "${{CF_BRANCH}}"
+    git: "github"
+    stage: "clone"
+
   build:
     title: "Building Docker image"
     type: "build"
     image_name: "anais-codefresh/react-article-display-do-registry"
-    tags:
+    tags: 
       - "1.0.0"
+    working_directory: "${{clone}}"
     dockerfile: "Dockerfile"
+    stage: "build"
     registry: "digital-ocean"
 {% endraw %}
 {% endhighlight %}
@@ -129,5 +147,6 @@ We can then view our image in the DigitalOcean Container Registry:
 ## What to read next
 
 * [Working with Docker Registries]({{site.baseurl}}/docs/ci-cd-guides/working-with-docker-registries/)
+* [Building Docker images]({{site.baseurl}}//docs/ci-cd-guides/building-docker-images/)
 * [Push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/)
 * [Building and pushing an image]({{site.baseurl}}/docs/yaml-examples/examples/build-and-push-an-image/)
