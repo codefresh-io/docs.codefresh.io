@@ -50,7 +50,7 @@ Once you are logged into your DigitalOcean Account, open the `Container Registry
 
 ### Creating an access token
 
-Now that we are already in DigitalOcean, we have to create an access token. For this head over to **API** in the bottom right of your left-side Menu under **Tokens/Keys** we can create a new access token. Note that it requires read and write access. Copy and paste the token somewhere secure and where you will find it again.
+Now that we are already in DigitalOcean, we have to create an [access token](https://www.digitalocean.com/docs/apis-clis/api/create-personal-access-token/). For this head over to **API** in the bottom right of your left-side Menu under **Tokens/Keys** we can create a new access token. Note that it requires read and write access. Copy and paste the token somewhere secure and where you will find it again.
 
 ### Add the DigitalOcean Container Registry to our Docker Registry
 
