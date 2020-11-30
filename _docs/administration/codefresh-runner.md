@@ -1235,7 +1235,7 @@ Regarding [Regional Persistent Disks](https://cloud.google.com/kubernetes-engine
   - That you selected the correct runtime for the pipeline
   - The CPU/Memory specification in the pipeline settings
 
-- **Problem:** After installing the runner builds stuck in "pending" and in the runner pod has the following logs: `HTTP request to Codefresh API rejected. Status-Code: 401`
+- **Problem:** After installing the runner, your builds are stuck in the "pending" state and if you look at the runner pod logs you get the following message: `HTTP request to Codefresh API rejected. Status-Code: 401`
 - **Solution:** You probably installed the runner in a namespace where there was previously another Codefresh runner. Delete the namespace and install the runner on a new namespace.
 
 ## What to read next
