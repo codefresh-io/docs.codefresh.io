@@ -82,8 +82,8 @@ Once your Helm environment board is created, you are ready to define its columns
 {% include 
 image.html 
 lightbox="true" 
-file="/images/kubernetes-helm/promotion/edit-environment.png" 
-url="/images/kubernetes-helm/promotion/edit-environment.png"
+file="/images/kubernetes-helm/promotion/edit-helm-environment.png" 
+url="/images/kubernetes-helm/promotion/edit-helm-environment.png"
 alt="Edit Helm environment" 
 caption="Edit Helm environment" 
 max-width="50%"
@@ -94,6 +94,8 @@ For each environment you can select
 * A name for that column
 * The Kubernetes cluster it corresponds to
 * One or more namespaces that define this environment (You can even toggle the switch for a regex match)
+* A custom pipeline that will be used when a Helm release is installed for the first time in this column
+* A custom pipeline that will be used when a Helm release is dragged in this column (promoted from another column)
 * A presentation color to easily identify the environment on the board (For example, a "production" environment should have a red color).
 
 You can also select no namespace at all. In that case the column will show Helm releases for all namespaces in that cluster.
@@ -143,7 +145,21 @@ caption="Promoting a Helm release"
 max-width="80%"
 %}
 
-Once you drop the release you will also see the promotion dialog. From here you can override the chart values, import a specific shared configuration or add new values.
+Once you drop the release you will also see the promotion dialog.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/kubernetes-helm/promotion/promote-settings.png" 
+url="/images/kubernetes-helm/promotion/promote-settings.png"
+alt="Promotion Settings" 
+caption="Promotion Settings" 
+max-width="40%"
+%}
+
+All fields here will be auto-filled according to the Helm release that you dragged. You can also choose a custom pipeline (see below) for the promotion if you don't want to use the default one.
+
+By clicking the *Variables* button you can override the chart values, import a specific shared configuration or add new values.
 
 {% include 
 image.html 

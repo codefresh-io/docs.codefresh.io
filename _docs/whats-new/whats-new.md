@@ -13,6 +13,7 @@ Recent Codefresh updates:
 
 - Codefresh will now use the default branch (e.g. `main`) instead of assuming `master`. This applies to GitHub, GitLab, and Bitbucket - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)
 - App-Proxy now supports GitLab - [documentation]({{site.baseurl}}/docs/administration/codefresh-runner/#optional-installation-of-the-app-proxy)
+- Helm promotion pipelines can be overridden in the GUI  - [documentation]({{site.baseurl}}/docs/new-helm/helm-environment-promotion/#creating-your-own-helm-board)
 
 ### November 2020
 
