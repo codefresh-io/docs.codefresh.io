@@ -9,6 +9,11 @@ toc: true
 
 Recent Codefresh updates:
 
+### December 2020
+
+- Codefresh will now use the default branch (e.g. `main`) instead of assuming `master`. This applies to GitHub, GitLab, and Bitbucket - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)
+- App-Proxy now supports GitLab - [documentation]({{site.baseurl}}/docs/administration/codefresh-runner/#optional-installation-of-the-app-proxy)
+
 ### November 2020
 
 - Pushing Images to the Digital Ocean Container Registry - [documentation]({{site.baseurl}}/docs/integrations/docker-registries/digital-ocean-container-registry)
