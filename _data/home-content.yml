@@ -190,7 +190,7 @@
     localurl: /docs/yaml-examples/examples/nomad/
   - title: Deploy to ECS/Fargate
     localurl: /docs/yaml-examples/examples/amazon-ecs/
-  - title: Elastic Beanstalk
+  - title: Deploy to Elastic Beanstalk
     localurl: /docs/yaml-examples/examples/elastic-beanstalk/
   - title: Deploy to Docker Swarm
     localurl: /docs/yaml-examples/examples/docker-swarm/
@@ -217,7 +217,6 @@
   - title: Jenkins integration/migration
     localurl: /docs/integrations/jenkins-integration/               
   - title: GitHub Actions
-    new: true
     localurl: /docs/integrations/github-actions/       
   - title: Codefresh API
     localurl: /docs/integrations/codefresh-api/
