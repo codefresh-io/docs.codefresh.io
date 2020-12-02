@@ -122,7 +122,7 @@ The options are:
 * Use schema - Kubernetes manifests will be checked for correctness before deployed to the cluster
 * source repository - Git repository that holds your Kubernetes manifests
 * revision - Revision to be checked out when a deployment happens
-* path - folder inside the Git repository that should be searched for manifests (if your Git repo has multiple applications)
+* path - folder inside the Git repository that should be searched for manifests (if your Git repo has multiple applications). Use `./` if all your manifests are in the root folder.
 * cluster - Kubernetes cluster when deployment will take place
 * namespace - Kubernetes namespace where the application will be deployed to
 * directory recurse - wether to check all folders in the Git repository for manifests in a recursive way.
