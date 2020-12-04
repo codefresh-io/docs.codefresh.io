@@ -7,7 +7,21 @@ group: ci-cd-guides
 toc: true
 ---
 
-Coming Soon...
+The Helm example app
+
+Basic pipeline with master and !not master
+
+Environment dashboard
+
+Basic pipeline with approval
+
+Parallel deployment
+
+Different pipelines
+
+Helm promotion board manual
+
+Helm promotion board automated
 
 
 
