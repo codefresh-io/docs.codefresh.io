@@ -70,6 +70,7 @@ Codefresh has support for both [unit]({{site.baseurl}}/docs/testing/unit-tests/)
 ## Code Coverage
 
 - [Run coverage reports with Codecov]({{site.baseurl}}/docs/yaml-examples/examples/codecov-testing) 
+- [Run coverage reports with Coveralls]({{site.baseurl}}/docs/yaml-examples/examples/coveralls-testing) 
 
 ## Secrets
 
