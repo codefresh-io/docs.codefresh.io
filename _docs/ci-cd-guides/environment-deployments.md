@@ -107,16 +107,25 @@ helm uninstall example-prod -n production
 helm uninstall example-qa -n qa
 ```
 
-Note that for this guide all 3 environments are running on the same cluster. In a real application you should use a separate cluster for production and never mix production and non-production workloads.
+Note that for this guide all 3 environments are running on the same cluster. In a real application you should use a separate cluster for production and never mix production and non-production workloads. Also notice that the chart refers to the `latest` tag of the application container which is **NOT** a recommended practice. In a real application the chart should specify a specific tag that is versioned.
 
 ## Basic deployment pipeline for different environments
 
-Now that we have seen how manual deployment works, let's automate the whole process with Codefresh. We will create a pipeline that:
+Now that we have seen how manual deployment works, let's automate the whole process with Codefresh. We [will create a pipeline]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/) that:
 
 1. Deploys all commits to the `master` branch in the production environment
 1. Deploys all other commits to the staging environment
 
-IMAGE here
+Here is a commit to master looks like:
+
+{% include image.html 
+lightbox="true" 
+file="/images/guides/promotion/production-deployment.png" 
+url="/images/guides/promotion/production-deployment.png" 
+alt="Production deployment" 
+caption="Production deployment"
+max-width="80%" 
+%}
 
 This is a very simple workflow perfect for small teams that follow Continuous Deployment. You can use the same pattern in other workflows such as [trunk based development]({{site.baseurl}}/docs/ci-cd-guides/pull-request-branches/#trunk-based-development).
 
@@ -131,57 +140,218 @@ Here is the full pipeline:
 `codefresh.yml`
 {% highlight yaml %}
 {% raw %}
-version: '1.0'
+version: "1.0"
 stages:
-  - checkout
-  - prepare   
-  - deploy
-steps:
-  main_clone:
-    title: Cloning main repository...
-    stage: checkout
-    type: git-clone
-    repo: 'codefresh-contrib/terraform-sample-app'
-    revision: master
-    git: github      
-  SetupAuth:
-    image: alpine:3.9
-    title: Setting up Google cloud auth
-    stage: prepare
-    commands:
-      - echo $ACCOUNT_JSON_CONTENT > /codefresh/volume/account.json
-      - cf_export GOOGLE_CLOUD_KEYFILE_JSON=/codefresh/volume/account.json
-  DeployWithTerraform:
-    image: hashicorp/terraform:0.12.0
-    title: Deploying Terraform plan
-    stage: deploy
-    commands:
-      - terraform init
-      - terraform apply -auto-approve 
+  - "clone"
+  - "build"
+  - "deployment"
 
+steps:
+  clone:
+    title: "Cloning repository"
+    type: "git-clone"
+    repo: "codefresh-contrib/helm-promotion-sample-app"
+    revision: '${{CF_REVISION}}'
+    stage: "clone"
+
+  build:
+    title: "Building Docker image"
+    type: "build"
+    image_name: "kostiscodefresh/helm-promotion-app"
+    working_directory: "${{clone}}"
+    tags:
+    - "latest"
+    - '${{CF_SHORT_REVISION}}'
+    dockerfile: "Dockerfile"
+    stage: "build"
+    registry: dockerhub  
+  deployStaging:
+    title: Deploying to Staging
+    type: helm
+    stage: deployment
+    working_directory: ./helm-promotion-sample-app
+    arguments:
+      action: install
+      chart_name: ./chart/sample-app
+      release_name: example-staging
+      helm_version: 3.0.2
+      kube_context: 'mydemoAkscluster@BizSpark Plus'
+      namespace: staging
+      custom_value_files:
+      - ./chart/values-staging.yaml
+    when:
+      branch:
+        ignore:
+          - master 
+  deployProd:
+    title: Deploying to Production
+    type: helm
+    stage: deployment
+    working_directory: ./helm-promotion-sample-app
+    arguments:
+      action: install
+      chart_name: ./chart/sample-app
+      release_name: example-prod
+      helm_version: 3.0.2
+      kube_context: 'mydemoAkscluster@BizSpark Plus'
+      namespace: production
+      custom_value_files:
+      - ./chart/values-prod.yaml
+    when:
+      branch:
+        only:
+          - master  
 {% endraw %}
 {% endhighlight %}
 
-To test the pipeline locally
+To test the pipeline and see how it behaves with different environments:
 
 1. Fork [the Git repository](https://github.com/codefresh-contrib/helm-promotion-sample-app) to your own Github account
 1. Commit a dummy change in the `master` branch and you will see a deployment to the production namespace
 1. Commit a dummy change to the `staging` branch or any other branch of your choosing and you will see a deployment to the staging namespace.
+
+Here is how the pipeline looks when a commit happens to another branch (that is not `master`)
+
+{% include image.html 
+lightbox="true" 
+file="/images/guides/promotion/non-production-deployment.png" 
+url="/images/guides/promotion/non-production-deployment.png" 
+alt="Staging deployment" 
+caption="Staging deployment"
+max-width="80%" 
+%}
+
+As you can see the step that deploys to production is now skipped, and the step that deploys to staging is enabled.
 
 This is a great starting point for your own workflows. Codefresh can handle more complicated scenarios as you will see in the later sections.
 
 >Note that for brevity reasons, the pipeline deploys the Helm chart directly from the Git repo. In a real pipeline you [should also store the Helm chart
 in a Helm repository]({{site.baseurl}}/docs/new-helm/helm-best-practices/#packagepush-and-then-deploy).
 
-Basic pipeline with master and !not master
+For more details on Helm deployments see our [dedicated Helm example]({{site.baseurl}}/docs/yaml-examples/examples/helm/). 
 
 ## Using the Environment Dashboard
 
+The previous pipeline works great as an automation mechanism. Wouldn't it be great if you could also *see* your deployment environments in a visual manner? 
+Codefresh includes [an environment dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/environment-dashboard/) that you can use to track down your environments and their current status.
+
+{% include
+image.html
+lightbox="true"
+file="/images/codefresh-yaml/environments/environments.png"
+url="/images/codefresh-yaml/environments/environments.png"
+alt="Codefresh Environment Dashboard"
+caption="Codefresh Environment Dashboard"
+max-width="70%"
+%}
+
+To activate your environment dashboard you need to add an [env block]({{site.baseurl}}/docs/codefresh-yaml/deployment-environments/) to each of the deployment steps in the pipeline.
+Here is the whole pipeline:
 
 
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: "1.0"
+stages:
+  - "clone"
+  - "build"
+  - "deployment"
+
+steps:
+  clone:
+    title: "Cloning repository"
+    type: "git-clone"
+    repo: "codefresh-contrib/helm-promotion-sample-app"
+    revision: '${{CF_REVISION}}'
+    stage: "clone"
+
+  build:
+    title: "Building Docker image"
+    type: "build"
+    image_name: "kostiscodefresh/helm-promotion-app"
+    working_directory: "${{clone}}"
+    tags:
+    - "latest"
+    - '${{CF_SHORT_REVISION}}'
+    dockerfile: "Dockerfile"
+    stage: "build"
+    registry: dockerhub  
+  deployStaging:
+    title: Deploying to Staging
+    type: helm
+    stage: deployment
+    working_directory: ./helm-promotion-sample-app
+    arguments:
+      action: install
+      chart_name: ./chart/sample-app
+      release_name: example-staging
+      helm_version: 3.0.2
+      kube_context: 'mydemoAkscluster@BizSpark Plus'
+      namespace: staging
+      custom_value_files:
+      - ./chart/values-staging.yaml
+    when:
+      branch:
+        ignore:
+          - master 
+    env:
+      name: Acme Staging
+      endpoints:
+      - name: app
+        url: https://staging.example.com
+      type: helm-release
+      change: ${{CF_COMMIT_MESSAGE}}
+      filters:
+      - cluster: 'mydemoAkscluster@BizSpark Plus'
+        releaseName: example-staging  
+  deployProd:
+    title: Deploying to Production
+    type: helm
+    stage: deployment
+    working_directory: ./helm-promotion-sample-app
+    arguments:
+      action: install
+      chart_name: ./chart/sample-app
+      release_name: example-prod
+      helm_version: 3.0.2
+      kube_context: 'mydemoAkscluster@BizSpark Plus'
+      namespace: production
+      custom_value_files:
+      - ./chart/values-prod.yaml
+    when:
+      branch:
+        only:
+          - master  
+    env:
+      name: Acme Production
+      endpoints:
+      - name: app
+        url: https://production.example.com
+      type: helm-release
+      change: ${{CF_COMMIT_MESSAGE}}
+      filters:
+      - cluster: 'mydemoAkscluster@BizSpark Plus'
+        releaseName: example-prod
+{% endraw %}
+{% endhighlight %}
 
 
+Notice that we use the `CF_COMMIT_MESSAGE` [variable]({{site.baseurl}}/docs/codefresh-yaml/variables/) to annotate each environment with each build message. After your deploy at least once to each environment you should see the following in your [dashboard](https://g.codefresh.io/environments).
 
+{% include image.html 
+lightbox="true" 
+file="/images/guides/promotion/deployment-dashboard.png" 
+url="/images/guides/promotion/deployment-dashboard.png" 
+alt="Environment inspection" 
+caption="Environment inspection"
+max-width="80%" 
+%}
+
+Just by looking at the builds of each environment, it is clear that the staging environment is one commit ahead (for feature 4689).
+If you click on each environment you will see several details such as active services, deployment history, rollback options, manifests rendered etc as in the Helm releases page.
+
+## Using Approvals in a pipeline
 
 Basic pipeline with approval
 
