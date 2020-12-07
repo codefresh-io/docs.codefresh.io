@@ -83,7 +83,7 @@ The options are:
 * Use schema - Kubernetes manifests will be checked for correctness before deployed to the cluster
 * source repository - Git repository that holds your Kubernetes manifests
 * revision - Revision to be checked out when a deployment happens
-* path - folder inside the Git repository that should be searched for manifests (if your Git repo has multiple applications)
+* path - folder inside the Git repository that should be searched for manifests (if your Git repo has multiple applications). Use `./` if all your manifests are in the root folder.
 * cluster - Kubernetes cluster when deployment will take place
 * namespace - Kubernetes namespace where the application will be deployed to
 * directory recurse - wether to check all folders in the Git repository for manifests in a recursive way.
@@ -402,6 +402,15 @@ This rollback behavior is best used as an emergency measure after a failed deplo
 ## Performing automatic Git commits
 
 Usually the Pull Requests that take part in a GitOps workflow are created and approved in a manual way (after code review). You have the option however to fully automate the whole process and rather than opening a Pull Request on both the application repository and the manifest repository, commit automatically the manifest changes inside the pipeline that creates the artifact.
+
+{% include image.html 
+  lightbox="true" 
+  file="/images/guides/gitops/gitops-workflow.png" 
+  url="/images/guides/gitops/gitops-workflow.png" 
+  alt="Full GitOps workflow"
+  caption="Full GitOps workflow"  
+  max-width="100%"
+ %}
 
 
 Here is an example pipeline that creates a Docker image and also commits a version change in the Kubernetes manifest to denote the new Docker tag of the application:

@@ -475,6 +475,45 @@ Update your runtime environment with the [patch command](https://codefresh-io.gi
 ```
 codefresh patch runtime-environment ivan@acme-ebs.us-west-2.eksctl.io/codefresh-runtime -f runtime.yaml
 ```
+### Internal registry mirror
+
+You can configure your Codefresh Runner to use an internal registry as a mirror for any container images that are mentioned in your pipelines.
+
+First setup an internal registry as described in [https://docs.docker.com/registry/recipes/mirror/](https://docs.docker.com/registry/recipes/mirror/).
+
+Then locate the `codefresh-dind-config` config map in the namespace that houses the runner and edit it.
+
+```
+kubectl -n codefresh edit configmap codefresh-dind-config
+```
+
+Change the `data` field from:
+
+```
+data:
+  daemon.json: "{\n  \"hosts\": [ \"unix:///var/run/docker.sock\",\n             \"tcp://0.0.0.0:1300\"],\n
+    \ \"storage-driver\": \"overlay2\",\n  \"tlsverify\": true,  \n  \"tls\": true,\n
+    \ \"tlscacert\": \"/etc/ssl/cf-client/ca.pem\",\n  \"tlscert\": \"/etc/ssl/cf/server-cert.pem\",\n
+    \ \"tlskey\": \"/etc/ssl/cf/server-key.pem\",\n  \"insecure-registries\" : [\"192.168.99.100:5000\"],\n
+    \ \"metrics-addr\" : \"0.0.0.0:9323\",\n  \"experimental\" : true\n}\n"
+```
+
+to
+
+```
+data:
+  daemon.json: "{\n  \"hosts\": [ \"unix:///var/run/docker.sock\",\n             \"tcp://0.0.0.0:1300\"],\n
+    \ \"storage-driver\": \"overlay2\",\n  \"tlsverify\": true,  \n  \"tls\": true,\n
+    \ \"tlscacert\": \"/etc/ssl/cf-client/ca.pem\",\n  \"tlscert\": \"/etc/ssl/cf/server-cert.pem\",\n
+    \ \"tlskey\": \"/etc/ssl/cf/server-key.pem\",\n  \"insecure-registries\" : [\"192.168.99.100:5000\"],\n
+    \ \"registry-mirrors\": [ \"https://<my-docker-mirror-host>\" ], \n
+    \ \"metrics-addr\" : \"0.0.0.0:9323\",\n  \"experimental\" : true\n}\n"
+```
+
+This adds the line `\ \"registry-mirrors\": [ \"https://<my-docker-mirror-host>\" ], \n` which contains a single registry to use as a mirror. Quit and Save by typing `:wq`.
+
+Now any container image that is used in your pipeline and isn't fully qualified, will be pulled through the Docker registry that is configured as a mirror.
+
 
 
 ### Installing on AWS
