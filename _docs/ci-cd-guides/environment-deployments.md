@@ -230,10 +230,65 @@ in a Helm repository]({{site.baseurl}}/docs/new-helm/helm-best-practices/#packag
 
 For more details on Helm deployments see our [dedicated Helm example]({{site.baseurl}}/docs/yaml-examples/examples/helm/). 
 
+## Viewing your Helm Releases
+
+The previous pipeline works great as an automation mechanism. Wouldn't it be great if you could also *see* your deployments in a visual manner? 
+Codefresh include a [Helm release dashboard]({{site.baseurl}}/docs/new-helm/helm-releases-management/) that can help you understand better your deployments.
+
+You can find the dashboard at [https://g.codefresh.io/helm/releases/releasesNew/](https://g.codefresh.io/helm/releases/releasesNew/).
+
+{% include image.html 
+lightbox="true" 
+file="/images/guides/promotion/helm-releases.png" 
+url="/images/guides/promotion/helm-releases.png" 
+alt="Helm releases" 
+caption="Helm releases"
+max-width="80%" 
+%}
+
+By clicking on each release you can get extra information such as the services exposed and active replicas:
+
+{% include image.html 
+lightbox="true" 
+file="/images/guides/promotion/services.png" 
+url="/images/guides/promotion/services.png" 
+alt="Helm service information" 
+caption="Helm service information"
+max-width="80%" 
+%}
+
+..the history of deployments (and you can even [rollback]({{site.baseurl}}/docs/new-helm/helm-releases-management/#rolling-back-a-helm-release) to a previous release):
+
+{% include image.html 
+lightbox="true" 
+file="/images/guides/promotion/history.png" 
+url="/images/guides/promotion/history.png" 
+alt="Helm deployment history" 
+caption="Helm deployment history"
+max-width="80%" 
+%}
+
+and most importantly the values applied for each release.
+
+{% include image.html 
+lightbox="true" 
+file="/images/guides/promotion/helm-values.png" 
+url="/images/guides/promotion/helm-values.png" 
+alt="Helm values used" 
+caption="Helm values used"
+max-width="80%" 
+%}
+
+
+This way you can also verify that the correct values are applied to the respective environment.
+
+
+
+
 ## Using the Environment Dashboard
 
-The previous pipeline works great as an automation mechanism. Wouldn't it be great if you could also *see* your deployment environments in a visual manner? 
-Codefresh includes [an environment dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/environment-dashboard/) that you can use to track down your environments and their current status.
+
+Codefresh also includes [an optional environment dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/environment-dashboard/) that you can use to track down your environments and their current status. The dashboard is especially helpful if you have a large number of environments.
 
 {% include
 image.html
