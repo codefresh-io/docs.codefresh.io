@@ -5,7 +5,7 @@ group: yaml-examples
 toc: true
 ---
 
-[Coveralls](https://coveralls.io/) is a web service that allows users to track the code coverage of their application over time to optimise test coverage. This section details how coverage reports can be generated and forwarded to Coveralls with every Codefresh build.
+[Coveralls](https://coveralls.io/) is a web service that allows users to track the code coverage of their application over time in order to optimize the effectiveness of their unit tests. This section details how coverage reports can be generated and forwarded to Coveralls with every Codefresh build.
 
 Analysis reports displayed within Coveralls dashboard:
 {% include image.html 
@@ -13,7 +13,7 @@ lightbox="true"
 file="/images/testing/coveralls/coveralls-sample-app.png" 
 url="/images/testing/coveralls/coveralls-sample-app.png"
 alt="Coveralls UI Analysis reports" 
-max-width="50%" 
+max-width="80%" 
 %}
 
 ## Prerequisites for using Coveralls
@@ -28,7 +28,7 @@ You could try it out by cloning our [node example application](https://github.co
 
 ## Prepare your Repository
 
-In case that you are using your own application, you have to make a few modifications to the repository. Please have a look at the Coveralls example section for other languages.
+If you are using your own application as an example, you have to make a few modifications to the repository. Please have a look at the Coveralls example section for other languages.
 
 First, install Coveralls in your project:
 {% highlight yaml %}
@@ -37,7 +37,9 @@ npm install coveralls --save-dev
 {% endraw %}
 {% endhighlight %}
 
-Coveralls requires a [script](https://github.com/nickmerwin/node-coveralls) that takes standard input and sends it to coveralls.io to report your code coverage. Any coverage reports can be forwarded that are within a lcov data format (including mocha's LCOV reporter). For this, we are going to set-up a “bin” folder, and within the folder a coveralls.js file that contains the following content:
+Coveralls requires a [script](https://github.com/nickmerwin/node-coveralls) that takes standard input and sends it to coveralls.io to report your code coverage. Depending on the framework that you are using, you will have to add a different script to your application. 
+
+Any coverage reports can be forwarded that are within a [lcov data format](http://ltp.sourceforge.net/coverage/lcov/geninfo.1.php) (including [mocha's LCOV reporter](https://www.npmjs.com/package/mocha-lcov-reporter)). For this, we are going to set-up a “bin” folder, and within the folder a coveralls.js file that contains the following content:
 
 {% highlight yaml %}
 {% raw %}
@@ -75,7 +77,7 @@ lightbox="true"
 file="/images/testing/coveralls/add-repository.png" 
 url="/images/testing/coveralls/add-repository.png" 
 alt="Coveralls repository" 
-max-width="50%" 
+max-width="80%" 
 %}
 
 ## Codefresh Pipeline
@@ -87,7 +89,7 @@ lightbox="true"
 file="/images/testing/coveralls/create-coveralls-pipeline.png" 
 url="/images/testing/coveralls/create-coveralls-pipeline.png" 
 alt="Create Coveralls Pipeline" 
-max-width="50%" 
+max-width="80%" 
 %}
 
 Once you ’create’ the pipeline, a standard codefresh.yml file is generated with three steps:
@@ -173,7 +175,7 @@ lightbox="true"
 file="/images/testing/coveralls/coveralls-pipeline.png" 
 url="/images/testing/coveralls/coveralls-pipeline.png" 
 alt="Pipeline with Coveralls step" 
-max-width="50%" 
+max-width="80%" 
 %}
 
 ## View reports
@@ -185,7 +187,7 @@ lightbox="true"
 file="/images/testing/coveralls/coveralls-sample-app.png" 
 url="/images/testing/coveralls/coveralls-sample-app.png"
 alt="Coveralls UI Analysis reports" 
-max-width="50%" 
+max-width="80%" 
 %}
 
 You can access further information on the coverage report by opening the link to the file displayed in the table.
@@ -195,7 +197,7 @@ lightbox="true"
 file="/images/testing/coveralls/coveralls-specific-report.png" 
 url="/images/testing/coveralls/coveralls-specific-report.png" 
 alt="Coveralls report details" 
-max-width="50%" 
+max-width="80%" 
 %}
 
 And view a the code coverage of a specific file:
@@ -204,7 +206,7 @@ lightbox="true"
 file="/images/testing/coveralls/coveralls-coverage.png" 
 url="/images/testing/coveralls/coveralls-coverage.png" 
 alt="Coveralls report details" 
-max-width="50%" 
+max-width="80%" 
 %}
 
 ## What to read next
