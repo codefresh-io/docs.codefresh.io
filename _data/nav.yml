@@ -232,6 +232,8 @@
       sub-pages:
         - title: Codecov Coverage Reports
           url: "/codecov-testing"
+        - title: Coveralls Coverage Reports
+          url: "/coveralls-testing"
     - title: "Databases"
       url: "/examples"
       sub-pages:

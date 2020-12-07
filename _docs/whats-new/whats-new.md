@@ -9,6 +9,10 @@ toc: true
 
 Recent Codefresh updates:
 
+### December
+
+- Get Code Coverage Reports with Coveralls - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/coveralls-testing)
+
 ### November 2020
 
 - Pushing Images to the Digital Ocean Container Registry - [documentation]({{site.baseurl}}/docs/integrations/docker-registries/digital-ocean-container-registry)
