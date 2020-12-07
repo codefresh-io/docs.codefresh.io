@@ -1148,6 +1148,15 @@ max-width="60%"
 
 This was a contrived example to demonstrate how you can use templates in the Codefresh plugin specification. Note that using templates in Codefresh steps is an advanced technique and should be used sparingly.
 
+### Limitations of custom plugins
+
+Custom steps are not compatible with [service containers]({{site.baseurl}}/docs/codefresh-yaml/service-containers/). 
+More specifically:
+
+ * If you have a [service container in the pipeline-level]({{site.baseurl}}/docs/codefresh-yaml/service-containers/#running-services-for-the-duration-of-the-pipeline), steps inside the custom plugin will not be able to access it
+ * If you try to attach a service container to a custom plugin, the plugin will fail when executed
+ * If you try to define a custom plugin where a step inside it has a service container attached, the custom plugin will fail when executed
+
 ## What to read next
 
 * [Introduction to Pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
