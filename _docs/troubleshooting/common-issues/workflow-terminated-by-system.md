@@ -22,7 +22,7 @@ Therefore, the build will be terminated if in more than 15 minutes there isn't a
 You can choose one of the following suggestions to resolve it:
 
 - Review your Dockerfile and steps of your workflow to decrease a time of performing of the workflow.
-- Move to the dedicated infrastructure (Codefresh on-premise version).
+- Move to the dedicated infrastructure (Codefresh on-premises version).
 - Add an additional log to the process (see below for an example).
 - Contact us to talk about startup pricing.
 

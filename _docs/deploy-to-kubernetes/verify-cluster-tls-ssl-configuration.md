@@ -1,6 +1,6 @@
 ---
 title: "Verify cluster TLS/SSL configuration"
-description: "Connecting Codefresh to an on-premise Kubernetes cluster"
+description: "Connecting Codefresh to an on-premises Kubernetes cluster"
 group: deploy-to-kubernetes
 redirect_from:
   - /docs/verify-cluster-tlsssl-configuration/
@@ -10,7 +10,7 @@ old_url: /docs/how-to-create-gke-cluster
 was_hidden: true
 ---
 
-Read this page if you are adding in Codefresh a custom (e.g. on-premise) cluster.
+Read this page if you are adding in Codefresh a custom (e.g. on-premises) cluster.
 
 ## Overview
 

@@ -190,7 +190,7 @@ to build and deploy your projects.
 
 ### Cloning the source code
 
-You can clone source code using the built-in [git-clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) as the first step in a Pipeline or run manually your own git clone commands in a freestyle step. Codefresh has built-in [Git integration]({{site.baseurl}}/docs/integrations/git-providers/) with all popular git providers (both cloud and on-premise installations).
+You can clone source code using the built-in [git-clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) as the first step in a Pipeline or run manually your own git clone commands in a freestyle step. Codefresh has built-in [Git integration]({{site.baseurl}}/docs/integrations/git-providers/) with all popular git providers (both cloud and on-premises installations).
 
 Codefresh uses the shared volume as the parent folder of the project. So if your pipeline is connected to a GIT repo that contains `my-project` the following will happen:
 

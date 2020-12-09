@@ -15,8 +15,8 @@ This is a collection of common questions we get when people are trying Codefresh
 **Q. What is Codefresh?**  
 A. Codefresh is a [Continuous Integration/Delivery](https://en.wikipedia.org/wiki/Continuous_delivery) solution. It fetches code from your GIT repository and packages/compiles it. Then it deploys the final artifact to a target environment. This basic concept is implemented with [pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/).
 
-**Q. Is there an on-premise version of Codefresh?**   
-A. Yes. Codefresh is offered in [SAAS, Hybrid and on-premise modes]({{site.baseurl}}/docs/enterprise/installation-security/). Before you consider on-premise please look at the [hybrid mode first]({{site.baseurl}}/docs/enterprise/behind-the-firewall/). In this mode Codefresh runs the Web UI while you only maintain the build nodes behind the firewall.
+**Q. Is there an on-premises version of Codefresh?**   
+A. Yes. Codefresh is offered in [SAAS, Hybrid and on-premises modes]({{site.baseurl}}/docs/enterprise/installation-security/). Before you consider on-premises please look at the [hybrid mode first]({{site.baseurl}}/docs/enterprise/behind-the-firewall/). In this mode Codefresh runs the Web UI while you only maintain the build nodes behind the firewall.
 
 **Q. Is Codefresh open-source?**   
 A. The Web UI is not open source. All the [pipeline plugins](https://codefresh.io/steps/) and the [Codefresh Runner]({{site.baseurl}}/docs/enterprise/codefresh-runner/) are open-source. We also publish several open-source [components](https://github.com/codefresh-io), [examples](https://github.com/codefresh-contrib) and [demos](https://github.com/codefreshdemo/).

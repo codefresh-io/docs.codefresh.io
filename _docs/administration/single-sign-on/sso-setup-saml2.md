@@ -93,7 +93,7 @@ The mandatory fields needed for SAML assertions are:
 1. lastName - user last name.
 1. email - user email.
 
->Notice that these settings are for the SAAS version of Codefresh. For an on-premise Codefresh setup you need to use the URLs that match your installation.
+>Notice that these settings are for the SAAS version of Codefresh. For an on-premises Codefresh setup you need to use the URLs that match your installation.
 
 Once everything is finished, you [should test the integration]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/#testing-your-identity-provider). Once it is working proceed to the next steps that are:
 

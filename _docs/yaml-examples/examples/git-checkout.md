@@ -17,7 +17,7 @@ caption="GIT integrations"
 max-width="70%"
 %}
 
-You can add new integration for any cloud provider or even [on-premise]({{site.baseurl}}/docs/enterprise/behind-the-firewall/) ones. By default you will also have a provider setup if you used one for Codefresh signup (GitHub, GitLab or Bitbucket).
+You can add new integration for any cloud provider or even [on-premises]({{site.baseurl}}/docs/enterprise/behind-the-firewall/) ones. By default you will also have a provider setup if you used one for Codefresh signup (GitHub, GitLab or Bitbucket).
 
 For each Git Integration, make sure that you note down its name, as you will use in your pipeline inside a [git-clone]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) step.
 
