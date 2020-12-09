@@ -13,7 +13,7 @@ Install the Codefresh Runner on your Kubernetes cluster to run pipelines and acc
 
 [Skip to quick installation &#8594;](#installation-with-the-quick-start-wizard)
 
->Note that a runner installation is needed for each cluster that will _run_ Codefresh pipelines. A runner is **not** needed
+>Note: A runner installation is needed for each cluster that will _run_ Codefresh pipelines. A runner is **not** needed
 in clusters that are used for _deployment_. It is possible to deploy applications on clusters that are not currently running the runner.
 
 The installation process **takes care of ?CLARIFY?** all the components of the runner and any resources (config-maps, secrets, volumes) they require. 
@@ -42,9 +42,9 @@ codefresh auth create-context --api-key {API_KEY}
 ```
 You can obtain an API Key from your [user settings page](https://g.codefresh.io/user/settings).
 
->Note that access to the Codefresh CLI is only needed once during the Runner installation. After that, the Runner with authenticate on it own using the details provided. You do *NOT* need to install the Codefresh CLI on the cluster that is running Codefresh pipelines.
+>Note: Access to the Codefresh CLI is only needed once during the Runner installation. After that, the Runner with authenticate on it own using the details provided. You do *NOT* need to install the Codefresh CLI on the cluster that is running Codefresh pipelines.
 
-3. Run the wizard with the following command
+3. Run the wizard with the following command:
 
 ```
 codefresh runner init
@@ -67,7 +67,7 @@ The wizard will ask you some basic questions and proceed with the installation.
   max-width="100%"
     %} 
 
-The wizard will also create and run a sample pipeline that you can see in your Codefresh UI
+The wizard will also create and run a sample pipeline that you can see in your Codefresh UI.
 
 {% include image.html
   lightbox="true"
@@ -337,9 +337,9 @@ You can then follow the instructions for [using the runner](#using-the-codefresh
 
 ### Installing multiple runtimes with a single agent
 
-It is also possible, for advanced users to install a single agent that can manage multiple runtime environments.
+Advanced users can install a single agent to manage multiple runtime environments.
 
->NOTE: Please make sure that the cluster where the agent is installed has network access to the other clusters of the runtimes
+>NOTE: The cluster where the agent is installed requires network access to the other clusters of the runtimes.
 
 ```
 # 1. Create namespace for the agent: 
