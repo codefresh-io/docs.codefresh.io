@@ -9,14 +9,14 @@ toc: true
 
 
 
-Install the Codefresh Runner on your Kubernetes cluster to run pipelines and access secure internal services without compromising on premise security requirements. These pipelines run on your infrastructure, even behind the firewall, and keep code on your Kubernetes cluster. 
+Install the Codefresh Runner on your Kubernetes cluster to run pipelines and access secure internal services without compromising on-premise security requirements. These pipelines run on your infrastructure, even behind the firewall, and keep code on your Kubernetes cluster.
 
 [Skip to quick installation &#8594;](#installation-with-the-quick-start-wizard)
 
->Notice that a runner installation is needed for each cluster that will _run_ Codefresh pipelines. A runner is **not** needed
-in clusters that are used for _deployment_. It is possible to deploy applications on different clusters other than the ones the runner is running on.
+>Note that a runner installation is needed for each cluster that will _run_ Codefresh pipelines. A runner is **not** needed
+in clusters that are used for _deployment_. It is possible to deploy applications on clusters that are not currently running the runner.
 
-The installation process takes care of all the components of the runner as well as the other resources (config-maps, secrets, volumes) needed by them. 
+The installation process takes care of <CLARIFY GABI> all the components of the runner and any resources (config-maps, secrets, volumes) they require. 
 
 ## Prerequisites
 
