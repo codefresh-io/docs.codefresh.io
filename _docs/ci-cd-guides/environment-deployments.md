@@ -490,9 +490,178 @@ steps:
 
 The approval step has many more options such as a timeout or even choosing a different flow in the pipeline if the approval is declined.
 
-## Parallel deployments
+## Using multiple pipelines for deployments
 
-Different pipelines
+Having a single pipeline that deals with all deployment environments can work great with a small team. As an organization grows and the pipeline is getting additional steps, it becomes very hard to use pipeline conditionals to enable/disable specific steps.
+
+With Codefresh you can create as many pipelines as you want for a single project. It is therefore very easy to employ different simple pipelines for specific purposes instead of working with a complex monolithic pipeline.
+
+In our example we will create two pipelines:
+
+1. The "staging" pipeline performs linting and security scans in the source code before creating the docker image
+1. The "production" pipeline is running integration tests *after* the creation of the Docker image.
+
+Here is how the staging pipeline looks:
+
+{% include image.html 
+lightbox="true" 
+file="/images/guides/promotion/staging-pipeline.png" 
+url="/images/guides/promotion/staging-pipeline.png" 
+alt="A pipeline only for staging deployments" 
+caption="A pipeline only for staging deployments"
+max-width="80%" 
+%}
+
+This pipeline uses [parallel steps]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/#inserting-parallel-steps-in-a-sequential-pipeline) to run linting and security scanning at the same time. 
+
+Here is the whole pipeline:
+
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: "1.0"
+stages:
+  - "clone"
+  - "validate"
+  - "build"
+  - "staging"
+
+steps:
+  clone:
+    title: "Cloning repository"
+    type: "git-clone"
+    repo: "codefresh-contrib/helm-promotion-sample-app"
+    revision: '${{CF_REVISION}}'
+    stage: "clone"
+  prechecks:
+    type: parallel
+    stage: 'validate'
+    steps:
+      lint:
+        title: Lint
+        working_directory: "${{clone}}"
+        image: golangci/golangci-lint:v1.33.0
+        commands:
+          - golangci-lint run -v .
+      securityAnalysis:
+        title: Security Scan
+        working_directory: "${{clone}}"
+        image: 'securego/gosec:v2.5.0'
+        commands:
+          - gosec ./...      
+  build:
+    title: "Building Docker image"
+    type: "build"
+    image_name: "kostiscodefresh/helm-promotion-app"
+    working_directory: "${{clone}}"
+    tags:
+    - "latest"
+    - '${{CF_SHORT_REVISION}}'
+    dockerfile: "Dockerfile"
+    stage: "build"
+    registry: dockerhub  
+
+  deployStaging:
+    title: Deploying to Staging
+    type: helm
+    stage: staging
+    working_directory: ./helm-promotion-sample-app
+    arguments:
+      action: install
+      chart_name: ./chart/sample-app
+      release_name: example-staging
+      helm_version: 3.0.2
+      kube_context: 'mydemoAkscluster@BizSpark Plus'
+      namespace: staging
+      custom_value_files:
+      - ./chart/values-staging.yaml
+{% endraw %}
+{% endhighlight %}
+
+The production pipeline assumes that the code is already scanned/validated and runs some integration tests as a final validation check before deploying the release to production:
+
+{% include image.html 
+lightbox="true" 
+file="/images/guides/promotion/production-pipeline.png" 
+url="/images/guides/promotion/production-pipeline.png" 
+alt="A pipeline only for production deployments" 
+caption="A pipeline only for production deployments"
+max-width="80%" 
+%}
+
+This pipeline uses [service containers]({{site.baseurl}}/docs/codefresh-yaml/service-containers/) to run [integration tests]({{site.baseurl}}/docs/testing/integration-tests/). 
+
+Here is the whole pipeline:
+
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: "1.0"
+stages:
+  - "clone"
+  - "build"
+  - "testing"
+  - "prod"
+
+steps:
+  clone:
+    title: "Cloning repository"
+    type: "git-clone"
+    repo: "codefresh-contrib/helm-promotion-sample-app"
+    revision: '${{CF_REVISION}}'
+    stage: "clone"   
+  build_app_image:
+    title: "Building Docker image"
+    type: "build"
+    image_name: "kostiscodefresh/helm-promotion-app"
+    working_directory: "${{clone}}"
+    tags:
+    - "latest"
+    - '${{CF_SHORT_REVISION}}'
+    dockerfile: "Dockerfile"
+    stage: "build"
+    registry: dockerhub  
+  myTests:
+    title: Integration Tests
+    type: freestyle
+    working_directory: "${{clone}}"
+    stage: "testing"
+    arguments:
+      image: 'byrnedo/alpine-curl'
+      commands:
+        - "curl http://app:8080/health"
+    services:
+      composition:
+        app:
+          image: '${{build_app_image}}'
+          ports:
+            - 8080     
+  deployProd:
+    title: Deploying to Production
+    type: helm
+    stage: prod
+    working_directory: ./helm-promotion-sample-app
+    arguments:
+      action: install
+      chart_name: ./chart/sample-app
+      release_name: example-prod
+      helm_version: 3.0.2
+      kube_context: 'mydemoAkscluster@BizSpark Plus'
+      namespace: production
+      custom_value_files:
+      - ./chart/values-prod.yaml
+{% endraw %}
+{% endhighlight %}
+
+Now that you have created the pipelines, you have several options on how to trigger them. Some common workflows are:
+
+1. Automate the staging pipeline when a commit lands in `master` and only launch the production pipeline in a manual manner
+1. Automate the staging pipeline when a commit lands in `master` and use an [approval step]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/) to call the production pipeline as a [child pipeline]({{site.baseurl}}/docs/yaml-examples/examples/call-child-pipelines/).
+1. Set the [trigger]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/) of the production pipeline to [launch only]({{site.baseurl}}/docs/ci-cd-guides/pull-request-branches/#restricting-which-branches-to-build) on `master` and the trigger of the staging pipeline to launch only for non-master branches
+1. Set the production pipeline to launch only for commits on `master` and the staging pipeline only for Pull requests.
+
+The exact mechanism depends on what your team workflow is. For more information see [the guide on branches and pull requests]({{site.baseurl}}/docs/ci-cd-guides/pull-request-branches/) and especially the [trunk based development section]({{site.baseurl}}/docs/ci-cd-guides/pull-request-branches/#trunk-based-development) for a good starting point.
+
 
 Helm promotion board manual
 
