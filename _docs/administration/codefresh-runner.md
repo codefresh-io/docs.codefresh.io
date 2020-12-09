@@ -29,14 +29,13 @@ The Codefresh runner requires the following:
 You can run the installation from any workstation or laptop with access (i.e. via `kubectl`) to the Kubernetes cluster running Codefresh builds. The Codefresh runner will authenticate your Codefresh account with the Codefresh CLI token. 
 
 ## Installation with the quick-start wizard
-
-**Step 1:** Type the following to install the Codefresh CLI:
+**Step 1: Install the Codefresh CLI**
 ```
 npm install -g codefresh
 ```
 [Click here for alternative install methods](https://codefresh-io.github.io/cli/installation/)
 
-**Step 2:** Type the following to authenticate the CLI:
+**Step 2: Authenticate the CLI**
 ```
 codefresh auth create-context --api-key {API_KEY}
 ```
@@ -44,7 +43,7 @@ You can obtain an API Key from your [user settings page](https://g.codefresh.io/
 
 >Note: Access to the Codefresh CLI is only needed once during the Runner installation. After that, the Runner will authenticate on it own using the details provided. You do *NOT* need to install the Codefresh CLI on the cluster that is running Codefresh pipelines.
 
-**Step 3:** Run the wizard with one of the following commands:
+**Step 3: Run the wizard**
 
 ```
 codefresh runner init
@@ -56,7 +55,7 @@ or
 codefresh runner init --token <my-token>
 ```
 
-After you answer some basic questions the wizard will proceed with the installation. 
+After you answer some basic questions, the wizard will proceed with the installation. 
 
 {% include image.html
   lightbox="true"
