@@ -282,11 +282,7 @@ max-width="80%"
 
 This way you can also verify that the correct values are applied to the respective environment.
 
-
-
-
 ## Using the Environment Dashboard
-
 
 Codefresh also includes [an optional environment dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/environment-dashboard/) that you can use to track down your environments and their current status. The dashboard is especially helpful if you have a large number of environments.
 
@@ -299,6 +295,7 @@ alt="Codefresh Environment Dashboard"
 caption="Codefresh Environment Dashboard"
 max-width="70%"
 %}
+
 
 To activate your environment dashboard you need to add an [env block]({{site.baseurl}}/docs/codefresh-yaml/deployment-environments/) to each of the deployment steps in the pipeline.
 Here is the whole pipeline:
@@ -408,9 +405,92 @@ If you click on each environment you will see several details such as active ser
 
 ## Using Approvals in a pipeline
 
-Basic pipeline with approval
+Deploying straight to production after a commit is a worthy goal, but not all organizations want to work like this. In several cases, a human must approve a production deployment with a manual step. 
 
-Parallel deployment
+An alternative pipeline pattern is to have a single pipeline that automatically deploys to the "staging" environment but pauses before releasing in production. 
+
+{% include image.html 
+lightbox="true" 
+file="/images/guides/promotion/with-approval.png" 
+url="/images/guides/promotion/with-approval.png" 
+alt="Asking for approval before a production deployment" 
+caption="Asking for approval before a production deployment"
+max-width="80%" 
+%}
+
+Once the pipeline is paused, all project stakeholders can examine the state of the application in the staging environment (either manually or by running automated tests) and if everything looks good, promote the application to production.
+
+This is easily accomplished with the [Codefresh approval step]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/). The pipeline is stopped and a yes/no button is shown in the GUI. Only if the approval choice is selected the pipeline can then continue.
+
+Here is the whole pipeline:
+
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: "1.0"
+stages:
+  - "clone"
+  - "build"
+  - "staging"
+  - "prod"
+
+steps:
+  clone:
+    title: "Cloning repository"
+    type: "git-clone"
+    repo: "codefresh-contrib/helm-promotion-sample-app"
+    revision: '${{CF_REVISION}}'
+    stage: "clone"
+
+  build:
+    title: "Building Docker image"
+    type: "build"
+    image_name: "kostiscodefresh/helm-promotion-app"
+    working_directory: "${{clone}}"
+    tags:
+    - "latest"
+    - '${{CF_SHORT_REVISION}}'
+    dockerfile: "Dockerfile"
+    stage: "build"
+    registry: dockerhub  
+  deployStaging:
+    title: Deploying to Staging
+    type: helm
+    stage: staging
+    working_directory: ./helm-promotion-sample-app
+    arguments:
+      action: install
+      chart_name: ./chart/sample-app
+      release_name: example-staging
+      helm_version: 3.0.2
+      kube_context: 'mydemoAkscluster@BizSpark Plus'
+      namespace: staging
+      custom_value_files:
+      - ./chart/values-staging.yaml
+  askForPermission:
+    type: pending-approval
+    stage: prod
+    title: Deploy to production?
+  deployProd:
+    title: Deploying to Production
+    type: helm
+    stage: prod
+    working_directory: ./helm-promotion-sample-app
+    arguments:
+      action: install
+      chart_name: ./chart/sample-app
+      release_name: example-prod
+      helm_version: 3.0.2
+      kube_context: 'mydemoAkscluster@BizSpark Plus'
+      namespace: production
+      custom_value_files:
+      - ./chart/values-prod.yaml
+{% endraw %}
+{% endhighlight %}
+
+The approval step has many more options such as a timeout or even choosing a different flow in the pipeline if the approval is declined.
+
+## Parallel deployments
 
 Different pipelines
 
