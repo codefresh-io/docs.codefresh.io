@@ -662,7 +662,7 @@ Now that you have created the pipelines, you have several options on how to trig
 
 The exact mechanism depends on what your team workflow is. For more information see [the guide on branches and pull requests]({{site.baseurl}}/docs/ci-cd-guides/pull-request-branches/) and especially the [trunk based development section]({{site.baseurl}}/docs/ci-cd-guides/pull-request-branches/#trunk-based-development) for a good starting point.
 
-## Promoting between environments
+## Promoting releases between environments
 
 If you have a large number of environments we also suggest looking at the Helm promotion board provided by Codefresh.
 
