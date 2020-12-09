@@ -16,15 +16,15 @@ Install the Codefresh Runner on your Kubernetes cluster to run pipelines and acc
 >Note that a runner installation is needed for each cluster that will _run_ Codefresh pipelines. A runner is **not** needed
 in clusters that are used for _deployment_. It is possible to deploy applications on clusters that are not currently running the runner.
 
-The installation process takes care of **?CLARIFY?** all the components of the runner and any resources (config-maps, secrets, volumes) they require. 
+The installation process **takes care of ?CLARIFY?** all the components of the runner and any resources (config-maps, secrets, volumes) they require. 
 
 ## Prerequisites
 
-To use the Codefresh runner you need the following:
+The Codefresh runner requires the following:
 
 1. Kubernetes cluster with outgoing Internet access (with version later than 1.10). Each node should have **at least?** 50GB disk size.
-1. A [Codefresh account](https://codefresh.io/docs/getting-started/create-a-codefresh-account/) with the Hybrid feature enabled.
-1. A [Codefresh CLI token]({{site.baseurl}}/docs/integrations/codefresh-api/#authentication-instructions) that will be used to authenticate to your Codefresh account.
+1. [Codefresh account](https://codefresh.io/docs/docs/getting-started/create-a-codefresh-account/) with the Hybrid feature enabled.
+1. [Codefresh CLI token](https://codefresh.io/docs/integrations/codefresh-api/#authentication-instructions) to authenticate to your Codefresh account.
 
 Installation can happen from any workstation or laptop that has access (i.e. via `kubectl`) to the Kubernetes cluster that will run Codefresh builds. The Codefresh runner will authenticate to your Codefresh account by using the Codefresh CLI token. 
 
