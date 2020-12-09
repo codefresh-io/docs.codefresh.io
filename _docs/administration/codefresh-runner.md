@@ -22,11 +22,11 @@ The installation process **takes care of ?CLARIFY?** all the components of the r
 
 The Codefresh runner requires the following:
 
-1. Kubernetes cluster with outgoing Internet access (with version later than 1.10). Each node should have **at least?** 50GB disk size.
+1. Kubernetes cluster with outgoing Internet access (with version later than 1.10). Each node should have **at least CLARIFY?** 50GB disk size.
 1. [Codefresh account](https://codefresh.io/docs/docs/getting-started/create-a-codefresh-account/) with the Hybrid feature enabled.
 1. [Codefresh CLI token](https://codefresh.io/docs/docs/integrations/codefresh-api/#authentication-instructions) to authenticate your Codefresh account.
 
-You can run the installation from any workstation or laptop with access (i.e. via `kubectl`) to the Kubernetes cluster that will run Codefresh builds. The Codefresh runner will authenticate your Codefresh account with the Codefresh CLI token. 
+You can run the installation from any workstation or laptop with access (i.e. via `kubectl`) to the Kubernetes cluster running Codefresh builds. The Codefresh runner will authenticate your Codefresh account with the Codefresh CLI token. 
 
 ## Installation with the quick-start wizard
 
@@ -42,9 +42,9 @@ codefresh auth create-context --api-key {API_KEY}
 ```
 You can obtain an API Key from your [user settings page](https://g.codefresh.io/user/settings).
 
->Note: Access to the Codefresh CLI is only needed once during the Runner installation. After that, the Runner with authenticate on it own using the details provided. You do *NOT* need to install the Codefresh CLI on the cluster that is running Codefresh pipelines.
+>Note: Access to the Codefresh CLI is only needed once during the Runner installation. After that, the Runner will authenticate on it own using the details provided. You do *NOT* need to install the Codefresh CLI on the cluster that is running Codefresh pipelines.
 
-3. Run the wizard with the following command:
+3. Run the wizard with one of the following commands:
 
 ```
 codefresh runner init
@@ -56,14 +56,14 @@ or
 codefresh runner init --token <my-token>
 ```
 
-The wizard will ask you some basic questions and proceed with the installation. 
+After you answer some basic questions the wizard will proceed with the installation. 
 
 {% include image.html
   lightbox="true"
   file="/images/administration/runner/installation-wizard.png"
   url="/images/administration/runner/installation-wizard.png"
-  alt="Codefresh Runner wizard"
-  caption="Codefresh Runner wizard"
+  alt="Codefresh Runner Wizard"
+  caption="Codefresh Runner Wizard Example"
   max-width="100%"
     %} 
 
@@ -73,14 +73,14 @@ The wizard will also create and run a sample pipeline that you can see in your C
   lightbox="true"
   file="/images/administration/runner/sample-pipeline.png"
   url="/images/administration/runner/sample-pipeline.png"
-  alt="Codefresh Runner example pipeline"
-  caption="Codefresh Runner example pipeline"
+  alt="Codefresh Runner Pipeline Example"
+  caption="Codefresh Runner Pipeline Example"
   max-width="90%"
     %} 
 
-That's it! You can now start using the Runner.
+The Codefresh Runner installation is now complete! You can now start using the Runner.
 
-You can also verify your installation with 
+Type the following to verify your installation: 
 
 ```
 codefresh runner info
