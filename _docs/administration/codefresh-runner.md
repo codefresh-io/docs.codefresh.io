@@ -16,7 +16,7 @@ Install the Codefresh Runner on your Kubernetes cluster to run pipelines and acc
 >Note that a runner installation is needed for each cluster that will _run_ Codefresh pipelines. A runner is **not** needed
 in clusters that are used for _deployment_. It is possible to deploy applications on clusters that are not currently running the runner.
 
-The installation process takes care of `'**CLARIFY GABI**` all the components of the runner and any resources (config-maps, secrets, volumes) they require. 
+The installation process takes care of `**CLARIFY GABI**` all the components of the runner and any resources (config-maps, secrets, volumes) they require. 
 
 ## Prerequisites
 
