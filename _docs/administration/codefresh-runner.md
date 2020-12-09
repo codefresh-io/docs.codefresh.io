@@ -79,7 +79,7 @@ The wizard will also create and run a sample pipeline that you can see in your C
 
 The Codefresh Runner installation is now complete! You can now start using the Runner.
 
-Type the following to verify your installation: 
+**Step 3: Verify your installation** 
 
 ```
 codefresh runner info
