@@ -8,12 +8,12 @@ toc: true
 
 ---
 
-As explained in the [installation page]({{site.baseurl}}/docs/administration/installation-security/) Codefresh offers 3 installation options: pure cloud, on-premise and Hybrid.
+As explained in the [installation page]({{site.baseurl}}/docs/administration/installation-security/) Codefresh offers 3 installation options: pure cloud, on-premises and Hybrid.
 In this page we are going to describe the Hybrid option and all the advantages it offers.
 
 ## Running Codefresh in secure environments
 
-Codefresh has an on-premise installation where the whole platform is installed in the customer premises. While
+Codefresh has an on-premises installation where the whole platform is installed in the customer premises. While
 this solution is very effective as far as security is concerned, it places a lot of overhead on the customer as all updates
 and improvements done in the platform must also be transferred to the customer premises.
 
@@ -87,7 +87,7 @@ need to mark it as *behind the firewall* as well:
     %} 
 
 Once you do that save your provider and make sure that it has the correct tags. The name you used for the git provider will also be used in the pipeline. You cannot "test the connection" because 
-the Codefresh SAAS doesn't have access to your on-premise GIT repository.
+the Codefresh SAAS doesn't have access to your on-premises GIT repository.
 
 {% include image.html
   lightbox="true"
