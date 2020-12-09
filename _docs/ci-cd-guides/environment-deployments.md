@@ -662,20 +662,28 @@ Now that you have created the pipelines, you have several options on how to trig
 
 The exact mechanism depends on what your team workflow is. For more information see [the guide on branches and pull requests]({{site.baseurl}}/docs/ci-cd-guides/pull-request-branches/) and especially the [trunk based development section]({{site.baseurl}}/docs/ci-cd-guides/pull-request-branches/#trunk-based-development) for a good starting point.
 
+## Promoting between environments
 
-Helm promotion board manual
+If you have a large number of environments we also suggest looking at the Helm promotion board provided by Codefresh.
 
-Helm promotion board automated
+{% include 
+image.html 
+lightbox="true" 
+file="/images/kubernetes-helm/promotion/board.png" 
+url="/images/kubernetes-helm/promotion/board.png"
+alt="Helm Promotion Dashboard" 
+caption="Helm Promotion Dashboard" 
+max-width="80%"
+%}
 
-
-
+See the [Helm promotion board]({{site.baseurl}}/docs/new-helm/helm-environment-promotion/) documentation page for more details.
 
 ## What to read next
 
 * [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
-* [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
-* [External Docker Registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/)
-* [YAML Examples]({{site.baseurl}}/docs/yaml-examples/examples/)
+* [Pull Requests and branches]({{site.baseurl}}/docs/ci-cd-guides/pull-request-branches/)
+* [Environment dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/environment-dashboard/)
+* [Helm promotions]({{site.baseurl}}/docs/new-helm/helm-environment-promotion/)
 
 
 
