@@ -30,13 +30,13 @@ You can run the installation from any workstation or laptop with access (i.e. vi
 
 ## Installation with the quick-start wizard
 
-1. Type the following to install the Codefresh CLI:
+Step 1 - Type the following to install the Codefresh CLI:
 ```
 npm install -g codefresh
 ```
 [Click here for alternative install methods](https://codefresh-io.github.io/cli/installation/)
 
-2. Type the following to authenticate the CLI:
+Step 2 - Type the following to authenticate the CLI:
 ```
 codefresh auth create-context --api-key {API_KEY}
 ```
@@ -44,7 +44,7 @@ You can obtain an API Key from your [user settings page](https://g.codefresh.io/
 
 >Note: Access to the Codefresh CLI is only needed once during the Runner installation. After that, the Runner will authenticate on it own using the details provided. You do *NOT* need to install the Codefresh CLI on the cluster that is running Codefresh pipelines.
 
-3. Run the wizard with one of the following commands:
+Step 3 - Run the wizard with one of the following commands:
 
 ```
 codefresh runner init
@@ -86,7 +86,7 @@ Type the following to verify your installation:
 codefresh runner info
 ```
 
-During installation you will also see which API token will be used by the runner (if you don't provide one by yourself). The token that is printed is used by the runner to talk to the Codefresh platform and it carries permissions that allows the runner to run pipelines.  If you note down the token, it can later be used if the deployment is deleted to restore the runner's permissions without creating a new runner installation.
+During installation you will also see which API token the runner will use (if you don't provide one by yourself). The token that is printed is used by the runner to talk to the Codefresh platform and it carries permissions that allows the runner to run pipelines.  If you note down the token, it can later be used if the deployment is deleted to restore the runner's permissions without creating a new runner installation.
 
 ### Customizing the wizard installation
 
