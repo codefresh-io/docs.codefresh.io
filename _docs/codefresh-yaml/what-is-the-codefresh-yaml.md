@@ -227,6 +227,45 @@ Notice that Codefresh also provides the following variables that allow you chang
 
 The retry mechanism is available for all kinds of [steps]({{site.baseurl}}/docs/codefresh-yaml/steps/).
 
+## Escaping strings
+
+If you want to use strings inside your pipeline that create conflicts with the Codefresh syntax parser (for example they are YAML themselves) you need
+to escape them using multi-line strings with the `>-` and `|-` characters.
+
+The following pipeline is not parsed correctly because the echo command is using the yaml `:` character
+
+{% highlight yaml %}
+{% raw %}
+version: "1.0"
+steps:
+  test:
+    title: "Running test"
+    type: "freestyle" 
+    image: "alpine:3.9" 
+    commands:
+      - echo hello: world
+{% endraw %}      
+{% endhighlight %}
+
+You can fix this issue by using a multi-line YAML string:
+
+{% highlight yaml %}
+{% raw %}
+version: "1.0"
+steps:
+  test:
+    title: "Running test"
+    type: "freestyle" 
+    image: "alpine:3.9" 
+    commands:
+      - |-
+        echo hello: world
+{% endraw %}      
+{% endhighlight %}
+
+The `|-` character keeps the line breaks of the text (but removes the last one). Use the `>-` character if you want to convert line breaks to spaces.
+For more information see the [YAML specification](https://yaml.org/spec/1.2/spec.html).
+
 ## Using YAML anchors to avoid repetition
 
 Codefresh also supports yaml anchors, references and extends. These allow you to keep

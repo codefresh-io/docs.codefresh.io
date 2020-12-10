@@ -17,6 +17,7 @@ Recent Codefresh updates:
 - Helm promotion pipelines can be overridden in the GUI  - [documentation]({{site.baseurl}}/docs/new-helm/helm-environment-promotion/#creating-your-own-helm-board)
 - Internal Registry mirror for the Codefresh runner - [documentation]({{site.baseurl}}/docs/administration/codefresh-runner/#internal-registry-mirror)
 - Production and staging deployments guide - [documentation]({{site.baseurl}}/docs/ci-cd-guides/environment-deployments/)
+- Escaping YAML in pipelines - [documentation]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/#escaping-strings)
 
 ### November 2020
 
