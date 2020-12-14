@@ -301,6 +301,7 @@ This dashboard is the central place for monitoring your application and contains
 1. Deployment graph that shows successful/failed deployments on the selected time period
 1. Complete history of deployments according to Git hash. For each deployment you can also see which Pull Request was used for the commit, who was the committer and which JIRA issues this Pull request is solving (provided that the image was built by a Codefresh pipeline)
 1. The Kubernetes services that belong to this application (on the services tab)
+1. What services and replicas were updated with each deployment.
 
 The deployment status is fetched from your ArgoCD integration in a live manner. If at any point, the deployment is not synced with GIT, you will instantly see the out-of-sync status:
 
@@ -316,6 +317,28 @@ The deployment status is fetched from your ArgoCD integration in a live manner. 
 For each Git hash Codefresh associates the respective Pull Request and Jira issue(s) that affected deployment. To achieve this correlation, Codefresh is enriching the Docker image(s) of the service during the CI process.
 
 You can manually create these annotations with the [standard Codefresh annotation support]({{site.baseurl}}/docs/codefresh-yaml/annotations/) or via the built-in pipeline steps that we will see in the next section. 
+
+You can find helpful tips if you hover your mouse on the PR number, the issue, the Git commiter and so on.
+
+{% include image.html 
+  lightbox="true" 
+  file="/images/guides/gitops/tooltips.png" 
+  url="/images/guides/gitops/tooltips.png" 
+  alt="Extra tooltip information"
+  caption="Extra tooltip information"  
+  max-width="80%"
+ %}
+
+For each deployment you can also see a before/after view of the pods/replicas that were affected.
+
+{% include image.html 
+  lightbox="true" 
+  file="/images/guides/gitops/updated-services.png" 
+  url="/images/guides/gitops/updated-services.png" 
+  alt="Updated services"
+  caption="Updated services"  
+  max-width="100%"
+ %}
 
 ### Filtering the deployment history
 

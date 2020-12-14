@@ -18,6 +18,7 @@ Recent Codefresh updates:
 - Internal Registry mirror for the Codefresh runner - [documentation]({{site.baseurl}}/docs/administration/codefresh-runner/#internal-registry-mirror)
 - Production and staging deployments guide - [documentation]({{site.baseurl}}/docs/ci-cd-guides/environment-deployments/)
 - Escaping YAML in pipelines - [documentation]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/#escaping-strings)
+- GitOps dashboard now shows affected services for each release - [documentation]({{site.baseurl}}/docs/ci-cd-guides/gitops-deployments/#working-with-the-gitops-dashboard)
 
 ### November 2020
 
