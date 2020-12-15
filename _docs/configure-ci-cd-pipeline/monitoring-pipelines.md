@@ -81,6 +81,20 @@ max-width="50%"
 
 You can easily remove active filters, by clicking on them and adding/removing values.
 
+On the right hand side you can also find a filtering toolbar with time options:
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/monitoring/build-filter-date.png" 
+url="/images/pipeline/monitoring/build-filter-date.png"
+alt="Filtering options for time" 
+caption="Filtering options for time"
+max-width="60%"
+%}
+
+You can combine all previously mentioned filters with the time based filters.
+
 ### Creating build views
 
 Once you have a set of filters that you use regularly, you can save them as a custom *Build View* by clicking the *Save as View* button
