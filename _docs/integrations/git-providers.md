@@ -116,7 +116,7 @@ For GitHub on-premises you also need to provide the URL of the GitHub server in 
 
 ## GitHub-App
 
->This is an incubating feature. Please contact us for updates.
+>This is an incubating feature not enabled by default. Please contact us for updates.
 
 An alternative way to authenticate with Github is via the App mechanism
 
