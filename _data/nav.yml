@@ -235,6 +235,8 @@
           url: "/codecov-testing"
         - title: Coveralls Coverage Reports
           url: "/coveralls-testing"
+        - title: Codacy Coverage Reports
+          url: "/codacy-testing"
     - title: "Databases"
       url: "/examples"
       sub-pages:
