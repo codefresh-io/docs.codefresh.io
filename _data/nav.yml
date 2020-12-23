@@ -521,6 +521,8 @@
           url: "/forbidden-cluster-resources"
         - title: Failed to get accounts clusters during workflow
           url: "/failed-to-get-accounts-clusters-during-workflow"
+        - title: API Paging issues
+          url: "/paging-issues-builds-images"
     - title: Git step migration
       url: "/git-step-migration"
     - title: Personal Git Deprecation

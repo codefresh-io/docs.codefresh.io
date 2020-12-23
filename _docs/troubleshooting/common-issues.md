@@ -42,6 +42,10 @@ In this section, we offer helpful information about issues you may encounter and
 - [Forbidden Cluster Resources]({{site.baseurl}}/docs/troubleshooting/common-issues/forbidden-cluster-resources/)
 - [Failed to get accounts clusters during workflow]({{site.baseurl}}/docs/troubleshooting/common-issues/failed-to-get-accounts-clusters-during-workflow/)
 
+## API/CLI issues
+
+- [Paging does not work for images and builds]({{site.baseurl}}/docs/troubleshooting/common-issues/paging-issues-builds-images/)
+
 
 
 

@@ -6,8 +6,11 @@ redirect_from:
   - /docs/whats-new/
 toc: true
 ---
+### Upcoming changes
 
-Recent Codefresh updates:
+- Jan-9-2020 New paging mechanism for builds/images that might break custom integrations - [documentation]({{site.baseurl}}/docs/troubleshooting/common-issues/paging-issues-builds-images/)
+
+## Recent Codefresh updates:
 
 ### December 2020
 
