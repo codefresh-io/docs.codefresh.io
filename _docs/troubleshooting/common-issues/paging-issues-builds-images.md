@@ -66,6 +66,15 @@ Going back to page 1:
 
 All of the examples shown above are valid with the new paging implementation.
 
+## Handling concurrent API connections that list images and/or builds
+
+By default you can have only one concurrent CLI/API connection for fetching lists of builds/images. If you use multiple connections
+they will all have the same cursor, and using them all at once will yield undefined results.
+
+To overcome this, you can use the `X-Pagination-Session-Id` header in your API calls and pass any value you see fit that makes your connection unique.
+
+Note that if you use the [Codefresh CLI in a Codefresh pipeline]({{site.baseurl}}/docs/integrations/codefresh-api/#using-codefresh-from-within-codefresh) the session id is automatically set for you with a value of `{workflowId} + {stepsContainerId}` meaning that you can use multiple steps with the CLI in a single pipeline without any race conditions.
+
 ## Advantages of the new mechanism
 
 Apart from increased performance, the new implementation also allows you to use negative numbers for going to the "previous" page. This is very handy for querying existing builds
