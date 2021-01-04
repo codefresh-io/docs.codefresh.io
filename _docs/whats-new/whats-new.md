@@ -12,6 +12,10 @@ toc: true
 
 ## Recent Codefresh updates:
 
+### January 2021
+
+- Git clone now supports a proxy connection - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/#using-git-behind-a-proxy)
+
 ### December 2020
 
 - Get Code Coverage Reports with Coveralls - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/coveralls-testing)

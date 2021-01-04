@@ -126,6 +126,8 @@ Once you trigger the pipeline, the Codefresh builder will communicate with your 
 
 >Note that currently there is a limitation in regards to the location of the `codefresh.yml` file. Only the [inline mode]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#writing-codefresh-yml-in-the-gui) is supported. Soon we will allow the loading of the pipeline from the git repository itself.
 
+You can also use a [network proxy]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/#using-git-behind-a-proxy) for the Git clone step.
+
 #### Adding triggers from private GIT repositories
 
 
