@@ -62,26 +62,9 @@ alt="Create Codacy Pipeline"
 max-width="80%" 
 %}
 
-**Testing step**
+**Setting-up step**
 
-This step is based on our [TypeScript application](https://github.com/anais-codefresh/codacy-sample-app). In short, we specify to execute the testing in the node image, then install jest and run our test script. Modify the steps in accordance with your application. In the end, it should generate a code coverage report in a format that is understood by Codacy.
-
-{% highlight yaml %}
-{% raw %}
-  tests:
-      title: "Running test"
-      type: "freestyle"
-      working_directory: '${{clone}}'
-      arguments:
-        image: 'node:15.2'
-        commands:
-          - "npm install --save-dev jest"
-          - "npm run test"
-      stage: "test"
-{% endraw %}
-{% endhighlight %}
-
-The next step is going to set our Project API token as our environment variable and then run Codacy's script to push our coverage reports to codacy. Note that we have specified our token in the variables section on the right, like displayed in the following screenshot.
+This step is based on our [TypeScript application](https://github.com/codefresh-contrib/codacy-sample-app). Before we are going to set-up our pipeline, we are going to add our Project API token as our environment variable. Note that we have specified our token in the variables section on the right, like displayed in the following screenshot.
 
 {% include image.html 
 lightbox="true" 
@@ -91,24 +74,7 @@ alt="Provide Codacy ENV variable"
 max-width="80%" 
 %}
 
-Once the variable is called through the [Codefresh yml syntax](https://codefresh.io/docs/docs/codefresh-yaml/variables/), it will automatically use the value provided within the variables section. Our step will look as such:
-
-{% highlight yaml %}
-{% raw %}
-codacy:
-        title: "Pushing reports to codacy"
-        type: "freestyle"
-        working_directory: '${{clone}}'
-        arguments:
-          image: 'alpine:3.8'
-          commands:
-            - "export CODACY_PROJECT_TOKEN=${{CODACY_PROJECT_TOKEN}}"
-            - "wget -qO - https://coverage.codacy.com/get.sh | sh"
-        stage: "test"
-{% endraw %}
-{% endhighlight %}
-
-Our full pipeline will look as such:
+Once the variable is called through the [Codefresh yml syntax](https://codefresh.io/docs/docs/codefresh-yaml/variables/), it will automatically use the value provided within the variables section. If you are using this example as your pipeline, please delete anything in your pipeline. We can then add the following pipeline to our Inline YAML within the Workflow section in our UI:
 
 {% highlight yaml %}
 {% raw %}
@@ -163,6 +129,8 @@ steps:
         stage: "test"
 {% endraw %}
 {% endhighlight %}
+
+The last two steps, ’tests’ and ’codacy’, are used to run our tests, create our coverage reports and forward those to Codacy. If you are using your own project and existing pipeline, add those two steps to your pipeline. In case you are using your own application, make sure to adapt the commands within the test step to run the tests of your application. Additionally, ensure that both the ’repo’ and the ’image_name’ point to your integrations.
 
 Once you run the pipeline the steps will create the coverage report and forward it to Codacy.
 
