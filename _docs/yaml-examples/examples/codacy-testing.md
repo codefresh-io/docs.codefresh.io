@@ -7,7 +7,7 @@ toc: true
 
 [Codacy](https://www.codacy.com/) is a code review tool that allows for automatic analysis, code coverage tracking, and extensive reports to allow you and your team to improve your code quality over time. 
 
-Analysis reports displayed within Coveralls dashboard:
+Analysis reports displayed within Codacy dashboard:
 {% include image.html 
 lightbox="true" 
 file="/images/testing/codacy/codacy-report.png" 
@@ -62,15 +62,9 @@ alt="Create Codacy Pipeline"
 max-width="80%" 
 %}
 
-Once you ’create’ the pipeline, a standard codefresh.yml file is generated with three steps:
-* The first step will clone your repository;
-* The second step will both, build and push your repository to the container registry that you have connected with Codefresh;
-* And the third step currently does not do much. 
-In the next section, we will modify the testing step and add a new step that pushes our code coverage reports to codacy.
-
 **Testing step**
 
-This step is based on our [TypeScript application](https://github.com/anais-codefresh/codacy-sample-app). In short, we specify to execute the testing in the node image, then install jest and run our test script. Modify this step in accordance to your application. In the end, it should generate a code coverage report in a format that is understood by Codacy.
+This step is based on our [TypeScript application](https://github.com/anais-codefresh/codacy-sample-app). In short, we specify to execute the testing in the node image, then install jest and run our test script. Modify the steps in accordance with your application. In the end, it should generate a code coverage report in a format that is understood by Codacy.
 
 {% highlight yaml %}
 {% raw %}
