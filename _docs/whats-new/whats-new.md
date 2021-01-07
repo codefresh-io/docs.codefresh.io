@@ -15,6 +15,7 @@ toc: true
 ### January 2021
 
 - Git clone now supports a proxy connection - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/#using-git-behind-a-proxy)
+- Support for other container runtimes (containerd, cri-o) in the Runner - [documentation]({{site.baseurl}}/docs/administration/codefresh-runner/#prerequisites)
 
 ### December 2020
 

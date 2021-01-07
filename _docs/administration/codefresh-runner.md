@@ -23,6 +23,7 @@ The installation process takes care of all the components of the runner as well 
 In order to use the Codefresh runner you need the following:
 
 1. A Kubernetes cluster with outgoing Internet access (with version later than 1.10). Each node should have 50GB disk size.
+1. A container runtime such as [docker](https://kubernetes.io/blog/2020/12/02/dockershim-faq/), [containerd](https://containerd.io/) or [cri-o](https://cri-o.io/). Note that the runner is **NOT** dependent on any special dockershim features, so any compliant container runtime will work.
 1. A [Codefresh account]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/) with the Hybrid feature enabled.
 1. A [Codefresh CLI token]({{site.baseurl}}/docs/integrations/codefresh-api/#authentication-instructions) that will be used to authenticate your Codefresh account.
 
