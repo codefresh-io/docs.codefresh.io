@@ -288,8 +288,8 @@ After you create an ArgoCD application, you can click on it in the [GitOps envir
 
 {% include image.html 
   lightbox="true" 
-  file="/images/guides/gitops/gitops-environment.png" 
-  url="/images/guides/gitops/gitops-environment.png" 
+  file="/images/guides/gitops/real-dashboard.png" 
+  url="/images/guides/gitops/real-dashboard.png" 
   alt="GitOps Dashboard"
   caption="GitOps Dashboard"  
   max-width="100%"
@@ -389,8 +389,8 @@ The following characters serve as delimiters
 
 {% include image.html 
   lightbox="true" 
-  file="/images/guides/gitops/search-history.png" 
-  url="/images/guides/gitops/search-history.png" 
+  file="/images/guides/gitops/search.png" 
+  url="/images/guides/gitops/search.png" 
   alt="Searching deployment history"
   caption="Searching deployment history"  
   max-width="80%"

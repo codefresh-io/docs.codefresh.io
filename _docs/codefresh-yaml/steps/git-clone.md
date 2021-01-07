@@ -24,7 +24,8 @@ step_name:
   working_directory: /path
   repo: owner/repo
   git: my-git-provider
-  revision: abcdef12345
+  revision: abcdef12345'
+  use_proxy: false
   credentials:
     username: user
     password: credentials
@@ -54,6 +55,7 @@ step_name:
 | `git` | The name of the [git integration]({{site.baseurl}}/docs/integrations/git-providers/) you want to use. If left empty, Codefresh will attempt to use the git provider that was used during account sign-up. Note that this might have unexpected results if you are changing your Git integrations.| Required| 
 | `repo`                                     | path of the repository without the domain name in the form of `my_username/my_repo`                                                                                                                                                                                       | Required                  |
 | `revision`                                 | The revision of the repository you are checking out. It can be a revision hash or a branch name. The default value is the branch you have specified in your Git provider (e.g `master` or `main`).                                                                                                     | Default                   |
+| `use_proxy`                                 | If set to true the Git clone process will honor `HTTP_PROXY` and `HTTPS_PROXY` variables if present for [working via a proxy](#using-git-behind-a-proxy). Default value is `false`.                                                                                                    | Default                   |
 | `credentials`                              | Credentials to access the repository, if it requires authentication. It can an object containing `username` and `password` fields. Credentials are optional if you are using the [built-in git integrations]({{site.baseurl}}/docs/integrations/git-providers/) .                                                                                             | Optional                  |
 | `fail_fast`                                | If a step fails and the process is halted. The default value is `true`.                                                                                                                                                            | Default                   |
 | `when`                                     | Define a set of conditions that need to be satisfied in order to execute this step. You can find more information in the [Conditional Execution of Steps]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/) article.                            | Optional                  |
@@ -341,6 +343,42 @@ steps:
     ...
 {% endraw %}
 {% endhighlight %}
+
+## Using Git behind a proxy
+
+If you use the [Codefresh Runner]({{site.baseurl}}/docs/administration/codefresh-runner/)  and need to use a network proxy in your clone step you need to set the [variables]({{site.baseurl}}/docs/codefresh-yaml/variables/) `HTTP_PROXY` and/or `HTTPS_PROXY` in the pipeline
+and then activate the property `use_proxy: true` in the clone step. Example:
+
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: "1.0"
+steps:
+  clone:
+    title: "Cloning repository"
+    type: "git-clone"
+    repo: "https://github.com/my-github-user/my-repo/"
+    revision: "master"
+    use_proxy: true
+    git: my-git-provider
+{% endraw %}
+{% endhighlight %}
+
+For setting the values of the proxy variables you can use any of the supported methods for defining variables such as [shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/).
+
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/codefresh-yaml/steps/proxy-variables.png" 
+url="/images/codefresh-yaml/steps/proxy-variables.png"
+alt="Pipeline variable" 
+caption="Pipeline variable"
+max-width="40%"
+%}
+
+For more details see the [behind the firewall page]({{site.baseurl}}/docs/administration/behind-the-firewall/).
+
 
 ## What to read next
 

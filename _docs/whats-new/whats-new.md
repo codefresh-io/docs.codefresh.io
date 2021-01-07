@@ -6,8 +6,16 @@ redirect_from:
   - /docs/whats-new/
 toc: true
 ---
+### Upcoming changes
 
-Recent Codefresh updates:
+- Jan-9-2020 New paging mechanism for builds/images that might break custom integrations - [documentation]({{site.baseurl}}/docs/troubleshooting/common-issues/paging-issues-builds-images/)
+
+## Recent Codefresh updates:
+
+### January 2021
+
+- Git clone now supports a proxy connection - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/#using-git-behind-a-proxy)
+- Support for other container runtimes (containerd, cri-o) in the Runner - [documentation]({{site.baseurl}}/docs/administration/codefresh-runner/#prerequisites)
 
 ### December 2020
 
