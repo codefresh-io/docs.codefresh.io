@@ -558,7 +558,9 @@ At the most basic level, you can define that a step *depends on* the execution o
 1. The first step was skipped
 1. The first completes (regardless of exit) status
 
-The syntax for this is the following post-condition
+> Notice that step dependencies only work for [full parallel mode](#parallel-pipeline-mode) (i.e. you need `mode: parallel` at the top of the pipeline yaml).
+
+The syntax for this is the following post-condition:
 
 {% highlight yaml %}
 second_step:
@@ -679,7 +681,11 @@ Also notice the `fail_fast: false` line in the unit tests. By default, if *any* 
 
 ### Multiple Step dependencies
 
-A pipeline step can also depend on multiple other steps. The syntax is:
+A pipeline step can also depend on multiple other steps. 
+
+> Notice that step dependencies only work for [full parallel mode](#parallel-pipeline-mode) (i.e. you need `mode: parallel` at the top of the pipeline yaml).
+
+The syntax is:
 
 {% highlight yaml %}
 third_step:
@@ -801,6 +807,8 @@ In this case Codefresh will make sure that cleanup happens only when both unit a
 ### Custom steps dependencies
 
 For maximum flexibility you can define a custom conditional for a step.
+
+> Notice that step dependencies only work for [full parallel mode](#parallel-pipeline-mode) (i.e. you need `mode: parallel` at the top of the pipeline yaml).
 
 It is hard to describe all possible cases, because Codefresh support a [mini DSL]({{site.baseurl}}/docs/codefresh-yaml/condition-expression-syntax/) for conditions. All examples mentioned in [conditional execution]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/) are still valid in parallel pipelines.
 
