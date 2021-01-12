@@ -35,6 +35,27 @@ Codefresh will send you every week a summary of your builds across your pipeline
 
 If you don't want to receive these emails, you can disable them by toggling the checkbox and clicking the *Save* button.
 
+## Enable Access for support personnel
+
+If you have an issue with the Codefresh platform, our support personnel can log into your account and look at running
+builds, inspect your docker images, run pipelines for you etc.
+
+To allow for this kind of access you need to enable the checkbox marked with `Allow Codefresh support team to login as my user` 
+under the *Security* section.
+
+{% include image.html
+lightbox="true"
+file="/images/administration/user-settings/allow-support-access.png"
+url="/images/administration/user-settings/allow-support-access.png"
+alt="Allow access from support"
+caption="Allow access from support"
+max-width="100%"
+%}
+
+If you don't enable this checkbox, our support staff have **zero visibility** in your account. You can enable/disable this checkbox on demand at any point in time.
+
+All actions performed by Codefresh personnel on your account are audited and they will also confirm with you before performing any action with side effects (such as running a pipeline).
+
 
 ## Git provider private access
 
