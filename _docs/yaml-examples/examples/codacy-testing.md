@@ -29,7 +29,7 @@ You could try it out by cloning our [node example application](https://github.co
 ## Create an Account with Codacy
 [Codacy has a free version](https://www.codacy.com/), a pro version, and an on-premises version. The latter two have a free trial, which allows you to test all features over the course of two weeks. You can sign-up via GitHub, Bitbucket, or GitLab.
 
-When you log into Codacy for the first time, it will ask you to provide access to a repository. At this stage, Codacy will not download any code from your repository but merely access its names. You can then either provide access to selective repositories or your entire git repository.
+When you log into Codacy for the first time, it will ask you to provide access to a repository. At this stage, Codacy will not download any code from your repository but merely access its names. You can then either provide access to selective repositories or your entire git account.
 
 {% include image.html 
 lightbox="true" 
