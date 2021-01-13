@@ -254,7 +254,7 @@ cf_export $MY_VAR # Don't do this
 cf_export MY_VAR # Correct syntax
 ```
 
->There is nothing really magic about `cf_export`. It is a normal script. You can see its contents on your own by entering the command `cat /codefresh/volume/cf_export` on any [Codefresh freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) inside a pipeline.
+>There is nothing really magic about `cf_export`. It is a normal script. You can see its contents on your own by entering the command `cat /codefresh/volume/cf_export` on any [Codefresh freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) inside a pipeline. For more information on its limitations see the [troubleshooting page]({{site.baseurl}}/docs/troubleshooting/common-issues/cf-export-limitations/).
 
 
  

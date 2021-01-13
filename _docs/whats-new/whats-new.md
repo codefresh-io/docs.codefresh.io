@@ -16,6 +16,7 @@ toc: true
 - Giving visibility of your account to Codefresh support personnel is now explicit - [documentation]({{site.baseurl}}/docs/administration/user-settings/#enable-access-for-support-personnel)
 - New paging mechanism for builds/images that might break custom integrations - [documentation]({{site.baseurl}}/docs/troubleshooting/common-issues/paging-issues-builds-images/)
 - Note for Okta sync - [documentation]({{site.baseurl}}/docs/administration/single-sign-on/sso-okta/#how-okta-syncing-works)
+- cf_export limitations - [documentation]({{site.baseurl}}/docs/troubleshooting/common-issues/cf-export-limitations/)
 
 ### December 2020
 
