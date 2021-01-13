@@ -14,12 +14,12 @@ toc: true
 
 ### January 2021
 
+- Get Code Coverage Reports with Codacy - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/codacy-testing)
 - Git clone now supports a proxy connection - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/#using-git-behind-a-proxy)
 - Support for other container runtimes (containerd, cri-o) in the Runner - [documentation]({{site.baseurl}}/docs/administration/codefresh-runner/#prerequisites)
 
 ### December 2020
 
-- Get Code Coverage Reports with Codacy - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/codacy-testing)
 - Get Code Coverage Reports with Coveralls - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/coveralls-testing)
 - Codefresh will now use the default branch (e.g. `main`) instead of assuming `master`. This applies to GitHub, GitLab, and Bitbucket - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)
 - App-Proxy now supports GitLab - [documentation]({{site.baseurl}}/docs/administration/codefresh-runner/#optional-installation-of-the-app-proxy)

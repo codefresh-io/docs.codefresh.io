@@ -154,7 +154,7 @@ alt="Codacy UI Analysis Dashboard"
 max-width="80%" 
 %}
 
-You can access further information on the coverage report by opening the file tap an accessing a specific file from your repository.
+You can access further information on the coverage report by opening the file tab and accessing a specific file from your repository.
 
 {% include image.html 
 lightbox="true" 
