@@ -11,6 +11,7 @@ toc: true
 
 ### January 2021
 
+- Get Code Coverage Reports with Codacy - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/codacy-testing)
 - Git clone now supports a proxy connection - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/#using-git-behind-a-proxy)
 - Support for other container runtimes (containerd, cri-o) in the Runner - [documentation]({{site.baseurl}}/docs/administration/codefresh-runner/#prerequisites)
 - Giving visibility of your account to Codefresh support personnel is now explicit - [documentation]({{site.baseurl}}/docs/administration/user-settings/#enable-access-for-support-personnel)
