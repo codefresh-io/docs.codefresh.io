@@ -1,5 +1,5 @@
 ---
-title: "Codefresh Hybrid installation (legacy)"
+title: "Codefresh Hybrid Installation (Legacy)"
 description: "Add your own Node to run/build containers"
 group: administration
 redirect_from:
@@ -9,17 +9,17 @@ toc: true
 old_url: /docs/add-your-node-to-runbuild-containers
 ---
 
->Note that this page is now describing the legacy hybrid mode. For the new version look at [behind-the-firewall]({{site.baseurl}}/docs/administration/behind-the-firewall/) documentation.
+>Note that this page is now describing the legacy hybrid mode. For the new version read more at [behind-the-firewall]({{site.baseurl}}/docs/administration/behind-the-firewall/).
 
 Codefresh lets you use your own host as a node to run/build containers.
 
 {:start="1"}
-1.  go to your Account Configuration, by clicking on *Account Settings* on the left sidebar
+1.  Go to your account configurations by clicking on *Account Settings* on the left sidebar.
 
 {:start="2"}
 2. Select *Nodes* from the left sidebar.
 
-> Hybrid nodes are only available to enterprise customers. [Contact us](https://codefresh.io/contact-sales/)  us to enable this feature.
+> Hybrid nodes are only available to enterprise customers. [Contact us](https://codefresh.io/contact-sales/) us to enable this feature.
 
 {% include image.html
   lightbox="true"
@@ -31,7 +31,7 @@ Codefresh lets you use your own host as a node to run/build containers.
     %}
 
 {:start="3"}
-3. Click on the button *ADD YOUR NODE*
+3. Click on *ADD YOUR NODE*
 Codefresh lets you use your own host as a build agent to run/build containers. In order to do this, you have to first install the Codefresh Agent on your machine.
 
 The following Linux distributions are supported:

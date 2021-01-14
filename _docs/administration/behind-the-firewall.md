@@ -1,6 +1,6 @@
 ---
-title: "Codefresh behind the firewall"
-description: "How to run Codefresh pipelines in your own secure infrastructure"
+title: "Codefresh Behind the Firewall"
+description: "How to run Codefresh Pipelines in your own secure Infrastructure"
 group: administration
 redirect_from:
   - /docs/enterprise/behind-the-firewall/
@@ -8,16 +8,16 @@ toc: true
 
 ---
 
-As explained in the [installation page]({{site.baseurl}}/docs/administration/installation-security/) Codefresh offers 3 installation options: pure cloud, on-premises and Hybrid.
-In this page we are going to describe the Hybrid option and all the advantages it offers.
+As explained in the [installation page]({{site.baseurl}}/docs/administration/installation-security/) Codefresh offers three installation options; pure cloud, on-premise and Hybrid.
+In this document, we will describe the Hybrid option and all the advantages it offers.
 
 ## Running Codefresh in secure environments
 
-Codefresh has an on-premises installation where the whole platform is installed in the customer premises. While
-this solution is very effective as far as security is concerned, it places a lot of overhead on the customer as all updates
+Codefresh has an on-premise installation where the whole platform is installed on the customer premises. While
+this solution is very effective as far as security is concerned, it places a lot of overhead on the customer, as all updates
 and improvements done in the platform must also be transferred to the customer premises.
 
-The hybrid approach places only a Codefresh runner within customer premises while the UI (and management platform) stays in the Codefresh SAAS.
+The Hybrid approach places a Codefresh runner within customer premises while the UI (and management platform) stays in the Codefresh SaaS.
 
 Here is the overall architecture:
 
@@ -33,38 +33,38 @@ Here is the overall architecture:
 The advantages for this scenario are multi-fold. Regarding platform maintenance:
 
  1. The heavy lifting for platform maintenance is still happening by Codefresh instead of the customer.
- 1. Updates to the UI, build engine, integrations etc are happening automatically without any customer involvement.
+ 1. Updates to the UI, build engine, integrations etc., are happening automatically without any customer involvement.
  1. Actual builds are happening in the customer premises under fully controlled conditions.
  1. The Codefresh runner is fully automated. It handles volume claims and build scheduling on its own within the Kubernetes cluster it is placed.
 
 Regarding security of services:
 
  1. Pipelines can run in behind-the-firewall clusters with internal services.
- 1. Pipelines can use integrations (such as docker registries) that are private and secure.
+ 1. Pipelines can use integrations (such as Docker registries) that are private and secure.
  1. Source code does not ever leave the customer premises.
 
 Regarding firewall security:
 
- 1. Communication between the Codefresh runner and Codefresh SAAS is uni-directional. The runner is polling the Codefresh platform for jobs. 
- 1. Communication between the Codefresh runner and Codefresh SAAS is only outgoing. The Codefresh SAAS never connects to the customer network. No ports need to be open in the customer firewall for the runner to work.
- 1. The Codefresh runner is fully open-source, so its code can by scrutinized by any stakeholder.
+ 1. Communication between the Codefresh runner and Codefresh SaaS is uni-directional. The runner is polling the Codefresh platform for jobs. 
+ 1. Communication between the Codefresh runner and Codefresh SaaS is only outgoing. The Codefresh SaaS never connects to the customer network. No ports need to be open in the customer firewall for the runner to work.
+ 1. The Codefresh runner is fully open-sourced, so its code can by scrutinized by any stakeholder.
 
 
 
 ## Using Secure services in your pipelines
 
-First make sure that you have installed the [Codefresh runner]({{site.baseurl}}/docs/administration/codefresh-runner/) on your own infrastructure (i.e. your private Kubernetes cluster).
+First make sure that you have installed the [Codefresh runner]({{site.baseurl}}/docs/administration/codefresh-runner/) on your own infrastructure (i.e., your private Kubernetes cluster).
 
-All pipelines that are executed in the private Kubernetes cluster have access to all other internal services that are network reachable. It is therefore very easy to create pipelines that
+All pipelines that are executed in the private Kubernetes cluster have access to all other internal services that are network reachable. It is therefore very easy to create pipelines that:
 
  * Use databases internal to the company
  * Run integration tests against services internal to the company
  * Launch [compositions]({{site.baseurl}}/docs/codefresh-yaml/steps/composition/) that communicate with other secure services
- * Upload and download artifacts from a private artifact repository (e.g. Nexus or Artifactory)
+ * Upload and download artifacts from a private artifact repository (e.g., Nexus or Artifactory)
  * Deploy to any other cluster accessible in the secure network
- * Create infrastructure such as machines, load balancers, auto-scaling groups etc
+ * Create infrastructure such as machines, load balancers, auto-scaling groups etc.
 
- Any of these pipelines will work out the box and no extra configuration is needed. In all cases
+ Any of these pipelines will work out the box and no extra configuration is needed. In all cases,
  all data will stay with the private local network and will never exit the firewall.
 
  >Notice that [long running compositions]({{site.baseurl}}/docs/codefresh-yaml/steps/composition/) (preview test environments) are not yet available via the Codefresh
