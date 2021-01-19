@@ -155,6 +155,8 @@ caption="Final rendered manifests"
 max-width="50%"
 %}
 
+>Note that rolling back a release will take some time to finish and the change in Codefresh GUI is not instant. If you also
+use a [custom rollback pipeline](#overriding-the-default-helm-actions) the delay between the cluster update and the GUI refresh will be even longer. 
 
 ## Helm GUI actions
 
