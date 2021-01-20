@@ -18,6 +18,7 @@ toc: true
 - New paging mechanism for builds/images that might break custom integrations - [documentation]({{site.baseurl}}/docs/troubleshooting/common-issues/paging-issues-builds-images/)
 - Note for Okta sync - [documentation]({{site.baseurl}}/docs/administration/single-sign-on/sso-okta/#how-okta-syncing-works)
 - cf_export limitations - [documentation]({{site.baseurl}}/docs/troubleshooting/common-issues/cf-export-limitations/)
+- Default SSO provider - [documentation]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/#setting-a-default-provider)
 
 ### December 2020
 
