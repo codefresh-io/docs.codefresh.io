@@ -37,7 +37,7 @@ npm install -g codefresh
 ```
 [Alternative install methods](https://codefresh-io.github.io/cli/installation/)
 
-Authenticate the cli
+Authenticate the CLI
 ```
 codefresh auth create-context --api-key {API_KEY}
 ```
