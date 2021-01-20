@@ -17,7 +17,7 @@ Codefresh has an on-premise installation where the whole platform is installed o
 this solution is very effective as far as security is concerned, it places a lot of overhead on the customer, as all updates
 and improvements done in the platform must also be transferred to the customer premises.
 
-The Hybrid approach places a Codefresh runner within customer premises while the UI (and management platform) stays in the Codefresh SaaS.
+This Hybrid approach places a Codefresh runner within customer premises while the UI (and management platform) stays in the Codefresh SaaS.
 
 Here is the overall architecture:
 
