@@ -14,7 +14,7 @@ If your service is one of many micro-services, after all your automatic tests on
 
 ## Pre-Requisites
 
-You should already have done the tutorial
+You should already have done the tutorials for [the basic pipeline]({{site.baseurl}}/docs/getting-started/create-a-basic-pipeline/) and [temporary environments]({{site.baseurl}}/docs/getting-started/on-demand-environments/).
 
 ## Launching The Composition
 
@@ -86,3 +86,10 @@ url="/images/df14346-Screen_Shot_2017-01-19_at_10.29.16.png"
 alt="Screen Shot 2017-01-19 at 10.29.16.png"
 max-width="40%" 
 %}
+
+## What to read next
+
+* [Codefresh yaml]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
+* [Creating compositions]({{site.baseurl}}/docs/testing/create-composition/)
+* [Integration tests]({{site.baseurl}}/docs/testing/integration-tests/)
+* [Service containers]({{site.baseurl}}/docs/codefresh-yaml/service-containers/)
