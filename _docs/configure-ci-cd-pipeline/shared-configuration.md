@@ -40,7 +40,7 @@ You can create four types of shared configuration:
 
 You can create as many shared snippets as you want (with unique names).
 
-### Using external secrets as values.
+### Using external secrets as values
 
 Note that the default "shared secrets" and "secret yaml" entities use the built-in secret storage of Codefresh. You can also
 use any [external secrets that you have defined]({{site.baseurl}}/docs/integrations/secret-storage/) (such as Kubernetes secrets), by using the normal entities and then clicking on the lock icon that appears.
