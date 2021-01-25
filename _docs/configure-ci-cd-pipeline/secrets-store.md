@@ -63,6 +63,31 @@ steps:
 {% endhighlight %}
 
 
+## Using secrets in the Codefresh GUI
+
+You can also use secrets in the GUI screens that support them. Currently you can use secrets in:
+
+* Git integration for [behind-the-firewall Git installations]({{site.baseurl}}/docs/integrations/git-providers/#github)
+* Values in [shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/)
+* Integration with [cloud storage]({{site.baseurl}}/docs/testing/test-reports/#connecting-your-storage-account)
+
+Where secret integration is supported, click on the lock icon and enable the toggle button. You will get a list of your connected secrets:
+
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/secrets/lock-icon.png" 
+url="/images/pipeline/secrets/lock-icon.png"
+alt="Using a connected secret in the Codefresh GUI" 
+caption="Using a connected secret in the Codefresh GUI" 
+max-width="100%" 
+%}
+
+If you have already specified the resource field during secret definition the just enter on the text field the name of the secret directly, i.e. `my-secret-key`.
+If you didn't include a resource name during secret creation then enter the full name in the file like `my-secret-resource@my-secret-key`.
+
+
 ## What to Read Next
 
 * [Shared Configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/)
