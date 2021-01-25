@@ -27,7 +27,7 @@
     localurl: /docs/configure-ci-cd-pipeline/monitoring-pipelines/
   - title: Shared Configuration
     localurl: /docs/configure-ci-cd-pipeline/shared-configuration/
-  - title: Secrets Storage
+  - title: Using secrets
     new: true
     localurl: /docs/configure-ci-cd-pipeline/secrets-store/
   - title: Pipeline caching
@@ -213,13 +213,15 @@
     localurl: /docs/integrations/google-cloud/   
   - title: Docker Registries
     localurl: /docs/integrations/docker-registries/  
+  - title: Secret Storage
+    new: true
+    localurl: /docs/integrations/secret-storage/     
   - title: Argo CD
     new: true
     localurl: /docs/integrations/argo-cd/    
   - title: Jenkins integration/migration
     localurl: /docs/integrations/jenkins-integration/               
-  - title: GitHub Actions
-    localurl: /docs/integrations/github-actions/       
+      
   - title: Codefresh API
     localurl: /docs/integrations/codefresh-api/
 
