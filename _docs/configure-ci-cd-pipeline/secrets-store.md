@@ -85,7 +85,7 @@ max-width="100%"
 %}
 
 If you have already specified the resource field during secret definition the just enter on the text field the name of the secret directly, i.e. `my-secret-key`.
-If you didn't include a resource name during secret creation then enter the full name in the file like `my-secret-resource@my-secret-key`.
+If you didn't include a resource name during secret creation then enter the full name in the field like `my-secret-resource@my-secret-key`.
 
 
 ## What to Read Next
