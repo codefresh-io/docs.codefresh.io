@@ -114,6 +114,25 @@ alt="GitHub permissions"
 
 For GitHub on-premises you also need to provide the URL of the GitHub server in your organization. If enabled in your account you can setup [Pipeline definition restrictions]({{site.baseurl}}/docs/administration/access-control/#pipeline-definition-restrictions) by expanding the *YAML Options* segment.
 
+
+### Using external secrets for the token
+
+If your GitHub installation is behind your firewall, you can also
+use any [external secrets that you have defined]({{site.baseurl}}/docs/integrations/secret-storage/) (such as Kubernetes secrets) as values by clicking on the lock icon that appears next to field.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/secrets/lock-icon.png" 
+url="/images/pipeline/secrets/lock-icon.png"
+alt="Using a connected secret in the Codefresh GUI" 
+caption="Using a connected secret in the Codefresh GUI" 
+max-width="50%" 
+%}
+
+If you have already specified the resource field during secret definition the just enter on the text field the name of the secret directly, i.e. `my-secret-key`.
+If you didn't include a resource name during secret creation then enter the full name in the field like `my-secret-resource@my-secret-key`.
+
 ## GitHub-App
 
 >This is an incubating feature not enabled by default. Please contact us for updates.
@@ -172,6 +191,24 @@ Once you have the token, paste it in the Codefresh UI and click *Test connection
 now save the git integration.
 
 For GitLab on-premises you also need to provide the URL of the GitLab server in your organization.  If enabled in your account you can setup [Pipeline definition restrictions]({{site.baseurl}}/docs/administration/access-control/#pipeline-definition-restrictions) by expanding the *YAML Options* segment.
+
+### Using external secrets for the token
+
+If your GitLab installation is behind your firewall, you can also
+use any [external secrets that you have defined]({{site.baseurl}}/docs/integrations/secret-storage/) (such as Kubernetes secrets) as values by clicking on the lock icon that appears next to field.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/secrets/lock-icon.png" 
+url="/images/pipeline/secrets/lock-icon.png"
+alt="Using a connected secret in the Codefresh GUI" 
+caption="Using a connected secret in the Codefresh GUI" 
+max-width="50%" 
+%}
+
+If you have already specified the resource field during secret definition the just enter on the text field the name of the secret directly, i.e. `my-secret-key`.
+If you didn't include a resource name during secret creation then enter the full name in the field like `my-secret-resource@my-secret-key`.
 
 ## Bitbucket
 
@@ -286,6 +323,24 @@ Bitbucket server is the new and current name of Atlassian Stash. Again, it is on
 installation.
 
 Codefresh supports Bitbucket server versions 5.4.0+ since those expose the API used by the integration.
+
+### Using external secrets for the token
+
+If your Bitbucket Server installation is behind your firewall, you can also
+use any [external secrets that you have defined]({{site.baseurl}}/docs/integrations/secret-storage/) (such as Kubernetes secrets) as values by clicking on the lock icon that appears next to field.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/secrets/lock-icon.png" 
+url="/images/pipeline/secrets/lock-icon.png"
+alt="Using a connected secret in the Codefresh GUI" 
+caption="Using a connected secret in the Codefresh GUI" 
+max-width="50%" 
+%}
+
+If you have already specified the resource field during secret definition the just enter on the text field the name of the secret directly, i.e. `my-secret-key`.
+If you didn't include a resource name during secret creation then enter the full name in the field like `my-secret-resource@my-secret-key`.
 
 
 ## Using your git provider
