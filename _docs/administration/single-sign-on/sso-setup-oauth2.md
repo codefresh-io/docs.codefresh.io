@@ -140,6 +140,9 @@ max-width="50%"
 {:start="4"}
 1. If everything works ok add more users
 
+>Before enabling SSO for all users, you **MUST** make sure that it is working for the test user, because if SSO is enabled for a user, Codefresh blocks logins through other IDPs for this user and only the enabled SSO is allowed. If the selected SSO method does not work for some reason, users will be locked out of Codefresh.
+
+
 ## Selecting SSO method for collaborators
 
 To add users and select their SSO method, go to *Collaborators* from the left sidebar. Then add the email or Codefresh username of a user. 
