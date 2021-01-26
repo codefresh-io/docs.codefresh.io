@@ -127,7 +127,18 @@ codefresh runner init --values values.yaml
 
 You can use [this example](https://github.com/codefresh-io/venona/blob/release-1.0/venonactl/example/values-example.yaml) as a starting point for your values file.
 
+### Inspecting the manifests before they are installed
 
+If you want to see what manifests are used by the installation wizard you can supply the `--dry-run` parameter in the installation process.
+
+```
+codefresh runner init --dry-run
+```
+
+This will execute the wizard in a special mode that will not actually install anything in your cluster.  After all configuration questions are asked, all Kubernetes manifests
+used by the installer will be instead saved locally in a folder `./codefresh_manifests`.
+
+You can then inspect the manifests locally or edit/apply them manually if you wish.
 
 ## Using the Codefresh Runner 
 
