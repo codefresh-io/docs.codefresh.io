@@ -118,20 +118,12 @@ For GitHub on-premises you also need to provide the URL of the GitHub server in 
 ### Using external secrets for the token
 
 If your GitHub installation is behind your firewall, you can also
-use any [external secrets that you have defined]({{site.baseurl}}/docs/integrations/secret-storage/) (such as Kubernetes secrets) as values by clicking on the lock icon that appears next to field.
+use any [external secrets that you have defined]({{site.baseurl}}/docs/integrations/secret-storage/) (such as Kubernetes secrets) as values by entering a secrets value
+with the same syntax [shown in pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/secrets-store/).
 
-{% include 
-image.html 
-lightbox="true" 
-file="/images/pipeline/secrets/lock-icon.png" 
-url="/images/pipeline/secrets/lock-icon.png"
-alt="Using a connected secret in the Codefresh GUI" 
-caption="Using a connected secret in the Codefresh GUI" 
-max-width="50%" 
-%}
+For example if you already have a `token` on a resource call `git-credentials` you can put in the token field the expression {% raw %}`${{secrets.git-credentials@token}}`{% endraw %}.
 
-If you have already specified the resource field during secret definition the just enter on the text field the name of the secret directly, i.e. `my-secret-key`.
-If you didn't include a resource name during secret creation then enter the full name in the field like `my-secret-resource@my-secret-key`.
+
 
 ## GitHub-App
 
@@ -195,20 +187,10 @@ For GitLab on-premises you also need to provide the URL of the GitLab server in 
 ### Using external secrets for the token
 
 If your GitLab installation is behind your firewall, you can also
-use any [external secrets that you have defined]({{site.baseurl}}/docs/integrations/secret-storage/) (such as Kubernetes secrets) as values by clicking on the lock icon that appears next to field.
+use any [external secrets that you have defined]({{site.baseurl}}/docs/integrations/secret-storage/) (such as Kubernetes secrets) as values by entering a secrets value
+with the same syntax [shown in pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/secrets-store/).
 
-{% include 
-image.html 
-lightbox="true" 
-file="/images/pipeline/secrets/lock-icon.png" 
-url="/images/pipeline/secrets/lock-icon.png"
-alt="Using a connected secret in the Codefresh GUI" 
-caption="Using a connected secret in the Codefresh GUI" 
-max-width="50%" 
-%}
-
-If you have already specified the resource field during secret definition the just enter on the text field the name of the secret directly, i.e. `my-secret-key`.
-If you didn't include a resource name during secret creation then enter the full name in the field like `my-secret-resource@my-secret-key`.
+For example if you already have a `token` on a resource call `git-credentials` you can put in the token field the expression {% raw %}`${{secrets.git-credentials@token}}`{% endraw %}.
 
 ## Bitbucket
 
@@ -327,20 +309,10 @@ Codefresh supports Bitbucket server versions 5.4.0+ since those expose the API u
 ### Using external secrets for the token
 
 If your Bitbucket Server installation is behind your firewall, you can also
-use any [external secrets that you have defined]({{site.baseurl}}/docs/integrations/secret-storage/) (such as Kubernetes secrets) as values by clicking on the lock icon that appears next to field.
+use any [external secrets that you have defined]({{site.baseurl}}/docs/integrations/secret-storage/) (such as Kubernetes secrets) as values by entering a secrets value
+with the same syntax [shown in pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/secrets-store/).
 
-{% include 
-image.html 
-lightbox="true" 
-file="/images/pipeline/secrets/lock-icon.png" 
-url="/images/pipeline/secrets/lock-icon.png"
-alt="Using a connected secret in the Codefresh GUI" 
-caption="Using a connected secret in the Codefresh GUI" 
-max-width="50%" 
-%}
-
-If you have already specified the resource field during secret definition the just enter on the text field the name of the secret directly, i.e. `my-secret-key`.
-If you didn't include a resource name during secret creation then enter the full name in the field like `my-secret-resource@my-secret-key`.
+For example if you already have a `token` on a resource call `git-credentials` you can put in the token field the expression {% raw %}`${{secrets.git-credentials@token}}`{% endraw %}.
 
 
 ## Using your git provider
