@@ -11,6 +11,13 @@ toc: true
 In this page we will see the process of setting up Azure SSO with Codefresh. For the general instructions of SSO setup
 see the [overview page]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/).
 
+## Prerequisites
+
+Make sure that your user in Azure has the *Application Administrator* or *Global Administrator* roles. If the user that creates the Azure application does not belong to either of these roles, you will not be able to [sync teams from Azure to Codefresh]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/#syncing-of-teams-after-initial-sso-setup) after the SSO integration is complete.
+
+We strongly suggest that the Azure user who creates the integration is part of *Application Administrator* or *Global Administrator* roles.
+
+
 ## Creating an application registration
 
 To setup Azure Active Directory for SSO, you should first create a new application in Azure AD.
