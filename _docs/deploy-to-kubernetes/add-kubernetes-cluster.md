@@ -105,6 +105,30 @@ Codefresh will query the cluster and show its nodes. You are now ready to [deplo
 
 >If you wish for any reason to revoke the granted access from the Azure side, visit [https://account.activedirectory.windowsazure.com/r#/applications](https://account.activedirectory.windowsazure.com/r#/applications) and remove "Codefresh" from the list.
 
+## Adding an AKS cluster with a service principal
+
+An alternative method of adding an Azure cluster is by using a service principal. First follow the [instructions for creating a service principal in the Azure portal](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal).
+
+Then from the drop-down menu select *Azure AKS SP*. Click the *Authenticate button* and enter the following details:
+
+* `Client ID`
+* `Tenant`
+* `Client secret`
+
+{% include image.html
+lightbox="true"
+file="/images/kubernetes/add-cluster/connect-azure-spn.png"
+url="/images/kubernetes/add-cluster/connect-azure-spn.png"
+alt="Azure Service principal details"
+caption="Azure Service principal details"
+max-width="60%"
+  %}
+
+Click the *Save* button once finished. Assuming that the authentication is successful click the *Add cluster* button and you will be able to select any of your available Azure clusters.
+
+Codefresh will query the cluster and show its nodes. You are now ready to [deploy to Azure kubernetes]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/).
+
+
 ## Adding EKS Cluster
 
 To add an Amazon EKS cluster, you must first obtain `kubectl` access to it. Follow the instructions for using the
