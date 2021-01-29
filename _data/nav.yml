@@ -412,6 +412,8 @@
           url: "/other-registries"  
     - title: Secret Storage
       url: "/secret-storage"            
+    - title: Helm Integration
+      url: "/helm" 
     - title: ArgoCD Integration
       url: "/argo-cd"            
     - title: Jenkins Integration

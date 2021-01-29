@@ -25,6 +25,7 @@ toc: true
 - Default SSO provider - [documentation]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/#setting-a-default-provider)
 - Codefresh runner now has a dry run option - [documentation]({{site.baseurl}}/docs/administration/codefresh-runner/#inspecting-the-manifests-before-they-are-installed)
 - Connect to Azure Kubernetes with a service principal - [documentation]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/#adding-an-aks-cluster-with-a-service-principal)
+- Connect to an Azure Helm repository with a service principal - [documentation]({{site.baseurl}}/docs/integrations/helm/#private-helm-repository---azure-with-service-principal)
 
 ### December 2020
 

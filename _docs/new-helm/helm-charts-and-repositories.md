@@ -11,6 +11,7 @@ toc: true
 The "Helm Charts" page allows you to integrate with external Helm repositories and Helm charts. Note that all Codefresh accounts already include a [built-in Helm repository]({{site.baseurl}}/docs/new-helm/managed-helm-repository/). Using external Helm repositories is optional.
 
 ## Adding an external Helm repository
+
 By default, we show you charts from the [official Helm repository](https://github.com/kubernetes/charts){:target="_blank"} but you can easily add your own:
 
 In the "Helm Charts" page, click on the "Add Repository" button on the top right.
@@ -19,91 +20,20 @@ In the dialog that opened, name your repository, and specify it's URL. The URL s
 
 {% include image.html 
 lightbox="true" 
-file="/images/kubernetes-helm/add-helm-repository.png" 
-url="/images/kubernetes-helm/add-helm-repository.png" 
+file="/images/kubernetes-helm/quick-helm-integration.png" 
+url="/images/kubernetes-helm/quick-helm-integration.png" 
 alt="Adding a Helm repository"
 caption="Adding a Helm repository" 
-max-width="50%" 
-%}
-
-If your repository doesn't require authentication, click 'Save' and you are done. To add an authenticated repository keep reading.
-
-In addition to public repositories, we also support connecting to Helm repositories hosted on private authenticated stores.
-
-You connect to a private repository from the same dialog you would connect to a public one, by selecting any of the authentication options, like S3, or CGS.
-
-The bucket URL should be provided with a protocol scheme relevant to the selected provider, for example for S3, the URL would look like `s3://mybucketname`.
-
-The rest of the required parameters varies based on the selected provider (see below)
-
-
-### Private repository - HTTP
-
-You can connect to your repository using HTTP Basic authentication:
-
-- Add your repo URL as usually with HTTP protocol.
-- Supply the User and Password for HTTP Basic authentication.
-
-Variables:
-
-Name|Description
----|---
-HELMREPO_USERNAME|The username to authenticate with
-HELMREPO_PASSWORD|The password for the username provided
-
-### Private repository - S3
-
-- Add your S3 bucket URL in the following scheme: `s3://bucketname`.
-- Supply the AWS authentication variables as you would for the AWS CLI, or the S3 plugin for Helm. See details here: [Configuring the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html).
-
-Variables:
-
-Name|Description
----|---
-AWS_ACCESS_KEY_ID|ID of the key with permissions for the bucket
-AWS_SECRET_ACCESS_KEY|Secret of the key with permissions for the bucket
-AWS_DEFAULT_REGION|region where the bucket was created
-
-### Private repository - GCS
-
-- Add your GCS bucket URL in the following scheme: `gs://bucketname`.
-- Supply the Google authentication variable as you would for the GCloud CLI, or the GCS plugin for Helm. See details here: [Creating Service Account](https://cloud.google.com/docs/authentication/getting-started).
-
-Variables:
-
-Name|Description
----|---
-GOOGLE_APPLICATION_CREDENTIALS_JSON|The JSON content of the service account credentials
-
-
-### Private repository - Azure
-
-First make sure that you [create the Helm repository](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-helm-repos) in Azure.
-
-Then click *Authenticate*. You will get a permissions dialog for allowing Codefresh to access
-the Azure services. Click *Accept*.
-
->Make sure that you are using an organizational/company Azure account and not a personal one. We are currently working with Microsoft to improve this integration.
-
-{% include image.html 
-lightbox="true" 
-file="/images/kubernetes-helm/azure-helm-integration.png" 
-url="/images/kubernetes-helm/azure-helm-integration.png" 
-alt="Selecting an Azure Helm repository"
-caption="Selecting an Azure Helm repository" 
 max-width="70%" 
 %}
 
-Select your Azure subscription on the left drop-down menu and your Helm repository on the right drop-down menu.
+If your repository doesn't require authentication, click 'Save' and you are done. 
 
->If you are already authenticated to Azure, and cannot find your Helm repository in the list, try revoking access and authenticating again.
-
-The Azure Helm integration is now ready.
-
+For more details on adding extra Helm repositories see the [Helm integration page]({{site.baseurl}}/docs/integrations/helm/).
 
 ## Using a Helm Repository in a Codefresh pipeline
 
-Once connected, the private Helm repository context can be injected into pipelines by selecting "Import from shared configuration" (under "Environment Variables" section) and selecting the name of the repository.  
+Once connected, any Helm repository context can be injected into pipelines by selecting "Import from shared configuration" (under "Environment Variables" section) and selecting the name of the repository.  
 The repository settings will be injected as environment variables into the pipeline so you can use them as you wish. 
 
 {% include image.html 
@@ -160,7 +90,9 @@ You can also install Helm releases from [any Helm environment board]({{site.base
 ## What to read next
 
 * [Using Helm in a Codefresh pipeline]({{site.baseurl}}/docs/new-helm/using-helm-in-codefresh-pipeline/)
+* [Helm Integration]({{site.baseurl}}/docs/integrations/helm/)
 * [Helm Dashboard]({{site.baseurl}}/docs/new-helm/helm-releases-management)
 * [Helm Promotion boards]({{site.baseurl}}/docs/new-helm/helm-environment-promotion)
+* [Helm best practices]({{site.baseurl}}/docs/new-helm/helm-best-practices/)
 
 
