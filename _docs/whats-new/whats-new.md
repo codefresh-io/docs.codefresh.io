@@ -11,8 +11,8 @@ toc: true
 
 ### February 2021
 
+- Jira integration - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/sending-the-notification-to-jira/)
 - SLA details - [documentation]({{site.baseurl}}/docs/terms-and-privacy-policy/sla/)
-
 
 ### January 2021
 
