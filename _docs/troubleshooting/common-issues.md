@@ -32,6 +32,7 @@ In this section, we offer helpful information about issues you may encounter and
 - [Disabling codefresh caching mechanisms]({{site.baseurl}}/docs/troubleshooting/common-issues/disabling-codefresh-caching-mechanisms/)
 - [Pinning codefresh.yml for multi-git triggers]({{site.baseurl}}/docs/troubleshooting/common-issues/multi-git-triggers/)
 - [Workflow process terminated by the system]({{site.baseurl}}/docs/troubleshooting/common-issues/workflow-terminated-by-system/)
+- [Multi-line variable gets truncated with cf_export](cf-export-limitations)
 
 ## Dynamic environment issues
 
@@ -41,6 +42,10 @@ In this section, we offer helpful information about issues you may encounter and
 
 - [Forbidden Cluster Resources]({{site.baseurl}}/docs/troubleshooting/common-issues/forbidden-cluster-resources/)
 - [Failed to get accounts clusters during workflow]({{site.baseurl}}/docs/troubleshooting/common-issues/failed-to-get-accounts-clusters-during-workflow/)
+
+## API/CLI issues
+
+- [Paging does not work for images and builds]({{site.baseurl}}/docs/troubleshooting/common-issues/paging-issues-builds-images/)
 
 
 

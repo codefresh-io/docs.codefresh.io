@@ -30,7 +30,7 @@ You can play with it locally after installing the `pulumi` executable.
 
 You need to create a Codefresh account and a Pulumi account first. Then you need to create a [Pulumi token](https://app.pulumi.com/account/tokens) which will allows Codefresh to communicate with Pulumi.
 
-[Add a Kubernetes cluster](https://codefresh.io/docs/docs/deploy-to-kubernetes/add-kubernetes-cluster/) in your Codefresh account from any cloud provider.
+[Add a Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/) in your Codefresh account from any cloud provider.
 
 Codefresh automatically creates a kubeconfig in any [Freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) with all your clusters. This is the same way that Pulumi communicated with Kubernetes, so the integration between Codefresh and Pulumi is ready out of the box.
 

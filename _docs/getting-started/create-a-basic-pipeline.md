@@ -15,6 +15,7 @@ within Codefresh using an example application. You will learn:
 * How to connect your Git repository
 * How to connect your Docker registry
 * How to build a Docker image from the source code
+* How to push a Docker image to your registry
 * How to run unit tests for your application
 * How to publish your image to Dockerhub
 
@@ -35,13 +36,13 @@ For this tutorial you will need:
 
  * A free [GitHub account](https://github.com/join)
  * A free [Codefresh account]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/)
- * An account to a Docker registry service
+ * An account to a Docker registry service (e.g. [GitHub](https://github.com/features/packages) )
  * The source code of the sample application
  * (Optional) an account to Dockerhub if you also want to make your image public
 
  We also assume that you are familiar with Docker and the build/run workflow it supports. Your applications should already come with their own Dockerfiles. If not, then read the [official documentation first](https://docs.docker.com/get-started/). 
 
- Apart from Dockerhub, you can use the registry that comes with your cloud account ([Amazon](https://aws.amazon.com/ecr/), [Azure](https://azure.microsoft.com/en-us/services/container-registry/), [Google](https://cloud.google.com/container-registry)) or you can use any other compliant service such as [Quay](https://quay.io/), [Treescale](https://treescale.com/), [Canister.io](https://canister.io/) etc. 
+ Apart from Dockerhub, you can use the registry that comes with your cloud account ([Amazon](https://aws.amazon.com/ecr/), [Azure](https://azure.microsoft.com/en-us/services/container-registry/), [Google](https://cloud.google.com/container-registry)) or you can use any other compliant service such as [Quay](https://quay.io/), [Treescale](https://treescale.com/), [Canister.io](https://canister.io/) etc. GitHub also offers [a container registry](https://github.com/features/packages) with each account.
 
  The sample application can be found at [https://github.com/codefresh-contrib/python-flask-sample-app](https://github.com/codefresh-contrib/python-flask-sample-app). To bring the source
  code to your own account you need to "fork" the repository by clicking the respective button at the top right part of the page.
@@ -120,7 +121,7 @@ Let's start by going into the [Codefresh dashboard](https://g.codefresh.io/proje
 
 Before we create the pipeline you need to connect at least one Docker registry in your Codefresh account. The pipeline will use this registry to store the Docker image of the application.
 
-Go to your [Registry Configuration screen](https://g.codefresh.io/account-admin/account-conf/integration/registry) and connect your Docker registry. Codefresh supports [all popular Docker registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) as well as any service that follows the registry specification.
+Go to your [Registry Configuration screen](https://g.codefresh.io/account-admin/account-conf/integration/registry) and connect your Docker registry. Codefresh supports [all popular Docker registries]({{site.baseurl}}/docs/integrations/docker-registries/) as well as any service that follows the registry specification. If you don't already have a registry we recommend you start with the [GitHub Registry]({{site.baseurl}}/docs/integrations/docker-registries/github-container-registry/).
 
 
 {% include 
@@ -197,14 +198,13 @@ steps:
     working_directory: ./
     tag: v1.0.0
     dockerfile: Dockerfile
-    disable_push: true
 {% endraw %}      
 {% endhighlight %}
 
 This pipeline contains just two steps.
 
 * A [`git-clone`]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) step for checking out the code
-* A [`build`]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) step for building the docker image
+* A [`build`]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) step for building the docker image **AND** pushing it to the connected Docker registry.
 
 The clone step is also using some [built-in pipeline variables]({{site.baseurl}}/docs/codefresh-yaml/variables/). They instruct the pipeline to checkout the exact code that is described from the commit of the trigger. Don't worry if the exact details are not clear to you yet. 
 
@@ -229,7 +229,7 @@ max-width="50%"
 %}
 
 The build output is split into sections. Expand the section *Building Docker Image* and look at the logs. 
-After a while the build should finish with success. All previous runs are in the [Builds part](https://g.codefresh.io/builds) from now on.
+After a while the build should finish with success. All previous runs are in the [Builds page](https://g.codefresh.io/builds) from now on.
 
 {% include 
 image.html 
@@ -292,7 +292,6 @@ steps:
     working_directory: ./
     tag: v1.0.1
     dockerfile: Dockerfile
-    disable_push: true
   MyUnitTests:
     title: Running Unit tests
     image: '${{MyAppDockerImage}}'
@@ -304,7 +303,6 @@ steps:
 {% endhighlight %}
 
 Here we have added a new [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) in its own [stage]({{site.baseurl}}/docs/codefresh-yaml/stages/) that runs unit tests. Freestyle steps are running custom commands inside docker containers and in this case we run the python command [inside the docker image]({{site.baseurl}}/docs/codefresh-yaml/variables/#context-related-variables) that was just created from the previous step (mentioned by the `image` property)
-
 
 Notice that Codefresh also has the capability to run [integration tests]({{site.baseurl}}/docs/codefresh-yaml/steps/composition/) and get [test results]({{site.baseurl}}/docs/testing/test-reports/) as well. Therefore, regardless of the type of tests you employ, Codefresh can accommodate your testing process in a fully automated manner as part of the main build.
 
@@ -412,11 +410,11 @@ max-width="80%"
 Docker images are one of the central concepts in Codefresh pipelines as everything revolves around them. Powerful Codefresh pipelines can be created by using Docker images as build tools, so it is perfectly normal if you manage a large number of images which are not strictly packaged applications. You may create Docker images that contain building or deployment tools and are used as part of
 the build process instead of the build result.
 
-For the purposes of this tutorial we will also push our sample application to [DockerHub](https://cloud.docker.com/) which  is the free public Docker hosting registry of Docker Inc. You need to create a free account with the service first and note down your username and password. In your own projects you can use any other [external registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) you wish.
+For the purposes of this tutorial we will also push our sample application to [DockerHub](https://cloud.docker.com/) which  is the free public Docker hosting registry of Docker Inc. You need to create a free account with the service first and note down your username and password. In your own projects you can use any other [external registry]({{site.baseurl}}/docs/integrations/docker-registries/) you wish.
 
 >Note that Docker.io only allows you to push images that are tagged with your username. If you have a choice, create
 a Dockerhub account with the same username that you have in Codefresh. If not, you need to change the Docker image
-created to match your username
+created to match your username.
 
 Once you create your Docker Cloud account, go to your Account Configuration, by clicking on *Account Settings* on the left sidebar. On the first section called *Integrations* click the *Configure* button next to *Docker Registry*.
 Finally click the *Add Registry* drop-down menu and select *Docker Hub*.
@@ -458,7 +456,6 @@ steps:
     working_directory: ./
     tag: v1.0.1
     dockerfile: Dockerfile
-    disable_push: true
   MyUnitTests:
     title: Running Unit tests
     image: '${{MyAppDockerImage}}'

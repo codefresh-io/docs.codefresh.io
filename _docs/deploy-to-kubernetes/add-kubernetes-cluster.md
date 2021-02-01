@@ -34,7 +34,7 @@ All the IPs are NAT gateways, and therefore you only need to enable specific IPs
 
 >If you do use these IPs we **strongly encourage** regular monitoring of this doc page.
 
-Notice that you only need to deal with this process if you use the SAAS version of Codefresh. For On-premise and [Hybrid installations]({{site.baseurl}}/docs/enterprise/behind-the-firewall/), there is no need to tamper with your firewall.
+Notice that you only need to deal with this process if you use the SAAS version of Codefresh. For On-premises and [Hybrid installations]({{site.baseurl}}/docs/enterprise/behind-the-firewall/), there is no need to tamper with your firewall.
 
 ## Visit the cluster integration screen
 
@@ -104,6 +104,30 @@ max-width="60%"
 Codefresh will query the cluster and show its nodes. You are now ready to [deploy to Azure kubernetes]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/).
 
 >If you wish for any reason to revoke the granted access from the Azure side, visit [https://account.activedirectory.windowsazure.com/r#/applications](https://account.activedirectory.windowsazure.com/r#/applications) and remove "Codefresh" from the list.
+
+## Adding an AKS cluster with a service principal
+
+An alternative method of adding an Azure cluster is by using a service principal. First follow the [instructions for creating a service principal in the Azure portal](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal).
+
+Then from the drop-down menu select *Azure AKS SP*. Click the *Authenticate button* and enter the following details:
+
+* `Client ID`
+* `Tenant`
+* `Client secret`
+
+{% include image.html
+lightbox="true"
+file="/images/kubernetes/add-cluster/connect-azure-spn.png"
+url="/images/kubernetes/add-cluster/connect-azure-spn.png"
+alt="Azure Service principal details"
+caption="Azure Service principal details"
+max-width="60%"
+  %}
+
+Click the *Save* button once finished. Assuming that the authentication is successful click the *Add cluster* button and you will be able to select any of your available Azure clusters.
+
+Codefresh will query the cluster and show its nodes. You are now ready to [deploy to Azure kubernetes]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/).
+
 
 ## Adding EKS Cluster
 

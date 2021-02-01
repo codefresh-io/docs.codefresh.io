@@ -15,8 +15,8 @@ This is a collection of common questions we get when people are trying Codefresh
 **Q. What is Codefresh?**  
 A. Codefresh is a [Continuous Integration/Delivery](https://en.wikipedia.org/wiki/Continuous_delivery) solution. It fetches code from your GIT repository and packages/compiles it. Then it deploys the final artifact to a target environment. This basic concept is implemented with [pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/).
 
-**Q. Is there an on-premise version of Codefresh?**   
-A. Yes. Codefresh is offered in [SAAS, Hybrid and on-premise modes]({{site.baseurl}}/docs/enterprise/installation-security/). Before you consider on-premise please look at the [hybrid mode first]({{site.baseurl}}/docs/enterprise/behind-the-firewall/). In this mode Codefresh runs the Web UI while you only maintain the build nodes behind the firewall.
+**Q. Is there an on-premises version of Codefresh?**   
+A. Yes. Codefresh is offered in [SAAS, Hybrid and on-premises modes]({{site.baseurl}}/docs/enterprise/installation-security/). Before you consider on-premises please look at the [hybrid mode first]({{site.baseurl}}/docs/enterprise/behind-the-firewall/). In this mode Codefresh runs the Web UI while you only maintain the build nodes behind the firewall.
 
 **Q. Is Codefresh open-source?**   
 A. The Web UI is not open source. All the [pipeline plugins](https://codefresh.io/steps/) and the [Codefresh Runner]({{site.baseurl}}/docs/enterprise/codefresh-runner/) are open-source. We also publish several open-source [components](https://github.com/codefresh-io), [examples](https://github.com/codefresh-contrib) and [demos](https://github.com/codefreshdemo/).
@@ -60,6 +60,7 @@ A. Codefresh is a superset of Jenkins. Jenkins is only CI. You need to write cus
 **Q. How is Codefresh different than my custom deployment scripts in bash/Ansible/Chef/Puppet/Python?**  
 A. These scripts are custom made, complex to maintain and difficult to read. One of the reasons that developers and operators have difficulties in communication is the in-house nature of deployment scripts. Codefresh allows you to create standard declarative pipelines
 where each step is a reusable Docker image.
+
 
 ## Integration features
 
@@ -133,6 +134,25 @@ Native Integration with more cloud providers is coming soon.
 You can but you don't need to. The SAAS version of Codefresh is fully managed and pipelines are running on the cloud.
 You can run Codefresh pipelines on your own cluster using the [Codefresh Runner]({{site.baseurl}}/docs/enterprise/codefresh-runner/) in [Hybrid mode]({{site.baseurl}}/docs/enterprise/behind-the-firewall/). This is normally only needed if you want to access services behind your firewall. If you simply want to *deploy* to a Kubernetes cluster, the SAAS version of Codefresh is enough.
 
+## User interface
+
+**Q. What toolkit does the Codefresh UI use?**    
+A. We use Angular JS.
+
+**Q. Can I use Codefresh without the graphical dashboards?**    
+A. Yes, all Codefresh functionality is available via our [API]({{site.baseurl}}/docs/integrations/codefresh-api/) and [CLI](https://codefresh-io.github.io/cli/).
+
+**Q. What are the browser requirements for the Codefresh UI?** 
+A. We officially support the latest version of the Chrome browser. Any browser released in the last 2 years should work without any major issues.
+The following browser versions are **NOT** supported:
+
+{: .table .table-bordered .table-hover}
+| Browser          | Version                 | Date released                  |
+| -------------- | ---------------------------- |-------------------------|
+| Chrome       | < 51 | May 2016 |
+| Firefox  | < 54 |  Jun 2017 |
+| Edge        | < 14 | Aug 2016 |
+| Safari   | < 10  | Sep 2016 |
 
 ## Enterprise support
 

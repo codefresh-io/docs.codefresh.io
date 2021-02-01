@@ -109,6 +109,12 @@ max-width="80%"
 Then click *Save* to apply settings. You will use the name of the integration as an 
 environment variable in your Codefresh pipeline as explained in the next sections.
 
+You can also
+use any [external secrets that you have defined]({{site.baseurl}}/docs/integrations/secret-storage/) (such as Kubernetes secrets) as values by clicking on the lock icon that appears next to field.
+
+If you have already specified the resource field during secret definition the just enter on the text field the name of the secret directly, i.e. `my-secret-key`.
+If you didn't include a resource name during secret creation then enter the full name in the field like `my-secret-resource@my-secret-key`.
+
 ### Connecting Azure storage
 
 For Azure, create a storage account as explained in the [documentation](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create) and find one of the [two access keys](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-keys-manage) already created. Then once you have the storage account name and account key,
@@ -126,6 +132,12 @@ max-width="60%"
 
 Then click *Save* to apply settings. You will use the name of the integration as an
 environment variable in your Codefresh pipeline as explained in the next sections.
+
+You can also
+use any [external secrets that you have defined]({{site.baseurl}}/docs/integrations/secret-storage/) (such as Kubernetes secrets) as values by clicking on the lock icon that appears next to field.
+
+If you have already specified the resource field during secret definition the just enter on the text field the name of the secret directly, i.e. `my-secret-key`.
+If you didn't include a resource name during secret creation then enter the full name in the field like `my-secret-resource@my-secret-key`.
 
 
 ## Producing Allure test reports from Codefresh pipelines

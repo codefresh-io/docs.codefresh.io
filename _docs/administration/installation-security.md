@@ -11,10 +11,10 @@ toc: true
 Codefresh offers 3 installation options that can cater to any size of organization:
 
 * Full cloud version that runs 100% in the cloud and is fully managed by Codefresh.
-* On-premise version where Codefresh runs inside the customer datacenter/cloud.
+* On-premises version where Codefresh runs inside the customer datacenter/cloud.
 * Hybrid version where the UI runs in the Codefresh cloud, but builds are running on customer premises.
 
-On-premise and Hybrid versions are available to Enterprise customers that are looking for a "behind-the-firewall" solution.
+On-premises and Hybrid versions are available to Enterprise customers that are looking for a "behind-the-firewall" solution.
 
 
 
@@ -109,11 +109,11 @@ Here are the security implications of the hybrid solution:
 
 
 
-## On-premise Installation    
+## On-premises Installation    
 
-For customers that wish to have full control over everything, Codefresh also offers an on-premise option. In this case everything (UI and builds) are running on an environment (Kubernetes cluster) fully managed by the customer.
+For customers that wish to have full control over everything, Codefresh also offers an on-premises option. In this case everything (UI and builds) are running on an environment (Kubernetes cluster) fully managed by the customer.
 
-While Codefresh can still help with maintenance of the on-premise platform, we would recommend trying the Hybrid solution first as it offers the most flexibility while maintaining high security.
+While Codefresh can still help with maintenance of the on-premises platform, we would recommend trying the Hybrid solution first as it offers the most flexibility while maintaining high security.
 
 ## Comparison table
 

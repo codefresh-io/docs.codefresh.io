@@ -27,7 +27,7 @@ Currently Codefresh supports:
 * Atlassian Stash (old version of Bibucket Server)
 * Bitbucket Server (new version of Stash)
 
-Atlassian Stash/Bitbucket server as well as the on-premise version of GiTlab and GitHub are only available to Codefresh enterprise customers.
+Atlassian Stash/Bitbucket server as well as the on-premises version of GiTlab and GitHub are only available to Codefresh enterprise customers.
 
 
 ## Adding more GIT providers to your Codefresh account.
@@ -55,7 +55,7 @@ The easiest way to setup authentication is with OAuth2 if supported by the git p
 and Codefresh will automatically set it up once you accept the permissions required. If you have problems with OAuth2
 or the provider does not support it, you need to manually create credentials by yourself in your git account and then enter them into Codefresh.
 
-In the case of an on-premise GIT provider you also need to fill in the URL where the provider is installed.
+In the case of an on-premises GIT provider you also need to fill in the URL where the provider is installed.
 
 ## SSH Keys
 
@@ -112,9 +112,22 @@ caption="GitHub permissions"
 alt="GitHub permissions"
 %}
 
-For GitHub on-premise you also need to provide the URL of the GitHub server in your organization. If enabled in your account you can setup [Pipeline definition restrictions]({{site.baseurl}}/docs/administration/access-control/#pipeline-definition-restrictions) by expanding the *YAML Options* segment.
+For GitHub on-premises you also need to provide the URL of the GitHub server in your organization. If enabled in your account you can setup [Pipeline definition restrictions]({{site.baseurl}}/docs/administration/access-control/#pipeline-definition-restrictions) by expanding the *YAML Options* segment.
+
+
+### Using external secrets for the token
+
+If your GitHub installation is behind your firewall, you can also
+use any [external secrets that you have defined]({{site.baseurl}}/docs/integrations/secret-storage/) (such as Kubernetes secrets) as values by entering a secrets value
+with the same syntax [shown in pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/secrets-store/).
+
+For example if you already have a `token` on a resource call `git-credentials` you can put in the token field the expression {% raw %}`${{secrets.git-credentials@token}}`{% endraw %}.
+
+
 
 ## GitHub-App
+
+>This is an incubating feature not enabled by default. Please contact us for updates.
 
 An alternative way to authenticate with Github is via the App mechanism
 
@@ -125,7 +138,7 @@ An alternative way to authenticate with Github is via the App mechanism
  1. Give an arbitrary name to your app (e.g. codefresh-integration)
  1. Fill *Homepage URL* with `http://www.codefresh.io`
  1. Uncheck the *Active* checkbox under the Webhook section
- 1. In the *Repository permissions* section give *Read/Write* access to *Contents* and *Webhooks*
+ 1. In the *Repository permissions* section give *Read/Write* access to *Contents*, *Webhooks* and *Issues*
  1. Click the *Create GitHub app* button.
 
 **Step 3** - In the next screen 
@@ -169,7 +182,15 @@ The name you enter in order to create the token in the GitLab UI is completely a
 Once you have the token, paste it in the Codefresh UI and click *Test connection*. If everything is OK can
 now save the git integration.
 
-For GitLab on-premise you also need to provide the URL of the GitLab server in your organization.  If enabled in your account you can setup [Pipeline definition restrictions]({{site.baseurl}}/docs/administration/access-control/#pipeline-definition-restrictions) by expanding the *YAML Options* segment.
+For GitLab on-premises you also need to provide the URL of the GitLab server in your organization.  If enabled in your account you can setup [Pipeline definition restrictions]({{site.baseurl}}/docs/administration/access-control/#pipeline-definition-restrictions) by expanding the *YAML Options* segment.
+
+### Using external secrets for the token
+
+If your GitLab installation is behind your firewall, you can also
+use any [external secrets that you have defined]({{site.baseurl}}/docs/integrations/secret-storage/) (such as Kubernetes secrets) as values by entering a secrets value
+with the same syntax [shown in pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/secrets-store/).
+
+For example if you already have a `token` on a resource call `git-credentials` you can put in the token field the expression {% raw %}`${{secrets.git-credentials@token}}`{% endraw %}.
 
 ## Bitbucket
 
@@ -271,7 +292,7 @@ Your Azure DevOps repositories will be available when [creating a new project in
 
 ## Atlassian Stash 
 
-Atlassian stash is only available for an on-premise connection. Follow the same instructions as Bitbucket.
+Atlassian stash is only available for an on-premises connection. Follow the same instructions as Bitbucket.
 You also need to provide the URL of the Stash server in your organization.
 
 This option is only for Atlassian stash until version 3.10 which is the old version. It was then renamed
@@ -280,10 +301,18 @@ to Bitbucket server.
 
 ## Bitbucket Server
 
-Bitbucket server is the new and current name of Atlassian Stash. Again, it is only available for an on-premise
+Bitbucket server is the new and current name of Atlassian Stash. Again, it is only available for an on-premises
 installation.
 
 Codefresh supports Bitbucket server versions 5.4.0+ since those expose the API used by the integration.
+
+### Using external secrets for the token
+
+If your Bitbucket Server installation is behind your firewall, you can also
+use any [external secrets that you have defined]({{site.baseurl}}/docs/integrations/secret-storage/) (such as Kubernetes secrets) as values by entering a secrets value
+with the same syntax [shown in pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/secrets-store/).
+
+For example if you already have a `token` on a resource call `git-credentials` you can put in the token field the expression {% raw %}`${{secrets.git-credentials@token}}`{% endraw %}.
 
 
 ## Using your git provider

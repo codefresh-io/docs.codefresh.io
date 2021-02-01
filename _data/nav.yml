@@ -36,7 +36,7 @@
           url: "/cron-triggers"
     - title: "Monitoring Pipelines"
     - title: "Shared Configuration"
-    - title: Secrets Storage
+    - title: Using Secrets
       url: "/secrets-store"    
     - title: "Caching"
       url: "/pipeline-caching"
@@ -127,8 +127,11 @@
       url: "/pull-request-branches"
     - title: "Pipelines for Microservices"
       url: "/microservices"
-    # - title: "Production and Staging deployments"
-    #   url: "/environment-deployments"
+    - title: "Production and Staging deployments"
+      url: "/environment-deployments"      
+    - title: "GitOps deployments"
+      url: "/gitops-deployments"      
+
     # - title: Complex workflows
     #   url: "/complex-workflows"
 
@@ -225,6 +228,15 @@
           url: "/run-integration-tests"
         - title: Fan-in/Fan-out Example with Unit Tests
           url: "fan-in-fan-out"
+    - title: "Code Coverage"
+      url: "/examples"
+      sub-pages:
+        - title: Codecov Coverage Reports
+          url: "/codecov-testing"
+        - title: Coveralls Coverage Reports
+          url: "/coveralls-testing"
+        - title: Codacy Coverage Reports
+          url: "/codacy-testing"
     - title: "Databases"
       url: "/examples"
       sub-pages:
@@ -396,8 +408,16 @@
           url: "/quay-io"
         - title: "GitHub Container Registry"
           url: "/github-container-registry"
+        - title: "DigitalOcean Container Registry"
+          url: "/digital-ocean-container-registry"
         - title: "Other Registries"
           url: "/other-registries"  
+    - title: Secret Storage
+      url: "/secret-storage"            
+    - title: Helm Integration
+      url: "/helm" 
+    - title: ArgoCD Integration
+      url: "/argo-cd"            
     - title: Jenkins Integration
       url: "/jenkins-integration"                
     - title: Google Cloud builder
@@ -503,12 +523,16 @@
           url: "/multi-git-triggers"
         - title: Workflow terminated by the system
           url: "/workflow-terminated-by-system"
+        - title: cf_export limitations
+          url: "/cf-export-limitations"
         - title: Validation Port warnings
           url: "/validation-port-warnings"
         - title: Forbidden Cluster Resources
           url: "/forbidden-cluster-resources"
         - title: Failed to get accounts clusters during workflow
           url: "/failed-to-get-accounts-clusters-during-workflow"
+        - title: API Paging issues
+          url: "/paging-issues-builds-images"
     - title: Git step migration
       url: "/git-step-migration"
     - title: Personal Git Deprecation
@@ -526,3 +550,5 @@
       url: "/terms-of-service"
     - title: Privacy Policy
       url: "/privacy-policy"
+    - title: Service Commitment
+      url: "/sla"      

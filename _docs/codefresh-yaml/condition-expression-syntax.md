@@ -37,25 +37,9 @@ A condition expression is a basic expression that is evaluated to true/false (to
 | Null    | False: null                               | Always false                                                                                                                                                                   |
 
 ### Variables
-  * You can use the User Provided variables as explained in the [Variables]({{site.baseurl}}/docs/codefresh-yaml/variables/) article.
-  * Each [step]({{site.baseurl}}/docs/codefresh-yaml/steps/)  creates a variable based on the name of the variable. A standard variable that always exists is *main_clone* and represents the automatic git clone that happens for pipelines that are connected to a git repository. You can then use the members of each variable for status conditions such as: `steps.MyUnitTests.result == 'error'` for a step called `MyUnitTests`.
-  * To access variables that have a non-standard (i.e. only alphanumeric and _ characters) names, use the Variable() function.
 
-### Members
-Variables that are created by steps can have members. The members depend on the variable type.
-
-{: .table .table-bordered .table-hover}
-| Step Type                                                                                              | Members                                                                                                                                                                        |
-| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| All step types                                                                                         | {::nomarkdown}<ul><li>name</li><li>type</li><li>description</li><li>failFast</li><li>workingDirectory</li><li>environment</li><li>result</li></ul>{:/}                                        |
-| [**Freestyle**]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/)        | -                                                                                                                                                                              |
-| [**Build**]({{site.baseurl}}/docs/codefresh-yaml/steps/build/)             | {::nomarkdown}<ul><li>dockerfile</li><li>imageName</li><li>tag</li><li>buildArguments</li></ul>{:/}                                                                            |
-| [**Git-clone**]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)       | {::nomarkdown}<ul><li>revision</li><li>credentials</li><li>repo</li><li>imageId</li></ul>{:/}                                                                                  |
-| [**Composition**]({{site.baseurl}}/docs/codefresh-yaml/steps/composition/) | {::nomarkdown}<ul><li>compositionCandidates</li><li>composition</li><li>startImmediately</li><li>environmentName</li><li>assets</li><li>compositionVariables</li></ul>{:/}     |
-| [**Push**]({{site.baseurl}}/docs/codefresh-yaml/steps/push/)               | {::nomarkdown}<ul><li>candidate</li><li>tag</li><li>registry</li><li>credentials</li><li>imageId</li></ul>{:/}                                                                 |
-
-
-* To access members that have a non-standard (i.e., only alphanumeric and _ characters) names, use the Member() function.
+You can use the User Provided variables as explained in the [Variables]({{site.baseurl}}/docs/codefresh-yaml/variables/) documentation including the [variables
+exposed by each individual pipeline step]({{site.baseurl}}/docs/codefresh-yaml/variables/#step-variables).
 
 ### Unary Operators
 

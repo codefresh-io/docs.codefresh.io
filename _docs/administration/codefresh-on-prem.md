@@ -1,6 +1,6 @@
 ---
-title: "Codefresh On-premise Installation"
-description: "Use the Kubernetes Codefresh Installer to install the Codefresh platform on-premises"
+title: "Codefresh On-Premise Installation"
+description: "Use the Kubernetes Codefresh Installer to install the Codefresh On-Premise platform "
 group: administration
 redirect_from:
   - /docs/enterprise/codefresh-on-prem/
@@ -9,7 +9,7 @@ toc: true
 
 ## Introduction
 
-This manual will guide you through the installation of the Codefresh platform on your On-prem environment. This manual is intended to cover all aspects of installation, upgrading, and maintenance.  Please read this manual carefully before installing Codefresh.
+This manual will guide you through the installation of the Codefresh platform on your on-prem environment. This manual is intended to cover all aspects of installation, upgrading, and maintenance.  Please read this manual carefully before installing Codefresh.
 
 [kcfi](https://github.com/codefresh-io/kcfi) (the Kubernetes Codefresh Installer) is a one-stop-shop for this purpose. Even though Codefresh offers multiple tools to install components, `kcfi` aggregates all of them into a single tool.
 
@@ -30,7 +30,7 @@ The `kcfi` tool supports the following operating systems:
 Codefresh supports the following Git providers:
 
 - GitHub: SaaS and on-premise versions
-- Bitbucket: SaaS and Bitbucket server (on-premise) 5.4.0 version and above
+- Bitbucket: SaaS and Bitbucket server (on-premises) 5.4.0 version and above
 - GitLab: SaaS and on-premise versions (API v4 only)
 
 ## Prerequisites
@@ -44,7 +44,7 @@ Codefresh supports the following Git providers:
 - Default app credentials (provided by Codefresh)
 - Storage size allocated for Codefresh persisted services - described in the storage section
 
-Codefresh will need outbound connection to the Internet for the following services:
+Codefresh will need an outbound connection to the Internet for the following services:
 
 - GCR - pulling platform images
 - Dockerhub - pulling pipeline images
@@ -55,7 +55,7 @@ Codefresh has some security assumptions about the Kubernetes cluster it is insta
 
 ### RBAC for Codefresh
 
-The Codefresh installer should be run with a Kubernetes RBAC role that allows object creation in a single namespace.  If, by corporate policy, you do not allow the creation of service accounts or roles, a Kubernetes administrator will need to create the role, serviceAccount, and binding as shown below.  Users with the `codefresh-app` role do not have the ability to create other roles or roleBindings.
+The Codefresh installer should be run with a Kubernetes RBAC role that allows object creation in a single namespace.  If, by corporate policy, you do not allow the creation of service accounts or roles, a Kubernetes administrator will need to create the role, service account, and binding as shown below.  Users with the `codefresh-app` role do not have the ability to create other roles or role bindings.
 
 `codefresh-app-service-account.yaml`
 ```yaml
@@ -173,7 +173,7 @@ You will also need to modify the `config.yaml` for `kcfi` by setting `skipCRD: t
 Download the binary from [GitHub](https://github.com/codefresh-io/kcfi/releases).
 >Note: Darwin is for OSX
 
-Extract the file you just downloaded.
+Extract the downloaded file.
 
 Copy the file to your $PATH, i.e. `cp /path/to/kcfi /usr/local/bin`
 
@@ -191,7 +191,7 @@ kubectl config use-context my-cluster-name   # set the default context to my-clu
 kubectl config current-context               # verify the current-context`
 ```
 
-### Step 2 -- Prepare the Codefresh Platform installation
+### Step 2 -- Prepare the Codefresh Platform Installation
 
 Run the following:
 
@@ -363,7 +363,7 @@ The following table displays the list of databases created as part of the instal
 
 #### Volumes
 
-These are the volumes required for Codefresh on-premise:
+These are the volumes required for Codefresh on-premises:
 
 
 {: .table .table-bordered .table-hover}
@@ -404,11 +404,11 @@ Codefresh installation supports automatic storage provisioning based on the stan
 
 ### Managing Codefresh backups
 
-Codefresh on-premise backups can be automated by installing a specific service as an addon to your Codefresh on-premise installation. It is based on the [mgob](https://github.com/stefanprodan/mgob) open source project and can run scheduled backups with retention, S3 & SFTP upload, notifications, instrumentation with Prometheus and more.
+Codefresh on-premises backups can be automated by installing a specific service as an addon to your Codefresh on-premises installation. It is based on the [mgob](https://github.com/stefanprodan/mgob) open source project and can run scheduled backups with retention, S3 & SFTP upload, notifications, instrumentation with Prometheus and more.
 
 #### Configuring and Installing the Backup Manager
 
-Backup manager is installed as an addon and therefore it needs an existing Codefresh on-premise installation. Before installing it, please make sure you have selected a proper kube config pointing to the cluster, where you have Codefresh installed on.
+Backup manager is installed as an addon and therefore it needs an existing Codefresh on-premises installation. Before installing it, please make sure you have selected a proper kube config pointing to the cluster, where you have Codefresh installed on.
 
 To configure backup manager, please go to the staging directory of your Codefresh installation and find a specific config file: `your-CF-stage-dir/addons/backup-manager/config.yaml`.
 
@@ -423,7 +423,7 @@ There you will find a few configuration parameters, which you might want to chan
 
 For more advanced backup plan settings, like specifying various remote cloud-based storage providers for your backups, configuring notifications and other, please refer to [this](https://github.com/stefanprodan/mgob#configure) page 
 
-To **deploy the backup manager** service, please select a correct kube context, where you have Codefresh on-premise installed and deploy backup-manager with the following command:
+To **deploy the backup manager** service, please select a correct kube context, where you have Codefresh on-premises installed and deploy backup-manager with the following command:
 
 ```
 kcfi deploy -c `your-CF-stage-dir/addons/backup-manager/config.yaml`

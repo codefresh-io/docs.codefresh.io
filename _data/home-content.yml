@@ -27,7 +27,7 @@
     localurl: /docs/configure-ci-cd-pipeline/monitoring-pipelines/
   - title: Shared Configuration
     localurl: /docs/configure-ci-cd-pipeline/shared-configuration/
-  - title: Secrets Storage
+  - title: Using secrets
     new: true
     localurl: /docs/configure-ci-cd-pipeline/secrets-store/
   - title: Pipeline caching
@@ -77,8 +77,13 @@
     localurl: /docs/ci-cd-guides/pull-request-branches/
   - title: Pipelines for Microservices
     localurl: /docs/ci-cd-guides/microservices/  
-  # - title: Production and Staging deployments
-  #   localurl: /docs/ci-cd-guide/environment-deployments/
+  - title: Production and Staging deployments
+    new: true 
+    localurl: /docs/ci-cd-guides/environment-deployments/    
+  - title: GitOps deployments
+    new: true
+    localurl: /docs/ci-cd-guides/gitops-deployments/  
+
   # - title: Secrets Management
   #   localurl: /docs/ci-cd-guide/secret-management/ 
   # - title: Complex workflows
@@ -177,6 +182,8 @@
     localurl: /docs/deploy-to-kubernetes/codefresh-kubernetes-integration-demochat-example/
   - title: Deploy with Helm
     localurl: /docs/yaml-examples/examples/helm/
+  - title: Deploy with Kustomize
+    localurl: /docs/yaml-examples/examples/deploy-with-kustomize/
   - title: Deploy to a VM with Packer
     localurl: /docs/yaml-examples/examples/packer-gcloud/
   - title: Deploy with Terraform
@@ -187,7 +194,7 @@
     localurl: /docs/yaml-examples/examples/nomad/
   - title: Deploy to ECS/Fargate
     localurl: /docs/yaml-examples/examples/amazon-ecs/
-  - title: Elastic Beanstalk
+  - title: Deploy to Elastic Beanstalk
     localurl: /docs/yaml-examples/examples/elastic-beanstalk/
   - title: Deploy to Docker Swarm
     localurl: /docs/yaml-examples/examples/docker-swarm/
@@ -208,14 +215,17 @@
     localurl: /docs/integrations/google-cloud/   
   - title: Docker Registries
     localurl: /docs/integrations/docker-registries/  
+  - title: Secret Storage
+    new: true
+    localurl: /docs/integrations/secret-storage/     
+  - title: Helm
+    localurl: /docs/integrations/helm/ 
+  - title: Argo CD
+    new: true
+    localurl: /docs/integrations/argo-cd/    
   - title: Jenkins integration/migration
     localurl: /docs/integrations/jenkins-integration/               
-  - title: Google Cloud Builder
-    new: true
-    localurl: /docs/integrations/gcloud-builder/
-  - title: GitHub Actions
-    new: true
-    localurl: /docs/integrations/github-actions/       
+      
   - title: Codefresh API
     localurl: /docs/integrations/codefresh-api/
 

@@ -363,7 +363,7 @@ You can use the `registry_context` property in [build]({{site.baseurl}}/docs/cod
 
 The `registry_context` property takes as value the name of an external connected registry. Build and composition steps accept an array of values as `registry_context`. In all cases, by using this optional property you instruct Codefresh to use a specific registry for pulling images.
 
-> Notice that the optional `registry_context` and `registry_context` properties only affect the **pulling** of Docker images. The registry used for *pushing* images is still declared explicitly in build and push pipeline steps.
+> Notice that the optional `registry_context` and `registry_contexts` properties only affect the **pulling** of Docker images. The registry used for *pushing* images is still declared explicitly in build and push pipeline steps.
 
 The syntax for the freestyle step is the following:
 
@@ -475,7 +475,7 @@ Let's say however that you want to build a Docker image that has a `FROM` statem
 {% endraw %}
 {% endhighlight %}
 
-Behind the scenesm Codefresh will:
+Behind the scenes Codefresh will:
 
 1. First login to the "staging" Docker registry using the "staging" credentials
 1. Build the Docker image, by resolving the `FROM` statements with "staging" images, pulling them as needed using the staging credentials

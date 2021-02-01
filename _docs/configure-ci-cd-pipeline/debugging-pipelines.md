@@ -7,8 +7,6 @@ toc: true
 
 In addition to [running pipelines locally]({{site.baseurl}}/docs/configure-ci-cd-pipeline/running-pipelines-locally/) Codefresh also allows you to debug pipelines by stopping their execution and inspecting manually their state (files, environment variables, tools etc.)
 
-> Note: This feature is currently available only to select customers. If you want to use debugging in your own pipelines please [contact us](https://codefresh.io/contact-us/).
-
 ## How Debugging works
 
 The Codefresh pipeline debugger works similar to your IDE debugger. You can place breakpoints on one or more pipeline steps and once the pipeline hits one of them, it will stop. You will then get a terminal like interface inside your pipeline step where you can run any commands that you wish in order to understand the state of the container.

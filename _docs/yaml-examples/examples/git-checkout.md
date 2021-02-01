@@ -17,7 +17,7 @@ caption="GIT integrations"
 max-width="70%"
 %}
 
-You can add new integration for any cloud provider or even [on-premise]({{site.baseurl}}/docs/enterprise/behind-the-firewall/) ones. By default you will also have a provider setup if you used one for Codefresh signup (GitHub, GitLab or Bitbucket).
+You can add new integration for any cloud provider or even [on-premises]({{site.baseurl}}/docs/enterprise/behind-the-firewall/) ones. By default you will also have a provider setup if you used one for Codefresh signup (GitHub, GitLab or Bitbucket).
 
 For each Git Integration, make sure that you note down its name, as you will use in your pipeline inside a [git-clone]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) step.
 
@@ -135,7 +135,7 @@ More details can be found in the [private Git instructions page]({{site.baseurl}
 
 Normally each [pipeline step]({{site.baseurl}}/docs/codefresh-yaml/steps/) in Codefresh can be named as you want. Specifically, for the git-clone step however the name `main_clone` is special.
 
-If you name your clone step as `main_clone` the Codefresh will automatically change the working directory for all the next (non git-clone) pipeline steps, to be the same as the project that was just checked out.
+If you name your clone step as `main_clone` the Codefresh will automatically change the working directory for all the next (non git-clone) pipeline steps, to be the same as the project that was just checked out. This only applies to [built-in]({{site.baseurl}}/docs/codefresh-yaml/steps/#built-in-steps) Codefresh steps and not [custom plugins]({{site.baseurl}}/docs/codefresh-yaml/steps/#creating-a-typed-codefresh-plugin).
 
 {% include 
 image.html 

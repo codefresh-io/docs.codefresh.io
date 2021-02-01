@@ -40,6 +40,25 @@ You can create four types of shared configuration:
 
 You can create as many shared snippets as you want (with unique names).
 
+### Using external secrets as values
+
+Note that the default "shared secrets" and "secret yaml" entities use the built-in secret storage of Codefresh. You can also
+use any [external secrets that you have defined]({{site.baseurl}}/docs/integrations/secret-storage/) (such as Kubernetes secrets), by using the normal entities and then clicking on the lock icon that appears.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/shared-configuration/shared-conf-secret-integration.png" 
+url="/images/pipeline/shared-configuration/shared-conf-secret-integration.png"
+alt="Using external secrets in shared configuration values" 
+caption="Using external secrets in shared configuration values"
+max-width="50%"
+%}
+
+If you have already specified the resource field during secret definition the just enter on the text field the name of the secret directly, i.e. `my-secret-key`.
+If you didn't include a resource name during secret creation then enter the full name in the field like `my-secret-resource@my-secret-key`.
+
+
 ## Using shared environment variables
 
 Each pipeline has a set of environment variables that can be defined in the *Workflow* screen.

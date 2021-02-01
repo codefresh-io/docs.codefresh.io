@@ -140,6 +140,9 @@ max-width="50%"
 {:start="4"}
 1. If everything works ok add more users
 
+>Before enabling SSO for all users, you **MUST** make sure that it is working for the test user, because if SSO is enabled for a user, Codefresh blocks logins through other IDPs for this user and only the enabled SSO is allowed. If the selected SSO method does not work for some reason, users will be locked out of Codefresh.
+
+
 ## Selecting SSO method for collaborators
 
 To add users and select their SSO method, go to *Collaborators* from the left sidebar. Then add the email or Codefresh username of a user. 
@@ -160,6 +163,25 @@ max-width="50%"
 
 It possible to use a different SSO method for each user (if you have multiple SSO configurations). 
 
+## Setting a default provider
+
+If you have multiple SSO providers set you can hover your mouse on the top right of the SSO screen
+and setup one of them as the default provider.
+
+
+{% include image.html 
+lightbox="true" 
+file="/images/administration/sso/default-sso.png" 
+url="/images/administration/sso/default-sso.png"
+alt="Default SSO provider"
+caption="Default SSO provider"
+max-width="90%"
+%}
+
+If a default sso provider is set then:
+
+1. This SSO method will be automatically assigned to all new invited users
+1. All new users will receive an email with an invite link that points them directly to the login page of that SSO provider
 
 ## Syncing of teams after initial SSO setup
 

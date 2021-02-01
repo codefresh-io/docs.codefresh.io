@@ -480,7 +480,9 @@ Notice that in that case the sequence of events is the following
 1. The `setup` block will run and preload data or setup any custom commands you have placed in the property
 1. The actual pipeline step will now run with the service container attached in the same network.
 
+## Limitations 
 
+Service containers are not compatible with [custom pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/#limitations-of-custom-plugins).
 
 
 
