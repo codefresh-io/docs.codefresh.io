@@ -28,16 +28,6 @@ This SLA and any applicable Service Levels do not apply to any performance or av
 1. That result from your attempts to perform operations that exceed prescribed quotas or that resulted from our throttling of suspected abusive behavior;
 1. For licenses reserved, but not paid for, at the time of the Incident.
 
-## Record of Changes
-
-{: .table .table-bordered .table-hover}
-| Type of information          | Document data                              |
-| -------------- | ---------------------------- |
-| Document Title:| Codefresh Cloud Service SLA Definition|
-| Document Owner: | Sasha Shapirov - Codefresh Chief Information Security Officer (CISO) and VP R&D |
-| Approved by: | Sharon Vendrov - Head of DevOps |
-| Issued: | January 3, 2021 |
-| Reviewed & Revised: | January 17, 2021 |
 
 ## Revision Control
 
@@ -46,6 +36,3 @@ This SLA and any applicable Service Levels do not apply to any performance or av
 | -------------- | ---------------------------- | ---------------------------- |
 1.0 | Initial version | January 17, 2021 |
 
-## Document Distribution and Review
-
-The document owner will distribute this document to all approvers when it is first created and as changes or updates are made. This document will be reviewed and updated annually or upon written request by an approver or stakeholder. Questions or feedback about this document can be directed to the owner or a listed approver.
