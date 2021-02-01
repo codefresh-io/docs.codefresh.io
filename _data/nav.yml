@@ -431,8 +431,8 @@
       sub-pages:
         - title: Slack
           url: "/slack-integration"
-    - title: Jira Integration
-      url: "/jira-integration"          
+        - title: Jira
+          url: "/jira-integration"          
     - title: Codefresh API
       url: "/codefresh-api"
 

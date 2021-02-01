@@ -17,7 +17,7 @@ Prerequisites needed:
 
 The plugin marketplace offers several freestyle steps that can be used in your Codefresh pipeline through plugins.
 
-One of those plugins is the [Jira Issue Manager](https://codefresh.io/steps/step/codefreshdemo%2Fjira-issue-manager). It can be used to:
+One of those plugins is the [Jira Issue Manager](https://codefresh.io/steps/step/jira-issue-manager). It can be used to:
 * Create a Jira issue
 * Comment on existing Jira issues
 * Change the status of an issue e.g. once the build is successful

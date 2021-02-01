@@ -6,9 +6,9 @@ sub_group: examples
 toc: true
 ---
 
-The plugin marketplace offers several freestyle steps that can be used in your Codefresh pipeline through plugins.
+The plugin marketplace offers several freestyle steps that can be used in your Codefresh pipeline through steps.
 
-One of those plugins is the [Jira Issue Manager](https://codefresh.io/steps/step/codefreshdemo%2Fjira-issue-manager). 
+One of those steps is the [Jira Issue Manager](https://codefresh.io/steps/step/jira-issue-manager). 
 
 Prerequisites
 * [Have a Codefresh Pipeline]({{site.baseurl}}/docs/getting-started/create-a-basic-pipeline/) set-up
@@ -68,7 +68,7 @@ lightbox="true"
 file="/images/integrations/jira/codefreshpipeline.png"
 url="/images/integrations/jira/codefreshpipeline.png"
 alt="Pipeline with Jira integration"
-max-width="50%"
+max-width="80%"
 %}
 
 And the comment, including the URL to the pipeline, should be added to your Jira issue:
@@ -78,7 +78,7 @@ lightbox="true"
 file="/images/integrations/jira/jira-comment.png"
 url="/images/integrations/jira/jira-comment.png"
 alt="Comment in Jira"
-max-width="50%"
+max-width="80%"
 %}
 
 ## What to read next
