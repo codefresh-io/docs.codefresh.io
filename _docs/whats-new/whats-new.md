@@ -9,6 +9,11 @@ toc: true
 
 ## Recent Codefresh updates:
 
+### February 2021
+
+- SLA details - [documentation]({{site.baseurl}}/docs/terms-and-privacy-policy/sla/)
+
+
 ### January 2021
 
 - Using external secrets in Codefresh GUI - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/secrets-store/#using-secrets-in-the-codefresh-gui)
