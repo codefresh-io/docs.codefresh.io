@@ -16,14 +16,14 @@ After [adding a cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernet
 
 {% include image.html
 lightbox="true"
-file="/images/kubernetes/kubernetes-management.png"
-url="/images/kubernetes/kubernetes-management.png"
+file="/images/kubernetes/dashboard/kubernetes-dashboard.png"
+url="/images/kubernetes/dashboard/kubernetes-dashboard.png"
 alt="Codefresh Kubernetes Dashboard"
 caption="Codefresh Kubernetes Dashboard"
-max-width="60%"
+max-width="80%"
   %}
 
-With the graphical dashboard it is very easy to locate problematic services or deploy new ones quickly.
+With the graphical dashboard it is very easy to locate problematic services or deploy new ones quickly. If there are clusters that are not accessible to your user you can hide them by enabling the *Hide inaccessible clusters* option at the top right of the window in order to simplify the view.
 
 ## Viewing your Kubernetes services
 
@@ -43,13 +43,14 @@ You can also switch to a Grid view if you prefer that over the default List view
 
 {% include image.html
 lightbox="true"
-file="/images/kubernetes/kubernetes-dashboard-grid.png"
-url="/images/kubernetes/kubernetes-dashboard-grid.png"
+file="/images/kubernetes/dashboard/grid-view.png"
+url="/images/kubernetes/dashboard/grid-view.png"
 alt="Kubernetes Dashboard grid view"
 caption="Kubernetes Dashboard grid view"
-max-width="60%"
+max-width="80%"
   %}
 
+ If there are clusters that are not accessible to your user you can hide them by enabling the *Hide inaccessible clusters* option at the top right of the window in order to simplify the view.
 
 
 ## Work with your services
