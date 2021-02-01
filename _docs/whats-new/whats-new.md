@@ -14,6 +14,7 @@ toc: true
 - Jira integration - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/sending-the-notification-to-jira/)
 - SLA details - [documentation]({{site.baseurl}}/docs/terms-and-privacy-policy/sla/)
 - Hide inaccessible clusters in the Kubernetes dashboard - [documentation]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/#accessing-the-kubernetes-dashboard)
+- Define access for non-admins in Helm repositories and shared config - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/#level-of-access)
 
 ### January 2021
 

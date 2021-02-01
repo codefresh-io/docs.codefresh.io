@@ -58,6 +58,24 @@ max-width="50%"
 If you have already specified the resource field during secret definition the just enter on the text field the name of the secret directly, i.e. `my-secret-key`.
 If you didn't include a resource name during secret creation then enter the full name in the field like `my-secret-resource@my-secret-key`.
 
+### Level of access
+
+For each set of values you can toggle the level of access by [non-admin users]({{site.baseurl}}/docs/administration/access-control/#users-and-administrators). If it is off, users will **not** be able to use the [CLI](https://codefresh-io.github.io/cli/) or [API]({{site.baseurl}}/docs/integrations/codefresh-api/)
+to access these [values](https://codefresh-io.github.io/cli/contexts/). If it is off, all users from all your Codefresh teams will be able to access this set of values
+with CLI commands or API calls.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/shared-configuration/shared-config-access.png" 
+url="/images/pipeline/shared-configuration/shared-config-access.png"
+alt="Allow access to non-admin users" 
+caption="Allow access to non-admin users"
+max-width="60%"
+%}
+
+We recommend that you disable access for all values of type *shared secret* and *secret YAML* unless your organization has different needs.
+
 
 ## Using shared environment variables
 
