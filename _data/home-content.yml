@@ -243,6 +243,8 @@
   - title: Codefresh Runner
     new: true
     localurl: /docs/administration/codefresh-runner
+  - title: User Settings
+    localurl: /docs/administration/user-settings   
   - title: Enterprise Account Management
     localurl: /docs/administration/ent-account-mng
   - title: Single Sign on

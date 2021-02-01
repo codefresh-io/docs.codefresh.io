@@ -27,6 +27,7 @@ To configure your external Helm repositories go to your Account Configuration, b
   file="/images/integrations/codefresh-integrations.png" 
   url="/images/integrations/codefresh-integrations.png" 
   alt="Codefresh Account Integration" 
+  caption="Codefresh Account Integration" 
   max-width="80%" %}
 
 Add a new Helm repository configuration from the drop down.
@@ -36,10 +37,25 @@ Add a new Helm repository configuration from the drop down.
   file="/images/integrations/helm/add-helm-repository.png" 
   url="/images/integrations/helm/add-helm-repository.png" 
   alt="Add Helm Repository" 
+  caption="Add Helm Repository" 
   max-width="40%"
 %}
 
 Each configuration must be given a unique name, which you can later reference in a codefresh.yml file.
+
+
+{% include image.html 
+  lightbox="true" 
+  file="/images/integrations/helm/helm-access.png" 
+  url="/images/integrations/helm/helm-access.png" 
+  alt="Define user access" 
+  caption="Define user access" 
+  max-width="80%"
+%}
+
+For each Helm integration you can toggle the level of access by [non-admin users]({{site.baseurl}}/docs/administration/access-control/#users-and-administrators). If it is off, users will **not** be able to use the [CLI](https://codefresh-io.github.io/cli/) or [API]({{site.baseurl}}/docs/integrations/codefresh-api/)
+to access this [Helm repository programmatically](https://codefresh-io.github.io/cli/contexts/). If it is off, all users from all your Codefresh teams will be able to access this Helm repository
+with CLI commands or API calls.
 
 ### Private Helm repository - HTTP 
 
