@@ -61,7 +61,7 @@ If you didn't include a resource name during secret creation then enter the full
 ### Level of access
 
 For each set of values you can toggle the level of access by [non-admin users]({{site.baseurl}}/docs/administration/access-control/#users-and-administrators). If it is off, users will **not** be able to use the [CLI](https://codefresh-io.github.io/cli/) or [API]({{site.baseurl}}/docs/integrations/codefresh-api/)
-to access these [values](https://codefresh-io.github.io/cli/contexts/). If it is off, all users from all your Codefresh teams will be able to access this set of values
+to access these [values](https://codefresh-io.github.io/cli/contexts/). If it is on, all users from all your Codefresh teams will be able to access this set of values
 with CLI commands or API calls.
 
 {% include 

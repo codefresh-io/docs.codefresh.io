@@ -54,7 +54,7 @@ Each configuration must be given a unique name, which you can later reference in
 %}
 
 For each Helm integration you can toggle the level of access by [non-admin users]({{site.baseurl}}/docs/administration/access-control/#users-and-administrators). If it is off, users will **not** be able to use the [CLI](https://codefresh-io.github.io/cli/) or [API]({{site.baseurl}}/docs/integrations/codefresh-api/)
-to access this [Helm repository programmatically](https://codefresh-io.github.io/cli/contexts/). If it is off, all users from all your Codefresh teams will be able to access this Helm repository
+to access this [Helm repository programmatically](https://codefresh-io.github.io/cli/contexts/). If it is on, all users from all your Codefresh teams will be able to access this Helm repository
 with CLI commands or API calls.
 
 ### Private Helm repository - HTTP 
