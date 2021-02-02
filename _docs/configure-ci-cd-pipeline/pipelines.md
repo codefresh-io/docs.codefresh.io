@@ -159,6 +159,10 @@ Once you create your pipeline you can also click on the top tab called *Settings
   - Keep the volume available
   - Discard the volume
   - Honor the option defined globally in your Codefresh account
+- **Pending approval concurrency limit effect**: decide if a build that is pending approval [counts against]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/#define-concurrency-limits) the concurrency limits or not
+  - Builds in pending approval will **not** be counted when determining the concurrency limit for a pipeline
+  - Builds in pending approval will **be** counted when determining the concurrency limit for a pipeline
+  - Honor the option defined globally in your Codefresh account  
 
 The **Pipeline and Trigger Concurrency** limits are very important as they allow you to define how many instances of a pipeline can run in parallel when multiple commits or multiple pull requests take place. 
 

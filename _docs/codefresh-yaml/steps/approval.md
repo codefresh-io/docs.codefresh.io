@@ -288,6 +288,20 @@ max-width="80%"
 You can see that only two steps were ignored. If you rerun the pipeline and approve
 it, the other two steps will be ignored.
 
+## Define concurrency limits
+
+Codefresh has the ability to limit the amount of running builds for a specific pipeline with several concurrency policies in the pipeline settings. You can choose if a build that is in a pending approval state will count against the concurrency limits or not.
+
+As an example let's say that the concurrency limit for a specific pipeline is set to 2. Currently there is one active/running build  and a second build that is pending approval.
+
+1. If the pipeline settings define that builds in pending approval **count** against concurrency, then if you launch a third build it will wait until one of the first two has finished
+1. If the pipeline settings define that builds in pending approval **do not** count against concurrency, then if you launch a third build it will execute right away.
+
+There isn't a correct or wrong way to set this option. It depends on your organization and if your consider builds pending approval as "active" or not.
+
+You can either set this option [differently per pipeline]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#policies), or globally in your account at your [account settings](https://g.codefresh.io/account-admin/account-conf/pipeline-settings).
+
+
 ## Slack integration
 
 If you also enable [Slack integration]({{site.baseurl}}/docs/integrations/notifications/slack-integration/)  in Codefresh you will have the choice of approving/rejecting a pipeline

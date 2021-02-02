@@ -11,6 +11,7 @@ toc: true
 
 ### February 2021
 
+- Concurrency behavior for pending builds - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/#define-concurrency-limits)
 - Jira integration - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/sending-the-notification-to-jira/)
 - SLA details - [documentation]({{site.baseurl}}/docs/terms-and-privacy-policy/sla/)
 - Hide inaccessible clusters in the Kubernetes dashboard - [documentation]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/#accessing-the-kubernetes-dashboard)
