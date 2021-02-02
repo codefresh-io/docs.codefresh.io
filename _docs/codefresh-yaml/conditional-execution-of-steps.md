@@ -12,7 +12,7 @@ There are currently two main methods to define conditions: branch conditions and
  
 ## Branch Conditions
 
-Usually, you'll want to define a branch condition, be it of the type ```ignore``` for blacklisting a set of branches or of the type ```only``` for whitelisting a set of branches. Each branch specification can either be an exact branch name, e.g. ```master```, or a regular expression, e.g. ```/hotfix$/```. Case insensitive regexps (```/^FB-/i```) are also supported.
+Usually, you'll want to define a branch condition, be it of the type ```ignore``` for blacklisting a set of branches or of the type ```only``` for allowlisting a set of branches. Each branch specification can either be an exact branch name, e.g. ```master```, or a regular expression, e.g. ```/hotfix$/```. Case insensitive regexps (```/^FB-/i```) are also supported.
 
 Here are some examples:
 

@@ -1,6 +1,6 @@
 ---
 title: "Codefresh Platform IP addresses"
-description: "How to whitelist the IP addresses of the Codefresh platform"
+description: "How to allowlist the IP addresses of the Codefresh platform"
 group: administration
 toc: true
 
@@ -32,7 +32,7 @@ All the IPs are NAT gateways, and therefore you only need to enable specific IPs
 
 ## Upcoming Codefresh IPs 
 
-These are IP addresses that we will soon add in the Codefresh platform. Customers will be notified long before they take effect. We publish them today so that you can whitelist them in advance.
+These are IP addresses that we will soon add in the Codefresh platform. Customers will be notified long before they take effect. We publish them today so that you can allowlist them in advance.
 
 - 107.21.238.215
 - 18.209.185.91
