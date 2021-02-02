@@ -478,6 +478,8 @@
       url: "/audit-logs"
     - title: Hybrid installation (legacy)
       url: "/codefresh-hybrid"
+    - title: Codefresh Platform IPs
+      url: "/platform-ip-addresses"
 
 - title: Incubation
   url: "/incubation"

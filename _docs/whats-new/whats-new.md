@@ -7,6 +7,10 @@ redirect_from:
 toc: true
 ---
 
+## Upcoming changes:
+
+- New platform IP addresses - [documentation]({{site.baseurl}}/docs/administration/platform-ip-addresses/)
+
 ## Recent Codefresh updates:
 
 ### February 2021
@@ -16,6 +20,7 @@ toc: true
 - SLA details - [documentation]({{site.baseurl}}/docs/terms-and-privacy-policy/sla/)
 - Hide inaccessible clusters in the Kubernetes dashboard - [documentation]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/#accessing-the-kubernetes-dashboard)
 - Define access for non-admins in Helm repositories and shared config - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/#level-of-access)
+
 
 ### January 2021
 

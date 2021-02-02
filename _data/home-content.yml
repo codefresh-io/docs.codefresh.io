@@ -253,6 +253,8 @@
     localurl: /docs/administration/access-control
   - title: Audit Logs
     localurl: /docs/administration/audit-logs
+  - title: Platform IPs
+    localurl: /docs/administration/platform-ip-addresses
 - title: "Incubation"
   icon: images/home-icons/plugins.svg
   url: ''
