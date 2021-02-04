@@ -15,6 +15,7 @@ toc: true
 
 ### February 2021
 
+- Selenium Documentation Update - [documentation]({{site.baseurl}}/docs/learn-by-example/general/selenium-test/)
 - Concurrency behavior for pending builds - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/#define-concurrency-limits)
 - Jira integration - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/sending-the-notification-to-jira/)
 - SLA details - [documentation]({{site.baseurl}}/docs/terms-and-privacy-policy/sla/)
