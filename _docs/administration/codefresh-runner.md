@@ -809,6 +809,10 @@ Execute:
 eksctl create cluster -f my-eks-cluster.yaml
 ```
 
+The config above will leverage [Amazon Linux 2](https://aws.amazon.com/amazon-linux-2/) as the default operating system for the nodes in the nodegroup.  To leverage [Bottlerocket-based nodes](https://aws.amazon.com/bottlerocket/), specify the AMI Family using `amiFamily: Bottlerocket` and add the following additional IAM Policies: `arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly` and `arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore`. 
+
+>Bottlerocket is an open source Linux based Operating System specifically built to run containers. It focuses on security, simplicity and easy updates via transactions. Find more information in the [official repository](https://github.com/bottlerocket-os/bottlerocket).
+
 #### Step 2 - Autoscaler
 
 Once the cluster is up and running we need to install the [cluster autoscaler](https://docs.aws.amazon.com/eks/latest/userguide/cluster-autoscaler.html):
