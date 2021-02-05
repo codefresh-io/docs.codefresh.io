@@ -10,9 +10,9 @@ toc: true
 ---
 
 [Selenium](https://www.selenium.dev/) is a free, open-source testing framework that is used to automate browser testing. It is encompassed of three different tools, referred to as Selenium Testing.
-* Selenium WebDriver
-* Selenium IDE
-* Selenium Grid 
+* Selenium WebDriver -- To interact with the Bowser
+* Selenium IDE -- To create scripts for quick, automated testing
+* Selenium Grid -- To run tests across multiple environments
 
 The languages supported by Selenium include Java, Perl, Ruby C#, Python, and JavaScript.
 
@@ -22,8 +22,8 @@ In the end, we will have a container image that executes the tests specified thr
 
 {% include image.html 
   lightbox="true" 
-  file="/images/learn-by-example/selenium/selenium-pipeline.png" 
-  url="/images/learn-by-example/selenium/selenium-pipeline.png" 
+  file="/images/learn-by-example/selenium/pipeline.png" 
+  url="/images/learn-by-example/selenium/pipeline.png" 
   alt="Codefresh Pipeline Build with website tests" 
   caption="Codefresh Pipeline Build with website tests" 
   max-width="100%"
@@ -37,8 +37,8 @@ This is our project structure:
 
 {% include image.html 
   lightbox="true" 
-  file="/images/learn-by-example/selenium/selenium-overview.png" 
-  url="/images/learn-by-example/selenium/selenium-overview.pngg" 
+  file="/images/learn-by-example/selenium/overview.png" 
+  url="/images/learn-by-example/selenium/overview.png" 
   alt="Repository Overview" 
   caption="Repository Overview" 
   max-width="80%"
@@ -102,8 +102,8 @@ Please ensure that the binaries of your Browser are within the right path. Other
 The output in your terminal will look similar to the following:
 {% include image.html 
   lightbox="true" 
-  file="/images/learn-by-example/selenium/selenium-output.png" 
-  url="/images/learn-by-example/selenium/selenium-output.png" 
+  file="/images/learn-by-example/selenium/output.png" 
+  url="/images/learn-by-example/selenium/output.png" 
   alt="Test Output" 
   caption="Test Output" 
   max-width="80%"
@@ -115,8 +115,8 @@ The [Dockerfile](https://github.com/codefresh-contrib/selenium-example/blob/mast
 
 {% include image.html 
   lightbox="true" 
-  file="/images/learn-by-example/selenium/selenium-pipeline.png" 
-  url="/images/learn-by-example/selenium/selenium-pipeline.pngg" 
+  file="/images/learn-by-example/selenium/pipeline.png" 
+  url="/images/learn-by-example/selenium/pipeline.png" 
   alt="Codefresh Pipeline Build with website tests" 
   caption="Codefresh Pipeline Build with website tests" 
   max-width="80%"
@@ -169,7 +169,7 @@ If you are interested in executing tests on your application that is not written
 
 ## What to read next
 
-* [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
-* [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
-* [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
-* [How pipelines work]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
+* [Unit Tests]({{site.baseurl}}/docs/yaml-examples/examples/run-unit-tests/)
+* [Integration Tests]({{site.baseurl}}/docs/yaml-examples/examples/run-integration-tests/)
+* [Service Container]({{site.baseurl}}/docs/codefresh-yaml/service-containers/)
+* [Test Report]({{site.baseurl}}/docs/testing/test-reports/)
