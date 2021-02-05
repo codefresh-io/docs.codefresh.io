@@ -5,7 +5,7 @@ group: incubation
 toc: true
 ---
   
-Codefresh is offering alpha support for macOS and/or iOS as a CI/CD environment. Access to the build environment is possible after invite only. To run macOS/iOS pipelines in Codefresh, [open a free account]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/) and then [contact sales](https://codefresh.io/contact-sales/) in order to enable this build environment type.
+Codefresh is offering alpha support for macOS and/or iOS as a CI/CD environment. Access to the build environment is possible after invite only. To run macOS/iOS pipelines in Codefresh, [open a free account]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/) and then [contact sales](https://codefresh.io/contact-us/) in order to enable this build environment type.
 
 ## Enabling macOS/iOS support
 

@@ -9,21 +9,24 @@ toc: true
 ---
   
 Codefresh pipelines have the option to support Windows based containers.
+
 If you have projects in your organization based on the .NET Framework or are in transition from Windows to Linux based projects and still need to have CI/CD pipelines for Windows containers, you’ll now be able to achieve this by using Codefresh.
 
-> Note: To enable Windows builds on your Codefresh account please [contact sales](https://codefresh.io/contact-sales/)
+> Note: To enable Windows builds on your Codefresh account please [contact sales](https://codefresh.io/contact-us/)
 
-Codefresh will supply you with an account which will be able to support Windows pipelines and a dedicated Windows Server version 1709 VM which Codefresh will host for you. 
-Please keep in mind that this account will only be able to run Windows containers based pipelines, you’ll still have the full option to switch to your regular Codefresh account that supports Linux container based pipelines.
+Once approved, you will get access to a new runtime environment on a dedicated Windows Server version 1709 VM. This means that you will be able to run both Windows and Linux/x86 builds from the same Codefresh account by choosing the appropriate [pipeline settings]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-settings).
 
-Codefresh Windows pipeline supports the following Codefresh steps:
+
+> Note: For .NET Core projects you can use a standard Linux based Codefresh account. See [our example]({{site.baseurl}}/docs/learn-by-example/dotnet/)
+
+Codefresh Windows pipelines support the following Codefresh steps:
 **Clone**, **Build**, **Push**, **Composition**, **Deploy** and **Freestyle**.
 Please refer to our [steps documentation](https://codefresh.io/docs/docs/codefresh-yaml/steps/) to learn more about each of them.
 
 
 ## Example
 
-In this example we’ll perform the following steps:
+In this example we'll perform the following steps:
     
 - Clone our git repository and build a .NET Framework image.
     
@@ -72,3 +75,10 @@ steps:
     registry: dockerhub
 
 ``` 
+
+## What to read next
+
+* [Introduction to pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
+* [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
+* [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
+* [Installation options]({{site.baseurl}}/docs/administration/installation-security/)

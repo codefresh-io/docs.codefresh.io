@@ -19,7 +19,7 @@ Codefresh lets you use your own host as a node to run/build containers.
 {:start="2"}
 2. Select *Nodes* from the left sidebar.
 
-> Hybrid nodes are only available to enterprise customers. [Contact us](https://codefresh.io/contact-sales/) us to enable this feature.
+> Hybrid nodes are only available to enterprise customers. [Contact us](https://codefresh.io/contact-us/) us to enable this feature.
 
 {% include image.html
   lightbox="true"
