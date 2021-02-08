@@ -23,6 +23,7 @@ toc: true
 - SLA details - [documentation]({{site.baseurl}}/docs/terms-and-privacy-policy/sla/)
 - Hide inaccessible clusters in the Kubernetes dashboard - [documentation]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/#accessing-the-kubernetes-dashboard)
 - Define access for non-admins in Helm repositories and shared config - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/#level-of-access)
+- Okta auto-sync of teams - [documentation]({{site.baseurl}}/docs/administration/single-sign-on/sso-okta/#syncing-of-teams-after-initial-sso-setup)
 
 
 ### January 2021

@@ -145,6 +145,25 @@ only affects teams/groups and not individuals/persons.
 
 You can assign an Okta application in both groups and individual people. Codefresh will only sync people that are inside teams. Newly created people in Okta that are _not_ assigned in a team will **NOT** be synced to Codefresh. You should assign them to a team first and then they will be synced as part of team.
 
+## Syncing of teams after initial SSO setup
+
+There are two ways that you can setup automatic syncing of teams.
+
+First you can create a Codefresh pipeline the runs the CLI command `codefresh synchronize teams my-okta-client-name -t okta` as explained in the [pipeline sync page]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/#syncing-of-teams-after-initial-sso-setup).
+
+Alternatively, you can setup completely automated syncing by enabling the auto-sync toggle found in the top right of the integration:
+
+{% include image.html 
+lightbox="true" 
+file="/images/administration/sso/okta/auto-group-sync.png" 
+url="/images/administration/sso/okta/auto-group-sync.png"
+alt="Automatic team syncing"
+caption="Automatic team syncing"
+max-width="50%"
+%}
+
+If you enable this, every 12 hours Codefresh will sync teams on its own without the need of a pipeline. 
+
 ## What to read next
 
 See the [overview page]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/#testing-your-identity-provider) on how to test the integration, activate SSO for collaborators and create sync jobs.

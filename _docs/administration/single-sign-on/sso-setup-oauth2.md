@@ -203,7 +203,7 @@ file="/images/administration/sso/azure/client-name.png"
 url="/images/administration/sso/azure/client-name.png"
 alt="SSO Client Name"
 caption="SSO Client Name"
-max-width="50%"
+max-width="40%"
 %}
 
 Even though you can run this command manually it makes more sense to run it periodically as a job. And the obvious
