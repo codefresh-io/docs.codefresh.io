@@ -102,12 +102,13 @@ now save the git integration.
 The minimum permissions for the token are:
 - `repo.*`
 - `admin:repo_hook.*`
+- `admin:org.*`
 
 {% include image.html 
 lightbox="true" 
-file="/images/integrations/git/github-required-scopes.png" 
-url="/images/integrations/git/github-required-scopes.png"
-max-width="40%"
+file="/images/integrations/git/github-token.png" 
+url="/images/integrations/git/github-token.png"
+max-width="50%"
 caption="GitHub permissions"
 alt="GitHub permissions"
 %}
