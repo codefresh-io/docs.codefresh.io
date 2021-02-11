@@ -283,7 +283,7 @@ The name of the application should be the same name as the ArgoCD Application.
 
 ## Working with the GitOps dashboard
 
-After you create an ArgoCD application, you can click on it in the [GitOps environment overview](https://g.codefresh.io/environment-v2/) and see the respective GitOps screen.
+After you create an ArgoCD application, you can click on it in the [GitOps environment overview](https://g.codefresh.io/gitops) and see the respective GitOps screen.
 
 
 {% include image.html 
