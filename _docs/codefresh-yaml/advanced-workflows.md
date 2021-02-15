@@ -943,10 +943,10 @@ For example, you can have a cleanup step that will run only if the workflow fail
 {% highlight yaml %}
 my_cleanup_step:
   title: My Pipeline Cleanup
-    when:
-      condition:
-        all:
-          myCondition: workflow.result == 'failure'
+  when:
+    condition:
+      all:
+        myCondition: workflow.result == 'failure'
 {% endhighlight %}
 
 As another example we have a special step that will send an email if the pipeline succeeds or if load-tests fail:
@@ -954,11 +954,11 @@ As another example we have a special step that will send an email if the pipelin
 {% highlight yaml %}
 my_email_step:
   title: My Email step
-    when:
-      condition:
-        any:
-          myCondition: workflow.result == 'success'
-          myTestCondition: steps.MyLoadTesting.result == 'failure'
+  when:
+    condition:
+      any:
+        myCondition: workflow.result == 'success'
+        myTestCondition: steps.MyLoadTesting.result == 'failure'
 {% endhighlight %}
 
 Notice that both examples assume that `fail_fast: false` is at the root of the `codefresh.yaml` file.
