@@ -722,7 +722,270 @@ consul:
   enabled: false
 ```
 
-## Upgrade the Codefresh platform
+## App Cluster Autoscaling
+
+Autoscaling in Kubernetes is implemented as an interaction between Cluster Autoscaler and Horizontal Pod Autoscaler
+
+{: .table .table-bordered .table-hover}
+|             | Scaling Target| Trigger | Controller | How it Works |
+| ----------- | ------------- | ------- | ---------  | --------- |
+| [Cluster Autoscaler](https://github.com/kubernetes/autoscaler/tree/master/cluster-autoscaler)| Nodes | Up: Pending pod Down: Node resource allocations is low | On GKE we can turn on/off autoscaler and configure min/max per node group can be also installed separately | Listens on pending pods for scale up and node allocations for scaledown. |
+| [Horizontal Pod Autoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) | replicas on deployments or StatefulSets | metrics value thresholds defined in HPA object | part of Kubernetes controller | Controller gets metrics from "metrics.k8s.io/v1beta1" , "custom.metrics.k8s.io/v1beta1", "external.metrics.k8s.io/v1beta1" requires [metrics-server](https://github.com/kubernetes-sigs/metrics-server) and custom metrics adapters ([prometheus-adapter](https://github.com/kubernetes-sigs/prometheus-adapter), [stackdriver-adapter](https://github.com/GoogleCloudPlatform/k8s-stackdriver/tree/master/custom-metrics-stackdriver-adapter)) to listen on this API:
+kubectl get apiservices | awk 'NR==1 || $1 ~ "metrics"'
+NAME                                   SERVICE                                      AVAILABLE   AGE
+v1beta1.custom.metrics.k8s.io          monitoring/prom-adapter-prometheus-adapter   True        60d
+v1beta1.metrics.k8s.io                 kube-system/metrics-server                   True        84d
+and adjusts deployment or sts replicas according to definitions in  HorizontalPodAutocaler  
+There are v1 and beta api versions for HorizontalPodAutocaler:
+v1 - supports  for resource metrics (cpu, memory) - kubect get hpa
+v2beta2  and v2beta1 - supports for both resource and custom metrics - kubectl get hpa.v2beta2.autoscaling
+**The metric value should decrease on adding new pods.**
+Wrong metrics Example: request rate
+Right metrics Example: average request rate per pod |
+
+
+
+Implementation in Codefresh
+* Default “Enable Autoscaling” settings for GKE
+* Using [prometheus-adapter](https://github.com/kubernetes-sigs/prometheus-adapter) with custom metrics
+
+We define HPA for cfapi and pipeline-manager services
+
+**CFapi HPA object**
+
+It's based on three metrics (HPA controller scales of only one of the targetValue reached): 
+
+```yaml
+kubectl get hpa.v2beta1.autoscaling cf-cfapi -oyaml
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  annotations:
+    meta.helm.sh/release-name: cf
+    meta.helm.sh/release-namespace: default
+  labels:
+    app.kubernetes.io/managed-by: Helm
+  name: cf-cfapi
+  namespace: default
+spec:
+  maxReplicas: 16
+  metrics:
+  - object:
+      metricName: requests_per_pod
+      target:
+        apiVersion: v1
+        kind: Service
+        name: cf-cfapi
+      targetValue: "10"
+    type: Object
+  - object:
+      metricName: cpu_usage_avg
+      target:
+        apiVersion: apps/v1
+        kind: Deployment
+        name: cf-cfapi-base
+      targetValue: "1"
+    type: Object
+  - object:
+      metricName: memory_working_set_bytes_avg
+      target:
+        apiVersion: apps/v1
+        kind: Deployment
+        name: cf-cfapi-base
+      targetValue: 3G
+    type: Object
+  minReplicas: 2
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: cf-cfapi-base
+```
+
+* Requests_per_pod is based on  `rate(nginx_ingress_controller_requests)` metric ingested from nginx-ingress-controller
+* `cpu_usage_avg` based on cadvisor (from kubelet) rate `(rate(container_cpu_user_seconds_total)`
+* `memory_working_set_bytes_avg` based on cadvisor container_memory_working_set_bytes
+
+**pipeline-manager HPA**
+
+based on cpu_usage_avg
+
+```
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  annotations:
+    meta.helm.sh/release-name: cf
+    meta.helm.sh/release-namespace: default
+  labels:
+    app.kubernetes.io/managed-by: Helm
+  name: cf-pipeline-manager
+spec:
+  maxReplicas: 8
+  metrics:
+  - object:
+      metricName: cpu_usage_avg
+      target:
+        apiVersion: apps/v1
+        kind: Deployment
+        name: cf-pipeline-manager-base
+      targetValue: 400m
+    type: Object
+  minReplicas: 2
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: cf-pipeline-manager-base
+```
+
+* prometheus-adapter configuration
+Reference: https://github.com/DirectXMan12/k8s-prometheus-adapter/blob/master/docs/config.md 
+
+```
+Rules:
+
+  - metricsQuery: |
+      kube_service_info{<<.LabelMatchers>>} * on() group_right(service)
+        (sum(rate(nginx_ingress_controller_requests{<<.LabelMatchers>>}[2m]))
+          / on() kube_deployment_spec_replicas{deployment='<<index .LabelValuesByName "service">>-base',namespace='<<index .LabelValuesByName "namespace">>'})
+    name:
+      as: requests_per_pod
+      matches: ^(.*)$
+    resources:
+      overrides:
+        namespace:
+          resource: namespace
+        service:
+          resource: service
+    seriesQuery: kube_service_info{service=~".*cfapi.*"}
+  - metricsQuery: |
+      kube_deployment_labels{<<.LabelMatchers>>} * on(label_app) group_right(deployment)
+        (label_replace(
+          avg by (container) (rate(container_cpu_user_seconds_total{container=~"cf-(tasker-kubernetes|cfapi.*|pipeline-manager.*)", job="kubelet", namespace='<<index .LabelValuesByName "namespace">>'}[15m]))
+        , "label_app", "$1", "container", "(.*)"))
+    name:
+      as: cpu_usage_avg
+      matches: ^(.*)$
+    resources:
+      overrides:
+        deployment:
+          group: apps
+          resource: deployment
+        namespace:
+          resource: namespace
+    seriesQuery: kube_deployment_labels{label_app=~"cf-(tasker-kubernetes|cfapi.*|pipeline-manager.*)"}
+  - metricsQuery: "kube_deployment_labels{<<.LabelMatchers>>} * on(label_app) group_right(deployment)\n
+      \ (label_replace(\n    avg by (container) (avg_over_time (container_memory_working_set_bytes{container=~\"cf-.*\",
+      job=\"kubelet\", namespace='<<index .LabelValuesByName \"namespace\">>'}[15m]))\n
+      \ , \"label_app\", \"$1\", \"container\", \"(.*)\"))\n  \n"
+    name:
+      as: memory_working_set_bytes_avg
+      matches: ^(.*)$
+    resources:
+      overrides:
+        deployment:
+          group: apps
+          resource: deployment
+        namespace:
+          resource: namespace
+    seriesQuery: kube_deployment_labels{label_app=~"cf-.*"}
+  - metricsQuery: |
+      kube_deployment_labels{<<.LabelMatchers>>} * on(label_app) group_right(deployment)
+        label_replace(label_replace(avg_over_time(newrelic_apdex_score[15m]), "label_app", "cf-$1", "exported_app", '(cf-api.*|pipeline-manager|tasker-kuberentes)\\[kubernetes\\]'), "label_app", "$1cfapi$3", "label_app", '(cf-)(cf-api)(.*)')
+    name:
+      as: newrelic_apdex
+      matches: ^(.*)$
+    resources:
+      overrides:
+        deployment:
+          group: apps
+          resource: deployment
+        namespace:
+          resource: namespace
+    seriesQuery: kube_deployment_labels{label_app=~"cf-(tasker-kubernetes|cfapi.*|pipeline-manager)"}
+```
+
+**How to define HPA in Codefresh installer (kcfi) config**
+
+Most of Codefresh's Microservices subcharts contain `templates/hpa.yaml`:
+
+```yaml
+{{- if .Values.HorizontalPodAutoscaler }}
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name:  {{ template "cfapi.fullname" . }}
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: {{ template "cfapi.fullname" . }}-{{ .version | default "base" }}
+  minReplicas: {{ coalesce .Values.HorizontalPodAutoscaler.minReplicas .Values.replicaCount 1 }}
+  maxReplicas: {{ coalesce .Values.HorizontalPodAutoscaler.maxReplicas .Values.replicaCount 2 }}
+  metrics:
+{{- if .Values.HorizontalPodAutoscaler.metrics }}
+{{ toYaml .Values.HorizontalPodAutoscaler.metrics | indent 4 }}
+{{- else }}
+  - type: Resource
+    resource:
+      name: cpu
+      targetAverageUtilization: 60
+{{- end }}
+{{- end }}
+```
+
+To configure HPA for CFapi add `HorizontalPodAutoscaler` values to config.yaml, for example:
+
+(assuming that we already have prometheus adapter configured for metrics `requests_per_pod`, `cpu_usage_avg`, `memory_working_set_bytes_avg`)
+
+```yaml
+cfapi:
+  replicaCount: 4
+  resources:
+    requests:
+      memory: "4096Mi"
+      cpu: "1100m"
+    limits:
+      memory: "4096Mi"
+      cpu: "2200m"
+  HorizontalPodAutoscaler:
+    minReplicas: 2
+    maxReplicas: 16
+    metrics:
+    - type: Object
+      object:
+        metricName: requests_per_pod
+        target:
+          apiVersion: "v1"
+          kind: Service
+          name: cf-cfapi
+        targetValue: 10
+    - type: Object
+      object:
+        metricName: cpu_usage_avg
+        target:
+          apiVersion: "apps/v1"
+          kind: Deployment
+          name: cf-cfapi-base
+        targetValue: 1
+    - type: Object
+      object:
+        metricName: memory_working_set_bytes_avg
+        target:
+          apiVersion: "apps/v1"
+          kind: Deployment
+          name: cf-cfapi-base
+        targetValue: 3G
+```
+
+**Querying metrics (for debugging)**
+
+CPU Metric API Call
+kubectl get --raw /apis/metrics.k8s.io/v1beta1/namespaces/codefresh/pods/cf-cfapi-base-****-/ | jq 
+
+Custom Metrics Call
+kubectl get --raw /apis/custom.metrics.k8s.io/v1beta1/namespaces/codefresh/services/cf-cfapi/requests_per_pod | jq
+
+## Upgrade the Codefresh Platform
 
 To upgrade Codefresh to a newer version
 
@@ -741,7 +1004,7 @@ Notice that only `kfci` should be used for Codefresh upgrades. If you still have
 
 #### Mongo
 
-All services using the MongoDB are dependent on the `mongo` pod being up and running.  If the `mongo` pod is down, the following dependencies will not work:
+All services using the MongoDB are dependent on the `mongo` pod being up and running. If the `mongo` pod is down, the following dependencies will not work:
 
 - `runtime-environment-manager`
 - `pipeline-manager`
