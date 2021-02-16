@@ -12,7 +12,7 @@ Codefresh integrates with Jira in a variety of ways:
 * Through a [custom step]({{site.baseurl}}/docs/integrations/notifications/jira-integration/#use-jira-within-your-codefresh-pipeline) from our step marketplace so that you can connect your pipelines with Jira
 * Alternatively, through using your own [jira-cli]({{site.baseurl}}/docs/integrations/notifications/jira-integration/#using-your-own-jira-cli)
 
-Prerequisites needed:
+**Prerequisites needed**:
 * [Codefresh Account](https://codefresh.io/docs/docs/getting-started/create-a-codefresh-account/)
 * [Jira Account](https://www.atlassian.com/software/jira)
 
@@ -40,28 +40,20 @@ alt="Codefresh Integrations"
 max-width="90%" 
 %}
 
-When you Add a new integration, you can choose to authenticate either with your [Jira Account Details]({{site.baseurl}}/docs/integrations/notifications/jira-integration/#provide-account-details) or to using the [Codefresh Marketplace App]({{site.baseurl}}/docs/integrations/notifications/jira-integration/#authenticate-with-the-jira-client-key).
-
-### Provide Account Details
-
-Using your account details to set-up the integration, you will have to provide
-* An `Integration Name`: Any name that you fancy
-* The `Jira URL`: This is the URL of your organisation e.g. ‘https://company-name.atlassian.net’
-* Your `Jira Username`: This is usually the e-mail that you are logged in with at Jira
-* Your Jira `Password`
-Alternatively, you could authenticate with the Jira Client Key. 
-
-{% include image.html 
-lightbox="true" 
-file="/images/integrations/jira/add-new-jira-integration.png" 
-url="/images/integrations/jira/add-new-jira-integration.png" 
-alt="Account Information" 
-max-width="90%" 
-%}
+When you Add a new integration, you can choose to authenticate either using the [Codefresh Marketplace App]({{site.baseurl}}/docs/integrations/notifications/jira-integration/#authenticate-with-the-jira-client-key) or with your [Jira Account Details]({{site.baseurl}}/docs/integrations/notifications/jira-integration/#provide-account-details).
 
 ### Authenticate with the Codefresh Marketplace App
 
-This is the recommended way to set-up your Jira Integration. To access the information needed to set-up the integration with the Codefresh Marketplace App, follow these steps:
+This is the recommended way to set-up your Jira Integration. To use the Codefresh Marketplace App on Jira, select `Jira Marketplace App` within the Jira Integration Setting in your Codefresh Account.
+{% include image.html 
+lightbox="true" 
+file="/images/integrations/jira/jira-marketplace-auth.png" 
+url="/images/integrations/jira/jira-marketplace-auth.png" 
+alt="Authenticate with the Codefresh Marketplace App" 
+max-width="90%" 
+%}
+
+To access the information needed to set-up the integration with the Codefresh Marketplace App, follow these steps:
 * Visit the [Codefresh Application](https://marketplace.atlassian.com/apps/1211656/codefresh-devops-platform) on the Atlassian Marketplace.
     {% include image.html 
     lightbox="true" 
@@ -107,6 +99,23 @@ This is the recommended way to set-up your Jira Integration. To access the infor
 * Lastly, test your integration to ensure the credentials are set-up correctly.
 
 You are all set!
+
+### Provide Account Details
+
+Using your account details to set-up the integration, you will have to provide
+* An `Integration Name`: Any name that you fancy
+* The `Jira URL`: This is the URL of your organisation e.g. ‘https://company-name.atlassian.net’
+* Your `Jira Username`: This is usually the e-mail that you are logged in with at Jira
+* Your Jira `Password`
+Alternatively, you could authenticate with the Jira Client Key. 
+
+{% include image.html 
+lightbox="true" 
+file="/images/integrations/jira/add-new-jira-integration.png" 
+url="/images/integrations/jira/add-new-jira-integration.png" 
+alt="Account Information" 
+max-width="90%" 
+%}
 
 ## Use Jira Within Your Codefresh Pipeline
 
