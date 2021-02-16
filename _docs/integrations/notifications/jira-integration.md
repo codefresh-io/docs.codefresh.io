@@ -40,7 +40,7 @@ alt="Codefresh Integrations"
 max-width="90%" 
 %}
 
-When you Add a new integration, you can choose to authenticate either with your [Jira Account Details]({{site.baseurl}}/docs/integrations/notifications/jira-integration/#provide-account-details) or to authenticate with a [Jira Client Key]({{site.baseurl}}/docs/integrations/notifications/jira-integration/#authenticate-with-the-jira-client-key).
+When you Add a new integration, you can choose to authenticate either with your [Jira Account Details]({{site.baseurl}}/docs/integrations/notifications/jira-integration/#provide-account-details) or to using the [Codefresh Marketplace App]({{site.baseurl}}/docs/integrations/notifications/jira-integration/#authenticate-with-the-jira-client-key).
 
 ### Provide Account Details
 
@@ -59,9 +59,9 @@ alt="Account Information"
 max-width="90%" 
 %}
 
-### Authenticate with the Jira Client Key
+### Authenticate with the Codefresh Marketplace App
 
-This is the recommended way to set-up your Jira Integration. To access the Client Key, follow these steps:
+This is the recommended way to set-up your Jira Integration. To access the information needed to set-up the integration with the Codefresh Marketplace App, follow these steps:
 * Visit the [Codefresh Application](https://marketplace.atlassian.com/apps/1211656/codefresh-devops-platform) on the Atlassian Marketplace.
     {% include image.html 
     lightbox="true" 
