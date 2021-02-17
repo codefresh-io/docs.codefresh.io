@@ -18,9 +18,11 @@ toc: true
 
 ### February 2021
 
+
 - Concurrency behavior for pending builds - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/#define-concurrency-limits)
 - Jira integration - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/sending-the-notification-to-jira/)
 - SLA details - [documentation]({{site.baseurl}}/docs/terms-and-privacy-policy/sla/)
+- Autoscaling recommendations for Codefresh on-prem - [documentation]({{site.baseurl}}/docs/administration/codefresh-on-prem/#app-cluster-autoscaling)
 - Hide inaccessible clusters in the Kubernetes dashboard - [documentation]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/#accessing-the-kubernetes-dashboard)
 - Define access for non-admins in Helm repositories and shared config - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/#level-of-access)
 - Okta auto-sync of teams - [documentation]({{site.baseurl}}/docs/administration/single-sign-on/sso-okta/#syncing-of-teams-after-initial-sso-setup)

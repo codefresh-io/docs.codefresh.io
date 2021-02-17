@@ -729,23 +729,20 @@ Autoscaling in Kubernetes is implemented as an interaction between Cluster Autos
 {: .table .table-bordered .table-hover}
 |             | Scaling Target| Trigger | Controller | How it Works |
 | ----------- | ------------- | ------- | ---------  | --------- |
-| [Cluster Autoscaler](https://github.com/kubernetes/autoscaler/tree/master/cluster-autoscaler)| Nodes | Up: Pending pod Down: Node resource allocations is low | On GKE we can turn on/off autoscaler and configure min/max per node group can be also installed separately | Listens on pending pods for scale up and node allocations for scaledown. |
-| [Horizontal Pod Autoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) | replicas on deployments or StatefulSets | metrics value thresholds defined in HPA object | part of Kubernetes controller | Controller gets metrics from "metrics.k8s.io/v1beta1" , "custom.metrics.k8s.io/v1beta1", "external.metrics.k8s.io/v1beta1" requires [metrics-server](https://github.com/kubernetes-sigs/metrics-server) and custom metrics adapters ([prometheus-adapter](https://github.com/kubernetes-sigs/prometheus-adapter), [stackdriver-adapter](https://github.com/GoogleCloudPlatform/k8s-stackdriver/tree/master/custom-metrics-stackdriver-adapter)) to listen on this API:
+| [Cluster Autoscaler](https://github.com/kubernetes/autoscaler/tree/master/cluster-autoscaler)| Nodes | **Up:** Pending pod <br/> **Down:** Node resource allocations is low | On GKE we can turn on/off autoscaler and configure min/max per node group can be also installed separately | Listens on pending pods for scale up and node allocations for scaledown. Should have permissions to call cloud api. Considers pod affinity, pdb, storage, special annotations |
+| [Horizontal Pod Autoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) | replicas on deployments or StatefulSets | metrics value thresholds defined in HPA object | part of Kubernetes controller | Controller gets metrics from "metrics.k8s.io/v1beta1" , "custom.metrics.k8s.io/v1beta1", "external.metrics.k8s.io/v1beta1" requires [metrics-server](https://github.com/kubernetes-sigs/metrics-server) and custom metrics adapters ([prometheus-adapter](https://github.com/kubernetes-sigs/prometheus-adapter), [stackdriver-adapter](https://github.com/GoogleCloudPlatform/k8s-stackdriver/tree/master/custom-metrics-stackdriver-adapter)) to listen on this API (see note (1) below) and adjusts deployment or sts replicas according to definitions in  HorizontalPodAutocaler <br/> There are v1 and beta api versions for HorizontalPodAutocaler: <br/> [v1](https://github.com/kubernetes/api/blob/master/autoscaling/v1/types.go) - supports  for resource metrics (cpu, memory) - `kubect get hpa` <br/> [v2beta2](https://github.com/kubernetes/api/blob/master/autoscaling/v2beta2/types.go)  and [v2beta1](https://github.com/kubernetes/api/blob/master/autoscaling/v2beta1/types.go) - supports for both resource and custom metrics - `kubectl get hpa.v2beta2.autoscaling` **The metric value should decrease on adding new pods.** <br/> *Wrong metrics Example:* request rate <br/> *Right metrics Example:* average request rate per pod |
+
+Note (1)   
+```
 kubectl get apiservices | awk 'NR==1 || $1 ~ "metrics"'
 NAME                                   SERVICE                                      AVAILABLE   AGE
 v1beta1.custom.metrics.k8s.io          monitoring/prom-adapter-prometheus-adapter   True        60d
 v1beta1.metrics.k8s.io                 kube-system/metrics-server                   True        84d
-and adjusts deployment or sts replicas according to definitions in  HorizontalPodAutocaler  
-There are v1 and beta api versions for HorizontalPodAutocaler:
-v1 - supports  for resource metrics (cpu, memory) - kubect get hpa
-v2beta2  and v2beta1 - supports for both resource and custom metrics - kubectl get hpa.v2beta2.autoscaling
-**The metric value should decrease on adding new pods.**
-Wrong metrics Example: request rate
-Right metrics Example: average request rate per pod |
+```
 
 
+**Implementation in Codefresh** 
 
-Implementation in Codefresh
 * Default “Enable Autoscaling” settings for GKE
 * Using [prometheus-adapter](https://github.com/kubernetes-sigs/prometheus-adapter) with custom metrics
 
@@ -755,8 +752,12 @@ We define HPA for cfapi and pipeline-manager services
 
 It's based on three metrics (HPA controller scales of only one of the targetValue reached): 
 
-```yaml
+```
 kubectl get hpa.v2beta1.autoscaling cf-cfapi -oyaml
+```
+
+{% highlight yaml %}
+{% raw %}
 apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
 metadata:
@@ -799,17 +800,19 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: cf-cfapi-base
-```
+{% endraw%}
+{% endhighlight %}
 
-* Requests_per_pod is based on  `rate(nginx_ingress_controller_requests)` metric ingested from nginx-ingress-controller
+* `requests_per_pod` is based on  `rate(nginx_ingress_controller_requests)` metric ingested from nginx-ingress-controller
 * `cpu_usage_avg` based on cadvisor (from kubelet) rate `(rate(container_cpu_user_seconds_total)`
-* `memory_working_set_bytes_avg` based on cadvisor container_memory_working_set_bytes
+* `memory_working_set_bytes_avg` based on cadvisor `container_memory_working_set_bytes`
 
 **pipeline-manager HPA**
 
-based on cpu_usage_avg
+based on `cpu_usage_avg`
 
-```
+{% highlight yaml %}
+{% raw %}
 apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
 metadata:
@@ -835,14 +838,17 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: cf-pipeline-manager-base
-```
+{% endraw%}
+{% endhighlight %}
 
-* prometheus-adapter configuration
-Reference: https://github.com/DirectXMan12/k8s-prometheus-adapter/blob/master/docs/config.md 
+**prometheus-adapter configuration**
 
-```
+Reference: [https://github.com/DirectXMan12/k8s-prometheus-adapter/blob/master/docs/config.md](https://github.com/DirectXMan12/k8s-prometheus-adapter/blob/master/docs/config.md 
+)
+
+{% highlight yaml %}
+{% raw %}
 Rules:
-
   - metricsQuery: |
       kube_service_info{<<.LabelMatchers>>} * on() group_right(service)
         (sum(rate(nginx_ingress_controller_requests{<<.LabelMatchers>>}[2m]))
@@ -902,13 +908,15 @@ Rules:
         namespace:
           resource: namespace
     seriesQuery: kube_deployment_labels{label_app=~"cf-(tasker-kubernetes|cfapi.*|pipeline-manager)"}
-```
+{% endraw%}
+{% endhighlight %}
 
 **How to define HPA in Codefresh installer (kcfi) config**
 
 Most of Codefresh's Microservices subcharts contain `templates/hpa.yaml`:
 
-```yaml
+{% highlight yaml %}
+{% raw %}
 {{- if .Values.HorizontalPodAutoscaler }}
 apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
@@ -931,13 +939,15 @@ spec:
       targetAverageUtilization: 60
 {{- end }}
 {{- end }}
-```
+{% endraw%}
+{% endhighlight %}
 
 To configure HPA for CFapi add `HorizontalPodAutoscaler` values to config.yaml, for example:
 
 (assuming that we already have prometheus adapter configured for metrics `requests_per_pod`, `cpu_usage_avg`, `memory_working_set_bytes_avg`)
 
-```yaml
+{% highlight yaml %}
+{% raw %}
 cfapi:
   replicaCount: 4
   resources:
@@ -975,15 +985,22 @@ cfapi:
           kind: Deployment
           name: cf-cfapi-base
         targetValue: 3G
-```
+{% endraw%}
+{% endhighlight %}
 
 **Querying metrics (for debugging)**
 
 CPU Metric API Call
+
+```
 kubectl get --raw /apis/metrics.k8s.io/v1beta1/namespaces/codefresh/pods/cf-cfapi-base-****-/ | jq 
+```
 
 Custom Metrics Call
+
+```
 kubectl get --raw /apis/custom.metrics.k8s.io/v1beta1/namespaces/codefresh/services/cf-cfapi/requests_per_pod | jq
+```
 
 ## Upgrade the Codefresh Platform
 
