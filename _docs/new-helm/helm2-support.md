@@ -13,8 +13,6 @@ Therefore:
 * “Stable” and “Incubator" repositories will be discontinued
 * https://github.com/helm/charts is now obsolete
 
-https://github.com/helm/charts
-
 For migrating your Helm 2 charts you can use the [helm-2to3 plugin](https://github.com/helm/helm-2to3)
 
 Codefresh will also discontinue support for Helm 2 on July 16 2021. After this date: 
@@ -26,7 +24,5 @@ Please contact us at support@codefresh.io if you have any questions or concerns.
 ## What to read next
 
 * [Helm Quick Start Guide](https://codefresh.io/docs/docs/getting-started/helm-quick-start-guide/)
-
 * [Using Helm](https://codefresh.io/docs/docs/new-helm/using-helm-in-codefresh-pipeline/)
-
 * [Helm Example](https://codefresh.io/docs/docs/yaml-examples/examples/helm/)
