@@ -16,8 +16,8 @@ Therefore:
 For migrating your Helm 2 charts you can use the [helm-2to3 plugin](https://github.com/helm/helm-2to3)
 
 Codefresh will also discontinue support for Helm 2 on July 16 2021. After this date: 
-1. All Codefresh Helm dashboards including the [Helm releases](https://codefresh.io/docs/docs/new-helm/helm-releases-management/), and [promotions](https://codefresh.io/docs/docs/new-helm/helm-environment-promotion/) will stop supporting Helm 2 clusters and namespaces. 
-2. The Codefresh Helm [step](https://codefresh.io/steps/step/helm) will no longer support Helm 2.
+1. All Codefresh Helm dashboards including the [Helm releases](https://codefresh.io/docs/docs/new-helm/helm-releases-management/), and [promotions](https://codefresh.io/docs/docs/new-helm/helm-environment-promotion/) will only support Helm 3 clusters and namespaces. 
+2. The Codefresh Helm [step](https://codefresh.io/steps/step/helm) will only support Helm 3.
 
 Please contact us at support@codefresh.io if you have any questions or concerns.
 
