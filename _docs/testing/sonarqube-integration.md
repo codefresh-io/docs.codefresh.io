@@ -53,8 +53,8 @@ Please create the file and add the following values
 # must be unique in a given SonarQube instance
 sonar.projectKey=a unique project key
  
-# organization name
-sonar.organization=your organisation name
+# project name
+sonar.projectName=your project's name
 {% endhighlight %}
 
 The file is needed to run the SonarQube plugin.
