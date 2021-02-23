@@ -449,8 +449,10 @@
       url: "/codefresh-on-prem"
     - title: Add Users
       url: "/invite-your-team-member"
-    - title: User settings
+    - title: User Settings
       url: "/user-settings"
+    - title: Pipeline Settings
+      url: "/pipeline-settings
     - title: Enterprise Account Management
       url: "/ent-account-mng"
     - title: Single Sign-On
