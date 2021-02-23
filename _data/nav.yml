@@ -452,7 +452,7 @@
     - title: User Settings
       url: "/user-settings"
     - title: Pipeline Settings
-      url: "/pipeline-settings
+      url: "/pipeline-settings"
     - title: Enterprise Account Management
       url: "/ent-account-mng"
     - title: Single Sign-On
