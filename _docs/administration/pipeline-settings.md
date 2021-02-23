@@ -1,4 +1,9 @@
-***Pipeline Settings**
+---
+title: "Pipeline Settings"
+description: ""
+group: administration
+toc: true
+---
 
 On this page, you can define global parameters for the whole Codefresh account regarding pipeline options. Users can still override some of these options for individual pipelines.
 
