@@ -47,6 +47,6 @@ Note that this behavior is simply a convenience feature for legacy pipelines. Us
 
 ## What to read next
 
-* [Creating Pipelines](https://codefresh.io/docs/docs/configure-ci-cd-pipeline/pipelines/)
-* [Codefresh YAML](https://codefresh.io/docs/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
-* [Git Integration](https://codefresh.io/docs/docs/integrations/git-providers/)
+* [Creating Pipelines]({{site.baseurl}}/docs/docs/configure-ci-cd-pipeline/pipelines/)
+* [Codefresh YAML]({{site.baseurl}}/docs/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
+* [Git Integration]({{site.baseurl}}/docs/docs/integrations/git-providers/)
