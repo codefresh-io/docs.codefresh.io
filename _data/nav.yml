@@ -376,7 +376,8 @@
       url: "/custom-helm-uploads"
     - title: Helm environment promotion
       url: "/helm-environment-promotion"
-
+    - title: Helm 2 Support
+      url: "/helm2-support"
 
 - title: Integrations
   url: "/integrations"

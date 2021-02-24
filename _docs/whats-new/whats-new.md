@@ -1,13 +1,13 @@
 ---
-title: "Whats New In Codefresh?"
-description: "A changelog of new features"
+title: "What's New In Codefresh?"
+description: "A Changelog of New Features"
 group: whats-new
 redirect_from:
   - /docs/whats-new/
 toc: true
 ---
 
-## Upcoming changes:
+## Upcoming Changes:
 
 - New platform IP addresses - [documentation]({{site.baseurl}}/docs/administration/platform-ip-addresses/)
 -  *Modified Files filter on triggers for Pull request events*: Available March 1st
@@ -26,6 +26,8 @@ toc: true
 - Hide inaccessible clusters in the Kubernetes dashboard - [documentation]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/#accessing-the-kubernetes-dashboard)
 - Define access for non-admins in Helm repositories and shared config - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/#level-of-access)
 - Okta auto-sync of teams - [documentation]({{site.baseurl}}/docs/administration/single-sign-on/sso-okta/#syncing-of-teams-after-initial-sso-setup)
+- Helm 2 Support - [documentation]({{site.baseurl}}/docs/new-helm/helm2-support)
+
 
 
 ### January 2021
