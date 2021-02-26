@@ -808,8 +808,6 @@ In this case Codefresh will make sure that cleanup happens only when both unit a
 
 For maximum flexibility you can define a custom conditional for a step.
 
-> Notice that step dependencies only work for [full parallel mode](#parallel-pipeline-mode) (i.e. you need `mode: parallel` at the top of the pipeline yaml).
-
 It is hard to describe all possible cases, because Codefresh support a [mini DSL]({{site.baseurl}}/docs/codefresh-yaml/condition-expression-syntax/) for conditions. All examples mentioned in [conditional execution]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/) are still valid in parallel pipelines.
 
 For example, run this step only if a PR is opened against the production branch:
