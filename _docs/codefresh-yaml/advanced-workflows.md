@@ -558,8 +558,6 @@ At the most basic level, you can define that a step *depends on* the execution o
 1. The first step was skipped
 1. The first completes (regardless of exit) status
 
-> Notice that step dependencies only work for [full parallel mode](#parallel-pipeline-mode) (i.e. you need `mode: parallel` at the top of the pipeline yaml).
-
 The syntax for this is the following post-condition:
 
 {% highlight yaml %}
@@ -682,8 +680,6 @@ Also notice the `fail_fast: false` line in the unit tests. By default, if *any* 
 ### Multiple Step dependencies
 
 A pipeline step can also depend on multiple other steps. 
-
-> Notice that step dependencies only work for [full parallel mode](#parallel-pipeline-mode) (i.e. you need `mode: parallel` at the top of the pipeline yaml).
 
 The syntax is:
 
@@ -842,7 +838,7 @@ You can now add extra conditions regarding the completion state of specific step
 
 * Success
 * Failure
-* Skipped
+* Skipped (only valid in sequential mode)
 * Finished (regardless of status)
 * Pending
 * Running
