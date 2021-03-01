@@ -111,8 +111,8 @@ Alternatively, you could authenticate with the Jira Client Key.
 
 {% include image.html 
 lightbox="true" 
-file="/images/integrations/jira/add-new-jira-integration.png" 
-url="/images/integrations/jira/add-new-jira-integration.png" 
+file="/images/integrations/jira/add-jira-password.png" 
+url="/images/integrations/jira/add-jira-password.png" 
 alt="Account Information" 
 max-width="90%" 
 %}
