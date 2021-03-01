@@ -1,6 +1,6 @@
 ---
 title: "Post-Step Operations"
-description: "Annotating yours builds and pipelines with dynamic metadata"
+description: "Annotating your builds and pipelines with dynamic metadata"
 group: codefresh-yaml
 redirect_from:
   - /docs/post-step-operations/
