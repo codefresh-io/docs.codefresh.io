@@ -9,13 +9,15 @@ toc: true
 
 ## Upcoming changes:
 
-- Jira integration - [documentation]({{site.baseurl}}/docs/integrations/jira-integration/)
 - New platform IP addresses - [documentation]({{site.baseurl}}/docs/administration/platform-ip-addresses/)
 -  *Modified Files filter on triggers for Pull request events*: Available March 1st
     The Modified Files filter will now work on triggers triggered by Pull Request events. Notice: this might cause unexpected behavior if you have a trigger that is triggered by both Pull Request and Commit events with a Modified Files filter set. Previously the Modified Files filter would be ignored for Pull Request events. If you need different filters for Pull Requests and Commit events, we recommend you separate the trigger.
 
 
 ## Recent Codefresh updates:
+
+### March 2021
+- Jira integration - [documentation]({{site.baseurl}}/docs/integrations/jira-integration/)
 
 ### February 2021
 
