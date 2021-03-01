@@ -361,7 +361,7 @@ You can override the default behavior in each pipeline, by adding the optional `
 
 You can use the `registry_context` property in [build]({{site.baseurl}}/docs/codefresh-yaml/steps/build/), [push]({{site.baseurl}}/docs/codefresh-yaml/steps/push/), [freestyle]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) and [composition]({{site.baseurl}}/docs/codefresh-yaml/steps/composition/) steps.
 
-The `registry_context` property takes as value the name of an external connected registry. Build and composition steps accept an array of values as `registry_context`. In all cases, by using this optional property you instruct Codefresh to use a specific registry for pulling images.
+The `registry_context` property takes as value the name of an external connected registry. Build and composition steps accept an array of values as `registry_contexts`. In all cases, by using this optional property you instruct Codefresh to use a specific registry for pulling images.
 
 > Notice that the optional `registry_context` and `registry_contexts` properties only affect the **pulling** of Docker images. The registry used for *pushing* images is still declared explicitly in build and push pipeline steps.
 

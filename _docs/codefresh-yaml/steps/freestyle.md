@@ -101,9 +101,6 @@ step_name:
 **Exported resources:**
 - Working Directory.
 
-
-
-
 ## Examples
 
 Here are some full pipelines with freestyle steps. Notice that in all cases the pipelines are connected to [git repositories]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-creation-modes)
@@ -152,7 +149,7 @@ steps:
      - go build
 {% endhighlight %}
 
-#### Performing a [blue/green deployment](https://github.com/codefresh-io/k8s-blue-green-deployment):
+**Performing a [blue/green deployment](https://github.com/codefresh-io/k8s-blue-green-deployment):** 
 
 `codefresh.yml`
 {% highlight yaml %}

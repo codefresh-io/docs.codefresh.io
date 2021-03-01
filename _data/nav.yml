@@ -376,7 +376,8 @@
       url: "/custom-helm-uploads"
     - title: Helm environment promotion
       url: "/helm-environment-promotion"
-
+    - title: Helm 2 Support
+      url: "/helm2-support"
 
 - title: Integrations
   url: "/integrations"
@@ -451,8 +452,10 @@
       url: "/codefresh-on-prem"
     - title: Add Users
       url: "/invite-your-team-member"
-    - title: User settings
+    - title: User Settings
       url: "/user-settings"
+    - title: Pipeline Settings
+      url: "/pipeline-settings"
     - title: Enterprise Account Management
       url: "/ent-account-mng"
     - title: Single Sign-On
@@ -541,10 +544,10 @@
       url: "/git-step-migration"
     - title: Personal Git Deprecation
       url: "/personal-git-deprecation"
-- title: Whats new?
+- title: What's New?
   url: "/whats-new"
   pages:
-    - title: Whats New In Codefresh?
+    - title: What's New In Codefresh?
       url: "/whats-new"
 
 - title: Terms and Privacy Policy

@@ -23,7 +23,7 @@ This documentation is using the following [example](https://github.com/codefresh
 {% highlight yaml %}
   JiraCommentCreate:
     title: "Add Jira Comment"
-    type: "codefreshdemo/jira-issue-manager"
+    type: "jira-issue-manager"
     stage: "deploy"
     arguments:
       JIRA_BASE_URL: '${{JIRA_BASE_URL}}'

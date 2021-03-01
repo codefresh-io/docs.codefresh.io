@@ -122,7 +122,7 @@ If your GitHub installation is behind your firewall, you can also
 use any [external secrets that you have defined]({{site.baseurl}}/docs/integrations/secret-storage/) (such as Kubernetes secrets) as values by entering a secrets value
 with the same syntax [shown in pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/secrets-store/).
 
-For example if you already have a `token` on a resource call `git-credentials` you can put in the token field the expression {% raw %}`${{secrets.git-credentials@token}}`{% endraw %}.
+For example if you already have a `token` on a resource call `git-credentials` you can put in the token field the expression {% raw %}`${{secrets.git-credentials.token}}`{% endraw %}.
 
 
 
