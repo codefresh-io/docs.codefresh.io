@@ -54,7 +54,7 @@ max-width="90%"
 %}
 
 To access the information needed to set-up the integration with the Codefresh Marketplace App, follow these steps:
-* Visit the [Codefresh Application](https://marketplace.atlassian.com/apps/1211656/codefresh-devops-platform) on the Atlassian Marketplace.
+* Visit the [Codefresh Application](https://marketplace.atlassian.com/apps/1224560/codefresh) on the Atlassian Marketplace.
     {% include image.html 
     lightbox="true" 
     file="/images/integrations/jira/add-app.png" 
