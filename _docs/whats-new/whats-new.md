@@ -17,7 +17,7 @@ toc: true
 ## Recent Codefresh updates:
 
 ### March 2021
-- Jira integration - [documentation]({{site.baseurl}}/docs/integrations/jira-integration/)
+- Jira integration - [documentation]({{site.baseurl}}/docs/integrations/jira/)
 
 ### February 2021
 

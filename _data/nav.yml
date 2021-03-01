@@ -417,7 +417,9 @@
     - title: Helm Integration
       url: "/helm" 
     - title: ArgoCD Integration
-      url: "/argo-cd"            
+      url: "/argo-cd"       
+    - title: Jira Integration
+      url: "/jira"       
     - title: Jenkins Integration
       url: "/jenkins-integration"                
     - title: Google Cloud builder
