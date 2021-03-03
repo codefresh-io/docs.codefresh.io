@@ -1,9 +1,11 @@
 ---
 title: "Pipeline Settings"
-description: ""
+description: "Define global options for pipeline templates, yaml sources and approval behavior"
 group: administration
 toc: true
 ---
+
+To access your global pipeline settings navigate to [https://g.codefresh.io/account-admin/account-conf/pipeline-settings](https://g.codefresh.io/account-admin/account-conf/pipeline-settings) or click on *Account settings* on the left sidebar and then choose *Pipeline settings* item on the next screen.
 
 On this page, you can define global parameters for the whole Codefresh account regarding pipeline options. Users can still override some of these options for individual pipelines.
 
