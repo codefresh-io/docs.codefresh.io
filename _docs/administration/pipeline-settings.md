@@ -9,6 +9,15 @@ To access your global pipeline settings navigate to [https://g.codefresh.io/acco
 
 On this page, you can define global parameters for the whole Codefresh account regarding pipeline options. Users can still override some of these options for individual pipelines.
 
+{% include image.html
+lightbox="true"
+file="/images/administration/pipeline-settings/pipeline-settings-ui.png"
+url="/images/administration/pipeline-settings/pipeline-settings-ui.png"
+alt="pipeline-settings"
+caption="pipeline-settings"
+max-width="80%"
+%}
+
 ## Template Section
 
 Here you can define global template behavior. The options are:
