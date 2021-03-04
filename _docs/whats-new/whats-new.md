@@ -10,11 +10,12 @@ toc: true
 ## Upcoming Changes:
 
 - New platform IP addresses - [documentation]({{site.baseurl}}/docs/administration/platform-ip-addresses/)
--  *Modified Files filter on triggers for Pull request events*: Available March 1st
-    The Modified Files filter will now work on triggers triggered by Pull Request events. Notice: this might cause unexpected behavior if you have a trigger that is triggered by both Pull Request and Commit events with a Modified Files filter set. Previously the Modified Files filter would be ignored for Pull Request events. If you need different filters for Pull Requests and Commit events, we recommend you separate the trigger.
-
 
 ## Recent Codefresh Updates:
+
+### March 2021
+
+- The [Modified Files filter]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/#monorepo-support-modified-files) will now work on triggers triggered by Pull Request events. Notice: this might cause unexpected behavior if you have a trigger that is triggered by both Pull Request and Commit events with a Modified Files filter set. Previously the Modified Files filter would be ignored for Pull Request events. If you need different filters for Pull Requests and Commit events, we recommend you separate the trigger.
 
 ### February 2021
 
