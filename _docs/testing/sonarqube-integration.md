@@ -59,6 +59,12 @@ sonar.projectName=your project's name
 
 The file is needed to run the SonarQube plugin.
 
+<div class="bd-callout bd-callout-info" markdown="1">
+##### Language-specific Settings
+
+Please note that projects using some languages may require additional configuration. For information on what may be needed for your language, refer to the appropriate language page in the [Sonarqube documentation](https://docs.sonarqube.org/latest/analysis/languages/overview/)
+</div>
+
 ## Running an analysis from the Codefresh Plugin
 
 If you are using the predefined Codefresh pipeline you just need to look-up SonarQube under `STEPS` and you will find the custom plugin.
