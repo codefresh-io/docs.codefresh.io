@@ -247,7 +247,7 @@ version: '1.0'
 kind: step-type
 metadata:
   name: <codefresh_account_name>/<step_name>
-  isPublic: true
+  isPublic: false
   description: >-
     The plugin exports KV pairs from Hashicorp Vault to Codefresh pipeline ENV
     variables
@@ -442,7 +442,7 @@ version: '1.0'
 kind: step-type
 metadata:
   name: kostis-codefresh/node-version
-  isPublic: true
+  isPublic: false
   description: >-
     The plugin exports as an environment variable the application version from package.json
   sources:
@@ -600,7 +600,7 @@ version: '1.0'
 kind: step-type
 metadata:
   name: kostis-codefresh/output-parameters-example
-  isPublic: true
+  isPublic: false
   description: >-
     The plugin shows how you can export output parameters
   sources:
@@ -795,7 +795,7 @@ version: '1.0'
 kind: step-type
 metadata:
   name: kostis-codefresh/mvn-version
-  isPublic: true
+  isPublic: false
   description: >-
     The plugin exports as an environment variable the mvn coordinates from pom.xml
   sources:
@@ -1005,7 +1005,7 @@ version: '1.0'
 kind: step-type
 metadata:
   name: kostis-codefresh/multi-git-clone
-  isPublic: true
+  isPublic: false
   description: >-
     This pipeline plugin shows templating of custom steps
   sources:
