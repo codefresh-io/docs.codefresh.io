@@ -13,8 +13,8 @@ Install the Codefresh Runner on your Kubernetes cluster to run pipelines and acc
 
 [Skip to quick installation &#8594;](#installation-with-the-quick-start-wizard)
 
->***Note:** a runner installation is needed for each cluster _running_ Codefresh pipelines. A runner is **not** needed
-in clusters used for _deployment_. It is possible to deploy applications on clusters other than the ones the runner is deployed on.*
+>**Note:** a runner installation is needed for each cluster _running_ Codefresh pipelines. A runner is **not** needed
+in clusters used for _deployment_. It is possible to deploy applications on clusters other than the ones the runner is deployed on.
 
 The installation process takes care of all runner components and other required resources (config-maps, secrets, volumes). 
 
