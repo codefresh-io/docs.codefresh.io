@@ -104,6 +104,8 @@ The minimum permissions for the token are:
 - `admin:repo_hook.*`
 - `admin:org.*`
 
+> The admin permission for the org is required to allow the addition of webhhoks on org projects.
+
 {% include image.html 
 lightbox="true" 
 file="/images/integrations/git/github-token.png" 
