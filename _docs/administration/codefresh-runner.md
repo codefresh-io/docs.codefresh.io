@@ -1239,7 +1239,7 @@ We must reduce the Docker MTU used by the runner's Docker in Docker (dind) pods 
 ```
 kubectl edit cm codefresh-dind-config -n codefresh
 ```
-In the editor, update the **daemon.json** field - add the following substring just before the last curley brace `,\"mtu\":1440`.
+In the editor, update the **daemon.json** field - add `,\"mtu\":1440` just before the last curley brace.
  {% include image.html
   lightbox="true"
   file="/images/administration/runner/rancher-mtu.png"
