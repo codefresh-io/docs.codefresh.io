@@ -671,7 +671,7 @@ policy/dind-ebs:
     "Version": "2012-10-17",
     "Statement": [
         {
-           ### "Effect": "Allow",
+            "Effect": "Allow",
             "Action": [
                 "ec2:DescribeVolumes"
             ],
@@ -1144,7 +1144,117 @@ kubectl edit cm codefresh-dind-config -ncodefresh-runtime
 ```
 
 And add this after one of the commas:
-`"mtu":1440,`
+`\"mtu\":1440,`
+
+### Installing on Rancher RKE 2.X
+
+#### Step 1 - Configure the kubelet to work with the runner's StorageClass
+
+The runner's default StorageClass creates the persistent cache volume from local storage on each node.  We need to edit the cluster config to allow this.
+
+1. In the Rancher UI, drill into the target cluster and then click the Edit Cluster button at the top-right.
+
+{% include image.html
+  lightbox="true"
+  file="/images/administration/runner/rancher-cluster.png"
+  url="/images/administration/runner/rancher-cluster.png"
+  alt="Drill into your cluster and click Edit Cluster on the right"
+  caption="Drill into your cluster and click Edit Cluster on the right"
+  max-width="80%"
+    %} 
+
+2. On the edit cluster page, scroll down to the Cluster Options section and click its **Edit as YAML** button
+
+{% include image.html
+  lightbox="true"
+  file="/images/administration/runner/rancher-edit-as-yaml.png"
+  url="/images/administration/runner/rancher-edit-as-yaml.png"
+  alt="Cluster Options -> Edit as YAML"
+  caption="Cluster Options -> Edit as YAML"
+  max-width="80%"
+    %} 
+
+3. Edit the YAML to include an extra mount in the kubelet service:
+
+```
+rancher_kubernetes_engine_config:
+  ...  
+  services:
+    ...  
+    kubelet:
+      extra_binds:
+        - '/var/lib/codefresh:/var/lib/codefresh:rshared'
+```
+{% include image.html
+  lightbox="true"
+  file="/images/administration/runner/rancher-kublet.png"
+  url="/images/administration/runner/rancher-kublet.png"
+  alt="Add volume to rancher_kubernetes_engine_config.services.kublet.extra_binds"
+  caption="Add volume to rancher_kubernetes_engine_config.services.kublet.extra_binds"
+  max-width="80%"
+    %} 
+
+#### Step 2 - Make sure your kubeconfig user is a ClusterAdmin
+
+The user in your kubeconfig must be a cluster admin in order to install the runner.  This can be your personal user account with Cluster Admin privileges. 
+
+However, if you plan to have your pipelines connect to this cluster as a cluster admin, then you can go ahead and create a Codefresh user for this purpose in the Rancher UI with a **non-expiring** kubeconfig token. While this is the easiest way to do the installation, you also have the option to create a service account for Codefresh later, with less privileges (covered in Step 4).
+
+Here is one way to do this from the Rancher UI:
+1. Click Security at the top, and then choose Users
+
+ {% include image.html
+  lightbox="true"
+  file="/images/administration/runner/rancher-security.png"
+  url="/images/administration/runner/rancher-security.png"
+  alt="Create a cluster admin user for Codefresh"
+  caption="Create a cluster admin user for Codefresh"
+  max-width="80%"
+    %} 
+
+2. Click the Add User button, and under Global Permissions check the box for **Restricted Administrstor**
+3. Log out of the Rancher UI, and then log back in as the new user
+4. Click your user icon at the top-right, and then choose **API & Keys**
+5. Click the **Add Key** button and create a kubeconfig token with Expires set to Never
+6. Copy the Bearer Token field (combines Access Key and Secret Key)
+7. Edit your kubeconfig and put the Bearer Token you copied in the `token` field of your user
+
+#### Step 3 - Install the runner
+
+If you've created your kubeconfig from the Rancher UI, then it will contain an API endpoint that is not reachable internally, from within the cluster. To work around this, we need to tell the runner to instead use Kubernetes' generic internal API endpoint.  Also, if you didn't create a Codefresh user in step 2, then you should also add the `--skip-cluster-integration` option.
+
+```
+# Install runner with your personal user 
+codefresh runner init --set-value KubernetesHost=https://kubernetes.default.svc.cluster.local --skip-cluster-integration
+
+# Or install runner with a Codefresh user (ClusterAdmin, non-expiring token)
+codefresh runner init --set-value KubernetesHost=https://kubernetes.default.svc.cluster.local
+```
+The wizard will then ask you some basic questions.
+
+#### Step 4 - Create the Cluster Integration
+
+If you created a user in Step 2 and used it to install the runner in Step 3, then you can skip this step - your installation is complete! 
+
+However, if you installed the runner with the `--skip-cluster-integration` option then you should follow the documentaion to [Add a Rancher Cluster](https://codefresh.io/docs/docs/deploy-to-kubernetes/add-kubernetes-cluster/#adding-a-rancher-cluster) to your Kubernetes Integrations.
+
+Once complete, you can go to the Codefresh UI and run a pipeline on the new runtime, including steps that deploy to the Kubernetes Integration.
+
+#### Troubleshooting TLS Errors
+
+Depending on your Rancher configuration, you may need to allow insecure HTTPS/TLS connections. You can do this by adding an environment variable to the runner deployment.
+
+Assuming that you installed the runner into the `codefresh` namespace, you would edit the runner deployment like this:
+```
+kubectl edit deploy runner -n codefresh
+```
+
+When editing the runner deployment, add this environment variable under spec.containers.env[]:
+```
+- name: NODE_TLS_REJECT_UNAUTHORIZED
+  value: "0"
+```
+
 
 ### Installing on Google Kubernetes Engine
 
