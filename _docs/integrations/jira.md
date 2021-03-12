@@ -43,7 +43,7 @@ When you Add a new integration, you can choose to authenticate either using the 
 
 ### Authenticate with the Codefresh Marketplace App
 
-> Note that we currently have to provide you with access to use the Jira Marketplace App.
+> Note that Codefresh currently has to provide you with access to use the Jira Marketplace App. Please get in touch for more information.
 
 This is the recommended way to set-up your Jira Integration. To use the Codefresh Marketplace App on Jira, select `Jira Marketplace App` within the Jira Integration Setting in your Codefresh Account.
 {% include image.html 
@@ -118,8 +118,13 @@ alt="Account Information"
 max-width="90%" 
 %}
 
+## Using the Jira Integration
+
+Once Jira is connected to your Codefresh account, you can use both platforms in combination and integrate Jira into your [GitOps workflow]({{site.baseurl}}/docs/ci-cd-guides/gitops-deployments/).
+
 ## What to read next
 
+* [GitOps deployments]({{site.baseurl}}/docs/ci-cd-guides/gitops-deployments/)
 * [Example for sending notifications to Jira]({{site.baseurl}}/docs/yaml-examples/examples/sending-the-notification-to-jira/)
 * Have a look at other things that you can do with your Codefresh Pipeline in the [example section]({{site.baseurl}}/docs/yaml-examples/examples/)
 * [Create a pipeline]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)

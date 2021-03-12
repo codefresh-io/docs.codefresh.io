@@ -552,6 +552,38 @@ This pipeline:
 
 The CD pipeline (described in the previous section) will detect that commit and use the [sync plugin](https://codefresh.io/steps/step/argocd-sync) to instruct ArgoCD to deploy the new tag. Alternatively you can setup the ArgoCD project to auto-sync on its own if it detects changes in the Git repository with the manifests.
 
+## Integrating Codefresh and Jira
+
+> Note that Codefresh currently has to provide you with access to use the Jira Marketplace App. Please get in touch for more information.
+
+Setting up the Codefresh Jira integration provides
+* Higher observability of deployments within your GitOps Dashboard
+* Higher observability of deployments within your Jira Account
+
+[Our integration section]({{site.baseurl}}/docs/integration/jira) provides further details on ways to set-up the connection. 
+
+Once set-up, you will be able to view information from Jira linked the Codefresh GitOps Dashboard. Additionally, Jira will display
+* The build status across environments
+* The deployment history
+* Tickets and how they correlate to deployments
+
+The following screenshots show examples of the provided information.
+
+{% include image.html 
+lightbox="true" 
+file="/images/integrations/jira/jira-integration-one.png" 
+url="/images/integrations/jira/jira-integration-one.png" 
+alt="Codefresh Integrations" 
+max-width="90%" 
+%}
+
+{% include image.html 
+lightbox="true" 
+file="/images/integrations/jira/jira-integration-two.png" 
+url="/images/integrations/jira/jira-integration-two.png" 
+alt="Codefresh Integrations" 
+max-width="90%" 
+%}
 
 ## Using a Git repository for the pipelines
 
