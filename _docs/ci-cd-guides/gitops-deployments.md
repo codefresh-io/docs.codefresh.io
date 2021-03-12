@@ -560,9 +560,9 @@ Setting up the Codefresh Jira integration provides
 * Higher observability of deployments within your GitOps Dashboard
 * Higher observability of deployments within your Jira Account
 
-[Our integration section]({{site.baseurl}}/docs/integration/jira) provides further details on ways to set-up the connection. 
+[Our integration section]({{site.baseurl}}/docs/integrations/jira) provides further details on ways to set-up the connection. 
 
-Once set-up, you will be able to view information from Jira linked the Codefresh GitOps Dashboard. Additionally, Jira will display
+Once set-up, you will be able to view information from Jira in the Codefresh GitOps Dashboard. Additionally, Jira will display
 * The build status across environments
 * The deployment history
 * Tickets and how they correlate to deployments
