@@ -90,6 +90,8 @@ Steps chaining and referencing is possible due to implementation of variables in
 
 For more information on creating your own step, see the [steps page]({{site.baseurl}}/docs/codefresh-yaml/steps/).
 
+You can also see the [full YAML specification]({{site.baseurl}}/docs/integrations/codefresh-api/#full-pipeline-specification) supported for pipelines. Note however that several fields are only accessible by using the [Codefresh API]({{site.baseurl}}/docs/integrations/codefresh-api) or [CLI](https://codefresh-io.github.io/cli/).
+
 ## Yaml validation
 
 If you are editing Codefresh yaml within the Codefresh GUI, the editor will automatically highlight errors as they happen.

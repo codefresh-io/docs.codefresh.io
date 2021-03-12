@@ -53,11 +53,17 @@ Please create the file and add the following values
 # must be unique in a given SonarQube instance
 sonar.projectKey=a unique project key
  
-# organization name
-sonar.organization=your organisation name
+# project name
+sonar.projectName=your project's name
 {% endhighlight %}
 
 The file is needed to run the SonarQube plugin.
+
+<div class="bd-callout bd-callout-info" markdown="1">
+##### Language-specific Settings
+
+Please note that projects using some languages may require additional configuration. For information on what may be needed for your language, refer to the appropriate language page in the [Sonarqube documentation](https://docs.sonarqube.org/latest/analysis/languages/overview/)
+</div>
 
 ## Running an analysis from the Codefresh Plugin
 

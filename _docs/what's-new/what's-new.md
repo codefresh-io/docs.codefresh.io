@@ -1,5 +1,5 @@
 ---
-title: "Whats New In Codefresh?"
+title: "What's New In Codefresh?"
 description: "A changelog of new features"
 group: whats-new
 redirect_from:
@@ -7,27 +7,26 @@ redirect_from:
 toc: true
 ---
 
-## Upcoming changes:
+## Upcoming Changes:
 
 - New platform IP addresses - [documentation]({{site.baseurl}}/docs/administration/platform-ip-addresses/)
 -  *Modified Files filter on triggers for Pull request events*: Available March 1st
     The Modified Files filter will now work on triggers triggered by Pull Request events. Notice: this might cause unexpected behavior if you have a trigger that is triggered by both Pull Request and Commit events with a Modified Files filter set. Previously the Modified Files filter would be ignored for Pull Request events. If you need different filters for Pull Requests and Commit events, we recommend you separate the trigger.
 
 
-## Recent Codefresh updates:
-
-### March 2021
-- Jira integration - [documentation]({{site.baseurl}}/docs/integrations/jira/)
+## Recent Codefresh Updates:
 
 ### February 2021
 
-- Concurrency behavior for pending builds - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/#define-concurrency-limits)
-- Jira Custom Step - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/sending-the-notification-to-jira/)
-- SLA details - [documentation]({{site.baseurl}}/docs/terms-and-privacy-policy/sla/)
-- Hide inaccessible clusters in the Kubernetes dashboard - [documentation]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/#accessing-the-kubernetes-dashboard)
-- Define access for non-admins in Helm repositories and shared config - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/#level-of-access)
-- Okta auto-sync of teams - [documentation]({{site.baseurl}}/docs/administration/single-sign-on/sso-okta/#syncing-of-teams-after-initial-sso-setup)
-
+- Concurrency Behavior for Pending Builds - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/#define-concurrency-limits)
+- Jira Integration - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/sending-the-notification-to-jira/)
+- SLA Details - [documentation]({{site.baseurl}}/docs/terms-and-privacy-policy/sla/)
+- Autoscaling Recommendations for Codefresh On-prem - [documentation]({{site.baseurl}}/docs/administration/codefresh-on-prem/#app-cluster-autoscaling)
+- Hide Inaccessible Clusters in the Kubernetes Dashboard - [documentation]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/#accessing-the-kubernetes-dashboard)
+- Define Access for non-admins in Helm Repositories and Shared Config - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/#level-of-access)
+- Okta Auto-Sync of Teams - [documentation]({{site.baseurl}}/docs/administration/single-sign-on/sso-okta/#syncing-of-teams-after-initial-sso-setup)
+- Global Pipeline Settings Screen - [documentation]({{site.baseurl}}/docs/administration/pipeline-settings)
+- Helm 2 Support - [documentation]({{site.baseurl}}/docs/new-helm/helm2-support)
 
 ### January 2021
 

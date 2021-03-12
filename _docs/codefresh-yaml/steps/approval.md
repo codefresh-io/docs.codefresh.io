@@ -145,7 +145,7 @@ caption="Preserve Codefresh volume after an approval"
 max-width="90%"
 %}
 
->Notice that if you do decide to keep the volume after an approval, the pipeline will still count as "running" against your concurrency limit of your Codefresh plan. If you don't keep the volume, the pipeline is stopped/paused while it is waiting for approval and doesn't count against your concurrency limit. We advise you to keep the volume only for pipelines that really need this capability.
+>Notice that if you do decide to keep the volume after an approval, the pipeline will still count as "running" against your pricing plan (if you use the SAAS version of Codefresh). If you don't keep the volume, the pipeline is stopped/paused while it is waiting for approval and doesn't count against your pricing plan. We advise you to keep the volume only for pipelines that really need this capability.
 
 ## Controlling the rejection behavior
 

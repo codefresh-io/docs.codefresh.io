@@ -145,7 +145,7 @@ files affected by a commit are in a specific folder (or match a specific naming 
 you can have a big GIT repository with multiple projects and build only the parts that actually change.
 
 >Currently the field *modified files* is available only for GitHub, GitLab and Bitbucket SAAS repositories, since they are the only GIT providers
-that send this information in the webhook. We will support other GIT providers as soon as they add the respective feature. Also, the *modified files* field is only available for push events (i.e. not PR open events), since GIT providers only send it on these events.
+that send this information in the webhook. We will support other GIT providers as soon as they add the respective feature. 
 
 ### Using the Modified files field to constrain triggers to specific folder/files
 

@@ -225,7 +225,7 @@ There is also the shortcut checkbox for *any PR event* if you don't care about w
 
 ## Trunk based development
 
-One of the most popular git workflows is *Trunk Based development* with short lived feature branches. 
+One of the most popular git workflows is [Trunk Based development](https://trunkbaseddevelopment.com/) with short lived feature branches. 
 
 {% include image.html 
 lightbox="true" 

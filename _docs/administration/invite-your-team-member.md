@@ -30,8 +30,7 @@ On the left sidebar of the Codefresh UI choose *Account Settings* and then click
 1. Click the *Add* button.
 
 
-A message will be sent to the person that holds the email account. Once approved you will see the collaborator
-in the user list.
+An email will be sent to the person that holds the email account. Once this invitation is sent, they will show as Pending until the invite is successfully accepted and the user is created
 
 
 ## Setting a role for each collaborator
@@ -44,6 +43,10 @@ on clusters, docker registries, git integrations, shared configurations etc.
 
 You can completely remove a user from your account by clicking on the *bin* icon on the far right.
 
+## Common issues
+
+* [User is prompted to enter an organization name](https://support.codefresh.io/hc/en-us/articles/360020177959-User-is-prompted-to-enter-an-organization-name)
+* [Account invitation not permitting login](https://support.codefresh.io/hc/en-us/articles/360015251000-Account-invitation-not-permitting-login)
 
 ## What to read next
 
