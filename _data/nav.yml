@@ -534,6 +534,8 @@
           url: "/validation-port-warnings"
         - title: Forbidden Cluster Resources
           url: "/forbidden-cluster-resources"
+        - title: How to use SSH keys in freestyle steps
+          url: "using-ssh-keys"
         - title: Failed to get accounts clusters during workflow
           url: "/failed-to-get-accounts-clusters-during-workflow"
         - title: API Paging issues
