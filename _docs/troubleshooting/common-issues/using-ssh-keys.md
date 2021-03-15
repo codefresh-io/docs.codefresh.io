@@ -3,10 +3,8 @@ title: "How to use SSH keys in freestyle steps"
 description: "Running commands remotely from Codefresh Pipeline"
 group: troubleshooting
 sub_group: common-issues
-permalink: /:collection/troubleshooting/common-issues/using-ssh-keys/
-redirect_from:
-  - /docs/build-step-no-such-file-or-directory/
 toc: true
+---
 
 You can easily connect to external servers in Codefresh pipelines and run commands with them via SSH.
 
@@ -14,6 +12,9 @@ First, you need to create or find a Docker image with the SSH client. A good cho
 
 Then create a freestyle step in your pipeline like this:
 
+
+{% highlight yaml %}
+{% raw %}
  ssh:
    title: "Executing command over SSH"
    type: "freestyle"
@@ -26,16 +27,19 @@ Then create a freestyle step in your pipeline like this:
      - ssh-add ~/.ssh/id_rsa
      - ssh -o "StrictHostKeyChecking no"  user@host
      - ssh user@host 'command'
+{% endraw %}
+{% endhighlight %}
 
-The pipeline expects a [variable](site.baseurl}}docs/docs/codefresh-yaml/variables/) called “SSH” that you can enter directly or fetch from [shared configuration](site.baseurl}}docs/docs/configure-ci-cd-pipeline/shared-configuration/).
+
+The pipeline expects a [variable]({{site.baseurl}}/docs/codefresh-yaml/variables/) called “SSH” that you can enter directly or fetch from [shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/).
 
 Replace user, host, and command with your own values.
 
-What to read next
+## What to read next
 
-[How to use SSH keys with GIT](https://codefresh.io/docs/docs/integrations/git-providers/#ssh-keys)
-[How to deploy with SCP](https://codefresh.io/docs/docs/yaml-examples/examples/deploy-to-tomcat-via-scp/)
-[How to deploy with FTP](https://codefresh.io/docs/docs/yaml-examples/examples/transferring-php-ftp/)
+* [How to use SSH keys with GIT](https://codefresh.io/docs/docs/integrations/git-providers/#ssh-keys)
+* [How to deploy with SCP](https://codefresh.io/docs/docs/yaml-examples/examples/deploy-to-tomcat-via-scp/)
+* [How to deploy with FTP](https://codefresh.io/docs/docs/yaml-examples/examples/transferring-php-ftp/)
 
 
 
