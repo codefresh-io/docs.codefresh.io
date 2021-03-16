@@ -8,7 +8,7 @@ toc: true
 
 You can easily connect to external servers in Codefresh pipelines and run commands with them via SSH.
 
-First, you need to create or find a Docker image with the SSH client. A good choice is https://hub.docker.com/r/praqma/network-multitool as it has several other networking tools inside.
+First, you need to create or find a Docker image with the SSH client. A good choice is [https://hub.docker.com/r/praqma/network-multitool] as it has several other networking tools inside.
 
 Then create a freestyle step in your pipeline like this:
 
@@ -37,9 +37,9 @@ Replace user, host, and command with your own values.
 
 ## What to read next
 
-* [How to use SSH keys with GIT](https://codefresh.io/docs/docs/integrations/git-providers/#ssh-keys)
-* [How to deploy with SCP](https://codefresh.io/docs/docs/yaml-examples/examples/deploy-to-tomcat-via-scp/)
-* [How to deploy with FTP](https://codefresh.io/docs/docs/yaml-examples/examples/transferring-php-ftp/)
+* [How to use SSH keys with GIT]({{site.baseurl}}/docs/docs/integrations/git-providers/#ssh-keys)
+* [How to deploy with SCP]({{site.baseurl}}/docs/docs/yaml-examples/examples/deploy-to-tomcat-via-scp/)
+* [How to deploy with FTP]({{site.baseurl}}/docs/docs/yaml-examples/examples/transferring-php-ftp/)
 
 
 
