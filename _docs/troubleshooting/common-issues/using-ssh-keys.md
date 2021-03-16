@@ -31,9 +31,9 @@ Then create a freestyle step in your pipeline like this:
 {% endhighlight %}
 
 
-The pipeline expects a [variable]({{site.baseurl}}/docs/codefresh-yaml/variables/) called “SSH” that you can enter directly or fetch from [shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/).
+The pipeline expects a [variable]({{site.baseurl}}/docs/codefresh-yaml/variables/) called `SSH_KEY` that you can enter directly or fetch from [shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/).
 
-Replace user, host, and command with your own values.
+Replace `user`, `host`, and `command` with your own values.
 
 ## What to read next
 
