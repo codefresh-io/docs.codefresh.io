@@ -8,7 +8,7 @@ toc: true
 
 You can easily connect to external servers in Codefresh pipelines and run commands with them via SSH.
 
-First, you need to create or find a Docker image with the SSH client. A good choice is [https://hub.docker.com/r/praqma/network-multitool] as it has several other networking tools inside.
+First, you need to create or find a Docker image with the SSH client. A good choice is [https://hub.docker.com/r/praqma/network-multitool](https://hub.docker.com/r/praqma/network-multitool) as it has several other networking tools inside.
 
 Then create a freestyle step in your pipeline like this:
 
