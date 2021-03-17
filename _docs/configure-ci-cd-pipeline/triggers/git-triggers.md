@@ -95,6 +95,8 @@ Here are some more syntax examples:
 * `/^((?!^feature).)*$/gi` - only run if branch name does **not** start with `feature`.
 
 >The field *Pull Request Target* is available for all Git providers apart from Atlassian stash.
+>
+>When using the Terraform Provider, please use the [Go regex syntax](https://github.com/google/re2/wiki/Syntax) as some perl regex syntax is not compatible.
 
 The concept behind these checkboxes and branch name fields is to allow you to define which pipelines run for various workflows in your organization.
 
