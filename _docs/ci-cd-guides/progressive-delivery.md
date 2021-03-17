@@ -34,41 +34,67 @@ keep even older versions online (maybe with a smaller footprint) allowing for ea
 
 ## Blue/Green Kubernetes Deployment with Argo Rollouts
 
+Codefresh can easily integrate with [Argo Rollouts](https://argoproj.github.io/argo-rollouts/), a Kubernetes operator that natively covers blue/green deployments.
+
+Even though Argo Rollouts supports the basic blue/green pattern described in the previous section, it also offers a wealth of [customization options](https://argoproj.github.io/argo-rollouts/features/bluegreen/). One of the most important
+additions is the ability to "test" the upcoming color by introducing a "preview" [Kubernetes service](https://kubernetes.io/docs/concepts/services-networking/service/), in addition to the service used for live traffic.
+This preview service can be used by the team that performs the deployment to verify the new version before actually switching the traffic.
+
+
+Here is the initial state of a deployment. The example uses 2 pods (shown as `xnsdx` and `jftql` in the diagram).
+
 {% include image.html 
 lightbox="true" 
 file="/images/guides/progressive-delivery/01_initial.png" 
 url="/images/guides/progressive-delivery/01_initial.png" 
-alt="Blue/Green Deployments" 
-caption="Blue/Green Deployments"
+alt="Initial deployment. All services point to active version" 
+caption="Initial deployment. All services point to active version"
 max-width="90%" 
 %}
+
+There are two Kubernetes services . The `rollout-blue-gree-active` is capturing all live traffic from actual users of the application (internet traffic coming from `51.141.221.40`). There is also a secondary service 
+called `rollout-bluegreen-preview`. Under normal circumstances it also points to the same live version.
+
+
+Once a deployment starts a new "color" is created. In the example we have 2 new pods that represent the next version of the application to be deployed (shown as `9t67t` and `7vs2m`). 
 
 {% include image.html 
 lightbox="true" 
 file="/images/guides/progressive-delivery/02_two_colors.png" 
 url="/images/guides/progressive-delivery/02_two_colors.png" 
-alt="Blue/Green Deployments" 
-caption="Blue/Green Deployments"
+alt="Deployment in progress. Active users see old version. Internal users preview new version" 
+caption="Deployment in progress. Active users see old version. Internal users preview new version"
 max-width="90%" 
 %}
+
+The important point here is the fact that the normal "active" service still points to the old version while the "preview" service points to the new pods. This means that all active users are still on the old/stable deployment while internal teams can use the "preview" service to test the new deployment. 
+
+If everything goes well, the next version is promoted to be the active version.
 
 {% include image.html 
 lightbox="true" 
 file="/images/guides/progressive-delivery/03_switch_traffic.png" 
 url="/images/guides/progressive-delivery/03_switch_traffic.png" 
-alt="Blue/Green Deployments" 
-caption="Blue/Green Deployments"
+alt="Next application version is promoted. All users see new version" 
+caption="Next application version is promoted. All users see new version"
 max-width="90%" 
 %}
+
+Here both services point to the new version. This is also the critical moment for all real users of the application, as they are now switched to use the new version of the application. The old version is still around but no traffic is sent to it.
+
+Having the old version around is a great failsafe, as one can abort the deployment process and switch back all active users to the old deployment in the fastest way possible.
 
 {% include image.html 
 lightbox="true" 
 file="/images/guides/progressive-delivery/04_scale_down.png" 
 url="/images/guides/progressive-delivery/04_scale_down.png" 
-alt="Blue/Green Deployments" 
-caption="Blue/Green Deployments"
+alt="Old application version is discarded. Only new version remains." 
+caption="Old application version is discarded. Only new version remains."
 max-width="90%" 
 %}
+
+After some time (the exact amount is [configurable in Argo Rollouts](https://argoproj.github.io/argo-rollouts/features/bluegreen/#scaledowndelayseconds)) the old version is scaled down completely (to preserve resources). We are now back 
+to the same configuration as the initial state, and the next deployment will follow the same sequence of events.
 
 
 ## Blue/Green deployment with manual approval
