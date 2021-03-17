@@ -131,9 +131,8 @@
       url: "/environment-deployments"      
     - title: "GitOps deployments"
       url: "/gitops-deployments"      
-
-    # - title: Complex workflows
-    #   url: "/complex-workflows"
+    - title: "Progressive Delivery"
+      url: "/progressive-delivery" 
 
 - title: Codefresh YAML
   url: "/codefresh-yaml"
