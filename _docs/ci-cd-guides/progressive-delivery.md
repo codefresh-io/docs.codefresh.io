@@ -96,8 +96,152 @@ max-width="90%"
 After some time (the exact amount is [configurable in Argo Rollouts](https://argoproj.github.io/argo-rollouts/features/bluegreen/#scaledowndelayseconds)) the old version is scaled down completely (to preserve resources). We are now back 
 to the same configuration as the initial state, and the next deployment will follow the same sequence of events.
 
+## Installing the Argo Rollouts operator
+
+To install Argo Rollouts follow the [installation instructions](https://argoproj.github.io/argo-rollouts/installation/). Essentially you need a terminal with `kubectl` access to your cluster.
+
+```
+kubectl create namespace argo-rollouts
+kubectl apply -n argo-rollouts -f https://raw.githubusercontent.com/argoproj/argo-rollouts/stable/manifests/install.yaml
+```
+
+You can optionally install the [CLI locally](https://github.com/argoproj/argo-rollouts/releases/latest) if you want to have more visibility in your deployments.
+
+## The example application
+
+You can find an example application at [https://github.com/codefresh-contrib/argo-rollout-blue-green-sample-app](https://github.com/codefresh-contrib/argo-rollout-blue-green-sample-app) that also includes simple integration tests.
+
+Notice that the first deployment of your application will NOT follow the blue/green deployment process as there is no "previous" color. So you need to deploy it at least
+once.
+
+```
+git clone https://github.com/codefresh-contrib/argo-rollout-blue-green-sample-app.git
+cd argo-rollout-blue-green-sample-app
+kubectl create ns blue-green
+kubectl apply -f ./blue-green-manual-approval -n blue-green
+```
+
+You can then monitor what argo rollouts is doing with the following command:
+
+```
+kubectl argo rollouts get rollout spring-sample-app-deployment --watch -n blue-green
+```
 
 ## Blue/Green deployment with manual approval
+
+A quick way to use blue/green deployments is by simply inserting [an approval step]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/) before the traffic switch step.
+This will pause the pipeline and the developers or QA can test the next version on their own before any real users are redirected to it.
+
+Here is an example pipeline:
+
+{% include image.html 
+lightbox="true" 
+file="/images/guides/progressive-delivery/approval-pipeline.png" 
+url="/images/guides/progressive-delivery/approval-pipeline.png" 
+alt="Manual approval before traffic switch" 
+caption="Manual approval before traffic switch"
+max-width="100%" 
+%}
+
+This pipeline does the following:
+
+1. [Clones]({{site.baseurl}}/docs/yaml-examples/examples/git-checkout/) the source code of the application
+1. [Builds]({{site.baseurl}}/docs/ci-cd-guides/building-docker-images/) a docker image
+1. [Deploys]({{site.baseurl}}/docs/deploy-to-kubernetes/kubernetes-templating/) the application by updating the Kubernetes manifests. Argo Rollouts sees the new manifest and creates a new "color" for the next version
+1. The pipeline is paused and waits for an [approval/rejection]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/#getting-the-approval-result) by a human user. 
+1. If the pipeline is approved the new color is promoted and becomes the new active version
+1. If the pipeline is rejected the new color is discarded the all live users are not affected in any way
+
+Here is the [pipeline definition]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/):
+
+ `codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: "1.0"
+stages:
+  - prepare
+  - build
+  - deploy 
+  - finish   
+steps:
+  clone:
+    type: "git-clone"
+    stage: prepare
+    description: "Cloning main repository..."
+    repo: '${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}'
+    revision: "${{CF_BRANCH}}"
+  build_app_image:
+    title: Building Docker Image
+    type: build
+    stage: build
+    image_name: kostiscodefresh/argo-rollouts-blue-green-sample-app
+    working_directory: "${{clone}}" 
+    tags:
+    - "latest"
+    - '${{CF_SHORT_REVISION}}'
+    dockerfile: Dockerfile
+  start_deployment:
+    title: Deploying new color
+    stage: deploy
+    image: codefresh/cf-deploy-kubernetes:master
+    working_directory: "${{clone}}"
+    commands:
+      - /cf-deploy-kubernetes ./blue-green-manual-approval/service.yaml 
+      - /cf-deploy-kubernetes ./blue-green-manual-approval/service-preview.yaml   
+      - /cf-deploy-kubernetes ./blue-green-manual-approval/rollout.yaml   
+    environment:
+      - KUBECONTEXT=mydemoAkscluster@BizSpark Plus
+      - KUBERNETES_NAMESPACE=blue-green 
+  wait_for_new_color:
+    fail_fast: false
+    type: pending-approval
+    title: Is the new color ok?
+    stage: deploy  
+  promote_color:
+    title: Switching traffic to new color
+    stage: finish
+    image: kostiscodefresh/kubectl-argo-rollouts:latest
+    commands:
+      - /app/kubectl-argo-rollouts-linux-amd64 promote spring-sample-app-deployment -n blue-green --context "mydemoAkscluster@BizSpark Plus"
+    when:
+      steps:
+      - name: wait_for_new_color
+        on:
+        - approved 
+  abort_deployment:
+    title: Keeping the existing color
+    stage: finish
+    image: kostiscodefresh/kubectl-argo-rollouts:latest
+    commands:
+      - /app/kubectl-argo-rollouts-linux-amd64 argo rollouts undo spring-sample-app-deployment -n blue-green --context "mydemoAkscluster@BizSpark Plus" 
+    when:
+      steps:
+      - name: wait_for_new_color
+        on:
+        - denied         
+{% endraw %}
+{% endhighlight %} 
+
+Just before the approval you can optionally execute the Argo Rollouts CLI to see what is happening behind the scenes:
+
+```
+kubectl argo rollouts get rollout spring-sample-app-deployment --watch -n blue-green
+```
+
+It should show the new color come up (but not accepting any traffic).
+
+{% include image.html 
+lightbox="true" 
+file="/images/guides/progressive-delivery/monitor-argo-rollouts.png" 
+url="/images/guides/progressive-delivery/monitor-argo-rollouts.png" 
+alt="Argo Rollouts CLI" 
+caption="Argo Rollouts CLI"
+max-width="100%" 
+%}
+
+After the deployment has finished, the old pods will be destroyed after 30 seconds (this is the default value of Argo Rollouts).
+
+
 
 ## Blue/Green deployment with smoke tests
 
