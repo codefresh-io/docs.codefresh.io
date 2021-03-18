@@ -37,9 +37,9 @@ Replace `uptime`, with your own command that you want executed on the remote hos
 
 ## What to read next
 
-* [How to use SSH keys with GIT]({{site.baseurl}}/docs/docs/integrations/git-providers/#ssh-keys)
-* [How to deploy with SCP]({{site.baseurl}}/docs/docs/yaml-examples/examples/deploy-to-tomcat-via-scp/)
-* [How to deploy with FTP]({{site.baseurl}}/docs/docs/yaml-examples/examples/transferring-php-ftp/)
+* [How to use SSH keys with GIT]({{site.baseurl}}/docs/integrations/git-providers/#ssh-keys)
+* [How to deploy with SCP]({{site.baseurl}}/docs/yaml-examples/examples/deploy-to-tomcat-via-scp/)
+* [How to deploy with FTP]({{site.baseurl}}/docs/yaml-examples/examples/transferring-php-ftp/)
 
 
 
