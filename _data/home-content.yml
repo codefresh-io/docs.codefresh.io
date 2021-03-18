@@ -83,11 +83,10 @@
   - title: GitOps deployments
     new: true
     localurl: /docs/ci-cd-guides/gitops-deployments/  
-
-  # - title: Secrets Management
-  #   localurl: /docs/ci-cd-guide/secret-management/ 
-  # - title: Complex workflows
-  #   localurl: /docs/ci-cd-guide/complex-workflows/ 
+  - title: Progressive Delivery
+    new: true
+    localurl: /docs/ci-cd-guides/progressive-delivery/ 
+ 
 
       
 - title: Yaml Syntax
