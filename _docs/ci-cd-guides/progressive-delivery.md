@@ -252,7 +252,7 @@ Using manual approval before promoting the new version is a great starting point
 and eliminate the human approval.
 
 There are many approaches on testing a release and each organization will have a different set of "tests" that verify the next version of the software. Argo Rollouts
-has [several integrations](https://argoproj.github.io/argo-rollouts/features/analysis/) either with metric providers or [simple Kubernetes jobs](https://argoproj.github.io/argo-rollouts/analysis/job/) that can run integration tets or collect metrics and decide if the next color should be promoted or not.
+has [several integrations](https://argoproj.github.io/argo-rollouts/features/analysis/) either with metric providers or [simple Kubernetes jobs](https://argoproj.github.io/argo-rollouts/analysis/job/) that can run integration tests or collect metrics and decide if the next color should be promoted or not.
 
 Another alternative is to simply execute [integration tests]({{site.baseurl}}/docs/testing/integration-tests/) from within Codefresh. This is great if your integration tests need access to the source code or other
 external services that are accessible only to Codefresh.
