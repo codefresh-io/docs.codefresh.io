@@ -7,8 +7,21 @@ toc: true
 
 Progressive Delivery is the practice of deploying an application in a gradual manner allowing for minimum downtime and easy rollbacks. There are several forms of progressive delivery such as blue/green, canary, a/b and feature flags.
 
+Codefresh can easily integrate with [Argo Rollouts](https://argoproj.github.io/argo-rollouts/), a Kubernetes operator that natively covers progressive delivery deployment practices.
 
-## How Blue Green deployments work
+## Installing the Argo Rollouts operator to your cluster
+
+To install Argo Rollouts follow the [installation instructions](https://argoproj.github.io/argo-rollouts/installation/). Essentially you need a terminal with `kubectl` access to your cluster.
+
+```
+kubectl create namespace argo-rollouts
+kubectl apply -n argo-rollouts -f https://raw.githubusercontent.com/argoproj/argo-rollouts/stable/manifests/install.yaml
+```
+
+You can optionally install the [CLI locally](https://github.com/argoproj/argo-rollouts/releases/latest) if you want to have more visibility in your deployments.
+
+
+## Blue Green deployments 
 
 Blue/Green deployments are one of the simplest ways to minimize deployment downtime. Blue/Green deployments are not specific to Kubernetes and can be used
 even for traditional applications that reside on Virtual Machines.
@@ -32,9 +45,9 @@ The major benefit of this pattern is that if at any point in time the new versio
 There are several variations of this pattern. In some cases the old color is never destroyed but keeps running in the background. You can also
 keep even older versions online (maybe with a smaller footprint) allowing for easy switching to any previous application revision.
 
-## Blue/Green Kubernetes Deployment with Argo Rollouts
+### Blue/Green Kubernetes Deployment with Argo Rollouts
 
-Codefresh can easily integrate with [Argo Rollouts](https://argoproj.github.io/argo-rollouts/), a Kubernetes operator that natively covers blue/green deployments.
+
 
 Even though Argo Rollouts supports the basic blue/green pattern described in the previous section, it also offers a wealth of [customization options](https://argoproj.github.io/argo-rollouts/features/bluegreen/). One of the most important
 additions is the ability to "test" the upcoming color by introducing a "preview" [Kubernetes service](https://kubernetes.io/docs/concepts/services-networking/service/), in addition to the service used for live traffic.
@@ -96,18 +109,8 @@ max-width="90%"
 After some time (the exact amount is [configurable in Argo Rollouts](https://argoproj.github.io/argo-rollouts/features/bluegreen/#scaledowndelayseconds)) the old version is scaled down completely (to preserve resources). We are now back 
 to the same configuration as the initial state, and the next deployment will follow the same sequence of events.
 
-## Installing the Argo Rollouts operator
 
-To install Argo Rollouts follow the [installation instructions](https://argoproj.github.io/argo-rollouts/installation/). Essentially you need a terminal with `kubectl` access to your cluster.
-
-```
-kubectl create namespace argo-rollouts
-kubectl apply -n argo-rollouts -f https://raw.githubusercontent.com/argoproj/argo-rollouts/stable/manifests/install.yaml
-```
-
-You can optionally install the [CLI locally](https://github.com/argoproj/argo-rollouts/releases/latest) if you want to have more visibility in your deployments.
-
-## The example application
+### The example application
 
 You can find an example application at [https://github.com/codefresh-contrib/argo-rollout-blue-green-sample-app](https://github.com/codefresh-contrib/argo-rollout-blue-green-sample-app) that also includes simple integration tests.
 
@@ -127,7 +130,7 @@ You can then monitor what argo rollouts is doing with the following command:
 kubectl argo rollouts get rollout spring-sample-app-deployment --watch -n blue-green
 ```
 
-## Blue/Green deployment with manual approval
+### Blue/Green deployment with manual approval
 
 A quick way to use blue/green deployments is by simply inserting [an approval step]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/) before the traffic switch step.
 This will pause the pipeline and the developers or QA can test the next version on their own before any real users are redirected to it.
@@ -243,7 +246,7 @@ After the deployment has finished, the old pods will be destroyed after 30 secon
 
 
 
-## Blue/Green deployment with smoke tests
+### Blue/Green deployment with smoke tests
 
 
 
