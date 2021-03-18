@@ -25,15 +25,15 @@ Then create a freestyle step in your pipeline like this:
      - chmod 600 ~/.ssh/id_rsa
      - eval $(ssh-agent -s)
      - ssh-add ~/.ssh/id_rsa
-     - ssh -o "StrictHostKeyChecking no"  user@host
-     - ssh user@host 'command'
+     - ssh -o "StrictHostKeyChecking no"  ${{MY_USER}}@${{MY_HOST}}
+     - ssh ${{MY_USER}}@${{MY_HOST}} 'uptime'
 {% endraw %}
 {% endhighlight %}
 
 
-The pipeline expects a [variable]({{site.baseurl}}/docs/codefresh-yaml/variables/) called `SSH_KEY` that you can enter directly or fetch from [shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/).
+The pipeline expects some [variables]({{site.baseurl}}/docs/codefresh-yaml/variables/) called `SSH_KEY, MY_USER, MY_HOST` that you can enter directly in the pipeline or fetch from [shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/).  
 
-Replace `user`, `host`, and `command` with your own values.
+Replace `uptime`, with your own command that you want executed on the remote host.
 
 ## What to read next
 
