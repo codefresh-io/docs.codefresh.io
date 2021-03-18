@@ -480,6 +480,68 @@ Notice that in that case the sequence of events is the following
 1. The `setup` block will run and preload data or setup any custom commands you have placed in the property
 1. The actual pipeline step will now run with the service container attached in the same network.
 
+## Accessing containers via localhost
+
+Ideally, your application should be able to access other services by other DNS names that are fully configurable (this is a very good practice for [integration tests]({{site.baseurl}}/docs/testing/integration-tests/) as well).
+
+Sometimes, however, and especially in legacy applications, your application might be hardcoded to look at other services at `localhost`.
+In that case, you can use the attribute `shared_host_network: true` on the services definition. Now all linked containers can access each other's services via localhost. Here is an example:
+
+ `codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+steps:
+  my_first_step:
+    image: goodsmileduck/redis-cli
+    title: Storing Redis data
+    commands:
+      - apk add curl
+      - 'redis-cli -u redis://localhost:6379 -n 0 LPUSH mylist "hello world"'
+      - 'curl http://localhost:80'
+      - echo finished
+    services:
+      shared_host_network: true
+      composition:
+        my_redis_service:
+          image: 'redis:latest'
+        my_nginx:
+          image: nginx
+{% endraw %}      
+{% endhighlight %}
+
+You can also do the same thing with top level services:
+
+ `codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+services:
+  name: my_database
+  shared_host_network: true
+  composition:
+    my_redis_service:
+      image: 'redis:latest'
+    my_nginx:
+      image: nginx
+steps:
+  my_first_step:
+    image: goodsmileduck/redis-cli
+    title: Storing Redis data
+    commands:
+      - apk add curl
+      - 'redis-cli -u redis://localhost:6379 -n 0 LPUSH mylist "hello world"'
+      - 'curl http://localhost:80'
+      - echo finished
+    services:
+      - my_database
+{% endraw %}      
+{% endhighlight %}
+
+Note: we do recommend you only use this option as a last resort. You should not hardcode "localhost" as a requirement in your services as
+it adds extra constraints with integration tests (and especially with dynamic test environments).
+
+
 ## Limitations 
 
 Service containers are not compatible with [custom pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/#limitations-of-custom-plugins).

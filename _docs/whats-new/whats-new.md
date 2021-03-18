@@ -17,6 +17,7 @@ toc: true
 
 - The [Modified Files filter]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/#monorepo-support-modified-files) will now work on triggers triggered by Pull Request events. Notice: this might cause unexpected behavior if you have a trigger that is triggered by both Pull Request and Commit events with a Modified Files filter set. Previously the Modified Files filter would be ignored for Pull Request events. If you need different filters for Pull Requests and Commit events, we recommend you separate the trigger.
 - Codefresh Runner on Rancher RKE 2.X - [documentation]({{site.baseurl}}/docs/administration/codefresh-runner/#installing-on-rancher-rke-2x)
+- Access service containers via localhost - [documentation]({{site.baseurl}}/docs/codefresh-yaml/service-containers/#accessing-containers-via-localhost)
 
 ### February 2021
 
