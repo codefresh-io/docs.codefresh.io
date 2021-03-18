@@ -248,8 +248,118 @@ After the deployment has finished, the old pods will be destroyed after 30 secon
 
 ### Blue/Green deployment with smoke tests
 
+Using manual approval before promoting the new version is a great starting point. To truly achieve continuous deployment one should automate the testing process
+and eliminate the human approval.
+
+There are many approaches on testing a release and each organization will have a different set of "tests" that verify the next version of the software. Argo Rollouts
+has [several integrations](https://argoproj.github.io/argo-rollouts/features/analysis/) either with metric providers or [simple Kubernetes jobs](https://argoproj.github.io/argo-rollouts/analysis/job/) that can run integration tets or collect metrics and decide if the next color should be promoted or not.
+
+Another alternative is to simply execute [integration tests]({{site.baseurl}}/docs/testing/integration-tests/) from within Codefresh. This is great if your integration tests need access to the source code or other
+external services that are accessible only to Codefresh.
+
+We can modify the previous pipeline to include automated smoke tests that are already part of the [example application](https://github.com/codefresh-contrib/argo-rollout-blue-green-sample-app/blob/main/src/test/java/sample/actuator/HealthIT.java).
+
+{% include image.html 
+lightbox="true" 
+file="/images/guides/progressive-delivery/smoke-tests-pipeline.png" 
+url="/images/guides/progressive-delivery/smoke-tests-pipeline.png" 
+alt="Smoke tests before traffic switch" 
+caption="Smoke tests before traffic switch"
+max-width="100%" 
+%}
+
+This pipeline does the following:
+
+1. [Clones]({{site.baseurl}}/docs/yaml-examples/examples/git-checkout/) the source code of the application
+1. [Builds]({{site.baseurl}}/docs/ci-cd-guides/building-docker-images/) a docker image
+1. [Deploys]({{site.baseurl}}/docs/deploy-to-kubernetes/kubernetes-templating/) the application by updating the Kubernetes manifests. Argo Rollouts sees the new manifest and creates a new "color" for the next version
+1. Runs integration tests against the "preview" service created by Argo Rollouts. Live users are still on the previous/stable version of the application. 
+1. If smoke tests pass the new color is promoted and becomes the new active version
+1. If smoke tests fail the new color is discarded the all live users are not affected in any way
+
+Here is the [pipeline definition]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/):
+
+ `codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: "1.0"
+stages:
+  - prepare
+  - build
+  - deploy 
+  - finish   
+steps:
+  clone:
+    type: "git-clone"
+    stage: prepare
+    description: "Cloning main repository..."
+    repo: '${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}'
+    revision: "${{CF_BRANCH}}"
+  build_app_image:
+    title: Building Docker Image
+    type: build
+    stage: build
+    image_name: kostiscodefresh/argo-rollouts-blue-green-sample-app
+    working_directory: "${{clone}}" 
+    tags:
+    - "latest"
+    - '${{CF_SHORT_REVISION}}'
+    dockerfile: Dockerfile
+  start_deployment:
+    title: Deploying new color
+    stage: deploy
+    image: codefresh/cf-deploy-kubernetes:master
+    working_directory: "${{clone}}"
+    commands:
+      - /cf-deploy-kubernetes ./blue-green-manual-approval/service.yaml 
+      - /cf-deploy-kubernetes ./blue-green-manual-approval/service-preview.yaml   
+      - /cf-deploy-kubernetes ./blue-green-manual-approval/rollout.yaml   
+    environment:
+      - KUBECONTEXT=mydemoAkscluster@BizSpark Plus
+      - KUBERNETES_NAMESPACE=blue-green 
+  run_integration_tests:
+    title: Smoke tests
+    stage: deploy
+    image: maven:3.5.2-jdk-8-alpine
+    working_directory: "${{clone}}" 
+    fail_fast: false
+    commands:
+     - mvn -Dmaven.repo.local=/codefresh/volume/m2_repository verify -Dserver.host=http://13.86.102.74  -Dserver.port=80
+  promote_color:
+    title: Switching traffic to new color
+    stage: finish
+    image: kostiscodefresh/kubectl-argo-rollouts:latest
+    commands:
+      - /app/kubectl-argo-rollouts-linux-amd64 promote spring-sample-app-deployment -n blue-green --context "mydemoAkscluster@BizSpark Plus"
+    when:
+      steps:
+      - name: run_integration_tests
+        on:
+        - success 
+  abort_deployment:
+    title: Keeping the existing color
+    stage: finish
+    image: kostiscodefresh/kubectl-argo-rollouts:latest
+    commands:
+      - /app/kubectl-argo-rollouts-linux-amd64 argo rollouts undo spring-sample-app-deployment -n blue-green --context "mydemoAkscluster@BizSpark Plus" 
+    when:
+      steps:
+      - name: run_integration_tests
+        on:
+        - failure         
+{% endraw %}
+{% endhighlight %} 
+
+You can optionally execute the Argo Rollouts CLI to see what is happening behind the scenes:
+
+```
+kubectl argo rollouts get rollout spring-sample-app-deployment --watch -n blue-green
+```
+
+>Notice that for simplicity reasons we have hardcoded the loadbalancer for the preview service at 13.86.102.74. In a real application you would have a DNS name such as `preview.example.com` or use another `kubectl command` to fetch the endpoint of the loadbalancer dynamically. Also our integration tests assume that the application is already deployed once they run. If your application takes too much time to deploy, you need to make sure that it is up before the tests actually run
 
 
+The end result is the a continuous deployment pipeline where all release candidates that don't pass tests never reach production.
 
 ## What to read next
 
