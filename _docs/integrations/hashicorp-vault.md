@@ -7,7 +7,7 @@ toc: true
 
 Codefresh can use secrets from your Hashicorp Vault installation. This way you have full control over secret storage and rotation.
 
-`Note: This feature is for Enterprise accounts only.`
+>Note: This feature is for Enterprise accounts only.
 
 ### Prerequisites
 
