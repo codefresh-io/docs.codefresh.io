@@ -100,5 +100,6 @@ Once everything is finished, you [should test the integration]({{site.baseurl}}/
 * [Selecting SSO method for collaborators]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/#selecting-sso-method-for-collaborators)
 * [Syncing of teams after initial SSO setup]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/#syncing-of-teams-after-initial-sso-setup)
 
+>Notice that Codefresh has an internal cache for SSO configurations and it might take up to 5 minutes for your changes to take effect.
 
 
