@@ -413,7 +413,9 @@
         - title: "Other Registries"
           url: "/other-registries"  
     - title: Secret Storage
-      url: "/secret-storage"            
+      url: "/secret-storage"
+    - title: Hashicorp Vault
+      url: "/hashicorp-vault"              
     - title: Helm Integration
       url: "/helm" 
     - title: ArgoCD Integration
