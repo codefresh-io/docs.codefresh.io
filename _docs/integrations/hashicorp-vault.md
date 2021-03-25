@@ -18,8 +18,8 @@ You also need to decide what [authentication method](https://www.vaultproject.io
 ---|---
 [Username/Password](https://www.vaultproject.io/docs/auth/userpass)|Available in SaaS and Hybrid customers
 [Access Token](https://www.vaultproject.io/docs/auth/token)|Available in SaaS and Hybrid customers
-[Kubernetes](https://www.vaultproject.io/docs/auth/kubernetes)|Only available in [Hybrid installation]({{site.baseurl}}/docs/docs/administration/behind-the-firewall/)
-[Google Cloud Engine](https://www.vaultproject.io/docs/auth/gcp)|Only available in [Hybrid installation]({{site.baseurl}}/docs/docs/administration/behind-the-firewall/)
+[Kubernetes](https://www.vaultproject.io/docs/auth/kubernetes)|Only available in [Hybrid installation]({{site.baseurl}}/docs/administration/behind-the-firewall/)
+[Google Cloud Engine](https://www.vaultproject.io/docs/auth/gcp)|Only available in [Hybrid installation]({{site.baseurl}}/docs/administration/behind-the-firewall/)
 [App Role]()|Available in SaaS and Hybrid customers
 
 ### Using the Codefresh UI
@@ -52,4 +52,4 @@ The available options are the same ones as found in the UI. For example, to crea
 
 ### Using the Secrets
 
-To use the vault secrets in pipelines see our [secrets guide]({{site.baseurl}}/docs/docs/configure-ci-cd-pipeline/secrets-store/). Note that because in Vault, a secret can contain multiple key-value pairs you will need to put in the key name as well. So the syntax will be `{secrets.vault-store-name.path/to/secret@key}`
+To use the vault secrets in pipelines see our [secrets guide]({{site.baseurl}}/docs/configure-ci-cd-pipeline/secrets-store/). Note that because in Vault, a secret can contain multiple key-value pairs you will need to put in the key name as well. So the syntax will be `{secrets.vault-store-name.path/to/secret@key}`
