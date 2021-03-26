@@ -202,7 +202,7 @@ steps:
     working_directory: ./
     tag: '${{CF_BRANCH_TAG_NORMALIZED}}'
     dockerfile:
-      content: >-
+      content: |-
        # ---
        # Go Builder Image
        FROM golang:1.8-alpine AS builder
