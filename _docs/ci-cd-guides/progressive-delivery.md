@@ -647,7 +647,7 @@ max-width="100%"
 
 In the screenshot about, the canary deployment has just started. There is only one pod for the canary and it gets 10% of live traffic. The 4 pods of the previous version still receive 9 percent of live traffic.
 
-You can also see the traffic split in the LinkerD GUI:
+You can also see the traffic split in the [LinkerD Dashboard](https://linkerd.io/2.10/reference/architecture/#dashboard):
 
 {% include image.html 
 lightbox="true" 
@@ -661,7 +661,43 @@ max-width="80%"
 The screenshot above is from the second stage of the canary where 33% of live traffic is redirected to the canary pods.
 You can also get the same information from the command line with `kubectl get trafficsplit`.
 
+## Monitoring the Argo Rollouts controller
 
+Note that regardless of whether you use metric evaluation for your own applications, Argo Rollouts itself exposes Prometheus metrics
+for its internal functionality. You can ingest those metrics like any other Prometheus application
+and create your own dashboards if you want to get some insights on what the controller is doing. 
+
+You can find an example dashboard at [https://github.com/argoproj/argo-rollouts/blob/master/examples/dashboard.json](https://github.com/argoproj/argo-rollouts/blob/master/examples/dashboard.json) that can be used as a starting point.
+
+{% include image.html 
+lightbox="true" 
+file="/images/guides/progressive-delivery/monitor-rollout.png" 
+url="/images/guides/progressive-delivery/monitor-rollout.png" 
+alt="Integrated metrics from the Argo Rollouts controller" 
+caption="Integrated metrics from the Argo Rollouts controller"
+max-width="80%" 
+%}
+
+
+For more details see the [metrics documentation page](https://argoproj.github.io/argo-rollouts/features/controller-metrics/).
+
+## Using Argo Rollouts with GitOps
+
+For simplicity reasons, we covered progressive delivery in this page using Argo Rollouts on its own. Argo Rollouts integrates seamlessly with Argo CD bringing together GitOps and Progressive delivery.
+
+If you use Argo CD and Argo Rollouts together you will also have access to the Codefresh GitOps dashboard to manage your deployments:
+
+{% include image.html 
+  lightbox="true" 
+  file="/images/guides/gitops/gitops-dashboard.png" 
+  url="/images/guides/gitops/gitops-dashboard.png" 
+  alt="The GitOps dashboard"
+  caption="The GitOps dashboard"  
+  max-width="60%"
+ %}
+
+
+See our [GitOps page]({{site.baseurl}}/docs/ci-cd-guides/gitops-deployments/) for more details.
 
 
 
