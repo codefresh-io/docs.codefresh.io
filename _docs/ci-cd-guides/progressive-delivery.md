@@ -479,12 +479,57 @@ You can then monitor what argo rollouts is doing with the following command:
 kubectl argo rollouts get rollout golang-sample-app-deployment --watch -n canary
 ```
 
+### Choosing a solution for Traffic Management
+
+Unlike Blue/Green deployments, canary deployments require a smarter way to handle incoming traffic to your application. Specifically for Kubernetes
+you need a networking solution that can split traffic according to percentages. Kubernetes on its own performs simple load balancing where the number
+of pods affects the traffic they get. But that is not enough for canary deployments.
+
+Argo Rollouts has [several integrations](https://argoproj.github.io/argo-rollouts/features/traffic-management/) with Service Meshes and ingresses that can be used for Traffic Splits.
+
+Apart from the platforms that are supported natively by Argo Rollouts, you can also use any solution that implements the [Service Mesh Interface](https://smi-spec.io/), a common
+standard for service mesh implementations. Argo Rollouts [adheres to the SMI spec](https://argoproj.github.io/argo-rollouts/features/traffic-management/smi/) and can instruct any compliant solution for the traffic split process during canaries.
+
+In our example we are using [LinkerD](https://linkerd.io/), an open source service mesh solution for Kubernetes that also implements SMI. 
+You can install LinkerD by following [the official documentation](https://linkerd.io/2.10/getting-started/) in your cluster and then making sure that your application is [meshed](https://linkerd.io/2.10/tasks/adding-your-service/) (i.e. it is managed by LinkerD) by adding the special annotation [linkerd.io/inject:enabled](https://github.com/codefresh-contrib/argo-rollout-canary-sample-app/blob/main/canary-manual-approval/rollout.yaml#L36) in the rollout YAML.
+
+
 ### Canary deployment with manual approval
 
 As with Blue/Green deployments, the easiest way to use canaries is by simply inserting [an approval step]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/) before each subsequent traffic switch step.
 This will pause the pipeline and the developers or QA team can evaluate the canary stability.
 
-Here is an example pipeline with two canary steps (at 10% and 33% of traffic split):
+Here is the [Canary setup](https://github.com/codefresh-contrib/argo-rollout-canary-sample-app/blob/main/canary-manual-approval/rollout.yaml#L8):
+
+`rollout.yaml` (excerpt)
+```yaml
+spec:
+  replicas: 4
+  strategy:
+    canary: 
+      canaryService: rollout-canary-preview
+      stableService: rollout-canary-active
+      trafficRouting:
+        smi: 
+          trafficSplitName: rollout-example-traffic-split 
+          rootService: rollout-canary-all-traffic 
+      steps:
+        - setWeight: 10
+        - setCanaryScale:
+            weight: 25
+        - pause: {}
+        - setWeight: 33
+        - setCanaryScale:
+            weight: 50
+        - pause: {}
+```        
+
+The canary has essentially 3 stages. At the beginning it gets only 10% of the traffic and then it stops. At this point it creates 1/4 of pods. Then
+if we promote it, it gets 33% of the traffic and is now scaled up to 1/2 of pods of a full deployment. We pause again and then finally it gets 100% of
+live traffic.
+
+
+Here is the respective pipeline pipeline with canary steps: 
 
 {% include image.html 
 lightbox="true" 
@@ -691,8 +736,8 @@ If you use Argo CD and Argo Rollouts together you will also have access to the C
   lightbox="true" 
   file="/images/guides/gitops/gitops-dashboard.png" 
   url="/images/guides/gitops/gitops-dashboard.png" 
-  alt="The GitOps dashboard"
-  caption="The GitOps dashboard"  
+  alt="The Codefresh GitOps dashboard"
+  caption="The Codefresh GitOps dashboard"  
   max-width="60%"
  %}
 
