@@ -388,6 +388,281 @@ There are several variations of this pattern. The amount of live traffic that yo
 
 >Note that canary deployments are more advanced than blue/green deployments and are also more complex to setup. The loadbalancer is now much smarter as it can handle two streams of traffic at the same time with different destinations of different weights. You also need a way (usually an API) to instruct the loadbalancer to change the weight distribution of the traffic streams. If you are just getting started with progressive delivery, we suggest you master blue/green deployments first, before adopting canaries.
 
+### Canary Deployment with Argo Rollouts
+
+
+
+Argo Rollouts supports the basic canary pattern described in the previous section, and also offers a wealth of [customization options](https://argoproj.github.io/argo-rollouts/features/canary/). One of the most important
+additions is the ability to "test" the upcoming version by introducing a "preview" [Kubernetes service](https://kubernetes.io/docs/concepts/services-networking/service/), in addition to the service used for live traffic.
+This preview service can be used by the team that performs the deployment to verify the new version as it gets used by the subset of live users.
+
+
+Here is the initial state of a deployment. The example uses 4 pods (shown as `22nqx`, `nqksq`, `8bzwh` and `jtdcc` in the diagram).
+
+{% include image.html 
+lightbox="true" 
+file="/images/guides/progressive-delivery/01_canary_initial_state.png" 
+url="/images/guides/progressive-delivery/01_canary_initial_state.png" 
+alt="Initial deployment. All services point to active version" 
+caption="Initial deployment. All services point to active version"
+max-width="90%" 
+%}
+
+There are now three Kubernetes services . The `rollout-canary-all-traffic` is capturing all live traffic from actual users of the application (internet traffic coming from `20.37.135.240`). There is a secondary service 
+called `rollout-canary-active`. This will always point to the stable/previous version of the software. Finally the third services is called `rollout-canary-preview` and this will only route traffic to the canary/new versions. Under normal circumstances all 3 services point to the same version.
+
+
+Once a deployment starts a new "version" is created. In the example we have 1 new pod that represents the next version of the application to be deployed (shown as `9wx8w` at the top of the diagram).
+
+{% include image.html 
+lightbox="true" 
+file="/images/guides/progressive-delivery/02_canary_10.png" 
+url="/images/guides/progressive-delivery/02_canary_10.png" 
+alt="Deployment in progress. 10% of users are sent to the canary version" 
+caption="Deployment in progress. 10% of users are sent to the canary version"
+max-width="90%" 
+%}
+
+The important point here is the fact that the service used by live users (called `rollout-canary-all-traffic`) is routing traffic to **both** the canary and the previous version. It is not visible in the diagram but only 10% of traffic is sent to the single pod that hosts the new version, while 90% of traffic goes to the 4 pods of the old version.
+
+The `rollout-canary-preview` service goes only to the canary pod. You can use this service to examine metrics from the canary or even give it to users that always want to try the new version first (e.g. your internal developers). On the other hand the `rollout-canary-active` service always goes to the stable version. You can use that for users that never want to try the new version first or for verifying how something worked in the previous version.
+
+
+
+If everything goes well, and you are happy with how the canary works, we can redirect some more traffic to it.
+
+{% include image.html 
+lightbox="true" 
+file="/images/guides/progressive-delivery/03_canary_33.png" 
+url="/images/guides/progressive-delivery/03_canary_33.png" 
+alt="Deployment in progress. 33% of users are sent to the canary version" 
+caption="Deployment in progress. 33% of users are sent to the canary version"
+max-width="90%" 
+%}
+
+We are now sending 33% of live traffic to the canary (the traffic weights are not visible in the picture). To accommodate for the extra traffic the canary version now has 2 pods instead of one. This is also another great feature of Argo Rollouts. The amount of pods you have in the canary is completely unrelated to the amount of traffic that you send to it. You can have all possible combinations that you can think of (e.g. 10% of traffic to 5 pods, or 50% of traffic to 3 pods and so on). It all depends on the resources used by your application.
+
+It makes sense of course to gradually increase the number of pods in the canary as you shift more traffic to it. 
+
+Having the old version around is a great failsafe, as one can abort the deployment process and switch back all active users to the old deployment in the fastest way possible
+by simply telling the load balancer to move 100% of traffic back to the previous version.
+
+{% include image.html 
+lightbox="true" 
+file="/images/guides/progressive-delivery/04_canary_finished.png" 
+url="/images/guides/progressive-delivery/04_canary_finished" 
+alt="Old application version is discarded. Only new version remains." 
+caption="Old application version is discarded. Only new version remains."
+max-width="90%" 
+%}
+
+Two more pods are launched for the canary (for a total of 4) and finally we can shift 100% of live traffic to it. After some time the old version is scaled down completely (to preserve resources). We are now back 
+to the same configuration as the initial state, and the next deployment will follow the same sequence of events.
+
+### The example application
+
+You can find an example application at [https://github.com/codefresh-contrib/argo-rollout-canary-sample-app](https://github.com/codefresh-contrib/argo-rollout-canary-sample-app) that also includes simple metrics (we will use them in the second example with canaries).
+
+Notice that the first deployment of your application will NOT follow the canary deployment process as there is no "previous" version. So you need to deploy it at least
+once.
+
+```
+git clone https://github.com/codefresh-contrib/argo-rollout-canary-sample-app.git
+cd argo-rollout-canary-sample-app
+kubectl create ns canary
+kubectl apply -f ./canary-manual-approval -n canary
+```
+
+You can then monitor what argo rollouts is doing with the following command:
+
+```
+kubectl argo rollouts get rollout golang-sample-app-deployment --watch -n canary
+```
+
+### Canary deployment with manual approval
+
+As with Blue/Green deployments, the easiest way to use canaries is by simply inserting [an approval step]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/) before each subsequent traffic switch step.
+This will pause the pipeline and the developers or QA team can evaluate the canary stability.
+
+Here is an example pipeline with two canary steps (at 10% and 33% of traffic split):
+
+{% include image.html 
+lightbox="true" 
+file="/images/guides/progressive-delivery/canary-manual-approval-pipeline.png" 
+url="/images/guides/progressive-delivery/canary-manual-approval-pipeline.png" 
+alt="Manual approval with two intermediate canary steps" 
+caption="Manual approval with two intermediate canary steps"
+max-width="100%" 
+%}
+
+This pipeline does the following:
+
+1. [Clones]({{site.baseurl}}/docs/yaml-examples/examples/git-checkout/) the source code of the application
+1. [Builds]({{site.baseurl}}/docs/ci-cd-guides/building-docker-images/) a docker image
+1. [Deploys]({{site.baseurl}}/docs/deploy-to-kubernetes/kubernetes-templating/) the application by updating the Kubernetes manifests. Argo Rollouts sees the new manifest and creates a new version. 10% of live traffic is redirected to it.
+1. The pipeline is paused and waits for an [approval/rejection]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/#getting-the-approval-result) by a human user. 
+1. If the pipeline is approved 33% of traffic is now sent to the canary. If the pipeline is rejected, the canary is discarded and all traffic goes back to the stable version.
+1. In the next pause, the pipeline waits for a second approval.
+1. If the pipeline is approved all traffic is now sent to the canary. If the pipeline is rejected, the canary is discarded and all traffic goes back to the stable version.
+
+Here is the [pipeline definition]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/):
+
+ `codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: "1.0"
+stages:
+  - prepare
+  - build
+  - 'canary 10%'
+  - 'canary 33%'
+  - finish   
+steps:
+  clone:
+    type: "git-clone"
+    stage: prepare
+    description: "Cloning main repository..."
+    repo: '${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}'
+    revision: "${{CF_BRANCH}}"
+  build_app_image:
+    title: Building Docker Image
+    type: build
+    stage: build
+    image_name: kostiscodefresh/argo-rollouts-canary-sample-app
+    working_directory: "${{clone}}" 
+    tags:
+    - "latest"
+    - '${{CF_SHORT_REVISION}}'
+    dockerfile: Dockerfile
+  start_deployment:
+    title: Deploy to 10% of live traffic
+    stage: 'canary 10%'
+    image: codefresh/cf-deploy-kubernetes:master
+    working_directory: "${{clone}}"
+    commands:
+      - /cf-deploy-kubernetes ./canary-manual-approval/service.yaml 
+      - /cf-deploy-kubernetes ./canary-manual-approval/service-preview.yaml
+      - /cf-deploy-kubernetes ./canary-manual-approval/service-all.yaml  
+      - /cf-deploy-kubernetes ./canary-manual-approval/rollout.yaml   
+    environment:
+      - KUBECONTEXT=mydemoAkscluster@BizSpark Plus
+      - KUBERNETES_NAMESPACE=canary 
+  check_canary_10:
+    fail_fast: false
+    type: pending-approval
+    title: Is canary ok?
+    stage: 'canary 10%'  
+  promote_canary_33:
+    title: Switching 33% traffic to canary
+    stage: 'canary 33%'
+    image: kostiscodefresh/kubectl-argo-rollouts:latest
+    commands:
+      - /app/kubectl-argo-rollouts-linux-amd64 promote golang-sample-app-deployment -n canary --context "mydemoAkscluster@BizSpark Plus"
+    when:
+      steps:
+      - name: check_canary_10
+        on:
+        - approved 
+  abort_deployment_10:
+    title: Discarding canary at 10%
+    stage: 'canary 10%'
+    image: kostiscodefresh/kubectl-argo-rollouts:latest
+    commands:
+      - /app/kubectl-argo-rollouts-linux-amd64 undo golang-sample-app-deployment -n canary --context "mydemoAkscluster@BizSpark Plus" 
+    when:
+      steps:
+      - name: check_canary_10
+        on:
+        - denied         
+  exit_10:
+    title: Stopping pipeline
+    stage: 'canary 10%'
+    image: alpine:39
+    commands:
+      - echo "Canary failed"
+      - exit 1
+    when:
+      steps:
+      - name: check_canary_10
+        on:
+        - denied   
+  check_canary_33:
+    fail_fast: false
+    type: pending-approval
+    title: Is canary ok?
+    stage: 'canary 33%'  
+  promote_canary_full:
+    title: Switching all traffic to canary
+    stage: finish
+    image: kostiscodefresh/kubectl-argo-rollouts:latest
+    commands:
+      - /app/kubectl-argo-rollouts-linux-amd64 promote golang-sample-app-deployment -n canary --context "mydemoAkscluster@BizSpark Plus"
+    when:
+      steps:
+      - name: check_canary_33
+        on:
+        - approved 
+  abort_deployment_33:
+    title: Discarding canary at 33%
+    stage: 'canary 33%'
+    image: kostiscodefresh/kubectl-argo-rollouts:latest
+    commands:
+      - /app/kubectl-argo-rollouts-linux-amd64 undo golang-sample-app-deployment -n canary --context "mydemoAkscluster@BizSpark Plus" 
+    when:
+      steps:
+      - name: check_canary_33
+        on:
+        - denied         
+  exit_33:
+    title: Stopping pipeline
+    stage: 'canary 33%'
+    image: alpine:39
+    commands:
+      - echo "Canary failed"
+      - exit 1
+    when:
+      steps:
+      - name: check_canary_33
+        on:
+        - denied        
+{% endraw %}
+{% endhighlight %} 
+
+Just before the approval you can optionally execute the Argo Rollouts CLI to see what is happening behind the scenes:
+
+```
+kubectl argo rollouts get rollout golang-sample-app-deployment --watch -n canary
+```
+
+It should show the status of the canary pods with amount of traffic that is redirected to it.
+
+{% include image.html 
+lightbox="true" 
+file="/images/guides/progressive-delivery/canary-watch.png" 
+url="/images/guides/progressive-delivery/canary-watch.png" 
+alt="Argo Rollouts CLI" 
+caption="Argo Rollouts CLI"
+max-width="100%" 
+%}
+
+In the screenshot about, the canary deployment has just started. There is only one pod for the canary and it gets 10% of live traffic. The 4 pods of the previous version still receive 9 percent of live traffic.
+
+You can also see the traffic split in the LinkerD GUI:
+
+{% include image.html 
+lightbox="true" 
+file="/images/guides/progressive-delivery/canary-traffic-split.png" 
+url="/images/guides/progressive-delivery/canary-traffic-split.png" 
+alt="Linkerd Traffic split details" 
+caption="Linkerd Traffic split details"
+max-width="80%" 
+%}
+
+The screenshot above is from the second stage of the canary where 33% of live traffic is redirected to the canary pods.
+You can also get the same information from the command line with `kubectl get trafficsplit`.
+
+
+
 
 
 ## What to read next
