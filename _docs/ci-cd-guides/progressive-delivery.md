@@ -706,6 +706,68 @@ max-width="80%"
 The screenshot above is from the second stage of the canary where 33% of live traffic is redirected to the canary pods.
 You can also get the same information from the command line with `kubectl get trafficsplit`.
 
+### Choosing a solution for automated metric analysis
+
+Canary deployments with manual pauses are great to get started but can quickly become cumbersome and error-prone. Ideally the canary should automatically promote itself
+if the application "looks good". One of the most straightforward ways to examine application health is by reading its metrics and decide on the progress of the canary in a completely automated way.
+
+There are two main sources for metrics that you can use
+
+1. Application specific metrics. This requires instrumentation in your application but is very powerful as you can query exactly what you want
+1. Cluster level metrics (i.e. from the service mesh). These are very easy to setup  but are generic and deal mostly with the traffic the application receives.
+
+
+Argo Rollouts has native integration for [several metric providers](https://argoproj.github.io/argo-rollouts/features/analysis/). We will use Prometheus in our example.
+The example application [is already instrumented](https://github.com/codefresh-contrib/argo-rollout-canary-sample-app/blob/main/main.go#L51) to expose some basic metrics.
+
+First you need to install Prometheus by following [the official documentation](https://prometheus.io/docs/prometheus/latest/installation/). Then you need to make sure that Prometheus will actually scrape your application. Prometheus has [native service discovery for Kubernetes](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#kubernetes_sd_config) but you need to enable it in the configuration. 
+
+If you [install Prometheus with the Helm chart](https://github.com/prometheus-community/helm-charts), Kubernetes service discovery is already enabled. The only thing to setup is to add the `prometheus.io/scrape: "true"` annotation in your rollout so that Prometheus does not ignore your application.
+
+You can optionally install [Graphana](https://grafana.com/) so that you can inspect your application metrics before using them in the canary process. The example application has an [basic dashboard](https://github.com/codefresh-contrib/argo-rollout-canary-sample-app/blob/main/graphana/graphana-dashboard.json)
+that you can import:
+
+{% include image.html 
+lightbox="true" 
+file="/images/guides/progressive-delivery/graphana-dashboard.png" 
+url="/images/guides/progressive-delivery/graphana-dashboard.png" 
+alt="Prometheus metrics from the application" 
+caption="Prometheus metrics from the application"
+max-width="90%" 
+%}
+
+Next you need a way to filter your metrics so that you can query only those from the canary pods and not the stable pods. There are many ways to do this, but the easiest one is to simply have Argo Rollouts put special labels/tags in the canary pods. Then you can write any Prometheus Query and focus only on the canary instances:
+
+{% include image.html 
+lightbox="true" 
+file="/images/guides/progressive-delivery/canary-metrics.png" 
+url="/images/guides/progressive-delivery/canary-metrics.png" 
+alt="Canary metrics during a deployment" 
+caption="Canary metrics during a deployment"
+max-width="100%" 
+%}
+
+For the decision on how to promote the canary, you need to examine your application and decide which metrics you consider representative for the health of the application.
+For our example we have a simple query that checks number of successfull calls (i.e. that return HTTP code 200) vs the number of all calls. Every number below 100% means that the application has calls that return with error.
+
+{% include image.html 
+lightbox="true" 
+file="/images/guides/progressive-delivery/canary-decision.png" 
+url="/images/guides/progressive-delivery/canary-decision.png" 
+alt="The query that will promote or cancel the canary" 
+caption="The query that will promote or cancel the canary"
+max-width="100%" 
+%}
+
+Note that Argo Rollouts can evaluate multiple queries when deciding if the canary is health or not. You are not constrained to a single query.
+
+
+
+
+### Canary deployment with metrics evaluation
+
+
+
 ## Monitoring the Argo Rollouts controller
 
 Note that regardless of whether you use metric evaluation for your own applications, Argo Rollouts itself exposes Prometheus metrics
