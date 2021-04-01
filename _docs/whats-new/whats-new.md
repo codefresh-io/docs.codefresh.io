@@ -13,6 +13,10 @@ toc: true
 
 ## Recent Codefresh Updates:
 
+### April 2021
+
+- Canary deployments with Argo Rollouts - [documentation]({{site.baseurl}}/docs/ci-cd-guides/progressive-delivery/#canary-deployment-with-metrics-evaluation)
+
 ### March 2021
 
 - Native Support for Hashicorp Vault Secrets - [documentation]({{site.baseurl}}/docs/integrations/hashicorp-vault)
