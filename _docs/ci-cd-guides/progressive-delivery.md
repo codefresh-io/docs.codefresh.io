@@ -748,7 +748,7 @@ max-width="100%"
 %}
 
 For the decision on how to promote the canary, you need to examine your application and decide which metrics you consider representative for the health of the application.
-For our example we have a simple query that checks number of successfull calls (i.e. that return HTTP code 200) vs the number of all calls. Every number below 100% means that the application has calls that return with error.
+For our example we have a simple query that checks number of successful calls (i.e. that return HTTP code 200) vs the number of all calls. Every number below 100% means that the application has calls that return with error.
 
 {% include image.html 
 lightbox="true" 
@@ -762,11 +762,157 @@ max-width="100%"
 Note that Argo Rollouts can evaluate multiple queries when deciding if the canary is health or not. You are not constrained to a single query.
 
 
-
-
 ### Canary deployment with metrics evaluation
 
+Once your have your metric solution in place we need to instruct Argo Rollouts to use it during a deployment. 
 
+This happens with an [Analysis CRD](https://github.com/codefresh-contrib/argo-rollout-canary-sample-app/blob/main/canary-with-metrics/analysis.yaml).
+
+`analysis.yaml`
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: AnalysisTemplate
+metadata:
+  name: success-rate
+spec:
+  args:
+  - name: service-name
+  metrics:
+  - name: success-rate
+    interval: 2m
+    count: 2
+    # NOTE: prometheus queries return results in the form of a vector.
+    # So it is common to access the index 0 of the returned array to obtain the value
+    successCondition: result[0] >= 0.95
+    provider:
+      prometheus:
+        address: http://prom-release-prometheus-server.prom.svc.cluster.local:80
+        query: sum(response_status{app="{{args.service-name}}",role="canary",status=~"2.*"})/sum(response_status{app="{{args.service-name}}",role="canary"})
+```
+
+This Analysis template instructs Argo Rollouts to query the internal prometheus server every two minutes for a query that checks the successful HTTP calls
+to the application. If the percentage of HTTP calls that return 200 is more than 95% then the canary will be promoted. Otherwise the canary will fail.
+
+The Analysis can be reused by multiple deployments as the name of the service is configurable. The parameter is filled in the Rollout definition.
+
+`rollout.yaml` (excerpt)
+```yaml
+spec:
+  replicas: 4
+  strategy:
+    canary: 
+      canaryService: rollout-canary-preview
+      stableService: rollout-canary-active
+      canaryMetadata:
+        annotations:
+          role: canary
+        labels:
+          role: canary
+      trafficRouting:
+        smi: 
+          trafficSplitName: rollout-example-traffic-split 
+          rootService: rollout-canary-all-traffic 
+      steps:
+        - setWeight: 10
+        - setCanaryScale:
+            weight: 25
+        - pause: {duration: 5m}
+        - setWeight: 33
+        - setCanaryScale:
+            weight: 50
+        - pause: {duration: 5m}
+      analysis:
+        templates:
+        - templateName: success-rate
+        startingStep: 4 # delay starting analysis run until setWeight: 10%
+        args:
+        - name: service-name
+          value: golang-sample-app       
+```      
+
+Here you can see that instead of waiting for ever after each canary step, we instead wait for 5 minutes at 10% of traffic and 5 more minutes at 50% of traffic. During that time the Prometheus Analysis is running automatically behind the scenes.
+
+The Codefresh pipeline is now very simple:
+
+{% include image.html 
+lightbox="true" 
+file="/images/guides/progressive-delivery/canary-metrics-pipeline.png" 
+url="/images/guides/progressive-delivery/canary-metrics-pipeline.png" 
+alt="Fully automated Canary pipeline" 
+caption="Fully automated Canary pipeline"
+max-width="100%" 
+%}
+
+This pipeline does the following:
+
+1. [Clones]({{site.baseurl}}/docs/yaml-examples/examples/git-checkout/) the source code of the application
+1. [Builds]({{site.baseurl}}/docs/ci-cd-guides/building-docker-images/) a docker image
+1. [Deploys]({{site.baseurl}}/docs/deploy-to-kubernetes/kubernetes-templating/) the application by updating the Kubernetes manifests. Argo Rollouts sees the new manifest and creates a new version and starts the canary process.
+
+Here is the [pipeline definition]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/):
+
+ `codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: "1.0"
+stages:
+  - prepare
+  - build
+  - deploy
+steps:
+  clone:
+    type: "git-clone"
+    stage: prepare
+    description: "Cloning main repository..."
+    repo: '${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}'
+    revision: "${{CF_BRANCH}}"
+  build_app_image:
+    title: Building Docker Image
+    type: build
+    stage: build
+    image_name: kostiscodefresh/argo-rollouts-canary-sample-app
+    working_directory: "${{clone}}" 
+    tags:
+    - "latest"
+    - '${{CF_SHORT_REVISION}}'
+    dockerfile: Dockerfile
+    build_arguments:
+      - git_hash=${{CF_SHORT_REVISION}}
+  start_deployment:
+    title: Start canary
+    stage: deploy
+    image: codefresh/cf-deploy-kubernetes:master
+    working_directory: "${{clone}}"
+    commands:
+      - /cf-deploy-kubernetes ./canary-with-metrics/service.yaml 
+      - /cf-deploy-kubernetes ./canary-with-metrics/service-preview.yaml
+      - /cf-deploy-kubernetes ./canary-with-metrics/service-all.yaml  
+      - /cf-deploy-kubernetes ./canary-with-metrics/analysis.yaml 
+      - /cf-deploy-kubernetes ./canary-with-metrics/rollout.yaml   
+    environment:
+      - KUBECONTEXT=mydemoAkscluster@BizSpark Plus
+      - KUBERNETES_NAMESPACE=canary 
+{% endraw %}
+{% endhighlight %} 
+
+The pipeline is very simple because Argo Rollouts does all the heavy lifting behind the scenes.
+
+You can see the Analysis running with
+
+```
+kubectl argo rollouts get rollout golang-sample-app-deployment --watch -n canary
+```
+
+{% include image.html 
+lightbox="true" 
+file="/images/guides/progressive-delivery/canary-watch-metrics.png" 
+url="/images/guides/progressive-delivery/canary-watch-metrics.png" 
+alt="Running the Analysis in the background" 
+caption="Running the Analysis in the background"
+max-width="100%" 
+%}
+
+For each deployment you can also see the result of the Analysis along with the canary pods. The number next to the checkmark shows how many times the analysis will run (this is defined by the `count` property in the Analysis file).
 
 ## Monitoring the Argo Rollouts controller
 
