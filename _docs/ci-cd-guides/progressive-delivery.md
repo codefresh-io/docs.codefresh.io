@@ -762,7 +762,7 @@ max-width="100%"
 Note that Argo Rollouts can evaluate multiple queries when deciding if the canary is health or not. You are not constrained to a single query.
 
 
-### Canary deployment with metrics evaluation
+### Canary deployment with metric evaluation
 
 Once your have your metric solution in place we need to instruct Argo Rollouts to use it during a deployment. 
 
@@ -790,7 +790,7 @@ spec:
         query: sum(response_status{app="{{args.service-name}}",role="canary",status=~"2.*"})/sum(response_status{app="{{args.service-name}}",role="canary"})
 ```
 
-This Analysis template instructs Argo Rollouts to query the internal prometheus server every two minutes for a query that checks the successful HTTP calls
+This Analysis template instructs Argo Rollouts to contact the internal Prometheus server every two minutes for a query that checks the successful HTTP calls
 to the application. If the percentage of HTTP calls that return 200 is more than 95% then the canary will be promoted. Otherwise the canary will fail.
 
 The Analysis can be reused by multiple deployments as the name of the service is configurable. The parameter is filled in the Rollout definition.
@@ -912,7 +912,7 @@ caption="Running the Analysis in the background"
 max-width="100%" 
 %}
 
-For each deployment you can also see the result of the Analysis along with the canary pods. The number next to the checkmark shows how many times the analysis will run (this is defined by the `count` property in the Analysis file).
+For each deployment you can also see the result of the Analysis along with the canary pods. The number next to the checkmark shows how many times the analysis will run (this is defined by the `count` property in the Analysis file). See the [Canary specification](https://argoproj.github.io/argo-rollouts/features/canary/) for more parameters.
 
 ## Monitoring the Argo Rollouts controller
 
