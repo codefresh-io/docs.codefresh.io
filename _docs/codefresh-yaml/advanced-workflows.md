@@ -549,13 +549,12 @@ With parallel mode you are expected to define the order of steps in the yaml fil
 
 In the next sections we describe how you can define the steps dependencies in a parallel pipeline.
 
-### Single Step dependencies
+### Single Step Dependencies
 
 At the most basic level, you can define that a step *depends on* the execution of another step. This dependency is very flexible as Codefresh allows you run a second step once:
 
 1. The first step is finished with success
 1. The first step is finished with failure
-1. The first step was skipped
 1. The first completes (regardless of exit) status
 
 The syntax for this is the following post-condition:
@@ -580,18 +579,6 @@ second_step:
      - name: first_step
        on:
          - failure
-{% endhighlight %}
-
-If you want to run the second step only if the first one was skipped (because its own condition said so) :
-
-{% highlight yaml %}
-second_step:
-  title: Second step
-  when:
-    steps:
-     - name: first_step
-       on:
-         - skipped
 {% endhighlight %}
 
 Finally, if you don't care about the completion status the syntax is:
