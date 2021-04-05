@@ -231,7 +231,7 @@ second_step:
 
 In the example above, if integration and/or acceptance tests fail, the whole pipeline will continue, because we have defined that only the results of unit test matter for the whole parallel step.
 
-The reverse relationship (i.e. defining steps to be ignored) can be defined with the following syntax
+The reverse relationship (i.e., defining steps to be ignored) can be defined with the following syntax
 
 {% highlight yaml %}
 second_step:
@@ -569,7 +569,7 @@ second_step:
          - success
 {% endhighlight %}
 
-If you want to run the second step only if the first one fails the syntax is :
+If you want to run the second step only if the first one fails the syntax is:
 
 {% highlight yaml %}
 second_step:
@@ -593,15 +593,15 @@ second_step:
          - finished
 {% endhighlight %}
 
-Notice that `success` is the default behavior so if you omit the last two lines (i.e. the `on:` part) the second step
+Notice that `success` is the default behavior so if you omit the last two lines (i.e., the `on:` part) the second step
 will wait for the next step to run successfully.
 
 >Also notice that the name `main_clone` is reserved for the automatic clone that takes place in the beginning of pipelines that are linked to a git repository. You need to define which steps depend on it (probably the start of your graph) so that `git checkout` happens before the other steps.
 
 As an example, let's assume that you have the following steps in a pipeline:
 
-1. A build step that creates a docker image
-1. A freestyle step that runs [unit tests]({{site.baseurl}}/docs/testing/unit-tests/) inside the docker image
+1. A build step that creates a Docker image
+1. A freestyle step that runs [unit tests]({{site.baseurl}}/docs/testing/unit-tests/) inside the Docker image
 1. A freestyle step that runs [integrations tests]({{site.baseurl}}/docs/testing/integration-tests/) *After* the unit tests, even if they fail
 1. A cleanup step that runs after unit tests if they fail
 
@@ -787,7 +787,7 @@ steps:
 In this case Codefresh will make sure that cleanup happens only when both unit and integration tests are finished. 
 
 
-### Custom steps dependencies
+### Custom Steps Dependencies
 
 For maximum flexibility you can define a custom conditional for a step.
 
