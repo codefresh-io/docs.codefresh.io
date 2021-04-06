@@ -848,8 +848,8 @@ my_step:
     when:
       condition:
         any:
-          myCondition: steps.MyLoadTesting.result == ‘success’
-          myOtherCondition: steps.MyCleanupStep.result == skipped
+          myCondition: steps.MyLoadTesting.result == 'success'
+          myOtherCondition: steps.MyCleanupStep.result == 'finished'
 {% endhighlight %}
 
 You can also use conditions in the success criteria for a parallel step. Here is an example
