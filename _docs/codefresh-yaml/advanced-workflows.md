@@ -231,7 +231,7 @@ second_step:
 
 In the example above, if integration and/or acceptance tests fail, the whole pipeline will continue, because we have defined that only the results of unit test matter for the whole parallel step.
 
-The reverse relationship (i.e. defining steps to be ignored) can be defined with the following syntax
+The reverse relationship (i.e., defining steps to be ignored) can be defined with the following syntax
 
 {% highlight yaml %}
 second_step:
@@ -549,13 +549,12 @@ With parallel mode you are expected to define the order of steps in the yaml fil
 
 In the next sections we describe how you can define the steps dependencies in a parallel pipeline.
 
-### Single Step dependencies
+### Single Step Dependencies
 
 At the most basic level, you can define that a step *depends on* the execution of another step. This dependency is very flexible as Codefresh allows you run a second step once:
 
 1. The first step is finished with success
 1. The first step is finished with failure
-1. The first step was skipped
 1. The first completes (regardless of exit) status
 
 The syntax for this is the following post-condition:
@@ -570,7 +569,7 @@ second_step:
          - success
 {% endhighlight %}
 
-If you want to run the second step only if the first one fails the syntax is :
+If you want to run the second step only if the first one fails the syntax is:
 
 {% highlight yaml %}
 second_step:
@@ -580,18 +579,6 @@ second_step:
      - name: first_step
        on:
          - failure
-{% endhighlight %}
-
-If you want to run the second step only if the first one was skipped (because its own condition said so) :
-
-{% highlight yaml %}
-second_step:
-  title: Second step
-  when:
-    steps:
-     - name: first_step
-       on:
-         - skipped
 {% endhighlight %}
 
 Finally, if you don't care about the completion status the syntax is:
@@ -606,15 +593,15 @@ second_step:
          - finished
 {% endhighlight %}
 
-Notice that `success` is the default behavior so if you omit the last two lines (i.e. the `on:` part) the second step
+Notice that `success` is the default behavior so if you omit the last two lines (i.e., the `on:` part) the second step
 will wait for the next step to run successfully.
 
 >Also notice that the name `main_clone` is reserved for the automatic clone that takes place in the beginning of pipelines that are linked to a git repository. You need to define which steps depend on it (probably the start of your graph) so that `git checkout` happens before the other steps.
 
 As an example, let's assume that you have the following steps in a pipeline:
 
-1. A build step that creates a docker image
-1. A freestyle step that runs [unit tests]({{site.baseurl}}/docs/testing/unit-tests/) inside the docker image
+1. A build step that creates a Docker image
+1. A freestyle step that runs [unit tests]({{site.baseurl}}/docs/testing/unit-tests/) inside the Docker image
 1. A freestyle step that runs [integrations tests]({{site.baseurl}}/docs/testing/integration-tests/) *After* the unit tests, even if they fail
 1. A cleanup step that runs after unit tests if they fail
 
@@ -800,7 +787,7 @@ steps:
 In this case Codefresh will make sure that cleanup happens only when both unit and integration tests are finished. 
 
 
-### Custom steps dependencies
+### Custom Steps Dependencies
 
 For maximum flexibility you can define a custom conditional for a step.
 
@@ -861,8 +848,8 @@ my_step:
     when:
       condition:
         any:
-          myCondition: steps.MyLoadTesting.result == ‘success’
-          myOtherCondition: steps.MyCleanupStep.result == skipped
+          myCondition: steps.MyLoadTesting.result == 'success'
+          myOtherCondition: steps.MyCleanupStep.result == 'finished'
 {% endhighlight %}
 
 You can also use conditions in the success criteria for a parallel step. Here is an example
