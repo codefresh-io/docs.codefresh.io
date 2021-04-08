@@ -28,11 +28,54 @@ This SLA and any applicable Service Levels do not apply to any performance or av
 1. That result from your attempts to perform operations that exceed prescribed quotas or that resulted from our throttling of suspected abusive behavior;
 1. For licenses reserved, but not paid for, at the time of the Incident.
 
+## Support Specific Information
+
+### SLA Response Times
+
+
+{: .table .table-bordered .table-hover}
+| Priority         | Silver*     | Gold*                         | Platinum** |
+| -------------- | ---------------------------- | ---------------------------- | -------------|
+|Urgent          | 4 Hours | 2 Hours | 1 Hour |
+| High           | 6 Business Hours | 4 Business Hours | 2 Hours| 
+| Normal | 1 Business Day | 6 Business Hours| 3 Business Hours |
+| Low | 1 Business Week | 2 Business Days | 8 Business Hours |
+
+***Silver and Gold:** 9AM - 5PM PST support. Production down events will be handled with utmost urgency.
+
+****Platinum:** 24/7 support. Customers with Platinum SLA can open urgent tickets in our Off-hours.
+
+### Priority Definitions
+
+{: .table .table-bordered .table-hover}
+| Priority Level         | Description     |
+| -------------- | ---------------------------- | 
+| Urgent | Previously-working production services or functionality of the services are not available and there is no acceptable work around provided |
+| High | Disabled functionality, errors that result in a lack of significant functionality in the Services which prevent the user from accomplishing their testing with no acceptable work around provided|
+| Normal | Errors that cause previously-working non-critical features to malfunction. |
+| Low | General questions, How-To’s, best practices questions, and feature requests|
+
+[Severity Examples](https://support.codefresh.io/hc/en-us/articles/360018951039-Codefresh-SLA-definitions)
+
+### Support Channels
+
+{: .table .table-bordered .table-hover}
+| Channel         | Free     | Silver   | Gold | Platinum|
+|----------------|-----------|--------- |------|---------|
+| Support Portal | X         |   X      | X    | X       |
+| SLA            |           |   X      | X    | X       |
+| Phone*         |           |          | X    | X       |
+| Slack**        |           |          |      | X       |
+
+***Phone**: An initial reply by our answering service who will open a support ticket immediately which will be prioritized accordingly. This does include the 'Live support'/co-piloting/on boarding features offered by our Professional Services.
+
+****Slack:** Not intended to be used for critical issues.
 
 ## Revision Control
 
 {: .table .table-bordered .table-hover}
 | Version Number         | Nature of Change     | Date Approved                          |
 | -------------- | ---------------------------- | ---------------------------- |
-1.0 | Initial version | January 17, 2021 |
+|1.1 | Added support information | April 7, 2021 |
+|1.0 | Initial version | January 17, 2021 |
 
