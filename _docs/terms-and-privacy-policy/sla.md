@@ -45,15 +45,15 @@ This SLA and any applicable Service Levels do not apply to any performance or av
 
 ****Platinum:** 24/7 support. Customers with Platinum SLA can open urgent tickets in our Off-hours.
 
-### Severity Definitions
+### Priority Definitions
 
 {: .table .table-bordered .table-hover}
-| Severity level         | Description     |
+| Priority Level         | Description     |
 | -------------- | ---------------------------- | 
-| 1 - Urgent | Services are not available or material functionality of the Services is not available and there is no acceptable work around provided |
-| 2 - High | Disabled functionality, errors that result in a lack of significant functionality in the Services which prevent the user from accomplishing their testing with no acceptable work around provided|
-| 3 - Normal | Errors that cause previously-working non-critical features to malfunction. |
-| 4 - Low | General questions, How-To’s, best practices questions, and feature requests|
+| Urgent | Previously-working production services or functionality of the services are not available and there is no acceptable work around provided |
+| High | Disabled functionality, errors that result in a lack of significant functionality in the Services which prevent the user from accomplishing their testing with no acceptable work around provided|
+| Normal | Errors that cause previously-working non-critical features to malfunction. |
+| Low | General questions, How-To’s, best practices questions, and feature requests|
 
 [Severity Examples](https://support.codefresh.io/hc/en-us/articles/360018951039-Codefresh-SLA-definitions)
 
@@ -69,7 +69,7 @@ This SLA and any applicable Service Levels do not apply to any performance or av
 
 ***Phone**: An initial reply by our answering service who will open a support ticket immediately which will be prioritized accordingly. This does include the 'Live support'/co-piloting/on boarding features offered by our Professional Services.
 
-****Slack:** Not intended to be used for off-hour critical issues.
+****Slack:** Not intended to be used for critical issues.
 
 ## Revision Control
 
