@@ -194,7 +194,7 @@ When a pull request is closed in GitHub, the following variables are also availa
 | {% raw %}`${{CF_PULL_REQUEST_MERGED}}`{% endraw %}     | true if the pull request was merged to base branch    |
 | {% raw %}`${{CF_PULL_REQUEST_HEAD_BRANCH}}`{% endraw %}      | the head branch of the PR (the branch that we want to merge to master)  |
 | {% raw %}`${{CF_PULL_REQUEST_MERGED_COMMIT_SHA}}`{% endraw %}       | the commit SHA on the base branch after the pull request was merged (in most cases it will be master)   |
-| {% raw %}`${{CF_PRERELEASE_FLAG}}`{% endraw %}  | the commit SHA on the head branch (the branch that we want to push)  |
+| {% raw %}`${{CF_PULL_REQUEST_HEAD_COMMIT_SHA}}`{% endraw %}  | the commit SHA on the head branch (the branch that we want to push)  |
 
 ## User Provided Variables
 
