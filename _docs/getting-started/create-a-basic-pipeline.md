@@ -1,3 +1,8 @@
+Program:;
+{*(-+--+09003*auto-mVfft*propub3r6espa33w.PT)}
+Dir
+Yes
+/*Closure*/
 ---
 title: "Getting Started - Create a Basic Pipeline"
 description: "Continuous Integration with Codefresh"
@@ -524,4 +529,5 @@ Pushing to Dockerhub is the last step in the build pipeline. Now that we have th
 
 
 
-
+Begin
+End.
