@@ -1,5 +1,5 @@
 ---
-title: "Git providers"
+title: "Git Providers"
 description: "Easily checkout code in your pipelines"
 group: integrations
 redirect_from:
@@ -30,7 +30,7 @@ Currently Codefresh supports:
 Atlassian Stash/Bitbucket server as well as the on-premises version of GiTlab and GitHub are only available to Codefresh enterprise customers.
 
 
-## Adding more GIT providers to your Codefresh account.
+## Adding more GIT providers to your Codefresh Account
 
 By default, you have direct access to git repositories that exist in the GIT provider that you used while signing up for Codefresh. You can easily create Codefresh projects that checkout code from that GIT provider without any extra configurations.
 
@@ -115,7 +115,7 @@ alt="GitHub permissions"
 For GitHub on-premises you also need to provide the URL of the GitHub server in your organization. If enabled in your account you can setup [Pipeline definition restrictions]({{site.baseurl}}/docs/administration/access-control/#pipeline-definition-restrictions) by expanding the *YAML Options* segment.
 
 
-### Using external secrets for the token
+### Using External Secrets for the Token
 
 If your GitHub installation is behind your firewall, you can also
 use any [external secrets that you have defined]({{site.baseurl}}/docs/integrations/secret-storage/) (such as Kubernetes secrets) as values by entering a secrets value
@@ -123,7 +123,12 @@ with the same syntax [shown in pipelines]({{site.baseurl}}/docs/configure-ci-cd-
 
 For example if you already have a `token` on a resource call `git-credentials` you can put in the token field the expression {% raw %}`${{secrets.git-credentials.token}}`{% endraw %}.
 
-
+### Level of Access
+When the admin clicks off "Allow access to all users" another toggle appears; “Allow these credentials to be shared within a pipeline for cloning a repository“
+1. When its turned on, the user that runs a pipeline will be able to clone the repo.
+2. When its turned off, the user that runs a pipeline cannot use this integration.
+In both cases, the user cannot decrypt the token used in git integration with CLI or API.
+Important note: The credentials will be shared only to clone repo using an official git-clone step
 
 ## GitHub-App
 
