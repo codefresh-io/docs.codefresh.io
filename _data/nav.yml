@@ -488,104 +488,62 @@
 - title: Argo Enterprise
   url: "/argo enterprise"
   pages:
-      title: Get Started Quickly
+    - title: Get Started Quickly
       url: "/get-started-quickly"
-      title: Main Concepts
+    - title: Main Concepts
       url: "/main-concepts"  
-      title: Codefresh Autopilot
+    - title: Codefresh Autopilot
       url: "/codefresh-autopilot"
       sub-pages:
-          title: System Requirements
+        - title: System Requirements
           url: "/system-requirements"
-          title: Installation
+        - title: Installation
           url: "/installation"
-          title: Configuration
+        - title: Configuration
           url: "/configuration"
-        
-    pages:
-  - title: Codefresh Argo Step
-    url: "/codefresh-argo-step"
+    - title: Codefresh Argo Step
+      url: "/codefresh-argo-step"
       sub-pages:
         - title: Git Setup
           url: "/git-setup"
-          title: Workflows and Events
+        - title: Workflows and Events
           url: "/workflows-and-events"
-
-  - title: GitOps Dashboard
-    url: "/gitops-dashboard"
+    - title: GitOps Dashboard
+      url: "/gitops-dashboard"
       sub-pages:
         - title: Setup
           url: "/setup"
-          title: Usage
+        - title: Usage
           url: "/usage"  
-
-  - title: Codefresh CLI
-    url: "/codefresh-cli"
+    - title: Codefresh CLI
+      url: "/codefresh-cli"
       sub-pages:
         - title: Administration
           url: "/administration"
-          title: Installation
-          url: "/installation"
-           
-  - title: Tutorials
-    url: "/tutorials"
+        - title: Installation
+          url: "/installation" 
+    - title: Tutorials
+      url: "/tutorials"
       sub-pages:
         - title: Tutorial 1
           url: "/tutorial-1"
-          title: Tutorial 2
+        - title: Tutorial 2
           url: "/tutorial-2"
-          title: Tutorial 3
+        - title: Tutorial 3
           url: "/tutorial-3"   
-
-  - title: Reference
-    url: "/reference"
+    - title: Reference
+      url: "/reference"
       sub-pages:
-      - title: All CLI Options
+        - title: All CLI Options
           url: "/all-cli-options"
-          title: All Configuration Options
+        - title: All Configuration Options
           url: "/all-configuration-options"   
-          title: API Documentation
+        - title: API Documentation
           url: "/api-documentation"
 
-  - title: Codefresh Runner
-    url: "/codefresh-runner"
-    - title: Codefresh On-Premises
-      url: "/codefresh-on-prem"
-    - title: Add Users
-      url: "/invite-your-team-member"
-    - title: User Settings
-      url: "/user-settings"
-    - title: Pipeline Settings
-      url: "/pipeline-settings"
-    - title: Enterprise Account Management
-      url: "/ent-account-mng"
-    - title: Single Sign-On
-      url: "/single-sign-on"
-      sub-pages:
-        - title: SAML2
-          url: "/sso-setup-saml2"
-        - title: OpenID Connect
-          url: "/sso-setup-oauth2"
-        - title: Auth0
-          url: "/sso-auth0"
-        - title: Azure
-          url: "/sso-azure"
-        - title: Google
-          url: "/sso-google"
-        - title: LDAP
-          url: "/sso-ldap"
-        - title: Okta
-          url: "/sso-okta"
-        - title: OneLogin
-          url: "/sso-onelogin"
-    - title: Access Control
-      url: "/access-control"
-    - title: Audit Logs
-      url: "/audit-logs"
-    - title: Hybrid installation (legacy)
-      url: "/codefresh-hybrid"
-    - title: Codefresh Platform IPs
-      url: "/platform-ip-addresses"
+
+ 
+
 
 - title: Incubation
   url: "/incubation"
