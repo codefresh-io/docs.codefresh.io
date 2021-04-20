@@ -486,7 +486,7 @@
       url: "/platform-ip-addresses"
 
 - title: Argo Enterprise
-  url: "/argo enterprise"
+  url: "/argo-enterprise"
   pages:
     - title: Get Started Quickly
       url: "/get-started-quickly"
