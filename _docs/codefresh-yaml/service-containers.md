@@ -11,6 +11,8 @@ Sometimes you wish to run sidecar containers in a pipeline that offer additional
 
 Codefresh includes a handy mechanism (based on Docker compose) that can help you run sidecar containers along your main pipeline. Here is a very simple example.
 
+>Service Containers are base on Docker Compose. This document does not have the complete list of available options available. Please refer to Docker Compose versions [2](https://docs.docker.com/compose/compose-file/compose-file-v2/) and [3](https://docs.docker.com/compose/compose-file/), but not point releases such as 2.1.
+
  `codefresh.yml`
 {% highlight yaml %}
 {% raw %}
