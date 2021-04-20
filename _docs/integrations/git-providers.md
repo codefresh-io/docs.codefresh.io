@@ -129,7 +129,7 @@ When the admin clicks off "Allow access to all users" another toggle appears; â€
 2. When its turned off, the user that runs a pipeline cannot use this integration.
 In both cases, the user cannot decrypt the token used in Git integration with CLI or API.
 
->Important note: The credentials will be shared only to clone repos using an official git-clone step
+>Important note: The credentials will be shared only to clone repos using an official git-clone step.
 
 ## GitHub-App
 
