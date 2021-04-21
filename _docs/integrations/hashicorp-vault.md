@@ -15,12 +15,14 @@ You need to have a vault instance up and running. Codefresh supports Vault insta
 
 You also need to decide what [authentication method](https://www.vaultproject.io/docs/auth) Codefresh will use. The following methods are supported:
 
----|---
-[Username/Password](https://www.vaultproject.io/docs/auth/userpass)|Available in SaaS and Hybrid customers
-[Access Token](https://www.vaultproject.io/docs/auth/token)|Available in SaaS and Hybrid customers
-[Kubernetes](https://www.vaultproject.io/docs/auth/kubernetes)|Only available in [Hybrid installation]({{site.baseurl}}/docs/administration/behind-the-firewall/)
-[Google Cloud Engine](https://www.vaultproject.io/docs/auth/gcp)|Only available in [Hybrid installation]({{site.baseurl}}/docs/administration/behind-the-firewall/)
-[App Role]()|Available in SaaS and Hybrid customers
+{: .table .table-bordered .table-hover}
+| Method         | Notes |
+|---|--- |
+| [Username/Password](https://www.vaultproject.io/docs/auth/userpass)|Available in SaaS and Hybrid customers |
+| [Access Token](https://www.vaultproject.io/docs/auth/token)|Available in SaaS and Hybrid customers |
+| [Kubernetes](https://www.vaultproject.io/docs/auth/kubernetes)|Only available in [Hybrid installation]({{site.baseurl}}/docs/administration/behind-the-firewall/) |
+| [Google Cloud Engine](https://www.vaultproject.io/docs/auth/gcp)|Only available in [Hybrid installation]({{site.baseurl}}/docs/administration/behind-the-firewall/) |
+| [App Role](https://www.vaultproject.io/docs/auth/approle)|Available in SaaS and Hybrid customers |
 
 ### Using the Codefresh UI
 

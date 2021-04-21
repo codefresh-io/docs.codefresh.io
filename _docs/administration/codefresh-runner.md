@@ -229,7 +229,7 @@ Once installed the runner uses the following pods:
 The following table shows **MINIMUM** resources for each component:
 
 {: .table .table-bordered .table-hover}
-| Component         | Minimum CPU| Minimum Memory | Space                  | Type | Always on
+| Component         | Minimum CPU| Minimum Memory | Space                  | Type | Always on |
 | -------------- | --------------|------------- |-------------------------|-------|-------|
 | `runner`        | 100m          | 100Mi        | Doesn't need PV         | Pod   | Yes   |
 | `engine`         | 100m          | 500Mi        | Doesn't need PV         | Pod   | No   |
