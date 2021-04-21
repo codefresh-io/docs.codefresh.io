@@ -11,8 +11,6 @@ Sometimes you wish to run sidecar containers in a pipeline that offer additional
 
 Codefresh includes a handy mechanism (based on Docker compose) that can help you run sidecar containers along your main pipeline. Here is a very simple example.
 
->Service Containers are base on Docker Compose. This document does not have the complete list of available options available. Please refer to Docker Compose versions [2](https://docs.docker.com/compose/compose-file/compose-file-v2/) and [3](https://docs.docker.com/compose/compose-file/), but not point releases such as 2.1.
-
  `codefresh.yml`
 {% highlight yaml %}
 {% raw %}
@@ -36,6 +34,8 @@ steps:
 {% endhighlight %}
 
 This pipeline will run integration tests during the freestyle step called `my_integration_tests` and at that point a Redis instance will be available at hostname `my-redis-db-host` and port 6379. Note how in this example, the service container is placed at the root of the pipeline (as opposed to inside a specific step).  This ensures that the Redis instance is running for [the duration of the pipeline]({{site.baseurl}}/docs/codefresh-yaml/service-containers/#running-services-for-the-duration-of-the-pipeline).
+
+>Service Containers are based on Docker Compose. This document does not have the complete list of available options available. Please refer to Docker Compose versions [2](https://docs.docker.com/compose/compose-file/compose-file-v2/) and [3](https://docs.docker.com/compose/compose-file/), but not point releases such as 2.1.
 
 
 ## Viewing Service containers
