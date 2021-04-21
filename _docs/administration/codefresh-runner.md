@@ -319,7 +319,7 @@ codefresh runner init --app-proxy --app-proxy-host=<hostname-of-ingress>
 
 ```
 
-If you have multiple ingress controllers in the Kubernetes cluster you can use the `app-proxy-ingress-class` parameter to define which ingress will be used. For additional security you can also define an allowlist for IPs/ranges that are allowed to use the ingress (to further limit the web browsers that can access the Ingress). Check the documentation of your ingress controller for the exact details.
+If you have multiple ingress controllers in the Kubernetes cluster you can use the `ingress-class` parameter to define which ingress will be used. For additional security you can also define an allowlist for IPs/ranges that are allowed to use the ingress (to further limit the web browsers that can access the Ingress). Check the documentation of your ingress controller for the exact details.
 
 By default the app-proxy ingress will use the path `hostname/app-proxy`. You can change that default by using the values file in the installation with the flag `--values values.yaml`. See the `AppProxy` section in the example [values.yaml](https://github.com/codefresh-io/venona/blob/release-1.0/venonactl/example/values-example.yaml).  
 
