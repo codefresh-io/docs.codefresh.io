@@ -169,7 +169,8 @@ You can also define [multiple expressions](http://tldp.org/LDP/GNU-Linux-Tools-S
 
 ```
 {app/**,test/**}
-{**/package.json,my-subproject/** }
+{**/package.json,my-subproject/**}
+!{deployment/**,**/version.cfg}
 ```
 
 Once a commit happens to a code repository, Codefresh will see which files are changed from the git provider and trigger the build **only** if the changed files match the glob expression. If there is no match no build will be triggered.
