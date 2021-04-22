@@ -381,7 +381,7 @@
 - title: Integrations
   url: "/integrations"
   pages:
-    - title: Git providers
+    - title: Git Providers
       url: "/git-providers"
     - title: Kubernetes
       url: "/kubernetes"
