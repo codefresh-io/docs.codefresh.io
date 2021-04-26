@@ -492,8 +492,8 @@
       url: "/get-started-quickly"
     - title: Main Concepts
       url: "/main-concepts"  
-    - title: Codefresh Autopilot
-      url: "/codefresh-autopilot"
+    - title: Codefresh Runtime
+      url: "/codefresh-Runtime"
       sub-pages:
         - title: System Requirements
           url: "/system-requirements"
@@ -525,12 +525,12 @@
     - title: Tutorials
       url: "/tutorials"
       sub-pages:
-        - title: Tutorial 1
-          url: "/tutorial-1"
-        - title: Tutorial 2
-          url: "/tutorial-2"
-        - title: Tutorial 3
-          url: "/tutorial-3"   
+        - title: Create A Pipeline
+          url: "/create-a-pipeline"
+        - title: Add More Git Sources
+          url: "/add-more-Git-sources"
+        - title: Manage Permissions
+          url: "/manage-Permissions"   
     - title: Reference
       url: "/reference"
       sub-pages:
