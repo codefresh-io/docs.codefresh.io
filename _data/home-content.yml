@@ -272,8 +272,8 @@
     localurl: /docs/argo-enterprise/codefresh-cli
   - title: Tutorials
     localurl: /docs/argo-enterprise/tutorials
-  - title: References 
-    localurl: /docs/argo-enterprise/references
+  - title: Reference
+    localurl: /docs/argo-enterprise/reference
 - title: "Incubation"
   icon: images/home-icons/plugins.svg
   url: ''
