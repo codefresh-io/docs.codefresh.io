@@ -12,7 +12,7 @@ is only available to Enterprise customers.
 
 ~~To run ARM pipelines in Codefresh, [open a free account]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/) and then [contact sales](https://codefresh.io/contact-us/) in order to enable ARM support.~~
 
->Due to unforeseen circumstances, we are currently unable to support ARM builds. We apologize for the inconvenience.
+>Due to unforeseen circumstances, we are currently unable to support ARM builds on our SaaS infrastructure. We apologize for the inconvenience.
 
 Once approved, you will get access to a new runtime environment installed on an ARM cluster. This means that you will be able to run both ARM and Linux/x86 builds from the same Codefresh account by choosing the appropriate [pipeline settings]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-settings).
 
@@ -23,7 +23,7 @@ Once ARM support is enabled for your account, there is no other special requirem
 Just read the normal Codefresh documentation:
 
 * [Introduction to Pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
-* [Creating a pipeline]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
+* [Creating a Pipeline]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
 * [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
 * [Working with Docker registries]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/)
 * [On demand environments]({{site.baseurl}}/docs/getting-started/on-demand-environments/)
@@ -31,7 +31,7 @@ Just read the normal Codefresh documentation:
 
 The only important thing to notice is to make sure that the base Docker images you use are ARM-compiled.
 
-Most popular Docker images (e.g. Alpine) already offer ARM support so all your builds should work right away.
+Most popular Docker images (i.e., Alpine) already offer ARM support so all your builds should work right away.
 
 {% include 
 image.html 
