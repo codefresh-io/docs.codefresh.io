@@ -563,27 +563,34 @@ Setting up the Codefresh Jira integration provides
 [Our integration section]({{site.baseurl}}/docs/integrations/jira) provides further details on ways to set-up the connection. 
 
 Once set-up, you will be able to view information from Jira in the Codefresh GitOps Dashboard. Additionally, Jira will display
+
 * The build status across environments
 * The deployment history
 * Tickets and how they correlate to deployments
 
-The following screenshots show examples of the provided information.
+The following screenshots show examples of the provided information. Here is the deployments details for a ticket in JIRA:
 
 {% include image.html 
 lightbox="true" 
 file="/images/integrations/jira/jira-integration-one.png" 
 url="/images/integrations/jira/jira-integration-one.png" 
-alt="Codefresh Integrations" 
+alt="Ticket deployment history" 
+caption="Ticket deployment history"
 max-width="90%" 
 %}
+
+And here is a complete timeline of your deployments and the feature they contain.
 
 {% include image.html 
 lightbox="true" 
 file="/images/integrations/jira/jira-integration-two.png" 
 url="/images/integrations/jira/jira-integration-two.png" 
-alt="Codefresh Integrations" 
+alt="Jira Deployment timeline"
+caption="Jira Deployment timeline" 
 max-width="90%" 
 %}
+
+For more information see the [Atlassian Codefresh page](https://www.atlassian.com/solutions/devops/integrations/codefresh) and the [integration documentation]({{site.baseurl}}/docs/integrations/jira/).
 
 ## Using a Git repository for the pipelines
 

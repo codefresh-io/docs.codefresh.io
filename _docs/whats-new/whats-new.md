@@ -10,18 +10,28 @@ toc: true
 ## Upcoming Changes:
 
 - New platform IP addresses - [documentation]({{site.baseurl}}/docs/administration/platform-ip-addresses/)
--  *Modified Files filter on triggers for Pull request events*: Available March 1st
-    The Modified Files filter will now work on triggers triggered by Pull Request events. Notice: this might cause unexpected behavior if you have a trigger that is triggered by both Pull Request and Commit events with a Modified Files filter set. Previously the Modified Files filter would be ignored for Pull Request events. If you need different filters for Pull Requests and Commit events, we recommend you separate the trigger.
-
 
 ## Recent Codefresh Updates:
 
+### April 2021
+
+- Jira integration with Atlassian Open DevOps- [documentation]({{site.baseurl}}/docs/integrations/jira/)
+- Canary deployments with Argo Rollouts - [documentation]({{site.baseurl}}/docs/ci-cd-guides/progressive-delivery/#canary-deployment-with-metrics-evaluation)
+- Support SLAs - [documentation]({{site.baseurl}}/docs/terms-and-privacy-policy/sla/#support-specific-information)
+
 ### March 2021
-- Jira integration - [documentation]({{site.baseurl}}/docs/integrations/jira/)
+
+- Native Support for Hashicorp Vault Secrets - [documentation]({{site.baseurl}}/docs/integrations/hashicorp-vault)
+- Blue/Green deployments with Argo Rollouts - [documentation]({{site.baseurl}}/docs/ci-cd-guides/progressive-delivery/#blue-green-deployments)
+- The [Modified Files filter]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/#monorepo-support-modified-files) will now work on triggers triggered by Pull Request events. Notice: this might cause unexpected behavior if you have a trigger that is triggered by both Pull Request and Commit events with a Modified Files filter set. Previously the Modified Files filter would be ignored for Pull Request events. If you need different filters for Pull Requests and Commit events, we recommend you separate the trigger.
+- Codefresh Runner on Rancher RKE 2.X - [documentation]({{site.baseurl}}/docs/administration/codefresh-runner/#installing-on-rancher-rke-2x)
+- Access service containers via localhost - [documentation]({{site.baseurl}}/docs/codefresh-yaml/service-containers/#accessing-containers-via-localhost)
 
 ### February 2021
 
+
 - Concurrency Behavior for Pending Builds - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/#define-concurrency-limits)
+- Jira Integration - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/sending-the-notification-to-jira/)
 - SLA Details - [documentation]({{site.baseurl}}/docs/terms-and-privacy-policy/sla/)
 - Autoscaling Recommendations for Codefresh On-prem - [documentation]({{site.baseurl}}/docs/administration/codefresh-on-prem/#app-cluster-autoscaling)
 - Hide Inaccessible Clusters in the Kubernetes Dashboard - [documentation]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/#accessing-the-kubernetes-dashboard)
@@ -29,6 +39,9 @@ toc: true
 - Okta Auto-Sync of Teams - [documentation]({{site.baseurl}}/docs/administration/single-sign-on/sso-okta/#syncing-of-teams-after-initial-sso-setup)
 - Global Pipeline Settings Screen - [documentation]({{site.baseurl}}/docs/administration/pipeline-settings)
 - Helm 2 Support - [documentation]({{site.baseurl}}/docs/new-helm/helm2-support)
+
+
+
 
 ### January 2021
 
