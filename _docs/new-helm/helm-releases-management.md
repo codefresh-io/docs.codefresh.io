@@ -190,6 +190,8 @@ max-width="50%"
 
 This way you can add your extra logic on top of these actions. For example your own Helm uninstall pipeline might also have a notification step that posts a message to a slack channel after the release is removed.
 
+>Overriding the default pipelines can only be done by [Codefresh admin users]({{site.baseurl}}/docs/administration/access-control/#users-and-administrators).
+
 If you do override any of these actions the following [environment variables]({{site.baseurl}}/docs/codefresh-yaml/variables/) are available in the respective pipeline, so that you can use your own custom helm command.
 
 *Helm Test pipeline*

@@ -95,6 +95,8 @@ Here are some more syntax examples:
 * `/^((?!^feature).)*$/gi` - only run if branch name does **not** start with `feature`.
 
 >The field *Pull Request Target* is available for all Git providers apart from Atlassian stash.
+>
+>When using the Terraform Provider, please use the [Go regex syntax](https://github.com/google/re2/wiki/Syntax) as some perl regex syntax is not compatible.
 
 The concept behind these checkboxes and branch name fields is to allow you to define which pipelines run for various workflows in your organization.
 
@@ -144,7 +146,7 @@ The *modified files* field is a very powerful Codefresh feature that allows you 
 files affected by a commit are in a specific folder (or match a specific naming pattern). This means that
 you can have a big GIT repository with multiple projects and build only the parts that actually change.
 
->Currently the field *modified files* is available only for GitHub, GitLab and Bitbucket SAAS repositories, since they are the only GIT providers
+>Currently the field *modified files* is available only for GitHub, GitLab and [Bitbucket Server and Data Center](https://confluence.atlassian.com/bitbucketserver/add-a-post-service-webhook-776640367.html) repositories, since they are the only GIT providers
 that send this information in the webhook. We will support other GIT providers as soon as they add the respective feature. 
 
 ### Using the Modified files field to constrain triggers to specific folder/files
@@ -167,7 +169,8 @@ You can also define [multiple expressions](http://tldp.org/LDP/GNU-Linux-Tools-S
 
 ```
 {app/**,test/**}
-{**/package.json,my-subproject/** }
+{**/package.json,my-subproject/**}
+!{deployment/**,**/version.cfg}
 ```
 
 Once a commit happens to a code repository, Codefresh will see which files are changed from the git provider and trigger the build **only** if the changed files match the glob expression. If there is no match no build will be triggered.

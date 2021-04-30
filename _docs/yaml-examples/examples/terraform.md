@@ -6,7 +6,7 @@ sub_group: examples
 toc: true
 ---
 
-[Terraform](https://www.terraform.io/) is a platform for *Infrastructure as Code*. It allows you to describe you cloud infrastructure in a declarative manner.
+[Terraform](https://www.terraform.io/) is a platform for *Infrastructure as Code*. It allows you to describe your cloud infrastructure in a declarative manner.
 
 You can use Terraform to deploy to Kubernetes or any other supported cloud platform. Because Terraform itself is already offered [in a Docker container](https://hub.docker.com/r/hashicorp/terraform/), it is very easy to run Terraform in a Codefresh pipeline.
 
@@ -76,7 +76,7 @@ This pipeline does the following:
 
 1. Clones the source code with a [Git clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)
 1. Runs [cf_export]({{site.baseurl}}/docs/codefresh-yaml/variables/#exporting-environment-variables-from-a-freestyle-step) to create a pipeline variable with the path of the google service account
-1. Runs `terraform init/apply` to create the VM on Google cloud.
+1. Runs `terraform init/apply` to create the VM on Google cloud
 
 >For simplicity, we auto-approve the terraform plan in the example pipeline. In a production pipeline you would instead use an [approval step ]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/) to inspect the plan, before actually applying it.
 

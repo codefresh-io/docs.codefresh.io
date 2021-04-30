@@ -131,9 +131,8 @@
       url: "/environment-deployments"      
     - title: "GitOps deployments"
       url: "/gitops-deployments"      
-
-    # - title: Complex workflows
-    #   url: "/complex-workflows"
+    - title: "Progressive Delivery"
+      url: "/progressive-delivery" 
 
 - title: Codefresh YAML
   url: "/codefresh-yaml"
@@ -382,7 +381,7 @@
 - title: Integrations
   url: "/integrations"
   pages:
-    - title: Git providers
+    - title: Git Providers
       url: "/git-providers"
     - title: Kubernetes
       url: "/kubernetes"
@@ -414,7 +413,9 @@
         - title: "Other Registries"
           url: "/other-registries"  
     - title: Secret Storage
-      url: "/secret-storage"            
+      url: "/secret-storage"
+    - title: Hashicorp Vault
+      url: "/hashicorp-vault"              
     - title: Helm Integration
       url: "/helm" 
     - title: ArgoCD Integration
@@ -536,6 +537,8 @@
           url: "/validation-port-warnings"
         - title: Forbidden Cluster Resources
           url: "/forbidden-cluster-resources"
+        - title: How to use SSH keys in freestyle steps
+          url: "using-ssh-keys"
         - title: Failed to get accounts clusters during workflow
           url: "/failed-to-get-accounts-clusters-during-workflow"
         - title: API Paging issues

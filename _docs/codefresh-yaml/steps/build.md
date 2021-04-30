@@ -79,10 +79,10 @@ step_name:
 | `dockerfile`                               | The path to the `Dockerfile` from which the image is built. The default is `Dockerfile`.                                                                                                                                             | Default                   |
 | `image_name`                               | The name for the image you build.                                                                                                                                                                                                    | Required                  |
 | `tag`                                      | The tag that is assigned to the image you build. <br>The default is the name of the branch or revision that is built.                                                                                                                | Default                   |
-| `tags`                                     | Multiple tags under which to push the image. [This property is only available in the new opt-in build step syntax]({{site.baseurl}}/docs/docker-registries/cfcr-deprecation/#using-a-default-registry-for-pipelines). Use either this or `tag`. This is an array, so should be of the following style: <br> {::nomarkdown}<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="na">tags</span><span class="pi">:</span><br><span class="pi">-</span> <span class="s">tag1</span><br><span class="pi">-</span> <span class="s">tag2</span><br><span class="pi">-</span> <span class="s">{% raw %}${{CF_BRANCH_TAG_NORMALIZED}}{% endraw %}</span><br><span class="pi">-</span> <span class="s">tag4</span></code></pre></figure>{:/}or<br>{::nomarkdown}<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="na">tags</span><span class="pi">:</span> <span class="pi">[</span> <span class="s1">'</span><span class="s">tag1'</span><span class="pi">,</span> <span class="s1">'</span><span class="s">tag2'</span><span class="pi">,</span> <span class="s1">'</span><span class="s">{% raw %}${{CF_BRANCH_TAG_NORMALIZED}}{% endraw %}'</span><span class="pi">,</span> <span class="s1">'</span><span class="s">tag4'</span> <span class="pi">]</span></code></pre></figure>{:/}                                            | Optional                   |
-| `registry`                                 | The registry logical name of one of the inserted registries from the integration view. [This property is only available in the new opt-in build step syntax]({{site.baseurl}}/docs/docker-registries/cfcr-deprecation/#using-a-default-registry-for-pipelines). <br>The default value will be your default registry [if you have more than one]({{site.baseurl}}/docs/docker-registries/external-docker-registries/).                                     | Optional                   |
+| `tags`                                     | Multiple tags under which to push the image. Use either this or `tag`. This is an array, so should be of the following style: <br> {::nomarkdown}<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="na">tags</span><span class="pi">:</span><br><span class="pi">-</span> <span class="s">tag1</span><br><span class="pi">-</span> <span class="s">tag2</span><br><span class="pi">-</span> <span class="s">{% raw %}${{CF_BRANCH_TAG_NORMALIZED}}{% endraw %}</span><br><span class="pi">-</span> <span class="s">tag4</span></code></pre></figure>{:/}or<br>{::nomarkdown}<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="na">tags</span><span class="pi">:</span> <span class="pi">[</span> <span class="s1">'</span><span class="s">tag1'</span><span class="pi">,</span> <span class="s1">'</span><span class="s">tag2'</span><span class="pi">,</span> <span class="s1">'</span><span class="s">{% raw %}${{CF_BRANCH_TAG_NORMALIZED}}{% endraw %}'</span><span class="pi">,</span> <span class="s1">'</span><span class="s">tag4'</span> <span class="pi">]</span></code></pre></figure>{:/}                                            | Optional                   |
+| `registry`                                 | The registry logical name of one of the inserted registries from the integration view. <br>The default value will be your default registry [if you have more than one]({{site.baseurl}}/docs/docker-registries/external-docker-registries/).                                     | Optional                   |
 | `registry_contexts`                                 | Advanced property for resolving Docker images when [working with multiple registries with the same domain]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/#working-with-multiple-registries-with-the-same-domain)                            | Optional                  |
-|`disable_push`                                 | Do not push to any registry automatically. [This property is only available in the new opt-in build step syntax]({{site.baseurl}}/docs/docker-registries/cfcr-deprecation/#using-a-default-registry-for-pipelines).                                     | Optional                   | 
+|`disable_push`                                 | Do not push to any registry automatically.                                     | Optional                   | 
 | `no_cache`                                 | Disable Docker engine cache for the build [more info](https://codefresh.io/docs/docs/troubleshooting/common-issues/disabling-codefresh-caching-mechanisms/)                                                                                                                                                                                             | Optional                  |
 | `no_cf_cache`                                 | Disable Codefresh build optimization for the build [more info](https://codefresh.io/docs/docs/troubleshooting/common-issues/disabling-codefresh-caching-mechanisms/) 
 | `build_arguments`                          | A set of [Docker build arguments](https://docs.docker.com/engine/reference/commandline/build/#set-build-time-variables-build-arg) to pass to the build process.                                                                      | Optional                  |
@@ -126,7 +126,7 @@ steps:
     tag: 1.0.1
 {% endhighlight %}
 
-Build an image using a different Dockerfile and push multiple tags to the default registry. [This capability is only available in the new opt-in build step syntax]({{site.baseurl}}/docs/docker-registries/cfcr-deprecation/#using-a-default-registry-for-pipelines).
+Build an image using a different Dockerfile and push multiple tags to the default registry.
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -145,7 +145,7 @@ steps:
 {% endraw %}        
 {% endhighlight %}
 
-Build an image and automatotically push to the [registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) with name `my-registry`. [This capability is only available in the new opt-in build step syntax]({{site.baseurl}}/docs/docker-registries/cfcr-deprecation/#using-a-default-registry-for-pipelines).
+Build an image and automatotically push to the [registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) with name `my-registry`.
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -202,7 +202,7 @@ steps:
     working_directory: ./
     tag: '${{CF_BRANCH_TAG_NORMALIZED}}'
     dockerfile:
-      content: >-
+      content: |-
        # ---
        # Go Builder Image
        FROM golang:1.8-alpine AS builder

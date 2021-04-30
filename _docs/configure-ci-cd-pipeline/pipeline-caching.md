@@ -197,6 +197,9 @@ This means that unlike other CI solutions where you have to manually describe wh
 
 The main choice that you have is which files to place on the volume. For example, Node.js uses the folder `node_modules` for its dependencies which are placed under the project folder [which is automatically placed under the volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#cloning-the-source-code). So all contents of `node_modules` will be cached by default without any further action on your part.
 
+>Note that if you are using [Codefresh on-prem]({{site.baseurl}}/docs/administration/codefresh-on-prem/), this kind of caching is not available for the built-in runtime and you need to use the [Codefresh Runner]({{site.baseurl}}/docs/administration/codefresh-runner/)
+with your own runtime to activate volume caching.
+
 The simplest way to see this caching mechanism in action is this pipeline:
 
  `codefresh.yml`

@@ -6,7 +6,13 @@ This site is built with Jekyll. Documentation content is written in Markdown for
 ## Deploying
 The site is automatically deployed when commits are merged/pushed in `master`, hosted at https://codefresh.io/docs/
 
-### Running documentation locally
+### Preview documentation locally with Docker (Recommended)
+
+1. Install [docker-compose](https://docs.docker.com/compose/)
+2. Run `docker-compose up`
+3. Open `http://localhost:3131` in your browser, and voila!
+
+### Preview documentation locally (Legacy method)
 
 1. Install Ruby, `bundler`, `jekyll` and other Ruby dependencies with `bundle install`.
 2. Run `npm install` to install Node.js dependencies.
@@ -14,8 +20,4 @@ The site is automatically deployed when commits are merged/pushed in `master`, h
 4. From the root directory, run `npm run docs-serve-dev` in the command line.
 5. Open `http://localhost:19002` in your browser, and voila.
 
-### Running documentation locally with Docker
 
-1. Install [docker-compose](https://docs.docker.com/compose/)
-2. Run `docker-compose up`
-3. Open `http://localhost:3131` in your browser, and voila!

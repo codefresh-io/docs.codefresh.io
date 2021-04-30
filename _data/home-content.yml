@@ -83,11 +83,10 @@
   - title: GitOps deployments
     new: true
     localurl: /docs/ci-cd-guides/gitops-deployments/  
-
-  # - title: Secrets Management
-  #   localurl: /docs/ci-cd-guide/secret-management/ 
-  # - title: Complex workflows
-  #   localurl: /docs/ci-cd-guide/complex-workflows/ 
+  - title: Progressive Delivery
+    new: true
+    localurl: /docs/ci-cd-guides/progressive-delivery/ 
+ 
 
       
 - title: Yaml Syntax
@@ -112,7 +111,6 @@
     new: true
     localurl: /docs/codefresh-yaml/deployment-environments/
   - title: Hooks
-    new: true  
     localurl: /docs/codefresh-yaml/hooks/
   - title: Examples
     localurl: /docs/yaml-examples/examples/
@@ -149,7 +147,6 @@
   - title: Managing your cluster
     localurl: /docs/deploy-to-kubernetes/manage-kubernetes/
   - title: Environment Dashboard
-    new: true
     localurl: /docs/deploy-to-kubernetes/environment-dashboard/
   - title: Accessing a Docker registry from your cluster
     localurl: /docs/deploy-to-kubernetes/access-docker-registry-from-kubernetes/
@@ -166,7 +163,6 @@
   - title: Using Helm in a Codefresh pipeline
     localurl: /docs/new-helm/using-helm-in-codefresh-pipeline/
   - title: Helm Releases management
-    new: true
     localurl: /docs/new-helm/helm-releases-management/
   - title: Codefresh Managed Helm Repositories
     localurl: /docs/new-helm/managed-helm-repository/
@@ -241,7 +237,6 @@
   - title: Codefresh behind the firewall
     localurl: /docs/administration/behind-the-firewall
   - title: Codefresh Runner
-    new: true
     localurl: /docs/administration/codefresh-runner
   - title: User Settings
     localurl: /docs/administration/user-settings   

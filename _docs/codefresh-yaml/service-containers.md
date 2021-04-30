@@ -35,6 +35,8 @@ steps:
 
 This pipeline will run integration tests during the freestyle step called `my_integration_tests` and at that point a Redis instance will be available at hostname `my-redis-db-host` and port 6379. Note how in this example, the service container is placed at the root of the pipeline (as opposed to inside a specific step).  This ensures that the Redis instance is running for [the duration of the pipeline]({{site.baseurl}}/docs/codefresh-yaml/service-containers/#running-services-for-the-duration-of-the-pipeline).
 
+>Service Containers are based on Docker Compose. This document does not have the complete list of available options available. Please refer to Docker Compose versions [2](https://docs.docker.com/compose/compose-file/compose-file-v2/) and [3](https://docs.docker.com/compose/compose-file/), but not point releases such as 2.1.
+
 
 ## Viewing Service containers
 
@@ -479,6 +481,68 @@ Notice that in that case the sequence of events is the following
 1. The `readiness` block will run until the service image is ready to accept connections
 1. The `setup` block will run and preload data or setup any custom commands you have placed in the property
 1. The actual pipeline step will now run with the service container attached in the same network.
+
+## Accessing containers via localhost
+
+Ideally, your application should be able to access other services by other DNS names that are fully configurable (this is a very good practice for [integration tests]({{site.baseurl}}/docs/testing/integration-tests/) as well).
+
+Sometimes, however, and especially in legacy applications, your application might be hardcoded to look at other services at `localhost`.
+In that case, you can use the attribute `shared_host_network: true` on the services definition. Now all linked containers can access each other's services via localhost. Here is an example:
+
+ `codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+steps:
+  my_first_step:
+    image: goodsmileduck/redis-cli
+    title: Storing Redis data
+    commands:
+      - apk add curl
+      - 'redis-cli -u redis://localhost:6379 -n 0 LPUSH mylist "hello world"'
+      - 'curl http://localhost:80'
+      - echo finished
+    services:
+      shared_host_network: true
+      composition:
+        my_redis_service:
+          image: 'redis:latest'
+        my_nginx:
+          image: nginx
+{% endraw %}      
+{% endhighlight %}
+
+You can also do the same thing with top level services:
+
+ `codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+services:
+  name: my_database
+  shared_host_network: true
+  composition:
+    my_redis_service:
+      image: 'redis:latest'
+    my_nginx:
+      image: nginx
+steps:
+  my_first_step:
+    image: goodsmileduck/redis-cli
+    title: Storing Redis data
+    commands:
+      - apk add curl
+      - 'redis-cli -u redis://localhost:6379 -n 0 LPUSH mylist "hello world"'
+      - 'curl http://localhost:80'
+      - echo finished
+    services:
+      - my_database
+{% endraw %}      
+{% endhighlight %}
+
+Note: we do recommend you only use this option as a last resort. You should not hardcode "localhost" as a requirement in your services as
+it adds extra constraints with integration tests (and especially with dynamic test environments).
+
 
 ## Limitations 
 
