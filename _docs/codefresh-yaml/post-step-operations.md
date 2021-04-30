@@ -6,7 +6,7 @@ redirect_from:
   - /docs/post-step-operations/
 toc: true
 ---
-Post-step operations are a set of optional predefined processes that can be configured on any step. These operations will be executed once the step has completed. The post-step operations allow you to annotate your builds, images and pipelines with extra metadata.
+Post-step operations are a set of optional predefined processes that can be configured on any step. These operations will be executed once the step has completed. The post-step operations allow you to annotate your builds, images and pipelines with extra metadata or run other steps.
 
  
 ## Result Aware Post-Step Operations
@@ -49,6 +49,7 @@ step_name:
 
 - [Image Metadata]({{site.baseurl}}/docs/docker-registries/metadata-annotations/)
 - [Custom Annotations]({{site.baseurl}}/docs/codefresh-yaml/annotations/)
+- [Hooks]({{site.baseurl}}/docs/codefresh-yaml/hooks/)
 
 ## Example
 
@@ -78,7 +79,7 @@ run_tests:
 
 ## Running other steps
 
-Post operations are only for metadata. If you want to run a step when another step fails or succeeds you need to use [conditional execution of steps]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/) and the `fail_fast` property.
+Post operations are only for metadata. If you want to run a step when another step fails or succeeds you need to use [conditional execution of steps]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/) and the `fail_fast` property or [step hooks]({{site.baseurl}}/docs/codefresh-yaml/hooks/)
 
 {% highlight yaml %}
 {% raw %}
@@ -103,7 +104,7 @@ print_error_message:
 
 In this example the step `print_error_message` will only run if step `run_tests` has failed.
 
-See also [advanced workflows]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/#single-step-dependencies).
+See also [advanced workflows]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/#single-step-dependencies) and [Pipeline/Step hooks]({{site.baseurl}}/docs/codefresh-yaml/hooks/).
 
 ## What to read next
 
