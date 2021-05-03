@@ -1,6 +1,6 @@
 ---
 title: "Post-Step Operations"
-description: "Annotating your builds and pipelines with dynamic metadata"
+description: "Annotate your builds and run extra steps"
 group: codefresh-yaml
 redirect_from:
   - /docs/post-step-operations/
@@ -79,7 +79,7 @@ run_tests:
 
 ## Running other steps
 
-Post operations are only for metadata. If you want to run a step when another step fails or succeeds you need to use [conditional execution of steps]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/) and the `fail_fast` property or [step hooks]({{site.baseurl}}/docs/codefresh-yaml/hooks/)
+If you want to run another step in the pipeline when another step fails or succeeds you need to use [conditional execution of steps]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/) and the `fail_fast` property. You can also use [step hooks]({{site.baseurl}}/docs/codefresh-yaml/hooks/) for dedicated post step actions.
 
 {% highlight yaml %}
 {% raw %}
