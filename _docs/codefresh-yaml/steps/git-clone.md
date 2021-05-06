@@ -312,6 +312,50 @@ steps:
 The GitHub token can be either defined in the pipeline on its own as an environment variable, or fetched from
 the existing [GIT integration]({{site.baseurl}}/docs/integrations/git-providers/) as shown in the previous section.
 
+Here is full pipeline example:
+
+ `codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+stages:
+  - checkout
+  - prepare   
+  - build
+steps:
+  clone:
+    title: Cloning the repository
+    type: git-clone
+    stage: checkout
+    arguments:
+      repo: '${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}'
+      git: github
+      revision: '${{CF_REVISION}}'  
+
+  updateSubmodules:
+    image: codefresh/cfstep-gitsubmodules
+    stage: prepare
+    working_directory: '${{clone}}'
+    environment:
+      - GITHUB_TOKEN=${{MY_GITHUB_TOKEN}}  
+  docker_build:
+    title: Building docker image
+    type: build
+    stage: build
+    working_directory: '${{clone}}/k8s/docker'
+    tag: current
+    disable_push: true
+    image_name: 'my-docker-image'
+
+{% endraw %}
+{% endhighlight %}
+
+This pipeline does the following:
+
+1. Clones the main source code
+1. Updates submodules
+1. Creates a docker image
+
 
 ## Use an SSH key with Git
 
