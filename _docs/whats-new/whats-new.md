@@ -13,6 +13,10 @@ toc: true
 
 ## Recent Codefresh Updates:
 
+### May 2021
+
+- Support for App-of-app patterns in the GitOps dashboard- [documentation]({{site.baseurl}}/docs/ci-cd-guides/gitops-deployments/#using-the-app-of-apps-pattern)
+
 ### April 2021
 
 - Jira integration with Atlassian Open DevOps- [documentation]({{site.baseurl}}/docs/integrations/jira/)

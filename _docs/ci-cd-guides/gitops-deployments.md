@@ -552,6 +552,53 @@ This pipeline:
 
 The CD pipeline (described in the previous section) will detect that commit and use the [sync plugin](https://codefresh.io/steps/step/argocd-sync) to instruct ArgoCD to deploy the new tag. Alternatively you can setup the ArgoCD project to auto-sync on its own if it detects changes in the Git repository with the manifests.
 
+
+## Using the App-of-Apps pattern
+
+The GitOps dashboard has native support for the [app-of-apps pattern](https://argo-cd.readthedocs.io/en/stable/operator-manual/cluster-bootstrapping/). If you have a number  of applications that are related and you always
+install them as a set in your cluster you can group them in a single Application. The parent application can be defined using [declarative Argo Resources](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/).
+
+As an example, you might find that you always install in your cluster Linkerd, Prometheus and Ambassador. You can group all of them in a single Application 
+and deploy them all at once.
+
+You can find an existing example of app-of-apps at [https://github.com/argoproj/argocd-example-apps/tree/master/apps](https://github.com/argoproj/argocd-example-apps/tree/master/apps). It is using [Helm]({{site.baseurl}}/docs/yaml-examples/examples/helm/), but you can use any other Kubernetes templating mechanism such as [Kustomize]({{site.baseurl}}/docs/yaml-examples/examples/deploy-with-kustomize/) (or even plain manifests).
+
+Once you deploy the application with Codefresh, you will see the parent app in the dashboard with a small arrow:
+
+{% include image.html 
+  lightbox="true" 
+  file="/images/guides/gitops/app-of-apps-closed.png" 
+  url="/images/guides/gitops/app-of-apps-closed.png" 
+  alt="App of Apps"
+  caption="App of Apps"  
+  max-width="90%"
+ %}
+
+You can expand the application by clicking on the arrow to inspect its child applications.
+
+{% include image.html 
+  lightbox="true" 
+  file="/images/guides/gitops/app-of-apps.png" 
+  url="/images/guides/gitops/app-of-apps.png" 
+  alt="App of Apps expanded"
+  caption="App of Apps expanded"  
+  max-width="90%"
+ %}
+
+ Then you can either click on the parent application or any of the children to visit the respective dashboard. In the dashboard of the parent application, you will also be notified for its components after each deployment under the "Updated Applications" header:
+
+ {% include image.html 
+  lightbox="true" 
+  file="/images/guides/gitops/updated-apps.png" 
+  url="/images/guides/gitops/updated-apps.png" 
+  alt="Children applications"
+  caption="Children applications"  
+  max-width="90%"
+ %}
+
+ Note that the app of apps pattern is best used for related but not interdependent applications. If you have applications that depend on each other (e.g. frontend that needs backend and backend that needs a DB) we suggest you use the standard [Helm dependency mechanism](https://helm.sh/docs/helm/helm_dependency/).
+
+
 ## Integrating Codefresh and Jira
 
 > Note that Codefresh currently has to provide you with access to use the Jira Marketplace App. Please get in touch for more information.
