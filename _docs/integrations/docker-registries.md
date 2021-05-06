@@ -5,6 +5,9 @@ group: integrations
 redirect_from:
   - /docs/docker-registry/
   - /docs/docker-registries/external-docker-registries/
+  - /docs/docker-registries/
+  - /docs/codefresh-registry/  
+  - /docs/docker-registries/codefresh-registry/
 toc: true
 ---
 Codefresh enables you to integrate with several Docker container registries, including (but not limited to):
