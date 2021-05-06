@@ -1150,7 +1150,7 @@ This was a contrived example to demonstrate how you can use templates in the Cod
 
 ### Limitations of custom plugins
 
-Parallel steps are not supported in custom steps.
+[Parallel steps]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/) are not supported inside custom steps.
 
 Custom steps are not compatible with [service containers]({{site.baseurl}}/docs/codefresh-yaml/service-containers/). 
 More specifically:

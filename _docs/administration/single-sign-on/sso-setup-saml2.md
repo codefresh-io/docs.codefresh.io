@@ -99,7 +99,6 @@ The mandatory fields needed for SAML assertions are:
 Once everything is finished, you [should test the integration]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/#testing-your-identity-provider). Once it is working proceed to the next steps that are:
 
 * [Selecting SSO method for collaborators]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/#selecting-sso-method-for-collaborators)
-* [Syncing of teams after initial SSO setup]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/#syncing-of-teams-after-initial-sso-setup)
 
 >Notice that Codefresh has an internal cache for SSO configurations and it might take up to 5 minutes for your changes to take effect.
 
