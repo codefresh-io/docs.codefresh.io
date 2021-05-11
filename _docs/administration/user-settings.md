@@ -87,6 +87,5 @@ Note that tokens are visible only during creation. You cannot "view" an existing
 ## What to read next
 
 * [Add users]({{site.baseurl}}/docs/administration/invite-your-team-member/)
-* [Account management]({{site.baseurl}}/docs/administration/ent-account-mng/)
 * [Single Sign on]({{site.baseurl}}/docs/administration/single-sign-on/)
 

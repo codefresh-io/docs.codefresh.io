@@ -34,25 +34,10 @@ Codefresh currently supports
   * Okta
   * OneLogin
 
-You can setup each provider
-
- 1. At the [Codefresh customer level]({{site.baseurl}}/docs/administration/ent-account-mng/) 
- 1. At the Codefresh account level 
- 1. At both levels. Integrations that were created from the customer level can only be edited or removed by the customer administrator from that customer management view. The Account administrator won’t be able to edit those.
-
-The specific way depends on your own organization and how you have chosen to give Codefresh access to your users.
-
 To access the SSO configuration at the account level.
 
 1.  Click on your avatar at the top right of the GUI and select *Account settings*
 1. In the new screen, select *Single Sign-on* from the left sidebar
-
-To access the SSO configuration at the customer level
-
-1. Click on your avatar at the top right of the GUI and select any customer from the *Customers* subsection
-1. In the new screen, select *Single Sign-on* from the left sidebar
-
-In both cases you will arrive to the following screen
 
 {% include image.html 
 lightbox="true" 

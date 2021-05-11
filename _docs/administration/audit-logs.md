@@ -105,6 +105,5 @@ The Audit Log export also includes all the API call information (payload and par
 ## What to read next
 
 * [Codefresh installation options]({{site.baseurl}}/docs/administration/installation-security/)
-* [Account management]({{site.baseurl}}/docs/administration/ent-account-mng/)
 * [Access Control]({{site.baseurl}}/docs/administration/access-control/)
 * [Codefresh API]({{site.baseurl}}/docs/integrations/codefresh-api/)

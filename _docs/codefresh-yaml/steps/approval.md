@@ -125,7 +125,7 @@ max-width="80%"
 %}
 
 
-For more details on access control and users see also the [account management page]({{site.baseurl}}/docs/administration/ent-account-mng/).
+For more details on access control and users see also the [access control page]({{site.baseurl}}/docs/administration/access-control/).
 
 ## Keeping the shared volume after an approval
 
