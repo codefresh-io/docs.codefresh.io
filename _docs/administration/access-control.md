@@ -4,6 +4,9 @@ description: "How to restrict resources in a company environment"
 group: administration
 redirect_from:
   - /docs/enterprise/access-control/
+  - /docs/enterprise-account-mng/ent-account-mng/
+  - /docs/enterprise/ent-account-mng/
+  - /docs/administration/ent-account-mng/  
 toc: true
 
 ---
