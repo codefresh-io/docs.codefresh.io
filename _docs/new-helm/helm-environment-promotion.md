@@ -182,6 +182,7 @@ By default Codefresh will use a built-in install/upgrade pipeline for performing
 * `CF_HELM_SET` - Additional values there were overriden
 * `CF_HELM_CHART_JSON_GZIP` - Gzipped JSON of Helm chart (only for Helm 3)
 * `CF_HELM_CHART_JSON` - JSON of Helm chart (only for Helm 2)
+* `CF_HELM_BOARD` - Name of the board that is used for the drag-n-drop-action
 * `CF_HELM_TARGET_SECTION` - Name of the Source Environment that you are promoting from
 * `CF_HELM_SOURCE_SECTION` - Name of the Target Environment that you are promoting to
 
