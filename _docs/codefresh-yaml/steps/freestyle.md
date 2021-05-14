@@ -238,9 +238,9 @@ You can override the container's default entry point using the `entry_point` fie
 ```yaml
 
 image: mwendler/cowsay
-   entry_point:
-     - echo
-     - Hello 
+entry_point:
+  - echo
+  - Hello 
 ```
 
 ## Commands
