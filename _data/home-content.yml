@@ -65,8 +65,6 @@
   icon: images/home-icons/guides.png
   url: ''
   links:
-  # - title: CI/CD concepts
-  #   localurl: /docs/ci-cd-guide/concepts/
   - title: Build your app
     localurl: /docs/ci-cd-guides/packaging-compilation/
   - title: Building Docker images
@@ -79,7 +77,10 @@
     localurl: /docs/ci-cd-guides/microservices/  
   - title: Production and Staging deployments
     new: true 
-    localurl: /docs/ci-cd-guides/environment-deployments/    
+    localurl: /docs/ci-cd-guides/environment-deployments/ 
+  - title: Preview Environments
+    new: true
+    localurl: /docs/ci-cd-guides/preview-environments/       
   - title: GitOps deployments
     new: true
     localurl: /docs/ci-cd-guides/gitops-deployments/  
