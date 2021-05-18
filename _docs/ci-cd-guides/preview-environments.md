@@ -35,7 +35,57 @@ be handled in a transient way.
 
 ## Preview environments with Kubernetes
 
+There are many ways to create temporary environments with Kubernetes, but the simplest one is to use
+different namespaces, one for each pull request. So a pull request with name `fix-db-query` will
+be deployed to a namespace called `fix-db-query`, a pull request with name `JIRA-1434` will be deployed to a namespace called 
+`JIRA-1434` and so on.
+
+The second aspect is exposing the environment URL so that developers and testers can actually preview the application
+deployment either manually or via automated tests.
+
+The two major approaches here are with host-based URLs or path based URLs.
+
+* In host based urls, the test environments are named `pr1.example.com`, `pr2.example.com` and so on
+* with path based URLs, the test environments are named `example.com/pr1` , `example.com/pr2` and so on
+
+Both approaches have advantages and disadvantages. Path based URLs are easier to setup but may not work 
+with all applications (since they change the web context). Host based URLs are more robust but need extra
+DNS configuration for the full effect
+
+In Kubernetes clusters, both ways can be setup via [an Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/).
+
 ## The example application
+
+The application we will use can be found at [https://github.com/codefresh-contrib/unlimited-test-environments-source-code](https://github.com/codefresh-contrib/unlimited-test-environments-source-code). It is a standard Java/Spring boot application with the following characteristics.
+
+* It has [integration tests]({{site.baseurl}}/docs/testing/integration-tests/) that can be targeted at any host/port. We will use those tests as smoke test that will verify the preview environment after it is deployed
+* It comes bundled in [a Helm chart](https://github.com/codefresh-contrib/unlimited-test-environments-manifests)
+* It has an ingress configuration ready for path based URLs
+
+We are using [the Ambassador gateway](https://www.getambassador.io/) as an ingress for this example, but you can use any other compliant Kubernetes Ingress.
+
+Here is [ingress manifest](https://github.com/codefresh-contrib/unlimited-test-environments-manifests/blob/main/simple-java-app/templates/ingress.yaml)
+
+```yaml
+kind: Ingress
+apiVersion: extensions/v1beta1
+metadata:
+  name: "simple-java-app-ing"
+  annotations:
+    kubernetes.io/ingress.class: {{ .Values.ingress.class }}
+
+spec:
+  rules:
+    - http:
+        paths:
+          - path: {{ .Values.ingress.path }}
+            backend:
+              serviceName: simple-service
+              servicePort: 80
+```
+
+The path of the application is configurable and can be set at deploy time.
+
 
 ## Creating preview environments for each pull request
 
