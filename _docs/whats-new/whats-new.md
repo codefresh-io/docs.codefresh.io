@@ -15,6 +15,7 @@ toc: true
 
 ### May 2021
 
+- Dynamic preview environments- [documentation]({{site.baseurl}}/docs/ci-cd-guides/preview-environments/)
 - Support for App-of-app patterns in the GitOps dashboard- [documentation]({{site.baseurl}}/docs/ci-cd-guides/gitops-deployments/#using-the-app-of-apps-pattern)
 
 ### April 2021

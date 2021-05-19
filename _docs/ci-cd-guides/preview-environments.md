@@ -21,7 +21,7 @@ max-width="90%"
 
 This way each developer is working in isolation and can test their feature on its own. This pattern comes in contrast with  the traditional way of reusing static preexisting environments.
 
-{% include image.html 
+{% include image.html
 lightbox="true"
 file="/images/guides/preview-environments/static-environments.png"
 url="/images/guides/preview-environments/static-environments.png"
@@ -37,7 +37,7 @@ be handled in a transient way.
 
 There are many ways to create temporary environments with Kubernetes, but the simplest one is to use
 different namespaces, one for each pull request. So a pull request with name `fix-db-query` will
-be deployed to a namespace called `fix-db-query`, a pull request with name `JIRA-1434` will be deployed to a namespace called 
+be deployed to a namespace called `fix-db-query`, a pull request with name `JIRA-1434` will be deployed to a namespace called  
 `JIRA-1434` and so on.
 
 The second aspect is exposing the environment URL so that developers and testers can actually preview the application
@@ -48,8 +48,7 @@ The two major approaches here are with host-based URLs or path based URLs.
 * In host based urls, the test environments are named `pr1.example.com`, `pr2.example.com` and so on
 * with path based URLs, the test environments are named `example.com/pr1` , `example.com/pr2` and so on
 
-Both approaches have advantages and disadvantages. Path based URLs are easier to setup but may not work 
-with all applications (since they change the web context). Host based URLs are more robust but need extra
+Both approaches have advantages and disadvantages. Path based URLs are easier to setup but may not work with all applications (since they change the web context). Host based URLs are more robust but need extra
 DNS configuration for the full effect
 
 In Kubernetes clusters, both ways can be setup via [an Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/).
@@ -99,7 +98,7 @@ that has the same name as the branch as well
 
 Here is an example pipeline that does all these tasks
 
-{% include image.html 
+{% include image.html
 lightbox="true"
 file="/images/guides/preview-environments/pull-request-preview-pipeline.png"
 url="/images/guides/preview-environments/pull-request-preview-pipeline.png"
@@ -129,11 +128,7 @@ Here is the whole YAML definition
  `codefresh.yml`
 {% highlight yaml %}
 {% raw %}
-# More examples of Codefresh YAML can be found at
-# https://codefresh.io/docs/docs/yaml-examples/examples/
-
 version: "1.0"
-# Stages can help you organize your steps in stages
 stages:
   - "prepare"
   - "verify"
@@ -202,7 +197,7 @@ steps:
     type: "git-clone"
     repo: "codefresh-contrib/unlimited-test-environments-manifests"
     revision: main
-    stage: "deploy"      
+    stage: "deploy"
   deploy:
     title: Deploying Helm Chart
     type: helm
@@ -219,7 +214,7 @@ steps:
       custom_values:
         - 'image_tag=${{CF_BRANCH_TAG_NORMALIZED}}'
         - 'replicaCount=3'
-        - 'ingress_path=/${{CF_BRANCH_TAG_NORMALIZED}}/'      
+        - 'ingress_path=/${{CF_BRANCH_TAG_NORMALIZED}}/'
   add_pr_comment:
     title: Adding comment on PR
     stage: deploy
@@ -232,18 +227,18 @@ steps:
     title: Smoke tests
     stage: deploy
     image: maven:3.5.2-jdk-8-alpine
-    working_directory: "${{main_clone}}" 
+    working_directory: "${{main_clone}}"
     fail_fast: false
     commands:
-     - mvn -Dmaven.repo.local=/codefresh/volume/m2_repository verify -Dserver.host=https://kostis.sales-dev.codefresh.io/${{CF_BRANCH_TAG_NORMALIZED}}/  -Dserver.port=443            
+     - mvn -Dmaven.repo.local=/codefresh/volume/m2_repository verify -Dserver.host=https://kostis.sales-dev.codefresh.io/${{CF_BRANCH_TAG_NORMALIZED}}/  -Dserver.port=443
 {% endraw %}
 {% endhighlight %}
 
 The end result of the pipeline is a deployment on the path that has the same name as the pull request branch. For
-example if my branch is named 'demo' then a demo namespace is created on the cluster and the application
-is exposed on the '/demo/' context:
+example if my branch is named `demo` then a demo namespace is created on the cluster and the application
+is exposed on the `/demo/` context:
 
-{% include image.html 
+{% include image.html
 lightbox="true"
 file="/images/guides/preview-environments/demo-path.png"
 url="/images/guides/preview-environments/demo-path.png"
@@ -254,7 +249,7 @@ max-width="100%"
 
 The environment is also mentioned as a comment in the Pull Request UI in Gituhub:
 
-{% include image.html 
+{% include image.html
 lightbox="true"
 file="/images/guides/preview-environments/pull-request-comment.png"
 url="/images/guides/preview-environments/pull-request-comment.png"
@@ -277,9 +272,64 @@ max-width="100%"
 
 Therefore you need to setup your [triggers]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/) with the same checkboxes shown in the picture above.
 
-
-
 ## Cleaning up temporary environments
+
+Creating temporary environments is very convenient for developers but can be very costly for your infrastructure if you use a cloud
+provider for your cluster. For cost reasons and better resource utilization it is best if temporary environments are destroyed if they are
+no longer used.
+
+While you can run a batch job, that automatically deletes old temporary environments, the optimal approach is to delete them as soon as
+the respective Pull Request is closed.
+
+We can do that with a very simple pipeline that has only one step:
+
+{% include image.html 
+lightbox="true"
+file="/images/guides/preview-environments/pull-request-closed-pipeline.png"
+url="/images/guides/preview-environments/pull-request-closed-pipeline.png"
+alt="Pipeline when a Pull Request is closed"
+caption="Pipeline when a Pull Request is closed"
+max-width="100%"
+%}
+
+Here is the pipeline definition:
+
+ `codefresh-close.yml`
+{% highlight yaml %}
+{% raw %}
+version: "1.0"
+steps:
+  delete_app:
+    title: Delete app
+    type: helm
+    arguments:
+      action: auth
+      helm_version: 3.2.4
+      kube_context: myawscluster
+      namespace: ${{CF_BRANCH_TAG_NORMALIZED}}
+      commands:
+            - helm delete my-spring-app --namespace ${{CF_BRANCH_TAG_NORMALIZED}}
+            - kubectl delete namespace ${{CF_BRANCH_TAG_NORMALIZED}}
+{% endraw %}
+{% endhighlight %}
+
+The pipeline just uninstall the Helm release for that namespace and then deletes the namespace itself.
+
+To have this pipeline run only when a Pull Request is closed here is how your [trigger]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/)  should look:
+
+{% include image.html 
+lightbox="true"
+file="/images/guides/preview-environments/close-events.png"
+url="/images/guides/preview-environments/close-events.png"
+alt="Git events for a Pull Request close pipeline"
+caption="Git events for a Pull Request close pipeline"
+max-width="100%"
+%}
+
+Notice that with this setup that pipeline will run when the pull request was closed regardless of wether it was merged or not (which is exactly what you want as in both cases the test environment is not needed anymore).
+
+
+
 
 
 ## What to read next
