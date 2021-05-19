@@ -15,7 +15,8 @@ toc: true
 
 ### May 2021
 
-- Dynamic preview environments- [documentation]({{site.baseurl}}/docs/ci-cd-guides/preview-environments/)
+- Dynamic preview environments - [documentation]({{site.baseurl}}/docs/ci-cd-guides/preview-environments/)
+- Tag policy for transforming a docker tag in lowercase or not  - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/build/#fields)
 - Support for App-of-app patterns in the GitOps dashboard- [documentation]({{site.baseurl}}/docs/ci-cd-guides/gitops-deployments/#using-the-app-of-apps-pattern)
 
 ### April 2021
