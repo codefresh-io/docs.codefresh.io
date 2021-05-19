@@ -66,7 +66,8 @@ We are using [the Ambassador gateway](https://www.getambassador.io/) as an ingre
 
 Here is [ingress manifest](https://github.com/codefresh-contrib/unlimited-test-environments-manifests/blob/main/simple-java-app/templates/ingress.yaml)
 
-```yaml
+{% highlight yaml %}
+{% raw %}
 kind: Ingress
 apiVersion: extensions/v1beta1
 metadata:
@@ -82,7 +83,8 @@ spec:
             backend:
               serviceName: simple-service
               servicePort: 80
-```
+{% endraw %}
+{% endhighlight %}
 
 The path of the application is configurable and can be set at deploy time.
 
@@ -94,8 +96,6 @@ Each time a Pull Request is created we want to perform the following tasks:
 1. Run security scans, quality checks and everything else we need to decided if the Pull request is valid
 1. Create a namespace with the same name as the pull request branch. Deploy the pull Request and expose it as a URL
 that has the same name as the branch as well
-1. Notify the developere that deployment has finished by commenting on the Pull Request
-1. Run Smoke tests against the temporary environment
 
 Here is an example pipeline that does all these tasks
 
@@ -107,6 +107,176 @@ alt="Pull Request preview pipeline"
 caption="Pull Request preview pipeline"
 max-width="100%"
 %}
+
+This pipeline has the following steps
+
+1. A [clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) to fetch the source code of the application
+1. A [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) that runs Maven for compilation and unit tests
+1. A [build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) to create the docker image of the application
+1. A step that scans the source code for security issues with [Snyk](https://snyk.io/)
+1. A step that scans the container image [for security issues]({{site.baseurl}}/docs/testing/security-scanning/) with [trivy](https://github.com/aquasecurity/trivy)
+1. A step that runs [integration tests]({{site.baseurl}}/docs/testing/integration-tests/) by launching the app in a [service container]({{site.baseurl}}/docs/codefresh-yaml/service-containers/)
+1. A step for [Sonar analysis]({{site.baseurl}}/docs/testing/sonarqube-integration/)
+1. A step that clones [a second Git repository](https://github.com/codefresh-contrib/unlimited-test-environments-manifests) that has the [Helm chart]({{site.baseurl}}/docs/new-helm/using-helm-in-codefresh-pipeline/) of the app
+1. A step that deploys the source code to a new namespace.
+1. A step that [adds a comment on the Pull Request](https://codefresh.io/steps/step/kostis-codefresh%2Fgithub-pr-comment) with the URL of the temporary environment
+1. A step that runs smoke tests against the temporary test environment
+
+Note that the integration tests and security scans are just examples of what you can do before the Pull Request is deployed. You can insert your own steps that check the contents of a Pull Request.
+
+Here is the whole YAML definition
+
+ `codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+# More examples of Codefresh YAML can be found at
+# https://codefresh.io/docs/docs/yaml-examples/examples/
+
+version: "1.0"
+# Stages can help you organize your steps in stages
+stages:
+  - "prepare"
+  - "verify"
+  - "deploy"
+
+steps:
+  main_clone:
+    title: "Cloning repository"
+    type: "git-clone"
+    repo: "codefresh-contrib/unlimited-test-environments-source-code"
+    revision: "${{CF_REVISION}}"
+    stage: "prepare"
+
+  run_unit_tests:
+    title: Compile/Unit test
+    stage: prepare
+    image: 'maven:3.5.2-jdk-8-alpine'
+    commands:
+      - mvn -Dmaven.repo.local=/codefresh/volume/m2_repository package   
+  build_app_image:
+    title: Building Docker Image
+    type: build
+    stage: prepare
+    image_name: kostiscodefresh/spring-actuator-sample-app
+    working_directory: ./
+    tag: '${{CF_BRANCH}}'
+    dockerfile: Dockerfile
+  scan_code:
+    title: Source security scan
+    stage: verify
+    image: 'snyk/snyk-cli:maven-3.6.3_java11'
+    commands:
+      - snyk monitor       
+  scan_image:
+    title: Container security scan
+    stage: verify
+    image: 'aquasec/trivy'
+    commands:
+      - trivy image docker.io/kostiscodefresh/spring-actuator-sample-app:${{CF_BRANCH}}
+  run_integration_tests:
+    title: Integration tests
+    stage: verify
+    image: maven:3.5.2-jdk-8-alpine
+    commands:
+     - mvn -Dmaven.repo.local=/codefresh/volume/m2_repository verify -Dserver.host=http://my-spring-app -Dsonar.organization=kostis-codefresh-github
+    services:
+      composition:
+        my-spring-app:
+          image: '${{build_app_image}}'
+          ports:
+            - 8080
+      readiness:
+        timeoutSeconds: 30
+        periodSeconds: 15
+        image: byrnedo/alpine-curl
+        commands:
+          - "curl http://my-spring-app:8080/"
+  sonar_scan:
+    title: Sonar Scan
+    stage: verify
+    image: 'maven:3.8.1-jdk-11-slim'
+    commands:
+      - mvn -Dmaven.repo.local=/codefresh/volume/m2_repository sonar:sonar -Dsonar.login=${{SONAR_TOKEN}} -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=kostis-codefresh-github
+  clone:
+    title: "Cloning repository"
+    type: "git-clone"
+    repo: "codefresh-contrib/unlimited-test-environments-manifests"
+    revision: main
+    stage: "deploy"      
+  deploy:
+    title: Deploying Helm Chart
+    type: helm
+    stage: deploy
+    working_directory: ./unlimited-test-environments-manifests
+    arguments:
+      action: install
+      chart_name: simple-java-app
+      release_name: my-spring-app
+      helm_version: 3.2.4
+      kube_context: myawscluster
+      namespace: ${{CF_BRANCH_TAG_NORMALIZED}}
+      cmd_ps: '--create-namespace --wait --timeout 5m'
+      custom_values:
+        - 'image_tag=${{CF_BRANCH_TAG_NORMALIZED}}'
+        - 'replicaCount=3'
+        - 'ingress_path=/${{CF_BRANCH_TAG_NORMALIZED}}/'      
+  add_pr_comment:
+    title: Adding comment on PR
+    stage: deploy
+    type: kostis-codefresh/github-pr-comment
+    fail_fast: false
+    arguments:
+      PR_COMMENT_TEXT: "[CI] Staging environment is at https://kostis.sales-dev.codefresh.io/${{CF_BRANCH_TAG_NORMALIZED}}/"
+      GIT_PROVIDER_NAME: 'github-1'
+  run_smoke_tests:
+    title: Smoke tests
+    stage: deploy
+    image: maven:3.5.2-jdk-8-alpine
+    working_directory: "${{main_clone}}" 
+    fail_fast: false
+    commands:
+     - mvn -Dmaven.repo.local=/codefresh/volume/m2_repository verify -Dserver.host=https://kostis.sales-dev.codefresh.io/${{CF_BRANCH_TAG_NORMALIZED}}/  -Dserver.port=443            
+{% endraw %}
+{% endhighlight %}
+
+The end result of the pipeline is a deployment on the path that has the same name as the pull request branch. For
+example if my branch is named 'demo' then a demo namespace is created on the cluster and the application
+is exposed on the '/demo/' context:
+
+{% include image.html 
+lightbox="true"
+file="/images/guides/preview-environments/demo-path.png"
+url="/images/guides/preview-environments/demo-path.png"
+alt="Temporary environment"
+caption="Temporary environment"
+max-width="100%"
+%}
+
+The environment is also mentioned as a comment in the Pull Request UI in Gituhub:
+
+{% include image.html 
+lightbox="true"
+file="/images/guides/preview-environments/pull-request-comment.png"
+url="/images/guides/preview-environments/pull-request-comment.png"
+alt="Pull Request comment"
+caption="Pull Request comment"
+max-width="100%"
+%}
+
+As explained it the [previous guide for Pull Requests]({{site.baseurl}}/docs/ci-cd-guides/pull-request-branches/), we want to make this pipeline applicable only
+to PR open event and PR sync events (which captures commits that happen on an existing pull request).
+
+{% include image.html 
+lightbox="true"
+file="/images/guides/preview-environments/pr-events.png"
+url="/images/guides/preview-environments/pr-events.png"
+alt="Git events for a Pull Request preview pipeline"
+caption="Git events for a Pull Request preview pipeline"
+max-width="100%"
+%}
+
+Therefore you need to setup your [triggers]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/) with the same checkboxes shown in the picture above.
+
 
 
 ## Cleaning up temporary environments
