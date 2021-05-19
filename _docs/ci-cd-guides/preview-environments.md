@@ -86,8 +86,28 @@ spec:
 
 The path of the application is configurable and can be set at deploy time.
 
-
 ## Creating preview environments for each pull request
+
+Each time a Pull Request is created we want to perform the following tasks:
+
+1. Compile the application and run unit tests
+1. Run security scans, quality checks and everything else we need to decided if the Pull request is valid
+1. Create a namespace with the same name as the pull request branch. Deploy the pull Request and expose it as a URL
+that has the same name as the branch as well
+1. Notify the developere that deployment has finished by commenting on the Pull Request
+1. Run Smoke tests against the temporary environment
+
+Here is an example pipeline that does all these tasks
+
+{% include image.html 
+lightbox="true"
+file="/images/guides/preview-environments/pull-request-preview-pipeline.png"
+url="/images/guides/preview-environments/pull-request-preview-pipeline.png"
+alt="Pull Request preview pipeline"
+caption="Pull Request preview pipeline"
+max-width="100%"
+%}
+
 
 ## Cleaning up temporary environments
 
