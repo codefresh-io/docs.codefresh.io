@@ -58,6 +58,7 @@ step_name:
   entry_point:
     - cmd
     - arg1
+  shell: sh  
   fail_fast: false
   volumes:
     - ./relative-dir-under-cf-volume1:/absolute-dir-in-container1
