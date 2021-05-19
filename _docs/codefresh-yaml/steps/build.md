@@ -49,6 +49,7 @@ step_name:
   target: stage1
   no_cache: false
   no_cf_cache: false
+  tag_policy: original
   fail_fast: false
   metadata:
     set:
@@ -83,6 +84,7 @@ step_name:
 | `registry`                                 | The registry logical name of one of the inserted registries from the integration view. <br>The default value will be your default registry [if you have more than one]({{site.baseurl}}/docs/docker-registries/external-docker-registries/).                                     | Optional                   |
 | `registry_contexts`                                 | Advanced property for resolving Docker images when [working with multiple registries with the same domain]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/#working-with-multiple-registries-with-the-same-domain)                            | Optional                  |
 |`disable_push`                                 | Do not push to any registry automatically.                                     | Optional                   | 
+|`tag_policy`                                 | Push the tag without change it to lowercase automatically. By default `tag: MixedCase` will be pushed as `image_name:mixedcase`                                    | Optional                   | 
 | `no_cache`                                 | Disable Docker engine cache for the build [more info](https://codefresh.io/docs/docs/troubleshooting/common-issues/disabling-codefresh-caching-mechanisms/)                                                                                                                                                                                             | Optional                  |
 | `no_cf_cache`                                 | Disable Codefresh build optimization for the build [more info](https://codefresh.io/docs/docs/troubleshooting/common-issues/disabling-codefresh-caching-mechanisms/) 
 | `build_arguments`                          | A set of [Docker build arguments](https://docs.docker.com/engine/reference/commandline/build/#set-build-time-variables-build-arg) to pass to the build process.                                                                      | Optional                  |
