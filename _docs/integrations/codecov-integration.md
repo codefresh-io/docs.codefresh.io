@@ -1,0 +1,55 @@
+title: "Codecov Integration"
+description: "Create Code Coverage Reports with Codefresh and Codecov"
+group: integrations
+toc: true
+---
+
+Codefresh has native integration for [Codecov analysis](https://about.codecov.io/).
+
+To enable the analysis sign up for a free account with Codecov and add a new project.
+
+{% include image.html 
+lightbox="true" 
+file="/images/integrations/codecov/codecovtoken.png" 
+url="/images/integrations/codecov/codecovtoken.png"
+max-width="60%"
+caption="Getting a Token from Codecov"
+alt="Getting a Token from Codecov"
+%}
+ 
+From this screen make sure you note down the Token as you will use it in Codefresh.
+
+Next, go into your Codefresh account settings and choose CodeCov from [integrations]({{https://g.codefresh.io/account-admin/account-conf/integration). Click the add integration button:
+
+{% include image.html 
+lightbox="true" 
+file="/images/integrations/codecov/codecovintegration.png" 
+url="/images/integrations/codecov/codecovintegration.png"
+max-width="60%"
+caption="Enter Token"
+alt="Enter Token"
+%}
+
+Enter your token (see the previous section) and a name (user-defined) for this integration. The name should be unique for each integration that you add.
+
+Using Codecov in a Codefresh Pipeline:
+
+With the integration in place, you can use it by name in any Codefresh pipeline by using the [Codecov reporter step](https://codefresh.io/steps/step/codecov-reporter).
+
+`codefresh.yml`
+  codecov-report:
+	stage: "prepare"
+	title: Codecov report
+	type: codecov-reporter
+	arguments:
+  	codecov_integration: my-codecov-integration
+
+For more details see our [Codecov example]({{https://codefresh.io/docs/docs/yaml-examples/examples/codecov-testing/).
+
+## What to read next
+
+ - [Integration Tests]({{site.baseurl}}/docs/testing/integration-tests/)
+ - [Service Containers]({{site.baseurl}}/docs/codefresh-yaml/service-containers/)
+ - [Coveralls Example]({{site.baseurl}}/docs/yaml-examples/examples/coveralls-testing/)
+ - [Codacy Example]({{site.baseurl}}/docs/yaml-examples/examples/codacy-testing/)
+ - [Test Reports]({{site.baseurl}}/docs/testing/test-reports/)
