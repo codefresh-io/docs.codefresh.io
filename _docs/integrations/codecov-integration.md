@@ -1,3 +1,4 @@
+---
 title: "Codecov Integration"
 description: "Create Code Coverage Reports with Codefresh and Codecov"
 group: integrations
@@ -10,22 +11,22 @@ To enable the analysis sign up for a free account with Codecov and add a new pro
 
 {% include image.html 
 lightbox="true" 
-file="/images/integrations/codecov/codecovtoken.png" 
-url="/images/integrations/codecov/codecovtoken.png"
-max-width="60%"
+file="/images/integrations/codecov-integration/codecovtoken.png" 
+url="/images/integrations/codecov-integration/codecovtoken.png"
+max-width="70%"
 caption="Getting a Token from Codecov"
 alt="Getting a Token from Codecov"
 %}
  
 From this screen make sure you note down the Token as you will use it in Codefresh.
 
-Next, go into your Codefresh account settings and choose CodeCov from [integrations]({{https://g.codefresh.io/account-admin/account-conf/integration). Click the add integration button:
+Next, go into your Codefresh account settings and choose CodeCov from [integrations](https://g.codefresh.io/account-admin/account-conf/integration). Click the add integration button:
 
 {% include image.html 
 lightbox="true" 
-file="/images/integrations/codecov/codecovintegration.png" 
-url="/images/integrations/codecov/codecovintegration.png"
-max-width="60%"
+file="/images/integrations/codecov-integration/codecovintegration.png" 
+url="/images/integrations/codecov-integration/codecovintegration.png"
+max-width="70%"
 caption="Enter Token"
 alt="Enter Token"
 %}
@@ -37,14 +38,16 @@ Using Codecov in a Codefresh Pipeline:
 With the integration in place, you can use it by name in any Codefresh pipeline by using the [Codecov reporter step](https://codefresh.io/steps/step/codecov-reporter).
 
 `codefresh.yml`
+```yaml
   codecov-report:
 	stage: "prepare"
 	title: Codecov report
 	type: codecov-reporter
 	arguments:
   	codecov_integration: my-codecov-integration
+```	  
 
-For more details see our [Codecov example]({{https://codefresh.io/docs/docs/yaml-examples/examples/codecov-testing/).
+For more details see our [Codecov example](https://codefresh.io/docs/docs/yaml-examples/examples/codecov-testing/).
 
 ## What to read next
 
