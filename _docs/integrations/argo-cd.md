@@ -1,5 +1,5 @@
 ---
-title: "ArgoCD integration"
+title: "ArgoCD Integration"
 description: "How to connect Codefresh to your ArgoCD endpoint"
 group: integrations
 toc: true

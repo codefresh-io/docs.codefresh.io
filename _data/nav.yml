@@ -425,7 +425,9 @@
     - title: Jira Integration
       url: "/jira"       
     - title: Jenkins Integration
-      url: "/jenkins-integration"                
+      url: "/jenkins-integration"
+      title: Codecov Integration
+      url: "/codecov-integration"                
     - title: Google Cloud builder
       url: "/gcloud-builder"
     - title: Google Marketplace Installation

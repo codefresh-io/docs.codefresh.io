@@ -1,5 +1,5 @@
 ---
-title: "GitHub Actions in Codefresh pipelines"
+title: "GitHub Actions in Codefresh Pipelines"
 description: "Using the GitHub action converter"
 group: integrations
 
