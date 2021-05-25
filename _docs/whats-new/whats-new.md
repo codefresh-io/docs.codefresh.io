@@ -15,6 +15,7 @@ toc: true
 
 ### May 2021
 
+- Codecov Integration - [documentation]({{site.baseurl}}/docs/integrations/codecov-integration/)
 - Dynamic preview environments - [documentation]({{site.baseurl}}/docs/ci-cd-guides/preview-environments/)
 - Tag policy for transforming a docker tag in lowercase or not  - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/build/#fields)
 - Support for App-of-app patterns in the GitOps dashboard- [documentation]({{site.baseurl}}/docs/ci-cd-guides/gitops-deployments/#using-the-app-of-apps-pattern)
