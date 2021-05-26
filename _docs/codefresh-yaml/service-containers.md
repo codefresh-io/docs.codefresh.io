@@ -7,7 +7,8 @@ toc: true
 
 Sometimes you wish to run sidecar containers in a pipeline that offer additional services for your builds. The most common scenario is launching services such as databases in order to accommodate [integration tests]({{site.baseurl}}/docs/testing/integration-tests/). Or you might wish to launch the application itself in order to run integration tests **against** it as part of the pipeline.
 
->Note that while [composition steps]({{site.baseurl}}/docs/codefresh-yaml/steps/composition/) are still supported, the recommended way to run integrations tests going forward is with service containers.
+>Note that while [composition steps]({{site.baseurl}}/docs/codefresh-yaml/steps/composition/) are still supported, the recommended way to run integrations tests going forward is with service containers. The underlying implementation is shared so check the composition documentation page for more available options
+and properties.
 
 Codefresh includes a handy mechanism (based on Docker compose) that can help you run sidecar containers along your main pipeline. Here is a very simple example.
 
