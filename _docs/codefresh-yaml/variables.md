@@ -247,14 +247,23 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-Notice that `cf_export` has the same semantics as the [bash export command](https://www.gnu.org/software/bash/manual/html_node/Environment.html). This means that when you use it you **don't** need any dollar signs for the variable created/assigned.
+Notice that `cf_export` has the same syntax structure as the [bash export command](https://www.gnu.org/software/bash/manual/html_node/Environment.html). This means that when you use it you **don't** need any dollar signs for the variable created/assigned.
 
 ```
 cf_export $MY_VAR # Don't do this
 cf_export MY_VAR # Correct syntax
 ```
 
->There is nothing really magic about `cf_export`. It is a normal script. You can see its contents on your own by entering the command `cat /codefresh/volume/cf_export` on any [Codefresh freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) inside a pipeline. For more information on its limitations see the [troubleshooting page]({{site.baseurl}}/docs/troubleshooting/common-issues/cf-export-limitations/).
+Also notice that `cf_export` works on *subsequent* steps only. If you want to export a variable right away in the present step and all the rest of the steps you need to do the following:
+
+```
+export MY_VAR='example' # Will make MY_VAR available in this step only
+cf_export MY_VAR='example' # Will also make MY_VAR available to all steps after this one
+```
+
+There is nothing really magic about `cf_export`. It is a normal script. You can see its contents on your own by entering the command `cat /codefresh/volume/cf_export` on any [Codefresh freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) inside a pipeline. 
+
+For more information on its limitations see the [troubleshooting page]({{site.baseurl}}/docs/troubleshooting/common-issues/cf-export-limitations/).
 
 
  
