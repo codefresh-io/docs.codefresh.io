@@ -29,7 +29,7 @@ To use the Codefresh runner the following is required:
 
 The runner can be installed from any workstation or laptop with access (i.e. via `kubectl`) to the Kubernetes cluster running Codefresh builds. The Codefresh runner will authenticate to your Codefresh account by using the Codefresh CLI token. 
 
-## Installation with the quick-start wizard
+## Installation with the Quick-start Wizard
 
 Install the Codefresh CLI
 ```
@@ -88,7 +88,7 @@ codefresh runner info
 
 During installation you can see which API token will be used by the runner (if you don't provide one). The printed token is used by the runner to talk to the Codefresh platform carrying permissions that allow the runner to run pipelines. If you save the token, it can later be used to restore the runner's permissions without creating a new runner installation, if the deployment is deleted.
 
-### Customizing the wizard installation
+### Customizing the Wizard Installation
 
 You can customize the wizard installation by passing your own values in the `init` command.
 For example you can specify the runtime to be used in advance with:
@@ -127,7 +127,7 @@ codefresh runner init --values values.yaml
 
 You can use [this example](https://github.com/codefresh-io/venona/blob/release-1.0/venonactl/example/values-example.yaml) as a starting point for your values file.
 
-### Inspecting the manifests before they are installed
+### Inspecting the Manifests before they are installed
 
 If you want to see what manifests are used by the installation wizard you can supply the `--dry-run` parameter in the installation process.
 
@@ -140,7 +140,7 @@ used by the installer will be instead saved locally in a folder `./codefresh_man
 
 You can then inspect the manifests locally or edit/apply them manually if you wish.
 
-## Installation with Helm
+## Installing Codefresh Runner with Helm
 
 To install the [Codefresh Runner](https://codefresh.io/docs/docs/administration/codefresh-runner/) using helm you, follow these steps:
 
