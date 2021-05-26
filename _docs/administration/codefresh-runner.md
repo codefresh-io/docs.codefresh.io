@@ -29,7 +29,7 @@ To use the Codefresh runner the following is required:
 
 The runner can be installed from any workstation or laptop with access (i.e. via `kubectl`) to the Kubernetes cluster running Codefresh builds. The Codefresh runner will authenticate to your Codefresh account by using the Codefresh CLI token. 
 
-## Installation with the quick-start wizard
+## Installation with the Quick-start Wizard
 
 Install the Codefresh CLI
 ```
@@ -88,7 +88,7 @@ codefresh runner info
 
 During installation you can see which API token will be used by the runner (if you don't provide one). The printed token is used by the runner to talk to the Codefresh platform carrying permissions that allow the runner to run pipelines. If you save the token, it can later be used to restore the runner's permissions without creating a new runner installation, if the deployment is deleted.
 
-### Customizing the wizard installation
+### Customizing the Wizard Installation
 
 You can customize the wizard installation by passing your own values in the `init` command.
 For example you can specify the runtime to be used in advance with:
@@ -127,7 +127,7 @@ codefresh runner init --values values.yaml
 
 You can use [this example](https://github.com/codefresh-io/venona/blob/release-1.0/venonactl/example/values-example.yaml) as a starting point for your values file.
 
-### Inspecting the manifests before they are installed
+### Inspecting the Manifests before they are installed
 
 If you want to see what manifests are used by the installation wizard you can supply the `--dry-run` parameter in the installation process.
 
@@ -139,6 +139,31 @@ This will execute the wizard in a special mode that will not actually install an
 used by the installer will be instead saved locally in a folder `./codefresh_manifests`.
 
 You can then inspect the manifests locally or edit/apply them manually if you wish.
+
+## Installing Codefresh Runner with Helm
+
+To install the Codefresh Runner using Helm, follow these steps:
+
+1. Download the Codefresh CLI and authenticate it with your Codefresh account. Click [here](https://codefresh-io.github.io/cli/getting-started/) for more detailed instructions.
+2. Run the following command to create all of the necessary entities in Codefresh:
+   
+    ```
+    codefresh runner init --generate-helm-values-file
+    ```
+
+   * This will not install anything on your cluster, except for running cluster acceptance tests, (which may be skipped using the `--skip-cluster-test` option).
+   * This command will also generate a `generated_values.yaml` file in your current directory, which you will need to provide to the `helm install` command later.
+3. Now run the following to complete the installation: 
+
+    ```
+    helm repo add cf-runtime https://h.cfcr.io/codefresh-inc/runtime
+    
+    helm install cf-runtime cf-runtime/cf-runtime -f ./generated_values.yaml --create-namespace --namespace codefresh
+    ```
+4. At this point you should have a working Codefresh Runner. You can verify the installation by running: 
+    ```
+    codefresh runner execute-test-pipeline --runtime-name <runtime-name>
+    ```
 
 ## Using the Codefresh Runner 
 
