@@ -142,10 +142,10 @@ You can then inspect the manifests locally or edit/apply them manually if you wi
 
 ## Installing Codefresh Runner with Helm
 
-To install the [Codefresh Runner](https://codefresh.io/docs/docs/administration/codefresh-runner/) using helm you, follow these steps:
+To install the Codefresh Runner using Helm, follow these steps:
 
 1. Download the Codefresh CLI and authenticate it with your Codefresh account. Click [here](https://codefresh-io.github.io/cli/getting-started/) for more detailed instructions.
-2. Run the following command to create all of the necessary enitites in Codefresh:
+2. Run the following command to create all of the necessary entities in Codefresh:
    
     ```
     codefresh runner init --generate-helm-values-file
