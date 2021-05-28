@@ -411,7 +411,7 @@ The `triggers` field is an array of objects that hold [Git trigger information](
 | `branchRegexInput `       |  `triggers` | string | Defines what type of content is in `branchRegex`. Possible values are `regex`, `multiselect`, `multiselect-exclude` | 
 | `provider `       |  `triggers` | string | Name of provider as found in Git integrations |
 | `modifiedFilesGlob `       |  `triggers` | string | Only activate trigger if changed files match glob expression |
-| `disabled `       |  `triggers` | boolean | if false, trigger will never be activated  |
+| `disabled `       |  `triggers` | boolean | if true, trigger will never be activated  |
 | `options `       |  `triggers` | array | Choosing [caching behavior]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipeline-caching/) of this pipeline |
 | `noCache `       |  `options` | boolean | if true, docker layer cache is disabled |
 | `noCfCache `       |  `options` | boolean | if true, extra Codefresh caching is disabled |
