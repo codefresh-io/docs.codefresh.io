@@ -326,7 +326,12 @@ max-width="100%"
 
 Notice that with this setup the pipeline will run when the pull request was closed regardless of whether it was merged or not (which is exactly what you want as in both cases the test environment is not needed anymore).
 
+## Seeing all environments in the  Codefresh GUI
 
+You can combine the pipeline above with any Codefresh GUI dashboard
+if you want to see all your temporary environments in a single view.
+
+For more information see the documentation on  dashboards such as the [Environment dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/environment-dashboard/), the [Helm promotion dashboard]({{site.baseurl}}/docs/new-helm/helm-environment-promotion/) and the [GitOps dashboard]({{site.baseurl}}/docs/ci-cd-guides/gitops-deployments/#working-with-the-gitops-dashboard)
 
 
 

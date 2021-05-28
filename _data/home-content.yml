@@ -109,7 +109,6 @@
   - title: Advanced Workflows
     localurl: /docs/codefresh-yaml/advanced-workflows/
   - title: Deployment environments
-    new: true
     localurl: /docs/codefresh-yaml/deployment-environments/
   - title: Hooks
     localurl: /docs/codefresh-yaml/hooks/
