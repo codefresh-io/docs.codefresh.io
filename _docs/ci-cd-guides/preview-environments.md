@@ -19,7 +19,7 @@ caption="Dynamic Test environments"
 max-width="90%"
 %}
 
-This way each developer is working in isolation and can test their feature on its own. This pattern comes in contrast with  the traditional way of reusing static preexisting environments.
+This way each developer is working in isolation and can test their feature on its own. This pattern comes in contrast with the traditional way of reusing static preexisting environments.
 
 {% include image.html
 lightbox="true"
@@ -49,7 +49,7 @@ The two major approaches here are with host-based URLs or path based URLs.
 * with path based URLs, the test environments are named `example.com/pr1` , `example.com/pr2` and so on
 
 Both approaches have advantages and disadvantages. Path based URLs are easier to setup but may not work with all applications (since they change the web context). Host based URLs are more robust but need extra
-DNS configuration for the full effect
+DNS configuration for the full effect.
 
 In Kubernetes clusters, both ways can be setup via [an Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/).
 
@@ -63,7 +63,7 @@ The application we will use can be found at [https://github.com/codefresh-contri
 
 We are using [the Ambassador gateway](https://www.getambassador.io/) as an ingress for this example, but you can use any other compliant Kubernetes Ingress.
 
-Here is [ingress manifest](https://github.com/codefresh-contrib/unlimited-test-environments-manifests/blob/main/simple-java-app/templates/ingress.yaml)
+Here is the [ingress manifest](https://github.com/codefresh-contrib/unlimited-test-environments-manifests/blob/main/simple-java-app/templates/ingress.yaml)
 
 {% highlight yaml %}
 {% raw %}
@@ -96,7 +96,7 @@ Each time a Pull Request is created we want to perform the following tasks:
 1. Create a namespace with the same name as the pull request branch. Deploy the pull Request and expose it as a URL
 that has the same name as the branch as well
 
-Here is an example pipeline that does all these tasks
+Here is an example pipeline that does all these tasks:
 
 {% include image.html
 lightbox="true"
@@ -247,7 +247,7 @@ caption="Temporary environment"
 max-width="100%"
 %}
 
-The environment is also mentioned as a comment in the Pull Request UI in Gituhub:
+The environment is also mentioned as a comment in the Pull Request UI in Github:
 
 {% include image.html
 lightbox="true"
@@ -259,7 +259,7 @@ max-width="100%"
 %}
 
 As explained it the [previous guide for Pull Requests]({{site.baseurl}}/docs/ci-cd-guides/pull-request-branches/), we want to make this pipeline applicable only
-to PR open event and PR sync events (which captures commits that happen on an existing pull request).
+to PR open event and PR sync events (which capture commits that happen on an existing pull request).
 
 {% include image.html 
 lightbox="true"
@@ -275,11 +275,9 @@ Therefore you need to setup your [triggers]({{site.baseurl}}/docs/configure-ci-c
 ## Cleaning up temporary environments
 
 Creating temporary environments is very convenient for developers but can be very costly for your infrastructure if you use a cloud
-provider for your cluster. For cost reasons and better resource utilization it is best if temporary environments are destroyed if they are
-no longer used.
+provider for your cluster. For cost reasons and better resource utilization it is best if temporary environments are destroyed if they are no longer used.
 
-While you can run a batch job, that automatically deletes old temporary environments, the optimal approach is to delete them as soon as
-the respective Pull Request is closed.
+While you can run a batch job, that automatically deletes old temporary environments, the optimal approach is to delete them as soon as the respective Pull Request is closed.
 
 We can do that with a very simple pipeline that has only one step:
 
@@ -313,9 +311,9 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-The pipeline just uninstall the Helm release for that namespace and then deletes the namespace itself.
+The pipeline just uninstalls the Helm release for that namespace and then deletes the namespace itself.
 
-To have this pipeline run only when a Pull Request is closed here is how your [trigger]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/)  should look:
+To have this pipeline run only when a Pull Request is closed here is how your [trigger]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/) should look:
 
 {% include image.html 
 lightbox="true"
@@ -326,7 +324,7 @@ caption="Git events for a Pull Request close pipeline"
 max-width="100%"
 %}
 
-Notice that with this setup that pipeline will run when the pull request was closed regardless of wether it was merged or not (which is exactly what you want as in both cases the test environment is not needed anymore).
+Notice that with this setup the pipeline will run when the pull request was closed regardless of whether it was merged or not (which is exactly what you want as in both cases the test environment is not needed anymore).
 
 
 
