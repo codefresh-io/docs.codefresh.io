@@ -31,7 +31,7 @@ You can find how to integrate with slack here [https://api.slack.com/incoming-we
   `slack step`
 {% highlight yaml %}
 slack_notify:
-  image: tutum/curl
+  image: byrnedo/alpine-curl, curlimages/curl, or any other curl image 
   commands:
     - curl -X POST --data-urlencode 'payload={"text":"Test slack integration via yaml"}' {% raw %}${{SLACK_WEB_URL}}{% endraw %}
 {% endhighlight %}
@@ -39,7 +39,7 @@ slack_notify:
 
 ## What to read next
 
-* [Global Slack integration]({{site.baseurl}}/docs/integrations/notifications/slack-integration/)
-* [Advanced workflows]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/)
-* [Pipeline hooks]({{site.baseurl}}/docs/codefresh-yaml/hooks/)
-* [Shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/)
+* [Global Slack Integration]({{site.baseurl}}/docs/integrations/notifications/slack-integration/)
+* [Advanced Workflows]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/)
+* [Pipeline Hooks]({{site.baseurl}}/docs/codefresh-yaml/hooks/)
+* [Shared Configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/)
