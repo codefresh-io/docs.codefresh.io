@@ -101,6 +101,7 @@ To configure users sync for SAML IDP you need to do the following:
 1. Select GSuite provider
 1. Enable auto Sync users and teams to Codefresh
 1. Set JSON Keyfile, Admin Email and Sync interval
+
 The instructions for getting the JSON Keyfile, and Admin Email are the same as for [Google SSO](https://codefresh.io/docs/docs/administration/single-sign-on/sso-google/#synchronize-teams-with-the-codefresh-cli) .
 
 >Notice that these settings are for the SaaS version of Codefresh. For an on-premise Codefresh setup you need to use the URLs that match your installation.
