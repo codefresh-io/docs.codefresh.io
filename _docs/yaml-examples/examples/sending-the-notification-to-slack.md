@@ -16,7 +16,7 @@ There are many ways to integrate slack with Codefresh
 
 ## Custom webhook to Slack
 
-Use a container image with a [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) such as `tuttum/curl` to send a notification to a Slack channel.
+Use a container image with a [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) such as `byrnedo/alpine-curl` to send a notification to a Slack channel.
 
 {:start="1"}
 1. Get the {% raw %}```${{SLACK_WEB_URL}}```{% endraw %} and put it in the Environment Variables or use [shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/)
@@ -31,7 +31,7 @@ You can find how to integrate with slack here [https://api.slack.com/incoming-we
   `slack step`
 {% highlight yaml %}
 slack_notify:
-  image: byrnedo/alpine-curl, curlimages/curl, or any other curl image 
+  image: byrnedo/alpine-curl # curlimages/curl, or any other curl image
   commands:
     - curl -X POST --data-urlencode 'payload={"text":"Test slack integration via yaml"}' {% raw %}${{SLACK_WEB_URL}}{% endraw %}
 {% endhighlight %}
