@@ -1,6 +1,6 @@
 ---
-title: "Creating pipelines"
-description: "How to define pipelines in Codefresh"
+title: "Creating Pipelines"
+description: "How to define Pipelines in Codefresh"
 group: configure-ci-cd-pipeline
 redirect_from:
   - /docs/pipeline
@@ -49,7 +49,7 @@ With these basic building blocks, you can define many complex workflows. In part
 Of course, it also possible to have a simpler scenario where the trigger, the pipeline steps and the source code of the application are all defined for the same GIT repository.
 
 
-## Creating new pipelines
+## Creating New Pipelines
 
 You can create new projects by clicking on *Projects* in the left sidebar and then selecting the *New Project* button on the top right corner. A dialog will appear that will ask you for the project name and optional tags that you can use for [access control]({{site.baseurl}}/docs/enterprise/access-control/).
 
@@ -80,7 +80,7 @@ or by copying an existing one from the same project or a completely different pr
 
 
 
-### Using the inline pipeline editor
+### Using the Inline Pipeline Editor
 
 When first creating a pipeline you will see an inline editor that allows you to define the [pipeline yml]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) right there in the Codefresh UI. This is great when you are starting a new project because it offers you really quick feedback. You can edit the yml steps, run a build, edit again, run a build and so on. 
 
@@ -109,11 +109,11 @@ Notice that in the editor you can expand/collapse individual yaml blocks using t
 > You can also see the suggested Codefresh pipeline for any public git repository by using the [analyze option](https://codefresh-io.github.io/cli/analyzer/) of the Codefresh CLI.
 
 
-## Loading codefresh.yml from version control
+## Loading codefresh.yml from Version Control
 
 Working with the inline editor is very convenient in the beginning, but it makes your pipeline definition only exist within the Codefresh UI and therefore goes against the basic principles of [infrastructure as code](https://en.wikipedia.org/wiki/Infrastructure_as_Code). Once you are happy with how your pipeline works you should commit it to a Git repository (which can be the same one that has the source code of the application or a completely different one).
 
-You can click on the *Inline YAML* header and switch it to *Use YAML from URL*.
+You can click on the *Inline YAML* header and switch it to *Use YAML from URL* or *Use YAML from Repository*.
 
 {% include 
 image.html 
@@ -129,7 +129,7 @@ You can then copy and paste a URL to a raw Codefresh YAML file.  This will allow
 
 As an example, instead of using `https://github.com/codefresh-contrib/example-voting-app/blob/master/codefresh.yml` you should enter `https://raw.githubusercontent.com/codefresh-contrib/example-voting-app/master/codefresh.yml`
 
-## Pipeline settings
+## Pipeline Settings
 
 Once you create your pipeline you can also click on the top tab called *Settings* for some extra parameters.
 
@@ -198,7 +198,7 @@ caption="Bringing external resources into a pipeline"
 max-width="80%"
 %}
 
-Currently Codefresh supports the automatic fetching of files or folders from another Git repository. To create an external resource click the *Add Resource* button and choose
+Currently Codefresh supports the automatic fetching of files or folders from another Git repository. To create an external resource click the *Add Resource* button and choose:
 
 * The Git repository that contains the files/folder you wish to bring in the pipeline workspace
 * The branch from the Git repository that contains the files/folders you wish to bring in the pipeline workspace
@@ -210,14 +210,14 @@ You can define multiple external resources in a single pipeline.
 
 ### Runtime
 
-- **Runtime Environment**: (by default this is set to SAAS)
+- **Runtime Environment**: (by default this is set to SaaS)
 - **Runtime OS**: (by default this is set to Linux)
 - **Resources Size**: 
-  - Small (recommended for 1-2 concurrent steps))
+  - Small (recommended for 1-2 concurrent steps)
   - Medium (recommended 3-4 steps)
   - Large (recommended 5-6 steps)
 
-## Using Pipeline templates
+## Using Pipeline Templates
 
 Codefresh also supports the creation of pipeline "templates" which are blueprints for creating new pipelines. To enable the creation of pipelines from templates first visit the global pipeline configuration at [https://g.codefresh.io/account-admin/account-conf/pipeline-settings](https://g.codefresh.io/account-admin/account-conf/pipeline-settings) and toggle the *Enable Pipeline Templates* button.
 
