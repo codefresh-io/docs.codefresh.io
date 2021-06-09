@@ -1349,7 +1349,7 @@ If you want to use  *GCE Disks*:
 There are 3 options to provide cloud credentials on GCE:
 
 * run `dind-volume-provisioner-runner` pod on a node with IAM role which is allowed to create/delete/get GCE disks
-* create Google Service Account with `ComputeEngine.StorageAdmin` role, download its key is JSON format and pass it to `codefresh runner init` with `--set-file=Storage.GooogleServiceAccount=/path/to/google-service-account.json`
+* create Google Service Account with `ComputeEngine.StorageAdmin` role, download its key in JSON format and pass it to `codefresh runner init` with `--set-file=Storage.GooogleServiceAccount=/path/to/google-service-account.json`
 * use [Google Workload Identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) to assign IAM role to `volume-provisioner-runner` service account 
 
 Notice that builds will be running in a single availability zone, so you must specify AvailabilityZone parameters.
