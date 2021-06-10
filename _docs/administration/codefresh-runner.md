@@ -424,7 +424,7 @@ The following options are available:
 
 - `reuseVolumeSelector: 'codefresh-app,io.codefresh.accountName,pipeline_id'` - determined PV can be used only by a **single pipeline**.
 
-- `reuseVolumeSelector: 'codefresh-app,io.codefresh.accountName,pipeline_id,codefresh-app,io.codefresh.branch_name'` - determined PV can be used only by **single pipeline AND single branch**.
+- `reuseVolumeSelector: 'codefresh-app,io.codefresh.accountName,pipeline_id,io.codefresh.branch_name'` - determined PV can be used only by **single pipeline AND single branch**.
 
 - `reuseVolumeSelector: 'codefresh-app,io.codefresh.accountName,pipeline_id,trigger'` - determined PV can be used only by **single pipeline AND single trigger**.
 
