@@ -413,6 +413,41 @@ codefresh attach runtime --agent-name $AGENT_NAME --agent-kube-namespace codefre
 
 You can fine tune the installation of the runner to better match your environment and cloud provider.
 
+### Volume reusage policy
+
+The behavior of how the volumes are reused depends on volume selector configuration.
+`reuseVolumeSelector` option is configurable in runtime environment spec.
+
+The following options are available:
+
+- `reuseVolumeSelector: 'codefresh-app,io.codefresh.accountName'` - determined PV can be used by **ANY** pipeline of your account (it's a **default** volume selector).
+
+- `reuseVolumeSelector: 'codefresh-app,io.codefresh.accountName,pipeline_id'` - determined PV can be used only by a **single pipeline**.
+
+- `reuseVolumeSelector: 'codefresh-app,io.codefresh.accountName,pipeline_id,codefresh-app,io.codefresh.branch_name'` - determined PV can be used only by **single pipeline AND single branch**.
+
+- `reuseVolumeSelector: 'codefresh-app,io.codefresh.accountName,pipeline_id,trigger'` - determined PV can be used only by **single pipeline AND single trigger**.
+
+To change volume selector follow this procedure:
+
+```shell
+#get runtime environmet spec yaml
+codefresh get re $RUNTIME_NAME -o yaml > runtime.yaml
+```
+Under `dockerDaemonScheduler.pvcs.dind` block specify `reuseVolumeSelector`:
+{% highlight yaml %}
+{% raw %}
+  pvcs:
+    dind:
+      volumeSize: 30Gi
+      reuseVolumeSelector: 'codefresh-app,io.codefresh.accountName,pipeline_id'
+{% endraw %}
+{% endhighlight %}
+```shell
+#apply changes to runtime environment
+codefresh patch re -f runtime.yaml
+```
+
 ### Custom global environment variables
 
 You can add your own environment variables  in the runtime environment, so that all pipeline steps have access to the same set of external files. A typical
@@ -1474,8 +1509,97 @@ For example, let's say Venona-zoneA is the default RE, then, that means that for
 
 Regarding [Regional Persistent Disks](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/regional-pd), their support is not currently implemented in the Codefresh runner.
 
+## Runtime Cleaners
 
+##### Key points:
+- Codefresh pipeline require disk space for:
+  - [Pipeline Shared Volume](https://codefresh.io/docs/docs/yaml-examples/examples/shared-volumes-between-builds/) (`/codefresh/volume`, implemented as [docker volume](https://docs.docker.com/storage/volumes/))
+  - Docker containers - running and stopped
+  - Docker images and cached layers
+- To improve performance, `volume-provisioner` is able to provision previously used disk with docker images and pipeline volume from previously running builds. It improves performance by using docker cache and decreasing I/O rate.
+- Least recently docker images and volumes should be cleaned to avoid out-of-space errors.
+- There are several places where pipeline volume cleanup is required, so there are several kinds of cleaner.
 
+##### Cleaners:
+- [IN-DIND cleaner](https://github.com/codefresh-io/dind/tree/master/cleaner) - deletes extra docker containers, volumes, images on dind pod
+- [External volumes cleaner](https://github.com/codefresh-io/runtime-cluster-monitor/blob/master/chart/templates/dind-volume-cleanup.yaml) - deletes unused **external** PVs (EBS, GCE/Azure disks)
+- [Local volumes cleaner](https://github.com/codefresh-io/dind-volume-utils/blob/master/local-volumes/lv-cleaner.sh) - deletes **local** volumes in case node disk space is close to the threshold
+
+***
+
+##### IN-DIND cleaner
+**Purpose:** removes unneeded *docker containers, images, volumes* inside kubernetes volume mounted to the dind pod
+
+**Where it runs:** Running inside each dind pod as script 
+
+**Triggered by:** SIGTERM and also during the run when disk usage (cleaner-agent ) > 90% (configurable) 
+
+**Configured by:**  Environment Variables which can be set in Runtime Environment configuration
+
+**Configuration/Logic:** [README.md](https://github.com/codefresh-io/dind/tree/master/cleaner#readme)
+
+Override `dockerDaemonScheduler.envVars` on Runtime Environment if necessary (the following are **defaults**):
+{% highlight yaml %}
+{% raw %}
+dockerDaemonScheduler:
+  envVars:
+    CLEAN_DOCKER: 'true'
+    CLEAN_PERIOD_BUILDS: '5'
+    IMAGE_RETAIN_PERIOD: '14400'
+    VOLUMES_RETAIN_PERIOD: '14400'
+{% endraw %}
+{% endhighlight %}
+
+***
+
+##### External volumes cleaner
+**Purpose:** removes unused *kubernetes volumes and related backend volumes*
+ 
+**Where it runs:** on Runtime Cluster as cron job
+(`kubectl get cronjobs -n codefresh -l app=dind-volume-cleanup`). Installed in case the Runner uses non-local volumes (`Storage.Backend != local`)
+
+**Triggered by:** CronJob every 10min (configurable), part of [runtime-cluster-monitor](https://github.com/codefresh-io/runtime-cluster-monitor/blob/master/chart/templates/dind-volume-cleanup.yaml) and runner deployment
+
+**Configuration:**
+
+Set `codefresh.io/volume-retention` annotation on Runtime Environment:
+{% highlight yaml %}
+{% raw %}
+dockerDaemonScheduler:
+  pvcs:
+    dind:
+      storageClassName: dind-ebs-volumes-runner-codefresh      
+      reuseVolumeSelector: 'codefresh-app,io.codefresh.accountName,pipeline_id'
+      volumeSize: 32Gi
+      annotations:
+        codefresh.io/volume-retention: 7d
+{% endraw %}
+{% endhighlight %}
+
+Override environment variables for `dind-volume-cleanup` cronjob if necessary:
+- `RETENTION_DAYS` (defaults to 4)
+- `MOUNT_MIN` (defaults to 3)
+- `PROVISIONED_BY` (defaults to `codefresh.io/dind-volume-provisioner`)
+
+About *optional* `-m` argument:
+- `dind-volume-cleanup` to clean volumes that were last used more than `RETENTION_DAYS` ago
+- `dind-volume-cleanup-m` to clean volumes that were used more than a day ago, but mounted less than `MOUNT_MIN` times
+
+***
+
+##### Local volumes cleaner
+**Purpose:** deletes local volumes in case node disk space is close to the threshold
+ 
+**Where it runs:** on each node on runtime cluster as DaemonSet `dind-lv-monitor`. Installed in case the Runner use local volumes (`Storage.Backend == local`)
+
+**Triggered by:** starts clean if disk space usage or inodes usage is more than thresholds (configurable)
+
+**Configuration:**
+
+Override environment variables for `dind-lv-monitor` daemonset if necessary:
+- `VOLUME_PARENT_DIR` - default `/var/lib/codefresh`
+- `KB_USAGE_THRESHOLD` - default 80 (percentage)
+- `INODE_USAGE_THRESHOLD` - default 80 
 
 ## Troubleshooting
 
