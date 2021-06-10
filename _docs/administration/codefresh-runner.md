@@ -1512,7 +1512,7 @@ Regarding [Regional Persistent Disks](https://cloud.google.com/kubernetes-engine
 ## Runtime Cleaners
 
 ##### Key points:
-- Codefresh pipeline require disk space for:
+- Codefresh pipelines require disk space for:
   - [Pipeline Shared Volume](https://codefresh.io/docs/docs/yaml-examples/examples/shared-volumes-between-builds/) (`/codefresh/volume`, implemented as [docker volume](https://docs.docker.com/storage/volumes/))
   - Docker containers - running and stopped
   - Docker images and cached layers
