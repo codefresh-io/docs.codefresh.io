@@ -1521,14 +1521,14 @@ Regarding [Regional Persistent Disks](https://cloud.google.com/kubernetes-engine
 - There are several places where pipeline volume cleanup is required, so there are several kinds of cleaner.
 
 ##### Cleaners:
-- [IN-DIND cleaner](https://github.com/codefresh-io/dind/tree/master/cleaner) - deletes extra docker containers, volumes, images on dind pod
+- [IN-DIND cleaner](https://github.com/codefresh-io/dind/tree/master/cleaner) - deletes extra docker containers, volumes, images in **dind pod**
 - [External volumes cleaner](https://github.com/codefresh-io/runtime-cluster-monitor/blob/master/chart/templates/dind-volume-cleanup.yaml) - deletes unused **external** PVs (EBS, GCE/Azure disks)
 - [Local volumes cleaner](https://github.com/codefresh-io/dind-volume-utils/blob/master/local-volumes/lv-cleaner.sh) - deletes **local** volumes in case node disk space is close to the threshold
 
 ***
 
 ##### IN-DIND cleaner
-**Purpose:** removes unneeded *docker containers, images, volumes* inside kubernetes volume mounted to the dind pod
+**Purpose:** Removes unneeded *docker containers, images, volumes* inside kubernetes volume mounted to the dind pod
 
 **Where it runs:** Running inside each dind pod as script 
 
@@ -1553,9 +1553,9 @@ dockerDaemonScheduler:
 ***
 
 ##### External volumes cleaner
-**Purpose:** removes unused *kubernetes volumes and related backend volumes*
+**Purpose:** Removes unused *kubernetes volumes and related backend volumes*
  
-**Where it runs:** on Runtime Cluster as cron job
+**Where it runs:** On Runtime Cluster as CronJob
 (`kubectl get cronjobs -n codefresh -l app=dind-volume-cleanup`). Installed in case the Runner uses non-local volumes (`Storage.Backend != local`)
 
 **Triggered by:** CronJob every 10min (configurable), part of [runtime-cluster-monitor](https://github.com/codefresh-io/runtime-cluster-monitor/blob/master/chart/templates/dind-volume-cleanup.yaml) and runner deployment
@@ -1588,16 +1588,16 @@ About *optional* `-m` argument:
 ***
 
 ##### Local volumes cleaner
-**Purpose:** deletes local volumes in case node disk space is close to the threshold
+**Purpose:** Deletes local volumes in case node disk space is close to the threshold
  
-**Where it runs:** on each node on runtime cluster as DaemonSet `dind-lv-monitor`. Installed in case the Runner use local volumes (`Storage.Backend == local`)
+**Where it runs:** On each node on runtime cluster as DaemonSet `dind-lv-monitor`. Installed in case the Runner use local volumes (`Storage.Backend == local`)
 
-**Triggered by:** starts clean if disk space usage or inodes usage is more than thresholds (configurable)
+**Triggered by:** Starts clean if disk space usage or inodes usage is more than thresholds (configurable)
 
 **Configuration:**
 
 Override environment variables for `dind-lv-monitor` daemonset if necessary:
-- `VOLUME_PARENT_DIR` - default `/var/lib/codefresh`
+- `VOLUME_PARENT_DIR` - default `/var/lib/codefresh/dind-volumes`
 - `KB_USAGE_THRESHOLD` - default 80 (percentage)
 - `INODE_USAGE_THRESHOLD` - default 80 
 
