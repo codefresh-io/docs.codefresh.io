@@ -1309,37 +1309,95 @@ kubectl create clusterrolebinding NAME --clusterrole cluster-admin --user <YOUR_
 ```
 
 ### Docker cache support for GKE
-
+##### Local SSD
 If you want to use  *LocalSSD* in GKE:
 
-*Prerequisite:* [GKE cluster with local SSD](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/local-ssd)
+*Prerequisites:* [GKE cluster with local SSD](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/local-ssd)
 
-*Install runner using GKE Local SSD:*
+Install Runner using GKE Local SSD:
 ```
 codefresh runner init [options] --set-value=Storage.LocalVolumeParentDir=/mnt/disks/ssd0/codefresh-volumes \
                             --build-node-selector=cloud.google.com/gke-local-ssd=true
 ```
 
+`values-example.yaml`
+{% highlight yaml %}
+{% raw %}
+...
+### Storage parameters example for gke-local-ssd
+ Storage:
+   Backend: local
+   LocalVolumeParentDir: /mnt/disks/ssd0/codefresh-volumes 
+ NodeSelector: cloud.google.com/gke-local-ssd=true 
+... 
+ Runtime:
+   NodeSelector: # dind and engine pods node-selector (--build-node-selector)
+     cloud.google.com/gke-local-ssd: "true"
+...     
+{% endraw %}
+{% endhighlight %}
+
+To configure existing Runner with Local SSDs follow this article:
+
+[How-to: Configuring an existing Runtime Environment with Local SSDs (GKE only)](https://support.codefresh.io/hc/en-us/articles/360016652920-How-to-Configuring-an-existing-Runtime-Environment-with-Local-SSDs-GKE-only-)
+
+##### GCE Disks
 If you want to use  *GCE Disks*:
 
-*Prerequisite:* volume provisioner (dind-volume-provisioner) should have permissions to create/delete/get of Google disks
+*Prerequisites:* volume provisioner (dind-volume-provisioner) should have permissions to create/delete/get GCE disks
 
 There are 3 options to provide cloud credentials on GCE:
 
-* run `dind-volume-provisioner-runner` on node with iam role which is allowed to create/delete/get of Google disks
-* create Google Service Account with `ComputeEngine.StorageAdmin`, download its key and pass it to venona installed with `--set-file=Storage.GooogleServiceAccount=/path/to/google-service-account.json`
-* use [Google Workload Identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) to assign iam role to `volume-provisioner-venona` service account 
+* run `dind-volume-provisioner-runner` pod on a node with IAM role which is allowed to create/delete/get GCE disks
+* create Google Service Account with `ComputeEngine.StorageAdmin` role, download its key in JSON format and pass it to `codefresh runner init` with `--set-file=Storage.GooogleServiceAccount=/path/to/google-service-account.json`
+* use [Google Workload Identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) to assign IAM role to `volume-provisioner-runner` service account 
 
 Notice that builds will be running in a single availability zone, so you must specify AvailabilityZone parameters.
 
-Install Runner using GKE Disks:
+Install Runner using GCE Disks:
 
 ```
 codefresh runner init [options] --set-value=Storage.Backend=gcedisk \
                             --set-value=Storage.AvailabilityZone=us-central1-a \
+                            [--kube-node-selector=failure-domain.beta.kubernetes.io/zone=us-central1-a \]
                             --build-node-selector=failure-domain.beta.kubernetes.io/zone=us-central1-a \
                             [--set-file=Storage.GoogleServiceAccount=/path/to/google-service-account.json]
 ```
+
+`values-example.yaml`
+{% highlight yaml %}
+{% raw %}
+...
+### Storage parameter example for GCE disks
+ Storage:
+   Backend: gcedisk
+   AvailabilityZone: us-central1-c
+   GoogleServiceAccount: > #serviceAccount.json content
+     {
+      "type": "service_account",
+      "project_id": "...",
+      "private_key_id": "...",
+      "private_key": "...",
+      "client_email": "...",
+      "client_id": "...",
+      "auth_uri": "...",
+      "token_uri": "...",
+      "auth_provider_x509_cert_url": "...",
+      "client_x509_cert_url": "..."
+      }
+ NodeSelector: failure-domain.beta.kubernetes.io/zone=us-central1-c
+... 
+ Runtime:
+   NodeSelector: # dind and engine pods node-selector (--build-node-selector)
+     failure-domain.beta.kubernetes.io/zone: us-central1-c
+...     
+{% endraw %}
+{% endhighlight %}
+
+To configure existing Runner with GCE Disks follow this article:
+
+[How-to: Configuring an existing Runtime Environment with GCE disks](https://support.codefresh.io/hc/en-us/articles/360016652900-How-to-Configuring-an-existing-Runtime-Environment-with-GCE-disks)
+
 
 #### Using multiple Availability Zones
 
