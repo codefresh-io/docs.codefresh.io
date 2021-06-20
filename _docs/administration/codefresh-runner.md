@@ -45,7 +45,7 @@ You can obtain an API Key from your [user settings page](https://g.codefresh.io/
 
 ***Note:** access to the Codefresh CLI is only needed once during the Runner installation. After that, the Runner will authenticate on it own using the details provided. You do NOT need to install the Codefresh CLI on the cluster that is running Codefresh pipelines.*
 
-Then run the wizard with the following command
+Then run the wizard with the following command:
 
 ```
 codefresh runner init
@@ -127,7 +127,7 @@ codefresh runner init --values values.yaml
 
 You can use [this example](https://github.com/codefresh-io/venona/blob/release-1.0/venonactl/example/values-example.yaml) as a starting point for your values file.
 
-### Inspecting the Manifests before they are installed
+### Inspecting the Manifests Before they are Installed
 
 If you want to see what manifests are used by the installation wizard you can supply the `--dry-run` parameter in the installation process.
 
@@ -217,7 +217,7 @@ runner-5d549f8bc5-7h5rc                           1/1     Running   0          3
 ```
 In the same manner you can list secrets, config-maps, logs, volumes etc. for the Codefresh builds. 
 
-## Removing the Codefresh runner
+## Removing the Codefresh Runner
 
 You can uninstall the Codefresh runner from your cluster by running:
 
@@ -239,7 +239,7 @@ Like the installation wizard, you can pass the following options in advance as c
 | kube-config-path      |  Path to kubeconfig file (default is $HOME/.kube/config) |
 | verbose       | Print logs. |
 
-## System requirements 
+## System Requirements 
 
 Once installed the runner uses the following pods:
 
@@ -271,14 +271,14 @@ Node size and count will depend entirely on how many pipelines you want to be â€
 
 The size of your nodes directly relates to the size required for your pipelines and thus it is dynamic.  If you find that only a few larger pipelines require larger nodes you may want to have two Codefresh Runners associated to different node pools.
 
-### Storage space
+### Storage Space
 
 For the storage space needed by the `dind` pod we suggest:
 
 * [Local SSD](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/local-ssd) in the case of GCP 
 * [EBS](https://aws.amazon.com/ebs/) in the case of Amazon. See also the [notes](#installing-on-aws) about getting caching working.
 
-### Networking requirements
+### Networking Requirements
 
 * `dind` - this pod will create an internal network in the cluster to run all the pipeline steps
 * `dind` needs outgoing/egress access to Dockerhub and `quay.io`
@@ -300,7 +300,7 @@ codefresh runner upgrade
 
 and follow the wizard prompts.
 
-## Optional installation of the App Proxy
+## Optional Installation of the App Proxy
 
 The App Proxy is an optional component of the runner that once installed:
 
@@ -349,7 +349,7 @@ If you have multiple ingress controllers in the Kubernetes cluster you can use t
 By default the app-proxy ingress will use the path `hostname/app-proxy`. You can change that default by using the values file in the installation with the flag `--values values.yaml`. See the `AppProxy` section in the example [values.yaml](https://github.com/codefresh-io/venona/blob/release-1.0/venonactl/example/values-example.yaml).  
 
 
-## Manual installation of Runner components
+## Manual Installation of Runner Components
 
 If you don't want to use the wizard, you can also install the components of the runner yourself.
 
@@ -370,7 +370,7 @@ codefresh install agent --agent-kube-namespace codefresh --install-runtime
 
 You can then follow the instructions for [using the runner](#using-the-codefresh-runner).
 
-### Installing multiple runtimes with a single agent
+### Installing Multiple runtimes with a Single Agent
 
 It is also possible, for advanced users to install a single agent that can manage multiple runtime environments.
 
@@ -409,11 +409,46 @@ codefresh install runtime --runtime-kube-namespace codefresh-runtime-2
 codefresh attach runtime --agent-name $AGENT_NAME --agent-kube-namespace codefresh-agent --runtime-name $RUNTIME_NAME --runtime-kube-namespace codefresh-runtime-2 --restart-agent
 ```
 
-## Configuration options
+## Configuration Options
 
 You can fine tune the installation of the runner to better match your environment and cloud provider.
 
-### Custom global environment variables
+### Volume Reusage Policy
+
+The behavior of how the volumes are reused depends on volume selector configuration.
+`reuseVolumeSelector` option is configurable in runtime environment spec.
+
+The following options are available:
+
+- `reuseVolumeSelector: 'codefresh-app,io.codefresh.accountName'` - determined PV can be used by **ANY** pipeline of your account (it's a **default** volume selector).
+
+- `reuseVolumeSelector: 'codefresh-app,io.codefresh.accountName,pipeline_id'` - determined PV can be used only by a **single pipeline**.
+
+- `reuseVolumeSelector: 'codefresh-app,io.codefresh.accountName,pipeline_id,io.codefresh.branch_name'` - determined PV can be used only by **single pipeline AND single branch**.
+
+- `reuseVolumeSelector: 'codefresh-app,io.codefresh.accountName,pipeline_id,trigger'` - determined PV can be used only by **single pipeline AND single trigger**.
+
+To change volume selector follow this procedure:
+
+```shell
+#get runtime environmet spec yaml
+codefresh get re $RUNTIME_NAME -o yaml > runtime.yaml
+```
+Under `dockerDaemonScheduler.pvcs.dind` block specify `reuseVolumeSelector`:
+{% highlight yaml %}
+{% raw %}
+  pvcs:
+    dind:
+      volumeSize: 30Gi
+      reuseVolumeSelector: 'codefresh-app,io.codefresh.accountName,pipeline_id'
+{% endraw %}
+{% endhighlight %}
+```shell
+#apply changes to runtime environment
+codefresh patch re -f runtime.yaml
+```
+
+### Custom Global Environment Variables
 
 You can add your own environment variables  in the runtime environment, so that all pipeline steps have access to the same set of external files. A typical
 example would be a shared secret that you want to pass everywhere.
@@ -467,7 +502,7 @@ codefresh patch runtime-environment ivan@acme-ebs.us-west-2.eksctl.io/codefresh-
 
 
 
-### Custom volume mounts
+### Custom Volume Mounts
 
 You can add your own volume mounts in the runtime environment, so that all pipeline steps have access to the same set of external files. A typical
 example of this scenario is when you want to make a set of SSL certificates available to all your pipelines. Rather than manually
@@ -510,7 +545,7 @@ Update your runtime environment with the [patch command](https://codefresh-io.gi
 ```
 codefresh patch runtime-environment ivan@acme-ebs.us-west-2.eksctl.io/codefresh-runtime -f runtime.yaml
 ```
-### Internal registry mirror
+### Internal Registry Mirror
 
 You can configure your Codefresh Runner to use an internal registry as a mirror for any container images that are mentioned in your pipelines.
 
@@ -678,9 +713,9 @@ codefresh patch runtime-environment ivan@acme-ebs.us-west-2.eksctl.io/codefresh-
 ```
 
 
-### Installing to EKS with autoscaling
+### Installing to EKS with Autoscaling
 
-#### Step 1-  EKS Cluster creation
+#### Step 1-  EKS Cluster Creation
 
 See below is a content of cluster.yaml file. We define separate node pools for dind, engine and other services(like runner, cluster-autoscaler etc).
 
@@ -1230,7 +1265,7 @@ Follow these steps to create a Codefresh user with Cluster Admin rights, from th
 - Copy the Bearer Token field (combines Access Key and Secret Key)
 - Edit your kubeconfig and put the Bearer Token you copied in the `token` field of your user
 
-#### Step 3 - Install the runner
+#### Step 3 - Install the Runner
 
 If you've created your kubeconfig from the Rancher UI, then it will contain an API endpoint that is not reachable internally, from within the cluster. To work around this, we need to tell the runner to instead use Kubernetes' generic internal API endpoint.  Also, if you didn't create a Codefresh user in step 2 and your kubeconfig contains your personal user account, then you should also add the `--skip-cluster-integration` option.
 
@@ -1474,8 +1509,97 @@ For example, let's say Venona-zoneA is the default RE, then, that means that for
 
 Regarding [Regional Persistent Disks](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/regional-pd), their support is not currently implemented in the Codefresh runner.
 
+## Runtime Cleaners
 
+##### Key points:
+- Codefresh pipelines require disk space for:
+  - [Pipeline Shared Volume](https://codefresh.io/docs/docs/yaml-examples/examples/shared-volumes-between-builds/) (`/codefresh/volume`, implemented as [docker volume](https://docs.docker.com/storage/volumes/))
+  - Docker containers - running and stopped
+  - Docker images and cached layers
+- To improve performance, `volume-provisioner` is able to provision previously used disk with docker images and pipeline volume from previously running builds. It improves performance by using docker cache and decreasing I/O rate.
+- Least recently docker images and volumes should be cleaned to avoid out-of-space errors.
+- There are several places where pipeline volume cleanup is required, so there are several kinds of cleaner.
 
+##### Cleaners:
+- [IN-DIND cleaner](https://github.com/codefresh-io/dind/tree/master/cleaner) - deletes extra docker containers, volumes, images in **dind pod**
+- [External volumes cleaner](https://github.com/codefresh-io/runtime-cluster-monitor/blob/master/chart/templates/dind-volume-cleanup.yaml) - deletes unused **external** PVs (EBS, GCE/Azure disks)
+- [Local volumes cleaner](https://github.com/codefresh-io/dind-volume-utils/blob/master/local-volumes/lv-cleaner.sh) - deletes **local** volumes in case node disk space is close to the threshold
+
+***
+
+##### IN-DIND cleaner
+**Purpose:** Removes unneeded *docker containers, images, volumes* inside kubernetes volume mounted to the dind pod
+
+**Where it runs:** Running inside each dind pod as script 
+
+**Triggered by:** SIGTERM and also during the run when disk usage (cleaner-agent ) > 90% (configurable) 
+
+**Configured by:**  Environment Variables which can be set in Runtime Environment configuration
+
+**Configuration/Logic:** [README.md](https://github.com/codefresh-io/dind/tree/master/cleaner#readme)
+
+Override `dockerDaemonScheduler.envVars` on Runtime Environment if necessary (the following are **defaults**):
+{% highlight yaml %}
+{% raw %}
+dockerDaemonScheduler:
+  envVars:
+    CLEAN_DOCKER: 'true'
+    CLEAN_PERIOD_BUILDS: '5'
+    IMAGE_RETAIN_PERIOD: '14400'
+    VOLUMES_RETAIN_PERIOD: '14400'
+{% endraw %}
+{% endhighlight %}
+
+***
+
+##### External volumes cleaner
+**Purpose:** Removes unused *kubernetes volumes and related backend volumes*
+ 
+**Where it runs:** On Runtime Cluster as CronJob
+(`kubectl get cronjobs -n codefresh -l app=dind-volume-cleanup`). Installed in case the Runner uses non-local volumes (`Storage.Backend != local`)
+
+**Triggered by:** CronJob every 10min (configurable), part of [runtime-cluster-monitor](https://github.com/codefresh-io/runtime-cluster-monitor/blob/master/chart/templates/dind-volume-cleanup.yaml) and runner deployment
+
+**Configuration:**
+
+Set `codefresh.io/volume-retention` annotation on Runtime Environment:
+{% highlight yaml %}
+{% raw %}
+dockerDaemonScheduler:
+  pvcs:
+    dind:
+      storageClassName: dind-ebs-volumes-runner-codefresh      
+      reuseVolumeSelector: 'codefresh-app,io.codefresh.accountName,pipeline_id'
+      volumeSize: 32Gi
+      annotations:
+        codefresh.io/volume-retention: 7d
+{% endraw %}
+{% endhighlight %}
+
+Override environment variables for `dind-volume-cleanup` cronjob if necessary:
+- `RETENTION_DAYS` (defaults to 4)
+- `MOUNT_MIN` (defaults to 3)
+- `PROVISIONED_BY` (defaults to `codefresh.io/dind-volume-provisioner`)
+
+About *optional* `-m` argument:
+- `dind-volume-cleanup` to clean volumes that were last used more than `RETENTION_DAYS` ago
+- `dind-volume-cleanup-m` to clean volumes that were used more than a day ago, but mounted less than `MOUNT_MIN` times
+
+***
+
+##### Local volumes cleaner
+**Purpose:** Deletes local volumes in case node disk space is close to the threshold
+ 
+**Where it runs:** On each node on runtime cluster as DaemonSet `dind-lv-monitor`. Installed in case the Runner use local volumes (`Storage.Backend == local`)
+
+**Triggered by:** Starts clean if disk space usage or inodes usage is more than thresholds (configurable)
+
+**Configuration:**
+
+Override environment variables for `dind-lv-monitor` daemonset if necessary:
+- `VOLUME_PARENT_DIR` - default `/var/lib/codefresh/dind-volumes`
+- `KB_USAGE_THRESHOLD` - default 80 (percentage)
+- `INODE_USAGE_THRESHOLD` - default 80 
 
 ## Troubleshooting
 
