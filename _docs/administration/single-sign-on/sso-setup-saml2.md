@@ -98,18 +98,60 @@ The mandatory fields needed for SAML assertions are:
 
 To configure users sync for SAML IDP you need to do the following:
 
-1. Select GSuite provider
-1. Enable auto Sync users and teams to Codefresh
+1. Select a G Suite provider
+1. Enable Auto Sync users and teams to Codefresh
 1. Set JSON Keyfile, Admin Email and Sync interval
 
-The instructions for getting the JSON Keyfile, and Admin Email are the same as for [Google SSO](https://codefresh.io/docs/docs/administration/single-sign-on/sso-google/#synchronize-teams-with-the-codefresh-cli) .
+The instructions for getting the JSON Keyfile, and Admin Email are the same as for [Google SSO](https://codefresh.io/docs/docs/administration/single-sign-on/sso-google/#synchronize-teams-with-the-codefresh-cli).
 
 >Notice that these settings are for the SaaS version of Codefresh. For an on-premise Codefresh setup you need to use the URLs that match your installation.
 
-Once everything is finished, you [should test the integration]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/#testing-your-identity-provider). Once it is working proceed to the next steps that are:
+Once everything is finished, you [should test the integration]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/#testing-your-identity-provider). Once it's working, proceed to the next steps that are:
 
 * [Selecting SSO method for collaborators]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/#selecting-sso-method-for-collaborators)
 
->Notice that Codefresh has an internal cache for SSO configurations and it might take up to 5 minutes for your changes to take effect.
+>Notice that Codefresh has an internal cache for SSO configurations and it might take up to five minutes for your changes to take effect.
 
+## OneLogin SAML Setup
 
+1. In OneLogin, go to the [Applications](https://cfsupport.onelogin.com/apps) Section.
+1. Select 'Add App' on the top right.
+1. Search for 'SAML Custom Connector' (advanced) and select it.
+1. Add a Display Name (the rest is optional) and Save.
+1. View the SSO Section.
+1. Open a New Tab and go to the [Single Sign-On](https://g.codefresh.io/account-admin/sso) settings in Codefresh.
+1. In Codefresh, select SAML for the Add Single Sign-On. 
+  * Display Name = any arbitrary name you want to give in this integration.
+  * IDP Entry = SAML 2.0 Endpoint (HTTP) from the SSO section in OneLogin. 
+  * Application Certificate = X.509 Certificate from the SSO section in OneLogin. 
+  * Click View Details (preferable open in a new tab).
+  * Under X.509 Certificate, click the copy button.
+  * Paste the contents into the Application Certificate.
+  * Remove the -----BEGIN CERTIFICATE----- and -----END CERTIFICATE-----.
+  * Save.
+1. Click edit on the SAML integration we created. 
+  * Copy the Assertion URL
+1. In OneLogin, view the Configuration section. 
+  * Audience (EntityID) = g.codefresh.io
+  * Recipient = Assertion URL
+  * ACS (Consumer) URL Validator= Assertion URL but in Regex form. View OneLogin's [Setup Page](https://onelogin.service-now.com/support?id=kb_article&sys_id=c89fefdadb2310503de43e043996195a&kb_category=93e869b0db185340d5505eea4b961934) for more info.
+  * ACS (Consumer) URL = Assertion URL
+  * Login URL = https://g.codefresh.io/login
+  * SAML Initiator = Service Provider
+  * Save
+1. In OneLogin, Go the [Users](https://cfsupport.onelogin.com/users) page.
+  * Select the User
+  * Go to Applications Section
+  * Click the **+** to add
+  * Select the SAML App (will show the Display Name from step 7)
+  * Click Continue
+  * Make sure NameID value = email address
+  * Save
+
+> Once the configuration finishes, please test the integration before enabling the SSO for all users.
+
+   
+   
+ 
+
+  
