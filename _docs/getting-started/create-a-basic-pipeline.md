@@ -259,7 +259,7 @@ max-width="80%"
 
 
 
-We need to add the tests in the build process. To do this we will get back to the pipeline settings of the application. Click on the name of the pipeline in the build log screen.
+We need to add the tests in the build process. To do this we will get back to the pipeline settings of the application. Click on the name of the pipeline you created in the build log screen so you can edit the yaml file.
 
 The sample application already has unit tests that can be executed with:
 
@@ -288,7 +288,7 @@ steps:
     title: Building Docker Image
     type: build
     stage: package
-    image_name: my-app-image
+    image_name: my-app-image #Change to your image name
     working_directory: ./
     tag: v1.0.1
     dockerfile: Dockerfile
@@ -416,7 +416,7 @@ For the purposes of this tutorial we will also push our sample application to [D
 a Dockerhub account with the same username that you have in Codefresh. If not, you need to change the Docker image
 created to match your username.
 
-Once you create your Docker Cloud account, go to your Account Configuration, by clicking on *Account Settings* on the left sidebar. On the first section called *Integrations* click the *Configure* button next to *Docker Registry*.
+Once you create your Docker Hub account, go to your Account Configuration, by clicking on *Account Settings* on the left sidebar of the Codefresh page. On the first section called *Integrations* click the *Configure* button next to *Docker Registry*.
 Finally click the *Add Registry* drop-down menu and select *Docker Hub*.
 
 {% include 
