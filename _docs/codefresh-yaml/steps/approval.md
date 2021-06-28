@@ -51,8 +51,7 @@ step_name:
 | ------------------------------------------ | ---------------------------------------------- | ------------------------- |
 | `title`                                    | The free-text display name of the step.        | Optional                  |
 | `description`                              | A basic, free-text description of the step.    | Optional                  |
-| `timeout`                                  | Defines an automatic approval/rejection if a specified amount of time has passed. The `duration` field is hours. By default it is set to 168 (i.e.
-, 7 days). The `finalState` field defines what will happen after the duration time has elapsed. Possible values are `approved`/`denied`/`terminated`    | Optional                  |
+| `timeout`                                  | Defines an automatic approval/rejection if a specified amount of time has passed. The `duration` field is hours. By default it is set to 168 (i.e, 7 days). The `finalState` field defines what will happen after the duration time has elapsed. Possible values are `approved`/`denied`/`terminated`    | Optional                  |
 | `timeUnit`                               | This field defines possible options of `minutes`, or `hours`. If the field is not set, the default is `hours` | Optional                       
 | `fail_fast`                              | If set to false, the pipeline will continue even when the step is rejected | Optional                  |
 | `stage`                              | Parent group of this step. See [using stages]({{site.baseurl}}/docs/codefresh-yaml/stages/) for more information.    | Optional                  |
