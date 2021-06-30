@@ -1601,6 +1601,123 @@ Override environment variables for `dind-lv-monitor` daemonset if necessary:
 - `KB_USAGE_THRESHOLD` - default 80 (percentage)
 - `INODE_USAGE_THRESHOLD` - default 80 
 
+## ARM Builds
+
+With hybrid runner it's possibe to run native ARM64v8 builds.
+
+>**Note:** Running both amd64 and arm64 images within the same pipeline - it is not possible. We do not support multi-architecture builds. One runtime configuration - one architecture. Considering one pipeline can map only to one runtime, it is possible to run either amd64 or arm64, but not both within a one pipeline
+
+The following scenario is an example of how to set up ARM Runner on existing EKS cluster:
+##### Step 1 - Preparing nodes
+Create a new ARM nodegroup
+
+```shell
+eksctl utils update-coredns --cluster <cluster-name>
+eksctl utils update-kube-proxy --cluster <cluster-name> --approve
+eksctl utils update-aws-node --cluster <cluster-name> --approve
+
+eksctl create nodegroup \
+--cluster <cluster-name> \
+--region <region> \
+--name <arm-ng> \
+--node-type <a1.2xlarge> \
+--nodes <3>\
+--nodes-min <2>\
+--nodes-max <4>\
+--managed
+```
+
+Check the status for your nodes:
+
+```shell
+kubectl get nodes -l kubernetes.io/arch=arm64
+```
+
+Also it's recommeded to label and taint the required ARM nodes:
+
+```shell
+kubectl taint nodes <node> arch=aarch64:NoSchedule
+kubectl label nodes <node> arch=arm
+```
+
+##### Step 2 - Runner installation
+Use [values.yaml](https://github.com/codefresh-io/venona/blob/release-1.0/venonactl/example/values-example.yaml) to inject `tolerations`, `kube-node-selector`, `build-node-selector` into the Runtime Environment spec.
+
+`values-arm.yaml`
+
+{% highlight yaml %}
+{% raw %}
+...
+Namespace: codefresh
+
+### NodeSelector --kube-node-selector: controls runner and dind-volume-provisioner pods
+NodeSelector: arch=arm
+
+### Tolerations --tolerations: controls runner, dind-volume-provisioner and dind-lv-monitor
+Tolerations: 
+- key: arch
+  operator: Equal
+  value: aarch64
+  effect: NoSchedule
+...
+########################################################
+###                Codefresh Runtime                 ###
+###                                                  ###
+###         configure engine and dind pods           ###
+########################################################
+Runtime:
+### NodeSelector --build-node-selector: controls engine and dind pods
+  NodeSelector:
+    arch: arm
+### Tolerations for engine and dind pods
+  tolerations: 
+  - key: arch
+    operator: Equal
+    value: aarch64
+    effect: NoSchedule  
+...    
+{% endraw %}
+{% endhighlight %}
+
+Install the runner with:
+```shell
+codefresh runner init --values values-arm.yaml --exec-demo-pipeline false --skip-cluster-integration true
+```
+
+In case of local storage patch `dind-lv-monitor-runner` DaemonSet:
+
+```shell
+kubectl edit ds dind-lv-monitor-runner
+```
+
+And add `nodeSelector`:
+{% highlight yaml %}
+{% raw %}
+    spec:
+      nodeSelector:
+        arch: arm
+{% endraw %}
+{% endhighlight %}
+
+##### Step 3 - Run Demo pipeline
+
+Run a modified version of the CF_Runner_Demo pipeline:
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+stages:
+  - test
+steps:
+  test:
+    stage: test
+    title: test
+    image: 'arm64v8/alpine'
+    commands:
+      - echo hello Codefresh Runner!
+{% endraw %}
+{% endhighlight %}   
+
+
 ## Troubleshooting
 
 - **Problem:** You receive an error regarding the provided token or CLI context used for this installation might not have enough permissions.
