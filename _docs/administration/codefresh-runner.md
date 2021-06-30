@@ -1609,7 +1609,7 @@ With hybrid runner it's possibe to run native ARM64v8 builds.
 
 The following scenario is an example of how to set up ARM Runner on existing EKS cluster:
 ##### Step 1 - Preparing nodes
-Create a new ARM nodegroup
+Create new ARM nodegroup:
 
 ```shell
 eksctl utils update-coredns --cluster <cluster-name>
@@ -1627,7 +1627,7 @@ eksctl create nodegroup \
 --managed
 ```
 
-Check the status for your nodes:
+Check nodes status:
 
 ```shell
 kubectl get nodes -l kubernetes.io/arch=arm64
@@ -1679,18 +1679,45 @@ Runtime:
 {% endraw %}
 {% endhighlight %}
 
-Install the runner with:
+Install the Runner with:
 ```shell
 codefresh runner init --values values-arm.yaml --exec-demo-pipeline false --skip-cluster-integration true
 ```
 
-In case of local storage patch `dind-lv-monitor-runner` DaemonSet:
+##### Step 3 - Post-installation fixes
+
+Change `engine` image version in Runtime Environment specification:
+
+```shell
+# get the latest engine ARM64 tag
+curl -X GET "https://quay.io/api/v1/repository/codefresh/engine/tag/?limit=100" --silent | jq -r '.tags[].name' | grep "^1.*arm64$"
+1.136.1-arm64
+```
+
+```shell
+# get runtime spec
+codefresh get re $RUNTIME_NAME -o yaml > runtime.yaml
+```
+
+under `runtimeScheduler.image` change image tag:
+{% highlight yaml %}
+{% raw %}
+runtimeScheduler:
+  image: 'quay.io/codefresh/engine:1.136.1-arm64'
+{% endraw %}
+{% endhighlight %}
+
+
+```shell
+# patch runtime spec
+codefresh patch re -f runtime.yaml
+```
+
+For `local` storage patch `dind-lv-monitor-runner` DaemonSet and add `nodeSelector`:
 
 ```shell
 kubectl edit ds dind-lv-monitor-runner
 ```
-
-And add `nodeSelector`:
 {% highlight yaml %}
 {% raw %}
     spec:
@@ -1699,9 +1726,9 @@ And add `nodeSelector`:
 {% endraw %}
 {% endhighlight %}
 
-##### Step 3 - Run Demo pipeline
+##### Step 4 - Run Demo pipeline
 
-Run a modified version of the CF_Runner_Demo pipeline:
+Run a modified version of the *CF_Runner_Demo* pipeline:
 {% highlight yaml %}
 {% raw %}
 version: '1.0'
