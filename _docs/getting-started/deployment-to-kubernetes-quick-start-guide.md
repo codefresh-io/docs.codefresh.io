@@ -70,7 +70,7 @@ max-width="70%"
 %}
 
 
-Click the *Add Service button* on the top right. The screen that appears is a friendly UI that allows you to
+Click *New* in the top right corner and then *Add Service button*. The screen that appears is a friendly UI that allows you to
 create a Kubernetes deployment (and associated service). You can also toggle the top right button to define a Kubernetes YAML yourself, but for the purposes of this tutorial we will only use the GUI.
 
  {% include 
