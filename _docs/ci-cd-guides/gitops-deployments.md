@@ -513,7 +513,7 @@ steps:
           - master    
   change_manifest:
     title: "Update k8s manifest"
-    image: "mikefarah/yq" # The image in which command will be executed
+    image: "mikefarah/yq:3" # The image in which command will be executed
     commands:
       - yq w -i deployment.yml spec.template.spec.containers[0].image docker.io/kostiscodefresh/simple-web-app:${{CF_SHORT_REVISION}}
       - cat deployment.yml
