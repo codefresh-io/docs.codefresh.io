@@ -13,12 +13,18 @@ toc: true
 
 ## Recent Codefresh Updates:
 
+## June 2021
+
+- Pending Approval Timeout - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/#fields)
+- OneLogin SAML Setup - [documentation]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-saml2/#onelogin-saml-setup)
+
+
 ### May 2021
 
 - Installing Codefresh Runner with Helm - [documentation]({{site.baseurl}}/docs/administration/codefresh-runner/#installing-codefresh-runner-with-helm)
 - Codecov Integration - [documentation]({{site.baseurl}}/docs/integrations/codecov-integration/)
 - Dynamic preview environments - [documentation]({{site.baseurl}}/docs/ci-cd-guides/preview-environments/)
-- Tag policy for transforming a docker tag in lowercase or not  - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/build/#fields)
+- Tag policy for transforming a Docker tag in lowercase or not  - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/build/#fields)
 - Support for App-of-app patterns in the GitOps dashboard- [documentation]({{site.baseurl}}/docs/ci-cd-guides/gitops-deployments/#using-the-app-of-apps-pattern)
 
 ### April 2021
