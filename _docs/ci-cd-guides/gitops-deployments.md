@@ -1,5 +1,5 @@
 ---
-title: "GitOps deployments"
+title: "GitOps Deployments"
 description: "Learn how to deploy with Codefresh and ArgoCD"
 group: ci-cd-guides
 toc: true
@@ -35,7 +35,7 @@ Codefresh has native support for GitOps including a graphical dashboard for hand
 
 This guide will explain how you can use GitOps for your own applications.
 
-## Setting up your Git repositories
+## Setting up your Git Repositories
 
 One of the central ideas around GitOps is the usage of Git for ALL project resources. Even though developers are familiar with using Git for the source code of the application, adopting GitOps means that you need to store in Git every other resource of the application (and not just the source code). 
 
@@ -94,7 +94,7 @@ Once you connect your application you will see it under in the GitOps applicatio
 
 
 
-## Creating a basic CI pipeline for GitOps
+## Creating aBbasic CI Pipeline for GitOps
 
 Creating a CI pipeline for GitOps is no different than a [standard pipeline]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/) that [packages your Docker images]({{site.baseurl}}/docs/ci-cd-guides/building-docker-images/), runs [tests]({{site.baseurl}}/docs/testing/unit-tests/), performs [security scans]({{site.baseurl}}/docs/testing/security-scanning/) etc.
 
@@ -189,7 +189,7 @@ You can see the associated metadata in your [Docker image dashboard](https://g.c
 
 Codefresh is using this information to fill the deployment history in the GitOps dashboard.
 
-## Creating a basic CD pipeline for GitOps
+## Creating a Basic CD Pipeline for GitOps
 
 To create a CD pipeline in Codefresh that is responsible for GitOps deployments you must first disable the auto-sync behavior of ArgoCD. You can disable auto-sync either from the GUI or via the [command line](https://argoproj.github.io/argo-cd/user-guide/auto_sync/):
 
@@ -281,7 +281,7 @@ The name of the application should be the same name as the ArgoCD Application.
 
  Once the pipeline has finished running the sync status will updated in your GitOps dashboard to reflect the current state.
 
-## Working with the GitOps dashboard
+## Working with the GitOps Dashboard
 
 After you create an ArgoCD application, you can click on it in the [GitOps environment overview](https://g.codefresh.io/gitops) and see the respective GitOps screen.
 
@@ -340,7 +340,7 @@ For each deployment you can also see a before/after view of the pods/replicas th
   max-width="100%"
  %}
 
-### Filtering the deployment history
+### Filtering the Deployment History
 
 You can add filters on the deployment history by using the multi-select field on the top left of the screen.
 
@@ -363,7 +363,7 @@ You can add filters on the deployment history by using the multi-select field on
 
 
 
-### Searching the deployment history
+### Searching the Deployment History
 
 For advanced filtering options, the search field on the top right allows you to view only the subset of deployments that match your custom criteria.
 
@@ -404,8 +404,27 @@ Some examples are:
 
 Using the search field allows you to quickly find a specific Git commit in the history of the application (and even rollback the deployment as explained in the next sections). 
 
+## Current State of Application
 
-## Rolling back Git versions
+The current state tab shows a hierarchical view of your cluster resource for your application.
+
+{% include image.html 
+  lightbox="true" 
+  file="/images/guides/gitops/currentstate.png" 
+  url="/images/guides/gitops/currentstate.png" 
+  alt="Current State tab"
+  caption="Current State tab"  
+  max-width="80%"
+ %}
+
+At the top of the screen you have several filters available:
+
+* Kind - choose a specific type of Kubernetes resource
+* Health - status of the resource
+* Sync state - GitOps status of the resource
+* Free search - search any resource by name
+
+## Rolling Back Git Versions
 
 In the GitOps dashboard you will also see a complete history of all past deployments as recorded in Git. You can select any of the previous version and rollback your application to the respective version.
 
@@ -422,7 +441,7 @@ The Rollback simply informs the cluster to use a different git hash for the sync
 
 This rollback behavior is best used as an emergency measure after a failed deployment where you want to bring the cluster back to a previous state in a temporary manner. If you wish to keep the current rollback statue as a permanent status it is best to use the standard `git reset/revert` commands and change the GitOps repository to its desired state. 
 
-## Performing automatic Git commits
+## Performing Automatic Git Commits
 
 Usually the Pull Requests that take part in a GitOps workflow are created and approved in a manual way (after code review). You have the option however to fully automate the whole process and rather than opening a Pull Request on both the application repository and the manifest repository, commit automatically the manifest changes inside the pipeline that creates the artifact.
 
