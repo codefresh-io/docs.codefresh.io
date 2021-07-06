@@ -1,6 +1,6 @@
 ---
-title: "Codefresh On-Premise Installation"
-description: "Use the Kubernetes Codefresh Installer to install the Codefresh On-Premise platform "
+title: "Codefresh On-Premises Installation"
+description: "Use the Kubernetes Codefresh Installer to install the Codefresh On-Premises platform "
 group: administration
 redirect_from:
   - /docs/enterprise/codefresh-on-prem/
@@ -29,7 +29,7 @@ The `kcfi` tool supports the following operating systems:
 
 Codefresh supports the following Git providers:
 
-- GitHub: SaaS and on-premise versions
+- GitHub: SaaS and on-premises versions
 - Bitbucket: SaaS and Bitbucket server (on-premises) 5.4.0 version and above
 - GitLab: SaaS and on-premise versions (API v4 only)
 
