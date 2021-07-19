@@ -104,6 +104,10 @@ Click *Application* permissions. From the list of permissions choose:
 * `Group.Read.All`
 * `User.Read.All`
 
+```
+Note: User.Read for the type of delegated is required. This permission is usually added by default. 
+
+```
 
 Finally click the *Apply Permissions* button.
 
