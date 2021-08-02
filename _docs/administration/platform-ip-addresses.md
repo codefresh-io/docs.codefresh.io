@@ -11,29 +11,7 @@ that the Codefresh platform is using. This will allow you to deploy to your clus
 
 >Note that this is needed only for customers that use the [SAAS version of Codefresh]({{site.baseurl}}/docs/administration/installation-security/). If you use the [Codefresh runner]({{site.baseurl}}/docs/administration/codefresh-runner/), there is no need to open any IPs and ports in your firewall.
 
-## Current IPs used by the Codefresh platform
-
-- 104.154.63.253    
-- 104.197.160.122    
-- 18.213.176.41    
-- 13.59.201.170    
-- 104.155.130.126    
-- 147.234.23.250    
-- 34.233.31.180
-- 18.210.174.176   
-- 104.154.99.188     
-- 146.148.100.14    
-- 34.237.229.16
-
-
-All the IPs are NAT gateways, and therefore you only need to enable specific IPs instead of ranges.
-
->If you do use these IPs we **strongly encourage** regular monitoring of this doc page.
-
-
-## Upcoming Codefresh IPs 
-
-These are IP addresses that we will soon add in the Codefresh platform. Customers will be notified long before they take effect. We publish them today so that you can allowlist them in advance.
+## Current IPs used by the Codefresh platform (updated July 31st 2021)
 
 - 107.21.238.215
 - 18.209.185.91
@@ -53,6 +31,28 @@ These are IP addresses that we will soon add in the Codefresh platform. Customer
 - 44.228.66.171
 - 44.238.167.159
 - 44.237.63.217
+
+
+All the IPs are NAT gateways, and therefore you only need to enable specific IPs instead of ranges.
+
+>If you do use these IPs we **strongly encourage** regular monitoring of this doc page.
+
+
+## Old Codefresh IPs 
+
+These IP addresses have been removed, please replace these with the IP addresses above.
+
+- 104.154.63.253    
+- 104.197.160.122    
+- 18.213.176.41    
+- 13.59.201.170    
+- 104.155.130.126    
+- 147.234.23.250    
+- 34.233.31.180
+- 18.210.174.176   
+- 104.154.99.188     
+- 146.148.100.14    
+- 34.237.229.16
 
 ## What to read next
 
