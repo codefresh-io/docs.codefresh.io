@@ -27,10 +27,6 @@ A. Pricing is per concurrent build. In practice this means how many pull request
 **Q. Is there a pay as you go model?**     
 A. We are always considering new pricing options. The pay as you go model has flaws as well. One of the big selling points of Codefresh is the different types of caches we employ in order to speed up builds. When a company charges for build minutes, it has no further motivation to cut down on build times. Several CI solutions offer no caching mechanisms, forcing you to download application dependencies on each build. Please contact us to discuss about pricing if this is your main blocker from adopting Codefresh.
 
-**Q. How does the user limit work?**    
-A. Unlike other CI solutions, the user limit in Codefresh plan does **not** refer to committers. It simply mentions how many people
-have access to the Codefresh Web Interface. You could work in a company with 100 developers committing code in Git while only 2 people are actually logging in the Codefresh UI.
-
 **Q. Does Codefresh offer infrastructure for running builds?**   
 A. Yes, the cloud version of Codefresh is fully [SAAS](https://en.wikipedia.org/wiki/Software_as_a_service). You only need to open an account and all builds are running on our cloud. You can still use a [Codefresh runner]({{site.baseurl}}/docs/enterprise/codefresh-runner/) to run builds on your own infrastructure, but this is completely optional.
 
