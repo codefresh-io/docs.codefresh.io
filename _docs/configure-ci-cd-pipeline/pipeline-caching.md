@@ -240,7 +240,7 @@ Some important points on this caching mechanism:
 * The volume is handled and managed by Codefresh in a completely transparent manner. You **DO NOT** need any `volume` directives in your pipelines to take advantage of it. The volume is even present in [service containers]({{site.baseurl}}/docs/codefresh-yaml/service-containers/) for integration tests.
 * On each build the [clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) will purge/delete everything that is not placed in `.gitignore`. So make sure that your `.gitignore` files contain all the things that you want to see cached (e.g. `node_modules`)
 * If you use the SAAS version of Codefresh, volumes will be reused across all your account pipelines. If you use the On-prem or Hybrid version of Codefresh, pipeline volumes can be scoped to different pipelines or triggers as well
-* The volume is only saved when the pipeline is successful. You need at least one successful build of your pipeline in order for the cache mechanism to take any effect.
+* You need at least one build of your pipeline in order for the cache mechanism to take any effect.
 * The volume is **NOT available** in [build steps]({{site.baseurl}}/docs/codefresh-yaml/steps/build/). This is not a Codefresh limitation. Docker itself [does not allow volumes during builds](https://github.com/moby/moby/issues/14080). There is no folder `/codefresh/volume` inside a Dockerfile for you to access.
 * This is the only caching mechanism that is not related to Docker images. So if you compile/package a traditional application with Codefresh that is not packaged as a Docker image this is the only way to get faster builds.
 
