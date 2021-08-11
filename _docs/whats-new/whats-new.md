@@ -7,11 +7,11 @@ redirect_from:
 toc: true
 ---
 
-## Upcoming Changes:
-
-- New platform IP addresses - [documentation]({{site.baseurl}}/docs/administration/platform-ip-addresses/)
 
 ## Recent Codefresh Updates:
+
+## July 2021
+- New platform IP addresses - [documentation]({{site.baseurl}}/docs/administration/platform-ip-addresses/)
 
 ## June 2021
 
