@@ -17,6 +17,7 @@ that the Codefresh platform is using. This will allow you to deploy to your clus
 - 18.209.185.91
 - 18.215.207.215
 - 18.233.130.31
+- 18.210.174.176
 - 23.20.5.235
 - 3.232.154.67
 - 34.192.31.53
@@ -31,7 +32,7 @@ that the Codefresh platform is using. This will allow you to deploy to your clus
 - 44.228.66.171
 - 44.238.167.159
 - 44.237.63.217
-- 18.210.174.176 
+ 
 
 
 All the IPs are NAT gateways, and therefore you only need to enable specific IPs instead of ranges.
