@@ -94,6 +94,7 @@ step_name:
 | `on_success`, `on_fail` and `on_finish`    | Define operations to perform upon step completion using a set of predefined [Post-Step Operations]({{site.baseurl}}/docs/codefresh-yaml/post-step-operations/).                                                                                                      | Optional                  |
 | `retry`   | Define retry behavior as described in [Retrying a step]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/#retrying-a-step).                                                                               | Optional                  |
 | `buildkit`                                 | Set to `true` to enable [Buildkit]({{site.baseurl}}/docs/codefresh-yaml/steps/build/#buildkit-support) and all of its enhancements                                                                                                    | Optional                 | 
+| `cache_enabled`                                 | The values it can take are `true` and `false`, if set to `true` -> Docker layer cache will be used for this step or `false` -> Docker layer cache will NOT be used for this step                                                                                                  | Optional                 | 
 
 **Exported resources:**
 - Working Directory
