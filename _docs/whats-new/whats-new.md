@@ -10,6 +10,9 @@ toc: true
 
 ## Recent Codefresh Updates:
 
+## August 2021
+- Using AWS Service Account for ECR Integration - [documentation]({{site.baseurl}}/docs/integrations/docker-registries/amazon-ec2-container-registry/#setting-up-ecr-integration---service-account)
+
 ## July 2021
 - New platform IP addresses - [documentation]({{site.baseurl}}/docs/administration/platform-ip-addresses/)
 
