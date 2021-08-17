@@ -12,8 +12,12 @@ toc: true
 
 ## August 2021
 - Using AWS Service Account for ECR Integration - [documentation]({{site.baseurl}}/docs/integrations/docker-registries/amazon-ec2-container-registry/#setting-up-ecr-integration---service-account)
+- Approval steps now have an extra confirmation - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/)
+- App proxy is now available for Bitbucket server - [documentation]({{site.baseurl}}/docs/administration/codefresh-runner/#optional-installation-of-the-app-proxy)
 
 ## July 2021
+
+
 - New platform IP addresses - [documentation]({{site.baseurl}}/docs/administration/platform-ip-addresses/)
 
 ## June 2021
