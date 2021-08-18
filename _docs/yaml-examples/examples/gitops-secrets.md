@@ -49,17 +49,111 @@ wget https://github.com/bitnami-labs/sealed-secrets/releases/download/v0.16.0/ku
 sudo install -m 755 kubeseal /usr/local/bin/kubeseal
 ```
 
-## The Example  Application
+## The example application
 
 You can find the example project at [https://github.com/codefresh-contrib/gitops-secrets-sample-app](https://github.com/codefresh-contrib/gitops-secrets-sample-app).
 
+It is a web application that prints out several secrets which are [read from the filesystem](https://github.com/codefresh-contrib/gitops-secrets-sample-app/blob/main/settings.ini):
+
+`settings.ini`
+```ini
+[security]
+# Path to key pair
+private_key = /secrets/sign/key.private
+public_key= /secrets/sign/key.pub
+
+[paypal]
+paypal_url = https://development.paypal.example.com
+paypal_cert=/secrets/ssl/paypal.crt
+
+[mysql]
+db_con= /secrets/mysql/connection
+db_user = /secrets/mysql/username
+db_password = /secrets/mysql/password
+```
+
+The application itself knows nothing about Kubernetes secrets, mounted volumes or any other cluster resource. It only reads its own filesystem at `/secrets`
+
+This folder is populated inside the pod with [secret mounting](https://github.com/codefresh-contrib/gitops-secrets-sample-app/blob/main/manifests/deployment.yml):
+
+```yaml
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gitops-secrets-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gitops-secrets-app
+  template:
+    metadata:
+      labels:
+        app: gitops-secrets-app
+    spec:
+      containers:
+      - name: gitops-secrets-app
+        image: docker.io/kostiscodefresh/gitops-secrets-sample-app:latest 
+        imagePullPolicy: Always   
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - name: mysql
+          mountPath: "/secrets/mysql"
+          readOnly: true     
+        - name: paypal
+          mountPath: "/secrets/ssl"
+          readOnly: true              
+        - name: sign-keys
+          mountPath: "/secrets/sign/"
+          readOnly: true   
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+      volumes:
+      - name: mysql
+        secret:
+          secretName: mysql-credentials
+      - name: paypal
+        secret:
+          secretName: paypal-cert         
+      - name: sign-keys
+        projected:
+          sources:
+            - secret:
+               name: key-private 
+            - secret:
+               name: key-public    
+           
+```
+
+This way there is a clear separation of concerns.
+
+
+
+You can find the secrets themselves at [https://github.com/codefresh-contrib/gitops-secrets-sample-app/tree/main/unsealed_secrets](https://github.com/codefresh-contrib/gitops-secrets-sample-app/tree/main/unsealed_secrets). There are encoded with base64 so they are not safe to commit in Git.
+
 >Note that for demonstration reasons the Git repository contains raw secrets so that you can encrypt them yourself. In a production application the Git repository must only contain sealed/encrypter secrets
+
+## Preparing the secrets
+
+
+
+
 
 
 ## Deploying the application with Codefresh GitOps
 
 >Note that for simplicity reasons the same Git repository holds both the application source code and its
 manifests. In a real application you should have two Git repositories (one of the source code only and one of the manifests).
+
+
 
 
 
