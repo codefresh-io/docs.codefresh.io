@@ -137,18 +137,52 @@ This way there is a clear separation of concerns.
 
 
 
-You can find the secrets themselves at [https://github.com/codefresh-contrib/gitops-secrets-sample-app/tree/main/unsealed_secrets](https://github.com/codefresh-contrib/gitops-secrets-sample-app/tree/main/unsealed_secrets). There are encoded with base64 so they are not safe to commit in Git.
+You can find the secrets themselves at [https://github.com/codefresh-contrib/gitops-secrets-sample-app/tree/main/unsealed_secrets](https://github.com/codefresh-contrib/gitops-secrets-sample-app/tree/main/unsealed_secrets). There are encoded with base64 so they are **NOT** safe to commit in Git.
 
->Note that for demonstration reasons the Git repository contains raw secrets so that you can encrypt them yourself. In a production application the Git repository must only contain sealed/encrypter secrets
+>Note that for demonstration reasons the Git repository contains raw secrets so that you can encrypt them yourself. In a production application the Git repository must only contain sealed/encrypted secrets
 
 ## Preparing the secrets
 
+The critical point of this application is to encrypt all the secrets and place them in Git.
+By default, the sealed secrets controller will encrypt a secret according to a specific namespace (this behavior is configurable) so you need to decide in advance what namespace wil host the application.
 
+Then encrypt all secrets as below:
 
+```
+kubectl create ns git-secrets
+cd sealed_secrets
+kubeseal -n git-secrets < ../unsealed_secrets/db-creds.yml > db-creds.json
+kubeseal -n git-secrets < ../unsealed_secrets/key-private.yml > key-private.json
+kubeseal -n git-secrets  < ../unsealed_secrets/key-public.yml > key-public.json
+kubeseal -n git-secrets < ../unsealed_secrets/paypal-cert.yml > paypal-cert.json
+kubectl apply -f . -n git-secrets
+```
 
+You now have encrypted your plain secrets. These files are safe to commit to Git.
+You can see that they have been converted automatically to plain secrets with the command
+
+```
+kubectl get secrets -n git-secrets
+```
+
+## Deploying manually the application
+
+Note that the application requires all secrets to be present:
+
+```
+cd ../manifests
+kubectl apply -f . -n git-secrets
+```
 
 
 ## Deploying the application with Codefresh GitOps
+
+Of course the big advantage of having everything committed into Git, is the ability to adopt GitOps
+for the whole application (including secrets).
+
+This means that you can simply [point Codefresh GitOps to your repository]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) and have the application
+automatically deploy in the cluster.
+
 
 >Note that for simplicity reasons the same Git repository holds both the application source code and its
 manifests. In a real application you should have two Git repositories (one of the source code only and one of the manifests).
