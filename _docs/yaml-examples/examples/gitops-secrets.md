@@ -137,7 +137,7 @@ This way there is a clear separation of concerns.
 
 
 
-You can find the secrets themselves at [https://github.com/codefresh-contrib/gitops-secrets-sample-app/tree/main/unsealed_secrets](https://github.com/codefresh-contrib/gitops-secrets-sample-app/tree/main/unsealed_secrets). There are encoded with base64 so they are **NOT** safe to commit in Git.
+You can find the secrets themselves at [https://github.com/codefresh-contrib/gitops-secrets-sample-app/tree/main/never-commit-to-git/unsealed_secrets](https://github.com/codefresh-contrib/gitops-secrets-sample-app/tree/main/never-commit-to-git/unsealed_secrets). There are encoded with base64 so they are **NOT** safe to commit in Git.
 
 >Note that for demonstration reasons the Git repository contains raw secrets so that you can encrypt them yourself. In a production application the Git repository must only contain sealed/encrypted secrets
 
@@ -150,12 +150,13 @@ Then encrypt all secrets as below:
 
 ```
 kubectl create ns git-secrets
-cd sealed_secrets
-kubeseal -n git-secrets < ../unsealed_secrets/db-creds.yml > db-creds.json
-kubeseal -n git-secrets < ../unsealed_secrets/key-private.yml > key-private.json
-kubeseal -n git-secrets  < ../unsealed_secrets/key-public.yml > key-public.json
-kubeseal -n git-secrets < ../unsealed_secrets/paypal-cert.yml > paypal-cert.json
+cd safe-to-commit/sealed_secrets
+kubeseal -n git-secrets < ../../never-commit-to-git/unsealed_secrets/db-creds.yml > db-creds.json
+kubeseal -n git-secrets < ../../never-commit-to-git/unsealed_secrets/key-private.yml > key-private.json
+kubeseal -n git-secrets  < ../../never-commit-to-git/unsealed_secrets/key-public.yml > key-public.json
+kubeseal -n git-secrets < ../../never-commit-to-git/unsealed_secrets/paypal-cert.yml > paypal-cert.json
 kubectl apply -f . -n git-secrets
+
 ```
 
 You now have encrypted your plain secrets. These files are safe to commit to Git.
@@ -170,9 +171,11 @@ kubectl get secrets -n git-secrets
 Note that the application requires all secrets to be present:
 
 ```
-cd ../manifests
+cd safe-to-commit/manifests
 kubectl apply -f . -n git-secrets
 ```
+
+You can now visit the application url to see how it has access to all the secrets.
 
 
 ## Deploying the application with Codefresh GitOps
@@ -180,21 +183,49 @@ kubectl apply -f . -n git-secrets
 Of course the big advantage of having everything committed into Git, is the ability to adopt GitOps
 for the whole application (including secrets).
 
-This means that you can simply [point Codefresh GitOps to your repository]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) and have the application
+This means that you can simply [point Codefresh GitOps to your repository]({{site.baseurl}}/docs/integrations/argo-cd/#creating-argocd-applications) and have the application
 automatically deploy in the cluster.
+
+{% include image.html 
+lightbox="true" 
+file="/images/examples/sealed-secrets/add-app.png" 
+url="/images/examples/sealed-secrets/add-app.png"
+alt="Creating a GitOps application"
+caption="Creating a GitOps application"
+max-width="50%"
+%}
+
+You can then see the application in the GitOps dashboard:
+
+{% include image.html 
+lightbox="true" 
+file="/images/examples/sealed-secrets/current-state.png" 
+url="/images/examples/sealed-secrets/current-state.png"
+alt="GitOps dashboard"
+caption="GitOps dashboard"
+max-width="90%"
+%}
+
+If you visit its URL you will
+see the loading of secrets:
+
+{% include image.html 
+lightbox="true" 
+file="/images/examples/sealed-secrets/app-secrets.png" 
+url="/images/examples/sealed-secrets/app-secrets.png"
+alt="Application using secrets"
+caption="Application using secrets"
+max-width="90%"
+%}
 
 
 >Note that for simplicity reasons the same Git repository holds both the application source code and its
 manifests. In a real application you should have two Git repositories (one of the source code only and one of the manifests).
 
 
-
-
-
-
 ## What to Read Next
 
-- [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
+- [Codefresh GitOps]({{site.baseurl}}/docs/ci-cd-guides/gitops-deployments/)
 - [Using secrets]({{site.baseurl}}/docs/configure-ci-cd-pipeline/secrets-store/)
 - [Secrets with Mozilla Sops]({{site.baseurl}}/docs/yaml-examples/examples/decryption-with-mozilla-sops/)
 - [Vault Secrets in the Pipeline]({{site.baseurl}}/docs/yaml-examples/examples/vault-secrets-in-the-pipeline/)

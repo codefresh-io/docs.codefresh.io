@@ -13,6 +13,7 @@ toc: true
 ## August 2021
 - Using AWS Service Account for ECR Integration - [documentation]({{site.baseurl}}/docs/integrations/docker-registries/amazon-ec2-container-registry/#setting-up-ecr-integration---service-account)
 - Approval steps now have an extra confirmation - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/)
+- Using Bitnami Sealed Secrets with GitOps - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/gitops-secrets/)
 - App proxy is now available for Bitbucket server - [documentation]({{site.baseurl}}/docs/administration/codefresh-runner/#optional-installation-of-the-app-proxy)
 
 ## July 2021
