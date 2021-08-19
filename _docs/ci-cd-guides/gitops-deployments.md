@@ -94,7 +94,7 @@ Once you connect your application you will see it under in the GitOps applicatio
 
 
 
-## Creating aBbasic CI Pipeline for GitOps
+## Creating a basic CI Pipeline for GitOps
 
 Creating a CI pipeline for GitOps is no different than a [standard pipeline]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/) that [packages your Docker images]({{site.baseurl}}/docs/ci-cd-guides/building-docker-images/), runs [tests]({{site.baseurl}}/docs/testing/unit-tests/), performs [security scans]({{site.baseurl}}/docs/testing/security-scanning/) etc.
 
@@ -189,7 +189,7 @@ You can see the associated metadata in your [Docker image dashboard](https://g.c
 
 Codefresh is using this information to fill the deployment history in the GitOps dashboard.
 
-## Creating a Basic CD Pipeline for GitOps
+## Creating a basic CD Pipeline for GitOps
 
 To create a CD pipeline in Codefresh that is responsible for GitOps deployments you must first disable the auto-sync behavior of ArgoCD. You can disable auto-sync either from the GUI or via the [command line](https://argoproj.github.io/argo-cd/user-guide/auto_sync/):
 
