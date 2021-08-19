@@ -634,11 +634,11 @@ Then in order to proceed with Storage Class installation please choose one of th
     apiVersion: storage.k8s.io/v1
     kind: StorageClass
     metadata:
-      name: venona-ebs
+      name: runner-ebs
     parameters:
       AvailabilityZone: us-west-2c # <----(Please change it to yours)
       volumeBackend: ebs
-    provisioner: codefresh.io/dind-volume-provisioner-venona-codefresh-runtime
+    provisioner: codefresh.io/dind-volume-provisioner-runner-<NAMESPACE> # <---- rename <NAMESPACE> with the runner namespace
 {% endraw %}
 {% endhighlight %}
 
@@ -658,7 +658,7 @@ Choose the runtime you have just added and get its yaml representation:
 codefresh get runtime-environments ivan@acme-ebs.us-west-2.eksctl.io/codefresh-runtime -o yaml > runtime.yaml
 ```
 
-The nodeSelector `failure-domain.beta.kubernetes.io/zone: us-west-2c` (Please change it to yours) should be added to the `dockerDaemonScheduler` block. It should be at the same level as `clusterProvider` or `namespace`. Also the `pvcs` block should be modified to use the Storage Class you created above (`venona-ebs`). Here is the example:
+The nodeSelector `failure-domain.beta.kubernetes.io/zone: us-west-2c` (Please change it to yours) should be added to the `dockerDaemonScheduler` block. It should be at the same level as `clusterProvider` or `namespace`. Also the `pvcs` block should be modified to use the Storage Class you created above (`runner-ebs`). Here is the example:
 
 `runtime.yaml`
 {% highlight yaml %}
@@ -693,7 +693,7 @@ dockerDaemonScheduler:
   pvcs:
     dind:
       volumeSize: 30Gi
-      storageClassName: venona-ebs
+      storageClassName: runner-ebs
       reuseVolumeSelector: 'codefresh-app,io.codefresh.accountName'
       reuseVolumeSortOrder: 'pipeline_id,trigger'
   userAccess: true
@@ -711,7 +711,6 @@ Update your runtime environment with the [patch command](https://codefresh-io.gi
 ```
 codefresh patch runtime-environment ivan@acme-ebs.us-west-2.eksctl.io/codefresh-runtime -f codefresh-runner.yaml
 ```
-
 
 ### Installing to EKS with Autoscaling
 
