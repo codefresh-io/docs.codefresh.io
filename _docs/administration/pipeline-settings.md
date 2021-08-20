@@ -43,6 +43,10 @@ Here you can set the defaults for advanced pipeline behavior. The options are:
 
 * [Keep or discard]({{site.baseurl}}/docs/docs/codefresh-yaml/steps/approval/#keeping-the-shared-volume-after-an-approval) the volume when a pipeline is entering approval state
 * Whether pipelines in approval state [count or not against concurrency]({{site.baseurl}}/docs/docs/codefresh-yaml/steps/approval/#define-concurrency-limits)
+* Define the [Service Account]({{site.baseurl}}/docs/docs/integrations/docker-registries/amazon-ec2-container-registry/#setting-up-ecr-integration---service-account) for Amazon ECR integration.
+* Set the defualt registry where all Public Marketplace Step images are pulled from. Registries listed are from the [Docker Registry]({{site.baseurl}}/docs/docs/integrations/docker-registries/) integration page.
+  * Example: Public Marketplace Step image is defined to use Docker Hub. If you select a quay.io integration, all Public Marketplace Step images will be pulled from quay.io instead of Docker Hub.
+  * Note: This does not affect Freestyle Steps.
 
 Note that the first option affects pipeline resources and/or billing in the case of SaaS pricing. It will also affect users of existing pipelines that depend on this behavior. It is best to enable/disable this option only once at the beginning.
 
