@@ -12,14 +12,14 @@ toc: true
 ---
 Codefresh enables you to integrate with several Docker container registries, including (but not limited to):
 
-  * [Docker Hub](docker-hub)
-  * [Azure Container Registry](azure-docker-registry)
-  * [Google Container Registry](google-container-registry)
-  * [Amazon EC2 Container Registry](amazon-ec2-container-registry)
-  * [Bintray.io/Artifactory](bintray-io)
-  * [Quay.io](quay-io)
-  * [Github Container Registry](github-container-registry)
-
+* [Docker Hub](docker-hub)
+* [Azure Container Registry](azure-docker-registry)
+* [Google Container Registry](google-container-registry)
+* [Google Artifact Registry](google-artifact-registry)
+* [Amazon EC2 Container Registry](amazon-ec2-container-registry)
+* [Bintray.io/Artifactory](bintray-io)
+* [Quay.io](quay-io)
+* [Github Container Registry](github-container-registry)
 
 For a different registry choose to configure using the [Other](other-registries) option.
 

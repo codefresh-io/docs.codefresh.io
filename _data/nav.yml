@@ -406,6 +406,8 @@
           url: "/amazon-ec2-container-registry"
         - title: "Google Container Registry"
           url: "/google-container-registry"
+        - title: "Google Artifact Registry"
+          url: "/google-artifact-registry"
         - title: "JFrog Bintray.io/Artifactory"
           url: "/bintray-io"
         - title: "Quay.io"
@@ -428,7 +430,7 @@
       url: "/jira"       
     - title: Jenkins Integration
       url: "/jenkins-integration"
-      title: Codecov Integration
+    - title: Codecov Integration
       url: "/codecov-integration"                
     - title: Google Cloud builder
       url: "/gcloud-builder"
