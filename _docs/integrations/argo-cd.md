@@ -143,7 +143,7 @@ The options are:
 * path - folder inside the Git repository that should be searched for manifests (if your Git repo has multiple applications). Use `./` if all your manifests are in the root folder.
 * cluster - Kubernetes cluster when deployment will take place
 * namespace - Kubernetes namespace where the application will be deployed to
-* directory recurse - wether to check all folders in the Git repository for manifests in a recursive way.
+* directory recurse - whether to check all folders in the Git repository for manifests in a recursive way.
 
 For a sample application you can use the [https://github.com/codefresh-contrib/gitops-kubernetes-configuration](https://github.com/codefresh-contrib/gitops-kubernetes-configuration) repository (or even fork it on your own GitHub account first).
 
