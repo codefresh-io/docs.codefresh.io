@@ -41,18 +41,7 @@ Adding a cluster in GKE can be done by clicking the **Add cluster** button under
 
 If this is your first time, you'll be prompted to authenticate using your Google credentials, make sure you're doing so with a user that have access to your GKE projects.
 
-Make sure that your cluster has basic authentication enabled. You can change this setting after cluster creation
-by selecting `EDIT` on the top nav-bar within your cluster. This will allow you to edit the `Basic authentication` section under `Security`.
-
-{% include image.html
-  lightbox="true"
-  file="/images/kubernetes/add-cluster/gke-basic-auth.png"
-  url="/images/kubernetes/add-cluster/gke-basic-auth.png"
-  alt="Enabling GKE basic authentication"
-  caption="Enabling GKE basic authentication"
-  max-width="90%"
-    %}
-
+For GKE cluster versions >=1.19 basic authentication is deprecated. You can add the GKE cluster manually by using the custom Kubernetes integration option instead.
 
 {{site.data.callout.callout_info}}
 
