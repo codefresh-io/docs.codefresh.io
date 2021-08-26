@@ -27,7 +27,8 @@ Pipeline execution contexts are restricted to the "[pipelines](https://codefresh
 
 A user can override the environment variable CF_API_KEY with their API Key to access other endpoints. Below is an example of how to do this in a single step.
 
-```yaml
+{% highlight yaml %}
+{% raw %}
 steps:
   this _step_will_ succeed:
     title: "will succeed"
@@ -36,6 +37,7 @@ steps:
     commands:
       - "export CP_API_KEY=${{MY_API_KEY}}" # this will override the default token with my own token
       - "codefresh create team ${{TEAM_NAME}}"
-```
+{% endraw %}
+{% endhighlight %}
 
 You can use the cf_export option for the following steps if needed.
