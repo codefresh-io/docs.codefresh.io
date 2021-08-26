@@ -463,6 +463,8 @@
       url: "/invite-your-team-member"
     - title: User Settings
       url: "/user-settings"
+    - title: Pipeline Execution Context
+      url: "/pipeline-execution-context"
     - title: Pipeline Settings
       url: "/pipeline-settings"
     - title: Single Sign-On

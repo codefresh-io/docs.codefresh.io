@@ -18,6 +18,7 @@ toc: true
 - App proxy is now available for Bitbucket server - [documentation]({{site.baseurl}}/docs/administration/codefresh-runner/#optional-installation-of-the-app-proxy)
 - Public Marketplace Registry - [documentation]({{site.baseurl}}/docs/administration/pipeline-settings/#advanced-pipeline-options)
 - Google Artifact Registry - [documentation]({{site.baseurl}}/docs/integrations/docker-registries/google-artifact-registry)
+- Pipeline Execution Context - [documentation]({{site.baseurl}}/docs/administration/pipeline-execution-context/)
 
 ## July 2021
 
