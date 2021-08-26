@@ -35,7 +35,7 @@ steps:
     type: "freestyle" # Run any command
     image: "quay.io/codefresh/cli"
     commands:
-      - "export CP_API_KEY=${{MY_API_KEY}}" # this will override the default token with my own token
+      - "export CF_API_KEY=${{MY_API_KEY}}" # this will override the default token with my own token
       - "codefresh create team ${{TEAM_NAME}}"
 {% endraw %}
 {% endhighlight %}
