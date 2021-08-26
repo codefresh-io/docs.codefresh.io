@@ -40,4 +40,4 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-You can use the cf_export option for the following steps if needed.
+You can use cf_export instead of export to make CF_API_KEY available for the following steps if needed.
