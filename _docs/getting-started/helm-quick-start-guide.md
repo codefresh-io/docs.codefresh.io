@@ -234,7 +234,7 @@ to store charts like any other public Helm repository. It is also possible to ma
 
 To store a Helm chart, first of all you need to import the shared configuration that defines the integrated Helm Repository, or, you can define the repository URL directly.
 
-Within the pipeline editor click the *Variables* taskbar on the right and click on the vertical elliipsis, select *Add Shared Configuration*. Then, select the shared configuration of the integrated Helm repository and add it.
+Within the pipeline editor click the *Variables* taskbar on the right and click on the vertical ellipsis, select *Add Shared Configuration*. Then, select the shared configuration of the integrated Helm repository and add the variable to your pipeline.
 
  {% include 
 image.html 
