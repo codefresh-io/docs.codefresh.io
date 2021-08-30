@@ -313,7 +313,7 @@ max-width="70%"
 There is even an install button if you want to deploy manually the chart. Codefresh will allow to enter your own values
 in that case and also select your target cluster.
 
-You can also create a single pipeline that [both stores the chart as well as deploys it in a cluster]({{site.baseurl}}/docs/yaml-examples/examples/helm/).
+You can also create a single pipeline that [both stores the chart as well as deploys it in a cluster]({{site.baseurl}}/docs/yaml-examples/examples/helm/). You can learn more about [Helm best practices and Helm pipelines]({{site.baseurl}}/docs/docs/new-helm/helm-best-practices/#helm-concepts) to determine which solution is best.
 
 ## What to read next
 
