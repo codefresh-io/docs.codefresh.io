@@ -13,7 +13,7 @@ Helm is a package manager for Kubernetes. It behaves similar to other package ma
 
 Helm offers several extra features on top of vanilla Kubernetes deployments, some of which are:
 
-* The ability to group multiple Kubernetes manifests together and treat them as a single entity (for deployments, rollbacks, and storage). Groups of Manifests are called [Helm Charts](https://github.com/kubernetes/helm/blob/master/docs/charts.md).
+* The ability to group multiple Kubernetes manifests together and treat them as a single entity (for deployments, rollbacks, and storage). Groups of Manifests are called [Helm Charts](https://helm.sh/docs/topics/charts/).
 * Built-in templating for Kubernetes manifests, putting an end to custom template systems that you might use for replacing things such as the Docker tag inside a manifest.
 * The ability to create Charts of Charts which contain the templates as well as default values. This means
 that you can describe the dependencies of an application in the service level and deploy everything at the same time.
@@ -49,10 +49,12 @@ For simplicity reasons, we will use the [default Docker registry]({{site.baseurl
 It is assumed that:
   - You have already [added your Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/adding-non-gke-kubernetes-cluster/) into Codefresh
   - You have connected at least one [Docker registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) in your Codefresh account
-  - You have already an application that has a Dockerfile and a Helm chart 
+  - You have already an application that has a Dockerfile and a [Helm chart]({{site.baseurl}}/docs/new-helm/using-helm-in-codefresh-pipeline/#helm-setup) 
   - Your cluster has pull access to your default Docker registry. If not read the [previous guide]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/#deploying-a-docker-image-to-kubernetes-manually) or look at the [documentation]({{site.baseurl}}/docs/deploy-to-kubernetes/deploy-to-kubernetes/create-image-pull-secret/)
 
-To verify that your cluster is setup for Helm select the *Helm Releases* item from the left sidebar. You should see the Helm releases in your cluster or an empty screen if you just started.
+If you want to follow along feel free to fork this [repository](https://github.com/codefresh-contrib/python-flask-sample-app) in your Git account and look at the [with-helm](https://github.com/codefresh-contrib/python-flask-sample-app/tree/with-helm) branch.
+
+First, verify that your cluster is setup for Helm by selecting the *Helm Releases* item from the left sidebar. You should see the Helm releases in your cluster or an empty screen if you just started.
 
  {% include 
 image.html 
@@ -63,8 +65,6 @@ alt="Empty Helm cluster"
 caption="Empty Helm cluster (click image to enlarge)" 
 max-width="70%" 
 %}
-
-If you want to follow along feel free to fork this [repository](https://github.com/codefresh-contrib/python-flask-sample-app) in your Git account and look at the [with-helm](https://github.com/codefresh-contrib/python-flask-sample-app/tree/with-helm) branch.
 
 
 ## Deploying a Helm Release to your Kubernetes cluster
@@ -234,8 +234,7 @@ to store charts like any other public Helm repository. It is also possible to ma
 
 To store a Helm chart, first of all you need to import the shared configuration that defines the integrated Helm Repository, or, you can define the repository URL directly.
 
-Click the *Variables* taskbar in the right of the pipeline editor build and select *Import from shared configuration*. Find the details
-of the integrated Helm repository.
+Within the pipeline editor click the *Variables* taskbar on the right and click on the vertical ellipsis, select *Add Shared Configuration*. Then, select the shared configuration of the integrated Helm repository and add the variable to your pipeline.
 
  {% include 
 image.html 
@@ -247,7 +246,7 @@ caption="Import Helm repository configuration (click image to enlarge)"
 max-width="70%" 
 %}
 
-Once that is done you add the following step in your `codefresh.yml` file:
+Once that is done you add or modify the deploy step in your `codefresh.yml` file:
 
 `YAML`
 {% highlight yaml %}
