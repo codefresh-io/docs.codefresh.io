@@ -72,6 +72,8 @@ Alternatively, you can use more advanced condition expressions.
 
 This follows the standard [condition expression  syntax]({{site.baseurl}}/docs/codefresh-yaml/condition-expression-syntax/). In this case, you can choose to execute if ```all``` expression conditions evaluate to ```true```, or to execute if ```any``` expression conditions evaluate to ```true```.
 
+> Note: Use "" around variables with text to avoid errors in processing the conditions. ex: "${{CF_COMMIT_MESSAGE}}"
+
 Here are some examples. Execute if the string ```[skip ci]``` is not part of the main repository commit message AND if the branch is ```master```
 
   `all-conditions.yml`
