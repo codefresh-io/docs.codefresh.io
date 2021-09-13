@@ -139,7 +139,7 @@ The `codefreshplugins/cf-deploy-ecs` step performs the following:
 1. Creates a new revision from the current task definition of the service. If `--image-name` and `--image-tag` are provided, it replaces the image tag.
 1. Runs the `update-service` command with the new task definition revision.
 1. Waits for the deployment to complete. 
-    * Deployment is successfully completed if `runningCount == desiredCount` for PRIMARY deployment - see `aws ecs describe-service`
+    * Deployment is successfully completed if `runningCount == desiredCount` for PRIMARY deployment - see `aws ecs describe-services`
     * The `cfecs-update` command exits with a timeout error if after --timeout (default = 900s) `runningCount` does not equal `desiredCount`
     * The `cfecs-update` exits with an error if --max-failed (default = 2) or more ECS tasks were stopped with error for the task definition that you are deploying.      ECS continuously retries failed tasks.
 
