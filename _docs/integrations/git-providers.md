@@ -133,9 +133,26 @@ In both cases, the user cannot decrypt the token used in Git integration with CL
 
 ## GitHub-App
 
->This is an incubating feature not enabled by default. Please contact us for updates.
+>This is an incubating feature not enabled by default. Please contact support to enable GitHub App.
 
-An alternative way to authenticate with Github is via the App mechanism
+An alternative way to authenticate with Github is via the App mechanism.
+
+### Codefresh Github App
+
+> Note: The Codefresh App only has READ permissions to code, commit statuses, issues, metadata, and pull requests. Also, READ and WRITE to repository hooks. If You need additional permission for your integration, use the Manual Creation steps.
+
+**Step 1** - Visit [https://g.codefresh.io/account-admin/account-conf/integration/git](https://g.codefresh.io/account-admin/account-conf/integration/git) in Codefresh, add a new Git provider, and choose *Codefresh Github App* from the drop-down menu
+
+**Step 2** - Select the text [Github Marketplace](https://github.com/apps/codefresh-githubapp) in the text above the Installation ID field
+
+**Step 3** - Follow the instructions on GitHub to install the application.
+
+**Step 4** - Once done, the fields will be populated with the information automatically.
+
+**Step 5** - Click *Test connection* to verify your integration and apply your changes with the *Save* button.
+
+
+### Manual Creation
 
 **Step 1** - Log in your Github account and visit [https://github.com/settings/apps](https://github.com/settings/apps). Click the *New GitHub App* button.
 
