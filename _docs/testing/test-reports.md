@@ -256,6 +256,8 @@ Here is an example for a custom reporting via [Mocha](https://mochajs.org/). The
 The environment variables are:
  * `BUCKET_NAME` is the name of the bucket that you created in your cloud provider.
  * `CF_STORAGE_INTEGRATION` is the name of the cloud integration as was entered in the Codefresh UI in the cloud storage integration page.
+ * `REPORT_PATH` is the subfolder name in the bucket for each test report.
+   * Data is saved to the bucket in following path: {bucketName}/{pipelineId}/{REPORT_PATH}/{branchName}/{buildId}/
  * `REPORT_DIR` is the name of the folder that will be uploaded.
  * `REPORT_INDEX_FILE` is the name of file that will serve as index file.
 
