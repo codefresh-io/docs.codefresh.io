@@ -1093,47 +1093,73 @@ That's all. Now you can go to UI and try to run a pipeline on RE my-aws-runner/c
 
 ### Injecting AWS arn roles into the cluster
 
-Step 1 - Make sure the OIDC provider  is connected to the cluster
+Step 1 - Make sure the OIDC provider is connected to the cluster
 
 See:
 
- * [https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html](https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html)
- * [https://aws.amazon.com/blogs/opensource/introducing-fine-grained-iam-roles-service-accounts/](https://aws.amazon.com/blogs/opensource/introducing-fine-grained-iam-roles-service-accounts/)
+* [https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html](https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html)
+* [https://aws.amazon.com/blogs/opensource/introducing-fine-grained-iam-roles-service-accounts/](https://aws.amazon.com/blogs/opensource/introducing-fine-grained-iam-roles-service-accounts/)
 
 Step 2 - Create IAM role and policy as explained in [https://docs.aws.amazon.com/eks/latest/userguide/create-service-account-iam-policy-and-role.html](https://docs.aws.amazon.com/eks/latest/userguide/create-service-account-iam-policy-and-role.html)
 
 Here, in addition to the policy explained, you need a Trust Relationship established between this role and the OIDC entity.
 
-{% include image.html
-  lightbox="true"
-  file="/images/administration/runner/edit-trust-relationship.png"
-  url="/images/administration/runner/edit-trust-relationship.png"
-  alt="IAM Role trust establishment with OIDC provider"
-  caption="IAM Role trust establishment with OIDC provider"
-  max-width="90%"
-    %} 
+{% highlight json %}
+{% raw %}
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Federated": "arn:aws:iam::${ACCOUNT_ID}:oidc-provider/${OIDC_PROVIDER}"
+      },
+      "Action": "sts:AssumeRoleWithWebIdentity",
+      "Condition": {
+        "StringEquals": {
+          "${OIDC_PROVIDER}:sub": "system:serviceaccount:${CODEFRESH_NAMESPACE}:codefresh-engine"
+        }
+      }
+    }
+  ]
+}
+{% endraw %}
+{% endhighlight %}
 
-Step 3 - Create a new namespace where the runner will be instlled (e.g.  `codefresh-runtime`) and annotate the default Kubernetes Service Account on the newly created namespace with the proper IAM role 
+Step 3 - Annotate the `codefresh-engine` Kubernetes Service Account in the namespace where the Codefresh Runner is installed with the proper IAM role.
 
-{% include image.html
-  lightbox="true"
-  file="/images/administration/runner/sa-annotation.png"
-  url="/images/administration/runner/sa-annotation.png"
-  alt="Service Account annotation"
-  caption="Service Account annotation"
-  max-width="90%"
-    %}         
+{% highlight bash %}
+{% raw %}
+kubectl annotate -n ${CODEFRESH_NAMESPACE} sa codefresh-engine eks.amazonaws.com/role-arn=${ROLE_ARN}
+{% endraw %}
+{% endhighlight %}
 
-Step 4 - Install the Codefresh runner using the instructions of the previous section
+Once the annotation is added, you should see it when you describe the Service Account.
 
-Step 5 - Using the AWS assumed role identity
+{% highlight bash %}
+{% raw %}
+kubectl describe -n ${CODEFRESH_NAMESPACE} sa codefresh-engine
 
-After the Codefresh runner is installed run a pipeline to test the AWS resource access:
+Name:                codefresh-engine
+Namespace:           codefresh
+Labels:              app=app-proxy
+                     version=1.6.8
+Annotations:         eks.amazonaws.com/role-arn: arn:aws:iam::123456789012:role/Codefresh
+Image pull secrets:  <none>
+Mountable secrets:   codefresh-engine-token-msj8d
+Tokens:              codefresh-engine-token-msj8d
+Events:              <none>
+{% endraw %}
+{% endhighlight %}
+
+Step 4 - Using the AWS assumed role identity
+
+After annotating the Service Account, run a pipeline to test the AWS resource access:
 
 {% highlight yaml %}
 {% raw %}
 RunAwsCli:
-      title : Communication with AWS 
+      title : Communication with AWS
       image : mesosphere/aws-cli
       stage: "build"
       commands :
@@ -1156,7 +1182,7 @@ If you want to deploy the Codefresh runner on a Kubernetes cluster that doesn’
 
 *Step 1* - Follow the installation instructions of the previous section
 
-*Step 2* -  Run `kubectl edit deployment runner -ncodefresh-runtime` and add the proxy variables like this
+*Step 2* -  Run `kubectl edit deployment runner -n codefresh-runtime` and add the proxy variables like this
 
 {% highlight yaml %}
 {% raw %}
