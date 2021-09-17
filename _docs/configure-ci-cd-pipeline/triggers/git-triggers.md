@@ -232,6 +232,40 @@ max-width="60%"
   * *Report notification on pipeline execution* - Decide if [Slack notifications]({{site.baseurl}}/docs/integrations/notifications/slack-integration/) will be sent (as well as status updates back to your Git provider)
 * *Runtime Environment* - choose to use pipeline [settings]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-settings) or override them
 
+## Manually Adding the Trigger to GitHub
+
+When creating a Git Trigger in codefresh, sometimes the Git Integration does not have the permissions to create a webhook on the designated repository. When this happens, you get the following error: `Failed to add Trigger`.
+
+This error means that Codefresh could not create the webhook and verify that it works. With that, Codefresh will mark the Trigger as Unverified. Two additional fields (Endpoint and Secret) will appear under the "Verify Trigger" button when you get this error.
+
+- **Endpoint**: This will be the Webhook URL for the created Trigger
+- **Secret**: Token to add to Github for verification.
+
+### Adding Webhook to Github
+
+1. When you receive the `Failed to add Trigger`.
+2. Log into GitHub
+   - Make this user can access the repository settings and create Webhooks
+3. Go to the repository mentioned in the "REPOSITORY" section from Unverified Trigger.
+4. Go to Settings > Webhooks and click the "Add webhook" button.
+5. Fill in the form
+   - **Payload URL**: The URL from the Endpoint field from the Trigger
+   - **Content type**: application/json
+   - **Secret**: The token in the Secret field from the Trigger
+   - **SSL verification**: Enable SSL verification
+   - **Events**:
+     1. Select let me select individual events
+     2. Match the items selected in the Trigger By field from the Trigger
+   - **Active**: Make sure this is selected
+6. Click "Add webhook" when done.
+7. Click "Done" in the Add Trigger form.
+8. Test your webhook by making an event in the repository that will cause the Trigger to start the build.
+
+> **Note**:
+>
+> - You will be responsible for syncing the Trigger By to the Events sent to us for the webhook. You can select "Send me everything" if you do not want to manually match the Trigger By in the Trigger with the Webhook Events in GitHub.
+> - The Trigger will remain "Unverified" until the integration has the correct permissions to the repository.
+
 ## Accessing directly the webhook content of the trigger
 
 If your Git trigger is coming from Github, you can also access the whole payload of the webhook that was responsible for the trigger.
