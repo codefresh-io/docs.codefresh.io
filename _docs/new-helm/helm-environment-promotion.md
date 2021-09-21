@@ -225,6 +225,14 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
+## Viewing the Promotion Pipeline
+
+When you promote a Helm Release for a Board, you can view the pipeline for that release.
+
+1. Click on Boards under the Helm section on the left-hand side
+2. Select the board you want to view
+3. Select the Builds tab on the top
+4. Here, you can see the Promotion Pipelines / builds for promoting a Release
 
 ## Editing your Helm Boards
 
