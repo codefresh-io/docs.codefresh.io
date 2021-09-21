@@ -211,7 +211,6 @@ To create a CD pipeline in Codefresh that is responsible for GitOps deployments 
 
 The big advantage here is that you can construct a full pipeline over the sync process with multiple steps before or after the sync. For example you could run some smoke tests after the deployment takes place. Here is an example pipeline:
 
-
  `codefresh.yml`
 {% highlight yaml %}
 {% raw %}
@@ -296,7 +295,7 @@ This dashboard is the central place for monitoring your application and contains
 1. The Kubernetes services that belong to this application (on the services tab)
 1. What services and replicas were updated with each deployment.
 
-The deployment status is fetched from your ArgoCD integration in a live manner. If at any point, the deployment is not synced with GIT, you will instantly see the out-of-sync status:
+The deployment status is fetched from your ArgoCD integration in a live manner. If, at any point, the deployment is not synced with GIT, you will instantly see the out-of-sync status. You will get the number of resources that are out of sync. When you click the out-of-sync status, you will get a list of all resources in that status.
 
 {% include image.html
   lightbox="true"
@@ -309,7 +308,7 @@ The deployment status is fetched from your ArgoCD integration in a live manner. 
 
 For each Git hash Codefresh associates the respective Pull Request and Jira issue(s) that affected deployment. To achieve this correlation, Codefresh is enriching the Docker image(s) of the service during the CI process.
 
-You can manually create these annotations with the [standard Codefresh annotation support]({{site.baseurl}}/docs/codefresh-yaml/annotations/) or via the built-in pipeline steps that we will see in the next section. 
+You can manually create these annotations with the [standard Codefresh annotation support]({{site.baseurl}}/docs/codefresh-yaml/annotations/) or via the built-in pipeline steps that we will see in the next section.
 
 You can find helpful tips if you hover your mouse on the PR number, the issue, the Git commiter and so on.
 
@@ -583,8 +582,7 @@ The CD pipeline (described in the previous section) will detect that commit and 
 The GitOps dashboard has native support for the [app-of-apps pattern](https://argo-cd.readthedocs.io/en/stable/operator-manual/cluster-bootstrapping/). If you have a number  of applications that are related and you always
 install them as a set in your cluster you can group them in a single Application. The parent application can be defined using [declarative Argo Resources](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/).
 
-As an example, you might find that you always install in your cluster Linkerd, Prometheus and Ambassador. You can group all of them in a single Application 
-and deploy them all at once.
+As an example, you might find that you always install in your cluster Linkerd, Prometheus and Ambassador. You can group all of them in a single Application and deploy them all at once.
 
 You can find an existing example of app-of-apps at [https://github.com/argoproj/argocd-example-apps/tree/master/apps](https://github.com/argoproj/argocd-example-apps/tree/master/apps). It is using [Helm]({{site.baseurl}}/docs/yaml-examples/examples/helm/), but you can use any other Kubernetes templating mechanism such as [Kustomize]({{site.baseurl}}/docs/yaml-examples/examples/deploy-with-kustomize/) (or even plain manifests).
 
