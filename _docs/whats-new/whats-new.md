@@ -9,6 +9,10 @@ toc: true
 
 ## 2021
 
+### September 2021
+
+- Custom plugins can be used in hooks - [documentation]({{site.baseurl}}/docs/codefresh-yaml/hooks/#limitations-of-pipelinestep-hooks)
+
 ### August 2021
 
 - Using AWS Service Account for ECR Integration - [documentation]({{site.baseurl}}/docs/integrations/docker-registries/amazon-ec2-container-registry/#setting-up-ecr-integration---service-account)
