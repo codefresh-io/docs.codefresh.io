@@ -12,6 +12,8 @@ toc: true
 ### September 2021
 
 - Custom plugins can be used in hooks - [documentation]({{site.baseurl}}/docs/codefresh-yaml/hooks/#limitations-of-pipelinestep-hooks)
+- Variables can now be used in hooks - [documentation]({{site.baseurl}}/docs/codefresh-yaml/hooks/#limitations-of-pipelinestep-hooks)
+- New `CF_STEP_NAME` variable - [documentation]({{site.baseurl}}/docs/codefresh-yaml/variables/#system-provided-variables)
 
 ### August 2021
 
