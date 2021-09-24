@@ -1418,11 +1418,12 @@ Notice that builds will be running in a single availability zone, so you must sp
 ###### Runner installation with GCE Disks (Google SA JSON key):
 Using the Wizard:
 ```shell
-codefresh runner init [options] --set-value=Storage.Backend=gcedisk \
-                            --set-value=Storage.AvailabilityZone=us-central1-c \
-                            --kube-node-selector=topology.kubernetes.io/zone=us-central1-c \
-                            --build-node-selector=topology.kubernetes.io/zone=us-central1-c \
-                            --set-file=Storage.GoogleServiceAccount=/path/to/google-service-account.json
+codefresh runner init [options] \
+  --set-value=Storage.Backend=gcedisk \
+  --set-value=Storage.AvailabilityZone=us-central1-c \
+  --kube-node-selector=topology.kubernetes.io/zone=us-central1-c \
+  --build-node-selector=topology.kubernetes.io/zone=us-central1-c \
+  --set-file=Storage.GoogleServiceAccount=/path/to/google-service-account.json
 ```
 Using the values file:
 `values-example.yaml`
