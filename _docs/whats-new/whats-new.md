@@ -14,6 +14,7 @@ toc: true
 - Custom plugins can be used in hooks - [documentation]({{site.baseurl}}/docs/codefresh-yaml/hooks/#limitations-of-pipelinestep-hooks)
 - Variables can now be used in hooks - [documentation]({{site.baseurl}}/docs/codefresh-yaml/hooks/#limitations-of-pipelinestep-hooks)
 - New `CF_STEP_NAME` variable - [documentation]({{site.baseurl}}/docs/codefresh-yaml/variables/#system-provided-variables)
+- Update Runner for GCE Disks - [documentation]({{site.baseurl}}/docs/administration/codefresh-runner/#docker-cache-support-for-gke)
 
 ### August 2021
 

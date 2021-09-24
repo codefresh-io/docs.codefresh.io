@@ -1414,16 +1414,18 @@ There are 3 options to provide cloud credentials on GCE:
 
 Notice that builds will be running in a single availability zone, so you must specify AvailabilityZone parameters.
 
-Install Runner using GCE Disks:
 
+###### Runner installation with GCE Disks (Google SA JSON key):
+Using the Wizard:
+```shell
+codefresh runner init [options] \
+  --set-value=Storage.Backend=gcedisk \
+  --set-value=Storage.AvailabilityZone=us-central1-c \
+  --kube-node-selector=topology.kubernetes.io/zone=us-central1-c \
+  --build-node-selector=topology.kubernetes.io/zone=us-central1-c \
+  --set-file=Storage.GoogleServiceAccount=/path/to/google-service-account.json
 ```
-codefresh runner init [options] --set-value=Storage.Backend=gcedisk \
-                            --set-value=Storage.AvailabilityZone=us-central1-a \
-                            [--kube-node-selector=failure-domain.beta.kubernetes.io/zone=us-central1-a \]
-                            --build-node-selector=failure-domain.beta.kubernetes.io/zone=us-central1-a \
-                            [--set-file=Storage.GoogleServiceAccount=/path/to/google-service-account.json]
-```
-
+Using the values file:
 `values-example.yaml`
 {% highlight yaml %}
 {% raw %}
@@ -1445,14 +1447,54 @@ codefresh runner init [options] --set-value=Storage.Backend=gcedisk \
       "auth_provider_x509_cert_url": "...",
       "client_x509_cert_url": "..."
       }
- NodeSelector: failure-domain.beta.kubernetes.io/zone=us-central1-c
+ NodeSelector: topology.kubernetes.io/zone=us-central1-c
 ... 
  Runtime:
    NodeSelector: # dind and engine pods node-selector (--build-node-selector)
-     failure-domain.beta.kubernetes.io/zone: us-central1-c
+     topology.kubernetes.io/zone: us-central1-c
 ...     
 {% endraw %}
 {% endhighlight %}
+
+```shell
+codefresh runner init [options] --values values-example.yaml
+```
+
+
+###### Runner installation with GCE Disks (Workload Identity with IAM role):
+`values-example.yaml`
+{% highlight yaml %}
+{% raw %}
+...
+### Storage parameter example for GCE disks
+ Storage:
+   Backend: gcedisk
+   AvailabilityZone: us-central1-c
+   VolumeProvisioner:
+     ServiceAccount:
+       Annotations: #annotation to the volume-provisioner service account, using the email address of the Google service account
+         iam.gke.io/gcp-service-account: <GSA_NAME>@<PROJECT_ID>.iam.gserviceaccount.com
+ NodeSelector: topology.kubernetes.io/zone=us-central1-c
+... 
+ Runtime:
+   NodeSelector: # dind and engine pods node-selector (--build-node-selector)
+     topology.kubernetes.io/zone: us-central1-c
+...     
+{% endraw %}
+{% endhighlight %}
+
+Create the binding between Kubernetes service account and Google service account:
+```shell
+export K8S_NAMESPACE=codefresh
+export KSA_NAME=volume-provisioner-runner
+export GSA_NAME=<google_sa_name>
+export PROJECT_ID=<google_project_name>
+
+gcloud iam service-accounts add-iam-policy-binding \
+  --role roles/iam.workloadIdentityUser \
+  --member "serviceAccount:${PROJECT_ID}.svc.id.goog[${K8S_NAMESPACE}/${KSA_NAME}]" \
+  ${GSA_NAME}@${PROJECT_ID}.iam.gserviceaccount.com
+```
 
 To configure existing Runner with GCE Disks follow this article:
 
