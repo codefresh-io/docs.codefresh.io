@@ -167,8 +167,6 @@ Variables that are created by steps can have members. The members depend on the 
 | [**Approval**]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/)               | {::nomarkdown}<ul><li>authEntity.name</li><li>authEntity.type</li></ul>{:/}                                                                 |
 
 
-* To access members that have a non-standard (i.e., only alphanumeric and _ characters) names, use the Member() function.
-
 
 ## GitHub Release Variables
 
