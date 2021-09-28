@@ -11,5 +11,5 @@ group :development, :test do
   gem 'jekyll-feed', '~> 0.11.0'
   gem 'jekyll-github-metadata', '~> 2.9.4'
   gem 'bootstrap', '~> 4.1.3'
-  gem 'jemoji'
+  gem 'jemoji', '>= 0.10.1'
 end
