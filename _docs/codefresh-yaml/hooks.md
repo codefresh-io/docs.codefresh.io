@@ -7,14 +7,21 @@ toc: true
 
 Pipeline hooks allow you to run specific actions at the end and the beginning of the pipeline as well as before/after a step.
 
-## Pipeline hooks
+Hooks can be a [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) as you need to define:
 
-Codefresh allows you to run a specific step before each pipeline as well as after it has finished. Each hook is similar to a [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) as you need to define:
-
-1. A Docker image that will be used to run specific commands
+1. A Docker image that will be used to run specific commands.
 1. One or more commands to run within the context of that Docker image.
 
 For simple commands we suggest you use a small image such as `alpine`, but any Docker image can be used in hooks.
+
+Also, Hooks can use [steps/plugins](https://steps.codefresh.io) and need to define:
+
+1. The type field for the step/plugin.
+1. The arguments needed for the step/plugin.
+
+## Pipeline hooks
+
+Codefresh allows you to run a specific step before each pipeline as well as after it has finished.
 
 ### Running a step at the end of the pipeline
 
