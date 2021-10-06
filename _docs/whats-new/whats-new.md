@@ -9,6 +9,10 @@ toc: true
 
 ## 2021
 
+### October 2021
+
+- Monorepo triggers for Azure DevOps repositories - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/#monorepo-support-modified-files)
+
 ### September 2021
 
 - Custom plugins can be used in hooks - [documentation]({{site.baseurl}}/docs/codefresh-yaml/hooks/#limitations-of-pipelinestep-hooks)
