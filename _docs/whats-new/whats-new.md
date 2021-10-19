@@ -13,6 +13,7 @@ toc: true
 
 - Monorepo triggers for Azure DevOps repositories - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/#monorepo-support-modified-files)
 - ABAC for Git Contexts - [documentation]({{site.baseurl}}/docs/integrations/git-providers/#abac-for-git-contexts)
+- Hybrid Runner Debug Timeout Duration - [documentation]({{site.baseurl}}/docs/administration/codefresh-runner/#debug-timeout-duration)
 
 ### September 2021
 
