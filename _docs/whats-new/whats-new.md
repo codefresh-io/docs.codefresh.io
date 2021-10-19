@@ -12,6 +12,7 @@ toc: true
 ### October 2021
 
 - Monorepo triggers for Azure DevOps repositories - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/#monorepo-support-modified-files)
+- ABAC for Git Contexts - [documentation]({{site.baseurl}}/docs/integrations/git-providers/#abac-for-git-contexts)
 
 ### September 2021
 
