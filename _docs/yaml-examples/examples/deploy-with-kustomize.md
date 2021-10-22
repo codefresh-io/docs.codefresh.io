@@ -96,7 +96,7 @@ caption="Codefresh UI Pipeline View"
 max-width="100%" 
 %}
 
-You should be able to copy and paste this YAML in the in-line editor of the Codefresh UI.  It will automatically clone the project for you.
+You should be able to copy and paste this YAML in the in-line pipeline editor of the Codefresh UI. However, make sure to replace the context with your own that you integrated with Codefresh. It will automatically clone the project for you and deploy.
 
 `staging-codefresh.yml`
 {% highlight yaml %}
@@ -157,7 +157,7 @@ caption="Codefresh UI Pipeline View"
 max-width="100%" 
 %}
 
-You should be able to copy and paste this YAML in the in-line editor of the Codefresh UI.  It will automatically clone the project for you.
+You should be able to copy and paste this YAML in the in-line editor of the Codefresh UI and remember to replace the context again with your own. Click Save and Run and it will automatically clone the project for you.
 
 `prod-codefresh.yml`
 {% highlight yaml %}
