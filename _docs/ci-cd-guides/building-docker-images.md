@@ -187,7 +187,7 @@ An alternative way to create Docker images is to just package an existing artifa
 
 >Notice that even though this is a very popular way to create Dockerfiles, and Codefresh supports it, we do **NOT** recommend to write Dockerfiles like this. Please learn about Docker multi-stage builds if you are not familiar with them.
 
-You can see this pattern in all kinds of Dockeriles that assume the application is already there (or that dependencies are already downloaded). Here is a [Dockerfile that packages an existing JAR]({{site.baseurl}}/docs/learn-by-example/java/spring-boot-2/#spring-boot-2-and-docker-package-only) file.
+You can see this pattern in all kinds of Dockerfiles that assume the application is already there (or that dependencies are already downloaded). Here is a [Dockerfile that packages an existing JAR]({{site.baseurl}}/docs/learn-by-example/java/spring-boot-2/#spring-boot-2-and-docker-package-only) file.
 
  `Dockerfile`
 {% highlight docker %}
