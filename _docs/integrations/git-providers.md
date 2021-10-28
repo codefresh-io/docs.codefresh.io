@@ -160,7 +160,14 @@ An alternative way to authenticate with Github is via the App mechanism.
 1. Give an arbitrary name to your app (e.g. codefresh-integration)
 1. Fill *Homepage URL* with `http://www.codefresh.io`
 1. Uncheck the *Active* checkbox under the Webhook section
-1. In the *Repository permissions* section give *Read/Write* access to *Contents*, *Webhooks* and *Issues*
+1. In the *Repository permissions* section give the minimum of
+   * **Contents** - read
+   * **Issues** - read
+   * **Metadata** - read
+   * **Pull requests** - read
+   * **Webhooks** - read, write
+   * **Commit statuses** - read, write
+   * **Email addresses** - read 
 1. Click the *Create GitHub app* button.
 
 **Step 3** - In the next screen
