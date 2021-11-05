@@ -18,7 +18,7 @@ Make sure that your user in Azure has the *Application Administrator* or *Global
 We strongly suggest that the Azure user who creates the integration is part of *Application Administrator* or *Global Administrator* roles.
 
 
-## Creating an application registration
+## Creating an Application Registration
 
 To setup Azure Active Directory for SSO, you should first create a new application in Azure AD.
 Login to *Azure Portal* and choose *Azure Active Directory* from the sidebar.
@@ -60,7 +60,7 @@ Click the *Register* button to apply your changes. The application registration 
 
 
 
-## Configure the permissions
+## Configure the Permissions
 
 Once the application has been created, you will have to configure the permissions. Click on the name of the application to open the *Settings* section.
 
@@ -98,30 +98,28 @@ caption="Azure Active Directory Graph entry"
 max-width="70%"
 %}
 
-Click *Delegated* permissions. From the list of permissions choose:
+Click *Application* permissions. From the list of permissions choose:
 
 * `Directory.Read.All`
 * `Group.Read.All`
-* `Member.Read.Hidden`
-* `Policy.Read.All`
-* `User.Read`
 * `User.Read.All`
-* `User.ReadBasic.All`
+
+>Note: User.Read for the type of delegated is required. This permission is usually added by default. 
 
 Finally click the *Apply Permissions* button.
 
 {% include image.html 
 lightbox="true" 
-file="/images/administration/sso/azure/8-Enabled-permissions.png" 
-url="/images/administration/sso/azure/8-Enabled-permissions.png"
-alt="Microsoft Graph API permissions"
-caption="Microsoft Graph API permissions"
+file="/images/administration/sso/azure/ApplicationPermissions.png" 
+url="/images/administration/sso/azure/ApplicationPermissions.png"
+alt="API Permissions"
+caption="API Permissions"
 max-width="70%"
 %}
 
  Afterwards please click on the *Grant admin consent* button from the bar above.
 
-## Create Client secret
+## Create Client Secret
 
 Next select *Certificates & secrets* from the left sidebar:
 
@@ -162,16 +160,16 @@ You need to enter the following:
 * *client id* - shown as Application (client) ID in Azure (see below)
 * *client secret* - the key value as created in the previous section
 * *tenant* - `<Your Microsoft Azure AD Domain>.onmicrosoft.com`
-* *Object ID* - your Azure Object ID (see below)
+* *Object ID* - your Azure Service Principal Object ID (from Enterprise Application configuration, see below)
 
 Those fields can be seen in the overview page of your application registration:
 
 {% include image.html 
 lightbox="true" 
-file="/images/administration/sso/azure/4-created-app.png" 
-url="/images/administration/sso/azure/4-created-app.png"
-alt="Azure App Registration created"
-caption="Azure App Registration created"
+file="/images/administration/sso/azure/ObjectId.png" 
+url="/images/administration/sso/azure/ObjectId.png"
+alt="Overview"
+caption="Overview"
 max-width="70%"
 %}
 

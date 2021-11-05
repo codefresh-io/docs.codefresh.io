@@ -7,14 +7,52 @@ redirect_from:
 toc: true
 ---
 
-## Upcoming Changes:
+## 2021
+
+### October 2021
+
+- Monorepo triggers for Azure DevOps repositories - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/#monorepo-support-modified-files)
+- ABAC for Git Contexts - [documentation]({{site.baseurl}}/docs/integrations/git-providers/#abac-for-git-contexts)
+- Hybrid Runner Debug Timeout Duration - [documentation]({{site.baseurl}}/docs/administration/codefresh-runner/#debug-timeout-duration)
+
+### September 2021
+
+- Custom plugins can be used in hooks - [documentation]({{site.baseurl}}/docs/codefresh-yaml/hooks/#limitations-of-pipelinestep-hooks)
+- Variables can now be used in hooks - [documentation]({{site.baseurl}}/docs/codefresh-yaml/hooks/#limitations-of-pipelinestep-hooks)
+- New `CF_STEP_NAME` variable - [documentation]({{site.baseurl}}/docs/codefresh-yaml/variables/#system-provided-variables)
+- Update Runner for GCE Disks - [documentation]({{site.baseurl}}/docs/administration/codefresh-runner/#docker-cache-support-for-gke)
+
+### August 2021
+
+- Using AWS Service Account for ECR Integration - [documentation]({{site.baseurl}}/docs/integrations/docker-registries/amazon-ec2-container-registry/#setting-up-ecr-integration---service-account)
+- Approval steps now have an extra confirmation - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/)
+- Using Bitnami Sealed Secrets with GitOps - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/gitops-secrets/)
+- App proxy is now available for Bitbucket server - [documentation]({{site.baseurl}}/docs/administration/codefresh-runner/#optional-installation-of-the-app-proxy)
+- Public Marketplace Registry - [documentation]({{site.baseurl}}/docs/administration/pipeline-settings/#advanced-pipeline-options)
+- Google Artifact Registry - [documentation]({{site.baseurl}}/docs/integrations/docker-registries/google-artifact-registry)
+- Pipeline Execution Context - [documentation]({{site.baseurl}}/docs/administration/pipeline-execution-context/)
+- Fallback Registry for Docker Integrations - [documentation]({{site.baseurl}}/docs/integrations/docker-registries/#fallback-registry)
+
+### July 2021
 
 - New platform IP addresses - [documentation]({{site.baseurl}}/docs/administration/platform-ip-addresses/)
 
-## Recent Codefresh Updates:
+### June 2021
+
+- Pending Approval Timeout - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/#fields)
+- OneLogin SAML Setup - [documentation]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-saml2/#onelogin-saml-setup)
+
+### May 2021
+
+- Installing Codefresh Runner with Helm - [documentation]({{site.baseurl}}/docs/administration/codefresh-runner/#installing-codefresh-runner-with-helm)
+- Codecov Integration - [documentation]({{site.baseurl}}/docs/integrations/codecov-integration/)
+- Dynamic preview environments - [documentation]({{site.baseurl}}/docs/ci-cd-guides/preview-environments/)
+- Tag policy for transforming a Docker tag in lowercase or not  - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/build/#fields)
+- Support for App-of-app patterns in the GitOps dashboard- [documentation]({{site.baseurl}}/docs/ci-cd-guides/gitops-deployments/#using-the-app-of-apps-pattern)
 
 ### April 2021
 
+- Jira integration with Atlassian Open DevOps- [documentation]({{site.baseurl}}/docs/integrations/jira/)
 - Canary deployments with Argo Rollouts - [documentation]({{site.baseurl}}/docs/ci-cd-guides/progressive-delivery/#canary-deployment-with-metrics-evaluation)
 - Support SLAs - [documentation]({{site.baseurl}}/docs/terms-and-privacy-policy/sla/#support-specific-information)
 
@@ -28,7 +66,6 @@ toc: true
 
 ### February 2021
 
-
 - Concurrency Behavior for Pending Builds - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/#define-concurrency-limits)
 - Jira Integration - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/sending-the-notification-to-jira/)
 - SLA Details - [documentation]({{site.baseurl}}/docs/terms-and-privacy-policy/sla/)
@@ -38,9 +75,6 @@ toc: true
 - Okta Auto-Sync of Teams - [documentation]({{site.baseurl}}/docs/administration/single-sign-on/sso-okta/#syncing-of-teams-after-initial-sso-setup)
 - Global Pipeline Settings Screen - [documentation]({{site.baseurl}}/docs/administration/pipeline-settings)
 - Helm 2 Support - [documentation]({{site.baseurl}}/docs/new-helm/helm2-support)
-
-
-
 
 ### January 2021
 
@@ -59,6 +93,8 @@ toc: true
 - Codefresh runner now has a dry run option - [documentation]({{site.baseurl}}/docs/administration/codefresh-runner/#inspecting-the-manifests-before-they-are-installed)
 - Connect to Azure Kubernetes with a service principal - [documentation]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/#adding-an-aks-cluster-with-a-service-principal)
 - Connect to an Azure Helm repository with a service principal - [documentation]({{site.baseurl}}/docs/integrations/helm/#private-helm-repository---azure-with-service-principal)
+
+## 2020
 
 ### December 2020
 
@@ -104,7 +140,6 @@ toc: true
 - Concurrency limits per branch - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#policies)
 - Custom pipeline variables for Helm promotion - [documentation]({{site.baseurl}}/docs/new-helm/helm-environment-promotion/#promoting-helm-releases-with-the-gui)
 
-
 ### July 2020
 
 - Building apps guide - [documentation]({{site.baseurl}}/docs/ci-cd-guides/packaging-compilation/)
@@ -145,8 +180,7 @@ toc: true
 - Alternative debugging console - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/debugging-pipelines/#using-the-alternative-debug-window)
 - User variable priority rules - [documentation]({{site.baseurl}}/docs/codefresh-yaml/variables/#user-provided-variables)
 - Secret Storage - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/secrets-store/)
-- Run multiple kinds of unit tests using fan-in-fan-out parallel pipeline - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/fan-in-fan-out) 
-
+- Run multiple kinds of unit tests using fan-in-fan-out parallel pipeline - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/fan-in-fan-out)
 
 ### March 2020
 
@@ -172,17 +206,17 @@ toc: true
 - Use GitHub Actions as Codefresh pipeline steps - [documentation]({{site.baseurl}}/docs/integrations/github-actions/)
 - Publish a JAR to Artifactory/Nexus - [documentation]({{site.baseurl}}/docs/learn-by-example/java/publish-jar/)
 - New [dashboard](https://g.codefresh.io/builds) for builds - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/monitoring-pipelines/)
-  *  The git-event name is now included
-  *  Event-specific additional information is now included
-  *  The trigger name is now included
-  *  Filtering by trigger-type (git, cron, registry, helm, manual) is now available
-  *  Filtering by git-event type is now available
-  *  Cleanup and removal of unneeded information
+  - The git-event name is now included
+  - Event-specific additional information is now included
+  - The trigger name is now included
+  - Filtering by trigger-type (git, cron, registry, helm, manual) is now available
+  - Filtering by git-event type is now available
+  - Cleanup and removal of unneeded information
 - Payment screen improvements
-  * Clearer error messages for failed payments
-  * Clearer messages for confirmation/error dialogs
-  * New in-app notifications for plan upgrades and downgrades
-  * New in-app notifications for subscription payment issues 
+  - Clearer error messages for failed payments
+  - Clearer messages for confirmation/error dialogs
+  - New in-app notifications for plan upgrades and downgrades
+  - New in-app notifications for subscription payment issues
 - New UX flow for the signup process
 - Updated OneLogin SSO support - [documentation]({{site.baseurl}}/docs/enterprise/single-sign-on/sso-onelogin/)
 - Published Codefresh Platform IPs - [documentation]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/#prerequisites)
@@ -197,6 +231,8 @@ toc: true
 - Using Dockerhub personal access tokens - [documentation]({{site.baseurl}}/docs/docker-registries/external-docker-registries/docker-hub/)
 - Updated Azure SSO instructions - [documentation]({{site.baseurl}}/docs/enterprise/single-sign-on/sso-azure/)
 - Codefresh Runner requirements - [documentation]({{site.baseurl}}/docs/enterprise/codefresh-runner/#system-requirements)
+
+## 2019
 
 ### December 2019
 
@@ -222,7 +258,6 @@ toc: true
 - Deployments with Packer - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/packer-gcloud/)
 - Calling child pipelines - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/call-child-pipelines/)
 
-
 ### September 2019
 
 - Unit testing guide - [documentation]({{site.baseurl}}/docs/testing/unit-tests)
@@ -244,7 +279,6 @@ toc: true
 - Migrate from Jenkins to Codefresh - [documentation]({{site.baseurl}}/docs/integrations/jenkins-integration/#migrating-from-jenkins-to-codefresh)
 - macOS and iOS builds closed Alpha - [documentation]({{site.baseurl}}/docs/incubation/osx-ios-builds/)
 
-
 ### July 2019
 
 - New custom step creation process - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/#creating-your-own-step)
@@ -253,9 +287,6 @@ toc: true
 - Concurrency limits on pipelines - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-settings)
 - Termination settings on pipelines - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-settings)
 - API keys now have different access scopes - [documentation]({{site.baseurl}}/docs/integrations/codefresh-api/#access-scopes)
-
-
-
 
 ### June 2019
 
@@ -266,7 +297,6 @@ toc: true
 - Building Android Apps - [documentation]({{site.baseurl}}/docs/learn-by-example/mobile/android/)
 - Deployment to Nomad clusters - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/nomad/)
 - Editing of annotations - [documentation]({{site.baseurl}}/docs/codefresh-yaml/annotations/#viewingediting-annotations)
-
 
 ### May 2019
 
@@ -298,7 +328,6 @@ toc: true
 - OAuth2 Connections for supported git providers - [documentation]({{site.baseurl}}/docs/integrations/git-providers/#adding-more-git-providers-to-your-codefresh-account)
 - Pipeline ABAC (Enterprise) - [documentation]({{site.baseurl}}/docs/enterprise/access-control/#marking-pipelines-with-policy-attributes)
 
-
 ### February 2019
 
 - Access Control (Enterprise) - [documentation]({{site.baseurl}}/docs/enterprise/access-control/)
@@ -318,6 +347,7 @@ toc: true
 - Helm Environment Promotion boards (Enterprise) - [documentation]({{site.baseurl}}/docs/new-helm/helm-environment-promotion)
 - Pipeline resource metrics - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/monitoring-pipelines/#viewing-pipeline-metrics)
 
+## 2018
 
 ### December 2018
 
@@ -330,7 +360,6 @@ toc: true
 - Multiple test reports from a single pipeline - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/test-reports/#creating-multiple-reports)
 - Historical data in Allure test reports are now available
 - Inline YAML editor can now expand/collapse code blocks - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#writing-codefresh-yml-in-the-gui)
-
 
 ### November 2018
 
@@ -373,14 +402,13 @@ toc: true
 - Added new variable `CF_BUILD_INITIATOR` for the person that started a build
 - Improved retrying of push/pull actions after failures with timeouts and general connectivity issues.
 
-
 ### June 2018
 
 - Ability to trigger builds only if a specific folder/file on a repository changes
 - Ability to use the GUI for filtering specific Pull request events for triggers
 - Ability to select if a manual trigger of a pipeline will change the git status of a pull request or not
 - Ability to define a trigger based on the target branch of a pull request
-- Ability to filter builds by the person that was the respective committer 
+- Ability to filter builds by the person that was the respective committer
 
 ### May 2018
 
@@ -392,16 +420,14 @@ toc: true
 - Enterprise account management support
 - Added Social Onboarding widget
 
-
 ### March 2018
+
 - Ability to specify `entry_point` in freestyle steps
 - Ability to specify `CMD` commands to work with images with entry points
 - Ability to skip git clone step in pipelines
 - Ability to specify Docker build option `target` for multi-stage builds
 - Support for building containers for ARM processors (contact us)
 - Pipeline initialization optimizations
-
-
 
 ### February 2018
 
@@ -414,7 +440,8 @@ toc: true
 - Can now provide context (shared configuration) to pipelines from the CLI.
 
 ### January 2018
-- Chart install: 
+
+- Chart install:
   - can now specify release name (useful for installing same chart multiple times)
   - can now add values file that is reusable for next installs
   - can now override individual values
@@ -430,35 +457,23 @@ toc: true
   - Pre-release of our brand new CLI at [https://github.com/codefresh-io/cli](https://github.com/codefresh-io/cli)
   - Using our new cli, you can now execute many pipelines in parallel with different configurations for each.
 
-### December 2017
- - Manage your configurations in a centralized place and inject them into pipelines as needed. supports secrets as well.
- - Real time dashboard of the Helm releases in your connected Kubernetes cluster. Supports rollback to a previous release.
- - Connect to helm charts repositories, and install them on your connected Kubernetes cluster.
+## 2017
 
+### December 2017
+
+- Manage your configurations in a centralized place and inject them into pipelines as needed. supports secrets as well.
+- Real time dashboard of the Helm releases in your connected Kubernetes cluster. Supports rollback to a previous release.
+- Connect to helm charts repositories, and install them on your connected Kubernetes cluster.
 
 ### October 2017
- - Apply changes to your pipeline and test it without committing to the source code for each change.
- -  Share your Codefresh YAML across pipelines. If you are using the same YAML file for multiple pipelines, use this option to update it in single place when needed to be applied for all pipelines.
- - Enrich your images with custom metadata which perfectly fits your flow and image management process.
- - Easily manage your cluster configuration using Codefresh by creating, importing and sharing Config maps between your Kubernetes namespaces and clusters.
- - If you want to trigger Codefresh pipelines from other tool, use our pipeline hook to build, test and deploy from any command line / script / 3rd party.
- - Test your cluster Credentials and connectivity in one click.
- - We added integration with main self-hosted GIT providers to our PRO plan. You can now use Codefresh with your repositories from:
-   - GitHub enterprise
-   - Bitbucket Enterprise
-   - GitLab enterprise
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- Apply changes to your pipeline and test it without committing to the source code for each change.
+- Share your Codefresh YAML across pipelines. If you are using the same YAML file for multiple pipelines, use this option to update it in single place when needed to be applied for all pipelines.
+- Enrich your images with custom metadata which perfectly fits your flow and image management process.
+- Easily manage your cluster configuration using Codefresh by creating, importing and sharing Config maps between your Kubernetes namespaces and clusters.
+- If you want to trigger Codefresh pipelines from other tool, use our pipeline hook to build, test and deploy from any command line / script / 3rd party.
+- Test your cluster Credentials and connectivity in one click.
+- We added integration with main self-hosted GIT providers to our PRO plan. You can now use Codefresh with your repositories from:
+  - GitHub enterprise
+  - Bitbucket Enterprise
+  - GitLab enterprise

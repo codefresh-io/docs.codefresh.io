@@ -1,5 +1,5 @@
 ---
-title: "ArgoCD integration"
+title: "ArgoCD Integration"
 description: "How to connect Codefresh to your ArgoCD endpoint"
 group: integrations
 toc: true
@@ -52,22 +52,40 @@ Answer the questions asked by the wizard. These include:
  * If you want to automatically import your ArgoCD applications to Codefresh
 
 ```
-kostis@cloudshell$ codefresh install gitops argocd-agent
+codefresh install gitops argocd-agent
+This installer will guide you through the Codefresh ArgoCD installation agent to integrate your ArgoCD with Codefresh
+? Select Kubernetes context mydemoAkscluster
 ? Codefresh integration name argocd
-? Argo host, example: https://example.com https://36.87.134.111/
-? Do you want use argocd auth token instead username/password auth? No
+? Choose an authentication method Username and password
 ? Argo username admin
-? Argo password ******************************
-Integration updated
-? Select Kubernetes context gke_codefresh-support_us-central1-c_kostis-argo
-? Select Kubernetes namespace argocd
-? Select argocd sync behavior please Do not import anything from Argo to Codefresh
-argocd-agent "ClusterRole" already exists
-argocd-agent "ClusterRoleBinding" already exists
-argocd-agent "Deployment" already exists
-argocd-agent "ServiceAccount" already exists
+? Argo password *****************************
+
+Testing requirements
+--------------------
+√ checking argocd credentials...
+√ checking argocd projects accessibility...
+√ checking argocd applications accessibility...
+--------------------
+
+? Select Git/GithubApp context (Please create a dedicated context for the agent to  avoid hitting the Github rate limits or use github app integration) github-1
+? Select argocd sync behavior please Import all existing Argo applications to Codefresh
+? Enable auto-sync of applications, this will import all existing applications and update Codefresh in the future Yes
+
+Installation options summary:
+    1. Kubernetes Context:
+    2. Kubernetes Namespace: argocd
+    3. Git Integration: github-1
+    4. Codefresh Host: https://g.codefresh.io
+    5. ArgoCD Host: https://52.154.209.119
+    6. ArgoCD Username: admin
+    7. ArgoCD Password: ******
+    8. Enable auto-sync of applications: Yes
+    9. HTTP proxy: none
+    10. HTTPS proxy: none
+
 Argo agent installation finished successfully to namespace "argocd"
-kostis@cloudshell$
+Gitops view: "https://g.codefresh.io/gitops"
+Documentation: "https://codefresh.io/docs/docs/ci-cd-guides/gitops-deployments/"
 ```
 
 Once the installation is complete, you should see the agent health status:
@@ -125,7 +143,7 @@ The options are:
 * path - folder inside the Git repository that should be searched for manifests (if your Git repo has multiple applications). Use `./` if all your manifests are in the root folder.
 * cluster - Kubernetes cluster when deployment will take place
 * namespace - Kubernetes namespace where the application will be deployed to
-* directory recurse - wether to check all folders in the Git repository for manifests in a recursive way.
+* directory recurse - whether to check all folders in the Git repository for manifests in a recursive way.
 
 For a sample application you can use the [https://github.com/codefresh-contrib/gitops-kubernetes-configuration](https://github.com/codefresh-contrib/gitops-kubernetes-configuration) repository (or even fork it on your own GitHub account first).
 
@@ -143,6 +161,17 @@ The end result is a new entry for your ArgoCD application will now appear in the
  %}
 
 To learn about the full GitOps support in Codefresh, see our [GitOps deployment guide]({{site.baseurl}}/docs/ci-cd-guides/gitops-deployments/).
+
+## Uninstall the gitops agent
+
+You can uninstall the gitops agent with :
+
+```
+codefresh uninstall gitops argocd-agent
+```
+
+Note this will only uninstall the Codefresh agent. Your Argo CD installation
+will remain unaffected.
 
 ## What to read next
 

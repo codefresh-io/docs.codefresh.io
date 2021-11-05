@@ -108,6 +108,7 @@ All system provided variables will also be automatically injected to any freesty
 | {% raw %}`${{CF_BUILD_TIMESTAMP}}`{% endraw %}    | The timestamp the build was created. Note: use this variable as string with quotes to tag the image {% raw %}`${{CF_BUILD_TIMESTAMP}}`{% endraw %}                                                                                                                                                                   |
 | {% raw %}`${{CF_BUILD_URL}}`{% endraw %}          | The URL to the build in Codefresh                                                                                                                                                                                                                                                                 |
 | {% raw %}`${{CF_PIPELINE_NAME}}`{% endraw %}      | The full path of the pipeline, i.e. "project/pipeline"                                                                                                                                                                                                                                                                |
+|  {% raw %}`${{CF_STEP_NAME}}`{% endraw %}      | the name of the step, i.e. "MyUnitTests" |
 | {% raw %}`${{CF_URL}}`{% endraw %}          | The URL of Codefresh system                                                                                                                                                                                                                                                                 |
 | {% raw %}`${{CI}}`{% endraw %}          | The value is always `true`                                                                                                                                                                                                                                                                |
 | {% raw %}`${{CF_KUBECONFIG_PATH}}`{% endraw %}    | Path to injected kubeconfig if at least one Kubernetes cluster [is configured]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/). You can easily run [custom kubectl commands]({{site.baseurl}}/docs/deploy-to-kubernetes/custom-kubectl-commands/) since it is automatically setup by Codefresh in all pipelines.                                                                                                                                                                                                                                                                   |
@@ -157,15 +158,14 @@ Variables that are created by steps can have members. The members depend on the 
 {: .table .table-bordered .table-hover}
 | Step Type                                                                                              | Members                                                                                                                                                                        |
 | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| All step types                                                                                         | {::nomarkdown}<ul><li>name</li><li>type</li><li>description</li><li>failFast</li><li>workingDirectory</li><li>environment</li><li>result</li></ul>{:/}                                        |
+| All step types                                                                                         | {::nomarkdown}<ul><li>name</li><li>type</li><li>description</li><li>workingDirectory</li><li>result</li></ul>{:/}                                        |
 | [**Freestyle**]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/)        | -                                                                                                                                                                              |
-| [**Build**]({{site.baseurl}}/docs/codefresh-yaml/steps/build/)             | {::nomarkdown}<ul><li>dockerfile</li><li>imageName</li><li>tag</li><li>buildArguments</li><li>imageId</li></ul>{:/}                                                                            |
-| [**Git-clone**]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)       | {::nomarkdown}<ul><li>revision</li><li>credentials</li><li>repo</li></ul>{:/}                                                                                  |
-| [**Composition**]({{site.baseurl}}/docs/codefresh-yaml/steps/composition/) | {::nomarkdown}<ul><li>compositionCandidates</li><li>composition</li><li>startImmediately</li><li>environmentName</li><li>assets</li><li>compositionVariables</li></ul>{:/}     |
-| [**Push**]({{site.baseurl}}/docs/codefresh-yaml/steps/push/)               | {::nomarkdown}<ul><li>candidate</li><li>tag</li><li>registry</li><li>credentials</li><li>imageId</li></ul>{:/}                                                                 |
+| [**Composition**]({{site.baseurl}}/docs/codefresh-yaml/steps/composition/)        | -                                                                                                                                                                              |
+| [**Build**]({{site.baseurl}}/docs/codefresh-yaml/steps/build/)             | {::nomarkdown}<ul><li>imageName</li><li>imageTagName</li><li>imageId</li></ul>{:/}                                                                            |
+| [**Git-clone**]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)       | {::nomarkdown}<ul><li>revision</li><li>repo</li></ul>{:/}                                                                                  |
+| [**Push**]({{site.baseurl}}/docs/codefresh-yaml/steps/push/)               | {::nomarkdown}<ul><li>registry</li><li>imageId</li><li>imageRepoDigest</li></ul>{:/}                                                                 |
+| [**Approval**]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/)               | {::nomarkdown}<ul><li>authEntity.name</li><li>authEntity.type</li></ul>{:/}                                                                 |
 
-
-* To access members that have a non-standard (i.e., only alphanumeric and _ characters) names, use the Member() function.
 
 
 ## GitHub Release Variables
@@ -194,7 +194,7 @@ When a pull request is closed in GitHub, the following variables are also availa
 | {% raw %}`${{CF_PULL_REQUEST_MERGED}}`{% endraw %}     | true if the pull request was merged to base branch    |
 | {% raw %}`${{CF_PULL_REQUEST_HEAD_BRANCH}}`{% endraw %}      | the head branch of the PR (the branch that we want to merge to master)  |
 | {% raw %}`${{CF_PULL_REQUEST_MERGED_COMMIT_SHA}}`{% endraw %}       | the commit SHA on the base branch after the pull request was merged (in most cases it will be master)   |
-| {% raw %}`${{CF_PRERELEASE_FLAG}}`{% endraw %}  | the commit SHA on the head branch (the branch that we want to push)  |
+| {% raw %}`${{CF_PULL_REQUEST_HEAD_COMMIT_SHA}}`{% endraw %}  | the commit SHA on the head branch (the branch that we want to push)  |
 
 ## User Provided Variables
 
@@ -247,14 +247,23 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-Notice that `cf_export` has the same semantics as the [bash export command](https://www.gnu.org/software/bash/manual/html_node/Environment.html). This means that when you use it you **don't** need any dollar signs for the variable created/assigned.
+Notice that `cf_export` has the same syntax structure as the [bash export command](https://www.gnu.org/software/bash/manual/html_node/Environment.html). This means that when you use it you **don't** need any dollar signs for the variable created/assigned.
 
 ```
 cf_export $MY_VAR # Don't do this
 cf_export MY_VAR # Correct syntax
 ```
 
->There is nothing really magic about `cf_export`. It is a normal script. You can see its contents on your own by entering the command `cat /codefresh/volume/cf_export` on any [Codefresh freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) inside a pipeline. For more information on its limitations see the [troubleshooting page]({{site.baseurl}}/docs/troubleshooting/common-issues/cf-export-limitations/).
+Also notice that `cf_export` works on *subsequent* steps only. If you want to export a variable right away in the present step and all the rest of the steps you need to do the following:
+
+```
+export MY_VAR='example' # Will make MY_VAR available in this step only
+cf_export MY_VAR='example' # Will also make MY_VAR available to all steps after this one
+```
+
+There is nothing really magic about `cf_export`. It is a normal script. You can see its contents on your own by entering the command `cat /codefresh/volume/cf_export` on any [Codefresh freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) inside a pipeline. 
+
+For more information on its limitations see the [troubleshooting page]({{site.baseurl}}/docs/troubleshooting/common-issues/cf-export-limitations/).
 
 
  

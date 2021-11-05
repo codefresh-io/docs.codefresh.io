@@ -4,6 +4,9 @@ description: "How to restrict resources in a company environment"
 group: administration
 redirect_from:
   - /docs/enterprise/access-control/
+  - /docs/enterprise-account-mng/ent-account-mng/
+  - /docs/enterprise/ent-account-mng/
+  - /docs/administration/ent-account-mng/  
 toc: true
 
 ---
@@ -16,7 +19,6 @@ The [second mechanism](#access-to-kubernetes-clusters-and-pipelines) is policy-b
 
 The [third mechanism](#pipeline-definition-restrictions) allows you to restrict the Git repositories used for loading pipeline definitions.
 
-There is also the additional layer of permissions for resources (such as concurrent builds and environments) as explained in the [Enterprise Account Management]({{site.baseurl}}/docs/administration/ent-account-mng/) page. 
 
 ## Users and administrators
 
@@ -48,7 +50,6 @@ People with **User** access level can still use the Codefresh UI for day-to-day 
 *  [SSO Settings]({{site.baseurl}}/docs/administration/single-sign-on/)
 *  [Runtime environment selection]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-settings)
 *  [Slack settings]({{site.baseurl}}/docs/integrations/notifications/slack-integration/)
-*  [Team/Users settings]({{site.baseurl}}/docs/administration/ent-account-mng/)
 *  [Audit logs]({{site.baseurl}}/docs/administration/audit-logs/)
 *  ABAC for Kubernetes clusters
 *  Billing and charging
@@ -265,5 +266,4 @@ For example if you enter `/^((pipeline-definition)$).*/g` in the second field, t
 ## What to read next
 
 * [Codefresh installation options]({{site.baseurl}}/docs/administration/installation-security/)
-* [Account management]({{site.baseurl}}/docs/administration/ent-account-mng/)
 * [Managing your Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/)

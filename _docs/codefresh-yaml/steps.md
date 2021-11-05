@@ -978,6 +978,8 @@ You can still use `cf_export` command inside the plugin as well (as shown in the
 
 As an advanced technique, Codefresh allows you to define a custom step using templating instead of fixed YAML. We support templates inside the `spec:` block of a plugin definition by taking advantage of the [Gomplate](https://github.com/hairyhenderson/gomplate) library that offers additional templating functions on top of vanilla [Go templates](https://golang.org/pkg/text/template/).
 
+> Note: Gomplate Data functions will not work since Codefresh does not pass the Data object to gomplate functions.
+
 As a simple example lets say we want to create a single step that checks out any number of git repositories. Of course you could just copy-paste the git clone step multiple times in a single pipeline. To make things easier we will create a single step that takes an array of git repositories and checks them out on its own:
 
 {% highlight yaml %}
@@ -1149,6 +1151,8 @@ max-width="60%"
 This was a contrived example to demonstrate how you can use templates in the Codefresh plugin specification. Note that using templates in Codefresh steps is an advanced technique and should be used sparingly.
 
 ### Limitations of custom plugins
+
+[Parallel steps]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/) are not supported inside custom steps.
 
 Custom steps are not compatible with [service containers]({{site.baseurl}}/docs/codefresh-yaml/service-containers/). 
 More specifically:

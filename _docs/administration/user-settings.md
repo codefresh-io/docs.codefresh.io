@@ -1,13 +1,13 @@
 ---
-title: "User settings"
-description: "Manage email notifications and API keys"
+title: "User Settings"
+description: "Manage Email Notifications and API Keys"
 group: administration
 toc: true
 ---
 
-To access your individual user settings navigate to [https://g.codefresh.io/user/settings](https://g.codefresh.io/user/settings) or click on *User settings* on the left sidebar.
+To access your individual user settings navigate to [https://g.codefresh.io/user/settings](https://g.codefresh.io/user/settings) or click on *User Settings* on the left sidebar.
 
-## Email notifications for builds 
+## Email Notifications for Builds 
 
 In the part section of the screen you can choose what email notifications you want to be active. 
 The options are:
@@ -29,13 +29,13 @@ max-width="50%"
 The last option is especially useful in big teams, where multiple people commit on the same Git repository.
 
 
-## Weekly updates for build usage
+## Weekly Updates for Build Usage
 
 Codefresh will send you every week a summary of your builds across your pipelines along with other statistical data. This information can be useful if you want to understand your overall project build health and capacity usage.
 
 If you don't want to receive these emails, you can disable them by toggling the checkbox and clicking the *Save* button.
 
-## Enable Access for support personnel
+## Enable Access for Support Personnel
 
 If you have an issue with the Codefresh platform, our support personnel can log into your account and look at running
 builds, inspect your docker images, run pipelines for you etc.
@@ -57,7 +57,7 @@ If you don't enable this checkbox, our support staff have **zero visibility** in
 All actions performed by Codefresh personnel on your account are audited and they will also confirm with you before performing any action with side effects (such as running a pipeline).
 
 
-## Git provider private access
+## Git Provider Private Access
 
 When you connect your [Git provider]({{site.baseurl}}/docs/integrations/git-providers/) during sign-up, you may choose to let Codefresh access only your public Git repositories.
 
@@ -65,7 +65,7 @@ To allow Codefresh to also add [Git triggers]({{site.baseurl}}/docs/configure-ci
 
 Note that options available highly depend on what Git provider you are using with Codefresh.
 
-## API key creation
+## API Key Creation
 
 In this section you can create API keys so that you can access Codefresh features from your scripts or applications outside the UI. To create a new token click the *Generate* button as described in the [API documentation page]({{site.baseurl}}/docs/integrations/codefresh-api/#authentication-instructions) and select the appropriate scopes.
 
@@ -87,6 +87,5 @@ Note that tokens are visible only during creation. You cannot "view" an existing
 ## What to read next
 
 * [Add users]({{site.baseurl}}/docs/administration/invite-your-team-member/)
-* [Account management]({{site.baseurl}}/docs/administration/ent-account-mng/)
 * [Single Sign on]({{site.baseurl}}/docs/administration/single-sign-on/)
 

@@ -119,7 +119,7 @@
   pages:
     - title: "Build your app"
       url: "/packaging-compilation"  
-    - title: "Building Docker images"
+    - title: "Building Docker Images"
       url: "/building-docker-images"
     - title: "Working with Docker registries"
       url: "/working-with-docker-registries"      
@@ -128,8 +128,10 @@
     - title: "Pipelines for Microservices"
       url: "/microservices"
     - title: "Production and Staging deployments"
-      url: "/environment-deployments"      
-    - title: "GitOps deployments"
+      url: "/environment-deployments"   
+    - title: "Preview Environments"
+      url: "/preview-environments"            
+    - title: "GitOps Deployments"
       url: "/gitops-deployments"      
     - title: "Progressive Delivery"
       url: "/progressive-delivery" 
@@ -289,6 +291,8 @@
           url: "/vault-secrets-in-the-pipeline"
         - title: Decryption with Mozilla SOPS
           url: "/decryption-with-mozilla-sops"
+        - title: GitOps secrets
+          url: "/gitops-secrets"          
     - title: "Compositions"
       url: "/examples"
       sub-pages:
@@ -381,7 +385,7 @@
 - title: Integrations
   url: "/integrations"
   pages:
-    - title: Git providers
+    - title: Git Providers
       url: "/git-providers"
     - title: Kubernetes
       url: "/kubernetes"
@@ -402,6 +406,8 @@
           url: "/amazon-ec2-container-registry"
         - title: "Google Container Registry"
           url: "/google-container-registry"
+        - title: "Google Artifact Registry"
+          url: "/google-artifact-registry"
         - title: "JFrog Bintray.io/Artifactory"
           url: "/bintray-io"
         - title: "Quay.io"
@@ -419,9 +425,13 @@
     - title: Helm Integration
       url: "/helm" 
     - title: ArgoCD Integration
-      url: "/argo-cd"            
+      url: "/argo-cd"       
+    - title: Jira Integration
+      url: "/jira"       
     - title: Jenkins Integration
-      url: "/jenkins-integration"                
+      url: "/jenkins-integration"
+    - title: Codecov Integration
+      url: "/codecov-integration"                
     - title: Google Cloud builder
       url: "/gcloud-builder"
     - title: Google Marketplace Installation
@@ -453,10 +463,10 @@
       url: "/invite-your-team-member"
     - title: User Settings
       url: "/user-settings"
+    - title: Pipeline Execution Context
+      url: "/pipeline-execution-context"
     - title: Pipeline Settings
       url: "/pipeline-settings"
-    - title: Enterprise Account Management
-      url: "/ent-account-mng"
     - title: Single Sign-On
       url: "/single-sign-on"
       sub-pages:

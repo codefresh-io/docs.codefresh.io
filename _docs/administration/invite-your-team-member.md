@@ -51,6 +51,5 @@ You can completely remove a user from your account by clicking on the *bin* icon
 ## What to read next
 
 * [Access control]({{site.baseurl}}/docs/administration/access-control/)
-* [Account management]({{site.baseurl}}/docs/administration/ent-account-mng/)
 * [Single Sign on]({{site.baseurl}}/docs/administration/single-sign-on/)
 

@@ -6,6 +6,9 @@ redirect_from:
   - /docs/examples-v01/
   - examples.html
   - /docs/catalog-examples/
+  - /docs/examples/
+  - /docs/codefresh-yaml-examples/  
+  - /docs/codefresh-yaml/codefresh-yaml-examples/
 toc: true
 ---
 Codefresh enables you to define the steps of your pipeline in a [YAML file]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/). By default, the file is named `codefresh.yml`, and is located in the root directory of the repository.
@@ -78,6 +81,7 @@ Codefresh can automatically export secret key-value pairs using the Vault plugin
 
 - [Vault Secrets in the Pipeline]({{site.baseurl}}/docs/yaml-examples/examples/vault-secrets-in-the-pipeline)
 - [Decryption with Mozilla SOPS]({{site.baseurl}}/docs/yaml-examples/examples/decryption-with-mozilla-sops)
+- [GitOps with Bitnami Sealed secrets]({{site.baseurl}}/docs/yaml-examples/examples/gitops-secrets)
 
 ## Preview environments
 

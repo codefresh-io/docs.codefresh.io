@@ -7,7 +7,8 @@ toc: true
 
 Sometimes you wish to run sidecar containers in a pipeline that offer additional services for your builds. The most common scenario is launching services such as databases in order to accommodate [integration tests]({{site.baseurl}}/docs/testing/integration-tests/). Or you might wish to launch the application itself in order to run integration tests **against** it as part of the pipeline.
 
->Note that while [composition steps]({{site.baseurl}}/docs/codefresh-yaml/steps/composition/) are still supported, the recommended way to run integrations tests going forward is with service containers.
+>Note that while [composition steps]({{site.baseurl}}/docs/codefresh-yaml/steps/composition/) are still supported, the recommended way to run integrations tests going forward is with service containers. The underlying implementation is shared so check the composition documentation page for more available options
+and properties.
 
 Codefresh includes a handy mechanism (based on Docker compose) that can help you run sidecar containers along your main pipeline. Here is a very simple example.
 
@@ -34,6 +35,8 @@ steps:
 {% endhighlight %}
 
 This pipeline will run integration tests during the freestyle step called `my_integration_tests` and at that point a Redis instance will be available at hostname `my-redis-db-host` and port 6379. Note how in this example, the service container is placed at the root of the pipeline (as opposed to inside a specific step).  This ensures that the Redis instance is running for [the duration of the pipeline]({{site.baseurl}}/docs/codefresh-yaml/service-containers/#running-services-for-the-duration-of-the-pipeline).
+
+>Service Containers are based on Docker Compose. This document does not have the complete list of available options available. Please refer to Docker Compose versions [2](https://docs.docker.com/compose/compose-file/compose-file-v2/) and [3](https://docs.docker.com/compose/compose-file/), but not point releases such as 2.1.
 
 
 ## Viewing Service containers

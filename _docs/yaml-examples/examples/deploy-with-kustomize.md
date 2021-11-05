@@ -81,7 +81,7 @@ spec:
 ## Prerequisites
 
 - A [free Codefresh account](https://codefresh.io/docs/docs/getting-started/create-a-codefresh-account/)
-- A Kubernetes cluster [connected to your Codefresh account]({{site.baeurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/)
+- A Kubernetes cluster [connected to your Codefresh account](https://codefresh.io/docs/docs/deploy-to-kubernetes/add-kubernetes-cluster/)
 
 ## Create the Staging Environment Pipeline 
 
@@ -96,7 +96,7 @@ caption="Codefresh UI Pipeline View"
 max-width="100%" 
 %}
 
-You should be able to copy and paste this YAML in the in-line editor of the Codefresh UI.  It will automatically clone the project for you.
+You should be able to copy and paste this YAML in the in-line pipeline editor of the Codefresh UI. However, make sure to replace cluster context for the kubectl command under the arguments section with your own that you integrated with Codefresh. It will automatically clone the project for you and deploy.
 
 `staging-codefresh.yml`
 {% highlight yaml %}
@@ -157,7 +157,7 @@ caption="Codefresh UI Pipeline View"
 max-width="100%" 
 %}
 
-You should be able to copy and paste this YAML in the in-line editor of the Codefresh UI.  It will automatically clone the project for you.
+You should be able to copy and paste this YAML in the in-line editor of the Codefresh UI and remember to replace cluster context for the kubectl command again with your own. Click Save and Run and it will automatically clone the project for you.
 
 `prod-codefresh.yml`
 {% highlight yaml %}

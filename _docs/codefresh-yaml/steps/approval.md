@@ -1,6 +1,6 @@
 ---
 title: "Approval"
-description: "How to pause pipelines for manual approval"
+description: "How to Pause Pipelines for Manual Approval"
 group: codefresh-yaml
 sub_group: steps
 toc: true
@@ -36,6 +36,7 @@ step_name:
   timeout:
     duration: 2
     finalState: approved
+    timeUnit: minutes
   when:
     branch:
       only: [ master ]
@@ -50,13 +51,14 @@ step_name:
 | ------------------------------------------ | ---------------------------------------------- | ------------------------- |
 | `title`                                    | The free-text display name of the step.        | Optional                  |
 | `description`                              | A basic, free-text description of the step.    | Optional                  |
-| `timeout`                                  | Defines an automatic approval/rejection if a specified amount of time has passed. The `duration` field is hours. By default it is set to 168 (i.e. 7 days). The `finalState` field defines what will happen after the duration time has elapsed. Possible values are `approved`/`denied`/`terminated`    | Optional                  |
+| `timeout`                                  | Defines an automatic approval/rejection if a specified amount of time has passed. The `duration` field is hours. By default it is set to 168 (i.e, 7 days). The `finalState` field defines what will happen after the duration time has elapsed. Possible values are `approved`/`denied`/`terminated`    | Optional                  |
+| `timeUnit`                               | This field defines possible options of `minutes`, or `hours`. If the field is not set, the default is `hours` | Optional                       
 | `fail_fast`                              | If set to false, the pipeline will continue even when the step is rejected | Optional                  |
 | `stage`                              | Parent group of this step. See [using stages]({{site.baseurl}}/docs/codefresh-yaml/stages/) for more information.    | Optional                  |
 | `when`                                     | Define a set of conditions that need to be satisfied in order to execute this step. You can find more information in the [Conditional Execution of Steps]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/) article. | Optional                  |
 
 
-## Pausing the pipeline
+## Pausing the Pipeline
 
 Once the pipeline reaches an approval step it will stop. At this point it **does not** consume any resources.
 In the Codefresh UI you will see the *Approve/Reject* buttons.
@@ -74,7 +76,7 @@ max-width="80%"
 Once you click any of them the pipeline will continue. Further steps in the pipeline can be enabled/disabled
 according to the approval result.
 
-## Automatic approvals/rejections
+## Automatic Approvals/Rejections
 
 By default, a pipeline that contains an approval step will pause for 7 days (168 hours) onces it reaches that step. If you want some automatic action to happen after a specified time period you can define it in advance with the `timeout` property:
 
@@ -125,9 +127,9 @@ max-width="80%"
 %}
 
 
-For more details on access control and users see also the [account management page]({{site.baseurl}}/docs/administration/ent-account-mng/).
+For more details on access control and users see also the [access control page]({{site.baseurl}}/docs/administration/access-control/).
 
-## Keeping the shared volume after an approval
+## Keeping the Shared Volume after an Approval
 
 As soon as a pipeline starts waiting for an approval, all contents of the [shared Codefresh volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) are lost. Once the pipeline continues running all files that were created manually inside the volume are not available any more. 
 
@@ -150,7 +152,7 @@ max-width="90%"
 >Notice also that you if you use the [Hybrid version]({{site.baseurl}}/docs/administration/behind-the-firewall/) of Codefresh and your [Runner]({{site.baseurl}}/docs/administration/codefresh-runner/) is setup with local volumes, then the volume will only be present if the dind pod
 is scheduled in the same node once the pipeline resumes. Otherwise the volume will not be reused.
 
-## Controlling the rejection behavior
+## Controlling the Rejection Behavior
 
 By default if you reject a pipeline, it will stop right away and it will be marked as failed. All subsequent steps after the approval one will not run at all.
 
@@ -171,7 +173,7 @@ steps:
 In this case you can also read the approval result and make the pipeline work differently according to each choice (demonstrated in the following section).
 
 
-## Getting the approval result
+## Getting the Approval Result
 
 As also explained in [step dependencies]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/#custom-steps-dependencies) all steps in the Codefresh pipeline belong to a global object
 called `steps` (indexed by name). You can read the `result` property for an approval step to see if it was approved or rejected.
@@ -291,7 +293,7 @@ max-width="80%"
 You can see that only two steps were ignored. If you rerun the pipeline and approve
 it, the other two steps will be ignored.
 
-## Define concurrency limits
+## Define Concurrency Limits
 
 Codefresh has the ability to limit the amount of running builds for a specific pipeline with several concurrency policies in the pipeline settings. You can choose if a build that is in a pending approval state will count against the concurrency limits or not.
 
@@ -305,7 +307,7 @@ There isn't a correct or wrong way to set this option. It depends on your organi
 You can either set this option [differently per pipeline]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#policies), or globally in your account at your [account settings](https://g.codefresh.io/account-admin/account-conf/pipeline-settings).
 
 
-## Slack integration
+## Slack Integration
 
 If you also enable [Slack integration]({{site.baseurl}}/docs/integrations/notifications/slack-integration/)  in Codefresh you will have the choice of approving/rejecting a pipeline
 via a Slack channel

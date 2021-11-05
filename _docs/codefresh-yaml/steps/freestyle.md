@@ -58,6 +58,7 @@ step_name:
   entry_point:
     - cmd
     - arg1
+  shell: sh  
   fail_fast: false
   volumes:
     - ./relative-dir-under-cf-volume1:/absolute-dir-in-container1
@@ -89,7 +90,7 @@ step_name:
 | `commands`                                 | One or more commands to execute in a shell in the container, as array of strings.                                                                                                                                                                                                                                                                                                                                        | Optional                  |
 | `cmd`                                 | docker CMD arguments to use along with the container entry point. can be string or array of strings.                                                                                                                                                                                                                                                                                                                                       | Optional                  |
 | `entry_point`                                 | Override the default container entry point. can be string or array of strings.                                                                                                                                                                                                                                                                                                                                      | Optional                  |
-| `shell`                                    | Explicitly set the executing shell to bash or sh. If not set the default will be sh.                                                                                                                                                                                                                                                                                                                                     | Optional                  |
+| `shell`                                    | Explicitly set the executing shell to bash or sh. If not set the default will be sh. Note the `bash` option requires that you specify an `image` that includes `/bin/bash`; many images do not.                                                                                                                                                                                                                                                                                                                                     | Optional                  |
 | `environment`                              | A set of environment variables for the container.                                                                                                                                                                                                                                                                                                                           | Optional                  |
 | `fail_fast`                                | If a step fails, and the process is halted. The default value is `true`.                                                                                                                                                                                                                                                                                                    | Default                   |
 | `registry_context`                                 | Advanced property for resolving Docker images when [working with multiple registries with the same domain]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/#working-with-multiple-registries-with-the-same-domain)                            | Optional                  |
@@ -238,9 +239,9 @@ You can override the container's default entry point using the `entry_point` fie
 ```yaml
 
 image: mwendler/cowsay
-   entry_point:
-     - echo
-     - Hello 
+entry_point:
+  - echo
+  - Hello 
 ```
 
 ## Commands

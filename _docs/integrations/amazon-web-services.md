@@ -15,19 +15,9 @@ Codefresh has native support for AWS in the following areas:
 
 ## Using Amazon ECR
 
-Amazon Container registries are fully compliant with the Docker registry API that Codefresh follows. You can connect GCR like any [other Docker registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/amazon-ec2-container-registry/).
+Amazon Container Registries are fully compliant with the Docker registry API that Codefresh follows. Follow the instruction under [Amazon EC2 Container Registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/amazon-ec2-container-registry/) to connect.
 
-{% 
-	include image.html 
-	lightbox="true" 
-file="/images/integrations/docker-registries/add-amazon-ecr-registry.png" 
-url="/images/integrations/docker-registries/add-amazon-ecr-registry.png" 
-alt="Connecting to ECR" 
-caption="Connecting to ECR" 
-max-width="70%" 
-%}
-
-Once the registry is added you can the [standard push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/) step in pipelines. See also the documentation page for [working with Docker registries]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/).
+Once the registry is added, you can use the [standard push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/) in your pipelines. See [working with Docker registries]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/) for more information.
 
 ## Deploying to Amazon Kubernetes
 

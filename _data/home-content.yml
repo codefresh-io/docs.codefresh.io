@@ -9,9 +9,9 @@
   - title: Kubernetes Quick start guide
     localurl: /docs/getting-started/deployment-to-kubernetes-quick-start-guide/
   - title: Helm Quick start guide
-    localurl: /docs/getting-started/helm-quick-start-guide/    
+    localurl: /docs/getting-started/helm-quick-start-guide/
   - title: Frequently Asked Questions
-    localurl: /docs/getting-started/faq/    
+    localurl: /docs/getting-started/faq/
 
 - title: Pipelines
   icon: images/home-icons/pipeline.svg
@@ -54,7 +54,7 @@
   - title: Ruby On Rails
     localurl: /docs/learn-by-example/ruby/
   - title: C/C++
-    localurl: /docs/learn-by-example/cc/   
+    localurl: /docs/learn-by-example/cc/
   - title: C# (.NET core)
     localurl: /docs/learn-by-example/dotnet/
   - title: More...
@@ -65,30 +65,31 @@
   icon: images/home-icons/guides.png
   url: ''
   links:
-  # - title: CI/CD concepts
-  #   localurl: /docs/ci-cd-guide/concepts/
   - title: Build your app
     localurl: /docs/ci-cd-guides/packaging-compilation/
   - title: Building Docker images
     localurl: /docs/ci-cd-guides/building-docker-images/
   - title: Working with Docker registries
-    localurl: /docs/ci-cd-guides/working-with-docker-registries/    
+    localurl: /docs/ci-cd-guides/working-with-docker-registries/
   - title: Pull Requests and branches
     localurl: /docs/ci-cd-guides/pull-request-branches/
   - title: Pipelines for Microservices
-    localurl: /docs/ci-cd-guides/microservices/  
+    localurl: /docs/ci-cd-guides/microservices/
   - title: Production and Staging deployments
-    new: true 
-    localurl: /docs/ci-cd-guides/environment-deployments/    
+    new: true
+    localurl: /docs/ci-cd-guides/environment-deployments/
+  - title: Preview Environments
+    new: true
+    localurl: /docs/ci-cd-guides/preview-environments/
   - title: GitOps deployments
     new: true
-    localurl: /docs/ci-cd-guides/gitops-deployments/  
+    localurl: /docs/ci-cd-guides/gitops-deployments/
   - title: Progressive Delivery
     new: true
-    localurl: /docs/ci-cd-guides/progressive-delivery/ 
- 
+    localurl: /docs/ci-cd-guides/progressive-delivery/
 
-      
+
+
 - title: Yaml Syntax
   icon: images/home-icons/yaml.svg
   url: ''
@@ -108,10 +109,8 @@
   - title: Advanced Workflows
     localurl: /docs/codefresh-yaml/advanced-workflows/
   - title: Deployment environments
-    new: true
     localurl: /docs/codefresh-yaml/deployment-environments/
   - title: Hooks
-    new: true  
     localurl: /docs/codefresh-yaml/hooks/
   - title: Examples
     localurl: /docs/yaml-examples/examples/
@@ -148,7 +147,6 @@
   - title: Managing your cluster
     localurl: /docs/deploy-to-kubernetes/manage-kubernetes/
   - title: Environment Dashboard
-    new: true
     localurl: /docs/deploy-to-kubernetes/environment-dashboard/
   - title: Accessing a Docker registry from your cluster
     localurl: /docs/deploy-to-kubernetes/access-docker-registry-from-kubernetes/
@@ -165,7 +163,6 @@
   - title: Using Helm in a Codefresh pipeline
     localurl: /docs/new-helm/using-helm-in-codefresh-pipeline/
   - title: Helm Releases management
-    new: true
     localurl: /docs/new-helm/helm-releases-management/
   - title: Codefresh Managed Helm Repositories
     localurl: /docs/new-helm/managed-helm-repository/
@@ -207,24 +204,24 @@
   - title: Kubernetes
     localurl: /docs/integrations/kubernetes/
   - title: Amazon Web Services
-    localurl: /docs/integrations/amazon-web-services/    
+    localurl: /docs/integrations/amazon-web-services/
   - title: Microsoft Azure
-    localurl: /docs/integrations/microsoft-azure/   
+    localurl: /docs/integrations/microsoft-azure/
   - title: Google Cloud
-    localurl: /docs/integrations/google-cloud/   
+    localurl: /docs/integrations/google-cloud/
   - title: Docker Registries
-    localurl: /docs/integrations/docker-registries/  
+    localurl: /docs/integrations/docker-registries/
   - title: Secret Storage
     new: true
-    localurl: /docs/integrations/secret-storage/     
+    localurl: /docs/integrations/secret-storage/
   - title: Helm
-    localurl: /docs/integrations/helm/ 
+    localurl: /docs/integrations/helm/
   - title: Argo CD
     new: true
-    localurl: /docs/integrations/argo-cd/    
+    localurl: /docs/integrations/argo-cd/
   - title: Jenkins integration/migration
-    localurl: /docs/integrations/jenkins-integration/               
-      
+    localurl: /docs/integrations/jenkins-integration/
+
   - title: Codefresh API
     localurl: /docs/integrations/codefresh-api/
 
@@ -236,17 +233,14 @@
   - title: Installation Options
     localurl: /docs/administration/installation-security
   - title: Codefresh CLI
-    url: http://cli.codefresh.io/    
+    url: http://cli.codefresh.io/
   - title: Codefresh Behind the Firewall
     localurl: /docs/administration/behind-the-firewall
   - title: Codefresh Runner
-    new: true
     localurl: /docs/administration/codefresh-runner
   - title: User Settings
-    localurl: /docs/administration/user-settings   
-  - title: Enterprise Account Management
-    localurl: /docs/administration/ent-account-mng
-  - title: Single Sign-On
+    localurl: /docs/administration/user-settings
+  - title: Single Sign on
     localurl: /docs/administration/single-sign-on
   - title: Access Control
     localurl: /docs/administration/access-control
@@ -267,7 +261,7 @@
   - title: Codefresh Argo Step
     localurl: /docs/argo-enterprise/codefresh-argo-enterprise
   - title: GitOps Dashboard
-    localurl: /docs/argo-enterprise/gitops-dashboard   
+    localurl: /docs/argo-enterprise/gitops-dashboard
   - title: Codefresh CLI
     localurl: /docs/argo-enterprise/codefresh-cli
   - title: Tutorials

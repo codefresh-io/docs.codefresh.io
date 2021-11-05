@@ -41,18 +41,7 @@ Adding a cluster in GKE can be done by clicking the **Add cluster** button under
 
 If this is your first time, you'll be prompted to authenticate using your Google credentials, make sure you're doing so with a user that have access to your GKE projects.
 
-Make sure that your cluster has basic authentication enabled. You can change this setting after cluster creation
-by selecting `EDIT` on the top nav-bar within your cluster. This will allow you to edit the `Basic authentication` section under `Security`.
-
-{% include image.html
-  lightbox="true"
-  file="/images/kubernetes/add-cluster/gke-basic-auth.png"
-  url="/images/kubernetes/add-cluster/gke-basic-auth.png"
-  alt="Enabling GKE basic authentication"
-  caption="Enabling GKE basic authentication"
-  max-width="90%"
-    %}
-
+For GKE cluster versions >=1.19 basic authentication is deprecated. You can add the GKE cluster manually by [using the custom Kubernetes integration option]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/#adding-any-other-cluster-type-not-dependent-on-any-provider) instead.
 
 {{site.data.callout.callout_info}}
 
@@ -66,7 +55,7 @@ Follow the link in the email to fill in an application for the free credits. Onc
 
 ## Adding AKS cluster
 
-To add an Azure cluster, select *Azure AKS* from the drop-down menu. Click the *Authenticate button* and enter your Azure credentials. You will see a description of all permissions that Codefresh needs
+To add an Azure cluster, select *Azure AKS* from the drop-down menu instead of *Azure AKS SP*. Click the *Authenticate button* and enter your Azure credentials. You will see a description of all permissions that Codefresh needs
 in order to access your cluster. Accept them and Codefresh will connect to Azure to get the cluster information.
 
 >If you experience difficulties at this point try logging into Azure first in your browser *before* clicking
@@ -90,7 +79,7 @@ Codefresh will query the cluster and show its nodes. You are now ready to [deplo
 
 ## Adding an AKS cluster with a service principal
 
-An alternative method of adding an Azure cluster is by using a service principal. First follow the [instructions for creating a service principal in the Azure portal](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal).
+An alternative method of adding an Azure cluster is by using a service principal (*Azure AKS SP*). First follow the [instructions for creating a service principal in the Azure portal](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal).
 
 Then from the drop-down menu select *Azure AKS SP*. Click the *Authenticate button* and enter the following details:
 
