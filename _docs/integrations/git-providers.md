@@ -133,8 +133,6 @@ In both cases, the user cannot decrypt the token used in Git integration with CL
 
 ## GitHub-App
 
->This is an incubating feature not enabled by default. Please contact support to enable GitHub App.
-
 An alternative way to authenticate with Github is via the App mechanism.
 
 ### Codefresh Github App
