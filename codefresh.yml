@@ -1,5 +1,12 @@
 version: '1.0'
 steps:
+  main_clone:
+    title: Cloning main repository...
+    type: git-clone
+    git: cf_github
+    repo: '${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}'
+    revision: '${{CF_REVISION}}'
+
   MyDepDockerImage:
     title: Building Docker Image with Jekyll Deps
     type: build
@@ -10,7 +17,7 @@ steps:
   DocGeneration:
     title: Creating static site
     image: ${{MyDepDockerImage}}
-    commands: 
+    commands:
       - chmod 777 -R .
       - "sed -i 's|^url:.*|url: \"${{JEKYLL_URL}}\"|' _config.yml"
       - "sed -i 's|^baseurl:.*|baseurl: \"${{MY_JEKYLL_BASEURL}}\"|' _config.yml"
