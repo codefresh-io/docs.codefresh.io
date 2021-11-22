@@ -2,259 +2,98 @@
   icon: images/home-icons/started.svg
   url: ''
   links:
-  - title: Setup Codefresh Account
-    localurl: /docs/getting-started/create-a-codefresh-account/
-  - title: Your first CI/CD pipeline
-    localurl: /docs/getting-started/create-a-basic-pipeline/
-  - title: Kubernetes Quick start guide
-    localurl: /docs/getting-started/deployment-to-kubernetes-quick-start-guide/
-  - title: Helm Quick start guide
-    localurl: /docs/getting-started/helm-quick-start-guide/    
-  - title: Frequently Asked Questions
-    localurl: /docs/getting-started/faq/    
+  - title: Getting started quickly
+    localurl: /docs/getting-started/getting-started-quickly/
+  - title: Main concepts
+    localurl: /docs/getting-started/main-concepts/
+  - title: Accesing CAP
+    localurl: /docs/getting-started/accessing-cap/
+  - title: CLI
+    localurl: /docs/getting-started/cli/
+  - title: Frequently asked questions
+    localurl: /docs/getting-started/faq/
+  - title: Argo vs CAP
+    localurl: /docs/getting-started/argo-vs-CAP/
+  - title: Classic vs CAP
+    localurl: /docs/getting-started/v1-vs-v2/
+  - title: Entity model
+    localurl: /docs/getting-started/entity-model/
+  - title: Architecture
+    localurl: /docs/getting-started/architecture/
+  - title: GitOps approach
+    localurl: /docs/getting-started/gitops/
+
+- title: Deployment
+  icon: images/home-icons/deployment.svg
+  url: ''
+  links:
+    - title: GitOps dashboard overview
+      localurl: /docs/deployment/gitops-dashboard/
 
 - title: Pipelines
   icon: images/home-icons/pipeline.svg
   url: ''
   links:
-  - title: Introduction to Pipelines
-    localurl: /docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/
-  - title: Creating Pipelines
-    localurl: /docs/configure-ci-cd-pipeline/pipelines/
-  - title: Pipeline triggers
-    localurl: /docs/configure-ci-cd-pipeline/triggers/
-  - title: Monitoring pipelines
-    localurl: /docs/configure-ci-cd-pipeline/monitoring-pipelines/
-  - title: Shared Configuration
-    localurl: /docs/configure-ci-cd-pipeline/shared-configuration/
+  - title: Managing your pipelines
+    localurl: /docs/pipelines/managing-pipelines/
   - title: Using secrets
-    new: true
-    localurl: /docs/configure-ci-cd-pipeline/secrets-store/
-  - title: Pipeline caching
-    localurl: /docs/configure-ci-cd-pipeline/pipeline-caching/
-  - title: Running pipelines locally
-    localurl: /docs/configure-ci-cd-pipeline/running-pipelines-locally/
-  - title: Debugging pipelines
-    new: true
-    localurl: /docs/configure-ci-cd-pipeline/debugging-pipelines/
-- title: Learn by example
-  icon: images/home-icons/tutorial.svg
-  url: ''
-  links:
-  - title: Go
-    localurl: /docs/learn-by-example/golang/
-  - title: Java
-    localurl: /docs/learn-by-example/java/
-  - title: Node.js
-    localurl: /docs/learn-by-example/nodejs/
-  - title: Php
-    localurl: /docs/learn-by-example/php/
-  - title: Python
-    localurl: /docs/learn-by-example/python/
-  - title: Ruby On Rails
-    localurl: /docs/learn-by-example/ruby/
-  - title: C/C++
-    localurl: /docs/learn-by-example/cc/   
-  - title: C# (.NET core)
-    localurl: /docs/learn-by-example/dotnet/
-  - title: More...
-    localurl: /docs/yaml-examples/examples/
+    localurl: /docs/pipelines/using-secrets/
+  - title: Sharing file system
+    localurl: /docs/pipelines/sharing-file-system/
+  - title: Using Docker
+    localurl: /docs/pipelines/docker-operations/
+  - title: Codefresh marketplace
+    localurl: /docs/pipelines/marketplace/
 
-
-- title: CI/CD guides
-  icon: images/home-icons/guides.png
-  url: ''
-  links:
-  - title: Build your app
-    localurl: /docs/ci-cd-guides/packaging-compilation/
-  - title: Building Docker images
-    localurl: /docs/ci-cd-guides/building-docker-images/
-  - title: Working with Docker registries
-    localurl: /docs/ci-cd-guides/working-with-docker-registries/    
-  - title: Pull Requests and branches
-    localurl: /docs/ci-cd-guides/pull-request-branches/
-  - title: Pipelines for Microservices
-    localurl: /docs/ci-cd-guides/microservices/  
-  - title: Production and Staging deployments
-    new: true 
-    localurl: /docs/ci-cd-guides/environment-deployments/ 
-  - title: Preview Environments
-    new: true
-    localurl: /docs/ci-cd-guides/preview-environments/       
-  - title: GitOps deployments
-    new: true
-    localurl: /docs/ci-cd-guides/gitops-deployments/  
-  - title: Progressive Delivery
-    new: true
-    localurl: /docs/ci-cd-guides/progressive-delivery/ 
- 
-
-      
-- title: Yaml Syntax
-  icon: images/home-icons/yaml.svg
-  url: ''
-  links:
-  - title: Pipeline definition
-    localurl: /docs/codefresh-yaml/what-is-the-codefresh-yaml/
-  - title: Pipeline steps
-    localurl: /docs/codefresh-yaml/steps/
-  - title: Pipeline stages
-    localurl: /docs/codefresh-yaml/stages/
-  - title: Variables
-    localurl: /docs/codefresh-yaml/variables/
-  - title: Step conditions
-    localurl: /docs/codefresh-yaml/conditional-execution-of-steps/
-  - title: Service Containers
-    localurl: /docs/codefresh-yaml/service-containers/
-  - title: Advanced Workflows
-    localurl: /docs/codefresh-yaml/advanced-workflows/
-  - title: Deployment environments
-    localurl: /docs/codefresh-yaml/deployment-environments/
-  - title: Hooks
-    localurl: /docs/codefresh-yaml/hooks/
-  - title: Examples
-    localurl: /docs/yaml-examples/examples/
-
-- title: Testing
-  icon: images/home-icons/testing.svg
-  url: ''
-  links:
-  - title: Unit tests
-    localurl: /docs/testing/unit-tests/
-  - title: Integration Tests
-    localurl: /docs/testing/integration-tests/
-  - title: Test reports
-    localurl: /docs/testing/test-reports/
-  - title: Preview environment tutorial
-    localurl: /docs/getting-started/on-demand-environments/
-  - title: Creating compositions
-    localurl: /docs/testing/create-composition/
-  - title: Dynamic preview environments
-    localurl: /docs/testing/automatic-preview-environments/
-  - title: Security Scanning
-    localurl: /docs/testing/security-scanning/
-  - title: SonarQube Scanning
-    localurl: /docs/testing/sonarqube-integration/
-
-- title: Kubernetes
-  icon: images/home-icons/k8s.svg
-  url: ''
-  links:
-  - title: Kubernetes deployment options
-    localurl: /docs/deploy-to-kubernetes/deployment-options-to-kubernetes/
-  - title: Connecting to your cluster
-    localurl: /docs/deploy-to-kubernetes/add-kubernetes-cluster/
-  - title: Managing your cluster
-    localurl: /docs/deploy-to-kubernetes/manage-kubernetes/
-  - title: Environment Dashboard
-    localurl: /docs/deploy-to-kubernetes/environment-dashboard/
-  - title: Accessing a Docker registry from your cluster
-    localurl: /docs/deploy-to-kubernetes/access-docker-registry-from-kubernetes/
-  - title: Kubernetes manifest templates
-    localurl: "/docs/deploy-to-kubernetes/kubernetes-templating/"
-  - title: Run custom kubectl commands
-    localurl: "/docs/deploy-to-kubernetes/custom-kubectl-commands/"
-- title: "Helm"
-  icon: images/home-icons/helm.svg
-  url: ''
-  links:
-  - title: Helm best practices
-    localurl: /docs/new-helm/helm-best-practices/
-  - title: Using Helm in a Codefresh pipeline
-    localurl: /docs/new-helm/using-helm-in-codefresh-pipeline/
-  - title: Helm Releases management
-    localurl: /docs/new-helm/helm-releases-management/
-  - title: Codefresh Managed Helm Repositories
-    localurl: /docs/new-helm/managed-helm-repository/
-  - title: Helm Charts and repositories
-    localurl: /docs/new-helm/add-helm-repository/
-  - title: Helm Environment Promotion
-    localurl: /docs/new-helm/helm-environment-promotion/
-- title: Deployment
-  icon: images/home-icons/deployment.svg
-  url: ''
-  links:
-  - title: Deploy to Kubernetes
-    localurl: /docs/deploy-to-kubernetes/codefresh-kubernetes-integration-demochat-example/
-  - title: Deploy with Helm
-    localurl: /docs/yaml-examples/examples/helm/
-  - title: Deploy with Kustomize
-    localurl: /docs/yaml-examples/examples/deploy-with-kustomize/
-  - title: Deploy to a VM with Packer
-    localurl: /docs/yaml-examples/examples/packer-gcloud/
-  - title: Deploy with Terraform
-    localurl: /docs/yaml-examples/examples/terraform/
-  - title: Deploy with Pulumi
-    localurl: /docs/yaml-examples/examples/pulumi/
-  - title: Deploy to Nomad
-    localurl: /docs/yaml-examples/examples/nomad/
-  - title: Deploy to ECS/Fargate
-    localurl: /docs/yaml-examples/examples/amazon-ecs/
-  - title: Deploy to Elastic Beanstalk
-    localurl: /docs/yaml-examples/examples/elastic-beanstalk/
-  - title: Deploy to Docker Swarm
-    localurl: /docs/yaml-examples/examples/docker-swarm/
-
-- title: Integrations
-  icon: images/home-icons/cloud-integrations.png
-  url: ''
-  links:
-  - title: Git Providers
-    localurl: /docs/integrations/git-providers/
-  - title: Kubernetes
-    localurl: /docs/integrations/kubernetes/
-  - title: Amazon Web Services
-    localurl: /docs/integrations/amazon-web-services/    
-  - title: Microsoft Azure
-    localurl: /docs/integrations/microsoft-azure/   
-  - title: Google Cloud
-    localurl: /docs/integrations/google-cloud/   
-  - title: Docker Registries
-    localurl: /docs/integrations/docker-registries/  
-  - title: Secret Storage
-    new: true
-    localurl: /docs/integrations/secret-storage/     
-  - title: Helm
-    localurl: /docs/integrations/helm/ 
-  - title: Argo CD
-    new: true
-    localurl: /docs/integrations/argo-cd/    
-  - title: Jenkins integration/migration
-    localurl: /docs/integrations/jenkins-integration/               
-      
-  - title: Codefresh API
-    localurl: /docs/integrations/codefresh-api/
-
-
-- title: "Administration"
+- title: Runtime
   icon: images/home-icons/integrations.svg
   url: ''
   links:
-  - title: Installation Options
-    localurl: /docs/administration/installation-security
-  - title: Codefresh CLI
-    url: http://cli.codefresh.io/    
-  - title: Codefresh behind the firewall
-    localurl: /docs/administration/behind-the-firewall
-  - title: Codefresh Runner
-    localurl: /docs/administration/codefresh-runner
-  - title: User Settings
-    localurl: /docs/administration/user-settings   
+    - title: System requirements
+      localurl: /docs/runtime/requirements
+    - title: Installation and configuration
+      localurl: /docs/runtime/installation
+    - title: Managing your Git Sources
+      localurl: /docs/runtime/git-sources
+
+- title: CI/CD Guides
+  icon: images/home-icons/guides.png
+  url: ''
+  links:
+  - title: Create your first pipeline
+    localurl: /docs/ci-cd-guides/first-pipeline/
+
+- title: Administration
+  icon: images/home-icons/integrations.svg
+  url: ''
+  links:
+  - title: Add users
+    localurl: /docs/administration/add-users
+  - title: User settings
+    localurl: /docs/administration/user-settings
   - title: Single Sign on
     localurl: /docs/administration/single-sign-on
-  - title: Access Control
+  - title: Access Control (coming soon)
     localurl: /docs/administration/access-control
   - title: Audit Logs
     localurl: /docs/administration/audit-logs
-  - title: Platform IPs
+  - title: Codefresh platform IPs
     localurl: /docs/administration/platform-ip-addresses
-- title: "Incubation"
+
+- title: Migration from v1 to v2
   icon: images/home-icons/plugins.svg
   url: ''
   links:
-  - title: Windows Containers Support
-    localurl: /docs/incubation/windows
-  - title: Mac OSX and iOS builds
-    localurl: /docs/incubation/osx-ios-builds
-  - title: ARM architecture Support
-    localurl: /docs/incubation/arm-support
+    - title: Pipelines
+      localurl: /docs/migration/pipelines
+    - title: GitOps dashboard
+      localurl: /docs/migration/gitops-dashboard
+
+- title: Troubleshooting
+  icon: images/home-icons/integrations.svg
+  url: ''
+  links:
+    - title: Common issues
+      localurl: /docs/troubleshooting/common-issues
+    - title: Runtime issues
+      localurl: /docs/troubleshooting/runtime-issues
