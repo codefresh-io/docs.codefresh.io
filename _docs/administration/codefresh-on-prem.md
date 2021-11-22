@@ -35,7 +35,8 @@ Codefresh supports the following Git providers:
 
 ## Prerequisites
 
-- Kubernetes cluster (v1.9+)
+- Kubernetes cluster (version between v1.9 and v1.19)
+  - *Note:* Kubernetes v1.19 maintenance support ended on Oct 28, 2021
   - Minimum node sizes:
     - Single node: 8 CPU core and 16GB RAM
     - Multi node: master(s) + 3 nodes with 4 CPU core and 8GB RAM (24 GB in total)
