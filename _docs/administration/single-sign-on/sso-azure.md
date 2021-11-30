@@ -161,6 +161,8 @@ You need to enter the following:
 * *client secret* - the key value as created in the previous section
 * *tenant* - `<Your Microsoft Azure AD Domain>.onmicrosoft.com`
 * *Object ID* - your Azure Service Principal Object ID (from Enterprise Application configuration, see below)
+* *Auto Sync users and teams to Codefresh* - Select to automatically sync user accounts in Azure AD to your Codefresh account. Optionally, define the time interval, in hours, at which to sync, from 1 to 24. If you don't specify an interval, the sync is every 12 hours.
+
 
 Those fields can be seen in the overview page of your application registration:
 
