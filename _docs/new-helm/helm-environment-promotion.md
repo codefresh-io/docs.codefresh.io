@@ -96,6 +96,7 @@ For each environment you can select
 * One or more namespaces that define this environment (You can even toggle the switch for a regex match)
 * A custom pipeline that will be used when a Helm release is installed for the first time in this column
 * A custom pipeline that will be used when a Helm release is dragged in this column (promoted from another column)
+* Optional. One or more charts to use for the environment. Defining charts for the environment saves you from having to search through all the charts in your Helm repository. When you install an application from the install graphical dialog, only the selected chart(s) are displayed.
 * A presentation color to easily identify the environment on the board (For example, a "production" environment should have a red color)
 
 You can also select no namespace at all. In that case the column will show Helm releases for all namespaces in that cluster.
@@ -256,7 +257,7 @@ max-width="80%"
 1. The environment details on the environment header are:
 * The edit button to change again the options for this column (shown on mouse hover)
 * The delete button to remove this column from the board (shown on mouse hover)
-* The plus button to install a new chart
+* The plus button to install a new chart. If you selected one or more charts when you defined your environment, only the selected charts are displayed.
 * A numeric value that shows how many releases are contained on this environment
 1. The delete button allows you to uninstall a Helm release for an environment
 
