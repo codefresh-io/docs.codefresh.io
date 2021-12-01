@@ -488,7 +488,10 @@ Notice that in that case the sequence of events is the following
 Ideally, your application should be able to access other services by other DNS names that are fully configurable (this is a very good practice for [integration tests]({{site.baseurl}}/docs/testing/integration-tests/) as well).
 
 Sometimes, however, and especially in legacy applications, your application might be hardcoded to look at other services at `localhost`.
-In that case, you can use the attribute `shared_host_network: true` on the services definition. Now all linked containers can access each other's services via localhost. Here is an example:
+In that case, you can use the attribute `shared_host_network: true` on the services definition. Now all linked containers can access each other's services via localhost. 
+When `composition: ./docker-compose.yml` is used, this parameter is supported only in on-premises and hybrid environments. In cloud environments, for security reasons, this parameter is ignored.
+
+Here is an example:
 
  `codefresh.yml`
 {% highlight yaml %}
