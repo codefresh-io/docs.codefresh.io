@@ -559,6 +559,17 @@ spec:
 
 Both http and https target port should be set to **80**.
 
+### Configure CSP (Content Security Policy)
+Add CSP environment variables to `config.yaml`, and define the values to be returned in the CSP HTTP headers.
+```yaml
+cfui:
+  env:
+    CONTENT_SECURITY_POLICY: "<add your security policies here>"
+    CONTENT_SECURITY_POLICY_REPORT_ONLY: "default-src 'self'; font-src 'self' 
+      https://fonts.gstatic.com; script-src 'self' https://unpkg.com https://js.stripe.com; 
+      style-src 'self' https://fonts.googleapis.com; 'unsafe-eval' 'unsafe-inline'"
+    CONTENT_SECURITY_POLICY_REPORT_TO: "<comma-separated list of json object values>"
+```
 
 ## Using existing external services for data storage/messaging
 
