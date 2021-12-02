@@ -683,6 +683,7 @@ global:
   runtimeRedisHost: <MY REDIS HOST>
   runtimeRedisPassword: <MY REDIS PASS>
   runtimeRedisDb: 2
+  runtimeRedisPort: <MY REDIS PORT>
 ```
 
 Where `redis*` - are for the main Redis storage, and `runtimeRedis*` - for storage is used to store pipeline logs in case of `OfflineLogging` feature is turned on. In most cases the host value is the same for these two values.
