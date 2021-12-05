@@ -9,6 +9,14 @@ toc: true
 
 ## 2021
 
+### November 2021
+- ABAC (Attribute-Based Access Control) support for Git contexts - [documentation]({{site.baseurl}}/docs/integrations/git-providers/#abac-for-git-contexts)
+- Use shared_host_network attribute to access containers via loalhost - [documentation]({{site.baseurl}}/docs/codefresh-yaml/service-containers/#accessing-containers-via-localhost)
+- Builds run locally are tagged as **Local** on the Builds page 
+- Cross-region support for Amazom ECR integrations with the `region` field - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/build/#fields)
+- Add Helm charts when defining Helm environment - [documentation]({{site.baseurl}}/docs/new-helm/helm-environment-promotion/#defining-clustersnamespaces-for-each-environment)
+- Filter Helm board by Helm charts - [documentation]({{site.baseurl}}/docs/new-helm/helm-environment-promotion/#editing-your-helm-boards)
+
 ### October 2021
 
 - Monorepo triggers for Azure DevOps repositories - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/#monorepo-support-modified-files)
