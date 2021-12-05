@@ -564,13 +564,16 @@ Add CSP environment variables to `config.yaml`, and define the values to be retu
 ```yaml
 cfui:
   env:
-    CONTENT_SECURITY_POLICY: "<add your security policies here>"
+    CONTENT_SECURITY_POLICY: "<YOUR SECURITY POLICIES>"
     CONTENT_SECURITY_POLICY_REPORT_ONLY: "default-src 'self'; font-src 'self' 
       https://fonts.gstatic.com; script-src 'self' https://unpkg.com https://js.stripe.com; 
       style-src 'self' https://fonts.googleapis.com; 'unsafe-eval' 'unsafe-inline'"
-    CONTENT_SECURITY_POLICY_REPORT_TO: "<comma-separated list of json object values>"
+    CONTENT_SECURITY_POLICY_REPORT_TO: "<LIST OF ENDPOINTS AS JSON OBJECTS>"
 ```
+`CONTENT_SECURITY_POLICY` is the string describing content policies. Use semi-colons to separate between policies.  
+`CONTENT_SECURITY_POLICY_REPORT_TO` is a comma-separated list of JSON objects. Each object must have a name and an array of endpoints that receive the incoming CSP reports. 
 
+For detailed information, see the [Content Security Policy article on MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP).
 ## Using existing external services for data storage/messaging
 
 Normally the Codefresh installer, is taking care of all needed dependencies internally by deploying the respective services (mongo, redis etc) on its own.
