@@ -426,7 +426,7 @@ At the top of the screen you have several filters available:
 
 ## Rolling Back Git Versions
 
-In the GitOps dashboard you will also see a complete history of all past deployments as recorded in Git. You can select any of the previous version and rollback your application to the respective version.
+In the GitOps dashboard you will also see a complete history of all past deployments as recorded in Git. You can select any of the previous versions and rollback your application to the respective version.
 
  {% include image.html
   lightbox="true"
@@ -439,7 +439,7 @@ In the GitOps dashboard you will also see a complete history of all past deploym
 
 The Rollback simply informs the cluster to use a different git hash for the sync process. It doesn't affect your Git repository and ArgoCD will now show your application as out-of-sync (because the last Git commit no longer matches the status of the cluster).
 
-This rollback behavior is best used as an emergency measure after a failed deployment where you want to bring the cluster back to a previous state in a temporary manner. If you wish to keep the current rollback statue as a permanent status it is best to use the standard `git reset/revert` commands and change the GitOps repository to its desired state.
+This rollback behavior is best used as an emergency measure after a failed deployment where you want to bring the cluster back to a previous state in a temporary manner. If you wish to keep the current rollback status as a permanent status it is best to use the standard `git reset/revert` commands and change the GitOps repository to its desired state.
 
 ## Gitops ABAC Support For Rollback Action
 
