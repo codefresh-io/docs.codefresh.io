@@ -8,8 +8,8 @@ toc: true
 ---
 Codefresh provides a set of predefined variables automatically in each build, that you can use to parameterize the way your pipeline works. You can also define your own variables. Some common examples of predefined variables include:
 
-* `CF_BRANCH` is the git branch that was used for this pipeline.
-* `CF_REVISION` is the git hash that was used for this pipeline.
+* `CF_BRANCH` is the Git branch that was used for this pipeline.
+* `CF_REVISION` is the Git hash that was used for this pipeline.
 * `CF_BUILD_URL` is the url of the pipeline build.
 
 ## Using Codefresh variables in your pipelines
@@ -81,7 +81,7 @@ Notice that this syntax is specific to Codefresh and is **only** available withi
 
 All system provided variables will also be automatically injected to any freestyle step as environment variables.
 
-> It is important to understand that all Git related variables such `CF_BRANCH`, `CF_COMMIT_MESSAGE`, `CF_REVISION` etc. are coming directly from the GIT provider you use and have the same limitations of that provider. For example GitLab is sending less information in pull request events than normal pushes, and Bitbucket sends only the short hash of a commit in pull request events. We suggest you read the documentation of your git provider first to understand what information is available for every git event
+> It is important to understand that all Git related variables such `CF_BRANCH`, `CF_COMMIT_MESSAGE`, `CF_REVISION` etc. are coming directly from the Git provider you use and have the same limitations of that provider. For example GitLab is sending less information in pull request events than normal pushes, and Bitbucket sends only the short hash of a commit in pull request events. We suggest you read the documentation of your Git provider first to understand what information is available for every Git event
 
 {: .table .table-bordered .table-hover}
 | Variable                                          | Description                                                                                                                                                                                                                                                                                        |
@@ -99,8 +99,9 @@ All system provided variables will also be automatically injected to any freesty
 | {% raw %}`${{CF_BUILD_INITIATOR}}`{% endraw %}      | The person (username) that started the build. If the build was started by a Git webhook (e.g. from a Pull request) it will hold the webhook user. Notice that if a build is restarted manually it will always hold the username of the person that restarted it.                                                                                                                                                                                                                                                                                    |
 | {% raw %}`${{CF_ACCOUNT}}`{% endraw %}         | Codefresh account for this build |
 | {% raw %}`${{CF_COMMIT_URL}}`{% endraw %}         | Commit url.                                                                                                                                                                                                                                                                                       |
-| {% raw %}`${{CF_COMMIT_MESSAGE}}`{% endraw %}     | Commit message of the git repository revision, at the time of execution.<br/> The messages quotes are escaped (i.e. ' is not \', " is now \").                                                                                                                                                         |
-| {% raw %}`${{CF_REVISION}}`{% endraw %}           | Revision of the Git repository of the main pipeline, at the time of execution. <br/> You can also use {% raw %}`${{CF_SHORT_REVISION}}`{% endraw %}  to get the abbreviated 7-character revision hash, as used in git. Note: use this variable as string with quotes to tag the image {% raw %}`${{CF_SHORT_REVISION}}`{% endraw %}                 |
+| {% raw %}`${{CF_COMMIT_MESSAGE}}`{% endraw %}     | Commit message of the Git repository revision, at the time of execution.<br/> The messages quotes are escaped (i.e. ' is not \', " is now \").                                                                                                                                                         |
+| {% raw %}`${{CF_COMMIT_MESSAGE_ESCAPED}}`{% endraw %}     | Commit message of the Git repository revision, at the time of execution.<br/> Special characters are escaped.                                                                                                                                                        |
+| {% raw %}`${{CF_REVISION}}`{% endraw %}           | Revision of the Git repository of the main pipeline, at the time of execution. <br/> You can also use {% raw %}`${{CF_SHORT_REVISION}}`{% endraw %}  to get the abbreviated 7-character revision hash, as used in Git. Note: use this variable as string with quotes to tag the image {% raw %}`${{CF_SHORT_REVISION}}`{% endraw %}                 |
 | {% raw %}`${{CF_VOLUME_NAME}}`{% endraw %}        | Refers to the [shared volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) between [freestyle steps]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/). Normally you only need to define this in [compositions]({{site.baseurl}}/docs/codefresh-yaml/steps/composition/). In freestyle steps, it is automatically present without any extra configuration.   |
 | {% raw %}`${{CF_VOLUME_PATH}}`{% endraw %}        | Refers to the mounted path of the [shared volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) inside a Freestyle container. In the current implementation it expands to `/codefresh/volume`.                                                                                                                                                                                                              |
 | {% raw %}`${{CF_BUILD_TRIGGER}}`{% endraw %}      | Will be an indication of the current build was triggered: *build: The build was triggered from the build button* webhook: The build was triggered from a control version webhook                                                                                                                  |
@@ -170,7 +171,7 @@ Variables that are created by steps can have members. The members depend on the 
 
 ## GitHub Release Variables
 
-GitHub allows you to create [releases](https://help.github.com/articles/creating-releases/) for marking specific git tags for general availability.
+GitHub allows you to create [releases](https://help.github.com/articles/creating-releases/) for marking specific Git tags for general availability.
 
 You can set a [trigger]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/) for GitHub releases. When a GitHub release happens, the following variables are also available:
 
