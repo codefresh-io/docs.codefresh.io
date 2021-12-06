@@ -9,6 +9,13 @@ toc: true
 
 ## 2021
 
+### November 2021
+- Use shared_host_network attribute to access containers via loalhost - [documentation]({{site.baseurl}}/docs/codefresh-yaml/service-containers/#accessing-containers-via-localhost)
+- Builds run locally are tagged as **Local** on the Builds page 
+- Cross-region support for Amazom ECR integrations with the `region` attribute - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/build/#fields)
+- Option to add Helm charts as part of Helm environment definition - [documentation]({{site.baseurl}}/docs/new-helm/helm-environment-promotion/#defining-clustersnamespaces-for-each-environment)
+- Option to filter Helm board by charts defined in Helm environment - [documentation]({{site.baseurl}}/docs/new-helm/helm-environment-promotion/#editing-your-helm-boards)  
+
 ### October 2021
 
 - Monorepo triggers for Azure DevOps repositories - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/#monorepo-support-modified-files)
