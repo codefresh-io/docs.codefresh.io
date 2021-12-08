@@ -951,23 +951,75 @@ This was a trivial example, but it clearly demonstrates how a custom step commun
 
 ### Exporting parameters manually inside a plugin
 
-Normally in a pipeline you can either use the [cf_export]({{site.baseurl}}/docs/codefresh-yaml/variables/#using-cf_export-command) command or write directly to the [/codefresh/volume/env_vars_to_export]({{site.baseurl}}/docs/codefresh-yaml/variables/#directly-writing-to-the-file) file.
+Normally, in a pipeline you can either use the [cf_export]({{site.baseurl}}/docs/codefresh-yaml/variables/#using-cf_export-command) command or write directly to the [/codefresh/volume/env_vars_to_export]({{site.baseurl}}/docs/codefresh-yaml/variables/#directly-writing-to-the-file) file.
 
-However inside a plugin you can also use the `/meta/env_vars_to_export` file that has the same semantics, but is used for exporting variables in the same scope as the plugin only.
+However, inside a plugin you can also use the `/meta/env_vars_to_export` file that has the same semantics, but is used for exporting variables in the same scope as the plugin only.
 
+The rules for using `/meta/env_vars_to_export` are:
+- When the step-type (plugin) does not define the `return` schema, all the output variables from substeps will be projected and exported as the root step (they may override each other).
+- When `return` schema is defined, only the variables that matched the definition will be exported as root step.
+
+`plugin.yaml`
 {% highlight yaml %}
 {% raw %}
+version: '1.0'
+kind: step-type
+metadata:
+  name: <account_name>/my-step
+  ...
+spec:
+  arguments: |-
+    {
+      ...
+    }  
+  returns: |-
+    {
+      "definitions": {},
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "type": "object",
+      "additionalProperties": true,
+      "patterns": [],
+      "required": [
+        "ROOT_VAR"
+      ]
+      ,
+      "properties": {
+          "ROOT_VAR": {
+              "type": "string",
+              "description": "an example variable"
+          }
+      }
+    }      
   steps:
     export_my_variable:
        title: "Exporting custom variable"
        image: alpine     
        commands:
-         - echo MY_PLUGIN_VAR=SAMPLE_VALUE >> /meta/env_vars_to_export   
+         - echo PLUGIN_VAR=Alice >> /meta/env_vars_to_export
+         - echo ROOT_VAR=Bob >> /meta/env_vars_to_export
     read_my_variable:
        title: "Reading custom variable"
        image: alpine     
        commands:
-         - echo $MY_PLUGIN_VAR
+         - source /meta/env_vars_to_export
+         - echo $PLUGIN_VAR #Alice
+         - echo $ROOT_VAR #Bob
+{% endraw %}
+{% endhighlight %}
+
+
+`codefresh.yaml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+steps:
+  plugin:
+    type: <account_name>/my-step
+  echo:
+    image: alpine
+    commands:
+      - echo $PLUGIN_VAR #empty
+      - echo $ROOT_VAR #Bob
 {% endraw %}
 {% endhighlight %}
 
