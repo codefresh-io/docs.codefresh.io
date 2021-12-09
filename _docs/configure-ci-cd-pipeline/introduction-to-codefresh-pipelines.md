@@ -219,7 +219,7 @@ be available to all steps. Once you create `node_modules`, or any other folder t
 Finally, `/codefresh/volume` is an internal folder name and you should use  `{% raw %}${{CF_VOLUME_PATH}}{% endraw %}` in your codefresh.yml file
 if you really want to reference this folder. You can also reference your project folder as `{% raw %}${{CF_VOLUME_PATH}}/${{CF_REPO_NAME}}{% endraw %}` if you need it.
 
-See the [System Provided Vriables]({{site.baseurl}}/docs/codefresh-yaml/variables/#system-provided-variables) section for more information.
+See the [System Provided Variables]({{site.baseurl}}/docs/codefresh-yaml/variables/#system-provided-variables) section for more information.
 
 ### Working with Docker inside a Codefresh pipeline
 
