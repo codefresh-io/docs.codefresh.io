@@ -1,15 +1,22 @@
 ---
-title: "Add users"
+title: "Manage users"
 description: "Add other Codefresh users to your account"
 group: administration
 toc: true
 ---
 
-You can easily add additional people to a Codefresh account to work with your repositories or pipelines. You also define the level of access they have in the  account resources.
+If you have a Codefresh account, you can add any number of users to collaborate on repositories or pipelines. Adding a user requires assiging a role, optionally an SSO provider.
 
-## Managing users in a Codefresh account
+#### Role
+The Role defines the user's access level, and is by default User. The Admin role????
 
-Navigate to your account settings and find your user management under [collaboration section](https://g.codefresh.io/2.0/account-settings/users){:target="\_blank"}.
+#### SSO
+If you have SSO, Codefresh supports 
+
+## Add a user
+
+1. In Codefresh, click Account Settings.
+2. From the sidebar, below General, select [Collaboration](https://g.codefresh.io/2.0/account-settings/users){:target="\_blank"}.
 
 {% include
 image.html
@@ -21,7 +28,7 @@ caption="Users list"
 max-width="100%"
 %}
 
-Click on [add user](https://g.codefresh.io/2.0/account-settings/users?drawer=add-user){:target="\_blank"} which will open a new modal with a form to fill
+3. Select Users, and then select [Add User](https://g.codefresh.io/2.0/account-settings/users?drawer=add-user){:target="\_blank"}.
 
 {% include 
 	image.html 
@@ -34,30 +41,33 @@ Click on [add user](https://g.codefresh.io/2.0/account-settings/users?drawer=add
 %}
 
 
-1. In the *User's email address* text box, type the email address of the user you want to add.
-2. Choose the role that you want to assign to the user.
-1. In case SSO is configured for you account you can choose the specific required sso provider.
+4. Do the following:  
 
+   In **User's email address**, type the email address of the user to add.  
+   Below Assign a role, select either  **User** or **Administrator**.  
+   If SSO is configured for the account, select the specific SSO provider. 
 
-An email will be sent to the person that holds the email account. Once this invitation is sent, they will show as Pending until the invite is successfully accepted and the user is created
+The user receives an email invitation. The Users page is updated with the information on the user. 
+The Status column shows Pending until the user accepts the invitation, and then changes to ??. The user is created only on accepting the invitation. (NIMA: is there an expiry date?)  
+ (NIMA: useful to add possible statuses).
+>To edit the account details, click ??.  
+ To delete the user permanently, click ??.
 
-
-## Setting a role for each collaborator
-
+## Setting a role for each collaborator (NIMA: we don't need this)
 You can also change the [role]({{site.baseurl}}/docs/administration/access-control/#users-and-administrators) of each team member by clicking on the edit button in the users list page.
 
 * People with the **User** role are not permitted to enter the account settings area.
-* People with the **Administrator** role have full access to your account and can change all your settings, so make sure that they are trusted colleagues.
+* People with the  role have full access to your account and can change all your settings, so make sure that they are trusted colleagues.
 
 You can completely remove a user from your account by clicking on the *bin* icon on the far right.
 
-## Common issues
+### Common issues
 
 * [User is prompted to enter an organization name](https://support.codefresh.io/hc/en-us/articles/360020177959-User-is-prompted-to-enter-an-organization-name)
 * [Account invitation not permitting login](https://support.codefresh.io/hc/en-us/articles/360015251000-Account-invitation-not-permitting-login)
 
-## What to read next
+### What to read next
+[Access control]({{site.baseurl}}/docs/administration/access-control/)  
+[Single Sign on]({{site.baseurl}}/docs/administration/single-sign-on/)
 
-* [Access control]({{site.baseurl}}/docs/administration/access-control/)
-* [Single Sign on]({{site.baseurl}}/docs/administration/single-sign-on/)
 
