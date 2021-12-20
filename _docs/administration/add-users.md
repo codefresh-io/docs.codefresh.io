@@ -5,7 +5,7 @@ group: administration
 toc: true
 ---
 
-If you have a Codefresh account, you can add any number of users to collaborate on repositories, workflows, and pipelines. Adding a user requires assiging a role, and optionally an SSO provider. 
+If you have a Codefresh account, you can add any number of users to collaborate on repositories, workflows, and pipelines. Adding a user requires assigning a role, and optionally an SSO provider. 
 
 **Role**: Defines the user's access level, and is by default set to User. The Administrator role has full access to account settings. 
 For guidelines on access control, see [Access control]({{site.baseurl}}/docs/administration/access-control/).  
@@ -26,6 +26,7 @@ For guidelines on access control, see [Access control]({{site.baseurl}}/docs/adm
    %}
 {:start="3"} 
 1. Select **Users**, and then select **+ [Add User]**.
+
    {% include 
    image.html 
    lightbox="true" 
@@ -34,18 +35,20 @@ For guidelines on access control, see [Access control]({{site.baseurl}}/docs/adm
    alt="Add new user" 
    caption="Add new user"
    max-width="100%" 
-   %}
-    1. Type the **User's email address**.  
-    1. **Assign a role**, by selecting either **User** or **Administrator**.  
-    1. If SSO is configured for the account, **Select SSO provider**, and then configure the settings.  
-       * [SAML2]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-saml2.md) 
-       * [OpenID Connect]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2.md) 
-       * [Auth0]({{site.baseurl}}/docs/administration/single-sign-on/sso-auth0.md) 
-       * [Azure]({{site.baseurl}}/docs/administration/single-sign-on/sso-azure.md)  
-       * [Google]({{site.baseurl}}/docs/administration/single-sign-on/sso-google.md)
-       * [LDAP]({{site.baseurl}}/docs/administration/single-sign-on/sso-ldap.md)
-       * [Okta]({{site.baseurl}}/docs/administration/single-sign-on/sso-okta.md)
-       * [OneLogin]({{site.baseurl}}/docs/administration/single-sign-on/sso-onelogin.md)
+   %}  
+
+   1. Type the **User's email address**.  
+   1. **Assign a role**, by selecting either **User** or **Administrator**.  
+   1. If SSO is configured for the account, **Select SSO provider**, and then configure the settings.  
+
+      * [SAML2]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-saml2.md) 
+      * [OpenID Connect]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2.md) 
+      * [Auth0]({{site.baseurl}}/docs/administration/single-sign-on/sso-auth0.md) 
+      * [Azure]({{site.baseurl}}/docs/administration/single-sign-on/sso-azure.md)  
+      * [Google]({{site.baseurl}}/docs/administration/single-sign-on/sso-google.md)
+      * [LDAP]({{site.baseurl}}/docs/administration/single-sign-on/sso-ldap.md)
+      * [Okta]({{site.baseurl}}/docs/administration/single-sign-on/sso-okta.md)
+      * [OneLogin]({{site.baseurl}}/docs/administration/single-sign-on/sso-onelogin.md)
 
 
 The user receives an email invitation, and the Users page is updated with information on the user. 
