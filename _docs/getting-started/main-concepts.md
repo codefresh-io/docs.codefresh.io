@@ -5,6 +5,8 @@ group: getting-started
 toc: true
 ---
 
+<b>Note:</b> Kubernetes is also knows as k8s, letter 'k' followed by 8 letters followed by letter 's'. We will use those two interchangeably in the documentation.
+
 ## Built on top of the open source Argo
 CSDP maintains a [conformed](https://github.com/argoproj/argo-conformance-program) fork of the following Argo components and provides an enterprise supported version of them:
 * [Argo CD](https://github.com/argoproj/argo-cd) - Declarative continuous deployment for Kubernetes.
@@ -15,7 +17,7 @@ CSDP maintains a [conformed](https://github.com/argoproj/argo-conformance-progra
 Checkout the full [architecture documentation](architecture.md) of CSDP.
 
 ## Hybrid behind firewall model
-CSDP performs an installation, called a Runtime, on the user's k8s cluster. The Runtime contains all required components for making the entire experience work. <br>
+CSDP performs an installation, called a Runtime, on the user's k8s cluster. The Runtime contains all required components for making the entire experience work. All the required components have tested togther to ensure full compatibility.<br>
 Checkout the full [architecture documentation](./architecture.md) for more details.
 
 ## GitOps native approach
