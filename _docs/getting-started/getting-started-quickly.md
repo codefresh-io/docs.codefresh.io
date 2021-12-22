@@ -13,9 +13,11 @@ A quick-start for people who don’t want to read the rest of the documentation 
 
 # Prerequisites
 
-* A kubernetes cluster running at least version 1.20 with the following permission in the runtime namespace</br>
+* A kubernetes cluster running at least version 1.20 with the following permissions in the runtime namespace</br>
+
 ```
-	Resource:  "ServiceAccount",
+      {
+	      Resource:  "ServiceAccount",
 				Verbs:     []string{"create", "delete"},
 				Namespace: namespace,
 			},
