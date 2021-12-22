@@ -51,7 +51,8 @@ A quick-start for people who don’t want to read the rest of the documentation 
 				Verbs:     []string{"create", "update", "delete"},
 				Namespace: namespace
       }
-      ```
+```
+
 * Nodes with at least:
   * 3000 MB
   * 2 CPUs
