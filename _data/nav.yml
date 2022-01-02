@@ -4,16 +4,8 @@
     url: "/getting-started-quickly"
   - title: Main concepts
     url: "/main-concepts"
-  - title: Accessing CAP
-    url: "/accessing-cap"
-  - title: CLI
-    url: "/cli"
   - title: Frequently asked questions
     url: "/faq"
-  - title: Argo vs CAP
-    url: "/argo-vs-cap"
-  - title: Classic vs CAP
-    url: "/v1-vs-v2"
   - title: Entity model
     url: "/entity-model"
   - title: Architecture
@@ -47,9 +39,11 @@
   pages:
     - title: System requirements
       url: "/requirements"
-    - title: Installation and configuration
+    - title: Installation
       url: "/installation"
-    - title: Managing your Git Sources
+    - title: Management
+      url: "/management"
+    - title: Git Source management
       url: "/git-sources"
 
 

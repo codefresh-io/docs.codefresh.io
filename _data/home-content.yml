@@ -51,9 +51,11 @@
   links:
     - title: System requirements
       localurl: /docs/runtime/requirements
-    - title: Installation and configuration
+    - title: Installation
       localurl: /docs/runtime/installation
-    - title: Managing your Git Sources
+    - title: Management
+      localurl: /docs/runtime/management
+    - title: Git Source management
       localurl: /docs/runtime/git-sources
 
 - title: CI/CD Guides

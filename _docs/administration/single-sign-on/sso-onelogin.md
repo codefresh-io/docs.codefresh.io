@@ -1,6 +1,6 @@
 ---
-title: "OneLogin"
-description: "Setting Up OneLogin Federated Single Sign-On (SSO)"
+title: "OneLogin Single Sign-On (SSO)"
+description: " "
 group: administration
 sub_group: single-sign-on
 redirect_from:
@@ -16,7 +16,9 @@ see the [overview page]({{site.baseurl}}/docs/administration/single-sign-on/sso-
 
 
 1. Configure app on the OneLogin dashboard:
+  {:start="1"}
   1. Log in to the [OneLogin Administration Dashboard](https://www.onelogin.com/), and select **Apps > Add Apps**.
+    
     {% include image.html 
     lightbox="true" 
     file="/images/administration/sso/onelogin/step1.png" 
@@ -25,8 +27,10 @@ see the [overview page]({{site.baseurl}}/docs/administration/single-sign-on/sso-
     caption="OneLogin Dashboard"
     max-width="40%"
     %}
+  {:start="2"}  
   1. Find **OpenId Connect (OIDC)** app using the search field.
-    {% include image.html 
+    
+   {% include image.html 
     lightbox="true" 
     file="/images/administration/sso/onelogin/step2.png" 
     url="/images/administration/sso/onelogin/step2.png"
@@ -34,7 +38,9 @@ see the [overview page]({{site.baseurl}}/docs/administration/single-sign-on/sso-
     caption="Locating the OpenId Connect App"
     max-width="100%"
     %}
+  {:start="3"}
   1. Setup a Codefresh application.
+    
     {% include image.html 
     lightbox="true" 
     file="/images/administration/sso/onelogin/step3.png" 
@@ -43,7 +49,10 @@ see the [overview page]({{site.baseurl}}/docs/administration/single-sign-on/sso-
     caption="Adding a new application"
     max-width="90%"
     %}
-  1. From the sidebar, select **SSO** and copy the **Client ID** and the **Client Secret**
+  {:start="4"} 
+  1. From the sidebar, select **SSO** and copy the **Client ID** and the **Client Secret**.  
+     Set **Application Type** to **Web**, and **Token endpoint Authentication** to **POST**.
+    
     {% include image.html 
     lightbox="true" 
     file="/images/administration/sso/onelogin/step4-post.png" 
@@ -52,26 +61,23 @@ see the [overview page]({{site.baseurl}}/docs/administration/single-sign-on/sso-
     caption="Copying the values of Client ID and Secret"
     max-width="90%"
     %}
-    Set **Application Type** to **Web**, and **Token endpoint Authentication** to **POST**.
 
+### Configure SSO for OneLogin in CSDP
 
-
-### Configure SSO for OneLogin in Codefresh
-
-1. In Codefresh, go to [SSO Settings](https://g.codefresh.io/account-admin/sso), and select **OneLogin**.
+1. In CSDP, go to [SSO Settings](https://g.codefresh.io/account-admin/sso), and select **OneLogin**.
   
     {% include image.html 
   lightbox="true" 
   file="/images/administration/sso/onelogin/step5.png" 
   url="/images/administration/sso/onelogin/step5.png"
-  alt="Choosing OneLogin for Auth"
-  caption="Choosing OneLogin for Auth"
+  alt="Select OneLogin for SSO"
+  caption="Select OneLogin for SSO"
   max-width="20%"
   %}
 
 {:start="2"}
 1. Enter the following:
-  * **CLIENT NAME**: For auto-generation, leave empty. Codefresh generates the client name once you save the settings.
+  * **CLIENT NAME**: For auto-generation, leave empty. CSDP generates the client name once you save the settings.
   * **DISPLAY NAME**: Friendly SSO name (arbitrary).  
   * **CLIENT ID**: The Client ID you copied from OneLogin.
   * **CLIENT SECRET**: The Client Secret you copied from OneLogin.
@@ -82,13 +88,13 @@ see the [overview page]({{site.baseurl}}/docs/administration/single-sign-on/sso-
   lightbox="true" 
   file="/images/administration/sso/onelogin/codefresh-settings.png" 
   url="/images/administration/sso/onelogin/codefresh-settings.png"
-  alt="Entering Codefresh Settings"
-  caption="Entering Codefresh Settings"
+  alt="CSDP SSO settings for OneLogin"
+  caption="CSDP SSO settings for OneLogin"
   max-width="90%"
   %}
 
 {:start="3"}
-1. Select **Save**. Codefresh generates the client name.
+1. Select **Save**. Codefresh generates the client name.  Note this down.
   
    {% include image.html 
   lightbox="true" 
@@ -99,13 +105,13 @@ see the [overview page]({{site.baseurl}}/docs/administration/single-sign-on/sso-
   max-width="90%"
   %}
 
-  Note this down.
+ 
 
 ### Set up login and redirect URIs
 
 Go back to the OneLogin dashboard.
 
-Use the Client Name from the previous section to generate the Login Url and Redirect URIs:
+Use the Client Name from the previous section to generate the Login URL and Redirect URIs:
 
 * Example Client Name: `t0nlUJoqQlDv`
 * Example Login Url: `https://g.codefresh.io/api/auth/t0nlUJoqQlDv`

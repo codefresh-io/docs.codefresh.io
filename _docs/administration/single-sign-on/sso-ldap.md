@@ -1,6 +1,6 @@
 ---
-title: "LDAP"
-description: "Setting Up LDAP Single Sign-On (SSO)"
+title: "LDAP Single Sign-On (SSO)"
+description: " "
 group: administration
 sub_group: single-sign-on
 redirect_from:
@@ -8,7 +8,7 @@ redirect_from:
 toc: true
 ---
 
-To configure SSO for LDAP in Codefresh, you need to first create a user on your LDAP server who has permissions to search other users. Usually,
+To configure SSO for LDAP in CSDP, you need to first create a user on your LDAP server who has permissions to search other users. Usually,
 this user is an LDAP admin.  
 Make sure also that you know the scope of the search, that is, where users to search for are located in the LDAP hierarchy.
 
@@ -47,11 +47,9 @@ Make sure also that you know the scope of the search, that is, where users to se
   * **Certificate**: The security certificate of the LDAP server for `ldaps` only. Paste the value directly on the field. Do not convert to base64 or any other encoding by hand.  Leave the field empty if you use `ldap`.
 
 {:start="4"} 
-1. Select **Save**. LDAP users can log in to Codefresh using LDAP.
+1. Select **Save**. LDAP users can log in to CSDP.
 
->Each user who logs in to Codefresh must:
+>Each user who logs in to CSDP must:
   1. Have a defined email address on the LDAP server
   1. Use the same email address as defined on the LDAP server
   1. Use as login information, the LDAP email, password, and `cn` value of username
-
-
