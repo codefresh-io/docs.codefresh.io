@@ -42,7 +42,7 @@
     - title: Installation
       url: "/installation"
     - title: Management
-      url: "/management"
+      url: "/monitor-manage-runtimes"
     - title: Git Source management
       url: "/git-sources"
 

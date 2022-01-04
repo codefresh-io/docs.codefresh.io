@@ -54,9 +54,8 @@
     - title: Installation
       localurl: /docs/runtime/installation
     - title: Management
-      localurl: /docs/runtime/management
-    - title: Git Source management
       localurl: /docs/runtime/git-sources
+    - title:  Git Source management
 
 - title: CI/CD Guides
   icon: images/home-icons/guides.png
