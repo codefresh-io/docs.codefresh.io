@@ -1,5 +1,5 @@
 ---
-title: "Draft:  Management"
+title: "Management"
 description: ""
 group: runtime
 toc: true
@@ -58,7 +58,7 @@ Drill down to the runtime name, and then select Error Detected to view the error
 
 
 ### Uninstall runtimes
-Run  `[cf runtime uninstall <runtime-name>`
+Run `[cf runtime uninstall <runtime-name>`
 
 
 ### What to read next

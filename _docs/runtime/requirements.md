@@ -17,16 +17,18 @@ Configure your Kubernetes cluster with an Ingress controller component that is e
 
 Here are quick tips to configure ingress controllers in common cluster deployments:  
 
-**Docker desktop**: `kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.0/deploy/static/provider/cloud/deploy.yaml`  
+**Eks**: `kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.0/deploy/static/provider/aws/deploy.yaml`  
+
+Non-production:
 **K3d**: A K3d cluster comes with a built-in Traefik ingress controller.  
-**Eks**: `kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.0/deploy/static/provider/aws/deploy.yaml`
+**Docker desktop**: `kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.0/deploy/static/provider/cloud/deploy.yaml`  
 
 > Tip:   
   Verify that the ingress controller has a valid external IP address:  
 
-  **Docker desktop**: Should show `localhost` as the external IP when running `kubectl get svc ingress-nginx-controller -n ingress-nginx`    
-  **K3d**: Should show a valid external IP when running `kubectl get svc traefik -n kube-system`   
-  **Eks**: Should show a valid external IP when running`kubectl get svc ingress-nginx-controller -n ingress-nginx`. Note this down as you will need this when you install the runtime.   
+**Eks**: Should show a valid external IP when running`kubectl get svc ingress-nginx-controller -n ingress-nginx`. Note this down as you will need this when you install the runtime.    
+**K3d**: Should show a valid external IP when running `kubectl get svc traefik -n kube-system`   
+**Docker desktop**: Should show `localhost` as the external IP when running `kubectl get svc ingress-nginx-controller -n ingress-nginx`     
 
 ### Default `IngressClass` 
 The `IngressClass` resource, or any one of them if you have more than one, must be tagged as the default.  

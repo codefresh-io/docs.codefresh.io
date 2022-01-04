@@ -1,5 +1,5 @@
 ---
-title: "Draft: Installation"
+title: "Installation"
 description: ""
 group: runtime
 toc: true
@@ -30,7 +30,7 @@ Before installation, review [CSDP architecture]({{site.baseurl}}/docs/getting-st
 
 #### Runtime prerequisites
 Before you install the CSDP runtime, verify that:
-* Your deployment conforms to our [system requirements]({{site.baseurl}}/docs/runtime/monitor-manage-runtimes
+* Your deployment conforms to our [system requirements]({{site.baseurl}}/docs/runtime/requirements)
 * You have a Personal Access Token (PAT) for authentication to the Git installation repo, that you will create or select during runtime installation.   
   To create a Git token, see [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
   > When you create the Git token, set the correct expiration date and scope: 
