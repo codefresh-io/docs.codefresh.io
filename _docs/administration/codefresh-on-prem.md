@@ -679,6 +679,29 @@ mongo:
   enabled: false
  ```
 
+#### MongoDB with Mutual TLS
+
+Codefresh supports enabling SSL/TLS between cf microservices and MongoDB. To enable this option specify in `config.yaml` the following parameters: <br />
+ `global.mongoTLS: true`  <br />
+ `global.mongoCaCert` - CA certificate (base64 encoded) <br />
+ `global.mongoCaKey` - CA certificate private key (base64 encoded)
+
+```yaml
+global:
+  mongodbRootUser: <MONGO_ROOT_USER>
+  mongodbRootPassword: <MONGO_ROOT_PASSWORD>
+  mongoURI: <MONGO_URI>
+  mongoSkipUserCreation: true
+  mongoDeploy: false   # disables deployment of internal mongo service
+
+  mongoTLS: true #enable MongoDB TLS support
+  mongoCaCert: "LS0tLS1CRUdJTiBD..." #CA certificate (base64 encoded)
+  mongoCaKey: "LS0tLS1CRUdJTiBS..." #CA certificate private key (base64 encoded)
+
+mongo:
+  enabled: false #disable default mongodb subchart installation
+ ```
+
 ### Configure an external Redis service
 
 Codefresh recommends to use the Bitnami Redis [chart](https://github.com/bitnami/charts/tree/master/bitnami/redis) as a Redis store.
