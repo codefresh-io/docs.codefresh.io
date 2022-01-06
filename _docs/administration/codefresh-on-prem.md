@@ -616,20 +616,20 @@ global:
   postgresPort: 5432
 
 postgresql:
-  enabled: false
+  enabled: false #disable default postgresql subchart installation
 ```
 #### Running the seed job manually
 
 If you would prefer running the seed job manually, you can do it by using a script present in `your/stage-dir/codefresh/addons/seed-scripts` directory named `postgres-seed.sh`. The script takes the following set of variables that you need to have set before running it:
 
-```
-POSTGRES_SEED_USER="postgres"
-POSTGRES_SEED_PASSWORD="zDyGp79XyZEqLq7V"
-POSTGRES_USER="cf_user"
-POSTGRES_PASSWORD="fJTFJMGV7sg5E4Bj"
-POSTGRES_DATABASE="codefresh"
-POSTGRES_HOST="my-postgres.ccjog7pqzunf.us-west-2.rds.amazonaws.com"
-POSTGRES_PORT="5432"
+```sh
+export POSTGRES_SEED_USER="postgres"
+export POSTGRES_SEED_PASSWORD="zDyGp79XyZEqLq7V"
+export POSTGRES_USER="cf_user"
+export POSTGRES_PASSWORD="fJTFJMGV7sg5E4Bj"
+export POSTGRES_DATABASE="codefresh"
+export POSTGRES_HOST="my-postgres.ccjog7pqzunf.us-west-2.rds.amazonaws.com"
+export POSTGRES_PORT="5432"
 ```
 The variables have the same meaning as the configuration values described in the previous section about Postgres.
 
@@ -637,14 +637,14 @@ However you **still need to specify a set of values** in the Codefresh config fi
 
 ```yaml
 global:
-  postgresUser: <POSTGRES USER>
-  postgresPassword: <POSTGRES PASSWORD>
+  postgresUser: <POSTGRES_USER>
+  postgresPassword: <POSTGRES_PASSWORD>
   postgresDatabase: codefresh
-  postgresHostname: <POSTGRES HOST>
+  postgresHostname: <POSTGRES_HOST>
   postgresPort: 5432
 
 postgresql:
-  enabled: false
+  enabled: false #disable default postgresql subchart installation
 ```
 
 ### Configuring an external MongoDB
@@ -689,28 +689,21 @@ Codefresh does not support secure connection to Redis (TLS) and AUTH username ex
 
 #### Configuration
 
-Codefresh requires two Redis databases:
-
-- the main - `cf-redis`, to store sessions, cache, etc;
-- `cf-store`, to store triggers;
-  
-At the time of writing only the first one can be replaced by external Redis service,
-the `cf-store` DB is used as a local storage for triggers and should run along with the installation.
-
-
 To configure Codefresh to use an external Redis service, add the following parameters to your __config.yaml__:
 
 ```yaml
-redis:
-  enabled: false
-  redisPassword: <MY REDIS PASS>
-
 global:
-  redisUrl: <MY REDIS HOST>
-  runtimeRedisHost: <MY REDIS HOST>
-  runtimeRedisPassword: <MY REDIS PASS>
+  redisUrl: <REDIS_HOST>
+  redisPassword: <REDIS_PASS>
+  redisPort: 6379
+
+  runtimeRedisHost: <REDIS_HOST>
+  runtimeRedisPassword: <REDIS_PASS>
+  runtimeRedisPort: 6379
   runtimeRedisDb: 2
-  runtimeRedisPort: <MY REDIS PORT>
+
+redis:
+  enabled: false #disable default redis subchart installation
 ```
 
 Where `redis*` - are for the main Redis storage, and `runtimeRedis*` - for storage is used to store pipeline logs in case of `OfflineLogging` feature is turned on. In most cases the host value is the same for these two values.
