@@ -680,15 +680,12 @@ mongo:
  ```
 
 ### Configure an external Redis service
-
 Codefresh recommends to use the Bitnami Redis [chart](https://github.com/bitnami/charts/tree/master/bitnami/redis) as a Redis store.
 
 #### Limitations
-
 Codefresh does not support secure connection to Redis (TLS) and AUTH username extension.
 
 #### Configuration
-
 To configure Codefresh to use an external Redis service, add the following parameters to your __config.yaml__:
 
 ```yaml
