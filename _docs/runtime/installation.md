@@ -68,8 +68,8 @@ To install a CSDP runtime, you can either pass the flags in the runtime install 
 
 **Git repositories**   
  
-* Runtime install repo: The installation repo contains three folders: apps, bootstrap and projects, to manage the runtime itself with ArgoCD.  
-* Git source repository: Created with the name `[repo_name]_git-source`. This repo stores manifests to run pipelines aka sources, events, workflow templates.
+* Runtime install repo: The installation repo contains three folders: apps, bootstrap and projects, to manage the runtime itself with Argo CD.  
+* Git source repository: Created with the name `[repo_name]_git-source`. This repo stores manifests to run pipelines with sources, events, workflow templates.
 
 **Argo CD components**  
 
