@@ -68,7 +68,7 @@
   icon: images/home-icons/integrations.svg
   url: ''
   links:
-  - title: Add users
+  - title: Manage users
     localurl: /docs/administration/add-users
   - title: User settings
     localurl: /docs/administration/user-settings

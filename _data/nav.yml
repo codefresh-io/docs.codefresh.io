@@ -56,7 +56,7 @@
 - title: Administration
   url: "/administration"
   pages:
-    - title: Add users
+    - title: Manage users
       url: "/add-users"
     - title: User settings
       url: "/user-settings"
