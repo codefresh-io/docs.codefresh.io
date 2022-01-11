@@ -1,17 +1,19 @@
 - title: Getting started
   pages:
+  - title: Introducing CSDP
+    url: "/csdp-introduction"
   - title: Quick start
-    url: "/getting-started-quickly"
+    url: "/quick-start"
   - title: Main concepts
     url: "/main-concepts"
-  - title: Frequently asked questions
-    url: "/faq"
   - title: Entity model
     url: "/entity-model"
   - title: Architecture
     url: "/architecture"
   - title: GitOps approach
     url: "/gitops"
+  - title: Frequently asked questions
+    url: "/faq"
 
 - title: Deployment
   url: "/deployment"
@@ -37,7 +39,7 @@
 - title: Runtime
   url: "/runtime"
   pages:
-    - title: System requirements
+    - title: Runtime requirements
       url: "/requirements"
     - title: Installation
       url: "/installation"

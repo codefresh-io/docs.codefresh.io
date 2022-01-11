@@ -2,26 +2,20 @@
   icon: images/home-icons/started.svg
   url: ''
   links:
-  - title: Getting started quickly
-    localurl: /docs/getting-started/getting-started-quickly/
-  - title: Main concepts
+  - title: Introducing CSDP
+    localurl: /docs/getting-started/csdp-introduction/
+  - title: Quick start
+    localurl: /docs/getting-started/quick-start/
+  - title: Concepts
     localurl: /docs/getting-started/main-concepts/
-  - title: Accesing CAP
-    localurl: /docs/getting-started/accessing-cap/
-  - title: CLI
-    localurl: /docs/getting-started/cli/
-  - title: Frequently asked questions
-    localurl: /docs/getting-started/faq/
-  - title: Argo vs CAP
-    localurl: /docs/getting-started/argo-vs-CAP/
-  - title: Classic vs CAP
-    localurl: /docs/getting-started/v1-vs-v2/
   - title: Entity model
     localurl: /docs/getting-started/entity-model/
   - title: Architecture
     localurl: /docs/getting-started/architecture/
   - title: GitOps approach
     localurl: /docs/getting-started/gitops/
+  - title: Frequently asked questions
+    localurl: /docs/getting-started/faq/
 
 - title: Deployment
   icon: images/home-icons/deployment.svg
@@ -49,13 +43,14 @@
   icon: images/home-icons/integrations.svg
   url: ''
   links:
-    - title: System requirements
-      localurl: /docs/runtime/requirements
+    - title: Runtime requirements
+      localurl: /docs/runtime/requirements/
     - title: Installation
-      localurl: /docs/runtime/installation
+      localurl: /docs/runtime/installation/
     - title: Management
-      localurl: /docs/runtime/git-sources
+      localurl: /docs/runtime/monitor-manage-runtimes/
     - title:  Git Source management
+      localurl: /docs/runtime/git-sources/
 
 - title: CI/CD Guides
   icon: images/home-icons/guides.png
