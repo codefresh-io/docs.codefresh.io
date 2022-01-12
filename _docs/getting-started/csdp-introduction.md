@@ -5,22 +5,42 @@ group: getting-started
 toc: true
 ---
 
-
-The Codefresh Software Delivery Platform (CSDP), is a full-featured, turn-key solution for application deployments and releases. Powered by the Argo Project, CSDP uses Argo CD, Argo Workflows, Argo Events, and Argo Rollouts, extended with functionality and features essential for enterprise deployments. CSDP offers security, maintainability, traceability, and most importantly, a single control plane for all stakeholders, be they developers, operators, product owners or project managers. 
-
-PIC
-
-CSDP brings all these tools into a single enterprise-ready platform that enables teams to:
-
+The Codefresh Software Delivery Platform (CSDP), is a full-featured, turn-key solution for application deployments and releases. Powered by the Argo Project, CSDP uses Argo CD, Argo Workflows, Argo Events, and Argo Rollouts, extended with unique functionality and features essential for enterprise deployments. CSDP offers security, maintainability, traceability, and most importantly, a single control plane for all stakeholders, be they developers, operators, product owners or project managers.
+ 
+With CSDP teams can:
+ 
 * Deliver software at scale by managing hundreds or thousands of deployment targets and applications
-* Get a secure, enterprise-ready distribution of Argo with built-in identity, RBAC, and secrets
+* Get a secure, enterprise-ready distribution of Argo with built-in identity, RBAC (role-based access control), and secrets
 * Gain clear visibility across all deployments and trace changes and regressions from code to cloud in seconds
 * Get enterprise-level dedicated support for Argo deployments
+ 
+### CSDP and open source Argo
+CSDP brings you the power of the complete Argo project for your Kubernetes deployments:  
 
-### Codefresh Hub for Argo
-Speaking of the amazing Argo community, we noticed that many practitioners building on Argo Workflows get stuck rebuilding the same steps over and over again. Because Codefresh has experience running a user-contributed marketplace with hundreds of millions of executions, we wanted to bring that functionality to Argo Workflows. At Codefresh Hub for Argo, users can find, use, and even contribute their own Argo Workflow Templates. To get things started, we’ve added some of our most popular steps, and we’re committed to bringing more and more. Best of all, these templates are tested and certified to not only work but also pass a thorough security review process.
+* Argo CD for declarative continuous deployment with Kubernetes
+* Argo Rollouts for progressive delivery with Kubernetes
+* Argo Workflows as the workflow engine for Kubernetes
+* Argo Events for event-driven workflow automation framework
 
-These Argo Workflow templates can be used in the open-source version of Argo Workflows or within CSDP.
+CSDP creates a conformed fork of the Argo project, providing an enterprise-supported version of the same, enhanced with unique functionality.
+For details, see [CSDP architecture](({{site.baseurl}}/docs/getting-started/architecture/)).
 
-### Argo CD Autopilot
-Argo CD is incredibly flexible but this sometimes leaves users wondering how best to organize their repos, how to promote changes between environments, and how to bootstrap, update and recover Argo CD itself. To solve these challenges we launched Argo CD Autopilot. Autopilot is a GitOps friendly way to set up, operate, and maintain Argo CD. It creates a scalable structure for your Git repos, can handle disaster recovery, and is just a joy to use. You can watch a demo here or read the docs.
+ 
+### CSDP and GitOps
+CSDP is GitOps centric, and supports GitOps from the ground up. CSDP leverages Argo components to have the entire desired state applied from Git to your Kubernetes cluster, and then reported back to CSDP.  And takes the GitOps approach a step further:  
+
+* Every state change operation in CSDP is made via Git  
+* The CSDP audit log is derived from the Git changelog  
+* CSDP access control is derived from Git permissions  
+
+For details, see [GitSource entity]({{site.baseurl}}/docs/getting-started/entity-model) and [access control]({{site.baseurl}}/docs/administration/access-control).
+ 
+### CSDP user interface
+And finally, the CSDP UI gives you easy access to all the functionality, and visibility at all times to key information:  
+
+* Runtimes management  
+  View and manage all the runtimes in your deployment in the Runtimes dashboard. Get notified when versions are updated, view the changelog, and then decide if to upgrade. Detect health and sync errors at a glance in the Sync Status column. At any point, drill down into a runtime for detailed information on its components.
+* Applications dashboards for CD tracking  
+  No matter what the volume and frequency of deployments, our Application dashboards make it super easy to track them. Search for Jira issues, commit messages, committers, and see exactly when and if the change was applied to a specific application. 
+* Pipelines for CI/CD  
+  Pipelines are where all the magic happens in CSDP. Our pipeline creation wizard removes the complexity when creating, validating, and maintaining pipelines. Every stage has multi-layered views of all the related Git change information for the pipeline.  
