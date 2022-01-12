@@ -1,9 +1,18 @@
 - title: Getting started
   pages:
   - title: Introducing CSDP
-    url: "/csdp-introduction"
+    url: "/getting-started/csdp-introduction" 
   - title: Quick start
-    url: "/quick-start"
+    url: "/getting-started/quick-start"
+    sub-pages:
+      - title: Verify runtime requirements
+        url:  "/getting-started/verify-requirements"
+      - title: Install runtime
+        url: "/getting-started/quick-start-runtime"
+      - title: Trigger the Hello World example pipeline
+        url: "/getting-started/quick-start-hello-world"
+      - title: Create a basic CI pipeline
+        url: "/getting-started/quick-start-create-ci-pipeline"
   - title: Main concepts
     url: "/main-concepts"
   - title: Entity model
@@ -39,7 +48,7 @@
 - title: Runtime
   url: "/runtime"
   pages:
-    - title: Runtime requirements
+    - title: System requirements
       url: "/requirements"
     - title: Installation
       url: "/installation"
@@ -88,13 +97,6 @@
     - title: Codefresh platform IPs
       url: "/platform-ip-addresses"
 
-- title: Migration from v1 to v2
-  url: "/migration"
-  pages:
-    - title: Pipelines
-      url: "/pipelines"
-    - title: GitOps dashboard
-      url: "/gitops-dashboard"
 
 - title: Troubleshooting
   url: "/troubleshooting"

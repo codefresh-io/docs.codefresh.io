@@ -76,14 +76,6 @@
   - title: Codefresh platform IPs
     localurl: /docs/administration/platform-ip-addresses
 
-- title: Migration from v1 to v2
-  icon: images/home-icons/plugins.svg
-  url: ''
-  links:
-    - title: Pipelines
-      localurl: /docs/migration/pipelines
-    - title: GitOps dashboard
-      localurl: /docs/migration/gitops-dashboard
 
 - title: Troubleshooting
   icon: images/home-icons/integrations.svg
