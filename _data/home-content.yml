@@ -17,6 +17,7 @@
   - title: Frequently asked questions
     localurl: /docs/getting-started/faq/
 
+
 - title: Deployment
   icon: images/home-icons/deployment.svg
   url: ''
@@ -46,7 +47,7 @@
     - title: Runtime requirements
       localurl: /docs/runtime/requirements/
     - title: Installation
-      localurl: /docs/runtime/installation/
+      localurl: /docs/runtime/installation
     - title: Management
       localurl: /docs/runtime/monitor-manage-runtimes/
     - title:  Git Source management

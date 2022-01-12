@@ -1,18 +1,19 @@
 - title: Getting started
+  url: "/getting-started"
   pages:
   - title: Introducing CSDP
-    url: "/getting-started/csdp-introduction" 
+    url: "/csdp-introduction" 
   - title: Quick start
-    url: "/getting-started/quick-start"
+    url: "/quick-start"
     sub-pages:
       - title: Verify runtime requirements
-        url:  "/getting-started/verify-requirements"
+        url:  "/verify-requirements"
       - title: Install runtime
-        url: "/getting-started/quick-start-runtime"
+        url: "/runtime"
       - title: Trigger the Hello World example pipeline
-        url: "/getting-started/quick-start-hello-world"
-      - title: Create a basic CI pipeline
-        url: "/getting-started/quick-start-create-ci-pipeline"
+        url: "/hello-world"
+      - title: Create your first CI pipeline
+        url: "/create-ci-pipeline"
   - title: Main concepts
     url: "/main-concepts"
   - title: Entity model

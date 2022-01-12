@@ -38,7 +38,7 @@ Before you install the CSDP runtime, verify that:
    Scope: `repo`
 
 #### Runtime installation
-To install a CSDP runtime, you can either pass the flags in the runtime install command in the UI, or run `cf runtime install`, and follow the prompts in the CSDP CLI wizard to enter the required flags.
+To install a CSDP runtime, you can either pass the flags in the runtime install command in the UI, or run `cf runtime install`, and follow the prompts in the CSDP CLI wizard to enter the required values.
 
 #### Runtime installation flags
 
@@ -86,7 +86,7 @@ To install a CSDP runtime, you can either pass the flags in the runtime install 
   * App-proxy facilitating behind-firewall access to Git 
   * Git Source entity that references the`[repo_name]_git-source`  
 
-Once the runtime is successfully installed, it is provisioned on the Kubernetes cluster, and displayed on the Runtimes page. 
+Once the runtime is successfully installed, it is provisioned on the Kubernetes cluster, and displayed in the Runtimes page. 
 
 ### What to read next
 [Manage runtimes]({{site.baseurl}}/docs/runtime/monitor-manage-runtimes/)
