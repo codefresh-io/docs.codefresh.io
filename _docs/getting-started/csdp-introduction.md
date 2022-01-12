@@ -1,5 +1,5 @@
 ---
-title: "Introducing Codefresh Software Delivery Platform"
+title: "WIP: Introducing CSDP"
 description: ""
 group: getting-started
 toc: true
@@ -43,4 +43,7 @@ And finally, the CSDP UI gives you easy access to all the functionality, and vis
 * Applications dashboards for CD tracking  
   No matter what the volume and frequency of deployments, our Application dashboards make it super easy to track them. Search for Jira issues, commit messages, committers, and see exactly when and if the change was applied to a specific application. 
 * Pipelines for CI/CD  
-  Pipelines are where all the magic happens in CSDP. Our pipeline creation wizard removes the complexity when creating, validating, and maintaining pipelines. Every stage has multi-layered views of all the related Git change information for the pipeline.  
+  Pipelines are where all the magic happens in CSDP. Our pipeline creation wizard removes the complexity from creating, validating, and maintaining pipelines. Every stage has multi-layered views of all the related Git change information for the pipeline.  
+
+### What to read next
+[Quick start tutorials]({{site.baseurl}}/docs/getting-started/quick-start)
