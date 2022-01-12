@@ -27,7 +27,7 @@ steps:
     title: Copying static site to s3 website
     image: mesosphere/aws-cli
     commands:
-      - aws s3 sync ./_site/ s3://${{S3_BUCKETNAME}}/docs --delete
+      - aws s3 sync ./_site/ s3://${{S3_BUCKETNAME}}/csdp/docs --delete
     when:
       branch:
         only:
