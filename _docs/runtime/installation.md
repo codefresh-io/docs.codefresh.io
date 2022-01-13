@@ -57,12 +57,12 @@ To install a CSDP runtime, you can either pass the flags in the runtime install 
 
 **Ingress host**  
 
-  The IP address/host name/FQDN of the ingress controller component.  
+  The IP address or host name of the ingress controller component.  
 
 
 **Codefresh demo resources**  
 
-  Optional. Install demo pipelines to use as a starting point to create your own pipelines.
+  Optional. Install demo pipelines to use as a starting point to create your own pipelines. We recommend installing the demo resources as these are used in our quick start tutorials.
 
 #### Runtime components
 

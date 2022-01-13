@@ -1,5 +1,5 @@
 ---
-title: "System requirements"
+title: "Requirements"
 description: ""
 group: runtime
 toc: true
@@ -8,29 +8,21 @@ toc: true
 
 The requirements listed are the **_minimum_** requirements for CSDP (Codefresh Software Developement Platform).
 
-### Kubernetes cluster
+### Kubernetes cluster requirements
+This section lists cluster requirements.
+
+#### Cluster version
 Kubernetes cluster version 1.20, without Argo Project components
 > In the documentation, Kubernetes and K8s are used interchangeably. 
 
-### Ingress controller
+#### Ingress controller
 Configure your Kubernetes cluster with an Ingress controller component that is exposed from the cluster. For detailed information, see the [Kubernetes documentation on ingress controllers](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/).  
-
-Here are quick tips to configure ingress controllers in common cluster deployments:  
-
-**Eks**: `kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.0/deploy/static/provider/aws/deploy.yaml`  
-
-Non-production:
-**K3d**: A K3d cluster comes with a built-in Traefik ingress controller.  
-**Docker desktop**: `kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.0/deploy/static/provider/cloud/deploy.yaml`  
 
 > Tip:   
   Verify that the ingress controller has a valid external IP address:  
+ 
 
-**Eks**: Should show a valid external IP when running`kubectl get svc ingress-nginx-controller -n ingress-nginx`. Note this down as you will need this when you install the runtime.    
-**K3d**: Should show a valid external IP when running `kubectl get svc traefik -n kube-system`   
-**Docker desktop**: Should show `localhost` as the external IP when running `kubectl get svc ingress-nginx-controller -n ingress-nginx`     
-
-### Default `IngressClass` 
+#### Default `IngressClass` 
 The `IngressClass` resource, or any one of them if you have more than one, must be tagged as the default.  
 
 To tag an `IngressClass` resource as the default, add this `ingressclass.kubernetes.io/is-default-class` annotation with the value of `true` to the resource.
@@ -43,11 +35,11 @@ To tag an `IngressClass` resource as the default, add this `ingressclass.kuberne
     ingressclass.kubernetes.io/is-default-class: "true" 
   ```
 
-### Node requirements
+#### Node requirements
 * Memory: 3000 MB
 * CPU: 2
 
-### Runtime namespace permissions for resources
+#### Runtime namespace permissions for resources
 
 {: .table .table-bordered .table-hover}
 |  Resource                   |  Permissions Required|  
@@ -60,6 +52,31 @@ To tag an `IngressClass` resource as the default, add this `ingressclass.kuberne
 | `persistentvolumeclaims`    | Create, Update, Delete               |   
 | `pods`                       | Creat, Update, Delete               | 
 
+### Git repository requirements
+This section lists the requirements for Git installation repositories.
+
+#### Git installation repo
+If you are using an existing repo, make sure it is empty.
+
+#### Git token
+CSDP requires a GitHub Personal Access Token for runtime installation.
+To create a Git token, see [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).  
+
+The token must have:
+* `base64` encoding
+*  Valid expiration: Default is `30 days`  
+* Scope: `repo` and `admin-repo.hook`:  
+  
+  {% include 
+   image.html 
+   lightbox="true" 
+   file="/images/getting-started/quick-start/quick-start-git-event-permissions.png" 
+   url="/images/getting-started/quick-start/quick-start-git-event-permissions.png" 
+   alt="GitHub PAT permissions for CI pipeline" 
+   caption="GitHub PAT permissions for CI pipeline"
+   max-width="30%" 
+   %}  
+
 
 ### What to read next
-[Runtime installation]({{site.baseurl}}/docs/runtime/requirements/)
+[Runtime installation]({{site.baseurl}}/docs/runtime/installation/)
