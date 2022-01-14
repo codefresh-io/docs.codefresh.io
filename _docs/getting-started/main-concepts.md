@@ -31,8 +31,8 @@ CSDP provides a full front-end experience powered by a strong API layer (GraphQL
 
 ## Audit log derived from Git changelog
 CSDP has built its sophisticated but simple audit log on all operations to the system, for both the Git change and the log of API calls that have been made to the system.
-Check out the full [auditing documentation](../administration/audit.md)
+Check out the full [auditing documentation](../../administration/audit.md)
 
 ## Access control derived from Git permissions
 CSDP has built its sophisticated but simple access control model on top of the existing Git operations that are defined externally to the system. <br>
-Check out the full [access control documentation](../administration/access-control.md)
+Check out the full [access control documentation](../../administration/access-control.md)
