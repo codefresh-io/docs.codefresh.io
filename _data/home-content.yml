@@ -72,8 +72,8 @@
     localurl: /docs/administration/single-sign-on
   - title: Access Control
     localurl: /docs/administration/access-control
-  - title: Audit Logs
-    localurl: /docs/administration/audit-logs
+  - title: Audit
+    localurl: /docs/administration/audit
   - title: Codefresh platform IPs
     localurl: /docs/administration/platform-ip-addresses
 

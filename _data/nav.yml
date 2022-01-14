@@ -95,7 +95,7 @@
           url: "/sso-onelogin"
     - title: Access Control
       url: "/access-control"
-    - title: Audit logs
+    - title: Audit
       url: "/audit"
     - title: Codefresh platform IPs
       url: "/platform-ip-addresses"
