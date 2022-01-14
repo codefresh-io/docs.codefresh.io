@@ -2,7 +2,7 @@
   url: "/getting-started"
   pages:
   - title: Introducing CSDP
-    url: "/csdp-introduction" 
+    url: "/csdp-introduction"
   - title: Quick start
     url: "/quick-start"
     sub-pages:
@@ -93,7 +93,7 @@
           url: "/sso-okta"
         - title: OneLogin
           url: "/sso-onelogin"
-    - title: Access Control (coming soon)
+    - title: Access Control
       url: "/access-control"
     - title: Audit logs
       url: "/audit"

@@ -70,7 +70,7 @@
     localurl: /docs/administration/user-settings
   - title: Single Sign on
     localurl: /docs/administration/single-sign-on
-  - title: Access Control (coming soon)
+  - title: Access Control
     localurl: /docs/administration/access-control
   - title: Audit Logs
     localurl: /docs/administration/audit-logs
