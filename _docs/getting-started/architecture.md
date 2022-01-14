@@ -14,8 +14,8 @@ CSDP is heavily focused around making an enterprise version on top of argo echo 
 {% include
 image.html
 lightbox="true"
-file="/images/getting-started/architecture/architecture.png"
-url="/images/getting-started/architecture/architecture.png"
+file="/images/getting-started/architecture/simple-architecture.png"
+url="/images/getting-started/architecture/simple-architecture.png"
 alt="Architecture"
 caption="Architecture"
 max-width="100%"
