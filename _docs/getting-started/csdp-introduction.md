@@ -1,5 +1,5 @@
 ---
-title: "WIP: Introducing CSDP"
+title: "Introducing CSDP"
 description: ""
 group: getting-started
 toc: true
@@ -15,7 +15,7 @@ With CSDP teams can:
 * Get enterprise-level dedicated support for Argo deployments
  
 ### CSDP and open source Argo
-CSDP brings you the power of the complete Argo project for your Kubernetes deployments:  
+CSDP brings you the power of the Argo project for your Kubernetes deployments:  
 
 * Argo CD for declarative continuous deployment with Kubernetes
 * Argo Rollouts for progressive delivery with Kubernetes
@@ -33,7 +33,7 @@ CSDP is GitOps centric, and supports GitOps from the ground up. CSDP leverages A
 * The CSDP audit log is derived from the Git changelog  
 * CSDP access control is derived from Git permissions  
 
-For details, see [GitSource entity]({{site.baseurl}}/docs/getting-started/entity-model) and [access control]({{site.baseurl}}/docs/administration/access-control).
+For details, see [entity model]({{site.baseurl}}/docs/getting-started/entity-model) and [access control]({{site.baseurl}}/docs/administration/access-control).
  
 ### CSDP user interface
 And finally, the CSDP UI gives you easy access to all the functionality, and visibility at all times to key information:  
