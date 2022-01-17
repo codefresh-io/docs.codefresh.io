@@ -1,5 +1,5 @@
 ---
-title: "WIP: 3. Trigger the Hello World example pipeline"
+title: "Trigger the Hello World example pipeline"
 description: ""
 group: getting-started
 sub-group: quick-start
@@ -11,7 +11,7 @@ The two Hello World example pipelines are triggered by different event condition
 * Git (GitHub) event 
 * Calendar (cron) event
 
-Let's focus for now on the `github/hello-world` pipeline.
+For the quick start, let's focus on the `github/hello-world` pipeline.
 
 ### View pipelines
 View the pipelines in CSDP. 
@@ -31,8 +31,8 @@ View the pipelines in CSDP.
    * The `cron/hello-world` pipeline shows statistics as it has already been triggered based on the `cron` interval.  
 
 ### View and update manifest
-Because we don't have a workflow for this pipeline, you will configure the git Source resource in the pipeline's **Manifest**.
-1. To drill down, select the pipeline name.
+Because we don't have a workflow for this pipeline, you will configure the Git Source resource in the pipeline's **Manifest** tab.
+1. In the **Pipelines** page, to drill down, select the pipeline name.
 1. Select the **Manifest** tab, and click the arrowhead to expand the resource view.
   
    {% include 
@@ -58,7 +58,7 @@ Because we don't have a workflow for this pipeline, you will configure the git S
 1. Update the public URL for the Webhook event:
   * From the expanded resource manifest, select `event-source.git-source.yaml`.
   * Select **Edit** and scroll to **line 29** in the resource file.    
-  * Replace the placeholder with a valid URL to which to send Webhooks and can be accessed by the cluster. 
+  * Replace the placeholder with a valid URL which can be accessed by the cluster, and to which to send Webhooks. 
   * Select **Commit** to commit your changes.  
   
      {% include 

@@ -6,13 +6,13 @@
   - title: Quick start
     url: "/quick-start"
     sub-pages:
-      - title: Verify runtime requirements
+      - title: Prepare for runtime installation
         url:  "/verify-requirements"
       - title: Install runtime
         url: "/runtime"
       - title: Trigger the Hello World example pipeline
         url: "/hello-world"
-      - title: Create your first CI pipeline
+      - title: Create a basic CI pipeline
         url: "/create-ci-pipeline"
   - title: Main concepts
     url: "/main-concepts"

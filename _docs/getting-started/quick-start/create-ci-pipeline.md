@@ -1,5 +1,5 @@
 ---
-title: "WIP: 4. Create a basic CI pipeline"
+title: "Create a basic CI pipeline"
 description: ""
 group: getting-started
 sub-group: quick-start
@@ -23,7 +23,7 @@ Required for: Git and CSDP UI.
 
 1. Create your personal token with a valid `expiration` date and `scope` with `base64` encoding.
 
-  For CSDP pipelines, you need `repo` and `admin-repo.hook`:  
+  For CSDP pipelines, you need `repo` and `admin-repo.hook` scopes:  
   
   {% include 
    image.html 
@@ -68,12 +68,15 @@ Create a secret to use with Docker registry in `dockerconfig.json`.
 
 1. Do one of the following:
   * Follow the instructions in this [link](​​https://jamesdefabia.github.io/docs/user-guide/kubectl/kubectl_create_secret_docker-registry/)
-  * Run this command:
-     `kubectl create secret docker-registry <docker-registry-name> --docker-username=<docker-registry-username> --docker-password=<docker-registry-password> --docker-email=<docker-registry-email> [--docker-server=string] [--from-literal=key1=value1] [--dry-run]`  
-     where:  
-     * `<docker-registry-name>` is the Docker Registry for which to create the secret.
-     * `<docker-registry-username>` and <docker-registry-password> are your username and password authentication credentials.
-     * `<docker-registry-email>` is the ???.
+  * Run this command:  
+
+    `kubectl create secret docker-registry <docker-registry-name> --docker-username=<docker-registry-username> --docker-password=<docker-registry-password> --docker-email=<docker-registry-email> [--docker-server=string] [--from-literal=key1=value1] [--dry-run]`    
+
+    where:  
+
+      * `<docker-registry-name>` is the Docker Registry for which to create the secret.
+      * `<docker-registry-username>` and `<docker-registry-password>` are your username and password authentication credentials.
+      * `<docker-registry-email>` is the email of the Docker registry.
 
 ### Git: Create CI pipeline 
 Create a CI pipeline via Git. Make sure you have your personal Git token and the secret for the Docker Registry before you start.  
@@ -81,7 +84,7 @@ Create a CI pipeline via Git. Make sure you have your personal Git token and the
 #### Before you begin
 1. Create a personal Git token
 1. Create the Docker Registry secret
-1. Fork the repo, `<repo_name>` to work with the quick start micro service application
+1. Fork the repo, `<repo_name>` to work with the quick start microservice application
 
 #### Download and commit CI pipeline resource files 
 The basic CI pipeline comprises resource files that you must download and then commit to the Git repository. For the purposes of the quick start, you will commit them to the Git repo you selected or created during runtime installation.
@@ -94,10 +97,10 @@ The basic CI pipeline comprises resource files that you must download and then c
   CSDP syncs these resource definitions to your cluster, and create the resources in the cluster.  
 1. In the CSDP UI, view the newly created pipeline in [Pipelines]((https://g.codefresh.io/2.0/pipelines){:target="\_blank"}).
 
-#### Configure pipeline with demo micro service application
+#### Configure pipeline with demo microservice application
 
-1. Fork the repository: ??
-2. Update the event source to listen to events from the forked repository.
+
+1. Update the event source to listen to events from the forked repository.
   * Open `eventSource.git-ci-source.yaml`. 
   * In line **22**, update `names` and `owner` for `repositories`:   
     For `names`, verify that `express-microservice`, the name of the forked demo service is displayed.  
@@ -110,23 +113,26 @@ The basic CI pipeline comprises resource files that you must download and then c
           - express-microservice
         owner: <github-user-name>
      ...
-    ```
-  * In line **32**, paste the public URL with access to your cluster to enable the Webhook.  
+    ```  
+    <br>
 
-      > Remember not to add the trailing `/`.   
+  * In line **32**, paste the public URL with access to your cluster to enable the Webhook. Remember not to add the trailing `/`.   
 
-      ```yaml
+    ```yaml
        ...
        webhook:
        url: <your-public-url>
        ...
-    ```
+  
+    ```    
+
+{:start="2"}
 1. Commit the file. 
 1. Confirm the file has been updated:
   * In the CSDP UI, go to [Pipelines]((https://g.codefresh.io/2.0/pipelines){:target="\_blank"}). 
   * Select the **Manifests** tab, and then select the `eventsource` resource. It may take a few seconds to update. 
   * Verify that you see your changes.
-1. On the toolbar, select open the  Notifications on sync event start and completion.
+1. From the toolbar, open the **Notifications** panel to see sync event start and completion.
 
 
 #### Trigger an event for the CI pipeline

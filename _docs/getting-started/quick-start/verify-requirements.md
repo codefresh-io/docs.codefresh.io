@@ -1,5 +1,5 @@
 ---
-title: "WIP: 1. Prepare for runtime installation"
+title: "Prepare for runtime installation"
 description: ""
 group: getting-started
 sub-group: quick-start
@@ -14,11 +14,11 @@ If this is your first CSDP installation, review and confirm that your deployment
 
 If you already have a runtime installation on your cluster, you have two options:
 1. To install on the same cluster, first uninstall the existing runtime. Currently, you can install a single runtime per cluster.
-1. Install on a different cluster, verifying that you meet minimum requirements.  
+1. Install on a different cluster, verifying that you meet the minimum requirements.  
 
 **Uninstallation tips for existing runtimes**
-* Before you run uninstall from the CSDP UI or `cf runtime <name> uninstall` from the CLI, delete all CSDP-related namespaces.
-* If the namespace is frozen in the Terminating status, it could be that the namespace has resources with finalizers that prevents them from being deleted.
+* Before you run uninstall an existing runtime from the CSDP UI, or run `cf runtime <name> uninstall` from the CLI, delete all CSDP-related namespaces.
+* If the namespace is frozen in the `Terminating` status, it could be because the namespace has resources with finalizers that prevent it them from being deleted.
   Here's how you to remove finalizers using `k9s`:
   * In the `applications` view, do the following for each application:
     * Hit `e` to edit the YAML.
