@@ -44,7 +44,7 @@
   icon: images/home-icons/integrations.svg
   url: ''
   links:
-    - title: Runtime requirements
+    - title: Requirements
       localurl: /docs/runtime/requirements/
     - title: Installation
       localurl: /docs/runtime/installation

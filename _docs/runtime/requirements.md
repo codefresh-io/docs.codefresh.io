@@ -6,21 +6,22 @@ toc: true
 ---
 
 
-The requirements listed are the **_minimum_** requirements for CSDP (Codefresh Software Developement Platform).
+The requirements listed are the **_minimum_** requirements for CSDP (Codefresh Software Development Platform) runtimes.
 
 ### Kubernetes cluster requirements
 This section lists cluster requirements.
 
 #### Cluster version
-Kubernetes cluster version 1.20, without Argo Project components
+Kubernetes cluster version 1.20 or higher, without Argo Project components
 > In the documentation, Kubernetes and K8s are used interchangeably. 
 
 #### Ingress controller
-Configure your Kubernetes cluster with an Ingress controller component that is exposed from the cluster. For detailed information, see the [Kubernetes documentation on ingress controllers](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/).  
-
+* Ingress controller in cluster  
+  Configure your Kubernetes cluster with an Ingress controller component that is exposed from the cluster. Currently, we support `Traefik` and `NGINX` ingress controllers. 
 > Tip:   
   Verify that the ingress controller has a valid external IP address:  
- 
+* Valid SSL certificate  
+  The ingress controller must have a valid SSL certificate from an authorized CA (Certificate Authority) for secure runtime installation.  
 
 #### Default `IngressClass` 
 The `IngressClass` resource, or any one of them if you have more than one, must be tagged as the default.  
@@ -36,7 +37,7 @@ To tag an `IngressClass` resource as the default, add this `ingressclass.kuberne
   ```
 
 #### Node requirements
-* Memory: 3000 MB
+* Memory: 5000 MB
 * CPU: 2
 
 #### Runtime namespace permissions for resources
@@ -59,12 +60,11 @@ This section lists the requirements for Git installation repositories.
 If you are using an existing repo, make sure it is empty.
 
 #### Git token
-CSDP requires a GitHub Personal Access Token for runtime installation.
-To create a Git token, see [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).  
+CSDP requires a GitHub Personal Access Token (PAT) for runtime installation.
+For detailed information on GitHub, see [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).  
 
 The token must have:
-* `base64` encoding
-*  Valid expiration: Default is `30 days`  
+* Valid expiration: Default is `30 days`  
 * Scope: `repo` and `admin-repo.hook`:  
   
   {% include 

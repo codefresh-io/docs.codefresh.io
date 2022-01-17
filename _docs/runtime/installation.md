@@ -9,7 +9,7 @@ toc: true
 Codefresh runtime installs the Codefresh Software Development Platform (CSDP), comprising Argo CD components and CSDP-specific components. The Argo CD components are derived from a fork of the Argo ecosystem, and do not correspond to the open-source versions available.
 
 There are two parts to installing runtimes:
-1. Installing the CSDP CLI, a one-time action, typically required only for initial CDSP setup.
+1. Installing the CSDP CLI
 2. Installing the CSDP runtime from the CLI. The runtime is installed in a specific namespace on your cluster. You can install more runtimes on different clusters in your deployment.  
  Every runtime installation makes commits to two Git repos: 
    * Runtime install repo: The installation repo that manages the runtime itself with Argo CD. If the repo URL does not exist, runtime creates it automatically.   
@@ -31,7 +31,7 @@ Before installation, review [CSDP architecture]({{site.baseurl}}/docs/getting-st
 #### Runtime prerequisites
 Before you install the CSDP runtime, verify that:
 * Your deployment conforms to our [system requirements]({{site.baseurl}}/docs/runtime/requirements)
-* You have a Personal Access Token (PAT) for authentication to the Git installation repo, that you will create or select during runtime installation.   
+* You have a Personal Access Token (PAT) for authentication to the Git installation repo that you will create or select during runtime installation.   
   To create a Git token, see [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
   > When you create the Git token, set the correct expiration date and scope: 
    Expiration: Default is `30 days`  
@@ -44,6 +44,9 @@ To install a CSDP runtime, you can either pass the flags in the runtime install 
 
 **Runtime name**  
    The runtime name must start with a lower-case character, and can include up to 62 lower-case characters and numbers.
+
+**Insecure flag**  
+   If the Ingress controller does not have a valid SSL certificate, you can continue with the installation using the `--insecure` flag in the install command.  
 
 **Kube context**  
   Select the Kube context from the list of available contexts. The current context, which is the cluster currently the default for `kubectl`,
@@ -86,7 +89,7 @@ To install a CSDP runtime, you can either pass the flags in the runtime install 
   * App-proxy facilitating behind-firewall access to Git 
   * Git Source entity that references the`[repo_name]_git-source`  
 
-Once the runtime is successfully installed, it is provisioned on the Kubernetes cluster, and displayed in the Runtimes page. 
+Once the runtime is successfully installed, it is provisioned on the Kubernetes cluster, and displayed in the **Runtimes** page. 
 
 ### What to read next
 [Manage runtimes]({{site.baseurl}}/docs/runtime/monitor-manage-runtimes/)

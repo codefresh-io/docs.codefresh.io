@@ -57,9 +57,7 @@
       url: "/monitor-manage-runtimes"
     - title: Git Source management
       url: "/git-sources"
-    - title: Troubleshooting
-      url: "/troubleshooting"
-
+    
 
 - title: CI/CD Guides
   url: "/ci-cd-guides"

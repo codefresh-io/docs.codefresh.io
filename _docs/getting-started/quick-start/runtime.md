@@ -21,7 +21,7 @@ Installing a runtime includes installing the:
 A runtime requires a Git token for authentication to the Git installation repository.
 Have your GitHub Personal Authentication Token (PAT) ready with a valid expiration date and access permissions:
 * Expiration: Either the default of 30 days or any duration you consider logical.
-* Access scope: Set to `repo`
+* Access scopes: Set to `repo` and `admin-repo.hook`
 
   {% include 
    image.html 
@@ -53,7 +53,8 @@ Downloading the CSDP CLI requires you to select the download mode and OS, genera
 ### Install CSDP runtime
 For the quick start, you will install the runtime through the CSDP CLI that you downloaded previously. 
 
-1. To start runtime installation, run `cf runtime install`.
+1. To start runtime installation, run `cf runtime install`.  
+  >If you don't have a valid SSL certificate for the Ingress controller, and want to continue with the installation, add the `--insecure` flag to the runtime command. 
 1. Follow the prompts in the CLI wizard to complete the installation:
    * **Runtime name**: The name of your runtime, starting with a lower-case character, and including up to 63 characters and numbers. Example: `csdpproduction`
 	* **Select Kube context**: Your current context is highlighted. Press Enter to select it, or use the arrow keys to select a different context. 
