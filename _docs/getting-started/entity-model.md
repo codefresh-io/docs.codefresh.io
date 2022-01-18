@@ -5,16 +5,16 @@ group: getting-started
 toc: true
 ---
 
-The CSDP entity model is derieved from these entity types:
-* CSDP account/user management entities, 
+The CSDP entity model is derived from these entity types:
+* CSDP account/user management entities 
 * Argo ecosystem entities
-* Workflow, runtime, and Git Source entities, 
+* Workflow, runtime, and Git Source entities 
 * CSDP-specific entities such as pipelines, images, and applications
 
 
 
-### CSDP account/user management
-The CSDP account/user management category includes entities that do not share a direct relationship to the CSDP domain. These are enterprise-specific entities in standard SAAS solution.
+### CSDP account/user management entities
+The CSDP account/user management entity types includes entities that do not share a direct relationship to the CSDP domain. These are enterprise-specific entities in standard SAAS solutions.
 
 #### Account
 Every user who signs in to CSDP gets a private administrator user account.
@@ -37,7 +37,7 @@ A user in CSDP is one who has completed the sign-up process, and can log in usin
 For details, please contact [Sales](mailto:sales@codefresh.io?subject=[CSDP] CSDP billing inquiry).
 
 #### Single Sign-On (SSO)
-Enterprise accounts can configure SSO. For details, see [Federated Single Sign-On (SSO) overview](({{site.baseurl}}/docs/administration/single-sign-on.md/)).
+Enterprise accounts can configure SSO. For details, see [Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/administration/single-sign-on/).
 
 #### Security configuration
 Security settings include: 

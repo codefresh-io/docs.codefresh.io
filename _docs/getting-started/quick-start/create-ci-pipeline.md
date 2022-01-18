@@ -6,9 +6,11 @@ sub-group: quick-start
 toc: true
 ---
 
-Now that you have configured and run the Hello World demo pipeline, let's create a more advanced pipeline.  
+Now that you have configured and run the Hello World demo pipeline, you can create a more advanced pipeline.  
 
-You will create a basic CI pipeline, via Git, and from the CSDP UI, that:  
+For the quick start, you will create a basic CI pipeline, via Git, and from the CSDP UI.  
+
+The pipeline:  
 
 * Clones a Git repository
 * Builds a docker image using `kaniko`
@@ -21,8 +23,7 @@ Some tasks are common to both methods of creating pipelines.
 ### Create a Personal Access Token (PAT)
 Required for: Git and CSDP UI.
 
-1. Create your personal token with a valid `expiration` date and `scope` with `base64` encoding.
-
+1. Create your personal token with a valid `expiration` date and `scope` with `base64` encoding.  
   For CSDP pipelines, you need `repo` and `admin-repo.hook` scopes:  
   
   {% include 
@@ -98,8 +99,6 @@ The basic CI pipeline comprises resource files that you must download and then c
 1. In the CSDP UI, view the newly created pipeline in [Pipelines]((https://g.codefresh.io/2.0/pipelines){:target="\_blank"}).
 
 #### Configure pipeline with demo microservice application
-
-
 1. Update the event source to listen to events from the forked repository.
   * Open `eventSource.git-ci-source.yaml`. 
   * In line **22**, update `names` and `owner` for `repositories`:   
@@ -206,15 +205,8 @@ Make a change to a file in the Git repository to trigger the pipeline.
 
 1. Go to the Git repository you defined or selected for the trigger condition.
 1. Make a change to any file to get a commit event.
-1. In the CSDP UI, go back to [Pipelines]((https://g.codefresh.io/2.0/pipelines){:target="\_blank"})) to see the new workflow for the pipeline.
+1. In the CSDP UI, go back to [Pipelines]((https://g.codefresh.io/2.0/pipelines){:target="\_blank"}) to see the new workflow for the pipeline.
 1. Select the workflow to see detailed TBD
 
 
-Continue to tweak the pipeline and add more capabilities. 
-
-
-
-
-
-
-  
+Continue to tweak the pipeline and enhance its capabilities. 

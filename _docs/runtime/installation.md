@@ -15,8 +15,7 @@ There are two parts to installing runtimes:
    * Runtime install repo: The installation repo that manages the runtime itself with Argo CD. If the repo URL does not exist, runtime creates it automatically.   
    * Git Source repo: Created automatically during runtime installation. The repo where you store manifests to run CSDP pipelines. 
 
-Before installation, review [CSDP architecture]({{site.baseurl}}/docs/getting-started/architecture).
-
+ See [CSDP architecture]({{site.baseurl}}/docs/getting-started/architecture).
 
 ### Where do you install runtimes?
 * If this is your first CSDP installation, in the Welcome page, select **+ Install Runtime**.
@@ -24,7 +23,7 @@ Before installation, review [CSDP architecture]({{site.baseurl}}/docs/getting-st
 
 ### Installing the CSDP CLI
 * CLI mode  
-  Install the Codefresh CLI using the option that best suits you: Curl, Brew, or standard download. If you are not sure which OS to select for Curl and Brew, simply select one, and Codefresh automatically identifies and selects the right OS for CLI installation
+  Install the CSDP CLI using the option that best suits you: `curl`, `brew`, or standard download. If you are not sure which OS to select for `curl`, simply select one, and we automatically identify and select the right OS for CLI installation.
 
 ### Installing the CSDP runtime
 

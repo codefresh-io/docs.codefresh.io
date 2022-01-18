@@ -5,7 +5,9 @@ group: getting-started
 toc: true
 ---
 
-The Codefresh Software Delivery Platform (CSDP), is a full-featured, turn-key solution for application deployments and releases. Powered by the Argo Project, CSDP uses Argo CD, Argo Workflows, Argo Events, and Argo Rollouts, extended with unique functionality and features essential for enterprise deployments. CSDP offers security, maintainability, traceability, and most importantly, a single control plane for all stakeholders, be they developers, operators, product owners or project managers.
+The Codefresh Software Delivery Platform (CSDP), is a full-featured, turn-key solution for application deployments and releases. Powered by the Argo Project, CSDP uses Argo CD, Argo Workflows, Argo Events, and Argo Rollouts, extended with unique functionality and features essential for enterprise deployments.  
+
+CSDP offers security, maintainability, traceability, and most importantly, a single control plane for all stakeholders, be they developers, operators, product owners or project managers.
  
 With CSDP teams can:
  
@@ -17,9 +19,9 @@ With CSDP teams can:
 ### CSDP and open source Argo
 CSDP brings you the power of the Argo project for your Kubernetes deployments:  
 
-* Argo CD for declarative continuous deployment with Kubernetes
-* Argo Rollouts for progressive delivery with Kubernetes
-* Argo Workflows as the workflow engine for Kubernetes
+* Argo CD for declarative continuous deployment 
+* Argo Rollouts for progressive delivery 
+* Argo Workflows as the workflow engine 
 * Argo Events for event-driven workflow automation framework
 
 CSDP creates a conformed fork of the Argo project, providing an enterprise-supported version of the same, enhanced with unique functionality.

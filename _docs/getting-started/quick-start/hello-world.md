@@ -31,7 +31,7 @@ View the pipelines in CSDP.
    * The `cron/hello-world` pipeline shows statistics as it has already been triggered based on the `cron` interval.  
 
 ### View and update manifest
-Because we don't have a workflow for this pipeline, you will configure the Git Source resource in the pipeline's **Manifest** tab.
+As we don't have a workflow for this pipeline, you will configure the Git Source resource in the pipeline's **Manifest** tab.
 1. In the **Pipelines** page, to drill down, select the pipeline name.
 1. Select the **Manifest** tab, and click the arrowhead to expand the resource view.
   

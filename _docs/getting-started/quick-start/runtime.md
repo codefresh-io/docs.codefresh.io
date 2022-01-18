@@ -7,7 +7,7 @@ toc: true
 ---
 
 
-Installing the runtime, installs the Codefresh Software Development Platform (CSDP), comprising Argo project components and CSDP-specific components. We maintain an enterprise-supported version of the Argo CD components, derived from a conformed fork of the Argo ecosystem.
+Installing the runtime, installs the Codefresh Software Development Platform (CSDP), comprising Argo project components and CSDP-specific components. The rgo Project is an enterprise-supported version of the Argo CD components, derived from a conformed fork of the Argo ecosystem.
 
 ### About runtime installation
 Installing a runtime includes installing the:  
@@ -26,8 +26,8 @@ Have your GitHub Personal Authentication Token (PAT) ready with a valid expirati
   {% include 
    image.html 
    lightbox="true" 
-   file="/images/getting-started/github-pat.png" 
-   url="/images/getting-started/github-pat.png" 
+   file="/images/getting-started/quick-start/quick-start-git-event-permissions.png" 
+   url="/images/getting-started/quick-start/quick-start-git-event-permissions.png" 
    alt="GitHub PAT permissions" 
    caption="GitHub PAT permissions"
    max-width="30%" 
@@ -41,17 +41,18 @@ Downloading the CSDP CLI requires you to select the download mode and OS, genera
 1. Download the Codefresh CLI:
   * Select one of the methods. 
   * Generate the API key and create the authentication context. 
-    {% include 
+
+   {% include 
    image.html 
    lightbox="true" 
    file="/images/getting-started/quick-start/quick-start-download-cli.png" 
-   url="/images/getting-started/quick-start/quick-start-download-cli.png" 
-   alt="Download CLI to install runtime" 
-   caption="Download CLI to install runtime"
+   url="/images/getting-started/quick-start/quick-start-download-cli.png"
+   alt="Download CSDP CLI to install runtime" 
+   caption="Download CSDP CLI to install runtime"
    max-width="30%" 
    %} 
 ### Install CSDP runtime
-For the quick start, you will install the runtime through the CSDP CLI that you downloaded previously. 
+For the quick start, install the runtime through the CSDP CLI that you downloaded previously. 
 
 1. To start runtime installation, run `cf runtime install`.  
   >If you don't have a valid SSL certificate for the Ingress controller, and want to continue with the installation, add the `--insecure` flag to the runtime command. 
@@ -89,7 +90,7 @@ The **Runtimes** dashboard shows the runtime you just installed. You can drill d
    file="/images/getting-started/quick-start/quick-start-runtime-components.png" 
    url="/images/getting-started/quick-start/quick-start-runtime-components.png"
    alt="Runtime components tab" 
-   caption="Runtime components tab"
+   caption="Runtime Components tab"
    max-width="30%" 
    %} 
 
