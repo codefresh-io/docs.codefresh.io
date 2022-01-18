@@ -62,7 +62,5 @@
   icon: images/home-icons/integrations.svg
   url: ''
   links:
-    - title: Common issues
-      localurl: /docs/troubleshooting/common-issues
-    - title: Runtime issues
+    - title: Runtimes
       localurl: /docs/troubleshooting/runtime-issues

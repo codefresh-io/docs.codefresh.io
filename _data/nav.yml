@@ -80,12 +80,7 @@
 - title: Troubleshooting
   url: "/troubleshooting"
   pages:
-    - title: Common issues
-      url: "/common-issues"
-      sub-pages:
-        - title: Non admin users can are thrown out back to classic Codefresh
-          url: "/non-admin-users-support"
-    - title: Runtime issues
+    - title: Runtimes
       url: "/runtime-issues"
 
 
