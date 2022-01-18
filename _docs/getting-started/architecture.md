@@ -5,44 +5,40 @@ group: getting-started
 toc: true
 ---
 
-CSDP architecture is built on the successfull classic Codefresh platform and re-uses heavy parts of the existing classic platform.
+The Codefresh Software Development Platform (CSDP) solution is built around an enterprise version of the Argo ecosystem, that is fully GitOps-compliant, with industry-standard security.
 
-That being said CSDP has a complete different architecture in many of its concepts.
-
-CSDP is heavily focused around making an enterprise version on top of argo echo system components and doing that in a fully GitOps approach way and in the most possible secured way in the industry.
 
 {% include
 image.html
 lightbox="true"
 file="/images/getting-started/architecture/simple-architecture.png"
 url="/images/getting-started/architecture/simple-architecture.png"
-alt="Architecture"
-caption="Architecture"
+alt="CSDP architecture"
+caption="CSDP architecture"
 max-width="100%"
 %}
 
-## CSDP Platform
-The CSDP platform is the SAAS side of the solution, which is in charge of securely storing and retreiving the user entities.
+### CSDP platform
+The CSDP platform is the SAAS component in the CSDP solution. Located outside the firewall, it does not communicate directly with the other CSDP components such as the CSDP runtime, the organization system, and user systems behind the firewall.  
 
-The CSDP platform does not have direct communication with the account runtime or organization system, no direct communication is made and it is assumed that all the user systems are behind firewall.
+The CSDP platform:
+* Securely stores and retrieves user entities
+* Enforces the permissions model
+* Controls authentication, user management, and billing
 
-the CSDP platform also control authentication, user management, billing, enforcement of permissions model.
+### CSDP runtime
+The CSDP runtime is a logical box installed on the customer's K8s cluster. It houses the enterprise distribution of the Argo ecosystem and the Codefresh application proxy.  
 
-## CSDP Runtime
-A CSDP runtime is a logical box that is installed on the customer k8s cluster.
+The CSDP runtime:
+* Ensures that the installation repository and the Git Sources are always in sync, and applies Git changes back to the cluster
+* Receives events and information from the user's organization systems to execute workflows
 
-It contains all enterprise codefresh distribution of the argo echo system and the Codefresh application proxy
+### CSDP application proxy
+The CSDP application proxy interfaces between users and organization systems behind the enterprise firewall. 
 
-The CSDP runtime also receives events and information from your organization systems in order to execute workflows.
-
-the CSDP runtime is in charge of making sure that your runtime installation repo and git sources are properly connected and applying changes correctly back to the cluster.
-
-## CSDP Application Proxy
-The CSDP application proxy is in charge of accepting traffic from users and performing behind the firewall operations like
-* committing changes to git repositories to make changes to GitOps controlled entities
-* making operations against the argo echo system components for non GitOps controlled operations like terminating an argo workflow
-* retrieving a list of all your git repositories to be visualized in the clients
-
-The CSDP application proxy also communicates with the CSDP platform in order to get permission to perform required operations.
-
-The CSDP application proxy performs operations on git repository by impersonating with the current user that is performing the operations
+The CSDP application proxy:
+* Gets permissions from the CSDP platform for the required operations  
+* Impersonates current user to perform operations
+* Commits changes to Git repositories to make changes to GitOps-controlled entities
+* Performs state-change operations to non-GitOps-controlled entities, for example, to Argo ecosystem components, such as terminating an Argo Workflow
+* Retrieves a list of Git repositories for visualization in CSDP client
