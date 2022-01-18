@@ -5,87 +5,80 @@ group: getting-started
 toc: true
 ---
 
-CSDP entity model can be splited into 4 different categories
+The CSDP entity model is derieved from these entity types:
+* CSDP account/user management entities, 
+* Argo ecosystem entities
+* Workflow, runtime, and Git Source entities, 
+* CSDP-specific entities such as pipelines, images, and applications
 
-## CSDP account/user management
-This category consists of all entities that you would normally find in a normal SAAS solution and does not have a direct relation to the domain of codefresh.
 
-### Account
-Every users that signs to CSDP will get an account that he will become its admin
 
-In case you were invited to CSDP you will not have a private account rahter you will be added as a collaborator to the invited account and will get the permission that the invitee has assigned to you
+### CSDP account/user management
+The CSDP account/user management category includes entities that do not share a direct relationship to the CSDP domain. These are enterprise-specific entities in standard SAAS solution.
 
-An account can have a limited amount of collaborators according to the current plan that will be attached to it.
+#### Account
+Every user who signs in to CSDP gets a private administrator user account.
 
-### User
-A user of CSDP is a person that has performed the sign up process.
+If you received an invitation to CSDP, instead of a private user account, you are added as a collaborator to the main account. Your permissions are based on those explicitly assigned to you.
 
-A user can login to the system using the various third party authorized systems
-* github
-* bitbucket
-* gitlab
-* azure
-* google
+The number of collaborators in an account is defined by the current plan associated with it.
 
-It is possible to configure SSO on your account which in that case users will only be allowed to login using the configured SSO
+#### User
+A user in CSDP is one who has completed the sign-up process, and can log in using authorized third-party systems such as:
+* GitHub
+* Bitbucket
+* GitLab
+* Azure
+* Google
 
-### Billing
-CSDP has yet to release an official pricing model. please contact our [Sales](mailto:sales@codefresh.io?subject=[CSDP] CSDP billing inquiry) for inquiry.
+> If you configure SSO (Single Sign-On) for the account, the user can log in using only the configured SSO.
 
-### single sign on
-Enterprise accounts can configure SSO
+#### Billing
+For details, please contact [Sales](mailto:sales@codefresh.io?subject=[CSDP] CSDP billing inquiry).
 
-### Security configuration
-Security configurations that are possible to be applied to your account
-* user session duration
-* domain restriction for invited collaborators
+#### Single Sign-On (SSO)
+Enterprise accounts can configure SSO. For details, see [Federated Single Sign-On (SSO) overview](({{site.baseurl}}/docs/administration/single-sign-on.md/)).
 
-## Argo echo system entities
-CSDP is built on top of the successful open source argo project and as such supports all the native argo projects entities.
-Every supported entity that exists in the open source projects can be applied to your CSDP account.
+#### Security configuration
+Security settings include: 
+* Inactivity timeout per collaborator account
+* Domain restriction for invitations
+
+### Argo ecosystem entities
+CSDP is built on top of the successful open source Argo project, and as such, supports all the native Argo project-entities.
+You can apply every supported entity that exists in the open source projects to your CSDP account.
 
 ### Workflow
-CSDP shows all the workflows that have been exexcuted on argo workflow.
+CSDP shows all the workflows executed with Argo Workflows.  
+Workflows with pipelines display links to the pipelines. Users can terminate or retry a workflow, and view its logs.
 
-In case that the workflow is associated with a pipeline that link will be shown, in cases where there is no link back to a pipeline, the workflow will be shown in it's native way
+### Runtime
+A runtime represents an installation of CSDP on the customer's K8s cluster, and contains all the components required to perform all tasks on the cluster.
 
-A full graph of the workflow is also represented and a user can perform all possible operations on the workflow (terminate, retry) and view its logs.
+Review [CSDP architecture]({{site.baseurl}}/docs/getting-started/architecture/), and [runtime installation ]({{site.baseurl}}/docs/runtime/installation/).
 
-## Runtime
-A runtime represents an installation of CSDP on a customer k8s cluster.
+### Git Source
+A Git Source is a link to a Git repository that stores GitOps-controlled entities. You can create as many as Git Sources as you require.
 
-A runtime contains all the required components in order to perform all required tasks on the user end k8s.
+To understand how to control Git Sources using GitOps, see [access control]({{site.baseurl}}/docs/administration/access-control/).
 
-Checkout the [architectural]({{site.baseurl}}/docs/getting-started/architecture/) diagram and overview for deeper explanation of the runtime architecture.
+### CSDP high-level entities
+CSDP creates high-level views that better represents, abstracts, and connects all the different entities in the Argo ecosystem.
 
-Checkout the full [runtime installation documentation]({{site.baseurl}}/docs/runtime/installation/) of the runtime 
+#### CI/CD pipeline
+A pipeline is a CSDP-representation of Argo Events, comprising an Argo Events Sensor and Argo Events Triggers. Every trigger in a sensor becomes a different pipeline in CSDP. The same sensor can be associated with multiple pipelines, if it has different trigger conditions.
 
-### Git source
-A git source is a link to a git repository in which you are intended to store all your GitOps controlled entities of CSDP.
+A pipeline links to the following Argo Events entities:
+* Sensor
+* Event Source
+* Workflow Template (or a cluster-level Workflow Template)
 
-You can create as many as required git sources.
+A pipeline also shows all the workflows created from the triggered event associated with that pipeline.
 
-Checkout the full [access controll documentation ]({{site.baseurl}}/docs/administration/access-control/) to better understand what exactly can be controlled via the GitOps approach/
+#### Image
+An image represents a built artifact of a Docker image, reported to CSDP using a dedicated interface.  
 
-## CSDP high level entities
-CSDP creates high level views that better represents, abstracts and connects all the different argo echo system entities
+Users can use a predefined [Argo Workflow Template](https://codefresh.io/argohub/workflow-template/codefresh-csdp) to help with transferring the image information to CSDP.
 
-### CI/CD pipeline
-A pipeline is a break down of an argo events sensor triggers.
-
-Each trigger in a sensor will become a pipeline.
-
-The pipeline has a link to the following entities:
-* argo events sensor
-* argo events eventsource
-* argo workflow workflowTemplates (or a cluster workflowTemplate)
-
-A pipeline will also be able to show all the workflow that have been created due to the triggered event that is attached with the pipeline.
-
-### Image
-Image represents a docker image built artifact that is reported to CSDP using a dedicated interface that the CSDP platform provides
-
-A user can easily use a premade [argo workflow template](https://codefresh.io/argohub/workflow-template/codefresh-csdp) that helps with transffering the image information back to CSDP.
-
-### Application
-A holistic view that shows all your argo cd and rollouts deployments that links back to the underlying artifacts and workflows.
+#### Application
+A holistic view of all your Argo CD and Argo Rollouts deployments that link to the underlying artifacts and workflows.
