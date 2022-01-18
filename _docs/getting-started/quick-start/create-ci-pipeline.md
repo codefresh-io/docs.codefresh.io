@@ -67,7 +67,7 @@ Required for: Git and CSDP UI
 Create a secret to use with Docker registry in `dockerconfig.json`.  
 
 1. Do one of the following:
-  * Follow the instructions in this [link](​​https://jamesdefabia.github.io/docs/user-guide/kubectl/kubectl_create_secret_docker-registry/)
+  * Follow the instructions in this [link](​​https://jamesdefabia.github.io/docs/user-guide/kubectl/kubectl_create_secret_docker-registry/).
   * Run this command:  
 
     `kubectl create secret docker-registry <docker-registry-name> --docker-username=<docker-registry-username> --docker-password=<docker-registry-password> --docker-email=<docker-registry-email> [--docker-server=string] [--from-literal=key1=value1] [--dry-run]`    
@@ -92,7 +92,7 @@ The basic CI pipeline comprises resource files that you must download and then c
 1. Download the following resource files:
   * Github-ci EventSource (`event-source.git-ci-source.yaml`). Download 
   * Express-ci Sensor (`sensor.express-ci.yaml`). Download 
-  * ci-simple WorkflowTemplate (`workflow-template.ci-simple.yaml`) Download 
+  * ci-simple WorkflowTemplate (`workflow-template.ci-simple.yaml`). Download 
 1. Save and commit to the `resource_<runtime-name>` folder in the `<runtime-name>_git.source` repo that was created during runtime installation.   
   CSDP syncs these resource definitions to your cluster, and create the resources in the cluster.  
 1. In the CSDP UI, view the newly created pipeline in [Pipelines]((https://g.codefresh.io/2.0/pipelines){:target="\_blank"}).
@@ -132,7 +132,7 @@ The basic CI pipeline comprises resource files that you must download and then c
   * In the CSDP UI, go to [Pipelines]((https://g.codefresh.io/2.0/pipelines){:target="\_blank"}). 
   * Select the **Manifests** tab, and then select the `eventsource` resource. It may take a few seconds to update. 
   * Verify that you see your changes.
-1. From the toolbar, open the **Notifications** panel to see sync event start and completion.
+1. From the toolbar, open the **Notifications** panel to see syncs for event start and completion.
 
 
 #### Trigger an event for the CI pipeline
@@ -140,7 +140,7 @@ To complete the CI pipeline, trigger an event that runs the pipeline.
 
 1. Update the `readme.md` file in the root of the Git repo and commit the changes. 
 1. Now navigate to the simple-ci pipeline and see that new workflow has been created.
-1. Click on the workflow to view it’s execution details.  
+1. Click on the workflow to view its execution details.  
   This pipeline:
   * Clones the `express-microserivce` repo
   * Builds the image
@@ -177,7 +177,7 @@ Use our pipeline creation wizard to create the CI pipeline. Make sure you have y
   * **Trigger Name**: The event configured in the sensor to trigger the Workflow Template, for example, `trigger-csdp-ci`.
 1. Select **Codefresh Starter Workflow Template**.
 1. From the list of Git Sources, select the Git Source to which to commit the resources for this pipeline.  
-  For the quick start, you can select ???
+  For the quick start, you can select TBD
 1. Your workflow template is now set. Select **Next** to define the trigger conditions.
 1. In the **Configuration** tab, select **Trigger Conditions**. 
 1. From the **Add** dropdown, select **Git Events**.
@@ -206,8 +206,8 @@ Make a change to a file in the Git repository to trigger the pipeline.
 
 1. Go to the Git repository you defined or selected for the trigger condition.
 1. Make a change to any file to get a commit event.
-1. In the CSDP UI, go back to o [Pipelines]((https://g.codefresh.io/2.0/pipelines){:target="\_blank"})) to see the new workflow for the pipeline.
-1. Select the workflow to see detailed 
+1. In the CSDP UI, go back to [Pipelines]((https://g.codefresh.io/2.0/pipelines){:target="\_blank"})) to see the new workflow for the pipeline.
+1. Select the workflow to see detailed TBD
 
 
 Continue to tweak the pipeline and add more capabilities. 

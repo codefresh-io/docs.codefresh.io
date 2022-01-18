@@ -35,10 +35,10 @@ Before you install the CSDP runtime, verify that:
   To create a Git token, see [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
   > When you create the Git token, set the correct expiration date and scope: 
    Expiration: Default is `30 days`  
-   Scope: `repo`
+   Scope: `repo` and `admin-repo.hook` 
 
 #### Runtime installation
-To install a CSDP runtime, you can either pass the flags in the runtime install command in the UI, or run `cf runtime install`, and follow the prompts in the CSDP CLI wizard to enter the required values.
+To install a CSDP runtime, you can either pass the flags in the runtime install command in the UI, or run `cf runtime install`, and follow the prompts in the CLI wizard to enter the required values.
 
 #### Runtime installation flags
 
@@ -46,7 +46,7 @@ To install a CSDP runtime, you can either pass the flags in the runtime install 
    The runtime name must start with a lower-case character, and can include up to 62 lower-case characters and numbers.
 
 **Insecure flag**  
-   If the Ingress controller does not have a valid SSL certificate, you can continue with the installation using the `--insecure` flag in the install command.  
+   If the Ingress controller does not have a valid SSL certificate, to continue with the installation, add the `--insecure` flag to the installation command.  
 
 **Kube context**  
   Select the Kube context from the list of available contexts. The current context, which is the cluster currently the default for `kubectl`,
@@ -59,12 +59,10 @@ To install a CSDP runtime, you can either pass the flags in the runtime install 
   The Git token authenticating access to the GitHub installation repository.  
 
 **Ingress host**  
-
   The IP address or host name of the ingress controller component.  
 
 
 **Codefresh demo resources**  
-
   Optional. Install demo pipelines to use as a starting point to create your own pipelines. We recommend installing the demo resources as these are used in our quick start tutorials.
 
 #### Runtime components
@@ -94,3 +92,4 @@ Once the runtime is successfully installed, it is provisioned on the Kubernetes 
 ### What to read next
 [Manage runtimes]({{site.baseurl}}/docs/runtime/monitor-manage-runtimes/)
 [Manage Git Sources]({{site.baseurl}}/docs/runtime/git-sources/)
+[Troubleshooting runtime installation]({{site.baseurl}}/docs/troubleshooting/runtime-issues/)

@@ -25,26 +25,12 @@
   - title: Frequently asked questions
     url: "/faq"
 
-- title: Deployment
-  url: "/deployment"
+- title: Clients
+  url: "/clients"
   pages:
-    - title: GitOps dashboard overview
-      url: "/gitops-dashboard"
+    - title: Download CLI
+      url: "/csdp-cli"
 
-
-- title: Pipelines
-  url: "/pipelines"
-  pages:
-    - title: Managing your pipelines
-      url: "/managing-pipelines"
-    - title: Using secrets
-      url: "/using-secrets"
-    - title: Sharing file system
-      url: "/sharing-file-system"
-    - title: Using Docker
-      url: "/docker-operations"
-    - title: Codefresh marketplace
-      url: "/marketplace"
 
 - title: Runtime
   url: "/runtime"
@@ -59,19 +45,11 @@
       url: "/git-sources"
     
 
-- title: CI/CD Guides
-  url: "/ci-cd-guides"
-  pages:
-    - title: Create your first pipeline
-      url: "/first-pipeline"
-
 - title: Administration
   url: "/administration"
   pages:
     - title: Manage users
       url: "/add-users"
-    - title: User settings
-      url: "/user-settings"
     - title: Single Sign-On
       url: "/single-sign-on"
       sub-pages:
@@ -95,7 +73,7 @@
       url: "/access-control"
     - title: Audit
       url: "/audit"
-    - title: Codefresh platform IPs
+    - title: CSDP platform IPs
       url: "/platform-ip-addresses"
 
 
@@ -110,11 +88,6 @@
     - title: Runtime issues
       url: "/runtime-issues"
 
-- title: What's New?
-  url: "/whats-new"
-  pages:
-    - title: What's New In CAP?
-      url: "/whats-new"
 
 - title: Terms and Privacy Policy
   url: "/terms-and-privacy-policy"

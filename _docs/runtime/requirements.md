@@ -65,15 +65,15 @@ For detailed information on GitHub, see [Creating a personal access token](https
 
 The token must have:
 * Valid expiration: Default is `30 days`  
-* Scope: `repo` and `admin-repo.hook`:  
+* Scope: `repo` and `admin-repo.hook` 
   
   {% include 
    image.html 
    lightbox="true" 
    file="/images/getting-started/quick-start/quick-start-git-event-permissions.png" 
    url="/images/getting-started/quick-start/quick-start-git-event-permissions.png" 
-   alt="GitHub PAT permissions for CI pipeline" 
-   caption="GitHub PAT permissions for CI pipeline"
+   alt="GitHub PAT permissions for runtime" 
+   caption="GitHub PAT permissions for runtime"
    max-width="30%" 
    %}  
 

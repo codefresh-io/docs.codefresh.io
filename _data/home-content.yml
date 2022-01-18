@@ -18,27 +18,13 @@
     localurl: /docs/getting-started/faq/
 
 
-- title: Deployment
+- title: Clients
   icon: images/home-icons/deployment.svg
   url: ''
   links:
-    - title: GitOps dashboard overview
-      localurl: /docs/deployment/gitops-dashboard/
+    - title: CSDP CLI
+      localurl: /docs/clients/csdp-cli/
 
-- title: Pipelines
-  icon: images/home-icons/pipeline.svg
-  url: ''
-  links:
-  - title: Managing your pipelines
-    localurl: /docs/pipelines/managing-pipelines/
-  - title: Using secrets
-    localurl: /docs/pipelines/using-secrets/
-  - title: Sharing file system
-    localurl: /docs/pipelines/sharing-file-system/
-  - title: Using Docker
-    localurl: /docs/pipelines/docker-operations/
-  - title: Codefresh marketplace
-    localurl: /docs/pipelines/marketplace/
 
 - title: Runtime
   icon: images/home-icons/integrations.svg
@@ -53,12 +39,6 @@
     - title:  Git Source management
       localurl: /docs/runtime/git-sources/
 
-- title: CI/CD Guides
-  icon: images/home-icons/guides.png
-  url: ''
-  links:
-  - title: Create your first pipeline
-    localurl: /docs/ci-cd-guides/first-pipeline/
 
 - title: Administration
   icon: images/home-icons/integrations.svg
