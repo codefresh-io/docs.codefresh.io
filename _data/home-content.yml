@@ -27,7 +27,7 @@
 
 
 - title: Runtime
-  icon: images/home-icons/integrations.svg
+  icon: images/home-icons/runtimes.svg
   url: ''
   links:
     - title: Requirements
@@ -41,7 +41,7 @@
 
 
 - title: Administration
-  icon: images/home-icons/integrations.svg
+  icon: images/home-icons/administration.svg
   url: ''
   links:
   - title: Manage users
@@ -59,7 +59,7 @@
 
 
 - title: Troubleshooting
-  icon: images/home-icons/integrations.svg
+  icon: images/home-icons/troubleshooting.svg
   url: ''
   links:
     - title: Runtimes

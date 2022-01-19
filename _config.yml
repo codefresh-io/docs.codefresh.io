@@ -120,7 +120,7 @@ link_main:            "https://codefresh.io/codefresh-argo-platform/"
 link_cli:             "https://github.com/codefresh-io/cli-v2#installation"
 link_git_examples:    "https://github.com/codefresh-examples/examples/"
 link_api:             "https://g.codefresh.io/api/"
-link_plugins:         "https://github.com/codefresh-io/2.0-marketplace"
+link_plugins:         "https://codefresh.io/argohub/"
 link_community:       "https://community.codefresh.io/"
 
 ga_tracking_code:     "UA-53554200-2"
