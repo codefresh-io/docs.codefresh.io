@@ -89,6 +89,6 @@ To install a CSDP runtime, you can either pass the flags in the runtime install 
 Once the runtime is successfully installed, it is provisioned on the Kubernetes cluster, and displayed in the **Runtimes** page. 
 
 ### What to read next
-[Manage runtimes]({{site.baseurl}}/docs/runtime/monitor-manage-runtimes/)
-[Manage Git Sources]({{site.baseurl}}/docs/runtime/git-sources/)
+[Manage runtimes]({{site.baseurl}}/docs/runtime/monitor-manage-runtimes/)  
+[Manage Git Sources]({{site.baseurl}}/docs/runtime/git-sources/)  
 [Troubleshooting runtime installation]({{site.baseurl}}/docs/troubleshooting/runtime-issues/)
