@@ -87,7 +87,7 @@ You need to enter the following:
 * *client id* - your OKTA application client ID (see below).
 * client secret* - your OKTA application client secret (see below).
 * Client Host - your OKTA organization url (e.g `https://<company>.okta.com`). Keep in mind you don’t copy it from the admin view (e.g. `https://<company>-admin.okta.com`) because it’ll not work.
-* *Access Token* (optional) - OKTA API token that will be used to sync groups and users from OKTA to Codefresh. The token can be generated in OKTA by going to the security tab->API (see below).
+* *Access Token* (optional) - OKTA API token that will be used to sync groups and users from OKTA to Codefresh. The token can be generated in OKTA by going to the security tab->API (see below). Read-only access permissions is needed.
 * *App ID* - your Codefresh application ID in your OKTA organization that will be used to sync groups and users from OKTA to Codefresh. This ID can be taken by navigating to your Codefresh APP in OKTA and copy it from the URL (see below).
 
 {% include image.html 
