@@ -16,4 +16,4 @@ The tutorial guides you through installing the runtime, working with the demo pi
 1. [Trigger the Hello World example pipeline]({{site.baseurl}}/docs/getting-started/quick-start/hello-world)  
   Configure the Git event to trigger the demo pipeline. 
 1. [Create a basic CI pipeline]({{site.baseurl}}/docs/getting-started/quick-start/create-ci-pipeline)  
-  Create a new CI pipeline via Git and in the CSDP UI.
+  Create a new CI pipeline in CSDP.

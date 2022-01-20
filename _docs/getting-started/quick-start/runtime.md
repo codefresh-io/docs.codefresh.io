@@ -69,7 +69,7 @@ For the quick start, install the runtime through the CSDP CLI that you downloade
 ### Validate successful installation 
 The **Runtimes** dashboard shows the runtime you just installed. You can drill down into the runtime to see its components and Git Sources.   
 
-1. In the CSDP UI, go to the [**Runtimes**]((https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}) dashboard.  
+1. In the CSDP UI, go to the [**Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"} dashboard.  
 
    {% include 
    image.html 

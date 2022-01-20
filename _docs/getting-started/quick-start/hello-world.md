@@ -13,9 +13,29 @@ The two Hello World example pipelines are triggered by different event condition
 
 For the quick start, let's focus on the `github/hello-world` pipeline.
 
+### Create a PAT token
+To commit resources for the `github/hello-world` pipeline, you need to add a PAT to CSDP.
+
+1. Create your personal token with a valid `expiration` date and `scope` with `base64` encoding.  
+  For the pipeline, you need `repo` and `admin-repo.hook` scopes:  
+  
+  {% include 
+   image.html 
+   lightbox="true" 
+   file="/images/getting-started/quick-start/quick-start-git-event-permissions.png" 
+   url="/images/getting-started/quick-start/quick-start-git-event-permissions.png" 
+   alt="GitHub PAT permissions for Hello World pipeline" 
+   caption="GitHub PAT permissions for Hello World pipeline"
+   max-width="30%" 
+   %}  
+
+{:start="2"}
+1. In the CSDP UI, go to [User Settings](https://g.codefresh.io/2.0/user-settings){:target="\_blank"}, add your token.
+
 ### View pipelines
 View the pipelines in CSDP. 
-1. In the CSDP UI, go to [Pipelines](https://g.codefresh.io/2.0/pipelines){:target="\_blank"}. 
+
+1. In the CSDP UI, go to [Delivery Pipelines](https://g.codefresh.io/2.0/pipelines){:target="\_blank"}. 
 
   {% include 
    image.html 
@@ -47,29 +67,13 @@ As we don't have a workflow for this pipeline, you will configure the Git Source
   
   You can see these resources:    
 
-  * Event Source (`event-source.git-source.yaml`)
+  * Event Source (`event-source.git-source.yaml`).
   * Sensor (`sensor.git-source.yaml`)
   * Workflow Template (`workflow-template.hellow-world.yaml`)  
 
 
   > The pipeline is configured to run on a `PUSH` event in the Git repository.
 
-{:start="3"}
-1. Update the public URL for the Webhook event:
-  * From the expanded resource manifest, select `event-source.git-source.yaml`.
-  * Select **Edit** and scroll to **line 29** in the resource file.    
-  * Replace the placeholder with a valid URL which can be accessed by the cluster, and to which to send Webhooks. 
-  * Select **Commit** to commit your changes.  
-  
-     {% include 
-    image.html 
-   lightbox="true" 
-   file="/images/getting-started/quick-start/quick-start-git-source-manifest-edit.png" 
-   url="/images/getting-started/quick-start/quick-start-git-source-manifest-edit.png" 
-   alt="Edit `event-source.git-source.yaml` in Manifests tab" 
-   caption="Edit `event-source.git-source.yaml` in Manifests tab"
-   max-width="30%" 
-    %} 
 
 CSDP does the following:
 * Commits the changes to your Git repository.

@@ -12,8 +12,10 @@
         url: "/runtime"
       - title: Trigger the Hello World example pipeline
         url: "/hello-world"
-      - title: Create a basic CI pipeline
+      - title: Create a basic CI delivery pipeline
         url: "/create-ci-pipeline"
+
+        
   - title: Main concepts
     url: "/main-concepts"
   - title: Entity model
