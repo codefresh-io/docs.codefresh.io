@@ -17,7 +17,7 @@ Kubernetes cluster version 1.20 or higher, without Argo Project components
 
 #### Ingress controller
 * Ingress controller in cluster  
-  Configure your Kubernetes cluster with an Ingress controller component that is exposed from the cluster. Currently, we support `Traefik` and `NGINX` ingress controllers. 
+  Configure your Kubernetes cluster with an Ingress controller component that is exposed from the cluster. Currently, we support `Traefik` and `NGINX` ingress controllers. Provider specific [NGINX installation instructions can be found here](https://kubernetes.github.io/ingress-nginx/deploy/#environment-specific-instructions).
 > Tip:   
   Verify that the ingress controller has a valid external IP address:  
 * Valid SSL certificate  
