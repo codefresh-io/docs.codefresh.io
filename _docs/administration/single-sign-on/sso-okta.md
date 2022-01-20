@@ -22,7 +22,7 @@ see the [overview page]({{site.baseurl}}/docs/administration/single-sign-on/sso-
   url="/images/administration/sso/okta/image5.png"
   alt="Okta Dashboard"
   caption="Okta Dashboard"
-  max-width="70%"
+  max-width="30%"
   %}
 
 {:start="3"}
@@ -34,7 +34,7 @@ see the [overview page]({{site.baseurl}}/docs/administration/single-sign-on/sso-
   url="/images/administration/sso/okta/image8.png"
   alt="Okta Applications"
   caption="Okta Applications"
-  max-width="70%"
+  max-width="30%"
   %}
 
 {:start="4"}
@@ -46,7 +46,7 @@ see the [overview page]({{site.baseurl}}/docs/administration/single-sign-on/sso-
   url="/images/administration/sso/okta/image9.png"
   alt="Create new application"
   caption="Create new application"
-  max-width="70%"
+  max-width="30%"
   %}
 
 {:start="5"}
@@ -61,7 +61,7 @@ see the [overview page]({{site.baseurl}}/docs/administration/single-sign-on/sso-
   url="/images/administration/sso/okta/image1.png"
   alt="Choose Sign-on method"
   caption="Choose Sign-on method"
-  max-width="70%"
+  max-width="30%"
   %}
 
 {:start="6"}
@@ -77,7 +77,7 @@ see the [overview page]({{site.baseurl}}/docs/administration/single-sign-on/sso-
    url="/images/administration/sso/okta/image4.png"
    alt="OpenID integration"
    caption="OpenID integration"
-   max-width="70%"
+   max-width="30%"
    %}
    * Select **Save**.
 
@@ -91,7 +91,7 @@ file="/images/administration/sso/okta/image7.png"
 url="/images/administration/sso/okta/image7.png"
 alt="Client ID and secret"
 caption="Client ID and secret"
-max-width="70%"
+max-width="30%"
 %}
 
 {% include image.html 
@@ -100,7 +100,7 @@ file="/images/administration/sso/okta/image2.png"
 url="/images/administration/sso/okta/image2.png"
 alt="Access token"
 caption="Access token"
-max-width="70%"
+max-width="30%"
 %}
 
 {% include image.html 
@@ -109,11 +109,24 @@ file="/images/administration/sso/okta/image3.png"
 url="/images/administration/sso/okta/image3.png"
 alt="App ID"
 caption="App ID"
-max-width="70%"
+max-width="30%"
 %}
 
 ### Configure SSO for Okta in CSDP
-1. In CSDP, go to the SSO settings for Okta.
+
+1. In the CSDP UI, go to [Single Sign-On](https://g.codefresh.io/2.0/account-settings/single-sign-on){:target="\_blank"}.
+1. Select **+ Add Single Sign-On** and then select **Okta**.
+
+{% include image.html 
+lightbox="true" 
+file="/images/administration/sso/okta/sso-csdp-okta.png" 
+url="/images/administration/sso/okta/sso-csdp-okta.png"
+alt="SSO settings for Okta in CSDP"
+caption="SSO settings for Okta in CSDP"
+max-width="30%"
+%}
+
+{:start="3"}
 1. Enter the following:
   * **Client Name**: For-auto generation, leave empty. CSDP generates the client name once you save the settings.
   * **Display Name**: The Application name in OKTA.
@@ -124,7 +137,7 @@ max-width="70%"
   * **Access Token**: Optional. The OKTA API token used to sync groups and their users from OKTA to Codefresh. The token can be generated in OKTA by going to the security tab->API (see above).
   * **Application ID**: The Codefresh application ID in your OKTA organization, that will be used to sync groups and user from OKTA to Codefresh. This ID can be taken by navigating to your Codefresh APP in OKTA and copy it from the URL (see above).
 1. Optional. To automatically sync teams or groups in Okta to Codefresh, set **Auto group sync** to **ON**. This action syncs groups every 12 hours.  
-1. Select **Save**. Codefresh automatically generates the **Client Name** to which to identify the SSO configuration.
+1. Select **+Add**. Codefresh automatically generates the **Client Name** to which to identify the SSO configuration.
   Note it down. 
    
    {% include image.html 
@@ -133,7 +146,7 @@ max-width="70%"
   url="/images/administration/sso/okta/image6.png"
   alt="Client name"
   caption="Client name"
-  max-width="50%"
+  max-width="30%"
   %}
 
 ### Configure URIs in Okta

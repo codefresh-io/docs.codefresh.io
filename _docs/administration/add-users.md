@@ -12,11 +12,11 @@ Adding a user requires assigning a role, and optionally, an SSO provider:
 **Role**: Defines the user's access level, and is by default set to User. The Administrator role has full access to account settings. 
 For guidelines on access control, see [Access control]({{site.baseurl}}/docs/administration/access-control/).  
 
-**SSO**: If you have SSO, select the provider and then configure required settings. For an overview of SSO, see [Single Sign on]({{site.baseurl}}/docs/administration/single-sign-on/).
+**SSO**: By default, SSO is not enabled for users. If required, explicitly select the SSO provider. For an overview of SSO, see [Single Sign on]({{site.baseurl}}/docs/administration/single-sign-on/).
 
 ### Add a user  
-1. In Codefresh, click **Account Settings**.
-1. From the sidebar, select [Collaboration]((https://g.codefresh.io/2.0/account-settings/users){:target="\_blank"}).  
+1. In CSDP, click **Account Settings**.
+1. From the sidebar, select [Collaboration](https://g.codefresh.io/2.0/account-settings/users){:target="\_blank"}.  
   
   {% include
    image.html
@@ -43,16 +43,7 @@ For guidelines on access control, see [Access control]({{site.baseurl}}/docs/adm
 
    1. Type the **User's email address**.  
    1. **Assign a role**, by selecting either **User** or **Administrator**.  
-   1. If SSO is configured for the account, **Select SSO provider**, and then configure the settings.  
-
-      * [SAML2]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-saml2.md) 
-      * [OpenID Connect]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2.md) 
-      * [Auth0]({{site.baseurl}}/docs/administration/single-sign-on/sso-auth0.md) 
-      * [Azure]({{site.baseurl}}/docs/administration/single-sign-on/sso-azure.md)  
-      * [Google]({{site.baseurl}}/docs/administration/single-sign-on/sso-google.md)
-      * [LDAP]({{site.baseurl}}/docs/administration/single-sign-on/sso-ldap.md)
-      * [Okta]({{site.baseurl}}/docs/administration/single-sign-on/sso-okta.md)
-      * [OneLogin]({{site.baseurl}}/docs/administration/single-sign-on/sso-onelogin.md)
+   1. If SSO is configured for the account, **Select SSO provider**.  
 
 
 The user receives an email invitation, and the Users page is updated with information on the user. 

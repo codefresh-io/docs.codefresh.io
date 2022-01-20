@@ -14,7 +14,7 @@ CSDP (Codefresh Software Development Platform) natively supports login using Git
   
 ### Prerequisites
 
-To successfully add an identity provider in Codefresh, you must configure settings both for the identity provider and in Codefresh.
+To successfully add an identity provider in CSDP, you must configure settings both for the identity provider and in CSDP.
 You need to:
 
 1. Configure your identity provider to provide SSO services to Codefresh. The configuration differs per identity provider.
@@ -22,44 +22,16 @@ You need to:
 
 > SSO is only available to Enterprise customers. Please [contact sales](https://codefresh.io/contact-sales/) in order to enable it for your Codefresh account.
 
-
-### Identity provider options
-
-CSDP currently supports:
-
-  * Auth0
-  * Azure 
-  * Google
-  * Okta
-  * OneLogin
-
-### Access SSO configuration
-
-1. In CSDP, click your avatar at the top-right of the UI and select **Account settings**.
-1. From the sidebar expand **Collaboration**, and select **Single Sign-on**.
-
-  {% include image.html 
-  lightbox="true" 
-file="/images/administration/sso/add-sso-dropdown.png" 
-url="/images/administration/sso/add-sso-dropdown.png"
-alt="SSO provider settings"
-caption="SSO provider settings"
-max-width="70%"
-%}
-{:start="3"}
-1. Select **Add single-sign-on**, and then select the provider from the drop-down list.
-
-
 ### SSO configuration using OAuth2
 
-SSO configuration in Codefresh is similar regardless of the identity provider selected. Apart from provider-specific settings, the following settings are common to all providers:
+SSO configuration in CSDP is similar regardless of the identity provider selected. These settings are common to all providers:
 
 * **Display Name**: The name of your identity provider 
 * **Client ID**: The ID used for the connection
 * **Client Secret**: The secret associated with the ID
 
 For detailed information on how to configure SSO for your identity provider, see the following: 
-[Auth0]({{site.baseurl}}/docs/administration/single-sign-on/sso-auth0/)  
+
 [Azure]({{site.baseurl}}/docs/administration/single-sign-on/sso-azure/)  
 [Google]({{site.baseurl}}/docs/administration/single-sign-on/sso-google/)  
 [Okta]({{site.baseurl}}/docs/administration/single-sign-on/sso-okta/)
@@ -79,7 +51,7 @@ file="/images/administration/sso/collaborators.png"
 url="/images/administration/sso/collaborators.png"
 alt="Adding collaborators"
 caption="Adding collaborators"
-max-width="70%"
+max-width="30%"
 %}
 
 {:start="3"}

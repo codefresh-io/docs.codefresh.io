@@ -20,14 +20,14 @@ toc: true
   
 Asserting the identity of the user to CSDP ensures seamless SSO from a browser.
 
-A SAML2-based federated system comprises the following main components:
+A SAML2-based federated system comprises:
 
   - **Identity Provider (IdP)**: The identity provider belongs to the corporation that manages accounts for a large number of users who need secure internet access to the services or Web-based applications of another organization. In our case, it's a customer's organization that requires access to CSDP.
     - The IdP manages the corporate users, and integrates with Identity Management systems in the customer's organization responsible for authentication. The Identity Management systems integrate with authentication providers such as LDAP or AD.
     - All user authentication is carried out via Identity Management systems integrated with the IdP.
     - For successfully authenticated users, the IdP sends a SAML assertion to CSDP service provider that enables the user to access CSDP.
 
-  - **Service Provider (SP)**: An SP belongs to the SaaS provider who wants to provide access to their web applications and services.
+  - **Service Provider (SP)**: The service provider belongs to the SaaS provider who wants to provide access to their web applications and services.
     - The SP trusts a corporate IdP to manage users and the authentication process.
     - The SP does not manage an organization’s users, but it trusts the IdP to manage user authentication.
 
@@ -38,12 +38,13 @@ A SAML2-based federated system comprises the following main components:
 
 Using federated SSO significantly simplifies cross-domain user management as follows:
   
-  - You use your corporate credentials to access the Codefresh platform. This means that you can access all your systems with a single password.
-  - There is no need to migrate identity information or consolidate between the two security domains.
-  - Corporate credentials aren't exposed to the SaaS provider.
+* You use your corporate credentials to access the Codefresh platform. This means that you can access all your systems with a single password.
+* There is no need to migrate identity information or consolidate between the two security domains.
+* Corporate credentials aren't exposed to the SaaS provider.
+
 
 ### What to read next
-[Setting Up SAML2 Federated Single Sign-On (SSO)](sso-setup-saml2)
+[Setting Up SAML2 Federated Single Sign-On (SSO)](sso-setup-saml2)  
 [Setting Up OpenID Connect Federated Single Sign-On](sso-setup-oauth2)
 
   

@@ -27,7 +27,7 @@ Register the CSDP application in Azure AD.
   url="/images/administration/sso/azure/1-azure-service.png"
   alt="Azure Active Directory"
   caption="Azure Active Directory"
-  max-width="70%"
+  max-width="30%"
   %}
 
 {:start="2"}
@@ -39,7 +39,7 @@ Register the CSDP application in Azure AD.
   url="/images/administration/sso/azure/2-app-registrations.png"
   alt="Azure App Registrations"
   caption="Azure App Registrations"
-  max-width="70%"
+  max-width="30%"
   %}
 
 {:start="3"}
@@ -52,7 +52,7 @@ Register the CSDP application in Azure AD.
   url="/images/administration/sso/azure/3-register-an-app.png"
   alt="Azure App Registration creation"
   caption="Azure App Registration creation"
-  max-width="70%"
+  max-width="30%"
   %}
 {:start="4"}
 1. To apply your changes, select **Register**. The application is now registered in Azure AD. 
@@ -71,7 +71,7 @@ After registering CSDP, configure the permissions.
   url="/images/administration/sso/azure/5-api-permissions.png"
   alt="Azure App API Permissions"
   caption="Azure App API Permissions"
-  max-width="70%"
+  max-width="30%"
   %}
 {:start="3"}
 1. To change access levels, select **Add a permission**.
@@ -82,7 +82,7 @@ After registering CSDP, configure the permissions.
   url="/images/administration/sso/azure/6-request-api-permissions.png"
   alt="Azure App Change Permissions"
   caption="Azure App Change Permissions"
-  max-width="70%"
+  max-width="30%"
   %}
 {:start="4"}
 1. Find and select **Azure Active Directory Graph**.
@@ -93,7 +93,7 @@ After registering CSDP, configure the permissions.
   url="/images/administration/sso/azure/7-request-api-permissions.png"
   alt="Azure Active Directory Graph entry"
   caption="Azure Active Directory Graph entry"
-  max-width="70%"
+  max-width="30%"
   %}
 {:start="5"}
 1. Select **Application permissions**, and select the following permissions:  
@@ -113,7 +113,7 @@ After registering CSDP, configure the permissions.
   url="/images/administration/sso/azure/ApplicationPermissions.png"
   alt="API Permissions"
   caption="API Permissions"
-  max-width="70%"
+  max-width="30%"
   %}
 
 {:start="7"}
@@ -129,7 +129,7 @@ After registering CSDP, configure the permissions.
   url="/images/administration/sso/azure/9-Create-secret-page.png"
   alt="Change keys"
   caption="Change keys"
-  max-width="70%"
+  max-width="30%"
   %}
 {:start="2"}
 1. Select **New Client secret**, and add a description (arbitrary name).
@@ -140,7 +140,7 @@ After registering CSDP, configure the permissions.
   url="/images/administration/sso/azure/10-Add-client-secret.png"
   alt="Add a client secret"
   caption="Add a client secret"
-  max-width="70%"
+  max-width="30%"
   %}
 {:start="3"}
 1. Select the desired duration.
@@ -150,25 +150,24 @@ After registering CSDP, configure the permissions.
 
 ### Configure SSO for Azure in CSDP
 
-1. In CSDP, go to the SSO settings screen, as described in the [first part of this guide]({{site.baseurl}}/docs/enterprise/single-sign-on/sso-setup-oauth2/#identity-provider-options).
-1. Enter the following, using the information in the overview page of your application registration:
+1. In the CSDP UI, go to [Single Sign-On](https://g.codefresh.io/2.0/account-settings/single-sign-on){:target="\_blank"}.
+1. Select **+ Add Single Sign-On**, select **Azure**, and then select **Next**.
   
   {% include image.html 
   lightbox="true" 
-  file="/images/administration/sso/azure/ObjectId.png" 
-  url="/images/administration/sso/azure/ObjectId.png"
+  file="/images/administration/sso/azure/sso-csdp-azure.png" 
+  url="/images/administration/sso/azure/sso-csdp-azure.png"
   alt="SSO settings for Azure in CSDP"
   caption="SSO settings for Azure in CSDP"
-  max-width="70%"
+  max-width="30%"
   %}
 
-  * **Client Name**: For auto-generation, leave empty. CSDP generates the client name once you save the settings. CSDP automatically assigns a `client-name` to it which identifies the SSO configuration.
-  * **Display Name**: The display name in Azure
+  * **Client Name**: For auto-generation, leave empty. CSDP generates the client name once you save the settings. 
+  * **Display Name**: Meaningful name that identifies the SSO provider.
   * **Application ID**: The Application ID in Azure
   * **Client secret**: The key value you copied when you created the client secret in Azure
   * **Tenant**: `<Your Microsoft Azure AD Domain>.onmicrosoft.com`
   * **Object ID**: Your Azure Service Principal Object ID (from Enterprise Application configuration) 
-  * **Auto Sync users and teams to Codefresh**: Select to automatically sync user accounts in Azure AD to your CSDP account. Optionally, define the time interval at which to sync, in hours, from 1 to 24. If you don't specify an interval, the sync interval is every 12 hours.
 
   {% include image.html 
   lightbox="true" 
@@ -191,13 +190,14 @@ This is the final step in SSO setup for Azure. Add the CSDP callback URL to the 
   ```
 
   where: `<your_codefresh_sso_client_name>` is the Client Name in the SSO configuration, either defined by you or created by CSDP. 
+  
   {% include image.html 
   lightbox="true" 
   file="/images/administration/sso/azure/12-set-reply-URL.png" 
   url="/images/administration/sso/azure/12-set-reply-URL.png"
   alt="Reply URLs"
   caption="Reply URLs"
-  max-width="70%"
+  max-width="30%"
   %}
 {:start="3"}
 1. On the same page, scroll down and select **ID tokens**.
@@ -208,7 +208,7 @@ This is the final step in SSO setup for Azure. Add the CSDP callback URL to the 
   url="/images/administration/sso/azure/13-Enable-ID-Tokens.png"
   alt="Reply URLs"
   caption="Reply URLs"
-  max-width="70%"
+  max-width="30%"
   %}
 
 You have now completed the SSO setup for Azure. 
