@@ -15,7 +15,7 @@ For the quick start, let's focus on the `github/hello-world` pipeline.
 
 ### View pipelines
 View the pipelines in CSDP. 
-1. In the CSDP UI, go to [Pipelines]((https://g.codefresh.io/2.0/pipelines){:target="\_blank"}). 
+1. In the CSDP UI, go to [Pipelines](https://g.codefresh.io/2.0/pipelines){:target="\_blank"}. 
 
   {% include 
    image.html 
@@ -75,7 +75,7 @@ CSDP does the following:
 * Commits the changes to your Git repository.
 * Synchronizes the changes in Git back to your cluster, and updates the `event-source.git-source` resource.
 * Triggers this pipeline after the `PUSH` event to your repository.
-* Creates a workflow. View it in the CSDP UI, in the [Workflows]((https://g.codefresh.io/2.0/workflows){:target="\_blank"}) dashboard.  
+* Creates a workflow. View it in the CSDP UI, in the [Workflows](https://g.codefresh.io/2.0/workflows){:target="\_blank"} dashboard.  
   Select view workflow details to see the workflow log. 
 
 ### What to do next
