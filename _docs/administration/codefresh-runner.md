@@ -413,211 +413,6 @@ codefresh attach runtime --agent-name $AGENT_NAME --agent-kube-namespace codefre
 
 You can fine tune the installation of the runner to better match your environment and cloud provider.
 
-### Volume Reusage Policy
-
-The behavior of how the volumes are reused depends on volume selector configuration.
-`reuseVolumeSelector` option is configurable in runtime environment spec.
-
-The following options are available:
-
-* `reuseVolumeSelector: 'codefresh-app,io.codefresh.accountName'` - determined PV can be used by **ANY** pipeline of your account (it's a **default** volume selector).
-* `reuseVolumeSelector: 'codefresh-app,io.codefresh.accountName,pipeline_id'` - determined PV can be used only by a **single pipeline**.
-* `reuseVolumeSelector: 'codefresh-app,io.codefresh.accountName,pipeline_id,io.codefresh.branch_name'` - determined PV can be used only by **single pipeline AND single branch**.
-* `reuseVolumeSelector: 'codefresh-app,io.codefresh.accountName,pipeline_id,trigger'` - determined PV can be used only by **single pipeline AND single trigger**.
-
-To change volume selector follow this procedure:
-
-```shell
-#get runtime environmet spec yaml
-codefresh get re $RUNTIME_NAME -o yaml > runtime.yaml
-```
-
-Under `dockerDaemonScheduler.pvcs.dind` block specify `reuseVolumeSelector`:
-
-```yaml
-  pvcs:
-    dind:
-      volumeSize: 30Gi
-      reuseVolumeSelector: 'codefresh-app,io.codefresh.accountName,pipeline_id'
-```
-
-```shell
-#apply changes to runtime environment
-codefresh patch re -f runtime.yaml
-```
-
-### Custom Global Environment Variables
-
-You can add your own environment variables  in the runtime environment, so that all pipeline steps have access to the same set of external files. A typical
-example would be a shared secret that you want to pass everywhere.
-
-To get a list of all available runtimes execute:
-
-```shell
-codefresh get runtime-environments
-```
-
-Choose the runtime that you want to modify and get its yaml representation:
-
-```shell
-codefresh get runtime-environments ivan@acme-ebs.us-west-2.eksctl.io/codefresh-runtime -o yaml > runtime.yaml
-```
-
-Under the `runtimeScheduler` block you can add an additional element with names `userEnvVars` that follows the same syntax as [secret/environment variables](https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-environment-variables)
-
-`runtime.yaml`
-
-```yaml
-runtimeScheduler:
-  type: KubernetesPod
-  imagePullPolicy: Always
-  cluster:
-    namespace: codefresh
-    clusterProvider:
-      accountId: 5c1658d1736122ee1114c842
-      selector: docker-desktop
-    serviceAccount: codefresh-engine
-  envVars:
-    LOGGER_LEVEL: debug
-    NODE_ENV: kubernetes
-    NODE_TLS_REJECT_UNAUTHORIZED: '0'
-    DISABLE_WORKSPACE_CACHE: 'true'
-    NO_EXT_MONITOR: 'true'
-  userEnvVars:
-    - name: SPECIAL_LEVEL_KEY
-      valueFrom:
-        secretKeyRef:
-          name: dev-db-secret
-          key: username
-```
-
-Update your runtime environment with the [patch command](https://codefresh-io.github.io/cli/operate-on-resources/patch/):
-
-```shell
-codefresh patch runtime-environment ivan@acme-ebs.us-west-2.eksctl.io/codefresh-runtime -f runtime.yaml
-```
-
-### Debug Timeout Duration
-
-The default timeout for [debug mode]({{site.baseurl}}/docs/configure-ci-cd-pipeline/debugging-pipelines/) is 14 minutes, and even if the user is actively working, it is still 14 minutes. To change the duration of the debugger, you will need to update your Runtime Spec for the runtime you would like to change. To change the default duration, you will need to add `DEBUGGER_TIMEOUT` to the environment variable. The value you pass is a string value that will define the timeout in minutes. For example, you can pass '30', which will be 30 minutes.
-
-#### Steps to change the duration
-
-##### Step 1 - Get the Runtime Envionment
-
-To get the list of available runtimes:
-
-```shell
-codefresh get runtime-environments
-```
-
-Export the runtime from the list you want into a local YAML file:
-
-```shell
-codefresh get runtime-environments MyHybridRunner/codefresh-runtime -o yaml > runtime.yaml
-```
-
-##### Step 2 - Edit the Runtime Envionment YAML
-
-Under `.runtimeScheduler`, add an `envVars` section, then add `DEBUGGER_TIMEOUT` under `envVars` with the value you want.
-
-```yaml
-...
-runtimeScheduler:
-  envVars:
-    DEBUGGER_TIMEOUT: '30'
-...
-```
-
-##### Step 3 - Update the Runtime Envionment
-
-Update your runtime environment with the [patch command](https://codefresh-io.github.io/cli/operate-on-resources/patch/):
-
-```shell
-codefresh patch runtime-environment MyHybridRunner/codefresh-runtime -f runtime.yaml
-```
-
-### Custom Volume Mounts
-
-You can add your own volume mounts in the runtime environment, so that all pipeline steps have access to the same set of external files. A typical
-example of this scenario is when you want to make a set of SSL certificates available to all your pipelines. Rather than manually
-downlading the certificates in each pipeline, you can provide them centrally on the runtime level.
-
-To get a list of all available runtimes execute:
-
-```shell
-codefresh get runtime-environments
-```
-
-Choose the runtime that you want to modify and get its yaml representation:
-
-```shell
-codefresh get runtime-environments ivan@acme-ebs.us-west-2.eksctl.io/codefresh-runtime -o yaml > runtime.yaml
-```
-
-Under the `dockerDaemonScheduler` block you can add two additional elements with names `userVolumeMounts` and `userVolumes` (they follow the same syntax as normal `volumes` and `volumeMounts`) and define your own global volumes
-
-`runtime.yaml`
-
-```yaml
-dockerDaemonScheduler:
-  userVolumeMounts:
-    my-test:
-      name: test
-      mountPath: /etc/ssl/cert
-      readOnly: true
-  userVolumes:
-    test:
-      name: test
-      secret:
-        secretName: test-secret
-```
-
-Update your runtime environment with the [patch command](https://codefresh-io.github.io/cli/operate-on-resources/patch/):
-
-```shell
-codefresh patch runtime-environment ivan@acme-ebs.us-west-2.eksctl.io/codefresh-runtime -f runtime.yaml
-```
-
-### Internal Registry Mirror
-
-You can configure your Codefresh Runner to use an internal registry as a mirror for any container images that are mentioned in your pipelines.
-
-First setup an internal registry as described in [https://docs.docker.com/registry/recipes/mirror/](https://docs.docker.com/registry/recipes/mirror/).
-
-Then locate the `codefresh-dind-config` config map in the namespace that houses the runner and edit it.
-
-```shell
-kubectl -n codefresh edit configmap codefresh-dind-config
-```
-
-Change the `data` field from:
-
-```yaml
-data:
-  daemon.json: "{\n  \"hosts\": [ \"unix:///var/run/docker.sock\",\n             \"tcp://0.0.0.0:1300\"],\n
-    \ \"storage-driver\": \"overlay2\",\n  \"tlsverify\": true,  \n  \"tls\": true,\n
-    \ \"tlscacert\": \"/etc/ssl/cf-client/ca.pem\",\n  \"tlscert\": \"/etc/ssl/cf/server-cert.pem\",\n
-    \ \"tlskey\": \"/etc/ssl/cf/server-key.pem\",\n  \"insecure-registries\" : [\"192.168.99.100:5000\"],\n
-    \ \"metrics-addr\" : \"0.0.0.0:9323\",\n  \"experimental\" : true\n}\n"
-```
-
-to
-
-```yaml
-data:
-  daemon.json: "{\n  \"hosts\": [ \"unix:///var/run/docker.sock\",\n             \"tcp://0.0.0.0:1300\"],\n
-    \ \"storage-driver\": \"overlay2\",\n  \"tlsverify\": true,  \n  \"tls\": true,\n
-    \ \"tlscacert\": \"/etc/ssl/cf-client/ca.pem\",\n  \"tlscert\": \"/etc/ssl/cf/server-cert.pem\",\n
-    \ \"tlskey\": \"/etc/ssl/cf/server-key.pem\",\n  \"insecure-registries\" : [\"192.168.99.100:5000\"],\n
-    \ \"registry-mirrors\": [ \"https://<my-docker-mirror-host>\" ], \n
-    \ \"metrics-addr\" : \"0.0.0.0:9323\",\n  \"experimental\" : true\n}\n"
-```
-
-This adds the line `\ \"registry-mirrors\": [ \"https://<my-docker-mirror-host>\" ], \n` which contains a single registry to use as a mirror. Quit and Save by typing `:wq`.
-
-Now any container image that is used in your pipeline and isn't fully qualified, will be pulled through the Docker registry that is configured as a mirror.
-
 ### Installing on AWS
 
 If you install the Codefresh runner on [EKS](https://aws.amazon.com/eks/) or any other custom cluster (e.g. with kops) in Amazon you need to configure it properly to work with EBS volume in order to gain [caching]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipeline-caching/).
@@ -1579,6 +1374,320 @@ For example, let's say Venona-zoneA is the default RE, then, that means that for
 
 Regarding [Regional Persistent Disks](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/regional-pd), their support is not currently implemented in the Codefresh runner.
 
+### Internal Registry Mirror
+
+You can configure your Codefresh Runner to use an internal registry as a mirror for any container images that are mentioned in your pipelines.
+
+First setup an internal registry as described in [https://docs.docker.com/registry/recipes/mirror/](https://docs.docker.com/registry/recipes/mirror/).
+
+Then locate the `codefresh-dind-config` config map in the namespace that houses the runner and edit it.
+
+```shell
+kubectl -n codefresh edit configmap codefresh-dind-config
+```
+
+Change the `data` field from:
+
+```yaml
+data:
+  daemon.json: "{\n  \"hosts\": [ \"unix:///var/run/docker.sock\",\n             \"tcp://0.0.0.0:1300\"],\n
+    \ \"storage-driver\": \"overlay2\",\n  \"tlsverify\": true,  \n  \"tls\": true,\n
+    \ \"tlscacert\": \"/etc/ssl/cf-client/ca.pem\",\n  \"tlscert\": \"/etc/ssl/cf/server-cert.pem\",\n
+    \ \"tlskey\": \"/etc/ssl/cf/server-key.pem\",\n  \"insecure-registries\" : [\"192.168.99.100:5000\"],\n
+    \ \"metrics-addr\" : \"0.0.0.0:9323\",\n  \"experimental\" : true\n}\n"
+```
+
+to
+
+```yaml
+data:
+  daemon.json: "{\n  \"hosts\": [ \"unix:///var/run/docker.sock\",\n             \"tcp://0.0.0.0:1300\"],\n
+    \ \"storage-driver\": \"overlay2\",\n  \"tlsverify\": true,  \n  \"tls\": true,\n
+    \ \"tlscacert\": \"/etc/ssl/cf-client/ca.pem\",\n  \"tlscert\": \"/etc/ssl/cf/server-cert.pem\",\n
+    \ \"tlskey\": \"/etc/ssl/cf/server-key.pem\",\n  \"insecure-registries\" : [\"192.168.99.100:5000\"],\n
+    \ \"registry-mirrors\": [ \"https://<my-docker-mirror-host>\" ], \n
+    \ \"metrics-addr\" : \"0.0.0.0:9323\",\n  \"experimental\" : true\n}\n"
+```
+
+This adds the line `\ \"registry-mirrors\": [ \"https://<my-docker-mirror-host>\" ], \n` which contains a single registry to use as a mirror. Quit and Save by typing `:wq`.
+
+Now any container image that is used in your pipeline and isn't fully qualified, will be pulled through the Docker registry that is configured as a mirror.
+
+
+## Full runtime environment specification
+
+The following section contains an explanation of runtime environment specification and possible options to modify it. Notice that there are additional and hidden fields that are autogenerated by Codefresh that complete a full runtime spec. You can't directly see or edit them (unless you run your own [Codefresh On-Premises Installation]({{site.baseurl}}/docs/administration/codefresh-on-prem/) )
+
+
+To get a list of all available runtimes execute:
+```shell
+codefresh get runtime-environments
+#or
+codefresh get re
+```
+
+Choose the runtime that you want to inspect or modify and get its yaml/json representation:
+```shell
+codefresh get re my-eks-cluster/codefresh -o yaml > runtime.yaml
+#or
+codefresh get re my-eks-cluster/codefresh -o json > runtime.json
+```
+
+Update your runtime environment with the [patch command](https://codefresh-io.github.io/cli/operate-on-resources/patch/):
+```shell
+codefresh patch re my-eks-cluster/codefresh -f runtime.yaml
+```
+
+Below is the example for the default and basic runtime spec after you've installed the Runner: 
+
+{% highlight yaml %}
+{% raw %}
+version: 1
+metadata:
+  ...
+runtimeScheduler:
+  cluster:
+    clusterProvider:
+      accountId: 5f048d85eb107d52b16c53ea
+      selector: my-eks-cluster
+    namespace: codefresh
+    serviceAccount: codefresh-engine
+  annotations: {}
+dockerDaemonScheduler:
+  cluster:
+    clusterProvider:
+      accountId: 5f048d85eb107d52b16c53ea
+      selector: my-eks-cluster
+    namespace: codefresh
+    serviceAccount: codefresh-engine
+  annotations: {}
+  userAccess: true
+  defaultDindResources:
+    requests: ''
+  pvcs:
+    dind:
+      storageClassName: dind-local-volumes-runner-codefresh
+extends:
+  - system/default/hybrid/k8s_low_limits
+description: '...'
+accountId: 5f048d85eb107d52b16c53ea
+{% endraw %}
+{% endhighlight %}
+
+### Top level fields
+
+{: .table .table-bordered .table-hover}
+| Field name          | Type                  | Value |
+| -------------- |-------------------------| -------------------------|
+| `version`       | string | Runtime environment version |
+| `metadata`       | object | Meta-information  |
+| `runtimeScheduler`       | object | Engine pod definition |
+| `dockerDaemonScheduler`       | object | Dind pod definition |
+| `extends`       | array | System field (links to full runtime spec from Codefresh API) |
+| `description`       | string | Runtime environment description (k8s context name and namespace) |
+| `accountId`       | string | Account to which this runtime belongs |
+| `appProxy`       | object | Optional filed for [app-proxy]({{site.baseurl}}/docs/administration/codefresh-runner/#optional-installation-of-the-app-proxy)  |
+
+### runtimeScheduler fields (engine)
+
+{: .table .table-bordered .table-hover}
+| Field name          | Type                  | Value |
+| -------------- |-------------------------| -------------------------|
+| `image`       | string | Override default engine image |
+| `imagePullPolicy`       | string | Override image pull policy (default `IfNotPresent`) |
+| `type`       | string | `KubernetesPod` |
+| `envVars`       | object | Override or add environment variables passed into the engine pod |
+| `userEnvVars`       | object | Add external env var(s) to the pipeline. See [Custom Global Environment Variables]({{site.baseurl}}/docs/administration/codefresh-runner/#custom-global-environment-variables)  |
+| `cluster`       | object | k8s related information (`namespace`, `serviceAccount`, `nodeSelector`) |
+| `resources`       | object | Specify non-default `requests` and `limits` for engine pod |
+| `tolerations`       | array | Add tolerations to engine pod |
+| `annotations`       | object | Add custom annotations to engine pod (empty by default `{}`) |
+
+`runtimeScheduler` example:
+{% highlight yaml %}
+{% raw %}
+runtimeScheduler:
+  imagePullPolicy: Always
+  cluster:
+    clusterProvider:
+      accountId: 5f048d85eb107d52b16c53ea
+      selector: my-eks-cluster
+    nodeSelector: #schedule engine pod onto a node whose labels match the nodeSelector
+      node-type: engine  
+    namespace: codefresh
+    serviceAccount: codefresh-engine
+  annotations: {}
+  envVars:
+    NODE_TLS_REJECT_UNAUTHORIZED: '0' #disable certificate validation for TLS connections (e.g. to g.codefresh.io)
+    METRICS_PROMETHEUS_ENABLED: 'true' #enable /metrics on engine pod
+    DEBUGGER_TIMEOUT: '30' #debug mode timeout duration (in minutes)
+  userEnvVars:
+    - name: GITHUB_TOKEN
+      valueFrom:
+        secretKeyRef:
+          name: github-token
+          key: token
+  resources:
+    requests:
+      cpu: 60m
+      memory: 500Mi
+    limits:
+      cpu: 1000m
+      memory: 2048Mi
+  tolerations:
+    - effect: NoSchedule
+      key: codefresh.io
+      operator: Equal
+      value: engine            
+{% endraw %}
+{% endhighlight %}
+
+### dockerDaemonScheduler fields (dind)
+
+| Field name          | Type                  | Value |
+| -------------- |-------------------------| -------------------------|
+| `dindImage`       | string | Override default dind image |
+| `type`       | string | `DindPodPvc` |
+| `envVars`       | object | Override or add environment variables passed into the dind pod. See [IN-DIND cleaner]({{site.baseurl}}/docs/administration/codefresh-runner/#cleaners)  |
+| `userVolumeMounts` with `userVolumes`       | object | Add volume mounts to the pipeline See [Custom Volume Mounts]({{site.baseurl}}/docs/administration/codefresh-runner/#custom-volume-mounts) |
+| `cluster`       | object | k8s related information (`namespace`, `serviceAccount`, `nodeSelector`) |
+| `defaultDindResources`       | object | Override `requests` and `limits` for dind pod (defaults are `cpu: 400m` and `memory:800Mi` ) |
+| `tolerations`       | array | Add tolerations to dind pod |
+| `annotations`       | object | Add custom annotations to dind pod (empty by default `{}`) |
+| `pvc`       | object | Override default storage configuration for PersistentVolumeClaim (PVC) with `storageClassName`, `volumeSize`, `reuseVolumeSelector`. See [Volume Reusage Policy]({{site.baseurl}}/docs/administration/codefresh-runner/#volume-reusage-policy)  |
+
+`dockerDaemonScheduler` example:
+{% highlight yaml %}
+{% raw %}
+dockerDaemonScheduler:
+  cluster:
+    clusterProvider:
+      accountId: 5f048d85eb107d52b16c53ea
+      selector: my-eks-cluster
+    nodeSelector: #schedule dind pod onto a node whose labels match the nodeSelector
+      node-type: dind  
+    namespace: codefresh
+    serviceAccount: codefresh-engine
+  annotations: {}
+  userAccess: true
+  defaultDindResources:
+    requests: ''
+    limits:
+      cpu: 1000m
+      memory: 2048Mi
+  userVolumeMounts:
+    my-cert:
+      name: cert
+      mountPath: /etc/ssl/cert
+      readOnly: true
+  userVolumes:
+    my-cert:
+      name: cert
+      secret:
+        secretName: tls-secret
+  pvcs:
+    dind:
+      storageClassName: dind-local-volumes-runner-codefresh
+      volumeSize: 30Gi
+      reuseVolumeSelector: 'codefresh-app,io.codefresh.accountName,pipeline_id'
+  tolerations:
+    - key: codefresh.io
+      operator: Equal
+      value: dinds
+      effect: NoSchedule    
+{% endraw %}
+{% endhighlight %}
+
+### Custom Global Environment Variables
+You can add your own environment variables in the runtime environment, so that all pipeline steps will have access to it. A typical example would be a shared secret that you want to pass to the pipeline.
+
+Under the `runtimeScheduler` block you can add an additional element with named `userEnvVars` that follows the same syntax as [secret/environment variables](https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-environment-variables).
+
+`runtime.yaml`
+{% highlight yaml %}
+{% raw %}
+...
+runtimeScheduler:
+  userEnvVars:
+    - name: GITHUB_TOKEN
+      valueFrom:
+        secretKeyRef:
+          name: github-token
+          key: token
+...
+{% endraw %}
+{% endhighlight %}
+
+### Custom Volume Mounts
+You can add your own volume mounts in the runtime environment, so that all pipeline steps have access to the same set of external files. A typical example of this scenario is when you want to make a set of SSL certificates available to all your pipelines. Rather than manually download the certificates in each pipeline, you can provide them centrally on the runtime level.
+
+Under the `dockerDaemonScheduler` block you can add two additional elements with names `userVolumeMounts` and `userVolumes` (they follow the same syntax as normal k8s `volumes` and `volumeMounts`) and define your own global volumes.
+
+`runtime.yaml`
+{% highlight yaml %}
+{% raw %}
+...
+dockerDaemonScheduler:
+  userVolumeMounts:
+    my-cert:
+      name: cert
+      mountPath: /etc/ssl/cert
+      readOnly: true
+  userVolumes:
+    my-cert:
+      name: cert
+      secret:
+        secretName: tls-secret
+...
+{% endraw %}
+{% endhighlight %}
+
+### Debug Timeout Duration
+
+The default timeout for [debug mode]({{site.baseurl}}/docs/configure-ci-cd-pipeline/debugging-pipelines/) is 14 minutes, and even if the user is actively working, it is still 14 minutes. To change the duration of the debugger, you will need to update your Runtime Spec for the runtime you would like to change. To change the default duration, you will need to add `DEBUGGER_TIMEOUT` to the environment variable. The value you pass is a string value that will define the timeout in minutes. For example, you can pass '30', which will be 30 minutes.
+
+Under `.runtimeScheduler`, add an `envVars` section, then add `DEBUGGER_TIMEOUT` under `envVars` with the value you want.
+
+```yaml
+...
+runtimeScheduler:
+  envVars:
+    DEBUGGER_TIMEOUT: '30'
+...
+```
+
+### Volume Reusage Policy
+
+The behavior of how the volumes are reused depends on volume selector configuration.
+`reuseVolumeSelector` option is configurable in runtime environment spec.
+
+The following options are available:
+
+* `reuseVolumeSelector: 'codefresh-app,io.codefresh.accountName'` - determined PV can be used by **ANY** pipeline of your account (it's a **default** volume selector).
+* `reuseVolumeSelector: 'codefresh-app,io.codefresh.accountName,pipeline_id'` - determined PV can be used only by a **single pipeline**.
+* `reuseVolumeSelector: 'codefresh-app,io.codefresh.accountName,pipeline_id,io.codefresh.branch_name'` - determined PV can be used only by **single pipeline AND single branch**.
+* `reuseVolumeSelector: 'codefresh-app,io.codefresh.accountName,pipeline_id,trigger'` - determined PV can be used only by **single pipeline AND single trigger**.
+
+For approach `codefresh-app,io.codefresh.accountName`:
+
+* Benefit: less PVs --> lower cost (since any PV can be used by any pipeline, then, the cluster would need to keep less PVs in its pool of PVs for Codefresh)
+* Downside: since the PV can be used by any pipeline, then, the PVs could have assets and info from different pipelines, thus reducing the probability of cache,
+
+For approach `codefresh-app,io.codefresh.accountName,pipeline_id`:
+
+* Benefit: more probability of cache (no "spam" from other pipelines)
+* Downside: more PVs to keep (higher cost)
+
+
+To change volume selector get runtime yaml spec and under `dockerDaemonScheduler.pvcs.dind` block specify `reuseVolumeSelector`:
+
+```yaml
+  pvcs:
+    dind:
+      volumeSize: 30Gi
+      reuseVolumeSelector: 'codefresh-app,io.codefresh.accountName,pipeline_id'
+```
+
 ## Runtime Cleaners
 
 ### Key points
@@ -1685,7 +1794,7 @@ With hybrid runner it's possibe to run native ARM64v8 builds.
 
 The following scenario is an example of how to set up ARM Runner on existing EKS cluster:
 
-### Step 1 - Preparing nodes
+**Step 1 - Preparing nodes**
 
 Create new ARM nodegroup:
 
@@ -1718,7 +1827,7 @@ kubectl taint nodes <node> arch=aarch64:NoSchedule
 kubectl label nodes <node> arch=arm
 ```
 
-### Step 2 - Runner installation
+**Step 2 - Runner installation**
 
 Use [values.yaml](https://github.com/codefresh-io/venona/blob/release-1.0/venonactl/example/values-example.yaml) to inject `tolerations`, `kube-node-selector`, `build-node-selector` into the Runtime Environment spec.
 
@@ -1762,7 +1871,7 @@ Install the Runner with:
 codefresh runner init --values values-arm.yaml --exec-demo-pipeline false --skip-cluster-integration true
 ```
 
-### Step 3 - Post-installation fixes
+**Step 3 - Post-installation fixes**
 
 Change `engine` image version in Runtime Environment specification:
 
@@ -1801,7 +1910,7 @@ kubectl edit ds dind-lv-monitor-runner
         arch: arm
 ```
 
-### Step 4 - Run Demo pipeline
+**Step 4 - Run Demo pipeline**
 
 Run a modified version of the *CF_Runner_Demo* pipeline:
 
