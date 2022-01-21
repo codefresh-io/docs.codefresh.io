@@ -1725,10 +1725,12 @@ Override `dockerDaemonScheduler.envVars` on Runtime Environment if necessary (th
 ```yaml
 dockerDaemonScheduler:
   envVars:
-    CLEAN_DOCKER: 'true'
-    CLEAN_PERIOD_BUILDS: '5'
-    IMAGE_RETAIN_PERIOD: '14400'
-    VOLUMES_RETAIN_PERIOD: '14400'
+    CLEAN_PERIOD_SECONDS: '21600' # launch clean if last clean was more than CLEAN_PERIOD_SECONDS seconds ago
+    CLEAN_PERIOD_BUILDS: '5' # launch clean if last clean was more CLEAN_PERIOD_BUILDS builds since last build
+    IMAGE_RETAIN_PERIOD: '14400' # do not delete docker images if they have events since current_timestamp - IMAGE_RETAIN_PERIOD
+    VOLUMES_RETAIN_PERIOD: '14400' # do not delete docker volumes if they have events since current_timestamp - VOLUMES_RETAIN_PERIOD
+    DISK_USAGE_THRESHOLD: '0.8' # launch clean based on current disk usage DISK_USAGE_THRESHOLD
+    INODES_USAGE_THRESHOLD: '0.8' # launch clean based on current inodes usage INODES_USAGE_THRESHOLD
 ```
 
 ***
