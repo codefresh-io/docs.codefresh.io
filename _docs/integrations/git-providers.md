@@ -58,7 +58,9 @@ In the case of an on-premises GIT provider you also need to fill in the URL wher
 
 ## SSH Keys
 
-You have the ability to specify whether you want to clone via HTTPS or SSH.  Under the *General* menu, simply toggle to your desired option.
+> Please contact support to enable this feature.
+
+You have the ability to specify whether you want to clone via HTTPS or SSH.  In the git integration under Advance Options, toggle to your desired option.
 
 {% include image.html
 lightbox="true"
