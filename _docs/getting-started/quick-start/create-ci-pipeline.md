@@ -1,3 +1,4 @@
+
 ---
 title: "Create a basic CI delivery pipeline"
 description: ""
@@ -23,7 +24,7 @@ Our CI pipeline interacts with third-party services such as GitHub and a Docker 
 ### Create a Personal Access Token (PAT)
 You must have a PAT to clone the repository. 
 
-1. Create your personal token with a valid `expiration` date and `scope` with `base64` encoding.  
+1. Create your personal token with a valid `expiration` date and `scope`.  
   For CSDP pipelines, you need `repo` and `admin-repo.hook` scopes:  
   
   {% include 
@@ -37,32 +38,38 @@ You must have a PAT to clone the repository.
    %}  
 
 {:start="2"}
-1. Download [github-token.secret.example.yaml](https://github.com/eti-codefresh/quickstart_resources/blob/add491550d4a652fc62780173ce4fc9bfba24e58/github-token.secret.example.yaml).  
-1. Replace the placeholder for the `token` field value with your PAT token.
-1. Save and apply the file to your cluster in the namespace created when you installed the CSDP Runtime:  
-
-   `kubectl apply -n <csdp-runtime-namespace> -f github-token.secret.example.yaml`  
-    where:  
-      `<csdp-runtime-namespace>` is the namespace created during runtime installation.
-
+ 
+1. Set your personal access token and namespace values by replacing the values in these commands.  
+```bash
+export GIT_TOKEN=[PAT token]
+export NAMESPACE=[CSDP Runtime Namespace]
+```
+1. Create a generic kubernetes secret with your PAT token by running the following command:
+ 
+ ```bash
+kubectl create secret generic github-token \
+--from-literal=token=$GIT_TOKEN --dry-run=client \
+--save-config -o yaml | kubectl apply -f - -n $NAMESPACE
+```
 
 ### Create Docker-registry secret
 
-To push the image to a Docker registry, create a secret to use with Docker registry.  
+To push the image to a Docker registry we'll need the credentials on our cluster. Note: this is different than a registry-secret.
 
-1. Create the Docker-registry secret by following the instructions in this [link](​​https://jamesdefabia.github.io/docs/user-guide/kubectl/kubectl_create_secret_docker-registry/).
-1. Create the secret for our `image-reporter` step:  
-  * Create a secret resource.
-  * Download [`registry-creds.secret.example.yaml`](https://github.com/eti-codefresh/quickstart_resources/blob/add491550d4a652fc62780173ce4fc9bfba24e58/registry-creds.secret.example.yaml).
-  * Replace the `username`, `password` and `domain` with your `base64` encoded credentials.   
- 
-{:start="3"} 
-1. Save and apply the file to your cluster in the namespace created when you installed the CSDP Runtime:    
-
-  `kubectl apply -n <csdp-runtime-namespace> -f registry-creds.secret.example.yaml`  
-  where:  
-  `<csdp-runtime-namespace>` is the namespace created during runtime installation.
-
+1. Export the values for your registry `username`, `password`, and `domain`
+```bash
+export DOCKER_USER=[Username]
+export DOCKER_PASSWD=[Password]
+export DOCKER_DOMAIN=[Domain]
+```
+1. Create the secret
+```bash
+kubectl create secret generic registry-creds \
+--from-literal=username=$DOCKER_USER \
+--from-literal=password=$DOCKER_PASSWD \
+--from-literal=domain=$DOCKER_DOMAIN \
+--dry-run=client --save-config -o yaml | kubectl apply -f - -n $NAMESPACE
+```
 
 ### Create the CI delivery pipeline
 
