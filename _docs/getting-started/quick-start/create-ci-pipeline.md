@@ -23,8 +23,10 @@ Our CI pipeline interacts with third-party services such as GitHub and a Docker 
 ### Create a Personal Access Token (PAT)
 You must have a PAT to clone the repository. 
 
-1. Create your personal token with a valid `expiration` date and `scope`.  
-  For CSDP pipelines, you need `repo` and `admin-repo.hook` scopes:  
+1. Create your PAT (Personal Access Token) with `base64` encoding, and valid `expiration` date and `scope`.  
+  Base64 encoding: Use this [tool to encode token in base64](https://www.base64encode.net/){:target="\_blank"}  
+   
+  Scopes: `repo` and `admin-repo.hook`  
   
   {% include 
    image.html 
@@ -35,43 +37,62 @@ You must have a PAT to clone the repository.
    caption="GitHub PAT permissions for CI pipeline"
    max-width="30%" 
    %}  
-
 {:start="2"}
- 
-1. Set your personal access token and namespace values by replacing the values in these commands.  
-```bash
-export GIT_TOKEN=[PAT token]
-export NAMESPACE=[CSDP Runtime Namespace]
-```
-1. Create a generic kubernetes secret with your PAT token by running the following command:
- 
- ```bash
-kubectl create secret generic github-token \
---from-literal=token=$GIT_TOKEN --dry-run=client \
---save-config -o yaml | kubectl apply -f - -n $NAMESPACE
-```
+1. Define your PAT and namespace by replacing the values in these commands:
+  ```
+   export GIT_TOKEN=[PAT token]
+   export NAMESPACE=[CSDP runtime namespace]
+  ```
+1. Create a generic Kubernetes secret with your PAT token:
+  ```
+  kubectl create secret generic github-token \
+  --from-literal=token=$GIT_TOKEN --dry-run=client \
+  --save-config -o yaml | kubectl apply -f - -n $NAMESPACE
+  ```
 
 ### Create Docker-registry secret
+To push the image to a Docker registry, we'll need the credentials on our cluster.
+> The Docker registry secret is different from the registry secret.
 
-To push the image to a Docker registry we'll need the credentials on our cluster. Note: this is different than a registry-secret.
+1. Export the values for the Docker registry's `server`, `username`, `password`, and `email`:  
+  ```
+  export DOCKER_REGISTRY_SERVER=[Server]
+  export DOCKER_USER=[Username]
+  export DOCKER_PASSWORD=[Password]
+  export DOCKER_EMAIL=[Email]
+  ```
+1. Create the secret:   
+  ``` 
+  kubectl create secret docker-registry <my-secret> \
+  --from-literal=server=$DOCKER_REGISTRY_SERVER \
+  --from-literal=username=$DOCKER_USER \
+  --from-literal=password=$DOCKER_PASSWORD \
+  --from-literal=domain=$DOCKER_EMAIl \
+  --dry-run=client --save-config -o yaml | kubectl apply -f - -n $NAMESPACE
+  ```
+ > In the Workflow Template, the Docker registry name defaults to `docker-registry`
 
-1. Export the values for your registry `username`, `password`, and `domain`
-```bash
-export DOCKER_USER=[Username]
-export DOCKER_PASSWD=[Password]
-export DOCKER_DOMAIN=[Domain]
-```
-1. Create the secret
-```bash
-kubectl create secret generic registry-creds \
---from-literal=username=$DOCKER_USER \
---from-literal=password=$DOCKER_PASSWD \
---from-literal=domain=$DOCKER_DOMAIN \
---dry-run=client --save-config -o yaml | kubectl apply -f - -n $NAMESPACE
-```
+
+### Create registry-creds secret
+
+
+1. Export the values for your registry's `username`, `password`, and `domain`:
+  ```
+  export DOCKER_USER=[Username]
+  export DOCKER_PASSWORD=[Password]
+  export DOCKER_DOMAIN=[Domain]
+  ```
+1. Create the secret:
+  ```
+  kubectl create secret generic registry-creds \
+  --from-literal=username=$DOCKER_USER \
+  --from-literal=password=$DOCKER_PASSWORD \
+  --from-literal=domain=$DOCKER_DOMAIN \
+  --dry-run=client --save-config -o yaml | kubectl apply -f - -n $NAMESPACE
+  ```
 
 ### Create the CI delivery pipeline
-
+Now that you have defined the secrets, create the CI delivery pipeline in CSDP.
 
 1. In the CSDP UI, go to [Delivery Pipelines](https://g.codefresh.io/2.0/pipelines){:target="\_blank"}.
 1. Select **+ Add Delivery Pipeline**.
@@ -97,19 +118,18 @@ kubectl create secret generic registry-creds \
   In the **Configuration** tab, **Workflow Templates** is selected. This is our CI Starter Workflow Template, that builds a Docker image using Kaniko, reports image metadata to CSDP, and tests the image.
 1. Select **Trigger Conditions**. 
 1. From the **Add** dropdown, select **Git Events**.
-1. In the **Git Repository URLs** field, select one or more GitHub repositories to listen for the selected event. 
+1. In the **Git Repository URLs** field, select one or more GitHub repositories to listen to for the selected event. 
 1. From the **Event** dropdown, select the event, in our case, **Commit pushed**.
-  CSDP displays all the **Arguments** used by our Starter Workflow Template.    
-  For each argument, you can define a value that is instantiated from the event payload, or any custom value.  
-  These arguments are populated with the required values from the event payload.  
+  CSDP displays all the **Arguments** available for the selected event.    
+  You can map each argument to a single or combination of predefined variables, which CSDP automatically maps to the correct path when you commit the changes. Argo Workflow then instantiates the values from the event payload.  
    
     {% include 
    image.html 
    lightbox="true" 
    file="/images/getting-started/quick-start/quick-start-ci-pipeline-arguments.png" 
    url="/images/getting-started/quick-start/quick-start-ci-pipeline-arguments.png" 
-   alt="Add Delivery Pipeline panel in CSDP" 
-   caption="Add Delivery Pipeline panel in CSDP"
+   alt="Predefined variables for arguments" 
+   caption="Predefined variables for arguments"
    max-width="30%" 
    %}
      
@@ -131,7 +151,7 @@ kubectl create secret generic registry-creds \
 1. Enter the commit message and then select **Commit**.
 1. In the **Delivery Pipelines** page to which you are redirected, verify that your pipeline is displayed. 
 
-  Behind the scenes, we have committed the pipeline to your Git repository, and are syncing the resources to your cluster.  
+  Behind the scenes, we committed the pipeline to your Git repository, and synced the resources to your cluster.  
   It may take a few seconds for the Git-to-cluster sync to complete, and then your pipeline should be displayed.
 
 ### Trigger the pipeline with a Git commit event
