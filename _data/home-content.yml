@@ -238,6 +238,8 @@
     localurl: /docs/administration/behind-the-firewall
   - title: Codefresh Runner
     localurl: /docs/administration/codefresh-runner
+  - title: Codefresh On-Premises
+    localurl: /docs/administration/codefresh-on-prem 
   - title: User Settings
     localurl: /docs/administration/user-settings   
   - title: Single Sign on
