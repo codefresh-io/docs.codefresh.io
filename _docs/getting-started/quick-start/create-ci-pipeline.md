@@ -1,4 +1,3 @@
-
 ---
 title: "Create a basic CI delivery pipeline"
 description: ""
