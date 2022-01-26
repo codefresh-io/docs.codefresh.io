@@ -622,7 +622,7 @@ postgresql:
 
 If you would prefer running the seed job manually, you can do it by using a script present in `your/stage-dir/codefresh/addons/seed-scripts` directory named `postgres-seed.sh`. The script takes the following set of variables that you need to have set before running it:
 
-```sh
+```shell
 export POSTGRES_SEED_USER="postgres"
 export POSTGRES_SEED_PASSWORD="zDyGp79XyZEqLq7V"
 export POSTGRES_USER="cf_user"
@@ -637,10 +637,10 @@ However you **still need to specify a set of values** in the Codefresh config fi
 
 ```yaml
 global:
-  postgresUser: <POSTGRES_USER>
-  postgresPassword: <POSTGRES_PASSWORD>
+  postgresUser: cf_user
+  postgresPassword: fJTFJMGV7sg5E4Bj
   postgresDatabase: codefresh
-  postgresHostname: <POSTGRES_HOST>
+  postgresHostname: my-postgresql.prod.svc.cluster.local
   postgresPort: 5432
 
 postgresql:
@@ -705,20 +705,23 @@ mongo:
 ### Configure an external Redis service
 Codefresh recommends to use the Bitnami Redis [chart](https://github.com/bitnami/charts/tree/master/bitnami/redis) as a Redis store.
 
-#### Limitations
+**Limitations**
+
 Codefresh does not support secure connection to Redis (TLS) and AUTH username extension.
 
-#### Configuration
-To configure Codefresh to use an external Redis service, add the following parameters to your __config.yaml__:
+**Configuration**
 
+To configure Codefresh to use an external Redis service, add the following parameters to your `config.yaml`:
+
+`config.yaml` example:
 ```yaml
 global:
-  redisUrl: <REDIS_HOST>
-  redisPassword: <REDIS_PASS>
+  redisUrl: my-redis.prod.svc.cluster.local
   redisPort: 6379
+  redisPassword: 6oOhHI8fI5
 
-  runtimeRedisHost: <REDIS_HOST>
-  runtimeRedisPassword: <REDIS_PASS>
+  runtimeRedisHost: my-redis.prod.svc.cluster.local
+  runtimeRedisPassword: 6oOhHI8fI5
   runtimeRedisPort: 6379
   runtimeRedisDb: 2
 

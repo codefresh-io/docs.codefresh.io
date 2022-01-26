@@ -1164,25 +1164,27 @@ If you are installing Codefresh runner on the Kubernetes cluster on [GKE](https:
 * bind your user with `cluster-admin` Kubernetes cluster role.
 
 ```shell
-kubectl create clusterrolebinding NAME --clusterrole cluster-admin --user <YOUR_USER>
+kubectl create clusterrolebinding cluster-admin-binding \
+  --clusterrole cluster-admin \
+  --user $(gcloud config get-value account)
 ```
 
-### Docker cache support for GKE
+#### Storage options on GKE
 
-#### Local SSD
+**Local SSD**
 
 If you want to use  *LocalSSD* in GKE:
 
 *Prerequisites:* [GKE cluster with local SSD](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/local-ssd)
 
-Install Runner using GKE Local SSD:
+Install Runner with the Wizard:
 
 ```shell
 codefresh runner init [options] --set-value=Storage.LocalVolumeParentDir=/mnt/disks/ssd0/codefresh-volumes \
                             --build-node-selector=cloud.google.com/gke-local-ssd=true
 ```
 
-`values-example.yaml`
+Or with `values-example.yaml` values file:
 
 ```yaml
 ...
@@ -1197,18 +1199,21 @@ codefresh runner init [options] --set-value=Storage.LocalVolumeParentDir=/mnt/di
      cloud.google.com/gke-local-ssd: "true"
 ...
 ```
+```shell
+codefresh runner init [options] --values values-example.yaml
+```
 
 To configure existing Runner with Local SSDs follow this article:
 
 [How-to: Configuring an existing Runtime Environment with Local SSDs (GKE only)](https://support.codefresh.io/hc/en-us/articles/360016652920-How-to-Configuring-an-existing-Runtime-Environment-with-Local-SSDs-GKE-only-)
 
-#### GCE Disks
+**GCE Disks**
 
 If you want to use  *GCE Disks*:
 
 *Prerequisites:* volume provisioner (dind-volume-provisioner) should have permissions to create/delete/get GCE disks
 
-There are 3 options to provide cloud credentials on GCE:
+There are 3 options to provide cloud credentials:
 
 * run `dind-volume-provisioner-runner` pod on a node with IAM role which is allowed to create/delete/get GCE disks
 * create Google Service Account with `ComputeEngine.StorageAdmin` role, download its key in JSON format and pass it to `codefresh runner init` with `--set-file=Storage.GooogleServiceAccount=/path/to/google-service-account.json`
@@ -1229,9 +1234,7 @@ codefresh runner init [options] \
   --set-file=Storage.GoogleServiceAccount=/path/to/google-service-account.json
 ```
 
-Using the values file:
-`values-example.yaml`
-
+Using the values `values-example.yaml` file:
 ```yaml
 ...
 ### Storage parameter example for GCE disks
@@ -1258,14 +1261,13 @@ Using the values file:
      topology.kubernetes.io/zone: us-central1-c
 ...
 ```
-
 ```shell
 codefresh runner init [options] --values values-example.yaml
 ```
 
 ##### Runner installation with GCE Disks (Workload Identity with IAM role)
 
-`values-example.yaml`
+Using the values `values-example.yaml` file:
 
 ```yaml
 ...
@@ -1283,6 +1285,9 @@ codefresh runner init [options] --values values-example.yaml
    NodeSelector: # dind and engine pods node-selector (--build-node-selector)
      topology.kubernetes.io/zone: us-central1-c
 ...
+```
+```shell
+codefresh runner init [options] --values values-example.yaml
 ```
 
 Create the binding between Kubernetes service account and Google service account:
@@ -1311,59 +1316,37 @@ If you have Kubernetes nodes running in multiple Availability Zones and wish to 
 
 **Option A** - Provision a new Kubernetes cluster: a cluster that runs in a single AZ only. - The cluster should be dedicated for usage with the Codefresh runner. This is the preferred solution and avoids extra complexity.
 
-**Option B** - Install Codefresh runner in your multi-zone cluster, and let it run in the default Node Pool: - in this case, you must specify `--build-node-selector=<node-az-label>` (e.g.: `--build-node-selector=failure-domain.beta.kubernetes.io/zone=us-central1-a`) or simply modify the Runtime environment as below:
+**Option B** - Install Codefresh runner in your multi-zone cluster, and let it run in the default Node Pool: - in this case, you must specify `--build-node-selector=<node-az-label>` (e.g.: `--build-node-selector=topology.kubernetes.io/zone=us-central1-c`) or simply modify the Runtime environment as below:
 
 ```shell
-codefresh get runtime-environments gke_us-east4_my-gke-cluster/codefresh -o yaml > re.yaml
+codefresh get re $RUNTIME_NAME -o yaml > re.yaml
 ```
 
 Edit the yaml:
 
 ```yaml
-version: 2metadata:
-  agent: true
-  trial:
-    endingAt: 34534534
-    reason: Codefresh hybrid runtime
-    started: 23434
-  name: gke_us-east4_my-gke-cluster/codefresh
-  changedBy: kostis
-  creationTime: '2020/04/01 21:04:11'
+version: 2
+metadata:
+  ...
 runtimeScheduler:
   cluster:
-    clusterProvider:
-      accountId: 34543545456
-      selector: gke_us-east4_my-gke-cluster
-    namespace: codefresh
-    nodeSelector:
-      failure-domain.beta.kubernetes.io/zone: us-east4-a
+    nodeSelector: #schedule engine pod onto a node whose labels match the nodeSelector
+      topology.kubernetes.io/zone: us-central1-c
+    ...  
 dockerDaemonScheduler:
   cluster:
-    clusterProvider:
-      accountId: 5cdd8937242f167387e5aa56
-      selector: gke_us-east4_my-gke-cluster
-    namespace: codefresh
-    nodeSelector:
-      failure-domain.beta.kubernetes.io/zone: us-east4-a
-  dockerDaemonParams: null
+    nodeSelector: #schedule dind pod onto a node whose labels match the nodeSelector
+      topology.kubernetes.io/zone: us-central1-c
+    ...  
   pvcs:
     dind:
-      storageClassName: dind-gcedisk-us-east4-a-venona-codefresh
-      reuseVolumeSelector: 'codefresh-app,io.codefresh.accountName,pipeline_id'
-      volumeSize: 30Gi
-  userAccess: true
-extends:
-  - system/default/hybrid/k8s
-description: >-
-  Runtime environment configure to cluster:
-  gke_us-east4_my-gke-cluster and namespace: codefresh
-accountId: 45645k694353459
+      ...
 ```
 
 Apply changes with:
 
 ```shell
-codefresh patch runtime-environments -f re.yaml
+codefresh patch re -f re.yaml
 ```
 
 **Option C** - Like option B, but with a dedicated Node Pool
