@@ -217,7 +217,9 @@ For example if a pipeline variable is defined both in project level and as an ex
 Steps defined inside steps are scoped to the step they were created in (even if you used the `export` command). In order to allow using variables across steps, we provide a shared file that facilitates variables importing and exporting. There are two ways to add variables to this file:
 
 ### Using cf_export command
-Inside every freestyle step there's a command called `cf_export` that allows you to export variables across steps (by writing to the shared variables file).
+Within every freestyle step, the `cf_export` command allows you to export variables across steps (by writing to the shared variables file).  
+
+> The variables exported with cf_export overrides those at the pipeline-level.
 
 You can either:
 - Explicitly state a VAR=VAL pair  
