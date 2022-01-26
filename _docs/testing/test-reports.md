@@ -10,8 +10,11 @@ toc: true
 Codefresh offers the capability to store your test results for every build and view them
 at any point in time.
 
-Currently Codefresh supports the storage of test reports in [Google buckets](https://cloud.google.com/storage/docs/key-terms#buckets) or  
- [S3 buckets](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html) or [Azure Storage](https://docs.microsoft.com/en-us/azure/storage/).
+Currently Codefresh supports the storage of test reports in:  
+* [Google buckets](https://cloud.google.com/storage/docs/key-terms#buckets)
+* [S3 buckets](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html)
+* [Azure Storage](https://docs.microsoft.com/en-us/azure/storage/)
+* [MinIO objects](https://min.io/)
 
 ## Test report modes
 
@@ -48,7 +51,7 @@ If you use the custom reporting mode, you can select any kind of tool that you w
 ## Connecting your storage account
 
 As a first step you need a cloud bucket to store your test results. You can use
-Google or AWS or Azure for this purpose. Codefresh will create subfolders in the bucket with names from every build id. It will then upload the reports for that build to the respective folder. Multiple pipelines can use the same bucket.
+Google, AWS, Azure or MinIO for this purpose. Codefresh will create subfolders in the bucket with names from every build id. It will then upload the reports for that build to the respective folder. Multiple pipelines can use the same bucket.
 
 First go to your Account Configuration, by clicking on *Account Settings* on the left sidebar. On the first section called *Integrations* scroll down to *Cloud Storage*:
 
@@ -93,7 +96,7 @@ For more information see the [official documentation](https://cloud.google.com/i
 
 ### Connecting an S3 bucket
 
-For AWS, create an S3 bucket as explained in the documentation from the [GUI](https://docs.aws.amazon.com/quickstarts/latest/s3backup/step-1-create-bucket.html) or the [CLI](https://docs.aws.amazon.com/cli/latest/reference/s3api/create-bucket.html). Then once you have the Access and Secret keys, 
+For AWS, create an S3 bucket as explained in the documentation, from the [GUI](https://docs.aws.amazon.com/quickstarts/latest/s3backup/step-1-create-bucket.html) or the [CLI](https://docs.aws.amazon.com/cli/latest/reference/s3api/create-bucket.html). Once you have the Access and Secret keys, 
 enter an arbitrary name for your integration and fill the keys in the respective fields:
 
 {% include 
@@ -112,7 +115,7 @@ environment variable in your Codefresh pipeline as explained in the next section
 You can also
 use any [external secrets that you have defined]({{site.baseurl}}/docs/integrations/secret-storage/) (such as Kubernetes secrets) as values by clicking on the lock icon that appears next to field.
 
-If you have already specified the resource field during secret definition the just enter on the text field the name of the secret directly, i.e. `my-secret-key`.
+If you have already specified the resource field during secret definition, just enter on the text field the name of the secret directly, i.e. `my-secret-key`.
 If you didn't include a resource name during secret creation then enter the full name in the field like `my-secret-resource@my-secret-key`.
 
 ### Connecting Azure storage
@@ -133,11 +136,61 @@ max-width="60%"
 Then click *Save* to apply settings. You will use the name of the integration as an
 environment variable in your Codefresh pipeline as explained in the next sections.
 
-You can also
-use any [external secrets that you have defined]({{site.baseurl}}/docs/integrations/secret-storage/) (such as Kubernetes secrets) as values by clicking on the lock icon that appears next to field.
+You can also use any [external secrets that you have defined]({{site.baseurl}}/docs/integrations/secret-storage/) (such as Kubernetes secrets) as values by clicking on the lock icon that appears next to field.
 
 If you have already specified the resource field during secret definition the just enter on the text field the name of the secret directly, i.e. `my-secret-key`.
 If you didn't include a resource name during secret creation then enter the full name in the field like `my-secret-resource@my-secret-key`.
+
+### Connecting MinIO storage
+Before connecting to MinIO cloud storage, configure the MinIO server as described in the [official documentation](https://docs.min.io/docs/minio-quickstart-guide.html).  
+
+Once you get the Access and Secret keys, define the settings for MinIO cloud storage in your Codefresh account.
+
+1. From the Add Cloud Storage dropdown, select **MinIO Cloud Storage**, and define the settings:
+   {% include
+image.html
+lightbox="true"
+file="/images/pipeline/test-reports/cloud-storage-minio.png"
+url="/images/pipeline/test-reports/cloud-storage-minio.png"
+alt="MinIO cloud storage"
+caption="MinIO cloud storage"
+max-width="60%"
+%}
+
+  * **NAME**: The name of the MinIO storage. Any name that is meaningful to you.
+  * **ENDPOINT**: The URL to the storage service object.
+  * **PORT**: Optional. The TCP/IP port number. If not defined, defaults to port `80` for HTTP, and `443` for HTTPS.
+  * **Minio Access Key**: The ID that uniquely identifies your account, similar to a user ID. 
+  * **Secret Minio Key**: The password of your account.
+  * **Use SSL**: Select to enable secure HTTPS access. Not selected by default.  
+
+
+See an example of the integration in a pipeline:  
+```yaml
+version: "1.0"
+stages:
+  - "clone"
+  - "test"
+
+steps:
+  clone:
+    title: "Cloning repository"
+    type: "git-clone"
+    repo: "https://github.com/vadim-kharin-codefresh/test/"
+    revision: "master"
+    stage: "clone"
+  unit_test_reporting_step:
+    title: Upload Mocha test reports
+    image: codefresh/cf-docker-test-reporting
+    working_directory: "${{clone}}"
+    stage: "test"
+    environment:
+        - REPORT_DIR=mochawesome-report
+        - REPORT_INDEX_FILE=mochawesome.html
+        - BUCKET_NAME=codefresh-test-reporting
+        - CF_STORAGE_INTEGRATION=minio
+        - CF_BRANCH_TAG_NORMALIZED=test
+```
 
 
 ## Producing Allure test reports from Codefresh pipelines
