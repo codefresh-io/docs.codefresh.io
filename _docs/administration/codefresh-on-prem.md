@@ -681,26 +681,42 @@ mongo:
 
 #### MongoDB with Mutual TLS
 
-Codefresh supports enabling SSL/TLS between cf microservices and MongoDB. To enable this option specify in `config.yaml` the following parameters: <br />
- `global.mongoTLS: true`  <br />
- `global.mongoCaCert` - CA certificate (base64 encoded) <br />
- `global.mongoCaKey` - CA certificate private key (base64 encoded)
+>The option available in kcfi **v0.5.10**
 
+Codefresh supports enabling SSL/TLS between cf microservices and MongoDB. To enable this option specify in `config.yaml` the following parameters:
+
+ `global.mongoTLS: true`  <br />
+ `global.mongoCaCert` - CA certificate file path (in kcfi init directory) <br />
+ `global.mongoCaKey` - CA certificate private key file path (in kcfi init directory)
+
+`config.yaml` example:
 ```yaml
 global:
-  mongodbRootUser: <MONGO_ROOT_USER>
-  mongodbRootPassword: <MONGO_ROOT_PASSWORD>
-  mongoURI: <MONGO_URI>
+  mongodbRootUser: root
+  mongodbRootPassword: WOIqcSwr0y
+  mongoURI: mongodb+srv://cfuser:mTiXcU2wafr9@my-mongodb.prod.svc.cluster.local
   mongoSkipUserCreation: true
   mongoDeploy: false   # disables deployment of internal mongo service
 
   mongoTLS: true #enable MongoDB TLS support
-  mongoCaCert: "LS0tLS1CRUdJTiBD..." #CA certificate (base64 encoded)
-  mongoCaKey: "LS0tLS1CRUdJTiBS..." #CA certificate private key (base64 encoded)
+  mongoCaCert: mongodb-ca/ca-cert.pem
+  mongoCaKey: mongodb-ca/ca-key.pem
+
+  ### for OfflineLogging feature 
+  runtimeMongoURI: mongodb+srv://cfuser:mTiXcU2wafr9@my-mongodb.prod.svc.cluster.local
+
+### for OfflineLogging feature 
+cfapi:
+  env:
+    RUNTIME_MONGO_TLS: "true" 
+    RUNTIME_MONGO_TLS_VALIDATE: "true" # 'false' if self-signed certificate to avoid x509 errors 
 
 mongo:
   enabled: false #disable default mongodb subchart installation
  ```
+
+ >Perform an upgarde with `--no-hooks` option:  <br />
+ >`kcfi deploy -c config.yaml --debug --no-hooks` (WIP)
 
 ### Configure an external Redis service
 Codefresh recommends to use the Bitnami Redis [chart](https://github.com/bitnami/charts/tree/master/bitnami/redis) as a Redis store.
