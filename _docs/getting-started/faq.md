@@ -3,9 +3,9 @@ title: "Frequently asked questions"
 description: ""
 group: getting-started
 ---
-We have collected a few of the common questions on the Codefresh Software Development Platform (CSDP).
+We have collected a few of the common questions on the Codefresh Software Development Platform (CSDP).  
 
-Navigate to our [classic FAQ](https://codefresh.io/docs/docs/getting-started/faq/){:target="\_blank"} for questions that are not specific for CAP
+For questions not specific to CSDP, navigate to our [FAQs for Codefresh Classic](https://codefresh.io/docs/docs/getting-started/faq/){:target="\_blank"}.
 
 
 **Q. What is the Codefresh Software Development Platform (CSDP)?**  
@@ -30,6 +30,18 @@ A. We will be giving detailed instructions on migrating resources from Kubernete
 
 **Q. Does CSDP support all Git providers?**  
 A. At the time of writing, CSDP supports GitHub. We are working to quickly extend support to GitLab and Bitbucket. Stay tuned.
+
+**Q. What are the browser requirements for the CSDP UI?** 
+A. Officially we support the latest version of the Chrome browser. Any browser released in the last 2 years should work without any major issues.
+The following browser versions are **NOT** supported:
+
+{: .table .table-bordered .table-hover}
+| Browser          | Version                 | Date released                  |
+| -------------- | ---------------------------- |-------------------------|
+| Chrome       | < 51 | May 2016 |
+| Firefox  | < 54 |  Jun 2017 |
+| Edge        | < 14 | Aug 2016 |
+| Safari   | < 10  | Sep 2016 |
 
 
 ## Migration from Classic Codefresh

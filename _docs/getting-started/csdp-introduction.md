@@ -25,7 +25,7 @@ CSDP brings you the power of the Argo project for your Kubernetes deployments:
 * Argo Events for event-driven workflow automation framework
 
 CSDP creates a conformed fork of the Argo project, providing an enterprise-supported version of the same, enhanced with unique functionality.
-For details, see [CSDP architecture](({{site.baseurl}}/docs/getting-started/architecture/)).
+For details, see [CSDP architecture]({{site.baseurl}}/docs/getting-started/architecture).
 
  
 ### CSDP and GitOps
