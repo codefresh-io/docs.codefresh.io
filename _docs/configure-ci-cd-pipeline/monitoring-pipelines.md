@@ -27,7 +27,7 @@ caption="Pipeline activity"
 max-width="80%"
 %}
 
-By default, it shows all builds that happening in Codefresh. To narrow the list you can use the filters on the top
+By default, it shows all builds that is happening in Codefresh. To narrow the list you can use the filters on the top
 of the screen.
 
 ### Applying filters on the build view
@@ -100,7 +100,7 @@ You can combine all previously mentioned filters with the time based filters.
 Once you have a set of filters that you use regularly, you can save them as a custom *Build View* by clicking the *Save as View* button
 and providing a name.
 
-Now you can select at the top of the window any of the available build views to automatically filter results according to the respective set of filters.
+Now you can select at the top of the window any of the available build views to automatically filter results according to the respective sets of filters.
 
 {% include 
 image.html 
@@ -183,7 +183,7 @@ max-width="80%"
 
 
 You can copy the step logs with the *copy to clipboard* button at the top left corner of the log window.
-You can also search the logs by clicking at magnifying glass icon at the top right corner in the log window.
+You can also search the logs by clicking at the magnifying glass icon at the top right corner in the log window.
 
 ### Reviewing the yaml for the pipeline
 
@@ -346,7 +346,7 @@ For open source projects you also have the ability to [trigger builds from exter
 ### Viewing Pipeline status from text/html files
 
 Codefresh also supports build badges that allow you to show the
-status of Pipeline in Text files or web pages.
+status of a Pipeline in Text files or web pages.
 
 {% include 
 image.html 
