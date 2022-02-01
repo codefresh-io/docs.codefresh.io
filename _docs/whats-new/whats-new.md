@@ -6,6 +6,11 @@ redirect_from:
   - /docs/whats-new/
 toc: true
 ---
+## 2022
+
+### January 2022
+- Store test results using MinIO objects - [documentation]({{site.baseurl}}/docs/testing/test-reports/#connecting-minio-storage)
+- Variables defined in `cf_export` override ones at the pipeline level - [documentation]({{site.baseurl}}/docs/codefresh-yaml/variables/#using-cf_export-command)
 
 ## 2021
 
