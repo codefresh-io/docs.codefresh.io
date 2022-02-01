@@ -6,7 +6,7 @@ toc: true
 ---
 
 
-The requirements listed are the **_minimum_** requirements for CSDP (Codefresh Software Development Platform) runtimes.
+The requirements listed are the **_minimum_** requirements for CSDP (Codefresh Software Delivery Platform) runtimes.
 
 ### Kubernetes cluster requirements
 This section lists cluster requirements.

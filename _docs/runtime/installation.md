@@ -6,7 +6,7 @@ toc: true
 ---
 
 
-Codefresh runtime installs the Codefresh Software Development Platform (CSDP), comprising Argo CD components and CSDP-specific components. The Argo CD components are derived from a fork of the Argo ecosystem, and do not correspond to the open-source versions available.
+Codefresh runtime installs the Codefresh Software Delivery Platform (CSDP), comprising Argo CD components and CSDP-specific components. The Argo CD components are derived from a fork of the Argo ecosystem, and do not correspond to the open-source versions available.
 
 There are two parts to installing runtimes:
 1. Installing the CSDP CLI

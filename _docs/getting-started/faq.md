@@ -3,12 +3,12 @@ title: "Frequently asked questions"
 description: ""
 group: getting-started
 ---
-We have collected a few of the common questions on the Codefresh Software Development Platform (CSDP).  
+We have collected a few of the common questions on the Codefresh Software Delivery Platform (CSDP).  
 
 For questions not specific to CSDP, navigate to our [FAQs for Codefresh Classic](https://codefresh.io/docs/docs/getting-started/faq/){:target="\_blank"}.
 
 
-**Q. What is the Codefresh Software Development Platform (CSDP)?**  
+**Q. What is the Codefresh Software Delivery Platform (CSDP)?**  
 
 A. The Codefresh Software Delivery Platform (CSDP), is a full-featured, turn-key solution for application deployments and releases. Powered by the Argo Project, CSDP uses Argo CD, Argo Workflows, Argo Events, and Argo Rollouts, extended with unique functionality and features essential for enterprise deployments.   
 
