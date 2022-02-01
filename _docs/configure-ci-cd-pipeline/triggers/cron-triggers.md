@@ -9,7 +9,7 @@ redirect_from:
 toc: true
 ---
 
-Cron triggers allow you to create pipelines that start on a specific time schedule. This this very useful for cleanup jobs or periodic checks or any other workflow that needs to run after a time interval.
+Cron triggers allow you to create pipelines that start on a specific time schedule. This is very useful for cleanup jobs or periodic checks or any other workflow that needs to run after a time interval.
 
 >All times mentioned in Cron triggers are using the UTC time zone. 
 
@@ -35,8 +35,8 @@ Visit [this page](https://github.com/codefresh-io/cronus/blob/master/docs/expres
 
 Fill the following information:
 
-* Use Cron helper wizard to build a valid `cron` expression or write custom `cron` expression on last tab.
-* Add a free text message, that will be sent as additional event payload every time `cron` is executed.
+* Use Cron helper wizard to build a valid `cron` expression or write custom `cron` expression on the last tab.
+* Add a free text message, that will be sent as an additional event payload every time `cron` is executed.
 
 {% include image.html
 lightbox="true"
@@ -79,7 +79,7 @@ Visit [this page](https://github.com/codefresh-io/cronus/blob/master/docs/expres
 
 #### Setup pipeline trigger
 
-Now, lets create a new pipeline trigger, linking previously defined `cron` `trigger-event` to one ore more Codefresh pipelines.
+Now, lets create a new pipeline trigger, linking previously defined `cron` `trigger-event` to one or more Codefresh pipelines.
 
 ```sh
 # create trigger, linking trigger-event UID to the pipeline UID
@@ -89,7 +89,7 @@ codefresh create trigger "cron:codefresh:codefresh:0 */20 * * * *:hello-once-in-
 codefresh create trigger "cron:codefresh:codefresh:0 */20 * * * *:hello-once-in-20-min:107e9db97062" 4a5634e4b2cd6baf021a3c0a
 ```
 
-From now on, every 20 minutes Codefresh will trigger pipeline execution for 2 pipeline linked to the previously specified `cron` `trigger-event` (once in 20 minutes)
+From now on, every 20 minutes Codefresh will trigger a pipeline execution for 2 pipelines linked to the previously specified `cron` `trigger-event` (once in 20 minutes)
 
 #### Cron Event payload
 
