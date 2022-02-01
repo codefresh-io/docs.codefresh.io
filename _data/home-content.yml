@@ -19,7 +19,7 @@
 
 
 - title: Clients
-  icon: images/home-icons/deployment.svg
+  icon: images/home-icons/client.svg
   url: ''
   links:
     - title: CSDP CLI
