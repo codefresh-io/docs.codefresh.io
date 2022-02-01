@@ -17,24 +17,19 @@ Kubernetes cluster version 1.20 or higher, without Argo Project components
 
 #### Ingress controller
 * Ingress controller in cluster  
-  Configure your Kubernetes cluster with an Ingress controller component that is exposed from the cluster. Currently, we support `Traefik` and `NGINX` ingress controllers. Provider specific [NGINX installation instructions can be found here](https://kubernetes.github.io/ingress-nginx/deploy/#environment-specific-instructions).
-> Tip:   
-  Verify that the ingress controller has a valid external IP address:  
+  Configure your Kubernetes cluster with an Ingress controller component that is exposed from the cluster. Currently, we support the `NGINX` ingress controller.  
+  > Tip:   
+    Verify that the ingress controller has a valid external IP address. 
 * Valid SSL certificate  
   The ingress controller must have a valid SSL certificate from an authorized CA (Certificate Authority) for secure runtime installation.  
 
-#### Default `IngressClass` 
-The `IngressClass` resource, or any one of them if you have more than one, must be tagged as the default.  
+**How to install NGINX on EKS cluster**
+1. Apply:  
+  ```kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.0/deploy/static/provider/aws/deploy.yaml```
 
-To tag an `IngressClass` resource as the default, add this `ingressclass.kubernetes.io/is-default-class` annotation with the value of `true` to the resource.
+1. Verify you see a valid external IP address:  
+  ```kubectl get svc ingress-nginx-controller -n ingress-nginx```  
   
-  ```yaml
-  apiVersion: networking.k8s.io/v1
-  kind: IngressClass
-  metadata:
-  annotations:
-    ingressclass.kubernetes.io/is-default-class: "true" 
-  ```
 
 #### Node requirements
 * Memory: 5000 MB

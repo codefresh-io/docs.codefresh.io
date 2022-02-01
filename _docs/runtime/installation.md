@@ -19,13 +19,17 @@ There are two parts to installing runtimes:
 
 ### Where do you install runtimes?
 * If this is your first CSDP installation, in the Welcome page, select **+ Install Runtime**.
-* To install additional runtimes, select **Account Settings**, and then from the sidebar, select **Configuration > Runtimes**. From the top-right, select **+ Add Runtime**.
+* To install additional runtimes, in the CSDP UI, go to the [**Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"} page, and select **+ Add Runtimes**. 
 
 ### Installing the CSDP CLI
 * CLI mode  
   Install the CSDP CLI using the option that best suits you: `curl`, `brew`, or standard download. If you are not sure which OS to select for `curl`, simply select one, and we automatically identify and select the right OS for CLI installation.
 
 ### Installing the CSDP runtime
+Install CSDP runtime through the CLI wizard, or by running a silent install:
+* CLI wizard: Run `cf runtime install`, and follow the prompts to enter the required values
+* Silent install: Pass the mandatory flags in the install command:  
+  `cf runtime install <runtime-name> --repo <git-repo> --git-token <git-token> --silent`  
 
 #### Runtime prerequisites
 Before you install the CSDP runtime, verify that:
@@ -36,33 +40,45 @@ Before you install the CSDP runtime, verify that:
    Expiration: Default is `30 days`  
    Scope: `repo` and `admin-repo.hook` 
 
-#### Runtime installation
-To install a CSDP runtime, you can either pass the flags in the runtime install command in the UI, or run `cf runtime install`, and follow the prompts in the CLI wizard to enter the required values.
 
 #### Runtime installation flags
 
 **Runtime name**  
-   The runtime name must start with a lower-case character, and can include up to 62 lower-case characters and numbers.
+  The runtime name must start with a lower-case character, and can include up to 62 lower-case characters and numbers.  
 
-**Insecure flag**  
-   If the Ingress controller does not have a valid SSL certificate, to continue with the installation, add the `--insecure` flag to the installation command.  
+  Silent install: Mandatory parameter.
 
 **Kube context**  
-  Select the Kube context from the list of available contexts. The current context, which is the cluster currently the default for `kubectl`,
-   is selected by default.  
+  If you have more than one Kube context, the current context, which is the cluster currently the default for `kubectl`, is selected by default.  
+  * CLI wizard: Select the Kube context from the list displayed.
+  * Silent install: Explicitly specify the Kube context with the `--context` flag.
 
+**Ingress class**  
+  * If you have more than one ingress class configured on your cluster:
+    * CLI wizard: Select the ingress class for runtime installation from the list displayed. 
+    * Silent install: Explicitly specify the ingress class through the `--ingress-class` flag. Otherwise, runtime installation fails.
+  * If the ingress class does not have a valid SSL certificate, you can continue with the installation in insecure mode, which disables certificate validation.  
+    Silent install: If the ingress host does not have a valid certificate, to continue with the installation, add the `--insecure-ingress-host` flag, and set the value to `true`.  
+
+**Insecure flag**  
+   For _on-premises installations_, if the Ingress controller does not have a valid SSL certificate, to continue with the installation, add the `--insecure` flag to the installation command.  
+   
 **Repository URLs**  
   The GitHub repository to house the installation definitions. If the repo doesn't exist, CSDP creates it during runtime installation.  
+
+  Silent install: Mandatory. Add the `--repo` flag. 
+
 
 **Git provider API token**  
   The Git token authenticating access to the GitHub installation repository.  
 
-**Ingress host**  
-  The IP address or host name of the ingress controller component.  
-
+  Silent install: Mandatory. Add the `--git-token` flag.
 
 **Codefresh demo resources**  
-  Optional. Install demo pipelines to use as a starting point to create your own pipelines. We recommend installing the demo resources as these are used in our quick start tutorials.
+  Optional. Install demo pipelines to use as a starting point to create your own pipelines. We recommend installing the demo resources as these are used in our quick start tutorials.  
+
+  Silent install: Optional. Add the `--demo-resources` flag. By default, set to `true`.
+
 
 #### Runtime components
 
