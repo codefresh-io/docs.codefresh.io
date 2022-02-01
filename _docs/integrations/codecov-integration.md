@@ -31,7 +31,11 @@ caption="Enter Token"
 alt="Enter Token"
 %}
 
-Enter your token (see the previous section) and a name (user-defined) for this integration. The name should be unique for each integration that you add.
+Enter the following:
+* **Integration name**: The user-defined name for this integration. The name should be unique for each integration that you add. 
+* **Token**: The token (see the previous section) for this integration. 
+* **Url**: The base URL for this integration. Do not add the trailing slash to the URL definition. For more information, see the [official Codecov documentation](https://docs.codecov.com/docs/configuration#codecov-url){:target="\_blank"}. 
+
 
 Using Codecov in a Codefresh Pipeline:
 
