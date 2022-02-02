@@ -11,7 +11,7 @@ toc: true
 
 Codefresh Software Development Platform (CSDP) is built entirely around the concept of GitOps, a set of best practices where the entire code delivery process is controlled via Git, including infrastructure and application definition, and automation to complete updates and rollbacks.  
 
-To fully understand the benefits of CSDP, let's have a sort recap of GitOps, and how it can help:
+To fully understand the benefits of CSDP, let's briefly recap GitOps, and how it can help:
 
 #### Infrastructure as code, the entire system described declaratively 
   Infrastructure as code is a modern approach that "declaratively" describes the state of a system as code, while having that single source of truth applied to an end-system. The end-systems in most cases are modern cloud native tools.  
