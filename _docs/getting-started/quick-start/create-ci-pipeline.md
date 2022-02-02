@@ -39,12 +39,12 @@ You must have a PAT to clone the repository.
 {:start="2"}
 1. Define your PAT and namespace by replacing the values in these commands:
   ```
-   export GIT_TOKEN=[PAT token]
-   export NAMESPACE=[CSDP runtime namespace]
+ export GIT_TOKEN=[PAT token]
+ export NAMESPACE=[CSDP runtime namespace]
   ```
 1. Create a generic Kubernetes secret with your PAT token:
   ```
-  kubectl create secret generic github-token \
+kubectl create secret generic github-token \
   --from-literal=token=$GIT_TOKEN --dry-run=client \
   --save-config -o yaml | kubectl apply -f - -n $NAMESPACE
   ```
@@ -55,19 +55,18 @@ To push the image to a Docker registry, we'll need the credentials on our cluste
 > The Docker registry secret is different from the general registry secret.
 
 1. Export the values for the Docker registry's `server`, `username`, `password`, `email`, and `namespace`:  
-
   ```
-  export DOCKER_REGISTRY_SERVER=[Server]
-  export DOCKER_USER=[Username]
-  export DOCKER_PASSWORD=[Password]
-  export DOCKER_EMAIL=[Email]
-  export NAMESPACE=[CSDP runtime namespace]
+export DOCKER_REGISTRY_SERVER=[Server]
+export DOCKER_USER=[Username]
+export DOCKER_PASSWORD=[Password]
+export DOCKER_EMAIL=[Email]
+export NAMESPACE=[CSDP runtime namespace]
   ```
 
 {:start="2"}
 1. Create the secret:   
   ``` 
-  kubectl create secret docker-registry <my-secret> \
+kubectl create secret docker-registry <my-secret> \
   --docker-server=$DOCKER_REGISTRY_SERVER \
   --docker-username=$DOCKER_USER \
   --docker-password=$DOCKER_PASSWORD \
@@ -91,7 +90,7 @@ export NAMESPACE=[CSDP runtime namespace]
 {:start="2"}
 1. Create the secret:
   ```
-  kubectl create secret generic registry-creds \
+kubectl create secret generic registry-creds \
   --from-literal=username=$USER \
   --from-literal=password=$PASSWORD \
   --from-literal=domain=$DOMAIN \
