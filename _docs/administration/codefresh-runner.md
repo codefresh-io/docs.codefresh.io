@@ -1498,6 +1498,8 @@ accountId: 5f048d85eb107d52b16c53ea
 | `resources`       | object | Specify non-default `requests` and `limits` for engine pod |
 | `tolerations`       | array | Add tolerations to engine pod |
 | `annotations`       | object | Add custom annotations to engine pod (empty by default `{}`) |
+| `dnsPolicy`       | string | Engine pod's [DNS policy](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) |
+| `dnsConfig`       | object | Engine pod's [DNS config](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-dns-config) |
 
 `runtimeScheduler` example:
 {% highlight yaml %}
@@ -1551,6 +1553,8 @@ runtimeScheduler:
 | `tolerations`       | array | Add tolerations to dind pod |
 | `annotations`       | object | Add custom annotations to dind pod (empty by default `{}`) |
 | `pvc`       | object | Override default storage configuration for PersistentVolumeClaim (PVC) with `storageClassName`, `volumeSize`, `reuseVolumeSelector`. See [Volume Reusage Policy]({{site.baseurl}}/docs/administration/codefresh-runner/#volume-reusage-policy)  |
+| `dnsPolicy`       | string | Dind pod's [DNS policy](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) |
+| `dnsConfig`       | object | Dind pod's [DNS config](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-dns-config) |
 
 `dockerDaemonScheduler` example:
 {% highlight yaml %}
