@@ -111,8 +111,6 @@ codefresh runner init --dry-run
 
 This will execute the wizard in a special mode that will not actually install anything in your cluster. After all configuration questions are asked, all Kubernetes manifests used by the installer will be instead saved locally in a folder `./codefresh_manifests`.
 
-You can then inspect the manifests locally or edit/apply them manually if you wish.
-
 ## Installing Codefresh Runner with values file
 
 To install the Codefresh Runner with pre-defined values file use `--values` flag:
@@ -152,7 +150,7 @@ To install the Codefresh Runner using Helm, follow these steps:
     ```
 >**Note!** <br />
 Runtime components' (engine and dind) configuration is determined by the `runner init` command. <br />
-The `helm install` command can only control the configuration of `runner`, `dind-volume-provisioner` and `lv-monitor` components
+The `helm install` command can only control the configuration of `runner`, `dind-volume-provisioner` and `lv-monitor` components.
 
 ## Using the Codefresh Runner
 
