@@ -3,15 +3,15 @@
 .bd-masthead {
   position: relative;
   padding: 1rem ($grid-gutter-width / 2);
-  background: $cf-dark;
+  background: #2A2B3D;
 
   h1 {
     line-height: 1;
   }
 
   .cf-badge-doc {
-    color: $cf-dark-alt;
-    background: $cf-light;
+    color: #5FFFBF;
+    background: #35384B;
   }
 
   .btn {
@@ -22,23 +22,25 @@
     text-align: center;
     border-radius: .25rem;
     box-shadow: 0 3px 12px rgba(#000, .3);
+
     transition: .2s ease;
 
     &:hover {
       box-shadow: 0 3px 12px rgba($bd-topaz-main, .4);
+      color: #5FFFBF;
     }
   }
 
   .btn-primary {
     color: $white;
-    background-color: $bd-topaz-main;
-    border-color: $bd-topaz-main;
+    background-color: #35384B;
+    border-color: #35384B;
   }
 
   .btn-secondary {
-    color: $bd-topaz-main;
-    background-color: $white;
-    border-color: $white;
+    color: #5FFFBF;
+    background-color: #2A2B3D;
+    border-color: #5FFFBF;
   }
 
   .carbonad {

@@ -4,7 +4,7 @@
 
 .bd-navbar {
   min-height: 60px;
-  background: $cf-dark;
+  background: #212437;
 
   @include media-breakpoint-down(md) {
     .navbar-nav-scroll {
@@ -61,8 +61,9 @@
   }
 
   .cf-badge-doc {
-    color: $cf-dark-alt;
-    background: $cf-light;
+    color: #5FFFBF;
+    background: $cf-dark;
+    font-size: 16px;
   }
 
   .navbar-nav {
