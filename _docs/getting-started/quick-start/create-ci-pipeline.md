@@ -82,10 +82,10 @@ Create a general registry secret to send the image information to CSDP.
 
 1. Export the values for your registry's `username`, `password`, `domain`, and `namespace`:  
   ```
-  export USER=[Username]
-  export PASSWORD=[Password]
-  export DOMAIN=[Domain]
-  export NAMESPACE=[CSDP runtime namespace]
+export USER=[Username]
+export PASSWORD=[Password]
+export DOMAIN=[Domain]
+export NAMESPACE=[CSDP runtime namespace]
   ```
   
 {:start="2"}
