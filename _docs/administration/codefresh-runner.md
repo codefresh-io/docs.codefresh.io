@@ -415,55 +415,106 @@ You can fine tune the installation of the runner to better match your environmen
 
 ### Installing on AWS
 
-If you install the Codefresh runner on [EKS](https://aws.amazon.com/eks/) or any other custom cluster (e.g. with kops) in Amazon you need to configure it properly to work with EBS volume in order to gain [caching]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipeline-caching/).
+If you've installed the Codefresh runner on [EKS](https://aws.amazon.com/eks/) or any other custom cluster (e.g. with kops) in Amazon you need to configure it properly to work with EBS volumes in order to gain [caching]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipeline-caching/).
 
-Make sure that the  node group where `dind-volume-provisioner-runner` deployment is running has the appropriate permissions to create, attach, detach volumes:
+> This section assumes you already installed the Runner with default options: `codefresh runner init`
 
+**Prerequesits**
+
+`dind-volume-provisioner` deployment should have permissions to create/attach/detach/delete/get ebs volumes.
+
+There are 3 options:
+* running `dind-volume-provisioniner` pod on the node (node-group) with iam role
+* k8s secret with [aws credentials format](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html) mounted to ~/.aws/credentials (or `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` env vars passed) to the `dind-volume-provisioniner` pod
+* using [Aws Identity for Service Account](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html) iam role assigned to `volume-provisioner-runner` service account
+
+Minimal policy for `dind-volume-provisioner`:
 ```json
-  {
-      "Version": "2012-10-17",
-      "Statement": [
-          {
-              "Effect": "Allow",
-              "Action": [
-                  "ec2:DescribeVolumes"
-              ],
-              "Resource": [
-                  "*"
-              ]
-          },
-          {
-              "Effect": "Allow",
-              "Action": [
-                  "ec2:CreateVolume",
-                  "ec2:ModifyVolume",
-                  "ec2:CreateTags",
-                  "ec2:DescribeTags",
-                  "ec2:DetachVolume",
-                  "ec2:AttachVolume"
-              ],
-              "Resource": [
-                  "*"
-              ]
-          }
-      ]
-  }
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ec2:AttachVolume",
+        "ec2:CreateSnapshot",
+        "ec2:CreateTags",
+        "ec2:CreateVolume",
+        "ec2:DeleteSnapshot",
+        "ec2:DeleteTags",
+        "ec2:DeleteVolume",
+        "ec2:DescribeInstances",
+        "ec2:DescribeSnapshots",
+        "ec2:DescribeTags",
+        "ec2:DescribeVolumes",
+        "ec2:DetachVolume"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
 ```
 
-Then in order to proceed with Storage Class installation please choose one of the Availability Zones you want to be used for your pipeline builds:
+Create Storage Class for EBS volumes:
+>Choose **one** of the Availability Zones you want to be used for your pipeline builds. Multi AZ configuration is not supported.
+
+**Storage Class (gp2)**
 
 ```yaml
-    apiVersion: storage.k8s.io/v1
-    kind: StorageClass
-    metadata:
-      name: runner-ebs
-    parameters:
-      AvailabilityZone: us-west-2c # <----(Please change it to yours)
-      volumeBackend: ebs
-    provisioner: codefresh.io/dind-volume-provisioner-runner-<-NAMESPACE-> # <---- rename <-NAMESPACE-> with the runner namespace
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: dind-ebs
+### Specify name of provisioner
+provisioner: codefresh.io/dind-volume-provisioner-runner-<-NAMESPACE-> # <---- rename <-NAMESPACE-> with the runner namespace
+volumeBindingMode: Immediate
+parameters:
+  # ebs or ebs-csi
+  volumeBackend: ebs 
+  # Valid zone
+  AvailabilityZone: us-central1-a # <---- change it to your AZ
+  #  gp2, gp3 or io1
+  VolumeType: gp2
+  # in case of io1 you can set iops
+  # iops: 1000
+  # ext4 or xfs (default to xfs, ensure that there is xfstools )
+  fsType: xfs
+```
+**Storage Class (gp3)**
+
+```yaml
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: dind-ebs
+### Specify name of provisioner
+provisioner: codefresh.io/dind-volume-provisioner-runner-<-NAMESPACE-> # <---- rename <-NAMESPACE-> with the runner namespace
+volumeBindingMode: Immediate
+parameters:
+  # ebs or ebs-csi
+  volumeBackend: ebs
+  # Valid zone
+  AvailabilityZone: us-central1-a  # <---- change it to your AZ
+  #  gp2, gp3 or io1
+  VolumeType: gp3
+  # ext4 or xfs (default to xfs, ensure that there is xfstools )
+  fsType: xfs
+  # I/O operations per second. Only effetive when gp3 volume type is specified.
+  # Default value - 3000.
+  # Max - 16,000
+  iops: "5000"
+  # Throughput in MiB/s. Only effective when gp3 volume type is specified.
+  # Default value - 125.
+  # Max - 1000.
+  throughput: "500"
 ```
 
-Finally you need to change your Codefresh runtime configuration.
+Apply storage class manifest:
+```shell
+kubectl apply -f dind-ebs.yaml
+```
+
+Change your [runtime environment]({{site.baseurl}}/docs/administration/codefresh-runner/#full-runtime-environment-specification) configuration:
 
 The same AZ you selected before should be used in nodeSelector inside Runtime Configuration:
 
@@ -476,60 +527,59 @@ codefresh get runtime-environments
 Choose the runtime you have just added and get its yaml representation:
 
 ```shell
-codefresh get runtime-environments ivan@acme-ebs.us-west-2.eksctl.io/codefresh-runtime -o yaml > runtime.yaml
+codefresh get runtime-environments my-eks-cluster/codefresh -o yaml > runtime.yaml
 ```
 
-The nodeSelector `failure-domain.beta.kubernetes.io/zone: us-west-2c` (Please change it to yours) should be added to the `dockerDaemonScheduler` block. It should be at the same level as `clusterProvider` or `namespace`. Also the `pvcs` block should be modified to use the Storage Class you created above (`runner-ebs`). Here is the example:
+ Under `dockerDaemonScheduler.cluster` block add the nodeSelector `topology.kubernetes.io/zone: <your_az_here>`. It should be at the same level as `clusterProvider` and `namespace`. Also, the `pvcs.dind` block should be modified to use the Storage Class you created above (`dind-ebs`).
 
-`runtime.yaml`
+`runtime.yaml` example:
 
 ```yaml
-version: null
+version: 1
 metadata:
-  agent: true
-  trial:
-    endingAt: 1577273400263
-    reason: Codefresh hybrid runtime
-    started: 1576063800333
-  name: ivan@acme-ebs.us-west-2.eksctl.io/codefresh-runtime
-  changedBy: ivan-codefresh
-  creationTime: '2019/12/11 11:30:00'
+  ...
 runtimeScheduler:
   cluster:
     clusterProvider:
-      accountId: 5cb563d0506083262ba1f327
-      selector: ivan@acme-ebs.us-west-2.eksctl.io
-    namespace: codefresh-runtime
+      accountId: 5f048d85eb107d52b16c53ea
+      selector: my-eks-cluster
+    namespace: codefresh
+    serviceAccount: codefresh-engine
   annotations: {}
 dockerDaemonScheduler:
   cluster:
     clusterProvider:
-      accountId: 5cb563d0506083262ba1f327
-      selector: ivan@acme-ebs.us-west-2.eksctl.io
-    namespace: codefresh-runtime
+      accountId: 5f048d85eb107d52b16c53ea
+      selector: my-eks-cluster
+    namespace: codefresh
     nodeSelector:
-      failure-domain.beta.kubernetes.io/zone: us-west-2c
+      topology.kubernetes.io/zone: us-central1-a
+    serviceAccount: codefresh-engine
   annotations: {}
-  dockerDaemonParams: null
+  userAccess: true
+  defaultDindResources:
+    requests: ''
   pvcs:
     dind:
       volumeSize: 30Gi
-      storageClassName: runner-ebs
+      storageClassName: dind-ebs
       reuseVolumeSelector: 'codefresh-app,io.codefresh.accountName'
-      reuseVolumeSortOrder: 'pipeline_id,trigger'
-  userAccess: true
 extends:
-  - system/default/hybrid/k8s
-description: >-
-  Runtime environment configure to cluster: ivan@acme-ebs.us-west-2.eksctl.io
-  and namespace: codefresh-runtime
-accountId: 5cb563d0506083262ba1f327
+  - system/default/hybrid/k8s_low_limits
+description: '...'
+accountId: 5f048d85eb107d52b16c53ea
 ```
 
 Update your runtime environment with the [patch command](https://codefresh-io.github.io/cli/operate-on-resources/patch/):
 
 ```shell
-codefresh patch runtime-environment ivan@acme-ebs.us-west-2.eksctl.io/codefresh-runtime -f codefresh-runner.yaml
+codefresh patch runtime-environment my-eks-cluster/codefresh -f runtime.yaml
+```
+
+If necessary, delete all existing PV and PVC objects left from default local provisioner:
+```
+kubectl delete pvc -l codefresh-app=dind -n <your_runner_ns>
+kubectl delete pv -l codefresh-app=dind -n <your_runner_ns>
 ```
 
 ### Installing to EKS with Autoscaling
@@ -754,7 +804,8 @@ Install the runner passing additional options:
 ```shell
 codefresh runner init \
 --name my-aws-runner \
---kube-node-selector=failure-domain.beta.kubernetes.io/zone=us-west-2a \
+--kube-node-selector=topology.kubernetes.io/zone=us-west-2a \
+--build-node-selector=topology.kubernetes.io/zone=us-west-2a \
 --kube-namespace cf --kube-context-name my-aws-runner \
 --set-value Storage.VolumeProvisioner.NodeSelector=node-type=addons \
 --set-value=Storage.Backend=ebs \
@@ -770,7 +821,8 @@ If you already have a key - add its ARN via `--set-value=Storage.KmsKeyId=<key i
 ```shell
 codefresh runner init \
 --name my-aws-runner \
---kube-node-selector=failure-domain.beta.kubernetes.io/zone=us-west-2a \
+--kube-node-selector=topology.kubernetes.io/zone=us-west-2a \
+--build-node-selector=topology.kubernetes.io/zone=us-west-2a \
 --kube-namespace cf --kube-context-name my-aws-runner \
 --set-value Storage.VolumeProvisioner.NodeSelector=node-type=addons \
 --set-value=Storage.Backend=ebs \
@@ -779,7 +831,7 @@ codefresh runner init \
 --set-value=Storage.KmsKeyId=<key id>
 ```  
 
-For an explanation of all other options see the [global parameter table](#customizing-the-wizard-installation).
+For an explanation of all other options run `codefresh runner init --help` ([global parameter table](#customizing-the-wizard-installation)).
 
 At this point the quick start wizard will start the installation.
 
@@ -787,43 +839,6 @@ Once that is done we need to modify the runtime environment of `my-aws-runner` t
 
 ```shell
 codefresh get re --limit=100 my-aws-runner/cf -o yaml > my-runtime.yml
-```
-
-```yaml
-version: null
-metadata:
-  agent: true
-  trial:
-    endingAt: 1593596844167
-    reason: Codefresh hybrid runtime
-    started: 1592387244207
-  name: my-aws-runner/cf
-  changedBy: ivan-codefresh
-  creationTime: '2020/06/17 09:47:24'
-runtimeScheduler:
-  cluster:
-    clusterProvider:
-      accountId: 5cb563d0506083262ba1f327
-      selector: my-aws-runner
-    namespace: cf
-  annotations: {}
-dockerDaemonScheduler:
-  cluster:
-    clusterProvider:
-      accountId: 5cb563d0506083262ba1f327
-      selector: my-aws-runner
-    namespace: cf
-  annotations: {}
-  defaultDindResources:
-    requests: ''
-  pvcs:
-    dind:
-      storageClassName: dind-local-volumes-runner-cf
-  userAccess: true
-extends:
-  - system/default/hybrid/k8s_low_limits
-description: 'Runtime environment configure to cluster: my-aws-runner and namespace: cf'
-accountId: 5cb563d0506083262ba1f327
 ```
 
 Modify the file my-runtime.yml as shown below:
@@ -881,7 +896,7 @@ description: 'Runtime environment configure to cluster: my-aws-runner and namesp
 accountId: 5cb563d0506083262ba1f327
 ```
 
-Finally apply changes.
+Apply changes.
 
 ```shell
 codefresh patch re my-aws-runner/cf -f my-runtime.yml
@@ -891,14 +906,14 @@ That's all. Now you can go to UI and try to run a pipeline on RE my-aws-runner/c
 
 ### Injecting AWS arn roles into the cluster
 
-Step 1 - Make sure the OIDC provider is connected to the cluster
+**Step 1** - Make sure the OIDC provider is connected to the cluster
 
 See:
 
 * [https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html](https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html)
 * [https://aws.amazon.com/blogs/opensource/introducing-fine-grained-iam-roles-service-accounts/](https://aws.amazon.com/blogs/opensource/introducing-fine-grained-iam-roles-service-accounts/)
 
-Step 2 - Create IAM role and policy as explained in [https://docs.aws.amazon.com/eks/latest/userguide/create-service-account-iam-policy-and-role.html](https://docs.aws.amazon.com/eks/latest/userguide/create-service-account-iam-policy-and-role.html)
+**Step 2** - Create IAM role and policy as explained in [https://docs.aws.amazon.com/eks/latest/userguide/create-service-account-iam-policy-and-role.html](https://docs.aws.amazon.com/eks/latest/userguide/create-service-account-iam-policy-and-role.html)
 
 Here, in addition to the policy explained, you need a Trust Relationship established between this role and the OIDC entity.
 
@@ -922,7 +937,7 @@ Here, in addition to the policy explained, you need a Trust Relationship establi
 }
 ```
 
-Step 3 - Annotate the `codefresh-engine` Kubernetes Service Account in the namespace where the Codefresh Runner is installed with the proper IAM role.
+**Step 3** - Annotate the `codefresh-engine` Kubernetes Service Account in the namespace where the Codefresh Runner is installed with the proper IAM role.
 
 ```shell
 kubectl annotate -n ${CODEFRESH_NAMESPACE} sa codefresh-engine eks.amazonaws.com/role-arn=${ROLE_ARN}
@@ -944,7 +959,7 @@ Tokens:              codefresh-engine-token-msj8d
 Events:              <none>
 ```
 
-Step 4 - Using the AWS assumed role identity
+**Step 4** - Using the AWS assumed role identity
 
 After annotating the Service Account, run a pipeline to test the AWS resource access:
 
@@ -970,9 +985,9 @@ RunAwsCli:
 
 If you want to deploy the Codefresh runner on a Kubernetes cluster that doesn’t have direct access to `g.codefresh.io`, and has to go trough a proxy server to access `g.codefresh.io`, you will need to follow these additional steps:
 
-*Step 1* - Follow the installation instructions of the previous section
+**Step 1** - Follow the installation instructions of the previous section
 
-*Step 2* -  Run `kubectl edit deployment runner -n codefresh-runtime` and add the proxy variables like this
+**Step 2** -  Run `kubectl edit deployment runner -n codefresh-runtime` and add the proxy variables like this
 
 ```yaml
 spec:
@@ -992,7 +1007,7 @@ spec:
       value: localhost,127.0.0.1,<local_ip_of_machine>
 ```
 
-*Step 3* - Add the following variables to your runtime.yaml, both under the `runtimeScheduler:` and under `dockerDaemonScheduler:` blocks inside the `envVars:` section
+**Step 3** - Add the following variables to your runtime.yaml, both under the `runtimeScheduler:` and under `dockerDaemonScheduler:` blocks inside the `envVars:` section
 
 ```yaml
 HTTP_PROXY: http://<ip of proxy server>:port
@@ -1003,16 +1018,16 @@ No_proxy: localhost, 127.0.0.1, <local_ip_of_machine>
 NO_PROXY: localhost, 127.0.0.1, <local_ip_of_machine>
 ```
 
-*Step 4* -  Add `.firebaseio.com` to the allowed-sites of the proxy server
+**Step 4** -  Add `.firebaseio.com` to the allowed-sites of the proxy server
 
-*Step 5* -  Exec into the `dind` pod and run `ifconfig`
+**Step 5** -  Exec into the `dind` pod and run `ifconfig`
 
 If the MTU value for `docker0` is higher than the MTU value of `eth0` (sometimes the `docker0` MTU is 1500, while `eth0` MTU is 1440) - you need to change this, the `docker0` MTU should be lower than `eth0` MTU
 
 To fix this, edit the configmap in the codefresh-runtime namespace:
 
 ```shell
-kubectl edit cm codefresh-dind-config -ncodefresh-runtime
+kubectl edit cm codefresh-dind-config -n codefresh-runtime
 ```
 
 And add this after one of the commas:
