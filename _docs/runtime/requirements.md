@@ -23,13 +23,49 @@ Kubernetes cluster version 1.20 or higher, without Argo Project components
 * Valid SSL certificate  
   The ingress controller must have a valid SSL certificate from an authorized CA (Certificate Authority) for secure runtime installation.  
 
-**How to install NGINX on EKS cluster**
+ 
+
+#### Provider-specific Ingress NGINX installation
+To install on an EKS, cluster, follow the instructions. For other providers, see the list of provider-specific installation links.
+
+##### Install Ingress NGINX on EKS cluster
+
 1. Apply:  
   ```kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.0/deploy/static/provider/aws/deploy.yaml```
 
 1. Verify you see a valid external IP address:  
-  ```kubectl get svc ingress-nginx-controller -n ingress-nginx```  
-  
+  ```kubectl get svc ingress-nginx-controller -n ingress-nginx``` 
+
+##### Provider-specific installation links
+
+* [MiniKube](https://kubernetes.github.io/ingress-nginx/deploy/#minikube)
+* [MicroK8s](https://kubernetes.github.io/ingress-nginx/deploy/#microk8s)
+* [Docker Desktop](https://kubernetes.github.io/ingress-nginx/deploy/#docker-desktop)
+* [AWS](https://kubernetes.github.io/ingress-nginx/deploy/#aws)
+* [Google Kubernetes Engine (GCP GKE)](https://kubernetes.github.io/ingress-nginx/deploy/#gce-gke)
+* [Azure](https://kubernetes.github.io/ingress-nginx/deploy/#azure)
+* [Digital Ocean](https://kubernetes.github.io/ingress-nginx/deploy/#digital-ocean)
+* [Scale Away](https://kubernetes.github.io/ingress-nginx/deploy/#scaleway)
+* [Exoscale](https://kubernetes.github.io/ingress-nginx/deploy/#exoscale)
+* [Oracle Cloud Infrastructure](https://kubernetes.github.io/ingress-nginx/deploy/#oracle-cloud-infrastructure)
+* [Bare Metal Clusters](https://kubernetes.github.io/ingress-nginx/deploy/#bare-metal-clusters)
+
+
+**Specific requirements for Google Kubernetes Engine (GCP GKE)**  
+
+GKE by default limits outbound requests from nodes. In order for the runtime to communicate with the control-plane in Codefresh a firewall specific rule must be added.
+
+1. Find your cluster's network:   
+  `gcloud container clusters describe [CLUSTER_NAME] --format=get"(network)"`
+1. Get the Cluster IPV4 CIDR:  
+  `gcloud container clusters describe [CLUSTER_NAME] --format=get"(clusterIpv4Cidr)"`  
+1. Replace the `[CLUSTER_NAME]`, `[NETWORK]`, and `[CLUSTER_IPV4_CIDR]`, with the relevant values:  
+   ```
+    gcloud compute firewall-rules create "[CLUSTER_NAME]-to-all-vms-on-network" \
+    --network="[NETWORK]" \
+    --source-ranges="[CLUSTER_IPV4_CIDR]" \
+    --allow=tcp,udp,icmp,esp,ah,sctp
+    ```
 
 #### Node requirements
 * Memory: 5000 MB
