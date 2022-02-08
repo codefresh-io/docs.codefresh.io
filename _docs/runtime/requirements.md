@@ -6,29 +6,36 @@ toc: true
 ---
 
 
-The requirements listed are the **_minimum_** requirements for CSDP (Codefresh Software Delivery Platform) runtimes.
+The requirements listed are the **_minimum_** requirements for CSDP (Codefresh Software Delivery Platform) runtimes.  
+
+> In the documentation, Kubernetes and K8s are used interchangeably. 
+
 
 ### Kubernetes cluster requirements
 This section lists cluster requirements.
 
 #### Cluster version
-Kubernetes cluster version 1.20 or higher, without Argo Project components
-> In the documentation, Kubernetes and K8s are used interchangeably. 
+Kubernetes cluster, server version 1.20 or higher, without Argo Project components.
+> Tip:  
+>  Run `kubectl version --short`, and check the server version.
+
 
 #### Ingress controller
 * Ingress controller in cluster  
   Configure your Kubernetes cluster with an Ingress controller component that is exposed from the cluster. Currently, we support the `NGINX` ingress controller.  
   > Tip:   
-    Verify that the ingress controller has a valid external IP address. 
+  >  Verify that the ingress controller has a valid external IP address.  
+  >  Run `kubectl get svc ingress-nginx-controller -n ingress-nginx`, and verify that the EXTERNAL-IP column shows a valid hostname. 
+
 * Valid SSL certificate  
   The ingress controller must have a valid SSL certificate from an authorized CA (Certificate Authority) for secure runtime installation.  
 
  
 
-#### Provider-specific Ingress NGINX installation
-To install on an EKS, cluster, follow the instructions. For other providers, see the list of provider-specific installation links.
+#### Provider-specific NGINX-ingress installation
+To install on an EKS cluster, follow the instructions below. For other providers, see the list of provider-specific installation links.
 
-##### Install Ingress NGINX on EKS cluster
+##### Install NGINX-ingress on EKS cluster
 
 1. Apply:  
   ```kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.0/deploy/static/provider/aws/deploy.yaml```
@@ -42,7 +49,7 @@ To install on an EKS, cluster, follow the instructions. For other providers, see
 * [MicroK8s](https://kubernetes.github.io/ingress-nginx/deploy/#microk8s)
 * [Docker Desktop](https://kubernetes.github.io/ingress-nginx/deploy/#docker-desktop)
 * [AWS](https://kubernetes.github.io/ingress-nginx/deploy/#aws)
-* [Google Kubernetes Engine (GCP GKE)](https://kubernetes.github.io/ingress-nginx/deploy/#gce-gke)
+* [Google Kubernetes Engine (GCP GKE)](https://kubernetes.github.io/ingress-nginx/deploy/#gce-gke) (see also section on Specific requirements for Google Kubernetes Engine (GCP GKE))
 * [Azure](https://kubernetes.github.io/ingress-nginx/deploy/#azure)
 * [Digital Ocean](https://kubernetes.github.io/ingress-nginx/deploy/#digital-ocean)
 * [Scale Away](https://kubernetes.github.io/ingress-nginx/deploy/#scaleway)
@@ -53,7 +60,7 @@ To install on an EKS, cluster, follow the instructions. For other providers, see
 
 **Specific requirements for Google Kubernetes Engine (GCP GKE)**  
 
-GKE by default limits outbound requests from nodes. In order for the runtime to communicate with the control-plane in Codefresh a firewall specific rule must be added.
+GKE by default limits outbound requests from nodes. For the runtime to communicate with the control-plane in CSDP, add a firewall-specific rule.
 
 1. Find your cluster's network:   
   `gcloud container clusters describe [CLUSTER_NAME] --format=get"(network)"`
@@ -90,13 +97,12 @@ This section lists the requirements for Git installation repositories.
 #### Git installation repo
 If you are using an existing repo, make sure it is empty.
 
-#### Git token
-CSDP requires a GitHub Personal Access Token (PAT) for runtime installation.
-For detailed information on GitHub, see [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).  
+#### Git personal access token
+CSDP requires GitHub Personal Access Tokens (PATs) for runtime installation, and to authorize state-change operations in CSDP both in the UI or via CLI.
 
 The token must have:
-* Valid expiration: Default is `30 days`  
-* Scope: `repo` and `admin-repo.hook` 
+  * Valid expiration: Default is `30 days`  
+  * Scope: `repo` and `admin-repo.hook` 
   
   {% include 
    image.html 
@@ -108,6 +114,7 @@ The token must have:
    max-width="30%" 
    %}  
 
+For detailed information on GitHub token, see [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).  
 
 ### What to read next
 [Runtime installation]({{site.baseurl}}/docs/runtime/installation/)

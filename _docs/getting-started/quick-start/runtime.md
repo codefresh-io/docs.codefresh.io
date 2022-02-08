@@ -57,12 +57,13 @@ For the quick start, install the runtime through the CSDP CLI that you downloade
 1. To start runtime installation, run `cf runtime install`.  
   >If you don't have a valid SSL certificate for the Ingress controller, and want to continue with the installation, add the `--insecure` flag to the runtime command. 
 1. Follow the prompts in the CLI wizard to complete the installation:
-   * **Runtime name**: The name of your runtime, starting with a lower-case character, and including up to 63 characters and numbers. Example: `csdpproduction`
+  * **Runtime name**: The name of your runtime, starting with a lower-case character, and including up to 63 characters and numbers. Example: `csdpproduction`
 	* **Select Kube context**: Your current context is highlighted. Press Enter to select it, or use the arrow keys to select a different context. 
-	* **Repository URL**: The GitHub repo for the installation definitions, in the format `https://github.com/[repo_name]`. Example: `https//:github.com/cf_production_install`
-	* **Git provider API token**: The GitHub PAT for access to the GitHub repo.
-	* **Ingress host (required)**: The external IP address or host name of the ingress host controller configured for your cluster.
-	* **Install Codefresh demo resources?** Press Enter to confirm. Demo resources are saved in a new Git Source repo, created by CSDP. They include resources for two Hello World pipelines, one with a Cron trigger condition and the other with a Git event trigger condition.
+  * **Ingress class**: Select the ingress class for runtime installation from the list displayed. 
+  * **Ingress host**: Displays the NGINX host, either from the cluster or the NGINX ingress controller associated with the **Ingress class**. 
+	* **Repository URL**: The GitHub repo for the installation definitions, in the format `https://github.com/[user-or-org-name]/[repo_name]`. Example: `https//:github.com/codefresh/cf_production_install`
+	* **Git runtime token**: The GitHub PAT for access to the installation repo.
+	* **Install Codefresh demo resources?** Press Enter to confirm. Demo resources are saved in a new Git Source repo, created by CSDP. They include resources for two Hello World pipelines, one with a Cron trigger condition, and the other with a Git event trigger condition.
 	* **Do you wish to continue with runtime install?** Press Enter to confirm and start runtime installation.
 1. Wait for the runtime installed successfully message.
 
