@@ -97,11 +97,14 @@ This section lists the requirements for Git installation repositories.
 #### Git installation repo
 If you are using an existing repo, make sure it is empty.
 
-#### Git personal access token
-CSDP requires GitHub Personal Access Tokens (PATs) for runtime installation, and to authorize state-change operations in CSDP both in the UI or via CLI.
+#### Git access tokens
+CSDP requires personal two access tokens, one for runtime installation, and the other for your Git actions in CSDP. 
 
-The token must have:
-  * Valid expiration: Default is `30 days`  
+##### Git runtime token
+The Git runtime token is mandatory for runtime installation.
+
+The token must have valid:
+  * Expiration date: Default is `30 days`  
   * Scope: `repo` and `admin-repo.hook` 
   
   {% include 
@@ -109,12 +112,30 @@ The token must have:
    lightbox="true" 
    file="/images/getting-started/quick-start/quick-start-git-event-permissions.png" 
    url="/images/getting-started/quick-start/quick-start-git-event-permissions.png" 
-   alt="GitHub PAT permissions for runtime" 
-   caption="GitHub PAT permissions for runtime"
+   alt="Scopes for Git runtime token" 
+   caption="Scopes for Git runtime token"
    max-width="30%" 
    %}  
 
-For detailed information on GitHub token, see [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).  
+##### Git user token for Git-based actions
+The Git user token is a personal token per user, used to authenticate every Git-based action of the user in CSDP. You can supply this token during runtime installation, or add it at any time from the CSDP UI.   
+
+  The token must have a valid:
+  * Expiration: Default is `30 days`  
+  * Scope: `repo`
+  
+  {% include 
+   image.html 
+   lightbox="true" 
+   file="/images/runtime/git-token-scope-resource-repos.png" 
+   url="/images/runtime/git-token-scope-resource-repos.png" 
+   alt="Scope for Git personal user token" 
+   caption="Scope for Git personal user token"
+   max-width="30%" 
+   %}    
+   
+For detailed information on GitHub tokens, see [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).  
+
 
 ### What to read next
 [Runtime installation]({{site.baseurl}}/docs/runtime/installation/)
