@@ -54,11 +54,11 @@ In general, ensure that the framework you use for testing and generating code co
  test:
     title: "Running test"
     type: "freestyle" # Run any command
-    image: "node:15.2" # The image in which command will be executed
+    image: "node:14.19.0" # The image in which command will be executed
     working_directory: "${{clone}}" # Running command where code cloned
     commands:
       - "npm install --save-dev jest"
-      - "npx jest --ci --coverage"
+      - "npx jest --coverage"
     stage: "test"
 {% endraw %}
 {% endhighlight %}
@@ -70,7 +70,7 @@ In general, ensure that the framework you use for testing and generating code co
 upload:
       title: "Running test"
       type: "freestyle" # Run any command
-      image: "node:15.2" # The image in which command will be executed
+      image: "node:14.19.0" # The image in which command will be executed
       working_directory: "${{clone}}" # Running command where code cloned
       commands:
         - "ci_env=`curl -s https://codecov.io/env`"
