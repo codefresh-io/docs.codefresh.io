@@ -105,7 +105,7 @@ The Git runtime token is mandatory for runtime installation.
 
 The token must have valid:
   * Expiration date: Default is `30 days`  
-  * Scope: `repo` and `admin-repo.hook` 
+  * Scopes: `repo` and `admin-repo.hook` 
   
   {% include 
    image.html 
@@ -118,10 +118,10 @@ The token must have valid:
    %}  
 
 ##### Git user token for Git-based actions
-The Git user token is a personal token per user, used to authenticate every Git-based action of the user in CSDP. You can supply this token during runtime installation, or add it at any time from the CSDP UI.   
+The Git user token is the user's personal token, used to authenticate every Git-based action of the user in CSDP. You can supply this token during runtime installation, or add it at any time from the CSDP UI.   
 
-  The token must have a valid:
-  * Expiration: Default is `30 days`  
+  The token must have valid:
+  * Expiration date: Default is `30 days`  
   * Scope: `repo`
   
   {% include 
