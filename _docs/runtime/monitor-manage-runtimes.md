@@ -8,8 +8,40 @@ toc: true
 
 The **Runtimes** page displays all the runtimes deployed across your environment.  Look at the Sync Status column to quickly identify errors, if any, for runtimes. Drill down into a runtime to view its components, Git Sources, and troubleshoot sync and health issues.
 
+### Allow insecure runtimes
+If at least one of your runtimes was installed in insecure mode (without an SSL certificate from a CA), the At least one runtime was installed insecure mode alert is displayed.
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/runtime/runtime-insecure-alert.png" 
+	url="/images/runtime/runtime-insecure-alert.png" 
+	alt="Insecure runtime installation alert" 
+	caption="Insecure runtime installation alert"
+  max-width="100%" 
+%} 
+
+All you need to do is to configure the browser to trust the URL and receive content.
+
+1. Select **View Runtimes** to the right of the alert.  
+  You are taken to the Runtimes page, where you can see insecure runtimes, tagged as **Allow Insecure**.
+  {% include 
+	image.html 
+	lightbox="true" 
+	file="/images/runtime/runtime-insecure-steps.png" 
+	url="/images/runtime/runtime-insecure-steps.png" 
+	alt="Insecure runtimes in Runtime page" 
+	caption="Insecure runtimes in Runtime page"
+  max-width="40%" 
+%} 
+{:start="2"}
+1. For each insecure runtime, select **Allow Insecure**, and when the browser prompts you to allow access, do as relevant:
+  * Chrome: Click **Advanced** and then **Proceed to site**.
+  * Firefox: Click **Advanced** and then **Accept the risk and continue**.
+  * Safari: Click **Show Certificate**, and then select **Always allow content from localhost**.
+  * Edge: Click **Advanced**, and then select **Continue to localhost(unsafe)**.
+
 ### Upgrade runtimes
-Upgrade existing runtimes to install the latest version of all components. An Update Available! notification in the Version column indicates that there are newer versions of the runtime, with a link to the change log.
+Upgrade existing runtimes to install critical security updates, or the latest version of all components. An Update Available! notification in the Version column indicates that there are newer versions of the runtime, with a link to the change log.
 
 > When there are newer versions, the Upgrade option is automatically displayed in the Runtimes page, and also when you drill down into specific runtimes. 
  
