@@ -106,17 +106,17 @@ This concludes the basic SSO setup for Google. For team/group synchronization yo
 
 ## Synchronize teams with the Codefresh CLI
 
-In the Codefresh configuration screen there are some optional fields that you can fill, in order to 
-get team synchronization via the Codefresh CLI.  
+In the Codefresh configuration screen there are some optional fields that you can fill, to configure team synchronization via the Codefresh CLI.  
+ 
+Based on your requirements, do one of the following:  
 
-You need to do the following:  
+* To sync _all users and groups_, create a service account and [delegate user and group permissions](https://developers.google.com/admin-sdk/directory/v1/guides/delegation) to it.  
+  OR  
+  To sync _only users who have been assigned the custom schema_, create a custom schema for user accounts, create a user role and assign the user role to every user  
+  In Codefresh, configure the SAML sync settings to sync to the custom schema name 
 
-* Create a service account and [delegate user and group permissions](https://developers.google.com/admin-sdk/directory/v1/guides/delegation) to it.
-* Create a custom schema for user accounts, create a user role, and assign the user role to every user
-* In Codefresh, configure the SAML sync settings to sync to the custom schema name 
-
-### Create a Service account from Google Console
-
+### Sync users with Service account from Google Console
+To sync all 
 
 {% include image.html 
 lightbox="true" 
@@ -144,16 +144,13 @@ caption="Creating a JSON key"
 max-width="90%"
 %}
 
-
-
-
 Save the file locally. Go back to the Codefresh settings and fill in the fields
 
 * `JSON Keyfile` - enter contents of the JSON file
 * `Admin email` -  The user that has access to `admin.google.com`
 
-### Create a custom schema for user accounts
-In the Google Directory API and create the custom schema for user accounts.
+### Sync users by assigning custom schema to user accounts
+Use this method to sync only those users who have been assigned the user role with the custom schema. 
 
 1. Navigate to the [Google Directory API](https://developers.google.com/admin-sdk/directory/v1/reference/schemas/insert?authuser=1).
 1. Add the following schema:
@@ -185,7 +182,7 @@ max-width="40%"
 
 {:start="4"}
 1. Expand the Attribute Mapping settings, and add a Role attribute with the above schema for `SSO` and `UserRole`.
-1. For every user in turn, in the User Information screen, scroll to `SSO > UserRole`, and assign the user role.
+1. For every user to be synced, in the User Information screen, scroll to `SSO > UserRole`, and assign the user role.
 
   {% include image.html 
 lightbox="true" 
@@ -196,8 +193,11 @@ caption="User Information screen in GSuite"
 max-width="40%"
 %}
 
+ 
 ### Configure sync setting in Codefresh SAML
-{:start="6"}
+This is required only if you are syncing users via a custom schema. 
+
+
 1. In the Codefresh UI, open the SAML configuration screen.
 1. In the `Sync` field, set the value to the custom schemaName.
 
