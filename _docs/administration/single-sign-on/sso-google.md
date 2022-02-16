@@ -108,15 +108,14 @@ This concludes the basic SSO setup for Google. For team/group synchronization yo
 
 In the Codefresh configuration screen there are some optional fields that you can fill, to configure team synchronization via the Codefresh CLI.  
  
-Based on your requirements, do one of the following:  
+You can do one of the following:  
 
-* To sync _all users and groups_, create a service account and [delegate user and group permissions](https://developers.google.com/admin-sdk/directory/v1/guides/delegation) to it.  
-  OR  
-  To sync _only users who have been assigned the custom schema_, create a custom schema for user accounts, create a user role and assign the user role to every user  
-  In Codefresh, configure the SAML sync settings to sync to the custom schema name 
+* Sync _all users and groups_, by creating a service account and [delegating user and group permissions](https://developers.google.com/admin-sdk/directory/v1/guides/delegation) to it.    
+* Sync _only users who have been assigned the custom schema_, by creating a custom schema for user accounts, and creating and assigning the user role. 
 
-### Sync users with Service account from Google Console
-To sync all 
+
+### Sync all users with service account from Google Console
+Use this method to sync all users. 
 
 {% include image.html 
 lightbox="true" 
