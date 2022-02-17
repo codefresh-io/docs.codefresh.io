@@ -2,7 +2,7 @@
   <div class="container-fluid navbar navbar-dark navbar-expand flex-column flex-md-row py-0">
     <a class="navbar-brand mx-0 mx-md-2" href="{{ site.baseurl }}/" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Home');" aria-label="Codefresh">
       {%- include icons/codefresh-icon.svg width="50" height="auto" class="align-middle" -%}
-      <span class="badge cf-badge cf-badge-doc align-middle ml-1">Documentation</span>
+      <span class="badge cf-badge cf-badge-doc align-middle ml-1">CSDP Documentation</span>
     </a>
 <!--
     {% if page.layout != "home" %}
@@ -21,7 +21,7 @@
       <ul class="navbar-nav flex-row mx-md-auto">
 
         <li class="nav-item">
-          <a class="nav-link" href="{{ site.link_main }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Product');">Product</a>
+          <a class="nav-link" href="{{ site.link_main }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', '         ');">Product</a>
         </li>
         <li class="nav-item">
           <a class="nav-link {% if page.layout == "docs" %}active{% endif %}" href="{{ site.baseurl }}/docs/getting-started/csdp-introduction/" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Docs');">Docs</a>
@@ -85,6 +85,6 @@
         {% endcomment %}
       </ul>
     </div>
-    <a class="btn btn-primary order-2 order-md-2" href="https://codefresh.io/docs/" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Open CF Classic Docs');" style="background: #35384B; border-color: #35384B;" >View Codefresh Classic Docs</a>
+    <a class="btn btn-primary order-2 order-md-2" href="https://codefresh.io/docs/" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Open CF Classic Docs');" style="background-color: #212437; border-color: #212437; color: #5FFFBF; font-weight: 500">View Codefresh Classic Docs</a>
   </div>
 </header>
