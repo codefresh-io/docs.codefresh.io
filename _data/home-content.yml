@@ -112,6 +112,8 @@
     localurl: /docs/codefresh-yaml/deployment-environments/
   - title: Hooks
     localurl: /docs/codefresh-yaml/hooks/
+  - title: Plugins
+    localurl: /docs/codefresh-yaml/steps/#creating-your-own-step
   - title: Examples
     localurl: /docs/yaml-examples/examples/
 
