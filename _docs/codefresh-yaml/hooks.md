@@ -14,11 +14,6 @@ Hooks can be a [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/frees
 
 For simple commands we suggest you use a small image such as `alpine`, but any Docker image can be used in hooks.
 
-Also, Hooks can use [steps/plugins](https://steps.codefresh.io) and need to define:
-
-1. The type field for the step/plugin.
-1. The arguments needed for the step/plugin.
-
 ## Pipeline hooks
 
 Codefresh allows you to run a specific step before each pipeline as well as after it has finished.
@@ -261,6 +256,45 @@ The order of events in the example above is the following.
 1. The `on_fail` segment executes (only if the step throws an error code)
 1. The `on_finish` segment always executes at the end
 
+
+## Running [steps/plugins](https://steps.codefresh.io) in hooks:
+
+Hooks can use [steps/plugins](https://steps.codefresh.io). With plugin you have to specify:
+
+- The type field for the step/plugin.
+- The arguments needed for the step/plugin.
+
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: "1.0"
+
+hooks: #run slack-notifier hook on build completion
+  on_finish:
+    steps:
+      exec:
+        type: slack-notifier
+        arguments:
+          SLACK_HOOK_URL: '${{SLACK_WEBHOOK_URL}}'
+          SLACK_TEXT: '${{SLACK_TEXT}}' 
+
+steps:
+  step1:
+    title: "Freestyle step"
+    type: "freestyle"
+    image: alpine
+    commands:
+      - echo "Codefresh"
+    hooks: #run slack-notifier hook on step completion
+      on_finish:
+        steps:
+          exec:
+            type: slack-notifier
+            arguments:
+              SLACK_HOOK_URL: '${{SLACK_WEBHOOK_URL}}'
+              SLACK_TEXT: '${{SLACK_TEXT}}'       
+{% endraw %}
+{% endhighlight %}
 
 ## Controlling errors inside pipeline/step hooks
 
