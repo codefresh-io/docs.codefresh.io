@@ -1,5 +1,5 @@
 ---
-title: "Argo vs CAP"
+title: "Argo vs CSDP"
 description: ""
 group: getting-started
 toc: true
