@@ -18,7 +18,7 @@ If you already have a runtime installation on your cluster, you have two options
 **Uninstallation tips for existing runtimes**  
 * Before you run uninstall an existing runtime from the CSDP UI, or run `cf runtime <name> uninstall` from the CLI, _delete_ all CSDP-related namespaces.
 * If a namespace is frozen in the `Terminating` status, it could be because the namespace has resources with finalizers that are preventing deletion.
-  Here's how you to remove finalizers using `k9s`:
+  Here's how you can remove finalizers using `k9s`:
   * In the `applications` view, do the following for each application:
     * Hit `e` to edit the YAML.
     * Scroll down to the section entitled `finalizers`.
