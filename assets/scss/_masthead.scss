@@ -16,21 +16,14 @@
   }
 
   .btn {
-    padding: .75rem 1.5rem;
+    padding: .5rem 1rem;
     font-size: .875rem;
     font-weight: 700;
     line-height: 1;
     text-align: center;
-    border-radius: .25rem;
-    box-shadow: 0 3px 12px rgba(#000, .3);
-
-    transition: .2s ease;
-
-    &:hover {
-      box-shadow: 0 3px 12px rgba($bd-topaz-main, .4);
-      color: #5FFFBF;
-    }
+    border-radius: 4px;
   }
+
 
   .btn-primary {
     color: $white;
@@ -41,7 +34,7 @@
   .btn-secondary {
     color: #5FFFBF;
     background-color: #2A2B3D;
-    border-color: #5FFFBF;
+    border: 1px solid #5FFFBF;
   }
 
   .carbonad {
