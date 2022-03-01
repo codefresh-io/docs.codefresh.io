@@ -49,13 +49,6 @@ Codefresh will need an outbound connection to the Internet for the following ser
 
 - GCR - pulling platform images
 - Dockerhub - pulling pipeline images
-> If you are upgrading from the previous version, and have the following lines in `config.yaml`, *before* you upgrade, comment out or remove these lines:    
-  ```yaml
-  gitops-dashboard-manager:
-    env:
-      MONGO_URI: ""
-```
-
 
 ## Security Constraints
 
@@ -652,12 +645,6 @@ postgresql:
 Codefresh recommends to use the Bitnami MongoDB [chart](https://github.com/bitnami/charts/tree/master/bitnami/mongodb) as a Mongo database. The supported version of Mongo is 3.6.x
 
 To configure Codefresh on-premises to use an external Mongo service one needs to provide the following values in `config.yaml`:
-> If you are upgrading from the previous version, and have the following lines in `config.yaml`, *before* you upgrade, comment out or remove these lines:    
-  ```yaml
-  gitops-dashboard-manager:
-    env:
-      MONGO_URI: ""
-```
 
 - **mongo connection string** - `mongoURI`. This string will be used by all of the services to communicate with mongo. Codefresh will automatically create and add a user with "ReadWrite" permissions to all of the created databases with the username and password from the URI. Optionally, automatic user addition can be disabled - `mongoSkipUserCreation`, in order to use already existing user. In such a case the existing user must have **ReadWrite** permissions to all of newly created databases
 Codefresh does not support [DNS Seedlist Connection Format](https://docs.mongodb.com/manual/reference/connection-string/#connections-dns-seedlist) at the moment, use the [Standard Connection Format](https://docs.mongodb.com/manual/reference/connection-string/#connections-standard-connection-string-format) instead.
@@ -694,7 +681,7 @@ Codefresh supports enabling SSL/TLS between cf microservices and MongoDB. To ena
 global:
   mongodbRootUser: root
   mongodbRootPassword: WOIqcSwr0y
-  mongoURI: mongodb+srv://cfuser:mTiXcU2wafr9@my-mongodb.prod.svc.cluster.local
+  mongoURI: mongodb://my-mongodb.prod.svc.cluster.local/?ssl=true&authMechanism=MONGODB-X509&authSource=$external
   mongoSkipUserCreation: true
   mongoDeploy: false   # disables deployment of internal mongo service
 
@@ -703,7 +690,7 @@ global:
   mongoCaKey: mongodb-ca/ca-key.pem
 
   ### for OfflineLogging feature 
-  runtimeMongoURI: mongodb+srv://cfuser:mTiXcU2wafr9@my-mongodb.prod.svc.cluster.local
+  runtimeMongoURI: mongodb://my-mongodb.prod.svc.cluster.local/?ssl=true&authMechanism=MONGODB-X509&authSource=$external
 
 ### for OfflineLogging feature 
 cfapi:
@@ -715,8 +702,8 @@ mongo:
   enabled: false #disable default mongodb subchart installation
  ```
 
- >Perform an upgarde with `--no-hooks` option:  <br />
- >`kcfi deploy -c config.yaml --debug --no-hooks` (WIP)
+ >Perform an upgarde:  <br />
+ >`kcfi deploy -c config.yaml --debug`
 
 ### Configure an external Redis service
 Codefresh recommends to use the Bitnami Redis [chart](https://github.com/bitnami/charts/tree/master/bitnami/redis) as a Redis store.
