@@ -830,7 +830,7 @@ You can now add extra conditions regarding the completion state of specific step
 * Pending
 * Running
 
-Finished is a shorthand for `success` or `failure` or `skipped`. It is only valid when used in [step dependencies]({{site.baseurl}}docs/codefresh-yaml/advanced-workflows/#single-step-dependencies), and cannot be used in custom conditions.
+Finished is a shorthand for `success` or `failure` or `skipped`. It is only valid when used in [step dependencies]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/#single-step-dependencies), and cannot be used in custom conditions.
 
 You can mix and match completion states from any other step in your pipeline. Here are some examples:
 
