@@ -830,7 +830,8 @@ You can now add extra conditions regarding the completion state of specific step
 * Pending
 * Running
 
-Finished is a shorthand for `success` or `failure` or `skipped`.
+Finished is a shorthand for `success` or `failure` or `skipped`. It is only valid when used in [step dependencies]({{site.baseurl}}docs/codefresh-yaml/advanced-workflows/#single-step-dependencies), and cannot be used in custom conditions.
+
 You can mix and match completion states from any other step in your pipeline. Here are some examples:
 
 {% highlight yaml %}
@@ -839,7 +840,7 @@ my_step:
     when:
       condition:
         all:
-          myCondition: steps.MyUnitTests.result == 'error' || steps.MyIntegrationTests.result == 'error'
+          myCondition: steps.MyUnitTests.result == 'failure' || steps.MyIntegrationTests.result == 'failure'
 {% endhighlight %}
 
 {% highlight yaml %}
@@ -849,7 +850,7 @@ my_step:
       condition:
         any:
           myCondition: steps.MyLoadTesting.result == 'success'
-          myOtherCondition: steps.MyCleanupStep.result == 'finished'
+          myOtherCondition: steps.MyCleanupStep.result == 'success'
 {% endhighlight %}
 
 You can also use conditions in the success criteria for a parallel step. Here is an example
