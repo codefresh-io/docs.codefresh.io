@@ -702,8 +702,8 @@ mongo:
   enabled: false #disable default mongodb subchart installation
  ```
 
- >Perform an upgarde with `--no-hooks` option:  <br />
- >`kcfi deploy -c config.yaml --debug --no-hooks` (WIP)
+ >Perform an upgarde:  <br />
+ >`kcfi deploy -c config.yaml --debug`
 
 ### Configure an external Redis service
 Codefresh recommends to use the Bitnami Redis [chart](https://github.com/bitnami/charts/tree/master/bitnami/redis) as a Redis store.
