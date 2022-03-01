@@ -681,7 +681,7 @@ Codefresh supports enabling SSL/TLS between cf microservices and MongoDB. To ena
 global:
   mongodbRootUser: root
   mongodbRootPassword: WOIqcSwr0y
-  mongoURI: mongodb+srv://cfuser:mTiXcU2wafr9@my-mongodb.prod.svc.cluster.local
+  mongoURI: mongodb://my-mongodb.prod.svc.cluster.local/?ssl=true&authMechanism=MONGODB-X509&authSource=$external
   mongoSkipUserCreation: true
   mongoDeploy: false   # disables deployment of internal mongo service
 
@@ -690,7 +690,7 @@ global:
   mongoCaKey: mongodb-ca/ca-key.pem
 
   ### for OfflineLogging feature 
-  runtimeMongoURI: mongodb+srv://cfuser:mTiXcU2wafr9@my-mongodb.prod.svc.cluster.local
+  runtimeMongoURI: mongodb://my-mongodb.prod.svc.cluster.local/?ssl=true&authMechanism=MONGODB-X509&authSource=$external
 
 ### for OfflineLogging feature 
 cfapi:
