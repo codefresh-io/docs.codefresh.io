@@ -49,13 +49,6 @@ Codefresh will need an outbound connection to the Internet for the following ser
 
 - GCR - pulling platform images
 - Dockerhub - pulling pipeline images
-> If you are upgrading from the previous version, and have the following lines in `config.yaml`, *before* you upgrade, comment out or remove these lines:    
-  ```yaml
-  gitops-dashboard-manager:
-    env:
-      MONGO_URI: ""
-```
-
 
 ## Security Constraints
 
@@ -652,12 +645,6 @@ postgresql:
 Codefresh recommends to use the Bitnami MongoDB [chart](https://github.com/bitnami/charts/tree/master/bitnami/mongodb) as a Mongo database. The supported version of Mongo is 3.6.x
 
 To configure Codefresh on-premises to use an external Mongo service one needs to provide the following values in `config.yaml`:
-> If you are upgrading from the previous version, and have the following lines in `config.yaml`, *before* you upgrade, comment out or remove these lines:    
-  ```yaml
-  gitops-dashboard-manager:
-    env:
-      MONGO_URI: ""
-```
 
 - **mongo connection string** - `mongoURI`. This string will be used by all of the services to communicate with mongo. Codefresh will automatically create and add a user with "ReadWrite" permissions to all of the created databases with the username and password from the URI. Optionally, automatic user addition can be disabled - `mongoSkipUserCreation`, in order to use already existing user. In such a case the existing user must have **ReadWrite** permissions to all of newly created databases
 Codefresh does not support [DNS Seedlist Connection Format](https://docs.mongodb.com/manual/reference/connection-string/#connections-dns-seedlist) at the moment, use the [Standard Connection Format](https://docs.mongodb.com/manual/reference/connection-string/#connections-standard-connection-string-format) instead.
