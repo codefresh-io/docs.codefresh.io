@@ -597,6 +597,22 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
+## Using Type Steps / Plugins in hooks
+
+You can use a type step / plugins in hooks.  With this you will need to change `exec` into `steps` with the information needed for the step.  
+
+Below is an example pipeline hook using the `slack-notifier` step/plugin for when the pipeline starts.
+
+```yaml
+hooks:
+  on_elected:
+    steps:
+      slack_pending:
+        type: slack-notifier
+        arguments:
+          SLACK_HOOK_URL: {% raw %}'${{SLACK_WEBHOOK_URL}}'{% endraw %}
+          SLACK_TEXT: '*Build Started* :crossed_fingers:'
+```
 
 ## Limitations of pipeline/step hooks
 
