@@ -223,7 +223,9 @@
     localurl: /docs/integrations/argo-cd/    
   - title: Jenkins integration/migration
     localurl: /docs/integrations/jenkins-integration/               
-      
+  - title: Datadog
+    new: true
+    localurl: /docs/integrations/datadog/   
   - title: Codefresh API
     localurl: /docs/integrations/codefresh-api/
 
