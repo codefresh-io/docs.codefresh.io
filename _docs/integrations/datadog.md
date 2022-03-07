@@ -22,8 +22,8 @@ lightbox="true"
 file="/images/integrations/datadog/datadog-api-key.png" 
 url="/images/integrations/datadog/datadog-api-key.png"
 max-width="30%"
-caption="Getting an API Key from Datadog"
-alt="Getting an API Key from Datadog"
+caption="Getting an API Key from your Datadog account"
+alt="Getting an API Key from your Datadog account"
 %}
 
 {:start="3"}
@@ -33,7 +33,7 @@ alt="Getting an API Key from Datadog"
 
 Configure the integration settings for Datadog within Codefresh.
 
-1. In the Codefresh UI, go to [integrations](https://g.codefresh.io/account-admin/account-conf/integration). 
+1. In the Codefresh UI, go to [integrations](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
 1. Select **Datadog**, and then **Configure**.
 1. Mouse over **datadog** and select **Edit**.
   
@@ -42,11 +42,12 @@ lightbox="true"
 file="/images/integrations/datadog/datagog-config-settings.png" 
 url="/images/integrations/datadog/datagog-config-settings.png"
 max-width="30%"
-caption="Datadog integration configuration"
-alt="Datadog integration configuration"
+caption="Datadog configuration settings"
+alt="Datadog configuration settings"
 %}
 
 {:start="4"}
 1. Configure the following:
   * **Datadog site**: Select the site with your data. If you are not sure which Datadog site to select, select the View documentation link below the field, and read Datadog's official documentation. 
   * **Token**: The API token you copied from your Datadog account. 
+1. Select **Save**.
