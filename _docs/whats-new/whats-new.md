@@ -9,7 +9,7 @@ toc: true
 ## 2022
 
 ### March 2022
-- Datadog integration - [documentation]({{site.baseurl}}/docs/integration/datadog)
+- Datadog integration - [documentation]({{site.baseurl}}/docs/integrations/datadog)
 
 ### January 2022
 - Store test results using MinIO objects - [documentation]({{site.baseurl}}/docs/testing/test-reports/#connecting-minio-storage)
