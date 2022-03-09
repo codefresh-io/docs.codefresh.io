@@ -33,7 +33,7 @@ A concurrency synchronization selector is defined through a `name`-`template` pa
 * The `name` is any meaningful/logical name that describes the selector. For example, Git repo or branch.
 * The `template` is the parameter mapping for the name, that is resolved to the selector value when the pipeline is run.  
   For example:  
-  {% highlight yaml %}{% raw %}{{workflow.parameters.REPO_OWNER/workflow.parameters.REPO_NAME}}{% endraw %}{% endhighlight %} or {% highlight yaml %}{% raw %}{{workflow.parameters.GIT_BRANCH}}{% endraw %}{% endhighlight %}
+  {% highlight yaml %}{% raw %}{{ workflow.parameters.REPO_OWNER }}/{{ workflow.parameters.REPO_NAME }}{% endraw %}{% endhighlight %} or {% highlight yaml %}{% raw %}{{ workflow.parameters.GIT_BRANCH }}{% endraw %}{% endhighlight %}
 
 Selectors are added to the `synchronization` section, under `selectors`, as in the sample YAML below.
 
