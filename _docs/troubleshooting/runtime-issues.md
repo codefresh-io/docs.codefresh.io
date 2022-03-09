@@ -67,6 +67,13 @@ _OR_
   where:  
   `<runtime_name>` is the name of the runtime installation.
 
+#### Failed to create default git integration:...GraphQL Error (Code: 401): ("response":{"error":"Unauthorized: Invalid token."status":401, "headers":{}}..)
+**Possible cause**  
+  The ingress host specified does not point to the cluster selected for runtime installation.  
+
+**Possible actions**  
+Make sure the ingress host points to the cluster on which the runtime is installed.
+
 
 #### Timeout error, either for applications or while waiting for the installation to complete
 **Possible cause**  
