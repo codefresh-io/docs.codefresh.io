@@ -46,14 +46,17 @@
     - title: Git Source management
       url: "/git-sources"
 
-
 - title: Pipelines
   url: "/pipelines"
   pages:
     - title: Creation
       url: "/create-pipeline"
+    - title: Configure artifact repository
+      url: "/configure-artifact-repository"
     - title: Selectors for concurrency synchronization
-      url: "/concurrency-limit"   
+      url: "/concurrency-limit"
+    - title: Sharing file systems
+      url: "/sharing-file-system"
 
 
 - title: Administration
