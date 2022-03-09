@@ -44,7 +44,7 @@
   url: ''
   links:
     - title: Creation
-      localurl: /docs/pipelines/create-pipeline/
+      localurl: /docs/pipelines/create-pipeline
     - title: Selectors for concurrency synchronization
       localurl: /docs/pipelines/concurrency-limit/
     
