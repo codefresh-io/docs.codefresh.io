@@ -303,11 +303,12 @@ first.txt   second.txt
 
 This illustrates the side effects for both parallel steps that were executed on the same volume.
 
->It is therefore your responsibility to make sure that steps that run in parallel play  nice with each other. Currently Codefresh performs no conflict detection at all. If there are race conditions between your parallel steps (e.g. multiple steps writing at the same files) the final behavior is undefined. It is best to start with a fully sequential pipeline and use parallelism in a gradual manner if you are unsure about the side effects of your steps
+>It is therefore your responsibility to make sure that steps that run in parallel play nice with each other. Currently, Codefresh performs no conflict detection at all. If there are race conditions between your parallel steps, (e.g. multiple steps writing at the same files), the final behavior is undefined. It is best to start with a fully sequential pipeline, and use parallelism in a gradual manner if you are unsure about the side effects of your steps
 
 ## Implicit parallel steps
+> If you use implicit parallel steps, you _cannot_ use _parallel pipeline mode_.
 
-In all the previous examples, all parallel steps have been defined explicitly in a pipeline. This works well for a small number of steps, but in some cases it can be cumbersome to write such as a pipeline, especially when the parallel steps are similar.
+In all the previous examples, all parallel steps have been defined explicitly in a pipeline. This works well for a small number of steps, but in some cases it can be cumbersome to write such a pipeline, especially when the parallel steps are similar.
 
 Codefresh offers two handy ways to lessen the amount of YAML you have to write and get automatic parallelization with minimum effort.
 
@@ -524,6 +525,7 @@ of matrix variations can quickly grow if you add too many dimensions.
 Notice that, as with the `scale` syntax, the defined values/properties are merged between parent step (`MyUnitTests` in the example above) and children steps. For example, if you set an environment variable on the parent and also on child matrix steps , the result will a merged environment where all values are available.
 
 ## Parallel pipeline mode
+> If you use parallel pipeline mode, you _cannot_ use _implicit parallel steps_.
 
 To activate advanced parallel mode for the whole pipeline you need to declare it explicitly at the root of the `codefresh.yml` file:
 
