@@ -46,6 +46,11 @@
     - title: Git Source management
       url: "/git-sources"
     
+- title: Pipelines
+  url: "/pipelines"
+  pages:
+    - title: Concurrency
+      url: "/concurrency-limit"   
 
 - title: Administration
   url: "/administration"

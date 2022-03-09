@@ -39,7 +39,16 @@
     - title:  Git Source management
       localurl: /docs/runtime/git-sources/
 
-
+- title: Pipelines
+  icon: images/home-icons/pipeline.svg
+  url: ''
+  links:
+    - title: Creation
+      localurl: /docs/pipelines/create-pipeline/
+    - title: Selectors for concurrency synchronization
+      localurl: /docs/pipelines/concurrency-limit/
+    
+    
 - title: Administration
   icon: images/home-icons/administration.svg
   url: ''
