@@ -57,6 +57,8 @@
       url: "/concurrency-limit"
     - title: Sharing file systems
       url: "/sharing-file-system"
+    - title: Viewing images
+      url: "/images"
 
 
 - title: Administration

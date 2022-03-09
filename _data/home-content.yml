@@ -50,6 +50,8 @@
       localurl: /docs/pipelines/concurrency-limit/
     - title: Sharing file systems
       localurl: /docs/pipelines/sharing-file-system/  
+    - title: Viewing images
+      localurl: /docs/pipelines/images/    
     
 
 - title: Administration
