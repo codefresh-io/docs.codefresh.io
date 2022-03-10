@@ -2,7 +2,7 @@
 title: "Datadog integration"
 description: "Integrate Codefresh with Datadog for monitoring and analysis"
 group: integrations
-toc: true
+toc: false
 ---
 
 Codefresh allows you to integrate with Datadog to analyze monitoring and performance data. After every build, you can see the data in Datadog's CI Visibility dashboard.
