@@ -445,8 +445,6 @@
           url: "/slack-integration"
         - title: Jira
           url: "/jira-integration"          
-    - title: Datadog
-      url: "/datadog"
     - title: Codefresh API
       url: "/codefresh-api"
 
