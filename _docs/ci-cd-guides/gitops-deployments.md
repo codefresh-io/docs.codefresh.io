@@ -63,7 +63,7 @@ Before continuing fork all 3 repositories in your own GitHub account if don't ha
 
 GitOps deployments are powered by [ArgoCD](https://argoproj.github.io/argo-cd/) so you need an active ArgoCD installation in your cluster to take advantage of the GitOps dashboard in Codefresh.
 
-Follow the instructions for [connecting ArgoCD to Codefresh]({{site.baseurl}}/docs/integrations/argo-cd/) and creating an ArgoCD application
+Follow the instructions for [connecting ArgoCD to Codefresh]({{site.baseurl}}/docs/integrations/argocd/) and creating an ArgoCD application
 
 {% include image.html
   lightbox="true"
@@ -248,7 +248,7 @@ steps:
 
 The pipeline is using the [argo-sync plugin](https://codefresh.io/steps/step/argocd-sync) that can be used by Codefresh to start the sync process of an application from the Git repo to the cluster.
 
-The name of the `context` parameter should be the same name you used for your [ArgoCD integration]({{site.baseurl}}/docs/integrations/argo-cd/).
+The name of the `context` parameter should be the same name you used for your [ArgoCD integration]({{site.baseurl}}/docs/integrations/argocd/).
 
  {% include image.html
   lightbox="true"
@@ -683,6 +683,6 @@ and load them from the repository.
 ## What to read next
 
 * [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
-* [ArgoCD integration]({{site.baseurl}}/docs/integrations/argo-cd/)
+* [ArgoCD integration]({{site.baseurl}}/docs/integrations/argocd/)
 * [Environment dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/environment-dashboard/)
 * [Helm promotions]({{site.baseurl}}/docs/new-helm/helm-environment-promotion/)

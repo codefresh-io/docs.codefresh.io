@@ -220,7 +220,7 @@
     localurl: /docs/integrations/helm/ 
   - title: Argo CD
     new: true
-    localurl: /docs/integrations/argo-cd/    
+    localurl: /docs/integrations/argocd/    
   - title: Jenkins integration/migration
     localurl: /docs/integrations/jenkins-integration/               
   - title: Codefresh API

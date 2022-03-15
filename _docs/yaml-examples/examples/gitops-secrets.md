@@ -10,7 +10,7 @@ toc: true
 
 - A [free Codefresh account](https://codefresh.io/docs/docs/getting-started/create-a-codefresh-account/)
 - A Kubernetes cluster
-- The [Codefresh GitOps agent]({{site.baseurl}}/docs/integrations/argo-cd/) installed on the cluster
+- The [Codefresh GitOps agent]({{site.baseurl}}/docs/integrations/argocd/) installed on the cluster
 
 ## Using the Bitnami Sealed secrets controller
 
@@ -183,7 +183,7 @@ You can now visit the application url to see how it has access to all the secret
 Of course the big advantage of having everything committed into Git, is the ability to adopt GitOps
 for the whole application (including secrets).
 
-This means that you can simply [point Codefresh GitOps to your repository]({{site.baseurl}}/docs/integrations/argo-cd/#creating-argocd-applications) and have the application
+This means that you can simply [point Codefresh GitOps to your repository]({{site.baseurl}}/docs/integrations/argocd/#creating-argocd-applications) and have the application
 automatically deploy in the cluster.
 
 {% include image.html 

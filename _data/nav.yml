@@ -425,7 +425,7 @@
     - title: Helm Integration
       url: "/helm" 
     - title: ArgoCD Integration
-      url: "/argo-cd"       
+      url: "/argocd"       
     - title: Jira Integration
       url: "/jira"       
     - title: Jenkins Integration
