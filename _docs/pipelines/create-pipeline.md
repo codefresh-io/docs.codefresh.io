@@ -12,7 +12,7 @@ CSDP integrates with Argo Workflows and Argo Events, while greatly simplifying t
 
 ### Delivery Pipeline concepts
 Let's start by reviewing the main concepts around CSDP Delivery Pipelines.  
-In CSDP, the Delivery Pipeline is a logical entity that connects an event-source, a sensor, and a workflow template. A CSDP Delivery Pipeline is not identical to an Argo CD pipeline. 
+In CSDP, the Delivery Pipeline is a logical entity that connects an event-source, a sensor, and a Workflow Template. 
 
 #### Pipeline per trigger
 Every sensor-trigger pair is a unique pipeline in CSDP. The same sensor with multiple triggers creates a different pipeline for every trigger.
@@ -21,9 +21,9 @@ Every sensor-trigger pair is a unique pipeline in CSDP. The same sensor with mul
 Access to Git Sources and Git repositories are based on the user's write permissions, as defined in their Git provider accounts.
 
 #### Git Source for pipeline
-The Delivery Pipeline is connected to a specific CSDP runtime installation, and is also run on this runtime, through a Git Source.  
+The Delivery Pipeline is connected to a specific CSDP runtime installation, and is also run on this runtime through a Git Source.  
 
-When the pipeline is created and synced with the cluster, all manifests generated for the pipeline are stored in the Git repository. These include the sensor and event-source manifests, and the Workflow Template manifest, if selected from Argo Hub.
+When the pipeline is created and synced with the cluster, all manifests generated for the pipeline are stored in the Git repository. These include the sensor and event-source manifests, and the pipeline workflow template's manifest. 
 
 #### Centralized location for Argo Event-entities
 CSDP uses Argo Events to listen to events from different sources and define the conditions that trigger the events. All entities for creating and managing an Argo Event - from the event-source and its events, the sensor and its triggers - are available in a centralized location in CSDP.  
@@ -36,21 +36,25 @@ Here's a high-level overview of the Delivery Pipeline creation flow.
 For step-by-step instructions, see [How to: Create a Delivery Pipeline]({{site.baseurl}}/docs/pipelines/create-pipeline/#create-a-delivery-pipeline).
 
 1. Define pipeline name and select Workflow Template to execute
-1. Define default values for Workflow Template arguments
+1. Define default values for pipeline workflow template arguments
 1. Configure trigger conditions for events
 1. Generate manifests
 1. Commit resource files and create pipeline
 
 #### Define pipeline name and select Workflow Template to execute
-The Delivery Pipeline creation flow starts with defining a name for the pipeline, selecting the Git Source with the runtime, and selecting the Workflow Template to execute when the pipeline is run.  
-You can use the CSDP starter Workflow Template, or select an existing Workflow Template you have downloaded to a Git Source.
+The Delivery Pipeline creation flow starts with defining a name for the pipeline, selecting the Git Source with the runtime, and selecting the Workflow Template to execute when the pipeline is run. You can use the CSDP starter Workflow Template, or select an existing Workflow Template you have downloaded to a Git Source.
 
 Both Argo and Codefresh have examples and libraries of Workflow Templates you can use:
 * For conceptual information on Argo Workflows, read the [official documentation](https://argoproj.github.io/argo-workflows/){:target="\_blank"}.
 * For examples of Workflow Templates in Argo, see their [documentation by example](https://github.com/argoproj/argo-workflows/blob/master/examples/README.md){:target="\_blank"} page.
 * For a fully-certified library of ready-to-use Workflow Templates by Codefresh, see [Codefresh Hub for Argo](https://codefresh.io/argohub/){:target="\_blank"}.
 
-In the Delivery Pipeline wizard, we have our starter Workflow Template to use as a base, or select an existing one, or copy and paste any Workflow Template and then modify as needed. 
+In the Delivery Pipeline wizard, we have our starter Workflow Template to use as a base, or the option to select an existing one, or copy and paste any Workflow Template, and then modify as needed. 
+>Important:  
+>  If you select the starter Workflow Template or one of the example templates from the Codefresh Hub for Argo, it is converted to a standalone, independent pipeline workflow template.  
+ > To avoid conflicts, the pipeline workflow template is not synced to the original Workflow Template. Any changes to the original starter or example Workflow Template are also not updated in the pipeline workflow template.  
+   
+
 
 > To share artifacts between steps in workflows, and to view archived logs for completed workflows, you must [configure an artifact repository in CSDP]({{site.baseurl}}/docs/pipelines/configure-artifact-repository).
  
@@ -72,7 +76,7 @@ Workflow Template arguments are the list of arguments described in the Workflow 
 #### Configure Trigger Conditions for events
 The **Trigger Conditions** tab in the Delivery Pipeline wizard collates the requirements to set up and configure entities for Argo Events. Here you select the event-source, the event of interest, the Git repositories to listen to for the event, and the sensor trigger for the event.  
 
-> To create a Delivery Pipeline, you must have _at least one_ trigger condition.
+> To create a Delivery Pipeline, you must have _at least one_ Trigger Condition.
 
 
 {% include 
@@ -98,10 +102,10 @@ For every sensor trigger condition, you can select single or multiple Git reposi
 Currently, we support GitHub as an event-source, and an extensive list of GitHub events you can select from.  
 
 **Sensor trigger arguments**  
-The sensor trigger arguments are identical to the Workflow Template arguments. If Workflow Template arguments have default values, these values are displayed for the corresponding Sensor arguments as well. (ask)
+The sensor trigger arguments are identical to the Workflow Template arguments. If Workflow Template arguments have default values, these values are displayed for the corresponding Sensor arguments as well. 
 > If values are defined for an argument both in the Workflow Template and in Trigger Conditions, the value defined in Trigger Conditions takes precedence. 
 
-You can override the default values or define custom values for trigger condition arguments through _parameterization_ and _Sprig template functions for Go_.  
+You can override the default values or define custom values for trigger condition arguments through _parameterization_ and _Sprig template functions for Go_. For more information, see [Parameteization for Argo Events](https://argoproj.github.io/argo-events/tutorials/02-parameterization/){:target="\_blank"}, and [Sprig Function Documentation](http://masterminds.github.io/sprig/){:target="\_blank"}.
 
 Argo Events uses parameterization to pass data from the event payload to the workflow submitted by the sensor trigger. But where in Argo Workflows you would need to manually define the JSON path to the data in the event payload, our Delivery Pipeline wizard automates path definitions through predefined variables.
 
@@ -148,7 +152,7 @@ Manifests are automatically generated on committing changes after defining at le
 Manifests typically include:
 * Sensor
 * EventSource
-* WorkflowTmplate
+* WorkflowTemplate (the pipeline workflow template)
 
 {% include 
    image.html 

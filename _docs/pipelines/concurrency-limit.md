@@ -31,7 +31,7 @@ data:
 A concurrency synchronization selector is defined through a `name`-`template` pair in workflows or templates:  
 
 * The `name` is any meaningful/logical name that describes the selector. For example, Git repo or branch.
-* The `template` is the parameter mapping for the name, that is resolved to the selector value when the pipeline is run.  
+* The `template` is the parameter mapping for the name, that is resolved to the selector value when the pipeline is run. The parameter mapping format must confirm to Sprig templates. For information on Go templates and Sprig functions, see the [Go template package documentation](https://pkg.go.dev/text/template){:target="\_blank"}, and [Sprig Function Documentation](http://masterminds.github.io/sprig/){:target="\_blank"}.
   For example:  
   {% highlight yaml %}{% raw %}{{ workflow.parameters.REPO_OWNER }}/{{ workflow.parameters.REPO_NAME }}{% endraw %}{% endhighlight %} or {% highlight yaml %}{% raw %}{{ workflow.parameters.GIT_BRANCH }}{% endraw %}{% endhighlight %}
 
