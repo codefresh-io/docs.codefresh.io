@@ -9,16 +9,17 @@ toc: true
 The **Runtimes** page displays all the runtimes deployed across your environment.  
 
 Monitor and manage runtimes:  
-* Identify Git sync errors through the Sync Status column
 * For insecure runtimes, configure browsers to allow access
+* View runtime notifications in the Activity Log 
 * Drill down into specific runtimes for further analysis
+* Troubleshoot health and sync errors in runtimes
 * Upgrade runtimes
 * Uninstall runtimes
 * Manage Git Sources associated with runtimes
 
  
 
-### Allow insecure runtimes
+### Configure browser to allow insecure runtimes
 If at least one of your runtimes was installed in insecure mode (without an SSL certificate for the ingress controller from a CA), the CSDP UI displays the _At least one runtime was installed in insecure mode_ alert.
 {% include 
 	image.html 
@@ -43,18 +44,35 @@ All you need to do is to configure the browser to trust the URL and receive cont
 	caption="Insecure runtimes in Runtime page"
   max-width="40%" 
 %} 
-{:start="3"}
+{:start="2"}
 1. For _every_ insecure runtime, select **Allow Insecure**, and when the browser prompts you to allow access, do as relevant:
   * Chrome: Click **Advanced** and then **Proceed to site**.
   * Firefox: Click **Advanced** and then **Accept the risk and continue**.
   * Safari: Click **Show Certificate**, and then select **Always allow content from site**.
   * Edge: Click **Advanced**, and then select **Continue to site(unsafe)**.
 
+### View runtime notifications in Activity Log
+The Activity Log is a quick way to monitor notifications for runtime events such as upgrades. A pull-down panel in the CSDP toolbar, the Activity Log shows ongoing, success, and error notifications, sorted by date, starting with today's date. 
+
+1. In the CSDP UI, on the top-right of the toolbar, select ![](/images/pipeline/monitoring/pipeline-activity-log-toolbar.png?display=inline-block) **Activity Log**.
+1. To see runtime notifications, filter by **Runtime**.
+
+  {% include image.html 
+  lightbox="true" 
+  file="/images/runtime/runtime-activity-log.png" 
+  url="/images/runtime/runtime-activity-log.png"
+  alt="Activity Log filtered by Runtime"
+  caption="Activity Log filtered by Runtime"
+  max-width="30%"
+  %}
+
+{:start="3"}
+1. To see more information on an error, select the **+** sign.
 
 ### Drill down into a runtime
 Drill down into a specific runtime to view its components, Git Sources, and troubleshoot sync and health issues.
 
-1. In the CSDP UI, make sure you are in the [**Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes) page.
+1. In the CSDP UI, make sure you are in the [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"} page.
 1. To see the list of runtime components, Git Sources, and their status, select a runtime name.  
 
   {% include 
@@ -144,7 +162,7 @@ Pass the mandatory flags in the upgrade command:
   max-width="30%" 
 %}  
 
-{:start="4"}
+{:start="5"}
 1. In your terminal, paste the command, and update the Git token value.
 1. Confirm to start the upgrade.
  
@@ -169,7 +187,7 @@ Pass the mandatory flags in the uninstall command:
 
 **CLI wizard-based uninstall**  
 
-1. In the CSDP UI, make sure you are in the [**Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes) page.
+1. In the CSDP UI, make sure you are in the [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"} page.
 1. Drill down into the runtime to uninstall.
 1. On the top-right, select the three dots and then select ![](/images/runtime/icon-Download.png?display=inline-block) **Uninstall**.
 

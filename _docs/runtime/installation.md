@@ -10,7 +10,7 @@ Codefresh runtime installs the Codefresh Software Delivery Platform (CSDP), comp
 
 There are two parts to installing runtimes:
 1. Installing the CSDP CLI
-2. Installing the CSDP runtime from the CLI. The runtime is installed in a specific namespace on your cluster. You can install more runtimes on different clusters in your deployment.  
+2. Installing the CSDP runtime from the CLI, either through the CLI wizard or a silent install. The runtime is installed in a specific namespace on your cluster. You can install more runtimes on different clusters in your deployment.  
  Every runtime installation makes commits to two Git repos: 
    * Runtime install repo: The installation repo that manages the runtime itself with Argo CD. If the repo URL does not exist, runtime creates it automatically.   
    * Git Source repo: Created automatically during runtime installation. The repo where you store manifests to run CSDP pipelines. 
@@ -36,17 +36,14 @@ Install CSDP runtime through the CLI wizard, or by running a silent install:
   To skip these tests, pass the `--skip-cluster-checks` flag.
 
 #### Runtime prerequisites
-Before you install the CSDP runtime, verify that:
-* Your deployment conforms to our [system requirements]({{site.baseurl}}/docs/runtime/requirements)
-* You have Personal Access Tokens (PATs):
-  * Git runtime token: Authenticates to the Git installation repo that you will create or select during runtime installation.  
-  * Git access token: Required for Git-based actions in CSDP.
-
-  To create a Git token, see [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
+Before you start installing the CSDP runtime, verify that:
+* Your deployment conforms to our [system requirements]({{site.baseurl}}/docs/runtime/requirements).
+ 
+* You have a Git runtime token: Authenticates to the Git installation repo that you will create or select during runtime installation.  
+  To create a Git token, see [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token){:target="\_blank"}.
   > When you create the Git token for runtime installation, set the correct expiration date and scope: 
    Expiration: Default is `30 days`  
    Scope: `repo` and `admin-repo.hook` 
-
 
 #### Runtime installation flags
 
@@ -103,7 +100,24 @@ Before you install the CSDP runtime, verify that:
 
   Silent install: Optional. Add the `--demo-resources` flag. By default, set to `true`.
 
+#### Post-installation configuration
+Optional. Required only for NGINX Enterprise installations, both with and without NGINX Ingress Operator.  
+You need to patch the certificate secret in `spec.tls` of the `ingress-master` resource. 
 
+Configure the `ingress-master` with the certificate secret. The secret must be in the same namespace as the runtime.
+1. Go to the runtime namespace with the NGINX ingress controller.
+1. In `ingress-master`, add to `spec.tls`:  
+
+    ```yaml
+    tls:                                                                                                                                                                    
+     - hosts:                                                                                                                                                                
+     - <host_name>                                                                                             
+     secretName: <secret_name>
+   ```
+
+
+
+  
 #### Runtime components
 
 **Git repositories**   

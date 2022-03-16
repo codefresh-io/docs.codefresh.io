@@ -15,27 +15,73 @@ The requirements listed are the **_minimum_** requirements for CSDP (Codefresh S
 This section lists cluster requirements.
 
 #### Cluster version
-Kubernetes cluster, server version 1.18 to 1.21 (inclusive), without Argo Project components.
+Kubernetes cluster, server version 1.18 and higher, without Argo Project components.
 > Tip:  
 >  To check the server version, run `kubectl version --short`.
 
 
 #### Ingress controller
-* Ingress controller in cluster  
-  Configure your Kubernetes cluster with an Ingress controller component that is exposed from the cluster. Currently, we support the `NGINX` ingress controller.  
-  > Tip:   
-  >  Verify that the ingress controller has a valid external IP address.  
-  >  Run `kubectl get svc ingress-nginx-controller -n ingress-nginx`, and verify that the EXTERNAL-IP column shows a valid hostname. 
+Configure your Kubernetes cluster with an ingress controller component that is exposed from the cluster.  
+
+**Supported ingress controllers**  
+
+  {: .table .table-bordered .table-hover}
+|  Supported Ingress Controller                       | Reference|  
+| --------------                                      | --------------           |  
+| Ambassador                                        | See [Ambassador ingress controller documentation](https://www.getambassador.io/docs/edge-stack/latest/topics/running/ingress-controller/){:target="\_blank"}. |       
+| NGINX Enterprise (`nginx.org/ingress-controller`)  | See [NGINX Ingress Controller documentation](https://docs.nginx.com/nginx-ingress-controller/){:target="\_blank"}. |      
+| NGINX Community  (`k8s.io/ingress-nginx`)          | See [Provider-specific configuration](#nginx-community-version-provider-specific-ingress-configuration) in this article.|                             
+| Istio                                             | See [Istio Kubernetes ingress documentation](https://istio.io/latest/docs/tasks/traffic-management/ingress/kubernetes-ingress/){:target="\_blank"}. |       
+| Traefik                                           | See [Traefik Kubernetes ingress documentation](https://doc.traefik.io/traefik/providers/kubernetes-ingress/){:target="\_blank"}. | 
+
+
+**Ingress controller requirements**
+
+* Valid external IP address  
+  Run `kubectl kubectl get svc -A`to get a list of services and verify that the EXTERNAL-IP column for your ingress controller shows a valid hostname. 
 
 * Valid SSL certificate  
-  The ingress controller must have a valid SSL certificate from an authorized CA (Certificate Authority) for secure runtime installation.  
+  For secure runtime installation, the ingress controller must have a valid SSL certificate from an authorized CA (Certificate Authority).  
 
+* Report status  
+  The ingress controller must be configured to report its status. Otherwise, Argo's health check reports the health status as "progressing" resulting in a timeout error during installation.  
+    
+  By default, NGINX Enterprise and Traefik ingress are not configured to report status. For details on configuration settings, see the following sections in this article:  
+    [NGINX Enterprise ingress configuration](#nginx-enterprise-version-ingress-configuration)  
+    [Traefik ingress configuration](#traefik-ingress-configuration) 
 
-#### Provider-specific configuration
+#### NGINX Enterprise version ingress configuration
+The Enterprise version of NGINX (`nginx.org/ingress-controller`), both with and without the Ingress Operator, must be configured to report the status of the ingress controller.
 
-CSDP has been tested and is supported in major providers. For your convenience, we have included provider-specific configuration instructions, both for supported and untested providers.
+**Installation with NGINX Ingress**  
+* Pass the `- -report-ingress-status` to `deployment`.
 
-> The instructions are valid for Ingress-Nginx.
+    ```yaml
+    spec:                                                                                                                                                                 
+      containers: 
+       - args:                                                                                                                                              
+       - -report-ingress-status
+    ```
+
+**Installation with NGINX Ingress Operator**  
+
+1. Add this to the `Nginxingresscontrollers` resource file:
+
+   ```yaml
+   ...
+   spec:
+     reportIngressStatus:
+       enable: true
+   ...
+  ```
+
+1. Make sure you have a certificate secret in the same namespace as the runtime. Copy an existing secret if you don't have one.  
+You will need to add this to the `ingress-master` when you have completed runtime installation.
+
+#### NGINX Community version provider-specific ingress configuration
+CSDP has been tested and is supported in major providers. For your convenience, here are provider-specific configuration instructions, both for supported and untested providers.
+
+> The instructions are valid for `k8s.io/ingress-nginx`, the community version of NGINX.
 
 <details>
 <summary><b>AWS</b></summary>
@@ -237,6 +283,21 @@ For additional configuration options, see <a target="_blank" href="https://kuber
 </details>  
 <br>
 
+#### Traefik ingress configuration
+To enable the the Traefik ingress controller to report the status, add `publishedService` to `providers.kubernetesIngress.ingressEndpoint`.  
+  
+The value must be in the format `"<namespace>/<service-name>"`, where:  
+   `<service-name>` is the Traefik service from which to copy the status
+
+   ```yaml
+   ...
+   providers:
+    kubernetesIngress:
+      ingressEndpoint:
+        publishedService: "<namespace>/<traefik-service>" # Example, "codefresh/traefik-default" ...
+   ...
+  ```
+
 #### Node requirements
 * Memory: 5000 MB
 * CPU: 2
@@ -261,7 +322,7 @@ This section lists the requirements for Git installation repositories.
 If you are using an existing repo, make sure it is empty.
 
 #### Git access tokens
-CSDP requires personal two access tokens, one for runtime installation, and the other for your Git actions in CSDP. 
+CSDP requires two access tokens, one for runtime installation, and the second, a personal token for each user to authenticate Git-based actions in CSDP. 
 
 ##### Git runtime token
 The Git runtime token is mandatory for runtime installation.
@@ -281,7 +342,7 @@ The token must have valid:
    %}  
 
 ##### Git user token for Git-based actions
-The Git user token is the user's personal token, used to authenticate every Git-based action of the user in CSDP. You can supply this token during runtime installation, or add it at any time from the CSDP UI.   
+The Git user token is the user's personal token and is unique to every user. It is used to authenticate every Git-based action of the user in CSDP. You can add the Git user token at any time from the CSDP UI.   
 
   The token must have valid:
   * Expiration date: Default is `30 days`  
