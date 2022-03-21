@@ -152,7 +152,7 @@ patches:
 resources:
   - ../../base
   - ingress.yaml       # created after the installation
-  - rbac.yaml.         # created earlier as part of this process
+  - rbac.yaml         # created earlier as part of this process
   - artifact-repo.yaml # created earlier as part of this process
 patchesStrategicMerge:
   - |
