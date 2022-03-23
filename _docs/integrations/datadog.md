@@ -7,7 +7,7 @@ toc: true
 
 Datadog is a SaaS-based monitoring and analytics platform for large-scale applications and infrastructure. Integrating Datadog with Codefresh allows you to leverage Codefresh to create your pipelines, and Datadog to monitor and analyze them.  
 
-When a pipeline completes execution in Codefresh, Codefresh reports pipeline data to Datadog for viewing in Datadog's Continuous Integration (CI) Visibility interface.
+When a pipeline completes execution in Codefresh, Codefresh reports pipeline-execution data to Datadog for viewing in Datadog's Continuous Integration (CI) Visibility interface.
 
 For Datadog and Codefresh integration, you need:
 * An API token from your Datadog account
