@@ -38,7 +38,7 @@ Configure your Kubernetes cluster with an ingress controller component that is e
 **Ingress controller requirements**
 
 * Valid external IP address  
-  Run `kubectl kubectl get svc -A`to get a list of services and verify that the EXTERNAL-IP column for your ingress controller shows a valid hostname. 
+  Run `kubectl get svc -A` to get a list of services and verify that the EXTERNAL-IP column for your ingress controller shows a valid hostname. 
 
 * Valid SSL certificate  
   For secure runtime installation, the ingress controller must have a valid SSL certificate from an authorized CA (Certificate Authority).  
