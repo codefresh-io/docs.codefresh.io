@@ -389,7 +389,7 @@ If you've installed the Codefresh runner on [EKS](https://aws.amazon.com/eks/) o
 
 > This section assumes you already installed the Runner with default options: `codefresh runner init`
 
-**Prerequesits**
+**Prerequesites**
 
 `dind-volume-provisioner` deployment should have permissions to create/attach/detach/delete/get ebs volumes.
 
