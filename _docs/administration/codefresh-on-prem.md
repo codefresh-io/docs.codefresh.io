@@ -359,7 +359,7 @@ The following table displays the list of databases created as part of the instal
 | Database | Purpose | Latest supported version |
 |----------|---------| ---------------|
 | mongoDB | storing all account data (account settings, users, projects, pipelines, builds etc.) | 4.2.x |
-| postgresql | storing data about events that happened on the account (pipeline updates, deletes, etc.). The audit log uses the data from this database. | 13.3 |
+| postgresql | storing data about events that happened on the account (pipeline updates, deletes, etc.). The audit log uses the data from this database. | 13.x |
 | redis | mainly used for caching, but also used as a key-value store for our trigger manager. | 3.2.x |
 
 #### Volumes
