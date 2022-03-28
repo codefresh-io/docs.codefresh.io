@@ -359,7 +359,7 @@ The following table displays the list of databases created as part of the instal
 | Database | Purpose | Latest supported version |
 |----------|---------| ---------------|
 | mongoDB | storing all account data (account settings, users, projects, pipelines, builds etc.) | 4.2.x |
-| postgresql | storing data about events that happened on the account (pipeline updates, deletes, etc.). The audit log uses the data from this database. | 9.6.x |
+| postgresql | storing data about events that happened on the account (pipeline updates, deletes, etc.). The audit log uses the data from this database. | 13.3 |
 | redis | mainly used for caching, but also used as a key-value store for our trigger manager. | 3.2.x |
 
 #### Volumes
@@ -1062,6 +1062,65 @@ To upgrade Codefresh to a newer version
 1. Enable/disable new feature flags if needed
 
 Notice that only `kfci` should be used for Codefresh upgrades. If you still have a `cf-onprem` script at hand, please contact us for migration instructions.
+
+### Migration from PostgreSQL 9 to PostgreSQL 13
+PostgreSQL version 9.6 came out of support, so Codefresh migrates to version 13 since **1.0.205** release. <br />
+This section describe built-in default postgresql subchart migration. If your Codefresh On-Prem installation uses [external Postgres database]({{site.baseurl}}/docs/administration/codefresh-on-prem/#configuring-an-external-postgres-database), you can skip this section. <br />
+Before the upgrade, follow the procedure below to migrate to a newer version of PostgreSQL successfully without any data loss. <br />
+
+#### Prerequisites
+* The kubectl and postgresql-client tools are available.
+* An instance of Codefres running in Kubernetes.
+
+#### Procedure
+0. (Not recommended) You can omit Postgresql migration by specifying old imageTag in kcfi `config.yaml`: 
+```yaml
+postgresql:
+  imageTag: 9.6.2
+```
+1. Port-forward Postgresql service:
+```shell
+kubectl port-forward svc/cf-postgresql -n codefresh 5432:5432  &
+```
+2. Backup audit database to a local file system:
+```shell
+export PGPASSWORD=$(kubectl get secret cf-postgresql -n codefresh -o json | jq -r '.data."postgres-password"' | base64 -d)
+pg_dump -h 127.0.0.1 -p 5432 -U postgres -Fc audit > audit.out
+```
+3. Scale down the Postgresql deployment:
+```shell
+kubectl scale deployment cf-postgresql --replicas=0 -n codefresh
+```
+4. Delete the corresponding PVC unit to clean up old data:
+```shell
+kubectl delete pvc cf-postgresql -n codefresh
+```
+5. Perform Codefresh upgrade to 1.0.205 release: <br />
+`config.yaml`
+```yaml
+metadata:
+  kind: codefresh
+  installer:
+    type: helm
+    helm:
+      chart: codefresh 
+      repoUrl: http://charts.codefresh.io/prod
+      version: 1.0.205
+```
+```shell
+kcfi deploy -c config --debug
+```
+After the upgrade, a new `cf-postgresql` PVC will automatically appear in *Pending* state.
+6. Scale up the Postgresql deployment:
+```shell
+kubectl scale deployment cf-postgresql --replicas=1 -n codefresh
+```
+7. Provision and restore audit database:
+```shell
+kubectl port-forward svc/cf-postgresql -n codefresh 5432:5432  &
+psql -U postgres -h 127.0.0.1 -p 5432 -c "create database audit"
+pg_restore -U postgres -d audit -h 127.0.0.1 -p 5432 < audit.out
+```
 
 ## Common Problems, Solutions, and Dependencies
 
