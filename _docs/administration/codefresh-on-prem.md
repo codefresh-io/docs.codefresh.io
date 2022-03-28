@@ -1065,19 +1065,20 @@ Notice that only `kfci` should be used for Codefresh upgrades. If you still have
 
 ### Migration from PostgreSQL 9 to PostgreSQL 13
 PostgreSQL version 9.6 came out of support, so Codefresh migrates to version 13 since **1.0.205** release. <br />
-This section describe built-in default postgresql subchart migration. If your Codefresh On-Prem installation uses [external Postgres database]({{site.baseurl}}/docs/administration/codefresh-on-prem/#configuring-an-external-postgres-database), you can skip this section. <br />
-Before the upgrade, follow the procedure below to migrate to a newer version of PostgreSQL successfully without any data loss. <br />
+This section describe built-in default postgresql subchart migration. If your Codefresh On-Prem installation uses an [external Postgres database]({{site.baseurl}}/docs/administration/codefresh-on-prem/#configuring-an-external-postgres-database) AND its up-to-date version 13.x, you can skip this section. <br />
+Before the upgrade, follow the procedure below to migrate to a newer version of PostgreSQL successfully. <br />
 
 #### Prerequisites
 * The kubectl and postgresql-client tools are available.
-* An instance of Codefres running in Kubernetes.
+* An instance of Codefresh running in Kubernetes.
 
 #### Procedure
-0. (Not recommended) You can omit Postgresql migration by specifying old imageTag in kcfi `config.yaml`: 
+>**Note!** <br /> (Not recommended) You can omit Postgresql migration by specifying old `postgresql.imageTag` in kcfi `config.yaml`: 
 ```yaml
 postgresql:
   imageTag: 9.6.2
 ```
+
 1. Port-forward Postgresql service:
 ```shell
 kubectl port-forward svc/cf-postgresql -n codefresh 5432:5432  &
@@ -1115,7 +1116,7 @@ After the upgrade, a new `cf-postgresql` PVC will automatically appear in *Pendi
 ```shell
 kubectl scale deployment cf-postgresql --replicas=1 -n codefresh
 ```
-7. Provision and restore audit database:
+7. Provision and restore Audit database:
 ```shell
 kubectl port-forward svc/cf-postgresql -n codefresh 5432:5432  &
 psql -U postgres -h 127.0.0.1 -p 5432 -c "create database audit"
