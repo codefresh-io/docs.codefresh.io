@@ -31,3 +31,21 @@
   <script src="{{ site.baseurl }}/assets/js/src/ie-emulation-modes-warning.js"></script>
   <script src="{{ site.baseurl }}/assets/js/src/pwa.js"></script>
 {%- endif -%}
+
+
+<!-- Start of Doc Search Embed Code -->
+<script>
+  docsearch({
+    inputSelector: '.doc-search-input',
+    typesenseCollectionName: 'v2-doc-index', // Should match the collection name you mention in the docsearch scraper config.js
+    typesenseServerConfig: { 
+      nodes: [{
+        host: 'fxokw93dqyu27pv6p.a1.typesense.net', // For Typesense Cloud use xxx.a1.typesense.net
+        port: '443',      // For Typesense Cloud use 443
+        protocol: 'https'   // For Typesense Cloud use https
+      }],
+      apiKey: '5aRIuEbEpw9LTf2B5te4Essx4o4HE4Fl', // Use API Key with only Search permissions
+    },
+  });
+</script>
+<!-- End of Doc Search Embed Code -->
