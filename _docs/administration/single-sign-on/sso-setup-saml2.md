@@ -97,6 +97,7 @@ The mandatory fields needed for SAML assertions are:
 1. firstName - user first name
 1. lastName - user last name
 1. email - user email
+1. NameID - user email (some IDPs like OneLogin and Ping Federate will need this)
 
 To configure users sync for SAML IDP you need to do the following:
 
