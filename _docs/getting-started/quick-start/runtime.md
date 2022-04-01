@@ -7,7 +7,7 @@ toc: true
 ---
 
 
-Installing the runtime, installs the Codefresh Software Delivery Platform (CSDP), comprising Argo project components and CSDP-specific components. The rgo Project is an enterprise-supported version of the Argo CD components, derived from a conformed fork of the Argo ecosystem.
+Installing the runtime, installs the Codefresh Software Delivery Platform (CSDP), comprising Argo project components and CSDP-specific components. The Argo Project is an enterprise-supported version of the Argo CD components, derived from a conformed fork of the Argo ecosystem.
 
 ### About runtime installation
 Installing a runtime includes installing the:  
