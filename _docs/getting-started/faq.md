@@ -18,7 +18,7 @@ A. The current release of CSDP supports hybrid deployment environments. Stay tun
 
 **Q. How does CSDP relate to Open Source Argo?**   
 
-A. CSDP creates a conformed fork of the Argo Project. You get an enterprise-supported version of the Agro Project comprising Argo Workflows, Argo Events, Argo CD, and Argo Rollouts. You can take advantage of the Argo Project offering, with the extended functionality that CSDP brings to it.
+A. CSDP creates a conformed fork of the Argo Project. You get an enterprise-supported version of the Argo Project comprising Argo Workflows, Argo Events, Argo CD, and Argo Rollouts. You can take advantage of the Argo Project offering, with the extended functionality that CSDP brings to it.
 
 **Q. I already have a Kubernetes cluster with Argo CD. Can I install CSDP on the same cluster?**  
 
