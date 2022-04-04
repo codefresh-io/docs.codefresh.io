@@ -59,17 +59,19 @@
   url: ''
   links:
   - title: Manage users
-    localurl: /docs/administration/add-users
-  - title: User settings
-    localurl: /docs/administration/user-settings
+    localurl: /docs/administration/add-users/
+  - title: Set up OAuth2 app 
+    localurl: /docs/administration/oauth-pat-setup/  
+  - title: Manage Git personal access tokens
+    localurl: /docs/administration/user-settings/
   - title: Single Sign-On
-    localurl: /docs/administration/single-sign-on
+    localurl: /docs/administration/single-sign-on/
   - title: Access Control
-    localurl: /docs/administration/access-control
+    localurl: /docs/administration/access-control/
   - title: Audit
-    localurl: /docs/administration/audit
+    localurl: /docs/administration/audit/
   - title: Codefresh platform IPs
-    localurl: /docs/administration/platform-ip-addresses
+    localurl: /docs/administration/platform-ip-addresses/
 
 
 - title: Troubleshooting
