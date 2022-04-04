@@ -73,6 +73,12 @@ Once you create the environment, Codefresh will pull automatically the status of
 
 You can also combine the two ways by first creating an environment in the GUI and then associating it with a pipeline. But notice that in that case the environment details you selected in the GUI must **EXACTLY** match those defined in the pipeline (so that the pipeline can detect which environment entry it should update).
 
+## Filtering environments boards
+
+* Filter Helm boards by Namespace, Cluster, and Release. The Namespace filter is useful when you have more than one Helm release per namespace, or you have the same Helm release in more than one* namespace.
+* Filter Kubernetes boards by Release, Cluster, and Namespace.
+
+
 
 ## Understanding cluster issues
 
