@@ -251,8 +251,7 @@ max-width="80%"
 
 
 1. The refresh button will update the board with the current state of the clusters
-1. The filtering menu can be used to further constrain the Helm releases shown in each column. You can filter by Namespace, Cluster and Release. 
-  Filtering by Namespace is useful when you have more than one Helm release per namespace or you have the same Helm release in more than one namespace.
+1. The filtering menu can be used to further constrain the Helm releases shown in each column. 
 1. The *edit properties* button allows you to change again the title of the board as well as a global filter for Helm releases
 1. The *remove board* completely deletes the present board from the Codefresh UI
 1. The environment details on the environment header are:
