@@ -283,7 +283,7 @@ All CNI providers/plugins are compatible with the runner components.
 2. Runner pod (Agent) pulls tasks (Builds) from Codefresh API every 3 seconds.
 3. Once the agent receives build task (either Manual run build or Webhook triggered build) it calls k8s API to create engine/dind pods and PVC object
 4. Volume Provisioner listens for PVC events (create) and based on StorageClass definition it creates PV object with the corresponding underlying volume backend (ebs/gcedisk/local).
-5. During the build, each step (clone/build/push/freestyle/composition) is represented as docker container inside dind (docker-in-docker) pod. Shared Volume (`/codefresh/volume`) is represented as docker volume and mounted to every step (docker containers). Mount point for dind PV is /var/lib/docker
+5. During the build, each step (clone/build/push/freestyle/composition) is represented as docker container inside dind (docker-in-docker) pod. Shared Volume (`/codefresh/volume`) is represented as docker volume and mounted to every step (docker containers). Mount point for dind is `/var/lib/docker`.
 6. Engine pod controls dind pod. It deserializes pipeline yaml to docker API calls, terminates dind after build has been finished or per user request (sigterm)
 7. `dind-lv-monitor` DaemonSet OR `dind-volume-cleanup` CronJob are part of [Runtime Cleaner]({{site.baseurl}}/docs/administration/codefresh-runner/#runtime-cleaners), `app-proxy` Deployment and Ingress is described in the [next section]({{site.baseurl}}/docs/administration/codefresh-runner/#app-proxy-installation), `monitor` Deployment is for [Kubernetes Dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/)
 
