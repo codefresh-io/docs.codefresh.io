@@ -273,7 +273,7 @@ caption="Filtering options"
 max-width="50%"
 %}
 
-The filters are especially helpful in Helm boards with a large numbers of environments and/or releases.
+The filters are especially helpful in Helm boards with large numbers of environments and/or releases.
 
 ## What to read next
 
