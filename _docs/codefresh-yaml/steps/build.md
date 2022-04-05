@@ -147,7 +147,7 @@ steps:
 {% endraw %}        
 {% endhighlight %}
 
-Build an image and automatotically push to the [registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) with name `my-registry`.
+Build an image and automatically push to the [registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) with name `my-registry`.
 
 `codefresh.yml`
 {% highlight yaml %}
