@@ -60,10 +60,6 @@
   links:
   - title: Manage users
     localurl: /docs/administration/add-users/
-  - title: Set up OAuth2 app 
-    localurl: /docs/administration/oauth-pat-setup/  
-  - title: Manage Git personal access tokens
-    localurl: /docs/administration/user-settings/
   - title: Single Sign-On
     localurl: /docs/administration/single-sign-on/
   - title: Access Control

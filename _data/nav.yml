@@ -66,10 +66,6 @@
   pages:
     - title: Manage users
       url: "/add-users"
-    - title: Set up OAuth2 app
-      url: "/oauth-pat-setup"  
-    - title: Git personal access tokens for users
-      url: "/user-settings"
     - title: Git tokens
       url: "/git-tokens"
     - title: Single Sign-On
