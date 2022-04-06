@@ -52,7 +52,7 @@ The URL shown at the environment is just a shortcut link that allows you to quic
 
 ## Creating an environment
 
-You can create an environment in two ways
+You can create an environment in two ways:
 
 * Describe the environment details in the any pipeline that affects it using the [special env syntax]({{site.baseurl}}/docs/codefresh-yaml/deployment-environments/). The first time the pipeline runs, the environment GUI entry will be created automatically in the dashboard
 * Create the environment details yourself straight from the Codefresh UI
