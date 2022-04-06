@@ -23,29 +23,29 @@ The settings apply to all workflows by default, unless overridden by a specific 
    `<runtime_installation_repo>/apps/workflows/overlays/<runtime-name>/`  
 1. Create a new file entitled `artifact-repo.yaml`, and update `bucket`, `endpoint`, and `region` as needed: 
 
-  ```yaml
-  ---
-  apiVersion: v1
-  kind: ConfigMap
-  metadata:
-    annotations:
-      workflows.argoproj.io/default-artifact-repository: default-v1
-    name: artifact-repositories
-  data:
-    default-v1: |
-      archiveLogs: true #enable pipeline logging
-      s3:
-        bucket: csdp-artifacts-us-east-1 #change as needed
-        endpoint: s3.amazonaws.com #change as needed
-        region: us-east-1 #change as needed
-        useSDKCreds: true
-  ```
+```yaml
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  annotations:
+    workflows.argoproj.io/default-artifact-repository: default-v1
+  name: artifact-repositories
+data:
+  default-v1: |
+    archiveLogs: true #enable pipeline logging
+    s3:
+      bucket: csdp-artifacts-us-east-1 #change as needed
+      endpoint: s3.amazonaws.com #change as needed
+      region: us-east-1 #change as needed
+      useSDKCreds: true
+```
 
 ### Step 2: Define RBAC permissions for artifact repository
 Grant the workflow controller sufficient permissions for S3 bucket operations.
 
 1. Go to the same CSDP runtime installation repository:  
-  `<runtime_installation_repo>/apps/workflows/overlays/<runtime-name>`  
+`<runtime_installation_repo>/apps/workflows/overlays/<runtime-name>`  
 1. Create the `rbac.yaml` file with the permissions, changing the annotation to match the S3 storage :  
 
 ```yaml 
