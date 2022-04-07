@@ -38,7 +38,11 @@ At the most basic level you can choose between
 
  * *Running* builds that are currently executing
  * *Pending* builds which are queued and waiting to start
- * *Delayed* builds which cannot run yet, because there are not free pipeline builders
+ * *Delayed* builds which cannot run yet, because there are no free pipeline builders.  
+   A build can be delayed for a maximum of seven days, and each account can have up to 1000 delayed builds at any time.    
+    * Builds that are delayed for more than seven days are terminated with a _Delay time limit exceeded_ reason.  
+    * If the total number of delayed builds exceed 1000, older builds are terminated with a _Maximum delayed workflows exceeded_ reason.
+
  * *All* builds regardless of running stage (this is the default)
 
 You can further filter the builds by choosing the various filter types that specify the build job.
