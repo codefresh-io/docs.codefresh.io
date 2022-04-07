@@ -402,6 +402,23 @@ Depending on the customer’s Kubernetes version we can assist with PV resizing.
 
 Codefresh installation supports automatic storage provisioning based on the standard Kubernetes dynamic provisioner Storage Classes and Persistent Volume Claims. All required installation volumes will be provisioned automatically using the default Storage Class or custom Storage Class that can be specified as a parameter in `config.yaml` under `storageClass: my-storage-class`.
 
+### Retention policy for Codefresh builds
+You can define a retention policy to manage Codefresh builds. The retention settings are controlled through environment variables, all of which have default settings which you can retain or customize. The default policy is set to delete builds older than six months, including offline logs.
+
+The retention mechanism is implemented as a Cron Job through the Codefresh. It removes data from collections such as:
+* workflowproccesses
+* workflowrequests
+* workflowrevisions
+
+{: .table .table-bordered .table-hover}
+| Env Variable                   | Description                                                                     | Default                | 
+|------------------------------- |-------------------------------------------------------------------------------- |----------------------  |
+|`RETENTION_POLICY_IS_ENABLED`      | Determines if automatic build deletion through the Cron job is enabled.         | `true`                 |
+|`RETENTION_POLICY_BUILDS_TO_DELETE`| The maximum number of builds to delete by a sinle Cron job. To avoid database issues, especially when there are large numbers of old builds, we recommend deleting them in small chunks. You can gradually increase the number after verifying that performance is not affected.                                   | `50`                  |
+|`RETENTION_POLICY_DAYS`         | The number of days for which to retain builds. Older builds are                                   | `180`              |
+|`RUNTIME_MONGO_URI`             | Optional. The URI of the Mongo database from which to remove MongoDB logs (in addition to the builds). |              |
+                                
+
 
 ### Managing Codefresh backups
 
