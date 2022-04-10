@@ -251,7 +251,7 @@ max-width="80%"
 
 
 1. The refresh button will update the board with the current state of the clusters
-1. The filtering menu can be used to further constrain the Helm releases shown on each column
+1. The filtering menu can be used to further constrain the Helm releases shown in each column. 
 1. The *edit properties* button allows you to change again the title of the board as well as a global filter for Helm releases
 1. The *remove board* completely deletes the present board from the Codefresh UI
 1. The environment details on the environment header are:
@@ -273,7 +273,7 @@ caption="Filtering options"
 max-width="50%"
 %}
 
-The filters are especially helpful in Helm boards with a large numbers of environments and/or releases.
+The filters are especially helpful in Helm boards with large numbers of environments and/or releases.
 
 ## What to read next
 
