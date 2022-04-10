@@ -96,7 +96,7 @@ Check the ones that you wish to use with this key.
 Once you have the key use it in the Codefresh Cli like this
 
 {% highlight bash %}
-codefresh auth create-context --api-key <your_key_here>
+codefresh auth create-context <context-name> --api-key <your_key_here>
 {% endhighlight %}
 
 Now the Codefresh CLI is fully authenticated. The key is stored in `~/.cfconfig` so you only need to run this command once. The CLI
