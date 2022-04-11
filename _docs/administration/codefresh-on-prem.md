@@ -1084,9 +1084,9 @@ Notice that only `kfci` should be used for Codefresh upgrades. If you still have
 
 From version 1.0.205, Codefresh has deprecated the internal Docker registry `cf-registry`.  
 
-The internal Docker regsitry cannot be used as a target registry, `cf-registry.codefresh.svc:5000`, for pull/push steps.
+The internal Docker registry cannot be used as a target registry, `cf-registry.codefresh.svc:5000`, for pull/push steps.
 
->**Not recommended!** <br /> If for some reason you need to retain this,  specify `registry.enabled` in kcfi `config.yaml`: 
+>**Not recommended!** <br /> If you need to retain the `cf-registry`, specify `registry.enabled` in kcfi `config.yaml`: 
 ```yaml
 registry:
   enabled: true
