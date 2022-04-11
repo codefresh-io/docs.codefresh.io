@@ -1537,7 +1537,7 @@ runtimeScheduler:
     serviceAccount: codefresh-engine
   annotations: {}
   labels:
-    spotinst.io/restrict-scale-down: "true"
+    spotinst.io/restrict-scale-down: "true" #optional label to prevent node scaling down when the runner is deployed on spot instances
   envVars:
     NODE_TLS_REJECT_UNAUTHORIZED: '0' #disable certificate validation for TLS connections (e.g. to g.codefresh.io)
     METRICS_PROMETHEUS_ENABLED: 'true' #enable /metrics on engine pod
@@ -1594,7 +1594,7 @@ dockerDaemonScheduler:
     serviceAccount: codefresh-engine
   annotations: {}
   labels:
-    spotinst.io/restrict-scale-down: "true"
+    spotinst.io/restrict-scale-down: "true" #optional label to prevent node scaling down when the runner is deployed on spot instances
   userAccess: true
   defaultDindResources:
     requests: ''
