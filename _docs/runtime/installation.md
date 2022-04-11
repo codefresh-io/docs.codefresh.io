@@ -75,10 +75,10 @@ Before you start installing the CSDP runtime, verify that:
 **Ingress resources**  
   If you have a different routing service (not NGINX), bypass installing ingress resources with the `--skip-ingress` flag.  
   In this case, after completing the installation, manually configure the following:  
-  * Cluster's routing service with path to `'/app-proxy'` and `'/webhooks/push-git'`.  
+  * Cluster's routing service with path to `'/app-proxy'` and `'/webhooks/<RUNTIME-NAME>/push-github'`.  
   * Create and register Git integrations using the commands:  
-    `cf integration git add default --runtime <RUNTIME_NAME> --api-url <API_URL>`   
-    `cf integration git register default --runtime <RUNTIME_NAME> --token <RUNTIME-AUTHENTICATION-TOKEN>`  
+    `cf integration git add default --runtime <RUNTIME-NAME> --api-url <API-URL>`   
+    `cf integration git register default --runtime <RUNTIME-NAME> --token <RUNTIME-AUTHENTICATION-TOKEN>`  
 
 
 **Insecure flag**  
