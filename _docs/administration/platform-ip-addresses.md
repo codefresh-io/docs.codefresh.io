@@ -7,7 +7,6 @@ toc: true
 ---
 To use CSDP for [a Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/) that has a strict firewall, you can only allow access to specific IP addresses used by the CSDP platform. Using these IPs allows you to deploy to your cluster even when it is not accessible from the public internet.
 
->This is needed only for customers who use the [SAAS version of CSDP]({{site.baseurl}}/docs/administration/installation-security/). If you use the [Codefresh runner]({{site.baseurl}}/docs/administration/codefresh-runner/), there is no need to open any IPs and ports in your firewall.
 
 ### Current IPs used by the Codefresh platform (updated July 31st 2021)
 
