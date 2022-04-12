@@ -212,7 +212,7 @@ codefresh runner delete
 
 A wizard, similar to the installation wizard, will ask you questions regarding your cluster before finishing with the removal.
 
-Like the installation wizard, you can pass the additiona options in advance as command line parameters (see `--help` output):
+Like the installation wizard, you can pass the additional options in advance as command line parameters (see `--help` output):
 ```shell
 codefresh runner delete --help
 ```
@@ -349,7 +349,7 @@ The Codefresh runner consists of the following:
 * Runner - responsible for getting tasks from the platform and executing them. One per account. Can handle multiple runtimes
 * Runtime - the components that are responsible on runtime for the workflow execution :
   * Volume provisioner - (pod’s name prefix dind-volume-provisioner-runner) - responsible for volume provisioning for dind pod
-  * lv-monitor - (pod’s name perfix dind-lv-monitor-runner) - daemonset - responsible for cleaning volumes
+  * lv-monitor - (pod’s name prefix dind-lv-monitor-runner) - daemonset - responsible for cleaning volumes
 
 To install the runner on a single cluster with both the runtime and the agent, execute the following:
 
@@ -395,7 +395,7 @@ kubectl create namespace codefresh-runtime-2
 # 9. Install the second runtime on the namespace
 codefresh install runtime --runtime-kube-namespace codefresh-runtime-2
 
-# 10. Attach the second runtime to agent and restart the Venoa pod automatically
+# 10. Attach the second runtime to agent and restart the Venona pod automatically
 codefresh attach runtime --agent-name $AGENT_NAME --agent-kube-namespace codefresh-agent --runtime-name $RUNTIME_NAME --runtime-kube-namespace codefresh-runtime-2 --restart-agent
 ```
 
@@ -1202,6 +1202,7 @@ kubectl create clusterrolebinding cluster-admin-binding \
   --user $(gcloud config get-value account)
 ```
 
+
 #### Storage options on GKE
 
 **Local SSD**
@@ -1240,6 +1241,7 @@ To configure existing Runner with Local SSDs follow this article:
 
 [How-to: Configuring an existing Runtime Environment with Local SSDs (GKE only)](https://support.codefresh.io/hc/en-us/articles/360016652920-How-to-Configuring-an-existing-Runtime-Environment-with-Local-SSDs-GKE-only-)
 
+
 **GCE Disks**
 
 If you want to use  *GCE Disks*:
@@ -1253,6 +1255,7 @@ There are 3 options to provide cloud credentials:
 * use [Google Workload Identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) to assign IAM role to `volume-provisioner-runner` service account
 
 Notice that builds will be running in a single availability zone, so you must specify AvailabilityZone parameters.
+
 
 ##### Runner installation with GCE Disks (Google SA JSON key)
 
@@ -1298,6 +1301,7 @@ Using the values `values-example.yaml` file:
 codefresh runner init [options] --values values-example.yaml
 ```
 
+
 ##### Runner installation with GCE Disks (Workload Identity with IAM role)
 
 Using the values `values-example.yaml` file:
@@ -1340,6 +1344,7 @@ gcloud iam service-accounts add-iam-policy-binding \
 To configure existing Runner with GCE Disks follow this article:
 
 [How-to: Configuring an existing Runtime Environment with GCE disks](https://support.codefresh.io/hc/en-us/articles/360016652900-How-to-Configuring-an-existing-Runtime-Environment-with-GCE-disks)
+
 
 ##### Using multiple Availability Zones
 
@@ -1390,6 +1395,7 @@ For example, let's say Venona-zoneA is the default RE, then, that means that for
 
 Regarding [Regional Persistent Disks](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/regional-pd), their support is not currently implemented in the Codefresh runner.
 
+
 ### Internal Registry Mirror
 
 You can configure your Codefresh Runner to use an internal registry as a mirror for any container images that are mentioned in your pipelines.
@@ -1428,6 +1434,23 @@ data:
 This adds the line `\ \"registry-mirrors\": [ \"https://<my-docker-mirror-host>\" ], \n` which contains a single registry to use as a mirror. Quit and Save by typing `:wq`.
 
 Now any container image that is used in your pipeline and isn't fully qualified, will be pulled through the Docker registry that is configured as a mirror.
+
+
+### Installing the monitoring component
+
+If your cluster is located [behind the firewall](https://codefresh.io/docs/docs/administration/behind-the-firewall/) you might want to use the runner monitoring component to get valuable information about the cluster resources to Codefresh, for example, to [Kubernetes](https://g.codefresh.io/kubernetes/services/) and [Helm Releases](https://g.codefresh.io/helm/releases/releasesNew/) dashboards.
+
+To install the monitoring component you can use `--install-monitor` flag in the `runner init` command:
+
+```shell
+codefresh runner init --install-monitor
+```
+
+Please note, that the monitoring component will not be installed if you use `--install-monitor` with `--skip-cluster-integration` flag. In case you want to skip adding the cluster integration during the runner installation, but still want to get the cluster resources to Codefresh dashboards, you can install the monitoring component separately:
+
+```shell
+codefresh install monitor --kube-context-name <CONTEXT> --kube-namespace <NAMESPACE> --cluster-id <CLUSTER_NAME> --token <TOKEN>
+```
 
 
 ## Full runtime environment specification
