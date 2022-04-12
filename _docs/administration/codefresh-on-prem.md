@@ -278,7 +278,7 @@ Edit k8s-agent/config.yaml and run:
 ```
 kcfi deploy [ -c config.yaml ] [-n namespace]
 ```
-## Get updated images for existing installations
+##  Migrating existing installations
 If you already have Codefresh installed and are upgrading to the latest version, update the `config.yaml` for `kcfi` to get the latest images for these services:  
 
 * `cf-mongodb`
