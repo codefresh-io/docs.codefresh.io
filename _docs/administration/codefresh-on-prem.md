@@ -1082,7 +1082,7 @@ To upgrade Codefresh to a newer version
 Notice that only `kfci` should be used for Codefresh upgrades. If you still have a `cf-onprem` script at hand, please contact us for migration instructions.
 
 ###  Migrating existing installations
-If you already have Codefresh installed and are upgrading to the latest version, update the `config.yaml` for `kcfi` to get the latest images for these services:  
+If you already have Codefresh installed and are upgrading to version <TBD> or higher, update the `config.yaml` for `kcfi` to get the latest images for these services:  
 
 * `cf-mongodb`
 * `cf-redis`
