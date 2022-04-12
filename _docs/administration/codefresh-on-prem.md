@@ -278,60 +278,7 @@ Edit k8s-agent/config.yaml and run:
 ```
 kcfi deploy [ -c config.yaml ] [-n namespace]
 ```
-##  Migrating existing installations
-If you already have Codefresh installed and are upgrading to the latest version, update the `config.yaml` for `kcfi` to get the latest images for these services:  
 
-* `cf-mongodb`
-* `cf-redis`
-* `cf-rabbitmq`
-* `cf-postgresql`
-* `cf-nats`
-* `cf-consul`
-
-> In the `config.yaml` below, if needed, replace the `bitnami` prefix with that of your private repo.
-
-```yaml
-...
-
-global:
-  ### Codefresh App domain name. appUrl is manadatory parameter
-  appUrl: onprem.mydomain.com
-  appProtocol: https
-
-  mongodbImage: bitnami/mongodb:3.6.13-r0
-
-mongodb:
-  image: bitnami/mongodb:3.6.13-r0
-  podSecurityContext:
-    enabled: false
-  containerSecurityContext:
-    enabled: false    
-
-redis:
-  image: bitnami/redis:3.2.9-r2
-  podSecurityContext:
-    enabled: false
-  containerSecurityContext:
-    enabled: false  
-
-rabbitmq:
-  image:  bitnami/rabbitmq:3.7.2-r1
-  podSecurityContext:
-    enabled: false
-  containerSecurityContext:
-    enabled: false  
-
-postgresql:
-  imageTag: 9.6.2
-
-nats:
-  imageTag: 0.9.4  
-
-consul:
-  ImageTag: 1.0.0
-
-...
-```
 
 ## Additional Configurations
 
@@ -1133,6 +1080,61 @@ To upgrade Codefresh to a newer version
 1. Enable/disable new feature flags if needed
 
 Notice that only `kfci` should be used for Codefresh upgrades. If you still have a `cf-onprem` script at hand, please contact us for migration instructions.
+
+###  Migrating existing installations
+If you already have Codefresh installed and are upgrading to the latest version, update the `config.yaml` for `kcfi` to get the latest images for these services:  
+
+* `cf-mongodb`
+* `cf-redis`
+* `cf-rabbitmq`
+* `cf-postgresql`
+* `cf-nats`
+* `cf-consul`
+
+> In the `config.yaml` below, if needed, replace the `bitnami` prefix with that of your private repo.
+
+```yaml
+...
+
+global:
+  ### Codefresh App domain name. appUrl is manadatory parameter
+  appUrl: onprem.mydomain.com
+  appProtocol: https
+
+  mongodbImage: bitnami/mongodb:3.6.13-r0
+
+mongodb:
+  image: bitnami/mongodb:3.6.13-r0
+  podSecurityContext:
+    enabled: false
+  containerSecurityContext:
+    enabled: false    
+
+redis:
+  image: bitnami/redis:3.2.9-r2
+  podSecurityContext:
+    enabled: false
+  containerSecurityContext:
+    enabled: false  
+
+rabbitmq:
+  image:  bitnami/rabbitmq:3.7.2-r1
+  podSecurityContext:
+    enabled: false
+  containerSecurityContext:
+    enabled: false  
+
+postgresql:
+  imageTag: 9.6.2
+
+nats:
+  imageTag: 0.9.4  
+
+consul:
+  ImageTag: 1.0.0
+
+...
+```
 
 ### Internal Docker Registry deprecation
 
