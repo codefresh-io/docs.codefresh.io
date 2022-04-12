@@ -43,7 +43,9 @@
       url: "/installation"
     - title: Management
       url: "/monitor-manage-runtimes"
-    - title: Git Source management
+    - title: Add and manage external clusters
+      url: "/managed-cluster" 
+    - title: Add and manage Git Sources
       url: "/git-sources"
 
 - title: Pipelines
