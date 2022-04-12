@@ -10,11 +10,12 @@ toc: true
 
 ### March 2022
 - Support for Kubernetes 12.1 - [documentation]({{site.baseurl}}/docs/administration/codefresh-on-prem/#prerequisites)
-- Environment definition enhancements - [documentation]({{site.baseurl}}/docs/deploy-to-kubernetes/environment-dashboard/elm/helm-environment-promotion/#editing-your-helm-boards)
+- Environment definition enhancements - [documentation]({{site.baseurl}}/docs/deploy-to-kubernetes/environment-dashboard/#creating-an-environment)
 - RBAC support for shared configuration - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/#creating-shared-configuration)
 - Cross-account push for Amazon ECR - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/push/#fields)
 - (On-premises only) Retention policy for Codefresh builds - [documentation]({{site.baseurl}}/docs/administration/codefresh-on-prem/#retention-policy-for-codefresh-builds)
 - Automated termination for 'Delayed' builds - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/monitoring-pipelines/#applying-filters-on-the-build-view)
+- 
 
 ### January 2022
 - Store test results using MinIO objects - [documentation]({{site.baseurl}}/docs/testing/test-reports/#connecting-minio-storage)
