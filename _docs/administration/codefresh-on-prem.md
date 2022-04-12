@@ -418,6 +418,82 @@ The retention mechanism is implemented as a Cron Job through the Codefresh. It r
 |`RETENTION_POLICY_DAYS`         | The number of days for which to retain builds. Older builds are                                   | `180`              |
 |`RUNTIME_MONGO_URI`             | Optional. The URI of the Mongo database from which to remove MongoDB logs (in addition to the builds). |              |
                                 
+### Configure High-Availability (HA) for Codefresh 
+Enable high-availability in the Codefresh platform for disaster recovery. Configure HA for new and existing installations.
+
+#### Prerequisites
+
+* **K8s clusters**  
+  Two K8s clusters, one designated as the active cluster, and the other designated as the passive or stand-by cluster for disaster recovery.  
+
+* **External databases and services**  
+  All databases and services must be external to the clusters.  
+
+  * Postgres database (see [Configuring an external Postgres database](#configuring-an-external-postgres-database))
+  * MongoDB (see [Configuring an external MongoDB](#configuring-an-external-mongodb))
+  * Redis service (see [Configuring an external Redis service](#configure-an-external-redis-service))
+  * RabbitMQ service (see [Configuring an external RabbitMQ service](#configure-an-external-redis-service))  
+
+* **DNS record**  
+  Allows switching between clusters for disaster recovery
+
+#### Installation and configuration
+
+You must install Codefresh on both K8s clusters, and configure the global variable for the passive cluster to support HA.
+
+1. Install the Codefresh on-prem release on the two K8s clusters:
+  * Active cluster
+  * Passive (stand-by) cluster
+1. After installation is complete, on the _passive_ K8s cluster, edit `cfapi-buildmanager`:  
+  If the variable `FREEZE_WORKFLOWS_EXECUTION` does not exist, add it and set the value to `true`.  
+  If the variable exists, change the value to `true`.
+
+#### Installation via Helm chart
+If you use Helm chart, you can update the chart's `values.yaml` with the global variable before installation, and then deploy the chart to the passive (stand-by) cluster.
+
+1. Download Codefresh on-prem chart locally.  
+
+  `helm repo add codefresh-onprem-prod http://charts.codefresh.io/prod`  
+  `helm fetch codefresh-onprem-prod/codefresh --version ${release-version}`  
+  where:  
+  `{release-version}` is the on-prem version of Codefresh you are downloading. 
+
+{:start="2"}
+1. Update the chart's `values.yaml` file with the global variable `FREEZE_WORKFLOWS_EXECUTION` set to `true`.
+
+```yaml
+global:
+  FREEZE_WORKFLOWS_EXECUTION: true
+```
+{:start="3"}
+1. Update `kcfi` config file with the path to the local Helm chart. 
+
+```yaml
+metadata:
+  kind: codefresh
+  installer:
+    type: helm
+    helm:
+      chart: /onprem-kcfi/chart-$version/codefresh
+```
+
+1. Use `kcfi` to deploy the chart to the passive (stand-by) cluster.
+
+
+#### Switch clusters for disaster recovery
+Switch between clusters for disaster recovery.
+
+1. In the _active_ cluster, in `cfapi-buildmanager`, change the value of `FREEZE_WORKFLOWS_EXECUTION` from `false` to `true`.  
+  If the variable does not exist, add it and make sure the value is set to `true`.  
+1. In the _passive_ cluster, in `cfapi-buildmanager`, change the value of `FREEZE_WORKFLOWS_EXECUTION` from `true` to `false`. 
+1. Switch DNS from the currently active cluster to the passive cluster.
+
+#### Services without HA
+These services are currently without HA, but are not critical in case of downtime.
+* `cronus`, cannot be scaled as it uses the same database. 
+* `cf-sign`
+* `hermse-store-backup`
+* `store`
 
 
 ### Managing Codefresh backups
