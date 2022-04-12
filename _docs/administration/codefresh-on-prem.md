@@ -502,8 +502,10 @@ For disaster recovery switch between the active and passive clusters.
 1. Switch DNS from the currently active cluster to the passive cluster.
 
 #### Services without HA
-These services are currently without HA, but are not critical in case of downtime.
-* `cronus`, cannot be scaled as it uses the same database. 
+The following services can not run in HA, but are not critical in case of downtime or during the process of switching an active to passive.
+The reason why these services are not cruicial is due to the fact that they take a part during the process of handling a build.
+In case of a failure a retry of the build will occur which means the build will still be handled.
+* `cronus`, 
 * `cf-sign`
 * `hermse-store-backup`
 * `store`
