@@ -360,8 +360,8 @@ The following table displays the list of databases created as part of the instal
 | Database | Purpose | Latest supported version |
 |----------|---------| ---------------|
 | mongoDB | storing all account data (account settings, users, projects, pipelines, builds etc.) | 4.2.x |
-| postgresql | storing data about events that happened on the account (pipeline updates, deletes, etc.). The audit log uses the data from this database. | 9.6.x |
-| redis | mainly used for caching, but also used as a key-value store for our trigger manager. | 3.2.x |
+| postgresql | storing data about events that happened on the account (pipeline updates, deletes, etc.). The audit log uses the data from this database. | 13.x |
+| redis | mainly used for caching, but also used as a key-value store for our trigger manager. | 6.0.x |
 
 #### Volumes
 
@@ -1106,7 +1106,9 @@ global:
 mongodb:
   image: bitnami/mongodb:3.6.13-r0
   podSecurityContext:
-    enabled: false
+    enabled: true
+    runAsUser: 0
+    fsGroup: 0
   containerSecurityContext:
     enabled: false    
 
@@ -1118,7 +1120,7 @@ redis:
     enabled: false  
 
 rabbitmq:
-  image:  bitnami/rabbitmq:3.7.2-r1
+  image: bitnami/rabbitmq:3.7.2-r1
   podSecurityContext:
     enabled: false
   containerSecurityContext:
@@ -1133,19 +1135,8 @@ nats:
 consul:
   ImageTag: 1.0.0
 
+
 ...
-```
-
-### Internal Docker Registry deprecation
-
-From version 1.0.205, Codefresh has deprecated the internal Docker registry `cf-registry`.  
-
-The internal Docker registry cannot be used as a target registry, `cf-registry.codefresh.svc:5000`, for pull/push steps.
-
->**Not recommended!** <br /> If you need to retain the `cf-registry`, specify `registry.enabled` in kcfi `config.yaml`: 
-```yaml
-registry:
-  enabled: true
 ```
 
 ## Common Problems, Solutions, and Dependencies
