@@ -323,36 +323,40 @@ You have two options to install and configure the passive cluster for HA:
 #### Install & configure passive cluster via Helm chart  
 
 If you use a Helm chart, you can update the chart's `values.yaml` with the global variables before installation, and then deploy the chart to the passive cluster.
+You must:
+* Copy the path to `values.yaml`
+* Update/add variables to `values.yaml`
+* Download Codefresh installation chart
 
 **Copy the path to values.yaml**  
 
-If you have a Codefresh installation, you can copy the path to `values.yaml`. Otherwise, you can run the initialization command to create the `values.yaml` file, and populate it with the required values.
+If you have a Codefresh installation, copy the path to `values.yaml`. Otherwise, run the initialization command to create the `values.yaml` file and populate it with the required values.
 
 1. If you have a Codefresh installation, copy the path to the `values.yaml` file:
   * Go to the folder with the `kcfi` installation of the active cluster, that includes the `config.yaml` file.
   * Go to the `assets` subfolder, and copy the path to the `values.yaml` file.  
 1. If you do not have a Codefresh installation, do the following:
   * Go to an empty folder.
-  * Run:
-    `kcfi init codefresh -d ./`
-    `kubectl config use-context ${passive-cluster-context}`
-  * Configure the required variables in the `config.yaml` file.
-  * Then run:
-    `kcfi deploy -c config.yaml --dry-run`
-  * Copy the path to `${kcfi-installation-path}/assets/values.yaml`  
+  * Run:  
+    `kcfi init codefresh -d ./`  
+    `kubectl config use-context ${passive-cluster-context}`  
+    * Configure the required variables in the `config.yaml` file.   
+    * Then run:  
+      `kcfi deploy -c config.yaml --dry-run`  
+    * Copy the path to `${kcfi-installation-path}/assets/values.yaml`.  
 
 **Update/add variables to values.yaml**  
 Update the required variables in `values.yaml`.
   > If the variables do not exist, add them to the file.
 
-1. In the `global` section, disable `seedJobs` by setting it to `false`:
+* In the `global` section, disable `seedJobs` by setting it to `false`:
 
   ```yaml
   global:
     seedJobs: false
   ```
 
-1. Add variable `FREEZE_WORKFLOWS_EXECUTION` to `cfapi`, and set it to `true`.
+* Add variable `FREEZE_WORKFLOWS_EXECUTION` to `cfapi`, and set it to `true`.
 
 ```yaml
 cfapi:
@@ -375,6 +379,7 @@ Download the Helm installation chart for Codefresh locally.
 1. Go to the folder where you unzipped the Helm chart.
 1. Install Codefresh on the passive cluster with the Helm command:  
   `helm install cf . -f ${path-kcfi-install-folder}/assets/values.yaml -n codefresh`
+
 
 ### Switch between clusters for disaster recovery
 For disaster recovery, switch between the active and passive clusters.
