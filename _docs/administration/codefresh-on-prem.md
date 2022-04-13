@@ -307,52 +307,74 @@ See [Installing the Codefresh platform]({{site.baseurl}}/docs/administration/cod
 
 ### Install Codefresh platform on passive cluster
 For both new and existing installations, install the Codefresh platform on the cluster designated as the _passive_ cluster.
-Then configure the `FREEZE_WORKFLOWS_EXECUTION` global variable in the passive cluster to support high-availability.  
+Then configure the `values.yaml` file in the passive cluster to support high-availability.  
 
 You have two options to install and configure the passive cluster for HA:
 * Manually
 * Via Helm chart
 
-**Manually install & configure passive cluster**  
+#### Manually install & configure passive cluster
 
-1. Install the Codefresh platform.
-1. Edit `cfapi-buildmanager`:  
-  If the variable `FREEZE_WORKFLOWS_EXECUTION` does not exist, add it and set the value to `true`.  
+1. Install Codefresh on the passive cluster.
+1. Edit deployment of `cfapi`:  
+  If the variable `FREEZE_WORKFLOWS_EXECUTION` does not exist, add it, and set the value to `true`.  
   If the variable exists, change the value to `true`.
 
-**Install & configure passive cluster via Helm chart**  
+#### Install & configure passive cluster via Helm chart  
 
-If you use an Helm chart, you can update the chart's `values.yaml` with the global variable before installation, and then deploy the chart to the passive cluster.
+If you use a Helm chart, you can update the chart's `values.yaml` with the global variables before installation, and then deploy the chart to the passive cluster.
 
-1. Download the installation chart for the Codefresh platform locally.  
+**Copy the path to values.yaml**  
 
+If you have a Codefresh installation, you can copy the path to `values.yaml`. Otherwise, you can run the initialization command to create the `values.yaml` file, and populate it with the required values.
+
+1. If you have a Codefresh installation, copy the path to the `values.yaml` file:
+  * Go to the folder with the `kcfi` installation of the active cluster, that includes the `config.yaml` file.
+  * Go to the `assets` subfolder, and copy the path to the `values.yaml` file.  
+1. If you do not have a Codefresh installation, do the following:
+  * Go to an empty folder.
+  * Run:
+    `kcfi init codefresh -d ./`
+    `kubectl config use-context ${passive-cluster-context}`
+  * Configure the required variables in the `config.yaml` file.
+  * Then run:
+    `kcfi deploy -c config.yaml --dry-run`
+  * Copy the path to `${kcfi-installation-path}/assets/values.yaml`  
+
+**Update/add variables to values.yaml**  
+Update the required variables in `values.yaml`.
+  > If the variables do not exist, add them to the file.
+
+1. In the `global` section, disable `seedJobs` by setting it to `false`:
+
+  ```yaml
+  global:
+    seedJobs: false
+  ```
+
+1. Add variable `FREEZE_WORKFLOWS_EXECUTION` to `cfapi`, and set it to `true`.
+
+```yaml
+cfapi:
+  env:
+    FREEZE_WORKFLOWS_EXECUTION: true
+``` 
+
+**Download Codefresh installation chart**  
+
+Download the Helm installation chart for Codefresh locally.  
+
+1. Go to an empty folder, and download the Helm chart:  
   `helm repo add codefresh-onprem-prod http://charts.codefresh.io/prod`  
   `helm fetch codefresh-onprem-prod/codefresh --version ${release-version}`  
   where:  
   `{release-version}` is the version of Codefresh you are downloading. 
 
-{:start="2"}
-1. Update the chart's `values.yaml` file with the global variable `FREEZE_WORKFLOWS_EXECUTION` set to `true`.
-
-```yaml
-global:
-  FREEZE_WORKFLOWS_EXECUTION: true
-```
-
-{:start="3"}
-1. Update `kcfi` config file with the path to the local Helm chart. 
-
-```yaml
-metadata:
-  kind: codefresh
-  installer:
-    type: helm
-    helm:
-      chart: /onprem-kcfi/chart-$version/codefresh
-```
-
-1. Use `kcfi` to deploy the chart to the passive cluster.
-
+1. Unzip the Helm chart:  
+  `tar -xzf codefresh-${release-version}.tgz`
+1. Go to the folder where you unzipped the Helm chart.
+1. Install Codefresh on the passive cluster with the Helm command:  
+  `helm install cf . -f ${path-kcfi-install-folder}/assets/values.yaml -n codefresh`
 
 ### Switch between clusters for disaster recovery
 For disaster recovery, switch between the active and passive clusters.
