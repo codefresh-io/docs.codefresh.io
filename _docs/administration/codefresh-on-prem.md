@@ -282,7 +282,7 @@ kcfi deploy [ -c config.yaml ] [-n namespace]
 
 ## High-Availability (HA) with active-passive clusters
 Enable high-availability in the Codefresh platform for disaster recovery with an active-passive cluster configuration. 
-For existing installations, install Codefresh on the second cluster, designated as the passive cluster and configure it to support high-availability.  
+For existing installations, install Codefresh on the second cluster, designated as the passive cluster, and configure it to support high-availability.  
 
 ### Prerequisites
 
@@ -299,7 +299,7 @@ For existing installations, install Codefresh on the second cluster, designated 
   * Consul service (see [Configuring an external Consul service](#configuring-an-external-consul-service))
 
 * **DNS record**  
-  Must allow switching between clusters for disaster recovery
+  To allow switching between clusters for disaster recovery
 
 ### Install Codefresh platform on active cluster
 
@@ -323,18 +323,19 @@ You have two options to install and configure the passive cluster for HA:
 
 #### Install & configure passive cluster via Helm chart  
 
-If you use a Helm chart, you can update the chart's `values.yaml` with the global variables before installation, and then deploy the chart to the passive cluster.
+If you use a Helm chart, you can update the chart's `values.yaml` with the global variables before installation, and then deploy the chart to the passive cluster.  
+
 You must:
 * Copy the path to `values.yaml`
 * Update/add variables to `values.yaml`
 * Download Codefresh installation chart
-
+  
 **Copy the path to values.yaml**  
-
-If you have a Codefresh installation, copy the path to `values.yaml`. Otherwise, run the initialization command to create the `values.yaml` file and populate it with the required values.
+If you have a Codefresh installation, copy the path to `values.yaml`.  
+Otherwise, run the initialization command to create the `values.yaml` file and populate it with the required values.
 
 1. If you have a Codefresh installation, copy the path to the `values.yaml` file:
-  * Go to the folder with the `kcfi` installation of the active cluster, that includes the `config.yaml` file.
+  * Go to the folder with the `kcfi` installation of the active cluster that includes the `config.yaml` file.
   * Go to the `assets` subfolder, and copy the path to the `values.yaml` file.  
 1. If you do not have a Codefresh installation, do the following:
   * Go to an empty folder.
@@ -345,6 +346,7 @@ If you have a Codefresh installation, copy the path to `values.yaml`. Otherwise,
     * Then run:  
       `kcfi deploy -c config.yaml --dry-run`  
     * Copy the path to `${kcfi-installation-path}/assets/values.yaml`.  
+  
 
 **Update/add variables to values.yaml**  
 Update the required variables in `values.yaml`.
@@ -364,9 +366,9 @@ cfapi:
   env:
     FREEZE_WORKFLOWS_EXECUTION: true
 ``` 
+  
 
 **Download Codefresh installation chart**  
-
 Download the Helm installation chart for Codefresh locally.  
 
 1. Go to an empty folder, and download the Helm chart:  
