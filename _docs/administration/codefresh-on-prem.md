@@ -304,7 +304,7 @@ For existing installations, install Codefresh on the second cluster, designated 
 ### Install Codefresh platform on active cluster
 
 If you are installing Codefresh for the first time, install the Codefresh platform on the cluster designated as the _active_ cluster.  
-See [Installing the Codefresh platform]({{site.baseurl}}/docs/administration/codefresh-on-prem/#install-the-codefresh-platform/).
+See [Installing the Codefresh platform]({{site.baseurl}}/docs/administration/codefresh-on-prem/#install-the-codefresh-platform).
 
 ### Install Codefresh platform on passive cluster
 For both new and existing installations, install the Codefresh platform on the cluster designated as the _passive_ cluster.
