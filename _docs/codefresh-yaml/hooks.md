@@ -298,7 +298,7 @@ steps:
 
 ## Controlling errors inside pipeline/step hooks
 
-By default if a step fails within a pipeline, the whole pipeline will stop and be marked as failed. This is also true for `on_elected` segments as well. If they fail, then the whole pipeline will fail (regardless of the position of the segment in a pipeline or step).
+By default if a step fails within a pipeline, the whole pipeline will stop and be marked as failed. This is also true for `on_elected` segments as well. If they fail, then the whole pipeline will fail (regardless of the position of the segment in a pipeline or step). However, this only applies to `on_elected` segments - `on_success`, `on_fail` and `on_finish` segments do not affect the pipeline outcome at all, and a pipeline will continue even if one of these segments fails.
 
 For example the following pipeline will fail right away, because the pipeline hook fails at the beginning.
 
