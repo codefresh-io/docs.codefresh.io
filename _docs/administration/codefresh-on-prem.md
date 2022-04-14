@@ -280,6 +280,127 @@ kcfi deploy [ -c config.yaml ] [-n namespace]
 ```
 
 
+## High-Availability (HA) with active-passive clusters
+Enable high-availability in the Codefresh platform for disaster recovery with an active-passive cluster configuration. 
+For existing installations, install Codefresh on the second cluster, designated as the passive cluster, and configure it to support high-availability.  
+
+### Prerequisites
+
+* **K8s clusters**  
+  Two K8s clusters, one designated as the active cluster, and the other designated as the passive cluster for disaster recovery.  
+
+* **External databases and services**  
+  Databases and services external to the clusters.  
+
+  * Postgres database (see [Configuring an external Postgres database](#configuring-an-external-postgres-database))
+  * MongoDB (see [Configuring an external MongoDB](#configuring-an-external-mongodb))
+  * Redis service (see [Configuring an external Redis service](#configure-an-external-redis-service))
+  * RabbitMQ service (see [Configuring an external RabbitMQ service](#configure-an-external-redis-service))  
+  * Consul service (see [Configuring an external Consul service](#configuring-an-external-consul-service))
+
+* **DNS record**  
+  To allow switching between clusters for disaster recovery
+
+### Install Codefresh platform on active cluster
+
+If you are installing Codefresh for the first time, install the Codefresh platform on the cluster designated as the _active_ cluster.  
+See [Installing the Codefresh platform]({{site.baseurl}}/docs/administration/codefresh-on-prem/#install-the-codefresh-platform/).
+
+### Install Codefresh platform on passive cluster
+For both new and existing installations, install the Codefresh platform on the cluster designated as the _passive_ cluster.
+Then configure the `values.yaml` file in the passive cluster to support high-availability.  
+
+You have two options to install and configure the passive cluster for HA:
+* Manually
+* Via Helm chart
+
+#### Manually install & configure passive cluster
+
+1. Install Codefresh on the passive cluster.
+1. Edit deployment of `cfapi`:  
+  If the variable `FREEZE_WORKFLOWS_EXECUTION` does not exist, add it, and set the value to `true`.  
+  If the variable exists, change the value to `true`.
+
+#### Install & configure passive cluster via Helm chart  
+
+If you use a Helm chart, you can update the chart's `values.yaml` with the global variables before installation, and then deploy the chart to the passive cluster.  
+
+You must:
+* Copy the path to `values.yaml`
+* Update/add variables to `values.yaml`
+* Download Codefresh installation chart
+  
+**Copy the path to values.yaml**  
+If you have a Codefresh installation, copy the path to `values.yaml`.  
+Otherwise, run the initialization command to create the `values.yaml` file and populate it with the required values.
+
+1. If you have a Codefresh installation, copy the path to the `values.yaml` file:
+  * Go to the folder with the `kcfi` installation of the active cluster that includes the `config.yaml` file.
+  * Go to the `assets` subfolder, and copy the path to the `values.yaml` file.  
+1. If you do not have a Codefresh installation, do the following:
+  * Go to an empty folder.
+  * Run:  
+    `kcfi init codefresh -d ./`  
+    `kubectl config use-context ${passive-cluster-context}`  
+    * Configure the required variables in the `config.yaml` file.   
+    * Then run:  
+      `kcfi deploy -c config.yaml --dry-run`  
+    * Copy the path to `${kcfi-installation-path}/assets/values.yaml`.  
+  
+
+**Update/add variables to values.yaml**  
+Update the required variables in `values.yaml`.
+  > If the variables do not exist, add them to the file.
+
+* In the `global` section, disable `seedJobs` by setting it to `false`:
+
+  ```yaml
+  global:
+    seedJobs: false
+  ```
+
+* Add variable `FREEZE_WORKFLOWS_EXECUTION` to `cfapi`, and set it to `true`.
+
+```yaml
+cfapi:
+  env:
+    FREEZE_WORKFLOWS_EXECUTION: true
+``` 
+  
+
+**Download Codefresh installation chart**  
+Download the Helm installation chart for Codefresh locally.  
+
+1. Go to an empty folder, and download the Helm chart:  
+  `helm repo add codefresh-onprem-prod http://charts.codefresh.io/prod`  
+  `helm fetch codefresh-onprem-prod/codefresh --version ${release-version}`  
+  where:  
+  `{release-version}` is the version of Codefresh you are downloading. 
+
+1. Unzip the Helm chart:  
+  `tar -xzf codefresh-${release-version}.tgz`
+1. Go to the folder where you unzipped the Helm chart.
+1. Install Codefresh on the passive cluster with the Helm command:  
+  `helm install cf . -f ${path-kcfi-install-folder}/assets/values.yaml -n codefresh`
+
+
+### Switch between clusters for disaster recovery
+For disaster recovery, switch between the active and passive clusters.
+
+1. In the _active_ cluster, in `cfapi-buildmanager`, change the value of `FREEZE_WORKFLOWS_EXECUTION` from `false` to `true`.  
+  If the variable does not exist, add it, and make sure the value is set to `true`.  
+1. In the _passive_ cluster, in `cfapi-buildmanager`, change the value of `FREEZE_WORKFLOWS_EXECUTION` from `true` to `false`. 
+1. Switch DNS from the currently active cluster to the passive cluster.
+
+### Services without HA
+The following services cannot run in HA, but are not critical in case of downtime or during the process of switchover from active to passive.
+These services are not considered critical as they are part of build-handling. In case of failure, a build retry occurs, ensuring that the build is always handled.
+* `cronus`
+* `cf-sign`
+* `hermse-store-backup`
+* `store`
+
+
 ## Additional Configurations
 
 After you install Codefresh, these are some day-2 operations that you should follow.
@@ -419,7 +540,6 @@ The retention mechanism is implemented as a Cron Job through the Codefresh. It r
 |`RETENTION_POLICY_DAYS`         | The number of days for which to retain builds. Older builds are                                   | `180`              |
 |`RUNTIME_MONGO_URI`             | Optional. The URI of the Mongo database from which to remove MongoDB logs (in addition to the builds). |              |
                                 
-
 
 ### Managing Codefresh backups
 
@@ -631,7 +751,7 @@ postgresql:
 ```
 #### Running the seed job manually
 
-If you would prefer running the seed job manually, you can do it by using a script present in `your/stage-dir/codefresh/addons/seed-scripts` directory named `postgres-seed.sh`. The script takes the following set of variables that you need to have set before running it:
+If you prefer running the seed job manually, you can do it by using a script present in `your/stage-dir/codefresh/addons/seed-scripts` directory named `postgres-seed.sh`. The script takes the following set of variables that you need to have set before running it:
 
 ```shell
 export POSTGRES_SEED_USER="postgres"
