@@ -1396,6 +1396,73 @@ For example, let's say Venona-zoneA is the default RE, then, that means that for
 Regarding [Regional Persistent Disks](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/regional-pd), their support is not currently implemented in the Codefresh runner.
 
 
+### Installing on AKS
+
+**Azure Disks**
+
+*Prerequisite:* volume provisioner (`dind-volume-provisioner`) should have permissions to create/delete/get Azure Disks
+
+Minimal IAM Role for dind-volume-provisioner: <br />
+`dind-volume-provisioner-role.json`
+```json
+{
+    "Name": "CodefreshDindVolumeProvisioner",
+    "Description": "Perform create/delete/get disks",
+    "IsCustom": true,
+    "Actions": [
+        "Microsoft.Compute/disks/read",
+        "Microsoft.Compute/disks/write",
+        "Microsoft.Compute/disks/delete"
+
+    ],
+    "AssignableScopes": ["/subscriptions/<your-subsripton_id>"]
+}
+```
+
+If you use AKS with managed [identities for node group](https://docs.microsoft.com/en-us/azure/aks/use-managed-identity), you can run the script below to assign `CodefreshDindVolumeProvisioner` role to aks node identity: 
+
+```shell
+export ROLE_DEFINITIN_FILE=dind-volume-provisioner-role.json
+export SUBSCRIPTION_ID=$(az account show --query "id" | xargs echo )
+export RESOURCE_GROUP=codefresh-rt1
+export AKS_NAME=codefresh-rt1
+export LOCATION=$(az aks show -g $RESOURCE_GROUP -n $AKS_NAME --query location | xargs echo)
+export NODES_RESOURCE_GROUP=MC_${RESOURCE_GROUP}_${AKS_NAME}_${LOCATION}
+export NODE_SERVICE_PRINCIPAL=$(az aks show -g $RESOURCE_GROUP -n $AKS_NAME --query identityProfile.kubeletidentity.objectId | xargs echo)
+
+az role definition create --role-definition @${ROLE_DEFINITIN_FILE}
+az role assignment create --assignee $NODE_SERVICE_PRINCIPAL --scope /subscriptions/$SUBSCRIPTION_ID/resourceGroups/$NODES_RESOURCE_GROUP --role CodefreshDindVolumeProvisioner
+```
+
+Now install Codefresh Runner with cli wizard:
+```shell
+codefresh runner init --set-value Storage.Backend=azuredisk --set Storage.VolumeProvisioner.MountAzureJson=true 
+```
+Or using [values-example.yaml](https://github.com/codefresh-io/venona/blob/release-1.0/venonactl/example/values-example.yaml):  
+```yaml
+Storage:
+  Backend: azuredisk
+  VolumeProvisioner:
+    MountAzureJson: true
+```
+```shell
+codefresh runner init --values values-example.yaml 
+```
+Or with helm chart [values.yaml](https://github.com/codefresh-io/venona/blob/release-1.0/charts/cf-runtime/values.yaml):  
+```yaml
+storage:
+  backend: azuredisk
+  azuredisk:
+    skuName: Premium_LRS
+
+volumeProvisioner:
+  mountAzureJson: true
+```
+```shell
+helm install cf-runtime cf-runtime/cf-runtime -f ./generated_values.yaml -f values.yaml --create-namespace --namespace codefresh 
+```
+
+
 ### Internal Registry Mirror
 
 You can configure your Codefresh Runner to use an internal registry as a mirror for any container images that are mentioned in your pipelines.
