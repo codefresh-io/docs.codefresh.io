@@ -9,7 +9,7 @@ toc: true
 ## 2022
 
 ### March 2022
-- Support for Kubernetes 12.1 - [documentation]({{site.baseurl}}/docs/administration/codefresh-on-prem/#prerequisites)
+- Support for Kubernetes 1.21 - [documentation]({{site.baseurl}}/docs/administration/codefresh-on-prem/#prerequisites)
 - Environment definition enhancements - [documentation]({{site.baseurl}}/docs/deploy-to-kubernetes/environment-dashboard/#creating-an-environment)
 - RBAC support for shared configuration - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/#creating-shared-configuration)
 - Cross-account push for Amazon ECR - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/push/#fields)
