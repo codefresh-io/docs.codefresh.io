@@ -189,6 +189,8 @@ max-width="80%"
 You can copy the step logs with the *copy to clipboard* button at the top left corner of the log window.
 You can also search the logs by clicking at the magnifying glass icon at the top right corner in the log window.
 
+> Note: The max size each step can log is around 20MB, and 100MB for the whole build. After that, the system will stop logging, but the build execution will continue.
+
 ### Reviewing the yaml for the pipeline
 
 From the step details you can also click on the yaml tab to see the yaml segment for that individual step:
@@ -371,13 +373,3 @@ See the [build badges page]({{site.baseurl}}/docs/configure-ci-cd-pipeline/build
 * [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
 * [Test report]({{site.baseurl}}/docs/configure-ci-cd-pipeline/test-reports/)
 * [Status badges]({{site.baseurl}}/docs/configure-ci-cd-pipeline/build-status/)
-
-
-
-
-
-
-
-
-
-
