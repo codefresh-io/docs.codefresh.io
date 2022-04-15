@@ -1205,6 +1205,8 @@ This was a contrived example to demonstrate how you can use templates in the Cod
 ### Limitations of custom plugins
 
 [Parallel steps]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/) are not supported inside custom steps.
+  
+The [fail_fast field]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/#execution-flow) does not work inside custome step, you have to use `failFast` field instead.
 
 Custom steps are not compatible with [service containers]({{site.baseurl}}/docs/codefresh-yaml/service-containers/). 
 More specifically:
