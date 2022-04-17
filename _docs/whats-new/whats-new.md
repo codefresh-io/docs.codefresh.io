@@ -8,6 +8,11 @@ toc: true
 ---
 ## 2022
 
+### April 2022
+- (On-premises only) Backward compatibility for infrastructure services - [documentation]({{site.baseurl}}/docs/administration/codefresh-on-prem/#backward-compatibility-for-infrastructure-services)
+- (On-premises only) High-Availability with active-passive clusters - [documentation]({{site.baseurl}}/docs/administration/codefresh-on-prem/#high-availability-ha-with-active-passive-clusters)
+
+
 ### March 2022
 - Support for Kubernetes 1.21 - [documentation]({{site.baseurl}}/docs/administration/codefresh-on-prem/#prerequisites)
 - Environment definition enhancements - [documentation]({{site.baseurl}}/docs/deploy-to-kubernetes/environment-dashboard/#creating-an-environment)
