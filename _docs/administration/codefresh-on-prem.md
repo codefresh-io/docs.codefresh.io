@@ -281,8 +281,11 @@ kcfi deploy [ -c config.yaml ] [-n namespace]
 
 
 ## High-Availability (HA) with active-passive clusters
-Enable high-availability in the Codefresh platform for disaster recovery with an active-passive cluster configuration. 
-For existing installations, install Codefresh on the second cluster, designated as the passive cluster, and configure it to support high-availability.  
+Enable high-availability in the Codefresh platform for disaster recovery with an active-passive cluster configuration.  
+Review the prerequisites, and then do the following to configure high-availability:
+* For new installations, install Codefresh on the active cluster  
+* Install Codefresh on the passive cluster  
+* When needed, switch between clusters for disaster recovery
 
 ### Prerequisites
 
@@ -299,79 +302,46 @@ For existing installations, install Codefresh on the second cluster, designated 
   * Consul service (see [Configuring an external Consul service](#configuring-an-external-consul-service))
 
 * **DNS record**  
-  To allow switching between clusters for disaster recovery
+  To switch between clusters for disaster recovery
 
-### Install Codefresh platform on active cluster
+### Install Codefresh on active cluster
 
-If you are installing Codefresh for the first time, install the Codefresh platform on the cluster designated as the _active_ cluster.  
+If you are installing Codefresh for the first time, install Codefresh on the cluster designated as the _active_ cluster.  
 See [Installing the Codefresh platform]({{site.baseurl}}/docs/administration/codefresh-on-prem/#install-the-codefresh-platform).
 
-### Install Codefresh platform on passive cluster
-For both new and existing installations, install the Codefresh platform on the cluster designated as the _passive_ cluster.
-Then configure the `values.yaml` file in the passive cluster to support high-availability.  
+### Install Codefresh on passive cluster 
+First get the `values.yaml` file from the current Codefresh installation on the active cluster. Then install Codefresh on the passive cluster using Helm. 
 
-You have two options to install and configure the passive cluster for HA:
-* Manually
-* Via Helm chart
+**Get values.yaml**
+1. Switch your kube context to the active cluster.
+1. Get `values.yaml` from the active cluster:  
+  `helm get values ${release_name} -n ${namespace} > cf-passive-values.yaml`  
+  where:  
+  `{release-version}` is the name of the Codefresh release, and is by default `cf`.   
+  `${namespace}` is the namespace with the Codefresh release, and is by default `codefresh`.  
 
-#### Manually install & configure passive cluster
-
-1. Install Codefresh on the passive cluster.
-1. Edit deployment of `cfapi`:  
-  If the variable `FREEZE_WORKFLOWS_EXECUTION` does not exist, add it, and set the value to `true`.  
-  If the variable exists, change the value to `true`.
-
-#### Install & configure passive cluster via Helm chart  
-
-If you use a Helm chart, you can update the chart's `values.yaml` with the global variables before installation, and then deploy the chart to the passive cluster.  
-
-You must:
-* Copy the path to `values.yaml`
-* Update/add variables to `values.yaml`
-* Download Codefresh installation chart
-  
-**Copy the path to values.yaml**  
-If you have a Codefresh installation, copy the path to `values.yaml`.  
-Otherwise, run the initialization command to create the `values.yaml` file and populate it with the required values.
-
-1. If you have a Codefresh installation, copy the path to the `values.yaml` file:
-  * Go to the folder with the `kcfi` installation of the active cluster that includes the `config.yaml` file.
-  * Go to the `assets` subfolder, and copy the path to the `values.yaml` file.  
-1. If you do not have a Codefresh installation, do the following:
-  * Go to an empty folder.
-  * Run:  
-    `kcfi init codefresh -d ./`  
-    `kubectl config use-context ${passive-cluster-context}`  
-    * Configure the required variables in the `config.yaml` file.   
-    * Then run:  
-      `kcfi deploy -c config.yaml --dry-run`  
-    * Copy the path to `${kcfi-installation-path}/assets/values.yaml`.  
-  
-
-**Update/add variables to values.yaml**  
-Update the required variables in `values.yaml`.
+{:start="3"}
+1. Update the required variables in `cf-passive-values.yaml`.  
   > If the variables do not exist, add them to the file.
 
-* In the `global` section, disable `seedJobs` by setting it to `false`:
-
+  * In the `global` section, disable `seedJobs` by setting it to `false`:
+  
   ```yaml
   global:
     seedJobs: false
   ```
 
-* Add variable `FREEZE_WORKFLOWS_EXECUTION` to `cfapi`, and set it to `true`.
+  * Add variable `FREEZE_WORKFLOWS_EXECUTION` to `cfapi`, and set it to `true`.
 
-```yaml
-cfapi:
-  env:
-    FREEZE_WORKFLOWS_EXECUTION: true
-``` 
-  
+  ```yaml
+  cfapi:
+    env:
+      FREEZE_WORKFLOWS_EXECUTION: true
+  ``` 
 
-**Download Codefresh installation chart**  
-Download the Helm installation chart for Codefresh locally.  
+**Install Codefresh on passive cluster**   
 
-1. Go to an empty folder, and download the Helm chart:  
+1. Download the Helm chart:  
   `helm repo add codefresh-onprem-prod http://charts.codefresh.io/prod`  
   `helm fetch codefresh-onprem-prod/codefresh --version ${release-version}`  
   where:  
@@ -380,16 +350,16 @@ Download the Helm installation chart for Codefresh locally.
 1. Unzip the Helm chart:  
   `tar -xzf codefresh-${release-version}.tgz`
 1. Go to the folder where you unzipped the Helm chart.
-1. Install Codefresh on the passive cluster with the Helm command:  
-  `helm install cf . -f ${path-kcfi-install-folder}/assets/values.yaml -n codefresh`
+1. Install Codefresh with the Helm command using `cf-passive-values.yaml`:  
+  `helm install cf . -f ${path}/cf-passive-values.yaml -n codefresh`
 
 
 ### Switch between clusters for disaster recovery
 For disaster recovery, switch between the active and passive clusters.
 
-1. In the _active_ cluster, in `cfapi-buildmanager`, change the value of `FREEZE_WORKFLOWS_EXECUTION` from `false` to `true`.  
+1. In the `cfapi` deployment on the _active_ cluster, change the value of `FREEZE_WORKFLOWS_EXECUTION` from `false` to `true`.  
   If the variable does not exist, add it, and make sure the value is set to `true`.  
-1. In the _passive_ cluster, in `cfapi-buildmanager`, change the value of `FREEZE_WORKFLOWS_EXECUTION` from `true` to `false`. 
+1. In the `cfapi` deployment on the _passive_ cluster, change the value of `FREEZE_WORKFLOWS_EXECUTION` from `true` to `false`. 
 1. Switch DNS from the currently active cluster to the passive cluster.
 
 ### Services without HA
