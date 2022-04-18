@@ -315,12 +315,11 @@ First get the `values.yaml` file from the current Codefresh installation on the 
 **Get values.yaml**
 1. Switch your kube context to the active cluster.
 1. Get `values.yaml` from the active cluster:  
- 
   `helm get values ${release_name} -n ${namespace} > cf-passive-values.yaml`  
   where:  
   `{release-version}` is the name of the Codefresh release, and is by default `cf`.   
   `${namespace}` is the namespace with the Codefresh release, and is by default `codefresh`.  
-  
+
 {:start="3"}
 1. Update the required variables in `cf-passive-values.yaml`.  
   > If the variables do not exist, add them to the file.
