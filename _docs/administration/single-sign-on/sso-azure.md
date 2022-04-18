@@ -98,13 +98,13 @@ caption="Azure Active Directory Graph entry"
 max-width="70%"
 %}
 
-Click *Application* permissions. From the list of permissions choose:
+Click *Application* permissions (Delegated permissions are not enough in this case). From the list of permissions choose:
 
 * `Directory.Read.All`
 * `Group.Read.All`
 * `User.Read.All`
 
->Note: User.Read for the type of delegated is required. This permission is usually added by default. 
+>Note: User.Read for the type of delegated is required. This permission is usually added by default.
 
 Finally click the *Apply Permissions* button.
 
