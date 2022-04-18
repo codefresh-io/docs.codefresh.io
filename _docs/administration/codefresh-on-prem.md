@@ -281,8 +281,12 @@ kcfi deploy [ -c config.yaml ] [-n namespace]
 
 
 ## High-Availability (HA) with active-passive clusters
-Enable high-availability in the Codefresh platform for disaster recovery with an active-passive cluster configuration. 
-Configure the passive cluster to support high-availability and then install Codefresh.  
+Enable high-availability in the Codefresh platform for disaster recovery with an active-passive cluster configuration.  
+Review the prerequisites, and then do the following to configure high-availability:
+* For new installations, install Codefresh on active cluster  
+* Configure the passive cluster  
+* Install Codefresh on the passive cluster  
+* When needed, switch between clusters for disaster recovery
 
 ### Prerequisites
 
@@ -322,6 +326,7 @@ Configure the passive cluster to support high-availability by copying the `value
   > If the variables do not exist, add them to the file.
 
   * In the `global` section, disable `seedJobs` by setting it to `false`:
+  
   ```yaml
   global:
     seedJobs: false
@@ -336,7 +341,7 @@ Configure the passive cluster to support high-availability by copying the `value
   ``` 
 
 ### Install Codefresh on passive cluster  
-Install Codefresh on the passive cluster using Helm.  
+Install Codefresh on the passive cluster using the Helm chart.  
 
 1. Download the Helm chart:  
   `helm repo add codefresh-onprem-prod http://charts.codefresh.io/prod`  
