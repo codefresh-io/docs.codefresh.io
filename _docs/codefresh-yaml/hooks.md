@@ -607,11 +607,12 @@ Below is an example pipeline hook using the `slack-notifier` step/plugin for whe
 hooks:
   on_elected:
     steps:
-      slack_pending:
-        type: slack-notifier
-        arguments:
-          SLACK_HOOK_URL: {% raw %}'${{SLACK_WEBHOOK_URL}}'{% endraw %}
-          SLACK_TEXT: '*Build Started* :crossed_fingers:'
+      exec:
+        slack_pending:
+          type: slack-notifier
+          arguments:
+            SLACK_HOOK_URL: {% raw %}'${{SLACK_WEBHOOK_URL}}'{% endraw %}
+            SLACK_TEXT: '*Build Started* :crossed_fingers:'
 ```
 
 ## Limitations of pipeline/step hooks
