@@ -1172,6 +1172,7 @@ To upgrade Codefresh to a newer version
 
 Notice that only `kfci` should be used for Codefresh upgrades. If you still have a `cf-onprem` script at hand, please contact us for migration instructions.
 
+<a name="migrating-existing-installations"></a>
 ###  Backward compatibility for infrastructure services
 If you already have Codefresh version 1.0.202 or lower installed, and are upgrading to a later version, _before upgrade, to retain the existing images_ for the services listed below, update the `config.yaml` for `kcfi`.
 
