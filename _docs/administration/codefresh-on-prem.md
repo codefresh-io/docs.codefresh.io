@@ -850,12 +850,13 @@ Codefresh recommends to use the Bitnami RabbitMQ [chart](https://github.com/bitn
 To use an external RabbitMQ service instead of the local helm chart, add the following values to the __config.yaml__:
 
 ```yaml
-rabbitmq:
-  enabled: false
-  rabbitmqUsername: <RABBITMQ USER>
-  rabbitmqPassword: <RABBITMQ PASSWORD> 
+cf-db:
+  rabbit:
+    enabled: false
 
 global:
+  rabbitmqUsername: <RABBITMQ USER>
+  rabbitmqPassword: <RABBITMQ PASSWORD>
   rabbitmqHostname: <RABBITMQ HOST>
 ```
 
@@ -1191,10 +1192,10 @@ global:
   appUrl: onprem.mydomain.com
   appProtocol: https
 
-  mongodbImage: bitnami/mongodb:3.6.13-r0
+  mongodbImage: bitnami/mongodb:3.6.13-r0 # (default `mongodbImage: bitnami/mongodb:4.2`)
 
 mongodb:
-  image: bitnami/mongodb:3.6.13-r0
+  image: bitnami/mongodb:3.6.13-r0 # (default `image: bitnami/mongodb:4.2`)
   podSecurityContext:
     enabled: true
     runAsUser: 0
@@ -1202,28 +1203,31 @@ mongodb:
   containerSecurityContext:
     enabled: false    
 
-redis:
-  image: bitnami/redis:3.2.9-r2
-  podSecurityContext:
-    enabled: false
-  containerSecurityContext:
-    enabled: false  
+### rabbitmq subchart replaced with cf-db subchart
+### you can remove `rabbitmq` section from config
 
-rabbitmq:
-  image: bitnami/rabbitmq:3.7.2-r1
+# rabbitmq:
+#   image: bitnami/rabbitmq:3.7.2-r1
+#   podSecurityContext:
+#     enabled: false
+#   containerSecurityContext:
+#     enabled: false  
+
+redis:
+  image: bitnami/redis:3.2.9-r2 # (default `image: bitnami/redis:6.0.16`)
   podSecurityContext:
     enabled: false
   containerSecurityContext:
     enabled: false  
 
 postgresql:
-  imageTag: 9.6.2
+  imageTag: 9.6.2 # (default `imageTag:13`)
 
 nats:
-  imageTag: 0.9.4  
+  imageTag: 0.9.4  # (default `imageTag:2.7`)
 
 consul:
-  ImageTag: 1.0.0
+  ImageTag: 1.0.0 # (default `imageTag:1.11`)
 
 
 ...
