@@ -159,7 +159,7 @@ You need to enter the following:
 * *Display Name* - Shown as display name in Azure (see below)
 * *client id* - shown as Application (client) ID in Azure (see below)
 * *client secret* - the key value as created in the previous section
-* *tenant* - `<Your Microsoft Azure AD Domain>.onmicrosoft.com`
+* *tenant* - `mycompany.onmicrosoft.com` or the ID of `0example1-0000-0aa0-a00a-1example0`
 * *Object ID* - your Azure Service Principal Object ID (from Enterprise Application configuration, see below)
 * *Auto Sync users and teams to Codefresh* - Select to automatically sync user accounts in Azure AD to your Codefresh account. Optionally, define the time interval, in hours, at which to sync, from 1 to 24. If you don't specify an interval, the sync is every 12 hours.
 
