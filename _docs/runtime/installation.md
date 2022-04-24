@@ -66,8 +66,8 @@ Before you start installing the CSDP runtime, verify that:
  
 **Ingress host**  
   * The IP address or host name of the ingress controller component.  
-    * CLI wizard: Automatically selects and displays the NGINX host, either from the cluster or the NGINX ingress controller associated with the **Ingress class**.  
-    * Silent install: Add the `--ingress-host` flag. If a value is not provided, takes the NGINX host from the NGINX ingress controller associated with the **Ingress class**. 
+    * CLI wizard: Automatically selects and displays the host, either from the cluster or the ingress controller associated with the **Ingress class**.  
+    * Silent install: Add the `--ingress-host` flag. If a value is not provided, takes the host from the ingress controller associated with the **Ingress class**. 
  * If the ingress host does not have a valid SSL certificate, you can continue with the installation in insecure mode, which disables certificate validation.  
     * CLI wizard: Prompts you to confirm continuing with the installation in insecure mode.  
     * Silent install: To continue with the installation in insecure mode, add the `--insecure-ingress-host` flag.  
