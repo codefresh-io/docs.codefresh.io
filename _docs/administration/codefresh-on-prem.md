@@ -507,7 +507,7 @@ The retention mechanism is implemented as a Cron Job through the Codefresh. It r
 |------------------------------- |-------------------------------------------------------------------------------- |----------------------  |
 |`RETENTION_POLICY_IS_ENABLED`      | Determines if automatic build deletion through the Cron job is enabled.         | `true`                 |
 |`RETENTION_POLICY_BUILDS_TO_DELETE`| The maximum number of builds to delete by a sinle Cron job. To avoid database issues, especially when there are large numbers of old builds, we recommend deleting them in small chunks. You can gradually increase the number after verifying that performance is not affected.                                   | `50`                  |
-|`RETENTION_POLICY_DAYS`         | The number of days for which to retain builds. Older builds are                                   | `180`              |
+|`RETENTION_POLICY_DAYS`         | The number of days for which to retain builds. Builds older than the defined retention period are deleted.                                  | `180`              |
 |`RUNTIME_MONGO_URI`             | Optional. The URI of the Mongo database from which to remove MongoDB logs (in addition to the builds). |              |
                                 
 
