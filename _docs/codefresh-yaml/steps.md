@@ -9,7 +9,7 @@ toc: true
 
 Codefresh [pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/) are composed of a series of steps. 
 
-You can create your own pipelines by writing a  [codefresh.yml]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) file that describes your pipeline. This file can then be version controlled on its own (pipeline as code).
+You can create your own pipelines by writing a [codefresh.yml]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) file that describes your pipeline. This file can then be version controlled on its own (pipeline as code).
 
 {% include 
 image.html 
@@ -1205,6 +1205,8 @@ This was a contrived example to demonstrate how you can use templates in the Cod
 ### Limitations of custom plugins
 
 [Parallel steps]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/) are not supported inside custom steps.
+  
+Within a custom step, the [fail_fast field]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/#execution-flow) does not work. Use  the `failFast` field instead.
 
 Custom steps are not compatible with [service containers]({{site.baseurl}}/docs/codefresh-yaml/service-containers/). 
 More specifically:
