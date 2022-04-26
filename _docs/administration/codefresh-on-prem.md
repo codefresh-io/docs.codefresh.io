@@ -310,6 +310,7 @@ If you are installing Codefresh for the first time, install Codefresh on the clu
 See [Installing the Codefresh platform]({{site.baseurl}}/docs/administration/codefresh-on-prem/#install-the-codefresh-platform).
 
 **Install Codefresh on passive cluster**
+
 First get the `values.yaml` file from the current Codefresh installation on the active cluster. Then install Codefresh on the passive cluster using Helm. 
 
 **Get values.yaml**
@@ -355,6 +356,7 @@ First get the `values.yaml` file from the current Codefresh installation on the 
 
 
 **Switch between clusters for disaster recovery**
+
 For disaster recovery, switch between the active and passive clusters.
 
 1. In the `cfapi` deployment on the _active_ cluster, change the value of `FREEZE_WORKFLOWS_EXECUTION` from `false` to `true`.  
@@ -363,6 +365,7 @@ For disaster recovery, switch between the active and passive clusters.
 1. Switch DNS from the currently active cluster to the passive cluster.
 
 **Services without HA**
+
 The following services cannot run in HA, but are not critical in case of downtime or during the process of switchover from active to passive.
 These services are not considered critical as they are part of build-handling. In case of failure, a build retry occurs, ensuring that the build is always handled.
 * `cronus`
