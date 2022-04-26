@@ -577,7 +577,7 @@ tls:
 This annotation will create a new Load Balancer - Network Load Balancer, which you should use in the Codefresh UI DNS record.
 Update the DNS record according to the new service. 
 
-### L7 ELB with SSL Termination
+#### L7 ELB with SSL Termination
 
 When a **Classic Load Balancer** is used, some Codefresh features that (for example `OfflineLogging`), will use a websocket to connect with Codefresh API and they will require secure TCP (SSL) protocol enabled on the Load Balancer listener instead of HTTPS.
 
