@@ -553,7 +553,7 @@ mongorestore --gzip --archive=/storage/cfBackupPlan/backup-archive-name.gz --uri
 
 ### Configuring AWS Load Balancers
 
-By default Codefresh deploys the nginx-controller and [Classic Load Balancer](https://docs.aws.amazon.com/eks/latest/userguide/load-balancing.html) as a controller service.
+By default Codefresh deploys the [ingress-nginx](https://github.com/kubernetes/ingress-nginx/) controller and [Classic Load Balancer](https://docs.aws.amazon.com/eks/latest/userguide/load-balancing.html) as a controller service.
 
 #### NLB
 
