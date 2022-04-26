@@ -287,7 +287,7 @@ Review the prerequisites, and then do the following to configure high-availabili
 * Install Codefresh on the passive cluster  
 * When needed, switch between clusters for disaster recovery
 
-### Prerequisites
+**Prerequisites**
 
 * **K8s clusters**  
   Two K8s clusters, one designated as the active cluster, and the other designated as the passive cluster for disaster recovery.  
@@ -304,12 +304,13 @@ Review the prerequisites, and then do the following to configure high-availabili
 * **DNS record**  
   To switch between clusters for disaster recovery
 
-### Install Codefresh on active cluster
+**Install Codefresh on active cluster**
 
 If you are installing Codefresh for the first time, install Codefresh on the cluster designated as the _active_ cluster.  
 See [Installing the Codefresh platform]({{site.baseurl}}/docs/administration/codefresh-on-prem/#install-the-codefresh-platform).
 
-### Install Codefresh on passive cluster 
+**Install Codefresh on passive cluster**
+
 First get the `values.yaml` file from the current Codefresh installation on the active cluster. Then install Codefresh on the passive cluster using Helm. 
 
 **Get values.yaml**
@@ -354,7 +355,8 @@ First get the `values.yaml` file from the current Codefresh installation on the 
   `helm install cf . -f ${path}/cf-passive-values.yaml -n codefresh`
 
 
-### Switch between clusters for disaster recovery
+**Switch between clusters for disaster recovery**
+
 For disaster recovery, switch between the active and passive clusters.
 
 1. In the `cfapi` deployment on the _active_ cluster, change the value of `FREEZE_WORKFLOWS_EXECUTION` from `false` to `true`.  
@@ -362,13 +364,12 @@ For disaster recovery, switch between the active and passive clusters.
 1. In the `cfapi` deployment on the _passive_ cluster, change the value of `FREEZE_WORKFLOWS_EXECUTION` from `true` to `false`. 
 1. Switch DNS from the currently active cluster to the passive cluster.
 
-### Services without HA
+**Services without HA**
+
 The following services cannot run in HA, but are not critical in case of downtime or during the process of switchover from active to passive.
 These services are not considered critical as they are part of build-handling. In case of failure, a build retry occurs, ensuring that the build is always handled.
 * `cronus`
 * `cf-sign`
-* `hermse-store-backup`
-* `store`
 
 
 ## Additional Configurations
@@ -552,13 +553,58 @@ mongorestore --gzip --archive=/storage/cfBackupPlan/backup-archive-name.gz --uri
 
 ### Configuring AWS Load Balancers
 
-By default Codefresh deploys the nginx-controller and [Classic Loab Balancer](https://docs.aws.amazon.com/eks/latest/userguide/load-balancing.html) as a controller service.
+By default Codefresh deploys the [ingress-nginx](https://github.com/kubernetes/ingress-nginx/) controller and [Classic Load Balancer](https://docs.aws.amazon.com/eks/latest/userguide/load-balancing.html) as a controller service.
 
 #### NLB
 
-To use a **Network Load Balancer** - deploy a regular Codefresh installation, and add to the `cf-ingress-controller` controller service the `service.beta.kubernetes.io/aws-load-balancer-type: nlb` annotation.
+To use a **Network Load Balancer** - deploy a regular Codefresh installation with the following ingress config for the the `cf-ingress-controller` controller service.
+
+`config.yaml`
+```yaml
+ingress:
+  controller:
+    service:
+      annotations:
+        service.beta.kubernetes.io/aws-load-balancer-type: nlb
+        service.beta.kubernetes.io/aws-load-balancer-backend-protocol: tcp
+        service.beta.kubernetes.io/aws-load-balancer-connection-idle-timeout: '60'
+        service.beta.kubernetes.io/aws-load-balancer-cross-zone-load-balancing-enabled: 'true'
+
+tls:
+  selfSigned: false
+  cert: certs/certificate.crt
+  key: certs/private.key
+```
 This annotation will create a new Load Balancer - Network Load Balancer, which you should use in the Codefresh UI DNS record.
 Update the DNS record according to the new service. 
+
+#### L7 ELB with SSL Termination
+
+When a **Classic Load Balancer** is used, some Codefresh features that (for example `OfflineLogging`), will use a websocket to connect with Codefresh API and they will require secure TCP (SSL) protocol enabled on the Load Balancer listener instead of HTTPS.
+
+To use either a certificate from a third party issuer that was uploaded to IAM or a certificate [requested](https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-request-public.html) within AWS Certificate Manager see the followning config example:
+
+
+`config.yaml`
+```yaml
+ingress:
+  controller:
+    service:
+      annotations:
+        service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "tcp"
+        service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "443"
+        service.beta.kubernetes.io/aws-load-balancer-connection-idle-timeout: '3600'
+        service.beta.kubernetes.io/aws-load-balancer-ssl-cert: < CERTIFICATE ARN >
+      targetPorts:
+        http: http
+        https: http
+        
+tls:
+  selfSigned: false        
+```
+
+- both http and https target port should be set to **80**.
+- update your AWS Load Balancer listener for port 443 from HTTPS protocol to SSL.
 
 #### ALB
 
@@ -577,7 +623,7 @@ ingress:
 - create a new **ingress** resource:
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations:
@@ -593,79 +639,37 @@ metadata:
   name: cf-codefresh-ingress
   namespace: codefresh
 spec:
-  backend:
-    serviceName: cf-cfui
-    servicePort: 80
+  defaultBackend:
+    service:
+      name: cf-cfui
+      port:
+        number: 80
   rules:
-  - host: nosovets.cf-op.com
+  - host: myonprem.domain.com
     http:
       paths:
       - backend:
-          serviceName: cf-cfapi
-          servicePort: 80
+          service:
+            name: cf-cfapi
+            port:
+              number: 80
         path: /api/*
+        pathType: ImplementationSpecific
       - backend:
-          serviceName: cf-cfapi
-          servicePort: 80
+          service:
+            name: cf-cfapi
+            port:
+              number: 80
         path: /ws/*
+        pathType: ImplementationSpecific
       - backend:
-          serviceName: cf-cfui
-          servicePort: 80
+          service:
+            name: cf-cfui
+            port:
+              number: 80
         path: /
+        pathType: ImplementationSpecific
 ```
-
-#### SSL termination
-
-When a **Classic Load Balancer** is used, some Codefresh features that are turned on (for example `OfflineLogging`), will use a websocket to connect with Codefresh API and they will require secure TCP (SSL) protocol enabled on the Load Balancer listener instead of HTTPS.
-
-To support this scenario, update the existing configuration:
-
-- update the `cf-ingress-controller` service with new annotations:
-
-```yaml
-metadata:
-  annotations:
-    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: tcp
-    service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "443"
-```
-
-- update your AWS Load Balancer listener for port 443 from HTTPS protocol to SSL.
-
-### TLS termination on AWS
-
-To use either a certificate from a third party issuer that was uploaded to IAM or a certificate [requested](https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-request-public.html) within AWS Certificate Manager:
-- copy a certificate ARN;
-- set the `tls.selfSigned: true` in the Codefresh's init config - __config.yaml__;
-- deploy a new installation;
-- update ingress service
-
-```sh
-kubectl edit service cf-ingress-controller
-```
-
-and add the following annotations:
-
-```yaml
-metadata:
-  annotations:
-    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: http
-    service.beta.kubernetes.io/aws-load-balancer-ssl-cert: < CERTIFICATE ARN >
-    service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "443"
-spec:
-  ports:
-  - name: http
-    nodePort: 30908
-    port: 80
-    protocol: TCP
-    targetPort: 80
-  - name: https
-    nodePort: 31088
-    port: 443
-    protocol: TCP
-    targetPort: 80
-```
-
-Both http and https target port should be set to **80**.
 
 ### Configure CSP (Content Security Policy)
 Add CSP environment variables to `config.yaml`, and define the values to be returned in the CSP HTTP headers.
