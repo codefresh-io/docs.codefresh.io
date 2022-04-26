@@ -600,7 +600,7 @@ ingress:
         https: http
         
 tls:
-  selfSigned: false        
+  selfSigned: true        
 ```
 
 - both http and https target port should be set to **80**.
