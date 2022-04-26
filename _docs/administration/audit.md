@@ -5,7 +5,7 @@ group: administration
 toc: true
 ---
 
-Most entities in CSDP are GitOps-compliant, and fully controlled via the GitOps approach. 
+Most entities in Codefresh are GitOps-compliant, and fully controlled via the GitOps approach. 
 
 For information on which entities and how they are controlled, review [access control]({{site.baseurl}}/docs/administration/access-control/).  
 
@@ -18,7 +18,7 @@ View audit logs:
 * In your Git repository
 
 ### Git Source changes in Notifications
-The **Notifications** panel is a pull-down panel, always available in the CSDP toolbar. The panel shows a recent view of changes to entities such as Git Sources.
+The **Notifications** panel is a pull-down panel, always available in the Codefresh toolbar. The panel shows a recent view of changes to entities such as Git Sources.
 
 
 {% include
@@ -47,7 +47,7 @@ max-width="30%"
 
 ### Git repo change log
 
-A change to a GitOps-controlled resource in CSDP is made by CSDP impersonating and pushing commits to your Git Sources.
+A change to a GitOps-controlled resource in Codefresh is made by Codefresh impersonating and pushing commits to your Git Sources.
 The Git repository linked to the Git Source shows all the commits. 
 
 {% include

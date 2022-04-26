@@ -8,7 +8,7 @@ redirect_from:
 toc: true
 ---
 
-Setting up SSO for Azure in CSDP, requires you to register CSDP in Azure AD with the required permissions and the client secret, configure the SSO settings in CSDP, and then define the Client ID in Azure AD.  
+Setting up SSO for Azure in Codefresh, requires you to register Codefresh in Azure AD with the required permissions and the client secret, configure the SSO settings in Codefresh, and then define the Client ID in Azure AD.  
 For general instructions on SSO setup, see the [overview]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/).
 
 ### Prerequisites
@@ -16,8 +16,8 @@ For general instructions on SSO setup, see the [overview]({{site.baseurl}}/docs/
   These roles are required after the SSO integration is complete to [sync teams from Azure to Codefresh]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/#syncing-of-teams-after-initial-sso-setup).
 
 
-### Register CSDP in Azure AD
-Register the CSDP application in Azure AD.
+### Register Codefresh in Azure AD
+Register the Codefresh application in Azure AD.
 
 1.  Log in to **Azure Portal**, and from the sidebar, select **Azure Active Directory**.
   
@@ -58,9 +58,9 @@ Register the CSDP application in Azure AD.
 1. To apply your changes, select **Register**. The application is now registered in Azure AD. 
 
 
-### Configure permissions for CSDP
+### Configure permissions for Codefresh
 
-After registering CSDP, configure the permissions. 
+After registering Codefresh, configure the permissions. 
 
 1. Select the application name to open **Settings**.
 1. Select **API permissions**.
@@ -146,23 +146,23 @@ After registering CSDP, configure the permissions.
 1. Select the desired duration.
   >**Important:** If you select a key with an expiration date, record the expiration date in your calendar. Remember to renew the key before the expiration date to ensure that users don't experience a service interruption.
 1. To display the key, select **Add**.
-1. Copy the value of the key as you will need this when you configure the SSO settings for Azure in CSDP.
+1. Copy the value of the key as you will need this when you configure the SSO settings for Azure in Codefresh.
 
-### Configure SSO for Azure in CSDP
+### Configure SSO for Azure in Codefresh
 
-1. In the CSDP UI, go to [Single Sign-On](https://g.codefresh.io/2.0/account-settings/single-sign-on){:target="\_blank"}.
+1. In the Codefresh UI, go to [Single Sign-On](https://g.codefresh.io/2.0/account-settings/single-sign-on){:target="\_blank"}.
 1. Select **+ Add Single Sign-On**, select **Azure**, and then select **Next**.
   
   {% include image.html 
   lightbox="true" 
   file="/images/administration/sso/azure/sso-csdp-azure.png" 
   url="/images/administration/sso/azure/sso-csdp-azure.png"
-  alt="SSO settings for Azure in CSDP"
-  caption="SSO settings for Azure in CSDP"
+  alt="SSO settings for Azure in Codefresh"
+  caption="SSO settings for Azure in Codefresh"
   max-width="30%"
   %}
 
-  * **Client Name**: For auto-generation, leave empty. CSDP generates the client name once you save the settings. 
+  * **Client Name**: For auto-generation, leave empty. Codefresh generates the client name once you save the settings. 
   * **Display Name**: Meaningful name that identifies the SSO provider.
   * **Application ID**: The Application ID in Azure
   * **Client secret**: The key value you copied when you created the client secret in Azure
@@ -180,7 +180,7 @@ After registering CSDP, configure the permissions.
   You need this value when you configure the reply URL in the Azure portal.
 
 ### Configure reply URLs
-This is the final step in SSO setup for Azure. Add the CSDP callback URL to the allowed reply URLs for the created application in Azure AD. 
+This is the final step in SSO setup for Azure. Add the Codefresh callback URL to the allowed reply URLs for the created application in Azure AD. 
 1. Go to **Azure Active Directory > Apps registrations**, and select your app. 
 1. Select **Add a Redirect URI**, and define:
 
@@ -189,7 +189,7 @@ This is the final step in SSO setup for Azure. Add the CSDP callback URL to the 
 
   ```
 
-  where: `<your_codefresh_sso_client_name>` is the Client Name in the SSO configuration, either defined by you or created by CSDP. 
+  where: `<your_codefresh_sso_client_name>` is the Client Name in the SSO configuration, either defined by you or created by Codefresh. 
   
   {% include image.html 
   lightbox="true" 

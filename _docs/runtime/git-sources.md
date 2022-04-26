@@ -5,7 +5,7 @@ group: runtime
 toc: true
 ---
 
-A Git Source in CSDP links to a Git repository that stores resources for pipelines. CSDP uses Git Sources to sync Argo Workflow and Argo Events resources to the cluster. A single runtime can have multiple Git Sources.
+A Git Source in Codefresh links to a Git repository that stores resources for pipelines. Codefresh uses Git Sources to sync Argo Workflow and Argo Events resources to the cluster. A single runtime can have multiple Git Sources.
 
 When you provision a Codefresh runtime, a default Git Source is automatically created. This Git Source houses the Argo Event resources such as Workflow Templates, Event Sources, and Sensors. 
 

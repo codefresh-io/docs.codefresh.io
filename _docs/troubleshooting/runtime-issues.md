@@ -12,14 +12,14 @@ toc: true
   You have Argo Project components from other installations in your cluster.   
 
 **Possible actions**  
-  1. Uninstall the CSDP runtime.
+  1. Uninstall the Codefresh runtime.
   1. Remove the Argo Project components from your cluster.
-  1. Reinstall the CSDP runtime.
+  1. Reinstall the Codefresh runtime.
 
 #### Pre-installation error: please upgrade to the latest cli version: `v<number>`  
 
 **Possible cause**  
-  CSDP has a new CLI version.   
+  Codefresh has a new CLI version.   
 
 **Possible actions**  
 Run the appropriate command to upgrade to the latest version:
@@ -78,7 +78,7 @@ Make sure the ingress host points to the cluster on which the runtime is install
 #### Timeout error, either for applications or while waiting for the installation to complete
 **Possible cause**  
   `Cron-executer` has identified that not all your applications are synced and healthy.   
-  CSDP runtime installation syncs app status at 10-minute intervals. The timeout occurs if after the last status sync, at least one application is either not synced or healthy.   
+  Codefresh runtime installation syncs app status at 10-minute intervals. The timeout occurs if after the last status sync, at least one application is either not synced or healthy.   
 
 **Possible actions**  
 

@@ -15,7 +15,7 @@ For guidelines on access control, see [Access control]({{site.baseurl}}/docs/adm
 **SSO**: By default, SSO is not enabled for users. If required, explicitly select the SSO provider. For an overview of SSO, see [Single Sign on]({{site.baseurl}}/docs/administration/single-sign-on/).
 
 ### Add a user  
-1. In CSDP, click **Account Settings**.
+1. In Codefresh, click **Account Settings**.
 1. From the sidebar, select [Collaboration](https://g.codefresh.io/2.0/account-settings/users){:target="\_blank"}.  
   
   {% include

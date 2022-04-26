@@ -38,11 +38,11 @@ Here is a description of the information in the List View.
 {: .table .table-bordered .table-hover}
 | List View Item|  Description   |
 | --------------          | ---------------- |
-|**Name**| The name of the provisioned CSDP runtime.  |
+|**Name**| The name of the provisioned Codefresh runtime.  |
 |**Cluster/Namespace**| The K8s API server endpoint, as well as the namespace with the cluster. |
 |**Managed Cluster**| The number of managed clusters if any, for the runtime. To view list of managed clusters, select the runtime, and then the **Managed Clusters** tab.  To work with managed clusters, see [Runtime Management](#runtime-management) in this article.| 
 |**Version**| The version of the runtime currently installed. **Update Available!** indicates there are later versions of the runtime. To see all the commits to the runtime, mouse over **Update Available!**, and select **View Complete Change Log**.
-|**Last Updated**| The most recent update information from the runtime to the CSDP platform. Updates are sent to the platform typically every few minutes. Longer update intervals may indicate networking issues.|
+|**Last Updated**| The most recent update information from the runtime to the Codefresh platform. Updates are sent to the platform typically every few minutes. Longer update intervals may indicate networking issues.|
 |**Sync Status**| The health and sync status of the runtime or cluster.  {::nomarkdown}<br><ul><li> <img src="../../../images/icons/error.png"  display=inline-block> indicates health or sync errors in the runtime, or a managed cluster if one was added to the runtime.</br> The runtime name is colored red.</li> <li><img src="../../../images/icons/cf-sync-status.png"  display=inline-block> indicates that the runtime is being synced to the cluster on which it is provisioned.</li></ul> {:/} |
 
 
@@ -65,7 +65,7 @@ Here is a description of the information in the Topology view.
 {: .table .table-bordered .table-hover}
 | Topology View Item      | Description   |
 | ------------------------| ---------------- |
-|**Runtime**             | ![](../../../images/icons/codefresh-runtime.png?display=inline-block) the provisioned CSDP runtime. Below is the name of the K8s API server endpoint with the cluster.  |
+|**Runtime**             | ![](../../../images/icons/codefresh-runtime.png?display=inline-block) the provisioned Codefresh runtime. Below is the name of the K8s API server endpoint with the cluster.  |
 |**Cluster**              | The local, and managed clusters if any, for the runtime. {::nomarkdown}<ul><li><img src="../../../images/icons/local-cluster.png" display=inline-block/> indicates the local cluster, always displayed as `in-cluster`. The in-cluster server URL is always set to `https://kubernetes.default.svc/`.</li><li><img src="../../../images/icons/managed-cluster.png" display=inline-block/> indicates a managed cluster.</li> <li> <img src="../../../images/icons/add-cluster.png" display=inline-block/> select to add a new managed cluster.</li></ul> {:/} To view cluster components, select the cluster. To add and work with managed clusters, see [Add and manage external clusters]({{site.baseurl}}/docs/runtime/managed-cluster). | 
 |**Health/Sync status** |The health and sync status of the runtime or cluster. {::nomarkdown}<ul><li><img src="../../../images/icons/error.png" display="inline-block"> indicates health or sync errors in the runtime, or a managed cluster if one was added to the runtime.</br> The runtime or cluster node is bordered in red and the name is colored red.</li> <li><img src="../../../images/icons/cf-sync-status.png" display=inline-block/> indicates that the runtime is being synced to the cluster on which it is provisioned.</li></ul> {:/} |
 |**Search and View options** | {::nomarkdown}<ul><li>Find a runtime or its clusters by typing part of the runtime/cluster name, and then navigate to the entries found. </li> <li>Topology view options: Resize to window, zoom in, zoom out, full screen view.</li></ul> {:/}|
@@ -88,7 +88,7 @@ Upgrade existing runtimes to install critical security updates or to install the
 **Before you begin**  
 For both types of upgrades, make sure you have:  
 
-* The latest version of the CSDP CLI 
+* The latest version of the Codefresh CLI 
 * A valid runtime Git token 
 
 **Silent upgrade**  
@@ -101,7 +101,7 @@ For both types of upgrades, make sure you have:
 
 **CLI wizard-based upgrade**   
 
-1. In the CSDP UI, make sure you are in the [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"} page.
+1. In the Codefresh UI, make sure you are in the [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"} page.
 1. Switch to either the **List View** or to the **Topology View**.  
 1. **List view**:  
   * Select the runtime name. 
@@ -150,13 +150,13 @@ For both types of upgrades, make sure you have:
 
 
 #### Uninstall runtimes
-Uninstall CSDP runtimes that are not in use.  Uninstall a runtime by running a silent uninstall, or through the CLI wizard.  
+Uninstall Codefresh runtimes that are not in use.  Uninstall a runtime by running a silent uninstall, or through the CLI wizard.  
 > Uninstalling a runtime removes the Git Sources and managed clusters associated with the runtime.
 
 **Before you begin**  
 For both types of uninstalls, make sure you have:  
 
-* The latest version of the CSDP CLI 
+* The latest version of the Codefresh CLI 
 * A valid runtime Git token 
 * The Kube context from which to uninstall the runtime
 
@@ -169,7 +169,7 @@ Pass the mandatory flags in the uninstall command:
 
 **How to uninstall with the CLI wizard**  
 
-1. In the CSDP UI, make sure you are in the [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"} page.
+1. In the Codefresh UI, make sure you are in the [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"} page.
 1. Switch to either the **List View** or to the **Topology View**.
 1. **List view**: On the top-right, select the three dots and then select **Uninstall**.
 
@@ -195,7 +195,7 @@ Pass the mandatory flags in the uninstall command:
 %} 
 
 {:start="4"}
-1. If you already have the latest version of the CSDP CLI, in the Uninstall Codefresh Runtime panel, copy the uninstall command.
+1. If you already have the latest version of the Codefresh CLI, in the Uninstall Codefresh Runtime panel, copy the uninstall command.
 
   {% include 
 	image.html 
@@ -250,9 +250,9 @@ All you need to do is to configure the browser to trust the URL and receive cont
   * Edge: Click **Advanced**, and then select **Continue to site(unsafe)**.
 
 #### How to view runtime notifications in Activity Log
-The Activity Log is a quick way to monitor notifications for runtime events such as upgrades. A pull-down panel in the CSDP toolbar, the Activity Log shows ongoing, success, and error notifications, sorted by date, starting with today's date. 
+The Activity Log is a quick way to monitor notifications for runtime events such as upgrades. A pull-down panel in the Codefresh toolbar, the Activity Log shows ongoing, success, and error notifications, sorted by date, starting with today's date. 
 
-1. In the CSDP UI, on the top-right of the toolbar, select ![](/images/pipeline/monitoring/pipeline-activity-log-toolbar.png?display=inline-block) **Activity Log**.
+1. In the Codefresh UI, on the top-right of the toolbar, select ![](/images/pipeline/monitoring/pipeline-activity-log-toolbar.png?display=inline-block) **Activity Log**.
 1. To see runtime notifications, filter by **Runtime**.
 
   {% include image.html 
@@ -271,7 +271,7 @@ The Activity Log is a quick way to monitor notifications for runtime events such
 The ![](/images/icons/error.png?display=inline-block) icon with the runtime in red indicates either health or sync errors. 
 
 **Health errors**  
-Health errors are generated by Argo CD and by CSDP for runtime components. 
+Health errors are generated by Argo CD and by Codefresh for runtime components. 
 
 
 **Sync errors**  

@@ -5,30 +5,30 @@ group: pipelines
 toc: true
 ---
 
-Delivery Pipelines are where all the magic happens in CSDP. Delivery Pipelines connect Argo Workflows and Argo Events with CSDP's unique functionality to implement and optimize CI/CD flows, such as checking out code, building and testing artifacts, running unit and acceptance tests, or any customized flows you need in your enterprise. 
+Delivery Pipelines are where all the CI magic happens in Codefresh. Delivery Pipelines connect Argo Workflows and Argo Events with our unique functionality to implement and optimize CI/CD flows, such as checking out code, building and testing artifacts, running unit and acceptance tests, or any customized flows you need in your enterprise. 
 
-CSDP integrates with Argo Workflows and Argo Events, while greatly simplifying the process of creating pipelines and triggering them to submit workflows. 
+Codefresh integrates with Argo Workflows and Argo Events, while greatly simplifying the process of creating pipelines and triggering them to submit workflows. 
 
 
 ### Delivery Pipeline concepts
-Let's start by reviewing the main concepts around CSDP Delivery Pipelines.  
-In CSDP, the Delivery Pipeline is a logical entity that connects an event-source, a sensor, and a Workflow Template. 
+Let's start by reviewing the main concepts around Codefresh Delivery Pipelines.  
+In Codefresh, the Delivery Pipeline is a logical entity that connects an event-source, a sensor, and a Workflow Template. 
 
 #### Pipeline per trigger
-Every sensor-trigger pair is a unique pipeline in CSDP. The same sensor with multiple triggers creates a different pipeline for every trigger.
+Every sensor-trigger pair is a unique pipeline in Codefresh. The same sensor with multiple triggers creates a different pipeline for every trigger.
 
 #### Git-Ops permission model
 Access to Git Sources and Git repositories are based on the user's write permissions, as defined in their Git provider accounts.
 
 #### Git Source for pipeline
-The Delivery Pipeline is connected to a specific CSDP runtime installation, and is also run on this runtime through a Git Source.  
+The Delivery Pipeline is connected to a specific Codefresh runtime installation, and is also run on this runtime through a Git Source.  
 
 When the pipeline is created and synced with the cluster, all manifests generated for the pipeline are stored in the Git repository. These include the sensor and event-source manifests, and the pipeline workflow template's manifest. 
 
 #### Centralized location for Argo Event-entities
-CSDP uses Argo Events to listen to events from different sources and define the conditions that trigger the events. All entities for creating and managing an Argo Event - from the event-source and its events, the sensor and its triggers - are available in a centralized location in CSDP.  
+Codefresh uses Argo Events to listen to events from different sources and define the conditions that trigger the events. All entities for creating and managing an Argo Event - from the event-source and its events, the sensor and its triggers - are available in a centralized location in Codefresh.  
 
-An intuitive selection mechanism enables you to easily select and configure each entity. Predefined variables and automated mapping to event payload makes parameterization easy. There is no need to manually create the YAML manifests for the different entities, as CSDP automatically generates them after the entities are set up.   
+An intuitive selection mechanism enables you to easily select and configure each entity. Predefined variables and automated mapping to event payload makes parameterization easy. There is no need to manually create the YAML manifests for the different entities, as Codefresh automatically generates them after the entities are set up.   
 
 
 ### Delivery Pipeline creation flow
@@ -42,7 +42,7 @@ For step-by-step instructions, see [How to: Create a Delivery Pipeline]({{site.b
 1. Commit resource files and create pipeline
 
 #### Define pipeline name and select Workflow Template to execute
-The Delivery Pipeline creation flow starts with defining a name for the pipeline, selecting the Git Source with the runtime, and selecting the Workflow Template to execute when the pipeline is run. You can use the CSDP starter Workflow Template, or select an existing Workflow Template you have downloaded to a Git Source.
+The Delivery Pipeline creation flow starts with defining a name for the pipeline, selecting the Git Source with the runtime, and selecting the Workflow Template to execute when the pipeline is run. You can use the Codefresh starter Workflow Template, or select an existing Workflow Template you have downloaded to a Git Source.
 
 Both Argo and Codefresh have examples and libraries of Workflow Templates you can use:
 * For conceptual information on Argo Workflows, read the [official documentation](https://argoproj.github.io/argo-workflows/){:target="\_blank"}.
@@ -56,7 +56,7 @@ In the Delivery Pipeline wizard, we have our starter Workflow Template to use as
    
 
 
-> To share artifacts between steps in workflows, and to view archived logs for completed workflows, you must [configure an artifact repository in CSDP]({{site.baseurl}}/docs/pipelines/configure-artifact-repository).
+> To share artifacts between steps in workflows, and to view archived logs for completed workflows, you must [configure an artifact repository in Codefresh]({{site.baseurl}}/docs/pipelines/configure-artifact-repository).
  
 
 
@@ -109,7 +109,7 @@ You can override the default values or define custom values for trigger conditio
 
 Argo Events uses parameterization to pass data from the event payload to the workflow submitted by the sensor trigger. But where in Argo Workflows you would need to manually define the JSON path to the data in the event payload, our Delivery Pipeline wizard automates path definitions through predefined variables.
 
-Every event has a specific payload and a specific list of predefined variables you can select from. You can either parameterize an argument through one or more predefined variables, or use Sprig template functions to define the values. In either case, when the manifests are generated, CSDP replaces the variables or templated values with the actual JSON path in the event payload.  
+Every event has a specific payload and a specific list of predefined variables you can select from. You can either parameterize an argument through one or more predefined variables, or use Sprig template functions to define the values. In either case, when the manifests are generated, Codefresh replaces the variables or templated values with the actual JSON path in the event payload.  
 
 
 **Filters**  
@@ -164,13 +164,13 @@ Manifests typically include:
    max-width="30%" 
    %}
 #### Commit resource files and create pipeline
-Once CSDP generates the manifests, and you validate them, you commit all the changes. The commits are synced to the Git source defined for the pipeline, and then synced to the cluster.
+Once Codefresh generates the manifests, and you validate them, you commit all the changes. The commits are synced to the Git source defined for the pipeline, and then synced to the cluster.
 
 
 ### How to: Create a Delivery Pipeline
-Follow the step-by-step instructions to guide you through Delivery Pipeline wizard and create a CSDP pipeline.
+Follow the step-by-step instructions to guide you through Delivery Pipeline wizard and create a Codefresh pipeline.
 
-1. In the CSDP UI, go to [Delivery Pipelines](https://g.codefresh.io/2.0/pipelines){:target="\_blank"}.
+1. In the Codefresh UI, go to [Delivery Pipelines](https://g.codefresh.io/2.0/pipelines){:target="\_blank"}.
 1. Select **+ Add Delivery Pipeline**.
 
   {% include 
@@ -178,15 +178,15 @@ Follow the step-by-step instructions to guide you through Delivery Pipeline wiza
    lightbox="true" 
    file="/images/pipeline/create/create-add-delivery-pipeline.png" 
    url="/images/pipeline/create/create-add-delivery-pipeline.png" 
-   alt="Add Delivery Pipeline panel in CSDP" 
-   caption="Add Delivery Pipeline panel in CSDP"
+   alt="Add Delivery Pipeline panel in Codefresh" 
+   caption="Add Delivery Pipeline panel in Codefresh"
    max-width="30%" 
    %}
 
 {:start="3"}
 1. Enter a name for the Delivery Pipeline.  
   The name is created from the names of the sensor and the trigger (alphanumeric lowercase, and the - character).   
-  * **Sensor Name**: The name of the sensor resource. For example, the application name, `csdp` or `codefresh`.
+  * **Sensor Name**: The name of the sensor resource. For example, the application name, or `codefresh`.
   * **Trigger Name**: The template that defines the context of the trigger and the actual resources the sensor must execute. For example, the flow that will be run,`ci`.
 1. Select the **Codefresh Starter Template** or **Browse Existing Template**.  
 1. From the list of **Git Sources**, select the Git Source to which to commit the resources for this pipeline.  
@@ -197,7 +197,7 @@ Follow the step-by-step instructions to guide you through Delivery Pipeline wiza
   In the **Configuration** tab, **Workflow Templates** is selected. Our CI Starter Workflow Template is shown.   
   Copy and paste any Workflow Template you want to work with, or edit the starter template as needed.  
   > Tip:  
-  >  CSDP notifies you that you have uncommitted changes. The Commit button remains disabled until you define at least one Trigger Condition.
+  >  Codefresh notifies you that you have uncommitted changes. The Commit button remains disabled until you define at least one Trigger Condition.
   
   {% include 
    image.html 
@@ -228,10 +228,10 @@ Follow the step-by-step instructions to guide you through Delivery Pipeline wiza
      %}
 
   * From the **Event** dropdown, select the event for the sensor trigger. For example, **Commit pushed**.  
-    CSDP displays all the **Arguments** available for the sensor trigger, identical to the list of Workflow Template arguments. 
+    Codefresh displays all the **Arguments** available for the sensor trigger, identical to the list of Workflow Template arguments. 
   * Customize the value for an argument by selecting single or a combination of predefined variables.  
     In each field, type `$` and from the list of predefined variables, select the one you need.  
-    CSDP automatically maps to the correct JSON path in the event payload when manifests are generated before commit. Argo Workflow then instantiates the values from the event payload.  
+    Codefresh automatically maps to the correct JSON path in the event payload when manifests are generated before commit. Argo Workflow then instantiates the values from the event payload.  
     
     {% include 
    image.html 
@@ -276,5 +276,5 @@ Follow the step-by-step instructions to guide you through Delivery Pipeline wiza
 {:start="14"}
 1. Enter a message (optional), and then select **Commit**.   
 
-CSDP commits the pipeline to the Git repository, and then syncs it to the cluster. Wait a few seconds for the sync to complete, and verify that the pipeline is displayed in the [Delivery Pipelines](https://g.codefresh.io/2.0/pipelines){:target="\_blank"} page.
+Codefresh commits the pipeline to the Git repository, and then syncs it to the cluster. Wait a few seconds for the sync to complete, and verify that the pipeline is displayed in the [Delivery Pipelines](https://g.codefresh.io/2.0/pipelines){:target="\_blank"} page.
 

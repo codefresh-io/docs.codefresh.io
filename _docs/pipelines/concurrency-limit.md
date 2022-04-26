@@ -9,7 +9,7 @@ toc: true
 Argo Workflows has a synchronization mechanism to limit parallel execution of specific workflows or templates within workflows, as required.  
 The mechanism enforces this with either semaphore or mutex synchronization configurations. For detailed information, see [Synchronization](https://argoproj.github.io/argo-workflows/synchronization/).
 
-CSDP supports an additional level of concurrency synchronization, with _selectors_, for both workflows and templates.  
+Codefresh supports an additional level of concurrency synchronization, with _selectors_, for both workflows and templates.  
 
 Selectors enable access to all workflow properties such as `annotations`, `labels`, or `parameters` using Go template formats. Selector-based concurrency configurations support parallel executions of workflows or templates within workflows. And equally important, selectors work with both semaphore and mutex synchronization configurations.  
 

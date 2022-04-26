@@ -20,8 +20,8 @@ The basic CI delivery pipeline comprises resource files that you must download a
   * Express-ci Sensor (`sensor.express-ci.yaml`). Download 
   * ci-simple WorkflowTemplate (`workflow-template.ci-simple.yaml`). Download 
 1. Save and commit to the `resource_<runtime-name>` folder in the `<runtime-name>_git.source` repo reated during runtime installation.   
-  CSDP syncs these resource definitions to your cluster, and create the resources in the cluster.  
-1. In the CSDP UI, view the newly created pipeline in [Delivery Pipelines]((https://g.codefresh.io/2.0/pipelines){:target="\_blank"}).
+  Codefresh syncs these resource definitions to your cluster, and create the resources in the cluster.  
+1. In the Codefresh UI, view the newly created pipeline in [Delivery Pipelines]((https://g.codefresh.io/2.0/pipelines){:target="\_blank"}).
 
 ### Configure delivery pipeline with demo microservice application
 1. Update the event source to listen to events from the forked repository.
@@ -42,7 +42,7 @@ The basic CI delivery pipeline comprises resource files that you must download a
 {:start="2"}
 1. Commit the file. 
 1. Confirm the file has been updated:
-  * In the CSDP UI, go to [Delivery Pipelines]((https://g.codefresh.io/2.0/pipelines){:target="\_blank"}). 
+  * In the Codefresh UI, go to [Delivery Pipelines]((https://g.codefresh.io/2.0/pipelines){:target="\_blank"}). 
   * Select the **Manifests** tab, and then select the `eventsource` resource. It may take a few seconds to update. 
   * Verify that you see your changes.
 1. From the toolbar, open the **Notifications** panel to see syncs for event start and completion.
@@ -58,5 +58,5 @@ To complete the CI delivery pipeline, trigger an event that runs the pipeline.
   * Clones the `express-microserivce` repo
   * Builds the image
   * Pushes the image to your Docker Hub
-  * Updates CSDP with the image information
-1. In the CSDP UI, go to [Images]((https://g.codefresh.io/2.0/images){:target="\_blank"}).
+  * Updates Codefresh with the image information
+1. In the Codefresh UI, go to [Images]((https://g.codefresh.io/2.0/images){:target="\_blank"}).

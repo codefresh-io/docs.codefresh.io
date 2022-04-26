@@ -5,18 +5,18 @@ group: runtime
 toc: true
 ---
 
-Manage external clusters in CSDP by registering them to provisioned runtimes. Instead of having a single cluster for a runtime, manage multiple clusters through a single runtime.  
+Manage external clusters in Codefresh by registering them to provisioned runtimes. Instead of having a single cluster for a runtime, manage multiple clusters through a single runtime.  
 
 When you add an external cluster to a provisioned runtime, the cluster is registered as a managed cluster. A managed cluster is treated as any other managed K8s resource, meaning that you can monitor its health and sync status, deploy applications on the cluster and view information in the Applications dashboard, and remove the cluster from the runtime's managed list.  
 
 Add managed clusters through:
-* CSDP CLI
+* Codefresh CLI
 * Kustomize
 
-Adding a managed cluster via CSDP ensures that CSDP applies the required RBAC resources (`ServiceAccount`, `ClusterRole` and `ClusterRoleBinding`) to the target cluster, creates a `Job` that updates the selected runtime with the information, registers the cluster in Argo CD as a managed cluster, and updates the platform with the new cluster information.
+Adding a managed cluster via Codefresh ensures that Codefresh applies the required RBAC resources (`ServiceAccount`, `ClusterRole` and `ClusterRoleBinding`) to the target cluster, creates a `Job` that updates the selected runtime with the information, registers the cluster in Argo CD as a managed cluster, and updates the platform with the new cluster information.
 
-### How to add a managed cluster with CSDP CLI
-Add the external cluster to a provisioned runtime through the CSDP CLI.  
+### How to add a managed cluster with Codefresh CLI
+Add the external cluster to a provisioned runtime through the Codefresh CLI.  
 Optionally, to first generate the YAML manifests, and then manually apply them, use the `dry-run` flag in the CLI. 
 
 **Before you begin**  
@@ -25,7 +25,7 @@ Optionally, to first generate the YAML manifests, and then manually apply them, 
 
 **How to**  
 
-1. In the CSDP UI, go to the [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"} page.
+1. In the Codefresh UI, go to the [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"} page.
 1. From either the **Topology** or **List** views, select the runtime to which to add the cluster. 
 1. Topology View: Select ![](/images/icons/add-cluster.png?display=inline-block).  
   List View: Select the **Managed Clusters** tab, and then select **+ Add Cluster**.  
@@ -179,7 +179,7 @@ configMapGenerator:
     literals:
         # contextName is the name of the kube context (in the local kubeconfig file) that connects to the target cluster
       - "contextName=<contextName>"
-        # ingressUrl is the url used to access the CSDP runtime
+        # ingressUrl is the url used to access the Codefresh runtime
         # example https://some.domain.name
       - "ingressUrl=<ingressUrl>"
         # server is the k8s cluster API endpoint url
@@ -220,7 +220,7 @@ Use the Topology or List runtime views to work with managed clusters. For inform
   >Removing a managed cluster from a runtime also removes all the applications deployed to the cluster, and removes their data from the Applications dashboard.
 
 **How to**
-1. In the CSDP UI, go to the [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"} page.
+1. In the Codefresh UI, go to the [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"} page.
 1. Select either the **Topology View** or the **List View** tabs.
 1. Do one of the following:
     * In the Topology View, select the cluster node from the runtime it is registered to. 

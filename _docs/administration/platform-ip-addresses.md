@@ -1,11 +1,11 @@
 ---
-title: "CSDP platform IP addresses"
+title: "Codefresh platform IP addresses"
 description: " "
 group: administration
 toc: true
 
 ---
-To use CSDP for [a Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/) that has a strict firewall, you can only allow access to specific IP addresses used by the CSDP platform. Using these IPs allows you to deploy to your cluster even when it is not accessible from the public internet.
+To use Codefresh for [a Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/) that has a strict firewall, you can only allow access to specific IP addresses used by the Codefresh platform. Using these IPs allows you to deploy to your cluster even when it is not accessible from the public internet.
 
 
 ### Current IPs used by the Codefresh platform (updated July 31st 2021)

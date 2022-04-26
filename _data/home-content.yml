@@ -2,7 +2,7 @@
   icon: images/home-icons/started.svg
   url: ''
   links:
-  - title: Introducing CSDP
+  - title: Introducing Codefresh
     localurl: /docs/getting-started/csdp-introduction/
   - title: Quick start
     localurl: /docs/getting-started/quick-start/
@@ -21,7 +21,7 @@
   icon: images/home-icons/client.svg
   url: ''
   links:
-    - title: CSDP CLI
+    - title: Codefresh CLI
       localurl: /docs/clients/csdp-cli/
 
 

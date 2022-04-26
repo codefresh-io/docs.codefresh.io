@@ -19,7 +19,7 @@ Create a `ConfigMap` with the specs to connect to the storage bucket configured 
 The settings apply to all workflows by default, unless overridden by a specific `Workflow Template` or `Workflow` resource.
 
 
-1. Go to your CSDP runtime installation repository:  
+1. Go to your Codefresh runtime installation repository:  
    `<runtime_installation_repo>/apps/workflows/overlays/<runtime-name>/`  
 1. Create a new file entitled `artifact-repo.yaml`, and update `bucket`, `endpoint`, and `region` as needed: 
 
@@ -44,7 +44,7 @@ data:
 ### Step 2: Define RBAC permissions for artifact repository
 Grant the workflow controller sufficient permissions for S3 bucket operations.
 
-1. Go to the same CSDP runtime installation repository:  
+1. Go to the same Codefresh runtime installation repository:  
 `<runtime_installation_repo>/apps/workflows/overlays/<runtime-name>`  
 1. Create the `rbac.yaml` file with the permissions, changing the annotation to match the S3 storage :  
 
@@ -133,7 +133,7 @@ subjects:
 ### Step 3: Update `serviceAccountName` for artifact repository
 Define the correct Service Account that with the roles and permissions for workflows to access the artifact repository.  
 {:start="1"}
-1. Go to the same CSDP runtime installation repository:  
+1. Go to the same Codefresh runtime installation repository:  
   `<runtime_installation_repo>/apps/workflows/overlays/<runtime-name>`  
 1. Open `kustomization.yaml`.
 1. Change the `annotation` and the `serviceAccountName` to be identical to those defined in `rbac.yaml`:

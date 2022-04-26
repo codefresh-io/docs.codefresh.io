@@ -9,14 +9,14 @@ redirect_from:
 toc: true
 ---
 
-CSDP (Codefresh Software natively supports login using GitHub, Bitbucket and GitLab using the OpenID Connect (OAUTH 2.0) protocol. You can add new SSO integrations based on OAUTH 2.0 as part of Codefresh Software Development Platform (CSDP) or Codefresh Enterprise plan.
+Codefresh natively supports login using GitHub, Bitbucket and GitLab using the OpenID Connect (OAUTH 2.0) protocol. You can add new SSO integrations based on OAUTH 2.0 as part of Codefresh  Enterprise plan.
 
 As Identity Providers (IdPs) come in all shapes and sizes, the following topic discusses in general what you must do to configure Federated SSO. 
   As you will see in the description below, the person in your organization responsible for managing your IdP will need to interact with Codefresh support team to successfully set up a trust between your IdP and Codefresh SP.
 
 {:.text-secondary}
 ### Before you set up Federated SSO
-  1. Have your account set up with CSDP enterprise plan.
+  1. Have your account set up with Codefresh enterprise plan.
   2. Ensure you have a working SAML 2.0 compliant identity provider (IdP).
   3. Identify someone in your organization who is familiar with configuring and managing your organization's IdP.
   4. Ensure that your IdP's system clock is synchronized with a reliable time source. If it's not, tokens generated will be unusable and SSO will fail.
@@ -35,7 +35,7 @@ As Identity Providers (IdPs) come in all shapes and sizes, the following topic d
 {:.text-secondary}
 ### SAML attributes
 
-CSDP expects the following user attributes to be passed through SAML between your IdP and Codefresh SP:
+Codefresh expects the following user attributes to be passed through SAML between your IdP and Codefresh SP:
   - User email address
   - User first name
   - User last name
@@ -68,9 +68,9 @@ Once Federated SSO has been configured, the process works as follows:
 6. If you are a valid Codefresh user for this SSO connection, an SSO token is returned to the user’s browser
 7. The user’s browser then returns a token to Codefresh and access is granted for your account
 
-### Configure SAML SSO settings in CSDP 
+### Configure SAML SSO settings in Codefresh 
 
-1. In CSDP, select **Account settings**.
+1. In Codefresh, select **Account settings**.
 1. From the sidebar expand **Collaboration**, and select **Single Sign-on**.
   OR
   Go directly to [https://g.codefresh.io/account-admin/sso](https://g.codefresh.io/account-admin/sso))
@@ -99,7 +99,7 @@ max-width="70%"
 1. Select **Save**, and note down the `Client Name` that is generated.
 
 
-### Configure IdP settings for CSDP as a Service Provider
+### Configure IdP settings for Codefresh as a Service Provider
 In the settings of your Identity Provider, create a new Service Provider and provide the following:
 
   * **Service Provider SSO Endpoint**: Assertion consumer service URL - `https://g.codefresh.io/api/auth/<your_codefresh_client_name>/callback`
@@ -119,7 +119,7 @@ To configure users sync for SAML IDP, do the following:
 The instructions for getting the JSON Keyfile, and Admin Email are the same as for [Google SSO]({{site.baseurl}}/docs/administration/single-sign-on/sso-google/#synchronize-teams-with-the-codefresh-cli).
 
 >Note
-  These settings are for the SaaS version of CSDP. For an on-premises setup, use the URLs that match your installation.
+  These settings are for the SaaS version of Codefresh. For an on-premises setup, use the URLs that match your installation.
 
 Once everything is finished, you [should test the integration]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/#testing-your-identity-provider). Once it's working, proceed to the next steps that are:
 

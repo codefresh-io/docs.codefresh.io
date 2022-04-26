@@ -9,12 +9,12 @@ redirect_from:
 toc: true
 ---
 
-CSDP (Codefresh Software Development Platform) natively supports login using GitHub, Bitbucket and GitLab using the OpenID Connect (OAUTH 2.0) protocol. You can add new SSO integrations based on OAUTH 2.0 as part of the CSDP Enterprise plan.
+Codefresh natively supports login using GitHub, Bitbucket and GitLab using the OpenID Connect (OAUTH 2.0) protocol. You can add new SSO integrations based on OAUTH 2.0 as part of the Codefresh Enterprise plan.
 
   
 ### Prerequisites
 
-To successfully add an identity provider in CSDP, you must configure settings both for the identity provider and in CSDP.
+To successfully add an identity provider in Codefresh, you must configure settings both for the identity provider and in Codefresh.
 You need to:
 
 1. Configure your identity provider to provide SSO services to Codefresh. The configuration differs per identity provider.
@@ -24,7 +24,7 @@ You need to:
 
 ### SSO configuration using OAuth2
 
-SSO configuration in CSDP is similar regardless of the identity provider selected. These settings are common to all providers:
+SSO configuration in Codefresh is similar regardless of the identity provider selected. These settings are common to all providers:
 
 * **Display Name**: The name of your identity provider 
 * **Client ID**: The ID used for the connection

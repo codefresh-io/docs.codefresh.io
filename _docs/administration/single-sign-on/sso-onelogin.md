@@ -62,23 +62,23 @@ see the [overview page]({{site.baseurl}}/docs/administration/single-sign-on/sso-
     max-width="30%"
     %}
 
-### Configure SSO for OneLogin in CSDP
+### Configure SSO for OneLogin in Codefresh
 
-1. In the CSDP UI, go to [Single Sign-On](https://g.codefresh.io/2.0/account-settings/single-sign-on){:target="\_blank"}.
+1. In the Codefresh UI, go to [Single Sign-On](https://g.codefresh.io/2.0/account-settings/single-sign-on){:target="\_blank"}.
 1. Select **+ Add Single Sign-On** and then select **OneLogin**.  
 
     {% include image.html 
   lightbox="true" 
   file="/images/administration/sso/onelogin/sso-csdp-onelogin.png" 
   url="/images/administration/sso/onelogin/sso-csdp-onelogin.png"
-  alt="SSO settings for OneLogin in CSDP"
-  caption="SSO settings for OneLogin in CSDP"
+  alt="SSO settings for OneLogin in Codefresh"
+  caption="SSO settings for OneLogin in Codefresh"
   max-width="30%"
   %}
 
 {:start="2"}
 1. Enter the following:
-  * **Client Name**: For auto-generation, leave empty. CSDP generates the client name once you save the settings.
+  * **Client Name**: For auto-generation, leave empty. Codefresh generates the client name once you save the settings.
   * **Display Name**: Friendly SSO name (arbitrary).  
   * **Client ID**: The Client ID you copied from OneLogin.
   * **Client Secret**: The Client Secret you copied from OneLogin.

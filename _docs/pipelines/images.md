@@ -1,26 +1,26 @@
 ---
-title: "Viewing Images in CSDP"
+title: "Viewing Images in Codefresh"
 description: ""
 group: pipelines
 toc: true
 ---
 
 Building Docker images is one of the most basic requirements for creating Delivery Pipelines. 
-Once you create an image, push the image to a registry, and report it to CSDP, image information is continually updated in the CSDP UI. 
+Once you create an image, push the image to a registry, and report it to Codefresh, image information is continually updated in the Codefresh UI. 
 
-### Requirements for images in CSDP
-Complete the mandatory steps to see your images in CSDP. Each step has links to examples in the Codefresh Hub for Argo.  
+### Requirements for images in Codefresh
+Complete the mandatory steps to see your images in Codefresh. Each step has links to examples in the Codefresh Hub for Argo.  
 
 1. (Mandatory) Build the Docker image, and push the image to any registry.  
   See [Create a Docker image using Kaniko](https://codefresh.io/argohub/workflow-template/kaniko){:target="\_blank"}.
 1. (Optional) Enrich image information with annotations and metadata.  
-  For Git and Jira image enrichment examples, see [CSDP-metadata image enrichment](https://codefresh.io/argohub/workflow-template/CSDP-metadata){:target="\_blank"}.
-1. (Mandatory) Report image information to CSDP.  
+  For Git and Jira image enrichment examples, see [Codefresh-metadata image enrichment](https://codefresh.io/argohub/workflow-template/CSDP-metadata){:target="\_blank"}.
+1. (Mandatory) Report image information to Codefresh.  
   See the [report-image-info](https://github.com/codefresh-io/argo-hub/blob/main/workflows/codefresh-csdp/versions/0.0.6/docs/report-image-info.md){:target="\_blank"} example.
   
 
-### Image views in CSDP 
-* In the CSDP UI, go to [Images](https://g.codefresh.io/2.0/images){:target="\_blank"}.
+### Image views in Codefresh 
+* In the Codefresh UI, go to [Images](https://g.codefresh.io/2.0/images){:target="\_blank"}.
 
 Image views are layered to show three levels of data: 
 * Repository and application deployment
@@ -28,7 +28,7 @@ Image views are layered to show three levels of data:
 * Summary with metadata and binary information 
 
 #### Filters for image views
-As with any resource in CSDP, image views support filters that allow you focus on the data that's important to you.
+As with any resource in Codefresh, image views support filters that allow you focus on the data that's important to you.
 Most image filters support multi-selection.  Unless otherwise indicated, the filters are common to all view levels.
 
 {: .table .table-bordered .table-hover}
@@ -52,8 +52,8 @@ The default view for image resources shows repository and deployment information
    lightbox="true" 
    file="/images/image/application-level.png" 
    url="/images/image/application-level.png" 
-   alt="Repository & deployment info for Images in CSDP" 
-   caption="Repository & deployment info for Images in CSDP"
+   alt="Repository & deployment info for Images in Codefresh" 
+   caption="Repository & deployment info for Images in Codefresh"
    max-width="30%" 
    %}
 
@@ -73,8 +73,8 @@ Drilldown on the repository shows tag information for the image.
    lightbox="true" 
    file="/images/image/tag-view.png" 
    url="/images/image/tag-view.png" 
-   alt="Tag info for Images in CSDP" 
-   caption="Tag info for Images in CSDP"
+   alt="Tag info for Images in Codefresh" 
+   caption="Tag info for Images in Codefresh"
    max-width="30%" 
    %}
 
@@ -97,8 +97,8 @@ Selecting **more details** for an image tag.
    lightbox="true" 
    file="/images/image/summary-view.png" 
    url="/images/image/summary-view.png" 
-   alt="Summary info for Images in CSDP" 
-   caption="Summary info for Images in CSDP"
+   alt="Summary info for Images in Codefresh" 
+   caption="Summary info for Images in Codefresh"
    max-width="30%" 
    %}
 
