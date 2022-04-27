@@ -47,7 +47,7 @@ View the pipelines in Codefresh.
    max-width="30%" 
    %}  
 
-   * The `githb/hello-world` pipeline has not been triggered as it requires a Git event to trigger it. 
+   * The `github/hello-world` pipeline has not been triggered as it requires a Git event to trigger it. 
    * The `cron/hello-world` pipeline shows statistics as it has already been triggered based on the `cron` interval.  
 
 ### View and update manifest
