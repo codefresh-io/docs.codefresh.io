@@ -480,6 +480,8 @@
   pages:
     - title: Single Sign-On (SSO) Overview
       url: /sso-overview
+    - title: Synchronize Teams
+      url: /team-sync
     - title: OpenID Connect
       url: /oidc
       sub-pages:
@@ -496,8 +498,14 @@
     - title: SAML
       url: /saml
       sub-pages:
-        - title: test
-          url: /test
+        - title: Google
+          url: /saml-google
+        - title: JumpCloud
+          url: /saml-jumpcloud
+        - title: OneLogin
+          url: /saml-onelogin
+        - title: PingID SSO
+          url: /saml-pingidsso
     - title: LDAP
       url: /ldap
 

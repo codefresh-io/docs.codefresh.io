@@ -1,5 +1,5 @@
 ---
-title: "Okta"
+title: "Okta (OIDC)"
 description: "Setting Up Okta Single Sign-On (SSO)"
 group: single-sign-on
 sub_group: oidc

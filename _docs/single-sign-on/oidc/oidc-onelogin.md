@@ -1,6 +1,6 @@
 ---
-title: "OneLogin"
-description: "Setting Up OneLogin Federated Single Sign-On (SSO)"
+title: "OneLogin (OIDC)"
+description: "Setting Up OneLogin Single Sign-On (SSO)"
 group: single-sign-on
 sub_group: oidc
 toc: true

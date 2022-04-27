@@ -2,8 +2,6 @@
 title: "LDAP"
 description: "Setting Up LDAP Single Sign-On (SSO)"
 group: single-sign-on
-redirect_from:
-  - /docs/single-sign-on/ldap
 toc: true
 ---
 

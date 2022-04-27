@@ -1,5 +1,5 @@
 ---
-title: "Azure"
+title: "Azure (OIDC)"
 description: "Setting Up Azure Single Sign-On (SSO)"
 group: single-sign-on
 sub_group: oidc

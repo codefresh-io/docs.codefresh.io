@@ -1,6 +1,6 @@
 ---
-title: "Google"
-description: "Setting Up Google IDP Single Sign-On (SSO)"
+title: "Google (OIDC)"
+description: "Setting Up Google Single Sign-On (SSO)"
 group: single-sign-on
 sub_group: oidc
 toc: true

@@ -2,8 +2,6 @@
 title: "Setting Up OpenID Connect Federated Single Sign-On (SSO)"
 description: ""
 group: single-sign-on
-redirect_from:
-  - /docs/single-sign-on/oidc
 toc: true
 ---
 
