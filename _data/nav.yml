@@ -47,7 +47,6 @@
     - title: Debugging pipelines
       url: "/debugging-pipelines"
 
-
 - title: Learn by example
   url: "/learn-by-example"
   pages:
@@ -467,25 +466,6 @@
       url: "/pipeline-execution-context"
     - title: Pipeline Settings
       url: "/pipeline-settings"
-    - title: Single Sign-On
-      url: "/single-sign-on"
-      sub-pages:
-        - title: SAML2
-          url: "/sso-setup-saml2"
-        - title: OpenID Connect
-          url: "/sso-setup-oauth2"
-        - title: Auth0
-          url: "/sso-auth0"
-        - title: Azure
-          url: "/sso-azure"
-        - title: Google
-          url: "/sso-google"
-        - title: LDAP
-          url: "/sso-ldap"
-        - title: Okta
-          url: "/sso-okta"
-        - title: OneLogin
-          url: "/sso-onelogin"
     - title: Access Control
       url: "/access-control"
     - title: Audit Logs
@@ -494,6 +474,32 @@
       url: "/codefresh-hybrid"
     - title: Codefresh Platform IPs
       url: "/platform-ip-addresses"
+
+- title: Single Sign-On
+  url: /single-sign-on
+  pages:
+    - title: Single Sign-On (SSO) Overview
+      url: /sso-overview
+    - title: OpenID Connect
+      url: /oidc
+      sub-pages:
+        - title: Auth0
+          url: /oidc-auth0
+        - title: Azure
+          url: /oidc-azure
+        - title: Google
+          url: /oidc-google
+        - title: Okta
+          url: /oidc-okta
+        - title: OneLogin
+          url: /oidc-onelogin
+    - title: SAML
+      url: /saml
+      sub-pages:
+        - title: test
+          url: /test
+    - title: LDAP
+      url: /ldap
 
 - title: Incubation
   url: "/incubation"
@@ -555,6 +561,7 @@
       url: "/git-step-migration"
     - title: Personal Git Deprecation
       url: "/personal-git-deprecation"
+
 - title: What's New?
   url: "/whats-new"
   pages:
