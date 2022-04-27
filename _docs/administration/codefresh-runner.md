@@ -142,6 +142,7 @@ To install the Codefresh Runner using Helm, follow these steps:
     
     helm install cf-runtime cf-runtime/cf-runtime -f ./generated_values.yaml --create-namespace --namespace codefresh
     ```
+   * Here is the link to a repository with the chart for reference: [https://github.com/codefresh-io/venona/tree/release-1.0/charts/cf-runtime](https://github.com/codefresh-io/venona/tree/release-1.0/charts/cf-runtime)
 
 4. At this point you should have a working Codefresh Runner. You can verify the installation by running:
 
