@@ -1,6 +1,6 @@
 ---
-title: "Setting Up OpenID Connect Federated Single Sign-On (SSO)"
-description: ""
+title: "OpenID Connect"
+description: "Setting Up OpenID Connect Federated Single Sign-On (SSO)"
 group: single-sign-on
 toc: true
 ---

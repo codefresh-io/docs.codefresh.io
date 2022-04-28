@@ -1,6 +1,6 @@
 ---
-title: "Setting Up SAML2 Federated Single Sign-On (SSO)"
-description: ""
+title: "SAML"
+description: "Setting Up SAML2 Federated Single Sign-On (SSO)"
 group: single-sign-on
 toc: true
 ---

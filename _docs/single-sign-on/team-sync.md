@@ -14,7 +14,7 @@ You can do this via the [Codefresh Cli](https://codefresh-io.github.io/cli/) and
 
 For example, to sync you azure teams you can execute
 
-```bash
+```shell
 codefresh synchronize teams my-client-name -t azure
 ```
 
@@ -95,7 +95,9 @@ The Personal Access Token (PAT) from a user will sync ALL Organizations and ALL 
 
 1. Create a PAT that has access to read organizations and teams
 1. Install and configure the Codefresh CLI
-codefresh synchronize teams github -t github --tk $GHTOKEN
+
+    `codefresh synchronize teams github -t github --tk $GHTOKEN`
+
 1. The sync will invite all users except for those that have private email settings turned on.
 
 Once the initial sync happens, you can set up a cron trigger pipeline to run the command on a schedule.
