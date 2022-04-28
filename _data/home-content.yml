@@ -244,13 +244,14 @@
   - title: User Settings
     localurl: /docs/administration/user-settings   
   - title: Single Sign on
-    localurl: /docs/administration/single-sign-on
+    localurl: /docs/single-sign-on/sso-overview
   - title: Access Control
     localurl: /docs/administration/access-control
   - title: Audit Logs
     localurl: /docs/administration/audit-logs
   - title: Platform IPs
     localurl: /docs/administration/platform-ip-addresses
+
 - title: "Incubation"
   icon: images/home-icons/plugins.svg
   url: ''

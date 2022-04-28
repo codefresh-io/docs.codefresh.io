@@ -1,21 +1,18 @@
 ---
 title: "LDAP"
 description: "Setting Up LDAP Single Sign-On (SSO)"
-group: administration
-sub_group: single-sign-on
-redirect_from:
-  - /docs/enterprise/single-sign-on/sso-ldap/
+group: single-sign-on
 toc: true
 ---
 
 To access the SSO configuration at the account level.
 
-1.  Click on your avatar at the top right of the GUI and select *Account settings*.
+1. Click on your avatar at the top right of the GUI and select *Account settings*.
 1. In the new screen, select *Single Sign-on* from the left sidebar.
 
-{% include image.html 
-lightbox="true" 
-file="/images/administration/sso/add-sso-dropdown.png" 
+{% include image.html
+lightbox="true"
+file="/images/administration/sso/add-sso-dropdown.png"
 url="/images/administration/sso/add-sso-dropdown.png"
 alt="SSO provider settings"
 caption="SSO provider settings"
@@ -33,10 +30,9 @@ Make sure also that you know the scope of the search (i.e. where users are locat
 
 Once you have that information, fill the fields as shown below:
 
-
-{% include image.html 
-lightbox="true" 
-file="/images/administration/sso/ldap/ldap-settings-example.png" 
+{% include image.html
+lightbox="true"
+file="/images/administration/sso/ldap/ldap-settings-example.png"
 url="/images/administration/sso/ldap/ldap-settings-example.png"
 alt="LDAP settings"
 caption="LDAPS settings"
@@ -59,5 +55,3 @@ Each user that logins into Codefresh must:
 1. Have a defined email address in the LDAP server
 1. Use an email address that is the same as defined in the LDAP server
 1. Use as login information their LDAP email, password and `cn` value of username
-
-
