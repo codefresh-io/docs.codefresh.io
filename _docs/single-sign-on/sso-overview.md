@@ -1,6 +1,6 @@
 ---
 title: "Federated Single Sign-On (SSO) Overview"
-description: ""
+description: "Information about SSO and Codefresh"
 group: single-sign-on
 redirect_from:
   - /docs/single-sign-on

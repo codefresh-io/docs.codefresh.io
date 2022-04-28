@@ -6,9 +6,9 @@ sub_group: saml
 toc: true
 ---
 
-Below describes how to set up OneLogin for Single Sing On with Codefresh using SAML.  If you do not have the SAML option, please create a support ticket enable SAML for the account account.
+## Setup Instructions
 
-## Instructions
+Below describes how to set up OneLogin for Single Sing On with Codefresh using SAML.  If you do not have the SAML option, please create a support ticket enable SAML for the account account.
 
 ### In OneLogin
 

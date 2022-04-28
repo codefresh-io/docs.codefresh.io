@@ -478,7 +478,7 @@
 - title: Single Sign-On
   url: /single-sign-on
   pages:
-    - title: Single Sign-On (SSO) Overview
+    - title: SSO Overview
       url: /sso-overview
     - title: Synchronize Teams
       url: /team-sync

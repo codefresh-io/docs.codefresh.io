@@ -6,11 +6,11 @@ sub_group: saml
 toc: true
 ---
 
+## Setup Instructions
+
 Below describes how to set up PingID SSO for Single Sing On with Codefresh using SAML.  If you do not have the SAML option, please create a support ticket to enable SAML for the account.
 
 > Note: This is for PingID SSO and not PingID Federate.  Steps can be used as a general guide for Ping Federate.
-
-## Instructions
 
 ### In Codefresh
 
