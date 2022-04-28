@@ -32,32 +32,29 @@ that the Codefresh platform is using. This will allow you to deploy to your clus
 - 44.228.66.171
 - 44.238.167.159
 - 44.237.63.217
- 
-
 
 All the IPs are NAT gateways, and therefore you only need to enable specific IPs instead of ranges.
 
->If you do use these IPs we **strongly encourage** regular monitoring of this doc page.
+> We have a plain text version of the IP Addresses located [here]({{site.baseurl}}/docs/administration/cf-ip4.txt). Recomended if you need it for monitoring changes.
 
-
-## Old Codefresh IPs 
+## Old Codefresh IPs
 
 These IP addresses have been removed, please replace these with the IP addresses above.
 
-- 104.154.63.253    
-- 104.197.160.122    
-- 18.213.176.41    
-- 13.59.201.170    
-- 104.155.130.126    
-- 147.234.23.250    
-- 34.233.31.180  
-- 104.154.99.188     
-- 146.148.100.14    
+- 104.154.63.253
+- 104.197.160.122
+- 18.213.176.41
+- 13.59.201.170
+- 104.155.130.126
+- 147.234.23.250
+- 34.233.31.180
+- 104.154.99.188
+- 146.148.100.14
 - 34.237.229.16
 
 ## What to read next
 
-* [Codefresh installation options]({{site.baseurl}}/docs/administration/installation-security/)
-* [Codefresh runner]({{site.baseurl}}/docs/administration/codefresh-runner/)
-* [Codefresh behind the firewall]({{site.baseurl}}/docs/administration/behind-the-firewall/)
-* [Managing your Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/)
+- [Codefresh installation options]({{site.baseurl}}/docs/administration/installation-security/)
+- [Codefresh runner]({{site.baseurl}}/docs/administration/codefresh-runner/)
+- [Codefresh behind the firewall]({{site.baseurl}}/docs/administration/behind-the-firewall/)
+- [Managing your Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/)
