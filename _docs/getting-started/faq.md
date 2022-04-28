@@ -31,8 +31,9 @@ A. We will be giving detailed instructions on migrating resources from Kubernete
 **Q. Does Codefresh support all Git providers?**  
 A. At the time of writing, Codefresh supports GitHub. We are working to quickly extend support to GitLab and Bitbucket. Stay tuned.
 
-**Q. What are the browser requirements for the Codefresh UI?** 
-A. Officially we support the latest version of the Chrome browser. Any browser released in the last 2 years should work without any major issues.
+**Q. What are the browser requirements for the Codefresh UI?**  
+
+A. Officially, we support the latest version of the Chrome browser. Any browser released in the last couple of years should work without major issues.
 The following browser versions are **NOT** supported:
 
 {: .table .table-bordered .table-hover}
