@@ -498,8 +498,6 @@
     - title: SAML
       url: /saml
       sub-pages:
-        - title: Google
-          url: /saml-google
         - title: JumpCloud
           url: /saml-jumpcloud
         - title: OneLogin
