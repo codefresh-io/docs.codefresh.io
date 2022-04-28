@@ -33,8 +33,6 @@ A SAML2 based federated system comprises the following main components:
 
 A trust must be set up between the customer IdP and Codefresh SP. Once a trust has been set up and a user has been authenticated via the IdP using corporate credentials, the user can access Codefresh.
 
-{:.text-secondary}
-
 ## Why use Federated SSO
 
 Using federated SSO significantly simplifies cross-domain user management as follows:

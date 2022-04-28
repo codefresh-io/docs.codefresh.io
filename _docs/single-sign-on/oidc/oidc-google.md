@@ -7,7 +7,7 @@ toc: true
 ---
 
 In this page we will see the process of setting up Google IDP with Codefresh. For the general instructions of SSO setup
-see the [overview page]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/).
+see the [overview page]({{site.baseurl}}/docs/single-sign-on/oidc/).
 
 ## Create Client Secret
 
@@ -203,8 +203,8 @@ caption="SAML Sync Setting in Codefresh for Google GSuite"
 max-width="40%"
 %}
 
-Now you can [synchronize teams with the Codefresh CLI]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/#syncing-of-teams-after-initial-sso-setup) .
+Now you can [synchronize teams with the Codefresh CLI]({{site.baseurl}}/docs/single-sign-on/oidc/#syncing-of-teams-after-initial-sso-setup) .
 
 ## What to read next
 
-See the [overview page]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/#testing-your-identity-provider) on how to test the integration, activate SSO for collaborators and create sync jobs.
+See the [overview page]({{site.baseurl}}/docs/single-sign-on/oidc/#testing-your-identity-provider) on how to test the integration, activate SSO for collaborators and create sync jobs.

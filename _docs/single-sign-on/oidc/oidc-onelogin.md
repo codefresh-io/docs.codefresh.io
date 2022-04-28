@@ -7,7 +7,7 @@ toc: true
 ---
 
 In this page we will see the process of setting up OneLogin SSO with Codefresh. For the general instructions of SSO setup
-see the [overview page]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/).
+see the [overview page]({{site.baseurl}}/docs/single-sign-on/oidc/).
 
 ## Setting OneLogin as an Identity provider
 
@@ -82,8 +82,8 @@ In the configuration screen fill in the following:
 * `CLIENT ID` - Use the value you got from the previous section
 * `CLIENT SECRET` - Use the value you got from the previous section
 * `DOMAIN` - domain to be used for authentication (optional, only for users that must connect via a custom domain)
-* `API CLIEND ID` - Used for [team sync]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/#syncing-of-teams-after-initial-sso-setup) only. See the [official documentation](https://developers.onelogin.com/api-docs/1/getting-started/working-with-api-credentials) for details
-* `API CLIENT SECRET` - Used for [team sync]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/#syncing-of-teams-after-initial-sso-setup) only. See the [official documentation](https://developers.onelogin.com/api-docs/1/getting-started/working-with-api-credentials) for details
+* `API CLIEND ID` - Used for [team sync]({{site.baseurl}}/docs/single-sign-on/oidc/#syncing-of-teams-after-initial-sso-setup) only. See the [official documentation](https://developers.onelogin.com/api-docs/1/getting-started/working-with-api-credentials) for details
+* `API CLIENT SECRET` - Used for [team sync]({{site.baseurl}}/docs/single-sign-on/oidc/#syncing-of-teams-after-initial-sso-setup) only. See the [official documentation](https://developers.onelogin.com/api-docs/1/getting-started/working-with-api-credentials) for details
 
 {% include image.html
 lightbox="true"
@@ -130,4 +130,4 @@ This concludes the SSO setup for OneLogin.
 
 ## What to read next
 
-See the [overview page]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/#testing-your-identity-provider) on how to test the integration, activate SSO for collaborators and create sync jobs.
+See the [overview page]({{site.baseurl}}/docs/single-sign-on/oidc/#testing-your-identity-provider) on how to test the integration, activate SSO for collaborators and create sync jobs.

@@ -7,7 +7,7 @@ toc: true
 ---
 
 In this page we will see the process of setting up Okta SSO with Codefresh. For the general instructions of SSO setup
-see the [overview page]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/).
+see the [overview page]({{site.baseurl}}/docs/single-sign-on/oidc/).
 
 ## Setting Okta as an Identity provider
 
@@ -133,7 +133,7 @@ This concludes the SSO setup for Okta.
 
 ## How Okta syncing works
 
-It is important to notice that [syncing with Okta]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/#syncing-of-teams-after-initial-sso-setup)
+It is important to notice that [syncing with Okta]({{site.baseurl}}/docs/single-sign-on/oidc/#syncing-of-teams-after-initial-sso-setup)
 only affects teams/groups and not individuals/persons.
 
 You can assign an Okta application in both groups and individual people. Codefresh will only sync people that are inside teams. Newly created people in Okta that are *not* assigned in a team will **NOT** be synced to Codefresh. You should assign them to a team first and then they will be synced as part of team.
@@ -142,7 +142,7 @@ You can assign an Okta application in both groups and individual people. Codefre
 
 There are two ways that you can setup automatic syncing of teams.
 
-First you can create a Codefresh pipeline the runs the CLI command `codefresh synchronize teams my-okta-client-name -t okta` as explained in the [pipeline sync page]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/#syncing-of-teams-after-initial-sso-setup).
+First you can create a Codefresh pipeline the runs the CLI command `codefresh synchronize teams my-okta-client-name -t okta` as explained in the [pipeline sync page]({{site.baseurl}}/docs/single-sign-on/oidc/#syncing-of-teams-after-initial-sso-setup).
 
 Alternatively, you can setup completely automated syncing by enabling the auto-sync toggle found in the top right of the integration:
 
@@ -159,4 +159,4 @@ If you enable this, every 12 hours Codefresh will sync teams on its own without 
 
 ## What to read next
 
-See the [overview page]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/#testing-your-identity-provider) on how to test the integration, activate SSO for collaborators and create sync jobs.
+See the [overview page]({{site.baseurl}}/docs/single-sign-on/oidc/#testing-your-identity-provider) on how to test the integration, activate SSO for collaborators and create sync jobs.

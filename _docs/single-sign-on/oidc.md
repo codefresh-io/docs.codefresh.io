@@ -60,23 +60,23 @@ sections we will outline the details for each one.
 
 ### Setting Auth0 as an Identity provider
 
-See the [Auth0 instructions]({{site.baseurl}}/docs/administration/single-sign-on/sso-auth0/).
+See the [Auth0 instructions]({{site.baseurl}}/docs/single-sign-on/oidc/oidc-auth0/).
 
 ### Setting Azure as an Identity provider
 
-See the [Azure instructions]({{site.baseurl}}/docs/administration/single-sign-on/sso-azure/).
+See the [Azure instructions]({{site.baseurl}}/docs/single-sign-on/oidc/oidc-azure/).
 
 ### Setting Google as an Identity provider
 
-See the [Google instructions]({{site.baseurl}}/docs/administration/single-sign-on/sso-google/).
+See the [Google instructions]({{site.baseurl}}/docs/single-sign-on/oidc/oidc-google/).
 
 ### Setting Okta as an Identity Provider
 
-See the [Okta instructions]({{site.baseurl}}/docs/administration/single-sign-on/sso-okta/).
+See the [Okta instructions]({{site.baseurl}}/docs/single-sign-on/oidc/oidc-okta/).
 
 ### Setting OneLogin as an Identity Provider
 
-See the [OneLogin instructions]({{site.baseurl}}/docs/administration/single-sign-on/sso-onelogin/).
+See the [OneLogin instructions]({{site.baseurl}}/docs/single-sign-on/oidc/oidc-onelogin/).
 
 ## Testing your Identity provider
 

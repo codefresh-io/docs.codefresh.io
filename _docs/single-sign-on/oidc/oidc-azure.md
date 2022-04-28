@@ -7,11 +7,11 @@ toc: true
 ---
 
 In this page we will see the process of setting up Azure SSO with Codefresh. For the general instructions of SSO setup
-see the [overview page]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/).
+see the [overview page]({{site.baseurl}}/docs/single-sign-on/oidc/).
 
 ## Prerequisites
 
-Make sure that your user in Azure has the *Application Administrator* or *Global Administrator* roles. If the user that creates the Azure application does not belong to either of these roles, you will not be able to [sync teams from Azure to Codefresh]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/#syncing-of-teams-after-initial-sso-setup) after the SSO integration is complete.
+Make sure that your user in Azure has the *Application Administrator* or *Global Administrator* roles. If the user that creates the Azure application does not belong to either of these roles, you will not be able to [sync teams from Azure to Codefresh]({{site.baseurl}}/docs/single-sign-on/oidc//#syncing-of-teams-after-initial-sso-setup) after the SSO integration is complete.
 
 We strongly suggest that the Azure user who creates the integration is part of *Application Administrator* or *Global Administrator* roles.
 
@@ -145,7 +145,7 @@ Click on *Add* and the key will be displayed. **Make sure to copy the value of t
 
 ## Enter details on the Codefresh side
 
-Go back to the SSO settings screen described in the [first part of this guide]({{site.baseurl}}/docs/enterprise/single-sign-on/sso-setup-oauth2/#identity-provider-options) inside the Codefresh GUI.
+Go back to the SSO settings screen described in the [first part of this guide]({{site.baseurl}}/docs/single-sign-on/oidc/#identity-provider-options) inside the Codefresh GUI.
 
 You need to enter the following:
 
@@ -214,4 +214,4 @@ This concludes the SSO setup for Azure.
 
 ## What to read next
 
-See the [overview page]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/#testing-your-identity-provider) on how to test the integration, activate SSO for collaborators and create sync jobs.
+See the [overview page]({{site.baseurl}}/docs/single-sign-on/oidc/#testing-your-identity-provider) on how to test the integration, activate SSO for collaborators and create sync jobs.
