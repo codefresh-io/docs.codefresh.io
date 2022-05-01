@@ -424,7 +424,9 @@
     - title: Helm Integration
       url: "/helm" 
     - title: ArgoCD Integration
-      url: "/argocd"       
+      url: "/argocd" 
+    - title: Datadog Integration
+      url: "/datadog"         
     - title: Jira Integration
       url: "/jira"       
     - title: Jenkins Integration
