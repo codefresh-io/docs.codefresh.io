@@ -8,6 +8,9 @@ toc: true
 ---
 ## 2022
 
+### May 2022
+- Datadog integration - [documentation]({{site.baseurl}}/docs/integrations/datadog)
+
 ### April 2022
 - (On-premises only) Backward compatibility for infrastructure services - [documentation]({{site.baseurl}}/docs/administration/codefresh-on-prem/#backward-compatibility-for-infrastructure-services)
 - (On-premises only) High-Availability with active-passive clusters - [documentation]({{site.baseurl}}/docs/administration/codefresh-on-prem/#high-availability-ha-with-active-passive-clusters)
