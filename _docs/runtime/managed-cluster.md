@@ -27,7 +27,7 @@ Optionally, to first generate the YAML manifests, and then manually apply them, 
 
 1. In the Codefresh UI, go to the [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"} page.
 1. From either the **Topology** or **List** views, select the runtime to which to add the cluster. 
-1. Topology View: Select ![](/images/icons/add-cluster.png?display=inline-block).  
+1. Topology View: Select {::nomarkdown}<img src="../../../images/icons/add-cluster.png" display=inline-block/>{:/}.  
   List View: Select the **Managed Clusters** tab, and then select **+ Add Cluster**.  
 1. In the Add Managed Cluster panel:
   * **Cluster Name**: Enter the context name for your cluster (as it appears in your kubeconfig file). 
@@ -212,6 +212,10 @@ Use the Topology or List runtime views to work with managed clusters. For inform
   Install components on one or more managed clusters, and monitor deployed application status and data in the Applications dashboard. 
   Uninstalling a component from one or more managed clusters do not affect the runtime, but removes the data from those components Applications dashboard.  
 
+**Install Argo Rollouts**  
+
+  Install Argo Rollouts directly from Codefresh. If your managed cluster does not have Argo Rollouts, an **Install Argo Rollouts** button is displayed on selecting the managed cluster.  
+
 **Automatic upgrade**   
   As the components are managed as part of the runtime, updates to the runtime automatically updates the components on all the managed clusters that include it.  
 
@@ -225,6 +229,7 @@ Use the Topology or List runtime views to work with managed clusters. For inform
 1. Do one of the following:
     * In the Topology View, select the cluster node from the runtime it is registered to. 
     * In the List View, select the runtime, and then select the **Managed Clusters** tab.
+1. To install Argo Rollouts (Topology View only), select **Install Argo Rollouts**. 
 1. To uninstall a cluster component from the list, select the three dots next to the component, and then select **Uninstall**.
 1. To remove the cluster from the list managed by the runtime, select the three dots next to the cluster name, and then select **Uninstall**.
 
