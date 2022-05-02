@@ -70,6 +70,8 @@
       url: "/add-users"
     - title: Git tokens
       url: "/git-tokens"
+    - title: Manage Git personal access tokens
+      url: /docs/administration/user-settings/
     - title: Single Sign-On
       url: "/single-sign-on"
       sub-pages:
