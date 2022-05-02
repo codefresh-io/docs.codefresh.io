@@ -98,6 +98,11 @@
     - title: Codefresh platform IPs
       url: "/platform-ip-addresses"
 
+- title: What's New?
+  url: "/whats-new"
+  pages:
+    - title: What's new in CSDP
+      url: "/whats-new"
 
 - title: Troubleshooting
   url: "/troubleshooting"
