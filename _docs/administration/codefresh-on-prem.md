@@ -754,7 +754,7 @@ postgresql:
 
 ### Configuring an external MongoDB
 
-Codefresh recommends to use the Bitnami MongoDB [chart](https://github.com/bitnami/charts/tree/master/bitnami/mongodb) as a Mongo database. The supported version of Mongo is 3.6.x
+Codefresh recommends to use the Bitnami MongoDB [chart](https://github.com/bitnami/charts/tree/master/bitnami/mongodb) as a Mongo database. The supported version of Mongo is 4.2.x
 
 To configure Codefresh on-premises to use an external Mongo service one needs to provide the following values in `config.yaml`:
 
