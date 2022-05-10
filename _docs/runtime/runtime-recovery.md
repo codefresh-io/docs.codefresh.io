@@ -17,20 +17,20 @@ Restoring the runtime:
   `ingressController`  
   `ingressHost` 
 
-### Before you begin
+
+### How to restore a runtime
+Reinstall the runtime from the existing installation repository to restore it to the same or a different cluster.  
+
+**Before you begin**
 
 * Have the following information handy: 
-  > All values must be the identical to the runtime to restore. 
+  > All values must be the identical to the runtime to be restored. 
   * Runtime name
   * Repository URL
   * Codefresh context
   * Kube context: Required if you are restoring to the same cluster
 
-* Make sure you have a registered Git integration  
-
-
-### How to restore a runtime
-Reinstall the runtime from the existing installation repository to restore it to the same or a different cluster.  
+**How to**
 
 1. Run:  
   `cf runtime install --from-repo`

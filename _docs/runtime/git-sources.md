@@ -39,8 +39,8 @@ Create Git Sources for any provisioned runtime.  The Git Sources will be availab
 >Make sure you are in the List View to create Git Sources. 
 
 1. In the Codefresh UI, go to the [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes**){:target="\_blank"} page.
-1. In the List View, select the runtime for which to add a Git Source, and select **Create Git Sources**.
-1. In the Create Git Source panel, define the definitions for the Git Source: 
+1. In the List View, select the runtime for which to add a Git Source, and then select the **Git Sources** tab.  
+1. Select **Create Git Sources**, and in the Create Git Source panel, define the definitions for the Git Source: 
 
      {% include 
 	image.html 
