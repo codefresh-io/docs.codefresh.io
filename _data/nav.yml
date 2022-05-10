@@ -47,6 +47,8 @@
       url: "/managed-cluster" 
     - title: Add and manage Git Sources
       url: "/git-sources"
+    - title: Restore runtimes
+      url: "/runtime-recovery"
 
 - title: Pipelines
   url: "/pipelines"

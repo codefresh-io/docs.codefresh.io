@@ -14,6 +14,7 @@ Add managed clusters through:
 * Kustomize
 
 Adding a managed cluster via Codefresh ensures that Codefresh applies the required RBAC resources (`ServiceAccount`, `ClusterRole` and `ClusterRoleBinding`) to the target cluster, creates a `Job` that updates the selected runtime with the information, registers the cluster in Argo CD as a managed cluster, and updates the platform with the new cluster information.
+ 
 
 ### How to add a managed cluster with Codefresh CLI
 Add the external cluster to a provisioned runtime through the Codefresh CLI.  
@@ -236,3 +237,4 @@ Use the Topology or List runtime views to work with managed clusters. For inform
 ### What to read next
 [Manage runtimes]({{site.baseurl}}/docs/runtime/monitor-manage-runtimes/)  
 [Manage Git Sources]({{site.baseurl}}/docs/runtime/git-sources/)
+[Recover runtimes]({{site.baseurl}}/docs/runtime/runtime-recovery/)

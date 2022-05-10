@@ -39,6 +39,9 @@
       localurl: /docs/runtime/managed-cluster/
     - title:  Add and manage Git Sources
       localurl: /docs/runtime/git-sources/
+    - title:  Restore runtimes
+      localurl: /docs/runtime/runtime-recovery/
+
 
 - title: Pipelines
   icon: images/home-icons/pipeline.svg

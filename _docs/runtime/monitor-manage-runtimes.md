@@ -9,6 +9,8 @@ toc: true
 The **Runtimes** page displays the runtimes deployed across your environment, which you can view in List or Topology view formats.
 Work in the view mode of your choice to monitor and manage runtimes. 
 
+> To recover a runtime for a failed cluster, see [Recover runtimes]({{site.baseurl}}/docs/runtime/runtime-recovery/).
+
 ### Runtime views
 View provisioned runtimes in List or Topology view formats.  
 * List view: The default view, displays the list of runtimes, the clusters managed by them, and Git Sources.  
