@@ -46,7 +46,7 @@ On the *Applications* page, select *Create App Integration*.
     max-width="80%"
     %}
 
-On the *Create a New Application Integration* pop-up window, select OIDC - OpenID Connect as the *Sign on method* and choose Web Application as the *Application Type*. Click Next to proceed.
+On the *Create a New Application Integration* pop-up window, select OIDC - OpenID Connect as the *Sign on method* and Web Application as the *Application Type*. Click Next to proceed.
 
     {% include image.html
     lightbox="true"
@@ -125,7 +125,7 @@ Note it down.
     url="/images/administration/sso/okta/image9.png"
     alt="Client name"
     caption="Client name"
-    max-width="80%"
+    max-width="90%"
     %}
 
 {:start="5"}
