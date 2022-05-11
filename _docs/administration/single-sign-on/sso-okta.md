@@ -26,7 +26,7 @@ caption="Okta Dashboard"
 max-width="70%"
 %}
 
-Using the list of shortcuts at the right-hand side of the screen, click *Add Applications*.
+Using the list of shortcuts at the left-hand side of the screen, select *Applications*.
 
 {% include image.html 
 lightbox="true" 
@@ -37,7 +37,7 @@ caption="Okta Applications"
 max-width="70%"
 %}
 
-On the *Add Application* page, select *Create App Integration*.
+On the *Applications* page, select *Create App Integration*.
 
 {% include image.html 
 lightbox="true" 
@@ -48,7 +48,7 @@ caption="Create new application"
 max-width="70%"
 %}
 
-On the *Create a New Application Integration* pop-up window, select Web as the Platform for Codefresh application, and choose OpenID Connect as the *Sign on method*. Click Create to proceed.
+On the *Create a New Application Integration* pop-up window, select OIDC - OpenID Connect as the *Sign on method* and choose Web Application as the *Application Type*. Click Next to proceed.
 
 {% include image.html 
 lightbox="true" 
@@ -62,9 +62,9 @@ max-width="70%"
 {:start="2"}
 1. You will now create your OIDC integration. On the *General Settings* page, provide the following:
 
-* App name (e.g. Codefresh)
-* App logo (optional). Feel free to download and add this [picture]({{site.baseurl}}/images/administration/sso/okta/codefresh-logo.png)
-* Login redirect URI: `https://g.codefresh.io/api/auth/<your_codefresh_client_name>/callback` you’ll be able to extract your Codefresh client name a bit later in the process so we’ll need to come back to this and update it again - for now please use a temp value such as `https://g.codefresh.io/api/auth/temp/callback`
+* App Integration name (e.g. Codefresh)
+* Logo (optional). Feel free to download and add this [picture]({{site.baseurl}}/images/administration/sso/okta/codefresh-logo.png)
+* Sign-in redirect URI: `https://g.codefresh.io/api/auth/<your_codefresh_client_name>/callback` you’ll be able to extract your Codefresh client name a bit later in the process, so we’ll need to come back to this and update it again - for now please use a temp value such as `https://g.codefresh.io/api/auth/temp/callback`
 
 
 {% include image.html 
@@ -84,11 +84,11 @@ Click *Save* to proceed.
 You need to enter the following:
 
 * *Display Name* - shown as application name in OKTA.
-* *client id* - your OKTA application client ID (see below).
-* client secret* - your OKTA application client secret (see below).
-* Client Host - your OKTA organization url (e.g `https://<company>.okta.com`). Keep in mind you don’t copy it from the admin view (e.g. `https://<company>-admin.okta.com`) because it’ll not work.
-* *Access Token* (optional) - OKTA API token that will be used to sync groups and users from OKTA to Codefresh. The token can be generated in OKTA by going to the security tab->API (see below). Read-only access permissions is needed.
-* *App ID* - your Codefresh application ID in your OKTA organization that will be used to sync groups and users from OKTA to Codefresh. This ID can be taken by navigating to your Codefresh APP in OKTA and copy it from the URL (see below).
+* *Client ID* - your OKTA application client ID (see below).
+* *Client secret* - your OKTA application client secret (see below).
+* *Client Host* - your OKTA organization url (e.g `https://<company>.okta.com`). Keep in mind you don’t copy it from the admin view (e.g. `https://<company>-admin.okta.com`) because it’ll not work.
+* *Access Token* (optional) - OKTA API token that will be used to sync groups and users from OKTA to Codefresh. The token can be generated in OKTA by going to the Security tab -> API -> Tokens (see below). Read-only access permissions are needed.
+* *App ID* - your Codefresh application ID in your OKTA organization that will be used to sync groups and users from OKTA to Codefresh. This ID can be taken by navigating to your Codefresh APP in OKTA and copying it from the URL (see below).
 
 {% include image.html 
 lightbox="true" 
@@ -143,15 +143,15 @@ This concludes the SSO setup for Okta.
 It is important to notice that [syncing with Okta]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/#syncing-of-teams-after-initial-sso-setup)
 only affects teams/groups and not individuals/persons.
 
-You can assign an Okta application in both groups and individual people. Codefresh will only sync people that are inside teams. Newly created people in Okta that are _not_ assigned in a team will **NOT** be synced to Codefresh. You should assign them to a team first and then they will be synced as part of team.
+You can assign an Okta application in both groups and individual people. Codefresh will only sync people that are inside teams. Newly created people in Okta that are _not_ assigned to a team will **NOT** be synced to Codefresh. You should assign them to a team first, and then they will be synced as part of the team.
 
 ## Syncing of teams after initial SSO setup
 
-There are two ways that you can setup automatic syncing of teams.
+There are two ways that you can set up automatic syncing of teams.
 
-First you can create a Codefresh pipeline the runs the CLI command `codefresh synchronize teams my-okta-client-name -t okta` as explained in the [pipeline sync page]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/#syncing-of-teams-after-initial-sso-setup).
+First, you can create a Codefresh pipeline that runs the CLI command `codefresh synchronize teams my-okta-client-name -t okta` as explained in the [pipeline sync page]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/#syncing-of-teams-after-initial-sso-setup).
 
-Alternatively, you can setup completely automated syncing by enabling the auto-sync toggle found in the top right of the integration:
+Alternatively, you can set up completely automated syncing by enabling the auto-sync toggle found in the top right of the integration:
 
 {% include image.html 
 lightbox="true" 
