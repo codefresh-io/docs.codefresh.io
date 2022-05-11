@@ -54,7 +54,7 @@ On the *Create a New Application Integration* pop-up window, select OIDC - OpenI
     url="/images/administration/sso/okta/image4.png"
     alt="Choose Sign-on method"
     caption="Choose Sign-on method"
-    max-width="70%"
+    max-width="80%"
     %}
 
 {:start="2"}
@@ -71,7 +71,7 @@ On the *Create a New Application Integration* pop-up window, select OIDC - OpenI
     url="/images/administration/sso/okta/image5.png"
     alt="OpenID integration"
     caption="OpenID integration"
-    max-width="80%"
+    max-width="90%"
     %}
 
 Click *Save* to proceed.
