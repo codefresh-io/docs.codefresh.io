@@ -33,7 +33,7 @@ An intuitive selection mechanism enables you to easily select and configure each
 
 ### Delivery Pipeline creation flow
 Here's a high-level overview of the Delivery Pipeline creation flow.  
-For step-by-step instructions, see [How to: Create a Delivery Pipeline]({{site.baseurl}}/docs/pipelines/create-pipeline/#create-a-delivery-pipeline).
+For step-by-step instructions, see [How to: create a Delivery Pipeline]({{site.baseurl}}/docs/pipelines/create-pipeline/#how-to-create-a-delivery-pipeline).
 
 1. Define pipeline name and select Workflow Template to execute
 1. Define default values for pipeline workflow template arguments
@@ -46,7 +46,7 @@ The Delivery Pipeline creation flow starts with defining a name for the pipeline
 
 Both Argo and Codefresh have examples and libraries of Workflow Templates you can use:
 * For conceptual information on Argo Workflows, read the [official documentation](https://argoproj.github.io/argo-workflows/){:target="\_blank"}.
-* For examples of Workflow Templates in Argo, see their [documentation by example](https://github.com/argoproj/argo-workflows/blob/master/examples/README.md){:target="\_blank"} page.
+* For examples of Workflow Templates in Argo, see their [examples](https://github.com/argoproj/argo-workflows/tree/master/examples){:target="\_blank"} page.
 * For a fully-certified library of ready-to-use Workflow Templates by Codefresh, see [Codefresh Hub for Argo](https://codefresh.io/argohub/){:target="\_blank"}.
 
 In the Delivery Pipeline wizard, we have our starter Workflow Template to use as a base, or the option to select an existing one, or copy and paste any Workflow Template, and then modify as needed. 
