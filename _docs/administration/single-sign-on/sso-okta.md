@@ -19,8 +19,8 @@ On the general Okta dashboard, click *Admin*. This takes you to the Okta Admin D
 
 {% include image.html 
 lightbox="true" 
-file="/images/administration/sso/okta/image5.png" 
-url="/images/administration/sso/okta/image5.png"
+file="/images/administration/sso/okta/image1.png" 
+url="/images/administration/sso/okta/image1.png"
 alt="Okta Dashboard"
 caption="Okta Dashboard"
 max-width="70%"
@@ -30,19 +30,19 @@ Using the list of shortcuts at the right-hand side of the screen, click *Add App
 
 {% include image.html 
 lightbox="true" 
-file="/images/administration/sso/okta/image8.png" 
-url="/images/administration/sso/okta/image8.png"
+file="/images/administration/sso/okta/image2.png" 
+url="/images/administration/sso/okta/image2.png"
 alt="Okta Applications"
 caption="Okta Applications"
 max-width="70%"
 %}
 
-On the *Add Application* page, select *Create New App*.
+On the *Add Application* page, select *Create App Integration*.
 
 {% include image.html 
 lightbox="true" 
-file="/images/administration/sso/okta/image9.png" 
-url="/images/administration/sso/okta/image9.png"
+file="/images/administration/sso/okta/image3.png" 
+url="/images/administration/sso/okta/image3.png"
 alt="Create new application"
 caption="Create new application"
 max-width="70%"
@@ -52,8 +52,8 @@ On the *Create a New Application Integration* pop-up window, select Web as the P
 
 {% include image.html 
 lightbox="true" 
-file="/images/administration/sso/okta/image1.png" 
-url="/images/administration/sso/okta/image1.png"
+file="/images/administration/sso/okta/image4.png" 
+url="/images/administration/sso/okta/image4.png"
 alt="Choose Sign-on method"
 caption="Choose Sign-on method"
 max-width="70%"
@@ -69,8 +69,8 @@ max-width="70%"
 
 {% include image.html 
 lightbox="true" 
-file="/images/administration/sso/okta/image4.png" 
-url="/images/administration/sso/okta/image4.png"
+file="/images/administration/sso/okta/image5.png" 
+url="/images/administration/sso/okta/image5.png"
 alt="OpenID integration"
 caption="OpenID integration"
 max-width="70%"
@@ -92,8 +92,8 @@ You need to enter the following:
 
 {% include image.html 
 lightbox="true" 
-file="/images/administration/sso/okta/image7.png" 
-url="/images/administration/sso/okta/image7.png"
+file="/images/administration/sso/okta/image6.png" 
+url="/images/administration/sso/okta/image6.png"
 alt="Client ID and secret"
 caption="Client ID and secret"
 max-width="70%"
@@ -101,8 +101,8 @@ max-width="70%"
 
 {% include image.html 
 lightbox="true" 
-file="/images/administration/sso/okta/image2.png" 
-url="/images/administration/sso/okta/image2.png"
+file="/images/administration/sso/okta/image7.png" 
+url="/images/administration/sso/okta/image7.png"
 alt="Access token"
 caption="Access token"
 max-width="70%"
@@ -110,8 +110,8 @@ max-width="70%"
 
 {% include image.html 
 lightbox="true" 
-file="/images/administration/sso/okta/image3.png" 
-url="/images/administration/sso/okta/image3.png"
+file="/images/administration/sso/okta/image8.png" 
+url="/images/administration/sso/okta/image8.png"
 alt="App ID"
 caption="App ID"
 max-width="70%"
@@ -123,8 +123,8 @@ Note it down.
 
 {% include image.html 
 lightbox="true" 
-file="/images/administration/sso/okta/image6.png" 
-url="/images/administration/sso/okta/image6.png"
+file="/images/administration/sso/okta/image9.png" 
+url="/images/administration/sso/okta/image9.png"
 alt="Client name"
 caption="Client name"
 max-width="50%"
