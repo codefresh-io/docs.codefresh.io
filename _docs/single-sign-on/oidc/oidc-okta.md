@@ -32,7 +32,7 @@ Using the list of shortcuts at the left-hand side of the screen, select *Applica
     url="/images/administration/sso/okta/image2.png"
     alt="Okta Applications"
     caption="Okta Applications"
-    max-width="80%"
+    max-width="82%"
     %}
 
 On the *Applications* page, select *Create App Integration*.
@@ -54,7 +54,7 @@ On the *Create a New Application Integration* pop-up window, select OIDC - OpenI
     url="/images/administration/sso/okta/image4.png"
     alt="Choose Sign-on method"
     caption="Choose Sign-on method"
-    max-width="80%"
+    max-width="90%"
     %}
 
 {:start="2"}
@@ -75,6 +75,7 @@ On the *Create a New Application Integration* pop-up window, select OIDC - OpenI
     %}
 
 Click *Save* to proceed.
+
 
 {:start="3"}
 1. Go back to the SSO settings screen described in the first part of this guide inside the Codefresh GUI.

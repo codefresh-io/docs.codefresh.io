@@ -34,7 +34,7 @@ file="/images/administration/sso/okta/image2.png"
 url="/images/administration/sso/okta/image2.png"
 alt="Okta Applications"
 caption="Okta Applications"
-max-width="80%"
+max-width="82%"
 %}
 
 On the *Applications* page, select *Create App Integration*.
@@ -56,7 +56,7 @@ file="/images/administration/sso/okta/image4.png"
 url="/images/administration/sso/okta/image4.png"
 alt="Choose Sign-on method"
 caption="Choose Sign-on method"
-max-width="80%"
+max-width="90%"
 %}
 
 {:start="2"}
@@ -77,6 +77,7 @@ max-width="90%"
 %}
 
 Click *Save* to proceed.
+
 
 {:start="3"}
 1. Go back to the SSO settings screen described in the first part of this guide inside the Codefresh GUI.
