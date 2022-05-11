@@ -24,7 +24,7 @@ see the [overview page]({{site.baseurl}}/docs/single-sign-on/oidc/).
     max-width="80%"
     %}
 
-    Using the list of shortcuts at the left-hand side of the screen, select *Applications*.
+Using the list of shortcuts at the left-hand side of the screen, select *Applications*.
 
     {% include image.html
     lightbox="true"
@@ -35,7 +35,7 @@ see the [overview page]({{site.baseurl}}/docs/single-sign-on/oidc/).
     max-width="80%"
     %}
 
-    On the *Applications* page, select *Create App Integration*.
+On the *Applications* page, select *Create App Integration*.
 
     {% include image.html
     lightbox="true"
@@ -46,7 +46,7 @@ see the [overview page]({{site.baseurl}}/docs/single-sign-on/oidc/).
     max-width="80%"
     %}
 
-    On the *Create a New Application Integration* pop-up window, select OIDC - OpenID Connect as the *Sign on method* and choose Web Application as the *Application Type*. Click Next to proceed.
+On the *Create a New Application Integration* pop-up window, select OIDC - OpenID Connect as the *Sign on method* and choose Web Application as the *Application Type*. Click Next to proceed.
 
     {% include image.html
     lightbox="true"
@@ -74,7 +74,7 @@ see the [overview page]({{site.baseurl}}/docs/single-sign-on/oidc/).
     max-width="80%"
     %}
 
-    Click *Save* to proceed.
+Click *Save* to proceed.
 
 {:start="3"}
 1. Go back to the SSO settings screen described in the first part of this guide inside the Codefresh GUI.
@@ -125,7 +125,7 @@ Note it down.
     url="/images/administration/sso/okta/image9.png"
     alt="Client name"
     caption="Client name"
-    max-width="70%"
+    max-width="80%"
     %}
 
 {:start="5"}

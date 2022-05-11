@@ -127,7 +127,7 @@ file="/images/administration/sso/okta/image9.png"
 url="/images/administration/sso/okta/image9.png"
 alt="Client name"
 caption="Client name"
-max-width="70%"
+max-width="80%"
 %}
 
 {:start="5"}
