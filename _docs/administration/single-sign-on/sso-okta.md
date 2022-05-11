@@ -23,7 +23,7 @@ file="/images/administration/sso/okta/image1.png"
 url="/images/administration/sso/okta/image1.png"
 alt="Okta Dashboard"
 caption="Okta Dashboard"
-max-width="70%"
+max-width="80%"
 %}
 
 Using the list of shortcuts at the left-hand side of the screen, select *Applications*.
@@ -34,7 +34,7 @@ file="/images/administration/sso/okta/image2.png"
 url="/images/administration/sso/okta/image2.png"
 alt="Okta Applications"
 caption="Okta Applications"
-max-width="70%"
+max-width="80%"
 %}
 
 On the *Applications* page, select *Create App Integration*.
@@ -45,7 +45,7 @@ file="/images/administration/sso/okta/image3.png"
 url="/images/administration/sso/okta/image3.png"
 alt="Create new application"
 caption="Create new application"
-max-width="70%"
+max-width="80%"
 %}
 
 On the *Create a New Application Integration* pop-up window, select OIDC - OpenID Connect as the *Sign on method* and choose Web Application as the *Application Type*. Click Next to proceed.
@@ -73,7 +73,7 @@ file="/images/administration/sso/okta/image5.png"
 url="/images/administration/sso/okta/image5.png"
 alt="OpenID integration"
 caption="OpenID integration"
-max-width="70%"
+max-width="80%"
 %}
 
 Click *Save* to proceed.
@@ -105,7 +105,7 @@ file="/images/administration/sso/okta/image7.png"
 url="/images/administration/sso/okta/image7.png"
 alt="Access token"
 caption="Access token"
-max-width="70%"
+max-width="80%"
 %}
 
 {% include image.html 
@@ -114,7 +114,7 @@ file="/images/administration/sso/okta/image8.png"
 url="/images/administration/sso/okta/image8.png"
 alt="App ID"
 caption="App ID"
-max-width="70%"
+max-width="80%"
 %}
 
 {:start="4"}
@@ -127,7 +127,7 @@ file="/images/administration/sso/okta/image9.png"
 url="/images/administration/sso/okta/image9.png"
 alt="Client name"
 caption="Client name"
-max-width="50%"
+max-width="70%"
 %}
 
 {:start="5"}
@@ -143,7 +143,7 @@ This concludes the SSO setup for Okta.
 It is important to notice that [syncing with Okta]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/#syncing-of-teams-after-initial-sso-setup)
 only affects teams/groups and not individuals/persons.
 
-You can assign an Okta application in both groups and individual people. Codefresh will only sync people that are inside teams. Newly created people in Okta that are _not_ assigned to a team will **NOT** be synced to Codefresh. You should assign them to a team first, and then they will be synced as part of the team.
+You can assign an Okta application in both groups and individual people. Codefresh will only sync people that are inside teams. Newly created people in Okta that are *not* assigned to a team will **NOT** be synced to Codefresh. You should assign them to a team first, and then they will be synced as part of the team.
 
 ## Syncing of teams after initial SSO setup
 
