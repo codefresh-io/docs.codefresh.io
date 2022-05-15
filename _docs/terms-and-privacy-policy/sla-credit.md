@@ -7,8 +7,7 @@ toc: true
 
 This Service Level Agreement (“**SLA**”) sets forth the terms and conditions under which Codefresh will provide service levels to Licensee and Users pursuant to the applicable Terms of Service in effect between Codefresh and Licensee and/or Users (the “**Terms**”).
 
-**1. DEFINITIONS**. The following definitions will apply to this SLA. All capitalized terms not defined in
-this SLA will have the meaning given them in the Terms.  
+**1. DEFINITIONS**. The following definitions will apply to this SLA. All capitalized terms not defined in this SLA will have the meaning given them in the Terms.  
   
 
 **1.1. “Downtime”** means any time that Codefresh-hosted portions of the Services are not available for access by Users.  
@@ -25,11 +24,11 @@ not exceed four (4) hours per month; and (ii) any additional maintenance for whi
 
 **2. SERVICE AVAILABILITY**.  
 
-**2.1. Target Uptime Percentage**. Codefresh will use commercially reasonable efforts to provide at least 99.5% Uptime in any calendar month (the “Target Uptime Percentage”).  
+**2.1. Target Uptime Percentage**. Codefresh will use commercially reasonable efforts to provide at least 99.5% Uptime in any calendar month (the “**Target Uptime Percentage**”).  
   
 
-**2.2. Achieved Uptime Percentage**. Actual Uptime percentage for each calendar month will be the quotient, expressed as (i) the total minutes potentially available for Uptime for that month minus total minutes of Downtime (other than Excused Downtime), divided by (ii) the total minutes potentially available for Uptime for that month minus any minutes of Excused Downtime (the “Achieved Uptime
-Percentage”).  
+**2.2. Achieved Uptime Percentage**. Actual Uptime percentage for each calendar month will be the quotient, expressed as (i) the total minutes potentially available for Uptime for that month minus total minutes of Downtime (other than Excused Downtime), divided by (ii) the total minutes potentially available for Uptime for that month minus any minutes of Excused Downtime (the “**Achieved Uptime
+Percentage**”).  
   
 **2.2. Right to Cancel**.
 
@@ -39,8 +38,6 @@ Percentage”).
 
 
 <p style='margin-left:12px;text-indent:5px'>(ii)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Exercise of a Cancellation Right pursuant to this SLA will be Client’s sole and exclusive remedy, and the entire liability of Codefresh, for any failure to achieve the Target Uptime Percentage or any breach of this SLA.
-
-
 {:/}
 
 **3. ERROR PRIORITIES AND RESPONSE TIMES**.   
@@ -74,7 +71,7 @@ issue as defined below and will use commercially reasonable efforts to respond a
 
 [Severity Examples](https://support.codefresh.io/hc/en-us/articles/360018951039-Codefresh-SLA-definitions)
 
-**3.3. Support Channels**. 
+**3.3. Support Channels**.
 
 {: .table .table-bordered .table-hover}
 | Channel         | Free     | Silver   | Gold | Platinum|
@@ -88,7 +85,19 @@ issue as defined below and will use commercially reasonable efforts to respond a
 
 ****Slack:** Not intended to be used for critical issues.
 
-**4. VERSION HISTORY**.
+**4. CREDITS**.  
+
+In certain circumstances where the Achieved Uptime Percentage is less than the Target Uptime Percentage, Codefresh shall issue to Client the corresponding service credits as set forth in the table
+below (“**Service Availability Credit(s)**”).
+
+{: .table .table-bordered .table-hover}
+| Availability Requirement                                                     | Service Availability Credits     | 
+|---------------------------                                                   |---------------------------   |
+| Uptime shall be 99.5% during each calendar month excluding Excused Downtime. | No Service Availability Credits will be given for any month in which the actual Achieved Uptime Percentage equals or exceeds the Target Uptime Percentage.  
+
+Client is entitled to a Service Availability Credit of 1% of the then-current, monthly fee payable for the Service for each 0.1% by which Achieved Uptime Percentage is less than Target Uptime Percentage, such credit not to exceed 50%. In order to receive such Service Availability Credit, Client shall notify Codefresh in writing and Codefresh will apply applicable Service Availability Credit to future invoices, if any.|
+
+**5. VERSION HISTORY**.
 
 {: .table .table-bordered .table-hover}
 | Version Number | Nature of Change              | Date Approved    |
@@ -97,3 +106,7 @@ issue as defined below and will use commercially reasonable efforts to respond a
 |1.1             | Added support information     | April 7, 2021 |
 |1.0             | Initial version               | January 17, 2021 |
 
+  
+    
+
+Codefresh SLA (2022.1)

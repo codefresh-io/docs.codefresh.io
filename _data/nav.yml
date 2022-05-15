@@ -581,7 +581,7 @@
   pages:
     - title: Terms of Service
       url: "/terms-of-service"
-    - title: Privacy Policy
-      url: "/privacy-policy"
     - title: Service Commitment
-      url: "/sla"      
+      url: "/sla"   
+    - title: Service Commitment Credits
+      url: "/sla-credit"   
