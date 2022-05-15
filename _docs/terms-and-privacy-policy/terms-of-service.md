@@ -1,5 +1,5 @@
 ---
-title: "Terms of Service"
+title: ""
 description: ""
 group: terms-and-privacy-policy
 redirect_from:
@@ -9,8 +9,8 @@ toc: true
 ---
 {::nomarkdown}
 
-<p style='font-size-base: 1rem; color: #03363d;  line-height: 1;'>Codefresh, inc.<br>
-Terms of Service</p>
+<h5 style='text-align: center;'><img src="../../../assets/brand/codefresh-social-logo.png" display=inline-block; height=80px;
+    width=80px;></br>CODEFRESH, INC.</br>TERMS OF SERVICE</h5>
 
 <p>By executing any applicable Order that references these Terms of Service (collectively the “<b>Agreement</b>”), the Parties to the Agreement acknowledge and agree that these binding standard terms and conditions (the “<b>Terms</b>”) shall apply:</p>
 

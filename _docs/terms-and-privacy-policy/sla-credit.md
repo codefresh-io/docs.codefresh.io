@@ -99,9 +99,7 @@ below (“**Service Availability Credit(s)**”).
 {: .table .table-bordered .table-hover}
 | Availability Requirement                                                     | Service Availability Credits     | 
 |---------------------------                                                   |---------------------------   |
-| Uptime shall be 99.5% during each calendar month excluding Excused Downtime. | No Service Availability Credits will be given for any month in which the actual Achieved Uptime Percentage equals or exceeds the Target Uptime Percentage.  
-
-Client is entitled to a Service Availability Credit of 1% of the then-current, monthly fee payable for the Service for each 0.1% by which Achieved Uptime Percentage is less than Target Uptime Percentage, such credit not to exceed 50%. In order to receive such Service Availability Credit, Client shall notify Codefresh in writing and Codefresh will apply applicable Service Availability Credit to future invoices, if any.|
+| Uptime shall be 99.5% during each calendar month excluding Excused Downtime. | No Service Availability Credits will be given for any month in which the actual Achieved Uptime Percentage equals or exceeds the Target Uptime Percentage. {::nomarkdown}</br><p> Client is entitled to a Service Availability Credit of 1% of the then-current, monthly fee payable for the Service for each 0.1% by which Achieved Uptime Percentage is less than Target Uptime Percentage, such credit not to exceed 50%. In order to receive such Service Availability Credit, Client shall notify Codefresh in writing and Codefresh will apply applicable Service Availability Credit to future invoices, if any. </p>{:/}|
 
 **5. VERSION HISTORY**.
 
