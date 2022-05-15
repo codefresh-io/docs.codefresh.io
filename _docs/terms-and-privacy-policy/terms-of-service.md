@@ -74,163 +74,53 @@ to, all of these Terms.</p>
 
 <div align=center>
 
-<table border=1 cellspacing=0 cellpadding=0 width=387 style='border-collapse:
- collapse;border:none'>
- <tr style='height:13.5pt'>
-  <td style='padding: .6rem; font-size: .875rem; vertical-align: top; border: 1px solid; text-align: center;><b>Machine Size</b</td>
-  <td width=76 valign=top style='width:56.7pt;border:solid black 1.0pt;
-  border-left:none;background:#E7E6E6;padding:0in 5.4pt 0in 5.4pt;height:13.5pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-  border:none'><b><span style='font-size:11.0pt;color:black'>CPU</span></b></p>
-  </td>
-  <td width=90 valign=top style='width:67.2pt;border:solid black 1.0pt;
-  border-left:none;background:#E7E6E6;padding:0in 5.4pt 0in 5.4pt;height:13.5pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-  border:none'><b><span style='font-size:11.0pt;color:black'>Memory</span></b></p>
-  </td>
-  <td width=109 valign=top style='width:81.4pt;border:solid black 1.0pt;
-  border-left:none;background:#E7E6E6;padding:0in 5.4pt 0in 5.4pt;height:13.5pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-  border:none'><b><span style='font-size:11.0pt;color:black'>Credit/minute</span></b></p>
-  </td>
+<table width=100%; max-width=100%; border=1  style='border-collapse:collapse; border:none margin-bottom: 20px;'>
+ <tr>
+  <th style='background-color:#3f7d84; color:#ffffff; padding:.6rem; font-size: .875rem; vertical-align: top; border: 1px solid #3d7c84'>Machine Size</th>
+  <th style='background-color:#3f7d84; color:#ffffff; padding: .6rem; font-size: .875rem; vertical-align: top; border: 1px solid #3d7c84;'>CPU</th>
+  <th style='background-color:#3f7d84; color:#ffffff; padding: .6rem; font-size: .875rem; vertical-align: top; border: 1px solid #3d7c84;'>Memory</th>
+  <th style='background-color:#3f7d84; color:#ffffff; padding: .6rem; font-size: .875rem; vertical-align: top; border: 1px solid #3d7c84;'>Credit/minute</th>
  </tr>
- <tr style='height:13.5pt'>
-  <td width=113 valign=top style='width:85.05pt;border:solid black 1.0pt;
-  border-top:none;padding:0in 5.4pt 0in 5.4pt;height:13.5pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-  border:none'><span style='font-size:11.0pt;color:black'>S</span></p>
-  </td>
-  <td width=76 valign=top style='width:56.7pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0in 5.4pt 0in 5.4pt;
-  height:13.5pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-  border:none'><span style='font-size:11.0pt;color:black'>1</span></p>
-  </td>
-  <td width=90 valign=top style='width:67.2pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0in 5.4pt 0in 5.4pt;
-  height:13.5pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-  border:none'><span style='font-size:11.0pt;color:black'>1 GB</span></p>
-  </td>
-  <td width=109 valign=top style='width:81.4pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0in 5.4pt 0in 5.4pt;height:13.5pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-  border:none'><span style='font-size:11.0pt;color:black'>5</span></p>
-  </td>
+ <tr>
+  <td style='padding: .6rem; font-size: .875rem; vertical-align: top; border: 1px solid #3d7c84;'>S</td>
+  <td style='padding: .6rem; font-size: .875rem; vertical-align: top; border: 1px solid #3d7c84;'>1</td>
+  <td style='padding: .6rem; font-size: .875rem; vertical-align: top; border: 1px solid #3d7c84;'>1 GB</td>
+  <td style='padding: .6rem; font-size: .875rem; vertical-align: top; border: 1px solid #3d7c84;'>5</td>
  </tr>
- <tr style='height:13.5pt'>
-  <td width=113 valign=top style='width:85.05pt;border:solid black 1.0pt;
-  border-top:none;padding:0in 5.4pt 0in 5.4pt;height:13.5pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-  border:none'><span style='font-size:11.0pt;color:black'>M</span></p>
-  </td>
-  <td width=76 valign=top style='width:56.7pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0in 5.4pt 0in 5.4pt;
-  height:13.5pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-  border:none'><span style='font-size:11.0pt;color:black'>2</span></p>
-  </td>
-  <td width=90 valign=top style='width:67.2pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0in 5.4pt 0in 5.4pt;
-  height:13.5pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-  border:none'><span style='font-size:11.0pt;color:black'>4 GB</span></p>
-  </td>
-  <td width=109 valign=top style='width:81.4pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0in 5.4pt 0in 5.4pt;height:13.5pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-  border:none'><span style='font-size:11.0pt;color:black'>10</span></p>
-  </td>
+ <tr>
+  <td style='padding: .6rem; font-size: .875rem; vertical-align: top; border: 1px solid #3d7c84;'>M</td>
+  <td style='padding: .6rem; font-size: .875rem; vertical-align: top; border: 1px solid #3d7c84;'>2</td>
+  <td style='padding: .6rem; font-size: .875rem; vertical-align: top; border: 1px solid #3d7c84;'>4 GB</td>
+  <td style='padding: .6rem; font-size: .875rem; vertical-align: top; border: 1px solid #3d7c84;'>10</td>
  </tr>
- <tr style='height:13.5pt'>
-  <td width=113 valign=top style='width:85.05pt;border:solid black 1.0pt;
-  border-top:none;padding:0in 5.4pt 0in 5.4pt;height:13.5pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-  border:none'><span style='font-size:11.0pt;color:black'>L</span></p>
-  </td>
-  <td width=76 valign=top style='width:56.7pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0in 5.4pt 0in 5.4pt;
-  height:13.5pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-  border:none'><span style='font-size:11.0pt;color:black'>4</span></p>
-  </td>
-  <td width=90 valign=top style='width:67.2pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0in 5.4pt 0in 5.4pt;
-  height:13.5pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-  border:none'><span style='font-size:11.0pt;color:black'>8 GB</span></p>
-  </td>
-  <td width=109 valign=top style='width:81.4pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0in 5.4pt 0in 5.4pt;height:13.5pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-  border:none'><span style='font-size:11.0pt;color:black'>20</span></p>
-  </td>
+ <tr>
+  <td style='padding: .6rem; font-size: .875rem; vertical-align: top; border: 1px solid #3d7c84;'>L</td>
+  <td style='padding: .6rem; font-size: .875rem; vertical-align: top; border: 1px solid #3d7c84;'>4</td>
+  <td style='padding: .6rem; font-size: .875rem; vertical-align: top; border: 1px solid #3d7c84;'>8 GB</td>
+  <td style='padding: .6rem; font-size: .875rem; vertical-align: top; border: 1px solid #3d7c84;'>20</td>
  </tr>
- <tr style='height:13.5pt'>
-  <td width=113 valign=top style='width:85.05pt;border:solid black 1.0pt;
-  border-top:none;padding:0in 5.4pt 0in 5.4pt;height:13.5pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-  border:none'><span style='font-size:11.0pt;color:black'>XL</span></p>
-  </td>
-  <td width=76 valign=top style='width:56.7pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0in 5.4pt 0in 5.4pt;
-  height:13.5pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-  border:none'><span style='font-size:11.0pt;color:black'>8</span></p>
-  </td>
-  <td width=90 valign=top style='width:67.2pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0in 5.4pt 0in 5.4pt;
-  height:13.5pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-  border:none'><span style='font-size:11.0pt;color:black'>16 GB</span></p>
-  </td>
-  <td width=109 valign=top style='width:81.4pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0in 5.4pt 0in 5.4pt;height:13.5pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-  border:none'><span style='font-size:11.0pt;color:black'>40</span></p>
-  </td>
+ <tr>
+  <td style='padding: .6rem; font-size: .875rem; vertical-align: top; border: 1px solid #3d7c84;'>XL</td>
+  <td style='padding: .6rem; font-size: .875rem; vertical-align: top; border: 1px solid #3d7c84;'>8</td>
+  <td style='padding: .6rem; font-size: .875rem; vertical-align: top; border: 1px solid #3d7c84;'>16 GB</td>
+  <td style='padding: .6rem; font-size: .875rem; vertical-align: top; border: 1px solid #3d7c84;'>40</td>
  </tr>
- <tr style='height:13.5pt'>
-  <td width=113 valign=top style='width:85.05pt;border:solid black 1.0pt;
-  border-top:none;padding:0in 5.4pt 0in 5.4pt;height:13.5pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-  border:none'><span style='font-size:11.0pt;color:black'>XXL</span></p>
-  </td>
-  <td width=76 valign=top style='width:56.7pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0in 5.4pt 0in 5.4pt;
-  height:13.5pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-  border:none'><span style='font-size:11.0pt;color:black'>16</span></p>
-  </td>
-  <td width=90 valign=top style='width:67.2pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0in 5.4pt 0in 5.4pt;
-  height:13.5pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-  border:none'><span style='font-size:11.0pt;color:black'>32 GB</span></p>
-  </td>
-  <td width=109 valign=top style='width:81.4pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0in 5.4pt 0in 5.4pt;height:13.5pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-  border:none'><span style='font-size:11.0pt;color:black'>80</span></p>
-  </td>
+ <tr>
+  <td style='padding: .6rem; font-size: .875rem; vertical-align: top; border: 1px solid #3d7c84;'>XXL</td>
+  <td style='padding: .6rem; font-size: .875rem; vertical-align: top; border: 1px solid #3d7c84;'>16</td>
+  <td style='padding: .6rem; font-size: .875rem; vertical-align: top; border: 1px solid #3d7c84;'>32 GB</td>
+  <td style='padding: .6rem; font-size: .875rem; vertical-align: top; border: 1px solid #3d7c84;'>80</td>
  </tr>
 </table>
-
 </div>
 
-
+</p>
 <h5>3. ON-PREMISES SERVICES.</h5>
 
 <p style='margin-left:0in;text-indent:0in'><b>3.1.&nbsp;&nbsp;&nbsp;&nbsp;</b><b>Scope of Services</b>. For all Services provided to Licensee on-premises by Codefresh (the “<b>On-Premises Services</b>”), the “<b>Scope</b>” shall mean the authorized number of Users as set forth in the applicable Order.</p>
 
 <p style='margin-left:0in;text-indent:0in'><b>3.2.&nbsp;&nbsp;&nbsp;&nbsp;</b><b>Equipment Maintenance</b>. Licensee shall be responsible for obtaining and maintaining any equipment and ancillary services or tools needed to connect to, access or otherwise use the Service, including, without limitation, modems, hardware, server, software, operating system, networking, web servers, long distance, and local telephone service (collectively, “<b>Equipment</b>”). Licensee shall be responsible for ensuring that such Equipment is compatible with the Service (and, to the extent applicable, the Software) and complies with all configurations and specifications set forth in the Documentation.</p>
 
-</div>
 
 <h5>4. LICENSE AND RESTRICTIONS; LICENSEE AND USER OBLIGATIONS<span style='font-weight:normal'>.</span></h5>
 
@@ -251,14 +141,12 @@ without written notice to Licensee in the event that Codefresh reasonably determ
 Use</b>”), Codefresh shall invoice Licensee for the Excess Use at Codefresh’s current pricing plans, such that Licensee is billed in accordance with the actual usage of the Service. To verify any Excess Use, and to extent Licensee uses On-Premises Services, Licensee will maintain, and Codefresh will be entitled to audit, any records relevant to Licensee's use of the Service
 hereunder. Codefresh may audit such records on reasonable notice at Codefresh's cost (or if the audits reveal material non-compliance with these Terms, at Licensee's cost), including without limitation, to confirm number of Users and/or Excess Use.</p>
 
-</div>
-
 <h5>5. TRIAL LICENSE<span style='font-weight:normal'>.</span></h5>
 
 <p>From time to time, Licensee may be invited to try certain products at no charge for a free trial or evaluation period or if such products are not generally available to licensees (collectively, “<b>Trial License</b>”). Trial Licenses will be designated or identified as beta, pilot, evaluation, trial, or similar. Notwithstanding anything to the contrary herein, Trial Licenses are licensed for Licensee’s internal evaluation purposes only (and not for production use), are provided “as is” without warranty or indemnity of any kind and may be subject to additional terms. Unless otherwise
 stated, any Trial Licenses shall expire thirty (30) days from the trial start date. Notwithstanding the foregoing, Codefresh may discontinue Trial Licenses at any time at its sole discretion and may never make any Trial Licenses generally available. Codefresh will have no liability for any harm or damage arising out of or in connection with any Trial Licenses.</p>
 
-</div>
+
 
 <h5>6. PROVISION OF THE SERVICE; SUPPORT<span style='font-weight:normal'>.</span></h5>
 
@@ -270,7 +158,7 @@ stated, any Trial Licenses shall expire thirty (30) days from the trial start da
 accordance with and subject to the SLA. Community-based support is also available via Codefresh’s Discuss site located at <a href="https://discuss.codefresh.com">https://discuss.codefresh.com</a> (or
 successor URL) for the Service at no additional charge. Upgraded support is available if purchased pursuant to an Order.</p>
 
-</div>
+
 
 <h5>7. FEES AND PAYMENT<span style='font-weight:normal'>.</span></h5>
 
@@ -286,7 +174,7 @@ Licensee, prorated for the remaining Term of Licensee’s yearly billing cycle; 
 
 <p style='margin-left:0in;text-indent:0in'><b>7.4.&nbsp;&nbsp;&nbsp;&nbsp;</b>Licensee agrees that its purchases are not contingent on the delivery of any future functionality or features, or dependent on any oral or written public comments made by Codefresh regarding future functionality or features.</p>
 
-</div>
+
 
 <h5>8. TERM; EXPIRATION AND TERMINATION<span style='font-weight:normal'>.</span></h5>
 
@@ -299,7 +187,6 @@ Codefresh, if such certification is requested by Codefresh. Any provision of the
 <p style='margin-left:0in;text-indent:0in'><b>8.2.&nbsp;&nbsp;&nbsp;&nbsp;</b>Codefresh will promptly terminate without notice the accounts of Users that are determined by Codefresh to be “repeat infringer(s).” A repeat infringer is a User who has been notified of infringing activity more than twice and/or has had Licensee Content or Non-Codefresh Applications removed from the Service more
 than twice.</p>
 
-</div>
 <h5>9. WARRANTIES; DISCLAIMERS<span style='font-weight:normal'>.</span></h5>
 
 <p>Codefresh represents and warrants that the Service will function in substantial compliance with the applicable Documentation. In order to be entitled to any remedy based on a purported breach of the foregoing representation and warranty, Licensee must inform Codefresh of the purported deficiency in the Service within thirty (30) days of the day on which Licensee first
@@ -307,19 +194,16 @@ becomes aware of the condition giving rise to such claim. EXCEPT AS EXPRESSLY SE
 TITLE, FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT. LICENSEE AND USERS ACKNOWLEDGE THAT CODEFRESH DOES NOT WARRANT THAT THE SERVICE WILL BE
 UNINTERRUPTED, TIMELY, SECURE, ERROR-FREE OR VIRUS-FREE, NOR DOES CODEFRESH MAKE ANY WARRANTY AS TO THE RESULTS THAT MAY BE OBTAINED FROM USE OF THE SERVICE, AND NO INFORMATION, ADVICE, OR SERVICES OBTAINED BY LICENSEE OR USERS FROM CODEFRESH OR THROUGH THE SERVICE SHALL CREATE ANY WARRANTY NOT EXPRESSLY STATED IN THESE TERMS. THE SERVICE MAY BE TEMPORARILY UNAVAILABLE FOR SCHEDULED MAINTENANCE OR FOR UNSCHEDULED EMERGENCY MAINTENANCE, EITHER BY CODEFRESH OR BY THIRD-PARTY PROVIDERS, OR BECAUSE OF CAUSES BEYOND CODEFRESH’S REASONABLE CONTROL. CODEFRESH SHALL USE REASONABLE EFFORTS TO PROVIDE ADVANCE NOTICE OF ANY SCHEDULED SERVICE DISRUPTION.</p>
 
-</div>
 <h5>10. INDEMNIFICATION<span style='font-weight:normal'>.</span></h5>
 
 <p><b>10.1.</b>&nbsp;</b>Licensee will indemnify, defend and hold harmless Codefresh and its officers, directors, employee and agents, from and against any third-party claims, disputes, demands, liabilities, damages, losses, and costs and expenses, including, without limitation, reasonable legal and professional fees, arising out of or in any way connected with (i) Licensee’s or User’s access to or use of the Service that is in violation of law or this Agreement, or (ii) the Licensee Content as provided to Codefresh that is in violation of law or this Agreement, provided that Codefresh: (a) promptly notifies Licensee in writing of the claim; (b) grants Licensee sole control of the defense and settlement of the claim; and (c) provides Licensee, at Licensee’s expense, with all assistance, information and authority reasonably required for the defense and settlement of the claim.</p>
 
 <p><b>10.2&nbsp;</b>Codefresh will indemnify, defend and hold harmless Licensee and its officers, directors, employee and agents, from and against any claims, disputes, demands, liabilities, damages, losses, and costs and expenses, including, without limitation, reasonable legal and professional fees, to the extent that it is based upon a third-party claim that the Service, as provided by under this Agreement and used within the scope of this Agreement, infringes or misappropriates any intellectual property right in any jurisdiction, and will pay any costs, damages and reasonable attorneys’ fees attributable to such claim that are awarded against Licensee, provided that Licensee: (i) promptly notifies Codefresh in writing of the claim; (ii) grants Codefresh sole control of the defense and settlement of the claim; and (iii) provides Codefresh, at Codefresh’s expense, with all assistance, information and authority reasonably required for
 
-</div>
 <h5>11. LIMITATION OF LIABILITY<span style='font-weight:normal'>.</span></h5>
 
 <p>EXCEPT FOR A LIABILITY ARISING FROM SECTION 4.2 OR A PARTY’S INDEMNITY OBLIGATIONS SET FORTH IN SECTION 10, EACH PARTY’S LIABILITY UNDER THIS AGREEMENT SHALL BE LIMITED TO THE FEES PAID OR PAYABLE BY LICENSEE TO CODEFRESH IN THE TWELVE (12) MONTHS PRECEDING THE EVENT GIVING RISE TO THE LIABILITY. THE PROVISIONS OF THIS SECTION SHALL APPLY WHETHER OR NOT THE LICENSEE HAS BEEN INFORMED OF THE POSSIBILITY OF SUCH DAMAGE, AND EVEN IF AN EXCLUSIVE REMEDY SET FORTH HEREIN IS FOUND TO HAVE FAILED OF ITS ESSENTIAL PURPOSE. UNDER NO CIRCUMSTANCES AND UNDER NO LEGAL THEORY (WHETHER IN CONTRACT, TORT OR OTHERWISE) SHALL EITHER PARTY BE LIABLE TO THE OTHER PARTY, ANY USER, OR ANY THIRD-PARTY FOR ANY INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, CONSEQUENTIAL OR PUNITIVE DAMAGES, INCLUDING LOST PROFITS, LOST SALES OR BUSINESS, LOST DATA, GOODWILL, OR OTHER INTANGIBLE LOSSES. THE PARTIES HAVE RELIED ON THESE LIMITATIONS IN DETERMINING WHETHER TO ENTER INTO THESE TERMS. IF APPLICABLE LAW DOES NOT ALLOW FOR CERTAIN LIMITATIONS OF LIABILITY, SUCH AS THE EXCLUSION OF IMPLIED WARRANTEES OR LIMITATION OF LIABILITY FOR INCIDENTAL OR CONSEQUENTIAL DAMAGES, THE PROVISIONS OF THIS SECTION 11 SHALL APPLY TO THE MAXIMUM EXTENT ALLOWABLE UNDER SUCH APPLICABLE LAW.</p>
 
-</div>
 <h5>12. PROPRIETARY RIGHTS; LIMITED LICENSES TO CODEFRESH<span style='font-weight:normal'>.</span></h5>
 
 <p style='margin-left:0in;text-indent:0in'><b>12.1.&nbsp;</b><b>Intellectual Property Rights</b>. Subject to the limited licenses expressly granted hereunder, Codefresh and its licensors reserve their respective right, title, and interest in and to the Service, including all of Codefresh’s and its licensors related intellectual property rights related to the Service (the “<b>Intellectual Property Rights</b>”). No rights are granted to Licensee hereunder other than as expressly set forth herein. Codefresh shall retain all right, title, and interest in and to Intellectual Property Rights, including any Software, all improvements, enhancements, modifications, and derivative works thereof, and all related Intellectual Property Rights. </p>
@@ -328,7 +212,6 @@ UNINTERRUPTED, TIMELY, SECURE, ERROR-FREE OR VIRUS-FREE, NOR DOES CODEFRESH MAKE
 
 <p style='margin-left:0in;text-indent:0in'><b>12.3.&nbsp;</b><b>License to Use Feedback</b>. Licensee hereby grants to Codefresh a worldwide, perpetual, irrevocable, royalty-free license to use and incorporate into the Service any suggestion, enhancement request, recommendation, correction, or other feedback provided by Licensee or Users relating to the operation of the Service.</p>
 
-</div>
 <h5>13. CONFIDENTIALITY</a><span style='font-weight:normal'>.</span></h5>
 
 <p>Any technical, financial, business or other information provided by one party (the “<b>Disclosing Party</b>”) to the other party (the “<b>Receiving Party</b>”) and designated as confidential or proprietary or that reasonably should be understood to be confidential given the nature of the information and the circumstances of disclosure (“<b>Confidential Information</b>”) shall be held in confidence and not disclosed and shall not be used except to the extent necessary to carry out the Receiving Party’s obligations or express rights hereunder, except as otherwise authorized by the
@@ -337,7 +220,6 @@ will not apply to information that (i) was previously known by the Receiving Par
 Receiving Party without reference to or reliance on the Disclosing Party’s Confidential Information, as demonstrated by documents or files in existence at the time of disclosure. The Receiving Party may disclose Confidential Information of the Disclosing Party to the extent compelled by law to do so, provided the Receiving Party gives the Disclosing Party prior notice of the
 compelled disclosure (to the extent legally permitted) and reasonable assistance, at the Disclosing Party’s cost, if the Disclosing Party wishes to contest the disclosure. If the Receiving Party is compelled by law to disclose the Disclosing Party’s Confidential Information as part of a civil proceeding to which the Disclosing Party is a party, and the Disclosing Party is not contesting the disclosure, the Disclosing Party will reimburse the Receiving Party for its reasonable cost of compiling and providing secure access to that Confidential Information. In the event that such protective order or other remedy is not obtained, the Receiving Party shall furnish only that portion of the Confidential Information that is legally required and use commercially reasonable efforts to obtain assurance that confidential treatment will be accorded the Confidential Information.</p>
 
-</div>
 <h5>14. PROTECTION OF CONFIDENTIAL LICENSEE CONTENT; SECURITY<span style='font-weight:normal'>.</span></h5>
 
 <p style='margin-left:0in;text-indent:0in'><b>14.1.</b> Codefresh shall maintain administrative, physical, and technical safeguards for protection of the security, confidentiality and integrity of Licensee Content that is Licensee’s Confidential Information (“<b>Confidential Licensee Content</b>”). Those safeguards shall include, but will not be limited to, measures for preventing access, use, modification, or disclosure of Confidential Licensee Content by Codefresh’s personnel except (a) to provide the Service and prevent or address service or technical problems, (b) as compelled by law in accordance with Section 13 (Confidentiality) above, or (c) as Licensee expressly permits in writing.</p>
@@ -346,7 +228,6 @@ compelled disclosure (to the extent legally permitted) and reasonable assistance
 provide the necessary hardware, software, networking, storage, and related technology required to operate and maintain the Service. Accordingly, Licensee
 acknowledges that Licensee bears sole responsibility for adequate backup of Licensee Content. Codefresh will have no liability to Licensee for any unauthorized access or use of any of Licensee Content, or any corruption, deletion, destruction, or loss of any of Licensee Content.</p>
 
-</div>
 <h5>15. DISPUTE RESOLUTION<span style='font-weight:normal'>.</span></h5>
 
 <p style='margin-left:0in;text-indent:0in'><b>15.1.&nbsp;</b>This Agreement and any action related thereto will be governed by the laws of the State of California without regard to its conflict of laws provisions. Licensee and Codefresh irrevocably consent to the jurisdiction of, and venue in, the state or federal courts located in the County of San Francisco, California for any disputes arising
@@ -356,7 +237,6 @@ under this Agreement, provided that the foregoing submission to jurisdiction and
 entered in any court having jurisdiction thereof. There shall be one arbitrator, and such arbitrator shall be chosen by mutual agreement of the parties in accordance with AAA Rules. The arbitration shall be conducted remotely to the extent practicable and otherwise in San Francisco, California. The arbitrator shall apply the laws of the State of California to all issues in dispute. The
 controversy or claim shall be arbitrated on an individual basis and shall not be consolidated in any arbitration with any claim or controversy of any other party. The findings of the arbitrator shall be final and binding on the parties and may be entered in any court of competent jurisdiction for enforcement. Enforcements of any award or judgment shall be governed by the Federal Arbitration Act.</p>
 
-</div>
 <h5>16. MISCELLANEOUS<span style='font-weight:normal'>.</span></h5>
 
 <p style='margin-left:0in;text-indent:0in'><b>16.1.&nbsp;</b><b>Assignment</b>. Neither party may assign this Agreement without the other party’s prior written consent and any attempt to do so will be void, except that either party may assign this Agreement, without the other party’s consent, to a successor or acquirer, as the case may be, in connection with a merger, acquisition, sale of all or substantially all of such party’s assets or substantially similar transaction, provided, however, that Licensee may not assign this Agreement to a competitor or customer of Codefresh without Codefresh’s prior written consent. Subject to the foregoing, this Agreement will bind and benefit the parties and their respective successors and assigns.</p>
