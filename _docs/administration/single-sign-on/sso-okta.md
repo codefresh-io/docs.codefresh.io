@@ -8,7 +8,7 @@ redirect_from:
 toc: true
 ---
 
-In this page we will see the process of setting up Okta SSO with Codefresh. For the general instructions of SSO setup
+In this page, we will see the process of setting up Okta SSO with Codefresh. For the general instructions on SSO setup,
 see the [overview page]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/).
 
 ## Setting Okta as an Identity provider
