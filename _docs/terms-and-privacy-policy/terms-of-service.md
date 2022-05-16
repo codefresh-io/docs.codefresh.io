@@ -52,10 +52,10 @@ text, audio files, graphic files, content, and other materials that you upload, 
 
 <p style='margin-left:1.5rem;'><b>(ix)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>“<b>Service</b>” means the Site, including related services provided through the site, or the Software.</p>
 
-<p style='margin-left:1.5rem;'><b>(x)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>“<b>Site</b>” means Codefresh’s website, located at <a href=" https://support.codefresh.io">https://support.codefresh.io</a>.</p>
+<p style='margin-left:1.5rem;'><b>(x)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>“<b>Site</b>” means Codefresh’s website, located at <a href=" https://support.codefresh.io/">https://support.codefresh.io</a>.</p>
 
 <p style='margin-left:1.5rem;'><b>(xi)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>“<b>SLA</b>” means the “service level agreement” in effect as of the Order’s Effective Date, which can be found at <a
-href="https://codefresh.io/docs/docs/terms-and-privacy-policy/privacy-policy/">https://codefresh.io/docs/docs/docs/terms-and-privacy-policy/privacy-policy/</a>.</p>
+href="https://codefresh.io/docs/docs/terms-and-privacy-policy/privacy-policy/">https://codefresh.io/docs/docs/terms-and-privacy-policy/privacy-policy/</a>.</p>
 
 <p style='margin-left:1.5rem;'><b>(xii)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>“<b>Software</b>” means any software developed and made available to Licensee as set forth in an applicable Order, which may include Codefresh’s build, test, and deployment docker container software tools, services, and related technologies.</p>
 
@@ -155,7 +155,7 @@ stated, any Trial Licenses shall expire thirty (30) days from the trial start da
 <p style='margin-left:0in;text-indent:0in'><b>6.2.&nbsp;&nbsp;&nbsp;&nbsp; </span></b><b>Accessing the Service</b>. Licensee and its Users may enable or log in to the Service via certain Non-Codefresh Applications, such as GitHub. By logging into or directly integrating these Non-Codefresh Applications into the Service, Codefresh Users’ may have access to additional features and capabilities. To take advantage of such features and capabilities, Codefresh may ask Users to authenticate, register for, or log into Non-Codefresh Applications on the websites of their respective providers. As part of such integration, the Non-Codefresh Applications will provide Codefresh with access to certain information that Users have provided to such Non-Codefresh Applications, and Codefresh will use, store, and disclose such information in accordance with Codefresh’s Privacy Policy located at <a href="https://codefresh.com/privacy/">https://codefresh.com/privacy/</a>. The manner in which Non-Codefresh Applications use, store, and disclose Licensee and User information is governed solely by the policies of the third parties operating the Non-Codefresh Applications, and Codefresh shall have no liability or responsibility for the privacy practices or other actions of any third-party site or service that may be enabled within the Service. In addition, Codefresh is not responsible for the accuracy, availability, or reliability of any information, content, goods, data, opinions, advice, or statements made available in connection with Non-Codefresh Applications. As such, Codefresh shall not be liable for any damage or loss caused or alleged to be caused by or in connection with use of or reliance on any such Non-Codefresh Applications. Codefresh enables these features merely as a convenience and the integration or inclusion of such features does not imply an endorsement or recommendation.</p>
 
 <p style='margin-left:0in;text-indent:0in'><b>6.3.&nbsp;&nbsp;&nbsp;&nbsp;</b><b>Support</b>. Codefresh will provide Licensee with maintenance and support services in
-accordance with and subject to the SLA. Community-based support is also available via Codefresh’s Discuss site located at <a href="https://discuss.codefresh.com">https://discuss.codefresh.com</a> (or
+accordance with and subject to the SLA. Community-based support is also available via Codefresh’s Discuss site located at <a href="https://community.codefresh.io/">https://discuss.codefresh.com</a> (or
 successor URL) for the Service at no additional charge. Upgraded support is available if purchased pursuant to an Order.</p>
 
 
