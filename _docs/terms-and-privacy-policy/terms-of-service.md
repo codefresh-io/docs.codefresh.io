@@ -52,10 +52,10 @@ text, audio files, graphic files, content, and other materials that you upload, 
 
 <p style='margin-left:1.5rem;'><b>(ix)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>“<b>Service</b>” means the Site, including related services provided through the site, or the Software.</p>
 
-<p style='margin-left:1.5rem;'><b>(x)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>“<b>Site</b>” means Codefresh’s website, located at <a href="https://codefresh.io">https://codefresh.io</a>.</p>
+<p style='margin-left:1.5rem;'><b>(x)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>“<b>Site</b>” means Codefresh’s website, located at <a href=" https://support.codefresh.io">https://support.codefresh.io</a>.</p>
 
 <p style='margin-left:1.5rem;'><b>(xi)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>“<b>SLA</b>” means the “service level agreement” in effect as of the Order’s Effective Date, which can be found at <a
-href="https://codefresh.io/docs/docs/terms-and-privacy-policy/sla/">https://codefresh.io/docs/docs/terms-and-privacy-policy/sla/</a>.</p>
+href="https://codefresh.io/docs/docs/terms-and-privacy-policy/privacy-policy/">https://codefresh.io/docs/docs/docs/terms-and-privacy-policy/privacy-policy/</a>.</p>
 
 <p style='margin-left:1.5rem;'><b>(xii)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>“<b>Software</b>” means any software developed and made available to Licensee as set forth in an applicable Order, which may include Codefresh’s build, test, and deployment docker container software tools, services, and related technologies.</p>
 
