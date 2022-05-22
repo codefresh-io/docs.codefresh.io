@@ -7,7 +7,6 @@ redirect_from:
 toc: true
 ---
 
-
 We launched the Codefresh platform in February this year. Built on Argo, the world’s most popular and fastest-growing open source software delivery, Codefresh unlocks the full enterprise potential of Argo Workflows, Argo CD, Argo Events, and Argo Rollouts, providing a control-plane for managing them at scale.
 Since the launch, we have continued to work on and grow Codefresh. 
 
@@ -354,3 +353,4 @@ CSDP supports Red Hat OpenShift 4.8. For detailed information, read their [blog]
 
 * Artifacts in database after uninstalling with `--force` flag.
 * Uninstallation issues with newer K8s versions.
+

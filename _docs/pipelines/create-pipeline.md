@@ -105,7 +105,7 @@ Currently, we support GitHub as an event-source, and an extensive list of GitHub
 The sensor trigger arguments are identical to the Workflow Template arguments. If Workflow Template arguments have default values, these values are displayed for the corresponding Sensor arguments as well. 
 > If values are defined for an argument both in the Workflow Template and in Trigger Conditions, the value defined in Trigger Conditions takes precedence. 
 
-You can override the default values or define custom values for trigger condition arguments through _parameterization_ and _Sprig template functions for Go_. For more information, see [Parameteization for Argo Events](https://argoproj.github.io/argo-events/tutorials/02-parameterization/){:target="\_blank"}, and [Sprig Function Documentation](http://masterminds.github.io/sprig/){:target="\_blank"}.
+You can override the default values or define custom values for trigger condition arguments through _parameterization_ and _Sprig template functions for Go_. For more information, see [Parameterization for Argo Events](https://argoproj.github.io/argo-events/tutorials/02-parameterization/){:target="\_blank"}, and [Sprig Function Documentation](http://masterminds.github.io/sprig/){:target="\_blank"}.
 
 Argo Events uses parameterization to pass data from the event payload to the workflow submitted by the sensor trigger. But where in Argo Workflows you would need to manually define the JSON path to the data in the event payload, our Delivery Pipeline wizard automates path definitions through predefined variables.
 

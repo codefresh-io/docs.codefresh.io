@@ -62,6 +62,8 @@
   icon: images/home-icons/deployment.svg
   url: ''
   links:
+    - title: Applications dashboard
+      localurl: /docs/deployment/applications-dashboard/
     - title: Create an application
       localurl: /docs/deployment/create-application/
 
