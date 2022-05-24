@@ -52,6 +52,11 @@ Before you start installing the Codefresh runtime, verify that:
 
   Silent install: Mandatory parameter.
 
+**Namespace resource labels**  
+  Add one or more labels to the namespace resource where you are installing the runtime. Labels are required to identity the networks that need access during installation, as is the case when using services meshes such as Istio for example.  
+
+  * CLI wizard and Silent install: Optional. Add the `--namespace-labels` flag, and define the labels in `key=value` format. Separate multiple labels with `commas`.
+
 **Kube context**  
   If you have more than one Kube context, the current context, which is the cluster currently the default for `kubectl`, is selected by default.  
   * CLI wizard: Select the Kube context from the list displayed.
