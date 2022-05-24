@@ -67,8 +67,10 @@
 - title: Deployment
   url: "/deployment"
   pages:
+    - title: Application dashboard
+      url: "/applications-dashboard"
     - title: Create an application
-      url: "/create-applicationm"
+      url: "/create-application"
 
 - title: Administration
   url: "/administration"
