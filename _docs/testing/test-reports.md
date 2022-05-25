@@ -418,8 +418,9 @@ caption="Multiple test reports"
 max-width="60%"
 %}
 
-The icons shown are specified by the `REPORT_TYPE` variable. The following options are possible: `Allure, Mocha, Spock, Coverage, Junit, Testng, Cucumber, Pytest, Rspec, Phpunit, Nunit, Spectest`.
-If you don't provide it, a default icon will be used.
+The icons shown are specified by the `REPORT_TYPE` variable. The following options are possible: `allure, mocha, spock, coverage, junit, testng, cucumber, pytest, rspec, phpunit, nunit, spectest`.
+
+If you don't provide a `REPORT_TYPE`, a default icon will be used.
 
 
 ## Getting results from tests that fail
