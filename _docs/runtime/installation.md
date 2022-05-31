@@ -79,9 +79,17 @@ Before you start installing the Codefresh runtime, verify that:
     * CLI wizard: Prompts you to confirm continuing with the installation in insecure mode.  
     * Silent install: To continue with the installation in insecure mode, add the `--insecure-ingress-host` flag.  
 
+**Internal ingress host**  
+  Optional. Enforce separation between internal (app-proxy) and external (webhook) communication by adding an internal ingress host for the app-proxy service in the internal network.  
+  For both CLI wizard and Silent install:  
+  * For new runtime installations, add the `--internal-ingress-host` flag pointing to the ingress host for `app-proxy`.
+  * For existing installations, commit changes to the installation repository by modifying the `app-proxy ingress` and `<runtime-name>.yaml` 
+    See _Internal ingress host configuration (optional for existing runtimes only)_ in [Post-installation configuration](#post-installation-configuration).
+
+
 **Ingress resources**  
   If you have a different routing service (not NGINX), bypass installing ingress resources with the `--skip-ingress` flag.  
-  In this case, after completing the installation, manually configure the cluster's routing service, and create and register Git integrations. See [Post-installation configuration](#post-installation-configuration) later on in this article. 
+  In this case, after completing the installation, manually configure the cluster's routing service, and create and register Git integrations. See _Cluster routing service_ in [Post-installation configuration](#post-installation-configuration). 
  
 **Insecure flag**  
    For _on-premises installations_, if the Ingress controller does not have a valid SSL certificate, to continue with the installation, add the `--insecure` flag to the installation command.  
@@ -101,6 +109,8 @@ Before you start installing the Codefresh runtime, verify that:
   Optional. Install demo pipelines to use as a starting point to create your own pipelines. We recommend installing the demo resources as these are used in our quick start tutorials.  
 
   Silent install: Optional. Add the `--demo-resources` flag. By default, set to `true`.
+
+
 
 #### Post-installation configuration
 After installing a runtime, you may have to configure additional settings:
@@ -217,7 +227,78 @@ spec:
           port:
             number: 80
 ```
+**Internal ingress host configuration (optional for existing runtimes only)**  
 
+If you have a Codefresh runtime installed, to use an internal ingress host for app-proxy communication, and an external ingress host to handle webhooks, change the specs for the `Ingress` and `Runtime` resources in the runtime installation repository. Use the examples as guidelines. 
+
+`<runtime-install-repo>/apps/app-proxy/overlays/<runtime-name>/ingress.yaml`: change `host` 
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: codefresh-cap-app-proxy
+  namespace: codefresh #replace with your runtime name
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: my-internal-ingress-host # replace with the internal ingress host for app-proxy
+    http:
+      paths:
+      - backend:
+          service:
+            name: cap-app-proxy 
+            port:
+              number: 3017
+        path: /app-proxy/
+        pathType: Prefix
+``` 
+
+`../<runtime-install-repo>/bootstrap/<runtime-name>.yaml`: add `internalIngressHost`
+
+```yaml
+apiVersion: v1
+data:
+  base-url: https://g.codefresh.io
+  runtime: |
+    apiVersion: codefresh.io/v1alpha1
+    kind: Runtime
+    metadata:
+      creationTimestamp: null
+      name: codefresh #replace with your runtime name
+      namespace: codefresh #replace with your runtime name
+    spec:
+      bootstrapSpecifier: github.com/codefresh-io/cli-v2/manifests/argo-cd
+      cluster: https://7DD8390300DCEFDAF87DC5C587EC388C.gr7.us-east-1.eks.amazonaws.com
+      components:
+      - isInternal: false
+        name: events
+        type: kustomize
+        url: github.com/codefresh-io/cli-v2/manifests/argo-events
+        wait: true
+      - isInternal: false
+        name: rollouts
+        type: kustomize
+        url: github.com/codefresh-io/cli-v2/manifests/argo-rollouts
+        wait: false
+      - isInternal: false
+        name: workflows
+        type: kustomize
+        url: github.com/codefresh-io/cli-v2/manifests/argo-workflows
+        wait: false
+      - isInternal: false
+        name: app-proxy
+        type: kustomize
+        url: github.com/codefresh-io/cli-v2/manifests/app-proxy
+        wait: false
+      defVersion: 1.0.1
+      ingressClassName: nginx
+      ingressController: k8s.io/ingress-nginx
+      ingressHost: https://support.cf.com/
+      internalIngressHost: https://my-internal-ingress-host # add this line and replace my-internal-ingress-host with your internal ingress host
+      repo: https://github.com/NimRegev/my-codefresh.git
+      version: 99.99.99
+``` 
   
 **Git integration registration**  
 If you bypassed installing ingress resources with the `--skip-ingress` flag, or if AWS ALB is your ingress controller, create and register Git integrations using these commands:  
