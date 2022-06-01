@@ -110,7 +110,7 @@
 - title: What's New?
   url: "/whats-new"
   pages:
-    - title: What's new in CSDP
+    - title: What's new in Codefresh?
       url: "/whats-new"
 
 - title: Troubleshooting
