@@ -232,7 +232,17 @@ Use the Topology or List runtime views to work with managed clusters. For inform
     * In the List View, select the runtime, and then select the **Managed Clusters** tab.
 1. To install Argo Rollouts (Topology View only), select **Install Argo Rollouts**. 
 1. To uninstall a cluster component from the list, select the three dots next to the component, and then select **Uninstall**.
-1. To remove the cluster from the list managed by the runtime, select the three dots next to the cluster name, and then select **Uninstall**.
+1. To remove the cluster from the list managed by the runtime, select the three dots next to the cluster name, and then select **Uninstall**. 
+  
+
+### Remove cluster in CLI 
+You can also remove a cluster through the CLI. 
+
+  `cf cluster remove <runtime-name> --server-url <server-url>`  
+  where:  
+  `<runtime-name>` is the name of the runtime that the managed cluster is registered to.  
+  `<server-url>` is the URL of the server on which the managed cluster is installed. 
+
 
 ### What to read next
 [Manage runtimes]({{site.baseurl}}/docs/runtime/monitor-manage-runtimes/)  
