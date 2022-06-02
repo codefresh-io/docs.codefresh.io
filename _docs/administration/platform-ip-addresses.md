@@ -9,7 +9,7 @@ toc: true
 If you want to use Codefresh for [a Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/) that has a strict firewall, you can only allow access to specific IP addresses
 that the Codefresh platform is using. This will allow you to deploy to your cluster even when it is not accessible from the public internet
 
->Note that this is needed only for customers that use the [SAAS version of Codefresh]({{site.baseurl}}/docs/administration/installation-security/). If you use the [Codefresh runner]({{site.baseurl}}/docs/administration/codefresh-runner/), there is no need to open any IPs and ports in your firewall.
+>Note that this is for paying customers and needed only for customers that use the [SAAS version of Codefresh]({{site.baseurl}}/docs/administration/installation-security/). If you use the [Codefresh runner]({{site.baseurl}}/docs/administration/codefresh-runner/), there is no need to open any IPs and ports in your firewall.
 
 ## Current IPs used by the Codefresh platform (updated July 31st 2021)
 
