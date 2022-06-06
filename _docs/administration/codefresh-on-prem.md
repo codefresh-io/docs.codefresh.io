@@ -436,8 +436,8 @@ global:
     http_proxy: "http://myproxy.domain.com:8080"
     HTTPS_PROXY: "http://myproxy.domain.com:8080"
     https_proxy: "http://myproxy.domain.com:8080"
-    NO_PROXY: "127.0.0.1,localhost,kubernetes.default.svc,.codefresh.svc,100.64.0.1,169.254.169.254,cf-builder,cf-cfapi,cf-cfui,cf-chartmuseum,cf-charts-manager,cf-cluster-providers,cf-consul,cf-consul-ui,cf-context-manager,cf-cronus,cf-helm-repo-manager,cf-hermes,cf-ingress-nginx-controller,cf-kube-integration,cf-mongodb,cf-nats,cf-nomios,cf-pipeline-manager,cf-postgresql,cf-rabbitmq,cf-redis,cf-registry,cf-runner,cf-runtime-environment-manager,cf-store"
-    no_proxy: "127.0.0.1,localhost,kubernetes.default.svc,.codefresh.svc,100.64.0.1,169.254.169.254,cf-builder,cf-cfapi,cf-cfui,cf-chartmuseum,cf-charts-manager,cf-cluster-providers,cf-consul,cf-consul-ui,cf-context-manager,cf-cronus,cf-helm-repo-manager,cf-hermes,cf-ingress-nginx-controller,cf-kube-integration,cf-mongodb,cf-nats,cf-nomios,cf-pipeline-manager,cf-postgresql,cf-rabbitmq,cf-redis,cf-registry,cf-runner,cf-runtime-environment-manager,cf-store"
+    NO_PROXY: "127.0.0.1,localhost,kubernetes.default.svc,.codefresh.svc,100.64.0.1,169.254.169.254,cf-builder,cf-cfapi,cf-cfui,cf-chartmuseum,cf-charts-manager,cf-cluster-providers,cf-consul,cf-consul-ui,cf-context-manager,cf-cronus,cf-helm-repo-manager,cf-hermes,cf-ingress-nginx-controller,cf-kube-integration,cf-mongodb,cf-nats,cf-nomios,cf-pipeline-manager,cf-postgresql,cf-rabbitmq,cf-redis-master,cf-registry,cf-runner,cf-runtime-environment-manager,cf-store"
+    no_proxy: "127.0.0.1,localhost,kubernetes.default.svc,.codefresh.svc,100.64.0.1,169.254.169.254,cf-builder,cf-cfapi,cf-cfui,cf-chartmuseum,cf-charts-manager,cf-cluster-providers,cf-consul,cf-consul-ui,cf-context-manager,cf-cronus,cf-helm-repo-manager,cf-hermes,cf-ingress-nginx-controller,cf-kube-integration,cf-mongodb,cf-nats,cf-nomios,cf-pipeline-manager,cf-postgresql,cf-rabbitmq,cf-redis-master,cf-registry,cf-runner,cf-runtime-environment-manager,cf-store"
 ```
 In addition to this, you should also add your Kubernetes API IP address (`kubectl get svc kubernetes`) to both: `NO_PROXY` and `no_proxy`.
 
@@ -857,9 +857,8 @@ Codefresh recommends to use the Bitnami RabbitMQ [chart](https://github.com/bitn
 To use an external RabbitMQ service instead of the local helm chart, add the following values to the __config.yaml__:
 
 ```yaml
-cf-db:
-  rabbit:
-    enabled: false
+rabbitmq:
+  enabled: false
 
 global:
   rabbitmqUsername: <RABBITMQ USER>
@@ -1181,7 +1180,7 @@ Notice that only `kfci` should be used for Codefresh upgrades. If you still have
 
 <a name="migrating-existing-installations"></a>
 ###  Backward compatibility for infrastructure services
-If you already have Codefresh version 1.0.202 or lower installed, and are upgrading to a later version, _before upgrade, to retain the existing images_ for the services listed below, update the `config.yaml` for `kcfi`.
+If you already have Codefresh version 1.0.202 or lower installed, and are upgrading to a version  **1.1.1**, _before upgrade, to retain the existing images_ for the services listed below, update the `config.yaml` for `kcfi`.
 
 * `cf-mongodb`
 * `cf-redis`
@@ -1210,16 +1209,6 @@ mongodb:
     fsGroup: 0
   containerSecurityContext:
     enabled: false    
-
-### rabbitmq subchart replaced with cf-db subchart
-### you can remove `rabbitmq` section from config
-
-# rabbitmq:
-#   image: bitnami/rabbitmq:3.7.2-r1
-#   podSecurityContext:
-#     enabled: false
-#   containerSecurityContext:
-#     enabled: false  
 
 redis:
   image: bitnami/redis:3.2.9-r2 # (default `image: bitnami/redis:6.0.16`)
