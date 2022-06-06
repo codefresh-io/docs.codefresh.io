@@ -436,8 +436,8 @@ global:
     http_proxy: "http://myproxy.domain.com:8080"
     HTTPS_PROXY: "http://myproxy.domain.com:8080"
     https_proxy: "http://myproxy.domain.com:8080"
-    NO_PROXY: "127.0.0.1,localhost,kubernetes.default.svc,.codefresh.svc,100.64.0.1,169.254.169.254,cf-builder,cf-cfapi,cf-cfui,cf-chartmuseum,cf-charts-manager,cf-cluster-providers,cf-consul,cf-consul-ui,cf-context-manager,cf-cronus,cf-helm-repo-manager,cf-hermes,cf-ingress-controller,cf-ingress-http-backend,cf-kube-integration,cf-mongodb,cf-nats,cf-nomios,cf-pipeline-manager,cf-postgresql,cf-rabbitmq,cf-redis,cf-registry,cf-runner,cf-runtime-environment-manager,cf-store"
-    no_proxy: "127.0.0.1,localhost,kubernetes.default.svc,.codefresh.svc,100.64.0.1,169.254.169.254,cf-builder,cf-cfapi,cf-cfui,cf-chartmuseum,cf-charts-manager,cf-cluster-providers,cf-consul,cf-consul-ui,cf-context-manager,cf-cronus,cf-helm-repo-manager,cf-hermes,cf-ingress-controller,cf-ingress-http-backend,cf-kube-integration,cf-mongodb,cf-nats,cf-nomios,cf-pipeline-manager,cf-postgresql,cf-rabbitmq,cf-redis,cf-registry,cf-runner,cf-runtime-environment-manager,cf-store"
+    NO_PROXY: "127.0.0.1,localhost,kubernetes.default.svc,.codefresh.svc,100.64.0.1,169.254.169.254,cf-builder,cf-cfapi,cf-cfui,cf-chartmuseum,cf-charts-manager,cf-cluster-providers,cf-consul,cf-consul-ui,cf-context-manager,cf-cronus,cf-helm-repo-manager,cf-hermes,cf-ingress-nginx-controller,cf-kube-integration,cf-mongodb,cf-nats,cf-nomios,cf-pipeline-manager,cf-postgresql,cf-rabbitmq,cf-redis,cf-registry,cf-runner,cf-runtime-environment-manager,cf-store"
+    no_proxy: "127.0.0.1,localhost,kubernetes.default.svc,.codefresh.svc,100.64.0.1,169.254.169.254,cf-builder,cf-cfapi,cf-cfui,cf-chartmuseum,cf-charts-manager,cf-cluster-providers,cf-consul,cf-consul-ui,cf-context-manager,cf-cronus,cf-helm-repo-manager,cf-hermes,cf-ingress-nginx-controller,cf-kube-integration,cf-mongodb,cf-nats,cf-nomios,cf-pipeline-manager,cf-postgresql,cf-rabbitmq,cf-redis,cf-registry,cf-runner,cf-runtime-environment-manager,cf-store"
 ```
 In addition to this, you should also add your Kubernetes API IP address (`kubectl get svc kubernetes`) to both: `NO_PROXY` and `no_proxy`.
 
@@ -561,7 +561,7 @@ To use a **Network Load Balancer** - deploy a regular Codefresh installation wit
 
 `config.yaml`
 ```yaml
-ingress:
+ingress-nginx:
   controller:
     service:
       annotations:
@@ -587,7 +587,7 @@ To use either a certificate from a third party issuer that was uploaded to IAM o
 
 `config.yaml`
 ```yaml
-ingress:
+ingress-nginx:
   controller:
     service:
       annotations:
@@ -615,7 +615,10 @@ To support ALB:
 -  First disable Nginx controller in the Codefresh init config file - __config.yaml__:
 
 ```yaml
-ingress:
+ingress-nginx: #disables creation of Nginx controller deployment
+  enabled: false
+
+ingress: #disables creation of Ingress object
   enabled: false
 ```
 
