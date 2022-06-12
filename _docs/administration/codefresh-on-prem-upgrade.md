@@ -251,7 +251,7 @@ After the upgrade is successfully completed, if you have Codefresh-managed Redis
   `kubectl scale deployment cf-cfapi-base --replicas=2 -n codefresh` 
 
 > Locations of parameters may have changed because of the structure of the new Redis chart.  
-  For the complete list of values, see [values.yaml charts/values.yaml at master · bitnami/charts](https://github.com/bitnami/charts/blob/master/bitnami/redis/values.yaml){:target="\_blank"}.
+  For the complete list of values, see [values.yaml charts/values.yaml at master·bitnami/charts](https://github.com/bitnami/charts/blob/master/bitnami/redis/values.yaml){:target="\_blank"}.
 
 **`existingPvc` replaced with `volumePermissions` and `persistence`**
 
