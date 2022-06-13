@@ -6,9 +6,10 @@ redirect_from:
   - /docs/enterprise/codefresh-on-prem-upgrade/
 toc: true
 ---
-Upgrade the Codefresh on-premises platform to the latest version.  
-
-_Before_ the upgrade, complete the required tasks based on the version you are upgrading to, then upgrade the platform, and then complete post-upgrade configuration if needed, also based on the version you are upgrading to.
+Upgrade the Codefresh on-premises platform to the latest version:
+* Prepare for the upgrade: _Before_ the upgrade, based on the version you are upgrading to, complete the required tasks
+* Upgrade the platform
+* Complete post-upgrade configuration: If needed, also based on the version you are upgrading to, complete the required tasks
 
 
 ###  Upgrade to 1.1.1
