@@ -63,14 +63,14 @@ consul:
   ImageTag: 1.0.0 # (default `imageTag:1.11`)
 ...
 ```
-### Upgrade to 1.2.0
+### Upgrade to 1.2.2
 Update config.yaml for the following Codefresh managed charts that have been deprecated:
 * Ingress
 * Rabbitmq
 * Redis
 
 #### Update configuration for ingress chart 
-From version 1.2.0 and higher, we have deprecated support for `Codfresh-managed-ingress`.  
+From version 1.2.2 and higher, we have deprecated support for `Codfresh-managed-ingress`.  
 Public `ingress-nginx` replaces `Codfresh-managed-ingress`. For more information on the public ingress, see [kubernetes/ingress-nginx](https://github.com/kubernetes/ingress-nginx){:target="\_blank"}.  
 
 You must update the configuration of the ingress chart, if you are using:
@@ -146,7 +146,7 @@ max-width="80%"
 
  
 #### Update configuration for Codefresh-managed rabbitmq chart
-From version, V1.2.0 and higher, we have deprecated support for the `Codefresh-managed rabbitmq` chart. The official `rabbitmq` chart has replaced the `Codefresh-managed rabbitmq`. For the complete list of values, see the [official values.yaml](https://github.com/bitnami/charts/blob/master/bitnami/rabbitmq/values.yaml){:target="\_blank"}.
+From version, V1.2.2 and higher, we have deprecated support for the `Codefresh-managed rabbitmq` chart. The official `rabbitmq` chart has replaced the `Codefresh-managed rabbitmq`. For the complete list of values, see the [official values.yaml](https://github.com/bitnami/charts/blob/master/bitnami/rabbitmq/values.yaml){:target="\_blank"}.
 
 > Configuration updates are not required if you are running an external RabbitMQ service.  
 
@@ -174,7 +174,7 @@ max-width="80%"
 
 
 #### Update configuration for Codefresh-managed redis chart
-From version, V1.2.0 and higher, we have deprecated support for the `Codefresh-managed Redis` chart. The public Bitnami Redis chart has replaced the `Codefresh-managed Redis` chart. For more information, see [Publich bitnami/charts](https://github.com/bitnami/charts/tree/master/bitnami/redis){:target="\_blank"}.  
+From version, V1.2.2 and higher, we have deprecated support for the `Codefresh-managed Redis` chart. The public Bitnami Redis chart has replaced the `Codefresh-managed Redis` chart. For more information, see [Publich bitnami/charts](https://github.com/bitnami/charts/tree/master/bitnami/redis){:target="\_blank"}.  
 
 If you have CRON and Registry triggers as part of your Redis data, to retain these triggers, you must migrate existing data from the old deployment to the new stateful set.
 This is done by backing up the existing data before upgrade, and then restoring the backed up data after upgrade.
@@ -243,8 +243,8 @@ Based on the version you are upgrading to, make sure you have completed all the 
 
 ### Post-upgrade configuration
 
-#### Upgrade to v1.2.0: Restore backed up Redis data
-After the upgrade yo v1.20 is successfully completed, if you backed Codefresh-managed Redis data, restore the data you backed up.
+#### Upgrade to v1.2.2: Restore backed up Redis data
+After the upgrade to v1.2.2 is successfully completed, if you backed Codefresh-managed Redis data, restore the data you backed up.
 
 1. Copy `appendonly.aof` to the new `cf-redis-master-0 pod`:  
   `kubectl cp appendonly.aof cf-redis-master-0:/data/appendonly.aof`
