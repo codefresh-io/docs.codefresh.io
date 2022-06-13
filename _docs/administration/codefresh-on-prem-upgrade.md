@@ -188,7 +188,7 @@ This is done by backing up the existing data before upgrade, and then restoring 
 ##### Verify existing Redis data for CRON and Registry triggers
 Check if you have CRON and Registry triggers configured in Redis.
 
-1. Run `codefresh get triggers`  
+* Run `codefresh get triggers`  
   OR   
   Access the K8s cluster where Codefresh is installed.  
 
@@ -204,11 +204,11 @@ select 15 # select db 15
 keys * #show keys
 ```
     
-1. If there are results, continue with _Back up existing Redis data_.
+* If there are results, continue with _Back up existing Redis data_.
 
 
 ##### Back up existing Redis data
-Before the upgrade, back up the existing data.
+Before the upgrade, if you have CRON and Registry triggers, back up the existing data.
 
 * Connect to the pod, start the Redis CLI, and export AOF data from old cf-redis-* pod:
   
@@ -220,7 +220,7 @@ kubectl cp $REDIS_POD:/bitnami/redis/data/appendonly.aof appendonly.aof -c cf-re
 ```
 
 
-##### Restore backed up Redis data
+##### Restore backed-up Redis data
 _After_ upgrade to v1.2.2, if you backed up Codefresh-managed Redis data, restore the data.
 
 1. Copy `appendonly.aof` to the new `cf-redis-master-0 pod`:  
