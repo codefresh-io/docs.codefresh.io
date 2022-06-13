@@ -270,7 +270,6 @@ Based on the version you are upgrading to, make sure you have completed all the 
 
 1. Locate the `config.yml` file you used in the initial installation, and change the release number inside it.
 1. Perform a dry run and verify that there are no errors:  
-
   `kcfi upgrade --dry-run --atomic -c codefresh/config.yaml`
 1. Run the actual upgrade:  
   `kcfi upgrade --atomic -c codefresh/config.yaml`
