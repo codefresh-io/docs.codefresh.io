@@ -458,7 +458,7 @@
       url: "/behind-the-firewall"
     - title: Codefresh Runner
       url: "/codefresh-runner"
-    - title: Codefresh On-Premises Installation & Configuration
+    - title: Codefresh On-Premises Installation
       url: "/codefresh-on-prem"
     - title: Codefresh On-Premises Upgrade
       url: "/codefresh-on-prem-upgrade"
