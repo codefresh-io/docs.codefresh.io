@@ -7,20 +7,15 @@ redirect_from:
 toc: true
 ---
 Upgrade the Codefresh on-premises platform to the latest version.  
-Prepare for the upgrade by completing the required tasks, upgrade the platform, and then complete post-upgrade configuration if needed.
 
-_Before_ the upgrade, complete the required tasks based on the version you are upgrading to:  
-* Upgrade to v1.1.1: Maintain backward compatibility for infrastructure services
-* Upgrade to v1.2.0: 
-  Update `config.yaml` for the following Codefresh managed charts that have been deprecated:
-  * Ingress 
-  * Rabbitmq 
-  * Redis 
+_Before_ the upgrade, complete the required tasks based on the version you are upgrading to, then upgrade the platform, and then complete post-upgrade configuration if needed, also based on the version you are upgrading to.
 
-###  Upgrade to 1.1.1 preparation
+
+###  Upgrade to 1.1.1
+Prepare for the upgrade to v1.1.1 by performing the tasks listed below.
 
 #### Maintain backward compatibility for infrastructure services
-If you have Codefresh version 1.0.202 or lower installed, and are upgrading to version **1.1.1 or higher**, to retain the existing images for the services listed below, _before upgrade_, update the `config.yaml` for `kcfi`.
+If you have Codefresh version 1.0.202 or lower installed, and are upgrading to v1.1.1, to retain the existing images for the services listed below, update the `config.yaml` for `kcfi`.
 
 * `cf-mongodb`
 * `cf-redis`
@@ -67,7 +62,11 @@ consul:
   ImageTag: 1.0.0 # (default `imageTag:1.11`)
 ...
 ```
-### Upgrade to 1.2.0 preparation
+### Upgrade to 1.2.0
+Update config.yaml for the following Codefresh managed charts that have been deprecated:
+* Ingress
+* Rabbitmq
+* Redis
 
 #### Update configuration for ingress chart 
 From version 1.2.0 and higher, we have deprecated support for `Codfresh-managed-ingress`.  
@@ -219,7 +218,7 @@ kubectl cp $REDIS_POD:/bitnami/redis/data/appendonly.aof appendonly.aof -c cf-re
 ```
 
 
-## Upgrade the Codefresh Platform
+### Upgrade the Codefresh Platform
 
 > Important: For Codefresh upgrades, use only `kfci`. If you still have a `cf-onprem` script at hand, please contact us for migration instructions.  
 
@@ -241,10 +240,10 @@ Based on the version you are upgrading to, make sure you have completed all the 
 1. Log in to the Codefresh UI, and check the new version.
 1. If needed, enable/disable new feature flags.
 
-## Post-upgrade configuration
+### Post-upgrade configuration
 
-### Upgrade to v1.2.0 : For Codefresh-managed Redis
-After the upgrade is successfully completed, if you have Codefresh-managed Redis, you must restore the data you backed up.
+#### Upgrade to v1.2.0: Restore backed up Redis data
+After the upgrade yo v1.20 is successfully completed, if you backed Codefresh-managed Redis data, restore the data you backed up.
 
 1. Copy `appendonly.aof` to the new `cf-redis-master-0 pod`:  
   `kubectl cp appendonly.aof cf-redis-master-0:/data/appendonly.aof`
