@@ -278,7 +278,7 @@ Based on the version you are upgrading to, make sure you have completed all the 
 1. Log in to the Codefresh UI, and check the new version.
 1. If needed, enable/disable new feature flags.
 
->If upgrading to v1.2.2, and you backed up Redis data, you must restore the backed-up data, after completing the upgrade. 
+>When upgrading to v1.2.2, and Redis data is backed up, you must restore the data after completing the upgrade. 
 
 
 
