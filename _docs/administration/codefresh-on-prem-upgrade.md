@@ -218,35 +218,9 @@ REDIS_PASSWORD=$(kubectl get secret --namespace $NAMESPACE cf-redis -o jsonpath=
 REDIS_POD=$(kubectl get pods -l app=cf-redis -o custom-columns=:metadata.name --no-headers=true)
 kubectl cp $REDIS_POD:/bitnami/redis/data/appendonly.aof appendonly.aof -c cf-redis
 ```
->You must restore the backed-up data, after completing the upgrade. See [Upgrade to v1.2.2: Restore backed up Redis data][#upgrade-to-v1-2-2-restore-backed-up-redis-data] in this article.
-
-### Upgrade the Codefresh Platform
-
-> Important: For Codefresh upgrades, use only `kfci`. If you still have a `cf-onprem` script at hand, please contact us for migration instructions.  
-
-**Before you begin**  
-
-Based on the version you are upgrading to, make sure you have completed all the tasks detailed in _Preparation for upgrade_  
 
 
-**How to**  
-
-1. Locate the `config.yml` file you used in the initial installation, and change the release number inside it.
-1. Perform a dry run and verify that there are no errors:  
-
-  `kcfi upgrade --dry-run --atomic -c codefresh/config.yaml`
-1. Run the actual upgrade:  
-  `kcfi upgrade --atomic -c codefresh/config.yaml`
-1. Verify that all the pods are are in `running` state:
-  `watch kubectl -ncodefresh get pods`  
-1. Log in to the Codefresh UI, and check the new version.
-1. If needed, enable/disable new feature flags.
-
- 
-
-### Post-upgrade configuration
-
-#### Upgrade to v1.2.2: Restore backed up Redis data
+##### Restore backed up Redis data
 _After_ upgrade to v1.2.2, if you backed up Codefresh-managed Redis data, restore the data.
 
 1. Copy `appendonly.aof` to the new `cf-redis-master-0 pod`:  
@@ -282,4 +256,30 @@ alt="Redis configuration updates: `storageClass` and `size` under `persistence`"
 caption="Rabbitmq configuration updates: `storageClass` and `size` under `persistence`"
 max-width="80%"
 %}
+
+### Upgrade the Codefresh Platform
+
+> Important: For Codefresh upgrades, use only `kfci`. If you still have a `cf-onprem` script at hand, please contact us for migration instructions.  
+
+**Before you begin**  
+
+Based on the version you are upgrading to, make sure you have completed all the tasks detailed in _Preparation for upgrade_  
+
+
+**How to**  
+
+1. Locate the `config.yml` file you used in the initial installation, and change the release number inside it.
+1. Perform a dry run and verify that there are no errors:  
+
+  `kcfi upgrade --dry-run --atomic -c codefresh/config.yaml`
+1. Run the actual upgrade:  
+  `kcfi upgrade --atomic -c codefresh/config.yaml`
+1. Verify that all the pods are are in `running` state:
+  `watch kubectl -ncodefresh get pods`  
+1. Log in to the Codefresh UI, and check the new version.
+1. If needed, enable/disable new feature flags.
+
+>If upgrading to v1.2.2, and you backed up Redis data, you must restore the backed-up data, after completing the upgrade. 
+
+
 
