@@ -9,15 +9,17 @@ toc: true
 Upgrade the Codefresh on-premises platform to the latest version.  
 Prepare for the upgrade by completing the required tasks, upgrade the platform, and then complete post-upgrade configuration if needed.
 
-## Preparation for upgrade
-_Before_ the upgrade, do the following:
-* Maintain backward compatibility for infrastructure services
-* Update `config.yaml` for the following Codefresh managed charts that have been deprecated from version 1.2.0 or higher:
+_Before_ the upgrade, complete the required tasks based on the version you are upgrading to:  
+* Upgrade to v1.1.1: Maintain backward compatibility for infrastructure services
+* Upgrade to v1.2.0: 
+  Update `config.yaml` for the following Codefresh managed charts that have been deprecated:
   * Ingress 
   * Rabbitmq 
   * Redis 
 
-###  Maintain backward compatibility for infrastructure services
+###  Upgrade to 1.1.1 preparation
+
+#### Maintain backward compatibility for infrastructure services
 If you have Codefresh version 1.0.202 or lower installed, and are upgrading to version **1.1.1 or higher**, to retain the existing images for the services listed below, _before upgrade_, update the `config.yaml` for `kcfi`.
 
 * `cf-mongodb`
@@ -65,13 +67,15 @@ consul:
   ImageTag: 1.0.0 # (default `imageTag:1.11`)
 ...
 ```
-### Update configuration for ingress chart 
-From version 1.2.1 and higher, we have deprecated support for `Codfresh-managed-ingress`.  
+### Upgrade to 1.2.0 preparation
+
+#### Update configuration for ingress chart 
+From version 1.2.0 and higher, we have deprecated support for `Codfresh-managed-ingress`.  
 Public `ingress-nginx` replaces `Codfresh-managed-ingress`. For more information on the public ingress, see [kubernetes/ingress-nginx](https://github.com/kubernetes/ingress-nginx){:target="\_blank"}.  
 
 You must update the configuration of the ingress chart, if you are using:
 * Codefresh-managed ingress controller with _custom_ values
-* Other ingress controllers, including ALB (AWS Load Balancer Controller)
+* Other ingress controllers, including ALB (Application Load Balancer)
 
 
 > Parameter locations have changed as the ingress chart name was changed from `ingress` to `ingress-nginx`:  
@@ -79,7 +83,7 @@ You must update the configuration of the ingress chart, if you are using:
   Ingress object parameters are now defined under `ingress`
   
 
-#### Update configuration for Codefresh-managed ingress with custom values
+##### Update configuration for Codefresh-managed ingress with custom values
 Refer to `values.yaml` from the official repo for the values. If needed, update the `ingress-nginx` section in `kcfi  config.yaml`. The example below shows the default values for `ingress-nginx`: 
 
 ```yaml
@@ -111,8 +115,8 @@ ingress-nginx:
 ```
 
 
-#### Update configuration for other ingress controllers
-For other ingress controllers, including AWS Load Balancer Controller, update the relevant sections in`config.yaml` to align with the new name for the ingress chart:
+##### Update configuration for other ingress controllers
+For other ingress controllers, including ALB (Application Load Balancer), update the relevant sections in`config.yaml` to align with the new name for the ingress chart:
 * Replace `ingress` with `ingress-nginx`
 * Replace `annotations` that have been deprecated with `ingressClassName`
 
@@ -141,10 +145,10 @@ max-width="80%"
 %}
 
  
-### Update configuration for Codefresh-managed rabbitmq chart
-From version, V1.2.1 and higher, we have deprecated support for the `Codefresh-managed rabbitmq` chart. The official `rabbitmq` chart has replaced the `Codefresh-managed rabbitmq`. For the complete list of values, see the [official values.yaml](https://github.com/bitnami/charts/blob/master/bitnami/rabbitmq/values.yaml){:target="\_blank"}.
+#### Update configuration for Codefresh-managed rabbitmq chart
+From version, V1.2.0 and higher, we have deprecated support for the `Codefresh-managed rabbitmq` chart. The official `rabbitmq` chart has replaced the `Codefresh-managed rabbitmq`. For the complete list of values, see the [official values.yaml](https://github.com/bitnami/charts/blob/master/bitnami/rabbitmq/values.yaml){:target="\_blank"}.
 
-> If you are running an external RabbitMQ service, no configuration update is required, and you can proceed directly with the upgrade. 
+> Configuration updates are not required if you are running an external RabbitMQ service.  
 
 **`existingPvc` replaced with `volumePermissions` and `persistence`**
 
@@ -169,25 +173,24 @@ max-width="80%"
 %}
 
 
-### Update configuration for Codefresh-managed redis chart
-From version, V1.2.1 and higher, we have deprecated support for the `Codefresh-managed Redis` chart. The public Bitnami Redis chart has replaced the `Codefresh-managed Redis` chart. For more information, see [Publich bitnami/charts](https://github.com/bitnami/charts/tree/master/bitnami/redis){:target="\_blank"}.  
+#### Update configuration for Codefresh-managed redis chart
+From version, V1.2.0 and higher, we have deprecated support for the `Codefresh-managed Redis` chart. The public Bitnami Redis chart has replaced the `Codefresh-managed Redis` chart. For more information, see [Publich bitnami/charts](https://github.com/bitnami/charts/tree/master/bitnami/redis){:target="\_blank"}.  
 
 If you have CRON and Registry triggers as part of your Redis data, to retain these triggers, you must migrate existing data from the old deployment to the new stateful set.
 This is done by backing up the existing data before upgrade, and then restoring the backed up data after upgrade.
 
-> If you are running an external Redis service, no configuration update is required. 
+> Configuration updates are not required:  
+  When running an external Redis service.  
+  If CRON and Registy triggers have not been configured.
 
 
 
-#### Verify existing Redis data for CRON and Registry triggers
-Check if you have CRON and Registry triggers in your Redis data.
+##### Verify existing Redis data for CRON and Registry triggers
+Check if you have CRON and Registry triggers configured in Redis.
 
 1. Run `codefresh get triggers`  
   OR   
   Access the K8s cluster where Codefresh is installed.  
-  Results indicate that you have CRON and Registry triggers installed.
-1. Continue with _Back up existing Redis data_.
-
 ```
 NAMESPACE=codefresh
 REDIS_PASSWORD=$(kubectl get secret --namespace $NAMESPACE cf-redis -o jsonpath="{.data.redis-password}" | base64 --decode)
@@ -199,14 +202,14 @@ info keyspace # list db
 select 15 # select db 15
 keys * #show keys
 ```
+    
+1. If there are results, continue with _Back up existing Redis data_.
 
 
-#### Back up existing Redis data
+##### Back up existing Redis data
 Before the upgrade, back up the existing data.
 
-1. Connect to the pod.
-1. Start the Redis CLI tool. 
-1. Export AOF data from old cf-redis-* pod:
+* Connect to the pod, start the Redis CLI, and export AOF data from old cf-redis-* pod:
   
 ```
 NAMESPACE=codefresh
@@ -222,7 +225,7 @@ kubectl cp $REDIS_POD:/bitnami/redis/data/appendonly.aof appendonly.aof -c cf-re
 
 **Before you begin**  
 
-Make sure you have completed all the tasks detailed in _Preparation for upgrade_  
+Based on the version you are upgrading to, make sure you have completed all the tasks detailed in _Preparation for upgrade_  
 
 
 **How to**  
@@ -239,6 +242,8 @@ Make sure you have completed all the tasks detailed in _Preparation for upgrade_
 1. If needed, enable/disable new feature flags.
 
 ## Post-upgrade configuration
+
+### Upgrade to v1.2.0 : For Codefresh-managed Redis
 After the upgrade is successfully completed, if you have Codefresh-managed Redis, you must restore the data you backed up.
 
 1. Copy `appendonly.aof` to the new `cf-redis-master-0 pod`:  
