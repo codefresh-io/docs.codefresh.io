@@ -191,6 +191,7 @@ Check if you have CRON and Registry triggers configured in Redis.
 1. Run `codefresh get triggers`  
   OR   
   Access the K8s cluster where Codefresh is installed.  
+
 ```
 NAMESPACE=codefresh
 REDIS_PASSWORD=$(kubectl get secret --namespace $NAMESPACE cf-redis -o jsonpath="{.data.redis-password}" | base64 --decode)
@@ -217,7 +218,7 @@ REDIS_PASSWORD=$(kubectl get secret --namespace $NAMESPACE cf-redis -o jsonpath=
 REDIS_POD=$(kubectl get pods -l app=cf-redis -o custom-columns=:metadata.name --no-headers=true)
 kubectl cp $REDIS_POD:/bitnami/redis/data/appendonly.aof appendonly.aof -c cf-redis
 ```
-
+>You must restore the backed-up data, after completing the upgrade. See [Upgrade to v1.2.2: Restore backed up Redis data][#upgrade-to-v1-2-2-restore-backed-up-redis-data] in this article.
 
 ### Upgrade the Codefresh Platform
 
@@ -241,10 +242,12 @@ Based on the version you are upgrading to, make sure you have completed all the 
 1. Log in to the Codefresh UI, and check the new version.
 1. If needed, enable/disable new feature flags.
 
+ 
+
 ### Post-upgrade configuration
 
 #### Upgrade to v1.2.2: Restore backed up Redis data
-After the upgrade to v1.2.2 is successfully completed, if you backed Codefresh-managed Redis data, restore the data you backed up.
+_After_ upgrade to v1.2.2, if you backed up Codefresh-managed Redis data, restore the data.
 
 1. Copy `appendonly.aof` to the new `cf-redis-master-0 pod`:  
   `kubectl cp appendonly.aof cf-redis-master-0:/data/appendonly.aof`
