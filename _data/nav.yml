@@ -63,6 +63,9 @@
       url: "/sharing-file-system"
     - title: Viewing images
       url: "/images"
+    - title: Nested workflows
+      url: "/nested-workflows"
+    
 
 - title: Deployment
   url: "/deployment"
