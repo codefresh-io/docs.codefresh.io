@@ -163,7 +163,7 @@ From version **1.2.0 and higher**, we have deprecated support for the `Codefresh
 > Configuration updates are not required if you are running an **external** RabbitMQ service.  
 
 > RabbitMQ chart was replaced so as a consequence values structure might be different for some parameters.
-  For the complete list of values, see the [values.yaml](https://github.com/bitnami/charts/blob/master/bitnami/rabbitmq/values.yaml)
+  For the complete list of values, see [values.yaml](https://github.com/bitnami/charts/blob/master/bitnami/rabbitmq/values.yaml)
 
 **`existingPvc` changed to `existingClaim` and defined under `persistence`**
 
@@ -261,7 +261,7 @@ keys * #show keys
 ##### Back up existing Redis data
 Back up the existing data before the upgrade:
 
-* Connect to the pod, run `redis-cli`, export AOF data from old cf-redis-* pod:
+* Connect to the pod, run `redis-cli`, export AOF data from old `cf-redis-*` pod:
   
 ```shell
 NAMESPACE=codefresh
@@ -288,7 +288,7 @@ Restore the data after the upgrade:
   ```
 
 > Redis chart was replaced so as a consequence values structure might be different for some parameters.
-  For the complete list of values, see [values.yaml charts/values.yaml at master·bitnami/charts](https://github.com/bitnami/charts/blob/master/bitnami/redis/values.yaml).
+  For the complete list of values, see [values.yaml](https://github.com/bitnami/charts/blob/master/bitnami/redis/values.yaml).
 
 **`existingPvc` changed to `existingClaim` and defined under `persistence`**
 
