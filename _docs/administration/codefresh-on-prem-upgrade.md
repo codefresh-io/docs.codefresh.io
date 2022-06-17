@@ -353,6 +353,8 @@ redis:
     size: 32Gi
 ```
 
+> If you run the upgrade without redis backup and restore procedure, **Helm Releases Dashboard** page might be empty for a few minutes after the upgrade.
+
 ### Upgrade the Codefresh Platform with [kcfi](https://github.com/codefresh-io/kcfi)
 
 1. Locate the `config.yaml` file you used in the initial installation.
