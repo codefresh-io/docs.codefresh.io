@@ -63,28 +63,26 @@ consul:
   ImageTag: 1.0.0 # (default `imageTag:1.11`)
 ...
 ```
-### Upgrade to 1.2.2
-Update config.yaml for the following Codefresh managed charts that have been deprecated:
+### Upgrade to 1.2.0 and higher
+Update `config.yaml` for the following Codefresh managed charts that have been deprecated:
 * Ingress
 * Rabbitmq
 * Redis
 
 #### Update configuration for ingress chart 
-From version **1.2.0** and higher, we have deprecated support for `Codfresh-managed-ingress`.  
-Public `ingress-nginx` replaces `Codfresh-managed-ingress`. For more information on the public ingress, see [kubernetes/ingress-nginx](https://github.com/kubernetes/ingress-nginx){:target="\_blank"}.  
+From version **1.2.0 and higher**, we have deprecated support for `Codefresh-managed-ingress`.  
+Public `ingress-nginx` chart replaces `Codefresh-managed-ingress` chart. For more information on the `ingress-nginx`, see [kubernetes/ingress-nginx](https://github.com/kubernetes/ingress-nginx){:target="\_blank"}.  
 
 You must update the configuration of the ingress chart, if you are using:
 * Codefresh-managed ingress controller with _custom_ values
-* Other ingress controllers, including ALB (Application Load Balancer)
-
+* External ingress controllers, including ALB (Application Load Balancer)
 
 > Parameter locations have changed as the ingress chart name was changed from `ingress` to `ingress-nginx`:  
   **NGINX controller** parameters are now defined under `ingress-nginx`  
   **Ingress object** parameters are now defined under `ingress`
   
-
 ##### Update configuration for Codefresh-managed ingress with custom values
-Refer to official [values.yaml](https://github.com/kubernetes/ingress-nginx/blob/main/charts/ingress-nginx/values.yaml) from the official repo for the values. If needed, update the `ingress-nginx` section in `kcfi  config.yaml`. The example below shows the default values for `ingress-nginx`: 
+Refer to [values.yaml](https://github.com/kubernetes/ingress-nginx/blob/main/charts/ingress-nginx/values.yaml) from the official repo. If needed, update the `ingress-nginx` section in `config.yaml`. The example below shows the default values for `ingress-nginx`: 
 
 ```yaml
 ingress-nginx:
