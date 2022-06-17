@@ -371,7 +371,7 @@ redis:
   `kcfi deploy --dry-run --debug -c codefresh/config.yaml`
 1. Run the actual upgrade:  
   `kcfi deploy --debug -c codefresh/config.yaml`
-1. Verify that all the pods are are in `running` state:
+1. Verify that all the pods are are in running state:  
   `kubectl -n codefresh get pods --watch`  
 1. Log in to the Codefresh UI, and check the new version.
 1. If needed, enable/disable new feature flags.
