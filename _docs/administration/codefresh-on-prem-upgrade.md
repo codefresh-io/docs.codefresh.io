@@ -123,9 +123,9 @@ ingress:
 #    kubernetes.io/ingress.class: my-non-codefresh-nginx  
 ```
 
- ##### Update configuration for Codefresh-managed ingress with custom values
+##### Update configuration for Codefresh-managed ingress with custom values
 
-If you were running `Codefresh-managed ingress` controller with _custom_ values refer to [values.yaml](https://github.com/kubernetes/ingress-nginx/blob/main/charts/ingress-nginx/values.yaml) from the official repo. If needed, update the `ingress-nginx` section in `config.yaml`. The example below shows the default values for `ingress-nginx`: 
+If you were running `Codefresh-managed ingress` controller with _custom_ values refer to [values.yaml](https://github.com/kubernetes/ingress-nginx/blob/main/charts/ingress-nginx/values.yaml) from the official repo. If needed, update the `ingress-nginx` section in `config.yaml`. The example below shows the default values (already provided in Codefresh chart) for `ingress-nginx`: 
 
 ```yaml
 ingress-nginx:
@@ -155,36 +155,6 @@ ingress-nginx:
       enabled: false
 ```
 
-##### Update configuration for other ingress controllers
-For other ingress controllers, including ALB (Application Load Balancer), update the relevant sections in `config.yaml` to align with the new name for the ingress chart:
-* Replace `ingress` with `ingress-nginx`
-* Replace `annotations` that have been deprecated with `ingressClassName`
-
-**Replace `ingress` with `ingress-nginx`**  
-
-{% include image.html
-lightbox="true"
-file="/images/administration/onpremises/upgrade-ingress-deprecation1.png"
-url="/images/administration/onpremises/upgrade-ingress-deprecation1.png"
-alt="Ingress controller configuration updates: `ingress` with `ingress-nginx`"
-caption="Ingress controller configuration updates: ingress` with `ingress-nginx`"
-max-width="80%"
-%}
-
-
-
-**Replace `annotations` with `ingressClassName`**
-
-{% include image.html
-lightbox="true"
-file="/images/administration/onpremises/upgrade-ingress-deprecation2.png"
-url="/images/administration/onpremises/upgrade-ingress-deprecation2.png"
-alt="Ingress controller configuration updates: `annotations` with `ingressClassName`"
-caption="Ingress controller configuration updates: `annotations` with `ingressClassName`"
-max-width="80%"
-%}
-
- 
 #### Update configuration for Codefresh-managed rabbitmq chart
 From version, V1.2.2 and higher, we have deprecated support for the `Codefresh-managed rabbitmq` chart. The official `rabbitmq` chart has replaced the `Codefresh-managed rabbitmq`. For the complete list of values, see the [official values.yaml](https://github.com/bitnami/charts/blob/master/bitnami/rabbitmq/values.yaml){:target="\_blank"}.
 
