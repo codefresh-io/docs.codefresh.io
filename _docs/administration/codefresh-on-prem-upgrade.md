@@ -357,16 +357,16 @@ redis:
 
 1. Locate the `config.yaml` file you used in the initial installation.
 1. Change the release number inside it.
-```yaml
-metadata:
-  kind: codefresh
-  installer:
-    type: helm
-    helm:
-      chart: codefresh
-      repoUrl: http://charts.codefresh.io/prod
-      version: 1.2.4
-```
+    ```yaml
+    metadata:
+      kind: codefresh
+      installer:
+        type: helm
+        helm:
+          chart: codefresh
+          repoUrl: http://charts.codefresh.io/prod
+          version: 1.2.4
+    ```
 1. Perform a dry run and verify that there are no errors:  
   `kcfi upgrade --dry-run --debug -c codefresh/config.yaml`
 1. Run the actual upgrade:  
