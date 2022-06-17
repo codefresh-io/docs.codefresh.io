@@ -71,7 +71,7 @@ Update `config.yaml` for the following Codefresh managed charts that **have been
 
 #### Update configuration for Ingress chart 
 From version **1.2.0 and higher**, we have deprecated support for `Codefresh-managed-ingress`.  
-Public `ingress-nginx` chart replaces `Codefresh-managed-ingress` chart. For more information on the `ingress-nginx`, see [kubernetes/ingress-nginx](https://github.com/kubernetes/ingress-nginx){:target="\_blank"}.  
+Bitnami public `ingress-nginx` chart replaces `Codefresh-managed-ingress` chart. For more information on the `ingress-nginx`, see [kubernetes/ingress-nginx](https://github.com/kubernetes/ingress-nginx){:target="\_blank"}.  
 
 > Parameter locations have changed as the ingress chart name was changed from `ingress` to `ingress-nginx`:  
   **NGINX controller** parameters are now defined under `ingress-nginx`  
@@ -155,33 +155,72 @@ ingress-nginx:
       enabled: false
 ```
 
-#### Update configuration for Codefresh-managed rabbitmq chart
-From version, V1.2.2 and higher, we have deprecated support for the `Codefresh-managed rabbitmq` chart. The official `rabbitmq` chart has replaced the `Codefresh-managed rabbitmq`. For the complete list of values, see the [official values.yaml](https://github.com/bitnami/charts/blob/master/bitnami/rabbitmq/values.yaml){:target="\_blank"}.
+#### Update configuration for Codefresh-managed RabbitMQ chart
+From version **1.2.0 and higher**, we have deprecated support for the `Codefresh-managed Rabbitmq` chart. Bitnami public `rabbitmq` chart has replaced the `Codefresh-managed rabbitmq`. For the complete list of values, see the [official values.yaml](https://github.com/bitnami/charts/blob/master/bitnami/rabbitmq/values.yaml){:target="\_blank"}.
 
 > Configuration updates are not required if you are running an external RabbitMQ service.  
 
 **`existingPvc` replaced with `volumePermissions` and `persistence`**
 
-{% include image.html
-lightbox="true"
-file="/images/administration/onpremises/upgrade-rabbit-deprecation1.png"
-url="/images/administration/onpremises/upgrade-rabbit-deprecation1.png"
-alt="Rabbitmq configuration updates: `existingPvc` replaced with `volumePermissions` and `persistence`"
-caption="Rabbitmq configuration updates: `existingPvc` replaced with `volumePermissions` and `persistence`"
-max-width="80%"
-%}
+*v1.1.1 or lower*
+```yaml
+rabbitmq:
+  existingPvc: my-rabbitmq-pvc
+  nodeSelector:
+    foo: bar
+  resources:
+    limits:
+      cpu: 2000m
+      memory: 2Gi
+    requests:
+      cpu: 500m
+      memory: 1Gi
+  tolerations:
+  - effect: NoSchedule
+    key: <key>
+    operator: Equal
+    value: <value>
+```
+
+*v1.2.0 or higher*
+```yaml
+rabbitmq:
+  volumePermissions:
+    enabled: true
+  persistence:
+    existingClaim: my-rabbitmq-pvc
+  nodeSelector:
+    foo: bar
+  resources:
+    limits:
+      cpu: 2000m
+      memory: 2Gi
+    requests:
+      cpu: 500m
+      memory: 1Gi
+  tolerations:
+  - effect: NoSchedule
+    key: <key>
+    operator: Equal
+    value: <value>
+```
 
 **`storageClass` and `size` defined under `persistence`**
 
-{% include image.html
-lightbox="true"
-file="/images/administration/onpremises/upgrade-rabbit-deprecation2.png"
-url="/images/administration/onpremises/upgrade-rabbit-deprecation2.png"
-alt="Rabbitmq configuration updates: `storageClass` and `size` defined under `persistence`"
-caption="Rabbitmq configuration updates: `storageClass` and `size` defined under `persistence`"
-max-width="80%"
-%}
+*v1.1.1 or lower*
+```yaml
+rabbitmq:
+  storageClass: my-storage-class
+  storageSize: 32Gi
+```
 
+*v1.2.0 or higher*
+```yaml
+rabbitmq:
+  persistence:
+    storageClass: my-storage-class
+    size: 32Gi
+```
 
 #### Update configuration for Codefresh-managed redis chart
 From version, V1.2.2 and higher, we have deprecated support for the `Codefresh-managed Redis` chart. The public Bitnami Redis chart has replaced the `Codefresh-managed Redis` chart. For more information, see [Publich bitnami/charts](https://github.com/bitnami/charts/tree/master/bitnami/redis){:target="\_blank"}.  
