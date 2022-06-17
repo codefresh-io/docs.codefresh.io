@@ -64,10 +64,11 @@ consul:
 ...
 ```
 ### Upgrade to 1.2.0 and higher
-Since **1.2.0** the following Codefresh managed charts that **have been deprecated**:
+This major release **1.2.0 deprecates** the following Codefresh managed charts:
 * Ingress
 * Rabbitmq
 * Redis
+See the instructions below for each of the affected charts.
 
 #### Update configuration for Ingress chart 
 From version **1.2.0 and higher**, we have deprecated support for `Codefresh-managed-ingress`.  
