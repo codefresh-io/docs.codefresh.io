@@ -240,7 +240,8 @@ Check if you have CRON and Registry triggers configured in Redis.
 
 * Run `codefresh get triggers`  
   OR   
-  Access the K8s cluster where Codefresh is installed.  
+  Directly from the K8s cluster where Codefresh is installed.  
+
 ```shell
 NAMESPACE=codefresh
 REDIS_PASSWORD=$(kubectl get secret --namespace $NAMESPACE cf-redis -o jsonpath="{.data.redis-password}" | base64 --decode)
