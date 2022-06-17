@@ -192,7 +192,7 @@ Check if you have CRON and Registry triggers configured in Redis.
   OR   
   Access the K8s cluster where Codefresh is installed.  
 
-```
+```shell
 NAMESPACE=codefresh
 REDIS_PASSWORD=$(kubectl get secret --namespace $NAMESPACE cf-redis -o jsonpath="{.data.redis-password}" | base64 --decode)
   
@@ -212,7 +212,7 @@ Before the upgrade, if you have CRON and Registry triggers, back up the existing
 
 * Connect to the pod, start the Redis CLI, and export AOF data from old cf-redis-* pod:
   
-```
+```shell
 NAMESPACE=codefresh
 REDIS_PASSWORD=$(kubectl get secret --namespace $NAMESPACE cf-redis -o jsonpath="{.data.redis-password}" | base64 --decode)
 REDIS_POD=$(kubectl get pods -l app=cf-redis -o custom-columns=:metadata.name --no-headers=true)
@@ -258,8 +258,6 @@ max-width="80%"
 %}
 
 ### Upgrade the Codefresh Platform
-
-> Important: For Codefresh upgrades, use only `kfci`. If you still have a `cf-onprem` script at hand, please contact us for migration instructions.  
 
 **Before you begin**  
 
