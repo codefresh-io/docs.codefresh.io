@@ -68,6 +68,7 @@ This major release **deprecates** the following Codefresh managed charts:
 * Ingress
 * Rabbitmq
 * Redis
+
 See the instructions below for each of the affected charts.
 
 #### Update configuration for Ingress chart 
