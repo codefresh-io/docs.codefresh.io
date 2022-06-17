@@ -63,28 +63,71 @@ consul:
   ImageTag: 1.0.0 # (default `imageTag:1.11`)
 ...
 ```
-### Upgrade to 1.2.2
-Update config.yaml for the following Codefresh managed charts that have been deprecated:
+### Upgrade to 1.2.0 and higher
+This major release **deprecates** the following Codefresh managed charts:
 * Ingress
 * Rabbitmq
 * Redis
 
-#### Update configuration for ingress chart 
-From version 1.2.2 and higher, we have deprecated support for `Codfresh-managed-ingress`.  
-Public `ingress-nginx` replaces `Codfresh-managed-ingress`. For more information on the public ingress, see [kubernetes/ingress-nginx](https://github.com/kubernetes/ingress-nginx){:target="\_blank"}.  
+See the instructions below for each of the affected charts.
 
-You must update the configuration of the ingress chart, if you are using:
-* Codefresh-managed ingress controller with _custom_ values
-* Other ingress controllers, including ALB (Application Load Balancer)
-
+#### Update configuration for Ingress chart 
+From version **1.2.0 and higher**, we have deprecated support for `Codefresh-managed-ingress`.  
+Kubernetes community public `ingress-nginx` chart replaces `Codefresh-managed-ingress` chart. For more information on the `ingress-nginx`, see [kubernetes/ingress-nginx](https://github.com/kubernetes/ingress-nginx).  
 
 > Parameter locations have changed as the ingress chart name was changed from `ingress` to `ingress-nginx`:  
-  NGINX controller parameters are now defined under `ingress-nginx`  
-  Ingress object parameters are now defined under `ingress`
-  
+  **NGINX controller** parameters are now defined under `ingress-nginx`  
+  **Ingress object** parameters are now defined under `ingress`
+
+You must update `config.yaml`, if you are using:
+* External ingress controllers, including ALB (Application Load Balancer)
+* Codefresh-managed ingress controller with _custom_ values
+
+##### Update configuration for external ingress controllers
+
+For external ingress controllers, including ALB (Application Load Balancer), update the relevant sections in `config.yaml` to align with the new name for the ingress chart:
+
+* Replace `ingress` with `ingress-nginx`
+
+*v1.1.1 or lower*
+```yaml
+ingress: #disables creation of both Nginx controller deployment and Ingress objects
+  enabled: false
+```
+
+*v1.2.0 or higher*
+```yaml
+ingress-nginx: #disables creation of Nginx controller deployment
+  enabled: false
+
+ingress: #disables creation of Ingress objects (assuming you've manually created ingress resource before)
+  enabled: false
+```
+
+* Replace `annotations` that have been deprecated with `ingressClassName`
+
+*v1.1.1 or lower*
+```yaml
+ingress:
+  annotations: 
+    kubernetes.io/ingress.class: my-non-codefresh-nginx
+```
+
+*v1.2.0 or higher*
+```yaml
+ingress-nginx:
+  enabled: false
+
+ingress:
+  ingressClassName: my-non-codefresh-nginx
+###  `kubernetes.io/ingress.class` annotation is deprecated from kubernetes v1.22+.
+#  annotations: 
+#    kubernetes.io/ingress.class: my-non-codefresh-nginx  
+```
 
 ##### Update configuration for Codefresh-managed ingress with custom values
-Refer to `values.yaml` from the official repo for the values. If needed, update the `ingress-nginx` section in `kcfi  config.yaml`. The example below shows the default values for `ingress-nginx`: 
+
+If you were running `Codefresh-managed ingress` controller with _custom_ values refer to [values.yaml](https://github.com/kubernetes/ingress-nginx/blob/main/charts/ingress-nginx/values.yaml) from the official repo. If needed, update the `ingress-nginx` section in `config.yaml`. The example below shows the default values (already provided in Codefresh chart) for `ingress-nginx`: 
 
 ```yaml
 ingress-nginx:
@@ -114,85 +157,94 @@ ingress-nginx:
       enabled: false
 ```
 
+#### Update configuration for RabbitMQ chart
+From version **1.2.0 and higher**, we have deprecated support for the `Codefresh-managed Rabbitmq` chart. Bitnami public `bitnami/rabbitmq` chart has replaced the `Codefresh-managed rabbitmq`. For more information, see [bitnami/rabbitmq](https://github.com/bitnami/charts/tree/master/bitnami/rabbitmq).
 
-##### Update configuration for other ingress controllers
-For other ingress controllers, including ALB (Application Load Balancer), update the relevant sections in`config.yaml` to align with the new name for the ingress chart:
-* Replace `ingress` with `ingress-nginx`
-* Replace `annotations` that have been deprecated with `ingressClassName`
+> Configuration updates are not required if you are running an **external** RabbitMQ service.  
 
-**Replace `ingress` with `ingress-nginx`**  
+> RabbitMQ chart was replaced so as a consequence values structure might be different for some parameters.
+  For the complete list of values, see [values.yaml](https://github.com/bitnami/charts/blob/master/bitnami/rabbitmq/values.yaml)
 
-{% include image.html
-lightbox="true"
-file="/images/administration/onpremises/upgrade-ingress-deprecation1.png"
-url="/images/administration/onpremises/upgrade-ingress-deprecation1.png"
-alt="Ingress controller configuration updates: `ingress` with `ingress-nginx`"
-caption="Ingress controller configuration updates: ingress` with `ingress-nginx`"
-max-width="80%"
-%}
+**`existingPvc` changed to `existingClaim` and defined under `persistence`**
 
+*v1.1.1 or lower*
+```yaml
+rabbitmq:
+  existingPvc: my-rabbitmq-pvc
+  nodeSelector:
+    foo: bar
+  resources:
+    limits:
+      cpu: 2000m
+      memory: 2Gi
+    requests:
+      cpu: 500m
+      memory: 1Gi
+  tolerations:
+  - effect: NoSchedule
+    key: <key>
+    operator: Equal
+    value: <value>
+```
 
-
-**Replace `annotations` with `ingressClassName`**
-
-{% include image.html
-lightbox="true"
-file="/images/administration/onpremises/upgrade-ingress-deprecation2.png"
-url="/images/administration/onpremises/upgrade-ingress-deprecation2.png"
-alt="Ingress controller configuration updates: `annotations` with `ingressClassName`"
-caption="Ingress controller configuration updates: `annotations` with `ingressClassName`"
-max-width="80%"
-%}
-
- 
-#### Update configuration for Codefresh-managed rabbitmq chart
-From version, V1.2.2 and higher, we have deprecated support for the `Codefresh-managed rabbitmq` chart. The official `rabbitmq` chart has replaced the `Codefresh-managed rabbitmq`. For the complete list of values, see the [official values.yaml](https://github.com/bitnami/charts/blob/master/bitnami/rabbitmq/values.yaml){:target="\_blank"}.
-
-> Configuration updates are not required if you are running an external RabbitMQ service.  
-
-**`existingPvc` replaced with `volumePermissions` and `persistence`**
-
-{% include image.html
-lightbox="true"
-file="/images/administration/onpremises/upgrade-rabbit-deprecation1.png"
-url="/images/administration/onpremises/upgrade-rabbit-deprecation1.png"
-alt="Rabbitmq configuration updates: `existingPvc` replaced with `volumePermissions` and `persistence`"
-caption="Rabbitmq configuration updates: `existingPvc` replaced with `volumePermissions` and `persistence`"
-max-width="80%"
-%}
+*v1.2.0 or higher*
+```yaml
+rabbitmq:
+  volumePermissions: ## Enable init container that changes the owner and group of the persistent volume from existing claim
+    enabled: true
+  persistence:
+    existingClaim: my-rabbitmq-pvc
+  nodeSelector:
+    foo: bar
+  resources:
+    limits:
+      cpu: 2000m
+      memory: 2Gi
+    requests:
+      cpu: 500m
+      memory: 1Gi
+  tolerations:
+  - effect: NoSchedule
+    key: <key>
+    operator: Equal
+    value: <value>
+```
 
 **`storageClass` and `size` defined under `persistence`**
 
-{% include image.html
-lightbox="true"
-file="/images/administration/onpremises/upgrade-rabbit-deprecation2.png"
-url="/images/administration/onpremises/upgrade-rabbit-deprecation2.png"
-alt="Rabbitmq configuration updates: `storageClass` and `size` defined under `persistence`"
-caption="Rabbitmq configuration updates: `storageClass` and `size` defined under `persistence`"
-max-width="80%"
-%}
+*v1.1.1 or lower*
+```yaml
+rabbitmq:
+  storageClass: my-storage-class
+  storageSize: 32Gi
+```
 
+*v1.2.0 or higher*
+```yaml
+rabbitmq:
+  persistence:
+    storageClass: my-storage-class
+    size: 32Gi
+```
 
-#### Update configuration for Codefresh-managed redis chart
-From version, V1.2.2 and higher, we have deprecated support for the `Codefresh-managed Redis` chart. The public Bitnami Redis chart has replaced the `Codefresh-managed Redis` chart. For more information, see [Publich bitnami/charts](https://github.com/bitnami/charts/tree/master/bitnami/redis){:target="\_blank"}.  
+#### Update configuration for Redis chart
+From version **1.2.0 and higher**, we have deprecated support for the `Codefresh-managed Redis` chart. Bitnami public `bitnami/redis` chart has replaced the `Codefresh-managed Redis` chart. For more information, see [bitnami/redis](https://github.com/bitnami/charts/tree/master/bitnami/redis).  
 
-If you have CRON and Registry triggers as part of your Redis data, to retain these triggers, you must migrate existing data from the old deployment to the new stateful set.
+Redis storage contains **CRON and Registry** typed triggers so you must migrate existing data from the old deployment to the new stateful set.
 This is done by backing up the existing data before upgrade, and then restoring the backed up data after upgrade.
 
 > Configuration updates are not required:  
-  When running an external Redis service.  
-  If CRON and Registy triggers have not been configured.
-
-
+  * When running an **external** Redis service.  
+  * If CRON and Registy triggers have not been configured.
 
 ##### Verify existing Redis data for CRON and Registry triggers
 Check if you have CRON and Registry triggers configured in Redis.
 
 * Run `codefresh get triggers`  
   OR   
-  Access the K8s cluster where Codefresh is installed.  
+  Directly from the K8s cluster where Codefresh is installed.  
 
-```
+```shell
 NAMESPACE=codefresh
 REDIS_PASSWORD=$(kubectl get secret --namespace $NAMESPACE cf-redis -o jsonpath="{.data.redis-password}" | base64 --decode)
   
@@ -206,79 +258,120 @@ keys * #show keys
     
 * If there are results, continue with _Back up existing Redis data_.
 
-
 ##### Back up existing Redis data
-Before the upgrade, if you have CRON and Registry triggers, back up the existing data.
+Back up the existing data before the upgrade:
 
-* Connect to the pod, start the Redis CLI, and export AOF data from old cf-redis-* pod:
+* Connect to the pod, run `redis-cli`, export AOF data from old `cf-redis-*` pod:
   
-```
+```shell
 NAMESPACE=codefresh
 REDIS_PASSWORD=$(kubectl get secret --namespace $NAMESPACE cf-redis -o jsonpath="{.data.redis-password}" | base64 --decode)
 REDIS_POD=$(kubectl get pods -l app=cf-redis -o custom-columns=:metadata.name --no-headers=true)
 kubectl cp $REDIS_POD:/bitnami/redis/data/appendonly.aof appendonly.aof -c cf-redis
 ```
 
-
 ##### Restore backed-up Redis data
-_After_ upgrade to v1.2.2, if you backed up Codefresh-managed Redis data, restore the data.
+Restore the data after the upgrade:
 
-1. Copy `appendonly.aof` to the new `cf-redis-master-0 pod`:  
-  `kubectl cp appendonly.aof cf-redis-master-0:/data/appendonly.aof`
-1. Restart the pods, `cf-redis-master-0` and `cf-api`:  
+* Copy `appendonly.aof` to the new `cf-redis-master-0` pod:  
+  
+  ```shell
+  kubectl cp appendonly.aof cf-redis-master-0:/data/appendonly.aof
+  ````
+* Restart `cf-redis-master-0` and `cf-api` pods:  
 
-  `kubectl delete pod cf-redis-master-0`  
+  ```shell
+  kubectl delete pod cf-redis-master-0  
     
-  `kubectl scale deployment cf-cfapi-base --replicas=0 -n codefresh`  
-  `kubectl scale deployment cf-cfapi-base --replicas=2 -n codefresh` 
+  kubectl scale deployment cf-cfapi-base --replicas=0 -n codefresh  
+  kubectl scale deployment cf-cfapi-base --replicas=2 -n codefresh 
+  ```
 
-> Locations of parameters may have changed because of the structure of the new Redis chart.  
-  For the complete list of values, see [values.yaml charts/values.yaml at master·bitnami/charts](https://github.com/bitnami/charts/blob/master/bitnami/redis/values.yaml){:target="\_blank"}.
+> Redis chart was replaced so as a consequence values structure might be different for some parameters.
+  For the complete list of values, see [values.yaml](https://github.com/bitnami/charts/blob/master/bitnami/redis/values.yaml).
 
-**`existingPvc` replaced with `volumePermissions` and `persistence`**
+**`existingPvc` changed to `existingClaim` and defined under `persistence`**
 
-{% include image.html
-lightbox="true"
-file="/images/administration/onpremises/upgrade-rabbit-deprecation1.png"
-url="/images/administration/onpremises/upgrade-rabbit-deprecation1.png"
-alt="Redis configuration updates: Replace `existingPvc` with `volumePermissions` and `persistence`"
-caption="Redis configuration updates: Replace `existingPvc` with `volumePermissions` and `persistence`"
-max-width="80%"
-%}
+*v1.1.1 or lower*
+```yaml
+redis:
+  existingPvc: my-redis-pvc
+  nodeSelector:
+    foo: bar
+  resources:
+    limits:
+      cpu: 1000m
+      memory: 1Gi
+    requests:
+      cpu: 500m
+      memory: 500Mi
+  tolerations:
+  - effect: NoSchedule
+    key: <key>
+    operator: Equal
+    value: <value>
+```
+
+*v1.2.0 or higher*
+```yaml
+rabbitmq:
+  volumePermissions: ## Enable init container that changes the owner and group of the persistent volume from existing claim
+    enabled: true
+  persistence:
+    existingClaim: my-redis-pvc
+  nodeSelector:
+    foo: bar
+  resources:
+    limits:
+      cpu: 1000m
+      memory: 1Gi
+    requests:
+      cpu: 500m
+      memory: 500Mi
+  tolerations:
+  - effect: NoSchedule
+    key: <key>
+    operator: Equal
+    value: <value>
+```
 
 **`storageClass` and `size` defined under `persistence`**
 
-{% include image.html
-lightbox="true"
-file="/images/administration/onpremises/upgrade-redis-deprecation2.png"
-url="/images/administration/onpremises/upgrade-redis-deprecation2.png"
-alt="Redis configuration updates: `storageClass` and `size` under `persistence`"
-caption="Rabbitmq configuration updates: `storageClass` and `size` under `persistence`"
-max-width="80%"
-%}
 
-### Upgrade the Codefresh Platform
+*v1.1.1 or lower*
+```yaml
+redis:
+  storageClass: my-storage-class
+  storageSize: 32Gi
+```
 
-> Important: For Codefresh upgrades, use only `kfci`. If you still have a `cf-onprem` script at hand, please contact us for migration instructions.  
+*v1.2.0 or higher*
+```yaml
+redis:
+  persistence:
+    storageClass: my-storage-class
+    size: 32Gi
+```
 
-**Before you begin**  
+### Upgrade the Codefresh Platform with [kcfi](https://github.com/codefresh-io/kcfi)
 
-Based on the version you are upgrading to, make sure you have completed all the tasks detailed in _Preparation for upgrade_  
-
-
-**How to**  
-
-1. Locate the `config.yml` file you used in the initial installation, and change the release number inside it.
+1. Locate the `config.yaml` file you used in the initial installation.
+1. Change the release number inside it.
+    ```yaml
+    metadata:
+      kind: codefresh
+      installer:
+        type: helm
+        helm:
+          chart: codefresh
+          repoUrl: http://charts.codefresh.io/prod
+          version: 1.2.4
+    ```
 1. Perform a dry run and verify that there are no errors:  
-  `kcfi upgrade --dry-run --atomic -c codefresh/config.yaml`
+  `kcfi deploy --dry-run --debug -c codefresh/config.yaml`
 1. Run the actual upgrade:  
-  `kcfi upgrade --atomic -c codefresh/config.yaml`
-1. Verify that all the pods are are in `running` state:
-  `watch kubectl -ncodefresh get pods`  
+  `kcfi deploy --debug -c codefresh/config.yaml`
+1. Verify that all the pods are are in running state:  
+  `kubectl -n codefresh get pods --watch`  
 1. Log in to the Codefresh UI, and check the new version.
 1. If needed, enable/disable new feature flags.
-
->When upgrading to v1.2.2, and Redis data is backed up, you must restore the data after completing the upgrade. 
-
-
-
