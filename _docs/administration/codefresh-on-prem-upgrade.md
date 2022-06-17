@@ -70,7 +70,7 @@ Update config.yaml for the following Codefresh managed charts that have been dep
 * Redis
 
 #### Update configuration for ingress chart 
-From version 1.2.2 and higher, we have deprecated support for `Codfresh-managed-ingress`.  
+From version **1.2.0** and higher, we have deprecated support for `Codfresh-managed-ingress`.  
 Public `ingress-nginx` replaces `Codfresh-managed-ingress`. For more information on the public ingress, see [kubernetes/ingress-nginx](https://github.com/kubernetes/ingress-nginx){:target="\_blank"}.  
 
 You must update the configuration of the ingress chart, if you are using:
@@ -79,12 +79,12 @@ You must update the configuration of the ingress chart, if you are using:
 
 
 > Parameter locations have changed as the ingress chart name was changed from `ingress` to `ingress-nginx`:  
-  NGINX controller parameters are now defined under `ingress-nginx`  
-  Ingress object parameters are now defined under `ingress`
+  **NGINX controller** parameters are now defined under `ingress-nginx`  
+  **Ingress object** parameters are now defined under `ingress`
   
 
 ##### Update configuration for Codefresh-managed ingress with custom values
-Refer to `values.yaml` from the official repo for the values. If needed, update the `ingress-nginx` section in `kcfi  config.yaml`. The example below shows the default values for `ingress-nginx`: 
+Refer to official [values.yaml](https://github.com/kubernetes/ingress-nginx/blob/main/charts/ingress-nginx/values.yaml) from the official repo for the values. If needed, update the `ingress-nginx` section in `kcfi  config.yaml`. The example below shows the default values for `ingress-nginx`: 
 
 ```yaml
 ingress-nginx:
@@ -113,7 +113,6 @@ ingress-nginx:
     admissionWebhooks:
       enabled: false
 ```
-For the complete list of values, see the official [values.yaml](https://github.com/kubernetes/ingress-nginx/blob/main/charts/ingress-nginx/values.yaml)
 
 ##### Update configuration for other ingress controllers
 For other ingress controllers, including ALB (Application Load Balancer), update the relevant sections in`config.yaml` to align with the new name for the ingress chart:
