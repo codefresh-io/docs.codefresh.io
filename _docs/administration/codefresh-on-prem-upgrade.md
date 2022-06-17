@@ -290,7 +290,7 @@ Restore the data after the upgrade:
 > Redis chart was replaced so as a consequence values structure might be different for some parameters.
   For the complete list of values, see [values.yaml](https://github.com/bitnami/charts/blob/master/bitnami/redis/values.yaml).
 
-**`existingPvc` changed to `existingClaim` and defined under `persistence`**
+**`existingPvc` changed to `existingClaim` and defined under `master.persistence`**
 
 *v1.1.1 or lower*
 ```yaml
@@ -314,28 +314,29 @@ redis:
 
 *v1.2.0 or higher*
 ```yaml
-rabbitmq:
+redis:
   volumePermissions: ## Enable init container that changes the owner and group of the persistent volume from existing claim
     enabled: true
-  persistence:
-    existingClaim: my-redis-pvc
-  nodeSelector:
-    foo: bar
-  resources:
-    limits:
-      cpu: 1000m
-      memory: 1Gi
-    requests:
-      cpu: 500m
-      memory: 500Mi
-  tolerations:
-  - effect: NoSchedule
-    key: <key>
-    operator: Equal
-    value: <value>
+  master:
+    persistence:
+      existingClaim: my-redis-pvc
+    nodeSelector:
+      foo: bar
+    resources:
+      limits:
+        cpu: 1000m
+        memory: 1Gi
+      requests:
+        cpu: 500m
+        memory: 500Mi
+    tolerations:
+    - effect: NoSchedule
+      key: <key>
+      operator: Equal
+      value: <value>
 ```
 
-**`storageClass` and `size` defined under `persistence`**
+**`storageClass` and `size` defined under `master.persistence`**
 
 
 *v1.1.1 or lower*
@@ -348,9 +349,10 @@ redis:
 *v1.2.0 or higher*
 ```yaml
 redis:
-  persistence:
-    storageClass: my-storage-class
-    size: 32Gi
+  master:
+    persistence:
+      storageClass: my-storage-class
+      size: 32Gi
 ```
 
 > If you run the upgrade without redis backup and restore procedure, **Helm Releases Dashboard** page might be empty for a few minutes after the upgrade.
