@@ -271,14 +271,14 @@ kubectl cp $REDIS_POD:/bitnami/redis/data/appendonly.aof appendonly.aof -c cf-re
 ```
 
 ##### Restore backed-up Redis data
-Restore the data athe the upgrade:
+Restore the data after the upgrade:
 
-1. Copy `appendonly.aof` to the new `cf-redis-master-0` pod:  
+* Copy `appendonly.aof` to the new `cf-redis-master-0` pod:  
   
   ```shell
   kubectl cp appendonly.aof cf-redis-master-0:/data/appendonly.aof
   ````
-2. Restart `cf-redis-master-0` and `cf-api` pods:  
+* Restart `cf-redis-master-0` and `cf-api` pods:  
 
   ```shell
   kubectl delete pod cf-redis-master-0  
