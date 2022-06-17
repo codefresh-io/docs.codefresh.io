@@ -73,7 +73,7 @@ See the instructions below for each of the affected charts.
 
 #### Update configuration for Ingress chart 
 From version **1.2.0 and higher**, we have deprecated support for `Codefresh-managed-ingress`.  
-Kubernetes community public `ingress-nginx` chart replaces `Codefresh-managed-ingress` chart. For more information on the `ingress-nginx`, see [kubernetes/ingress-nginx](https://github.com/kubernetes/ingress-nginx){:target="\_blank"}.  
+Kubernetes community public `ingress-nginx` chart replaces `Codefresh-managed-ingress` chart. For more information on the `ingress-nginx`, see [kubernetes/ingress-nginx](https://github.com/kubernetes/ingress-nginx).  
 
 > Parameter locations have changed as the ingress chart name was changed from `ingress` to `ingress-nginx`:  
   **NGINX controller** parameters are now defined under `ingress-nginx`  
@@ -158,7 +158,7 @@ ingress-nginx:
 ```
 
 #### Update configuration for RabbitMQ chart
-From version **1.2.0 and higher**, we have deprecated support for the `Codefresh-managed Rabbitmq` chart. Bitnami public `bitnami/rabbitmq` chart has replaced the `Codefresh-managed rabbitmq`. For more information, see [bitnami/rabbitmq](https://github.com/bitnami/charts/tree/master/bitnami/rabbitmq).{:target="\_blank"}.
+From version **1.2.0 and higher**, we have deprecated support for the `Codefresh-managed Rabbitmq` chart. Bitnami public `bitnami/rabbitmq` chart has replaced the `Codefresh-managed rabbitmq`. For more information, see [bitnami/rabbitmq](https://github.com/bitnami/charts/tree/master/bitnami/rabbitmq).
 
 > Configuration updates are not required if you are running an external RabbitMQ service.  
 
@@ -228,7 +228,7 @@ rabbitmq:
 ```
 
 #### Update configuration for Redis chart
-From version **1.2.0 and higher**, we have deprecated support for the `Codefresh-managed Redis` chart. Bitnami public `bitnami/redis` chart has replaced the `Codefresh-managed Redis` chart. For more information, see [bitnami/redis](https://github.com/bitnami/charts/tree/master/bitnami/redis){:target="\_blank"}.  
+From version **1.2.0 and higher**, we have deprecated support for the `Codefresh-managed Redis` chart. Bitnami public `bitnami/redis` chart has replaced the `Codefresh-managed Redis` chart. For more information, see [bitnami/redis](https://github.com/bitnami/charts/tree/master/bitnami/redis).  
 
 Redis storage contains **CRON and Registry** typed triggers so you must migrate existing data from the old deployment to the new stateful set.
 This is done by backing up the existing data before upgrade, and then restoring the backed up data after upgrade.
@@ -288,7 +288,7 @@ Restore the data after the upgrade:
   ```
 
 > Redis chart was replaced so as a consequence values structure might be different for some parameters.
-  For the complete list of values, see [values.yaml charts/values.yaml at master·bitnami/charts](https://github.com/bitnami/charts/blob/master/bitnami/redis/values.yaml){:target="\_blank"}.
+  For the complete list of values, see [values.yaml charts/values.yaml at master·bitnami/charts](https://github.com/bitnami/charts/blob/master/bitnami/redis/values.yaml).
 
 **`existingPvc` changed to `existingClaim` and defined under `persistence`**
 
