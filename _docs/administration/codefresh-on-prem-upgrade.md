@@ -368,10 +368,10 @@ redis:
           version: 1.2.4
     ```
 1. Perform a dry run and verify that there are no errors:  
-  `kcfi upgrade --dry-run --debug -c codefresh/config.yaml`
+  `kcfi deploy --dry-run --debug -c codefresh/config.yaml`
 1. Run the actual upgrade:  
-  `kcfi upgrade --debug -c codefresh/config.yaml`
+  `kcfi deploy --debug -c codefresh/config.yaml`
 1. Verify that all the pods are are in `running` state:
-  `watch kubectl -n codefresh get pods`  
+  `kubectl -n codefresh get pods --watch`  
 1. Log in to the Codefresh UI, and check the new version.
 1. If needed, enable/disable new feature flags.
