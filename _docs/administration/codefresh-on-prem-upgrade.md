@@ -353,26 +353,25 @@ redis:
     size: 32Gi
 ```
 
-### Upgrade the Codefresh Platform
+### Upgrade the Codefresh Platform with [kcfi](https://github.com/codefresh-io/kcfi)
 
-**Before you begin**  
-
-Based on the version you are upgrading to, make sure you have completed all the tasks detailed in _Preparation for upgrade_  
-
-
-**How to**  
-
-1. Locate the `config.yml` file you used in the initial installation, and change the release number inside it.
+1. Locate the `config.yaml` file you used in the initial installation,
+1. Change the release number inside it.
+```yaml
+metadata:
+  kind: codefresh
+  installer:
+    type: helm
+    helm:
+      chart: codefresh
+      repoUrl: http://charts.codefresh.io/prod
+      version: 1.2.4
+```
 1. Perform a dry run and verify that there are no errors:  
-  `kcfi upgrade --dry-run --atomic -c codefresh/config.yaml`
+  `kcfi upgrade --dry-run --debug -c codefresh/config.yaml`
 1. Run the actual upgrade:  
-  `kcfi upgrade --atomic -c codefresh/config.yaml`
+  `kcfi upgrade --debug -c codefresh/config.yaml`
 1. Verify that all the pods are are in `running` state:
-  `watch kubectl -ncodefresh get pods`  
+  `watch kubectl -n codefresh get pods`  
 1. Log in to the Codefresh UI, and check the new version.
 1. If needed, enable/disable new feature flags.
-
->When upgrading to v1.2.2, and Redis data is backed up, you must restore the data after completing the upgrade. 
-
-
-
