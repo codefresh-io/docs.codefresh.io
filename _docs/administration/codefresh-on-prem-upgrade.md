@@ -64,7 +64,7 @@ consul:
 ...
 ```
 ### Upgrade to 1.2.0 and higher
-Update `config.yaml` for the following Codefresh managed charts that **have been deprecated**:
+Since **1.2.0** the following Codefresh managed charts that **have been deprecated**:
 * Ingress
 * Rabbitmq
 * Redis
@@ -155,7 +155,7 @@ ingress-nginx:
       enabled: false
 ```
 
-#### Update configuration for Codefresh-managed RabbitMQ chart
+#### Update configuration for RabbitMQ chart
 From version **1.2.0 and higher**, we have deprecated support for the `Codefresh-managed Rabbitmq` chart. Bitnami public `bitnami/rabbitmq` chart has replaced the `Codefresh-managed rabbitmq`. For more information, see [bitnami/rabbitmq](https://github.com/bitnami/charts/tree/master/bitnami/rabbitmq).
 For the complete list of values, see the [values.yaml](https://github.com/bitnami/charts/blob/master/bitnami/rabbitmq/values.yaml){:target="\_blank"}.
 
@@ -225,7 +225,7 @@ rabbitmq:
     size: 32Gi
 ```
 
-#### Update configuration for Codefresh-managed redis chart
+#### Update configuration for Redis chart
 From version **1.2.0 and higher**, we have deprecated support for the `Codefresh-managed Redis` chart. Bitnami public `bitnami/redis` chart has replaced the `Codefresh-managed Redis` chart. For more information, see [bitnami/redis](https://github.com/bitnami/charts/tree/master/bitnami/redis){:target="\_blank"}.  
 
 Redis storage contains **CRON and Registry** typed triggers so you must migrate existing data from the old deployment to the new stateful set.
