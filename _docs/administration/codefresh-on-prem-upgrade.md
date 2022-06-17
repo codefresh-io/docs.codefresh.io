@@ -355,7 +355,7 @@ redis:
 
 ### Upgrade the Codefresh Platform with [kcfi](https://github.com/codefresh-io/kcfi)
 
-1. Locate the `config.yaml` file you used in the initial installation,
+1. Locate the `config.yaml` file you used in the initial installation.
 1. Change the release number inside it.
 ```yaml
 metadata:
