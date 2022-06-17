@@ -165,7 +165,7 @@ From version **1.2.0 and higher**, we have deprecated support for the `Codefresh
 > RabbitMQ chart was replaced so as a consequence values structure might be different for some parameters.
   For the complete list of values, see the [values.yaml](https://github.com/bitnami/charts/blob/master/bitnami/rabbitmq/values.yaml)
 
-**`existingPvc` replaced with `volumePermissions` and `persistence`**
+**`existingPvc` changed to `existingClaim` and defined under `persistence`**
 
 *v1.1.1 or lower*
 ```yaml
@@ -190,7 +190,7 @@ rabbitmq:
 *v1.2.0 or higher*
 ```yaml
 rabbitmq:
-  volumePermissions:
+  volumePermissions: ## Enable init container that changes the owner and group of the persistent volume from existing claim
     enabled: true
   persistence:
     existingClaim: my-rabbitmq-pvc
@@ -315,7 +315,7 @@ redis:
 *v1.2.0 or higher*
 ```yaml
 rabbitmq:
-  volumePermissions:
+  volumePermissions: ## Enable init container that changes the owner and group of the persistent volume from existing claim
     enabled: true
   persistence:
     existingClaim: my-redis-pvc
