@@ -64,25 +64,66 @@ consul:
 ...
 ```
 ### Upgrade to 1.2.0 and higher
-Update `config.yaml` for the following Codefresh managed charts that have been deprecated:
+Update `config.yaml` for the following Codefresh managed charts that **have been deprecated**:
 * Ingress
 * Rabbitmq
 * Redis
 
-#### Update configuration for ingress chart 
+#### Update configuration for Ingress chart 
 From version **1.2.0 and higher**, we have deprecated support for `Codefresh-managed-ingress`.  
 Public `ingress-nginx` chart replaces `Codefresh-managed-ingress` chart. For more information on the `ingress-nginx`, see [kubernetes/ingress-nginx](https://github.com/kubernetes/ingress-nginx){:target="\_blank"}.  
-
-You must update the configuration of the ingress chart, if you are using:
-* Codefresh-managed ingress controller with _custom_ values
-* External ingress controllers, including ALB (Application Load Balancer)
 
 > Parameter locations have changed as the ingress chart name was changed from `ingress` to `ingress-nginx`:  
   **NGINX controller** parameters are now defined under `ingress-nginx`  
   **Ingress object** parameters are now defined under `ingress`
-  
-##### Update configuration for Codefresh-managed ingress with custom values
-Refer to [values.yaml](https://github.com/kubernetes/ingress-nginx/blob/main/charts/ingress-nginx/values.yaml) from the official repo. If needed, update the `ingress-nginx` section in `config.yaml`. The example below shows the default values for `ingress-nginx`: 
+
+You must update the configuration of the ingress chart, if you are using:
+* External ingress controllers, including ALB (Application Load Balancer)
+* Codefresh-managed ingress controller with _custom_ values
+
+##### Update configuration for external ingress controllers
+
+For external ingress controllers, including ALB (Application Load Balancer), update the relevant sections in `config.yaml` to align with the new name for the ingress chart:
+
+* Replace `ingress` with `ingress-nginx`
+*v1.1.1 or lower*
+```yaml
+ingress: #disables creation of both Nginx controller deployment and Ingress objects
+  enabled: false
+```
+
+*v1.2.0 or higher*
+```yaml
+ingress-nginx: #disables creation of Nginx controller deployment
+  enabled: false
+
+ingress: #disables creation of Ingress objects (assuming you've manually created ingress resource before)
+  enabled: false
+```
+
+* Replace `annotations` that have been deprecated with `ingressClassName`
+*v1.1.1 or lower*
+```yaml
+ingress:
+  annotations: 
+    kubernetes.io/ingress.class: my-non-codefresh-nginx
+```
+
+*v1.2.0 or higher*
+```yaml
+ingress-nginx:
+  enabled: false
+
+ingress:
+  ingressClassName: my-non-codefresh-nginx
+###  `kubernetes.io/ingress.class` annotation is deprecated from kubernetes v1.22+.
+#  annotations: 
+#    kubernetes.io/ingress.class: my-non-codefresh-nginx  
+```
+
+ ##### Update configuration for Codefresh-managed ingress with custom values
+
+If you were running `Codefresh-managed ingress` controller with _custom_ values refer to [values.yaml](https://github.com/kubernetes/ingress-nginx/blob/main/charts/ingress-nginx/values.yaml) from the official repo. If needed, update the `ingress-nginx` section in `config.yaml`. The example below shows the default values for `ingress-nginx`: 
 
 ```yaml
 ingress-nginx:
@@ -113,7 +154,7 @@ ingress-nginx:
 ```
 
 ##### Update configuration for other ingress controllers
-For other ingress controllers, including ALB (Application Load Balancer), update the relevant sections in`config.yaml` to align with the new name for the ingress chart:
+For other ingress controllers, including ALB (Application Load Balancer), update the relevant sections in `config.yaml` to align with the new name for the ingress chart:
 * Replace `ingress` with `ingress-nginx`
 * Replace `annotations` that have been deprecated with `ingressClassName`
 
