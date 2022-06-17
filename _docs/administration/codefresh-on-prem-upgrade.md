@@ -290,7 +290,7 @@ Restore the data athe the upgrade:
 > Redis chart was replaced so as a consequence values structure might be different for some parameters.
   For the complete list of values, see [values.yaml charts/values.yaml at master·bitnami/charts](https://github.com/bitnami/charts/blob/master/bitnami/redis/values.yaml){:target="\_blank"}.
 
-**`existingPvc` replaced with `volumePermissions` and `persistence`**
+**`existingPvc` changed to `existingClaim` and defined under `persistence`**
 
 *v1.1.1 or lower*
 ```yaml
