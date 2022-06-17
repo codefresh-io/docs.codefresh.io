@@ -113,7 +113,7 @@ ingress-nginx:
     admissionWebhooks:
       enabled: false
 ```
-
+For the complete list of values, see the official [values.yaml](https://github.com/kubernetes/ingress-nginx/blob/main/charts/ingress-nginx/values.yaml)
 
 ##### Update configuration for other ingress controllers
 For other ingress controllers, including ALB (Application Load Balancer), update the relevant sections in`config.yaml` to align with the new name for the ingress chart:
