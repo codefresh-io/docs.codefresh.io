@@ -86,6 +86,7 @@ You must update the configuration of the ingress chart, if you are using:
 For external ingress controllers, including ALB (Application Load Balancer), update the relevant sections in `config.yaml` to align with the new name for the ingress chart:
 
 * Replace `ingress` with `ingress-nginx`
+
 *v1.1.1 or lower*
 ```yaml
 ingress: #disables creation of both Nginx controller deployment and Ingress objects
@@ -102,6 +103,7 @@ ingress: #disables creation of Ingress objects (assuming you've manually created
 ```
 
 * Replace `annotations` that have been deprecated with `ingressClassName`
+
 *v1.1.1 or lower*
 ```yaml
 ingress:
