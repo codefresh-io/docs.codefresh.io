@@ -64,7 +64,7 @@ consul:
 ...
 ```
 ### Upgrade to 1.2.0 and higher
-This major release **1.2.0 deprecates** the following Codefresh managed charts:
+This major release **deprecates** the following Codefresh managed charts:
 * Ingress
 * Rabbitmq
 * Redis
