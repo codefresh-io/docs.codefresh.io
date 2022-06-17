@@ -158,12 +158,12 @@ ingress-nginx:
 ```
 
 #### Update configuration for RabbitMQ chart
-From version **1.2.0 and higher**, we have deprecated support for the `Codefresh-managed Rabbitmq` chart. Bitnami public `bitnami/rabbitmq` chart has replaced the `Codefresh-managed rabbitmq`. For more information, see [bitnami/rabbitmq](https://github.com/bitnami/charts/tree/master/bitnami/rabbitmq).
-For the complete list of values, see the [values.yaml](https://github.com/bitnami/charts/blob/master/bitnami/rabbitmq/values.yaml){:target="\_blank"}.
+From version **1.2.0 and higher**, we have deprecated support for the `Codefresh-managed Rabbitmq` chart. Bitnami public `bitnami/rabbitmq` chart has replaced the `Codefresh-managed rabbitmq`. For more information, see [bitnami/rabbitmq](https://github.com/bitnami/charts/tree/master/bitnami/rabbitmq).{:target="\_blank"}.
 
 > Configuration updates are not required if you are running an external RabbitMQ service.  
 
 > RabbitMQ chart was replaced so as a consequence values structure might be different for some parameters.
+  For the complete list of values, see the [values.yaml](https://github.com/bitnami/charts/blob/master/bitnami/rabbitmq/values.yaml)
 
 **`existingPvc` replaced with `volumePermissions` and `persistence`**
 
