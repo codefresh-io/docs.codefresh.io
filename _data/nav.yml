@@ -458,10 +458,8 @@
       url: "/behind-the-firewall"
     - title: Codefresh Runner
       url: "/codefresh-runner"
-    - title: Codefresh On-Premises Installation
+    - title: Codefresh On-Premises
       url: "/codefresh-on-prem"
-    - title: Codefresh On-Premises Upgrade
-      url: "/codefresh-on-prem-upgrade"
     - title: Add Users
       url: "/invite-your-team-member"
     - title: User Settings
