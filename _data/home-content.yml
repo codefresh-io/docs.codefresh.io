@@ -244,7 +244,7 @@
     localurl: /docs/administration/codefresh-runner
   - title: Codefresh On-Premises Installation
     localurl: /docs/administration/codefresh-on-prem 
-  - title: Codefresh On-Premises Installation
+  - title: Codefresh On-Premises Upgrade
     localurl: /docs/administration/codefresh-on-prem-upgrade 
   - title: User Settings
     localurl: /docs/administration/user-settings   
