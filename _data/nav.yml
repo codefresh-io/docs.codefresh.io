@@ -70,10 +70,11 @@
 - title: Deployment
   url: "/deployment"
   pages:
-    - title: Application dashboard
+    - title: Applications dashboard
       url: "/applications-dashboard"
     - title: Create an application
       url: "/create-application"
+
 
 - title: Administration
   url: "/administration"
