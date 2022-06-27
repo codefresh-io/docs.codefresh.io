@@ -14,6 +14,12 @@
         url: "/hello-world"
       - title: Create a basic CI delivery pipeline
         url: "/create-ci-pipeline"
+      - title: Create resources for the codefresh-guestbook application
+        url: "/create-app-specs"
+      - title: Create the codefresh-guestbook application
+        url: "/create-app-ui"
+      - title: Update the image tag for the codefresh-guestbook application
+        url: "/create-rollout"
 
         
   - title: Main concepts

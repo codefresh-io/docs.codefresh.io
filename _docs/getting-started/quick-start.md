@@ -17,3 +17,9 @@ The tutorial guides you through installing the runtime, working with the demo pi
   Configure the Git event to trigger the demo pipeline. 
 1. [Create a basic CI delivery pipeline]({{site.baseurl}}/docs/getting-started/quick-start/create-ci-pipeline)  
   Create a new CI delivery pipeline in Codefresh.
+1. [Create resources for codefresh-guestbook application]({{site.baseurl}}/docs/getting-started/quick-start/create-app-specs)  
+  Create rollout, service, and analysis template resources prior to creating the `codefresh-guestbook` application.
+1. [Create the codefresh-guestbook application]({{site.baseurl}}/docs/getting-started/quick-start/create-app-ui)  
+  Create the `codefresh-guestbook` application in the Codefresh UI.
+1. [Update the image tag for codefresh-guestbook]({{site.baseurl}}/docs/getting-started/quick-start/create-app-ui)  
+  Update the image for the  `codefresh-guestbook` application to trigger a rollout.
