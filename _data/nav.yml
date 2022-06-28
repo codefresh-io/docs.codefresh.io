@@ -89,8 +89,10 @@
       url: "/add-users"
     - title: Git tokens
       url: "/git-tokens"
-    - title: Manage Git personal access tokens
+    - title: Git personal access tokens for users
       url: "/user-settings"
+    - title: Set up OAuth2 authentication
+      url: "/oauth-setup"
     - title: Single Sign-On
       url: "/single-sign-on"
       sub-pages:
