@@ -55,6 +55,8 @@
       url: "/git-sources"
     - title: Restore runtimes
       url: "/runtime-recovery"
+    - title: Shared runtime configuration
+      url: "/shared-configuration"
 
 - title: Pipelines
   url: "/pipelines"
@@ -130,6 +132,12 @@
   pages:
     - title: Runtimes
       url: "/runtime-issues"
+
+- title: Incubation
+  url: "/incubation"
+  pages:
+    - title: Runtime shared configuration
+      url: "/shared-configuration"
 
 
 - title: Terms and Privacy Policy
