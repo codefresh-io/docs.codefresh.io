@@ -14,6 +14,12 @@
         url: "/hello-world"
       - title: Create a basic CI delivery pipeline
         url: "/create-ci-pipeline"
+      - title: Create resources for the codefresh-guestbook application
+        url: "/create-app-specs"
+      - title: Create the codefresh-guestbook application
+        url: "/create-app-ui"
+      - title: Update the image tag for the codefresh-guestbook application
+        url: "/create-rollout"
 
         
   - title: Main concepts
@@ -43,12 +49,16 @@
       url: "/installation"
     - title: Management
       url: "/monitor-manage-runtimes"
+    - title: View/download runtime logs
+      url: "/download-runtime-logs" 
     - title: Add and manage external clusters
       url: "/managed-cluster" 
     - title: Add and manage Git Sources
       url: "/git-sources"
     - title: Restore runtimes
       url: "/runtime-recovery"
+    - title: Shared runtime configuration
+      url: "/shared-configuration"
 
 - title: Pipelines
   url: "/pipelines"
@@ -70,10 +80,11 @@
 - title: Deployment
   url: "/deployment"
   pages:
-    - title: Application dashboard
+    - title: Applications dashboard
       url: "/applications-dashboard"
     - title: Create an application
       url: "/create-application"
+
 
 - title: Administration
   url: "/administration"
@@ -82,8 +93,10 @@
       url: "/add-users"
     - title: Git tokens
       url: "/git-tokens"
-    - title: Manage Git personal access tokens
+    - title: Git personal access tokens for users
       url: "/user-settings"
+    - title: Set up OAuth2 authentication
+      url: "/oauth-setup"
     - title: Single Sign-On
       url: "/single-sign-on"
       sub-pages:
@@ -121,6 +134,12 @@
   pages:
     - title: Runtimes
       url: "/runtime-issues"
+
+- title: Incubation
+  url: "/incubation"
+  pages:
+    - title: Runtime shared configuration
+      url: "/shared-configuration"
 
 
 - title: Terms and Privacy Policy

@@ -38,7 +38,7 @@ Create Git Sources for any provisioned runtime.  The Git Sources will be availab
 
 >Make sure you are in the List View to create Git Sources. 
 
-1. In the Codefresh UI, go to the [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes**){:target="\_blank"} page.
+1. In the Codefresh UI, go to [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes**){:target="\_blank"}.
 1. In the List View, select the runtime for which to add a Git Source, and then select the **Git Sources** tab.  
 1. Select **Create Git Sources**, and in the Create Git Source panel, define the definitions for the Git Source: 
 
@@ -73,7 +73,7 @@ Create Git Sources for any provisioned runtime.  The Git Sources will be availab
 Edit an existing Git Source by changing the source and destination definitions.  
 > You cannot change the name of the Git Source.
 
-1. In the Codefresh UI, go to the [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes**){:target="\_blank"} page.
+1. In the Codefresh UI, go to [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes**){:target="\_blank"}.
 1. From the **List View** (the default), select the runtime with the Git Source, and then select the **Git Sources** tab.  
 1. In the row with the Git Source to edit, select the three dots, and then select **Edit** in the panel that appears.
 
@@ -88,6 +88,43 @@ Edit an existing Git Source by changing the source and destination definitions.
 %}
 {:start="4"}
 1. Change the **Source** and **Destination** definitions for the Git Source, and select **Save**. 
+
+### View/download logs for a Git Source
+View online logs for any Git Source associated with a runtime, and if needed, download the log file for offline viewing and analysis.
+Online logs show up to 1000 of the most recent events (lines), updated in real time. Downloaded logs include all the events from the application launch to the date and time of download. 
+
+1. In the Codefresh UI, go to [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes**){:target="\_blank"}.
+1. From the **List View** (the default), select the runtime with the Git Source, and then select the **Git Sources** tab.  
+1. In the row with the Git Source foe which to view/download logs, select the three dots, and then select **View Logs**.
+
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/runtime/git-source-view-logs.png" 
+	url="/images/runtime/git-source-view-logs.png" 
+	alt="Edit Git Source" 
+	caption="Edit Git Source"
+    max-width="30%" 
+%}
+
+{:start="4"}
+1. Do the following:
+  * Search by free-text for any string, and click the next and previous buttons to navigate between the search results.
+  * To toggle between standard and line-wrapped views, click **Wrap**.
+
+  {% include 
+	image.html 
+	lightbox="true" 
+	file="/images/runtime/git-source-logs-screen.png" 
+	url="/images/runtime/git-source-logs-screen.png" 
+	alt="View logs for Git Source" 
+	caption="View logs for Git Source"
+    max-width="50%" 
+%}
+
+{:start="5"}
+1. To download the log, click **Download**.  
+  The file is downloaded with `.log` extension.
 
 ### What to read next
 [Manage runtimes]({{site.baseurl}}/docs/runtime/monitor-manage-runtimes/)
