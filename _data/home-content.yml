@@ -35,6 +35,8 @@
       localurl: /docs/runtime/installation
     - title: Management
       localurl: /docs/runtime/monitor-manage-runtimes/
+    - title: View/download runtime logs
+      localurl: /docs/runtime/download-runtime-logs/
     - title: Add and manage external clusters
       localurl: /docs/runtime/managed-cluster/
     - title:  Add and manage Git Sources
