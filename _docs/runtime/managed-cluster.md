@@ -30,13 +30,11 @@ Optionally, to first generate the YAML manifests, and then manually apply them, 
 1. From either the **Topology** or **List** views, select the runtime to which to add the cluster. 
 1. Topology View: Select {::nomarkdown}<img src="../../../images/icons/add-cluster.png" display=inline-block/>{:/}.  
   List View: Select the **Managed Clusters** tab, and then select **+ Add Cluster**.  
-1. In the Add Managed Cluster panel:
-  * **Cluster Name**: Enter the context name for your cluster (as it appears in your kubeconfig file). 
-  * Define the parameters and then run the command:  
-    `cf cluster add <runtime-name> --context <context_name> [--dry-run]`  
+1. In the Add Managed Cluster panel, copy and run the command:  
+
+    `cf cluster add <runtime-name> [--dry-run]`  
     where:  
       `<runtime-name>` is the runtime to which to register the cluster. The name of the selected runtime is automatically added.  
-      `<context_name>` is the kube context with the credentials to communicate with the managed cluster. If not supplied, the CLI displays the list of available clusters as defined in `kubeconfig`.  
       `--dry-run` is optional, and required if you want to generate a list of YAML manifests that you can redirect and apply manually with `kubectl`.
   
    {% include 
@@ -46,10 +44,12 @@ Optionally, to first generate the YAML manifests, and then manually apply them, 
 	url="/images/runtime/managed-cluster-add-panel.png" 
 	alt="Add Managed Cluster panel" 
 	caption="Add Managed Cluster panel"
-  max-width="30%" 
+  max-width="40%" 
 %}
 
 {:start="5"}
+1. When prompted, select the kube context from the list of available clusters as defined in `kubeconfig`. The kube context must have the credentials to communicate with the managed cluster. 
+
 1. If you used `dry-run`, apply the generated manifests to the same target cluster on which you ran the command.  
   Here is an example of the YAML manifest generated with the `--dry-run` flag. Note that there are placeholders in the example, which are replaced with the actual values with `--dry-run`.
 
@@ -222,7 +222,7 @@ Use the Topology or List runtime views to work with managed clusters. For inform
 
 **Remove cluster**  
   Remove a cluster registered with a runtime from the runtime's list of managed clusters.  
-  >Removing a managed cluster from a runtime also removes all the applications deployed to the cluster, and removes their data from the Applications dashboard.
+  <!-->>Removing a managed cluster from a runtime also removes all the applications deployed to the cluster, and removes their data from the Applications dashboard.-->
 
 **How to**
 1. In the Codefresh UI, go to the [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"} page.
