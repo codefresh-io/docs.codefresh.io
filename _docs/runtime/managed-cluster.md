@@ -32,9 +32,8 @@ Optionally, to first generate the YAML manifests, and then manually apply them, 
   List View: Select the **Managed Clusters** tab, and then select **+ Add Cluster**.  
 1. In the Add Managed Cluster panel, copy and run the command:  
 
-    `cf cluster add <runtime-name> [--dry-run]`  
+    `cf cluster add [--dry-run]`  
     where:  
-      `<runtime-name>` is the runtime to which to register the cluster. The name of the selected runtime is automatically added.  
       `--dry-run` is optional, and required if you want to generate a list of YAML manifests that you can redirect and apply manually with `kubectl`.
   
    {% include 
@@ -49,7 +48,6 @@ Optionally, to first generate the YAML manifests, and then manually apply them, 
 
 {:start="5"}
 1. When prompted, select the kube context from the list of available clusters as defined in `kubeconfig`. The kube context must have the credentials to communicate with the managed cluster. 
-
 1. If you used `dry-run`, apply the generated manifests to the same target cluster on which you ran the command.  
   Here is an example of the YAML manifest generated with the `--dry-run` flag. Note that there are placeholders in the example, which are replaced with the actual values with `--dry-run`.
 
