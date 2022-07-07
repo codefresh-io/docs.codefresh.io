@@ -123,6 +123,12 @@
     - title: Codefresh IP addresses
       url: "/platform-ip-addresses"
 
+- title: Incubation
+  url: "/intro-hosted-runtime"
+  pages:
+    - title: What's new in Codefresh?
+      url: "/whats-new"
+
 - title: What's New?
   url: "/whats-new"
   pages:

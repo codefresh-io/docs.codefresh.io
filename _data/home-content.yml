@@ -93,7 +93,6 @@
   - title: Codefresh IP addresses
     localurl: /docs/administration/platform-ip-addresses/
 
-
 - title: Troubleshooting
   icon: images/home-icons/troubleshooting.svg
   url: ''
@@ -106,5 +105,6 @@
   icon: images/home-icons/plugins.svg
   url: ''
   links:
-  
-    
+  - title: Hosted GitOps
+    localurl: /docs/incubation/intro-hosted-runtime/
+
