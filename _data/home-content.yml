@@ -61,9 +61,7 @@
     - title: Sharing file systems
       localurl: /docs/pipelines/sharing-file-system/  
     - title: Viewing images
-      localurl: /docs/pipelines/images/ 
-    - title: Nested workflows
-      localurl: /docs/pipelines/nested-workflows/   
+      localurl: /docs/pipelines/images/    
 
 - title: Deployment
   icon: images/home-icons/deployment.svg
@@ -72,13 +70,16 @@
     - title: Applications dashboard
       localurl: /docs/deployment/applications-dashboard/
     - title: Create an application
+      localurl: /docs/deployment/create-application/
+
 
 - title: Image enrichment
   icon: images/home-icons/integrations.svg
   url: ''
   links:
-    - title: Image enrichment with integrations
-      localurl: /docs/integrations/image-enrichment-overview/
+    - title: Quay Registry
+      localurl: /docs/integrations/quay/
+  
 
 - title: Image enrichment
   icon: images/home-icons/integrations.svg

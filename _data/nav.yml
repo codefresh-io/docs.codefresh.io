@@ -85,18 +85,12 @@
     - title: Create an application
       url: "/create-application"
 
-- title: Image enrichment
-  url: "/integrations"
-  pages:
-    - title: JIRA tracking
-      url: "/jira"
 
 - title: Image enrichment
   url: "/integrations"
   pages:
-    - title: Image enrichment with integrations
-      url: "/image-enrichment-overview"
-
+    - title: Quay Registry
+      url: "/quay"
 
 - title: Administration
   url: "/administration"
