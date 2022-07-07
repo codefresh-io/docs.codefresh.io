@@ -80,6 +80,14 @@
     - title: Image enrichment with integrations
       localurl: /docs/integrations/image-enrichment-overview/
 
+- title: Image enrichment
+  icon: images/home-icons/integrations.svg
+  url: ''
+  links:
+    - title: JIRA tracking
+      localurl: /docs/integrations/jira/
+  
+
 - title: Administration
   icon: images/home-icons/administration.svg
   url: ''
