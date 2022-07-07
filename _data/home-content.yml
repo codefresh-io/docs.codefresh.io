@@ -114,6 +114,13 @@
     - title: Runtimes
       localurl: /docs/troubleshooting/runtime-issues
 
+- title: Reference
+  icon: images/home-icons/guides.png
+  url: ''
+  links:
+    - title: Secrets
+      localurl: /docs/reference/secrets      
+
 - title: Incubation
   icon: images/home-icons/plugins.svg
   url: ''
@@ -121,4 +128,3 @@
   - title: Set up a hosted runtime
     localurl: /docs/incubation/hosted-runtime/
   
-

@@ -146,6 +146,12 @@
     - title: Runtimes
       url: "/runtime-issues"
 
+- title: Reference
+  url: "/reference"
+  pages:
+    - title: Secrets
+      url: "/secrets"      
+
 - title: Incubation
   url: "/incubation"
   pages:
