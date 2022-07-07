@@ -123,12 +123,6 @@
     - title: Codefresh IP addresses
       url: "/platform-ip-addresses"
 
-- title: Incubation
-  url: "/intro-hosted-runtime"
-  pages:
-    - title: What's new in Codefresh?
-      url: "/whats-new"
-
 - title: What's New?
   url: "/whats-new"
   pages:
@@ -144,8 +138,8 @@
 - title: Incubation
   url: "/incubation"
   pages:
-    - title: Runtime shared configuration
-      url: "/shared-configuration"
+    - title: Set up a hosted runtime
+      url: "/hosted-runtime"
 
 
 - title: Terms and Privacy Policy

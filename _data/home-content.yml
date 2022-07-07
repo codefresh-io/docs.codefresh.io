@@ -74,6 +74,7 @@
     - title: Create an application
 
 
+
 - title: Administration
   icon: images/home-icons/administration.svg
   url: ''
@@ -100,11 +101,11 @@
     - title: Runtimes
       localurl: /docs/troubleshooting/runtime-issues
 
-
 - title: Incubation
   icon: images/home-icons/plugins.svg
   url: ''
   links:
-  - title: Hosted GitOps
-    localurl: /docs/incubation/intro-hosted-runtime/
+  - title: Set up a hosted runtime
+    localurl: /docs/incubation/hosted-runtime/
+  
 
