@@ -89,6 +89,8 @@
 - title: Image enrichment
   url: "/integrations"
   pages:
+    - title: Image enrichment with integrations
+      url: "/image-enrichment-overview"
     - title: GitHub Actions
       url: "/github-actions"
     - title: Quay Registry

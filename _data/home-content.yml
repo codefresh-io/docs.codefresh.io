@@ -77,6 +77,8 @@
   icon: images/home-icons/integrations.svg
   url: ''
   links:
+    - title: Image enrichment with integrations
+      localurl: /docs/integrations/image-enrichment-overview/
     - title: GitHub Actions
       localurl: /docs/integrations/github-actions/
     - title: JIRA tracking
@@ -119,7 +121,7 @@
   url: ''
   links:
     - title: Secrets
-      localurl: /docs/reference/secrets      
+      localurl: /docs/reference/secrets   
 
 - title: Incubation
   icon: images/home-icons/plugins.svg
@@ -128,3 +130,4 @@
   - title: Set up a hosted runtime
     localurl: /docs/incubation/hosted-runtime/
   
+

@@ -25,9 +25,9 @@ When you add an integration, Codefresh creates a Sealed Secret with the integrat
 
 Codefresh supports the following tools:  
 
-* [JIRA]({{site.baseurl}}/docs/integration/jira/)  
-* [DockerHub]({{site.baseurl}}/docs/integration/dockerhub/)
-* [Quay]({{site.baseurl}}/docs/integration/quay/)  
+* [JIRA]({{site.baseurl}}/docs/integrations/jira/)  
+* [DockerHub]({{site.baseurl}}/docs/integrations/dockerhub/)
+* [Quay]({{site.baseurl}}/docs/integrations/quay/)  
 
 We are working on supporting integrations for more tools. Stay tuned for the release announcements.  
 For image enrichment with a tool that is as yet unsupported, you must define the explicit credentials. 
@@ -36,7 +36,7 @@ For image enrichment with a tool that is as yet unsupported, you must define the
 
 Connect a GitHub Action to Codefresh with an API token for the runtime cluster, the integration accounts, and image information for enrichment and reporting. 
 
-See [GitHub Actions]({{site.baseurl}}/docs/integration/github-actions/).
+See [GitHub Actions]({{site.baseurl}}/docs/integrations/github-actions/).
 
 
 #### 3. Add the enrichment step to your GitHub Actions pipeline 
