@@ -86,6 +86,13 @@
       url: "/create-application"
 
 
+- title: Image enrichment
+  url: "/integrations"
+  pages:
+    - title: Image enrichment with integrations
+      url: "/image-enrichment-overview"
+
+
 - title: Administration
   url: "/administration"
   pages:

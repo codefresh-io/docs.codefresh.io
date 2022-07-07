@@ -18,6 +18,7 @@ Complete the mandatory steps to see your images in Codefresh. Each step has link
 1. (Mandatory) Report image information to Codefresh.  
   See the [report-image-info](https://github.com/codefresh-io/argo-hub/blob/main/workflows/codefresh-csdp/versions/0.0.6/docs/report-image-info.md){:target="\_blank"} example.
   
+> If you are using an external GitHub Actions-based pipeline, we have a new template that combines image reporting and enrichment. See [Image enrichment with integrations]({{site.baseurl}}/docs/integration/image-enrichment-overview/).
 
 ### Image views in Codefresh 
 * In the Codefresh UI, go to [Images](https://g.codefresh.io/2.0/images){:target="\_blank"}.
