@@ -77,12 +77,15 @@
   icon: images/home-icons/integrations.svg
   url: ''
   links:
-    - title: Quay Registry
-      localurl: /docs/integrations/quay/
+    - title: GitHub Actions
+      localurl: /docs/integrations/github-actions/
     - title: JIRA tracking
       localurl: /docs/integrations/jira/
+    - title: Quay Registry
+      localurl: /docs/integrations/quay/
     - title: Docker Hub Registry
       localurl: /docs/integrations/dockerhub/
+
   
 
 - title: Administration

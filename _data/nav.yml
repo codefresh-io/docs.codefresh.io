@@ -89,8 +89,13 @@
 - title: Image enrichment
   url: "/integrations"
   pages:
+    - title: GitHub Actions
+      url: "/github-actions"
+    - title: Quay Registry
+      url: "/quay"
     - title: Docker Hub Registry
       url: "/dockerhub"
+
 
 - title: Administration
   url: "/administration"
