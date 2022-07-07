@@ -79,14 +79,10 @@
   links:
     - title: Quay Registry
       localurl: /docs/integrations/quay/
-  
-
-- title: Image enrichment
-  icon: images/home-icons/integrations.svg
-  url: ''
-  links:
     - title: JIRA tracking
       localurl: /docs/integrations/jira/
+    - title: Docker Hub Registry
+      localurl: /docs/integrations/dockerhub/
   
 
 - title: Administration
