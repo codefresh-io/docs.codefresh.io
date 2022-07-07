@@ -73,6 +73,13 @@
       localurl: /docs/deployment/create-application/
 
 
+- title: Reports & Insights
+  icon: images/home-icons/guides.png
+  url: ''
+  links:
+    - title: DORA metrics
+      localurl: /docs/reporting/dora-metrics/
+
 - title: Image enrichment
   icon: images/home-icons/integrations.svg
   url: ''
@@ -88,7 +95,6 @@
     - title: Docker Hub Registry
       localurl: /docs/integrations/dockerhub/
 
-  
 
 - title: Administration
   icon: images/home-icons/administration.svg

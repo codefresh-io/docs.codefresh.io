@@ -10,6 +10,7 @@ toc: true
 We launched the Codefresh platform in February this year. Built on Argo, the world’s most popular and fastest-growing open source software delivery, Codefresh unlocks the full enterprise potential of Argo Workflows, Argo CD, Argo Events, and Argo Rollouts, providing a control-plane for managing them at scale.
 Since the launch, we have continued to work on and grow Codefresh. 
 
+
 ## June 2022
 
 ### Features & enhancements
@@ -219,7 +220,6 @@ For details, see [Nested workflows]({{site.baseurl}}/docs/pipelines/nested-workf
 
 * Selecting an existing Workflow Template creates a new Workflow Template.
 * Incorrect line numbers for pipeline template in Form mode.
-
 
 
 ## May 2022
