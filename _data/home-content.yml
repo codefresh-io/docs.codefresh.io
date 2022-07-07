@@ -90,7 +90,7 @@
     localurl: /docs/administration/access-control/
   - title: Audit
     localurl: /docs/administration/audit/
-  - title: Codefresh platform IPs
+  - title: Codefresh IP addresses
     localurl: /docs/administration/platform-ip-addresses/
 
 
