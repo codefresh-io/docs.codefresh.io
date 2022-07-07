@@ -96,6 +96,8 @@
   pages:
     - title: Image enrichment with integrations
       url: "/image-enrichment-overview"
+    - title: Jira tracking
+      url: "/jira"
     - title: GitHub Actions
       url: "/github-actions"
     - title: Quay Registry
@@ -162,7 +164,9 @@
 - title: Incubation
   url: "/incubation"
   pages:
-    - title: Set up a hosted runtime
+    - title: Hosted GitOps
+      url: "/intro-hosted-runtime"
+    - title: Set up Hosted GitOps
       url: "/hosted-runtime"
 
 

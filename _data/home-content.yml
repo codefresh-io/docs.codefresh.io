@@ -133,7 +133,9 @@
   icon: images/home-icons/plugins.svg
   url: ''
   links:
-  - title: Set up a hosted runtime
+  - title: Hosted GitOps
+    localurl: /docs/incubation/intro-hosted-runtime/
+  - title: Set up Hosted GitOps
     localurl: /docs/incubation/hosted-runtime/
   
 
