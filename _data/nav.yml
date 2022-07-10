@@ -488,7 +488,7 @@
       url: /oidc
       sub-pages:
         - title: Auth0
-          url: /sso-auth0
+          url: /oidc-auth0
         - title: Azure
           url: /oidc-azure
         - title: Google
