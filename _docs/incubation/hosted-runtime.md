@@ -1,12 +1,13 @@
 ---
 title: "Set up Hosted GitOps"
 description: ""
-group: runtime
+group: incubation
 toc: true
 ---
 
 
-If you have Codefresh's Hosted GitOps solution, complete the simple setup to provision your hosted runtime, and you are all ready to leverage extensive CD Ops capabilities.
+
+If you have Codefresh's Hosted GitOps solution, complete the simple setup, and you are all ready to leverage extensive CD Ops capabilities.
 Read about [Hosted GitOps]({{site.baseurl}}/docs/incubation/intro-hosted-runtime/). 
 
 ### Where to start with Hosted GitOps
@@ -21,8 +22,8 @@ image.html
 lightbox="true"
 file="/images/runtime/hosted-initial-view.png"
 url="/images/runtime/hosted-initial-view.png"
-alt="Provision hosted runtime"
-caption="Provision hosted runtime"
+alt="Hosted GitOps setup"
+caption="Hosted GitOps setup"
 max-width="80%"
 %}
 

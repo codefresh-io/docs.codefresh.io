@@ -19,7 +19,7 @@ Read on for more details. And check out our [blog](https://codefresh.io/blog/cod
 Setting up your hosted environment takes just a few clicks. All you need is a Codefresh account, a Git account, and a Kubernetes cluster to which to deploy your applications.
 Codefresh guides you through the simple three-step process of provisioning your hosted runtime.  From that point, Codefresh handles administration and maintenance of the hosted runtime, including version and security updates.  
 
-See [Set up a hosted runtime]({{site.baseurl}}/docs/incubation/hosted-runtime/).
+See [Set up Hosted GitOps]({{site.baseurl}}/docs/incubation/hosted-runtime/).
 
 {% include 
 	image.html 
