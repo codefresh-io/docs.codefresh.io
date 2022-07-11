@@ -53,6 +53,7 @@ After creating an Auth0 application, create an SSO account for OAut0 in Codefres
 1. Enter the following:
   * **Client Name**: For auto-generation, leave empty. Codefresh generates the client name once you save the settings.  
   * **Display Name**: Meaningful name that identifies this SSO integration.
+  * **Access Token**: Leave empty. Access tokens are used for team sync which is currently not supported for Auth0.  
   * **Client ID**: The Client ID generated for your Auth0 application.  
   * **Client secret**: The Client Secret also generated for your Auth0 application. 
   * **Domain**: The domain of the Auth0 application.
