@@ -6,7 +6,7 @@ sub_group: oidc
 toc: true
 ---
 
-Create an SSO account for Auth0 in Codefresh. Start by creating an Auth0 application, create the SSO account in Codefresh, and then define the SSO settings for the application in Auth0.
+Create an SSO account for Auth0 in Codefresh. Start by creating an Auth0 application, then create the SSO account in Codefresh, and finally define the SSO settings for the application in Auth0.
 
 ## 1. Create an Auth0 application
 First create a new application in Auth0.
@@ -28,7 +28,7 @@ max-width="40%"
 %}
 
 {:start="4"}
-1. In the OAuth SSO settings, note down the following as you will need them to add the SSO account in Codefresh:
+1. In the OAuth SSO settings, note down the following as you will need them when you create the SSO account for Auth0 in Codefresh:
   * **Client ID**
   * **Client secret**
   * **Domain**
@@ -46,10 +46,10 @@ max-width="40%"
 1. Continue with _Create SSO account for Auth0 in Codefresh_.
 
 ## 2. Create SSO account for Auth0 in Codefresh
-After creating an Auth0 application, create an SSO account for OAut0 in Codefresh. 
+After creating an Auth0 application, create an SSO account for OAuth0 in Codefresh. 
 
-1. In the Codefresh UI, go to the [Single Sign On](https://g.codefresh.io/account-admin/sso).
-1. Click **Add Single Sign-On** and then select **Auth0** from the list.
+1. In the Codefresh UI, go to [Single Sign On](https://g.codefresh.io/account-admin/sso).
+1. Click **Add Single Sign-On**, and then select **Auth0** from the list.
 1. Enter the following:
   * **Client Name**: For auto-generation, leave empty. Codefresh generates the client name once you save the settings.  
   * **Display Name**: Meaningful name that identifies this SSO integration.
@@ -74,7 +74,7 @@ max-width="70%"
 
 
 ## 3. Define SSO settings in Auth0
-As the final steo in Auth0 SSO setup, return to Auth0, and then define the Login URI and Callback URL for the Auth0 application. 
+As the final step in Auth0 SSO setup, return to Auth0, and then define the Login URI and Callback URL for the Auth0 application. 
 
 1. From the sidebar, select **Applications > Applications**.
 1. In the **Application Login URL** field, enter `https://g.codefresh.io/login`.
