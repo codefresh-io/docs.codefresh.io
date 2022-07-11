@@ -64,7 +64,7 @@ file="/images/administration/sso/auth0/auth0-settings-codefresh.png"
 url="/images/administration/sso/auth0/auth0-settings-codefresh.png"
 alt="SSO account settings for Auth0 in Codefresh"
 caption="SSO account settings for Auth0 in Codefresh"
-max-width="40%"
+max-width="60%"
 %}
 
 {:start="4"}
@@ -88,7 +88,7 @@ file="/images/administration/sso/auth0/sso-settings-in-auth0.png"
 url="/images/administration/sso/auth0/sso-settings-in-auth0.png"
 alt="SSO settings for application in Auth0"
 caption="SSO settings for application in Auth0"
-max-width="40%"
+max-width="60%"
 %}
 
 {:start="4"}
