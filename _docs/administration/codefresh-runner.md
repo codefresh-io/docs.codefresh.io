@@ -1058,7 +1058,7 @@ And add this after one of the commas:
 
 The runner's default StorageClass creates the persistent cache volume from local storage on each node.  We need to edit the cluster config to allow this.
 
-In the Rancher (v2.5.9 and earlier) UI, drill into the target cluster and then click the Edit Cluster button at the top-right.
+In the Rancher UI (v2.5.9 and earlier), drill into the target cluster and then click the Edit Cluster button at the top-right.
 {% include image.html
   lightbox="true"
   file="/images/administration/runner/rancher-cluster.png"
