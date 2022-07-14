@@ -1,11 +1,11 @@
 ---
-title: "Add and manage external clusters"
+title: "Adding external clusters to runtimes"
 description: ""
 group: runtime
 toc: true
 ---
 
-Manage external clusters in Codefresh by registering them to provisioned runtimes. Instead of having a single cluster for a runtime, manage multiple clusters through a single runtime.  
+Register external clusters to provisioned hybrid or hosted runtimes in Codefresh. Once you add an external cluster, you can deploy applications to that cluster without having to install Argo CD in order to do so. External clusters allow you to manage multiple clusters through a single runtime.  
 
 When you add an external cluster to a provisioned runtime, the cluster is registered as a managed cluster. A managed cluster is treated as any other managed K8s resource, meaning that you can monitor its health and sync status, deploy applications on the cluster and view information in the Applications dashboard, and remove the cluster from the runtime's managed list.  
 
@@ -16,25 +16,27 @@ Add managed clusters through:
 Adding a managed cluster via Codefresh ensures that Codefresh applies the required RBAC resources (`ServiceAccount`, `ClusterRole` and `ClusterRoleBinding`) to the target cluster, creates a `Job` that updates the selected runtime with the information, registers the cluster in Argo CD as a managed cluster, and updates the platform with the new cluster information.
  
 
-### How to add a managed cluster with Codefresh CLI
+### Add a managed cluster with Codefresh CLI
 Add the external cluster to a provisioned runtime through the Codefresh CLI.  
 Optionally, to first generate the YAML manifests, and then manually apply them, use the `dry-run` flag in the CLI. 
 
 **Before you begin**  
 
-* Make sure your Git personal access token is valid and has the correct permissions
+Make sure:  
+* Your Git personal access token is valid and has the correct permissions
+* You have installed the latest version of the Codefresh CLI
 
 **How to**  
 
-1. In the Codefresh UI, go to the [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"} page.
+1. In the Codefresh UI, go to [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
 1. From either the **Topology** or **List** views, select the runtime to which to add the cluster. 
 1. Topology View: Select {::nomarkdown}<img src="../../../images/icons/add-cluster.png" display=inline-block/>{:/}.  
   List View: Select the **Managed Clusters** tab, and then select **+ Add Cluster**.  
 1. In the Add Managed Cluster panel, copy and run the command:  
-
-    `cf cluster add [--dry-run]`  
-    where:  
-      `--dry-run` is optional, and required if you want to generate a list of YAML manifests that you can redirect and apply manually with `kubectl`.
+  `cf cluster add <runtime-name> [--dry-run]`  
+  where:  
+  <runtime-name> is automatically populated by Codefresh in the command.  
+  `--dry-run` is optional, and required if you want to generate a list of YAML manifests that you can redirect and apply manually with `kubectl`.
   
    {% include 
 	image.html 
@@ -47,7 +49,6 @@ Optionally, to first generate the YAML manifests, and then manually apply them, 
 %}
 
 {:start="5"}
-1. When prompted, select the kube context from the list of available clusters as defined in `kubeconfig`. The kube context must have the credentials to communicate with the managed cluster. 
 1. If you used `dry-run`, apply the generated manifests to the same target cluster on which you ran the command.  
   Here is an example of the YAML manifest generated with the `--dry-run` flag. Note that there are placeholders in the example, which are replaced with the actual values with `--dry-run`.
 
@@ -163,7 +164,7 @@ spec:
 
 The new cluster is registered to the runtime as a managed cluster.  
 
-### Adding a managed cluster with Kustomize
+### Add a managed cluster with Kustomize
 Create a `kustomization.yaml` file with the information shown in the example below, and run `kustomize build` on it.  
 
 ```yaml
@@ -201,7 +202,7 @@ resources:
 
 
 ### Work with managed clusters 
-Use the Topology or List runtime views to work with managed clusters. For information on runtime views, see [Runtime views]({{site.baseurl}}/docs/runtime/runtime-views).  
+Work with managed clusters in hybrid or hosted runtimes in either the Topology or List runtime views. For information on runtime views, see [Runtime views]({{site.baseurl}}/docs/runtime/runtime-views).  
 
 **Monitor cluster**     
   View connection status for the managed cluster, and health and sync errors. Health and sync errors are flagged by the error notification in the toolbar, and visually flagged in the List and Topology views.  

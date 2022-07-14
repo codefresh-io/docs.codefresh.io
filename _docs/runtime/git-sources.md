@@ -1,14 +1,14 @@
 ---
-title: "Add and manage Git Sources"
+title: "Adding Git Sources to runtimes"
 description: ""
 group: runtime
 toc: true
 ---
 
 
-A Git Source is the equivalent of an Argo CD application that tracks a Git repository and syncs the desired state of the repo to the destination K8s cluster. In addition to application resources, the Git Source can store resources for Codefresh runtimes, and CI/CD entities such as delivery pipelines, Workflow Templates, workflows, and applications.  
-  
-Provisioning a runtime automatically creates a Git Source that stores resources for the runtime and for the demo CI pipelines that are optionally installed with the runtime. Every Git Source is associated with a Codefresh runtime. A runtime can have one or more Git Sources. You can add Git Sources at any time, to the same or to different runtimes.  
+A Git Source is the equivalent of an Argo CD application that tracks a Git repository and syncs the desired state of the repo to the destination K8s cluster. In addition to application resources, the Git Source can store resources for Codefresh runtimes, and CI/CD entities such as delivery pipelines, Workflow Templates, workflows, and applications.
+
+Provisioning a runtime automatically creates a Git Source that stores resources for the runtime and for the demo CI pipelines that are optionally installed with the runtime. Every Git Source is associated with a Codefresh runtime. A runtime can have one or more Git Sources. You can add Git Sources at any time, to the same or to different runtimes.
 
 Once you create a Git Source for a runtime, you can store resources for CI/CD entities associated with that runtime. For example, when creating pipelines or applications, you can select the Git Source to which to store manifest definitions.
 
@@ -34,7 +34,7 @@ Drill down on a runtime in List View to see its Git Sources.
 1. To see the definitions for the Git Source, select the three dots at the end of the row.
 
 ### Create a Git Source
-Create Git Sources for any provisioned runtime.  The Git Sources will be available to store resources for pipelines or applications when you create them. 
+Create Git Sources for any provisioned runtime.  The Git Sources are available to store resources for pipelines or applications when you create them. 
 
 >Make sure you are in the List View to create Git Sources. 
 

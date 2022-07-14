@@ -40,25 +40,22 @@
       url: "/csdp-cli"
 
 
-- title: Runtime
+- title: Installation
   url: "/runtime"
   pages:
-    - title: Requirements
+    - title: Hybrid runtime requirements
       url: "/requirements"
-    - title: Installation
+    - title: Installing hybrid runtimes
       url: "/installation"
-    - title: Management
+    - title: Managing provisioned runtimes
       url: "/monitor-manage-runtimes"
-    - title: View/download runtime logs
-      url: "/download-runtime-logs" 
-    - title: Add and manage external clusters
+    - title: Monitoring provisioned runtimes
+      url: "/monitoring-troubleshooting" 
+    - title: Adding external clusters to runtimes
       url: "/managed-cluster" 
-    - title: Add and manage Git Sources
+    - title: Adding Git Sources to runtimes
       url: "/git-sources"
-    - title: Restore runtimes
-      url: "/runtime-recovery"
-    - title: Shared runtime configuration
-      url: "/shared-configuration"
+
 
 - title: Pipelines
   url: "/pipelines"
@@ -159,7 +156,9 @@
   url: "/reference"
   pages:
     - title: Secrets
-      url: "/secrets"      
+      url: "/secrets" 
+    - title: Shared configuration repo
+      url: "/shared-configuration"     
 
 - title: Incubation
   url: "/incubation"
