@@ -29,6 +29,8 @@
   icon: images/home-icons/runtimes.svg
   url: ''
   links:
+    - title: Installation environments
+      localurl: /docs/runtime/installation-options/
     - title: Hybrid runtime requirements
       localurl: /docs/runtime/requirements/
     - title: Installing hybrid runtimes

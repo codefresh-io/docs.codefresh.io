@@ -43,6 +43,8 @@
 - title: Installation
   url: "/runtime"
   pages:
+    - title: Installation options
+      url: "/installation-options"
     - title: Hybrid runtime requirements
       url: "/requirements"
     - title: Installing hybrid runtimes

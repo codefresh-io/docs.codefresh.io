@@ -130,8 +130,9 @@ The table below highlights the main differences between hosted and hybrid enviro
 | Runtime                 | Installation       | Provisioned by Codefresh   | Provisioned by customer       |
 |                         | Runtime cluster   |Managed by Codefresh       | Managed by customer       |
 |                         | Number per account | Only one runtime           | Multiple runtimes            |
-|                         | Upgrade            | Performed by Codefresh     | Performed by customer |
+|                         | Upgrade            | Managed by Codefresh     | Managed by customer |
 |                         | External cluster   | Managed by customer        | Managed by customer         |
+|                         | Uninstall          | Managed by customer        | Managed by customer |
 | CI Ops                  | Delivery Pipelines |Not supported               | Supported  |
 |                         |Workflows           | Not supported              | Supported  |
 |                         |Workflow Templates  | Not supported              | Supported  |
