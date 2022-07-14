@@ -96,7 +96,7 @@ If you have managed clusters for the hybrid runtime, upgrading the runtime autom
 For both silent or CLI-wizard based upgrades, make sure you have:  
 
 * The latest version of the Codefresh CLI  
-  Run `cf version` to see your version and click [here](https://github.com/codefresh-io/cli-v2/releases) to compare with the latest CLI version.  
+  Run `cf version` to see your version and [click here](https://github.com/codefresh-io/cli-v2/releases){:target="\_blank"} to compare with the latest CLI version.  
 * A valid runtime Git token
 
 **Silent upgrade**  
