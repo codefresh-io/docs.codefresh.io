@@ -27,7 +27,7 @@ caption="Hosted GitOps setup"
 max-width="80%"
 %}
 
-#### 1. Provision hosted runtime
+### 1. Provision hosted runtime
 Start installing the hosted runtime with a single-click. Codefresh completes the installation without any further intervention on your part. 
 The hosted runtime is provisioned on the Codefresh cluster, and completely managed by Codefresh with automatic version and security upgrades.
 
@@ -71,9 +71,35 @@ caption="Hosted runtimes in List view"
 max-width="70%"
 %}
 
+#### Troubleshoot failed hosted runtime installation
+Your hosted runtime may fail to install with an error as in the image below. We are closely moinitoring the hosted runtime installation process and activley working to prevent and iron out all installation errors. Follow the instructions to uninstall and reinstall the hosted runtime.
+
+{% include
+image.html
+lightbox="true"
+file="/images/incubation/hosted-runtime-error.png"
+url="/images/incubation/hosted-runtime-error.png"
+alt="Hosted runtime installation error"
+caption="Hosted runtime installation error"
+max-width="70%"
+%}
 
 
-#### 2. Connect Git provider
+1. Download the CLI
+  * If you have installed the Codfresh CLI already, make sure you have the latest version:  
+     `cf version`  
+     To compare with the latest version from Codefresh, [click here](https://github.com/codefresh-io/cli-v2/releases){:target="\_blank"}.  
+  * [Download the CLI]({{site.baseurl}}/docs/clients/csdp-cli/).
+
+1. Uninstall the failed hosted runtime:  
+  `cf uninstall hosted-codefresh --force`  
+  where:  
+  `hosted-codefresh` is the name of your hosted runtime, automatically assigned by Codefresh.
+1. In the Codefresh UI, return to Codefresh [Home](https://g.codefresh.io/2.0/?time=LAST_7_DAYS){:target="\_blank"}.
+1. Refresh the page and start with _1. Provision hosted runtime_ above.
+
+
+### 2. Connect Git provider
 Connect your hosted runtime to a Git provider for Codefresh to creates the required Git repos.  First authorize access to your Git provider through an OAuth token, and then select the Git organization or account in which to create the required Git repos.  
 
 {% include
@@ -91,7 +117,7 @@ Once you authorize access, Codefresh creates two Git repositories, one to store 
 * Shared runtime configuration repo  
 
   The shared runtime configuration repo is a centralized Git repository that stores configuration settings for the hosted runtime. Additional runtimes provisioned for the account can point to this repo to retrieve and reuse the configuration.  
-  Read about [Shared runtime configuration]({{site.baseurl}}/docs/runtime/shared-runtime/).
+  Read about [Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration/).
 
 * Git Source application repo  
 
@@ -174,7 +200,7 @@ max-width="80%"
 %}
 
 
-#### 3. Connect a Kubernetes cluster
+### 3. Connect a Kubernetes cluster
 Connect a destination cluster to the hosted runtime and register it as a managed cluster. Deploy applications and configuration to the cluster.
 For managed cluster information, see [Add and manage external clusters]({{site.baseurl}}/docs/runtime/managed-cluster/).
 
@@ -222,7 +248,7 @@ max-width="70%"
 
 You have completed setting up your hosted runtime. You are ready to create applications, and connect third-party CI tools for image enrichment.
 
-#### (Optional) Create application
+### (Optional) Create application
 Optional. Create an application in Codefresh, deploy it to the cluster, and track deployment and performance in the Applications dashboard.  
 
 1. Follow our quick-start to create and deploy the `codefresh-guestbook` application. Start with [Create application resources]({{site.baseurl}}/docs/getting-started/quick-start/create-app-specs/).  
@@ -232,7 +258,7 @@ Optional. Create an application in Codefresh, deploy it to the cluster, and trac
 {:start="2"}
 2. In the Codefresh UI, view your application in the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard){:target="\_blank"}.
 
-#### (Optional) Connect CI 
+### (Optional) Connect CI 
 Optional. Integrate Codefresh with the third-party tools you use for CI to enrich image information in deployments.  
 
 [Image enrichment with integrations]({{site.baseurl}}/docs/integration/image-enrichment-overview/) 
