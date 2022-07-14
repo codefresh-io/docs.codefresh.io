@@ -112,13 +112,6 @@
   - title: Codefresh IP addresses
     localurl: /docs/administration/platform-ip-addresses/
 
-- title: Troubleshooting
-  icon: images/home-icons/troubleshooting.svg
-  url: ''
-  links:
-    - title: Runtimes
-      localurl: /docs/troubleshooting/runtime-issues
-
 - title: Reference
   icon: images/home-icons/guides.png
   url: ''
@@ -126,7 +119,15 @@
     - title: Secrets
       localurl: /docs/reference/secrets   
     - title: Shared configuration repo
-      localurl: /docs/runtime/shared-configuration/
+      localurl: /docs/reference/shared-configuration/
+
+- title: Troubleshooting
+  icon: images/home-icons/troubleshooting.svg
+  url: ''
+  links:
+    - title: Runtimes
+      localurl: /docs/troubleshooting/runtime-issues
+
 
 - title: Incubation
   icon: images/home-icons/plugins.svg

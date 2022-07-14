@@ -140,6 +140,14 @@
     - title: Codefresh IP addresses
       url: "/platform-ip-addresses"
 
+- title: Reference
+  url: "/reference"
+  pages:
+    - title: Secrets
+      url: "/secrets"   
+    - title: Shared configuration repo
+      url: "/shared-configuration"
+  
 - title: What's New?
   url: "/whats-new"
   pages:
@@ -151,15 +159,8 @@
   pages:
     - title: Runtimes
       url: "/runtime-issues"
-
-- title: Reference
-  url: "/reference"
-  pages:
-    - title: Secrets
-      url: "/secrets" 
-    - title: Shared configuration repo
-      url: "/shared-configuration"     
-
+      
+      
 - title: Incubation
   url: "/incubation"
   pages:

@@ -116,7 +116,7 @@ jobs:
         CF_JIRA_PROJECT_PREFIX: "CR"
       uses: codefresh-io/csdp-report-image@0.0.47
 ```
-### What to read next
+### Related articles
 [Images]({{site.baseurl}}/docs/pipelines/images/)  
 [Applications dashboard]({{site.baseurl}}/docs/deployment/applications-dashboard/) 
 

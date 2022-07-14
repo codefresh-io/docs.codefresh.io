@@ -48,8 +48,8 @@ Once you have set up a Jira instance, configure the Jira integration settings in
   It may take a few moments for the changes to be synced to the cluster before the integration account appears in the list.
   
 
-### Integration resource in shared runtime configuration
-The integration resource is created in the shared runtime configuration Git repository, under `resources`.
+### Integration resource in shared configuration repo
+The integration resource is created in the Git repository with the shared configuration, under `resources`.
 The exact location depends on whether the integration is shared with _all_ or _specific_ runtimes:  
 * All runtimes: Created in `resources/all-runtimes-all-clusters/`
 * Selected runtimes: Created in `resources/runtimes/<runtime-name>/`
@@ -58,8 +58,8 @@ The exact location depends on whether the integration is shared with _all_ or _s
 For pipelines based on GitHub Actions, configure the Jira integration in Codefresh, and then connect your GitHub Action to Codefresh, referencing the Jira integration by name.  
 Codefresh uses the Secret Key stored in the runtime cluster to securely access Jira and retrieve the information. 
 
-### What to read next
-[Shared runtime configuration]({{site.baseurl}}/docs/runtime/shared-configuration/)  
+### Related articles
+[Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration/)  
 [Images]({{site.baseurl}}/docs/pipelines/images/)  
 [Applications dashboard]({{site.baseurl}}/docs/deployment/applications-dashboard/)    
 [Adding Git sources]({{site.baseurl}}/docs/runtime/git-sources/)  

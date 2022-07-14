@@ -45,14 +45,14 @@ Make sure you have the:
 1. To confirm, click **Commit**.
   It may take a few moments for the new integration to be synced to the cluster before it appears in the list.
 
-### Integration resource in shared runtime configuration
-The integration resource is created in the shared runtime configuration Git repository, within `resources`. The exact location depends on whether the integration is shared with all or specific runtimes:  
+### Integration resource in shared configuration repo
+The integration resource is created in the Git repository with the shared configuration, within `resources`. The exact location depends on whether the integration is shared with all or specific runtimes:  
 
 * All runtimes: Created in `resources/all-runtimes-all-clusters/`
 * Selected runtimes: Created in `resources/runtimes/<runtime-name>/`
 
 ### What to read next  
-[Shared runtime configuration]({{site.baseurl}}/docs/runtime/shared-configuration/)  
+[Shared runtime configuration]({{site.baseurl}}/docs/reference/shared-configuration/)  
 [Images]({{site.baseurl}}/docs/pipelines/images/)  
 [Applications dashboard]({{site.baseurl}}/docs/deployment/applications-dashboard/)    
 [Adding Git sources]({{site.baseurl}}/docs/runtime/git-sources/)  

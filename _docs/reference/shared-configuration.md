@@ -1,24 +1,26 @@
 ---
-title: "Shared runtime configuration repo"
+title: "Shared configuration repo"
 description: ""
-group: runtime
+group: reference
 toc: true
 ---
 
 
-A Codefresh account with a hosted or a hybrid runtime can store configuration settings in a Git repository. This repository can be shared with other runtimes in the same account, avoiding the need to create and maintain configurations for each runtime.
+A Codefresh account with a hosted or a hybrid runtime can store configuration manifests for account-level resources in a Git repository. This repository can be shared with other runtimes in the same account, avoiding the need to create and maintain configuration manifests for every runtime.
 
 * Hosted runtimes  
-  As part of the setup for a hosted runtime, you must select the Git Organization for which to create the runtime installation repo. Codefresh then creates the shared configuration repository.  
+  As part of the setup for a hosted runtime, Codefresh creates the shared configuration repository in the selected organization, together with the default Git Source repo. See [Connect Git provider]({{site.baseurl}}/docs/incubation/hosted-runtime/#2-connect-git-provider) in Hosted GitOps setup.  
 
 * Hybrid runtimes  
-  When you install the first hybrid runtime for an account, you can define the shared configuration repo through the `--shared-config-repo` flag. If the flag is omitted, and the runtime account does not have a shared configuration repo, it is created in the runtime installation repo, in `shared-config` root.
+  When you install the first hybrid runtime for an account, you can manually define the shared configuration repo through the `--shared-config-repo` flag. Or, you can allow Codefresh to automatically create the shared configuration repo in the runtime installation repo, in `shared-config` root. See [Installing hybrid runtimes]({{site.baseurl}}/docs/runtime/installation/).  
+
+  For older versions of hybrid runtimes, upgrade the runtime to create the shared configuration repo, as described in [Upgrading hybrid runtimes](#upgrading-hybrid-runtimes) later in this article.
 
 > Currently, Codefresh supports a single shared configuration repo per account.
 
 
-### Shared runtime configuration repo structure
-Below is a representation of the structure of the shared configuration repo for runtimes. 
+### Shared configuration repo structure
+Below is a representation of the structure of the repository with the shared configuration. 
 See a [sample repo](https://github.dev/noam-codefresh/shared-gs){:target="\_blank"}.
 
 ```
@@ -43,6 +45,9 @@ See a [sample repo](https://github.dev/noam-codefresh/shared-gs){:target="\_blan
     └── staging                   │ # referenced by <install_repo_2>/apps/runtime2/config_dir.json
         └── in-cluster.yaml      ─┘ #     manage `include` field to decide which dirs/files to sync to cluster
 ```
+{::nomarkdown}
+<br>
+{:/}
 
 #### `resources` directory 
 
@@ -52,8 +57,12 @@ The `resources` directory holds the resources shared by all clusters managed by 
   * `control-planes`: Optional. Valid for hosted runtimes only. When defined, every resource manifest in this directory is applied to each hosted runtime’s `in-cluster`.
   * `runtimes/<runtime_name>`: Optional. Runtime-specific subdirectory. Every resource manifest in a runtime-specific subdirectory is applied to only that runtime. `manifest4.yaml` in the above example is applied only to `runtime1`. 
 
+{::nomarkdown}
+<br>
+{:/}
+
 #### `runtimes` directory 
-Includes subdirectories specific to each runtime installed in the cluster, always with `in-cluster.yaml`, and optionally application manifests for other clusters. 
+Includes subdirectories specific to each runtime installed in the cluster, always with `in-cluster.yaml`, and optionally, application manifests for other clusters. 
 
 **Example application manifest for in-cluster.yaml**
 
@@ -87,7 +96,7 @@ spec:
 
 
 ### Git Source application per runtime
-In addition to the application manifests for the runtimes in the shared configuration repository, every runtime has a Git-Source Application that references `runtimes/<runtime-name>` in the shared configuration repo.  
+In addition to the application manifests for the runtimes in the shared configuration repository, every runtime has a Git Source application that references `runtimes/<runtime-name>`.  
 
 This Git Source application creates an application manifest with the `<cluster-name>` for every cluster managed by the runtime. The `include` field in the `<cluster-name>` application manifest determines which subdirectories in the `resources` directory are synced to the target cluster.
 
@@ -98,12 +107,18 @@ When creating a new resource, such as a new integration for example in the Codef
 ### Upgrading hybrid runtimes
 Older hybrid runtimes that do not have the shared configuration repository must be upgraded to the latest version.  
 You have two options to define the shared configuration repository during upgrade:
-* Upgrade the runtime, and let the app-proxy create the shared runtime configuration repo automatically.
-* Manually define the shared runtime configuration repository, by adding the `--shared-config-repo` flag in the runtime upgrade command.
+* Upgrade the hybrid runtime, and let the Codefresh app-proxy automatically create the shared configuration repo automatically.
+* Manually define the shared configuration repository, by adding the `--shared-config-repo` flag in the runtime upgrade command.
 
->If the shared runtime configuration repo is not created for an account, Codefresh creates it in the installation repo, in `shared-config` root. 
+>If the shared configuration repo is not created for an account, Codefresh creates it in the installation repo, in `shared-config` root. 
 
 If the hybrid runtime being upgraded has managed clusters, once the shared configuration repo is created for the account either automatically or manually on upgrade, all clusters are migrated to the same repo when app-proxy is initialized. An Argoproj application manifest is committed to the repo for each cluster managed by the runtime. 
+
+See [(Hybrid) Upgrade provisioned runtimes]({{site.baseurl}}/docs/runtime/monitor-manage-runtimes/#hybrid-upgrade-provisioned-runtimes).
+
+
+
+
 
 
 
