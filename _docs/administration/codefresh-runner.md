@@ -1058,7 +1058,7 @@ And add this after one of the commas:
 
 The runner's default StorageClass creates the persistent cache volume from local storage on each node.  We need to edit the cluster config to allow this.
 
-In the Rancher UI, drill into the target cluster and then click the Edit Cluster button at the top-right.
+In the Rancher UI (v2.5.9 and earlier), drill into the target cluster and then click the Edit Cluster button at the top-right.
 {% include image.html
   lightbox="true"
   file="/images/administration/runner/rancher-cluster.png"
@@ -1067,6 +1067,17 @@ In the Rancher UI, drill into the target cluster and then click the Edit Cluster
   caption="Drill into your cluster and click Edit Cluster on the right"
   max-width="100%"
       %}
+
+In Rancher v2.6+ with the updated UI, open the Cluster Management in the left panel, then click the three-dot menu near the corresponding cluster and select 'Edit Config'.
+{% include image.html
+  lightbox="true"
+  file="/images/administration/runner/rancher-cluster-2.png"
+  url="/images/administration/runner/rancher-cluster-2.png"
+  alt="Click Edit Cluster on the right in your cluster list"
+  caption="Click Edit Cluster on the right in your cluster list"
+  max-width="100%"
+      %}
+
 On the edit cluster page, scroll down to the Cluster Options section and click its **Edit as YAML** button
 {% include image.html
   lightbox="true"
