@@ -9,7 +9,7 @@ toc: true
 A Codefresh account with a hosted or a hybrid runtime can store configuration manifests for account-level resources in a Git repository. This repository can be shared with other runtimes in the same account, avoiding the need to create and maintain configuration manifests for every runtime.
 
 * Hosted runtimes  
-  As part of the setup for a hosted runtime, Codefresh creates the shared configuration repository in the selected organization, together with the default Git Source repo. See [Connect Git provider]({{site.baseurl}}/docs/incubation/hosted-runtime/#2-connect-git-provider) in Hosted GitOps setup.  
+  As part of the setup for a hosted runtime, Codefresh creates the shared configuration repository in the selected organization, together with the default Git Source repo. See [Connect Git provider]({{site.baseurl}}/docs/runtime/hosted-runtime/#2-connect-git-provider) in Hosted GitOps setup.  
 
 * Hybrid runtimes  
   When you install the first hybrid runtime for an account, you can manually define the shared configuration repo through the `--shared-config-repo` flag. Or, you can allow Codefresh to automatically create the shared configuration repo in the runtime installation repo, in `shared-config` root. See [Installing hybrid runtimes]({{site.baseurl}}/docs/runtime/installation/).  

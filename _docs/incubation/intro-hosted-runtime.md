@@ -1,5 +1,5 @@
 ---
-title: "Hosted GitOps"
+title: "Hosted GitOps (Beta)"
 description: ""
 group: incubation
 toc: true
@@ -8,7 +8,7 @@ toc: true
 
 Codefresh has enhanced our solution offering with Hosted GitOps, the SaaS version of Codefresh.  
 
-What do you get with Hosted GitOps?  
+What do you get with Hosted GitOps (Beta)?  
 In a nutshell, a hosted and managed version of Argo CD. From application analytics, to application creation, rollout, and deployment, you get the best of both worlds: Argo CD with unique features and functionality from Codefresh to help achieve your CD goals.  
 What it also means is easy set up and zero maintenance overhead.  
 
@@ -19,13 +19,13 @@ Read on for more details. And check out our [blog](https://codefresh.io/blog/cod
 Setting up your hosted environment takes just a few clicks. All you need is a Codefresh account, a Git account, and a Kubernetes cluster to which to deploy your applications.
 Codefresh guides you through the simple three-step process of provisioning your hosted runtime.  From that point, Codefresh handles administration and maintenance of the hosted runtime, including version and security updates.  
 
-See [Set up Hosted GitOps]({{site.baseurl}}/docs/incubation/hosted-runtime/).
+See [Set up a hosted (Hosted GitOps) environment]({{site.baseurl}}/docs/runtime/hosted-runtime/).
 
 {% include
  image.html
  lightbox="true"
- file="/images/incubation/intro-hosted-hosted-initial-view.png"
- url="/images/incubation/intro-hosted-hosted-initial-view.png"
+ file="/images/runtime/intro-hosted-hosted-initial-view.png"
+ url="/images/runtime/intro-hosted-hosted-initial-view.png"
  alt="Hosted runtime setup"
  caption="Hosted runtime setup"
     max-width="80%"
@@ -69,7 +69,7 @@ DORA metrics has become integral to enterprises wanting to quantify DevOps perfo
 
 Apart from the metrics themselves, the DORA dashboard in Codefresh has several features such as the Totals bar with key metrics, filters that allow you to pinpoint just which applications or runtimes are contributing to problematic metrics, and the ability to set a different view granularity for each DORA metric.  
 
-See [DORA metrics]({{site.baseurl}}/docs/reference/dora/).
+See [DORA metrics]({{site.baseurl}}/docs/reporting/dora-metrics/).
 
 {% include
  image.html
@@ -108,7 +108,7 @@ If you have your own tools for CI pipelines and workflows, Hosted GitOps gives y
 * Jira ticket information for correlation with deployed features  
 * Docker Hub or Quay for image information
 
-See [Image enrichment with integrations]({{site.baseurl}}/docs/integration/image-enrichment-overview/).
+See [Image enrichment with integrations]({{site.baseurl}}/docs/integrations/image-enrichment-overview/).
 
 {% include
  image.html
@@ -133,6 +133,7 @@ The table below highlights the main differences between hosted and hybrid enviro
 |                         | Upgrade            | Managed by Codefresh     | Managed by customer |
 |                         | External cluster   | Managed by customer        | Managed by customer         |
 |                         | Uninstall          | Managed by customer        | Managed by customer |
+| Argo CD                 |                    | Codefresh cluster          | Customer cluster  |
 | CI Ops                  | Delivery Pipelines |Not supported               | Supported  |
 |                         |Workflows           | Not supported              | Supported  |
 |                         |Workflow Templates  | Not supported              | Supported  |

@@ -6,7 +6,7 @@ toc: true
 
 ---
 Access to Kubernetes clusters behind strict firewalls not accessible from the public internet is governed through authorized IP addresses. 
-Codefresh provides a list of IP addresses to be configured on clusters to allow access to your cluster. 
+Codefresh provides a list of IP addresses to be configured on clusters to allow access to them. 
 
 You can register multiple external clusters to Codefresh runtimes, both hosted and hybrid. All runtimes require Codefresh platform IPs to be configured on the clusters.  
 In addition, managed clusters registered to hosted runtimes must be configured with a set of specific IP addresses to authorize access.
@@ -55,6 +55,6 @@ If you haven't configured your clusters with the required IPs, use the links bel
 [GKE (Google Kubernetes Engine)](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters){:target="\_blank"}  
 
 ### What to read next
-[Hybrid runtime installation]({{site.baseurl}}/docs/runtime/installation/)  
-[Set up a hosted runtime]({{site.baseurl}}/docs/incubation/hosted-runtime/)  
-[Codefresh architecture]({{site.baseurl}}/docs/runtime/managed-cluster/)
+[Set up a hosted (Hosted GitOps) environment]({{site.baseurl}}/docs/runtime/hosted-runtime/)  
+[Install hybrid runtimes]({{site.baseurl}}/docs/runtime/installation/)  
+[Codefresh architecture]({{site.baseurl}}/docs/getting-started/architecture/)

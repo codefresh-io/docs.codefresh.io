@@ -1,17 +1,17 @@
 ---
-title: "Set up Hosted GitOps"
+title: "Set up a hosted (Hosted GitOps) environment (Beta)"
 description: ""
-group: incubation
+group: runtime
 toc: true
 ---
 
 
 
-If you have Codefresh's Hosted GitOps solution, complete the simple setup, and you are all ready to leverage extensive CD Ops capabilities.
+If you have Codefresh's Hosted GitOps, set up your hosted environment, and you are all ready to leverage extensive CD Ops capabilities.
 Read about [Hosted GitOps]({{site.baseurl}}/docs/incubation/intro-hosted-runtime/). 
 
 ### Where to start with Hosted GitOps
-If you have not provisioned a hosted runtime, Codefresh presents you with the setup instructions in the Home dashboard.   
+If you have not provisioned a hosted runtime, Codefresh presents you with the setup instructions in the **Home** dashboard.   
 
 
 * In the Codefresh UI, go to Codefresh [Home](https://g.codefresh.io/2.0/?time=LAST_7_DAYS){:target="\_blank"}.
@@ -77,8 +77,8 @@ Your hosted runtime may fail to install with an error as in the image below. We 
 {% include
 image.html
 lightbox="true"
-file="/images/incubation/hosted-runtime-error.png"
-url="/images/incubation/hosted-runtime-error.png"
+file="/images/runtime/hosted-runtime-error.png"
+url="/images/runtime/hosted-runtime-error.png"
 alt="Hosted runtime installation error"
 caption="Hosted runtime installation error"
 max-width="70%"
@@ -86,7 +86,7 @@ max-width="70%"
 
 
 1. Download the CLI
-  * If you have installed the Codfresh CLI already, make sure you have the latest version:  
+  * If you have installed the Codefresh CLI already, make sure you have the latest version:  
      `cf version`  
      To compare with the latest version from Codefresh, [click here](https://github.com/codefresh-io/cli-v2/releases){:target="\_blank"}.  
   * [Download the CLI]({{site.baseurl}}/docs/clients/csdp-cli/).
@@ -214,7 +214,10 @@ caption="Step 3: Connect a K8s cluster for hosted runtime"
 max-width="70%" 
 %}
 
+**Before you begin**  
+* Make sure your cluster has internet access  
 
+**How to**  
 1. Click **Connect**.
 1. In the Add Managed Cluster panel, copy the command `cf cluster add`, and run it in the terminal.  
 1. When prompted to select the `kube-context`, select from the list of available clusters as defined in `kubeconfig`.  
@@ -244,7 +247,13 @@ max-width="70%"
   %}
 
 {:start="5"} 
-1. Configure access to the IP addresses required. See [Codefresh IP addresses]({{site.baseurl}}/docs/administration/platform-ip-addresses/).  
+1. Configure access to the IP addresses required. See [Codefresh IP addresses]({{site.baseurl}}/docs/administration/platform-ip-addresses/). 
+
+If you could not connect a cluster, you may not have the latest version of the CLI:  
+* If you have installed the Codefresh CLI already, make sure you have the latest version:  
+  `cf version`  
+  To compare with the latest version from Codefresh, [click here](https://github.com/codefresh-io/cli-v2/releases){:target="\_blank"}.  
+* [Download the CLI]({{site.baseurl}}/docs/clients/csdp-cli/).
 
 You have completed setting up your hosted runtime. You are ready to create applications, and connect third-party CI tools for image enrichment.
 
@@ -261,7 +270,7 @@ Optional. Create an application in Codefresh, deploy it to the cluster, and trac
 ### (Optional) Connect CI 
 Optional. Integrate Codefresh with the third-party tools you use for CI to enrich image information in deployments.  
 
-[Image enrichment with integrations]({{site.baseurl}}/docs/integration/image-enrichment-overview/) 
+[Image enrichment with integrations]({{site.baseurl}}/docs/integrations/image-enrichment-overview/) 
 
 ### What to read next
 [Applications dashboard]({{site.baseurl}}/docs/deployment/applications-dashboard/)

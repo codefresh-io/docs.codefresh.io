@@ -45,6 +45,8 @@
   pages:
     - title: Installation options
       url: "/installation-options"
+    - title: Set up a hosted (Hosted GitOps) environment (Beta)
+      url: "/hosted-runtime"
     - title: Hybrid runtime requirements
       url: "/requirements"
     - title: Installing hybrid runtimes
@@ -168,8 +170,7 @@
   pages:
     - title: Hosted GitOps
       url: "/intro-hosted-runtime"
-    - title: Set up Hosted GitOps
-      url: "/hosted-runtime"
+
 
 
 - title: Terms and Privacy Policy

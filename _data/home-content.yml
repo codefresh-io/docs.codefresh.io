@@ -31,6 +31,8 @@
   links:
     - title: Installation environments
       localurl: /docs/runtime/installation-options/
+    - title: Set up a hosted (Hosted GitOps) envionment (Beta) 
+      localurl: /docs/runtime/hosted-runtime/
     - title: Hybrid runtime requirements
       localurl: /docs/runtime/requirements/
     - title: Installing hybrid runtimes
@@ -135,9 +137,8 @@
   icon: images/home-icons/plugins.svg
   url: ''
   links:
-  - title: Hosted GitOps
+  - title: Hosted GitOps (Beta)
     localurl: /docs/incubation/intro-hosted-runtime/
-  - title: Set up Hosted GitOps
-    localurl: /docs/incubation/hosted-runtime/
+
   
 

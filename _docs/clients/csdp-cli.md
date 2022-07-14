@@ -44,5 +44,5 @@ Upgrade the CLI to the latest version to prevent installation errors.
 | `brew` | N/A| `brew tap codefresh-io/cli && brew install cf2`|
 
 ### Related articles
+[Set up hosted (Hosted GitOps) environment]({{site.baseurl}}/docs/runtime/hosted-runtime)  
 [Install hybrid runtimes]({{site.baseurl}}/docs/runtime/installation)  
-[Set up Hosted GitOps]({{site.baseurl}}/docs/incubation/hosted-runtime) 

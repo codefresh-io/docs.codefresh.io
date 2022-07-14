@@ -7,7 +7,7 @@ toc: true
 
 If you have a hybrid environment, you can provision one or more hybrid runtimes in your Codefresh account. The hybrid runtime comprises Argo CD components and Codefresh-specific components. The Argo CD components are derived from a fork of the Argo ecosystem, and do not correspond to the open-source versions available.
 
-> If you have Hosted GitOps, to provision a hosted runtime, see [Provision a hosted runtime]({{site.baseurl}}/docs/incubation/hosted-runtime/#1-provision-hosted-runtime) in [Set up Hosted GitOps]({{site.baseurl}}/docs/incubation/hosted-runtime/).
+> If you have Hosted GitOps, to provision a hosted runtime, see [Provision a hosted runtime]({{site.baseurl}}/docs/runtime/hosted-runtime/#1-provision-hosted-runtime) in [Set up a hosted (Hosted GitOps) environment]({{site.baseurl}}/docs/runtime/hosted-runtime/).
 
 There are two parts to installing a hybrid runtime:
 
@@ -57,7 +57,7 @@ The label of the namespace resource to which you are installing the hybrid runti
 
 **Kube context**  
 Required.  
-The cluster defined as the default for `kubectl`. If you have more than one Kube context, the current context, which is the cluster currently the default for , is selected by default.  
+The cluster defined as the default for `kubectl`. If you have more than one Kube context, the current context is selected by default.  
 
 * CLI wizard: Select the Kube context from the list displayed.
 * Silent install: Explicitly specify the Kube context with the `--context` flag.
@@ -97,6 +97,10 @@ Optional.
 If you have a different routing service (not NGINX), bypass installing ingress resources with the `--skip-ingress` flag.  
 In this case, after completing the installation, manually configure the cluster's routing service, and create and register Git integrations. See _Cluster routing service_ in [Post-installation configuration](#post-installation-configuration).
 
+**Shared configuration repository**
+The Git repository per runtime account with shared configuration manifests.  
+* CLI wizard and Silent install: Add the `--shared-config-repo` flag and define the path to the shared repo.  
+
 **Insecure flag**  
 For _on-premises installations_, if the Ingress controller does not have a valid SSL certificate, to continue with the installation, add the `--insecure` flag to the installation command.  
 
@@ -115,7 +119,7 @@ The Git token authenticating access to the GitHub installation repository.
 Optional.  
 Install demo pipelines to use as a starting point to create your own pipelines. We recommend installing the demo resources as these are used in our quick start tutorials.  
 
-* Silent install:Add the `--demo-resources` flag. By default, set to `true`.
+* Silent install: Add the `--demo-resources` flag. By default, set to `true`.
 
 ### Hybrid runtime components
 
