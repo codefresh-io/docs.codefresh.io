@@ -61,8 +61,7 @@
       localurl: /docs/pipelines/concurrency-limit/
     - title: Sharing file systems
       localurl: /docs/pipelines/sharing-file-system/  
-    - title: Viewing images
-      localurl: /docs/pipelines/images/    
+       
 
 - title: Deployment
   icon: images/home-icons/deployment.svg
@@ -72,6 +71,8 @@
       localurl: /docs/deployment/applications-dashboard/
     - title: Create an application
       localurl: /docs/deployment/create-application/
+    - title: Images in Codefresh
+      localurl: /docs/deployment/images/ 
 
 
 - title: Reports & Insights

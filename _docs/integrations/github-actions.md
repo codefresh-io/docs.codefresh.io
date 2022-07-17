@@ -22,7 +22,7 @@ Use the action in the following manner:
 1. Place the final action in the pipeline as the "report image" action provided by Codefresh, copying the arguments and values from the GitHub Actions integration you set up in Codefresh.
 1. When the pipeline completes execution, Codefresh retrieves the information on the image that was built and its metadata (essentially the same
 data that Codefresh CI would send automatically).
-1. View the image in Codefresh in the [Images dashboard]({{site.baseurl}}/docs/pipelines/images/), and in any [GitOps deployment]({{site.baseurl}}/docs/deployment/applications-dashboard/) in which it is used.
+1. View the image in Codefresh in the [Images dashboard]({{site.baseurl}}/docs/deployment/images/), and in any [GitOps deployment]({{site.baseurl}}/docs/deployment/applications-dashboard/) in which it is used.
 
  
 

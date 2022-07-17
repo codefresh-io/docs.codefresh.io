@@ -72,8 +72,6 @@
       url: "/concurrency-limit"
     - title: Sharing file systems
       url: "/sharing-file-system"
-    - title: Viewing images
-      url: "/images"
     - title: Nested workflows
       url: "/nested-workflows"
     
@@ -85,6 +83,8 @@
       url: "/applications-dashboard"
     - title: Create an application
       url: "/create-application"
+    - title: Images in Codefresh
+      url: "/images"
 
 - title: Reports & Insights
   url: "/reporting"

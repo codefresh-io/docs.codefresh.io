@@ -1,15 +1,15 @@
 ---
-title: "Viewing Images in Codefresh"
+title: "Images in Codefresh"
 description: ""
 group: pipelines
 toc: true
 ---
 
 Building Docker images is one of the most basic requirements for creating Delivery Pipelines. 
-Once you create an image, push the image to a registry, and report it to Codefresh, image information is continually updated in the Codefresh UI. 
+Once you create an image, push the image to a registry, and report it to Codefresh, image information is continually updated in the Images page. 
 
-### Requirements for images in Codefresh
-Complete the mandatory steps to see your images in Codefresh. Each step has links to examples in the Codefresh Hub for Argo.  
+### Requirements for Images in Codefresh
+Complete the mandatory steps to see your Images in the Codefresh UI. Each step has links to examples in the Codefresh Hub for Argo.  
 
 1. (Mandatory) Build the Docker image, and push the image to any registry.  
   See [Create a Docker image using Kaniko](https://codefresh.io/argohub/workflow-template/kaniko){:target="\_blank"}.
@@ -18,7 +18,7 @@ Complete the mandatory steps to see your images in Codefresh. Each step has link
 1. (Mandatory) Report image information to Codefresh.  
   See the [report-image-info](https://github.com/codefresh-io/argo-hub/blob/main/workflows/codefresh-csdp/versions/0.0.6/docs/report-image-info.md){:target="\_blank"} example.
   
-> If you are using an external GitHub Actions-based pipeline, we have a new template that combines image reporting and enrichment. See [Image enrichment with integrations]({{site.baseurl}}/docs/integration/image-enrichment-overview/).
+> If you are using an external GitHub Actions-based pipeline, we have a new template that combines image reporting and enrichment. See [Image enrichment with integrations]({{site.baseurl}}/docs/integrations/image-enrichment-overview/).
 
 ### Image views in Codefresh 
 * In the Codefresh UI, go to [Images](https://g.codefresh.io/2.0/images){:target="\_blank"}.
@@ -28,7 +28,7 @@ Image views are layered to show three levels of data:
 * Tags
 * Summary with metadata and binary information 
 
-#### Filters for image views
+#### Filters for Image views
 As with any resource in Codefresh, image views support filters that allow you focus on the data that's important to you.
 Most image filters support multi-selection.  Unless otherwise indicated, the filters are common to all view levels.
 

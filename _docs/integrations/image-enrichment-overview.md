@@ -117,6 +117,6 @@ jobs:
       uses: codefresh-io/csdp-report-image@0.0.47
 ```
 ### Related articles
-[Images]({{site.baseurl}}/docs/pipelines/images/)  
+[Images]({{site.baseurl}}/docs/deployment/images/)  
 [Applications dashboard]({{site.baseurl}}/docs/deployment/applications-dashboard/) 
 
