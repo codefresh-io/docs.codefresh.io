@@ -14,7 +14,7 @@ Here are some insights you can derive from the Applications dashboard:
 * Microservices deployed by the application
 * Hierarchical view of the resources in the application in the Current State
 
-
+>For information on creating, editing, and deleting applications, see [Applications in Codefresh]({{site.baseurl}}/docs/deployment/create-application/)
 
 ### Applications main view
 

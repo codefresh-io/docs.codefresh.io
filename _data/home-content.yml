@@ -69,7 +69,7 @@
   links:
     - title: Applications dashboard
       localurl: /docs/deployment/applications-dashboard/
-    - title: Create an application
+    - title: Applications
       localurl: /docs/deployment/create-application/
     - title: Images in Codefresh
       localurl: /docs/deployment/images/ 
