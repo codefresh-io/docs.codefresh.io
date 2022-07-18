@@ -21,17 +21,17 @@ Update the image tag in the `codefresh-guestbook` application.
 ```yaml
 ...
 template:
-    metadata:
-      labels:
-        app: codefresh-guestbook
-    spec:
-      containers:
-        - image: gcr.io/heptio-images/ks-guestbook-demo:0.2
-          name: codefresh-guestbook
-          ports:
-            - name: http
-              containerPort: 8080
-              protocol: TCP
+  metadata:
+    labels:
+      app: codefresh-guestbook
+  spec:
+    containers:
+      - image: gcr.io/heptio-images/ks-guestbook-demo:0.2
+        name: codefresh-guestbook
+        ports:
+          - name: http
+            containerPort: 80
+            protocol: TCP
 ...
 ```
 {:start="3"}

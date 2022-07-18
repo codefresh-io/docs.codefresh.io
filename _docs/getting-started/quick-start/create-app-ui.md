@@ -21,8 +21,8 @@ For detailed information, see [Create an application]({{site.baseurl}}/docs/depl
 1. In the Codefresh UI, go to the [Applications](https://g.codefresh.io/2.0/applications-dashboard?sort=desc-lastUpdated){:target="\_blank"} dashboard.
 1. Select **Add Application** on the top-right.
 1. In the Add Application panel, add definitions for the application:
-  * **Application name**: `codefresh.guestbook` for the quick start.
-  * **Runtime**: The runtime to associate with the application, `argocd` for the quick start.  
+  * **Application name**: `codefresh-guestbook` for the quick start.
+  * **Runtime**: The runtime to associate with the application, `hosted-runtime` for the quick start.  
   * **YAML filename**: The name of the application's configuration manifest, assigned on commit to Git. By default, the manifest is assigned the application name.
 
   >The application definitions cannot be changed after you continue to the Configuration settings.
@@ -60,10 +60,10 @@ For detailed information, see [Create an application]({{site.baseurl}}/docs/depl
 
 
 {:start="6"}
-1. Retain the default **Advanced** settings.  
+1. Retain the default **Advanced Settings**.  
 1. To commit all your changes, select **Commit**.  
   The Commit form is displayed with the application's definition on the left, and the read-only version of the manifest with the configuration settings you defined on the right.
-1. Enter the path to the **Git Source** to which to commit the application configuration manifest.
+1. Select the **Git Source** to which to commit.
 
 {% include 
    image.html 
