@@ -1,5 +1,5 @@
 ---
-title: "Moinitoring provisioned runtimes"
+title: "Moinitor provisioned runtimes"
 description: ""
 group: runtime
 toc: true

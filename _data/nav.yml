@@ -45,19 +45,19 @@
   pages:
     - title: Installation options
       url: "/installation-options"
-    - title: Set up a hosted (Hosted GitOps) environment (Beta)
+    - title: Set up a hosted runtime environment (Beta)
       url: "/hosted-runtime"
     - title: Hybrid runtime requirements
       url: "/requirements"
-    - title: Installing hybrid runtimes
+    - title: Install hybrid runtimes
       url: "/installation"
-    - title: Managing provisioned runtimes
+    - title: Manage provisioned runtimes
       url: "/monitor-manage-runtimes"
-    - title: Monitoring provisioned runtimes
+    - title: Monitor provisioned runtimes
       url: "/monitoring-troubleshooting" 
-    - title: Adding external clusters to runtimes
+    - title: Add external clusters to runtimes
       url: "/managed-cluster" 
-    - title: Adding Git Sources to runtimes
+    - title: Add Git Sources to runtimes
       url: "/git-sources"
 
 

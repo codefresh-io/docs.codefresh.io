@@ -1,5 +1,5 @@
 ---
-title: "Adding external clusters to runtimes"
+title: "Add external clusters to runtimes"
 description: ""
 group: runtime
 toc: true
@@ -34,10 +34,10 @@ Make sure:
   List View: Select the **Managed Clusters** tab, and then select **+ Add Cluster**.  
 1. In the Add Managed Cluster panel, copy and run the command:  
   `cf cluster add <runtime-name> [--dry-run]`  
-  where:  
-  <runtime-name> is automatically populated by Codefresh in the command.  
-  `--dry-run` is optional, and required if you want to generate a list of YAML manifests that you can redirect and apply manually with `kubectl`.
-  
+  where:   
+  `--dry-run` is optional, and required if you want to generate a list of YAML manifests that you can redirect and apply manually with `kubectl`.   
+
+
    {% include 
 	image.html 
 	lightbox="true" 
@@ -50,7 +50,8 @@ Make sure:
 
 {:start="5"}
 1. If you used `dry-run`, apply the generated manifests to the same target cluster on which you ran the command.  
-  Here is an example of the YAML manifest generated with the `--dry-run` flag. Note that there are placeholders in the example, which are replaced with the actual values with `--dry-run`.
+  Here is an example of the YAML manifest generated with the `--dry-run` flag. Note that there are placeholders in the example, which are replaced with the actual values with `--dry-run`.  
+  
 
 ```yaml
 apiVersion: v1
@@ -160,6 +161,7 @@ spec:
       restartPolicy: Never
       serviceAccount: argocd-manager
   ttlSecondsAfterFinished: 600
+
 ```
 
 The new cluster is registered to the runtime as a managed cluster.  
@@ -221,7 +223,6 @@ Work with managed clusters in hybrid or hosted runtimes in either the Topology o
 
 **Remove cluster**  
   Remove a cluster registered with a runtime from the runtime's list of managed clusters.  
-  <!-->>Removing a managed cluster from a runtime also removes all the applications deployed to the cluster, and removes their data from the Applications dashboard.-->
 
 **How to**
 1. In the Codefresh UI, go to the [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"} page.
@@ -230,6 +231,18 @@ Work with managed clusters in hybrid or hosted runtimes in either the Topology o
     * In the Topology View, select the cluster node from the runtime it is registered to. 
     * In the List View, select the runtime, and then select the **Managed Clusters** tab.
 1. To install Argo Rollouts (Topology View only), select **Install Argo Rollouts**. 
+
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/runtime/cluster-install-rollout.png" 
+	url="images/runtime/cluster-install-rollout.png" 
+	alt="Install Argo Rollouts" 
+	caption="Install Argo Rollouts"
+  max-width="40%" 
+%}
+
+{:start="5"}
 1. To uninstall a cluster component from the list, select the three dots next to the component, and then select **Uninstall**.
 1. To remove the cluster from the list managed by the runtime, select the three dots next to the cluster name, and then select **Uninstall**. 
   

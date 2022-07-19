@@ -1,5 +1,5 @@
 ---
-title: "Adding Git Sources to runtimes"
+title: "Add Git Sources to runtimes"
 description: ""
 group: runtime
 toc: true

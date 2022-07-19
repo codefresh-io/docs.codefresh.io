@@ -31,23 +31,20 @@
   links:
     - title: Installation environments
       localurl: /docs/runtime/installation-options/
-    - title: Set up a hosted (Hosted GitOps) envionment (Beta) 
+    - title: Set up a hosted runtime envionment (Beta) 
       localurl: /docs/runtime/hosted-runtime/
     - title: Hybrid runtime requirements
       localurl: /docs/runtime/requirements/
-    - title: Installing hybrid runtimes
+    - title: Install hybrid runtimes
       localurl: /docs/runtime/installation
-    - title: Managing provisioned runtimes
+    - title: Manage provisioned runtimes
       localurl: /docs/runtime/monitor-manage-runtimes/
-    - title: Monitoring provisioned runtimes
+    - title: Monitor provisioned runtimes
       localurl: /docs/runtime/monitoring-troubleshooting/
-    - title: Adding external clusters to runtimes
+    - title: Add external clusters to runtimes
       localurl: /docs/runtime/managed-cluster/
-    - title:  Adding Git Sources to runtimes
+    - title:  Add Git Sources to runtimes
       localurl: /docs/runtime/git-sources/
-    
-
-
 
 - title: Pipelines
   icon: images/home-icons/pipeline.svg

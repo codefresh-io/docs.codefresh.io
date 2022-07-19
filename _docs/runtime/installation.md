@@ -1,5 +1,5 @@
 ---
-title: "Installing hybrid runtimes"
+title: "Install hybrid runtimes"
 description: ""
 group: runtime
 toc: true

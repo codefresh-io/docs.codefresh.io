@@ -1,5 +1,5 @@
 ---
-title: "Set up a hosted (Hosted GitOps) environment (Beta)"
+title: "Set up a hosted runtime environment (Beta)"
 description: ""
 group: runtime
 toc: true

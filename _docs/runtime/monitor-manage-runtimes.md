@@ -1,5 +1,5 @@
 ---
-title: "Managing provisioned runtimes"
+title: "Manage provisioned runtimes"
 description: ""
 group: runtime
 toc: true
