@@ -48,8 +48,6 @@ More than one option within the same filter type has an OR relationship. More th
 ### Metrics for favorite applications
 If you have [starred applications as favorites]({{site.baseurl}}/docs/deployment/applications-dashboard/#filters-and-favorites) in the Applications dashboard, clicking {::nomarkdown}<img src="../../../images/icons/icon-mark-favorite.png?display=inline-block">{:/} in DORA metrics, displays metrics only for those applications.    
 
-> If you select to view favorite applications and apply an Applications filter, results are available only if the favorite application is also defined in the Applications filter.
-
 
 ### Metric totals
 As the title indicates, the Totals bar shows the total numbers, based on the filters defined, or for the last 90 days, if there are no filters:
