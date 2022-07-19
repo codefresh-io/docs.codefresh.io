@@ -108,7 +108,7 @@
     localurl: /docs/administration/single-sign-on/
   - title: Set up OAuth2 authentication
     localurl: /docs/administration/oauth-setup/  
-  - title: Git personal access tokens for users
+  - title: User settings
     localurl: /docs/administration/user-settings/
   - title: Access Control
     localurl: /docs/administration/access-control/
