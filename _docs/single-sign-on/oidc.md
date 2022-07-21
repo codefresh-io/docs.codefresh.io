@@ -5,14 +5,14 @@ group: single-sign-on
 toc: true
 ---
 
-Codefresh natively supports login using GitHub, Bitbucket and GitLab using OpenID Connect (OAUTH 2.0) protocol. This guide will review how to add additional SSO integrations based on OAUTH 2.0 as part of Codefresh Enterprise plan.
+Codefresh natively supports login using GitHub, Bitbucket and GitLab using the OpenID Connect (OAUTH 2.0) protocol. This guide will review how to add  SSO integrations based on OAUTH 2.0 as part of Codefresh Enterprise plan.
 
 ## Prerequisites
 
 In order to add successfully an identity Provider in Codefresh you need to do some preparatory work with both Codefresh and the provider.
 
 1. You need to inform your Identify provider that it will provide SSO services to Codefresh
-1. You need to setup Codefresh and point it to your Identity Provider.
+1. You need to set up Codefresh and point it to your Identity Provider.
 
 The first procedure differs according to you Identity Provider, but the second one is common for all providers.
 
@@ -30,8 +30,8 @@ Codefresh currently supports
 
 To access the SSO configuration at the account level.
 
-1. Click on your avatar at the top right of the GUI and select *Account settings*
-1. In the new screen, select *Single Sign-on* from the left sidebar
+1. Click on your avatar at the top right of the GUI and select *Account settings*.
+1. In the new screen, select *Single Sign-on* from the left sidebar.
 
 {% include image.html
 lightbox="true"
@@ -42,18 +42,18 @@ caption="SSO provider settings"
 max-width="70%"
 %}
 
-To connect an Identity Provider, click the *add single-sign-on* button and select your provider from the drop-down menu.
+{:start="3"}
+1. To connect an Identity Provider, click the *add single-sign-on* button and select your provider from the drop-down menu.
 
 ## Codefresh SSO setup
 
-Regardless of the Identity Provider that you have chosen, the Codefresh setup is the similar for all of them. You need to provide several fields to Codefresh to activate SSO. The common ones are:
+Regardless of the Identity Provider that you have chosen, the setup in Codefresh is similar for all of them. You need to provide several fields to Codefresh to activate SSO. The common ones are:
 
 * *Display Name* - A name for your Identity Provider
 * *Client ID* - An ID that will be used for the connection
 * *Client Secret* - A secret associated with the ID
 
-Some providers also need
-additional fields which are specific to that provider.
+Some providers also need additional fields which are specific to that provider.
 
 The process to obtain the values for these fields depends on the individual Identity Provider. In the following
 sections we will outline the details for each one.
@@ -80,11 +80,11 @@ See the [OneLogin instructions]({{site.baseurl}}/docs/single-sign-on/oidc/oidc-o
 
 ## Testing your Identity provider
 
-Once you setup the Identity Provider, do the following
+Once you set up the Identity Provider, do the following
 
-1. Go to the collaborators screen by clicking on *People* on the left sidebar (under User Management)
-1. Add an active user that will be used for testing. We recommend you use your own user
-1. Change Login methog by selecting your Auth provider in the SSO drop-down
+1. Go to the collaborators screen by clicking on *People* on the left sidebar (under User Management).
+1. Add an active user that will be used for testing. We recommend you use your own user.
+1. Change Login method by selecting your Auth provider from the SSO drop-down.
 
     {% include image.html
     lightbox="true"
@@ -95,7 +95,7 @@ Once you setup the Identity Provider, do the following
     max-width="70%"
     %}
 
-1. Keep the current browser session open, and login via Corporate SSO in an incognito tab (or another browser).
+1. Keep the current browser session open, and log in via Corporate SSO in an incognito tab (or another browser).
 
     {% include image.html
     lightbox="true"
@@ -106,7 +106,7 @@ Once you setup the Identity Provider, do the following
     max-width="50%"
     %}
 
-1. If everything works ok add more users
+1. If everything works, add more users.
 
 > Before enabling SSO for all users, you **MUST** make sure that it is working for the test user, because if SSO is enabled for a user, Codefresh blocks logins through other IDPs for this user and only the enabled SSO is allowed. If the selected SSO method does not work for some reason, users will be locked out of Codefresh.
 
@@ -129,11 +129,11 @@ max-width="50%"
 If you have multiple SSO providers configured, you can select a different provider for each user if so required.  
 
 * New users   
-  SSO is **not configured** by default for new users either added manually or via team synchronization.  
-  You must _explicitly select_ the SSO provider for the new users.  
+  SSO login is **not configured** by default for new users, added either manually or via team synchronization.  
+  To enable SSO login for a new user, you must _explicitly select_ the SSO provider for the new user.  
 
 * Existing users  
-  If you add a new identity provider for SSO, you must _explicitly select or change_ the provider for the existing user. 
+  If SSO login is already configured for an existing user and you add a new identity provider, to change the SSO method to the new provider, you must _explicitly select_ the provider for the user. 
 
 
 ## Setting a default provider
