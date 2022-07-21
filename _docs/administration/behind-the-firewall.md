@@ -131,7 +131,7 @@ You can also use a [network proxy]({{site.baseurl}}/docs/codefresh-yaml/steps/gi
 #### Adding triggers from private GIT repositories
 
 
-In the previous section we have seen how a pipeline can checkout code from the internal git repository. We also need to setup a trigger
+In the previous section we have seen how a pipeline can check out code from the internal git repository. We also need to setup a trigger
 so that every time a commit happens (or any other supported event), the Codefresh pipeline will be triggered automatically.
 
 If you have installed the [optional app-proxy]({{site.baseurl}}/docs/administration/codefresh-runner/#optional-installation-of-the-app-proxy), adding a trigger can be done exactly like the SAAS version of Codefresh, using only the Codefresh UI.
@@ -140,6 +140,8 @@ If you haven't installed the app-proxy, then adding a Git trigger is a two-step 
 
 1. First we setup a webhook endpoint in Codefresh.
 1. Then we create the webhook call in the side of the the GIT provider.
+
+> To support triggers based on  PR (Pull Request) events, it is mandatory to install `app-proxy`.
 
 For the Codefresh side, follow the usual instructions for creating a [basic git trigger]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/).
 
