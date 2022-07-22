@@ -63,7 +63,7 @@ consul:
   ImageTag: 1.0.0 # (default `imageTag:1.11`)
 ...
 ```
-### Upgrade to 1.2.2 and higher
+### Upgrade to 1.2.0 and higher
 This major release **deprecates** the following Codefresh managed charts:
 * Ingress
 * Rabbitmq
