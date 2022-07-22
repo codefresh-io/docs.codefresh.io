@@ -71,7 +71,7 @@ This major release **deprecates** the following Codefresh managed charts:
 
 See the instructions below for each of the affected charts.
 
-> Before the upgrade remove any seed jobs left with:  
+> Before the upgrade remove any seed jobs left from previous release with:  
    `kubectl delete job --namespace ${CF_NAMESPACE} -l release=cf `  
 
 #### Update configuration for Ingress chart 
