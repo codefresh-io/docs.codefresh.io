@@ -71,6 +71,9 @@ This major release **deprecates** the following Codefresh managed charts:
 
 See the instructions below for each of the affected charts.
 
+> Before the upgrade remove any seed jobs left with:  
+   `kubectl delete job --namespace ${CF_NAMESPACE} -l release=cf `  
+
 #### Update configuration for Ingress chart 
 From version **1.2.0 and higher**, we have deprecated support for `Codefresh-managed-ingress`.  
 Kubernetes community public `ingress-nginx` chart replaces `Codefresh-managed-ingress` chart. For more information on the `ingress-nginx`, see [kubernetes/ingress-nginx](https://github.com/kubernetes/ingress-nginx).  
