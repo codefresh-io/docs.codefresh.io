@@ -159,6 +159,10 @@ ingress-nginx:
     admissionWebhooks:
       enabled: false
 ```
+> New `ingress-nginx` subchart creates a new `cf-ingress-nginx-controller` service (`type: LoadBalancer`) instead of old `cf-ingress-controller` service. So make sure to update DNS record for `global.appUrl` to point to a new external load balancer IP.    
+  You can get external load balancer IP with:  
+  `kubectl get svc cf-ingress-nginx-controller -o jsonpath={.status.loadBalancer.ingress[0].ip`  
+
 
 #### Update configuration for RabbitMQ chart
 From version **1.2.2 and higher**, we have deprecated support for the `Codefresh-managed Rabbitmq` chart. Bitnami public `bitnami/rabbitmq` chart has replaced the `Codefresh-managed rabbitmq`. For more information, see [bitnami/rabbitmq](https://github.com/bitnami/charts/tree/master/bitnami/rabbitmq).
