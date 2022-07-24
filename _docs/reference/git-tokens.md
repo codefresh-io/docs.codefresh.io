@@ -1,7 +1,7 @@
 ---
 title: "Git tokens"
 description: ""
-group: administration
+group: reference
 toc: true
 ---
 
@@ -27,7 +27,7 @@ Git runtime tokens need both repo and admim repo access to create webhooks for G
    url="/images/getting-started/quick-start/quick-start-git-event-permissions.png" 
    alt="Permissions for Git runtime token" 
    caption="Permissions for Git runtime token"
-   max-width="30%" 
+   max-width="60%" 
    %}
 
 #### How to update a Git runtime token
@@ -46,7 +46,7 @@ Update Git runtime tokens when needed.
 
 ### Git personal tokens
 The Git personal token is a user-specific personal access token per provisioned runtime. Unique to each user, it is required to authenticate Git-based actions per runtime in Codefresh. 
-If not provided during runtime installation, every user can add a personal access token after installation through User Settings, using either OAuth to authorize access or generate one from GitHub.
+If not provided during runtime installation, user can add personal access tokens (PATs) after installation through [User Settings](https://g.codefresh.io/2.0/user-settings){:target="\_blank"} in the UI, using either OAuth to authorize access or generate one from GitHub.
 
 If users have access to multiple runtimes, they can use the same personal access token for all the runtimes.  
 > Users must configure the token for each runtime.
@@ -61,5 +61,8 @@ Git personal tokens need repo access for commits and other actions.
    url="/images/getting-started/github-pat.png" 
    alt="Permissions for Git personal token" 
    caption="Permissions for Git personal token"
-   max-width="30%" 
+   max-width="60%" 
    %}
+
+### Related articles  
+[User settings]({{site.baseurl}}/docs/administration/user-settings/)

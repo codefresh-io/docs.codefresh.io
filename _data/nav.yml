@@ -112,8 +112,6 @@
   pages:
     - title: Manage users
       url: "/add-users"
-    - title: Git tokens
-      url: "/git-tokens"
     - title: User settings
       url: "/user-settings"
     - title: Set up OAuth2 authentication
@@ -147,6 +145,8 @@
 - title: Reference
   url: "/reference"
   pages:
+    - title: Git tokens
+      url: "/git-tokens"
     - title: Secrets
       url: "/secrets"   
     - title: Shared configuration repo

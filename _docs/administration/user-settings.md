@@ -110,6 +110,5 @@ To authorize with OAuth2, you have to supply your credentials. When authorized, 
 The token is generated and you are redirected to the User Settings page where you can see the new Git token assigned to the runtime. 
 
 
-#### Related articles  
-
-[Git tokens in Codefresh]({{site.baseurl}}/docs/administration/git-tokens/)
+### Related articles  
+[Git tokens in Codefresh]({{site.baseurl}}/docs/reference/git-tokens/)

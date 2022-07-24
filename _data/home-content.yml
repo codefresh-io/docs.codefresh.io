@@ -118,6 +118,8 @@
   icon: images/home-icons/guides.png
   url: ''
   links:
+    - title: Git tokens
+      localurl: /docs/reference/git-tokens/ 
     - title: Secrets
       localurl: /docs/reference/secrets   
     - title: Shared configuration repo
