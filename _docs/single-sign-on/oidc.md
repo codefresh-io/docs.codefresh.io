@@ -129,11 +129,11 @@ max-width="50%"
 If you have multiple SSO providers configured, you can select a different provider for each user if so required.  
 
 * New users   
-  SSO login is **not configured** by default for new users, added either manually or via team synchronization.  
-  To enable SSO login for a new user, you must _explicitly select_ the SSO provider for the new user.  
+  If you have an SSO provider selected as the default, that provider is automatically assigned to new users, added either manually or via team synchronization.  
 
 * Existing users  
-  If SSO login is already configured for an existing user and you add a new identity provider, to change the SSO method to the new provider, you must _explicitly select_ the provider for the user. 
+  SSO login is not configured by default for existing users. You must _explicitly select_ the SSO provider for existing users.  
+  If SSO login is already configured for an existing user, and you add a new identity provider, to change the SSO login to the new provider, you must _select_ the new provider for the user. 
 
 
 ## Setting a default provider
