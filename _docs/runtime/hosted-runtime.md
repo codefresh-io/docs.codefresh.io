@@ -92,7 +92,7 @@ max-width="70%"
   * [Download the CLI]({{site.baseurl}}/docs/clients/csdp-cli/).
 
 1. Uninstall the failed hosted runtime:  
-  `cf uninstall hosted-codefresh --force`  
+  `cf runtime uninstall hosted-codefresh --force`  
   where:  
   `hosted-codefresh` is the name of your hosted runtime, automatically assigned by Codefresh.
 1. In the Codefresh UI, return to Codefresh [Home](https://g.codefresh.io/2.0/?time=LAST_7_DAYS){:target="\_blank"}.
@@ -201,8 +201,8 @@ max-width="80%"
 
 
 ### 3. Connect a Kubernetes cluster
-Connect a destination cluster to the hosted runtime and register it as a managed cluster. Deploy applications and configuration to the cluster.
-For managed cluster information, see [Add and manage external clusters]({{site.baseurl}}/docs/runtime/managed-cluster/).
+Connect a destination cluster to the hosted runtime and register it as a managed cluster. Deploy applications and configuration to the cluster, and install Argo Rollouts to visualize rollout information in the Application dashboards.  
+For managed cluster information and installing Argo Rollouts, see [Add external clusters to runtimes]({{site.baseurl}}/docs/runtime/managed-cluster/) and  [Install Argo Rollouts]({{site.baseurl}}/docs/runtime/managed-cluster/#install-argo-rollouts).
 
  {% include 
 image.html 
