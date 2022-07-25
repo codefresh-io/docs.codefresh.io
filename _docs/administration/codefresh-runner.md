@@ -138,7 +138,7 @@ To install the Codefresh Runner using Helm, follow these steps:
 3. Now run the following to complete the installation:
 
     ```shell
-    helm repo add cf-runtime https://h.cfcr.io/codefresh-inc/runtime
+    helm repo add cf-runtime https://chartmuseum.codefresh.io/cf-runtime
     
     helm install cf-runtime cf-runtime/cf-runtime -f ./generated_values.yaml --create-namespace --namespace codefresh
     ```
