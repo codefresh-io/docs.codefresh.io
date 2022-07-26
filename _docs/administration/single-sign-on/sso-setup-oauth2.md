@@ -86,7 +86,16 @@ caption="Selecting SSO method"
 max-width="50%"
 %}
 
->Users who are added either manually or via synchronization (described in the next section) are by default **NOT set** to login via SSO. Remember to explicitly select the SSO method for each one. If you have multiple SSO configurations, you can use a different SSO method for each user.
+**SSO login for new and existing users**  
+If you have multiple SSO providers configured, you can select a different provider for each user if so required.  
+
+* New users   
+  If you have an SSO provider selected as the default, that provider is automatically assigned to new users, added either manually or via team synchronization.  
+
+* Existing users  
+  SSO login is not configured by default for existing users. You must _explicitly select_ the SSO provider for existing users.  
+  If SSO login is already configured for an existing user, and you add a new identity provider, to change the SSO login to the new provider, you must _select_ the new provider for the user. 
+
 
 ### Define a default identity provider
 
