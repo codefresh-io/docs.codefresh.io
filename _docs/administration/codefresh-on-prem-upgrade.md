@@ -386,3 +386,86 @@ redis:
   `kubectl -n codefresh get pods --watch`  
 1. Log in to the Codefresh UI, and check the new version.
 1. If needed, enable/disable new feature flags.
+
+### Codefresh with Private Registry 
+
+If you install/upgrade Codefresh on the air-gapped environment (without access to public registries or Codefresh Enterprise registry) you will have to copy the images to your organization container registry.
+
+1. Obtain [image list](https://github.com/codefresh-io/onprem-images/tree/master/releases) for specific release 
+
+1. Push images to private docker registry:
+
+There are 3 types of images:
+
+> localhost:5000 is your <private-registy-addr:[port]>
+
+- non-Codefresh like:
+```
+bitnami/mongo:4.2
+k8s.gcr.io/ingress-nginx/controller:v1.2.0
+postgres:13
+```
+convert to:
+```
+localhost:5000/bitnami/mongodb:4.2
+localhost:5000/ingress-nginx/controller:v1.2.0
+localhost:5000/postgres:13
+```
+- Codefresh public images like:
+```
+quay.io/codefresh/dind:20.10.13-1.25.2
+quay.io/codefresh/engine:1.147.8
+quay.io/codefresh/cf-docker-builder:1.1.14
+```
+convert to:
+```
+localhost:5000/codefresh/dind:20.10.13-1.25.2
+localhost:5000/codefresh/engine:1.147.8
+localhost:5000/codefresh/cf-docker-builder:1.1.14
+```
+- Codefresh private images like:
+```
+gcr.io/codefresh-enterprise/codefresh/cf-api:21.153.6
+gcr.io/codefresh-enterprise/codefresh/cf-ui:14.69.38
+gcr.io/codefresh-enterprise/codefresh/pipeline-manager:3.121.7
+```
+convert to:
+```
+localhost:5000/codefresh/cf-api:21.153.6
+localhost:5000/codefresh/cf-ui:14.69.38
+localhost:5000/codefresh/pipeline-manager:3.121.7
+```
+> DELIMITERS are codefresh OR codefresh-io
+
+- To push images via [kcfi](https://github.com/codefresh-io/kcfi) (ver. **0.5.15** is required) use:
+
+`kcfi images push --help`
+
+> Prerequisites: sa.json to access Codefresh Enterprise GCR
+
+`kcfi images push --codefresh-registry-secret sa.json --images-list images-list-v1.2.12 --registry localhost:5000 --user "root" --password "root"`
+
+- To push images via [push-to-registry.sh](https://github.com/codefresh-io/onprem-images/blob/master/push-to-registry.sh) script: Images For Codefresh Onprem  use:
+
+Prerequisites: https://github.com/codefresh-io/onprem-images#prerequesites
+
+`./push-to-registry.sh localhost:5000 v1.2.12`
+
+3. Install/Upgrade Codefresh with private docker registry config:
+Set `usePrivateRegistry: true`, and set privateRegistry address, username and password in `config.yaml`
+
+
+`config.yaml`
+
+```yaml
+global:
+  ...
+
+images:
+  codefreshRegistrySa: sa.json
+  usePrivateRegistry: true
+  privateRegistry:
+    address: myartifactory.com
+    username: 
+    password: 
+```    
