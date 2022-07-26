@@ -78,9 +78,11 @@ max-width="30%"
 
 **'Favorite' applications**  
 
-Mark applications as favorites, and view them with a click.  
+Star applications as favorites, and view them with a click.  
 * Select the {::nomarkdown}<img src="../../../images/icons/icon-mark-favorite.png?display=inline-block">{:/} to the left of the application name to mark it as a favorite. 
-* To view only favorites, on the filters bar, select {::nomarkdown}<img src="../../../images/icons/icon-fav-starred.png?display=inline-block">{:/}.
+* To view only favorites, on the filters bar, select {::nomarkdown}<img src="../../../images/icons/icon-fav-starred.png?display=inline-block">{:/}.  
+
+>If you star applications as favorites, you can filter by the same applications in the [DORA metrics dashboard]({{site.baseurl}}/docs/reporting/dora-metrics/#metrics-for-favorite-applications).
 
 
 

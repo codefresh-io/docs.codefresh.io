@@ -62,7 +62,7 @@ Codefresh uses the Secret Key stored in the runtime cluster to securely access J
 [Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration/)  
 [Images]({{site.baseurl}}/docs/pipelines/images/)  
 [Applications dashboard]({{site.baseurl}}/docs/deployment/applications-dashboard/)    
-[Adding Git sources]({{site.baseurl}}/docs/runtime/git-sources/)  
+[Add Git sources to runtimes]({{site.baseurl}}/docs/runtime/git-sources/)  
 
 
 

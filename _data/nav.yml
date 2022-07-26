@@ -85,6 +85,8 @@
       url: "/create-application"
     - title: Images in Codefresh
       url: "/images"
+    - title: Install Argo Rollouts
+      url: "/install-argo-rollouts"  
 
 - title: Reports & Insights
   url: "/reporting"

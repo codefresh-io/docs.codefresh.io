@@ -70,6 +70,8 @@
       localurl: /docs/deployment/create-application/
     - title: Images in Codefresh
       localurl: /docs/deployment/images/ 
+    - title: Install Argo Rollouts
+      localurl: /docs/deployment/install-argo-rollouts/ 
 
 
 - title: Reports & Insights

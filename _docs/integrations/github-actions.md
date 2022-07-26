@@ -174,7 +174,7 @@ max-width="50%"
 
 
 ### Related articles  
-[Adding Git sources]({{site.baseurl}}/docs/runtime/git-sources/)  
+[Add Git sources to runtimes]({{site.baseurl}}/docs/runtime/git-sources/)  
 [Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration)
 
 

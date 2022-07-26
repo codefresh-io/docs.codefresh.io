@@ -344,8 +344,8 @@ If you bypassed installing ingress resources with the `--skip-ingress` flag, or 
   `cf integration git register default --runtime <RUNTIME-NAME> --token <RUNTIME-AUTHENTICATION-TOKEN>`  
 
 ### Related articles
-[Adding external clusters to runtimes]({{site.baseurl}}/docs/runtime/managed-cluster/)  
-[Adding Git Sources to runtimes]({{site.baseurl}}/docs/runtime/git-sources/)  
-[Managing provisioned runtimes]({{site.baseurl}}/docs/runtime/monitor-manage-runtimes/)  
-[(Hybrid) Monitoring provisioned runtimes]({{site.baseurl}}/docs/runtime/monitoring-troubleshooting/)  
-[Troubleshooting runtime installation]({{site.baseurl}}/docs/troubleshooting/runtime-issues/)
+[Add external clusters to runtimes]({{site.baseurl}}/docs/runtime/managed-cluster/)  
+[Add Git Sources to runtimes]({{site.baseurl}}/docs/runtime/git-sources/)  
+[Manage provisioned runtimes]({{site.baseurl}}/docs/runtime/monitor-manage-runtimes/)  
+[(Hybrid) Monitor provisioned runtimes]({{site.baseurl}}/docs/runtime/monitoring-troubleshooting/)  
+[Troubleshoot runtime installation]({{site.baseurl}}/docs/troubleshooting/runtime-issues/)

@@ -1,7 +1,7 @@
 ---
 title: "Images in Codefresh"
 description: ""
-group: pipelines
+group: deployment
 toc: true
 ---
 

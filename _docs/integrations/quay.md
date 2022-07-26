@@ -53,6 +53,6 @@ The integration resource is created in the Git repository with the shared config
 
 ### What to read next  
 [Shared runtime configuration]({{site.baseurl}}/docs/reference/shared-configuration/)  
-[Images]({{site.baseurl}}/docs/deployment/images/)  
+[Images in Codefresh]({{site.baseurl}}/docs/deployment/images/)  
 [Applications dashboard]({{site.baseurl}}/docs/deployment/applications-dashboard/)    
-[Adding Git sources]({{site.baseurl}}/docs/runtime/git-sources/)  
+[Add Git sources to runtimes]({{site.baseurl}}/docs/runtime/git-sources/)  
