@@ -391,9 +391,9 @@ redis:
 
 If you install/upgrade Codefresh on the air-gapped environment (without access to public registries or Codefresh Enterprise registry) you will have to copy the images to your organization container registry.
 
-1. Obtain [image list](https://github.com/codefresh-io/onprem-images/tree/master/releases) for specific release 
+**Obtain [image list](https://github.com/codefresh-io/onprem-images/tree/master/releases) for specific release**
 
-1. Push images to private docker registry:
+**Push images to private docker registry**
 
 There are 3 types of images:
 
@@ -445,13 +445,11 @@ localhost:5000/codefresh/pipeline-manager:3.121.7
 
 `kcfi images push --codefresh-registry-secret sa.json --images-list images-list-v1.2.12 --registry localhost:5000 --user "root" --password "root"`
 
-- To push images via [push-to-registry.sh](https://github.com/codefresh-io/onprem-images/blob/master/push-to-registry.sh) script: Images For Codefresh Onprem  use:
-
-Prerequisites: https://github.com/codefresh-io/onprem-images#prerequesites
+- To push images via [push-to-registry.sh](https://github.com/codefresh-io/onprem-images/blob/master/push-to-registry.sh) script use (see [prerequisites](https://github.com/codefresh-io/onprem-images#prerequesites)):
 
 `./push-to-registry.sh localhost:5000 v1.2.12`
 
-3. Install/Upgrade Codefresh with private docker registry config:
+**Install/Upgrade Codefresh with private docker registry config**
 Set `usePrivateRegistry: true`, and set privateRegistry address, username and password in `config.yaml`
 
 
