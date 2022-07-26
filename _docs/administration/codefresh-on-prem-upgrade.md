@@ -450,6 +450,7 @@ localhost:5000/codefresh/pipeline-manager:3.121.7
 `./push-to-registry.sh localhost:5000 v1.2.12`
 
 **Install/Upgrade Codefresh with private docker registry config**
+
 Set `usePrivateRegistry: true`, and set privateRegistry address, username and password in `config.yaml`
 
 
