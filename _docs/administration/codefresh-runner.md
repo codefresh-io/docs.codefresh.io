@@ -133,7 +133,7 @@ To install the Codefresh Runner using Helm, follow these steps:
     ```
 
    * This will not install anything on your cluster, except for running cluster acceptance tests, (which may be skipped using the `--skip-cluster-test` option). Please note, that the Runner Agent and the Runtime Environment are still created in your Codefresh account.
-   * This command will also generate a `generated_values.yaml` file in your current directory, which you will need to provide to the `helm install` command later. If you want to install several Codefresh Runners, you will need separate `generated_values.yaml` file for each Runner.
+   * This command will also generate a `generated_values.yaml` file in your current directory, which you will need to provide to the `helm install` command later. If you want to install several Codefresh Runners, you will need a separate `generated_values.yaml` file for each Runner.
 
 3. Now run the following to complete the installation:
 
