@@ -2,6 +2,9 @@
 title: "Manage provisioned runtimes"
 description: ""
 group: runtime
+redirect_from:
+  - /monitor-manage-runtimes/
+  - /monitor-manage-runtimes  
 toc: true
 ---
 
