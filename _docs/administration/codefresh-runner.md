@@ -290,7 +290,7 @@ All CNI providers/plugins are compatible with the runner components.
 
 ## App Proxy installation
 
-The App Proxy is an **optional** component of the runner that is mainly used when the git provider server is installed on-premises behind the firewall.  The App Proxy provides the following features once installed:
+The App Proxy is an **optional** component of the runner that is mainly used when the git provider server is installed on-premises behind the firewall. The App Proxy provides the following features once installed:
 
 * Enables you to automatically create webhooks for Git in the Codefresh UI (same as the SAAS experience)
 * Sends commit status information back to your Git provider (same as the SAAS experience)
