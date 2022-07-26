@@ -132,8 +132,8 @@ To install the Codefresh Runner using Helm, follow these steps:
     codefresh runner init --generate-helm-values-file
     ```
 
-   * This will not install anything on your cluster, except for running cluster acceptance tests, (which may be skipped using the `--skip-cluster-test` option).
-   * This command will also generate a `generated_values.yaml` file in your current directory, which you will need to provide to the `helm install` command later.
+   * This will not install anything on your cluster, except for running cluster acceptance tests, (which may be skipped using the `--skip-cluster-test` option). Please note, that the Runner Agent and the Runtime Environment are still created in your Codefresh account.
+   * This command will also generate a `generated_values.yaml` file in your current directory, which you will need to provide to the `helm install` command later. If you want to install several Codefresh Runners, you will need separate `generated_values.yaml` file for each Runner.
 
 3. Now run the following to complete the installation:
 
@@ -290,7 +290,7 @@ All CNI providers/plugins are compatible with the runner components.
 
 ## App Proxy installation
 
-The App Proxy is an **optional** component of the runner that once installed:
+The App Proxy is an **optional** component of the runner that is mainly used when the git provider server is installed on-premises behind the firewall.  The App Proxy provides the following features once installed:
 
 * Enables you to automatically create webhooks for Git in the Codefresh UI (same as the SAAS experience)
 * Sends commit status information back to your Git provider (same as the SAAS experience)
