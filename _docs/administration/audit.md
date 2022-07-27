@@ -50,15 +50,6 @@ max-width="30%"
 A change to a GitOps-controlled resource in Codefresh is made by Codefresh impersonating and pushing commits to your Git Sources.
 The Git repository linked to the Git Source shows all the commits. 
 
-{% include
-image.html
-lightbox="true"
-file="/images/administration/audit/git-log.png"
-url="/images/administration/audit/git-log.png"
-alt="Git repo change log"
-caption="Git repo change log"
-max-width="30%"
-%}
 
 ### (Future) Centralized audit log in account settings
 We plan to create a centralized location from which to view all API operations.
