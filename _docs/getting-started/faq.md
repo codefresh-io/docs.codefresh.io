@@ -14,7 +14,7 @@ A. The Codefresh platform is a full-featured, turn-key solution for application 
 
 **Q. Which deployment environments does Codefresh support?**  
 
-A. The current release of Codefresh supports hybrid deployment environments. Stay tuned for our announcement on support for SaaS and on-premises deployments.   
+A. The current release of Codefresh supports hosted and hybrid deployment environments. Stay tuned for our announcement on support for on-premises deployments.   
 
 **Q. How does Codefresh relate to Open Source Argo?**   
 
@@ -22,7 +22,7 @@ A. Codefresh creates a conformed fork of the Argo Project. You get an enterprise
 
 **Q. I already have a Kubernetes cluster with Argo CD. Can I install Codefresh on the same cluster?**  
 
-A. Codefresh must be installed on a clean Kubernetes cluster without any Argo Project components. Because we create a conformed fork of the Argo Project in Codefresh, installing it on a cluster with Argo components creates a conflict that will cause the installation to fail.
+A. Hybrid runtimes must be installed on a clean Kubernetes cluster without any Argo Project components. Because we create a conformed fork of the Argo Project in Codefresh, installing it on a cluster with Argo components creates a conflict that will cause the installation to fail.
 
 **Q. I have resources on my Kubernetes cluster that I want to use in Codefresh. What should I do?**   
 
