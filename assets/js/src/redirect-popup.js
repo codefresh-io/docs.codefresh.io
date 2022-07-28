@@ -25,9 +25,9 @@
   }
 
   $(function () {
-    if (window.location.hostname === 'localhost') {
-      return
-    }
+    // if (window.location.hostname === 'localhost') {
+    //   return
+    // }
 
     try {
       var docTypeCookie = getDocTypeCookie()

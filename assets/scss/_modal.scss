@@ -25,6 +25,16 @@
     border-radius: 50%;
   }
 
+  .redirect-popup__info-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    background-color: #f3f3f3;
+    border-radius: 8px;
+  }
+
   @media (min-width: 768px) {
     .modal-dialog {
       max-width: 510px;
