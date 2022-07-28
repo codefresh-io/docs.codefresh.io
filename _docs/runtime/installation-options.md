@@ -8,9 +8,10 @@ toc: true
 Codefresh supports two installation environments:
 
 
-* **Hosted** environments, with Argo CD installed in the Codefresh cluster (Beta) 
+* **Hosted** environments (Beta), with Argo CD installed in the Codefresh cluster.
   The runtime is installed and provisioned in a Codefresh cluster, and managed by Codefresh.  
   Hosted enviroments are full-cloud environments, where all updates and improvements are managed by Codefresh, with zero-maintenance overhead for you as the customer. Currently, you can add one hosted runtime per account.
+  For the architecture illustration, see [Hosted runtime architecture]({{site.baseurl}}/docs/getting-started/architecture/#hosted-runtime-architecture).
 
   
 {% include
@@ -25,9 +26,10 @@ Codefresh supports two installation environments:
 
   For more information on how to set up the hosted environment, including provisioning hosted runtimes, see [Set up a hosted (Hosted GitOps) environment]({{site.baseurl}}/docs/runtime/hosted-runtime/).  
 
-* **Hybrid** environments, with Argo CD installed in the customer's cluster  
+* **Hybrid** environments, with Argo CD installed in the customer's cluster.    
   The runtime is installed in the customer's cluster, and managed by the customer.  
-  Hybrid environments are ideal for organizations that want to manage CI/CD operations within their premises, or have other security constraints. Hybrid installations strike the perfect balance between security, flexibility, and ease of use. Codefresh maintains and manages most aspects of the platform, apart from installing and upgrading runtimes which are managed by the customer.  
+  Hybrid environments are optimal for organizations that want to manage CI/CD operations within their premises, or have other security constraints. Hybrid installations strike the perfect balance between security, flexibility, and ease of use. Codefresh maintains and manages most aspects of the platform, apart from installing and upgrading runtimes which are managed by the customer.  
+
  
 {% include
    image.html
@@ -40,7 +42,22 @@ Codefresh supports two installation environments:
 %}
 
   For more information on hybrid environments, see [Hybrid runtime requirements]({{site.baseurl}}/docs/runtime/requirements/) and [Installling hybrid runtimes]({{site.baseurl}}/docs/runtime/installation/).  
-  
+
+
+
+#### Git provider repos
+Codefresh Runtime creates three repositories in your organization's Git provider account:
+
+* Codefresh runtime installation repository
+* Codefresh Git Sources
+* Codefresh shared configuration repository. It does so for two types of entities:
+
+**Codefresh Runtime finctionality**
+The runtime:
+* Ensures that the installation repository and the Git Sources are always in sync, and applies Git changes back to the cluster
+* Receives events and information from the user's organization systems to execute workflows
+   By default, the ingress controller directs all requests and events to the Codefresh Application Proxy. When internal and an external ingress hosts are configured, the ingress comtroller directs webhook events to the relevant Event Source and then to Argo Events (not via the Codefresh Application Proxy).
+
 ### Hosted vs.Hybrid environments
 
 The table below highlights the main differences between hosted and hybrid environments.
@@ -65,3 +82,6 @@ The table below highlights the main differences between hosted and hybrid enviro
 |Dashboards               |Home Analytics      | Hosted runtime and deployments|Runtimes, deployments, Delivery Pipelines |
 |                         |DORA metrics        | Supported                 |Supported        |
 |                         |Applications        | Supported                 |Supported        |
+
+### Related articles
+[Architecture]({{site.baseurl}}/docs/getting-started/architecture/)

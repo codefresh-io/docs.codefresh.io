@@ -201,8 +201,10 @@ max-width="80%"
 
 
 ### 3. Connect a Kubernetes cluster
-Connect a destination cluster to the hosted runtime and register it as a managed cluster. Deploy applications and configuration to the cluster, and install Argo Rollouts to visualize rollout information in the Application dashboards.  
-For managed cluster information and installing Argo Rollouts, see [Add external clusters to runtimes]({{site.baseurl}}/docs/runtime/managed-cluster/) and  [Install Argo Rollouts]({{site.baseurl}}/docs/runtime/managed-cluster/#install-argo-rollouts).
+
+Connect a destination cluster to the hosted runtime and register it as a managed cluster. Deploy applications and configuration to the cluster.
+For managed cluster information and installing Argo Rollouts, see [Add and manage external clusters]({{site.baseurl}}/docs/runtime/managed-cluster/).
+
 
  {% include 
 image.html 

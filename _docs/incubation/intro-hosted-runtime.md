@@ -1,5 +1,5 @@
 ---
-title: "Hosted GitOps (Beta)"
+title: "Hosted GitOps"
 description: ""
 group: incubation
 toc: true
@@ -8,7 +8,7 @@ toc: true
 
 Codefresh has enhanced our solution offering with Hosted GitOps, the SaaS version of Codefresh.  
 
-What do you get with Hosted GitOps (Beta)?  
+What do you get with Hosted GitOps?  
 In a nutshell, a hosted and managed version of Argo CD. From application analytics, to application creation, rollout, and deployment, you get the best of both worlds: Argo CD with unique features and functionality from Codefresh to help achieve your CD goals.  
 What it also means is easy set up and zero maintenance overhead.  
 
