@@ -1,0 +1,35 @@
+.modal-backdrop.show {
+  pointer-events: auto;
+  opacity: 0;
+}
+
+.bd-modal {
+  .modal-footer {
+    background-color: #f9f9f9;
+  }
+
+  .modal-dialog {
+    align-items: flex-end;
+  }
+
+  .redirect-popup__close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    background-color: #f3f3f3;
+    border-radius: 50%;
+  }
+
+  @media (min-width: 768px) {
+    .modal-dialog {
+      max-width: 510px;
+      margin-right: .5rem;
+      margin-left: auto;
+    }
+  }
+}
