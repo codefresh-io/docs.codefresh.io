@@ -44,7 +44,7 @@ Here is a description of the information in the List View.
 | List View Item|  Description   |
 | --------------          | ---------------- |
 |**Name**| The name of the provisioned Codefresh runtime.  |
-|**Type**| The type of runtime provisioned, and can be **Hybrid** or **Hosted**. Hosted runtimes have the beta flag.  |
+|**Type**| The type of runtime provisioned, and can be **Hybrid** or **Hosted**.  |
 |**Cluster/Namespace**| The K8s API server endpoint, as well as the namespace with the cluster. |
 |**Modules**| The modules installed based on the type of provisioned runtime. Hybrid runtimes include CI amnd CD Ops modules. Hosted runtimes inlcude CD Ops.   |
 |**Managed Cluster**| The number of managed clusters if any, for the runtime. To view list of managed clusters, select the runtime, and then the **Managed Clusters** tab.  To work with managed clusters, see [Adding external clusters to runtimes]({{site.baseurl}}/docs/runtime/managed-cluster).|
@@ -179,7 +179,7 @@ Pass the mandatory flags in the uninstall command:
   where:  
   `--git-token` is a valid runtime token with the `repo` and `admin-repo.hook` scopes.  
 
-**How to uninstall with the CLI wizard**  
+**CLI wizard uninstall**  
 
 1. In the Codefresh UI, make sure you are in [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
 1. Switch to either the **List View** or to the **Topology View**.
