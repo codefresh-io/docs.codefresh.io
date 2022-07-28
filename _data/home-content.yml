@@ -78,8 +78,11 @@
   icon: images/home-icons/guides.png
   url: ''
   links:
+    - title: Home dashboard
+      localurl: /docs/reporting/home-dashboard/
     - title: DORA metrics
       localurl: /docs/reporting/dora-metrics/
+    
 
 - title: Image enrichment
   icon: images/home-icons/integrations.svg
