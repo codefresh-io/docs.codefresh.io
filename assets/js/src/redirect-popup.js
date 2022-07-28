@@ -32,13 +32,13 @@
     try {
       var docTypeCookie = getDocTypeCookie()
       if (docTypeCookie) {
-        var url = new URL(window.location)
-        var seachParams = new URLSearchParams(url.search)
+        var redirectFromUrl = localStorage.getItem('redirectFrom')
         if (isLastlyVisitedCSDP(docTypeCookie)) {
+          localStorage.setItem('redirectFrom', window.location.href)
           window.location.href = 'https://codefresh.io/csdp-docs/'
-        } else if (isLastlyVisitedClassic(docTypeCookie) && seachParams.has('redirectFrom')) {
+        } else if (isLastlyVisitedClassic(docTypeCookie) && redirectFromUrl && redirectFromUrl.startsWith(location.origin)) {
           $('#redirectModal').modal('show')
-          $('#redirectModal .redirect-popup__footer-link').attr('href', seachParams.get('redirectFrom'))
+          $('#redirectModal .redirect-popup__footer-link').attr('href', redirectFromUrl)
           $('#redirectModal .redirect-popup__footer-link').on('click', setDocumentationCookie)
         }
       }
