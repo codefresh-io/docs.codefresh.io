@@ -21,13 +21,13 @@
   }
 
   function setDocumentationCookie() {
-    document.cookie = 'doctype=ArgoPlatform; SameSite=Lax; Secure; Domain=localhost; Max-age=2592000; Path=/'
+    document.cookie = 'doctype=ArgoPlatform; SameSite=Lax; Secure; Domain=.codefresh.io; Max-age=2592000; Path=/'
   }
 
   $(function () {
-    // if (window.location.hostname === 'localhost') {
-    //   return
-    // }
+    if (window.location.hostname === 'localhost') {
+      return
+    }
 
     try {
       var docTypeCookie = getDocTypeCookie()
