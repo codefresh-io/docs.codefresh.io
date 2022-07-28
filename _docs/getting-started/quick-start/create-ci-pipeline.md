@@ -8,9 +8,9 @@ toc: true
 
 Now that you have configured and run the Hello World demo pipeline, let's create a more advanced pipeline.  
 
-For the quick start, you'll create a basic CI delivery pipeline in Codefresh.  
+For the quick start, you'll create a basic CI Delivery Pipeline in Codefresh.  
 
-The delivery pipeline:  
+The Delivery Pipeline:  
 * Clones a Git repository
 * Builds a docker image using `kaniko`
 * Pushes the built image to a Docker Registry
@@ -35,19 +35,23 @@ You must have a PAT to clone the repository.
    alt="GitHub PAT permissions for CI pipeline" 
    caption="GitHub PAT permissions for CI pipeline"
    max-width="30%" 
-   %}  
+   %} 
+ 
 {:start="2"}
 1. Define your PAT and namespace by replacing the values in these commands:
-  ```
+  
+```
  export GIT_TOKEN=[PAT token]
  export NAMESPACE=[Codefresh runtime namespace]
-  ```
+```
+
 1. Create a generic Kubernetes secret with your PAT token:
-  ```
+  
+```
 kubectl create secret generic github-token \
   --from-literal=token=$GIT_TOKEN --dry-run=client \
   --save-config -o yaml | kubectl apply -f - -n $NAMESPACE
-  ```
+```
 
 ### Create Docker-registry secret
 To push the image to a Docker registry, we'll need the credentials on our cluster.
@@ -55,23 +59,25 @@ To push the image to a Docker registry, we'll need the credentials on our cluste
 > The Docker registry secret is different from the general registry secret.
 
 1. Export the values for the Docker registry's `server`, `username`, `password`, `email`, and `namespace`:  
-  ```
+  
+```
 export DOCKER_REGISTRY_SERVER=[Server]
 export DOCKER_USER=[Username]
 export DOCKER_PASSWORD=[Password]
 export DOCKER_EMAIL=[Email]
 export NAMESPACE=[Codefresh runtime namespace]
-  ```
+```
 
 {:start="2"}
 1. Create the secret:   
-  ``` 
+  
+``` 
 kubectl create secret docker-registry <my-secret> \
   --docker-server=$DOCKER_REGISTRY_SERVER \
   --docker-username=$DOCKER_USER \
   --docker-password=$DOCKER_PASSWORD \
   --docker-email=$DOCKER_EMAIL -n $NAMESPACE
-  ```
+```
 
  > In the Workflow Template, the Docker registry name defaults to `docker-config`.
 
@@ -80,22 +86,24 @@ kubectl create secret docker-registry <my-secret> \
 Create a general registry secret to send the image information to Codefresh.
 
 1. Export the values for your registry's `username`, `password`, `domain`, and `namespace`:  
-  ```
+  
+```
 export USER=[Username]
 export PASSWORD=[Password]
 export DOMAIN=[Domain]
 export NAMESPACE=[Codefresh runtime namespace]
-  ```
+```
   
 {:start="2"}
 1. Create the secret:
-  ```
+
+```
 kubectl create secret generic registry-creds \
   --from-literal=username=$USER \
   --from-literal=password=$PASSWORD \
   --from-literal=domain=$DOMAIN \
   --dry-run=client --save-config -o yaml | kubectl apply -f - -n $NAMESPACE
-  ```
+```
 
 ### Create the CI delivery pipeline
 Now that you have defined the secrets, create the CI delivery pipeline in Codefresh.
@@ -112,6 +120,7 @@ Now that you have defined the secrets, create the CI delivery pipeline in Codefr
    caption="Add Delivery Pipeline panel in Codefresh"
    max-width="30%" 
    %}
+
 {:start="3"}
 1. Enter a name for the delivery pipeline.  
   The name is created from the names of the sensor and the trigger event for the delivery pipeline.   
@@ -157,7 +166,7 @@ Now that you have defined the secrets, create the CI delivery pipeline in Codefr
 1. Enter the commit message and then select **Commit**.
 1. In the **Delivery Pipelines** page to which you are redirected, verify that your pipeline is displayed. 
 
-  Behind the scenes, we committed the pipeline to your Git repository, and synced the resources to your cluster.  
+  Behind the scenes, we committed the pipeline to your Git repository and synced the resources to your cluster.  
   It may take a few seconds for the Git-to-cluster sync to complete, and then your pipeline should be displayed.
 
 ### Trigger the pipeline with a Git commit event
@@ -169,4 +178,9 @@ Make a change to a file in the Git repository to trigger the pipeline.
 
 Continue to tweak the pipeline and enhance its capabilities. 
 
+
+### What to do next
+If you have not created an application in Codefresh, continue with:  
+
+[Create resources for codefresh-guestbook application]({{site.baseurl}}/docs/getting-started/quick-start/create-app-specs)  
 

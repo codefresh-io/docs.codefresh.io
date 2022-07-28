@@ -1,5 +1,5 @@
 ---
-title: "Install runtime"
+title: "Install a hybrid runtime"
 description: ""
 group: getting-started
 sub-group: quick-start
@@ -7,18 +7,19 @@ toc: true
 ---
 
 
-Installing the runtime, installs the Codefresh platform, comprising Argo project components and Codefresh-specific components. The Argo Project is an enterprise-supported version of the Argo CD components, derived from a conformed fork of the Argo ecosystem.
+Install the hybrid runtime on your K8s cluster. Installing the hybrid runtime installs Argo-project and Codefresh-specific components. The Argo Project is an enterprise-supported version of the Argo CD components, derived from a conformed fork of the Argo ecosystem.
 
-### About runtime installation
-Installing a runtime includes installing the:  
+### About hybrid runtime installation
+Installing a hybrid runtime includes installing the:  
 1. Codefresh CLI.  
-2. Codefresh runtime from the CLI in a specific namespace on your cluster. 
-  Every runtime installation makes commits to two Git repos: 
+2. Codefresh hybrid runtime from the CLI in a specific namespace on your cluster. 
+  Every hybrid runtime installation makes commits to two Git repos: 
    * Runtime installation repo: The installation repo that manages the runtime itself with Argo CD. If the repo URL you provide does not exist, the runtime creates it automatically.   
    * Git Source repo: Created automatically during runtime installation. The repo with the demo resources required for the sample `Hello World` pipelines we provide. 
+   * Shared configuration repo: A repository that stores configuration manifests shared across runtimes.
 
 ### Before you begin
-A runtime requires a Git token for authentication to the Git installation repository.
+A hybrid runtime requires a Git token for authentication to the Git installation repository.
 Have your GitHub Personal Authentication Token (PAT) ready with a valid expiration date and access permissions:
 * Expiration: Either the default of 30 days or any duration you consider logical.
 * Access scopes: Set to `repo` and `admin-repo.hook`
@@ -51,8 +52,8 @@ Downloading the Codefresh CLI requires you to select the download mode and OS, g
    caption="Download Codefresh CLI to install runtime"
    max-width="30%" 
    %} 
-### Install Codefresh runtime
-For the quick start, install the runtime through the Codefresh CLI that you downloaded previously. 
+### Install hybrid runtime
+For the quick start, install the hybrid runtime through the Codefresh CLI that you downloaded previously. 
 
 1. To start runtime installation, run `cf runtime install`.  
   >If you don't have a valid SSL certificate for the Ingress controller, and want to continue with the installation, add the `--insecure` flag to the runtime command. 
@@ -68,7 +69,7 @@ For the quick start, install the runtime through the Codefresh CLI that you down
 1. Wait for the runtime installed successfully message.
 
 ### Validate successful installation 
-The **Runtimes** dashboard shows the runtime you just installed. You can drill down into the runtime to see its components and Git Sources.   
+The **Runtimes** dashboard shows the hybrid runtime you just installed. You can drill down into the runtime to see its components and Git Sources.   
 
 1. In the Codefresh UI, go to the [**Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"} dashboard.  
 
@@ -106,4 +107,6 @@ The **Runtimes** dashboard shows the runtime you just installed. You can drill d
    %} 
 
 ### What to do next
+[Create resources for codefresh-guestbook application]({{site.baseurl}}/docs/getting-started/quick-start/create-app-specs)  
+OR  
 [Trigger the Hello World example pipeline]({{site.baseurl}}/docs/getting-started/quick-start/hello-world)

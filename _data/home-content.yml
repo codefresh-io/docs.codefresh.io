@@ -31,7 +31,7 @@
   links:
     - title: Installation environments
       localurl: /docs/runtime/installation-options/
-    - title: Set up a hosted runtime envionment (Beta) 
+    - title: Set up a hosted runtime envionment 
       localurl: /docs/runtime/hosted-runtime/
     - title: Hybrid runtime requirements
       localurl: /docs/runtime/requirements/
@@ -138,12 +138,6 @@
       localurl: /docs/troubleshooting/runtime-issues
 
 
-- title: Incubation
-  icon: images/home-icons/plugins.svg
-  url: ''
-  links:
-  - title: Hosted GitOps (Beta)
-    localurl: /docs/incubation/intro-hosted-runtime/
 
   
 

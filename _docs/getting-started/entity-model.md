@@ -34,7 +34,7 @@ A user in Codefresh is one who has completed the sign-up process, and can log in
 > If you configure SSO (Single Sign-On) for the account, the user can log in using only the configured SSO.
 
 #### Billing
-For details, please contact [Sales](mailto:sales@codefresh.io?subject=[Codefresh] CSDP billing inquiry).
+For details, please contact [Sales](mailto:sales@codefresh.io?subject=[Codefresh] Codefresh billing inquiry).
 
 #### Single Sign-On (SSO)
 Enterprise accounts can configure SSO. For details, see [Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/administration/single-sign-on/).

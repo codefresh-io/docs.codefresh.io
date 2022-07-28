@@ -6,20 +6,22 @@
   - title: Quick start
     url: "/quick-start"
     sub-pages:
-      - title: Prepare for runtime installation
+      - title: Provision a hosted runtime
+        url:  "/install-hosted"
+      - title: Prepare for hybrid runtime installation
         url:  "/verify-requirements"
-      - title: Install runtime
+      - title: Install a hybrid runtime
         url: "/runtime"
-      - title: Trigger the Hello World example pipeline
-        url: "/hello-world"
-      - title: Create a basic CI delivery pipeline
-        url: "/create-ci-pipeline"
       - title: Create resources for the codefresh-guestbook application
         url: "/create-app-specs"
       - title: Create the codefresh-guestbook application
         url: "/create-app-ui"
       - title: Update the image tag for the codefresh-guestbook application
         url: "/create-rollout"
+      - title: Trigger the Hello World example pipeline
+        url: "/hello-world"
+      - title: Create a basic CI delivery pipeline
+        url: "/create-ci-pipeline"
 
         
   - title: Main concepts
@@ -45,7 +47,7 @@
   pages:
     - title: Installation options
       url: "/installation-options"
-    - title: Set up a hosted runtime environment (Beta)
+    - title: Set up a hosted runtime environment
       url: "/hosted-runtime"
     - title: Hybrid runtime requirements
       url: "/requirements"
@@ -169,14 +171,6 @@
     - title: Runtimes
       url: "/runtime-issues"
       
-      
-- title: Incubation
-  url: "/incubation"
-  pages:
-    - title: Hosted GitOps
-      url: "/intro-hosted-runtime"
-
-
 
 - title: Terms and Privacy Policy
   url: "/terms-and-privacy-policy"

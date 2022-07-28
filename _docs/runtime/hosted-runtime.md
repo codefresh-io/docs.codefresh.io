@@ -1,5 +1,5 @@
 ---
-title: "Set up a hosted runtime environment (Beta)"
+title: "Set up a hosted runtime environment"
 description: ""
 group: runtime
 toc: true

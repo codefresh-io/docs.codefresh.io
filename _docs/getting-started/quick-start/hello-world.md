@@ -6,7 +6,7 @@ sub-group: quick-start
 toc: true
 ---
 
-Now that you have successfully installed the Codefresh runtime, you can trigger one of the Hello World demo pipelines included in the runtime package.
+Now that you have successfully installed the hybrid runtime, you can trigger one of the Hello World demo pipelines included in the runtime package.
 The two Hello World example pipelines are triggered by different event conditions:
 * Git (GitHub) event 
 * Calendar (cron) event

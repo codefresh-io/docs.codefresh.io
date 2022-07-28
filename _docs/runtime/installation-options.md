@@ -27,7 +27,7 @@ Codefresh supports two installation environments:
 
 * **Hybrid** environments, with Argo CD installed in the customer's cluster  
   The runtime is installed in the customer's cluster, and managed by the customer.  
-  Hybrid environments are ideal for organizations that want their source code within their premises, or have other security constraints. Hybrid installations strike the perfect balance between security, flexibility, and ease of use. As the customer, you are responsible for installing and upgrading runtimes, while Codefresh continues to maintain most aspects of the platform.  
+  Hybrid environments are ideal for organizations that want to manage CI/CD operations within their premises, or have other security constraints. Hybrid installations strike the perfect balance between security, flexibility, and ease of use. Codefresh maintains and manages most aspects of the platform, apart from installing and upgrading runtimes which are managed by the customer.  
  
 {% include
    image.html
