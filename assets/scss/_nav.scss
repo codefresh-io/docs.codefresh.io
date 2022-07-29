@@ -6,7 +6,7 @@
   min-height: 50px;
   background: #212437;
 
-  @include media-breakpoint-down(md) {        
+  @include media-breakpoint-down(md) {
     .navbar-nav-scroll {
       position: relative;
       max-width: 100%;
@@ -61,15 +61,15 @@
   }
 
   .cf-badge-doc {
-    color: #5FFFBF;
-    background: $cf-dark;
     font-size: 16px;
+    color: #5fffbf;
+    background: $cf-dark;
   }
 
   .navbar-nav {
     .nav-item {
       padding-right: 1.2rem;
-      margin-right: 1.5rem
+      margin-right: 1.5rem;
       font-size: .875rem;
 
       @include media-breakpoint-up(md) {

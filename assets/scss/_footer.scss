@@ -5,18 +5,18 @@
 .bd-footer {
   font-size: 85%;
   text-align: center !important;
-  background-color: #2A2B3D !important;
+  background-color: #2a2b3d !important;
 
   a {
-    color: #8C91C0;
+    color: #8c91c0;
     border-bottom: 1px solid  rgba($cf-dark-alt, .2);
     transition: background .2s ease, border-color, .2s ease;
 
     &:hover,
     &:focus {
-      color: #8C91C0;
+      color: #8c91c0;
       text-decoration: none;
-      border-bottom-color: #8C91C0;
+      border-bottom-color: #8c91c0;
     }
   }
 

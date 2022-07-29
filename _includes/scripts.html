@@ -30,6 +30,7 @@
   <script src="{{ site.baseurl }}/assets/js/src/application.js"></script>
   <script src="{{ site.baseurl }}/assets/js/src/ie-emulation-modes-warning.js"></script>
   <script src="{{ site.baseurl }}/assets/js/src/pwa.js"></script>
+  <script src="{{ site.baseurl }}/assets/js/src/redirect-popup.js"></script>
 {%- endif -%}
 
 
@@ -38,7 +39,7 @@
   docsearch({
     inputSelector: '.doc-search-input',
     typesenseCollectionName: 'v2-doc-index', // Should match the collection name you mention in the docsearch scraper config.js
-    typesenseServerConfig: { 
+    typesenseServerConfig: {
       nodes: [{
         host: 'fxokw93dqyu27pv6p.a1.typesense.net', // For Typesense Cloud use xxx.a1.typesense.net
         port: '443',      // For Typesense Cloud use 443
