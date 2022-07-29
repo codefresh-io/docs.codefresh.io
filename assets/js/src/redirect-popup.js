@@ -1,4 +1,3 @@
-/* eslint-disable compat/compat */
 (function ($) {
   'use strict'
 
