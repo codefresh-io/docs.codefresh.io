@@ -29,6 +29,11 @@
     document.cookie = 'doctype=ArgoPlatform; SameSite=Lax; Secure; Domain=.codefresh.io; Max-age=2592000; Path=/'
   }
 
+  function handleNavigateBackToCsdp() {
+    setDocumentationCookie()
+    $('#redirectModal').modal('hide')
+  }
+
   $(function () {
     if (window.location.hostname === 'localhost') {
       return
@@ -50,7 +55,7 @@
           })
           var redirectFromUrl = localStorage.getItem('redirectFrom')
           $('#redirectModal .redirect-popup__footer-link').attr('href', redirectFromUrl)
-          $('#redirectModal .redirect-popup__footer-link').on('click', setDocumentationCookie)
+          $('#redirectModal .redirect-popup__footer-link').on('click', handleNavigateBackToCsdp)
         }
       }
     } catch (error) {
