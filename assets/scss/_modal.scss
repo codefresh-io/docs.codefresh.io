@@ -1,9 +1,6 @@
-.modal-backdrop.show {
-  pointer-events: auto;
-  opacity: 0;
-}
-
 .bd-modal {
+  pointer-events: none;
+
   .modal-footer {
     background-color: #f9f9f9;
   }
@@ -23,6 +20,7 @@
     height: 24px;
     background-color: #f3f3f3;
     border-radius: 50%;
+    outline: none;
   }
 
   .redirect-popup__info-icon {

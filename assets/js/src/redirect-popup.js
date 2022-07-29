@@ -21,6 +21,7 @@
   }
 
   function setDocumentationCookie() {
+    localStorage.removeItem('redirectFrom')
     document.cookie = 'doctype=ArgoPlatform; SameSite=Lax; Secure; Domain=.codefresh.io; Max-age=2592000; Path=/'
   }
 
@@ -37,7 +38,13 @@
           localStorage.setItem('redirectFrom', window.location.href)
           window.location.href = 'https://codefresh.io/csdp-docs/'
         } else if (isLastlyVisitedClassic(docTypeCookie) && redirectFromUrl && redirectFromUrl.startsWith(location.origin)) {
-          $('#redirectModal').modal('show')
+          $('#redirectModal').modal({
+            backdrop: false,
+            show: true
+          })
+          $('#redirectModal').on('hide.bs.modal', function () {
+            localStorage.removeItem('redirectFrom')
+          })
           $('#redirectModal .redirect-popup__footer-link').attr('href', redirectFromUrl)
           $('#redirectModal .redirect-popup__footer-link').on('click', setDocumentationCookie)
         }
