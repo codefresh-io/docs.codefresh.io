@@ -8,7 +8,7 @@
     })
   }
 
-  function isLastlyVisitedCSDP(docTypeCookie) {
+  function isLastlyVisitedCsdp(docTypeCookie) {
     var docType = docTypeCookie.split('=').pop()
 
     return docType === 'ArgoPlatform'
@@ -18,6 +18,12 @@
     var docType = docTypeCookie.split('=').pop()
 
     return docType === 'Classic'
+  }
+
+  function isRedirectedFromCsdpDocs(docTypeCookie) {
+    var redirectFromUrl = localStorage.getItem('redirectFrom')
+
+    return isLastlyVisitedClassic(docTypeCookie) && redirectFromUrl && redirectFromUrl.startsWith(location.origin)
   }
 
   function setDocumentationCookie() {
@@ -34,10 +40,10 @@
       var docTypeCookie = getDocTypeCookie()
       if (docTypeCookie) {
         var redirectFromUrl = localStorage.getItem('redirectFrom')
-        if (isLastlyVisitedCSDP(docTypeCookie)) {
+        if (isLastlyVisitedCsdp(docTypeCookie)) {
           localStorage.setItem('redirectFrom', window.location.href)
           window.location.href = 'https://codefresh.io/csdp-docs/'
-        } else if (isLastlyVisitedClassic(docTypeCookie) && redirectFromUrl && redirectFromUrl.startsWith(location.origin)) {
+        } else if (isRedirectedFromCsdpDocs(docTypeCookie)) {
           $('#redirectModal').modal({
             backdrop: false,
             show: true
