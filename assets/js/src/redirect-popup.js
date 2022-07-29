@@ -37,7 +37,6 @@
     try {
       var docTypeCookie = getDocTypeCookie()
       if (docTypeCookie) {
-        var redirectFromUrl = localStorage.getItem('redirectFrom')
         if (isLastlyVisitedCsdp(docTypeCookie)) {
           localStorage.setItem('redirectFrom', window.location.href)
           window.location.href = 'https://codefresh.io/csdp-docs/'
@@ -49,6 +48,7 @@
           $('#redirectModal').on('hide.bs.modal', function () {
             localStorage.removeItem('redirectFrom')
           })
+          var redirectFromUrl = localStorage.getItem('redirectFrom')
           $('#redirectModal .redirect-popup__footer-link').attr('href', redirectFromUrl)
           $('#redirectModal .redirect-popup__footer-link').on('click', setDocumentationCookie)
         }
