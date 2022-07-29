@@ -1,0 +1,48 @@
+<div
+  class="bd-modal modal fade"
+  id="redirectModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="redirectModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row align-items-center">
+            <div class="col-sm-auto">
+              <div class="redirect-popup__info-icon">
+                {% include icons/info-circle.svg class="bd-icon" %}
+              </div>
+            </div>
+            <div class="col">
+              <strong class="redirect-popup__title">You have been redirected to the Classic Codefresh Documentation site.</strong>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            class="close redirect-popup__close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="container">
+          <div class="row justify-content-start">
+            <div class="col">
+              To visit the new Codefresh Documentation site
+              <a href="#" data-dismiss="modal" class="redirect-popup__footer-link"
+                ><strong>click here</strong></a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
