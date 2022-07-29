@@ -1,4 +1,13 @@
+body {
+  padding-right: 0 !important;
+}
+
+.modal-open {
+  overflow: auto !important;
+}
+
 .bd-modal {
+  padding-right: 0 !important;
   pointer-events: none;
 
   .modal-footer {
@@ -35,14 +44,14 @@
 
   @media (min-width: 768px) {
     .modal-dialog {
-      margin-right: .5rem;
+      margin-right: 1.75rem;
       margin-left: auto;
     }
   }
 
   @media (min-width: 576px) {
     .modal-dialog {
-      max-width: 522px;
+      max-width: 526px;
     }
   }
 }
