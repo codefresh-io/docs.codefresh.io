@@ -27,7 +27,6 @@
   }
 
   function setDocumentationCookie() {
-    localStorage.removeItem('redirectFrom')
     document.cookie = 'doctype=ArgoPlatform; SameSite=Lax; Secure; Domain=.codefresh.io; Max-age=2592000; Path=/'
   }
 
