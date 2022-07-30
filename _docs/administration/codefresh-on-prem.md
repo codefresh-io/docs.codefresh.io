@@ -496,7 +496,7 @@ Depending on the customer’s Kubernetes version we can assist with PV resizing.
 Codefresh installation supports automatic storage provisioning based on the standard Kubernetes dynamic provisioner Storage Classes and Persistent Volume Claims. All required installation volumes will be provisioned automatically using the default Storage Class or custom Storage Class that can be specified as a parameter in `config.yaml` under `storageClass: my-storage-class`.
 
 ### Retention policy for Codefresh builds
-You can define a retention policy to manage Codefresh builds. The retention settings are controlled through environment variables, all of which have default settings which you can retain or customize. The default policy is set to delete builds older than six months, including offline logs.
+You can define a retention policy to manage Codefresh builds. The retention settings are controlled through cf-api deployment environment variables, all of which have default settings which you can retain or customize. The default policy is set to delete builds older than six months, including offline logs.
 
 The retention mechanism is implemented as a Cron Job through the Codefresh. It removes data from collections such as:
 * workflowproccesses
