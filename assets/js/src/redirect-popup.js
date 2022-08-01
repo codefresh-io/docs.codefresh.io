@@ -51,8 +51,8 @@
       var docTypeCookie = getDocTypeCookie()
       if (docTypeCookie) {
         if (isLastlyVisitedClassic(docTypeCookie)) {
-          // localStorage.setItem('redirectFrom', window.location.href)
-          // window.location.href = 'https://codefresh.io/docs/'
+          localStorage.setItem('redirectFrom', window.location.href)
+          window.location.href = 'https://codefresh.io/docs/'
         } else if (isRedirectedFromClassicDocs(docTypeCookie)) {
           $('#redirectModal').modal({
             backdrop: false,
