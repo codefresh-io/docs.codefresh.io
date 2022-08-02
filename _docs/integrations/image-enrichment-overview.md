@@ -10,7 +10,7 @@ toc: true
 
 Image enrichment is a crucial part of the CI/CD process, adding to the quality of deployments. Image enrichment exposes metadata such as feature requests, pull requests, and logs as part of the application's deployment, for visibility into all aspects of the deployment, making it easier to track actions and identify root cause of failures.  
 
-Codefresh has a new [report image template](https://github.com/codefresh-io/csdp-report-image/) that combines image enrichment and reporting. The report image template is optimized to work with external CI platforms for creating pipelines and workflows such as GitHub Actions. Add integration accounts in Codefresh to tools such as Jira, Docker Hub and Quay, and then connect your GitHub Action with Codefresh for image enrichment and reporting. 
+Codefresh has a new [report image template](https://github.com/marketplace/actions/codefresh-report-image){:target="\_blank"} that combines image enrichment and reporting. The report image template is optimized to work with external CI platforms for creating pipelines and workflows such as GitHub Actions. Add integration accounts in Codefresh to tools such as Jira, Docker Hub and Quay, and then connect your GitHub Action with Codefresh for image enrichment and reporting. 
 
 
 ### CI integrations for image enrichment

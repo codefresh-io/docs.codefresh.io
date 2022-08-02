@@ -13,7 +13,7 @@ See [Image enrichment with integrations]({{site.baseurl}}/docs/integrations/imag
 
 ### Codefresh Marketplace GitHub Action 
 
-To support the integration between GitHub Actions and Codefresh, we have created a dedicated action in the [Codefresh marketplace](https://github.com/marketplace/actions/csdp-report-image). The action combines image enrichment and reporting through integrations with Jira, and container registries such as DockerHub or Quay.
+To support the integration between GitHub Actions and Codefresh, we have created a dedicated action in the [Codefresh marketplace](https://github.com/marketplace/actions/codefresh-report-image){:target="\_blank"}. The action combines image enrichment and reporting through integrations with Jira, and container registries such as DockerHub or Quay.
 
 Use the action in the following manner:
 
