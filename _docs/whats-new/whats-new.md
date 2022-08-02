@@ -8,6 +8,9 @@ toc: true
 ---
 ## 2022
 
+### July 2022
+- On-premises upgrade - [documentation]({{site.baseurl}}/docs/administration/codefresh-on-prem-upgrade/)
+
 ### May 2022
 - Datadog integration - [documentation]({{site.baseurl}}/docs/integrations/datadog)
 
