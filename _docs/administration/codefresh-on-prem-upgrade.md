@@ -375,8 +375,8 @@ redis:
         type: helm
         helm:
           chart: codefresh
-          repoUrl: http://charts.codefresh.io/prod
-          version: 1.2.4
+          repoUrl: https://chartmuseum.codefresh.io/codefresh
+          version: 1.2.12
     ```
 1. Perform a dry run and verify that there are no errors:  
   `kcfi deploy --dry-run --debug -c codefresh/config.yaml`
