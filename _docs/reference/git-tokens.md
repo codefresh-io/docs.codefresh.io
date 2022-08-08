@@ -3,8 +3,7 @@ title: "Git tokens"
 description: ""
 group: reference
 redirect_from:
-  - /administration/git-tokens/
-  - /administration/git-tokens/  
+  - /docs/administration/git-tokens/ 
 toc: true
 ---
 
