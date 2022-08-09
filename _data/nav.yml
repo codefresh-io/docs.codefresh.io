@@ -123,6 +123,8 @@
       url: "/user-settings"
     - title: Set up OAuth2 authentication
       url: "/oauth-setup"
+    - title: Authorize access to organizations/projects
+      url: "/hosted-authorize-orgs"  
     - title: Single Sign-On
       url: "/single-sign-on"
       sub-pages:
