@@ -49,6 +49,7 @@ Make sure:
 %}
 
 {:start="5"}
+1. Configure access to the IP addresses required. See [Codefresh IP addresses]({{site.baseurl}}/docs/administration/platform-ip-addresses/). 
 1. If you used `dry-run`, apply the generated manifests to the same target cluster on which you ran the command.  
   Here is an example of the YAML manifest generated with the `--dry-run` flag. Note that there are placeholders in the example, which are replaced with the actual values with `--dry-run`.  
   
