@@ -75,8 +75,7 @@ See the instructions below for each of the affected charts.
    `kubectl delete job --namespace ${CF_NAMESPACE} -l release=cf `  
 
 > Before the upgrade remove PDBs for Redis and RabbitMQ left from previous release with:  
-   `kubectl delete pdb cf-rabbitmq --namespace ${CF_NAMESPACE}`
-   
+   `kubectl delete pdb cf-rabbitmq --namespace ${CF_NAMESPACE}` <br />
    `kubectl delete pdb cf-redis --namespace ${CF_NAMESPACE}`  
 
 #### Update configuration for Ingress chart 
