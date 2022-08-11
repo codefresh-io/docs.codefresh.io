@@ -148,7 +148,7 @@ Once you create your pipeline you can also click on the top tab called *Settings
 ### Policies
 
 - **Pipeline Concurrency**: the maximum number of concurrent builds (0-14 or unlimited) -- set this when your pipeline has only one trigger  
-  > Pipeline Concurrency of **0** freezes execution of the pipeline, switching it to maintenance mode. This concurrency setting is useful when to modify existing pipelines and freeze execution until you complete the changes. 
+  > A Pipeline Concurrency of **0** freezes execution of the pipeline, switching it to maintenance mode. Use this concurrency setting to modify existing pipelines and freeze execution until you complete the changes. 
 - **Trigger Concurrency**: the maximum number of concurrent builds per trigger (1-15 or unlimited) -- set this when your pipeline has multiple triggers
 - **Branch Concurrency**: the maximum number of concurrent builds per branch (1-15 or unlimited) -- set this when your pipeline can build different branches
 - **Build Termination**: various toggles for when a build from the pipeline should terminate
