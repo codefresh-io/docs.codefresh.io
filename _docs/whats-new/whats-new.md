@@ -8,8 +8,22 @@ toc: true
 ---
 ## 2022
 
-### July 2022
-- On-premises upgrade - [documentation]({{site.baseurl}}/docs/administration/codefresh-on-prem-upgrade/)
+### July-August 2022
+
+#### Features and enhancements
+- New setting for Pipeline Concurrency: 0 (maintenance mode) - [documentation]({{site.baseurl}}/docs//configure-ci-cd-pipeline/pipelines/#policies)
+- Email notifications for successful and failed builds disabled by default for new users - - [documentation]({{site.baseurl}}/docs/administration/user-settings/#email-notifications-for-builds){:target="_blank"}
+- [Codefresh Classic integration with Codefresh Hosted GitOps](https://codefresh.io/steps/step/codefresh-report-image)
+- New on-premises release of Codefresh Classic: v.1.2.12 (July 20, 2022) - [documentation]({{site.baseurl}}/docs/administration/codefresh-on-prem-upgrade/)
+- Hosted runtime clusters upgraded to Kubernetes 1.22
+
+#### Bug fixes
+- Codefresh Classic On-premises: Fixed critical vulnerabilities as of July 2022.
+- "Problem sending invite" error on resending email invitations.
+- Audit search for triggers returns error with no search results (Audit Triggers > Search).
+- Pipeline concurrency limit ignored periodically.
+- "<" replaced by "&lt;" when creating inline YAML for pipeline via Terraform. 
+- Step Variables are not resolved in Hooks.
 
 ### May 2022
 - Datadog integration - [documentation]({{site.baseurl}}/docs/integrations/datadog)
