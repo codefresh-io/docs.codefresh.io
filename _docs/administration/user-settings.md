@@ -15,7 +15,6 @@ The options are:
 * Email address that will receive the notifications. By default it is the same address that you used for [sign-up]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/)
 * Toggle for receiving emails of successful builds
 * Toggle for receiving emails of failed builds
-* Toggle for receiving emails only when your email was the Git committer 
 
 > For _new_ users, email notifications for builds, both successful and failed, are disabled by default.
 
