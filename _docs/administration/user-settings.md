@@ -17,6 +17,8 @@ The options are:
 * Toggle for receiving emails of failed builds
 * Toggle for receiving emails only when your email was the Git committer 
 
+> For _new_ users, email notifications for builds, both successful and failed, are disabled by default.
+
 {% include image.html
 lightbox="true"
 file="/images/administration/user-settings/notifications.png"
