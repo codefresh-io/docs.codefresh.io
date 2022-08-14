@@ -25,7 +25,6 @@ Receive email notifications for builds based on the build status: only successfu
 * Select to receive emails for failed builds
 
 
-
 {% include image.html
 lightbox="true"
 file="/images/administration/user-settings/notifications.png"
