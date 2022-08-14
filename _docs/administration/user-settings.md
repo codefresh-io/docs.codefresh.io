@@ -9,14 +9,21 @@ To access your individual user settings navigate to [https://g.codefresh.io/user
 
 ## Email Notifications for Builds 
 
-In the part section of the screen you can choose what email notifications you want to be active. 
-The options are:
+> **IMPORTANT**:  
+  On 26 August 2022, we are switching off email notifications for all accounts.  
+  To re-enable email notifications, update the email notification settings for your account _after_ the above date.
+  
 
-* Email address that will receive the notifications. By default it is the same address that you used for [sign-up]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/)
-* Toggle for receiving emails of successful builds
-* Toggle for receiving emails of failed builds
+Receive email notifications for builds based on the build status: only successful, only failed, or for both successful and failed builds.  
 
-> For _new_ users, email notifications for builds, both successful and failed, are disabled by default.
+> By default, email notifications are disabled for both successful and failed builds.
+
+**Email notification settings**  
+
+* Email address for the notifications. By default it is the same address you used to [sign-up]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/).
+* Select to receive emails for successful builds
+* Select to receive emails for failed builds
+
 
 {% include image.html
 lightbox="true"
@@ -27,7 +34,6 @@ caption="email settings"
 max-width="50%"
 %}
 
-The last option is especially useful in big teams, where multiple people commit on the same Git repository.
 
 
 ## Weekly Updates for Build Usage
