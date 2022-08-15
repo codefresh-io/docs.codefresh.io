@@ -104,14 +104,32 @@
   pages:
     - title: Image enrichment with integrations
       url: "/image-enrichment-overview"
-    - title: Jira tracking
-      url: "/jira"
-    - title: GitHub Actions
-      url: "/github-actions"
-    - title: Quay Registry
-      url: "/quay"
-    - title: Docker Hub Registry
-      url: "/dockerhub"
+    - title: CI integrations
+      url: "/ci-integrations"
+      sub-pages:
+        - title: Codefresh Classic
+          url: "/codefresh-classic"
+        - title: GitHub Actions
+          url: "/github-actions"
+        - title: Jenkins
+          url: "/jenkins"   
+    - title: Issue tracking
+      url: "/issue-tracking"
+      sub-pages:  
+      - title: Jira 
+        url: "/jira"
+    - title: Container registries
+      url: "/container-registries"
+      sub-pages:  
+      - title: Amazon ECR
+        url: "/amazon-ecr"      
+      - title: Docker Hub Registry
+        url: "/dockerhub"
+      - title: JFrog Artifactory
+        url: "/jfrog" 
+      - title: Quay Registry
+        url: "/quay"
+
 
 
 - title: Administration
