@@ -384,6 +384,8 @@
 - title: Integrations
   url: "/integrations"
   pages:
+    - title: Codefresh Hosted GitOps
+      url: "/codefresh-hosted-gitops"   
     - title: Git Providers
       url: "/git-providers"
     - title: Kubernetes
