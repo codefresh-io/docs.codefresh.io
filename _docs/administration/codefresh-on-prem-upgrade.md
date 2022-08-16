@@ -74,6 +74,10 @@ See the instructions below for each of the affected charts.
 > Before the upgrade remove any seed jobs left from previous release with:  
    `kubectl delete job --namespace ${CF_NAMESPACE} -l release=cf `  
 
+> Before the upgrade remove PDBs for Redis and RabbitMQ left from previous release with:  
+   `kubectl delete pdb cf-rabbitmq --namespace ${CF_NAMESPACE}` <br />
+   `kubectl delete pdb cf-redis --namespace ${CF_NAMESPACE}`  
+
 #### Update configuration for Ingress chart 
 From version **1.2.0 and higher**, we have deprecated support for `Codefresh-managed-ingress`.  
 Kubernetes community public `ingress-nginx` chart replaces `Codefresh-managed-ingress` chart. For more information on the `ingress-nginx`, see [kubernetes/ingress-nginx](https://github.com/kubernetes/ingress-nginx).  
@@ -375,8 +379,8 @@ redis:
         type: helm
         helm:
           chart: codefresh
-          repoUrl: http://charts.codefresh.io/prod
-          version: 1.2.4
+          repoUrl: https://chartmuseum.codefresh.io/codefresh
+          version: 1.2.12
     ```
 1. Perform a dry run and verify that there are no errors:  
   `kcfi deploy --dry-run --debug -c codefresh/config.yaml`
