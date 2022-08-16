@@ -9,7 +9,7 @@
   - title: Kubernetes Quick start guide
     localurl: /docs/getting-started/deployment-to-kubernetes-quick-start-guide/
   - title: Helm Quick start guide
-    localurl: /docs/getting-started/helm-quick-start-guide/    
+    localurl: /docs/getting-started/helm-quick-start-guide/ 
   - title: Frequently Asked Questions
     localurl: /docs/getting-started/faq/    
 
@@ -203,7 +203,7 @@
   links:
   - title: Codefresh Hosted GitOps
     new: true
-    localurl: /docs/integrations/codefresh-hosted-gitops/
+    localurl: /docs/integrations/codefresh-hosted-gitops/   
   - title: Git Providers
     localurl: /docs/integrations/git-providers/
   - title: Kubernetes
