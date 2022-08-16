@@ -12,9 +12,9 @@ toc: true
 
 #### Features and enhancements
 - New setting for Pipeline Concurrency: 0 (maintenance mode) - [documentation]({{site.baseurl}}/docs//configure-ci-cd-pipeline/pipelines/#policies)
-- Email notifications for successful and failed builds disabled by default for new users - - [documentation]({{site.baseurl}}/docs/administration/user-settings/#email-notifications-for-builds){:target="_blank"}
-- [Codefresh Classic integration with Codefresh Hosted GitOps](https://codefresh.io/steps/step/codefresh-report-image)
-- New on-premises release of Codefresh Classic: v.1.2.12 (July 20, 2022) - [documentation]({{site.baseurl}}/docs/administration/codefresh-on-prem-upgrade/)
+- Email notifications for successful and failed builds disabled by default for new users - [documentation]({{site.baseurl}}/docs/administration/user-settings/#email-notifications-for-builds)
+- Codefresh Classic integration with Codefresh Hosted GitOps - [documentation]({{site.baseurl}}/docs/integrations/codefresh-hosted-gitops/)
+- On-premises: New release of Codefresh Classic: v.1.2.12 (July 20, 2022) - [documentation]({{site.baseurl}}/docs/administration/codefresh-on-prem-upgrade/)
 - Hosted runtime clusters upgraded to Kubernetes 1.22
 
 #### Bug fixes
