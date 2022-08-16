@@ -19,7 +19,7 @@ toc: true
 
 #### Bug fixes
 - Codefresh Classic On-premises: Fixed critical vulnerabilities as of July 2022.
-- "Problem sending invite" error on resending email invitations.
+- Resending email invitations results in "Problem sending invite" error.
 - Audit search for triggers returns error with no search results (Audit Triggers > Search).
 - Pipeline concurrency limit ignored periodically.
 - "<" replaced by "&lt;" when creating inline YAML for pipeline via Terraform. 
