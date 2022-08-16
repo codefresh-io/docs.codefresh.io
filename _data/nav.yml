@@ -2,13 +2,14 @@
   pages:
   - title: Create a Codefresh Account
   - title: Create a Basic Pipeline
-  - title: Frequently Asked Questions
-    url: "/faq"
   - title: On-demand environments
   - title: Deployment to Kubernetes
     url: "/deployment-to-kubernetes-quick-start-guide"
   - title: Deployment to Kubernetes with Helm
     url: "/helm-quick-start-guide"
+  - title: Frequently Asked Questions
+    url: "/faq"
+ 
 
 - title: Configure a CI/CD pipeline
   url: "/configure-ci-cd-pipeline"
@@ -383,7 +384,9 @@
 
 - title: Integrations
   url: "/integrations"
-  pages:
+  pages: 
+    - title: Codefresh Hosted GitOps
+      url: "/codefresh-hosted-gitops" 
     - title: Git Providers
       url: "/git-providers"
     - title: Kubernetes
