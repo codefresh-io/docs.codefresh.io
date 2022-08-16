@@ -6,7 +6,7 @@ toc: true
 ---
 
 With Codefresh Classic as your CI tool, get managed Argo CD for your deployments with Codefresh's Hosted GitOps.
-Connect Codefresh Classic to Codefresh Hosted GitOps for enrich deployment information with our new report image template.  Add the report image step in your Codefresh Classic pipeline and reference the different integrations for Codefresh to retrieve and enrich the image information. 
+Connect Codefresh Classic to Codefresh Hosted GitOps for enriched image deployment with the new report image template.  Add the report image step in your Codefresh Classic pipeline and reference the different integrations for Codefresh to retrieve and enrich the image information. 
 
 Read on for a brief overview of what you get with Codefresh Hosted GitOps. 
 For information on how to connect Codefresh Classic to Codefresh Hosted GitOps, see [CI integration with Codefresh Classic](https://codefresh.io/csdp-docs/docs/integrations/ci-integrations/codefresh-classic/){:target="\_blank"}.
@@ -39,5 +39,5 @@ Manage the application lifecycle in the Codefresh UI, from creating, editing, an
 
 
 ### Third-party integrations
-Add integrations to issue-tracking tools such as Jira and container-registries such as Docker Hub, JFrog and more, to report and enrich images with information. 
+Add integrations to issue-tracking tools such as Jira and container-registries such as Docker Hub, JFrog and more, to report and enrich images. 
 
