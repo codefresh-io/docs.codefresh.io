@@ -20,9 +20,9 @@ Receive email notifications for builds based on the build status: only successfu
 
 **Email notification settings**  
 
-* Email address for the notifications. By default, the same address you used for [sign-up]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/).
-* Select to receive emails for successful builds.
-* Select to receive emails for failed builds.
+* Email address for the notifications. By default it is the same address you used to [sign-up]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/).
+* Select to receive emails for successful builds
+* Select to receive emails for failed builds
 
 
 

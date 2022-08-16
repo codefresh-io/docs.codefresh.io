@@ -343,8 +343,8 @@ First get the `values.yaml` file from the current Codefresh installation on the 
 **Install Codefresh on passive cluster**   
 
 1. Download the Helm chart:  
-  `helm repo add codefresh-onprem-prod http://charts.codefresh.io/prod`  
-  `helm fetch codefresh-onprem-prod/codefresh --version ${release-version}`  
+  `helm repo add codefresh-onprem https://chartmuseum.codefresh.io/codefresh`  
+  `helm fetch codefresh-onprem/codefresh --version ${release-version}`  
   where:  
   `{release-version}` is the version of Codefresh you are downloading. 
 
