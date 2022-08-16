@@ -16,13 +16,14 @@ To access your individual user settings navigate to [https://g.codefresh.io/user
 
 Receive email notifications for builds based on the build status: only successful, only failed, or for both successful and failed builds.  
 
-> By default, email notifications are disabled for both successful and failed builds.
+> By default, email notifications are disabled for new users, for both successful and failed builds.
 
 **Email notification settings**  
 
 * Email address for the notifications. By default it is the same address you used to [sign-up]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/).
 * Select to receive emails for successful builds
 * Select to receive emails for failed builds
+
 
 
 {% include image.html
