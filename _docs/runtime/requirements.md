@@ -46,6 +46,16 @@ Configure your Kubernetes cluster with an ingress controller component that is e
 * Valid SSL certificate  
   For secure runtime installation, the ingress controller must have a valid SSL certificate from an authorized CA (Certificate Authority).  
 
+* TCP support  
+  Make sure your ingress controller is configured to handle TCP requests. For exact configuraton requirements, refer to the offiical documentation of the ingress controller you are using.  
+   
+  Here's an example of TCP configuration for NGINX on AWS.  
+  Verify that the ingress-nginx-controller service manifest has either of the following annotations:  
+
+  `service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "tcp"`  
+  OR  
+  `service.beta.kubernetes.io/aws-load-balancer-type: nlb`  
+
 * AWS ALB  
   In the ingress resource file, verify that `spec.controller` is configured as `ingress.k8s.aws/alb`. 
 
