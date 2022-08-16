@@ -17,7 +17,7 @@ Adding a managed cluster via Codefresh ensures that Codefresh applies the requir
  
 
 ### Add a managed cluster with Codefresh CLI
-Add the external cluster to a provisioned runtime through the Codefresh CLI.  
+Add an external cluster to a provisioned runtime through the Codefresh CLI. When adding the cluster, you can also add labels and annotations to the cluster, which are added to the cluster secret created by Argo CD.
 Optionally, to first generate the YAML manifests, and then manually apply them, use the `dry-run` flag in the CLI. 
 
 **Before you begin**  
@@ -33,9 +33,11 @@ Make sure:
 1. Topology View: Select {::nomarkdown}<img src="../../../images/icons/add-cluster.png" display=inline-block/>{:/}.  
   List View: Select the **Managed Clusters** tab, and then select **+ Add Cluster**.  
 1. In the Add Managed Cluster panel, copy and run the command:  
-  `cf cluster add <runtime-name> [--dry-run]`  
+  `cf cluster add <runtime-name> [--labels label-key=label-value] [--annotations annotation-key=annotation-value][--dry-run]`  
   where:   
-  `--dry-run` is optional, and required if you want to generate a list of YAML manifests that you can redirect and apply manually with `kubectl`.   
+  * `--labels` is optional, and required to add labels to the cluster. When defined, add a label in the format `label-key=label-value`. Separate multiple labels with `commas`.   
+  * `--annotations` is optional, and required to add annotations to the cluster. When defined, add an annotation in the format `annotation-key=annotation-value`. Separate multiple annotations with `commas`.   
+  * `--dry-run` is optional, and required if you want to generate a list of YAML manifests that you can redirect and apply manually with `kubectl`.   
 
 
    {% include 
@@ -92,7 +94,7 @@ subjects:
 ---
 apiVersion: v1
 data:
-  contextName: <contextName>
+  contextName: <context-name>
   ingressUrl: <ingressUrl>
   server: <server>
 kind: ConfigMap
@@ -102,6 +104,15 @@ metadata:
 ---
 apiVersion: v1
 data:
+  annotations: |
+    <annotation-key1>:<annotation-value1>
+    <annotation-key2>:<annotation-value2>
+  contextName: <context-name>
+  ingressUrl: ingressurl.com
+  labels: |
+    <label-key1>:<label-value1>
+    <label-key2>:<label-value2>
+  server: https://<hash>.gr7.us-east-1.eks.amazonaws.com/
   csdpToken: <csdpToken>
 kind: Secret
 metadata:
@@ -190,17 +201,23 @@ configMapGenerator:
         #   CONTEXT_NAME=<TARGET_CONTEXT_NAME>
         #   CLUSTER_NAME=$(kubectl config view --raw --flatten -o jsonpath='{.contexts[?(@.name == "'"${CONTEXT_NAME}"'")].context.cluster}')
         #   kubectl config view --raw --flatten -o jsonpath='{.clusters[?(@.name == "'"${CLUSTER_NAME}"'")].cluster.server}'
-      - "server=<server>"
-secretGenerator:
-  - name: csdp-add-cluster-secret
-    namespace: kube-system
-    behavior: merge
-    literals:
-        # csdpToken is the user's Personal Access Token
-      - "csdpToken=<csdpToken>"
+      - "server=https://<hash>.gr7.us-east-1.eks.amazonaws.com/"
+      - |
+        annotations=<key1: value1>
+        <key2.with.dots/and-backslash: value2 with: as:pace>
+      - |
+        labels=<and.another-one/field: value>
+        <label.key.with.long.name/field: some_long_value>
 
+secretGenerator:
+- behavior: merge
+  literals:
+  - csdpToken=<your-personal-token>
+  name: csdp-add-cluster-secret
+  namespace: kube-system
+ 
 resources:
-  - https://github.com/codefresh-io/cli-v2/manifests/add-cluster/kustomize?ref=v<runtimeVersion>
+  - https://github.com/codefresh-io/cli-v2/manifests/add-cluster/kustomize?ref=<runtimeVersion>
 ```
 
 
