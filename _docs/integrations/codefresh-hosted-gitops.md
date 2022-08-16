@@ -28,7 +28,7 @@ file="/images/integrations/codefresh-hosted-gitops/hosted-runtime.png"
 url="/images/integrations/codefresh-hosted-gitops/hosted-runtime.png"
 caption="Provisioning a Hosted GitOps runtime" 
 alt="Provisioning a Hosted GitOps runtime" 
-max-width="60%" 
+max-width="70%" 
 %}
 
 #### Dashboards for visibility and traceability
@@ -45,7 +45,7 @@ file="/images/integrations/codefresh-hosted-gitops/hosted-home-dashboard.png"
 url="/images/integrations/codefresh-hosted-gitops/hosted-home-dashboard.png"
 caption="Home dashboard in Hosted GitOps"
 alt="Home dashboard in Hosted GitOps" 
-max-width="60%" 
+max-width="70%" 
 %}
 
 * The Applications dashboard displays applications, also across runtimes and clusters, from which you can select individual applications for further analysis.  
@@ -58,7 +58,7 @@ file="/images/integrations/codefresh-hosted-gitops/hosted-app-dashboard.png"
 url="/images/integrations/codefresh-hosted-gitops/hosted-app-dashboard.png"
 caption="Applications dashboard in Hosted GitOps" 
 alt="Applications dashboard in Hosted GitOps" 
-max-width="60%" 
+max-width="70%" 
 %}
 
 
