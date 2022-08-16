@@ -5,20 +5,22 @@ group: integrations
 toc: true
 ---
 
-With Codefresh Classic as your CI tool, get managed Argo CD for your deployments with Codefresh's Hosted GitOps.
-Connect Codefresh Classic to Codefresh Hosted GitOps for enriched image deployment with the new report image template.  Add the report image step in your Codefresh Classic pipeline and reference the different integrations for Codefresh to retrieve and enrich the image information. 
+Integrate Codefresh Classic with Codefresh's Hosted GitOps and managed Argo CD for your deployments.
+Codefresh Hosted GitOps offers a dedicated report image step for Codefresh Classic that both reports and enriches deployed images. Add the report image step in your Codefresh Classic pipeline and reference the different integrations for Codefresh to retrieve and enrich the image information. 
 
 Read on for a brief overview of what you get with Codefresh Hosted GitOps. 
 For information on how to connect Codefresh Classic to Codefresh Hosted GitOps, see [CI integration with Codefresh Classic](https://codefresh.io/csdp-docs/docs/integrations/ci-integrations/codefresh-classic/){:target="\_blank"}.
 
-### Hosted and hybrid runtimes
+### Codefresh Hosted GitOps features
+
+#### Hosted and hybrid runtimes
 Codefresh Hosted GitOps is based on a runtime, hosted and managed by Codefresh.  
 
 After the three-step process of provisioning your hosted runtime, Codefresh handles administration and maintenance of the hosted runtime, including version and security updates.    
 
 In addition to the hosted runtime, you can have as many hybrid runtimes as you need to in your account.
 
-### Dashboards for visibility and traceability
+#### Dashboards for visibility and traceability
 
 A set of dashboards provides visibility into all aspects of deployment:  
 
@@ -33,11 +35,11 @@ A set of dashboards provides visibility into all aspects of deployment:
 Apart from the metrics themselves, the DORA dashboard in Codefresh has several unique features to pinpoint just which applications or runtimes are contributing to problematic metrics.  
 
 
-### Application management
+#### Application management
 
 Manage the application lifecycle in the Codefresh UI, from creating, editing, and deleting applications, to quick manual sync when needed.  
 
 
-### Third-party integrations
+#### Third-party integrations
 Add integrations to issue-tracking tools such as Jira and container-registries such as Docker Hub, JFrog and more, to report and enrich images. 
 
