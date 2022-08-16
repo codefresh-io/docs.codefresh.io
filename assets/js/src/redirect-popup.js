@@ -35,16 +35,18 @@
   }
 
   $(function () {
-    if (window.location.hostname === 'localhost') {
+    if (window.location.hostname === 'localhost' || localStorage.getItem('ignoreRedirect')) {
       return
     }
 
-    $('#bd-codefresh-classic-docs').on('click', function () {
-      setDocumentationCookie()
-      localStorage.removeItem('redirectFrom')
-      if (typeof window.ga === 'function') {
-        window.ga('send', 'event', 'Navbar', 'Docs links', 'Open CF Classic Docs')
-      }
+    $('a[href*="codefresh.io/docs').each(function () {
+      $(this).on('click', function () {
+        setDocumentationCookie()
+        localStorage.removeItem('redirectFrom')
+        if (typeof window.ga === 'function') {
+          window.ga('send', 'event', 'Navbar', 'Docs links', 'Open CF Classic Docs')
+        }
+      })
     })
 
     try {
