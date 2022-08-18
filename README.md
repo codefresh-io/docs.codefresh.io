@@ -12,6 +12,10 @@ The site is automatically deployed when commits are merged/pushed in `master`, h
 2. Run `docker-compose up`
 3. Open `http://localhost:3131` in your browser, and voila!
 
+To compile scss files into css run the command `npm run css` or in the live mode `npm run watch-css`.
+To compile js files into a bundle run the command `npm run js` or in the live mode `npm run watch-js`.
+Node version `9.11.2`
+
 ### Preview documentation locally (Legacy method)
 
 1. Install Ruby, `bundler`, `jekyll` and other Ruby dependencies with `bundle install`.
