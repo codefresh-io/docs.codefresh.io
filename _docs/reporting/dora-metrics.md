@@ -72,13 +72,13 @@ In addition, you can select the granularity for each graph:
   The frequency of deployments of any kind, successful or failed. Deployment is considered an Argo CD sync where there was a change. The X-axis charts the time based on the granularity, and the Y-axis charts the number of deployments. The number shown on the top right is the average deployment frequency based on granularity.  
 
 **Change failure rate**  
-  The failure or rollback rate in percentage for deployments. Derived by dividing the failed/rollback deployments by the total number of deployments. Failed deployments are those Argo CD deployments that lead to a sync state of Degraded. The X-axis charts the time based on the granularity, and the Y-axis charts the failure rate. The number shown on the top right is the average failure rate based on granularity.  
+  The failure or rollback rate in percentage for deployments. Derived by dividing the failed/rollback deployments by the total number of deployments. Failed deployments are those Argo CD deployments that lead to a sync state of Degraded. The X-axis charts the time based on the granularity, and the Y-axis charts the failure rate. The number shown on the top right is the average failure rate based on granularity, and therefore may not be equal to the Total Failure Rate.  
 
 **Lead Time for Changes**  
   The average number of days from the first commit for a pull request until the deployment date for the same pull request. The X-axis charts the time based on the granularity, and the Y-axis charts the time in minutes until the deployment. The number shown on the top right is the average number of days for a commit to reach production.  
 
 **Time to Restore Service**  
-  The average number of hours between the change in status to Degraded or Unhealthy after deployment, and back to Healthy. The X-axis charts the time based on the granularity, and the Y-axis charts the time in hours. The number shown on the top right is the average number of hours between the previous deployment and rollback for the same application.
+  The average number of hours taken for the status to return to Healthy after changing to Degraded or Unhealthy. The X-axis charts the time based on the granularity, and the Y-axis charts the time in hours. The number shown on the top right is the average number of hours between the previous deployment and rollback for the same application.
 
 ## What to read next  
 [Codefresh architecture]({{site.baseurl}}/docs/getting-started/architecture/)  
