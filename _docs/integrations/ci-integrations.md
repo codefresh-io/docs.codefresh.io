@@ -31,7 +31,7 @@ Use the action as follows:
 Connecting the CI platform/tool to Codefresh from the UI includes configuring the required arguments, and then generating and copying the YAML manifest for the report image to your pipeline.  
 
 1. In the Codefresh UI, go to [Integrations](https://g.codefresh.io/2.0/account-settings/integrations){:target="\_blank"}.
-1. Filter by **CI tools**, select the CI tool, and click **Add**.
+1. Filter by **CI tools**, select the CI tool, and click **Configure**.
 1. Define the arguments for the CI tool:  
   [Codefresh Classic]({{site.baseurl}}/docs/integrations/ci-integrations/codefresh-classic/)  
   [GitHub Action]({{site.baseurl}}/docs/integrations/ci-integrations/github-actions/)  

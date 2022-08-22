@@ -125,6 +125,8 @@
         url: "/amazon-ecr"      
       - title: Docker Hub Registry
         url: "/dockerhub"
+      - title: GitHub Container Registry
+        url: "/github-cr"
       - title: JFrog Artifactory
         url: "/jfrog" 
       - title: Quay Registry
