@@ -1832,7 +1832,7 @@ To change volume selector get runtime yaml spec and under `dockerDaemonScheduler
 ### Cleaners
 
 * [IN-DIND cleaner](https://github.com/codefresh-io/dind/tree/master/cleaner) - deletes extra docker containers, volumes, images in **dind pod**
-* [External volumes cleaner](https://github.com/codefresh-io/runtime-cluster-monitor/blob/master/chart/templates/dind-volume-cleanup.yaml) - deletes unused **external** PVs (EBS, GCE/Azure disks)
+* [External volumes cleaner](https://github.com/codefresh-io/runtime-cluster-monitor/blob/master/charts/cf-monitoring/templates/dind-volume-cleanup.yaml) - deletes unused **external** PVs (EBS, GCE/Azure disks)
 * [Local volumes cleaner](https://github.com/codefresh-io/dind-volume-utils/blob/master/local-volumes/lv-cleaner.sh) - deletes **local** volumes in case node disk space is close to the threshold
 
 ***
