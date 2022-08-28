@@ -164,6 +164,7 @@ Use this method to sync only those users who have been assigned the user role wi
     }
     ```
 
+{:start="3"}
 1. In the GSuite Admin panel, go to `Apps > SAML`.
 
     {% include image.html
@@ -175,7 +176,19 @@ Use this method to sync only those users who have been assigned the user role wi
     max-width="40%"
     %}
 
+{:start="4"}
 1. Expand the Attribute Mapping settings, and add a Role attribute with the above schema for `SSO` and `UserRole`.
+
+  {% include image.html
+lightbox="true"
+file="/images/administration/sso/google/map-attributes.png"
+url="/images/administration/sso/google/map-attributes.png"
+alt="Attribute Mappings screen in GSuite"
+caption="Attribute Mappings screen in GSuite"
+max-width="40%"
+%}
+
+{:start="5"}
 1. For every user to be synced, in the User Information screen, scroll to `SSO > UserRole`, and assign the user role.
 
   {% include image.html
