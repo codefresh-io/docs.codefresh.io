@@ -176,6 +176,17 @@ Use this method to sync only those users who have been assigned the user role wi
     %}
 
 1. Expand the Attribute Mapping settings, and add a Role attribute with the above schema for `SSO` and `UserRole`.
+
+    {% include image.html
+    lightbox="true"
+    file="/images/administration/sso/google/map-attributes.png"
+    url="/images/administration/sso/google/map-attributes.png"
+    alt="Add Role attribute in GSuite Admin panel"
+    caption="Add Role attribute in GSuite Admin panelß"
+    max-width="40%"
+    %}
+
+
 1. For every user to be synced, in the User Information screen, scroll to `SSO > UserRole`, and assign the user role.
 
   {% include image.html
