@@ -281,5 +281,5 @@ Remove a  cluster from the list managed by the runtime, through the CLI.
 
 ### Related articles
 [Add Git Sources to runtimes]({{site.baseurl}}/docs/runtime/git-sources/)  
-[Manage provisioned runtimes]({{site.baseurl}}/docs/runtime/monitor-manage-runtimes/)  
+[Manage provisioned hybrid runtimes]({{site.baseurl}}/docs/runtime/monitor-manage-runtimes/)  
 [(Hybrid) Monitor provisioned runtimes]({{site.baseurl}}/docs/runtime/monitoring-troubleshooting/)  

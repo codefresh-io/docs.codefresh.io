@@ -12,52 +12,117 @@ The requirements listed are the **_minimum_** requirements to provision **_hybri
 
 >In the documentation, Kubernetes and K8s are used interchangeably. 
 
+{::nomarkdown}
+</br>
+{:/}
 
-### Kubernetes cluster requirements
-This section lists cluster requirements.
+### Minimum requirements
 
-#### Cluster version
-Kubernetes cluster, server version 1.18 and higher, without Argo Project components.
-> Tip:  
->  To check the server version, run `kubectl version --short`.
+{: .table .table-bordered .table-hover}
+| Item                     | Requirement            |  
+| --------------         | --------------           |  
+|Kubernetes cluster      | Server version 1.18 and higher, without Argo Project components. {::nomarkdown}<br><b>Tip</b>:  To check the server version, run:<br> <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">kubectl version --short</span>.{:/}|
+| Ingress controller| Configured on Kubernetes cluster and exposed from the cluster. {::nomarkdown} <br>Supported and tested ingress controllers include: <ul><li>Ambassador</li>{:/}(see [Ambassador ingress configuration](#ambassador-ingress-configuration)){::nomarkdown}<li>AWS ALB (Application Load Balancer)</li>{:/} (see [AWS ALB ingress configuration](#aws-alb-ingress-configuration)){::nomarkdown}<li>Istio</li>{:/} (see [Istio ingress configuration](#istio-ingress-configuration)){::nomarkdown}<li>NGINX Enterprise (nginx.org/ingress-controller)</li>{:/} (see [NGINX Enterprise ingress configuration](#nginx-enterprise-ingress-configuration)){::nomarkdown}<li>NGINX Community (k8s.io/ingress-nginx)</li> {:/} (see [NGINX Community ingress configuration](#nginx-community-version-ingress-configuration)){::nomarkdown}<li>Trafik</li>{:/}(see [Traefik ingress configuration](#traefik-ingress-configuration))|
+|Node requirements| {::nomarkdown}<ul><li>Memory: 5000 MB</li><li>CPU: 2</li></ul>{:/}|
+|Cluster permissions | Cluster admin permissions |
+|Git providers    |{::nomarkdown}<ul><li>GitHub</li><!--<li>GitLab</li><li>Bitbucket Server</li><li>Bitbucket Cloud</li><li>GitHub Enterprise</li>--></ul>{:/}|
+|Git access tokens    | {::nomarkdown}Runtime Git token:<ul><li>Valid expiration date</li><li>Scopes: <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">repo</span> and <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">admin-repo.hook</span></li></ul>Personal access Git token:<ul><li>Valid expiration date</li><li>Scopes: <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">repo</span></li></ul></li></ul>{:/}|
 
+<!---### General ingress configuration
+This section lists the configuration required for _all_ supported ingress controllers, _before_ installing a hybrid runtime. 
 
-#### Ingress controller
-Configure your Kubernetes cluster with an ingress controller component that is exposed from the cluster.  
+#### Valid external IP address
+Run `kubectl get svc -A` to get a list of services and verify that the `EXTERNAL-IP` column for your ingress controller shows a valid hostname.  
+  
+#### Valid TLS certificate  
+For secure runtime installation, the ingress controller must have a valid TLS certificate.  
+> Use the FQDN (Fully Qualified Domain Name) of the ingress controller for the TLS certificate.
 
-**Supported ingress controllers**  
+#### TCP support  
+Configure the ingress controller to handle TCP requests.  
 
-  {: .table .table-bordered .table-hover}
-|  Supported Ingress Controller                       | Reference|  
-| --------------                                      | --------------           |  
-| Ambassador                                        | [Ambassador ingress controller documentation](https://www.getambassador.io/docs/edge-stack/latest/topics/running/ingress-controller/){:target="\_blank"} |  
-| ALB (AWS Application Load Balancer)               | [AWS ALB ingress controller documentation](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/){:target="\_blank"} |      
-| NGINX Enterprise (`nginx.org/ingress-controller`)  | [NGINX Ingress Controller documentation](https://docs.nginx.com/nginx-ingress-controller/){:target="\_blank"} |      
-| NGINX Community  (`k8s.io/ingress-nginx`)          | [Provider-specific configuration](#nginx-community-version-provider-specific-ingress-configuration) in this article|                             
-| Istio                                             | [Istio Kubernetes ingress documentation](https://istio.io/latest/docs/tasks/traffic-management/ingress/kubernetes-ingress/){:target="\_blank"} |       
-| Traefik                                           |[Traefik Kubernetes ingress documentation](https://doc.traefik.io/traefik/providers/kubernetes-ingress/){:target="\_blank"}| 
+--->
+{::nomarkdown}
+</br></br>
+{:/}
 
+### Ambassador ingress configuration
+For detailed configuration information, see the [Ambassador ingress controller documentation](https://www.getambassador.io/docs/edge-stack/latest/topics/running/ingress-controller){:target="\_blank"}.  
 
-**Ingress controller requirements**
+This section lists the specific configuration requirements for Codefresh to be completed  _before_ installing the hybrid runtime.  
+* Valid external IP address    
+* Valid TLS certificate 
+* TCP support
 
-* Valid external IP address  
-  Run `kubectl get svc -A` to get a list of services and verify that the EXTERNAL-IP column for your ingress controller shows a valid hostname. 
+{::nomarkdown}
+</br>
+{:/}
 
-* Valid SSL certificate  
-  For secure runtime installation, the ingress controller must have a valid SSL certificate from an authorized CA (Certificate Authority).  
+#### Valid external IP address
+Run `kubectl get svc -A` to get a list of services and verify that the `EXTERNAL-IP` column for your ingress controller shows a valid hostname.  
+  {::nomarkdown}
+</br>
+{:/}
 
-* TCP support  
-  Make sure your ingress controller is configured to handle TCP requests. For exact configuraton requirements, refer to the offiical documentation of the ingress controller you are using.  
-   
-  Here's an example of TCP configuration for NGINX on AWS.  
-  Verify that the ingress-nginx-controller service manifest has either of the following annotations:  
+#### Valid TLS certificate  
+For secure runtime installation, the ingress controller must have a valid TLS certificate.  
+> Use the FQDN (Fully Qualified Domain Name) of the ingress controller for the TLS certificate.
 
-  `service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "tcp"`  
-  OR  
-  `service.beta.kubernetes.io/aws-load-balancer-type: nlb`  
+{::nomarkdown}
+</br>
+{:/}
 
-* AWS ALB  
-  In the ingress resource file, verify that `spec.controller` is configured as `ingress.k8s.aws/alb`. 
+#### TCP support  
+Configure the ingress controller to handle TCP requests.  
+
+{::nomarkdown}
+</br></br>
+{:/}
+
+### AWS ALB ingress configuration
+
+For detailed configuration information, see the [ALB AWS ingress controller documentation](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4){:target="\_blank"}.  
+
+This table lists the specific configuration requirements for Codefresh.  
+
+{: .table .table-bordered .table-hover}
+| What to configure    |   When to configure |   
+| --------------       | --------------                    | 
+|Valid external IP address |   _Before_ installing hybrid runtime  |     
+|Valid TLS certificate | |
+|TCP support|  |  
+|Controller  configuration] |  | 
+|Alias DNS record in route53 to load balancer | _After_ installing hybrid runtime | 
+|(Optional) Git integration registration | | 
+
+{::nomarkdown}
+</br>
+{:/}
+
+#### Valid external IP address
+Run `kubectl get svc -A` to get a list of services and verify that the `EXTERNAL-IP` column for your ingress controller shows a valid hostname.  
+
+{::nomarkdown}
+</br>
+{:/}
+
+#### Valid TLS certificate  
+For secure runtime installation, the ingress controller must have a valid TLS certificate.  
+> Use the FQDN (Fully Qualified Domain Name) of the ingress controller for the TLS certificate.
+
+{::nomarkdown}
+</br>
+{:/}
+
+#### TCP support  
+Configure the ingress controller to handle TCP requests.  
+
+{::nomarkdown}
+</br>
+{:/}
+
+#### Controller configuration
+In the ingress resource file, verify that `spec.controller` is configured as `ingress.k8s.aws/alb`. 
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -68,28 +133,210 @@ spec:
   controller: ingress.k8s.aws/alb
 ```
 
-* Report status  
-  The ingress controller must be configured to report its status. Otherwise, Argo's health check reports the health status as "progressing" resulting in a timeout error during installation.  
-    
-  By default, NGINX Enterprise and Traefik ingress are not configured to report status. For details on configuration settings, see the following sections in this article:  
-    [NGINX Enterprise ingress configuration](#nginx-enterprise-version-ingress-configuration)  
-    [Traefik ingress configuration](#traefik-ingress-configuration) 
+{::nomarkdown}
+</br>
+{:/}
 
+#### Create an alias to load balancer in route53
 
-#### NGINX Enterprise version ingress configuration
-The Enterprise version of NGINX (`nginx.org/ingress-controller`), both with and without the Ingress Operator, must be configured to report the status of the ingress controller.
+>  The alias  must be configured _after_ installing the hybrid runtime.
 
-**Installation with NGINX Ingress**  
-* Pass the `- -report-ingress-status` to `deployment`.
+1. Make sure a DNS record is available in the correct hosted zone. 
+1. _After_ hybrid runtime installation, in Amazon Route 53, create an alias to route traffic to the load balancer that is automatically created during the installation:  
+  * **Record name**: Enter the same record name used in the installation.
+  * Toggle **Alias** to **ON**.
+  * From the **Route traffic to** list, select **Alias to Application and Classic Load Balancer**.
+  * From the list of Regions, select the region. For example, **US East**.
+  * From the list of load balancers, select the load balancer that was created during installation.  
 
-    ```yaml
-    spec:                                                                                                                                                                 
-      containers: 
-       - args:                                                                                                                                              
-       - -report-ingress-status
-    ```
+For more information, see [Creating records by using the Amazon Route 53 console](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-creating.html){:target="\_blank"}.
 
-**Installation with NGINX Ingress Operator**  
+{% include image.html
+  lightbox="true"
+  file="/images/runtime/post-install-alb-ingress.png"
+  url="/images/runtime/post-install-alb-ingress.png"
+  alt="Route 53 record settings for AWS ALB"
+  caption="Route 53 record settings for AWS ALB"
+  max-width="60%"
+%}
+
+{::nomarkdown}
+</br>
+{:/}
+
+#### (Optional) Git integration registration
+If the installation failed, as can happen if the DNS record was not created within the timeframe, manually create and register Git integrations using these commands:  
+  `cf integration git add default --runtime <RUNTIME-NAME> --api-url <API-URL>`  
+  `cf integration git register default --runtime <RUNTIME-NAME> --token <RUNTIME-AUTHENTICATION-TOKEN>`  
+ 
+{::nomarkdown}
+</br></br>
+{:/}
+
+### Istio ingress configuration
+For detailed configuration information, see [Istio ingress controller documentation](https://istio.io/latest/docs/tasks/traffic-management/ingress/kubernetes-ingress){:target="\_blank}.  
+
+The table below lists the specific configuration requirements for Codefresh.
+
+{: .table .table-bordered .table-hover}
+| What to configure    |   When to configure |   
+| --------------       | --------------   | 
+|Valid external IP address |_Before_ installing hybrid runtime  |     
+|Valid TLS certificate| |
+|TCP support |  | 
+|Cluster routing service | _After_ installing hybrid runtime | 
+
+{::nomarkdown}
+</br>
+{:/}
+
+#### Valid external IP address
+Run `kubectl get svc -A` to get a list of services and verify that the `EXTERNAL-IP` column for your ingress controller shows a valid hostname.  
+
+{::nomarkdown}
+</br>
+{:/}
+
+#### Valid TLS certificate  
+For secure runtime installation, the ingress controller must have a valid TLS certificate.  
+> Use the FQDN (Fully Qualified Domain Name) of the ingress controller for the TLS certificate.
+
+{::nomarkdown}
+</br>
+{:/}
+
+#### TCP support  
+Configure the ingress controller to handle TCP requests.  
+
+{::nomarkdown}
+</br>
+{:/}
+
+#### Cluster routing service
+>  The cluster routing service must be configured _after_ installing the hybrid runtime.
+
+Configure the `VirtualService` to route traffic to the `app-proxy` and `webhook` services, as in the examples below.  
+
+{::nomarkdown}
+</br>
+{:/}
+
+**`VirtualService` example for `app-proxy`:** 
+
+```yaml
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  namespace: test-runtime3 # replace with your runtime name
+  name: cap-app-proxy 
+spec:
+  hosts:
+    - my.support.cf-cd.com # replace with your host name
+  gateways:
+    - my-gateway
+  http:
+    - match:
+      - uri:
+          prefix: /app-proxy 
+      route:
+      - destination:
+          host: cap-app-proxy 
+          port:
+            number: 3017
+```
+{::nomarkdown}
+</br>
+{:/}
+
+**`VirtualService` example for `webhook`:** 
+
+```yaml  
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  namespace: test-runtime3 # replace with your runtime name
+  name: csdp-default-git-source
+spec:
+  hosts:
+    - my.support.cf-cd.com # replace with your host name
+  gateways:
+    - my-gateway
+  http:
+    - match:
+      - uri:
+          prefix: /webhooks/test-runtime3/push-github # replace `test-runtime3` with your runtime name
+      route:
+      - destination:
+          host: push-github-eventsource-svc 
+          port:
+            number: 80
+```
+{::nomarkdown}
+</br></br>
+{:/}
+
+### NGINX Enterprise ingress configuration
+
+For detailed configuration information, see [NGINX ingress controller documentation](https://docs.nginx.com/nginx-ingress-controller){:target="\_blank}.  
+
+The table below lists the specific configuration requirements for Codefresh.
+
+{: .table .table-bordered .table-hover}
+| What to configure    |   When to configure |   
+| --------------       | --------------                    | 
+|Verify valid external IP address |_Before_ installing hybrid runtime  |     
+|Valid TLS certificate | |
+|TCP support|  | 
+|NGINX Ingress: Enable report status to cluster |  | 
+|NGINX Ingress Operator: Enable report status to cluster| |
+|Patch certificate secret |_After_ installing hybrid runtime  
+
+{::nomarkdown}
+</br>
+{:/}
+
+#### Valid external IP address
+Run `kubectl get svc -A` to get a list of services and verify that the `EXTERNAL-IP` column for your ingress controller shows a valid hostname.  
+
+{::nomarkdown}
+</br>
+{:/}
+
+#### Valid TLS certificate  
+For secure runtime installation, the ingress controller must have a valid TLS certificate.  
+> Use the FQDN (Fully Qualified Domain Name) of the ingress controller for the TLS certificate.
+
+{::nomarkdown}
+</br>
+{:/}
+
+#### TCP support  
+Configure the ingress controller to handle TCP requests.   
+
+{::nomarkdown}
+</br>
+{:/}
+
+#### NGINX Ingress: Enable report status to cluster
+
+If the ingress controller is not configured to report its status to the cluster, Argo’s health check reports the health status as “progressing” resulting in a timeout error during installation.  
+
+* Pass `--report-ingress-status` to `deployment`.
+
+```yaml
+spec:                                                                                                                                                                 
+  containers: 
+    - args:                                                                                                                                              
+      - --report-ingress-status
+```
+
+{::nomarkdown}
+</br>
+{:/}
+
+#### NGINX Ingress Operator: Enable report status to cluster
+
+If the ingress controller is not configured to report its status to the cluster, Argo’s health check reports the health status as “progressing” resulting in a timeout error during installation.  
 
 1. Add this to the `Nginxingresscontrollers` resource file:
 
@@ -104,8 +351,74 @@ The Enterprise version of NGINX (`nginx.org/ingress-controller`), both with and 
 1. Make sure you have a certificate secret in the same namespace as the runtime. Copy an existing secret if you don't have one.  
 You will need to add this to the `ingress-master` when you have completed runtime installation.
 
-#### NGINX Community version provider-specific ingress configuration
-Codefresh has been tested and is supported in major providers. For your convenience, here are provider-specific configuration instructions, both for supported and untested providers.
+{::nomarkdown}
+</br>
+{:/}
+
+#### Patch certificate secret
+>  The certificate secret must be configured _after_ installing the hybrid runtime.
+
+Patch the certificate secret in `spec.tls` of the `ingress-master` resource.  
+The secret must be in the same namespace as the runtime.
+
+1. Go to the runtime namespace with the NGINX ingress controller.
+1. In `ingress-master`, add to `spec.tls`:  
+
+    ```yaml
+    tls:                                                                                                                                                                    
+     - hosts:                                                                                                                                                                
+     - <host_name>                                                                                             
+     secretName: <secret_name>
+   ```
+
+{::nomarkdown}
+</br></br>
+{:/}
+
+### NGINX Community version ingress configuration
+
+Codefresh has been tested with and supports implementations of the major providers. For your convenience, we have provided configuration instructions, both for supported and untested providers in [Provider-specific configuration](#provider-specific-configuration).  
+
+
+This section lists the specific configuration requirements for Codefresh to be completed  _before_ installing the hybrid runtime.  
+* Verify valid external IP address 
+* Valid TLS certificate 
+* TCP support 
+
+{::nomarkdown}
+</br>
+{:/}
+
+#### Valid external IP address
+Run `kubectl get svc -A` to get a list of services, and verify that the `EXTERNAL-IP` column for your ingress controller shows a valid hostname.  
+
+{::nomarkdown}
+</br>
+{:/}
+
+#### Valid TLS certificate  
+For secure runtime installation, the ingress controller must have a valid TLS certificate.  
+> Use the FQDN (Fully Qualified Domain Name) of the ingress controller for the TLS certificate.
+
+{::nomarkdown}
+</br>
+{:/}
+
+#### TCP support  
+Configure the ingress controller to handle TCP requests.   
+
+Here's an example of TCP configuration for NGINX Community on AWS.  
+Verify that the `ingress-nginx-controller` service manifest has either of the following annotations:  
+
+`service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "tcp"`  
+OR  
+`service.beta.kubernetes.io/aws-load-balancer-type: nlb` 
+
+{::nomarkdown}
+</br>
+{:/}
+
+#### Provider-specific configuration
 
 > The instructions are valid for `k8s.io/ingress-nginx`, the community version of NGINX.
 
@@ -306,86 +619,73 @@ For additional configuration options, see <a target="_blank" href="https://kuber
 </ol>
 For additional configuration options, see <a target="_blank" href="https://kubernetes.github.io/ingress-nginx/deploy/#scaleway">ingress-nginx documentation for Scaleway</a>.
 
-</details>  
-<br>
+</details> 
 
-#### Traefik ingress configuration
-To enable the the Traefik ingress controller to report the status, add `publishedService` to `providers.kubernetesIngress.ingressEndpoint`.  
-  
-The value must be in the format `"<namespace>/<service-name>"`, where:  
-   `<service-name>` is the Traefik service from which to copy the status
+{::nomarkdown}
+</br></br>
+{:/}
 
-   ```yaml
-   ...
-   providers:
-    kubernetesIngress:
-      ingressEndpoint:
-        publishedService: "<namespace>/<traefik-service>" # Example, "codefresh/traefik-default" ...
-   ...
-  ```
+### Traefik ingress configuration
+For detailed configuration information, see [Traefik ingress controller documentation](https://doc.traefik.io/traefik/providers/kubernetes-ingress){:target="\_blank}.  
 
-#### Node requirements
-* Memory: 5000 MB
-* CPU: 2
-
-#### Runtime namespace permissions for resources
+The table below lists the specific configuration requirements for Codefresh.
 
 {: .table .table-bordered .table-hover}
-|  Resource                   |  Permissions Required|  
-| --------------            | --------------           |  
-| `ServiceAccount`            | Create, Delete         |                             
-| `ConfigMap`                 | Create, Update, Delete |          
-| `Service`                   | Create, Update, Delete |       
-| `Role`                       | In group `rbac.authorization.k8s.io`: Create, Update, Delete |       
-| `RoleBinding`               | In group `rbac.authorization.k8s.io`: Create, Update, Delete  | 
-| `persistentvolumeclaims`    | Create, Update, Delete               |   
-| `pods`                       | Creat, Update, Delete               | 
 
-### Git repository requirements
-This section lists the requirements for Git installation repositories.
+| What to configure    |   When to configure |   
+| --------------       | --------------  | 
+|Valid external IP address | _Before_ installing hybrid runtime  |     
+|Valid SSL certificate | |
+|TCP support |  | 
+|Enable report status to cluster|  | 
 
-#### Git installation repo
-If you are using an existing repo, make sure it is empty.
+{::nomarkdown}
+</br>
+{:/}
 
-#### Git access tokens
-Codefresh requires two access tokens, one for runtime installation, and the second, a personal token for each user to authenticate Git-based actions in Codefresh. 
+#### Valid external IP address
+Run `kubectl get svc -A` to get a list of services and verify that the `EXTERNAL-IP` column for your ingress controller shows a valid hostname.  
 
-##### Git runtime token
-The Git runtime token is mandatory for runtime installation.
+{::nomarkdown}
+</br>
+{:/}
 
-The token must have valid:
-  * Expiration date: Default is `30 days`  
-  * Scopes: `repo` and `admin-repo.hook` 
+#### Valid TLS certificate  
+For secure runtime installation, the ingress controller must have a valid TLS certificate.  
+> Use the FQDN (Fully Qualified Domain Name) of the ingress controller for the TLS certificate.
+
+{::nomarkdown}
+</br>
+{:/}
+ 
+#### TCP support  
+Configure the ingress controller to handle TCP requests.   
+
+{::nomarkdown}
+</br>
+{:/}
+ 
+#### Enable report status to cluster 
+By default, the Traefik ingress controller is not configured to report its status to the cluster.  If not configured,  Argo’s health check reports the health status as “progressing”, resulting in a timeout error during installation.  
+
+To enable reporting its status, add `publishedService` to `providers.kubernetesIngress.ingressEndpoint`.  
   
-  {% include 
-   image.html 
-   lightbox="true" 
-   file="/images/getting-started/quick-start/quick-start-git-event-permissions.png" 
-   url="/images/getting-started/quick-start/quick-start-git-event-permissions.png" 
-   alt="Scopes for Git runtime token" 
-   caption="Scopes for Git runtime token"
-   max-width="30%" 
-   %}  
+The value must be in the format `"<namespace>/<service-name>"`, where:  
+  `<service-name>` is the Traefik service from which to copy the status
 
-##### Git user token for Git-based actions
-The Git user token is the user's personal token and is unique to every user. It is used to authenticate every Git-based action of the user in Codefresh. You can add the Git user token at any time from the UI.   
+```yaml
+...
+providers:
+  kubernetesIngress:
+    ingressEndpoint:
+      publishedService: "<namespace>/<traefik-service>" # Example, "codefresh/traefik-default" 
+...
+```
 
-  The token must have valid:
-  * Expiration date: Default is `30 days`  
-  * Scope: `repo`
-  
-  {% include 
-   image.html 
-   lightbox="true" 
-   file="/images/runtime/git-token-scope-resource-repos.png" 
-   url="/images/runtime/git-token-scope-resource-repos.png" 
-   alt="Scope for Git personal user token" 
-   caption="Scope for Git personal user token"
-   max-width="30%" 
-   %}    
-   
-For detailed information on GitHub tokens, see [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).  
-
-
+{::nomarkdown}
+</br>
+{:/}
+ 
 ### What to read next
-[Installing hybrid runtimes]({{site.baseurl}}/docs/runtime/installation/)
+[Hybrid runtime installation flags]({{site.baseurl}}/docs/runtime/installation//#hybrid-runtime-installation-flags)  
+[Install hybrid runtimes]({{site.baseurl}}/docs/runtime/installation/)

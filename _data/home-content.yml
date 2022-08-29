@@ -39,7 +39,7 @@
       localurl: /docs/runtime/installation
     - title: Manage provisioned runtimes
       localurl: /docs/runtime/monitor-manage-runtimes/
-    - title: Monitor provisioned runtimes
+    - title: Monitor provisioned hybrid runtimes
       localurl: /docs/runtime/monitoring-troubleshooting/
     - title: Add external clusters to runtimes
       localurl: /docs/runtime/managed-cluster/

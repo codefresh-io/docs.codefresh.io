@@ -55,7 +55,7 @@
       url: "/installation"
     - title: Manage provisioned runtimes
       url: "/monitor-manage-runtimes"
-    - title: Monitor provisioned runtimes
+    - title: Monitor provisioned hybrid runtimes
       url: "/monitoring-troubleshooting" 
     - title: Add external clusters to runtimes
       url: "/managed-cluster" 

@@ -12,7 +12,7 @@ If you have a hybrid environment, you can provision one or more hybrid runtimes 
 There are two parts to installing a hybrid runtime:
 
 1. Installing the Codefresh CLI
-2. Installing the hybrid runtime from the CLI, either through the CLI wizard or via silent installation.  
+2. Installing the hybrid runtime from the CLI, either through the CLI wizard or via silent installation through the installation flags.  
   The hybrid runtime is installed in a specific namespace on your cluster. You can install more runtimes on different clusters in your deployment.  
   Every hybrid runtime installation makes commits to two Git repos:
 
@@ -21,27 +21,22 @@ There are two parts to installing a hybrid runtime:
 
 See also [Codefresh architecture]({{site.baseurl}}/docs/getting-started/architecture).
 
-### Installing the Codefresh CLI
+{::nomarkdown}
+</br>
+{:/}
 
-Install the Codefresh CLI using the option that best suits you: `curl`, `brew`, or standard download.  
-If you are not sure which OS to select for `curl`, simply select one, and Codefresh automatically identifies and selects the right OS for CLI installation.
+### Hybrid runtime installation flags
+This section describes the required and optional flags to install a hybrid runtime.
+For documentation purposes, the flags are grouped into:
+* Runtime flags, relating to runtime, cluster, and namespace requirements
+* Ingress controller flags, relating to ingress controller requirements
+* Git repository flags, relating to Git provider requirements
 
-### Installing the hybrid runtime
+{::nomarkdown}
+</br>
+{:/}
 
-1. Do one of the following:  
-  * If this is your first hybrid runtime installation, in the Welcome page, select **+ Install Runtime**.
-  * If you have provisioned a hybrid runtime, to provision additional runtimes, in the Codefresh UI, go to [**Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}, and select **+ Add Runtimes**.
-1. Run:  
-  * CLI wizard: Run `cf runtime install`, and follow the prompts to enter the required values.  
-  * Silent install: Pass the required flags in the install command:  
-    `cf runtime install <runtime-name> --repo <git-repo> --git-token <git-token> --silent`  
-  For the list of flags, see _Hybrid runtime flags_.
-
-> Note:  
-> Hybrid runtime installation starts by checking network connectivity and the K8s cluster server version.  
-  To skip these tests, pass the `--skip-cluster-checks` flag.
-
-#### Hybrid runtime flags
+####  Runtime flags
 
 **Runtime name**  
 Required.  
@@ -51,7 +46,7 @@ The runtime name must start with a lower-case character, and can include up to 6
 
 **Namespace resource labels**  
 Optional.  
-The label of the namespace resource to which you are installing the hybrid runtime. You can add more than one label. Labels are required to identity the networks that need access during installation, as is the case when using services meshes such as Istio for example.  
+The label of the namespace resource to which you are installing the hybrid runtime. Labels are required to identify the networks that need access during installation, as is the case when using services meshes such as Istio for example.  
 
 * CLI wizard and Silent install: Add the `--namespace-labels` flag, and define the labels in `key=value` format. Separate multiple labels with `commas`.
 
@@ -62,9 +57,23 @@ The cluster defined as the default for `kubectl`. If you have more than one Kube
 * CLI wizard: Select the Kube context from the list displayed.
 * Silent install: Explicitly specify the Kube context with the `--context` flag.
 
+**Shared configuration repository**
+The Git repository per runtime account with shared configuration manifests.  
+* CLI wizard and Silent install: Add the `--shared-config-repo` flag and define the path to the shared repo.  
+
+{::nomarkdown}
+</br>
+{:/}
+
+#### Ingress controller flags
+
+**Skip ingress**  
+Required, if you are using an unsupported ingress controller.  
+For unsupported ingress controllers, bypass installing ingress resources with the `--skip-ingress` flag.  
+In this case, after completing the installation, manually configure the cluster's routing service, and create and register Git integrations. See the last step in [Install the hybrid runtime](#install-the-hybrid-runtime).
+
 **Ingress class**  
 Required.  
-If you have more than one ingress class configured on your cluster:
 
 * CLI wizard: Select the ingress class for runtime installation from the list displayed.
 * Silent install: Explicitly specify the ingress class through the `--ingress-class` flag. Otherwise, runtime installation fails.  
@@ -77,10 +86,11 @@ The IP address or host name of the ingress controller component.
 * Silent install: Add the `--ingress-host` flag. If a value is not provided, takes the host from the ingress controller associated with the **Ingress class**.
   > Important: For AWS ALB, the ingress host is created post-installation. However, when prompted, add the domain name you will create in `Route 53` as the ingress host.  
 
-SSL certificates for the ingress host:  
-If the ingress host does not have a valid SSL certificate, you can continue with the installation in insecure mode, which disables certificate validation.  
+**Insecure ingress hosts**  
+TLS certificates for the ingress host:  
+If the ingress host does not have a valid TLS certificate, you can continue with the installation in insecure mode, which disables certificate validation.  
 
-* CLI wizard: Automatically detects and prompts you to confirm continuing with the installation in insecure mode.  
+* CLI wizard: Automatically detects and prompts you to confirm continuing the installation in insecure mode.  
 * Silent install: To continue with the installation in insecure mode, add the `--insecure-ingress-host` flag.  
 
 **Internal ingress host**  
@@ -90,19 +100,14 @@ For both CLI wizard and Silent install:
 
 * For new runtime installations, add the `--internal-ingress-host` flag pointing to the ingress host for `app-proxy`.
 * For existing installations, commit changes to the installation repository by modifying the `app-proxy ingress` and `<runtime-name>.yaml`  
-  See _Internal ingress host configuration (optional for existing runtimes only)_ in [Post-installation configuration](#post-installation-configuration).
+  See [(Optional) Internal ingress host configuration for existing hybrid runtimes](#optional-internal-ingress-host-configuration-for-existing-hybrid-runtimes).
 
-**Ingress resources**  
-Optional.  
-If you have a different routing service (not NGINX), bypass installing ingress resources with the `--skip-ingress` flag.  
-In this case, after completing the installation, manually configure the cluster's routing service, and create and register Git integrations. See _Cluster routing service_ in [Post-installation configuration](#post-installation-configuration).
 
-**Shared configuration repository**
-The Git repository per runtime account with shared configuration manifests.  
-* CLI wizard and Silent install: Add the `--shared-config-repo` flag and define the path to the shared repo.  
+{::nomarkdown}
+</br>
+{:/}
 
-**Insecure flag**  
-For _on-premises installations_, if the Ingress controller does not have a valid SSL certificate, to continue with the installation, add the `--insecure` flag to the installation command.  
+#### Git repository <!---and provider --->flags
 
 **Repository URLs**  
 The GitHub repository to house the installation definitions.  
@@ -115,18 +120,121 @@ Required.
 The Git token authenticating access to the GitHub installation repository.  
 * Silent install: Add the `--git-token` flag.  
 
+
+<!---**Enable Git providers**  
+Optional; required for GitLab, Bitbucket Server, and GitHub Enterprise Git providers.  
+Enable GitLab, Bitbucket Server, or GitHub Enterprise Server as the Git provider for the runtime and for the account. 
+>The Git provider defined for the first runtime in the account must be used for all the runtimes in the same account.  
+  
+* CLI wizard and Silent install: Add the `--enable-git-provider` flag.
+
+**Git provider**  
+
+Optional for GitHub; required for GitLab, Bitbucket Server, and GitHub Enterprise.
+The name of the Git provider to use for the runtime and the account. 
+
+* CLI wizard and Silent install: Add the `--provider` flag, and define the provider name as either `gitlab`, `bitbucket-server` or `github`.
+
+**Repository URL**  
+The `HTTPS` clone URL of the Git repository, or project in GitLab, including the `.git` suffix in which to install the runtime, in the format:  
+`https://<host>/<owner_reponame>.git[/subdirectory][?ref=branch]`  
+where:  
+* `<host>/<owner_reponame>.git` is the Git server followed by the username/organization and the name of the repo, identical to the HTTPS clone URL.  For example, `https://github.com/codefresh-io/docs.codefresh.io.git`.  
+* `[/subdirectory]` (optional) is the path to a subdirectory within the repo. Whn omitted, the runtime is installed in the root of the repository.  For example, `/docs/images`. 
+* `[?ref=branch]` (optional) is the `ref` queryParam to select a specific branch. When omitted, the runtime is installed in the default branch. For example,  `codefresh-prod`.  
+
+> For GitLab, you must create the group with access to the project prior to the installation.
+
+* CLI wizard: If the repo doesn't exist, for GitHub, GitLab, Bitbucket Server, GitHub Enterprise, Codefresh creates it during runtime installation.  
+* Silent install: Required. Add the `--repo` flag.
+
+**Git user**  
+Optional; required only for Bitbucket Server.  
+The username for the Git account.  
+
+* CLI wizard and Silent install: For Bitbucket Server, add the `--git-user` flag, and define the username. For example, `codefresh`  --->
+
+{::nomarkdown}
+</br>
+{:/}
+
+#### Codefresh resource flags
 **Codefresh demo resources**  
 Optional.  
 Install demo pipelines to use as a starting point to create your own pipelines. We recommend installing the demo resources as these are used in our quick start tutorials.  
 
 * Silent install: Add the `--demo-resources` flag. By default, set to `true`.
 
+**Insecure flag**  
+For _on-premises installations_, if the Ingress controller does not have a valid SSL certificate, to continue with the installation, add the `--insecure` flag to the installation command.  
+
+{::nomarkdown}
+</br>
+{:/}
+{::nomarkdown}
+</br>
+{:/}
+
+### Install the Codefresh CLI
+
+Install the Codefresh CLI using the option that best suits you: `curl`, `brew`, or standard download.  
+If you are not sure which OS to select for `curl`, simply select one, and Codefresh automatically identifies and selects the right OS for CLI installation.
+
+{::nomarkdown}
+</br></br>
+{:/}
+
+### Install the hybrid runtime
+
+**Before you begin**
+* Make sure you meet the [minimum requirements]({{site.baseurl}}/docs/runtime/requirements/#minimum-requirements) for runtime installation
+* [Download or upgrade to the latest version of the CLI]({{site.baseurl}}/docs/clients/csdp-cli/#upgrade-codefresh-cli)
+* Review [Hybrid runtime installation flags](#hybrid-runtime-installation-flags)
+* Make sure your ingress controller is configured correctly:
+  * [Ambasador ingress configuration]({{site.baseurl}}/docs/runtime/requirements/#ambassador-ingress-configuration)
+  * [AWS ALB ingress configuration]({{site.baseurl}}/docs/runtime/requirements/#alb-aws-ingress-configuration)
+  * [Istio ingress configuration]({{site.baseurl}}/docs/runtime/requirements/#istio-ingress-configuration)
+  * [NGINX Enterprise ingress configuration]({{site.baseurl}}/docs/runtime/requirements/#nginx-enterprise-ingress-configuration)
+  * [NGINX Community ingress configuration]({{site.baseurl}}/docs/runtime/requirements/#nginx-community-version-ingress-configuration)
+  * [Traefik ingress configuration]({{site.baseurl}}/docs/runtime/requirements/#traefik-ingress-configuration)
+
+
+{::nomarkdown}
+</br>
+{:/}
+ 
+**How to** 
+
+1. Do one of the following:  
+  * If this is your first hybrid runtime installation, in the Welcome page, select **+ Install Runtime**.
+  * If you have provisioned a hybrid runtime, to provision additional runtimes, in the Codefresh UI, go to [**Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
+1. Click **+ Add Runtimes**, and then select **Hybrid Runtimes**.
+1. Do one of the following:  
+  * CLI wizard: Run `cf runtime install`, and follow the prompts to enter the required values.  
+  * Silent install: Pass the required flags in the install command:  
+    `cf runtime install <runtime-name> --repo <git-repo> --git-token <git-token> --silent`  
+  For the list of flags, see [Hybrid runtime installation flags](#hybrid-runtime-installation-flags).
+1. If relevant, complete the configuration for these ingress controllers:
+  * [ALB AWS: Alias DNS record in route53 to load balancer]({{site.baseurl}}/docs/runtime/requirements/#alias-dns-record-in-route53-to-load-balancer)
+  * [Istio: Configure cluster routing service]({{site.baseurl}}/docs/runtime/requirements/#cluster-routing-service)
+  * [NGINX Enterprise ingress controller: Patch certificate secret]({{site.baseurl}}/docs/runtime/requirements/#patch-certificate-secret)  
+1. If you bypassed installing ingress resources with the `--skip-ingress` flag for ingress controllers not in the supported list, create and register Git integrations using these commands:  
+  `cf integration git add default --runtime <RUNTIME-NAME> --api-url <API-URL>`  
+  `cf integration git register default --runtime <RUNTIME-NAME> --token <RUNTIME-AUTHENTICATION-TOKEN>`  
+
+
+{::nomarkdown}
+</br>
+{:/}
+
 ### Hybrid runtime components
 
 **Git repositories**
 
-* Runtime install repo: The installation repo contains three folders: apps, bootstrap and projects, to manage the runtime itself with Argo CD.  
-* Git source repository: Created with the name `[repo_name]_git-source`. This repo stores manifests for pipelines with sources, events, workflow templates.
+* Runtime install repository: The installation repo contains three folders: apps, bootstrap and projects, to manage the runtime itself with Argo CD.  
+* Git source repository: Created with the name `[repo_name]_git-source`. This repo stores manifests for pipelines with sources, events, workflow templates. See [Add Git Sources to runtimes]({{site.baseurl}}/docs/runtime/git-sources/).
+
+* Shared configuration repository: Stores configuration and resource manifests that can be shared across runtimes, such as integration resources. See [Shared configuration repository]({{site.baseurl}}/docs/reference/shared-configuration/)
 
 **Argo CD components**  
 
@@ -145,126 +253,11 @@ Install demo pipelines to use as a starting point to create your own pipelines. 
 
 Once the hybrid runtime is successfully installed, it is provisioned on the Kubernetes cluster, and displayed in the **Runtimes** page.
 
-### Hybrid runtime post-installation configuration
+{::nomarkdown}
+</br>
+{:/}
 
-After provisioning a hybrid runtime, configure additional settings for the following:
-
-* NGINX Enterprise installations (with and without NGINX Ingress Operator)
-* AWS ALB installations
-* Cluster routing service if you bypassed installing ingress resources 
-* (Existing hybrid runtimes) Internal and external ingress host specifications 
-* Register Git integrations
-
-#### NGINX Enterprise post-install configuration
-
-You must patch the certificate secret in `spec.tls` of the `ingress-master` resource.  
-
-Configure the `ingress-master` with the certificate secret. The secret must be in the same namespace as the runtime.
-
-1. Go to the runtime namespace with the NGINX ingress controller.
-1. In `ingress-master`, add to `spec.tls`:  
-
-    ```yaml
-    tls:                                                                                                                                                                    
-     - hosts:                                                                                                                                                                
-     - <host_name>                                                                                             
-     secretName: <secret_name>
-   ```
-
-#### AWS ALB post-install configuration
-
-For AWS ALB installations, do the following:
-
-* Create an `Alias` record in Amazon Route 53
-* Manually register Git integrations - see _Git integration registration_.
-  
-Create an `Alias` record in Amazon Route 53, and map your zone apex (example.com) DNS name to your Amazon CloudFront distribution.
-For more information, see [Creating records by using the Amazon Route 53 console](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-creating.html){:target="\_blank"}.
-
-{% include image.html
-  lightbox="true"
-  file="/images/runtime/post-install-alb-ingress.png"
-  url="/images/runtime/post-install-alb-ingress.png"
-  alt="Route 53 record settings for AWS ALB"
-  caption="Route 53 record settings for AWS ALB"
-  max-width="30%"
-%}
-
-#### Configure cluster routing service
-
-If you bypassed installing ingress resources with the `--skip-ingress` flag, configure the `host` for the Ingress, or the VirtualService for Istio if used, to route traffic to the `app-proxy` and `webhook` services, as in the examples below.  
-
-**Ingress resource example for `app-proxy`:** 
-
-```yaml
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: codefresh-cap-app-proxy
-  namespace: codefresh
-spec:
-  ingressClassName: alb
-  rules:
-  - host: my.support.cf-cd.com # replace with your host name
-    http:
-      paths:
-      - backend:
-          service:
-            name: cap-app-proxy 
-            port:
-              number: 3017
-        path: /app-proxy/
-        pathType: Prefix
-```
-
-**`VirtualService` examples for `app-proxy` and `webhook`:** 
-
-```yaml
-apiVersion: networking.istio.io/v1alpha3
-kind: VirtualService
-metadata:
-  namespace: test-runtime3 # replace with your runtime name
-  name: cap-app-proxy 
-spec:
-  hosts:
-    - my.support.cf-cd.com # replace with your host name
-  gateways:
-    - my-gateway
-  http:
-    - match:
-      - uri:
-          prefix: /app-proxy 
-      route:
-      - destination:
-          host: cap-app-proxy 
-          port:
-            number: 3017
-```
-
-```yaml  
-apiVersion: networking.istio.io/v1alpha3
-kind: VirtualService
-metadata:
-  namespace: test-runtime3 # replace with your runtime name
-  name: csdp-default-git-source
-spec:
-  hosts:
-    - my.support.cf-cd.com # replace with your host name
-  gateways:
-    - my-gateway
-  http:
-    - match:
-      - uri:
-          prefix: /webhooks/test-runtime3/push-github # replace `test-runtime3` with your runtime name
-      route:
-      - destination:
-          host: push-github-eventsource-svc 
-          port:
-            number: 80
-```
-Continue with [Git integration registration](#git-integration-registration) in this article. 
-
-#### Internal ingress host configuration (optional for existing hybrid runtimes only)
+### (Optional) Internal ingress host configuration for existing hybrid runtimes
 
 If you already have provisioned hybrid runtimes, to use an internal ingress host for app-proxy communication and an external ingress host to handle webhooks, change the specs for the `Ingress` and `Runtime` resources in the runtime installation repository. Use the examples as guidelines.  
 
@@ -337,16 +330,9 @@ data:
       version: 99.99.99
 ```
   
-#### Git integration registration
-
-If you bypassed installing ingress resources with the `--skip-ingress` flag, or if AWS ALB is your ingress controller, create and register Git integrations using these commands:  
-  `cf integration git add default --runtime <RUNTIME-NAME> --api-url <API-URL>`  
-  
-  `cf integration git register default --runtime <RUNTIME-NAME> --token <RUNTIME-AUTHENTICATION-TOKEN>`  
 
 ### Related articles
 [Add external clusters to runtimes]({{site.baseurl}}/docs/runtime/managed-cluster/)  
-[Add Git Sources to runtimes]({{site.baseurl}}/docs/runtime/git-sources/)  
 [Manage provisioned runtimes]({{site.baseurl}}/docs/runtime/monitor-manage-runtimes/)  
-[(Hybrid) Monitor provisioned runtimes]({{site.baseurl}}/docs/runtime/monitoring-troubleshooting/)  
-[Troubleshoot runtime installation]({{site.baseurl}}/docs/troubleshooting/runtime-issues/)
+[Monitor provisioned hybrid runtimes]({{site.baseurl}}/docs/runtime/monitoring-troubleshooting/)  
+[Troubleshoot hybrid runtime installation]({{site.baseurl}}/docs/troubleshooting/runtime-issues/)

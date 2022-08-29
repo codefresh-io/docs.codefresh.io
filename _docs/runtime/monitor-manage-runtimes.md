@@ -13,7 +13,7 @@ The **Runtimes** page displays the provisioned runtimes in your account, both hy
 
 > Unless specified otherwise, management options are common to both hybrid and hosted runtimes.
 
-To monitor provisioned runtimes, including recovering runtimes for failed clusters, see [Monitor provisioned runtimes]({{site.baseurl}}/docs/runtime/monitoring-troubleshooting/).
+To monitor provisioned hybrid runtimes, including recovering runtimes for failed clusters, see [Monitor provisioned hybrid runtimes]({{site.baseurl}}/docs/runtime/monitoring-troubleshooting/).
 
 
 ### Runtime views
@@ -228,7 +228,7 @@ Pass the mandatory flags in the uninstall command:
 
 
 ### Related articles
-[(Hybrid) Monitor provisioned runtimes]({{site.baseurl}}/docs/runtime/monitoring-troubleshooting/)  
+[Monitor provisioned hybrid runtimes]({{site.baseurl}}/docs/runtime/monitoring-troubleshooting/)  
 [Add Git Sources to runtimes]({{site.baseurl}}/docs/runtime/git-sources/)  
 [Add external clusters to runtimes]({{site.baseurl}}/docs/runtime/managed-cluster/)  
 
