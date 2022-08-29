@@ -171,6 +171,21 @@ Each section in this screen corresponds to each pipeline step. There are two spe
 
 These are Codefresh built-in steps and will appear for most builds (you can also create a pipeline that doesn't clone a git repository by default). The rest of the step names depend on your `codefresh.yml` (or the default step names provided by Codefresh). The different columns take the names from the defined [pipeline stages]({{site.baseurl}}/docs/codefresh-yaml/stages/).
 
+### Viewing status for pipeline steps
+
+{: .table .table-bordered .table-hover}
+| Step Status Icon        | Description   |
+| ------------------------| ---------------- |
+|{::nomarkdown}<img src="../images/pipeline/monitoring/step-status-success.gif" display=inline-block/> {:/}| Pipeline step execution successful.  |
+|{::nomarkdown}<img src="../images/pipeline/monitoring/step-status-approved.png" display=inline-block/> {:/}| Pipeline step execution approved. |
+|{::nomarkdown}<img src="../../images/pipeline/monitoring/step-status-denied.png" display=inline-block/> {:/}| Pipeline step denied execution. |
+|{::nomarkdown}<img src="../../images/pipeline/monitoring/step-status-running.png" display=inline-block/> {:/}| Pipeline step currently running. |
+|{::nomarkdown}<img src="../../images/pipeline/monitoring/step-status-running-debug.png" display=inline-block/> {:/}| Pipeline step running in debug mode. |
+|{::nomarkdown}<img src="../../images/pipeline/monitoring/step-status-terminating.png" display=inline-block/> {:/}| Pipeline step is terminating execution. |
+|{::nomarkdown}<img src="../../images/pipeline/monitoring/step-status-terminated.png" display=inline-block/> {:/}| Pipeline step execution manually terminated. |
+|{::nomarkdown}<img src="../../images/pipeline/monitoring/step-status-error.png" display=inline-block/> {:/}| Pipeline step execution resulted error. |
+
+
 ### Viewing logs from pipeline steps
 
 Click on each step in order to see the respective log.
