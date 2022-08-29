@@ -173,17 +173,19 @@ These are Codefresh built-in steps and will appear for most builds (you can also
 
 ### Viewing status for pipeline steps
 
+Monitor the status of the steps in the pipeline as they are executed.
+
 {: .table .table-bordered .table-hover}
 | Step Status Icon        | Description   |
 | ------------------------| ---------------- |
-|{::nomarkdown}<img src="../../../images/pipeline/monitoring/step-status-success.gif" display=inline-block/> {:/}| Pipeline step execution successful.  |
-|{::nomarkdown}<img src="../../../images/pipeline/monitoring/step-status-approved.png" display=inline-block/> {:/}| Pipeline step execution approved. |
-|{::nomarkdown}<img src="../../../images/pipeline/monitoring/step-status-denied.png" display=inline-block/> {:/}| Pipeline step denied execution. |
+|{::nomarkdown}<img src="../../../images/pipeline/monitoring/step-status-success.gif" display=inline-block/> {:/}| Pipeline step completed successfully.  |
+|{::nomarkdown}<img src="../../../images/pipeline/monitoring/step-status-approved.png" display=inline-block/> {:/}| Pipeline step pending approval has been approved, either manually or automatically. |
+|{::nomarkdown}<img src="../../../images/pipeline/monitoring/step-status-denied.png" display=inline-block/> {:/}| Pipeline step pending approval has been denied approval and cannot be executed. |
 |{::nomarkdown}<img src="../../../images/pipeline/monitoring/step-status-running.png" display=inline-block/> {:/}| Pipeline step currently running. |
-|{::nomarkdown}<img src="../../../images/pipeline/monitoring/step-status-running-debug.png" display=inline-block/> {:/}| Pipeline step running in debug mode. |
-|{::nomarkdown}<img src="../../../images/pipeline/monitoring/step-status-terminating.png" display=inline-block/> {:/}| Pipeline step is terminating execution. |
-|{::nomarkdown}<img src="../../../images/pipeline/monitoring/step-status-terminated.png" display=inline-block/> {:/}| Pipeline step execution manually terminated. |
-|{::nomarkdown}<img src="../../../images/pipeline/monitoring/step-status-error.png" display=inline-block/> {:/}| Pipeline step execution resulted error. |
+|{::nomarkdown}<img src="../../../images/pipeline/monitoring/step-status-running-debug.png" display=inline-block/> {:/}| Pipeline step running in debug mode. See [Debugging pipelines](({{site.baseurl}}/docs/configure-ci-cd-pipeline/debugging-pipelines/) for more information. |
+|{::nomarkdown}<img src="../../../images/pipeline/monitoring/step-status-terminating.png" display=inline-block/> {:/}| Pipeline step gracefully terminating execution.  |
+|{::nomarkdown}<img src="../../../images/pipeline/monitoring/step-status-terminated.png" display=inline-block/> {:/}| Pipeline step execution has been manually or automatically terminated. |
+|{::nomarkdown}<img src="../../../images/pipeline/monitoring/step-status-error.png" display=inline-block/> {:/}| Pipeline step execution has been terminated because of error. |
 
 
 ### Viewing logs from pipeline steps
