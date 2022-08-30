@@ -171,6 +171,23 @@ Each section in this screen corresponds to each pipeline step. There are two spe
 
 These are Codefresh built-in steps and will appear for most builds (you can also create a pipeline that doesn't clone a git repository by default). The rest of the step names depend on your `codefresh.yml` (or the default step names provided by Codefresh). The different columns take the names from the defined [pipeline stages]({{site.baseurl}}/docs/codefresh-yaml/stages/).
 
+### Viewing status for pipeline steps
+
+Monitor the status of the steps in the pipeline as they are executed.
+
+{: .table .table-bordered .table-hover}
+| Step Status Icon        | Description   |
+| ------------------------| ---------------- |
+|{::nomarkdown}<img src="../../../images/pipeline/monitoring/step-status-success.png" display=inline-block/> {:/}| Pipeline step completed successfully.  |
+|{::nomarkdown}<img src="../../../images/pipeline/monitoring/step-status-approved.png" display=inline-block/> {:/}| Pipeline step pending approval has been approved, either manually or automatically. |
+|{::nomarkdown}<img src="../../../images/pipeline/monitoring/step-status-denied.png" display=inline-block/> {:/}| Pipeline step pending approval has been denied approval. |
+|{::nomarkdown}<img src="../../../images/pipeline/monitoring/step-status-running.png" display=inline-block/> {:/}| Pipeline step currently running. |
+|{::nomarkdown}<img src="../../../images/pipeline/monitoring/step-status-running-debug.png" display=inline-block/> {:/}| Pipeline step running in debug mode. See [Debugging pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/debugging-pipelines/) for more information. |
+|{::nomarkdown}<img src="../../../images/pipeline/monitoring/step-status-terminating.png" display=inline-block/> {:/}| Pipeline step gracefully terminating execution.  |
+|{::nomarkdown}<img src="../../../images/pipeline/monitoring/step-status-terminated.png" display=inline-block/> {:/}| Pipeline step execution has been manually or automatically terminated. |
+|{::nomarkdown}<img src="../../../images/pipeline/monitoring/step-status-error.png" display=inline-block/> {:/}| Pipeline step execution has been terminated because of error. |
+
+
 ### Viewing logs from pipeline steps
 
 Click on each step in order to see the respective log.
