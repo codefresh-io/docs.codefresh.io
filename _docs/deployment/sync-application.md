@@ -1,5 +1,5 @@
 ---
-title: "Sync applications"
+title: "Manually sync applications"
 description: ""
 group: deployment
 toc: true

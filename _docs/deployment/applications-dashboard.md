@@ -143,17 +143,133 @@ caption="App of Apps in Applications Dashboard"
 max-width="30%"
 %}
 
-<!---#### Application context menu
-Every application has a context menu with these options:
+#### Application context menu
+Every application in the Applications dashboard has a context menu with these options:
 * Quick view  
-  A comprehensive easy-to-understand view of the important information for the application, divided into tabs that 
+  A comprehensive read-only view of the deployment and definition information for the application.  
+  See [Application Quick View](#application-quick-view) in this article.  
 * Synchronize
-  Manually synchronize the application 
+  Manually synchronize the application.  
+  <!---See [Manually sync applications]({{site.baseurl}}/docs/deployment/sync-application).--->  
 * Edit
-  Modify application definitions.
-* Delete 
-  Delete the application.
-  --->
+  Modify application definitions.  
+  See [Update application configuration]({{site.baseurl}}/docs/deployment/create-application/#update-application-configuration).
+
+
+
+### Application Quick View
+
+The Quick View centralizes deployment, definition, and event information for an application in the same location.
+
+#### Access Quick View for application 
+Access the Quick View from the Applications dashboard through the context menu or after drilldown from the Current State tab.
+
+1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard){:target="\_blank"}.
+1. In the row with the application, from the context menu on the right, select **Quick View**.
+  
+{% include
+image.html
+lightbox="true"
+file="/images/applications/quick-view-context-menu.png"
+url="/images/applications/quick-view-context-menu.png"
+alt="Selecting Quick View from the context menu"
+caption="Selecting Quick View from the context menu"
+max-width="50%"
+%} 
+
+  OR  
+  Select the application, and in the Current State tab, click the application resource.
+
+{% include
+image.html
+lightbox="true"
+file="/images/applications/quick-view-access-app-resource.png"
+url="/images/applications/quick-view-access-app-resource.png"
+alt="Accessing Quick View from the Current State tab"
+caption="Accessing Quick View from the Current State tab"
+max-width="50%"
+%} 
+
+
+
+#### Quick View - Summary
+Displays health, sync status, and source and destination definitions.
+
+{% include
+image.html
+lightbox="true"
+file="/images/applications/quick-view-summary.png"
+url="/images/applications/quick-view-summary.png"
+alt="Application Quick View: Summary"
+caption="Application Quick View: Summary"
+max-width="40%"
+%}
+
+#### Quick View - Metadata
+Displays labels and annotations for the application.
+
+{% include
+image.html
+lightbox="true"
+file="/images/applications/quick-view-metadata.png"
+url="/images/applications/quick-view-metadata.png"
+alt="Application Quick View: Metadata"
+caption="Application Quick View: Metadata"
+max-width="40%"
+%}
+
+#### Quick View - Parameters
+Displays parameters configured for the application, based on the tool used to create the application's manifests.  
+The parameters displayed differ according to the tool:  `directory` (as in the screenshot below), `Helm` charts, or `Kustomize` manifests, or the specific plugin.  
+
+{% include
+image.html
+lightbox="true"
+file="/images/applications/quick-view-parameters.png"
+url="/images/applications/quick-view-parameters.png"
+alt="Application Quick View: Parameters"
+caption="Application Quick View: Parameters"
+max-width="40%"
+%}
+
+#### Quick View - Sync Options
+Displays sync options enabled for the application.
+
+{% include
+image.html
+lightbox="true"
+file="/images/applications/quick-view-parameters.png"
+url="/images/applications/quick-view-parameters.png"
+alt="Application Quick View: Parameters"
+caption="Application Quick View: Parameters"
+max-width="40%"
+%}
+
+#### Quick View - Manifest 
+Displays the YAML version of the application manifest.
+
+{% include
+image.html
+lightbox="true"
+file="/images/applications/quick-view-manifest.png"
+url="/images/applications/quick-view-manifest.png"
+alt="Application Quick View: Manifest"
+caption="Application Quick View: Manifest"
+max-width="40%"
+%}
+
+#### Quick View - Events
+Displays status and sync events for the application.
+
+{% include
+image.html
+lightbox="true"
+file="/images/applications/quick-view-events.png"
+url="/images/applications/quick-view-events.png"
+alt="Application Quick View: Events"
+caption="Application Quick View: Events"
+max-width="40%"
+%}
 
 ### Application Current State
 The Current State tab for an application shows the live state of the application and the application's resources (Kubernetes objects) in the cluster in Tree and List view formats. 
@@ -163,10 +279,11 @@ The Current State tab for an application shows the live state of the application
 
 > Filters are shared between both views, and when applied are retained when switching between views. 
 
-Current State insights and actions:
+**Current State insights and actions**
 *  Health status: Reflects Argo CD's built-in health checks and status for the Application resource and Kubernetes objects. For more information, see [Argo CD Resource Health](https://argo-cd.readthedocs.io/en/stable/operator-manual/health/){:target="\_blank"}.
 *  Sync state: Desired state in Git versus live state in cluster.
 * Resource details: High-level information on mouse-over, and detailed manifest and log information on selecting the resource.
+
 
 The icon for a resource node identifies the type of Kubernetes resource it represents. For general information on K8s resources, see [Working with Kubernetes objects](https://kubernetes.io/docs/concepts/overview/working-with-objects/){:target="\_blank"}.
 
@@ -217,6 +334,10 @@ The sync state is identified by the icon to the left of the resource name and th
 
 ##### Resource inventory
 At the bottom left is the Resource inventory, summarizing the aggregated count for each resource type in the application. Syncing and Out-of-Sync resources are bucketed separately for visibility and quick access. 
+
+{::nomarkdown}
+<br>
+{:/}
 
 **Click-filters**  
 In the resource inventory, selecting a Syncing or Out-of-Sync resource type, filters the Current State by that resource type and sync state.
@@ -287,6 +408,11 @@ max-width="50%"
 #### Detailed resource information
 Selecting a resource, in either Tree or List view, shows resource manifests, logs, and events if any, based on the resource type you selected. Endpoints for example show only manifests, while pods show manifests, logs, and events.  
 
+> Selecting the application resource in Tree View, displays the [Quick View](#application-quick-view) for the application.
+
+{::nomarkdown}
+<br>
+{:/}
 
 **Summary**
  
@@ -307,6 +433,9 @@ max-width="50%"
 * Share resource details: Copy the URL and send to others in your organization to share the resource details for collaborative review and analysis. Pasting the URL in a browser opens to the same resource view.
 * Hide Managed Fields: When selected, hides managed-field information from the manifest. Managed-fields show information on which field manager manages the field, after Kubernetes introduced `Server Side Apply`. For more information, see [Field Management](https://kubernetes.io/docs/reference/using-api/server-side-apply/#field-management){:target="\_blank"}.
 
+{::nomarkdown}
+<br>
+{:/}
 
 **Logs**  
 
@@ -324,6 +453,10 @@ max-width="50%"
 * Wrap: Enable/disable line wrapping 
 * Download: Download the complete log into a text file for offline viewing and analysis.
 
+{::nomarkdown}
+<br>
+{:/}
+
 **Events**
 
 {% include
@@ -336,7 +469,9 @@ caption="Current State: Events for resource"
 max-width="50%"
 %}
 
-View events for application resources in the Events tab. If your rutime is lower than the version required to view events, you are notified to upgrade your runtime.
+View events for application resources in the Events tab.  
+> If your rutime is lower than the version required to view events, you are notified to upgrade your runtime.
+
 The Events tab displays both successful and failed events from Argo CD, starting with the most recent event. 
 Argo CD displays events as they occur for an application resource, and retains event information for a duration of 30 minutes. Historical events older than this duration are removed, and the Events tab can be empty if there are no ongoing events.
 
