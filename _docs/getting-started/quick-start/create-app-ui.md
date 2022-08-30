@@ -1,19 +1,17 @@
 ---
-title: "Create the codefresh-guestbook application"
+title: "Create an application"
 description: ""
 group: getting-started
 sub-group: quick-start
 toc: true
 ---
 
-Now that you have created all the resources for the application, you can create the application in Codefresh.
-For the quick start, you will create the `codefresh-guestbook` application.
+Let's start by creating a simple application, the `codefresh-guestbook` application in the Codefresh UI.  
+We'll create the application without resources and then define/add resources in the next step.  
+
 
 For detailed information, see [Create an application]({{site.baseurl}}/docs/deployment/create-application).
 
-**Before you begin**  
-
-[Create resources for codefresh-guestbook application]({{site.baseurl}}/docs/getting-started/quick-start/create-app-specs)  
 
 **How to**  
 
@@ -23,9 +21,10 @@ For detailed information, see [Create an application]({{site.baseurl}}/docs/depl
 1. In the Add Application panel, add definitions for the application:
   * **Application name**: `codefresh-guestbook` for the quick start.
   * **Runtime**: The runtime to associate with the application, `hosted-runtime` for the quick start.  
-  * **YAML filename**: The name of the application's configuration manifest, assigned on commit to Git. By default, the manifest is assigned the application name.
+  * **Name for YAML file**: The name of the application's configuration manifest, assigned on commit to Git. By default, the manifest is assigned the application name.  
+    You can click the Edit icon and change the name, if needed.
 
-  >The application definitions cannot be changed after you continue to the Configuration settings.
+  >You cannot change the application definitions once you continue to the Configuration settings.
 
 {% include 
    image.html 
@@ -44,7 +43,7 @@ For detailed information, see [Create an application]({{site.baseurl}}/docs/depl
   * **Repository URL**: The URL to the repo in Git where you created the YAML resource files for the application.
   * **Revision**: The branch in Git with the resource files.
   * **Path**: The folder in Git with the resource files.
-  * **Namespace**: Optional. For the quick start, we'll create a namespace for the application, `quick-start`. 
+  * **Namespace**: Optional. For the quick start, we'll create a namespace for the application, entitled `quick-start`. 
   * **Sync Policy**: Change to **Automatic**, and select **Prune resources** to automatically remove unused resources.
   * **Sync Options**: If you defined a namespace, select **Auto-create namespace** to ensure that the namespace is created if it doesn't exist. 
  
@@ -62,7 +61,7 @@ For detailed information, see [Create an application]({{site.baseurl}}/docs/depl
 {:start="6"}
 1. Retain the default **Advanced Settings**.  
 1. To commit all your changes, select **Commit**.  
-  The Commit form is displayed with the application's definition on the left, and the read-only version of the manifest with the configuration settings you defined on the right.
+  The Commit form is displayed with the application's definitions on the left, and the read-only version of the manifest with the configuration settings you defined on the right.
 1. Select the **Git Source** to which to commit.
 
 {% include 
@@ -91,20 +90,21 @@ For detailed information, see [Create an application]({{site.baseurl}}/docs/depl
    %} 
 
 {:start="10"}
-1. Select the application, and then click the **Current State** tab to see all the resources created for the application.
+1. Select the application. The Current State tab does not display any resources as we have not created any resources for the application. 
 
   {% include 
    image.html 
    lightbox="true" 
-   file="/images/getting-started/quick-start/cdops-app-current-state.png" 
-   url="/images/getting-started/quick-start/cdops-app-current-state.png" 
-   alt="Current State for codefresh-guestbook application" 
-   caption="Current State for codefresh-guestbook application"
+   file="/images/getting-started/quick-start/cdops-app-empty-current-state.png" 
+   url="/images/getting-started/quick-start/cdops-app-empty-current-state.png" 
+   alt="Empty Current State for new application" 
+   caption="Empty Current State for new application"
    max-width="70%" 
-   %} 
+   %}
+  
 
+In the next task, you will create and commit resources for the `codefresh-guestbook` application and deploy the application. 
 
-The final step is to make a change in the application manifest to enforce a rollout. 
 
 ### What to do next
-[Update image tag for codefresh-guestbook application]({{site.baseurl}}/docs/getting-started/quick-start/create-rollout)
+[Create and commit resources for application]({{site.baseurl}}/docs/getting-started/quick-start/create-app-specs/)

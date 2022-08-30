@@ -12,11 +12,11 @@
         url:  "/verify-requirements"
       - title: Install a hybrid runtime
         url: "/runtime"
-      - title: Create resources for the codefresh-guestbook application
+      - title: Create an application
+        url: "/create-app-ui"     
+      - title: Create and commit resources for application
         url: "/create-app-specs"
-      - title: Create the codefresh-guestbook application
-        url: "/create-app-ui"
-      - title: Update the image tag for the codefresh-guestbook application
+      - title: Update the image tag for application
         url: "/create-rollout"
       - title: Trigger the Hello World example pipeline
         url: "/hello-world"

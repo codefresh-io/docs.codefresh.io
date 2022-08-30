@@ -17,14 +17,10 @@ Each section indicates the runtime environment it is relevant to.
 ### Provision runtimes
 Based on your deployment model, start by provisioning the hosted or hybrid runtime. Hosted and hybrid runtimes can co-exist with each other.
 
-* Hosted runtimes: Hosted on a Codefresh cluster and managed by Codefresh. You need to provision your hosted runtime once for your account.
-* Hybrid runtimes: Hosted on a customer cluster and managed by the customer. You can provision multiple hybrid runtimes in the same account.
-
-{::nomarkdown}
-<br>
-{:/}
 
 #### Hosted 
+Hosted runtimes are hosted on a Codefresh cluster and managed by Codefresh. You need to provision your hosted runtime once for your account.  
+
 1. [Provision a hosted runtime]({{site.baseurl}}/docs/getting-started/quick-start/install-hosted)  
   Provision the hosted runtime with a single click, and complete the setup for your hosted environment.  
 
@@ -33,6 +29,8 @@ Based on your deployment model, start by provisioning the hosted or hybrid runti
 {:/}
 
 #### Hybrid
+Hybrid runtimes: Hosted on a customer cluster and managed by the customer. You can provision multiple hybrid runtimes in the same account.  
+
 1. [Prepare for hosted runtime installation]({{site.baseurl}}/docs/getting-started/quick-start/verify-requirements)  
   Verify your environment matches the requirements for installing Codefresh runtime.
 1. [Install hybrid runtime]({{site.baseurl}}/docs/getting-started/quick-start/runtime)  
@@ -40,11 +38,11 @@ Based on your deployment model, start by provisioning the hosted or hybrid runti
 
 ### Deploy an application
 
-1. [Create resources for codefresh-guestbook application]({{site.baseurl}}/docs/getting-started/quick-start/create-app-specs)  
-  Create rollout, service, and analysis template resources prior to creating the `codefresh-guestbook` application.
-1. [Create the codefresh-guestbook application]({{site.baseurl}}/docs/getting-started/quick-start/create-app-ui)  
+1. [Create an application]({{site.baseurl}}/docs/getting-started/quick-start/create-app-ui)  
   Create the `codefresh-guestbook` application in the Codefresh UI.
-1. [Update the image tag for codefresh-guestbook]({{site.baseurl}}/docs/getting-started/quick-start/create-rollout)  
+1. [Create and commit resources for application]({{site.baseurl}}/docs/getting-started/quick-start/create-app-specs)  
+  Create rollout and service resources, and commit these resources to deploy the `codefresh-guestbook` application.
+1. [Update the image tag for application]({{site.baseurl}}/docs/getting-started/quick-start/create-rollout)  
   Update the image for the `codefresh-guestbook` application to trigger a rollout.
 
 ### Trigger/create a Delivery Pipeline 

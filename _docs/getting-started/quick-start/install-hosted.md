@@ -10,7 +10,8 @@ If you have Hosted GitOps, set up your hosted runtime environment:
 
 1. Provision the hosted runtime with a single click
 1. Authorize access through your OAuth token to the organization where Codefresh creates the Git runtime repo and the shared configuration repo
-1. Connect to an external K8s cluster with access to the internet, to which you can deploy applications  
+1. Connect to an external K8s cluster with access to the internet, to which you can deploy applications 
+1. Install Argo Rollouts on the cluster   
 
 Read our [blog on Hosted GitOps](https://codefresh.io/blog/codefresh-upends-continuous-delivery-with-hosted-gitops-platform-featuring-dora-dashboards-and-first-class-integrations-for-ci/).  
 For detailed information on each of the steps below, see [Set up a hosted runtime environment]({{site.baseurl}}/docs/runtime/hosted-runtime/).  
@@ -87,6 +88,21 @@ alt="Connect a K8s cluster for hosted runtime"
 caption="Connect a K8s cluster for hosted runtime"
 max-width="70%" 
 %}
+
+1. Install Argo Rollouts on the cluster you added. You'll need this to apply the `rollout` resource we will create for the application in the next task.
+  * Go to [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
+  * Select **Topology View**.
+  * Select the target cluster, and then select **+ Install Argo Rollouts**.
+
+{% include 
+   image.html 
+   lightbox="true" 
+   file="/images/getting-started/quick-start/cdops-app-install-rollout.png" 
+   url="/images/getting-started/quick-start/cdops-app-install-rollout.png" 
+   alt="Install Argo Rollouts on managed cluster" 
+   caption="Install Argo Rollouts on managed cluster"
+   max-width="50%" 
+   %}
 
 ### What to do next
 [Create resources for codefresh-guestbook application]({{site.baseurl}}/docs/getting-started/quick-start/create-app-specs) 

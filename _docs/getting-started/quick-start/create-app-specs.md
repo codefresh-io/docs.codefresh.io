@@ -1,40 +1,25 @@
 ---
-title: "Create resources for codefresh-guestbook"
+title: "Create and commit resources for application"
 description: ""
 group: getting-started
 sub-group: quick-start
 toc: true
 ---
 
-Before you can create an application in Codefresh, you need to create the resources used by the application:
-
-1. Install Argo Rollouts on the target cluster to which you will deploy the application
+Now that you have created an application, you need to deploy the application. Let's deploy the `codefresh-guestbook` application by creating and commiting resources.  
+You will create and commit the following resources:  
+1. A folder in Git to save resources for the application 
 1. `Rollout` resource defining the deployment strategy 
-1. Service resource to expose the application to external traffic
-1. Analysis Template resource defining the validation requirements before deployment
+1. `Service` resource to expose the application to external traffic
 
-### Install Argo Rollouts on the target cluster
-To apply the `Rollout` resource for the application, you must have Argo Rollouts installed on the target cluster. If not installed, follow the steps to install Argo Rollouts.
-
-1. In the Codefresh UI, go to [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
-1. Select **Topology View**.
-1. Select the target cluster, and then select **+ Install Argo Rollouts**.
-
-{% include 
-   image.html 
-   lightbox="true" 
-   file="/images/getting-started/quick-start/cdops-app-install-rollout.png" 
-   url="/images/getting-started/quick-start/cdops-app-install-rollout.png" 
-   alt="Install Argo Rollouts on target cluster" 
-   caption="Install Argo Rollouts on target cluster"
-   max-width="50%" 
-   %}
+### Before you begin
+* [Create an application]({{site.baseurl}}/docs/getting-started/quick-start/create-app-ui)  
+* Make sure [Argo Rollouts is installed]({{site.baseurl}}/docs/deployment/install-argo-rollouts) on the target cluster
 
 ### Create folder in Git for application resources
-Create a folder in the Git repo in which to save all the resources. 
+Create a folder in the Git repo in which to save all the resources for the `codefresh-guestbook` application. 
 
 * In your Git repo, create a folder to store the resources needed to deploy the application.  
-
   For example, `/quick-start/`
 
 ### Create rollout.yaml
@@ -42,7 +27,7 @@ Create a folder in the Git repo in which to save all the resources.
 Create a rollout resource for the application you want to deploy.  
   
 
-To leverage Argo Rollout's deployment capabilities, we are using the Argo's Rollout resource instead of the native Kubernetes Deployment object.
+To leverage Argo Rollouts' deployment capabilities, we are using the Argo's `rollout` resource instead of the native Kubernetes Deployment object.
 For detailed information on the fields you can define, see [Argo Rollout specification](https://argoproj.github.io/argo-rollouts/features/specification/){:target="\_blank"}. 
 
 
@@ -75,10 +60,6 @@ spec:
   minReadySeconds: 30
   strategy:
     canary:
-      analysis:
-        templates:
-          - templateName: background-analysis
-        startingStep: 1
       steps:
         - setWeight: 25
         - pause: {duration: 20s}
@@ -128,48 +109,23 @@ spec:
 | `spec.ports`              | The internal `port`, 8080 in our example, and external `targetPort`, 80 in our example.| 
 | `selector.app`            | The pods to select, and MUST be identical to that defined in `rollouts.yaml`, `codefresh-guestbook` in our example.| 
 
-### Create an AnalysisTemplate for rollout validation
-Create an `AnalysisTemplate` resource to validate that your changes conform to the requirements before deployment. This is the final resource you need before you can create the application.
+### View application resources in Codefresh
+Once you create and commit the `rollout` and `service` resources, return to the Applications dashboard. The Current State  to see these resources.
 
-The name of the `AnalysisTemplate` in the quick start example is `background-analysis`. The template interfaces with Prometheus as the third-party metric provider to validate metrics.  
+1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard?sort=desc-lastUpdated){:target="\_blank"}.  
+1. Select the application. 
+  The Current State tab is now populated with the `rollout` and `service` resources you added. 
 
-You can use any third-party metric provider supported by Argo Rollouts, such as Prometheus, Datadog, Wavefront, and more. Read the official documentation on [Analysis section in Argo Rollouts](https://argoproj.github.io/argo-rollouts/){:target="\_blank"}. 
-
-
-* In the Git repository create the `analysisTemplate.yaml` file, as in the example below.
-
-
-```yaml
-apiVersion: argoproj.io/v1alpha1
-kind: AnalysisTemplate
-metadata:
-  name: background-analysis
-spec:
-  metrics:
-    - name: prometheus-metric
-      count: 4
-      interval: 5s
-      successCondition: result[0] >= 100
-      failureLimit: 1
-      provider:
-        prometheus:
-          address: http://a95910c83807a4089a2458554bf5c21e-1864259807.us-east-1.elb.amazonaws.com:9090
-          query: |
-            sum(argocd_app_reconcile_sum)
-```
-
-####  Fields in `analysisTemplate.yaml`
-
-{: .table .table-bordered .table-hover}
-|  Analysis Template field            |  Notes |  
-| --------------            | --------------           |  
-| `count`                   | The total number of measurements taken, `4` in our example.| 
-| `interval`                | The interval between measurement samplings, `5s` in our example.| 
-| `successCondition`        | The requirement for the rollout to be considered a success. In our example, the resulting metric value must be equal to or greater than 100.|
-| `failureLimit`            | The maximum number of failures permitted, `1` in our example. If the metric value is below 100 more than once, the rollout is aborted.|
-| `query`                   | The query submitted to the Prometheus server.|
-
-You are now ready to create the application in Codefresh. 
+  {% include 
+   image.html 
+   lightbox="true" 
+   file="/images/getting-started/quick-start/cdops-app-current-state.png" 
+   url="/images/getting-started/quick-start/cdops-app-current-state.png" 
+   alt="Current State with resources for application" 
+   caption="Current State with resources for application"
+   max-width="70%" 
+   %}
 
 ### What to do next
-[Create the codefresh-guestbook application]({{site.baseurl}}/docs/getting-started/quick-start/create-app-ui)
+<!---[Create Jira and Docker Hub integrations ]({{site.baseurl}}/docs/getting-started/quick-start/create-app-ui)--->
+[(Optional) Update image tag for application]({{site.baseurl}}/docs/getting-started/quick-start/create-rollout)
