@@ -380,7 +380,7 @@ redis:
         helm:
           chart: codefresh
           repoUrl: https://chartmuseum.codefresh.io/codefresh
-          version: 1.2.12
+          version: 1.2.14
     ```
 1. Perform a dry run and verify that there are no errors:  
   `kcfi deploy --dry-run --debug -c codefresh/config.yaml`
@@ -447,11 +447,11 @@ localhost:5000/codefresh/pipeline-manager:3.121.7
 
 > Prerequisites: sa.json to access Codefresh Enterprise GCR
 
-`kcfi images push --codefresh-registry-secret sa.json --images-list images-list-v1.2.12 --registry localhost:5000 --user "root" --password "root"`
+`kcfi images push --codefresh-registry-secret sa.json --images-list images-list-v1.2.14 --registry localhost:5000 --user "root" --password "root"`
 
 - To push images via [push-to-registry.sh](https://github.com/codefresh-io/onprem-images/blob/master/push-to-registry.sh) script use (see [prerequisites](https://github.com/codefresh-io/onprem-images#prerequesites)):
 
-`./push-to-registry.sh localhost:5000 v1.2.12`
+`./push-to-registry.sh localhost:5000 v1.2.14`
 
 **Install/Upgrade Codefresh with private docker registry config**
 
