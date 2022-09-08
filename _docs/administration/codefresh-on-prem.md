@@ -210,7 +210,7 @@ Define either **operator** or **helm** as your preferred installation method in 
 
 ```yaml
   installer:
-    # type: 
+    # type:
     #   "operator" - apply codefresh crd definition
     #   "helm" - install/upgrade helm chart from client
 ```
@@ -230,11 +230,11 @@ images:
   - images/images-list
 ```
 Set `usePrivateRegistry: true`, and set `privateRegistry` `address`, `username` and `password`.
- 
+
 Then, execute the following:
 
 ```
-kcfi images push  [-c|--config /path/to/config.yaml] 
+kcfi images push  [-c|--config /path/to/config.yaml]
 ```
 
 Or, to push a single image, execute the following:
@@ -281,52 +281,52 @@ kcfi deploy [ -c config.yaml ] [-n namespace]
 
 
 ## High-Availability (HA) with active-passive clusters
-Enable high-availability in the Codefresh platform for disaster recovery with an active-passive cluster configuration.  
+Enable high-availability in the Codefresh platform for disaster recovery with an active-passive cluster configuration.
 Review the prerequisites, and then do the following to configure high-availability:
-* For new installations, install Codefresh on the active cluster  
-* Install Codefresh on the passive cluster  
+* For new installations, install Codefresh on the active cluster
+* Install Codefresh on the passive cluster
 * When needed, switch between clusters for disaster recovery
 
 **Prerequisites**
 
-* **K8s clusters**  
-  Two K8s clusters, one designated as the active cluster, and the other designated as the passive cluster for disaster recovery.  
+* **K8s clusters**
+  Two K8s clusters, one designated as the active cluster, and the other designated as the passive cluster for disaster recovery.
 
-* **External databases and services**  
-  Databases and services external to the clusters.  
+* **External databases and services**
+  Databases and services external to the clusters.
 
   * Postgres database (see [Configuring an external Postgres database](#configuring-an-external-postgres-database))
   * MongoDB (see [Configuring an external MongoDB](#configuring-an-external-mongodb))
   * Redis service (see [Configuring an external Redis service](#configure-an-external-redis-service))
-  * RabbitMQ service (see [Configuring an external RabbitMQ service](#configure-an-external-redis-service))  
+  * RabbitMQ service (see [Configuring an external RabbitMQ service](#configure-an-external-redis-service))
   * Consul service (see [Configuring an external Consul service](#configuring-an-external-consul-service))
 
-* **DNS record**  
+* **DNS record**
   To switch between clusters for disaster recovery
 
 **Install Codefresh on active cluster**
 
-If you are installing Codefresh for the first time, install Codefresh on the cluster designated as the _active_ cluster.  
+If you are installing Codefresh for the first time, install Codefresh on the cluster designated as the _active_ cluster.
 See [Installing the Codefresh platform]({{site.baseurl}}/docs/administration/codefresh-on-prem/#install-the-codefresh-platform).
 
 **Install Codefresh on passive cluster**
 
-First get the `values.yaml` file from the current Codefresh installation on the active cluster. Then install Codefresh on the passive cluster using Helm. 
+First get the `values.yaml` file from the current Codefresh installation on the active cluster. Then install Codefresh on the passive cluster using Helm.
 
 **Get values.yaml**
 1. Switch your kube context to the active cluster.
-1. Get `values.yaml` from the active cluster:  
-  `helm get values ${release_name} -n ${namespace} > cf-passive-values.yaml`  
-  where:  
-  `{release-version}` is the name of the Codefresh release, and is by default `cf`.   
-  `${namespace}` is the namespace with the Codefresh release, and is by default `codefresh`.  
+1. Get `values.yaml` from the active cluster:
+  `helm get values ${release_name} -n ${namespace} > cf-passive-values.yaml`
+  where:
+  `{release-version}` is the name of the Codefresh release, and is by default `cf`.
+  `${namespace}` is the namespace with the Codefresh release, and is by default `codefresh`.
 
 {:start="3"}
-1. Update the required variables in `cf-passive-values.yaml`.  
+1. Update the required variables in `cf-passive-values.yaml`.
   > If the variables do not exist, add them to the file.
 
   * In the `global` section, disable `seedJobs` by setting it to `false`:
-  
+
   ```yaml
   global:
     seedJobs: false
@@ -338,20 +338,20 @@ First get the `values.yaml` file from the current Codefresh installation on the 
   cfapi:
     env:
       FREEZE_WORKFLOWS_EXECUTION: true
-  ``` 
+  ```
 
-**Install Codefresh on passive cluster**   
+**Install Codefresh on passive cluster**
 
-1. Download the Helm chart:  
-  `helm repo add codefresh-onprem https://chartmuseum.codefresh.io/codefresh`  
-  `helm fetch codefresh-onprem/codefresh --version ${release-version}`  
-  where:  
-  `{release-version}` is the version of Codefresh you are downloading. 
+1. Download the Helm chart:
+  `helm repo add codefresh-onprem https://chartmuseum.codefresh.io/codefresh`
+  `helm fetch codefresh-onprem/codefresh --version ${release-version}`
+  where:
+  `{release-version}` is the version of Codefresh you are downloading.
 
-1. Unzip the Helm chart:  
+1. Unzip the Helm chart:
   `tar -xzf codefresh-${release-version}.tgz`
 1. Go to the folder where you unzipped the Helm chart.
-1. Install Codefresh with the Helm command using `cf-passive-values.yaml`:  
+1. Install Codefresh with the Helm command using `cf-passive-values.yaml`:
   `helm install cf . -f ${path}/cf-passive-values.yaml -n codefresh`
 
 
@@ -359,9 +359,9 @@ First get the `values.yaml` file from the current Codefresh installation on the 
 
 For disaster recovery, switch between the active and passive clusters.
 
-1. In the `cfapi` deployment on the _active_ cluster, change the value of `FREEZE_WORKFLOWS_EXECUTION` from `false` to `true`.  
-  If the variable does not exist, add it, and make sure the value is set to `true`.  
-1. In the `cfapi` deployment on the _passive_ cluster, change the value of `FREEZE_WORKFLOWS_EXECUTION` from `true` to `false`. 
+1. In the `cfapi` deployment on the _active_ cluster, change the value of `FREEZE_WORKFLOWS_EXECUTION` from `false` to `true`.
+  If the variable does not exist, add it, and make sure the value is set to `true`.
+1. In the `cfapi` deployment on the _passive_ cluster, change the value of `FREEZE_WORKFLOWS_EXECUTION` from `true` to `false`.
 1. Switch DNS from the currently active cluster to the passive cluster.
 
 **Services without HA**
@@ -380,7 +380,7 @@ After you install Codefresh, these are some day-2 operations that you should fol
 
 Codefresh supports out-of-the-box Git logins using your local username and password, or logins using your git provider (per the list and instructions of providers below). You can also configure login to supported SSO providers post-install as described [in the Codefresh documentation]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/).
 
-If you’d like to set up a login to Codefresh using your Git provider, first login using the default credentials (username: `AdminCF`, password: `AdminCF` and add your Git provider OAuth integration details in our admin console: 
+If you’d like to set up a login to Codefresh using your Git provider, first login using the default credentials (username: `AdminCF`, password: `AdminCF` and add your Git provider OAuth integration details in our admin console:
 
 **Admin Management** > **IDPs** tab
 
@@ -421,7 +421,7 @@ After app creation, note down the created Application ID and Client Secret. They
   lightbox="true"
   file="/images/administration/installation/git-idp.png"
   url="/images/administration/installation/git-idp.png"
-    %}   
+    %}
 
 >Note: When configuring the default IDP (for GitHub, GitLab, etc), do not modify the Client Name field. Please keep them as GitHub, GitLab, BitBucket, etc. Otherwise, the signup and login views won’t work.
 
@@ -476,7 +476,7 @@ These are the volumes required for Codefresh on-premises:
 
 {% raw %}
 
- (*) Possibility to use external service 
+ (*) Possibility to use external service
 
  (**) Running on netfs (nfs, cifs) is not recommended by product admin guide
 
@@ -484,7 +484,7 @@ These are the volumes required for Codefresh on-premises:
 
 {% endraw %}
 
-StatefulSets (`cf-builder` and `cf-runner`) process their data on separate physical volumes (PVs) and can be claimed using Persistent Volume Claims (PVCs) with default initial sizes of 100Gi. Also, those StatefulSets have the ability to connect to existing pre-defined PVCs. 
+StatefulSets (`cf-builder` and `cf-runner`) process their data on separate physical volumes (PVs) and can be claimed using Persistent Volume Claims (PVCs) with default initial sizes of 100Gi. Also, those StatefulSets have the ability to connect to existing pre-defined PVCs.
 
 The default initial volume size (100 Gi) can be overridden in the custom `config.yaml` file. Values descriptions are in the `config.yaml` file.
 The registry’s initial volume size is 100Gi. It also can be overridden in a custom `config.yaml` file. There is a possibility to use a customer-defined registry configuration file (`config.yaml`) that allows using different registry storage back-ends (S3, Azure Blob, GCS, etc.) and other parameters. More details can be found in the [Docker documentation](https://docs.docker.com/registry/configuration/).
@@ -504,13 +504,13 @@ The retention mechanism is implemented as a Cron Job through the Codefresh. It r
 * workflowrevisions
 
 {: .table .table-bordered .table-hover}
-| Env Variable                   | Description                                                                     | Default                | 
+| Env Variable                   | Description                                                                     | Default                |
 |------------------------------- |-------------------------------------------------------------------------------- |----------------------  |
 |`RETENTION_POLICY_IS_ENABLED`      | Determines if automatic build deletion through the Cron job is enabled.         | `true`                 |
 |`RETENTION_POLICY_BUILDS_TO_DELETE`| The maximum number of builds to delete by a sinle Cron job. To avoid database issues, especially when there are large numbers of old builds, we recommend deleting them in small chunks. You can gradually increase the number after verifying that performance is not affected.                                   | `50`                  |
 |`RETENTION_POLICY_DAYS`         | The number of days for which to retain builds. Builds older than the defined retention period are deleted.                                  | `180`              |
 |`RUNTIME_MONGO_URI`             | Optional. The URI of the Mongo database from which to remove MongoDB logs (in addition to the builds). |              |
-                                
+
 
 ### Managing Codefresh backups
 
@@ -531,7 +531,7 @@ There you will find a few configuration parameters, which you might want to chan
     * `target.uri` - target mongo URI. It is recommended to leave the mongo uri value blank - it will be taken automatically from the Codefresh release installed in your cluster
     * `scheduler` - here you can specify cron expression for your backups schedule, backups retention and timeout values
 
-For more advanced backup plan settings, like specifying various remote cloud-based storage providers for your backups, configuring notifications and other, please refer to [this](https://github.com/stefanprodan/mgob#configure) page 
+For more advanced backup plan settings, like specifying various remote cloud-based storage providers for your backups, configuring notifications and other, please refer to [this](https://github.com/stefanprodan/mgob#configure) page
 
 To **deploy the backup manager** service, please select a correct kube context, where you have Codefresh on-premises installed and deploy backup-manager with the following command:
 
@@ -576,7 +576,7 @@ tls:
   key: certs/private.key
 ```
 This annotation will create a new Load Balancer - Network Load Balancer, which you should use in the Codefresh UI DNS record.
-Update the DNS record according to the new service. 
+Update the DNS record according to the new service.
 
 #### L7 ELB with SSL Termination
 
@@ -598,9 +598,9 @@ ingress-nginx:
       targetPorts:
         http: http
         https: http
-        
+
 tls:
-  selfSigned: true        
+  selfSigned: true
 ```
 
 - both http and https target port should be set to **80**.
@@ -680,15 +680,27 @@ Add CSP environment variables to `config.yaml`, and define the values to be retu
 cfui:
   env:
     CONTENT_SECURITY_POLICY: "<YOUR SECURITY POLICIES>"
-    CONTENT_SECURITY_POLICY_REPORT_ONLY: "default-src 'self'; font-src 'self' 
-      https://fonts.gstatic.com; script-src 'self' https://unpkg.com https://js.stripe.com; 
+    CONTENT_SECURITY_POLICY_REPORT_ONLY: "default-src 'self'; font-src 'self'
+      https://fonts.gstatic.com; script-src 'self' https://unpkg.com https://js.stripe.com;
       style-src 'self' https://fonts.googleapis.com; 'unsafe-eval' 'unsafe-inline'"
     CONTENT_SECURITY_POLICY_REPORT_TO: "<LIST OF ENDPOINTS AS JSON OBJECTS>"
 ```
-`CONTENT_SECURITY_POLICY` is the string describing content policies. Use semi-colons to separate between policies.  
-`CONTENT_SECURITY_POLICY_REPORT_TO` is a comma-separated list of JSON objects. Each object must have a name and an array of endpoints that receive the incoming CSP reports. 
+`CONTENT_SECURITY_POLICY` is the string describing content policies. Use semi-colons to separate between policies.
+`CONTENT_SECURITY_POLICY_REPORT_TO` is a comma-separated list of JSON objects. Each object must have a name and an array of endpoints that receive the incoming CSP reports.
 
 For detailed information, see the [Content Security Policy article on MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP).
+
+### Enable x-hub-signature-256 signature for Github AE
+Add `USE_SHA256_GITHUB_SIGNATURE` environment variable to **cfapi** deployment in `config.yaml`.
+```yaml
+cfapi:
+  env:
+    USE_SHA256_GITHUB_SIGNATURE: "true"
+```
+
+For detailed information, see the [Securing your webhooks](https://docs.github.com/en/developers/webhooks-and-events/webhooks/securing-your-webhooks) and [Webhooks](https://docs.github.com/en/github-ae@latest/rest/webhooks)
+
+
 ## Using existing external services for data storage/messaging
 
 Normally the Codefresh installer, is taking care of all needed dependencies internally by deploying the respective services (mongo, redis etc) on its own.
@@ -804,14 +816,14 @@ global:
   mongoCaCert: mongodb-ca/ca-cert.pem
   mongoCaKey: mongodb-ca/ca-key.pem
 
-  ### for OfflineLogging feature 
+  ### for OfflineLogging feature
   runtimeMongoURI: mongodb://my-mongodb.prod.svc.cluster.local/?ssl=true&authMechanism=MONGODB-X509&authSource=$external
 
-### for OfflineLogging feature 
+### for OfflineLogging feature
 cfapi:
   env:
-    RUNTIME_MONGO_TLS: "true" 
-    RUNTIME_MONGO_TLS_VALIDATE: "true" # 'false' if self-signed certificate to avoid x509 errors 
+    RUNTIME_MONGO_TLS: "true"
+    RUNTIME_MONGO_TLS_VALIDATE: "true" # 'false' if self-signed certificate to avoid x509 errors
 
 mongo:
   enabled: false #disable default mongodb subchart installation
@@ -895,7 +907,7 @@ Autoscaling in Kubernetes is implemented as an interaction between Cluster Autos
 | [Cluster Autoscaler](https://github.com/kubernetes/autoscaler/tree/master/cluster-autoscaler)| Nodes | **Up:** Pending pod <br/> **Down:** Node resource allocations is low | On GKE we can turn on/off autoscaler and configure min/max per node group can be also installed separately | Listens on pending pods for scale up and node allocations for scaledown. Should have permissions to call cloud api. Considers pod affinity, pdb, storage, special annotations |
 | [Horizontal Pod Autoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) | replicas on deployments or StatefulSets | metrics value thresholds defined in HPA object | part of Kubernetes controller | Controller gets metrics from "metrics.k8s.io/v1beta1" , "custom.metrics.k8s.io/v1beta1", "external.metrics.k8s.io/v1beta1" requires [metrics-server](https://github.com/kubernetes-sigs/metrics-server) and custom metrics adapters ([prometheus-adapter](https://github.com/kubernetes-sigs/prometheus-adapter), [stackdriver-adapter](https://github.com/GoogleCloudPlatform/k8s-stackdriver/tree/master/custom-metrics-stackdriver-adapter)) to listen on this API (see note (1) below) and adjusts deployment or sts replicas according to definitions in  HorizontalPodAutocaler <br/> There are v1 and beta api versions for HorizontalPodAutocaler: <br/> [v1](https://github.com/kubernetes/api/blob/master/autoscaling/v1/types.go) - supports  for resource metrics (cpu, memory) - `kubect get hpa` <br/> [v2beta2](https://github.com/kubernetes/api/blob/master/autoscaling/v2beta2/types.go)  and [v2beta1](https://github.com/kubernetes/api/blob/master/autoscaling/v2beta1/types.go) - supports for both resource and custom metrics - `kubectl get hpa.v2beta2.autoscaling` **The metric value should decrease on adding new pods.** <br/> *Wrong metrics Example:* request rate <br/> *Right metrics Example:* average request rate per pod |
 
-Note (1)   
+Note (1)
 ```
 kubectl get apiservices | awk 'NR==1 || $1 ~ "metrics"'
 NAME                                   SERVICE                                      AVAILABLE   AGE
@@ -904,7 +916,7 @@ v1beta1.metrics.k8s.io                 kube-system/metrics-server               
 ```
 
 
-**Implementation in Codefresh** 
+**Implementation in Codefresh**
 
 * Default “Enable Autoscaling” settings for GKE
 * Using [prometheus-adapter](https://github.com/kubernetes-sigs/prometheus-adapter) with custom metrics
@@ -913,7 +925,7 @@ We define HPA for cfapi and pipeline-manager services
 
 **CFapi HPA object**
 
-It's based on three metrics (HPA controller scales of only one of the targetValue reached): 
+It's based on three metrics (HPA controller scales of only one of the targetValue reached):
 
 ```
 kubectl get hpa.v2beta1.autoscaling cf-cfapi -oyaml
@@ -1006,7 +1018,7 @@ spec:
 
 **prometheus-adapter configuration**
 
-Reference: [https://github.com/DirectXMan12/k8s-prometheus-adapter/blob/master/docs/config.md](https://github.com/DirectXMan12/k8s-prometheus-adapter/blob/master/docs/config.md 
+Reference: [https://github.com/DirectXMan12/k8s-prometheus-adapter/blob/master/docs/config.md](https://github.com/DirectXMan12/k8s-prometheus-adapter/blob/master/docs/config.md
 )
 
 {% highlight yaml %}
@@ -1156,7 +1168,7 @@ cfapi:
 CPU Metric API Call
 
 ```
-kubectl get --raw /apis/metrics.k8s.io/v1beta1/namespaces/codefresh/pods/cf-cfapi-base-****-/ | jq 
+kubectl get --raw /apis/metrics.k8s.io/v1beta1/namespaces/codefresh/pods/cf-cfapi-base-****-/ | jq
 ```
 
 Custom Metrics Call
