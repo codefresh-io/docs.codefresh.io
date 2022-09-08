@@ -691,7 +691,7 @@ cfui:
 For detailed information, see the [Content Security Policy article on MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP).
 
 ### Enable x-hub-signature-256 signature for Github AE
-Add `USE_SHA256_GITHUB_SIGNATURE` environment variable to `config.yaml`, and define the values to be returned in the CSP HTTP headers.
+Add `USE_SHA256_GITHUB_SIGNATURE` environment variable to **cfapi** deployment in `config.yaml`.
 ```yaml
 cfapi:
   env:
