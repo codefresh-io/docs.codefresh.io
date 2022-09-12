@@ -690,15 +690,15 @@ cfui:
 
 For detailed information, see the [Content Security Policy article on MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP).
 
-### Enable x-hub-signature-256 signature for Github AE
-Add `USE_SHA256_GITHUB_SIGNATURE` environment variable to **cfapi** deployment in `config.yaml`.
+### Enable x-hub-signature-256 signature for GitHub AE
+Add the `USE_SHA256_GITHUB_SIGNATURE` environment variable to **cfapi** deployment in `config.yaml`.
 ```yaml
 cfapi:
   env:
     USE_SHA256_GITHUB_SIGNATURE: "true"
 ```
 
-For detailed information, see the [Securing your webhooks](https://docs.github.com/en/developers/webhooks-and-events/webhooks/securing-your-webhooks) and [Webhooks](https://docs.github.com/en/github-ae@latest/rest/webhooks)
+For detailed information, see the [Securing your webhooks](https://docs.github.com/en/developers/webhooks-and-events/webhooks/securing-your-webhooks) and [Webhooks](https://docs.github.com/en/github-ae@latest/rest/webhooks).
 
 
 ## Using existing external services for data storage/messaging
