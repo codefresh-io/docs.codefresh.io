@@ -18,6 +18,15 @@ caption="pipeline-settings"
 max-width="80%"
 %}
 
+
+## Pause pipeline executions
+
+Pause builds for pipelines at the account level.  
+
+**Pause build execution** is disabled by default. When enabled, new pipelines in the account are paused immediately. Existing pipelines with builds that are already running, are paused only after the builds have completed execution.  
+Paused pipelines are set to status Pending, and remain in this status until **Pause build execution** is manually disabled for the account.
+
+
 ## Template Section
 
 Here you can define global template behavior. The options are:
