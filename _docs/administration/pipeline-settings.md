@@ -13,8 +13,28 @@ On this page, you can define global parameters for the whole Codefresh account r
 lightbox="true"
 file="/images/administration/pipeline-settings/pipeline-settings-ui.png"
 url="/images/administration/pipeline-settings/pipeline-settings-ui.png"
-alt="pipeline-settings"
-caption="pipeline-settings"
+alt="Pipeline settings"
+caption="Pipeline settings"
+max-width="80%"
+%}
+
+
+## Pause pipeline executions
+
+Pause builds for pipelines at the account level, for example, during maintenance.  
+
+* **Pause build execution** is disabled by default.  
+* When enabled:  
+  * New pipelines in the account are paused immediately. 
+  * Existing pipelines with running builds are paused only after the builds have completed execution.  
+* Paused pipelines are set to status Pending, and remain in this status until **Pause build execution** is manually disabled for the account.
+
+{% include image.html
+lightbox="true"
+file="/images/administration/pipeline-settings/pause-pipeline-enabled.png"
+url="/images/administration/pipeline-settings/pause-pipeline-enabled.png"
+alt="Pause Build Execution pipeline setting enabled"
+caption="Pause Build Execution pipeline setting enabled"
 max-width="80%"
 %}
 

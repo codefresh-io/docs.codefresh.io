@@ -66,7 +66,7 @@ The available filters are:
 * *Branch* - any of the available branches from the attached Git trigger.
 * *Committer* - person that made the commit that triggered the build.
 * *Environment* - which [environment]({{site.baseurl}}/docs/deploy-to-kubernetes/environment-dashboard/) was affected.
-* *Status* - success, error, in-progress, pending, terminated etc.
+* *Status* - success, error, in-progress, pending, terminated etc. A Pending status can also indicate that [pipeline build execution has been paused]({{site.baseurl}}/docs/administration/pipeline-settings/#pause-pipeline-executions) for the account.
 * *Trigger type* - what type of trigger was responsible for this build
 * *Git event* - in the case of [git triggers]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/) the exact event
 
@@ -207,6 +207,7 @@ You can copy the step logs with the *copy to clipboard* button at the top left c
 You can also search the logs by clicking at the magnifying glass icon at the top right corner in the log window.
 
 > Note: The max size each step can log is around 20MB, and 100MB for the whole build. After that, the system will stop logging, but the build execution will continue.
+
 
 ### Reviewing the yaml for the pipeline
 
