@@ -376,6 +376,24 @@ These services are not considered critical as they are part of build-handling. I
 
 After you install Codefresh, these are some day-2 operations that you should follow.
 
+### Selectively enable SSO providers 
+As a Codefresh administrator, you can select the providers you want to enable for SSO in your organization, for both new and existing accounts. 
+
+1. Sign in as Codefresh admin.
+1. From the left pane, select **Providers**.
+1. Disable the providers that are not relevant for the accounts.  
+These providers are not available during sign-in and sign-up.
+
+{% include image.html
+  lightbox="true"
+  file="/images/administration/sso/enable-disable-providers.png"
+  url="/images/administration/sso/enable-disable-providers.png"
+  alt="Enable/disable providers for SSO"
+  caption="Enable/disable providers for SSO"
+  max-width="60%"
+%}
+
+
 ### Setup Git Integration (Optional)
 
 Codefresh supports out-of-the-box Git logins using your local username and password, or logins using your git provider (per the list and instructions of providers below). You can also configure login to supported SSO providers post-install as described [in the Codefresh documentation]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/).
@@ -494,6 +512,8 @@ Depending on the customer’s Kubernetes version we can assist with PV resizing.
 #### Automatic Volume Provisioning
 
 Codefresh installation supports automatic storage provisioning based on the standard Kubernetes dynamic provisioner Storage Classes and Persistent Volume Claims. All required installation volumes will be provisioned automatically using the default Storage Class or custom Storage Class that can be specified as a parameter in `config.yaml` under `storageClass: my-storage-class`.
+
+
 
 ### Retention policy for Codefresh builds
 You can define a retention policy to manage Codefresh builds. The retention settings are controlled through cf-api deployment environment variables, all of which have default settings which you can retain or customize. The default policy is set to delete builds older than six months, including offline logs.
