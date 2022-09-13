@@ -123,7 +123,7 @@ You can change the filters of an existing build view by making a new filter sele
 ### Build details
 
 
-For each individual build you can see several details such as the git hash, the person that made the commit, the pipeline that was triggered as well as how much time it took. For each event type you will also see additional context related information.
+For each individual build you can see several details such as the git hash, the person who made the commit, the pipeline that was triggered as well as how much time it took. For each event type you will also see additional context related information.
 
 {% include 
 image.html 
@@ -133,6 +133,21 @@ url="/images/pipeline/monitoring/build-details-entry.png"
 alt="build details in Codefresh" 
 caption="Build details"
 max-width="100%"
+%}
+
+**Child builds**  
+Child builds triggered by other builds are identified in the Event column by the icon {::nomarkdown}<img src="../../../images/pipeline/monitoring/icon-child-build.png" display=inline-block/> {:/}.  
+
+The Parent Build column shows the link to the parent build. Mouse over to see the tooltip with links to and the ability to filter by the parent build, repo, branch, commit message.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/monitoring/child-parent-build-info.png" 
+url="/images/pipeline/monitoring/child-parent-build-info.png"
+alt="Child build in Builds list" 
+caption="Child build in Builds list"
+max-width="70%"
 %}
 
 There are also extra options if you click the small "3-dot" menu button on the right. For a particular build, you can:
