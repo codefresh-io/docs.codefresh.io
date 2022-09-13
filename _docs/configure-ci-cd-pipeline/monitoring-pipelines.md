@@ -134,10 +134,8 @@ alt="build details in Codefresh"
 caption="Build details"
 max-width="100%"
 %}
-
-**Child builds**  
+ 
 Child builds triggered by other builds are identified in the Event column by the icon {::nomarkdown}<img src="../../../images/pipeline/monitoring/icon-child-build.png" display=inline-block/> {:/}.  
-
 The Parent Build column shows the link to the parent build. Mouse over to see the tooltip with links to and the ability to filter by the parent build, repo, branch, commit message.
 
 {% include 
