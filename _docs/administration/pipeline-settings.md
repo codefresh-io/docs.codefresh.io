@@ -21,7 +21,7 @@ max-width="80%"
 
 ## Pause pipeline executions
 
-Pause builds for pipelines at the account level.  
+Pause builds for pipelines at the account level, for example, during maintenance.  
 
 * **Pause build execution** is disabled by default.  
 * When enabled:  
@@ -33,8 +33,8 @@ Pause builds for pipelines at the account level.
 lightbox="true"
 file="/images/administration/pipeline-settings/pause-pipeline-enabled.png"
 url="/images/administration/pipeline-settings/pause-pipeline-enabled.png"
-alt="Pause Build Execution pipeline setting: Enabled"
-caption="Pause Build Execution pipeline setting: Enabled"
+alt="Pause Build Execution pipeline setting enabled"
+caption="Pause Build Execution pipeline setting enabled"
 max-width="80%"
 %}
 
