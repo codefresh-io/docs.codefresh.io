@@ -8,6 +8,19 @@ toc: true
 ---
 ## 2022
 
+### September 2022
+
+#### Features and enhancements
+- Pause pipeline execution for account - [documentation]({{site.baseurl}}/docs/administration/pipeline-settings/#pause-pipeline-executions)
+- Traceability from child to parent builds - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/monitoring-pipelines/#build-details)
+- On-premises: `x-hub-signature-256`support for GitHub AE - [documentation]({{site.baseurl}}/docs/administration/codefresh-on-prem/#enable-x-hub-signature-256-signature-for-github-ae)
+
+
+#### Bug fixes
+- Validation error when entering username with period for new user account.
+- Issue with pipeline tag filters.
+
+
 ### July-August 2022
 
 #### Features and enhancements
