@@ -14,12 +14,13 @@ toc: true
 - Pause pipeline execution for account - [documentation]({{site.baseurl}}/docs/administration/pipeline-settings/#pause-pipeline-executions)
 - Traceability from child to parent builds - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/monitoring-pipelines/#build-details)
 - On-premises: `x-hub-signature-256`support for GitHub AE - [documentation]({{site.baseurl}}/docs/administration/codefresh-on-prem/#enable-x-hub-signature-256-signature-for-github-ae)
+- LDAP login with username and password, with email required only for first time sign-in.
+
 
 
 #### Bug fixes
 - Validation error when entering username with period for new user account.
-- Issue with pipeline tag filters.
-
+- Filtering pipelines by Tags returns incorrect results when user has read access to a subset of pipelines.
 
 ### July-August 2022
 
