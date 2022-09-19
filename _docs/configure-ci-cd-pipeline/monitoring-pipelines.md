@@ -136,7 +136,7 @@ max-width="100%"
 %}
  
 Child builds triggered by other builds are identified in the Event column by the icon {::nomarkdown}<img src="../../../images/pipeline/monitoring/icon-child-build.png" display=inline-block/> {:/}.  
-The Parent Build column shows the link to the parent build. Mouse over to see the tooltip with links to and the ability to filter by the parent build, repo, branch, commit message.
+The Parent Build column shows the link to the parent build. Mouse over to see the tooltip with information on the parent build. The tooltip includes links to the parent build, repo, branch, commit message, and the ability to filter by repo and branch.
 
 {% include 
 image.html 
