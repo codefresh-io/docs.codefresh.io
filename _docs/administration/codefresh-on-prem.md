@@ -377,12 +377,14 @@ These services are not considered critical as they are part of build-handling. I
 After you install Codefresh, these are some day-2 operations that you should follow.
 
 ### Selectively enable SSO providers 
-As a Codefresh administrator, you can select the providers you want to enable for SSO in your organization, for both new and existing accounts. 
+As a Codefresh administrator, you can select the providers you want to enable for SSO in your organization, for both new and existing accounts.  
+You can always renable a provider when needed.
+
 
 1. Sign in as Codefresh admin.
 1. From the left pane, select **Providers**.
-1. Disable the providers that are not relevant for the accounts.  
-These providers are not available during sign-in and sign-up.
+1. Disable the providers not relevant for the accounts.  
+These providers are not displayed as options during sign-up/sign-in.
 
 {% include image.html
   lightbox="true"
