@@ -9,7 +9,7 @@ toc: true
 
 ## Introduction
 
-This manual will guide you through the installation of the Codefresh platform on your on-prem environment. This manual is intended to cover all aspects of installation, upgrading, and maintenance.  Please read this manual carefully before installing Codefresh.
+This manual will guide you through the installation of the Codefresh platform on your on-prem environment. This manual is intended to cover all aspects of installation,  and maintenance.  Please read this manual carefully before installing Codefresh.
 
 [kcfi](https://github.com/codefresh-io/kcfi) (the Kubernetes Codefresh Installer) is a one-stop-shop for this purpose. Even though Codefresh offers multiple tools to install components, `kcfi` aggregates all of them into a single tool.
 
@@ -287,7 +287,7 @@ Review the prerequisites, and then do the following to configure high-availabili
 * Install Codefresh on the passive cluster
 * When needed, switch between clusters for disaster recovery
 
-**Prerequisites**
+### Prerequisites
 
 * **K8s clusters**
   Two K8s clusters, one designated as the active cluster, and the other designated as the passive cluster for disaster recovery.
@@ -304,16 +304,16 @@ Review the prerequisites, and then do the following to configure high-availabili
 * **DNS record**
   To switch between clusters for disaster recovery
 
-**Install Codefresh on active cluster**
+### Install Codefresh on active cluster
 
 If you are installing Codefresh for the first time, install Codefresh on the cluster designated as the _active_ cluster.
 See [Installing the Codefresh platform]({{site.baseurl}}/docs/administration/codefresh-on-prem/#install-the-codefresh-platform).
 
-**Install Codefresh on passive cluster**
+### Install Codefresh on passive cluster
 
 First get the `values.yaml` file from the current Codefresh installation on the active cluster. Then install Codefresh on the passive cluster using Helm.
 
-**Get values.yaml**
+**1. Get values.yaml**
 1. Switch your kube context to the active cluster.
 1. Get `values.yaml` from the active cluster:
   `helm get values ${release_name} -n ${namespace} > cf-passive-values.yaml`
@@ -340,7 +340,7 @@ First get the `values.yaml` file from the current Codefresh installation on the 
       FREEZE_WORKFLOWS_EXECUTION: true
   ```
 
-**Install Codefresh on passive cluster**
+**2. Install Codefresh on passive cluster**
 
 1. Download the Helm chart:
   `helm repo add codefresh-onprem https://chartmuseum.codefresh.io/codefresh`
@@ -355,7 +355,7 @@ First get the `values.yaml` file from the current Codefresh installation on the 
   `helm install cf . -f ${path}/cf-passive-values.yaml -n codefresh`
 
 
-**Switch between clusters for disaster recovery**
+### Switch between clusters for disaster recovery
 
 For disaster recovery, switch between the active and passive clusters.
 
@@ -364,7 +364,7 @@ For disaster recovery, switch between the active and passive clusters.
 1. In the `cfapi` deployment on the _passive_ cluster, change the value of `FREEZE_WORKFLOWS_EXECUTION` from `true` to `false`.
 1. Switch DNS from the currently active cluster to the passive cluster.
 
-**Services without HA**
+### Services without HA
 
 The following services cannot run in HA, but are not critical in case of downtime or during the process of switchover from active to passive.
 These services are not considered critical as they are part of build-handling. In case of failure, a build retry occurs, ensuring that the build is always handled.
@@ -375,6 +375,26 @@ These services are not considered critical as they are part of build-handling. I
 ## Additional Configurations
 
 After you install Codefresh, these are some day-2 operations that you should follow.
+
+### Selectively enable SSO providers 
+As a Codefresh administrator, you can select the providers you want to enable for SSO in your organization, for both new and existing accounts.  
+You can always renable a provider when needed.
+
+
+1. Sign in as Codefresh admin.
+1. From the left pane, select **Providers**.
+1. Disable the providers not relevant for the accounts.  
+These providers are not displayed as options during sign-up/sign-in.
+
+{% include image.html
+  lightbox="true"
+  file="/images/administration/sso/enable-disable-providers.png"
+  url="/images/administration/sso/enable-disable-providers.png"
+  alt="Enable/disable providers for SSO"
+  caption="Enable/disable providers for SSO"
+  max-width="60%"
+%}
+
 
 ### Setup Git Integration (Optional)
 
@@ -494,6 +514,8 @@ Depending on the customer’s Kubernetes version we can assist with PV resizing.
 #### Automatic Volume Provisioning
 
 Codefresh installation supports automatic storage provisioning based on the standard Kubernetes dynamic provisioner Storage Classes and Persistent Volume Claims. All required installation volumes will be provisioned automatically using the default Storage Class or custom Storage Class that can be specified as a parameter in `config.yaml` under `storageClass: my-storage-class`.
+
+
 
 ### Retention policy for Codefresh builds
 You can define a retention policy to manage Codefresh builds. The retention settings are controlled through cf-api deployment environment variables, all of which have default settings which you can retain or customize. The default policy is set to delete builds older than six months, including offline logs.
