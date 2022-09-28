@@ -14,8 +14,9 @@ toc: true
 - Pause pipeline execution for account - [documentation]({{site.baseurl}}/docs/administration/pipeline-settings/#pause-pipeline-executions)
 - Traceability from child to parent builds - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/monitoring-pipelines/#build-details)
 - On-premises: `x-hub-signature-256`support for GitHub AE - [documentation]({{site.baseurl}}/docs/administration/codefresh-on-prem/#enable-x-hub-signature-256-signature-for-github-ae)
+- On-premises: Admins can selectively enable SSO providers for user accounts - [documentation]({{site.baseurl}}/docs/administration/codefresh-on-prem/#selectively-enable-sso-providers)
 - LDAP login with username and password, with email required only for first time sign-in
-- Branch selection for pipeline triggers/runs with Bitbucket Server via pagination or search
+- For pipeline triggers/runs with Bitbucket Server, branch selection is supported via pagination or search
 
 
 
