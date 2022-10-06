@@ -396,9 +396,11 @@ kubectl cp -n codefresh cf-consul-0:backup.snap backup.snap
 Direct attempt to perform an upgrade will most likely fail with:
 `helm.go:84: [debug] cannot patch "cf-consul" with kind StatefulSet: StatefulSet.apps "cf-consul" is invalid: spec: Forbidden: updates to statefulset spec for fields other than 'replicas', 'template', 'updateStrategy' and 'minReadySeconds' are forbidden`
 
-**Before the upgrade, delete the old cf-consul stateful set**
+**Before the upgrade, delete the old cf-consul stateful set:**
 
-`kubectl delete statefulset cf-consul -n codefresh`
+```shell
+kubectl delete statefulset cf-consul -n codefresh
+```
 
 ##### Restore The Data (After the Upgrade)
 
@@ -426,7 +428,9 @@ Direct attempt to perform an upgrade will most likely fail with:
 
 **Before the upgrade, delete the old cf-nats stateful set**
 
-`kubectl delete statefulset cf-nats -n codefresh`
+```shell
+kubectl delete statefulset cf-nats -n codefresh
+```
 
 > Nats chart was replaced so as a consequence values structure might be different for some parameters.
   For the complete list of values, see [values.yaml](https://github.com/bitnami/charts/blob/master/bitnami/nats/values.yaml)
