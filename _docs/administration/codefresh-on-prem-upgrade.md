@@ -44,14 +44,14 @@ mongodb:
     runAsUser: 0
     fsGroup: 0
   containerSecurityContext:
-    enabled: false    
+    enabled: false
 
 redis:
   image: bitnami/redis:3.2.9-r2 # (default `image: bitnami/redis:6.0.16`)
   podSecurityContext:
     enabled: false
   containerSecurityContext:
-    enabled: false  
+    enabled: false
 
 postgresql:
   imageTag: 9.6.2 # (default `imageTag:13`)
@@ -71,19 +71,19 @@ This major release **deprecates** the following Codefresh managed charts:
 
 See the instructions below for each of the affected charts.
 
-> Before the upgrade remove any seed jobs left from previous release with:  
-   `kubectl delete job --namespace ${CF_NAMESPACE} -l release=cf `  
+> Before the upgrade remove any seed jobs left from previous release with:
+   `kubectl delete job --namespace ${CF_NAMESPACE} -l release=cf `
 
-> Before the upgrade remove PDBs for Redis and RabbitMQ left from previous release with:  
+> Before the upgrade remove PDBs for Redis and RabbitMQ left from previous release with:
    `kubectl delete pdb cf-rabbitmq --namespace ${CF_NAMESPACE}` <br />
-   `kubectl delete pdb cf-redis --namespace ${CF_NAMESPACE}`  
+   `kubectl delete pdb cf-redis --namespace ${CF_NAMESPACE}`
 
-#### Update configuration for Ingress chart 
-From version **1.2.0 and higher**, we have deprecated support for `Codefresh-managed-ingress`.  
-Kubernetes community public `ingress-nginx` chart replaces `Codefresh-managed-ingress` chart. For more information on the `ingress-nginx`, see [kubernetes/ingress-nginx](https://github.com/kubernetes/ingress-nginx).  
+#### Update configuration for Ingress chart
+From version **1.2.0 and higher**, we have deprecated support for `Codefresh-managed-ingress`.
+Kubernetes community public `ingress-nginx` chart replaces `Codefresh-managed-ingress` chart. For more information on the `ingress-nginx`, see [kubernetes/ingress-nginx](https://github.com/kubernetes/ingress-nginx).
 
-> Parameter locations have changed as the ingress chart name was changed from `ingress` to `ingress-nginx`:  
-  **NGINX controller** parameters are now defined under `ingress-nginx`  
+> Parameter locations have changed as the ingress chart name was changed from `ingress` to `ingress-nginx`:
+  **NGINX controller** parameters are now defined under `ingress-nginx`
   **Ingress object** parameters are now defined under `ingress`
 
 You must update `config.yaml`, if you are using:
@@ -116,7 +116,7 @@ ingress: #disables creation of Ingress objects (assuming you've manually created
 *v1.1.1 or lower*
 ```yaml
 ingress:
-  annotations: 
+  annotations:
     kubernetes.io/ingress.class: my-non-codefresh-nginx
 ```
 
@@ -128,13 +128,13 @@ ingress-nginx:
 ingress:
   ingressClassName: my-non-codefresh-nginx
 ###  `kubernetes.io/ingress.class` annotation is deprecated from kubernetes v1.22+.
-#  annotations: 
-#    kubernetes.io/ingress.class: my-non-codefresh-nginx  
+#  annotations:
+#    kubernetes.io/ingress.class: my-non-codefresh-nginx
 ```
 
 ##### Update configuration for Codefresh-managed ingress with custom values
 
-If you were running `Codefresh-managed ingress` controller with _custom_ values refer to [values.yaml](https://github.com/kubernetes/ingress-nginx/blob/main/charts/ingress-nginx/values.yaml) from the official repo. If needed, update the `ingress-nginx` section in `config.yaml`. The example below shows the default values (already provided in Codefresh chart) for `ingress-nginx`: 
+If you were running `Codefresh-managed ingress` controller with _custom_ values refer to [values.yaml](https://github.com/kubernetes/ingress-nginx/blob/main/charts/ingress-nginx/values.yaml) from the official repo. If needed, update the `ingress-nginx` section in `config.yaml`. The example below shows the default values (already provided in Codefresh chart) for `ingress-nginx`:
 
 ```yaml
 ingress-nginx:
@@ -163,15 +163,15 @@ ingress-nginx:
     admissionWebhooks:
       enabled: false
 ```
-> New `ingress-nginx` subchart creates a new `cf-ingress-nginx-controller` service (`type: LoadBalancer`) instead of old `cf-ingress-controller` service. So make sure to update DNS record for `global.appUrl` to point to a new external load balancer IP.    
-  You can get external load balancer IP with:  
-  `kubectl get svc cf-ingress-nginx-controller -o jsonpath={.status.loadBalancer.ingress[0].ip`  
+> New `ingress-nginx` subchart creates a new `cf-ingress-nginx-controller` service (`type: LoadBalancer`) instead of old `cf-ingress-controller` service. So make sure to update DNS record for `global.appUrl` to point to a new external load balancer IP.
+  You can get external load balancer IP with:
+  `kubectl get svc cf-ingress-nginx-controller -o jsonpath={.status.loadBalancer.ingress[0].ip`
 
 
 #### Update configuration for RabbitMQ chart
 From version **1.2.2 and higher**, we have deprecated support for the `Codefresh-managed Rabbitmq` chart. Bitnami public `bitnami/rabbitmq` chart has replaced the `Codefresh-managed rabbitmq`. For more information, see [bitnami/rabbitmq](https://github.com/bitnami/charts/tree/master/bitnami/rabbitmq).
 
-> Configuration updates are not required if you are running an **external** RabbitMQ service.  
+> Configuration updates are not required if you are running an **external** RabbitMQ service.
 
 > RabbitMQ chart was replaced so as a consequence values structure might be different for some parameters.
   For the complete list of values, see [values.yaml](https://github.com/bitnami/charts/blob/master/bitnami/rabbitmq/values.yaml)
@@ -239,41 +239,41 @@ rabbitmq:
 ```
 
 #### Update configuration for Redis chart
-From version **1.2.2 and higher**, we have deprecated support for the `Codefresh-managed Redis` chart. Bitnami public `bitnami/redis` chart has replaced the `Codefresh-managed Redis` chart. For more information, see [bitnami/redis](https://github.com/bitnami/charts/tree/master/bitnami/redis).  
+From version **1.2.2 and higher**, we have deprecated support for the `Codefresh-managed Redis` chart. Bitnami public `bitnami/redis` chart has replaced the `Codefresh-managed Redis` chart. For more information, see [bitnami/redis](https://github.com/bitnami/charts/tree/master/bitnami/redis).
 
 Redis storage contains **CRON and Registry** typed triggers so you must migrate existing data from the old deployment to the new stateful set.
 This is done by backing up the existing data before upgrade, and then restoring the backed up data after upgrade.
 
-> Configuration updates are not required:  
-  * When running an **external** Redis service.  
+> Configuration updates are not required:
+  * When running an **external** Redis service.
   * If CRON and Registy triggers have not been configured.
 
 ##### Verify existing Redis data for CRON and Registry triggers
 Check if you have CRON and Registry triggers configured in Redis.
 
-* Run `codefresh get triggers`  
-  OR   
-  Directly from the K8s cluster where Codefresh is installed.  
+* Run `codefresh get triggers`
+  OR
+  Directly from the K8s cluster where Codefresh is installed.
 
 ```shell
 NAMESPACE=codefresh
 REDIS_PASSWORD=$(kubectl get secret --namespace $NAMESPACE cf-redis -o jsonpath="{.data.redis-password}" | base64 --decode)
-  
+
 kubectl exec -it deploy/cf-redis -- env REDIS_PASSWORD=$REDIS_PASSWORD bash
 #once inside cf-redis pod
 REDISCLI_AUTH="$REDIS_PASSWORD" redis-cli
-info keyspace # list db 
+info keyspace # list db
 select 15 # select db 15
 keys * #show keys
 ```
-    
+
 * If there are results, continue with _Back up existing Redis data_.
 
 ##### Back up existing Redis data
 Back up the existing data before the upgrade:
 
 * Connect to the pod, run `redis-cli`, export AOF data from old `cf-redis-*` pod:
-  
+
 ```shell
 NAMESPACE=codefresh
 REDIS_PASSWORD=$(kubectl get secret --namespace $NAMESPACE cf-redis -o jsonpath="{.data.redis-password}" | base64 --decode)
@@ -284,18 +284,18 @@ kubectl cp $REDIS_POD:/bitnami/redis/data/appendonly.aof appendonly.aof -c cf-re
 ##### Restore backed-up Redis data
 Restore the data after the upgrade:
 
-* Copy `appendonly.aof` to the new `cf-redis-master-0` pod:  
-  
+* Copy `appendonly.aof` to the new `cf-redis-master-0` pod:
+
   ```shell
   kubectl cp appendonly.aof cf-redis-master-0:/data/appendonly.aof
   ````
-* Restart `cf-redis-master-0` and `cf-api` pods:  
+* Restart `cf-redis-master-0` and `cf-api` pods:
 
   ```shell
-  kubectl delete pod cf-redis-master-0  
-    
-  kubectl scale deployment cf-cfapi-base --replicas=0 -n codefresh  
-  kubectl scale deployment cf-cfapi-base --replicas=2 -n codefresh 
+  kubectl delete pod cf-redis-master-0
+
+  kubectl scale deployment cf-cfapi-base --replicas=0 -n codefresh
+  kubectl scale deployment cf-cfapi-base --replicas=2 -n codefresh
   ```
 
 > Redis chart was replaced so as a consequence values structure might be different for some parameters.
@@ -368,6 +368,67 @@ redis:
 
 > If you run the upgrade without redis backup and restore procedure, **Helm Releases Dashboard** page might be empty for a few minutes after the upgrade.
 
+### Upgrade to 1.3.0 and higher
+This major release **deprecates** the following Codefresh managed charts:
+* Consul
+* Nats
+
+#### Consul
+From version **1.3.0 and higher**, we have deprecated support for the `Codefresh-managed Consul` chart in favor of bitnami public `bitnami/consul` chart. For more information, see [bitnami/consul](https://github.com/bitnami/charts/tree/master/bitnami/consul).
+
+> cf-consul is StatefulSet, meaning it has some immutable fields in its spec and both old and new charts have the same name which prevents straight upgrade.
+Direct attempt to perform an upgrade will most likely fail with:
+`helm.go:84: [debug] cannot patch "cf-consul" with kind StatefulSet: StatefulSet.apps "cf-consul" is invalid: spec: Forbidden: updates to statefulset spec for fields other than 'replicas', 'template', 'updateStrategy' and 'minReadySeconds' are forbidden`
+
+**Before the upgrade, delete the old cf-consul stateful set**
+`kubectl delete statefulset cf-consul -n codefresh`
+
+Consul storage contains data about Windows worker nodes, so if you had any Windows nodes connected to your OnPrem installation, see the following instruction:
+
+> Use https://<your_cf_onprem_domain>/admin/nodes to check for any existing Windows nodes.
+
+#### Backup The Data (Before the Upgrade)
+Exec into the consul pod and create a snapshot:
+
+```shell
+kubectl exec -it cf-consul-0 -n codefresh -- consul snapshot save backup.snap
+```
+
+Copy snapshot locally:
+```shell
+kubectl cp -n codefresh cf-consul-0:backup.snap backup.snap
+```
+
+#### Restore The Data (After the Upgrade)
+
+Perform an upgrade to 1.3.0 onprem release.
+Copy the snapshot back to the new pod:
+
+```shell
+kubectl cp -n codefresh backup.snap cf-consul-0:/tmp/backup.snap
+```
+
+Restore the data:
+```
+kubectl exec -it cf-consul-0 -n codefresh -- consul snapshot restore /tmp/backup.snap
+```
+
+> Consul chart was replaced so as a consequence values structure might be different for some parameters.
+  For the complete list of values, see [values.yaml](https://github.com/bitnami/charts/blob/master/bitnami/consul/values.yaml)
+
+#### Nats
+From version **1.3.0 and higher**, we have deprecated support for the `Codefresh-managed nats` chart in favor of bitnami public `bitnami/nats` chart. For more information, see [bitnami/nats](https://github.com/bitnami/charts/tree/master/bitnami/consul).
+
+> cf-nats is StatefulSet, meaning it has some immutable fields in its spec and both old and new charts have the same name which prevents straight upgrade.
+Direct attempt to perform an upgrade will most likely fail with:
+`helm.go:84: [debug] cannot patch "cf-nats" with kind StatefulSet: StatefulSet.apps "cf-nats" is invalid: spec: Forbidden: updates to statefulset spec for fields other than 'replicas', 'template', 'updateStrategy' and 'minReadySeconds' are forbidden`
+
+**Before the upgrade, delete the old cf-nats stateful set**
+`kubectl delete statefulset cf-nats -n codefresh
+
+> Nats chart was replaced so as a consequence values structure might be different for some parameters.
+  For the complete list of values, see [values.yaml](https://github.com/bitnami/charts/blob/master/bitnami/nats/values.yaml)
+
 ### Upgrade the Codefresh Platform with [kcfi](https://github.com/codefresh-io/kcfi)
 
 1. Locate the `config.yaml` file you used in the initial installation.
@@ -382,16 +443,16 @@ redis:
           repoUrl: https://chartmuseum.codefresh.io/codefresh
           version: 1.2.14
     ```
-1. Perform a dry run and verify that there are no errors:  
+1. Perform a dry run and verify that there are no errors:
   `kcfi deploy --dry-run --debug -c codefresh/config.yaml`
-1. Run the actual upgrade:  
+1. Run the actual upgrade:
   `kcfi deploy --debug -c codefresh/config.yaml`
-1. Verify that all the pods are are in running state:  
-  `kubectl -n codefresh get pods --watch`  
+1. Verify that all the pods are are in running state:
+  `kubectl -n codefresh get pods --watch`
 1. Log in to the Codefresh UI, and check the new version.
 1. If needed, enable/disable new feature flags.
 
-### Codefresh with Private Registry 
+### Codefresh with Private Registry
 
 If you install/upgrade Codefresh on the air-gapped environment (without access to public registries or Codefresh Enterprise registry) you will have to copy the images to your organization container registry.
 
@@ -469,6 +530,6 @@ images:
   usePrivateRegistry: true
   privateRegistry:
     address: myartifactory.com
-    username: 
-    password: 
-```    
+    username:
+    password:
+```
