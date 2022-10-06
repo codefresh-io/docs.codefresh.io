@@ -374,7 +374,7 @@ This major release **deprecates** the following Codefresh managed charts:
 * Nats
 
 #### Consul
-From version **1.3.0 and higher**, we have deprecated support for the `Codefresh-managed Consul` chart in favor of bitnami public `bitnami/consul` chart. For more information, see [bitnami/consul](https://github.com/bitnami/charts/tree/master/bitnami/consul).
+From version **1.3.0 and higher**, we have deprecated support for the `Codefresh-managed Consul` chart in favor of Bitnami public `bitnami/consul` chart. For more information, see [bitnami/consul](https://github.com/bitnami/charts/tree/master/bitnami/consul).
 
 > `cf-consul` is StatefulSet, meaning it has some immutable fields in its spec and both old and new charts have the same name which prevents straight upgrade.
 Direct attempt to perform an upgrade will most likely fail with:
@@ -418,7 +418,7 @@ kubectl exec -it cf-consul-0 -n codefresh -- consul snapshot restore /tmp/backup
   For the complete list of values, see [values.yaml](https://github.com/bitnami/charts/blob/master/bitnami/consul/values.yaml)
 
 #### Nats
-From version **1.3.0 and higher**, we have deprecated support for the `Codefresh-managed nats` chart in favor of bitnami public `bitnami/nats` chart. For more information, see [bitnami/nats](https://github.com/bitnami/charts/tree/master/bitnami/consul).
+From version **1.3.0 and higher**, we have deprecated support for the `Codefresh-managed nats` chart in favor of Bitnami public `bitnami/nats` chart. For more information, see [bitnami/nats](https://github.com/bitnami/charts/tree/master/bitnami/consul).
 
 > `cf-nats` is StatefulSet, meaning it has some immutable fields in its spec and both old and new charts have the same name which prevents straight upgrade.
 Direct attempt to perform an upgrade will most likely fail with:
