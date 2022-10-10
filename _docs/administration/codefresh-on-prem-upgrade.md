@@ -435,6 +435,17 @@ kubectl delete statefulset cf-nats -n codefresh
 > Nats chart was replaced so as a consequence values structure might be different for some parameters.
   For the complete list of values, see [values.yaml](https://github.com/bitnami/charts/blob/master/bitnami/nats/values.yaml)
 
+#### Upgrade to 1.3.1
+
+Chart **v1.3.1** fixes duplicated env vars `CLUSTER_PROVIDERS_URI` and `CLUSTER_PROVIDERS_PORT` in cf-api deployment.
+```yaml
+W1010 03:03:55.553842     280 warnings.go:70] spec.template.spec.containers[0].env[94].name: duplicate name "CLUSTER_PROVIDERS_URI"
+W1010 03:03:55.553858     280 warnings.go:70] spec.template.spec.containers[0].env[95].name: duplicate name "CLUSTER_PROVIDERS_PORT"
+```
+
+
+Due to helm issue [Removal of duplicate array entry removes completely from Kubernetes](https://github.com/helm/helm/issues/10741) you shoud run `kcfi deploy` or `helm upgrade` two times consecutively.
+
 ### Upgrade the Codefresh Platform with [kcfi](https://github.com/codefresh-io/kcfi)
 
 1. Locate the `config.yaml` file you used in the initial installation.
