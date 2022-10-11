@@ -373,78 +373,81 @@ This major release **deprecates** the following Codefresh managed charts:
 * Consul
 * Nats
 
-#### Consul
-From version **1.3.0 and higher**, we have deprecated Codefresh-managed `consul` chart in favor of Bitnami public `bitnami/consul` chart. For more information, see [bitnami/consul](https://github.com/bitnami/charts/tree/master/bitnami/consul).
+#### Update configuration for Consul
+From version **1.3.0 and higher**, we have deprecated the Codefresh-managed `consul` chart,  in favor of Bitnami public `bitnami/consul` chart. For more information, see [bitnami/consul](https://github.com/bitnami/charts/tree/master/bitnami/consul).
 
 Consul storage contains data about **Windows** worker nodes, so if you had any Windows nodes connected to your OnPrem installation, see the following instruction:
 
 > Use `https://<your_onprem_domain>/admin/nodes` to check for any existing Windows nodes.
 
-##### Backup The Data (Before the Upgrade)
-Exec into the consul pod and create a snapshot:
+##### Back up existing consul data 
+_Before starting the upgrade_, back up existing data.
 
+> Because `cf-consul` is a StatefulSet and has some immutable fields in its spec with both old and new charts having the same names, you cannot perform a direct upgrade.  
+  Direct upgrade will most likely fail with:  
+  `helm.go:84: [debug] cannot patch "cf-consul" with kind StatefulSet: StatefulSet.apps "cf-consul" is invalid: spec: Forbidden: updates to statefulset spec for fields other than 'replicas', 'template', 'updateStrategy' and 'minReadySeconds' are forbidden`  
+  After backing up existing data, you must delete the old StatefulSet.
+
+
+1. Exec into the consul pod and create a snapshot:
 ```shell
 kubectl exec -it cf-consul-0 -n codefresh -- consul snapshot save backup.snap
 ```
-
-Copy snapshot locally:
+1. Copy snapshot locally:
 ```shell
 kubectl cp -n codefresh cf-consul-0:backup.snap backup.snap
 ```
-
-> `cf-consul` is StatefulSet, meaning it has some immutable fields in its spec and both old and new charts have the same name which prevents straight upgrade.
-Direct attempt to perform an upgrade will most likely fail with:
-`helm.go:84: [debug] cannot patch "cf-consul" with kind StatefulSet: StatefulSet.apps "cf-consul" is invalid: spec: Forbidden: updates to statefulset spec for fields other than 'replicas', 'template', 'updateStrategy' and 'minReadySeconds' are forbidden`
-
-**Before the upgrade, delete the old cf-consul stateful set:**
+1. Delete the old cf-consul stateful set:
 
 ```shell
 kubectl delete statefulset cf-consul -n codefresh
 ```
 
-##### Restore The Data (After the Upgrade)
+##### Restore backed up data 
 
-Perform an upgrade to 1.3.0 onprem release.
-Copy the snapshot back to the new pod:
+After completing the upgrade to the current version, restore the `consul` data that you backed up.
+
+1. Copy the snapshot back to the new pod:
 
 ```shell
 kubectl cp -n codefresh backup.snap cf-consul-0:/tmp/backup.snap
 ```
-
-Restore the data:
+1. Restore the data:
 ```
 kubectl exec -it cf-consul-0 -n codefresh -- consul snapshot restore /tmp/backup.snap
 ```
-
-> Consul chart was replaced so as a consequence values structure might be different for some parameters.
+> Consul chart was replaced and values structure might be different for some parameters.  
   For the complete list of values, see [values.yaml](https://github.com/bitnami/charts/blob/master/bitnami/consul/values.yaml)
 
-#### Nats
+
+#### Update Nats configuration
 From version **1.3.0 and higher**, we have deprecated Codefresh-managed `nats` chart in favor of Bitnami public `bitnami/nats` chart. For more information, see [bitnami/nats](https://github.com/bitnami/charts/tree/master/bitnami/consul).
 
-> `cf-nats` is StatefulSet, meaning it has some immutable fields in its spec and both old and new charts have the same name which prevents straight upgrade.
-Direct attempt to perform an upgrade will most likely fail with:
-`helm.go:84: [debug] cannot patch "cf-nats" with kind StatefulSet: StatefulSet.apps "cf-nats" is invalid: spec: Forbidden: updates to statefulset spec for fields other than 'replicas', 'template', 'updateStrategy' and 'minReadySeconds' are forbidden`
+> Because `cf-nats` is a StatefulSet and  has some immutable fields in its spec, both the old and new charts have the same names, preventing a direct upgrade.  
+  Direct upgrade will most likely fail with:  
+  `helm.go:84: [debug] cannot patch "cf-nats" with kind StatefulSet: StatefulSet.apps "cf-nats" is invalid: spec: Forbidden: updates to statefulset spec for fields other than 'replicas', 'template', 'updateStrategy' and 'minReadySeconds' are forbidden`  
+  After backing up existing data, you must delete the old StatefulSet.
 
-**Before the upgrade, delete the old cf-nats stateful set**
+
+* D*elete the old `cf-nats` StatefulSet.
 
 ```shell
 kubectl delete statefulset cf-nats -n codefresh
 ```
 
-> Nats chart was replaced so as a consequence values structure might be different for some parameters.
+> Nats chart was replaced and values structure might be different for some parameters.  
   For the complete list of values, see [values.yaml](https://github.com/bitnami/charts/blob/master/bitnami/nats/values.yaml)
 
 #### Upgrade to 1.3.1
 
-Chart **v1.3.1** fixes duplicated env vars `CLUSTER_PROVIDERS_URI` and `CLUSTER_PROVIDERS_PORT` in cf-api deployment.
+Chart **v1.3.1** fixes duplicated env vars `CLUSTER_PROVIDERS_URI` and `CLUSTER_PROVIDERS_PORT` in `cf-api` deployment.
 ```yaml
 W1010 03:03:55.553842     280 warnings.go:70] spec.template.spec.containers[0].env[94].name: duplicate name "CLUSTER_PROVIDERS_URI"
 W1010 03:03:55.553858     280 warnings.go:70] spec.template.spec.containers[0].env[95].name: duplicate name "CLUSTER_PROVIDERS_PORT"
 ```
 
 
-Due to helm issue [Removal of duplicate array entry removes completely from Kubernetes](https://github.com/helm/helm/issues/10741) you shoud run `kcfi deploy` or `helm upgrade` two times consecutively.
+> Due to Helm issue [Removal of duplicate array entry removes completely from Kubernetes](https://github.com/helm/helm/issues/10741), you shoud run `kcfi deploy` or `helm upgrade` two times consecutively.
 
 ### Upgrade the Codefresh Platform with [kcfi](https://github.com/codefresh-io/kcfi)
 
