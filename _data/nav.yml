@@ -83,8 +83,10 @@
   pages:
     - title: Applications dashboard
       url: "/applications-dashboard"
-    - title: Applications
+    - title: Creating applications
       url: "/create-application"
+    - title: Managing applications
+      url: "/manage-application"
     - title: Images in Codefresh
       url: "/images"
     - title: Install Argo Rollouts
