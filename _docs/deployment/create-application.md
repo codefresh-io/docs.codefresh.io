@@ -22,7 +22,7 @@ Codefresh provides all the options and functionality to create and manage Argo C
   To monitor the health and sync status, deployments, and resources for the application, see [Applications dashboard]({{site.baseurl}}/docs/deployment/applications-dashboard/).  
 
 ### Application: Definitions
-Application definitions include the name, runtime, and the name of the YAML manifest. By default, the YAML manifest has the same name as that of the application. 
+Application definitions include the name, runtime, and the location of the YAML manifest. By default, the YAML manifest has the same name as that of the application. You can also define where to save the YAML file within the Git Source you select for the application by adding front slashes to denote subfolders.
 
 {% include 
    image.html 
