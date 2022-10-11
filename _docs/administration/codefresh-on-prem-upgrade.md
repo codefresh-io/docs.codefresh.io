@@ -416,7 +416,7 @@ kubectl cp -n codefresh backup.snap cf-consul-0:/tmp/backup.snap
 ```
 kubectl exec -it cf-consul-0 -n codefresh -- consul snapshot restore /tmp/backup.snap
 ```
-> Consul chart was replaced and values structure might be different for some parameters.  
+> Consul chart was replaced, and values structure might be different for some parameters.  
   For the complete list of values, see [values.yaml](https://github.com/bitnami/charts/blob/master/bitnami/consul/values.yaml)
 
 
@@ -435,8 +435,8 @@ From version **1.3.0 and higher**, we have deprecated Codefresh-managed `nats` c
 kubectl delete statefulset cf-nats -n codefresh
 ```
 
-> Nats chart was replaced and values structure might be different for some parameters.  
-  For the complete list of values, see [values.yaml](https://github.com/bitnami/charts/blob/master/bitnami/nats/values.yaml)
+> Nats chart was replaced, and values structure might be different for some parameters.  
+  For the complete list of values, see [values.yaml](https://github.com/bitnami/charts/blob/master/bitnami/nats/values.yaml).
 
 #### Upgrade to 1.3.1
 
