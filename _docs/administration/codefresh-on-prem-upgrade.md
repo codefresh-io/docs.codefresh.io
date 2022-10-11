@@ -380,12 +380,12 @@ Consul storage contains data about **Windows** worker nodes, so if you had any W
 
 > Use `https://<your_onprem_domain>/admin/nodes` to check for any existing Windows nodes.
 
-##### Back up existing consul data 
+##### Back up existing consul data
 _Before starting the upgrade_, back up existing data.
 
-> Because `cf-consul` is a StatefulSet and has some immutable fields in its spec with both old and new charts having the same names, you cannot perform a direct upgrade.  
-  Direct upgrade will most likely fail with:  
-  `helm.go:84: [debug] cannot patch "cf-consul" with kind StatefulSet: StatefulSet.apps "cf-consul" is invalid: spec: Forbidden: updates to statefulset spec for fields other than 'replicas', 'template', 'updateStrategy' and 'minReadySeconds' are forbidden`  
+> Because `cf-consul` is a StatefulSet and has some immutable fields in its spec with both old and new charts having the same names, you cannot perform a direct upgrade.
+  Direct upgrade will most likely fail with:
+  `helm.go:84: [debug] cannot patch "cf-consul" with kind StatefulSet: StatefulSet.apps "cf-consul" is invalid: spec: Forbidden: updates to statefulset spec for fields other than 'replicas', 'template', 'updateStrategy' and 'minReadySeconds' are forbidden`
   After backing up existing data, you must delete the old StatefulSet.
 
 
@@ -403,7 +403,7 @@ kubectl cp -n codefresh cf-consul-0:backup.snap backup.snap
 kubectl delete statefulset cf-consul -n codefresh
 ```
 
-##### Restore backed up data 
+##### Restore backed up data
 
 After completing the upgrade to the current version, restore the `consul` data that you backed up.
 
@@ -416,16 +416,16 @@ kubectl cp -n codefresh backup.snap cf-consul-0:/tmp/backup.snap
 ```
 kubectl exec -it cf-consul-0 -n codefresh -- consul snapshot restore /tmp/backup.snap
 ```
-> Consul chart was replaced, and values structure might be different for some parameters.  
+> Consul chart was replaced, and values structure might be different for some parameters.
   For the complete list of values, see [values.yaml](https://github.com/bitnami/charts/blob/master/bitnami/consul/values.yaml)
 
 
 #### Update Nats configuration
 From version **1.3.0 and higher**, we have deprecated Codefresh-managed `nats` chart in favor of Bitnami public `bitnami/nats` chart. For more information, see [bitnami/nats](https://github.com/bitnami/charts/tree/master/bitnami/consul).
 
-> Because `cf-nats` is a StatefulSet and  has some immutable fields in its spec, both the old and new charts have the same names, preventing a direct upgrade.  
-  Direct upgrade will most likely fail with:  
-  `helm.go:84: [debug] cannot patch "cf-nats" with kind StatefulSet: StatefulSet.apps "cf-nats" is invalid: spec: Forbidden: updates to statefulset spec for fields other than 'replicas', 'template', 'updateStrategy' and 'minReadySeconds' are forbidden`  
+> Because `cf-nats` is a StatefulSet and  has some immutable fields in its spec, both the old and new charts have the same names, preventing a direct upgrade.
+  Direct upgrade will most likely fail with:
+  `helm.go:84: [debug] cannot patch "cf-nats" with kind StatefulSet: StatefulSet.apps "cf-nats" is invalid: spec: Forbidden: updates to statefulset spec for fields other than 'replicas', 'template', 'updateStrategy' and 'minReadySeconds' are forbidden`
   After backing up existing data, you must delete the old StatefulSet.
 
 
@@ -435,10 +435,10 @@ From version **1.3.0 and higher**, we have deprecated Codefresh-managed `nats` c
 kubectl delete statefulset cf-nats -n codefresh
 ```
 
-> Nats chart was replaced, and values structure might be different for some parameters.  
+> Nats chart was replaced, and values structure might be different for some parameters.
   For the complete list of values, see [values.yaml](https://github.com/bitnami/charts/blob/master/bitnami/nats/values.yaml).
 
-#### Upgrade to 1.3.1
+#### Upgrade to 1.3.1 and higher
 
 Chart **v1.3.1** fixes duplicated env vars `CLUSTER_PROVIDERS_URI` and `CLUSTER_PROVIDERS_PORT` in `cf-api` deployment.
 ```yaml
