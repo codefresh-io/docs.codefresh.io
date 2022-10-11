@@ -397,7 +397,7 @@ kubectl exec -it cf-consul-0 -n codefresh -- consul snapshot save backup.snap
 ```shell
 kubectl cp -n codefresh cf-consul-0:backup.snap backup.snap
 ```
-1. Delete the old cf-consul stateful set:
+1. **Delete the old** `cf-consul` stateful set:
 
 ```shell
 kubectl delete statefulset cf-consul -n codefresh
@@ -429,7 +429,7 @@ From version **1.3.0 and higher**, we have deprecated Codefresh-managed `nats` c
   After backing up existing data, you must delete the old StatefulSet.
 
 
-* D*elete the old `cf-nats` StatefulSet.
+* **Delete the old** `cf-nats` stateful set.
 
 ```shell
 kubectl delete statefulset cf-nats -n codefresh
