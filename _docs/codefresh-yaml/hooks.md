@@ -622,8 +622,7 @@ With the current implementation of hooks, the following limitations are present:
 * The [debugger]({{site.baseurl}}/docs/configure-ci-cd-pipeline/debugging-pipelines/) cannot inspect commands inside hook segments
 * Hooks are not supported for [parallel steps]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/)
 * Storage integrations don't resolve in hooks (for example, [test reports]({{site.baseurl}}/docs/testing/test-reports/#producing-allure-test-reports-from-codefresh-pipelines))
-
-
+* Step hook does not support the working_directory field aka `working_directory: ${{clone}}`
 
 ## What to read next
 
