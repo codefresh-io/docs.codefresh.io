@@ -121,8 +121,8 @@ For more visibility and easier access, the same Events tab is now displayed with
 
 **Applications**  
 * Health status does not change to progressing when previously degraded. 
-* Wrong git source reference (CR-14445) Daniel Maizel
-* Git Source applications in the Applications dashboard not reflected in the Rutnimes > Git Source tab. 
+* Wrong git source reference 
+* Git Source applications in the Applications dashboard not reflected in the Runtimes > Git Source tab. 
 * Switching from YAML to form view after changing fields does not update validations. 
 * App details drawer crashes when application does not have resources. 
 * Missing namespace for resources.
