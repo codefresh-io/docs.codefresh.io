@@ -62,6 +62,7 @@ The table describes _all_ the arguments required for CI integrations in general.
 | Argument    | Description     | Required/Optional/Default |
 | ----------  |  -------- | ------------------------- |
 | `CF_HOST`                      | _Deprecated from v 0.0.460 and higher._ Recommend using `CF_RUNTIME_NAME` instead. {::nomarkdown}<br><span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">CF_HOST</span> has been deprecated because the URL is not static, and any change can fail the enrichment.<br><br>  The URL to the cluster with the Codefresh runtime to integrate with. If you have more than one runtime, select the runtime from the list. Codefresh displays the URL of the selected runtime cluster.{:/}   | Required  |
+| `CF_PLATFORM_URL`       | For on-premises environments, the root URL of the codefresh application. If not specified, uses the default value of `https://g.codefresh.io`. | Optional  |
 | `CF_RUNTIME_NAME`       | The runtime to use for the integration. If you have more than one runtime, select the runtime from the list. | Required  |
 | `CF_API_KEY`            | The API key for authentication. Generate the key for the integration.  | Required  |
 | `CF_CONTAINER_REGISTRY_INTEGRATION` | The name of the container registry integration created in Codefresh where the image is stored. See [Container registry integrations]({{site.baseurl}}/docs/integrations/container-registries/). | Optional  |

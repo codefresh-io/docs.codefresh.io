@@ -18,7 +18,7 @@ For information on adding a Jira integration in Codefresh, see [Issue-tracking i
 1. Note down the following as you will need them to complete the integration with Codefresh:  
   * Jira URL
   * Jira username/email to be used for the integration
-  * Jira password/token created for this user
+  * Jira token created for this user
 
 
 ### Jira integration settings in Codefresh
@@ -31,7 +31,7 @@ The table describes the arguments required to integrate Jira in Codefresh.
 | **Integration name**       | A friendly name for the integration. This is the name you will reference in the third-party CI platform/tool. |
 | **All Runtimes/Selected Runtimes**   | {::nomarkdown} The runtimes in the account with which to share the integration resource. <br>The integration resource is created in the Git repository with the shared configuration, within <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">resources</span>. The exact location depends on whether the integration is shared with all or specific runtimes: <br><ul><li>All runtimes: Created in <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">resources/all-runtimes-all-clusters/</span></li><li>Selected runtimes: Created in <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">resources/runtimes/<runtime-name>/</span></li></ul> You can reference the Docker Hub integration in the CI tool. {:/}|
 |**Jira Host**| The URL of your Jira instance. For example, `https://<company>.atlassian.net`|
-|**API Token**| The Jira password/token you noted down when you created the Jira instance.|
+|**API Token**| The Jira API token for the Jira instance.|
 |**API Email**| The email for the API token.|
 
 
