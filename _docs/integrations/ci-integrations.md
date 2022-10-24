@@ -71,7 +71,7 @@ The table describes _all_ the arguments required for CI integrations in general.
 | `CF_WORKFLOW_NAME`           | The name assigned to the workflow that builds the image. When defined, the name is displayed in the Codefresh platform. Example, `Staging step` | Optional  |
 | `CF_GIT_BRANCH`              | The Git branch with the commit and PR (pull request) data to add to the image. Pass the Branch from the event payload used to trigger your action.  | Required  |
 | `CF_GIT_REPO`                | The Git repository with the configuration and code used to build the image.  | Required  |
-| `CF_GIT_PROVIDER`            | The Git provider for the integration, and can be either GitHub, GitLab, Bitbucket, or Bitbucket Server.  | Required  |
+| `CF_GIT_PROVIDER`            | The Git provider for the integration, and can be either `github`, `gitlab`, `bitbucket`, or `bitbucket-server`.  | Required  |
 | `CF_GITHUB_TOKEN`            | The GitHub authentication token. The token must have `repo` scope. See [Git tokens]({{site.baseurl}}/docs/reference/git-tokens/). | Required  |
 | `CF_GITHUB_API_URL`          | The URL to the GitHub developer site.  | Required  |
 | `CF_BITBUCKET_USERNAME`      | The username for the Bitbucket or the BitBucket Server (on-prem) account. | Required  |
