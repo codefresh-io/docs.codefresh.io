@@ -687,5 +687,5 @@ providers:
 {:/}
  
 ### What to read next
-[Hybrid runtime installation flags]({{site.baseurl}}/docs/runtime/installation//#hybrid-runtime-installation-flags)  
+[Hybrid runtime installation flags]({{site.baseurl}}/docs/runtime/installation/#hybrid-runtime-installation-flags)  
 [Install hybrid runtimes]({{site.baseurl}}/docs/runtime/installation/)
