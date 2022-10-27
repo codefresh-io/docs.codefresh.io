@@ -415,8 +415,8 @@ If you've installed the Codefresh runner on [EKS](https://aws.amazon.com/eks/) o
 `dind-volume-provisioner` deployment should have permissions to create/attach/detach/delete/get ebs volumes.
 
 There are 3 options:
-* running `dind-volume-provisioniner` pod on the node (node-group) with iam role
-* k8s secret with [aws credentials format](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html) mounted to ~/.aws/credentials (or `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` env vars passed) to the `dind-volume-provisioniner` pod
+* running `dind-volume-provisioner` pod on the node (node-group) with iam role
+* k8s secret with [aws credentials format](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html) mounted to ~/.aws/credentials (or `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` env vars passed) to the `dind-volume-provisioner` pod
 * using [Aws Identity for Service Account](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html) iam role assigned to `volume-provisioner-runner` service account
 
 Minimal policy for `dind-volume-provisioner`:
