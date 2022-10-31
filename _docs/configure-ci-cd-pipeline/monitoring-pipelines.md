@@ -201,25 +201,35 @@ Monitor the status of the steps in the pipeline as they are executed.
 |{::nomarkdown}<img src="../../../images/pipeline/monitoring/step-status-error.png" display=inline-block/> {:/}| Pipeline step execution has been terminated because of error. |
 
 
-### Viewing logs from pipeline steps
+### Viewing logs for pipeline and pipeline steps
 
-Click on each step in order to see the respective log.
+View logs for running and completed builds, and download them in HTML or text formats.
+>Note: The max log size for the entire build is 100MB, and 20MB per step. Once the size is exceeded, the system stops logging but the build execution continues.
+
+* To view logs for the selected build, click **Output** in the lower part of the Build details.
+
 
 {% include 
 image.html 
 lightbox="true" 
 file="/images/pipeline/monitoring/build-logs.png" 
 url="/images/pipeline/monitoring/build-logs.png"
-alt="step details in Codefresh" 
-caption="Step details (click to enlarge)"
-max-width="80%"
+alt="Build log in Codefresh" 
+caption="Build log in Codefresh"
+max-width="60%"
 %}
 
+: .table .table-bordered .table-hover}
+|Log Option               | Description   |
+| ------------------------| ---------------- |
+| Filter log  | Select or clear steps to view/download logs for selected steps. When applied, copy, download, and search actions are always in the context of the filters. |
+| Copy to clipboard       | Copy the complete log, the selected step-log, or the filtered logs to the clipboard.   |
+| Download log in HTML/text   |  Download the complete log, the selected step-log, or the filtered logs log in HTML or plain text formats. |
+| Search log  |  Search displayed log for required occurrences of an event or resource  |
 
-You can copy the step logs with the *copy to clipboard* button at the top left corner of the log window.
-You can also search the logs by clicking at the magnifying glass icon at the top right corner in the log window.
 
-> Note: The max size each step can log is around 20MB, and 100MB for the whole build. After that, the system will stop logging, but the build execution will continue.
+
+
 
 
 ### Reviewing the yaml for the pipeline
