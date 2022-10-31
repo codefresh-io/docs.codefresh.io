@@ -50,7 +50,7 @@ Codefresh Runtime creates three repositories in your organization's Git provider
 
 * Codefresh runtime installation repository
 * Codefresh Git Sources
-* Codefresh shared configuration repository. 
+* Codefresh shared configuration repository
 
 <!---**Codefresh Runtime functionality**  
 

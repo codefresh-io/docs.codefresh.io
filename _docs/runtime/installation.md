@@ -14,10 +14,10 @@ There are two parts to installing a hybrid runtime:
 1. Installing the Codefresh CLI
 2. Installing the hybrid runtime from the CLI, either through the CLI wizard or via silent installation through the installation flags.  
   The hybrid runtime is installed in a specific namespace on your cluster. You can install more runtimes on different clusters in your deployment.  
-  Every hybrid runtime installation makes commits to two Git repos:
-
-  * Runtime install repo: The installation repo that manages the hybrid runtime itself with Argo CD. If the repo URL does not exist, runtime creates it automatically.
-  * Git Source repo: Created automatically during runtime installation. The repo where you store manifests to run CodefreshCodefresh pipelines.
+  Every hybrid runtime installation makes commits to three Git repos:
+  * Runtime install repo: The installation repo that manages the hybrid runtime itself with Argo CD. If the repo URL does not exist, it is automatically created during runtime installation.
+  * Git Source repo: Created automatically during runtime installation. The repo where you store manifests for pipelines and applications. See [Git Sources]({{site.baseurl}}/docs/runtime/git-sources).
+  * Shared configuration repo: Created for the first runtime in a user account. The repo stores configuration manifests for account-level resources and is shared with other runtimes in the same account. See [Shared configuration repository]({{site.baseurl}}/docs/reference/shared-configuration).
 
 See also [Codefresh architecture]({{site.baseurl}}/docs/getting-started/architecture).
 
