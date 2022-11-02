@@ -203,13 +203,13 @@ Monitor the status of the steps in the pipeline as they are executed.
 
 ### View/download logs for pipeline and pipeline steps
 
-View logs for running and completed builds, and download them in HTML or text formats.  
-You can view logs online, for the entire build or for single or specific steps in the build. Similarly, you can download the log for the entire build, or for single or specific steps.  
-The Filter Logs option is useful to view and manage logs, especially for large builds as there is a max size limit for logs. You can also search logs to find what you are looking for.
+View logs for running and completed builds and download them in HTML or text formats.  
+You can view logs online, for the entire build or for single or specific steps in the build. Similarly, you can download the logs for the entire build, or for single or specific steps.  
+The Filter Logs option is useful to view and manage logs, especially for large builds as there is a max size limit for logs. You can also search logs.
 
 >Note:  
   The max log size for the entire build is 100MB, and 20MB per step. The system stops generating logs once the build size is exceeded. 
-  For large builds, it may be easier to filter the logs and view/download by single or multiple steps.
+  For large builds, it is easier to filter the logs by single or multiple steps, and then view/download them.
 
   {% include 
 image.html 
