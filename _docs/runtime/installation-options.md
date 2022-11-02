@@ -8,7 +8,7 @@ toc: true
 Codefresh supports two installation environments:
 
 
-* **Hosted** environments, with Argo CD installed in the Codefresh cluster.
+* **Hosted** environments (Beta), with Argo CD installed in the Codefresh cluster.
   The runtime is installed and provisioned in a Codefresh cluster, and managed by Codefresh.  
   Hosted enviroments are full-cloud environments, where all updates and improvements are managed by Codefresh, with zero-maintenance overhead for you as the customer. Currently, you can add one hosted runtime per account.
   For the architecture illustration, see [Hosted runtime architecture]({{site.baseurl}}/docs/getting-started/architecture/#hosted-runtime-architecture).
@@ -17,8 +17,8 @@ Codefresh supports two installation environments:
 {% include
  image.html
  lightbox="true"
- file="/images/runtime/hosted-initial-view.png"
- url="/images/runtime/hosted-initial-view.png"
+ file="/images/runtime/intro-hosted-hosted-initial-view.png"
+ url="/images/runtime/intro-hosted-hosted-initial-view.png"
  alt="Hosted runtime setup"
  caption="Hosted runtime setup"
     max-width="80%"
@@ -54,10 +54,12 @@ Codefresh Runtime creates three repositories in your organization's Git provider
 
 <!---**Codefresh Runtime functionality**  
 
+
+**Codefresh Runtime functionality**
 The runtime:
 * Ensures that the installation repository and the Git Sources are always in sync, and applies Git changes back to the cluster
 * Receives events and information from the user's organization systems to execute workflows
-   By default, the ingress controller directs all requests and events to the Codefresh Application Proxy. When internal and external ingress hosts are configured, the ingress comtroller directs webhook events to the relevant Event Source and then to Argo Events (not via the Codefresh Application Proxy).-->
+   By default, the ingress controller directs all requests and events to the Codefresh Application Proxy. When internal and an external ingress hosts are configured, the ingress comtroller directs webhook events to the relevant Event Source and then to Argo Events (not via the Codefresh Application Proxy).-->
 
 ### Hosted vs.Hybrid environments
 

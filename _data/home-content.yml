@@ -66,10 +66,8 @@
   links:
     - title: Applications dashboard
       localurl: /docs/deployment/applications-dashboard/
-    - title: Creating applications
+    - title: Applications
       localurl: /docs/deployment/create-application/
-    - title: Managing applications
-      localurl: /docs/deployment/manage-application/
     - title: Images in Codefresh
       localurl: /docs/deployment/images/ 
     - title: Install Argo Rollouts
