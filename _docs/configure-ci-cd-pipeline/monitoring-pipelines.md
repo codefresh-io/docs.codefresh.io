@@ -201,15 +201,17 @@ Monitor the status of the steps in the pipeline as they are executed.
 |{::nomarkdown}<img src="../../../images/pipeline/monitoring/step-status-error.png" display=inline-block/> {:/}| Pipeline step execution has been terminated because of error. |
 
 
-### Viewing logs for pipeline and pipeline steps
+### View/download logs for pipeline and pipeline steps
 
-View logs for running and completed builds, and download them in HTML or text formats.
->Note: The max log size for the entire build is 100MB, and 20MB per step. Once the size is exceeded, the system stops logging but the build execution continues.
+View logs for running and completed builds, and download them in HTML or text formats.  
+You can view logs online, for the entire build or for single or specific steps in the build. Similarly, you can download the log for the entire build, or for single or specific steps.  
+The Filter Logs option is useful to view and manage logs, especially for large builds as there is a max size limit for logs. You can also search logs to find what you are looking for.
 
-* To view logs for the selected build, click **Output** in the lower part of the Build details.
+>Note:  
+  The max log size for the entire build is 100MB, and 20MB per step. The system stops generating logs once the build size is exceeded. 
+  For large builds, it may be easier to filter the logs and view/download by single or multiple steps.
 
-
-{% include 
+  {% include 
 image.html 
 lightbox="true" 
 file="/images/pipeline/monitoring/build-logs.png" 
@@ -219,15 +221,13 @@ caption="Build log in Codefresh"
 max-width="60%"
 %}
 
-: .table .table-bordered .table-hover}
-|Log Option               | Description   |
-| ------------------------| ---------------- |
-| Filter log  | Filter logs by specific build steps. When logs are filters, copy, download, and search actions always work in the context of the filters. |
-| Copy to clipboard       | Copy the complete log, the selected step-log, or the filtered logs to the clipboard.   |
-| Download log in HTML/text   |  Download the complete log, the selected step-log, or the filtered logs log in HTML or plain text formats. |
-| Search log  |  Search displayed log for required occurrences of an event or resource  |
 
-
+1. In the **Builds** page, select a build. 
+1. To view logs online for the selected build, click **Output** in the lower part of the Build page.
+1. Optional. Select **Filter Logs** and then select the step or steps for which view/download logs.  
+  Logs are displayed for the selected steps.
+1. From either the context menu on the top-right of the toolbar or from the Output pane, select **Download as HTML** or **Download as text**.
+  The log file is downloaded with the build ID as the filename, including also the step name if the log is for a single step, in the format `<build-id-<step-name>'.
 
 
 ### Reviewing the yaml for the pipeline
