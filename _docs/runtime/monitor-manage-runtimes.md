@@ -9,12 +9,18 @@ toc: true
 ---
 
 
-The **Runtimes** page displays the provisioned runtimes in your account, both hybrid, and the hosted runtime if you have one. View runtime components and information in List or Topology view formats. Managed provisioned runtimes in the view mode that suits you.  
+The **Runtimes** page displays the provisioned runtimes in your account, both hybrid, and the hosted runtime if you have one.  
+Select the view mode to view runtime components and information, and manage provisioned runtimes in the view mode that suits you.  
 
 > Unless specified otherwise, management options are common to both hybrid and hosted runtimes.
 
-To monitor provisioned hybrid runtimes, including recovering runtimes for failed clusters, see [Monitor provisioned hybrid runtimes]({{site.baseurl}}/docs/runtime/monitoring-troubleshooting/).
+* Add managed clusters to hybrid or hosted runtimes (see [Adding & managing external clusters]({{site.baseurl}}/docs/runtime/managed-cluster/))
+* Add and manage Git Sources associated with hybrid or hosted runtimes (see [Adding & managing Git Sources]({{site.baseurl}}/docs/runtime/git-sources/))
+* Upgrade provisioned hybrid runtimes
+* Uninstall hybrid or hosted runtimes
+* Update Git runtime tokens
 
+To monitor provisioned hybrid runtimes, including recovering runtimes for failed clusters, see [Monitor provisioned hybrid runtimes]({{site.baseurl}}/docs/runtime/monitoring-troubleshooting/).
 
 ### Runtime views
 
@@ -76,16 +82,8 @@ Here is a description of the information in the Topology view.
 |**Health/Sync status** |The health and sync status of the runtime or cluster. {::nomarkdown}<ul><li><img src="../../../images/icons/error.png" display="inline-block"> indicates health or sync errors in the runtime, or a managed cluster if one was added to the runtime.</br> The runtime or cluster node is bordered in red and the name is colored red.</li> <li><img src="../../../images/icons/cf-sync-status.png" display=inline-block/> indicates that the runtime is being synced to the cluster on which it is provisioned.</li></ul> {:/} |
 |**Search and View options** | {::nomarkdown}<ul><li>Find a runtime or its clusters by typing part of the runtime/cluster name, and then navigate to the entries found. </li> <li>Topology view options: Resize to window, zoom in, zoom out, full screen view.</li></ul> {:/}|
 
-### Hybrid/hosted runtime management
 
-Work in either the List or Topology views to manage provisioned runtimes. If an option is valid only for hybrid runtimes, it is indicated as such.
-
-* Add managed clusters to hybrid or hosted runtimes (see [Adding & managing external clusters]({{site.baseurl}}/docs/runtime/managed-cluster/))
-* Add and manage Git Sources associated with hybrid or hosted runtimes (see [Adding & managing Git Sources]({{site.baseurl}}/docs/runtime/git-sources/))
-* Upgrade provisioned hybrid runtimes
-* Uninstall hybrid or hosted runtimes
-
-#### (Hybrid) Upgrade provisioned runtimes
+### (Hybrid) Upgrade provisioned runtimes
 
 Upgrade provisioned hybrid runtimes to install critical security updates or to install the latest version of all components. Upgrade a provisioned hybrid runtime by running a silent upgrade or through the CLI wizard.  
 If you have managed clusters for the hybrid runtime, upgrading the runtime automatically updates runtime components within the managed cluster as well.
@@ -161,7 +159,7 @@ For both silent or CLI-wizard based upgrades, make sure you have:
   * To manually define the shared configuration repo, add the `--shared-config-repo` flag with the path to the repo.
 1. Confirm to start the upgrade.
 
-#### Uninstall provisioned runtimes
+### Uninstall provisioned runtimes
 
 Uninstall provisioned hybrid and hosted runtimes that are not in use.  Uninstall a runtime by running a silent uninstall, or through the CLI wizard.  
 > Uninstalling a runtime removes the Git Sources and managed clusters associated with the runtime.
@@ -225,6 +223,67 @@ Pass the mandatory flags in the uninstall command:
 1. In your terminal, paste the command, and update the Git token value.
 1. Select the Kube context from which to uninstall the runtime, and then confirm the uninstall.
 1. If you get errors, run the uninstall command again, with the `--force` flag.
+
+
+
+### Update Git runtime tokens
+
+Provisioned runtimes require valid Git tokens to authenticate the runtimes.  
+
+There are two different situations when you need to updating Git runtime tokens:  
+* Update invalid, revoked, or expired tokens: Codefresh automatically flags runtimes with such tokens. It is mandatory to update the Git tokens for these runtimes to continue working with the platform. 
+* Update valid tokens: Optional. You may want to update Git runtime tokens, even valid runtime tokens, by deleting the existing token and replacing it with a new runtime token.
+
+The methods for updating any Git runtime token is the same regardless of the reason for the update:  
+* OAuth2 authorization, if your admin has registered an OAuth Application for Codefresh
+* Git access token authentication, by generating a personal access token in your Git provider account with the correct permissions
+
+**Before you begin**  
+* To authenticate through a Git access token, generate an access token for the runtime with the correct scopes: `repo` and `admin-repo`
+
+**How to**
+1. Do one of the following:
+  * If you see a notification in the Codefresh UI about invalid runtime tokens,  click **[Update Token]**.
+    In the Runtimes page, you can see runtimes with invalid tokens are prefixed by the key icon. Mouse over shows invalid token.
+  * To update an existing runtime token, go to [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
+1. Select the runtime for which to update the Git token.
+1. From the context menu with the additional actions at the top-right, select **Update Git Runtime token**.
+
+  {% include
+ image.html
+ lightbox="true"
+ file="/images/runtime/update-git-runtime-token.png"
+ url="/images/runtime/update-git-runtime-token.png"
+ alt="Update Git runtime token option"
+ caption="Update Git runtime token option"
+  max-width="40%"
+%}
+
+{:start="4"}
+1. Do one of the following: 
+  * If your admin has set up OAuth access, click **Authorize Access to Git Provider**. Go to _step 5_.
+  * Alternatively, authenticate with an access token from your Git provider. Go to _step 6_.
+
+{:start="5"}  
+1. For OAuth2 authorization:
+  > If the application is not registered, you get an error. Contact your admin for help.  
+  * Enter your credentials, and select **Sign In**.
+  * If required, as for example if two-factor authentication is configured, complete the verification. 
+
+    {% include 
+      image.html 
+      lightbox="true" 
+      file="/images/administration/user-settings/oauth-user-authentication.png" 
+      url="/images/administration/user-settings/oauth-user-authentication.png" 
+      alt="Authorizing access with OAuth2" 
+      caption="Authorizing access with OAuth2"
+      max-width="30%" 
+   %}
+
+{:start="6"} 
+1. For Git token authentication, expand **Advanced authorization options**, and then paste the generated token in the **Git runtime token** field.
+
+1. Click **Update Token**.
 
 
 ### Related articles
