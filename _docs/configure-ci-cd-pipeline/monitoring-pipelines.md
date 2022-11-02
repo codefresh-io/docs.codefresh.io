@@ -201,7 +201,7 @@ Monitor the status of the steps in the pipeline as they are executed.
 |{::nomarkdown}<img src="../../../images/pipeline/monitoring/step-status-error.png" display=inline-block/> {:/}| Pipeline step execution has been terminated because of error. |
 
 
-### Viewing logs for pipeline build and build steps
+### Viewing logs for pipeline and pipeline steps
 
 View logs for running and completed builds, and download them in HTML or text formats.
 >Note: The max log size for the entire build is 100MB, and 20MB per step. Once the size is exceeded, the system stops logging but the build execution continues.
@@ -219,15 +219,13 @@ caption="Build log in Codefresh"
 max-width="60%"
 %}
 
-{: .table .table-bordered .table-hover}
+: .table .table-bordered .table-hover}
 |Log Option               | Description   |
 | ------------------------| ---------------- |
-| Filter  | Select or clear steps to view/download logs for selected steps. When applied, copy, download, and search actions are always in the context of the filters. |
+| Filter log  | Filter logs by specific build steps. When logs are filters, copy, download, and search actions always work in the context of the filters. |
 | Copy to clipboard       | Copy the complete log, the selected step-log, or the filtered logs to the clipboard.   |
-| Download in HTML/text   |  Download the complete log, the selected step-log, or the filtered logs log in HTML or plain text formats. |
-| Search  | Search online log for required occurrences of an event or resource. |
-
-
+| Download log in HTML/text   |  Download the complete log, the selected step-log, or the filtered logs log in HTML or plain text formats. |
+| Search log  |  Search displayed log for required occurrences of an event or resource  |
 
 
 
