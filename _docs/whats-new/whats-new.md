@@ -7,9 +7,466 @@ redirect_from:
 toc: true
 ---
 
-We launched the Codefresh platform in February this year. Built on Argo, the world’s most popular and fastest-growing open source software delivery, Codefresh unlocks the full enterprise potential of Argo Workflows, Argo CD, Argo Events, and Argo Rollouts, providing a control-plane for managing them at scale.
 
-This July release is all about Hosted GitOps.
+Built on Argo, the world’s most popular and fastest-growing open source software delivery, Codefresh unlocks the full enterprise potential of Argo Workflows, Argo CD, Argo Events, and Argo Rollouts, providing a control-plane for managing them at scale.  
+
+
+
+## October 2022
+
+### Features & enhancements
+{::nomarkdown}
+<br>
+{:/}
+
+#### Kubernetes version runtime support
+We now support Kubernetes server versions 1.21 and higher.
+
+{::nomarkdown}
+<br>
+{:/}
+
+#### Request Routing Service for runtimes
+We have changed the routing mechanism for hybrid runtimes. URL requests and webhooks are now routed through a new internal routing service instead of through the ingress controller.  
+
+The change is effective from runtime version 0.0.543 and higher. If you already have runtimes installed, this change does not require any action from you, both to upgrade to the new runtime version or retain existing runtimes. Older runtimes continue to use the ingress controller for routing purposes.  
+
+See [Hybrid runtime architecture]({{site.baseurl}}/docs/getting-started/architecture/#hybrid-runtime-architecture) and [Request Routing Service]({{site.baseurl}}/docs/getting-started/architecture/#request-routing-service).
+
+{::nomarkdown}
+<br>
+{:/}
+
+#### More Git providers for runtimes
+Codefresh runtimes now support GitHub Enterprise, GitLab, and Bitbucket as Git providers, apart from GitHub, which is the default.
+ 
+When installing the first hybrid or hosted runtime for your account, you can define the Git provider of choice. Because Codefresh creates a configuration repository that is shared with subsequent runtimes in the same account, you cannot change the Git provider for a different runtime in the same account. 
+
+Each Git provider requires runtime tokens with specific scopes and has specific installation requirements. Once installed, you can authorize access to the Git provider through OAuth or a personal access token.
+
+Note that GitLab cloud is not supported for hosted runtimes.
+
+See [Git provider and repo flags]({{site.baseurl}}/docs/runtime/installation/#git-provider-and-repo-flags).
+
+{::nomarkdown}
+<br>
+{:/}
+
+### Turn off notifications for runtimes
+Codefresh alerts you to runtimes that are insecure or have invalid or expired Git personal access tokens. You can turn off these notifications selectively for runtimes for which these alerts are less critical, such as non-production runtimes.  
+
+The option is user-specific, and applies only to runtimes in the user's account. 
+
+
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-oct22-dismiss-runtime-notifications.png"
+ url="/images/whats-new/rel-notes-oct22-dismiss-runtime-notifications.png"
+ alt="Turn off notifications for selected runtime"
+ caption="Turn off notifications for selected runtime"
+    max-width="80%"
+%}
+
+Runtimes with disabled notifications are prefixed with an icon as in the picture below.
+
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-oct22-dimiss-notifications-indication.png"
+ url="/images/whats-new/rel-notes-oct22-dimiss-notifications-indication.png"
+ alt="Runtime with disabled notifications"
+ caption="Runtime with disabled notifications"
+    max-width="80%"
+%}
+
+{::nomarkdown}
+<br>
+{:/}
+
+#### Rollout Player for deployments
+Managing ongoing rollouts during a deployment is now simple with the Rollout Player. Clicking the rollout name in Timeline > Updated Services, displays both the visualization of the steps in the rollout and the Rollout Player. With the Rollout Player you can control individual steps in an ongoing rollout and even promote the rollout to a release.
+ 
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-oct-22-rollout-player.png"
+ url="/images/whats-new/rel-notes-oct-22-rollout-player.png"
+ alt="Rollout Player"
+ caption="Rollout Player"
+    max-width="40%"
+%}
+
+
+The Rollput Player allows you to:
+* Resume an indefinitley paused step 
+* Forward a step by skipping its execution 
+* Promote the rollout to deployment by skipping remaining pause, analysis
+
+{::nomarkdown}
+<br>
+{:/}
+
+#### Context menu for application resources
+We have enhanced the functionality for application resources in the Current State tab with the context menu for resources. The options available differ according to the type of resource.  
+
+<!---As the context menu is fully compatible with open source custom actions, any custom action you add is automatically displayed and available. -->
+
+**On-demand sync for individual application resources**  
+Sync is a context menu option available for all resources that track sync status. You can sync individual resources as needed or when out-of-sync without synchronizing or refreshing the application. 
+
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-oct-22-sync-context-menu.png"
+ url="/images/whats-new/rel-notes-oct-22-sync-context-menu.png"
+ alt="Sync option in resource context menu"
+ caption="Sync option in resource context menu"
+    max-width="50%"
+%}  
+
+**Rollout resource actions**  
+The context menu for `rollout` resource types have actions to control the rollout. 
+
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-oct22-rollout-context-menu.png"
+ url="/images/whats-new/rel-notes-oct22-rollout-context-menu.png"
+ alt="Context menu options for Rollout resource"
+ caption="Context menu options for Rollout resource"
+    max-width="50%"
+%} 
+
+{::nomarkdown}
+<br>
+{:/}
+
+#### Other enhancements
+
+**Git Sources as Application Type filter**  
+The list of filters for Application Type in the Applications dashboard includes the Git Source filter. Filtering by Git Source shows `Git Source Apps` which are applications created by Codefresh that store definitions of Argo Project resources.  
+
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-oct22-app-type-git-source.png"
+ url="/images/whats-new/rel-notes-oct22-app-type-git-source.png"
+ alt="Git Source as Application Type filter"
+ caption="Git Source as Application Type filter"
+    max-width="40%"
+%}
+
+
+**Manifests for Analysis Runs**  
+Analysis Run now shows the manifest in addition to the run results.
+
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-oct22-analysis-run-manifest.png"
+ url="/images/whats-new/rel-notes-oct22-analysis-run-manifest.png"
+ alt="Manifest for Analysis Run"
+ caption="Manifest for Analysis Run"
+    max-width="40%"
+%}
+
+{::nomarkdown}
+<br>
+{:/}
+
+### Bug fixes
+
+{::nomarkdown}
+<br>
+{:/}
+
+**Runtimes**  
+
+* 500: Internal Server Error when adding cluster command to hosted runtime.
+* Commit SHA link in Activity Log goes to the Home page instead of to the Commit URL for the Git provider.
+* Ingress controller errors for cluster even when `skip-ingress` flag is defined.
+* Retry mechanism requests cause delay in Git integration checks. 
+* For hosted runtimes, Git Source is not displayed though the Connect to Git provider step is marked as complete.
+* No option to log out on selecting invalid authentication mode.
+* Removing a managed cluster does not display any indication in Codefresh UI.
+* Up-to-date runtimes display upgrade indication.
+
+
+{::nomarkdown}
+<br>
+{:/}
+
+**Applications**  
+* Applications deleted in Git displayed as errors, or as Missing in Codefresh.  
+* Tagging/untagging favorite application breaks relationship to parent application.
+* Application definitions validation for cluster URL that does not exist shows wrong entity type.
+* Incorrect number of replicas for previous image in Applications dashboard.
+* Mismatch between information reported for cluster and namespace in Applications dashboard and Images.
+* Source link in Timeline tab redirects to incorrect branch.
+* Missing Health indication for Argo Rollouts in Codefresh UI.
+
+{::nomarkdown}
+<br>
+{:/}
+
+**Delivery Pipelines and workflows**
+* 100% CPU consumption for workflows with more than 20 nodes.
+* Discard Changes button enabled when there are no changes. 
+
+
+## September 2022
+
+
+
+### Features & enhancements
+{::nomarkdown}
+<br>
+{:/}
+
+#### Enriched application header
+Every application includes a header that highlights key information and links to key aspects of the application. For example, you can see both the current sync state and the result of the previous sync operation, with links to pull-out panels including additional details.
+
+
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-sep22-app-header.png"
+ url="/images/whats-new/rel-notes-sep22-app-header.png"
+ alt="Application header for selected appplication"
+ caption="Application header for selected appplication"
+    max-width="80%"
+%}
+
+#### Refresh and hard refresh to manage applications
+Just as you can manually  synchronize applications directly in Codefresh, you can now perform Refresh and Hard Refresh for applications. 
+In the Applications dashboard, both options are available in the context menu of each application. On  selecting an application, you can see them on the top-right next to the Synchronize button.
+
+
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-sep22-refresh-hardrefresh.png"
+ url="/images/whats-new/rel-notes-sep22-refresh-hardrefresh.png"
+ alt="Refresh/Hard refresh options for selected application"
+ caption="Refresh/Hard refresh options for selected application"
+    max-width="80%"
+%}
+
+
+
+#### Click resume indefinitely paused rollouts
+Argo Rollouts allows you to pause a rollout indefinitely and resume it manually instead of automatically after a fixed duration. Manually resuming a rollout is generally done through the CLI.   
+Codefresh provides you the option of resuming an indefinitely paused rollout directly from the Applications dashboard in Codefresh, with a single click. 
+
+In the Timelines tab of the selected application, an ongoing rollout that is indefinitely paused displays the pause button. Resuming the rollout is as simple as clicking the pause button.
+
+
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-sep22-resume-pause.png"
+ url="/images/whats-new/rel-notes-sep22-resume-pause.png"
+ alt="Resume indefinitley paused rollout"
+ caption="Resume indefinitley paused rollout"
+    max-width="60%"
+%}
+
+####  Custom path for application resources
+When creating applications, in addition to changing the name of the manifest, you can now also define the path for the manifest within the Git Source. Use the front slash (/) to add subfolders to the path. The resource is created in the Git Source you select, according to the path you defined. 
+
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-sep22-app-yaml-location.png"
+ url="/images/whats-new/rel-notes-sep22-app-yaml-location.png"
+ alt="Define location for application YAML"
+ caption="Define location for application YAML"
+    max-width="60%"
+%}
+
+
+
+#### Events tab for applications
+In the previous month's release, we added the Events panel displaying successful and events for the application.
+For more visibility and easier access, the same Events tab is now displayed with the Current State, Timeline, Services, and Configuration tabs for the selected application.
+
+ 
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-sep22-events-tab.png"
+ url="/images/whats-new/rel-notes-sep22-events-tab.png"
+ alt="Events tab for application"
+ caption="Events tab for application"
+    max-width="60%"
+%}
+
+
+### Bug fixes
+
+{::nomarkdown}
+<br>
+{:/}
+
+**Runtimes**  
+* Incorrect status for Hosted runtime when app-proxy is unreachable. 
+* Git provider not registered for hosted runtimes with Git Sources defined in the shared configuration repo. 
+* Authentication failure between platform and app proxy. 
+* Adding cluster to a runtime shows an error even when the cluster is added to the runtime. 
+* Duplicate dates in Activity Log notifications. 
+* Argo CD fails to connect to K8s 1.24 clusters.
+* After uninstalling a runtime, argo-rollouts and rollout-reporter files remain for managed cluster remain in shared configuration repo.
+* Deleted managed cluster shows as Unknown.
+
+{::nomarkdown}
+<br>
+{:/}
+
+**Applications**  
+* Health status does not change to progressing when previously degraded. 
+* Wrong git source reference 
+* Git Source applications in the Applications dashboard not reflected in the Runtimes > Git Source tab. 
+* Switching from YAML to form view after changing fields does not update validations. 
+* App details drawer crashes when application does not have resources. 
+* Missing namespace for resources.
+* Full Screen does not work in Safari.
+* Recreating an application with the same name as that of a deleted application displays incorrect data for rollouts in the Timeline tab.
+* In the Timeline tab, data for a new release with long sync duration is assigned to the previous release.
+
+
+## August 2022
+
+### Features & enhancements
+
+#### GitHub Container Registry
+In this release, we added support for GitHub Container Registry (GHCR), a popular container registry tool. The settings for GitHub Container registry integration are identical to that of the other container registry integrations: the integration name, the runtimes to share the integration with, and the domain, username, and token.   
+You also have the Test Connection option to test credentials before committing the changes.  
+Once defined, you can reference the integration by name in the CI platforms. 
+
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-aug22-github-cr.png"
+ url="/images/whats-new/rel-notes-aug22-github-cr.png"
+ alt="GitHub Container registry integration"
+ caption="GitHub Container registry integration"
+    max-width="70%"
+%}
+
+See [GitHub Container registry]({{site.baseurl}}/docs/integrations/ci-integrations/container-registries/github-cr/).
+
+#### Labels and annotations for managed clusters
+The Codefresh CLI supports labels and annotations for managed clusters.  
+When you add a managed cluster in Codefresh, you can optionally add labels and annotations with the  `--labels` and the `--annotations` flags.  Codefresh supports the standard key-value formats for both, with multiple items separated by `,`. K8s rules for labels and annotations are valid here as well.  
+
+See [Adding a managed cluster with Codefresh CLI]({{site.baseurl}}/docs/runtime/managed-cluster/#add-a-managed-cluster-with-codefresh-cli), and [Adding a managed cluster with Kustomize]({{site.baseurl}}/docs/runtime/managed-cluster/#add-a-managed-cluster-with-kustomize).
+
+#### Event information for application resources
+View events for application resources directly in Codefresh.  
+While the Applications dashboard flags errors in all applications at the global level, the Events tab isolates successful and failed events per resource within an application, useful for resources such as pods. 
+
+Instead of having to navigate to Argo CD to view events for an application resource, clicking the resource in the Current State view in Codefresh displays the Events tab for that resource. Events are displayed in descending order, with the most recent event displayed first. 
+
+
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-aug22-events-tab.png"
+ url="/images/whats-new/rel-notes-aug22-events-tab.png"
+ alt="Events tab for application in Current State"
+ caption="Events tab for application in Current State"
+    max-width="60%"
+%}
+
+#### Quick View for applications
+Similar to the detailed views for application resources, Codefresh offers a detailed view also for the application itself. 
+The Quick View for an application, collates definition, deployment, and event information, in the same location. The information is grouped into tabs for intuitive viewing: Summary, Metadata, Parameters,  Sync Options,  Manifest, and Events (as in the picture below).
+ 
+Easily access the Quick View either by selecting Quick View from the application’s context menu in the Applications dashboard, or by clicking the application resource in the Current State view.
+
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-aug22-quickview-events.png"
+ url="/images/whats-new/rel-notes-aug22-quickview-events.png"
+ alt="Application Quick View: Events tab"
+ caption="Application Quick View: Events tab"
+    max-width="40%"
+%}
+
+See [Application Quick View]({{site.baseurl}}/docs/deployment/applications-dashboard/#application-quick-view).
+
+
+
+#### Usability enhancements for applications
+**Context menu for applications**  
+Every application in the Applications dashboard includes a new context menu with access to frequently-used and useful options such as Quick View, synchronize, and edit applications.
+
+
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-aug22-new-app-nav.png"
+ url="/images/whats-new/rel-notes-aug22-new-app-nav.png"
+ alt="Tab order on application drilldown"
+ caption="Tab order on application drilldown"
+    max-width="70%"
+%}
+
+
+**Validations before commit with intuitive error message**  
+Codefresh validates Source, Destination, and Advanced Settings such as the Argo CD Project, when you create or update applications,  _before_ committing the changes.  
+For easy identification, the section with the error is also highlighted in the Form, not only in the YAML manifest. For example, if the Revision or Path is missing in the General settings, the section is highlighted in red and the message displayed includes details on the possible reasons for the error.
+
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-aug22-app-validation-errors.png"
+ url="/images/whats-new/rel-notes-aug22-app-validation-errors.png"
+ alt="Validation errors in Form mode for application"
+ caption="Validation errors in Form mode for application"
+max-width="60%"
+%}
+
+#### Miscellaneous changes
+
+{: .table .table-bordered .table-hover}
+| Item    | Description     | 
+| ----------  |  -------- | 
+| `CF_HOST`       | Deprecated from v 0.0.460 and higher in CI integrations. Recommend using `CF_RUNTIME_NAME` instead. See [CI integrations argument reference]({{site.baseurl}}/docs/integrations/ci-integrations/#ci-integration-argument-reference). | 
+| `GHCR_GITHUB_TOKEN_AUTHENTICATION`       | New value for `CF_CONTAINER_REGISTRY_INTEGRATION` argument. Can be selected for GitHub Container (GHCR) registries even when you don’t have a GHCR integration in Codefresh. See [GitHub Action-Codefresh integration arguments]({{site.baseurl}}/docs/integrations/ci-integrations/github-actions/#github-action-codefresh-integration-arguments).| 
+
+
+
+### Bug fixes
+
+**Runtimes**  
+* Uninstalling runtime does not remove the integrations shared with the runtimes.
+* Uninstalling a hosted or hybrid runtime does not remove it from the shared configuration repository.
+* Unable to install Argo Rollouts on clusters with long cluster names. 
+* Empty Argo CD logs with "http internal error" in Codefresh.  
+* 500 status code on using default GKE/EKS context/cluster names. 
+
+**Applications**  
+* Trying to commit an application that already exists results in a commit failure. 
+
+**Images**  
+* Filters are not retained on navigating away from the Images dashboard. 
+
+**Pipelines, workflows and Workflow Templates**  
+
+* Workflow Template filter does not work for Git Source. 
+* Missing validation for `WORKFLOW_NAME` variable.
+* Incorrect sync history date for Workflow Templates.
+* Error on detaching predefined filters in pipelines. 
+
+**Integrations**
+* Docker Hub integration list appears empty until refreshed even when there are integrations.
+* Test Connection option disabled when integration name is not defined.
+
+
+
 
 ## July 2022
 
