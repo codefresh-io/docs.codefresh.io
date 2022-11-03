@@ -376,14 +376,14 @@ These services are not considered critical as they are part of build-handling. I
 
 After you install Codefresh, these are some day-2 operations that you should follow.
 
-### Selectively enable SSO providers 
-As a Codefresh administrator, you can select the providers you want to enable for SSO in your organization, for both new and existing accounts.  
+### Selectively enable SSO providers
+As a Codefresh administrator, you can select the providers you want to enable for SSO in your organization, for both new and existing accounts.
 You can always renable a provider when needed.
 
 
 1. Sign in as Codefresh admin.
 1. From the left pane, select **Providers**.
-1. Disable the providers not relevant for the accounts.  
+1. Disable the providers not relevant for the accounts.
 These providers are not displayed as options during sign-up/sign-in.
 
 {% include image.html
@@ -846,6 +846,15 @@ cfapi:
   env:
     RUNTIME_MONGO_TLS: "true"
     RUNTIME_MONGO_TLS_VALIDATE: "true" # 'false' if self-signed certificate to avoid x509 errors
+
+## set MONGO_MTLS_VALIDATE to `false` if self-signed certificate to avoid x509 errors
+cluster-providers:
+  env:
+    MONGO_MTLS_VALIDATE: "false"
+
+k8s-monitor:
+  env:
+    MONGO_MTLS_VALIDATE: "false"
 
 mongo:
   enabled: false #disable default mongodb subchart installation
