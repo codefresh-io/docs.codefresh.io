@@ -128,7 +128,7 @@ Make sure you have:
 1. Define the following:
   * Token name
   * Expiration date
-  * Select these scopes: `read_api', 'read_user`, `read_repository`
+  * Select these scopes: `read_api`, `read_repository`, `write_repository`
 
  {% include 
    image.html 
@@ -159,8 +159,7 @@ Make sure you have:
   Select these scopes: 
   * **Permissions**: `Read`
   * **Workspace membership**: `Read`
-  * **Webhooks**: `Read and write`
-  * **Repositories**: `Write`, `Admin`
+  * **Repositories**: `Write`
 
   {% include 
    image.html 
