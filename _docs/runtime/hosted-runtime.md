@@ -10,7 +10,6 @@ toc: true
 If you have Codefresh's Hosted GitOps, set up your hosted environment, and you are all ready to leverage extensive CD Ops capabilities.
 Read about [Hosted GitOps]({{site.baseurl}}/docs/incubation/intro-hosted-runtime/). 
 
-
 ### Where to start with Hosted GitOps
 If you have not provisioned a hosted runtime, Codefresh presents you with the setup instructions in the **Home** dashboard.   
 
@@ -119,7 +118,7 @@ max-width="70%"
   * [Download the CLI]({{site.baseurl}}/docs/clients/csdp-cli/).
 
 1. Uninstall the failed hosted runtime:  
-  `cf runtime uninstall hosted-codefresh --force`  
+  `cf runtime uninstall codefresh-hosted --force`  
   where:  
   `hosted-codefresh` is the name of your hosted runtime, automatically assigned by Codefresh.
 1. In the Codefresh UI, return to Codefresh [Home](https://g.codefresh.io/2.0/?time=LAST_7_DAYS){:target="\_blank"}.
@@ -127,8 +126,10 @@ max-width="70%"
 
 
 ### 2. Connect Git provider
-Connect your hosted runtime to a Git provider for Codefresh to create the required Git repos.  First authorize access to your Git provider through an OAuth token, and then select the Git organizations or accounts in which to create the required Git repos. 
+Connect your hosted runtime to a Git provider for Codefresh to create the required Git repos.  First authorize access to your Git provider through an OAuth token, and then select the Git organizations or accounts in which to create the required Git repos.  
+
 >Only authorized organizations are displayed in the list. To authorize organizations for the Codefresh application in GitHub, see [Authorize organizations/projects]({{site.baseurl}}/docs/administration/hosted-authorize-orgs/).
+
 
 {% include
 image.html
@@ -140,17 +141,11 @@ caption="Step 2: Connect to Git provider"
 max-width="80%"
 %}
 
-You can connect your hosted runtime to any of these Git providers:  
-* GitHub (the default)
-* Bitbucket Cloud
-<!---* GitLab -->
-
->If the hosted runtime is the first runtime you are provisioning for your account, the Git provider you connect to is used for any hybrid runtimes you provision for the same account. This is because of the configuration repo that is created and shared by runtimes in the same account.
 
 Once you authorize access, Codefresh creates two Git repositories, one to store the runtime configuration settings, and the other to store the runtime's application settings:
 * Shared runtime configuration repo  
 
-  The shared runtime configuration repo is a centralized Git repository that stores configuration settings for the hosted runtime. Additional runtimes provisioned for the account point to this repo to retrieve and reuse the configuration.  
+  The shared runtime configuration repo is a centralized Git repository that stores configuration settings for the hosted runtime. Additional runtimes provisioned for the account can point to this repo to retrieve and reuse the configuration.  
   Read about [Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration/).
 
 * Git Source application repo  
