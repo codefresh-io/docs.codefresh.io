@@ -537,7 +537,9 @@ localhost:5000/codefresh/pipeline-manager:3.121.7
 **Install/Upgrade Codefresh with private docker registry config**
 
 Set `usePrivateRegistry: true`, and set privateRegistry address, username and password in `config.yaml`.
+
 For open source Bitnami helm charts ([consul](https://github.com/bitnami/charts/blob/main/bitnami/consul/values.yaml), [nats](https://github.com/bitnami/charts/blob/main/bitnami/nats/values.yaml), [redis](https://github.com/bitnami/charts/blob/main/bitnami/redis/values.yaml), [rabbitmq](https://github.com/bitnami/charts/blob/main/bitnami/rabbimq/values.yaml)) define `global.imageRegistry`.
+
 For [ingress-nginx](https://github.com/kubernetes/ingress-nginx/blob/main/charts/ingress-nginx/values.yaml) chart define `ingress-nginx.controller.image.registry`.
 
 
