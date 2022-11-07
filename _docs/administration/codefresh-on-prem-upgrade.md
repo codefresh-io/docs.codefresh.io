@@ -449,6 +449,15 @@ W1010 03:03:55.553858     280 warnings.go:70] spec.template.spec.containers[0].e
 
 > Due to Helm issue [Removal of duplicate array entry removes completely from Kubernetes](https://github.com/helm/helm/issues/10741), you shoud run `kcfi deploy` or `helm upgrade` two times consecutively.
 
+
+With chart **v1.3.1** [insecure registy](https://docs.docker.com/registry/insecure/) property has been moved under `builder` section:
+
+```yaml
+builder:
+  insecureRegistries:
+  - "myregistrydomain.com:5000"
+```
+
 ### Upgrade the Codefresh Platform with [kcfi](https://github.com/codefresh-io/kcfi)
 
 1. Locate the `config.yaml` file you used in the initial installation.
