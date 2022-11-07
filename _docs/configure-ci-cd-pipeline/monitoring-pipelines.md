@@ -201,25 +201,33 @@ Monitor the status of the steps in the pipeline as they are executed.
 |{::nomarkdown}<img src="../../../images/pipeline/monitoring/step-status-error.png" display=inline-block/> {:/}| Pipeline step execution has been terminated because of error. |
 
 
-### Viewing logs from pipeline steps
+### View/download logs for pipeline and pipeline steps
 
-Click on each step in order to see the respective log.
+View logs for running and completed builds and download them in HTML or text formats.  
+You can view logs online, for the entire build or for single or specific steps in the build. Similarly, you can download the logs for the entire build, or for single or specific steps.  
+The Filter Logs option is useful to view and manage logs, especially for large builds as there is a max size limit for logs. You can also search logs.
 
-{% include 
+>Note:  
+  The max log size for the entire build is 100MB, and 20MB per step. The system stops generating logs once the build size is exceeded. 
+  For large builds, it is easier to filter the logs by single or multiple steps, and then view/download them.
+
+  {% include 
 image.html 
 lightbox="true" 
 file="/images/pipeline/monitoring/build-logs.png" 
 url="/images/pipeline/monitoring/build-logs.png"
-alt="step details in Codefresh" 
-caption="Step details (click to enlarge)"
-max-width="80%"
+alt="Build log in Codefresh" 
+caption="Build log in Codefresh"
+max-width="60%"
 %}
 
 
-You can copy the step logs with the *copy to clipboard* button at the top left corner of the log window.
-You can also search the logs by clicking at the magnifying glass icon at the top right corner in the log window.
-
-> Note: The max size each step can log is around 20MB, and 100MB for the whole build. After that, the system will stop logging, but the build execution will continue.
+1. In the **Builds** page, select a build. 
+1. To view logs online for the selected build, click **Output** in the lower part of the Build page.
+1. Optional. Select **Filter Logs** and then select the step or steps for which view/download logs.  
+  Logs are displayed for the selected steps.
+1. From either the context menu on the top-right of the toolbar or from the Output pane, select **Download as HTML** or **Download as text**.
+  The log file is downloaded with the build ID as the filename, including also the step name if the log is for a single step, in the format `<build-id-<step-name>'.
 
 
 ### Reviewing the yaml for the pipeline
