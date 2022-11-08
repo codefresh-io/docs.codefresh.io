@@ -53,7 +53,7 @@ The Git runtime token is mandatory for runtime installation.
 </br>
 {:/}
 
-#### Bitbucket Cloud & Bitbucket Server runtime token scopes
+#### Bitbucket Server runtime token scopes
 
 * `Project admin`
 * `Repository write`
@@ -73,7 +73,7 @@ The Git personal token is a user-specific personal access token per provisioned 
 </br>
 {:/}
 
-#### GitHub & GitHub Enterprise personal user token scopes
+#### GitHub and GitHub Enterprise personal user token scopes
 * `repo`
 
 <!---{% include 
@@ -89,7 +89,7 @@ The Git personal token is a user-specific personal access token per provisioned 
 </br>
 {:/}
 
-#### GitLab Cloud & GitLab Server personal user token scopes
+#### GitLab Cloud and GitLab Server personal user token scopes
 
 * `write_repository` (includes `read-repository`)
 * `api-read`
@@ -98,7 +98,7 @@ The Git personal token is a user-specific personal access token per provisioned 
 </br>
 {:/}
 
-#### Bitbucket Cloud & Bitbucket Server personal user token scopes
+#### Bitbucket Server personal user token scopes
 
 * `Project read`
 * `Repository write`
