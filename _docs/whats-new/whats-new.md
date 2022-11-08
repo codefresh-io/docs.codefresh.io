@@ -51,7 +51,7 @@ See [Git provider and repo flags]({{site.baseurl}}/docs/runtime/installation/#gi
 <br>
 {:/}
 
-### Turn off notifications for runtimes
+#### Turn off notifications for runtimes
 Codefresh alerts you to runtimes that are insecure or have invalid or expired Git personal access tokens. You can turn off these notifications selectively for runtimes for which these alerts are less critical, such as non-production runtimes.  
 
 The option is user-specific, and applies only to runtimes in the user's account. 
