@@ -51,7 +51,7 @@ Get insights into important KPIs and deployments, across runtimes and clusters, 
 
 The Applications dashboard displays applications across runtimes and clusters, from which you can select and analyze individual applications. Individual application information is grouped by current and historical deployments, enriched with Argo, Jira, and Git details, including rollout visualizations for ongoing deployments (Timeline tab), and an interactive tree view of application resources (Current State tab).
 
-See [Applications dashboard]({{site.baseurl}}/docs/deployment/applications-dashboard/).
+See [Monitoring applications]({{site.baseurl}}/docs/deployment/applications-dashboard/).
 
 {% include
  image.html

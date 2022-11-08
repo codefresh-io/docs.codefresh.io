@@ -136,7 +136,7 @@ Analytics are derived by comparing the selected date range to the corresponding 
 
 ### Related articles
 [DORA metrics]({{site.baseurl}}/docs/reporting/dora-metrics/)  
-[Applications dashboard]({{site.baseurl}}/docs/deployment/applications-dashboard/)  
+[Monitoring applications]({{site.baseurl}}/docs/deployment/applications-dashboard/)  
 [Images in Codefresh]({{site.baseurl}}/docs/deployment/images/)  
 
 

@@ -46,7 +46,7 @@ More than one option within the same filter type has an OR relationship. More th
 > When no filters are defined, all metrics are shown for the last 90 days. 
 
 ### Metrics for favorite applications
-If you have [starred applications as favorites]({{site.baseurl}}/docs/deployment/applications-dashboard/#filters-and-favorites) in the Applications dashboard, clicking {::nomarkdown}<img src="../../../images/icons/icon-mark-favorite.png?display=inline-block">{:/} in DORA metrics, displays metrics only for those applications.    
+If you have [starred applications as favorites]({{site.baseurl}}/docs/deployment/applications-dashboard/#applications-dashboard-information) in the Applications dashboard, clicking {::nomarkdown}<img src="../../../images/icons/icon-mark-favorite.png?display=inline-block">{:/} in DORA metrics, displays metrics only for those applications.    
 
 
 ### Metric totals
@@ -82,5 +82,5 @@ In addition, you can select the granularity for each graph:
 
 ## What to read next  
 [Codefresh architecture]({{site.baseurl}}/docs/getting-started/architecture/)  
-[Applications dashboard]({{site.baseurl}}/docs/deployment/applications-dashboard/)
+[Monitoring applications]({{site.baseurl}}/docs/deployment/applications-dashboard/)
 

@@ -87,5 +87,5 @@ use it.
 [Issue-tracking integrations]({{site.baseurl}}/docs/integrations/issue-tracking/)  
 [Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration/)  
 [Images]({{site.baseurl}}/docs/deployment/images/)  
-[Applications dashboard]({{site.baseurl}}/docs/deployment/applications-dashboard/)    
+[Monitoring applications]({{site.baseurl}}/docs/deployment/applications-dashboard/)    
 [Add Git sources to runtimes]({{site.baseurl}}/docs/runtime/git-sources/)  

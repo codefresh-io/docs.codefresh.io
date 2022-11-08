@@ -1,5 +1,5 @@
 ---
-title: "Applications"
+title: "Creating applications"
 description: ""
 group: deployment
 toc: true
@@ -14,12 +14,12 @@ Codefresh provides all the options and functionality to create and manage Argo C
   * General configuration settings
   * Advanced configuration settings  
 
-  The Create application wizard guides you through the process of creating an application. For how-to information, see [Create an Argo CD application](#how-to-create-an-argo-cd-application).
+  The Create application wizard guides you through the process of creating an application. For how-to information, see [Create an application](#create-an-application).
   For example Argo CD applications, see this [repo](https://github.com/oleksandr-codefresh/argocd-example-apps){:target="_blank"}.
 
 * Edit and delete applications
   Once the application is created and synced to the cluster, it is displayed in the Applications dashboard. Here, you can select an application to update the application's configuration settings, or delete it.  
-  To monitor the health and sync status, deployments, and resources for the application, see [Applications dashboard]({{site.baseurl}}/docs/deployment/applications-dashboard/).  
+  To monitor the health and sync status, deployments, and resources for the application, see [Monitoring applications]({{site.baseurl}}/docs/deployment/applications-dashboard/).  
 
 ### Application: Definitions
 Application definitions include the name, runtime, and the name of the YAML manifest. By default, the YAML manifest has the same name as that of the application. 
@@ -74,10 +74,10 @@ The cluster and namespace to which to deploy the application.
 {:/} 
 
 ##### Sync Options 
-{::nomarkdown}Common to both manual and automatic sync policies.</br><ul><li><b>Skip schema validation</b>: When selected, bypasses validating the YAML schema.</li><li><b>Auto-create namespace</b>: When selected, automatically create the namespace if the specified namespace does not exist in the cluster.</li><li><b>Prune last</b>: When selected, removes those resources that do not exist in the currently deployed version during the final wave of the sync operation. See <a hef="https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#prune-last" target="_blank">Prune last</a>.</li><li><b>Apply out of sync only</b>: When selected, syncs only those resources in the application that have been changed and are <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">OutOfSync</span>, instead of syncing every resource regardless of their state. This option is useful to reduce load and save time when you have thousands of resources in an application. See <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#selective-sync" target="_blank">Selective Sync</a>.</li></ul> {:/}
+{::nomarkdown}Common to both manual and automatic sync policies.</br><ul><li><b>Skip schema validation</b>: When selected, bypasses validating the YAML schema.</li><li><b>Auto-create namespace</b>: When selected, automatically create the namespace if the specified namespace does not exist in the cluster.</li><li><b>Prune last</b>: When selected, removes those resources that do not exist in the currently deployed version during the final wave of the sync operation. See <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#prune-last" target="_blank">Prune last</a>.</li><li><b>Apply out of sync only</b>: When selected, syncs only those resources in the application that have been changed and are <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">OutOfSync</span>, instead of syncing every resource regardless of their state. This option is useful to reduce load and save time when you have thousands of resources in an application. See <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#selective-sync" target="_blank">Selective Sync</a>.</li></ul> {:/}
 
 {::nomarkdown}
-<br>
+<br><br>
 {:/} 
 
 ##### Prune propagation policy
@@ -150,7 +150,7 @@ Review:
 
 
 **How to**  
-1. In the Codefresh UI, go to [Applications](https://g.codefresh.io/2.0/applications-dashboard?sort=desc-lastUpdated){:target="\_blank"}.
+1. In the Codefresh UI, go to [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
 1. On the top-right, select **Add Application**.
 1. In the Add Application panel, add definitions for the application:
   * Application name: Must be unique within the cluster.
@@ -217,111 +217,15 @@ Review:
 
 
 Your application is first committed to Git, and then synced to the cluster which may take a few moments.  
-Track the application in the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard){:target="_blank"}.
+Track the application in the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard/list){:target="_blank"}.
 
 {::nomarkdown}
 <br><br>
 {:/}
 
-### Update application configuration 
-Update General or Advanced configuration settings for a deployed application. Once the application is deployed to the cluster, the Configuration tab is available on selecting the application in the Applications dashboard. 
 
-> You cannot change application definitions (the application name and the selected runtime), and the Git Source selected for the application.
-
-**How to**  
-
-1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard){:target="\_blank"}.
-1. Select the application to update, and then select the **Configuration** tab.
-
-{% include 
-   image.html 
-   lightbox="true" 
-   file="/images/applications/edit-app-configuration-tab.png" 
-   url="/images/applications/edit-app-configuration-tab.png" 
-   alt="Configuration tab with application settings" 
-   caption="Configuration tab with application settings"
-   max-width="70%" 
-   %} 
-
-{:start="3"}
-1. Update the **General** or **Advanced** configuration settings as needed:  
-  [General configuration](#general-configuration-settings)  
-  [Advanced configuration](#advanced-configuration-settings)  
-  When you change a setting, the Commit and Discard Changes buttons are displayed.
-
-  {% include 
-   image.html 
-   lightbox="true" 
-   file="/images/applications/edit-app-change-setting.png" 
-   url="/images/applications/edit-app-change-setting.png" 
-   alt="Edit application settings" 
-   caption="Edit application settings"
-   max-width="70%" 
-   %} 
-
-{:start="4"}
-1. Do one of the following:
-   * To _commit all changes_, click **Commit**. This final commit screen is displayed with a diff view of the changes.  
-   * To _undo all changes_ and return to the previous settings, click **Discard Changes**. This action removes all the changes you have made so far and returns you to the Applications dashboard.
-
-   >If you change settings and then restore existing values for the same, Codefresh automatically removes the Commit and Discard Changes buttons as there are no new changes to commit or discard. 
-
-  {% include 
-   image.html 
-   lightbox="true" 
-   file="/images/applications/edit-app-diff-view.png" 
-   url="/images/applications/edit-app-diff-view.png" 
-   alt="Commit changes with diff view" 
-   caption="Commit changes with diff view"
-   max-width="70%" 
-   %} 
-
-{:start="5"}
-1. To confirm all changes, at the bottom-left, click **Commit**.
-  The changes are committed to Git, and in a few moments also synced to the cluster. 
-
-{::nomarkdown}
-<br><br>
-{:/}
-
-### Delete an application
-Delete an application from Codefresh. Deleting an application deletes the manifest from the Git repository, and then from the cluster where it is deployed. When deleted from the cluster, the application is removed from the Applications dashboard in Codefresh.
- 
->The Prune resources setting determines the scope of the delete action. When selected, both the application and its resources are deleted. When not selected, only the application is deleted. For more information, review [Sync settings](#sync-settings) in this article.  
-Codefresh warns you of the implication of deleting the selected application in the Delete form. 
-
-1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard){:target="\_blank"}.
-1. Select the application to delete.
-1. Click the three dots for additional actions, and select **Delete**.
-  
-  {% include 
-   image.html 
-   lightbox="true" 
-   file="/images/applications/app-delete-option.png" 
-   url="/images/applications/app-delete-option.png" 
-   alt="Delete application" 
-   caption="Delete application"
-   max-width="80%" 
-   %} 
-
-  Pay attention to the impact of the delete action for the selected application that Codefresh displays.
-
-   {% include 
-   image.html 
-   lightbox="true" 
-   file="/images/applications/delete-app-prune-affects.png" 
-   url="/images/applications/delete-app-prune-affects.png" 
-   alt="Prune setting impact on deleting application" 
-   caption="Prune setting impact on deleting application"
-   max-width="70%" 
-   %} 
-
-{:start="4"}
-1. To confirm, click **Commit & Delete**.
-
-{::nomarkdown}
-<br><br>
-{:/}
-
-### What to read next
+### Related articles
+[Monitoring applications]({{site.baseurl}})/docs/deployment/applications-dashboard)  
+[Managing applications]({{site.baseurl}})/docs/deployment/manage-applications)  
+[Home dashboard]({{site.baseurl}})docs/reporting/home-dashboard)
 [DORA metrics]({{site.baseurl}}/docs/reporting/dora-metrics/)
