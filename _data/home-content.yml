@@ -118,7 +118,7 @@
     localurl: /docs/administration/add-users/
   - title: Single Sign-On
     localurl: /docs/administration/single-sign-on/
-  - title: Set up OAuth2 authentication
+  - title: Set up OAuth2 authentication for Git providers
     localurl: /docs/administration/oauth-setup/  
   - title: User settings
     localurl: /docs/administration/user-settings/

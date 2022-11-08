@@ -141,7 +141,7 @@
       url: "/add-users"
     - title: User settings
       url: "/user-settings"
-    - title: Set up OAuth2 authentication
+    - title: Set up OAuth2 authentication for Git providers
       url: "/oauth-setup"
     - title: Authorize access to organizations/projects
       url: "/hosted-authorize-orgs"  
