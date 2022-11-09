@@ -88,7 +88,7 @@ caption="`Group > Read.All` permissions for Microsoft Graph"
 max-width="70%"
 %}
 
-{:start="6"}
+{:start="4"}
 1. Click **Add Permissions**.
 1. Click **Grant admin consent for Default Directory** on the bar.
 
@@ -175,6 +175,7 @@ caption="SSO settings for Azure in Codefres"
 max-width="70%"
 %}
 
+{:start="4"}
 1. Click **Save**.  
    If you left the Client Name empty, Codefresh generates one (as in the example below). Codefresh uses this name to identify the SSO configuration.
 
