@@ -6,12 +6,13 @@ sub_group: oidc
 toc: true
 ---
 
-In this page we will see the process of setting up Azure SSO with Codefresh. For general instructions on SSO setup, see the [overview page]({{site.baseurl}}/docs/single-sign-on/oidc/).
+In this page we will see the process of setting up Azure SSO for Codefresh. Setting up SSO for Azure requires configuration both in Azure and in Codefresh.  
+For general instructions on SSO setup, see the [overview page]({{site.baseurl}}/docs/single-sign-on/oidc/).
 
-Setting up SSO for Azure requires configuration both in Azure and in Codefresh:
+<!---
 (#step-1-register-the-codefresh-application-in-azure)
 (#step-2-configure-permissions-for-the-application-in-azure)
-(#step-3-create-client-secret-in-azure)
+(#step-3-create-client-secret-in-azure)-->
 
 
 ## Prerequisites
