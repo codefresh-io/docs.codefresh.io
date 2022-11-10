@@ -54,7 +54,7 @@ For documentation purposes, the flags are grouped into:
 Required.  
 The runtime name must start with a lower-case character, and can include up to 62 lower-case characters and numbers.  
 * CLI wizard: Add when prompted. 
-* Silent install: Specify the runtime name with the `--runtime` flag.
+* Silent install: Add the `--runtime` flag and define the runtime name.
 
 **Namespace resource labels**  
 Optional.  
