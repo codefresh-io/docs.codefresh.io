@@ -201,7 +201,7 @@ Monitor the status of the steps in the pipeline as they are executed.
 |{::nomarkdown}<img src="../../../images/pipeline/monitoring/step-status-error.png" display=inline-block/> {:/}| Pipeline step execution has been terminated because of error. |
 
 
-### View/download logs for pipeline and pipeline steps
+### Viewing/downloading logs for pipeline and pipeline steps
 
 View logs for running and completed builds and download them in HTML or text formats.  
 You can view logs online, for the entire build or for single or specific steps in the build. Similarly, you can download the logs for the entire build, or for single or specific steps.  
@@ -228,6 +228,48 @@ max-width="60%"
   Logs are displayed for the selected steps.
 1. From either the context menu on the top-right of the toolbar or from the Output pane, select **Download as HTML** or **Download as text**.
   The log file is downloaded with the build ID as the filename, including also the step name if the log is for a single step, in the format `<build-id-<step-name>'.
+
+### Viewing variables in pipeline builds
+
+Variables, both system (environemt) and custom (user-defined), are a  used in pipelines and their builds.  
+You can view all the variables within a selected build, and identify where they were used and overrides if any.  
+
+Here's an example of the 
+   {% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/monitoring/build-variables-list.png" 
+url="/images/pipeline/monitoring/build-variables-list.png"
+alt="List of variables in selected build" 
+caption="List of variables in selected build"
+max-width="60%"
+%}
+
+The variable list for a build displays variables defined at these levels:
+* Project
+* Shared configuration
+* Pipeline
+* Trigger
+
+The order of precedence for variables in builds is from the Trigger (most important) to the Project (least important). If there are two or more custom variables with the same name, the lower-level custom variable always overrides the higher-level one, even when they have different values. For example, if `test_var` is defined for both the project and the trigger, the build takes the trigger-level variable.  
+See [Variables]({{site.baseurl}}/docs/codefresh-yaml/variables/).
+ 
+Variables exported across steps with `cf_export` are not displayed.
+
+Secret-type variables are always masked.
+
+1. In the **Builds** page, either select the build and then open the context-menu, or open the context-menu of the build entry. 
+1. From the context menu, select **Variables**.
+   
+   {% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/monitoring/build-variables-list.png" 
+url="/images/pipeline/monitoring/build-variables-list.png"
+alt="List of variables in selected build" 
+caption="List of variables in selected build"
+max-width="60%"
+%}
 
 
 ### Reviewing the yaml for the pipeline
