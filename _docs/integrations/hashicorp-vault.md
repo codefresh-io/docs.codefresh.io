@@ -1,17 +1,17 @@
 ---
-title: "Hashicorp Vault"
+title: "HashiCorp Vault"
 description: "How to use secrets from Vault in your Codefresh pipelines"
 group: integrations
 toc: true
 ---
 
-Codefresh can use secrets from your Hashicorp Vault installation. This way you have full control over secret storage and rotation.
+Codefresh can use secrets from your HashiCorp Vault installation. This way you have full control over secret storage and rotation.
 
 >Note: This feature is for Enterprise accounts only.
 
 ### Prerequisites
 
-You need to have a vault instance up and running. Codefresh supports Vault instances that run on the cloud, as well as behind the firewall (albeit with some differences in the authentication methods).
+You need to have a vault instance up and running. Codefresh supports HashiCorp Cloud Platform (HCP) Vault and self managed Vault instances that run on the cloud, as well as behind the firewall (albeit with some differences in the authentication methods).
 
 You also need to decide what [authentication method](https://www.vaultproject.io/docs/auth) Codefresh will use. The following methods are supported:
 
@@ -34,8 +34,8 @@ Click on **Add Provider** and select **Hashicorp vault**. Toggle the “allow ac
 lightbox="true"
 file="/images/integrations/hashicorp-vault/hashicorp-vault.png"
 url="/images/integrations/hashicorp-vault/hashicorp-vault.png"
-alt="Hashicorp-vault Secret"
-caption="Hashicorp-vault Secret"
+alt="HashiCorp-vault Secret"
+caption="HashiCorp-vault Secret"
 max-width="80%"
   %}
 
