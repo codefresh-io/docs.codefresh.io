@@ -3,6 +3,8 @@
 
 This site is built with Jekyll. Documentation content is written in Markdown format located in './docs'
 
+This is project one.
+
 ## Deploying
 The site is automatically deployed when commits are merged/pushed in `master`, hosted at https://codefresh.io/docs/
 
