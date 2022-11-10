@@ -45,7 +45,7 @@
 - title: Installation
   url: "/runtime"
   pages:
-    - title: Installation options
+    - title: Installation environments
       url: "/installation-options"
     - title: Set up a hosted runtime environment
       url: "/hosted-runtime"

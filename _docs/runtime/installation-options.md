@@ -50,13 +50,13 @@ Codefresh Runtime creates three repositories in your organization's Git provider
 
 * Codefresh runtime installation repository
 * Codefresh Git Sources
-* Codefresh shared configuration repository. It does so for two types of entities:
+* Codefresh shared configuration repository
 
-**Codefresh Runtime finctionality**
+<!---**Codefresh Runtime functionality**
 The runtime:
 * Ensures that the installation repository and the Git Sources are always in sync, and applies Git changes back to the cluster
 * Receives events and information from the user's organization systems to execute workflows
-   By default, the ingress controller directs all requests and events to the Codefresh Application Proxy. When internal and an external ingress hosts are configured, the ingress comtroller directs webhook events to the relevant Event Source and then to Argo Events (not via the Codefresh Application Proxy).
+   By default, the ingress controller directs all requests and events to the Codefresh Application Proxy. When internal and an external ingress hosts are configured, the ingress comtroller directs webhook events to the relevant Event Source and then to Argo Events (not via the Codefresh Application Proxy).-->
 
 ### Hosted vs.Hybrid environments
 
@@ -84,4 +84,7 @@ The table below highlights the main differences between hosted and hybrid enviro
 |                         |Applications        | Supported                 |Supported        |
 
 ### Related articles
-[Architecture]({{site.baseurl}}/docs/getting-started/architecture/)
+[Architecture]({{site.baseurl}}/docs/getting-started/architecture/)  
+[Add Git Sources to runtimes]({{site.baseurl}}/docs/runtime/git-sources/)   
+[Shared configuration repository]({{site.baseurl}}/docs/reference/shared-configuration)  
+

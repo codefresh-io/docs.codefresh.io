@@ -53,7 +53,7 @@ The Git runtime token is mandatory for runtime installation.
 </br>
 {:/}
 
-#### Bitbucket Server runtime token scopes
+#### Bitbucket Cloud and Bitbucket Server runtime token scopes
 
 * **Permissions**: `Read`
 * **Workspace membership**: `Read`
@@ -99,7 +99,7 @@ The Git personal token is a user-specific personal access token per provisioned 
 </br>
 {:/}
 
-#### Bitbucket Server personal user token scopes
+#### Bitbucket Cloud and Server personal user token scopes
 
 * **Permissions**: `Read`
 * **Workspace membership**: `Read`

@@ -97,6 +97,9 @@ Create and register an OAuth App under your organization to authorize Codefresh.
       `<ingressHost>/app-proxy/api/git-auth/bitbucket-server/callback`  
       where:  
       `<ingressHost>` is the IP address or URL of the ingress host in the runtime cluster.
+    
+    > OAuth2 is not supported for hybrid runtimes with Bitbucket Cloud as the Git provider. Users can authorize access with their [Git personal access tokens](({{site.baseurl}}/docs/administration/user-settings/#authorize-git-access-in-codefresh)) in such cases.
+
 
 {:start="2"}
 1. Note down the following, as you will need them to create the K8s secret for the Git OAuth2 application:

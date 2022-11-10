@@ -54,7 +54,7 @@ For documentation purposes, the flags are grouped into:
 Required.  
 The runtime name must start with a lower-case character, and can include up to 62 lower-case characters and numbers.  
 * CLI wizard: Add when prompted. 
-* Silent install: Required.
+* Silent install: Specify the runtime name with the `--runtime` flag.
 
 **Namespace resource labels**  
 Optional.  
@@ -157,7 +157,7 @@ You can define any of the following Git providers:
   * [GitLab Cloud](#gitlab-cloud)
   * [GitLab Server](#gitlab-server)
 * Bitbucket:
-  <!---* [Bitbucket Cloud](#bitbucket-cloud)-->
+  * [Bitbucket Cloud](#bitbucket-cloud)
   * [Bitbucket Server](#bitbucket-server)
 
 {::nomarkdown}
@@ -292,8 +292,8 @@ where:
 </br>
 {:/}
 
-<!---##### Bitbucket Cloud
-> For the required scopes, see [Bitbucket Cloud and Bitbucket Server runtime token scopes]({{site.baseurl}}/docs/reference/git-tokens/#bitbucket-server-runtime-token-scopes).
+##### Bitbucket Cloud
+> For the required scopes, see [Bitbucket runtime token scopes]({{site.baseurl}}/docs/reference/git-tokens/#bitbucket-cloud-and-bitbucket-server-runtime-token-scopes).
 
 
 `--enable-git-providers --provider bitbucket --repo <https_repo_url> --git-user <git_username> --git-token <git_runtime_token>`    
@@ -317,16 +317,16 @@ where:
   Example:  
   `https://bitbucket.org/nr-codefresh/codefresh.git/runtimes/defs?ref=codefresh-prod`    
 * `--git-user <git_username>` (required), is your username for the Bitbucket Cloud account. 
-* `--git-token <git-runtime-token>` (required), is the Git token authenticating access to the runtime installation repository (see [Bitbucket runtime token scopes]{{site.baseurl}}/docs/reference/git-tokens/#bitbucket-server-runtime-token-scopes)).
+* `--git-token <git-runtime-token>` (required), is the Git token authenticating access to the runtime installation repository (see [Bitbucket runtime token scopes]({{site.baseurl}}/docs/reference/git-tokens/#bitbucket-cloud-and-bitbucket-server-runtime-token-scopes)).
 
 
 {::nomarkdown}
 </br>
-{:/}-->
+{:/}
 
 ##### Bitbucket Server
 
-> For the required scopes, see [Bitbucket Server runtime token scopes]({{site.baseurl}}/docs/reference/git-tokens/#bitbucket-server-runtime-token-scopes).
+> For the required scopes, see [Bitbucket runtime token scopes]({{site.baseurl}}/docs/reference/git-tokens/#bitbucket-cloud-and-bitbucket-server-runtime-token-scopes).
 
 
 `--enable-git-providers --provider bitbucket-server --repo <repo_url> --git-user <git_username> --git-token <git_runtime_token>`  
@@ -350,7 +350,7 @@ where:
   Example:  
   `https://bitbucket-server-8.2.devops.cf-cd.com:7990/scm/codefresh-io/codefresh.git/runtimes/defs?ref=codefresh-prod` 
 * `--git-user <git_username>` (required), is your username for the Bitbucket Server account. 
-* `--git-token <git-runtime-token>` (required), is the Git token authenticating access to the runtime installation repository (see [Bitbucket runtime token scopes]({{site.baseurl}}/docs/reference/git-tokens/#bitbucket-server-runtime-token-scopes)).
+* `--git-token <git-runtime-token>` (required), is the Git token authenticating access to the runtime installation repository (see [Bitbucket runtime token scopes]({{site.baseurl}}/docs/reference/git-tokens/#bitbucket-cloud-and-bitbucket-server-runtime-token-scopes)).
 
 {::nomarkdown}
 </br></br>
