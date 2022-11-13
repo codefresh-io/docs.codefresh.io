@@ -231,9 +231,10 @@ max-width="60%"
 
 ### Viewing variables in pipeline builds
 
-Variables, both system (environment) and custom (user-defined), are injected into pipelines from different sources and at different levels.   
-The variables actually used by a specific build of the pipeline varies according to the specific events that triggered the pipeline.  
-View all the variables used within a selected build, and identify their sources, and overrides if any.  
+Variables, both system (environment) and custom (user-defined), are injected into pipelines from different sources and at different levels.  
+
+The variables actually used by a specific build of the pipeline varies according to the events that triggered the pipeline.  
+Select a build to view all its variables, and identify their source, and overrides if any.  
 
 Here's an example of the list of variables for a build.
    {% include 
@@ -246,7 +247,7 @@ caption="List of variables in selected build"
 max-width="50%"
 %}
 
-The variables are grouped based on the level at which there were defined, in descending order of granularity:
+The variables are grouped by the levels at which they were defined, in descending order of granularity:
 * Project
 * Shared configuration
 * Pipeline
