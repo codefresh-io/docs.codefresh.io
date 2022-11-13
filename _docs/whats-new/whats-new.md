@@ -8,6 +8,11 @@ toc: true
 ---
 ## 2022
 
+### October 2022
+
+#### Features and enhancements
+- View/download logs for build or build setps - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/monitoring-pipelines/#viewdownload-logs-for-builds-and-build-steps)
+
 ### September 2022
 
 #### Features and enhancements
