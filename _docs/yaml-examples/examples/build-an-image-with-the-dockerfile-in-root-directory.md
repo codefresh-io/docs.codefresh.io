@@ -29,6 +29,7 @@ The same thing can also be achieved within a Codefresh pipeline:
 
   `codefresh.yml`
 {% highlight yaml %}
+{% raw %}
 version: '1.0'
 steps:
   main_clone:
@@ -44,6 +45,7 @@ steps:
     working_directory: `${{main_clone}}'
     tag: 'master'
     dockerfile: Dockerfile
+{% endraw %}
 {% endhighlight %}
 
 This pipeline checks out the source code of the repository and then builds a dockerfile found at the root folder of the project.
