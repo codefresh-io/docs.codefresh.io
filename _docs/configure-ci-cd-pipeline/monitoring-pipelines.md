@@ -231,10 +231,11 @@ max-width="60%"
 
 ### Viewing variables in pipeline builds
 
-Variables, both system (environemt) and custom (user-defined), are a  used in pipelines and their builds.  
-You can view all the variables within a selected build, and identify where they were used and overrides if any.  
+Variables, both system (environment) and custom (user-defined), are injected into pipelines from different sources and at different levels.   
+The variables actually used by a specific build of the pipeline varies according to the specific events that triggered the pipeline.  
+View all the variables used within a selected build, and identify their sources, and overrides if any.  
 
-Here's an example of the 
+Here's an example of the list of variables for a build.
    {% include 
 image.html 
 lightbox="true" 
@@ -242,34 +243,37 @@ file="/images/pipeline/monitoring/build-variables-list.png"
 url="/images/pipeline/monitoring/build-variables-list.png"
 alt="List of variables in selected build" 
 caption="List of variables in selected build"
-max-width="60%"
+max-width="50%"
 %}
 
-The variable list for a build displays variables defined at these levels:
+The variables are grouped based on the level at which there were defined, in descending order of granularity:
 * Project
 * Shared configuration
 * Pipeline
 * Trigger
 
-The order of precedence for variables in builds is from the Trigger (most important) to the Project (least important). If there are two or more custom variables with the same name, the lower-level custom variable always overrides the higher-level one, even when they have different values. For example, if `test_var` is defined for both the project and the trigger, the build takes the trigger-level variable.  
-See [Variables]({{site.baseurl}}/docs/codefresh-yaml/variables/).
- 
-Variables exported across steps with `cf_export` are not displayed.
+>Notes:  
+  * The order of precedence for variables in builds is from the Trigger (most important) to the Project (least important). If there are two or more custom variables with the same name, the lower-level custom variable always overrides the higher-level one, even when they have different values. For example, if `test_var` is defined for both the project and the trigger, the build takes the trigger-level variable.  
+  See [Variables]({{site.baseurl}}/docs/codefresh-yaml/variables/).  
+  * Variables exported across steps with `cf_export` are not identified as `cf-exported` variables.  
+  * Secret-type variables are always masked.
 
-Secret-type variables are always masked.
-
-1. In the **Builds** page, either select the build and then open the context-menu, or open the context-menu of the build entry. 
-1. From the context menu, select **Variables**.
+1. In the **Builds** page, either select the build and then open the context-menu, or open the context-menu on the right of the build entry. 
+1. Select **Variables**.
    
    {% include 
 image.html 
 lightbox="true" 
-file="/images/pipeline/monitoring/build-variables-list.png" 
-url="/images/pipeline/monitoring/build-variables-list.png"
-alt="List of variables in selected build" 
-caption="List of variables in selected build"
+file="/images/pipeline/monitoring/build-variables-view-option.png" 
+url="/images/pipeline/monitoring/build-variables-view-option.png"
+alt="Variables option in context menu of build entry" 
+caption="Variables option in context menu of build entry"
 max-width="60%"
 %}
+
+{:start="3"}
+1. If required, click the Sort icon for the group to sort in alphabetical order.
+1. To copy the group's variables to the clipboard, click the Copy icon. 
 
 
 ### Reviewing the yaml for the pipeline
