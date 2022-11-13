@@ -518,9 +518,9 @@ Codefresh installation supports automatic storage provisioning based on the stan
 
 
 ### Retention policy for Codefresh builds
-You can define a retention policy to manage Codefresh builds. The retention settings are controlled through cf-api deployment environment variables, all of which have default settings which you can retain or customize. The default policy is set to delete builds older than six months, including offline logs.
+You can define a retention policy to manage Codefresh builds. The retention settings are controlled through `cf-api` deployment environment variables, all of which have default settings which you can retain or customize. The default policy is set to delete builds older than six months, including offline logs.
 
-The retention mechanism is implemented as a Cron Job through the Codefresh. It removes data from collections such as:
+The retention mechanism, implemented as a Cron Job, removes data from collections such as:
 * workflowproccesses
 * workflowrequests
 * workflowrevisions
@@ -529,7 +529,7 @@ The retention mechanism is implemented as a Cron Job through the Codefresh. It r
 | Env Variable                   | Description                                                                     | Default                |
 |------------------------------- |-------------------------------------------------------------------------------- |----------------------  |
 |`RETENTION_POLICY_IS_ENABLED`      | Determines if automatic build deletion through the Cron job is enabled.         | `true`                 |
-|`RETENTION_POLICY_BUILDS_TO_DELETE`| The maximum number of builds to delete by a sinle Cron job. To avoid database issues, especially when there are large numbers of old builds, we recommend deleting them in small chunks. You can gradually increase the number after verifying that performance is not affected.                                   | `50`                  |
+|`RETENTION_POLICY_BUILDS_TO_DELETE`| The maximum number of builds to delete by a single Cron job. To avoid database issues, especially when there are large numbers of old builds, we recommend deleting them in small chunks. You can gradually increase the number after verifying that performance is not affected.                                   | `50`                  |
 |`RETENTION_POLICY_DAYS`         | The number of days for which to retain builds. Builds older than the defined retention period are deleted.                                  | `180`              |
 |`RUNTIME_MONGO_URI`             | Optional. The URI of the Mongo database from which to remove MongoDB logs (in addition to the builds). |              |
 
