@@ -518,9 +518,9 @@ Codefresh installation supports automatic storage provisioning based on the stan
 
 
 ### Retention policy for Codefresh builds
-You can define a retention policy to manage Codefresh builds. The retention settings are controlled through cf-api deployment environment variables, all of which have default settings which you can retain or customize. The default policy is set to delete builds older than six months, including offline logs.
+You can define a retention policy to manage Codefresh builds. The retention settings are controlled through `cf-api` deployment environment variables, all of which have default settings which you can retain or customize. The default policy is set to delete builds older than six months, including offline logs.
 
-The retention mechanism is implemented as a Cron Job through the Codefresh. It removes data from collections such as:
+The retention mechanism, implemented as a Cron Job, removes data from collections such as:
 * workflowproccesses
 * workflowrequests
 * workflowrevisions
