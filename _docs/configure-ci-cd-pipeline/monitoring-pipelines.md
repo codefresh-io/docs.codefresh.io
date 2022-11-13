@@ -201,7 +201,8 @@ Monitor the status of the steps in the pipeline as they are executed.
 |{::nomarkdown}<img src="../../../images/pipeline/monitoring/step-status-error.png" display=inline-block/> {:/}| Pipeline step execution has been terminated because of error. |
 
 
-### Viewing/downloading logs for pipeline and pipeline steps
+
+### View/download logs for builds and build steps
 
 View logs for running and completed builds and download them in HTML or text formats.  
 You can view logs online, for the entire build or for single or specific steps in the build. Similarly, you can download the logs for the entire build, or for single or specific steps.  
