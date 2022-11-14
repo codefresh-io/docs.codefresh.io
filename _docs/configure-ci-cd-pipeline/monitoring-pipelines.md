@@ -248,7 +248,7 @@ caption="List of variables in selected build"
 max-width="50%"
 %}
 
-The variables are grouped by the levels at which they were defined, in descending order of granularity:
+The variables are grouped by granularity, starting with the global project-level variables and ending with the most granular trigger-level variables:
 * Project
 * Shared configuration
 * Pipeline
