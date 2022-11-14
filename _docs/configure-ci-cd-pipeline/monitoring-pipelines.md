@@ -202,7 +202,7 @@ Monitor the status of the steps in the pipeline as they are executed.
 
 
 
-### View/download logs for builds and build steps
+### Viewing/downloading logs for builds and build steps
 
 View logs for running and completed builds and download them in HTML or text formats.  
 You can view logs online, for the entire build or for single or specific steps in the build. Similarly, you can download the logs for the entire build, or for single or specific steps.  
@@ -246,7 +246,7 @@ file="/images/pipeline/monitoring/build-variables-view-option.png"
 url="/images/pipeline/monitoring/build-variables-view-option.png"
 alt="Variables option in context menu of build entry" 
 caption="Variables option in context menu of build entry"
-max-width="60%"
+max-width="70%"
 %}
 
 {:start="3"}
@@ -271,12 +271,12 @@ The variables are grouped by granularity, starting with the global project-level
 * Shared configuration
 * Pipeline
 * Trigger 
+For information on the order of precedence for variables in builds and variable overrides, see [Variables]({{site.baseurl}}/docs/codefresh-yaml/variables/).  
 
 >Notes:  
   * Variables exported across steps with `cf_export` are not identified as `cf-exported` variables in the list.  
   * Secret-type variables are always masked.
 
-For information on the order of precedence for variables in builds and variable overrides, see [Variables]({{site.baseurl}}/docs/codefresh-yaml/variables/).  
   
 
 ### Reviewing the yaml for the pipeline
