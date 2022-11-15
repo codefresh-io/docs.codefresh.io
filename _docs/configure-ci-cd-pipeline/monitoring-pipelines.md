@@ -201,7 +201,8 @@ Monitor the status of the steps in the pipeline as they are executed.
 |{::nomarkdown}<img src="../../../images/pipeline/monitoring/step-status-error.png" display=inline-block/> {:/}| Pipeline step execution has been terminated because of error. |
 
 
-### View/download logs for builds and build steps
+
+### Viewing/downloading logs for builds and build steps
 
 View logs for running and completed builds and download them in HTML or text formats.  
 You can view logs online, for the entire build or for single or specific steps in the build. Similarly, you can download the logs for the entire build, or for single or specific steps.  
@@ -210,6 +211,13 @@ The Filter Logs option is useful to view and manage logs, especially for large b
 >Note:  
   The max log size for the entire build is 100MB, and 20MB per step. The system stops generating logs once the build size is exceeded. 
   For large builds, it is easier to filter the logs by single or multiple steps, and then view/download them.
+
+1. In the **Builds** page, select a build. 
+1. To view logs online for the selected build, click **Output** in the lower part of the Build page.
+1. Optional. Select **Filter Logs** and then select the step or steps for which view/download logs.  
+  Logs are displayed for the selected steps.
+1. From either the context menu on the top-right of the toolbar or from the Output pane, select **Download as HTML** or **Download as text**.
+  The log file is downloaded with the build ID as the filename, including also the step name if the log is for a single step, in the format `<build-id-<step-name>'.
 
   {% include 
 image.html 
@@ -222,13 +230,54 @@ max-width="60%"
 %}
 
 
-1. In the **Builds** page, select a build. 
-1. To view logs online for the selected build, click **Output** in the lower part of the Build page.
-1. Optional. Select **Filter Logs** and then select the step or steps for which view/download logs.  
-  Logs are displayed for the selected steps.
-1. From either the context menu on the top-right of the toolbar or from the Output pane, select **Download as HTML** or **Download as text**.
-  The log file is downloaded with the build ID as the filename, including also the step name if the log is for a single step, in the format `<build-id-<step-name>'.
+### Viewing variables in pipeline builds
 
+Variables, both system (environment) and custom (user-defined), are injected into pipelines from different sources and at different levels.  
+The variables actually used by a specific build of the pipeline varies according to the events that triggered the pipeline.    
+Select a build to view all its variables, and identify their source, and overrides if any.  
+
+1. In the **Builds** page, either select the build and then open the context-menu, or open the context-menu on the right of the build entry. 
+1. Select **Variables**.
+   
+   {% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/monitoring/build-variables-view-option.png" 
+url="/images/pipeline/monitoring/build-variables-view-option.png"
+alt="Variables option in context menu of build entry" 
+caption="Variables option in context menu of build entry"
+max-width="70%"
+%}
+
+{:start="3"}
+1. If required, click the Sort icon for the group to sort in alphabetical order.
+1. To copy the group's variables to the clipboard, click the Copy icon. 
+
+
+Here's an example of the list of variables for a pipeline build.  
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/monitoring/build-variables-list.png" 
+url="/images/pipeline/monitoring/build-variables-list.png"
+alt="List of variables in selected build" 
+caption="List of variables in selected build"
+max-width="50%"
+%}
+
+The variables are grouped by granularity, starting with the global project-level variables and ending with the trigger-level variables with the highest granularity:
+* Project
+* Shared configuration
+* Pipeline
+* Trigger 
+For information on the order of precedence for variables in builds and variable overrides, see [Variables]({{site.baseurl}}/docs/codefresh-yaml/variables/).  
+
+>Notes:  
+  * Variables exported across steps with `cf_export` are not identified as `cf-exported` variables in the list.  
+  * Secret-type variables are always masked.
+
+  
 
 ### Reviewing the yaml for the pipeline
 

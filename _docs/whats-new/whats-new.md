@@ -10,6 +10,7 @@ toc: true
 ### October 2022
 
 #### Features and enhancements
+
 - View/download logs for build or build steps as text, in addition to HTML - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/monitoring-pipelines/#viewingdownloading-logs-for-builds-and-build-steps)
 - View variables used in pipeline builds - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/monitoring-pipelines/#viewing-variables-in-pipeline-builds)
 
@@ -29,7 +30,6 @@ toc: true
 - (On-premises) LDAP login failure after upgrade to lastest release.
 - (On-premises) Release version either not visible in Codefresh UI, or does not reflect actual version.
 - Search results for pipelines in the Pipeline page include _all_ pipelines.
-
 
 
 
