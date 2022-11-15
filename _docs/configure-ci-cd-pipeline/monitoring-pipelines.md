@@ -270,7 +270,7 @@ The variables are grouped by granularity, starting with the global project-level
 * Project
 * Shared configuration
 * Pipeline
-* Trigger 
+* Trigger  
 
 A variable with a strikethrough indicates an override in a lower-level group with higher granularity. For rules on precedence and overrides for variables in builds, see [Variables]({{site.baseurl}}/docs/codefresh-yaml/variables/).  
 
