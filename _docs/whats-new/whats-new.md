@@ -27,7 +27,7 @@ toc: true
 - Email does not match error during sign-in to Azure with Corporate SSO when already authenticated.
 - Authentication required error when pushing images to ACR (Azure Container Registry) using Service Principal credentials.
 - Inconsistent results for Test Connection in ACR integration.
-- (On-premises) LDAP login failure after upgrade to lastest release.
+- (On-premises) LDAP login failure after upgrade to latest release.
 - (On-premises) Release version either not visible in Codefresh UI, or does not reflect actual version.
 - Search results for pipelines in the Pipeline page include _all_ pipelines.
 
