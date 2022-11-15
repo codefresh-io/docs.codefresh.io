@@ -111,12 +111,23 @@ Therefore, all tags like `tag1`, `tag-X` **won't** trigger the pipeline.
 
 ### Support for building pull requests from forks
 
-By default, the git trigger will only work for events coming from your personal repository. You can also use triggers from events that are coming from forks. This is a very useful feature for open source projects, as it allows you to run your own unit tests and other checks against a new feature *before* actually merging it in your repo.
+By default, the Git trigger works for events coming from your personal repository. You can also use triggers from events that are coming from forks. This is a very useful feature for open source projects, as it allows you to run your own unit tests and other checks against a new feature *before* actually merging it in your repo.
 
 To enable this behavior:
 
 * Toggle the *support pull request events from forks* switch
-* Check the *Pull request comment added* checkbox
+* According to the restrictions to enforce based on the type of user who made the PR comment, select either:
+  * *Pull request comment added (restricted)*: For all Git providers. To trigger only when the PR comments are made by repository owners or collaborators. 
+  * *Pull request comment added*: For GitHub only. To trigger when PR comments are made by any user, regardless of their permissions. We strongly recommend selecting this option only for _private repositories_.
+
+    {% include image.html
+lightbox="true"
+file="/images/pipeline/triggers/pr-comment-trigger-options.png"
+url="/images/pipeline/triggers/pr-comment-trigger-options.png"
+alt="Trigger options for PR comments"
+caption="Trigger options for PR comments"
+max-width="50%"
+%}
 * In the *pr comment* field enter a custom string (accepts regex)
 
 Then once a contributor creates a fork of your repository and submits a pull request, you can review the code and then add a comment on your own that matches the PR comment expression.
@@ -134,11 +145,22 @@ Once that is done, Codefresh will launch your pipeline against the Pull Request.
 
 When supporting building of pull requests from forks there are a few "gotchas" to look out for:
 
+
+
+**Pull request comment added (restricted)**  
+
+This is the default option for triggers based on PR comments, for all Git providers.
+
 * Only comments made by repository owners and [collaborators](https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/adding-outside-collaborators-to-repositories-in-your-organization) will result in the pipeline being triggered
 * Only git pushes by collaborators within the GitHub organization will result in the pipeline being triggered
 * If the repository is in a GitHub organization, comments made by private members of the organization will not activate the trigger, even if they are set as an owner or collaborator. Private members means that they need to be explicitly added to the repository. 
 Access cannot be "inherited" by the GitHub team. Currently, only comments from Admins, or Collaborators (directly added, not via teams) are allowed, in order to be caught by this filter.
 * The *Pull request comment added* checkbox should likely be the only one checked, or your pipeline may trigger on other events that you don't anticipate.
+
+**Pull request comment added**  
+This option is recommended only for GitHub, as the default behavior does not trigger build when comments are made by users in GitHub teams, even Admin users.
+
+> Select this only for private GitHub repositories.
 
 ### Monorepo support (Modified files)
 
