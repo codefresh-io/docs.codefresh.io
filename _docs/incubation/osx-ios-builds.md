@@ -7,7 +7,7 @@ toc: true
   
 Codefresh is offering alpha support for macOS and/or iOS as a CI/CD environment. Access to the build environment is possible after invite only. To run macOS/iOS pipelines in Codefresh, [open a free account]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/) and then [contact sales](https://codefresh.io/contact-us/) in order to enable this build environment type.
 
-> macOS/iOS builds are only available on the SaaS Platform. Hybrid is not available at this time.
+> macOS/iOS builds are only available for the SaaS platform. They are not available for the Hybrid platform at this time.
 
 ## Enabling macOS/iOS support
 
