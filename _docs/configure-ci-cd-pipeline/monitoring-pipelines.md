@@ -272,7 +272,7 @@ The variables are grouped by granularity, starting with the global project-level
 * Pipeline
 * Trigger  
 
-A variable with a strikethrough indicates an override in a lower-level group with higher granularity. For rules on precedence and overrides for variables in builds, see [Variables]({{site.baseurl}}/docs/codefresh-yaml/variables/).  
+A variable with a strikethrough indicates an override by the same variable in a lower-level group with higher granularity. For rules on precedence and overrides for variables in builds, see [Variables]({{site.baseurl}}/docs/codefresh-yaml/variables/).  
 
 >Notes:  
   * Variables exported across steps with `cf_export` are not identified as `cf-exported` variables in the list.  
