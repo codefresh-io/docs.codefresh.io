@@ -13,7 +13,6 @@ toc: true
 
 - View/download logs for build or build steps as text, in addition to HTML - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/monitoring-pipelines/#viewingdownloading-logs-for-builds-and-build-steps)
 - View variables used in pipeline builds - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/monitoring-pipelines/#viewing-variables-in-pipeline-builds)
-- Git trigger 
 - macOS/iOS builds are now available for the SaaS platform - [documentation]({{site.baseurl}}/docs/incubation/osx-ios-builds/)
 
 
