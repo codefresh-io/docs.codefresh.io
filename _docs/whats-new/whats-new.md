@@ -6,12 +6,35 @@ redirect_from:
   - /docs/whats-new/
 toc: true
 ---
-## 2022
 
 ### October 2022
 
 #### Features and enhancements
-- View/download logs for build or build steps - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/monitoring-pipelines/#viewdownload-logs-for-builds-and-build-steps)
+
+- View/download logs for build or build steps as text, in addition to HTML - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/monitoring-pipelines/#viewingdownloading-logs-for-builds-and-build-steps)
+- View variables used in pipeline builds - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/monitoring-pipelines/#viewing-variables-in-pipeline-builds)
+- macOS/iOS builds are now available for the SaaS platform - [documentation]({{site.baseurl}}/docs/incubation/osx-ios-builds/)
+
+
+
+#### Bug fixes
+
+- Selecting Cron trigger when cloning a pipeline, clones the pipeline without the Cron trigger. 
+- Unable to delete clusters in a runtime even with Admin privileges.
+- When creating or editing Helm boards, Promote pipeline selected reverts to Default Pipelines on save.
+- Rollback status not updated in the UI after successful completion. 
+- Failed test report step deletes artifacts instead of retry.  
+- `get team users` command does not return User IDs.
+- Repo (Origin Repo and Branch) links from the Builds or Build Details pages to GitHub Enterprise go instead to GitHub.  
+- Email does not match error during sign-in to Azure with Corporate SSO when already authenticated.
+- Authentication required error when pushing images to ACR (Azure Container Registry) using Service Principal credentials.
+- Inconsistent results for Test Connection in ACR integration.
+- Search results for pipelines in the Pipeline page include _all_ pipelines.
+- (On-premises) LDAP login failure after upgrade to latest release.
+- (On-premises) Release version either not visible in Codefresh UI, or does not reflect actual version.
+
+
+
 
 ### September 2022
 
