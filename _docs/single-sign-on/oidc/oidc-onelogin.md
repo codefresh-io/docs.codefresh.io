@@ -3,6 +3,10 @@ title: "OneLogin (OIDC)"
 description: "Setting Up OneLogin Single Sign-On (SSO)"
 group: single-sign-on
 sub_group: oidc
+redirect_from:
+  - /docs/enterprise/sso-onelogin/
+  - /docs/enterprise/single-sign-on/sso-onelogin/
+  - /docs/administration/single-sign-on/sso-onelogin/
 toc: true
 ---
 

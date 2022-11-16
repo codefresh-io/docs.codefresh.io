@@ -3,6 +3,10 @@ title: "Google (OIDC)"
 description: "Setting Up Google Single Sign-On (SSO)"
 group: single-sign-on
 sub_group: oidc
+redirect_from:
+  - /docs/enterprise/sso-google/
+  - /docs/enterprise/single-sign-on/sso-google/
+  - /docs/administration/single-sign-on/sso-google/
 toc: true
 ---
 
