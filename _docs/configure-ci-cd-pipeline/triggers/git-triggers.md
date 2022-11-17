@@ -111,16 +111,15 @@ Therefore, all tags like `tag1`, `tag-X` **won't** trigger the pipeline.
 
 ### Pull Requests from comments 
 
-Pull Requests from comments are supported for all Git providers, for private and public repositories. 
+Pull Requests from comments are supported for all Git providers, for private and public repositories.  
+There are two options:
+* **Pull request comment added (restricted)**  
+  This option triggers an event only when the PR comments are made by repository owners or collaborators.  
+* **Pull request comment added**  
+  This option triggers an event when PR comments are made by any user, regardless of their permissions.  
+  Because it is not restricted to owners and collaborators, this option is useful in GitHub, to enable triggers for PR comments made by users in GitHub teams.
 
-**Pull request comment added (restricted)**  
-This option triggers an event only when the PR comments are made by repository owners or collaborators.  
-
-**Pull request comment added**  
-This option triggers an event when PR comments are made by any user, regardless of their permissions.  
-Because it is not restricted to owners and collaborators, this option is useful in GitHub, to enable triggers for PR comments made by users in GitHub teams.
-
-> We strongly recommend selecting this option only for _private repositories_.  
+  > We strongly recommend selecting this option only for _private repositories_.  
 
 
 {% include image.html
