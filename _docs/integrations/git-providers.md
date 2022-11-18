@@ -139,7 +139,7 @@ An alternative way to authenticate with Github is via the App mechanism.
 
 ### Codefresh Github App
 
-> Note: The Codefresh App only has READ permissions to code, commit statuses, issues, metadata, and pull requests. Also, READ and WRITE to repository hooks. If You need additional permission for your integration, use the Manual Creation steps.
+> Note: The Codefresh App only has READ permissions to issues, metadata, and pull requests. Also, READ and WRITE permissions to code, commit statuses, and repository hooks. If You need additional permission for your integration, use the Manual Creation steps.
 
 **Step 1** - Visit [https://g.codefresh.io/account-admin/account-conf/integration/git](https://g.codefresh.io/account-admin/account-conf/integration/git) in Codefresh, add a new Git provider, and choose *Codefresh Github App* from the drop-down menu
 
