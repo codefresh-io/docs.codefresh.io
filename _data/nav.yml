@@ -507,6 +507,8 @@
       sub-pages:
         - title: JumpCloud
           url: /saml-jumpcloud
+        - title: Okta
+          url: /saml-okta
         - title: OneLogin
           url: /saml-onelogin
         - title: PingID SSO
