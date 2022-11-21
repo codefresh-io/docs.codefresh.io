@@ -22,6 +22,7 @@ Configure the settings for a container registry integration in Codefresh.
 
 1. In the Codefresh UI, go to [Integrations](https://g.codefresh.io/2.0/account-settings/integrations){:target="\_blank"}.
 1. Filter by **Issue Tracking**, select the issue tracking tool to integrate, and click **Configure**.
+1. Jira integrations only: For a new Jira integration, from the **Add Integration** dropdown, select the type of integration, as either **Deployment reporting** or **Image enrichment**.
 1. If you already have integrations, click **Add**.
 1. Define the arguments for the issue tracking tool:  
   [Jira]({{site.baseurl}}/docs/integrations/issue-tracking/jira/)   
