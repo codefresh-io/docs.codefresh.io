@@ -16,7 +16,7 @@ DORA measures these metrics:
 
 [Read more on DORA](https://cloud.google.com/blog/products/devops-sre/using-the-four-keys-to-measure-your-devops-performance){:target="\_blank"}. 
 
-### DORA metrics in Codefreh
+### DORA metrics in Codefresh
 
 Monitoring DORA metrics can help identify delivery issues in your organization by detecting bottlenecks among teams, and help to optimize your workflows, at technical or organizational levels.  
 Codefresh offers support for DORA metrics out of the box.  
