@@ -8,7 +8,7 @@ toc: true
 
 ## Setup Instructions
 
-Below describes how to set up OneLogin for Single Sing On with Codefresh using SAML.  If you do not have the SAML option, please create a support ticket enable SAML for the account account.
+Below describes how to set up OneLogin for Single Sign-On with Codefresh using SAML.  If you do not have the SAML option, please create a support ticket enable SAML for the account.
 
 ### In OneLogin
 
