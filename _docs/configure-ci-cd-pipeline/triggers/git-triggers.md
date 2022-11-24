@@ -239,7 +239,7 @@ You can also use Glob expressions for files. For example:
 Glob expressions have many more options not shown here. Visit the [official documentation](https://en.wikipedia.org/wiki/Glob_(programming)) to learn more. You can also use the [Glob Tester web application](https://www.digitalocean.com/community/tools/glob) to test your glob expressions beforehand so that you are certain they match the files you expect them to match.
 
 ## Advanced Options
-
+<!---replace image when released-->
 {% include image.html
 lightbox="true"
 file="/images/pipeline/triggers/advanced-options.png"
@@ -255,7 +255,16 @@ max-width="60%"
   * *Ignore Codefresh cache optimizations for build* - selecting this option may slow down your build.  See #2 [here]({{site.baseurl}}/docs/troubleshooting/common-issues/disabling-codefresh-caching-mechanisms/)
   * *Reset pipeline volume* - useful for troubleshooting a build that hangs on the first step.  See [here]({{site.baseurl}}/docs/troubleshooting/common-issues/restoring-data-from-pre-existing-image-hangs-on/)
   * *Report notification on pipeline execution* - Decide if [Slack notifications]({{site.baseurl}}/docs/integrations/notifications/slack-integration/) will be sent (as well as status updates back to your Git provider)
-* *Runtime Environment* - choose to use pipeline [settings]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-settings) or override them
+* *Runtime Environment*: choose to use pipeline [settings]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-settings) or override them
+
+### Set minimum disk space for build volume by trigger
+Set the disk space you need for the build volume in the context of the selected trigger. Setting the disk space for the trigger overrides that set for the pipeline.
+
+1. In **Workflow > Triggers**, expand **Advanced Options**.
+1. From the Runtime Environment list, select **Override pipeline settings**, and then select the runtime for which to override the pipeline setting. 
+1. If required, change the resource size.
+1. Enable **Set minimum disk space**, and then change as required. 
+
 
 ## Manually Adding the Trigger to GitHub
 

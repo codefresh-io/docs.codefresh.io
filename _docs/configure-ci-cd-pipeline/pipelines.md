@@ -218,6 +218,20 @@ You can define multiple external resources in a single pipeline.
   - Medium (recommended 3-4 steps)
   - Large (recommended 5-6 steps)
 
+#### Set disk space for pipeline builds
+Set the disk space you need for the pipeline's build volume. Configuring the disk space per build volume prevents out-of-space scenarios that lead to failed builds. The disk space set for the pipeline is inherited by all the builds run for the pipeline.  
+
+Codefresh calculates the available range according to the disk size, and automatically sets the disk space for the build volume to 70% of the total disk space. You can either retain the default disk space or change as needed.
+
+1. Select the pipeline for which to set the disk space.
+1. Select **Settings**, and then **Runtime**.
+
+SCREENSHOT TBD
+
+1. Enable **Set minimum required disk space** and either retain the default displayed or change as needed. 
+
+>You can also configure the disk space for a [specific trigger]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers) used by the pipeline and override the pipeline value, or for a specific run.
+
 ## Using Pipeline Templates
 
 Codefresh also supports the creation of pipeline "templates" which are blueprints for creating new pipelines. To enable the creation of pipelines from templates first visit the global pipeline configuration at [https://g.codefresh.io/account-admin/account-conf/pipeline-settings](https://g.codefresh.io/account-admin/account-conf/pipeline-settings) and toggle the *Enable Pipeline Templates* button.
