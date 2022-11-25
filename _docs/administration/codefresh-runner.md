@@ -1871,7 +1871,7 @@ dockerDaemonScheduler:
 **Where it runs:** On Runtime Cluster as CronJob
 (`kubectl get cronjobs -n codefresh -l app=dind-volume-cleanup`). Installed in case the Runner uses non-local volumes (`Storage.Backend != local`)
 
-**Triggered by:** CronJob every 10min (configurable), part of [runtime-cluster-monitor](https://github.com/codefresh-io/runtime-cluster-monitor/blob/master/chart/templates/dind-volume-cleanup.yaml) and runner deployment
+**Triggered by:** CronJob every 10min (configurable), part of [runtime-cluster-monitor](https://github.com/codefresh-io/runtime-cluster-monitor/blob/master/charts/cf-monitoring/templates/dind-volume-cleanup.yaml) and runner deployment
 
 **Configuration:**
 
