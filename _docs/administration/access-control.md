@@ -195,7 +195,7 @@ By default, users can load pipeline definitions when [creating a pipeline]({{sit
 
 You can change the default behavior to restrict loading CI pipeline definitions from specific Git repositories or completely disable loading the definitions from all Git repositories.
 
-### Enable/disable pipeline YAMLs by source
+### Enable/disable access to pipeline YAMLs by source
 Enable or disable access to pipeline definition YAMLs based on the source of the YAML. These global settings are effective for all pipelines in the account and enables or disables that method of pipeline creation from the Codefresh UI.
 pipeline definitions from:
  * The inline editor in the Codefresh UI:  Disabling the inline editor for example, disables new and _all existing pipelines_
@@ -218,8 +218,8 @@ pipeline definitions from:
 1. Turn on or off the options as needed. 
 1. Continue with 
 
-### Defining access to Git repositories
-If enabled or disabled defined access to pipeline definitions by Git repositories, you can configure more fine-grained restrictions through the integrations settings for your [Git provider]({{site.baseurl}}/docs/integrations/git-providers/).
+### Define access to Git repositories for pipeline YAMLs
+If access to pipeline definitions are defined by Git repositories, you can configure more fine-grained restrictions through the integrations settings for your [Git provider]({{site.baseurl}}/docs/integrations/git-providers/).
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon and then select **Account Settings**.
 1. From Configuration on the sidebar, select [**Pipeline Integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}.
