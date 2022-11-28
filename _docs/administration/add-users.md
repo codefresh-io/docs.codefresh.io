@@ -1,5 +1,5 @@
 ---
-title: "Managing users and teams in Codefress"
+title: "Users and team management"
 description: ""
 group: administration
 toc: true
@@ -33,25 +33,26 @@ on clusters, docker registries, git integrations, shared configurations etc.
 
 ### Manage users in a Codefresh account
 
-Once you add a user to an account, you can do the following to manage that user:  
-* For invitations pending accept, select ![](/images/administration/users/icon-Send.png?display=inline-block) **Resend**.  
-* To edit the user's email address, select ![](/images/administration/users/icon-Edit.png?display=inline-block) **Edit**.  
-* To remove the user account, select ![](/images/administration/users/icon-Delete.png?display=inline-block) **Delete**.
+Once you add a user to your Codefresh account, you can do the following to manage that user:  
+* Resend invitations that are pending acceptance: Select ![](/images/administration/users/icon-Send.png?display=inline-block) **Resend**.  
+* Edit the user's email address: Select ![](/images/administration/users/icon-Edit.png?display=inline-block) **Edit**.  
+* Change the role: From the **Role** dropdown, select the new role.
+* Change SSO provider: From the **SSO** dropdown, select the new SSO provider.
+* Remove the user account: Select ![](/images/administration/users/icon-Delete.png?display=inline-block) **Delete**.
 
 
 
 ## Teams in Codefresh
+Teams are users who share the same permissions, roles, or as required by . By default there are two teams, *users*, and *admins* with users [invited as collaborators]({{site.baseurl}}/docs/accounts/invite-your-team-member/).  
+Teams allow you to enforce access control through ABAC (). 
+
+> Only Enterprise customers can add new teams. Other Codefresh plans can only use the predefined *Users* and *Admin* teams. [Contact us](https://codefresh.io/contact-us/) if you wish to upgrade to an Enterprise plan.
 
 ### Create a team in Codefresh
 
 Create a team in Codefresh and then assign users to the team. You can assign the same user to multiple teams, as in most companies, users have overlapping roles.  
- >By default there are two teams, *users* and *admins* with users [invited as collaborators]({{site.baseurl}}/docs/accounts/invite-your-team-member/).
  
- Teams allow you to enforce access control through ABAC.
-
-> Only Enterprise customers can add new teams. Other Codefresh plans can only use the predefined *Users* and *Admin* teams. [Contact us](https://codefresh.io/contact-us/) if you wish to upgrade to an Enterprise plan.
-
-1. In the Codefresh UI, on the toolbar, click the **Settings** icon and then select **Account Settings**.
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon and then select **User Management**.
 1. From the sidebar, from Access & Collaboration, select [**Users & Teams**](https://g.codefresh.io/account-admin/collaborators/users){:target="\_blank"}.   
 1. Select **Teams**, and then select **Create a Team**.  
 1. Enter the **Team Name**.
@@ -70,14 +71,14 @@ Create a team in Codefresh and then assign users to the team. You can assign the
 
 ### Assign a user to a team
 1. To assign users to the team, do the following:
-    1. Hover over the team and click the **Settings** icon. 
+    1. Hover over the team name and click the **Settings** icon. 
     1. Click **Invite to team**, type the email address of the user to invite, and then click **Add**.
 1. To change the name of the team, click **Edit** and type the new name. 
 
 ## Define session timeouts and domain restrictions for user accounts
-As an administrator, you can also define session timeouts to automatically log out users who have inactive for the specified duration, and restrict invitations to specific email domains.  
+As an administrator, you can optionally define session timeouts to automatically log out users who have been inactive for the specified duration, and restrict invitations to specific email domains.  
 
-> The maximum inactivity duration you can set is 30 days. Inactive users are warned 90 seconds before the last 15 minutes.
+> The maximum duration for inactivity you can set is 30 days. Inactive users are warned before the last 15 minutes.
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon and then select **Account Settings**.
 1. From the sidebar, from Access & Collaboration, select [**Users & Teams**](https://g.codefresh.io/account-admin/collaborators/users){:target="\_blank"}.   
@@ -93,7 +94,7 @@ As an administrator, you can also define session timeouts to automatically log o
   max-width="90%"
     %}
 
-1. To restrict invitations to specific email domains, in the **Email domains** field below User Invitations, type in the domains, one per line.
+1. To restrict invitations to specific email domains, in the **Email domains** field below User Invitations, type in the domains to allow, one per line.
 
 ## Troubleshoot add users
 
