@@ -1,56 +1,110 @@
 ---
-title: "Audit"
-description: ""
+title: "Audit logs"
+description: "Get a list of all actions in Codefresh"
 group: administration
+redirect_from:
+  - /docs/enterprise/audit-logs/
 toc: true
 ---
 
-Most entities in Codefresh are GitOps-compliant, and fully controlled via the GitOps approach. 
+Codefresh keeps a log of all actions that happen at all times, based on API calls that reach Codefresh.  
+The audit log includes:   
+* GUI actions from users
+* [CLI](https://codefresh-io.github.io/cli/) invocations
+* Any [external integrations]({{site.baseurl}}/docs/integrations/codefresh-api/) used with Codefresh
 
-For information on which entities and how they are controlled, review [access control]({{site.baseurl}}/docs/administration/access-control/).  
+The time frames  by audit logs depends on the pricing tier of your Codefresh account.
 
-Audit logs are available for GitOps-compliant entities.  
+You can:
+* View, filter, and search for audited events
+* View API payload for an event
+* Download the audit log file in CSV
 
-View audit logs:  
-
-* Of Git Sources, in the **Notifications** panel
-* Of pipeline entities, in the **Update History** tab
-* In your Git repository
-
-### Git Source changes in Notifications
-The **Notifications** panel is a pull-down panel, always available in the Codefresh toolbar. The panel shows a recent view of changes to entities such as Git Sources.
+## View audit logs
+The Audit Log is divided into actions audited (All Audit), and tiggers and webhooks processed by Codefresh (Triggers).
 
 
-{% include
-image.html
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon and then select **Account Settings**.
+1. From the sidebar, from Access & Collaboration, select [**Audit**](https://g.codefresh.io/account-admin/audit/audit-all){:target="\_blank"}.  
+1. To focus on a specific time frame, select the date range from the toolbar.  
+  The All Audit tab includes all Codefresh events in your account, sorted by the most recent events.  
+  Each event shows the following details:  
+  * `Entity ID/Name`: The entity that was affected.
+  * `Entity type`: The type of entity on which the action was action, such as user, team, build, pipeline, project, etc.
+  * `Action`: The action that was taken on the entity.
+  * `Status`: The result of the API call.
+  * `User`: The name of the user who performed the action.
+  * `Last Request`: The time of the event.
+
+
+{% include image.html
 lightbox="true"
-file="/images/administration/audit/notifications.png"
-url="/images/administration/audit/notifications.png"
-alt="Git Sources change log in Notifications"
-caption="Git Sources change log in Notifications"
-max-width="30%"
+file="/images/administration/audit/audit-logs.png"
+url="/images/administration/audit/audit-logs.png"
+alt="Audit Logs view"
+caption="Audit Logs view"
+max-width="70%"
+%} 
+
+
+The Triggers tab includes all the triggers/webhooks that were processed by Codefresh, with the same information as the Audit tab.
+
+{% include image.html
+lightbox="true"
+file="/images/administration/audit/audit-triggers.png"
+url="/images/administration/audit/audit-triggers.png"
+alt="Audit Triggers view"
+caption="Audit Triggers view"
+max-width="70%"
 %}
 
-### Pipeline entity changes in Update History 
-When you drill down into a pipeline, the **Update History** tab shows the list of changes to all its underlying entities.
+Both lists have built-in paging and filtering.
 
-{% include
-image.html
+
+
+
+### Filter audited events
+
+Filter audited events to focus on a specific entity or user.
+
+{% include image.html
 lightbox="true"
-file="/images/administration/audit/update-history.png"
-url="/images/administration/audit/update-history.png"
-alt="Pipeline entity change log in Update History"
-caption="Pipeline entity change log in Update History"
-max-width="30%"
+file="/images/administration/audit/audit-filter.png"
+url="/images/administration/audit/audit-filter.png"
+alt="Filtering audit actions"
+caption="Filtering audit actions"
+max-width="40%"
 %}
 
 
-### Git repo change log
+### Get more details for audited events
 
-A change to a GitOps-controlled resource in Codefresh is made by Codefresh impersonating and pushing commits to your Git Sources.
-The Git repository linked to the Git Source shows all the commits. 
+You can get the exact API payload for each event as it was sent to Codefresh. You can get the URL and other call parameters used for the selected event.
+
+*  At the right of the row with the event, click the **More Details** (book) icon.
 
 
-### (Future) Centralized audit log in account settings
-We plan to create a centralized location from which to view all API operations.
+{% include image.html
+lightbox="true"
+file="/images/administration/audit/api-call-details.png"
+url="/images/administration/audit/api-call-details.png"
+alt="API call details for audited event"
+caption="API call details for audited event"
+max-width="40%"
+%}
 
+
+
+## Export audit logs
+
+Export all log events, both Audits and Triggers, to a  `CSV` file, for offline processing with your own tools or for viewing in external applications such as Microsoft Excel.
+
+* On the top right of the toolbar, click **Download Audit**.
+  The downloaded file includes in addition to the events themselves, the API call information (payload and parameters) for each event.
+
+
+
+## What to read next
+[Codefresh installation options]({{site.baseurl}}/docs/administration/installation-security/)  
+[Access Control]({{site.baseurl}}/docs/administration/access-control/)  
+[Codefresh API]({{site.baseurl}}/docs/integrations/codefresh-api/)  

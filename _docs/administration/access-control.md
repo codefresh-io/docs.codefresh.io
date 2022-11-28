@@ -26,7 +26,6 @@ Role-based access, as either a user or an administrator, is usually defined when
 
 > You must be an administrator yourself to add users and change their roles.
 
-Each user has the selected role. 
 
 {% include 
   image.html 
@@ -219,7 +218,7 @@ pipeline definitions from:
 1. Continue with 
 
 ### Define access to Git repositories for pipeline YAMLs
-If access to pipeline definitions are defined by Git repositories, you can configure more fine-grained restrictions through the integrations settings for your [Git provider]({{site.baseurl}}/docs/integrations/git-providers/).
+If access to pipeline definitions are enabled for Git repositories, you can configure fine-grained restrictions through the integrations settings for your [Git provider]({{site.baseurl}}/docs/integrations/git-providers/).
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon and then select **Account Settings**.
 1. From Configuration on the sidebar, select [**Pipeline Integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}.
