@@ -1,182 +1,112 @@
 ---
-title: "User settings"
-description: ""
+title: "Manage personal user settings"
+description: "Manage your personal settings"
 group: administration
 toc: true
 ---
 
-As a user in Codefresh, you can manage your account by authorizing access to your Git provider accounts, and optionally, enabling access for Codefresh support.
-
-* Enable access for Codefresh support  
-  Optional. Enable access to your account for troubleshooting purposes. 
-
-* Authorize Git providers  
-  The Git personal token is a user-specific access token, required to authenticate Git-based actions from Codefresh clients, per provisioned runtime.  
+As a Codefresh user, you can manage several settings in your personal account.
 
 
-  The authorization method depends on the Git provider and on what authorization has been set up by your account admin.
 
 
-  If your admin has set up authentication with OAuth2, you can authorize access using OAuth2.  
-  Or, you can always generate a personal access token from your Git provider and then add the same to Codefresh to authorize access.  
+Email notifications for builds and build usage
+Access for Codefresh support to your account
+Access to private Git repositories
+Create and manage API keys
 
-  > If you have access to more than one runtime, you can use the same token for multiple runtimes.  
-    You must however authorize access individually for each runtime.  
+> To manage Git personal access tokens for GitOps, see???
 
-{::nomarkdown}
-</br>
-{:/} 
+## Access user settings
+* In the Codefresh UI, on the toolbar, click the **Settings** icon and then select **User Settings** (https://g.codefresh.io/user/settings){:target="\_blank"}.
 
-### Enable access for Codefresh support
-Enable Codefresh support personnel to access your user account. Access to your account is useful for visibility during troubleshooting.  
+## Email notifications for CI builds 
+
+Configure the email notifications you want to receive for builds based on the build status: only successful, only failed, or for both successful and failed builds.  
+
+> By default, email notifications are disabled for _all users_, for both successful and failed builds.
+
+* In **Notifications**, define the email address and select the notifications:    
+  * Email address for the notifications. By default, it's the same address you used to [sign-up]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/).
+  * Select to receive emails for successful builds
+  * Select to receive emails for failed builds
+
+
+
+{% include image.html
+lightbox="true"
+file="/images/administration/user-settings/notifications.png"
+url="/images/administration/user-settings/notifications.png"
+alt="email settings"
+caption="email settings"
+max-width="50%"
+%}
+
+
+
+## Weekly updates of build usage
+
+Select to receive weekly summaries of your builds across your pipelines along with other statistical data. This information can be useful if you want to understand your overall project build health and capacity usage.
+
+* In **Updates**, select or clear **Receive updates...**.
+
+
+## Enable access for Codefresh support
+
+Enable Codefresh support personnel to access your user account. Access to your account is useful for visibility during troubleshooting. If you have an issue with the Codefresh platform, our support personnel can log into your account and look at running builds, inspect Docker images, run pipelines for you etc.
 
 You can disable this security setting at any time.
 
-> Codefresh personnel takes action only after confirmation from you, and all actions are audited.
+>Codefresh personnel takes action only after confirmation from you, and all actions are audited.
 
-1. In the CSDP UI, go to [User Settings](https://g.codefresh.io/2.0/user-settings){:target="\_blank"}.
-1. Enable **Allow Codefresh support tem to log in...**.
+* In **Security**, select **Allow Codefresh support team to log in…**..
 
-{% include 
-   image.html 
-   lightbox="true" 
-   file="/images/administration/user-settings/security-enable-support-access.png" 
-   url="/images/administration/user-settings/security-enable-support-access.png" 
-   alt="Enable access for Codefresh support" 
-   caption="Enable access for Codefresh support"
-   max-width="50%" 
+
+{% include image.html
+lightbox="true"
+file="/images/administration/user-settings/allow-support-access.png"
+url="/images/administration/user-settings/allow-support-access.png"
+alt="Allow access to Codefresh support"
+caption="Allow access to Codefresh support"
+max-width="100%"
 %}
 
-{::nomarkdown}
-</br>
-{:/}
 
-### Authorize Git access in Codefresh
-Authorize Git access with OAuth2 if your account admin has set up Codefresh as an OAuth application, or alternatively through personal access tokens from your Git provider.  
->Notes:  
-  For OAuth2:  The adminstrator pre-configures the permissions and expiry date. Once you supply your credentials for authorization, you are automatically directed to the Git Personal Tokens page. 
+<!--- Enable after confirmation
+## Git Provider Private Access
 
-**Before you begin**  
+When you connect your [Git provider]({{site.baseurl}}/docs/integrations/git-providers/) during sign-up, you may choose to let Codefresh access only your public Git repositories.
 
-Make sure you have:
-* For Bitbucket only, your Bitbucket account username
-* If needed, a _personal access token_ from your Git provider with the required scopes:
-  * [GitHub](#generate-github-personal-access-tokens)
-  * [GitLab](#generate-gitlab-personal-access-tokens)
-  * [Bitbucket](#generate-bitbucket-personal-access-tokens)
+To allow Codefresh to also add [Git triggers]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/) on private repositories you need to explicitly enable it in this section. 
 
+Note that options available highly depend on what Git provider you are using with Codefresh. -->
 
-**How to**
-1. In the Codefresh UI, go to [User Settings](https://g.codefresh.io/2.0/user-settings){:target="\_blank"}.
-1. Select the runtime, and then do one of the following:
-  * To add a token, select **Add Token**.
-  * To update an existing token by replacing it with a new token, select **Update Token**.
-1. For **OAuth2**:
-    > If the application is not registered, the button is disabled. Contact your admin for help.  
-   * Click **Authorize Access to GitHub**.
-   * Enter your credentials, and select **Sign In**.
-   * Complete the verification if required, as when two-factor authentication is configured, for example.
-<!---add new screenshot> -->
+## Create and manage API keys
+
+Generate new API keys to access Codefresh functionality from your scripts or applications, outside the Codefresh UI. Edit scopes for existing keys, or revoke them when needed.  
+For details, see [Codefresh API]({{site.baseurl}}/docs/integrations/codefresh-api/#authentication-instructions).
+
+>Tokens are visible only during creation. You cannot "view" an existing token. To re-enable API access for an existing application, you must delete the old token and create a new one.
 
 
-  For **Git personal access tokens**:  
-  * Expand **Advanced authorization options**. 
-  * For Bitbucket, enter your **Bitbucket username**. 
-  * In the **Personal Access Token** field, paste the token you generated.
-
-<!---add new screenshot> -->
+1. In **API Keys**, to generate a new API key, click **Generate**.
+1. Select the scopes for the key.
 
 
-{:start="5"}
-1. Click **Add Token**.  
-  In the Git Personal Access Tokens list, you can see that the new token is assigned to the runtime. 
-
-{::nomarkdown}
-</br>
-{:/}
-
-#### Generate GitHub personal access tokens 
-
-1. Log in to your GitHub or GitHub Enterprise account.
-1. Select **Settings > Developer Settings > Personal Access Tokens > Tokens (classic)**.
-1. Define the following:
-  * Token name
-  * Expiration date
-  * Select scope: `repo`
-
-  {% include 
-   image.html 
-   lightbox="true" 
-   file="/images/administration/user-settings/github-pat-scopes.png" 
-   url="/images/administration/user-settings/github-pat-scopes.png" 
-   alt="GitHub personal access token scopes" 
-   caption="GitHub personal access token scopes"
-   max-width="50%" 
-  %}
-
-{:start="4"}  
-1. Copy the personal access token generated as you will need it to authorize access.
-
-{::nomarkdown}
-</br>
-{:/}
-
-#### Generate GitLab personal access tokens
-
-1. Log in to your GitLab Cloud or Server account.
-1. Select **User settings > Access tokens**.
-1. Define the following:
-  * Token name
-  * Expiration date
-  * Select these scopes: `read_api`, `read_repository`, `write_repository`
-
- {% include 
-   image.html 
-   lightbox="true" 
-   file="/images/administration/user-settings/gitlab-pat-scopes.png" 
-   url="/images/administration/user-settings/gitlab-pat-scopes.png" 
-   alt="GitLab personal access token scopes" 
-   caption="GitLab personal access token scopes"
-   max-width="50%" 
-  %}
-
-{:start="4"}  
-1. Copy the personal access token generated as you will need it to authorize access.
+{% include image.html
+lightbox="true"
+file="/images/integrations/api/generate-token.png"
+url="/images/integrations/api/generate-token.png"
+alt="Generating a key for the API"
+caption="Generating a key for the API"
+max-width="80%"
+%}
 
 
+## What to read next
+
+<!--why do we need this? this is for admins; also SSO[Add users]({{site.baseurl}}/docs/administration/invite-your-team-member/)  -->
+[Manage Git PATs]({{site.baseurl}}/docs/administration/manage-pats)  
+[Single Sign on]({{site.baseurl}}/docs/administration/single-sign-on/)  
 
 
-{::nomarkdown}
-</br>
-{:/}
-
-#### Generate Bitbucket personal access tokens
-
-
-1. Log in to your Bitbucket Cloud or Server account.
-1. Select **Personal Settings > App passwords**.
-1. Define the **Label**.
-  Select these scopes: 
-  * **Permissions**: `Read`
-  * **Workspace membership**: `Read`
-  * **Repositories**: `Write`
-
-  {% include 
-   image.html 
-   lightbox="true" 
-   file="/images/administration/user-settings/bitbucket-pat-scopes.png" 
-   url="/images/administration/user-settings/bitbucket-pat-scopes.png" 
-   alt="Bitbucket personal access token scopes" 
-   caption="Bitbucket personal access token scopes"
-   max-width="50%" 
-  %}
-
-{:start="4"}
-1. Copy the personal access token generated as you will need it to authorize access.
-
-{::nomarkdown}
-</br>
-{:/}
-
-### Related articles  
-[Git tokens in Codefresh]({{site.baseurl}}/docs/reference/git-tokens/)

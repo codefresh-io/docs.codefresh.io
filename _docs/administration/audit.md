@@ -15,7 +15,7 @@ The audit log includes:
 
 The time frames  by audit logs depends on the pricing tier of your Codefresh account.
 
-You can:
+You can:  
 * View, filter, and search for audited events
 * View API payload for an event
 * Download the audit log file in CSV
