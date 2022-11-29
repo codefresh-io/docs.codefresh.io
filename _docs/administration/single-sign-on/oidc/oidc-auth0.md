@@ -1,6 +1,6 @@
 ---
 title: "Auth0"
-description: "Set Up Auth0 Single Sign-On (SSO)"
+description: "Set up Auth0 Single Sign-On (SSO)"
 group: administration
 sub_group: single-sign-on
 redirect_from:
@@ -10,7 +10,10 @@ toc: true
 ---
 
 Auth0 is one of the SSO providers that Codefresh supports for authentication and authorization.  
-Create an SSO account for Auth0 in Codefresh. Start by creating an Auth0 application, then create the SSO account for Auth0 in Codefresh, and finally define the SSO settings for the application you created in Auth0.
+Create an SSO account for Auth0 in Codefresh by:
+* Creating an Auth0 application in Auth0
+* Creating the SSO account for Auth0 in Codefresh
+* Definng the SSO settings for the application you created in Auth0
 
 ### 1. Create an Auth0 application
 First create a new application in Auth0.
