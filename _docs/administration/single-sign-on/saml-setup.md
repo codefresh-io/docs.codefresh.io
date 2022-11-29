@@ -9,7 +9,7 @@ redirect_from:
 toc: true
 ---
 
-As Identity Providers (IdPs) come in all shapes and sizes, this topic discusses in general what you must do to configure Federated SSO. 
+As Identity Providers (IdPs) come in all shapes and sizes, this topic discusses in general what you must do to configure Federated SSO for SAML. 
   As you will see in the description below, the person in your organization responsible for managing your IdP will need to interact with Codefresh support to successfully set up a trust between your IdP and Codefresh as an SP.
 
 {:.text-secondary}
@@ -68,68 +68,44 @@ Once Federated SSO has been configured, the process works as follows:
 
 ## SAML SSO configuration in Codefresh 
 
-Codefresh supports SAML SSO for the following:
-JumpCloud
-OneLogin
-PingID
+Here's what you need to do to configure SSO via SAML in Codefresh:
 
-Currentl
+1. Configure SSO settings for the IdP in Codefresh:  
+  This generally includes defining settings in Codefresh and in the IdP.  
+  Codefresh supports SAML SSO for the following:
+  * [JumpCloud]({{site.baseurl}}/docs/administration/single-sign-on/saml/saml-jumpcloud)
+  * [Okta]({{site.baseurl}}/docs/administration/single-sign-on/saml/saml-okta)
+  * [OneLogin]({{site.baseurl}}/docs/administration/single-sign-on/saml/saml-onelogin)
+  * [PingID](({{site.baseurl}}/docs/administration/single-sign-on/saml/saml-pingid)
 
-1. In the Codefresh UI, on the toolbar, click the **Settings** icon and then select **Account Settings**.
-1. From the sidebar, below Access & Collaboration, select [**Single Sign-On**](https://g.codefresh.io/2.0/account-settings/single-sign-on){:target="\_blank"}.   
+  Notes for SSO via SAML:  
+  **SSO settings**  
 
-<!--change screenshot
-{% include image.html 
-  lightbox="true" 
-file="/images/administration/sso/add-sso-dropdown.png" 
-url="/images/administration/sso/add-sso-dropdown.png"
-alt="SSO provider settings"
-caption="SSO provider settings"
-max-width="70%"
-%}
--->
-{:start="3"}
-1. Click **Add single-sign-on**, select **SAML**, and then click **Next**.
-1. Enter the connection details:
+  * Assertion URL  
+    The Assertion URL which is the Service Provider SSO endpoint, also referred to as the Callback URL or Client ID, is generated _after_ you create the integration.
 
-  <!--Not in UI* **Client Name**: For auto-generation, leave empty. Codefresh generates the client name once you save the settings. -->
-  * **Display Name**: The name you want to give to this SAML integration.
-  * **IDP Entry**: The SSO endpoint of your Identity Provider. For Azure SAML, for example, this is the Login URL.
-  * **Application Certificate**: The security certificate of your Identity Provider. Paste the value directly in the field.  For Azure SAML for example, this is the Base64 Certificate, and you must copy the value between the -----BEGIN and -----END  from the downloaded certificate.
-    >Do not convert to base64 or any other encoding by hand.
-  <!--Not in UI* **Assertion URL**: `https://g.codefresh.io/api/auth/<your_codefresh_client_name>/callback​`  
-    where ​<your_codefresh_client_name>​ is he client name that is automatically generated when saving the SSO settings. -->
-  * **Auto Sync users and teams to Codefresh**: Supported for Google/GSuite SAML integration. Select to automatically sync user accounts in to your Codefresh account. Optionally, define the time interval at which to sync, in hours, from 1 to 24. If you don't specify an interval, the sync interval is every 12 hours.
-1. Select **+Add**, and note down the `Client Name` that is generated.
+  * Provider  
+    Currently, we support GSuite for SAML. If you are using a different provider, leave this field empty.  
+    For GSuite, you can define the sync settings, Admin Email and the JSON Keyfile.
+    For instructions, see [Google SSO]({{site.baseurl}}/docs/administration/single-sign-on/sso-google/#synchronize-teams-with-the-codefresh-cli).
+
+  > These settings are for the SaaS version of Codefresh. For an on-premises setup, use the URLs that match your installation.
+
+1. Test integration   
+  Codefresh offers an option to test each integration.
+
+1. Set an IdP as the default provider
+
+1. Set the SSO for each user
+
+> Codefresh has an internal cache for SSO configuration, and it can take up to five minutes for your changes to take effect.
 
 
-### Configure Codefresh Service Provider settings in IdP
-In your Identity Provider, create a new Service Provider and provide the following:
 
-  * **Service Provider SSO Endpoint**: Assertion consumer service URL - `https://g.codefresh.io/api/auth/<your_codefresh_client_name>/callback`
-  * **Service Provider Entity ID**: `g.codefresh.io`
 
-The mandatory fields needed for SAML assertions are:
-1. firstName: User's first name
-1. lastName: User's last name
-1. email: User's email
+* [Selecting SSO method for collaborators]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/#selecting-sso-method-for-collaborators) -->
 
-To configure users sync for SAML IDP, do the following:
 
-1. Select a G Suite provider
-1. Enable Auto Sync users and teams to Codefresh
-1. Set JSON Keyfile, Admin Email and Sync interval
-
-The instructions for getting the JSON Keyfile, and Admin Email are the same as for [Google SSO]({{site.baseurl}}/docs/administration/single-sign-on/sso-google/#synchronize-teams-with-the-codefresh-cli).
-
->Note
-  These settings are for the SaaS version of Codefresh. For an on-premises setup, use the URLs that match your installation.
-
-Once everything is finished, you [should test the integration]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/#testing-your-identity-provider). Once it's working, proceed to the next steps that are:
-
-* [Selecting SSO method for collaborators]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/#selecting-sso-method-for-collaborators)
-
->Notice that Codefresh has an internal cache for SSO configurations and it might take up to five minutes for your changes to take effect.
 
 
 
