@@ -260,8 +260,6 @@ max-width="60%"
 ### Set minimum disk space for build volume by trigger
 Set the disk space you need for the build volume in the context of the selected trigger. Setting the disk space for the trigger overrides that set for the pipeline.  
 
-Reserving disk space at the trigger-level is useful for example, when you have a single pipeline for multiple repositories with a trigger for each repository. If you have a large repository that requires a large amount of space for the build, you can set the disk space _only_ for this repository. This action allows the other repositories to reserve more space for caching, optimizing resource usage and performance.
-
 1. In **Workflow > Triggers**, expand **Advanced Options**.
 1. From the Runtime Environment list, select **Override pipeline settings**, and then select the runtime for which to override the pipeline setting. 
 1. If required, change the resource size.
