@@ -1,18 +1,24 @@
 ---
-title: Synchronizing teams with SSO provider
-description: "Syncing teams after initial SSO setup"
+title: Common configuration for SSO
+description: "Syncing teams, selecting SSO provider after initial SSO setup"
 group: single-sign-on
 toc: true
 ---
 
-Codefresh supports syncing between the teams created in Codefresh and your Identity Provider (IdP).
-Team sync enables all users 
+Once you create an SSO provider account in Codefresh, you can 
+* Automatically or manually sync between the teams created in Codefresh and your Identity Provider (IdP)
+* Set a default SSO provider for your account
+* Select an SSO provider for each user
+
+
+## Syncing teams with IdPs
+Team sync enables all users of the team
 
 You can sync teams:
-* Automatically, in the Codefresh UI when you set up the SSO for the IdP
+* Automatically, in the Codefresh UI when you set up the SSO account for the IdP, through the **Auto-sync team** option. For details, see the SSO setup for your IdP.
 * Manually, through the [synchronize teams command](https://codefresh-io.github.io/cli/teams/synchronize-teams/) via the [Codefresh CLI](https://codefresh-io.github.io/cli/) 
 
-> Team sync is supported for OIDC providers. For SAML, team-sync is supported only for Google.
+> Team-sync is supported for OIDC providers. For SAML, team-sync is supported only for Google.
 
 
 Example: 
@@ -37,8 +43,8 @@ max-width="40%"
 %}
 
 
-Even though you can run this command manually it makes more sense to run it periodically as a job. And the obvious
-way to perform this, is with a Codefresh CI pipeline. The CLI can be used as a [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/).
+Though you can run this command manually it makes more sense to run it periodically as a job. And the obvious
+way to perform this is with a Codefresh CI pipeline. The CLI can be used as a [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/).
 
 You can create a git repository with a [codefresh.yml]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) file with the following content:
 
@@ -56,7 +62,7 @@ To fully automate this pipeline you should set a [cron trigger]({{site.baseurl}}
 
 This way you can synchronize your teams every day/week/hour depending on you Cron trigger setup.
 
-## CLI synchronize teams command
+### CLI synchronize teams command
 
 If the `Restrict inviting additional users by email address domain` is enabled for your account, running the `synchronize teams` command via the CLI, does not invite new users to Codefresh. The output of the command will look similar to the following:
 
@@ -88,14 +94,14 @@ If the `Restrict inviting additional users by email address domain` is enabled f
 ]
 ```
 
-The cause of this is the 
+**Turn off the domain restriction**:
 
-1. Navigate to Account Settings > User & Teams > Security
-1. Toggle off "Restrict inviting additional users by email address domain."
-1. Save.
+1. Navigate to **Account Settings > User & Teams > Security**
+1. Toggle off **Restrict inviting additional users by email address domain**.
+1. Click **Save**.
 1. Rerun the sync command.
 
-## Sync GitHub Organization Teams to Codefresh
+### Sync GitHub Organization Teams to Codefresh
 
 As an admin, you may want to sync your GitHub Organization Teams with your Codefresh account. At the same time, you do not want to set up an SSO provider and have the users use any login provider they choose.
 
@@ -109,3 +115,52 @@ The Personal Access Token (PAT) from a user will sync ALL Organizations and ALL 
 1. The sync will invite all users except for those that have private email settings turned on.
 
 Once the initial sync happens, you can set up a cron trigger pipeline to run the command on a schedule.
+
+## Set a default SSO provider for account
+
+If you have multiple SSO providers, you can set one of them as the default provider for your account. 
+Setting a default provider assigns the selected SSO automatically to all new users. The link in the email invitation takes them directly to the login page of that SSO provider.
+
+1. In the Codefresh UI, go to [Single Sign-On](https://g.codefresh.io/2.0/account-settings/single-sign-on).
+1. From the list, select the SSO account to set as default and click the **Edit** icon on the right.
+1. Scroll down and select **Set as default**. 
+<!---change screenshot
+{% include image.html
+lightbox="true"
+file="/images/administration/sso/default-sso.png"
+url="/images/administration/sso/default-sso.png"
+alt="Default SSO provider"
+caption="Default SSO provider"
+max-width="90%"
+%} -->
+
+
+## Selecting SSO method for individual users
+
+In addition to setting a default provider for your account, you can select a different provider for each user if so required.  
+* New users   
+  If you have an SSO provider selected as the default, that provider is automatically assigned to new users, added either manually or via team synchronization.  
+
+* Existing users  
+  SSO login is not configured by default for existing users. You must _explicitly select_ the SSO provider for existing users.  
+  If SSO login is already configured for an existing user, and you add a new identity provider, to change the SSO login to the new provider, you must _select_ the new provider for the user. 
+
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon and then select **Account Settings**.
+1. From the sidebar, from Access & Collaboration, select [**Users & Teams**](https://g.codefresh.io/account-admin/collaborators/users){:target="\_blank"}.   
+1. Select the SSO provider from the SSO list.
+
+{% include image.html
+lightbox="true"
+file="/images/administration/sso/select-user-sso.png"
+url="/images/administration/sso/select-user-sso.png"
+alt="Selecting SSO method"
+caption="Selecting SSO method"
+max-width="50%"
+%}
+
+## Related articles
+[Setting up OpenID Connect (OIDC) Federated Single Sign-On (SSO)]({{site.baseurl}}/docs/administration/single-sign-on/oidc)
+[Setting up SAML2 Federated Single Sign-On (SSO)]({{site.baseurl}}/docs/administration/single-sign-on/saml-setup)
+
+
+

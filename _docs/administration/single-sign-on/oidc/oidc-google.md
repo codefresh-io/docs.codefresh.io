@@ -6,11 +6,16 @@ sub_group: single-sign-on
 toc: true
 ---
 
-Setting up SSO for Google in Codefresh requires you to create a client secret for Codefresh in Google, configure SSO settings in Codefresh and then define the redirect URIs, also in Google.  
-For general instructions on SSO setup, see the [overview]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/).
+Set up SSO for Auth0 using OIDC.
+For a general overview on OIDC, see [Setting up OpenID Connect (OIDC) Federated Single Sign-On (SSO)]({site.baseurl}}/docs/administration/single-sign-on/oidc).
+
+Set up an SSO account for Google in Codefresh by:
+* Creating the client secret in Google
+* Configuring SSO settings for Google in Codefresh
+* Setting up the redirect URI in Google
 
 
-### Create Client Secret
+## Step 1: Create Client Secret in Google
 
 1. Log in to [https://console.developers.google.com/](https://console.developers.google.com/).
 1. From the sidebar, select **Credentials**.
@@ -41,10 +46,12 @@ For general instructions on SSO setup, see the [overview]({{site.baseurl}}/docs/
        max-width="30%"
        %}
 
-You will need the Client ID and secret to configure SSO for Google in Codefresh.
+  You will need the Client ID and secret to configure SSO for Google in Codefresh.
 
+{:start="5"}
+1. Continue with [Step 2: Configure SSO settings for Google in Codefresh](#step-2-configure-sso-settings-for-google-in-codefresh).
 
-### Configure SSO for Google in Codefresh
+## Step 2: Configure SSO settings for Google in Codefresh
 
 1. In the Codefresh UI, go to [Single Sign-On](https://g.codefresh.io/2.0/account-settings/single-sign-on){:target="\_blank"}.
 1. Select **+ Add Single Sign-On**, **Google**, and then **Next**.
@@ -80,8 +87,9 @@ You will need the Client ID and secret to configure SSO for Google in Codefresh.
 
 {:start="5"}
 1. Note down the Client Name, as you need it to set the redirect URI in Google.
+1. Continue with [Step 3: Set up Redirect URI in Google](#step-3-set-up-redirect-uri-in-google).
 
-### Set up Redirect URI
+### Set up Redirect URI in Google
 1. Go back to the Google Console Developer dashboard, and click the edit button on the OAuth 2.0 Client IDs that you created before.
 1. For **Authorized Redirect URIs**, in the **URIs** field, enter the Client Name you noted down to generate the *Authorized Redirect URIs*
   * Example Client Name: `t0nlUJoqQlDv`
@@ -96,9 +104,9 @@ You will need the Client ID and secret to configure SSO for Google in Codefresh.
   max-width="30%"
   %}
 
-This concludes the basic SSO setup for Google. 
+You have now completed SSO setup for Google via OIDC
 
-### Synchronize teams via Codefresh CLI
+## Synchronize teams via Codefresh CLI
 
 For team/group synchronization you also need a service account. 
 In the Codefresh configuration screen there are some optional fields that you can fill, in order to 
@@ -138,7 +146,16 @@ get team synchronization via the Codefresh CLI. You need to create a service acc
   * `JSON Keyfile`: The contents of the JSON file
   * `Admin email`: The user `admin.google.com`
 
-Now you can [synchronize teams using the Codefresh CLI]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/#syncing-of-teams-after-initial-sso-setup).
+## Test SSO Connection
 
-#### What to read next
-See the [overview page]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/#testing-your-identity-provider) on how to test the integration, activate SSO for collaborators and create sync jobs.
+Now test the SSO with a test user in a different browser or private/incognito browser to make sure the integration works as it should.
+
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon and then select **Account Settings**.
+1. From the sidebar, below Access & Collaboration, select [**Users & Teams**](https://g.codefresh.io/2.0/account-settings/single-sign-on){:target="\_blank"}.   
+1. Locate a test user, and from the SSO list, select the integration name to enable SSO for that user.
+1. In a different browser or private/incognito browser window use the Corporate option to log in.
+
+## Related articles
+[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/administration/single-sign-on/)  
+[Setting up OpenID Connect (OIDC) Federated Single Sign-On (SSO)]({{site.baseurl}}/docs/administration/single-sign-on/oidc)  
+[Common configuration for SSO providers]({{site.baseurl}}/docs/administration/single-sign-on/team-sync)  

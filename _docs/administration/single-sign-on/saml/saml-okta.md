@@ -77,3 +77,8 @@ Now test the SSO with a test user in a different browser or private/incognito br
 1. From the sidebar, below Access & Collaboration, select [**Users & Teams**](https://g.codefresh.io/2.0/account-settings/single-sign-on){:target="\_blank"}.   
 1. Locate a test user, and from the SSO list, select the integration name to enable SSO for that user.
 1. In a different browser or private/incognito browser window use the Corporate option to log in.
+
+## Related articles
+[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/administration/single-sign-on/)  
+[Setting up SAML2 Federated Single Sign-On (SSO)]({{site.baseurl}}/docs/administration/single-sign-on/saml-setup)  
+[Common configuration for SSO providers]({{site.baseurl}}/docs/administration/single-sign-on/team-sync)  
