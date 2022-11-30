@@ -139,39 +139,65 @@
 - title: Administration
   url: "/administration"
   pages:
-    - title: Manage users
-      url: "/add-users"
-    - title: User settings
-      url: "/user-settings"
-    - title: Set up OAuth2 authentication for Git providers
-      url: "/oauth-setup"
-    - title: Authorize access to organizations/projects
-      url: "/hosted-authorize-orgs"  
-    - title: Single Sign-On
-      url: "/single-sign-on"
+    - title: Account and user management
+      sub-pages:  
+        - title: Adding a Codefresh account
+          url: "/create-codefresh-account"
+        - title: Adding users to accounts
+          url: "/add-users"
+        - title: Configure access Control
+          url: "/access-control"
+        - title: Setting up OAuth2 authentication for Git providers
+          url: "/oauth-setup"
+        - title: Authorize access to organizations/projects
+          url: "/hosted-authorize-orgs" 
+        - title: Audit in Codefresh
+          url: "/audit"
+        - title: Codefresh IP addresses
+          url: "/platform-ip-addresses"
+    - title: User self-management
+      sub-pages:  
+        - title: User settings
+          url: "/user-settings"
+        - title: Configuring Git authentication
+          url: "/manage-pats"
+
+- title: Single Sign-On
+  url: /single-sign-on
+  pages:
+    - title: Common configuration
+      url: /team-sync
+    - title: OpenID Connect
+      url: /oidc
       sub-pages:
-        - title: SAML2
-          url: "/sso-setup-saml2"
-        - title: OpenID Connect
-          url: "/sso-setup-oauth2"
         - title: Auth0
-          url: "/sso-auth0"
+          url: /oidc-auth0
         - title: Azure
-          url: "/sso-azure"
+          url: /oidc-azure
         - title: Google
-          url: "/sso-google"
-        - title: LDAP
-          url: "/sso-ldap"
+          url: /oidc-google
         - title: Okta
-          url: "/sso-okta"
+          url: /oidc-okta
         - title: OneLogin
-          url: "/sso-onelogin"
-    - title: Access Control
-      url: "/access-control"
-    - title: Audit
-      url: "/audit"
-    - title: Codefresh IP addresses
-      url: "/platform-ip-addresses"
+          url: /oidc-onelogin
+    - title: SAML
+      url: /saml
+      sub-pages:
+        - title: JumpCloud
+          url: /saml-jumpcloud
+        - title: Okta
+          url: /saml-okta
+        - title: OneLogin
+          url: /saml-onelogin
+        - title: PingID SSO
+          url: /saml-pingid
+    - title: LDAP
+      url: /ldap
+
+ 
+    
+
+
 
 - title: Reference
   url: "/reference"

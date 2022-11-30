@@ -10,12 +10,13 @@ toc: true
 ---
 
 Auth0 is one of the SSO providers that Codefresh supports for authentication and authorization.  
-Create an SSO account for Auth0 in Codefresh by:
+
+Set up an SSO account for Auth0 in Codefresh by:
 * Creating an Auth0 application in Auth0
 * Creating the SSO account for Auth0 in Codefresh
 * Definng the SSO settings for the application you created in Auth0
 
-### 1. Create an Auth0 application
+### Step 1: Create an Auth0 application
 First create a new application in Auth0.
 
 1. Log in to Auth0.
@@ -50,9 +51,9 @@ max-width="40%"
 %}
 
 {:start="5"}
-1. Continue with _Create SSO account for Auth0 in Codefresh_.
+1. Continue with [Step 2: Create SSO account for Auth0 in Codefresh](#step-2-create-sso-account-for-auth0-in-codefresh).
 
-### 2. Create SSO account for Auth0 in Codefresh
+### Step 2: Create SSO account for Auth0 in Codefresh
 After creating an Auth0 application, create an SSO account for OAuth0 in Codefresh. 
 
 1. In the Codefresh UI, go to [Single Sign-On](https://g.codefresh.io/2.0/account-settings/single-sign-on).
@@ -78,7 +79,7 @@ max-width="40%"
 {:start="5"}
 1. Click **Save**.
 1. Copy the Client Name that is assigned to identify this SSO account. You will have to add it to the Auth0 application.
-1. Continue with _Define SSO settings in Auth0 application_.
+1. Continue with [Step 3: Define SSO settings in Auth0 application](#step-3-define-sso-settings-in-auth0-application).
 
 
 ### 3. Define SSO settings in Auth0 application

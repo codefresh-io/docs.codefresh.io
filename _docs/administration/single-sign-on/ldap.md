@@ -36,7 +36,7 @@ Make sure also that you know the scope of the search, that is, where users to se
   * **Certificate**: The security certificate of the LDAP server for `ldaps` only. Paste the value directly on the field. Do not convert to base64 or any other encoding by hand.  Leave the field empty if you use `ldap`.
 
 {:start="4"} 
-1. Select **+ Add**. LDAP users can log in to Codefresh.
+1. Select **+ Add**. LDAP users can now log in to Codefresh.
 
 >Each user who logs in to Codefresh must:
   1. Have a defined email address on the LDAP server

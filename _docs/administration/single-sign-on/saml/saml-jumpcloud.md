@@ -11,7 +11,7 @@ For a general overview on SAML, see [Setting up SAML2 Federated Single Sign-On (
 
 >If you do not see SAML in the SSO list, please create a support ticket to enable SAML for your account.
 
-Setting up SAML SSO for JumpCloud includes:
+Set up SAML SSO for JumpCloud by:
 1. Configuring SSO settings for JumpCloud via SAML in Codefresh
 1. Configuring SSO settings for Codefresh in JumpCloud
 1. Completing SSO configuration for JumpCloud in Codefresh
@@ -25,9 +25,9 @@ Setting up SAML SSO for JumpCloud includes:
   * **Display Name**: Any arbitrary name for this integration.
   * **IDP Entry**: Type in any character. You will enter the correct value from JumpCloud in the final step.
   * **Application Certificate**: You will enter the correct value from JumpCloud in the final step.
-  * **Auto Sync users and teams to Codefresh**: Supported for Google/GSuite SAML integration. Select to automatically sync user accounts in to your Codefresh account. Optionally, define the time interval at which to sync, in hours, from 1 to 24. If you don't specify an interval, the sync interval is every 12 hours.
 1. If GSuite is your provider, select it as the **Provider**, and define the settings below. Otherwise leave the field empty.  
   * **Admin Email**: The email of the user with access to `admin.google.com`.
+  * **Auto Sync users and teams to Codefresh**: Supported for Google/GSuite SAML integration. Select to automatically sync user accounts in to your Codefresh account. Optionally, define the time interval at which to sync, in hours, from 1 to 24. If you don't specify an interval, the sync interval is every 12 hours.
   * **Sync interval**: Optional. The time interval at which to sync.
   * **Sync Field**: Optional. TBD
   * **JSON Keyfile**: . TBD
@@ -35,7 +35,7 @@ Setting up SAML SSO for JumpCloud includes:
   The SAML integration for JumpCloud is added and appears in the list of SSOs. 
 1. In the Single Sign-On page, click the **Edit** icon for the JumpCloud SAML integration you created.
 1. Copy the **Assertion URL** (client ID) that was automatically generated when you added the integration. 
-1. Continue with [Step 2: Configure SSO settings for Codefresh in JumpCloud](#configure-sso-settings-for-codefresh-in-onelogin).
+1. Continue with [Step 2: Configure SSO settings for Codefresh in JumpCloud](#step-2-configure-sso-settings-for-codefresh-in-onelogin).
 
 ## Step 2: Configure SSO settings for Codefresh in JumpCloud
 
@@ -57,7 +57,7 @@ Setting up SAML SSO for JumpCloud includes:
         - **lastName**: lastname
     1. Click **Activate** and **Continue**.
 1. When you get a notification on the top right to download the Certificate, download the Certificate.
-1. Continue with [Step 3: Complete SSO configuration for JumpCloud in Codefresh](#complete-sso-configuration-for-jumpcloud-in-codefresh)
+1. Continue with [Step 3: Complete SSO configuration for JumpCloud in Codefresh](#step-3-complete-sso-configuration-for-jumpcloud-in-codefresh).
 
 ## Step 3: Complete SSO configuration for JumpCloud in Codefresh
 As the final step in configuring SSO for JumpCloud, add the IDP Entry and Certificate values from JumpCloud.

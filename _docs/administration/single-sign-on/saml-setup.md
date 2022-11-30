@@ -92,7 +92,7 @@ Here's what you need to do to configure SSO via SAML in Codefresh:
   > These settings are for the SaaS version of Codefresh. For an on-premises setup, use the URLs that match your installation.
 
 1. Test integration   
-  Codefresh offers an option to test each integration.
+  Test the integrations to verify the connection settings.
 
 1. Set an IdP as the default provider
 
