@@ -227,6 +227,7 @@ Codefresh calculates the available range according to the disk size, and automat
 
 1. Select the pipeline for which to set the disk space.
 1. Select **Settings**, and then **Runtime**.
+1. Enable **Set minimum required disk space** and either retain the default displayed or change as needed. 
 
 {% include 
 image.html 
@@ -237,10 +238,6 @@ alt="Set disk space for pipeline builds"
 caption="Set disk space for pipeline builds"
 max-width="60%"
 %}
-
-{:start="3"}
-1. Enable **Set minimum required disk space** and either retain the default displayed or change as needed. 
-
 
 
 ## Using Pipeline Templates
