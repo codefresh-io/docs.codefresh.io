@@ -223,7 +223,7 @@ Set the disk space you need for the pipeline's build volume. Configuring the dis
 
 Codefresh calculates the available range according to the disk size, and automatically sets the disk space for the build volume to 70% of the total disk space. You can either retain the default allocation or change as needed.
 
->You can also configure the disk space for a [specific trigger]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers) used by the pipeline or for a specific run, and override what's set for the pipeline.
+>You can also configure the disk space for a [specific trigger]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/#set-minimum-disk-space-for-build-volume-by-trigger) used by the pipeline or for a specific run, and override what's set for the pipeline.
 
 1. Select the pipeline for which to set the disk space.
 1. Select **Settings**, and then **Runtime**.
