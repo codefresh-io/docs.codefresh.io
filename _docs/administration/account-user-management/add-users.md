@@ -1,11 +1,12 @@
 ---
 title: "Users and team management"
-description: ""
+description: "Add users and teams to Codefresh accounts"
 group: administration
 toc: true
 ---
 
 Once you have created a Codefresh account, you can add any number of users to collaborate on repositories, workflows, and pipelines, and teams of users. 
+You can then create teams in Codefresh to group users who share a common denominator, such as the same permissions, access to the same functionality, or roles. Teams make it easy for administrators to both define and manage items shared by multiple users in an orgranization.
 
 
 ## Users in Codefresh
@@ -43,7 +44,7 @@ Once you add a user to your Codefresh account, you can do the following to manag
 
 
 ## Teams in Codefresh
-Teams are users who share the same permissions, roles, or as required by . By default there are two teams, *users*, and *admins* with users [invited as collaborators]({{site.baseurl}}/docs/accounts/invite-your-team-member/).  
+Teams are users who share the same permissions, roles, or as required based on company processes. By default there are two teams, *users*, and *admins* with users [invited as collaborators]({{site.baseurl}}/docs/accounts/invite-your-team-member/).  
 Teams allow you to enforce access control through ABAC (). 
 
 > Only Enterprise customers can add new teams. Other Codefresh plans can only use the predefined *Users* and *Admin* teams. [Contact us](https://codefresh.io/contact-us/) if you wish to upgrade to an Enterprise plan.

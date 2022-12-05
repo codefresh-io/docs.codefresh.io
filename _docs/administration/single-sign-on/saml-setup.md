@@ -71,7 +71,7 @@ Once Federated SSO has been configured, the process works as follows:
 Here's what you need to do to configure SSO via SAML in Codefresh:
 
 1. Configure SSO settings for the IdP in Codefresh:  
-  This generally includes defining settings in Codefresh and in the IdP.  
+  This generally includes defining settings in both in Codefresh and in the IdP.  
   Codefresh supports SAML SSO for the following:
   * [JumpCloud]({{site.baseurl}}/docs/administration/single-sign-on/saml/saml-jumpcloud)
   * [Okta]({{site.baseurl}}/docs/administration/single-sign-on/saml/saml-okta)
@@ -91,19 +91,45 @@ Here's what you need to do to configure SSO via SAML in Codefresh:
 
   > These settings are for the SaaS version of Codefresh. For an on-premises setup, use the URLs that match your installation.
 
-1. Test integration   
-  Test the integrations to verify the connection settings.
+1. Test integration with the IdP 
+    
+    >Before enabling SSO for users, you **MUST** make sure that it is working for the test user. If SSO is enabled for a user, Codefresh blocks logins through other IDPs for this user and only the enabled SSO is allowed. If the selected SSO method does not work for some reason, the user will be locked out of Codefresh.
 
-1. Set an IdP as the default provider
+    1. In the Codefresh UI, on the toolbar, click the **Settings** icon and then select **Account Settings**.
+    1. From the sidebar, below Access & Collaboration, select [**Users & Teams**](https://g.codefresh.io/2.0/account-settings/single-sign-on){:target="\_blank"}.   
+    1. Add an active user to be used for testing. We recommend you use your own user.
+    1. Change Login method by selecting your Auth provider from the SSO drop-down.
 
-1. Set the SSO for each user
+    {% include image.html
+    lightbox="true"
+    file="/images/administration/sso/collaborators.png"
+    url="/images/administration/sso/collaborators.png"
+    alt="Adding collaborators"
+    caption="Adding collaborators"
+    max-width="70%"
+    %}
+
+    {:start="5"}
+    1. Keep the current browser session open, and log in via Corporate SSO in an incognito tab (or another browser).
+
+    {% include image.html
+    lightbox="true"
+    file="/images/administration/sso/sign-with-sso.png"
+    url="/images/administration/sso/sign-with-sso.png"
+    alt="Sign-in with SSO"
+    caption="Sign-in with SSO"
+    max-width="50%"
+    %}
+
+1. (Optional) [Set an IdP as the default provider]({{site.baseurl}}/docs/single-sign-on/team-sync/#set-a-default-sso-provider-for-account)
+  You can select an IdP as the default SSO provider for a Codefresh account. This means that all the new users added to that account will automatically use the selected IdP for signin.
+1. (Optional) [Set the SSO method for each user]({{site.baseurl}}/docs/single-sign-on/team-sync/#select-sso-method-for-individual-users)
+  You can also select if needed, a different SSO provider for every user or for specific users.
 
 > Codefresh has an internal cache for SSO configuration, and it can take up to five minutes for your changes to take effect.
 
-
-
-
-* [Selecting SSO method for collaborators]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/#selecting-sso-method-for-collaborators) -->
+## Related articles
+[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/administration/single-sign-on) 
 
 
 

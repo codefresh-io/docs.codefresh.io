@@ -8,11 +8,11 @@ toc: true
 Access to Kubernetes clusters behind strict firewalls not accessible from the public internet is governed through authorized IP addresses. 
 Codefresh provides a list of IP addresses to be configured on clusters to allow access to them. 
 
-You can register multiple external clusters to Codefresh runtimes, both hosted and hybrid. All runtimes require Codefresh platform IPs to be configured on the clusters.  
-In addition, managed clusters registered to hosted runtimes must be configured with a set of specific IP addresses to authorize access.
+You can register multiple external clusters to the Codefresh Runner, and GitOps Runtimes. All Runtimes require Codefresh platform IPs to be configured on the clusters.  
+In addition, managed clusters registered to Hosted GitOps Runtimes must be configured with a set of specific IP addresses to authorize access.
 
 
-### Codefresh platform IPs (updated July 31st 2021)
+## Codefresh platform IPs (updated July 31st 2021)
 
 All the IPs are NAT gateways, and need to enable specific IPs instead of ranges.
 
@@ -38,13 +38,13 @@ All the IPs are NAT gateways, and need to enable specific IPs instead of ranges.
 - 44.238.167.159
 - 44.237.63.217
  
-### Codefresh IPs for managed clusters in hosted runtimes
+## Codefresh IPs for managed clusters in Hosted GitOps Runtimes
 
 - 34.207.5.18
 - 34.232.79.230
 - 44.193.43.5
 
-### Define API access to IPs for clusters
+## Define API access to IPs for clusters
 Clusters must be configured with API access to the authorized Codefresh IPs.  
 If you haven't configured your clusters with the required IPs, use the links below to complete the configuration for the clusters listed:
 
@@ -54,7 +54,8 @@ If you haven't configured your clusters with the required IPs, use the links bel
 
 [GKE (Google Kubernetes Engine)](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters){:target="\_blank"}  
 
-### What to read next
-[Set up a hosted (Hosted GitOps) environment]({{site.baseurl}}/docs/runtime/hosted-runtime/)  
-[Install hybrid runtimes]({{site.baseurl}}/docs/runtime/installation/)  
-[Codefresh architecture]({{site.baseurl}}/docs/getting-started/architecture/)
+## What to read next
+[Codefresh Runner installation]({{site.baseurl}}/docs/installation/codefresh-runner/) 
+[Set up a Hosted GitOps Runtime]({{site.baseurl}}/docs/installation/hosted-runtime/)  
+[Install Hybrid GitOps Runtimes]({{site.baseurl}}/docs/runtime/hybrid-gitops/)  
+<!---[Codefresh architecture]({{site.baseurl}}/docs/getting-started/architecture/)-->

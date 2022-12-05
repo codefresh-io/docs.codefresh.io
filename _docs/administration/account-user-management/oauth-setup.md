@@ -1,5 +1,5 @@
 ---
-title: "Set up OAuth2 authentication for Git providers"
+title: "OAuth2 authentication for Git providers"
 description: ""
 group: administration
 toc: true

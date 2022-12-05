@@ -1,5 +1,5 @@
 ---
-title: Common configuration for SSO
+title: Common configuration for SSO providers
 description: "Syncing teams, selecting SSO provider after initial SSO setup"
 group: single-sign-on
 toc: true
@@ -135,7 +135,7 @@ max-width="90%"
 %} -->
 
 
-## Selecting SSO method for individual users
+## Select SSO method for individual users
 
 In addition to setting a default provider for your account, you can select a different provider for each user if so required.  
 * New users   
