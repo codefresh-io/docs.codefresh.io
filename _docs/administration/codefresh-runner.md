@@ -9,58 +9,85 @@ toc: true
 
 Install the Codefresh Runner on your Kubernetes cluster to run pipelines and access secure internal services without compromising on-premises security requirements. These pipelines run on your infrastructure, even behind the firewall, and keep code on your Kubernetes cluster secure.
 
-[Skip to quick installation &#8594;](#installation-with-the-quick-start-wizard)
+ Note that the runner is **not** dependent on any special dockershim features, so any compliant container runtime is acceptable. The docker socket/daemon used by Codefresh pipelines is **NOT** the one on the host node (as it might not exist at all in the case of containerd or cri-o), but instead an internal docker daemon created/managed by the pipeline itself.
 
->**Note:** a runner installation is needed for each cluster _running_ Codefresh pipelines. A runner is **not** needed
-in clusters used for _deployment_. It is possible to deploy applications on clusters other than the ones the runner is deployed on.
 
-The installation process takes care of all runner components and other required resources (config-maps, secrets, volumes).
+## System requirements
+{: .table .table-bordered .table-hover}
+| Item                     | Requirement            |  
+| --------------         | --------------           |  
+|Kubernetes cluster      | Server version 1.10 to 1.24. {::nomarkdown}<br><b>Tip</b>:  To check the server version, run:<br> <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">kubectl version --short</span>.{:/}|
+|Node requirements| Disk space: 50 GB per node|
+|Container runtime | Any compliant container runtime as the runner is **not** dependent on any special dockershim features. Examples: {::nomarkdown} <ul><li>[docker](https://kubernetes.io/blog/2020/12/02/dockershim-faq/){:target="\_blank"}</li><li>[containerd](https://containerd.io/){:target="\_blank"}</li><li>[cri-o](https://cri-o.io/){:target="\_blank"}</li></ul>.  |
+|Authentication token | [Codefresh CLI token]({{site.baseurl}}/docs/integrations/codefresh-api/#authentication-instructions).|
 
-## Prerequisites
+## Runner installation
+Install the runner from any workstation or laptop with access (i.e. via `kubectl`) to the Kubernetes cluster running Codefresh builds. The Codefresh runner authenticates to your Codefresh account using the Codefresh CLI token.  
 
-To use the Codefresh runner the following is required:
+>**Notes:**  
+  You _must_ install the Codefresh Runner on _each cluster running Codefresh pipelines_.  
+  The Runner is **not** needed in clusters used for _deployment_, as you can deploy applications on clusters without the Runner.   
+  <br />
+  Access to the Codefresh CLI is only needed once during the Codefresh Runner installation. The Runner then authenticates on it own using the details provided. There is no need to install the Codefresh CLI on the cluster running Codefresh pipelines.
 
-1. A Kubernetes cluster with outgoing internet access (versions 1.10 to 1.24). Each node should have 50GB disk size.
-2. A container runtime, such as [docker](https://kubernetes.io/blog/2020/12/02/dockershim-faq/), [containerd](https://containerd.io/) or [cri-o](https://cri-o.io/). Note that the runner is **not** dependent on any special dockershim features, so any compliant container runtime is acceptable. The docker socket/daemon used by Codefresh pipelines is **NOT** the one on the host node (as it might not exist at all in the case of containerd or cri-o), but instead an internal docker daemon created/managed by the pipeline itself. 
-3. A [Codefresh account]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/) with the Hybrid feature enabled.
-4. A [Codefresh CLI token]({{site.baseurl}}/docs/integrations/codefresh-api/#authentication-instructions) that will be used to authenticate your Codefresh account.
+There are three ways to install the Codefresh Runner:
+* With the CLI wizard
+* With a values file
+* As 
 
-The runner can be installed from any workstation or laptop with access (i.e. via `kubectl`) to the Kubernetes cluster running Codefresh builds. The Codefresh runner will authenticate to your Codefresh account by using the Codefresh CLI token.
+-[Skip to quick installation &#8594;](#installation-with-the-quick-start-wizard)
 
-## Installation with the Quick-start Wizard
 
-Install the Codefresh CLI
 
-```shell
-npm install -g codefresh
-```
+### Install with CLI Wizard
 
-[Alternative install methods](https://codefresh-io.github.io/cli/installation/)
-
-Authenticate the CLI
-
-```shell
-codefresh auth create-context --api-key {API_KEY}
-```
+During installation you can see which API token will be used by the runner (if you don't provide one). The printed token includes the permissions to uis used by the Runner to talk to the Codefresh platform carrying permissions that allow the runner to run pipelines. If you save the token, it can later be used to restore the runner's permissions without creating a new runner installation, if the deployment is deleted.
 
 You can obtain an API Key from your [user settings page](https://g.codefresh.io/user/settings).
 >**Note:** Make sure when you generate the token used to authenticate with the CLI, you generate it with *all scopes*.
 
 >**Note:** access to the Codefresh CLI is only needed once during the Runner installation. After that, the Runner will authenticate on it own using the details provided. You do NOT need to install the Codefresh CLI on the cluster that is running Codefresh pipelines.
 
-Then run the wizard with the following command:
+> Tip:  
+  You can customize the wizard installation by passing your own values in the `init` command.
+  To inspect all available options run `init` with the `--help` flag:
 
 ```shell
-codefresh runner init
+codefresh runner init --help
 ```
 
-or
+
+**Before you begin**  
+Make sure you have a:  
+* Codefresh account
+* Codefresh CLI token with *all scopes* (go to [User settings](https://g.codefresh.io/user/settings))
+
+**How to**
+
+1. Install the Codefresh CLI:
 
 ```shell
-codefresh runner init --token <my-token>
+npm install -g codefresh
 ```
+1. Authenticate the CLI:
 
-Brefore proceeding with installation, the wizard asks you some basic questions.
+```shell
+codefresh auth create-context --api-key {API_KEY}  
+```
+  where:  
+  `{API_KEY}` is the ???
+
+1. Run the wizard:
+
+
+```shell
+codefresh runner init --token <my-token> <--dry-run>
+```
+  where:  
+  * `<my-token>` is required, and is the CLI token you generated.
+  * `<--dry-run>`is optional. When specified, after completing the configuration prompts, saves all the Kubernetes manifests used by the installer locally in a folder `./codefresh_manifests`. 
+
+1. Reply to the prompts as needed:
 
 {% include image.html
   lightbox="true"
@@ -71,9 +98,9 @@ Brefore proceeding with installation, the wizard asks you some basic questions.
   max-width="100%"
     %}
 
-The wizard also creates and runs a sample pipeline that you can see in your Codefresh UI.
+  The Wizard also creates and runs a sample pipeline that you can see in your Codefresh UI.
 
-{% include image.html
+  {% include image.html
   lightbox="true"
   file="/images/administration/runner/sample-pipeline.png"
   url="/images/administration/runner/sample-pipeline.png"
@@ -82,82 +109,78 @@ The wizard also creates and runs a sample pipeline that you can see in your Code
   max-width="90%"
     %}
 
-That's it! You can now start using the Runner.
+  You have completed installing the Runner with CLI Wizard. 
 
-You can also verify your installation with:
+{:start="5"
+1. Optional. Verify your installation:
 
 ```shell
 codefresh runner info
 ```
 
-During installation you can see which API token will be used by the runner (if you don't provide one). The printed token is used by the runner to talk to the Codefresh platform carrying permissions that allow the runner to run pipelines. If you save the token, it can later be used to restore the runner's permissions without creating a new runner installation, if the deployment is deleted.
-
-**Customizing the Wizard Installation**
-
-You can customize the wizard installation by passing your own values in the `init` command.
-To inspect all available options run `init` with the `--help` flag:
+> Tip:  
+  You can customize the wizard installation by passing your own values in the `init` command.  
+  To inspect all available options run `init` with the `--help` flag:
 
 ```shell
 codefresh runner init --help
 ```
 
-**Inspecting the Manifests Before they are Installed**
 
-If you want to see what manifests are used by the installation wizard you can supply the `--dry-run` parameter in the installation process.
+## Install Codefresh Runner with values file
+Use [this example](https://github.com/codefresh-io/venona/blob/release-1.0/venonactl/example/values-example.yaml){:target="\_blank"} as a starting point for your values file.  
 
-```shell
-codefresh runner init --dry-run
-```
-
-This will execute the wizard in a special mode that will not actually install anything in your cluster. After all configuration questions are asked, all Kubernetes manifests used by the installer will be instead saved locally in a folder `./codefresh_manifests`.
-
-## Installing Codefresh Runner with values file
-
-To install the Codefresh Runner with pre-defined values file use `--values` flag:
+* To install the Codefresh Runner with a predefined values file, use `--values`:
 
 ```shell
 codefresh runner init --values values.yaml 
 ```
 
-Use [this example](https://github.com/codefresh-io/venona/blob/release-1.0/venonactl/example/values-example.yaml) as a starting point for your values file.
+## Install Codefresh Runner with Helm
 
-## Installing Codefresh Runner with Helm
+Installing the Codefresh Runner with Helm requires you to first create a `generated_values.yaml` file for every Codefresh Runner you want to install, and pass the file as part of the Helm installation.
 
-To install the Codefresh Runner using Helm, follow these steps:
+**Before you begin**  
+* Download the Codefresh CLI and authenticate it with your Codefresh account. Click [here](https://codefresh-io.github.io/cli/getting-started/) for more detailed instructions  
 
-1. Download the Codefresh CLI and authenticate it with your Codefresh account. Click [here](https://codefresh-io.github.io/cli/getting-started/) for more detailed instructions.
-2. Run the following command to create all of the necessary entities in Codefresh:
+**How to**  
+
+1. Run the following command to create all the necessary entities in Codefresh:
 
     ```shell
-    codefresh runner init --generate-helm-values-file
+    codefresh runner init --generate-helm-values-file --skip-cluster-test
     ```
+   where:   
+   * `--skip-cluster-test` is optional, and when specified, runs cluster acceptance tests.  
 
-   * This will not install anything on your cluster, except for running cluster acceptance tests, (which may be skipped using the `--skip-cluster-test` option). Please note, that the Runner Agent and the Runtime Environment are still created in your Codefresh account.
-   * This command will also generate a `generated_values.yaml` file in your current directory, which you will need to provide to the `helm install` command later. If you want to install several Codefresh Runners, you will need a separate `generated_values.yaml` file for each Runner.
-
-3. Now run the following to complete the installation:
+   The command:  
+   * Creates the Runner Agent and the Runtime Environment in your Codefresh account. 
+   * Creates a `generated_values.yaml` file in your current directory, which you will need to provide to the `helm install` command later. 
+1. Complete the installation:
 
     ```shell
     helm repo add cf-runtime https://chartmuseum.codefresh.io/cf-runtime
     
     helm install cf-runtime cf-runtime/cf-runtime -f ./generated_values.yaml --create-namespace --namespace codefresh
     ```
-   * Here is the link to a repository with the chart for reference: [https://github.com/codefresh-io/venona/tree/release-1.0/.deploy/cf-runtime](https://github.com/codefresh-io/venona/tree/release-1.0/.deploy/cf-runtime)
+   
+   Here's a link to the repository with the [chart](https://github.com/codefresh-io/venona/tree/release-1.0/.deploy/cf-runtime){:target="\_blank"} for reference.
 
-4. At this point you should have a working Codefresh Runner. You can verify the installation by running:
+1. If needed, verify the installation:
 
     ```shell
     codefresh runner execute-test-pipeline --runtime-name <runtime-name>
     ```
->**Note!** <br />
-Runtime components' (engine and dind) configuration is determined by the `runner init` command. <br />
-The `helm install` command can only control the configuration of `runner`, `dind-volume-provisioner` and `lv-monitor` components.
+>**Note:** <br />
+The configuration of the `engine` and `dind` components is determined by the `runner init` command. <br />
+The `helm install` command controls the configuration of only the `runner`, `dind-volume-provisioner` and `lv-monitor` components.
 
 ## Using the Codefresh Runner
 
-Once installed, the Runner is fully automated. It polls the Codefresh SAAS (by default every 3 seconds) on its own and automatically creates all resources needed for running pipelines.
+Once installed, the Runner is fully automated. It polls the Codefresh every three seconds by default and automatically creates all resources needed for running pipelines.
 
-Once installation is complete, you should see the cluster of the runner as a new [Runtime environment](https://g.codefresh.io/account-admin/account-conf/runtime-environments) in Codefresh in your *Account Settings*, in the respective tab.
+
+In the Codefresh UI, you can see the cluster with the Runner as a new [Runtime environment](https://g.codefresh.io/account-admin/account-conf/runtime-environments){:target="\_blank"}.
 
 {% include image.html
   lightbox="true"
@@ -268,7 +291,7 @@ For the storage options needed by the `dind` pod we suggest:
 
 All CNI providers/plugins are compatible with the runner components.
 
-## Runner architecture overview
+## Runner architecture
 
 {% include image.html
   lightbox="true"
@@ -409,16 +432,13 @@ You can fine tune the installation of the runner to better match your environmen
 If you've installed the Codefresh runner on [EKS](https://aws.amazon.com/eks/) or any other custom cluster (e.g. with kops) in Amazon you need to configure it properly to work with EBS volumes in order to gain [caching]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipeline-caching/).
 
 > Important:  
-  For Kubernetes 1.23 and higher, you must install the `ebs-csi-driver` _before_ upgrading the cluster. If this driver is _not installed before upgrade_, there are problems with the `dind` pods and volumes that prevent you from running builds. 
+  For Kubernetes 1.23 and higher, you must install the `ebs-csi-driver` _before_ upgrading the cluster. If this driver is _not installed before upgrade_, you will face problems with the `dind` pods and volumes that prevent you from running builds. 
 
 > This section assumes you already installed the Runner with default options: `codefresh runner init`
 
-
 **Prerequisites**
 
-* `dind-volume-provisioner` deployment should have permissions to create/attach/detach/delete/get EBS volumes.
-* `ebs-csi-driver` for Kubernetes 1.23 and higher
-
+`dind-volume-provisioner` deployment should have permissions to create/attach/detach/delete/get ebs volumes.
 
 There are 3 options:
 * running `dind-volume-provisioner` pod on the node (node-group) with iam role
