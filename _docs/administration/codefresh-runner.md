@@ -408,11 +408,17 @@ You can fine tune the installation of the runner to better match your environmen
 
 If you've installed the Codefresh runner on [EKS](https://aws.amazon.com/eks/) or any other custom cluster (e.g. with kops) in Amazon you need to configure it properly to work with EBS volumes in order to gain [caching]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipeline-caching/).
 
+> Important:  
+  For Kubernetes 1.23 and higher, you must install the `ebs-csi-driver` _before_ upgrading the cluster. If this driver is _not installed before upgrade_, there are problems with the `dind` pods and volumes that prevent you from running builds. 
+
 > This section assumes you already installed the Runner with default options: `codefresh runner init`
+
 
 **Prerequisites**
 
-`dind-volume-provisioner` deployment should have permissions to create/attach/detach/delete/get ebs volumes.
+* `dind-volume-provisioner` deployment should have permissions to create/attach/detach/delete/get EBS volumes.
+* `ebs-csi-driver` for Kubernetes 1.23 and higher
+
 
 There are 3 options:
 * running `dind-volume-provisioner` pod on the node (node-group) with iam role
