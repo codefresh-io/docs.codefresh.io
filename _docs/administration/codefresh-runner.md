@@ -311,20 +311,43 @@ All CNI providers/plugins are compatible with the runner components.
 ## Customized installation of the Codefresh Runner
 ### App Proxy installation
 
-The App Proxy is an **optional** component of the runner that is mainly used when the git provider server is installed on-premises behind the firewall. The App Proxy provides the following features once installed:
+The App Proxy is an **optional** component of the Runner, used mainly when the Git provider server is installed on-premises, behind the firewall.  
 
-* Enables you to automatically create webhooks for Git in the Codefresh UI (same as the SAAS experience)
-* Sends commit status information back to your Git provider (same as the SAAS experience)
-* Makes all Git Operations in the GUI work exactly like the SAAS installation of Codefresh
+#### App-Proxy requirements
 
-The requirements for the App proxy is a Kubernetes cluster that:
+App proxy requires a Kubernetes cluster that:
 
-1. has already the Codefresh runner installed
-1. has an active [ingress controller](https://kubernetes.io/docs/concepts/services-networking/ingress/)
-1. allows incoming connections from the VPC/VPN where users are browsing the Codefresh UI. The ingress connection **must** have a hostname assigned for this route and **must** be configured to perform SSL termination
+1. With the Codefresh runner installed <!--- is this correct? -->
+1. Has an active [ingress controller](https://kubernetes.io/docs/concepts/services-networking/ingress/){:target="\_blank"}
+1. Allows incoming connections from the VPC/VPN where users are browsing the Codefresh UI.  
+  The ingress connection **must** have a hostname assigned for this route and **must** be configured to perform SSL termination
 
->Currently the App-proxy works only for Github (SAAS and on-prem versions), Gitlab (SAAS and on-prem versions) and Bitbucket server.
+>Currently, App-Proxy is supported only for SaaS and on-prem versions of GitHub and GitLab, and Bitbucket Server.
 
+#### Install App-Proxy
+
+* **On a Kubernetes cluster with existing Codefresh Runner**:
+
+```shell
+codefresh install app-proxy --host=<hostname-of-ingress>
+```
+
+* **Install Codefresh runner and app-proxy**:
+
+```shell
+codefresh runner init --app-proxy --app-proxy-host=<hostname-of-ingress> 
+```
+* **Define the ingress class for app-proxy**: 
+If you have multiple ingress controllers in the Kubernetes cluster, use the `--app-proxy-ingress-class` parameter to define which ingress will be used.  
+For additional security, to further limit the web browsers that can access the ingress, you can also define an allowlist for IPs/ranges. Check the documentation of your ingress controller for the exact details.
+
+By default, the app-proxy ingress uses the path `hostname/app-proxy`. You can change that default by using the values file in the installation with the flag `--values values.yaml`.  
+See the `AppProxy` section in the example [values.yaml](https://github.com/codefresh-io/venona/blob/release-1.0/venonactl/example/values-example.yaml#L231-L253){:target="\_blank"}.  
+
+```shell
+codefresh install app-proxy --values values.yaml
+```
+#### App-Proxy architecture
 Here is the architecture of the app-proxy:
 
 {% include image.html
@@ -336,35 +359,19 @@ Here is the architecture of the app-proxy:
   max-width="80%"
     %}
 
-Basically when a Git GET operation takes place, the Codefresh UI will contact the app-proxy (if it is present) and it will route the request to the backing Git provider. The confidential Git information never leaves the firewall premises and the connection between the browser and the ingress is SSL/HTTPS.
+The App-Proxy:
+* Enables you to automatically create webhooks for Git in the Codefresh UI (same as the SAAS experience)
+* Sends commit status information back to your Git provider (same as the SAAS experience)
+* Makes all Git operations in the GUI work exactly like the SAAS installation of Codefresh 
 
-The app-proxy has to work over HTTPS and by default it will use the ingress controller to do its SSL termination. Therefore, the ingress controller will need to be configured to perform SSL termination. Check the documentation of your ingress controller (for example [nginx ingress](https://kubernetes.github.io/ingress-nginx/examples/tls-termination/)). This means that the app-proxy does not compromise security in any way.
+For a Git GET operation, the Codefresh UI communicates with the App-Proxy to route the request to the backing Git provider. The confidential Git information never leaves the firewall premises and the connection between the browser and the ingress is SSL/HTTPS.
 
-To install the app-proxy on a Kubernetes cluster that already has a Codefresh runner use the following command:
+The App-Proxy has to work over HTTPS, and by default it uses the ingress controller to terminate the SSL. Therefore, the ingress controller must be configured to perform SSL termination. Check the documentation of your ingress controller (for example [nginx ingress](https://kubernetes.github.io/ingress-nginx/examples/tls-termination/){:target="\_blank"}). This means that the App-Proxy does not compromise security in any way.
 
-```shell
-codefresh install app-proxy --host=<hostname-of-ingress>
-```
 
-If you want to install the Codefresh runner and app-proxy in a single command use the following:
+### Manually install Runner components
 
-```shell
-codefresh runner init --app-proxy --app-proxy-host=<hostname-of-ingress> 
-```
-
-If you have multiple ingress controllers in the Kubernetes cluster you can use the `--app-proxy-ingress-class` parameter to define which ingress will be used. For additional security you can also define an allowlist for IPs/ranges that are allowed to use the ingress (to further limit the web browsers that can access the Ingress). Check the documentation of your ingress controller for the exact details.
-
-By default the app-proxy ingress will use the path `hostname/app-proxy`. You can change that default by using the values file in the installation with the flag `--values values.yaml`.
-
-See the `AppProxy` section in the example [values.yaml](https://github.com/codefresh-io/venona/blob/release-1.0/venonactl/example/values-example.yaml#L231-L253).  
-
-```shell
-codefresh install app-proxy --values values.yaml
-```
-
-### Manual Installation of Runner Components
-
-If you don't want to use the wizard, you can also install the components of the runner yourself.
+If you don't want to use the Wizard, you can also install the components of the runner yourself.
 
 The Codefresh runner consists of the following:
 
@@ -382,7 +389,7 @@ codefresh install agent --agent-kube-namespace codefresh --install-runtime
 
 You can then follow the instructions for [using the runner](#using-the-codefresh-runner).
 
-### Installing Multiple runtimes with a Single Agent
+#### Installing Multiple runtimes with a Single Agent
 
 It is also possible, for advanced users to install a single agent that can manage multiple runtime environments.
 
