@@ -1,8 +1,7 @@
 ---
-title: "Setting up SAML2 Federated Single Sign-On (SSO)"
-description: ""
-group: administration
-sub_group: single-sign-on
+title: "Setting up SAML2 Federated SSO"
+description: "SAML2 Federated Single Sign-On (SSO) setup"
+group: single-sign-on
 redirect_from:
   - /docs/sso/sso-setup-saml2/
   - /docs/enterprise/single-sign-on/sso-setup-saml2/
@@ -73,10 +72,10 @@ Here's what you need to do to configure SSO via SAML in Codefresh:
 1. Configure SSO settings for the IdP in Codefresh:  
   This generally includes defining settings in both in Codefresh and in the IdP.  
   Codefresh supports SAML SSO for the following:
-  * [JumpCloud]({{site.baseurl}}/docs/administration/single-sign-on/saml/saml-jumpcloud)
-  * [Okta]({{site.baseurl}}/docs/administration/single-sign-on/saml/saml-okta)
-  * [OneLogin]({{site.baseurl}}/docs/administration/single-sign-on/saml/saml-onelogin)
-  * [PingID](({{site.baseurl}}/docs/administration/single-sign-on/saml/saml-pingid)
+  * [JumpCloud]({{site.baseurl}}/docs/single-sign-on/saml/saml-jumpcloud)
+  * [Okta]({{site.baseurl}}/docs/single-sign-on/saml/saml-okta)
+  * [OneLogin]({{site.baseurl}}/docs/single-sign-on/saml/saml-onelogin)
+  * [PingID](({{site.baseurl}}/docs/single-sign-on/saml/saml-pingid)
 
   Notes for SSO via SAML:  
   **SSO settings**  
@@ -87,7 +86,7 @@ Here's what you need to do to configure SSO via SAML in Codefresh:
   * Provider  
     Currently, we support GSuite for SAML. If you are using a different provider, leave this field empty.  
     For GSuite, you can define the sync settings, Admin Email and the JSON Keyfile.
-    For instructions, see [Google SSO]({{site.baseurl}}/docs/administration/single-sign-on/sso-google/#synchronize-teams-with-the-codefresh-cli).
+    For instructions, see [Google SSO]({{site.baseurl}}/docs/single-sign-on/sso-google/#synchronize-teams-with-the-codefresh-cli).
 
   > These settings are for the SaaS version of Codefresh. For an on-premises setup, use the URLs that match your installation.
 
@@ -129,7 +128,7 @@ Here's what you need to do to configure SSO via SAML in Codefresh:
 > Codefresh has an internal cache for SSO configuration, and it can take up to five minutes for your changes to take effect.
 
 ## Related articles
-[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/administration/single-sign-on) 
+[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/single-sign-on) 
 
 
 

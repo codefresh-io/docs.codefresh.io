@@ -1,22 +1,23 @@
 ---
 title: "Auth0"
 description: "Set up Auth0 Single Sign-On (SSO)"
-group: administration
-sub_group: single-sign-on
+group: single-sign-on
+sub_group: oidc
 redirect_from:
   - /docs/enterprise/sso-auth0/
   - /docs/enterprise/single-sign-on/sso-auth0/
 toc: true
 ---
 
+Set up SSO for Auth0 using OIDC.
 Auth0 is one of the SSO providers that Codefresh supports for authentication and authorization.  
 
-Set up an SSO account for Auth0 in Codefresh by:
-* Creating an Auth0 application in Auth0
-* Creating the SSO account for Auth0 in Codefresh
-* Definng the SSO settings for the application you created in Auth0
+Set up OIDC SSO for Auth0 in Codefresh by:
+1. Creating an Auth0 application in Auth0
+1. Creating the SSO account for Auth0 in Codefresh
+1. Definng the SSO settings for the application you created in Auth0
 
-### Step 1: Create an Auth0 application
+## Step 1: Create an Auth0 application
 First create a new application in Auth0.
 
 1. Log in to Auth0.
@@ -53,10 +54,10 @@ max-width="40%"
 {:start="5"}
 1. Continue with [Step 2: Create SSO account for Auth0 in Codefresh](#step-2-create-sso-account-for-auth0-in-codefresh).
 
-### Step 2: Create SSO account for Auth0 in Codefresh
+## Step 2: Create SSO account for Auth0 in Codefresh
 After creating an Auth0 application, create an SSO account for OAuth0 in Codefresh. 
 
-1. In the Codefresh UI, go to [Single Sign-On](https://g.codefresh.io/2.0/account-settings/single-sign-on).
+1. In the Codefresh UI, go to [Single Sign-On](https://g.codefresh.io/2.0/account-settings/single-sign-on){:target="\_blank"}.
 1. Click **Add Single Sign-On**. 
 1. For the Single Sign-On Service, select **Auth0**, and click **Next**.
 1. Define the connection details:
@@ -82,7 +83,7 @@ max-width="40%"
 1. Continue with [Step 3: Define SSO settings in Auth0 application](#step-3-define-sso-settings-in-auth0-application).
 
 
-### 3. Define SSO settings in Auth0 application
+## Step 3: Define SSO settings in Auth0 application
 As the final step in Auth0 SSO setup, return to Auth0, and then define the Login URI and Callback URL for the Auth0 application you created in  1. 
 
 1. From the sidebar, select **Applications > Applications**.
@@ -106,9 +107,8 @@ max-width="50%"
 You have completed SSO setup for Auth0 in Codefresh.
 
 ## Related articles
-[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/administration/single-sign-on/)  
-[Setting up OpenID Connect (OIDC) Federated Single Sign-On (SSO)]({{site.baseurl}}/docs/administration/single-sign-on/oidc)  
-[Common configuration for SSO providers]({{site.baseurl}}/docs/administration/single-sign-on/team-sync)  
+[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/single-sign-on/)  
+[Common configuration for SSO providers]({{site.baseurl}}/docs/single-sign-on/team-sync)  
 
 
 

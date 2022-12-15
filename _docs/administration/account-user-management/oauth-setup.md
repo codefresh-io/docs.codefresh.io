@@ -1,7 +1,8 @@
 ---
-title: "OAuth2 authentication for Git providers"
+title: "Set up OAuth2 authentication for Git providers"
 description: ""
 group: administration
+sub_group: account-user-management
 toc: true
 ---
 
@@ -216,3 +217,10 @@ For a Git provider and a runtime account, select the authentication mechanism: C
 1. In the Codefresh UI, go to [Authentication](https://g.codefresh.io/2.0/account-settings/authentication?providerName=github){:target="\_blank"}.
 1. Select the runtime, and click ![](/images/administration/users/icon-Edit.png?display=inline-block) **Edit**. 
 1. Select the OAuth authentication provider account.
+
+
+## Related articles
+[Adding users and teams]({{site.baseurl}}/_docs/administration/account-user-management/add-users/)  
+[Configuring access control]({{site.baseurl}}/docs/administration/account-user-management/access-control/)  
+[Codefresh IP addresses]({{site.baseurl}}/docs/administration/account-user-management/platform-ip-addresses/)  
+ 

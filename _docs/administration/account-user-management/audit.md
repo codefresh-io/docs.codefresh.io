@@ -2,18 +2,19 @@
 title: "Audit logs"
 description: "Get a list of all actions in Codefresh"
 group: administration
+sub_group: account-user-management
 redirect_from:
   - /docs/enterprise/audit-logs/
 toc: true
 ---
 
-Codefresh keeps a log of all actions that happen at all times, based on API calls that reach Codefresh.  
+Codefresh keeps a log of all actions that happen at all times based on API calls that reach Codefresh.  
+The time frames covered by audit logs depends on the pricing tier of your Codefresh account.  
+
 The audit log includes:   
-* GUI actions from users
+* UI actions from users
 * [CLI](https://codefresh-io.github.io/cli/) invocations
 * Any [external integrations]({{site.baseurl}}/docs/integrations/codefresh-api/) used with Codefresh
-
-The time frames  by audit logs depends on the pricing tier of your Codefresh account.
 
 You can:  
 * View, filter, and search for audited events
@@ -25,7 +26,7 @@ The Audit Log is divided into actions audited (All Audit), and tiggers and webho
 
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon and then select **Account Settings**.
-1. From the sidebar, from Access & Collaboration, select [**Audit**](https://g.codefresh.io/account-admin/audit/audit-all){:target="\_blank"}.  
+1. On the sidebar, from Access & Collaboration, select [**Audit**](https://g.codefresh.io/account-admin/audit/audit-all){:target="\_blank"}.  
 1. To focus on a specific time frame, select the date range from the toolbar.  
   The All Audit tab includes all Codefresh events in your account, sorted by the most recent events.  
   Each event shows the following details:  
@@ -58,8 +59,8 @@ caption="Audit Triggers view"
 max-width="70%"
 %}
 
-Both lists have built-in paging and filtering.
 
+Both tabs have built-in paging and filtering.
 
 
 
@@ -79,7 +80,7 @@ max-width="40%"
 
 ### Get more details for audited events
 
-You can get the exact API payload for each event as it was sent to Codefresh. You can get the URL and other call parameters used for the selected event.
+You can get the exact API payload for each event as it was sent to Codefresh, including the URL and other call parameters used for the selected event.
 
 *  At the right of the row with the event, click the **More Details** (book) icon.
 
@@ -97,14 +98,14 @@ max-width="40%"
 
 ## Export audit logs
 
-Export all log events, both Audits and Triggers, to a  `CSV` file, for offline processing with your own tools or for viewing in external applications such as Microsoft Excel.
+Export all audited events, both Audits and Triggers, to a  `CSV` file, for offline processing with your own tools or for viewing in external applications such as Microsoft Excel.
 
 * On the top right of the toolbar, click **Download Audit**.
   The downloaded file includes in addition to the events themselves, the API call information (payload and parameters) for each event.
 
 
 
-## What to read next
-[Codefresh installation options]({{site.baseurl}}/docs/administration/installation-security/)  
-[Access Control]({{site.baseurl}}/docs/administration/access-control/)  
+## Related articles
+[Codefresh installation options]({{site.baseurl}}/docs/installation/installation-security/)  
+[Configuring access Control]({{site.baseurl}}/docs/administration/account-user-management/access-control/)  
 [Codefresh API]({{site.baseurl}}/docs/integrations/codefresh-api/)  

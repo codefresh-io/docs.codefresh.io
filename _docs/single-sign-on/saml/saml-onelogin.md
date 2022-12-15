@@ -7,7 +7,7 @@ toc: true
 ---
 
 Set up SSO for OneLogin using SAML in Codefresh.
-For a general overview on SAML, see [Setting up SAML2 Federated Single Sign-On (SSO)]({site.baseurl}}/docs/administration/single-sign-on/saml-setup).
+For a general overview on SAML, see [Setting up SAML2 Federated SSO]({site.baseurl}}/docs/single-sign-on/saml-setup).
 
 >If you do not see SAML in the SSO list, please create a support ticket to enable SAML for your account.
 
@@ -78,6 +78,6 @@ Now test the SSO with a test user in a different browser or private/incognito br
 1. In a different browser or private/incognito browser window use the Corporate option to log in.
 
 ## Related articles
-[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/administration/single-sign-on/)  
-[Setting up SAML2 Federated Single Sign-On (SSO)]({{site.baseurl}}/docs/administration/single-sign-on/saml-setup)  
-[Common configuration for SSO providers]({{site.baseurl}}/docs/administration/single-sign-on/team-sync)  
+[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/single-sign-on/)  
+[Setting up SAML2 Federated SSO]({{site.baseurl}}/docs/single-sign-on/saml-setup)  
+[Common configuration for SSO providers]({{site.baseurl}}/docs/single-sign-on/team-sync)  

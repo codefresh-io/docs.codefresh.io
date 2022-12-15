@@ -1,24 +1,22 @@
 ---
 title: "Azure Single Sign-On (SSO)"
 description: " "
-group: administration
-sub_group: single-sign-on
+group: single-sign-on
+sub_group: oidc
 redirect_from:
   - /docs/enterprise/single-sign-on/sso-azure/
 toc: true
 ---
 
 Set up SSO for Azure using OIDC.
-For a general overview on OIDC, see [Setting up OpenID Connect (OIDC) Federated Single Sign-On (SSO)]({site.baseurl}}/docs/administration/single-sign-on/oidc).  
+For a general overview on OIDC, see [Setting up OIDC Federated SSO]({site.baseurl}}/docs/single-sign-on/oidc).  
 
-Set up OIDC SSO for Azure by:
+Set up OIDC SSO for Azure in Codefresh by:
 1. Registering the Codefresh application in Azure
 1. Configuring permissions for the Codefresh application in Azure
 1. Creating the Client secret in Azure
 1. Completing SSO configuration for Azure in Codefresh 
 1. Configuring redirect URIs in Azure
-
-
 
 
 ## Prerequisites
@@ -39,8 +37,8 @@ To setup Azure Active Directory for SSO, first register a new application in Azu
 
 {% include image.html
 lightbox="true"
-file="/images/administration/sso/azure/register-app-select-azure-ad.png"
-url="/images/administration/sso/azure/register-app-select-azure-ad.png"
+file="/images/sso/azure/register-app-select-azure-ad.png"
+url="/images/sso/azure/register-app-select-azure-ad.png"
 alt="Azure Active Directory"
 caption="Azure Active Directory"
 max-width="70%"
@@ -52,8 +50,8 @@ max-width="70%"
 
 {% include image.html
 lightbox="true"
-file="/images/administration/sso/azure/register-app-name.png"
-url="/images/administration/sso/azure/register-app-name.png"
+file="/images/sso/azure/register-app-name.png"
+url="/images/sso/azure/register-app-name.png"
 alt="Enter name and register application"
 caption="Enter name and register application"
 max-width="70%"
@@ -75,8 +73,8 @@ Once the application has been created and registered, configure the required per
 
 {% include image.html
 lightbox="true"
-file="/images/administration/sso/azure/config-app-permissions-microsoft-graph.png"
-url="/images/administration/sso/azure/config-app-permissions-microsoft-graph.png"
+file="/images/sso/azure/config-app-permissions-microsoft-graph.png"
+url="/images/sso/azure/config-app-permissions-microsoft-graph.png"
 alt="Select Microsoft Graph"
 caption="Select Microsoft Graph"
 max-width="70%"
@@ -102,8 +100,8 @@ max-width="70%"
 
 {% include image.html
 lightbox="true"
-file="/images/administration/sso/azure/config-app-permissions-added.png"
-url="/images/administration/sso/azure/config-app-permissions-added.png"
+file="/images/sso/azure/config-app-permissions-added.png"
+url="/images/sso/azure/config-app-permissions-added.png"
 alt="Grant admin consent for Default Directory"
 caption="Grant admin consent for Default Directory"
 max-width="70%"
@@ -121,8 +119,8 @@ Create a client secret for the application. You will need to provide it when you
 
 {% include image.html
 lightbox="true"
-file="/images/administration/sso/azure/client-secret-select-option.png"
-url="/images/administration/sso/azure/client-secret-select-option.png"
+file="/images/sso/azure/client-secret-select-option.png"
+url="/images/sso/azure/client-secret-select-option.png"
 alt="Create client secret"
 caption="Create client secret"
 max-width="70%"
@@ -133,8 +131,8 @@ max-width="70%"
 
 {% include image.html
 lightbox="true"
-file="/images/administration/sso/azure/client-secret-add-description.png"
-url="/images/administration/sso/azure/client-secret-add-description.png"
+file="/images/sso/azure/client-secret-add-description.png"
+url="/images/sso/azure/client-secret-add-description.png"
 alt="Description for client secret"
 caption="Description for client secret"
 max-width="70%"
@@ -158,8 +156,8 @@ Configure SSO for Azure in the Codefresh UI.
   
    {% include image.html
 lightbox="true"
-file="/images/administration/sso/azure/azure-properties-object-app-ids.png"
-url="/images/administration/sso/azure/azure-properties-object-app-ids.png"
+file="/images/sso/azure/azure-properties-object-app-ids.png"
+url="/images/sso/azure/azure-properties-object-app-ids.png"
 alt="Application and Object IDs in Azure"
 caption="Application and Object IDs in Azure"
 max-width="70%"
@@ -181,8 +179,8 @@ max-width="70%"
 
   {% include image.html
 lightbox="true"
-file="/images/administration/sso/azure/sso-codefresh-settings.png"
-url="/images/administration/sso/azure/sso-codefresh-settings.png"
+file="/images/sso/azure/sso-codefresh-settings.png"
+url="/images/sso/azure/sso-codefresh-settings.png"
 alt="SSO settings for Azure in Codefresh"
 caption="SSO settings for Azure in Codefres"
 max-width="70%"
@@ -194,8 +192,8 @@ max-width="70%"
 
 {% include image.html
 lightbox="true"
-file="/images/administration/sso/azure/sso-codefresh-generated-client-id.png"
-url="/images/administration/sso/azure/sso-codefresh-generated-client-id.png"
+file="/images/sso/azure/sso-codefresh-generated-client-id.png"
+url="/images/sso/azure/sso-codefresh-generated-client-id.png"
 alt="Example of Codefresh-generated Client Name for Azure"
 caption="Example of Codefresh-generated Client Name for Azure"
 max-width="50%"
@@ -221,8 +219,8 @@ As the final step, add the Codefresh callback URL to the allowed reply URLs for 
 
 {% include image.html
 lightbox="true"
-file="/images/administration/sso/azure/redirect-uri-web-configure.png"
-url="/images/administration/sso/azure/redirect-uri-web-configure.png"
+file="/images/sso/azure/redirect-uri-web-configure.png"
+url="/images/sso/azure/redirect-uri-web-configure.png"
 alt="Select Web configuration settings"
 caption="Select Web configuration settings"
 max-width="70%"
@@ -238,8 +236,8 @@ max-width="70%"
 
 {% include image.html
 lightbox="true"
-file="/images/administration/sso/azure/redirect-rui-define-select-id-tokens.png"
-url="/images/administration/sso/azure/redirect-rui-define-select-id-tokens.png"
+file="/images/sso/azure/redirect-rui-define-select-id-tokens.png"
+url="/images/sso/azure/redirect-rui-define-select-id-tokens.png"
 alt="Web configuration settings"
 caption="Web configuration settings"
 max-width="70%"
@@ -257,6 +255,5 @@ Now test the SSO with a test user in a different browser or private/incognito br
 1. In a different browser or private/incognito browser window use the Corporate option to log in.
 
 ## Related articles
-[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/administration/single-sign-on/)  
-[Setting up OpenID Connect (OIDC) Federated Single Sign-On (SSO)]({{site.baseurl}}/docs/administration/single-sign-on/oidc)  
-[Common configuration for SSO providers]({{site.baseurl}}/docs/administration/single-sign-on/team-sync)  
+[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/single-sign-on/)  
+[Common configuration for SSO providers]({{site.baseurl}}/docs/single-sign-on/team-sync)  

@@ -2,13 +2,14 @@
 title: "Federated Single Sign-On (SSO) overview"
 description: ""
 group: administration
+sub_group: single-sign-on
 redirect_from:
   - /docs/sso/federated-sso-overview/
   - /docs/enterprise/single-sign-on/
 toc: true
 ---
   
-  Customers in our **enterprise plan** can log in to Codefresh, using Federated Single Sign-On (SSO). To learn more, please [contact sales](https://codefresh.io/contact-sales/). 
+  Customers in our **enterprise plan** can log in to Codefresh using Federated Single Sign-On (SSO). To learn more, please [contact sales](https://codefresh.io/contact-sales/){:target="\_blank"}. 
 
   Federated identity management enables the cross organizational exchange of identity information across Internet domains, without migrating credential information or consolidating several security domains. With federation, customers can authenticate with their corporate credentials to gain access to Codefresh.  
 
@@ -33,8 +34,8 @@ A SAML2-based federated system comprises:
 
   A trust must be set up between the customer IdP and Codefresh as an SP. Once the trust has been set up, and a user has been authenticated via the IdP using corporate credentials, the user can access the Codefresh platform.
 
-{:.text-secondary}
-### Why use Federated SSO
+
+## Why use Federated SSO
 
 Using federated SSO significantly simplifies cross-domain user management as follows:
   
@@ -43,6 +44,6 @@ Using federated SSO significantly simplifies cross-domain user management as fol
 * Corporate credentials aren't exposed to the SaaS provider.
 
 
-### What to read next
+## What to read next
 [Setting Up SAML2 Federated Single Sign-On (SSO)](sso-setup-saml2)  
 [Setting Up OpenID Connect Federated Single Sign-On](sso-setup-oauth2)    

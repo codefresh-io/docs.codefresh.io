@@ -1,13 +1,13 @@
 ---
-title: JumpCloud via SAML
-description: Setting Up JumpCloud via SAML
+title: JumpCloud SSO via SAML
+description: Set up JumpCloud via SAML
 group: single-sign-on
 sub_group: saml
 toc: true
 ---
 
 Set up SSO for JumpCloud using SAML.
-For a general overview on SAML, see [Setting up SAML2 Federated Single Sign-On (SSO)]({site.baseurl}}/docs/administration/single-sign-on/saml-setup).
+For a general overview on SAML, see [Setting up SAML2 Federated SSO]({site.baseurl}}/docs/single-sign-on/saml-setup).
 
 >If you do not see SAML in the SSO list, please create a support ticket to enable SAML for your account.
 
@@ -19,7 +19,7 @@ Set up SAML SSO for JumpCloud by:
 ## Step 1: Configure SSO settings for JumpCloud via SAML in Codefresh
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon and then select **Account Settings**.
-1. From the sidebar, below Access & Collaboration, select [**Single Sign-On**](https://g.codefresh.io/2.0/account-settings/single-sign-on){:target="\_blank"}.   
+1. In the sidebar, from Access & Collaboration, select [**Single Sign-On**](https://g.codefresh.io/2.0/account-settings/single-sign-on){:target="\_blank"}.   
 1. Click **Add single-sign-on**, select **SAML**, and then click **Next**.
 1. Enter the connection details: 
   * **Display Name**: Any arbitrary name for this integration.
@@ -35,7 +35,7 @@ Set up SAML SSO for JumpCloud by:
   The SAML integration for JumpCloud is added and appears in the list of SSOs. 
 1. In the Single Sign-On page, click the **Edit** icon for the JumpCloud SAML integration you created.
 1. Copy the **Assertion URL** (client ID) that was automatically generated when you added the integration. 
-1. Continue with [Step 2: Configure SSO settings for Codefresh in JumpCloud](#step-2-configure-sso-settings-for-codefresh-in-onelogin).
+1. Continue with [Step 2: Configure SSO settings for Codefresh in JumpCloud](#step-2-configure-sso-settings-for-codefresh-in-jumpcloud).
 
 ## Step 2: Configure SSO settings for Codefresh in JumpCloud
 
@@ -79,6 +79,6 @@ Now test the SSO with a test user in a different browser or private/incognito br
 1. In a different browser or private/incognito browser window use the Corporate option to log in.
 
 ## Related articles
-[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/administration/single-sign-on/)  
-[Setting up SAML2 Federated Single Sign-On (SSO)]({{site.baseurl}}/docs/administration/single-sign-on/saml-setup)  
-[Common configuration for SSO providers]({{site.baseurl}}/docs/administration/single-sign-on/team-sync)  
+[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/single-sign-on/)  
+[Setting up SAML2 Federated SSO]({{site.baseurl}}/docs/single-sign-on/saml-setup)  
+[Common configuration for SSO providers]({{site.baseurl}}/docs/single-sign-on/team-sync)  

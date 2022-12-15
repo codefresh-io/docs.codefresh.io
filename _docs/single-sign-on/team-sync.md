@@ -1,6 +1,6 @@
 ---
 title: Common configuration for SSO providers
-description: "Syncing teams, selecting SSO provider after initial SSO setup"
+description: "Set up team sync, select default SSO provider"
 group: single-sign-on
 toc: true
 ---
@@ -159,8 +159,8 @@ max-width="50%"
 %}
 
 ## Related articles
-[Setting up OpenID Connect (OIDC) Federated Single Sign-On (SSO)]({{site.baseurl}}/docs/administration/single-sign-on/oidc)
-[Setting up SAML2 Federated Single Sign-On (SSO)]({{site.baseurl}}/docs/administration/single-sign-on/saml-setup)
+[Setting up OIDC Federated SSO]({{site.baseurl}}/docs/single-sign-on/oidc)
+[Setting up SAML2 Federated SSO]({{site.baseurl}}/docs/single-sign-on/saml-setup)
 
 
 

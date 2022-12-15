@@ -2,6 +2,7 @@
 title: "Codefresh IP addresses"
 description: " "
 group: administration
+sub_group: account-user-management
 toc: true
 
 ---

@@ -1,7 +1,8 @@
 ---
-title: "Manage Git PATs"
+title: "Managing Git PATs"
 description: ""
 group: administration
+sub_group: user-self-management
 toc: true
 ---
 

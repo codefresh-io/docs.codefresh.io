@@ -2,34 +2,31 @@
 title: "Manage personal user settings"
 description: "Manage your personal settings"
 group: administration
+sub_group: user-self-management
 toc: true
 ---
 
-As a Codefresh user, you can manage several settings in your personal account.
+As a Codefresh user, you can manage several settings in your personal account, including:
 
+* Email notifications for builds and build usage
+* Grant account access to Codefresh support
+* Grant access to private Git repositories
+* Create and manage API keys
 
-
-
-Email notifications for builds and build usage
-Access for Codefresh support to your account
-Access to private Git repositories
-Create and manage API keys
-
-> To manage Git personal access tokens for GitOps, see???
+> To manage Git personal access tokens for GitOps, see [Managing PATs]({{site.baseurl}}/docs/administration/user-self-management/manage-pats).
 
 ## Access user settings
 * In the Codefresh UI, on the toolbar, click the **Settings** icon and then select **User Settings** (https://g.codefresh.io/user/settings){:target="\_blank"}.
 
-## Email notifications for CI builds 
+## Email notifications for pipeline builds 
 
 Configure the email notifications you want to receive for builds based on the build status: only successful, only failed, or for both successful and failed builds.  
 
-> By default, email notifications are disabled for _all users_, for both successful and failed builds.
+> By default, email notifications for builds are disabled for _all users_.
 
 * In **Notifications**, define the email address and select the notifications:    
-  * Email address for the notifications. By default, it's the same address you used to [sign-up]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/).
-  * Select to receive emails for successful builds
-  * Select to receive emails for failed builds
+  * Email address for the notifications. By default, it's the same address you used to [sign up]({{site.baseurl}}/docs/administration/account-user-management/create-a-codefresh-account/).
+* Select the build statuses for which to receive notifications.
 
 
 
@@ -37,8 +34,8 @@ Configure the email notifications you want to receive for builds based on the bu
 lightbox="true"
 file="/images/administration/user-settings/notifications.png"
 url="/images/administration/user-settings/notifications.png"
-alt="email settings"
-caption="email settings"
+alt="Email notifications for pipeline builds"
+caption="Email notifications for pipeline builds"
 max-width="50%"
 %}
 
@@ -46,7 +43,7 @@ max-width="50%"
 
 ## Weekly updates of build usage
 
-Select to receive weekly summaries of your builds across your pipelines along with other statistical data. This information can be useful if you want to understand your overall project build health and capacity usage.
+Select to receive weekly summaries of builds across your pipelines along with other statistical data. This information can be useful if you want to understand your overall project build health and capacity usage.
 
 * In **Updates**, select or clear **Receive updates...**.
 
@@ -103,7 +100,7 @@ max-width="80%"
 %}
 
 
-## What to read next
+## Related articles
 
 <!--why do we need this? this is for admins; also SSO[Add users]({{site.baseurl}}/docs/administration/invite-your-team-member/)  -->
 [Manage Git PATs]({{site.baseurl}}/docs/administration/manage-pats)  

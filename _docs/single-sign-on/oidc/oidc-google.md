@@ -1,23 +1,23 @@
 ---
 title: "Google Single Sign-On (SSO)"
 description: ""
-group: administration
-sub_group: single-sign-on
+group: single-sign-on
+sub_group: oidc
 toc: true
 ---
 
-Set up SSO for Auth0 using OIDC.
-For a general overview on OIDC, see [Setting up OpenID Connect (OIDC) Federated Single Sign-On (SSO)]({site.baseurl}}/docs/administration/single-sign-on/oidc).
+Set up SSO for Google using OIDC.
+For a general overview on OIDC, see [Setting up OIDC Federated SSO]({site.baseurl}}/docs/single-sign-on/oidc).
 
-Set up an SSO account for Google in Codefresh by:
-* Creating the client secret in Google
-* Configuring SSO settings for Google in Codefresh
-* Setting up the redirect URI in Google
+Set up OIDC SSO for Google in Codefresh by:
+1. Creating the client secret in Google
+1. Configuring SSO settings for Google in Codefresh
+1. Setting up the redirect URI in Google
 
 
 ## Step 1: Create Client Secret in Google
 
-1. Log in to [https://console.developers.google.com/](https://console.developers.google.com/).
+1. Log in to [https://console.developers.google.com/](https://console.developers.google.com/){:target="\_blank"}.
 1. From the sidebar, select **Credentials**.
 1. Select **Create Credentials**, and from the drop-down, select **OAuth client ID**.
 1. Do the following:
@@ -31,9 +31,9 @@ Set up an SSO account for Google in Codefresh by:
        url="/images/administration/sso/google/googleSSO.png"
        alt="Creating an OAuth client"
        caption="Creating an OAuth client"
-       max-width="30%"
+       max-width="70%"
        %}
-
+    
   * Select **Create**. 
   * From the OAUth client created dialog, note down **Your Client ID** and **Your Client Secret**. 
 
@@ -43,7 +43,7 @@ Set up an SSO account for Google in Codefresh by:
        url="/images/administration/sso/google/googleSSO2.png"
        alt="Getting the Client ID and secret"
        caption="Getting the Client ID and secret"
-       max-width="30%"
+       max-width="70%"
        %}
 
   You will need the Client ID and secret to configure SSO for Google in Codefresh.
@@ -89,7 +89,7 @@ Set up an SSO account for Google in Codefresh by:
 1. Note down the Client Name, as you need it to set the redirect URI in Google.
 1. Continue with [Step 3: Set up Redirect URI in Google](#step-3-set-up-redirect-uri-in-google).
 
-### Set up Redirect URI in Google
+### Step 3: Set up Redirect URI in Google
 1. Go back to the Google Console Developer dashboard, and click the edit button on the OAuth 2.0 Client IDs that you created before.
 1. For **Authorized Redirect URIs**, in the **URIs** field, enter the Client Name you noted down to generate the *Authorized Redirect URIs*
   * Example Client Name: `t0nlUJoqQlDv`
@@ -104,7 +104,7 @@ Set up an SSO account for Google in Codefresh by:
   max-width="30%"
   %}
 
-You have now completed SSO setup for Google via OIDC
+You have now completed SSO setup for Google via OIDC.
 
 ## Synchronize teams via Codefresh CLI
 
@@ -156,6 +156,6 @@ Now test the SSO with a test user in a different browser or private/incognito br
 1. In a different browser or private/incognito browser window use the Corporate option to log in.
 
 ## Related articles
-[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/administration/single-sign-on/)  
-[Setting up OpenID Connect (OIDC) Federated Single Sign-On (SSO)]({{site.baseurl}}/docs/administration/single-sign-on/oidc)  
-[Common configuration for SSO providers]({{site.baseurl}}/docs/administration/single-sign-on/team-sync)  
+[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/single-sign-on/)  
+[Setting up OIDC Federated SSO]({{site.baseurl}}/docs/single-sign-on/oidc)  
+[Common configuration for SSO providers]({{site.baseurl}}/docs/single-sign-on/team-sync)  
