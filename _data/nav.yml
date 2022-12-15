@@ -1,7 +1,5 @@
 
 
-
-
 - title: Administration
   url: "/administration"
   pages:
@@ -76,25 +74,4 @@
     - title: Shared configuration repo
       url: "/shared-configuration"
   
-- title: What's New?
-  url: "/whats-new"
-  pages:
-    - title: What's new in Codefresh?
-      url: "/whats-new"
 
-- title: Troubleshooting
-  url: "/troubleshooting"
-  pages:
-    - title: Runtimes
-      url: "/runtime-issues"
-      
-
-- title: Terms and Privacy Policy
-  url: "/terms-and-privacy-policy"
-  pages:
-    - title: Terms of Service
-      url: "/terms-of-service"
-    - title: Privacy Policy
-      url: "/privacy-policy"
-    - title: Service Commitment
-      url: "/sla"

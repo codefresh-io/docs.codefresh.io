@@ -16,7 +16,7 @@ Creating an account in Codefresh is free (no credit card is required) and can be
 {% include 
 image.html 
 lightbox="true" 
-file="/images/getting-started/create-account/create-account-steps.png" 
+file="/images/administration/create-account/create-account-steps.png" 
 url="/images/administration/create-account/create-account-steps.png"
 alt="Codefresh account creation steps" 
 max-width="90%" 
@@ -52,8 +52,9 @@ caption="Codefresh sign-up page"
 max-width="40%" 
 %}
 
+{:start="2"}
 1. Select the IdP for sign-up.
-1. Continue with  [Step 2: Accept the permissions request](#2-accept-the-permissions-request)
+1. Continue with  [Step 2: Accept the permissions request](#step2-accept-the-permissions-request)
 
 
 
@@ -73,7 +74,7 @@ lightbox="true"
 file="/images/administration/create-account/github-authorize.png" 
 url="/images/administration/create-account/github-authorize.png"
 alt="GitHub authorization page" 
-caption="GitHub authorization page (click image to enlarge)" 
+caption="GitHub authorization page" 
 max-width="50%" 
 %}
 
@@ -86,7 +87,7 @@ lightbox="true"
 file="/images/administration/create-account/bitbucket-authorize.png" 
 url="/images/administration/create-account/bitbucket-authorize.png"
 alt="Bitbucket authorization page" 
-caption="Bitbucket authorization page (click image to enlarge)" 
+caption="Bitbucket authorization page" 
 max-width="50%" 
 %}
 
@@ -99,7 +100,7 @@ lightbox="true"
 file="/images/administration/create-account/gitlab-authorize.png" 
 url="/images/administration/create-account/gitlab-authorize.png"
 alt="GitLab authorization page" 
-caption="GitLab authorization page (click image to enlarge)" 
+caption="GitLab authorization page" 
 max-width="50%" 
 %}
 
@@ -120,7 +121,7 @@ lightbox="true"
 file="/images/administration/create-account/codefresh-signup.png" 
 url="/images/administration/create-account/codefresh-signup.png" 
 alt="Codefresh account details" 
-caption="Codefresh account details (click image to enlarge)" 
+caption="Codefresh account details" 
 max-width="40%" 
 %}
 
@@ -133,7 +134,7 @@ lightbox="true"
 file="/images/administration/create-account/codefresh-accountname.png" 
 url="/images/administration/create-account/codefresh-accountname.png" 
 alt="Codefresh account name" 
-caption="Codefresh account name (click image to enlarge)" 
+caption="Codefresh account name" 
 max-width="40%" 
 %}
 
@@ -158,7 +159,7 @@ lightbox="true"
 file="/images/administration/create-account/codefresh-dashboard.png" 
 url="/images/administration/create-account/codefresh-dashboard.png" 
 alt="Codefresh dashboard" 
-caption="Codefresh dashboard (click image to enlarge)" 
+caption="Codefresh dashboard" 
 max-width="40%" 
 %}
 

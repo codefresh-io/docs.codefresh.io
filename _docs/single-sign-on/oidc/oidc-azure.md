@@ -87,8 +87,8 @@ max-width="70%"
 
 {% include image.html
 lightbox="true"
-file="/images/administration/sso/azure/config-app-permissions-selected.png"
-url="/images/administration/sso/azure/config-app-permissions-selected.png"
+file="/images/sso/azure/config-app-permissions-selected.png"
+url="/images/sso/azure/config-app-permissions-selected.png"
 alt="`Group > Read.All` permissions for Microsoft Graph"
 caption="`Group > Read.All` permissions for Microsoft Graph"
 max-width="70%"
