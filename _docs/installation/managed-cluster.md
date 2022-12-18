@@ -1,42 +1,42 @@
 ---
-title: "Add external clusters to runtimes"
+title: "Add external clusters to GitOps Runtimes"
 description: ""
-group: runtime
+group: installation
 toc: true
 ---
 
-Register external clusters to provisioned hybrid or hosted runtimes in Codefresh. Once you add an external cluster, you can deploy applications to that cluster without having to install Argo CD in order to do so. External clusters allow you to manage multiple clusters through a single runtime.  
+Register external clusters to provisioned Hybrid or Hosted GitOps Runtimes in Codefresh. Once you add an external cluster, you can deploy applications to that cluster without having to install Argo CD in order to do so. Manage manage multiple external clusters through a single Runtime.  
 
-When you add an external cluster to a provisioned runtime, the cluster is registered as a managed cluster. A managed cluster is treated as any other managed K8s resource, meaning that you can monitor its health and sync status, deploy applications on the cluster and view information in the Applications dashboard, and remove the cluster from the runtime's managed list.  
+When you add an external cluster to a provisioned Runtime, the cluster is registered as a managed cluster. A managed cluster is treated as any other managed K8s resource, meaning that you can monitor its health and sync status, deploy applications to it, view information in the Applications dashboard, and remove the cluster from the Runtime's managed list.  
 
 Add managed clusters through:
 * Codefresh CLI
 * Kustomize
 
-Adding a managed cluster via Codefresh ensures that Codefresh applies the required RBAC resources (`ServiceAccount`, `ClusterRole` and `ClusterRoleBinding`) to the target cluster, creates a `Job` that updates the selected runtime with the information, registers the cluster in Argo CD as a managed cluster, and updates the platform with the new cluster information.
+Adding a managed cluster via Codefresh ensures that Codefresh applies the required RBAC resources (`ServiceAccount`, `ClusterRole` and `ClusterRoleBinding`) to the target cluster, creates a `Job` that updates the selected Runtime with the information, registers the cluster in Argo CD as a managed cluster, and updates the platform with the new cluster information.
  
 
-### Add a managed cluster with Codefresh CLI
-Add an external cluster to a provisioned runtime through the Codefresh CLI. When adding the cluster, you can also add labels and annotations to the cluster, which are added to the cluster secret created by Argo CD.
+## Add a managed cluster with Codefresh CLI
+Add an external cluster to a provisioned GitOps Runtime through the Codefresh CLI. When adding the cluster, you can also add labels and annotations to the cluster, which are added to the cluster secret created by Argo CD.
 Optionally, to first generate the YAML manifests, and then manually apply them, use the `dry-run` flag in the CLI. 
 
 **Before you begin**  
 
-  
-* For _hosted_ runtimes: [Configure access to these IP addresses]({{site.baseurl}}/docs/administration/platform-ip-addresses/)
+* For _Hosted_ Runtimes: [Configure access to these IP addresses]({{site.baseurl}}/docs/administration/platform-ip-addresses/)
 * Verify that:
-  * Your Git personal access token is valid and has the correct permissions
-  * You have installed the latest version of the Codefresh CLI
+  * Your Git personal access token is valid and has the [required scopes]({{site.baseurl}}/docs/reference/git-tokens) 
+  * You have installed the [latest version of the Codefresh CLI]({{site.baseurl}}/docs/installation/monitor-manage-runtimes/#hybrid-gitops-upgrade-gitops-cli)
 
 **How to**  
 
-1. In the Codefresh UI, go to [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
-1. From either the **Topology** or **List** views, select the runtime to which to add the cluster. 
+1. In the Codefresh UI, go to [GitOps Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
+1. From either the **Topology** or **List** views, select the Runtime to which to add the cluster. 
 1. Topology View: Select {::nomarkdown}<img src="../../../images/icons/add-cluster.png" display=inline-block/>{:/}.  
   List View: Select the **Managed Clusters** tab, and then select **+ Add Cluster**.  
 1. In the Add Managed Cluster panel, copy and run the command:  
-  `cf cluster add <runtime-name> [--labels label-key=label-value] [--annotations annotation-key=annotation-value][--dry-run]`  
+  `cf cluster add [runtime-name] [--labels label-key=label-value] [--annotations annotation-key=annotation-value][--dry-run]`  
   where:   
+  * `runtime-name` is the name of the Runtime to which to add the cluster.
   * `--labels` is optional, and required to add labels to the cluster. When defined, add a label in the format `label-key=label-value`. Separate multiple labels with `commas`.   
   * `--annotations` is optional, and required to add annotations to the cluster. When defined, add an annotation in the format `annotation-key=annotation-value`. Separate multiple annotations with `commas`.   
   * `--dry-run` is optional, and required if you want to generate a list of YAML manifests that you can redirect and apply manually with `kubectl`.   
@@ -54,7 +54,7 @@ Optionally, to first generate the YAML manifests, and then manually apply them, 
 
 {:start="5"}
 1. If you used `dry-run`, apply the generated manifests to the same target cluster on which you ran the command.  
-  Here is an example of the YAML manifest generated with the `--dry-run` flag. Note that there are placeholders in the example, which are replaced with the actual values with `--dry-run`.  
+  Here is an example of the YAML manifest generated with the `--dry-run` flag. Note that the example has placeholders, which are replaced with the actual values during the `--dry-run`.  
   
 
 ```yaml
@@ -177,9 +177,9 @@ spec:
 
 ```
 
-The new cluster is registered to the runtime as a managed cluster.  
+The new cluster is registered to the Runtime as a managed cluster.  
 
-### Add a managed cluster with Kustomize
+## Add a managed cluster with Kustomize
 Create a `kustomization.yaml` file with the information shown in the example below, and run `kustomize build` on it.  
 
 ```yaml
@@ -222,16 +222,20 @@ resources:
 ```
 
 
-### Work with managed clusters 
-Work with managed clusters in hybrid or hosted runtimes in either the Topology or List runtime views. For information on runtime views, see [Runtime views]({{site.baseurl}}/docs/runtime/runtime-views).  
-As the cluster is managed through the runtime, updates to the runtime automatically updates the components on all the managed clusters that include it. 
+## Work with managed clusters 
+Work with managed clusters in either the Topology or List Runtime views. For information on Runtime views, see [Runtime views]({{site.baseurl}}/docs/runtime/runtime-views).  
+As the cluster is managed through the Runtime, updates to the Runtime automatically updates the components on all the managed clusters that include it. 
      
 View connection status for the managed cluster, and health and sync errors. Health and sync errors are flagged by the error notification in the toolbar, and visually flagged in the List and Topology views.  
   
-#### Install Argo Rollouts 
-Install Argo Rollouts directly from Codefresh with a single click to visualize rollout progress in the [Applications dashboard]({{site.baseurl}}/docs/deployment/applications-dashboard/). If Argo Rollouts has not been installed, an **Install Argo Rollouts** button is displayed on selecting the managed cluster. 
+### Install Argo Rollouts 
+Applications with `rollout` resources need Argo Rollouts on the target cluster, both to visualize rollouts in the Applications dashboard and control rollout steps with the Rollout Player.  
+If Argo Rollouts has not been installed on the target cluster, it displays **Install Argo Rollouts** button.  
 
-1. In the Codefresh UI, go to [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
+Install Argo Rollouts with a single click to execute rollout instructions, deploy the application, and visualize rollout progress in the [Applications dashboard]({{site.baseurl}}/docs/deployment/applications-dashboard/). 
+ 
+
+1. In the Codefresh UI, go to [GitOps Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
 1. Select **Topology View**.
 1. Select the target cluster, and then select **+ Install Argo Rollouts**.
  
@@ -246,16 +250,16 @@ Install Argo Rollouts directly from Codefresh with a single click to visualize r
 %}
 
 
-#### Remove a managed cluster from the Codefresh UI 
-Remove a cluster from the runtime's list of managed clusters from the Codefresh UI.
+### Remove a managed cluster from the Codefresh UI 
+Remove a cluster from the Runtime's list of managed clusters from the Codefresh UI.
 
 > You can also remove it through the CLI.
 
-1. In the Codefresh UI, go to [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
+1. In the Codefresh UI, go to [GitOps Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
 1. Select either the **Topology View** or the **List View** tabs.
 1. Do one of the following:
-    * In the Topology View, select the cluster node from the runtime it is registered to. 
-    * In the List View, select the runtime, and then select the **Managed Clusters** tab.
+    * In the Topology View, select the cluster node from the Runtime it is registered to. 
+    * In the List View, select the Runtime, and then select the **Managed Clusters** tab.
 1. Select the three dots next to the cluster name, and then select **Uninstall** (Topology View) or **Remove** (List View). 
 
 {% include 
@@ -269,8 +273,8 @@ Remove a cluster from the runtime's list of managed clusters from the Codefresh 
 %}
 
 
-#### Remove a managed cluster through the Codefresh CLI 
-Remove a  cluster from the list managed by the runtime, through the CLI.  
+### Remove a managed cluster through the Codefresh CLI 
+Remove a  cluster from the list managed by the Runtime, through the CLI.  
 
 * Run:  
   `cf cluster remove <runtime-name> --server-url <server-url>`  
@@ -279,7 +283,6 @@ Remove a  cluster from the list managed by the runtime, through the CLI.
   `<server-url>` is the URL of the server on which the managed cluster is installed. 
 
 
-### Related articles
-[Add Git Sources to runtimes]({{site.baseurl}}/docs/runtime/git-sources/)  
-[Manage provisioned hybrid runtimes]({{site.baseurl}}/docs/runtime/monitor-manage-runtimes/)  
-[(Hybrid) Monitor provisioned runtimes]({{site.baseurl}}/docs/runtime/monitoring-troubleshooting/)  
+## Related articles
+[Add Git Sources to GitOps Runtimes]({{site.baseurl}}/docs/installation/git-sources/)  
+[Monitoring & managing GitOps Runtimes]({{site.baseurl}}/docs/installation/monitor-manage-runtimes/)  
