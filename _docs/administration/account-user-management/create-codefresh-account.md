@@ -209,8 +209,8 @@ We can establish a VPN / tunnel to your network or discuss options for an on-pre
 
 -->
 ## Related articles
-[Adding users and teams]({{site.baseurl}}/_docs/administration/account-user-management/add-users/)  
-[Configuring access control]({{site.baseurl}}/_docs/administration/account-user-management/access-control/)  
+[Adding users and teams]({{site.baseurl}}/docs/administration/account-user-management/add-users/)  
+[Configuring access control]({{site.baseurl}}/docs/administration/account-user-management/access-control/)  
 [Codefresh IP addresses]({{site.baseurl}}/docs/administration/account-user-management/platform-ip-addresses/)  
 [Create a basic pipeline]({{site.baseurl}}/docs/getting-started/create-a-basic-pipeline/)  
 [Pipeline examples]({{site.baseurl}}/docs/example-catalog/ci-examples/)

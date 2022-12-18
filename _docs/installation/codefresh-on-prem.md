@@ -435,8 +435,8 @@ After app creation, note down the created Application ID and Client Secret. They
 
 {% include image.html
   lightbox="true"
-  file="/images/administration/installation/git-idp.png"
-  url="/images/administration/installation/git-idp.png"
+  file="/images/installation/git-idp.png"
+  url="/images/installation/git-idp.png"
     %}
 
 >Note: When configuring the default IDP (for GitHub, GitLab, etc), do not modify the Client Name field. Please keep them as GitHub, GitLab, BitBucket, etc. Otherwise, the signup and login views won’t work.

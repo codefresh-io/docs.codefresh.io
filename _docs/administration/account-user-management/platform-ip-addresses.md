@@ -9,7 +9,7 @@ toc: true
 Access to Kubernetes clusters behind strict firewalls not accessible from the public internet is governed through authorized IP addresses. 
 Codefresh provides a list of IP addresses to be configured on clusters to allow access to them. 
 
-You can register multiple external clusters to the Codefresh Runner, and GitOps Runtimes. All Runtimes require Codefresh platform IPs to be configured on the clusters.  
+You can register multiple external clusters to the Codefresh Runner and GitOps Runtimes. All Runtimes require Codefresh platform IPs to be configured on the clusters.  
 In addition, managed clusters registered to Hosted GitOps Runtimes must be configured with a set of specific IP addresses to authorize access.
 
 
@@ -39,13 +39,13 @@ All the IPs are NAT gateways, and need to enable specific IPs instead of ranges.
 - 44.238.167.159
 - 44.237.63.217
  
-## Codefresh IPs for managed clusters in Hosted GitOps Runtimes
+## Codefresh IPs for Hosted GitOps Runtimes
 
 - 34.207.5.18
 - 34.232.79.230
 - 44.193.43.5
 
-## Define API access to IPs for clusters
+## API access to IPs for clusters
 Clusters must be configured with API access to the authorized Codefresh IPs.  
 If you haven't configured your clusters with the required IPs, use the links below to complete the configuration for the clusters listed:
 

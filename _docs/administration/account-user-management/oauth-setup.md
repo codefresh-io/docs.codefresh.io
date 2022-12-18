@@ -1,5 +1,5 @@
 ---
-title: "Set up OAuth2 authentication for Git providers"
+title: "Seting up OAuth2 for Git providers"
 description: ""
 group: administration
 sub_group: account-user-management
@@ -33,7 +33,7 @@ Codefresh supports OAuth2 or personal access tokens (PATs) for authentication:
 
 
 
-### Authentication for Git providers and runtime accounts
+## Authentication for Git providers and runtime accounts
 The [Authentication](https://g.codefresh.io/2.0/account-settings/authentication?providerName=github){:target="\_blank"} page displays the accounts by Git provider and the authentication method selected for the same.  
 
 Authentication accounts are organized by Runtimes. A runtime can have a single authentication account.   
@@ -51,7 +51,7 @@ The Type column identifies the authentication for the provider account as either
  
 As the account administrator, you can change the authentication method for an account at any time to either Codefresh or Custom, or manual token entry. See [Select authentication mechanism for runtime](#select-authentication-mechanism-for-runtime).
 
-### Create a custom OAuth2 Application for Git provider 
+## Create a custom OAuth2 Application for Git provider 
 Create a custom OAuth2 Application for Codefresh in your Git provider accounts with the correct scopes, and set up authentication for the same within Codefresh. Users in Codefresh can then authorize access to the Git provider using OAuth2, instead of a personal access token.  
 
 Supported Git providers:
@@ -72,7 +72,7 @@ To set up OAuth2 authorization in Codefresh, you must:
 <br>
 {:/}
 
-#### Step 1: Create a custom OAuth2 Application in Git
+### Step 1: Create a custom OAuth2 Application in Git
 Create and register an OAuth App under your organization to authorize Codefresh.  
 
 1. Follow the step-by-step instructions for your Git provider:   
@@ -112,7 +112,7 @@ Create and register an OAuth App under your organization to authorize Codefresh.
 <br>
 {:/}
 
-#### Step 2: Create a K8s secret resource in the runtime cluster 
+### Step 2: Create a K8s secret resource in the runtime cluster 
 Create a K8s secret in the runtime cluster, using the example below as a guideline. You must define the application ID (`appId`), client ID (`clientId`) and the client secret (`clientSecret`) from the OAuth2 Application you created in your Git provider, and the Git URL (`url`).  
 
 > All fields in the secret _must be_ encoded in `base64`.  
@@ -155,7 +155,7 @@ data:
 <br>
 {:/}
 
-#### Step 3: Configure OAuth2 settings for Custom Application in Codefresh 
+### Step 3: Configure OAuth2 settings for Custom Application in Codefresh 
 
 Configure the settings for the Custom OAuth2 Application in Codefresh. Configuring the settings creates a K8s ConfigMap that references the OAuth secret credentials. When configuring the settings, you can work in Form mode, or directly update the YAML manifest. 
 
@@ -211,7 +211,7 @@ Configure the settings for the Custom OAuth2 Application in Codefresh. Configuri
 
 You have completed the setup to authorize Codefresh as an OAuth App for your Git provider. 
 
-### Select authentication mechanism for runtime
+## Select authentication mechanism for runtime
 For a Git provider and a runtime account, select the authentication mechanism: Codefresh account, Custom provider account if one exists, or token-based authentication.
 
 1. In the Codefresh UI, go to [Authentication](https://g.codefresh.io/2.0/account-settings/authentication?providerName=github){:target="\_blank"}.

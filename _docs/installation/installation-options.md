@@ -50,8 +50,8 @@ The cloud version runs on multiple clouds:
 
 {% include image.html
   lightbox="true"
-  file="/images/administration/installation/codefresh-saas.png"
-  url="/images/administration/installation/codefresh-saas.png"
+  file="/images/installation/codefresh-saas.png"
+  url="/images/installation/codefresh-saas.png"
   alt="sso-diagram.png"
   max-width="60%"
     %}
@@ -60,8 +60,8 @@ Codefresh Cloud is also compliant with [SOC2 - Type2](https://www.aicpa.org/SOC)
 
 {% include image.html
   lightbox="true"
-  file="/images/administration/installation/soc2-type2-certified.png"
-  url="/images/administration/installation/soc2-type2-certified.png"
+  file="/images/installation/soc2-type2-certified.png"
+  url="/images/installation/soc2-type2-certified.png"
   alt="sso-diagram.png"
   max-width="40%"
     %}    
@@ -77,8 +77,8 @@ The UI runs on Codefresh infrastructure, while the builds happen in a Kubernetes
 
 {% include image.html
   lightbox="true"
-  file="/images/administration/installation/hybrid-installation.png"
-  url="/images/administration/installation/hybrid-installation.png"
+  file="/images/installation/hybrid-installation.png"
+  url="/images/installation/hybrid-installation.png"
   alt="sso-diagram.png"
   max-width="70%"
     %}    

@@ -44,7 +44,7 @@
     localurl: /docs/single-sign-on/
   - title: Set up OAuth2 authentication for Git providers
     localurl: /docs/administration/account-user-management/oauth-setup/  
-  - title: Access Control
+  - title: Access control
     localurl: /docs/administration/account-user-management/access-control/
   - title: Audit
     localurl: /docs/administration/account-user-management/audit/

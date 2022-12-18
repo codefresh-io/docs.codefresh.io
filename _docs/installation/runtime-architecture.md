@@ -23,8 +23,8 @@ If we zoom into Codefresh Services for CI/CD, we will see the following:
 
 {% include image.html
   lightbox="true"
-  file="/images/administration/installation/topology-new.png"
-  url="/images/administration/installation/topology-new.png"
+  file="/images/installation/topology-new.png"
+  url="/images/installation/topology-new.png"
   alt="Topology diagram"
   caption="Topology diagram (click to enlarge)"
   max-width="100%"

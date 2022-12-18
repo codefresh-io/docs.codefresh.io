@@ -2067,6 +2067,6 @@ For troubleshooting refer to the [Knowledge Base](https://support.codefresh.io/h
 
 ## What to read next
 
-* [Codefresh installation options]({{site.baseurl}}/docs/administration/installation-security/)
+* [Codefresh installation options]({{site.baseurl}}/docs/installation/installation-options/)
 * [Codefresh On-Premises]({{site.baseurl}}/docs/administration/codefresh-on-prem/)
 * [Codefresh API]({{site.baseurl}}/docs/integrations/codefresh-api/)
