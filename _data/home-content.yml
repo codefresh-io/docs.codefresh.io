@@ -15,16 +15,16 @@
   links:
     - title: Installation environments
       localurl: /docs/installation/installation-options/
-    - title: Codefresh Runner installation
+    - title: Codefresh Runner CI/CD installation
       localurl: /docs/installation/codefresh-runner/ 
+    - title: On-Premises CI/CD installation
+      localurl: /docs/installation/codefresh-on-prem/
+    - title: On-Premises CI/CD upgrade
+      localurl: /docs/installation/codefresh-on-prem-upgrade/
     - title: Hosted GitOps Runtime installation
       localurl: /docs/installation/hosted-runtime/  
     - title: Hybrid GitOps Runtime installation
       localurl: /docs/installation/hybrid-gitops/  
-    - title: On-Premises installation
-      localurl: /docs/installation/codefresh-on-prem/
-    - title: On-Premises upgrade
-      localurl: /docs/installation/codefresh-on-prem-upgrade/
     - title: Monitoring & managing GitOps Runtimes
       localurl: /docs/installation/monitor-manage-runtimes/
     - title: Adding external clusters to GitOps Runtimes
@@ -52,7 +52,7 @@
     localurl: /docs/administration/account-user-management/platform-ip-addresses/
   - title: User settings
     localurl: /docs/administration/user-self-management/user-settings/
-  - title: Manage PATs
+  - title: Manage Git PATs
     localurl: /docs/administration/user-self-management/manage-pats/
 
 

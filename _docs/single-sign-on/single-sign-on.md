@@ -1,8 +1,7 @@
 ---
 title: "Federated Single Sign-On (SSO) overview"
 description: ""
-group: administration
-sub_group: single-sign-on
+group: single-sign-on
 redirect_from:
   - /docs/sso/federated-sso-overview/
   - /docs/enterprise/single-sign-on/

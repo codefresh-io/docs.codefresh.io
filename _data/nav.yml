@@ -56,7 +56,7 @@
       sub-pages:  
         - title: Managing personal settings
           url: "/user-settings"
-        - title: Configuring Git authentication
+        - title: Managing Git PATs
           url: "/manage-pats"
 
 - title: Single Sign-On
@@ -77,7 +77,6 @@
           url: /oidc-onelogin
     - title: SAML
       url: /saml
-
       sub-pages:
         - title: JumpCloud
           url: /saml-jumpcloud
