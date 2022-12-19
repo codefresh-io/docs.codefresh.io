@@ -1,7 +1,7 @@
 ---
-title: "Service Containers"
+title: "Service containers in CI pipelines"
 description: "How to use sidecar services in your pipelines"
-group: codefresh-yaml
+group: pipelines
 toc: true
 ---
 
@@ -45,8 +45,8 @@ The service containers have their own output tab in Codefresh UI
 
 {% include image.html
   lightbox="true"
-  file="/images/codefresh-yaml/services/services-tab.png"
-  url="/images/codefresh-yaml/services/services-tab.png"
+  file="/images/pipeline/codefresh-yaml/services/services-tab.png"
+  url="/images//pipeline/codefresh-yaml/services/services-tab.png"
   alt="Output tab from extra services"
   caption="Output tab from extra services"
   max-width="100%"
@@ -120,8 +120,8 @@ This pipeline mentions an existing composition called `redis_and_mongo`:
 {% include 
 image.html 
 lightbox="true" 
-file="/images/codefresh-yaml/existing-composition.png" 
-url="/images/codefresh-yaml/existing-composition.png"
+file="/images/pipeline/codefresh-yaml/existing-composition.png" 
+url="/images/pipeline/codefresh-yaml/existing-composition.png"
 alt="Using an existing composition" 
 caption="Using an existing composition"
 max-width="70%"
@@ -182,8 +182,8 @@ If you run this pipeline you will see that that data read in the third step of t
 {% include 
 image.html 
 lightbox="true" 
-file="/images/codefresh-yaml/redis-example.png" 
-url="/images/codefresh-yaml/redis-example.png"
+file="/images/pipeline/codefresh-yaml/redis-example.png" 
+url="/images/pipeline/codefresh-yaml/redis-example.png"
 alt="Redis read/write example" 
 caption="Redis read/write example"
 max-width="90%"
@@ -555,12 +555,11 @@ Service containers are not compatible with [custom pipeline steps]({{site.baseur
 
 
 
-## What to read next
-
-* [Unit tests]({{site.baseurl}}/docs/testing/unit-tests/)
-* [Integration tests]({{site.baseurl}}/docs/testing/integration-tests/)
-* [Integration test with database]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-database/)
-* [Creating Compositions]({{site.baseurl}}/docs/on-demand-test-environment/create-composition/)
+## Related articles
+[Unit tests]({{site.baseurl}}/docs/testing/unit-tests/)  
+[Integration tests]({{site.baseurl}}/docs/testing/integration-tests/)  
+[Integration test with database]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-database/)  
+[Creating Compositions]({{site.baseurl}}/docs/on-demand-test-environment/create-composition/)
 
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Triggers for pipelines"
+title: "Triggers in CI pipelines"
 description: "Choose when your pipelines should run"
 group: pipelines
 redirect_from:

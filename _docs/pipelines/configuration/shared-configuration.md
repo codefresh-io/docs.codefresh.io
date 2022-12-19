@@ -1,7 +1,7 @@
 ---
-title: "Shared configuration for piplines"
+title: "Shared configuration for CI pipelines"
 description: "How to keep your pipelines DRY"
-group: configure-ci-cd-pipeline
+group: pipelines
 toc: true
 ---
   

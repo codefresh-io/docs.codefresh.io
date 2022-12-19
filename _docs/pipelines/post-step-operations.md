@@ -106,12 +106,10 @@ In this example the step `print_error_message` will only run if step `run_tests`
 
 See also [advanced workflows]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/#single-step-dependencies) and [Pipeline/Step hooks]({{site.baseurl}}/docs/codefresh-yaml/hooks/).
 
-## What to read next
-
-* [Conditional Execution of Steps]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/)
-* [Condition Expression Syntax]({{site.baseurl}}/docs/codefresh-yaml/condition-expression-syntax/)
-* [Working Directories]({{site.baseurl}}/docs/codefresh-yaml/working-directories/)
-* [Annotations]({{site.baseurl}}/docs/codefresh-yaml/annotations/)
-* [Pipeline/Step hooks]({{site.baseurl}}/docs/codefresh-yaml/hooks/)
+## Related articles
+[Conditional execution of steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/)  
+[Working directories]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Annotations in CI pipelines]({{site.baseurl}}/docs/pipelines/annotations/)  
+[Hooks in CI pipelines]({{site.baseurl}}/docs/pipelines/hooks/)
 
 

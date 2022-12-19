@@ -232,8 +232,8 @@ All images built successfully with the build step, will be automatically pushed 
 {% 
   include image.html 
   lightbox="true" 
-  file="/images/artifacts/cfcr/codefresh-registry-list.png" 
-  url="/images/artifacts/cfcr/codefresh-registry-list.png" 
+  file="/images/pipeline/codefresh-yaml/steps/codefresh-registry-list.png" 
+  url="/images/pipeline/codefresh-yaml/steps/codefresh-registry-list.png" 
   alt="Docker Images pushed automatically" 
   caption="Docker Images pushed automatically" 
   max-width="80%" 

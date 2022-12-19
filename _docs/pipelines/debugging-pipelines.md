@@ -1,7 +1,7 @@
 ---
-title: "Debugging pipelines"
-description: "How to pause and inspect pipelines"
-group: configure-ci-cd-pipeline
+title: "Debugging CI pipelines"
+description: "Pause and inspect pipelines"
+group: pipelines
 toc: true
 ---
 
@@ -246,5 +246,5 @@ If you get the message *your linux distribution is not supported* please contact
 
 ## Related articles
 [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
-[Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)  
+[Steps in CI pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
 [Running pipelines locally]({{site.baseurl}}/docs/pipelines/running-pipelines-locally/)  

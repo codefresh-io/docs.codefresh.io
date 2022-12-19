@@ -1,5 +1,5 @@
 ---
-title: "Grouping steps in pipelines"
+title: "Grouping steps in CI pipelines"
 description: "Group steps into stages for better visualization"
 group: pipelines
 toc: true
@@ -12,8 +12,8 @@ To better visualize the pipeline, you can group several steps into a single _sta
 {% include 
 image.html 
 lightbox="true" 
-file="/images/codefresh-yaml/stages/complex-pipeline.png" 
-url="/images/codefresh-yaml/stages/complex-pipeline.png"
+file="/images/pipeline/codefresh-yaml/stages/complex-pipeline.png" 
+url="/images/pipeline/codefresh-yaml/stages/complex-pipeline.png"
 alt="Complex pipeline" 
 caption="Complex pipeline"
 max-width="70%"
@@ -29,8 +29,8 @@ By default, all pipeline steps are shown one after the other.
 {% include 
 image.html 
 lightbox="true" 
-file="/images/codefresh-yaml/stages/linear-view.png" 
-url="/images/codefresh-yaml/stages/linear-view.png"
+file="/images/pipeline/codefresh-yaml/stages/linear-view.png" 
+url="/images/pipeline/codefresh-yaml/stages/linear-view.png"
 alt="Default pipeline view" 
 caption="Default pipeline view"
 max-width="50%"
@@ -41,8 +41,8 @@ This view works ok for small pipelines, but for a big number of steps it is bett
 {% include 
 image.html 
 lightbox="true" 
-file="/images/codefresh-yaml/stages/example.png" 
-url="/images/codefresh-yaml/stages/example.png"
+file="/images/pipeline/codefresh-yaml/stages/example.png" 
+url="/images/pipeline/codefresh-yaml/stages/example.png"
 alt="Different pipeline stages" 
 caption="Different pipeline stages"
 max-width="80%"
@@ -150,8 +150,8 @@ If you run the pipeline you will see this view
 {% include 
 image.html 
 lightbox="true" 
-file="/images/codefresh-yaml/stages/complex.png" 
-url="/images/codefresh-yaml/stages/complex.png"
+file="/images/pipeline/codefresh-yaml/stages/complex.png" 
+url="/images/pipeline/codefresh-yaml/stages/complex.png"
 alt="Complex Pipeline view" 
 caption="Complex Pipeline view"
 max-width="80%"
@@ -191,5 +191,5 @@ steps:
 
 
 ## Related articles
-[Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)  
+[Steps in CI pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
 [Parallel workflows]({{site.baseurl}}/docs/pipelines/advanced-workflows/)

@@ -1,7 +1,7 @@
 ---
-title: "Caching in pipelines"
+title: "Caching in CI pipelines"
 description: "Faster builds with Codefresh caching"
-group: configure-ci-cd-pipeline
+group: pipelines
 toc: true
 
 ---
@@ -310,5 +310,5 @@ If you run the [hybrid or on-prem versions]({{site.baseurl}}/docs/enterprise/ins
 ## Related articles
 [Introduction to Codefresh pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines)  
 [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
-[Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)  
-* [Parallel pipelines]({{site.baseurl}}/docs/pipelines/advanced-workflows/)  
+[Steps in CI pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
+[Parallel pipelines]({{site.baseurl}}/docs/pipelines/advanced-workflows/)  

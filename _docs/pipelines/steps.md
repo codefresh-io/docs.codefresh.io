@@ -14,12 +14,14 @@ You can create your own pipelines by writing a [codefresh.yml]({{site.baseurl}}/
 {% include 
 image.html 
 lightbox="true" 
-file="/images/pipelines/stages/complex-pipeline.png" 
-url="/images/pipelines/stages/complex-pipeline.png"
+file="/images/pipeline/codefresh-yaml/stages/complex-pipeline.png" 
+url="/images/pipeline/codefresh-yamlstages/complex-pipeline.png"
 alt="Pipeline steps" 
 caption="Pipeline steps"
 max-width="80%"
 %}
+
+
 
 ## Built-in step types
 
@@ -86,8 +88,8 @@ When you create a pipeline, you will have access to two categories of steps:
 {% include 
 image.html 
 lightbox="true" 
-file="/images/pipelines/steps/choose-step.png" 
-url="/images/pipelines/steps/choose-step.png"
+file="/images/pipeline/codefresh-yaml/steps/choose-step.png" 
+url="/images/pipeline/codefresh-yaml/steps/choose-step.png"
 alt="Choosing a custom step" 
 caption="Choosing a custom step" 
 max-width="60%" 
@@ -180,8 +182,8 @@ Once the Dockerfile is ready, you need to push it to Dockerhub. You can either d
 {% include 
 image.html 
 lightbox="true" 
-file="/images/pipelines/steps/create-custom-step.png" 
-url="/images/pipelines/steps/create-custom-step.png"
+file="/images/pipeline/codefresh-yaml/steps/create-custom-step.png" 
+url="/images/pipeline/codefresh-yaml/steps/create-custom-step.png"
 alt="Creating a custom freestyle step" 
 caption="Creating a custom freestyle step" 
 max-width="80%" 
@@ -392,8 +394,8 @@ You will now be able to see the new versions of your plugin in the step marketpl
 {% include
 image.html
 lightbox="true"
-file="/images/pipelines/steps/step-versions.png"
-url="/images/pipelines/steps/step-versions.png"
+file="/images/pipeline/codefresh-yaml/steps/step-versions.png"
+url="/images/pipeline/codefresh-yaml/steps/step-versions.png"
 alt="Different step versions"
 caption="Different step versions"
 max-width="60%"
@@ -562,8 +564,8 @@ This is a very simple pipeline that checks out a NodeJS project and uses our plu
 {% include 
 image.html 
 lightbox="true" 
-file="/images/pipelines/steps/input-parameters.png" 
-url="/images/pipelines/steps/input-parameters.png"
+file="/images/pipeline/codefresh-yaml/steps/input-parameters.png" 
+url="/images/pipeline/codefresh-yaml/steps/input-parameters.png"
 alt="Step input parameters" 
 caption="Step input parameters" 
 max-width="60%" 
@@ -574,8 +576,8 @@ The input parameter is also shown as required in the marketplace.
 {% include 
 image.html 
 lightbox="true" 
-file="/images/pipelines/steps/input-parameters-definition.png" 
-url="/images/pipelines/steps/input-parameters-definition.png"
+file="/images/pipeline/codefresh-yaml/steps/input-parameters-definition.png" 
+url="/images/pipeline/codefresh-yaml/steps/input-parameters-definition.png"
 alt="Input parameters on marketplace" 
 caption="Input parameters on marketplace" 
 max-width="40%" 
@@ -700,8 +702,8 @@ The output parameters of the step are now shown in the marketplace so consumers 
 {% include 
 image.html 
 lightbox="true" 
-file="/images/pipelines/steps/output-parameters-definition.png" 
-url="/images/pipelines/steps/output-parameters-definition.png"
+file="/images/pipeline/codefresh-yaml/steps/output-parameters-definition.png" 
+url="/images/pipeline/codefresh-yaml/steps/output-parameters-definition.png"
 alt="Output parameters on marketplace" 
 caption="Output parameters on marketplace" 
 max-width="40%" 
@@ -776,8 +778,8 @@ We now have a custom Docker image that contains our executable. If we want other
 {% include 
 image.html 
 lightbox="true" 
-file="/images/pipelines/steps/create-plugin-image.png" 
-url="/images/pipelines/steps/create-plugin-image.png"
+file="/images/pipeline/codefresh-yaml/steps/create-plugin-image.png" 
+url="/images/pipeline/codefresh-yaml/steps/create-plugin-image.png"
 alt="Building a public Docker image" 
 caption="Building a public Docker image" 
 max-width="60%" 
@@ -901,8 +903,8 @@ If you look at the plugin entry in the marketplace you will see both input (the 
 {% include 
 image.html 
 lightbox="true" 
-file="/images/pipelines/steps/plugin-parameters.png" 
-url="/images/pipelines/steps/plugin-parameters.png"
+file="/images/pipeline/codefresh-yaml/steps/plugin-parameters.png" 
+url="/images/pipeline/codefresh-yaml/steps/plugin-parameters.png"
 alt="Input and output parameters" 
 caption="Input and output parameters" 
 max-width="60%" 
@@ -913,8 +915,8 @@ The plugin is now ready to be used in a pipeline:
 {% include
 image.html
 lightbox="true"
-file="/images/pipelines/steps/plugin-usage.png"
-url="/images/pipelines/steps/plugin-usage.png"
+file="/images/pipeline/codefresh-yaml/steps/plugin-usage.png"
+url="/images/pipeline/codefresh-yaml/steps/plugin-usage.png"
 alt="Plugin usage"
 caption="Plugin usage"
 max-width="60%"
@@ -1194,8 +1196,8 @@ The end result is that with a single step you can checkout many projects. Checki
 {% include
 image.html
 lightbox="true"
-file="/images/pipelines/steps/multi-checkout.png"
-url="/images/pipelines/steps/multi-checkout.png"
+file="/images/pipeline/codefresh-yaml/steps/multi-checkout.png"
+url="/images/pipeline/codefresh-yaml/steps/multi-checkout.png"
 alt="Checking out multiple Git repositories in a single step"
 caption="Checking out multiple Git repositories in a single step"
 max-width="60%"

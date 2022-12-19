@@ -1,7 +1,7 @@
 ---
-title: "Monitoring pipelines"
+title: "Monitoring CI pipelines"
 description: "Viewing your builds and logs"
-group: configure-ci-cd-pipeline
+group: pipelines
 toc: true
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "Hooks in pipelines"
+title: "Hooks in CI pipelines"
 description: "Execute commands before/after each pipeline or step"
 group: pipelines
 toc: true
@@ -57,8 +57,8 @@ This scenario is very common if you have a cleanup step or a notification step t
  {% include 
 image.html 
 lightbox="true" 
-file="/images/codefresh-yaml/hooks/cleanup-step.png" 
-url="/images/codefresh-yaml/hooks/cleanup-step.png" 
+file="/images/pipeline/codefresh-yaml/hooks/cleanup-step.png" 
+url="/images/pipeline/codefresh-yaml/hooks/cleanup-step.png" 
 alt="Running a cleanup step" 
 caption="Running a cleanup step" 
 max-width="80%" 
@@ -148,8 +148,8 @@ All pipeline hooks will be shown in the "initializing process" logs:
  {% include 
 image.html 
 lightbox="true" 
-file="/images/codefresh-yaml/hooks/before-pipeline.png" 
-url="/images/codefresh-yaml/hooks/before-pipeline.png" 
+file="/images/pipeline/codefresh-yaml/hooks/before-pipeline.png" 
+url="/images/pipeline/codefresh-yaml/hooks/before-pipeline.png" 
 alt="Hooks before a pipeline" 
 caption="Hooks before a pipeline" 
 max-width="80%" 
@@ -203,8 +203,8 @@ Logs for steps hooks are shown in the log window of the step itself.
  {% include 
 image.html 
 lightbox="true" 
-file="/images/codefresh-yaml/hooks/step-after.png" 
-url="/images/codefresh-yaml/hooks/step-after.png" 
+file="/images/pipeline/codefresh-yaml/hooks/step-after.png" 
+url="/images/pipeline/codefresh-yaml/hooks/step-after.png" 
 alt="Hooks before a pipeline" 
 caption="Hooks before a pipeline" 
 max-width="80%" 
@@ -627,8 +627,8 @@ With the current implementation of hooks, the following limitations are present:
 * Step hook does not support the working_directory field aka `working_directory: ${{clone}}`
 
 ## Related articles
-[Conditional Execution of Steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/)  
-[Working Directories]({{site.baseurl}}/docs/pipelines/working-directories/)  
-[Annotations]({{site.baseurl}}/docs/pipelines/annotations/)  
+[Conditional execution of steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/)  
+[Working Directories]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Annotations in CI pipelines]({{site.baseurl}}/docs/pipelines/annotations/)  
 
 

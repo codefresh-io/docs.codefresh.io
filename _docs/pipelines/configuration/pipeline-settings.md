@@ -1,7 +1,7 @@
 ---
-title: "Global settings for piplines"
+title: "Global settings for CI pipelines"
 description: "Define global options for pipeline templates, yaml sources and approval behavior"
-group: administration
+group: pipelines
 toc: true
 ---
 
@@ -11,8 +11,8 @@ On this page, you can define global parameters for the whole Codefresh account r
 
 {% include image.html
 lightbox="true"
-file="/images/administration/pipeline-settings/pipeline-settings-ui.png"
-url="/images/administration/pipeline-settings/pipeline-settings-ui.png"
+file="/images/pipeline/pipeline-settings/pipeline-settings-ui.png"
+url="/images/pipeline/pipeline-settings/pipeline-settings-ui.png"
 alt="Pipeline settings"
 caption="Pipeline settings"
 max-width="80%"

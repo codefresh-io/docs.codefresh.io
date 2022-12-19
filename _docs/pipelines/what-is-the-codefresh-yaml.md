@@ -1,7 +1,7 @@
 ---
-title: "Codefresh YAML"
+title: "Pipeline definitions YAML"
 description: "How to define Codefresh pipelines in a declarative manner"
-group: codefresh-yaml
+group: pipelines
 redirect_from:
   - /docs/codefresh-yaml/
   - /docs/what-is-the-codefresh-yaml
@@ -101,8 +101,8 @@ This allows you to make quick edits (and possibly run some builds) straight from
 {% include 
 image.html 
 lightbox="true" 
-file="/images/codefresh-yaml/inline-editor.png" 
-url="/images/codefresh-yaml/inline-editor.png"
+file="/images/pipeline/codefresh-yaml/inline-editor.png" 
+url="/images/pipeline/codefresh-yaml/inline-editor.png"
 alt="Graphical Inline Yaml Editor" 
 caption="Graphical Inline Yaml Editor"
 max-width="50%"
@@ -364,11 +364,11 @@ to point to production. Everything else (i.e. namespace and service) are exactly
 
 
 ## Related articles
-[Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)   
-[Variables]({{site.baseurl}}/docs/pipelines/variables/)  
+[Steps in CI pipelines]({{site.baseurl}}/docs/pipelines/steps/)   
+[Variables in CI pipelines]({{site.baseurl}}/docs/pipelines/variables/)  
 [Advanced workflows]({{site.baseurl}}/docs/pipelines/advanced-workflows/)  
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
-[YAML examples]({{site.baseurl}}/docs/yaml-examples/examples/)  
+[YAML examples]({{site.baseurl}}/docs/example-catalog/examples/)  
 
 
 

@@ -13,8 +13,8 @@ This article explains how to create advanced view of your images and enrich them
 {% 
   include image.html 
   lightbox="true" 
-  file="/images/codefresh-yaml/docker-image-metadata/metadata.png" 
-  url="/images/codefresh-yaml/docker-image-metadata/metadata.png" 
+  file="/images/pipeline/codefresh-yaml/docker-image-metadata/metadata.png" 
+  url="/images/pipeline/codefresh-yaml/docker-image-metadata/metadata.png" 
   alt="Codefresh Docker registry metadata" 
   max-width="65%" 
 %}
@@ -135,7 +135,7 @@ Image quality has 3 indicators:
 * False - this image is not considered a quality image  (ex. when tests failed but the image was already built).
 * No value (nobody set the annotation) - this image has no quality indicator.
 
-{% include image.html lightbox="true" file="/images/c39a9a2-QUALI.png" url="/images/c39a9a2-QUALI.png" alt="QUALI" max-width="40%" %}
+{% include image.html lightbox="true" file="/images/pipeline/docker-image/quality-image-annotation.png" url="/images/pipeline/docker-image/quality-image-annotation.png" caption="Quality image annotation" max-width="40%" %}
 
 
 ## Viewing Image Metadata Annotations

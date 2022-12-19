@@ -1,5 +1,5 @@
 ---
-title: "Annotations in pipelines"
+title: "Annotations in CI pipelines"
 description: "Mark your builds and projects with extra annotations"
 group: codefresh-yaml
 toc: true
@@ -107,8 +107,8 @@ For build annotations click the *Annotations* on the build details:
 {% include 
 image.html 
 lightbox="true" 
-file="/images/codefresh-yaml/annotations/view-build-annotations.png" 
-url="/images/codefresh-yaml/annotations/view-build-annotations.png"
+file="/images/pipeline/codefresh-yaml/annotations/view-build-annotations.png" 
+url="/images/pipeline/codefresh-yaml/annotations/view-build-annotations.png"
 alt="Viewing Build annotations" 
 caption="Viewing Build annotations"
 max-width="80%"
@@ -119,8 +119,8 @@ For pipeline annotations click the *Annotations* button in the pipeline list vie
 {% include 
 image.html 
 lightbox="true" 
-file="/images/codefresh-yaml/annotations/view-pipeline-annotations.png" 
-url="/images/codefresh-yaml/annotations/view-pipeline-annotations.png"
+file="/images/pipeline/codefresh-yaml/annotations/view-pipeline-annotations.png" 
+url="/images/pipeline/codefresh-yaml/annotations/view-pipeline-annotations.png"
 alt="Viewing Pipeline annotations" 
 caption="Viewing Pipeline annotations"
 max-width="80%"
@@ -131,9 +131,8 @@ For project annotations click the *Annotations* button in the project list view:
 {% include 
 image.html 
 lightbox="true" 
-file="/images/codefresh-yaml/annotations/view-project-annotations.png" 
-file="/images/codefresh-yaml/annotations/view-project-annotations.png" 
-url="/images/codefresh-yaml/annotations/view-build-annotations.png"
+file="/images/pipeline/codefresh-yaml/annotations/view-project-annotations.png" 
+url="/images/pipeline/codefresh-yaml/annotations/view-build-annotations.png"
 alt="Viewing project annotations" 
 caption="Viewing project annotations"
 max-width="80%"
@@ -145,8 +144,8 @@ In all cases you will see a dialog with all existing annotations.
 {% include 
 image.html 
 lightbox="true" 
-file="/images/codefresh-yaml/annotations/edit-project-annotations.png" 
-url="/images/codefresh-yaml/annotations/edit-project-annotations.png"
+file="/images/pipeline/codefresh-yaml/annotations/edit-project-annotations.png" 
+url="/images/pipeline/codefresh-yaml/annotations/edit-project-annotations.png"
 alt="Editing annotations" 
 caption="Editing annotations"
 max-width="50%"
@@ -297,6 +296,6 @@ Note that this syntax is optional. You can still define annotations for a build/
 
 ## Related articles
 [Image annotations]({{site.baseurl}}/docs/docker-registries/metadata-annotations/)  
-[Post-Step Operations]({{site.baseurl}}/docs/pipelines/post-step-operations/)  
-[Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
-[Hooks in pipelines]({{site.baseurl}}/docs/pipelines/hooks/)  
+[Post-step operations]({{site.baseurl}}/docs/pipelines/post-step-operations/)  
+[Creating CI pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
+[Hooks in CI pipelines]({{site.baseurl}}/docs/pipelines/hooks/)  

@@ -1,7 +1,7 @@
 ---
-title: "Secrets in pipelines"
+title: "Secrets in CI pipelines"
 description: "Use Kubernetes secrets in Codefresh"
-group: configure-ci-cd-pipeline
+group: pipelines
 toc: true
 ---
 

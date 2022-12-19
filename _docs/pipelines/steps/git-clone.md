@@ -107,8 +107,8 @@ If you don't want to use the default git provider you can explicitly set the pro
 {% include 
 image.html 
 lightbox="true" 
-file="/images/codefresh-yaml/steps/example-git-providers.png" 
-url="/images/codefresh-yaml/steps/example-git-providers.png"
+file="/images/pipeline/codefresh-yaml/steps/example-git-providers.png" 
+url="/images/pipeline/codefresh-yaml/steps/example-git-providers.png"
 alt="Example git integrations" 
 caption="Example git integrations"
 max-width="40%"
@@ -414,8 +414,8 @@ For setting the values of the proxy variables you can use any of the supported m
 {% include 
 image.html 
 lightbox="true" 
-file="/images/codefresh-yaml/steps/proxy-variables.png" 
-url="/images/codefresh-yaml/steps/proxy-variables.png"
+file="/images/pipeline/codefresh-yaml/steps/proxy-variables.png" 
+url="/images/pipeline/codefresh-yaml/steps/proxy-variables.png"
 alt="Pipeline variable" 
 caption="Pipeline variable"
 max-width="40%"

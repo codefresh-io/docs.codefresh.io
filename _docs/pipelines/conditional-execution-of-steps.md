@@ -241,7 +241,7 @@ Try running the pipeline above and see how it behaves when a variable called `MY
 >Notice that if you use this pattern a lot it means that you are trying to create a complex pipeline that is very smart. We suggest you create instead multiple [simple pipelines for the same project]({{site.baseurl}}/docs/ci-cd-guides/pull-request-branches/#trunk-based-development).
 
 ## Related articles
-[Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/  
+[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)   
 [Variables]({{site.baseurl}}/docs/pipelines/variables/)  
 [Pull Requests and Branches]({{site.baseurl}}/docs/ci-cd-guides/pull-request-branches/)  
 [Pipeline/Step hooks]({{site.baseurl}}/docs/pipelines/hooks/)

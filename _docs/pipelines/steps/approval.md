@@ -11,8 +11,8 @@ The approval step allows you to pause a pipeline and wait for human intervention
 {% include 
 image.html 
 lightbox="true" 
-file="/images/codefresh-yaml/approval/approval-waiting.png" 
-url="/images/codefresh-yaml/approval/approval-waiting.png"
+file="/images/pipeline/codefresh-yaml/approval/approval-waiting.png" 
+url="/images/pipeline/codefresh-yaml/approval/approval-waiting.png"
 alt="Manual Approval step" 
 caption="Manual Approval step"
 max-width="80%"

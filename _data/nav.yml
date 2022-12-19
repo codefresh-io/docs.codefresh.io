@@ -1,3 +1,4 @@
+
 - title: CI pipelines
   url: "/pipelines"
   pages:
@@ -24,6 +25,10 @@
           url: "/deploy"
         - title: Approval
           url: "/approval"
+        - title: Conditional execution of steps
+          url: "/conditional-execution-of-steps"
+        - title: Post-step operations
+          url: "/post-step-operations"
     - title: Triggers in CI pipelines
       url: "/triggers"
       sub-pages:
@@ -41,10 +46,6 @@
           url: "/jfrog-triggers"
         - title: Timer (Cron) triggers
           url: "/cron-triggers"
-    - title: Conditional execution of steps
-      url: "/conditional-execution-of-steps"
-    - title: Post-step operations"
-      url: "/post-step-operations"
     - title: Variables in CI pipelines
       url: "/variables" 
     - title: Hooks in CI pipelines
@@ -59,7 +60,7 @@
       url: "/debugging-pipelines"
     - title: Monitoring CI pipelines
       url: "/monitoring-pipelines"
-    - title: Complex CI pipelines
+    - title: Advanced workflows
       url: "/advanced-workflows"
     - title: Running CI pipelines locally
       url: "/running-pipelines-locally"

@@ -1,7 +1,7 @@
 ---
-title: "Variables in pipelines"
+title: "Variables in CI pipelines"
 description: ""
-group: codefresh-yaml
+group: pipelines
 redirect_from:
   - /docs/variables/
 toc: true
@@ -306,8 +306,8 @@ Codefresh has the built-in capabililty to automatically mask variables in logs i
 {% include
 image.html
 lightbox="true"
-file="/images/codefresh-yaml/variables/masked-variables.png"
-url="/images/codefresh-yaml/variables/masked-variables.png"
+file="/images/pipeline/codefresh-yaml/variables/masked-variables.png"
+url="/images/pipeline/codefresh-yaml/variables/masked-variables.png"
 alt="Masked variables"
 caption="Masked variables"
 max-width="80%"
@@ -318,8 +318,8 @@ The variables can be defined in any of the usual ways Codefresh offers such as [
 {% include
 image.html
 lightbox="true"
-file="/images/codefresh-yaml/variables/encrypted-variables.png"
-url="/images/codefresh-yaml/variables/encrypted-variables.png"
+file="/images/pipeline/codefresh-yaml/variables/encrypted-variables.png"
+url="/images/pipeline/codefresh-yaml/variables/encrypted-variables.png"
 alt="Encrypted variables"
 caption="Encrypted variables"
 max-width="60%"

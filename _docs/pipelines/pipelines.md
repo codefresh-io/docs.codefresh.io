@@ -264,8 +264,8 @@ image.html
 lightbox="true" 
 file="/images/pipeline/create/template-dialog.png" 
 url="/images/pipeline/create/template-dialog.png"
-alt="The template dialog" 
-caption="The template dialog"
+alt="Template options" 
+caption="Template options"
 max-width="80%"
 %}
 
@@ -276,8 +276,8 @@ image.html
 lightbox="true" 
 file="/images/pipeline/create/template-tag.png" 
 url="/images/pipeline/create/template-tag.png"
-alt="template identification" 
-caption="template identification"
+alt="Identify pipelines used as templates" 
+caption="Identify pipelines used as templates"
 max-width="90%"
 %}
 
