@@ -1,7 +1,7 @@
 ---
-title: "Pipeline creation"
+title: "Creating workflows"
 description: ""
-group: pipelines
+group: workflows
 toc: true
 ---
 
@@ -33,7 +33,7 @@ An intuitive selection mechanism enables you to easily select and configure each
 
 ### Delivery Pipeline creation flow
 Here's a high-level overview of the Delivery Pipeline creation flow.  
-For step-by-step instructions, see [How to: create a Delivery Pipeline]({{site.baseurl}}/docs/pipelines/create-pipeline/#how-to-create-a-delivery-pipeline).
+For step-by-step instructions, see [How to: create a Delivery Pipeline]({{site.baseurl}}/docs/workflows/create-pipeline/#how-to-create-a-delivery-pipeline).
 
 1. Define pipeline name and select Workflow Template to execute
 1. Define default values for pipeline workflow template arguments
@@ -56,7 +56,7 @@ In the Delivery Pipeline wizard, we have our starter Workflow Template to use as
    
 
 
-> To share artifacts between steps in workflows, and to view archived logs for completed workflows, you must [configure an artifact repository in Codefresh]({{site.baseurl}}/docs/pipelines/configure-artifact-repository).
+> To share artifacts between steps in workflows, and to view archived logs for completed workflows, you must [configure an artifact repository in Codefresh]({{site.baseurl}}/docs/workflows/configure-artifact-repository).
  
 
 
@@ -278,3 +278,7 @@ Follow the step-by-step instructions to guide you through Delivery Pipeline wiza
 
 Codefresh commits the pipeline to the Git repository, and then syncs it to the cluster. Wait a few seconds for the sync to complete, and verify that the pipeline is displayed in the [Delivery Pipelines](https://g.codefresh.io/2.0/pipelines){:target="\_blank"} page.
 
+## Related articles
+[Selectors for concurrency synchronization]({{site.baseurl}}/docs/workflows/concurrency-limit)  
+[Nested workflows]({{site.baseurl}}/docs/workflows/nested-workflows)  
+[Configure artifact repository]({{site.baseurl}}/docs/workflows/configure-artifact-repository)  

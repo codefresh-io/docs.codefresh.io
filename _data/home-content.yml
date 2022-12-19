@@ -1,6 +1,50 @@
 
 
 
+
+
+- title: Pipelines
+  icon: images/home-icons/pipeline.svg
+  url: ''
+  links:
+  - title: Introduction to Pipelines
+    localurl: /docs/pipelines/introduction-to-codefresh-pipelines/
+  - title: Creating Pipelines
+    localurl: /docs/pipelines/pipelines/   
+  - title: Pipeline triggers
+    localurl: /docs/pipelines/triggers/
+  - title: Monitoring pipelines
+    localurl: /docs/pipelines/monitoring-pipelines/
+  - title: Shared Configuration
+    localurl: /docs/pipelines/shared-configuration/
+  - title: Using secrets
+    localurl: /docs/pipelines/secrets-store/
+  - title: Pipeline caching
+    localurl: /docs/pipelines/pipeline-caching/
+  - title: Running pipelines locally
+    localurl: /docs/pipelines/running-pipelines-locally/
+  - title: Debugging pipelines
+    localurl: /docs/pipelines/debugging-pipelines/
+
+
+- title: Workflows
+  icon: images/home-icons/pipeline.svg
+  url: ''
+  links:
+    - title: Creating workflows
+      localurl: /docs/workflows/create-pipeline
+    - title: Nested workflows
+      localurl: /docs/workflows/nested-workflows/      
+    - title: Configure artifact repository
+      localurl: /docs/workflows/configure-artifact-repository/
+    - title: Selectors for concurrency synchronization
+      localurl: /docs/workflows/concurrency-limit/
+    - title: Sharing file systems
+      localurl: /docs/workflows/sharing-file-system/  
+       
+
+
+
 - title: Clients
   icon: images/home-icons/client.svg
   url: ''
@@ -31,6 +75,7 @@
       localurl: /docs/installation/managed-cluster/
     - title:  Adding Git Sources to GitOps Runtimes
       localurl: /docs/installation/git-sources/
+
 
 - title: Administration
   icon: images/home-icons/administration.svg

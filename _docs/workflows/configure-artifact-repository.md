@@ -1,7 +1,7 @@
 ---
 title: "Configure artifact repository"
 description: ""
-group: pipelines
+group: workflows
 toc: true
 ---
 
@@ -179,3 +179,6 @@ As the final step in configuring the artifact repository, for the `argo-server` 
 1. Wait for the configuration changes to take effect on the cluster.
 1. Check the `argo-server` service account and verify that it is updated with the user-provided `annotation`. 
 1. Select the `argo-server-<#>` pod or pods and delete them.
+
+## Related articles
+[Creating workflows]({{site.baseurl}}/docs/workflows/create-pipeline)  

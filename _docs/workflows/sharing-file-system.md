@@ -1,7 +1,7 @@
 ---
 title: "Sharing file systems"
 description: ""
-group: pipelines
+group: workflows
 toc: true
 ---
 

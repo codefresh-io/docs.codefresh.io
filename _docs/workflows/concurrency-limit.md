@@ -1,13 +1,13 @@
 ---
 title: "Selectors for concurrency synchronization"
 description: ""
-group: pipelines
+group: workflows
 toc: true
 ---
 
 
 Argo Workflows has a synchronization mechanism to limit parallel execution of specific workflows or templates within workflows, as required.  
-The mechanism enforces this with either semaphore or mutex synchronization configurations. For detailed information, see [Synchronization](https://argoproj.github.io/argo-workflows/synchronization/).
+The mechanism enforces this with either semaphore or mutex synchronization configurations. For detailed information, see [Synchronization](https://argoproj.github.io/argo-workflows/synchronization/){:target="\_blank"}.
 
 Codefresh supports an additional level of concurrency synchronization, with _selectors_, for both workflows and templates.  
 
@@ -163,4 +163,6 @@ synchronization:
      - synchronization-wf-8lf9b
      semaphore: argo/ConfigMap/semaphore-config/workflow?repository=denis-codefresh/argo-workflows&branch=feature
 ```
+## Related articles
+[Creating workflows]({{site.baseurl}}/docs/workflows/create-pipeline)  
 

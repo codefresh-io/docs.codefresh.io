@@ -1,7 +1,7 @@
 ---
 title: "Nested workflows"
 description: ""
-group: pipelines
+group: workflows
 toc: true
 ---
 

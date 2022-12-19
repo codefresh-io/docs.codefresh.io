@@ -1,6 +1,108 @@
 
 
 
+- title: CI pipelines
+  url: "/pipelines"
+  pages:
+    - title: Introduction to CI pipelines
+      url: "/introduction-to-codefresh-pipelines"
+    - title: Creating a CI pipeline
+      url: "/pipelines"
+    - title: Steps in CI pipelines
+      url: "/steps"
+      sub-pages:
+        - title: Git-clone
+          url: "/git-clone"
+        - title: Freestyle
+          url: "/freestyle"
+        - title: Build
+          url: "/build"
+        - title: Push
+          url: "/push"
+        - title: Composition
+          url: "/composition"
+        - title: Launch-composition
+          url: "/launch-composition"
+        - title: Deploy
+          url: "/deploy"
+        - title: Approval
+          url: "/approval"
+    - title: Triggers in CI pipelines
+      url: "/triggers"
+      sub-pages:
+        - title: Git triggers
+          url: "/git-triggers"
+        - title: DockerHub triggers
+          url: "/dockerhub-triggers"
+        - title: Azure triggers
+          url: "/azure-triggers"
+        - title: Quay triggers
+          url: "/quay-triggers"
+        - title: Helm triggers
+          url: "/helm-triggers"
+        - title: Artifactory triggers
+          url: "/jfrog-triggers"
+        - title: Timer (Cron) triggers
+          url: "/cron-triggers"
+    - title: Conditional execution of steps
+      url: "/conditional-execution-of-steps"
+    - title: Post-step operations"
+      url: "/post-step-operations"
+   - title: Variables in CI pipelines
+      url: "/variables" 
+    - title: Hooks in CI pipelines
+      url: "/hooks"
+    - title: Annotations in CI pipelines
+      url: "/annotations"  
+    - title: Grouping steps into stages
+      url: "/stages"
+    - title: Caching for CI pipelines
+      url: "/pipeline-caching"    
+    - title: Debugging CI pipelines
+      url: "/debugging-pipelines"
+    - title: Monitoring CI pipelines
+      url: "/monitoring-pipelines"
+    - title: Complex CI pipelines
+      url: "/advanced-workflows"
+    - title: Running CI pipelines locally
+      url: "/running-pipelines-locally"
+    - title: Configuration for CI pipelines
+      url: "/configuration"
+      sub-pages:
+      - title: Shared configuration
+        url: "/shared-configuration"
+      - title: Secrets for CI pipelines
+        url: "/secrets-store"  
+      - title: Global CI pipeline settings
+        url: "/pipeline-settings"  
+      - title: Public logs and status badges
+        url: "/build-status"
+    - title: Service containers
+      url: "/service-containers"
+    - title: Deployment environments
+      url: "/deployment-environments"
+    - title: Docker image metadata
+      url: "/docker-image-metadata"  
+    - title: Pipeline definitions YAML
+      url: "/what-is-the-codefresh-yaml"     
+
+
+- title: Workflows
+  url: "/workflows"
+  pages:
+    - title: Creating workflows
+      url: "/create-pipeline"
+    - title: Nested workflows
+      url: "/nested-workflows"
+    - title: Configure artifact repository
+      url: "/configure-artifact-repository"
+    - title: Selectors for concurrency synchronization
+      url: "/concurrency-limit"
+    - title: Sharing file systems
+      url: "/sharing-file-system"
+
+
+
 - title: Clients
   url: "/clients"
   pages:
@@ -114,4 +216,5 @@
       url: "/privacy-policy"
     - title: Service Commitment
       url: "/sla"
+
 
