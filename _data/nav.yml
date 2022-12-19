@@ -48,7 +48,7 @@
       url: "/conditional-execution-of-steps"
     - title: Post-step operations"
       url: "/post-step-operations"
-   - title: Variables in CI pipelines
+    - title: Variables in CI pipelines
       url: "/variables" 
     - title: Hooks in CI pipelines
       url: "/hooks"
@@ -69,14 +69,14 @@
     - title: Configuration for CI pipelines
       url: "/configuration"
       sub-pages:
-      - title: Shared configuration
-        url: "/shared-configuration"
-      - title: Secrets for CI pipelines
-        url: "/secrets-store"  
-      - title: Global CI pipeline settings
-        url: "/pipeline-settings"  
-      - title: Public logs and status badges
-        url: "/build-status"
+        - title: Global CI pipeline settings
+          url: "/pipeline-settings"          
+        - title: Shared configuration
+          url: "/shared-configuration"
+        - title: Secrets for CI pipelines
+          url: "/secrets-store"  
+        - title: Public logs and status badges
+          url: "/build-status"
     - title: Service containers
       url: "/service-containers"
     - title: Deployment environments
@@ -84,7 +84,7 @@
     - title: Docker image metadata
       url: "/docker-image-metadata"  
     - title: Pipeline definitions YAML
-      url: "/what-is-the-codefresh-yaml"     
+      url: "/what-is-the-codefresh-yaml"    
 
 
 - title: Workflows

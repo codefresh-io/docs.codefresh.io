@@ -23,8 +23,8 @@ Use CI pipelines to:
 {% include 
 image.html 
 lightbox="true" 
-file="/images/codefresh-yaml/stages/complex-pipeline.png" 
-url="/images/codefresh-yaml/stages/complex-pipeline.png"
+file="/images/pipelines/codefresh-yaml/stages/complex-pipeline.png" 
+url="/images/pipelines/codefresh-yaml/stages/complex-pipeline.png"
 alt="Codefresh CI pipelines" 
 caption="Codefresh CI pipelines"
 max-width="90%"
