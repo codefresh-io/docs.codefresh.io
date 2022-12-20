@@ -21,12 +21,6 @@ A. Yes. Codefresh is offered in [SAAS, Hybrid and on-premises modes]({{site.base
 **Q. Is Codefresh open-source?**   
 A. The Web UI is not open source. All the [pipeline plugins](https://codefresh.io/steps/) and the [Codefresh Runner]({{site.baseurl}}/docs/enterprise/codefresh-runner/) are open-source. We also publish several open-source [components](https://github.com/codefresh-io), [examples](https://github.com/codefresh-contrib) and [demos](https://github.com/codefreshdemo/).
 
-**Q. How is pricing structured?**      
-A. Pricing is per concurrent build. In practice this means how many pull requests you can process *at the same time*. See the [pricing page](https://codefresh.io/pricing/) for more details.
-
-**Q. Is there a pay as you go model?**     
-A. We are always considering new pricing options. The pay as you go model has flaws as well. One of the big selling points of Codefresh is the different types of caches we employ in order to speed up builds. When a company charges for build minutes, it has no further motivation to cut down on build times. Several CI solutions offer no caching mechanisms, forcing you to download application dependencies on each build. Please contact us to discuss about pricing if this is your main blocker from adopting Codefresh.
-
 **Q. Does Codefresh offer infrastructure for running builds?**   
 A. Yes, the cloud version of Codefresh is fully [SAAS](https://en.wikipedia.org/wiki/Software_as_a_service). You only need to open an account and all builds are running on our cloud. You can still use a [Codefresh runner]({{site.baseurl}}/docs/enterprise/codefresh-runner/) to run builds on your own infrastructure, but this is completely optional.
 
