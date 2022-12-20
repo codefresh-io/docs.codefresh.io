@@ -331,7 +331,7 @@ max-width="70%"
 %}
 
 To view memory and disk usage for the pipeline (running or completed), click the **Metrics** tab at the bottom of the Build page.  
-The disk usage is computed against the maximum [disk space set for the build]({{site.baseurl}})/docs/configure-ci-cd-pipeline/pipelines/#runtime), shown at the top of the Y-axis. The X-axis shows the actual usage along the pipeline's execution timeline. Mouse over the dots to see the precise usage at different points in time. 
+The disk usage is computed against the maximum [disk space set for the build]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#runtime), shown at the top of the Y-axis. The X-axis shows the actual usage along the pipeline's execution timeline. Mouse over the dots to see the precise usage at different points in time. 
 
 
 
