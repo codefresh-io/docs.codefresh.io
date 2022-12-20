@@ -33,6 +33,7 @@ In this section, we offer helpful information about issues you may encounter and
 - [Pinning codefresh.yml for multi-git triggers]({{site.baseurl}}/docs/troubleshooting/common-issues/multi-git-triggers/)
 - [Workflow process terminated by the system]({{site.baseurl}}/docs/troubleshooting/common-issues/workflow-terminated-by-system/)
 - [Multi-line variable gets truncated with cf_export](cf-export-limitations)
+- [Failed to create container of image]({{site.baseurl}}/docs/troubleshooting/common-issues/create-container-failure)
 
 ## Dynamic environment issues
 
