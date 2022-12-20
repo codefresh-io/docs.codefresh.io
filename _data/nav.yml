@@ -548,6 +548,8 @@
           url: "/no-dockerfile-found"
         - title: Could not tag image
           url: "/could-not-tag-image"
+        - title: Failed to create container of image
+          url: "/create-container-failure"          
         - title: Error Code 137
           url: "/error-code-137"
         - title: Too many Requests
