@@ -312,10 +312,12 @@ In both cases you can copy to clipboard the yaml shown using the button at the t
 
 ### Viewing pipeline metrics
 
-Codefresh offers several metrics for pipeline steps that allow you to get a better overview on the resources
+Codefresh offers several metrics for the pipeline and for steps in the pipeline that allow you to get a better overview of the resources
 consumed by your pipeline.
 
-At the most basic level Codefresh will show some quick metrics while the pipeline is running that include
+**Pipeline metrics**  
+
+At the most basic level, Codefresh displays quick metrics while the pipeline is running that include
 memory consumed and size of logs:
 
 {% include 
@@ -328,7 +330,10 @@ caption="Pipeline running metrics"
 max-width="70%"
 %}
 
-You can then get the memory usage for the whole pipeline by clicking on the metrics tab at the bottom of the screen.
+To view memory and disk usage for the pipeline (running or completed), click the **Metrics** tab at the bottom of the Build page.  
+The disk usage is computed against the maximum [disk space set for the build]({{site.baseurl}})/docs/configure-ci-cd-pipeline/pipelines/#runtime), shown at the top of the Y-axis. The X-axis shows the actual usage along the pipeline's execution timeline. Mouse over the dots to see the precise usage at different points in time. 
+
+
 
 {% include 
 image.html 
@@ -341,7 +346,9 @@ max-width="70%"
 %}
 
 
-If you click on an individual step before clicking the *Metrics* tab you will get metrics for that specific step only.
+**Pipeline-step metrics**  
+For step-specific metrics, first select the step and then click the **Metrics** tab.
+Step metrics are available for memory and CPU usage (not disk space).
 
 
 {% include 
