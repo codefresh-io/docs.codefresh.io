@@ -327,7 +327,7 @@ file="/images/pipeline/monitoring/quick-pipeline-metrics.png"
 url="/images/pipeline/monitoring/quick-pipeline-metrics.png"
 alt="Pipeline running metrics" 
 caption="Pipeline running metrics"
-max-width="90%"
+max-width="95%"
 %}
 
 To view memory and disk usage for the pipeline (running or completed), click the **Metrics** tab at the bottom of the Build page.  
