@@ -312,7 +312,7 @@ In both cases you can copy to clipboard the yaml shown using the button at the t
 
 ### Viewing pipeline metrics
 
-Codefresh offers several metrics for the pipeline and for steps in the pipeline that allow you to get a better overview of the resources
+Codefresh offers several metrics for the pipeline, and for steps in the pipeline, that allow you to get a better overview of the resources
 consumed by your pipeline.
 
 **Pipeline metrics**  
@@ -325,13 +325,16 @@ image.html
 lightbox="true" 
 file="/images/pipeline/monitoring/quick-pipeline-metrics.png" 
 url="/images/pipeline/monitoring/quick-pipeline-metrics.png"
-alt="Pipeline running metrics" 
-caption="Pipeline running metrics"
+alt="Metrics for running pipeline" 
+caption="Metrics for running pipeline"
 max-width="95%"
 %}
 
-To view memory and disk usage for the pipeline (running or completed), click the **Metrics** tab at the bottom of the Build page.  
-The disk usage is computed against the maximum [disk space set for the build]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#runtime), shown at the top of the Y-axis. The X-axis shows the actual usage along the pipeline's execution timeline. Mouse over the dots to see the precise usage at different points in time. 
+* To view memory and disk usage for running and completed pipelines, click the **Metrics** tab at the bottom of the Build page.
+
+  * Memory usage: View build memory usage (Y-axis) for the duration of the build run (X-axis).   
+  * Disk usage: View disk usage (Y-axis) for the duration of the build (X-axis). The red line is set at 90% of the maximum disk space. To see the precise usage at different points in time, mouse over the dots.   
+  Viewing the disk usage for builds, allows you to more accurately define the [minimum disk space for the build volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#runtime).
 
 
 
@@ -340,14 +343,14 @@ image.html
 lightbox="true" 
 file="/images/pipeline/monitoring/pipeline-metrics.png" 
 url="/images/pipeline/monitoring/pipeline-metrics.png"
-alt="Pipeline detailed metrics" 
-caption="Pipeline detailed metrics"
-max-width="70%"
+alt="Detailed metrics for pipelines" 
+caption="Detailed metrics for pipelines"
+max-width="60%"
 %}
 
 
 **Pipeline-step metrics**  
-For step-specific metrics, first select the step and then click the **Metrics** tab.
+For step-specific metrics, first select the step, and then click the **Metrics** tab.
 Step metrics are available for memory and CPU usage (not disk space).
 
 
