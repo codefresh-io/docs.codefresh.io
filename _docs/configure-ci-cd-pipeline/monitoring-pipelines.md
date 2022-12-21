@@ -330,11 +330,12 @@ caption="Metrics for running pipeline"
 max-width="95%"
 %}
 
-* To view memory and disk usage for running and completed pipelines, click the **Metrics** tab at the bottom of the Build page.
+* To view memory and disk usage for running and completed pipeline builds, click the **Metrics** tab at the bottom of the Build page.
 
-  * Memory usage: View build memory usage (Y-axis) for the duration of the build run (X-axis).   
-  * Disk usage: View disk usage (Y-axis) for the duration of the build (X-axis). The red line is set at 90% of the maximum disk space. To see the precise usage at different points in time, mouse over the dots.   
-  Viewing the disk usage for builds, allows you to more accurately define the [minimum disk space for the build volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#runtime).
+  * Memory usage: View memory usage (Y-axis) by time (X-axis) for the duration of the build.   
+  * Disk usage: View disk usage (Y-axis) by time (X-axis) for the duration of the build. The red line is set at 90% of the maximum disk space.   
+    To see the precise usage at different points in time, mouse over the dots.   
+    Viewing the actual disk usage for a build during its run allows you to better gauge and set the [minimum disk space for the build volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#runtime), and retain more space for caching purposes.
 
 
 
