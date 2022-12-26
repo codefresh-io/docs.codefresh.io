@@ -222,7 +222,7 @@ You can define multiple external resources in a single pipeline.
 To speed up builds and improve performance, Codefresh caches different types of data during pipeline execution for reuse across builds. Image-caching is one example of cached data, where Codefresh pulls the required images  during the first build and caches it for reuse in future builds. For more info, see [Pipeline caching]({{site.baseurl}}docs/configure-ci-cd-pipeline/pipeline-caching).   
 Because a portion of the disk space is already utilized by cache, a build can run out of disk space and fail with the 'no space left on device' error.
 
-To prevents out-of-space scenarios that lead to failed builds, you can set the minimum disk space you need for the pipeline's build volume. Defining the minimum disk space ensures that Codefresh makes the disk space available at the start of the specific build, without cached data.  
+To prevent out-of-space scenarios that lead to failed builds, you can set the minimum disk space you need for the pipeline's build volume. Defining the minimum disk space ensures that Codefresh allocates the designated disk space at the start of the specific build without cached data.  
 
 The disk space set for the pipeline is inherited by all the builds run for the pipeline.  
 You can also configure the disk space for a [specific trigger]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/#set-minimum-disk-space-for-build-volume-by-trigger) used by the pipeline or for a specific run, and override what's set for the pipeline.
