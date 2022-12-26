@@ -3,10 +3,6 @@ title: "Using external Helml repos in Codefresh pipelines"
 description: "Use external Helm Charts and repositories in Codefresh pipelines"
 group: deployments
 sub_group: helm
-permalink: /:collection/deployments/helm/add-helm-repository/
-redirect_from:
-  - /docs/deployments/helm/
-  - /docs/add-helm-repository/
 toc: true
 ---
 Codefresh allows you to integrate with external Helm repositories and Helm charts in the Helm Charts page.  
@@ -26,8 +22,8 @@ By default, we show charts from the [official Helm repository](https://github.co
 
 {% include image.html 
 lightbox="true" 
-file="/images/kubernetes-helm/quick-helm-integration.png" 
-url="/images/kubernetes-helm/quick-helm-integration.png" 
+file="/images/deployments/helm/quick-helm-integration.png" 
+url="/images/deployments/helm/quick-helm-integration.png" 
 alt="Adding a Helm repository"
 caption="Adding a Helm repository" 
 max-width="70%" 
@@ -50,8 +46,8 @@ Once connected, inject any Helm repository context into Codefresh pipelines.
 
 {% include image.html 
 lightbox="true" 
-file="/images/kubernetes-helm/connect-helm-repo.png" 
-url="/images/kubernetes-helm/connect-helm-repo.png" 
+file="/images/deployments/helm/connect-helm-repo.png" 
+url="/images/deployments/helm/connect-helm-repo.png" 
 alt="Connecting a Helm repository in the pipeline"
 caption="Connecting a Helm repository in the pipeline" 
 max-width="70%" 

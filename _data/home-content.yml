@@ -1,7 +1,26 @@
 
 
 
-
+- title: Deployments
+  icon: images/home-icons/deployment.svg
+  url: ''
+  links:
+    - title: Deployment options for Kubernetes
+      localurl: /docs/deployments/kubernetes/deployment-options-to-kubernetes/
+    - title: Managing Kubernetes clusters
+      localurl: /docs/deployments/kubernetes/manage-kubernetes/
+    - title: Using Helm in Codefresh pipelines
+      localurl: /docs/deployments/helm/using-helm-in-codefresh-pipeline/
+    - title: Managing Helm releases
+      localurl: /docs/deployments/helm/helm-releases-management/
+    - title: Promoting Helm environments
+      localurl: /docs/deployments/helm/helm-environment-promotion/
+    - title: Creating GitOps applications
+      localurl: /docs/deployment/gitops/create-application/
+    - title: Monitoring applications
+      localurl: /docs/deployment/gitops/applications-dashboard/
+    - title: Managing applications
+      localurl: /docs/deployment/gitops/manage-application/
 
 - title: Pipelines
   icon: images/home-icons/pipeline.svg

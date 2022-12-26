@@ -54,8 +54,8 @@ The Helm pipeline step requires the configuration of a `kube_context` variable t
 
 {% include image.html 
 lightbox="true" 
-file="/images/kubernetes-helm/k8s-name.png" 
-url="/images/kubernetes-helm/k8s-name.png" 
+file="/images/deployments/helm/k8s-name.png" 
+url="/images/deployments/helm/k8s-name.png" 
 alt="Name of Kubernetes cluster"
 caption="Name of Kubernetes cluster" 
 max-width="70%" 
@@ -87,8 +87,8 @@ Once you have a connected to a Helm repository, attach it to the pipeline.
 
 {% include image.html 
 lightbox="true" 
-file="/images/kubernetes-helm/import-helm-configuration.png" 
-url="/images/kubernetes-helm/import-helm-configuration.png" 
+file="/images/deployments/helm/import-helm-configuration.png" 
+url="/images/deployments/helm/import-helm-configuration.png" 
 alt="Connecting a Helm repository in the pipeline"
 caption="Connecting a Helm repository in the pipeline" 
 max-width="50%" 
@@ -266,8 +266,8 @@ The pipeline in this example builds a docker image, runs unit tests, stores the 
 
 {% include image.html 
 lightbox="true" 
-file="/images/kubernetes-helm/full-helm-pipeline.png" 
-url="/images/kubernetes-helm/full-helm-pipeline.png" 
+file="/images/deployments/helm/full-helm-pipeline.png" 
+url="/images/deployments/helm/full-helm-pipeline.png" 
 alt="Helm pipeline"
 caption="Helm pipeline" 
 max-width="90%" 

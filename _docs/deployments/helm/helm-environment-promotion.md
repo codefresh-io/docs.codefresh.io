@@ -1,5 +1,6 @@
 ---
-title: "Helm Environment Promotion"
+
+title: "Promoting Helm Environments"
 description: "Manage your Helm Environments with the Codefresh UI"
 group: deployments
 sub_group: helm
@@ -14,8 +15,8 @@ Here is an example board:
 {% include 
 image.html 
 lightbox="true" 
-file="/images/kubernetes-helm/promotion/board.png" 
-url="/images/kubernetes-helm/promotion/board.png"
+file="/images/deployments/helm/promotion/board.png" 
+url="/images/deployments/helm/promotion/board.png"
 alt="Helm Environment Dashboard" 
 caption="Helm Environment Dashboard" 
 max-width="80%"
@@ -37,8 +38,8 @@ For each board, you define how many columns it will contain, where each column i
 {% include 
 image.html 
 lightbox="true" 
-file="/images/kubernetes-helm/promotion/helm-environments.png" 
-url="/images/kubernetes-helm/promotion/helm-environments.png"
+file="/images/deployments/helm/promotion/helm-environments.png" 
+url="/images/deployments/helm/promotion/helm-environments.png"
 alt="Helm environments column structure" 
 caption="Helm environments column structure" 
 max-width="80%"
@@ -63,8 +64,8 @@ Create your own Helm board with a single or multiple Helm applications. You can 
 {% include 
 image.html 
 lightbox="true" 
-file="/images/kubernetes-helm/promotion/board-selection.png" 
-url="/images/kubernetes-helm/promotion/board-selection.png"
+file="/images/deployments/helm/promotion/board-selection.png" 
+url="/images/deployments/helm/promotion/board-selection.png"
 alt="Helm board selection" 
 caption="Helm board selection" 
 max-width="80%"
@@ -89,8 +90,8 @@ Once you create your Helm environment board, you are ready to define its columns
 {% include 
 image.html 
 lightbox="true" 
-file="/images/kubernetes-helm/promotion/edit-helm-environment.png" 
-url="/images/kubernetes-helm/promotion/edit-helm-environment.png"
+file="/images/deployments/helm/promotion/edit-helm-environment.png" 
+url="/images/deployments/helm/promotion/edit-helm-environment.png"
 alt="Edit Helm environment" 
 caption="Edit Helm environment" 
 max-width="50%"
@@ -122,8 +123,8 @@ For each Helm release, you will get some basic details such as the chart version
 {% include 
 image.html 
 lightbox="true" 
-file="/images/kubernetes-helm/promotion/expand.png" 
-url="/images/kubernetes-helm/promotion/expand.png"
+file="/images/deployments/helm/promotion/expand.png" 
+url="/images/deployments/helm/promotion/expand.png"
 alt="Helm release details" 
 caption="Helm release details" 
 max-width="50%"
@@ -145,8 +146,8 @@ You can also use the board as an action tool in order to promote/demote a Helm r
 {% include 
 image.html 
 lightbox="true" 
-file="/images/kubernetes-helm/promotion/shift-right.png" 
-url="/images/kubernetes-helm/promotion/shift-right.png"
+file="/images/deployments/helm/promotion/shift-right.png" 
+url="/images/deployments/helm/promotion/shift-right.png"
 alt="Promoting a Helm release" 
 caption="Promoting a Helm release" 
 max-width="80%"
@@ -157,8 +158,8 @@ Once you drop the release you will also see the promotion dialog.
 {% include 
 image.html 
 lightbox="true" 
-file="/images/kubernetes-helm/promotion/promote-settings.png" 
-url="/images/kubernetes-helm/promotion/promote-settings.png"
+file="/images/deployments/helm/promotion/promote-settings.png" 
+url="/images/deployments/helm/promotion/promote-settings.png"
 alt="Promotion Settings" 
 caption="Promotion Settings" 
 max-width="40%"
@@ -171,8 +172,8 @@ By clicking the *Variables* button you can override the chart values, import a s
 {% include 
 image.html 
 lightbox="true" 
-file="/images/kubernetes-helm/promotion/value-options.png" 
-url="/images/kubernetes-helm/promotion/value-options.png"
+file="/images/deployments/helm/promotion/value-options.png" 
+url="/images/deployments/helm/promotion/value-options.png"
 alt="Changing deployment values" 
 caption="Changing deployment values" 
 max-width="40%"
@@ -249,8 +250,8 @@ For any existing Helm board, you have the following options:
 {% include 
 image.html 
 lightbox="true" 
-file="/images/kubernetes-helm/promotion/board-management.png" 
-url="/images/kubernetes-helm/promotion/board-management.png"
+file="/images/deployments/helm/promotion/board-management.png" 
+url="/images/deployments/helm/promotion/board-management.png"
 alt="Editing a Helm environment" 
 caption="Editing a Helm environment" 
 max-width="80%"
@@ -273,8 +274,8 @@ The filtering options allow you to further constrain the Helm release shown for 
 {% include 
 image.html 
 lightbox="true" 
-file="/images/kubernetes-helm/promotion/filter.png" 
-url="/images/kubernetes-helm/promotion/filter.png"
+file="/images/deployments/helm/promotion/filter.png" 
+url="/images/deployments/helm/promotion/filter.png"
 alt="Filtering options" 
 caption="Filtering options" 
 max-width="50%"

@@ -1,5 +1,5 @@
 ---
-title: "Manage your Kubernetes cluster"
+title: "Managing Kubernetes clusters"
 description: "Use the graphical Kubernetes dashboard in Codefresh"
 group: deployments
 sub_group: kubernetes
@@ -17,8 +17,8 @@ After [adding a cluster]({{site.baseurl}}/docs/integrations/kubernetes/#connect-
 
 {% include image.html
 lightbox="true"
-file="/images/kubernetes/dashboard/kubernetes-dashboard.png"
-url="/images/kubernetes/dashboard/kubernetes-dashboard.png"
+file="/images/deployments/kubernetes/kubernetes-dashboard.png"
+url="/images/deployments/kubernetes/kubernetes-dashboard.png"
 alt="Codefresh Kubernetes Dashboard"
 caption="Codefresh Kubernetes Dashboard"
 max-width="80%"

@@ -70,7 +70,7 @@ Here's a description of the information and actions in the Applications dashboar
 | Item                     | Description            |  
 | --------------         | --------------           |  
 |Application filters       | Filter by a range of attributes to customize the information in the dashboard to bring you what you need. {::nomarkdown}  <ul><li>Application state<br>A snapshot that displays a breakdown of the deployed applications by their health status.<br>Click a status to filter by applications that match it.<br>Codefresh tracks Argo CD's set of health statuses. See the official documentation on <a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/health" target=”_blank”>Health sets. </a>.</li><li>Application attributes<br>Attribute filters support multi-selection, and results are based on an OR relationship within the same filter with multiple options, and an AND relationship between filters.<br>Clicking <b>More Filters</b> gives you options to filter by Health status, Cluster names, Namespace, and Type. <br><ul><li>Application Type: Can be any of the following<ul><li>Applications: Standalone applications. See the official documentation on <a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications" target=”_blank”>Applications</a>.</li><li>ApplicationSet: Applications created using the ApplicationSet Custom Resource (CR) template. An ApplicationSet can generate single or multiple applications. See the official documentation on <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/application-set" target=”_blank”>Generating Applications with ApplicationSet</a>.</li><li>Git Source: Applications created by Codefresh that includes other applications and CI resources. See <a href="https://codefresh.io/csdp-docs/docs/runtime/git-sources">Git Sources</a>.</li></ul></li></li><li>Labels:The K8s labels defined for the applications. The list displays labels of <i>all</i> the applications, even if you have applied filters.<br>To see the available labels, select <b>Add</b>, and then select the required label and one or more values. <br>To filter by the labels, select <b>Add</b> and then <b>Apply</b>.<br> See the official documentation on <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels" target=”_blank”>Labels and selectors</a>.</li></ul></ul>{:/}|
-|{::nomarkdown}<img src="../../../images/icons/icon-mark-favorite.png?display=inline-block">{:/}| Star applications as favorites and view only the starred applications.{::nomarkdown}<br>Select the <img src="../../../images/icons/icon-mark-favorite.png?display=inline-block"> to star the application as a favorite.<br><br>To filter by favorite applications, on the filters bar, select <img src="../../../images/icons/icon-fav-starred.png?display=inline-block">.<br>{:/} TIP: If you star applications as favorites in the Applications dashboard, you can filter by the same applications in the [DORA metrics dashboard]({{site.baseurl}}/docs/reporting/dora-metrics/#metrics-for-favorite-applications).  |
+|{::nomarkdown}<img src="../../../../images/icons/icon-mark-favorite.png?display=inline-block">{:/}| Star applications as favorites and view only the starred applications.{::nomarkdown}<br>Select the <img src="../../../../images/icons/icon-mark-favorite.png?display=inline-block"> to star the application as a favorite.<br><br>To filter by favorite applications, on the filters bar, select <img src="../../../../images/icons/icon-fav-starred.png?display=inline-block">.<br>{:/} TIP: If you star applications as favorites in the Applications dashboard, you can filter by the same applications in the [DORA metrics dashboard]({{site.baseurl}}/docs/reporting/dora-metrics/#metrics-for-favorite-applications).  |
 |Application actions| Options to monitor/manage applications through the application's context menu. {::nomarkdown}<ul><li>Quick view<br>A comprehensive read-only view of the deployment and definition information for the application.</li>{:/}See [Application Quick View](#view-deployment-and-configuration-info-for-selected-application) in this article.{::nomarkdown}<li>Synchronize/Sync<br>Manually synchronize the application.</li>{:/}See [Manually sync applications]({{site.baseurl}}/docs/deployments/gitops/manage-application/#manually-synchronize-an-application).{::nomarkdown}<li>Edit<br>Modify application definitions.</li>{:/}See [Edit application definitions]({{site.baseurl}}/docs/deployments/gitops/manage-application/#edit-application-definitions).{::nomarkdown}<li>Refresh and Hard Refresh: Available in Card view only. In List view, you must first select the application. <ul><li>Refresh: Retrieve desired (Git) state, compare with the live (cluster) state, and refresh the application to sync with the desired state.</li><li>Hard Refresh: Refresh the application to sync with the Git state, while removing the cache.</li></ul>{:/} |
 
 
@@ -166,7 +166,8 @@ max-width="50%"
 
 
 
-#### Quick View: Summary
+### Quick View: Summary
+
 Displays health, sync status, and source and destination definitions.
 
 {% include
@@ -179,7 +180,9 @@ caption="Application Quick View: Summary"
 max-width="30%"
 %}
 
-#### Quick View: Metadata
+
+### Quick View: Metadata
+
 Displays labels and annotations for the application.
 
 {% include
@@ -192,7 +195,9 @@ caption="Application Quick View: Metadata"
 max-width="30%"
 %}
 
-#### Quick View: Parameters
+
+### Quick View: Parameters
+
 Displays parameters configured for the application, based on the tool used to create the application's manifests.  
 The parameters displayed differ according to the tool:  `directory` (as in the screenshot below), `Helm` charts, or `Kustomize` manifests, or the specific plugin.  
 
@@ -206,7 +211,8 @@ caption="Application Quick View: Parameters"
 max-width="30%"
 %}
 
-#### Quick View: Sync Options
+### Quick View: Sync Options
+
 Displays sync options enabled for the application.
 
 {% include
@@ -219,7 +225,8 @@ caption="Application Quick View: Parameters"
 max-width="30%"
 %}
 
-#### Quick View: Manifest 
+### Quick View: Manifest 
+
 Displays the YAML version of the application manifest.
 
 {% include
@@ -232,7 +239,8 @@ caption="Application Quick View: Manifest"
 max-width="30%"
 %}
 
-#### Quick View: Events
+### Quick View: Events
+
 Displays status and sync events for the application.
 
 {% include
@@ -303,7 +311,7 @@ You can view application resources in [List or Tree views](#view-modes-for-appli
 
 > To quickly see which resources have been added, modified, or removed for the current or for a specific deployment, switch to the Timeline tab and expand the deployment record to show Updated Resources. See [Monitor resource updates for deployments](#monitor-resource-updates-for-deployments).
 
-#### View modes for application resources
+### View modes for application resources
 
 The Current State tab supports Tree and List view formats. 
 * Tree view (default): A hierarchical, interactive visualization of the application and its resources. Useful for complex deployments with multiple clusters and large numbers of resources. See also [Working with resources in Tree view](#working-with-resources-in-tree-view).  
@@ -459,12 +467,14 @@ Identify the health of an application resource through the color-coded border an
 {: .table .table-bordered .table-hover}
 | Health status   | Description | Display in Tree view  | 
 | --------------  | ------------| ------------------|  
-| **Healthy**     | Resource is functioning as required. | {::nomarkdown}<img src="../../../images/icons/current-state-healthy.png" display=inline-block">{:/} | 
-| **Progressing** | Resource is not healthy but can become healthy before the timeout occurs.| {::nomarkdown}<img src="../../../images/icons/current-state-progressing.png" display=inline-block">{:/} | 
-| **Suspended**   | Resource is not functioning, and is either suspended or paused. For example, Cron job or a canary rollout.| {::nomarkdown}<img src="../../../images/icons/current-state-suspended.png" display=inline-block">{:/} | 
+
+| **Healthy**     | Resource is functioning as required. | {::nomarkdown}<img src="../../../../images/icons/current-state-healthy.png" display=inline-block">{:/} | 
+| **Progressing** | Resource is not healthy but can become healthy before the timeout occurs.| {::nomarkdown}<img src="../../../../images/icons/current-state-progressing.png" display=inline-block">{:/} | 
+| **Suspended**   | Resource is not functioning, and is either suspended or paused. For example, Cron job or a canary rollout.| {::nomarkdown}<img src="../../../../images/icons/current-state-suspended.png" display=inline-block">{:/} | 
 | **Missing**     | Resource is not present on the cluster. |{::nomarkdown}<img src="../../../images/icons/current-state-missing.png" display=inline-block">{:/} |                        
-| **Degraded**    | Resource is not healthy, or a timeout occurred before it could reach a healthy status.| {::nomarkdown}<img src="../../../images/icons/current-state-degraded.png" display=inline-block/>{:/} |
-| **Unknown**   | Resource does not have a health status, or the health status is not tracked in Argo CD. For example,`ConfigMaps` resource types.   | {::nomarkdown}<img src="../../../images/icons/current-state-unknown.png" display=inline-block">{:/} | 
+| **Degraded**    | Resource is not healthy, or a timeout occurred before it could reach a healthy status.| {::nomarkdown}<img src="../../../../images/icons/current-state-degraded.png" display=inline-block/>{:/} |
+| **Unknown**   | Resource does not have a health status, or the health status is not tracked in Argo CD. For example,`ConfigMaps` resource types.   | {::nomarkdown}<img src="../../../../images/icons/current-state-unknown.png" display=inline-block">{:/} | 
+
 
 See also [Argo CD's set of health checks](https://argo-cd.readthedocs.io/en/stable/operator-manual/health/){:target="\_blank"}.
 
@@ -480,10 +490,12 @@ The table describes the possible sync statuses for an application resource, and 
 {: .table .table-bordered .table-hover}
 | Sync state     | Description |Display in Tree view  |  
 | -------------- | ----------    | ----------     |  
-| **Synced**       | The live state of the resource on the cluster is identical to the desired state in Git.| {::nomarkdown}<img src="../../../images/icons/current-state-synced.png" display=inline-block">{:/} |                            
-| **Syncing**      | The live state of the resource was not identical to the desired state, and is currently being synced.| {::nomarkdown}<img src="../../../images/icons/current-state-syncing.png" display=inline-block/>{:/} |  
-| **Out-of-Sync**  | {::nomarkdown}The live state is not identical to the desired state.<br>To sync a resource, select the <b>Sync</b> option from the resource's context menu in Tree view. {:/}| {::nomarkdown}<img src="../../../images/icons/current-state-out-of-sync.png" display=inline-block">{:/} |  
-| **Unknown**      | The sync status could not be determined. | {::nomarkdown}<img src="../../../images/icons/current-state-sync-unknown.png" display=inline-block">{:/} |  
+
+| **Synced**       | The live state of the resource on the cluster is identical to the desired state in Git.| {::nomarkdown}<img src="../../../../images/icons/current-state-synced.png" display=inline-block">{:/} |                            
+| **Syncing**      | The live state of the resource was not identical to the desired state, and is currently being synced.| {::nomarkdown}<img src="../../../../images/icons/current-state-syncing.png" display=inline-block/>{:/} |  
+| **Out-of-Sync**  | {::nomarkdown}The live state is not identical to the desired state.<br>To sync a resource, select the <b>Sync</b> option from the resource's context menu in Tree view. {:/}| {::nomarkdown}<img src="../../../../images/icons/current-state-out-of-sync.png" display=inline-block">{:/} |  
+| **Unknown**      | The sync status could not be determined. | {::nomarkdown}<img src="../../../../images/icons/current-state-sync-unknown.png" display=inline-block">{:/} |  
+
 
 > The application header displays the statuses of the current and previous sync operations. Clicking **More** opens the Sync panels with Sync Info, Sync Result and Commit Info.
   The Application Warnings/Errors panel surfaces sync errors on exceeding the maximum number of retries and when a sync operation extends beyond 30 minutes.
@@ -767,8 +779,9 @@ max-width="50%"
 %}
 
 ## Related articles
-[Creating GitOps applications]({{site.baseurl}})/docs/deployments/gitops/create-application)  
-[Managing GitOps applications]({{site.baseurl}})/docs/deployments/gitops/manage-applications)  
+
+[Creating GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application)  
+[Managing GitOps applications]({{site.baseurl}}/docs/deployments/gitops/manage-applications)  
 [Home dashboard]({{site.baseurl}}/docs/reporting/home-dashboard)  
 [DORA metrics]({{site.baseurl}}/docs/reporting/dora-metrics/)  
 

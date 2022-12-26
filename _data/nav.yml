@@ -1,4 +1,46 @@
 
+- title: Deployments
+  url: "/deployments"
+  pages:
+    - title: Kubernetes
+      url: "/kubernetes"
+      sub-pages:  
+        - title: Deployment options for Kubernetes
+          url: "/deployment-options-to-kubernetes"
+        - title: Managing Kubernetes clusters
+          url: "/manage-kubernetes"
+        - title: Custom kubectl commands
+          url: "/custom-kubectl-commands"
+    - title: Helm
+      url: "/helm"
+      sub-pages:
+        - title: Using Helm in a Codefresh pipeline
+          url: "/using-helm-in-codefresh-pipeline"
+        - title: Managing Helm Releases
+          url: "/helm-releases-management"
+        - title: Using managed Helm repos
+          url: "/managed-helm-repository"
+        - title: Helm Charts and repositories
+          url: "/helm-charts-and-repositories"
+        - title: Custom Helm uploads
+          url: "/custom-helm-uploads"
+        - title: Promoting Helm environments
+          url: "/helm-environment-promotion"
+    - title: GitOps
+      url: "/gitops"
+      sub-pages:
+        - title: Creating GitOps applications 
+          url: "/create-application"
+        - title: Monitoring GitOps applications
+          url: "/applications-dashboard"
+        - title: Managing GitOps applications
+          url: "/manage-application"
+        - title: Progressive delivery with GitOps
+          url: "/install-argo-rollouts"
+        - title: Images for GitOps
+          url: "/images"
+
+
 - title: CI pipelines
   url: "/pipelines"
   pages:

@@ -114,7 +114,8 @@ Selecting **more details** for an image tag.
 | **5**             | The log information for the build image step in the relevant workflow. Select to view Logs panel. |
 
 ## Related articles
-[Creating GitOps applications]({{site.baseurl}})/docs/deployments/gitops/create-application)  
-[Managing GitOps applications]({{site.baseurl}})/docs/deployments/gitops/manage-applications)  
+
+[Creating GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application)  
+[Managing GitOps applications]({{site.baseurl}}/docs/deployments/gitops/manage-applications)  
 [Image enrichment with integrations]({{site.baseurl}}/integrations/image-enrichment-overview)  
 [Home dashboard]({{site.baseurl}}/docs/reporting/home-dashboard)  

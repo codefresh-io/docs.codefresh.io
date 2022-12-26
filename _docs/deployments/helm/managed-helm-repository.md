@@ -27,8 +27,8 @@ The Codefresh-managed Helm repo is displayed with other Helm repositories you ha
 {% include 
 image.html 
 lightbox="true" 
-file="/images/kubernetes-helm/private-helm-repo/managed-helm-repo.png" 
-url="/images/kubernetes-helm/private-helm-repo/managed-helm-repo.png"
+file="/images/deployments/helm/private-helm-repo/managed-helm-repo.png"
+url="/images/deployments/helm/private-helm-repo/managed-helm-repo.png"
 alt="Codefresh built-in Helm repository" 
 caption="Codefresh built-in Helm repository" 
 max-width="50%" 

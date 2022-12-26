@@ -76,9 +76,10 @@ Wait until the deployment is completed, and you can open the deployed applicatio
 
 {% include image.html 
 lightbox="true" 
-file="/images/3f36367-Screenshot_from_2018-02-16_17-09-54.png" 
-url="/images/3f36367-Screenshot_from_2018-02-16_17-09-54.png" 
-alt="Screenshot from 2018-02-16 17-09-54.png" 
+file="/images/deployments/kubernetes/describe-k8s-deployment.png" 
+url="/images/deployments/kubernetes/describe-k8s-deployment.png" 
+alt="Describe Kubernetes deployment" 
+caption="Describe Kubernetes deployment" 
 max-width="60%" 
 %}
 

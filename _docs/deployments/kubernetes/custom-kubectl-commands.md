@@ -1,5 +1,5 @@
 ---
-title: "Running custom kubectl commands"
+title: "Custom kubectl commands"
 description: "Use kubectl in your Codefresh pipelines"
 group: deployments
 sub_group: kubernetes
@@ -45,8 +45,8 @@ your [kubeconfig files](https://kubernetes.io/docs/concepts/configuration/organi
 
 {% include image.html 
 lightbox="true" 
-file="/images/kubernetes/custom-kubectl/kube-context.png" 
-url="/images/kubernetes/custom-kubectl/kube-context.png"
+file="/images/deployments/kubernetes/kube-context.png" 
+url="/images/deployments/kubernetes/kube-context.png"
 alt="Codefresh cluster names"
 caption="Codefresh cluster names"
 max-width="50%"
@@ -104,8 +104,8 @@ Here is the pipeline:
 
 {% include image.html 
 lightbox="true" 
-file="/images/kubernetes/custom-kubectl/parallel-kubectl.png" 
-url="/images/kubernetes/custom-kubectl/parallel-kubectl.png"
+file="/images/deployments/kubernetes/parallel-kubectl.png" 
+url="/images/deployments/kubernetes/parallel-kubectl.png"
 alt="Parallel kubectl deployment"
 caption="Parallel kubectl deployment"
 max-width="100%"
