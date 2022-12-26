@@ -218,16 +218,18 @@ You can define multiple external resources in a single pipeline.
   - Medium (recommended 3-4 steps)
   - Large (recommended 5-6 steps)
 
-#### Set disk space for pipeline builds
-Set the disk space you need for the pipeline's build volume. Configuring the disk space per pipeline build volume prevents out-of-space scenarios that lead to failed builds. The disk space set for the pipeline is inherited by all the builds run for the pipeline.  
+#### Set minimum disk space for a pipeline build
+To speed up builds and improve performance, Codefresh caches different types of data during pipeline execution for reuse across builds. Image-caching is one example of cached data, where Codefresh pulls the required images  during the first build and caches it for reuse in future builds. For more info, see [Pipeline caching]({{site.baseurl}}docs/configure-ci-cd-pipeline/pipeline-caching).   
+Because a portion of the disk space is already utilized by cache, a build can run out of disk space and fail with the 'no space left on device' error.
 
-Codefresh calculates the available range according to the disk size, and automatically sets the disk space for the build volume to 70% of the total disk space. You can either retain the default allocation or change as needed.
+To prevent out-of-space scenarios that lead to failed builds, you can set the minimum disk space you need for the pipeline's build volume. Defining the minimum disk space ensures that Codefresh allocates the designated disk space at the start of the specific build without cached data.  
 
->You can also configure the disk space for a [specific trigger]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/#set-minimum-disk-space-for-build-volume-by-trigger) used by the pipeline or for a specific run, and override what's set for the pipeline.
+The disk space set for the pipeline is inherited by all the builds run for the pipeline.  
+You can also configure the disk space for a [specific trigger]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/#set-minimum-disk-space-for-build-volume-by-trigger) used by the pipeline or for a specific run, and override what's set for the pipeline.
 
-1. Select the pipeline for which to set the disk space.
+1. Select the pipeline for which to set the minimum disk space.
 1. Select **Settings**, and then **Runtime**.
-1. Enable **Set minimum required disk space** and either retain the default displayed or change as needed. 
+1. Enable **Set minimum required disk space**, and either retain the default displayed or change as needed. 
 
 {% include 
 image.html 
