@@ -16,6 +16,7 @@ As the Codefresh Runner is **not** dependent on any special dockershim features,
 
 ## System requirements
 
+
 {: .table .table-bordered .table-hover}
 | Item                     | Requirement            |  
 | --------------         | --------------           |  
@@ -23,6 +24,7 @@ As the Codefresh Runner is **not** dependent on any special dockershim features,
 |Node requirements| Disk space: 50 GB per node|
 |Container runtime | Any compliant container runtime, as the runner is **not** dependent on any special dockershim features. {::nomarkdown}<br>Examples: <ul><li><a href="https://kubernetes.io/blog/2020/12/02/dockershim-faq" target="blank">Docker</a></li><li><a href="https://containerd.io/" target="blank">containerd</a></li><li><a href="https://cri-o.io/" target="blank">cri-o</a></li></ul> {:/} |
 |CLI token | [Codefresh CLI token]({{site.baseurl}}/docs/integrations/codefresh-api/#authentication-instructions)|
+
 
 ## Codefresh Runner installation
 Install the Runner from any workstation or laptop with access to the Kubernetes cluster running Codefresh builds, via `kubectl`.  The Codefresh Runner authenticates to your Codefresh account using the CLI token.  

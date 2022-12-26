@@ -42,8 +42,8 @@ max-width="80%"
 
 Here you can define global template behavior. The options are:
 
-* Enable [pipeline templates]({{site.baseurl}}/docs/docs/configure-ci-cd-pipeline/pipelines/#using-pipeline-templates) for users. If this is enabled some pipelines can be marked as templates and users can still select them when creating a new pipeline. 
-* Decide if users can clone an existing pipeline (along with its triggers and associated parameters) when [creating a new pipeline]({{site.baseurl}}/docs/docs/configure-ci-cd-pipeline/pipelines/#creating-new-pipelines).
+* Enable [pipeline templates]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#using-pipeline-templates) for users. If this is enabled some pipelines can be marked as templates and users can still select them when creating a new pipeline. 
+* Decide if users can clone an existing pipeline (along with its triggers and associated parameters) when [creating a new pipeline]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#creating-new-pipelines).
 
 Note that templates are simply normal pipelines “marked” as a template. There is no technical difference between templates and actual pipelines.
 
@@ -51,9 +51,9 @@ Note that templates are simply normal pipelines “marked” as a template. Ther
 
 Here you can restrict the sources of pipeline YAML that users can select. The options are:
 
-* Enable/Disable the [inline editor]({{site.baseurl}}/docs/docs/configure-ci-cd-pipeline/pipelines/#using-the-inline-pipeline-editor) where YAML is stored in Codefresh SaaS
+* Enable/Disable the [inline editor]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#using-the-inline-pipeline-editor) where YAML is stored in Codefresh SaaS
 * Enable/disable pipeline YAML from connected Git repositories
-* Enable/disable pipeline YAML from [external URLs]({{site.baseurl}}/docs/docs/configure-ci-cd-pipeline/pipelines/#loading-codefreshyml-from-version-control)
+* Enable/disable pipeline YAML from [external URLs]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#loading-codefreshyml-from-version-control)
 
 You need to allow at least one of these options so that users can create new pipelines. We suggest leaving the first option enabled when users are still learning about Codefresh and want to experiment. 
 
@@ -78,10 +78,10 @@ Here you can decide if the build step will push images or not according to your 
 2. All built images are automatically pushed to the default registry
 3. All built images are NOT pushed anywhere by default
 
-Note that this behavior is simply a convenience feature for legacy pipelines. Users can still use a [push step]({{site.baseurl}}/docs/docs/codefresh-yaml/steps/push/) in a pipeline and always push an image to a registry regardless of what was chosen in the build step.
+Note that this behavior is simply a convenience feature for legacy pipelines. Users can still use a [push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/) in a pipeline and always push an image to a registry regardless of what was chosen in the build step.
 
 ## What to read next
 
-* [Creating Pipelines]({{site.baseurl}}/docs/docs/configure-ci-cd-pipeline/pipelines/)
-* [Codefresh YAML]({{site.baseurl}}/docs/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
-* [Git Integration]({{site.baseurl}}/docs/docs/integrations/git-providers/)
+* [Creating Pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
+* [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
+* [Git Integration]({{site.baseurl}}/docs/integrations/git-providers/)
