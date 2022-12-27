@@ -1,5 +1,21 @@
 
 
+- title: Example catalog
+  icon: images/home-icons/tutorial.svg
+  url: ''
+  links:
+    - title: CI/CD examples for pipelines
+      localurl: /docs/example-catalog/examples/
+    - title: CI examples
+      localurl: /docs/example-catalog/ci-examples
+    - title: CD examples
+      localurl: /docs/example-catalog/cd-examples
+    - title: GitOps examples
+      localurl: /docs/example-catalog/gitops-examples
+
+
+
+
 
 - title: Deployments
   icon: images/home-icons/deployment.svg

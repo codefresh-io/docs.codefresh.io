@@ -12,7 +12,7 @@ toc: true
 
 ---
 <!-- needs fine tuning for GitOps as well; all x-refs have to be updated-->
-Codefresh provides several complementary ways for access control within an organization:
+Codefresh provides seral complementary ways for access control within an organization:
 
 * **Role-based access**: [Role-based access](#users-and-administrators), restricts access to parts of the Codefresh UI intended for account administrators. For example, only an account administrator should be able to change integrations with [git providers]({{site.baseurl}}/docs/integrations/git-providers/) and [cloud services]({{site.baseurl}}/docs/deployments/kubernetes/add-kubernetes-cluster/). 
 
@@ -51,10 +51,10 @@ The table below lists the functionality available for role-based access.
 |[External Helm repositories]({{site.baseurl}}/docs/new-helm/add-helm-repository/)      | `Admin`|
 |[Cloud provider settings]({{site.baseurl}}/docs/deployments/kubernetes/add-kubernetes-cluster/)      | `Admin`|
 |[Cloud storage settings]({{site.baseurl}}/docs/testing/test-reports/#connecting-your-storage-account)      | `Admin`|
-|[Shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/)      | `Admin`|
+|[Shared configuration]({{site.baseurl}}/docs/pipelines/shared-configuration/)      | `Admin`|
 |[API token generation]({{site.baseurl}}/docs/integrations/codefresh-api/#authentication-instructions)      | `Admin`|
 |[SSO Settings]({{site.baseurl}}/docs/administration/single-sign-on/)      | `Admin`|
-|[Runtime environment selection]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-settings)      | `Admin`|
+|[Runtime environment selection]({{site.baseurl}}/docs/pipelines/pipelines/#pipeline-settings)      | `Admin`|
 |[Slack settings]({{site.baseurl}}/docs/integrations/notifications/slack-integration/)      | `Admin`|
 |[Audit logs]({{site.baseurl}}/docs/administration/audit-logs/)      | `Admin`|
 |ABAC for Kubernetes clusters      | `Admin`|
@@ -184,14 +184,14 @@ For pipelines:
 * `Update` - see and edit allowed pipelines only (including tagging them).
 * `Delete` - can delete allowed pipelines only.
 * `Run` - can run allowed pipelines only.
-* `Approve` - resume pipelines that are waiting for manual [approval]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/).
-* `Debug` - allow the usage of the [pipeline debugger]({{site.baseurl}}/docs/configure-ci-cd-pipeline/debugging-pipelines/).
+* `Approve` - resume pipelines that are waiting for manual [approval]({{site.baseurl}}/docs/pipelines/steps/approval/).
+* `Debug` - allow the usage of the [pipeline debugger]({{site.baseurl}}/docs/pipelines/debugging-pipelines/).
 
 
 
 ## Git-repository access restrictions 
 
-By default, users can load pipeline definitions when [creating a pipeline]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/), from the inline editor, or any private or public Git repository.  
+By default, users can load pipeline definitions when [creating a pipeline]({{site.baseurl}}/docs/pipelines/pipelines/), from the inline editor, or any private or public Git repository.  
 
 You can change the default behavior to restrict loading CI pipeline definitions from specific Git repositories or completely disable loading the definitions from all Git repositories.
 

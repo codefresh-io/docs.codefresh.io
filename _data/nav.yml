@@ -1,4 +1,120 @@
 
+
+ 
+    
+- title: Example catalog
+  url: "/example-catalog"
+  pages:
+    - title: "CI/CD examples for pipelines"
+      url: "/examples"
+    - title: "CI examples"
+      url: "/ci-examples"
+      sub-pages:
+        - title: Check out Git repositories
+          url: "/git-checkout"
+        - title: Custom Git commmands
+          url: "/git-checkout-custom"
+        - title: Non-Git checkouts
+          url: "/non-git-checkout"
+        - title: Use Git Hash in CI
+          url: "/get-short-sha-id-and-use-it-in-a-ci-process"
+        - title: Build an Image with the Dockerfile in root directory
+          url: "/build-an-image-with-the-dockerfile-in-root-directory"
+        - title: Build an Images specifying Dockerfile Location
+          url: "/build-an-image-specify-dockerfile-location"
+        - title: Build an Image from a different Git repository
+          url: "/build-an-image-from-a-different-git-repository"
+        - title: Build and push an Image
+          url: "/build-and-push-an-image"
+        - title: Build an Image with build arguments
+          url: "/build-an-image-with-build-arguments"
+        - title: Share data between steps
+          url: "/shared-volumes-between-builds"
+        - title: Upload/download from Google Storage buckets
+          url: "/uploading-or-downloading-from-gs"
+        - title: Call other pipelines
+          url: "/call-child-pipelines"
+        - title: Run unit tests
+          url: "/run-unit-tests"
+        - title: Run integration tests
+          url: "/run-integration-tests"
+        - title: Fan-in/fan-out with unit tests
+          url: "/fan-in-fan-out"
+        - title: Codecov coverage reports
+          url: "/codecov-testing"
+        - title: Coveralls coverage reports
+          url: "/coveralls-testing"
+        - title: Codacy coverage reports
+          url: "/codacy-testing"
+        - title: Run integration tests with Mongo
+          url: "/integration-tests-with-mongo"
+        - title: Run integration tests with MySQL
+          url: "/integration-tests-with-mysql"
+        - title: Run integration tests with PostgreSQL
+          url: "/integration-tests-with-postgres"
+        - title: Run integration tests with Redis
+          url: "/integration-tests-with-redis"
+        - title: Populate a database with existing data
+          url: "/populate-a-database-with-existing-data"
+        - title: Share volumes in composition steps
+          url: "/shared-volumes-of-service-from-composition-step-for-other-yml-steps"          
+        - title: Import data to MongoDB
+          url: "/import-data-to-mongodb"
+        - title: Vault Secrets in the Pipeline
+          url: "/vault-secrets-in-the-pipeline"
+        - title: Decrypt with Mozilla SOPS
+          url: "/decryption-with-mozilla-sops"
+        - title: GitOps secrets
+          url: "/gitops-secrets" 
+        - title: Launch Composition
+          url: "/launch-composition"
+        - title: Use Docker compose
+          url: "/launching-a-composition-and-defining-a-service-environment-variables-using-a-file"
+        - title: Send notification to Slack
+          url: "/sending-the-notification-to-slack"
+        - title: Send notification to Jira
+          url: "/sending-the-notification-to-jira"
+    - title: "CD examples"
+      url: "/cd-examples"
+      sub-pages:
+        - title: Import data to MongoDB
+          url: "/import-data-to-mongodb"
+        - title: NodeJS + Angular2 + MongoDB
+          url: "/nodejs-angular2-mongodb"
+        - title: Secure a Docker Container Using HTTP Basic Auth
+          url: "/secure-a-docker-container-using-http-basic-auth"
+        - title: Spring Boot + Kafka + Zookeeper
+          url: "/spring-boot-kafka-zookeeper"
+        - title: Web terminal
+          url: "/web-terminal"
+        - title: Trigger a K8s Deployment from a DockerHub Push Event
+          url: "/trigger-a-k8s-deployment-from-docker-registry"
+        - title: Deploy to VM
+          url: "/packer-gcloud"
+        - title: Deploy to a VM via FTP
+          url: "/transferring-php-ftp"
+        - title: Deploy to Tomcat using SCP
+          url: "/deploy-to-tomcat-via-scp"
+        - title: Deploy with Helm
+          url: "/helm"
+        - title: Deploy with Terraform
+          url: "/terraform"
+        - title: Deploy with Pulumi
+          url: "/pulumi"
+        - title: Deploy to Nomad
+          url: "/nomad"
+        - title: Deploy to Heroku
+          url: "/deploy-to-heroku"
+        - title: Use kubectl as part of Freestyle step
+          url: "/use-kubectl-as-part-of-freestyle-step"
+        - title: Deploy with Kustomize
+          url: "/deploy-with-kustomize"
+        - title: Deploy to Docker Swarm
+          url: "/docker-swarm"  
+        - title: Amazon ECS/Fargate
+          url: "/amazon-ecs"
+        - title: Elastic Beanstalk
+          url: "/elastic-beanstalk" 
 - title: Deployments
   url: "/deployments"
   pages:
@@ -179,6 +295,7 @@
   url: "/administration"
   pages:
     - title: Account & user management
+      url: /account-user-management
       sub-pages:  
         - title: Create a Codefresh account
           url: "/create-codefresh-account"
@@ -204,6 +321,10 @@
 - title: Single Sign-On
   url: /single-sign-on
   pages:
+    - title: SSO Overview
+      url: /sso-overview
+    - title: Common configuration
+      url: /team-sync
     - title: OpenID Connect
       url: /oidc
       sub-pages:
@@ -230,8 +351,7 @@
           url: /saml-pingid
     - title: LDAP
       url: /ldap
-    - title: Common configuration
-      url: /team-sync
+
 
 
 - title: Reference
