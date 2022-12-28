@@ -7,17 +7,29 @@ redirect_from:
 toc: true
 ---
 
+### December 2022
+
+#### Features and enhancements
+- Disk Usage chart in Build > Metrics to track actual disk usage by build - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/monitoring-pipelines/#viewing-pipeline-metrics)
+- Concurrency limit for pipelines increased to 30 - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#policies)
+
+
+#### Bug fixes
+- Runtime monitor fails to start on upgrading EKS (Elastic Cloud Kubernetes) to 1.21.
+- Examples missing from the "Workflow" step catalog.
+- Get annotations request causes `cf-api` endpoints to restart.
+
 ### November 2022
 
 #### Features and enhancements
 - Set disk space for a pipeline build volume - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#runtime)
 - Support for latest Kubernetes cluster version 1.24 - [documentation]({{site.baseurl}}/docs/administration/codefresh-runner/#prerequisites)
 
-<!--
+
 #### Bug fixes
 - Workflow API returns 500 Internal Server Error.
 - Helm releases not updated by refresh period.
-- Get annotations request causes `cf-api` endpoints to restart.-->
+- Get annotations request causes `cf-api` endpoints to restart.
 
 ### October 2022
 
