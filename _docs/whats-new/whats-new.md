@@ -18,7 +18,6 @@ toc: true
 #### Bug fixes
 - Runtime monitor fails to start on upgrading EKS (Elastic Cloud Kubernetes) to 1.21.
 - Examples missing from the "Workflow" step catalog.
-- Get annotations request causes `cf-api` endpoints to restart.
 
 ### November 2022
 
