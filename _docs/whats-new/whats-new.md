@@ -1,6 +1,6 @@
 ---
-title: "What's New In Codefresh?"
-description: "A changelog of new features"
+title: "What's new in Codefresh?"
+description: "A changelog of new features and bug fixes"
 group: whats-new
 redirect_from:
   - /docs/whats-new/
