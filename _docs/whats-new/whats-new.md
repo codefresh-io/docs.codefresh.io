@@ -10,8 +10,9 @@ toc: true
 ### December 2022
 
 #### Features and enhancements
-- Disk Usage chart in Build > Metrics to track actual disk usage by build - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/monitoring-pipelines/#viewing-pipeline-metrics)
+- Track actual disk usage for build in the Disk Usage chart  - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/monitoring-pipelines/#viewing-pipeline-metrics)
 - Concurrency limit for pipelines increased to 30 - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#policies)
+
 
 
 #### Bug fixes
