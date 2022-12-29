@@ -1,5 +1,37 @@
 
 
+
+- title: CI/CD Guides
+  url: "/ci-cd-guides"
+  pages:
+    - title: Building your app
+      url: "/packaging-compilation"  
+    - title: Building Docker images
+      url: "/building-docker-images"
+    - title: Accessing Docker registries from Kubernetes cluster
+      url: "/access-docker-registry-from-kubernetes"  
+    - title: Working with Docker registries
+      url: "/working-with-docker-registries"   
+    - title: Adding config maps to namespaces
+      url: "/add-config-maps-to-your-namespaces"     
+    - title: Pull Requests and branches
+      url: "/pull-request-branches"
+    - title: Building microservices
+      url: "/microservices"
+    - title: Deploying to predefined environments
+      url: "/environment-deployments"   
+    - title: Previewing dynamic environments
+      url: "/preview-environments"                 
+    - title: Progressive delivery
+      url: "/progressive-delivery" 
+    - title: GitOps deployments
+      url: "/gitops-deployments" 
+    - title: Helm best practices
+      url: "/helm-best-practices" 
+    - title: Kubernetes templating
+      url: "/kubernetes-templating" 
+
+
  
     
 - title: Example catalog
@@ -266,6 +298,7 @@
       url: "/csdp-cli"
 
 
+
 - title: Installation
   url: "/installation"
   pages:
@@ -289,7 +322,6 @@
       url: "/managed-cluster" 
     - title: Add Git Sources to to GitOps Runtimes
       url: "/git-sources"
-
 
 - title: Administration
   url: "/administration"
@@ -376,5 +408,6 @@
       url: "/privacy-policy"
     - title: Service Commitment
       url: "/sla"
+
 
 

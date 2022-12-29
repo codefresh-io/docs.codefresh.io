@@ -1,5 +1,36 @@
 
 
+
+- title: CI/CD guides
+  icon: images/home-icons/guides.png
+  url: ''
+  links:
+  - title: Building your app
+    localurl: /docs/ci-cd-guides/packaging-compilation/
+  - title: Building Docker images
+    localurl: /docs/ci-cd-guides/building-docker-images/
+  - title: Accessing a Docker registry from Kubernetes cluster
+    localurl: /docs/ci-cd-guides/access-docker-registry-from-kubernetes/  
+  - title: Working with Docker registries
+    localurl: /docs/ci-cd-guides/working-with-docker-registries/       
+  - title: Adding config maps to namespaces
+    localurl: /docs/ci-cd-guides/add-config-maps-to-your-namespaces/    
+  - title: Pull Requests and branches
+    localurl: /docs/ci-cd-guides/pull-request-branches/
+  - title: Pipelines for microservices
+    localurl: /docs/ci-cd-guides/microservices/  
+  - title: Deploying to predefined environments
+    localurl: /docs/ci-cd-guides/environment-deployments/ 
+  - title: Previewing dynamic environments
+    localurl: /docs/ci-cd-guides/preview-environments/   
+  - title: Helm best practices
+    localurl: /docs/ci-cd-guides/helm-best-practices/  
+  - title: Templating for Kubernetes
+    localurl: /docs/ci-cd-guides/kubernetes-templating/     
+  - title: Progressive Delivery
+    localurl: /docs/ci-cd-guides/progressive-delivery/ 
+    
+
 - title: Example catalog
   icon: images/home-icons/tutorial.svg
   url: ''
@@ -148,6 +179,7 @@
       localurl: /docs/reference/secrets   
     - title: Shared configuration repo
       localurl: /docs/reference/shared-configuration/
+
 
 
 
