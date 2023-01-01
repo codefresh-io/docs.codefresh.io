@@ -83,24 +83,24 @@
   icon: images/home-icons/pipeline.svg
   url: ''
   links:
-  - title: Introduction to Pipelines
-    localurl: /docs/pipelines/introduction-to-codefresh-pipelines/
-  - title: Creating Pipelines
-    localurl: /docs/pipelines/pipelines/   
-  - title: Pipeline triggers
-    localurl: /docs/pipelines/triggers/
-  - title: Monitoring pipelines
-    localurl: /docs/pipelines/monitoring-pipelines/
-  - title: Shared Configuration
-    localurl: /docs/pipelines/shared-configuration/
-  - title: Using secrets
-    localurl: /docs/pipelines/secrets-store/
-  - title: Pipeline caching
-    localurl: /docs/pipelines/pipeline-caching/
-  - title: Running pipelines locally
-    localurl: /docs/pipelines/running-pipelines-locally/
-  - title: Debugging pipelines
-    localurl: /docs/pipelines/debugging-pipelines/
+    - title: Introduction to Pipelines
+      localurl: /docs/pipelines/introduction-to-codefresh-pipelines/
+    - title: Creating Pipelines
+      localurl: /docs/pipelines/pipelines/   
+    - title: Pipeline triggers
+      localurl: /docs/pipelines/triggers/
+    - title: Monitoring pipelines
+      localurl: /docs/pipelines/monitoring-pipelines/
+    - title: Shared Configuration
+      localurl: /docs/pipelines/shared-configuration/
+    - title: Using secrets
+      localurl: /docs/pipelines/secrets-store/
+    - title: Pipeline caching
+      localurl: /docs/pipelines/pipeline-caching/
+    - title: Running pipelines locally
+      localurl: /docs/pipelines/running-pipelines-locally/
+    - title: Debugging pipelines
+      localurl: /docs/pipelines/debugging-pipelines/
 
 
 - title: Workflows
