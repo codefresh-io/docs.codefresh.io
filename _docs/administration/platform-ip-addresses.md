@@ -11,7 +11,7 @@ that the Codefresh platform is using. This will allow you to deploy to your clus
 
 >Note that this is for paying customers and needed only for customers that use the [SAAS version of Codefresh]({{site.baseurl}}/docs/administration/installation-security/). If you use the [Codefresh runner]({{site.baseurl}}/docs/administration/codefresh-runner/), there is no need to open any IPs and ports in your firewall.
 
-## Current IPs used by the Codefresh platform (updated July 31st 2021)
+## Current IPs used by the Codefresh platform (updated January 2023)
 
 - 107.21.238.215
 - 18.209.185.91
@@ -32,6 +32,14 @@ that the Codefresh platform is using. This will allow you to deploy to your clus
 - 44.228.66.171
 - 44.238.167.159
 - 44.237.63.217
+- 52.6.148.44
+- 52.73.90.9
+- 52.72.0.154
+- 52.73.76.60
+- 3.228.62.77
+- 44.205.132.73
+- 34.235.30.144
+- 54.160.88.80
 
 All the IPs are NAT gateways, and therefore you only need to enable specific IPs instead of ranges.
 
