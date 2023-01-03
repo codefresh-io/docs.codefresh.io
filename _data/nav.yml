@@ -46,9 +46,7 @@
 - title: Example catalog
   url: "/example-catalog"
   pages:
-    - title: "CI/CD examples for pipelines"
-      url: "/examples"
-    - title: "CI examples"
+    - title: CI examples
       url: "/ci-examples"
       sub-pages:
         - title: Check out Git repositories
@@ -115,7 +113,7 @@
           url: "/sending-the-notification-to-slack"
         - title: Send notification to Jira
           url: "/sending-the-notification-to-jira"
-    - title: "CD examples"
+    - title: CD examples
       url: "/cd-examples"
       sub-pages:
         - title: Import data to MongoDB
@@ -156,6 +154,9 @@
           url: "/amazon-ecs"
         - title: Elastic Beanstalk
           url: "/elastic-beanstalk" 
+    - title: GitOps examples
+      url: "/cd-examples"
+
 - title: Deployments
   url: "/deployments"
   pages:

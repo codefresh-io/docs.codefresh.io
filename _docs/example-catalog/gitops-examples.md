@@ -1,5 +1,5 @@
 ---
-title: "GitOps examples"
+title: "GitOps examples for deployments"
 description: "A collection of examples for GitOps deployments"
 group: example-catalog
 sub_group: gitops-examples
