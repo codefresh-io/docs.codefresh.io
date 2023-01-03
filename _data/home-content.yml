@@ -133,11 +133,11 @@
   links:
     - title: Installation environments
       localurl: /docs/installation/installation-options/
-    - title: Codefresh Runner CI/CD installation
+    - title: Codefresh Runner installation
       localurl: /docs/installation/codefresh-runner/ 
-    - title: On-Premises CI/CD installation
+    - title: On-Premises installation
       localurl: /docs/installation/codefresh-on-prem/
-    - title: On-Premises CI/CD upgrade
+    - title: On-Premises upgrade
       localurl: /docs/installation/codefresh-on-prem-upgrade/
     - title: Hosted GitOps Runtime installation
       localurl: /docs/installation/hosted-runtime/  
