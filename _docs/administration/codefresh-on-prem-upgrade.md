@@ -426,8 +426,6 @@ From version **1.3.0 and higher**, we have deprecated Codefresh-managed `nats` c
 > Because `cf-nats` is a StatefulSet and  has some immutable fields in its spec, both the old and new charts have the same names, preventing a direct upgrade.
   Direct upgrade will most likely fail with:
   `helm.go:84: [debug] cannot patch "cf-nats" with kind StatefulSet: StatefulSet.apps "cf-nats" is invalid: spec: Forbidden: updates to statefulset spec for fields other than 'replicas', 'template', 'updateStrategy' and 'minReadySeconds' are forbidden`
-  After backing up existing data, you must delete the old StatefulSet.
-
 
 * **Delete the old** `cf-nats` stateful set.
 
