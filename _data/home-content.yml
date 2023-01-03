@@ -1,5 +1,21 @@
 
 
+
+- title: Getting started
+  icon: images/home-icons/started.svg
+  url: ''
+  links:
+    - title: Introduction to Codefresh
+      localurl: /docs/getting-started/intro-to-codefresh/
+    - title: Codefresh for CI
+      localurl: /docs/getting-started/ci-codefresh/
+    - title: Codefresh for CD 
+      localurl: /docs/getting-started/cd-codefresh/
+    - title: Codefresh for GitOps 
+      localurl: /docs/getting-started/gitops-codefresh/
+    - title: Concepts in Codefresh
+      localurl: /docs/getting-started/concepts/
+
 - title: Dashboards & insights
   icon: images/home-icons/guides.png
   url: ''
@@ -40,6 +56,7 @@
   - title: Progressive Delivery
     localurl: /docs/ci-cd-guides/progressive-delivery/ 
     
+
 
 - title: Example catalog
   icon: images/home-icons/tutorial.svg

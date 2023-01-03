@@ -1,6 +1,23 @@
 
 
 
+- title: Getting started
+  url: "/getting-started"
+  pages:
+    - title: Introduction to Codefresh
+      url: "/intro-to-codefresh"
+    - title: Codefresh for CI
+      url: "/ci-codefresh"
+    - title: Codefresh for CD
+      url: "/cd-codefresh"
+    - title: Codefresh for GitOps 
+      url: "/gitops-codefresh"
+    - title: Concepts in Codefresh
+      url: "/concepts"
+
+
+
+
 - title: Dashboards & Insights
   url: "/dashboards"
   pages:
