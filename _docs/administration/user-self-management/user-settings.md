@@ -74,7 +74,7 @@ max-width="100%"
 
 When you connect your [Git provider]({{site.baseurl}}/docs/integrations/git-providers/) during sign-up, you may choose to let Codefresh access only your public Git repositories.
 
-To allow Codefresh to also add [Git triggers]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/) on private repositories you need to explicitly enable it in this section. 
+To allow Codefresh to also add [Git triggers]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/) on private repositories you need to explicitly enable it in this section. 
 
 Note that options available highly depend on what Git provider you are using with Codefresh. -->
 

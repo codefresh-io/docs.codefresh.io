@@ -44,9 +44,9 @@ max-width="40%"
 
 
 Though you can run this command manually it makes more sense to run it periodically as a job. And the obvious
-way to perform this is with a Codefresh CI pipeline. The CLI can be used as a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/).
+way to perform this is with a Codefresh CI pipeline. The CLI can be used as a [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/).
 
-You can create a git repository with a [codefresh.yml]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/) file with the following content:
+You can create a git repository with a [codefresh.yml]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) file with the following content:
 
 ```yaml
 version: '1.0'
@@ -58,7 +58,7 @@ steps:
       - 'codefresh synchronize teams my-client-name -t azure'
 ```
 
-To fully automate this pipeline you should set a [cron trigger]({{site.baseurl}}/docs/pipelines/triggers/cron-triggers/) for it. The cron-trigger will run this pipeline (and therefore synchronize the teams) in a fully automated manner.
+To fully automate this pipeline you should set a [cron trigger]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/cron-triggers/) for it. The cron-trigger will run this pipeline (and therefore synchronize the teams) in a fully automated manner.
 
 This way you can synchronize your teams every day/week/hour depending on you Cron trigger setup.
 
