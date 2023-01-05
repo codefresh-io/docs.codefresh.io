@@ -90,7 +90,7 @@ For each token you can also delete it or edit it and change its applicable scope
 
 Note that tokens are visible only during creation. You cannot "view" an existing token. If you want to re-enable API access for an existing application you need to delete the old token and create a new one.
 
-
+> Note: The portion of the token shown in the UI is the first few characters in the second part of the key (after the `.`), rather than the beginning characters of the whole key.
 
 ## What to read next
 
