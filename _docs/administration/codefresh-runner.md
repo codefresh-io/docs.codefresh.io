@@ -29,7 +29,7 @@ As the Codefresh Runner is **not** dependent on any special dockershim features,
 ## Codefresh Runner installation
 Install the Runner from any workstation or laptop with access to the Kubernetes cluster running Codefresh builds, via `kubectl`.  The Codefresh Runner authenticates to your Codefresh account using the CLI token.  
 
->**Notes:** 
+>**Notes:**  
   You _must_ install the Codefresh Runner on _every cluster that runs Codefresh pipelines_.  
   The Runner is **not** needed in clusters used for _deployment_, as you can deploy applications on clusters without the Runner.   
   <br />
@@ -181,7 +181,7 @@ codefresh runner execute-test-pipeline --runtime-name <runtime-name>
 
 ### Complete Codefresh Runner installation
 
-If the Kubernetes cluster with the Codefresh Runner is behind a proxy server without direct access to `g.codefresh.io`, there are additional steps to complete the Codefresh Runner installation process.
+If the Kubernetes cluster with the Codefresh Runner is behind a proxy server without direct access to `g.codefresh.io`, follow the  additional steps to complete the installation.
 
 **Before you begin**  
 Make sure you have [installed the Codefresh Runner](#codefresh-runner-installation) using any of the options
@@ -541,13 +541,12 @@ Now any container image used in your pipeline and isn't fully qualified, will be
 
 ### Add custom labels to dind and engine pods
 Add custom labels to your Engine and Dind pods in Runtime Environment (RE) by patching it. 
-
+{:start="1"}
 1. Get the configuration of the RE and place it in a file named `runtime.yaml`.  
   `codefresh get runtime-environments -o yaml <$RUNTIME_ENVIRONMENT> > runtime.yaml`  
   where:  
   `$RUNTIME_ENVIRONMENT` must be replaced with the name of your RE.
-1. Edit the `dockerDaemonScheduler.labels` or `runtimeScheduler.labels` property of `runtime.yaml` to include the label, as in the example below. 
-  >If the `dockerDaemonScheduler.labels` are not included in the RE configuration by default, add them.
+1. Edit the `dockerDaemonScheduler.labels` or `runtimeScheduler.labels` property of `runtime.yaml` to include the label, as in the example below. If the `dockerDaemonScheduler.labels` are not included in the RE configuration by default, add them.  
 ```yaml
 version: 1
 metadata:
@@ -570,7 +569,7 @@ dockerDaemonScheduler:
   where:  
   `$RUNTIME_ENVIRONMENT` must be replaced with the name of your RE.
 
-Once you have applied the patch, future builds include the label preventing eviction. 
+Once you have applied the patch, future builds will include the label preventing eviction. 
 
 
 ## View Codefresh Runner and runtime environments
