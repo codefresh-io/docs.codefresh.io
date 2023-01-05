@@ -353,8 +353,9 @@ echo $(kubectl get secret -n kube-system -o go-template='{{index .data "token" }
 
 #### The proper/secure way for Kubernetes Cluster 1.24+
 
-For production environments you should create a service account and/or role for Codefresh access.
-The minimum permissions Codefresh needs to work with the cluster are the following:
+For production environments, create a service account and/or role for Codefresh access.  
+
+Codefresh needs these minimum permissions to work with the cluster:
 
 `codefresh-role.yml`
 {% highlight yaml %}
@@ -370,7 +371,7 @@ rules:
 {% endraw %}
 {% endhighlight %}
 
-Note that these permissions will only allow Codefresh to read the cluster resources and populate the respective dashboards. You need to give more privileges for actual deployments. For more information see the [Kubernetes RBAC documentation page](https://kubernetes.io/docs/reference/access-authn-authz/rbac/).
+Note that these permissions will only allow Codefresh to read the cluster resources and populate the respective dashboards. You need to give more privileges for actual deployments. For more information see the [Kubernetes RBAC documentation page](https://kubernetes.io/docs/reference/access-authn-authz/rbac/){:target="\_blank"}.
 
 Here is an example with role + service account + binding.
 
@@ -417,8 +418,9 @@ metadata:
 {% endraw %}
 {% endhighlight %}
 
-Select the appropriate cluster if you have more than one:
+<br />
 
+1. Select the appropriate cluster if you have more than one:
 `Choose cluster`
 {% highlight shell %}
 {% raw %}
@@ -426,7 +428,7 @@ kubectl config use-context <my-cluster-name>
 {% endraw %}
 {% endhighlight %}
 
-Create the Codefresh user/role:
+1. Create the Codefresh user/role:
 
 `Apply Codefresh access rules`
 {% highlight shell %}
@@ -435,7 +437,7 @@ kubectl apply -f codefresh-role-sa-bind.yml
 {% endraw %}
 {% endhighlight %}
 
-Finally run the following commands and copy-paste the result to each Codefresh field in the UI:
+1. Finally run the following commands, and copy-paste the results to the respective Codefresh field in the UI:
 
 `Host IP`
 {% highlight shell %}
