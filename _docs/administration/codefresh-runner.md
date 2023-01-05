@@ -1,6 +1,6 @@
 ---
 title: "Codefresh Runner"
-description: "Run Codefresh pipelines on your private Kubernetes cluster"
+description: "Install Runner to run Codefresh pipelines on your private Kubernetes cluster"
 group: administration
 redirect_from:
   - /docs/enterprise/codefresh-runner/
@@ -33,7 +33,7 @@ Install the Runner from any workstation or laptop with access to the Kubernetes 
   You _must_ install the Codefresh Runner on _every cluster that runs Codefresh pipelines_.  
   The Runner is **not** needed in clusters used for _deployment_, as you can deploy applications on clusters without the Runner.   
   <br />
-  Access to the Codefresh CLI is only needed when installing the Codefresh Runner. After installation, the Runner then authenticates on it own using the details provided. You don't need to install the Codefresh CLI on the cluster running Codefresh pipelines.
+  Access to the Codefresh CLI is only needed when installing the Codefresh Runner. After installation, the Runner authenticates on its own using the details provided. You don't need to install the Codefresh CLI on the cluster running Codefresh pipelines.
 
 Use any of the following options to install the Codefresh Runner:
 * [Install Codefresh Runner with CLI Wizard](#install-runner-with-cli-wizard)
@@ -46,8 +46,6 @@ If the Kubernetes cluster with the Codefresh Runner is behind a proxy server, [c
 
 <!--Questions: Add prereq to authenticate the CLI using the token and everything about the token -->
 
-
-Access to the Codefresh CLI is only needed  during the Runner installation. After that, the Runner will authenticate on it own using the details provided. You do NOT need to install the Codefresh CLI on the cluster that is running Codefresh pipelines.  
 
 During installation, you can see which API token will be used by the runner (if you don't provide one). The printed token includes the permissions used by the Runner to communicate with the Codefresh platform and run pipelines. If you save the token, even if or when you delete the deployment, you can use the same token to restore the Runner's permissions without having to re-install the Codefresh Runner.
 
@@ -426,7 +424,9 @@ codefresh runner init --values values-ebs.yaml --exec-demo-pipeline false --skip
 
 ### GKE (Google Kubernetes Engine) backend volume configuration
 
-
+GKE volume configuration includes:
+* [Local SSD storage configuration](#local-ssd-storage-configuration)
+* [GCE  disk storage configuration](#gce-disk-storage-configuration)
 
 #### Local SSD storage configuration
 
@@ -509,18 +509,15 @@ The Codefresh Runner does not currently support [Regional Persistent Disks](http
 
 ### Configure internal registry mirror
 
-You can configure your Codefresh Runner to use an internal registry as a mirror for any container images that are mentioned in your pipelines.
+You can configure your Codefresh Runner to use an internal registry as a mirror for any container images that are specified in your pipelines.
 
-First set up an internal registry as described in [https://docs.docker.com/registry/recipes/mirror/](https://docs.docker.com/registry/recipes/mirror/).
-
-Then locate the `codefresh-dind-config` config map in the namespace that houses the runner and edit it.
-
+1. Set up an internal registry as described in [https://docs.docker.com/registry/recipes/mirror/](https://docs.docker.com/registry/recipes/mirror/).
+1. Locate the `codefresh-dind-config` config map in the namespace that houses the Runner.
 ```shell
 kubectl -n codefresh edit configmap codefresh-dind-config
 ```
-
-Change the `data` field from:
-
+1. Add the line `\ \"registry-mirrors\": [ \"https://<my-docker-mirror-host>\" ], \n` to define the single registry to use as a mirror to `data` after the `tlskey`:
+<!--->
 ```yaml
 data:
   daemon.json: "{\n  \"hosts\": [ \"unix:///var/run/docker.sock\",\n             \"tcp://0.0.0.0:1300\"],\n
@@ -528,10 +525,7 @@ data:
     \ \"tlscacert\": \"/etc/ssl/cf-client/ca.pem\",\n  \"tlscert\": \"/etc/ssl/cf/server-cert.pem\",\n
     \ \"tlskey\": \"/etc/ssl/cf/server-key.pem\",\n  \"insecure-registries\" : [\"192.168.99.100:5000\"],\n
     \ \"metrics-addr\" : \"0.0.0.0:9323\",\n  \"experimental\" : true\n}\n"
-```
-
-to
-
+``` -->
 ```yaml
 data:
   daemon.json: "{\n  \"hosts\": [ \"unix:///var/run/docker.sock\",\n             \"tcp://0.0.0.0:1300\"],\n
@@ -541,10 +535,43 @@ data:
     \ \"registry-mirrors\": [ \"https://<my-docker-mirror-host>\" ], \n
     \ \"metrics-addr\" : \"0.0.0.0:9323\",\n  \"experimental\" : true\n}\n"
 ```
+1. Save and quit by typing `:wq`.
 
-This adds the line `\ \"registry-mirrors\": [ \"https://<my-docker-mirror-host>\" ], \n` which contains a single registry to use as a mirror. Quit and Save by typing `:wq`.
+Now any container image used in your pipeline and isn't fully qualified, will be pulled through the Docker registry that is configured as a mirror.
 
-Now any container image that is used in your pipeline and isn't fully qualified, will be pulled through the Docker registry that is configured as a mirror.
+### Add custom labels to dind and engine pods
+Add custom labels to your Engine and Dind pods in Runtime Environment (RE) by patching it. 
+
+1. Get the configuration of the RE and place it in a file named `runtime.yaml`.  
+  `codefresh get runtime-environments -o yaml <$RUNTIME_ENVIRONMENT> > runtime.yaml`  
+  where:  
+  `$RUNTIME_ENVIRONMENT` must be replaced with the name of your RE.
+1. Edit the `dockerDaemonScheduler.labels` or `runtimeScheduler.labels` property of `runtime.yaml` to include the label, as in the example below. 
+  >If the `dockerDaemonScheduler.labels` are not included in the RE configuration by default, add them.
+```yaml
+version: 1
+metadata:
+  [...]
+runtimeScheduler:
+  labels:
+    my-custom-ENGINE-label: "true"
+  cluster:
+    [...]
+dockerDaemonScheduler:
+  cluster:
+    [...]
+  annotations: {}
+  labels:
+    my-custom-DIND-label: "true"
+[...]
+```
+1. Patch the runtime environment:
+  `codefresh patch re $RUNTIME_ENVIRONMENT -f runtime.yaml`  
+  where:  
+  `$RUNTIME_ENVIRONMENT` must be replaced with the name of your RE.
+
+Once you have applied the patch, future builds include the label preventing eviction. 
+
 
 ## View Codefresh Runner and runtime environments
 
@@ -567,7 +594,7 @@ Once installed, the Runner polls Codefresh every three seconds by default to aut
 
 ### Select a default runtime environment  
 
-If you have multiple runtime environments, select the one to use as the default environment. The default runtime environment is used for all pipelines in the account. 
+If you have multiple runtime environments, select the one to use as the default environment for all the pipelines in the account. 
 
 * From the list of [Runtime Environments](https://g.codefresh.io/account-admin/account-conf/runtime-environments){:target="\_blank"}, click the context menu of the runtime to set as the default.
 * Select **Set as Default**. 
@@ -665,7 +692,7 @@ Codefresh pipelines require disk space for:
 
 Codefresh offers two options to manage disk space and prevent out-of-space errors:  
 * Use runtime cleaners on Docker images and volumes
-* [Set the disk space per pipeline build volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#runtime)
+* [Set the minimum disk space per pipeline build volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#runtime)
 
 <!--- not sure where this fits in -->
 To improve performance by using Docker cache and decreasing I/O rate, `volume-provisioner` can provision previously used disks with Docker images and pipeline volumes from previously run builds. 
