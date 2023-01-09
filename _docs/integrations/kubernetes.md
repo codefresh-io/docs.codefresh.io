@@ -111,8 +111,8 @@ An alternative method of adding an Azure cluster is by using a service principal
 
 {% include image.html
 lightbox="true"
-file="/images/kubernetes/integrations/add-cluster/connect-azure-spn.png"
-url="/images/kubernetes/integrations/add-cluster/connect-azure-spn.png"
+file="/images/integrations/kubernetes/add-cluster/connect-azure-spn.png"
+url="/images/integrations/kubernetes/add-cluster/connect-azure-spn.png"
 alt="Azure Service principal details"
 caption="Azure Service principal details"
 max-width="60%"
@@ -143,8 +143,8 @@ To add a DO cluster select *DigitalOcean* from the *Add provider* menu in your [
 
 {% include image.html
 lightbox="true"
-file="/images/kubernetes/integrations/add-cluster/authorize-do.png"
-url="/images/kubernetes/integrations/add-cluster/authorize-do.png"
+file="/images/integrations/kubernetes/add-cluster/authorize-do.png"
+url="/images/integrations/kubernetes/add-cluster/authorize-do.png"
 alt="Authorizing DigitalOcean Integration"
 caption="Authorizing DigitalOcean Integration"
 max-width="35%"
@@ -154,8 +154,8 @@ Click on the checkbox next to your account name and select the *Authorize applic
 
 {% include image.html
 lightbox="true"
-file="/images/kubernetes/integrations/add-cluster/do-authorized.png"
-url="/images/kubernetes/integrations/add-cluster/do-authorized.png"
+file="/images/integrations/kubernetes/add-cluster/do-authorized.png"
+url="/images/integrations/kubernetes/add-cluster/do-authorized.png"
 alt="DigitalOcean is now authorized"
 caption="DigitalOcean is now authorized"
 max-width="70%"
@@ -165,8 +165,8 @@ Next, expand the DigitalOcean row from the triangle icon on the right and click 
 
 {% include image.html
 lightbox="true"
-file="/images/kubernetes/add-cluster/add-do-cluster.png"
-url="/images/kubernetes/add-cluster/add-do-cluster.png"
+file="/images/integrations/kubernetes/add-cluster/add-do-cluster.png"
+url="/images/integrations/kubernetes/add-cluster/add-do-cluster.png"
 alt="Selecing the DigitalOcean cluster"
 caption="Selecing the DigitalOcean cluster"
 max-width="40%"
@@ -277,9 +277,9 @@ echo $(kubectl get secret -o go-template='{{index .data "token" }}' $(kubectl ge
 
 Once the cluster been added successfully you can go to the `Kubernetes` tab to start working with the services of your cluster.
 
-#### The proper/secure way
+#### Kubernetes <=1.23: The proper/secure way
 
-For production environments you should create a service account and/or role for Codefresh access.
+For production environments, create a service account and/or role for Codefresh access.
 The minimum permissions Codefresh needs to work with the cluster are the following:
 
 `codefresh-role.yml`
@@ -296,7 +296,7 @@ rules:
 {% endraw %}
 {% endhighlight %}
 
-Note that these permissions will only allow Codefresh to read the cluster resources and populate the respective dashboards. You need to give more privileges for actual deployments. For more information see the [Kubernetes RBAC documentation page](https://kubernetes.io/docs/reference/access-authn-authz/rbac/){:target="\_blank"}.
+>These permissions only allow Codefresh to read the cluster resources and populate the respective dashboards. For actual deployments, you need to give more privileges. For more information see the [Kubernetes RBAC documentation page](https://kubernetes.io/docs/reference/access-authn-authz/rbac/){:target="\_blank"}.
 
 Here is an example with role + service account + binding.
 
@@ -333,26 +333,27 @@ subjects:
 {% endraw %}
 {% endhighlight %}
 
-Select the appropriate cluster if you have more than one:
+<br />
 
+**How to**  
+
+1. Select the appropriate cluster if you have more than one:  
 `Choose cluster`
 {% highlight shell %}
 {% raw %}
 kubectl config use-context <my-cluster-name>
 {% endraw %}
 {% endhighlight %}
-
-Create the Codefresh user/role:
-
+{:start="2"}
+1. Create the Codefresh user/role:  
 `Apply Codefresh access rules`
 {% highlight shell %}
 {% raw %}
 kubectl apply -f codefresh-role-sa-bind.yml
 {% endraw %}
 {% endhighlight %}
-
-Finally run the following commands and copy-paste the result to each Codefresh field in the UI:
-
+{:start="3"}
+1. Finally run the following commands and copy-paste the result to each Codefresh field in the UI:  
 `Host IP`
 {% highlight shell %}
 {% raw %}
@@ -371,6 +372,117 @@ echo $(kubectl get secret -n kube-system -o go-template='{{index .data "ca.crt" 
 {% highlight shell %}
 {% raw %}
 echo $(kubectl get secret -n kube-system -o go-template='{{index .data "token" }}' $(kubectl get sa codefresh-user -n kube-system -o go-template="{{range .secrets}}{{.name}}{{end}}"))
+{% endraw %}
+{% endhighlight %}
+
+<br />
+
+#### Kubernetes >=1.24: The proper/secure way 
+
+For production environments, create a service account and/or role for Codefresh access.  
+
+Codefresh needs these minimum permissions to work with the cluster:
+
+`codefresh-role.yml`
+{% highlight yaml %}
+{% raw %}
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: codefresh-role
+rules:
+  - apiGroups: [“”]
+    resources: [“*”]
+    verbs: [“list”, “watch”, “get”] 
+{% endraw %}
+{% endhighlight %}
+
+>These permissions only allow Codefresh to read the cluster resources and populate the respective dashboards. For actual deployments, you need to give more privileges. For more information see the [Kubernetes RBAC documentation page](https://kubernetes.io/docs/reference/access-authn-authz/rbac/){:target="\_blank"}.
+
+Here is an example with role + service account + binding.
+
+`codefresh-role-sa-bind.yml`
+{% highlight yaml %}
+{% raw %}
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: codefresh-role
+rules:
+  - apiGroups: [ “*”]
+    resources: [“*”]
+    verbs: [“get”, “list”, “watch”, “create”, “update”, “patch”, “delete”]
+—
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: codefresh-user
+  namespace: kube-system
+—
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: codefresh-user
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: codefresh-role
+subjects:
+- kind: ServiceAccount
+  name: codefresh-user
+  namespace: kube-system
+—
+apiVersion: v1
+kind: Secret
+type: kubernetes.io/service-account-token
+metadata:
+  name: codefresh-user-token
+  namespace: kube-system
+  annotations:
+    kubernetes.io/service-account.name: “codefresh-user” 
+    
+{% endraw %}
+{% endhighlight %}
+
+<br />
+
+**How to**  
+
+1. If you have more than one cluster, select the appropriate cluster:  
+`Choose cluster`
+{% highlight shell %}
+{% raw %}
+kubectl config use-context <my-cluster-name>
+{% endraw %}
+{% endhighlight %}
+{:start="2"}
+1. Create the Codefresh user/role:  
+`Apply Codefresh access rules`
+{% highlight shell %}
+{% raw %}
+kubectl apply -f codefresh-role-sa-bind.yml
+{% endraw %}
+{% endhighlight %}
+{:start="3"}
+1. Finally run the following commands, and copy-paste the results to the respective Codefresh field in the UI:  
+`Host IP`
+{% highlight shell %}
+{% raw %}
+export CURRENT_CONTEXT=$(kubectl config current-context) && export CURRENT_CLUSTER=$(kubectl config view -o go-template=“{{\$curr_context := \”$CURRENT_CONTEXT\” }}{{range .contexts}}{{if eq .name \$curr_context}}{{.context.cluster}}{{end}}{{end}}”) && echo $(kubectl config view -o go-template=“{{\$cluster_context := \”$CURRENT_CLUSTER\”}}{{range .clusters}}{{if eq .name \$cluster_context}}{{.cluster.server}}{{end}}{{end}}”)
+{% endraw %}
+{% endhighlight %}
+
+`Certificate`
+{% highlight shell %}
+{% raw %}
+echo $(kubectl get secret -n kube-system -o go-template=‘{{index .data “ca.crt” }}’ codefresh-user-token)
+{% endraw %}
+{% endhighlight %}
+
+`Token`
+{% highlight shell %}
+{% raw %}
+echo $(kubectl get secret -n kube-system -o go-template=‘{{index .data “token” }}’ codefresh-user-token)
 {% endraw %}
 {% endhighlight %}
 
