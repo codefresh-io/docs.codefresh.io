@@ -1,4 +1,193 @@
 
+- title: Getting started
+  url: "/getting-started"
+  pages:
+    - title: Introduction to Codefresh
+      url: "/intro-to-codefresh"
+    - title: Codefresh for CI
+      url: "/ci-codefresh"
+    - title: Codefresh for CD
+      url: "/cd-codefresh"
+    - title: Codefresh for GitOps 
+      url: "/gitops-codefresh"
+    - title: Concepts in Codefresh
+      url: "/concepts"
+
+- title: Quick starts
+  url: "/quick-start"
+  pages:
+    - title: Create Codefresh account
+      url: "/create-codefresh-account"  
+    - title: CI/CD quick starts
+      url: "/ci-quickstart"
+      sub-pages:
+      - title: CI pipeline quick start
+        url: "/create-ci-pipeline"
+      - title: Kubernetes deployment quick start  
+        url: "/deploy-to-kubernetes"
+      - title: Helm quick start  
+        localurl: "/deploy-to-helm"
+
+
+
+- title: Dashboards & Insights
+  url: "/dashboards"
+  pages:
+    - title: Home dashboard
+      url: "/home-dashboard"
+    - title: DORA metrics
+      url: "/dora-metrics"
+    
+    
+
+- title: CI/CD Guides
+  url: "/ci-cd-guides"
+  pages:
+    - title: Building your app
+      url: "/packaging-compilation"  
+    - title: Building Docker images
+      url: "/building-docker-images"
+    - title: Accessing Docker registries from Kubernetes cluster
+      url: "/access-docker-registry-from-kubernetes"  
+    - title: Working with Docker registries
+      url: "/working-with-docker-registries"   
+    - title: Adding config maps to namespaces
+      url: "/add-config-maps-to-your-namespaces"     
+    - title: Pull Requests and branches
+      url: "/pull-request-branches"
+    - title: Building microservices
+      url: "/microservices"
+    - title: Deploying to predefined environments
+      url: "/environment-deployments"   
+    - title: Previewing dynamic environments
+      url: "/preview-environments"                 
+    - title: Progressive delivery
+      url: "/progressive-delivery" 
+    - title: GitOps deployments
+      url: "/gitops-deployments" 
+    - title: Helm best practices
+      url: "/helm-best-practices" 
+    - title: Kubernetes templating
+      url: "/kubernetes-templating" 
+
+
+ 
+    
+- title: Example catalog
+  url: "/example-catalog"
+  pages:
+    - title: CI examples
+      url: "/ci-examples"
+      sub-pages:
+        - title: Check out Git repositories
+          url: "/git-checkout"
+        - title: Custom Git commmands
+          url: "/git-checkout-custom"
+        - title: Non-Git checkouts
+          url: "/non-git-checkout"
+        - title: Use Git Hash in CI
+          url: "/get-short-sha-id-and-use-it-in-a-ci-process"
+        - title: Build an Image with the Dockerfile in root directory
+          url: "/build-an-image-with-the-dockerfile-in-root-directory"
+        - title: Build an Images specifying Dockerfile Location
+          url: "/build-an-image-specify-dockerfile-location"
+        - title: Build an Image from a different Git repository
+          url: "/build-an-image-from-a-different-git-repository"
+        - title: Build and push an Image
+          url: "/build-and-push-an-image"
+        - title: Build an Image with build arguments
+          url: "/build-an-image-with-build-arguments"
+        - title: Share data between steps
+          url: "/shared-volumes-between-builds"
+        - title: Upload/download from Google Storage buckets
+          url: "/uploading-or-downloading-from-gs"
+        - title: Call other pipelines
+          url: "/call-child-pipelines"
+        - title: Run unit tests
+          url: "/run-unit-tests"
+        - title: Run integration tests
+          url: "/run-integration-tests"
+        - title: Fan-in/fan-out with unit tests
+          url: "/fan-in-fan-out"
+        - title: Codecov coverage reports
+          url: "/codecov-testing"
+        - title: Coveralls coverage reports
+          url: "/coveralls-testing"
+        - title: Codacy coverage reports
+          url: "/codacy-testing"
+        - title: Run integration tests with Mongo
+          url: "/integration-tests-with-mongo"
+        - title: Run integration tests with MySQL
+          url: "/integration-tests-with-mysql"
+        - title: Run integration tests with PostgreSQL
+          url: "/integration-tests-with-postgres"
+        - title: Run integration tests with Redis
+          url: "/integration-tests-with-redis"
+        - title: Populate a database with existing data
+          url: "/populate-a-database-with-existing-data"
+        - title: Share volumes in composition steps
+          url: "/shared-volumes-of-service-from-composition-step-for-other-yml-steps"          
+        - title: Import data to MongoDB
+          url: "/import-data-to-mongodb"
+        - title: Vault Secrets in the Pipeline
+          url: "/vault-secrets-in-the-pipeline"
+        - title: Decrypt with Mozilla SOPS
+          url: "/decryption-with-mozilla-sops"
+        - title: GitOps secrets
+          url: "/gitops-secrets" 
+        - title: Launch Composition
+          url: "/launch-composition"
+        - title: Use Docker compose
+          url: "/launching-a-composition-and-defining-a-service-environment-variables-using-a-file"
+        - title: Send notification to Slack
+          url: "/sending-the-notification-to-slack"
+        - title: Send notification to Jira
+          url: "/sending-the-notification-to-jira"
+    - title: CD examples
+      url: "/cd-examples"
+      sub-pages:
+        - title: Import data to MongoDB
+          url: "/import-data-to-mongodb"
+        - title: NodeJS + Angular2 + MongoDB
+          url: "/nodejs-angular2-mongodb"
+        - title: Secure a Docker Container Using HTTP Basic Auth
+          url: "/secure-a-docker-container-using-http-basic-auth"
+        - title: Spring Boot + Kafka + Zookeeper
+          url: "/spring-boot-kafka-zookeeper"
+        - title: Web terminal
+          url: "/web-terminal"
+        - title: Trigger a K8s Deployment from a DockerHub Push Event
+          url: "/trigger-a-k8s-deployment-from-docker-registry"
+        - title: Deploy to VM
+          url: "/packer-gcloud"
+        - title: Deploy to a VM via FTP
+          url: "/transferring-php-ftp"
+        - title: Deploy to Tomcat using SCP
+          url: "/deploy-to-tomcat-via-scp"
+        - title: Deploy with Helm
+          url: "/helm"
+        - title: Deploy with Terraform
+          url: "/terraform"
+        - title: Deploy with Pulumi
+          url: "/pulumi"
+        - title: Deploy to Nomad
+          url: "/nomad"
+        - title: Deploy to Heroku
+          url: "/deploy-to-heroku"
+        - title: Use kubectl as part of Freestyle step
+          url: "/use-kubectl-as-part-of-freestyle-step"
+        - title: Deploy with Kustomize
+          url: "/deploy-with-kustomize"
+        - title: Deploy to Docker Swarm
+          url: "/docker-swarm"  
+        - title: Amazon ECS/Fargate
+          url: "/amazon-ecs"
+        - title: Elastic Beanstalk
+          url: "/elastic-beanstalk" 
+    - title: GitOps examples
+      url: "/cd-examples"
+
+
 - title: Deployments
   url: "/deployments"
   pages:
@@ -41,14 +230,14 @@
           url: "/images"
 
 
-- title: CI pipelines
+- title: Pipelines
   url: "/pipelines"
   pages:
-    - title: Introduction to CI pipelines
+    - title: Introduction to Codefresh pipelines
       url: "/introduction-to-codefresh-pipelines"
     - title: Creating a CI pipeline
       url: "/pipelines"
-    - title: Steps in CI pipelines
+    - title: Steps in pipelines
       url: "/steps"
       sub-pages:
         - title: Git-clone
@@ -71,7 +260,7 @@
           url: "/conditional-execution-of-steps"
         - title: Post-step operations
           url: "/post-step-operations"
-    - title: Triggers in CI pipelines
+    - title: Triggers in pipelines
       url: "/triggers"
       sub-pages:
         - title: Git triggers
@@ -88,15 +277,15 @@
           url: "/jfrog-triggers"
         - title: Timer (Cron) triggers
           url: "/cron-triggers"
-    - title: Variables in CI pipelines
+    - title: Variables in pipelines
       url: "/variables" 
-    - title: Hooks in CI pipelines
+    - title: Hooks in pipelines
       url: "/hooks"
-    - title: Annotations in CI pipelines
+    - title: Annotations in pipelines
       url: "/annotations"  
     - title: Grouping steps into stages
       url: "/stages"
-    - title: Caching for CI pipelines
+    - title: Caching for pipelines
       url: "/pipeline-caching"    
     - title: Debugging CI pipelines
       url: "/debugging-pipelines"
@@ -104,16 +293,16 @@
       url: "/monitoring-pipelines"
     - title: Advanced workflows
       url: "/advanced-workflows"
-    - title: Running CI pipelines locally
+    - title: Running pipelines locally
       url: "/running-pipelines-locally"
-    - title: Configuration for CI pipelines
+    - title: Configuration for pipelines
       url: "/configuration"
       sub-pages:
-        - title: Global CI pipeline settings
+        - title: Global pipeline settings
           url: "/pipeline-settings"          
         - title: Shared configuration
           url: "/shared-configuration"
-        - title: Secrets for CI pipelines
+        - title: Secrets for pipelines
           url: "/secrets-store"  
         - title: Public logs and status badges
           url: "/build-status"
