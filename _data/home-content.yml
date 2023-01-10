@@ -113,6 +113,16 @@
       localurl: /docs/dashboards/dora-metrics/
     
 
+- title: Dashboards & insights
+  icon: images/home-icons/guides.png
+  url: ''
+  links:
+    - title: Home dashboard
+      localurl: /docs/dashboards/home-dashboard/
+    - title: DORA metrics
+      localurl: /docs/dashboards/dora-metrics/
+    
+
 
 - title: CI/CD guides
   icon: images/home-icons/guides.png
