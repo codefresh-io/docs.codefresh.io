@@ -3,7 +3,11 @@ title: "Create a Codefresh account"
 description: "Welcome to Codefresh!"
 group: administration
 sub_group: account-user-management
-toc: true
+redirect_from:
+  - /docs/
+  - /docs/create-an-account/
+  - /docs/getting-started/
+  - /docs/getting-started/introduction/
 ---
 Before you can do anything in Codefresh such as building and deploying your applications, you need to create a Codefresh account.
 
@@ -19,7 +23,7 @@ max-width="90%"
 %}
 
 ## Step 1: Select your Identity Provider
-As the first step in setting up your account in Codefresh, select the identity provider (IdP) to use. 
+As the first step in setting up ypur account in Codefresh, select the identity provider (IdP) to use. 
 Codefresh currently supports the following IdPs:
 * GitHub
 * Bitbucket
@@ -33,7 +37,7 @@ If you need an IdP that is not in the list, please [contact us](https://codefres
 >NOTES:  
   For Git repositories, the login method is less important, as you can Git repositories through [Git integrations]({{site.baseurl}}/docs/integrations/git-providers/), regardless of your sign-up process.  
 
-  If you have multiple sign-up methods, as long as you use the same email address in all the sign-ups, Codefresh automatically redirects you to the account dashboard.
+  If you multiple sign-up methods, as long as you use the same email address in all the sign-ups, Codefresh automatically redirects you to the account dashboard.
 
 1. Go to the [Codefresh Sign Up page](https://g.codefresh.io/signup).  <!---need to change the URL and the screenshot-->
 

@@ -99,7 +99,6 @@ caption="Generating a key for the API"
 max-width="80%"
 %}
 
-> The UI shows the first few characters in the second part of the key, after the `.`, and not the characters at the beginning of the key.
 
 ## Related articles
 
