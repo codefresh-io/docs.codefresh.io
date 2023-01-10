@@ -38,14 +38,6 @@
     - title: DORA metrics
       url: "/dora-metrics"
     
-
-- title: Dashboards & Insights
-  url: "/dashboards"
-  pages:
-    - title: Home dashboard
-      url: "/home-dashboard"
-    - title: DORA metrics
-      url: "/dora-metrics"
     
 
 - title: CI/CD Guides
