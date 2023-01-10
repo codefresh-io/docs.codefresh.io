@@ -25,22 +25,7 @@
       - title: Kubernetes deployment quick start  
         url: "/deploy-to-kubernetes"
       - title: Helm quick start  
-        localurl: "/deploy-to-helm"
-
-
-- title: Getting started
-  url: "/getting-started"
-  pages:
-    - title: Introduction to Codefresh
-      url: "/intro-to-codefresh"
-    - title: Codefresh for CI
-      url: "/ci-codefresh"
-    - title: Codefresh for CD
-      url: "/cd-codefresh"
-    - title: Codefresh for GitOps 
-      url: "/gitops-codefresh"
-    - title: Concepts in Codefresh
-      url: "/concepts"
+        url: "/deploy-with-helm"
 
 
 

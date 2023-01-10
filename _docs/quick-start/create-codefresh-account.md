@@ -8,7 +8,17 @@ Once you have installed Codefresh, the next step is to create an account in Code
 
 This quick start guides you through creating an account in Codefresh:
 
-After you select the IdP (identity provider), Codefresh requests permission to access your basic details, and for Git providers, to access your Git repositories. The Permissions window that is displayed differs according to the IdP selected in the previous step.
+As the first step in setting up your account in Codefresh, you need to select your identity provider.
+Codefresh currently supports the following IdPs:
+* GitHub
+* Bitbucket
+* GitLab 
+* Azure
+* Google 
+* LDAP
+
+If you need an IdP that is not in the list, please [contact us](https://codefresh.io/contact-us/) with the details.
+After you select the IdP (identity provider), Codefresh requests permission to access your basic details, and for Git providers, to access your Git repositories. The Permissions window that is displayed differs according to the IdP selected.
 
 Don't worry, Codefresh will not do anything without your explicit approval, so don't be scared by the permissions shown
 in the request window. The permissions requested by Codefresh are needed in order to build and deploy your projects.
@@ -22,22 +32,7 @@ alt="Codefresh account creation steps"
 max-width="90%" 
 %}
 
-## Step 1: Select your Identity Provider
-As the first step in setting up your account in Codefresh, 
-Codefresh currently supports the following IdPs:
-* GitHub
-* Bitbucket
-* GitLab 
-* Azure
-* Google 
-* LDAP
 
-If you need an IdP that is not in the list, please [contact us](https://codefresh.io/contact-us/) with the details.
-
->NOTES:  
-  For Git repositories, the login method is less important, as you can Git repositories through [Git integrations]({{site.baseurl}}/docs/integrations/git-providers/), regardless of your sign-up process.  
-
-  If you multiple sign-up methods, as long as you use the same email address in all the sign-ups, Codefresh automatically redirects you to the account dashboard.
 
 1. Select the identity provider (IdP) to use:  
     1. Go to the [Codefresh Sign Up page](https://g.codefresh.io/signup).  <!---need to change the URL and the screenshot-->
