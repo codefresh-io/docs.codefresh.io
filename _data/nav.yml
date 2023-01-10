@@ -39,6 +39,15 @@
       url: "/dora-metrics"
     
 
+- title: Dashboards & Insights
+  url: "/dashboards"
+  pages:
+    - title: Home dashboard
+      url: "/home-dashboard"
+    - title: DORA metrics
+      url: "/dora-metrics"
+    
+
 - title: CI/CD Guides
   url: "/ci-cd-guides"
   pages:
@@ -605,13 +614,6 @@
       url: "/privacy-policy"
     - title: Service Commitment
       url: "/sla"
-
-
-
-
-
-
-      
 
 
 
