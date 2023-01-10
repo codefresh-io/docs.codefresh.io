@@ -15,6 +15,20 @@
     - title: Concepts in Codefresh
       localurl: /docs/getting-started/concepts/
 
+
+- title: Quick starts
+  icon: images/home-icons/started.svg
+  url: ''
+  links:
+    - title: Create Codefresh account
+      localurl: /docs/quick-start/create-codefresh-account/  
+    - title: CI pipeline quick start
+      localurl: /docs/quick-start/ci-quickstart/create-ci-pipeline/
+    - title: Kubernetes deployment quick start  
+      localurl: /docs/quick-start/ci-quickstart/deploy-to-kubernetes/
+    - title: Helm quick start  
+      localurl: /docs/quick-start/ci-quickstart/deploy-with-helm/
+
 - title: Pipeline integrations
   icon: images/home-icons/cloud-integrations.png
   links:
@@ -71,6 +85,7 @@
       localurl: /docs/gitops-integrations/container-registries/jfrog/
     - title: Quay Registry for GitOps
       localurl: /docs/gitops-integrations/container-registries/quay/
+
 
 - title: Dashboards & insights
   icon: images/home-icons/guides.png

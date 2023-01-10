@@ -12,7 +12,20 @@
     - title: Concepts in Codefresh
       url: "/concepts"
 
-
+- title: Quick starts
+  url: "/quick-start"
+  pages:
+    - title: Create Codefresh account
+      url: "/create-codefresh-account"  
+    - title: CI/CD quick starts
+      url: "/ci-quickstart"
+      sub-pages:
+      - title: CI pipeline quick start
+        url: "/create-ci-pipeline"
+      - title: Kubernetes deployment quick start  
+        url: "/deploy-to-kubernetes"
+      - title: Helm quick start  
+        localurl: "/deploy-to-helm"
 
 
 - title: Dashboards & Insights
