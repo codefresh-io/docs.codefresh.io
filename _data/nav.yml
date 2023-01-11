@@ -81,7 +81,7 @@
       sub-pages:
         - title: Check out Git repositories
           url: "/git-checkout"
-        - title: Custom Git commmands
+        - title: Custom Git commands
           url: "/git-checkout-custom"
         - title: Non-Git checkouts
           url: "/non-git-checkout"
