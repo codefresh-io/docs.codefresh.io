@@ -51,12 +51,12 @@ The registries can either be public or private.
 {:start="5"}
 1. Each configuration must be given a unique name, which you can later reference in a codefresh.yml file.
 
-{% include image.html
+<!--- {% include image.html
   lightbox="true"
   file="/images/integrations/docker-registries/registry-name.png"
   url="/images/integrations/docker-registries/registry-name.png"
   alt="Specify Docker registry name"
-  max-width="40%" %}
+  max-width="40%" %} -->
 
 ## Define fallback registry
 
