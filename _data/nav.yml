@@ -420,7 +420,7 @@
         - title: OneLogin
           url: /saml-onelogin
         - title: PingID SSO
-          url: /saml-pingid
+          url: "/saml-pingid"
     - title: LDAP
       url: /ldap
 
