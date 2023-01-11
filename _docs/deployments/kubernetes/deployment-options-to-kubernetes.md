@@ -94,7 +94,7 @@ RunningDeployScript:
     type: deploy
     kind: kubernetes
     cluster: '<cluster_name>' #the name specified when you added the cluster
-    namespace: <namespcae_name> #the namespace you wish to deploy into
+    namespace: <namespace_name> #the namespace you wish to deploy into
     service: <service_name> #the service you would like to update the deployment in
     candidate:
       image: '${{BuildImage}}'

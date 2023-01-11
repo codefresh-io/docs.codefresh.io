@@ -1,7 +1,7 @@
 ---
-title: "Image enrichment with integrations"
+title: "GitOps image enrichment with integrations"
 description: ""
-group: integration
+group: gitops-integrations
 toc: true
 ---
 

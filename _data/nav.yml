@@ -19,7 +19,7 @@
     - title: Create Codefresh account
       url: "/create-codefresh-account"  
     - title: CI/CD quick starts
-      url: "/ci-quickstart"
+      url: "/ci-quick-start"
       sub-pages:
       - title: CI pipeline quick start
         url: "/create-ci-pipeline"
@@ -27,8 +27,10 @@
         url: "/deploy-to-kubernetes"
       - title: Helm quick start  
         url: "/deploy-with-helm"
-    - title: GitOps quick start
-      url: "/gitops-quickstart"
+      - title: On-demand environment quick start  
+        url: "/on-demand-environments"
+    - title: GitOps quick starts
+      url: "/gitops-quick-start"
       sub-pages:
         - title: Provision a hosted runtime
           url:  "/install-hosted"
@@ -42,10 +44,7 @@
           url: "/create-app-specs"
         - title: Update the image tag for application
           url: "/create-rollout"
-        - title: Trigger the Hello World example pipeline
-          url: "/hello-world"
-        - title: Create a basic CI delivery pipeline
-          url: "/create-ci-pipeline"
+
 
 
 

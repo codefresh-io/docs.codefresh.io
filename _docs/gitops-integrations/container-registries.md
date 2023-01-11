@@ -1,5 +1,5 @@
 ---
-title: "Container registry GitOps integrations"
+title: "GitOps container registry integrations"
 description: ""
 group: gitops-integrations
 toc: true

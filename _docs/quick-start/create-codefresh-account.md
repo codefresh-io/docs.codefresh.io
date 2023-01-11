@@ -1,5 +1,5 @@
 ---
-title: "Create Codefresh account quick start"
+title: "Create Codefresh account"
 description: "Start working in Codefresh"
 group: quick-start
 toc: true
@@ -8,22 +8,10 @@ Once you have installed Codefresh, the next step is to create an account in Code
 
 This quick start guides you through creating an account in Codefresh:
 
-After you select the IdP (identity provider), Codefresh requests permission to access your basic details, and for Git providers, to access your Git repositories. The Permissions window that is displayed differs according to the IdP selected in the previous step.
+After you select the IdP (identity provider), Codefresh requests permission to access your basic details, and for Git providers, to access your Git repositories. The Permissions window that is displayed differs according to the IdP selected.
 
-Don't worry, Codefresh will not do anything without your explicit approval, so don't be scared by the permissions shown
-in the request window. The permissions requested by Codefresh are needed in order to build and deploy your projects.
+The permissions requested by Codefresh are needed in order to build and deploy your projects.
 
-{% include 
-image.html 
-lightbox="true" 
-file="/images/administration/create-account/create-account-steps.png" 
-url="/images/administration/create-account/create-account-steps.png"
-alt="Codefresh account creation steps" 
-max-width="90%" 
-%}
-
-## Step 1: Select your Identity Provider
-As the first step in setting up your account in Codefresh, 
 Codefresh currently supports the following IdPs:
 * GitHub
 * Bitbucket
@@ -35,9 +23,9 @@ Codefresh currently supports the following IdPs:
 If you need an IdP that is not in the list, please [contact us](https://codefresh.io/contact-us/) with the details.
 
 >NOTES:  
-  For Git repositories, the login method is less important, as you can Git repositories through [Git integrations]({{site.baseurl}}/docs/integrations/git-providers/), regardless of your sign-up process.  
+  For Git repositories, the login method is less important, as you can access Git repositories through [Git integrations]({{site.baseurl}}/docs/integrations/git-providers/), regardless of your sign-up process.  
 
-  If you multiple sign-up methods, as long as you use the same email address in all the sign-ups, Codefresh automatically redirects you to the account dashboard.
+  If you have multiple sign-up methods, as long as you use the same email address in all the sign-ups, Codefresh automatically redirects you to the account dashboard.
 
 1. Select the identity provider (IdP) to use:  
     1. Go to the [Codefresh Sign Up page](https://g.codefresh.io/signup).  <!---need to change the URL and the screenshot-->
@@ -59,7 +47,7 @@ max-width="40%"
   * For Bitbucket: To continue, click **Grant access**.
   * For GitLab: To continue, click **Authorize**.
 
-  Once you confirm the permissions for your Git provider, Codefresh automatically connects to your Git provider and fetches your basic account details, such as your email.
+    Once you confirm the permissions for your Git provider, Codefresh automatically connects to your Git provider and fetches your basic account details, such as your email.
 
 {:start="3"}
 1. Review the details for your new account, make the relevant changes, and click **NEXT**. 
@@ -114,10 +102,10 @@ max-width="40%"
 
 
 ## Related quick starts
-[CI pipeline quick start]({{site.baseurl}}/docs/quick-start/ci-quickstart/create-ci-pipeline/)  
-[Kubernetes deployment quick start]({{site.baseurl}}/docs/quick-start/ci-quickstart/deploy-to-kubernetes/)  
-[Helm deployment to Kubernetes quick start]({{site.baseurl}}/docs/quick-start/ci-quickstart/deploy-with-helm/)  
-[On-demand environment quick start]({{site.baseurl}}/docs/quick-start/ci-quickstart/on-demand-environments/)  
+[CI/CD quick starts]({{site.baseurl}}/docs/quick-start/ci-quick-start/)  
+[GitOps quick starts]({{site.baseurl}}/docs/quick-start/gitops-quick-start/)  
+
+
 
 
 

@@ -8,7 +8,7 @@ toc: true
 
 
 **New installation**  
-If this is your first time installing Codefresh, review and confirm that your deployment environment conforms to the minimum requirements for hybrid runtime installation. Check the [system requirements]({{site.baseurl}}/docs/runtime/requirements).  
+If this is your first time installing GitOps in Codefresh, review and confirm that your deployment environment conforms to the minimum requirements for hybrid runtime installation. Check the [system requirements]({{site.baseurl}}/docs/installation/requirements).  
 
 **Existing installation**  
 If you already have a hybrid runtime installation on your cluster, you have two options:

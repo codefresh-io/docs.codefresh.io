@@ -1,7 +1,7 @@
 ---
 title: "GitOps issue tracking integrations"
 description: ""
-group: integrations
+group: gitops-integrations
 toc: true
 ---
 

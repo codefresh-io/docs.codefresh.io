@@ -49,9 +49,9 @@ For reasons of simplicity, we will use the [default Docker registry]({{site.base
 * The Docker registry you connected to your Codefresh account in the CI pipeline quick start 
 * An application that has a Dockerfile and a [Helm chart]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/#helm-setup) 
 * Cluster with pull access to your default Docker registry
-  If not read the [previous guide]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/#deploying-a-docker-image-to-kubernetes-manually) or look at the [documentation]({{site.baseurl}}/docs/deploy-to-kubernetes/deploy-to-kubernetes/create-image-pull-secret/)
+  If you are not familiar, read [Manually deploy Docker image to Kubernetes]({{site.baseurl}}/docs/quick-start/ci-quickstart/deploy-to-kubernetes/#manually-deploy-docker-image-to-kubernetes), or read about [secrets]({{site.baseurl}}/docs/deployments/kubernetes/deploy-to-kubernetes/create-image-pull-secret/) <!--- ask Kostis -->
 
-If you want to follow along, feel free to fork this [repository](https://github.com/codefresh-contrib/python-flask-sample-app) in your Git account and look at the [with-helm](https://github.com/codefresh-contrib/python-flask-sample-app/tree/with-helm) branch.
+If you want to follow along, feel free to fork this [repository](https://github.com/codefresh-contrib/python-flask-sample-app){:target="\_blank"} in your Git account and look at the [with-helm](https://github.com/codefresh-contrib/python-flask-sample-app/tree/with-helm){:target="\_blank"} branch.
 
 ## Deploy a Helm Release to your Kubernetes cluster
 
@@ -141,6 +141,7 @@ steps:
       - 'image_pullSecret=codefresh-generated-r.cfcr.io-cfcr-default'
 {% endraw %}
 {% endhighlight %}
+{:start="5"}
 1. Click **Save** and then click **Run** twice to run the pipeline. 
 1. Continue with [View Helm release](#view-helm-release).
 
@@ -157,7 +158,7 @@ max-width="100%"
 %}
 
 
-This is the easiest way to deploy to Kubernetes without having to manually change values in manifests. Helm and Codefresh take care of replacements using the built-in steps.
+This is the easiest way to deploy to Kubernetes without having to manually change values in manifests. Helm and Codefresh handle the replacements using the built-in steps.
 
 ## View Helm release 
 
@@ -202,18 +203,18 @@ verify the correct parameters.
  {% include 
 image.html 
 lightbox="true" 
-file="/images/getting-started/quick-start-helm/helm-values.png" 
-url="/images/getting-started/quick-start-helm/helm-values.png" 
+file="/images/quick-start/quick-start-helm/helm-values.png" 
+url="/images/quick-start/quick-start-helm/helm-values.png" 
 alt="Helm values" 
 caption="Helm values" 
 max-width="70%" 
 %}
 
 >Tip:  
-  To view the services/pods/deployments that comprise the helm release, you can go to the [Kubernetes Services dashboard](https://g.codefresh.io/kubernetes/services/){:target="\_blank"} .
+  To view the services/pods/deployments that comprise the helm release, go to the [Kubernetes Services dashboard](https://g.codefresh.io/kubernetes/services/){:target="\_blank"}.
 
 
-### Roll back a Helm release
+## Roll back a Helm release
 
 <!--- is this relevant in terms of the quick start? they only have one release right -->
 
@@ -249,12 +250,12 @@ To store a Helm chart, you either need to import the shared configuration that d
 For the quick start, we will import the shared configuration. 
 
 
-#### Before you begin
+### Before you begin
 * [Create and run pipeline with a Helm step](#create-and-run-pipeline-with-a-helm-step)
 
-#### How to
+### How to
 
-1. In the Codefresh UI, expand Pipelines from the sidebar, and select **Pipelines**.
+1. In the Codefresh UI, expand Pipelines in the sidebar, and select **Pipelines**.
 1. Select the pipeline with the Helm deploy step.
 1. In the Workflow tab, click the  **Variables** tab on the right.
 1. From the Variables toolbar, click the context menu, and then select **Add Shared Configuration**.
@@ -275,15 +276,15 @@ max-width="70%"
  {% include 
 image.html 
 lightbox="true" 
-file="/images/getting-started/quick-start-helm/import-helm-repo-conf.png" 
-url="/images/getting-started/quick-start-helm/import-helm-repo-conf.png" 
+file="/images/quick-start/quick-start-helm/import-helm-repo-conf.png" 
+url="/images/quick-start/quick-start-helm/import-helm-repo-conf.png" 
 alt="Helm settings" 
-caption="Import Helm repository configuration (click image to enlarge)" 
+caption="Import Helm repository configuration" 
 max-width="70%" 
 %}
 
 {:start="6"}
-1. Go to the Inline YAML editor with the pipeline definition and modify the deploy step in your `codefresh.yml`:
+1. Go to the Inline YAML editor with the pipeline definition and modify the deploy step in your `codefresh.yml`:  
 `YAML`
 {% highlight yaml %}
 {% raw %}
@@ -325,7 +326,7 @@ steps:
   As you can see, the `action` argument has `push` as its value.
 
 {:start="7"}
-1. Click **Save** and **Run** twice to run the pipeline.
+1. Click **Save** and then click **Run** twice to run the pipeline.
 1. View the pipeline build in the [Helm releases]({{site.baseurl}}/docs/new-helm/helm-releases-management/) dashboard.
 
  {% include 
@@ -357,6 +358,10 @@ max-width="70%"
 <!--- You can also create a single pipeline that [both stores the chart as well as deploys it in a cluster]({{site.baseurl}}/docs/yaml-examples/examples/helm/). You can learn more about [Helm best practices and Helm pipelines]({{site.baseurl}}/docs/docs/new-helm/helm-best-practices/#helm-concepts) to determine which solution is best.  -->
 
 You now know how to deploy a Helm release from Codefresh, view the release, and store the Helm chart in a repository.
+
+Continue with:
+[On-demand environment quick start]({{site.baseurl}}/docs/quick-start/ci-quickstart/on-demand-environments)
+
 
 ## Read more on deployments with Helm 
 [Codefresh built-in Helm repository]({{site.baseurl}}/docs/deployments/helm/managed-helm-repository/)  

@@ -23,12 +23,11 @@
   links:
     - title: Create Codefresh account
       localurl: /docs/quick-start/create-codefresh-account/  
-    - title: CI pipeline quick start
-      localurl: /docs/quick-start/ci-quickstart/create-ci-pipeline/
-    - title: Kubernetes deployment quick start  
-      localurl: /docs/quick-start/ci-quickstart/deploy-to-kubernetes/
-    - title: Helm quick start  
-      localurl: /docs/quick-start/ci-quickstart/deploy-with-helm/
+    - title: CI/CD quick starts
+      localurl: /docs/quick-start/ci-quick-start/
+    - title: GitOps quick starts  
+      localurl: /docs/quick-start/gitops-quickstart/gitops-quick-start/
+
 
 - title: Pipeline integrations
   icon: images/home-icons/cloud-integrations.png

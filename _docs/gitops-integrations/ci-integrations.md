@@ -1,5 +1,5 @@
 ---
-title: "CI integrations for GitOps"
+title: "GitOps CI integrations"
 description: ""
 group: gitops-integrations
 toc: true
