@@ -1,7 +1,7 @@
 ---
 title: "Freestyle"
 description: "Run commands inside a Docker container"
-group: codefresh-yaml
+group: pipelines
 sub_group: steps
 redirect_from:
   - /docs/freestyle/
