@@ -189,6 +189,109 @@
     - title: GitOps examples
       url: "/cd-examples"
 
+- title: Pipeline integrations
+  url: "/integrations"
+  pages: 
+    - title: Codefresh Hosted GitOps
+      url: "/codefresh-hosted-gitops" 
+    - title: Git Providers
+      url: "/git-providers"
+    - title: Kubernetes
+      url: "/kubernetes"
+    - title: Amazon Services
+      url: "/amazon-web-services" 
+    - title: Microsoft Azure
+      url: "/microsoft-azure"            
+    - title: Google Cloud
+      url: "/google-cloud"   
+    - title: Docker registries
+      url: "/docker-registries"
+      sub-pages:
+        - title: Docker Hub
+          url: "/docker-hub"
+        - title: Azure Docker Registry
+          url: "/azure-docker-registry"
+        - title: Amazon EC2 Container Registry
+          url: "/amazon-ec2-container-registry"
+        - title: Google Container Registry
+          url: "/google-container-registry"
+        - title: Google Artifact Registry
+          url: "/google-artifact-registry"
+        - title: JFrog Bintray.io/Artifactory
+          url: "/bintray-io"
+        - title: Quay.io
+          url: "/quay-io"
+        - title: GitHub Container Registry
+          url: "/github-container-registry"
+        - title: DigitalOcean Container Registry
+          url: "/digital-ocean-container-registry"
+        - title: Other Registries
+          url: "/other-registries"  
+    - title: Secret Storage
+      url: "/secret-storage"
+    - title: Hashicorp Vault
+      url: "/hashicorp-vault"              
+    - title: Helm Integration
+      url: "/helm" 
+    - title: ArgoCD Integration
+      url: "/argocd" 
+    - title: Datadog Integration
+      url: "/datadog"         
+    - title: Jira Integration
+      url: "/jira"       
+    - title: Jenkins Integration
+      url: "/jenkins-integration"
+    - title: Codecov Integration
+      url: "/codecov-integration"                
+    - title: Google Cloud builder
+      url: "/gcloud-builder"
+    - title: Google Marketplace Installation
+      url: "/google-marketplace"
+    - title: GitHub Actions
+      url: "/github-actions"  
+    - title: Notifications
+      url: "/notifications"
+      sub-pages:
+        - title: Slack
+          url: "/slack-integration"
+        - title: Jira
+          url: "/jira-integration"          
+    - title: Codefresh API
+      url: "/codefresh-api"
+
+
+- title: GitOps integrations
+  url: "/gitops-integrations"
+  pages:
+    - title: Image enrichment with GitOps integrations
+      url: "/image-enrichment-overview"
+    - title: GitOps CI integrations
+      url: "/ci-integrations"
+      sub-pages:
+        - title: Codefresh Classic
+          url: "/codefresh-classic"
+        - title: GitHub Actions
+          url: "/github-actions"
+        - title: Jenkins
+          url: "/jenkins"   
+    - title: GitOps issue tracking integrations
+      url: "/issue-tracking"
+      sub-pages:  
+        - title: Jira 
+          url: "/jira"
+    - title: GitOps container registry integrations
+      url: "/container-registries"
+      sub-pages:  
+        - title: Amazon ECR
+          url: "/amazon-ecr"      
+        - title: Docker Hub Registry
+          url: "/dockerhub"
+        - title: GitHub Container Registry
+          url: "/github-cr"
+        - title: JFrog Artifactory
+          url: "/jfrog" 
+        - title: Quay Registry
+          url: "/quay"
 
 - title: Deployments
   url: "/deployments"
@@ -332,7 +435,23 @@
     - title: Sharing file systems
       url: "/sharing-file-system"
 
-
+- title: CI/CD testing
+  url: "/testing"
+  pages:
+    - title: Unit tests
+      url: "/unit-tests"
+    - title: Integration tests
+      url: "/integration-tests"
+    - title: Creating test reports
+      url: "/test-reports"
+    - title: Creating compositions
+      url: "/create-composition"
+    - title: Dynamic preview environments
+      url: "/automatic-preview-environments"
+    - title: Security scanning
+      url: "/security-scanning"
+    - title: SonarQube scanning
+      url: "/sonarqube-integration"
 
 - title: Clients
   url: "/clients"
