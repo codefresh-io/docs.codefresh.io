@@ -38,7 +38,6 @@ All the IPs are NAT gateways, and need to enable specific IPs instead of ranges.
 - 44.228.66.171
 - 44.238.167.159
 - 44.237.63.217
-<!--- 
 - 44.237.63.217
 - 52.6.148.44
 - 52.73.90.9
@@ -47,7 +46,7 @@ All the IPs are NAT gateways, and need to enable specific IPs instead of ranges.
 - 3.228.62.77
 - 44.205.132.73
 - 34.235.30.144
-- 54.160.88.80  -->
+- 54.160.88.80  
  
 ## Codefresh IPs for Hosted GitOps Runtimes
 

@@ -27,9 +27,9 @@
         url: "/deploy-to-kubernetes"
       - title: Helm quick start  
         url: "/deploy-with-helm"
-      - title: GitOps quick start
-        url: "/gitops-quickstart"
-        sub-pages:
+    - title: GitOps quick start
+      url: "/gitops-quickstart"
+      sub-pages:
         - title: Provision a hosted runtime
           url:  "/install-hosted"
         - title: Prepare for hybrid runtime installation
