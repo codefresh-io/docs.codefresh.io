@@ -26,7 +26,26 @@
       - title: Kubernetes deployment quick start  
         url: "/deploy-to-kubernetes"
       - title: Helm quick start  
-        localurl: "/deploy-with-helm"
+        url: "/deploy-with-helm"
+      - title: GitOps quick start
+        url: "/gitops-quickstart"
+        sub-pages:
+        - title: Provision a hosted runtime
+          url:  "/install-hosted"
+        - title: Prepare for hybrid runtime installation
+          url:  "/verify-requirements"
+        - title: Install a hybrid runtime
+          url: "/runtime"
+        - title: Create an application
+          url: "/create-app-ui"     
+        - title: Create and commit resources for application
+          url: "/create-app-specs"
+        - title: Update the image tag for application
+          url: "/create-rollout"
+        - title: Trigger the Hello World example pipeline
+          url: "/hello-world"
+        - title: Create a basic CI delivery pipeline
+          url: "/create-ci-pipeline"
 
 
 
