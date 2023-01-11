@@ -1,5 +1,5 @@
 ---
-title: "Using external Helml repos in Codefresh pipelines"
+title: "Using external Helm repos in Codefresh pipelines"
 description: "Use external Helm Charts and repositories in Codefresh pipelines"
 group: deployments
 sub_group: helm

@@ -17,8 +17,8 @@ After [adding a cluster]({{site.baseurl}}/docs/integrations/kubernetes/#connect-
 
 {% include image.html
 lightbox="true"
-file="/images/deployments/kubernetes/kubernetes-dashboard.png"
-url="/images/deployments/kubernetes/kubernetes-dashboard.png"
+file="/images/integrations/kubernetes/kubernetes-dashboard.png"
+url="/images/integrations/kubernetes/kubernetes-dashboard.png"
 alt="Codefresh Kubernetes Dashboard"
 caption="Codefresh Kubernetes Dashboard"
 max-width="80%"

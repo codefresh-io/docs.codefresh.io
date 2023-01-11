@@ -25,8 +25,8 @@ View all the Helm releases in your cluster, and drill down into a specific relea
 {% include 
 image.html 
 lightbox="true" 
-file="/images/deployments/helm/dashboard/helm-release-dashboard.png" 
-url="/images/deployments/helm/dashboard/helm-release-dashboard.png"
+file="/images/deployments/helm/helm-release-dashboard.png" 
+url="/images/deployments/helm/helm-release-dashboard.png"
 alt="Helm Releases" 
 caption="Helm Releases" 
 max-width="90%"
@@ -39,8 +39,8 @@ You can specify the type of Helm release for a cluster by clicking on the small 
  {% include 
 image.html 
 lightbox="true" 
-file="/images/getting-started/quick-start-helm/helm-version-selection.png" 
-url="/images/getting-started/quick-start-helm/helm-version-selection.png" 
+file="/images/quick-start/quick-start-helm/helm-version-selection.png" 
+url="/images/quick-start/quick-start-helm/helm-version-selection.png" 
 alt="Choosing a Helm version" 
 caption="Choosing a Helm version" 
 max-width="50%" 
@@ -55,8 +55,8 @@ For Helm 2 releases, Codefresh will try to find the server component (Tiller) in
 {% include 
 image.html 
 lightbox="true" 
-file="/images/deployments/helm/dashboard/services.png" 
-url="/images/deployments/helm/dashboard/services.png"
+file="/images/deployments/helm/services.png" 
+url="/images/deployments/helm/services.png"
 alt="Kubernetes Services" 
 caption="Kubernetes Services" 
 max-width="70%"
@@ -67,8 +67,8 @@ The History tab shows all previous releases.
 {% include 
 image.html 
 lightbox="true" 
-file="/images/deployments/helm/dashboard/history.png" 
-url="/images/deployments/helm/dashboard/history.png"
+file="/images/deployments/helm/history.png" 
+url="/images/deployments/helm/history.png"
 alt="Helm History" 
 caption="Helm History"
 max-width="60%"
@@ -79,8 +79,8 @@ You can further expand a release revision to see exactly what files were changed
 {% include 
 image.html 
 lightbox="true" 
-file="/images/deployments/helm/dashboard/diff.png" 
-url="/images/deployments/helm/dashboard/diff.png"
+file="/images/deployments/helm/diff.png" 
+url="/images/deployments/helm/diff.png"
 alt="Helm diff" 
 caption="Helm diff" 
 max-width="60%"
@@ -91,8 +91,8 @@ There are other tabs that show you the chart used, the values as well as the fin
 {% include 
 image.html 
 lightbox="true" 
-file="/images/deployments/helm/dashboard/manifests.png" 
-url="/images/deployments/helm/dashboard/manifests.png"
+file="/images/deployments/helm/manifests.png" 
+url="/images/deployments/helm/manifests.png"
 alt="Final rendered manifests" 
 caption="Final rendered manifests" 
 max-width="50%"
@@ -134,8 +134,8 @@ can help show the main reason behind each release, or any other message that is 
 {% include 
 image.html 
 lightbox="true" 
-file="/images/deployments/helm/dashboard/helm-commit-message.png" 
-url="/images/deployments/helm/dashboard/helm-commit-message.png"
+file="/images/deployments/helm/helm-commit-message.png" 
+url="/images/deployments/helm/helm-commit-message.png"
 alt="Helm release message" 
 caption="Helm release message" 
 max-width="70%"
@@ -158,8 +158,8 @@ You can rollback to a previous revision of a release in the History tab.
 {% include 
 image.html 
 lightbox="true" 
-file="/images/deployments/helm/dashboard/rollback.png" 
-url="/images/deployments/helm/dashboard/rollback.png"
+file="/images/deployments/helm/rollback.png" 
+url="/images/deployments/helm/rollback.png"
 alt="Rolling back to a previous release" 
 caption="Rolling back to a previous release" 
 max-width="50%"
@@ -186,8 +186,8 @@ Similar to a [build badge]({{site.baseurl}}/docs/pipelines/build-status/#using-t
 {% include 
 image.html 
 lightbox="true" 
-file="/images/deployments/helm/dashboard/helm-badge.png" 
-url="/images/deployments/helm/dashboard/helm-badge.png"
+file="/images/deployments/helm/helm-badge.png" 
+url="/images/deployments/helm/helm-badge.png"
 alt="Helm Deployment badge" 
 caption="Helm Deployment badge" 
 max-width="60%"
@@ -216,8 +216,8 @@ You can override these actions for a specific Helm release by defining custom pi
 {% include 
 image.html 
 lightbox="true" 
-file="/images/deployments/helm/dashboard/override-helm-actions.png" 
-url="/images/deployments/helm/dashboard/override-helm-actions.png"
+file="/images/deployments/helm/override-helm-actions.png" 
+url="/images/deployments/helm/override-helm-actions.png"
 alt="Changing default Helm actions" 
 caption="Changing default Helm actions" 
 max-width="50%"

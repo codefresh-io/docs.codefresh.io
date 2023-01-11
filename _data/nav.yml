@@ -76,6 +76,8 @@
 - title: Example catalog
   url: "/example-catalog"
   pages:
+    - title: CI/CD examples
+      url: "/examples"
     - title: CI examples
       url: "/ci-examples"
       sub-pages:
