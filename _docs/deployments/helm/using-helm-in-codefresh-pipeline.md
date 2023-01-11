@@ -14,7 +14,7 @@ We created a [special Helm step](https://codefresh.io/steps/step/helm){:target="
 > If you have a special use case that is not covered by the Codefresh Helm step, you can always use the regular `helm` cli in a freestyle step.  
   In this case, you can use the simpler container `codefresh/kube-helm` which includes only Kubectl and helm tools. `kube-helm` is available on DockerHub: [https://hub.docker.com/r/codefresh/kube-helm/](https://hub.docker.com/r/codefresh/kube-helm/){:target="\_blank"}.
 
-If you are just starting with Helm, refer to our [Helm quick start guide]({{site.baseurl}}/docs/getting-started/helm-quick-start-guide/). And, if you prefer to work directly with code, see our [full Helm example]({{site.baseurl}}/docs/example-catalog/cd-examples/helm/).
+If you are just starting with Helm, refer to our [Helm quick start guide]({{site.baseurl}}/docs/quick-start/ci-quickstart/deploy-with-helm/) . And, if you prefer to work directly with code, see our [full Helm example]({{site.baseurl}}/docs/example-catalog/cd-examples/helm/).
 
 ## Helm setup
 

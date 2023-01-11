@@ -1,5 +1,5 @@
 ---
-title: "Service containers in CI pipelines"
+title: "Service containers in pipelines"
 description: "How to use sidecar services in your pipelines"
 group: pipelines
 toc: true

@@ -24,7 +24,7 @@ Codefresh offers several options when it comes to Kubernetes deployments:
 1. Using a [freestyle]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) step with your own `kubectl` commands  
   This deployment option gives you great flexibility, but assumes that you know how to work with `kubectl`. See [Custom kubectl commands]({{site.baseurl}}/docs/deployments/kubernetes/custom-kubectl-commands/).
 1. Using Helm as a package manager  
-  See our [Helm quick start guide]({{site.baseurl}}/docs/getting-started/helm-quick-start-guide/).
+  See our [Helm quick start guide]({{site.baseurl}}/docs/quick-start/ci-quickstart/deploy-with-helm/) .
 
 ## Prerequisites
 

@@ -16,7 +16,7 @@ Native support for Helm in Codefresh includes:
  * A dashboard for [Helm environments]({{site.baseurl}}/docs/deployments/kubernetes/environment-dashboard/)
 
 The built-in Helm repository is production ready. You can start using Helm right away with your Codefresh account,
-even if you don't have an external Helm repository. See our [quick start guide for Helm]({{site.baseurl}}/docs/getting-started/helm-quick-start-guide/) or the [complete Helm example]({{site.baseurl}}/docs/example-catalog/cd-examples/helm/).  
+even if you don't have an external Helm repository. See our [quick start guide for Helm]({{site.baseurl}}/docs/quick-start/ci-quickstart/deploy-with-helm/)  or the [complete Helm example]({{site.baseurl}}/docs/example-catalog/cd-examples/helm/).  
 
 For each Helm integration, you can toggle the level of access by [non-admin users]({{site.baseurl}}/docs/administration/access-control/#users-and-administrators). 
 

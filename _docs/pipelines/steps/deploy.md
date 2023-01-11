@@ -17,7 +17,7 @@ It has two modes:
 automatically update the service/deployment with the new docker image.
 1. Using the `file_path` option. In this case you provide your own Kubernetes manifest and Codefresh deploys it as-is. It is **your
 own responsibility** to do [custom replacements]({{site.baseurl}}/docs/deploy-to-kubernetes/kubernetes-templating/) here (for example using [awk](https://en.wikipedia.org/wiki/AWK), [sed](https://www.gnu.org/software/sed/manual/sed.html) or [yq](http://mikefarah.github.io/yq/)). The deploy step is also using the [Codefresh templating mechanism]({{site.baseurl}}/docs/deploy-to-kubernetes/kubernetes-templating/#using-the-codefresh-deploy-image) behind the scenes if you want to take advantage of it. For a full templating solution we also
-suggest you look at [Helm]({{site.baseurl}}/docs/getting-started/helm-quick-start-guide/).
+suggest you look at [Helm]({{site.baseurl}}/docs/quick-start/ci-quickstart/deploy-with-helm/) .
 
 You need to define either one of these fields in the deploy step. If you define `service` you also can select the exact Docker image
 with the `candidate` field (otherwise Codefresh will just reuse the docker image defined in the existing deployment)
@@ -174,7 +174,7 @@ If you find the deploy step limited, feel free to look at the other deployment o
 
 * [The cf-deploy-kubernetes step]({{site.baseurl}}/docs/deploy-to-kubernetes/kubernetes-templating/) 
 * [Custom kubectl commands]({{site.baseurl}}/docs/deploy-to-kubernetes/custom-kubectl-commands/) 
-* [Helm]({{site.baseurl}}/docs/getting-started/helm-quick-start-guide/) 
+* [Helm]({{site.baseurl}}/docs/quick-start/ci-quickstart/deploy-with-helm/)  
 
 ## Related articles
 [Kubernetes Quick start guide]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/)  

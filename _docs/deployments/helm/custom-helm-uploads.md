@@ -12,7 +12,7 @@ Helm packages are just TAR files. Helm repositories are simple file hierarchies 
 You can run custom commands and manually upload indexes and packages to a Helm repo.
 
 >This articles shows some non-standard Helm examples.  
-  For the basic use cases, or if you are just getting started with Helm, see our [Helm quick start guide]({{site.baseurl}}/docs/getting-started/helm-quick-start-guide/) and [Using Helm in pipelines]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/).
+  For the basic use cases, or if you are just getting started with Helm, see our [Helm quick start guide]({{site.baseurl}}/docs/quick-start/ci-quickstart/deploy-with-helm/)  and [Using Helm in pipelines]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/).
 
 ## Package a Helm chart
 Below is an example of a freestyle step in a Codefresh pipeline that packages the Helm chart and then extracts the chart name from the command output. It also saves that package name in an environment variable for later use.
