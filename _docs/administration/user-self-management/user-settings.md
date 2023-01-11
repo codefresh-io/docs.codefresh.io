@@ -83,7 +83,11 @@ Note that options available highly depend on what Git provider you are using wit
 Generate new API keys to access Codefresh functionality from your scripts or applications, outside the Codefresh UI. Edit scopes for existing keys, or revoke them when needed.  
 For details, see [Codefresh API]({{site.baseurl}}/docs/integrations/codefresh-api/#authentication-instructions).
 
->Tokens are visible only during creation. You cannot "view" an existing token. To re-enable API access for an existing application, you must delete the old token and create a new one.
+>Tokens are visible only during creation. You cannot "view" an existing token. To re-enable API access for an existing application, you must delete the old token and create a new one.  
+
+  The UI shows the first few characters in the second part of the key, after the `.`, and not the characters at the beginning of the key.
+
+
 
 
 1. In **API Keys**, to generate a new API key, click **Generate**.
@@ -98,6 +102,7 @@ alt="Generating a key for the API"
 caption="Generating a key for the API"
 max-width="80%"
 %}
+
 
 
 ## Related articles
