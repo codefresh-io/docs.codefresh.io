@@ -395,6 +395,8 @@
 - title: Single Sign-On
   url: /single-sign-on
   pages:
+    - title: Common configuration
+      url: /team-sync
     - title: OpenID Connect
       url: /oidc
       sub-pages:
@@ -409,7 +411,7 @@
         - title: OneLogin
           url: /oidc-onelogin
     - title: SAML
-      url: /saml
+      url: /saml-setup
       sub-pages:
         - title: JumpCloud
           url: /saml-jumpcloud
@@ -421,8 +423,7 @@
           url: /saml-pingid
     - title: LDAP
       url: /ldap
-    - title: Common configuration
-      url: /team-sync
+
 
 
 - title: Reference

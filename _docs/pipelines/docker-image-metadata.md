@@ -147,15 +147,15 @@ You can view an image's metadata annotation by:
 {% 
   include image.html 
   lightbox="true" 
-  file="/images/codefresh-yaml/docker-image-metadata/annotations.png" 
-  url="/images/codefresh-yaml/docker-image-metadata/annotations.png" 
+  file="/images/pipeline/codefresh-yaml/docker-image-metadata/annotations.png" 
+  url="/images/pipeline/codefresh-yaml/docker-image-metadata/annotations.png" 
   alt="Image annotations" 
   max-width="65%" 
 %}
 
 In addition, you can add selected annotations to the images table on images page. To display an annotation in the image table, click on the gear icon at the top right corner of image page and then select all annotations you want to display.
 
-{% include image.html lightbox="true" file="/images/aec92e8-Screen_Shot_2017-10-17_at_3.01.26_PM.png" url="/images/aec92e8-Screen_Shot_2017-10-17_at_3.01.26_PM.png" alt="Screen Shot 2017-10-08 at 8.28.35 AM.png" max-width="40%" %}
+{% include image.html lightbox="true" file="/images/pipeline/codefresh-yaml/docker-image-metadata/annotations-image-table.png" url="images/pipeline/codefresh-yaml/docker-image-metadata/annotations-image-table.png" alt="Annotations in image table" caption="Annotations in image table"max-width="40%" %}
 
 
 ## Annotating images programmatically

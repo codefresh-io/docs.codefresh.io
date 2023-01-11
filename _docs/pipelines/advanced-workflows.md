@@ -1,7 +1,7 @@
 ---
 title: "Advanced workflows with parallel steps"
 description: "Create complex workflows in Codefresh with step dependencies"
-group: codefresh-yaml
+group: pipelines
 toc: true
 ---
 

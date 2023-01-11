@@ -66,8 +66,8 @@ In the Codefresh UI you will see the *Approve/Reject* buttons.
 {% include 
 image.html 
 lightbox="true" 
-file="/images/codefresh-yaml/approval/build-waiting.png" 
-url="/images/codefresh-yaml/approval/build-waiting.png"
+file="/images/pipeline/codefresh-yaml/approval/build-waiting.png" 
+url="/images/pipeline/codefresh-yaml/approval/build-waiting.png"
 alt="Build waiting for input" 
 caption="Build waiting for input"
 max-width="80%"
@@ -107,8 +107,8 @@ This is a two-step process. First you need to tag your pipeline with one or more
 {% include 
 image.html 
 lightbox="true" 
-file="/images/codefresh-yaml/approval/pipeline-tag.png" 
-url="/images/codefresh-yaml/approval/pipeline-tag.png"
+file="/images/pipeline/codefresh-yaml/approval/pipeline-tag.png" 
+url="/images/pipeline/codefresh-yaml/approval/pipeline-tag.png"
 alt="Marking a pipeline with tags" 
 caption="Marking a pipeline with tags"
 max-width="40%"
@@ -119,8 +119,8 @@ Once you have tagged your pipelines you can create one or more access rules that
 {% include 
 image.html 
 lightbox="true" 
-file="/images/codefresh-yaml/approval/approval-rule.png" 
-url="/images/codefresh-yaml/approval/approval-rule.png"
+file="/images/pipeline/codefresh-yaml/approval/approval-rule.png" 
+url="/images/pipeline/codefresh-yaml/approval/approval-rule.png"
 alt="Rules for approvals" 
 caption="Rules for approvals"
 max-width="80%"
@@ -280,8 +280,8 @@ Here is the pipeline state after a rejection:
 {% include 
 image.html 
 lightbox="true" 
-file="/images/codefresh-yaml/approval/pipeline-rejected.png" 
-url="/images/codefresh-yaml/approval/pipeline-rejected.png"
+file="/images/pipeline/codefresh-yaml/approval/pipeline-rejected.png" 
+url="/images/pipeline/codefresh-yaml/approval/pipeline-rejected.png"
 alt="Rejecting a pipeline" 
 caption="Rejecting a pipeline"
 max-width="80%"
@@ -315,8 +315,8 @@ via a Slack channel
 {% include 
 image.html 
 lightbox="true" 
-file="/images/codefresh-yaml/approval/slack-approval.png" 
-url="/images/codefresh-yaml/approval/slack-approval.png"
+file="/images/pipeline/codefresh-yaml/approval/slack-approval.png" 
+url="/images/pipeline/codefresh-yaml/approval/slack-approval.png"
 alt="Approval step in a slack channel" 
 caption="Approval step in a slack channel"
 max-width="80%"
@@ -327,8 +327,8 @@ To enable this behavior, you need to activate it in the Slack settings page:
 {% include 
 image.html 
 lightbox="true" 
-file="/images/codefresh-yaml/approval/slack-settings.png" 
-url="/images/codefresh-yaml/approval/slack-settings.png"
+file="/images/pipeline/codefresh-yaml/approval/slack-settings.png" 
+url="/images/pipeline/codefresh-yaml/approval/slack-settings.png"
 alt="Slack settings" 
 caption="Slack settings"
 max-width="50%"

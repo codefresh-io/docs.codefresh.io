@@ -1,5 +1,5 @@
 ---
-title: "Caching in CI pipelines"
+title: "Caching in pipelines"
 description: "Faster builds with Codefresh caching"
 group: pipelines
 toc: true

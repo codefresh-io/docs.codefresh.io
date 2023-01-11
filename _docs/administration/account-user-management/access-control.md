@@ -114,7 +114,7 @@ You can assign multiple tags to each cluster, making it easy to define multiple 
 
 >By default, all clusters, with and without tags, are displayed and can be edited by all users (but not deleted). As soon as you add at least one tag to a cluster, the cluster is only accessible to users with the required policy rules (explained in the next sections).
 
-### Configure CI pipelines with policy attributes <!---TITLE: add tags to pipelines-->
+### Configure pipelines with policy attributes <!---TITLE: add tags to pipelines-->
 
 Similar to Kubernetes clusters, you can also add tags to specific pipelines. 
 

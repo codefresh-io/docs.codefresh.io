@@ -1,5 +1,5 @@
 ---
-title: "Grouping steps in CI pipelines"
+title: "Grouping steps in pipelines"
 description: "Group steps into stages for better visualization"
 group: pipelines
 toc: true

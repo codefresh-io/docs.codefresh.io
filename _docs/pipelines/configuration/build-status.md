@@ -2,6 +2,7 @@
 title: "Public logs and status badges"
 description: "Embedding Status Images and viewing public logs"
 group: pipelines
+sub_group: configuration
 toc: true
 redirect_from:
   - /docs/build-status

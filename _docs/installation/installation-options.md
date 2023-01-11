@@ -9,7 +9,7 @@ To be changed and updated for ProjectOne
 The Codefresh platform supports two different installation environments, each with different installation options.
 
 * CI/CD installation environment  
-  The CI/CD installation environment is optimized for Continuous Integration/Delivery with Codefresh pipelines. CI pipelines created in Codefresh fetch code from your Git repository, packages/compiles the code, and deploys the final artifact to a target environment.
+  The CI/CD installation environment is optimized for Continuous Integration/Delivery with Codefresh pipelines. Pipelines created in Codefresh fetch code from your Git repository, packages/compiles the code, and deploys the final artifact to a target environment.
 
   The CI/CD installation environment supports these installation options:  
   * Hybrid, where the Codefresh CI/CD UI runs in the Codefresh cloud, and the builds run on customer premises

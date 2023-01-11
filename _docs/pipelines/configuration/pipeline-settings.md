@@ -1,7 +1,8 @@
 ---
-title: "Global settings for CI pipelines"
+title: "Global settings for pipelines"
 description: "Define global options for pipeline templates, yaml sources and approval behavior"
 group: pipelines
+sub_group: configuration
 toc: true
 ---
 

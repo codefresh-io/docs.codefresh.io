@@ -1,7 +1,8 @@
 ---
-title: "Post-Step Operations"
+title: "Post-step operations"
 description: "Annotate your builds and run extra steps"
-group: codefresh-yaml
+group: pipelines
+sub_group: steps
 redirect_from:
   - /docs/post-step-operations/
 toc: true

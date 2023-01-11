@@ -1,5 +1,5 @@
 ---
-title: "Debugging CI pipelines"
+title: "Debugging pipelines"
 description: "Pause and inspect pipelines"
 group: pipelines
 toc: true

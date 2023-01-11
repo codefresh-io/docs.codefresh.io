@@ -1,5 +1,5 @@
 ---
-title: "Variables in CI pipelines"
+title: "Variables in pipelines"
 description: ""
 group: pipelines
 redirect_from:

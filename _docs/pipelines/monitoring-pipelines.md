@@ -1,5 +1,5 @@
 ---
-title: "Monitoring CI pipelines"
+title: "Monitoring pipelines"
 description: "Viewing your builds and logs"
 group: pipelines
 toc: true

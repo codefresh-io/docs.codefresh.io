@@ -1,5 +1,5 @@
 ---
-title: "Hooks in CI pipelines"
+title: "Hooks in pipelines"
 description: "Execute commands before/after each pipeline or step"
 group: pipelines
 toc: true

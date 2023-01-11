@@ -1,7 +1,8 @@
 ---
-title: "Secrets in CI pipelines"
+title: "Secrets in pipelines"
 description: "Use Kubernetes secrets in Codefresh"
 group: pipelines
+sub_group: configuration
 toc: true
 ---
 
