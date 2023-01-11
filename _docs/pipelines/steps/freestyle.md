@@ -3,8 +3,6 @@ title: "Freestyle"
 description: "Run commands inside a Docker container"
 group: pipelines
 sub_group: steps
-redirect_from:
-  - /docs/freestyle/
 toc: true
 ---
 The Freestyle step is designed so you can execute a series of commands in a container. Freestyle steps
@@ -120,9 +118,9 @@ steps:
      - mvn -Dmaven.repo.local=/codefresh/volume/m2_repository package
 {% endhighlight %}
 
-Note how we [cache Maven dependencies]({{site.baseurl}}/docs/learn-by-example/java/spring-boot-2/#caching-the-maven-dependencies) using the internal Codefresh Volume.
+Note how we [cache Maven dependencies]({{site.baseurl}}/docs/example-catalog/ci-examples/java/spring-boot-2/#caching-the-maven-dependencies) using the internal Codefresh Volume.
 
-**Running unit tests in [Node.JS]({{site.baseurl}}/docs/learn-by-example/nodejs/):**
+**Running unit tests in [Node.JS]({{site.baseurl}}/docs/example-catalog/ci-examples/nodejs/):**
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -136,7 +134,7 @@ steps:
      - npm run test
 {% endhighlight %}
 
-**Packaging a [GO application]({{site.baseurl}}/docs/learn-by-example/golang/golang-hello-world/):**
+**Packaging a [GO application]({{site.baseurl}}/docs/example-catalog/ci-examples/golang-hello-world/):**
 
 `codefresh.yml`
 {% highlight yaml %}
