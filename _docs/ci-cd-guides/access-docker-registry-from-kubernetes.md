@@ -12,8 +12,8 @@ cluster, instead of uploading the application itself, as in traditional deployme
  {% include 
 image.html 
 lightbox="true" 
-file="/images/getting-started/quick-start-k8s/overview.png" 
-url="/images/getting-started/quick-start-k8s/overview.png" 
+file="/images/quick-start/quick-start-k8s/overview.png" 
+url="/images/quick-start/quick-start-k8s/overview.png" 
 alt="Kubernetes deployments" 
 caption="Kubernetes deployments" 
 max-width="80%" 
