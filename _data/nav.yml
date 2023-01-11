@@ -555,7 +555,58 @@
     - title: Shared configuration repo
       url: "/shared-configuration"
   
-
+- title: Troubleshooting
+  url: "/troubleshooting"
+  pages:
+    - title: Common Issues
+      url: "/common-issues"
+      sub-pages:
+        - title: Can't find your organization repositories
+          url: "/cant-find-your-organization-repositories"
+        - title: Can’t find your private repositories
+          url: "/cant-find-your-private-repositories"
+        - title: 'Clone step failed: Command [git checkout $REVISION] exited with code [1]'
+          url: "/git-clone-step-issue"
+        - title: Handling commit messages with a quote character
+          url: "/handling-commit-messages-with-quotes"
+        - title: Docker image does not exist or no pull access
+          url: "/the-docker-image-does-not-exist-or-no-pull-access"
+        - title: 'Build step: No such file or directory'
+          url: "/build-step-no-such-file-or-directory"
+        - title: No Dockerfile found
+          url: "/no-dockerfile-found"
+        - title: Failed to tag image
+          url: "/could-not-tag-image"
+        - title: Error Code 137
+          url: "/error-code-137"
+        - title: Too many requests
+          url: "/dockerhub-rate-limit"
+        - title: Restoring data from pre-existing image hangs on
+          url: "/restoring-data-from-pre-existing-image-hangs-on"
+        - title: Disabling codefresh caching mechanisms
+          url: "/disabling-codefresh-caching-mechanisms"
+        - title: Pinning codefresh.yml for multi-git triggers
+          url: "/multi-git-triggers"
+        - title: Workflow terminated by the system
+          url: "/workflow-terminated-by-system"
+        - title: cf_export limitations
+          url: "/cf-export-limitations"
+        - title: Validation port warnings
+          url: "/validation-port-warnings"
+        - title: Forbidden Kubernetes resources
+          url: "/forbidden-cluster-resources"
+        - title: How to use SSH keys in freestyle steps
+          url: "using-ssh-keys"
+        - title: Failed to get accounts clusters during workflow
+          url: "/failed-to-get-accounts-clusters-during-workflow"
+        - title: Paging issues for builds and images
+          url: "/paging-issues-builds-images"
+    - title: Git step migration
+      url: "/git-step-migration"
+    - title: Personal Git Deprecation
+      url: "/personal-git-deprecation"
+    - title: GitOPs runtimes
+      url: "/runtime-issues"
 
 
 - title: Terms and Privacy Policy
