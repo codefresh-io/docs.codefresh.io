@@ -43,3 +43,8 @@ Make sure also that you know the scope of the search, that is, where users to se
   1. Have a defined email address on the LDAP server
   1. Use the same email address as defined on the LDAP server
   1. Use as login information, the LDAP email, password, and `cn` value of username
+
+## Related articles
+[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/single-sign-on)  
+[Setting up OIDC Federated SSO]({{site.baseurl}}/docs/single-sign-on/oidc)   
+[Setting up SAML2 Federated SSO]({{site.baseurl}}/docs/single-sign-on/saml-setup)  
