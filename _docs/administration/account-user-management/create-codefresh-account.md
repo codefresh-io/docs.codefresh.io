@@ -9,7 +9,7 @@ redirect_from:
   - /docs/getting-started/
   - /docs/getting-started/introduction/
 ---
-Before you can do anything in Codefresh such as building and deploying your applications, you need to create a Codefresh account.
+Before you can do create pipelines, build, and deploy applications in Codefresh, you need to create a Codefresh account.
 
 Creating an account in Codefresh is free (no credit card is required) and can be done in three simple steps
 
@@ -23,7 +23,7 @@ max-width="90%"
 %}
 
 ## Step 1: Select your Identity Provider
-As the first step in setting up ypur account in Codefresh, select the identity provider (IdP) to use. 
+As the first step in setting up your account in Codefresh, select the identity provider (IdP) to use. 
 Codefresh currently supports the following IdPs:
 * GitHub
 * Bitbucket
@@ -37,9 +37,9 @@ If you need an IdP that is not in the list, please [contact us](https://codefres
 >NOTES:  
   For Git repositories, the login method is less important, as you can Git repositories through [Git integrations]({{site.baseurl}}/docs/integrations/git-providers/), regardless of your sign-up process.  
 
-  If you multiple sign-up methods, as long as you use the same email address in all the sign-ups, Codefresh automatically redirects you to the account dashboard.
+  If you have multiple sign-up methods, as long as you use the same email address for all sign-ups, Codefresh automatically redirects you to the account dashboard.
 
-1. Go to the [Codefresh Sign Up page](https://g.codefresh.io/signup).  <!---need to change the URL and the screenshot-->
+1. Go to the [Codefresh Sign Up page](https://g.codefresh.io/signup){:target="\_blank"}.  <!---need to change the URL and the screenshot-->
 
 
 {% include 
@@ -54,7 +54,7 @@ max-width="40%"
 
 {:start="2"}
 1. Select the IdP for sign-up.
-1. Continue with  [Step 2: Accept the permissions request](#step2-accept-the-permissions-request)
+1. Continue with  [Step 2: Accept the permissions request](#step2-accept-the-permissions-request).
 
 
 
@@ -62,8 +62,7 @@ max-width="40%"
 
 After you select the IdP (identity provider), Codefresh requests permission to access your basic details, and for Git providers, to access your Git repositories. The Permissions window that is displayed differs according to the IdP selected in the previous step.
 
-Don't worry, Codefresh will not do anything without your explicit approval, so don't be scared by the permissions shown
-in the request window. The permissions requested by Codefresh are needed in order to build and deploy your projects.
+Don't worry, Codefresh will not do anything without your explicit approval. Codefresh needs the permissions to build and deploy your projects.
 
 1. Do any of the following:
   * For GitHub: To continue, click **Authorize codefresh-io**.
@@ -212,8 +211,10 @@ We can establish a VPN / tunnel to your network or discuss options for an on-pre
 [Adding users and teams]({{site.baseurl}}/docs/administration/account-user-management/add-users/)  
 [Configuring access control]({{site.baseurl}}/docs/administration/account-user-management/access-control/)  
 [Codefresh IP addresses]({{site.baseurl}}/docs/administration/account-user-management/platform-ip-addresses/)  
-[Create a basic pipeline]({{site.baseurl}}/docs/getting-started/create-a-basic-pipeline/)  
-[Pipeline examples]({{site.baseurl}}/docs/example-catalog/ci-examples/)
-[Deploy to Kubernetes]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/)  
+[CI pipeline quick start]({{site.baseurl}}/docs/quick-start/ci-quickstart/create-a-basic-pipeline/)  
+[Kubernetes deployment quick start]({{site.baseurl}}/docs/quick-start/ci-quickstart/deploy-to-kubernetes)  
+[Pipeline examples]({{site.baseurl}}/docs/example-catalog/ci-examples/)  
+
+
 
 

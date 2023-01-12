@@ -1,6 +1,6 @@
 ---
-title: "Audit logs"
-description: "Get a list of all actions in Codefresh"
+title: "Auditing actions in Codefresh"
+description: "Getlogs of all actions in Codefresh"
 group: administration
 sub_group: account-user-management
 redirect_from:
@@ -13,7 +13,7 @@ The time frames covered by audit logs depends on the pricing tier of your Codefr
 
 The audit log includes:   
 * UI actions from users
-* [CLI](https://codefresh-io.github.io/cli/) invocations
+* [CLI](https://codefresh-io.github.io/cli/){:target="\_blank"} invocations
 * Any [external integrations]({{site.baseurl}}/docs/integrations/codefresh-api/) used with Codefresh
 
 You can:  
@@ -106,6 +106,6 @@ Export all audited events, both Audits and Triggers, to a  `CSV` file, for offli
 
 
 ## Related articles
-[Codefresh installation options]({{site.baseurl}}/docs/installation/installation-security/)  
+[Codefresh installation options]({{site.baseurl}}/docs/installation/installation-options/)  
 [Configuring access Control]({{site.baseurl}}/docs/administration/account-user-management/access-control/)  
-[Codefresh API]({{site.baseurl}}/docs/integrations/codefresh-api/)  
+[Codefresh API integration]({{site.baseurl}}/docs/integrations/codefresh-api/)  

@@ -1,14 +1,15 @@
 ---
 title: "Authorize organizations/projects"
 description: ""
-group: runtime
+group: administration
+sub_group: account-user-management
 toc: true
 ---
 
 If your Git provider has an OAuth application for Codefresh, you need to authorize access to the app's organizations/projects to see them in Codefresh.
 > Authorization is per organization.
 
-### Authorize organizations in GitHub
+## Authorize organizations in GitHub
 
 Request or grant access to the organizations defined for the OAuth Codefresh application.
 
@@ -26,5 +27,5 @@ caption="Authorize Codefresh organizations in GitHub"
 max-width="70%"
 %}
 
-### Related articles
-[Connect Git provider]({{site.baseurl}}/docs/runtime/hosted-runtime/#2-connect-git-provider)
+## Related articles
+[Connect Git provider]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/#2-connect-git-provider)

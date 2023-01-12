@@ -1,5 +1,5 @@
 ---
-title: "Manage personal user settings"
+title: "Managing personal user settings"
 description: "Manage your personal settings"
 group: administration
 sub_group: user-self-management
@@ -16,7 +16,7 @@ As a Codefresh user, you can manage several settings in your personal account, i
 > To manage Git personal access tokens for GitOps, see [Managing PATs]({{site.baseurl}}/docs/administration/user-self-management/manage-pats).
 
 ## Access user settings
-* In the Codefresh UI, on the toolbar, click the **Settings** icon and then select **User Settings** (https://g.codefresh.io/user/settings){:target="\_blank"}.
+* In the Codefresh UI, on the toolbar, click the **Settings** icon and then select [**User Settings**](https://g.codefresh.io/user/settings){:target="\_blank"}.
 
 ## Email notifications for pipeline builds 
 
@@ -25,7 +25,7 @@ Configure the email notifications you want to receive for builds based on the bu
 > By default, email notifications for builds are disabled for _all users_.
 
 * In **Notifications**, define the email address and select the notifications:    
-  * Email address for the notifications. By default, it's the same address you used to [sign up]({{site.baseurl}}/docs/administration/account-user-management/create-a-codefresh-account/).
+  * Email address for the notifications. By default, it's the same address you used to [sign up]({{site.baseurl}}/docs/administration/account-user-management/create-codefresh-account/).
 * Select the build statuses for which to receive notifications.
 
 
@@ -108,7 +108,6 @@ max-width="80%"
 ## Related articles
 
 <!--why do we need this? this is for admins; also SSO[Add users]({{site.baseurl}}/docs/administration/invite-your-team-member/)  -->
-[Manage Git PATs]({{site.baseurl}}/docs/administration/manage-pats)  
-[Single Sign on]({{site.baseurl}}/docs/administration/single-sign-on/)  
+[Single Sign on]({{site.baseurl}}/docs/single-sign-on/)  
 
 

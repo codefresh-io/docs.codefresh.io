@@ -27,7 +27,7 @@ View Runtime components and information in List or Topology view formats to mana
 Manage provisioned GitOps Runtimes: 
 * [Add managed clusters to GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster/)
 * [Add and manage Git Sources for GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)
-* [Upgrade GitOps CLI](#hybrid-gitops-upgrade-provisioned-runtimes)
+* [Upgrade GitOps CLI]({{site.baseurl}}/docs/installation/gitops/upgrade-gitops-cli/)
 * Upgrade Hybrid GitOps Runtimes
 * Uninstall GitOps Runtimes
 <!---* [Migrate ingress-less hybrid runtimes](#hybrid-migrate-ingress-less-runtimes)--> 
@@ -106,7 +106,6 @@ Here is a description of the information in the Topology view.
 
 ## Managing provisioned GitOps Runtimes
 * [Reset shared configuration repository for GitOps Runtimes](#reset-shared-configuration-repository-for-gitops-runtimes)
-* [(Hybrid GitOps) Upgrade GitOps CLI](#hybrid-gitops-upgrade-gitops-cli)
 * [(Hybrid GitOps) Upgrade provisioned Runtimes](#hybrid-gitops-upgrade-provisioned-runtimes)
 * [Uninstall provisioned GitOps Runtimes](#uninstall-provisioned-gitops-runtimes)
 * [Update Git tokens for Runtimes](#update-git-tokens-for-runtimes)
@@ -124,22 +123,6 @@ Uninstall all the existing runtimes in your account, and then run the reset comm
 * Run:  
   `cf config --reset-shared-config-repo`
 
-### (Hybrid GitOps) Upgrade GitOps CLI
-Upgrade the CLI to the latest version to prevent Runtime installation errors.
-
-1. Check the version of the CLI you have installed:  
-  `cf version`  
-1. Compare with the [latest version](https://github.com/codefresh-io/cli-v2/releases){:target="\_blank"} released by Codefresh.
-1. Select and run the appropriate command:
-
-{: .table .table-bordered .table-hover}
-| Download mode | OS       | Commands |
-| -------------- | ----------| ----------|  
-| `curl`         | MacOS-x64 |  `curl -L --output - https://github.com/codefresh-io/cli-v2/releases/latest/download/cf-darwin-amd64.tar.gz | tar zx && mv ./cf-darwin-amd64 /usr/local/bin/cf && cf version`|
-|             | MacOS-m1 |`curl -L --output - https://github.com/codefresh-io/cli-v2/releases/latest/download/cf-darwin-arm64.tar.gz | tar zx && mv ./cf-darwin-arm64 /usr/local/bin/cf && cf version` |          
-|             | Linux - X64 |`curl -L --output - https://github.com/codefresh-io/cli-v2/releases/latest/download/cf-linux-amd64.tar.gz | tar zx && mv ./cf-linux-amd64 /usr/local/bin/cf && cf version` |       
-|              | Linux - ARM  |  `curl -L --output - https://github.com/codefresh-io/cli-v2/releases/latest/download/cf-linux-arm64.tar.gz | tar zx && mv ./cf-linux-arm64 /usr/local/bin/cf && cf version`|     
-| `brew` | N/A| `brew tap codefresh-io/cli && brew install cf2`|
 
 ### (Hybrid GitOps) Upgrade provisioned Runtimes
 

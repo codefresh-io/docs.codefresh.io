@@ -14,11 +14,11 @@ toc: true
 <!-- needs fine tuning for GitOps as well; all x-refs have to be updated-->
 Codefresh provides several complementary ways for access control within an organization:
 
-* **Role-based access**: [Role-based access](#users-and-administrators), restricts access to parts of the Codefresh UI intended for account administrators. For example, only an account administrator should be able to change integrations with [git providers]({{site.baseurl}}/docs/integrations/git-providers/) and [cloud services]({{site.baseurl}}/docs/deployments/kubernetes/add-kubernetes-cluster/). 
+* **Role-based access**: [Role-based access]({{site.baseurl}}/docs/administration/account-user-management/add-users/#users-in-codefresh), restricts access to parts of the Codefresh UI intended for account administrators. For example, only an account administrator should be able to change integrations with [git providers]({{site.baseurl}}/docs/integrations/git-providers/) and [cloud services]({{site.baseurl}}/docs/integrations/kubernetes/#connect-a-kubernetes-cluster). 
 
-* **Attribute-based access control (ABAC)**: Policy-based access control via attributes (ABAC), restricts access to [Kubernetes clusters and pipelines](#access-to-kubernetes-clusters-and-pipelines). This option allows account administrators to define exactly which teams have access to which clusters and pipelines. For example, access to production clusters can be granted only to a subset of trusted developers/operators. On the other hand, access to a QA/staging cluster can be less strict.
+* **Attribute-based access control (ABAC)**: Policy-based access control via attributes (ABAC), restricts access to [Add Kubernetes clusters with policy attributes](##add-kubernetes-clusters-with-policy-attributes). This option allows account administrators to define exactly which teams have access to which clusters and pipelines. For example, you can grant access to production clusters only to a subset of trusted developers/operators. On the other hand, access to a QA/staging cluster can be less strict.
 
-* **Git-repository access**: Restrict the Git repositories used to load [pipeline definitions](#pipeline-definition-restrictions).
+* **Git-repository access**: Restrict the Git repositories used to load [pipeline definitions](##enabledisable-access-to-pipeline-yamls-by-source).
 
 
 ## Role-based access for users and administrators
@@ -47,14 +47,14 @@ The table below lists the functionality available for role-based access.
 |View Docker images      | `User` and `Admin`|
 |Inspect text reports    | `User` and `Admin`|
 |[Git Integrations]({{site.baseurl}}/docs/integrations/git-providers/)      | `Admin`|
-|[External docker registry settings]({{site.baseurl}}/docs/docker-registries/external-docker-registries/)      | `Admin`|
-|[External Helm repositories]({{site.baseurl}}/docs/new-helm/add-helm-repository/)      | `Admin`|
-|[Cloud provider settings]({{site.baseurl}}/docs/deployments/kubernetes/add-kubernetes-cluster/)      | `Admin`|
+|[External Docker registry settings]({{site.baseurl}}/docs/integrations/docker-registries/)      | `Admin`|
+|[External Helm repositories]({{site.baseurl}}/docs/deployments/helm/add-helm-repository/)      | `Admin`|
+|[Cloud provider settings]({{site.baseurl}}/docs//integrations/kubernetes/#connect-a-kubernetes-cluster)      | `Admin`|
 |[Cloud storage settings]({{site.baseurl}}/docs/testing/test-reports/#connecting-your-storage-account)      | `Admin`|
-|[Shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/)      | `Admin`|
+|[Shared configuration]({{site.baseurl}}/docs/pipelines/shared-configuration/)      | `Admin`|
 |[API token generation]({{site.baseurl}}/docs/integrations/codefresh-api/#authentication-instructions)      | `Admin`|
-|[SSO Settings]({{site.baseurl}}/docs/administration/single-sign-on/)      | `Admin`|
-|[Runtime environment selection]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-settings)      | `Admin`|
+|[SSO Settings]({{site.baseurl}}/docs/single-sign-on/)      | `Admin`|
+|[Runtime environment selection]({{site.baseurl}}/docs/pipelines/pipelines/#pipeline-settings)      | `Admin`|
 |[Slack settings]({{site.baseurl}}/docs/integrations/notifications/slack-integration/)      | `Admin`|
 |[Audit logs]({{site.baseurl}}/docs/administration/audit-logs/)      | `Admin`|
 |ABAC for Kubernetes clusters      | `Admin`|
@@ -92,7 +92,7 @@ You can assign multiple tags to each cluster, making it easy to define multiple 
     %}
 
 **Before you begin**  
-* If needed, [add a Kubernetes cluster]({{site.baseurl}}/docs/deployments/kubernetes/add-kubernetes-cluster/)
+* If needed, [add a Kubernetes cluster]({{site.baseurl}}/docs//integrations/kubernetes/#connect-a-kubernetes-cluster)
 
 **How to**  
 
@@ -109,6 +109,8 @@ You can assign multiple tags to each cluster, making it easy to define multiple 
   caption="Assigning tags to a cluster"
   max-width="60%"
     %}
+
+{:start="3"}
 1. Click **Add** and type in the tag. 
 1. Continue to add tags and when finished, click **Save**. 
 
@@ -119,11 +121,11 @@ You can assign multiple tags to each cluster, making it easy to define multiple 
 Similar to Kubernetes clusters, you can also add tags to specific pipelines. 
 
 **Before you begin**  
-* If needed, [create a CI pipeline]({{site.baseurl}}/docs/pipelines/pipelines/)
+* If needed, [create a pipeline]({{site.baseurl}}/docs/pipelines/pipelines/)
 
 **How to**  
 
-1. In the Codefresh UI, go to [Pipelines](https://g.codefresh.io/pipelines/all/){:target="\_blank"}.
+1. In the Codefresh UI, from Pipelines in the sidebar, select [Pipelines](https://g.codefresh.io/pipelines/all/){:target="\_blank"}.
 1. In the row with the target pipline, click the context menu for the pipeline, and then select **Edit tags**.
 1. Type in the new tag, press Enter, and continue to add the tags you need.
 1. When finished, click **Save**.  
@@ -149,7 +151,7 @@ For each rule you define, select:
 
 
 **Before you begin**  
-* Make sure you have [created at least one team]({{site.baseurl}}/docs/administration/add-users/#create-a-team-in-codefresh)  
+* Make sure you have [created at least one team]({{site.baseurl}}/docs/administration/account-user-management/add-users/#teams-in-codefresh)  
 
 **How to**  
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon and then select **Account Settings**.
@@ -177,23 +179,23 @@ For each rule you define, select:
 * `Update` - can see and edit existing allowed cluster resources (which means also perform [installation, removal and rollbacks of Helm charts]({{site.baseurl}}/docs/new-helm/helm-best-practices/)). Tags are managed from account settings, so this permission doesn’t apply to it currently.
 * `Delete` - cluster removal requires someone to be account administrator anyway so currently this permission isn’t really necessary.
 
-For pipelines:
+**For pipelines:**  
 
 * `Create` - can only create new pipelines, not see, edit (which includes tagging them) or delete them. This permission should also go hand in hand with additional permissions like read/edit untagged pipelines.
 * `Read` - view allowed pipelines only.
 * `Update` - see and edit allowed pipelines only (including tagging them).
 * `Delete` - can delete allowed pipelines only.
 * `Run` - can run allowed pipelines only.
-* `Approve` - resume pipelines that are waiting for manual [approval]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/).
-* `Debug` - allow the usage of the [pipeline debugger]({{site.baseurl}}/docs/configure-ci-cd-pipeline/debugging-pipelines/).
+* `Approve` - resume pipelines that are waiting for manual [approval]({{site.baseurl}}/docs/pipelines/steps/approval/).
+* `Debug` - allow the usage of the [pipeline debugger]({{site.baseurl}}/docs/pipelines/debugging-pipelines/).
 
 
 
 ## Git-repository access restrictions 
 
-By default, users can load pipeline definitions when [creating a pipeline]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/), from the inline editor, or any private or public Git repository.  
+By default, users can load pipeline definitions when [creating a pipeline]({{site.baseurl}}/docs/pipelines/pipelines/), from the inline editor, or any private or public Git repository.  
 
-You can change the default behavior to restrict loading CI pipeline definitions from specific Git repositories or completely disable loading the definitions from all Git repositories.
+You can change the default behavior to restrict loading pipeline definitions from specific Git repositories or completely disable loading the definitions from all Git repositories.
 
 ### Enable/disable access to pipeline YAMLs by source
 Enable or disable access to pipeline definition YAMLs based on the source of the YAML. These global settings are effective for all pipelines in the account and enables or disables that method of pipeline creation from the Codefresh UI.
@@ -202,6 +204,7 @@ pipeline definitions from:
  with pipeline definitions defined in the Codefresh editor. The Run button is disabled for all such piplines.
  * Any Git repository connected to Codefresh 
  * **Any** public URL
+
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon and then select **Account Settings**.
 1. From Configuration on the sidebar, select [**Pipeline Settings**](https://g.codefresh.io/account-admin/account-conf/pipeline-settings){:target="\_blank"}.
@@ -215,8 +218,9 @@ pipeline definitions from:
   max-width="80%"
     %}
 
+{:start="3"}
 1. Turn on or off the options as needed. 
-1. Continue with 
+
 
 ### Define access to Git repositories for pipeline YAMLs
 If access to pipeline definitions are enabled for Git repositories, you can configure fine-grained restrictions through the integrations settings for your [Git provider]({{site.baseurl}}/docs/integrations/git-providers/).
@@ -244,5 +248,5 @@ If access to pipeline definitions are enabled for Git repositories, you can conf
 
 
 ## Related articles
-[Codefresh installation options]({{site.baseurl}}/docs/administration/installation-security/)  
+[Codefresh installation options]({{site.baseurl}}/docs/installation/installation-options/)  
 [Managing your Kubernetes cluster]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/)  

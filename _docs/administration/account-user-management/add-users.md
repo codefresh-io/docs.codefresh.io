@@ -6,24 +6,26 @@ sub_group: account-user-management
 toc: true
 ---
 
-Once you have created a Codefresh account, you can add any number of users to collaborate on repositories, workflows, and pipelines, and teams of users. 
+Once you have created a Codefresh account, you can add any number of users to collaborate on repositories, workflows, and pipelines, and teams of users.   
+
+
 You can then create teams in Codefresh to group users who share a common denominator, such as the same permissions, access to the same functionality, or roles. Teams make it easy for administrators to both define and manage items shared by multiple users in an orgranization.
 
 
 ## Users in Codefresh
-Adding a user requires assigning a role to define access to account resources, and optionally, selecting an SSO provider for the user:
+Adding a user to an account requires assigning a role to define access to account resources, and optionally, selecting an SSO provider for the user:
 
 * **Role**: Defines the user's access level to the resources in the account.  
   * **User**: The default. With this role, users can work with your repositories and pipelines, but cannot change settings
 on clusters, docker registries, git integrations, shared configurations etc.
-  * **Administrator**: User with this role have full access to your account and can change all your settings, so make sure that they are trusted colleagues.
+  * **Administrator**: With this role, users have full access to accounts, and can change all settings, so make sure that they are trusted colleagues.
   For guidelines on access control, see [Access control]({{site.baseurl}}/docs/administration/account-user-management/access-control/).  
 * **SSO**: By default, SSO is not enabled for users. If required, explicitly select the SSO provider. For an overview of SSO, see [Single Sign on]({{site.baseurl}}/docs/single-sign-on/).
 
 
 ###  Add a user to a Codefresh account 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon and then select **Account Settings**.
-1. On the sidebar, from Access & Collaboration, select [**Users & Teams**](https://g.codefresh.io/account-admin/collaborators/users){:target="\_blank"}.   
+1. On the sidebar, from Access & Collaboration select [**Users & Teams**](https://g.codefresh.io/account-admin/collaborators/users){:target="\_blank"}.   
 1. Select **Users**, and then select **+ [Add User]**.  
 1. Type the **User's email address**, and click **Invite**. 
 <!---add screenshot-->
@@ -45,10 +47,10 @@ Once you add a user to your Codefresh account, you can do the following to manag
 
 
 ## Teams in Codefresh
-Teams are users who share the same permissions, roles, or as required and defined according to company processes. Teams allow you to enforce access control through ABAC (Attribute Based Access Control).  
+Teams are users who share the same permissions, roles, or requirements defined according to company processes. Teams allow you to enforce access control through ABAC (Attribute Based Access Control).  
 By default, there are two teams:
 * Users
-*  Admins with users [invited as collaborators]({{site.baseurl}}/docs/accounts/assign-a-user-to-a-team/)  
+* Admins with users [invited as collaborators](#assign-a-user-to-a-team)  
 
 > Only Enterprise customers can add new teams. Other Codefresh plans can only use the predefined *Users* and *Admin* teams. [Contact us](https://codefresh.io/contact-us/){:target="\_blank"} to upgrade to an Enterprise plan.
 
@@ -84,10 +86,11 @@ As an administrator, you can optionally define session timeouts to automatically
 
 > The maximum duration for inactivity is 30 days. Inactive users are warned 15 minutes before they are logged out.
 
-1. In the Codefresh UI, on the toolbar, click the **Settings** icon and then select **Account Settings**.
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then select **Account Settings**.
 1. On the sidebar, from Access & Collaboration, select [**Users & Teams**](https://g.codefresh.io/account-admin/collaborators/users){:target="\_blank"}.   
 1. Select **Security**.  
 1. For **User Session**, add the timeout duration in minutes/hours/days.
+1. To restrict invitations to specific email domains, below User Invitations, turn on **Restrict inviting additional users..** and then in the **Email domains**, type in the domains to allow, one per line.
 
  {% include image.html
   lightbox="true"
@@ -98,18 +101,14 @@ As an administrator, you can optionally define session timeouts to automatically
   max-width="90%"
     %}
 
-{:start="5"}
-1. To restrict invitations to specific email domains, in the **Email domains** field below User Invitations, type in the domains to allow, one per line.
-
 ## Troubleshoot add users
 
-* [User is prompted to enter an organization name](https://support.codefresh.io/hc/en-us/articles/360020177959-User-is-prompted-to-enter-an-organization-name)
-* [Account invitation not permitting login](https://support.codefresh.io/hc/en-us/articles/360015251000-Account-invitation-not-permitting-login)
-
+* [User is prompted to enter an organization name](https://support.codefresh.io/hc/en-us/articles/360020177959-User-is-prompted-to-enter-an-organization-name){:target="\_blank"}
+* [Account invitation not permitting login](https://support.codefresh.io/hc/en-us/articles/360015251000-Account-invitation-not-permitting-login){:target="\_blank"}
 <!--this is already mentioned as inline refs; add other topics-->
 
 ## Related articles
 [Access control]({{site.baseurl}}/docs/administration/account-user-management/access-control/)  
 [Single Sign on]({{site.baseurl}}/docs/single-sign-on/)  
-[OAuth authentication for Git providers]({{site.baseurl}}/docs/administration/account-user-management/oauth-setup)  
+[Setting up OAuth authentication for Git providers]({{site.baseurl}}/docs/administration/account-user-management/oauth-setup)  
 

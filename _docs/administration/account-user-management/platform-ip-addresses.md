@@ -13,7 +13,7 @@ You can register multiple external clusters to the Codefresh Runner and GitOps R
 In addition, managed clusters registered to Hosted GitOps Runtimes must be configured with a set of specific IP addresses to authorize access.
 
 
-## Codefresh platform IPs (updated July 31st 2021)
+## Codefresh platform IPs (updated January 2023)
 
 All the IPs are NAT gateways, and need to enable specific IPs instead of ranges.
 
@@ -64,8 +64,8 @@ If you haven't configured your clusters with the required IPs, use the links bel
 
 [GKE (Google Kubernetes Engine)](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters){:target="\_blank"}  
 
-## What to read next
+## Related articles
 [Codefresh Runner installation]({{site.baseurl}}/docs/installation/codefresh-runner/) 
-[Set up a Hosted GitOps Runtime]({{site.baseurl}}/docs/installation/hosted-runtime/)  
-[Install Hybrid GitOps Runtimes]({{site.baseurl}}/docs/runtime/hybrid-gitops/)  
+[Set up a Hosted GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/)  
+[Install Hybrid GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/)  
 <!---[Codefresh architecture]({{site.baseurl}}/docs/getting-started/architecture/)-->

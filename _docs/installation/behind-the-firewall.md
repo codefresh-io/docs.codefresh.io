@@ -1,6 +1,6 @@
 ---
 title: "Runner installation behind firewalls"
-description: "Run Codefresh Pipelines in your own secure infrastructure"
+description: "Run Codefresh pipelines in your own secure infrastructure"
 group: installation
 redirect_from:
   - /docs/enterprise/behind-the-firewall/
@@ -8,16 +8,16 @@ toc: true
 
 ---
 
-As described in [installation options]({{site.baseurl}}/docs/installation/installation-options/) Codefresh offers CI/CD and GitOps installation environments, each with its own installation options.
-This articles focuses on the CI/CD Hybrid installation option with the Codefresh Runner and its advantages.
+As described in [installation options]({{site.baseurl}}/docs/installation/installation-options/) Codefresh offers Runner and GitOps installations.
+This articles focuses on the Runner installation option and its advantages.
 
-## Running Codefresh CI/CD in secure environments
+## Running Codefresh in secure environments
 
-Codefresh CI/CD has an on-premises installation in which the Codefresh CI/CD platform is installed on the customer's premises. While
+Codefresh has an on-premises installation in which the Codefresh platform is installed on the customer's premises. While
 this solution is very effective as far as security is concerned, it places a lot of overhead on the customer, as all updates
 and improvements done in the platform must also be transferred to the customer premises.
 
-Hybrid CI/CD places a Codefresh Runner within the customer premises, and the UI (and management platform) stays in the Codefresh SaaS.
+Hybrid Runner installs the Runner within the customer premises, while the UI (and management platform) stays in Codefresh.
 
 Here is the overall architecture:
 
@@ -47,17 +47,17 @@ Regarding security of services:
 
 Regarding firewall security:
 
- 1. Uni-directional, outgoing communication between the Codefresh Runner and Codefresh CI/CD Platform. The Runner polls the Codefresh platform for jobs. 
- 1. Codefresh SaaS never connects to the customer network. No ports need to be open in the customer firewall for the runner to work.
- 1. The Codefresh Runner is fully open-sourced, so its code can be scrutinized by any stakeholder.
+ 1. Uni-directional, outgoing communication between the Runner and Codefresh. The Runner polls the platform for jobs. 
+ 1. Codefresh never connects to the customer network. No ports need to be open in the customer firewall for the runner to work.
+ 1. Codefresh Runner is fully open-sourced, so its code can be scrutinized by any stakeholder.
 
 
 
-## Using secure services in your CI pipelines
+## Using secure services in your pipelines
 
-After installing the [Codefresh Runner]({{site.baseurl}}/docs/installation/codefresh-runner/) on your private Kubernetes cluster in your infrastructure, all CI pipelines in the private Kubernetes cluster have access to all other internal services that are network reachable. 
+After installing the [Codefresh Runner]({{site.baseurl}}/docs/installation/codefresh-runner/) on your private Kubernetes cluster in your infrastructure, all pipelines in the private Kubernetes cluster have access to all other internal services that are network reachable. 
 
-You can easily create CI pipelines that:
+You can easily create pipelines that:
 
  * Use databases internal to the company
  * Run integration tests against services internal to the company
@@ -66,16 +66,16 @@ You can easily create CI pipelines that:
  * Deploy to any other cluster accessible in the secure network
  * Create infrastructure such as machines, load balancers, auto-scaling groups etc.
 
- Any of these CI pipelines will work out the box without extra configuration. In all cases,
+ Any of these pipelines will work out the box without extra configuration. In all cases,
  all data stays witin the private local network and does not exit the firewall.
 
- >Notice that [long-running compositions]({{site.baseurl}}/docs/pipelines/steps/composition/) (preview test environments) are not yet available via the Codefresh build runner.
+ >Notice that [long-running compositions]({{site.baseurl}}/docs/pipelines/steps/composition/) (preview test environments) are not yet available via the Codefresh Runner.
 
 
 
 ### Checking out code from a private GIT repository
 
-To check out code from your private Git repository, you need to connect first to Codefresh via  [GIT integrations]({{site.baseurl}}/docs/integrations/git-providers/). However, once you define your GIT provider as *on premise* you also
+To check out code from your private Git repository, you need to connect first to Codefresh via  [Git integrations]({{site.baseurl}}/docs/integrations/git-providers/). However, once you define your GIT provider as *on premise* you also
 need to mark it as *behind the firewall* as well:
 
 {% include image.html
@@ -87,7 +87,7 @@ need to mark it as *behind the firewall* as well:
   max-width="100%"
     %} 
 
-Once you do that save your provider and make sure that it has the correct tags. The name you used for the git provider will also be used in the pipeline. You cannot "test the connection" because 
+Once you do that save your provider and make sure that it has the correct tags. The name you used for the Git provider will also be used in the pipeline. You cannot "test the connection" because 
 the Codefresh SAAS doesn't have access to your on-premises GIT repository.
 
 {% include image.html
@@ -100,7 +100,7 @@ the Codefresh SAAS doesn't have access to your on-premises GIT repository.
     %} 
 
 To check out code just use a [clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/) like any other clone operation.
-The only thing to remember is that the GIT URL must be fully qualified. You need to [create a pipeline]({{site.baseurl}}/docs/pipelines/pipelines/#pipeline-creation-modes) on it its own from the *Pipelines* section of the left sidebar (instead of one adding a git repository to Codefresh)
+The only thing to remember is that the Git URL must be fully qualified. You need to [create a pipeline]({{site.baseurl}}/docs/pipelines/pipelines/#pipeline-creation-modes) on it its own from the *Pipelines* section of the left sidebar (instead of one adding a Git repository to Codefresh)
 
 
 
@@ -123,17 +123,17 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-Once you trigger the CI pipeline, the Codefresh builder will communicate with your private GIT instance and checks out code.
+Once you trigger the pipeline, the Codefresh Build Runtimes communicates with your private Git instance and checks out code.
 
 >Note that currently there is a limitation on the location of the `codefresh.yml` file. Only the [inline mode]({{site.baseurl}}/docs/pipelines/pipelines/#writing-codefresh-yml-in-the-gui) is supported. Soon we will allow the loading of the pipeline from the Git repository itself.
 
 You can also use a [network proxy]({{site.baseurl}}/docs/pipelines/steps/git-clone/#using-git-behind-a-proxy) for the Git clone step.
 
-#### Adding triggers from private GIT repositories
+#### Adding triggers from private Git repositories
 
 
-In the previous section we have seen how a CI pipeline can check out code from an internal Git repository. We also need to set up a trigger,
-so that every time a commit or any other supported event occurs, the Codefresh CI pipeline is triggered automatically.
+In the previous section we have seen how a pipeline can check out code from an internal Git repository. We also need to set up a trigger,
+so that every time a commit or any other supported event occurs, the Codefresh pipeline is triggered automatically.
 
 If you have installed the [optional app-proxy]({{site.baseurl}}/docs/installation/codefresh-runner/#optional-installation-of-the-app-proxy), adding a trigger can be done exactly like the SAAS version of Codefresh, using only the Codefresh UI.
 
@@ -144,7 +144,7 @@ If you haven't installed the app-proxy, then adding a Git trigger is a two-step 
 
 > To support triggers based on  PR (Pull Request) events, it is mandatory to install `app-proxy`.
 
-For the Codefresh side, follow the usual instructions for creating a [basic git trigger]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/).
+For the Codefresh side, follow the usual instructions for creating a [basic Git trigger]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/).
 
 Once you select your GIT provider, you need to manually enter your username and repository that you wish to trigger the build.
 
@@ -173,9 +173,9 @@ Once that is done, Codefresh will show you the webhook endpoint along with a sec
 This concludes the setup on the Codefresh side. The final step is create a webhook call on the side of your GIT provider.
 The instructions are different per GIT provider:
 
-* [GitHub webhooks](https://developer.github.com/webhooks/)
-* [GitLab webhooks](https://docs.gitlab.com/ee/user/project/integrations/webhooks.html)
-* [Stash webhooks](https://confluence.atlassian.com/bitbucketserver/managing-webhooks-in-bitbucket-server-938025878.html)
+* [GitHub webhooks](https://developer.github.com/webhooks/){:target="\_blank"}
+* [GitLab webhooks](https://docs.gitlab.com/ee/user/project/integrations/webhooks.html){:target="\_blank"}
+* [Stash webhooks](https://confluence.atlassian.com/bitbucketserver/managing-webhooks-in-bitbucket-server-938025878.html){:target="\_blank"}
 
 In all cases make sure that the payload is JSON, because this is what Codefresh expects.
 
@@ -186,10 +186,9 @@ After the setup is finished, the Codefresh pipeline will be executed every time 
 
 ### Accessing an internal docker registry
 
-To access an internal registry just follow the instructions for [adding registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) . Like GIT repositories
-you need to mark the Docker registry as *Behind the firewall*.
+To access an internal registry just follow the instructions for [adding registries]({{site.baseurl}}/docs/integrations/docker-registries/). Like Git repositories, you need to mark the Docker registry as *Behind the firewall*.
 
-Once that is done, use the [push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/) as usual with the name you gave to the registry during the integration setup.
+Once that is done, use the [push step]({{site.baseurl}}/docs/pipelines/steps/push/) as usual with the name you gave to the registry during the integration setup.
 
 
 `YAML`
@@ -219,9 +218,9 @@ steps:
 
 ### Deploying to an internal Kubernetes cluster
 
-To connect a cluster that is behind the firewall follow the [connecting cluster guide]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/), paying attention to the following two points:
+To connect a cluster that is behind the firewall follow the [connecting cluster guide]({{site.baseurl}}/docs/integrations/kubernetes/#connect-a-kubernetes-cluster), paying attention to the following two points:
 
-1. Your cluster should be added as a [Custom provider]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/#adding-any-other-cluster-type-not-dependent-on-any-provider)
+1. Your cluster should be added as a _Adding any other cluster type (not dependent on any provider_.
 1. You need to mark the cluster as internal by using the toggle switch.
 
 
@@ -240,9 +239,8 @@ The cluster where the runner works on should have network connectivity with the 
 
 >Notice that the service account used in the cluster configuration is completely independent from the privileges granted to the Codefresh build runner. The privileges needed by the runner are only used to launch Codefresh pipelines within your cluster. The Service account used in the "custom provider" setting should have the needed privileges for deployment.
 
-Once your cluster is connected you can use any of the familiar deployment methods such as the [dedicated deploy step]({{site.baseurl}}/docs/deploy-to-kubernetes/deployment-options-to-kubernetes/) or [custom kubectl commands]({{site.baseurl}}/docs/deploy-to-kubernetes/custom-kubectl-commands/).
+Once your cluster is connected you can use any of the familiar deployment methods such as the [dedicated deploy step]({{site.baseurl}}/docs/deployments/kubernetes/deployment-options-to-kubernetes/) or [custom kubectl commands]({{site.baseurl}}/docs/deployments/kubernetes/custom-kubectl-commands/).
 
 ## Related articles
-[Codefresh installation options]({{site.baseurl}}/docs/installation/installation-options/)  
 [Google marketplace integration]({{site.baseurl}}/docs/integrations/ci-integrations/google-marketplace/)  
 [Managing your Kubernetes cluster]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/)  

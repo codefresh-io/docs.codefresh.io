@@ -1,11 +1,11 @@
 ---
-title: "Runtime architecture"
+title: "Architecture"
 description: ""
 group: installation
 toc: true
 ---
 
-If you have familiarized yourself with the different installation, here's a deep dive into the architecture and components of Codefresh Runner and GitOps runtime architectures.
+If you have familiarized yourself with the different installation options, here's a deep dive into the architecture and components of each.
 
 ## Runner architecture
 

@@ -21,7 +21,7 @@
     - title: CI/CD quick starts
       url: "/ci-quickstart"
       sub-pages:
-      - title: CI pipeline quick start
+      - title: Pipeline quick start
         url: "/create-ci-pipeline"
       - title: Kubernetes deployment quick start  
         url: "/deploy-to-kubernetes"
@@ -48,7 +48,7 @@
 
 
 
-- title: Dashboards & Insights
+- title: Dashboards & insights
   url: "/dashboards"
   pages:
     - title: Home dashboard
@@ -58,7 +58,7 @@
     
     
 
-- title: CI/CD Guides
+- title: CI/CD guides
   url: "/ci-cd-guides"
   pages:
     - title: Building your app
@@ -439,7 +439,7 @@
       url: "/what-is-the-codefresh-yaml"    
 
 
-- title: Workflows
+- title: Argo Workflows
   url: "/workflows"
   pages:
     - title: Creating workflows
@@ -453,7 +453,7 @@
     - title: Sharing file systems
       url: "/sharing-file-system"
 
-- title: CI/CD testing
+- title: Testing
   url: "/testing"
   pages:
     - title: Unit tests
@@ -471,23 +471,18 @@
     - title: SonarQube scanning
       url: "/sonarqube-integration"
 
-- title: Clients
-  url: "/clients"
-  pages:
-    - title: Download CLI
-      url: "/csdp-cli"
 
 
 - title: Installation
   url: "/installation"
   pages:
-    - title: Environments
+    - title: Options
       url: "/installation-options"
-    - title: Runtime architectures
+    - title: Architecture
       url: "/runtime-architecture"
-    - title: Codefresh Runner
+    - title: Runner
       url: "/codefresh-runner"
-    - title: On-Premises installation
+    - title: On-Premises
       url: "/codefresh-on-prem"
     - title: On-Premises upgrade
       url: "/codefresh-on-prem-upgrade"
@@ -504,6 +499,8 @@
           url: "/managed-cluster" 
         - title: Add Git Sources to to GitOps Runtimes
           url: "/git-sources"
+        - title: Download/upgrade GitOps CLI
+          url: "/upgrade-gitops-cli"
 
 
 - title: Administration
@@ -535,6 +532,8 @@
 - title: Single Sign-On
   url: /single-sign-on
   pages:
+    - title: Single sign-on overview
+      url: /single-sign-on
     - title: Common configuration
       url: /team-sync
     - title: OpenID Connect
