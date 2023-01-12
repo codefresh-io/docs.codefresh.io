@@ -1,8 +1,8 @@
 
-- title: Getting started
+- title: Introduction
   url: "/getting-started"
   pages:
-    - title: Introduction to Codefresh
+    - title: What is Codefresh
       url: "/intro-to-codefresh"
     - title: Codefresh for CI
       url: "/ci-codefresh"

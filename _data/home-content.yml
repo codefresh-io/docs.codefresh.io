@@ -1,11 +1,11 @@
 
  
 
-- title: Getting started
+- title: Introduction
   icon: images/home-icons/started.svg
   url: ''
   links:
-    - title: Introduction to Codefresh
+    - title: What is Codefresh
       localurl: /docs/getting-started/intro-to-codefresh/
     - title: Codefresh for CI
       localurl: /docs/getting-started/ci-codefresh/
@@ -18,7 +18,7 @@
 
 
 - title: Quick starts
-  icon: images/home-icons/started.svg
+  icon: images/home-icons/tutorial.svg
   url: ''
   links:
     - title: Create Codefresh account

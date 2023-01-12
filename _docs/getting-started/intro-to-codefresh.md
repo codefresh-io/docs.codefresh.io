@@ -1,6 +1,6 @@
 ---
-title: "Introduction to Codefresh"
-description: "What is Codefresh?"
+title: "What is Codefresh"
+description: "Understand the features and benefits of Codefresh"
 group: getting-started
 toc: true
 ---
