@@ -2,33 +2,40 @@
 title: "Hybrid GitOps Runtime installation"
 description: "Provision Hybrid GitOps Runtimes"
 group: installation
+sub_group: gitops
 toc: true
 ---
 
 Provision one or more Hybrid GitOps Runtimes in your Codefresh account.  
-Start by reviewing [system requirements](#minimum-system-requirements) for Hybrid GitOps. If you are installing with ingress-controllers, you must configure them as required _before_ starting the installation. 
+Start by reviewing [system requirements](#minimum-system-requirements) for Hybrid GitOps.  
+If you are installing with ingress-controllers, you must configure them as required _before_ starting the installation. 
 
 > To provision a Hosted GitOps Runtime, see [Provision a hosted runtime]({{site.baseurl}}/docs/installation/hosted-runtime/#1-provision-hosted-runtime) in [Set up a hosted (Hosted GitOps) environment]({{site.baseurl}}/docs/installation/hosted-runtime/).
 
 **Git providers and Hybrid Runtimes**  
-Your Codefresh account is always linked to a specific Git provider. This is the Git provider you select on installing the first GitOps Runtime, either Hybrid or Hosted, in your Codefresh account. All the Hybrid Runtimes you install in the same account use the same Git provider.  
+Your Codefresh account is always linked to a specific Git provider. This is the Git provider you select on installing the first GitOps Runtime, either Hybrid or Hosted, in your Codefresh account. All the Hybrid GitOps Runtimes you install in the same account use the same Git provider.  
 If Bitbucker Server is your Git provider, you must also select the specific server instance to associate with the runtime. 
 
 >To change the Git provider for your Codefresh account after installation, contact Codefresh support.
 
 
-**Hybrid Runtimes**  
- The Hybrid Runtime comprises Argo CD components and Codefresh-specific components. The Argo CD components are derived from a fork of the Argo ecosystem, and do not correspond to the open-source versions available.  
+**Codefresh and Argo CD s**  
+ The Hybrid GitOps Runtime comprises Argo CD components and Codefresh-specific components. 
+ 
+Codefresh users rely on our platform to deliver software reliably, and predictably without interruption.  
+To maintain that high standard, we add several weeks of testing and bug fixes to new versions of Argo before making them available within Codefresh.  
+Typically, new versions of Argo are available within 30 days of release in Argo.
+   
 
 There are two parts to installing a Hybrid GitOps Runtime:
 
-1. [Installing the Codefresh CLI](#gitops-cli-installation)
+1. [Installing the GitOps CLI](#gitops-cli-installation)
 2. [Installing the Hybrid GitOps Runtime](#install-hybrid-gitops-runtime), either through the CLI wizard or via silent installation through the installation flags.  
-  The Hybrid GitOps Runtime is installed in a specific namespace on your cluster. You can install more Runtimes on different clusters in your deployment.  
+  The Hybrid GitOps Runtime is installed in a specific namespace on your cluster. You can install more Hybrid GitOps Runtimes on different clusters in your deployment.  
   Every Hybrid GitOps Runtime installation makes commits to three Git repos:
   * Runtime install repo: The installation repo that manages the Hybrid Runtime itself with Argo CD. If the repo URL does not exist, it is automatically created during installation.
-  * Git Source repo: Created automatically during Runtime installation. The repo where you store manifests for pipelines and applications. See [Git Sources]({{site.baseurl}}/docs/runtime/git-sources).
-  * Shared configuration repo: Created for the first GitOps Runtime installed in a user account. The repo stores configuration manifests for account-level resources and is shared with other GitOps Runtimes in the same account. See [Shared configuration repository]({{site.baseurl}}/docs/reference/shared-configuration).
+  * Git Source repo: Created automatically during Runtime installation. The repo where you store manifests for pipelines and applications. See [Git Sources]({{site.baseurl}}/docs/installation/gitops/git-sources).
+  * Shared configuration repo: Created for the first GitOps Runtime installed in your account. The repo stores configuration manifests for account-level resources and is shared with other GitOps Runtimes in the same account. See [Shared configuration repository]({{site.baseurl}}/docs/reference/shared-configuration).
 
 
 
@@ -760,8 +767,8 @@ The table lists the modes available to install the Codefresh CLI.
 | `brew` | N/A| `brew tap codefresh-io/cli && brew install cf2`|
 
 ### Install the GitOps CLI
-Install the Codefresh CLI using the option that best suits you: `curl`, `brew`, or standard download.  
-If you are not sure which OS to select for `curl`, simply select one, and Codefresh automatically identifies and selects the right OS for CLI installation.
+Install the GitOps CLI using the option that best suits you: `curl`, `brew`, or standard download.  
+If you are not sure which OS to select for `curl`, simply select one, and Codefresh automatically identifies and selects the right OS for the installation.
 
 1. Do one of the following:
   * For first-time installation, go to the Welcome page, select **+ Install Runtime**.
@@ -790,10 +797,10 @@ If you are not sure which OS to select for `curl`, simply select one, and Codefr
 
 ## Install Hybrid GitOps Runtime  
 
-**Before you begin**
+### Before you begin
 * Make sure you meet the [minimum requirements]({{site.baseurl}}/docs/runtime/requirements/#minimum-requirements) for installation
 * Make sure you have [Runtime token with the required scopes from your Git provider]({{site.baseurl}}/docs/reference/git-tokens)
-* [Download or upgrade to the latest version of the CLI]({{site.baseurl}}/docs/installation/hybrid-gitops/#hybrid-gitops-upgrade-gitops-cli)
+* [Download or upgrade to the latest version of the CLI]({{site.baseurl}}/docs/installation/clients/upgrade-gitops-cli)
 * Review [Hybrid Runtime installation flags](#hybrid-runtime-installation-flags)
 * For ingress-based runtimes, make sure your ingress controller is configured correctly:
   * [Ambasador ingress configuration]({{site.baseurl}}/docs/runtime/requirements/#ambassador-ingress-configuration)
@@ -808,11 +815,12 @@ If you are not sure which OS to select for `curl`, simply select one, and Codefr
 </br>
 {:/}
  
-**How to** 
+### How to
 
 1. Do one of the following:  
-  * If this is your first Hybrid Runtime installation, in the Welcome page, select **+ Install Runtime**.
-  * If you have provisioned a Hybrid Runtime, to provision additional runtimes, in the Codefresh UI, go to [**Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
+  * If this is your first Hybrid GitOps installation, in the Welcome page, select **+ Install Runtime**.
+  * If you have already provisioned a Hybrid GitOps Runtime, to provision additional runtimes, in the Codefresh UI:  
+    On the toolbar, click the **Settings** icon, and expand Runtimes in the sidebar, and select [**GitOps Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
 1. Click **+ Add Runtimes**, and then select **Hybrid Runtimes**.
 1. Do one of the following:  
   * CLI wizard: Run `cf runtime install`, and follow the prompts to enter the required values.  
@@ -840,7 +848,7 @@ For documentation purposes, the flags are grouped into:
 * Runtime flags, relating to Runtime, cluster, and namespace requirements
 * Ingress-less flags, for tunnel-based installation
 * Ingress-controller flags, for ingress-based installation
-* Git provider flags
+* Git provider and repo flags
 * Codefresh resource flags
 
 {::nomarkdown}
@@ -1201,8 +1209,8 @@ Once the Hybrid Runtime is successfully installed, it is provisioned on the Kube
 {:/}-->
 
 
-## (Optional) Internal ingress host configuration for existing  Hybrid Runtimes
-If you already have provisioned  Hybrid Runtimes, to use an internal ingress host for app-proxy communication and an external ingress host to handle webhooks, change the specs for the `Ingress` and `Runtime` resources in the Runtime installation repository. Use the examples as guidelines.  
+## (Optional) Internal ingress host configuration for existing Hybrid GitOps Runtimes
+If you already have provisioned  Hybrid GitOps Runtimes, to use an internal ingress host for app-proxy communication and an external ingress host to handle webhooks, change the specs for the `Ingress` and `Runtime` resources in the Runtime installation repository. Use the examples as guidelines.  
 
 `<runtime-install-repo>/apps/app-proxy/overlays/<runtime-name>/ingress.yaml`: change `host`
 

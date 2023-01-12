@@ -1,7 +1,8 @@
 ---
 title: "Monitoring & managing GitOps Runtimes"
-description: ""
+description: "Optimize GitOps Runtimes"
 group: runtime
+sub_group: gitops
 redirect_from:
   - /monitor-manage-runtimes/
   - /monitor-manage-runtimes  
@@ -11,7 +12,7 @@ toc: true
 
 The **Runtimes** page displays the provisioned GitOps Runtimes in your account, both Hybrid, and the Hosted Runtime if you have one.  
 
-View Runtime components and information in List or Topology view formats to monitor and manage them.   
+View Runtime components and information in List or Topology view formats to manage and monitor them.   
 
 {% include
    image.html
@@ -23,22 +24,21 @@ View Runtime components and information in List or Topology view formats to moni
   max-width="70%"
 %}
 
+Manage provisioned GitOps Runtimes: 
+* [Add managed clusters to GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster/)
+* [Add and manage Git Sources for GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)
+* [Upgrade GitOps CLI](#hybrid-gitops-upgrade-provisioned-runtimes)
+* Upgrade Hybrid GitOps Runtimes
+* Uninstall GitOps Runtimes
+<!---* [Migrate ingress-less hybrid runtimes](#hybrid-migrate-ingress-less-runtimes)--> 
+
+
 Monitor provisioned GitOps Runtimes for security, health, and sync errors:
 
 * (Hybrid and Hosted) View/download logs for Runtimes and for Runtime components
 * (Hybrid) Restore provisioned Runtimes
 * (Hybrid) Configure browsers to allow access to insecure Runtimes
 * (Hybrid) Monitor notifications in the Activity Log
-
-
-Manage provisioned GitOps Runtimes: 
-* [Add managed clusters to GitOps Runtimes]({{site.baseurl}}/docs/installation/managed-cluster/)
-* [Add and manage Git Sources for GitOps Runtimes]({{site.baseurl}}/docs/installation/git-sources/)
-* 
-* Upgrade GitOps CLI
-* Upgrade Hybrid GitOps Runtimes
-* Uninstall GitOps Runtimes
-<!---* [Migrate ingress-less hybrid runtimes](#hybrid-migrate-ingress-less-runtimes)--> 
 
 
 > Unless specified otherwise, all options are common to both types of GitOps Runtimes. If an option is valid only for Hybrid GitOps, it is indicated as such.
@@ -91,7 +91,7 @@ Here is an example of the Topology view for Runtimes.
  url="/images/runtime/runtime-topology-view.png"
  alt="Runtime Topology View"
  caption="Runtime Topology View"
-  max-width="30%"
+  max-width="60%"
 %}
 
 Here is a description of the information in the Topology view.
@@ -100,12 +100,12 @@ Here is a description of the information in the Topology view.
 | Topology View Item      | Description   |
 | ------------------------| ---------------- |
 |**Runtime**             | ![](../../../images/icons/codefresh-runtime.png?display=inline-block) the provisioned Runtime. Hybrid Runtimes display the name of the K8s API server endpoint with the cluster. Hosted Runtimes display 'hosted'.  |
-|**Cluster**              | The local, and managed clusters if any, for the Runtime. {::nomarkdown}<ul><li><img src="../../../images/icons/local-cluster.png" display=inline-block/> indicates the local cluster, always displayed as `in-cluster`. The in-cluster server URL is always set to `https://kubernetes.default.svc/`.</li><li><img src="../../../images/icons/managed-cluster.png" display=inline-block/> indicates a managed cluster.</li> <li> <img src="../../../images/icons/add-cluster.png" display=inline-block/> select to add a new managed cluster.</li></ul> {:/} To view cluster components, select the cluster. To add and work with managed clusters, see [Adding external clusters to runtimes]({{site.baseurl}}/docs/runtime/managed-cluster). |
+|**Cluster**              | The local, and managed clusters if any, for the Runtime. {::nomarkdown}<ul><li><img src="../../../images/icons/local-cluster.png" display=inline-block/> indicates the local cluster, always displayed as `in-cluster`. The in-cluster server URL is always set to `https://kubernetes.default.svc/`.</li><li><img src="../../../images/icons/managed-cluster.png" display=inline-block/> indicates a managed cluster.</li> <li> <img src="../../../images/icons/add-cluster.png" display=inline-block/> select to add a new managed cluster.</li></ul> {:/} To view cluster components, select the cluster. To add and work with managed clusters, see [Adding external clusters to runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster). |
 |**Health/Sync status** |The health and sync status of the Runtime or cluster. {::nomarkdown}<ul><li><img src="../../../images/icons/error.png" display="inline-block"> indicates health or sync errors in the Runtime, or a managed cluster if one was added to the runtime.</br> The runtime or cluster node is bordered in red and the name is colored red.</li> <li><img src="../../../images/icons/cf-sync-status.png" display=inline-block/> indicates that the Runtime is being synced to the cluster on which it is provisioned.</li></ul> {:/} |
 |**Search and View options** | {::nomarkdown}<ul><li>Find a Runtime or its clusters by typing part of the Runtime/cluster name, and then navigate to the entries found. </li> <li>Topology view options: Resize to window, zoom in, zoom out, full screen view.</li></ul> {:/}|
 
 ## Managing provisioned GitOps Runtimes
-* [Reset shared configuration repository for GitOps Runtimes](#reset-shared-configuration-repository-for-gitpps-runtimes)
+* [Reset shared configuration repository for GitOps Runtimes](#reset-shared-configuration-repository-for-gitops-runtimes)
 * [(Hybrid GitOps) Upgrade GitOps CLI](#hybrid-gitops-upgrade-gitops-cli)
 * [(Hybrid GitOps) Upgrade provisioned Runtimes](#hybrid-gitops-upgrade-provisioned-runtimes)
 * [Uninstall provisioned GitOps Runtimes](#uninstall-provisioned-gitops-runtimes)
@@ -143,8 +143,8 @@ Upgrade the CLI to the latest version to prevent Runtime installation errors.
 
 ### (Hybrid GitOps) Upgrade provisioned Runtimes
 
-Upgrade provisioned Hybrid Runtimes to install critical security updates or the latest versions of all components. Upgrade a provisioned Hybrid Runtime by running a silent upgrade or through the CLI wizard.  
-If you have managed clusters for the Hybrid Runtime, upgrading the Runtime automatically updates runtime components within the managed cluster as well.
+Upgrade provisioned Hybrid Runtimes to install critical security updates or the latest versions of all components. Upgrade a provisioned Hybrid Runtime by running a silent upgrade or through the GitOps CLI wizard.  
+If you have managed clusters for Hybrid GitOps, upgrading the Runtime automatically updates runtime components within the managed cluster as well.
 
 > When there are security updates, the UI displays the alert, _At least one runtime requires a security update_. The Version column displays an _Update Required!_ notification.  
 
@@ -154,8 +154,7 @@ If you have managed clusters for the Hybrid Runtime, upgrading the Runtime autom
 **Before you begin**  
 For both silent or CLI-wizard based upgrades, make sure you have:  
 
-* The latest version of the Codefresh CLI  
-  Run `cf version` to see your version and [click here](https://github.com/codefresh-io/cli-v2/releases){:target="\_blank"} to compare with the latest CLI version.  
+* The latest version of the Codefresh CLI   
 * A valid Git token with [the required scopes]({{site.baseurl}}/docs/reference/git-tokens) 
 
 **Silent upgrade**  
@@ -168,7 +167,7 @@ For both silent or CLI-wizard based upgrades, make sure you have:
 
 **CLI wizard-based upgrade**
 
-1. In the Codefresh UI, make sure you are in [GitOps Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon, expand Runtimes in the sidebar, and select [**GitOps Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
 1. Switch to either the **List View** or to the **Topology View**.  
 1. **List view**:  
   * Select the Runtime name.
@@ -199,7 +198,7 @@ For both silent or CLI-wizard based upgrades, make sure you have:
 
 {:start="4"}
 
-1. If you have already installed the Codefresh CLI, in the Install Upgrades panel, copy the upgrade command.
+1. If you have already installed the GitOps CLI, in the Install Upgrades panel, copy the upgrade command.
 
   {% include
  image.html
@@ -238,7 +237,7 @@ You can retain the installation repo used to install the ingress-less runtime. T
 --->
 ### Uninstall provisioned GitOps Runtimes
 
-Uninstall provisioned GitOps Runtimes that are not in use.  Uninstall a Runtime through a silent uninstall or through the CLI wizard.  
+Uninstall provisioned GitOps Runtimes that are not in use, through a silent uninstall or through the GitOps CLI wizard.  
 > Uninstalling a Runtime removes the Git Sources and managed clusters associated with it.
 
 **Before you begin**  
@@ -254,9 +253,9 @@ Pass the mandatory flags in the uninstall command:
   where:  
   `--git-token` is a valid runtime token with the `repo` and `admin-repo.hook` scopes.  
 
-**CLI wizard uninstall**  
+**GitOps CLI wizard uninstall**  
 
-1. In the Codefresh UI, make sure you are in [GitOps Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon, expand Runtimes in the sidebar, and select [**GitOps Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
 1. Switch to either the **List View** or to the **Topology View**.
 1. **List view**: On the top-right, select the three dots and then select **Uninstall**.
 
@@ -283,7 +282,7 @@ Pass the mandatory flags in the uninstall command:
 
 {:start="4"}
 
-1. If you already have the latest version of the Codefresh CLI, in the Uninstall Codefresh Runtime panel, copy the uninstall command.
+1. If you already have the latest version of the GitOps CLI, in the Uninstall Codefresh Runtime panel, copy the uninstall command.
 
   {% include
  image.html
@@ -322,9 +321,9 @@ The methods for updating any Git token are the same regardless of the reason for
 **How to**
 1. Do one of the following:
   * If you see a notification in the Codefresh UI about invalid Runtime tokens,  click **[Update Token]**.
-    The Runtimes page shows Runtimes with invalid tokens prefixed by the key icon. Mouse over shows invalid token.
+    The GitOps Runtimes page shows runtimes with invalid tokens prefixed by the key icon. Mouse over shows invalid token.
   * To update an existing token, go to [GitOps Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
-1. Select the Runtime for which to update the Git token.
+1. Select the GitOps Runtime for which to update the Git token.
 1. From the context menu with the additional actions at the top-right, select **Update Git Runtime token**.
 
   {% include
@@ -370,8 +369,8 @@ The methods for updating any Git token are the same regardless of the reason for
 * [(Hybrid GitOps) View notifications in Activity Log](#hybrid-gitops-view-notifications-in-activity-log)
 * [(Hybrid GitOps) Troubleshoot health and sync errors for Runtimes](#hybrid-gitops-troubleshoot-health-and-sync-errors-for-runtimes)
 
-### View/download logs to troubleshoot Runtimes
-Logs are available for completed Runtimes, both for the Runtime and for individual Runtime components. Download log files for offline viewing and analysis, or view online logs for a Runtime component, and download if needed for offline analysis. Online logs support free-text search, search-result navigation, and line-wrap for enhanced readability.  
+### View/download logs to troubleshoot GitOps Runtimes
+Logs are available for completed Runtimes, both for the runtime and for individual runtime components. Download log files for offline viewing and analysis, or view online logs for a Runtime component, and download if needed for offline analysis. Online logs support free-text search, search-result navigation, and line-wrap for enhanced readability.  
 
 Log files include events from the date of the application launch, with the newest events listed first. 
 
@@ -379,10 +378,10 @@ Log files include events from the date of the application launch, with the newes
 <br><br>
 {:/}
 
-#### Download logs for Runtimes
+#### Download logs for GitOps Runtimes
 Download the log file for a Runtime. The Runtime log is downloaded as a `.tar.gz` file, which contains the individual log files for each runtime component. 
 
-1. In the Codefresh UI, go to [GitOps Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}. 
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon, expand Runtimes in the sidebar, and select [**GitOps Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
 1. If needed, switch to **List View**, and then select the runtime for which to download logs.
 1.  From the context menu, select **Download All Logs**.  
   The log file is downloaded to the Downloads folder or the folder designated for downloads, with the filename, `<runtime-name>.tar.gz`. For example, `codefreshv2-production2.tar.gz`.
@@ -425,7 +424,7 @@ View online logs for any Runtime component, and if needed, download the log file
 
 Online logs show up to 1000 of the most recent events (lines), updated in real time. Downloaded logs include all the events, from the application launch to the date and time of download. 
 
-1. In the Codefresh UI, go to [GitOps Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}. 
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon, expand Runtimes in the sidebar, and select [**GitOps Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
 1. If needed, switch to **List View**, and then select the Runtime.
 1. Select the Runtime component and then select **View Logs**. 
 
@@ -635,9 +634,9 @@ Here is an example of health errors for a Runtime.
   %}
 
 
-### Related articles
-[Add Git Sources to GitOps Runtimes]({{site.baseurl}}/docs/installation/git-sources/)  
-[Add external clusters to GitOps Runtimes]({{site.baseurl}}/docs/installation/managed-cluster/)  
+## Related articles
+[Add Git Sources to GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
+[Add external clusters to GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster/)  
 [Shared configuration repo for GitOps Runtimes]({{site.baseurl}}/docs/reference/shared-configuration)  
 
 

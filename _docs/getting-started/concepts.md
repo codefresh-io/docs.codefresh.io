@@ -18,8 +18,8 @@ A single Runtime can connect to and manage multiple remote clusters.
 
 See:  
 [GitOps runtime architecture]({{site.baseurl}}/docs/installation/runtime-architecture)  
-[Hybrid GitOps Runtime installation]({{site.baseurl}}/docs/installation/hybrid-gitops)  
-[Hosted GitOps Runtime installation]({{site.baseurl}}/docs/installation/hosted-runtime)
+[Hybrid GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops)  
+[Hosted GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hosted-runtime)
 
 
 

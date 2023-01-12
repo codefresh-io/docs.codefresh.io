@@ -1,7 +1,8 @@
 ---
-title: "Download/upgrade Codefresh CLI"
-description: "Have the latest version of the Codefresh CLI for GitOps runtimes"
+title: "Download/upgrade GitOps CLI"
+description: "Have the latest version of the GitOps CLI"
 group: installation
+sub_group: gitops
 toc: true
 ---
 
@@ -11,7 +12,7 @@ When newer versions are available, the CLI automatically notifies you through a 
 
 
 ## GitOps CLI installation modes
-The table lists the modes available to install the Codefresh CLI.
+The table lists the modes available to install the GitOps CLI.
 
 {: .table .table-bordered .table-hover}
 | Install mode | OS       | Commands |
@@ -23,7 +24,7 @@ The table lists the modes available to install the Codefresh CLI.
 | `brew` | N/A| `brew tap codefresh-io/cli && brew install cf2`|````
 
 ## Install the GitOps CLI
-Install the Codefresh CLI using the option that best suits you: `curl`, `brew`, or standard download.  
+Install the GitOps CLI using the option that best suits you: `curl`, `brew`, or standard download.  
 If you are not sure which OS to select for `curl`, simply select one, and Codefresh automatically identifies and selects the right OS for CLI installation.
 
 1. Do one of the following:
@@ -83,5 +84,5 @@ You can upgrade to a specific version if you so require, or download the latest 
     * `<output-file>` is the path to the destination file, for example, `/cli-download`.
 
 ## Related articles
-[Hosted GitOps Runtime setup]({{site.baseurl}}/docs/installation/hosted-runtime)  
-[Hybrid GitOps Runtime installation]({{site.baseurl}}/docs/installation/hybrid-gitops)  
+[Hosted GitOps Runtime setup]({{site.baseurl}}/docs/installation/gitops/hosted-runtime)  
+[Hybrid GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops)  

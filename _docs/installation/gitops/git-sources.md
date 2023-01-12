@@ -1,19 +1,20 @@
 ---
 title: "Add Git Sources to GitOps Runtimes"
-description: ""
+description: "Manage Git Sources storing resources"
 group: installation
+sub_group: gitops
 toc: true
 ---
 
 
 A Git Source is the equivalent of an Argo CD application that tracks a Git repository and syncs the desired state of the repo to the destination K8s cluster. In addition to application resources, the Git Source can store resources for GitOps Runtimes, and CI/CD entities such as delivery pipelines, Workflow Templates, workflows, and applications.
 
-Provisioning a Runtime automatically creates a Git Source that stores resources for the Runtime and for the demo CI pipelines that are optionally installed with the Runtime. Every Git Source is associated with a Runtime. You can add Git Sources at any time, to the same or to different Runtimes.
+Provisioning a GitOps Runtime automatically creates a Git Source that stores resources for the Runtime and for the demo CI pipelines that are optionally installed with the Runtime. Every Git Source is associated with a GitOps Runtime. You can add more Git Sources at any time, to the same or to different Runtimes.
 
-Once you create a Git Source for a Runtime, you can store resources for CI/CD entities associated with it. For example, when creating pipelines or applications, you can select the Git Source to which to store manifest definitions.
+Once you create a Git Source for a GitOps Runtime, you can store resources for CI/CD entities associated with it. For example, when creating pipelines or applications, you can select the Git Source to which to store manifest definitions.
 
 
-### View Git Sources and definitions
+## View Git Sources and definitions
 Drill down on a runtime in List View to see its Git Sources. 
 
 1. In the Codefresh UI, go to the [GitOps Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"} page.
@@ -26,14 +27,14 @@ Drill down on a runtime in List View to see its Git Sources.
 	url="/images/runtime/git-source-list.png" 
 	alt="Git Sources in runtime" 
 	caption="Git Sources in runtime"
-    max-width="30%" 
+    max-width="60%" 
 %}
 
 {:start="3"}
 1. To go to the repo tracked by the Git Source, in the Repo column, mouse over the repo name and select **Go to Git repo**.
 1. To see the definitions for the Git Source, select the three dots at the end of the row.
 
-### Create a Git Source
+## Create a Git Source
 Create Git Sources for any provisioned Runtime.  The Git Sources are available to store resources for pipelines or applications when you create them. 
 
 >Make sure you are in the List View to create Git Sources. 
@@ -49,7 +50,7 @@ Create Git Sources for any provisioned Runtime.  The Git Sources are available t
 	url="/images/runtime/create-git-source.png" 
 	alt="Create Git Source" 
 	caption="Create Git Source"
-    max-width="30%" 
+    max-width="60%" 
 %}
 
   * **Git Source Name**: The name of the Git Source, which must be unique within the cluster.
@@ -69,7 +70,7 @@ Create Git Sources for any provisioned Runtime.  The Git Sources are available t
 {:start="4"}
 1. Select **+ Create Git Source**.
 
-### Edit Git Source definitions
+## Edit Git Source definitions
 Edit an existing Git Source by changing the source and destination definitions.  
 > You cannot change the name of the Git Source.
 
@@ -89,7 +90,7 @@ Edit an existing Git Source by changing the source and destination definitions.
 {:start="4"}
 1. Change the **Source** and **Destination** definitions for the Git Source, and select **Save**. 
 
-### View/download logs for a Git Source
+## View/download logs for a Git Source
 View online logs for any Git Source associated with a Runtime, and if needed, download the log file for offline viewing and analysis.
 Online logs show up to 1000 of the most recent events (lines), updated in real time. Downloaded logs include all the events, from the application launch to the date and time of download. 
 
@@ -104,7 +105,7 @@ Online logs show up to 1000 of the most recent events (lines), updated in real t
 	url="/images/runtime/git-source-view-logs.png" 
 	alt="Edit Git Source" 
 	caption="Edit Git Source"
-    max-width="30%" 
+    max-width="60%" 
 %}
 
 {:start="4"}
@@ -126,8 +127,8 @@ Online logs show up to 1000 of the most recent events (lines), updated in real t
 1. To download the log, click **Download**.  
   The file is downloaded with `.log` extension.
 
-### What to read next
-[Monitoring & managing GitOps Runtimes]({{site.baseurl}}/docs/installation/monitor-manage-runtimes/)
+## Related articles
+[Monitoring & managing GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/)  
 [Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration)  
 
 

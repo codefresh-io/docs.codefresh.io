@@ -2,12 +2,13 @@
 title: "Hosted GitOps Runtime setup"
 description: "Provision Hosted GitOps environment"
 group: installation
+sub_group: gitops
 toc: true
 ---
 
 
 
-Set up your hosted environment with the Hosted GitOps Runtime to leverage extensive CD capabilities.
+Set up your environment with the Hosted GitOps Runtime to leverage extensive CD capabilities.
 <!---Read about [Hosted GitOps]({{site.baseurl}}/docs/incubation/intro-hosted-runtime/). -->
 
 ## System requirements for Hosted GitOps Runtimes
@@ -132,10 +133,10 @@ max-width="70%"
   where:  
   `hosted-codefresh` is the name of your Hosted GitOps Runtime, automatically assigned by Codefresh.
 1. In the Codefresh UI, return to Codefresh [Home](https://g.codefresh.io/2.0/?time=LAST_7_DAYS){:target="\_blank"}.
-1. Refresh the page and start with _1. Provision hosted runtime_ above.
+1. Refresh the page and start with [Step 1: Install Hosted GitOps Runtime](#step-1-install-hosted-gitops-runtime).
 
 
-### Step 2: Connect Git provider
+## Step 2: Connect Git provider
 Connect your Hosted GitOps Runtime to a Git provider for Codefresh to create the required Git repos.  First authorize access to your Git provider through an OAuth token, and then select the Git organizations or accounts in which to create the required Git repos.  
 
 >Only authorized organizations are displayed in the list. To authorize organizations for the Codefresh application in GitHub, see [Authorize organizations/projects]({{site.baseurl}}/docs/administration/hosted-authorize-orgs/).
@@ -240,10 +241,10 @@ max-width="80%"
 %}
 
 
-### 3. Connect a Kubernetes cluster
+## 3. Connect a Kubernetes cluster
 
 Connect a destination cluster to the Hosted GitOps Runtime and register it as a managed cluster. Deploy applications and configuration to the cluster.
-For managed cluster information and installing Argo Rollouts, see [Add and manage external clusters]({{site.baseurl}}/docs/runtime/managed-cluster/).
+For managed cluster information and installing Argo Rollouts, see [Add and manage external clusters]({{site.baseurl}}/docs/installation/gitops/managed-cluster/).
 
 
  {% include 
@@ -292,10 +293,7 @@ max-width="70%"
 1. Configure access to the IP addresses required. See [Codefresh IP addresses]({{site.baseurl}}/docs/administration/platform-ip-addresses/). 
 
 If you could not connect a cluster, you may not have the latest version of the CLI:  
-* If you have installed the Codefresh CLI already, make sure you have the latest version:  
-  `cf version`  
-  To compare with the latest version from Codefresh, [click here](https://github.com/codefresh-io/cli-v2/releases){:target="\_blank"}.  
-* [Download the CLI]({{site.baseurl}}/docs/clients/csdp-cli/).
+[Upgrade the GitOps CLI]({{site.baseurl}}/docs/clients/upgrade-gitops-cli/).
 
 You have completed setting up your Hosted GitOps Runtime. You are ready to create applications, and connect third-party CI tools for image enrichment.
 
@@ -309,15 +307,15 @@ Optional. Create an application in Codefresh, deploy it to the cluster, and trac
 {:start="2"}
 2. In the Codefresh UI, view your application in the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard){:target="\_blank"}.
 
-### (Optional) Connect CI 
+## (Optional) Connect CI 
 Optional. Integrate Codefresh with the third-party tools you use for CI to enrich image information in deployments.  
 
 [Image enrichment with integrations]({{site.baseurl}}/docs/integrations/image-enrichment-overview/) 
 
 ### Related articles
-[Monitoring & managing GitOps Runtimes]({{site.baseurl}}/docs/installation/monitor-manage-runtimes/)  
-[Add Git Sources to runtimes]({{site.baseurl}}/docs/installation/git-sources/)  
+[Monitoring & managing GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/)  
+[Add Git Sources to runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
 [Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration)  
-[Home dashboard]({{site.baseurl}}/docs/reporting/home-dashboard/)   
-[DORA metrics]({{site.baseurl}}/docs/reporting/dora-metrics/)
+[Home dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/)   
+[DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)
 

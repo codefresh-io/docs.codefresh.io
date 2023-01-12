@@ -1,13 +1,13 @@
 ---
-title: "Runtime architectures"
+title: "Runtime architecture"
 description: ""
 group: installation
 toc: true
 ---
 
-Overview TBD
+If you have familiarized yourself with the different installation, here's a deep dive into the architecture and components of Codefresh Runner and GitOps runtime architectures.
 
-## Codefresh CI/CD architecture
+## Runner architecture
 
 The most important components are the following:
 
@@ -17,20 +17,20 @@ The most important components are the following:
 
 **External actors**. Codefresh offers a [public API]({{site.baseurl}}/docs/integrations/ci-integrations/codefresh-api/) that is consumed both by the Web user interface and the <!--should i differentiate between the CI Cli and GitOps CLI -->[Codefresh CLI](https://codefresh-io.github.io/cli/){:target="\_blank"}. The API is also available for any custom integration with external tools or services.
 
-### CI/CD topology
+### Runner topology
 
-If we zoom into Codefresh Services for CI/CD, we will see the following:
+If we zoom into Hybrid Runner services, we will see the following:
 
 {% include image.html
   lightbox="true"
   file="/images/installation/topology-new.png"
   url="/images/installation/topology-new.png"
   alt="Topology diagram"
-  caption="Topology diagram (click to enlarge)"
+  caption="Topology diagram"
   max-width="100%"
     %}  
 
-### CI/CD core components
+### Runner core components
 
 {: .table .table-bordered .table-hover}
 |Category | Component | Function      | 
@@ -52,9 +52,9 @@ If we zoom into Codefresh Services for CI/CD, we will see the following:
 |   | **tasker-kubernetes** | Provides cache storage for Kubernetes dashboards.  See [Kubernetes dashboards]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/). |   
 
 
-## Codefresh GitOps Platform architecture
+## GitOps architecture
 
-The diagram shows a high-level view of the Codefresh GitOps installation environment, and its core components, the Codefresh Control Plane, the Codefresh Runtime, and the Codefresh Clients. 
+The diagram shows a high-level view of the GitOps environment, and its core components, the Codefresh Control Plane, the Codefresh Runtime, and the Codefresh Clients. 
 
 {% include
 image.html
@@ -70,7 +70,7 @@ max-width="100%"
 <br>
 {:/}
 
-### Codefresh GitOps Control Plane
+### GitOps Control Plane
 The Codefresh Control Plane is the SaaS component in the platform. External to the enterprise firewall, it does not have direct communication with the Codefresh Runtime, Codefresh Clients, or the customer's organizational systems. The Codefresh Runtime and the Codefresh Clients communicate with the Codefresh Control Plane to retrieve the required information.  
 
 
@@ -78,22 +78,22 @@ The Codefresh Control Plane is the SaaS component in the platform. External to t
 <br>
 {:/}
 
-### Codefresh GitOps Runtime
-The Codefresh Runtime is installed on a Kubernetes cluster, and houses the enterprise distribution of the Codefresh Application Proxy and the Argo Project.  
-Depending on the type of GitOps installation, the Codefresh Runtime is installed either in the Codefresh platform (Hosted GitOps), or in the customer environment (Hybrid GitOps). Read more in [Codefresh GitOps Runtime architecture](#codefresh-gitops-runtime-architecture).
+### GitOps Runtime
+The GitOps Runtime is installed on a Kubernetes cluster, and houses the enterprise distribution of the Codefresh Application Proxy and the Argo Project.  
+Depending on the type of GitOps installation, the GitOps Runtime is installed either in the Codefresh platform (Hosted GitOps), or in the customer environment (Hybrid GitOps). Read more in [Codefresh GitOps Runtime architecture](#codefresh-gitops-runtime-architecture).
 
 
 {::nomarkdown}
 <br>
 {:/}
 
-### Codefresh GitOps Clients
+### GitOps Clients
 
-Codefresh Clients include the Codefresh UI and the Codefresh CLI.   
-The Codefresh UI provides a unified, enterprise-wide view of deployments (runtimes and clusters), and CI/CD operations (Delivery Pipelines, workflows, and deployments) in the same location.  
+GitOps Clients include the  UI and the GitOps CLI.   
+The UI provides a unified, enterprise-wide view of deployments (runtimes and clusters), and CI/CD operations (Delivery Pipelines, workflows, and deployments) in the same location.  
 The Codefresh CLI includes commands to install hybrid runtimes, add external clusters, and manage runtimes and clusters.
 
-### Codefresh GitOps Runtime architecture
+### GitOps Runtime architecture
 The sections that follow show detailed views of the GitOps Runtime architecture for the different installation options, and descriptions of the GitOps Runtime components.
 
 * [Hosted GitOps runtime architecture](#hosted-gitops-runtime-architecture)
@@ -179,6 +179,9 @@ The Argo Project includes:
 * Argo Workflows as the workflow engine 
 * Argo Events for event-driven workflow automation framework
 
+>Codefresh users rely on our platform to deliver software reliably, and predictably without interruption.  
+  To maintain that high standard, we add several weeks of testing and bug fixes to new versions of Argo before making them available within Codefresh.  
+  Typically, new versions of Argo are available within 30 days of release in Argo.
 
 {::nomarkdown}
 <br><br>
@@ -221,20 +224,21 @@ The Tunnel Client:
 
 
 #### Customer environment
-The customer environment that communicates with the GitOps Runtime and the GitOps Platform, generally includes:
-* Ingress controller for ingress hybrid runtimes  
+The customer environment that communicates with the GitOps Runtime and Codefresh, generally includes:
+* Ingress controller for ingress-based Hybrid runtimes  
   The ingress controller is configured on the same Kubernetes cluster as the GitOps Runtime, and implements the ingress traffic rules for the GitOps Runtime. 
-  See [Ingress controller requirements]({{site.baseurl}}/docs/installation/requirements/#ingress-controller).
+  See [Ingress controller requirements]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#ingress-controller).
 * Managed clusters  
   Managed clusters are external clusters registered to provisioned Hosted or Hybrid GitOps runtimes for application deployment.  
   Hosted GitOps requires you to connect at least one external K8s cluster as part of setting up the Hosted GitOps environment.  
   Hybrid GitOps allow you to add external clusters after provisioning the runtimes.  
-  See [Add external clusters to runtimes]({{site.baseurl}}/docs/installation/managed-cluster/).
+  See [Add external clusters to runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster/).
 * Organizational systems  
   Organizational Systems include the customer's tracking, monitoring, notification, container registries, Git providers, and other systems. They can be entirely on-premises or in the public cloud.   
-  Either the ingress controller (ingress hybrid environments), or the Tunnel Client (tunnel-based hybrid environments), forwards incoming events to the Codefresh Application Proxy. 
+  Either the ingress controller (ingress hybrid environments), or the Tunnel Client (tunnel-based hybrid environments), forwards incoming events to the GitOps Application Proxy. 
 
  ## Related articles
-[Codefresh pricing](https://codefresh.io/pricing/)  
-[Codefresh features](https://codefresh.io/features/)  
+[Codefresh pricing](https://codefresh.io/pricing/){:target="\_blank"}  
+[Codefresh features](https://codefresh.io/features/){:target="\_blank"}  
+
  

@@ -1,45 +1,33 @@
 ---
 title: "Installation environments"
-description: ""
+description: "Understand Runner and GitOps installation options"
 group: installation
 toc: true
 ---
 To be changed and updated for ProjectOne
 
-The Codefresh platform supports two different installation environments, each with different installation options.
+The Codefresh platform supports three different installation options, all compliant with Soc2.
 
-* CI/CD installation environment  
-  The CI/CD installation environment is optimized for Continuous Integration/Delivery with Codefresh pipelines. Pipelines created in Codefresh fetch code from your Git repository, packages/compiles the code, and deploys the final artifact to a target environment.
+* Hybrid Runner  
+  The Runner installation is the hybrid installation mode for Codefresh pipelines. The Codefresh UI runs in the Codefresh cloud, and the builds run on customer premises. 
+  The Runner combines flexibility with security, and is Enterprise customers looking for a "behind-the-firewall" solution. For a detailed look, read [Runner installation behind firewalls]({{site.baseurl}}/docs/reference/behind-the-firewall). 
+  Pipelines created in Codefresh fetch code from your Git repository, packages/compiles the code, and deploys the final artifact to a target environment.
 
-  The CI/CD installation environment supports these installation options:  
-  * Hybrid, where the Codefresh CI/CD UI runs in the Codefresh cloud, and the builds run on customer premises
-  * SaaS, a full cloud version that is fully managed by Codefresh
-  * On-premises, where Codefresh CI/CD runs within the customer datacenter/cloud
+* On-premises  
+  On-premises installation is for customers who want full control over their environments. Both the UI and builds run on the Kubernetes cluster in an environment fully managed by you as our customer.  
 
-  On-premises and Hybrid CI/CD options are available to Enterprise customers looking for a "behind-the-firewall" solution.
+  While Codefresh can still help with maintenance of the on-premises platform, we would recommend the Hybrid Runner as it combines both flexibility and high security.
 
-* GitOps installation environment  
-  The GitOps installation environment is a full-featured solution for application deployments and releases. Powered by the Argo Project, Codefresh uses Argo CD, Argo Workflows, Argo Events, and Argo Rollouts, extended with unique functionality and features essential for enterprise deployments.
+
+
+
+* GitOps  
+  GitOps installation is a full-featured solution for application deployments and releases. Powered by the Argo Project, Codefresh uses Argo CD, Argo Workflows, Argo Events, and Argo Rollouts, extended with unique functionality and features essential for enterprise deployments.
 
   GitOps installations support Hosted and Hybrid options. 
 
-##  Comparison
-Both environments can co-exist giving you the best of both worlds. For 
 
-TBD
-
-
-## Codefresh CI/CD installation options
-
-
-
-
-
-
-
-
-
-### Codefresh Cloud CI/CD - likely to be removed
+<!--- ### Codefresh Cloud CI/CD - likely to be removed
 
 The Codefresh CI/CD Cloud version is the easiest way to start using Codefresh as it is fully managed and runs 100% on the cloud. Codefresh DevOps handles the maintenance and updates.
 
@@ -66,13 +54,12 @@ Codefresh Cloud is also compliant with [SOC2 - Type2](https://www.aicpa.org/SOC)
   max-width="40%"
     %}    
 
-The Cloud version has multi-account support with most git providers (GitLab, GitHub, Bitbucket) as well as Azure and Google.
+The Cloud version has multi-account support with most git providers (GitLab, GitHub, Bitbucket) as well as Azure and Google. -->
 
 
-### Codefresh Hybrid CI/CD 
+## Hybrid Runner
 
-The Hybrid CI/CD  installation option is for organizations who want their source code to live within their premises, or have other security constraints. For more about the theory and implementation, see [CI/CD behind the firewall installation]({{site.baseurl}}/docs/administration/behind-the-firewall/).
-
+The Hybrid Runner installation is for organizations who want their source code to live within their premises, or have other security constraints. For more about the theory and implementation, see [[Runner installation behind firewalls]({{site.baseurl}}/docs/reference/behind-the-firewall).
 The UI runs on Codefresh infrastructure, while the builds happen in a Kubernetes cluster in the customer's premises.
 
 {% include image.html
@@ -84,13 +71,12 @@ The UI runs on Codefresh infrastructure, while the builds happen in a Kubernetes
     %}    
 
 
-CI/CD Hybrid  installation strikes the perfect balance between security, flexibility, and ease of use. Codefresh still does the heavy lifting for maintaining most of the platform parts. The sensitive data (such as source code and internal services) never leave the premises of the customers.
-
-With Hybrid CI/CD installation, Codefresh can easily connect to internal [secure services]({{site.baseurl}}/docs/reference/behind-the-firewall/#using-secure-services-in-your-pipelines) that have no public presence.
-The UI part is still compliant with Soc2.
+Hybrid Runner installation strikes the perfect balance between security, flexibility, and ease of use. Codefresh still does the heavy lifting for maintaining most of the platform parts. Sensitive data such as source code and internal services never leave customer premises.  
+Codefresh can easily connect to internal [secure services]({{site.baseurl}}/docs/reference/behind-the-firewall/#using-secure-services-in-your-pipelines) that have no public presence.
+The UI is still compliant with Soc2.
   
 
-Here are the security implications of CI/CD Hybrid installation:
+The table lists the security implications of Hybrid Runner installation.
 
 {: .table .table-bordered .table-hover}
 | Company Asset          | Flow/Storage of data                 | Comments                  |
@@ -122,35 +108,23 @@ Here are the security implications of CI/CD Hybrid installation:
 
 
 
-### Codefresh On-premises CI/CD    
+## Codefresh On-premises   
 
-For customers who want full control, Codefresh also offers an on-premises option for CI/CD installation. Both the UI and builds run on a Kubernetes cluster fully managed by the customer.
+For customers who want full control, Codefresh also offers on-premises installation. Both the UI and builds run on a Kubernetes cluster fully managed by the customer.
 
-While Codefresh can still help with maintenance of the CI/CD On-premises, we would recommend the Hybrid CI/CD option first as it offers the most flexibility while maintaining high security.
-
-### CI/CD installation comparison 
-
-{: .table .table-bordered .table-hover}
-| Characteristic      | Cloud | Hybrid | On Premise                   |
-| -------------- | ---------------------------- |-------------------------|
-| Managed by     | Codefresh | Codefresh and Customer | Customer |
-| UI runs on  | public cloud | public cloud | private cluster |
-| Builds run on | public cloud | private cluster | private cluster |
-| Access to secure/private services | no | yes | yes |
-| Customer maintenance effort | none | some | full |
-| Best for | most companies | companies with security constraints | Large scale installations |
-| Available to | all customers | [enterprise plans](https://codefresh.io/contact-us/) | [enterprise plans](https://codefresh.io/contact-us/) |
+See [Codefresh On-Prem Installation & Configuration]({{site.baseurl}}/docs/installation/codefresh-on-prem).
 
 
-## Codefresh GitOps installation options 
+## Codefresh GitOps installation 
 
-Similar to CI/CD installation options, Codefresh GitOps also supports SaaS and hybrid installation options: 
+Codefresh GitOps also supports SaaS and hybrid installation options: 
 
 
 ### Hosted GitOps
-The SaaS version of GitOps, has Argo CD installed in the Codefresh cluster.
+The SaaS version of GitOps, Hosted GitOps has Argo CD installed in the Codefresh cluster.
 Hosted GitOps Runtime is installed and provisioned in a Codefresh cluster, and managed by Codefresh.  
-Hosted enviroments are full-cloud environments, where all updates and improvements are managed by Codefresh, with zero-maintenance overhead for you as the customer. Currently, you can add one Hosted GitOps Runtime per account.
+Hosted enviroments are full-cloud environments, where all updates and improvements are managed by Codefresh, with zero-maintenance overhead for you as the customer.  
+Currently, you can add one Hosted GitOps Runtime per account.
 For the architecture, see [Hosted GitOps Runtime architecture]({{site.baseurl}}/docs/installation/architecture/#hosted-gitops-runtime-architecture).
 
   
@@ -164,7 +138,7 @@ For the architecture, see [Hosted GitOps Runtime architecture]({{site.baseurl}}/
     max-width="80%"
 %} 
 
-  For more information on how to set up the hosted environment, including provisioning hosted runtimes, see [Set up Hosted GitOps]({{site.baseurl}}/docs/installation/hosted-runtime/).  
+  For more information on how to set up the hosted environment, including provisioning hosted runtimes, see [Set up Hosted GitOps]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/).  
 
 ### Hybrid GitOps
 The hybrid version of GitOps, has Argo CD installed in the customer's cluster.    
@@ -182,7 +156,7 @@ The Hybrid GitOps Runtime is optimal for organizations with security constraints
   max-width="70%"
 %}
 
-  For more information on hybrid environments, see [Hybrid GitOps runtime requirements]({{site.baseurl}}/docs/installation/hybrid-gitops/#minimum-system-requirements) and [Installling Hybrid GitOps Runtimes]({{site.baseurl}}/docs/installation/hybrid-gitops/).  
+  For more information on Hybrid GitOps, see [Hybrid GitOps runtime requirements]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/#minimum-system-requirements) and [Installling Hybrid GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/).  
 
 
 
@@ -224,8 +198,24 @@ The table below highlights the main differences between Hosted and Hybrid GitOps
 |                         |DORA metrics        | Supported                 |Supported        |
 |                         |Applications        | Supported                 |Supported        |
 
-### Related articles
+
+##  Installation options comparison
+Codefresh Runner and GitOps environments can co-exist giving you the best of both worlds. 
+
+{: .table .table-bordered .table-hover}
+| Characteristic | Hybrid Runner                | On Premise              | GitOps
+| -------------- | ---------------------------- |-------------------------| ----------------|
+| Managed by      | Codefresh and customer      | Customer                | Codefresh and customer |
+| UI runs on      | Public cloud                | Private cluster          | Public cloud|
+| Builds run on   | Private cluster             | Private cluster          | Private cluster (Hybrid)/Codefresh cluster (Hosted)|
+| Access to secure/private services | Yes       | Yes                      | Yes |
+| Customer maintenance effort | Some            | Full                     | Some |
+| Best for        | Companies with security constraints  | Large scale installations | Companies with security constraints |
+| Available to    |[Enterprise plans](https://codefresh.io/contact-us/){:target="\_blank"} | [Enterprise plans](https://codefresh.io/contact-us/) |[Enterprise plans](https://codefresh.io/contact-us/) |
+
+
+## Related articles
 [Architecture]({{site.baseurl}}/docs/installation/runtime-architecture/)  
-[Add Git Sources to GitOps Runtimes]({{site.baseurl}}/docs/installation/git-sources/)   
+[Add Git Sources to GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)   
 [Shared configuration repository]({{site.baseurl}}/docs/reference/shared-configuration)  
 
