@@ -255,6 +255,7 @@
 - title: Single Sign-On
   icon: images/home-icons/administration.svg
   url: '' 
+  links:
   - title: Federated Single Sign-On (SSO) overview
     localurl: /docs/single-sign-on/single-sign-on
   - title: Setting up OIDC Federated SSO
