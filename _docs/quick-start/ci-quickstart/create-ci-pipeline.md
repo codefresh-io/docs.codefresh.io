@@ -1,5 +1,5 @@
 ---
-title: "CI pipeline quick start"
+title: "Pipeline quick start"
 description: "Quick start to set up a continuous integration (CI) pipeline"
 group: quick-start
 toc: true
@@ -9,7 +9,7 @@ This quick start guides you through setting up a CI (continuous integration) pip
 
 This quick start describes the following tasks:
 
-1. [Create and run CI pipeline](#create-and-run-ci-pipeline)  
+1. [Create and run pipeline](#create-and-run-ci-pipeline)  
 1. [Run unit tests on the Docker image](#run-unit-tests-on-the-docker-image)
 1. [(Optional) Upload Docker images to Docker Hub](#optional-upload-docker-images-to-docker-hub)
 
@@ -49,7 +49,7 @@ You can either use the sample application to follow along, or create your own Do
 
 
 
-## CI pipeline quick start prerequisites
+## Pipeline quick start prerequisites
 
 * Codefresh account
 * Free [GitHub account](https://github.com/join){:target="\_blank"}
@@ -78,7 +78,7 @@ max-width="80%"
 
 After a few minutes, you should see the repo in your Git account.
 
-## Create and run CI pipeline
+## Create and run pipeline
 
 We'll start by focusing on the first part of the CI pipeline, creating a Docker image.  
 
@@ -143,7 +143,7 @@ Make sure you have completed all the [prerequsites](#quick-start-prerequisites) 
 1. To apply the changes, click **Save**.
 1. Continue with [Create a project for CI pipeline](#create-a-project-for-ci-pipeline)
 
-### Create a project for CI pipeline
+### Create a project for pipeline
 
 Codefresh pipelines are grouped within projects. Think of a project as a folder or directory that groups related pipelines. For example, all pipleines that package/deploy the different microservices for an application.
 You can define any name for the  project, the most common example being the name of the application that the pipelines build and deploy.
@@ -172,7 +172,7 @@ You can define any name for the  project, the most common example being the name
   You now have a new project and can create your CI first pipeline within the project.
 
 {:start="6"}
-1. Continue with [Create and run the CI pipeline](#create-and-run-ci-pipeline).
+1. Continue with [Create and run CI pipeline](#create-and-run-ci-pipeline).
 
 ### Create and run CI pipeline
 Create a CI pipeline to clone the Git repo and build the Docker image.   

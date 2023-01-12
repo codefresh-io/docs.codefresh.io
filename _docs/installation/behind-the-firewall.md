@@ -8,7 +8,7 @@ toc: true
 
 ---
 
-As described in [installation options]({{site.baseurl}}/docs/installation/installation-options/) Codefresh offers Runner and GitOps installations.
+As described in [installation options]({{site.baseurl}}/docs/installation/installation-options/), Codefresh offers Runner and GitOps options for hybrid installations.
 This articles focuses on the Runner installation option and its advantages.
 
 ## Running Codefresh in secure environments

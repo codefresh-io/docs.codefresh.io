@@ -480,6 +480,8 @@
       url: "/installation-options"
     - title: Architecture
       url: "/runtime-architecture"
+    - title: Runner installation behind firewalls
+      url: "/behind-the-firewall"
     - title: Runner
       url: "/codefresh-runner"
     - title: On-Premises
