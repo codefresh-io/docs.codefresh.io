@@ -118,14 +118,58 @@ You can click on the *Inline YAML* header and switch it to *Use YAML from URL* o
 {% include 
 image.html 
 lightbox="true" 
+file="/images/pipeline/create/pipeline-git-options.png" 
+url="/images/pipeline/create/pipeline-git-options.png"
+alt="Pipeline resource options" 
+caption="Pipeline resource options"
+max-width="60%"
+%}
+
+### Using another Git repository
+
+Loading the pipeline from a Git repository is the recommended way to associate a pipeline with a project once you are finished with it. Even though the inline editor is great for quick prototyping and experimentation, ideally all your pipelines should be under source control.
+
+When you click this option from the drop-down menu you will can select any Git repository already connected to Codefresh along with a preview of the pipeline.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/create/pipeline-per-branch.png" 
+url="/images/pipeline/create/pipeline-per-branch.png"
+alt="Load pipeline from Git" 
+caption="Load pipeline from Git"
+max-width="60%"
+%}
+
+Note that unlike other CI options the Git repository that contains the pipeline can be completely different from the Git repository that has the source code of your application.
+
+The **Use branch from Git trigger** option is very important and defines from which branch of the Git repo the pipeline will be loaded from. In most cases you want to keep this enabled as it will make the pipeline load from the same branch that triggered the build.
+
+For example if you open a new pull request for a branch named `feature-x` that has changes both in source code and in the pipeline definition itself, ideally you would want the pipeline responsible for the build to be the same one that contains the new changes in the `feature-x` branch.
+
+If you disable this option then you can select a specific branch from the field directly above the switch. The option is great for organizations that want to lock down their pipelines. 
+
+For example, if you define `master` as the branch that will be used for this pipeline, then even if a developer creates a custom branch for their source code changes, they will not be able to change the pipeline itself to do something different. Their pipeline changes in their own branch will be ignored as all builds will always load the pipeline from `master`. This can be very useful for security sensitive pipelines.
+
+
+### Using any public URL
+
+The URL option allows you to load the pipeline definition from any _public_
+
+{% include 
+image.html 
+lightbox="true" 
 file="/images/pipeline/create/pipeline-from-internal-repo.png" 
 url="/images/pipeline/create/pipeline-from-internal-repo.png"
 alt="Pipeline from internal repo" 
 caption="Pipeline from internal repo"
-max-width="60%"
+max-width="70%"
 %}
 
-You can then copy and paste a URL to a raw Codefresh YAML file.  This will allow you to load a Codefresh YAML from any public URL. Notice that a raw URL is needed in the case of GitHub. 
+You can then copy and paste a URL to a raw Codefresh YAML file.  This will allow you to load a Codefresh YAML from any URL. 
+
+
+Notice that a raw URL is needed in the case of GitHub. 
 
 As an example, instead of using `https://github.com/codefresh-contrib/example-voting-app/blob/master/codefresh.yml` you should enter `https://raw.githubusercontent.com/codefresh-contrib/example-voting-app/master/codefresh.yml`
 
