@@ -46,4 +46,4 @@ Make sure also that you know the scope of the search, that is, where users to se
 ## Related articles
 [Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/single-sign-on)  
 [Setting up OIDC Federated SSO]({{site.baseurl}}/docs/single-sign-on/oidc)   
-[Setting up SAML2 Federated SSO]({{site.baseurl}}/docs/single-sign-on/saml-setup)  
+[Setting up SAML2 Federated SSO]({{site.baseurl}}/docs/single-sign-on/saml)  

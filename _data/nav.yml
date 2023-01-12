@@ -559,8 +559,6 @@
           url: /saml-jumpcloud
         - title: Okta
           url: /saml-okta
-        - title: Google
-          url: /oidc-google
         - title: OneLogin
           url: /saml-onelogin
         - title: PingID SSO
