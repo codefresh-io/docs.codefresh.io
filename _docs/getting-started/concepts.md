@@ -76,6 +76,9 @@ Workflow Templates: Predefined library of  for Argo Workflows.
 Build view dashboard: The Workflows dashboard provides 
 See Delivery Pipelines.  -->
 
+### Step
+
+TBW
 
 ### Applications
 An application is a deployment to a Kubernetes, or any Kubernetes-compatiale cluster or clusters.
@@ -95,7 +98,7 @@ Codefresh offers several levels of visibility into your deployments :
 See: 
 
 
-**Agro CD applications**  
+**Argo CD applications**  
 Argo CD applications conform to Argo CD's application definition CRD (Custom Resource Definition). Argo CD supports several types of Kubernetes manifests, including Jsonnet, Kustomize applications, Helm charts, and YAML/json files, and supports webhook notifications from Git. 
 
 Create Argo CD applications that are fully GitOps-compliant from the Codefresh UI. Work in form mode or directly in YAML in the Create Application wizard. Built-in validation makes it easy to identify and fix errors before commit. The application manifest is generated, committed to Git, and synced to your cluster. 
@@ -110,4 +113,8 @@ TBD
 
 ### Events
 TBD
+
+###  Image annotations
+
+### Argo Workflow
 
