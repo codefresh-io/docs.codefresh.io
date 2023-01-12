@@ -556,7 +556,7 @@
       url: /saml-setup
       sub-pages:
         - title: JumpCloud
-          url: /saml-jumpcloud
+          url: /saml/saml-jumpcloud
         - title: Okta
           url: /saml-okta
         - title: Google
