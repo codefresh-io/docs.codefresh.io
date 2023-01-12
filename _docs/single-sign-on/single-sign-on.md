@@ -10,7 +10,7 @@ toc: true
   
   Customers in our **enterprise plan** can log in to Codefresh using Federated Single Sign-On (SSO). To learn more, please [contact sales](https://codefresh.io/contact-sales/){:target="\_blank"}. 
 
-  Federated identity management enables the cross organizational exchange of identity information across Internet domains, without migrating credential information or consolidating several security domains. With federation, customers can authenticate with their corporate credentials to gain access to Codefresh.  
+  Federated identity management enables the cross organizational exchange of identity information across internet domains, without migrating credential information or consolidating several security domains. With federation, customers can authenticate with their corporate credentials to gain access to Codefresh.  
 
   To set up Federated SSO, your identity management organization must use either of the following:
 
@@ -43,6 +43,6 @@ Using federated SSO significantly simplifies cross-domain user management as fol
 * Corporate credentials aren't exposed to the SaaS provider.
 
 
-## What to read next
-[Setting Up SAML2 Federated Single Sign-On (SSO)](sso-setup-saml2)  
-[Setting Up OpenID Connect Federated Single Sign-On](sso-setup-oauth2)    
+## Related articles
+[Setting Up SAML2 Federated Single Sign-On (SSO)]({{site.baseurl}}/docs/single-sign-on/saml-setup)  
+[Setting Up OpenID Connect Federated Single Sign-On]({{site.baseurl}}/docs/single-sign-on/oidc)    

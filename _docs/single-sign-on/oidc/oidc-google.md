@@ -1,13 +1,13 @@
 ---
-title: "Google Single Sign-On (SSO)"
-description: ""
+title: "Google SSO via OIDC"
+description: "Set up Google SSO for OIDC"
 group: single-sign-on
 sub_group: oidc
 toc: true
 ---
 
 Set up SSO for Google using OIDC.
-For a general overview on OIDC, see [Setting up OIDC Federated SSO]({site.baseurl}}/docs/single-sign-on/oidc).
+For a general overview on OIDC, see [Setting up OIDC Federated SSO]({{site.baseurl}}/docs/single-sign-on/oidc).
 
 Set up OIDC SSO for Google in Codefresh by:
 1. Creating the client secret in Google
@@ -53,7 +53,8 @@ Set up OIDC SSO for Google in Codefresh by:
 
 ## Step 2: Configure SSO settings for Google in Codefresh
 
-1. In the Codefresh UI, go to [Single Sign-On](https://g.codefresh.io/2.0/account-settings/single-sign-on){:target="\_blank"}.
+1. In the Codefresh UI, from the toolbar click the **Settings** icon.
+1. In the sidebar, from Access & Collaboration, select [Single Sign-On](https://g.codefresh.io/2.0/account-settings/single-sign-on){:target="\_blank"}.
 1. Select **+ Add Single Sign-On**, **Google**, and then **Next**.
 
 

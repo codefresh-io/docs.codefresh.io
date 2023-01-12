@@ -7,7 +7,7 @@ toc: true
 ---
 
 Set up SSO for JumpCloud using SAML.
-For a general overview on SAML, see [Setting up SAML2 Federated SSO]({site.baseurl}}/docs/single-sign-on/saml-setup).
+For a general overview on SAML, see [Setting up SAML2 Federated SSO]({{site.baseurl}}/docs/single-sign-on/saml-setup).
 
 >If you do not see SAML in the SSO list, please create a support ticket to enable SAML for your account.
 
@@ -18,8 +18,8 @@ Set up SAML SSO for JumpCloud by:
 
 ## Step 1: Configure SSO settings for JumpCloud via SAML in Codefresh
 
-1. In the Codefresh UI, on the toolbar, click the **Settings** icon and then select **Account Settings**.
-1. In the sidebar, from Access & Collaboration, select [**Single Sign-On**](https://g.codefresh.io/2.0/account-settings/single-sign-on){:target="\_blank"}.   
+1. In the Codefresh UI, from the toolbar click the **Settings** icon.
+1. In the sidebar, from Access & Collaboration, select [Single Sign-On](https://g.codefresh.io/2.0/account-settings/single-sign-on){:target="\_blank"}.  
 1. Click **Add single-sign-on**, select **SAML**, and then click **Next**.
 1. Enter the connection details: 
   * **Display Name**: Any arbitrary name for this integration.
@@ -29,8 +29,8 @@ Set up SAML SSO for JumpCloud by:
   * **Admin Email**: The email of the user with access to `admin.google.com`.
   * **Auto Sync users and teams to Codefresh**: Supported for Google/GSuite SAML integration. Select to automatically sync user accounts in to your Codefresh account. Optionally, define the time interval at which to sync, in hours, from 1 to 24. If you don't specify an interval, the sync interval is every 12 hours.
   * **Sync interval**: Optional. The time interval at which to sync.
-  * **Sync Field**: Optional. TBD
-  * **JSON Keyfile**: . TBD
+  * **Sync Field**: Optional. <!--TBD -->
+  * **JSON Keyfile**: <!--TBD -->
 1. Click **Add**.
   The SAML integration for JumpCloud is added and appears in the list of SSOs. 
 1. In the Single Sign-On page, click the **Edit** icon for the JumpCloud SAML integration you created.

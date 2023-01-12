@@ -530,6 +530,7 @@
           url: "/user-settings"
         - title: Managing Git PATs
           url: "/manage-pats"
+ 
 
 - title: Single Sign-On
   url: /single-sign-on
@@ -558,10 +559,12 @@
           url: /saml-jumpcloud
         - title: Okta
           url: /saml-okta
+        - title: Google
+          url: /oidc-google
         - title: OneLogin
           url: /saml-onelogin
         - title: PingID SSO
-          url: "/saml-pingid"
+          url: /saml-pingid
     - title: LDAP
       url: /ldap
 

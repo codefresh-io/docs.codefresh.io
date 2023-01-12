@@ -12,7 +12,8 @@ To configure SSO for LDAP in Codefresh, you need to first create a user on your 
 this user is an LDAP admin.  
 Make sure also that you know the scope of the search, that is, where users to search for are located in the LDAP hierarchy.
 
-1. In the Codefresh UI, go to [Single Sign-On](https://g.codefresh.io/2.0/account-settings/single-sign-on){:target="\_blank"}.
+1. In the Codefresh UI, from the toolbar click the **Settings** icon.
+1. In the sidebar, from Access & Collaboration, select [Single Sign-On](https://g.codefresh.io/2.0/account-settings/single-sign-on){:target="\_blank"}.
 1. Select **+ Add Single Sign-On**, **LDAP**, and then **Next**.
 
    {% include image.html 

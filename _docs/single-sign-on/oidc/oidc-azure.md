@@ -1,6 +1,6 @@
 ---
-title: "Azure Single Sign-On (SSO)"
-description: " "
+title: "Azure SSO via OIDC"
+description: "Set up Azure SSO for OIDC"
 group: single-sign-on
 sub_group: oidc
 redirect_from:
@@ -9,7 +9,7 @@ toc: true
 ---
 
 Set up SSO for Azure using OIDC.
-For a general overview on OIDC, see [Setting up OIDC Federated SSO]({site.baseurl}}/docs/single-sign-on/oidc).  
+For a general overview on OIDC, see [Setting up OIDC Federated SSO]({{site.baseurl}}/docs/single-sign-on/oidc).  
 
 Set up OIDC SSO for Azure in Codefresh by:
 1. Registering the Codefresh application in Azure
@@ -143,7 +143,7 @@ max-width="70%"
 {:start="3"}
 1. Click **Add**.  
    **Copy the secret key**, as you will need to provide it on setting up Azure SSO in Codefresh.
-1. Continue with [Step 4: Configure SSO settinggs for Azure in Codefresh](#step-4-configure-sso-settings-for-azure-in-codefresh).
+1. Continue with [Step 4: Configure SSO settings for Azure in Codefresh](#step-4-configure-sso-settings-for-azure-in-codefresh).
 
 ## Step 4: Configure SSO settings for Azure in Codefresh
 
@@ -166,7 +166,8 @@ max-width="70%"
 
 **How to**  
 
-1. In the Codefresh UI, select **Account Settings**, and then from the sidebar, select **Single Sign On**. 
+1. In the Codefresh UI, from the toolbar click the **Settings** icon.
+1. In the sidebar, from Access & Collaboration, select [Single Sign-On](https://g.codefresh.io/2.0/account-settings/single-sign-on){:target="\_blank"}.
 1. Click **Add Single Sign-On**, and select **Azure AD**.
 1. Enter the following:  
   * **Client Name**: For auto-generation, leave empty. Codefresh generates the client name once you save the settings.
@@ -245,14 +246,7 @@ max-width="70%"
 
 You have now completed the SSO setup for Azure using OIDC.
 
-## Test SSO Connection
 
-Now test the SSO with a test user in a different browser or private/incognito browser to make sure the integration works as it should.
-
-1. In the Codefresh UI, on the toolbar, click the **Settings** icon and then select **Account Settings**.
-1. From the sidebar, below Access & Collaboration, select [**Users & Teams**](https://g.codefresh.io/2.0/account-settings/single-sign-on){:target="\_blank"}.   
-1. Locate a test user, and from the SSO list, select the integration name to enable SSO for that user.
-1. In a different browser or private/incognito browser window use the Corporate option to log in.
 
 ## Related articles
 [Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/single-sign-on/)  

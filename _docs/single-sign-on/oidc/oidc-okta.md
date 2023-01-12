@@ -1,6 +1,6 @@
 ---
-title: "Okta Single Sign-On (SSO)"
-description: " "
+title: "Okta SSO via OIDC"
+description: "Set up Okta SSO for OIDC"
 group: single-sign-on
 sub_group: oidc
 redirect_from:
@@ -8,7 +8,7 @@ redirect_from:
 toc: true
 ---
 Set up SSO for Okta using OIDC.  
-For a general overview on OIDC, see [Setting up OIDC Federated SSO]({site.baseurl}}/docs/single-sign-on/oidc).  
+For a general overview on OIDC, see [Setting up OIDC Federated SSO]({{site.baseurl}}/docs/single-sign-on/oidc).  
 
 
 Set up OIDC SSO for Okta in Codefresh by:
@@ -121,7 +121,8 @@ max-width="70%"
 
 ### Configure SSO for Okta in Codefresh
 
-1. In the Codefresh UI, go to [Single Sign-On](https://g.codefresh.io/2.0/account-settings/single-sign-on){:target="\_blank"}.
+1. In the Codefresh UI, from the toolbar click the **Settings** icon.
+1. In the sidebar, from Access & Collaboration, select [Single Sign-On](https://g.codefresh.io/2.0/account-settings/single-sign-on){:target="\_blank"}.
 1. Select **+ Add Single Sign-On** and then select **Okta**.
 
 {% include image.html 

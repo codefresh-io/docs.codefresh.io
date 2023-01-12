@@ -1,6 +1,6 @@
 ---
-title: "Auth0"
-description: "Set up Auth0 Single Sign-On (SSO)"
+title: "Auth0 SSO via OIDC"
+description: "Set up Auth0 SSO for OIDC"
 group: single-sign-on
 sub_group: oidc
 redirect_from:
@@ -10,7 +10,7 @@ toc: true
 ---
 
 Set up SSO for Auth0 using OIDC.
-Auth0 is one of the SSO providers that Codefresh supports for authentication and authorization.  
+For a general overview on OIDC, see [Setting up OIDC Federated SSO]({{site.baseurl}}/docs/single-sign-on/oidc).  
 
 Set up OIDC SSO for Auth0 in Codefresh by:
 1. Creating an Auth0 application in Auth0
@@ -57,7 +57,8 @@ max-width="40%"
 ## Step 2: Create SSO account for Auth0 in Codefresh
 After creating an Auth0 application, create an SSO account for OAuth0 in Codefresh. 
 
-1. In the Codefresh UI, go to [Single Sign-On](https://g.codefresh.io/2.0/account-settings/single-sign-on){:target="\_blank"}.
+1. In the Codefresh UI, from the toolbar click the **Settings** icon.
+1. In the sidebar, from Access & Collaboration, select [Single Sign-On](https://g.codefresh.io/2.0/account-settings/single-sign-on){:target="\_blank"}.
 1. Click **Add Single Sign-On**. 
 1. For the Single Sign-On Service, select **Auth0**, and click **Next**.
 1. Define the connection details:
@@ -84,7 +85,7 @@ max-width="40%"
 
 
 ## Step 3: Define SSO settings in Auth0 application
-As the final step in Auth0 SSO setup, return to Auth0, and then define the Login URI and Callback URL for the Auth0 application you created in  1. 
+As the final step in Auth0 SSO setup, return to Auth0, and then define the Login URI and Callback URL for the Auth0 application you created in  Step 1. 
 
 1. From the sidebar, select **Applications > Applications**.
 1. In the **Application Login URL** field, enter `https://g.codefresh.io/login`.
@@ -109,6 +110,7 @@ You have completed SSO setup for Auth0 in Codefresh.
 ## Related articles
 [Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/single-sign-on/)  
 [Common configuration for SSO providers]({{site.baseurl}}/docs/single-sign-on/team-sync)  
+
 
 
 

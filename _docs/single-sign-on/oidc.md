@@ -5,7 +5,7 @@ group: single-sign-on
 toc: true
 ---
 
-Codefresh natively supports login using GitHub, Bitbucket and GitLab using the OpenID Connect (OAuth2) protocol. 
+Codefresh natively supports login with GitHub, Bitbucket and GitLab, using the OpenID Connect (OAuth2) protocol. 
   
 
 ## Prerequisites
@@ -35,9 +35,9 @@ Here's what you need to do to configure SSO via OIDC in Codefresh:
 1. Test integration with the IdP: 
     
     >Before enabling SSO for users in Codefresh, you **MUST** make sure that it is working for the test user.  
-    When SSO is enabled for a user, Codefresh allows login only through the SSO for the user and blocks logins through other IdPs. If the selected SSO method does not work for some reason, the is locked out of Codefresh.
+    When SSO is enabled for a user, Codefresh allows login only through the SSO and blocks logins through other IdPs. If the selected SSO method does not work for some reason, the user is locked out of Codefresh.
 
-    1. In the Codefresh UI, on the toolbar, click the **Settings** icon and then select **Account Settings**.
+    1. In the Codefresh UI, on the toolbar, from your avatar dropdown, select **Account Settings**.
     1. In the sidebar, from Access & Collaboration, select [**Users & Teams**](https://g.codefresh.io/2.0/account-settings/single-sign-on){:target="\_blank"}.   
     1. Add an active user to be used for testing. We recommend you use your own user.
     1. From the **SSO** dropdown, select the provider you want to test.
@@ -52,11 +52,11 @@ Here's what you need to do to configure SSO via OIDC in Codefresh:
     max-width="50%"
     %}
 
-{:start="2"}
-1. (Optional) [Set an IdP as the default provider]({{site.baseurl}}/docs/single-sign-on/team-sync/#set-a-default-sso-provider-for-account)   
+{:start="3ß"}
+1. (Optional) [Set a default SSO provider for account]({{site.baseurl}}/docs/single-sign-on/team-sync/#set-a-default-sso-provider-for-account)   
   You can select an IdP as the default SSO provider for a Codefresh account. This means that all the new users added to that account will automatically use the selected IdP for signin.
-1. (Optional) [Set the SSO method for each user]({{site.baseurl}}/docs/single-sign-on/team-sync/#select-sso-method-for-individual-users)   
-  You can also select if needed, a different SSO provider for every user or for specific users.
+1. (Optional) [Select SSO method for individual users]({{site.baseurl}}/docs/single-sign-on/team-sync/#select-sso-method-for-individual-users)   
+  You can also select if needed, a different SSO provider for specific users.
 
 > Codefresh has an internal cache for SSO configuration, and it can take up to five minutes for your changes to take effect.
 

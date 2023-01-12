@@ -1,5 +1,5 @@
 ---
-title: OneLogin via SAML
+title: OneLogin SSO via SAML
 description: Setting Up OneLogin via SAML
 group: single-sign-on
 sub_group: saml
@@ -27,8 +27,8 @@ Setting up SAML SSO for OneLogin includes:
 
 ## Step 2: Configure SSO settings for OneLogin via SAML in Codefresh
 
-1. In the Codefresh UI, on the toolbar, click the **Settings** icon and then select **Account Settings**.
-1. From the sidebar, below Access & Collaboration, select [**Single Sign-On**](https://g.codefresh.io/2.0/account-settings/single-sign-on){:target="\_blank"}.   
+1. In the Codefresh UI, from the toolbar click the **Settings** icon.
+1. In the sidebar, from Access & Collaboration, select [Single Sign-On](https://g.codefresh.io/2.0/account-settings/single-sign-on){:target="\_blank"}.
 1. Click **Add single-sign-on**, select **SAML**, and then click **Next**.
 1. Enter the connection details: 
   * **Display Name**: Any arbitrary name for this integration.

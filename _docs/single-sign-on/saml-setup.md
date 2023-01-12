@@ -11,14 +11,14 @@ toc: true
 As Identity Providers (IdPs) come in all shapes and sizes, this topic discusses in general what you must do to configure Federated SSO for SAML. 
   As you will see in the description below, the person in your organization responsible for managing your IdP will need to interact with Codefresh support to successfully set up a trust between your IdP and Codefresh as an SP.
 
-{:.text-secondary}
+
 ## Before you set up Federated SSO
   1. Have your account set up with Codefresh enterprise plan.
   2. Ensure you have a working SAML 2.0 compliant identity provider (IdP).
   3. Identify someone in your organization who is familiar with configuring and managing your organization's IdP.
   4. Ensure that your IdP's system clock is synchronized with a reliable time source. If it's not, tokens generated will be unusable and SSO will fail.
 
-{:.text-secondary}
+
 ### Summary of Federated SSO setup
 
 {% include image.html
@@ -29,7 +29,7 @@ As Identity Providers (IdPs) come in all shapes and sizes, this topic discusses 
   max-width="100%"
 %}
 
-{:.text-secondary}
+
 ### SAML attributes
 
 Codefresh expects the following user attributes to be passed through SAML between your IdP and Codefresh SP:
@@ -39,7 +39,7 @@ Codefresh expects the following user attributes to be passed through SAML betwee
   - User full name
   - User unique ID that isn't subject to change in your identity management environment
 
-{:.text-secondary}
+
 ### How does the connection process work?
 
   {% include image.html
@@ -70,14 +70,15 @@ Once Federated SSO has been configured, the process works as follows:
 Here's what you need to do to configure SSO via SAML in Codefresh:
 
 1. Configure SSO settings for the IdP in Codefresh:  
-  This generally includes defining settings in both in Codefresh and in the IdP.  
+  This generally includes defining settings both in Codefresh and in the IdP.  
   Codefresh supports SAML SSO for the following:
   * [JumpCloud]({{site.baseurl}}/docs/single-sign-on/saml/saml-jumpcloud)
   * [Okta]({{site.baseurl}}/docs/single-sign-on/saml/saml-okta)
   * [OneLogin]({{site.baseurl}}/docs/single-sign-on/saml/saml-onelogin)
-  * [PingID](({{site.baseurl}}/docs/single-sign-on/saml/saml-pingid)
+  * [PingID]({{site.baseurl}}/docs/single-sign-on/saml/saml-pingid)
 
   Notes for SSO via SAML:  
+  <br />
   **SSO settings**  
 
   * Assertion URL  
@@ -90,7 +91,8 @@ Here's what you need to do to configure SSO via SAML in Codefresh:
 
   > These settings are for the SaaS version of Codefresh. For an on-premises setup, use the URLs that match your installation.
 
-1. Test integration with the IdP 
+{:start="2"}
+1. Test integration with the IdP: 
     
     >Before enabling SSO for users, you **MUST** make sure that it is working for the test user. If SSO is enabled for a user, Codefresh blocks logins through other IDPs for this user and only the enabled SSO is allowed. If the selected SSO method does not work for some reason, the user will be locked out of Codefresh.
 
@@ -120,9 +122,9 @@ Here's what you need to do to configure SSO via SAML in Codefresh:
     max-width="50%"
     %}
 
-1. (Optional) [Set an IdP as the default provider]({{site.baseurl}}/docs/single-sign-on/team-sync/#set-a-default-sso-provider-for-account)
+1. (Optional) [Set a default SSO provider for account]({{site.baseurl}}/docs/single-sign-on/team-sync/#set-a-default-sso-provider-for-account)
   You can select an IdP as the default SSO provider for a Codefresh account. This means that all the new users added to that account will automatically use the selected IdP for signin.
-1. (Optional) [Set the SSO method for each user]({{site.baseurl}}/docs/single-sign-on/team-sync/#select-sso-method-for-individual-users)
+1. (Optional) [Select SSO method for individual users]({{site.baseurl}}/docs/single-sign-on/team-sync/#select-sso-method-for-individual-users)
   You can also select if needed, a different SSO provider for every user or for specific users.
 
 > Codefresh has an internal cache for SSO configuration, and it can take up to five minutes for your changes to take effect.
