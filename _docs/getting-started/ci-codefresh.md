@@ -15,6 +15,8 @@ Code quality  -->
 
 Work in progress 
 
+## Code compilation
+TBD
 
 ## Docker images
 WBuilding a Docker image from the source code is probably the most common and  basic requirement for a CI pipeline. In Codefresh you can build, push, and promote Docker images, using declarative YAML and credentials that are defined once stored centrally.
@@ -41,8 +43,7 @@ See:
 [Promoting Docker images]({{site.baseurl}}/docs/ci-cd-guides/working-with-docker-registries/#viewing-docker-images)
 
 
-## Code compilation
-TBD
+
 
 ## Unit testing
 Codefresh supports all testing frameworks, including mocking frameworks, for all popular programming languages. Easily run unit tests on the source code of the application for every commit or pull request (PR) through our freestyle step in pipelines. 
@@ -62,6 +63,21 @@ In Codefresh, you can launch these sidecar containers within the pipeline throug
 See:  
 [Run integration tests example]({{site.baseurl}}/docs/example-catalog/ci-examples/run-integrations-tests/)
 
+## Code quality coverage
+Good quality code is central to any CI platform or tool. Codefresh integrates with the top code quality platforms/tools in the market to track code coverage, inspect code quailty, and generate code-coverage analysis reports. 
+
+Three steps to 
+* Set up integrations with the platforms/tools (Coverall, SonarQube, Codecov, for example). 
+* Copy and paste the ready-to-use step for your platform/tool into your pipeline from our [Plug-ins library](https://codefresh.io/steps/){:target="\_blank"}.
+* Reference them by name in the pipeline step, and view the updated reports in the respective UIs.
+
+See:  
+[Code coverage examples]({{site.baseurl}}/docs/example-catalog/examples/#code-coverage-examples)
+
+## Linting/Validating
+
+TBD
+
 ## Security scanning
 Security scans are critical to deploying quality code. With Codefresh, in addition you can control when to implement the security scan, and then view the scan results in the Codefresh UI, without having to go to the security platform.  
 
@@ -80,19 +96,15 @@ Correlate the Docker images in Codefresh with the results of the security scanni
 See:  
 [Security scanning tests]({{site.baseurl}}/docs/testing/security-scanning/)  
 [Test reporting modes]({{site.baseurl}}/docs/testing/test-reports/)  
-[Metadata in Docker images]({{site.baseurl}}/docs/pipelines//docker-image-metadata/)  
+[Metadata in Docker images]({{site.baseurl}}/docs/pipelines//docker-image-metadata/) 
+
+
+## Notifications
+
+TBD
 
 
 
-## Code quality coverage
-Good quality code is central to any CI platform or tool. Codefresh integrates with the top code quality platforms/tools in the market to track code coverage, inspect code quailty, and generate code-coverage analysis reports. 
 
-Three steps to 
-* Set up integrations with the platforms/tools (Coverall, SonarQube, Codecov, for example). 
-* Copy and paste the ready-to-use step for your platform/tool into your pipeline from our [Plug-ins library](https://codefresh.io/steps/){:target="\_blank"}.
-* Reference them by name in the pipeline step, and view the updated reports in the respective UIs.
-
-See:  
-[Code coverage examples]({{site.baseurl}}/docs/example-catalog/examples/#code-coverage-examples)
 
 
