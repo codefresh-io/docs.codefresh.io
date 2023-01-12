@@ -6,6 +6,10 @@ redirect_from:
   - /docs/whats-new/
 toc: true
 ---
+### January 2023
+
+#### Features and enhancements
+- Git clone step supports shallow clone - [documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/#fields)
 
 ### December 2022
 
