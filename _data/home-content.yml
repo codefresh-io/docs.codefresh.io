@@ -257,13 +257,13 @@
   url: '' 
   links:
   - title: Federated Single Sign-On (SSO) overview
-    localurl: /docs/single-sign-on/single-sign-on
+    localurl: /docs/single-sign-on/single-sign-on/
   - title: Setting up OIDC Federated SSO
-    localurl: /docs/single-sign-on/oidc
+    localurl: /docs/single-sign-on/oidc/
   - title: Setting up SAML2 Federated SSO
-    localurl: /docs/single-sign-on/saml
+    localurl: /docs/single-sign-on/saml/
   - title: LDAP Single Sign-On (SSO)
-    localurl: /docs/single-sign-on/ldap
+    localurl: /docs/single-sign-on/ldap/
 
 - title: Reference
   icon: images/home-icons/guides.png
