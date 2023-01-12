@@ -252,6 +252,17 @@
   - title: Manage Git PATs
     localurl: /docs/administration/user-self-management/manage-pats/
 
+- title: Single Sign-On
+  icon: images/home-icons/administration.svg
+  url: '' 
+  - title: Federated Single Sign-On (SSO) overview
+    localurl: /docs/single-sign-on/single-sign-on
+  - title: Setting up OIDC Federated SSO
+    localurl: /docs/single-sign-on/oidc
+  - title: Setting up SAML2 Federated SSO
+    localurl: /docs/single-sign-on/saml
+  - title: LDAP Single Sign-On (SSO)
+    localurl: /docs/single-sign-on/ldap
 
 - title: Reference
   icon: images/home-icons/guides.png

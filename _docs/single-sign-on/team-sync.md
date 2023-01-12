@@ -158,7 +158,7 @@ max-width="50%"
 
 ## Related articles
 [Setting up OIDC Federated SSO]({{site.baseurl}}/docs/single-sign-on/oidc)  
-[Setting up SAML2 Federated SSO]({{site.baseurl}}/docs/single-sign-on/saml-setup)  
+[Setting up SAML2 Federated SSO]({{site.baseurl}}/docs/single-sign-on/saml)  
 
 
 

@@ -553,10 +553,10 @@
         - title: OneLogin
           url: /oidc-onelogin
     - title: SAML
-      url: /saml-setup
+      url: /saml
       sub-pages:
         - title: JumpCloud
-          url: /saml/saml-jumpcloud
+          url: /saml-jumpcloud
         - title: Okta
           url: /saml-okta
         - title: Google

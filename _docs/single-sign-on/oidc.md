@@ -62,5 +62,5 @@ Here's what you need to do to configure SSO via OIDC in Codefresh:
 
 ## Related articles
 [Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/single-sign-on)   
-[Setting up SAML2 Federated SSO]({{site.baseurl}}/docs/single-sign-on/saml-setup)  
+[Setting up SAML2 Federated SSO]({{site.baseurl}}/docs/single-sign-on/saml)  
 

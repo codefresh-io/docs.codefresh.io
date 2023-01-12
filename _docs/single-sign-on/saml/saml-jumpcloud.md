@@ -7,7 +7,7 @@ toc: true
 ---
 
 Set up SSO for JumpCloud using SAML.
-For a general overview on SAML, see [Setting up SAML2 Federated SSO]({{site.baseurl}}/docs/single-sign-on/saml-setup).
+For a general overview on SAML, see [Setting up SAML2 Federated SSO]({{site.baseurl}}/docs/single-sign-on/saml).
 
 >If you do not see SAML in the SSO list, please create a support ticket to enable SAML for your account.
 
@@ -80,5 +80,5 @@ Now test the SSO with a test user in a different browser or private/incognito br
 
 ## Related articles
 [Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/single-sign-on/)  
-[Setting up SAML2 Federated SSO]({{site.baseurl}}/docs/single-sign-on/saml-setup)  
+[Setting up SAML2 Federated SSO]({{site.baseurl}}/docs/single-sign-on/saml)  
 [Common configuration for SSO providers]({{site.baseurl}}/docs/single-sign-on/team-sync)  
