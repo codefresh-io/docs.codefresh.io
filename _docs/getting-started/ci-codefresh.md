@@ -16,10 +16,13 @@ Code quality  -->
 Work in progress 
 
 ## Code compilation
-TBD
+
+The most basic function of a CI system is to compile/package source code. Codefresh is agnostic as far as the programming language you use. Codefresh can work equally well with compiled languages (Java, Go, C/C++) as well as interpreted languages (Python, PHP, Ruby etc)
+
+The only requirement is that you either use an existing Docker image as a step in your pipeline or create your own with the exact versions of tools that you need.
 
 ## Docker images
-WBuilding a Docker image from the source code is probably the most common and  basic requirement for a CI pipeline. In Codefresh you can build, push, and promote Docker images, using declarative YAML and credentials that are defined once stored centrally.
+Building a Docker image from the source code is probably the most common and  basic requirement for a CI pipeline. In Codefresh you can build, push, and promote Docker images, using declarative YAML and credentials that are defined once stored centrally.
 
 **Build and push image**  
 Building a Dockerfile in a pipeline works in the same way as building the Dockerfile locally on your workstation. The `build` step in Codefresh enables you to build a Docker image in a completely declarative manner, and to automatically push it to your default Docker registry without any configuration.  
@@ -76,7 +79,7 @@ See:
 
 ## Linting/Validating
 
-TBD
+An integral part of the pipeline is linting and validation tools. These perform static analysis on your source code or other resources. A Codefresh pipeline can use any linter tool that is bundled in a Docker image. You can also use Codefresh to validate files that are not source code, such as markup languages (XML/YAML/JSON) or Infrastructure files (e.g. terraform or Kubernetes resources). Most static analysis tools come in the form of a CLI allowing for easy usage in a Codefresh pipeline.
 
 ## Security scanning
 Security scans are critical to deploying quality code. With Codefresh, in addition you can control when to implement the security scan, and then view the scan results in the Codefresh UI, without having to go to the security platform.  
