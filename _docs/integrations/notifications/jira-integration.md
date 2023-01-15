@@ -2,6 +2,7 @@
 title: "Jira notification integrations for piplines"
 description: ""
 group: integrations
+sub_group: notifications
 redirect_from:
   - /docs/jira-integration-1/
   - /docs/integrations/jira-integration-1/

@@ -5,7 +5,9 @@ group: getting-started
 toc: true
 ---
 
-Work in progress TBD
+Codefresh is a Continuous Integration/Delivery solution.  
+ConThis article reviews main CD concepts and how Codefresh supports and implements them.
+
 
 <!--Focus on
 
@@ -20,14 +22,14 @@ Dashboards -->
 
 
 ## Connecting to Kubernetes 
-Continuous deployment starts with Kubernetes clusters, and Codefresh integrates with any known cluster provider for Kubernetes through a few simple steps. Connect your Google, Azure, Amazon Kubernetes cluster to Codefresh through simple integration steps. 
+Continuous deployment starts with Kubernetes clusters, and Codefresh integrates with any known cluster provider for Kubernetes through a few simple steps. Connect your Google, Azure, or Amazon Kubernetes cluster to Codefresh through simple integration steps. 
 For those Kubernetes clusters that are not in our list of cluster providers, you can manually enter your cluster settings to add any generic Kubernetes cluster.
 
 See [Connecting a Kubernetes cluster]({{site.baseurl}}/docs/integrations/kubernetes/#connect-a-kubernetes-cluster).
 
 ## Deploying to Kubernetes 
 Codefresh offers a variety of options for you to choose from when deploying to Kubernetes.
-Deploy to Kubernetes from the Codefresh UI, or programmatically through dedicated steps in pipelines, avoiding the need for `kubectl` commands.    
+Deploy to Kubernetes from the Codefresh UI or programmatically through dedicated steps in pipelines, avoiding the need for `kubectl` commands.    
 
 **On-demand deployment**  
 For quick and easy deployment, deploy on-demand from the Codefresh UI.
@@ -42,7 +44,7 @@ Finally, if you are familiar with and want to work with `kubectl`, run your own 
 See [Deployment options for Kubernetes]({{site.baseurl}}/docs/deployments/kubernetes/deployment-options-to-kubernetes/).
 
 ## kubectl
-`kubectl` is the command line interface for managing kubernetes clusters. Running custom `kubectl` commands in a freestyle step gives your maximum flexibility with cluster deployments.
+`kubectl` is the command line interface for managing kubernetes clusters. Running custom `kubectl` commands in a freestyle step gives maximum flexibility with cluster deployments.
 Codefresh automatically sets up your config context with your connected clusters. The config context is the value of the `$CF_KUBECONFIG_PATH` variable, which expands to `/codefresh/volume/sensitive/.kube/config` within the shared step volume.
 
 Codefresh has a public Docker image for kubectl at [Docker Hub](https://hub.docker.com/r/codefresh/kubectl/tags){:target="\_blank"} that you can use.
@@ -70,7 +72,7 @@ Deploy Helm charts
 Deploy the Helm chart to a Kubernetes cluster, Helm repo, or both.  
 
 
-## Dashboards
+## Deployment dashboards
 
 TBD
 <!--Dashboards are key to providing the right information at the right time.

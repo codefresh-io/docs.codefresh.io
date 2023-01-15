@@ -289,17 +289,17 @@ metadata:
 {: .table .table-bordered .table-hover}
 | Field name          | Parent field                 | Type                  | Value |
 | -------------- | ---------------------------- |-------------------------| -------------------------|
-| `steps`       | `spec`  | object | The [pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/) to be executed |
-| `stages`       | `spec` | array | The [pipeline stages]({{site.baseurl}}/docs/codefresh-yaml/stages/) for a better visual overview |
+| `steps`       | `spec`  | object | The [pipeline steps]({{site.baseurl}}/docs/pipelines/steps/) to be executed |
+| `stages`       | `spec` | array | The [pipeline stages]({{site.baseurl}}/docs/pipelines/stages/) for a better visual overview |
 | `variables`       |  `spec` | array | List of variables defined in the pipeline itself |
-| `contexts`       |  `spec` | array | Variable sets imported from [shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/) |
+| `contexts`       |  `spec` | array | Variable sets imported from [shared configuration]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/) |
 | `runtimeEnvironment`       |  `spec` | array | where to execute this pipeline |
 | `terminationPolicy `       |  `spec` | array | Termination settings of this pipeline |
-| `concurrency `       |  `spec` | number | How many instances of this pipeline [can run at the same time]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#policies) | 
+| `concurrency `       |  `spec` | number | How many instances of this pipeline [can run at the same time]({{site.baseurl}}/docs/pipelines/pipelines/#policies) | 
 | `triggerConcurrency `       |  `spec` | number | How many instances of this pipeline can run at the same time per trigger  |
 | `branchConcurrency `       |  `spec` | number | How many instances of this pipeline can run at the same time per branch  |
 | `externalResources `       |  `spec` | array | Optional external files available to this pipeline |
-| `triggers`       |  `spec` | array | a list of [Git triggers]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/) that affect this pipeline |
+| `triggers`       |  `spec` | array | a list of [Git triggers]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/) that affect this pipeline |
 | `options`       |  `spec` | object | Extra options for the pipeline |
 | `enableNotifications`       |  `options` | boolean | if false the pipeline will not send notifications to [Slack]({{site.baseurl}}/docs/integrations/notifications/slack-integration/) and status updates back to the Git provider |
 
@@ -417,12 +417,12 @@ The `triggers` field is an array of objects that hold [Git trigger information](
 | `provider `       |  `triggers` | string | Name of provider as found in Git integrations |
 | `modifiedFilesGlob `       |  `triggers` | string | Only activate trigger if changed files match glob expression |
 | `disabled `       |  `triggers` | boolean | if true, trigger will never be activated  |
-| `options `       |  `triggers` | array | Choosing [caching behavior]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipeline-caching/) of this pipeline |
+| `options `       |  `triggers` | array | Choosing [caching behavior]({{site.baseurl}}/docs/pipelines/pipeline-caching/) of this pipeline |
 | `noCache `       |  `options` | boolean | if true, docker layer cache is disabled |
 | `noCfCache `       |  `options` | boolean | if true, extra Codefresh caching is disabled |
 | `resetVolume `       |  `options` | boolean | if true, all files on volume will be deleted before each execution |
 | `context `       |  `triggers` | string | Name of git context to use |
-| `contexts`       |  `spec` | array | Variable sets imported from [shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/) |
+| `contexts`       |  `spec` | array | Variable sets imported from [shared configuration]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/) |
 | `variables`       |  `triggers` | array | Override variables that were defined in the pipeline level |
 | `runtimeEnvironment`       |  `triggers` | array | Override the runtime environment that was defined in the pipeline level |
 

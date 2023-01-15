@@ -1,6 +1,6 @@
 ---
 title: "Codefresh for CI"
-description: "Continuous integration (CI) with Codefresh pipelines"
+description: "See what Codefresh offers for Continuous integration (CI) with pipelines"
 group: getting-started
 toc: true
 ---
@@ -13,11 +13,13 @@ Running integration tests
 Security scans
 Code quality  -->
 
-Work in progress 
+Codefresh is a Continuous Integration/Delivery solution. This article reviews CI concepts and how Codefresh supports and implements them.
+
+
 
 ## Code compilation
 
-The most basic function of a CI system is to compile/package source code. Codefresh is agnostic as far as the programming language you use. Codefresh can work equally well with compiled languages (Java, Go, C/C++) as well as interpreted languages (Python, PHP, Ruby etc)
+The basic function of a CI system is to compile/package source code. As far as programming languages are concerned, Codefresh is language-agnostic. Codefresh works equally well with compiled languages (Java, Go, C/C++), as well as interpreted languages (Python, PHP, Ruby).
 
 The only requirement is that you either use an existing Docker image as a step in your pipeline or create your own with the exact versions of tools that you need.
 
@@ -69,7 +71,7 @@ See:
 ## Code quality coverage
 Good quality code is central to any CI platform or tool. Codefresh integrates with the top code quality platforms/tools in the market to track code coverage, inspect code quailty, and generate code-coverage analysis reports. 
 
-Three steps to 
+Implement code quality coverage in Codefresh pipelines through these steps: 
 * Set up integrations with the platforms/tools (Coverall, SonarQube, Codecov, for example). 
 * Copy and paste the ready-to-use step for your platform/tool into your pipeline from our [Plug-ins library](https://codefresh.io/steps/){:target="\_blank"}.
 * Reference them by name in the pipeline step, and view the updated reports in the respective UIs.
@@ -77,9 +79,11 @@ Three steps to
 See:  
 [Code coverage examples]({{site.baseurl}}/docs/example-catalog/examples/#code-coverage-examples)
 
-## Linting/Validating
+## Linting/validating
 
-An integral part of the pipeline is linting and validation tools. These perform static analysis on your source code or other resources. A Codefresh pipeline can use any linter tool that is bundled in a Docker image. You can also use Codefresh to validate files that are not source code, such as markup languages (XML/YAML/JSON) or Infrastructure files (e.g. terraform or Kubernetes resources). Most static analysis tools come in the form of a CLI allowing for easy usage in a Codefresh pipeline.
+Linting and validation tools which perform static analysis on source code or other resources are also integral part of pipelines. Codefresh pipelines can use any linter tool that is bundled with a Docker image. Codefresh can also validate files that are not source-code, such as markup-language files (XML/YAML/JSON), infrastructure files (Terraform, or Kubernetes resource files).  
+
+Most static analysis tools are CLI-based, and can be easily used in a Codefresh pipeline.
 
 ## Security scanning
 Security scans are critical to deploying quality code. With Codefresh, in addition you can control when to implement the security scan, and then view the scan results in the Codefresh UI, without having to go to the security platform.  
@@ -103,8 +107,28 @@ See:
 
 
 ## Notifications
+Codefresh supports status and event notifications, through email, Slack, and Jira.
 
-TBD
+**Pipeline build notifications**  
+Every user can configure email notifications for pipeline builds, successful or failed builds. See [Email notifications for pipeline builds]({{site.baseurl}}/docs/administration/user-self-management/user-settings/#email-notifications-for-pipeline-builds).   
+
+**Slack notifications**  
+Codefresh offers different levels of notifications for Slack. At the global level, Slack notifications are sent for all pipelines launched automatically through Git triggers. 
+Our plugins enable granular notifications for specific pipelines.  
+
+See [Slack notifications in Codefresh]({{site.baseurl}}/docs/integrations/notifications/slack-integration/), and [examples for Slack notification]({{site.baseurl}}/docs/example-catalog/ci-examples/sending-the-notification-to-slack/).
+
+**Jira notifications**  
+Codefresh integrates with Jira in several ways:
+The standard integration provides the highest visibility into your GitOps deployments. Referencing the integration in your pipeline pulls in all the Jira information and enriches the image with the issue-tracking information.  
+Our versatile [Jira Issue Manager](https://codefresh.io/steps/step/jira-issue-manager?__hstc=13221992.d6be31528e6c55e9c8e25cbf4f7ec143.1637822320970.1673765905554.1673785426249.294&__hssc=13221992.18.1673785426249&__hsfp=1203046529{:target="\_blank"} step can be used to create Jira issues, comment on existing Jira issues, change the status of an issue, and even add a description to your issue.  
+ 
+
+See [Jira notifications in Codefresh]({{site.baseurl}}/docs/integrations/notifications/jira-integration/) and [examples for Jira notification]({{site.baseurl}}/docs/example-catalog/ci-examples/sending-the-notification-to-jira/).
+
+
+## Continue with
+[Codefresh for CD]({{site.baseurl}}/docs/getting-started/cd-codefresh/) 
 
 
 
