@@ -10,11 +10,11 @@ redirect_from:
   - /docs/integrations/git-providers/configure-a-bitbucket-server-webhook/  
 toc: true
 ---
-Creating an account with Codefresh using one of the supported Git providers (GitHub, GitLab, Bitbucket) gives you immediate access to the repositories of the linked provider.
+Creating an account with Codefresh for one of the supported Git providers (GitHub, GitLab, Bitbucket), gives you immediate access to the repositories of the linked provider.
 
-You can add repositories from the other Git providers regardless of the one that you used for sign-up. For example, you can use GitLab to sign up with Codefresh, but still build repositories that exist in Bitbucket.
+You can also add repositories from other Git providers regardless of the one you used for sign-up. For example, you can use GitLab to sign up with Codefresh, but still build repositories that exist in Bitbucket.
 
-You can even add multiple accounts from each Git provider (if you have more than one) allowing you to use Codefresh as a central CI/CD solution that can access all your Git repositories regardless of the backing Git provider.
+You can even add multiple accounts for each Git provider (if you have more than one), allowing you to use Codefresh as a central CI/CD solution that can access all your Git repositories regardless of the backing Git provider.
 
 Currently Codefresh supports:
 
@@ -27,13 +27,14 @@ Currently Codefresh supports:
 * Atlassian Stash (old version of Bibucket Server)
 * Bitbucket Server (new version of Stash)
 
-Atlassian Stash/Bitbucket server as well as the on-premises version of GitLab and GitHub are only available to Codefresh enterprise customers.
+Atlassian Stash/Bitbucket server, as well as the on-premises version of GitLab and GitHub, are only available to Codefresh enterprise customers.
 
 ## Adding more Git providers to your Codefresh Account
 
 By default, you have direct access to Git repositories that exist in the Git provider that you used while signing up for Codefresh. You can easily create Codefresh projects that checkout code from that Git provider without any extra configurations.
 
-1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipeline Integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
+1. From Configuration in the sidebar, select [**Pipeline Integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
 1. Select **Git** and then click **Configure**.
 1. From the **Add Git Provider** drop-down, select the Git provider to add. 
 1. Define the settings as required. 
@@ -57,7 +58,7 @@ The easiest way to set up authentication is with OAuth2 if supported by the Git 
 and Codefresh will automatically set it up once you accept the permissions required. If you have problems with OAuth2
 or the provider does not support it, you need to manually create credentials by yourself in your git account and then enter them into Codefresh.
 
-In the case of an on-premises Git provider you also need to fill in the URL where the provider is installed.
+In the case of an on-premises Git provider, you also need to fill in the URL where the provider is installed.
 
 ## SSH Keys
 
@@ -90,7 +91,7 @@ For more information on generating SSH keys and adding your public key to your V
 ## GitHub
 
 For the **OAuth2 method** you only need to decide on public/private repository access, enter a name for your connection and click *Save*. Then accept the permissions dialog. This is the easiest and recommended way to integrate GitHub. Notice that if
-you used GitHub when you [created your Codefresh account]({{site.baseurl}}/docs/administration/create-a-codefresh-account/), this integration is already setup for you.
+you used GitHub when you [created your Codefresh account]({{site.baseurl}}/docs/administration/account-user-management/create-a-codefresh-account/), this integration is already setup for you.
 
 For the **Access Token** method you need
 
@@ -120,22 +121,22 @@ caption="GitHub permissions"
 alt="GitHub permissions"
 %}
 
-For GitHub on-premises you also need to provide the URL of the GitHub server in your organization. If enabled in your account you can setup [Pipeline definition restrictions]({{site.baseurl}}/docs/administration/access-control/#pipeline-definition-restrictions) by expanding the *YAML Options* segment.
+For GitHub on-premises you also need to provide the URL of the GitHub server in your organization. If enabled in your account you can setup [Pipeline definition restrictions]({{site.baseurl}}/docs/administration/account-user-management/access-control/#pipeline-definition-restrictions) by expanding the *YAML Options* segment.
 
 ### Using External Secrets for GitHub Token
 
 If your GitHub installation is behind your firewall, you can also
 use any [external secrets that you have defined]({{site.baseurl}}/docs/integrations/secret-storage/) (such as Kubernetes secrets) as values by entering a secrets value
-with the same syntax [shown in pipelines]({{site.baseurl}}/docs/pipelines/secrets-store/).
+with the same syntax [shown in pipelines]({{site.baseurl}}/docs/pipelines/configuration/secrets-store/).
 
 For example if you already have a `token` on a resource call `git-credentials` you can put in the token field the expression {% raw %}`${{secrets.git-credentials.token}}`{% endraw %}.
 
 ### Level of access
 
-When the admin clicks off "Allow access to all users" another toggle appears; “Allow these credentials to be shared within a pipeline for cloning a repository“
-
-1. When its turned on, the user that runs a pipeline will be able to clone the repo.
-2. When its turned off, the user that runs a pipeline cannot use this integration.
+If **Allow access to all users** is cleared, another toggle appears: **Allow these credentials to be shared within a pipeline for cloning a repository**. 
+This option has the following impact on pipelines:
+* When selected, the user who runs a pipeline can clone the repo.
+* When cleared, the user who runs a pipeline cannot use this integration.
 In both cases, the user cannot decrypt the token used in Git integration with CLI or API.
 
 >Important note: The credentials will be shared only to clone repos using an official git-clone step.
@@ -146,7 +147,7 @@ An alternative way to authenticate with Github is via the App mechanism.
 
 ### Codefresh Github App
 
-> Note: The Codefresh App has READ permissions to issues, metadata, and pull requests, and READ and WRITE permissions to code, commit statuses, and repository hooks. If you need additional permission for your integration, use the Manual Creation steps.
+> The Codefresh App has READ permissions to issues, metadata, and pull requests, and READ and WRITE permissions to code, commit statuses, and repository hooks. If you need additional permission for your integration, use the Manual Creation steps.
 
 1. In the Codefresh UI, follow the steps to [add a new Git provider](#adding-more-git-providers-to-your-codefresh-account). 
 1. From the list of Git providers, select **Codefresh Github App**.
@@ -158,52 +159,49 @@ An alternative way to authenticate with Github is via the App mechanism.
 
 ### Manual creation
 
-**Step 1** - Log in your GitHub account and visit [https://github.com/settings/apps](https://github.com/settings/apps){:target="\_blank"}. Click the *New GitHub App* button.
+1. Log in your GitHub account and visit [https://github.com/settings/apps](https://github.com/settings/apps){:target="\_blank"}. 
+1. Click **New GitHub App**.
+1. Do the following in the New GitHub App screen:
+     1. Give an arbitrary name to your app (e.g. codefresh-integration)
+     1. Fill *Homepage URL* with `http://www.codefresh.io`
+     1. Uncheck the *Active* checkbox under the Webhook section
+     1. In the *Repository permissions* section give the minimum of
+       * **Contents** - read
+       * **Issues** - read
+       * **Metadata** - read
+       * **Pull requests** - read
+       * **Webhooks** - read, write
+       * **Commit statuses** - read, write
+       * **Email addresses** - read 
+     1. Click the *Create GitHub app* button.
 
-**Step 2** - On the New app screen
+1. In the next screen, do the following:
+     1. Note down the **App ID** number under the About section.
+     1. Click **Generate a private key**,  and save the file locally.
+1. Click the **Install App** item from the left sidebar menu, and then click **Install** next to your codefresh app.
+1. Accept the permissions, and in the next screen, define the repositories that you need Codefresh to access.  
+  From the URL of the browser, note the ending number which is your installation ID.  
+  For example if the URL is `https://github.com/settings/installations/10042353` then your installation number is `10042353`.
+1. In the Codefresh UI, go to  [Pipeline Integrations > Git](https://g.codefresh.io/account-admin/account-conf/integration/git){:target="\_blank"}. 
+1. From the **Add Git Provider** dropdown, select **Github App**.  
+  For the required fields use: 
+  * **Installation ID** which you noted down in _step 5_.
+  * **App ID**, which you noted down in _step 4_.
+  * **Private key**, which is the content of the file your created in step 4, converted to base64.
+1. To verify your integration, click **Test connection**.
+1. To apply your changes, click **Save**.  
 
-1. Give an arbitrary name to your app (e.g. codefresh-integration)
-1. Fill *Homepage URL* with `http://www.codefresh.io`
-1. Uncheck the *Active* checkbox under the Webhook section
-1. In the *Repository permissions* section give the minimum of
-   * **Contents** - read
-   * **Issues** - read
-   * **Metadata** - read
-   * **Pull requests** - read
-   * **Webhooks** - read, write
-   * **Commit statuses** - read, write
-   * **Email addresses** - read 
-1. Click the *Create GitHub app* button.
-
-**Step 3** - In the next screen
-
-1. Note down the *App ID* number under the *About* section
-1. Click the *Generate a private key* button and save the file locally
-
-**Step 4** - Click the *Install App* item from the left sidebar menu and then click the *Install* button next to your codefresh app
-
-**Step 5** - Accept the permissions and in the next screen define the repositories that you need Codefresh to access
-
-Also from the URL of the browser note the ending number (this is your installation id). For example if the URL is `https://github.com/settings/installations/10042353` then your installation number is 10042353
-
-**Step 6** - Visit [https://g.codefresh.io/account-admin/account-conf/integration/git](https://g.codefresh.io/account-admin/account-conf/integration/git) in Codefresh,  add a new Git provider and choose *Github App* from the drop-down menu
-
-For the required fields use:
-
-* **Installation id** - found in step 5
-* **App ID** - found in step 3
-* **Private key** - the contents of the file your created in step 3 (but convert it to base64 first)
-
-Click *Test connection* to verify your integration and apply your changes with the *Save* button.  If enabled in your account you can setup [Pipeline definition restrictions]({{site.baseurl}}/docs/administration/access-control/#pipeline-definition-restrictions) by expanding the *YAML Options* segment.
+>If enabled in your account you can setup [Pipeline definition restrictions]({{site.baseurl}}/docs/administration/account-user-management/access-control/#pipeline-definition-restrictions) by expanding the *YAML Options* segment.
 
 ## GitLab
 
-For the **OAuth2 method** you only need to enable private repository access, enter a name for your connection and click *Save*. Then accept the permissions dialog. This is the easiest and recommended way to integrate GitLab. Notice that if
-you used GitLab when you [created your Codefresh account]({{site.baseurl}}/docs/administration/create-a-codefresh-account/), this integration is already setup for you.
+For the **OAuth2 method**:  
+You only need to enable private repository access, enter a name for your connection and click *Save*. Then accept the permissions dialog. This is the easiest and recommended way to integrate GitLab. Notice that if
+you used GitLab when you [created your Codefresh account]({{site.baseurl}}/docs/administration/account-user-management/create-a-codefresh-account/), this integration is already setup for you.
 
 For the **Access Key** method you need:
 
-* A friendly name for the Git context (it can be anything you want.)
+* A friendly name for the Git context (it can be anything you want)
 * An access token/key
 
 To create an access token, go to your GitLab *settings* and select the *Access tokens* options.
@@ -214,20 +212,20 @@ The name you enter in order to create the token in the GitLab UI is completely a
 Once you have the token, paste it in the Codefresh UI and click *Test connection*. If everything is OK can
 now save the Git integration.
 
-For GitLab on-premises you also need to provide the URL of the GitLab server in your organization.  If enabled in your account you can setup [Pipeline definition restrictions]({{site.baseurl}}/docs/administration/access-control/#pipeline-definition-restrictions) by expanding the *YAML Options* segment.
+For GitLab on-premises, you also need to provide the URL of the GitLab server in your organization.  If enabled in your account you can set up [Pipeline definition restrictions]({{site.baseurl}}/docs/administration/account-user-management/access-control/#pipeline-definition-restrictions) by expanding the *YAML Options* segment.
 
 ### Using External Secrets for GitLab Token
 
 If your GitLab installation is behind your firewall, you can also
 use any [external secrets that you have defined]({{site.baseurl}}/docs/integrations/secret-storage/) (such as Kubernetes secrets) as values by entering a secrets value
-with the same syntax [shown in pipelines]({{site.baseurl}}/docs/pipelines/secrets-store/).
+with the same syntax [shown in pipelines]({{site.baseurl}}/docs/pipelines/configuration/secrets-store/).
 
 For example if you already have a `token` on a resource call `git-credentials` you can put in the token field the expression {% raw %}`${{secrets.git-credentials@token}}`{% endraw %}.
 
 ## Bitbucket
 
 For the **OAuth2 method** you only need to enter a name for your connection and click *Save*. Then accept the permissions dialog. This is the easiest and recommended way to integrate Bitbucket. Notice that if
-you used Bitbucket when you [created your Codefresh account]({{site.baseurl}}/docs/administration/create-a-codefresh-account/), this integration is already setup for you.
+you used Bitbucket when you [created your Codefresh account]({{site.baseurl}}/docs/administration/account-user-management/create-a-codefresh-account/), this integration is already setup for you.
 
 For the **Application Password** method you need:
 
@@ -252,7 +250,7 @@ alt="Bitbucket permissions"
 The "label" you enter in your Bitbucket account in order to create the application password is completely arbitrary (use "Codefresh" for an example). Once you have the token, paste it in the Codefresh UI and click *Test connection*. If everything is OK you can
 now save the Git integration.
 
- If enabled in your account you can setup [Pipeline definition restrictions]({{site.baseurl}}/docs/administration/access-control/#pipeline-definition-restrictions) by expanding the *YAML Options* segment.
+ If enabled in your account you can setup [Pipeline definition restrictions]({{site.baseurl}}/docs/administration/account-user-management/access-control/#pipeline-definition-restrictions) by expanding the *YAML Options* segment.
 
 ## Azure DevOps
 
@@ -316,9 +314,9 @@ caption="Codefresh integration with Azure Devops"
 alt="Codefresh integration with Azure Devops"
 %}
 
-Your Azure DevOps repositories will be available when [creating a new project in Codefresh]({{site.baseurl}}/docs/getting-started/create-a-basic-pipeline/).
+Your Azure DevOps repositories will be available when [creating a new project in Codefresh]({{site.baseurl}}/docs/quick-start/ci-quickstart/create-ci-pipeline/).
 
- If enabled in your account you can setup [Pipeline definition restrictions]({{site.baseurl}}/docs/administration/access-control/#pipeline-definition-restrictions) by expanding the *YAML Options* segment.
+ If enabled in your account you can setup [Pipeline definition restrictions]({{site.baseurl}}/docs/administration/account-user-management/access-control/#pipeline-definition-restrictions) by expanding the *YAML Options* segment.
 
 ## Atlassian Stash
 
@@ -339,13 +337,13 @@ Codefresh supports Bitbucket server versions 5.4.0+ since those expose the API u
 
 If your Bitbucket Server installation is behind your firewall, you can also
 use any [external secrets that you have defined]({{site.baseurl}}/docs/integrations/secret-storage/) (such as Kubernetes secrets) as values by entering a secrets value
-with the same syntax [shown in pipelines]({{site.baseurl}}/docs/pipelines/secrets-store/).
+with the same syntax [shown in pipelines]({{site.baseurl}}/docs/pipelines/configuration/secrets-store/).
 
 For example if you already have a `token` on a resource call `git-credentials` you can put in the token field the expression {% raw %}`${{secrets.git-credentials@token}}`{% endraw %}.
 
 ## Using your Git provider
 
-Once your provider is active, you can add a new project into Codefresh and then during the [repository selection screen]({{site.baseurl}}/docs/getting-started/create-a-basic-pipeline/) you will have access to the additional Git providers.
+Once your provider is active, you can add a new project in Codefresh, and then during the [repository selection screen]({{site.baseurl}}/docs/quick-start/ci-quickstart/create-ci-pipeline/) you will have access to the additional Git providers.
 
 {% include image.html
 lightbox="true"
@@ -356,17 +354,17 @@ caption="Select Git provider"
 alt="Select Git provider"
 %}
 
->Notice that for all supported Git providers Codefresh will automatically create all the webhooks needed for
+>Notice that for all supported Git providers, Codefresh automatically creates all the webhooks needed for
 triggering pipelines when a commit (or another event) happens.
 
-After adding the repository Codefresh will behave exactly the same, regardless of the selected Git provider.
-You will be able to [create pipelines]({{site.baseurl}}/docs/pipelines/pipelines/) for different Git providers in exactly the same manner.
+After adding the repository, Codefresh behavior is identical for all Git providers.
+You can [create pipelines]({{site.baseurl}}/docs/pipelines/pipelines/) for different Git providers in exactly the same manner.
 
 ## ABAC for Git Contexts
 
 **Account Level:** Pro and above
 
-> At this time, you will need to reach out to support to enable ABAC for Git Context and [Pipeline Execution Context]({{site.baseurl}}/docs/administration/pipeline-execution-context/).
+> At this time, you will need to reach out to support to enable ABAC for Git Context and [Pipeline Execution Context]({{site.baseurl}}/docs/administration/account-user-management/pipeline-execution-context/).
 
 ABAC for Git Context gives the ability to restrict using and handling of Git Contexts. We use tags on the git context to limit Teams and Execution Contexts for access control. There are four actions controlled by ABAC: Creating, Updating, Deleting, and Using Git Contexts.
 
