@@ -10,7 +10,7 @@ toc: true
 ---
 Configure Docker Hub as a Docker registry for CI pipelines to push images to it.
 
-1.[ Select **Docker Hub** as the registry provider]({{site.baseurl}}/docs/integrations/docker-registries/#general-configuration).
+1.Select [**Docker Hub** as the registry provider]({{site.baseurl}}/docs/integrations/docker-registries/#general-configuration).
 1. Define the following:  
   * Registry Name: A unique name for this configuration.
   * Username: Docker Hub username.
@@ -114,8 +114,8 @@ The two Dockerhub accounts are `kkapelon` and `kostiscodefresh`, and Codefresh a
 ## Related articles
 [Docker registries for pipeline integrations]({{site.baseurl}}/docs/integrations/docker-registries)  
 [Working with Docker Registries]({{site.baseurl}}/docs/ci-cd-guides/working-with-docker-registries/)  
-[Push step]({{site.baseurl}}/docs/pipelines/steps/push/)  
-[Building and pushing an image]({{site.baseurl}}/docs/yaml-examples/examples/build-and-push-an-image/)  
+[Push step in pipelines]({{site.baseurl}}/docs/pipelines/steps/push/)  
+[Building and pushing an image]({{site.baseurl}}/docs/examples/example-catalog/build-and-push-an-image/)  
 
 
 

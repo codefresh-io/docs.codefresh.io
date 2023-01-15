@@ -72,7 +72,7 @@ runtimeScheduler:
 * Account  
   The Account-level service account has higher priority than the runtime-level service account.  To define the service account at the account level, turn on the setting as part of the integration as described below.
 
-* Pipeline
+* Pipeline  
   The Pipeline-level service account has higher priority than the account-level service account. Define the service account as part of the pipeline's runtime settings (Pipeline > Settings > Runtime).
 
 * Trigger  
@@ -117,7 +117,7 @@ There are two ways to push images:
 1. (Recommended) Using the YAML [push step]({{site.baseurl}}/docs/pipelines/steps/push/).  
 1. Manually promoting manually an image  (described below)
 
-For more details on how to push a Docker image in a pipeline see the [build and push example]({{site.baseurl}}/docs/yaml-examples/examples/build-and-push-an-image/).
+For more details on how to push a Docker image in a pipeline see the [build and push example]({{site.baseurl}}/docs/example-catalog/ci-examples/build-and-push-an-image/).
 
 
 

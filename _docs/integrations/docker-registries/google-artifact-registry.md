@@ -41,7 +41,7 @@ Configure GCAR (Google Artifact Registry) as your Docker registry provider.
 The JSON key file holds your credentials for a given [service account](https://cloud.google.com/compute/docs/access/service-accounts){:target="\_blank"}.  
 To generate your key file follow these instructions:
 
-1. Go to your [Cloud Platform Console Credentials page](https://console.cloud.google.com/apis/credentials){:target="\_blank"}.
+1. Go to your [Cloud Platform Console Credentials](https://console.cloud.google.com/apis/credentials){:target="\_blank"} page.
 1. Select the project that you're creating credentials for.
 1. To set up a new service account, click **Create credentials**, and then select Service account key.
 1. Choose the service account to use for the key.
@@ -61,4 +61,4 @@ you can use the `registry_context` property as described in [working with multip
 [Docker registries for pipeline integrations]({{site.baseurl}}/docs/integrations/docker-registries)  
 [Working with Docker Registries]({{site.baseurl}}/docs/ci-cd-guides/working-with-docker-registries/)  
 [Push step]({{site.baseurl}}/docs/pipelines/steps/push/)  
-[Building and pushing an image]({{site.baseurl}}/docs/yaml-examples/examples/build-and-push-an-image/)  
+[Building and pushing an image]({{site.baseurl}}/docs/example-catalog/ci-examples/build-and-push-an-image/)  

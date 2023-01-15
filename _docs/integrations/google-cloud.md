@@ -9,17 +9,17 @@ toc: true
 
 Codefresh has native support for Google Cloud in the following areas:
 
-- [Connecting to Google registries]({{site.baseurl}}/docs/docker-registries/google-container-registry/)
+- [Connecting to Google registries]({{site.baseurl}}/docs/integrations/docker-registries/google-container-registry/)
 - [Deploying to GKE]({{site.baseurl}}/docs/integrations/kubernetes/#adding-gke-cluster)
 - [Using Google Storage for Test reports]({{site.baseurl}}/docs/testing/test-reports/#connecting-a-google-bucket)
-- [Using Google Storage for Helm charts]({{site.baseurl}}/docs/deployments/helm/add-helm-repository/#private-repository---gcs)
+- [Using Google Storage for Helm charts]({{site.baseurl}}/docs/deployments/helm/helm-charts-and-repositories/)
 - [Using Cloud Build]({{site.baseurl}}/docs/integrations/gcloud-builder/)
 - [Installing the Runner via the Marketplace]({{site.baseurl}}/docs/integrations/google-marketplace/)
 
 
 ## Using Google Container Registries
 
-Google Container registries are fully compliant with the Docker registry API that Codefresh follows. You can connect GCR like any [other Docker registry]({{site.baseurl}}/docs/docker-registries/google-container-registry/).
+Google Container registries are fully compliant with the Docker registry API that Codefresh follows. You can connect GCR like any [other Docker registry]({{site.baseurl}}/docs/integrations/docker-registries/google-container-registry/).
 
 {% 
 	include image.html 
@@ -68,7 +68,7 @@ See the full documentation for [test reports]({{site.baseurl}}/docs/testing/test
 
 ## Using Google Storage for storing Helm charts
 
-You can connect Google storage as a Helm repository by setting up a [Helm integration]({{site.baseurl}}/docs/integrations/helm/#$add-helm-repository/) in Codefresh.
+You can connect Google storage as a Helm repository by setting up a [Helm integration]({{site.baseurl}}/docs/integrations/helm/#add-helm-repository/) in Codefresh.
 
 {% include
 image.html
@@ -80,7 +80,7 @@ caption="Using Google Cloud for Helm charts"
 max-width="60%"
 %}
 
-Once you connect your Helm repository you can use it any [Codefresh pipeline with the Helm step]({{site.baseurl}}/docs/new-helm/using-helm-in-codefresh-pipeline/). 
+Once you connect your Helm repository you can use it any [Codefresh pipeline with the Helm step]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/). 
 
 ## Using Google Cloud build
 
@@ -88,7 +88,7 @@ Codefresh has a [native Docker build step]({{site.baseurl}}/docs/pipelines/steps
 
 ## Installing the Codefresh runner from the Google Marketplace
 
-The [Codefresh runner]({{site.baseurl}}/docs/installation/codefresh-runner/) is a Kubernetes native application that allows you to run pipelines on your own Kubernetes cluster (even behind the firewall). Specifically for Google Cloud, the runner is also available via the [marketplace]({{site.baseurl}}/docs/integrations/google-marketplace/){:target="\_blank"}.
+The [Codefresh Runner]({{site.baseurl}}/docs/installation/codefresh-runner/) is a Kubernetes native application that allows you to run pipelines on your own Kubernetes cluster (even behind the firewall). Specifically for Google Cloud, the runner is also available via the [marketplace]({{site.baseurl}}/docs/integrations/google-marketplace/).
 
 
 ## Traditional Google Cloud deployments
@@ -109,7 +109,7 @@ For any other Google Cloud deployment you can use the [Google Cloud CLI from a D
 {% endraw %}
 {% endhighlight %}
 
-See the example of [uploading to a Google Bucket]({{site.baseurl}}/docs/example-catalog/ci-examples/uploading-or-downloading-from-gs/) or [creating a VM]({{site.baseurl}}/docs/example-catalog/ci-examples/packer-gcloud/) for more details.
+See the example of [uploading to a Google Bucket]({{site.baseurl}}/docs/example-catalog/ci-examples/uploading-or-downloading-from-gs/) or [creating a VM]({{site.baseurl}}/docs/example-catalog/cd-examples/packer-gcloud/) for more details.
 
 
  

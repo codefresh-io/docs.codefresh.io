@@ -24,6 +24,7 @@ caption="Docker credentials for the Azure registry"
 max-width="80%" 
 %}
 
+{:start="3"}
 1. For **Admin user**, click **Enable**. 
 1. Change the username (optional), and make sure that you note down one of the passwords shown on the screen.
 
@@ -46,7 +47,7 @@ alt="Adding the Azure Docker registry"
 caption="Adding the Azure Docker registry" 
 max-width="60%" %}
 
-{:start="5}
+{:start="5"}
 1. To verify the connection details, click **Test connection**.
 1. To apply the changes, click **Save**.
 

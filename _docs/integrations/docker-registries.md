@@ -19,7 +19,7 @@ Codefresh enables you to integrate with several Docker container registries, inc
 * [Amazon EC2 Container Registry](amazon-ec2-container-registry)
 * [Bintray.io/Artifactory](bintray-io)
 * [Quay.io](quay-io)
-* [Github Container Registry](github-container-registry)
+* [GitHub Container Registry](github-container-registry)
 
 For a different registry choose to configure using the [Other](other-registries) option.
 
@@ -83,7 +83,7 @@ This is handy for registries that require a prefix (usually the name of an organ
   max-width="60%"
   %}
 
-See more details at [pushing Docker images]({{site.baseurl}}/docs/#pushing-docker-images).
+See more details at [pushing Docker images]({{site.baseurl}}/docs/ci-cd-guides/working-with-docker-registries/#pushing-docker-images).
 
 ## Pushing an image
 

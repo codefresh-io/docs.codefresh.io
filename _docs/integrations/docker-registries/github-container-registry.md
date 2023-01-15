@@ -183,4 +183,4 @@ You can now treat this registry like any other Codefresh registry.
 [Docker registries for pipeline integrations]({{site.baseurl}}/docs/integrations/docker-registries)  
 [Working with Docker Registries]({{site.baseurl}}/docs/ci-cd-guides/working-with-docker-registries/)  
 [Push step]({{site.baseurl}}/docs/pipelines/steps/push/)  
-[Building and pushing an image]({{site.baseurl}}/docs/yaml-examples/examples/build-and-push-an-image/)  
+[Building and pushing an image]({{site.baseurl}}/docs/example-catalog/ci-examples/build-and-push-an-image/)  

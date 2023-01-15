@@ -12,13 +12,13 @@ toc: true
 Configure JFrog Bintray/Artifactory as your Docker registry provider.  
 You need to get the API key for your profile, and the correct  registry domain.  
 
->Passing Codefresh metadata to Bintray is supported through Grafeas. More info is available [in this blogpost](https://codefresh.io/blog/write-this-down-grafeas/){:target="_blank"}.
+>Passing Codefresh metadata to Bintray is supported through Grafeas. More info is available in this [blogpost](https://codefresh.io/blog/write-this-down-grafeas/){:target="_blank"}.
 
 ## Set up Bintray integration
 
 **Before you begin**  
-* [Get your API key](#find-your-api-key)
-* [Get your regsitry domain](#find-your-registry-domain)
+* [Find your API key](#find-your-api-key)
+* [Find your regsitry domain](#find-your-registry-domain)
 
 **How to**  
 
@@ -88,4 +88,4 @@ Codefresh automatically sets some version attributes in Bintray every time you u
 [Docker registries for pipeline integrations]({{site.baseurl}}/docs/integrations/docker-registries)  
 [Working with Docker Registries]({{site.baseurl}}/docs/ci-cd-guides/working-with-docker-registries/)  
 [Push step]({{site.baseurl}}/docs/pipelines/steps/push/)  
-[Building and pushing an image]({{site.baseurl}}/docs/yaml-examples/examples/build-and-push-an-image/)  
+[Building and pushing an image]({{site.baseurl}}/docs/example-catalog/ci-examples/build-and-push-an-image/)  
