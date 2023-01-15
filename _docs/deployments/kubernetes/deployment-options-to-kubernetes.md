@@ -13,27 +13,27 @@ toc: true
 
 Codefresh offers several options when it comes to Kubernetes deployments:
 
-1. Codefresh UI for on demand deployments
-  This is the easiest deployment option for Kubernetes. See our [Kubernetes quick start guide]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/).
+1. Codefresh UI for on-demand deployments  
+  This is the easiest deployment option for Kubernetes. See our [Kubernetes deployment quick start]({{site.baseurl}}/docs/quick-start/ci-quickstart/deploy-to-kubernetes/).
 1. Through a dedicated [deploy step]({{site.baseurl}}/docs/pipelines/steps/deploy/) in a pipeline  
   Described in this article.
 1. Through the [cf-deploy-kubernetes step]({{site.baseurl}}/docs/ci-cd-guides/kubernetes-templating/) in a pipeline  
   Use this to also perform simple templating on Kubernetes manifests.
-1. Through a [freestyle]({{site.baseurl}}/docs/pipelines/steps/freestyle/) step with [Kustomize](https://kustomize.io){:target="\_blank"}. 
+1. Through a [freestyle]({{site.baseurl}}/docs/pipelines/steps/freestyle/) step with [Kustomize](https://kustomize.io){:target="\_blank"}.  
   See [Deployment with Kustomize]({{site.baseurl}}/docs/example-catalog/cd-examples/deploy-with-kustomize).
-1. Using a [freestyle]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) step with your own `kubectl` commands  
+1. Using a freestyle step with your own `kubectl` commands  
   This deployment option gives you great flexibility, but assumes that you know how to work with `kubectl`. See [Custom kubectl commands]({{site.baseurl}}/docs/deployments/kubernetes/custom-kubectl-commands/).
 1. Using Helm as a package manager  
-  See our [Helm quick start guide]({{site.baseurl}}/docs/quick-start/ci-quickstart/deploy-with-helm/) .
+  See our [Helm deployment to Kubernetes quick start]({{site.baseurl}}/docs/quick-start/ci-quickstart/deploy-with-helm/).
 
 ## Prerequisites
 
-* A K8s cluster in Codefresh (see [Connecting a Kubernetes cluster]({{site.baseurl}}/docs/integrations/kubernetes/#connect-a-kubernetes-cluster/) 
-* Familiarity with the [Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/), basic [pipeline steps ]({{site.baseurl}}/docs/pipelines/steps/), and how to describe them
-* [Integrate your Docker registry]({{site.baseurl}}/docs/integrations/docker-registries/) with Codefresh
+* A K8s cluster in Codefresh (see [Connecting a Kubernetes cluster]({{site.baseurl}}/docs/integrations/kubernetes/#connect-a-kubernetes-cluster) 
+* Familiarity with the [Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/), basic [pipeline steps]({{site.baseurl}}/docs/pipelines/steps/), and how to describe them
+* [Docker registry integration]({{site.baseurl}}/docs/integrations/docker-registries/) in Codefresh
   
 ## Build and push your image
-Here is a basic Codefresh pipeline scenario to build and push your image to Dockerhub registry.
+Here is a basic Codefresh pipeline scenario to build and push your image to the DockerHub registry.
   
   `YAML`
 {% highlight yaml %}
@@ -58,7 +58,7 @@ Using this YAML example, we'll add an additional step to deploy the image in Doc
 
 ## Describe your deployment
 The following instructions describe how to create a new service in your Kubernetes cluster in order to deploy to it.
->If you're deploying to an existing service in your Kubernetes cluster, please skip to the [next step]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/#add-a-deployment-step).
+<!--- >If you're deploying to an existing service in your Kubernetes cluster, please skip to the [next step]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/#add-a-deployment-step).  -->
 
 
  1. Go to the **`Kubernetes` &#8594; `Services page`**.
@@ -84,7 +84,8 @@ max-width="60%"
 %}
 
 ## Add a Deployment step
-So now you have deployed your image manually, which is great. But how to trigger the deployment within your pipeline? For that you will need to add a step of a “Deploy” type to the Codefresh YAML manifest file:
+So now you have deployed your image manually, which is great.  
+But, how can you trigger the deployment within your pipeline? For that you will need to add a step of type `Deploy` type to the Codefresh YAML manifest file:
 
   `YAML`
 {% highlight yaml %}
@@ -134,7 +135,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-You can now run the whole pipeline that builds your application from source to a docker image, pushes it to a docker registry and deploys it to your Kubernetes cluster.
+You can now run the whole pipeline, that builds your application from source to a Docker image, pushes the image to a Docker registry, and deploys the image to your Kubernetes cluster.
 
 ## Related articles
 [Manage your Kubernetes cluster]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/)  

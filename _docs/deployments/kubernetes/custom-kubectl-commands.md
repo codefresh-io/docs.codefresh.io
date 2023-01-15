@@ -6,7 +6,7 @@ sub_group: kubernetes
 toc: true
 ---
 
-As explained in [Kubernetes deployment options]({{site.baseurl}}/docs/deployments/kubernetes/deployment-options-to-kubernetes/), Codefresh has built-in functionality for deploying to Kubernetes clusters.
+As described in [Deployment options for Kubernetes]({{site.baseurl}}/docs/deployments/kubernetes/deployment-options-to-kubernetes/), Codefresh has built-in functionality for deploying to Kubernetes clusters.
 
 For maximum flexibility with cluster deployments, you can run your own custom `kubectl` commands in a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/).  
 [Kubectl](https://kubernetes.io/docs/reference/kubectl/overview/){:target="\_blank"} is the command line interface for managing kubernetes clusters.
@@ -16,7 +16,7 @@ Codefresh automatically sets up your [config context](https://kubernetes.io/docs
 The config context is automatically placed for you at the path of the [variable]({{site.baseurl}}/docs/pipelines/variables/) `$CF_KUBECONFIG_PATH`.
 In the current Codefresh implementation, this expands to `/codefresh/volume/sensitive/.kube/config`, within the [shared step volume]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps).
 
-When you use custom `kubectl` commands, it is your responsibility to template your manifests using any of the available options. To employ Codefresh for templating, it is better to use the dedicated [cf-deploy-kubernetes step]({{site.baseurl}}/docs/deployments/ci-cd-guides/kubernetes-templating/), which provides simple templating capabilities.
+When you use custom `kubectl` commands, it is your responsibility to template your manifests using any of the available options. To employ Codefresh for templating, it is better to use the dedicated [cf-deploy-kubernetes step]({{site.baseurl}}/docs/ci-cd-guides/kubernetes-templating/), which provides simple templating capabilities.
 
 ## Using the Codefresh kubectl image
 
@@ -169,8 +169,8 @@ steps:
 In the example above, we select one of the clusters in each deployment step, and then apply several Kubernetes manifests that constitute an application.
 
 ## Related articles
-[Managing your cluster]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/)  
-[Accessing a Docker registry]({{site.baseurl}}/docs/ci-cd-guides/access-docker-registry-from-kubernetes/)    
+[Managing Kubernetes clusters]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/)  
+[Accessing a Docker registry from cluster]({{site.baseurl}}/docs/ci-cd-guides/access-docker-registry-from-kubernetes/)    
 
 
 

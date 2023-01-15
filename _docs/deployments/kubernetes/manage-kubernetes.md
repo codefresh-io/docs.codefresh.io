@@ -24,7 +24,7 @@ caption="Codefresh Kubernetes Dashboard"
 max-width="80%"
   %}
 
-With the graphical dashboard it is very easy to locate problematic services or deploy new ones quickly. If there are clusters that are not accessible to your user you can hide them by enabling the *Hide inaccessible clusters* option at the top right of the window in order to simplify the view.
+With the graphical dashboard, it is very easy to locate problematic services or deploy new ones quickly. If there are clusters that are not accessible to your user, you can hide them by enabling the *Hide inaccessible clusters* option at the top right of the window in order to simplify the view.
 
 ## Viewing your Kubernetes services
 
@@ -44,8 +44,8 @@ You can also switch to a Grid view if you prefer that over the default List view
 
 {% include image.html
 lightbox="true"
-file="/images/kubernetes/dashboard/grid-view.png"
-url="/images/kubernetes/dashboard/grid-view.png"
+file="/images/kubernetes/grid-view.png"
+url="/images/kubernetes/grid-view.png"
 alt="Kubernetes Dashboard grid view"
 caption="Kubernetes Dashboard grid view"
 max-width="80%"
@@ -83,7 +83,7 @@ max-width="60%"
 %}
 
 
-Use the following steps in order to add Image and pull secrets from the [connected Docker Registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/):
+Use the following steps in order to add Image and pull secrets from the connected Docker Registry:
 * Specify the image name in the format `<DOMAIN>/<ACCOUNT>/<IMAGE>:<TAG>`
 * Provide and image pull secret - this will be done for each namespace
 
@@ -158,12 +158,12 @@ Some of the possible options are:
 1. The dedicated [deploy step]({{site.baseurl}}/docs/pipelines/steps/deploy/) in a pipeline. 
 1. The [cf-deploy-kubernetes step]({{site.baseurl}}/docs/ci-cd-guides/kubernetes-templating/) in a pipeline. This can also perform simple templating on Kubernetes manifests.
 
-See more choices in the [Deployment options page]({{site.baseurl}}/docs/deployments/kubernetes/deployment-options-to-kubernetes/).
+Read more [Deployment options for Kubernetes]({{site.baseurl}}/docs/deployments/kubernetes/deployment-options-to-kubernetes/).
 <!-- will need to change xrefs after porting content -->
 ## Related articles
-[Environment dashboard]({{site.baseurl}}/docs/deployments/kubernetes/environment-dashboard/)
+[Environment dashboard]({{site.baseurl}}/docs/deployments/kubernetes/environment-dashboard/)  
 [Add Config Maps]({{site.baseurl}}/docs/ci-cd-guides/add-config-maps-to-your-namespaces/)  
-[Kubernetes deployment quick start]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/)  
+[Kubernetes deployment quick start]({{site.baseurl}}/docs/quick-start/ci-quickstart/deploy-to-kubernetes/)  
 
 
 
