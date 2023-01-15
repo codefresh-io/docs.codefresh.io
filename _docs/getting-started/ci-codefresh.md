@@ -13,7 +13,7 @@ Running integration tests
 Security scans
 Code quality  -->
 
-Codefresh is a Continuous Integration/Delivery solution. This article reviews CI concepts and how Codefresh supports and implements them.
+Codefresh is a Continuous Integration/Delivery solution. This article reviews main CI concepts and how Codefresh supports and implements them.
 
 
 
