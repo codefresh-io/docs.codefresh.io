@@ -1,5 +1,5 @@
 ---
-title: "Jira"
+title: "Jira GitOps integration"
 description: " "
 group: gitops-integrations
 sub_group: issue-tracking
@@ -9,7 +9,7 @@ toc: true
 
 Codefresh has native integration for Atlassian Jira, to enrich images with information from Jira. Codefresh can monitor a feature all the way from the ticket creation phase, up to when it is implemented and deployed to an environment.  
 
-For information on adding a Jira integration in Codefresh, see [Issue-tracking GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/).
+For information on adding a Jira GitOps integration in Codefresh, see [Issue-tracking GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/).
 
 
 ## Prerequisites
@@ -52,6 +52,6 @@ Codefresh uses the Secret Key stored in the runtime cluster to securely access J
 
 ## Related articles
 [Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration/)  
-[Image enrichment with GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/)
+[Image enrichment with GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/)  
 [CI integrations]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/)  
 [Container registry integrations]({{site.baseurl}}/docs/gitops-integrations/container-registries/)  

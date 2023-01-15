@@ -61,7 +61,7 @@ Every container registry integration displays the following information:
 * Runtime or runtimes it is shared with
 * Sync status
 
-### Edit/delete container registry integrations for GitOps
+## Edit/delete container registry integrations for GitOps
 If you have existing integrations, you can change the connection details, or delete an integration.
 >Deleting an integration deletes the integration resource from the shared configuration Git repo, its secrets, the CI workflows that 
 use it. 
@@ -86,6 +86,6 @@ use it.
 [CI GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/)  
 [Issue-tracking GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/)  
 [Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration/)  
-[Images]({{site.baseurl}}/docs/deployment/images/)  
-[Monitoring applications]({{site.baseurl}}/docs/deployment/applications-dashboard/)    
-[Add Git sources to runtimes]({{site.baseurl}}/docs/runtime/git-sources/)  
+[Images]({{site.baseurl}}/docs/deployments/gitops/images/)  
+[Monitoring applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/)    
+ 

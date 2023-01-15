@@ -1,5 +1,5 @@
 ---
-title: "GitHub Actions"
+title: "GitOps GitHub Actions integration"
 description: ""
 group: gitops-integrations
 sub_group: ci-integrations

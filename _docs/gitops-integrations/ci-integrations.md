@@ -15,7 +15,7 @@ See [Image enrichment with GitOps integrations]({{site.baseurl}}/docs/gitops-int
 ## Codefresh image reporting and enrichment action
 To support the integration between Codefresh and third-party CI platforms and tools, we have created dedicated actions for supported CI tools in the Codefresh Marketplace. These actions combine image enrichment and reporting through integrations with issue tracking and container registry tools. 
 
->You can also configure the integration directly in the Codefresh UI, as described in [Connect a third-party CI platform/tool to Codefresh](#connect-a-third-party-ci-platformtool-to-codefresh).
+>You can also configure the integration directly in the Codefresh UI, as described in [Connect a third-party CI platform/tool to Codefresh](#connect-a-third-party-ci-platformtool-to-gitops).
 
 
 Use the action as follows:
@@ -27,7 +27,7 @@ Use the action as follows:
   [GitHub Action Codefresh report image](https://github.com/marketplace/actions/codefresh-report-image){:target="\_blank"}  
   [Codefresh Classic Codefresh report image](https://codefresh.io/steps/step/codefresh-report-image){:target="\_blank"}  
 1. When the pipeline completes execution, Codefresh retrieves the information on the image that was built and its metadata through the integration names specified (essentially the same data that Codefresh CI would send automatically).
-1. View the image in Codefresh's [Images dashboard]({{site.baseurl}}/docs/deployment/images/), and in any [application]({{site.baseurl}}/docs/deployment/applications-dashboard/) in which it is used.
+1. View the image in Codefresh's [Images dashboard]({{site.baseurl}}/docs/deployments/gitops/images/), and in any [application]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/) in which it is used.
 
 ## Connect a third-party CI platform/tool to GitOps
 Connecting the CI platform/tool to GitOps from the UI includes configuring the required arguments, and then generating and copying the YAML manifest for the report image to your pipeline.  
@@ -36,11 +36,12 @@ Connecting the CI platform/tool to GitOps from the UI includes configuring the r
 1. Filter by **CI tools**, then select the CI tool and click **Add**.
 1. Define the arguments for the CI tool:  
   [Codefresh Classic]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/codefresh-classic/)  
-  [GitHub Action]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/github-actions/)  
+  [GitHub Actions]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/github-actions/)  
   [Jenkins]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/jenkins/)  
+    
+  >For the complete list of arguments you can use, see [CI integration for GitOps argument reference](#ci-integration-argument-reference) in this article.
 
-  For the complete list of arguments you can use, see [CI integration for GitOps argument reference](#ci-integration-argument-reference) in this article.
-
+{:start="4"}
 1. To generate a YAML snippet with the arguments, on the top-right, click **Generate Manifest**.  
    Codefresh validates the generated manifest, and alerts you to undefined arguments that are required, and other errors. 
 

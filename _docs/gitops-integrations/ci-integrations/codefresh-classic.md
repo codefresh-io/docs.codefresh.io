@@ -1,5 +1,5 @@
 ---
-title: "Codefresh CI pipeline GitOps integration"
+title: "GitOps Codefresh CI pipeline integration"
 description: ""
 group: gitops-integrations
 sub_group: ci-integrations

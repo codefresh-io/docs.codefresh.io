@@ -1,5 +1,5 @@
 ---
-title: "Docker Hub GitOps integration"
+title: "GitOps Docker Hub integration"
 description: ""
 group: gitops-integrations
 sub_group: container-registries
@@ -7,7 +7,7 @@ toc: true
 ---
 
 Codefresh has native support for interacting with Docker Hub registries, to push, pull, and deploy images.  
-For information on adding a Docker Hub integration in Codefresh, see [Container registry integrations]({{site.baseurl}}/docs/gitops-integrations/container-registries/).
+For information on adding a Docker Hub integration in Codefresh, see [GitOps container registry integrations]({{site.baseurl}}/docs/gitops-integrations/container-registries/).
 
 ## Prerequisites
 Before you configure settings in Codefresh to integrate Docker Hub registry, do the following:

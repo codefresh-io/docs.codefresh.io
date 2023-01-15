@@ -1,5 +1,5 @@
 ---
-title: "Amazon ECR GitOps integration"
+title: "GitOps Amazon ECR integration"
 description: ""
 group: gitops-integrations
 sub_group: container-registries
@@ -7,7 +7,7 @@ toc: true
 ---
 
 Codefresh has native support for interacting with Amazon ECR (Elastic Container Registry), to push, pull, and deploy images.  
-For information on adding an Amazon ECR integration for GitOps in Codefresh, see [Container registry integrations]({{site.baseurl}}/docs/gitops-integrations/container-registries/).
+For information on adding an Amazon ECR integration for GitOps in Codefresh, see [Container registry GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/container-registries/).
 
 >Amazon ECR integration is supported only for Hybrid GitOps.
 
@@ -52,7 +52,7 @@ The table describes the arguments required for GitOps integrations with Amazon E
    max-width="50%" 
    %}
    
-For how-to instructions, see [Configure container registry integrations for GitOps in Codefresh]({{site.baseurl}}/docs/gitops-integrations/container-registries/#configure-container-registry-integrations-in-codefresh) and [Edit/delete container registry integrations for GitOps in Codefresh]({{site.baseurl}}/docs/gitops-integrations/container-registries/#editdelete-container-registry-integrations).  
+For how-to instructions, see [Configure container registry integrations for GitOps in Codefresh]({{site.baseurl}}/docs/gitops-integrations/container-registries/#configure-container-registry-integrations-for-gitops-in-codefresh) and [Edit/delete container registry integrations for GitOps in Codefresh]({{site.baseurl}}/docs/gitops-integrations/container-registries/#editdelete-container-registry-integrations).  
 
 
 ## Related articles

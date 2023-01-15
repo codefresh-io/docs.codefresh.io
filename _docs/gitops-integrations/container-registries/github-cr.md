@@ -1,5 +1,5 @@
 ---
-title: "GitHub Container Registry (GHCR) GitOps integration"
+title: "GitOps GitHub Container Registry (GHCR) integration"
 description: ""
 group: gitops-integrations
 sub_group: container-registries

@@ -1,5 +1,5 @@
 ---
-title: "Jenkins GitOps integration"
+title: "GitOps Jenkins integration"
 description: ""
 group: gitops-integrations
 sub_group: ci-integrations

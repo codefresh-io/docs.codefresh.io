@@ -1,5 +1,5 @@
 ---
-title: "JFrog Artifactory GitOps integration"
+title: "GitOps JFrog Artifactory integration"
 description: ""
 group: gitops-integrations
 sub_group: container-registries
@@ -7,7 +7,7 @@ toc: true
 ---
 
 Codefresh has native support for interacting with JFrog Artifactory.  
-For information on adding a JFrog Artifactory integration in Codefresh, see [Container registry integrations]({{site.baseurl}}/docs/gitops-integrations/container-registries/).
+For information on adding a JFrog Artifactory integration in Codefresh, see [GitOps container registry integrations]({{site.baseurl}}/docs/gitops-integrations/container-registries/).
 
 
 
@@ -34,10 +34,11 @@ For information on adding a JFrog Artifactory integration in Codefresh, see [Con
    max-width="50%" 
    %}
    
-For how-to instructions, see [Configure container registry integrations for GitOps in Codefresh]({{site.baseurl}}/docs/gitops-integrations/container-registries/#configure-container-registry-integrations-in-codefresh) and [Edit/delete container registry integrations for GitOps in Codefresh]({{site.baseurl}}/docs/gitops-integrations/container-registries/#editdelete-container-registry-integrations).  
+For how-to instructions, see [Configure container registry integrations for GitOps in Codefresh]({{site.baseurl}}/docs/gitops-integrations/container-registries/#configure-container-registry-integrations-in-codefresh) and [Edit/delete container registry integrations for GitOps in Codefresh]({{site.baseurl}}/docs/gitops-integrations/container-registries/#editdelete-container-registry-integrations).    
+
 
 ## Related articles
 [Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration/)  
 [Image enrichment with GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/)  
-[CI GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/)  
-[Issue-tracking GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/)  
+[GitOps CI integrations]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/)  
+[GitOps issue-tracking integrations]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/)  
