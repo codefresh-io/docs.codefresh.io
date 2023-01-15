@@ -56,11 +56,10 @@ If this is your first time, you'll be prompted to authenticate using your Google
 
 For GKE cluster versions >=1.19 basic authentication is deprecated. You can add the GKE cluster manually by [using the custom Kubernetes integration option](#adding-any-other-cluster-type-not-dependent-on-any-provider) instead.
 
-{{site.data.callout.callout_info}}
 
-If you are a new customer of Google Cloud, you are also eligible to receive a Codefresh offer to get up to $500 in Google credits. As soon at the GKE integration is complete within Codefresh, you will get an email with extra details on how to claim your credits. 
 
-Follow the link in the email to fill in an application for the free credits. Once Google approves the application (usually within 1-2 days) your credits will be available to your account. Make sure to check your spam folder for that email.
+> If you are a new customer of Google Cloud, you are also eligible to receive a Codefresh offer to get up to $500 in Google credits. As soon at the GKE integration is complete within Codefresh, you will get an email with extra details on how to claim your credits.   
+  Follow the link in the email to fill in an application for the free credits. Once Google approves the application (usually within 1-2 days) your credits will be available to your account. Make sure to check your spam folder for that email.
 
 
 ### Adding an AKS cluster
@@ -713,8 +712,8 @@ You can also deploy to a cluster in a pipeline. Codefresh offers [several ways f
  {% include 
 image.html 
 lightbox="true" 
-file="/images/getting-started/quick-start-k8s/deployment-build.png" 
-url="/images/getting-started/quick-start-k8s/deployment-build.png" 
+file="/images/quick-start/quick-start-k8s/deployment-build.png" 
+url="/images/quick-start/quick-start-k8s/deployment-build.png" 
 alt="Kubernetes deployment in a pipeline" 
 caption="Kubernetes deployment in a pipeline" 
 max-width="100%" 
@@ -723,7 +722,7 @@ max-width="100%"
 
 You can use the [integrated Codefresh deployment methods]({{site.baseurl}}/docs/pipelines/steps/deploy/) or even run [custom kubectl commands directly on your cluster]({{site.baseurl}}/docs/deployments/kubernetes/custom-kubectl-commands/).
 
-Codefresh also offers a simple solution for [templating]({{site.baseurl}}/docs/deployments/kubernetes/kubernetes-templating/) but you can use another templating methods such as [kustomize]({{site.baseurl}}/docs/example-catalog/cd-examples/deploy-with-kustomize/).
+Codefresh also offers a simple solution for [templating]({{site.baseurl}}/docs/ci-cd-guides/kubernetes-templating/) but you can use another templating methods such as [kustomize]({{site.baseurl}}/docs/example-catalog/cd-examples/deploy-with-kustomize/).
 
 
 

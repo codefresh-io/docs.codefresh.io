@@ -1,6 +1,6 @@
 ---
-title: "Microsoft Azure CI integration"
-description: "How to use Codefresh with Azure"
+title: "Microsoft Azure integration"
+description: "How to use Codefresh pipelines with Azure"
 group: integrations
 redirect_from:
   - /docs/microsoft-azure/
@@ -11,11 +11,11 @@ toc: true
 Codefresh has native support for Azure in the following areas:
 
 - [Integration with Azure Git]({{site.baseurl}}/docs/integrations/git-providers/#azure-devops)
-- [Connecting to Azure registries]({{site.baseurl}}/docs/docker-registries/azure-docker-registry/)
-- [Deploying to AKS]({{site.baseurl}}/docs/deployments/kubernetes/#adding-aks-cluster)  
+- [Connecting to Azure registries]({{site.baseurl}}/docs/integrations/docker-registries/azure-docker-registry/)
+- [Deploying to AKS]({{site.baseurl}}/docs/deployments/kubernetes/#adding-an-aks-cluster)  
 - [Using Azure Storage for Test reports]({{site.baseurl}}/docs/testing/test-reports/#connecting-azure-storage)
-- [Using Azure Storage for Helm charts]({{site.baseurl}}/docs/deployments/helm/add-helm-repository/#private-repository---azure)
-- [Azure SSO]({{site.baseurl}}/docs/administration/single-sign-on/sso-azure/)
+- [Using Azure Storage for Helm charts]({{site.baseurl}}/docs/deployments/helm/helm-charts-and-repositories/)  
+- [Azure SSO]({{site.baseurl}}/docs/single-sign-on/sso-azure/)
 
 ## Using Azure Git repositories
 
@@ -35,7 +35,7 @@ For more details see the [documentation page]({{site.baseurl}}/docs/integrations
 
 ## Using Azure Docker registries
 
-Azure Docker registries are fully compliant with the Docker registry API that Codefresh follows. You can connect an Azure Registry like any [other Docker registry]({{site.baseurl}}/docs/docker-registries/).
+Azure Docker registries are fully compliant with the Docker registry API that Codefresh follows. You can connect an Azure Registry like any [other Docker registry]({{site.baseurl}}/docs/integrations/docker-registries/).
 
 {% 
 	include image.html 
@@ -51,7 +51,7 @@ Once the registry is added you can the [standard push step]({{site.baseurl}}/doc
 
 ## Deploying to Azure Kubernetes
 
-Codefresh has native support for connecting an Azure cluster in the [cluster configuration screen]({{site.baseurl}}/docs/deployments/kubernetes/#connect-a-kubernetes-cluster).
+Codefresh has native support for connecting an Azure cluster in the [cluster configuration screen]({{site.baseurl}}/docs/integrations/kubernetes/#connect-a-kubernetes-cluster).
 
 {% 
 	include image.html 
@@ -83,7 +83,7 @@ See the full documentation for [test reports]({{site.baseurl}}/docs/testing/test
 
 ## Using Azure storage for storing Helm charts
 
-You can connect Azure Storage as a Helm repository in the [integrations screen]({{site.baseurl}}/docs/deployments/helm/add-helm-repository/).
+You can connect Azure Storage as a Helm repository in the [integrations screen]({{site.baseurl}}/docs/deployments/helm/helm-charts-and-repositories/).
 
 {% include
 image.html
@@ -99,7 +99,7 @@ Once you connect your Helm repository you can use it any [Codefresh pipeline wit
 
 ## Azure Single Sign-on
 
-You can use Azure Active Directory as an [SSO mechanism]({{site.baseurl}}/docs/administration/single-sign-on/) in Codefresh.
+You can use Azure Active Directory as an [SSO mechanism]({{site.baseurl}}/docs/single-sign-on/) in Codefresh.
 
 {% include 
 image.html 
