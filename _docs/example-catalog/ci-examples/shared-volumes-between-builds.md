@@ -111,5 +111,5 @@ Read more about caching build dependencies in [caching in pipelines]({{site.base
 ## Related articles
 [CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)  
 [How Codefresh pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/) 
-[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [Freestyle steps]({{site.baseurl}}/docs/pipelines/steps/freestyle)  

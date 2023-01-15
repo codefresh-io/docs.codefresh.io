@@ -345,6 +345,6 @@ max-width="80%"
 
 ## Related articles
 [Introduction to Pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)  
-[Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)  
+[Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)  
 [Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)  
 

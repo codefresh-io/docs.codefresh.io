@@ -147,7 +147,7 @@ You can also find the same step in the form of a [Codefresh plugin](https://code
 
 ## Related articles
 [CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#cd-examples)
-[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
 [External Registries]({{site.baseurl}}/docs/integration/docker-registries/)

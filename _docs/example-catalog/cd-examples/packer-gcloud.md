@@ -127,6 +127,6 @@ You can follow the same procedure for any other cloud that has an API/CLI (such 
 
 ## Related articles
 [CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#cd-examples)  
-[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
 [How Codefresh pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)

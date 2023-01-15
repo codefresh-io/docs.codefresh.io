@@ -550,7 +550,7 @@ See [handling errors in a pipeline]({{site.baseurl}}/docs/pipelines/advanced-wor
 
 
 ## Related articles
-[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
 [Parallel workflows in pipelines]({{site.baseurl}}/docs/pipelines/advanced-workflows/)  
 

@@ -120,7 +120,7 @@ max-width="50%"
 
 ## Related articles
 [CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)  
-[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
 [Unit tests]({{site.baseurl}}/docs/testing/unit-tests/)  
 [Integration tests]({{site.baseurl}}/docs/testing/integration-tests/)  

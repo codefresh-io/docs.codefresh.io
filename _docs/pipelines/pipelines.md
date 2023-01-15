@@ -323,7 +323,7 @@ Pipelines that belong to a project will mention it below their name so it is ver
 
 
 ## Related articles
-[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)  
 [External Docker Registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/)  
 [YAML Examples]({{site.baseurl}}/docs/yaml-examples/examples/)

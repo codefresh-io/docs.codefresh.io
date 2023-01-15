@@ -119,6 +119,6 @@ codefresh run francisco-codefresh/jan_19/my-basic-pipeline --local --local-volum
 When this pipeline runs locally, it will use whatever steps exist in `my-codefresh.yml` instead of the git version. The shared data volume will also be left intact after the build is finished as explained in the previous section.
 
 ## Related articles
-[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)  
 [Introduction to Codefresh pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines)  

@@ -309,6 +309,6 @@ If you run the [hybrid or on-prem versions]({{site.baseurl}}/docs/enterprise/ins
 
 ## Related articles
 [Introduction to Codefresh pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines)  
-[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [Steps in CI pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
 [Parallel pipelines]({{site.baseurl}}/docs/pipelines/advanced-workflows/)  

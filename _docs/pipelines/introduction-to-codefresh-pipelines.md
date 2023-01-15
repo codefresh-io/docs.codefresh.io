@@ -329,7 +329,7 @@ you should know that only steps within the same pipeline can share artifacts.
 
 ## Related articles
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
-[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)    
+[Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)    
 [Build and Docker caching]({{site.baseurl}}/docs/pipelines/pipeline-caching/)
 
 

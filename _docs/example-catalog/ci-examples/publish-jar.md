@@ -104,7 +104,7 @@ You can use the same pipeline for Artifactory or any other compliant Java packag
 ## Related articles
 [Gradle example]({{site.baseurl}}/docs/example-catalog/ci-examples/java/gradle/)  
 [Spring boot example]({{site.baseurl}}/docs//example-catalog/ci-examples/spring-boot-2/)  
-[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
 [How Codefresh pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)  

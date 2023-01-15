@@ -681,7 +681,7 @@ and load them from the repository.
  Once the pipeline is in Git, you should switch the online editor to [load the pipeline from the repository]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#loading-codefreshyml-from-version-control) instead of the inline text.
 
 ## Related articles
-[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [ArgoCD integration]({{site.baseurl}}/docs/integrations/argocd/)  
 [Environment dashboard]({{site.baseurl}}/docs/deployments/kubernetes/environment-dashboard/)  
 [Helm promotions]({{site.baseurl}}/docs/deployments/helm/helm-environment-promotion/)  

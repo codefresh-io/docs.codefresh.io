@@ -83,5 +83,5 @@ Note that this behavior is simply a convenience feature for legacy pipelines. Us
 
 ## Related articles
 [Creating Pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
-[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [Git Integration]({{site.baseurl}}/docs/integrations/git-providers/)  

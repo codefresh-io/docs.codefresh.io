@@ -65,7 +65,7 @@ For more details see our [Codecov example](https://codefresh.io/docs/docs/exampl
 
 ## Related articles
 [Integration Tests]({{site.baseurl}}/docs/testing/integration-tests/)  
-[Service Containers]({{site.baseurl}}/docs/pipelines/service-containers/)  
-[Coveralls Example]({{site.baseurl}}/docs/example-catalog/ci-examples/coveralls-testing/)  
-[Codacy Example]({{site.baseurl}}/docs/example-catalog/ci-examples/codacy-testing/)  
-[Test Reports]({{site.baseurl}}/docs/testing/test-reports/)  
+[Service containers in pipelines]({{site.baseurl}}/docs/pipelines/service-containers/)  
+[Coveralls coverage reports example]({{site.baseurl}}/docs/example-catalog/ci-examples/coveralls-testing/)  
+[Codacy coverage reports example]({{site.baseurl}}/docs/example-catalog/ci-examples/codacy-testing/)  
+[Creating test reports]({{site.baseurl}}/docs/testing/test-reports/)  

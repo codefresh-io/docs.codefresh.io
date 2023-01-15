@@ -680,7 +680,7 @@ max-width="80%"
 
 
 ## Related articles
-[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [Pull requests and branches]({{site.baseurl}}/docs/ci-cd-guides/pull-request-branches/)  
 [Environment dashboard]({{site.baseurl}}/docs/deployments/kubernetes/environment-dashboard/)  
 

@@ -375,5 +375,5 @@ You can combine all options (`ssh`, `progress`, `secrets`) in a single build ste
 
 
 ## Related articles
-[Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)  
+[Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)  
 [Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)

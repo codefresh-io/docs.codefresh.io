@@ -22,9 +22,9 @@ Codefresh can use secrets from your HashiCorp Vault installation. This way you h
 |---|--- |
 | [Username/Password](https://www.vaultproject.io/docs/auth/userpass){:target="\_blank"}|Available for SaaS and Hybrid versions |
 | [Access Token](https://www.vaultproject.io/docs/auth/token){:target="\_blank"}|Available for SaaS and Hybrid versions |
-| [Kubernetes](https://www.vaultproject.io/docs/auth/kubernetes){:target="\_blank"}|Only available with [Codefresh Runner installation]({{site.baseurl}}/docs/reference/behind-the-firewall/) |
-| [Google Cloud Engine](https://www.vaultproject.io/docs/auth/gcp){:target="\_blank"}|Only available with [Codefresh Runner installation]({{site.baseurl}}/docs/reference/behind-the-firewall/) |
-| [App Role](https://www.vaultproject.io/docs/auth/approle){:target="\_blank"}|Available for SaaS and Hybrid versions |
+| [Kubernetes](https://www.vaultproject.io/docs/auth/kubernetes){:target="\_blank"}|Only available with [Codefresh Runner installation]({{site.baseurl}}/docs/installation/behind-the-firewall/) |
+| [Google Cloud Engine](https://www.vaultproject.io/docs/auth/gcp){:target="\_blank"}|Only available with [Codefresh Runner installation]({{site.baseurl}}/docs/installation/behind-the-firewall/) |
+| [App Role](https://www.vaultproject.io/docs/auth/approle){:target="\_blank"}|Available for SaaS and hybrid version with Runner |
 
 ## Set up HashiCorp Vault integration in the Codefresh UI
 
@@ -52,9 +52,7 @@ max-width="80%"
 
 ### Set up HashiCorp Vault integration via Codefresh CLI
 
-You can also create Vault integrations with the [CLI](https://codefresh-io.github.io/cli/){:target="\_blank"}.
-
-Use the [create context command](https://codefresh-io.github.io/cli/contexts/create-context/create-secret-store-context/hashicorp-vault/){:target="\_blank"}.
+You can also create Vault integrations with the Codefresh CLI through   the [create context command](https://codefresh-io.github.io/cli/contexts/create-context/create-secret-store-context/hashicorp-vault/){:target="\_blank"}.
 
 The options available are identical to the UI settings.  
 For example, to create an integration with user/password authentication, you would run this command:
@@ -62,16 +60,17 @@ For example, to create an integration with user/password authentication, you wou
 `codefresh create context secret-store hashicorp-vault <my-integration> --sharing-policy AccountAdmins -app-url <http://vault.example.com> --username <my-user> --password <my-password>`  
 <!--- where:
 * <my-integration> is the name of the integration which is referenced in `codefresh.yaml`.
-* <my-integration> is the name of the integration which is referenced in `codefresh.yaml`.-->
+* <my-integration> is the name of the integration which is referenced in `codefresh.yaml`.
+-->
 
 
 ### Using the HashiCorp Vault secret
 
-To use the Vault secrets in pipelines, see our [secrets guide]({{site.baseurl}}/docs/pipelines/secrets-store/).  
+To use the Vault secrets in pipelines, see our [secrets for pipelines]({{site.baseurl}}/docs/pipelines/configuration/secrets-store/).  
 Because a secret in Vault can contain multiple key-value pairs, you will need to put in the key name as well, according to the syntax `{secrets.vault-store-name.path/to/secret@key}`.
 
 ## Related articles
-[Shared Configuration]({{site.baseurl}}/docs/pipelines/shared-configuration/)  
+[Shared Configuration]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/)  
 [Git integration for pipelines]({{site.baseurl}}/docs/integrations/git-providers/)    
 [Kubernetes integration for pipelines]({{site.baseurl}}/docs/integrations/kubernetes/)  
 [Container registry integration for pipelines]({{site.baseurl}}/docs/integrations/docker-registries/)  

@@ -20,7 +20,7 @@ Kubernetes  the native secrets supported by a cluster.
 
 ### Prerequisites
 
-* For the Kubernetes secret store, [connect your Kubernetes cluster to Codefresh]({{site.baseurl}}/docs/integrations/kubernetes/connect-a-kubernetes-cluster/).  
+* For the Kubernetes secret store, [connect your Kubernetes cluster to Codefresh]({{site.baseurl}}/docs/integrations/kubernetes/#connect-a-kubernetes-cluster/).  
 * Create a Kubernetes secret:
 
 
@@ -88,7 +88,7 @@ where:
   - if `configmap`, data will be replaced as is
 - `$RESOURCE_NAME` is optional and is the name of the secret 
 
-## Runtime secret store setup for Codefresh Runner installation
+## Secret store setup for Codefresh Runner installation
 
 
 For [Codefresh Runner]({{site.baseurl}}/docs/installation/codefresh-runner/) installations, you can also store secrets in your own runtime.
@@ -124,7 +124,7 @@ max-width="80%"
 
 ### Set up runtime secret store with Codefresh CLI
 
-To create a secret store context for **Runtime-Kubernetes** environments ([behind the firewall]({{site.baseurl}}/docs/reference/codefresh-runner/)), run:
+To create a secret store context for **Runtime-Kubernetes** environments ([behind the firewall]({{site.baseurl}}/docs/installation/behind-the-firewall)), run:
 
 ```
 codefresh create context secret-store kubernetes-runtime "$NAME_IN_CODEFRESH"  --runtime "$RUNTIME_NAME" --resource-type "$TYPE" --resource-name ”$NAME”
@@ -149,10 +149,10 @@ where:
 
 ## Using the secrets
 
-Once Codefresh is linked to your secrets, you can use them either in pipelines or any relevant section in the Codefresh UI. For details, see [Using secrets]({{site.baseurl}}/docs/pipelines/secrets-store/) for the details.
+Once Codefresh is linked to your secrets, you can use them either in pipelines or any relevant section in the Codefresh UI. For details, see [Using secrets]({{site.baseurl}}/docs/pipelines/configuration/secrets-store/).
 
 ## Related articles
-[Shared Configuration]({{site.baseurl}}/docs/pipelines/shared-configuration/)  
+[Shared Configuration]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/)  
 [Git integration for pipelines]({{site.baseurl}}/docs/integrations/git-providers/)    
 [Kubernetes integration for pipelines]({{site.baseurl}}/docs/integrations/kubernetes/)  
 [Container registry integration for pipelines]({{site.baseurl}}/docs/integrations/docker-registries/)  

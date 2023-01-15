@@ -110,7 +110,7 @@ In the example above we have forced the git checkout to happen out of the master
 [Troubleshooting common issues]({{site.baseurl}}/docs/troubleshooting/common-issues)  
 [Git triggers]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/)  
 [Git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/)  
-[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 
 
 

@@ -226,7 +226,7 @@ This is just an example pipeline. You might have another generic pipeline for He
 ## Related articles
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
 [Git triggers in pipelines]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/)  
-[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
 
 

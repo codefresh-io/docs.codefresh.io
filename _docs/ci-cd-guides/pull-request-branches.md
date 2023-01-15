@@ -342,7 +342,7 @@ In a similar manner, you can create the triggers for all other branch types in G
 Trunk-based development and Git-flow are only some examples of what a Git workflow can look like. Your organization might follow a completely different process. Using the basic building blocks of Codefresh triggers (branch field, PR checkboxes, etc) you should be able to model your own workflow according to your own pipelines.
 
 ## Related articles
-[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
 [Git triggers in pipelines]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/)  
 [YAML examples]({{site.baseurl}}/docs/example-catalog/examples/)  

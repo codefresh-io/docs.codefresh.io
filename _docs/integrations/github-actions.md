@@ -44,11 +44,11 @@ This converter has two functions:
   You must then define the values needed by yourself.
 1. When the pipeline runs, it automatically finds the Dockerfile of the GitHub Action, builds it, and makes available the Docker image in any subsequent step in the same pipeline.
 
-All this process is automatic. You just need to make sure that all arguments/inputs of the GitHub Action are provided using [pipeline variables]({{site.baseurl}}/docs/pipelines/pipelines/#creating-new-pipelines), [shared configuration]({{site.baseurl}}/docs/pipeplines/pipeline/shared-configuration/), or any other standard mechanism you already use in Codefresh.
+All this process is automatic. You just need to make sure that all arguments/inputs of the GitHub Action are provided using [pipeline variables]({{site.baseurl}}/docs/pipelines/pipelines/#creating-a-pipeline), [shared configuration]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/), or any other standard mechanism you already use in Codefresh.
 
 ## Inserting a GitHub Action in Codefresh pipeline
 
-1. [Create a Codefresh pipeline]({{site.baseurl}}/docs/pipelines/pipelines/#creating-new-pipelines) by visiting the pipeline editor. 
+1. [Create a Codefresh pipeline]({{site.baseurl}}/docs/pipelines/pipelines/#creating-a-pipeline) by visiting the pipeline editor. 
 1. In the **Steps** tab on the right-hand side,  search for `actions` and select **GitHub Actions**.
 
 {% include image.html 
@@ -152,7 +152,7 @@ If you have issues, please contact us or open a support ticket, and let us know 
 
 
 ## Related articles
-[Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)  
+[Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
 [Plugin marketplace](https://codefresh.io/steps/){:target="\_blank"}  
 
 

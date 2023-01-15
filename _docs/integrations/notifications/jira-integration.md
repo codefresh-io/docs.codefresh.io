@@ -9,12 +9,12 @@ toc: true
 ---
 Codefresh integrates with Jira in several ways:
 * Through the [Jira integration]({{site.baseurl}}/docs/integrations/jira/) for the highest visibility into your GitOps deployments
-* Through a [custom step]({{site.baseurl}}/docs/integrations/notifications/jira-integration/#use-jira-within-your-codefresh-pipeline) from our step marketplace so that you can connect your pipelines with Jira
-* Alternatively, through using your own [jira-cli]({{site.baseurl}}/docs/integrations/notifications/jira-integration/#using-your-own-jira-cli)
+* Through a [custom step](#use-jira-in-your-codefresh-pipeline) from our step marketplace so that you can connect your pipelines with Jira
+* Alternatively, through using your own [jira-cli](#using-your-own-jira-cli)
 
 
 ## Prerequisites
-* [Codefresh Account]({{site.baseurl}}/docs/administration/create-a-codefresh-account/)
+* [Codefresh Account]({{site.baseurl}}/docs/administration/account-user-management/create-a-codefresh-account/)
 * [Jira Account](https://www.atlassian.com/software/jira){:target="\_blank"}
 
 ## Use Jira in your Codefresh pipeline
@@ -29,7 +29,7 @@ It can be used to:
 * Add a description to your issue
 * And more
 
-More information is provided [directly in the example]({{site.baseurl}}/docs/example-catalog/ci-examples/sending-the-notification-to-jira/).
+More information is provided [Send notification to Jira example]({{site.baseurl}}/docs/example-catalog/ci-examples/sending-the-notification-to-jira/).
 
 ## Using your own jira-cli
 
@@ -43,5 +43,5 @@ RUN apk add -U gcc musl-dev linux-headers openssl-dev libffi-dev && pip install 
 And then running the Dockerfile.
 
 ## Related articles
-[Codefresh pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/)  
-[Create a pipeline]({{site.baseurl}}/docs/pipelines/pipelines/)  
+[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/)  
+[Create pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  

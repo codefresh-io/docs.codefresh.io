@@ -13,7 +13,7 @@ Alternatively, you can connect to Jira:
 * By using your own [jira-cli]({{site.baseurl}}/docs/integrations/notifications/jira-integration/#using-your-own-jira-cli)
 
 ## Prerequisites
-* [Codefresh Account]({{site.baseurl}}/docs/administration/create-a-codefresh-account/)
+* [Codefresh account]({{site.baseurl}}/docs/administration/account-user-management/create-a-codefresh-account/)
 * [Jira Account](https://www.atlassian.com/software/jira){:target="\_blank"}
 
 ## Set up Jira integration in Codefresh

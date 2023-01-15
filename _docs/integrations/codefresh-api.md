@@ -24,7 +24,7 @@ You can use the API in various ways:
 
 * From your local workstation, with any tool that speaks HTTP (such as [postman](https://github.com/postmanlabs){:target="\_blank"}, [httpie](https://httpie.org/){:target="\_blank"}, [curl](https://curl.haxx.se/){:target="\_blank"} etc.).
 * From another HTTP-enabled tool such as Jenkins. For example, you can trigger [Codefresh pipelines from Jenkins jobs]({{site.baseurl}}/docs/integrations/jenkins-integration/#calling-codefresh-pipelines-from-jenkins-jobs).
-* Using the [Codefresh command line interface](https://codefresh-io.github.io/cli/){:target="\_blank"} which itself uses the API.
+* Through the [Codefresh command line interface](https://codefresh-io.github.io/cli/){:target="\_blank"} which itself uses the API.
 * Calling it programmatically from any other system. You can use your favorite programming language to make HTTP calls to Codefresh.
 
 
@@ -80,13 +80,13 @@ From the same screen you can also revoke keys if you don't need them anymore.
 
 The following resources can be targeted with the API:
 
-* *Agent* - Used for [Codefresh Runner installation]({{site.baseurl}}/docs/reference/behind-the-firewall/)
-* *Audit* - Read [Audit logs]({{site.baseurl}}/docs/administration/audit-logs/)
+* *Agent* - Used for [Codefresh Runner installation]({{site.baseurl}}/docs/installation/behind-the-firewall/)
+* *Audit* - Read [Audit logs]({{site.baseurl}}/docs/administration/account-user-management/audit-logs/)
 * *Build* - Get/change [build status]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/)
-* *Cluster* - [Access control]({{site.baseurl}}/docs/administration/access-control/) for [Kubernetes clusters]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/)
+* *Cluster* - [Access control]({{site.baseurl}}/docs/administration/account-user-management/access-control/) for [Kubernetes clusters]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/)
 * *Environments-v2* - Read/Write [Environment Dashboard]({{site.baseurl}}/docs/deployments/kubernetes/environment-dashboard/) information
 * *GitHub Actions* - Run [GitHub Actions inside Codefresh pipelines]({{site.baseurl}}/docs/integrations/github-actions/)
-* *Pipeline* - [Access control]({{site.baseurl}}/docs/administration/access-control/) for [pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)
+* *Pipeline* - [Access control]({{site.baseurl}}/docs/administration/account-user-management/access-control/) for [pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)
 * *Repos* - Refers to [Git repositories]({{site.baseurl}}/docs/integrations/git-providers/)
 * *Step Type* - Refers to [custom pipeline steps]({{site.baseurl}}/docs/pipelines/steps/#creating-a-typed-codefresh-plugin)
 
@@ -157,7 +157,7 @@ First you need a YAML file that defines the pipeline. This is a pipeline [specif
 
 >It is also very easy to create a a dummy pipeline in the Codefresh UI and then get its specification by running `codefresh get pipeline my-project/my-pipeline -o yaml > my-pipeline-spec.yml`
 
-Here is an example
+Here is an example:
 
 `Pipeline Spec`
 {% highlight yaml %}
@@ -258,9 +258,9 @@ The following sections contain an explanation of the fields.
 | `project`       | `metadata`  | string | the project that contains this pipeline |
 | `originalYamlString`       | `metadata` | string | the full contents of the pipeline editor. Only kept for archival purposes |
 | `labels`       |  `metadata` | object | Holds the `tags` array |
-| `tags`       |  `labels` | array | A list of [access control tags]({{site.baseurl}}/docs/administration/access-control/#marking-pipelines-with-policy-attributes) for this pipeline |
+| `tags`       |  `labels` | array | A list of [access control tags]({{site.baseurl}}/docs/administration/account-user-management/access-control/#marking-pipelines-with-policy-attributes) for this pipeline |
 | `description`       |  `metadata` | string | Human readable description of the pipeline |
-| `isPublic `       |  `metadata` | boolean | If true the pipeline logs [will be public]({{site.baseurl}}/docs/configure-ci-cd-pipeline/build-status/) even for non-authenticated users |
+| `isPublic `       |  `metadata` | boolean | If true, the pipeline logs [will be public]({{site.baseurl}}/docs/pipelines/configuration/build-status/) even for non-authenticated users |
 | `template `       |  `metadata` | boolean | If true, this pipeline will be listed as a template when creating a new pipeline |
 
 Example of metadata:

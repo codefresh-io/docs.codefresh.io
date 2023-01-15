@@ -260,6 +260,6 @@ See the [context section](https://codefresh-io.github.io/cli/contexts/create-con
 
 ## Related articles
 [Variables]({{site.baseurl}}/docs/pipelines/variables/)  
-[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)  
 

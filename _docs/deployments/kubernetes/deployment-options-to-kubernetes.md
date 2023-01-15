@@ -29,7 +29,7 @@ Codefresh offers several options when it comes to Kubernetes deployments:
 ## Prerequisites
 
 * A K8s cluster in Codefresh (see [Connecting a Kubernetes cluster]({{site.baseurl}}/docs/integrations/kubernetes/#connect-a-kubernetes-cluster/) 
-* Familiarity with the [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/), basic [pipeline steps ]({{site.baseurl}}/docs/pipelines/steps/), and how to describe them
+* Familiarity with the [Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/), basic [pipeline steps ]({{site.baseurl}}/docs/pipelines/steps/), and how to describe them
 * [Integrate your Docker registry]({{site.baseurl}}/docs/integrations/docker-registries/) with Codefresh
   
 ## Build and push your image

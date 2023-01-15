@@ -8,7 +8,7 @@ toc: true
 
 Google Cloud builder is an online service that allows you to build Docker images using the Google infrastructure and also push them to the Google Cloud registry.
 
-You can also use Cloud builder in a Codefresh pipeline in place of the [normal build step]({{site.baseurl}}/docs/pipelines/steps/build/). This way you can take advantage of the Cloud builder in your Codefresh pipelines, but still push to other registries that are connected to Codefresh (and not just GCR).
+You can also use Cloud builder in a Codefresh pipeline in place of the  standard [build step]({{site.baseurl}}/docs/pipelines/steps/build/). This way you can take advantage of the Cloud builder in your Codefresh pipelines, but still push to other registries that are connected to Codefresh (and not just GCR).
 
 
 ## Prerequisites
@@ -116,7 +116,9 @@ The Docker image is also visible in the Google Cloud Console view of your regist
 ### Pushing to a different registry
 
 Even though the Cloud builder pipeline step authentication is fetched from the GCR configuration, you don't have to push to GCR.
-To push the Docker image to another connected registry, simply change the `registry` property in the build step:
+To push the Docker image to another connected registry, simply change the `registry` property in the build step.  
+
+The pipeline in the example below pushes the Docker image created to another registry that is identified by [Azure]({{site.baseurl}}/docs/integrations/docker-registries/azure-docker-registry/).
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -146,7 +148,7 @@ steps:
 {% endraw %}            
 {% endhighlight %}
 
-This pipeline pushes the Docker image created to another registry that is identified by [azure]({{site.baseurl}}/docs/integrations/docker-registries/azure-docker-registry/).
+
 
 ###  Authenticating to Cloud Builder in the pipeline
 
@@ -185,7 +187,7 @@ steps:
 
 Here the pipeline will try to authenticate to Google Cloud builder using the contents of the `google_app_creds` property.
 
-The value of this property can be a pipeline variable, or project variable or any other standard Codefresh method such as [shared configuration]({{site.baseurl}}/docs/pipelines/shared-configuration/).
+The value of this property can be a pipeline variable, or project variable or any other standard Codefresh method such as [shared configuration]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/).
 
 You need to escape the contents of the service account before you use in the pipeline with either of these commands on your local workstation:
 
@@ -244,14 +246,14 @@ The extra fields are:
 | `repo`    | Docker repository path for the Kaniko cache                                  | Required                  |
 | `ttl`    | Kaniko cache retention. Default value is `336h`                                  | Optional                 |
 | `timeout`    | This field is directly translated into the corresponding field of the [GCB manifest file](https://cloud.google.com/cloud-build/docs/build-config#structure_of_a_build_config_file){:target="\_blank"}. Default is `10m`                                  | Optional                  |
-| `machineType`    | This field is directly translated into the corresponding field of the [GCB manifest file](https://cloud.google.com/cloud-build/docs/build-config#structure_of_a_build_config_file){:target="\_blank"}                                 | Optional                  |
-| `diskSizeGb`    | This field is directly translated into the corresponding field of the [GCB manifest file](https://cloud.google.com/cloud-build/docs/build-config#structure_of_a_build_config_file) {:target="\_blank"}                                | Optional                  |
-| `logsBucket`     | This field is directly translated into the corresponding field of the [GCB manifest file](https://cloud.google.com/cloud-build/docs/build-config#structure_of_a_build_config_file){:target="\_blank"}           | Optional                  |
+| `machineType`    | This field is directly translated into the corresponding field of the [GCB manifest file](https://cloud.google.com/cloud-build/docs/build-config#structure_of_a_build_config_file){:target="\_blank"}.                                 | Optional                  |
+| `diskSizeGb`    | This field is directly translated into the corresponding field of the [GCB manifest file](https://cloud.google.com/cloud-build/docs/build-config#structure_of_a_build_config_file){:target="\_blank"} .                               | Optional                  |
+| `logsBucket`     | This field is directly translated into the corresponding field of the [GCB manifest file](https://cloud.google.com/cloud-build/docs/build-config#structure_of_a_build_config_file){:target="\_blank"}.           | Optional                  |
 
 
 
 
-The step also accepts all the field of the [standard build step]({{site.baseurl}}/docs/pipelines/steps/build/) but notice that the following fields are not supported in the current implementation and simply ignored by the GCB step logic:
+The step also accepts all the fields of the standard [build step]({{site.baseurl}}/docs/pipelines/steps/build/), but notice that the following fields are not supported in the current implementation and simply ignored by the GCB step logic:
 
 * `no_cache`
 * All the [buildkit]({{site.baseurl}}/docs/pipelines/steps/build/#buildkit-support)  related fields
@@ -304,9 +306,9 @@ GCBuild:
 
 ## Related articles
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
-[Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)  
-[Google Registry integration]({{site.baseurl}}/docs/integrations/docker-registries/google-container-registry/)  
-[Build and push an image]({{site.baseurl}}/docs/example-catalog/ci-examples/build-and-push-an-image/)
+[Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
+[Google Container Registry integration]({{site.baseurl}}/docs/integrations/docker-registries/google-container-registry/)  
+[Build and push an image example]({{site.baseurl}}/docs/example-catalog/ci-examples/build-and-push-an-image/)
 
 
 

@@ -466,7 +466,7 @@ See the [build badges page]({{site.baseurl}}/docs/pipelines/build-status/) for m
 
 
 ## Related articles
-[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)  
 [Test report]({{site.baseurl}}/docs/pipelines/test-reports/)  
 [Status badges]({{site.baseurl}}/docs/pipelines/build-status/)

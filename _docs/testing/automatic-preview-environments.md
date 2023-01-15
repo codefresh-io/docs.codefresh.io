@@ -59,7 +59,7 @@ max-width="70%"
 %}
 
 ## Related articles
-[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [Creating compositions]({{site.baseurl}}/docs/testing/create-composition/)  
 [Integration tests]({{site.baseurl}}/docs/testing/integration-tests/)  
 [Service containers]({{site.baseurl}}/docs/pipelines/service-containers/)

@@ -193,7 +193,7 @@ max-width="80%"
 You can add any metadata such as the number of issues for each category or even the URL the full report. This allows you to easily correlate docker images in Codefresh and security results of your scanning platform.
 
 ## Related articles
-[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)  
 [Creating test reports]({{site.baseurl}}/docs/testing/test-reports/)  
 [Advanced workflows in pipelines]({{site.baseurl}}/docs/pipelines/advanced-workflows/)  

@@ -22,13 +22,13 @@ To start the integration, you need the following:
 
 1. A [Google Cloud account](https://cloud.google.com/){:target="\_blank"} with billing enabled
 1. A [GKE cluster](https://cloud.google.com/kubernetes-engine/docs/quickstart){:target="\_blank"} that will run all builds and pipelines
-1. A [Codefresh account]({{site.baseurl}}/docs/administration/create-a-codefresh-account/) (creating an account is free, you pay only for builds)
+1. A [Codefresh account]({{site.baseurl}}/docs/administration/account-user-management/create-a-codefresh-account/) (creating an account is free, you pay only for builds)
 
 Then visit the Codefresh GKE page at [https://console.cloud.google.com/marketplace/details/codefresh-gke/codefresh](https://console.cloud.google.com/marketplace/details/codefresh-gke/codefresh){:target="\_blank"}.
 
 ## Using Codefresh from the Google Marketplace
 
-When you configure Codefresh integration from the Google Marketplace, a special Codefresh runner [is installed](https://github.com/codefresh-io/google-marketplace-integration){:target="\_blank"} in your own cluster.
+When you configure Codefresh integration from the Google Marketplace, a special Codefresh Runner [is installed](https://github.com/codefresh-io/google-marketplace-integration){:target="\_blank"} in your own cluster.
 
 {% include image.html 
 lightbox="true" 
@@ -179,7 +179,7 @@ pod "codefresh-kostis-kube-agent-86dbcc67c4-9gqqb" deleted
 {% endhighlight %}
 
 
-Once the command is run, you can visit the [Codefresh Kubernetes dashboard]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/) and you will see your Google Cloud cluster already configured.
+Once the command is run, you can visit the [Codefresh Kubernetes dashboard]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/#accessing-the-kubernetes-dashboard) and you will see your Google Cloud cluster already configured.
 
 {% include image.html 
 lightbox="true" 
@@ -238,7 +238,7 @@ You can install the Codefresh builder again from the [marketplace](https://conso
 ## Related articles
 [Manage your cluster]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/)  
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
-[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 
 
 

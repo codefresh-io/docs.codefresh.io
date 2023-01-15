@@ -10,7 +10,7 @@ In addition to the [built-in Helm repository]({{site.baseurl}}/docs/deployments/
 
 Native support for Helm in Codefresh includes:  
  * A pipeline [step for deploying Helm applications]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/)
- * A dashboard for your [Helm charts]({{site.baseurl}}/docs/deployments/helm/add-helm-repository/)
+ * A dashboard for your [Helm charts]({{site.baseurl}}/docs/helm/helm-charts-and-repositories/)
  * A dashboard for your [Helm releases]({{site.baseurl}}/docs/deployments/helm/helm-releases-management/)
  * A dashboard for [promoting Helm releases]({{site.baseurl}}/docs/deployments/helm/helm-environment-promotion/) between different environments
  * A dashboard for [Helm environments]({{site.baseurl}}/docs/deployments/kubernetes/environment-dashboard/)
@@ -18,7 +18,7 @@ Native support for Helm in Codefresh includes:
 The built-in Helm repository is production ready. You can start using Helm right away with your Codefresh account,
 even if you don't have an external Helm repository. See our [quick start guide for Helm]({{site.baseurl}}/docs/quick-start/ci-quickstart/deploy-with-helm/)  or the [complete Helm example]({{site.baseurl}}/docs/example-catalog/cd-examples/helm/).  
 
-For each Helm integration, you can toggle the level of access by [non-admin users]({{site.baseurl}}/docs/administration/access-control/#users-and-administrators). 
+For each Helm integration, you can toggle the level of access for [non-admin users]({{site.baseurl}}/docs/administration/account-user-management/access-control/#users-and-administrators). 
 
 ## Set up external Helm integration
 
@@ -37,49 +37,6 @@ For each Helm integration, you can toggle the level of access by [non-admin user
 1. To restrict access to only Codefresh admins, toggle **Allow access to all users** to OFF.
   >When access is restricted, users **cannot** use the [CLI](https://codefresh-io.github.io/cli/){:target="\_blank"} or [API]({{site.baseurl}}/docs/integrations/codefresh-api/) to [programmatically access this Helm repository](https://codefresh-io.github.io/cli/contexts/){:target="\_blank"}.  
    Otherwise, all users from all your Codefresh teams will be able to access this Helm repository with CLI commands or API calls.
-
-
-
-### HTTP Basic Authentication settings
-
-You can connect to your external repository with HTTP Basic authentication.  
-The table below describes the settings.
-
-Setting|Description
----|---
-**Helm Repository Name**|The unique name of integration which is used to reference the integration in `codefresh.yaml`
-**Repository URL**|The URL to the Helm repository with `http://` protocol prefix.
-**Helm Repo Username**|The username to authenticate with.
-**Helm Repo Password**|The password for the username provided.
-
-### Amazon AWS S3 Helm repository settings 
-
-You can connect to Amazon AWS S3 Helm repository. Supply the AWS authentication credentials as you would for the AWS CLI, or the S3 plugin for Helm. For details, see [Configuring the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html){:target="\_blank"}.
-
-The table below describes the settings.
-
-Setting|Description
----|---
-**Helm Repository Name**|The unique name of integration which is used to reference the integration in `codefresh.yaml`
-**Helm Repository URL**|The URL to the Helm repository in the format `s3://bucketname`.
-**AWS Access Key ID**|The ID of the key with permissions to the S3 bucket.
-**AWS Secret Access Key**|The Secret of the key with permissions to the S3 bucket.
-**AWS Default Region**|The region where the S3 bucket is located.
-
-
-### Google Cloud Storage (GCS) Helm repository settings 
-
-You can connect to a Google Cloud Storage (GCS) Helm repository. Supply the GCS authentication credentials as you would for the GCloud CLI, or the GCS plugin for Helm. For details, see [Creating Service Account](https://cloud.google.com/docs/authentication/getting-started){:target="\_blank"}{:target="\_blank"}.
-
-The table below describes the settings.
-
-Setting|Description
----|---
-**Helm Repository Name**|The unique name for the Helm repository integration which is used to reference the integration in `codefresh.yaml`
-**Helm Repository URL**|The URL to the Helm repository in the format `gs://bucketname`.
-**Google Application Credentials JSON**|The JSON content with the credentials of the service account.
-
-
 
 ### Azure Registry Helm repository settings
 
@@ -135,10 +92,11 @@ caption="Azure Service Principal details"
 max-width="60%"
   %}
 
-1.Click **Authenticate**. Assuming that the authentication is successful, you can view your available Azure registries that can be used as a Helm repository.
+{:start="3"}
+1. Click **Authenticate**. Assuming that the authentication is successful, you can view your available Azure registries that can be used as a Helm repository.
 
 
-<!--- ### Azure Registry with Managed Identity (ID) Helm repository settings
+### Azure Registry with Managed Identity (ID) Helm repository settings
 
 An alternative method of adding an Azure Helm repository is by using a managed identity. 
 
@@ -163,8 +121,7 @@ caption="Azure Service Principal details"
 max-width="60%"
   %}
 
-1.Click **Authenticate**. Assuming that the authentication is successful, you can view your available Azure registries that can be used as a Helm repository.  -->
-
+1.Click **Authenticate**. Assuming that the authentication is successful, you can view your available Azure registries that can be used as a Helm repository.
 
 ### Helm repository from another Codefresh account
 
@@ -180,10 +137,52 @@ Setting|Description
 **Helm Repository URL**|The URL to the Helm repository in the format `cm://repository-name`.
 **CF API Key**|A token [to access the other Codefresh account]({{site.baseurl}}/docs/integrations/codefresh-api/#authentication-instructions).
 
+### Google Cloud Storage (GCS) Helm repository settings 
+
+You can connect to a Google Cloud Storage (GCS) Helm repository. Supply the GCS authentication credentials as you would for the GCloud CLI, or the GCS plugin for Helm. For details, see [Creating Service Account](https://cloud.google.com/docs/authentication/getting-started){:target="\_blank"}{:target="\_blank"}.
+
+The table below describes the settings.
+
+Setting|Description
+---|---
+**Helm Repository Name**|The unique name for the Helm repository integration which is used to reference the integration in `codefresh.yaml`
+**Helm Repository URL**|The URL to the Helm repository in the format `gs://bucketname`.
+**Google Application Credentials JSON**|The JSON content with the credentials of the service account.
+
+### HTTP Basic Authentication settings
+
+You can connect to your external repository with HTTP Basic authentication.  
+The table below describes the settings.
+
+Setting|Description
+---|---
+**Helm Repository Name**|The unique name of integration which is used to reference the integration in `codefresh.yaml`
+**Repository URL**|The URL to the Helm repository with `http://` protocol prefix.
+**Helm Repo Username**|The username to authenticate with.
+**Helm Repo Password**|The password for the username provided.
+
+### Amazon AWS S3 Helm repository settings 
+
+You can connect to Amazon AWS S3 Helm repository. Supply the AWS authentication credentials as you would for the AWS CLI, or the S3 plugin for Helm. For details, see [Configuring the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html){:target="\_blank"}.
+
+The table below describes the settings.
+
+Setting|Description
+---|---
+**Helm Repository Name**|The unique name of integration which is used to reference the integration in `codefresh.yaml`
+**Helm Repository URL**|The URL to the Helm repository in the format `s3://bucketname`.
+**AWS Access Key ID**|The ID of the key with permissions to the S3 bucket.
+**AWS Secret Access Key**|The Secret of the key with permissions to the S3 bucket.
+**AWS Default Region**|The region where the S3 bucket is located.
+
+
+
+
+
 
 ## Related articles
-[Private external Helm repositories]({{site.baseurl}}/docs/deployments/helm/managed-helm-repository/)  
-[How to use Helm in a Codefresh pipeline]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/)  
+[Using a manageed Helm repositories]({{site.baseurl}}/docs/deployments/helm/managed-helm-repository/)  
+[Using Helm in a Codefresh pipeline]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/)  
 [Managing Helm releases]({{site.baseurl}}/docs/deployments/helm/helm-releases-management/)  
-[Helm best practices]({{site.baseurl}}/docs/deployments/helm/helm-best-practices/)  
+[Helm best practices]({{site.baseurl}}/docs/ci-cd-guides/helm-best-practices/)  
 

@@ -166,7 +166,7 @@ Notice that for demonstration purposes we uses node 11 for the tests, and node 8
 Even when you don't create a Docker image, Codefresh still caches your workspace volume. This means that `node_modules` are downloaded only once. All subsequent builds will be much faster.
 
 ## Related articles
-[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
 [How Codefresh pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)  

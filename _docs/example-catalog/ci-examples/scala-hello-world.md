@@ -179,6 +179,6 @@ steps:
 
 
 ## Related articles
-[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [Freestyle Step]({{site.baseurl}}/docs/pipelines/steps/freestyle/)  
 

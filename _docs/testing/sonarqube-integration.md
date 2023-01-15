@@ -134,7 +134,7 @@ max-width="80%"
 %}
 
 ## Related articles
-[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)  
 [Unit tests]({{site.baseurl}}/docs/testing/unit-tests/)  
 [Integration tests]({{site.baseurl}}/docs/testing/integration-tests/)  

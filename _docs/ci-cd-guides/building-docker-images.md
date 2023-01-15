@@ -429,7 +429,7 @@ For more details see [dynamic build tools]({{site.baseurl}}/docs/pipelines/intro
 
 ## Related articles
 [How Codefresh pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)  
-[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
 [Build step in pipelines]({{site.baseurl}}/docs/pipelines/steps/build/)  
 

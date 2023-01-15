@@ -175,7 +175,7 @@ You can share this link with other people in your team.
 
 ## Related articles
 [Introduction to Pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)  
-[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [On demand environments]({{site.baseurl}}/docs/getting-started/on-demand-environments/)  
 [Integration tests]({{site.baseurl}}/docs/testing/integration-tests/)  
 
