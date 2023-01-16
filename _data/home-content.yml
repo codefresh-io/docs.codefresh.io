@@ -26,7 +26,7 @@
     - title: CI/CD quick starts
       localurl: /docs/quick-start/ci-quick-start/
     - title: GitOps quick starts  
-      localurl: /docs/quick-start/gitops-quickstart/gitops-quick-start/
+      localurl: /docs/quick-start/gitops-quick-start/
 
 
 - title: Pipeline integrations
