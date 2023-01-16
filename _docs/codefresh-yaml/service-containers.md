@@ -544,8 +544,14 @@ steps:
 {% endraw %}      
 {% endhighlight %}
 
-Note: we do recommend you only use this option as a last resort. You should not hardcode "localhost" as a requirement in your services as
-it adds extra constraints with integration tests (and especially with dynamic test environments).
+> 💡 Note
+>
+> We do recommend you only use this option as a last resort. You should not hardcode "localhost" as a requirement in your services as it adds extra constraints with integration tests (and especially with dynamic test environments).
+
+> ⚠️ Warning
+>
+> If `shared_host_network: true`, services will no longer be available by name.
+> This means that you cannot mix access by name and localhost within one service group, you have to choose one and use `shared_host_network` attribute accordingly.
 
 
 ## Limitations 
@@ -561,11 +567,3 @@ Service containers are not compatible with [custom pipeline steps]({{site.baseur
 * [Integration tests]({{site.baseurl}}/docs/testing/integration-tests/)
 * [Integration test with database]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-database/)
 * [Creating Compositions]({{site.baseurl}}/docs/on-demand-test-environment/create-composition/)
-
-
-
-
-
-
-
-

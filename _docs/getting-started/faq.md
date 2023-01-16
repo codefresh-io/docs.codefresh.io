@@ -147,7 +147,7 @@ The following browser versions are **NOT** supported:
 ## Enterprise support
 
 **Q. Does Codefresh support SSO?**    
-A. Yes, we support several [popular SSO providers]({{site.baseurl}}/docs/enterprise/single-sign-on/).
+A. Yes, we support several [popular SSO providers]({{site.baseurl}}/docs/single-sign-on/sso-overview/).
 
 **Q. Does Codefresh support access control?**    
 A. Yes, we support both UI and ABAC on [pipelines, projects and clusters]({{site.baseurl}}/docs/enterprise/access-control/).
@@ -167,4 +167,3 @@ A. Yes, we do.
 * [How Codefresh pipelines work]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
 * [Kubernetes Deployment tutorial]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/)
 * [Helm Deployment Tutorial tutorial]({{site.baseurl}}/docs/getting-started/helm-quick-start-guide/)
-
