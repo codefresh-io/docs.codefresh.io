@@ -22,7 +22,7 @@ Codefresh provides all the options and functionality to create and manage Argo C
   Once the application is created and synced to the cluster, it is displayed in the Applications dashboard. Here, you can select an application to update the application's configuration settings, or delete it.  
   To monitor the health and sync status, deployments, and resources for the application, see [Monitoring GitOps applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/).  
 
-### Application: Definitions
+## Application: Definitions
 Application definitions include the name, runtime, and the name of the YAML manifest. By default, the YAML manifest has the same name as that of the application. 
 
 {% include 
@@ -36,7 +36,7 @@ Application definitions include the name, runtime, and the name of the YAML mani
    %} 
 
 
-### Application: General configuration settings
+## Application: General configuration settings
 
 General configuration settings define the source, destination, and sync policies for the application. 
 
@@ -50,7 +50,7 @@ General configuration settings define the source, destination, and sync policies
    max-width="70%" 
    %} 
 
-#### Source 
+### Source 
 The Git repository to be tracked for changes to the application's source code.  
 {::nomarkdown}<ul> <li><b>ArgoCD Project</b>: The project group to which the application belongs. A project is useful to enforce restrictions on permitted sources and targets for applications, and roles. If not defined, the application is automatically assigned to the <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">default</span> project, which is created automatically by Argo CD and has no restrictions. </br>For more information, see Argo CD's documentation on <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/projects/#projects" target="\_blank">Projects</a>.</li> <li><b>Repository URL</b>: The Git repo or the Helm package repo with the application source code, to be tracked for changes. If the Argo CD project is not the <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">default</span> project, make sure that the repo has the correct access roles for your application.<ul><li><b>Revision and Path</b>: Applies to Git repositories. </li><li><b>Chart</b>: Applies to Helm repositories. The name of the Helm package with all the resource definitions for the application, and the version. </li></ul>For more information, see <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/" target="\_blank">Tracking and Deployment Strategies</a>.</li></ul> {:/}   
 
@@ -58,7 +58,7 @@ The Git repository to be tracked for changes to the application's source code.
 <br>
 {:/} 
 
-#### Destination
+### Destination
 The cluster and namespace to which to deploy the application.  
 {::nomarkdown}<ul><li><b>Cluster</b>: The cluster to which to deploy the application, defined as a <b>URL</b>, or as the user-defined display <b>NAME</b>.</li> <li><b>Namespace</b>: The namespace in the cluster to which to deploy the application.</li> </ul> {:/}
 
@@ -66,22 +66,22 @@ The cluster and namespace to which to deploy the application.
 <br>
 {:/}
 
-#### Sync Settings
-##### Sync Policy
+### Sync Settings
+#### Sync Policy
 {::nomarkdown}The synchronization policy to apply when there are differences between the desired state in Git and the actual state in the cluster.</br><ul><li><b>Manual</b>: Manually sync the changes from the Argo CD UI. </li><li><b>Automatic</b>: Automatically sync changes, with the following options if selected:<ul><li><b>Prune resources</b>:When selected, removes legacy resources that do not exist currently in Git. </li><li><b>Self heal</b>: When selected, always enforces a sync to the desired state in Git, if and when there is a change to the actual state in the cluster. See <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing" target="_blank">Automatic self-healing</a>.</li></li></ul> {:/}
 
 {::nomarkdown}
 <br>
 {:/} 
 
-##### Sync Options 
+#### Sync Options 
 {::nomarkdown}Common to both manual and automatic sync policies.</br><ul><li><b>Skip schema validation</b>: When selected, bypasses validating the YAML schema.</li><li><b>Auto-create namespace</b>: When selected, automatically create the namespace if the specified namespace does not exist in the cluster.</li><li><b>Prune last</b>: When selected, removes those resources that do not exist in the currently deployed version during the final wave of the sync operation. See <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#prune-last" target="_blank">Prune last</a>.</li><li><b>Apply out of sync only</b>: When selected, syncs only those resources in the application that have been changed and are <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">OutOfSync</span>, instead of syncing every resource regardless of their state. This option is useful to reduce load and save time when you have thousands of resources in an application. See <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#selective-sync" target="_blank">Selective Sync</a>.</li></ul> {:/}
 
 {::nomarkdown}
 <br><br>
 {:/} 
 
-##### Prune propagation policy
+#### Prune propagation policy
 {::nomarkdown}Defines how resources are pruned, applying Kubernetes cascading deletion prune policies. 
 For more information, see <a href="https://kubernetes.io/docs/concepts/architecture/garbage-collection/#cascading-deletion" target="_blank">Kubernetes - Cascading deletion</a>.</br><ul><li><b>Foreground</b>: The default prune propagation policy used by Argo CD. With this policy, Kubernetes changes the state of the owner resource to `deletion in progress`, until the controller deletes the dependent resources and finally the owner resource itself. </li><li><b>Background</b>: When selected, Kubernetes deletes the owner resource immediately, and then deletes the dependent resources in the background.</li><li><b>Orphan</b>: When selected, Kubernetes deletes the dependent resources that remain orphaned after the owner resource is deleted.</li></ul> </br>{:/}
 All Prune propagation policies can be used with:  
@@ -97,7 +97,7 @@ All Prune propagation policies can be used with:
 </br></br>
 {:/}
 
-### Application: Advanced configuration settings
+## Application: Advanced configuration settings
 
 Advanced settings define the tool used to create the application, and related toll-specific settings.
 
@@ -112,7 +112,7 @@ Advanced settings define the tool used to create the application, and related to
    %} 
 
 
-#### Type of Application
+### Type of Application
 The tool used to create the application's manifests.  Codefresh supports defining application manifests as a directory, Helm charts, or Kustomize. If you are using other tools to define application manifests, use the Plugin type. For more information, see the Argo CD's documentation on [Tools](https://argo-cd.readthedocs.io/en/stable/user-guide/application_sources/){:target="_blank"}.
 
 
@@ -135,23 +135,22 @@ The tool used to create the application's manifests.  Codefresh supports definin
 
 For example applications, go to the [Argo CD example applications repo](https://github.com/argoproj/argocd-example-apps){:target="_blank"}.
   
-{::nomarkdown}
-<br>
-{:/}
 
-### Create an application
+<br />
+
+## Create an application
 Create a new application from the Applications dashboard with the Add Application wizard. 
 Edit the manifest directly in YAML mode, or define the settings in the Form mode. Toggle between the modes as convenient. You can also edit the YAML manifest directly at all stages, after defining configuration settings, and before the final commit.
 
 **Before you begin**  
 
 Review:    
-[General configuration](#general-configuration-settings)  
-[Advanced configuration](#advanced-configuration-settings)  
+[General configuration](#application-general-configuration-settings)  
+[Advanced configuration](#application-advanced-configuration-settings)  
 
 
 **How to**  
-1. In the Codefresh UI, go to [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
+1. In the Codefresh UI, from Ops in the sidebar, select [GitOps Apps](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
 1. On the top-right, select **Add Application**.
 1. In the Add Application panel, add definitions for the application:
   * Application name: Must be unique within the cluster.
@@ -218,7 +217,7 @@ Review:
 
 
 Your application is first committed to Git, and then synced to the cluster which may take a few moments.  
-Track the application in the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard/list){:target="_blank"}.
+Monitor the application.
 
 {::nomarkdown}
 <br><br>
@@ -226,7 +225,7 @@ Track the application in the [Applications dashboard](https://g.codefresh.io/2.0
 
 
 ### Related articles
-[Monitoring GitOps applications]({{site.baseurl}})/docs/deployments/gitops/applications-dashboard)  
-[Managing GitOps applications]({{site.baseurl}})/docs/deployments/gitops/manage-applications)  
-[Home dashboard]({{site.baseurl}}/docs/reporting/home-dashboard)  
-[DORA metrics]({{site.baseurl}}/docs/reporting/dora-metrics/)  
+[Monitoring GitOps applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard)  
+[Managing GitOps applications]({{site.baseurl}}/docs/deployments/gitops/manage-applications)  
+[Home dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard)  
+[DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)  

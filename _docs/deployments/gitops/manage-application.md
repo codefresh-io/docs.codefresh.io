@@ -32,7 +32,7 @@ Update General or Advanced configuration settings for a deployed application thr
 
 **How to**  
 
-1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
+1. In the Codefresh UI, from Ops in the sidebar, select [GitOps Apps](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
 1. Do one of the following: 
   * Select the application to update, and then from the context menu on the right, select **Edit**. 
   
@@ -102,7 +102,7 @@ The sync options, grouped into Revision and Additional Settings, are identical t
   [Synchronize resources](#synchronize-resources)  
 
 **How to**  
-1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
+1. In the Codefresh UI, from Ops in the sidebar, select [GitOps Apps](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
 1. Sync an application:  
   * Select the application to sync, and do one of the following: 
   * From the context menu on the right, select **Synchronize**. 
@@ -263,7 +263,7 @@ Pause and resume ongoing rollouts directly from the Timeline tab in the Applicat
 If the rollout is already automatically paused as result of a step definition, this action pauses the rollout even after the pause duration.
 
 
-1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
+1. In the Codefresh UI, from Ops in the sidebar, select [GitOps Apps](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
 1. Select the application and go to the Timelines tab.
 1. In the deployment record for the ongoing rollout, expand **Updated Services**.
 1. Based on the current state of the rollout, click **Pause** or **Resume**, as relevant.
@@ -285,7 +285,7 @@ If the rollout is already automatically paused as result of a step definition, t
 #### Manage an ongoing rollout with the Rollout Player
 Manage an ongoing rollout using the controls in the Rollout Player to skip steps, and promote rollouts.
 
-1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
+1. In the Codefresh UI, from Ops in the sidebar, select [GitOps Apps](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
 1. Select the application and go to the Timelines tab.
 1. In the deployment record for the ongoing rollout, click the name of the rollout. 
 1. Select the required option in the Rollout Player.
@@ -321,7 +321,7 @@ The table describes the controls in the Rollout Player.
 
 Control the rollout through the options available for the Rollout resource. 
 
-1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
+1. In the Codefresh UI, from Ops in the sidebar, select [GitOps Apps](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
 1. Select the application and go to the Current State tab.
 1. Open the context menu of the `Rollout` resource, and select the relevant option. 
 
@@ -353,8 +353,8 @@ The table describes the options for the `Rollout` resource.
 
 ### Related articles
 [Creating GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application)  
-[Home dashboard]({{site.baseurl}}/docs/reporting/home-dashboard)  
-[DORA metrics]({{site.baseurl}}/docs/reporting/dora-metrics)  
+[Home dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard)  
+[DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics)  
 
 
 

@@ -28,12 +28,12 @@ Monitor the current [health and sync status of applications](#identify-applicati
 * [Monitor deployments for selected application](#monitor-deployments-for-selected-application)
 * [Monitor services for selected application](#monitor-services-for-selected-application)
 
->For information on creating and managing applications and application resources, see [Creating applications]({{site.baseurl}}/docs/deployments/gitops/create-application/) and [Managing applications]({{site.baseurl}}/docs/deployments/gitops/manage-application/).
+>For information on creating and managing applications and application resources, see [Creating GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application/) and [Managing GitOps applications]({{site.baseurl}}/docs/deployments/gitops/manage-application/).
 
 ## Select view mode for the Applications dashboard 
 View deployed applications in either List (the default) or Card views. Both views are sorted by the most recent deployments. 
 
-1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
+1. In the Codefresh UI, from Ops in the sidebar, select [GitOps Apps](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
 1. Select **List** or **Cards**.
 
 ### Applications List view
@@ -69,8 +69,8 @@ Here's a description of the information and actions in the Applications dashboar
 {: .table .table-bordered .table-hover}
 | Item                     | Description            |  
 | --------------         | --------------           |  
-|Application filters       | Filter by a range of attributes to customize the information in the dashboard to bring you what you need. {::nomarkdown}  <ul><li>Application state<br>A snapshot that displays a breakdown of the deployed applications by their health status.<br>Click a status to filter by applications that match it.<br>Codefresh tracks Argo CD's set of health statuses. See the official documentation on <a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/health" target=”_blank”>Health sets. </a>.</li><li>Application attributes<br>Attribute filters support multi-selection, and results are based on an OR relationship within the same filter with multiple options, and an AND relationship between filters.<br>Clicking <b>More Filters</b> gives you options to filter by Health status, Cluster names, Namespace, and Type. <br><ul><li>Application Type: Can be any of the following<ul><li>Applications: Standalone applications. See the official documentation on <a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications" target=”_blank”>Applications</a>.</li><li>ApplicationSet: Applications created using the ApplicationSet Custom Resource (CR) template. An ApplicationSet can generate single or multiple applications. See the official documentation on <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/application-set" target=”_blank”>Generating Applications with ApplicationSet</a>.</li><li>Git Source: Applications created by Codefresh that includes other applications and CI resources. See <a href="https://codefresh.io/csdp-docs/docs/runtime/git-sources">Git Sources</a>.</li></ul></li></li><li>Labels:The K8s labels defined for the applications. The list displays labels of <i>all</i> the applications, even if you have applied filters.<br>To see the available labels, select <b>Add</b>, and then select the required label and one or more values. <br>To filter by the labels, select <b>Add</b> and then <b>Apply</b>.<br> See the official documentation on <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels" target=”_blank”>Labels and selectors</a>.</li></ul></ul>{:/}|
-|{::nomarkdown}<img src="../../../../images/icons/icon-mark-favorite.png?display=inline-block">{:/}| Star applications as favorites and view only the starred applications.{::nomarkdown}<br>Select the <img src="../../../../images/icons/icon-mark-favorite.png?display=inline-block"> to star the application as a favorite.<br><br>To filter by favorite applications, on the filters bar, select <img src="../../../../images/icons/icon-fav-starred.png?display=inline-block">.<br>{:/} TIP: If you star applications as favorites in the Applications dashboard, you can filter by the same applications in the [DORA metrics dashboard]({{site.baseurl}}/docs/reporting/dora-metrics/#metrics-for-favorite-applications).  |
+|Application filters       | Filter by a range of attributes to customize the information in the dashboard to bring you what you need. {::nomarkdown}  <ul><li>Application state<br>A snapshot that displays a breakdown of the deployed applications by their health status.<br>Click a status to filter by applications that match it.<br>Codefresh tracks Argo CD's set of health statuses. See the official documentation on <a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/health" target=”_blank”>Health sets</a>.</li><li>Application attributes<br>Attribute filters support multi-selection, and results are based on an OR relationship within the same filter with multiple options, and an AND relationship between filters.<br>Clicking <b>More Filters</b> gives you options to filter by Health status, Cluster names, Namespace, and Type. <br><ul><li>Application Type: Can be any of the following<ul><li>Applications: Standalone applications. See the official documentation on <a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications" target=”_blank”>Applications</a>.</li><li>ApplicationSet: Applications created using the ApplicationSet Custom Resource (CR) template. An ApplicationSet can generate single or multiple applications. See the official documentation on <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/application-set" target=”_blank”>Generating Applications with ApplicationSet</a>.</li><li>Git Source: Applications created by Codefresh that includes other applications and CI resources. See <a href="https://codefresh.io/csdp-docs/docs/runtime/git-sources">Git Sources</a>.</li></ul></li></li><li>Labels:The K8s labels defined for the applications. The list displays labels of <i>all</i> the applications, even if you have applied filters.<br>To see the available labels, select <b>Add</b>, and then select the required label and one or more values. <br>To filter by the labels, select <b>Add</b> and then <b>Apply</b>.<br> See the official documentation on <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels" target=”_blank”>Labels and selectors</a>.</li></ul></ul>{:/}|
+|{::nomarkdown}<img src="../../../../images/icons/icon-mark-favorite.png?display=inline-block">{:/}| Star applications as favorites and view only the starred applications.{::nomarkdown}<br>Select the <img src="../../../../images/icons/icon-mark-favorite.png?display=inline-block"> to star the application as a favorite.<br><br>To filter by favorite applications, on the filters bar, select <img src="../../../../images/icons/icon-fav-starred.png?display=inline-block">.<br>{:/} TIP: If you star applications as favorites in the Applications dashboard, you can filter by the same applications in the [DORA metrics dashboard]({{site.baseurl}}/docs/dashboards/dora-metrics/#metrics-for-favorite-applications).  |
 |Application actions| Options to monitor/manage applications through the application's context menu. {::nomarkdown}<ul><li>Quick view<br>A comprehensive read-only view of the deployment and definition information for the application.</li>{:/}See [Application Quick View](#view-deployment-and-configuration-info-for-selected-application) in this article.{::nomarkdown}<li>Synchronize/Sync<br>Manually synchronize the application.</li>{:/}See [Manually sync applications]({{site.baseurl}}/docs/deployments/gitops/manage-application/#manually-synchronize-an-application).{::nomarkdown}<li>Edit<br>Modify application definitions.</li>{:/}See [Edit application definitions]({{site.baseurl}}/docs/deployments/gitops/manage-application/#edit-application-definitions).{::nomarkdown}<li>Refresh and Hard Refresh: Available in Card view only. In List view, you must first select the application. <ul><li>Refresh: Retrieve desired (Git) state, compare with the live (cluster) state, and refresh the application to sync with the desired state.</li><li>Hard Refresh: Refresh the application to sync with the Git state, while removing the cache.</li></ul>{:/} |
 
 
@@ -126,7 +126,7 @@ View deployment, definition, and event information for the selected application 
 A read-only view, the Quick View displays information on the application state and location, labels and annotations, parameters, sync options, manifest, status and sync events.
 Access the Quick View from the Applications dashboard, either from the application's context menu, or after drilldown, from the Current State tab.
 
-1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
+1. In the Codefresh UI, from Ops in the sidebar, select [GitOps Apps](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
 1. Do one of the following:  
   * From the List or Card views, select the context menu and then select **Quick View**.
   
@@ -467,7 +467,6 @@ Identify the health of an application resource through the color-coded border an
 {: .table .table-bordered .table-hover}
 | Health status   | Description | Display in Tree view  | 
 | --------------  | ------------| ------------------|  
-
 | **Healthy**     | Resource is functioning as required. | {::nomarkdown}<img src="../../../../images/icons/current-state-healthy.png" display=inline-block">{:/} | 
 | **Progressing** | Resource is not healthy but can become healthy before the timeout occurs.| {::nomarkdown}<img src="../../../../images/icons/current-state-progressing.png" display=inline-block">{:/} | 
 | **Suspended**   | Resource is not functioning, and is either suspended or paused. For example, Cron job or a canary rollout.| {::nomarkdown}<img src="../../../../images/icons/current-state-suspended.png" display=inline-block">{:/} | 
@@ -490,7 +489,6 @@ The table describes the possible sync statuses for an application resource, and 
 {: .table .table-bordered .table-hover}
 | Sync state     | Description |Display in Tree view  |  
 | -------------- | ----------    | ----------     |  
-
 | **Synced**       | The live state of the resource on the cluster is identical to the desired state in Git.| {::nomarkdown}<img src="../../../../images/icons/current-state-synced.png" display=inline-block">{:/} |                            
 | **Syncing**      | The live state of the resource was not identical to the desired state, and is currently being synced.| {::nomarkdown}<img src="../../../../images/icons/current-state-syncing.png" display=inline-block/>{:/} |  
 | **Out-of-Sync**  | {::nomarkdown}The live state is not identical to the desired state.<br>To sync a resource, select the <b>Sync</b> option from the resource's context menu in Tree view. {:/}| {::nomarkdown}<img src="../../../../images/icons/current-state-out-of-sync.png" display=inline-block">{:/} |  
@@ -505,7 +503,7 @@ The table describes the possible sync statuses for an application resource, and 
 In either Tree or List views, double-click an application resource to see its manifests. The manifests are displayed in the Summary tab. 
 > Based on the selected resource type, you can also view logs, and events. Endpoints for example show only manifests, while pods show manifests, logs, and events.  
 
-> To view information for the application resource, select the application node in Tree View. See [Application information](#application-quick-view).
+> To view information for the application resource, select the application node in Tree View. See [Application information](#view-deployment-and-configuration-info-for-selected-application).
 
  
 {% include
@@ -627,7 +625,7 @@ Each deployment record displays the complete CI history for that deployment.
 ### Monitor updated resources by deployment
 Each deployment record also identifies the resources that were changed (created, updated, or removed) as part of that deployment in **Updated Resources**. You can trace the history of a resource, from the original to their final versions. For each version, you can see the actual change or changes through the Diff view. The Full View shows the complete resource manifest, with the diff view of the changes, while the Compact View shows only those lines with the changes. 
 
-> For detailed information on the current state of a resource, switch to the Current State tab and click the resource node. See [Monitoring application resources](#monitoring-application-resources).
+> For detailed information on the current state of a resource, switch to the Current State tab and click the resource node. See [Monitoring application resources](#monitor-resources-for-selected-application).
 
 1. Select a deployment record, and expand **Updated Resources**.
 
@@ -674,7 +672,7 @@ max-width="70%"
 A rollout is initiated when there is an Argo CD sync due to a change in the desired state.  
 Visualize ongoing and completed rollouts by deployments in **Services**. 
 
-> To view and manage a rollout, you must have an Argo `rollout` resource defined for your application, and [install Argo Rollouts in the cluster]({site.baseurl}}/docs/deployments/gitops/install-argo-rollouts).  
+> To view and manage a rollout, you must have an Argo `rollout` resource defined for your application, and [install Argo Rollouts in the cluster]({{site.baseurl}}/docs/deployments/gitops/install-argo-rollouts).  
 
 For detailed information on Argo Rollouts, see [Argo Rollouts documentation](https://argoproj.github.io/argo-rollouts/){:target="\_blank"}.
 
@@ -723,13 +721,13 @@ max-width="50%"
  
 The table lists the controls in the Rollout Player to manage an ongoing rollout.
 
-: .table .table-bordered .table-hover}
+{}: .table .table-bordered .table-hover}
 | Rollback player option   | Description |  
 | --------------  | ------------| 
 | **Rollback**      | Not available currently.  | 
-| **Resume** {::nomarkdown}<img src="../../../images/icons/rollout-resume.png" display=inline-block"> {:/}| Resume a step that has been paused indefinitely. | 
-| **Skip step** {::nomarkdown}<img src="../../../images/icons/rollout-skip-step.png" display=inline-block"> {:/}  | Skip execution of current step. Such steps are marked as Skipped in the rollout visualization. | 
-| **Promote full rollout** {::nomarkdown}<img src="../../../images/icons/rollout-promote-full.png" display=inline-block"> {:/}   | Skip remaining pause, traffic routing, and analysis steps, and deploy the current release. |                        
+| **Resume** {::nomarkdown}<img src=".../../../../images/icons/rollout-resume.png" display=inline-block"> {:/}| Resume a step that has been paused indefinitely. | 
+| **Skip step** {::nomarkdown}<img src="../../../../images/icons/rollout-skip-step.png" display=inline-block"> {:/}  | Skip execution of current step. Such steps are marked as Skipped in the rollout visualization. | 
+| **Promote full rollout** {::nomarkdown}<img src="../../../../images/icons/rollout-promote-full.png" display=inline-block"> {:/}   | Skip remaining pause, traffic routing, and analysis steps, and deploy the current release. |                        
 
 
  
@@ -782,7 +780,7 @@ max-width="50%"
 
 [Creating GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application)  
 [Managing GitOps applications]({{site.baseurl}}/docs/deployments/gitops/manage-applications)  
-[Home dashboard]({{site.baseurl}}/docs/reporting/home-dashboard)  
-[DORA metrics]({{site.baseurl}}/docs/reporting/dora-metrics/)  
+[Home dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard)  
+[DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)  
 
 

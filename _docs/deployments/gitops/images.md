@@ -9,7 +9,7 @@ toc: true
 Building Docker images is one of the most basic requirements for creating Codefresh pipelines and Argo Workflows. 
 Once you create an image, push the image to a registry, and report it to Codefresh, image information is continually updated in the Images page. 
 
-### Requirements for Images in Codefresh
+## Requirements for Images in Codefresh
 Complete the mandatory steps to see your Images in the Codefresh UI. Each step has links to examples in the Codefresh Hub for Argo.  
 
 1. (Mandatory) Build the Docker image, and push the image to any registry.  
@@ -21,15 +21,15 @@ Complete the mandatory steps to see your Images in the Codefresh UI. Each step h
   
 > If you are using an external GitHub Actions-based pipeline, we have a new template that combines image reporting and enrichment. See [Image enrichment with integrations]({{site.baseurl}}/docs/integrations/gitops/image-enrichment-overview/).
 
-### Image views in Codefresh 
-* In the Codefresh UI, go to [Images](https://g.codefresh.io/2.0/images){:target="\_blank"}.
+## Image views in Codefresh 
+* In the Codefresh UI, from Artifacts in the sidebar, select [Images](https://g.codefresh.io/2.0/images){:target="\_blank"}.
 
 Image views are layered to show three levels of data: 
 * Repository and application deployment
 * Tags
 * Summary with metadata and binary information 
 
-#### Filters for Image views
+### Filters for Image views
 As with any resource in Codefresh, image views support filters that allow you focus on the data that's important to you.
 Most image filters support multi-selection.  Unless otherwise indicated, the filters are common to all view levels.
 
@@ -46,7 +46,7 @@ Most image filters support multi-selection.  Unless otherwise indicated, the fil
 
 
 
-#### Image repository and deployment view
+### Image repository and deployment view
 The default view for image resources shows repository and deployment information.
 
 {% include 
@@ -68,7 +68,7 @@ The default view for image resources shows repository and deployment information
 | **4**            | Binary information on the image.|
 | **5**            | The registry to which the image is pushed, and from which it is distributed.|
                      
-### Image tag view
+## Image tag view
 Drilldown on the repository shows tag information for the image.
 {% include 
    image.html 
@@ -90,7 +90,7 @@ Drilldown on the repository shows tag information for the image.
 | **5**                | The OS and architecture in which the image was created. The date and time of the most recent update is in the local time zone|       
 | **6**                | Additional information on the image. To view the Summary, select **more details**.|
 
-###  Image summary view
+##  Image summary view
 The Summary view shows metadata for the image. 
 Selecting **more details** for an image tag.
 
@@ -114,8 +114,7 @@ Selecting **more details** for an image tag.
 | **5**             | The log information for the build image step in the relevant workflow. Select to view Logs panel. |
 
 ## Related articles
-
 [Creating GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application)  
 [Managing GitOps applications]({{site.baseurl}}/docs/deployments/gitops/manage-applications)  
-[Image enrichment with integrations]({{site.baseurl}}/integrations/image-enrichment-overview)  
-[Home dashboard]({{site.baseurl}}/docs/reporting/home-dashboard)  
+[Image enrichment for GitOps with integrations]({{site.baseurl}}/integrations/image-enrichment-overview)  
+[Home dashboard]({{site.baseurl}}/docs/dashboard/home-dashboard)  
