@@ -9,14 +9,11 @@ toc: true
 Building Docker images is one of the most basic requirements of Codefresh pipelines and Argo Workflows. 
 Once you create an image, push the image to a registry, and report it to Codefresh, image information is continually updated in the Images page. 
 
-If you 
+You can enrich the basic information reported with the image with issue-tracking metadata and annotations.
 
-## Requirements for images in 
+## Image reporting and enrichment flow 
 
-Images are pulled to the dashboard 
-
-
-Complete the mandatory steps to see your Images in the Codefresh UI. Each step has links to examples in the Codefresh Hub for Argo.  
+Complete these steps to see images in the Images dashboard.  
 
 1. (Mandatory) Build and push the Docker image
   * Codefresh pipelines
@@ -51,6 +48,7 @@ Complete the mandatory steps to see your Images in the Codefresh UI. Each step h
 
 
 ## Images dashboard 
+
 * In the Codefresh UI, from Artifacts in the sidebar, select [Images](https://g.codefresh.io/2.0/images){:target="\_blank"}.
 
 Image views are layered to show three levels of data: 
