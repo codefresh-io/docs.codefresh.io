@@ -53,7 +53,7 @@ See:
 ## Unit testing
 Codefresh supports all testing frameworks, including mocking frameworks, for all popular programming languages. Easily run unit tests on the source code of the application for every commit or pull request (PR) through our freestyle step in pipelines. 
 
-Run any type of unit tests in Codefresh pipelines, from smoke tests in a dockerfile, to tests with external or application images for simple applications, and evenrun them on a special testing image for complex applications.
+Run any type of unit tests in Codefresh pipelines, from smoke tests in a dockerfile, to tests with external or application images for simple applications, and even run them on a special testing image for complex applications.
 You can create test reports and view them whenever you need. 
 
 See:  
@@ -69,7 +69,7 @@ See:
 [Run integration tests example]({{site.baseurl}}/docs/example-catalog/ci-examples/run-integrations-tests/)
 
 ## Code quality coverage
-Good quality code is central to any CI platform or tool. Codefresh integrates with the top code quality platforms/tools in the market to track code coverage, inspect code quailty, and generate code-coverage analysis reports. 
+Good quality code is central to any CI platform or tool. Codefresh integrates with the top code quality platforms/tools in the market to track code coverage, inspect code quality, and generate code-coverage analysis reports. 
 
 Implement code quality coverage in Codefresh pipelines through these steps: 
 * Set up integrations with the platforms/tools (Coverall, SonarQube, Codecov, for example). 
@@ -81,7 +81,7 @@ See:
 
 ## Linting/validating
 
-Linting and validation tools which perform static analysis on source code or other resources are also integral part of pipelines. Codefresh pipelines can use any linter tool that is bundled with a Docker image. Codefresh can also validate files that are not source-code, such as markup-language files (XML/YAML/JSON), infrastructure files (Terraform, or Kubernetes resource files).  
+Linting and validation tools which perform static analysis on source code or other resources are also integral parts of pipelines. Codefresh pipelines can use any linter tool that is bundled with a Docker image. Codefresh can also validate files that are not source-code, such as markup-language files (XML/YAML/JSON), infrastructure files (Terraform, or Kubernetes resource files).  
 
 Most static analysis tools are CLI-based, and can be easily used in a Codefresh pipeline.
 
@@ -98,7 +98,7 @@ The security scan is implemented through a freestyle step, inserted anywhere in 
 As with any scan, the final step is viewing the scan results. Make the scan results available in Codefresh release dashboards (Test Report button) by attaching analysis reports to the pipeline build. 
 
 **Security annotations**  
-Correlate the Docker images in Codefresh with the results of the security scanning platform by adding annotations for custom metatdata. For example, you can add annotations such as the number of issues or the URL of the full report.
+Correlate the Docker images in Codefresh with the results of the security scanning platform by adding annotations for custom metadata. For example, you can add annotations such as the number of issues or the URL of the full report.
 
 See:  
 [Security scanning tests]({{site.baseurl}}/docs/testing/security-scanning/)  
@@ -127,8 +127,9 @@ Our versatile [Jira Issue Manager](https://codefresh.io/steps/step/jira-issue-ma
 See [Jira notifications in Codefresh]({{site.baseurl}}/docs/integrations/notifications/jira-integration/) and [examples for Jira notification]({{site.baseurl}}/docs/example-catalog/ci-examples/sending-the-notification-to-jira/).
 
 
-## Continue with
-[Codefresh for CD]({{site.baseurl}}/docs/getting-started/cd-codefresh/) 
+## Related articles
+[Codefresh for CD]({{site.baseurl}}/docs/getting-started/cd-codefresh/)  
+[Concepts in Codefresh]({{site.baseurl}}/docs/getting-started/concepts/)  
 
 
 

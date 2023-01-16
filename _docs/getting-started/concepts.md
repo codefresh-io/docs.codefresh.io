@@ -24,7 +24,7 @@ See:
 
 
 ### Runner
-The Runner is the hybrid installation option for CI/CD pipelines in your Codefresh account. The Runner is installed as a Kubernetes native application on any Kubernetes-compliant cluster. It allows you to run pipelines on your own Kubernetes cluster, including private clusters behind company firewalls.
+The Runner is the hybrid installation option for pipelines in your Codefresh account. The Runner is installed as a Kubernetes native application on any Kubernetes-compliant cluster. It allows you to run pipelines on your own Kubernetes cluster, including private clusters behind company firewalls.
 
 Codefresh Runner gives you: 
 * Access to secure services (such as Git repositories or databases) that are behind the firewall and normally not accessible to the public cloud.
@@ -41,10 +41,10 @@ See:
 
 
 ### Project
-A project is a top-level entity in Codefresh for grouping related pipelines. Projects can group pipelines according to any criteria that is relevant to your enterprise. The criteria can be logical and based on teams, departments, or location for example, or funtional, and based microservices in applications. 
+A project is a top-level entity in Codefresh for grouping related pipelines. Projects can group pipelines according to any criteria that is relevant to your enterprise. The criteria can be logical and based on teams, departments, or location for example, or funtional, and based on microservices in applications. 
 Projects centralize viewing and configuration settings for the pipelines that belong to them:
-* Selecting  a pipeline shows the other pipelines in the same project.
-* Define access control and user-defined variables for the project, and they are inherited by all the pipelines assigned to the project
+* Selecting  a pipeline shows the other pipelines in the same project
+* Access control and user-defined variables for the project are inherited by all the pipelines assigned to the project
 
 There are no limits to the number of projects you can create in your account. You can also create standalone pipelines and assign them later to a project, or detach a pipeline assigned to a project. 
 
@@ -81,7 +81,7 @@ See Delivery Pipelines.  -->
 TBW
 
 ### Applications
-An application is a deployment to a Kubernetes, or any Kubernetes-compatiale cluster or clusters.
+An application is a deployment to a Kubernetes, or any Kubernetes-compatible cluster or clusters.
 Codefresh supports two types of applications:
 * Containerized applications packaged as Docker images or 
 * Argo CD applications 
@@ -109,7 +109,12 @@ Just as with Dockerized applications, you get full visibily into the application
 
 
 ### Triggers
-TBD
+Triggers are events that launch pipelines and Argo Workflows in Codefresh. 
+A trigger can define an event  defines an event or events, mapped to one or more Git repositories. 
+Codefresh offers a rich set of triggers 
+
+
+ and defines an event or event  or  events defined in pipelines and Argo Workflows that are mapped to one or more Git Codefresh offers a rich set of triggers that you can select and define through the Codefresh UI as part of creating an Argo Workflow. These include Git and Cron triggers. The triggers and the event that are mapped to sensors and 
 
 ### Events
 TBD
@@ -118,3 +123,6 @@ TBD
 
 ### Argo Workflow
 
+## Related articles
+[Codefresh for CI]({{site.baseurl}}/docs/getting-started/ci-codefresh/) 
+[Codefresh for CD]({{site.baseurl}}/docs/getting-started/cd-codefresh/)  
