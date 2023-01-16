@@ -1,5 +1,5 @@
 ---
-title: "CI/CD pipeline examples"
+title: "CI/CD examples"
 description: "A collection of examples for Codefresh pipelines"
 group: example-catalog
 redirect_from:
@@ -19,7 +19,7 @@ Codefresh enables you to define the steps of your pipeline in a [YAML file]({{si
 
 Codefresh is agnostic as far as programming languages are concerned. All major programming languages are supported:
 
-- [Go Web App]({{site.baseurl}}/docs/example-catalog/ci-examples/golang-hello-world/) or [Go CLI]({{site.baseurl}}/docs/example-catalog/golang/goreleaser) 
+- [Go Web App]({{site.baseurl}}/docs/example-catalog/ci-examples/golang-hello-world/) or [Go CLI]({{site.baseurl}}/docs/example-catalog/ci-examples/goreleaser) 
 - [Spring Java app with Maven]({{site.baseurl}}/docs/example-catalog/ci-examples/spring-boot-2/) or [Gradle]({{site.baseurl}}/docs/example-catalog/ci-examples/gradle/). Also how to [upload JAR to Nexus/Artifactory]({{site.baseurl}}/docs/example-catalog/ci-examples/publish-jar/) 
 - Node [Express.js App]({{site.baseurl}}/docs/example-catalog/ci-examples/lets-chat/) or [React.js App]({{site.baseurl}}/docs/example-catalog/ci-examples/react/)
 - [Php App]({{site.baseurl}}/docs/example-catalog/ci-examples/php)
@@ -44,7 +44,7 @@ You can check out code from one or more repositories in any pipeline phase. Code
 Codefresh has native support for [building]({{site.baseurl}}/docs/pipelines/steps/build/) and [pushing]({{site.baseurl}}/docs/pipelines/steps/push/) Docker containers.  
 You can also compile traditional applications that are not Dockerized yet.
 
-- [Build an Image with the Dockerfile in root directory]({{site.baseurl}}/docs/example-catalog/ci-examples/build-an-image-dockerfile-in-root-directory/)
+- [Build an Image with the Dockerfile in root directory]({{site.baseurl}}/docs/example-catalog/ci-examples/build-an-image-with-the-dockerfile-in-root-directory/)
 - [Build an Image by specifying the Dockerfile location]({{site.baseurl}}/docs/example-catalog/ci-examples/build-an-image-specify-dockerfile-location)
 - [Build an Image from a different Git repository]({{site.baseurl}}/docs/example-catalog/ci-examples/build-an-image-from-a-different-git-repository)
 - [Build and Push an Image]({{site.baseurl}}/docs/example-catalog/ci-examples/build-and-push-an-image)
@@ -53,12 +53,11 @@ You can also compile traditional applications that are not Dockerized yet.
 - [Upload or download from a Google Storage Bucket]({{site.baseurl}}/docs/example-catalog/ci-examples/uploading-or-downloading-from-gs/)
 - [Get Short SHA ID and use it in a CI process]({{site.baseurl}}/docs/example-catalog/ci-examples/get-short-sha-id-and-use-it-in-a-ci-process)
 - [Call a CD pipeline from a CI pipeline]({{site.baseurl}}/docs/example-catalog/ci-examples/call-child-pipelines)
-- [Trigger a Kubernetes Deployment from a Dockerhub Push Event]({{site.baseurl}}/docs/example-catalog/ci-examples/trigger-a-k8s-deployment-from-docker-registry/)
 
 <!--ask Kostis about these -->
 ### Unit and integration test examples
 
-Codefresh has support for both [unit]({{site.baseurl}}/docs/testing/unit-tests/) and [integration tests]({{site.baseurl}}/docs/testing/integration-tests/) as well as [test reporting]({{site.baseurl}}/docs/testing/test-reports/).
+Codefresh has support for both [unit]({{site.baseurl}}/docs/testing/unit-tests/) and [integration]({{site.baseurl}}/docs/testing/integration-tests/) tests, as well as [test reporting]({{site.baseurl}}/docs/testing/test-reports/).
 
 - [Run unit tests]({{site.baseurl}}/docs/example-catalog/ci-examples/run-unit-tests) 
 - [Run integration tests]({{site.baseurl}}/docs/example-catalog/ci-examples/run-integration-tests/) 
@@ -66,12 +65,11 @@ Codefresh has support for both [unit]({{site.baseurl}}/docs/testing/unit-tests/)
 - [Run integration tests with MySQL]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-mysql/) 
 - [Run integration tests with PostgreSQL]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-postgres/) 
 - [Run integration tests with Redis]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-redis/) 
-- [Populate a database with existing data]({{site.baseurl}}/docs/example-catalog/populate-a-database-with-existing-data) 
-
-- [Shared volumes of service from composition step for other yml steps]({{site.baseurl}}/docs/example-catalog/shared-volumes-of-service-from-composition-step-for-other-yml-steps)
+- [Populate a database with existing data]({{site.baseurl}}/docs/example-catalog/ci-examples/populate-a-database-with-existing-data) 
+- [Shared volumes of service from composition step for other yml steps]({{site.baseurl}}/docs/example-catalog/ci-examples/shared-volumes-of-service-from-composition-step-for-other-yml-steps)
 - [Launch Composition]({{site.baseurl}}/docs/example-catalog/ci-examples/launch-composition) 
 - [Launch Composition and define Service Environment variables using a file]({{site.baseurl}}/docs/example-catalog/ci-examples/launching-a-composition-and-defining-a-service-environment-variables-using-a-file) 
-- [Run multiple kinds of unit tests using fan-in-fan-out parallel pipeline]({{site.baseurl}}/docs/example-catalog/fan-in-fan-out) 
+- [Run multiple kinds of unit tests using fan-in-fan-out parallel pipeline]({{site.baseurl}}/docs/example-catalog/ci-examples/fan-in-fan-out) 
 
 ### Code coverage examples
 
@@ -81,10 +79,10 @@ Codefresh has support for both [unit]({{site.baseurl}}/docs/testing/unit-tests/)
 
 ### Secrets examples
 
-Codefresh can automatically export secret key-value pairs using the Vault plugin from the [Step Marketplace](https://codefresh.io/steps/step/vault).
+Codefresh can automatically export secret key-value pairs using the Vault plugin from the [Step Marketplace](https://codefresh.io/steps/step/vault){:target="\_blank"}.
 
-- [Vault secrets in the Pipeline]({{site.baseurl}}/docs/example-catalog/ci-examples/vault-secrets-in-the-pipeline)
-- [Decryption with Mozilla SOPS]({{site.baseurl}}/docs/example-catalog/ci-examples/ci-examples/decryption-with-mozilla-sops)
+- [Vault secrets in the Pipeline]({{site.baseurl}}/docs/example-catalog/ci-examples/vault-secrets-in-the-pipeline/)
+- [Decryption with Mozilla SOPS]({{site.baseurl}}/docs/example-catalog/ci-examples/decryption-with-mozilla-sops/)
 - [GitOps with Bitnami sealed secrets]({{site.baseurl}}/docs/example-catalog/ci-examples/gitops-secrets)
 
 ### Notification examples
@@ -97,7 +95,7 @@ Codefresh can automatically export secret key-value pairs using the Vault plugin
 
 ### Preview environment examples
 
-Codefresh can automatically launch environments (powered by Docker swarm) to [preview a Pull Reqest or feature]({{site.baseurl}}/docs/getting-started/on-demand-environments/). The definition of the environment can come from an [existing composition]({{site.baseurl}}/docs/testing/create-composition/), a docker-compose file or an inline YAML. Preview environments can be launched manually or [automatically from pipelines]({{site.baseurl}}/docs/pipelines/steps/launch-composition/).
+Codefresh can automatically launch environments (powered by Docker swarm) to [preview a Pull Request or feature]({{site.baseurl}}/docs/quick-start/ci-quickstart/on-demand-environments/). The definition of the environment can come from an [existing composition]({{site.baseurl}}/docs/testing/create-composition/), a docker-compose file or an inline YAML. Preview environments can be launched manually or [automatically from pipelines]({{site.baseurl}}/docs/pipelines/steps/launch-composition/).
 
 - [MongoDB preload data]({{site.baseurl}}/docs/example-catalog/cd-examples/import-data-to-mongodb/) 
 - [NodeJS + Angular2 + MongoDB]({{site.baseurl}}/docs/example-catalog/cd-examples/nodejs-angular2-mongodb/) 
@@ -107,7 +105,7 @@ Codefresh can automatically launch environments (powered by Docker swarm) to [pr
 
 ### Deployment examples
 
-Codefresh can deploy to any platform such as VMs, FTP/SSH/S3 sites, app servers, but of course it has great support for [Kubernetes clusters]({{site.baseurl}}/docs/deploy-to-kubernetes/deployment-options-to-kubernetes/) and [Helm releases]({{site.baseurl}}/docs/new-helm/helm-releases-management/):
+Codefresh can deploy to any platform such as VMs, FTP/SSH/S3 sites, app servers, but of course it has great support for [Kubernetes clusters]({{site.baseurl}}/docs/deployments/kubernetes/deployment-options-to-kubernetes/) and [Helm releases]({{site.baseurl}}/docs/deployments/helm/helm-releases-management/):
 
 - [Deploy to a VM with packer]({{site.baseurl}}/docs/example-catalog/cd-examples/packer-gcloud/) 
 - [Deploy to a VM with FTP]({{site.baseurl}}/docs/example-catalog/cd-examples/transferring-php-ftp)

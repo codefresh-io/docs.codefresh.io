@@ -12,7 +12,7 @@ Building a Docker image that requires build arguments is very easy with Codefres
 
 The source code of the repository is at [https://github.com/codefreshdemo/cf-example-build-arguments](https://github.com/codefreshdemo/cf-example-build-arguments){:target="\_blank"}. Feel free to fork it if you want to follow along.
 
-If you don't have a Codefresh account already, you can easily create a free one from the [sign-up page]({{site.baseurl}}/docs/administration/create-a-codefresh-account/).
+If you don't have a Codefresh account already, you can easily create a free one from the [sign-up page]({{site.baseurl}}/docs/administration/account-user-management/create-a-codefresh-account/).
 
 ## Using Docker build arguments
 
@@ -94,7 +94,7 @@ max-width="100%"
 
 ## Using Codefresh variables as build arguments
 
-In the previous pipeline, the Docker build arguments are defined in the pipeline itself, but you can also use [pipeline variables]({{site.baseurl}}/docs/pipelines/pipelines/#creating-new-pipelines), [shared configuration]({{site.baseurl}}/docs/pipelines/shared-configuration/), or any other standard mechanism you already have in place.
+In the previous pipeline, the Docker build arguments are defined in the pipeline itself, but you can also use [pipeline variables]({{site.baseurl}}/docs/pipelines/pipelines/#creating-new-pipelines), [shared configuration]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/), or any other standard mechanism you already have in place.
 
   `codefresh.yml`
 {% highlight yaml %}
@@ -127,7 +127,7 @@ In this case, you can also use any of the built-in [Codefresh variables]({{site.
 ## Related articles
 [CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)  
 [Build step in pipelines]({{site.baseurl}}/docs/pipelines/steps/build/)  
-[Build an Image with the Dockerfile in root directory]({{site.baseurl}}/docs/example-catalog/ci-examples/build-an-image-dockerfile-in-root-directory/)  
+[Build an Image with the Dockerfile in root directory]({{site.baseurl}}/docs/example-catalog/ci-examples/build-an-image-with-the-dockerfile-in-root-directory/)  
 [Build an Image by specifying the Dockerfile location]({{site.baseurl}}/docs/example-catalog/ci-examples/build-an-image-specify-dockerfile-location)  
 [Build an Image from a different Git repository]({{site.baseurl}}/docs/example-catalog/ci-examples/build-an-image-from-a-different-git-repository)  
-[Build and push an Image]({{site.baseurl}}/docs/yaml-examples/example-catalog/ci-examples/build-and-push-an-image)  
+[Build and push an Image]({{site.baseurl}}/docs/example-catalog/ci-examples/build-and-push-an-image)  

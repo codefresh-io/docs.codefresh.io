@@ -1,5 +1,5 @@
 ---
-title: "Integration Tests with Mongo"
+title: "Integration tests with Mongo"
 description: "Launching a MongoDB service container"
 group: example-catalog
 sub_group: ci-examples

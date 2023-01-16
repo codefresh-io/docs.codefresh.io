@@ -1,5 +1,5 @@
 ---
-title: "Integration Tests with Redis"
+title: "Integration tests with Redis"
 description: "Launching a Redis service container"
 group: example-catalog
 sub_group: ci-examples

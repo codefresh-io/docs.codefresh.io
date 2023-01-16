@@ -71,7 +71,7 @@ steps:
 
 The pipeline first checks out two different Git repositories, which themselves contain Dockerfiles. Then it creates a Docker image for each one using the respective Dockerfile.
 
-<!--check if this topic exists-->You can see both images in the [Docker image dashboard]({{site.baseurl}}/docs/docker-registries/#viewing-docker-images) .
+<!--check if this topic exists-->You can see both images in the [Docker image dashboard]({{site.baseurl}}/docs/ci-cd-guides/working-with-docker-registries/#viewing-docker-images) .
 
 {% include image.html 
 lightbox="true" 
@@ -89,6 +89,7 @@ Notice that there are no explicit push steps in the pipeline, as all successful 
 ## Related articles
 [CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)  
 [Git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/)  
+[Build an Image with the Dockerfile in root directory]({{site.baseurl}}/docs/example-catalog/ci-examples/build-an-image-with-the-dockerfile-in-root-directory/)  
 [Build step in pipelines in pipelines]({{site.baseurl}}/docs/pipelines/steps/build/)  
-[Build and Push an image]({{site.baseurl}}/docs/pipelines/examples/build-and-push-an-image/)  
+[Build and push an image]({{site.baseurl}}/docs/pipelines/example-catalog/ci-examples/build-and-push-an-image/)  
 [Parallel pipelines]({{site.baseurl}}/docs/pipelines/advanced-workflows/)  

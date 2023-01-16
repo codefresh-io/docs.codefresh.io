@@ -1,5 +1,5 @@
 ---
-title: "Integration Tests with Postgres"
+title: "Integration tests with Postgres"
 description: "Launching a PostgreSQL service container"
 group: example-catalog
 sub_group: ci-examples

@@ -104,12 +104,11 @@ If you run the pipeline a second time, you will see the dummy file in all steps,
 
 ## Caching build dependencies and Docker layers
 
-Read more about caching build dependencies in [caching in pipelines]({{site.baseurl}}/docs/pipelines/pipeline-caching/), and in this [blog post](https://codefresh.io/blog/caching-build-dependencies-codefresh-volumes/){:target:"\_blank"}.
+Read more about caching build dependencies in [caching in pipelines]({{site.baseurl}}/docs/pipelines/pipeline-caching/), and in this [blog post](https://codefresh.io/blog/caching-build-dependencies-codefresh-volumes/){:target="\_blank"}.
 
 
 
 ## Related articles
 [CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)  
-[How Codefresh pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/) 
+[How Codefresh pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)  
 [Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
-[Freestyle steps]({{site.baseurl}}/docs/pipelines/steps/freestyle)  

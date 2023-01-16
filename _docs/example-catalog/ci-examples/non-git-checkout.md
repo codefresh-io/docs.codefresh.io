@@ -90,11 +90,11 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-Define the environment variables in [Codefresh shared configuration]({{site.baseurl}}/docs/pipelines/shared-configuration/).
+Define the environment variables in [Codefresh shared configuration]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/).
 
 
 ## Related articles
 [CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)  
 [Native Git checkout]({{site.baseurl}}/docs/example-catalog/ci-examples/git-checkout/)  
-[Running custom git commands]({{site.baseurl}}/docs/example-catalog/ci-examples/git-checkout-custom/)
+[Running custom git commands]({{site.baseurl}}/docs/example-catalog/ci-examples/git-checkout-custom/)  
 [Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)

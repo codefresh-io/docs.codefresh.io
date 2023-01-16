@@ -14,12 +14,12 @@ In this example we will use a demo Node.js application that will be packaged in 
 
 The source code of the repository is at [https://github.com/codefreshdemo/cf-example-build-and-push](https://github.com/codefreshdemo/cf-example-build-and-push){:target="\_blank"}. Feel free to fork it if you want to follow along.
 
-If you don't have a Codefresh account already, you can easily create a free one from the [sign-up page]({{site.baseurl}}/docs/administration/create-a-codefresh-account/).
+If you don't have a Codefresh account already, you can easily create a free one from the [sign-up page]({{site.baseurl}}/docs/administration/account-user-management/create-a-codefresh-account/).
 
 
 ## Building and push Docker image to default registry
 
-Building a Docker image with Codefresh is easy, and only requires a simple step. In addition, all successful pipelines in Codefresh automatically push to [your default Docker registry]({{site.baseurl}}/docs/docker-registries/#the-default-registry), without  additional configuration, if you have one.
+Building a Docker image with Codefresh is easy, and only requires a simple step. In addition, all successful pipelines in Codefresh automatically push to [your default Docker registry]({{site.baseurl}}/docs/integrations/docker-registries/#the-default-registry), without  additional configuration, if you have one.
 
 Here is the most basic pipeline that clones a repo and builds an image:
 
@@ -51,7 +51,7 @@ steps:
 
 ## Building and pushing Docker image to _any registry_.
 
-<!---check link-->You can push your image to any [registry]({{site.baseurl}}/docs/docker-registries/). 
+<!---check link-->You can push your image to any [registry]({{site.baseurl}}/docs/integrations/docker-registries/). 
 
 * First you need to connect your external registry in the integrations page. Here are the instructions for:
 
@@ -125,12 +125,11 @@ Codefresh has several options when it comes to pushing images:
 * You can use directly ECR registries
 * You can embed credentials in the push steps
 
-Read more in [push steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/push/).
+Read more in [push steps]({{site.baseurl}}/docs/pipelines/steps/push/) in pipelines.
 
 
 ## Related articles
 [CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)  
-[Build step in pipelines]({{site.baseurl}}/docs/pipelines/steps/build/)  
 [Build an Image with the Dockerfile in root directory]({{site.baseurl}}/docs/example-catalog/ci-examples/build-an-image-dockerfile-in-root-directory/)  
 [Build an Image by specifying the Dockerfile location]({{site.baseurl}}/docs/example-catalog/ci-examples/build-an-image-specify-dockerfile-location)  
 [Build an Image from a different Git repository]({{site.baseurl}}/docs/example-catalog/ci-examples/build-an-image-from-a-different-git-repository)  

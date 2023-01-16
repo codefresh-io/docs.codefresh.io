@@ -17,7 +17,7 @@ caption="GIT integrations"
 max-width="70%"
 %}
 
-You can add a new integration for any cloud provider or even [on-premises]({{site.baseurl}}/docs/reference/behind-the-firewall/) ones. By default you will also have a provider set up if you used one for Codefresh signup (GitHub, GitLab or Bitbucket).
+You can add a new integration for any cloud provider or even [on-premises]({{site.baseurl}}/docs/installation/behind-the-firewall/) ones. By default you will also have a provider set up if you used one for Codefresh signup (GitHub, GitLab or Bitbucket).
 
 For each Git Integration, make sure that you note down its name, as you will use in your pipeline inside a [git-clone]({{site.baseurl}}/docs/pipelines/steps/git-clone/) step.
 
@@ -53,7 +53,7 @@ the pipeline impossible to re-use among different micro-services (that are built
 
 ## Cloning the triggered repository (recommended)
 
-The proper way to use git-clone steps is to make them trigger specific. Instead of hard-coding the git repository that is checked-out, it is best to checkout the same one that [triggered the pipeline]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/). This is what you want in most scenarios anyway.
+The proper way to use git-clone steps is to make them trigger specific. Instead of hard-coding the git repository that is checked-out, it is best to check out the same one that [triggered the pipeline]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/). This is what you want in most scenarios anyway.
 
 This can be achieved by using Codefresh [variables]({{site.baseurl}}/docs/pipelines/variables/) to refer to the trigger.
 Here is the same pipeline as before, written in a generic way:
@@ -89,7 +89,7 @@ caption="Reusing a pipeline between microservices"
 max-width="50%"
 %}
 
-Thus you can have a single pipeline and when you want to enable it for a new micro-service you can simply add a new [git trigger]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/) for it.
+Thus you can have a single pipeline and when you want to enable it for a new micro-service you can simply add a new [Git trigger]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/) for it.
 
 You still run the pipeline manually if you wish. In this case you will be asked which trigger you want to "simulate" so that the variable pipelines are correctly replaced by Codefresh.
 
@@ -127,7 +127,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-More details can be found in the [private Git instructions page]({{site.baseurl}}/docs/reference/behind-the-firewall/#checking-out-code-from-a-private-git-repository).
+More details can be found in the [private Git instructions page]({{site.baseurl}}/docs/installation/behind-the-firewall/#checking-out-code-from-a-private-git-repository).
 
 
 ## Working inside the cloned directory
@@ -197,7 +197,6 @@ Notice that in this case the git-clone steps are **not** named `main_clone` and 
 ## Related articles
 [CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)  
 [Git integrations]({{site.baseurl}}/docs/integrations/git-providers/)  
-[Git triggers in pipelines]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/)  
-[Clone step in pipelines]({{site.baseurl}}/docs/pipelines/steps/git-clone/)  
-[Build step in pipelines]({{site.baseurl}}/docs/pipelines/steps/build/)  
 [Custom git commands]({{site.baseurl}}/docs/example-catalog/ci-examples/git-checkout-custom/)  
+[Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)
+

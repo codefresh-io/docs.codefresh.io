@@ -94,13 +94,12 @@ steps:
 
 If you run this pipeline you will see git used as part of the `go get` mechanism.
 
-More examples such as using SSH keys and working with GIT submodules can be found in the [clone step documentation]({{site.baseurl}}/docs/pipelines/steps/git-clone/).
+For more examples, such as using SSH keys and working with Git submodules, see the [Git-clone]({{site.baseurl}}/docs/pipelines/steps/git-clone/) step.
 
 
 ## Related articles
 [CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)  
 [Native Git checkout]({{site.baseurl}}/docs/example-catalog/ci-examples/git-checkout/)  
 [Native Git integration]({{site.baseurl}}/docs/integrations/git-providers/)  
-[Freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/)  
-[Git Clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/)  
+[Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)
 

@@ -1,5 +1,5 @@
 ---
-title: "Upload/Download files to/from Google Storage"
+title: "Upload/download files to/from Google Storage"
 description: "Upload and download a JAR from Google Storage from within a pipeline"
 group: example-catalog
 sub_group: ci-examples

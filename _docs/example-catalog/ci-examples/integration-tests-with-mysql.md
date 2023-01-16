@@ -1,5 +1,5 @@
 ---
-title: "Integration Tests with MySQL"
+title: "Integration tests with MySQL"
 description: "Launching a MySQL service container"
 group: example-catalog
 sub_group: ci-examples
