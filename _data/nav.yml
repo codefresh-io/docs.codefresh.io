@@ -319,6 +319,8 @@
       sub-pages:  
         - title: Deployment options for Kubernetes
           url: "/deployment-options-to-kubernetes"
+        - title: Environment dashboard
+          url: "/environment-dashboard"
         - title: Managing Kubernetes clusters
           url: "/manage-kubernetes"
         - title: Custom kubectl commands
@@ -416,6 +418,8 @@
       url: "/monitoring-pipelines"
     - title: Advanced workflows
       url: "/advanced-workflows"
+    - title: Deployment environments
+      url: "/deployment-environments"
     - title: Running pipelines locally
       url: "/running-pipelines-locally"
     - title: Configuration for pipelines
