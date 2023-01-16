@@ -6,7 +6,7 @@ toc: true
 ---
 
 Codefresh has partnered with [Google Cloud](https://cloud.google.com/){:target="\_blank"} and allows you to install a Codefresh pipeline builder within your own Kubernetes cluster.  
-The integration is available in the Google Marketplace for Kubernetes apps at [https://console.cloud.google.com/marketplace/details/codefresh-gke/codefresh](https://console.cloud.google.com/marketplace/details/codefresh-gke/codefresh){:target="\_blank"}.
+The integration is available in the Google Marketplace for Kubernetes apps at [https://console.cloud.google.com/marketplace/product/codefresh-gke/codefresh-saas](https://console.cloud.google.com/marketplace/product/codefresh-gke/codefresh-saas){:target="\_blank"}.
 
 Once you configure Codefresh to use your own Kubernetes cluster for builds, you can enjoy all benefits of a **hybrid** installation as the Codefresh UI and management dashboards will still run in a SAAS manner, while the actual builds and pipelines will execute in your own cluster.
 
@@ -24,7 +24,7 @@ To start the integration, you need the following:
 1. A [GKE cluster](https://cloud.google.com/kubernetes-engine/docs/quickstart){:target="\_blank"} that will run all builds and pipelines
 1. A [Codefresh account]({{site.baseurl}}/docs/administration/account-user-management/create-a-codefresh-account/) (creating an account is free, you pay only for builds)
 
-Then visit the Codefresh GKE page at [https://console.cloud.google.com/marketplace/details/codefresh-gke/codefresh](https://console.cloud.google.com/marketplace/details/codefresh-gke/codefresh){:target="\_blank"}.
+Then visit the Codefresh GKE page at [https://console.cloud.google.com/marketplace/product/codefresh-gke/codefresh-saas](https://console.cloud.google.com/marketplace/product/codefresh-gke/codefresh-saas){:target="\_blank"}.
 
 ## Using Codefresh from the Google Marketplace
 
@@ -52,7 +52,7 @@ To start using the service, you need to [enable billing](https://cloud.google.co
 
 You will pay for the cluster resources to Google, plus the Codefresh builds. Codefresh does not collect any payment from you directly. Google Cloud will invoice you for both the cluster infrastructure and the cluster usage. 
 
-Current pricing for Codefresh builds is always shown in the [marketplace page](https://console.cloud.google.com/marketplace/details/codefresh-gke/codefresh){:target="\_blank"}.
+Current pricing for Codefresh builds is always shown in the [marketplace page](https://console.cloud.google.com/marketplace/product/codefresh-gke/codefresh-saas){:target="\_blank"}.
 
 ## Install the Google Marketplace
 
@@ -80,7 +80,7 @@ With the token at hand, we can go to the Google marketplace.
 
 ### Step 2: Install the Codefresh application in your Google Cloud cluster
 
-1. Navigate to [https://console.cloud.google.com/marketplace/details/codefresh-gke/codefresh](https://console.cloud.google.com/marketplace/details/codefresh-gke/codefresh){:target="\_blank"}.
+1. Navigate to [https://console.cloud.google.com/marketplace/product/codefresh-gke/codefresh-saas](https://console.cloud.google.com/marketplace/details/codefresh-gke/codefresh){:target="\_blank"}.
 1. From the dropdown menu at the top of the page, select a Google project that has billing enabled.
 1. Click **Configure**.
 
@@ -233,7 +233,7 @@ caption="Removing the Codefresh application"
 alt="Removing the Codefresh application"
 %}
 
-You can install the Codefresh builder again from the [marketplace](https://console.cloud.google.com/marketplace/details/codefresh-gke/codefresh){:target="\_blank"}.
+You can install the Codefresh builder again from the [marketplace](https://console.cloud.google.com/marketplace/product/codefresh-gke/codefresh-saas){:target="\_blank"}.
 
 ## Related articles
 [Manage your cluster]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/)  

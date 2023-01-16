@@ -121,7 +121,7 @@ See [Slack notifications in Codefresh]({{site.baseurl}}/docs/integrations/notifi
 **Jira notifications**  
 Codefresh integrates with Jira in several ways:
 The standard integration provides the highest visibility into your GitOps deployments. Referencing the integration in your pipeline pulls in all the Jira information and enriches the image with the issue-tracking information.  
-Our versatile [Jira Issue Manager](https://codefresh.io/steps/step/jira-issue-manager?__hstc=13221992.d6be31528e6c55e9c8e25cbf4f7ec143.1637822320970.1673765905554.1673785426249.294&__hssc=13221992.18.1673785426249&__hsfp=1203046529{:target="\_blank"} step can be used to create Jira issues, comment on existing Jira issues, change the status of an issue, and even add a description to your issue.  
+Our versatile [Jira Issue Manager](https://codefresh.io/steps/step/jira-issue-manager){:target="\_blank"} step can be used to create Jira issues, comment on existing Jira issues, change the status of an issue, and even add a description to your issue.  
  
 
 See [Jira notifications in Codefresh]({{site.baseurl}}/docs/integrations/notifications/jira-integration/) and [examples for Jira notification]({{site.baseurl}}/docs/example-catalog/ci-examples/sending-the-notification-to-jira/).

@@ -6,22 +6,51 @@ sub_group: gitops
 toc: true
 ---
 
-Building Docker images is one of the most basic requirements for creating Codefresh pipelines and Argo Workflows. 
+Building Docker images is one of the most basic requirements of Codefresh pipelines and Argo Workflows. 
 Once you create an image, push the image to a registry, and report it to Codefresh, image information is continually updated in the Images page. 
 
-## Requirements for Images in Codefresh
+If you 
+
+## Requirements for images in 
+
+Images are pulled to the dashboard 
+
+
 Complete the mandatory steps to see your Images in the Codefresh UI. Each step has links to examples in the Codefresh Hub for Argo.  
 
-1. (Mandatory) Build the Docker image, and push the image to any registry.  
-  See [Create a Docker image using Kaniko](https://codefresh.io/argohub/workflow-template/kaniko){:target="\_blank"}.
-1. (Optional) Enrich image information with annotations and metadata.  
-  For Git and Jira image enrichment examples, see [Codefresh-metadata image enrichment](https://codefresh.io/argohub/workflow-template/CSDP-metadata){:target="\_blank"}.
-1. (Mandatory) Report image information to Codefresh.  
-  See the [report-image-info](https://github.com/codefresh-io/argo-hub/blob/main/workflows/codefresh-csdp/versions/0.0.6/docs/report-image-info.md){:target="\_blank"} example.
-  
-> If you are using an external GitHub Actions-based pipeline, we have a new template that combines image reporting and enrichment. See [Image enrichment with integrations]({{site.baseurl}}/docs/integrations/gitops/image-enrichment-overview/).
+1. (Mandatory) Build and push the Docker image
+  * Codefresh pipelines
+    Use the `build` step to build a Docker image declaratively in simple or multi-stage Dockerfiles. See [Build step in pipelines]({{site.baseurl}}/docs/pipelines/steps/build/).  
 
-## Image views in Codefresh 
+    The pipeline pushes the image to the default Docker registry.
+    You can also push the image to any external Docker registry that you integrate with Codefresh. See [Docker Registries for pipeline integrations]({{site.baseurl}}/docs/integrations/docker-registries/).  
+
+    Review different scenarios for building and pushing Docker images in  our [Build/push examples]({{site.baseurl}}/docs/example-catalog/examples/#buildpush-examples).
+ 
+  * GitOps
+    Create the Docker image.
+    [Create a Docker image using Kaniko](https://codefresh.io/argohub/workflow-template/kaniko){:target="\_blank"}. 
+    
+1. (Mandatory) GitOps: Connect to Docker registries
+  Connect Docker registries to Codefresh to store Docker images.  
+  See [GitOps container registry integrations]({{site.baseurl}}/docs/gitops-integrations/container-registries).
+
+1. (Mandatory) GitOps: Report image information to Codefresh. 
+  This is the equivalent to pushing the image in Codefresh pipelines.
+  Use the [report-image-info] (https://github.com/codefresh-io/argo-hub/blob/main/workflows/codefresh-csdp/versions/0.0.6/docs/report-image-info.md){:target="\_blank"} DAG template to report image information to Codefresh. 
+  
+  > If you are using an external platform or tool for your CI pipelines such as GitHub Actions or Jenkins, or even Codefresh pipelines, we have a new template that combines image reporting and enrichment. See [GitOps CI integrations]({{site.baseurl}}/docs/gitops-integrations/ci-integrations) for details.
+
+1. (Optional) Enrich image with annotations and metadata  
+  Image enrichment exposes metadata such as feature requests, pull requests, and logs as part of the application’s deployment, for visibility into all aspects of the deployment, making it easier to track actions and identify root cause of failures.
+  * Codefresh pipelines  
+    See [Docker image metadata]({{site.baseurl}}/docs/pipelines/docker-image-metadata/)  
+  * GitOps  
+    See [GitOps issue tracking integrations]({{site.baseurl}}/docs/gitops-integrations/issue-tracking) and [Jira]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/jira) integration.  
+
+
+
+## Images dashboard 
 * In the Codefresh UI, from Artifacts in the sidebar, select [Images](https://g.codefresh.io/2.0/images){:target="\_blank"}.
 
 Image views are layered to show three levels of data: 
@@ -30,7 +59,7 @@ Image views are layered to show three levels of data:
 * Summary with metadata and binary information 
 
 ### Filters for Image views
-As with any resource in Codefresh, image views support filters that allow you focus on the data that's important to you.
+As with any resource in Codefresh, the Image dashboard  support filters that allow you focus on the data that's important to you.
 Most image filters support multi-selection.  Unless otherwise indicated, the filters are common to all view levels.
 
 {: .table .table-bordered .table-hover}

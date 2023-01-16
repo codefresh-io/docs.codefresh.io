@@ -171,10 +171,10 @@ max-width="50%"
 
 From the main release screen, you have some additional actions.
 
-You can issue a Helm test <!--- [Helm test](https://github.com/kubernetes/helm/blob/master/docs/chart_tests.md) --> by clicking on the 'Run Test' button on the desired chart row.
-
-You can delete a release by clicking on the 'Delete' button on the desired chart row.
-<!---For deletion options, see the [helm delete documentation](https://github.com/kubernetes/helm/blob/master/docs/helm/helm_delete.md){:target="\_blank"}, for example, *purge* will remove the revision from the release history. -->
+Select the row with the desired chart, and:  
+* Issue a [Helm test](https://helm.sh/docs/topics/chart_tests/){:target="\_blank"} by clicking on the 'Run Test' button.
+* Delete a release by clicking on the 'Delete' button.  
+  For deletion options, see the [Helm delete documentation](https://helm.sh/docs/helm/helm_uninstall/){:target="\_blank"}. For example, *purge* removes the revision from the release history. 
 
 ## Helm deployment badge <!--how to add badge ask where is the badge icon-->
 
