@@ -8,7 +8,7 @@ toc: true
 
 ## Prerequisites
 
-- A [free Codefresh account](https://codefresh.io/docs/docs/getting-started/create-a-codefresh-account/)
+- A [Codefresh account]({{site.baseurl}}/docs/administration/account-user-management/create-codefresh-account/)
 - A [Google Storage Bucket](https://cloud.google.com/storage/docs/creating-buckets){:target="\_blank"} with public read access
 - A private key [downloaded](https://cloud.google.com/storage/docs/authentication#gsutilauth){:target="\_blank"} for the existing service account associated with your bucket (for this example, we base64 encoded the key for ease of use in a pipeline variable using `base64 key_file.json > key_file.b64`)
 
@@ -39,7 +39,7 @@ file="/images/examples/gs/gs-pipeline-vars.png"
 url="/images/examples/gs/gs-pipeline-vars.png"
 alt="Codefresh UI Pipeline Variables"
 caption="Codefresh UI Pipeline Variables"
-max-width="70%"
+max-width="60%"
 %}
 
 Here is the first pipeline:
@@ -66,7 +66,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-This pipeline does the following:
+This pipeline:
 
 1. Uploads a JAR from Maven into our Google Storage bucket through a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/). 
 
@@ -143,10 +143,10 @@ This pipeline does the following:
 1. Clones the source code through a [Git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/).
 2. Downloads the dependency JAR from our publicly-accessible Google Storage bucket through a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/).
 3. Builds a docker image through a [build step]({{site.baseurl}}/docs/pipelines/steps/build/).
-4. Pushes the Docker image to the DockerHub registry you have integrated with Codefresh through a [push step](https://codefresh.io/docs/docs/pipelines/steps/push/).
+4. Pushes the Docker image to the DockerHub registry you have integrated with Codefresh through a [push step]({{site.baseurl}}/docs/pipelines/steps/push/).
 
 ## Related articles
-[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/ci-examples/)  
+[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)  
 [Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)   
 
 

@@ -93,7 +93,7 @@ steps:
 This pipeline does the following:
 
 1. Clones the source code through a [Git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/).
-1. Creates a variable that contains the Application version as specified in `package.json` through [cf_export]({{site.baseurl}}/docs/pipelines/variables/#exporting-environment-variables-from-a-freestyle-step).
+1. Creates a variable that contains the Application version as specified in `package.json` through [cf_export]({{site.baseurl}}/docs/pipelines/variables/#using-cf_export-command).
 1. Builds a docker image tagged with the Application version through a [build step]({{site.baseurl}}/docs/pipelines/steps/build/).
 1. Optionally runs the downstream QA pipeline if the branch is named `develop`. It also passes several environment variables to the child pipeline (including the Application version).
 1. Optionally runs the downstream Prod pipeline if the branch name starts with `release`. It also passes several environment variables to the child pipeline (including the Application version).

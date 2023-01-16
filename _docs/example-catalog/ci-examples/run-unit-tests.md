@@ -101,6 +101,6 @@ We generally recommend the first approach, so that your production Docker image 
 [Unit tests]({{site.baseurl}}/docs/testing/unit-tests/)  
 [Integration test example]({{site.baseurl}}/docs/example-catalog/ci-examples/run-integration-tests/)  
 [Service Containers]({{site.baseurl}}/docs/pipelines/service-containers/)  
-[Freestyle step]({{site.baseurl}}/docs/pipelines/steps/)  
+[Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
 
 
