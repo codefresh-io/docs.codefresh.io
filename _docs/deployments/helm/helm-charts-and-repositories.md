@@ -1,6 +1,6 @@
 ---
-title: "Using external Helm repos in Codefresh pipelines"
-description: "Use external Helm Charts and repositories in Codefresh pipelines"
+title: "Helm charts and repositories"
+description: "Use external Helm charts and repositories in Codefresh pipelines"
 group: deployments
 sub_group: helm
 toc: true
@@ -13,7 +13,7 @@ It is optional to use external Helm repositories as all Codefresh accounts alrea
 Easily add your own Helm charts.  
 By default, we show charts from the [official Helm repository](https://github.com/kubernetes/charts){:target="_blank"}. 
 
-1. In the Codefresh UI, from the Artifacts section in the sidebar, select [**Helm Charts**](https://g.codefresh.io/helm/releases/releasesNew/){:target="\_blank"}. 
+1. In the Codefresh UI, from Artifacts in the sidebar, select [**Helm Charts**](https://g.codefresh.io/helm/releases/releasesNew/){:target="\_blank"}. 
 1. On the top right, click **Add Existing Helm Repository**.
   You are taken to Pipeline Integrations.
 1. In the Integrations page, click **Add Helm Repository**, and then select the type of Helm repo to add from the list.
@@ -66,11 +66,11 @@ Install a chart from a Helm repository to your cluster.
 * Variables available for custom pipelines:  
   If you select a custom pipeline, the following variables are available:
   * `CF_HELM_RELEASE` - name of release
-  * `CF_HELM_KUBE_CONTEXT` - kubectl context name of target cluster (cluster name from [dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/#work-with-your-services))
+  * `CF_HELM_KUBE_CONTEXT` - kubectl context name of target cluster (cluster name from [dashboard]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/#work-with-your-services))
   * `CF_HELM_INSTALLATION_NAMESPACE` - desired namespace for the release 
   * `CF_HELM_CHART_VERSION` - Chart Version,
   * `CF_HELM_CHART_NAME` - Chart Name
-  * `CF_HELM_CONTEXTS` - values from [shared configuration]({{site.baseurl}}/docs/pipelines/shared-configuration/#using-shared-helm-values)
+  * `CF_HELM_CONTEXTS` - values from [shared configuration]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/#using-shared-helm-values)
   * `CF_HELM_VALUES` - extra values
   * `CF_HELM_SET` - extra values,
   * `CF_HELM_CHART_REPO_URL` - URL of Chart repository
@@ -79,10 +79,10 @@ Install a chart from a Helm repository to your cluster.
 <br />
 
 **Before you begin**
-* Make sure tht you have a Kubernetes integration with the cluster and namespace, as described [here]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/)
+* Make sure that you have a Kubernetes integration with the cluster and namespace, as described [here]({{site.baseurl}}/docs//integrations/kubernetes/#connect-a-kubernetes-cluster)
 
 **How to** 
-1. In the Codefresh UI, from the Artifacts section in the sidebar, select [**Helm Charts**](https://g.codefresh.io/helm/releases/releasesNew/){:target="\_blank"}. 
+1. In the Codefresh UI, from Artifacts in the sidebar, select [**Helm Charts**](https://g.codefresh.io/helm/releases/releasesNew/){:target="\_blank"}. 
 1. In the row with the chart to install, click **Install**.
 1. Enter the **Release name** for the chart, and select the **Chart version** to install.
 1. From Cluster Information, select a Kubernetes **Cluster** and the **Namespace** to install to.  
@@ -105,7 +105,7 @@ You can also install Helm releases from [any Helm environment board]({{site.base
 [Using Helm in a Codefresh pipeline]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/)  
 [Helm integrations]({{site.baseurl}}/docs/integrations/helm/)  
 [Helm Dashboard]({{site.baseurl}}/docs/deployments/helm/helm-releases-management)  
-[Helm Promotion boards]({{site.baseurl}}/docs/deployments/helm/helm-environment-promotion)  
+[Promoting Hlem environments]({{site.baseurl}}/docs/deployments/helm/helm-environment-promotion)  
 [Helm best practices]({{site.baseurl}}/docs/ci-cd-guides/helm-best-practices/)  
 
 

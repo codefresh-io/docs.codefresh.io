@@ -334,7 +334,7 @@
           url: "/managed-helm-repository"
         - title: Helm Charts and repositories
           url: "/helm-charts-and-repositories"
-        - title: Custom Helm uploads
+        - title: Creating and uploading Helm packages
           url: "/custom-helm-uploads"
         - title: Promoting Helm environments
           url: "/helm-environment-promotion"

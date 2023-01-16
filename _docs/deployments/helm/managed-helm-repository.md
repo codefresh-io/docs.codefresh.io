@@ -129,7 +129,8 @@ curl -X DELETE -v -H "Authorization: Bearer <api-key>" https://h.cfcr.io/api/<co
 
 Replace values in `<>` with your own (also removing `<>` in the process).
 
-Generate an api key from [https://g.codefresh.io/user/settings](https://g.codefresh.io/user/settings) as explained in the [API page]({{site.baseurl}}/docs/integrations/codefresh-api/).
+Generate an API key from the Codefresh UI:
+* From your avatar dropdown, select [**User Settings**](https://g.codefresh.io/user/settings){:target="\_blank"}.  See [Codefresh API integration]({{site.baseurl}}/docs/integrations/codefresh-api/).
 
 ## Related articles
 [Using Helm in a Codefresh pipeline]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/)  

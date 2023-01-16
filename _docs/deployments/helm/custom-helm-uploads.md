@@ -77,8 +77,8 @@ steps:
 This pipeline references some predefined environment variables such as `GOOGLE_BUCKET_NAME`, `GOOGLE_PROJECT_ID` and `GOOGLE_CREDENTIALS`.  
 For this example, we created a service account with appropriate permissions in Google Cloud, and saved the credentials into `GOOGLE_CREDENTIALS` as a Codefresh Secret. <br>
 For more information, see:
-[Authenticating with Google services](https://cloud.google.com/storage/docs/authentication#service_accounts){:target="_blank"}. <br>
-[Codefresh pipeline configuration and secrets](https://codefresh.io/docs/docs/codefresh-yaml/variables/#user-provided-variables){:target="_blank"}. 
+[Authenticating with Google services](https://cloud.google.com/storage/docs/authentication#service_accounts){:target="_blank"} 
+[Codefresh pipeline configuration and secrets]({{site.baseurl}}/pipelines/variables/#user-provided-variables)
 
 ## Example 2: Push the chart to Chart Museum
 Chart Museum is a Helm repository *server* that has an HTTP API, pluggable backends, authentication, and more. 
@@ -122,4 +122,4 @@ steps:
 ## Related articles
 [Using Helm in a Codefresh pipeline]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/)  
 [Using a managed Helm repository]({{site.baseurl}}/docs/deployments/helm/managed-helm-repository/)  
-[Helm environment promotion]({{site.baseurl}}/docs/deployments/helm/helm-environment-promotion)
+[Promoting Helm environments]({{site.baseurl}}/docs/deployments/helm/helm-environment-promotion)

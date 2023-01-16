@@ -6,7 +6,7 @@ group: deployments
 sub_group: helm
 toc: true
 ---
-Apart from the [Helm Releases]({{site.baseurl}}/docs/deployments/helm/helm-releases-management) that show your Kubernetes clusters at the application level, Codefresh also comes with a special environment board that allows you to track one or more applications as they move within your infrastructure (example, Dev, QA, Prod). 
+Apart from the [Helm Releases]({{site.baseurl}}/docs/deployments/helm/helm-releases-management) dashbaord that shows your Kubernetes clusters at the application level, Codefresh also comes with a special environment board that allows you to track one or more applications as they move within your infrastructure (example, Dev, QA, Prod). 
 
 The environment board can function both as an overview of the whole lifecycle of the application, as well as a tool to shift-left/right Helm releases between environments.
 
@@ -59,7 +59,7 @@ Once you have your columns in place, you can move Helm releases between clusters
 
 Create your own Helm board with a single or multiple Helm applications. You can create as many boards as you want. 
 
-1. In the Codefresh UI, from the DevOps Insights section in the sidebar, select [**Helm  Boards**](https://g.codefresh.io/helm/helm-kanban/){:target="\_blank"}. 
+1. In the Codefresh UI, from DevOps Insights in the sidebar, select [**Helm  Boards**](https://g.codefresh.io/helm/helm-kanban/){:target="\_blank"}. 
  
 {% include 
 image.html 
@@ -179,13 +179,13 @@ caption="Changing deployment values"
 max-width="40%"
 %}
 
-By default Codefresh will use a built-in install/upgrade pipeline for performing the promotion. You can choose your own pipeline from the promotion dialog. That pipeline will be automatically provided with the following [environment variables]({{site.baseurl}}/docs/deployments/helm/helm-releases-management/#overriding-the-default-helm-actions):
+By default Codefresh will use a built-in install/upgrade pipeline for performing the promotion. You can choose your own pipeline from the promotion dialog. That pipeline will be automatically provided with the following [environment variables]({{site.baseurl}}/docs/deployments/helm/helm-releases-management/#environment-variables-for-custom-helm-commands):
 
 * `CF_HELM_RELEASE` - name of release
-* `CF_HELM_KUBE_CONTEXT` - `kubectl` context name of target cluster (cluster name from [dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/#work-with-your-services))
+* `CF_HELM_KUBE_CONTEXT` - `kubectl` context name of target cluster (cluster name from [dashboard]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/#work-with-your-services))
 * `CF_HELM_NAMESPACE` - Tiller Namespace if you use Helm 2 
 * `CF_HELM_INSTALLATION_NAMESPACE` - namespace where release is promoted to
-* `CF_HELM_CONTEXTS` - [shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration) Helm contexts
+* `CF_HELM_CONTEXTS` - [shared configuration]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration) Helm contexts
 * `CF_HELM_VALUES` - Helm chart values 
 * `CF_HELM_SET` - Additional values there were overriden
 * `CF_HELM_CHART_JSON_GZIP` - Gzipped JSON of Helm chart (only for Helm 3)
@@ -197,7 +197,7 @@ By default Codefresh will use a built-in install/upgrade pipeline for performing
 
 Note that the variable `CF_HELM_CHART_JSON_GZIP` is both compressed and base64 encoded. To get the raw value you need a command like `echo $CF_HELM_CHART_JSON_GZIP | base64 -d | gunzip`
 
->Overriding the default pipeline can only be done by [Codefresh admin users]({{site.baseurl}}/docs/administration/access-control/#users-and-administrators).
+>Overriding the default pipeline can only be done by [Codefresh admin users]({{site.baseurl}}/docs/administration/account-user-management/access-control/#users-and-administrators).
 
 Once you click the *update* button, a new build will run that will perform the deployment.
 
@@ -285,6 +285,6 @@ The filters are especially helpful in Helm boards with large numbers of environm
 
 ## Related articles
 [Using Helm in a Codefresh pipeline]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/)  
-[Using external Helml repos in Codefresh pipelines]({{site.baseurl}}/docs/deployments/helm/helm-charts-and-repositories/#add-helm-repository)
+[Helm charts and repositories]({{site.baseurl}}/docs/deployments/helm/helm-charts-and-repositories/#add-helm-repository)  
 [Managing Helm releases]({{site.baseurl}}/docs/deployments/helm/helm-releases-management)  
-[Environment Dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/environment-dashboard/)  
+[Environment Dashboard]({{site.baseurl}}/docs/deployments/kubernetes/environment-dashboard/)  

@@ -11,16 +11,16 @@ toc: true
 Codefresh has built-in integration for Helm that provides a unique view into your production Kubernetes cluster.  
 In Helm Releases, you can see the current status of your cluster, including the currently deployed releases, their previous revisions including change tracking, and even roll back to a previous release.
 
-Codefresh also offers [an environment view for Helm releases]({{site.baseurl}}/docs/deploy-to-kubernetes/environment-dashboard/) as well as [a promotion dashboard]({{site.baseurl}}/docs/deployments/helm/helm-environment-promotion).
+Codefresh also offers [an environment view for Helm releases]({{site.baseurl}}/docs/deployments/kubernetes/environment-dashboard/) as well as [a promotion dashboard]({{site.baseurl}}/docs/deployments/helm/helm-environment-promotion).
 
 
 ## View Helm releases and release information
 
 View all the Helm releases in your cluster, and drill down into a specific release to see its services, deployed versions, manifests and more. 
 
-> Make sure you have [connected your Kubernetes cluster]({{site.baseurl}}/docs/integrations/kubernetes/adding-non-gke-kubernetes-cluster/) to Codefresh.
+> Make sure you have [connected your Kubernetes cluster]({{site.baseurl}}/docs/integrations/kubernetes/#connect-a-kubernetes-cluster) to Codefresh.
 
-1. In the Codefresh UI, from the DevOps Insights section in the sidebar, select [**Helm Releases**](https://g.codefresh.io/helm/releases/releasesNew/){:target="\_blank"}. 
+1. In the Codefresh UI, from DevOps Insights in the sidebar, select [**Helm Releases**](https://g.codefresh.io/helm/releases/releasesNew/){:target="\_blank"}. 
 
 {% include 
 image.html 
@@ -143,9 +143,9 @@ max-width="70%"
 
 You can set this message for your Helm release in three ways:
 
-1. When you manually install a Helm release from the [Helm charts screen]({{site.baseurl}}/docs/deployments/helm/helm-charts-and-repositories/#install-chart-from-your-helm-repository), there is a field for this message.
+1. When you manually install a Helm release from the [Helm charts screen]({{site.baseurl}}/docs/deployments/helm/helm-charts-and-repositories/#install-a-chart-from-your-helm-repository), there is a field for this message.
 1. Set the property `commit_message` inside the [notes.txt](https://helm.sh/docs/chart_template_guide/notes_files/){:target="\_blank"} file of your chart.
-1. By providing an environment variable called `COMMIT_MESSAGE` within your [pipeline Helm step]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/).
+1. By providing an environment variable called `COMMIT_MESSAGE` within your [Helm pipeline step]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/).
 
 
 ## Roll back a Helm release
@@ -165,20 +165,20 @@ caption="Rolling back to a previous release"
 max-width="50%"
 %}
 
->It takes time to complete rollback for a release, and the change in the cluster is not instantly updated in the Codefresh UI. If you also use a [custom rollback pipeline](#overriding-the-default-helm-actions), the delay between the cluster update and the UI refresh is even longer. 
+>It takes time to complete rollback for a release, and the change in the cluster is not instantly updated in the Codefresh UI. If you also use a [custom rollback pipeline](#overriding-default-helm-actions-for-releases), the delay between the cluster update and the UI refresh is even longer. 
 
 ## Helm UI actions
 
 From the main release screen, you have some additional actions.
 
-You can issue a [Helm test](https://github.com/kubernetes/helm/blob/master/docs/chart_tests.md) by clicking on the 'Run Test' button on the desired chart row.
+You can issue a Helm test <!--- [Helm test](https://github.com/kubernetes/helm/blob/master/docs/chart_tests.md) --> by clicking on the 'Run Test' button on the desired chart row.
 
 You can delete a release by clicking on the 'Delete' button on the desired chart row.
-For deletion options, see the [helm delete documentation](https://github.com/kubernetes/helm/blob/master/docs/helm/helm_delete.md){:target="\_blank"}, for example, *purge* will remove the revision from the release history.
+<!---For deletion options, see the [helm delete documentation](https://github.com/kubernetes/helm/blob/master/docs/helm/helm_delete.md){:target="\_blank"}, for example, *purge* will remove the revision from the release history. -->
 
 ## Helm deployment badge <!--how to add badge ask where is the badge icon-->
 
-Similar to a [build badge]({{site.baseurl}}/docs/pipelines/build-status/#using-the-build-badge), you can also get a deployment badge for a Helm release.  
+Similar to a [build badge]({{site.baseurl}}/docs/pipelines/configuration/build-status/#using-the-build-badge), you can also get a deployment badge for a Helm release.  
 
 1. In the Codefresh UI, from the DevOps Insights section in the sidebar, select [**Helm Releases**](https://g.codefresh.io/helm/releases/releasesNew/){:target="\_blank"}. 
 1. In the row with the Helm release for which to add a deployment badge, click the **Settings** (gear) icon.
@@ -208,7 +208,7 @@ By default, when you take an action in the UI, Codefresh executes the native Hel
 
 You can override these actions for a specific Helm release by defining custom pipelines for each action. This way you can add your extra logic on top of these actions. For example your own Helm uninstall pipeline might also have a notification step that posts a message to a Slack channel after a release is removed.
 
->Only [Codefresh admin users]({{site.baseurl}}/docs/administration/access-control/#users-and-administrators) can override the default pipelines defined for a Helm release.
+>Only [Codefresh admin users]({{site.baseurl}}/docs/administration/account-user-management/access-control/#users-and-administrators) can override the default pipelines defined for a Helm release.
 
 1. In the Codefresh UI, from the DevOps Insights section in the sidebar, select [**Helm Releases**](https://g.codefresh.io/helm/releases/releasesNew/){:target="\_blank"}. 
 1. In the row with the Helm release for which to override default actions, click the **Settings** (gear) icon.
@@ -227,7 +227,7 @@ max-width="50%"
 1. Select the pipeline to use for the respective actions.
 
 ### Environment variables for custom Helm commands 
-If you do override any of these actions, the following [environment variables]({{site.baseurl}}/docs/codefresh-yaml/variables/) are available in the respective pipeline, so that you can use your own custom Helm command.
+If you do override any of these actions, the following [environment variables]({{site.baseurl}}/docs/pipelines/variables/) are available in the respective pipeline, so that you can use your own custom Helm command.
 
 **Helm Test pipeline**  
 * `CF_HELM_RELEASE`: Name of release
@@ -259,5 +259,5 @@ If you do override any of these actions, the following [environment variables]({
 ## Related articles
 [Using Helm in a Codefresh pipeline]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/)  
 [Helm charts and repositories]({{site.baseurl}}/docs/deployments/helm/helm-charts-and-repositories/)  
-[Codefresh-managed Helm Repositories]({{site.baseurl}}/docs/deployments/helm/managed-helm-repository/)  
-[Helm promotion boards]({{site.baseurl}}/docs/deployments/helm/helm-environment-promotion)  
+[Using a managed Helm repository]({{site.baseurl}}/docs/deployments/helm/managed-helm-repository/)  
+[Promoting Helm Environments]({{site.baseurl}}/docs/deployments/helm/helm-environment-promotion)  
