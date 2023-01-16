@@ -1,5 +1,5 @@
 ---
-title: "GitOps quick starts"
+title: "WIP GitOps quick starts"
 description: ""
 group: quick-start
 toc: true
