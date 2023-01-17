@@ -129,6 +129,7 @@ See [Jira notifications in Codefresh]({{site.baseurl}}/docs/integrations/notific
 
 ## Related articles
 [Codefresh for CD]({{site.baseurl}}/docs/getting-started/cd-codefresh/)  
+[Codefresh for GitOps]({{site.baseurl}}/docs/getting-started/gitops-codefresh/)  
 [Concepts in Codefresh]({{site.baseurl}}/docs/getting-started/concepts/)  
 
 

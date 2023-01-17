@@ -114,4 +114,5 @@ See [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/).
 
 ## Related articles
 [Codefresh for CI]({{site.baseurl}}/docs/getting-started/ci-codefresh/)  
+[Codefresh for GitOps]({{site.baseurl}}/docs/getting-started/gitops-codefresh/)  
 [Concepts in Codefresh]({{site.baseurl}}/docs/getting-started/concepts/)  
