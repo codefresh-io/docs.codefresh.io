@@ -148,7 +148,7 @@ Unlike other CI options, the Git repository that contains the pipeline can be co
 
 **Use branch from Git trigger**  
 
-The **Use branch from Git trigger** option is very important, as it defines the branch in the Git repo the pipeline is loaded from. In most cases, you want to keep this enabled as it loads the pipeline from the same branch that triggered the build.
+The **Use branch from Git trigger** option is very important, as it defines the branch in the Git repo from which the pipeline is loaded. In most cases, you want to keep this enabled as it loads the pipeline from the same branch that triggered the build.
 
 For example, if you open a new pull request for a branch named `feature-x`, that has changes both in source code and in the pipeline definition itself, ideally you would want the pipeline responsible for the build to be the same one that contains the new changes in the `feature-x` branch.
 
@@ -174,11 +174,11 @@ max-width="70%"
 You can then copy and paste the URL to a raw Codefresh YAML file.  This will allow you to load a Codefresh YAML from any URL. 
 
 
-> GitHub requires a raw URL. 
+> GitHub requires a raw URL.  
   As an example:  
-    instead of using `https://github.com/codefresh-contrib/example-voting-app/blob/master/codefresh.yml`
-    you should enter   
-    `https://raw.githubusercontent.com/codefresh-contrib/example-voting-app/master/codefresh.yml`
+  Instead of `https://github.com/codefresh-contrib/example-voting-app/blob/master/codefresh.yml`,  
+  use:    
+  `https://raw.githubusercontent.com/codefresh-contrib/example-voting-app/master/codefresh.yml`
 
 ## Pipeline settings
 
