@@ -19,7 +19,7 @@ max-width="80%"
 
 ## Prerequisites for using Coveralls
 
-* A simple [Codefresh pipeline up and running](https://codefresh.io/docs/docs/getting-started/create-a-codefresh-account/)
+* A simple [Codefresh pipeline up and running]({{site.baseurl}}/docs/administration/account-user-management/create-codefresh-account/)
 * A [Coveralls account](https://coveralls.io/) (free or enterprise) -- Note that all open-source projects are free on Coveralls
 * A testing tool added to your project that produces coverage reports
 
@@ -84,7 +84,7 @@ max-width="80%"
 ## Codefresh pipeline
 
 <!--change the x-ref after final update-->
-In case the project that you want to use Coveralls in does not have a pipeline, [create a new pipeline]({{site.baseurl}}/docs/getting-started/create-a-basic-pipeline/).
+If the project you want to use Coveralls in does not have a pipeline, [create a new pipeline]({{site.baseurl}}/docs/quick-start/ci-quickstart/create-ci-pipeline/).
 
 {% include image.html 
 lightbox="true" 
@@ -218,4 +218,4 @@ max-width="80%"
 [Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
 [Unit tests]({{site.baseurl}}/docs/testing/unit-tests/)  
 [Integration tests]({{site.baseurl}}/docs/testing/integration-tests/)  
-[Sonarqube Integration]({{site.baseurl}}/docs/testing/sonarqube-integration/) 
+[SonarQube integration]({{site.baseurl}}/docs/testing/sonarqube-integration/) 

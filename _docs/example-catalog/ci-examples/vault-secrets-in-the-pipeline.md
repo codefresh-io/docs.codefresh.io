@@ -10,7 +10,7 @@ Codefresh offers a Vault plugin you may use from the [Step Marketplace](https://
 
 ## Prerequisites
 
-- A [free Codefresh account](https://codefresh.io/docs/docs/getting-started/create-a-codefresh-account/)
+- A [Codefresh account]({{site.baseurl}}/docs/administration/account-user-management/create-codefresh-account/)
 - An existing Vault server [already setup](https://learn.hashicorp.com/vault/getting-started/install){:target="\_blank"}
 - A secret stored in said Vault server with a key of `password`
 - A Vault [authorization token](https://learn.hashicorp.com/vault/getting-started/authentication#tokens){:target="\_blank"}
@@ -111,6 +111,6 @@ You will see that the variable was correctly exported to the pipeline by running
   %}
   
 ## Related articles
-[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/ci-examples/)  
+[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/#ci-examples)  
 [Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
 

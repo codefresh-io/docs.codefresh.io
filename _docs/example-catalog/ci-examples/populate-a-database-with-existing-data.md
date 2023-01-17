@@ -9,7 +9,7 @@ toc: true
 old_url: /docs/populate-a-database-with-existing-data-copied
 was_hidden: true
 ---
-In another example we saw how to run [integration tests with a database]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-postgres/) such as PostgreSQL. Sometimes however, the integration tests require the database to already have some test data beforehand. With Codefresh you can use the [setup block]({{site.baseurl}}/docs/pipelines/service-containers/#preloading-data-to-databases) in service containers to preload data to a database.
+In another example, we saw how to run [integration tests with a database]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-postgres/) such as PostgreSQL. Sometimes however, the integration tests require the database to already have some test data beforehand. With Codefresh you can use the [setup block]({{site.baseurl}}/docs/pipelines/service-containers/#preloading-data-to-databases) in service containers to preload data to a database.
 
 
 {% include image.html 
@@ -144,10 +144,10 @@ All containers are discarded after the pipeline has finished.
 ## Related articles
 [CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)  
 [Integration test example]({{site.baseurl}}/docs/example-catalog/ci-examples/run-integration-tests/)  
-[Integration Tests with Postgres]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-postgres/)  
-[Integration Tests with MySQL]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-mysql/)  
-[Integration Tests with Mongo]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-mongo/)  
-[Integration Tests with Redis]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-redis/)  
+[Integration tests with Postgres]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-postgres/)  
+[Integration tests with MySQL]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-mysql/)  
+[Integration tests with Mongo]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-mongo/)  
+[Integration tests with Redis]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-redis/)  
 
 
 

@@ -27,7 +27,7 @@ You can achieve parallelism in your Codefresh pipelines by using the following:
 
 ## Prerequisites
 
-- A [free Codefresh account]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/)
+- A [free Codefresh account]({{site.baseurl}}/_docs/administration/account-user-management/create-codefresh-account/)
 
 ## Example project
 
@@ -190,7 +190,7 @@ The order of your build steps doesn't matter in this case, each step is executed
 - Step3 (smoke tests) does not execute until Step2 is completed
 - Step3 and Step4 fan in to the final step, Step5 (integration tests)
 
-This pipeline consists of the following:
+This pipeline does the following:
 
 1. Clones the main repository through a [Git-clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/).
 2. Builds the cloned source code into a Docker image through a [build step]({{site.baseurl}}/docs/pipelines/steps/build/).

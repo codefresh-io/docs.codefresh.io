@@ -100,7 +100,7 @@ We generally recommend the first approach, so that your production Docker image 
 [CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)  
 [Unit tests]({{site.baseurl}}/docs/testing/unit-tests/)  
 [Integration test example]({{site.baseurl}}/docs/example-catalog/ci-examples/run-integration-tests/)  
-[Service Containers]({{site.baseurl}}/docs/pipelines/service-containers/)  
+[Service containers in pipelines]({{site.baseurl}}/docs/pipelines/service-containers/)  
 [Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
 
 

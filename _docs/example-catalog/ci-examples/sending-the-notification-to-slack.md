@@ -11,7 +11,7 @@ toc: true
 There are many ways to integrate Slack with Codefresh:
 
 1. Use the [global slack integration]({{site.baseurl}}/docs/integrations/notifications/slack-integration/)
-1. Use individual pipeline plugins such [slack-message-sender](https://codefresh.io/steps/step/slack-message-sender){:target:"\_blank"} and [slack-notifier](https://codefresh.io/steps/step/slack-notifier){:target:"\_blank"}
+1. Use individual pipeline plugins such [slack-message-sender](https://codefresh.io/steps/step/slack-message-sender){:target="\_blank"} and [slack-notifier](https://codefresh.io/steps/step/slack-notifier){:target="\_blank"}
 1. Use simple POST requests with Curl, as explained in this article
 
 ## Custom webhook to Slack
@@ -19,7 +19,7 @@ There are many ways to integrate Slack with Codefresh:
 Use a container image with a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/) such as `byrnedo/alpine-curl` to send a notification to a Slack channel.
 
 {:start="1"}
-1. Get the {% raw %}```${{SLACK_WEB_URL}}```{% endraw %} and put it in the Environment Variables or use [shared configuration]({{site.baseurl}}/docs/pipelines/shared-configuration/).
+1. Get the {% raw %}```${{SLACK_WEB_URL}}```{% endraw %} and put it in the Environment Variables or use [shared configuration]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/).
 
  > To integrate with Slack, see [https://api.slack.com/incoming-webhooks](https://api.slack.com/incoming-webhooks){:target="_blank"}.
 
@@ -37,8 +37,6 @@ slack_notify:
 
 ## Related articles
 [CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)  
-[Global Slack Integration]({{site.baseurl}}/docs/integrations/notifications/slack-integration/)  
-[Advanced Workflows]({{site.baseurl}}/docs/pipelines/advanced-workflows/)  
+[Advanced workflows]({{site.baseurl}}/docs/pipelines/advanced-workflows/)  
 [Hooks in pipelines]({{site.baseurl}}/docs/pipelines/hooks/)  
-[Shared Configuration]({{site.baseurl}}/docs/pipelines/shared-configuration/)  
 

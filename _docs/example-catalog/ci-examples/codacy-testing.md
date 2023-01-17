@@ -19,7 +19,7 @@ max-width="100%"
 
 ## Prerequisites for using Codacy
 <!--- check with Kostis -->
-* A simple [Codefresh pipeline, up and running]({{site.baseurl}}/docs/getting-started/create-a-basic-pipeline/)
+* A simple [Codefresh pipeline, up and running]({{site.baseurl}}/docs/quick-start/ci-quickstart/create-ci-pipeline/)
 * A [Codacy account](https://www.codacy.com/){:target="\_blank"} (free, pro or enterprise)
 * A testing tool added to your project that produces coverage reports
 
@@ -53,7 +53,7 @@ max-width="80%"
 
 ## Codefresh pipeline
 
-In case the project that you want to use Codacy in does not have a pipeline, [create a new pipeline]({{site.baseurl}}/docs/getting-started/create-a-basic-pipeline/).
+If the project you want to use Codacy in does not have a pipeline, [create a new pipeline]({{site.baseurl}}/docs/quick-start/ci-quickstart/create-ci-pipeline/).
 
 {% include image.html 
 lightbox="true" 
@@ -75,7 +75,7 @@ alt="Provide Codacy ENV variable"
 max-width="80%" 
 %}
 
-Once the variable is called through the [Codefresh yml syntax]({{site.baseurl}}/docs/pipelines/variables/), it automatically uses the value provided within the variables section. If you are using this example as your pipeline, please delete anything in your pipeline. We can then add the following pipeline to our Inline YAML within the Workflow section in our UI:
+Once the variable is called through the [Codefresh YAML syntax]({{site.baseurl}}/docs/pipelines/variables/), it automatically uses the value provided within the variables section. If you are using this example as your pipeline, please delete anything in your pipeline. We can then add the following pipeline to our Inline YAML within the Workflow section in our UI:
 
 {% highlight yaml %}
 {% raw %}
@@ -171,4 +171,4 @@ max-width="90%"
 [Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
 [Unit tests]({{site.baseurl}}/docs/testing/unit-tests/)  
 [Integration tests]({{site.baseurl}}/docs/testing/integration-tests/)  
-[Sonarqube Integration]({{site.baseurl}}/docs/testing/sonarqube-integration/)   
+[SonarQube Integration]({{site.baseurl}}/docs/testing/sonarqube-integration/)   

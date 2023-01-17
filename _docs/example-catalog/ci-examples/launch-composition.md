@@ -80,6 +80,6 @@ max-width="90%"
 
 ## Related articles
 [CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)  
-[Unit tests]({{site.baseurl}}/docs/examples/example-catalog/ci-examples/run-integration-tests/)  
-[Integration tests]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-database/)  
-[Preview environments]({{site.baseurl}}/docs/getting-started/on-demand-environments/)  
+[Unit tests]({{site.baseurl}}/docs/example-catalog/ci-examples/run-integration-tests/)  
+[Integration tests with MySQL]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-mysql/)  
+[Preview environments]({{site.baseurl}}/docs/quick-start/ci-quickstart/on-demand-environments/)  

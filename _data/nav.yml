@@ -149,7 +149,7 @@
           url: "/shared-volumes-of-service-from-composition-step-for-other-yml-steps"          
         - title: Import data to MongoDB
           url: "/import-data-to-mongodb"
-        - title: Vault Secrets in the Pipeline
+        - title: Vault secrets pipelines
           url: "/vault-secrets-in-the-pipeline"
         - title: Decrypt with Mozilla SOPS
           url: "/decryption-with-mozilla-sops"

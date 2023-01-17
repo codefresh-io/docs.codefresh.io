@@ -19,7 +19,7 @@ max-width="50%"
 
 ## Prerequisites for using Codecov
 
-* A simple [Codefresh pipeline up and running](https://codefresh.io/docs/docs/getting-started/create-a-codefresh-account/)
+* A [Codefresh pipeline, up and running]({{site.baseurl}}/docs/administration/account-user-management/create-codefresh-account/)
 * A [Codecov account](https://codecov.io/){:target="\_blank"} (free or enterprise)
 * A testing tool added to your project that produces coverage reports
 
@@ -124,5 +124,5 @@ max-width="50%"
 [Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
 [Unit tests]({{site.baseurl}}/docs/testing/unit-tests/)  
 [Integration tests]({{site.baseurl}}/docs/testing/integration-tests/)  
-[Sonarqube Integration]({{site.baseurl}}/docs/testing/sonarqube-integration/) 
+[SonarQube integration]({{site.baseurl}}/docs/testing/sonarqube-integration/) 
 

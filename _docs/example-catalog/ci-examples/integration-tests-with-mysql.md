@@ -30,7 +30,7 @@ The integration tests look for a MySQL connection at `test_mysql_db:3306`.
 
 ## Example NodeJS project
 
-You can see the example project at [https://github.com/codefreshdemo/cf-example-unit-tests-with-composition](https://github.com/codefreshdemo/cf-example-unit-tests-with-composition){:target=\_blank"}. The repository contains the NodeJS source code and the simple integration test.
+You can see the example project at [https://github.com/codefreshdemo/cf-example-unit-tests-with-composition](https://github.com/codefreshdemo/cf-example-unit-tests-with-composition){:target="\_blank"}. The repository contains the NodeJS source code and the simple integration test.
 
 You can play with it locally by using Docker compose to launch both the application and the MySQL Database. 
 
@@ -105,6 +105,6 @@ Notice that we also use the `readiness` property in the testing phase so that we
 ## Related articles
 [CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)  
 [Integration test example]({{site.baseurl}}/docs/example-catalog/ci-examples/run-integration-tests/)  
-[Integration Tests with Postgres]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-postgres/)  
-[Integration Tests with Redis]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-redis/)  
-[Integration Tests with Mongo]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-mongo/)
+[Integration tests with Postgres]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-postgres/)  
+[Integration tests with Redis]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-redis/)  
+[Integration tests with Mongo]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-mongo/)

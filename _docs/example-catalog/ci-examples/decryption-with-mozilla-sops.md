@@ -8,7 +8,7 @@ toc: true
 
 ## Prerequisites
 
-- A [free Codefresh account]({{site.baseurl}}/docs/administration/create-a-codefresh-account/)
+- A [Codefresh account]({{site.baseurl}}/docs/administration/account-user-management/create-codefresh-account/)
 - A public and private GnuGP key pair
 - A credentials yaml, that is encrypted using Mozilla SOPS, and stored in your repository
 
@@ -92,7 +92,7 @@ caption="Pipeline Variables"
 max-width="90%"
 %}
 
-You can also add this [directly in the YAML itself]({{site.baseurl}}/docs/how-to-guides/migrating-from-travis-ci/#environment-variables).
+<!--- You can also add this [directly in the YAML itself]({{site.baseurl}}/docs/ci-cd-guides/migrating-from-travis-ci/#environment-variables). -->
 
 Here is the entire pipeline:
 
