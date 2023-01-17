@@ -9,7 +9,14 @@ toc: true
 Building Docker images is one of the most basic requirements of Codefresh pipelines and Argo Workflows. 
 Once you create an image, push the image to a registry, and report it to Codefresh, image information is continually updated in the Images page. 
 
-You can enrich the basic information reported with the image with issue-tracking metadata and annotations.
+By default each container registry has very basic information for a Docker image (timestamp, hash, size etc.)
+
+With Codefresh you can enrich the basic information reported with the image with issue-tracking metadata and annotations.
+For example you can mark images with information such as 
+
+* which Pull Request created this image
+* what tests and code coverage this image has
+* what security scans have run on it (and their results)
 
 ## Image reporting and enrichment flow 
 
@@ -23,9 +30,6 @@ Complete these steps to see images in the Images dashboard.
 
       Review different scenarios for building and pushing Docker images in  our [Build/push examples]({{site.baseurl}}/docs/example-catalog/examples/#buildpush-examples).
  
-    * GitOps
-      Create the Docker image.
-      [Create a Docker image using Kaniko](https://codefresh.io/argohub/workflow-template/kaniko){:target="\_blank"}. 
 
 {:start="2"}   
 1. (Mandatory) GitOps: Connect to Docker registries  
@@ -55,9 +59,10 @@ Complete these steps to see images in the Images dashboard.
 * In the Codefresh UI, from Artifacts in the sidebar, select [Images](https://g.codefresh.io/2.0/images){:target="\_blank"}.
 
 Image views are layered to show three levels of data: 
-* Repository and application deployment
-* Tags
-* Summary with metadata and binary information 
+
+1. Repository and application deployment
+1. Tags
+1. Summary with metadata and binary information 
 
 ### Filters for Image views
 As with any resource in Codefresh, the Image dashboard  support filters that allow you focus on the data that's important to you.
