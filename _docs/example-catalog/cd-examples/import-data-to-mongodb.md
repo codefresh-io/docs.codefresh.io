@@ -57,4 +57,4 @@ You can add the following example to your GitHub or Bitbucket account, and build
 {{site.data.callout.end}}
 
 ## Related articles
-[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#cd-examples)  
+[CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#cd-examples)  

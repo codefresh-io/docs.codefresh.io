@@ -171,7 +171,7 @@ This pipeline does the following:
    - Runs unit tests and packages the jar.  Note how you can directly refer to the service container's name (`my-redis-db-host`) when we set `server.host`
 
 ## Related articles
-[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)  
+[CI pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)  
 [Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [Vault secrets in pipelines]({{site.baseurl}}/docs/example-catalog/ci-examples/vault-secrets-in-the-pipeline/)  
 

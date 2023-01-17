@@ -6,20 +6,20 @@ sub_group: cd-examples
 toc: true
 ---
 
-In this example, we will cover how to trigger a Kubernetes deployment from a Dockerhub Push event using a Dockerhub [registry trigger]({{site.baseurl}}/docs/pipelines/triggers/dockerhub-triggers/#create-a-new-dockerhub-trigger).
+In this example, we will cover how to trigger a Kubernetes deployment from a Docker Hub Push event using a Dockerhub [registry trigger]({{site.baseurl}}/docs/pipelines/triggers/dockerhub-triggers/#create-a-new-dockerhub-trigger).
 
 Our example has two pipelines: one for packaging code (CI), and the second for deploying code (CD).
 
 ## Prerequisites
 
-- A [free Codefresh account](https://codefresh.io/docs/docs/getting-started/create-a-codefresh-account/)
-- A DockerHub registry [connected to your Codefresh account]({{site.baseurl}}/docs/integrations/docker-registries/#docker-hub)
+- A [Codefresh account]({{site.baseurl}}/docs/administration/account-user-management/create-codefresh-account/)
+- A Docker Hub registry [connected to your Codefresh account]({{site.baseurl}}/docs/integrations/docker-registries/#docker-hub)
 - A Kubernetes cluster [connected to your Codefresh account]({{site.baseurl}}/docs/integrations/kubernetes/#connect-a-kubernetes-cluster)
 - A service for your application [deployed to your cluster]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/#viewing-your-kubernetes-services)
 
 ## Example Project
 
-You can see the example project on [GitHub](https://github.com/codefresh-contrib/registry-trigger-sample-app/tree/master){:target=\_blank"}. The repository contains a simple Hello World NodeJs app as well as 2 pipelines.
+You can see the example project on [GitHub](https://github.com/codefresh-contrib/registry-trigger-sample-app/tree/master){:target="\_blank"}. The repository contains a simple Hello World NodeJs app as well as 2 pipelines.
 
 ## Create the CI Pipeline
 
@@ -83,7 +83,7 @@ This pipeline does the following:
 
 1. Clones the source code through a [Git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/).
 2. Builds a docker image tagged with the Application version through a [build step]({{site.baseurl}}/docs/pipelines/steps/build/).
-3. Pushes the Docker image through a [push step](https://codefresh.io/docs/docs/pipelines/steps/push/) to the Docker Hub registry you have integrated with Codefresh.
+3. Pushes the Docker image through a [push step]({{site.baseurl}}/docs/pipelines/steps/push/) to the Docker Hub registry you have integrated with Codefresh.
 
 ## Create the CD Pipeline
 
@@ -128,7 +128,7 @@ This pipeline does the following:
 1. Deploys the image to Kubernetes through a [deploy step]({{site.baseurl}}/docs/pipelines/steps/deploy/).  The deploy step uses a [Registry trigger]({{site.baseurl}}/docs/pipelines/triggers/dockerhub-triggers/#create-a-new-dockerhub-trigger) to kick off the pipeline when the updated image is pushed to the registry.
 
 ## Related articles
-[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#cd-examples)  
+[CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#cd-examples)  
 [Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
 [How Codefresh pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)  

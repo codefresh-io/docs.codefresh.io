@@ -8,7 +8,7 @@ toc: true
 
 ## Prerequisites
 
-- A [free Codefresh account]({{site.baseurl}}/docs/administration/account-user-management/create-codefresh-account)
+- A [Codefresh account]({{site.baseurl}}/docs/administration/account-user-management/create-codefresh-account)
 - A distribution of [Tomcat](https://tomcat.apache.org/download-90.cgi){:target="\_blank"} setup on a remote server (running with port 8080 exposed)
 
 ## The example Java Application
@@ -119,4 +119,4 @@ max-width="100%"
 %}
   
 ## Related articles
-[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#cd-examples)
+[CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#cd-examples)

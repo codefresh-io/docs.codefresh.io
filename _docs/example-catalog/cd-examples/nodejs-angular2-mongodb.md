@@ -49,4 +49,4 @@ Just head over to the example [__repository__](https://github.com/codefreshdemo/
 {{site.data.callout.end}}
 
 ## Related articles
-[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#cd-examples)  
+[CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#cd-examples)  

@@ -27,7 +27,7 @@ You can achieve parallelism in your Codefresh pipelines by using the following:
 
 ## Prerequisites
 
-- A [free Codefresh account]({{site.baseurl}}/_docs/administration/account-user-management/create-codefresh-account/)
+- A [Codefresh account]({{site.baseurl}}/_docs/administration/account-user-management/create-codefresh-account/)
 
 ## Example project
 
@@ -199,6 +199,6 @@ This pipeline does the following:
   - Use the image built in the second step as a [service container]({{site.baseurl}}/docs/pipelines/service-containers/)
  
 ## Related articles
-[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)  
+[CI pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)  
 [Parallel pipeline mode]({{site.baseurl}}/docs/pipelines/advanced-workflows/#parallel-pipeline-mode)  
 

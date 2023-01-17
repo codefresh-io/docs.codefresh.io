@@ -89,7 +89,7 @@ Notice that we also use the `readiness` property in the testing phase so that we
 
 
 ## Related articles
-[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)  
+[CI pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)  
 [Integration test example]({{site.baseurl}}/docs/example-catalog/ci-examples/run-integration-tests/)  
 [Integration tests with MySQL]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-mysql/)  
 [Integration tests with Redis]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-redis/)  

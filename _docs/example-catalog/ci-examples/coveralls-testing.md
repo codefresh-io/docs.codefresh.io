@@ -83,7 +83,7 @@ max-width="80%"
 
 ## Codefresh pipeline
 
-<!--change the x-ref after final update-->
+
 If the project you want to use Coveralls in does not have a pipeline, [create a new pipeline]({{site.baseurl}}/docs/quick-start/ci-quickstart/create-ci-pipeline/).
 
 {% include image.html 
@@ -213,7 +213,7 @@ max-width="80%"
 
 
 ## Related articles
-[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)  
+[CI pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)  
 [Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
 [Unit tests]({{site.baseurl}}/docs/testing/unit-tests/)  

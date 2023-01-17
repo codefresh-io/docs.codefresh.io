@@ -83,6 +83,6 @@ max-width="80%"
 %}
 
 ## Related articles
-[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/#ci-examples)  
+[CI pipeline examples]({{site.baseurl}}/docs/example-catalog/#ci-examples)  
 [Send notifications to Slack]({{site.baseurl}}/docs/example-catalog/ci-examples/sending-the-notification-to-slack/)  
 [Create a pipeline]({{site.baseurl}}/docs/pipelines/pipelines/)  

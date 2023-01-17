@@ -97,7 +97,7 @@ In the second case, the tests run in the context of `build_before_my_tests` whic
 We generally recommend the first approach, so that your production Docker image does not contain any unit testing libraries or frameworks, but there is no right or wrong choice regarding the way you run unit tests. 
 
 ## Related articles
-[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)  
+[CI pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)  
 [Unit tests]({{site.baseurl}}/docs/testing/unit-tests/)  
 [Integration test example]({{site.baseurl}}/docs/example-catalog/ci-examples/run-integration-tests/)  
 [Service containers in pipelines]({{site.baseurl}}/docs/pipelines/service-containers/)  

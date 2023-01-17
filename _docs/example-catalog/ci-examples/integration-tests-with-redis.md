@@ -122,7 +122,7 @@ Notice that we use the helper image both for running the test (because of `curl`
 
 
 ## Related articles
-[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)  
+[CI pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)  
 [Integration test example]({{site.baseurl}}/docs/example-catalog/ci-examples/run-integration-tests/)  
 [Integration tests with Postgres]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-postgres/)  
 [Integration tests with MySQL]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-mysql/)  

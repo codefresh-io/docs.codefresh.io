@@ -36,7 +36,7 @@ slack_notify:
 
 
 ## Related articles
-[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)  
+[CI pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)  
 [Advanced workflows]({{site.baseurl}}/docs/pipelines/advanced-workflows/)  
 [Hooks in pipelines]({{site.baseurl}}/docs/pipelines/hooks/)  
 

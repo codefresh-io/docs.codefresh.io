@@ -10,7 +10,7 @@ redirect_from:
 
 ## Prerequisites
 
-- A [free Codefresh account]({{site.baseurl}}/docs/administration/account-management/create-a-codefresh-account/){:target="\_blank"}
+- A [Codefresh account]- A [Codefresh account]({{site.baseurl}}/docs/administration/account-user-management/create-codefresh-account/)
 - A remote machine with an FTP server and SSH setup (ensure that your FTP directory, I.e., `/srv/ftp/pub` has the proper write permissions for the FTP user).
 
 >Note that as you may already know, FTP is extremely insecure as it relies on plain-text passwords and usernames, making data very vulnerable to sniffing.  A more secure solution would be to use SFTP or SCP.
@@ -110,7 +110,7 @@ max-width="90%"
 %}
 
 ## Related articles
-[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#cd-examples)  
+[CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#cd-examples)  
 [Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
 [How Codefresh pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)

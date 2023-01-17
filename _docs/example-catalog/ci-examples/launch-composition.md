@@ -79,7 +79,7 @@ max-width="90%"
 %}
 
 ## Related articles
-[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)  
+[CI pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)  
 [Unit tests]({{site.baseurl}}/docs/example-catalog/ci-examples/run-integration-tests/)  
 [Integration tests with MySQL]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-mysql/)  
 [Preview environments]({{site.baseurl}}/docs/quick-start/ci-quickstart/on-demand-environments/)  

@@ -221,7 +221,7 @@ manifests. In an actual application, you should have two Git repositories (one o
 
 
 ## Related articles
-[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)  
+[CI pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)  
 [Codefresh GitOps]({{site.baseurl}}/docs/ci-cd-guides/gitops-deployments/)  
 [Using secrets]({{site.baseurl}}/docs/pipelines/configuration/secrets-store/)  
 [Secrets with Mozilla Sops]({{site.baseurl}}/docs/example-catalog/ci-examples/decryption-with-mozilla-sops/)  
