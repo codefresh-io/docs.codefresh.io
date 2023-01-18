@@ -4,6 +4,7 @@ description: "Use Codefresh to deploy Docker containers to ECS/Fargate"
 group: example-catalog
 sub_group: cd-examples
 redirect_from:
+  - /docs/yaml-examples/examples/amazon-ecs/
   - /docs/amazon-ecs/
   - /docs/deploy-your-containers/
   - /docs/deploy-your-containers/amazon-ecs/

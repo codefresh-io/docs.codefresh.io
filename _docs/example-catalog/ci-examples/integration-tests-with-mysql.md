@@ -4,6 +4,7 @@ description: "Launching a MySQL service container"
 group: example-catalog
 sub_group: ci-examples
 redirect_from:
+  - /docs/yaml-examples/examples/integration-tests-with-mysql/
   - /docs/nodejsmysql/
   - /docs/testing/unit-tests/unit-tests-with-mysql/
   - /docs/setup-unit-tests/

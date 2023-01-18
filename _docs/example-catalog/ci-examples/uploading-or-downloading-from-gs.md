@@ -3,6 +3,8 @@ title: "Upload/download files to/from Google Storage"
 description: "Upload and download a JAR from Google Storage from within a pipeline"
 group: example-catalog
 sub_group: ci-examples
+redirect_from:
+  - /docs/yaml-examples/examples/uploading-or-downloading-from-gs/
 toc: true
 ---
 

@@ -4,6 +4,7 @@ description: "Connect your Codefresh pipelines to Slack"
 group: example-catalog
 sub_group: ci-examples
 redirect_from:
+  - /docs/yaml-examples/examples/sending-the-notification-to-slack/
   - /docs/sending-the-notification-to-slack/
 toc: true
 ---

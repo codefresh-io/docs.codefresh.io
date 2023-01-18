@@ -4,6 +4,7 @@ description: "Launch separate App and test containers"
 group: example-catalog
 sub_group: ci-examples
 redirect_from:
+  - /docs/yaml-examples/examples/run-integration-tests/
   - /docs/run-integration-tests/
 toc: true
 ---

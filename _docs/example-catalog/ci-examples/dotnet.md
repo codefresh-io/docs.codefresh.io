@@ -3,6 +3,8 @@ title: "C# on .NET Core"
 description: "How to build a C# project in Codefresh"
 group: example-catalog
 sub_group: ci-examples
+redirect_from:
+  - /docs/learn-by-example/dotnet/
 toc: true
 ---
 

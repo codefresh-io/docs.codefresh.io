@@ -3,6 +3,8 @@ title: "Deploy with Terraform"
 description: "Use Terraform in a Codefresh pipeline with Docker"
 group: example-catalog
 sub_group: cd-examples
+redirect_from:
+  - /docs/yaml-examples/examples/terraform/
 toc: true
 ---
 

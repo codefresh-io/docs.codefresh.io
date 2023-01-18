@@ -3,6 +3,8 @@ title: "Codecov coverage reports"
 description: "How to forward coverage reports to Codecov"
 group: example-catalog
 sub_group: ci-examples
+redirect_from:
+  - /docs/yaml-examples/examples/codecov-testing/
 toc: true
 ---
 

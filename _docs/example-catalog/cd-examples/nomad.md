@@ -3,6 +3,8 @@ title: "Deploy to Nomad"
 description: "Deploy Docker images to a Nomad cluster with Codefresh"
 group: example-catalog
 sub_group: cd-examples
+redirect_from:
+  - /docs/yaml-examples/examples/nomad/
 toc: true
 ---
 

@@ -3,6 +3,8 @@ title: "Checking out from other source control systems"
 description: "Work with non-git repositories"
 group: example-catalog
 sub_group: ci-examples
+redirect_from:
+  - /docs/yaml-examples/examples/non-git-checkout/
 toc: true
 ---
 

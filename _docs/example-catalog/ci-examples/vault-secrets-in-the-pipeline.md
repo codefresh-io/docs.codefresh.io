@@ -3,6 +3,8 @@ title: "Vault secrets in pipelines"
 description: "Access and refer to Vault secrets in pipelines"
 group: example-catalog
 sub_group: ci-examples
+redirect_from:
+  - /docs/yaml-examples/examples/vault-secrets-in-the-pipeline/
 toc: true
 ---
 

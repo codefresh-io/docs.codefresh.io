@@ -4,6 +4,7 @@ description: "Get short SHA ID and use it in a CI Process"
 group: example-catalog
 sub_group: ci-examples
 redirect_from:
+  - /docs/yaml-examples/examples/get-short-sha-id-and-use-it-in-a-ci-process/
   - /docs/how-to-guides/
   - /docs/how-get-first-8-digits-of-sha/
 toc: true

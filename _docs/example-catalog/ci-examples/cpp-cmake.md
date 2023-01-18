@@ -3,6 +3,8 @@ title: "Compile and test a C++ application"
 description: "Using Codefresh pipelines"
 group: example-catalog
 sub_group: ci-examples
+redirect_from:
+  - /docs/learn-by-example/cc/cpp-cmake/
 toc: true
 ---
 

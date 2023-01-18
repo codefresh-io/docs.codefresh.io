@@ -3,6 +3,8 @@ title: "Check out Git repositories"
 description: "Use the Codefresh native GIT integration"
 group: example-catalog
 sub_group: ci-examples
+redirect_from:
+  - /docs/yaml-examples/examples/git-checkout/
 toc: true
 ---
 

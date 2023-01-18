@@ -5,6 +5,7 @@ excerpt: ""
 group: example-catalog
 sub_group: ci-examples
 redirect_from:
+  - /docs/learn-by-example/nodejs/voting-app/
   - /docs/voting-app-1/
   - /docs/python/voting-app/
 toc: true

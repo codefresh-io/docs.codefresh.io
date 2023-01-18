@@ -3,6 +3,8 @@ title: "Call a CD pipeline from a CI pipeline"
 description: "How to call child pipelines from a parent pipeline"
 group: example-catalog
 sub_group: ci-examples
+redirect_from:
+  - /docs/yaml-examples/examples/call-child-pipelines/
 toc: true
 ---
 

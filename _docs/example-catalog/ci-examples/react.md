@@ -3,6 +3,8 @@ title: "React example with Yarn"
 description: "Create Docker images for React applications"
 group: example-catalog
 sub_group: nodejs
+redirect_from:
+  - /docs/learn-by-example/nodejs/react/
 toc: true
 ---
 <!-- ask Kostis what to do with this x-ref as there is no subcategory for node.js -->

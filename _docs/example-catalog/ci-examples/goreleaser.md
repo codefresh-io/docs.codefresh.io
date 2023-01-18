@@ -3,6 +3,8 @@ title: "Compile and release a Go application"
 description: "Using Codefresh pipelines"
 group: example-catalog
 sub_group: ci-examples
+redirect_from:
+  - /docs/learn-by-example/golang/goreleaser/
 toc: true
 ---
 

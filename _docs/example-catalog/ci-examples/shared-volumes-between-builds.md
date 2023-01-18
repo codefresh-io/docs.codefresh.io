@@ -4,6 +4,7 @@ description: "How to cache folders between steps and builds"
 group: example-catalog
 sub_group: ci-examples
 redirect_from:
+  - /docs/yaml-examples/examples/shared-volumes-between-builds/
   - /docs/shared-volumes-between-builds/
 toc: true
 ---

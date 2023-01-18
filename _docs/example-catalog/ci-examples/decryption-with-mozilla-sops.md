@@ -3,6 +3,8 @@ title: "Decrypt with Mozilla SOPS"
 description: "Store secrets in your repository and decrypt them using Mozilla SOPS"
 group: example-catalog
 sub_group: ci-examples
+redirect_from:
+  - /docs/yaml-examples/examples/decryption-with-mozilla-sops/
 toc: true
 ---
 

@@ -4,6 +4,7 @@ description: "How to run manually kubectl in a Codefresh pipeline"
 group: example-catalog
 sub_group: cd-examples
 redirect_from:
+  - /docs/yaml-examples/examples/use-kubectl-as-part-of-freestyle-step/
   - /docs/use-kubectl-as-part-of-freestyle-step/
 toc: true
 ---

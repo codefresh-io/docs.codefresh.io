@@ -5,6 +5,7 @@ excerpt: ""
 group: example-catalog
 sub_group: ci-examples
 redirect_from:
+  - /docs/learn-by-example/python/django/
   - /docs/django/
   - /docs/python/django/
 toc: true

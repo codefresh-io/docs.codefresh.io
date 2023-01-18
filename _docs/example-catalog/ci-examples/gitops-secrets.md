@@ -3,6 +3,8 @@ title: "Secrets with GitOps"
 description: "Store secrets in Git with Bitnami sealed secrets"
 group: example-catalog
 sub_group: ci-examples
+redirect_from:
+  - /docs/yaml-examples/examples/gitops-secrets/
 toc: true
 ---
 

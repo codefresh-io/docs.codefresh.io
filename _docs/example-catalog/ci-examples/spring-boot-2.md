@@ -5,6 +5,7 @@ excerpt: ""
 group: example-catalog
 sub_group: ci-examples
 redirect_from:
+  - /docs/learn-by-example/java/spring-boot-2/
   - /docs/spring-boot-2/
   - /docs/java/spring-boot-2/
 toc: true

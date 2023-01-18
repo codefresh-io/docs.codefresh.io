@@ -4,6 +4,7 @@ description: "How to share data in compositions"
 group: example-catalog
 sub_group: ci-examples
 redirect_from:
+  - /docs/yaml-examples/examples/shared-volumes-of-service-from-composition-step-for-other-yml-steps/
   - /docs/shared-volumes-of-service-from-composition-step-for-other-yml-steps/
 toc: true
 ---

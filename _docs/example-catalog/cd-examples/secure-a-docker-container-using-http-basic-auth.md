@@ -4,6 +4,7 @@ description: ""
 group: example-catalog
 sub_group: cd-examples
 redirect_from:
+  - /docs/yaml-examples/examples/secure-a-docker-container-using-http-basic-auth/
   - /docs/securing-docker-container-with-http-basic-auth/
   - /docs/on-demand-test-environment/examples-compositions/securing-docker-container-with-http-basic-auth/
   - /docs/on-demand-test-environment/example-compositions/secure-a-docker-container-using-http-basic-auth/ 

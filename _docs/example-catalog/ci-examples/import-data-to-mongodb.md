@@ -5,6 +5,7 @@ description: ""
 group: example-catalog
 sub_group: ci-examples
 redirect_from:
+  - /docs/yaml-examples/examples/integration-tests-with-mongo/
   - /docs/import-data-to-mongodb-in-composition/
   - /docs/on-demand-test-environment/example-compositions/import-data-to-mongodb/   
 toc: true

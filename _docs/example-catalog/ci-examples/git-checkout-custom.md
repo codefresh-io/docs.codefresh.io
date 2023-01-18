@@ -4,6 +4,7 @@ description: "Manually clone Git repositories"
 group: example-catalog
 sub_group: ci-examples
 redirect_from:
+  - /docs/yaml-examples/examples/git-checkout-custom/
   - /docs/git-clone-private-repository-using-freestyle-step/
   - /docs/example-catalog/ci-examples/git-clone-private-repository-using-freestyle-step/
 toc: true

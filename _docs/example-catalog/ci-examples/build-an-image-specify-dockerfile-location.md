@@ -4,6 +4,7 @@ description: "How to choose a Dockerfile to build with Codefresh pipelines"
 group: example-catalog
 sub_group: ci-examples
 redirect_from:
+  - /docs/yaml-examples/examples/build-an-image-specify-dockerfile-location/
   - /docs/build-an-image-specify-dockerfile-location/
 toc: true
 ---

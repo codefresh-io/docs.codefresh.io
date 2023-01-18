@@ -4,6 +4,7 @@ description: "Using Codefresh pipelines"
 group: example-catalog
 sub_group: ci-examples
 redirect_from:
+  - /docs/learn-by-example/golang/golang-hello-world/
   - /docs/go/cf-example-golang-hello-world/
 toc: true
 ---

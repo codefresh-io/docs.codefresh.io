@@ -4,6 +4,7 @@ description: ""
 group: example-catalog
 sub_group: cd-examples
 redirect_from:
+  - /docs/yaml-examples/examples/web-terminal/
   - /docs/web-terminal/
   - /docs/on-demand-test-environment/example-compositions/web-terminal/
 toc: true

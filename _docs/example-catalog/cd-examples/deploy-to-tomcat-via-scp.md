@@ -3,6 +3,8 @@ title: "Deploy to a VM via SCP"
 description: "Deploy your application to Tomcat using SCP"
 group: example-catalog
 sub_group: cd-examples
+redirect_from:
+  - /docs/yaml-examples/examples/deploy-to-tomcat-via-scp/
 toc: true
 ---
 

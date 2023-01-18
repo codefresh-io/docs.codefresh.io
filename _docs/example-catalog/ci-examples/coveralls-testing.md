@@ -3,6 +3,8 @@ title: "Coveralls coverage reports"
 description: "How to forward coverage reports to Coveralls"
 group: example-catalog
 sub_group: ci-examples
+redirect_from:
+  - /docs/yaml-examples/examples/coveralls-testing/
 toc: true
 ---
 

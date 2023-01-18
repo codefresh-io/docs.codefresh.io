@@ -5,6 +5,7 @@ excerpt: ""
 group: example-catalog
 sub_group: ci-examples
 redirect_from:
+  - /docs/learn-by-example/java/gradle/
   - /docs/java/gradle/
 toc: true
 ---

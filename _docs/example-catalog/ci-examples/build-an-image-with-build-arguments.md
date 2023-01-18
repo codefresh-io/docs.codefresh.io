@@ -4,6 +4,7 @@ description: "Use Docker arguments in Codefresh pipelines"
 group: example-catalog
 sub_group: ci-examples
 redirect_from:
+  - /docs/yaml-examples/examples/build-an-image-with-build-arguments/
   - /docs/build-an-image-with-build-arguments/
 toc: true
 ---

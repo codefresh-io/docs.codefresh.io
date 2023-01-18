@@ -4,6 +4,7 @@ description: "Launching a PostgreSQL service container"
 group: example-catalog
 sub_group: ci-examples
 redirect_from:
+  - /docs/yaml-examples/examples/integration-tests-with-postgres/
   - /docs/unit-tests-with-postgres/
   - /docs/testing/unit-tests/unit-tests-with-postgres/   
 toc: true

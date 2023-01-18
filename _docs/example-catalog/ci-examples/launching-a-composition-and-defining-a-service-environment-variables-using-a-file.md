@@ -4,6 +4,7 @@ description: "Launch a composition and define a service environment variable usi
 group: example-catalog
 sub_group: ci-examples
 redirect_from:
+  - /docs/yaml-examples/examples/launching-a-composition-and-defining-a-service-environment-variables-using-a-file/
   - /docs/launching-a-composition-and-passing-a-service-environment-variable-using-a-file/
 toc: true
 old_url: /docs/launching-a-composition-and-passing-a-service-environment-variable-using-a-file

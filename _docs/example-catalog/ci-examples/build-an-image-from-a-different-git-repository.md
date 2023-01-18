@@ -4,6 +4,7 @@ description: "Build microservices from other repositories"
 group: example-catalog
 sub_group: ci-examples
 redirect_from:
+  - /docs/yaml-examples/examples/build-an-image-from-a-different-git-repository/
   - /docs/build-an-image-from-a-different-git-repository/
 toc: true
 ---

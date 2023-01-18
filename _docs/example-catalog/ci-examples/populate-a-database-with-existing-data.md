@@ -4,6 +4,7 @@ description: "Preload test data before integration tests"
 group: example-catalog
 sub_group: ci-examples
 redirect_from:
+  - /docs/yaml-examples/examples/populate-a-database-with-existing-data/
   - /docs/populate-a-database-with-existing-data-copied/
 toc: true
 old_url: /docs/populate-a-database-with-existing-data-copied

@@ -3,6 +3,8 @@ title: "Send notification to Jira"
 description: ""
 group: example-catalog
 sub_group: ci-examples
+redirect_from:
+  - /docs/yaml-examples/examples/sending-the-notification-to-jira/
 toc: true
 ---
 

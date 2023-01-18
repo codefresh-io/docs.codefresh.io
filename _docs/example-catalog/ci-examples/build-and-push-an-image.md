@@ -4,6 +4,7 @@ description: "Build Docker images and push them to registries with Codefresh"
 group: example-catalog
 sub_group: ci-examples
 redirect_from:
+  - /docs/yaml-examples/examples/build-and-push-an-image/
   - /docs/build-and-push-an-image/
   - /docs/docker-registries/push-image-to-a-docker-registry/ 
 toc: true

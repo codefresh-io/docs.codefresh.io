@@ -4,6 +4,8 @@ description: "How to upload a JAR file to Nexus or artifactory"
 excerpt: ""
 group: example-catalog
 sub_group: ci-examples
+redirect_from:
+  - /docs/learn-by-example/java/publish-jar/
 toc: true
 ---
 

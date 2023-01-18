@@ -3,6 +3,8 @@ title: "Deploy with Helm"
 description: "Use Helm in a Codefresh pipeline"
 group: example-catalog
 sub_group: cd-examples
+redirect_from:
+  - /docs/yaml-examples/examples/helm/
 toc: true
 ---
 

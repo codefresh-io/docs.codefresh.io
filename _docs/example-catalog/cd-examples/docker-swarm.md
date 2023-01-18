@@ -4,6 +4,7 @@ description: "Deploy to Docker Swarm with Codefresh"
 group: example-catalog
 sub_group: cd-examples
 redirect_from:
+  - /docs/yaml-examples/examples/docker-swarm/
   - /docs/docker-swarm/
   - /docs/deploy-to-docker-swarm/
   - /docs/deploy-your-containers/docker-swarm/

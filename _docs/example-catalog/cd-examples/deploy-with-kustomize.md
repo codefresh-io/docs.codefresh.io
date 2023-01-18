@@ -3,6 +3,8 @@ title: "Deploy with Kustomize"
 description: "Deploy your services to Kubernetes using Kustomize"
 group: example-catalog
 sub_group: cd-examples
+redirect_from:
+  - /docs/yaml-examples/examples/deploy-with-kustomize/
 toc: true
 ---
 

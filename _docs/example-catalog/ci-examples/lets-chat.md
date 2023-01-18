@@ -4,6 +4,7 @@ description: "Create Docker images for Node/Express.js applications"
 group: example-catalog
 sub_group: ci-examples
 redirect_from:
+  - /docs/learn-by-example/nodejs/lets-chat/
   - /docs/lets-chat/
 toc: true
 ---

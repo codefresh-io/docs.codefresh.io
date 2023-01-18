@@ -3,6 +3,8 @@ title: "Trigger a Kubernetes Deployment from a Docker Hub Push Event"
 description: "Learn how to trigger a Kubernetes deployment when an image is updated"
 group: example-catalog
 sub_group: cd-examples
+redirect_from:
+  - /docs/yaml-examples/examples/trigger-a-k8s-deployment-from-docker-registry/
 toc: true
 ---
 

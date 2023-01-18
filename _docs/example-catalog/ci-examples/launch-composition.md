@@ -4,6 +4,7 @@ description: "Create a dynamic environment to preview your feature"
 group: example-catalog
 sub_group: ci-examples
 redirect_from:
+  - /docs/yaml-examples/examples/launch-composition/
   - /docs/launch-composition-1/
 toc: true
 ---

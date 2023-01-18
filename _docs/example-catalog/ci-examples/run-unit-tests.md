@@ -4,6 +4,7 @@ description: "Running unit tests in Codefresh pipelines"
 group: example-catalog
 sub_group: ci-examples
 redirect_from:
+  - /docs/yaml-examples/examples/run-unit-tests/
   - /docs/run-unit-tests/
 toc: true
 ---

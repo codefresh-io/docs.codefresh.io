@@ -4,6 +4,7 @@ description: "Launching a Redis service container"
 group: example-catalog
 sub_group: ci-examples
 redirect_from:
+  - /docs/yaml-examples/examples/integration-tests-with-redis/
   - /docs/python-redis/
   - /docs/testing/unit-tests/unit-tests-with-redis/   
 toc: true

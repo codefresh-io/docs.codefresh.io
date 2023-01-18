@@ -3,6 +3,14 @@ title: "CI/CD examples"
 description: "A collection of examples for Codefresh pipelines"
 group: example-catalog
 redirect_from:
+  - /docs/yaml-examples/examples/
+  - /docs/learn-by-example/scala/
+  - /docs/learn-by-example/python/
+  - /docs/learn-by-example/nodejs/
+  - /docs/learn-by-example/mobile/
+  - /docs/learn-by-example/java/
+  - /docs/learn-by-example/golang/
+  - /docs/learn-by-example/cc/
   - /docs/examples-v01/
   - examples.html
   - /docs/catalog-examples/

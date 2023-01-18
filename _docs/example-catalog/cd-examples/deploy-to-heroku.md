@@ -3,6 +3,8 @@ title: "Deploy to Heroku"
 description: "Deploy your application or image to Heroku"
 group: example-catalog
 sub_group: cd-examples
+redirect_from:
+  - /docs/yaml-examples/examples/deploy-to-heroku/
 toc: true
 ---
 

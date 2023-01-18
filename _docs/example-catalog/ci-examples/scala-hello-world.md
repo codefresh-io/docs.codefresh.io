@@ -5,6 +5,7 @@ excerpt: ""
 group: example-catalog
 sub_group: ci-examples
 redirect_from:
+  - /docs/learn-by-example/scala/scala-hello-world/
   - /docs/scala-hello-world/
 toc: true
 ---

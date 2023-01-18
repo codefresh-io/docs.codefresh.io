@@ -4,6 +4,7 @@ description: ""
 group: example-catalog
 sub_group: cd-examples
 redirect_from:
+  - /docs/yaml-examples/examples/spring-boot-kafka-zookeeper/
   - /docs/spring-boot-kafka-zookeeper/
   - /docs/on-demand-test-environment/example-compositions/spring-boot-kafka-zookeeper/  
 toc: true

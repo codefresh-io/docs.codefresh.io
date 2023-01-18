@@ -3,6 +3,8 @@ title: "Deploy to a Virtual Machine"
 description: "Deploy to Google Cloud in a Codefresh pipeline with Packer"
 group: example-catalog
 sub_group: cd-examples
+redirect_from:
+  - /docs/yaml-examples/examples/packer-gcloud/
 toc: true
 ---
 

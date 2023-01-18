@@ -3,9 +3,10 @@ title: "Deploy to VM via FTP"
 description: "Deploying a PHP application to a VM using FTP"
 group: example-catalog
 sub_group: cd-examples
-toc: true
 redirect_from:
-  - /docs//learn-by-example/java/spring-mvc-jdbc-template/
+  - /docs/yaml-examples/examples/transferring-php-ftp/
+  - /docs/learn-by-example/java/spring-mvc-jdbc-template/
+toc: true
 ---
 
 ## Prerequisites
