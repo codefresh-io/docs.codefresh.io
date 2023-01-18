@@ -91,8 +91,8 @@ The `SPLIT_CHAR` variable should hold the replacement character that was used fo
 
 {% include image.html 
 lightbox="true" 
-file="/images/2f1884a-codefresh_env_vars.png" 
-url="/images/2f1884a-codefresh_env_vars.png"
+file="/images/examples/docker-swarm/codefresh_env_vars.png" 
+url="/images/examples/docker-swarm/codefresh_env_vars.png"
 alt="Docker Swarm build parameters"
 caption="Docker Swarm build parameters"
 max-width="70%"
@@ -211,10 +211,10 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-The values of `MY_REGISTRY`, `MY_REGISTRY_USER` and `MY_REGISTRY_PASSWORD` depend upon the type of [your connected registry]({{site.baseurl}}/docs/integration/docker-registries/).
+The values of `MY_REGISTRY`, `MY_REGISTRY_USER` and `MY_REGISTRY_PASSWORD` depend upon the type of [your connected registry]({{site.baseurl}}/docs/integrations/docker-registries/).
 
 ## Related articles
-[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#cd-examples)  
+[CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#cd-examples)  
 [Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  

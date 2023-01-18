@@ -30,7 +30,7 @@ You can play with it locally after installing the `terraform` executable.
 
 ## Prerequisites
 
-You need to [create a Codefresh account]({{site.baseurl}}/docs/administration/create-a-codefresh-account/) and a Google account first. Then you need to create a [Service account Key](https://cloud.google.com/iam/docs/creating-managing-service-account-keys){:target="\_blank"} which will allow terraform to communicate with Google cloud.
+You need to [create a Codefresh account]({{site.baseurl}}/docs/administration/account-user-management/create-a-codefresh-account/) and a Google account first. Then you need to create a [Service account Key](https://cloud.google.com/iam/docs/creating-managing-service-account-keys){:target="\_blank"} which will allow terraform to communicate with Google cloud.
 
 
 Add your service account json as a pipeline variable called `ACCOUNT_JSON_CONTENT`. The content of this variable will be used
@@ -109,7 +109,7 @@ You can easily use the same pipeline or a different one for pull requests. In th
 
 
 ## Related articles
-[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#cd-examples)  
+[CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#cd-examples)  
 [Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
 [How Codefresh pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)

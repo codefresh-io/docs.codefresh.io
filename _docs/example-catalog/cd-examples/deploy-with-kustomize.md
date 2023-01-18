@@ -8,7 +8,7 @@ redirect_from:
 toc: true
 ---
 
-[Kustomize](https://kustomize.io) is a tool included with kubectl 1.14 that "lets you customize raw, template-free YAML files for multiple purposes, leaving the original YAML untouched and usable as is."
+[Kustomize](https://kustomize.io){:target="\_blank"} is a tool included with kubectl 1.14 that "lets you customize raw, template-free YAML files for multiple purposes, leaving the original YAML untouched and usable as is."
 
 Kustomize is more of an overlay engine, as opposed to a templating engine.  You create a base configuration and overlays.  Your overlays contain a *kustomization.yaml* file, and any variants/changes are applied over top of the base configuration.  Kustomize does not use templates at all.  
 
@@ -68,7 +68,7 @@ data:
   mysqlDB: "prod-mysql.example.com:3306"
 ```
 
-In addition, for the production environment, the number of replicas will be overlayed to 3 instead of 1 (as [defined in the base deployment](https://github.com/codefresh-contrib/kustomize-sample-app/blob/32e683f82940de0bf2de2da40fa6b150e2b24b23/base/deployment.yaml#L8)){:target="\_blank"}.
+In addition, for the production environment, the number of replicas will be overlayed to 3 instead of 1 (as [defined in the base deployment](https://github.com/codefresh-contrib/kustomize-sample-app/blob/32e683f82940de0bf2de2da40fa6b150e2b24b23/base/deployment.yaml#L8){:target="\_blank"}).
 
 `overlays/production/deployment.yaml`
 ```yaml
@@ -82,9 +82,8 @@ spec:
 
 ## Prerequisites
 
-- A [free Codefresh account]({{site.baseurl}}/docs/administration/account-user-management/create-codefresh-account)
-<!--change once moved-->
-- A Kubernetes cluster [connected to your Codefresh account](https://codefresh.io/docs/docs/integrations/kubernetes/#connect-a-kubernetes-cluster)
+- A [free Codefresh account]({{site.baseurl}}/docs/administration/account-user-management/create-codefresh-account/)
+- A Kubernetes cluster [connected to your Codefresh account]({{site.baseurl}}/docs/integrations/kubernetes/#connect-a-kubernetes-cluster)
 
 ## Create the staging environment pipeline 
 
@@ -239,8 +238,8 @@ max-width="100%"
 
 
 ## Related articles
-[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#cd-examples)  
-[Deployment options to Kubernetes]({{site.baseurl}}/docs/deployments/kubernetes/deployment-options-to-kubernetes)  
+[CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#cd-examples)  
+[Deployment options for Kubernetes]({{site.baseurl}}/docs/deployments/kubernetes/deployment-options-to-kubernetes)  
 [Running custom kubectl commands]({{site.baseurl}}/docs/deployments/kubernetes/custom-kubectl-commands/)  
 [Deploy with Helm]({{site.baseurl}}/docs/example-catalog/cd-examples/helm/)  
 

@@ -14,7 +14,7 @@ This tutorial will cover two examples, depending on your use case. If you are no
 
 ## Example Django Application
 
-You can find the example project on [GitHub](https://github.com/codefresh-contrib/heroku-python-django-sample-app).
+You can find the example project on [GitHub](https://github.com/codefresh-contrib/heroku-python-django-sample-app){:target="\_blank"}.
 
 The repository contains a Django starter project with the following commands:
 
@@ -28,7 +28,7 @@ Once launched the application presents the Django starter page at localhost:8000
 
 ### Prerequisites
 
-- A [free Codefresh account]({{site.baseurl}}/docs/administration/account-user-management/#create-a-codefresh-account/)
+- A [Codefresh account]({{site.baseurl}}/docs/administration/account-user-management/create-codefresh-account/)
 - A [free Heroku account](https://signup.heroku.com){:target="\_blank"}
 - A Heroku API token (you can find this under **Account Settings** and then scrolling down, you will find the API Key)
 
@@ -47,7 +47,7 @@ max-width="100%"
 
 You should be able to copy and paste this YAML in the in-line editor of the Codefresh UI.  It will automatically clone the project for you.
 
-Note that you need to change the environment variables in the deploy stage to your respective values.  You can do this directly [in the YAML itself]({{site.baseurl}}/docs/how-to-guides/migrating-from-travis-ci/#environment-variables), or through the Codefresh UI.  Navigate to the in-line editor, and to the right you will find a tab lebeled **Variables**.
+Note that you need to change the environment variables in the deploy stage to your respective values.  You can do this through the Codefresh UI.  Navigate to the in-line editor, and to the right you will find a tab labeled **Variables**.
 
 {% include image.html 
 lightbox="true" 
@@ -100,13 +100,13 @@ The above pipeline has the following steps:
 
 1. A [git-clone]({{site.baseurl}}/docs/pipelines/steps/git-clone/) step that clones the main repository
 2. A [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/) that installs dependencies and runs the unit tests
-3. A freestyle step that deploys the application to Heroku using the heroku-deployer plugin from the [Step Marketplace](https://codefresh.io/steps/step/heroku-deployer)
+3. A freestyle step that deploys the application to Heroku using the heroku-deployer plugin from the [Step Marketplace](https://codefresh.io/steps/step/heroku-deployer){:target="\_blank"}.
 
 ## Pipeline Example #2: Deploy a Docker Image to Heroku
 
 This example differs from the plugin usage, as it deploys a built Docker image to Heroku.
 
-Note that you need to change the environment variables to your respective values.  You can do this directly [in the YAML itself]({{site.baseurl}}/docs/how-to-guides/migrating-from-travis-ci/#environment-variables), or through the Codefresh UI.  Navigate to the in-line editor, and to the right you will find a tab lebeled **Variables**.
+Note that you need to change the environment variables to your respective values.  You can do this through the Codefresh UI.  Navigate to the in-line editor, and to the right you will find a tab labeled  **Variables**.
 
 {% include image.html 
 lightbox="true" 
@@ -119,10 +119,10 @@ max-width="100%"
 
 ## Prerequisites
 
-- A [free Codefresh account]({{site.baseurl}}/docs/administration/account-user-management/#create-a-codefresh-account/)
+- A [Codefresh account]({{site.baseurl}}/docs/administration/account-user-management/create-codefresh-account/)
 - A [free Heroku account](https://signup.heroku.com){:target="\_blank"}
 - An empty repository already created in Heroku using the `heroku create <IMAGE_NAME>` command
-- A Heroku registry [connected to Codefresh]({{site.baseurl}}/docs/docker-registries/external-docker-registries/other-registries/#heroku-registries)
+- A Heroku registry [connected to Codefresh]({{site.baseurl}}/docs/integrations/docker-registries/other-registries/#heroku-registries)
 - A Heroku API token (you can find this under **Account Settings** and then scrolling down, you will find the API Key)
 
 ### Create the pipeline 
@@ -211,4 +211,4 @@ The pipeline does the following:
 
 
 ## Related articles
-[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#cd-examples)
+[CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#cd-examples)

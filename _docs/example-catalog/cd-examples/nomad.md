@@ -11,7 +11,7 @@ toc: true
 Even though Codefresh has great support for Kubernetes and Helm deployments, there is no lock-in on using just Kubernetes. Codefresh can deploy on any infrastructure.
 
 
-[Nomad](https://www.nomadproject.io/){:target=\_blank"} is an alternative scheduling platform from Hashicorp. It supports docker containers (like Kubernetes), but you can also use Nomad to schedule VMs, Java apps, Go apps or any other standalone executable. 
+[Nomad](https://www.nomadproject.io/){:target="\_blank"} is an alternative scheduling platform from Hashicorp. It supports docker containers (like Kubernetes), but you can also use Nomad to schedule VMs, Java apps, Go apps or any other standalone executable. 
 
 There are several public Docker Images with Nomad, so it is very easy to use Codefresh pipelines to deploy to a Nomad cluster.
 
@@ -25,11 +25,11 @@ caption="Deploying to Nomad with Codefresh"
 max-width="80%" 
 %}
 
-In this example, we will use the image at [https://hub.docker.com/r/djenriquez/nomad](https://hub.docker.com/r/djenriquez/nomad){:target=\_blank"}.
+In this example, we will use the image at [https://hub.docker.com/r/djenriquez/nomad](https://hub.docker.com/r/djenriquez/nomad){:target="\_blank"}.
 
 ## The example Nomad project
 
-You can see the example project at [https://github.com/codefresh-contrib/nomad-sample-app](https://github.com/codefresh-contrib/nomad-sample-app){:target=\_blank"}. The repository contains a simple job specification that deploys a docker container on nomad cluster.
+You can see the example project at [https://github.com/codefresh-contrib/nomad-sample-app](https://github.com/codefresh-contrib/nomad-sample-app){:target="\_blank"}. The repository contains a simple job specification that deploys a docker container on nomad cluster.
 
 
 Here is the whole job file:
@@ -124,13 +124,13 @@ job "example-job" {
 {% endraw %}
 {% endhighlight %}
 
-Notice that the job specification has several [Codefresh variables]({{site.baseurl}}/docs/pipelines/variables/) embedded. We will use [envsubst](https://www.gnu.org/software/gettext/manual/html_node/envsubst-Invocation.html){:target=\_blank"} in our pipeline to replace
+Notice that the job specification has several [Codefresh variables]({{site.baseurl}}/docs/pipelines/variables/) embedded. We will use [envsubst](https://www.gnu.org/software/gettext/manual/html_node/envsubst-Invocation.html){:target="\_blank"} in our pipeline to replace
 them with the correct values.
 
 ## Prerequisites
 
 You need to create a Codefresh account and have a Nomad cluster running. You need to decide on how Codefresh will communicate
-with the nomad cluster. In this simple example we just use the `NOMAD_ADDR` variable to point the nomad client to our cluster. In a production environment you should use proper [ACL](https://www.nomadproject.io/guides/security/acl.html){:target=\_blank"} and [certificate](https://www.nomadproject.io/guides/security/securing-nomad.html){:target=\_blank"} variables as well.
+with the nomad cluster. In this simple example we just use the `NOMAD_ADDR` variable to point the nomad client to our cluster. In a production environment you should use proper [ACL](https://www.nomadproject.io/guides/security/acl.html){:target="\_blank"} and [certificate](https://www.nomadproject.io/guides/security/securing-nomad.html){:target="\_blank"} variables as well.
 
 
 In this example the Nomad cluster is already setup on a VM at Google cloud. 
@@ -221,7 +221,7 @@ max-width="80%"
 You can also use [Terraform]({{site.baseurl}}/docs/example-catalog/cd-examples/terraform/) in Codefresh pipelines.
 
 ## Related articles
-[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#cd-examples)  
+[CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#cd-examples)  
 [Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
 [How Codefresh pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)  
