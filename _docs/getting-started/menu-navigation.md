@@ -8,8 +8,10 @@ toc: true
 ## Classic to New navigation
 Get up to speed with the changes in the navigation.
 
-We added a new **Settings** icon to the toolbar to simplify access to account-level options, typically handled by Codefresh administrators.
-All account-level options and settings are in the same location. You now have _single-click access_ to these options whenever you need.
+
+We added a new **Settings** icon to the toolbar to simplify account-level management by Codefresh administrators.
+The Settings icon is always available, so you have _single-click access_ to account-level options and settings whenever you need.
+
 
 
 
@@ -26,15 +28,15 @@ All account-level options and settings are in the same location. You now have _s
 ### Avatar options
 
 {: .table .table-bordered .table-hover}
-|  CLASSIC             |                               |  |NEW              |             |
+|  CLASSIC             |                               | &rarr; |NEW              |             |
 |  Bucket              | Menu item                     | | Bucket        |  Menu item           | 
 | -------------------  | -------------------           |  | ---------------- | ---------  | 
-| **AVATAR**           |                              |  |                  |            |     
-|                       |Account Settings              |  |                  | Moved to Settings  |
-|                       |User Management               |  |                  | Moved to Settings  |               
-|                       |Billing                       |  |                  | Moved to Settings  |             
+| **AVATAR**           |                               |  |                  |            |     
+|                       |Account Settings              |&rarr;  |                  | Moved to Settings  |
+|                       |User Management               |&rarr;  |                  | Moved to Settings  |               
+|                       |Billing                       |&rarr;  |                  | Moved to Settings  |             
 |                       |User Settings                 |  |                  | No change                 |
-|                       |                              |  |                  | Git Personal Access Token |
+|                       |                              | &rarr; |                  | Git Personal Access Token |
 
 ### Account-level options
 
@@ -81,35 +83,35 @@ Access account-level options through the Settings icon:
 We renamed buckets and moved items for more intuitive access. 
 
 {: .table .table-bordered .table-hover}
-|  CLASSIC             |                         | |&rarr;              |NEW          |    
+|  CLASSIC             |                         | &rarr;|              |NEW          |    
 |  Bucket              | Menu item               | |                    |            | 
 | -------------------  | -------------------     |  | ----------------  | ---------  | 
 |                       |                        | |                    |  Home      |
-|                       |                        | | Insights       |            |
+|                       |                        |&rarr; | INSIGHTS       |            |
 |                       |                        | |               | DORA Metrics |
-|**Build > Test > Deploy**|                      | |Pipelines      |
+|                       |                        | |               |            |
+|**BUILD > TEST > DEPLOY**|                      |&rarr; |PIPELINES  |          |
 |                       |**Projects**            | |               | No change  |
 |                       |**Pipelines**           | |               | No change  |
 |                       |**Builds**              | |              | No change  |
 |                       |**Steps**               | |               | No change  |
 |                       |                        | |               |            |
-|**DevOps Insights**    |                        | |Ops            |            |
-|                       |                        | |                | GitOps Apps | 
-|                       |**Kubernetes > Services** | |               | Kubernetes Services |
+|**DEVOPS INSIGHTS**    |                        |&rarr; |OPS            |            |
+|                       |                        | &rarr;|                | GitOps Apps | 
+|                       |**Kubernetes > Services** | &rarr;|               | Kubernetes Services |
 |                       |**Kubernetes > Monitor** | |               | ???
 |                       |**Helm Releases**        | |               | No change  |
 |                       |**Helm Boards**          | |               | No change  |
 |                       |**Environments**         | |               | No change |
-|                       |**Kubernetes > Monitor** | |               | No change
-|                       |**GitOps**               | |               | Deprecated  |
+|                       |**GitOps**               |&rarr; |               | Deprecated  |
 |                       |                         | |               |            |
-|**Artifacts**          |                         | | No change
+|**ARTIFACTS**          |                         | | No change
 |                       |**Images**               | |               |  No change |
 |                       |**Helm Charts**          | |               |  No change |
 |                       |**Compositions**         | |               |  No change |
 |                       |                         | |               |            |
-|**Settings**           |                         | |               |            |
-|                       |**Account Settings**     | |               |(Moved) Settings in toolbar|
-|                       |**User Settings**        | |               | Avatar     |
+|**SETTINGS**           |                         | |               |            |
+|                       |**Account Settings**     |&rarr; |               |(Moved) Settings in toolbar|
+|                       |**User Settings**        |&rarr; |               | Avatar     |
 
 
