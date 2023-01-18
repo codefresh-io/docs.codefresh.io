@@ -3,6 +3,7 @@ title: "Microsoft Azure integration"
 description: "How to use Codefresh pipelines with Azure"
 group: integrations
 redirect_from:
+  - /docs/integrations/microsoft-azure/
   - /docs/microsoft-azure/
   - /docs/deploy-your-containers/microsoft-azure/
 toc: true

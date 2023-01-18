@@ -2,6 +2,8 @@
 title: "Amazon Web Services (AWS) pipeline integration"
 description: "How to use Codefresh with AWS"
 group: integrations
+redirect_from:
+  - /docs/integrations/amazon-web-services/
 toc: true
 ---
 

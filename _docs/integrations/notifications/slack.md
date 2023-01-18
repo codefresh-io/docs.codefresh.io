@@ -3,9 +3,10 @@ title: "Slack"
 description: "Get Slack notifications with pipeline integrations"
 group: integrations
 sub_group: notifications
+redirect_from:
+  - /docs/integrations/notifications/slack/
 permalink: /:collection/integrations/notifications/slack-integration/
 toc: true
-excerpt: "Integrate Codefresh with Slack to get updates on development and testing progress and feedback."
 ---
 
 You can integrate Slack globally, or for specific pipelines and builds.

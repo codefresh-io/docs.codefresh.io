@@ -2,6 +2,8 @@
 title: "ArgoCD integration for CI pipelines"
 description: "Connect Codefresh to your ArgoCD endpoint"
 group: integrations
+redirect_from:
+  - /docs/integrations/argocd/
 toc: true
 ---
 

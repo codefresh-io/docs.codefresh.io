@@ -3,6 +3,7 @@ title: "Git Providers"
 description: "Easily check out code in Codefresh CI pipelines"
 group: integrations
 redirect_from:
+  - /docs/integrations/git-providers/
   - /docs/git-provider/
   - /docs/integrations/
   - /docs/integrations/git-provider/

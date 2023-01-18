@@ -3,6 +3,7 @@ title: "Notifications"
 description: ""
 group: integrations
 redirect_from:
+  - /docs/integrations/notifications/
   - /docs/notifications/
 toc: true
 ---

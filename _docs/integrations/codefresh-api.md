@@ -3,9 +3,9 @@ title: "Codefresh API pipeline integration"
 description: "Integrate Codefresh CI pipelines with other systems"
 group: integrations
 redirect_from:
+  - /docs/integrations/codefresh-api/
   - /docs/codefresh-api/
 toc: true
-old_url: /docs/codefresh-api
 ---
 
 Codefresh offers a comprehensive API that you can use to integrate with any other application or solution you already have.

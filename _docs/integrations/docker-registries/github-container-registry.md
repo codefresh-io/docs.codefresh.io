@@ -4,6 +4,7 @@ description: "Push Docker images to GitHub Container Registry with pipeline inte
 group: integrations
 sub_group: docker-registries
 redirect_from:
+  - /docs/integrations/docker-registries/github-container-registry/
   - /docs/integrations/docker-registries/github-packages/
 toc: true
 ---

@@ -4,6 +4,7 @@ description: "Connect any Docker registry for pipeline integration"
 group: integrations
 sub_group: docker-registries
 redirect_from:
+  - /docs/integrations/docker-registries/other-registries/
   - /docs/other-registries/
   - /docs/docker-registries/external-docker-registries/other-registries/
 toc: true

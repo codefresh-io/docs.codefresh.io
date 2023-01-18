@@ -3,6 +3,8 @@ title: "DigitalOcean Container Registry"
 description: "Push Docker images to your DigitalOcean Container Registry with pipeline integration"
 group: integrations
 sub_group: docker-registries
+redirect_from:
+  - /docs/integrations/docker-registries/digital-ocean-container-registry/
 toc: true
 ---
 

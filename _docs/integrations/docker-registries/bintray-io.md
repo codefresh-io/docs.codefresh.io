@@ -4,6 +4,7 @@ description: "Use JFrog Bintray/Artifactory with pipeline integrations "
 group: integrations
 sub_group: docker-registries
 redirect_from:
+  - /docs/integrations/docker-registries/bintray-io/
   - /docs/bitrayio/
   - /docs/docker-registries/external-docker-registries/bintray-io/
 toc: true

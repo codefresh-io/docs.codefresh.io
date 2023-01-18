@@ -4,6 +4,7 @@ description: "Use the Azure Docker Registry for pipeline integrations"
 group: integrations
 sub_group: docker-registries
 redirect_from:
+  - /docs/integrations/docker-registries/azure-docker-registry/
   - /docs/docker-registries/external-docker-registries/azure-docker-registry/
 toc: true
 ---

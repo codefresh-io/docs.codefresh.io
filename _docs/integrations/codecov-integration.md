@@ -2,6 +2,8 @@
 title: "Codecov integration for CI pipelines"
 description: "Create Code Coverage Reports with Codefresh and Codecov"
 group: integrations
+redirect_from:
+  - /docs/integrations/codecov-integration/
 toc: true
 ---
 

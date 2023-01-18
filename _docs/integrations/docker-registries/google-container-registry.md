@@ -4,6 +4,7 @@ description: "Use GCR with pipeline integrations"
 group: integrations
 sub_group: docker-registries
 redirect_from:
+  - /docs/integrations/docker-registries/google-container-registry/
   - /docs/google-cloud-registry/
   - /docs/docker-registries/external-docker-registries/google-container-registry/
 toc: true

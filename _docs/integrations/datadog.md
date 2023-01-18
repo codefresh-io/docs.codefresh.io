@@ -2,6 +2,8 @@
 title: "Datadog integration"
 description: "Integrate Codefresh pipelines with Datadog for monitoring and analysis"
 group: integrations
+redirect_from:
+  - /docs/integrations/datadog/
 toc: true
 ---
 

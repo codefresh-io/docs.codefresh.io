@@ -2,6 +2,8 @@
 title: "Hosted GitOps integration"
 description: "Connect with our Hosted GitOps to leverage Managed Argo CD"
 group: integrations
+redirect_from:
+  - /docs/integrations/codefresh-hosted-gitops/
 toc: true
 ---
 

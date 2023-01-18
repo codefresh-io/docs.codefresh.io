@@ -3,6 +3,7 @@ title: "Jira pipeline integration"
 description: ""
 group: integrations
 redirect_from:
+  - /docs/integrations/jira/
   - /docs/jira-integration-1/
   - /docs/integrations/jira-integration-1/
 toc: true
