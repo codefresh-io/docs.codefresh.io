@@ -2,6 +2,8 @@
 title: "Deploying to predefined environments"
 description: "Deploy to different production and staging environments from Codefresh pipelines"
 group: ci-cd-guides
+redirect_from:
+  - /docs/ci-cd-guides/environment-deployments/
 toc: true
 ---
 

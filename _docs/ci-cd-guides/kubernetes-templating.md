@@ -2,6 +2,8 @@
 title: "Simple Kubernetes templating"
 description: "Use templates in your Kubernetes manifests"
 group: ci-cd-guides
+redirect_from:
+  - /docs/deploy-to-kubernetes/kubernetes-templating/
 toc: true
 ---
 

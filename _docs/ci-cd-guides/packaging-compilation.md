@@ -2,6 +2,8 @@
 title: "Building your app"
 description: "Compile and package traditional (non-Docker) artifacts"
 group: ci-cd-guides
+redirect_from:
+  - /docs/ci-cd-guides/packaging-compilation/
 toc: true
 ---
 

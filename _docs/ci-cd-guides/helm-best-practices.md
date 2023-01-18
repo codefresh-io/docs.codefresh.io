@@ -3,6 +3,7 @@ title: "Helm best practices"
 description: "High-level overview of Helm workflows"
 group: ci-cd-guides
 redirect_from:
+  - /docs/new-helm/helm-best-practices/
   - /docs/new-helm/best-practices/
 toc: true
 ---

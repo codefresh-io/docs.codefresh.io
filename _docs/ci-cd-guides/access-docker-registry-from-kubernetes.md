@@ -2,6 +2,8 @@
 title: "Accessing Docker registry from Kubernetes cluster"
 description: "Allow Kubernetes to pull Docker images from your registry"
 group: ci-cd-guides
+redirect_from:
+  - /docs/deploy-to-kubernetes/access-docker-registry-from-kubernetes/
 toc: true
 ---
 

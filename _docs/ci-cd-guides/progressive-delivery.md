@@ -2,6 +2,9 @@
 title: "Progressive Delivery"
 description: "Perform zero downtime deployments with Argo Rollouts"
 group: ci-cd-guides
+redirect_from:
+  - /docs/ci-cd-guides/progressive-delivery/
+  - /docs/how-to-guides/implementing-canary-release-with-kubernetes/
 toc: true
 ---
 

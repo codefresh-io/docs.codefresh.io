@@ -2,6 +2,8 @@
 title: "Previewing dynamic environments"
 description: "Deploy pull requests to cluster namespaces"
 group: ci-cd-guides
+redirect_from:
+  - /docs/ci-cd-guides/preview-environments/
 toc: true
 ---
 

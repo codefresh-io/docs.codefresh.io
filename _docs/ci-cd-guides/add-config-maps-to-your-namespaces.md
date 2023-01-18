@@ -2,6 +2,9 @@
 title: "Adding config maps to namespaces"
 description: "Manage Kubernetes Config Maps with Codefresh"
 group: ci-cd-guides
+redirect_from:
+  - /docs/deploy-to-kubernetes/add-config-maps-to-your-namespaces/
+  - /docs/add-config-maps-to-your-namespaces/
 toc: true
 ---
 Many applications require configuration with files, environment variables, and command line arguments. It makes applications portable and easily manageable. While this makes for easy configuration, it can become very hard to support tons of config files for different environments and hundreds of microservices. 

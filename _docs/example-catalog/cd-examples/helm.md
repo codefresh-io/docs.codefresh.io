@@ -6,7 +6,7 @@ sub_group: cd-examples
 toc: true
 ---
 
-[Helm](https://helm.sh/){:target=\_blank"} is the package manager for Kubernetes.  
+[Helm](https://helm.sh/){:target="\_blank"} is the package manager for Kubernetes.  
 Codefresh has comprehensive support for Helm:
 
 * Free [built-in Helm repository]({{site.baseurl}}/docs/deployments/helm/managed-helm-repository/) with each Codefresh account
