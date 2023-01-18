@@ -3,6 +3,8 @@ title: "Environment dashboard"
 description: "Viewing your deployment environments"
 group: deployments
 sub_group: kubernetes
+redirect_from:
+  - /docs/deploy-to-kubernetes/environment-dashboard/
 toc: true
 ---
 

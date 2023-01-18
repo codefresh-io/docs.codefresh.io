@@ -4,6 +4,7 @@ description: "Deploy to Kubernetes with the declarative deploy step"
 group: deployments
 sub_group: kubernetes
 redirect_from:
+  - /docs/deploy-to-kubernetes/environment-dashboard/
   - /docs/deploy-to-kubernetes/
   - /docs/deployment-to-kubernetes-quick-start-guide/
   - /docs/deploy-to-kubernetes/deployment-to-kubernetes-quick-start-guide/

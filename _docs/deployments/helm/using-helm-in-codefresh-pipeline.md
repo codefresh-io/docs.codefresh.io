@@ -4,6 +4,7 @@ description: "Deploy and push Helm charts with Codefresh"
 group: deployments
 sub_group: helm
 redirect_from:
+  - /docs/new-helm/using-helm-in-codefresh-pipeline/
   - /docs/deployments/helm/create-helm-artifacts-using-codefresh-pipeline/
   - /docs/install-helm-chart-using-codefresh-pipeline/  
 toc: true

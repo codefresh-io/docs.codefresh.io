@@ -3,6 +3,8 @@ title: "Custom kubectl commands"
 description: "Use kubectl in your Codefresh pipelines"
 group: deployments
 sub_group: kubernetes
+redirect_from:
+  - /docs/deploy-to-kubernetes/custom-kubectl-commands/
 toc: true
 ---
 

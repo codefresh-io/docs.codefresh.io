@@ -4,6 +4,7 @@ description: "Manage Helm deployments from the Codefresh UI"
 group: deployments
 sub_group: helm
 redirect_from:
+  - /docs/new-helm/helm-releases-management/
   - /docs/helm-releases-management/
   - /docs/deployments/helm/helm3/
 toc: true

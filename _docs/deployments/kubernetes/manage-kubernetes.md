@@ -4,6 +4,7 @@ description: "Use the graphical Kubernetes dashboard in Codefresh"
 group: deployments
 sub_group: kubernetes
 redirect_from:
+  - /docs/deploy-to-kubernetes/manage-kubernetes/
   - /docs/deploy-to-kubernetes/codefresh-kubernetes-integration-beta/
   - /docs/codefresh-kubernetes-integration-beta/
 toc: true

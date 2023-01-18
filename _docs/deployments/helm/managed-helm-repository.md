@@ -3,6 +3,8 @@ title: "Using a managed Helm repository"
 description: "Use the Codefresh integrated Helm repository"
 group: deployments
 sub_group: helm
+redirect_from:
+  - /docs/new-helm/managed-helm-repository/
 toc: true
 ---
 

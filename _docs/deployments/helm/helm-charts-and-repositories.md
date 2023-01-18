@@ -3,6 +3,10 @@ title: "Helm charts and repositories"
 description: "Use external Helm charts and repositories in Codefresh pipelines"
 group: deployments
 sub_group: helm
+redirect_from:
+  - /docs/new-helm/helm-charts-and-repositories/
+  - /docs/new-helm/
+  - /docs/add-helm-repository/
 toc: true
 ---
 Codefresh allows you to integrate with external Helm repositories and Helm charts in the Helm Charts page.  

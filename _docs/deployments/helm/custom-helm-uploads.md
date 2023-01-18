@@ -4,6 +4,7 @@ description: "Manually create and upload Helm packages"
 group: deployments
 sub_group: helm
 redirect_from:
+  - /docs/new-helm/custom-helm-uploads/
   - /docs/create-helm-artifacts-using-codefresh-pipeline/
 toc: true
 ---
