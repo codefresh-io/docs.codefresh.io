@@ -3,6 +3,7 @@ title: "Setting up SAML2 Federated SSO"
 description: "SAML2 Federated Single Sign-On (SSO) setup"
 group: single-sign-on
 redirect_from:
+  - /docs/single-sign-on/saml/
   - /docs/sso/sso-setup-saml2/
   - /docs/enterprise/single-sign-on/sso-setup-saml2/
 toc: true

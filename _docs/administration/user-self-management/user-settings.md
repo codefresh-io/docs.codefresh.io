@@ -3,6 +3,8 @@ title: "Managing personal user settings"
 description: "Manage your personal settings"
 group: administration
 sub_group: user-self-management
+redirect_from:
+  - /docs/administration/user-settings/
 toc: true
 ---
 

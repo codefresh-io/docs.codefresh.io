@@ -3,6 +3,8 @@ title: "Codefresh IP addresses"
 description: " "
 group: administration
 sub_group: account-user-management
+redirect_from:
+  - /docs/administration/platform-ip-addresses/
 toc: true
 
 ---

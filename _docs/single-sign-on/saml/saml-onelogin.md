@@ -3,6 +3,8 @@ title: OneLogin SSO via SAML
 description: Setting Up OneLogin via SAML
 group: single-sign-on
 sub_group: saml
+redirect_from:
+  - /docs/single-sign-on/saml/saml-onelogin/
 toc: true
 ---
 

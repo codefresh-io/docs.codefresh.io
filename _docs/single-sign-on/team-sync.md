@@ -2,6 +2,8 @@
 title: Common configuration for SSO providers
 description: "Team sync, default SSO provider for accounts"
 group: single-sign-on
+redirect_from:
+  - /docs/single-sign-on/team-sync/
 toc: true
 ---
 

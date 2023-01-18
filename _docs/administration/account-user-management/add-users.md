@@ -3,6 +3,8 @@ title: "Adding users and teams"
 description: "Add users and teams to Codefresh accounts"
 group: administration
 sub_group: account-user-management
+redirect_from:
+  - /docs/administration/invite-your-team-member/
 toc: true
 ---
 
