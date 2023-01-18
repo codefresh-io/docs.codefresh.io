@@ -2,6 +2,8 @@
 title: "Security scanning"
 description: "Scan for vulnerabilities with Codefresh pipelines"
 group: testing
+redirect_from:
+  - /docs/testing/security-scanning/
 toc: true
 ---
 

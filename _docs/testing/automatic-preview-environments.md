@@ -2,6 +2,10 @@
 title: "Dynamic preview environments"
 description: "Preview test environments"
 group: testing
+redirect_from:
+  - /docs/testing/automatic-preview-environments/
+  - /docs/launch-composition/
+  - /docs/on-demand-test-environment/launch-composition-at-the-end-of-the-build/
 toc: true
 ---
 If your service is one of many microservices, after running automated tests on your service, you would probably want to check the new service with your whole system. In this case, you can launch the composition of your system as part of your build, and at the end of the build, open the composition.

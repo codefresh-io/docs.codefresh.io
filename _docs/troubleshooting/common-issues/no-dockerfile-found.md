@@ -4,6 +4,7 @@ description: "Failed to fetch the Dockerfile from path"
 group: troubleshooting
 sub_group: common-issues
 redirect_from:
+  - /docs/troubleshooting/common-issues/no-dockerfile-found/
   - /docs/no-dockerfile-found/
 toc: true
 ---

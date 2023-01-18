@@ -4,6 +4,7 @@ description: ""
 group: troubleshooting
 sub_group: common-issues
 redirect_from:
+  - /docs/troubleshooting/common-issues/restoring-data-from-pre-existing-image-hangs-on/
   - /docs/restoring-data-from-pre-existing-image-hangs-on/
 toc: true
 ---

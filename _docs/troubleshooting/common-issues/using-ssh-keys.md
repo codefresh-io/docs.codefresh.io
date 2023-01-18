@@ -3,6 +3,8 @@ title: "How to use SSH keys in freestyle steps"
 description: "Running commands remotely from Codefresh Pipeline"
 group: troubleshooting
 sub_group: common-issues
+redirect_from:
+  - /docs/troubleshooting/common-issues/using-ssh-keys/
 toc: true
 ---
 

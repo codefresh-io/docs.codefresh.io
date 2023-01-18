@@ -3,6 +3,8 @@ title: "Multiline variable gets truncated with cf_export"
 description: "Exporting multiline variables to subsequent pipeline steps"
 group: troubleshooting
 sub_group: common-issues
+redirect_from:
+  - /docs/troubleshooting/common-issues/cf-export-limitations/
 toc: true
 ---
 

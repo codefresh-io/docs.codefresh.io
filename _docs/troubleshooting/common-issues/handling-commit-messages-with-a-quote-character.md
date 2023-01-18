@@ -5,6 +5,7 @@ group: troubleshooting
 sub_group: common-issues
 permalink: /:collection/troubleshooting/common-issues/handling-commit-messages-with-quotes/
 redirect_from:
+  - /docs/troubleshooting/common-issues/handling-commit-messages-with-a-quote-character/
   - /docs/handling-commit-messages-with-quotes/
 toc: true
 ---

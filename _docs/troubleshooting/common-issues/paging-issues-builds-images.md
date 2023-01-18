@@ -3,6 +3,8 @@ title: "Paging issues  for builds and images"
 description: "API and CLI operations for paging results do not work"
 group: troubleshooting
 sub_group: common-issues
+redirect_from:
+  - /docs/troubleshooting/common-issues/paging-issues-builds-images/
 toc: true
 ---
 

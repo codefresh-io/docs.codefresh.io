@@ -2,6 +2,9 @@
 title: "SonarQube scanning"
 description: "Trigger a SonarQube Analysis from Codefresh"
 group: testing
+redirect_from:
+  - /docs/testing/sonarqube-integration/
+  - /docs/integrations/sonarqube-integration/
 toc: true
 ---
 

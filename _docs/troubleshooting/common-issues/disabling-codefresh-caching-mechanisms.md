@@ -4,6 +4,7 @@ description: ""
 group: troubleshooting
 sub_group: common-issues
 redirect_from:
+  - /docs/troubleshooting/common-issues/disabling-codefresh-caching-mechanisms/
   - /docs/disabling-codefresh-caching-mechanisms/
 toc: true
 ---

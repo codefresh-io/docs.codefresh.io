@@ -5,6 +5,7 @@ group: troubleshooting
 sub_group: common-issues
 permalink: /:collection/troubleshooting/common-issues/the-docker-image-does-not-exist-or-no-pull-access/
 redirect_from:
+  - /docs/troubleshooting/common-issues/the-docker-image-does-not-exist-or-no-pull-access/
   - /docs/the-docker-image-does-not-exist-or-no-pull-access/
 toc: true
 ---

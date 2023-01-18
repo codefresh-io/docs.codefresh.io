@@ -1,7 +1,19 @@
 ---
 title: "Creating compositions"
 description: "Create environment configurations in Codefresh"
-group: testing  
+group: testing 
+redirect_from:
+  - /docs/testing/create-composition/
+  - /docs/on-demand-test-environment/
+  - /docs/create-composition/
+  - /docs/on-demand-test-environment/create-composition/
+  - /docs/share-environment-with-your-test
+  - /docs/share-environment-with-your-test/
+  - /docs/on-demand-test-environment/share-environment-with-your-test
+  - /docs/on-demand-test-environment/share-environment-with-your-test/ 
+  - /docs/on-demand-test-environment/share-your-environment-with-your-team/
+  - /docs/on-demand-test-environment/test-your-feature/
+  - /docs/test-your-feature/  
 toc: true
 ---
 

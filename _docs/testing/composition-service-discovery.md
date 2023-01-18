@@ -3,6 +3,7 @@ title: "Composition Service Discovery (Experimental)"
 description: ""
 group: testing
 redirect_from:
+  - /docs/testing/composition-service-discovery/
   - /docs/integration-tests/
   - /docs/on-demand-test-environment/composition-service-discovery/
 toc: true

@@ -4,6 +4,7 @@ description: ""
 group: troubleshooting
 sub_group: common-issues
 redirect_from:
+  - /docs/troubleshooting/common-issues/validation-port-warnings/
   - /docs/validation-port-warnings/
 toc: true
 ---

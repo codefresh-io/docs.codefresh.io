@@ -3,6 +3,8 @@ title: "Using multi-git triggers"
 description: "Pinning codefresh.yml to a specific branch"
 group: troubleshooting
 sub_group: common-issues
+redirect_from:
+  - /docs/troubleshooting/common-issues/multi-git-triggers/
 toc: true
 ---
 

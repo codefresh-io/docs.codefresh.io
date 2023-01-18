@@ -3,6 +3,8 @@ title: "Error pulling image configuration: toomanyrequests"
 description: "Too many requests to Docker Hub"
 group: troubleshooting
 sub_group: common-issues
+redirect_from:
+  - /docs/troubleshooting/common-issues/dockerhub-rate-limit/
 toc: true
 ---
 

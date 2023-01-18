@@ -4,6 +4,7 @@ description: ""
 group: troubleshooting
 sub_group: common-issues
 redirect_from:
+  - /docs/troubleshooting/common-issues/cant-find-your-private-repositories/
   - /docs/cant-find-your-private-repositories/
 toc: true
 ---

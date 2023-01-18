@@ -2,6 +2,8 @@
 title: "Deprecation of personal Git integrations"
 description: "Moving Git integrations to accounts instead of individual users"
 group: troubleshooting
+redirect_from:
+  - /docs/troubleshooting/personal-git-deprecation/
 toc: true
 ---
 
