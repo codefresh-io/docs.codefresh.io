@@ -3,6 +3,7 @@ title: "Docker image metadata"
 description: "How to use custom metadata in your Docker images"
 group: pipelines
 redirect_from:
+  - /docs/codefresh-yaml/docker-image-metadata/
   - /docs/metadata-annotations/
   - /docs/docker-registries/metadata-annotations/
 toc: true

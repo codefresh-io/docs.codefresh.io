@@ -2,6 +2,8 @@
 title: "Service containers in pipelines"
 description: "How to use sidecar services in your pipelines"
 group: pipelines
+redirect_from:
+  - /docs/codefresh-yaml/service-containers/
 toc: true
 ---
 

@@ -2,6 +2,8 @@
 title: "Grouping steps in pipelines"
 description: "Group steps into stages for better visualization"
 group: pipelines
+redirect_from:
+  - /docs/codefresh-yaml/stages/
 toc: true
 ---
 

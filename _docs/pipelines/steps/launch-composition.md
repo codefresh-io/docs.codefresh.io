@@ -4,6 +4,7 @@ description: "Create a test environment with its dependencies in Codefresh infra
 group: pipelines
 sub_group: steps
 redirect_from:
+  - /docs/codefresh-yaml/steps/launch-composition/
   - /docs/launch-composition-2/
   - /docs/codefresh-yaml/steps/launch-composition-2/
 toc: true

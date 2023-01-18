@@ -5,6 +5,7 @@ group: pipelines
 sub_group: configuration
 toc: true
 redirect_from:
+  - /docs/configure-ci-cd-pipeline/build-status/
   - /docs/build-status
   - /docs/build-status/
   - /docs/build-badges-1

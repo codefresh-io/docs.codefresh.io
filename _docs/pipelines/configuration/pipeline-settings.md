@@ -3,6 +3,8 @@ title: "Global settings for pipelines"
 description: "Define global options for pipeline templates, yaml sources and approval behavior"
 group: pipelines
 sub_group: configuration
+redirect_from:
+  - /docs/administration/pipeline-settings/
 toc: true
 ---
 

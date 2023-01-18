@@ -3,6 +3,8 @@ title: "Approval"
 description: "How to Pause Pipelines for Manual Approval"
 group: codefresh-yaml
 sub_group: steps
+redirect_from:
+  - /docs/codefresh-yaml/steps/approval/
 toc: true
 ---
 

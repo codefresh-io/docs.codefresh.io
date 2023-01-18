@@ -3,6 +3,7 @@ title: "Introduction to Codefresh pipelines"
 description: "Understand how Codefresh pipelines work"
 group: pipelines
 redirect_from:
+  - /docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/
   - /docs/introduction-to-codefresh-pipelines/
   - /docs/configure-ci-cd-pipeline/
 toc: true

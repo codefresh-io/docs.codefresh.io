@@ -4,6 +4,7 @@ description: "Checkout code in your pipelines"
 group: pipelines
 sub_group: steps
 redirect_from:
+  - /docs/codefresh-yaml/steps/git-clone/
   - /docs/git-clone/
 toc: true
 ---

@@ -2,6 +2,8 @@
 title: "Hooks in pipelines"
 description: "Execute commands before/after each pipeline or step"
 group: pipelines
+redirect_from:
+  - /docs/codefresh-yaml/hooks/
 toc: true
 ---
 

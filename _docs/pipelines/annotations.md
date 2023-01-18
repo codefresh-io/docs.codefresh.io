@@ -2,6 +2,8 @@
 title: "Annotations in CI pipelines"
 description: "Mark your builds and projects with extra annotations"
 group: pipelines
+redirect_from:
+  - /docs/codefresh-yaml/annotations/
 toc: true
 ---
 

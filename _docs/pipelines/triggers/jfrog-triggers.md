@@ -4,6 +4,7 @@ description: "Trigger Codefresh pipelines from Artifactory"
 group: configure-ci-cd-pipeline
 sub_group: triggers
 redirect_from:
+  - /docs/configure-ci-cd-pipeline/triggers/jfrog-triggers/
   - /docs/pipeline-triggers/configure-jfrog-trigger/
 toc: true
 ---

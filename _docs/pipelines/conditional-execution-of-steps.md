@@ -4,6 +4,7 @@ description: "Skip specific pipeline steps according to one or more conditions"
 group: pipelines
 sub_group: steps
 redirect_from:
+  - /docs/codefresh-yaml/conditional-execution-of-steps/
   - /docs/conditional-execution-of-steps/
 toc: true
 ---

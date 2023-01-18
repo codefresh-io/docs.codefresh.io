@@ -3,6 +3,8 @@ title: "Git triggers"
 description: "Learn how to run pipelines from Git events"
 group: pipelines
 sub_group: triggers
+redirect_from:
+  - /docs/configure-ci-cd-pipeline/triggers/git-triggers/
 toc: true
 ---
 

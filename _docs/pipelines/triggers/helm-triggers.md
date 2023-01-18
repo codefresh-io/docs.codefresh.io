@@ -3,6 +3,8 @@ title: "Helm Trigger"
 description: ""
 group: configure-ci-cd-pipeline
 sub_group: triggers
+redirect_from:
+  - /docs/configure-ci-cd-pipeline/triggers/helm-triggers/
 toc: true
 ---
 

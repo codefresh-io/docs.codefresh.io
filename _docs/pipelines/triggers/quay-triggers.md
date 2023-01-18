@@ -4,6 +4,7 @@ description: "Trigger Codefresh pipelines from Quay"
 group: pipelines
 sub_group: triggers
 redirect_from:
+  - /docs/configure-ci-cd-pipeline/triggers/quay-triggers/
   - /docs/pipeline-triggers/configure-quay-trigger/
 toc: true
 ---

@@ -2,6 +2,8 @@
 title: "Caching in pipelines"
 description: "Faster builds with Codefresh caching"
 group: pipelines
+redirect_from:
+  - /docs/configure-ci-cd-pipeline/pipeline-caching/
 toc: true
 
 ---

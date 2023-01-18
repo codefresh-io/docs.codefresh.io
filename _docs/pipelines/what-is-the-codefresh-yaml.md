@@ -3,6 +3,7 @@ title: "Pipeline definitions YAML"
 description: "How to define Codefresh pipelines in a declarative manner"
 group: pipelines
 redirect_from:
+  - /docs/codefresh-yaml/what-is-the-codefresh-yaml/
   - /docs/codefresh-yaml/
   - /docs/what-is-the-codefresh-yaml
   - /docs/what-is-the-codefresh-yaml/

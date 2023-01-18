@@ -4,6 +4,7 @@ description: "Run a Docker container with its dependencies inside a pipeline"
 group: pipelines
 sub_group: steps
 redirect_from:
+  - /docs/codefresh-yaml/steps/composition/
   - /docs/composition-1/
   - /docs/codefresh-yaml/steps/composition-1/  
 toc: true

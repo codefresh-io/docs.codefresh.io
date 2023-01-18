@@ -3,6 +3,8 @@ title: "Shared configuration for pipelines"
 description: "How to keep your pipelines DRY"
 group: pipelines
 sub_group: configuration
+redirect_from:
+  - /docs/configure-ci-cd-pipeline/shared-configuration/
 toc: true
 ---
   

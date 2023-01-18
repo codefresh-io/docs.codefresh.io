@@ -2,6 +2,8 @@
 title: "Deployment environments"
 description: "How to update the environment status from builds"
 group: pipelines
+redirect_from:
+  - /docs/codefresh-yaml/deployment-environments/
 toc: true
 ---
 

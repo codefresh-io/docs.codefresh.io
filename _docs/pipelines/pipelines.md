@@ -3,6 +3,7 @@ title: "Creating pipelines"
 description: "Define pipelines in Codefresh"
 group: pipelines
 redirect_from:
+  - /docs/configure-ci-cd-pipeline/pipelines/
   - /docs/pipeline
   - /docs/pipeline/
   - /docs/pipelines

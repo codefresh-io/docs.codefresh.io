@@ -3,6 +3,9 @@ title: "Freestyle"
 description: "Run commands inside a Docker container"
 group: pipelines
 sub_group: steps
+redirect_from:
+  - /docs/codefresh-yaml/steps/freestyle/
+  - /docs/freestyle/
 toc: true
 ---
 The Freestyle step is designed so you can execute a series of commands in a container. Freestyle steps

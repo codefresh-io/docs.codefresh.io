@@ -3,6 +3,8 @@ title: "Secrets in pipelines"
 description: "Use Kubernetes secrets in Codefresh"
 group: pipelines
 sub_group: configuration
+redirect_from:
+  - /docs/configure-ci-cd-pipeline/secrets-store/
 toc: true
 ---
 

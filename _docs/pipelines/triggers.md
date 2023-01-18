@@ -3,6 +3,7 @@ title: "Triggers in pipelines"
 description: "Choose when your pipelines should run"
 group: pipelines
 redirect_from:
+  - /docs/configure-ci-cd-pipeline/triggers/
   - /docs/pipeline-triggers/
   - /docs/pipeline-triggers/introduction-triggers/
 toc: true

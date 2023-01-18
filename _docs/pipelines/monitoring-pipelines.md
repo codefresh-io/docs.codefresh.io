@@ -2,6 +2,8 @@
 title: "Monitoring pipelines"
 description: "Viewing your builds and logs"
 group: pipelines
+redirect_from:
+  - /docs/configure-ci-cd-pipeline/monitoring-pipelines/
 toc: true
 ---
 

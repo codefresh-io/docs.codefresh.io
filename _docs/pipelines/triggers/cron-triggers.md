@@ -4,6 +4,7 @@ description: "Run pipelines with a time schedule"
 group: pipelines
 sub_group: triggers
 redirect_from:
+  - /docs/configure-ci-cd-pipeline/triggers/cron-triggers/
   - /docs/configure-cron-trigger/
   - /docs/pipeline-triggers/configure-cron-trigger/
 toc: true

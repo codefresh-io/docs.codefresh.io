@@ -4,6 +4,7 @@ description: ""
 group: pipelines
 sub_group: triggers
 redirect_from:
+  - /docs/configure-ci-cd-pipeline/triggers/dockerhub-triggers/
   - /docs/configure-dockerhub-trigger/
   - /docs/pipeline-triggers/configure-dockerhub-trigger/
 toc: true

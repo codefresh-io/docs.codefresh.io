@@ -2,6 +2,8 @@
 title: "Debugging pipelines"
 description: "Pause and inspect pipelines"
 group: pipelines
+redirect_from:
+  - /docs/configure-ci-cd-pipeline/debugging-pipelines/
 toc: true
 ---
 

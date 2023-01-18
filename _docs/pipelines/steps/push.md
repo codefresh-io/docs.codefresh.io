@@ -4,6 +4,7 @@ description: "Pushing Docker images from your pipeline"
 group: pipelines
 sub_group: steps
 redirect_from:
+  - /docs/codefresh-yaml/steps/push/
   - /docs/push-1/
   - /docs/codefresh-yaml/steps/push-1/ 
 toc: true

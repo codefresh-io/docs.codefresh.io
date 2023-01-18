@@ -4,6 +4,7 @@ description: "Annotate your builds and run extra steps"
 group: pipelines
 sub_group: steps
 redirect_from:
+  - /docs/codefresh-yaml/post-step-operations/
   - /docs/post-step-operations/
 toc: true
 ---

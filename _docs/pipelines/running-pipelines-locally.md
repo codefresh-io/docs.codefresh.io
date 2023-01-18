@@ -4,6 +4,7 @@ description: "How to run Codefresh pipelines on your workstation"
 group: pipelines
 toc: true
 redirect_from:
+  - /docs/configure-ci-cd-pipeline/running-pipelines-locally/
   - /docs/troubleshooting/common-issues/debugging-codefresh-builds-locally/
   - /docs/troubleshooting/common-issues/access-and-debug-the-pipeline-volume-image/
 ---

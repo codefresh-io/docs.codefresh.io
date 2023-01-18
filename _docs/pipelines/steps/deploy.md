@@ -4,6 +4,7 @@ description: "Deploying to Kubernetes from a Codefresh pipeline"
 group: codefresh-yaml
 sub_group: steps
 redirect_from:
+  - /codefresh-yaml/steps/deploy/
   - /docs/deploy/
 toc: true
 ---
