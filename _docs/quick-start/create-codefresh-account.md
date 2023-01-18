@@ -2,6 +2,12 @@
 title: "Create Codefresh account"
 description: "Start working in Codefresh"
 group: quick-start
+redirect_from:
+  - /docs/getting-started/create-a-codefresh-account/
+  - /docs/
+  - /docs/create-an-account/
+  - /docs/getting-started/
+  - /docs/getting-started/introduction/
 toc: true
 ---
 Once you have installed Codefresh, the next step is to create an account in Codefresh.

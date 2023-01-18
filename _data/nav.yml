@@ -526,6 +526,8 @@
           url: "/oauth-setup"
         - title: Authorize access to organizations/projects
           url: "/hosted-authorize-orgs" 
+        - title: Pipeline execution context
+          url: "/pipeline-execution-context" 
         - title: Auditing actions in Codefresh
           url: "/audit"
         - title: Codefresh IP addresses

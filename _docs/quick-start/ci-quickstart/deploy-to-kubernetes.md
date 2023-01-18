@@ -3,6 +3,11 @@ title: "Kubernetes deployment quick start"
 description: "How to deploy to a Kubernetes cluster from the Codefresh UI"
 group: quick-start
 sub_group: ci-quickstart
+redirect_from:
+  - /docs/getting-started/deployment-to-kubernetes-quick-start-guide/
+  - /docs/getting-started-deployment-to-kubernetes-quick-start-guide/
+  - /docs/kubernetes
+  - /docs/kubernetes/  
 toc: true
 ---
 

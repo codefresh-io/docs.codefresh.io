@@ -5,6 +5,9 @@ group: administration
 sub_group: account-user-management
 redirect_from:
   - /docs/administration/invite-your-team-member/
+  - /docs/accounts/
+  - /docs/accounts/invite-your-team-member/
+  - /docs/administration/invite-your-team-member/
 toc: true
 ---
 

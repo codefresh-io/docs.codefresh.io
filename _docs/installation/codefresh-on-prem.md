@@ -3,6 +3,7 @@ title: "Codefresh On-Prem Installation & Configuration"
 description: "Use the Kubernetes Codefresh Installer to install the Codefresh On-Premises platform "
 group: installation
 redirect_from:
+  - /docs/administration/codefresh-on-prem/
   - /docs/enterprise/codefresh-on-prem/
 toc: true
 ---

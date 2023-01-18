@@ -3,6 +3,7 @@ title: "Codefresh Runner installation"
 description: "Run Codefresh pipelines on your private Kubernetes cluster"
 group: installation
 redirect_from:
+  - /docs/administration/codefresh-runner/
   - /docs/enterprise/codefresh-runner/
 toc: true
 ---

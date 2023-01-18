@@ -2,6 +2,8 @@
 title: "Installation options"
 description: "Understand Codefresh installation options"
 group: installation
+redirect_from:
+  - /docs/administration/installation-security/
 toc: true
 ---
 

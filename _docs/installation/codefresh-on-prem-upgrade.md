@@ -3,6 +3,7 @@ title: "Codefresh On-Premises Upgrade"
 description: "Use the Kubernetes Codefresh Installer to upgrade your Codefresh On-Premises platform "
 group: installation
 redirect_from:
+  - /docs/administration/codefresh-on-prem-upgrade/
   - /docs/enterprise/codefresh-on-prem-upgrade/
 toc: true
 ---
