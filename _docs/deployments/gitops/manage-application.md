@@ -14,8 +14,8 @@ Application creation and deployment is one part of the continuous deployment/del
 * [Synchronize applications](#manually-synchronize-an-application)   
   Sync applications on-demand by manually applying sync options or selecting the resources to sync.
 
-<!---* [Delete applications](#delete-an-application)
-  Delete unused or legacy applications to avoid clutter and remove unnecessary resources.-->
+* [Delete applications](#delete-an-application)  
+  Delete unused or legacy applications to avoid clutter and remove unnecessary resources.
 
 
 * [Manage rollouts for deployments](#manage-rollouts-for-deployments)  
@@ -215,7 +215,7 @@ For example, if you made changes to `api` resources or `audit` resources, type `
 <br><br>
 {:/}
 
-<!---### Delete an application
+### Delete an application
 Delete an application from Codefresh. Deleting an application deletes the manifest from the Git repository, and then from the cluster where it is deployed. When deleted from the cluster, the application is removed from the Applications dashboard in Codefresh.
  
 >**Prune resources** in the application's General settings determines the scope of the delete action.  
@@ -249,7 +249,7 @@ Codefresh warns you of the implication of deleting the selected application in t
    %} 
 
 {:start="4"}
-1. To confirm, click **Commit & Delete**.-->
+1. To confirm, click **Commit & Delete**.
 
 ### Manage rollouts for deployments
 Control ongoing rollouts by resuming indefinitely paused steps, promoting rollouts, aborting, restarting and retrying rollouts.  
