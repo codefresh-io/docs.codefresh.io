@@ -27,7 +27,7 @@ This article shows how to use the [SonarQube plugin](https://codefresh.io/steps/
 
 Before starting an analysis, you need to have a:
 
- * Simple [Codefresh pipeline up and running]({{site.baseurl}}//docs/getting-started/create-a-basic-pipeline/)
+ * Simple [Codefresh pipeline up and running]({{site.baseurl}}/docs/quick-start/ci-quickstart/create-ci-pipeline/)
  * SonarQube account (Developer, Enterprise, or on the [SonarCloud](https://sonarcloud.io/){:target="\_blank"})
 
 ## Get a security token from SonarQube
@@ -138,6 +138,6 @@ max-width="80%"
 
 ## Related articles
 [Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
-[Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)  
-[Unit tests]({{site.baseurl}}/docs/testing/unit-tests/)  
-[Integration tests]({{site.baseurl}}/docs/testing/integration-tests/)  
+[Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
+[Unit testing]({{site.baseurl}}/docs/testing/unit-tests/)  
+[Integration testing]({{site.baseurl}}/docs/testing/integration-tests/)  

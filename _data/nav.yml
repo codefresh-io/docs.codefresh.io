@@ -462,9 +462,9 @@
 - title: Testing
   url: "/testing"
   pages:
-    - title: Unit tests
+    - title: Unit testing
       url: "/unit-tests"
-    - title: Integration tests
+    - title: Integration testing
       url: "/integration-tests"
     - title: Creating test reports
       url: "/test-reports"

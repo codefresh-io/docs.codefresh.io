@@ -20,7 +20,7 @@ toc: true
 Compositions can be launched as part of a unit test step, an integration test step, or to run an image for manual testing. You can create compositions from scratch or import an existing `docker-compose.yml` file.
 
 ## Create composition
-1. In the Codefresh UI, from the Artifacts section in the sidebar, click [**Compositions**](https://g.codefresh.io/compositions){:target="\_blank"}.
+1. In the Codefresh UI, from Artifacts in the sidebar, select [**Compositions**](https://g.codefresh.io/compositions){:target="\_blank"}.
 1. Click **Create Composition**.
 
 {% include 
@@ -64,7 +64,7 @@ max-width="70%"
 
 {:start="5"}
 1. Click **Next**, and continue with one of the following:
-  * [From file in repo**](#from-file-in-repo) 
+  * [From file in repo](#from-file-in-repo) 
   * [From template](#from-template)
   * [Empty composition](#empty-composition) (Advanced)
 
@@ -206,7 +206,7 @@ max-width="70%"
 When you are ready with the composition, launch it to inspect your application. Launching a composition creates a temporary
 test environment in your Codefresh account that you can use to inspect your application.
 
-1. In the Codefresh UI, from the Artifacts section in the sidebar, click [**Compositions**](https://g.codefresh.io/compositions){:target="\_blank"}.
+1. In the Codefresh UI, from Artifacts in the sidebar, select [**Compositions**](https://g.codefresh.io/compositions){:target="\_blank"}.
 1. From the list, select the composition to launch.
 
 {% include 
@@ -249,7 +249,7 @@ max-width="70%"
 
 View a record for the running environment and all containers for the environment in the Running Compositions tab.
 
-1. In the Codefresh UI, from the Artifacts section in the sidebar, click [**Compositions**](https://g.codefresh.io/compositions){:target="\_blank"}.
+1. In the Codefresh UI, from Artifacts in the sidebar, select [**Compositions**](https://g.codefresh.io/compositions){:target="\_blank"}.
 1. Click **Running Compositions**.
 
 {% include 

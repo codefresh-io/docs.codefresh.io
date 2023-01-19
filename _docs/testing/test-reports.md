@@ -124,7 +124,7 @@ max-width="80%"
 
 You will use the name of the integration as an environment variable in your Codefresh pipeline.
 
-You can also use any [external secrets that you have defined]({{site.baseurl}}/docs/integrations/pipeline-integrations/secret-storage/) (such as Kubernetes secrets), as values, by clicking on the lock icon that appears next to field:  
+You can also use any [external secrets that you have defined]({{site.baseurl}}/docs/integrations/secret-storage/) (such as Kubernetes secrets), as values, by clicking on the lock icon that appears next to field:  
 * If you have already specified the resource field during secret definition, just enter the name of the secret directly in the text field, for example, `my-secret-key`.
 * If you didn't include a resource name during secret creation, enter the full name in the field, for example, `my-secret-resource@my-secret-key`.
 
@@ -153,7 +153,7 @@ max-width="60%"
 
 You will use the name of the integration as an environment variable in your Codefresh pipeline.
 
-You can also use any [external secrets that you have defined]({{site.baseurl}}/docs/integrations/pipeline-integrations/secret-storage/) (such as Kubernetes secrets), as values, by clicking on the lock icon that appears next to field:  
+You can also use any [external secrets that you have defined]({{site.baseurl}}/docs/integrations/secret-storage/) (such as Kubernetes secrets), as values, by clicking on the lock icon that appears next to field:  
 * If you have already specified the resource field during secret definition, just enter the name of the secret directly in the text field, for example, `my-secret-key`.
 * If you didn't include a resource name during secret creation, enter the full name in the field, for example, `my-secret-resource@my-secret-key`.
 

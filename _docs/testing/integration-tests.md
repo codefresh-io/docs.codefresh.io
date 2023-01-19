@@ -1,5 +1,5 @@
 ---
-title: "Integration tests"
+title: "Integration testing"
 description: "Launch additional services in Codefresh pipelines"
 group: testing
 redirect_from:
@@ -25,7 +25,7 @@ They are much more flexible than compositions in these areas:
 1. Attaching service containers to the whole pipeline instead of individual steps .
 1. Auto-mounted Codefresh [shared volume]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) for freestyle steps (unlike compositions), making file access very easy. You can execute your tests from the Git repository that was cloned.
 
->This article explains how to run additional services that are automatically discarded once the pipeline has completed its run. If you are interested in temporary test environments, see the [preview environments]({{site.baseurl}}/docs/getting-started/on-demand-environments/).
+>This article explains how to run additional services that are automatically discarded once the pipeline has completed its run. If you are interested in temporary test environments, see the [preview environments]({{site.baseurl}}/docs/quick-start/ci-quickstart/on-demand-environments/).
 
 ## How integration tests work in Codefresh
 

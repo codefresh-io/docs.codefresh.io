@@ -42,8 +42,8 @@ Common strategies are:
 
 
 Here is an example pipeline that scans a Docker image:  
-* With [Aqua](https://www.aquasec.com/){:target="\_blank"} after being pushed to the [default Docker registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/#the-default-registry)
-* Before it is promoted to the [external Azure Registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/azure-docker-registry/){:target="\_blank"}.
+* With [Aqua](https://www.aquasec.com/){:target="\_blank"} after being pushed to the [default Docker registry]({{site.baseurl}}/docs/integrations/docker-registries/#default-registry).
+* Before it is promoted to the [external Azure Registry]({{site.baseurl}}/docs/docker-registries/azure-docker-registry/).
 
 {% include image.html 
 lightbox="true" 
@@ -181,7 +181,7 @@ max-width="60%"
 
 ## Security annotations
 
-Security scan results are also a perfect candidate for [extra metadata]({{site.baseurl}}/docs/docker-registries/metadata-annotations/) to add to your Docker images.
+Security scan results are also a perfect candidate for [extra metadata]({{site.baseurl}}/docs/pipelines/docker-image-metadata/) to add to your Docker images.
 
 {% include image.html 
 lightbox="true" 
@@ -196,6 +196,6 @@ You can add any metadata such as the number of issues for each category or even 
 
 ## Related articles
 [Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
-[Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)  
+[Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
 [Creating test reports]({{site.baseurl}}/docs/testing/test-reports/)  
 [Advanced workflows in pipelines]({{site.baseurl}}/docs/pipelines/advanced-workflows/)  

@@ -13,8 +13,8 @@ If your service is one of many microservices, after running automated tests on y
 ## Prerequisites
 
 Complete the tutorials for:  
-* [Creating a basic pipeline]({{site.baseurl}}/docs/getting-started/create-a-basic-pipeline/)
-* [Creating temporary environments]({{site.baseurl}}/docs/getting-started/on-demand-environments/)
+* [Creating a basic pipeline]({{site.baseurl}}/docs/quick-start/ci-quickstart/create-ci-pipeline/)
+* [Creating temporary environments]({{site.baseurl}}/docs/quick-start/ci-quickstart/on-demand-environments/)
 
 ## Launch the composition
 
