@@ -2,6 +2,8 @@
 title: "Configure artifact repository"
 description: ""
 group: workflows
+redirect_from:
+  - /csdp-docs/docs/pipelines/configure-artifact-repository/
 toc: true
 ---
 

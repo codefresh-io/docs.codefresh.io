@@ -3,6 +3,8 @@ title: "Setting up OAuth2 for Git providers"
 description: ""
 group: administration
 sub_group: account-user-management
+redirect_from:
+  - /csdp-docs/docs/administration/oauth-setup/
 toc: true
 ---
 

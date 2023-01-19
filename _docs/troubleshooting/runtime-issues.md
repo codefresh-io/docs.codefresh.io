@@ -2,6 +2,8 @@
 title: "GitOps runtime issues"
 description: ""
 group: troubleshooting
+redirect_from:
+  - /csdp-docs/docs/troubleshooting/runtime-issues/
 toc: true
 ---
 

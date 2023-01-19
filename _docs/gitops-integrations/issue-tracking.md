@@ -2,6 +2,8 @@
 title: "GitOps issue tracking integrations"
 description: ""
 group: gitops-integrations
+redirect_from:
+  - /csdp-docs/docs/integrations/issue-tracking/jira/
 toc: true
 ---
 

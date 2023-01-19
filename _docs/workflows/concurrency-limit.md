@@ -2,6 +2,8 @@
 title: "Selectors for concurrency synchronization"
 description: ""
 group: workflows
+redirect_from:
+  - /csdp-docs/docs/pipelines/concurrency-limit/
 toc: true
 ---
 

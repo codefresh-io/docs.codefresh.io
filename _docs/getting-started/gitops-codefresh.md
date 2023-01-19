@@ -2,6 +2,8 @@
 title: "WIP: Codefresh for GitOps"
 description: "GitOps and Argo CD with Codefresh"
 group: getting-started
+redirect_from:
+  - /csdp-docs/docs/getting-started/gitops/
 toc: true
 ---
 

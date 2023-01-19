@@ -3,6 +3,9 @@ title: "Hybrid GitOps Runtime installation"
 description: "Provision Hybrid GitOps Runtimes"
 group: installation
 sub_group: gitops
+redirect_from:
+  - /csdp-docs/docs/runtime/requirements/
+  - /csdp-docs/docs/runtime/installation/
 toc: true
 ---
 

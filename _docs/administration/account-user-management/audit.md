@@ -4,6 +4,7 @@ description: "Getlogs of all actions in Codefresh"
 group: administration
 sub_group: account-user-management
 redirect_from:
+  - /csdp-docs/docs/administration/audit/
   - /docs/administration/audit-logs/
   - /docs/enterprise/audit-logs/
 toc: true

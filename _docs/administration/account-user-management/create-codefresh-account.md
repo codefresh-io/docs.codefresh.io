@@ -4,6 +4,7 @@ description: "Welcome to Codefresh!"
 group: administration
 sub_group: account-user-management
 redirect_from:
+  - /csdp-docs/docs/administration/add-users/
   - /docs/getting-started/create-a-codefresh-account/
   - /docs/
   - /docs/create-an-account/

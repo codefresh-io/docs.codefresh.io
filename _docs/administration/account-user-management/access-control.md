@@ -4,13 +4,13 @@ description: "Restrict resources in a company environment"
 group: administration
 sub_group: account-user-management
 redirect_from:
+  - /csdp-docs/docs/administration/access-control/
   - /docs/administration/access-control/
   - /docs/enterprise/access-control/
   - /docs/enterprise-account-mng/ent-account-mng/
   - /docs/enterprise/ent-account-mng/
   - /docs/administration/ent-account-mng/  
 toc: true
-
 ---
 <!-- needs fine tuning for GitOps as well; all x-refs have to be updated-->
 Codefresh provides several complementary ways for access control within an organization:

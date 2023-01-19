@@ -6,6 +6,7 @@ redirect_from:
   - /docs/single-sign-on/saml/
   - /docs/sso/sso-setup-saml2/
   - /docs/enterprise/single-sign-on/sso-setup-saml2/
+  - /csdp-docs/docs/administration/single-sign-on/sso-setup-saml2/
 toc: true
 ---
 

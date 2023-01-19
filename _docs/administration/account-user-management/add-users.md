@@ -4,6 +4,7 @@ description: "Add users and teams to Codefresh accounts"
 group: administration
 sub_group: account-user-management
 redirect_from:
+  - /csdp-docs/docs/administration/add-users/
   - /docs/administration/invite-your-team-member/
   - /docs/accounts/
   - /docs/accounts/invite-your-team-member/

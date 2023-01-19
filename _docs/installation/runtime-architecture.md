@@ -2,6 +2,8 @@
 title: "Architecture"
 description: ""
 group: installation
+redirect_from:
+  - /csdp-docs/docs/getting-started/architecture/
 toc: true
 ---
 

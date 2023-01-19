@@ -3,6 +3,8 @@ title: "GitOps Codefresh CI pipeline integration"
 description: ""
 group: gitops-integrations
 sub_group: ci-integrations
+redirect_from:
+  - /csdp-docs/docs/integrations/ci-integrations/codefresh-classic/
 toc: true
 ---
 

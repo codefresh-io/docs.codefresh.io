@@ -4,6 +4,7 @@ description: ""
 group: reference
 redirect_from:
   - /docs/administration/git-tokens/ 
+  - /csdp-docs/docs/reference/git-tokens/
 toc: true
 ---
 
@@ -106,4 +107,4 @@ The Git personal token is a user-specific personal access token per provisioned 
 * **Repositories**: `Write`, `Admin`
 
 ### Related articles  
-[User settings]({{site.baseurl}}/docs/administration/user-settings/)
+[User settings]({{site.baseurl}}/docs/administration/user-self-management/user-settings/)

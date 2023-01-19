@@ -2,7 +2,9 @@
 title: "Create and commit resources for application"
 description: ""
 group: getting-started
-sub-group: quick-start
+sub-group: gitops-quickstart
+redirect_from:
+  - /csdp-docs/docs/getting-started/quick-start/create-app-specs/
 toc: true
 ---
 

@@ -2,6 +2,8 @@
 title: "Global analytics dashboard"
 description: ""
 group: dashboards
+redirect_from:
+  - /csdp-docs/docs/reporting/home-dashboard/
 toc: true
 ---
 

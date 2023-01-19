@@ -2,6 +2,8 @@
 title: "Creating workflows"
 description: ""
 group: workflows
+redirect_from:
+  - /csdp-docs/docs/pipelines/create-pipeline/
 toc: true
 ---
 

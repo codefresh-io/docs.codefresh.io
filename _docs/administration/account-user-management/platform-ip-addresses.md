@@ -4,6 +4,7 @@ description: " "
 group: administration
 sub_group: account-user-management
 redirect_from:
+  - /csdp-docs/docs/administration/platform-ip-addresses/
   - /docs/administration/platform-ip-addresses/
 toc: true
 

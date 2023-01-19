@@ -4,6 +4,7 @@ description: "Understand Codefresh installation options"
 group: installation
 redirect_from:
   - /docs/administration/installation-security/
+  - /csdp-docs/docs/runtime/installation-options/
 toc: true
 ---
 

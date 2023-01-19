@@ -3,6 +3,8 @@ title: "Jira GitOps integration"
 description: " "
 group: gitops-integrations
 sub_group: issue-tracking
+redirect_from:
+  - /csdp-docs/docs/integrations/issue-tracking/jira/
 toc: true
 ---
 

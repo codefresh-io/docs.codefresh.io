@@ -2,6 +2,8 @@
 title: "GitOps image enrichment with integrations"
 description: ""
 group: gitops-integrations
+redirect_from:
+  - /csdp-docs/docs/integrations/image-enrichment-overview/
 toc: true
 ---
 
