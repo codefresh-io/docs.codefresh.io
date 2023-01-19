@@ -20,7 +20,6 @@ max-width="100%"
 %}
 
 ## Prerequisites for using Codacy
-<!--- check with Kostis -->
 * A simple [Codefresh pipeline, up and running]({{site.baseurl}}/docs/quick-start/ci-quickstart/create-ci-pipeline/)
 * A [Codacy account](https://www.codacy.com/){:target="\_blank"} (free, pro or enterprise)
 * A testing tool added to your project that produces coverage reports

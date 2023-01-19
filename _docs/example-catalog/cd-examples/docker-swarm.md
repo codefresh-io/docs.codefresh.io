@@ -42,7 +42,7 @@ docker-compose up
 {% endraw %}
 {% endhighlight %}
 
-The app runs at [http://localhost:5000](http://localhost:5000), and the results are at [http://localhost:5001](http://localhost:5001).
+The app runs at `http://localhost:5000`, and the results are at `http://localhost:5001`.
 
 Alternately, if you want to run it on a Docker Swarm, first make sure you have a Swarm.  
 If you don't, run:

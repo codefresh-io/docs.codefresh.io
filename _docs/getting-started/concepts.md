@@ -2,8 +2,6 @@
 title: "WIP: Concepts in Codefresh"
 description: "Understand terminology and nuances in Codefresh"
 group: getting-started
-redirect_from:
-  - /csdp-docs/docs/getting-started/main-concepts/
 toc: true
 ---
 <!--- remove WIP from header once complete -->

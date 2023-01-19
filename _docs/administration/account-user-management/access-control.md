@@ -4,7 +4,6 @@ description: "Restrict resources in a company environment"
 group: administration
 sub_group: account-user-management
 redirect_from:
-  - /csdp-docs/docs/administration/access-control/
   - /docs/administration/access-control/
   - /docs/enterprise/access-control/
   - /docs/enterprise-account-mng/ent-account-mng/

@@ -3,8 +3,6 @@ title: "Images in Codefresh"
 description: ""
 group: deployments
 sub_group: gitops
-redirect_from:
-  - /csdp-docs/docs/deployment/images/
 toc: true
 ---
 

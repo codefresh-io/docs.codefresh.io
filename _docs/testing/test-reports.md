@@ -20,7 +20,7 @@ Currently, Codefresh supports storing test reports in:
 
 There are two modes for processing test reports in Codefresh, built-in and custom test reporting
 
-1. Built-in test reporting based on the [Allure framework](http://allure.qatools.ru/){:target="\_blank"}  
+1. Built-in test reporting based on the [Allure framework](https://qameta.io/allure-report/){:target="\_blank"}  
    Allure is an open-source test framework that can produce HTML reports like the following:
 
   {% include 

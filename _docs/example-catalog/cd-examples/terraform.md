@@ -82,7 +82,7 @@ This pipeline does the following:
 
 >For simplicity, we auto-approve the Terraform plan in the example pipeline. In a production pipeline, you would instead use an [approval step]({{site.baseurl}}/docs/pipelines/steps/approval/) to inspect the plan before actually applying it.
 
-The pipeline needs a [single environment variable]({{site.baseurl}}/docs/pipelines/pipelines/#pipeline-settings) that holds the content of the service account.
+The pipeline needs a [single environment variable]({{site.baseurl}}/docs/pipelines/variables/) that holds the content of the service account.
 
 
 {% include image.html 

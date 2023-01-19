@@ -3,8 +3,6 @@ title: "GitOps GitHub Container Registry (GHCR) integration"
 description: ""
 group: gitops-integrations
 sub_group: container-registries
-redirect_from:
-  - /csdp-docs/docs/integrations/container-registries/github-cr/
 toc: true
 ---
 

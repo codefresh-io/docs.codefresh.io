@@ -47,7 +47,7 @@ If you have a multistage Dockerfile, then the respective pipeline in Codefresh i
 1. A clone step to check out the source code
 1. A build step to create the Docker image
 
-For example, here is a [Java dockerfile]({{site.baseurl}}/docs/example-catalog/ci-examples/java/spring-boot-2/#spring-boot-2-and-docker-multi-stage-builds):
+For example, here is a [Java dockerfile]({{site.baseurl}}/docs/example-catalog/ci-examples/spring-boot-2/#spring-boot-2-and-docker-multi-stage-builds):
 
  `Dockerfile`
 {% highlight docker %}
@@ -110,7 +110,7 @@ caption="Multi-stage Docker builds"
 max-width="100%" 
 %}
 
-You can find multistage build examples for other programming languages in the [example section]({{site.baseurl}}/docs/example-catalog/ci-examples/examples/).
+You can find multistage build examples for other programming languages in the [example section]({{site.baseurl}}/docs/example-catalog/examples/).
 
 
 ## Creating self-contained Docker images 
@@ -190,7 +190,7 @@ An alternative way to create Docker images is to just package an existing artifa
 
 >Though this is a very popular way to create Dockerfiles, and Codefresh supports it, we do **NOT** recommend writing Dockerfiles like this. Please learn about Docker multistage builds if you are not familiar with them.
 
-You can see this pattern in all kinds of Dockerfiles that assume the application is already there (or that dependencies are already downloaded). Here is a [Dockerfile that packages an existing JAR]({{site.baseurl}}/docs/example-catalog/ci-examples/java/spring-boot-2/#spring-boot-2-and-docker-package-only) file.
+You can see this pattern in all kinds of Dockerfiles that assume the application is already there (or that dependencies are already downloaded). Here is a [Dockerfile that packages an existing JAR]({{site.baseurl}}/docs/example-catalog/ci-examples/spring-boot-2/#spring-boot-2-and-docker-package-only) file.
 
  `Dockerfile`
 {% highlight docker %}

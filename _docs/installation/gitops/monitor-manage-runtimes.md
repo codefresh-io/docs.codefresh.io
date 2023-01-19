@@ -4,8 +4,6 @@ description: "Optimize GitOps Runtimes"
 group: runtime
 sub_group: gitops
 redirect_from:
-  - /csdp-docs/docs/runtime/monitor-manage-runtimes/
-  - /csdp-docs/docs/runtime/monitoring-troubleshooting/
   - /monitor-manage-runtimes/
   - /monitor-manage-runtimes  
 toc: true

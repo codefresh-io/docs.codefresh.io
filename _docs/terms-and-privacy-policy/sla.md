@@ -4,7 +4,6 @@ description: "Codefresh Cloud Service SLA"
 group: terms-and-privacy-policy
 redirect_from:
   - /docs/terms-and-privacy-policy/sla/ 
-  - /csdp-docs/docs/terms-and-privacy-policy/sla/
 toc: true
 ---
 

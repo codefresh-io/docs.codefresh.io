@@ -37,7 +37,7 @@ All [pipeline steps]({{site.baseurl}}/docs/pipelines/steps/) in Codefresh are in
 
 ## Choosing programming tools as Docker images
 
-In practice, this means that if you have a Node application, you need to use a [Node image]({{site.baseurl}}/docs/example-catalog/ci-examples/nodejs) to package your application, a [Maven image]({{site.baseurl}}/docs/learn-by-example/java/spring-boot-2/) if you are working with Java, a [Python]({{site.baseurl}}/docs/learn-by-example/python/) image for Python applications, and so on.  
+In practice, this means that if you have a Node application, you need to use a [Node image]({{site.baseurl}}/docs/example-catalog/#ci-examples) to package your application, a [Maven image]({{site.baseurl}}/docs/example-catalog/ci-examples/spring-boot-2/) if you are working with Java, a [Python]({{site.baseurl}}/docs/example-catalog/ci-examples/python/) image for Python applications, and so on.  
 
 You launch the image using the Codefresh freestyle step. Here is an example for Node:
 
@@ -80,7 +80,7 @@ This pipeline compiles the Java code under the `back-end` folder, and the Javasc
 
 To get up and running with Codefresh as quickly as possible, you can simply search DockerHub for an existing image that uses the tool you need. Top-level DockerHub images are curated by the Docker team and are considered safe. So most popular programming languages already have a Docker image that you can use in your pipeline.
 
-Of course, you can also [create your private Docker image or use any existing image]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/) from a private or public registry. In that case, you need to write the full name of the image used.  
+Of course, you can also [create your private Docker image or use any existing image]({{site.baseurl}}/docs/ci-cd-guides/working-with-docker-registries/) from a private or public registry. In that case, you need to write the full name of the image used.  
 If you use an image from GCR (Google Container Registry), or another private registry, you would specify it as in the example below. 
 
 `codefresh.yml`

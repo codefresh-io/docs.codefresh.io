@@ -2,8 +2,6 @@
 title: "DORA metrics"
 description: "Get insights into your deployments"
 group: dashboards
-redirect_from:
-  - /csdp-docs/docs/reporting/dora-metrics/
 toc: true
 ---
 

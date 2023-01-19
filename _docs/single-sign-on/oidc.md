@@ -4,7 +4,6 @@ description: "OpenID Connect (OIDC) Single Sign-On (SSO) setup"
 group: single-sign-on
 redirect_from:
   - /docs/single-sign-on/oidc/
-  - /csdp-docs/docs/administration/single-sign-on/sso-setup-oauth2/
 toc: true
 ---
 

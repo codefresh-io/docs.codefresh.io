@@ -3,8 +3,6 @@ title: "Provision a hosted runtime"
 description: ""
 group: getting-started
 sub-group: gitops-quickstart
-redirect_from:
-  - /csdp-docs/docs/getting-started/quick-start/install-hosted/
 toc: true
 ---
 

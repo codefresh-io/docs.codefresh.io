@@ -3,8 +3,6 @@ title: "Install a hybrid runtime"
 description: ""
 group: getting-started
 sub-group: quick-start
-redirect_from:
-  - /csdp-docs/docs/getting-started/quick-start/runtime/
 toc: true
 ---
 

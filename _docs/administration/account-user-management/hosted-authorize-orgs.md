@@ -3,8 +3,6 @@ title: "Authorize organizations/projects"
 description: ""
 group: administration
 sub_group: account-user-management
-redirect_from:
-  - /csdp-docs/docs/administration/hosted-authorize-orgs/
 toc: true
 ---
 

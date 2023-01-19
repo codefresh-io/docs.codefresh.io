@@ -3,8 +3,6 @@ title: "Update image tag for application"
 description: ""
 group: getting-started
 sub-group: gitops-quickstart
-redirect_from:
-  - /csdp-docs/docs/getting-started/quick-start/create-rollout/
 toc: true
 ---
 

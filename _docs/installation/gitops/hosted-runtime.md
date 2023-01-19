@@ -3,8 +3,6 @@ title: "Hosted GitOps Runtime setup"
 description: "Provision Hosted GitOps environment"
 group: installation
 sub_group: gitops
-redirect_from:
-  - /csdp-docs/docs/runtime/hosted-runtime/
 toc: true
 ---
 

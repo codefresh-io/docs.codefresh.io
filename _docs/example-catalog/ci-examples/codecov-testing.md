@@ -21,7 +21,7 @@ max-width="50%"
 
 ## Prerequisites for using Codecov
 
-* A [Codefresh pipeline, up and running]({{site.baseurl}}/docs/administration/account-user-management/create-codefresh-account/)
+* A [Codefresh pipeline, up and running]({{site.baseurl}}/docs/quick-start/ci-quickstart/create-ci-pipeline/)
 * A [Codecov account](https://codecov.io/){:target="\_blank"} (free or enterprise)
 * A testing tool added to your project that produces coverage reports
 

@@ -31,7 +31,7 @@ public class HelloController {
 	}
 ```
 
-The project contains a [base](https://github.com/kubernetes-sigs/kustomize/blob/master/docs/glossary.md#base){:target="\_blank"} and two [overlays](https://github.com/kubernetes-sigs/kustomize/blob/master/docs/glossary.md#overlay){:target="\_blank"}, one for a staging environment and one for production.
+The project contains a [base](https://kubectl.docs.kubernetes.io/references/kustomize/glossary/#base){:target="\_blank"} and two [overlays](https://kubectl.docs.kubernetes.io/references/kustomize/glossary/#overlay){:target="\_blank"}, one for a staging environment and one for production.
 
 The base manifest holds a dummy variable for `MY_MYSQL_DB` which will be overlayed once we call the kustomize command in our pipeline.
 

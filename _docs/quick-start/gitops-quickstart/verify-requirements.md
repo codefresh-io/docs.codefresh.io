@@ -3,8 +3,6 @@ title: "Prepare for hybrid runtime installation"
 description: ""
 group: getting-started
 sub-group: quick-start
-redirect_from:
-  - /csdp-docs/docs/getting-started/quick-start/verify-requirements/
 toc: true
 ---
 

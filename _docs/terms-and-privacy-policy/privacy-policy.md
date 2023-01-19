@@ -4,7 +4,6 @@ description: ""
 group: terms-and-privacy-policy
 redirect_from:
   - /docs/privacy-policy/
-  - /csdp-docs/docs/terms-and-privacy-policy/privacy-policy/
   - /docs/terms-and-privacy-policy/privacy-policy/
 toc: true
 ---

@@ -5,7 +5,6 @@ group: administration
 sub_group: user-self-management
 redirect_from:
   - /docs/administration/user-settings/
-  - /csdp-docs/docs/administration/user-settings/
 toc: true
 ---
 

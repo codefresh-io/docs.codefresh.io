@@ -3,8 +3,6 @@ title: "Download/upgrade GitOps CLI"
 description: "Have the latest version of the GitOps CLI"
 group: installation
 sub_group: gitops
-redirect_from:
-  - /csdp-docs/docs/clients/csdp-cli/
 toc: true
 ---
 

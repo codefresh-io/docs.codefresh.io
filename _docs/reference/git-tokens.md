@@ -4,7 +4,6 @@ description: ""
 group: reference
 redirect_from:
   - /docs/administration/git-tokens/ 
-  - /csdp-docs/docs/reference/git-tokens/
 toc: true
 ---
 

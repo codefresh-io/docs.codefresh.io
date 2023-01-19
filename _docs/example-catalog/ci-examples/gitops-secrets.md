@@ -74,7 +74,7 @@ db_password = /secrets/mysql/password
 
 The application itself knows nothing about Kubernetes secrets, mounted volumes or any other cluster resource. It only reads its own filesystem at `/secrets`
 
-This folder is populated inside the pod with [secret mounting](https://github.com/codefresh-contrib/gitops-secrets-sample-app/blob/main/manifests/deployment.yml){:target="\_blank"}:
+This folder is populated inside the pod with [secret mounting](https://github.com/codefresh-contrib/gitops-secrets-sample-app/blob/main/safe-to-commit/manifests/deployment.yml){:target="\_blank"}:
 
 ```yaml
 ---
