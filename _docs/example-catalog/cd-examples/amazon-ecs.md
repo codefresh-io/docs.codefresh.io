@@ -25,8 +25,8 @@ max-width="100%"
 
 
 1. Configure an ECS (or Fargate) Cluster with at least one running instance.
-1. Configure an ECS Service and Task Definition with a reference to **the image that you are going to build and push.** See [the official amazon docs](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/Welcome.html) for more details.
-1. Connect your [ECR to Codefresh]({{site.baseurl}}/docs/docker-registries/external-docker-registries/amazon-ec2-container-registry/) so that it can be used by name in Codefresh pipelines.
+1. Configure an ECS Service and Task Definition with a reference to **the image that you are going to build and push.** See [the official amazon docs](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/Welcome.html){:target="\_blank"} for more details.
+1. Connect your [ECR to Codefresh]({{site.baseurl}}/docs/integrations/docker-registries/amazon-ec2-container-registry/) so that it can be used by name in Codefresh pipelines.
 1. Verify you have AWS Credentials (`AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`), with the following privileges:
 
   `JSON`
@@ -109,7 +109,7 @@ This pipeline does the following:
 
 1. Clones the source code with a [Git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/)
 1. Uses a [build step]({{site.baseurl}}/docs/pipelines/steps/build/) to create a Docker image
-1. Uses a [push step]({{site.baseurl}}/docs/cpipelines/steps/push/) to push the docker image to ECR. The registry was previously [connected in Codefresh]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) with the `ecr` identifier.
+1. Uses a [push step]({{site.baseurl}}/docs/pipelines/steps/push/) to push the docker image to ECR. The registry was previously [connected to Codefresh]({{site.baseurl}}/docs/integrations/docker-registries/amazon-ec2-container-registry/) with the `ecr` identifier.
 1. Runs `codefreshplugins/cf-deploy-ecs` to perform the actual deployment
 
 
@@ -144,13 +144,13 @@ The `codefreshplugins/cf-deploy-ecs` step performs the following:
     * The `cfecs-update` command exits with a timeout error if after --timeout (default = 900s) `runningCount` does not equal `desiredCount`
     * The `cfecs-update` exits with an error if --max-failed (default = 2) or more ECS tasks were stopped with error for the task definition that you are deploying.      ECS continuously retries failed tasks.
 
-You can also find the same step in the form of a [Codefresh plugin](https://codefresh.io/steps/step/ecs-deploy).
+You can also find the same step in the form of a [Codefresh plugin](https://codefresh.io/steps/step/ecs-deploy){:target="\_blank"}.
 
 ## Related articles
-[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#cd-examples)
+[CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#cd-examples)  
 [Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
-[External Registries]({{site.baseurl}}/docs/integration/docker-registries/)
+[External registries]({{site.baseurl}}/docs/integrations/docker-registries/)
 
 

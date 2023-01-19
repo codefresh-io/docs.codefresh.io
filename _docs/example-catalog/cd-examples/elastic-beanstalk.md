@@ -134,4 +134,4 @@ max-width="40%"
 
 
 ## Related articles
-[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#cd-examples)
+[CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#cd-examples)
