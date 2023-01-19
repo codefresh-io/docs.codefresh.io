@@ -48,7 +48,7 @@ The step accepts the following environment variables:
 * `KUBECTL_ACTION`: An action for `kubectl <action>`. Valid values are `apply|create|replace` (default is `apply`).
 * `KUBERNETES_DEPLOYMENT_TIMEOUT`: The duration to wait for a successful deployment before failing the build (defaults to 120 secs).
 
-The step will deploy your deployment to the cluster specified by the context and namespace given. The name of the context is the name of your cluster as seen in the [Kubernetes dashboard]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/#work-with-your-services).
+The step will deploy your deployment to the cluster specified by the context and namespace given. The name of the context is the name of your cluster as seen in the [Kubernetes dashboard]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/).
 
 Before the deployment takes place, all Codefresh variables found in the `deployment.yml` file in the form of {% raw %}`{{MY_VARIABLE}}`{% endraw %} will be automatically replaced with their current values.
 
@@ -85,7 +85,7 @@ spec:
 
 In this case the image will get the replacement for your Codefresh account name and the tag will use the git revision. Metadata annotations are also defined with value from the branch name and the git repository name.
 
-Notice that the variables are declared as  {% raw %}`{{MY_VARIABLE}}`{% endraw %} form and **NOT** {% raw %}`${{MY_VARIABLE}}`{% endraw %} which is how they are used inside the [Codefresh yaml]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) definition.
+Notice that the variables are declared as  {% raw %}`{{MY_VARIABLE}}`{% endraw %} form and **NOT** {% raw %}`${{MY_VARIABLE}}`{% endraw %} which is how they are used inside the [Codefresh yaml]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/) definition.
 
 
 ## Creating custom manifest replacements
@@ -201,10 +201,10 @@ steps:
 {% endhighlight %}
 
 ## Related articles
-[Connnecting to your cluster]({{site.baseurl}}/docs/deployments/kubernetes/add-kubernetes-cluster/)  
-[Managing your cluster]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/)  
-[Accessing a docker registry]({{site.baseurl}}/docs/deployments/access-docker-registry-from-kubernetes/)  
-[Running custom kubectl commands]({{site.baseurl}}/docs/deployments/kubernetes/custom-kubectl-commands/)  
+[Kubernetes integrations]({{site.baseurl}}/docs/deployments/kubernetes/#connect-a-kubernetes-cluster)  
+[Managing Kubernetes clusters]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/)  
+[Accessing a docker registry]({{site.baseurl}}/docs/ci-cd-guides/access-docker-registry-from-kubernetes/)  
+[Custom kubectl commands]({{site.baseurl}}/docs/deployments/kubernetes/custom-kubectl-commands/)  
 
 
 

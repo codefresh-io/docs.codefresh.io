@@ -149,7 +149,7 @@ This pipeline does the following:
 
 1. [Clones]({{site.baseurl}}/docs/example-catalog/ci-examples/git-checkout/) the source code of the application.
 1. [Builds]({{site.baseurl}}/docs/ci-cd-guides/building-docker-images/) a Docker image.
-1. [Deploys]({{site.baseurl}}/docs/deployments/kubernetes/kubernetes-templating/) the application by updating the Kubernetes manifests. Argo Rollouts sees the new manifest, and creates a new "color" for the next version
+1. [Deploys]({{site.baseurl}}/docs/ci-cd-guides/kubernetes-templating/) the application by updating the Kubernetes manifests. Argo Rollouts sees the new manifest, and creates a new "color" for the next version
 1. The pipeline is paused and waits for an [approval/rejection]({{site.baseurl}}/docs/pipelines/steps/approval/#getting-the-approval-result) by a human user. 
 1. If the pipeline is approved, the new color is promoted, and becomes the new active version.
 1. If the pipeline is rejected, the new color is discarded, and all live users are not affected in any way.
@@ -267,9 +267,9 @@ max-width="100%"
 
 This pipeline does the following:
 
-1. [Clones]({{site.baseurl}}/docs/examples/example-catalog/ci-examples/git-checkout/) the source code of the application.
-1. [Builds]({{site.baseurl}}/docs/ci-cd-guides/building-docker-images/) a Docker image
-1. [Deploys]({{site.baseurl}}/docs/deployments/kubernetes/kubernetes-templating/) the application by updating the Kubernetes manifests. Argo Rollouts sees the new manifest and creates a new "color" for the next version.
+1. [Clones]({{site.baseurl}}/docs/example-catalog/ci-examples/git-checkout/) the source code of the application.
+1. [Builds]({{site.baseurl}}/docs/ci-cd-guides/building-docker-images/) a Docker image.
+1. [Deploys]({{site.baseurl}}/docs/ci-cd-guides/kubernetes-templating/) the application by updating the Kubernetes manifests. Argo Rollouts sees the new manifest and creates a new "color" for the next version.
 1. Runs integration tests against the "preview" service created by Argo Rollouts. Live users are still on the previous/stable version of the application. 
 1. If smoke tests pass, the new color is promoted and becomes the new active version.
 1. If smoke tests fail, the new color is discarded and all live users are not affected in any way.
@@ -493,7 +493,7 @@ You can install LinkerD by following [the official documentation](https://linker
 
 ### Canary deployment with manual approval
 
-As with Blue/Green deployments, the easiest way to use canaries is by simply inserting [an approval step]({{site.baseurl}}/docs/pipelines/steps/approval/) before each subsequent traffic switch step.
+As with Blue/Green deployments, the easiest way to use canaries is by simply inserting an [approval step]({{site.baseurl}}/docs/pipelines/steps/approval/) before each subsequent traffic switch step.
 This will pause the pipeline and the developers or QA team can evaluate the canary stability.
 
 Here is the [Canary setup](https://github.com/codefresh-contrib/argo-rollout-canary-sample-app/blob/main/canary-manual-approval/rollout.yaml#L8){:target="\_blank"}:
@@ -539,9 +539,9 @@ max-width="100%"
 
 This pipeline does the following:
 
-1. [Clones]({{site.baseurl}}/docs/example-catalog/examples/git-checkout/) the source code of the application.
-1. [Builds]({{site.baseurl}}/docs/ci-cd-guides/building-docker-images/) a Docker image
-1. [Deploys]({{site.baseurl}}/docs/deployments/kubernetes/kubernetes-templating/) the application by updating the Kubernetes manifests. Argo Rollouts sees the new manifest and creates a new version. 10% of live traffic is redirected to it.
+1. [Clones]({{site.baseurl}}/docs/example-catalog/ci-examples/git-checkout/) the source code of the application.
+1. [Builds]({{site.baseurl}}/docs/ci-cd-guides/building-docker-images/) a Docker image.
+1. [Deploys]({{site.baseurl}}/docs/ci-cd-guides/kubernetes-templating/) the application by updating the Kubernetes manifests. Argo Rollouts sees the new manifest and creates a new version. 10% of live traffic is redirected to it.
 1. The pipeline is paused and waits for an [approval/rejection]({{site.baseurl}}/docs/pipelines/steps/approval/#getting-the-approval-result) by a human user. 
 1. If the pipeline is approved, 33% of traffic is now sent to the canary. If the pipeline is rejected, the canary is discarded and all traffic goes back to the stable version.
 1. In the next pause, the pipeline waits for a second approval.
@@ -843,9 +843,9 @@ This pipeline does the following:
 
 1. [Clones]({{site.baseurl}}/docs/example-catalog/ci-examples/git-checkout/) the source code of the application.
 1. [Builds]({{site.baseurl}}/docs/ci-cd-guides/building-docker-images/) a Docker image.
-1. [Deploys]({{site.baseurl}}/docs/deployments/kubernetes/kubernetes-templating/) the application by updating the Kubernetes manifests. Argo Rollouts sees the new manifest and creates a new version and starts the canary process.
+1. [Deploys]({{site.baseurl}}/docs/ci-cd-guides/kubernetes-templating/) the application by updating the Kubernetes manifests. Argo Rollouts sees the new manifest and creates a new version and starts the canary process.
 
-Here is the pipeline definition: For more information, see [What is the Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/):
+Here is the [pipeline definition]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/):
 
  `codefresh.yml`
 {% highlight yaml %}
@@ -908,7 +908,7 @@ caption="Running the Analysis in the background"
 max-width="100%" 
 %}
 
-For each deployment you can also see the result of the Analysis along with the canary pods. The number next to the checkmark shows how many times the analysis will run (this is defined by the `count` property in the Analysis file). See the [Canary specification](https://argoproj.github.io/argo-rollouts/features/canary/) for more parameters.
+For each deployment you can also see the result of the Analysis along with the canary pods. The number next to the checkmark shows how many times the analysis will run (this is defined by the `count` property in the Analysis file). See the [Canary specification](https://argoproj.github.io/argo-rollouts/features/canary/){:target="\_blank"} for more parameters.
 
 ## Monitoring the Argo Rollouts controller
 
@@ -952,8 +952,7 @@ See our [GitOps page]({{site.baseurl}}/docs/ci-cd-guides/gitops-deployments/) fo
 
 ## Related articles
 [Deploying to predefined environments]({{site.baseurl}}/docs/ci-cd-guides/environment-deployments/)  
-[GitOps Deployments]({{site.baseurl}}/docs/ci-cd-guides/gitops-deployments/)  
-[Pipelines for microservices]({{site.baseurl}}/docs/ci-cd-guides/microservices/)  
+[Building microservices]({{site.baseurl}}/docs/ci-cd-guides/microservices/)  
 
 
 

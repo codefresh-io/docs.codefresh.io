@@ -123,7 +123,7 @@ The Codefresh CLI can also create pull secrets in an automated manner.
 See [Image pull Secret](https://codefresh-io.github.io/cli/more/image-pull-secret/){:target="\_blank"}.
 
 ## Related articles
-[Deploy to Kubernetes - quick start]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/)  
-[Managing your cluster]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/)  
+[Kubernetes deployment quick start]({{site.baseurl}}/docs/quick-start/ci-quickstart/deploy-to-kubernetes/)  
+[Managing Kubernetes clusters]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/)  
 
 

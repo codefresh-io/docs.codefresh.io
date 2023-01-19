@@ -22,16 +22,15 @@ max-width="80%"
 ## Prerequisites
 
 Before starting, you will need to: 
-<!--- xrefs -->
- 1. [Create a Codefresh account]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/)
+ 1. [Create a Codefresh account]({{site.baseurl}}/docs/administration/account-user-management/create-codefresh-account/)
  1. Get access to a Kubernetes cluster on any cloud provider
  1. [Connect the Kubernetes cluster]({{site.baseurl}}/docs/integrations/kubernetes/#connect-a-kubernetes-cluster/) to your account
- 1. Install [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/){:target="\_blank"} and [helm](https://helm.sh/docs/intro/install/):target="\_blank"} and point them to your cluster
+ 1. Install [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/){:target="\_blank"} and [helm](https://helm.sh/docs/intro/install/){:target="\_blank"} and point them to your cluster
  1. Have [Docker](https://docs.docker.com/get-docker/){:target="\_blank"} installed locally (optional)
 
 ## Example application
 
-As a running example, we will use a simple application with a Helm chart. [Helm is the package manager]({{site.baseurl}}/docs/deployments/helm/helm-best-practices/) for Kubernetes and has built-in support for passing different configuration settings for each environment.
+As a running example, we will use a simple application with a Helm chart. [Helm]({{site.baseurl}}/docs/ci-cd-guides/helm-best-practices/) is the package manager for Kubernetes, and has built-in support for passing different configuration settings for each environment.
 
 You can find the example Helm application at [https://github.com/codefresh-contrib/helm-promotion-sample-app](https://github.com/codefresh-contrib/helm-promotion-sample-app){:target="\_blank"}. If you want to follow along feel free to fork it on your own account.
 
@@ -111,7 +110,7 @@ Note that for this guide, all three environments run on the same cluster. In a r
 
 ## Basic deployment pipeline for different environments
 
-Now that we have seen how manual deployment works, let's automate the whole process with Codefresh. We [will create a pipeline]({{site.baseurl}}/docs/pipelines/pipelines/) that:
+Now that we have seen how manual deployment works, let's automate the whole process with Codefresh. We will [create a pipeline]({{site.baseurl}}/docs/pipelines/pipelines/) that:
 
 1. Deploys all commits to the `master` branch in the production environment
 1. Deploys all other commits to the staging environment
@@ -133,7 +132,7 @@ The pipeline has the following steps
 
 1. A [clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/) to get the source code plus the Helm chart
 1. A [build step]({{site.baseurl}}/docs/pipelines/steps/build/) to create and push the container image to Dockerhub
-1. A [Helm  step]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/) to perform the deployment. The step has [pipeline conditions]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/) to select which environment will be used.
+1. A [Helm  step]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/) to perform the deployment. The step has [conditions]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/) to select which environment will be used.
 
 Here is the full pipeline:
 
@@ -235,7 +234,7 @@ For more details on Helm deployments see our [dedicated Helm example]({{site.bas
 The previous pipeline works great as an automation mechanism. Wouldn't it be great if you could also *visualize* your deployments? 
 Codefresh includes a [Helm release dashboard]({{site.baseurl}}/docs/deployments/helm/helm-releases-management/) to help you understand your deployments.
 
-1. In the Codefresh UI, from the Ops section in the sidebar, select [Helm Releases](https://g.codefresh.io/helm/releases/releasesNew/){:target="\_blank"}.
+1. In the Codefresh UI, from Ops in the sidebar, select [Helm Releases](https://g.codefresh.io/helm/releases/releasesNew/){:target="\_blank"}.
 
 {% include image.html 
 lightbox="true" 
@@ -258,7 +257,7 @@ caption="Helm service information"
 max-width="80%" 
 %}
 
-  In the History tab, you can view the deployment history, and even [rollback]({{site.baseurl}}/docs/deployments/helm/helm-releases-management/#rolling-back-a-helm-release) to a previous release:
+  In the History tab, you can view the deployment history, and even [rollback]({{site.baseurl}}/docs/deployments/helm/helm-releases-management/#roll-back-a-helm-release) to a previous release:
 
 {% include image.html 
 lightbox="true" 
@@ -390,7 +389,7 @@ steps:
 {% endhighlight %}
 
 
-Notice that we use the `CF_COMMIT_MESSAGE` [variable]({{site.baseurl}}/docs/pipelines/variables/) to annotate each environment with each build message. After you deploy at least once to each environment, you should see the following in your [Environment dashboard](https://g.codefresh.io/environments).
+Notice that we use the `CF_COMMIT_MESSAGE` [variable]({{site.baseurl}}/docs/pipelines/variables/) to annotate each environment with each build message. After you deploy at least once to each environment, you should see the following in the Codefresh UI's [Environment dashboard](https://g.codefresh.io/environments){:target="\_blank"}.
 
 {% include image.html 
 lightbox="true" 
@@ -659,15 +658,15 @@ Some common workflows are:
 
 1. Automate the staging pipeline when a commit lands in `master`, and only launch the production pipeline manually.
 1. Automate the staging pipeline when a commit lands in `master`, and use an [approval step]({{site.baseurl}}/docs/pipelines/steps/approval/) to call the production pipeline as a [child pipeline]({{site.baseurl}}/docs/example-catalog/ci-examples/call-child-pipelines/).
-1. Set the [trigger]({{site.baseurl}}/docs/pipeline/triggers/git-triggers/) of the production pipeline to [launch only]({{site.baseurl}}/docs/ci-cd-guides/pull-request-branches/#restricting-which-branches-to-build) on `master`, and the trigger of the staging pipeline to launch only for `non-master` branches.
+1. Set the [trigger]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/) of the production pipeline to [launch only]({{site.baseurl}}/docs/ci-cd-guides/pull-request-branches/#restricting-which-branches-to-build) on `master`, and the trigger of the staging pipeline to launch only for `non-master` branches.
 1. Set the production pipeline to launch only for commits on `master`, and the staging pipeline only for pull requests (PRs).
 
-The exact mechanism depends on the workflow of your team. For more information, see [the guide on branches and pull requests]({{site.baseurl}}/docs/ci-cd-guides/pull-request-branches/), especially [trunk based development]({{site.baseurl}}/docs/ci-cd-guides/pull-request-branches/#trunk-based-development), as a good starting point.
+The exact mechanism depends on the workflow of your team. For more information, see the guide on [Pull Requests and branches]({{site.baseurl}}/docs/ci-cd-guides/pull-request-branches/), and [trunk based development]({{site.baseurl}}/docs/ci-cd-guides/pull-request-branches/#trunk-based-development), as a good starting point.
 
 ## Promoting releases between environments
 
 If you have a large number of environments, we also suggest looking at the Helm promotion board provided by Codefresh.  
-For more details, see [Helm promotion board]({{site.baseurl}}/docs/new-helm/helm-environment-promotion/).
+For more details, see [Helm promotion board]({{site.baseurl}}/docs/deployments/helm/helm-environment-promotion/).
 
 
 {% include 
@@ -683,7 +682,6 @@ max-width="80%"
 
 ## Related articles
 [Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
-[Pull requests and branches]({{site.baseurl}}/docs/ci-cd-guides/pull-request-branches/)  
 [Environment dashboard]({{site.baseurl}}/docs/deployments/kubernetes/environment-dashboard/)  
 
 

@@ -370,7 +370,7 @@ For more Docker best practices see our [Docker anti-patterns blog post](https://
 
 ## Pushing Docker images
 
-The build step in Codefresh is very smart and automatically also pushes your Docker image to your [default Docker registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/#the-default-registry).
+The build step in Codefresh is very smart and automatically also pushes your Docker image to your [default Docker registry]({{site.baseurl}}/docs/integrations/docker-registries/#default-registry).
 
 
 {% include image.html 

@@ -1,5 +1,5 @@
 ---
-title: "Work with Docker Registries"
+title: "Working with Docker registries"
 description: "Push, pull, and tag Docker images in Codefresh pipelines"
 group: ci-cd-guides
 redirect_from:
@@ -14,9 +14,10 @@ Codefresh contains first-class Docker registry support. This means that you don'
 
 ## Viewing Docker images
 
-To see all images from [all connected registries]({{site.baseurl}}/docs/integrations/docker-registry/docker-registries/):
+To see all images from [all connected registries]({{site.baseurl}}/docs/integrations/docker-registries/):
 
-* In the Codefresh UI, from the Artifacts section in the sidebar, select [**Images**](https://g.codefresh.io/images/){:target="\_blank"}.
+* In the Codefresh UI, from Artifacts in the sidebar, select [**Images**](https://g.codefresh.io/images/){:target="\_blank"}.  
+  Each image displays basic details such as the Git branch, commit message, hash that created it, creation date, as well as all tags.
 
 {% 
   include image.html 
@@ -28,7 +29,6 @@ To see all images from [all connected registries]({{site.baseurl}}/docs/integrat
   max-width="70%" 
 %}
 
-Each image displays basic details such as the Git branch, commit message, hash that created it, creation date, as well as all tags.
 * To view image metadata, click on the image. For details, see [Docker image metadata]({{site.baseurl}}/docs/pipelines/docker-image-metadata/).
 
 
@@ -57,7 +57,7 @@ Multiple filters work in an `AND` manner.
 **Actions for Docker images**  
 On the right are the actions available foreach Docker image.  
 You can:  
-* Launch a Docker image as a [test environment]({{site.baseurl}}/docs/getting-started/on-demand-environments/)
+* Launch a Docker image as a [test environment]({{site.baseurl}}/docs/quick-start/ci-quickstart/on-demand-environments/)
 * Promote a Docker image (explained in the following sections)
 * Pull the image locally on your workstation with different commands
 * Re-run the pipeline that created the image
@@ -112,7 +112,7 @@ registry-name.azurecr.io/my-docker-repo/my-image-name:tag
 ```
 
 Get the full name of a Docker image:  
-* In the Codefresh UI, from the Artifacts section in the sidebar, select [**Images**](https://g.codefresh.io/images/){:target="\_blank"}.
+* In the Codefresh UI, from Artifacts in the sidebar, select [**Images**](https://g.codefresh.io/images/){:target="\_blank"}.
 * Click on the image and copy the image name from the Activity column, **Image promoted** label.
 
 {% 
@@ -127,7 +127,7 @@ Get the full name of a Docker image:
 
 The exact format of the image name depends on the type of registry you use. Codefresh uses the domain prefix of each image to understand which integration to use, and then takes care of all `docker login` and `docker pull` commands on its own behind the scenes.
 
-For example, if you have connected [Azure]({{site.baseurl}}/docs/integrations/docker-registries/azure-docker-registry/){:target="\_blank"}, [AWS]({{site.baseurl}}/docs/integrations/docker-registries/amazon-ec2-container-registry/){:target="\_blank"}, and [Google]({{site.baseurl}}/docs/integrations/docker-registries/google-container-registry/){:target="\_blank"} registries, you can pull three images for each in a pipeline like this:
+For example, if you have connected [Azure]({{site.baseurl}}/docs/integrations/docker-registries/azure-docker-registry/), [AWS]({{site.baseurl}}/docs/integrations/docker-registries/amazon-ec2-container-registry/), and [Google]({{site.baseurl}}/docs/integrations/docker-registries/google-container-registry/) registries, you can pull three images for each in a pipeline like this:
 
 
  `codefresh.yml`
@@ -224,7 +224,7 @@ The image is still pushed to your default Docker registry. If you don't want thi
 
 Pushing to your default Docker registry is completely automatic. All successful [build steps]({{site.baseurl}}/docs/pipelines/steps/build/) automatically push to the default Docker registry of your Codefresh account without any extra configuration.
 
-To push to another registry, you only need to know how this registry is [connected to Codefresh]({{site.baseurl}}/docs/docker-registries/external-docker-registries/), and more specifically, what is the unique name of the integration. You can see the name from  your [Docker Registry integrations](https://g.codefresh.io/account-admin/account-conf/integration/registryNew), or asking your Codefresh administrator.
+To push to another registry, you only need to know how this registry is [connected to Codefresh]({{site.baseurl}}/docs/integrations/docker-registries/), and more specifically, what is the unique name of the integration. You can see the name in the Codefresh UI, in [Docker Registry integrations](https://g.codefresh.io/account-admin/account-conf/integration/registryNew){:target="\_blank"}, or asking your Codefresh administrator.
 
 
 {% 
@@ -288,7 +288,7 @@ Notice that
 
 Here the build step creates an image named `my-app-image:master`,  but the push step actually pushes it as `my-company/web-app:1.2.3`.
 
-For more examples, such as using multiple tags, or pushing in parallel, see the [push examples]({{site.baseurl}}/docs/pipelines/steps/push/#examples)
+For more examples, such as using multiple tags, or pushing in parallel, see the [push examples]({{site.baseurl}}/docs/pipelines/steps/push/#examples).
 
 ### Pushing images with an optional prefix
 
@@ -509,7 +509,7 @@ You can perform this action either from the Codefresh UI or automatically from p
 You have the capability to "promote" any image of your choosing and push it to an external registry you have integrated into Codefresh (such as Azure, Google, Bintray etc.).
 
 
-1. In the Codefresh UI, from the Artifacts section in the sidebar, select [**Images**](https://g.codefresh.io/images/){:target="\_blank"}.
+1. In the Codefresh UI, from Artifacts in the sidebar, select [**Images**](https://g.codefresh.io/images/){:target="\_blank"}.
 1. To promote an image, in the row with the image, click the **Promote Image** icon on the right.
 
 {% 
@@ -522,6 +522,7 @@ You have the capability to "promote" any image of your choosing and push it to a
   max-width="50%" 
 %}
 
+{:start="3"}
 1. From the list of connected registries, select the target registry, and define the tag that you want to push. 
 1. To "copy" this image from the existing registry to the target registry, click **Promote**.
 
@@ -567,8 +568,7 @@ In the example above, the image `my-azure-registry.azurecr.io/kostis-codefresh/m
 
 
 ## Related articles
-[Push pipeline step]({{site.baseurl}}/docs/pipelines/steps/push/)  
-[External Docker registries]({{site.baseurl}}/docs/integrations/docker-registries/)  
-[Accessing a Docker registry from your Kubernetes cluster]({{site.baseurl}}/docs/deployments/kubernetes/access-docker-registry-from-kubernetes/)  
+[Docker registry integrations for pipelines]({{site.baseurl}}/docs/integrations/docker-registries/)  
+[Accessing a Docker registry from your Kubernetes cluster]({{site.baseurl}}/docs/ci-cd-guides/access-docker-registry-from-kubernetes/)   
 [Build and push an image example]({{site.baseurl}}/docs/example-catalog/ci-examples/build-and-push-an-image/)
 

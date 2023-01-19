@@ -9,13 +9,13 @@ toc: true
 ---
 Many applications require configuration with files, environment variables, and command line arguments. It makes applications portable and easily manageable. While this makes for easy configuration, it can become very hard to support tons of config files for different environments and hundreds of microservices. 
 
-Kubernetes provides an elegant and very convenient way for application configuration, using *configuration maps*. You can find more details about config maps at [https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/){:target="_blank"}. 
+Kubernetes provides an elegant and very convenient way for application configuration, using *configuration maps*. You can find more details about config maps at [Kubernetes - Configure a Pod to Use a ConfigMap](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/){:target="_blank"}. 
 
 You can manage all your cluster configuration using Codefresh. 
 
 ## View existing config maps
 
-1. In the Codefresh UI, from the Ops section in the sidebar, select [**Kubernetes Services**](https://g.codefresh.io/kubernetes/services/){:target="\_blank"}.
+1. In the Codefresh UI, from Ops in the sidebar, select [**Kubernetes Services**](https://g.codefresh.io/kubernetes/services/){:target="\_blank"}.
 1. Switch to list view.
 
 {% include 
@@ -31,7 +31,7 @@ max-width="50%"
 {:start="3"}
 1. Select a namespace and hover over it. 
 1. Click the **Settings** icon which appears at the end of the row.  
-  A list of all config maps within this namespace are displayed, including date of creation and number of configuration variables inside these maps.
+  A list of all config maps within this namespace are displayed, with their date of creation and number of configuration variables.
 
 
 
@@ -144,6 +144,6 @@ max-width="40%"
 To remove a config map, click on "remove" icon in the selected row. After your confirmation, the configmap will be removed.
 
 ## Related articles
-[Connect to your Kubernetes cluster]({{site.baseurl}}/docs/integrations/add-kubernetes-cluster/)  
-[Manage your Kubernetes cluster]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/)  
-[Deploy to Kubernetes - quick start]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/)  
+[Connect to a Kubernetes cluster]({{site.baseurl}}/docs/integrations/#connect-a-kubernetes-cluster)  
+[Managing Kubernetes clusters]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/)  
+[Kubernetes deployment quick start]({{site.baseurl}}/docs/quick-start/ci-quickstart/deploy-to-kubernetes/)  

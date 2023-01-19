@@ -437,8 +437,6 @@
           url: "/build-status"
     - title: Service containers
       url: "/service-containers"
-    - title: Deployment environments
-      url: "/deployment-environments"
     - title: Docker image metadata
       url: "/docker-image-metadata"  
     - title: Pipeline definitions YAML

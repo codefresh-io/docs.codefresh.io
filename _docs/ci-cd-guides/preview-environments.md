@@ -58,10 +58,10 @@ You can find the application we will use at [https://github.com/codefresh-contri
 It is a standard Java/Spring boot application, that includes the following characteristics:
 
 * It has [integration tests]({{site.baseurl}}/docs/testing/integration-tests/) that can be targeted at any host/port. We will use those tests as smoke test that will verify the preview environment after it is deployed
-* It comes bundled in [a Helm chart](https://github.com/codefresh-contrib/unlimited-test-environments-manifests){:target="\_blank"}
+* It comes bundled in a [Helm chart](https://github.com/codefresh-contrib/unlimited-test-environments-manifests){:target="\_blank"}
 * It has an ingress configuration ready for path-based URLs
 
-We are using [the Ambassador gateway](https://www.getambassador.io/){:target="\_blank"} as an ingress for this example, but you can use any Kubernetes-compliant ingress.
+We are using the [Ambassador gateway](https://www.getambassador.io/){:target="\_blank"} as an ingress for this example, but you can use any Kubernetes-compliant ingress.
 
 Here is the [ingress manifest](https://github.com/codefresh-contrib/unlimited-test-environments-manifests/blob/main/simple-java-app/templates/ingress.yaml){:target="\_blank"}.
 
@@ -257,7 +257,7 @@ caption="Pull Request comment"
 max-width="100%"
 %}
 
-As explained in [pull Requests]({{site.baseurl}}/docs/ci-cd-guides/pull-request-branches/), we want to make this pipeline applicable only
+As explained in [Pull Requests and branches guide]({{site.baseurl}}/docs/ci-cd-guides/pull-request-branches/), we want to make this pipeline applicable only
 to a PR-open event and PR-sync events that capture commits on an existing pull request.
 
 {% include image.html 
@@ -269,7 +269,7 @@ caption="Git events for a Pull Request preview pipeline"
 max-width="100%"
 %}
 
-Therefore, you need to set up your [pipeline triggers]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/) with the same options selected as shown in the picture above.
+Therefore, you need to set up your [Git triggers]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/) with the same options selected as shown in the picture above.
 
 ## Cleaning up temporary environments
 
@@ -312,7 +312,7 @@ steps:
 
 The pipeline just uninstalls the Helm release for that namespace, and then deletes the namespace itself.
 
-To have this pipeline run only when a PR is closed, here are the [triggers]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/) to select:
+To have this pipeline run only when a PR is closed, here are the triggers to select:
 
 {% include image.html 
 lightbox="true"
@@ -325,7 +325,7 @@ max-width="100%"
 
 With this setup, the pipeline runs when the PR is closed, regardless of whether it was merged or not (which is exactly what you want as in both cases the test environment is not needed anymore).
 
-## Viewing all environments in the  Codefresh UI
+## Viewing all environments in the Codefresh UI
 
 You can combine the pipeline above with any Codefresh UI dashboard if you want to see all your temporary environments in a single view.
 
@@ -340,7 +340,7 @@ For more information, see:
 [How Codefresh pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)  
 [Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
-[Working with Docker registries]({{site.baseurl}}/docs/integrations/docker-registries/)  
+[Docker registry integrations for pipelines]({{site.baseurl}}/docs/integrations/docker-registries/)  
 
 
 

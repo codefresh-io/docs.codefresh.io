@@ -69,10 +69,10 @@ When you commit to a Pull Request (PR), Codefresh auto-builds the PR, and you ca
 {% include
 image.html
 lightbox="true"
-file="/images/getting-started/quick-start-test-pr/auto-build-pr.png"
-url="/images/getting-started/quick-start-test-pr/auto-build-pr.png"
-alt="Pull Request Status"
-caption="Pull Request Status (click image to enlarge)"
+file="/images/guides/branches-pull-requests/auto-build-pr.png"
+url="/images/guides/branches-pull-requests/auto-build-pr.png"
+alt="Pull Request status"
+caption="Pull Request status"
 max-width="50%"
 %}
 
@@ -347,8 +347,8 @@ Trunk-based development and Git-flow are only some examples of what a Git workfl
 [Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
 [Git triggers in pipelines]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/)  
-[YAML examples]({{site.baseurl}}/docs/example-catalog/examples/)  
-[Preview environments]({{site.baseurl}}/docs/ci-cd-guides/preview-environments/)  
+[CI/CD examples for pipelines]({{site.baseurl}}/docs/example-catalog/examples/)  
+[Previewing dynamic environments]({{site.baseurl}}/docs/ci-cd-guides/preview-environments/)  
 
 
 

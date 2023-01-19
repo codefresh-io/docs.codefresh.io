@@ -64,7 +64,7 @@ Here is a list of important Helm points that are often controversial between tea
 
 ### Helm repositories are optional
 
-Using Helm repositories is a recommended practice, but completely optional. You can deploy a Helm chart to a Kubernetes cluster directly from the filesystem. The [quick start guide]({{site.baseurl}}/docs/quick-start/deploy-with-helm/) describes this scenario.
+Using Helm repositories is a recommended practice, but completely optional. You can deploy a Helm chart to a Kubernetes cluster directly from the filesystem. The [Helm deployment quick start]({{site.baseurl}}/docs/quick-start/ci-quickstart/deploy-with-helm/) describes this scenario.
 
 Helm can install a chart either in the package (`.tgz`) or unpackaged (tree of files) to a Kubernetes cluster right away. Thus, the most minimal Helm pipeline has only two steps:
 
@@ -152,7 +152,7 @@ max-width="70%"
 The steps are the following:
 
 1. Code/Dockerfile/Chart is checked out from Git
-1. Docker image is built (and pushed to [default Docker registry]({{site.baseurl}}/docs/integration/docker-registries/#the-default-registry))
+1. Docker image is built (and pushed to [default Docker registry]({{site.baseurl}}/docs/integrations/docker-registries/#default-registry))
 1. Chart is [deployed directly]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/#example-installing-a-chart) to a Kubernetes Cluster
 
 Notice that in this pipeline there is no Helm repository involved.
@@ -308,7 +308,7 @@ Codefresh has several ways to override the values for each environment within a 
 
 ### Chart promotion between environments
 
-This is the recommended deployment workflow. Codefresh can store different Helm values per environment in the [shared configuration]({{site.baseurl}}/docs/pipelines/shared-configuration/#using-shared-helm-values) mechanism.
+This is the recommended deployment workflow. Codefresh can store different Helm values per environment in the [shared configuration]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/#using-shared-helm-values) mechanism.
 Then you view and manage releases from the [Helm environments dashboard]({{site.baseurl}}/docs/deployments/helm/helm-environment-promotion/).
 
 {% include 
@@ -340,7 +340,7 @@ This workflow has two big advantages:
 
 ### Chart promotion between repositories and environments
 
-A more advanced workflow (useful in organizations with multi-location deployments) is the promotion of Helm releases between both [repositories]({{site.baseurl}}/docs/deployments/helm/add-helm-repository/) and environments.
+A more advanced workflow (useful in organizations with multi-location deployments) is the promotion of Helm releases between both [repositories]({{site.baseurl}}/docs/deployments/helm/helm-charts-and-repositories/) and environments.
 
 {% include 
 image.html 
@@ -361,7 +361,7 @@ There are different pipelines for:
 While this workflow is very flexible, it adds complexity on the number of Helm charts available (since they exist in multiple Helm repositories). You also need to set up the parameters between the different pipelines so that Helm charts to be deployed can be indeed found in the expected Helm repository.
 
 ## Related articles
-[Helm quick start guide]({{site.baseurl}}/docs/quick-start/deploy-with-helm/)  
+[Helm quick start guide]({{site.baseurl}}/docs/quick-start/ci-quickstart/deploy-with-helm/)  
 [Using Helm in a Codefresh pipeline]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/)  
 [Helm Dashboard]({{site.baseurl}}/docs/deployments/helm/helm-releases-management)  
 [Helm Promotion boards]({{site.baseurl}}/docs/deployments/helm/helm-environment-promotion)  
