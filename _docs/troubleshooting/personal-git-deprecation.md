@@ -35,7 +35,7 @@ Make sure that you have at least one Git integration defined in your account (if
 
 Then, for all existing [pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/):
 
-* make sure that they have an [explicit git clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)
+* make sure that they have an [explicit git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/)
 * the git clone step has an explicit `git` property that defines the provider (do not leave empty this property )
 * the `git` provider has an actual value and **not** `CF-default`. This value used to represent the personal git provider of a user and is now deprecated. Use the name of an actual git integration as is defined in the [providers page]({{site.baseurl}}/docs/integrations/git-providers/)
 

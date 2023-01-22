@@ -4,7 +4,7 @@ description: "Pushing Docker images from your pipeline"
 group: pipelines
 sub_group: steps
 redirect_from:
-  - /docs/codefresh-yaml/steps/push/
+  - /docs/pipelines/steps/push/
   - /docs/push-1/
   - /docs/codefresh-yaml/steps/push-1/ 
 toc: true
@@ -17,7 +17,7 @@ If you use only the default Docker registry of your account this step is optiona
 
 Push a built image to a remote Docker registry with one or more tags. Supports standard Docker registries and ECR.
 
-Notice that when you use [any external registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/), you need to comply to the naming pattern used by that registry, otherwise the build step will fail. For example, if your Codefresh image is tagged as `foo_username/my_image` but your Dockerhub account is `bar_username` then the build will fail and you need to customize the push step to use `bar_username` instead. This is a limitation of external registries such as Dockerhub.
+Notice that when you use [any external registry]({{site.baseurl}}/docs/integrations/docker-registries/), you need to comply to the naming pattern used by that registry, otherwise the build step will fail. For example, if your Codefresh image is tagged as `foo_username/my_image` but your Dockerhub account is `bar_username` then the build will fail and you need to customize the push step to use `bar_username` instead. This is a limitation of external registries such as Dockerhub.
 
 ## Usage
 
@@ -63,16 +63,16 @@ step_name:
 | `aws_duration_seconds`                               | Relevant only for [Amazon ECR]({{site.baseurl}}/docs/integrations/docker-registries/amazon-ec2-container-registry/) integrations using either service accounts or explicit credentials.  The length of time, in seconds, for which the role credentials are considered valid, and must be between `900-3600` seconds. If not defined, the duration is set to the default of `3600` seconds.                                                                                                                                                                        | Default                  |
 | `tags`                                     | Multiple tags under which to push the image. Use either this or `tag`. This is an array, so should be of the following style: <br> {::nomarkdown}<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="na">tags</span><span class="pi">:</span><br><span class="pi">-</span> <span class="s">tag1</span><br><span class="pi">-</span> <span class="s">tag2</span><br><span class="pi">-</span> <span class="s">{% raw %}${{CF_BRANCH_TAG_NORMALIZED_LOWER_CASE}}{% endraw %}</span><br><span class="pi">-</span> <span class="s">tag4</span></code></pre></figure>{:/}or<br>{::nomarkdown}<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="na">tags</span><span class="pi">:</span> <span class="pi">[</span> <span class="s1">'</span><span class="s">tag1'</span><span class="pi">,</span> <span class="s1">'</span><span class="s">tag2'</span><span class="pi">,</span> <span class="s1">'</span><span class="s">{% raw %}${{CF_BRANCH_TAG_NORMALIZED_LOWER_CASE}}{% endraw %}'</span><span class="pi">,</span> <span class="s1">'</span><span class="s">tag4'</span> <span class="pi">]</span></code></pre></figure>{:/}                                            | Default                   |
 | `image_name`                               | The tagged image name that will be used The default value will be the same image name as of the candidate.                                                                      | Default                   |
-| `registry`                                 | The registry logical name of one of the inserted registries from the integration view. <br>The default value will be your default registry [if you have more than one]({{site.baseurl}}/docs/docker-registries/external-docker-registries/).                                     | Default                   |
-| `registry_context`                                 | Advanced property for resolving Docker images when [working with multiple registries with the same domain]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/#working-with-multiple-registries-with-the-same-domain)                            | Optional                  |
+| `registry`                                 | The registry logical name of one of the inserted registries from the integration view. <br>The default value will be your default registry [if you have more than one]({{site.baseurl}}/docs/integrations/docker-registries/).                                     | Default                   |
+| `registry_context`                                 | Advanced property for resolving Docker images when [working with multiple registries with the same domain]({{site.baseurl}}/docs/ci-cd-guides/working-with-docker-registries/#working-with-multiple-registries-with-the-same-domain)                            | Optional                  |
 | `fail_fast`                                | If a step fails, and the process is halted. The default value is `true`.                                                                                                        | Default                   |
-| `when`                                     | Define a set of conditions which need to be satisfied in order to execute this step.<br>You can find more information in the [Conditional Execution of Steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/) article.          | Optional                  |
-| `on_success`, `on_fail` and `on_finish`    | Define operations to perform upon step completion using a set of predefined [Post-Step Operations]({{site.baseurl}}/docs/pipelines/post-step-operations/).                                                                               | Optional                  |
+| `when`                                     | Define a set of conditions which need to be satisfied in order to execute this step.<br>You can find more information in the [Conditional execution of steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/) article.          | Optional                  |
+| `on_success`, `on_fail` and `on_finish`    | Define operations to perform upon step completion using a set of predefined [post-step operations]({{site.baseurl}}/docs/pipelines/post-step-operations/).                                                                               | Optional                  |
 | `retry`   | Define retry behavior as described in [Retrying a step]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#retrying-a-step).                                                                               | Optional                  |
 
 ## Examples
 
-Push an image to a registry connected with the [integration name]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) of  `myazureregistry`.
+Push an image to a registry connected with the [integration name]({{site.baseurl}}/docs/integrations/docker-registries/) of  `myazureregistry`.
 
 `codefresh.yml`
 {% highlight yaml %} 
@@ -98,7 +98,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-Push an image as the name of the branch in the [external registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) and also use a different image than the default. The same image will also by pushed as `latest` in the internal Codefresh registry (with the default name of `my-app-image`).
+Push an image as the name of the branch in the external registry and also use a different image than the default. The same image will also by pushed as `latest` in the internal Codefresh registry (with the default name of `my-app-image`).
 
 `codefresh.yml`
 {% highlight yaml %} 
@@ -157,7 +157,7 @@ steps:
 {% endhighlight %}
 
 Push an image with multiple tags to multiple Docker registries in [parallel]({{site.baseurl}}/docs/pipelines/advanced-workflows/).
-Both registries are connected first in the [integrations page]({{site.baseurl}}/docs/docker-registries/external-docker-registries/).
+Both registries are connected first as [Docker registry integrations]({{site.baseurl}}/docs/integrations/docker-registries/).
 
 
 `codefresh.yml`
@@ -202,7 +202,7 @@ steps:
 
 This option enables you to push your images without pre-saving the credentials in Codefresh's registry integration view.
 
->Note that this method of pushing images is offered as a workaround. The suggested way is to use the [central Codefresh integration for registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) as explained in the previous section.
+>Note that this method of pushing images is offered as a workaround. The suggested way is to use the [central Codefresh integration for registries]({{site.baseurl}}/docs/integrations/docker-registries/) as explained in the previous section.
 
   `YAML`
 {% highlight yaml %}
@@ -235,7 +235,7 @@ step_name:
 | ---------------------------- | ------------------------------------ | ----------------------------------------------- |
 | `title`                     | The free-text display name of the step.         | Optional                               |
 | `description`               | A basic, free-text description of the step.     | Optional                                        |
-| `provider`                  | The type of Docker registry provider. Can currently be either `docker` for a standard Docker registry, or `ecr` for the [Amazon EC2 Container Registry (ECR)](https://aws.amazon.com/ecr/).  | Optional <br> *Default value*: `docker`         |
+| `provider`                  | The type of Docker registry provider. Can currently be either `docker` for a standard Docker registry, or `ecr` for the [Amazon EC2 Container Registry (ECR)](https://aws.amazon.com/ecr/){:target="\_blank"}.  | Optional <br> *Default value*: `docker`         |
 | `candidate`                 | The identifier of the image to push to the remote Docker registry. It can be an explicit identifier of an image to push, or a variable that references a `Build` step.  | Required                                        |
 | `tag`                       | The tag under which to push the image. Use either this or `tags`. <br>The default is `latest`.  | Default  |
 | `tags`                        | Multiple tags under which to push the image. Use either this or 'tag'. <br>This is an array, so should be of the following style:<br> {::nomarkdown}<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="na">tags</span><span class="pi">:</span><br><span class="pi">-</span> <span class="s">tag1</span><br><span class="pi">-</span> <span class="s">tag2</span><br><span class="pi">-</span> <span class="s">{% raw %}${{CF_BRANCH_TAG_NORMALIZED}}{% endraw %}</span><br><span class="pi">-</span> <span class="s">tag4</span></code></pre></figure>{:/}or<br>{::nomarkdown}<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="na">tags</span><span class="pi">:</span> <span class="pi">[</span> <span class="s1">'</span><span class="s">tag1'</span><span class="pi">,</span> <span class="s1">'</span><span class="s">tag2'</span><span class="pi">,</span> <span class="s1">'</span><span class="s">{% raw %}${{CF_BRANCH_TAG_NORMALIZED}}{% endraw %}'</span><span class="pi">,</span> <span class="s1">'</span><span class="s">tag4'</span> <span class="pi">]</span></code></pre></figure>{:/}  | Default                                         |
@@ -247,12 +247,12 @@ step_name:
 | `region`               | The region where the ECR registry is accessible.   | Optional <br>**Ignored when provider is** `docker`  |
 | `fail_fast`            | If a step fails, and the process is halted. The default value is `true`. |Default |
 | `when`                | Define a set of conditions which need to be satisfied in order to execute this step. <br>You can find more information in [Conditional Execution of Steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps. | Optional |
-| `on_success`, `on_fail` and `on_finish`    | Define operations to perform upon step completion using a set of predefined [Post-Step Operations]({{site.baseurl}}/docs/pipelines/post-step-operations/).| Optional                                       |
+| `on_success`, `on_fail` and `on_finish`    | Define operations to perform upon step completion using a set of predefined [post-step operations]({{site.baseurl}}/docs/pipelines/post-step-operations/).| Optional                                       |
                                        
 **Exported resources:**
 - Image ID.
 
 ## Related articles
-[External Registry integrations]({{site.baseurl}}/docs/docker-registries/external-docker-registries/)   
-[Custom Image annotations]({{site.baseurl}}/docs/docker-registries/metadata-annotations/)   
-[Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/) 
+[Docker registry integrations]({{site.baseurl}}/docs/integrations/docker-registries/)   
+[Custom Image annotations]({{site.baseurl}}/docs/pipelines/docker-image-metadata/)   
+[Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/) 

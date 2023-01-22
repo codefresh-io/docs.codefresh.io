@@ -33,7 +33,7 @@ Then create a freestyle step in your pipeline like this:
 {% endhighlight %}
 
 
-The pipeline expects some [variables]({{site.baseurl}}/docs/codefresh-yaml/variables/) called `SSH_KEY, MY_USER, MY_HOST` that you can enter directly in the pipeline or fetch from [shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/).  
+The pipeline expects some [variables]({{site.baseurl}}/docs/pipelines/variables/) called `SSH_KEY, MY_USER, MY_HOST` that you can enter directly in the pipeline or fetch from [shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/).  
 
 Replace `uptime`, with your own command that you want executed on the remote host.
 

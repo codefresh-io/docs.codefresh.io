@@ -3,7 +3,7 @@ title: "Variables in pipelines"
 description: ""
 group: pipelines
 redirect_from:
-  - /docs/codefresh-yaml/variables/
+  - /docs/pipelines/variables/
   - /docs/variables/
 toc: true
 ---
@@ -161,12 +161,12 @@ Variables that are created by steps can have members. The members depend on the 
 | Step Type              | Members      |
 | ----------------------- | -------------------------------------- |
 | All step types           | {::nomarkdown}<ul><li>name</li><li>type</li><li>description</li><li>workingDirectory</li><li>result</li></ul>{:/}  
-| [**Freestyle**]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/)        | -                                                                                                                                                                              |
-| [**Composition**]({{site.baseurl}}/docs/codefresh-yaml/steps/composition/)        | -                                                                                                                                                                              |
-| [**Build**]({{site.baseurl}}/docs/codefresh-yaml/steps/build/)             | {::nomarkdown}<ul><li>imageName</li><li>imageTagName</li><li>imageId</li></ul>{:/}                                                                            |
-| [**Git-clone**]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)       | {::nomarkdown}<ul><li>revision</li><li>repo</li></ul>{:/}                                                                                  |
-| [**Push**]({{site.baseurl}}/docs/codefresh-yaml/steps/push/)               | {::nomarkdown}<ul><li>registry</li><li>imageId</li><li>imageRepoDigest</li></ul>{:/}                                                                 |
-| [**Approval**]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/)               | {::nomarkdown}<ul><li>authEntity.name</li><li>authEntity.type</li></ul>{:/}                                                                 |
+| [**Freestyle**]({{site.baseurl}}/docs/pipelines/steps/freestyle/)        | -                                                                                                                                                                              |
+| [**Composition**]({{site.baseurl}}/docs/pipelines/steps/composition/)        | -                                                                                                                                                                              |
+| [**Build**]({{site.baseurl}}/docs/pipelines/steps/build/)             | {::nomarkdown}<ul><li>imageName</li><li>imageTagName</li><li>imageId</li></ul>{:/}                                                                            |
+| [**Git-clone**]({{site.baseurl}}/docs/pipelines/steps/git-clone/)       | {::nomarkdown}<ul><li>revision</li><li>repo</li></ul>{:/}                                                                                  |
+| [**Push**]({{site.baseurl}}/docs/pipelines/steps/push/)               | {::nomarkdown}<ul><li>registry</li><li>imageId</li><li>imageRepoDigest</li></ul>{:/}                                                                 |
+| [**Approval**]({{site.baseurl}}/docs/pipelines/steps/approval/)               | {::nomarkdown}<ul><li>authEntity.name</li><li>authEntity.type</li></ul>{:/}                                                                 |
 
 
 
@@ -202,8 +202,8 @@ When a pull request is closed in GitHub, the following variables are also availa
 
 User variables can be defined at 6 levels:
 
-1. Manually within a step using the [export](http://linuxcommand.org/lc3_man_pages/exporth.html) command or in any **subsequent** step with the [cf_export]({{site.baseurl}}/docs/codefresh-yaml/variables/#using-cf_export-command) command
-1. [Freestyle Step Definition]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/#examples) (using the `environment` field)
+1. Manually within a step using the [export](http://linuxcommand.org/lc3_man_pages/exporth.html) command or in any **subsequent** step with the [cf_export]({{site.baseurl}}/docs/pipelines/variables/#using-cf_export-command) command
+1. [Freestyle Step Definition]({{site.baseurl}}/docs/pipelines/steps/freestyle/#examples) (using the `environment` field)
 1. Specific build Execution (after clicking the "Build" button open the "Build Variables" section, or use the [CLI]({{site.baseurl}}/docs/integrations/codefresh-api/#example---triggering-pipelines))
 1. Pipeline Definition (under "Environment variables" section in the [pipeline view]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#creating-new-pipelines))
 1. [Shared Configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/) (defined under your account settings, and used using the "Import from shared configuration" button under the "Environment Variables" section in the pipeline view)
@@ -265,7 +265,7 @@ export MY_VAR='example' # Will make MY_VAR available in this step only
 cf_export MY_VAR='example' # Will also make MY_VAR available to all steps after this one
 ```
 
-There is nothing really magic about `cf_export`. It is a normal script. You can see its contents on your own by entering the command `cat /codefresh/volume/cf_export` on any [Codefresh freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) inside a pipeline. 
+There is nothing really magic about `cf_export`. It is a normal script. You can see its contents on your own by entering the command `cat /codefresh/volume/cf_export` on any [Codefresh freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/) inside a pipeline. 
 
 For more information on its limitations see the [troubleshooting page]({{site.baseurl}}/docs/troubleshooting/common-issues/cf-export-limitations/).
 
@@ -335,5 +335,5 @@ When passing special characters through environmental variables `\` can be used 
 This will safely escape `;` and `=`.
 
 ## Related articles
-[Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)  
-[Codefresh Conditionals]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/)  
+[Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)  
+[Codefresh Conditionals]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/)  

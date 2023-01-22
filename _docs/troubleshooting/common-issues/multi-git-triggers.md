@@ -92,7 +92,7 @@ You should get a message that your pipeline is updated. This concludes the setup
 All pipelines in Codefresh that are connected to a git repository have an automatic git clone step defined for them. 
 This clone step will also fetch the code from the branch mentioned in the webhook.
 
-To override this default behavior as well and force a specific branch, you can use a [custom clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) like this:
+To override this default behavior as well and force a specific branch, you can use a [custom clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/) like this:
 
 
 {% highlight yaml %}

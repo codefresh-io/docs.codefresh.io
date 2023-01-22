@@ -11,7 +11,7 @@ toc: true
 ---
 The composition step runs a Docker Composition as a means to execute finite commands in a more complex interaction of services.
 
->Note that while composition steps are still supported, the recommended way to run integrations tests going forward is with [service containers]({{site.baseurl}}/docs/codefresh-yaml/service-containers/).
+>Note that while composition steps are still supported, the recommended way to run integrations tests going forward is with [service containers]({{site.baseurl}}/docs/pipelines/service-containers/).
 
 ## Motivation for Compositions
 
@@ -92,7 +92,7 @@ The following describes the fields available in a step of type `composition`
 | ------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- |
 | `title`                                    | The free-text display name of the step.                                                                                                                                                                                                  | Optional                  |
 | `description`                              | A basic, free-text description of the step.                                                                                                                                                                                              | Optional                  |
-| `stage`                              | Parent group of this step. See [using stages]({{site.baseurl}}/docs/codefresh-yaml/stages/) for more information.                                                                                                                                                                                          | Optional                  |
+| `stage`                              | Parent group of this step. See [using stages]({{site.baseurl}}/docs/pipelines/stages/) for more information.                                                                                                                                                                                          | Optional                  |
 | `working_directory`                        | The directory in which to search for the composition file. It can be an explicit path in the container's file system, or a variable that references another step. The default is {% raw %}`${{main_clone}}`{% endraw %}. Note that this is completely different from `working_dir` which is on the service level.             | Default                   |
 | `composition`                              | The composition you want to run. This can be an inline YAML definition or a path to a composition file on the file system, e.g. `docker-compose.yml`, or the logical name of a composition stored in the Codefresh system. We support most features of [Docker compose version 2.0](https://docs.docker.com/compose/compose-file/compose-file-v2/) and [3.0](https://docs.docker.com/compose/compose-file/)                                            | Required                  |
 | `version`                              | Version for docker compose. Use `2` or `3`                                          | Required                  |
@@ -105,7 +105,7 @@ The following describes the fields available in a step of type `composition`
 | `fail_fast`                                | If a step fails, and the process is halted. The default value is `true`.                                                                                                                                                                 | Default                   |
 | `when`                                     | Define a set of conditions which need to be satisfied in order to execute this step.<br>You can find more information in the [Conditional Execution of Steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/) article.                               | Optional                  |
 | `on_success`, `on_fail` and `on_finish`    | Define operations to perform upon step completion using a set of predefined [Post-Step Operations]({{site.baseurl}}/docs/pipelines/post-step-operations/).                                                                                                            | Optional                  |
-| `retry`   | Define retry behavior as described in [Retrying a step]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/#retrying-a-step).                                                                               | Optional                  |
+| `retry`   | Define retry behavior as described in [Retrying a step]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#retrying-a-step).                                                                               | Optional                  |
 
 ## Composition versus Composition Candidates
 

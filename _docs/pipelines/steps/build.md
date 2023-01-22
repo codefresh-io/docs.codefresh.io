@@ -1,10 +1,10 @@
 ---
-title: "Build"
+title: "Build step"
 description: "Building Docker images in Codefresh pipelines"
 group: pipelines
 sub_group: steps
 redirect_from:
-  - /docs/codefresh-yaml/steps/build/
+  - /docs/pipelines/steps/build/
   - /docs/build-1/
   - /docs/codefresh-yaml/steps/build-1/
 toc: true
@@ -75,7 +75,7 @@ step_name:
 | ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------- |
 | `title`                                    | The free-text display name of the step.                                                                                                                                                                                              | Optional                  |
 | `description`                              | A basic, free-text description of the step.                                                                                                                                                                                          | Optional                  |
-| `stage`                              | Parent group of this step. See [using stages]({{site.baseurl}}/docs/codefresh-yaml/stages/) for more information.                                                                                                                                                                                          | Optional                  |
+| `stage`                              | Parent group of this step. See [using stages]({{site.baseurl}}/docs/pipelines/stages/) for more information.                                                                                                                                                                                          | Optional                  |
 | `working_directory`                        | The directory in which the build command is executed. It can be an explicit path in the container's file system, or a variable that references another step. <br>The default is {% raw %} `${{main_clone}}` {% endraw %}. This only changes the Docker build context and is unrelated to the `WORKDIR` inside the Dockerile           | Default                   |
 | `dockerfile`                               | The path to the `Dockerfile` from which the image is built. The default is `Dockerfile`.                                                                                                                                             | Default                   |
 | `image_name`                               | The name for the image you build.                                                                                                                                                                                                    | Required                  |
@@ -83,19 +83,19 @@ step_name:
 | `tag`                                      | The tag that is assigned to the image you build. <br>The default is the name of the branch or revision that is built.                                                                                                                | Default                   |
 | `tags`                                     | Multiple tags under which to push the image. Use either this or `tag`. This is an array, so should be of the following style: <br> {::nomarkdown}<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="na">tags</span><span class="pi">:</span><br><span class="pi">-</span> <span class="s">tag1</span><br><span class="pi">-</span> <span class="s">tag2</span><br><span class="pi">-</span> <span class="s">{% raw %}${{CF_BRANCH_TAG_NORMALIZED}}{% endraw %}</span><br><span class="pi">-</span> <span class="s">tag4</span></code></pre></figure>{:/}or<br>{::nomarkdown}<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="na">tags</span><span class="pi">:</span> <span class="pi">[</span> <span class="s1">'</span><span class="s">tag1'</span><span class="pi">,</span> <span class="s1">'</span><span class="s">tag2'</span><span class="pi">,</span> <span class="s1">'</span><span class="s">{% raw %}${{CF_BRANCH_TAG_NORMALIZED}}{% endraw %}'</span><span class="pi">,</span> <span class="s1">'</span><span class="s">tag4'</span> <span class="pi">]</span></code></pre></figure>{:/}                                            | Optional                   |
 | `registry`                                 | The registry logical name of one of the inserted registries from the integration view. <br>The default value will be your default registry [if you have more than one]({{site.baseurl}}/docs/docker-registries/external-docker-registries/).                                     | Optional                   |
-| `registry_contexts`                                 | Advanced property for resolving Docker images when [working with multiple registries with the same domain]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/#working-with-multiple-registries-with-the-same-domain)                            | Optional                  |
+| `registry_contexts`                                 | Advanced property for resolving Docker images when [working with multiple registries with the same domain]({{site.baseurl}}/docs/ci-cd-guides/working-with-docker-registries/#working-with-multiple-registries-with-the-same-domain)                            | Optional                  |
 |`disable_push`                                 | Do not push to any registry automatically.                                     | Optional                   | 
 |`tag_policy`                                 | Push the tag name without change or lowercase it automatically. By default `tag: MixedCase` will be pushed as `image_name:mixedcase`. Possible options are `original` and `lowercase`. Default is `lowercase`                                    | Default                   | 
-| `no_cache`                                 | Disable Docker engine cache for the build [more info](https://codefresh.io/docs/docs/troubleshooting/common-issues/disabling-codefresh-caching-mechanisms/)                                                                                                                                                                                             | Optional                  |
-| `no_cf_cache`                                 | Disable Codefresh build optimization for the build [more info](https://codefresh.io/docs/docs/troubleshooting/common-issues/disabling-codefresh-caching-mechanisms/) 
-| `build_arguments`                          | A set of [Docker build arguments](https://docs.docker.com/engine/reference/commandline/build/#set-build-time-variables-build-arg) to pass to the build process.                                                                      | Optional                  |
+| `no_cache`                                 | Disable Docker engine cache for the build [more info]({{site.baseurl}}/docs/troubleshooting/common-issues/disabling-codefresh-caching-mechanisms/)                                                                                                                                                                                             | Optional                  |
+| `no_cf_cache`                                 | Disable Codefresh build optimization for the build [more info]({{site.baseurl}}/docs/troubleshooting/common-issues/disabling-codefresh-caching-mechanisms/) 
+| `build_arguments`                          | A set of [Docker build arguments](https://docs.docker.com/engine/reference/commandline/build/#set-build-time-variables-build-arg){:target="\_blank"} to pass to the build process.                                                                      | Optional                  |
 | `target`                          | target stage in a multistage build (build will run until this stage)                                                                      | Optional                  |
 | `fail_fast`                                | If a step fails, and the process is halted. The default value is `true`.                                                                                                                                                             | Default                   |
-| `when`                                     | Define a set of conditions that need to be satisfied in order to execute this step.<br>You can find more information in the [Conditional Execution of Steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/) article.                           | Optional                  |
-| `metadata`                                 | Annotate the built image with [key-value metadata]({{site.baseurl}}/docs/docker-registries/metadata-annotations/).                                                                                                                             | Optional                  |
-| `on_success`, `on_fail` and `on_finish`    | Define operations to perform upon step completion using a set of predefined [Post-Step Operations]({{site.baseurl}}/docs/pipelines/post-step-operations/).                                                                                                      | Optional                  |
-| `retry`   | Define retry behavior as described in [Retrying a step]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/#retrying-a-step).                                                                               | Optional                  |
-| `buildkit`                                 | Set to `true` to enable [Buildkit]({{site.baseurl}}/docs/pipelines/steps/build/#buildkit-support) and all of its enhancements                                                                                                    | Optional                 | 
+| `when`                                     | Define a set of conditions that need to be satisfied in order to execute this step.<br>You can find more information in the [Conditional execution of steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/) article.                           | Optional                  |
+| `metadata`                                 | Annotate the built image with [key-value metadata]({{site.baseurl}}/docs/pipelines/docker-image-metadata/).          | Optional                  |
+| `on_success`, `on_fail` and `on_finish`    | Define operations to perform upon step completion using a set of predefined [Post-step operations]({{site.baseurl}}/docs/pipelines/post-step-operations/).                                                                                                      | Optional                  |
+| `retry`   | Define retry behavior as described in [Retrying a step]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#retrying-a-step).                                                                               | Optional                  |
+| `buildkit`                                 | Set to `true` to enable [Buildkit](#buildkit-support) and all of its enhancements                                                                                                    | Optional                 | 
 
 **Exported resources:**
 - Working Directory
@@ -148,7 +148,7 @@ steps:
 {% endraw %}        
 {% endhighlight %}
 
-Build an image and automatically push to the [registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) with name `my-registry`.
+Build an image and automatically push to the [registry]({{site.baseurl}}/docs/integrations/docker-registries/) with name `my-registry`.
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -187,7 +187,7 @@ steps:
 {% endraw %}         
 {% endhighlight %}
 
-It also possible to build Docker images in [parallel]({{site.baseurl}}/docs/pipelines/advanced-workflows/) for faster builds.
+You can also build Docker images in [parallel]({{site.baseurl}}/docs/pipelines/advanced-workflows/) for faster builds.
 
 ### Inline Dockerfile
 
@@ -228,7 +228,7 @@ Use this technique only as a last resort. It is better if the Dockerfile exists 
 
 All images built successfully with the build step, will be automatically pushed to the default Docker registry in your account. This behavior is completely automatic and happens without any extra configuration on your part. If you want to disable this then add the `disable_push` property in your build step.
 
->Notice that the [push step]({{site.baseurl}}/docs/pipelines/steps/push/) in Codefresh is optional and is only needed if you want to push to [external Docker registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/). 
+>Notice that the [push step]({{site.baseurl}}/docs/pipelines/steps/push/) in Codefresh is optional and is only needed if you want to push to external Docker registries. 
 
 {% 
   include image.html 
@@ -242,7 +242,7 @@ All images built successfully with the build step, will be automatically pushed 
 
 ## Buildkit support
 
-Codefresh also allows you to use [buildkit](https://github.com/moby/buildkit) with all its [enhancements](https://docs.docker.com/develop/develop-images/build_enhancements/) and [experimental features](https://github.com/moby/buildkit/blob/master/frontend/dockerfile/docs/experimental.md#experimental-syntaxes).
+Codefresh also allows you to use [buildkit](https://github.com/moby/buildkit){:target="\_blank"} with all its [enhancements](https://docs.docker.com/develop/develop-images/build_enhancements/){:target="\_blank"} and [experimental features](https://github.com/moby/buildkit/blob/master/frontend/dockerfile/docs/experimental.md#experimental-syntaxes){:target="\_blank"}.
 
 Using buildkit you can get:
 
@@ -376,5 +376,5 @@ You can combine all options (`ssh`, `progress`, `secrets`) in a single build ste
 
 
 ## Related articles
-[Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)  
-[Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)
+[Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)

@@ -327,7 +327,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-You can change this behavior by using the existing [fail_fast property]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/#execution-flow) inside an `on_elected` hook.
+You can change this behavior by using the existing [fail_fast property]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#execution-flow) inside an `on_elected` hook.
 
 `codefresh.yml`
 {% highlight yaml %}

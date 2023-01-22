@@ -16,7 +16,7 @@ Use CI pipelines to:
 
 * Compile and package code
 * Build Docker images
-* Push Docker images to any [Docker Registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) 
+* Push Docker images to any [Docker Registry]({{site.baseurl}}/docs/integrations/docker-registries/) 
 * Deploy applications/artifacts to VMs, Kubernetes clusters, FTP sites, S3 buckets etc.
 * Run [unit tests]({{site.baseurl}}/docs/testing/unit-tests/), [integration tests]({{site.baseurl}}/docs/testing/integration-tests/), acceptance tests etc.
 * Any custom action that you define
@@ -70,7 +70,7 @@ max-width="70%"
 %}
 
 
-1. The first step runs under the context of a Node image that prepares the application and runs [unit tests]({{site.baseurl}}/docs/testing/unit-tests/).
+1. The first step runs under the context of a Node image that prepares the application and runs unit tests.
 1. The second step uses an image with s3 command line tools and uploads the test results to a bucket that holds test reports.
 1. The helm step creates a Helm chart and pushes it to a Helm repository.
 
@@ -217,7 +217,7 @@ your build step can run commands exactly as you would run them locally (e.g. `np
 1. Finally, `/codefresh/volume` is an internal folder name, and you should use  `{% raw %}${{CF_VOLUME_PATH}}{% endraw %}` in your codefresh.yml file
 if you really want to reference this folder. You can also reference your project folder as `{% raw %}${{CF_VOLUME_PATH}}/${{CF_REPO_NAME}}{% endraw %}` if you need it.
 
-See the [System Provided Variables]({{site.baseurl}}/docs/pipelines/variables/#system-provided-variables) section for more information.
+See [system variables]({{site.baseurl}}/docs/pipelines/variables/#system-variables) for more information.
 
 ### Working with Docker inside a Codefresh pipeline
 
@@ -256,7 +256,7 @@ CollectAllMyDeps:
   commands:
     - pip install .
 ```
-For the plugins in the [Step Marketplace](https://codefresh.io/steps/) we already give an example of the YAML part that must be included in your pipeline:
+For the plugins in the [Step Marketplace](https://codefresh.io/steps/){:target="\_blank"} we already give an example of the YAML part that must be included in your pipeline:
 
 {% include 
 image.html 
@@ -273,8 +273,7 @@ Each plugin also defines its input/output in the form of environment variables a
 ### Creating Docker images dynamically as build tools
 
 
-Now we reach one of the most powerful features of Codefresh pipelines. We have already seen that [freestyle pipeline steps]({{site.baseurl}}/docs/pipelines/steps/freestyle/) are just a series of commands that run inside the context of a Docker container. In most cases the images used
-for the freestyle steps are known in advance and come from public (e.g. Dockerhub) or [private Docker registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/).
+Now we reach one of the most powerful features of Codefresh pipelines. We have already seen that [freestyle steps]({{site.baseurl}}/docs/pipelines/steps/freestyle/) in pipelines are just a series of commands that run inside the context of a Docker container. In most cases the images used for the freestyle steps are known in advance and come from public (e.g. Dockerhub) or [private Docker registries]({{site.baseurl}}/docs/integrations/docker-registries/).
 
 Codefresh is one the few CI/CD solutions that not only offers easy Docker registry integration
  accessible to all pipelines
@@ -308,7 +307,7 @@ inside the pipeline they are actually needed. This ensures that both the applica
 
 ### How caching works in Codefresh
 
-Codefresh employs several caching mechanisms for both Dockerized and non-dockerized applications. The shared volume is also cached behind the scenes automatically. See our [caching guide]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipeline-caching/) for more details.
+Codefresh employs several caching mechanisms for both Dockerized and non-dockerized applications. The shared volume is also cached behind the scenes automatically. See our [caching guide]({{site.baseurl}}/docs/pipelines/pipeline-caching/) for more details.
 
 ### Calling other pipelines
 

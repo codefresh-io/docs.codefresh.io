@@ -3,7 +3,7 @@ title: "Steps in pipelines"
 description: "Types of steps in Codefresh pipelines"
 group: pipelines
 redirect_from:
-  - /docs/codefresh-yaml/steps/
+  - /docs/pipelines/steps/
   - /docs/steps/
 toc: true
 ---
@@ -29,10 +29,10 @@ max-width="80%"
 The steps offered by Codefresh are:
 
 * [Git clone]({{site.baseurl}}/docs/pipelines/steps/git-clone/)  
-  **Git clone** steps allow you to checkout code in your pipeline from any internal or external repository. Existing accounts that still use repositories instead of [projects]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-concepts) have an implicit clone step in the pipelines.  
+  **Git clone** steps allow you to checkout code in your pipeline from any internal or external repository. Existing accounts that still use repositories instead of [projects]({{site.baseurl}}/docs/pipelines/pipelines/#pipeline-concepts) have an implicit clone step in the pipelines.  
 
 * [Freestyle]({{site.baseurl}}/docs/pipelines/steps/freestyle/)  
-  **Freestyle** steps are the cornerstone of Codefresh pipelines. They allow you to run any command within the context of a Docker container. A lot of Codefresh optimizations such as the [shared docker volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) are designed specifically for freestyle steps.
+  **Freestyle** steps are the cornerstone of Codefresh pipelines. They allow you to run any command within the context of a Docker container. A lot of Codefresh optimizations such as the [shared docker volume]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) are designed specifically for freestyle steps.
 Freestyle steps are a secure replacement for `docker run` commands.
 
 * [Build]({{site.baseurl}}/docs/pipelines/steps/build/)  
@@ -47,7 +47,7 @@ Freestyle steps are a secure replacement for `docker run` commands.
 * [Launch test environment]({{site.baseurl}}/docs/pipelines/steps/launch-composition/)  
   **Launch test environment** steps behave similar to compositions, but they persist after the pipeline ends. This is a great way to create preview environment from your pull requests and send to colleagues.
 
-* [Deploy]({{site.baseurl}}/docs/pipelines/steps/deploy/)
+* [Deploy]({{site.baseurl}}/docs/pipelines/steps/deploy/)  
   **Deploy steps** allow you to [perform Kubernetes deployments]({{site.baseurl}}/docs/deploy-to-kubernetes/deployment-options-to-kubernetes/) in a declarative manner. They embody the Continuous Deployment aspect of Codefresh.
 
 * [Approval]({{site.baseurl}}/docs/pipelines/steps/approval/)  
@@ -59,7 +59,7 @@ Freestyle steps are a secure replacement for `docker run` commands.
 
 ## Step directory
 
-In the case of freestyle steps we also offer a [plugin marketplace](https://codefresh.io/steps/) with several existing plugins for popular integrations.
+For freestyle steps, we also offer a [plugin marketplace](https://codefresh.io/steps/){:target="\_blank"} with several existing plugins for popular integrations.
 
 {% include 
 image.html 
@@ -98,7 +98,7 @@ max-width="60%"
 
 To use a step, first click on the pipeline section where you want to insert the step.
 You will get a new dialog with all the details of the step along with a live preview of the exact
-[yaml]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/) that will be inserted in your pipeline.
+[YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/) that will be inserted in your pipeline.
 
 For all steps you can define:
 
@@ -138,7 +138,7 @@ We suggest that you start with custom freestyle steps first and only create type
 
 ### Creating a custom freestyle step
 
-As an example let's say that you need to use the [JFrog CLI](https://jfrog.com/getcli/) in a pipeline in order to interact with a Artifactory or Bintray. JFrog does not offer any Docker image that contains the CLI and you already know that all Codefresh steps [are actually Docker images]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/).
+As an example let's say that you need to use the [JFrog CLI](https://jfrog.com/getcli/){:target="\_blank"} in a pipeline in order to interact with a Artifactory or Bintray. JFrog does not offer any Docker image that contains the CLI and you already know that all Codefresh steps [are actually Docker images]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/).
 
 Therefore you can easily package the CLI into a Docker image and then make it available to any Codefresh pipeline that wishes to use it.
 First you create [a Dockerfile](https://github.com/kostis-codefresh/step-examples/blob/master/jfrog-cli-wrapper/Dockerfile) that packages the CLI
@@ -178,7 +178,7 @@ docker run jfrog-cli
 
 In a similar manner you can package any other executable and its dependencies. You could even just package `curl` with an external URL that hosts the service that you want to interact in a Codefresh pipeline.
 
-Once the Dockerfile is ready, you need to push it to Dockerhub. You can either do it manually from your workstation, but it is best if you actually create a [Codefresh pipeline](https://github.com/kostis-codefresh/step-examples/blob/master/jfrog-cli-wrapper/codefresh.yml) that does it for you.
+Once the Dockerfile is ready, you need to push it to Dockerhub. You can either do it manually from your workstation, but it is best if you actually create a [Codefresh pipeline](https://github.com/kostis-codefresh/step-examples/blob/master/jfrog-cli-wrapper/codefresh.yml){:target="\_blank"} that does it for you.
 
 {% include 
 image.html 
@@ -191,7 +191,7 @@ max-width="80%"
 %}
 
 Now that the image is ready and public you can notify your team that the new plugin is ready.
-Everybody who wants to interact with JFrog Bintray and/or Artifactory can place [the following snippet](https://github.com/kostis-codefresh/step-examples/blob/master/jfrog-cli-wrapper/codefresh-example.yml) in a pipeline:
+Everybody who wants to interact with JFrog Bintray and/or Artifactory can place [the following snippet](https://github.com/kostis-codefresh/step-examples/blob/master/jfrog-cli-wrapper/codefresh-example.yml){:target="\_blank"} in a pipeline:
 
  `codefresh.yml`
 {% highlight yaml %}
@@ -225,15 +225,15 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-If you want to use multiple versions of the step in the same pipeline, you can just create different docker tags. Notice  that you can also use a [private registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) instead of Dockerhub if you wish your step to be used only within your organization. 
+If you want to use multiple versions of the step in the same pipeline, you can just create different docker tags. Notice  that you can also use a [private registry]({{site.baseurl}}/docs/integrations/docker-registries/) instead of Docker Hub if you wish your step to be used only within your organization. 
 
 
 
 ### Creating a typed Codefresh plugin
 
-You can use the [Codefresh CLI](https://codefresh-io.github.io/cli/) and more specifically the [step-type resource](https://codefresh-io.github.io/cli/steps/) to create your own typed step. Each Codefresh step is composed from two parts:
+You can use the [step-type resource](https://codefresh-io.github.io/cli/steps/){:target="\_blank"} in the Codefresh CLI to create your own typed step. Each Codefresh step is composed from two parts:
 
-1. The step description in the special yaml syntax for describing Codefresh steps
+1. The step description in the special YAML syntax for describing Codefresh steps
 1. A Docker image that implements the step (optional)
 
 The easiest way to create your own step is to start by using the definition of an existing step.
@@ -351,7 +351,7 @@ For the metadata section note the following:
 * The `version` property allows you to update your plugin and keep multiple variants of it in the marketplace
 * The `examples` section will be shown in the marketplace as documentation for your step
 
-For the argument section we follow the [JSON Schema](http://json-schema.org/learn/miscellaneous-examples.html). You can use the [Schema generator](https://jsonschema.net/) to easily create a schema. JSON schema is used for arguments (i.e. input parameters) as well as output parameters as we will see later on.
+For the argument section we follow the [JSON Schema](http://json-schema.org/learn/miscellaneous-examples.html){:target="\_blank"}. You can use the [Schema generator](https://jsonschema.net/){:target="\_blank"} to easily create a schema. JSON schema is used for arguments (i.e. input parameters) as well as output parameters as we will see later on.
 
 The property `additionalProperties` defines how strict the plugin will be with its arguments. If you set it to `false` (which is usually what you want) the pipeline will fail if the plugin is given more arguments that it is expecting. If you set it to `true`, then the plugin will only use the arguments it understands and will ignore the rest.
 
@@ -416,7 +416,7 @@ codefresh delete step-type 'account/plugin:<version>'
 
 Note that Codefresh step versions function like Docker tags in the sense that they are *mutable*. You can overwrite an existing plugin version with a new plugin manifest by using the `codefresh replace step-type` command.
 
-If users do not define a version once they use the plugin, the latest one (according to [semantic versioning](https://semver.org/)) will be used. Alternatively they can specify the exact version they need (even different versions within the same pipeline.)
+If users do not define a version once they use the plugin, the latest one (according to [semantic versioning](https://semver.org/){:target="\_blank"}) will be used. Alternatively they can specify the exact version they need (even different versions within the same pipeline.)
 
 
  `codefresh.yml`
@@ -437,7 +437,7 @@ steps:
 
 Let's create a very simple step called *node-version*. This step will read the application version from a NodeJS project and expose it as an environment variable. This way we can use the application version later in the pipeline (for example to tag a docker image).
 
-Here is the respective [step yaml](https://github.com/kostis-codefresh/step-examples/blob/master/node-version-plugin/read-app-version.yml).
+Here is the respective [step YAML](https://github.com/kostis-codefresh/step-examples/blob/master/node-version-plugin/read-app-version.yml){:target="\_blank"}.
 
   `plugin.yml`
 {% highlight yaml %}
@@ -522,7 +522,7 @@ spec:
 If you look at the `spec` section you will see that the plugin expects a single parameter called `PACKAGE_JSON_FOLDER`. This will
 be passed by the plugin user to specify the folder that contains the `package.json` file. This way this plugin can be used for multiple applications. For example, the plugin user might check out 3 different Node.js projects and use the plugin to read the versions of all of them.
 
-The plugin implementation is specified in the `steps` sections. We use the standard [Node Docker image](https://hub.docker.com/_/node) to read the version from the `package.json` file. Notice how we convert the plugin argument to an environment variable called `WORK_DIR`
+The plugin implementation is specified in the `steps` sections. We use the standard [Node Docker image](https://hub.docker.com/_/node){:target="\_blank"} to read the version from the `package.json` file. Notice how we convert the plugin argument to an environment variable called `WORK_DIR`
 
 By default all plugins start with the Codefresh volume at `/codefresh/volume` as a working folder. So with the `cd` command we enter the project folder (which we assume was checked out in a previous pipeline step). Once the version is read it is made available to all the other pipeline steps with the [cf_export command]({{site.baseurl}}/docs/pipelines/variables/#using-cf_export-command).
 
@@ -534,7 +534,7 @@ codefresh create step-type -f read-app-version.yml
 
 The step is now ready to be used by anybody.
 
-An example user pipeline is shown at [codefresh.yml](https://github.com/kostis-codefresh/step-examples/blob/master/node-version-plugin/codefresh.yml)
+An example user pipeline is shown at [codefresh.yml](https://github.com/kostis-codefresh/step-examples/blob/master/node-version-plugin/codefresh.yml){:target="\_blank"}.
 
   `codefresh.yml`
 {% highlight yaml %}
@@ -594,8 +594,8 @@ If you define output parameters in the step definition their names will appear o
 
 We suggest you always formalize your output parameters in your step definition, especially when your step is having a large number of output parameters.
 
-The same [JSON Schema](http://json-schema.org/learn/miscellaneous-examples.html) is also used for output parameters as with input ones.
-Here is a [very simple example](https://github.com/kostis-codefresh/step-examples/blob/master/output-parameters/output-parameters-sample.yml) that shows the different types of output parameters you can have.
+The same [JSON Schema](http://json-schema.org/learn/miscellaneous-examples.html){:target="\_blank"} is also used for output parameters as with input ones.
+Here is a [very simple example](https://github.com/kostis-codefresh/step-examples/blob/master/output-parameters/output-parameters-sample.yml) {:target="\_blank"} that shows the different types of output parameters you can have.
 
   `plugin.yml`
 {% highlight yaml %}
@@ -738,7 +738,7 @@ Let's take everything we learned from the previous examples and create a custom 
 1. Formal input parameters
 1. Format output parameters
 
-In this simple example we will create a custom step that reads the Maven coordinates from a `pom.xml` file. Unlike `package.json`, a Maven file has 3 characteristics (group, artifact name and version). First we create a [very simple executable](https://github.com/kostis-codefresh/step-examples/blob/master/maven-version-plugin/mvncoords.go) that reads a Maven file and gives us these coordinates in JSON format.
+In this simple example we will create a custom step that reads the Maven coordinates from a `pom.xml` file. Unlike `package.json`, a Maven file has 3 characteristics (group, artifact name and version). First we create a [very simple executable](https://github.com/kostis-codefresh/step-examples/blob/master/maven-version-plugin/mvncoords.go){:target="\_blank"} that reads a Maven file and gives us these coordinates in JSON format.
 
 {% highlight shell %}
 {% raw %}
@@ -747,7 +747,7 @@ mvncoords -f pom.xml
 {% endraw %}
 {% endhighlight %}
 
-Next, we package this executable in a [Dockerfile](https://github.com/kostis-codefresh/step-examples/blob/master/maven-version-plugin/Dockerfile).
+Next, we package this executable in a [Dockerfile](https://github.com/kostis-codefresh/step-examples/blob/master/maven-version-plugin/Dockerfile){:target="\_blank"}.
 
  `Dockerfile`
 {% highlight docker %}
@@ -786,9 +786,9 @@ caption="Building a public Docker image"
 max-width="60%" 
 %}
 
-This [pipeline](https://github.com/kostis-codefresh/step-examples/blob/master/maven-version-plugin/codefresh.yml) checks out the Dockerfile plus source code, builds the docker image and then pushes it to Dockerhub (so that the image is public).
+This [pipeline](https://github.com/kostis-codefresh/step-examples/blob/master/maven-version-plugin/codefresh.yml){:target="\_blank"} checks out the Dockerfile plus source code, builds the docker image and then pushes it to Dockerhub (so that the image is public).
 
-Finally we are ready to create our Codefresh plugin. Here is the [specification](https://github.com/kostis-codefresh/step-examples/blob/master/maven-version-plugin/read-maven-version.yml):
+Finally we are ready to create our Codefresh plugin. Here is the [specification](https://github.com/kostis-codefresh/step-examples/blob/master/maven-version-plugin/read-maven-version.yml){:target="\_blank"}:
 
 
 
@@ -923,7 +923,7 @@ caption="Plugin usage"
 max-width="60%"
 %}
 
-If you look at the [pipeline definition](https://github.com/kostis-codefresh/step-examples/blob/master/maven-version-plugin/codefresh-example.yml) you will see how we pass arguments in the plugin and get its output with the `steps.output` syntax.
+If you look at the [pipeline definition](https://github.com/kostis-codefresh/step-examples/blob/master/maven-version-plugin/codefresh-example.yml){:target="\_blank"} you will see how we pass arguments in the plugin and get its output with the `steps.output` syntax.
 
 
   `codefresh.yml`
@@ -1032,7 +1032,7 @@ You can still use `cf_export` command inside the plugin as well (as shown in the
 
 ### Example with step templating
 
-As an advanced technique, Codefresh allows you to define a custom step using templating instead of fixed YAML. We support templates inside the `spec:` block of a plugin definition by taking advantage of the [Gomplate](https://github.com/hairyhenderson/gomplate) library that offers additional templating functions on top of vanilla [Go templates](https://golang.org/pkg/text/template/).
+As an advanced technique, Codefresh allows you to define a custom step using templating instead of fixed YAML. We support templates inside the `spec:` block of a plugin definition by taking advantage of the [Gomplate](https://github.com/hairyhenderson/gomplate){:target="\_blank"} library that offers additional templating functions on top of vanilla [Go templates](https://golang.org/pkg/text/template/){:target="\_blank"}.
 
 > Note: Gomplate Data functions will not work since Codefresh does not pass the Data object to gomplate functions.
 
@@ -1054,7 +1054,7 @@ checkout_many_projects:
 
 The GitHub projects are passed as an array, so if we want to check out an additional project, we simply add items to that array.
 
-Here is the [step specification](https://github.com/kostis-codefresh/step-examples/blob/master/multi-clone/multi-clone-step.yml):
+Here is the [step specification](https://github.com/kostis-codefresh/step-examples/blob/master/multi-clone/multi-clone-step.yml){:target="\_blank"}:
 
   `plugin.yml`
 {% highlight yaml %}
@@ -1155,15 +1155,15 @@ There are two important points here:
 1. Instead of using a `steps:` block, we instead define a block called `stepsTemplate:`. This block name instructs Codefresh that we will use templates
 1. Because the Codefresh runtime is already using the double curly braces for variables mentioned as {% raw %}`${{MY_VARIABLE_EXAMPLE}}`{% endraw %}, we instead define templates with the characters {% raw %}`[[]]`{% endraw %}. You can see  the definitions for these characters inside the `delimiters:` block. You are free to use any other replacement characters of your choosing.
 
-In the `stepsTemplate` block we use Golang template keywoards such as `range`, `len` and template variables (such as `git_project`). You can use all the capabilities of Go templates (e.g. `if`, `range`, `with`) as well as the extra methods of [gomplate](https://docs.gomplate.ca/) such as math and net functions.
+In the `stepsTemplate` block we use Golang template keywoards such as `range`, `len` and template variables (such as `git_project`). You can use all the capabilities of Go templates (e.g. `if`, `range`, `with`) as well as the extra methods of [gomplate](https://docs.gomplate.ca/){:target="\_blank"} such as math and net functions.
 
-Creating the [marketplace entry](https://codefresh.io/steps/step/kostis-codefresh%2Fmulti-git-clone) for a step with templates is exactly the same as any other step:
+Creating the [marketplace entry](https://codefresh.io/steps/step/kostis-codefresh%2Fmulti-git-clone){:target="\_blank"} for a step with templates is exactly the same as any other step:
 
 ```
 codefresh create step-type -f multi-clone-step.yml
 ```
 
-You can then use the step in [any pipeline](https://github.com/kostis-codefresh/step-examples/blob/master/multi-clone/codefresh.yml) and pass the arguments that will fill the template:
+You can then use the step in [any pipeline](https://github.com/kostis-codefresh/step-examples/blob/master/multi-clone/codefresh.yml){:target="\_blank"} and pass the arguments that will fill the template:
 
   `codefresh.yml`
 {% highlight yaml %}
@@ -1190,7 +1190,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-We have also added two extra parameters, one for the git revision and one for the [git provider]({{site.baseurl}}/docs/integrations/git-providers/)  that will be used during checkout.
+We have also added two extra parameters, one for the git revision and one for the [Git provider]({{site.baseurl}}/docs/integrations/git-providers/)  that will be used during checkout.
 
 The end result is that with a single step you can checkout many projects. Checking out an additional project is as simple as adding a new entry in the `GIT_PROJECTS` array.
 
@@ -1221,7 +1221,4 @@ More specifically:
 
 ## Related articles
 [Introduction to Pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)
-[Freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/)  
-[Build step]({{site.baseurl}}/docs/pipelines/steps/build/)  
-[Push step]({{site.baseurl}}/docs/pipelines/steps/push/)  
 

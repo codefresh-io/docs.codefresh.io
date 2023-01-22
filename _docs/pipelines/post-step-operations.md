@@ -4,7 +4,7 @@ description: "Annotate your builds and run extra steps"
 group: pipelines
 sub_group: steps
 redirect_from:
-  - /docs/codefresh-yaml/post-step-operations/
+  - /docs/pipelines/post-step-operations/
   - /docs/post-step-operations/
 toc: true
 ---
@@ -50,8 +50,8 @@ step_name:
 ## Available Post-Step Operations
 
 - [Image Metadata]({{site.baseurl}}/docs/docker-registries/metadata-annotations/)
-- [Custom Annotations]({{site.baseurl}}/docs/codefresh-yaml/annotations/)
-- [Hooks]({{site.baseurl}}/docs/codefresh-yaml/hooks/)
+- [Custom Annotations]({{site.baseurl}}/docs/pipelines/annotations/)
+- [Hooks]({{site.baseurl}}/docs/pipelines/hooks/)
 
 ## Example
 
@@ -81,7 +81,7 @@ run_tests:
 
 ## Running other steps
 
-If you want to run another step in the pipeline when another step fails or succeeds you need to use [conditional execution of steps]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/) and the `fail_fast` property. You can also use [step hooks]({{site.baseurl}}/docs/codefresh-yaml/hooks/) for dedicated post step actions.
+If you want to run another step in the pipeline when another step fails or succeeds you need to use [conditional execution of steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/) and the `fail_fast` property. You can also use [step hooks]({{site.baseurl}}/docs/pipelines/hooks/) for dedicated post step actions.
 
 {% highlight yaml %}
 {% raw %}
@@ -106,7 +106,7 @@ print_error_message:
 
 In this example the step `print_error_message` will only run if step `run_tests` has failed.
 
-See also [advanced workflows]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/#single-step-dependencies) and [Pipeline/Step hooks]({{site.baseurl}}/docs/codefresh-yaml/hooks/).
+See also [advanced workflows]({{site.baseurl}}/docs/pipelines/advanced-workflows/#single-step-dependencies) and [Pipeline/Step hooks]({{site.baseurl}}/docs/pipelines/hooks/).
 
 ## Related articles
 [Conditional execution of steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/)  

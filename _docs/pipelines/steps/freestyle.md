@@ -1,15 +1,15 @@
 ---
-title: "Freestyle"
+title: "Freestyle step"
 description: "Run commands inside a Docker container"
 group: pipelines
 sub_group: steps
 redirect_from:
-  - /docs/codefresh-yaml/steps/freestyle/
+  - /docs/pipelines/steps/freestyle/
   - /docs/freestyle/
 toc: true
 ---
 The Freestyle step is designed so you can execute a series of commands in a container. Freestyle steps
-are the bread and butter of [Codefresh pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/).
+are the bread and butter of [Codefresh pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/).
 
 ## Purpose of freestyle steps
 
@@ -94,21 +94,21 @@ step_name:
 | `shell`                                    | Explicitly set the executing shell to bash or sh. If not set the default will be sh. Note the `bash` option requires that you specify an `image` that includes `/bin/bash`; many images do not.                                                                                                                                                                                                                                                                                                                                     | Optional                  |
 | `environment`                              | A set of environment variables for the container.                                                                                                                                                                                                                                                                                                                           | Optional                  |
 | `fail_fast`                                | If a step fails, and the process is halted. The default value is `true`.                                                                                                                                                                                                                                                                                                    | Default                   |
-| `registry_context`                                 | Advanced property for resolving Docker images when [working with multiple registries with the same domain]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/#working-with-multiple-registries-with-the-same-domain)                            | Optional                  |
+| `registry_context`                                 | Advanced property for resolving Docker images when [working with multiple registries with the same domain]({{site.baseurl}}/docs/ci-cd-guides/working-with-docker-registries/#working-with-multiple-registries-with-the-same-domain)                            | Optional                  |
 | `volumes` | One or more volumes for the container. All volumes must be mounted from the existing shared volume (see details below) |Optional 
-| `when`                                     | Define a set of conditions that need to be satisfied in order to execute this step. You can find more information in the [Conditional Execution of Steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/) article.                                                                                                                                                                     | Optional                  |
-| `on_success`, `on_fail` and `on_finish`    | Define operations to perform upon step completion using a set of predefined [Post-Step Operations]({{site.baseurl}}/docs/pipelines/post-step-operations/).                                                                                                                                                                                                                                             | Optional                  |
-| `retry`   | Define retry behavior as described in [Retrying a step]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/#retrying-a-step).                                                                               | Optional                  |
+| `when`                                     | Define a set of conditions that need to be satisfied in order to execute this step. You can find more information in [Conditional execution of steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/).     | Optional                  |
+| `on_success`, `on_fail` and `on_finish`    | Define operations to perform upon step completion using a set of predefined [Post-step operations]({{site.baseurl}}/docs/pipelines/post-step-operations/).                                                                                                                                                                                                                                             | Optional                  |
+| `retry`   | Define retry behavior as described in [Retrying a step]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#retrying-a-step).                                                                               | Optional                  |
 
 **Exported resources:**
 - Working Directory.
 
 ## Examples
 
-Here are some full pipelines with freestyle steps. Notice that in all cases the pipelines are connected to [git repositories]({{site.baseurl}}/docs/pipelines/pipelines/#pipeline-creation-modes)
+Here are some full pipelines with freestyle steps. Notice that in all cases the pipelines are connected to [Git repositories]({{site.baseurl}}/docs/pipelines/pipelines/#loading-codefreshyml-from-version-control)
 so the source code is already checked out and available to all pipeline steps.
 
-**Creating a [JAR file]({{site.baseurl}}/docs/learn-by-example/java/spring-boot-2/):**
+**Creating a [JAR file]({{site.baseurl}}/docs/example-catalog/ci-examples/spring-boot-2/):**
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -121,9 +121,9 @@ steps:
      - mvn -Dmaven.repo.local=/codefresh/volume/m2_repository package
 {% endhighlight %}
 
-Note how we [cache Maven dependencies]({{site.baseurl}}/docs/example-catalog/ci-examples/java/spring-boot-2/#caching-the-maven-dependencies) using the internal Codefresh Volume.
+Note how we [cache Maven dependencies]({{site.baseurl}}/docs/example-catalog/ci-examples/spring-boot-2/#caching-the-maven-dependencies) using the internal Codefresh Volume.
 
-**Running unit tests in [Node.JS]({{site.baseurl}}/docs/example-catalog/ci-examples/nodejs/):**
+**Running unit tests in Node.JS({{site.baseurl}}/docs/example-catalog/examples/#ci-examples):**
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -151,7 +151,7 @@ steps:
      - go build
 {% endhighlight %}
 
-**Performing a [blue/green deployment](https://github.com/codefresh-io/k8s-blue-green-deployment):** 
+**Performing a [blue/green deployment](https://github.com/codefresh-io/k8s-blue-green-deployment){:target="\_blank"}:** 
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -251,7 +251,7 @@ When you use the `commands` field, it will override the container original `entr
 The provided commands are concatenated into a single command using the shell's `;` operator, and are run using the default shell `/bin/sh` as an entry point.  
 Additional settings that are set only when using commands are `set -e`, and the [`cf_export`]({{site.baseurl}}/docs/pipelines/variables/#using-cf_export-command) utility.
 
-> Using complex commands in the freestyle step requires use of [YAML block scalars](http://stackoverflow.com/questions/3790454/in-yaml-how-do-i-break-a-string-over-multiple-lines).
+> Using complex commands in the freestyle step requires use of [YAML block scalars](http://stackoverflow.com/questions/3790454/in-yaml-how-do-i-break-a-string-over-multiple-lines){:target="\_blank"}.
 
 ### Commands and Entry point
 
@@ -276,7 +276,7 @@ commands:
 
 ## Custom volumes
 
-If you are familiar with [Codefresh pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) you should know that all freestyle steps automatically share a [volume](https://docs.docker.com/storage/) mounted at `/codefresh/volume` which can be used to transfer data (e.g. dependencies and test results) from each step to the next.
+If you are familiar with [Codefresh pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) you should know that all freestyle steps automatically share a [volume](https://docs.docker.com/storage/){:target="\_blank"} mounted at `/codefresh/volume` which can be used to transfer data (e.g. dependencies and test results) from each step to the next.
 
 **This volume is automatically mounted by Codefresh and needs no configuration at all**. All you have to do to access it, is read/write the `/codefresh/volume` folder from your application. This folder also [includes by default the source code]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#cloning-the-source-code) of the git repository connected to the pipeline (at the `/codefresh/volume/<repo_name>` subfolder)
 
@@ -333,7 +333,7 @@ When the second steps runs, the `custom.txt` file is available both at `/codefre
 
 You can use in a freestyle step any Docker image available in a public repository such as Dockerhub. This makes the integration of Codefresh and various cloud tools very easy.
 
-Codefresh also offers a plugin directory at [http://codefresh.io/steps/](http://codefresh.io/steps/) created specifically for CI/CD operations.
+Codefresh also offers a [plugin directory](http://codefresh.io/steps/){:target="\_blank"} created specifically for CI/CD operations.
 
 {% include 
 image.html 
@@ -348,6 +348,6 @@ max-width="80%"
 
 ## Related articles
 [Introduction to Pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)  
-[Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)  
+[Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)  
 

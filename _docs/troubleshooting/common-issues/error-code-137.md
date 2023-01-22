@@ -9,7 +9,7 @@ toc: true
 ---
 
 ## Issue
-[Build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) in pipeline fails with the following error:
+[Build step]({{site.baseurl}}/docs/pipelines/steps/build/) in pipeline fails with the following error:
 
 ```
 The command 'XXXXXXX' returned a non-zero code: 137                                                          
