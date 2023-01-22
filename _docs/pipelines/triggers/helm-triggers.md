@@ -1,7 +1,7 @@
 ---
-title: "Helm Trigger"
+title: "Helm triggers"
 description: ""
-group: configure-ci-cd-pipeline
+group: pipelines
 sub_group: triggers
 redirect_from:
   - /docs/configure-ci-cd-pipeline/triggers/helm-triggers/
@@ -12,7 +12,7 @@ Codefresh has the option to create pipelines that respond to Helm events. For in
 
 Define and manage Helm pipeline triggers with the Codefresh UI.
 
-## Create a new Helm Trigger
+## Create a new Helm trigger
 
 To add a new Helm trigger, navigate to Codefresh Pipeline *Configuration* view and expand *Triggers* section. Press the `Add Trigger` button and select the `Helm` trigger type to add.
 
@@ -49,7 +49,7 @@ alt="Codefresh webhook URL"
 max-width="50%"
 %}
 
-Now we must set JFrog Artifactory to call this URL when an event takes place. This can either be done through the [JFrog Artifactory webhook plugin]({{site.baseurl}}/docs/pipelines/triggers/jfrog-triggers/) or through [setting up Webhooks](https://www.jfrog.com/confluence/display/JFROG/Webhooks) in the UI.
+Now we must set JFrog Artifactory to call this URL when an event takes place. This can either be done through the [JFrog Artifactory webhook plugin]({{site.baseurl}}/docs/pipelines/triggers/jfrog-triggers/) or through [setting up Webhooks](https://www.jfrog.com/confluence/display/JFROG/Webhooks){:target="\_blank"} in the UI.
 
 ## Trigger Codefresh pipeline with an Artifactory push
 
@@ -57,7 +57,7 @@ Now, every time you push a Helm chart to the selected Artifactory repository, ma
 
 
 ## Related articles
-[Helm Releases management](https://codefresh.io/docs/docs/new-helm/helm-releases-management/)  
-[Custom Helm uploads](https://codefresh.io/docs/docs/new-helm/custom-helm-uploads/)  
-[Triggers for pipelines]({{site.baseurl}}/docs/pipelines/triggers)  
+[Helm Releases management]({{site.baseurl}}/docs/deployments/helm/helm-releases-management/)  
+[Custom Helm uploads]({{site.baseurl}}/docs/deployments/helm/custom-helm-uploads/)  
+[Triggers in pipelines]({{site.baseurl}}/docs/pipelines/triggers)  
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  

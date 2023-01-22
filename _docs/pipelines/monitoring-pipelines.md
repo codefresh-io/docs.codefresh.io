@@ -63,14 +63,14 @@ The available filters are:
 
 * *Pipeline* - any of the pipelines available.
 * *Provider* - type of [Git provider]({{site.baseurl}}/docs/integrations/git-providers/).
-* *Repository* - Git repository from the attached [trigger]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/).
-* *Type* - build, [launch a test environment]({{site.baseurl}}/docs/getting-started/on-demand-environments/#launching-a-docker-image-using-codefresh).
+* *Repository* - Git repository from the attached [trigger]({{site.baseurl}}/docs/pipelines/triggers/).
+* *Type* - build, [launch a test environment]({{site.baseurl}}/docs/quick-start/ci-quickstart/on-demand-environments/#launch-a-docker-image-using-codefresh).
 * *Branch* - any of the available branches from the attached Git trigger.
 * *Committer* - person that made the commit that triggered the build.
-* *Environment* - which [environment]({{site.baseurl}}/docs/deploy-to-kubernetes/environment-dashboard/) was affected.
-* *Status* - success, error, in-progress, pending, terminated etc. A Pending status can also indicate that [pipeline build execution has been paused]({{site.baseurl}}/docs/administration/pipeline-settings/#pause-pipeline-executions) for the account.
+* *Environment* - which [environment]({{site.baseurl}}/docs/deployments/kubernetes/environment-dashboard/) was affected.
+* *Status* - success, error, in-progress, pending, terminated etc. A Pending status can also indicate that [pipeline build execution has been paused]({{site.baseurl}}/docs/pipelines/configuration/pipeline-settings/#pause-pipeline-executions) for the account.
 * *Trigger type* - what type of trigger was responsible for this build
-* *Git event* - in the case of [git triggers]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/) the exact event
+* *Git event* - in the case of [Git triggers]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/) the exact event
 
 Notice that all filters are multiple-choice so you can select multiple values for each filter category.
 At any given point you can see all the active filters on top of the screen.
@@ -155,7 +155,7 @@ There are also extra options if you click the small "3-dot" menu button on the r
 - View the logs 
 - View the YAML
 - View or add [annotations]({{site.baseurl}}/docs/pipelines/annotations/)
-- View the images produced (and consequently launch an on-demand [test environment]({{site.baseurl}}/docs/getting-started/on-demand-environments/#launching-a-docker-image-using-codefresh))
+- View the images produced (and consequently launch an on-demand [test environment]({{site.baseurl}}/docs/quick-start/ci-quickstart/on-demand-environments/#launch-a-docker-image-using-codefresh)
 
 Notice that if you restart a pipeline it will trigger with the exact settings it *originally* had. So 
 if this was a manual trigger where you [disabled caching]({{site.baseurl}}/docs/troubleshooting/common-issues/disabling-codefresh-caching-mechanisms/) or changed the [notification options](#monitoring-pipelines-that-check-pull-requests), the new
@@ -197,7 +197,7 @@ Monitor the status of the steps in the pipeline as they are executed.
 |{::nomarkdown}<img src="../../../images/pipeline/monitoring/step-status-approved.png" display=inline-block/> {:/}| Pipeline step pending approval has been approved, either manually or automatically. |
 |{::nomarkdown}<img src="../../../images/pipeline/monitoring/step-status-denied.png" display=inline-block/> {:/}| Pipeline step pending approval has been denied approval. |
 |{::nomarkdown}<img src="../../../images/pipeline/monitoring/step-status-running.png" display=inline-block/> {:/}| Pipeline step currently running. |
-|{::nomarkdown}<img src="../../../images/pipeline/monitoring/step-status-running-debug.png" display=inline-block/> {:/}| Pipeline step running in debug mode. See [Debugging pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/debugging-pipelines/) for more information. |
+|{::nomarkdown}<img src="../../../images/pipeline/monitoring/step-status-running-debug.png" display=inline-block/> {:/}| Pipeline step running in debug mode. See [Debugging pipelines]({{site.baseurl}}/docs/pipelines/debugging-pipelines/) for more information. |
 |{::nomarkdown}<img src="../../../images/pipeline/monitoring/step-status-terminating.png" display=inline-block/> {:/}| Pipeline step gracefully terminating execution.  |
 |{::nomarkdown}<img src="../../../images/pipeline/monitoring/step-status-terminated.png" display=inline-block/> {:/}| Pipeline step execution has been manually or automatically terminated. |
 |{::nomarkdown}<img src="../../../images/pipeline/monitoring/step-status-error.png" display=inline-block/> {:/}| Pipeline step execution has been terminated because of error. |
@@ -417,14 +417,14 @@ of the respective build.
 {% include 
 image.html 
 lightbox="true" 
-file="/images/getting-started/quick-start-test-pr/auto-build-pr.png" 
-url="/images/getting-started/quick-start-test-pr/auto-build-pr.png" 
+file="/images/quick-start/quick-start-test-pr/auto-build-pr.png" 
+url="/images/quick-start/quick-start-test-pr/auto-build-pr.png" 
 alt="Pull Request Status" 
-caption="Pull Request Status (click image to enlarge)" 
+caption="Pull Request Status" 
 max-width="50%" 
 %}
 
-If you have setup a [GIT trigger]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/) in Codefresh then by default this happens automatically without any other configuration
+If you have setup a [Git trigger]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/) in Codefresh then by default this happens automatically without any other configuration
 for all automated commits (that are coming from webhooks).
 
 If you start a build manually then by default the git status will **not** be updated (i.e. the result of the pipeline
@@ -444,7 +444,7 @@ max-width="50%"
 
 This way the pipeline status *will* change the build status even with manual builds.
 
-The same behavior is also available to the [Codefresh CLI](https://codefresh-io.github.io/cli/pipelines/run-pipeline/). In that case use the parameter `--enable-notifications`
+The same behavior is also available to the [Codefresh CLI](https://codefresh-io.github.io/cli/pipelines/run-pipeline/){:target="\_blank"}. In that case use the parameter `--enable-notifications`
 to specify if manually triggering a build will also change the GIT status.
 
 For open source projects you also have the ability to [trigger builds from external forks]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/#support-for-building-pull-requests-from-forks).
@@ -464,11 +464,11 @@ caption="Codefresh build badges"
 max-width="100%" 
 %}
 
-See the [build badges page]({{site.baseurl}}/docs/pipelines/build-status/) for more information.
+See the [build badges page]({{site.baseurl}}/docs/pipelines/configuration/build-status/) for more information.
 
 
 ## Related articles
 [Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
-[Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)  
-[Test report]({{site.baseurl}}/docs/pipelines/test-reports/)  
-[Status badges]({{site.baseurl}}/docs/pipelines/build-status/)
+[Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
+[Test reports]({{site.baseurl}}/docs/pipelines/test-reports/)  
+[Status badges]({{site.baseurl}}/docs/pipelines/configuration/build-status/)

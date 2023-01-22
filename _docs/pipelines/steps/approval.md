@@ -1,14 +1,14 @@
 ---
-title: "Approval"
-description: "How to Pause Pipelines for Manual Approval"
-group: codefresh-yaml
+title: "Approval step"
+description: "How to pause pipelines for manual approval"
+group: pipelines
 sub_group: steps
 redirect_from:
   - /docs/pipelines/steps/approval/
 toc: true
 ---
 
-The approval step allows you to pause a pipeline and wait for human intervention before going on.
+The `approval` step allows you to pause a pipeline and wait for human intervention before going on.
 
 {% include 
 image.html 
@@ -57,7 +57,7 @@ step_name:
 | `timeUnit`                               | This field defines possible options of `minutes`, or `hours`. If the field is not set, the default is `hours` | Optional                       
 | `fail_fast`                              | If set to false, the pipeline will continue even when the step is rejected | Optional                  |
 | `stage`                              | Parent group of this step. See [using stages]({{site.baseurl}}/docs/pipelines/stages/) for more information.    | Optional                  |
-| `when`                                     | Define a set of conditions that need to be satisfied in order to execute this step. You can find more information in the [Conditional Execution of Steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/) article. | Optional                  |
+| `when`                                     | Define a set of conditions that need to be satisfied in order to execute this step. You can find more information in the [conditional execution of steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/) article. | Optional                  |
 
 
 ## Pausing the Pipeline
@@ -102,7 +102,7 @@ the approval step will be automatically rejected.
 ## Approval Restrictions
 
 By default, any Codefresh user can approve any pipeline that is paused at the approval state. If you want to restrict
-the approval action to a subset of people, you can use the [Access Control facilities]({{site.baseurl}}/docs/enterprise/access-control/) that Codefresh provides.
+the approval action to a subset of people, you can use the [access control capabilities]({{site.baseurl}}/docs/administration/account-user-management/access-control/) that Codefresh provides.
 
 This is a two-step process. First you need to tag your pipeline with one or more tags (tag names are arbitrary). You can edit tags in the pipeline settings screen.
 
@@ -129,21 +129,20 @@ max-width="80%"
 %}
 
 
-For more details on access control and users see also the [access control page]({{site.baseurl}}/docs/administration/access-control/).
 
-## Keeping the Shared Volume after an Approval
+## Keeping the Shared Volume after approval
 
-As soon as a pipeline starts waiting for an approval, all contents of the [shared Codefresh volume]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) are lost. Once the pipeline continues running all files that were created manually inside the volume are not available any more. 
+As soon as a pipeline starts waiting for an approval, all contents of the [shared Codefresh volume]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) are lost. Once the pipeline continues to run, all files that were created manually inside the volume are not available any more. 
 
 If you want to keep any temporary files that were there before the approval, you need to enable the respective policy in your [pipeline settings]({{site.baseurl}}/docs/pipelines/pipelines/#policies).
 
-You can either set this option differently per pipeline, or globally in your account at your [account settings](https://g.codefresh.io/account-admin/account-conf/pipeline-settings).
+You can either set this option per pipeline, or globally in your account in the Codefresh UI through [Pipeline Settings](https://g.codefresh.io/account-admin/account-conf/pipeline-settings){:target="\_blank"}.
 
 {% include 
 image.html 
 lightbox="true" 
-file="/images/codefresh-yaml/approval/keep-volume.png" 
-url="/images/codefresh-yaml/approval/keep-volume.png"
+file="/images/pipeline/codefresh-yaml/approval/keep-volume.png" 
+url="/images/pipeline/codefresh-yaml/approval/keep-volume.png"
 alt="Preserve Codefresh volume after an approval" 
 caption="Preserve Codefresh volume after an approval"
 max-width="90%"
@@ -151,7 +150,7 @@ max-width="90%"
 
 >Notice that if you do decide to keep the volume after an approval, the pipeline will still count as "running" against your pricing plan (if you use the SAAS version of Codefresh). If you don't keep the volume, the pipeline is stopped/paused while it is waiting for approval and doesn't count against your pricing plan. We advise you to keep the volume only for pipelines that really need this capability.
 
->Notice also that you if you use the [Codefresh Runner]({{site.baseurl}}/docs/reference/behind-the-firewall/) and your [Runner]({{site.baseurl}}/docs/installation/codefresh-runner/) is setup with local volumes, then the volume will only be present if the dind pod
+>Notice also that you if you use the [Codefresh Runner]({{site.baseurl}}/docs/installation/behind-the-firewall/) and your [Runner]({{site.baseurl}}/docs/installation/codefresh-runner/) is set up with local volumes, then the volume will only be present if the dind pod
 is scheduled in the same node once the pipeline resumes. Otherwise the volume will not be reused.
 
 ## Controlling the Rejection Behavior
@@ -177,8 +176,7 @@ In this case you can also read the approval result and make the pipeline work di
 
 ## Getting the Approval Result
 
-As also explained in [step dependencies]({{site.baseurl}}/docs/pipelines/advanced-workflows/#custom-steps-dependencies) all steps in the Codefresh pipeline belong to a global object
-called `steps` (indexed by name). You can read the `result` property for an approval step to see if it was approved or rejected.
+As also explained in [step dependencies]({{site.baseurl}}/docs/pipelines/advanced-workflows/#custom-steps-dependencies), all steps in the Codefresh pipeline belong to a global object called `steps` (indexed by name). You can read the `result` property for an approval step to see if it was approved or rejected.
 
 Here is an example:
 
@@ -306,12 +304,12 @@ As an example let's say that the concurrency limit for a specific pipeline is se
 
 There isn't a correct or wrong way to set this option. It depends on your organization and if your consider builds pending approval as "active" or not.
 
-You can either set this option [differently per pipeline]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#policies), or globally in your account at your [account settings](https://g.codefresh.io/account-admin/account-conf/pipeline-settings).
+ You can either set this option [per pipeline]({{site.baseurl}}/docs/pipelines/pipelines/#policies), or globally for an in the Codefresh UI through [Pipeline Settings](https://g.codefresh.io/account-admin/account-conf/pipeline-settings){:target="\_blank"}.
 
 
-## Slack Integration
+## Slack integration
 
-If you also enable [Slack integration]({{site.baseurl}}/docs/integrations/notifications/slack-integration/)  in Codefresh you will have the choice of approving/rejecting a pipeline
+If you also enable [Slack integration]({{site.baseurl}}/docs/integrations/notifications/slack-integration/) in Codefresh you will have the choice of approving/rejecting a pipeline
 via a Slack channel
 
 {% include 
@@ -336,15 +334,15 @@ caption="Slack settings"
 max-width="50%"
 %}
 
-Also, if you run a pipeline manually that includes an approval step you should check
-the "Report notification of pipeline execution" checkbox as explained in [Monitoring Pipelines]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#monitoring-pipelines-outside-the-codefresh-ui).
+Also, if you run a pipeline manually that includes an approval step, you should select
+the **Report notification of pipeline execution** option as explained in [Monitoring Pipelines]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#monitoring-pipelines-outside-the-codefresh-ui).
 
 
 
 ## Related articles
-[Post-Step Operations]({{site.baseurl}}/docs/pipelines/post-step-operations/)  
-[Advanced Workflows ]({{site.baseurl}}/docs/pipelines/advanced-workflows/)  
-[Conditional Execution of Steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/) 
-[Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)
+[Post-step operations]({{site.baseurl}}/docs/pipelines/post-step-operations/)  
+[Advanced workflows ]({{site.baseurl}}/docs/pipelines/advanced-workflows/)  
+[Conditional execution of steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/)  
+[Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
 
 

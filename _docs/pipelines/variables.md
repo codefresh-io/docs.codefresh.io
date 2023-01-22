@@ -91,7 +91,7 @@ System variables are automatically injected to any freestyle step as environment
 | {% raw %}`${{CF_REPO_NAME}}`{% endraw %}          | Repository name. |
 | {% raw %}`${{CF_BRANCH}}`{% endraw %}             | Branch name (or Tag depending on the payload json) of the Git repository of the main pipeline, at the time of execution. <br/>You can also use {% raw %}`${{CF_BRANCH_TAG_NORMALIZED}}`{% endraw %} to get the branch name normalized. It will be without any chars that are illegal in case the branch name were to be used as the Docker image tag name. You can also use {% raw %}`${{CF_BRANCH_TAG_NORMALIZED_LOWER_CASE}}`{% endraw %} to force lowercase. |
 | {% raw %}`${{CF_BASE_BRANCH}}`{% endraw %}      | The base branch used during creation of Tag |
-| {% raw %}`${{CF_PULL_REQUEST_ACTION}}`{% endraw %}      | The pull request action. Values are those defined by your Git provider such as [GitHub](https://developer.github.com/webhooks/), [GitLab](https://docs.gitlab.com/ee/user/project/integrations/webhooks.html), [Bitbucket](https://confluence.atlassian.com/bitbucket/manage-webhooks-735643732.html) etc. |
+| {% raw %}`${{CF_PULL_REQUEST_ACTION}}`{% endraw %}      | The pull request action. Values are those defined by your Git provider such as [GitHub](https://developer.github.com/webhooks/){:target="\_blank"}, [GitLab](https://docs.gitlab.com/ee/user/project/integrations/webhooks.html), [Bitbucket](https://confluence.atlassian.com/bitbucket/manage-webhooks-735643732.html){:target="\_blank"} etc. |
 | {% raw %}`${{CF_PULL_REQUEST_TARGET}}`{% endraw %}      | The pull request target branch |
 | {% raw %}`${{CF_PULL_REQUEST_NUMBER}}`{% endraw %}      | The pull request number |
 | {% raw %}`${{CF_PULL_REQUEST_ID}}`{% endraw %}      | The pull request id |
@@ -113,7 +113,7 @@ System variables are automatically injected to any freestyle step as environment
 |  {% raw %}`${{CF_STEP_NAME}}`{% endraw %}      | the name of the step, i.e. "MyUnitTests" |
 | {% raw %}`${{CF_URL}}`{% endraw %}          | The URL of Codefresh system  |
 | {% raw %}`${{CI}}`{% endraw %}          | The value is always `true`  |
-| {% raw %}`${{CF_KUBECONFIG_PATH}}`{% endraw %}    | Path to injected kubeconfig if at least one Kubernetes cluster [is configured]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/). You can easily run [custom kubectl commands]({{site.baseurl}}/docs/deploy-to-kubernetes/custom-kubectl-commands/) since it is automatically setup by Codefresh in all pipelines. |
+| {% raw %}`${{CF_KUBECONFIG_PATH}}`{% endraw %}    | Path to injected kubeconfig if at least one Kubernetes cluster is [configured]({{site.baseurl}}/docs/integrations/kubernetes/#connect-a-kubernetes-cluster). You can easily run [custom kubectl commands]({{site.baseurl}}/docs/deployments/kubernetes/custom-kubectl-commands/) since it is automatically setup by Codefresh in all pipelines. |
 | Any variable specified in the pipeline settings   | For example, if you configure the pipeline settings with a variable named PORT, you can put the variable in your YAML build descriptor as {% raw %}`${{PORT}}`{% endraw %}.  |
 
 ## Context-related Variables
@@ -144,7 +144,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-In the example above you can see the `MyAppDockerImage` variable that denotes a Docker image created dynamically within this single pipeline. In the second step we use it as a Docker context in order to run unit tests. See also the [unit testing example app]({{site.baseurl}}/docs/yaml-examples/examples/run-unit-tests/).
+In the example above you can see the `MyAppDockerImage` variable that denotes a Docker image created dynamically within this single pipeline. In the second step we use it as a Docker context in order to run unit tests. See also the [unit testing example app]({{site.baseurl}}/docs/example-catalog/ci-examples/run-unit-tests/).
 
 ## Step variables
 
@@ -161,20 +161,20 @@ Variables that are created by steps can have members. The members depend on the 
 | Step Type              | Members      |
 | ----------------------- | -------------------------------------- |
 | All step types           | {::nomarkdown}<ul><li>name</li><li>type</li><li>description</li><li>workingDirectory</li><li>result</li></ul>{:/}  
-| [**Freestyle**]({{site.baseurl}}/docs/pipelines/steps/freestyle/)        | -                                                                                                                                                                              |
-| [**Composition**]({{site.baseurl}}/docs/pipelines/steps/composition/)        | -                                                                                                                                                                              |
-| [**Build**]({{site.baseurl}}/docs/pipelines/steps/build/)             | {::nomarkdown}<ul><li>imageName</li><li>imageTagName</li><li>imageId</li></ul>{:/}                                                                            |
-| [**Git-clone**]({{site.baseurl}}/docs/pipelines/steps/git-clone/)       | {::nomarkdown}<ul><li>revision</li><li>repo</li></ul>{:/}                                                                                  |
-| [**Push**]({{site.baseurl}}/docs/pipelines/steps/push/)               | {::nomarkdown}<ul><li>registry</li><li>imageId</li><li>imageRepoDigest</li></ul>{:/}                                                                 |
-| [**Approval**]({{site.baseurl}}/docs/pipelines/steps/approval/)               | {::nomarkdown}<ul><li>authEntity.name</li><li>authEntity.type</li></ul>{:/}                                                                 |
+| [Freestyle]({{site.baseurl}}/docs/pipelines/steps/freestyle/)        | -                                                                                                                                                                              |
+| [Composition]({{site.baseurl}}/docs/pipelines/steps/composition/)        | -                                                                                                                                                                              |
+| [Build]({{site.baseurl}}/docs/pipelines/steps/build/)             | {::nomarkdown}<ul><li>imageName</li><li>imageTagName</li><li>imageId</li></ul>{:/}                                                                            |
+| [Git-clone]({{site.baseurl}}/docs/pipelines/steps/git-clone/)       | {::nomarkdown}<ul><li>revision</li><li>repo</li></ul>{:/}                                                                                  |
+| [Push]({{site.baseurl}}/docs/pipelines/steps/push/)               | {::nomarkdown}<ul><li>registry</li><li>imageId</li><li>imageRepoDigest</li></ul>{:/}                                                                 |
+| [Approval]({{site.baseurl}}/docs/pipelines/steps/approval/)               | {::nomarkdown}<ul><li>authEntity.name</li><li>authEntity.type</li></ul>{:/}                                                                 |
 
 
 
 ## GitHub release variables
 
-GitHub allows you to create [releases](https://help.github.com/articles/creating-releases/) for marking specific Git tags for general availability.
+GitHub allows you to create [releases](https://help.github.com/articles/creating-releases/){:target="\_blank"} for marking specific Git tags for general availability.
 
-You can set a [trigger]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/) for GitHub releases. When a GitHub release happens, the following variables are also available:
+You can set a [trigger]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/) for GitHub releases. When a GitHub release happens, the following variables are also available:
 
 
 
@@ -202,11 +202,11 @@ When a pull request is closed in GitHub, the following variables are also availa
 
 User variables can be defined at 6 levels:
 
-1. Manually within a step using the [export](http://linuxcommand.org/lc3_man_pages/exporth.html) command or in any **subsequent** step with the [cf_export]({{site.baseurl}}/docs/pipelines/variables/#using-cf_export-command) command
-1. [Freestyle Step Definition]({{site.baseurl}}/docs/pipelines/steps/freestyle/#examples) (using the `environment` field)
+1. Manually within a step using the [export](http://linuxcommand.org/lc3_man_pages/exporth.html){:target="\_blank"} command or in any **subsequent** step with the [cf_export](#using-cf_export-command) command
+1. [Freestyle step definition]({{site.baseurl}}/docs/pipelines/steps/freestyle/#examples) (using the `environment` field)
 1. Specific build Execution (after clicking the "Build" button open the "Build Variables" section, or use the [CLI]({{site.baseurl}}/docs/integrations/codefresh-api/#example---triggering-pipelines))
-1. Pipeline Definition (under "Environment variables" section in the [pipeline view]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#creating-new-pipelines))
-1. [Shared Configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/) (defined under your account settings, and used using the "Import from shared configuration" button under the "Environment Variables" section in the pipeline view)
+1. Pipeline Definition (under "Environment variables" section in the [pipeline view]({{site.baseurl}}/docs/pipelines/pipelines/#creating-new-pipelines))
+1. [Shared Configuration]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/) (defined under your account settings, and used using the "Import from shared configuration" button under the "Environment Variables" section in the pipeline view)
 1. Variables defined on the Project level (Under the variables tab on any project view)
 
 The options are listed in order of priority (from the most important to the least important), so in case of multiple variables defined at different locations with the same name, the order of overriding will be as listed here.
@@ -251,7 +251,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-Notice that `cf_export` has the same syntax structure as the [bash export command](https://www.gnu.org/software/bash/manual/html_node/Environment.html). This means that when you use it you **don't** need any dollar signs for the variable created/assigned.
+Notice that `cf_export` has the same syntax structure as the [bash export command](https://www.gnu.org/software/bash/manual/html_node/Environment.html){:target="\_blank"}. This means that when you use it you **don't** need any dollar signs for the variable created/assigned.
 
 ```
 cf_export $MY_VAR # Don't do this
@@ -314,7 +314,7 @@ caption="Masked variables"
 max-width="80%"
 %}
 
-The variables can be defined in any of the usual ways Codefresh offers such as [shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/) or [within the pipeline]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-settings):
+The variables can be defined in any of the usual ways Codefresh offers such as [shared configuration]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/) or [within the pipeline]({{site.baseurl}}/docs/pipelines/pipelines/#pipeline-settings):
 
 {% include
 image.html
@@ -335,5 +335,5 @@ When passing special characters through environmental variables `\` can be used 
 This will safely escape `;` and `=`.
 
 ## Related articles
-[Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)  
-[Codefresh Conditionals]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/)  
+[Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
+[Conditional execution of steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/)  

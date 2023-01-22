@@ -1,5 +1,5 @@
 ---
-title: "Quay Trigger"
+title: "Quay triggers"
 description: "Trigger Codefresh pipelines from Quay"
 group: pipelines
 sub_group: triggers
@@ -20,10 +20,10 @@ The process involves two parts:
 1. Creating a trigger in Codefresh (this will result in a special Codefresh webhook URL)
 1. Creating a new notification in Quay that will use this URL to call Codefresh
 
-> Make sure that you have a Quay account and have already [created a repository](https://docs.quay.io/guides/create-repo.html) (or pushed a Docker image at least once).
+> Make sure that you have a Quay account and have already [created a repository](https://docs.quay.io/guides/create-repo.html){:target="\_blank"} (or pushed a Docker image at least once).
 
 
-### Create a new Quay Trigger
+### Create a new Quay trigger
 
 To add a new Quay trigger, navigate to a Codefresh Pipeline *Configuration* view and expand the *Triggers* section. Press the `Add Trigger` button and select a `Registry` trigger type to add.
 
@@ -41,7 +41,7 @@ Fill the following information:
 * *User/Organization Name* - put Quay username or organization name here.
 * *Image Repository Name* - Quay image repository name.
 * *Action* - select `Push Image` action.
-* *Tag* - optional filter to specify which image *tags* will trigger pipeline execution: [Re2](https://github.com/google/re2/wiki/Syntax) regular expression.
+* *Tag* - optional filter to specify which image *tags* will trigger pipeline execution: [Re2](https://github.com/google/re2/wiki/Syntax){:target="\_blank"} regular expression.
 
 {% include image.html
 lightbox="true"
@@ -99,5 +99,5 @@ Finally click *Create Notification*.
 Now, every time you push a new Docker image to the selected Quay repository, manually, with Codefresh or any other CI/CD tool, Codefresh will trigger execution of all pipelines associated with that Quay Push trigger event.
 
 ## Related articles
-[Triggers for pipelines]({{site.baseurl}}/docs/pipelines/triggers)  
+[Triggers in pipelines]({{site.baseurl}}/docs/pipelines/triggers)  
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  

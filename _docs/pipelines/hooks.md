@@ -261,7 +261,7 @@ The order of events in the example above is the following:
 
 ## Running steps/plugins in hooks
 
-Hooks can use [steps/plugins](https://steps.codefresh.io). With plugins you have to specify:
+Hooks can use [steps/plugins](https://steps.codefresh.io){:target="\_blank"}. With plugins you have to specify:
 
 - The type field for the step/plugin.
 - The arguments needed for the step/plugin.
@@ -630,7 +630,7 @@ With the current implementation of hooks, the following limitations are present:
 
 ## Related articles
 [Conditional execution of steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/)  
-[Working Directories]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
-[Annotations in CI pipelines]({{site.baseurl}}/docs/pipelines/annotations/)  
+[Working directories]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#working-directories)   
+[Annotations in pipelines]({{site.baseurl}}/docs/pipelines/annotations/)  
 
 

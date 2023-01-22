@@ -12,8 +12,8 @@ Codefresh includes an [Environment dashboard]({{site.baseurl}}/docs/deployments/
 {% include
 image.html
 lightbox="true"
-file="/images/codefresh-yaml/environments/environments.png"
-url="/images/codefresh-yaml/environments/environments.png"
+file="/images/pipeline/codefresh-yaml/environments/environments.png"
+url="/images/pipeline/codefresh-yaml/environments/environments.png"
 alt="Environment Dashboards"
 caption="Environment Dashboards"
 max-width="80%"
@@ -163,8 +163,8 @@ Once the pipeline runs the following environment entry will appear in the enviro
 {% include
 image.html
 lightbox="true"
-file="/images/codefresh-yaml/environments/k8s-environment.png"
-url="/images/codefresh-yaml/environments/k8s-environment.png"
+file="/images/pipeline/codefresh-yaml/environments/k8s-environment.png"
+url="/images/pipeline/codefresh-yaml/environments/k8s-environment.png"
 alt="Kubernetes environment status"
 caption="Kubernetes environment status"
 max-width="100%"
@@ -244,8 +244,8 @@ Once the pipeline runs the following environment entry will appear in the enviro
 {% include
 image.html
 lightbox="true"
-file="/images/codefresh-yaml/environments/helm-environment.png"
-url="/images/codefresh-yaml/environments/helm-environment.png"
+file="/images/pipeline/codefresh-yaml/environments/helm-environment.png"
+url="/images/pipeline/codefresh-yaml/environments/helm-environment.png"
 alt="Helm environment status"
 caption="Helm environment status"
 max-width="100%"
@@ -258,5 +258,5 @@ Every time that you run another build of the pipeline the environment status wil
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
 [Managing Kubernetes clusters]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/)  
 [Connecting a Kubernetes cluster]({{site.baseurl}}/docs//integrations/kubernetes/#connect-a-kubernetes-cluster)  
-[Helm Board]({{site.baseurl}}/docs/deployments/helm/helm-environment-promotion/)  
+[Promoting Helm Environments]({{site.baseurl}}/docs/deployments/helm/helm-environment-promotion/)  
 

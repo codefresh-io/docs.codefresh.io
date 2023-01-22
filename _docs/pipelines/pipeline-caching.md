@@ -20,7 +20,7 @@ Here is a quick overview of all types of caching used in a Codefresh pipeline:
 | Distributed Docker step/image caching       | Automatic | All pipeline [steps]({{site.baseurl}}/docs/pipelines/steps/) | |
 | Distributed Docker layer caching  | Automatic |  Pipeline [build steps]({{site.baseurl}}/docs/pipelines/steps/build/) | Mimics local Docker layer cache|
 | Caching from previous built image  | Automatic |  Pipeline build steps | Distributed version of `--cache-from`|
-| Docker registry caching  | Automatic |  Pipeline build steps | Works for all [connected Docker registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/)|
+| Docker registry caching  | Automatic |  Pipeline build steps | Works for all [connected Docker registries]({{site.baseurl}}/docs/integrations/docker-registries/)|
 | Traditional build caching  | Automatic/manual |  Pipeline [freestyle steps]({{site.baseurl}}/docs/pipelines/steps/freestyle/) | See notes for [parallel builds]({{site.baseurl}}/docs/pipelines/advanced-workflows/)|
 
 All these caching mechanisms are enabled by default and you can [freely disable them]({{site.baseurl}}/docs/troubleshooting/common-issues/disabling-codefresh-caching-mechanisms/) if you encounter any issues with caching.
@@ -29,7 +29,7 @@ Let's see these caches in order and how to use them effectively.
 
 ## Distributed Docker image caching
 
-This is the simplest mode of caching available. All Codefresh steps [are in fact docker images]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/). Once a pipeline runs for the first time, Codefresh will pull all required images from their registries (either public or private) and will cache them for the next build:
+This is the simplest mode of caching available. All Codefresh steps are in fact [Docker images]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/). After a pipeline runs for the first time, Codefresh will pull all required images from their registries (either public or private) and will cache them for the next build:
 
 
 {% include image.html
@@ -41,7 +41,7 @@ caption="Caching pipeline steps"
 max-width="60%"
 %}
 
-The next time the pipeline runs all images will be fetched from cache. This includes built-in steps (e.g the [clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/)), custom steps from [the marketplace](https://codefresh.io/steps/) or your own [dynamic pipeline steps]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#creating-docker-images-dynamically-as-build-tools).
+The next time the pipeline runs all images will be fetched from cache. This includes built-in steps (e.g the [clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/)), custom steps from [the marketplace](https://codefresh.io/steps/){:target="\_blank"} or your own [dynamic pipeline steps]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#creating-docker-images-dynamically-as-build-tools).
 
 This cache mechanism is completely automatic and is not user configurable. Some ways that you can affect it are:
 
@@ -160,12 +160,12 @@ To take advantage of this build cache just follow the official Docker guidelines
 
 Basically, if your Dockerfile is already optimized on your local workstation, it should also be optimized for Codefresh. More information can be found in the official documentation:
 
-* [https://www.docker.com/blog/intro-guide-to-dockerfile-best-practices/](https://www.docker.com/blog/intro-guide-to-dockerfile-best-practices/)
-* [https://docs.docker.com/develop/develop-images/dockerfile_best-practices/](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
+* [https://www.docker.com/blog/intro-guide-to-dockerfile-best-practices/](https://www.docker.com/blog/intro-guide-to-dockerfile-best-practices/){:target="\_blank"}
+* [https://docs.docker.com/develop/develop-images/dockerfile_best-practices/](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/){:target="\_blank"}
 
 ## Docker registry caching
 
-This is a caching mechanism unique to Codefresh and applicable only to [build steps]({{site.baseurl}}/docs/pipelines/steps/build/) when any of [connected Docker registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) is used.
+This is a caching mechanism unique to Codefresh, and applicable only to [build steps]({{site.baseurl}}/docs/pipelines/steps/build/) when any of [connected Docker registries]({{site.baseurl}}/docs/integrations/docker-registries/) are used.
 
 Codefresh will check the internal Docker registry *before* a build step and if the exact same image is found (using the image hash), it will skip the build step completely:
 
@@ -180,7 +180,7 @@ max-width="60%"
 
 This is a very effective way to cut down the amount of time needed by pipelines but it obviously works only for Docker images that don't change often (helper images, plugins, build tools etc.) as the deployment docker images will always be different when a new git commit happens in the source code.
 
-You can take advantage of this mechanism by [not mixing deployment docker images with development docker images](https://codefresh.io/containers/docker-anti-patterns/). The former will change all the time, while the latter should be recreated less often.
+You can take advantage of this mechanism by [not mixing deployment docker images with development docker images](https://codefresh.io/containers/docker-anti-patterns/){:target="\_blank"}. The former will change all the time, while the latter should be recreated less often.
 
 ## Traditional build caching
 
@@ -199,7 +199,7 @@ This means that unlike other CI solutions where you have to manually describe wh
 
 The main choice that you have is which files to place on the volume. For example, Node.js uses the folder `node_modules` for its dependencies which are placed under the project folder [which is automatically placed under the volume]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#cloning-the-source-code). So all contents of `node_modules` will be cached by default without any further action on your part.
 
->Note that if you are using [Codefresh on-prem]({{site.baseurl}}/docs/installation/codefresh-on-prem/), this kind of caching is not available for the built-in runtime and you need to use the [Codefresh Runner]({{site.baseurl}}/docs/installation/codefresh-runner/)
+>Note that if you are using [Codefresh on-premises]({{site.baseurl}}/docs/installation/codefresh-on-prem/), this kind of caching is not available for the built-in runtime. You need to use the [Codefresh Runner]({{site.baseurl}}/docs/installation/codefresh-runner/)
 with your own runtime to activate volume caching.
 
 The simplest way to see this caching mechanism in action is this pipeline:
@@ -240,13 +240,13 @@ Notice also the complete lack of `volume` directives in the `codefresh.yml` file
 Some important points on this caching mechanism:
 
 * The volume is handled and managed by Codefresh in a completely transparent manner. You **DO NOT** need any `volume` directives in your pipelines to take advantage of it. The volume is even present in [service containers]({{site.baseurl}}/docs/pipelines/service-containers/) for integration tests.
-* On each build the [clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/) will purge/delete everything that is not placed in `.gitignore`. So make sure that your `.gitignore` files contain all the things that you want to see cached (e.g. `node_modules`)
+* On each build, the [clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/) will purge/delete everything that is not placed in `.gitignore`. So make sure that your `.gitignore` files contain all the things that you want to see cached (e.g. `node_modules`)
 * If you use the SAAS version of Codefresh, volumes will be reused across all your account pipelines. If you use the On-prem or Hybrid version of Codefresh, pipeline volumes can be scoped to different pipelines or triggers as well
 * You need at least one build of your pipeline in order for the cache mechanism to take any effect.
-* The volume is **NOT available** in [build steps]({{site.baseurl}}/docs/pipelines/steps/build/). This is not a Codefresh limitation. Docker itself [does not allow volumes during builds](https://github.com/moby/moby/issues/14080). There is no folder `/codefresh/volume` inside a Dockerfile for you to access.
+* The volume is **NOT available** in [build steps]({{site.baseurl}}/docs/pipelines/steps/build/). This is not a Codefresh limitation. Docker itself [does not allow volumes during builds](https://github.com/moby/moby/issues/14080){:target="\_blank"}. There is no folder `/codefresh/volume` inside a Dockerfile for you to access.
 * This is the only caching mechanism that is not related to Docker images. So if you compile/package a traditional application with Codefresh that is not packaged as a Docker image this is the only way to get faster builds.
 
-See also a [full example]({{site.baseurl}}/docs/yaml-examples/examples/shared-volumes-between-builds/) that uses the volume at [https://github.com/codefreshdemo/cf-example-shared-volumes-between-builds](https://github.com/codefreshdemo/cf-example-shared-volumes-between-builds).
+See also a [full example]({{site.baseurl}}/docs/example-catalog/ci-examples/shared-volumes-between-builds/) that uses the volume at [https://github.com/codefreshdemo/cf-example-shared-volumes-between-builds](https://github.com/codefreshdemo/cf-example-shared-volumes-between-builds){:target="\_blank"}.
 
 ### Caching folders which are outside your project folder
 
@@ -260,10 +260,10 @@ Everything else found in external folders is NOT cached by default. So if you ha
 
 In practice, this means that you need to look at the documentation of your build system and test framework and make sure that all folders you want cached are placed under the Codefresh volume. This is a typical pattern with Java applications.
 
- * For Maven use `mvn -Dmaven.repo.local=/codefresh/volume/m2_repository package` as shown in the [example]({{site.baseurl}}/docs/learn-by-example/java/spring-boot-2/).
- * For Gradle use `gradle -g /codefresh/volume/.gradle -Dmaven.repo.local=/codefresh/volume/m2` as explained in the [example]({{site.baseurl}}/docs/learn-by-example/java/gradle/).
+ * For Maven use `mvn -Dmaven.repo.local=/codefresh/volume/m2_repository package` as shown in the [example]({{site.baseurl}}/docs/example-catalog/ci-examples/spring-boot-2/).
+ * For Gradle use `gradle -g /codefresh/volume/.gradle -Dmaven.repo.local=/codefresh/volume/m2` as explained in the [example]({{site.baseurl}}/docs/example-catalog/ci-examples/gradle/).
  * For SBT use `-Dsbt.ivy.home=/codefresh/volume/ivy_cache`.
- * For Pip use `pip install -r requirements.txt --cache-dir=/codefresh/volume/pip-cache` as shown in the [example]({{site.baseurl}}/docs/learn-by-example/python/django/)
+ * For Pip use `pip install -r requirements.txt --cache-dir=/codefresh/volume/pip-cache` as shown in the [example]({{site.baseurl}}/docs/example-catalog/ci-examples/django/)
  * For Golang pass an environment variable `GOPATH=/codefresh/volume/go` to the freestyle step that is running go commands
  * For Rust pass an environment variable `CARGO_HOME=/codefresh/volume/cargo` to the freestyle step that is running rust/cargo commands
 
@@ -307,10 +307,10 @@ The SAAS version is fully controlled by Codefresh personnel and the cache polici
 
 If you run a pipeline very infrequently it is possible to suffer many cache misses. If you also use obscure Docker images you might see them downloaded again and again.
 
-If you run the [hybrid or on-prem versions]({{site.baseurl}}/docs/enterprise/installation-security/) of Codefresh, then your system administrator is responsible for fine-tuning the cache settings.
+If you run the [Hybrid Runner or on-premises versions]({{site.baseurl}}/docs/installation/installation-options/) of Codefresh, then your system administrator is responsible for fine-tuning the cache settings.
 
 ## Related articles
 [Introduction to Codefresh pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines)  
 [Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
-[Steps in CI pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
+[Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
 [Parallel pipelines]({{site.baseurl}}/docs/pipelines/advanced-workflows/)  

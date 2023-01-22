@@ -8,7 +8,7 @@ redirect_from:
 toc: true
 ---
 
-Git triggers are the most basic of the trigger typesfor performing [Continuous Integration](https://en.wikipedia.org/wiki/Continuous_integration) with Codefresh.
+Git triggers are the most basic of the trigger types for performing [Continuous Integration](https://en.wikipedia.org/wiki/Continuous_integration){:target="\_blank"} with Codefresh.
 
 At the trigger level, you can select:
 
@@ -21,7 +21,7 @@ At the trigger level, you can select:
 
 You can also use [conditional expressions]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/) at the pipeline level to further fine-tune the way specific steps (or other transitive pipelines) are executed.
 
-## Manage GIT triggers with Codefresh UI
+## Manage Git triggers with Codefresh UI
 
 To add a new GIT trigger, navigate to the Codefresh Pipeline *Configuration* view and expand the *Triggers* section on the right side. Press the *Add Trigger* button and select a *GIT* trigger type to add.
 
@@ -71,7 +71,7 @@ max-width="50%"
 * *Branch Field* - this is a regular expression and will only trigger for branches that match this naming pattern.
 * *PR Comment (restricted) and PR Comment Fields* - useful for open source projects.
 * *Pull Request Target* branch - this is a regular expression and will trigger only when a Pull request is created against any branch that matches it.
-* *Modified Files* - allows you to constrain the build and trigger it only if the modified files from the commit match this [glob expression](https://en.wikipedia.org/wiki/Glob_(programming)).
+* *Modified Files* - allows you to constrain the build and trigger it only if the modified files from the commit match this [glob expression](https://en.wikipedia.org/wiki/Glob_(programming)){:target="\_blank"}.
 
 ### Pull Request Target Branch and Branch 
 
@@ -98,7 +98,7 @@ Here are some more syntax examples:
 
 >The field *Pull Request Target* is available for all Git providers apart from Atlassian stash.
 >
->When using the Terraform Provider, please use the [Go regex syntax](https://github.com/google/re2/wiki/Syntax) as some perl regex syntax is not compatible.
+>When using the Terraform Provider, please use the [Go regex syntax](https://github.com/google/re2/wiki/Syntax){:target="\_blank"} as some perl regex syntax is not compatible.
 
 The concept behind these checkboxes and branch name fields is to allow you to define which pipelines run for various workflows in your organization.
 
@@ -155,11 +155,11 @@ caption="Triggering a public build from a comment"
 max-width="50%"
 %}
 
-Once that is done, Codefresh will launch your pipeline against the Pull Request. If you manage an open source project with Codefresh, remember to enable [public builds]({{site.baseurl}}/docs/configure-ci-cd-pipeline/build-status/#public-build-logs) as well.
+Once that is done, Codefresh will launch your pipeline against the Pull Request. If you manage an open source project with Codefresh, remember to enable [public builds]({{site.baseurl}}/docs/pipelines/configuration/build-status/#public-build-logs) as well.
 
 When supporting building of pull requests from forks there are a few "gotchas" to look out for:
 
-* Only comments made by repository owners and [collaborators](https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/adding-outside-collaborators-to-repositories-in-your-organization) will result in the pipeline being triggered.
+* Only comments made by repository owners and [collaborators](https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/adding-outside-collaborators-to-repositories-in-your-organization){:target="\_blank"} will result in the pipeline being triggered.
 * Only Git pushes by collaborators within the GitHub organization will result in the pipeline being triggered
 * If the repository is in a GitHub organization, comments made by private members of the organization will not activate the trigger, even if they are set as an owner or collaborator. Private members means that they need to be explicitly added to the repository. 
 Access cannot be "inherited" by the GitHub team. Currently, only comments from Admins, or Collaborators (directly added, not via teams) are allowed, in order to be caught by this filter.
@@ -173,7 +173,7 @@ The *modified files* field is a very powerful Codefresh feature that allows you 
 files affected by a commit are in a specific folder (or match a specific naming pattern). This means that
 you can have a big GIT repository with multiple projects and build only the parts that actually change.
 
->Currently the field *modified files* is available only for GitHub, GitLab, Azure DevOps and [Bitbucket Server and Data Center](https://confluence.atlassian.com/bitbucketserver/add-a-post-service-webhook-776640367.html) repositories, since they are the only GIT providers
+>Currently the field *modified files* is available only for GitHub, GitLab, Azure DevOps and [Bitbucket Server and Data Center](https://confluence.atlassian.com/bitbucketserver/add-a-post-service-webhook-776640367.html){:target="\_blank"} repositories, since they are the only GIT providers
 that send this information in the webhook. We will support other GIT providers as soon as they add the respective feature. 
 
 ### Using the Modified files field to constrain triggers to specific folder/files
@@ -192,7 +192,7 @@ my-subproject/**/pom.xml
 
 >You can also use relative paths with dot-slash. Therefore `./package.json` and `package.json` are exactly the same thing. They both refer to the file `package.json` found at the root of the git project that was checked out as part of the build.
 
-You can also define [multiple expressions](http://tldp.org/LDP/GNU-Linux-Tools-Summary/html/x11655.htm) like this (but notice that there is a limit of 150 characters for the field):
+You can also define [multiple expressions](http://tldp.org/LDP/GNU-Linux-Tools-Summary/html/x11655.htm){:target="\_blank"} like this (but notice that there is a limit of 150 characters for the field):
 
 ```
 {app/**,test/**}
@@ -224,7 +224,7 @@ alt="GIT monorepo pipelines"
 max-width="70%"
 %}
 
-And then in the GIT trigger for each one we set the modified files field to the following values:
+And then in the Git trigger for each one we set the modified files field to the following values:
 
 * For the *build-nestjs-only* pipeline *MODIFIED FILES* has `my-nestjs-project/**`.
 * For the *build-java-only* pipeline *MODIFIED FILES* has `my-java-project/**`.
@@ -238,7 +238,7 @@ You can also use Glob expressions for files. For example:
 * A pipeline with the expression `my-subproject/**/pom.xml` will trigger only if the Java dependencies for any project that belongs to `my-subproject` actually change
 * An expression such as `!config/manifest.yaml` will trigger a build if any file was changed *apart from* `config/manifest.yaml`
 
-Glob expressions have many more options not shown here. Visit the [official documentation](https://en.wikipedia.org/wiki/Glob_(programming)) to learn more. You can also use the [Glob Tester web application](https://www.digitalocean.com/community/tools/glob) to test your glob expressions beforehand so that you are certain they match the files you expect them to match.
+Glob expressions have many more options not shown here. Visit the [official documentation](https://en.wikipedia.org/wiki/Glob_(programming)){:target="\_blank"} to learn more. You can also use the [Glob Tester web application](https://www.digitalocean.com/community/tools/glob){:target="\_blank"} to test your glob expressions beforehand so that you are certain they match the files you expect them to match.
 
 ## Advanced Options
 
@@ -251,13 +251,13 @@ max-width="60%"
 %}
 
 * *Commit Status Title* - the commit status title pushed to the GIT version control system.  By default, is the pipeline name, but you can override the name on GIT trigger.
-* *Build Variables* - import a [shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/) or manually add variables
+* *Build Variables* - import a [shared configuration]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/) or manually add variables
 * *More Options* 
   * *Ignore Docker engine cache for build* - selecting this option may slow down your build.  See #1 [here]({{site.baseurl}}/docs/troubleshooting/common-issues/disabling-codefresh-caching-mechanisms/)
   * *Ignore Codefresh cache optimizations for build* - selecting this option may slow down your build.  See #2 [here]({{site.baseurl}}/docs/troubleshooting/common-issues/disabling-codefresh-caching-mechanisms/)
   * *Reset pipeline volume* - useful for troubleshooting a build that hangs on the first step.  See [here]({{site.baseurl}}/docs/troubleshooting/common-issues/restoring-data-from-pre-existing-image-hangs-on/)
   * *Report notification on pipeline execution* - Decide if [Slack notifications]({{site.baseurl}}/docs/integrations/notifications/slack-integration/) will be sent (as well as status updates back to your Git provider)
-* *Runtime Environment* - choose to use pipeline [settings]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-settings) or override them
+* *Runtime Environment* - choose to use pipeline [settings]({{site.baseurl}}/docs/pipelines/pipelines/#pipeline-settings) or override them
 
 ### Set minimum disk space for build volume by trigger
 Set the disk space you need for the build volume in the context of the selected trigger. Setting the disk space for the trigger overrides that set for the pipeline.  
@@ -322,7 +322,8 @@ Notice however that this file is only available when the pipeline was triggered 
 
 ## Using YAML and the Codefresh CLI to filter specific Webhook events
 
-The default GUI options exposed by Codefresh are just a starting point for GIT triggers and pull requests. Using [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/) and the [Codefresh CLI plugin](https://codefresh-io.github.io/cli/) you can further create two-phase pipelines where the first one decides
+The default GUI options exposed by Codefresh are just a starting point for GIT triggers and pull requests. Using 
+[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/) and the [Codefresh CLI plugin](https://codefresh-io.github.io/cli/){:target="\_blank"} you can further create two-phase pipelines where the first one decides
 which webhook events will be honored and the second one contains the actual build.
 
 {% include image.html
@@ -333,7 +334,7 @@ alt="Two phase pipeline"
 max-width="80%"
 %}
 
-The generic GIT trigger is placed on Pipeline A. This pipeline then filters the applicable webhooks using [conditional expressions]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/). Then it uses the Codefresh CLI plugin (and specifically the [run pipeline capability](https://codefresh-io.github.io/cli/pipelines/run-pipeline/)) to trigger pipeline B that performs build.
+The generic Git trigger is placed on Pipeline A. This pipeline then filters the applicable webhooks using [conditional expressions]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/). Then it uses the Codefresh CLI plugin and specifically the [run pipeline capability](https://codefresh-io.github.io/cli/pipelines/run-pipeline/){:target="\_blank"} to trigger pipeline B that performs build.
 
 Some of the YAML variables that you might find useful (from the [full list]({{site.baseurl}}/docs/pipelines/variables/)):
 
@@ -367,7 +368,7 @@ It has only a single step which uses conditionals that check the name of the bra
 The build step calls the second pipeline. The end result is that pipeline B runs only when the Pull Request is opened the first time. Any further commits on the pull request branch will **not** trigger pipeline B (pipeline A will still run but the conditionals will fail).
 
 ## Related articles
-[Triggers for pipelines]({{site.baseurl}}/docs/pipelines/triggers)  
+[Triggers in pipelines]({{site.baseurl}}/docs/pipelines/triggers)  
 [Cron triggers]({{site.baseurl}}/docs/pipelines/triggers/cron-triggers/)  
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
-[Multi-git trigger]({{site.baseurl}}/docs/troubleshooting/common-issues/multi-git-triggers/)
+[Using multi-git triggers]({{site.baseurl}}/docs/troubleshooting/common-issues/multi-git-triggers/)

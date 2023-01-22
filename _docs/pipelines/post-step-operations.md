@@ -8,10 +8,10 @@ redirect_from:
   - /docs/post-step-operations/
 toc: true
 ---
-Post-step operations are a set of optional predefined processes that can be configured on any step. These operations will be executed once the step has completed. The post-step operations allow you to annotate your builds, images and pipelines with extra metadata or run other steps.
+Post-step operations are a set of optional predefined processes that can be configured on any step. These operations will be executed once the step has completed. The post-step operations allow you to annotate your builds, images, and pipelines with extra metadata or run other steps.
 
  
-## Result Aware Post-Step Operations
+## Result-aware post-step operations
 You may execute post-step operations conditionally, based on the outcome of the step itself.
 
 To execute operations only when the step has completed successfully, use `on_success`:
@@ -34,7 +34,7 @@ step_name:
     ...
 {% endhighlight %}
 
-## Result Agnostic Post-Step Operations
+## Result-agnostic post-step operations
 You may execute post-step operations regardless of the outcome of the step itself.
 
 To execute operations regardless of the result, use `on_finish`:
@@ -49,9 +49,9 @@ step_name:
 
 ## Available Post-Step Operations
 
-- [Image Metadata]({{site.baseurl}}/docs/docker-registries/metadata-annotations/)
-- [Custom Annotations]({{site.baseurl}}/docs/pipelines/annotations/)
-- [Hooks]({{site.baseurl}}/docs/pipelines/hooks/)
+- [Image Metadata]({{site.baseurl}}/docs/pipelines/metadata-annotations/)
+- [Custom annotations]({{site.baseurl}}/docs/pipelines/annotations/)
+- [Hooks in pipelines]({{site.baseurl}}/docs/pipelines/hooks/)
 
 ## Example
 
@@ -81,7 +81,7 @@ run_tests:
 
 ## Running other steps
 
-If you want to run another step in the pipeline when another step fails or succeeds you need to use [conditional execution of steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/) and the `fail_fast` property. You can also use [step hooks]({{site.baseurl}}/docs/pipelines/hooks/) for dedicated post step actions.
+If you want to run a different step in the pipeline when a step fails or succeeds, you need to use [conditional execution of steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/) and the `fail_fast` property. You can also use [step hooks]({{site.baseurl}}/docs/pipelines/hooks/) for dedicated post step actions.
 
 {% highlight yaml %}
 {% raw %}
@@ -106,12 +106,12 @@ print_error_message:
 
 In this example the step `print_error_message` will only run if step `run_tests` has failed.
 
-See also [advanced workflows]({{site.baseurl}}/docs/pipelines/advanced-workflows/#single-step-dependencies) and [Pipeline/Step hooks]({{site.baseurl}}/docs/pipelines/hooks/).
+See also [advanced workflows]({{site.baseurl}}/docs/pipelines/advanced-workflows/#single-step-dependencies).
 
 ## Related articles
 [Conditional execution of steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/)  
 [Working directories]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
-[Annotations in CI pipelines]({{site.baseurl}}/docs/pipelines/annotations/)  
-[Hooks in CI pipelines]({{site.baseurl}}/docs/pipelines/hooks/)
+[Annotations in pipelines]({{site.baseurl}}/docs/pipelines/annotations/)  
+[Hooks in pipelines]({{site.baseurl}}/docs/pipelines/hooks/)
 
 
