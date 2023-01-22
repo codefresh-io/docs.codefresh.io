@@ -33,7 +33,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-Every Codefresh pipeline has access to the  that allows you to pass [environment variables]({{site.baseurl}}/docs/codefresh-yaml/variables/) from [one step to the next].
+Every Codefresh pipeline has access to the  that allows you to pass [environment variables]({{site.baseurl}}/docs/pipelines/variables/) from [one step to the next].
 
 ## Solution
 

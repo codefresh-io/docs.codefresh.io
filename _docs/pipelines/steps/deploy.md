@@ -74,7 +74,7 @@ with the `candidate` field (otherwise Codefresh will just reuse the docker image
 | ------------------------------------------ | ----------------------------------------------------------  -------- | ------------------------- |
 | `title`                                    | The free-text display name of the step                               | Optional                  |
 | `description`                              | A basic, free-text description of the step.                          | Optional                  |
-| `stage`                              | Parent group of this step. See [using stages]({{site.baseurl}}/docs/codefresh-yaml/stages/) for more information.                                                                                                                                                                                          | Optional                  |
+| `stage`                              | Parent group of this step. See [using stages]({{site.baseurl}}/docs/pipelines/stages/) for more information.                                                                                                                                                                                          | Optional                  |
 | `kind`                        | Currently only `kubernetes` is supported                | Required                   |
 | `cluster`                        | Name of your K8s cluster as found in the dashboard               | Required                   |
 | `namespace`                        | Namespace where the deployment will take place           | Required                   |
@@ -85,7 +85,7 @@ with the `candidate` field (otherwise Codefresh will just reuse the docker image
 | `fail_fast`                                | If a step fails, and the process is halted. The default value is `true`.                                                                                                        | Default                   |
 | `when`                                     | Define a set of conditions which need to be satisfied in order to execute this step.<br>You can find more information in the [Conditional Execution of Steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/) article.          | Optional                  |
 | `on_success`, `on_fail` and `on_finish`    | Define operations to perform upon step completion using a set of predefined [Post-Step Operations]({{site.baseurl}}/docs/piplines/post-step-operations/).                                                                               | Optional                  |
-| `retry`   | Define retry behavior as described in [Retrying a step]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/#retrying-a-step).                                                                               | Optional                  |
+| `retry`   | Define retry behavior as described in [Retrying a step]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#retrying-a-step).                                                                               | Optional                  |
 
 ## Examples
 

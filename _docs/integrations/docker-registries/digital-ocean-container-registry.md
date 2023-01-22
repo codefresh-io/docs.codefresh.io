@@ -97,7 +97,7 @@ steps:
     type: "git-clone"
     repo: "anais-codefresh/react-article-display"
     # CF_BRANCH value is auto set when pipeline is triggered
-    # Learn more at codefresh.io/docs/docs/codefresh-yaml/variables/
+    # Learn more at codefresh.io/docs/docs/pipelinesvariables/
     revision: "${{CF_BRANCH}}"
     git: "github"
     stage: "clone"

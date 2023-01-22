@@ -53,7 +53,7 @@ Of course, you can also have a simpler scenario where the trigger, the pipeline 
 
 ## Creating a pipeline
 
-You can create new projects by clicking on *Projects* in the left sidebar and then selecting the *New Project* button on the top right corner. A dialog will appear that will ask you for the project name and optional tags that you can use for [access control]({{site.baseurl}}/docs/enterprise/access-control/).
+You can create new projects by clicking on *Projects* in the left sidebar and then selecting the *New Project* button on the top right corner. A dialog will appear that will ask you for the project name and optional tags that you can use for [access control]({{site.baseurl}}/docs/administration/account-user-management/access-control/).
 
 Once you are inside the project view you can start editing pipelines with a UI environment that works similar to a traditional IDE.
 
@@ -77,14 +77,14 @@ or by copying an existing one from the same project or a completely different pr
 
 1. The main window shows the definition of the current pipeline. The screenshot shows the inline editor but pipelines can also be defined from external files (checked into source control) as explained later.
 
-1. The right part of the window shows extra settings for this pipeline such as [predefined steps]({{site.baseurl}}/docs/codefresh-yaml/steps/), [triggers]({{site.baseurl}}/docs/pipelines/triggers/) and launch variables/parameters.
+1. The right part of the window shows extra settings for this pipeline such as [predefined steps]({{site.baseurl}}/docs/pipelines/steps/), [triggers]({{site.baseurl}}/docs/pipelines/triggers/), and launch variables/parameters.
 
 
 
 
 ### Using the Inline pipeline editor
 
-When first creating a pipeline you will see an inline editor that allows you to define the [pipeline yml]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/) right there in the Codefresh UI. This is great when you are starting a new project because it offers you really quick feedback. You can edit the yml steps, run a build, edit again, run a build and so on. 
+When first creating a pipeline, you will see an inline editor that allows you to define the [pipeline YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/) right there in the Codefresh UI. This is great when you are starting a new project because it offers you really quick feedback. You can edit the yml steps, run a build, edit again, run a build and so on. 
 
 
 {% include 
@@ -188,13 +188,13 @@ Once you create your pipeline you can also click on the top tab called *Settings
 ### General 
 
 - **Pipeline Name**: The name of your pipeline (useful for working with the [Codefresh CLI](https://codefresh-io.github.io/cli/){:target="\_blank"})
-- **Pipeline ID**: The ID of your pipeline (useful for working with the [Codefresh CLI](https://codefresh-io.github.io/cli/){:target="\_blank"})
+- **Pipeline ID**: The ID of your pipeline (useful for working with the Codefresh CLI)
   > When working with the Codefresh CLI, the Pipeline Name and ID are interchangeable.
-- **Pipeline Description**: Freetext pdescription of the pipeline. 
-- **Pipeline Tags**: One or more tags used for [access control]({{site.baseurl}}/docs/administration/access-control/)
-- **Public Build Logs**: If enabled, [users without a Codefresh account]({{site.baseurl}}/docs/pipelines/build-status/#public-build-logs) can view the builds of this pipeline.
+- **Pipeline Description**: Free text description of the pipeline. 
+- **Pipeline Tags**: One or more tags used for [access control]({{site.baseurl}}/docs/administration/account-user-management/access-control/)
+- **Public Build Logs**: If enabled, [users without a Codefresh account]({{site.baseurl}}/docs/pipelines/configuration/build-status/#public-build-logs) can view the builds of this pipeline.
 - **Template**: Convert this pipeline to a template (see the next section for details on templates).
-- **Badges**: Simple images that show you the last [build status]({{site.baseurl}}/docs/pipelines/build-status/).
+- **Badges**: Simple images that show you the last [build status]({{site.baseurl}}/docs/pipelines/configuration/build-status/).
 
 ### Policies
 
@@ -270,7 +270,7 @@ You can define multiple external resources in a single pipeline.
   - Large (recommended 5-6 steps)
 
 #### Set minimum disk space for a pipeline build
-To speed up builds and improve performance, Codefresh caches different types of data during pipeline execution for reuse across builds. Image-caching is one example of cached data, where Codefresh pulls the required images during the first build and caches them for reuse in future builds. For more info, see [Pipeline caching]({{site.baseurl}}docs/pipelines/pipeline-caching).   
+To speed up builds and improve performance, Codefresh caches different types of data during pipeline execution for reuse across builds. Image-caching is one example of cached data, where Codefresh pulls the required images during the first build and caches them for reuse in future builds. For more info, see [Pipeline caching]({{site.baseurl}}/docs/pipelines/pipeline-caching/).   
 Because a portion of the disk space is already utilized by cache, a build can run out of disk space and fail with the 'no space left on device' error.
 
 To prevent out-of-space scenarios that lead to failed builds, you can set the minimum disk space you need for the pipeline's build volume. Defining the minimum disk space ensures that Codefresh assigns either a cached disk with sufficient disk space or a new empty disk at the start of the build.  
@@ -298,7 +298,7 @@ max-width="60%"
 ## Using Pipeline Templates
 
 Codefresh also supports the creation of pipeline "templates", which are blueprints for creating new pipelines.  
-To enable the creation of pipelines from templates first visit the global pipeline configuration at [https://g.codefresh.io/account-admin/account-conf/pipeline-settings](https://g.codefresh.io/account-admin/account-conf/pipeline-settings){:target="\_blank"} and toggle the *Enable Pipeline Templates* button.
+To enable the creation of pipelines from templates, first view global pipeline configuration in the [Codefresh UI](https://g.codefresh.io/account-admin/account-conf/pipeline-settings){:target="\_blank"} and toggle the *Enable Pipeline Templates* button.
 
 The easiest way to create a new template is by clicking the "3 dots menu" on the pipeline name:
 
@@ -375,9 +375,9 @@ Pipelines that belong to a project will mention it below their name so it is ver
 
 ## Related articles
 [Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
-[Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)  
-[External Docker Registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/)  
-[YAML Examples]({{site.baseurl}}/docs/yaml-examples/examples/)
+[Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
+[Docker registry integrations]({{site.baseurl}}/docs/integrations/docker-registries/)  
+[Example catalog]({{site.baseurl}}/docs/example-catalog/examples/)
 
 
 

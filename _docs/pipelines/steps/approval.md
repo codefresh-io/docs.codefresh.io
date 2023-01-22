@@ -4,7 +4,7 @@ description: "How to Pause Pipelines for Manual Approval"
 group: codefresh-yaml
 sub_group: steps
 redirect_from:
-  - /docs/codefresh-yaml/steps/approval/
+  - /docs/pipelines/steps/approval/
 toc: true
 ---
 
@@ -56,8 +56,8 @@ step_name:
 | `timeout`                                  | Defines an automatic approval/rejection if a specified amount of time has passed. The `duration` field is hours. By default it is set to 168 (i.e, 7 days). The `finalState` field defines what will happen after the duration time has elapsed. Possible values are `approved`/`denied`/`terminated`    | Optional                  |
 | `timeUnit`                               | This field defines possible options of `minutes`, or `hours`. If the field is not set, the default is `hours` | Optional                       
 | `fail_fast`                              | If set to false, the pipeline will continue even when the step is rejected | Optional                  |
-| `stage`                              | Parent group of this step. See [using stages]({{site.baseurl}}/docs/codefresh-yaml/stages/) for more information.    | Optional                  |
-| `when`                                     | Define a set of conditions that need to be satisfied in order to execute this step. You can find more information in the [Conditional Execution of Steps]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/) article. | Optional                  |
+| `stage`                              | Parent group of this step. See [using stages]({{site.baseurl}}/docs/pipelines/stages/) for more information.    | Optional                  |
+| `when`                                     | Define a set of conditions that need to be satisfied in order to execute this step. You can find more information in the [Conditional Execution of Steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/) article. | Optional                  |
 
 
 ## Pausing the Pipeline

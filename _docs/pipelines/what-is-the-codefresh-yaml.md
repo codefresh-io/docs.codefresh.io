@@ -3,7 +3,7 @@ title: "Pipeline definitions YAML"
 description: "How to define Codefresh pipelines in a declarative manner"
 group: pipelines
 redirect_from:
-  - /docs/codefresh-yaml/what-is-the-codefresh-yaml/
+  - /docs/pipelines/what-is-the-codefresh-yaml/
   - /docs/codefresh-yaml/
   - /docs/what-is-the-codefresh-yaml
   - /docs/what-is-the-codefresh-yaml/
@@ -155,8 +155,8 @@ In the context of a step, a working directory can be of the following type:
 | Working Directory   | Description      |
 | --------------------- | -------------------------------------------- |
 | Empty                 | Defaults to the [Codefresh volume]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) (found at `/codefresh/volume`). If there is a [git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/) with the special name `main_clone` then the default working directory for built-in steps is now the [project folder]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#cloning-the-source-code) that was checked out - this only applies to [built-in]({{site.baseurl}}/docs/pipelines/steps/#built-in-steps) Codefresh steps and not [custom plugins]({{site.baseurl}}/docs/pipelines/steps/#creating-a-typed-codefresh-plugin).                                              |
-| Variable that contains the ID of a [Git-Clone]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) step    | Runs the step within the cloned directory.    |
-| Variable that contains the ID of any other step  | Runs the step within the same working directory that the specified was executed. This option is not available for for [**Git-Clone**]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)  steps.     |
+| Variable that contains the ID of a [Git-Clone]({{site.baseurl}}/docs/pipelines/steps/git-clone/) step    | Runs the step within the cloned directory.    |
+| Variable that contains the ID of any other step  | Runs the step within the same working directory that the specified was executed. This option is not available for for [**Git-Clone**]({{site.baseurl}}/docs/pipelines/steps/git-clone/)  steps.     |
 | Absolute filesystem path  | Treated as is within the container.  |
 | Relative filesystem path   | Treated as relative path from the cloned directory of the service  |
 | 'IMAGE_WORK_DIR' | Use this value in order to use the image working directory for example:<br> `working_directory: IMAGE_WORK_DIR`         |

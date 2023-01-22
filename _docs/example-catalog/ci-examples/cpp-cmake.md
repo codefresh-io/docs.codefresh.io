@@ -122,6 +122,6 @@ change the version of Gcc/g++ by starting from a different public or private Doc
 ## Related articles
 [C example]({{site.baseurl}}/docs/example-catalog/ci-examples/c-make/)  
 [Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
-[Steps in pipelines]({{site.baseurl}}/docs/codefresh-yaml/steps/)  
+[Steps in pipelines]({{site.baseurl}}/docs/pipelinessteps/)  
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
 [How Codefresh pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)  

@@ -4,7 +4,7 @@ description: "Create a test environment with its dependencies in Codefresh infra
 group: pipelines
 sub_group: steps
 redirect_from:
-  - /docs/codefresh-yaml/steps/launch-composition/
+  - /docs/pipelines/steps/launch-composition/
   - /docs/launch-composition-2/
   - /docs/codefresh-yaml/steps/launch-composition-2/
 toc: true
@@ -84,7 +84,7 @@ step_name:
 | `when`                                     | Define a set of conditions which need to be satisfied in order to execute this step.<br>You can find more information in the [[Conditional Execution of Steps]({{ site.baseurl }}/docs/pipelines/conditional-execution-of-steps/) article.                              | Optional                  |
 | `on_success`, `on_fail` and `on_finish`    | Define operations to perform upon step completion using a set of predefined [Post-Step Operations]({{ site.baseurl }}/docs/pipelines/post-step-operations/).                                                                                                           | Optional                  |
 | entry_point                                | The name of main service                                                                                                                                                                                                                | Optional                 |
-| `retry`   | Define retry behavior as described in [Retrying a step]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/#retrying-a-step).                                                                               | Optional                  |
+| `retry`   | Define retry behavior as described in [Retrying a step]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#retrying-a-step).                                                                               | Optional                  |
 
 ## Related articles
 [Preview environments]({{site.baseurl}}/docs/getting-started/on-demand-environments/)  

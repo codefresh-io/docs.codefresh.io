@@ -9,7 +9,7 @@ toc: true
 ---
 
 ## Issue
-[Push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/) in your pipeline fails with the following error:
+[Push step]({{site.baseurl}}/docs/pipelines/steps/push/) in your pipeline fails with the following error:
 
 
 ```

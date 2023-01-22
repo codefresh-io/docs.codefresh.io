@@ -16,7 +16,7 @@ You can easily create:
 
 With the parallel execution mode, you can define complex pipelines with fan-in/out configurations capable of matching even the most complicated workflows within an organization.
 
->In Codefresh, parallel execution is unrelated to [stages]({{site.baseurl}}/docs/codefresh-yaml/stages/). Stages are only a way to visually organize your pipeline steps. The actual execution is independent from the visual layout in the logs view.
+>In Codefresh, parallel execution is unrelated to [stages]({{site.baseurl}}/docs/pipelines/stages/). Stages are only a way to visually organize your pipeline steps. The actual execution is independent from the visual layout in the logs view.
 
 Before going any further make sure that you are familiar with the [basics of Codefresh pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/).
 
@@ -168,7 +168,7 @@ As you can see we have also marked the steps with [stages]({{site.baseurl}}/docs
 
 ### Example: Running multiple test suites in parallel
 
-All types of steps can by placed inside a parallel phase. Another common use case would be the parallel execution of [freestyle steps]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) for unit/integration tests.
+All types of steps can by placed inside a parallel phase. Another common use case would be the parallel execution of [freestyle steps]({{site.baseurl}}/docs/pipelines/steps/freestyle/) for unit/integration tests.
 
 Let's say that you have a Docker image with a Python back-end and a JavaScript front-end. You could run both types of tests in parallel with the following yaml syntax:
 
@@ -837,7 +837,7 @@ You can now add extra conditions regarding the completion state of specific step
 * Pending
 * Running
 
-Finished is a shorthand for `success` or `failure` or `skipped`. It is only valid when used in [step dependencies]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/#single-step-dependencies), and cannot be used in custom conditions.
+Finished is a shorthand for `success` or `failure` or `skipped`. It is only valid when used in [step dependencies]({{site.baseurl}}/docs/pipelines/advanced-workflows/#single-step-dependencies), and cannot be used in custom conditions.
 
 You can mix and match completion states from any other step in your pipeline. Here are some examples:
 

@@ -362,7 +362,7 @@
   pages:
     - title: Introduction to Codefresh pipelines
       url: "/introduction-to-codefresh-pipelines"
-    - title: Creating a CI pipeline
+    - title: Creating pipelines
       url: "/pipelines"
     - title: Steps in pipelines
       url: "/steps"
@@ -414,11 +414,11 @@
       url: "/stages"
     - title: Caching for pipelines
       url: "/pipeline-caching"    
-    - title: Debugging CI pipelines
+    - title: Debugging pipelines
       url: "/debugging-pipelines"
-    - title: Monitoring CI pipelines
+    - title: Monitoring pipelines
       url: "/monitoring-pipelines"
-    - title: Advanced workflows
+    - title: Advanced workflows for pipelines
       url: "/advanced-workflows"
     - title: Deployment environments
       url: "/deployment-environments"

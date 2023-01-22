@@ -440,7 +440,7 @@ max-width="60%"
 As we saw in the previous task, Codefresh automatically pushes the Docker image to the default Docker registry. 
 You can also upload the same Docker image to a different external registry or make it public in Docker Hub.
 
-The [push pipeline step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) does exactly that. It pushes an existing Docker image to the registry you define.
+The [push pipeline step]({{site.baseurl}}/docs/pipelines/steps/build/) does exactly that. It pushes an existing Docker image to the registry you define.
 
 
 {% include 
@@ -496,7 +496,7 @@ max-width="60%"
 {:start="8"}
 1. Go back to the [Builds](https://g.codefresh.io/builds2){:target="\_blank"} page, and click the pipeline to return to the Inline editor. 
 1. Paste the following YAML to replace the existing content.
-  We added a [push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/) at the end of the pipeline. The image is tagged with the name of the branch.
+  We added a [push step]({{site.baseurl}}/docs/pipelines/steps/push/) at the end of the pipeline. The image is tagged with the name of the branch.
 {% highlight yaml %}
 {% raw %}
 version: '1.0'

@@ -19,7 +19,7 @@ At the trigger level, you can select:
 > You can select a repository other than the one the project itself belongs to. It is possible
  to trigger a build on project A even though a commit happened on project B.
 
-You can also use [conditional expressions]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/) at the pipeline level to further fine-tune the way specific steps (or other transitive pipelines) are executed.
+You can also use [conditional expressions]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/) at the pipeline level to further fine-tune the way specific steps (or other transitive pipelines) are executed.
 
 ## Manage GIT triggers with Codefresh UI
 
@@ -322,7 +322,7 @@ Notice however that this file is only available when the pipeline was triggered 
 
 ## Using YAML and the Codefresh CLI to filter specific Webhook events
 
-The default GUI options exposed by Codefresh are just a starting point for GIT triggers and pull requests. Using [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) and the [Codefresh CLI plugin](https://codefresh-io.github.io/cli/) you can further create two-phase pipelines where the first one decides
+The default GUI options exposed by Codefresh are just a starting point for GIT triggers and pull requests. Using [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/) and the [Codefresh CLI plugin](https://codefresh-io.github.io/cli/) you can further create two-phase pipelines where the first one decides
 which webhook events will be honored and the second one contains the actual build.
 
 {% include image.html
@@ -333,9 +333,9 @@ alt="Two phase pipeline"
 max-width="80%"
 %}
 
-The generic GIT trigger is placed on Pipeline A. This pipeline then filters the applicable webhooks using [conditional expressions]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/). Then it uses the Codefresh CLI plugin (and specifically the [run pipeline capability](https://codefresh-io.github.io/cli/pipelines/run-pipeline/)) to trigger pipeline B that performs build.
+The generic GIT trigger is placed on Pipeline A. This pipeline then filters the applicable webhooks using [conditional expressions]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/). Then it uses the Codefresh CLI plugin (and specifically the [run pipeline capability](https://codefresh-io.github.io/cli/pipelines/run-pipeline/)) to trigger pipeline B that performs build.
 
-Some of the YAML variables that you might find useful (from the [full list]({{site.baseurl}}/docs/codefresh-yaml/variables/)):
+Some of the YAML variables that you might find useful (from the [full list]({{site.baseurl}}/docs/pipelines/variables/)):
 
 * `CF_PULL_REQUEST_ACTION` - open, close, synchronize, assign etc.
 * `CF_PULL_REQUEST_TARGET` - target branch of the pull request.
