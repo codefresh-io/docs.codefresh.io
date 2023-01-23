@@ -18,7 +18,7 @@ toc: true
 
 ## Possible cause
 
-This issue occurs because of a race condition when multiple builds try to push the same image at the same time [to a Docker registry]({{site.baseurl}}/docs/docker-registries/push-image-to-a-docker-registry/).  
+This issue occurs because of a race condition when multiple builds try to push the same image at the same time [to a Docker registry]({{site.baseurl}}/docs/example-catalog/ci-examples/build-and-push-an-image/).  
 For a pipeline, if two builds are triggered at the same time for the same commit, one of them will pass and the other will fail.
 
 ## Solution

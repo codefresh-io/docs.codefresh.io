@@ -58,7 +58,8 @@ You can see the role access with the standard `kubectl` commands:
 kubectl get clusterrole codefresh-role -o yaml
 ```
 
-Make sure that the privileges are at least those described in the [integration page]({{site.baseurl}}/docs/deployments/kubernetes/add-kubernetes-cluster/#the-propersecure-way).
+Make sure that the privileges are at least those described in the [integration page]({{site.baseurl}}/docs/integrations/kubernetes/#get-cluster-configuration-manually):  
+See _The proper secure way_ and _The proper/secure way for Kubernetes Cluster 1.24+_.
 
 
 

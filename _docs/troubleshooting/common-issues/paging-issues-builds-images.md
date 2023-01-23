@@ -28,7 +28,7 @@ or
 1. `GET /workflow?page=4`
 1. `GET /workflow?page=2`
 
-The same thing was true for both [builds](https://codefresh-io.github.io/cli/builds/get-build/) and [image listing](https://codefresh-io.github.io/cli/images/get-image/).
+The same thing was true for both [builds](https://codefresh-io.github.io/cli/builds/get-build/){:target="_blank"} and [image listing](https://codefresh-io.github.io/cli/images/get-image/){:target="_blank"}.
 
 This method will **NO** longer work after January 9th 2021. The reason is that with the new implementation there is a database cursor behind the scenes that
 tracks the current position within the result list. You can only go back and forward to the next or previous page but never jump to an arbitrary page.

@@ -630,9 +630,7 @@
           url: "/failed-to-get-accounts-clusters-during-workflow"
         - title: Paging issues for builds and images
           url: "/paging-issues-builds-images"
-    - title: Git step migration
-      url: "/git-step-migration"
-    - title: Personal Git Deprecation
+    - title: Deprecating personal Git integrations
       url: "/personal-git-deprecation"
     - title: GitOPs runtimes
       url: "/runtime-issues"

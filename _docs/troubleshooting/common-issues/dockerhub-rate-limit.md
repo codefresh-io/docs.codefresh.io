@@ -37,7 +37,7 @@ Users who pull Docker images have the following limits:
 > The limits depend on the [pricing plan](https://www.docker.com/pricing){:target="\_blank"} of the _user who performs the pull action_, and not the user who owns the Docker image.
 
 
-If you don't have a Docker Hub integration in Codefresh, all your Docker images are pulled as an anonymous user and because Docker Hub [applies the rate limit for each IP address](https://docs.docker.com/docker-hub/download-rate-limit/), your whole Codefresh installation can easily hit the limits if you have many teams and users.
+If you don't have a Docker Hub integration in Codefresh, all your Docker images are pulled as an anonymous user and because Docker Hub [applies the rate limit for each IP address](https://docs.docker.com/docker-hub/download-rate-limit/){:target="\_blank"}, your whole Codefresh installation can easily hit the limits if you have many teams and users.
 
 ## Solution
 

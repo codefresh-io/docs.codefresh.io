@@ -12,7 +12,7 @@ toc: true
 
 When a pipeline is running, Codefresh automatically sets up several [environment variables]({{site.baseurl}}/docs/pipelines/variables/) that are available to all pipeline steps.
 
-For Kubernetes clusters, if you have configured [at least one cluster]({{site.baseurl}}/docs/deployments/kubernetes/add-kubernetes-cluster/), the `KUBECONFIG` environment variable, containing the path to the kubeconfig file will become available in the pipeline.
+For Kubernetes clusters, if you have configured [at least one cluster]({{site.baseurl}}/docs/integrations/kubernetes/#connect-a-kubernetes-cluster), the `KUBECONFIG` environment variable, containing the path to the kubeconfig file will become available in the pipeline.
 
 For more information about the `KUBECONFIG` environment variable, see the [official Kubernetes documentation](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#set-the-kubeconfig-environment-variable){:target="_blank"}.
 
