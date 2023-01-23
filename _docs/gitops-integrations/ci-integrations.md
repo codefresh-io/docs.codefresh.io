@@ -25,7 +25,7 @@ Use the action as follows:
 1. Place the final action in the pipeline as the "report image" action provided by Codefresh.  
   See:  
   [GitHub Action Codefresh report image](https://github.com/marketplace/actions/codefresh-report-image){:target="\_blank"}  
-  [Codefresh Classic Codefresh report image](https://codefresh.io/steps/step/codefresh-report-image){:target="\_blank"}  
+  [Codefresh pipeline Codefresh report image](https://codefresh.io/steps/step/codefresh-report-image){:target="\_blank"}  
 1. When the pipeline completes execution, Codefresh retrieves the information on the image that was built and its metadata through the integration names specified (essentially the same data that Codefresh CI would send automatically).
 1. View the image in Codefresh's [Images dashboard]({{site.baseurl}}/docs/deployments/gitops/images/), and in any [application]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/) in which it is used.
 
@@ -35,7 +35,7 @@ Connecting the CI platform/tool to GitOps from the UI includes configuring the r
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**GitOps Integrations**](https://g.codefresh.io/2.0/account-settings/integrations){:target="\_blank"}. 
 1. Filter by **CI tools**, then select the CI tool and click **Add**.
 1. Define the arguments for the CI tool:  
-  [Codefresh Classic]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/codefresh-classic/)  
+  [Codefresh pipelines]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/codefresh-classic/)  
   [GitHub Actions]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/github-actions/)  
   [Jenkins]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/jenkins/)  
     
@@ -49,8 +49,8 @@ Connecting the CI platform/tool to GitOps from the UI includes configuring the r
 lightbox="true" 
 file="/images/integrations/generated-manifest-with-error.png" 
 url="/images/integrations/generated-manifest-with-error.png"
-alt="Example of manifest generated for Codefresh Classic with validation errors"
-caption="Example of manifest generated for Codefresh Classic with validation errors"
+alt="Example of manifest generated for Codefresh pipeline with validation errors"
+caption="Example of manifest generated for Codefresh pipeline with validation errors"
 max-width="50%"
 %}
 
@@ -62,8 +62,8 @@ max-width="50%"
 lightbox="true" 
 file="/images/integrations/classic/classic-manifest.png" 
 url="/images/integrationsclassic/classic-manifest.png"
-alt="Example of manifest generated for Codefresh Classic"
-caption="Example of manifest generated for Codefresh Classic"
+alt="Example of manifest generated for Codefresh pipeline"
+caption="Example of manifest generated for Codefresh pipeline"
 max-width="50%"
 %}
 
@@ -86,7 +86,7 @@ The table describes _all_ the arguments required for CI integrations in general.
 | `CF_IMAGE`                    | The image to be enriched and reported in Codefresh. Pass the `[account-name]/[image-name]:[tag]` built in your CI. | Required  |
 | `CF_WORKFLOW_NAME`           | The name assigned to the workflow that builds the image. When defined, the name is displayed in the Codefresh platform. Example, `Staging step` | Optional  |
 | `CF_GIT_BRANCH`              | The Git branch with the commit and PR (pull request) data to add to the image. Pass the Branch from the event payload used to trigger your action.  | Required  |
-| `CF_GIT_REPO`                | The Git repository with the configuration and code used to build the image. {::nomarkdown} <ul><li>Optional for GitHub Actions. <li>Required for Classic and Jenkins.</li><ul>{:/} | Required  |
+| `CF_GIT_REPO`                | The Git repository with the configuration and code used to build the image. {::nomarkdown} <ul><li>Optional for GitHub Actions. <li>Required for Codefresh pipelines and Jenkins.</li><ul>{:/} | Required  |
 | `CF_GIT_PROVIDER`            | The Git provider for the integration, and can be either `github`, `gitlab`, or `bitbucket`. {::nomarkdown} <ul><li>Optional when you don't define other related Git provider arguments. When not defined, Codefresh retrieves the required information from the runtime selected for the integration. <li>Required when you define at least one of the Git provider arguments. For example, when you define <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">CF_GITLAB_TOKEN</span>, then you <i>must</i> define all Git provider arguments, in this case, <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">CF_GIT_PROVIDER</span> as <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">gitlab</span>, and <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">CF_GITLAB_HOST_URL</span>.</li><ul>{:/}| Optional  |
 | `CF_GITLAB_TOKEN`      | The token to authenticate the GitLab account. {::nomarkdown} <ul><li>Optional when you don't define any GitLab-specific arguments. When not defined, Codefresh retrieves the required information from the runtime selected for the integration. <li>Required when you define at least one of the GitLab-specific arguments, such as <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">CF_GIT_PROVIDER</span> as <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">gitlab</span>, or <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">CF_GITLAB_HOST_URL</span>.</li><ul>{:/} | Optional  |
 | `CF_GITLAB_HOST_URL`      | The URL address of your GitLab Cloud/Server instance.  {::nomarkdown} <ul><li>Optional when you don't define other related GitLab-specific arguments. When not defined, Codefresh retrieves the required information from the runtime selected for the integration. <li>Required when you define at least one of the GitLab-specific arguments, such as <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">CF_GIT_PROVIDER</span> as <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">gitlab</span>, or <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">CF_GITLAB_TOKEN</span>.</li><ul>{:/} | Optional  |

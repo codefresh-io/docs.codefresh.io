@@ -78,7 +78,7 @@ steps:
 {% endhighlight yaml %}
 
 ## CI pipeline-GitOps integration settings
-The table describes the arguments required to connect Codefresh Classic to Codefresh. 
+The table describes the arguments required to connect Codefresh pipelines to Codefresh GitOps. 
 
 >Except for Git branch and Git repo which are required, you can omit other Git provider arguments. Codefresh retrieves the required values from the runtime context selected for the integration.
 
@@ -90,7 +90,7 @@ For the complete argument reference, see [CI integration for GitOps argument ref
 | ----------  |  -------- | ------------------------- |
 | `CF_RUNTIME_NAME`       | The runtime to use for the integration. If you have more than one runtime, select the runtime from the list. | Required  |
 | `CF_PLATFORM_URL`       | The root URL of the Codefresh application. The default value is `https://g.codefresh.io`.  | Optional  |
-| `CF_API_KEY`            | The API key to authenticate the Codefresh Classic user to Codefresh. Generate the key for the integration.  | Required  |
+| `CF_API_KEY`            | The API key to authenticate the Codefresh pipeline user to Codefresh. Generate the key for the integration.  | Required  |
 | `CF_CONTAINER_REGISTRY_INTEGRATION` | The name of the container registry integration created in Codefresh where the image is stored. To create a container registry integration if you don't have one, click **Create Container Registry Integration**, and then configure the settings. See [Container registry integrations]({{site.baseurl}}/docs/gitops-integrations/container-registries/). | Optional  |
 | `CF_JIRA_INTEGRATION`               | Deprecated from version 0.0.565. Replaced by `CF_ISSUE_TRACKING_INTEGRATION`. |  _Deprecated_
 | `CF_ISSUE_TRACKING_INTEGRATION` | The name of the issue tracking integration created in Codefresh to use to enrich the image. Relevant only if Jira enrichment is required for the image. If you don't have a Jira integration, click **Create Atlassian Jira Integration** and configure settings. See [Jira integration]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/jira/).  | Optional  |
@@ -217,29 +217,29 @@ The Jira message represents an existing Jira issue, and must be a literal string
 View and analyze logs for Codefresh pipelines through the Logs tab. When a Codefresh pipeline is run, it is added to the Logs tab.  
 You can:  
 * Filter by status or by date range to view a subset of actions
-* Navigate to the build file in Codefresh Classic, and view the Codefresh report image step
+* Navigate to the build file for the pipeline, and view the Codefresh report image step
 
 {% include image.html 
 lightbox="true" 
 file="/images/integrations/classic/classic-logs-tab.png" 
 url="/images/integrations/classic/classic-logs-tab.png"
-alt="Codefresh Classic: Logs tab"
-caption="Codefresh Classic: Logs tab"
+alt="Codefresh pipelines: Logs tab"
+caption="Codefresh pipelines: Logs tab"
 max-width="50%"
 %}
 
 **Build in Codefresh**  
 
-The Run column includes the link to the pipeline in Codefresh Classic.  
+The Run column includes the link to the pipeline in Codefresh.  
 
-Here is an example of the pipeline build  in Codefresh Classic with the Enrich image for CSDP step (top) and the log (down). 
+Here is an example of the pipeline build in Codefresh with the Enrich image for GitOps step (top) and the log (down). 
 
 {% include image.html 
 lightbox="true" 
 file="/images/integrations/classic/classic-pipeline-enrich-step.png" 
 url="/images/integrations/classic/classic-pipeline-enrich-step.png"
-alt="Codefresh Classic pipeline with Codefresh enrich image step"
-caption="Codefresh Classic pipeline with Codefresh enrich image step"
+alt="Codefresh pipeline with Codefresh GitOps enrich image step"
+caption="Codefresh pipeline with Codefresh GitOps enrich image step"
 max-width="50%"
 %}
 
@@ -247,8 +247,8 @@ max-width="50%"
 lightbox="true" 
 file="/images/integrations/classic/classic-logs.png" 
 url="/images/integrations/classic/classic-logs.png"
-alt="Logs for Codefresh report image step in Codefresh Classic build"
-caption="Logs for Codefresh report image step in Codefresh Classic build"
+alt="Logs for Codefresh report image step in Codefresh pipeline build"
+caption="Logs for Codefresh report image step in Codefresh pipeline build"
 max-width="50%"
 %}
 

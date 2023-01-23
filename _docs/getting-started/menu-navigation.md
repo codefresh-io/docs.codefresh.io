@@ -5,11 +5,11 @@ group: getting-started
 toc: true
 ---
 
-## Classic > New version navigation
-Get up to speed with navigation enhancements.  
+## Classic > New Codefresh experience navigation
+Get up to speed with navigation enhancements and changes with the New Codefresh Experience.  
 
 We added a new **Settings** icon to the toolbar to simplify account-level management for Codefresh administrators.
-The Settings icon is always available, so you have _single-click access_ whenever you need to account-level options and settings.
+With the Settings icon always available, you have _single-click access_ whenever you need to account-level options and settings.
 
 
 
@@ -23,15 +23,15 @@ The Settings icon is always available, so you have _single-click access_ wheneve
     max-width="70%" 
 %}
 
-We divided the navigation into Avatar, account-level, and features and functionality.  The &rarr; indicates a change between versions.
+We divided the navigation into Avatar, account-level, and features and functionality.  The &rarr; indicates a change in navigation.
 
 ### Avatar options
 
 {: .table .table-bordered .table-hover}
-|  CLASSIC             |                               | &rarr; |NEW              |             |
-|  Bucket              | Menu item                     | | Bucket        |  Menu item           | 
-| -------------------  | -------------------           |  | ---------------- | ---------  | 
-| **AVATAR**           |                               |  |                  |            |     
+|  CLASSIC             |                               |      |NEW CODEFRESH EXPERIENCE            |             |
+|  Bucket              | Menu item                     |        | Bucket        |  Menu item           | 
+| -------------------  | -------------------           |---      | ---------------- | ---------  | 
+| **AVATAR**           |                               |         |  No change               |            |     
 |                       |Account Settings              |&rarr;  |                  | Moved to Settings  |
 |                       |User Management               |&rarr;  |                  | Moved to Settings  |               
 |                       |Billing                       |&rarr;  |                  | Moved to Settings  |             
@@ -49,33 +49,33 @@ Access account-level options through the **Settings** icon:
 
 
 {: .table .table-bordered .table-hover}
-|  CLASSIC             |                               |&rarr; |NEW           |           |
+|  CLASSIC             |                               |       |NEW  CODEFRESH EXPERIENCE       |           |
 |  Bucket              | Menu item                     |       | Bucket        |  Menu item           | 
-| -------------------  | -------------------           |  | ----------------  | ---------     | 
-| **GENERAL**          |                               |  | No change         |                          |       
+| -------------------  | -------------------           |       | ----------------  | ---------     | 
+| **GENERAL**          |                               |         | No change         |                          |       
 |                      | **Account Information**       | &rarr; |                   | (Renamed) Organization Information |       
-|                      | **Users & Teams**             | &rarr; |                   | Now in Access & Collaboration |
+|                      | **Users & Teams**             | &rarr; | (Moved to) ACCESS & COLLABORATION  |  |
 |                      | **Subscription & Billing**    |  |                   | No change                |
 |                      | **Usage**                     |  |                   | No change                |
 |                      |                               |  |                   |                          |       
 | **CONFIGURATION**    |                               |  | No change         |                          |       
 |                      | **Integrations**              | &rarr; |                   |(Renamed) Pipeline Integrations |       
 |                      |                               |&rarr;  |                   |(New) GitOps Integrations |       
-|                      | **Pipeline Settings**         |  |                   | No change                |       
+|                      | **Pipeline Settings**         |  |                         | No change                |       
 |                      | **Codefresh Runner**          |&rarr;  |                   | (Moved to) Runtimes bucket |
 |                      | **Runtime Environments**      | &rarr; |                   | (Moved to) Runtimes bucket |
-|                      | **GitOps Controller**         |  |                   |  ??                       |
-|                      | **Shared Configuration**      |  |                   | No change                |
-|                      | **Nodes**                     |  |                   | ??                       |
-|                      |                               |  |                   |                          |       
+|                      | **GitOps Controller**         |        |                   |  ??                       |
+|                      | **Shared Configuration**      |        |                   | No change                |
+|                      | **Nodes**                     |        |                   | ??                       |
+|                      |                               |        |                   |                          |       
 | **SECURITY**         |                               |&rarr;  | (Renamed) ACCESS & COLLABORATION|            |       
-|                      | **Single Sign-On**            |  |                   |(Now in) Access & Collaboration |       
-|                      | **Permissions**               |  |                   | Now in Access & Collaboration  |       
-|                      | **Audit**                     |  |                   | Now in Access & Collaboration  |       
-|                      |                               |  |                   |                          |       
-|                      |                               |&rarr;  | RUNTIMES    |                                |       
+|                      | **Single Sign-On**            |        |                   |(Now in) Access & Collaboration |       
+|                      | **Permissions**               |        |                   | Now in Access & Collaboration  |       
+|                      | **Audit**                     |        |                   | Now in Access & Collaboration  |       
+|                      |                               |        |                   |                          |       
+|                      |                               |&rarr;  | RUNTIMES          |                                |       
 |                      |                               |&rarr;  |                   | (Renamed) Build Runtimes  |       
-|                      |                               |&rarr;  |                   |  (New) GitOps Runtimes|       
+|                      |                               |&rarr;  |                   | (New) GitOps Runtimes|       
 
 
 
@@ -83,20 +83,20 @@ Access account-level options through the **Settings** icon:
 We renamed menu groups and moved items for more intuitive access. 
 
 {: .table .table-bordered .table-hover}
-|  CLASSIC             |                         | &rarr;|              |NEW          |    
-|  Bucket              | Menu item               | |                    |            | 
-| -------------------  | -------------------     |  | ----------------  | ---------  | 
-|                       |                        | |                    |  Home      |
+|  CLASSIC             |                         | &rarr;| NEW CODEFRESH EXPERIENCE  |          |    
+|  Bucket              | Menu item               |       |                    |            | 
+| -------------------  | -------------------     |  | ----------------    | ---------  | 
+|                       |                        | |                      |  Home      |
 |                       |                        |&rarr; | INSIGHTS       |            |
-|                       |                        | |               | DORA Metrics |
-|                       |                        | |               |            |
-|**BUILD > TEST > DEPLOY**|                      |&rarr; |PIPELINES  |          |
+|                       |                        | |                      | DORA Metrics |
+|                       |                        | |                      |            |
+|**BUILD > TEST > DEPLOY**|                      |&rarr; |(Renamed) PIPELINES  |          |
 |                       |**Projects**            | |               | No change  |
 |                       |**Pipelines**           | |               | No change  |
 |                       |**Builds**              | |              | No change  |
 |                       |**Steps**               | |               | No change  |
 |                       |                        | |               |            |
-|**DEVOPS INSIGHTS**    |                        |&rarr; |OPS            |            |
+|**DEVOPS INSIGHTS**    |                        |&rarr; |(Renamed) OPS            |            |
 |                       |                        | &rarr;|                | GitOps Apps | 
 |                       |**Kubernetes > Services** | &rarr;|               | Kubernetes Services |
 |                       |**Kubernetes > Monitor** | |               | ???
@@ -114,7 +114,7 @@ We renamed menu groups and moved items for more intuitive access.
 |                       |**Account Settings**     |&rarr; |               |(Moved) Settings in toolbar|
 |                       |**User Settings**        |&rarr; |               | Avatar     |
 
-## GitOps to New version navigation
+## GitOps to New Codefresh Experience 
 
 
 ### GitOps > Avatar options

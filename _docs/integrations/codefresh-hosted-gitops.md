@@ -8,13 +8,13 @@ toc: true
 ---
 
 Integrate Codefresh CI with Hosted GitOps for deployments powered by managed Argo CD.  
-Use Codefresh Classic for pipelines, and Codefresh Hosted GitOps for deployments.  
+Use Codefresh pipelines and Hosted GitOps for deployments.  
 
 Codefresh Hosted GitOps includes a dedicated report image step that both reports and enriches deployed images. Add the report image step in your Codefresh CI pipeline and reference integrations with issue-tracking and container registry tools for Codefresh to retrieve and enrich image information.  
 
 For a brief overview of what you get with Codefresh Hosted GitOps, read the next section.  
 
-For information on how to connect to Hosted GitOps, see [CI integration with Codefresh Classic]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/codefresh-classic/).
+For information on how to connect to Hosted GitOps, see [CI integration with Codefresh pipelines]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/codefresh-classic/).
 
 ## Hosted GitOps features
 

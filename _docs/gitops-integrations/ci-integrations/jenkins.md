@@ -111,14 +111,14 @@ pipeline {
 {% endhighlight yaml %}
 
 ## Jenkins-GitOps integration settings
-The table describes the arguments to connect Codefresh Classic to Codefresh.  
+The table describes the arguments to connect Codefresh pipelines to Codefresh GitOps.  
 
 {: .table .table-bordered .table-hover}
 | Argument    | Description     | Required/Optional/Default |
 | ----------  |  -------- | ------------------------- |
 | `CF_RUNTIME_NAME`       | The runtime to use for the integration. If you have more than one runtime, select the runtime from the list. | Required  |
 | `CF_PLATFORM_URL`       | The root URL of the Codefresh application. The default value is `https://g.codefresh.io`.  | Optional  |
-| `CF_API_KEY`            | The API key to authenticate the Codefresh Classic user to Codefresh. Generate the key for the integration.  | Required  |
+| `CF_API_KEY`            | The API key to authenticate the Codefresh pipeline user to Codefresh. Generate the key for the integration.  | Required  |
 | `CF_CONTAINER_REGISTRY_INTEGRATION` | The name of the container registry integration created in Codefresh where the image is stored. To create a container registry integration if you don't have one, click **Create Container Registry Integration**, and then configure the settings. See [Container registry integrations]({{site.baseurl}}/docs/gitops-integrations/container-registries/). | Optional  |
 | `CF_JIRA_INTEGRATION`               | Deprecated from version 0.0.565. Replaced by `CF_ISSUE_TRACKING_INTEGRATION`. | _Deprecated_
 | `CF_ISSUE_TRACKING_INTEGRATION` | The name of the issue tracking integration created in Codefresh to use to enrich the image. Relevant only if Jira enrichment is required for the image. If you don't have a Jira integration, click **Create Atlassian Jira Integration** and configure settings. See [Jira integration]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/jira/).  | Optional  |

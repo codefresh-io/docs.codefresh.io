@@ -7,7 +7,7 @@ toc: true
 
 Codefresh can integrate with popular container registries such as Docker Hub, JFrog Artifactory, and more.  
 
-Adding a container registry integration in Codefresh allows you to reference the integration in third-party CI platforms/tools such as GitHub Actions and Codefresh Classic by the name of the registry integration, instead of explicit credentials. See [Image enrichment with integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/) and [CI integrations]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/).  
+Adding a container registry integration in Codefresh allows you to reference the integration in third-party CI platforms/tools such as GitHub Actions and Codefresh pipelines by the name of the registry integration, instead of explicit credentials. See [Image enrichment with integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/) and [CI integrations]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/).  
 
 You add a container registry integration in Codefresh by:
 * Defining the integration name 

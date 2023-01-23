@@ -10,7 +10,7 @@ toc: true
 One of the major highlights of the Codefresh platform is the ability to automatically correlate 
 software features with their deployment (where and when). While the software version of a component is easily identifiable, what is likely more interesting and important is to know which features are included in a release.
 
-Adding an issue-tracking integration in Codefresh allows you to reference the integration in third-party CI platforms/tools such as GitHub Actions and Codefresh Classic by the name of the integration, instead of explicit credentials. See [Image enrichment with GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/) and [CI integrations for GitOps]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/).
+Adding an issue-tracking integration in Codefresh allows you to reference the integration in third-party CI platforms/tools such as GitHub Actions and Codefresh pipelines by the name of the integration, instead of explicit credentials. See [Image enrichment with GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/) and [CI integrations for GitOps]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/).
 
 You add an issue-tracking integration in Codefresh by:
 * Defining the integration name 

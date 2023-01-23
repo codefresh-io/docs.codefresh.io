@@ -44,7 +44,7 @@ For image enrichment with a tool that is as yet unsupported, you must define the
 
 Connect a CI platform/tool to Codefresh GitOps with an API token for the runtime cluster, the integration accounts, and image information for enrichment and reporting. 
  
-[Codefresh Classic]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/codefresh-classic/)  
+[Codefresh pipelines]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/codefresh-classic/)  
 [GitHub Actions]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/github-actions/)  
 [Jenkins]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/jenkins/)
 
@@ -54,7 +54,7 @@ Connect a CI platform/tool to Codefresh GitOps with an API token for the runtime
 Finally, add the enrichment step to your CI pipeline with the API token and integration information. Codefresh uses the integration name to get the corresponding Sealed Secret to securely access and retrieve the information for image enrichment.  
 
  [GitHub Action Codefresh report image](https://github.com/marketplace/actions/codefresh-report-image){:target="\_blank"} 
- [Codefresh Classic Codefresh report image](https://codefresh.io/steps/step/codefresh-report-image){:target="\_blank"}
+ [Codefresh pipeline Codefresh report image](https://codefresh.io/steps/step/codefresh-report-image){:target="\_blank"}
 
 
 ### 4. View enriched image information

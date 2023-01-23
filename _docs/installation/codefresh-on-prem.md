@@ -575,7 +575,7 @@ By default Codefresh deploys the [ingress-nginx](https://github.com/kubernetes/i
 
 #### NLB
 
-To use a **Network Load Balancer** - deploy a regular Codefresh installation with the following ingress config for the the `cf-ingress-controller` controller service.
+To use a **Network Load Balancer** - deploy a regular Codefresh installation with the following ingress config for the `cf-ingress-controller` controller service.
 
 `config.yaml`
 ```yaml

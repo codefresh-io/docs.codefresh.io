@@ -288,7 +288,7 @@
     - title: GitOps CI integrations
       url: "/ci-integrations"
       sub-pages:
-        - title: Codefresh Classic
+        - title: Codefresh pipelines
           url: "/codefresh-classic"
         - title: GitHub Actions
           url: "/github-actions"

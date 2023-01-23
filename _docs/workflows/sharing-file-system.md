@@ -6,7 +6,7 @@ toc: true
 ---
 
 When working on CI/CD pipelines, sharing file system between steps is a common use case.  
-For users coming from Codefresh Classic or similar systems, the ability to share a file system between different steps is a basic, native feature. Sharing a file system in the world of Argo Workflows, natively executed as they are on K8s pods, requires a change in mindset. Because K8s pods can run on different nodes, you cannot share for instance, a local volume between Docker containers running on the same pod.  
+If you are working with Codefresh pipelines or similar systems, the ability to share a file system between different steps is a basic, native feature. Sharing a file system in the world of Argo Workflows, natively executed as they are on K8s pods, requires a change in mindset. Because K8s pods can run on different nodes, you cannot share for instance, a local volume between Docker containers running on the same pod.  
 
 Argo Workflows provides different ways to share a file system between steps. We have outlined the different approaches, and the suggested best approach by use case.
 
