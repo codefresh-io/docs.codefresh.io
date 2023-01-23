@@ -24,7 +24,7 @@ see [hooks in pipelines]({{site.baseurl}}/docs/pipelines/hooks/).
 
 ## Adding annotations 
 
-In the most basic scenario, you can use the [post operations]({{site.baseurl}}/docs/pipelines/post-step-operations/) of any Codefresh [step]({{site.baseurl}}/docs/pipelines/steps/) to add annotations:
+In the most basic scenario, you can use the [post-step operations]({{site.baseurl}}/docs/pipelines/post-step-operations/) of any Codefresh [step]({{site.baseurl}}/docs/pipelines/steps/) to add annotations:
 
 `codefresh.yml`
 {% highlight yaml %}

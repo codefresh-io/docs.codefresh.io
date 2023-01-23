@@ -52,8 +52,8 @@ Click on it and you will get a new dialog where you can select
 {% include 
 	image.html 
 	lightbox="true" 
-	file="/images/a0c4aed-codefresh_badges_2.png" 
-	url="/images/a0c4aed-codefresh_badges_2.png" 
+	file="/images/pipeline/badges/codefresh_badges.png" 
+	url="/images/pipeline/badges/codefresh_badges.png" 
 	alt="Codefresh badges syntax" 
 	caption="Codefresh badges syntax"
 	max-width="70%" 

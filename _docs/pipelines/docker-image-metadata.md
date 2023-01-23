@@ -20,8 +20,7 @@ This article explains how to create advanced view of your images and enrich them
   max-width="65%" 
 %}
 
->We have since expanded this feature and now you are able to add custom annotations to [pipelines and builds as well]({{site.baseurl}}/docs/pipelines/annotations/). Notice also that the syntax shown in this page is deprecated but still supported. For the new syntax
-see [Hooks in pipelines]({{site.baseurl}}/docs/pipelines/hooks/).
+>We have since expanded this feature, and now you can add custom annotations to [pipelines and builds as well]({{site.baseurl}}/docs/pipelines/annotations/). Notice also that the syntax shown in this page is deprecated but still supported. For the new syntax, see [Hooks in pipelines]({{site.baseurl}}/docs/pipelines/hooks/).
 
 ## Metadata types
 
@@ -37,14 +36,14 @@ Metadata values may be of the following types:
 | Percentage bar  | use 0-100 value ending with %                     | 85%                                                     |
 | Link            | use url                                           | {% raw %}`${{CF_COMMIT_URL}}`{% endraw %}               |
                                            
-You can also use [Expression evaluations]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/#condition-expression-syntax) to set metadata.
+You can also use [conditional expressions]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/#condition-expression-syntax) to set metadata.
 
 ## Annotate your images using Codefresh YAML
 You can annotate an image as part of its build process and also on post build steps.
 
 {:.text-secondary}
 ### Build step Image Metadata Annotation
-You can annotate an image as part of its build process by declaring the metadata value on the [Build step]({{site.baseurl}}/docs/pipelines/steps/build/):
+You can annotate an image as part of its build process by declaring the metadata value on the [`build` step]({{site.baseurl}}/docs/pipelines/steps/build/):
 1. The `metadata` attribute
 2. The `set` operation
 3. An array of key-value metadata
@@ -65,7 +64,7 @@ build_step:
 
 {:.text-secondary}
 ### Adding annotations to Built images on post-build steps
-Any step in the YAML workflow can annotate built images by using [Post-Step Operations]({{site.baseurl}}/docs/pipelines/post-step-operations/).
+Any step in the YAML workflow can annotate built images by using [post-step operations]({{site.baseurl}}/docs/pipelines/post-step-operations/).
 To annotate a built image, configure any step with:
 1. The post-step operation
 2. The `metadata` attribute
@@ -170,7 +169,7 @@ In addition, you can add selected annotations to the images table on images page
 
 ## Annotating images programmatically
 
-It is also possible to annotate images with the [Codefresh CLI](https://codefresh-io.github.io/cli/).
+It is also possible to annotate images with the [Codefresh CLI](https://codefresh-io.github.io/cli/){:target="\_blank"}.
 
 First find the id of an image that you wish to annotate with the command
 
@@ -185,7 +184,7 @@ $ codefresh get images --image-name custom
 ID           NAME                   TAG CREATED          SIZE     PULL
 b5f103a87856 my-custom-docker-image bla Fri Feb 01 2019  91.01 MB r.cfcr.io/kostis-codefresh/my-custom-docker-image:bla
 ```
-Then once you have the ID of the image you can use the [annotate command](https://codefresh-io.github.io/cli/images/annotate-image/) to add extra metadata:
+Then once you have the ID of the image you can use the [annotate command](https://codefresh-io.github.io/cli/images/annotate-image/){:target="\_blank"} to add extra metadata:
 
 ```
 codefresh annotate image b5f103a87856 -l coverage=75
@@ -193,9 +192,9 @@ codefresh annotate image b5f103a87856 -l coverage=75
 
 ## Using custom metadata in Codefresh pipelines
 
-You can also use the Codefresh CLI to fetch existing metadata from images. It is then very easy to extract and process specific fields with [yq](https://github.com/kislyuk/yq)
+You can also use the Codefresh CLI to fetch existing metadata from images. It is then very easy to extract and process specific fields with [yq](https://github.com/kislyuk/yq){:target="\_blank"}.
 
-Here is an example
+Here is an example:
 ```
 $ codefresh get image b5f103a87856 --output=yaml | yq -r .annotations.coverage
 75
@@ -223,5 +222,5 @@ in order to process them in a Codefresh pipeline.
 
 
 ## Related articles
-[External Docker Registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/)  
-[Accessing a Docker registry from your Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/access-docker-registry-from-kubernetes/)  
+[Docker registries for pipeline integrations]({{site.baseurl}}/docs/integrations/docker-registries/)  
+[Accessing a Docker registry from your Kubernetes cluster]({{site.baseurl}}/docs/ci-cd-guides/access-docker-registry-from-kubernetes/)  

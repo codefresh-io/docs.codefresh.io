@@ -17,7 +17,7 @@ Once you have [connected Codefresh to your secrets storage]({{site.baseurl}}/doc
 The syntax for using the secret is {% raw %}`${{secrets.NAME_IN_CODEFRESH.KEY}}`{% endraw %}.
 
 > If you did not include the resource-name as a part of your secret store context creation, the syntax for using your secret differs slightly:  
-  {% raw %}${{secrets.NAME_IN_CODEFRESH.RESOURCE-NAME@KEY}}{% endraw %}  
+  {% highlight yaml %}{% raw %}${{secrets.NAME_IN_CODEFRESH.RESOURCE-NAME@KEY}}{% endraw %}{% endhighlight %  
   The previous KEY portion is now made of two parts separated using @, where the left side is the name of the resource in the namespace, and the right side the key in that resource.
 
 To use the secret in your pipeline, you have two options:
@@ -71,7 +71,7 @@ steps:
 
 You can also use secrets in the GUI screens that support them. Currently you can use secrets in:
 
-* Values in [shared configuration]({{site.baseurl}}/docs/pipelines/shared-configuration/)
+* Values in [shared configuration]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/)
 * Integration with [cloud storage]({{site.baseurl}}/docs/testing/test-reports/#connecting-your-storage-account)
 
 Where secret integration is supported, click on the lock icon and enable the toggle button. You will get a list of your connected secrets:
@@ -92,8 +92,7 @@ If you didn't include a resource name during secret creation then enter the full
 
 
 ## Related articles
-[Shared Configuration]({{site.baseurl}}/docs/pipelines/shared-configuration/)  
 [Git triggers]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/)  
 [Running pipelines locally]({{site.baseurl}}/docs/pipelines/running-pipelines-locally/)  
-[Debugging Pipelines]({{site.baseurl}}/docs//yaml-examples/examples/trigger-a-k8s-deployment-from-docker-registry/)  
+[Debugging pipelines]({{site.baseurl}}/docs//example-catalog/cd-examples/trigger-a-k8s-deployment-from-docker-registry/)  
 

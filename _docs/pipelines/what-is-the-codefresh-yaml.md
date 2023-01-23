@@ -15,7 +15,7 @@ toc: true
 Codefresh offers its own built-in format for creating pipelines. The pipeline specification is
 based on the YAML syntax allowing you to describe your pipelines in a completely declarative manner.
 
-Using Codefresh yaml is the recommended way to [create pipelines]({{site.baseurl}}/docs/pipelines/pipelines/).
+Using Codefresh YAML is the recommended way to [create pipelines]({{site.baseurl}}/docs/pipelines/pipelines/).
 
 ## Simple example for codefresh.yml
 
@@ -64,11 +64,11 @@ steps:
     [step-contents]
 {% endhighlight %}
  
-You must define a step type for each step, unless you are using a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/). Each step uses Docker images and containers as facilitators for execution. For example, the **Freestyle** step spins up a container and executes the specified shell commands from the YAML file. 
+You must define a step type for each step, unless you are using a `freestyle` step. Each step uses Docker images and containers as facilitators for execution. For example, the **Freestyle** step spins up a container and executes the specified shell commands from the YAML file. 
 
 The step names should be unique within the same pipeline. This mainly affects the visualization of the pipeline when it runs.
 
-Each step produces a resource, which you can [reference](https://github.com/codefresh-contrib/python-flask-sample-app/blob/master/codefresh.yml#L23) in other steps, and are executed in real-time. For example, a **Freestyle** step can reference an image that was produced by a [**Build**]({{site.baseurl}}/docs/pipelines/steps/build/) step. This allows you to chain steps together and create highly-customized builds.
+Each step produces a resource, which you can [reference](https://github.com/codefresh-contrib/python-flask-sample-app/blob/master/codefresh.yml#L23){:target="\_blank"} in other steps, and are executed in real-time. For example, a `freestyle` step can reference an image that was produced by a `build`({{site.baseurl}}/docs/pipelines/steps/build/) step. This allows you to chain steps together and create highly-customized builds.
 
 
 ##### Variables
@@ -91,9 +91,9 @@ Steps chaining and referencing is possible due to implementation of variables in
 
 For more information on creating your own step, see the [Steps in piplines]({{site.baseurl}}/docs/pipelines/steps/).
 
-You can also see the [full YAML specification]({{site.baseurl}}/docs/integrations/codefresh-api/#full-pipeline-specification) supported for pipelines. Note however that several fields are only accessible by using the [Codefresh API]({{site.baseurl}}/docs/integrations/codefresh-api) or [CLI](https://codefresh-io.github.io/cli/).
+You can also see the [complete YAML specification]({{site.baseurl}}/docs/integrations/codefresh-api/#full-pipeline-specification) supported for pipelines. Note however that several fields are only accessible by using the [Codefresh API]({{site.baseurl}}/docs/integrations/codefresh-api) or [CLI](https://codefresh-io.github.io/cli/){:target="\_blank"} .
 
-## Yaml validation
+## YAML validation
 
 If you are editing Codefresh yaml within the Codefresh UI, the editor will automatically highlight errors as they happen.
 
@@ -109,7 +109,7 @@ caption="Graphical Inline Yaml Editor"
 max-width="50%"
 %}
 
-You can also validate the pipeline yaml outside of the UI by using the [Codefresh CLI](https://codefresh-io.github.io/cli/). The CLI has a [validate parameter](https://codefresh-io.github.io/cli/validation/) that can check one or more files for syntax errors
+You can also validate the pipeline yaml outside of the UI by using the Codefresh CLI. The CLI has a [validate parameter](https://codefresh-io.github.io/cli/validation/){:target="\_blank"}  that can check one or more files for syntax errors.
 
 {% highlight shell %}
 {% raw %}
@@ -119,7 +119,9 @@ Yaml not valid:
 {% endraw %}
 {% endhighlight %}
 
-For more information on where the YAML file can be stored see the [creating pipelines page]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/).
+
+For more information on where the YAML file can be stored, see [creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/).
+
 
 ## Execution flow
 
@@ -268,12 +270,12 @@ steps:
 {% endhighlight %}
 
 The `|-` character keeps the line breaks of the text (but removes the last one). Use the `>-` character if you want to convert line breaks to spaces.
-For more information see the [YAML specification](https://yaml.org/spec/1.2/spec.html).
+For more information see the [YAML specification](https://yaml.org/spec/1.2/spec.html){:target="\_blank"}.
 
 ## Using YAML anchors to avoid repetition
 
 Codefresh also supports yaml anchors, references and extends. These allow you to keep
-your pipeline [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself).
+your pipeline [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself){:target="\_blank"}.
 
 For example, let's say that you have two freestyle steps:
 
@@ -365,11 +367,10 @@ to point to production. Everything else (i.e. namespace and service) are exactly
 
 
 ## Related articles
-[Steps in CI pipelines]({{site.baseurl}}/docs/pipelines/steps/)   
-[Variables in CI pipelines]({{site.baseurl}}/docs/pipelines/variables/)  
+[Variables in pipelines]({{site.baseurl}}/docs/pipelines/variables/)  
 [Advanced workflows]({{site.baseurl}}/docs/pipelines/advanced-workflows/)  
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
-[YAML examples]({{site.baseurl}}/docs/example-catalog/examples/)  
+[CI/CD YAML examples]({{site.baseurl}}/docs/example-catalog/examples/)  
 
 
 
