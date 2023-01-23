@@ -1,5 +1,5 @@
 ---
-title: "Datadog integration"
+title: "Datadog pipeline integration"
 description: "Integrate Codefresh pipelines with Datadog for monitoring and analysis"
 group: integrations
 redirect_from:

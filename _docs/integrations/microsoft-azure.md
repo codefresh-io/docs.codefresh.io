@@ -1,5 +1,5 @@
 ---
-title: "Microsoft Azure integration"
+title: "Microsoft Azure pipeline integration"
 description: "How to use Codefresh pipelines with Azure"
 group: integrations
 redirect_from:

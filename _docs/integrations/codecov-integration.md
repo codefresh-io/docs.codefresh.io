@@ -1,5 +1,5 @@
 ---
-title: "Codecov integration for CI pipelines"
+title: "Codecov pipeline integration"
 description: "Create Code Coverage Reports with Codefresh and Codecov"
 group: integrations
 redirect_from:

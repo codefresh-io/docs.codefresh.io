@@ -1,5 +1,5 @@
 ---
-title: "Git Providers"
+title: "Git provider pipeline integrations"
 description: "Easily check out code in Codefresh CI pipelines"
 group: integrations
 redirect_from:

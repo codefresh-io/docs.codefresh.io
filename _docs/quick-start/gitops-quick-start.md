@@ -34,6 +34,10 @@ Hybrid runtimes are hosted on a customer cluster and managed by the customer. Yo
 1. [Install hybrid runtime]({{site.baseurl}}/docs/quick-start/gitops-quickstart/runtime)  
   Install the Codefresh runtime by downloading the CLI, installing the runtime, and validate successful installation in the UI
 
+## Create a Codefresh account
+[Create an account in Codefresh]({{site.baseurl}}/docs/quick-start/create-codefresh-account/) in which to create pipelines.
+
+
 ## Deploy an application
 
 1. [Create an application]({{site.baseurl}}/docs/quick-start/gitops-quickstart/create-app-ui)  
@@ -43,11 +47,4 @@ Hybrid runtimes are hosted on a customer cluster and managed by the customer. Yo
 1. [Update the image tag for application]({{site.baseurl}}/docs/quick-start/gitops-quickstart/create-rollout)  
   Update the image for the `codefresh-guestbook` application to trigger a rollout.
 
-<!--- ### Trigger/create a Delivery Pipeline 
-> Available for hybrid deployments.
-
-1. [Trigger the Hello World example pipeline]({{site.baseurl}}/docs/getting-started/quick-start/hello-world)  
-  Configure the Git event to trigger the demo pipeline. 
-1. [Create a basic CI delivery pipeline]({{site.baseurl}}/docs/getting-started/quick-start/create-ci-pipeline)  
-  Create a new CI delivery pipeline in Codefresh. -->
 

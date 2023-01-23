@@ -1,5 +1,5 @@
 ---
-title: "Google Marketplace integration"
+title: "Google Marketplace pipeline integration"
 description: "Learn how to run Codefresh pipelines inside your GKE cluster"
 group: integrations
 redirect_from:

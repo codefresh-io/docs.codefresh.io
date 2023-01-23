@@ -1,5 +1,5 @@
 ---
-title: "Jenkins integration/migration"
+title: "Jenkins pipeline integration/migration"
 description: "Migration from Jenkins to Codefresh pipelines"
 group: integrations
 redirect_from:

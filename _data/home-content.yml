@@ -5,7 +5,7 @@
   icon: images/home-icons/started.svg
   url: ''
   links:
-    - title: What is Codefresh
+    - title: What is Codefresh?
       localurl: /docs/getting-started/intro-to-codefresh/
     - title: Codefresh for CI
       localurl: /docs/getting-started/ci-codefresh/
@@ -34,7 +34,7 @@
   links:
     - title: Hosted GitOps
       localurl: /docs/integrations/codefresh-hosted-gitops/   
-    - title: Git Providers
+    - title: Git providers
       localurl: /docs/integrations/git-providers/
     - title: Kubernetes
       localurl: /docs/integrations/kubernetes/
@@ -65,9 +65,9 @@
   icon: images/home-icons/integrations.svg
   url: ''
   links:
-    - title: Image enrichment with GitOps integrations
+    - title: GitOps image enrichment with integrations
       localurl: /docs/gitops-integrations/image-enrichment-overview/
-    - title: Codefresh Classic for GitOps
+    - title: Codefresh pipelines for GitOps
       localurl: /docs/gitops-integrations/ci-integrations/codefresh-classic/
     - title: GitHub Actions for GitOps
       localurl: /docs/gitops-integrations/ci-integrations/github-actions/
@@ -135,31 +135,31 @@
   icon: images/home-icons/tutorial.svg
   url: ''
   links:
-    - title: CI examples
-      localurl: /docs/example-catalog/ci-examples
-    - title: CD examples
-      localurl: /docs/example-catalog/cd-examples
-    - title: GitOps examples
-      localurl: /docs/example-catalog/gitops-examples
+    - title: CI/CD examples
+      localurl: /docs/example-catalog/examples/
 
 
 - title: Pipelines
   icon: images/home-icons/pipeline.svg
   url: ''
   links:
-    - title: Introduction to Pipelines
+    - title: Introduction to pipelines
       localurl: /docs/pipelines/introduction-to-codefresh-pipelines/
-    - title: Creating Pipelines
-      localurl: /docs/pipelines/pipelines/   
-    - title: Pipeline triggers
+    - title: Creating pipelines
+      localurl: /docs/pipelines/pipelines/  
+    - title: Steps in pipelines
+      localurl: /docs/pipelines/steps/      
+    - title: Triggers in pipelines
       localurl: /docs/pipelines/triggers/
     - title: Monitoring pipelines
       localurl: /docs/pipelines/monitoring-pipelines/
-    - title: Shared Configuration
-      localurl: /docs/pipelines/shared-configuration/
+    - title: Advanced workflows for pipelines
+      localurl: /docs/pipelines/advanced-workflows/
+    - title: Shared configuration
+      localurl: /docs/pipelines/configuration/shared-configuration/
     - title: Using secrets
-      localurl: /docs/pipelines/secrets-store/
-    - title: Pipeline caching
+      localurl: /docs/pipelines//configuration/secrets-store/
+    - title: Caching in pipelines
       localurl: /docs/pipelines/pipeline-caching/
     - title: Running pipelines locally
       localurl: /docs/pipelines/running-pipelines-locally/
@@ -184,21 +184,21 @@
       localurl: /docs/deployments/helm/helm-environment-promotion/
     - title: Creating GitOps applications
       localurl: /docs/deployments/gitops/create-application/
-    - title: Monitoring applications
+    - title: Monitoring GitOps applications
       localurl: /docs/deployments/gitops/applications-dashboard/
-    - title: Managing applications
+    - title: Managing GitOps applications
       localurl: /docs/deployments/gitops/manage-application/
 
 
 
 
-- title: Workflows
+- title: Argo CD Workflows
   icon: images/home-icons/pipeline.svg
   url: ''
   links:
-    - title: Creating workflows
+    - title: Creating Argo CD workflows
       localurl: /docs/workflows/create-pipeline
-    - title: Nested workflows
+    - title: Nested Argo CD workflows
       localurl: /docs/workflows/nested-workflows/      
     - title: Configure artifact repository
       localurl: /docs/workflows/configure-artifact-repository/
@@ -237,9 +237,7 @@
     localurl: /docs/administration/account-user-management/create-codefresh-account/
   - title: Adding users and teams  
     localurl: /docs/administration/account-user-management/add-users/
-  - title: Single Sign-On
-    localurl: /docs/single-sign-on/
-  - title: Set up OAuth2 authentication for Git providers
+  - title: Set up OAuth2 for Git providers
     localurl: /docs/administration/account-user-management/oauth-setup/  
   - title: Access control
     localurl: /docs/administration/account-user-management/access-control/
@@ -269,11 +267,9 @@
   icon: images/home-icons/guides.png
   url: ''
   links:
-    - title: Runner installation behind firewalls
-      url: /docs/behind-the-firewall/   
     - title: Git tokens
       localurl: /docs/reference/git-tokens/ 
-    - title: Secrets
+    - title: Secrets for GitOps
       localurl: /docs/reference/secrets   
     - title: Shared configuration repo
       localurl: /docs/reference/shared-configuration/

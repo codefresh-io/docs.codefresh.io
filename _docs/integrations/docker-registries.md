@@ -1,5 +1,5 @@
 ---
-title: "Docker Registries for pipeline integrations"
+title: "Docker registries for pipeline integrations"
 description: "Connect your Docker Registry to Codefresh CI pipelines"
 group: integrations
 redirect_from:

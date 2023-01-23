@@ -1,5 +1,5 @@
 ---
-title: "ArgoCD integration for CI pipelines"
+title: "ArgoCD pipeline integration"
 description: "Connect Codefresh to your ArgoCD endpoint"
 group: integrations
 redirect_from:
