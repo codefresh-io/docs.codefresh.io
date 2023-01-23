@@ -5,29 +5,32 @@ group: getting-started
 toc: true
 ---
 
-This article reviews the concepts of GitOps and Argo CD, and how Codefresh integrates and implements both.
+This article reviews the concepts of GitOps and Argo CD, and how Codefresh integrates with and implements both.
 
 
 ## GitOps
 Weaveworks, who introduced the concept of GitOps, describes it as "a way of implementing Continuous Deployment for cloud native applications. It focuses on a developer-centric experience when operating infrastructure, by using tools developers are already familiar with, including Git and Continuous Deployment tools."
 
-At the root of the GitOps paradigm is having "Git as the single source of truth". Git repositories are the source-control systems that declaratively describe  applications and infrastructure using code. The continuous integration and continuous delivery processes synchronize these changes with live environments, making sure that the production state always matches the desired state in Git.
+At the root of the GitOps paradigm is having "Git as the single source of truth". Git repositories are the source-control systems that declaratively describe applications and infrastructure using code. The continuous integration and continuous delivery processes synchronize these changes with live environments, making sure that the production state always matches the desired state in Git.
+The entire application lifecyle 
 
 The key difference is that while the traditional workflow is based on “pushing” new code changes through the pipeline to production, a GitOps workflow is a “pull” process in which new changes are submitted, and the GitOps agent detects and synchronizes them with the production environment.
 
-Read more in our blog, [What is a GitOps workflow](https://codefresh.io/learn/gitops/gitops-workflow-vs-traditional-workflow-what-is-the-difference/){:target="\_blank"}.
+Read more in our blog, [What is a GitOps workflow](https://codefresh.io/learn/gitops/gitops-workflow-vs-traditional-workflow-what-is-the-difference/){:target="\_blank"}.  
+
+See also [Codefresh for GitOps & Argo CD]
 
 
 ## Argo CD
 
 Argo CD is "a declarative, GitOps continuous delivery tool for Kubernetes."
 
-Argo CD uses a Kubernetes controller to constantly monitor the state of all resources in production and compare them against the desired states set in Git. When there are changes to the desired state, the controller detects and works to synchronize the production to the desired configuration. 
+Argo CD uses a Kubernetes controller to constantly monitor the state of all resources in production and compare them against the desired states set in Git. When there are changes to the desired state, the controller detects them, and works to synchronize the production configuration to the desired configuration. 
 
 Argo CD is also designed to work with Argo Rollouts, a progressive delivery tool for handling canary and blue/green deployments with robust support for most load balancers in use today. 
 
 
-## GitOps & Argo CD with Codefresh
+## Codefresh for GitOps & Argo CD 
 
 Where does Codefresh come into play with GitOps and Argo CD?
 
@@ -40,18 +43,18 @@ Every state change operation in Codefresh is made via Git
 Codefresh audit log is derived from the Git changelog
 Codefresh access control is derived from Git permissions
 
-
+From our runtimes, to applications, and deployments, 
 
 
 ## GitOps Runtimes 
 
 Codefresh offers two models for GitOps deployments:  
 
-* Hosted GitOps, a fully-managed version of Argo CD. The runtime for Hosted GitOps is hosted on a Codefresh cluster (easy setup) and managed by Codefresh (zero maintenance overhead).  
+* Hosted GitOps, which is a fully-managed version of Argo CD. The runtime for Hosted GitOps is hosted on a Codefresh cluster (easy setup) and managed by Codefresh (zero maintenance overhead).  
   If you already have Argo CD installations, this is the option for you. Click once to provision the hosted runtime, and start deploying applications to clusters without having to install and maintain Argo CD.
 
-* Hybrid GitOps has the runtime hosted on the customer cluster and managed by the customer.  
-  The hybrid offering retains runtimes within the customer infrastructure while giving you the power of Argo CD with Codefresh’s CI and CD tools, to help achieve continuous integration and continuous delivery goals.
+* Hybrid GitOps, which is a customer-managed version of Argo CD. The  Hybrid GitOps runtime is hosted on the customer cluster and managed by the customer.  
+  The Hybrid GitOps offering retains runtimes within the customer infrastructure to comply your security rewhile giving you the power of Argo CD with Codefresh’s CI and CD tools, to help achieve continuous integration and continuous delivery goals.
 
 Review [GitOps runtime architecture]({{site.baseurl}}/docs/installation/runtime-architecture/#gitops-architecture).  
 For installation, see [Hosted GitOps setup]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/) and [Hybrid GitOps installation]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/).
@@ -73,7 +76,7 @@ See:
 [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)  
 [Monitoring applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/)  
 
-## Argo Project & Codefresh
+## Codefresh & the Argo Project 
 Codefresh brings the power of the Argo project to your Kubernetes deployments:
 
 Argo CD for declarative continuous deployment

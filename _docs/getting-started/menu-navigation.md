@@ -5,13 +5,11 @@ group: getting-started
 toc: true
 ---
 
-## Classic to New navigation
-Get up to speed with the changes in the navigation.
+## Classic > New version navigation
+Get up to speed with navigation enhancements.  
 
-
-We added a new **Settings** icon to the toolbar to simplify account-level management by Codefresh administrators.
-The Settings icon is always available, so you have _single-click access_ to account-level options and settings whenever you need.
-
+We added a new **Settings** icon to the toolbar to simplify account-level management for Codefresh administrators.
+The Settings icon is always available, so you have _single-click access_ whenever you need to account-level options and settings.
 
 
 
@@ -20,10 +18,12 @@ The Settings icon is always available, so you have _single-click access_ to acco
   lightbox="true" 
   file="/images/getting-started/settings-icon.png" 
   url="/images/getting-started/settings-icon.png" 
-  alt="Settings icon in toolbar" 
-  caption="Settings icon in toolbar"
+  alt="To be changed Settings icon in toolbar" 
+  caption="To be changed Settings icon in toolbar"
     max-width="70%" 
 %}
+
+We divided the navigation into Avatar, account-level, and features and functionality.  The &rarr; indicates a change between versions.
 
 ### Avatar options
 
@@ -35,12 +35,12 @@ The Settings icon is always available, so you have _single-click access_ to acco
 |                       |Account Settings              |&rarr;  |                  | Moved to Settings  |
 |                       |User Management               |&rarr;  |                  | Moved to Settings  |               
 |                       |Billing                       |&rarr;  |                  | Moved to Settings  |             
-|                       |User Settings                 |  |                  | No change                 |
+|                       |User Settings                 |        |                  | No change                 |
 |                       |                              | &rarr; |                  | Git Personal Access Token |
 
 ### Account-level options
 
-Access account-level options through the Settings icon: 
+Access account-level options through the **Settings** icon: 
 * Account & user management
 * Integrations
 * Configurations
@@ -50,7 +50,7 @@ Access account-level options through the Settings icon:
 
 {: .table .table-bordered .table-hover}
 |  CLASSIC             |                               |&rarr; |NEW           |           |
-|  Bucket              | Menu item                     | |      Bucket        |  Menu item           | 
+|  Bucket              | Menu item                     |       | Bucket        |  Menu item           | 
 | -------------------  | -------------------           |  | ----------------  | ---------     | 
 | **GENERAL**          |                               |  | No change         |                          |       
 |                      | **Account Information**       | &rarr; |                   | (Renamed) Organization Information |       
@@ -62,8 +62,8 @@ Access account-level options through the Settings icon:
 |                      | **Integrations**              | &rarr; |                   |(Renamed) Pipeline Integrations |       
 |                      |                               |&rarr;  |                   |(New) GitOps Integrations |       
 |                      | **Pipeline Settings**         |  |                   | No change                |       
-|                      | **Codefresh Runner**          |&rarr;  |                   | (Moved to Runtimes bucket |
-|                      | **Runtime Environments**      | &rarr; |                   | (Moved) Runtimes bucket |
+|                      | **Codefresh Runner**          |&rarr;  |                   | (Moved to) Runtimes bucket |
+|                      | **Runtime Environments**      | &rarr; |                   | (Moved to) Runtimes bucket |
 |                      | **GitOps Controller**         |  |                   |  ??                       |
 |                      | **Shared Configuration**      |  |                   | No change                |
 |                      | **Nodes**                     |  |                   | ??                       |
@@ -80,7 +80,7 @@ Access account-level options through the Settings icon:
 
 
 ### Features and functionality
-We renamed buckets and moved items for more intuitive access. 
+We renamed menu groups and moved items for more intuitive access. 
 
 {: .table .table-bordered .table-hover}
 |  CLASSIC             |                         | &rarr;|              |NEW          |    
@@ -114,4 +114,83 @@ We renamed buckets and moved items for more intuitive access.
 |                       |**Account Settings**     |&rarr; |               |(Moved) Settings in toolbar|
 |                       |**User Settings**        |&rarr; |               | Avatar     |
 
+## GitOps to New version navigation
 
+
+### GitOps > Avatar options
+
+{: .table .table-bordered .table-hover}
+|  GITOPS             |                               | &rarr; |NEW              |             |
+|  Bucket              | Menu item                     | | Bucket        |  Menu item           | 
+| -------------------  | -------------------           |  | ---------------- | ---------  | 
+| **AVATAR**           |                               |  |                  |            |     
+|                       |Account Settings              |&rarr;  |                  | Moved to Settings  |
+|                       |User Management               |&rarr;  |                  | Moved to Settings  |               
+|                       |Billing                       |&rarr;  |                  | Moved to Settings  |             
+|                       |User Settings                 |        |                  | No change          |
+|                       |Git Personal Access Token    | &rarr; |                  |  New option              | 
+
+
+### GitOps account-level options
+
+Access account-level options through the **Settings** icon: 
+* Account & user management
+* Integrations
+* Configurations
+* Runtimes
+
+
+
+{: .table .table-bordered .table-hover}
+|  GITOPS             |                               |&rarr;  |NEW            |                      |
+|  Bucket              | Menu item                     |       | Bucket        |  Menu item           | 
+| -------------------  | -------------------           |       | ----------------  | -------------------    | 
+| **GENERAL**          |                               |       | No change         |                          |       
+|                      | **Organization Information**  |        |                  |No change                |       
+|                      | **Subscription & Billing**    |        |                  |No change  |
+|                      | **Users**                     | &rarr; |                  | {::nomarkdown} (Moved to) Access & Collaboration<br>(Renamed) Users & Teams{:/}|
+|                      | **Usage**                     | &rarr; |                  | New                      |
+|                      |                               | &rarr; |ACCESS & COLLABORATION   |                              |
+|                      | **Security**                  |        |                          | (Moved to) General > Collaboration |
+|                      | **Single Sign-On**            |        |                          | (Moved from) General > Collaboration|       
+|                      |                               |         |                                     | Permissions  |       
+|                      | ****                          |&rarr;   |                         | Audit   |    
+|                      | Authentication                 |&rarr;   |                        | {::nomarkdown} (Moved from) Access & Collaboration<br>(Renamed) Git Authentication{:/}  |    
+|                      |                               |        |                   |                                     |       
+| **CONFIGURATION**    |                               |        | No change         |                                     |       
+|                      | **Runtimes**                  | &rarr; |             |(Moved to) RUNTIMES bucket |       
+|                      | **Pipeline Integrations**     | &rarr; |             | New               |       
+|                      | **Integrations**              | &rarr; |             |(Renamed) GitOps Integrations|       
+|                      | **Pipeline Settings**         | &rarr; |              | New               |       
+|                      | **Shared Configuration**      | &rarr; |              | New               |       
+|                      | **Authentication**            | &rarr;|               | {::nomarkdown} (Moved to) Access & Collaboration<br>(Renamed) Git Authentication{:/} |       
+
+### GitOps features & functionality
+We renamed menu groups and moved items for more intuitive access. 
+
+{: .table .table-bordered .table-hover}
+|  GITOPS             |                         | &rarr;|              |NEW          |    
+|  Bucket              | Menu item               | |                    |            | 
+| -------------------  | -------------------     |  | ----------------  | ---------  | 
+|                      |  Home                   |  |                   |No change  |
+
+| **INSIGHTS**          |                        |       | No change          |            |
+|                       | DORA Metrics           |       |                    | No change  |
+|                       |                        |       |                    |               |
+|                       |                        |&rarr; |PIPELINES           |               |
+|                       |                        |&rarr; |                    | Projects      |
+|                       |                        |&rarr; |                    |Pipelines      |
+|                       |                        |&rarr; |                    | Builds        |
+|                       |                        |&rarr; |                    |Steps          |
+|                       |                        |       |                    |               |
+|                       |                        |&rarr; |OPS                 |               |
+|                       |                        | &rarr;|                    | GitOps Apps    | 
+|                       |                        |&rarr; |                    | Helm Boards        |
+|                       |                        | &rarr;|                    | Kubernetes Services |
+|                       |                        |&rarr; |                    |Helm Releases        |
+|                       |                        |&rarr; |                    |Environments         |
+|                       |                        |       |                    |                     |
+|                       |                        |&rarr; | ARTIFACTS          |                     |
+|                       |                        |&rarr; |                    | Images              |
+|                       |                        |&rarr; |                    | Helm Charts         |
+|                       |                        |&rarr; |                    | Compositions        |

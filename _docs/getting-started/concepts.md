@@ -42,11 +42,12 @@ See:
 
 
 ## Pipeline
-The pipeline is the central component in Codefresh that implements CI/CD processes. Everything for CI/CD in Codefresh starts and ends with pipelines. Codefresh pipelines can do only CI, only CD, both CI and CD, or run any custom action, such as unit and integration tests.
+The pipeline is the central component in Codefresh that implements CI/CD processes. Everything for CI/CD in Codefresh starts and ends with pipelines.  
 
+Codefresh pipelines can do only CI, only CD, both CI and CD, or run any custom action, such as unit and integration tests.
 A CI pipeline can compile and package code, build and push Docker images. A CD pipeline can deploy applications/artifacts to VMs, Kubernetes clusters, FTP sites, S3 buckets, and more. And a CI/CD pipeline can combine code compilation, integration, and deployment for full CI/CD. 
 
-Codefresh offers a rich set of capabilities to easily create and maintain pipelines such as ready-to-use steps for common tasks, variable, shared configuration, and more.
+Codefresh offers a rich set of capabilities to easily create and maintain pipelines such as ready-to-use steps for common tasks, system and user-defined variables, shared configurations for resuse, and more.
 
 See:  
 [Introduction to Codefresh pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)  
@@ -61,8 +62,7 @@ Projects centralize viewing and configuration settings for the pipelines that be
 
 There are no limits to the number of projects you can create in your account. You can also create standalone pipelines and assign them later to a project, or detach a pipeline assigned to a project. 
 
-See:  
-[Projects in pipelines]({{site.baseurl}}/docs/pipelines/pipelines/#pipeline-concepts)
+See [Projects in pipelines]({{site.baseurl}}/docs/pipelines/pipelines/#pipeline-concepts).
 
 ## Runner
 The Runner is the hybrid installation option for pipelines in your Codefresh account. The Runner is installed as a Kubernetes native application on any Kubernetes-compliant cluster. It allows you to run pipelines on your own Kubernetes cluster, including private clusters behind company firewalls.
@@ -76,9 +76,7 @@ Every Runner installation creates a runtime environment in your account. Assign 
 
 You can have multiple Runner installations in the same Codefresh account. A Runner can also manage multiple remote clusters in your account. 
 
-See:  
-[Codefresh Runner installation]({{site.baseurl}}/docs/installation/codefresh-runner)   
-[Runner installation behind firewalls]({{site.baseurl}}/docs/installation/behind-the-firewall)  
+See [Codefresh Runner installation]({{site.baseurl}}/docs/installation/codefresh-runner) and [Runner installation behind firewalls]({{site.baseurl}}/docs/installation/behind-the-firewall)  
 
 ## Runtime
 A Runtime in Codefresh is a  GitOps installation in your Codefresh account, in either a Hosted or Hybrid installation environment. Hosted Runtimes are installed on a Codefresh cluster and managed by Codefresh. Hybrid Runtimes are installed on customer clusters, and managed by the customers.

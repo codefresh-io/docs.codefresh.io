@@ -13,28 +13,29 @@ Running integration tests
 Security scans
 Code quality  -->
 
-Codefresh is a Continuous Integration/Delivery solution. This article reviews main CI concepts and how Codefresh supports and implements them.
+Codefresh is a Continuous Integration/Delivery solution. This article reviews main concepts around CI, and how Codefresh supports and implements them.  
+For a review of CD concepts, see [Codefresh for CD]({{site.baseurl}}docs/getting-started/cd-codefresh/).
 
 
 
 ## Code compilation
 
-The basic function of a CI system is to compile/package source code. As far as programming languages are concerned, Codefresh is language-agnostic. Codefresh works equally well with compiled languages (Java, Go, C/C++), as well as interpreted languages (Python, PHP, Ruby).
+The basic function of a CI system is to compile/package source code. Codefresh is language-agnostic as far as programming languages are concerned. Codefresh works equally well with compiled languages (Java, Go, C/C++), as well as interpreted languages (Python, PHP, Ruby).
 
 The only requirement is that you either use an existing Docker image as a step in your pipeline or create your own with the exact versions of tools that you need.
 
 ## Docker images
-Building a Docker image from the source code is probably the most common and  basic requirement for a CI pipeline. In Codefresh you can build, push, and promote Docker images, using declarative YAML and credentials that are defined once stored centrally.
+Building a Docker image from the source code is probably the most common and basic requirement for a CI pipeline. In Codefresh, you can build, push, and promote Docker images, using declarative YAML and credentials that are defined once and stored centrally for reuse.
 
 **Build and push image**  
-Building a Dockerfile in a pipeline works in the same way as building the Dockerfile locally on your workstation. The `build` step in Codefresh enables you to build a Docker image in a completely declarative manner, and to automatically push it to your default Docker registry without any configuration.  
+Building a Dockerfile in a pipeline works in the same way as building the Dockerfile locally on your workstation. The `build` step in Codefresh enables you to build a Docker image in a completely declarative manner, and to automatically push it to your default Docker registry without any additional configuration.  
 
 See:    
 [Build and push Docker images]({{site.baseurl}}/docs/example-catalog/ci-examples/build-and-push-an-image/)  
 
 
 **View image**  
-The Images dashboard displays images from all registries connected to Codefresh. Every image is enriched with Git branch, Git hash and commit message, and any tags defined for the image. 
+The Images dashboard displays images from all registries connected to Codefresh. Every image is enriched with Git branch, Git hash and commit message, and other tags defined for the image. 
 
 See:    
 [Viewing Docker images]({{site.baseurl}}/docs/ci-cd-guides/working-with-docker-registries/#viewing-docker-images)
@@ -42,7 +43,7 @@ See:
 
 
 **Promote image**  
-Promote an image by copying it from one registry to another. You can promote images either from the Codefresh UI, or automatically from pipelines by specifying an existing image in the pipeline step.
+Promote images either from the Codefresh UI, or automatically from pipelines by specifying an existing image in the pipeline step. Promote an image by copying it from one registry to another. 
 
 See:    
 [Promoting Docker images]({{site.baseurl}}/docs/ci-cd-guides/working-with-docker-registries/#viewing-docker-images)
@@ -51,10 +52,10 @@ See:
 
 
 ## Unit testing
-Codefresh supports all testing frameworks, including mocking frameworks, for all popular programming languages. Easily run unit tests on the source code of the application for every commit or pull request (PR) through our freestyle step in pipelines. 
+Codefresh supports all testing frameworks, including mock-frameworks, for all popular programming languages. Easily run unit tests on the source code of the application for every commit or pull request (PR) through our `freestyle` pipeline step. 
 
-Run any type of unit tests in Codefresh pipelines, from smoke tests in a dockerfile, to tests with external or application images for simple applications, and even run them on a special testing image for complex applications.
-You can create test reports and view them whenever you need. 
+Run any type of unit tests in Codefresh pipelines, from smoke tests in a dockerfile, to tests with external or application images for simple applications, and on a special testing image for complex applications.
+Create test reports and view them whenever you need. 
 
 See:  
 [Run unit tests example]({{site.baseurl}}/docs/example-catalog/ci-examples/run-unit-tests/)
@@ -65,8 +66,7 @@ Compared to unit tests that run on the source code, integration tests run on the
 In Codefresh, you can launch these sidecar containers within the pipeline through compositions and service containers.
 
 
-See:  
-[Run integration tests example]({{site.baseurl}}/docs/example-catalog/ci-examples/run-integrations-tests/)
+See [Run integration tests example]({{site.baseurl}}/docs/example-catalog/ci-examples/run-integrations-tests/).
 
 ## Code quality coverage
 Good quality code is central to any CI platform or tool. Codefresh integrates with the top code quality platforms/tools in the market to track code coverage, inspect code quality, and generate code-coverage analysis reports. 
@@ -76,26 +76,25 @@ Implement code quality coverage in Codefresh pipelines through these steps:
 * Copy and paste the ready-to-use step for your platform/tool into your pipeline from our [Plug-ins library](https://codefresh.io/steps/){:target="\_blank"}.
 * Reference them by name in the pipeline step, and view the updated reports in the respective UIs.
 
-See:  
-[Code coverage examples]({{site.baseurl}}/docs/example-catalog/examples/#code-coverage-examples)
+See [Code coverage examples]({{site.baseurl}}/docs/example-catalog/examples/#code-coverage-examples).  
 
 ## Linting/validating
 
-Linting and validation tools which perform static analysis on source code or other resources are also integral parts of pipelines. Codefresh pipelines can use any linter tool that is bundled with a Docker image. Codefresh can also validate files that are not source-code, such as markup-language files (XML/YAML/JSON), infrastructure files (Terraform, or Kubernetes resource files).  
+Linting and validation tools which perform static analysis on source code or other resources are also integral parts of pipelines. Codefresh pipelines can use any linter tool that is bundled with a Docker image. Codefresh can also validate files that are not source-code, such as markup-language files (XML/YAML/JSON), and infrastructure files (Terraform, or Kubernetes resource files).  
 
-Most static analysis tools are CLI-based, and can be easily used in a Codefresh pipeline.
+As most static analysis tools are CLI-based, they can be easily used in a Codefresh pipeline.
 
 ## Security scanning
-Security scans are critical to deploying quality code. With Codefresh, in addition you can control when to implement the security scan, and then view the scan results in the Codefresh UI, without having to go to the security platform.  
+Security scans are critical to deploying quality code. Codefresh allows you to also control when to implement the security scan, and then view the scan results in the Codefresh UI, without having to go to the security platform.  
 
 **Security scan platforms**  
 Codefresh can integrate with any security scanning platform that scans source code or Docker images for vulnerabilities. We already have ready-to-use Docker images for several security platforms such as Anchore, Aqua Security, Clair, Twistlock and WhiteSource. For the full list, visit our [Plug-ins library](https://codefresh.io/steps/){:target="\_blank"}.
 
 **Scan timing in pipeline step**  
-The security scan is implemented through a freestyle step, inserted anywhere in the pipeline. The fact that you can insert the step anywhere allows you to control when the scan is executed, for example, before the source code is packaged in a container, or before the container is stored in a registry or deployed to production, or any combination of these.
+The security scan is implemented through a `freestyle` step, inserted anywhere in the pipeline. The fact that you can insert the step anywhere in the pipeline allows you to control when the scan is executed, for example, before the source code is packaged in a container, or before the container is stored in a registry or deployed to production, or any combination of the two.  
 
 **View scan results**  
-As with any scan, the final step is viewing the scan results. Make the scan results available in Codefresh release dashboards (Test Report button) by attaching analysis reports to the pipeline build. 
+As with any scan, the final step is viewing the scan results. Attaching analysis reports to the pipeline build makes the scan results available in Codefresh release dashboards (Test Report button). 
 
 **Security annotations**  
 Correlate the Docker images in Codefresh with the results of the security scanning platform by adding annotations for custom metadata. For example, you can add annotations such as the number of issues or the URL of the full report.
