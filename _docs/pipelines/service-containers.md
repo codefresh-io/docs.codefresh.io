@@ -38,12 +38,12 @@ steps:
 
 This pipeline will run integration tests during the freestyle step called `my_integration_tests` and at that point a Redis instance will be available at hostname `my-redis-db-host` and port 6379. Note how in this example, the service container is placed at the root of the pipeline (as opposed to inside a specific step).  This ensures that the Redis instance is running for [the duration of the pipeline]({{site.baseurl}}/docs/pipelines/service-containers/#running-services-for-the-duration-of-the-pipeline).
 
->Service Containers are based on Docker Compose. This document does not have the complete list of available options available. Please refer to Docker Compose versions [2](https://docs.docker.com/compose/compose-file/compose-file-v2/) and [3](https://docs.docker.com/compose/compose-file/), but not point releases such as 2.1.
+>Service Containers are based on Docker Compose. This document does not have the complete list of available options available. Please refer to Docker Compose versions [2](https://docs.docker.com/compose/compose-file/compose-file-v2/){:target="\_blank"} and [3](https://docs.docker.com/compose/compose-file/){:target="\_blank"}, but not point releases such as 2.1.
 
 
-## Viewing Service containers
+## Viewing service containers
 
-The service containers have their own output tab in Codefresh UI
+The service containers have their own output tab in Codefresh UI.
 
 {% include image.html
   lightbox="true"
@@ -129,7 +129,7 @@ caption="Using an existing composition"
 max-width="70%"
 %}
 
-This makes very easy to reuse compositions that you have already defined for other reasons [in the Codefresh UI](https://codefresh.io/docs/docs/testing/create-composition/).
+This makes very easy to [reuse compositions]({{site.baseurl}}/docs/testing/create-composition/) that you have already defined for other reasons in Codefresh.
 
 
 ## Running services for the duration of the pipeline
@@ -283,7 +283,7 @@ steps:
 {% endraw %}      
 {% endhighlight %}
 
-Note that in this case the `docker-compose.yml` file must mention [specific images](https://docs.docker.com/compose/compose-file/#image) (and not use [build properties](https://docs.docker.com/compose/compose-file/#build)).
+Note that in this case the `docker-compose.yml` file must mention [specific images](https://docs.docker.com/compose/compose-file/#image){:target="\_blank"} (and not use [build properties](https://docs.docker.com/compose/compose-file/#build){:target="\_blank"}).
 
 
 ## Launching a custom service
@@ -334,7 +334,7 @@ We then run a `curl` command against the sidecar container to verify the correct
 
 When you launch multiple services in your pipelines, you don't know exactly when they will start. Maybe they will be ready once you expect them, but maybe they take too long to start. For example if you use a MySQL database in your integration tests, your integration tests need to know that the database is actually up before trying to use it.
 
-This is the same issue that is present in [vanilla Docker compose](https://docs.docker.com/compose/startup-order/). You can use solutions such as [wait-for-it](https://github.com/vishnubob/wait-for-it) to overcome this limitation, but Codefresh offers a better way in the form of *service readiness*.
+This is the same issue that is present in [vanilla Docker compose](https://docs.docker.com/compose/startup-order/){:target="\_blank"}. You can use solutions such as [wait-for-it](https://github.com/vishnubob/wait-for-it){:target="\_blank"} to overcome this limitation, but Codefresh offers a better way in the form of *service readiness*.
 
 With a readiness block you can guarantee that a sidecar service will be actually up before the pipeline will continue. Here is an example:
 
@@ -384,7 +384,7 @@ This is an improvement over the previous example because the healthcheck of the 
 * `successThreshold`: Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for readiness. Minimum value is 1.
 * `failureThreshold`: failureThreshold times before giving up. In case of readiness probe the Pod will be marked Unready. Defaults to 3. Minimum value is 1
 
-If you know already how [Kubernetes readiness probes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/) work, then these settings will be very familiar to you.
+If you know already how [Kubernetes readiness probes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/){:target="\_blank"} work, then these settings will be very familiar to you.
 
 Here is another example where we use the `pg_isready` command to make sure that a PostgreSQL database is ready to accept connections
 before we run the integration tests.
@@ -558,10 +558,10 @@ Service containers are not compatible with [custom pipeline steps]({{site.baseur
 
 
 ## Related articles
-[Unit tests]({{site.baseurl}}/docs/testing/unit-tests/)  
-[Integration tests]({{site.baseurl}}/docs/testing/integration-tests/)  
-[Integration test with database]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-database/)  
-[Creating Compositions]({{site.baseurl}}/docs/on-demand-test-environment/create-composition/)
+[Unit testing]({{site.baseurl}}/docs/testing/unit-tests/)  
+[Integration testing]({{site.baseurl}}/docs/testing/integration-tests/)  
+[Integration test with database]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-mysql/)  
+[Creating compositions]({{site.baseurl}}/docs/testing/create-composition/)
 
 
 

@@ -20,7 +20,7 @@ Codefresh not only allows you to define different pipelines on a single project 
 The following types of triggers are currently supported pipelines:
 
 * [Git triggers](git-triggers)
-* [Dockerhub triggers](dockerhub-triggers)
+* [Docker Hub triggers](dockerhub-triggers)
 * [Azure Registry triggers](azure-triggers)
 * [Quay triggers](quay-triggers)
 * [Helm triggers](helm-triggers)
@@ -51,7 +51,7 @@ It is also possible to add multiple triggers for a pipeline so that it is execut
 
 If a pipeline has no defined trigger you can still start it manually.
 
-For all trigger types you can also use the [Codefresh CLI](https://codefresh-io.github.io/cli/triggers/) to manage them.
+You can also manage all trigger types using the [Codefresh CLI](https://codefresh-io.github.io/cli/triggers/){:target="\_blank"}.
 
 
 
@@ -81,15 +81,8 @@ caption="Adding new Trigger dialog"
 max-width="70%"
 %}
 
-For more information see:
+For more information, see [Pipeline trigger types](#pipeline-trigger-types)
 
-* [Git triggers](git-triggers)
-* [Dockerhub triggers](dockerhub-triggers)
-* [Azure Registry triggers](azure-triggers)
-* [Quay triggers](quay-triggers)
-* [Helm triggers](helm-triggers)
-* [Artifactory triggers](jfrog-triggers)
-* [Cron trigger](cron-triggers)
 
 ## Disabling triggers
 
@@ -112,4 +105,4 @@ by clicking the same switch.
 ## Related articles
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
 [Running pipelines locally]({{site.baseurl}}/docs/pipelines/running-pipelines-locally/)  
-[Trigger a Kubernetes Deployment from a Dockerhub Push Event]({{site.baseurl}}/docs//yaml-examples/examples/trigger-a-k8s-deployment-from-docker-registry/)
+[Trigger a Kubernetes deployment from a Docker Hub push event]({{site.baseurl}}/docs//example-catalog/cd-examples/trigger-a-k8s-deployment-from-docker-registry/)

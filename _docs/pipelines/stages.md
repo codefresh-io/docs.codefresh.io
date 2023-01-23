@@ -9,7 +9,7 @@ toc: true
 
 With Codefresh you can [create really complex pipelines]({{site.baseurl}}/docs/pipelines/pipelines/) with any number of steps. 
 
-To better visualize the pipeline, you can group several steps into a single _stage_. The _stage_ with the group of steps are displayed as a separate column in the [pipeline view]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/).
+To better visualize the pipeline, you can group several steps into a single _stage_. The _stage_ with the group of steps is displayed as a separate column in the [pipeline view]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/).
 
 {% include 
 image.html 
@@ -193,5 +193,5 @@ steps:
 
 
 ## Related articles
-[Steps in CI pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
+[Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
 [Parallel workflows]({{site.baseurl}}/docs/pipelines/advanced-workflows/)

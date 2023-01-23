@@ -13,7 +13,7 @@ Codefresh can run your pipelines locally. This is very handy when you need to de
 
 ## Prerequisites 
 
-You need to have Docker installed on your local workstation. You can follow the [official instructions](https://docs.docker.com/install/) to install it. Notice that if you use Linux, the Docker version offered by your native
+You need to have Docker installed on your local workstation. You can follow the [official instructions](https://docs.docker.com/install/){:target="\_blank"} to install it. Notice that if you use Linux, the Docker version offered by your native
 package manager is not always the latest version.
 
 Once docker is installed, check that it runs correctly with:
@@ -26,7 +26,7 @@ You should get a short welcome message.
 
 >At the time of writing local builds can only run on Linux and Mac workstations. We are working to remove this limitation and allow developers with Windows machines to also run Codefresh pipelines locally.
 
-Then install the [open-source Codefresh CLI](https://codefresh-io.github.io/cli/installation/) and [setup authentication](https://codefresh-io.github.io/cli/getting-started/) with your Codefresh account.
+Then install the [open-source Codefresh CLI](https://codefresh-io.github.io/cli/installation/){:target="\_blank"} and [set up authentication](https://codefresh-io.github.io/cli/getting-started/){:target="\_blank"} with your Codefresh account.
 
 Once this is done check that your account is locally accessible by running
 
@@ -38,13 +38,13 @@ You should see a long list with your pipelines on the terminal output.
 
 ## Running a pipeline locally
 
-The Codefresh Command Line Interface (CLI) comes with a [run parameter](https://codefresh-io.github.io/cli/pipelines/run-pipeline/) that allows you to trigger pipelines externally (outside the Codefresh UI).
+The Codefresh Command Line Interface (CLI) comes with a [run parameter](https://codefresh-io.github.io/cli/pipelines/run-pipeline/){:target="\_blank"} that allows you to trigger pipelines externally (outside the Codefresh UI).
 
 Normally, if you run a pipeline this way the CLI will just trigger it remotely (the pipeline itself will still run in the Codefresh infrastructure).
 
 You can pass however the `--local` option, and this will instruct the CLI to automatically:
 
-1. Download the Codefresh build engine locally to your workstation (which itself is a docker image at [codefresh/engine](https://hub.docker.com/r/codefresh/engine))
+1. Download the Codefresh build engine locally to your workstation (which itself is a docker image at [codefresh/engine](https://hub.docker.com/r/codefresh/engine){:target="\_blank"})
 1. Run the build locally using the Codefresh engine on your workstation
 1. Print all build logs to your terminal
 
@@ -75,7 +75,7 @@ caption="All steps share the same volume"
 max-width="80%" 
 %}
 
-By default, if you run a Codefresh pipeline locally, this shared volume will automatically be discarded at the end of the build. You can still keep the volume after the build by adding the `--local-volume` parameter in your [run command](https://codefresh-io.github.io/cli/pipelines/run-pipeline/). Here is an example:
+By default, if you run a Codefresh pipeline locally, this shared volume will automatically be discarded at the end of the build. You can still keep the volume after the build by adding the `--local-volume` parameter in your [run command](https://codefresh-io.github.io/cli/pipelines/run-pipeline/){:target="\_blank"}. Here is an example:
 
 ```
 codefresh run francisco-codefresh/jan_19/my-basic-pipeline --local --local-volume -b master -t my-trigger
@@ -121,5 +121,4 @@ When this pipeline runs locally, it will use whatever steps exist in `my-codefre
 
 ## Related articles
 [Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
-[Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)  
-[Introduction to Codefresh pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines)  
+[Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  

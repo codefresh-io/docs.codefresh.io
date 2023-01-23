@@ -383,10 +383,6 @@
           url: "/deploy"
         - title: Approval
           url: "/approval"
-        - title: Conditional execution of steps
-          url: "/conditional-execution-of-steps"
-        - title: Post-step operations
-          url: "/post-step-operations"
     - title: Triggers in pipelines
       url: "/triggers"
       sub-pages:
@@ -409,10 +405,14 @@
     - title: Hooks in pipelines
       url: "/hooks"
     - title: Annotations in pipelines
-      url: "/annotations"  
+      url: "/annotations" 
+    - title: Conditional execution of steps
+      url: "/conditional-execution-of-steps"
+    - title: Post-step operations
+      url: "/post-step-operations" 
     - title: Grouping steps into stages
       url: "/stages"
-    - title: Caching for pipelines
+    - title: Caching in pipelines
       url: "/pipeline-caching"    
     - title: Debugging pipelines
       url: "/debugging-pipelines"

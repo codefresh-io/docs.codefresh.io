@@ -120,7 +120,7 @@ If you have placed a breakpoint in the `override` phase of a freestyle step then
 
 In all cases the [shared Codefresh volume]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) is automounted so you can examine your source code or any other intermediate artifacts placed in your project folder or the pipeline cache.
 
-If the breakpoint is on a `before` or `after` phase, the command line terminal is powered by an [alpine](https://alpinelinux.org/) image. The image has already useful tools such as `wget`, `nc` and `vi`. If you have the advanced debugging capabilities in your Codefresh plan you can then install additional tools on your own directly in the terminal with [apk](https://wiki.alpinelinux.org/wiki/Alpine_Linux_package_management). Examples:
+If the breakpoint is on a `before` or `after` phase, the command line terminal is powered by an [Alpine](https://alpinelinux.org/){:target="\_blank"} image. The image has already useful tools such as `wget`, `nc` and `vi`. If you have the advanced debugging capabilities in your Codefresh plan you can then install additional tools on your own directly in the terminal with [apk](https://wiki.alpinelinux.org/wiki/Alpine_Linux_package_management){:target="\_blank"}. Examples:
 
 * `apk add curl`
 * `apk add nano`
@@ -248,5 +248,5 @@ If you get the message *your linux distribution is not supported* please contact
 
 ## Related articles
 [Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
-[Steps in CI pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
+[Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
 [Running pipelines locally]({{site.baseurl}}/docs/pipelines/running-pipelines-locally/)  

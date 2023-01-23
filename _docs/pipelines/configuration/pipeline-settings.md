@@ -8,9 +8,8 @@ redirect_from:
 toc: true
 ---
 
-To access your global pipeline settings navigate to [https://g.codefresh.io/account-admin/account-conf/pipeline-settings](https://g.codefresh.io/account-admin/account-conf/pipeline-settings) or click on *Account settings* on the left sidebar and then choose *Pipeline settings* item on the next screen.
 
-On this page, you can define global parameters for the whole Codefresh account regarding pipeline options. Users can still override some of these options for individual pipelines.
+You can define global parameters for all the pipelines in the account. Users can still override some of these options for individual pipelines.
 
 {% include image.html
 lightbox="true"
@@ -20,6 +19,9 @@ alt="Pipeline settings"
 caption="Pipeline settings"
 max-width="80%"
 %}
+
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
+1. From Configuration in the sidebar, select [**Pipeline Settings**](https://g.codefresh.io/account-admin/account-conf/pipeline-settings){:target="\_blank"}. 
 
 
 ## Pause pipeline executions
@@ -45,8 +47,8 @@ max-width="80%"
 
 Here you can define global template behavior. The options are:
 
-* Enable [pipeline templates]({{site.baseurl}}/docs/docs/pipelines/pipelines/#using-pipeline-templates) for users. If this is enabled some pipelines can be marked as templates and users can still select them when creating a new pipeline. 
-* Decide if users can clone an existing pipeline (along with its triggers and associated parameters) when [creating a new pipeline]({{site.baseurl}}/docs/docs/pipelines/pipelines/#creating-new-pipelines).
+* Enable [pipeline templates]({{site.baseurl}}/docs/pipelines/pipelines/#using-pipeline-templates) for users. If this is enabled some pipelines can be marked as templates and users can still select them when creating a new pipeline. 
+* Decide if users can clone an existing pipeline (along with its triggers and associated parameters) when [creating a new pipeline]({{site.baseurl}}/docs/pipelines/pipelines/#creating-a-pipeline).
 
 Note that templates are simply normal pipelines “marked” as a template. There is no technical difference between templates and actual pipelines.
 
@@ -54,9 +56,9 @@ Note that templates are simply normal pipelines “marked” as a template. Ther
 
 Here you can restrict the sources of pipeline YAML that users can select. The options are:
 
-* Enable/Disable the [inline editor]({{site.baseurl}}/docs/docs/pipelines/pipelines/#using-the-inline-pipeline-editor) where YAML is stored in Codefresh SaaS
+* Enable/Disable the [inline editor]({{site.baseurl}}/docs/pipelines/pipelines/#using-the-inline-pipeline-editor) where YAML is stored in Codefresh SaaS
 * Enable/disable pipeline YAML from connected Git repositories
-* Enable/disable pipeline YAML from [external URLs]({{site.baseurl}}/docs/docs/pipelines/pipelines/#loading-codefreshyml-from-version-control)
+* Enable/disable pipeline YAML from [external URLs]({{site.baseurl}}/docs/pipelines/pipelines/#loading-codefreshyml-from-version-control)
 
 You need to allow at least one of these options so that users can create new pipelines. We suggest leaving the first option enabled when users are still learning about Codefresh and want to experiment. 
 

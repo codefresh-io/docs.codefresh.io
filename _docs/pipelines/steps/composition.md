@@ -17,9 +17,9 @@ The composition step runs a Docker Composition as a means to execute finite comm
 
 The primary purpose of compositions is to run tests that require multiple services for their execution (often known as integration tests).
 
-The syntax offered by Codefresh closely follows the syntax for [Docker-compose](https://docs.docker.com/compose/overview/) files, but is technically not 100% the same (there are some important differences).  However, if you are already familiar with Docker compose, you will be immediately familiar with Codefresh compositions.
+The syntax offered by Codefresh closely follows the syntax for [Docker-compose](https://docs.docker.com/compose/overview/){:target="\_blank"} files, but is technically not 100% the same (there are some important differences).  However, if you are already familiar with Docker compose, you will be immediately familiar with Codefresh compositions.
 
-> Codefresh only understands Docker compose versions [2](https://docs.docker.com/compose/compose-file/compose-file-v2/) and [3](https://docs.docker.com/compose/compose-file/), but not point releases such as 2.1.
+> Codefresh only understands Docker compose versions [2](https://docs.docker.com/compose/compose-file/compose-file-v2/){:target="\_blank"} and [3](https://docs.docker.com/compose/compose-file/){:target="\_blank"}, but not point releases such as 2.1.
 
 The big difference between the Codefresh and Docker compose is that Codefresh is distinguishes between two kinds of services:
 
@@ -94,18 +94,18 @@ The following describes the fields available in a step of type `composition`
 | `description`                              | A basic, free-text description of the step.                                                                                                                                                                                              | Optional                  |
 | `stage`                              | Parent group of this step. See [using stages]({{site.baseurl}}/docs/pipelines/stages/) for more information.                                                                                                                                                                                          | Optional                  |
 | `working_directory`                        | The directory in which to search for the composition file. It can be an explicit path in the container's file system, or a variable that references another step. The default is {% raw %}`${{main_clone}}`{% endraw %}. Note that this is completely different from `working_dir` which is on the service level.             | Default                   |
-| `composition`                              | The composition you want to run. This can be an inline YAML definition or a path to a composition file on the file system, e.g. `docker-compose.yml`, or the logical name of a composition stored in the Codefresh system. We support most features of [Docker compose version 2.0](https://docs.docker.com/compose/compose-file/compose-file-v2/) and [3.0](https://docs.docker.com/compose/compose-file/)                                            | Required                  |
+| `composition`                              | The composition you want to run. This can be an inline YAML definition or a path to a composition file on the file system, e.g. `docker-compose.yml`, or the logical name of a composition stored in the Codefresh system. We support most features of Docker compose [version 2.0](https://docs.docker.com/compose/compose-file/compose-file-v2/){:target="\_blank"}  and [3.0](https://docs.docker.com/compose/compose-file/){:target="\_blank"}                                            | Required                  |
 | `version`                              | Version for docker compose. Use `2` or `3`                                          | Required                  |
 | `composition_candidates`                   | The definition of the service to monitor. Each candidate has a **single** `command` parameter that decides what will be tested.                                                                                                                                                                                              | Required                  |
 | `environment` (service level)                             | environment that will be accessible to the container                                                                                                                                                                                     | Optional                  |
 | `working_dir` (service level)                             | defines the working directory that will be used in a service before running a command. By default it is defined by the docker image that is used by the service.                                                                                                                             | Optional                  |
-| `registry_contexts`                                 | Advanced property for resolving Docker images when [working with multiple registries with the same domain]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/#working-with-multiple-registries-with-the-same-domain)                            | Optional                  |
+| `registry_contexts`                                 | Advanced property for resolving Docker images when [working with multiple registries with the same domain]({{site.baseurl}}/docs/ci-cd-guides/working-with-docker-registries/#working-with-multiple-registries-with-the-same-domain)                            | Optional                  |
 | `volumes` (service level)                             | Extra volumes for individual services. Used for transferring information between your steps. Explained in detail later in this page.                                                                                                                             | Optional                  |
 | `composition_variables`                    | A set of environment variables to substitute in the composition. Notice that these variables are docker-compose variables and **NOT** environment variables                                                                                                                                                                         | Optional                  |
 | `fail_fast`                                | If a step fails, and the process is halted. The default value is `true`.                                                                                                                                                                 | Default                   |
-| `when`                                     | Define a set of conditions which need to be satisfied in order to execute this step.<br>You can find more information in the [Conditional Execution of Steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/) article.                               | Optional                  |
-| `on_success`, `on_fail` and `on_finish`    | Define operations to perform upon step completion using a set of predefined [Post-Step Operations]({{site.baseurl}}/docs/pipelines/post-step-operations/).                                                                                                            | Optional                  |
-| `retry`   | Define retry behavior as described in [Retrying a step]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#retrying-a-step).                                                                               | Optional                  |
+| `when`                                     | Define a set of conditions which need to be satisfied in order to execute this step.<br>You can find more information in the [conditional execution of steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/) article.                               | Optional                  |
+| `on_success`, `on_fail` and `on_finish`    | Define operations to perform upon step completion using a set of predefined [post-step operations]({{site.baseurl}}/docs/pipelines/post-step-operations/).                                                                                                            | Optional                  |
+| `retry`   | Define retry behavior as described in [retrying a step]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#retrying-a-step).                                                                               | Optional                  |
 
 ## Composition versus Composition Candidates
 
@@ -113,7 +113,7 @@ For Codefresh to determine if the step and operations were successfully executed
 
 A `composition_candidate` is a single service component of the normal Docker composition that is monitored for a successful exit code and determines the outcome of the step. During runtime, the `composition_candidate` is merged into the specified `composition`and is monitored for successful execution.
 
-The critical part of each candidate is the `command` parameter. This takes [a single command](https://docs.docker.com/compose/compose-file/#command) that will
+The critical part of each candidate is the `command` parameter. This takes [a single command](https://docs.docker.com/compose/compose-file/#command){:target="\_blank"} that will
 be executed inside the Docker container of the candidate and will decide if the whole composition is successful or not. Only one command is allowed (similar to Docker compose). If you wish to test multiple commands you need to connect them with `&&` like this.
 
 {% highlight yaml %}
@@ -203,7 +203,7 @@ In this composition the MySql instance will be available at host `db:3306` acces
 Notice also that like docker compose the order that the services are launched is not guaranteed. A quick way to solve this issue
 is with a sleep statement like shown above. This will make sure that the database is truly up before the tests run.
 
-A better approach would be to use solutions such as [wait-for-it](https://github.com/vishnubob/wait-for-it) which are much more robust. Here is an example:
+A better approach would be to use solutions such as [wait-for-it](https://github.com/vishnubob/wait-for-it){:target="\_blank"} which are much more robust. Here is an example:
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -350,7 +350,7 @@ Therefore, in this pipeline you can see both ways of data sharing, bringing file
 
 ## Composition variables versus environment variables
 
-Docker compose supports [two kinds of variables in its syntax](https://docs.docker.com/compose/environment-variables/):
+Docker compose supports [two kinds of variables in its syntax](https://docs.docker.com/compose/environment-variables/){:target="\_blank"} :
 
 * There are environment variables that are used in the docker-compose file itself (`${VAR}` syntax).
 * There are environment variables that are passed in containers (`environment:` yaml group).
@@ -428,8 +428,8 @@ run_tests:
 In the above example, both `composition` and `composition_candidates` define a service named `test_service`. After merging these definitions, `test_service` will maintain the `command` that was defined in the original composition but will refer to the image built by the step named `build_step`.
 
 ## Related articles
-[Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)  
-[Variables]({{site.baseurl}}/docs/pipelines/variables/)  
+[Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
+[Variables in pipelines]({{site.baseurl}}/docs/pipelines/variables/)  
 [Introduction to pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)  
-[Integration tests]({{site.baseurl}}/docs/testing/integration-tests/)  
+[Integration testing]({{site.baseurl}}/docs/testing/integration-tests/)  
 

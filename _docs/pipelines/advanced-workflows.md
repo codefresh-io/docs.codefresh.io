@@ -18,7 +18,7 @@ With the parallel execution mode, you can define complex pipelines with fan-in/o
 
 >In Codefresh, parallel execution is unrelated to [stages]({{site.baseurl}}/docs/pipelines/stages/). Stages are only a way to visually organize your pipeline steps. The actual execution is independent from the visual layout in the logs view.
 
-Before going any further make sure that you are familiar with the [basics of Codefresh pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/).
+Before going any further make sure that you are familiar with the [basics of Codefresh pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/).
 
 Codefresh offers two modes of execution:
 
@@ -156,8 +156,8 @@ The pipeline view for this yaml file is the following.
 {% include 
 image.html 
 lightbox="true" 
-file="/images/codefresh-yaml/parallel-push.png" 
-url="/images/codefresh-yaml/parallel-push.png"
+file="/images/pipeline/codefresh-yaml/parallel-push.png" 
+url="/images/pipeline/codefresh-yaml/parallel-push.png"
 alt="Parallel Docker push" 
 caption="Parallel Docker push"
 max-width="80%"
@@ -671,7 +671,7 @@ If you run the pipeline you will see that Codefresh automatically understands th
 Also notice the `fail_fast: false` line in the unit tests. By default, if *any* steps fails in a pipeline the whole pipeline is marked as a failure. With the `fail_fast` directive we can allow the pipeline to continue so that other steps that depend on the failed step can still run even.
 
 
-### Multipl step dependencies
+### Multiple step dependencies
 
 A pipeline step can also depend on multiple other steps. 
 

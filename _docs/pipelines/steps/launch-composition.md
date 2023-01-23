@@ -1,10 +1,10 @@
 ---
-title: "Launch-Composition"
+title: "Launch-Composition step"
 description: "Create a test environment with its dependencies in Codefresh infrastructure"
 group: pipelines
 sub_group: steps
 redirect_from:
-  - /docs/pipelines/steps/launch-composition/
+  - /docs/codefresh-yaml/steps/launch-composition/
   - /docs/launch-composition-2/
   - /docs/codefresh-yaml/steps/launch-composition-2/
 toc: true
@@ -81,13 +81,13 @@ step_name:
 | `environment_name`                         | The environment name that will be given. In case a previous environment exists with the same name, it will first be terminated. The default value will the be the name/path provided in the 'composition' field.                        | Default                   |
 | `composition_variables`                    | A set of environment variables to substitute in the composition.                                                                                                                                                                        | Optional                  |
 | `fail_fast`                                | If a step fails, and the process is halted. The default value is `true`.                                                                                                                                                                | Default                   |
-| `when`                                     | Define a set of conditions which need to be satisfied in order to execute this step.<br>You can find more information in the [[Conditional Execution of Steps]({{ site.baseurl }}/docs/pipelines/conditional-execution-of-steps/) article.                              | Optional                  |
-| `on_success`, `on_fail` and `on_finish`    | Define operations to perform upon step completion using a set of predefined [Post-Step Operations]({{ site.baseurl }}/docs/pipelines/post-step-operations/).                                                                                                           | Optional                  |
+| `when`                                     | Define a set of conditions which need to be satisfied in order to execute this step.<br>You can find more information in the [conditional execution of steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/) article.                              | Optional                  |
+| `on_success`, `on_fail` and `on_finish`    | Define operations to perform upon step completion using a set of predefined [post-step operations]({{site.baseurl}}/docs/pipelines/post-step-operations/).                                                                                                           | Optional                  |
 | entry_point                                | The name of main service                                                                                                                                                                                                                | Optional                 |
-| `retry`   | Define retry behavior as described in [Retrying a step]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#retrying-a-step).                                                                               | Optional                  |
+| `retry`   | Define retry behavior as described in [retrying a step]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#retrying-a-step).                                                                               | Optional                  |
 
 ## Related articles
-[Preview environments]({{site.baseurl}}/docs/getting-started/on-demand-environments/)  
-[Launch Composition example]({{site.baseurl}}/docs/yaml-examples/examples/launch-composition/)  
-[Integration tests]({{site.baseurl}}/docs/testing/integration-tests/)  
-[Service Containers]({{site.baseurl}}/docs/pipelines/service-containers/)
+[On-demand environment quick start]({{site.baseurl}}/docs/quick-start/ci-quickstart/on-demand-environments/)  
+[Launch Composition example]({{site.baseurl}}/docs/example-catalog/ci-examples/launch-composition/)  
+[Integration testing]({{site.baseurl}}/docs/testing/integration-tests/)  
+[Service containers in pipelines]({{site.baseurl}}/docs/pipelines/service-containers/)

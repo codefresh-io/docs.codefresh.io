@@ -1,5 +1,5 @@
 ---
-title: "Cron Trigger"
+title: "Cron (Timer) triggers"
 description: "Run pipelines with a time schedule"
 group: pipelines
 sub_group: triggers
@@ -31,7 +31,7 @@ max-width="60%"
 %}
 
 
-Visit [this page](https://github.com/codefresh-io/cronus/blob/master/docs/expression.md) to learn about supported `cron` expression format and aliases.
+Visit [this page](https://github.com/codefresh-io/cronus/blob/master/docs/expression.md){:target="\_blank"} to learn about supported `cron` expression format and aliases.
 
 
 Fill the following information:
@@ -41,8 +41,8 @@ Fill the following information:
 
 {% include image.html
 lightbox="true"
-file="/images/cron_trigger.png"
-url="/images/cron_trigger.png"
+file="/images/pipeline/triggers/cron_trigger.png"
+url="/images/pipeline/triggers/cron_trigger.png"
 alt="Add Cron Trigger"
 max-width="70%"
 %}
@@ -60,7 +60,7 @@ It is also possible to use the Codefresh Command Line client (`CLI`) to manage C
 
 It is possible to trigger a Codefresh CD pipeline(s) periodically, using `cron` expression.
 
-You can use [Codefresh CLI](https://cli.codefresh.io/) to setup a Codefresh `cron` trigger.
+You can use [Codefresh CLI](https://cli.codefresh.io/){:target="\_blank"} to set up a Codefresh `cron` trigger.
 
 #### Create Cron trigger-event
 
@@ -76,13 +76,13 @@ Trigger event: "cron:codefresh:codefresh:0 */20 * * * *:hello-once-in-20-min:107
 
 When creating a `cron trigger-event`, it is possible to specify a short text message, that will be passed to linked pipelines, every time the specified `cron` timer is triggered.
 
-Visit [this page](https://github.com/codefresh-io/cronus/blob/master/docs/expression.md) to learn about the supported `cron` expression format and aliases.
+Visit [this page](https://github.com/codefresh-io/cronus/blob/master/docs/expression.md){:target="\_blank"} to learn about the supported `cron` expression format and aliases.
 
 #### Set up pipeline trigger
 
 Now, lets create a new pipeline trigger, linking previously defined `cron` `trigger-event` to one or more Codefresh pipelines.
 
-```sh
+```
 # create trigger, linking trigger-event UID to the pipeline UID
 codefresh create trigger "cron:codefresh:codefresh:0 */20 * * * *:hello-once-in-20-min:107e9db97062" 7a5622e4b1ad5ba0018a3c9c
 
@@ -100,6 +100,6 @@ The following variables will be available for any Codefresh pipeline linked to a
 - `EVENT_TIMESTAMP` - event timestamp in RFC 3339 format
 
 ## Related articles
-[Triggers for pipelines]({{site.baseurl}}/docs/pipelines/triggers)  
+[Triggers in pipelines]({{site.baseurl}}/docs/pipelines/triggers)  
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
 

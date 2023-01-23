@@ -2,13 +2,14 @@
 title: "Conditional execution of steps"
 description: "Skip specific pipeline steps according to one or more conditions"
 group: pipelines
-sub_group: steps
 redirect_from:
   - /docs/codefresh-yaml/conditional-execution-of-steps/
+  - /docs/codefresh-yaml/condition-expression-syntax/
   - /docs/conditional-execution-of-steps/
+
 toc: true
 ---
-For each step in a `codefresh.yml` file, you can define a set of conditions which need to be satisfied in order to execute the step. (An introduction to the `codefresh.yml` file can be found [here]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/).)
+For each step in a `codefresh.yml` file, you can define a set of conditions which need to be satisfied in order to execute the step. For details on the `codefresh.yml` file, see [Pipeline definitions YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/).)
 
 There are currently two main methods to define conditions:   
 * Branch conditions
@@ -67,7 +68,7 @@ build-step:
 {% endhighlight %}
 
 
->We use [JavaScript regular expressions](https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Regular_Expressions) for the syntax in branch conditions.
+>We use [JavaScript regular expressions](https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Regular_Expressions){:target="\_blank"} for the syntax in branch conditions.
 
 
 ## Condition expressions
@@ -142,8 +143,7 @@ A condition expression is a basic expression that is evaluated to true/false (to
 
 #### Variables
 
-You can use the User Provided variables as explained in [Variables]({{site.baseurl}}/docs/pipelines/variables/), including the [variables
-exposed by each individual pipeline step]({{site.baseurl}}/docs/pipelines/variables/#step-variables).
+You can use the user-defined variables, including the variables exposed by each individual pipeline step. See [Variables in pipelines]({{site.baseurl}}/docs/pipelines/variables/).
 
 #### Unary Operators
 
@@ -244,6 +244,6 @@ Try running the pipeline above and see how it behaves when a variable called `MY
 
 ## Related articles
 [Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)   
-[Variables]({{site.baseurl}}/docs/pipelines/variables/)  
+[Variables in pipelines]({{site.baseurl}}/docs/pipelines/variables/)  
 [Pull Requests and Branches]({{site.baseurl}}/docs/ci-cd-guides/pull-request-branches/)  
-[Pipeline/Step hooks]({{site.baseurl}}/docs/pipelines/hooks/)
+[Hooks in pipelines]({{site.baseurl}}/docs/pipelines/hooks/)

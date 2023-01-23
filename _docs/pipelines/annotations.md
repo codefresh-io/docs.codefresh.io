@@ -1,5 +1,5 @@
 ---
-title: "Annotations in CI pipelines"
+title: "Annotations in pipelines"
 description: "Mark your builds and projects with extra annotations"
 group: pipelines
 redirect_from:
@@ -16,15 +16,15 @@ Currently Codefresh supports extra annotations for:
 * Builds 
 * Docker images
 
-You can view/edit annotations using the [Codefresh CLI](https://codefresh-io.github.io/cli/annotations/) or directly in the Codefresh Web UI.
+You can view/edit annotations using the [Codefresh CLI](https://codefresh-io.github.io/cli/annotations/){:target="\_blank"} or directly in the Codefresh Web UI.
 
->Notice that the syntax shown in this page is deprecated but still supported. For the new syntax
-see [hooks]({{site.baseurl}}/docs/pipelines/hooks/).
+>Notice that the syntax shown in this page is deprecated but still supported. For the new syntax,
+see [hooks in pipelines]({{site.baseurl}}/docs/pipelines/hooks/).
 
 
 ## Adding annotations 
 
-In the most basic scenario you can use the [post operations]({{site.baseurl}}/docs/pipelines/post-step-operations/) of any Codefresh [step]({{site.baseurl}}/docs/pipelines/steps/) to add annotations:
+In the most basic scenario, you can use the [post-step operations]({{site.baseurl}}/docs/pipelines/post-step-operations/) of any Codefresh [step]({{site.baseurl}}/docs/pipelines/steps/) to add annotations:
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -163,7 +163,7 @@ Click *Save* to apply your changes.
 
 ## Complex annotation values
 
-Apart from scalar values, you can also store more complex expressions in annotations. You have access to all [Codefresh variables]({{site.baseurl}}/docs/pipelines/variables/), text files from the build and even evaluations from the [expression syntax]({{site.baseurl}}/docs/pipelines/condition-expression-syntax/).
+Apart from scalar values, you can also store more complex expressions in annotations. You have access to all [Codefresh variables]({{site.baseurl}}/docs/pipelines/variables/), text files from the build and even evaluations from the [expression syntax]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/#condition-expression-syntax).
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -196,7 +196,7 @@ steps:
 {% endraw %}            
 {% endhighlight %}
 
->Notice that this pipeline is using dynamic git repository variables, so it must be linked to a least one [git trigger]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/) in order to work.
+>Notice that this pipeline is using dynamic git repository variables, so it must be linked to a least one [Git trigger]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/) in order to work.
 
 The last two annotations add the text of a file as a value. You can define an absolute or relative path. No processing is done on the file before being stored. If a file is not found, the annotation will still be added verbatim.
 We suggest you only store small text files in this manner as annotations values.
@@ -297,7 +297,6 @@ You can also define `entity_type` as `image` and don't enter any `entity_id`. In
 Note that this syntax is optional. You can still define annotations for a build/image or any other entity using the post operations of any step by mentioning explicitly the target id and type.
 
 ## Related articles
-[Image annotations]({{site.baseurl}}/docs/docker-registries/metadata-annotations/)  
-[Post-step operations]({{site.baseurl}}/docs/pipelines/post-step-operations/)  
-[Creating CI pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
-[Hooks in CI pipelines]({{site.baseurl}}/docs/pipelines/hooks/)  
+[Image annotations]({{site.baseurl}}/docs/pipelines/docker-image-metadata/)   
+[Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
+[Hooks in pipelines]({{site.baseurl}}/docs/pipelines/hooks/)  
