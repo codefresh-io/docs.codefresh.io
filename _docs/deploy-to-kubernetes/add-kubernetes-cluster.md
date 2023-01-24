@@ -367,7 +367,7 @@ metadata:
 rules:
   - apiGroups: [""]
     resources: ["*"]
-    verbs: [“list”, “watch”, “get”] 
+    verbs: ["list", "watch", "get"] 
 {% endraw %}
 {% endhighlight %}
 
@@ -405,7 +405,7 @@ subjects:
 - kind: ServiceAccount
   name: codefresh-user
   namespace: kube-system
-—
+—--
 apiVersion: v1
 kind: Secret
 type: kubernetes.io/service-account-token
