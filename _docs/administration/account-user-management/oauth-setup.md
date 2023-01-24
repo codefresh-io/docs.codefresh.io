@@ -6,7 +6,7 @@ sub_group: account-user-management
 toc: true
 ---
 
-Codefresh integrates with the Git provider defined for your runtime account to sync repositories to your clusters, implementing Git-based operations when creating resources such as Delivery Pipelines, applications, and enriching images with valuable information.  
+Codefresh integrates with the Git provider defined for your GitOps runtime account to sync repositories to your clusters, implementing Git-based operations when creating resources such as Delivery Pipelines, applications, and enriching images with valuable information.  
 
 As the account administrator, you can select the authentication method for a runtime account. Users in Codefresh will then authorize access to the Git providers through the defined mechanism.  
 
@@ -34,7 +34,7 @@ Codefresh supports OAuth2 or personal access tokens (PATs) for authentication:
 
 
 ## Authentication for Git providers and runtime accounts
-The [Authentication](https://g.codefresh.io/2.0/account-settings/authentication?providerName=github){:target="\_blank"} page displays the accounts by Git provider and the authentication method selected for the same.  
+The [Git Authentication](https://g.codefresh.io/2.0/account-settings/authentication?providerName=github){:target="\_blank"} page displays the accounts by Git provider and the authentication method selected for the same.  
 
 Authentication accounts are organized by Runtimes. A runtime can have a single authentication account.   
 The Type column identifies the authentication for the provider account as either Codefresh, Custom, or PAT (personal access token). 
@@ -49,7 +49,7 @@ The Type column identifies the authentication for the provider account as either
    max-width="80%" 
    %}
  
-As the account administrator, you can change the authentication method for an account at any time to either Codefresh or Custom, or manual token entry. See [Select authentication mechanism for runtime](#select-authentication-mechanism-for-runtime).
+As the account administrator, you can change the authentication method for a Hybrid GitOps runtime at any time to either Codefresh, Custom, or manual token entry. See [Select authentication mechanism for runtime](#select-authentication-mechanism-for-runtime).
 
 ## Create a custom OAuth2 Application for Git provider 
 Create a custom OAuth2 Application for Codefresh in your Git provider accounts with the correct scopes, and set up authentication for the same within Codefresh. Users in Codefresh can then authorize access to the Git provider using OAuth2, instead of a personal access token.  
@@ -214,8 +214,10 @@ You have completed the setup to authorize Codefresh as an OAuth App for your Git
 ## Select authentication mechanism for runtime
 For a Git provider and a runtime account, select the authentication mechanism: Codefresh account, Custom provider account if one exists, or token-based authentication.
 
+>Hosted GitOps runtimes support either Codefresh or token-based authentication.
+
 1. In the Codefresh UI, go to [Authentication](https://g.codefresh.io/2.0/account-settings/authentication?providerName=github){:target="\_blank"}.
-1. Select the runtime, and click ![](/images/administration/users/icon-Edit.png?display=inline-block) **Edit**. 
+1. Select the runtime, and click **Edit**. 
 1. Select the OAuth authentication provider account.
 
 
