@@ -95,7 +95,7 @@ For more information see:
 You can easily disable a trigger manually if you don't want to be active anymore.
 On the triggers tab click the gear icon on the top right (*Open advanced options*).
 
->You can also skip triggering the pipeline without disabling the trigger by adding a predefined string to the commit message. See Skip triggering pipeline on commit(#skip-triggering-pipeline-on-commit).
+
 
 {% include image.html
 lightbox="true"
@@ -110,17 +110,7 @@ max-width="70%"
 Then click the toggle switch on each trigger that you want to enable/disable. You can later enable the same trigger again
 by clicking the same switch.
 
-## Skip triggering pipeline on commit
-The default behavior triggers the pipeline on a commit action.  
-Override the default behavior by adding any one of the predefined strings anywhere in the commit message.
-
->Remember to include the opening and closing parentheses when adding the strings. 
-
-* `[skip ci]`
-* `[ci skip]`
-* `[no ci]`
-* `[skip codefresh]`
-* `[codefresh skip]`
+>For Git triggers, you can also skip triggering the pipeline without disabling the trigger by adding a predefined string to the commit message. See [Skip triggering pipeline on commit]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/#skip-triggering-pipeline-on-commit).
 
 
 ## What to read next
