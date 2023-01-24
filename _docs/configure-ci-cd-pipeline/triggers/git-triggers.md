@@ -46,14 +46,23 @@ The Git Trigger is comprised of the following settings:
 * *Trigger Name* - a freetext trigger name (required).
 * *Description* - a freetext description (optional).
 * *Repository* - you can select any repository even something different than the one that is used for the code checkout.
-* *Commit Checkbox* - if enabled will trigger this pipeline for any commit.
-* *PR Checkboxes* - various checkboxes for filtering the Pull request event.
-
-The commit checkbox (by default it is enabled) means that this pipeline will run for *any* commit as long as its source branch matches the naming scheme. This includes commits on pull requests.
-
-The PR checkboxes mean that this pipeline will run only on the respective events that happen on a Pull Request. You can select multiple checkboxes to further fine-tune the exact event. If you are interested in all events, select the checkbox *Any Pull Request event*.
+* *Trigger by* - Commit and PR trigger options. Push Commit when enabled triggers this pipeline for any commit.  
+  The commit checkbox (by default it is enabled) means that this pipeline will run for *any* commit as long as its source branch matches the naming scheme. This includes commits on pull requests.  
+  The PR checkboxes mean that this pipeline will run only on the respective events that happen on a Pull Request. You can select multiple checkboxes to further fine-tune the exact event. If you are interested in all events, select the checkbox *Any Pull Request event*.
 
 >The individual Pull request checkboxes are available only for GitHub repositories.
+
+## Skip triggering pipeline on commit
+The default behavior triggers the pipeline on a commit action.  
+Override the default behavior by adding any one of the predefined strings anywhere in the commit message.
+
+>Remember to include the opening and closing parentheses when adding the strings. 
+
+* `[skip ci]`
+* `[ci skip]`
+* `[no ci]`
+* `[skip codefresh]`
+* `[codefresh skip]`
 
 ## Configure Filter Settings
 
@@ -70,6 +79,7 @@ max-width="50%"
 * *PR Comment (restricted) and PR Comment Fields* - useful for open source projects.
 * *Pull Request Target* branch - this is a regular expression and will trigger only when a Pull request is created against any branch that matches it.
 * *Modified Files* - allows you to constrain the build and trigger it only if the modified files from the commit match this [glob expression](https://en.wikipedia.org/wiki/Glob_(programming)).
+
 
 ### Pull Request Target Branch and Branch 
 
