@@ -46,7 +46,7 @@ The Git Trigger is comprised of the following settings:
 * *Trigger Name* - a freetext trigger name (required).
 * *Description* - a freetext description (optional).
 * *Repository* - you can select any repository even something different than the one that is used for the code checkout.
-* *Commit Checkbox* - if enabled will trigger this pipeline for any commit.
+* *Commit Checkbox* - if enabled will trigger this pipeline for any commit, unless the commit message includes any one of the predefined flags in the commit message. 
 * *PR Checkboxes* - various checkboxes for filtering the Pull request event.
 
 The commit checkbox (by default it is enabled) means that this pipeline will run for *any* commit as long as its source branch matches the naming scheme. This includes commits on pull requests.
@@ -54,6 +54,8 @@ The commit checkbox (by default it is enabled) means that this pipeline will run
 The PR checkboxes mean that this pipeline will run only on the respective events that happen on a Pull Request. You can select multiple checkboxes to further fine-tune the exact event. If you are interested in all events, select the checkbox *Any Pull Request event*.
 
 >The individual Pull request checkboxes are available only for GitHub repositories.
+
+
 
 ## Configure Filter Settings
 
