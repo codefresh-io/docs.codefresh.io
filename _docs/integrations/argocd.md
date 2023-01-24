@@ -7,6 +7,11 @@ redirect_from:
 toc: true
 ---
 
+> Important:  
+  We are planning to deprecate the ArgoCD agent for Codefresh pipelines. It has now been replaced with the GitOps runtime, that offers a superset of the functionality of the agent, and is also better integrated
+  with the Codefresh dashboards.  
+
+  For an overview, read [Codefresh for GitOps]({{site.baseurl}}/docs/getting-started/gitops-codefresh/), and then click the links for detailed information.
 
 Before you can use Codefresh and ArgoCD together, you need to connect your ArgoCD installation in your Codefresh account. This way Codefresh will send and receive information from your ArgoCD instance. 
 
