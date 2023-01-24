@@ -365,8 +365,8 @@ apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: codefresh-role
 rules:
-  - apiGroups: [“”]
-    resources: [“*”]
+  - apiGroups: [""]
+    resources: ["*"]
     verbs: [“list”, “watch”, “get”] 
 {% endraw %}
 {% endhighlight %}
@@ -383,8 +383,8 @@ apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: codefresh-role
 rules:
-  - apiGroups: [ "*"]
-    resources: [“*”]
+  - apiGroups: ["*"]
+    resources: ["*"]
     verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
 —--
 apiVersion: v1
@@ -428,8 +428,8 @@ kubectl config use-context <my-cluster-name>
 {% endraw %}
 {% endhighlight %}
 
+{:start="2"}
 1. Create the Codefresh user/role:
-
 `Apply Codefresh access rules`
 {% highlight shell %}
 {% raw %}
@@ -438,7 +438,6 @@ kubectl apply -f codefresh-role-sa-bind.yml
 {% endhighlight %}
 
 1. Finally run the following commands, and copy-paste the results to the respective Codefresh field in the UI:
-
 `Host IP`
 {% highlight shell %}
 {% raw %}
