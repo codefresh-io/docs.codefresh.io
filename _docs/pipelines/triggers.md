@@ -102,6 +102,8 @@ max-width="70%"
 Then click the toggle switch on each trigger that you want to enable/disable. You can later enable the same trigger again
 by clicking the same switch.
 
+>For Git triggers, you can also skip triggering the pipeline without disabling the trigger by adding a predefined string to the commit message. See [Skip triggering pipeline on commit]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/#skip-triggering-pipeline-on-commit).
+
 ## Related articles
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
 [Running pipelines locally]({{site.baseurl}}/docs/pipelines/running-pipelines-locally/)  

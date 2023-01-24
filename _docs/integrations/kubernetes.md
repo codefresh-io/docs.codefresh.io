@@ -387,9 +387,9 @@ apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: codefresh-role
 rules:
-  - apiGroups: [“”]
-    resources: [“*”]
-    verbs: [“list”, “watch”, “get”] 
+  - apiGroups: [""]
+    resources: ["*"]
+    verbs: ["list", "watch", "get"] 
 {% endraw %}
 {% endhighlight %}
 
@@ -405,16 +405,16 @@ apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: codefresh-role
 rules:
-  - apiGroups: [ “*”]
-    resources: [“*”]
-    verbs: [“get”, “list”, “watch”, “create”, “update”, “patch”, “delete”]
-—
+  - apiGroups: [ "*"]
+    resources: ["*"]
+    verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+—--
 apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: codefresh-user
   namespace: kube-system
-—
+—--
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
@@ -427,7 +427,7 @@ subjects:
 - kind: ServiceAccount
   name: codefresh-user
   namespace: kube-system
-—
+—--
 apiVersion: v1
 kind: Secret
 type: kubernetes.io/service-account-token
@@ -435,7 +435,7 @@ metadata:
   name: codefresh-user-token
   namespace: kube-system
   annotations:
-    kubernetes.io/service-account.name: “codefresh-user” 
+    kubernetes.io/service-account.name: "codefresh-user"
     
 {% endraw %}
 {% endhighlight %}
@@ -450,8 +450,8 @@ kubectl config use-context <my-cluster-name>
 {% endraw %}
 {% endhighlight %}
 
-1. Create the Codefresh user/role:
-
+{start="2"}
+1. Create the Codefresh user/role:  
 `Apply Codefresh access rules`
 {% highlight shell %}
 {% raw %}
@@ -459,26 +459,26 @@ kubectl apply -f codefresh-role-sa-bind.yml
 {% endraw %}
 {% endhighlight %}
 
-1. Finally run the following commands, and copy-paste the results to the respective Codefresh field in the UI:
-
+{start="2"}
+1. Finally run the following commands, and copy-paste the results to the respective Codefresh field in the UI:  
 `Host IP`
 {% highlight shell %}
 {% raw %}
-export CURRENT_CONTEXT=$(kubectl config current-context) && export CURRENT_CLUSTER=$(kubectl config view -o go-template=“{{\$curr_context := \”$CURRENT_CONTEXT\” }}{{range .contexts}}{{if eq .name \$curr_context}}{{.context.cluster}}{{end}}{{end}}”) && echo $(kubectl config view -o go-template=“{{\$cluster_context := \”$CURRENT_CLUSTER\”}}{{range .clusters}}{{if eq .name \$cluster_context}}{{.cluster.server}}{{end}}{{end}}”)
+export CURRENT_CONTEXT=$(kubectl config current-context) && export CURRENT_CLUSTER=$(kubectl config view -o go-template="{{\$curr_context := \"$CURRENT_CONTEXT\" }}{{range .contexts}}{{if eq .name \$curr_context}}{{.context.cluster}}{{end}}{{end}}") && echo $(kubectl config view -o go-template="{{\$cluster_context := \"$CURRENT_CLUSTER\"}}{{range .clusters}}{{if eq .name \$cluster_context}}{{.cluster.server}}{{end}}{{end}}")
 {% endraw %}
 {% endhighlight %}
 
 `Certificate`
 {% highlight shell %}
 {% raw %}
-echo $(kubectl get secret -n kube-system -o go-template=‘{{index .data “ca.crt” }}’ codefresh-user-token)
+echo $(kubectl get secret -n kube-system -o go-template='{{index .data "ca.crt" }}' codefresh-user-token)
 {% endraw %}
 {% endhighlight %}
 
 `Token`
 {% highlight shell %}
 {% raw %}
-echo $(kubectl get secret -n kube-system -o go-template=‘{{index .data “token” }}’ codefresh-user-token)
+echo $(kubectl get secret -n kube-system -o go-template='{{index .data "token" }}' codefresh-user-token)
 {% endraw %}
 {% endhighlight %}
 

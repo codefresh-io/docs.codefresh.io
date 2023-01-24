@@ -48,14 +48,23 @@ The Git trigger is comprised of the following settings:
 * *Trigger Name* - a freetext trigger name (required).
 * *Description* - a freetext description (optional).
 * *Repository* - you can select any repository even something different than the one that is used for the code checkout.
-* *Commit Checkbox* - if enabled will trigger this pipeline for any commit.
-* *PR Checkboxes* - various checkboxes for filtering the Pull request event.
+* *Trigger by* - Options for commits and PRs. 
+    The *Push Commit* option, enabled by default, means that this pipeline will run for *any* commit as long as its source branch matches the naming scheme. This includes commits on pull requests.  
+    The *PR* options mean that this pipeline will run only on the respective events that happen on a Pull Request. You can select multiple options to further fine-tune the exact event. If you are interested in all events, select *Any Pull Request event*.
 
-The commit checkbox (by default it is enabled) means that this pipeline will run for *any* commit as long as its source branch matches the naming scheme. This includes commits on pull requests.
+    >The individual Pull request checkboxes are available only for GitHub repositories.
 
-The PR checkboxes mean that this pipeline will run only on the respective events that happen on a Pull Request. You can select multiple checkboxes to further fine-tune the exact event. If you are interested in all events, select the checkbox *Any Pull Request event*.
+## Skip triggering pipeline on commit
+The default behavior triggers the pipeline on a commit action.  
+Override the default behavior by adding any one of the predefined strings anywhere in the commit message.
 
->The individual Pull request checkboxes are available only for GitHub repositories.
+>Remember to include the opening and closing parentheses when adding the strings. 
+
+* `[skip ci]`
+* `[ci skip]`
+* `[no ci]`
+* `[skip codefresh]`
+* `[codefresh skip]`
 
 ## Configure Filter Settings
 
