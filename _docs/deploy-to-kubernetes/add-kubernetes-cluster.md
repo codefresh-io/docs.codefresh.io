@@ -438,7 +438,7 @@ kubectl apply -f codefresh-role-sa-bind.yml
 {% endhighlight %}
 
 {:start="3"}
-1. Finally run the following commands, and copy-paste the results to the respective Codefresh field in the UI:
+1. Finally run the following commands, and copy-paste the results to the respective Codefresh field in the UI:  
 `Host IP`
 {% highlight shell %}
 {% raw %}
