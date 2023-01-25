@@ -9,21 +9,12 @@ toc: true
 
 Apart from traditional push-based Helm deployments, Codefresh can also be used for [GitOps deployments](https://codefresh.io/gitops/){:target="\_blank"}.
 
-## What is GitOps
+For an overview on GitOps, Argo CD, and how Codefresh implements both, see [Codefresh and GitOps]({{site.baseurl}}docs/getting-started/gitops-codefresh/).
 
-GitOps is the practice of performing Operations via Git only. The main principles of GitOps are the following:
-
-* The state of the system/application is always stored in Git.
-* Git is always the source of truth for what happens in the system.
-* If you want to change the state of the system you need to perform a Git operation such as creating a commit or opening a pull request. Deployments, tests, and rollbacks controlled through git flow.
-* Once the Git state is changed, then the cluster (or whatever your deployment target is) state should match what is described in the Git repository.
-* No hand rolled deployments, no ad-hoc cluster changes, no live configuration changes are allowed. If a change needs to happen, it must be committed to Git first.
-
-GitOps deployments have several advantages compared to traditional imperative deployments. The main one is that the Git repo represents the state of the system, and Git history
-is essentially the same thing as deployment history. Rollbacks are very easy to perform by simply using a previous Git hash.
 
 Even though GitOps is not specific to Kubernetes, current GitOps tools work great with Kubernetes in the form of cluster controllers. The GitOps controller monitors the state of the Git repository and when a commit happens, the cluster is instructed to match the same state.
 
+<!--- replace this with the Home dashboard??>
 Codefresh has native support for GitOps including a graphical dashboard for handling your GitOps deployments:
 
 {% include image.html
@@ -34,37 +25,41 @@ Codefresh has native support for GitOps including a graphical dashboard for hand
   caption="The GitOps dashboard"  
   max-width="100%"
  %}
-
+-->
 This guide will explain how you can use GitOps for your own applications.
 
 ## Setting up your Git Repositories
 
-One of the central ideas around GitOps is the usage of Git for ALL project resources. Even though developers are familiar with using Git for the source code of the application, adopting GitOps means that you need to store in Git every other resource of the application (and not just the source code).
+One of the central ideas around GitOps is using Git for _ALL_ project resources. Though developers are familiar with using Git for the source code of the application, adopting GitOps means that you need to store every resource of the application (and not just the source code) in Git.
 
-In the case of Kubernetes, this means that all Kubernetes manifests should be stored in a Git repository as well. In the most simple scenario you have the main repository of your application (this is mostly interesting to developers) and [a second Git repository with Kubernetes manifests](https://argoproj.github.io/argo-cd/user-guide/best_practices/#separating-config-vs-source-code-repositories){:target="\_blank"} (this is more relevant to operators/SREs).
+In the case of Kubernetes, this means that all Kubernetes manifests should be stored in a Git repository as well. In the most simple scenario, you have the main repository of your application (mostly interesting to developers), and [a second Git repository with Kubernetes manifests](https://argoproj.github.io/argo-cd/user-guide/best_practices/#separating-config-vs-source-code-repositories){:target="\_blank"} (more relevant to operators/SREs).
 
-As a running example you can use:
+As a live example you can use:
 
-* The [https://github.com/codefresh-contrib/gitops-app-source-code](https://github.com/codefresh-contrib/gitops-app-source-code){:target="\_blank"} repository for the application code
-* The [https://github.com/codefresh-contrib/gitops-kubernetes-configuration](https://github.com/codefresh-contrib/gitops-kubernetes-configuration){:target="\_blank"} repository for the Kubernetes configuration
-* The [https://github.com/codefresh-contrib/gitops-pipelines](https://github.com/codefresh-contrib/gitops-pipelines){:target="\_blank"} repository that holds the pipelines
+* The [https://github.com/codefresh-contrib/gitops-app-source-code](https://github.com/codefresh-contrib/gitops-app-source-code){:target="\_blank"} repository for the application code.  
+  The repository with the application code contains the source code plus a Dockerfile. You can use any Git workflow for this repository. We will create a pipeline in Codefresh that creates a container image on each commit.  
 
-The application code repository contains the source code plus a dockerfile. You can use any Git workflow for this repository. We will set a pipeline in Codefresh that creates a container image on each commit.
+* The [https://github.com/codefresh-contrib/gitops-kubernetes-configuration](https://github.com/codefresh-contrib/gitops-kubernetes-configuration){:target="\_blank"} repository for the Kubernetes configuration.   
+  The configuration repository holds the kubernetes manifests. This is one of the critical points of GitOps:
+    * The configuration repository holds the manifests that are also present in the Kubernetes cluster  
+    * Whenever there is a commit to the configuration repository, the cluster is notified to deploy the new version of the files (we will set up a pipeline for this)
+    * Every subsequent configuration change should become a Git commit. Ad-hoc changes to the cluster with `kubectl` commands are **NOT** allowed
 
-The configuration repository holds the kubernetes manifests. This is one of the critical points of GitOps
+* The [https://github.com/codefresh-contrib/gitops-pipelines](https://github.com/codefresh-contrib/gitops-pipelines){:target="\_blank"} repository that holds the pipelines.
+  The third Git repository houese pipelines because pipelines are also part of the application.
 
-* The configuration repository holds the manifests that are also present in the Kubernetes cluster
-* Every time a commit happens to the configuration repository the cluster will be notified to deploy the new version of the files (we will setup a pipeline for this)
-* Every subsequent configuration change should become a Git commit. Ad-hoc changes to the cluster (i.e. with `kubectl` commands) are **NOT** allowed
+**Fork repositories**  
 
-We also have a third Git repository for pipelines, because pipelines are also part of the application.
-
-Before continuing fork all 3 repositories in your own GitHub account if don't have already your own example application.
+* Before continuing, fork all three repositories into your own GitHub account, if don't have already your own example application.
 
 ## Connecting ArgoCD and Codefresh
 
-GitOps deployments are powered by [ArgoCD](https://argoproj.github.io/argo-cd/){:target="\_blank"}, so you need an active ArgoCD installation in your cluster to take advantage of the GitOps dashboard in Codefresh.
+GitOps deployments are powered by [ArgoCD](https://argoproj.github.io/argo-cd/){:target="\_blank"}, so you need an active ArgoCD installation in your cluster.
 
+This is easy enough with our GitOps Runtimes, either the Hosted or Hybrid versions.
+For this guide, provision a Hosted GitOps runtime, as described in [Hosted GitOps Runtime setup]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/).
+
+<!--- Add hosted runtime image 
 Follow the instructions for [connecting ArgoCD to Codefresh]({{site.baseurl}}/docs/integrations/argocd/) and creating an ArgoCD application
 
 {% include image.html
@@ -92,11 +87,16 @@ The options are:
 
 For a sample application you can use the [https://github.com/codefresh-contrib/gitops-kubernetes-configuration](https://github.com/codefresh-contrib/gitops-kubernetes-configuration){:target="\_blank"} repository. Fork the project in your own GitHub account and use that link in the *Source repository* section.
 
-Once you connect your application you will see it under in the GitOps application screen in the Codefresh UI.
+Once you connect your application you will see it under in the GitOps application screen in the Codefresh UI.  
+-->
 
 ## Creating a basic CI Pipeline for GitOps
 
-Creating a CI pipeline for GitOps is no different than a [standard pipeline]({{site.baseurl}}/docs/pipelines/pipelines/) that [packages your Docker images]({{site.baseurl}}/docs/ci-cd-guides/building-docker-images/), runs [tests]({{site.baseurl}}/docs/testing/unit-tests/), performs [security scans]({{site.baseurl}}/docs/testing/security-scanning/) etc.
+Creating CI pipeline for GitOps is no different than creating a standard pipeline.   
+The CI pipeline for GitOps also does the following and more:   
+* [Packages your Docker images]({{site.baseurl}}/docs/ci-cd-guides/building-docker-images/)
+* Runs [tests]({{site.baseurl}}/docs/testing/unit-tests/)
+* Performs [security scans]({{site.baseurl}}/docs/testing/security-scanning/).
 
  {% include image.html
   lightbox="true"
@@ -107,7 +107,7 @@ Creating a CI pipeline for GitOps is no different than a [standard pipeline]({{s
   max-width="100%"
  %}
 
-To take advantage of the GitOps dashboard facilities you also need to setup the correlation between the Docker image and the Pull Requests/issues associated with it. This correlation happens via [annotations]({{site.baseurl}}/docs/pipelines/annotations/). The easiest way to annotate your image is by using the [pipeline plugins](https://codefresh.io/steps/){:target="\_blank"} offered by Codefresh for this purpose. Currently we offer the following plugins:
+To take advantage of the GitOps deployment dashboard, you also need to set up the correlation between the Docker image and the Pull Requests/issues associated with it. This correlation happens via [annotations]({{site.baseurl}}/docs/pipelines/annotations/). The easiest way to annotate your image is by using the [pipeline plugins](https://codefresh.io/steps/){:target="\_blank"} offered by Codefresh for this purpose. Currently we offer the following plugins:
 
 * [Record Pull Request information](https://codefresh.io/steps/step/image-enricher){:target="\_blank"}
 * [Record Jira Issue information](https://codefresh.io/steps/step/jira-issue-extractor){:target="\_blank"}
@@ -168,7 +168,7 @@ steps:
 This pipeline:
 
 1. Checks out the source code of an application with the [git-clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/)
-1. [Builds]({{site.baseurl}}/docs/pipelines/steps/build/) a docker image
+1. [Builds]({{site.baseurl}}/docs/pipelines/steps/build/) a Docker image
 1. Annotates the Docker image with the Pull Request information provided by Github
 1. Annotates the Docker image with a specific Jira issue ticket
 
