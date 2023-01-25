@@ -4,11 +4,12 @@ description: ""
 toc: true
 ---
 
-## Classic > New Codefresh navigation
-Get up to speed with navigation enhancements and changes in the New Codefresh experience.  
+Get up to speed with navigation enhancements in the new Codefresh experience.  
+
+## Codefresh Classic > New navigation
 
 We added a new **Settings** icon to the toolbar to simplify account-level management for Codefresh administrators.
-With the Settings icon always available, you have _single-click access_ whenever you need to account-level options and settings.
+With the Settings icon always available, you have _single-click access_ to account-level options and settings whenever you need.
 
 
 
@@ -22,9 +23,9 @@ With the Settings icon always available, you have _single-click access_ whenever
     max-width="70%" 
 %}
 
-We divided the navigation into Avatar, account-level, and features and functionality.  The &rarr; indicates a change in navigation.
+Review the changes in Avatar, account-level, and features and functionality. 
 
-### Avatar options
+### Classic Avatar
 
 {::nomarkdown} 
 
@@ -32,7 +33,100 @@ We divided the navigation into Avatar, account-level, and features and functiona
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
-  width: 100%;
+  width: 80%;
+}
+
+td, th {
+  border-bottom: 1px solid #dddddd;
+  border-top: none;
+  text-align: left;
+  padding: 8px;
+}
+
+th {
+  background-color: #3d7c84;
+  color: #ffff;
+}
+
+tr {
+  vertical-align: top;
+    text-align: left;
+  
+}
+</style>
+
+<table>
+    <tr>
+       <th colspan="2">CLASSIC</th>
+        <th></th>
+        <th colspan="1">NEW CODEFRESH</th>
+     </tr>
+     <tr>
+     </tr>
+
+     <tr>
+        <th>Category</th>
+        <th></th>
+        <th>Menu item</th>
+        <th></th>
+        <th>Menu item</th>
+      </tr>
+
+    <tr>
+        <td><b>AVATAR</b></td>
+        <td>></td>
+        <td><b>Account Settings</b></td>
+        <td></td>
+        <td>(Moved to) Settings</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td><b>User Management</b></td>
+        <td></td>
+        <td>(Moved to) Settings</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td><b>Billing</b></td>
+        <td> </td>
+        <td>(Moved to) Settings</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td><b>User Settings</b></td>
+        <td></td>
+        <td>No change</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td><b>Git Personal Access Token</b></td>
+        <td>New menu item</td>
+        <td></td>
+    </tr>
+</table>
+
+{:/}
+
+
+### Classic Account-level
+
+Access account-level options through the **Settings** icon: 
+* Account & user management
+* Integrations
+* Configurations
+* Runtimes
+
+{::nomarkdown}
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 80%;
 }
 
 td, th {
@@ -52,244 +146,709 @@ tr {
   
 }
 </style>
-</head>
-<body>
 
-<h2>HTML Table</h2>
 
 <table>
     <tr>
        <th colspan="2">CLASSIC</th>
         <th></th>
-        <th colspan="2">NEW CODEFRESH</th>
+        <th colspan="1">NEW CODEFRESH</th>
+     </tr>
+     <tr>
+     </tr>
+
+     <!---<tr>
+        <th>Category</th>
+        <th></th>
+        <th>Menu item</th>
+        <th></th>
+      </tr>  -->
+     <tr>
+        <td><b>GENERAL</b></td>
+        <td>></td>
+        <td><b>Account Settings</b></td>
+        <td>Moved to Settings</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td><b>Account Information</b></td>
+        <td>Renamed as Organization Information</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td><b>Users & Teams</b></td>
+        <td>Moved to ACCESS & COLLABORATION</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td><b>Subscription & Billing</b></td>
+        <td>No change</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td><b>Usage</b></td>
+        <td>No change</td>
+    </tr>
+    <tr> </tr>
+    <tr>
+        <td><b>CONFIGURATION</b></td>
+        <td>></td>
+        <td><b>Integrations</b></td>
+        <td>Renamed as Pipeline Integrations</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td><b>GitOps Integrations</b></td>
+        <td>New menu item</td>
+     </tr>
+     <tr>
+        <td></td>
+        <td></td>
+        <td><b>Pipeline Settings</b></td>
+        <td>No change</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td><b>Codefresh Runner</b></td>
+        <td>Moved to RUNTIMES</td>
+
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td><b>Runtime Environments</b></td>
+        <td>Moved to RUNTIMES<br>Renamed as Build Runtimes</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td><b>GitOps Controller</b></td>
+        <td>??</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td><b>Shared Configuration</b></td>
+        <td>No change</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td><b>Nodes</b></td>
+        <td>??</td>
+    </tr>
+    <tr>
+        <td><b>SECURITY</b></td>
+        <td>></td>
+        <td></td>
+        <td>Renamed as ACCESS & COLLABORATION</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td><b>Single Sign-On</b></td>
+        <td></td>
+     </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td><b>Permissions</b></td>
+        <td></td>
+     </tr>
+     <tr>
+        <td></td>
+        <td></td>
+        <td><b>Audit</b></td>
+        <td></td>
+     </tr>
+     <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><b>RUNTIMES</b> New category<br>New menu item GitOps Runtimes</td>
+     </tr>
+    
+</table>
+
+{:/}
+      
+
+
+
+### Classic features and functionality
+We renamed menus and moved menu items. 
+
+{::nomarkdown}
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 80%;
+}
+
+td, th {
+  border-bottom: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+th {
+  background-color: #3d7c84;
+  color: #ffff;
+}
+
+tr {
+  vertical-align: top;
+    text-align: left;
+  
+}
+</style>
+
+<table>
+    <tr>
+       <th colspan="2">CLASSIC</th>
+        <th></th>
+        <th colspan="1">NEW CODEFRESH</th>
+     </tr>
+     <tr>
+     </tr>
+
+     <!---<tr>
+        <th>Category</th>
+        <th></th>
+        <th>Menu item</th>
+        <th></th>
+      </tr>  -->
+     
+    <tr>
+        <td><b>Home</b></td>
+        <td></td>
+        <td></td>
+        <td>New</td>
+    </tr>     
+    <tr>
+        <td><b>INSIGHTS</b></td>
+        <td>></td>
+        <td><b>DORA Metrics</b></td>
+        <td>New category and menu item</td>
+    </tr>
+    <tr>
+        <td><b>BUILD > TEST > DEPLOY</b></td>
+        <td>></td>
+        <td></td>
+        <td><b>PIPELINES</b></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td><b>Projects</b></td>
+        <td>No change</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td><b>Pipelines</b></td>
+        <td>No change</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td><b>Builds</b></td>
+        <td>No change</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td><b>Steps</b></td>
+        <td>No change</td>
+    </tr>
+    <tr>
+        <td><b>DEVOPS INSIGHTS</b></td>
+        <td>></td>
+        <td></td>
+        <td><b>OPS</b></td>
+     </tr>
+     <tr>
+        <td></td>
+        <td></td>
+        <td><b>GitOps Apps</b></td>
+        <td>New menu item</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td><b>Kubernetes > Services</b></td>
+        <td>Kubernetes Services</td>
+
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td><b>Kubernetes > Monitor</b></td>
+        <td>??</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td><b>Helm Releases</b></td>
+        <td>No change</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td><b>Helm Boards</b></td>
+        <td>No change</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td><b>Environments</b></td>
+        <td>No change</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td><b>GitOps</b></td>
+        <td>Deprecated</td>
+    </tr>
+    <tr>
+        <td><b>ARTIFACTS</b></td>
+        <td>></td>
+        <td><b>Images</b></td>
+        <td>No change</td>
+     </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td><b>Helm Charts</b></td>
+        <td>No change</td>
+     </tr>
+     <tr>
+        <td></td>
+        <td></td>
+        <td><b>Compositions</b></td>
+        <td>No change</td>
+     </tr>
+     <tr>
+        <td><b>SETTINGS</b></td>
+        <td>></td>
+        <td><b>Account Settings</b></td>
+        <td>Moved to Settings (Gear icon) in toolbar</td>
+     </tr>
+     <tr>
+        <td></td>
+        <td></td>
+        <td><b>User Settings</b></td>
+        <td>Moved to Avatar</td>
+     </tr>    
+</table>
+
+{:/}
+
+
+## Codefresh GitOps > New navigation  
+
+Review the changes in Avatar, account-level, and features and functionality. 
+
+### GitOps Avatar
+
+{::nomarkdown} 
+
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 80%;
+}
+
+td, th {
+  border-bottom: 1px solid #dddddd;
+  border-top: none;
+  text-align: left;
+  padding: 8px;
+}
+
+th {
+  background-color: #3d7c84;
+  color: #ffff;
+}
+
+tr {
+  vertical-align: top;
+    text-align: left;
+  
+}
+</style>
+
+<table>
+    <tr>
+       <th colspan="2">GITOPS</th>
+        <th></th>
+        <th colspan="1">NEW CODEFRESH</th>
      </tr>
      <tr>
      </tr>
 
      <tr>
-        <th>Bucket</th>
+        <th>Category</th>
+        <th></th>
         <th>Menu item</th>
         <th></th>
-        <th>Bucket</th>
         <th>Menu item</th>
       </tr>
 
     <tr>
         <td><b>AVATAR</b></td>
-        <td></td>
-        <td></td>
-        <td>No change</td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td></td>
+        <td>></td>
         <td><b>Account Settings</b></td>
-        <td><b>&#8594;</b></td>
         <td></td>
         <td>(Moved to) Settings</td>
         <td></td>
     </tr>
     <tr>
+        <td></td>
         <td></td>
         <td><b>User Management</b></td>
-        <td>&#8594;</td>
         <td></td>
         <td>(Moved to) Settings</td>
-        <td></td>
     </tr>
     <tr>
+        <td></td>
         <td></td>
         <td><b>Billing</b></td>
-        <td>&#8594;</td>
-        <td></td>
+        <td> </td>
         <td>(Moved to) Settings</td>
-        <td></td>
     </tr>
     <tr>
+        <td></td>
         <td></td>
         <td><b>User Settings</b></td>
         <td></td>
-        <td></td>
         <td>No change</td>
-        <td></td>
     </tr>
     <tr>
         <td></td>
         <td></td>
-        <td>&#8594;</td>
-        <td></td>
-        <td>(New) Git Personal Access Token</td>
+        <td><b>Git Personal Access Token</b></td>
+        <td>New menu item</td>
         <td></td>
     </tr>
 </table>
 
 {:/}
 
-{: .table .table-bordered .table-hover}
-|  CLASSIC             |                               |      |NEW CODEFRESH EXPERIENCE            |             |
-|  Bucket              | Menu item                     |        | Bucket        |  Menu item           | 
-| -------------------  | -------------------           |---      | ---------------- | ---------  | 
-| **AVATAR**           |                               |         |  No change               |            |     
-|                       |Account Settings              |&rarr;  |                  | Moved to Settings  |
-|                       |User Management               |&rarr;  |                  | Moved to Settings  |               
-|                       |Billing                       |&rarr;  |                  | Moved to Settings  |             
-|                       |User Settings                 |        |                  | No change                 |
-|                       |                              | &rarr; |                  | Git Personal Access Token |
-
-### Account-level options
-
-Access account-level options through the **Settings** icon: 
-* Account & user management
-* Integrations
-* Configurations
-* Runtimes
-
-
-
-{: .table .table-bordered .table-hover}
-|  CLASSIC             |                               |       |NEW  CODEFRESH EXPERIENCE       |           |
-|  Bucket              | Menu item                     |       | Bucket        |  Menu item           | 
-| -------------------  | -------------------           |       | ----------------  | ---------     | 
-| **GENERAL**          |                               |         | No change         |                          |       
-|                      | **Account Information**       | &rarr; |                   | (Renamed) Organization Information |       
-|                      | **Users & Teams**             | &rarr; | (Moved to) ACCESS & COLLABORATION  |  |
-|                      | **Subscription & Billing**    |  |                   | No change                |
-|                      | **Usage**                     |  |                   | No change                |
-|                      |                               |  |                   |                          |       
-| **CONFIGURATION**    |                               |  | No change         |                          |       
-|                      | **Integrations**              | &rarr; |                   |(Renamed) Pipeline Integrations |       
-|                      |                               |&rarr;  |                   |(New) GitOps Integrations |       
-|                      | **Pipeline Settings**         |  |                         | No change                |       
-|                      | **Codefresh Runner**          |&rarr;  |                   | (Moved to) Runtimes bucket |
-|                      | **Runtime Environments**      | &rarr; |                   | (Moved to) Runtimes bucket |
-|                      | **GitOps Controller**         |        |                   |  ??                       |
-|                      | **Shared Configuration**      |        |                   | No change                |
-|                      | **Nodes**                     |        |                   | ??                       |
-|                      |                               |        |                   |                          |       
-| **SECURITY**         |                               |&rarr;  | (Renamed) ACCESS & COLLABORATION|            |       
-|                      | **Single Sign-On**            |        |                   |(Now in) Access & Collaboration |       
-|                      | **Permissions**               |        |                   | Now in Access & Collaboration  |       
-|                      | **Audit**                     |        |                   | Now in Access & Collaboration  |       
-|                      |                               |        |                   |                          |       
-|                      |                               |&rarr;  | RUNTIMES          |                                |       
-|                      |                               |&rarr;  |                   | (Renamed) Build Runtimes  |       
-|                      |                               |&rarr;  |                   | (New) GitOps Runtimes|       
-
-
-
-### Features and functionality
-We renamed menu groups and moved items for more intuitive access. 
-
-{: .table .table-bordered .table-hover}
-|  CLASSIC             |                         | &rarr;| NEW CODEFRESH EXPERIENCE  |          |    
-|  Bucket              | Menu item               |       |                    |            | 
-| -------------------  | -------------------     |  | ----------------    | ---------  | 
-|                       |                        | |                      |  Home      |
-|                       |                        |&rarr; | INSIGHTS       |            |
-|                       |                        | |                      | DORA Metrics |
-|                       |                        | |                      |            |
-|**BUILD > TEST > DEPLOY**|                      |&rarr; |(Renamed) PIPELINES  |          |
-|                       |**Projects**            | |               | No change  |
-|                       |**Pipelines**           | |               | No change  |
-|                       |**Builds**              | |              | No change  |
-|                       |**Steps**               | |               | No change  |
-|                       |                        | |               |            |
-|**DEVOPS INSIGHTS**    |                        |&rarr; |(Renamed) OPS            |            |
-|                       |                        | &rarr;|                | GitOps Apps | 
-|                       |**Kubernetes > Services** | &rarr;|               | Kubernetes Services |
-|                       |**Kubernetes > Monitor** | |               | ???
-|                       |**Helm Releases**        | |               | No change  |
-|                       |**Helm Boards**          | |               | No change  |
-|                       |**Environments**         | |               | No change |
-|                       |**GitOps**               |&rarr; |               | Deprecated  |
-|                       |                         | |               |            |
-|**ARTIFACTS**          |                         | | No change
-|                       |**Images**               | |               |  No change |
-|                       |**Helm Charts**          | |               |  No change |
-|                       |**Compositions**         | |               |  No change |
-|                       |                         | |               |            |
-|**SETTINGS**           |                         | |               |            |
-|                       |**Account Settings**     |&rarr; |               |(Moved) Settings in toolbar|
-|                       |**User Settings**        |&rarr; |               | Avatar     |
-
-## GitOps to New Codefresh Experience 
-
-
-### GitOps > Avatar options
-
-{: .table .table-bordered .table-hover}
-|  GITOPS             |                               | &rarr; |NEW              |             |
-|  Bucket              | Menu item                     | | Bucket        |  Menu item           | 
-| -------------------  | -------------------           |  | ---------------- | ---------  | 
-| **AVATAR**           |                               |  |                  |            |     
-|                       |Account Settings              |&rarr;  |                  | Moved to Settings  |
-|                       |User Management               |&rarr;  |                  | Moved to Settings  |               
-|                       |Billing                       |&rarr;  |                  | Moved to Settings  |             
-|                       |User Settings                 |        |                  | No change          |
-|                       |Git Personal Access Token    | &rarr; |                  |  New option              | 
 
 
 ### GitOps account-level options
 
-Access account-level options through the **Settings** icon: 
+Access account-level options through the **Settings** icon in the toolbar: 
 * Account & user management
 * Integrations
 * Configurations
 * Runtimes
 
 
+{::nomarkdown}
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 80%;
+}
 
-{: .table .table-bordered .table-hover}
-|  GITOPS             |                               |&rarr;  |NEW            |                      |
-|  Bucket              | Menu item                     |       | Bucket        |  Menu item           | 
-| -------------------  | -------------------           |       | ----------------  | -------------------    | 
-| **GENERAL**          |                               |       | No change         |                          |       
-|                      | **Organization Information**  |        |                  |No change                |       
-|                      | **Subscription & Billing**    |        |                  |No change  |
-|                      | **Users**                     | &rarr; |                  | {::nomarkdown} (Moved to) Access & Collaboration<br>(Renamed) Users & Teams{:/}|
-|                      | **Usage**                     | &rarr; |                  | New                      |
-|                      |                               | &rarr; |ACCESS & COLLABORATION   |                              |
-|                      | **Security**                  |        |                          | (Moved to) General > Collaboration |
-|                      | **Single Sign-On**            |        |                          | (Moved from) General > Collaboration|       
-|                      |                               |         |                                     | Permissions  |       
-|                      | ****                          |&rarr;   |                         | Audit   |    
-|                      | Authentication                 |&rarr;   |                        | {::nomarkdown} (Moved from) Access & Collaboration<br>(Renamed) Git Authentication{:/}  |    
-|                      |                               |        |                   |                                     |       
-| **CONFIGURATION**    |                               |        | No change         |                                     |       
-|                      | **Runtimes**                  | &rarr; |             |(Moved to) RUNTIMES bucket |       
-|                      | **Pipeline Integrations**     | &rarr; |             | New               |       
-|                      | **Integrations**              | &rarr; |             |(Renamed) GitOps Integrations|       
-|                      | **Pipeline Settings**         | &rarr; |              | New               |       
-|                      | **Shared Configuration**      | &rarr; |              | New               |       
-|                      | **Authentication**            | &rarr;|               | {::nomarkdown} (Moved to) Access & Collaboration<br>(Renamed) Git Authentication{:/} |       
+td, th {
+  border-bottom: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+th {
+  background-color: #3d7c84;
+  color: #ffff;
+}
+
+tr {
+  vertical-align: top;
+    text-align: left;
+  
+}
+</style>
+
+
+<table>
+    <tr>
+       <th colspan="2">GITOPS</th>
+        <th></th>
+        <th colspan="1">NEW CODEFRESH</th>
+     </tr>
+     <tr>
+     </tr>
+
+     <!---<tr>
+        <th>Category</th>
+        <th></th>
+        <th>Menu item</th>
+        <th></th>
+      </tr>  -->
+     <tr>
+        <td><b>GENERAL</b></td>
+        <td>></td>
+        <td><b>Organization Information</b></td>
+        <td>No change</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td><b>Subscription Information</b></td>
+        <td>No change</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td><b>Users</b></td>
+        <td>Moved to ACCESS & COLLABORATION<br>Renamed as Users & Teams</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td><b>Usage</b></td>
+        <td>New menu item</td>
+    </tr>
+    <tr> 
+      <td>ACCESS & COLLABORATION</td>
+      <td>></td>
+      <td><b></td>
+      <td>New</td>    
+    </tr>
+    <tr> 
+      <td></td>
+      <td></td>
+      <td><b>Security</b></td>
+      <td>Moved from General > Collaboration</td>    
+    </tr>  
+    <tr> 
+      <td></td>
+      <td></td>
+      <td><b>Single Sign-On</b></td>
+      <td>Moved from General > Collaboration</td>    
+    </tr> 
+    <tr>
+        <td><b>CONFIGURATION</b></td>
+        <td>></td>
+        <td><b>Runtimes</b></td>
+        <td>Moved to RUNTIMES<br>Renamed as GitOps Runtimes</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td><b>Pipeline Integrations</b></td>
+        <td>New menu item</td>
+     </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td><b>Integrations</b></td>
+        <td>Renamed as GitOps integrations</td>
+     </tr>
+     <tr>
+        <td></td>
+        <td></td>
+        <td><b>Pipeline Settings</b></td>
+        <td>New menu item</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td><b>Shared Configuration</b></td>
+        <td>New menu item</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td><b>Authentication</b></td>
+        <td>Moved to ACCESS & COLLABORATION<br>Renamed as Git Authentication</td>
+
+    </tr>
+
+</table>
+
+{:/}
+       
 
 ### GitOps features & functionality
-We renamed menu groups and moved items for more intuitive access. 
 
-{: .table .table-bordered .table-hover}
-|  GITOPS             |                         | &rarr;|              |NEW          |    
-|  Bucket              | Menu item               | |                    |            | 
-| -------------------  | -------------------     |  | ----------------  | ---------  | 
-|                      |  Home                   |  |                   |No change  |
+We renamed menus and moved menu items. 
 
-| **INSIGHTS**          |                        |       | No change          |            |
-|                       | DORA Metrics           |       |                    | No change  |
-|                       |                        |       |                    |               |
-|                       |                        |&rarr; |PIPELINES           |               |
-|                       |                        |&rarr; |                    | Projects      |
-|                       |                        |&rarr; |                    |Pipelines      |
-|                       |                        |&rarr; |                    | Builds        |
-|                       |                        |&rarr; |                    |Steps          |
-|                       |                        |       |                    |               |
-|                       |                        |&rarr; |OPS                 |               |
-|                       |                        | &rarr;|                    | GitOps Apps    | 
-|                       |                        |&rarr; |                    | Helm Boards        |
-|                       |                        | &rarr;|                    | Kubernetes Services |
-|                       |                        |&rarr; |                    |Helm Releases        |
-|                       |                        |&rarr; |                    |Environments         |
-|                       |                        |       |                    |                     |
-|                       |                        |&rarr; | ARTIFACTS          |                     |
-|                       |                        |&rarr; |                    | Images              |
-|                       |                        |&rarr; |                    | Helm Charts         |
-|                       |                        |&rarr; |                    | Compositions        |
+{::nomarkdown}
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 80%;
+}
+
+td, th {
+  border-bottom: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+th {
+  background-color: #3d7c84;
+  color: #ffff;
+}
+
+tr {
+  vertical-align: top;
+    text-align: left;
+  
+}
+</style>
+
+<table>
+    <tr>
+       <th colspan="2">GITOPS</th>
+        <th></th>
+        <th colspan="1">NEW CODEFRESH</th>
+     </tr>
+     <tr>
+     </tr>
+
+     <!---<tr>
+        <th>Category</th>
+        <th></th>
+        <th>Menu item</th>
+        <th></th>
+      </tr>  -->
+     <tr>
+        <td></td>
+        <td></td>
+        <td><b>Home</b></td>
+        <td><b>Moved to OPS<br>Renamed as GitOps Overview</b></td>
+    </tr>
+    <tr>
+        <td><b>INSIGHTS</b></td>
+        <td>></td>
+        <td></td>
+        <td>New category</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td><b>DORA Metrics</b></td>
+        <td>Moved from CD OPS</td>
+    </tr>
+    <tr>
+        <td><b>PIPELINES</b></td>
+        <td>></td>
+        <td></td>
+        <td>New category</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td><b>Projects</b></td>
+        <td>New menu item</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td><b>Pipelines</b></td>
+        <td>New menu item</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td><b>Builds</b></td>
+        <td>New menu item</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td><b>Steps</b></td>
+        <td>New menu item</td>
+    </tr>
+    <tr>
+        <td><b>OPS</b></td>
+        <td>></td>
+        <td></td>
+        <td>New category</td>
+     </tr>
+     <tr>
+        <td></td>
+        <td></td>
+        <td><b>GitOps Apps</b></td>
+        <td>Previously Applications<br>Moved from CD OPS</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td><b>GitOps Overview</b></td>
+        <td>Previously Home</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td><b>Helm Boards</b></td>
+        <td>New menu item</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td><b>Kubernetes Services</b></td>
+        <td>New menu item</td>
+
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td><b>Helm Releases</b></td>
+        <td>New menu item</td>
+    </tr>
+
+    <tr>
+        <td></td>
+        <td></td>
+        <td><b>Environments</b></td>
+        <td>New menu item</td>
+    </tr>
+    <tr>
+        <td><b>ARTIFACTS</b></td>
+        <td>></td>
+        <td></td>
+        <td>New category</td>
+     </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td><b>Images</b></td>
+        <td>Moved from CD OPS</td>
+     </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td><b>Helm Charts</b></td>
+        <td>New menu item</td>
+     </tr>
+     <tr>
+        <td></td>
+        <td></td>
+        <td><b>Compositions</b></td>
+        <td>New menu item</td>
+     </tr>    
+</table>
+
+{:/}
