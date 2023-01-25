@@ -1,12 +1,11 @@
 ---
-title: ""
+title: "Navigation quick reference"
 description: ""
-group: getting-started
 toc: true
 ---
 
-## Classic > New Codefresh experience navigation
-Get up to speed with navigation enhancements and changes with the New Codefresh Experience.  
+## Classic > New Codefresh navigation
+Get up to speed with navigation enhancements and changes in the New Codefresh experience.  
 
 We added a new **Settings** icon to the toolbar to simplify account-level management for Codefresh administrators.
 With the Settings icon always available, you have _single-click access_ whenever you need to account-level options and settings.
@@ -26,6 +25,106 @@ With the Settings icon always available, you have _single-click access_ whenever
 We divided the navigation into Avatar, account-level, and features and functionality.  The &rarr; indicates a change in navigation.
 
 ### Avatar options
+
+{::nomarkdown} 
+
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border-bottom: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+th {
+  background-color: #3d7c84;
+  color: #ffff;
+}
+
+tr {
+  vertical-align: top;
+    text-align: left;
+  
+}
+</style>
+</head>
+<body>
+
+<h2>HTML Table</h2>
+
+<table>
+    <tr>
+       <th colspan="2">CLASSIC</th>
+        <th></th>
+        <th colspan="2">NEW CODEFRESH</th>
+     </tr>
+     <tr>
+     </tr>
+
+     <tr>
+        <th>Bucket</th>
+        <th>Menu item</th>
+        <th></th>
+        <th>Bucket</th>
+        <th>Menu item</th>
+      </tr>
+
+    <tr>
+        <td><b>AVATAR</b></td>
+        <td></td>
+        <td></td>
+        <td>No change</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><b>Account Settings</b></td>
+        <td><b>&#8594;</b></td>
+        <td></td>
+        <td>(Moved to) Settings</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><b>User Management</b></td>
+        <td>&#8594;</td>
+        <td></td>
+        <td>(Moved to) Settings</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><b>Billing</b></td>
+        <td>&#8594;</td>
+        <td></td>
+        <td>(Moved to) Settings</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><b>User Settings</b></td>
+        <td></td>
+        <td></td>
+        <td>No change</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td>&#8594;</td>
+        <td></td>
+        <td>(New) Git Personal Access Token</td>
+        <td></td>
+    </tr>
+</table>
+
+{:/}
 
 {: .table .table-bordered .table-hover}
 |  CLASSIC             |                               |      |NEW CODEFRESH EXPERIENCE            |             |

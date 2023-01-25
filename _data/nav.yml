@@ -572,6 +572,13 @@
     - title: LDAP
       url: /ldap
 
+- title: New Codefresh
+  url: "/new-codefresh"
+  pages:
+    - title: Navigation quick reference
+      url: "/menu-navigation"
+    - title: Documentation changes
+      url: "/doc-changes"
 
 
 - title: Reference
