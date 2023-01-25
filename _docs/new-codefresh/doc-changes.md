@@ -1,6 +1,6 @@
 ---
 title: "Docsite changes"
-description: "New Codefresh experience"
+description: "Unified documentation for Codefresh pipelines and GitOps"
 toc: true
 ---
 

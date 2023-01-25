@@ -6,7 +6,7 @@ toc: true
 
 Get up to speed with navigation enhancements in the new Codefresh experience.  
 
-## Codefresh Classic > New navigation
+## Classic > New navigation
 
 We added a new **Settings** icon to the toolbar to simplify account-level management for Codefresh administrators.
 With the Settings icon always available, you have _single-click access_ to account-level options and settings whenever you need.
@@ -37,7 +37,7 @@ table {
 }
 
 td, th {
-  border-bottom: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd !important;
   border-top: none;
   text-align: left;
   padding: 8px;
@@ -57,56 +57,38 @@ tr {
 
 <table>
     <tr>
-       <th colspan="2">CLASSIC</th>
-        <th></th>
-        <th colspan="1">NEW CODEFRESH</th>
+       <th colspan="4">CLASSIC > NEW</th>
      </tr>
-     <tr>
-     </tr>
-
-     <tr>
-        <th>Category</th>
-        <th></th>
-        <th>Menu item</th>
-        <th></th>
-        <th>Menu item</th>
-      </tr>
 
     <tr>
         <td><b>AVATAR</b></td>
         <td>></td>
         <td><b>Account Settings</b></td>
-        <td></td>
-        <td>(Moved to) Settings</td>
-        <td></td>
+        <td>Moved to Settings icon in toolbar</td>
     </tr>
     <tr>
         <td></td>
         <td></td>
         <td><b>User Management</b></td>
-        <td></td>
-        <td>(Moved to) Settings</td>
+        <td>Moved to Settings icon in toolbar</td>
     </tr>
     <tr>
         <td></td>
         <td></td>
         <td><b>Billing</b></td>
-        <td> </td>
-        <td>(Moved to) Settings</td>
+        <td>Moved to Settings icon in toolbar</td>
     </tr>
     <tr>
         <td></td>
         <td></td>
         <td><b>User Settings</b></td>
-        <td></td>
         <td>No change</td>
     </tr>
     <tr>
         <td></td>
         <td></td>
         <td><b>Git Personal Access Token</b></td>
-        <td>New menu item</td>
-        <td></td>
+        <td>New item</td>
     </tr>
 </table>
 
@@ -150,9 +132,7 @@ tr {
 
 <table>
     <tr>
-       <th colspan="2">CLASSIC</th>
-        <th></th>
-        <th colspan="1">NEW CODEFRESH</th>
+       <th colspan="4">CLASSIC to NEW</th>
      </tr>
      <tr>
      </tr>
@@ -167,22 +147,19 @@ tr {
         <td><b>GENERAL</b></td>
         <td>></td>
         <td><b>Account Settings</b></td>
-        <td>Moved to Settings</td>
-        <td></td>
+        <td>Moved to Settings icon in toolbar</td>
     </tr>
     <tr>
         <td></td>
         <td></td>
         <td><b>Account Information</b></td>
         <td>Renamed as Organization Information</td>
-        <td></td>
     </tr>
     <tr>
         <td></td>
         <td></td>
         <td><b>Users & Teams</b></td>
         <td>Moved to ACCESS & COLLABORATION</td>
-        <td></td>
     </tr>
     <tr>
         <td></td>
@@ -207,7 +184,7 @@ tr {
         <td></td>
         <td></td>
         <td><b>GitOps Integrations</b></td>
-        <td>New menu item</td>
+        <td>New item</td>
      </tr>
      <tr>
         <td></td>
@@ -271,12 +248,17 @@ tr {
         <td></td>
      </tr>
      <tr>
+        <td><b>RUNTIMES</b></td>
+        <td>></td>
         <td></td>
-        <td></td>
-        <td></td>
-        <td><b>RUNTIMES</b> New category<br>New menu item GitOps Runtimes</td>
+        <td>New category</td>
      </tr>
-    
+     <tr>
+        <td></td>
+        <td>></td>
+        <td><b>GitOps Runtimes</b></td>
+        <td>New item</td>
+     </tr>    
 </table>
 
 {:/}
@@ -384,7 +366,7 @@ tr {
         <td></td>
         <td></td>
         <td><b>GitOps Apps</b></td>
-        <td>New menu item</td>
+        <td>New item</td>
     </tr>
     <tr>
         <td></td>
@@ -445,7 +427,7 @@ tr {
         <td><b>SETTINGS</b></td>
         <td>></td>
         <td><b>Account Settings</b></td>
-        <td>Moved to Settings (Gear icon) in toolbar</td>
+        <td>Moved to Settings icon in toolbar</td>
      </tr>
      <tr>
         <td></td>
@@ -522,14 +504,14 @@ tr {
         <td></td>
         <td><b>User Management</b></td>
         <td></td>
-        <td>(Moved to) Settings</td>
+        <td>Moved to Settings icon in toolbar</td>
     </tr>
     <tr>
         <td></td>
         <td></td>
         <td><b>Billing</b></td>
         <td> </td>
-        <td>(Moved to) Settings</td>
+        <td>Moved to Settings icon in toolbar</td>
     </tr>
     <tr>
         <td></td>
@@ -542,7 +524,7 @@ tr {
         <td></td>
         <td></td>
         <td><b>Git Personal Access Token</b></td>
-        <td>New menu item</td>
+        <td>New item</td>
         <td></td>
     </tr>
 </table>
@@ -625,7 +607,7 @@ tr {
         <td></td>
         <td></td>
         <td><b>Usage</b></td>
-        <td>New menu item</td>
+        <td>New item</td>
     </tr>
     <tr> 
       <td>ACCESS & COLLABORATION</td>
@@ -655,7 +637,7 @@ tr {
         <td></td>
         <td></td>
         <td><b>Pipeline Integrations</b></td>
-        <td>New menu item</td>
+        <td>New item</td>
      </tr>
     <tr>
         <td></td>
@@ -667,13 +649,13 @@ tr {
         <td></td>
         <td></td>
         <td><b>Pipeline Settings</b></td>
-        <td>New menu item</td>
+        <td>New item</td>
     </tr>
     <tr>
         <td></td>
         <td></td>
         <td><b>Shared Configuration</b></td>
-        <td>New menu item</td>
+        <td>New item</td>
     </tr>
     <tr>
         <td></td>
@@ -761,25 +743,25 @@ tr {
         <td></td>
         <td></td>
         <td><b>Projects</b></td>
-        <td>New menu item</td>
+        <td>New item</td>
     </tr>
     <tr>
         <td></td>
         <td></td>
         <td><b>Pipelines</b></td>
-        <td>New menu item</td>
+        <td>New item</td>
     </tr>
     <tr>
         <td></td>
         <td></td>
         <td><b>Builds</b></td>
-        <td>New menu item</td>
+        <td>New item</td>
     </tr>
     <tr>
         <td></td>
         <td></td>
         <td><b>Steps</b></td>
-        <td>New menu item</td>
+        <td>New item</td>
     </tr>
     <tr>
         <td><b>OPS</b></td>
@@ -803,27 +785,27 @@ tr {
         <td></td>
         <td></td>
         <td><b>Helm Boards</b></td>
-        <td>New menu item</td>
+        <td>New item</td>
     </tr>
     <tr>
         <td></td>
         <td></td>
         <td><b>Kubernetes Services</b></td>
-        <td>New menu item</td>
+        <td>New item</td>
 
     </tr>
     <tr>
         <td></td>
         <td></td>
         <td><b>Helm Releases</b></td>
-        <td>New menu item</td>
+        <td>New item</td>
     </tr>
 
     <tr>
         <td></td>
         <td></td>
         <td><b>Environments</b></td>
-        <td>New menu item</td>
+        <td>New item</td>
     </tr>
     <tr>
         <td><b>ARTIFACTS</b></td>
@@ -841,13 +823,13 @@ tr {
         <td></td>
         <td></td>
         <td><b>Helm Charts</b></td>
-        <td>New menu item</td>
+        <td>New item</td>
      </tr>
      <tr>
         <td></td>
         <td></td>
         <td><b>Compositions</b></td>
-        <td>New menu item</td>
+        <td>New item</td>
      </tr>    
 </table>
 

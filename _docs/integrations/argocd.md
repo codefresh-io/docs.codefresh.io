@@ -24,8 +24,7 @@ Before you can use Codefresh and ArgoCD together, you need to connect your ArgoC
   max-width="100%"
  %}
 
-<!--- Important:  
-  Codefresh has a  -->
+
 
 ## Set up ArgoCD integration in Codefresh
 

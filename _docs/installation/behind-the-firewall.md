@@ -6,7 +6,6 @@ redirect_from:
   - /docs/administration/behind-the-firewall/
   - /docs/enterprise/behind-the-firewall/
 toc: true
-
 ---
 
 As described in [installation options]({{site.baseurl}}/docs/installation/installation-options/), Codefresh offers Runner and GitOps options for hybrid installations.

@@ -507,7 +507,8 @@
           url: "/git-sources"
         - title: Download/upgrade GitOps CLI
           url: "/upgrade-gitops-cli"
-
+    - title: CLI
+      url: "/cli"
 
 - title: Administration
   url: "/administration"
