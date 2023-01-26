@@ -2,7 +2,7 @@
 title: "NodeJS + Angular2 + MongoDB"
 description: ""
 group: example-catalog
-sub_group: cd-examples
+sub_group: ci-examples
 redirect_from:
   - /docs/yaml-examples/examples/nodejs-angular2-mongodb/
   - /docs/nodejs-angular2-mongodb/

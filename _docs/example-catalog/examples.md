@@ -38,6 +38,7 @@ Codefresh is agnostic as far as programming languages are concerned. All major p
 - [C# .NET core]({{site.baseurl}}/docs/example-catalog/ci-examples/dotnet/)
 - [Scala App]({{site.baseurl}}/docs/example-catalog/ci-examples/scala-hello-world/)
 - [Android (Mobile)]({{site.baseurl}}/docs/example-catalog/ci-examples/android/)
+- [NodeJS + Angular2 + MongoDB]({{site.baseurl}}/docs/example-catalog/ci-examples/nodejs-angular2-mongodb/) 
 
 ### Source code checkout examples
 
@@ -45,7 +46,7 @@ You can check out code from one or more repositories in any pipeline phase. Code
 
 - [Cloning Git repositories using the built-in integration]({{site.baseurl}}/docs/example-catalog/ci-examples/git-checkout/)
 - [Cloning Git repositories using manual Git commands]({{site.baseurl}}/docs/example-catalog/ci-examples/git-checkout-custom/)
-- [Checking out from Subversion, Perforce, Mercurial, etc ]({{site.baseurl}}/docs/example-catalog/ci-examples/non-git-checkout/)
+- [Checking out from Subversion, Perforce, Mercurial, etc]({{site.baseurl}}/docs/example-catalog/ci-examples/non-git-checkout/)
 
 ### Build/push examples
 
@@ -105,7 +106,6 @@ Codefresh can automatically export secret key-value pairs using the Vault plugin
 
 Codefresh can automatically launch environments (powered by Docker swarm) to [preview a Pull Request or feature]({{site.baseurl}}/docs/quick-start/ci-quickstart/on-demand-environments/). The definition of the environment can come from an [existing composition]({{site.baseurl}}/docs/testing/create-composition/), a docker-compose file or an inline YAML. Preview environments can be launched manually or [automatically from pipelines]({{site.baseurl}}/docs/pipelines/steps/launch-composition/).
 
-- [NodeJS + Angular2 + MongoDB]({{site.baseurl}}/docs/example-catalog/cd-examples/nodejs-angular2-mongodb/) 
 - [NGINX Basic Auth]({{site.baseurl}}/docs/example-catalog/cd-examples/secure-a-docker-container-using-http-basic-auth/)
 - [Spring Boot + Kafka + Zookeeper]({{site.baseurl}}/docs/example-catalog/cd-examples/spring-boot-kafka-zookeeper/)
 - [Web terminal]({{site.baseurl}}/docs/example-catalog/cd-examples/web-terminal/)
