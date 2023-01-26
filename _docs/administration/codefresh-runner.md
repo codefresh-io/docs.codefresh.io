@@ -1647,11 +1647,12 @@ You can [monitor the runner](#using-the-codefresh-runner).
 
 ### Install monitoring component
 
-If your cluster is located [behind the firewall]({{site.baseurl}}/docs/administration/behind-the-firewall/) you might want to use the Runner monitoring component to get valuable information about the cluster resources in to Codefresh, for example, to [Kubernetes](https://g.codefresh.io/kubernetes/services/){:target="\_blank"} and [Helm Releases](https://g.codefresh.io/helm/releases/releasesNew/){:target="\_blank"} dashboards.
+If your cluster is located [behind the firewall]({{site.baseurl}}/docs/administration/behind-the-firewall/), you may want to use the Runner's monitoring component to get valuable information about cluster resources to Codefresh dashboards. For example, to [Kubernetes](https://g.codefresh.io/kubernetes/services/){:target="\_blank"} and [Helm Releases](https://g.codefresh.io/helm/releases/releasesNew/){:target="\_blank"} dashboards.
 
-You can install the monitoring component with or without cluster integration. 
+You can install the monitoring component during Runner installation with cluster integration, or after Runner installation without cluster integration. 
 
-#### Install _with_ cluster integration  
+#### Install _with_ cluster integration _during_ Runner install 
+The cluster integration is created automatically during Runner installation. 
 ```shell
 codefresh install monitor --kube-context-name <CONTEXT> --kube-namespace <NAMESPACE> --cluster-id <CLUSTER_NAME> --token <TOKEN>
 ```
@@ -1659,13 +1660,13 @@ where:
 * `<CONTEXT>`, `<NAMESPACE>`, '<CLUSTER_NAME>' are the context, namespace, and the name of the cluster to which install the monitoring component.
 * `<TOKEN>`  is the token to authenticate to the cluster. 
 
-#### Install _without_ cluster integration 
+#### Install _without_ cluster integration _after_ Runner install
+If you defined the `--skip-cluster-integration` flag to skip cluster integration during Runner installation, then you cannot install the  monitoring component during the installation. 
+To get cluster resource information to the Codefresh dashboards in this case, install the monitoring component separately after completing the Runner installation. 
 
 ```shell
-codefresh runner init --install-monitor --skip-cluster-integration true
+codefresh install monitor --kube-context-name <CONTEXT> --kube-namespace <NAMESPACE> --cluster-id <CLUSTER_NAME> --token <TOKEN>
 ```
-where:  
-`--skip-cluster-integration` is optional, and when set to `true` does not create a cluster integration. 
 
 
 ### Injecting AWS ARN roles into the cluster
