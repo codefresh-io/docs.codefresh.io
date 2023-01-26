@@ -130,3 +130,7 @@ Codefresh can deploy to any platform such as VMs, FTP/SSH/S3 sites, app servers,
 - [Deploy to Amazon ECS/Fargate]({{site.baseurl}}/docs/example-catalog/cd-examples/amazon-ecs/)
 
 
+### Secrets examples
+
+Codefresh can automatically export secret key-value pairs using the Vault plugin from the [Step Marketplace](https://codefresh.io/steps/step/vault){:target="\_blank"}.
+- [GitOps with Bitnami sealed secrets]({{site.baseurl}}/docs/example-catalog/cd-examples/gitops-secrets)

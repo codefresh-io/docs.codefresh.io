@@ -151,12 +151,12 @@
           url: "/shared-volumes-of-service-from-composition-step-for-other-yml-steps"          
         - title: Import data to MongoDB
           url: "/import-data-to-mongodb"
+        - title: NodeJS + Angular2 + MongoDB
+          url: "/nodejs-angular2-mongodb"
         - title: Vault secrets pipelines
           url: "/vault-secrets-in-the-pipeline"
         - title: Decrypt with Mozilla SOPS
           url: "/decryption-with-mozilla-sops"
-        - title: GitOps secrets
-          url: "/gitops-secrets" 
         - title: Launch Composition
           url: "/launch-composition"
         - title: Use Docker compose
@@ -168,10 +168,6 @@
     - title: CD examples
       url: "/cd-examples"
       sub-pages:
-        - title: Import data to MongoDB
-          url: "/import-data-to-mongodb"
-        - title: NodeJS + Angular2 + MongoDB
-          url: "/nodejs-angular2-mongodb"
         - title: Secure a Docker Container Using HTTP Basic Auth
           url: "/secure-a-docker-container-using-http-basic-auth"
         - title: Spring Boot + Kafka + Zookeeper
@@ -202,12 +198,12 @@
           url: "/deploy-with-kustomize"
         - title: Deploy to Docker Swarm
           url: "/docker-swarm"  
+        - title: GitOps secrets
+          url: "/gitops-secrets" 
         - title: Amazon ECS/Fargate
           url: "/amazon-ecs"
         - title: Elastic Beanstalk
           url: "/elastic-beanstalk" 
-    - title: GitOps examples
-      url: "/cd-examples"
 
 - title: Pipeline integrations
   url: "/integrations"
@@ -589,7 +585,7 @@
     - title: Changelog
       url: "/changelog"
     - title: GitOps what's new
-      url: "/whats-new"
+      url: "/gitops-whats-new"
 
 - title: New Codefresh
   url: "/new-codefresh"
@@ -598,8 +594,6 @@
       url: "/menu-navigation"
     - title: Documentation changes
       url: "/doc-changes"
-
-
 
   
 - title: Troubleshooting

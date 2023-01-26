@@ -2,7 +2,7 @@
 title: "Secrets with GitOps"
 description: "Store secrets in Git with Bitnami sealed secrets"
 group: example-catalog
-sub_group: ci-examples
+sub_group: cd-examples
 redirect_from:
   - /docs/yaml-examples/examples/gitops-secrets/
 toc: true
@@ -10,7 +10,7 @@ toc: true
 
 ## Prerequisites
 
-- A [Codefresh account]({{site.baseurl}}/docs/administration/account-user-management/create-codefresh-account/)
+- A [free Codefresh account]({{site.baseurl}}/docs/administration/account-user-management/create-codefresh-account/)
 - A Kubernetes cluster
 - The [Codefresh GitOps agent]({{site.baseurl}}/docs/integrations/argocd/) installed on the cluster
 
