@@ -1,9 +1,7 @@
 ---
-title: "What's new in Codefresh?"
-description: ""
+title: "What's new in GitOps?"
+description: "New features, enhancements, and bug fixes"
 group: whats-new
-redirect_from:
-  - /docs/whats-new/
 toc: true
 ---
 

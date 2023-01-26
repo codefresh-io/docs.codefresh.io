@@ -42,7 +42,7 @@ npm install coveralls --save-dev
 
 Coveralls requires a [script](https://github.com/nickmerwin/node-coveralls){:target="\_blank"} that takes standard input and sends it to coveralls.io to report your code coverage. Depending on the framework that you are using, you will have to add a different script to your application. 
 
-Any coverage reports can be forwarded that are within a [lcov data format](http://ltp.sourceforge.net/coverage/lcov/geninfo.1.php){:target="\_blank"} (including [mocha's LCOV reporter](https://www.npmjs.com/package/mocha-lcov-reporter){:target="\_blank"}). For this, we are going to set-up a “bin” folder, and within the folder a coveralls.js file that contains the following content:
+Any coverage reports can be forwarded that are within a [lcov data format](https://github.com/linux-test-project/lcov){:target="\_blank"} (including [mocha's LCOV reporter](https://www.npmjs.com/package/mocha-lcov-reporter){:target="\_blank"}). For this, we are going to set-up a “bin” folder, and within the folder a coveralls.js file that contains the following content:
 
 {% highlight yaml %}
 {% raw %}
