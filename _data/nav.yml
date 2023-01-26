@@ -573,15 +573,6 @@
     - title: LDAP
       url: /ldap
 
-- title: New Codefresh
-  url: "/new-codefresh"
-  pages:
-    - title: Navigation quick reference
-      url: "/menu-navigation"
-    - title: Documentation changes
-      url: "/doc-changes"
-
-
 - title: Reference
   url: "/reference"
   pages:
@@ -591,6 +582,25 @@
       url: "/secrets"   
     - title: Shared configuration repo
       url: "/shared-configuration"
+
+- title: What's new
+  url: "/whats-new"
+  pages:
+    - title: Changelog
+      url: "/changelog"
+    - title: GitOps what's new
+      url: "/whats-new"
+
+- title: New Codefresh
+  url: "/new-codefresh"
+  pages:
+    - title: Navigation quick reference
+      url: "/menu-navigation"
+    - title: Documentation changes
+      url: "/doc-changes"
+
+
+
   
 - title: Troubleshooting
   url: "/troubleshooting"
