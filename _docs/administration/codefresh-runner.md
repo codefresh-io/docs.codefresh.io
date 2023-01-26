@@ -60,7 +60,7 @@ or
 codefresh runner init --token <my-token>
 ```
 
-Brefore proceeding with installation, the wizard asks you some basic questions.
+Before proceeding with installation, the wizard asks you some basic questions.
 
 {% include image.html
   lightbox="true"
