@@ -4,7 +4,8 @@ description: ""
 toc: true
 ---
 
-Get up to speed with navigation enhancements in the new Codefresh experience.  
+Get up to speed with navigation enhancements in the new Codefresh experience. 
+This quick reference categorizes the navigation options by user (Avatar) options, account-level administration and configuration, and features and functionality.
 
 ## Classic > New navigation
 
@@ -23,9 +24,9 @@ With the Settings icon always available, you have _single-click access_ to accou
     max-width="70%" 
 %}
 
-Review the changes in Avatar, account-level, and features and functionality. 
 
-### Classic Avatar
+
+### Classic > New user-specific (Avatar) options 
 
 {::nomarkdown} 
 
@@ -95,9 +96,9 @@ tr {
 {:/}
 
 
-### Classic Account-level
+### Classic > New account-level options
 
-Access account-level options through the **Settings** icon: 
+Access account-level options through the **Settings** icon for: 
 * Account & user management
 * Integrations
 * Configurations
@@ -132,7 +133,7 @@ tr {
 
 <table>
     <tr>
-       <th colspan="4">CLASSIC to NEW</th>
+       <th colspan="4">CLASSIC > NEW</th>
      </tr>
      <tr>
      </tr>
@@ -266,8 +267,7 @@ tr {
 
 
 
-### Classic features and functionality
-We renamed menus and moved menu items. 
+### Classic > New features and functionality.
 
 {::nomarkdown}
 <style>
@@ -328,21 +328,18 @@ tr {
         <td>></td>
         <td></td>
         <td><b>PIPELINES</b></td>
-        <td></td>
     </tr>
     <tr>
         <td></td>
         <td></td>
         <td><b>Projects</b></td>
         <td>No change</td>
-        <td></td>
     </tr>
     <tr>
         <td></td>
         <td></td>
         <td><b>Pipelines</b></td>
         <td>No change</td>
-        <td></td>
     </tr>
     <tr>
         <td></td>
@@ -440,11 +437,11 @@ tr {
 {:/}
 
 
-## Codefresh GitOps > New navigation  
+## GitOps > New navigation  
 
 Review the changes in Avatar, account-level, and features and functionality. 
 
-### GitOps Avatar
+### GitOps > New user-specific (Avatar) options
 
 {::nomarkdown} 
 
@@ -476,34 +473,18 @@ tr {
 
 <table>
     <tr>
-       <th colspan="2">GITOPS</th>
-        <th></th>
-        <th colspan="1">NEW CODEFRESH</th>
+       <th colspan="4">GITOPS > NEW</th>
      </tr>
-     <tr>
-     </tr>
-
-     <tr>
-        <th>Category</th>
-        <th></th>
-        <th>Menu item</th>
-        <th></th>
-        <th>Menu item</th>
-      </tr>
-
     <tr>
         <td><b>AVATAR</b></td>
         <td>></td>
         <td><b>Account Settings</b></td>
-        <td></td>
-        <td>(Moved to) Settings</td>
-        <td></td>
+        <td>Moved to Settings icon in toolbar</td>
     </tr>
     <tr>
         <td></td>
         <td></td>
-        <td><b>User Management</b></td>
-        <td></td>
+        <td><b>User Management</b></td>>
         <td>Moved to Settings icon in toolbar</td>
     </tr>
     <tr>
@@ -533,7 +514,7 @@ tr {
 
 
 
-### GitOps account-level options
+### GitOps > New account-level options
 
 Access account-level options through the **Settings** icon in the toolbar: 
 * Account & user management
@@ -571,19 +552,8 @@ tr {
 
 <table>
     <tr>
-       <th colspan="2">GITOPS</th>
-        <th></th>
-        <th colspan="1">NEW CODEFRESH</th>
+       <th colspan="4">GITOPS > NEW</th>
      </tr>
-     <tr>
-     </tr>
-
-     <!---<tr>
-        <th>Category</th>
-        <th></th>
-        <th>Menu item</th>
-        <th></th>
-      </tr>  -->
      <tr>
         <td><b>GENERAL</b></td>
         <td>></td>
@@ -610,7 +580,7 @@ tr {
         <td>New item</td>
     </tr>
     <tr> 
-      <td>ACCESS & COLLABORATION</td>
+      <td><b>ACCESS & COLLABORATION</b></td>
       <td>></td>
       <td><b></td>
       <td>New</td>    
@@ -670,9 +640,7 @@ tr {
 {:/}
        
 
-### GitOps features & functionality
-
-We renamed menus and moved menu items. 
+### GitOps > New features & functionality
 
 {::nomarkdown}
 <style>
@@ -707,19 +675,10 @@ tr {
         <th colspan="1">NEW CODEFRESH</th>
      </tr>
      <tr>
-     </tr>
-
-     <!---<tr>
-        <th>Category</th>
-        <th></th>
-        <th>Menu item</th>
-        <th></th>
-      </tr>  -->
-     <tr>
-        <td></td>
-        <td></td>
         <td><b>Home</b></td>
-        <td><b>Moved to OPS<br>Renamed as GitOps Overview</b></td>
+        <td>></td>
+        <td></td>
+        <td>Moved to OPS<br>Renamed as GitOps Overview</td>
     </tr>
     <tr>
         <td><b>INSIGHTS</b></td>
@@ -792,7 +751,6 @@ tr {
         <td></td>
         <td><b>Kubernetes Services</b></td>
         <td>New item</td>
-
     </tr>
     <tr>
         <td></td>
@@ -800,7 +758,6 @@ tr {
         <td><b>Helm Releases</b></td>
         <td>New item</td>
     </tr>
-
     <tr>
         <td></td>
         <td></td>
