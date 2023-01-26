@@ -190,7 +190,7 @@ Make sure you have [installed the Codefresh Runner](#codefresh-runner-installati
 
 **How to**  
 1. Run `kubectl edit deployment runner -n codefresh-runtime` and add the proxy variables:  
-```
+```yaml
 spec:
   containers:
   - env:
@@ -400,6 +400,7 @@ codefresh patch runtime-environment my-eks-cluster/codefresh -f runtime.yaml
 kubectl delete pvc -l codefresh-app=dind -n <your_runner_ns>
 kubectl delete pv -l codefresh-app=dind -n <your_runner_ns>
 ```
+{:start="7"}
 1. Restart the volume provisioner pod. 
 
 ##### Values YAML for configuration
@@ -1137,9 +1138,9 @@ You need to create three files:
 }
 ```
 
-
+**How to**  
 1. Create the `cluster.yaml` as in the example below (`my-eks-cluster.yaml`).
-`my-eks-cluster.yaml`
+`my-eks-cluster.yaml`  
 ```yaml
 apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
@@ -1147,7 +1148,6 @@ metadata:
   name: my-eks
   region: us-west-2
   version: "1.15"
-
 nodeGroups:
   - name: dind
     instanceType: m5.2xlarge
@@ -1239,18 +1239,22 @@ Once the cluster is up and running, install the [cluster autoscaler](https://doc
 
 Because we used IAM AddonPolicies `"autoScaler: true"` in the `cluster.yaml` file, everything is done automatically, and there is no need to create a separate IAM policy or add Auto Scaling group tags.
 
+{:start="1"}
 1. Deploy the cluster autoscaler:
 ```shell
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/autoscaler/master/cluster-autoscaler/cloudprovider/aws/examples/cluster-autoscaler-autodiscover.yaml
 ```
+{:start="2"}
 1. Add the `cluster-autoscaler.kubernetes.io/safe-to-evict` annotation:
 ```shell
 kubectl -n kube-system annotate deployment.apps/cluster-autoscaler cluster-autoscaler.kubernetes.io/safe-to-evict="false"
 ```
+{:start="3"}
 1. Edit the `cluster-autoscaler` container command:
 ```shell
 kubectl -n kube-system edit deployment.apps/cluster-autoscaler
 ```
+{:start="4"}
 1. Do the following as in the example below:
   * Replace `<YOUR CLUSTER NAME>` with the name of the cluster `cluster.yaml`
   * Add the following options:  
@@ -1291,7 +1295,6 @@ https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#h
 $ kubectl config current-context 
 my-aws-runner
 ```
-
 1. Install the Runner with additional options:
   * Specify the zone in which to create your volumes, for example: `--set-value=Storage.AvailabilityZone=us-west-2a`.
   * (Optional) To assign the volume-provisioner to a specific node, for example, a specific node group with an IAM role that can create EBS volumes, `--set-value Storage.VolumeProvisioner.NodeSelector=node-type=addons`.
@@ -1383,7 +1386,7 @@ You have completed installing the Codefresh Runner on an EKS cluster. You can tr
 
 ### Install Codefresh Runner on Rancher RKE 2.X
 
-Installing Codefresh Runner on Rancher RKE 2.X includes these steps: 
+Installing Codefresh Runner on Rancher RKE 2.X includes these steps:  
 [Step 1: Configure kubelet for Runner StorageClass](#step-1-configure-kubelet-for-runner-storageclass)  
 [Step 2: Set kubeconfig user permissions](#step-2-set-kubeconfig-user-permissions)
 [Step 3: Install the Runner](#step-3-install-the-runner)  
@@ -1584,7 +1587,7 @@ kubectl edit deploy runner -n codefresh
 **How to**  
  
 1. If you use AKS with managed [identities for node group](https://docs.microsoft.com/en-us/azure/aks/use-managed-identity), you can run the script below to assign `CodefreshDindVolumeProvisioner` role to AKS node identity:  
-```shell
+```
 export ROLE_DEFINITIN_FILE=dind-volume-provisioner-role.json
 export SUBSCRIPTION_ID=$(az account show --query "id" | xargs echo )
 export RESOURCE_GROUP=codefresh-rt1
@@ -1598,11 +1601,11 @@ az role assignment create --assignee $NODE_SERVICE_PRINCIPAL --scope /subscripti
 ```
 {:start="2"}
 1. Install Codefresh Runner using one of these options:  
-* CLI Wizard:  
-```shell
+    * CLI Wizard:  
+```
 codefresh runner init --set-value Storage.Backend=azuredisk --set Storage.VolumeProvisioner.MountAzureJson=true 
 ```
-* [values-example.yaml](https://github.com/codefresh-io/venona/blob/release-1.0/venonactl/example/values-example.yaml){:target="\_blank"}:  
+    * [values-example.yaml](https://github.com/codefresh-io/venona/blob/release-1.0/venonactl/example/values-example.yaml){:target="\_blank"}:  
 ```yaml
 Storage:
   Backend: azuredisk
@@ -1612,7 +1615,7 @@ Storage:
 ```shell
 codefresh runner init --values values-example.yaml 
 ```
-* Helm chart [values.yaml](https://github.com/codefresh-io/venona/blob/release-1.0/charts/cf-runtime/values.yaml){:target="\_blank"}:  
+    * Helm chart [values.yaml](https://github.com/codefresh-io/venona/blob/release-1.0/charts/cf-runtime/values.yaml){:target="\_blank"}:  
 ```yaml
 storage:
   backend: azuredisk
@@ -1622,7 +1625,8 @@ storage:
 volumeProvisioner:
   mountAzureJson: true
 ```
-```shell
+
+```
 helm install cf-runtime cf-runtime/cf-runtime -f ./generated_values.yaml -f values.yaml --create-namespace --namespace codefresh 
 ```
 
