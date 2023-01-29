@@ -190,7 +190,7 @@ Make sure you have [installed the Codefresh Runner](#codefresh-runner-installati
 
 **How to**  
 1. Run `kubectl edit deployment runner -n codefresh-runtime` and add the proxy variables:
-```yaml
+```
 spec:
   containers:
   - env:
@@ -281,6 +281,7 @@ There are three options for this:
 
 #### Configuration 
 
+{:start="1"}
 1. Create Storage Class for EBS volumes:
   >Choose **one** of the Availability Zones (AZs)to be used for your pipeline builds. Multi AZ configuration is not supported.  
 
@@ -349,9 +350,9 @@ codefresh get runtime-environments my-eks-cluster/codefresh -o yaml > runtime.ya
 ```
 {:start="4"}
 1. Modify the YAML:
-  *  In `dockerDaemonScheduler.cluster`, add `nodeSelector: topology.kubernetes.io/zone: <your_az_here>`.  
-      > Make sure you define the same AZ you selected for Runtime Configuration.
-  * Modify `pvcs.dind` to use the Storage Class you created above (`dind-ebs`).
+    *  In `dockerDaemonScheduler.cluster`, add `nodeSelector: topology.kubernetes.io/zone: <your_az_here>`.  
+        > Make sure you define the same AZ you selected for Runtime Configuration.
+    * Modify `pvcs.dind` to use the Storage Class you created above (`dind-ebs`).
 
   Here is an example of the `runtime.yaml` including the required updates: 
 ```yaml
@@ -992,7 +993,6 @@ codefresh runner init [options] \
 ```
 
 **With the values `values-example.yaml` file:**  
-
 ```yaml
 ...
 ### Storage parameter example for GCE disks
@@ -1213,7 +1213,6 @@ nodeGroups:
         autoScaler: true
 availabilityZones: ["us-west-2a", "us-west-2b", "us-west-2c"]
 ```
-{:start="2"}
 1. Execute:
 ```shell
 eksctl create cluster -f my-eks-cluster.yaml
@@ -1234,7 +1233,7 @@ To leverage [Bottlerocket-based nodes](https://aws.amazon.com/bottlerocket/){:ta
 
 #### Step 2: Install autoscaler on EKS cluster
 
-Once the cluster is up and running, install the [cluster autoscaler](https://docs.aws.amazon.com/eks/latest/userguide/cluster-autoscaler.html){:target="\_blank"}:
+Once the cluster is up and running, install the [cluster autoscaler](https://docs.aws.amazon.com/eks/latest/userguide/cluster-autoscaler.html){:target="\_blank"}.
 
 Because we used IAM AddonPolicies `"autoScaler: true"` in the `cluster.yaml` file, everything is done automatically, and there is no need to create a separate IAM policy or add Auto Scaling group tags.
 
@@ -1315,6 +1314,7 @@ codefresh runner init \
 --set-value=Storage.KmsKeyId=<key id>
 ```  
   For descriptions of the other options, run `codefresh runner init --help` ([global parameter table](#customizing-the-wizard-installation)).
+
 {:start="3"}
 1. When the Wizard completes the installation, modify the runtime environment of `my-aws-runner` to specify the necessary toleration, nodeSelector and disk size:
     * Run: 
@@ -1587,6 +1587,7 @@ kubectl edit deploy runner -n codefresh
 **How to**  
  
 1. If you use AKS with managed [identities for node group](https://docs.microsoft.com/en-us/azure/aks/use-managed-identity), you can run the script below to assign `CodefreshDindVolumeProvisioner` role to AKS node identity:  
+
 ```
 export ROLE_DEFINITIN_FILE=dind-volume-provisioner-role.json
 export SUBSCRIPTION_ID=$(az account show --query "id" | xargs echo )
@@ -1599,14 +1600,15 @@ export NODE_SERVICE_PRINCIPAL=$(az aks show -g $RESOURCE_GROUP -n $AKS_NAME --qu
 az role definition create --role-definition @${ROLE_DEFINITIN_FILE}
 az role assignment create --assignee $NODE_SERVICE_PRINCIPAL --scope /subscriptions/$SUBSCRIPTION_ID/resourceGroups/$NODES_RESOURCE_GROUP --role CodefreshDindVolumeProvisioner
 ```
+
 {:start="2"}
 1. Install Codefresh Runner using one of these options:  
     * CLI Wizard:  
 ```
 codefresh runner init --set-value Storage.Backend=azuredisk --set Storage.VolumeProvisioner.MountAzureJson=true 
 ```
-    * [values-example.yaml](https://github.com/codefresh-io/venona/blob/release-1.0/venonactl/example/values-example.yaml){:target="\_blank"}:  
-```yaml
+    * [values-example.yaml](https://github.com/codefresh-io/venona/blob/release-1.0/venonactl/example/values-example.yaml){:target="\_blank"}: 
+```
 Storage:
   Backend: azuredisk
   VolumeProvisioner:
@@ -1616,7 +1618,7 @@ Storage:
 codefresh runner init --values values-example.yaml 
 ```
     * Helm chart [values.yaml](https://github.com/codefresh-io/venona/blob/release-1.0/charts/cf-runtime/values.yaml){:target="\_blank"}:  
-```yaml
+```
 storage:
   backend: azuredisk
   azuredisk:
@@ -1625,7 +1627,6 @@ storage:
 volumeProvisioner:
   mountAzureJson: true
 ```
-
 ```
 helm install cf-runtime cf-runtime/cf-runtime -f ./generated_values.yaml -f values.yaml --create-namespace --namespace codefresh 
 ```
@@ -2048,10 +2049,10 @@ With the Codefresh Runner, you can run native ARM64v8 builds.
 
 The following scenario is an example of how to set up ARM Runner on existing EKS cluster:
 
-**Step 1: Preparing nodes**
+**Step 1: Preparing nodes**  
+
 
 1. Create new ARM nodegroup:
-
 ```shell
 eksctl utils update-coredns --cluster <cluster-name>
 eksctl utils update-kube-proxy --cluster <cluster-name> --approve
@@ -2067,15 +2068,11 @@ eksctl create nodegroup \
 --nodes-max <4>\
 --managed
 ```
-
 1. Check nodes status:
-
 ```shell
 kubectl get nodes -l kubernetes.io/arch=arm64
 ```
-
 1. Also it's recommeded to label and taint the required ARM nodes:
-
 ```shell
 kubectl taint nodes <node> arch=aarch64:NoSchedule
 kubectl label nodes <node> arch=arm
@@ -2120,7 +2117,6 @@ Runtime:
 ```
 
 1. Install the Runner:
-
 ```shell
 codefresh runner init --values values-arm.yaml --exec-demo-pipeline false --skip-cluster-integration true
 ```
@@ -2128,30 +2124,24 @@ codefresh runner init --values values-arm.yaml --exec-demo-pipeline false --skip
 **Step 3 - Post-installation fixes**
 
 1. Change `engine` image version in Runtime Environment specification:
-
 ```shell
 # get the latest engine ARM64 tag
 curl -X GET "https://quay.io/api/v1/repository/codefresh/engine/tag/?limit=100" --silent | jq -r '.tags[].name' | grep "^1.*arm64$"
 1.136.1-arm64
 ```
-
 ```shell
 # get runtime spec
 codefresh get re $RUNTIME_NAME -o yaml > runtime.yaml
 ```
-
 1. Under `runtimeScheduler.image` change image tag:
-
 ```yaml
 runtimeScheduler:
   image: 'quay.io/codefresh/engine:1.136.1-arm64'
 ```
-
 ```shell
 # patch runtime spec
 codefresh patch re -f runtime.yaml
 ```
-
 1. For `local` storage patch `dind-lv-monitor-runner` DaemonSet and add `nodeSelector`:
 
 ```shell
