@@ -283,7 +283,7 @@ There are three options for this:
 
 #### Configuration 
 
-1. Create Storage Class for EBS volumes:
+**Step 1:** Create Storage Class for EBS volumes:
   >Choose **one** of the Availability Zones (AZs)to be used for your pipeline builds. Multi AZ configuration is not supported.  
 
     * **Storage Class (gp2)**  
@@ -334,28 +334,25 @@ parameters:
   # Max - 1000.
   throughput: "500"
 ```
-{:start="2"}
-1. Apply storage class manifest:
+**Step 2:** Apply storage class manifest:
 ```shell
 kubectl apply -f dind-ebs.yaml
 ```
-{:start="3"}
-1. Get the YAML representation of the runtime you just added:
-  * Get a list of all available runtimes:
-    ```shell
-    codefresh get runtime-environments
-    ```
-  * Select the runtime you just added, and get its YAML representation:
+**Step 3:** Get the YAML representation of the runtime you just added:
+    * Get a list of all available runtimes:
+```shell
+codefresh get runtime-environments
+```
+    * Select the runtime you just added, and get its YAML representation:
 ```shell
 codefresh get runtime-environments my-eks-cluster/codefresh -o yaml > runtime.yaml
 ```
-{:start="4"}
-1. Modify the YAML:
+**Step 4:** Modify the YAML:  
     *  In `dockerDaemonScheduler.cluster`, add `nodeSelector: topology.kubernetes.io/zone: <your_az_here>`.  
         > Make sure you define the same AZ you selected for Runtime Configuration.
     * Modify `pvcs.dind` to use the Storage Class you created above (`dind-ebs`).
 
-  Here is an example of the `runtime.yaml` including the required updates: 
+    Here is an example of the `runtime.yaml` including the required updates: 
 ```yaml
 version: 1
 metadata:
@@ -391,19 +388,16 @@ extends:
 description: '...'
 accountId: 5f048d85eb107d52b16c53ea
 ```
-{:start="5"}
-1. Update your runtime environment with the [patch command](https://codefresh-io.github.io/cli/operate-on-resources/patch/):
+**Step 5:** Update your runtime environment with the [patch command](https://codefresh-io.github.io/cli/operate-on-resources/patch/):
 ```shell
 codefresh patch runtime-environment my-eks-cluster/codefresh -f runtime.yaml
 ```
-{:start="6"}
-1. If necessary, delete all existing PV (Persistent Volume) and PVC (Persistent Volume Claim ) objects that remain from the default local provisioner:
+**Step 6:**  If necessary, delete all existing PV (Persistent Volume) and PVC (Persistent Volume Claim ) objects that remain from the default local provisioner:
 ```
 kubectl delete pvc -l codefresh-app=dind -n <your_runner_ns>
 kubectl delete pv -l codefresh-app=dind -n <your_runner_ns>
 ```
-{:start="7"}
-1. Restart the volume provisioner pod. 
+**Step 7:** Restart the volume provisioner pod. 
 
 ##### Values YAML for configuration
 >You can define all these options above for clean Runner installation with [values.yaml](https://github.com/codefresh-io/venona/blob/release-1.0/venonactl/example/values-example.yaml){:target="\_blank"} file:
