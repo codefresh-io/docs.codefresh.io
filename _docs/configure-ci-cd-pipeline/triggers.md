@@ -9,9 +9,9 @@ toc: true
 ---
 
 
-To create an effective CI/CD process, it should be possible to trigger a Codefresh pipeline execution not only on code repository events (like `push` or `PR`), but also on any "interesting" CD-related event, coming from some external system.
+To create an effective CI/CD process, it should be possible to trigger Codefresh pipelines not only on code repository events (like `push` or `PR`), but also on any "interesting" CD-related event, coming from some external system.
 
-Codefresh not only allows you to define different pipelines on a single project but it also offers you the capability to trigger them with completely separate mechanisms.
+Codefresh not only allows you to define different pipelines on a single project but also offers you the capability to trigger them with completely separate mechanisms. You can even skip triggering a pipeline by including predefined flags in the commit message. 
 
 
 ## Codefresh Trigger Types
@@ -95,6 +95,8 @@ For more information see:
 You can easily disable a trigger manually if you don't want to be active anymore.
 On the triggers tab click the gear icon on the top right (*Open advanced options*).
 
+
+
 {% include image.html
 lightbox="true"
 file="/images/pipeline/triggers/enable-triggers.png"
@@ -107,6 +109,9 @@ max-width="70%"
 
 Then click the toggle switch on each trigger that you want to enable/disable. You can later enable the same trigger again
 by clicking the same switch.
+
+>For Git triggers, you can also skip triggering the pipeline without disabling the trigger by adding a predefined string to the commit message. See [Skip triggering pipeline on commit]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/#skip-triggering-pipeline-on-commit).
+
 
 ## What to read next
 

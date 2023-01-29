@@ -83,6 +83,7 @@ codefresh runner init --token <my-token> <--dry-run>
       * Saves all the Kubernetes manifests used by the installer locally in the folder `./codefresh_manifests`. 
       * Installs the Agent and YAML file describing the runtime. 
 
+
 1. Reply to the prompts as needed:
 
 {% include image.html

@@ -9,9 +9,9 @@ toc: true
 ---
 Clones a Git repository to the filesystem.
 
-A pipeline can have any number of git clone steps (even none). You can checkout code from any private or public repository. Cloning a repository is not constrained to the trigger of a pipeline. You can trigger a pipeline from a commit that happened on Git repository A while the pipeline is checking out code from Git Repository B.
+A pipeline can have any number of git clone steps (even none). You can check out code from any private or public repository. Cloning a repository is not constrained to the trigger of a pipeline. You can trigger a pipeline from a commit that happened on Git repository A while the pipeline is checking out code from Git Repository B.
 
->Notice that if you are an existing customer before May 2019, Codefresh will automatically checkout the code from a [connected git repository]({{site.baseurl}}/docs/integrations/git-providers/) when a pipeline is created on that repository. In this case an implicit git clone step is included in your pipeline. You can still override it with your own git clone step as explained in this page
+>Notice that if you are an existing customer before May 2019, Codefresh will automatically check out the code from a [connected git repository]({{site.baseurl}}/docs/integrations/git-providers/) when a pipeline is created on that repository. In this case an implicit git clone step is included in your pipeline. You can still override it with your own git clone step as explained in this page
 
 ## Usage
 
@@ -23,6 +23,7 @@ step_name:
   description: Step description
   working_directory: /path
   repo: owner/repo
+  depth: 3
   git: my-git-provider
   revision: abcdef12345'
   use_proxy: false
@@ -45,6 +46,7 @@ step_name:
 
 ## Fields
 
+
 {: .table .table-bordered .table-hover}
 | Field                                      | Description                                                                                                                                                                                                                        | Required/Optional/Default |
 | ------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- |
@@ -53,8 +55,9 @@ step_name:
 | `stage`                              | Parent group of this step. See [using stages]({{site.baseurl}}/docs/codefresh-yaml/stages/) for more information.                                                                                                                                                                                          | Optional                  |
 | `working_directory`                        | The directory to which the repository is cloned. It can be an explicit path in the container's file system, or a variable that references another step. The default value is {% raw %}`${{main_clone}}`{% endraw %}, but note that the default will only be used if you name your step `main_clone`.  See the example on [working inside the cloned directory]({{site.baseurl}}/docs/yaml-examples/examples/git-checkout/#working-inside-the-cloned-directory) for more information.                | Default                   |
 | `git` | The name of the [git integration]({{site.baseurl}}/docs/integrations/git-providers/) you want to use. If left empty, Codefresh will attempt to use the git provider that was used during account sign-up. Note that this might have unexpected results if you are changing your Git integrations.| Required| 
-| `repo`                                     | path of the repository without the domain name in the form of `my_username/my_repo`                                                                                                                                                                                       | Required                  |
+| `repo`                                     | The path of the repository without the domain name in the form of `my_username/ my_repo`. {::nomarkdown} <br>Note: To clone a GitHub wiki, specify the full URL of the wiki,{:/} for example, `"https://github.com/wikis/examples.wiki"`.                                                          | Required                  |
 | `revision`                                 | The revision of the repository you are checking out. It can be a revision hash or a branch name. The default value is the branch you have specified in your Git provider (e.g `master` or `main`).                                                                                                     | Default                   |
+| `depth`                                 |  The number of commits to pull from the repo to create a shallow clone. Creating a shallow clone truncates the history to the number of commits specified, instead of pulling the entire history. | Optional                   |
 | `use_proxy`                                 | If set to true the Git clone process will honor `HTTP_PROXY` and `HTTPS_PROXY` variables if present for [working via a proxy](#using-git-behind-a-proxy). Default value is `false`.                                                                                                    | Default                   |
 | `credentials`                              | Credentials to access the repository, if it requires authentication. It can an object containing `username` and `password` fields. Credentials are optional if you are using the [built-in git integrations]({{site.baseurl}}/docs/integrations/git-providers/) .                                                                                             | Optional                  |
 | `fail_fast`                                | If a step fails and the process is halted. The default value is `true`.                                                                                                                                                            | Default                   |
