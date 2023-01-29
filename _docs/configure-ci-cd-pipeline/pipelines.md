@@ -118,14 +118,58 @@ You can click on the *Inline YAML* header and switch it to *Use YAML from URL* o
 {% include 
 image.html 
 lightbox="true" 
+file="/images/pipeline/create/pipeline-git-options.png" 
+url="/images/pipeline/create/pipeline-git-options.png"
+alt="Pipeline resource options" 
+caption="Pipeline resource options"
+max-width="60%"
+%}
+
+### Using another Git repository
+
+Loading the pipeline from a Git repository is the recommended way to associate a pipeline with a project once you are finished with it. Even though the inline editor is great for quick prototyping and experimentation, ideally all your pipelines should be under source control.
+
+When you click this option from the drop-down menu you will can select any Git repository already connected to Codefresh along with a preview of the pipeline.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/create/pipeline-per-branch.png" 
+url="/images/pipeline/create/pipeline-per-branch.png"
+alt="Load pipeline from Git" 
+caption="Load pipeline from Git"
+max-width="60%"
+%}
+
+Note that unlike other CI options the Git repository that contains the pipeline can be completely different from the Git repository that has the source code of your application.
+
+The **Use branch from Git trigger** option is very important and defines from which branch of the Git repo the pipeline will be loaded from. In most cases you want to keep this enabled as it will make the pipeline load from the same branch that triggered the build.
+
+For example if you open a new pull request for a branch named `feature-x` that has changes both in source code and in the pipeline definition itself, ideally you would want the pipeline responsible for the build to be the same one that contains the new changes in the `feature-x` branch.
+
+If you disable this option then you can select a specific branch from the field directly above the switch. The option is great for organizations that want to lock down their pipelines. 
+
+For example, if you define `master` as the branch that will be used for this pipeline, then even if a developer creates a custom branch for their source code changes, they will not be able to change the pipeline itself to do something different. Their pipeline changes in their own branch will be ignored as all builds will always load the pipeline from `master`. This can be very useful for security sensitive pipelines.
+
+
+### Using any public URL
+
+The URL option allows you to load the pipeline definition from any _public_
+
+{% include 
+image.html 
+lightbox="true" 
 file="/images/pipeline/create/pipeline-from-internal-repo.png" 
 url="/images/pipeline/create/pipeline-from-internal-repo.png"
 alt="Pipeline from internal repo" 
 caption="Pipeline from internal repo"
-max-width="60%"
+max-width="70%"
 %}
 
-You can then copy and paste a URL to a raw Codefresh YAML file.  This will allow you to load a Codefresh YAML from any public URL. Notice that a raw URL is needed in the case of GitHub. 
+You can then copy and paste a URL to a raw Codefresh YAML file.  This will allow you to load a Codefresh YAML from any URL. 
+
+
+Notice that a raw URL is needed in the case of GitHub. 
 
 As an example, instead of using `https://github.com/codefresh-contrib/example-voting-app/blob/master/codefresh.yml` you should enter `https://raw.githubusercontent.com/codefresh-contrib/example-voting-app/master/codefresh.yml`
 
@@ -147,10 +191,10 @@ Once you create your pipeline you can also click on the top tab called *Settings
 
 ### Policies
 
-- **Pipeline Concurrency**: the maximum number of concurrent builds (0-14 or unlimited) -- set this when your pipeline has only one trigger  
+- **Pipeline Concurrency**: the maximum number of concurrent builds (0-30 or unlimited) -- set this when your pipeline has only one trigger  
   > A Pipeline Concurrency of **0** freezes execution of the pipeline, switching it to maintenance mode. Use this concurrency setting to modify existing pipelines and freeze execution until you complete the changes. 
-- **Trigger Concurrency**: the maximum number of concurrent builds per trigger (1-15 or unlimited) -- set this when your pipeline has multiple triggers
-- **Branch Concurrency**: the maximum number of concurrent builds per branch (1-15 or unlimited) -- set this when your pipeline can build different branches
+- **Trigger Concurrency**: the maximum number of concurrent builds per trigger (1-31 or unlimited) -- set this when your pipeline has multiple triggers
+- **Branch Concurrency**: the maximum number of concurrent builds per branch (1-31 or unlimited) -- set this when your pipeline can build different branches
 - **Build Termination**: various toggles for when a build from the pipeline should terminate
   - Once a build is created terminate previous builds from the same branch
   - Once a build is created terminate previous builds only from a specific branch (name matches a regular expression)
@@ -218,16 +262,18 @@ You can define multiple external resources in a single pipeline.
   - Medium (recommended 3-4 steps)
   - Large (recommended 5-6 steps)
 
-#### Set disk space for pipeline builds
-Set the disk space you need for the pipeline's build volume. Configuring the disk space per pipeline build volume prevents out-of-space scenarios that lead to failed builds. The disk space set for the pipeline is inherited by all the builds run for the pipeline.  
+#### Set minimum disk space for a pipeline build
+To speed up builds and improve performance, Codefresh caches different types of data during pipeline execution for reuse across builds. Image-caching is one example of cached data, where Codefresh pulls the required images during the first build and caches them for reuse in future builds. For more info, see [Pipeline caching]({{site.baseurl}}docs/configure-ci-cd-pipeline/pipeline-caching).   
+Because a portion of the disk space is already utilized by cache, a build can run out of disk space and fail with the 'no space left on device' error.
 
-Codefresh calculates the available range according to the disk size, and automatically sets the disk space for the build volume to 70% of the total disk space. You can either retain the default allocation or change as needed.
+To prevent out-of-space scenarios that lead to failed builds, you can set the minimum disk space you need for the pipeline's build volume. Defining the minimum disk space ensures that Codefresh assigns either a cached disk with sufficient disk space or a new empty disk at the start of the build.  
 
->You can also configure the disk space for a [specific trigger]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/#set-minimum-disk-space-for-build-volume-by-trigger) used by the pipeline or for a specific run, and override what's set for the pipeline.
+The disk space set for the pipeline is inherited by all the builds run for the pipeline.  
+You can also configure the disk space for a [specific trigger]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/#set-minimum-disk-space-for-build-volume-by-trigger) used by the pipeline or for a specific run, and override what's set for the pipeline.
 
-1. Select the pipeline for which to set the disk space.
+1. Select the pipeline for which to set the minimum disk space.
 1. Select **Settings**, and then **Runtime**.
-1. Enable **Set minimum required disk space** and either retain the default displayed or change as needed. 
+1. Enable **Set minimum required disk space**, and either retain the default displayed or change as needed. 
 
 {% include 
 image.html 
@@ -239,7 +285,8 @@ caption="Set disk space for pipeline builds"
 max-width="60%"
 %}
 
-
+> Track the actual disk usage in Builds > Metrics.
+ 
 ## Using Pipeline Templates
 
 Codefresh also supports the creation of pipeline "templates" which are blueprints for creating new pipelines. To enable the creation of pipelines from templates first visit the global pipeline configuration at [https://g.codefresh.io/account-admin/account-conf/pipeline-settings](https://g.codefresh.io/account-admin/account-conf/pipeline-settings) and toggle the *Enable Pipeline Templates* button.
