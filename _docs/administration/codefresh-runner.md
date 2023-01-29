@@ -191,7 +191,8 @@ Make sure you have [installed the Codefresh Runner](#codefresh-runner-installati
 
 **How to**  
 1. Run `kubectl edit deployment runner -n codefresh-runtime` and add the proxy variables:
-```
+
+```yaml
 spec:
   containers:
   - env:
@@ -208,7 +209,8 @@ spec:
     - name: NO_PROXY
       value: localhost,127.0.0.1,<local_ip_of_machine>
 ```
-1. Add the following variables to your `runtime.yaml`, both to the `runtimeScheduler:` and to the `dockerDaemonScheduler:` blocks, within the `envVars:` section:
+
+2. Add the following variables to your `runtime.yaml`, both to the `runtimeScheduler:` and to the `dockerDaemonScheduler:` blocks, within the `envVars:` section:
 ```yaml
 HTTP_PROXY: http://<ip of proxy server>:port
 http_proxy: http://<ip of proxy server>:port
@@ -217,7 +219,7 @@ https_proxy: http://<ip of proxy server>:port
 No_proxy: localhost, 127.0.0.1, <local_ip_of_machine>
 NO_PROXY: localhost, 127.0.0.1, <local_ip_of_machine>
 ```
-1. Add `.firebaseio.com` to the allowed-sites of the proxy server.
+3. Add `.firebaseio.com` to the allowed-sites of the proxy server.
 1. Exec into the `dind` pod, and run `ifconfig`.  
 1. If the MTU value for `docker0` is _higher_ than the MTU value of `eth0` (sometimes the `docker0` MTU is 1500, while `eth0` MTU is 1440), change the `docker0` MTU value to be lower than the `eth0` MTU.  
   * To change the `docker0` MTU value, edit the `configmap` in the `codefresh-runtime` namespace:
