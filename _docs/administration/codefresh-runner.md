@@ -209,8 +209,7 @@ spec:
     - name: NO_PROXY
       value: localhost,127.0.0.1,<local_ip_of_machine>
 ```
-
-2. Add the following variables to your `runtime.yaml`, both to the `runtimeScheduler:` and to the `dockerDaemonScheduler:` blocks, within the `envVars:` section:
+1. Add the following variables to your `runtime.yaml`, both to the `runtimeScheduler:` and to the `dockerDaemonScheduler:` blocks, within the `envVars:` section:
 ```yaml
 HTTP_PROXY: http://<ip of proxy server>:port
 http_proxy: http://<ip of proxy server>:port
