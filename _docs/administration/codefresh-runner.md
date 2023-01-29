@@ -190,8 +190,7 @@ If the Kubernetes cluster with the Codefresh Runner is behind a proxy server wit
 Make sure you have [installed the Codefresh Runner](#codefresh-runner-installation) using any of the options
 
 **How to**  
-1. Run `kubectl edit deployment runner -n codefresh-runtime` and add the proxy variables:
-
+1. Run `kubectl edit deployment runner -n codefresh-runtime` and add the proxy variables:  
 ```yaml
 spec:
   containers:
@@ -1237,7 +1236,7 @@ Once the cluster is up and running, install the [cluster autoscaler](https://doc
 Because we used IAM AddonPolicies `"autoScaler: true"` in the `cluster.yaml` file, everything is done automatically, and there is no need to create a separate IAM policy or add Auto Scaling group tags.
 
 {:start="1"}
-1. Deploy the cluster autoscaler:
+8. Deploy the cluster autoscaler:
 ```shell
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/autoscaler/master/cluster-autoscaler/cloudprovider/aws/examples/cluster-autoscaler-autodiscover.yaml
 ```
