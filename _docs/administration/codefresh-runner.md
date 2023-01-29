@@ -189,7 +189,7 @@ If the Kubernetes cluster with the Codefresh Runner is behind a proxy server wit
 Make sure you have [installed the Codefresh Runner](#codefresh-runner-installation) using any of the options
 
 **How to**  
-1. Run `kubectl edit deployment runner -n codefresh-runtime` and add the proxy variables:  
+1. Run `kubectl edit deployment runner -n codefresh-runtime` and add the proxy variables:
 ```yaml
 spec:
   containers:
@@ -284,7 +284,7 @@ There are three options for this:
 1. Create Storage Class for EBS volumes:
   >Choose **one** of the Availability Zones (AZs)to be used for your pipeline builds. Multi AZ configuration is not supported.  
 
-**Storage Class (gp2)**  
+    * **Storage Class (gp2)**  
 ```yaml
 kind: StorageClass
 apiVersion: storage.k8s.io/v1
@@ -305,7 +305,7 @@ parameters:
   # ext4 or xfs (default to xfs, ensure that there is xfstools )
   fsType: xfs
 ```
-  **Storage Class (gp3)**  
+    * **Storage Class (gp3)** 
 ```yaml
 kind: StorageClass
 apiVersion: storage.k8s.io/v1
@@ -1140,7 +1140,8 @@ You need to create three files:
 
 **How to**  
 1. Create the `cluster.yaml` as in the example below (`my-eks-cluster.yaml`).
-`my-eks-cluster.yaml`  
+`my-eks-cluster.yaml` 
+
 ```yaml
 apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
@@ -1174,7 +1175,6 @@ nodeGroups:
       node-type: dind
     taints:
       codefresh.io: "dinds:NoSchedule"
-
   - name: engine
     instanceType: m5.large
     desiredCapacity: 1
@@ -1190,7 +1190,6 @@ nodeGroups:
       node-type: engine
     taints:
       codefresh.io: "engine:NoSchedule"
-
   - name: addons
     instanceType: m5.2xlarge
     desiredCapacity: 1
@@ -1228,8 +1227,8 @@ Bottlerocket is an open source Linux based Operating System specifically built t
 To leverage [Bottlerocket-based nodes](https://aws.amazon.com/bottlerocket/){:target="\_blank"}:
 * Specify the AMI Family using `amiFamily: Bottlerocket`
 * Add these additional IAM Policies: 
-  *  `arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly` 
-  *   `arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore`
+    * `arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly` 
+    * `arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore`
 
 
 
@@ -1260,7 +1259,8 @@ kubectl -n kube-system edit deployment.apps/cluster-autoscaler
   * Add the following options:  
     `--balance-similar-node-groups`  
     `--skip-nodes-with-system-pods=false`
-```yaml
+
+```
 spec:
       containers:
       - command:
