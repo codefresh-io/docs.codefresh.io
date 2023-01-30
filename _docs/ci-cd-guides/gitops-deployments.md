@@ -7,12 +7,12 @@ redirect_from:
 toc: true
 ---
 
-Apart from traditional push-based Helm deployments, Codefresh can also be used for [GitOps deployments](https://codefresh.io/gitops/){:target="\_blank"}.
+Apart from traditional push-based Helm deployments, you can use Codefresh for [GitOps deployments](https://codefresh.io/gitops/){:target="\_blank"} powered by Argo CD.  
 
 For an overview on GitOps, Argo CD, and how Codefresh implements both, see [Codefresh and GitOps]({{site.baseurl}}docs/getting-started/gitops-codefresh/).
 
 
-Even though GitOps is not specific to Kubernetes, current GitOps tools work great with Kubernetes in the form of cluster controllers. The GitOps controller monitors the state of the Git repository and when a commit happens, the cluster is instructed to match the same state.
+Even though GitOps is not specific to Kubernetes, current GitOps tools work great with Kubernetes in the form of cluster controllers. The GitOps controller monitors the state of the Git repository, and when there is a commit, the cluster is instructed to match the same state.
 
 <!--- replace this with the Home dashboard??>
 Codefresh has native support for GitOps including a graphical dashboard for handling your GitOps deployments:
@@ -26,13 +26,13 @@ Codefresh has native support for GitOps including a graphical dashboard for hand
   max-width="100%"
  %}
 -->
-This guide will explain how you can use GitOps for your own applications.
+This guide will explain how to use GitOps for your own applications.
 
-## Setting up your Git Repositories
+## Setting up your Git repositories
 
-One of the central ideas around GitOps is using Git for _ALL_ project resources. Though developers are familiar with using Git for the source code of the application, adopting GitOps means that you need to store every resource of the application (and not just the source code) in Git.
+One of the central ideas of GitOps is to use Git for _ALL_ project resources. Which means that you need to store every resource of the application in Git, and not just the source code as most developers using Git are familiar with. 
 
-In the case of Kubernetes, this means that all Kubernetes manifests should be stored in a Git repository as well. In the most simple scenario, you have the main repository of your application (mostly interesting to developers), and [a second Git repository with Kubernetes manifests](https://argoproj.github.io/argo-cd/user-guide/best_practices/#separating-config-vs-source-code-repositories){:target="\_blank"} (more relevant to operators/SREs).
+In the case of Kubernetes, this means that you should store all Kubernetes manifests in a Git repository as well. With the most simple scenario, you have the main repository of your application (mostly interesting to developers), and [a second Git repository with Kubernetes manifests](https://argoproj.github.io/argo-cd/user-guide/best_practices/#separating-config-vs-source-code-repositories){:target="\_blank"} (more relevant to operators/SREs).
 
 As a live example you can use:
 
@@ -46,18 +46,21 @@ As a live example you can use:
     * Every subsequent configuration change should become a Git commit. Ad-hoc changes to the cluster with `kubectl` commands are **NOT** allowed
 
 * The [https://github.com/codefresh-contrib/gitops-pipelines](https://github.com/codefresh-contrib/gitops-pipelines){:target="\_blank"} repository that holds the pipelines.
-  The third Git repository houese pipelines because pipelines are also part of the application.
+  The third Git repository house pipelines because pipelines are also part of the application.
 
 **Fork repositories**  
 
-* Before continuing, fork all three repositories into your own GitHub account, if don't have already your own example application.
+* Before continuing, if don't have already your own example application, fork all three repositories into your own GitHub account.
 
 ## Connecting ArgoCD and Codefresh
 
 GitOps deployments are powered by [ArgoCD](https://argoproj.github.io/argo-cd/){:target="\_blank"}, so you need an active ArgoCD installation in your cluster.
 
-This is easy enough with our GitOps Runtimes, either the Hosted or Hybrid versions.
-For this guide, provision a Hosted GitOps runtime, as described in [Hosted GitOps Runtime setup]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/).
+This is easy with our GitOps Runtimes. Argo CD is installed automatically when you install a GitOps runtime, either the Hosted or Hybrid versions. See:  
+[Hosted GitOps runtime]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/)   
+[Hybrid GitOps runtime]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/)  
+
+If you don't have a runtime installed already, for this guide, install the Hosted GitOps runtime.
 
 <!--- Add hosted runtime image 
 Follow the instructions for [connecting ArgoCD to Codefresh]({{site.baseurl}}/docs/integrations/argocd/) and creating an ArgoCD application
@@ -71,108 +74,96 @@ Follow the instructions for [connecting ArgoCD to Codefresh]({{site.baseurl}}/do
   max-width="40%"
  %}
 
-The options are:
-
-* Name - User defined name of the Codefresh environment dashboard
-* Project - A way to [group/secure applications](https://argoproj.github.io/argo-cd/user-guide/projects/){:target="\_blank"}. Choose default if you have only one project in ArgoCD.
-* Application - name of application
-* Manual/automatic sync - If automatic when a git commit happens, a deployment will automatically take place.
-* Use schema - Kubernetes manifests will be checked for correctness before deployed to the cluster
-* source repository - Git repository that holds your Kubernetes manifests
-* revision - Revision to be checked out when a deployment happens
-* path - folder inside the Git repository that should be searched for manifests (if your Git repo has multiple applications). Use `./` if all your manifests are in the root folder.
-* cluster - Kubernetes cluster when deployment will take place
-* namespace - Kubernetes namespace where the application will be deployed to
-* directory recurse - whether to check all folders in the Git repository for manifests in a recursive way.
-
-For a sample application you can use the [https://github.com/codefresh-contrib/gitops-kubernetes-configuration](https://github.com/codefresh-contrib/gitops-kubernetes-configuration){:target="\_blank"} repository. Fork the project in your own GitHub account and use that link in the *Source repository* section.
-
-Once you connect your application you will see it under in the GitOps application screen in the Codefresh UI.  
 -->
 
-## Creating a basic CI Pipeline for GitOps
+## Creating a CI Pipeline for GitOps
 
-Creating CI pipeline for GitOps is no different than creating a standard pipeline.   
-The CI pipeline for GitOps also does the following and more:   
+Creating a CI pipeline for GitOps is no different from creating a standard pipeline. The only difference is that as the final action for the pipeline, you would add the report image action provided by Codefresh. The report image action correlates the Docker image with the Git repository details, Jira issues associated with it, and additional information from the registry that stores the image. 
+
+Follow these steps to create a CI pipeline for GitOps:
+
+1. Set up Codefresh, Jira, and registry integrations for GitOps.
+    You need to connect Jira and your container registry to Codefresh. These integrations are specific to GitOps, and differ from the pipeline integrations that you may have already set up.  
+    Once you set up the GitOps integrations, you can reference them in the CI pipeline's report image step for Codefresh to retrieve the necessary information.
+1. Create your Codefresh pipeline as you usually do:  
+   Use existing CI actions for compiling code, running unit tests, security scanning etc.
+1. Place the final action in the pipeline as the “report image” action provided by Codefresh.  
+  See Codefresh report image
+1. When the pipeline completes execution, Codefresh retrieves the information on the image that was built and its metadata through the integration names specified.
+1. View the image in Codefresh’s Images dashboard, and in any application in which it is used.
+
+### Example CI pipeline for GitOps
+
+Below is an example of a CI pipeline for GitOps. 
+
+The pipeline:   
 * [Packages your Docker images]({{site.baseurl}}/docs/ci-cd-guides/building-docker-images/)
 * Runs [tests]({{site.baseurl}}/docs/testing/unit-tests/)
-* Performs [security scans]({{site.baseurl}}/docs/testing/security-scanning/).
-
- {% include image.html
-  lightbox="true"
-  file="/images/guides/gitops/basic-ci-pipeline.png"
-  url="/images/guides/gitops/basic-ci-pipeline.png"
-  alt="Basic CI pipeline"
-  caption="Basic CI pipeline"  
-  max-width="100%"
- %}
-
-To take advantage of the GitOps deployment dashboard, you also need to set up the correlation between the Docker image and the Pull Requests/issues associated with it. This correlation happens via [annotations]({{site.baseurl}}/docs/pipelines/annotations/). The easiest way to annotate your image is by using the [pipeline plugins](https://codefresh.io/steps/){:target="\_blank"} offered by Codefresh for this purpose. Currently we offer the following plugins:
-
-* [Record Pull Request information](https://codefresh.io/steps/step/image-enricher){:target="\_blank"}
-* [Record Jira Issue information](https://codefresh.io/steps/step/jira-issue-extractor){:target="\_blank"}
-
-Here is an example pipeline definition:
+* Performs [security scans]({{site.baseurl}}/docs/testing/security-scanning/)
+* Reports image information to Codefresh
 
  `codefresh.yml`
 {% highlight yaml %}
 {% raw %}
+
 version: "1.0"
 stages:
   - "clone"
   - "build"
-  - "metadata"
+  - "report"
 
 steps:
   clone:
     title: "Cloning repository"
     type: "git-clone"
-    repo: "my-github-username/gitops-app-source-code"
-    revision: '${{CF_REVISION}}'
+    repo: "${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}"
+    revision: "${{CF_BRANCH}}"
     stage: "clone"
+    
   build:
     title: "Building Docker image"
     type: "build"
-    image_name: "kostiscodefresh/simple-web-app"
+    image_name: "${{CF_REPO_OWNER}}/color"
     working_directory: "${{clone}}"
-    tags:
-    - "latest"
-    - '${{CF_SHORT_REVISION}}'
+    tag: "${{CF_SHORT_REVISION}}"
     dockerfile: "Dockerfile"
+    registry: docker-lr
     stage: "build"
-    registry: dockerhub  
-  enrich-image:
-    title: Add PR info
-    type: image-enricher
-    stage: "metadata"
-    arguments:
-      IMAGE:  docker.io/kostiscodefresh/simple-web-app:latest
-      BRANCH: '${{CF_BRANCH}}'
-      REPO: 'kostis-codefresh/simple-web-app'
-      GIT_PROVIDER_NAME: github-1
-  jira-issue-extractor:
-    title: Enrich image with jira issues
-    type: jira-issue-extractor
-    stage: "metadata"
-    fail_fast: false
-    arguments:
-      IMAGE: docker.io/kostiscodefresh/simple-web-app:latest
-      JIRA_PROJECT_PREFIX: 'SAAS'
-      MESSAGE: SAAS-8431
-      JIRA_HOST: codefresh-io.atlassian.net
-      JIRA_EMAIL: kostis@codefresh.io
-      JIRA_API_TOKEN: '${{JIRA_TOKEN}}'
-{% endraw %}
-{% endhighlight %}  
 
-This pipeline:
+  ReportImageMetadataAll:
+    title: Report image to Codefresh CD
+    type: codefresh-report-image
+    working_directory: /code
+    stage: "report"
+    arguments:
+      CF_API_KEY: '${{CF_API_KEY}}'
+      CF_IMAGE: 'docker.io/${{CF_REPO_OWNER}}/color:${{CF_SHORT_REVISION}}'
+      CF_CONTAINER_REGISTRY_INTEGRATION: docker
+      CF_RUNTIME_NAME: "codefresh-hosted"
+      CF_GITHUB_TOKEN: '${{GITHUB_TOKEN}}'
+      CF_GIT_PROVIDER: github
+      CF_GIT_REPO: '${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}'
+      CF_GIT_BRANCH: '${{CF_BRANCH}}'
+      CF_ISSUE_TRACKING_INTEGRATION: jira
+      CF_JIRA_MESSAGE: "${{CF_COMMIT_MESSAGE}}"
+      CF_JIRA_PROJECT_PREFIX: CR
+
+{% endraw %}
+{% endhighlight yaml %}
+
+
+
+
+
+
 
 1. Checks out the source code of an application with the [git-clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/)
 1. [Builds]({{site.baseurl}}/docs/pipelines/steps/build/) a Docker image
-1. Annotates the Docker image with the Pull Request information provided by Github
-1. Annotates the Docker image with a specific Jira issue ticket
+1. Reports the Jira and registry information to Codefresh with the `codefresh-report-image` step
+   In the report image step, you can see several variables whose values are populated from those you defined in the respec
 
-You can see the associated metadata in the Codefresh UI's [Docker image dashboard](https://g.codefresh.io/images/){:target="\_blank"}.
+
+You can see the associated metadata in the [Images dashboard](https://g.codefresh.io/images/){:target="\_blank"}.
 
  {% include image.html
   lightbox="true"
@@ -183,103 +174,77 @@ You can see the associated metadata in the Codefresh UI's [Docker image dashboar
   max-width="80%"
  %}
 
-Codefresh is using this information to fill the deployment history in the GitOps dashboard.
+Codefresh uses information to fill the deployment history in the GitOps dashboard.
 
-## Creating a basic CD Pipeline for GitOps
 
-To create a CD pipeline in Codefresh that is responsible for GitOps deployments you must first disable the auto-sync behavior of ArgoCD. You can disable auto-sync either from the GUI or via the [command line](https://argoproj.github.io/argo-cd/user-guide/auto_sync/){:target="\_blank"}:
 
- {% include image.html
-  lightbox="true"
-  file="/images/guides/gitops/disable-auto-sync.png"
-  url="/images/guides/gitops/disable-auto-sync.png"
-  alt="Basic CD pipeline"
-  caption="Basic CD pipeline"  
-  max-width="80%"
- %}
+### Set up Jira integration for GitOps image enrichment
+GitOps integration for Atlassian Jira allows you to both enrich images with information from Jira, and report the deployment information back to Jira. 
+For this guide, we will select the image enrichment option.
 
- With the auto-sync behavior disabled, all Git pushes that happen on the GitOps repo will be ignored by ArgoCD (however ArgoCD will still mark your application as out-of-sync).
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
+1. From Configuration in the sidebar, select **GitOps Integrations**.
+1. Filter by **Issue Tracking**, select **Atlassian Jira** and click **Configure**.
+1. From the **Add Integration** dropdown, select **Image enrichment**.
+1. Define the [integration settings for Jira]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/jira/#jira-gitops-integration-settings-in-codefresh).
+  The **Integration name** must be unique.
+1. To confirm, click **Commit**. It may take a few moments for the new integration to be synced to the cluster before it appears in the list of Active integrations.
+1. Continue with [Set up Docker Hub integration for GitOps image enrichment](#set-up-docker-hub-integration-for-gitops-image-enrichment).
 
- You can now [create a new pipeline]({{site.baseurl}}/docs/pipelines/pipelines/) in Codefresh using a [standard Git trigger]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/) that will monitor the GitOps repository for updates. This way Codefresh is responsible for the GitOps process instead of Argo.
 
- {% include image.html
-  lightbox="true"
-  file="/images/guides/gitops/argo-sync-pipeline.png"
-  url="/images/guides/gitops/argo-sync-pipeline.png"
-  alt="Basic CD pipeline"
-  caption="Basic CD pipeline"  
-  max-width="80%"
- %}
 
-The big advantage here is that you can construct a full pipeline over the sync process with multiple steps before or after the sync. For example you could run some smoke tests after the deployment takes place. Here is an example pipeline:
+### Set up Docker Hub integration for GitOps image enrichment
 
- `codefresh.yml`
-{% highlight yaml %}
-{% raw %}
-version: "1.0"
-stages:
-  - "pre sync"
-  - "sync app"
-  - "post sync"
+Now that we have connected Jira to Codefresh, we'll connect a container registry as well.  
 
-steps:
-  pre_sync:
-    title: "Pre sync commands"
-    type: "freestyle" # Run any command
-    image: "alpine:3.9" # The image in which command will be executed
-    commands:
-      - echo "Sending a metrics marker"
-    stage: "pre sync"
-  sync_and_wait:
-    title: Sync ArgoCD app and wait
-    type: argocd-sync
-    arguments:
-      context: "argo-cd"
-      app_name: "${{ARGOCD_APP_NAME}}"
-      wait_healthy: true
-    stage: "sync app"
-  post_sync:
-    title: "Post sync commands"
-    type: "freestyle" # Run any command
-    image: "alpine:3.9" # The image in which command will be executed
-    commands:
-      - echo "running smoke tests"
-    stage: "post sync"
-{% endraw %}
-{% endhighlight %}  
+Codefresh can integrate with popular container registries such as Docker Hub, JFrog Artifactory, and more. See [GitOps container registry integrations]({{site.baseurl}}/docs/gitops-integrations/container-registries/).  
+For this guide, we'll connect Codefresh with Docker Hub as the container registry.
 
-The pipeline is using the [argo-sync plugin](https://codefresh.io/steps/step/argocd-sync){:target="\_blank"} that can be used by Codefresh to start the sync process of an application from the Git repo to the cluster.
+**Before you begin**  
+Complete the [prerequisites]({{site.baseurl}}/docs/gitops-integrations/container-registries/dockerhub/#prerequisites)  
 
-The name of the `context` parameter should be the same name you used for your [ArgoCD integration]({{site.baseurl}}/docs/integrations/argocd/).
+**How to**  
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
+1. From Configuration in the sidebar, select **GitOps Integrations**.
+1. Filter by **Container Registry**, select **Docker Hub**, and click **Configure**.
+1. Define the [integration settings for Docker Hub]({{site.baseurl}}/docs/docs/gitops-integrations/container-registries/dockerhub/#docker-hub-gitops-integration-settings-in-codefresh).
+1. To confirm, click **Commit**. It may take a few moments for the new integration to be synced to the cluster before it appears in the list of **Active** integrations.
+
 
  {% include image.html
   lightbox="true"
-  file="/images/guides/gitops/argo-context.png"
-  url="/images/guides/gitops/argo-context.png"
-  alt="Using the Argo integration name as a context"
-  caption="Using the Argo integration name as a context"  
-  max-width="80%"
+  file="/images/guides/gitops/gitops-deploy-active-integrations.png"
+  url="/images/guides/gitops/gitops-deploy-active-integrations.png"
+  alt="Active Jira and DockerHub integrations for GitOps"
+  caption="Active Jira and DockerHub integrations for GitOps"  
+  max-width="60%"
  %}
 
-The name of the application should be the same name as the ArgoCD Application.
+### Set up Codefresh pipeline integration for GitOps
+After completing the Jira and Docker Hub integrations, we can set up the pipeline integration for GitOps. 
+Why would you do this? When you create the CI pipeline as you usually do, you'll see that the final report image step references several Codefresh variables to report the image information to Codefresh and enrich the image.  
 
- {% include image.html
-  lightbox="true"
-  file="/images/guides/gitops/argo-application-name.png"
-  url="/images/guides/gitops/argo-application-name.png"
-  alt="Argo Application name"
-  caption="Argo Application name"  
-  max-width="80%"
- %}
+Read more in [GitOps CI integrations]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/), and make sure to also review [Templatization examples for CF arguments]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/codefresh-classic/#templatization-examples-for-cf-arguments).
 
- You can use pipeline variables or any other familiar Codefresh mechanism such as [shared configuration]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/).
+**Before you begin**  
 
- Once the pipeline has finished running the sync status will updated in your GitOps dashboard to reflect the current state.
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
+1. From Configuration in the sidebar, select **GitOps Integrations**.
+1. Filter by **CI tools**, select **Codefresh** and click **Add**.
+1. Define the i[ntegration settings for Codefresh pipelines]({{site.baseurl}}/docs/docs/gitops-integrations/codefresh-classic/#ci-pipeline-gitops-integration-settings).  
 
-## Working with the GitOps Dashboard
 
-After you create an ArgoCD application, you can click on it in the [GitOps environment overview](https://g.codefresh.io/gitops){:target="\_blank"} and see the respective GitOps screen.
 
+
+
+## Creating an Argo CD application for GitOps
+
+
+
+## Working with the GitOps Apps dashboard
+
+After you create an ArgoCD application in Codefresh, you can track and monitor the application's deployment, resources and more in the [GitOps Apps](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"} dashboard.
+<!--- replace>
 {% include image.html
   lightbox="true"
   file="/images/guides/gitops/real-dashboard.png"
@@ -287,12 +252,60 @@ After you create an ArgoCD application, you can click on it in the [GitOps envir
   alt="GitOps Dashboard"
   caption="GitOps Dashboard"  
   max-width="100%"
- %}
+ %} -->
 
-This dashboard is the central place for monitoring your application and contains the following information:
 
-1. Current health and sync status
-1. Deployment graph that shows successful/failed deployments on the selected time period
+### Customize the dashboard view
+
+  * View format: Select the view format for the GitOps Apps dashboard as List or Card. 
+
+  * Filters: Customize the scope through the global filters to display the [information](#applications-dashboard-information) you need.
+
+  * Detailed info on application: To get detailed information on an application, either select the option/action from the app's context menu, or simply click the application.
+
+
+### Monitor health and sync status in Application Header
+The application header provides a wealth of useful information at a glance. 
+
+
+### Current State of application resources
+
+Monitor the resources deployed in the current version of the selected application in the Current State tab.  
+This is the tab you get to when you select the application from the GitOps Apps dashboard.  
+
+Here you can view live state of the application's resources (Kubernetes objects) on the cluster in List or Tree views](#view-modes-for-application-resources), [set filters](#filters-for-application-resources), and monitor:
+* [Health status](#health-status-for-application-resources)
+* [Sync status](#sync-status-for-application-resources)
+* [Manifests](#manifests-for-application-resources)
+* [Logs](#logs-for-application-resources)
+* [Events](#events-for-application-resources)
+ 
+<!--- replace >
+{% include
+image.html
+lightbox="true"
+file="/images/applications/app-resources-monitor-screen.png"
+url="/images/applications/app-resources-monitor-screen.png"
+alt="Monitor application resources in Current State tab"
+caption="Monitor application resources in Current State tab"
+max-width="50%"
+%}  -->
+
+
+
+>To quickly filter by resource type, click the type in the Resource Inventory (bottom-left)
+
+For detailed descriptions, see ???
+### Monitor deployments in Timeline
+The Timeline tab (next to the Current State) displays the history of deployments for the selected application. Monitor an ongoing deployment and review historical deployments. The deployments are sorted by the most recent one, labeled Current Version at the top.
+
+You can se
+
+To view day-to-day deployment information for the selected time period, mouse over the dot on the deployment chart 
+
+Application def
+
+
 1. Complete history of deployments according to Git hash. For each deployment you can also see which Pull Request was used for the commit, who was the committer and which JIRA issues this Pull request is solving (provided that the image was built by a Codefresh pipeline)
 1. The Kubernetes services that belong to this application (on the services tab)
 1. What services and replicas were updated with each deployment.
@@ -397,36 +410,10 @@ Some examples are:
 
 Using the search field allows you to quickly find a specific Git commit in the history of the application (and even rollback the deployment as explained in the next sections).
 
-## Current State of Application
 
-The current state tab shows a hierarchical view of your cluster resource for your application.
 
-{% include image.html
-  lightbox="true"
-  file="/images/guides/gitops/currentstate.png"
-  url="/images/guides/gitops/currentstate.png"
-  alt="Current State tab"
-  caption="Current State tab"  
-  max-width="80%"
- %}
 
-At the top of the screen you have several filters available:
-
-* Kind - choose a specific type of Kubernetes resource
-* Health - status of the resource
-* Sync state - GitOps status of the resource
-* Free search - search any resource by name
-
-## Tagging GitOps Application
-
-1. Navigate to the GitOps dashboard.
-2. To the application's right (next to the Health Column), click the three dots to open the More Action Dropdown.
-3. Select Add/Edit Tags.
-4. Click the +tags to add tags.
-5. Alternatively, click the "x" next to the tag to remove it.
-6. Click Save.
-
-## Rolling Back Git Versions
+<!--- ## Rolling Back Git Versions
 
 In the GitOps dashboard you will also see a complete history of all past deployments as recorded in Git. You can select any of the previous versions and rollback your application to the respective version.
 
@@ -449,135 +436,8 @@ This rollback behavior is best used as an emergency measure after a failed deplo
 2. Select the Team.
 3. Chose what the Team can do and click apply.
 4. Select the tags of the applications and click apply.
-5. Click Add Rule when done.
+5. Click Add Rule when done.  -->
 
-## Performing Automatic Git Commits
-
-Usually the Pull Requests that take part in a GitOps workflow are created and approved in a manual way (after code review). You have the option however to fully automate the whole process and rather than opening a Pull Request on both the application repository and the manifest repository, commit automatically the manifest changes inside the pipeline that creates the artifact.
-
-{% include image.html
-  lightbox="true"
-  file="/images/guides/gitops/gitops-workflow.png"
-  url="/images/guides/gitops/gitops-workflow.png"
-  alt="Full GitOps workflow"
-  caption="Full GitOps workflow"  
-  max-width="100%"
- %}
-
-Here is an example pipeline that creates a Docker image and also commits a version change in the Kubernetes manifest to denote the new Docker tag of the application:
-
-{% include image.html
-  lightbox="true"
-  file="/images/guides/gitops/ci-cd-pipeline.png"
-  url="/images/guides/gitops/ci-cd-pipeline.png"
-  alt="Pipeline that commits manifests"
-  caption="Pipeline that commits manifests"  
-  max-width="80%"
- %}
-
-There are many ways to change a Kubernetes manifest in a programmatic way, and for brevity reasons we use the [yq](https://github.com/mikefarah/yq){:target="\_blank"} command line tool.
-
- `codefresh.yml`
-{% highlight yaml %}
-{% raw %}
-version: "1.0"
-stages:
-  - "clone"
-  - "build"
-  - "metadata"
-  - "gitops"
-
-steps:
-  clone:
-    title: "Cloning repository"
-    type: "git-clone"
-    repo: "my-github-username//gitops-app-source-code"
-    revision: '${{CF_REVISION}}'
-    stage: "clone"
-
-  build:
-    title: "Building Docker image"
-    type: "build"
-    image_name: "kostiscodefresh/simple-web-app"
-    working_directory: "${{clone}}"
-    tags:
-    - "latest"
-    - '${{CF_SHORT_REVISION}}'
-    dockerfile: "Dockerfile"
-    stage: "build"
-    registry: dockerhub  
-  enrich-image:
-    title: Add PR info
-    type: image-enricher
-    stage: "metadata"
-    arguments:
-      IMAGE:  docker.io/kostiscodefresh/simple-web-app:${{CF_SHORT_REVISION}}
-      BRANCH: '${{CF_BRANCH}}'
-      REPO: 'kostis-codefresh/simple-web-app'
-      GIT_PROVIDER_NAME: github-1
-  jira-issue-extractor:
-    title: Enrich image with jira issues
-    type: jira-issue-extractor
-    stage: "metadata"
-    fail_fast: false
-    arguments:
-      IMAGE: docker.io/kostiscodefresh/simple-web-app:${{CF_SHORT_REVISION}}
-      JIRA_PROJECT_PREFIX: 'SAAS'
-      MESSAGE: SAAS-8842
-      JIRA_HOST: codefresh-io.atlassian.net
-      JIRA_EMAIL: kostis@codefresh.io
-      JIRA_API_TOKEN: '${{JIRA_TOKEN}}'
-  clone_gitops:
-    title: cloning gitops repo
-    type: git-clone
-    arguments:
-      repo: 'my-github-username//gitops-kubernetes-configuration'
-      revision: 'master'
-    stage: "gitops"
-    when:
-      branch:
-        only:
-          - master
-  change_manifest:
-    title: "Update k8s manifest"
-    image: "mikefarah/yq:3" # The image in which command will be executed
-    commands:
-      - yq w -i deployment.yml spec.template.spec.containers[0].image docker.io/kostiscodefresh/simple-web-app:${{CF_SHORT_REVISION}}
-      - cat deployment.yml
-    working_directory: "${{clone_gitops}}"
-    stage: "gitops"
-    when:
-      branch:
-        only:
-          - master
-  commit_and_push:
-    title: Commit manifest
-    type: git-commit
-    stage: "gitops"
-    arguments:
-      repo: 'my-github-username//gitops-kubernetes-configuration'
-      git: github-1
-      working_directory: '/codefresh/volume/gitops-kubernetes-configuration'
-      commit_message: Updated manifest
-      git_user_name: ${{CF_COMMIT_AUTHOR}}
-      git_user_email: ${{CF_COMMIT_AUTHOR}}@acme-inc.com
-    when:
-      branch:
-        only:
-          - master
-{% endraw %}
-{% endhighlight %}  
-
-This pipeline:
-
-1. Checks out the Git repository that contains the source code
-1. Builds a Docker image and tags it with the Git hash
-1. Enriches the image with the Pull request and ticket information as explained in the previous sections
-1. Checks out the Git repository that contains the Kubernetes manifests
-1. Performs a text replacement on the manifest updating the `containers` segment with the new Docker image
-1. Commits the change back using the [Git commit plugin](https://codefresh.io/steps/step/git-commit){:target="\_blank"} to the Git repository that contains the manifests.
-
-The CD pipeline (described in the previous section) will detect that commit and use the [sync plugin](https://codefresh.io/steps/step/argocd-sync){:target="\_blank"} to instruct ArgoCD to deploy the new tag. Alternatively, you can set up the ArgoCD project to auto-sync on its own if it detects changes in the Git repository with the manifests.
 
 ## Using the App-of-Apps pattern
 
