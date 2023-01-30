@@ -1,5 +1,5 @@
 ---
-title: "GitOps Codefresh CI pipeline integration"
+title: "GitOps Codefresh pipeline integration"
 description: ""
 group: gitops-integrations
 sub_group: ci-integrations
@@ -77,7 +77,7 @@ steps:
 {% endraw %}
 {% endhighlight yaml %}
 
-## CI pipeline-GitOps integration settings
+## Codefresh pipeline-GitOps integration settings
 The table describes the arguments required to connect Codefresh pipelines to Codefresh GitOps. 
 
 >Except for Git branch and Git repo which are required, you can omit other Git provider arguments. Codefresh retrieves the required values from the runtime context selected for the integration.
