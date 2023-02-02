@@ -372,6 +372,11 @@ redis:
 This major release **deprecates** the following Codefresh managed charts:
 * Consul
 * Nats
+* cf-runner
+
+#### CF-Runner chart deprecation note
+
+`cf-runner` subchart were used to run [launch-composition](https://codefresh.io/docs/docs/codefresh-yaml/steps/launch-composition/) step-type. If you were using these steps, replace it with [composition](https://codefresh.io/docs/docs/codefresh-yaml/steps/composition/) or [service containers](https://codefresh.io/docs/docs/codefresh-yaml/service-containers/).
 
 #### Update configuration for Consul
 From version **1.3.0 and higher**, we have deprecated the Codefresh-managed `consul` chart,  in favor of Bitnami public `bitnami/consul` chart. For more information, see [bitnami/consul](https://github.com/bitnami/charts/tree/master/bitnami/consul).
