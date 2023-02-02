@@ -815,7 +815,7 @@ Override environment variables for `dind-lv-monitor` daemonset if necessary:
     %}
 
 
-1. [Runtime-Environment specification]({{site.baseurl}}/docs/administration/codefresh-runner/) defines engine and dind pods spec and PVC parameters.
+1. [Runtime-Environment specification]({{site.baseurl}}/docs/administration/codefresh-runner/#runtime-environment-specification) defines engine and dind pods spec and PVC parameters.
 2. Runner pod (Agent) pulls tasks (Builds) from Codefresh API every 3 seconds.
 3. Once the agent receives build task (either Manual run build or Webhook triggered build) it calls k8s API to create engine/dind pods and PVC object.
 4. Volume Provisioner listens for PVC events (create) and based on StorageClass definition it creates PV object with the corresponding underlying volume backend (ebs/gcedisk/local).
@@ -1321,7 +1321,7 @@ codefresh runner init \
 --set-value=Storage.Encrypted=[false|true] \
 --set-value=Storage.KmsKeyId=<key id>
 ```  
-    For descriptions of the other options, run `codefresh runner init --help` ([global parameter table](#customizing-the-wizard-installation)).
+    For descriptions of the other options, run `codefresh runner init --help`.
 
 * When the Wizard completes the installation, modify the runtime environment of `my-aws-runner` to specify the necessary toleration, nodeSelector and disk size:
     * Run:
