@@ -374,7 +374,7 @@ This major release **deprecates** the following Codefresh managed charts:
 * Nats
 * cf-runner
 
-#### CF-Runner chart deprecation note
+#### CF-Runner chart deprecation
 
 `cf-runner` subchart were used to run [launch-composition](https://codefresh.io/docs/docs/codefresh-yaml/steps/launch-composition/) step-type. If you were using this step in your pipelines, replace it with [composition](https://codefresh.io/docs/docs/codefresh-yaml/steps/composition/) or [service containers](https://codefresh.io/docs/docs/codefresh-yaml/service-containers/).
 
