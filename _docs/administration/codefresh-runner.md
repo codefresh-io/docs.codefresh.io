@@ -1223,7 +1223,7 @@ eksctl create cluster -f my-eks-cluster.yaml
 The configuration leverages [Amazon Linux 2](https://aws.amazon.com/amazon-linux-2/){:target="\_blank"} as the default operating system for the nodes in the node group.  
 
 **Bottlerocket-based nodes**  
-Bottlerocket is an open source Linux based Operating System specifically built to run containers. It focuses on security, simplicity and easy updates via transactions. Find more information in the [official repository](https://github.com/bottlerocket-os/bottlerocket.  
+Bottlerocket is an open source Linux based Operating System specifically built to run containers. It focuses on security, simplicity and easy updates via transactions. Find more information in the [official repository](https://github.com/bottlerocket-os/bottlerocket){:target="\_blank"}.  
 
 To leverage [Bottlerocket-based nodes](https://aws.amazon.com/bottlerocket/){:target="\_blank"}:
 * Specify the AMI Family using `amiFamily: Bottlerocket`
@@ -1329,6 +1329,7 @@ codefresh runner init \
 codefresh get re --limit=100 my-aws-runner/cf -o yaml > my-runtime.yml
 ```
     * Modify the file `my-runtime.yml` as shown below:
+    
 ```yaml
 version: null
 metadata:
