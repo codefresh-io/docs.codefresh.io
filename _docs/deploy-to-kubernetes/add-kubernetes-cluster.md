@@ -113,6 +113,9 @@ aws eks --region region update-kubeconfig --name cluster_name
 Once you have access via `kubectl` then follow the [instructions]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/#get-cluster-configuration-manually) to obtain all the cluster details.
 To add the Amazon cluster, select *Amazon AWS* from the *ADD PROVIDER* drop-down menu and enter all details in the respective field in the Codefresh UI.
 
+> On adding or upgrading to Kubernetes cluster version 1.23 or higher, you can encounter volume provisioning issues with  Amazon Elastic Block Store (Amazon EBS). The EBS volumes cannot be attached and Codefresh builds stay in pending status with errors in pod logs.
+See [Volume provisioning issues for Amazon EBS](#volume-provisioning-issues-for-amazon-ebs) in this article.
+
 ## Adding a DigitalOcean cluster
 
 DigitalOcean is also offering a hosted solution for Kubernetes. 
@@ -555,6 +558,33 @@ The easiest way to do this is to create a cluster binding role between the defau
 kubectl create clusterrolebinding default-admin --clusterrole cluster-admin --serviceaccount=default:default
 {% endraw %}
 {% endhighlight %}
+
+### Volume provisioning issues for Amazon EBS 
+
+After adding or upgrading Kubernetes clusters to version 1.23 or higher, you can encounter volume provisioning issues with Amazon EBS  
+(Elastic Block Store).
+
+**Issue** 
+ 
+* Codefresh builds remain in `pending` status as EBS volumes cannot be attached 
+* Errors in `pod` logs:
+  
+  `Warning  FailedMount 112s   kubelet  Unable to attach or mount volumes:  
+   unmounted volumes=[dind], unattached volumes=[dind-config dind codefresh-certs-server]: 
+   timed out waiting for the condition`
+
+**Possible cause**  
+The Amazon EBS CSI driver is not installed on the cluster.  
+Kubernetes versions 1.23 and higher require the Amazon EBS CSI driver for EBS volume management in EKS clusters. For more information, see [Amazon EBS CSI driver](https://docs.aws.amazon.com/eks/latest/userguide/ebs-csi.html){:target="\_blank"}.
+
+
+**Solution**   
+Add the driver as an Amazon EKS add-on or as a self-managed add-on:  
+* [Add as Amazon EKS add-on](https://docs.aws.amazon.com/eks/latest/userguide/managing-ebs-csi.html){:target="\_blank"}
+* [Add as self-managed add-on](https://github.com/kubernetes-sigs/aws-ebs-csi-driver){:target="\_blank"}
+
+
+
 
 ## Kubernetes cluster - using an external reverse proxy (edge case)
 
