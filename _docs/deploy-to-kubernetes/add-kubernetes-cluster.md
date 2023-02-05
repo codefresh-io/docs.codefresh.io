@@ -113,8 +113,7 @@ aws eks --region region update-kubeconfig --name cluster_name
 Once you have access via `kubectl` then follow the [instructions]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/#get-cluster-configuration-manually) to obtain all the cluster details.
 To add the Amazon cluster, select *Amazon AWS* from the *ADD PROVIDER* drop-down menu and enter all details in the respective field in the Codefresh UI.
 
-> On adding or upgrading to Kubernetes cluster version 1.23 or higher, you can encounter volume provisioning issues with  Amazon Elastic Block Store (Amazon EBS). The EBS volumes cannot be attached and Codefresh builds stay in pending status with errors in pod logs.
-See [Volume provisioning issues for Amazon EBS](#volume-provisioning-issues-for-amazon-ebs) in this article.
+> On adding or upgrading to Kubernetes cluster version 1.23 or higher, you can encounter volume provisioning issues with  Amazon Elastic Block Store (Amazon EBS). To troubleshoot, see [Volume provisioning issues for Amazon EBS](#volume-provisioning-issues-for-amazon-ebs) later on in this article.
 
 ## Adding a DigitalOcean cluster
 
