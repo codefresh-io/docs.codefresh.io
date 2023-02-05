@@ -224,16 +224,16 @@ The inject cluster option when enabled for the account allows you to selectively
 > This option is only available for Enterprise customers.
 
 Restrictive access increases security. 
-For a large enterprise, because clusters are referenced through the names defined during integration, a shorter list can help avoid confusing developers when there are several clusters with similar names.
+For a large enterprise, because clusters are referenced through the names defined during integration, a shorter list can avoid confusion when there are several clusters with similar names.
 
 **Prerequisites** 
 * Account-level pipeline setting **Kubernetes cluster context pipeline injection** enabled  
-  The option to select clusters for a pipeline is available only when the account-level pipeline setting **Kubernetes cluster context pipeline injection** is enabled. See [Enabling cluster contexts for pipelines]({{site.baseurl}}/docs/administration/pipeline-settings/#enabling-cluster-contexts-for-pipelines).  
+  The option to select clusters for a pipeline is available only when the account-level pipeline setting is enabled. See [Enabling cluster contexts for pipelines]({{site.baseurl}}/docs/administration/pipeline-settings/#enabling-cluster-contexts-for-pipelines).  
 
-* **Update Cluster** permission for users in the Codefresh UI through [Permissions](https://g.codefresh.io/account-admin/permissions/teams)
-  For more information, see [Access Control](https://codefresh.io/docs/docs/administration/access-control/#description-of-privileges).
+* **Update Cluster** permission for users in the Codefresh UI through [Permissions](https://g.codefresh.io/account-admin/permissions/teams){:target="\_blank"}.  
+  For more information, see [Access Control](https://codefresh.io/docs/docs/administration/access-control/#access-to-kubernetes-clusters-and-pipelines).
 
-As part of the Pipeline > Policies, you can either allow access to all clusters (the default), or only specific clusters. 
+As part of the Pipeline > Policies, you can either allow access to all clusters (the default), or only specific clusters as in the example below. 
 
 {% include 
 image.html 
