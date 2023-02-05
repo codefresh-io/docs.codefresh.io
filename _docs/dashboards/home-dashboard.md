@@ -1,5 +1,5 @@
 ---
-title: "Global analytics dashboard"
+title: "GitOps Overview dashboard"
 description: ""
 group: dashboards
 toc: true
