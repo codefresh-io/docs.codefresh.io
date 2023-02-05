@@ -2028,11 +2028,14 @@ The following options are available:
 
 * `reuseVolumeSelector: 'codefresh-app,io.codefresh.accountName'`  
   Determined PV can be used by **ANY** pipeline in the specified account (it's a **default** volume selector).   
-    * Benefit: Fewer PVs, leading to lower cost. Since any PV can be used by any pipeline, the cluster needs to maintain/reserve fewer PVs in its PV pool for Codefresh.  
+    * Benefit: Fewer PVs, resulting in lower costs. Since any PV can be used by any pipeline, the cluster needs to maintain/reserve fewer PVs in its PV pool for Codefresh.  
     * Downside: Since the PV can be used by any pipeline, the PVs could have assets and info from different pipelines, reducing the probability of cache.
+* `reuseVolumeSelector: 'codefresh-app,io.codefresh.accountName,project_id'`  
+  Determined PV can be used by ALL pipelines in your account, assigned to the same project.
+
 * `reuseVolumeSelector: 'codefresh-app,io.codefresh.accountName,pipeline_id'`  
   Determined PV can be used only by a **single pipeline**.   
-    * Benfits: More probability of cache without "spam" from other pipelines. 
+    * Benefit: More probability of cache without "spam" from other pipelines. 
     * Downside: More PVs to maintain and therefore higher costs. 
 * `reuseVolumeSelector: 'codefresh-app,io.codefresh.accountName,pipeline_id,io.codefresh.branch_name'`  
   Determined PV can be used only by **single pipeline AND single branch**.
