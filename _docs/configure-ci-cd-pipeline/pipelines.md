@@ -191,6 +191,14 @@ Once you create your pipeline you can also click on the top tab called *Settings
 
 ### Policies
 
+- **Kubernetes clusters**: Control pipeline access to Kubernetes clusters integrated with Codefresh.  
+    * To allow the pipeline access to _all_ the cluster contexts integrated with Codefresh (the default), toggle **Inject all Kubernetes cluster context to pipeline builds** to ON. 
+    *  To allow the pipeline access to _only_ specific clusters, start typing in the name of the cluster as defined in its integration settings, and select it from the list displayed by Codefresh.  
+    When defined, the initialization step in the pipeline displays the clusters selected for it.  
+  See [Select Kubernetes cluster contexts](#select-kubernetes-cluster-contexts).
+
+
+
 - **Pipeline Concurrency**: the maximum number of concurrent builds (0-30 or unlimited) -- set this when your pipeline has only one trigger  
   > A Pipeline Concurrency of **0** freezes execution of the pipeline, switching it to maintenance mode. Use this concurrency setting to modify existing pipelines and freeze execution until you complete the changes. 
 - **Trigger Concurrency**: the maximum number of concurrent builds per trigger (1-31 or unlimited) -- set this when your pipeline has multiple triggers
@@ -209,7 +217,56 @@ Once you create your pipeline you can also click on the top tab called *Settings
   - Builds in pending approval will **be** counted when determining the concurrency limit for a pipeline
   - Honor the option defined globally in your Codefresh account  
 
-The **Pipeline and Trigger Concurrency** limits are very important as they allow you to define how many instances of a pipeline can run in parallel when multiple commits or multiple pull requests take place. 
+
+#### Select Kubernetes cluster contexts
+By default, all clusters integrated with Codefresh are automatically available for all pipelines in the account. 
+The inject cluster option when enabled for the account allows you to selectively restrict the clusters which can be accessed from pipelines created for the user account. 
+> This option is only available for Enterprise customers.
+
+Restrictive access increases security. 
+For a large enterprise, because clusters are referenced through the names defined during integration, a shorter list can help avoid confusing developers when there are several clusters with similar names.
+
+**Prerequisites** 
+* Account-level pipeline setting **Kubernetes cluster context pipeline injection** enabled  
+  The option to select clusters for a pipeline is available only when the account-level pipeline setting **Kubernetes cluster context pipeline injection** is enabled. See [Enabling cluster contexts for pipelines]({{site.baseurl}}/docs/administration/pipeline-settings/#enabling-cluster-contexts-for-pipelines).  
+
+* **Update Cluster** permission for users in the Codefresh UI through [Permissions](https://g.codefresh.io/account-admin/permissions/teams)
+  For more information, see [Access Control](https://codefresh.io/docs/docs/administration/access-control/#description-of-privileges).
+
+As part of the Pipeline > Policies, you can either allow access to all clusters (the default), or only specific clusters. 
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/create/inject-cluster-contexts.png" 
+url="/images/pipeline/create/inject-cluster-contexts.png"
+alt="Inject Kubernetes cluster contexts into pipeline" 
+caption="Inject Kubernetes cluster contexts into pipeline"
+max-width="60%"
+%}
+
+When specific clusters are defined:  
+* All users in the account with the Update Cluster permission have access only to the selected clusters.
+* The cluster contexts are injected during the build
+* The initialization step displays the selected cluster contexts
+
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/create/cluster-contexts-in-init-step.png" 
+url="/images/pipeline/create/cluster-contexts-in-init-step.png"
+alt="Imported cluster contexts in pipeline's init step" 
+caption="Imported cluster contexts in pipeline's init step"
+max-width="60%"
+%}
+
+
+
+
+
+#### Pipeline concurrency
+ **Pipeline and Trigger Concurrency** limits are very important as they allow you to define how many instances of a pipeline can run in parallel when multiple commits or multiple pull requests take place. 
 
 > Notice that these limits are *unrelated* to [parallelism within a single pipeline]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/). 
 
@@ -218,6 +275,8 @@ Some common scenarios are:
 * a pipeline that uses a shared resource such as a database or queue and you want to limit how many pipelines can access it 
 * a pipeline that deploys to a single production environment (in most cases you only want one active pipeline touching production
 
+
+#### Build termination
 The **Build Termination** settings are useful for pipelines where you commit too fast (i.e. faster then the actual runtime of the pipeline).
 All these settings allow you to lesser the build instance for pipelines when too many triggers are launched at the same time.
 You will find them very useful in cases where too many developers are performing small commits and builds take a long time to finish (i.e. build takes 10 minutes to finish and developers perform multiple pushes every 2 minutes)
