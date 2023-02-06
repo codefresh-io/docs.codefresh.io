@@ -88,8 +88,8 @@ Edit the configuration in `config.yaml` and deploy to Kubernetes. The `config.ya
 
 #### Installation Methods (Helm)
 
-You have the option to install by using Helm, which will install/upgrade the chart from the client.
-Define either **helm** as your preferred installation method in the `config.yaml`:
+You have the option to install by using **Helm**, which will install/upgrade the chart from the client.
+Define **helm** as your preferred installation method in the `config.yaml`:
 
 ```yaml
 metadata:
