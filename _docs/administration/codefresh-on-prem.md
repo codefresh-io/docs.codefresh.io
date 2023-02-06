@@ -23,7 +23,7 @@ Please fill out [this survey](https://docs.google.com/forms/d/e/1FAIpQLSf18sfG4b
 
 The `kcfi` tool supports the following operating systems:
 
-- Windows 10/7
+- Windows
 - Linux
 - OSX
 
@@ -49,123 +49,6 @@ Codefresh will need an outbound connection to the Internet for the following ser
 
 - GCR - pulling platform images
 - Dockerhub - pulling pipeline images
-
-## Security Constraints
-
-Codefresh has some security assumptions about the Kubernetes cluster it is installed on.
-
-### RBAC for Codefresh
-
-The Codefresh installer should be run with a Kubernetes RBAC role that allows object creation in a single namespace.  If, by corporate policy, you do not allow the creation of service accounts or roles, a Kubernetes administrator will need to create the role, service account, and binding as shown below.  Users with the `codefresh-app` role do not have the ability to create other roles or role bindings.
-
-`codefresh-app-service-account.yaml`
-```yaml
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: codefresh-app
-  namespace: codefresh
-```
-
-`codefresh-app-role.yaml`
-```yaml
-apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
-metadata:
-  name: codefresh-app
-  namespace: codefresh
-rules:
-- apiGroups:
-  - ""
-  - apps
-  - codefresh.io
-  - autoscaling
-  - extensions
-  - batch
-  resources:
-  - '*'
-  verbs:
-  - '*'
-- apiGroups:
-  - networking.k8s.io
-  - route.openshift.io
-  - policy
-  resources:
-  - routes
-  - ingresses
-  - poddisruptionbudgets
-  verbs:
-  - '*'
-```
-
-`codefresh-app-roleBinding.yaml`
-```yaml
-apiVersion: rbac.authorization.k8s.io/v1
-kind: RoleBinding
-metadata:
-  labels:
-    app: codefresh
-  name: codefresh-app-binding
-  namespace: codefresh
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: Role
-  name: codefresh-app
-subjects:
-- kind: ServiceAccount
-  name: codefresh-app
-```
-
-To apply these changes, run:
-
-```
-kubectl apply -f [file]
-```
-
-### Operator CRD
-
-If, due to security rules you are not allowed to create a CRD for a client running `kcfi`, have an Administrator create the RBAC (as instructed above) and the CRD as follows:
-
-`codefresh-crd.yaml`
-```yaml
-apiVersion: apiextensions.k8s.io/v1beta1
-kind: CustomResourceDefinition
-metadata:
-  name: codefreshes.codefresh.io
-  labels:
-    app: cf-onprem-operator
-spec:
-  group: codefresh.io
-  names:
-    kind: Codefresh
-    listKind: CodefreshList
-    plural: codefreshes
-    singular: codefresh
-  scope: Namespaced
-  subresources:
-    status: {}
-  versions:
-  - name: v1alpha1
-    served: true
-    storage: true
-```
-
-To apply these changes, run:
-```
-kubectl apply -f codefresh-crd.yaml
-```
-
-You will also need to modify the `config.yaml` for `kcfi` by setting `skipCRD: true` and `serviceAccountName: codefresh-app`:
-
-`config.yaml`
-```yaml
-    operator:
-      #dockerRegistry: gcr.io/codefresh-enterprise
-      #image: codefresh/cf-onprem-operator
-      #imageTag:
-      serviceAccountName: codefresh-app
-      skipCRD: true
-```
 
 ## Download and Install `kcfi`
 
@@ -203,15 +86,14 @@ Running the init command will create a directory containing a `config.yaml` file
 
 Edit the configuration in `config.yaml` and deploy to Kubernetes. The `config.yaml` is very descriptive and it contains an explanation for every parameter.
 
-#### Installation Methods (Helm or Codefresh CRD)
+#### Installation Methods (Helm)
 
-You have the option to install by either the Codefresh CRD Definition (as described above), or by using Helm, which will install/upgrade the chart from the client.
-Define either **operator** or **helm** as your preferred installation method in the `config.yaml`:
+You have the option to install by using Helm, which will install/upgrade the chart from the client.
+Define either **helm** as your preferred installation method in the `config.yaml`:
 
 ```yaml
   installer:
     # type:
-    #   "operator" - apply codefresh crd definition
     #   "helm" - install/upgrade helm chart from client
 ```
 
