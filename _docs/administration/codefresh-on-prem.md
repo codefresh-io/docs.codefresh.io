@@ -88,13 +88,16 @@ Edit the configuration in `config.yaml` and deploy to Kubernetes. The `config.ya
 
 #### Installation Methods (Helm)
 
-You have the option to install by using Helm, which will install/upgrade the chart from the client.
-Define either **helm** as your preferred installation method in the `config.yaml`:
+You have the option to install by using **Helm**, which will install/upgrade the chart from the client.
+Define **helm** as your preferred installation method in the `config.yaml`:
 
 ```yaml
+metadata:
   installer:
-    # type:
-    #   "helm" - install/upgrade helm chart from client
+    type: helm
+    helm:
+      chart: codefresh
+      repoUrl: https://chartmuseum.codefresh.io/codefresh # install/upgrade helm chart from client
 ```
 
 If you install Codefresh on the air-gapped environment (without access to public Docker Hub or codefresh-enterprise registry) you will have to copy the images to your organization container registry (Kubernetes will pull the images from it as part of the installation).
@@ -143,24 +146,6 @@ Deploy the Codefresh Platform by running:
 ```
 kcfi deploy [ -c config.yaml ] [ --kube-context <kube-context-name> ] [ --atomic ] [ --debug ] [ helm upgrade parameters ]
 ```
-### Step 5 -- Install the Codefresh Kubernetes Agent
-
-The cf-k8s-agent is responsible for accessing Kubernetes resources (pods, deployments, services, etc.) behind the firewall in order to display them in the Codefresh UI.  It can be installed in a separate cluster from the installer, or in a separate namespace in the same cluster.
-
-The agent streams updates from cluster resources and then sends information updates to the `k8s-monitor` service.
-
-Execute the following:
-
-```
-kcfi init k8s-agent
-```
-A staging directory will be created named k8s-agent with a `config.yaml`.
-Edit k8s-agent/config.yaml and run:
-
-```
-kcfi deploy [ -c config.yaml ] [-n namespace]
-```
-
 
 ## High-Availability (HA) with active-passive clusters
 Enable high-availability in the Codefresh platform for disaster recovery with an active-passive cluster configuration.
