@@ -143,24 +143,6 @@ Deploy the Codefresh Platform by running:
 ```
 kcfi deploy [ -c config.yaml ] [ --kube-context <kube-context-name> ] [ --atomic ] [ --debug ] [ helm upgrade parameters ]
 ```
-### Step 5 -- Install the Codefresh Kubernetes Agent
-
-The cf-k8s-agent is responsible for accessing Kubernetes resources (pods, deployments, services, etc.) behind the firewall in order to display them in the Codefresh UI.  It can be installed in a separate cluster from the installer, or in a separate namespace in the same cluster.
-
-The agent streams updates from cluster resources and then sends information updates to the `k8s-monitor` service.
-
-Execute the following:
-
-```
-kcfi init k8s-agent
-```
-A staging directory will be created named k8s-agent with a `config.yaml`.
-Edit k8s-agent/config.yaml and run:
-
-```
-kcfi deploy [ -c config.yaml ] [-n namespace]
-```
-
 
 ## High-Availability (HA) with active-passive clusters
 Enable high-availability in the Codefresh platform for disaster recovery with an active-passive cluster configuration.
