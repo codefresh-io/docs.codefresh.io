@@ -92,9 +92,12 @@ You have the option to install by using Helm, which will install/upgrade the cha
 Define either **helm** as your preferred installation method in the `config.yaml`:
 
 ```yaml
+metadata:
   installer:
-    # type:
-    #   "helm" - install/upgrade helm chart from client
+    type: helm
+    helm:
+      chart: codefresh
+      repoUrl: https://chartmuseum.codefresh.io/codefresh # install/upgrade helm chart from client
 ```
 
 If you install Codefresh on the air-gapped environment (without access to public Docker Hub or codefresh-enterprise registry) you will have to copy the images to your organization container registry (Kubernetes will pull the images from it as part of the installation).
