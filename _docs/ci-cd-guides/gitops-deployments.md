@@ -15,24 +15,23 @@ Even though GitOps is not specific to Kubernetes, current GitOps tools work grea
 
 
 Codefresh has native support for GitOps, from creating GitOps applications, deploying them, and monitoring and managing the deployments with dedicated dashboards optimized for GitOps. 
-<!--- replace this with the Home dashboard??>
+
+
 {% include image.html
   lightbox="true"
-  file="/images/guides/gitops/gitops-dashboard.png"
-  url="/images/guides/gitops/gitops-dashboard.png"
-  alt="The GitOps dashboard"
-  caption="The GitOps dashboard"  
-  max-width="100%"
+  file="/images/guides/gitops/app-dashboard.png"
+  url="/images/guides/gitops/app-dashboard.png"
+  alt="GitOps Apps dashboard"
+  caption="GitOps Apps dashboard"  
+  max-width="60%"
  %}
--->
-Starting with pointers on setting up Git repos, this guide will take you through the process of implementing a GitOps deployment:
+
+Starting with pointers on setting up Git repos, this guide takes you through the process of a GitOps deployment in Codefresh:
 * Connecting Argo CD and Codefresh
 * Creating a CI pipeline for GitOps
 * Creating an Argo CD application for GitOps
 * Deploying the application
-* Working with the GitOps Apps dashboard, and a look at the GitOps Overview and DORA dashboards
-
-
+* Working with the GitOps Apps dashboard, and a look at the insights from the GitOps Overview and DORA dashboards
 
 
 
@@ -233,19 +232,23 @@ Read more in [GitOps CI integrations]({{site.baseurl}}/docs/gitops-integrations/
 
 Codefresh provides an easy-to-use editor to create GitOps-compatible applications.
 
-* In the Codefresh UI, from Ops in the sidebar, select [**GitOps Apps**](https://g.codefresh.io/2.0/applications-dashboard/list){target="\_blank"}.
+* In the Codefresh UI, from Ops in the sidebar, select [**GitOps Apps**](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
 * Click **New Application** on the top-right.
 
-When creating the application, you can use the Form mode or the YAML editor.   
-Creating a GitOps application includes:   
-* Application definitions
-  Application definitions include the name, runtime, and the location of the YAML manifest. You can define subfolders by adding / to the path.
-* General configuration settings
-  General configuration settings define the source, destination, and sync policies for the application. These options are identical to those in the Argo CD UI. We recommend selecting automated sync for your application. 
-  * Advanced configuration settings  
-    Advanced settings define the tool used to create the application, and related tool-specific settings.
+When creating the application, you can use the Form mode or the YAML editor, and toggle between the two.  
 
-For detailed information on the settings, and each option, see [Creating GitOps applications]({{site.baseurl}}/docs/ci-cd-guides/gitops-deployments/).
+A GitOps application includes:  
+
+* Application definitions  
+  Application definitions include the name, runtime, and the location of the YAML manifest. You can define subfolders by adding / to the path.
+
+* General configuration settings  
+  General configuration settings define the source, destination, and sync policies for the application. These options are identical to those in the Argo CD UI. We recommend selecting automated sync for your application. 
+
+* Advanced configuration settings    
+  Advanced settings define the tool used to create the application, and related tool-specific settings.
+
+For detailed information on the settings and options, see [Creating GitOps applications]({{site.baseurl}}/docs/ci-cd-guides/gitops-deployments/).
 
 On selecting **Commit**, Codefresh validates the settings, and alerts you to empty or invalid fields. 
 Once validated, you can see the Commit form with the application's definition on the left, and the read-only version of the manifest with the configuration settings you defined on the right.
@@ -254,12 +257,12 @@ Enter the path to the **Git Source** to which to commit the application configur
 It may take a few minutes to until it is synced to the cluster. 
 
 ## Deploy the GitOps application
-You have created a GitOps application which has not been deployed yet.  To deploy the GitOps application you created, you need to create and commit the following resources:  
+The next step after creating the GitOps application is to deploy it.  To deploy the GitOps application you created, you need to create and commit the following resources:  
 * A folder in Git to save resources for the application
 * `Rollout` resource defining the deployment strategy 
 * `Service` resource to expose the application to external traffic
 
-You will also need to install Argo Rollout on the cluster to which you are deploying the application. 
+You will also need to [install Argo Rollouts]({{site.baseurl}}/docs/deployments/gitops/install-argo-rollouts) on the cluster to which you are deploying the application. 
 
 ### Create rollout.yaml
 
