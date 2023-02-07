@@ -48,7 +48,12 @@ Here you can define global template behavior. The options are:
 Note that templates are simply normal pipelines “marked” as a template. There is no technical difference between templates and actual pipelines.
 
 ## Enabling cluster-contexts for pipelines
-By default, all pipelines in the account can access all clusters integrated with Codefresh. Restrict pipeline access to clusters by enabling  cluster-injection for individual pipelines in the account.
+By default, all pipelines in the account can access all clusters integrated with Codefresh. Restrict pipeline access to clusters by enabling cluster-injection for individual pipelines in the account.
+
+Selectively restricting access to clusters for a pipeline:  
+* Enhances security by restricting access to users from different teams. 
+* Reduces the overall duration of the build by shortening the initialization phase.
+  Codefresh authenticates the credentials of every cluster that the pipeline accesses during the initialization phase. This action affects build duration for accounts with large numbers of clusters. 
 
 1. In the Codefresh UI, select **Account Settings**, and then [**Pipeline Settings**](https://g.codefresh.io/account-admin/account-conf/pipeline-settings){:target="\_blank"}.
 1. Toggle **Kubernetes cluster context pipeline injection** to ON.

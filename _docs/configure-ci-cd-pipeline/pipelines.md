@@ -223,8 +223,8 @@ By default, all clusters integrated with Codefresh are automatically available f
 The inject cluster option when enabled for the account allows you to selectively restrict the clusters which can be accessed from pipelines created for the user account. 
 > This option is only available for Enterprise customers.
 
-Restrictive access increases security. 
-For a large enterprise, because clusters are referenced through the names defined during integration, a shorter list can avoid confusion when there are several clusters with similar names.
+Increase security by restricting access to users from different teams.   
+Codefresh authenticates the credentials of each cluster during the build initialization phase. Fewer clusters mean shorter initializations and reduced build durations. 
 
 **Prerequisites** 
 * Account-level pipeline setting **Kubernetes cluster context pipeline injection** enabled  
