@@ -324,6 +324,7 @@ spec:
   type: LoadBalancer
 ```
 Once you create and commit the `rollout` and `service` resources, return to the GitOps Apps dashboard. See the following section, [Working with the GitOps Apps dashboard](#working-with-the-gitops-app-dashboard) for detailed information on all aspects of monitoring your app and deployments.
+
 ## Working with the GitOps Apps dashboard
 
 After you create an ArgoCD application in Codefresh, you can track and monitor the application's deployments, resources, and more in the [GitOps Apps](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"} dashboard.
