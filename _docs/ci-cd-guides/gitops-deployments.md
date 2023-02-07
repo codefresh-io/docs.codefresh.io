@@ -25,7 +25,16 @@ Codefresh has native support for GitOps, from creating GitOps applications, depl
   max-width="100%"
  %}
 -->
-This guide will take you the entire process of a GitOps deployment.
+Starting with pointers on setting up Git repos, this guide will take you through the process of implementing a GitOps deployment:
+* Connecting Argo CD and Codefresh
+* Creating a CI pipeline for GitOps
+* Creating an Argo CD application for GitOps
+* Deploying the application
+* Working with the GitOps Apps dashboard, and a look at the GitOps Overview and DORA dashboards
+
+
+
+
 
 ## Setting up your Git repositories
 
@@ -222,9 +231,99 @@ Read more in [GitOps CI integrations]({{site.baseurl}}/docs/gitops-integrations/
 
 ## Creating an Argo CD application for GitOps
 
-Codefresh provides a full-f
+Codefresh provides an easy-to-use editor to create GitOps-compatible applications.
+
+* In the Codefresh UI, from Ops in the sidebar, select [**GitOps Apps**](https://g.codefresh.io/2.0/applications-dashboard/list){target="\_blank"}.
+* Click **New Application** on the top-right.
+
+When creating the application, you can use the Form mode or the YAML editor.   
+Creating a GitOps application includes:   
+* Application definitions
+  Application definitions include the name, runtime, and the location of the YAML manifest. You can define subfolders by adding / to the path.
+* General configuration settings
+  General configuration settings define the source, destination, and sync policies for the application. These options are identical to those in the Argo CD UI. We recommend selecting automated sync for your application. 
+  * Advanced configuration settings  
+    Advanced settings define the tool used to create the application, and related tool-specific settings.
+
+For detailed information on the settings, and each option, see [Creating GitOps applications]({{site.baseurl}}/docs/ci-cd-guides/gitops-deployments/).
+
+On selecting **Commit**, Codefresh validates the settings, and alerts you to empty or invalid fields. 
+Once validated, you can see the Commit form with the application's definition on the left, and the read-only version of the manifest with the configuration settings you defined on the right.
+Enter the path to the **Git Source** to which to commit the application configuration manifest.
+
+It may take a few minutes to until it is synced to the cluster. 
+
+## Deploy the GitOps application
+You have created a GitOps application which has not been deployed yet.  To deploy the GitOps application you created, you need to create and commit the following resources:  
+* A folder in Git to save resources for the application
+* `Rollout` resource defining the deployment strategy 
+* `Service` resource to expose the application to external traffic
+
+You will also need to install Argo Rollout on the cluster to which you are deploying the application. 
+
+### Create rollout.yaml
+
+Create a `rollout` resource for the application you want to deploy.  
+
+To leverage Argo Rollouts' deployment capabilities, we use Argo's `rollout` resource instead of the native Kubernetes Deployment object.
+For detailed information on the fields you can define, see [Argo Rollout specification](https://argoproj.github.io/argo-rollouts/features/specification/){:target="\_blank"}.
+
+* In the Git repository create the `rollout.yaml` file, as in the example below.
 
 
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: codefresh-guestbook-rollout
+spec:
+  replicas: 4
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: codefresh-guestbook
+  template:
+    metadata:
+      labels:
+        app: codefresh-guestbook
+    spec:
+      containers:
+        - image: gcr.io/heptio-images/ks-guestbook-demo:0.1
+          name: codefresh-guestbook
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+  minReadySeconds: 30
+  strategy:
+    canary:
+      steps:
+        - setWeight: 25
+        - pause: {duration: 20s}
+        - setWeight: 75
+        - pause: {duration: 15s}
+```
+
+### Create a service resource
+Create a service resource to expose your application to external traffic. 
+
+* Create a `service.yaml` resource for the application you want to deploy, as in the example below.  
+  > Create it in the same folder in which you saved `rollout.yaml`. 
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: codefresh-guestbook-svc
+spec:
+  ports:
+    - port: 8080
+      targetPort: 80
+  selector:
+    app: codefresh-guestbook # must be the same as the selector defined in rollouts.yaml
+  type: LoadBalancer
+```
+Once you create and commit the `rollout` and `service` resources, return to the GitOps Apps dashboard. See the following section, [Working with the GitOps Apps dashboard](#working-with-the-gitops-app-dashboard) for detailed information on all aspects of monitoring your app and deployments.
 ## Working with the GitOps Apps dashboard
 
 After you create an ArgoCD application in Codefresh, you can track and monitor the application's deployments, resources, and more in the [GitOps Apps](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"} dashboard.
@@ -318,7 +417,7 @@ You can see the:
 1. The Kubernetes services added or modified during the deployment
 
 
-### Rollouts and rollback
+<!--- ### Rollouts and rollback  -->
 
 
 
@@ -327,7 +426,7 @@ The Configuration tab displays the definitions for the application. Apart from t
 
 For more information on application definitions, see [Creating GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application).
 
-## GitOps Overview and DORA metrics
+## GitOps Overview and DORA dashboards
 
 If you have several applications and deployments, the GitOps Overview and the DORA metrics dashboards are particularly useful, to managers and developers alike.
 

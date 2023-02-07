@@ -110,7 +110,7 @@ spec:
 | `selector.app`            | The pods to select, and MUST be identical to that defined in `rollouts.yaml`, `codefresh-guestbook` in our example.| 
 
 ### View application resources in Codefresh
-Once you create and commit the `rollout` and `service` resources, return to the Applications dashboard. The Current State  to see these resources.
+Once you create and commit the `rollout` and `service` resources, return to the GitOps Apps dashboard. The Current State tab displays app resources.
 
 1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard?sort=desc-lastUpdated){:target="\_blank"}.  
 1. Select the application. 

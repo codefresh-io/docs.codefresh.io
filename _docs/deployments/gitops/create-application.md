@@ -23,7 +23,7 @@ Codefresh provides all the options and functionality to create and manage Argo C
   To monitor the health and sync status, deployments, and resources for the application, see [Monitoring GitOps applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/).  
 
 ## Application: Definitions
-Application definitions include the name, runtime, and the name of the YAML manifest. By default, the YAML manifest has the same name as that of the application. 
+Application definitions include the name, runtime, and the location of the YAML manifest. By default, the YAML manifest has the same name as that of the application. 
 
 {% include 
    image.html 
@@ -99,7 +99,7 @@ All Prune propagation policies can be used with:
 
 ## Application: Advanced configuration settings
 
-Advanced settings define the tool used to create the application, and related toll-specific settings.
+Advanced settings define the tool used to create the application, and related tool-specific settings.
 
 {% include 
    image.html 
@@ -190,8 +190,8 @@ Review:
 {% include 
    image.html 
    lightbox="true" 
-   file="/images/applications/add-app-general-settings.png" 
-   url="/images/applications/add-app-general-settings.png" 
+   file="/images/applications/add-app-advanced-settings.png" 
+   url="/images/applications/add-app-advanced-settings.png" 
    alt="Add Application: Advanced settings" 
    caption="Add Application: Advanced settings"
    max-width="70%" 
