@@ -100,6 +100,13 @@ metadata:
       repoUrl: https://chartmuseum.codefresh.io/codefresh # install/upgrade helm chart from client
 ```
 
+Specify your `global.appUrl` domain name. It will be used as Ingress hostname.
+
+```yaml
+global:
+  appUrl: onprem.codefresh.local
+```
+
 If you install Codefresh on the air-gapped environment (without access to public Docker Hub or codefresh-enterprise registry) you will have to copy the images to your organization container registry (Kubernetes will pull the images from it as part of the installation).
 This can be done by uncommenting and setting the proper values in the `config.yaml` file:
 
