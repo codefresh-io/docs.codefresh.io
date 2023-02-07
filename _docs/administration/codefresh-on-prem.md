@@ -100,7 +100,7 @@ metadata:
       repoUrl: https://chartmuseum.codefresh.io/codefresh # install/upgrade helm chart from client
 ```
 
-Specify `global.appUrl`. It will be used as Ingress hostname.
+Specify your `global.appUrl` domain name. It will be used as Ingress hostname.
 
 ```yaml
 global:
