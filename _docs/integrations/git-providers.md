@@ -227,7 +227,7 @@ you used Bitbucket when you [created your Codefresh account]({{site.baseurl}}/do
 For the **Application Password** method you need:
 
 * A friendly name for the Git context (It can be anything you want.)
-* The name of your Bitbucket account/email address
+* Your Bitbucket username
 * A Bitbucket application password
 
 To create an application password, go to your *Bitbucket settings* and select *App passwords* from the sidebar.
