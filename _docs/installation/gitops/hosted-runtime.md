@@ -8,8 +8,8 @@ toc: true
 
 
 
-Set up your environment with the Hosted GitOps Runtime to leverage extensive CD capabilities.
-<!---Read about [Hosted GitOps]({{site.baseurl}}/docs/incubation/intro-hosted-runtime/). -->
+Set up your environment with the Hosted GitOps Runtime to leverage Codefresh GitOps capabilities.
+
 
 ## System requirements for Hosted GitOps Runtimes
 
@@ -21,20 +21,20 @@ Set up your environment with the Hosted GitOps Runtime to leverage extensive CD 
 
 
 ## Where to start with Hosted GitOps Runtimes
-If you have not provisioned a Hosted GitOps Runtime, Codefresh presents you with the setup instructions in the **Home** dashboard.   
+If you have not provisioned a Hosted GitOps Runtime, Codefresh presents you with the setup instructions in the **GitOps Overview** dashboard.   
 
   
 
-* In the Codefresh UI, go to Codefresh [Home](https://g.codefresh.io/2.0/?time=LAST_7_DAYS){:target="\_blank"}.
+* In the Codefresh UI, from OPS in the sidebar, select [GitOps Overview](https://g.codefresh.io/2.0/?time=LAST_7_DAYS){:target="\_blank"}.
   Codefresh guides you through the three-step setup, as described below.
 
 {% include
 image.html
 lightbox="true"
-file="/images/runtime/hosted-initial-view.png"
-url="/images/runtime/hosted-initial-view.png"
-alt="Hosted GitOps setup"
-caption="Hosted GitOps setup"
+file="/images/runtime/hosted-gitops-initial-view.png"
+url="/images/runtime/hosted-gitops-initial-view.png"
+alt="Hosted GitOps Runtime setup"
+caption="Hosted GitOps Runtime setup"
 max-width="80%"
 %}
 
@@ -64,11 +64,12 @@ max-width="80%"
 
 {:start="2"}
 1. Do the following:  
-  * In the Codefresh UI, go to [**GitOps Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}, and click **+ Add Runtimes**.
-  * Select **Hosted GitOps Runtime** and click **Add**.
+  * In the Codefresh UI, click the **Settings** icon on the toolbar.
+  * From Runtimes in the sidebar, select [**GitOps Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}, and click **+ Add Runtime**.
+  * Select **Hosted Runtime** and click **Add**.
   >An account can be provisioned with a single Hosted GitOps Runtime. If you have already provisioned a Hosted GitOps Runtime for your account, the Hosted GitOps Runtime option is disabled.
   * Continue from _step 3_. 
-
+<!---
 {% include
 image.html
 lightbox="true"
@@ -79,7 +80,7 @@ caption="Install Hosted GitOps Runtime"
 max-width="40%"
 %}
 
-
+-->
 {:start="3"}
 1. When complete, to view the components for the Hosted GitOps Runtime, click **View Runtime**.
   You are directed to the Runtime Components tab.  
@@ -94,7 +95,8 @@ caption="Runtime components for Hosted GitOps Runtime"
 max-width="70%"
 %}
 
-> The Git Sources and the Managed Clusters are empty as they will be set up in the next steps.  
+> You can see that there are two steps to complete Hosted GitOps setup.  
+  The Git Sources and the Managed Clusters are empty as they will be set up in the next steps.  
 
 If you navigate to **Runtimes > List View**, you can identify the Hosted GitOps Runtime through the Type column (Hosted), the Cluster/Namespace column (Codefresh), and the Module column (CD Ops).
 
@@ -103,11 +105,12 @@ image.html
 lightbox="true"
 file="/images/runtime/hosted-runtimes-list-view.png"
 url="/images/runtime/hosted-runtimes-list-view.png"
-alt="Hosted runtimes in List view"
-caption="Hosted runtimes in List view"
+alt="Hosted GitOps Runtime in List view"
+caption="Hosted GitOps Runtime in List view"
 max-width="70%"
 %}
 
+<!--- Ask Idan if to keep this:
 ### Troubleshoot failed Hosted GitOps Runtime installation
 Your Hosted GitOps Runtime may fail to install with an error as in the image below. We are closely moinitoring the Hosted GitOps Runtime installation process and activley working to prevent and iron out all installation errors. Follow the instructions to uninstall and reinstall the Hosted GitOps Runtime.
 
@@ -135,7 +138,7 @@ max-width="70%"
 1. In the Codefresh UI, return to Codefresh [Home](https://g.codefresh.io/2.0/?time=LAST_7_DAYS){:target="\_blank"}.
 1. Refresh the page and start with [Step 1: Install Hosted GitOps Runtime](#step-1-install-hosted-gitops-runtime).
 
-
+-->
 ## Step 2: Connect Git provider
 Connect your Hosted GitOps Runtime to a Git provider for Codefresh to create the required Git repos.  First authorize access to your Git provider through an OAuth token, and then select the Git organizations or accounts in which to create the required Git repos.  
 

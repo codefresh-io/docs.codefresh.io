@@ -382,7 +382,7 @@ You can always renable a provider when needed.
 1. From the left pane, select **Providers**.
 1. Disable the providers not relevant for the accounts.
 These providers are not displayed as options during sign-up/sign-in.
-<!--- change screenshot>
+<!--- change screenshot  -->
 {% include image.html
   lightbox="true"
   file="/images/administration/sso/enable-disable-providers.png"
@@ -391,7 +391,7 @@ These providers are not displayed as options during sign-up/sign-in.
   caption="Enable/disable providers for SSO"
   max-width="60%"
 %}
--->
+
 
 ### (Optional) Set up Git integration
 
@@ -434,11 +434,16 @@ Click **Save application**.
 
 After app creation, note down the created Application ID and Client Secret. They will be required for the settings in **Codefresh Admin**->**IDPs**.
 
+<!---
 {% include image.html
   lightbox="true"
   file="/images/installation/git-idp.png"
   url="/images/installation/git-idp.png"
-    %}
+  alt="Edit IDP"
+  caption="Edit IDP"
+  max-width="60%"
+%}
+ -->
 
 >Note: When configuring the default IDP (for GitHub, GitLab, etc), do not modify the Client Name field. Please keep them as GitHub, GitLab, BitBucket, etc. Otherwise, the signup and login views won’t work.
 
