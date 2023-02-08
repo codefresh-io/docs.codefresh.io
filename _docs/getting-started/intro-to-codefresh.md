@@ -5,115 +5,102 @@ group: getting-started
 toc: true
 ---
 
-TBD
-What is Codefresh?
-
-The short answer: Complete CI/CD and GitOps-powered Argo CD in the same product.
-
-Now for the long answer.
+What is Codefresh?  A complete CI/CD and GitOps-powered Argo CD in the same product.   
 
 ## Codefresh & CI/CD
 
-Codefresh is a _complete CI/CD solution_, not just CI.   
-We cover the full software lifecycle. View a release in the Kubernetes dashboard, click on it and go to the Docker image, click on the Docker image and go to the build that created it, all from a single interface. 
-
-Codefresh is turbo-charged CI/CD! 
-
-We work with all major Git platforms and cloud providers. There is no lock-in with any particular vendor. Unlike other CI/CD platforms which can be tightly coupled to a single Git provider, or a specific vendor or set of tools, Codefresh supports a fully programmtic implementation.
-
-Everything in the pipeline is defined as code and applied with the command line. Storing the definitions in a code repo ensures consistenct. Upscaling or expanind Doing so means we can create all of our pipelines in a consistent way and store those definitions in a code repository. Taking this one step step deeper, we could then create a bootstrap pipeline in Codefresh that generates pipelines when new definitions are added to this repo. See our previous post Programmatic Creation of Codefresh Pipelines (part 2) for more on this.
-
-Has pipelines with Has several unique features such as a distributed Docker layer cache, an auto-mounted shared volume, a private Docker registry and a private Helm repository.
-* Built-in Kubernetes and Helm dashboards 
-* Helm charts browser, and Helm environment board 
+Codefresh is a cloud-native continuous integration and delivery platform that enables teams to quickly and efficiently develop, deploy, and manage cloud-native applications. Teams can quickly and easily build, test, and deploy their applications on any cloud platform, including Kubernetes, Docker, and AWS. With its robust automation capabilities and powerful integrations, teams can easily collaborate and quickly deliver high-quality software. Our intuitive, easy-to-use UI helps streamline the development process. 
 
 
 
+Codefresh is a _complete CI/CD solution_, not just CI, covering the full software lifecycle.  
+View a release in the Kubernetes dashboard, click on the release to go to the Docker image, click on the Docker image to go to the build that created it, all from a single interface. ! 
 
-How does Codefresh do it?
-Everything for CI/CD in Codefresh starts and ends with pipelines. In Codefresh, a pipeline can do pretty much anyhting, only CI, only CD, both CI and CD.
-
-
-
+Codefresh works with all major Git platforms and cloud providers. There is no lock-in with any particular vendor. Unlike other CI/CD platforms which can be tightly coupled to a single Git provider, or a specific vendor or set of tools, Codefresh supports a fully programmtic implementation.
 
 
 
-Completely programmatic approach
- Pipelines are create pipelines and define the pipeline’s steps, triggers, and variables.
+### CI/CD pipelines
 
-
-
-
-The Docker registry integrations and all cluster integrations are automatically available to all pipelines. You don’t need docker login commands or kubectl commands to set up a Kube context inside your pipeline.
-
-
-
-Pipelines can Run unit tests, integration tests, acceptance tests etc.
-
-
-
-
-
-Pipeline extras
-We support all Git providers: Both on-premises and cloud 
-provides a rich set of triggers: Trigger pipelines  on a schedule, from a push to a docker registry or from a push to a helm registry or from actions that happened in Git.
-Has a rich, modern API With Codefresh, you can trigger a pipeline
-
-Since Codefresh is decoupled from any single pipeline source, we provide a programmatic way to 
-
-
-## CI/CD pipelines
-
-As mentioned earlier, everything in Codefresh CI/CD starts and ends with pipelines. 
-A Codefresh pipeline has two distinct aspects:
-
-* Pipeline specifications
-  Specifications define the pipeline:
-  * Metadata such as name, project, tags, in Codefresh
-  * Events that trigger the pipeline, such as webhooks, cron events, etc.
-  * Steps to use for this pipeline (inline, from a repo, etc.)
-
-* Pipeline steps
-  Pipeline steps are essentially a collection of Docker images that define the:
-  * Jobs to run
-  * Sequence in which to run the jobs
-  * CI and CD processes to implement
-
-  Step types range from clone, build, deploy, and, a freestyle step when no size fits.  
-  For ready-to-use collections of pipeline steps, check out our [Plugin marketplace](https://codefresh.io/steps/){:target="\_blank"}
-
-
-
+Everything in Codefresh CI/CD starts and ends with pipelines. 
+A Codefresh pipeline has two distinct aspects, specifications that define the pipeline, and steps that are essentially a collection of Docker images that define the jobs and CI and CD processes to implement.
+  
 To see how pipeline work, start with the [Introduction to Codefresh pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/), or jump to [pipeline creation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/).
 
-## Releases and dashboards
-Dashboards are key to providing information at the right time.
-perational Dashboards ~ Exposing the most commonly needed application and environmental information to developers so that they can troubleshoot without needing assistance from the DevOps teams; even in production
-
-Analytical Dashboards ~ Developers often need to reach out to the DevOps team to get statistics and metrics around builds and deployments. Codefresh automatically generates DORA metrics as well as many other key indicators of build and deployment efficiency, which can be easily viewed in seconds by product owners and management alike.
+For ready-to-use collections of pipeline steps, check out our [Plugin marketplace](https://codefresh.io/steps/){:target="\_blank"}
 
 ### Integrations
-For a seamless CI/CD experience, Codefresh has native integrations with alomst every major provider.
-Easily connect Git providers, registry providers, storage providers, secret stores, and notification channels 
-
+For a seamless CI/CD experience, Codefresh has native integrations with almost every major provider.
+Easily connect Git providers, registry providers, storage providers, secret stores, and notification channels.  
 Docker registry and all cluster integrations are automatically available to all pipelines. You don’t need Docker login commands or `kubectl` commands to set up a Kube context inside your pipeline.
 
-Go to Pipeline Integrations in the UI, and see how to 
+Look for Pipeline Integrations in the documentation.
+
+### Dashboards and insights
+Dashboards are key to providing the right information at the right time.
+Codefresh has dedicated dashboards for Helm and Kubernetes, and another dashboard that combines Helm and Kubernetes information in the same location. 
+
+* Helm Boards  
+  A special environment dashboard to track your applications as they move within your infrastructure (e.g., Dev, QA, Prod), and shift Helm releases between environments.
+
+* Helm Releases  
+  Here's where you can see everything about the cluster, including current status, currently deployed releases, their previous revisions including change tracking, and even rollbacks.
+
+* Kubernetes Services
+  Track the state of your Kubernetes clusters, and even manage services if you have the appropriate access privileges.
+
+* Environment Dashboard
+  For both Kubernetes and Helm releases, see cluster status and pipeline information.
+
+
 ### Where to go from here
-Here are several links we think wouuld be useful t
+Here are several useful links to further explore CI/CD with Codefresh:
 
-Quick starts
+**Quick starts**  
 To get up and running, follow our quick starts. The quick start modules are a series of flows that guide you from setting up your first account in Codefresh, to creating a basic pipeline, and deploying to Kubernetes.
-See XREF TBD 
+See [CI/CD quick starts]({{site.baseurl}}/docs/quick-start/ci-quick-start/).
 
-Example catalog
-For those who are familiar with CI/CD, we have an extensive collection of examples, covering several CI and CD scenarios:
+**Example catalog**  
+If you are familiar with CI/CD, we have an extensive collection of examples that cover several CI and CD scenarios: 
 [CI examples]({{site.baseurl}}/docs/example-catalog/ci-examples/)
 [CD examples]({{site.baseurl}}/docs/example-catalog/cd-examples/)
 
-Guides
-And finally, if you want more meat, dive in to our detailed guides.
-XREF TBD
+**Guides**  
+And finally, if you want more meat, dive in to our detailed guides. Look for CI/CI guides in the documentation.
+
 
 ## Codefresh & GitOps with Argo CD
 
+GitOps provides a way to manage cloud-native applications using Git as the source of truth. Teams can define the desired state of their applications and Kubernetes clusters in a Git repository and then automatically deploy the applications to Kubernetes clusters. 
+Codefresh is a full-featured, turn-key solution for application deployments and releases. Powered by Argo, Codefresh uses Argo CD, Argo Workflows, Argo Events, and Argo Rollouts, extended with unique functionality and features essential for enterprise deployments. By combining GitOps with Codefresh, teams can create Argo Workflows and Argo Applications to seamlessly build, test, and deploy their applications. 
+
+
+GitOps Runtimes
+Install Hosted or Hybrid GitOp R
+
+Codefresh offers security, maintainability, traceability, and most importantly, a single control plane for all stakeholders, be they developers, operators, product owners or project managers.
+
+Codefresh brings the power of the Argo project to your Kubernetes deployments:
+
+Argo CD for declarative continuous deployment
+Argo Rollouts for progressive delivery
+Argo Workflows as the workflow engine
+Argo Events for event-driven workflow automation framework
+Codefresh creates a conformed fork of the Argo project, providing an enterprise-supported version of the same, enhanced with unique functionality.
+
+Our users rely on the Codefresh platform to deliver software, reliably and predictably, without disruptions.
+To maintain that high standard, we add several weeks of testing and bug fixes to new versions of Argo before making them available within Codefresh. Typically, new versions of Argo are available within 30 days of their release.
+
+Deliver software at scale by managing hundreds or thousands of deployment targets and applications
+Get a secure, enterprise-ready distribution of Argo with built-in identity, RBAC (role-based access control), and secrets
+Gain clear visibility across all deployments and trace changes and regressions from code to cloud in seconds
+Get enterprise-level dedicated support for Argo deployments
+Get insights into every aspect of your CI/CD with smart dashboards
+Manage multiple runtimes and multiple clusters in a single pane of glass
+### Dashboards
+Dashboards are key to providing the right information at the right time.
+Operational Dashboards
+Exposing the most commonly needed application and environmental information to developers so that they can troubleshoot without needing assistance from the DevOps teams; even in production
+
+Analytical Dashboards
+Developers often need to reach out to the DevOps team to get statistics and metrics around builds and deployments. Codefresh automatically generates DORA metrics as well as many other key indicators of build and deployment efficiency, which can be easily viewed in seconds by product owners and management alike.

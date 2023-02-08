@@ -132,10 +132,10 @@ For the architecture, see [Hosted GitOps Runtime architecture]({{site.baseurl}}/
 {% include
  image.html
  lightbox="true"
- file="/images/runtime/intro-hosted-hosted-initial-view.png"
- url="/images/runtime/intro-hosted-hosted-initial-view.png"
- alt="Hosted runtime setup"
- caption="Hosted runtime setup"
+ file="/images/runtime/hosted-gitops-initial-view.png"
+ url="/images/runtime/hosted-gitops-initial-view.png"
+ alt="Hosted GitOps runtime setup"
+ caption="Hosted GitOps runtime setup"
     max-width="80%"
 %} 
 
@@ -195,7 +195,7 @@ The table below highlights the main differences between Hosted and Hybrid GitOps
 |                         |Image enrichment    | Supported                  | Supported  |
 |                         | Rollouts           | Supported                  |  Supported  |
 |Integrations             |                    | Supported                  | Supported  |
-|Dashboards               |Home Analytics      | Hosted runtime and deployments|Runtimes, deployments, Delivery Pipelines |
+|Dashboards               |GitOps Overview      | Hosted runtime and deployments|Runtimes, deployments, Delivery Pipelines |
 |                         |DORA metrics        | Supported                 |Supported        |
 |                         |Applications        | Supported                 |Supported        |
 

@@ -23,8 +23,8 @@ Here is the overall architecture:
 
 {% include image.html
   lightbox="true"
-  file="/images/administration/behind-the-firewall/architecture.png"
-  url="/images/administration/behind-the-firewall/architecture.png"
+  file="/images/runtime/behind-the-firewall/architecture.png"
+  url="/images/runtime/behind-the-firewall/architecture.png"
   alt="Codefresh Hybrid CD/CD behind the firewall"
   caption="Codefresh Hybrid CD/CD behind the firewall"
   max-width="100%"
@@ -80,8 +80,8 @@ need to mark it as *behind the firewall* as well:
 
 {% include image.html
   lightbox="true"
-  file="/images/administration/behind-the-firewall/behind-the-firewall-toggle.png"
-  url="/images/administration/behind-the-firewall/behind-the-firewall-toggle.png"
+  file="/images/runtime/behind-the-firewall/behind-the-firewall-toggle.png"
+  url="/images/runtime/behind-the-firewall/behind-the-firewall-toggle.png"
   alt="Behind the firewall toggle"
   caption="Behind the firewall toggle"
   max-width="100%"
@@ -92,8 +92,8 @@ the Codefresh SAAS doesn't have access to your on-premises GIT repository.
 
 {% include image.html
   lightbox="true"
-  file="/images/administration/behind-the-firewall/behind-the-firewall-tag.png"
-  url="/images/administration/behind-the-firewall/behind-the-firewall-tag.png"
+  file="/images/runtime/behind-the-firewall/behind-the-firewall-tag.png"
+  url="/images/runtime/behind-the-firewall/behind-the-firewall-tag.png"
   alt="Behind the firewall tags"
   caption="Behind the firewall tags"
   max-width="100%"
@@ -150,8 +150,8 @@ Once you select your GIT provider, you need to manually enter your username and 
 
 {% include image.html
   lightbox="true"
-  file="/images/administration/behind-the-firewall/enter-repo-details.png"
-  url="/images/administration/behind-the-firewall/enter-repo-details.png"
+  file="/images/runtime/behind-the-firewall/enter-repo-details.png"
+  url="/images/runtime/behind-the-firewall/enter-repo-details.png"
   alt="Entering repository details"
   caption="Entering repository details"
   max-width="60%"
@@ -163,8 +163,8 @@ Once that is done, Codefresh will show you the webhook endpoint along with a sec
 
 {% include image.html
   lightbox="true"
-  file="/images/administration/behind-the-firewall/codefresh-webhook.png"
-  url="/images/administration/behind-the-firewall/codefresh-webhook.png"
+  file="/images/runtime/behind-the-firewall/codefresh-webhook.png"
+  url="/images/runtime/behind-the-firewall/codefresh-webhook.png"
   alt="Codefresh webhook details"
   caption="Codefresh webhook details"
   max-width="60%"
@@ -228,8 +228,8 @@ To connect a cluster that is behind the firewall follow the [connecting cluster 
 
 {% include image.html
   lightbox="true"
-  file="/images/administration/behind-the-firewall/cluster-behind-firewall.png"
-  url="/images/administration/behind-the-firewall/cluster-behind-firewall.png"
+  file="/images/runtime/behind-the-firewall/cluster-behind-firewall.png"
+  url="/images/runtime/behind-the-firewall/cluster-behind-firewall.png"
   alt="Marking a Kubernetes cluster as internal"
   caption="Marking a Kubernetes cluster as internal"
   max-width="60%"

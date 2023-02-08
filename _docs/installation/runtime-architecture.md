@@ -5,7 +5,7 @@ group: installation
 toc: true
 ---
 
-If you have familiarized yourself with the different installation options, here's a deep dive into the architecture and components of each.
+If you have familiarized yourself with the different installation options, here's a deep dive into the architecture and components of the different options.
 
 ## Runner architecture
 
@@ -59,10 +59,10 @@ The diagram shows a high-level view of the GitOps environment, and its core comp
 {% include
 image.html
 lightbox="true"
-file="/images/getting-started/architecture/arch-codefresh-simple.png"
-url="/images/getting-started/architecture/arch-codefresh-simple.png"
-alt="Codefresh GitOps Platform architecture"
-caption="Codefresh GitOps Platform architecture"
+file="/images/runtime/architecture/arch-codefresh-simple.png"
+url="/images/runtime/architecture/arch-codefresh-simple.png"
+alt="Codefresh GitOps platform architecture"
+caption="Codefresh GitOps platform architecture"
 max-width="100%"
 %}
 
@@ -116,10 +116,10 @@ In the hosted environment, the Codefresh Runtime is installed on a K8s cluster m
 {% include
    image.html
    lightbox="true"
-   file="/images/getting-started/architecture/arch-hosted.png"
- url="/images/getting-started/architecture/arch-hosted.png"
-  alt="Hosted runtime architecture"
-  caption="Hosted runtime architecture"
+   file="/images/runtime/architecture/arch-hosted.png"
+ url="/images/runtime/architecture/arch-hosted.png"
+  alt="Hosted GitOps Runtime architecture"
+  caption="Hosted GitOps Runtime architecture"
   max-width="100%"
 %}
 
@@ -129,10 +129,10 @@ Tunnel-based Hybrid GitOps runtimes use tunneling instead of ingress controllers
 {% include
    image.html
    lightbox="true"
-   file="/images/getting-started/architecture/arch-hybrid-ingressless.png"
- url="/images/getting-started/architecture/arch-hybrid-ingressless.png"
-  alt="Tunnel-based hybrid runtime architecture"
-  caption="Tunnel-based hybrid runtime architecture"
+   file="/images/runtime/architecture/arch-hybrid-ingressless.png"
+ url="/images/runtime/architecture/arch-hybrid-ingressless.png"
+  alt="Tunnel-based Hybrid GitOps Runtime architecture"
+  caption="Tunnel-based Hybrid GitOps Runtime architecture"
   max-width="100%"
 %}
 
@@ -145,10 +145,10 @@ Ingress-based runtimes use ingress controllers to control communication between 
 {% include
    image.html
    lightbox="true"
-   file="/images/getting-started/architecture/arch-hybrid-ingress.png"
- url="/images/getting-started/architecture/arch-hybrid-ingress.png"
-  alt="Ingress-based hybrid runtime architecture"
-  caption="Ingress-based hybrid runtime architecture"
+   file="/images/runtime/architecture/arch-hybrid-ingress.png"
+ url="/images/runtime/architecture/arch-hybrid-ingress.png"
+  alt="Ingress-based Hybrid GitOps runtime architecture"
+  caption="Ingress-based Hybrid GitOps runtime architecture"
   max-width="100%"
 %}
 
