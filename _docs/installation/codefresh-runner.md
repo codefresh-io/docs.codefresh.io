@@ -88,8 +88,8 @@ codefresh runner init --token <my-token> <--dry-run>
 
 {% include image.html
   lightbox="true"
-  file="/images/administration/runner/installation-wizard.png"
-  url="/images/administration/runner/installation-wizard.png"
+  file="/images/runtime/runner/installation-wizard.png"
+  url="/images/runtime/runner/installation-wizard.png"
   alt="Codefresh Runner wizard"
   caption="Codefresh Runner wizard"
   max-width="100%"
@@ -99,8 +99,8 @@ codefresh runner init --token <my-token> <--dry-run>
 
   {% include image.html
   lightbox="true"
-  file="/images/administration/runner/sample-pipeline.png"
-  url="/images/administration/runner/sample-pipeline.png"
+  file="/images/runtime/runner/sample-pipeline.png"
+  url="/images/runtime/runner/sample-pipeline.png"
   alt="Codefresh Runner example pipeline"
   caption="Codefresh Runner example pipeline"
   max-width="90%"
@@ -596,8 +596,8 @@ To see the cluster with the Runner:
 
 {% include image.html
   lightbox="true"
-  file="/images/administration/runner/runtime-environments.png"
-  url="/images/administration/runner/runtime-environments.png"
+  file="/images/runtime/runner/runtime-environments.png"
+  url="/images/runtime/runner/runtime-environments.png"
   alt="Available runtime environments"
   caption="Available runtime environments"
   max-width="60%"
@@ -619,8 +619,8 @@ Override the default runtime environment for a specific pipeline through the pip
 
 {% include image.html
   lightbox="true"
-  file="/images/administration/runner/environment-per-pipeline.png"
-  url="/images/administration/runner/environment-per-pipeline.png"
+  file="/images/runtime/runner/environment-per-pipeline.png"
+  url="/images/runtime/runner/environment-per-pipeline.png"
   alt="Running a pipeline on a specific environment"
   caption="Running a pipeline on a specific environment"
   max-width="60%"
@@ -808,8 +808,8 @@ Override environment variables for `dind-lv-monitor` daemonset if necessary:
 
 {% include image.html
   lightbox="true"
-  file="/images/administration/runner/codefresh_runner.png"
-  url="/images/administration/runner/codefresh_runner.png"
+  file="/images/runtime/runner/codefresh_runner.png"
+  url="/images/runtime/runner/codefresh_runner.png"
   alt="Codefresh Runner architecture overview"
   caption="Codefresh Runner architecture overview"
   max-width="100%"
@@ -871,8 +871,8 @@ Here is the architecture of the App-Proxy:
 
 {% include image.html
   lightbox="true"
-  file="/images/administration/runner/app-proxy-architecture.png"
-  url="/images/administration/runner/app-proxy-architecture.png"
+  file="/images/runtime/runner/app-proxy-architecture.png"
+  url="/images/runtime/runner/app-proxy-architecture.png"
   alt="How App Proxy and the Codefresh runner work together"
   caption="How App Proxy and the Codefresh runner work together"
   max-width="80%"
@@ -1411,8 +1411,8 @@ Configure the cluster to allow the Runner's default `StorageClass` to create the
 
 {% include image.html
   lightbox="true"
-  file="/images/administration/runner/rancher-cluster.png"
-  url="/images/administration/runner/rancher-cluster.png"
+  file="/images/runtime/runner/rancher-cluster.png"
+  url="/images/runtime/runner/rancher-cluster.png"
   alt="Drill into your cluster and click Edit Cluster on the right"
   caption="Drill into your cluster and click Edit Cluster on the right"
   max-width="100%"
@@ -1422,8 +1422,8 @@ Configure the cluster to allow the Runner's default `StorageClass` to create the
   
   {% include image.html
   lightbox="true"
-  file="/images/administration/runner/rancher-cluster-2.png"
-  url="/images/administration/runner/rancher-cluster-2.png"
+  file="/images/runtime/runner/rancher-cluster-2.png"
+  url="/images/runtime/runner/rancher-cluster-2.png"
   alt="Click Edit Cluster on the right in your cluster list"
   caption="Click Edit Cluster on the right in your cluster list"
   max-width="100%"
@@ -1434,8 +1434,8 @@ Configure the cluster to allow the Runner's default `StorageClass` to create the
   
   {% include image.html
   lightbox="true"
-  file="/images/administration/runner/rancher-edit-as-yaml.png"
-  url="/images/administration/runner/rancher-edit-as-yaml.png"
+  file="/images/runtime/runner/rancher-edit-as-yaml.png"
+  url="/images/runtime/runner/rancher-edit-as-yaml.png"
   alt="Cluster Options -> Edit as YAML"
   caption="Cluster Options -> Edit as YAML"
   max-width="100%"
@@ -1456,8 +1456,8 @@ rancher_kubernetes_engine_config:
 
 {% include image.html
   lightbox="true"
-  file="/images/administration/runner/rancher-kublet.png"
-  url="/images/administration/runner/rancher-kublet.png"
+  file="/images/runtime/runner/rancher-kublet.png"
+  url="/images/runtime/runner/rancher-kublet.png"
   alt="Add volume to rancher_kubernetes_engine_config.services.kublet.extra_binds"
   caption="Add volume to rancher_kubernetes_engine_config.services.kublet.extra_binds"
   max-width="100%"
@@ -1488,7 +1488,7 @@ There are two options to create a user:
   * Copy the Bearer Token field (combines Access Key and Secret Key).
   * Edit your `kubeconfig` and paste the Bearer Token you copied in the `token` field of your user.
  
- {% include image.html lightbox="true" file="/images/administration/runner/rancher-security.png" url="/images/administration/runner/rancher-security.png" alt="Create a cluster admin user for Codefresh" caption="Create a cluster admin user for Codefresh" max-width="100%" %}
+ {% include image.html lightbox="true" file="/images/runtime/runner/rancher-security.png" url="/images/runtime/runner/rancher-security.png" alt="Create a cluster admin user for Codefresh" caption="Create a cluster admin user for Codefresh" max-width="100%" %}
      
 
 #### Step 3: Install the Runner
