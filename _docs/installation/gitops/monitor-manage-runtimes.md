@@ -238,9 +238,10 @@ Pass the mandatory flags in the uninstall command:
 
 **GitOps CLI wizard uninstall**  
 
-1. In the Codefresh UI, on the toolbar, click the **Settings** icon, expand Runtimes in the sidebar, and select [**GitOps Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
+1. From Runtimes in the sidebar, select [**GitOps Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
 1. Switch to either the **List View** or to the **Topology View**.
-1. **List view**: On the top-right, select the three dots and then select **Uninstall**.
+1. **List view**: To the right of the runtime to delete, select the three dots and then select **Uninstall**.
 
   {% include
  image.html
@@ -291,8 +292,8 @@ Provisioned Runtimes require valid Git tokens at all times to authenticate Git a
 >These tokens are specific to the user, and the same can be used for multiple runtimes.
 
 There are two different situations when you need to update Git tokens:  
-* Update invalid, revoked, or expired tokens: Codefresh automatically flags Runtimes with such tokens. It is mandatory to update the Git tokens to continue working with the platform. 
-* Update valid tokens: Optional. You may want to update Git tokens, even valid ones, by deleting the existing token and replacing it with a new token.
+* Invalid, revoked, or expired tokens: Codefresh automatically flags Runtimes with such tokens. It is mandatory to update the Git tokens to continue working with the platform. 
+* Valid tokens: Optional. You may want to update Git tokens, even valid ones, by deleting the existing token and replacing it with a new token.
 
 The methods for updating any Git token are the same regardless of the reason for the update:  
 * OAuth2 authorization, if your admin has registered an OAuth Application for Codefresh
@@ -307,7 +308,7 @@ The methods for updating any Git token are the same regardless of the reason for
     The GitOps Runtimes page shows runtimes with invalid tokens prefixed by the key icon. Mouse over shows invalid token.
   * To update an existing token, go to [GitOps Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
 1. Select the GitOps Runtime for which to update the Git token.
-1. From the context menu with the additional actions at the top-right, select **Update Git Runtime token**.
+1. From the context menu at the right, select **Update Git Runtime Credentials**.
 
   {% include
  image.html
@@ -432,8 +433,8 @@ Online logs show up to 1000 of the most recent events (lines), updated in real t
 	lightbox="true" 
 	file="/images/runtime/runtime-logs-screen-view.png" 
 	url="/images/runtime/runtime-logs-screen-view.png" 
-	alt="Runtime component log example" 
-	caption="Runtime component log example"
+	alt="Online log example for runtime component" 
+	caption="Online log example for runtime component"
     max-width="50%" 
 %}
 
@@ -557,6 +558,7 @@ All you need to do is to configure the browser to trust the URL and receive cont
 
 1. Select **View Runtimes** to the right of the alert.  
   You are taken to the Runtimes page, where you can see insecure Runtimes tagged as **Allow Insecure**.
+  <!--- ask dev for help -->
   {% include
  image.html
  lightbox="true"
@@ -581,6 +583,8 @@ The Activity Log is a quick way to monitor notifications for Runtime events such
 1. In the Codefresh UI, on the top-right of the toolbar, select ![](/images/pipeline/monitoring/pipeline-activity-log-toolbar.png?display=inline-block) **Activity Log**.
 1. To see notifications for provisioned Runtimes, filter by **Runtime**.
 
+
+  <!--- ask dev for help -->
   {% include image.html
   lightbox="true"
   file="/images/runtime/runtime-activity-log.png"
@@ -606,7 +610,7 @@ Runtimes with sync errors display an **Out of sync** status in Sync Status colum
 **View errors**  
 For both views, select the Runtime, and then select **Errors Detected**.  
 Here is an example of health errors for a Runtime.
-
+  <!--- ask dev for help -->
     {% include image.html 
   lightbox="true"
   file="/images/runtime/runtime-health-sync-errors.png"

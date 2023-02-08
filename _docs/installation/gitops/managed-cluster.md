@@ -26,13 +26,14 @@ Optionally, to first generate the YAML manifests, and then manually apply them, 
 * For _Hosted GitOps_ Runtimes: [Configure access to these IP addresses]({{site.baseurl}}/docs/administration/platform-ip-addresses/)
 * Verify that:
   * Your Git personal access token is valid and has the [required scopes]({{site.baseurl}}/docs/reference/git-tokens) 
-  * You have installed the [latest version of the Codefresh CLI]({{site.baseurl}}/docs/clients/#upgrade-gitops-cli)
+  * You have the [latest version of the Codefresh CLI]({{site.baseurl}}/docs/installation/gitops/upgrade-gitops-cli/)
 
 **How to**  
 
-1. In the Codefresh UI, on the toolbar, click the **Settings** icon, expand Runtimes in the sidebar, and select [**GitOps Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
+1. From Runtimes in the sidebar, select [**GitOps Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
 1. From either the **Topology** or **List** views, select the Runtime to which to add the cluster. 
-1. Topology View: Select {::nomarkdown}<img src="../../../images/icons/add-cluster.png" display=inline-block/>{:/}.  
+1. Topology View: Select {::nomarkdown}<img src="../../../../images/icons/add-cluster.png" display=inline-block/>{:/}.  
   List View: Select the **Managed Clusters** tab, and then select **+ Add Cluster**.  
 1. In the Add Managed Cluster panel, copy and run the command:  
   `cf cluster add [runtime-name] [--labels label-key=label-value] [--annotations annotation-key=annotation-value][--dry-run]`  
