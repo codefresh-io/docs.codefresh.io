@@ -12,11 +12,11 @@ layout: home
         <div class="col-md-7 order-md-1 text-center mx-auto pr-md-5">
           <h2 class="mb-3 bd-text-white text-uppercase">
             {%- include icons/codefresh-dark.svg class="align-middle" width="180" height="auto" -%}
-            <span class="badge cf-badge cf-badge-doc align-middle">Documentation</span>
+            <span class="badge cf-badge cf-badge-doc align-middle">DOCUMENTATION</span>
           </h2>
           <p class="lead bd-text-white mb-4">
             Codefresh for Docker-native CI/CD and GitOps with Argo. <br>
-            Instantly build, test, and deploy Docker images.
+            Instantly build, test, and deploy Docker images.<br>
             Realize your true DevOps potential with the premier enterprise Argo software delivery solution.
           </p>
           <div>
@@ -26,11 +26,16 @@ layout: home
             </form>
           </div>
           <div class="d-flex flex-column flex-md-row justify-content-center lead mb-3">
-            <a href="{{ site.baseurl }}/docs/getting-started/quick-start/"
+            <a href="{{ site.baseurl }}/docs/quick-start/ci-quick-start/"
                class="btn btn-primary mb-3 mb-md-0 mr-md-3"
                onclick="ga('send', 'event', 'Jumbotron actions', 'Get started', 'Get started');">
-              Get started
+              Get started with CI/CD
             </a>
+            <a href="{{ site.baseurl }}/docs/quick-start/gitops-quick-start/"
+            class="btn btn-primary mb-3 mb-md-0 mr-md-3"
+            onclick="ga('send', 'event', 'Jumbotron actions', 'Get started', 'Get started');">
+           Get started with GitOps
+           </a>
             <a href="{{ site.codefresh_signup }}"
                class="btn btn-primary mb-3 mb-md-0 mr-md-3"
                onclick="ga('send', 'event', 'Main page actions', 'SignUp', 'SignUp');">
