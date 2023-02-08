@@ -353,7 +353,7 @@ The table describes the options for the `Rollout` resource.
 
 ### Related articles
 [Creating GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application)  
-[Home dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard)  
+[GitOps Overview dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard)  
 [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics)  
 
 

@@ -780,7 +780,7 @@ max-width="50%"
 
 [Creating GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application)  
 [Managing GitOps applications]({{site.baseurl}}/docs/deployments/gitops/manage-applications)  
-[Home dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard)  
+[GitOps Overview dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard)  
 [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)  
 
 

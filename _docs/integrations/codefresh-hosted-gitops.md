@@ -7,7 +7,7 @@ redirect_from:
 toc: true
 ---
 
-Integrate Codefresh CI pipelines with Hosted GitOps for deployments powered by managed Argo CD.  
+Integrate Codefresh  pipelines with Hosted GitOps for deployments powered by managed Argo CD.  
   
 
 Codefresh Hosted GitOps includes a dedicated report image step that both reports and enriches deployed images. Add the report image step in your Codefresh CI pipeline and reference integrations with issue-tracking and container registry tools for Codefresh to retrieve and enrich image information.  
@@ -37,7 +37,7 @@ max-width="70%"
 
 A set of dashboards provides visibility into all aspects of deployment:  
 
-* The Home dashboard presents enterprise-wide deployment highlights across runtimes and clusters.  
+* The GitOps Overview dashboard presents enterprise-wide deployment highlights across runtimes and clusters.  
   Get insights into important KPIs and deployments, all in the same location. View status of runtimes and managed clusters, deployments, failed deployments with rollbacks, most active applications.  Use filters to narrow the scope to focus on anything specific.  
 
   {% include 
@@ -45,8 +45,8 @@ image.html
 lightbox="true" 
 file="/images/integrations/codefresh-hosted-gitops/hosted-home-dashboard.png" 
 url="/images/integrations/codefresh-hosted-gitops/hosted-home-dashboard.png"
-caption="Home dashboard in Hosted GitOps"
-alt="Home dashboard in Hosted GitOps" 
+caption="GitOps Overview dashboard in Hosted GitOps"
+alt="GitOps Overview dashboard in Hosted GitOps" 
 max-width="70%" 
 %}
 

@@ -53,7 +53,7 @@
 - title: Dashboards & insights
   url: "/dashboards"
   pages:
-    - title: Home dashboard
+    - title: GitOps Overview dashboard
       url: "/home-dashboard"
     - title: DORA metrics
       url: "/dora-metrics"

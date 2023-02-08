@@ -152,4 +152,4 @@ Selecting **more details** for an image tag.
 [Creating GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application)  
 [Managing GitOps applications]({{site.baseurl}}/docs/deployments/gitops/manage-applications)  
 [Image enrichment for GitOps with integrations]({{site.baseurl}}/integrations/image-enrichment-overview)  
-[Home dashboard]({{site.baseurl}}/docs/dashboard/home-dashboard)  
+[GitOps Overview dashboard]({{site.baseurl}}/docs/dashboard/home-dashboard)  

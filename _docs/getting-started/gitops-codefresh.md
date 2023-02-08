@@ -69,7 +69,7 @@ See [Creating]({{site.baseurl}}/docs/deployments/gitops/create-application/) and
 
 
 Once deployed, our dashboards give you enterprise-wide visibility into deployments, and key metrics.
-From global analytics on applications and deployments (Home dashboard), to failure rate and lead time for changes (DORA dashboard), to application configuration, resource, and rollout management (Applications dashboard). 
+From global analytics on applications and deployments (), to failure rate and lead time for changes (DORA dashboard), to application configuration, resource, and rollout management (Applications dashboard). 
 
 See:  
 [Home]({{site.baseurl}}/docs/dashboards/home-dashboard/)  

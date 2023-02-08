@@ -732,7 +732,7 @@ Hosted GitOps supports hosted runtimes. The runtime is hosted on a Codefresh clu
 
 **Dashboards for visibility and traceability**  
 Here's a recap of Codefresh dashboards, including a brand new dashboard dedicated to DORA metrics:
-* Home dashboard: For global analytics and system-wide deployment highlights, start with the Home dashboard.  
+* GitOps Overview dashboard: For global analytics and system-wide deployment highlights, start with the GitOps Overview dashboard.  
 * DORA metrics: A _new_ dashboard for DORA metrics and DevOps quantification. Read more in [DORA metrics](#dora-metrics).  
 * Applications dashboard: Easily track deployments and visualize rollouts across clusters and runtimes in the Applications dashboard.  
  
@@ -940,7 +940,7 @@ When viewing logs for applications and workflows, you can now select the contain
 
 * Unable to view, access, and add SSO integrations.
 * Failure on sealing key management check.
-* Home dashboard: Most active pipelines and Delivery Pipelines displayed not aligned with the Time filter.
+* GitOps Overview dashboard: Most active pipelines and Delivery Pipelines displayed not aligned with the Time filter.
 * Incorrect sorting for workflow and pipeline lists.	
 
 
@@ -1228,7 +1228,7 @@ For details, see [Add and manage Git Sources]({{site.baseurl}}/docs/installation
 * Applications deleted from the Argo UI not removed from the Applications dashboard in Codefresh.
 * Back button in  Applications > Timeline tab does not work.
 * Hierarchy for AppSet application created in Argo CD not rendered correctly in Codefresh.
-* Most Active Applications list in the Home dashboard is incorrectly sorted.
+* Most Active Applications list in the GitOps Overview dashboard is incorrectly sorted.
 * Link to CI build on Service in Applications Dashboard is hard-coded to Workflows.
 * Add Application wizard creates invalid manifest.
 * Removing a resource from an application does not remove it from the application’s Current State list. 

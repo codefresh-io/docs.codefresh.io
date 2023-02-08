@@ -1,41 +1,41 @@
 ---
-title: "Global analytics dashboard"
+title: "GitOps Overview dashboard"
 description: ""
 group: dashboards
 toc: true
 ---
 
-Get a global picture of runtimes, managed clusters, deployments, and pipelines in the Home dashboard. The Home dashboard is displayed when you log in to Codefresh, providing system-wide visualization in real-time.  
+Get a global picture of runtimes, managed clusters, deployments, and applications in the GitOps Overview dashboard. Get system-wide visualization in real-time for GitOps.  
 
-Global filters allow you to narrow the scope of the data, and  drill down into specific entities for more details.
+Global filters allow you to narrow the scope of the data, and drill down into specific entities for more details.
 
   {% include 
    image.html 
    lightbox="true" 
-   file="/images/reporting/home-dashboard.png" 
-   url="/images/reporting/home-dashboard.png" 
-   alt="Home dashboard: Global enterprise analytics" 
-   caption="Home dashboard: Global enterprise analytics"
+   file="/images/reporting/gitops-overview-dashboard.png" 
+   url="/images/reporting/gitops-overview-dashboard.png" 
+   alt="GitOps Overview dashboard: Global enterprise analytics for GitOps" 
+   caption="GitOps Overview dashboard: Global enterprise analytics for GitOps"
    max-width="70%" 
    %}
 
 ### Global filters
-Filter the view in the Home dashboard by runtimes and date range.
+Filter the view in the GitOps Overview dashboard by runtimes and date range.
 
 {% include 
    image.html 
    lightbox="true" 
    file="/images/reporting/global-filters.png" 
    url="/images/reporting/global-filters.png" 
-   alt="Home dashboard: Global filters" 
-   caption="Home dashboard: Global filters"
+   alt="GitOps Overview dashboard: Global filters" 
+   caption="GitOps Overview dashboard: Global filters"
    max-width="60%" 
    %}
 
 ### Runtimes and Managed Clusters
 
 Identify the health of the runtimes and managed clusters in your enterprise.  
-Health status is displayed for both hosted (if you have Hosted GitOps), and hybrid runtimes.  
+Health status is displayed for both Hosted (if you have Hosted GitOps), and Hybrid runtimes.  
 
 Managed clusters are external clusters registered to runtimes to which you deploy applications and GitOps-managed resources.
 
@@ -44,8 +44,8 @@ Managed clusters are external clusters registered to runtimes to which you deplo
    lightbox="true" 
    file="/images/reporting/runtimes-clusters-widgets.png" 
    url="/images/reporting/runtimes-clusters-widgets.png" 
-   alt="Runtimes and Managed Clusters in the Home dashboard" 
-   caption="Runtimes and Managed Clusters in the Home dashboard"
+   alt="Runtimes and Managed Clusters in the GitOps Overview dashboard" 
+   caption="Runtimes and Managed Clusters in the GitOps Overview dashboard"
    max-width="80%" 
    %}
 
@@ -60,13 +60,15 @@ Managed clusters are external clusters registered to runtimes to which you deplo
 
 Identify trends for deployments.
 
+<!--- ask if to add here that only those changes that resulted in deployments are shown -->
+
  {% include 
    image.html 
    lightbox="true" 
    file="/images/reporting/deployments-widget.png" 
    url="/images/reporting/deployments-widget.png" 
-   alt="Deployments in the Home dashboard" 
-   caption="Deployments in the Home dashboard"
+   alt="Deployments in the GitOps Overview dashboard" 
+   caption="Deployments in the GitOps Overview dashboard"
    max-width="70%" 
    %}
 
@@ -90,8 +92,8 @@ Displays up to five of the most active applications and their current deployment
    lightbox="true" 
    file="/images/reporting/applications-widget.png" 
    url="/images/reporting/applications-widget.png" 
-   alt="Applications in the Home dashboard" 
-   caption="Applications in the Home dashboard"
+   alt="Applications in the GitOps Overview dashboard" 
+   caption="Applications in the GitOps Overview dashboard"
    max-width="70%" 
    %}
 
@@ -106,33 +108,7 @@ Displays up to five of the most active applications and their current deployment
 
 
 
-### Delivery Pipelines 
 
-> Delivery Pipline data is shown for hybrid enviroments.
-
-Displays all active pipelines for the selected date range, providing insights into trends for pipelines.  Active pipelines are those with at least one active or completed workflow.  
-Analytics are derived by comparing the selected date range to the corresponding reference period. If your date range is the last seven days, the reference period is the seven days that precede the date range.
-
-{% include 
-   image.html 
-   lightbox="true" 
-   file="/images/reporting/delivery-pipeline-widget.png" 
-   url="/images/reporting/delivery-pipeline-widget.png" 
-   alt="Delivery Pipelines in the Home dashboard" 
-   caption="Delivery Pipelines in the Home dashboard"
-   max-width="80%" 
-   %}
-
-{: .table .table-bordered .table-hover}
-
-| Item                    | Description   |
-| ------------------------| ---------------- |
-|**Pipelines**            | The number prefixed to the pipeline name indicates the change in position of the pipeline compared to the reference period. To drill down into a specific pipeline, click the pipeline.|
-|**Filter**               | The filters available to focus on the pipelines of interest:{::nomarkdown}<ul><li><b>Status</b>:<ul><li>Succeeded: Pipelines with workflows completed successfully.</li><li>Failed: Pipelines with workflows that failed.</li><li>Error: Pipelines with workflows that resulted in errors.</li></ul><li><b>Repository</b>: The Git repository or repositories tracked, with the events that triggered or ran the pipelines.</li><li><b>Event Type</b>: The Git or Calendar event or events by which to view pipelines. If you select Git push, only those pipelines configured to be run on Git push are displayed.</li> <li><b>Initiator</b>: The user who made the commit that triggered the event and caused the pipeline to run.</li></ul>{:/} |
-|**View**                  | Click to go to the Delivery Pipelines dashboard.    |
-|**KPI Averages**         | KPI averages for: {::nomarkdown}<ul><li>Success Rate: The average number of successful executions, in percentage.</li><li>Average Duration: The average length of time to complete execution, in mm:ss.</li> <li>Executions: The average number of times the pipeline was triggered, in percentage.</li><li>Committers: The number of users whose commits on the repository or repositories triggered the pipelines. User count is aggregated per user, so multiple commits from the same user are counted as a single commit.</li></ul> To see detailed day-to-day values, select a line chart.{:/}|
-|**Most Active Delivery Pipelines**      | Up to ten pipelines with the highest number of executions. The same KPIs are displayed, and compared to those in the reference period. |
-|**Longest Delivery Pipelines**      | Up to ten pipelines with the longest duration. The same KPIs are displayed, and compared to those in the reference period.  |
 
 ### Related articles
 [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)  
