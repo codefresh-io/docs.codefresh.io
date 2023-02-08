@@ -316,6 +316,6 @@ Optional. Integrate Codefresh with the third-party tools you use for CI to enric
 [Monitoring & managing GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/)  
 [Add Git Sources to runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
 [Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration)  
-[Home dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/)   
+[GitOps Overview dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/)   
 [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)
 

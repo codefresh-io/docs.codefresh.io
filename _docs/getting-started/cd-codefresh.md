@@ -107,8 +107,8 @@ To bridge this gap, Codefresh also offers an Environment dashboard that combines
 
 See [Environment dashboard]({{site.baseurl}}/docs/deployments/kubernetes/environment-dashboard/). 
 
-**Global Analytics (Home) dashboard**  
-The Home dashboard presents system-wide highlights in real-time for GitOps deployments, making it an ideal tool for management.
+**GitOps Overview dashboard**  
+The GitOps Overview dashboard presents system-wide highlights in real-time for GitOps deployments, making it an ideal tool for management.
 Get insights into important KPIs for entities across runtimes and clusters, in the same location. View status of runtimes and managed clusters, deployments, failed deployments with rollbacks, most active applications, and Delivery Pipelines.
 See [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/).
 
