@@ -580,6 +580,7 @@ export MONGODB_ROOT_PASSWORD=$(kubectl get secret --namespace codefresh cf-mongo
 ```
 
 Forward the MongoDB service port for the new stateful set and place the process in the background:
+
 (**Note!** Default service address was changed)
 ```shell
 kubectl port-forward --namespace codefresh svc/cf-mongodb 27017:27017 &
