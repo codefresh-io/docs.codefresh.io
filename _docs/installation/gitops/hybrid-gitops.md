@@ -57,6 +57,8 @@ There are two parts to installing a Hybrid GitOps Runtime:
 
 ## Ingress controller configuration
 
+You need to configure ingress controllers only if your runtime uses an ingress controller. Codefresh offers tunnel-based runtimes which do not require ingress controllers. See **Access Mode** in [Runtime flags](#runtime-flags) and [Tunnel-based runtime flags](#tunnel-based-runtime-flags).
+
 ### Ambassador ingress configuration
 For detailed configuration information, see the [Ambassador ingress controller documentation](https://www.getambassador.io/docs/edge-stack/latest/topics/running/ingress-controller){:target="\_blank"}.  
 
