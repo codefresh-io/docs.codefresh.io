@@ -521,7 +521,6 @@ It will create a k8s Job with PVC and run `pg_dump` and `pg_restore` during the 
 
 ```yaml
 postgresql:
-  ...
   migration:
     # enable the migration Job (pre-upgrade and post-upgrade hooks)
     enabled: true
@@ -606,7 +605,6 @@ It will create a k8s Job with PVC and run `mongodump` and `mongorestore` during 
 
 ```yaml
 mongodb:
-  ...
   migration:
     # enable the migration Job (pre-upgrade and post-upgrade hooks)
     enabled: true
