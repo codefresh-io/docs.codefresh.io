@@ -458,7 +458,7 @@ builder:
 
 ### Upgrade to 1.4.0 and higher
 
-> `kcfi` tool has been upgraded to [0.5.18](https://github.com/codefresh-io/kcfi/releases/tag/0.5.18) version
+> Update `kcfi` tool to the latest [0.5.18](https://github.com/codefresh-io/kcfi/releases/tag/0.5.18) version
 
 This major release **deprecates** the following Codefresh managed charts and replaces them with Bitnami charts:
 * [Postgresql](#update-configuration-for-postgresql-chart)
