@@ -522,15 +522,15 @@ It will create a k8s Job with PVC and run `pg_dump` and `pg_restore` during the 
 ```yaml
 postgresql:
   migration:
-    # enable the migration Job (pre-upgrade and post-upgrade hooks)
+    ## enable the migration Job (pre-upgrade and post-upgrade hooks)
     enabled: true
-    # specify Storage Class for PVC which will store the backup (by default will use the default SC on your k8s cluster)
+    ## specify Storage Class for PVC which will store the backup (by default will use the default SC on your k8s cluster)
     # storageClass: standard
-    # specify PVC size (default size is 8Gi, make sure to adjust the size to the current config `postgresql.persistence.size` value)
+    ## specify PVC size (default size is 8Gi, make sure to adjust the size to the current config `postgresql.persistence.size` value)
     # pvcSize: 8Gi
-    # set Job to use an existing PVC
+    ## set Job to use an existing PVC
     existingClaim: ""
-    # set nodeSelector/tolerations/resources for the Job
+    ## set nodeSelector/tolerations/resources for the Job
     nodeSelector: {}
     tolerations: []
     resources: {}
@@ -606,15 +606,15 @@ It will create a k8s Job with PVC and run `mongodump` and `mongorestore` during 
 ```yaml
 mongodb:
   migration:
-    # enable the migration Job (pre-upgrade and post-upgrade hooks)
+    ## enable the migration Job (pre-upgrade and post-upgrade hooks)
     enabled: true
-    # specify Storage Class for PVC which will store the backup (by default will use the default SC on your k8s cluster)
+    ## specify Storage Class for PVC which will store the backup (by default will use the default SC on your k8s cluster)
     # storageClass: standard
-    # specify PVC size (default size is 8Gi, make sure to adjust the size to the current config `mongodb.persistence.size` value)
+    ## specify PVC size (default size is 8Gi, make sure to adjust the size to the current config `mongodb.persistence.size` value)
     # pvcSize: 8Gi
-    # set Job to use an existing PVC
+    ## set Job to use an existing PVC
     existingClaim: ""
-    # set nodeSelector/tolerations/resources for the Job
+    ## set nodeSelector/tolerations/resources for the Job
     nodeSelector: {}
     tolerations: []
     resources: {}
