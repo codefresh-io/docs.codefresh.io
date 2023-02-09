@@ -372,11 +372,6 @@ redis:
 This major release **deprecates** the following Codefresh managed charts:
 * Consul
 * Nats
-* cf-runner
-
-#### CF-Runner chart deprecation
-
-From version **1.3.0 and higher** `cf-runner` subchart is deprecated. It was used to run [launch-composition](https://codefresh.io/docs/docs/codefresh-yaml/steps/launch-composition/) step-type. If you were using this step in your pipelines, replace it with [composition](https://codefresh.io/docs/docs/codefresh-yaml/steps/composition/) or [service containers](https://codefresh.io/docs/docs/codefresh-yaml/service-containers/).
 
 #### Update configuration for Consul
 From version **1.3.0 and higher**, we have deprecated the Codefresh-managed `consul` chart,  in favor of Bitnami public `bitnami/consul` chart. For more information, see [bitnami/consul](https://github.com/bitnami/charts/tree/master/bitnami/consul).
@@ -460,6 +455,173 @@ builder:
   insecureRegistries:
   - "myregistrydomain.com:5000"
 ```
+
+### Upgrade to 1.4.0 and higher
+This major release **deprecates** the following Codefresh managed charts and replaces them with Bitnami charts:
+* [Postgresql](#update-configuration-for-postgresql-chart)
+* [Mongodb](#update-configuration-for-mongodb-chart)
+
+Read both instructions prior the upgrade.
+
+#### Update configuration for Postgresql chart
+From version **1.4.0 and higher**, we have deprecated support for the `Codefresh-managed Postgresql` chart. Bitnami public `bitnami/postgresql` chart has replaced the `Codefresh-managed postgresql`. For more information, see [bitnami/postgresql](https://github.com/bitnami/charts/tree/master/bitnami/postgresql).
+
+> If you run [**external** Postgresql service]({{site.baseurl}}/docs/administration/codefresh-on-prem/#configuring-an-external-postgres-database) (i.e. `postgresql.enabled=false` is specified in `config.yaml`), you can skip the following instruction.
+
+##### Manual backup and restore
+
+**Before the upgrade:**
+
+Obtain the PostgresSQL administrator password:
+```shell
+export PGPASSWORD=$(kubectl get secret --namespace codefresh cf-postgresql -o jsonpath="{.data.postgres-password}" | base64 --decode)
+```
+
+Forward the PostgreSQL service port and place the process in the background:
+```shell
+kubectl port-forward --namespace codefresh svc/cf-postgresql 5432:5432 &
+```
+
+Create a directory for the backup files and make it the current working directory:
+```shell
+mkdir psqlbackup
+chmod o+w psqlbackup
+cd psqlbackup
+```
+
+Back up the contents of audit database to the current directory using the *pg_dump* tool. If this tool is not installed on your system, use [Bitnami's PostgreSQL Docker image](https://github.com/bitnami/containers/tree/main/bitnami/postgresql) to perform the backup, as shown below:
+```shell
+docker run --rm --name postgresql-backup -e PGPASSWORD=$PGPASSWORD -v $(pwd):/app --net="host" bitnami/postgresql:13 pg_dump -Fc --dbname audit -h host.docker.internal -p 5432 -f /app/audit.dump
+```
+
+Here, the *--net* parameter lets the Docker container use the host's network stack and thereby gain access to the forwarded port. The *pg_dump* command connects to the PostgreSQL service and creates backup files in the */app* directory, which is mapped to the current directory (*psqlbackup/*) on the Docker host with the *-v* parameter. Finally, the *--rm* parameter deletes the container after the *pg_dump* command completes execution.
+
+**After the upgrade:**
+
+Create an environment variable with the password for the new stateful set:
+```shell
+export PGPASSWORD=$(kubectl get secret --namespace codefresh cf-postgresql -o jsonpath="{.data.postgres-password}" | base64 --decode)
+```
+
+Forward the PostgreSQL service port for the new stateful set and place the process in the background:
+```shell
+kubectl port-forward --namespace codefresh svc/cf-postgresql 5432:5432
+```
+
+Restore the contents of the backup into the new release using the *pg_restore* tool. If this tool is not available on your system, mount the directory containing the backup files as a volume in Bitnami's PostgreSQL Docker container and use the *pg_restore* client tool in the container image to import the backup into the new cluster, as shown below:
+```shell
+cd psqlbackup
+docker run --rm --name postgresql-backup -e PGPASSWORD=$PGPASSWORD -v $(pwd):/app --net="host" bitnami/postgresql:13 pg_restore --Fc --create --dbname postgres -h host.docker.internal -p 5432 /app/audit.dump
+```
+
+##### Backup and restore via Helm hooks
+
+It’s is also possible to run Postgresql database migration with `pre-upgrade` and `post-upgrade` helm hooks. To enable it, set `postgresql.migration.enabled=true` (specify additional parameters if necessary).
+It will create a k8s Job with PVC and run `pg_dump` and `pg_restore` during the upgrade.
+
+```yaml
+postgresql:
+  migration:
+    ## enable the migration Job (pre-upgrade and post-upgrade hooks)
+    enabled: true
+    ## specify Storage Class for PVC which will store the backup (by default will use the default SC on your k8s cluster)
+    # storageClass: standard
+    ## specify PVC size (default size is 8Gi, make sure to adjust the size to the current config `postgresql.persistence.size` value)
+    # pvcSize: 8Gi
+    ## set Job to use an existing PVC
+    existingClaim: ""
+    ## set nodeSelector/tolerations/resources for the Job
+    nodeSelector: {}
+    tolerations: []
+    resources: {}
+```
+
+> It's strongly recommended to create a **MANUAL** backup prior the upgrade!
+
+#### Update configuration for Mongodb chart
+
+From version **1.4.0 and higher**, we have deprecated support for the `Codefresh-managed MongoDB` chart. Bitnami public `bitnami/mongodb` chart has replaced the `Codefresh-managed MongoDB`. For more information, see [bitnami/mongodb](https://github.com/bitnami/charts/tree/master/bitnami/mongodb).
+
+> If you run [**external** MongoDB service]({{site.baseurl}}/docs/administration/codefresh-on-prem/#configuring-an-external-mongodb) (i.e. `mongo.enabled=false` is specified in `config.yaml`), you can skip the following instruction.
+
+##### Manual backup and restore
+
+**Before the upgrade:**
+
+Obtain the MongoDB administrator password:
+```shell
+export MONGODB_ROOT_PASSWORD=$(kubectl get secret --namespace codefresh cf-mongodb -o jsonpath="{.data.mongodb-root-password}" | base64 --decode)
+```
+
+Forward the MongoDB service port and place the process in the background:
+```shell
+kubectl port-forward --namespace codefresh svc/mongodb 27017:27017 &
+```
+
+Create a directory for the backup files and make it the current working directory:
+```shell
+mkdir mongobackup
+chmod o+w mongobackup
+cd mongobackup
+```
+
+Back up the contents of all the databases to the current directory using the monogodump tool. If this tool is not installed on your system, use [Bitnami's MongoDB Docker image](https://github.com/bitnami/containers/tree/main/bitnami/mongodb) to perform the backup, as shown below:
+```shell
+docker run --rm --name mongodb-backup -v $(pwd):/app --net="host" bitnami/mongodb:4.2 mongodump --host="host.docker.internal:27017" -u root -p $MONGODB_ROOT_PASSWORD -o /app
+```
+
+Here, the *--net* parameter lets the Docker container use the host's network stack and thereby gain access to the forwarded port. The *mongodump* command connects to the MongoDB service and creates backup files in the */app* directory, which is mapped to the current directory (*mongobackup/*) on the Docker host with the *-v* parameter. Finally, the *--rm* parameter deletes the container after the *mongodump* command completes execution.
+
+**After the upgrade:**
+
+Create an environment variable with the password for the new stateful set:
+```shell
+export MONGODB_ROOT_PASSWORD=$(kubectl get secret --namespace codefresh cf-mongodb -o jsonpath="{.data.mongodb-root-password}" | base64 --decode)
+```
+
+Forward the MongoDB service port for the new stateful set and place the process in the background:
+
+(**Note!** Default service address was changed)
+```shell
+kubectl port-forward --namespace codefresh svc/cf-mongodb 27017:27017 &
+```
+
+Restore the contents of the backup into the new release using the *mongorestore* tool. If this tool is not available on your system, mount the directory containing the backup files as a volume in Bitnami's MongoDB Docker container and use the *mongorestore* client tool in the container image to import the backup into the new cluster, as shown below:
+```shell
+cd mondgobackup
+docker run --rm --name mongodb-backup -v $(pwd):/app --net="host" bitnami/mongodb:4.2 mongorestore --host="host.docker.internal:27017" -u root -p $MONGODB_ROOT_PASSWORD /app
+```
+
+Stop the service port forwarding by terminating the background process.
+
+Connect to the new stateful set and confirm that your data has been successfully restored:
+```shell
+kubectl run --namespace codefresh mongodb-new-client --rm --tty -i --restart='Never' --image docker.io/bitnami/mongodb:4.2 --command -- mongo codefresh --host cf-mongodb --authenticationDatabase admin -u root -p $MONGODB_ROOT_PASSWORD --eval "db.accounts.find()"
+```
+
+##### Backup and restore via Helm hooks
+
+It’s is also possible to run MongoDB database migration with `pre-upgrade` and `post-upgrade` helm hooks. To enable it, set `mongodb.migration.enabled=true` (specify additional parameters if necessary).
+It will create a k8s Job with PVC and run `mongodump` and `mongorestore` during the upgrade.
+
+```yaml
+mongodb:
+  migration:
+    ## enable the migration Job (pre-upgrade and post-upgrade hooks)
+    enabled: true
+    ## specify Storage Class for PVC which will store the backup (by default will use the default SC on your k8s cluster)
+    # storageClass: standard
+    ## specify PVC size (default size is 8Gi, make sure to adjust the size to the current config `mongodb.persistence.size` value)
+    # pvcSize: 8Gi
+    ## set Job to use an existing PVC
+    existingClaim: ""
+    ## set nodeSelector/tolerations/resources for the Job
+    nodeSelector: {}
+    tolerations: []
+    resources: {}
+```
+
+> It's strongly recommended to create a **MANUAL** backup prior the upgrade!
 
 ### Upgrade the Codefresh Platform with [kcfi](https://github.com/codefresh-io/kcfi)
 
