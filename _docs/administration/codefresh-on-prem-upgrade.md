@@ -540,7 +540,7 @@ postgresql:
 
 #### Update configuration for Mongodb chart
 
-From version **1.4.0 and higher**, we have deprecated support for the `Codefresh-managed MongoDB` chart. Bitnami public `bitnami/mongodb` chart has replaced the `Codefresh-managed mongoDB`. For more information, see [bitnami/mongodb](https://github.com/bitnami/charts/tree/master/bitnami/mongodb).
+From version **1.4.0 and higher**, we have deprecated support for the `Codefresh-managed MongoDB` chart. Bitnami public `bitnami/mongodb` chart has replaced the `Codefresh-managed MongoDB`. For more information, see [bitnami/mongodb](https://github.com/bitnami/charts/tree/master/bitnami/mongodb).
 
 > If you run [**external** MongoDB service]({{site.baseurl}}/docs/administration/codefresh-on-prem/#configuring-an-external-mongodb) (i.e. `mongo.enabled=false` is specified in `config.yaml`), you can skip the following instruction.
 
