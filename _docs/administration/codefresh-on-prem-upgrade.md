@@ -473,19 +473,16 @@ From version **1.4.0 and higher**, we have deprecated support for the `Codefresh
 **Before the upgrade:**
 
 Obtain the PostgresSQL administrator password:
-
 ```shell
 export PGPASSWORD=$(kubectl get secret --namespace codefresh cf-postgresql -o jsonpath="{.data.postgres-password}" | base64 --decode)
 ```
 
 Forward the PostgreSQL service port and place the process in the background:
-
 ```shell
 kubectl port-forward --namespace codefresh svc/cf-postgresql 5432:5432 &
 ```
 
 Create a directory for the backup files and make it the current working directory:
-
 ```shell
 mkdir psqlbackup
 chmod o+w psqlbackup
@@ -493,7 +490,6 @@ cd psqlbackup
 ```
 
 Back up the contents of audit database to the current directory using the *pg_dump* tool. If this tool is not installed on your system, use [Bitnami's PostgreSQL Docker image](https://github.com/bitnami/containers/tree/main/bitnami/postgresql) to perform the backup, as shown below:
-
 ```shell
 docker run --rm --name postgresql-backup -e PGPASSWORD=$PGPASSWORD -v $(pwd):/app --net="host" bitnami/postgresql:13 pg_dump -Fc --dbname audit -h host.docker.internal -p 5432 -f /app/audit.dump
 ```
@@ -503,19 +499,16 @@ Here, the *--net* parameter lets the Docker container use the host's network sta
 **After the upgrade:**
 
 Create an environment variable with the password for the new stateful set:
-
 ```shell
 export PGPASSWORD=$(kubectl get secret --namespace codefresh cf-postgresql -o jsonpath="{.data.postgres-password}" | base64 --decode)
 ```
 
 Forward the PostgreSQL service port for the new stateful set and place the process in the background:
-
 ```shell
 kubectl port-forward --namespace codefresh svc/cf-postgresql 5432:5432
 ```
 
 Restore the contents of the backup into the new release using the *pg_restore* tool. If this tool is not available on your system, mount the directory containing the backup files as a volume in Bitnami's PostgreSQL Docker container and use the *pg_restore* client tool in the container image to import the backup into the new cluster, as shown below:
-
 ```shell
 cd psqlbackup
 docker run --rm --name postgresql-backup -e PGPASSWORD=$PGPASSWORD -v $(pwd):/app --net="host" bitnami/postgresql:13 pg_restore --Fc --create --dbname postgres -h host.docker.internal -p 5432 /app/audit.dump
