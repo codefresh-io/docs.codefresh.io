@@ -6,9 +6,9 @@ sub_group: gitops
 toc: true
 ---
 
-You need the Codefresh CLI to install Hybrid GitOps Runtimes, and have access to all the newest features. 
+You need the Codefresh CLI to install and upgrade Hybrid GitOps Runtimes, and get access to all the newest features. 
 For the initial download, you need to generate an API key and create the API authentication context, which you do from the UI.  
-When newer versions are available, the CLI automatically notifies you through a banner. You can use the existing API credentials for the upgrade. 
+When newer versions are available, the CLI automatically notifies you through a banner that an upgrade is required. You can use the existing API credentials for the upgrade. 
 
 
 ## GitOps CLI installation modes
@@ -23,8 +23,8 @@ The table lists the modes available to install the GitOps CLI.
 |              | Linux - ARM  |  `curl -L --output - https://github.com/codefresh-io/cli-v2/releases/latest/download/cf-linux-arm64.tar.gz | tar zx && mv ./cf-linux-arm64 /usr/local/bin/cf && cf version`|     
 | `brew` | N/A| `brew tap codefresh-io/cli && brew install cf2`|````
 
-## Install the GitOps CLI
-Install the GitOps CLI using the option that best suits you: `curl`, `brew`, or standard download.  
+## Download the GitOps CLI
+Download the GitOps CLI using the option that best suits you: `curl`, `brew`, or standard download.  
 If you are not sure which OS to select for `curl`, simply select one, and Codefresh automatically identifies and selects the right OS for CLI installation.
 
 1. Do one of the following:
@@ -40,10 +40,10 @@ If you are not sure which OS to select for `curl`, simply select one, and Codefr
     {% include 
    image.html 
    lightbox="true" 
-   file="/images/getting-started/quick-start/quick-start-download-cli.png" 
-   url="/images/getting-started/quick-start/quick-start-download-cli.png" 
-   alt="Download CLI to install runtime" 
-   caption="Download CLI to install runtime"
+   file="/images/runtime/gitops-cli-download.png" 
+   url="/images/runtime/gitops-cli-download.png" 
+   alt="Download GitOps CLI" 
+   caption="Download GitOps CLIe"
    max-width="30%" 
    %} 
 
@@ -55,15 +55,15 @@ If you are not sure which OS to select for `curl`, simply select one, and Codefr
 
 ## Upgrade the GitOps CLI
 
-The Codefresh CLI automatically self-checks its version, and if a newer version is available, prints a banner with the notification.  
+The GitOps CLI automatically self-checks its version, and if a newer version is available, prints a banner with the notification that upgrade is required.  
 
  {% include
     image.html
   lightbox="true"
   file="/images/runtime/cli-upgrade-banner.png"
   url="/images/runtime/cli-upgrade-banner.png"
-  alt="Upgrade banner for Codefresh CLI"
-  caption="Upgrade banner for Codefresh CLI"
+  alt="Upgrade banner for GitOps CLI"
+  caption="Upgrade banner for GitOps CLI"
   max-width="40%"
   %}
 
