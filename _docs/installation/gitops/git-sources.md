@@ -38,9 +38,10 @@ Create Git Sources for any provisioned Runtime.  The Git Sources are available t
 
 >Make sure you are in the List View to create Git Sources. 
 
-1. In the Codefresh UI, go to [GitOps Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes**){:target="\_blank"}.
-1. In the List View, select the Runtime for which to add a Git Source, and then select the **Git Sources** tab.  
-1. Select **Create Git Sources**, and in the Create Git Source panel, define the definitions for the Git Source: 
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
+1. From Runtimes in the sidebar, select [GitOps Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes**){:target="\_blank"}.
+1. In the List View, select the Runtime for which to add a Git Source, and then click the **Git Sources** tab.  
+1. Click **Create Git Sources**, and in the Create Git Source panel, define the definitions for the Git Source: 
 
      {% include 
 	image.html 
@@ -67,15 +68,17 @@ Create Git Sources for any provisioned Runtime.  The Git Sources are available t
 	For GLOB guidelines and examples, see this [article](https://deepsource.io/blog/glob-file-patterns/){:target="\_blank"}.
 
 {:start="4"}
-1. Select **+ Create Git Source**.
+1. Click **+ Create Git Source**.
 
 ## Edit Git Source definitions
-Edit an existing Git Source by changing the source and destination definitions.  
+Edit an existing Git Source by changing the source and destination definitions, and included/excluded files.  
 > You cannot change the name of the Git Source.
 
-1. In the Codefresh UI, go to [GitOps Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes**){:target="\_blank"}.
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
+1. From Runtimes in the sidebar, select [GitOps Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes**){:target="\_blank"}.
 1. From the **List View** (the default), select the Runtime with the Git Source, and then select the **Git Sources** tab.  
-1. In the row with the Git Source to edit, select the three dots, and then select **Edit** in the panel that appears.
+1. In the row with the Git Source to edit, from the context menu select **Details**.
+1. In the panel that appears, click **Edit**.
 
 {% include 
 	image.html 
@@ -87,23 +90,25 @@ Edit an existing Git Source by changing the source and destination definitions.
     max-width="30%" 
 %}
 {:start="4"}
-1. Change the **Source** and **Destination** definitions for the Git Source, and select **Save**. 
+1. Update **Source**, **Destination**, and **Include** and **Exclude** definitions for the Git Source, and select **Save**. 
 
+<!--- 
 ## View/download logs for a Git Source
 View online logs for any Git Source associated with a Runtime, and if needed, download the log file for offline viewing and analysis.
 Online logs show up to 1000 of the most recent events (lines), updated in real time. Downloaded logs include all the events, from the application launch to the date and time of download. 
 
-1. In the Codefresh UI, go to [GitOps Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes**){:target="\_blank"}.
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
+1. From Runtimes in the sidebar, select [GitOps Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes**){:target="\_blank"}.
 1. From the **List View** (the default), select the Runtime with the Git Source, and then select the **Git Sources** tab.  
-1. In the row with the Git Source for which to view/download logs, select the three dots, and then select **View Logs**.
+1. In the row with the Git Source for which to view/download logs, from the context menu select **View Logs**.
 
 {% include 
 	image.html 
 	lightbox="true" 
 	file="/images/runtime/git-source-view-logs.png" 
 	url="/images/runtime/git-source-view-logs.png" 
-	alt="Edit Git Source" 
-	caption="Edit Git Source"
+	alt="View Logs option for Git Source" 
+	caption="View Logs option for Git Source"
     max-width="60%" 
 %}
 
@@ -117,14 +122,15 @@ Online logs show up to 1000 of the most recent events (lines), updated in real t
 	lightbox="true" 
 	file="/images/runtime/git-source-logs-screen.png" 
 	url="/images/runtime/git-source-logs-screen.png" 
-	alt="View logs for Git Source" 
-	caption="View logs for Git Source"
+	alt="Logs for Git Source" 
+	caption="Logs for Git Source"
     max-width="50%" 
 %}
 
 {:start="5"}
 1. To download the log, click **Download**.  
   The file is downloaded with `.log` extension.
+-->
 
 ## Related articles
 [Monitoring & managing GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/)  
