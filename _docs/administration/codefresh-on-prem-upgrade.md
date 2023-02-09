@@ -458,8 +458,8 @@ builder:
 
 ### Upgrade to 1.4.0 and higher
 This major release **deprecates** the following Codefresh managed charts and replaces them with Bitnami charts:
-* Postgresql(#update-configuration-for-postgresql-chart)
-* Mongodb(#update-configuration-for-mongodb-chart)
+* [Postgresql](#update-configuration-for-postgresql-chart)
+* [Mongodb](#update-configuration-for-mongodb-chart)
 
 Read both instructions prior the upgrade.
 
