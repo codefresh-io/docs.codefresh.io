@@ -33,8 +33,8 @@ Verify the following:
 {% include
 image.html
 lightbox="true"
-file="/images/runtime/hosted-initial-view.png"
-url="/images/runtime/hosted-initial-view.png"
+file="/images/runtime/hosted-gitops-initial-view.png"
+url="/images/runtime/hosted-gitops-initial-view.png"
 alt="Hosted GitOps setup"
 caption="Hosted GitOps setup"
 max-width="80%"
