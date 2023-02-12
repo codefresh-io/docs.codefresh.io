@@ -98,7 +98,7 @@ The default view for image resources shows repository and deployment information
 |  Legend          |  Description|  
 | --------------   | --------------           |  
 | **1**            | The name of the image.   |                            
-| **2**            | The applications in which the image is currently deployed. Select the application to go to the Applications dashboard.|  
+| **2**            | The applications in which the image is currently deployed. Select the application to go to the GitOps Apps dashboard.|  
 | **3**            | The details on the most recent commit associated with the image. Select the commit to view the changes in the Git repository.|
 | **4**            | Binary information on the image.|
 | **5**            | The registry to which the image is pushed, and from which it is distributed.|

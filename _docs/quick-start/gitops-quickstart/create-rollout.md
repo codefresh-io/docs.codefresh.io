@@ -38,10 +38,10 @@ template:
 {:start="3"}
 1. Commit the change.
 
-### View the rollout in the Applications dashboard
+### View the rollout in the GitOps Apps dashboard
 When the image tag is updated, the auto-sync initiates the rollout. 
 
-1. Go back to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard?sort=desc-lastUpdated){:target="\_blank"}.  
+1. Go back to the [GitOps Apps dashboard](https://g.codefresh.io/2.0/applications-dashboard?sort=desc-lastUpdated){:target="\_blank"}.  
 1. Select the application you created.  
   The deployment entry for the application is displayed as progressing.
 

@@ -26,7 +26,7 @@ Application creation and deployment is one part of the continuous deployment/del
 
 
 ### Edit application definitions 
-Update General or Advanced configuration settings for a deployed application through the Configuration tab. Once the application is deployed to the cluster, the Configuration tab is available on selecting the application in the Applications dashboard. 
+Update General or Advanced configuration settings for a deployed application through the Configuration tab. Once the application is deployed to the cluster, the Configuration tab is available on selecting the application in the GitOps Apps dashboard. 
 
 > You cannot change application definitions (the application name and the selected runtime), and the Git Source selected for the application.
 
@@ -67,7 +67,7 @@ Update General or Advanced configuration settings for a deployed application thr
 {:start="4"}
 1. Do one of the following:
    * To _commit all changes_, click **Commit**. This final commit screen is displayed with a diff view of the changes.  
-   * To _undo all changes_ and return to the previous settings, click **Discard Changes**. This action removes all the changes you have made so far and returns you to the Applications dashboard.
+   * To _undo all changes_ and return to the previous settings, click **Discard Changes**. This action removes all the changes you have made so far and returns you to the GitOps Apps dashboard.
 
    >If you change settings and then restore existing values for the same, Codefresh automatically removes the Commit and Discard Changes buttons as there are no new changes to commit or discard. 
 
@@ -216,13 +216,13 @@ For example, if you made changes to `api` resources or `audit` resources, type `
 {:/}
 
 ### Delete an application
-Delete an application from Codefresh. Deleting an application deletes the manifest from the Git repository, and then from the cluster where it is deployed. When deleted from the cluster, the application is removed from the Applications dashboard in Codefresh.
+Delete an application from Codefresh. Deleting an application deletes the manifest from the Git repository, and then from the cluster where it is deployed. When deleted from the cluster, the application is removed from the GitOps Apps dashboard in Codefresh.
  
 >**Prune resources** in the application's General settings determines the scope of the delete action.  
 When selected, both the application and its resources are deleted. When cleared, only the application is deleted. For more information, review [Sync settings]({{site.baseurl}}/docs/deployments/gitops/create-application/#sync-settings).  
 Codefresh warns you of the implication of deleting the selected application in the Delete form. 
 
-1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
+1. In the Codefresh UI, from Ops in the sidebar, select [GitOps Apps](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
 1. Select the application to delete.
 1. Click the three dots for additional actions, and select **Delete**.
   
@@ -259,7 +259,7 @@ Control ongoing rollouts by resuming indefinitely paused steps, promoting rollou
 {:/}
 
 #### Pause/resume ongoing rollouts
-Pause and resume ongoing rollouts directly from the Timeline tab in the Applications dashboard.  
+Pause and resume ongoing rollouts directly from the Timeline tab in the GitOps Apps dashboard.  
 If the rollout is already automatically paused as result of a step definition, this action pauses the rollout even after the pause duration.
 
 

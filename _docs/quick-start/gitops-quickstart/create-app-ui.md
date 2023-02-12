@@ -16,7 +16,7 @@ For detailed information, see [Create an application]({{site.baseurl}}/docs/depl
 **How to**  
 
 
-1. In the Codefresh UI, go to the [Applications](https://g.codefresh.io/2.0/applications-dashboard?sort=desc-lastUpdated){:target="\_blank"} dashboard.
+1. In the Codefresh UI, from Ops in the sidebar, select [GitOps Apps](https://g.codefresh.io/2.0/applications-dashboard?sort=desc-lastUpdated){:target="\_blank"} dashboard.
 1. Select **Add Application** on the top-right.
 1. In the Add Application panel, add definitions for the application:
   * **Application name**: `codefresh-guestbook` for the quick start.

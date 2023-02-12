@@ -19,7 +19,7 @@ Codefresh provides all the options and functionality to create and manage Argo C
   For example Argo CD applications, see this [repo](https://github.com/oleksandr-codefresh/argocd-example-apps){:target="_blank"}.
 
 * Edit and delete applications
-  Once the application is created and synced to the cluster, it is displayed in the Applications dashboard. Here, you can select an application to update the application's configuration settings, or delete it.  
+  Once the application is created and synced to the cluster, it is displayed in the GitOps Apps dashboard. Here, you can select an application to update the application's configuration settings, or delete it.  
   To monitor the health and sync status, deployments, and resources for the application, see [Monitoring GitOps applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/).  
 
 ## Application: Definitions
@@ -139,7 +139,7 @@ For example applications, go to the [Argo CD example applications repo](https://
 <br />
 
 ## Create an application
-Create a new application from the Applications dashboard with the Add Application wizard. 
+Create a new application from the GitOps Apps dashboard with the Add Application wizard. 
 Edit the manifest directly in YAML mode, or define the settings in the Form mode. Toggle between the modes as convenient. You can also edit the YAML manifest directly at all stages, after defining configuration settings, and before the final commit.
 
 **Before you begin**  
