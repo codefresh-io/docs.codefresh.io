@@ -24,7 +24,7 @@ Fill out this survey before the installation to make sure your on-prem environme
 {: .table .table-bordered .table-hover}
 | Item                     | Requirement            |  
 | --------------         | --------------           |  
-|Kubernetes cluster      | Server versions v1.19 through v1.22. {::nomarkdown}<br><b>Note</b>: Maintenance support for Kubernetes v1.19 ended on Oct 28, 2021.{:/}|
+|Kubernetes cluster      | Server versions v1.22+. {::nomarkdown}Minimum node sizes:<ul><li>Single node: 8 CPU core and 16GB RAM</li><li>Multi node: master(s) + 3 nodes with 4 CPU core and 8GB RAM (24 GB in total)</li>{:/}|
 |Operating systems|{::nomarkdown}<ul><li>Windows 10/7</li><li>Linux</li><li>OSX</li>{:/}|
 |Node requirements| {::nomarkdown}<ul><li>Memory: 5000 MB</li><li>CPU: 2</li></ul>{:/}|
 |Git providers    |{::nomarkdown}<ul><li>GitHub: SaaS and on-premises versions</li><li>Bitbucket: SaaS and Bitbucket server (on-premises) 5.4.0 version and above</li><li>GitLab: SaaS and on-premise versions (API v4 only)</li></ul>{:/}|
