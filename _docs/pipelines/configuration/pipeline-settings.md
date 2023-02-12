@@ -43,6 +43,30 @@ caption="Pause Build Execution pipeline setting enabled"
 max-width="80%"
 %}
 
+## Enabling cluster-contexts for pipelines
+By default, all pipelines in the account can access all clusters integrated with Codefresh. Restrict pipeline access to clusters by enabling cluster-injection for individual pipelines in the account.
+
+Selectively restricting access to clusters for a pipeline:  
+* Enhances security by restricting access to users from different teams. 
+* Reduces the overall duration of the build by shortening the initialization phase.
+  Codefresh authenticates the credentials of every cluster that the pipeline accesses during the initialization phase. This action affects build duration for accounts with large numbers of clusters. 
+
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
+1. From Configuration in the sidebar, select [**Pipeline Settings**](https://g.codefresh.io/account-admin/account-conf/pipeline-settings){:target="\_blank"}. 
+1. Toggle **Kubernetes cluster context pipeline injection** to ON.
+
+{% include image.html
+lightbox="true"
+file="images/pipeline/pipeline-settings/pipeline-inject-cluster-accnt-setting.png"
+url="/images/pipeline/pipeline-settings/pipeline-inject-cluster-accnt-setting.png"
+alt="Enabling cluster contexts for injection into pipelines"
+caption="Enabling cluster contexts for injection into pipelines"
+max-width="60%"
+%}
+
+You can then select specific clusters for individual pipelines, through the **Kubernetes cluster** option in the [Pipeline's Policies section]({{site.baseurl}}/docs/pipelines/pipelines/#policies).
+
+
 ## Template section
 
 Here you can define global template behavior. The options are:
