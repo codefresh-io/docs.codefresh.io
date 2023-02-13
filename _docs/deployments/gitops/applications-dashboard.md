@@ -512,14 +512,14 @@ max-width="30%"
 Each deployment record displays the complete CI history for that deployment.
 
 
-* The **CI Builds** shows the image(s) created or updated during deployment. Click to see the **Images** view in a new browser window.
+* The **CI Builds** shows the Argo Workflow run in the deployment. Click the build name to see the Argo Workflow in a new browser window.
 * The **Pull Request (PRs)** used for the commit.
 * The Jira **Issues** the PR aims to resolve or has resolved, with the current status.
 * The **Committer** who made the changes.
 
 
-### Monitor updated resources by deployment
-Each deployment record also identifies the resources that were changed (created, updated, or removed) as part of that deployment in **Updated Resources**. You can trace the history of a resource, from the original to their final versions. For each version, you can see the actual change or changes through the Diff view. The Full View shows the complete resource manifest, with the diff view of the changes, while the Compact View shows only those lines with the changes. 
+### Monitor updated applications by deployment
+Each deployment record also identifies the applications that were changed (created, updated, or removed) as part of that deployment in **Updated Applications**. You can trace the history, from the original to their final versions. For each version, you can see the actual change or changes through the Diff view. The Full View shows the complete resource manifest, with the diff view of the changes, while the Compact View shows only those lines with the changes. 
 
 > For detailed information on the current state of a resource, switch to the Current State tab and click the resource node. See [Monitoring application resources](#monitor-resources-for-selected-application).
 
@@ -564,9 +564,13 @@ max-width="70%"
 
 
 
+
+
 ### Monitor rollouts by deployment
 A rollout is initiated when there is an Argo CD sync due to a change in the desired state.  
-Visualize ongoing and completed rollouts by deployments in **Services**. 
+Visualize ongoing and completed rollouts by deployments in **Updated Services**. 
+
+Clicking the image name displays the image in the **Images** dashboard. 
 
 > To view and manage a rollout, you must have an Argo `rollout` resource defined for your application, and [install Argo Rollouts in the cluster]({{site.baseurl}}/docs/deployments/gitops/install-argo-rollouts).  
 

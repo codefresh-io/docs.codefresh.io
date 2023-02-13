@@ -25,7 +25,7 @@ Application creation and deployment is one part of the continuous deployment/del
 
 
 
-### Edit application definitions 
+## Edit application definitions 
 Update General or Advanced configuration settings for a deployed application through the Configuration tab. Once the application is deployed to the cluster, the Configuration tab is available on selecting the application in the GitOps Apps dashboard. 
 
 > You cannot change application definitions (the application name and the selected runtime), and the Git Source selected for the application.
@@ -89,7 +89,7 @@ Update General or Advanced configuration settings for a deployed application thr
 <br><br>
 {:/}
 
-### Manually synchronize an application
+## Manually synchronize an application
 Manually synchronize an application to expedite Git-to-cluster sync.  The sync options selected for manual sync override the sync options defined for the application.  
 The sync options, grouped into Revision and Additional Settings, are identical to the Sync options in the General settings when you created the application. 
 
@@ -124,7 +124,7 @@ The sync options, grouped into Revision and Additional Settings, are identical t
 <br>
 {:/}
 
-#### Revision settings for application sync
+### Revision settings for application sync
 Revision settings determine the behavior for the branch you select.  
 
 **Revision** 
@@ -146,9 +146,9 @@ When selected, orphans the dependents of a deleted resource during the sync oper
 <br>
 {:/}
 
-#### Additional Options for application sync
+### Additional Options for application sync
 
-##### Sync Options
+#### Sync Options
 
 * **Skip schema validation**  
   When selected, bypasses validating the YAML schema.  
@@ -161,7 +161,7 @@ When selected, orphans the dependents of a deleted resource during the sync oper
 * **Respect ignore differences**  
   When selected, Argo CD omits resources defined for the `spec.ignoreDifferences` attribute from the sync. Otherwise, Argo CD implements the desired state ad-hoc during the sync operation. See [Respect ignore difference configs](https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#respect-ignore-difference-configs){:target="\_blank"}.
 
-##### Prune propagation policy
+#### Prune propagation policy
 {::nomarkdown}Defines how resources are pruned, applying Kubernetes cascading deletion prune policies. 
 Read more at <a href="https://kubernetes.io/docs/concepts/architecture/garbage-collection/#cascading-deletion" target="_blank">Kubernetes - Cascading deletion</a>.<ul><li><b>Foreground</b>: The default prune propagation policy used by Argo CD. With this policy, Kubernetes changes the state of the owner resource to `deletion in progress`, until the controller deletes the dependent resources and finally the owner resource itself. </li><li><b>Background</b>: When selected, Kubernetes deletes the owner resource immediately, and then deletes the dependent resources in the background.</li><li><b>Orphan</b>: When selected, Kubernetes deletes the dependent resources that remain orphaned after the owner resource is deleted.</li></ul> </br>{:/}
 All Prune propagation policies can be used with:  
@@ -179,7 +179,7 @@ All Prune propagation policies can be used with:
 <br>
 {:/}
 
-#### Synchronize resources
+### Synchronize resources
 Synchronize Resource options allow you to selectively sync application resources. You can bypass sync settings at the application level, and directly select the resources you want to sync, by state or otherwise.  
 * All resources regardless of their sync states
 * Only out-of-sync resources
@@ -215,7 +215,7 @@ For example, if you made changes to `api` resources or `audit` resources, type `
 <br><br>
 {:/}
 
-### Delete an application
+## Delete an application
 Delete an application from Codefresh. Deleting an application deletes the manifest from the Git repository, and then from the cluster where it is deployed. When deleted from the cluster, the application is removed from the GitOps Apps dashboard in Codefresh.
  
 >**Prune resources** in the application's General settings determines the scope of the delete action.  
@@ -251,14 +251,14 @@ Codefresh warns you of the implication of deleting the selected application in t
 {:start="4"}
 1. To confirm, click **Commit & Delete**.
 
-### Manage rollouts for deployments
+## Manage rollouts for deployments
 Control ongoing rollouts by resuming indefinitely paused steps, promoting rollouts, aborting, restarting and retrying rollouts.  
 
 {::nomarkdown}
 <br>
 {:/}
 
-#### Pause/resume ongoing rollouts
+### Pause/resume ongoing rollouts
 Pause and resume ongoing rollouts directly from the Timeline tab in the GitOps Apps dashboard.  
 If the rollout is already automatically paused as result of a step definition, this action pauses the rollout even after the pause duration.
 
@@ -282,7 +282,7 @@ If the rollout is already automatically paused as result of a step definition, t
 <br>
 {:/}
 
-#### Manage an ongoing rollout with the Rollout Player
+### Manage an ongoing rollout with the Rollout Player
 Manage an ongoing rollout using the controls in the Rollout Player to skip steps, and promote rollouts.
 
 1. In the Codefresh UI, from Ops in the sidebar, select [GitOps Apps](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
@@ -317,7 +317,20 @@ The table describes the controls in the Rollout Player.
 <br>
 {:/}
 
-#### Manage the `rollout` resource
+### Manually rollback completed rollout to previous revision
+<!--- add screenshots -->
+Manually rollback a completed rollout to a previous revision when and if needed. If after a successful analysis run and rollout, your application is not functioning as it should, you can rollback to a prior revision from the Rollout’s revision history. The revision depth is determined by the `spec.revisionHistoryLimit` parameter in the [Rollout Specification](https://argoproj.github.io/argo-rollouts/features/specification/#rollout-specification){:target="\_blank"}.
+Manual rollback changes the live state of the rollout resource to the state in the previous commit that you select.
+
+1. In the Codefresh UI, from Ops in the sidebar, select [GitOps Apps](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
+1. Select the application and select the **Timeline** tab.
+1. Click the name of the rollout to rollback.
+1. From the **Choose version to Rollabck** dropdown, select the revision to rollback to.
+1. Review the changes in the revision. 
+1. In the Rollout Player, click **Rollback to**.
+
+
+### Manage the `rollout` resource
 
 Control the rollout through the options available for the Rollout resource. 
 
@@ -351,7 +364,7 @@ The table describes the options for the `Rollout` resource.
 
 
 
-### Related articles
+## Related articles
 [Creating GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application)  
 [GitOps Overview dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard)  
 [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics)  
