@@ -21,10 +21,9 @@ max-width="60%"
 %}
 
     
-Monitor the current [health and sync status of applications](#identify-applications-with-warningserrors), and then select an application to drill down into its resources, deployments, and services:  
-* Use application header for  
+Identify applications with [health and sync errors](#identify-applications-with-warningserrors), and then select an application to drill down into its resources, deployments, and services:  
+* [Get status from application header](#get-status-from-application-header)
 * [View deployment and configuration info for selected application](#view-deployment-and-configuration-info-for-selected-application)
-* [Monitor health and sync statuses for selected application](#monitor-health-and-sync-statuses-for-selected-application)
 * [Monitor resources for selected application](#monitor-resources-for-selected-application)
 * [Monitor deployments for selected application](#monitor-deployments-for-selected-application)
 * [Monitor services for selected application](#monitor-services-for-selected-application)
@@ -120,10 +119,10 @@ Applications with `rollout` resources need Argo Rollouts on the target cluster, 
 * To stop the sync operation, click **Terminate**. 
 * Drill down into the application to investigate the issue and make changes.
 
-## Use application header for latest status info
-When you select an application from the GitOps Apps dashboard, the application header is displayed at the top of the page. 
-The app header gathers and displays critical information about the application, regardless of the tab selected.   
-For example, it displays the health, current and previous sync operation results, and indicates if auto-sync is enabled or disabled for the application. The **More** links open panels with detailed information.  
+## Get status from application header
+When you select an application from the GitOps Apps dashboard, the application header is displayed at the top of the page with important information on the application. 
+Once you select an application, the quickest option to monitor statuses is through the application header which is always displayed, no matter what tab you navigate to.    
+For example, it displays the health, current and previous sync operation results, and indicates if auto-sync is enabled or disabled for the application. Sync statuses also have **More** links that display details such as the date, tags, and message. 
 
 {% include
 image.html
@@ -132,8 +131,11 @@ file="/images/applications/application-header.png"
 url="/images/applications/application-header.png"
 alt="Application header for selected application"
 caption="Application header for selected application"
-max-width="60%"
+max-width="80%"
 %}
+
+>Tip:  
+  You can also view the current health and sync status for the application as a resource in the Current State tab. 
 
 ## View deployment and configuration info for selected application
 
@@ -152,7 +154,7 @@ file="/images/applications/quick-view-context-menu.png"
 url="/images/applications/quick-view-context-menu.png"
 alt="Selecting Quick View from the context menu"
 caption="Selecting Quick View from the context menu"
-max-width="50%"
+max-width="80%"
 %} 
 
   * Select the application, and from the application header's context menu on the right, select **Details**.
@@ -164,7 +166,7 @@ file="/images/applications/app-header-view-details.png"
 url="/images/applicationsapp-header-view-details.png"
 alt="View app details from the application header context menu"
 caption="View app details from the application header context menu"
-max-width="50%"
+max-width="80%"
 %}
 
   * Select the application, and in the Current State tab, click the parent application resource.
@@ -176,7 +178,7 @@ file="/images/applications/quick-view-access-app-resource.png"
 url="/images/applications/quick-view-access-app-resource.png"
 alt="Accessing Quick View from the Current State tab"
 caption="Accessing Quick View from the Current State tab"
-max-width="50%"
+max-width="60%"
 %} 
 
 The Quick View includes the following tabs:  
@@ -189,34 +191,7 @@ The Quick View includes the following tabs:
 * Events: Displays status and sync events for the application.
 
 
-## Monitor health and sync statuses for selected application
-Monitor the health status of the selected application, the current sync status, and the result of the previous sync operation.  
-Once you select an application, the quickest option to monitor statuses is through the application header which is always displayed, no matter what tab you navigate to.  
 
-{% include
-image.html
-lightbox="true"
-file="/images/applications/app-header-health-sync-status.png"
-url="/images/applications/app-header-health-sync-status.png"
-alt="Application header with health and sync status"
-caption="Application header with health and sync status"
-max-width="100%"
-%}
-
-Sync statuses also have **More** links that display details such as the date, tags, and message.
-
-{% include
-image.html
-lightbox="true"
-file="/images/applications/app-header-sync-details.png"
-url="/images/applications/app-header-sync-details.png"
-alt="Sync details panel on clicking More"
-caption="Sync details panel on clicking More"
-max-width="40%"
-%}
-
->Tip:  
-  You can also view the current health and sync status for the application as a resource in the Current State tab. 
 
 
 ## Monitor resources for selected application
@@ -232,7 +207,7 @@ file="/images/applications/app-resources-monitor-screen.png"
 url="/images/applications/app-resources-monitor-screen.png"
 alt="Monitor application resources in Current State tab"
 caption="Monitor application resources in Current State tab"
-max-width="50%"
+max-width="60%"
 %}
 
 The icon for a resource node identifies the type of Kubernetes resource it represents. For general information on K8s resources, see [Working with Kubernetes objects](https://kubernetes.io/docs/concepts/overview/working-with-objects/){:target="\_blank"}. 
@@ -282,7 +257,7 @@ max-width="50%"
 
 #### Working with resources in Tree view
 The Tree view is designed to impart key information at a glance. Review the sections that follow for pointers to quickly get to what you need in the Tree view.
-
+<!--- 
 **Context menu**  
 Every resource has a context menu that opens on clicking the three dots on the right of the node. The options available differ according to the type of resource.
 
@@ -294,7 +269,7 @@ url="/images/applications/current-state-resource-context-menu.png"
 alt="Current State Tree view: Resource context menu"
 caption="Current State Tree view: Resource context menu"
 max-width="50%"
-%}
+%}  -->
 
 **Resource info**  
 Mouse over a node to see a tooltip for that resource. For detailed information, select the resource.
@@ -325,37 +300,22 @@ max-width="50%"
 
 
 **Resource inventory**   
-The Resource inventory in the Tree view (bottom-left), summarizes the aggregated count for each resource type in the application.  
-For visibility and quick access, `Syncing` and `Out-of-Sync` resources are bucketed separately. 
-
-{::nomarkdown}
-<br>
-{:/}
+The Resource inventory in the Tree view (bottom-left), summarizes the aggregated count for each resource type in the application.  The number of `out-of-sync` items for that resource type if any are numbered in red.  
 
 Click-filters:  
 
-In the resource inventory, selecting a `Syncing` or `Out-of-Sync` resource type, filters the Current State by that resource type and sync status.
-These filters are automatically applied  to the default filter list for both Tree and List views. 
+Selecting any resource type, filters the Current State by that resource type and sync status.
+These filters are automatically applied to the default filter list for both Tree and List views. 
 Here's an example of an application with out-of-sync resources, and the result on selecting an out-of-sync resource type.
 
 
 {% include
 image.html
 lightbox="true"
-file="/images/applications/current-state-tree-resource-list.png"
-url="/images/applications/current-state-tree-resource-list.png"
-alt="Current State Tree view: Resource inventory"
-caption="Current State Tree view: Resource inventory"
-max-width="50%"
-%}
-
-{% include
-image.html
-lightbox="true"
 file="/images/applications/current-state-tree-resource-filtered.png"
 url="/images/applications/current-state-tree-resource-filtered.png"
-alt="Current State Tree view: Resource inventory filtered by out-of-sync service"
-caption="Current State Tree view: Resource inventory filtered by out-of-sync service"
+alt="Current State Tree view: Resource inventory filtered by Rollouts"
+caption="Current State Tree view: Resource inventory filtered by Rollouts"
 max-width="50%"
 %}
 
@@ -406,7 +366,7 @@ Identify the health of an application resource through the color-coded border an
 | **Healthy**     | Resource is functioning as required. | {::nomarkdown}<img src="../../../../images/icons/current-state-healthy.png" display=inline-block">{:/} | 
 | **Progressing** | Resource is not healthy but can become healthy before the timeout occurs.| {::nomarkdown}<img src="../../../../images/icons/current-state-progressing.png" display=inline-block">{:/} | 
 | **Suspended**   | Resource is not functioning, and is either suspended or paused. For example, Cron job or a canary rollout.| {::nomarkdown}<img src="../../../../images/icons/current-state-suspended.png" display=inline-block">{:/} | 
-| **Missing**     | Resource is not present on the cluster. |{::nomarkdown}<img src="../../../images/icons/current-state-missing.png" display=inline-block">{:/} |                        
+| **Missing**     | Resource is not present on the cluster. |{::nomarkdown}<img src="../../../../images/icons/current-state-missing.png" display=inline-block">{:/} |                        
 | **Degraded**    | Resource is not healthy, or a timeout occurred before it could reach a healthy status.| {::nomarkdown}<img src="../../../../images/icons/current-state-degraded.png" display=inline-block/>{:/} |
 | **Unknown**   | Resource does not have a health status, or the health status is not tracked in Argo CD. For example,`ConfigMaps` resource types.   | {::nomarkdown}<img src="../../../../images/icons/current-state-unknown.png" display=inline-block">{:/} | 
 
@@ -657,11 +617,11 @@ max-width="50%"
  
 The table lists the controls in the Rollout Player to manage an ongoing rollout.
 
-{}: .table .table-bordered .table-hover}
+{: .table .table-bordered .table-hover}
 | Rollback player option   | Description |  
 | --------------  | ------------| 
 | **Rollback**      | Not available currently.  | 
-| **Resume** {::nomarkdown}<img src=".../../../../images/icons/rollout-resume.png" display=inline-block"> {:/}| Resume a step that has been paused indefinitely. | 
+| **Resume** {::nomarkdown}<img src="../../../../images/icons/rollout-resume.png" display=inline-block"> {:/}| Resume a step that has been paused indefinitely. | 
 | **Skip step** {::nomarkdown}<img src="../../../../images/icons/rollout-skip-step.png" display=inline-block"> {:/}  | Skip execution of current step. Such steps are marked as Skipped in the rollout visualization. | 
 | **Promote full rollout** {::nomarkdown}<img src="../../../../images/icons/rollout-promote-full.png" display=inline-block"> {:/}   | Skip remaining pause, traffic routing, and analysis steps, and deploy the current release. |                        
 
