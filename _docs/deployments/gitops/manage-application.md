@@ -179,7 +179,7 @@ All Prune propagation policies can be used with:
 <br>
 {:/}
 
-### Synchronize resources
+### Synchronize resources in the application
 Synchronize Resource options allow you to selectively sync application resources. You can bypass sync settings at the application level, and directly select the resources you want to sync, by state or otherwise.  
 * All resources regardless of their sync states
 * Only out-of-sync resources
