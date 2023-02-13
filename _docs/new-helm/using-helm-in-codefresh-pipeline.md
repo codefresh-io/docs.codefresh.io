@@ -54,9 +54,6 @@ caption="Name of Kubernetes cluster"
 max-width="70%" 
 %}
 
-<!--- If you are still using Helm 2 make sure also that your Kubernetes cluster has the server part of Helm installed (called Tiller). 
-The easiest way to do that is to run `helm init` from the command shell of your cloud provider or
-any other terminal that has access to your cluster via `kubectl`. This process is not needed if you use Helm 3.  -->
 
 To verify that your cluster is setup for Helm select the *Helm Releases* item from the left sidebar in the Codefresh UI. You should see the [Helm releases]({{site.baseurl}}/docs/new-helm/helm-releases-management/) in your cluster or an empty screen if you just started using Helm. 
 
