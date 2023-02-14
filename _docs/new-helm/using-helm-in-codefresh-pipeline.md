@@ -71,7 +71,7 @@ Once you have Helm repositories connected to Codefresh, you can import one or mo
 
 1. Click the **Variables** tab on the right sidebar, and then click the **Settings** (gear) icon.  
 1. Click **Import from shared configuration**, and select the Helm context or contexts to import into the pipeline:  
-  * To import a single context, which is the general requirement, select the `CF_HELM_DEFAULT`[shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/).
+  * To import a single context, select the context. The `CF_HELM_DEFAULT` is the default Helm rep provided by Codefresh. See also [shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/).
   * To import multiple contexts, select each context to import.  
 
 {% include image.html 
@@ -119,12 +119,16 @@ The Helm step can operate in one of three modes:
 
 1. install: Installs the Helm chart into a Kubernetes cluster. This is the default mode, if a mode is not explicitly set.
 1. push: Packages the Helm chart and pushes it to the repository.
-1. authentication only: Only sets up authentication and adds the repo to the helm. This is useful if you want to write your own helm commands using the freestyle step's `commands` property, but you still want the step to handle authentication.
+1. authentication: Sets up authentication, and adds one or more repos to the helm. This is useful if you want to write your own helm commands using the freestyle step's `commands` property, but you still want the step to handle authentication. 
 
 The operation mode is set by the `action` field, where the value can be `install`/`push`/`auth`.
 
-If you have imported multiple Helm contexts into the same pipeline, for the `install` and `push` actions you need to define the primary Helm context to use through the `primary_helm_context` argument.  
-For the `auth` action, if the chart has dependencies on other repos, then to authenticate the referenced repos, you need to add  `use_repos_for_auth_action: 'true'`.  
+**Multiple Helm contexts for pipeline**  
+
+If you have imported multiple Helm contexts into the same pipeline:  
+* For the `install` and `push` actions, you need to define the primary Helm context to use through the `primary_helm_context` argument.  
+* For the `auth` action, to use the repos from the helm contexts imported into the pipeline,  add  `use_repos_for_auth_action: 'true'`. Otherwise, imported contexts, if any, are ignored for the `auth` action. 
+
 For a description of these and other arguments, see [Configuration](#configuration).
 
 
@@ -253,15 +257,15 @@ helm_repository_context | The name of the Helm repository integration configured
 helm_version|optional|version of [cfstep-helm image](https://hub.docker.com/r/codefresh/cfstep-helm/tags)
 kube_context|required for install|Kubernetes context to use. The name of the cluster as [configured in Codefresh]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/)
 namespace|optional|Target Kubernetes namespace to deploy to
-primary_helm_context |required for `install` and `push` actions  |The Helm context to use for the Helm command when the pipeline has multiple Helm contexts. When omitted, the repo most recently added to the pipeline is used.
-release_name|required for `install`|Helm release name. If the release exists, it will be upgraded
+primary_helm_context |optional |Required for `install` and `push` actions when the pipeline has multiple Helm contexts. The Helm context to use for the Helm command. When omitted, the repo most recently added to the pipeline is used.
+release_name|used for `install`|The Helm release name. If the release exists, it is upgraded.
 repos|optional|array of custom repositories
 set_file | optional | Set values from the respective files specified by the command line in `key=value` format. To specify multiple key-value pairs, separate them with commas.
 skip_cf_stable_helm_repo | optional | Don't add stable repository.
 tiller_namespace|optional|Kubernetes namespace where Tiller is installed (unnecessary for Helm 3)
 timeout | optional | The maximum time, in seconds, to wait for Kubernetes commands to complete.
 use_debian_image | optional | Use Debian-based `cfstep-helm` image.
-use_repos_for_auth_action |optional  | Required if the chart has dependencies on other repos that need to be authenticated. Set `true`.
+use_repos_for_auth_action |optional  | Required for the `auth` action to use repos from attached contexts. When required, set value to `true`.
 wait |optional | When specified, waits until all pods are in state `ready` to mark the release as successful. Otherwise, release is marked as successful when the minimum number of pods are `ready` and the Services have IP addresses. 
 
 ## Full Helm pipeline example
