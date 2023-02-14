@@ -67,11 +67,12 @@ You will need to connect your repository with Codefresh as described [here]({{si
 
 ### Step 4 (optional) - Import Helm configuration(s) into your pipeline definition
 
-Once you have single or multiple Helm repositories connected to Codefresh, you can attach one or more them to the pipeline. 
-Do this by opening the advanced options (the gear icon) in the variables section in the right sidebar. 
-Then click on *Import from shared configuration* and select the Helm context or contexts to import into the pipeline:
+Once you have Helm repositories connected to Codefresh, you can import one or more of them into the pipeline. This step is needed in pipelines that actually upload/fetch Helm charts from/to Helm repositories. If you have a pipeline that directly installs a Helm chart from the Git filesystem, there is no need to import a Helm configuration.
+
+1. Click the **Variables** tab on the right sidebar, and then click the **Settings** (gear) icon.  
+1. Click **Import from shared configuration**, and select the Helm context or contexts to import into the pipeline:  
   * To import a single context, which is the general requirement, select the `CF_HELM_DEFAULT`[shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/).
-  * To import multiple contexts, select each context to add.  
+  * To import multiple contexts, select each context to import.  
 
 {% include image.html 
 lightbox="true" 
@@ -82,10 +83,9 @@ caption="Connecting a Helm repository in the pipeline"
 max-width="50%" 
 %}
 
-You can also click on *Add shared configuration* directly from the three dots menu for the same functionality.
-This concludes the Helm setup for Codefresh. Now you can use the Helm freestyle step in the pipeline `codefresh.yml` file.
+> You can also click on *Add shared configuration* directly from the three dots menu for the same functionality.
 
-Note that this step is only needed in pipelines that actually upload/fetch Helm charts from/to Helm repositories. If you have a pipeline that directly installs a Helm chart from the git filesystem, there is no need to import a Helm configuration.
+This concludes the Helm setup for Codefresh. Now you can use the Helm freestyle step in the pipeline `codefresh.yml` file.
 
 
 
@@ -117,13 +117,13 @@ deploy:
 
 The Helm step can operate in one of three modes:
 
-1. install: Install the Helm chart into a Kubernetes cluster. This is the default mode if not explicitly set.
+1. install: Installs the Helm chart into a Kubernetes cluster. This is the default mode, if a mode is not explicitly set.
 1. push: Packages the Helm chart and pushes it to the repository.
 1. authentication only: Only sets up authentication and adds the repo to the helm. This is useful if you want to write your own helm commands using the freestyle step's `commands` property, but you still want the step to handle authentication.
 
 The operation mode is set by the `action` field, where the value can be `install`/`push`/`auth`.
 
-For the `install` and `push` actions, if you have imported multiple Helm contexts into the same pipeline, you need to define the primary Helm context to use through the `primary_helm_context` argument.  
+If you have imported multiple Helm contexts into the same pipeline, for the `install` and `push` actions you need to define the primary Helm context to use through the `primary_helm_context` argument.  
 For the `auth` action, if the chart has dependencies on other repos, then to authenticate the referenced repos, you need to add  `use_repos_for_auth_action: 'true'`.  
 For a description of these and other arguments, see [Configuration](#configuration).
 
@@ -239,7 +239,7 @@ Notes:
 
 Name|Required|Description
 ---|---|---
-action|defaults to 'install'|Operation mode: `install`/`push`/`auth`
+action|defaults to `install'|Operation mode: `install`/`push`/`auth`
 chart_name|required for install/push|Chart reference to use, adhering to Helm's lookup rules (path to chart folder, or name of packaged chart). There's no need to prefix with `/reponame` if referencing a chart in a repository, this is handled automatically. a.k.a `CHART_NAME` but `CHART_NAME` shouldn't be used anymore.
 chart_repo_url|optional|Helm chart repository URL. If a [Helm repository configuration](#step-4-optional---import-the-helm-configuration-in-your-pipeline-definition) is attached to the pipeline, this setting is ignored
 chart_subdir |optional | The subfolder where the chart is located in the JFrog Artifactory Helm repository.
