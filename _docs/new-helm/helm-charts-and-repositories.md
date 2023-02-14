@@ -33,9 +33,9 @@ For more details on adding extra Helm repositories see the [Helm integration pag
 
 ## Using Helm Repositories in a Codefresh pipeline
 
-Once you have set up Helm integrations in Codefresh, you can inject single or multiple Helm repository contexts into your pipelines. 
-Select the **Import from shared configuration** option in the "Environment Variables" section, and then select the Helm repository or Helm repositories to inject into the pipeline.  
-The repository settings are injected as environment variables into the pipeline so you can use them as you wish. 
+Once you have set up Helm integrations in Codefresh, you can import single or multiple Helm repository contexts into your pipelines. 
+Select the **Import from shared configuration** option in the "Environment Variables" section, and then select the Helm repository or Helm repositories to import into the pipeline.  
+The repository settings are imported as environment variables into the pipeline, to use as needed. 
 
 
 {% include image.html 
@@ -48,7 +48,7 @@ max-width="70%"
 %}
 
 If you are using the Helm step, the step uses the Helm repository context's settings to automatically connect to your authenticated repository.  
-If the pipeline has multiple Helm repository contexts, then you must specify the primary repsoitory context.   
+If the pipeline has multiple Helm repository contexts, then you must specify the primary repository context.   
 
 For more info on the Codefresh Helm step, see [Using Helm in Codefresh pipelines]({{site.baseurl}}/docs/new-helm/using-helm-in-codefresh-pipeline/).
 

@@ -71,7 +71,7 @@ Once you have Helm repositories connected to Codefresh, you can import one or mo
 
 1. Click the **Variables** tab on the right sidebar, and then click the **Settings** (gear) icon.  
 1. Click **Import from shared configuration**, and select the Helm context or contexts to import into the pipeline:  
-  * To import a single context, select the context. The `CF_HELM_DEFAULT` is the default Helm rep provided by Codefresh. See also [shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/).
+  * To import a single context, select the context. The `CF_HELM_DEFAULT` is the Helm repo provided by Codefresh. See also [shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/).
   * To import multiple contexts, select each context to import.  
 
 {% include image.html 
@@ -262,7 +262,7 @@ release_name|used for `install`|The Helm release name. If the release exists, it
 repos|optional|array of custom repositories
 set_file | optional | Set values from the respective files specified by the command line in `key=value` format. To specify multiple key-value pairs, separate them with commas.
 skip_cf_stable_helm_repo | optional | Don't add stable repository.
-tiller_namespace|optional|Kubernetes namespace where Tiller is installed (unnecessary for Helm 3)
+tiller_namespace|optional|Kubernetes namespace where Tiller is installed (unnecessary for Helm 3).
 timeout | optional | The maximum time, in seconds, to wait for Kubernetes commands to complete.
 use_debian_image | optional | Use Debian-based `cfstep-helm` image.
 use_repos_for_auth_action |optional  | Required for the `auth` action to use repos from attached contexts. When required, set value to `true`.
