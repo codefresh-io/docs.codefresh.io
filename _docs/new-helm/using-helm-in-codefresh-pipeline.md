@@ -241,32 +241,33 @@ Notes:
 
 ## Configuration
 
-Name|Required|Description
----|---|---
-action|defaults to `install'|Operation mode: `install`/`push`/`auth`
-chart_name|required for install/push|Chart reference to use, adhering to Helm's lookup rules (path to chart folder, or name of packaged chart). There's no need to prefix with `/reponame` if referencing a chart in a repository, this is handled automatically. a.k.a `CHART_NAME` but `CHART_NAME` shouldn't be used anymore.
-chart_repo_url|optional|Helm chart repository URL. If a [Helm repository configuration](#step-4-optional---import-the-helm-configuration-in-your-pipeline-definition) is attached to the pipeline, this setting is ignored
-chart_subdir |optional | The subfolder where the chart is located in the JFrog Artifactory Helm repository.
-chart_version|optional|Override or set the chart version
-cmd_ps|optional|Command Postscript - this will be appended as is to the generated helm command string. Can be used to set additional parameters supported by the command but not exposed as configuration options.
-commands|optional|commands to execute in plugin after auth action
-credentials_in_arguments | optional | The username and password credentials to add to the Helm command as arguments. If not added to the Helm command, the credentials are passed in the URL `http(s)://username:password@url`. Should be enabled for JFrog Artifactory Helm repositories.
-custom_value_files|optional|values file to provide to Helm as --values or -f
-custom_values|optional|values to provide to Helm as --set
-helm_repository_context | The name of the Helm repository integration configured in Codefresh.
-helm_version|optional|version of [cfstep-helm image](https://hub.docker.com/r/codefresh/cfstep-helm/tags)
-kube_context|required for install|Kubernetes context to use. The name of the cluster as [configured in Codefresh]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/)
-namespace|optional|Target Kubernetes namespace to deploy to
-primary_helm_context |optional |Required for `install` and `push` actions when the pipeline has multiple Helm contexts. The Helm context to use for the Helm command. When omitted, the repo most recently added to the pipeline is used.
-release_name|used for `install`|The Helm release name. If the release exists, it is upgraded.
-repos|optional|array of custom repositories
-set_file | optional | Set values from the respective files specified by the command line in `key=value` format. To specify multiple key-value pairs, separate them with commas.
-skip_cf_stable_helm_repo | optional | Don't add stable repository.
-tiller_namespace|optional|Kubernetes namespace where Tiller is installed (unnecessary for Helm 3).
-timeout | optional | The maximum time, in seconds, to wait for Kubernetes commands to complete.
-use_debian_image | optional | Use Debian-based `cfstep-helm` image.
-use_repos_for_auth_action |optional  | Required for the `auth` action to use repos from attached contexts. When required, set value to `true`.
-wait |optional | When specified, waits until all pods are in state `ready` to mark the release as successful. Otherwise, release is marked as successful when the minimum number of pods are `ready` and the Services have IP addresses. 
+{: .table .table-bordered .table-hover}
+|Name|Required|Description|
+|---|---|---|
+|action|defaults to `install'|Operation mode: `install`/`push`/`auth`|
+|chart_name|required for install/push|Chart reference to use, adhering to Helm's lookup rules (path to chart folder, or name of packaged chart). There's no need to prefix with `/reponame` if referencing a chart in a repository, this is handled automatically. a.k.a `CHART_NAME` but `CHART_NAME` shouldn't be used anymore. |
+|chart_repo_url|optional|Helm chart repository URL. If a [Helm repository configuration](#step-4-optional---import-the-helm-configuration-in-your-pipeline-definition) is attached to the pipeline, this setting is ignored.|
+|chart_subdir |optional | The subfolder where the chart is located in the JFrog Artifactory Helm repository.|
+|chart_version|optional|Override or set the chart version.|
+|cmd_ps|optional|Command Postscript - this will be appended as is to the generated helm command string. Can be used to set additional parameters supported by the command but not exposed as configuration options.|
+|commands|optional|commands to execute in plugin after auth action|
+|credentials_in_arguments | optional | The username and password credentials to add to the Helm command as arguments. If not added to the Helm command, the credentials are passed in the URL `http(s)://username:password@url`. Should be enabled for JFrog Artifactory Helm repositories.|
+|custom_value_files|optional|values file to provide to Helm as --values or -f.|
+|custom_values|optional|values to provide to Helm as --set.|
+|helm_repository_context | The name of the Helm repository integration configured in Codefresh.|
+|helm_version|optional|version of [cfstep-helm image](https://hub.docker.com/r/codefresh/cfstep-helm/tags).|
+|kube_context|required for install|Kubernetes context to use. The name of the cluster as [configured in Codefresh]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/).|
+|namespace|optional|Target Kubernetes namespace to deploy to.|
+|primary_helm_context |optional |Required for `install` and `push` actions when the pipeline has multiple Helm contexts. The Helm context to use for the Helm command. When omitted, the repo most recently added to the pipeline is used.|
+|release_name|used for `install`|The Helm release name. If the release exists, it is upgraded.|
+|repos|optional|array of custom repositories.|
+|set_file | optional | Set values from the respective files specified by the command line in `key=value` format. To specify multiple key-value pairs, separate them with commas. |
+|skip_cf_stable_helm_repo | optional | Don't add stable repository.|
+|tiller_namespace|optional|Kubernetes namespace where Tiller is installed .|
+|timeout | optional | The maximum time, in seconds, to wait for Kubernetes commands to complete.|
+|use_debian_image | optional | Use Debian-based `cfstep-helm` image.|
+|use_repos_for_auth_action |optional  | Required for the `auth` action to use repos from attached contexts. When required, set value to `true`.|
+wait |optional | When specified, waits until all pods are in state `ready` to mark the release as successful. Otherwise, release is marked as successful when the minimum number of pods are `ready` and the Services have IP addresses. |
 
 ## Full Helm pipeline example
 
