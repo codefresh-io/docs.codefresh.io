@@ -64,7 +64,7 @@ Here is a list of important Helm points that are often controversial between tea
 
 ### Helm repositories are optional
 
-Using Helm repositories is a recommended practice, but completely optional. You can deploy a Helm chart to a Kubernetes cluster directly from the filesystem. The [Helm deployment quick start]({{site.baseurl}}/docs/quick-start/ci-quickstart/deploy-with-helm/) describes this scenario.
+Using Helm repositories is a recommended practice, but completely optional. You can deploy a Helm chart to a Kubernetes cluster directly from the filesystem. The [Helm deployment quick start]({{site.baseurl}}/docs/quick-start/ci-quick-start/deploy-with-helm/) describes this scenario.
 
 Helm can install a chart either in the package (`.tgz`) or unpackaged (tree of files) to a Kubernetes cluster right away. Thus, the most minimal Helm pipeline has only two steps:
 
