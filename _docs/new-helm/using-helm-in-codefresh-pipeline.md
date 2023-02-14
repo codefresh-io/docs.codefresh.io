@@ -240,11 +240,10 @@ Notes:
 - The directory that contains a chart MUST have the same name as the chart. Thus, a chart named `my-chart` MUST be created in a directory called `my-chart/`. This is a requirement of the [Helm Chart format](https://helm.sh/docs/chart_template_guide/).
 
 ## Configuration
-
 {: .table .table-bordered .table-hover}
 |Name|Required|Description|
 |---|---|---|
-|action|defaults to `install'|Operation mode: `install`/`push`/`auth`|
+|action|defaults to `install`| Operation mode: `install`/`push`/`auth`|
 |chart_name|required for install/push|Chart reference to use, adhering to Helm's lookup rules (path to chart folder, or name of packaged chart). There's no need to prefix with `/reponame` if referencing a chart in a repository, this is handled automatically. a.k.a `CHART_NAME` but `CHART_NAME` shouldn't be used anymore. |
 |chart_repo_url|optional|Helm chart repository URL. If a [Helm repository configuration](#step-4-optional---import-the-helm-configuration-in-your-pipeline-definition) is attached to the pipeline, this setting is ignored.|
 |chart_subdir |optional | The subfolder where the chart is located in the JFrog Artifactory Helm repository.|
