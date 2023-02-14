@@ -64,9 +64,10 @@ Here you can set the defaults for advanced pipeline behavior. The options are:
 * [Keep or discard]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/#keeping-the-shared-volume-after-an-approval) the volume when a pipeline is entering approval state
 * Whether pipelines in approval state [count or not against concurrency]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/#define-concurrency-limits)
 * Define the [Service Account]({{site.baseurl}}/docs/integrations/docker-registries/amazon-ec2-container-registry/#setting-up-ecr-integration---service-account) for Amazon ECR integration.
-* Set the default registry from which to pull images for all Public Marketplace Steps. All [Docker Registry]({{site.baseurl}}/docs/integrations/docker-registries/) integrations in Codefresh are listed.
-  * Example: Public Marketplace Step image is defined to use Docker Hub. If you select a `quay.io` integration, all Public Marketplace Step images will be pulled from `quay.io` instead of Docker Hub.
-  * Note: The default registry selected is _ignored_ for `git-clone` and `freestyle` steps.
+* Set the default registry from which to pull images for all _public_ Public Marketplace Steps. You can select any [Docker Registry]({{site.baseurl}}/docs/integrations/docker-registries/) integration setup in Codefresh. 
+  * Example: Public Marketplace Step image is defined to use Docker Hub. If you select a `quay.io` integration, all Public Marketplace Step images are pulled from `quay.io` instead of Docker Hub.
+  > The default registry selected for Public Marketplace steps is _ignored_ in all built-in pipeline steps: `git-clone`, `freestyle`, `build`, `push`, `composition`, `launch test environment`, `deploy`, and `approval`. See [Steps in pipelines]({{site.baseurl}}/docs/codefresh-yaml/steps/).
+    The selected registry affects only custom or typed steps.
 
 Note that the first option affects pipeline resources and/or billing in the case of SaaS pricing. It will also affect users of existing pipelines that depend on this behavior. It is best to enable/disable this option only once at the beginning.
 

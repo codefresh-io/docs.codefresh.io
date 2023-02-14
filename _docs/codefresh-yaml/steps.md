@@ -23,7 +23,8 @@ max-width="80%"
 
 ## Built-in steps
 
-The steps offered by Codefresh are:
+Built-in steps are predefined steps provided by Codefresh. 
+They include: 
 
 * [Git clone]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)
 * [Freestyle]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/)
@@ -104,7 +105,7 @@ For all steps you can define:
 
 The rest of the fields are specific to each step. See the documentation of each step in order to understand what each field should contain. There are fields for each step that are marked as required and are essential for the step to work. These are marked with an asterisk.
 
-Once a step is added to the pipeline, you are fee to change the resulting yaml even further by just typing in the pipeline editor.
+Once a step is added to the pipeline, you are free to change the resulting YAML even further by just typing in the pipeline editor.
 
 ## Creating your own step
 
