@@ -80,10 +80,6 @@
       url: "/environment-deployments"   
     - title: Previewing dynamic environments
       url: "/preview-environments"                 
-    - title: Progressive delivery
-      url: "/progressive-delivery" 
-    - title: GitOps deployments
-      url: "/gitops-deployments" 
     - title: Helm best practices
       url: "/helm-best-practices" 
     - title: Kubernetes templating
