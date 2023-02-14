@@ -119,7 +119,7 @@ The Helm step can operate in one of three modes:
 
 1. install: Installs the Helm chart into a Kubernetes cluster. This is the default mode, if a mode is not explicitly set.
 1. push: Packages the Helm chart and pushes it to the repository.
-1. authentication: Sets up authentication, and adds one or more repos to the helm. This is useful if you want to write your own helm commands using the freestyle step's `commands` property, but you still want the step to handle authentication. 
+1. authentication: Sets up authentication, and adds one or more Helm repos. This is useful if you want to write your own helm commands using the freestyle step's `commands` property, but you still want the step to handle authentication. 
 
 The operation mode is set by the `action` field, where the value can be `install`/`push`/`auth`.
 
@@ -127,7 +127,7 @@ The operation mode is set by the `action` field, where the value can be `install
 
 If you have imported multiple Helm contexts into the same pipeline:  
 * For the `install` and `push` actions, you need to define the primary Helm context to use through the `primary_helm_context` argument.  
-* For the `auth` action, to use the repos from the helm contexts imported into the pipeline,  add  `use_repos_for_auth_action: 'true'`. Otherwise, imported contexts, if any, are ignored for the `auth` action. 
+* For the `auth` action, to use the repos from the helm contexts imported into the pipeline, add `use_repos_for_auth_action: 'true'`. Otherwise, imported contexts, if any, are ignored for the `auth` action. 
 
 For a description of these and other arguments, see [Configuration](#configuration).
 
