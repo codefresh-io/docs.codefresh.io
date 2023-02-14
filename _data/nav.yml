@@ -21,7 +21,7 @@
     - title: Create Codefresh account
       url: "/create-codefresh-account"  
     - title: CI/CD quick starts
-      url: "/ci-quickstart"
+      url: "/ci-quick-start"
       sub-pages:
       - title: Pipeline quick start
         url: "/create-ci-pipeline"
@@ -32,7 +32,7 @@
       - title: On-demand environment quick start  
         url: "/on-demand-environments"
     - title: GitOps quick starts
-      url: "/gitops-quickstart"
+      url: "/gitops-quick-start"
       sub-pages:
         - title: Provision a hosted runtime
           url:  "/install-hosted"

@@ -36,14 +36,6 @@ Where does Codefresh come into play with GitOps and Argo CD?
 
 Codefresh is the easiest way to get started with GitOps and Argo CD. Codefresh leverages Argo components to have the entire desired state applied from Git to your Kubernetes cluster, and then reported back to Codefresh.
 
-TBD
-
-
-Every state change operation in Codefresh is made via Git
-Codefresh audit log is derived from the Git changelog
-Codefresh access control is derived from Git permissions
-
-From our runtimes, to applications, and deployments, 
 
 
 ## GitOps Runtimes 
@@ -77,13 +69,7 @@ See:
 [Monitoring applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/)  
 
 ## Codefresh & the Argo Project 
-Codefresh brings the power of the Argo project to your Kubernetes deployments:
-
-Argo CD for declarative continuous deployment
-Argo Rollouts for progressive delivery
-Argo Workflows as the workflow engine
-Argo Events for event-driven workflow automation framework
-
+Codefresh brings the power of Argo project to your Kubernetes deployments.  
 Codefresh creates a conformed fork of the Argo project, providing an enterprise-supported version of the same, enhanced with unique functionality.
 
 >Our users rely on the Codefresh platform to deliver software, reliably and predictably, without disruptions. To maintain that high standard, we add several weeks of testing and bug fixes to new versions of Argo before making them available within Codefresh. Typically, new versions of Argo are available within 30 days of their release.
@@ -92,3 +78,4 @@ Codefresh creates a conformed fork of the Argo project, providing an enterprise-
 [Codefresh for CI]({{site.baseurl}}/docs/getting-started/ci-codefresh/)  
 [Codefresh for CD]({{site.baseurl}}/docs/getting-started/cd-codefresh/)    
 [Concepts in Codefresh]({{site.baseurl}}/docs/getting-started/concepts/)   
+[Introduction to Codefresh]({{site.baseurl}}/docs/getting-started/intro-to-codefresh/)
