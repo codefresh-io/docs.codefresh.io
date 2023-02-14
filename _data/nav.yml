@@ -12,8 +12,7 @@
       url: "/gitops-codefresh"
     - title: Concepts in Codefresh
       url: "/concepts"
-    - title: Menu reference
-      url: "/menu-navigation"      
+   
 
 - title: Quick starts
   url: "/quick-start"
