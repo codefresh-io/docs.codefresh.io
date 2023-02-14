@@ -27,7 +27,7 @@ This article shows how to use the [SonarQube plugin](https://codefresh.io/steps/
 
 Before starting an analysis, you need to have a:
 
- * Simple [Codefresh pipeline up and running]({{site.baseurl}}/docs/quick-start/ci-quickstart/create-ci-pipeline/)
+ * Simple [Codefresh pipeline up and running]({{site.baseurl}}/docs/quick-start/ci-quick-start/create-ci-pipeline/)
  * SonarQube account (Developer, Enterprise, or on the [SonarCloud](https://sonarcloud.io/){:target="\_blank"})
 
 ## Get a security token from SonarQube

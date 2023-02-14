@@ -2,7 +2,7 @@
 title: "Provision a hosted runtime"
 description: ""
 group: getting-started
-sub-group: gitops-quickstart
+sub-group: gitops-quick-start
 toc: true
 ---
 

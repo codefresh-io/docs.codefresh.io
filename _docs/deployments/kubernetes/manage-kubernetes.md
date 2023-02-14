@@ -164,7 +164,7 @@ Read more [Deployment options for Kubernetes]({{site.baseurl}}/docs/deployments/
 ## Related articles
 [Environment dashboard]({{site.baseurl}}/docs/deployments/kubernetes/environment-dashboard/)  
 [Add Config Maps]({{site.baseurl}}/docs/ci-cd-guides/add-config-maps-to-your-namespaces/)  
-[Kubernetes deployment quick start]({{site.baseurl}}/docs/quick-start/ci-quickstart/deploy-to-kubernetes/)  
+[Kubernetes deployment quick start]({{site.baseurl}}/docs/quick-start/ci-quick-start/deploy-to-kubernetes/)  
 
 
 

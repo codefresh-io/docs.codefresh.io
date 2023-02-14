@@ -104,7 +104,7 @@ Codefresh can automatically export secret key-value pairs using the Vault plugin
 
 ### Preview environment examples
 
-Codefresh can automatically launch environments (powered by Docker swarm) to [preview a Pull Request or feature]({{site.baseurl}}/docs/quick-start/ci-quickstart/on-demand-environments/). The definition of the environment can come from an [existing composition]({{site.baseurl}}/docs/testing/create-composition/), a docker-compose file or an inline YAML. Preview environments can be launched manually or [automatically from pipelines]({{site.baseurl}}/docs/pipelines/steps/launch-composition/).
+Codefresh can automatically launch environments (powered by Docker swarm) to [preview a Pull Request or feature]({{site.baseurl}}/docs/quick-start/ci-quick-start/on-demand-environments/). The definition of the environment can come from an [existing composition]({{site.baseurl}}/docs/testing/create-composition/), a docker-compose file or an inline YAML. Preview environments can be launched manually or [automatically from pipelines]({{site.baseurl}}/docs/pipelines/steps/launch-composition/).
 
 - [NGINX Basic Auth]({{site.baseurl}}/docs/example-catalog/cd-examples/secure-a-docker-container-using-http-basic-auth/)
 - [Spring Boot + Kafka + Zookeeper]({{site.baseurl}}/docs/example-catalog/cd-examples/spring-boot-kafka-zookeeper/)

@@ -17,7 +17,7 @@ Once you start working with Kubernetes you will see the need for using templates
 
 Kubernetes does not provide any templating mechanism on its own. Deployed manifests are expected to be static yaml files. An external solution is needed if you want to pass parameters in your manifests.
 
-The proper way to handle templates is within [Helm]({{site.baseurl}}/docs/quick-start/ci-quickstart/deploy-with-helm/) . Helm is the package manager for Kubernetes and also includes templating capabilities.
+The proper way to handle templates is within [Helm]({{site.baseurl}}/docs/quick-start/ci-quick-start/deploy-with-helm/) . Helm is the package manager for Kubernetes and also includes templating capabilities.
 
 To use templates without using Helm, there are several templating solutions available including [Kustomize](https://github.com/kubernetes-sigs/kustomize){:target="\_blank"} from Google. 
 

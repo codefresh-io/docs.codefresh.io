@@ -57,7 +57,7 @@ Multiple filters work in an `AND` manner.
 **Actions for Docker images**  
 On the right are the actions available foreach Docker image.  
 You can:  
-* Launch a Docker image as a [test environment]({{site.baseurl}}/docs/quick-start/ci-quickstart/on-demand-environments/)
+* Launch a Docker image as a [test environment]({{site.baseurl}}/docs/quick-start/ci-quick-start/on-demand-environments/)
 * Promote a Docker image (explained in the following sections)
 * Pull the image locally on your workstation with different commands
 * Re-run the pipeline that created the image

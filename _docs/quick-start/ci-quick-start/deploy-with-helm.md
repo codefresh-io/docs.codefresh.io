@@ -2,13 +2,13 @@
 title: "Helm deployment to Kubernetes quick start"
 description: "Use the Helm package manager to deploy to a Kubernetes cluster from the Codefresh UI"
 group: quick-start
-sub_group: ci-quickstart
+sub_group: ci-quick-start
 redirect_from:
   - /docs/getting-started/helm-quick-start-guide/
 toc: true
 ---
 
-The [Kubernetes deployment quick start]({{site.baseurl}}/docs/quick-start/ci-quickstart/deploy-to-kubernetes/) showed you how to quickly deploy an application directly to Kubernetes.  
+The [Kubernetes deployment quick start]({{site.baseurl}}/docs/quick-start/ci-quick-start/deploy-to-kubernetes/) showed you how to quickly deploy an application directly to Kubernetes.  
 
 The Helm quick start guides you through using [Helm](https://helm.sh/){:target="\_blank"} as a package manager in Codefresh to deploy to Kubernetes, view the Helm release, and store a Helm chart.   
 
@@ -51,7 +51,7 @@ For reasons of simplicity, we will use the [default Docker registry]({{site.base
 * The Docker registry you connected to your Codefresh account in the CI pipeline quick start 
 * An application that has a Dockerfile and a [Helm chart]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/#helm-setup) 
 * Cluster with pull access to your default Docker registry
-  If you are not familiar, read [Manually deploy Docker image to Kubernetes]({{site.baseurl}}/docs/quick-start/ci-quickstart/deploy-to-kubernetes/#manually-deploy-docker-image-to-kubernetes), or read about [secrets]({{site.baseurl}}/docs/deployments/kubernetes/deploy-to-kubernetes/create-image-pull-secret/) <!--- ask Kostis -->
+  If you are not familiar, read [Manually deploy Docker image to Kubernetes]({{site.baseurl}}/docs/quick-start/ci-quick-start/deploy-to-kubernetes/#manually-deploy-docker-image-to-kubernetes), or read about [secrets]({{site.baseurl}}/docs/deployments/kubernetes/deploy-to-kubernetes/create-image-pull-secret/) <!--- ask Kostis -->
 
 If you want to follow along, feel free to fork this [repository](https://github.com/codefresh-contrib/python-flask-sample-app){:target="\_blank"} in your Git account and look at the [with-helm](https://github.com/codefresh-contrib/python-flask-sample-app/tree/with-helm){:target="\_blank"} branch.
 
@@ -362,7 +362,7 @@ max-width="70%"
 You now know how to deploy a Helm release from Codefresh, view the release, and store the Helm chart in a repository.
 
 Continue with:
-[On-demand environment quick start]({{site.baseurl}}/docs/quick-start/ci-quickstart/on-demand-environments)
+[On-demand environment quick start]({{site.baseurl}}/docs/quick-start/ci-quick-start/on-demand-environments)
 
 
 ## Read more on deployments with Helm 

@@ -14,11 +14,11 @@ This step allows to (re)deploy a Kubernetes application in your cluster
 
 It has two modes:
 
-1. Using the `service` option. In this case it will redeploy to an [existing service/deployment in your cluster]({{site.baseurl}}/docs/quick-start/ci-quickstart/deploy-to-kubernetes/) . Codefresh will
+1. Using the `service` option. In this case it will redeploy to an [existing service/deployment in your cluster]({{site.baseurl}}/docs/quick-start/ci-quick-start/deploy-to-kubernetes/) . Codefresh will
 automatically update the service/deployment with the new docker image.
 1. Using the `file_path` option. In this case you provide your own Kubernetes manifest and Codefresh deploys it as-is. It is **your
 own responsibility** to do [custom replacements]({{site.baseurl}}/docs/ci-cd-guides/kubernetes-templating/) here (for example using [awk](https://en.wikipedia.org/wiki/AWK){:target="\_blank"}, [sed](https://www.gnu.org/software/sed/manual/sed.html){:target="\_blank"} or [yq](http://mikefarah.github.io/yq/){:target="\_blank"}). The `deploy` step also uses the [Codefresh templating mechanism]({{site.baseurl}}/docs/ci-cd-guides/kubernetes-templating/#using-the-codefresh-deploy-image) behind the scenes if you want to take advantage of it. For a full templating solution we also
-suggest you look at [Helm]({{site.baseurl}}/docs/quick-start/ci-quickstart/deploy-with-helm/).
+suggest you look at [Helm]({{site.baseurl}}/docs/quick-start/ci-quick-start/deploy-with-helm/).
 
 You need to define either one of these fields in the deploy step. If you define `service` you also can select the exact Docker image
 with the `candidate` field (otherwise Codefresh will just reuse the docker image defined in the existing deployment)
@@ -175,10 +175,10 @@ If you find the deploy step limited, feel free to look at the other deployment o
 
 * [cf-deploy-kubernetes step]({{site.baseurl}}/docs/ci-cd-guides/kubernetes-templating/) 
 * [Custom kubectl commands]({{site.baseurl}}/docs/deployments/kubernetes/custom-kubectl-commands/) 
-* [Helm]({{site.baseurl}}/docs/quick-start/ci-quickstart/deploy-with-helm/)  
+* [Helm]({{site.baseurl}}/docs/quick-start/ci-quick-start/deploy-with-helm/)  
 
 ## Related articles
-[Kubernetes deployment quick start]({{site.baseurl}}/docs/quick-start/ci-quickstart/deploy-to-kubernetes/)   
+[Kubernetes deployment quick start]({{site.baseurl}}/docs/quick-start/ci-quick-start/deploy-to-kubernetes/)   
 [Manage Kubernetes clusters]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/)  
 [Using Helm in Codefresh pipelines]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/)  
 

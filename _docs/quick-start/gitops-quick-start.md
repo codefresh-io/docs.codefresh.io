@@ -19,7 +19,7 @@ Based on your deployment model, start by provisioning the hosted or hybrid runti
 ### Hosted 
 Hosted runtimes are hosted on a Codefresh cluster and managed by Codefresh. You need to provision your hosted runtime once for your account.  
 
-1. [Provision a hosted runtime]({{site.baseurl}}/docs/quick-start/gitops-quickstart/install-hosted)  
+1. [Provision a hosted runtime]({{site.baseurl}}/docs/quick-start/gitops-quick-start/install-hosted)  
   Provision the hosted runtime with a single click, and complete the setup for your hosted environment.  
 
 {::nomarkdown}
@@ -29,9 +29,9 @@ Hosted runtimes are hosted on a Codefresh cluster and managed by Codefresh. You 
 ### Hybrid
 Hybrid runtimes are hosted on a customer cluster and managed by the customer. You can provision multiple hybrid runtimes in the same account.  
 
-1. [Prepare for hybrid runtime installation]({{site.baseurl}}/docs/quick-start/gitops-quickstart/verify-requirements)  
+1. [Prepare for hybrid runtime installation]({{site.baseurl}}/docs/quick-start/gitops-quick-start/verify-requirements)  
   Verify your environment matches the requirements for installing Codefresh runtime.
-1. [Install hybrid runtime]({{site.baseurl}}/docs/quick-start/gitops-quickstart/runtime)  
+1. [Install hybrid runtime]({{site.baseurl}}/docs/quick-start/gitops-quick-start/runtime)  
   Install the Codefresh runtime by downloading the CLI, installing the runtime, and validate successful installation in the UI
 
 ## Create a Codefresh account
@@ -40,11 +40,11 @@ Hybrid runtimes are hosted on a customer cluster and managed by the customer. Yo
 
 ## Deploy an application
 
-1. [Create an application]({{site.baseurl}}/docs/quick-start/gitops-quickstart/create-app-ui)  
+1. [Create an application]({{site.baseurl}}/docs/quick-start/gitops-quick-start/create-app-ui)  
   Create the `codefresh-guestbook` application in the Codefresh UI.
-1. [Create and commit resources for application]({{site.baseurl}}/docs/quick-start/gitops-quickstart/create-app-specs)  
+1. [Create and commit resources for application]({{site.baseurl}}/docs/quick-start/gitops-quick-start/create-app-specs)  
   Create rollout and service resources, and commit these resources to deploy the `codefresh-guestbook` application.
-1. [Update the image tag for application]({{site.baseurl}}/docs/quick-start/gitops-quickstart/create-rollout)  
+1. [Update the image tag for application]({{site.baseurl}}/docs/quick-start/gitops-quick-start/create-rollout)  
   Update the image for the `codefresh-guestbook` application to trigger a rollout.
 
 

@@ -13,7 +13,7 @@ The plugin marketplace offers several freestyle steps for your Codefresh pipelin
 One of those steps is the [Jira Issue Manager](https://codefresh.io/steps/step/jira-issue-manager){:target="\_blank"}. 
 
 ## Prerequisites
-* [Codefresh pipeline]({{site.baseurl}}/docs/quick-start/ci-quickstart/create-ci-pipeline/)
+* [Codefresh pipeline]({{site.baseurl}}/docs/quick-start/ci-quick-start/create-ci-pipeline/)
 * [Jira account](https://www.atlassian.com/software/jira){:target="\_blank"}
 
 ## Example

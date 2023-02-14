@@ -315,7 +315,7 @@ caption="Codefresh integration with Azure Devops"
 alt="Codefresh integration with Azure Devops"
 %}
 
-Your Azure DevOps repositories will be available when [creating a new project in Codefresh]({{site.baseurl}}/docs/quick-start/ci-quickstart/create-ci-pipeline/).
+Your Azure DevOps repositories will be available when [creating a new project in Codefresh]({{site.baseurl}}/docs/quick-start/ci-quick-start/create-ci-pipeline/).
 
  If enabled in your account you can setup [Pipeline definition restrictions]({{site.baseurl}}/docs/administration/account-user-management/access-control/#pipeline-definition-restrictions) by expanding the *YAML Options* segment.
 
@@ -344,7 +344,7 @@ For example if you already have a `token` on a resource call `git-credentials` y
 
 ## Using your Git provider
 
-Once your provider is active, you can add a new project in Codefresh, and then during the [repository selection screen]({{site.baseurl}}/docs/quick-start/ci-quickstart/create-ci-pipeline/) you will have access to the additional Git providers.
+Once your provider is active, you can add a new project in Codefresh, and then during the [repository selection screen]({{site.baseurl}}/docs/quick-start/ci-quick-start/create-ci-pipeline/) you will have access to the additional Git providers.
 
 {% include image.html
 lightbox="true"

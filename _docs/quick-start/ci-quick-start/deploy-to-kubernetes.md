@@ -2,7 +2,7 @@
 title: "Kubernetes deployment quick start"
 description: "How to deploy to a Kubernetes cluster from the Codefresh UI"
 group: quick-start
-sub_group: ci-quickstart
+sub_group: ci-quick-start
 redirect_from:
   - /docs/getting-started-deployment-to-kubernetes-quick-start-guide/
   - /docs/kubernetes
@@ -237,9 +237,9 @@ max-width="50%"
 You now have a complete CI/CD pipeline in Codefresh that executes fully automated builds to Kubernetes.
 
 Continue with:  
-[Helm deployment to Kubernetes quick start]({{site.baseurl}}/docs/quick-start/ci-quickstart/deploy-with-helm)
+[Helm deployment to Kubernetes quick start]({{site.baseurl}}/docs/quick-start/ci-quick-start/deploy-with-helm)
 OR  
-[On-demand environment quick start]({{site.baseurl}}/docs/quick-start/ci-quickstart/on-demand-environments)
+[On-demand environment quick start]({{site.baseurl}}/docs/quick-start/ci-quick-start/on-demand-environments)
 
 
 ## Read more on Kubernetes deployments & pipelines

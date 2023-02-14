@@ -287,7 +287,7 @@ max-width="70%"
 [Unit test example]({{site.baseurl}}/docs/example-catalog/ci-examples/run-unit-tests/)  
 [Introduction to pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)  
 [Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
-[On-demand environments]({{site.baseurl}}/docs/quick-start/ci-quickstart/on-demand-environments/)  
+[On-demand environments]({{site.baseurl}}/docs/quick-start/ci-quick-start/on-demand-environments/)  
 [Integration tests]({{site.baseurl}}/docs/testing/integration-tests/)  
 
 

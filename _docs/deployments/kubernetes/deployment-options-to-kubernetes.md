@@ -15,7 +15,7 @@ toc: true
 Codefresh offers several options when it comes to Kubernetes deployments:
 
 1. Codefresh UI for on-demand deployments  
-  This is the easiest deployment option for Kubernetes. See our [Kubernetes deployment quick start]({{site.baseurl}}/docs/quick-start/ci-quickstart/deploy-to-kubernetes/).
+  This is the easiest deployment option for Kubernetes. See our [Kubernetes deployment quick start]({{site.baseurl}}/docs/quick-start/ci-quick-start/deploy-to-kubernetes/).
 1. Through a dedicated [deploy step]({{site.baseurl}}/docs/pipelines/steps/deploy/) in a pipeline  
   Described in this article.
 1. Through the [cf-deploy-kubernetes step]({{site.baseurl}}/docs/ci-cd-guides/kubernetes-templating/) in a pipeline  
@@ -25,7 +25,7 @@ Codefresh offers several options when it comes to Kubernetes deployments:
 1. Using a freestyle step with your own `kubectl` commands  
   This deployment option gives you great flexibility, but assumes that you know how to work with `kubectl`. See [Custom kubectl commands]({{site.baseurl}}/docs/deployments/kubernetes/custom-kubectl-commands/).
 1. Using Helm as a package manager  
-  See our [Helm deployment to Kubernetes quick start]({{site.baseurl}}/docs/quick-start/ci-quickstart/deploy-with-helm/).
+  See our [Helm deployment to Kubernetes quick start]({{site.baseurl}}/docs/quick-start/ci-quick-start/deploy-with-helm/).
 
 ## Prerequisites
 

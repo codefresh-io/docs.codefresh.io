@@ -2,7 +2,7 @@
 title: "On-demand environment quick start"
 description: "Code collaboration with Codefresh"
 group: quick-start
-sub_group: ci-quickstart
+sub_group: ci-quick-start
 redirect_from:
   - /docs/getting-started/on-demand-environments/
 toc: true
@@ -19,7 +19,7 @@ are ephemeral, and are perfect for quick demos. Use them to quickly share a feat
 ## Launch a Docker image using Codefresh
 
 Docker images play a central role in Codefresh. 
-In the [CI pipeline quick start]({{site.baseurl}}/docs/quick-start/ci-quickstart/create-ci-pipeline/), you saw how to easily create a Docker image from your source code.
+In the [CI pipeline quick start]({{site.baseurl}}/docs/quick-start/ci-quick-start/create-ci-pipeline/), you saw how to easily create a Docker image from your source code.
 
 In this quick start, we will take this one step further, and launch the resulting Docker image.
 Codefresh has the unique capability of launching a Docker image (using [Docker Swarm](https://docs.docker.com/engine/swarm/) behind the scenes) on the same hosted environment that Codefresh itself runs on.  

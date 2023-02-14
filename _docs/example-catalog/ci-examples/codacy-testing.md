@@ -20,7 +20,7 @@ max-width="100%"
 %}
 
 ## Prerequisites for using Codacy
-* A simple [Codefresh pipeline, up and running]({{site.baseurl}}/docs/quick-start/ci-quickstart/create-ci-pipeline/)
+* A simple [Codefresh pipeline, up and running]({{site.baseurl}}/docs/quick-start/ci-quick-start/create-ci-pipeline/)
 * A [Codacy account](https://www.codacy.com/){:target="\_blank"} (free, pro or enterprise)
 * A testing tool added to your project that produces coverage reports
 
@@ -54,7 +54,7 @@ max-width="80%"
 
 ## Codefresh pipeline
 
-If the project you want to use Codacy in does not have a pipeline, [create a new pipeline]({{site.baseurl}}/docs/quick-start/ci-quickstart/create-ci-pipeline/).
+If the project you want to use Codacy in does not have a pipeline, [create a new pipeline]({{site.baseurl}}/docs/quick-start/ci-quick-start/create-ci-pipeline/).
 
 {% include image.html 
 lightbox="true" 

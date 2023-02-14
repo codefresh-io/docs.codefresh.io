@@ -64,7 +64,7 @@ The available filters are:
 * *Pipeline* - any of the pipelines available.
 * *Provider* - type of [Git provider]({{site.baseurl}}/docs/integrations/git-providers/).
 * *Repository* - Git repository from the attached [trigger]({{site.baseurl}}/docs/pipelines/triggers/).
-* *Type* - build, [launch a test environment]({{site.baseurl}}/docs/quick-start/ci-quickstart/on-demand-environments/#launch-a-docker-image-using-codefresh).
+* *Type* - build, [launch a test environment]({{site.baseurl}}/docs/quick-start/ci-quick-start/on-demand-environments/#launch-a-docker-image-using-codefresh).
 * *Branch* - any of the available branches from the attached Git trigger.
 * *Committer* - person that made the commit that triggered the build.
 * *Environment* - which [environment]({{site.baseurl}}/docs/deployments/kubernetes/environment-dashboard/) was affected.
@@ -155,7 +155,7 @@ There are also extra options if you click the small "3-dot" menu button on the r
 - View the logs 
 - View the YAML
 - View or add [annotations]({{site.baseurl}}/docs/pipelines/annotations/)
-- View the images produced (and consequently launch an on-demand [test environment]({{site.baseurl}}/docs/quick-start/ci-quickstart/on-demand-environments/#launch-a-docker-image-using-codefresh)
+- View the images produced (and consequently launch an on-demand [test environment]({{site.baseurl}}/docs/quick-start/ci-quick-start/on-demand-environments/#launch-a-docker-image-using-codefresh)
 
 Notice that if you restart a pipeline it will trigger with the exact settings it *originally* had. So 
 if this was a manual trigger where you [disabled caching]({{site.baseurl}}/docs/troubleshooting/common-issues/disabling-codefresh-caching-mechanisms/) or changed the [notification options](#monitoring-pipelines-that-check-pull-requests), the new

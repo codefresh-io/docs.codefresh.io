@@ -2,7 +2,7 @@
 title: "Create an application"
 description: ""
 group: getting-started
-sub-group: gitops-quickstart
+sub-group: gitops-quick-start
 toc: true
 ---
 
@@ -76,7 +76,7 @@ For detailed information, see [Create an application]({{site.baseurl}}/docs/depl
 
 {:start="9"} 
 1. Add a commit message and then select **Commit** at the bottom-right of the panel.  
-  You are directed to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard?sort=desc-lastUpdated){:target="\_blank"}.  
+  You are directed to the [GitOps Apps dashboard](https://g.codefresh.io/2.0/applications-dashboard?sort=desc-lastUpdated){:target="\_blank"}.  
   You may have to wait for a few seconds until the application is synced to the cluster.
 
   {% include 

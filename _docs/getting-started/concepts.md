@@ -23,7 +23,7 @@ Codefresh offers several levels of visibility into your deployments :
 * The Environment dashboard displays both Helm and Kubernetes releases, the status of the cluster, and most importantly that of the builds that affect it. 
 
 See:  
-Quick starts for [Kubernetes]({{site.baseurl}}/docs/quick-start/ci-quickstart/deploy-to-kubernetes/) and [Helm]({{site.baseurl}}/docs/quick-start/ci-quickstart/deploy-with-helm/) deployments  
+Quick starts for [Kubernetes]({{site.baseurl}}/docs/quick-start/ci-quick-start/deploy-to-kubernetes/) and [Helm]({{site.baseurl}}/docs/quick-start/ci-quick-start/deploy-with-helm/) deployments  
 [Deployment options for Kubernetes]({{site.baseurl}}/docs/deployments/kubernetes/deployment-options-to-kubernetes/)  
 [Using Helm in Codefresh pipelines]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/)  
 

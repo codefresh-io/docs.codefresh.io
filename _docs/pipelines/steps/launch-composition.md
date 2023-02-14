@@ -87,7 +87,7 @@ step_name:
 | `retry`   | Define retry behavior as described in [retrying a step]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#retrying-a-step).                                                                               | Optional                  |
 
 ## Related articles
-[On-demand environment quick start]({{site.baseurl}}/docs/quick-start/ci-quickstart/on-demand-environments/)  
+[On-demand environment quick start]({{site.baseurl}}/docs/quick-start/ci-quick-start/on-demand-environments/)  
 [Launch Composition example]({{site.baseurl}}/docs/example-catalog/ci-examples/launch-composition/)  
 [Integration testing]({{site.baseurl}}/docs/testing/integration-tests/)  
 [Service containers in pipelines]({{site.baseurl}}/docs/pipelines/service-containers/)

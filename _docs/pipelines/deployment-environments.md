@@ -150,7 +150,7 @@ steps:
 {% endhighlight %}
 
 
-This pipeline is similar to the one described in the [Kubernetes quick start guide]({{site.baseurl}}/docs/quick-start/ci-quickstart/deploy-to-kubernetes/) but has an extra `env` block that defines:
+This pipeline is similar to the one described in the [Kubernetes quick start guide]({{site.baseurl}}/docs/quick-start/ci-quick-start/deploy-to-kubernetes/) but has an extra `env` block that defines:
 
 * an environment called "orders-prod"
 * a single application endpoint at 40.113.201.163 (Kubernetes service or ingress)
@@ -231,7 +231,7 @@ steps:
 {% endraw %}            
 {% endhighlight %}
 
-This pipeline is similar to the one described in the [Helm quick start guide]({{site.baseurl}}/docs/quick-start/ci-quickstart/deploy-with-helm/) but has an extra `env` block that defines:
+This pipeline is similar to the one described in the [Helm quick start guide]({{site.baseurl}}/docs/quick-start/ci-quick-start/deploy-with-helm/) but has an extra `env` block that defines:
 
 * an environment called "load testing"
 * a single application endpoint at 40.113.201.163 (Kubernetes service or ingress)

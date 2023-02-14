@@ -303,7 +303,7 @@ You have completed setting up your Hosted GitOps Runtime. You are ready to creat
 ### (Optional) Create application
 Optional. Create an application in Codefresh, deploy it to the cluster, and track deployment and performance in the Applications dashboard.  
 
-1. Follow our quick-start to create and deploy the `codefresh-guestbook` application. Start with [Create application resources]({{site.baseurl}}/docs/quick-start/gitops-quickstart/create-app-specs/).  
+1. Follow our quick-start to create and deploy the `codefresh-guestbook` application. Start with [Create application resources]({{site.baseurl}}/docs/quick-start/gitops-quick-start/create-app-specs/).  
   OR    
   Create your own application. See [Create an application]({{site.baseurl}}/docs/deployments/gitops/create-application/)   
 

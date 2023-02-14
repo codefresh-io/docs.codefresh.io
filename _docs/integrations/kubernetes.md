@@ -84,7 +84,7 @@ caption="Selecting the Azure cluster"
 max-width="60%"
   %}
 
-Codefresh will query the cluster and show its nodes. You are now ready to [deploy to Azure kubernetes]({{site.baseurl}}/docs/quick-start/ci-quickstart/deploy-to-kubernetes/).
+Codefresh will query the cluster and show its nodes. You are now ready to [deploy to Azure kubernetes]({{site.baseurl}}/docs/quick-start/ci-quick-start/deploy-to-kubernetes/).
 
 >If you wish for any reason to revoke the granted access from the Azure side, visit [https://account.activedirectory.windowsazure.com/r#/applications](https://account.activedirectory.windowsazure.com/r#/applications){:target="\_blank"} and remove "Codefresh" from the list.
 
@@ -171,7 +171,7 @@ caption="Selecing the DigitalOcean cluster"
 max-width="40%"
   %}
 
-Your cluster is now connected. You should be able to see it your [Kubernetes dashboard]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/), and start [deploying]({{site.baseurl}}/docs/quick-start/ci-quickstart/deploy-to-kubernetes/) to it. 
+Your cluster is now connected. You should be able to see it your [Kubernetes dashboard]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/), and start [deploying]({{site.baseurl}}/docs/quick-start/ci-quick-start/deploy-to-kubernetes/) to it. 
 
 Note that you can also add a DigitalOcean cluster as a generic  cluster as well (explained below).
 

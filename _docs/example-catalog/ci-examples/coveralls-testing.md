@@ -21,7 +21,7 @@ max-width="80%"
 
 ## Prerequisites for using Coveralls
 
-* A simple [Codefresh pipeline up and running]({{site.baseurl}}/docs/quick-start/ci-quickstart/create-ci-pipeline/)
+* A simple [Codefresh pipeline up and running]({{site.baseurl}}/docs/quick-start/ci-quick-start/create-ci-pipeline/)
 * A [Coveralls account](https://coveralls.io/) (free or enterprise) -- Note that all open-source projects are free on Coveralls
 * A testing tool added to your project that produces coverage reports
 
@@ -86,7 +86,7 @@ max-width="80%"
 ## Codefresh pipeline
 
 
-If the project you want to use Coveralls in does not have a pipeline, [create a new pipeline]({{site.baseurl}}/docs/quick-start/ci-quickstart/create-ci-pipeline/).
+If the project you want to use Coveralls in does not have a pipeline, [create a new pipeline]({{site.baseurl}}/docs/quick-start/ci-quick-start/create-ci-pipeline/).
 
 {% include image.html 
 lightbox="true" 

@@ -146,4 +146,4 @@ To remove a config map, click on "remove" icon in the selected row. After your c
 ## Related articles
 [Connect to a Kubernetes cluster]({{site.baseurl}}/docs/integrations/#connect-a-kubernetes-cluster)  
 [Managing Kubernetes clusters]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/)  
-[Kubernetes deployment quick start]({{site.baseurl}}/docs/quick-start/ci-quickstart/deploy-to-kubernetes/)  
+[Kubernetes deployment quick start]({{site.baseurl}}/docs/quick-start/ci-quick-start/deploy-to-kubernetes/)  

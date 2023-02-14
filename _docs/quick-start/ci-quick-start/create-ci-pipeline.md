@@ -2,7 +2,7 @@
 title: "Pipeline quick start"
 description: "Quick start to set up a continuous integration (CI) pipeline"
 group: quick-start
-sub_group: ci-quickstart
+sub_group: ci-quick-start
 redirect_from:
   - /docs/getting-started/create-a-basic-pipeline/
   - /docs/getting-started-create-a-basic-pipeline/
@@ -570,9 +570,9 @@ max-width="60%"
 You have now completed the final task in the CI pipeline quick start.  
 
 Continue with:  
-[Kubernetes deployment quick start]({{site.baseurl}}/docs/quick-start/ci-quickstart/deploy-to-kubernetes/)  
+[Kubernetes deployment quick start]({{site.baseurl}}/docs/quick-start/ci-quick-start/deploy-to-kubernetes/)  
 OR  
-[Helm deployment to Kubernetes quick start]({{site.baseurl}}/docs/quick-start/ci-quickstart/deploy-with-helm)
+[Helm deployment to Kubernetes quick start]({{site.baseurl}}/docs/quick-start/ci-quick-start/deploy-with-helm)
 
 
 ## Read more on pipelines & Docker registries

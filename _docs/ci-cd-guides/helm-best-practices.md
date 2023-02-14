@@ -361,7 +361,7 @@ There are different pipelines for:
 While this workflow is very flexible, it adds complexity on the number of Helm charts available (since they exist in multiple Helm repositories). You also need to set up the parameters between the different pipelines so that Helm charts to be deployed can be indeed found in the expected Helm repository.
 
 ## Related articles
-[Helm quick start guide]({{site.baseurl}}/docs/quick-start/ci-quickstart/deploy-with-helm/)  
+[Helm quick start guide]({{site.baseurl}}/docs/quick-start/ci-quick-start/deploy-with-helm/)  
 [Using Helm in a Codefresh pipeline]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/)  
 [Helm Dashboard]({{site.baseurl}}/docs/deployments/helm/helm-releases-management)  
 [Helm Promotion boards]({{site.baseurl}}/docs/deployments/helm/helm-environment-promotion)  

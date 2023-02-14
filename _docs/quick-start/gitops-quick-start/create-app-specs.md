@@ -2,7 +2,7 @@
 title: "Create and commit resources for application"
 description: ""
 group: getting-started
-sub-group: gitops-quickstart
+sub-group: gitops-quick-start
 toc: true
 ---
 
