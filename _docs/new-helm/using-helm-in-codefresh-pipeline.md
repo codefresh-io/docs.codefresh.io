@@ -240,6 +240,7 @@ Notes:
 - The directory that contains a chart MUST have the same name as the chart. Thus, a chart named `my-chart` MUST be created in a directory called `my-chart/`. This is a requirement of the [Helm Chart format](https://helm.sh/docs/chart_template_guide/).
 
 ## Configuration
+
 {: .table .table-bordered .table-hover}
 |Name|Required|Description|
 |---|---|---|
@@ -249,11 +250,11 @@ Notes:
 |chart_subdir |optional | The subfolder where the chart is located in the JFrog Artifactory Helm repository.|
 |chart_version|optional|Override or set the chart version.|
 |cmd_ps|optional|Command Postscript - this will be appended as is to the generated helm command string. Can be used to set additional parameters supported by the command but not exposed as configuration options.|
-|commands|optional|commands to execute in plugin after auth action|
+|commands|optional|commands to execute in plugin after auth action.|
 |credentials_in_arguments | optional | The username and password credentials to add to the Helm command as arguments. If not added to the Helm command, the credentials are passed in the URL `http(s)://username:password@url`. Should be enabled for JFrog Artifactory Helm repositories.|
 |custom_value_files|optional|values file to provide to Helm as --values or -f.|
 |custom_values|optional|values to provide to Helm as --set.|
-|helm_repository_context | The name of the Helm repository integration configured in Codefresh.|
+|helm_repository_context | optional |The name of the Helm repository integration configured in Codefresh.|
 |helm_version|optional|version of [cfstep-helm image](https://hub.docker.com/r/codefresh/cfstep-helm/tags).|
 |kube_context|required for install|Kubernetes context to use. The name of the cluster as [configured in Codefresh]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/).|
 |namespace|optional|Target Kubernetes namespace to deploy to.|
