@@ -588,7 +588,7 @@ Forward the MongoDB service port for the new stateful set and place the process 
 
 (**Note!** Default service address was changed)
 ```shell
-kubectl port-forward --namespace $NAMESPACE svc/mongodb 27017:27017 &
+kubectl port-forward --namespace $NAMESPACE svc/cf-mongodb 27017:27017 &
 ```
 
 Restore the contents of the backup into the new release using the *mongorestore* tool. If this tool is not available on your system, mount the directory containing the backup files as a volume in Bitnami's MongoDB Docker container and use the *mongorestore* client tool in the container image to import the backup into the new cluster, as shown below:
