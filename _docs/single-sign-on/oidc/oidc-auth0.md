@@ -31,8 +31,8 @@ First create a new application in Auth0.
 
 {% include image.html 
 lightbox="true"
-file="/images/administration/sso/auth0/create-auth0-app.png" 
-url="/images/administration/sso/auth0/create-auth0-app.png"
+file="/images/sso/auth0/create-auth0-app.png" 
+url="/images/sso/auth0/create-auth0-app.png"
 alt="Create Auth0 application"
 caption="Create Auth0 application"
 max-width="40%"
@@ -46,8 +46,8 @@ max-width="40%"
 
 {% include image.html 
 lightbox="true"
-file="/images/administration/sso/auth0/auth0-app-settings.png" 
-url="/images/administration/sso/auth0/auth0-app-settings.png"
+file="/images/sso/auth0/auth0-app-settings.png" 
+url="/images/sso/auth0/auth0-app-settings.png"
 alt="Auth0 application settings"
 caption="Auth0 application settings"
 max-width="40%"
@@ -73,8 +73,8 @@ After creating an Auth0 application, create an SSO account for OAuth0 in Codefre
 
 {% include image.html 
 lightbox="true"
-file="/images/administration/sso/auth0/codefresh-settings.png"
-url="/images/administration/sso/auth0/codefresh-settings.png"
+file="/images/sso/auth0/auth0-oidc-sso-settings.png"
+url="/images/sso/auth0/auth0-oidc-sso-settings.png"
 alt="SSO account settings for Auth0 in Codefresh"
 caption="SSO account settings for Auth0 in Codefresh"
 max-width="40%"
@@ -97,8 +97,8 @@ As the final step in Auth0 SSO setup, return to Auth0, and then define the Login
 
 {% include image.html 
 lightbox="true"
-file="/images/administration/sso/auth0/sso-settings-in-auth0.png" 
-url="/images/administration/sso/auth0/sso-settings-in-auth0.png"
+file="/images/sso/auth0/sso-settings-in-auth0.png" 
+url="/images/sso/auth0/sso-settings-in-auth0.png"
 alt="SSO settings for application in Auth0"
 caption="SSO settings for application in Auth0"
 max-width="50%"

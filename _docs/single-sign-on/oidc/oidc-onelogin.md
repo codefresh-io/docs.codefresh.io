@@ -24,8 +24,8 @@ Configure the application in the OneLogin dashboard.
     
     {% include image.html 
     lightbox="true" 
-    file="/images/administration/sso/onelogin/step1.png" 
-    url="/images/administration/sso/onelogin/step1.png"
+    file="/images/sso/onelogin/step1.png" 
+    url="/images/sso/onelogin/step1.png"
     alt="OneLogin Dashboard"
     caption="OneLogin Dashboard"
     max-width="50%"
@@ -36,8 +36,8 @@ Configure the application in the OneLogin dashboard.
     
    {% include image.html 
     lightbox="true" 
-    file="/images/administration/sso/onelogin/step2.png" 
-    url="/images/administration/sso/onelogin/step2.png"
+    file="/images/sso/onelogin/step2.png" 
+    url="/images/sso/onelogin/step2.png"
     alt="Locating the OpenId Connect App"
     caption="Locating the OpenId Connect App"
     max-width="50%"
@@ -48,8 +48,8 @@ Configure the application in the OneLogin dashboard.
     
     {% include image.html 
     lightbox="true" 
-    file="/images/administration/sso/onelogin/step3.png" 
-    url="/images/administration/sso/onelogin/step3.png"
+    file="/images/sso/onelogin/step3.png" 
+    url="/images/sso/onelogin/step3.png"
     alt="Adding a new application"
     caption="Adding a new application"
     max-width="50%"
@@ -61,8 +61,8 @@ Configure the application in the OneLogin dashboard.
     
     {% include image.html 
     lightbox="true" 
-    file="/images/administration/sso/onelogin/step4-post.png" 
-    url="/images/administration/sso/onelogin/step4-post.png"
+    file="/images/sso/onelogin/step4-post.png" 
+    url="/images/sso/onelogin/step4-post.png"
     alt="Copying the values of Client ID and Secret"
     caption="Copying the values of Client ID and Secret"
     max-width="50%"
@@ -79,8 +79,8 @@ Configure the application in the OneLogin dashboard.
 
     {% include image.html 
   lightbox="true" 
-  file="/images/administration/sso/onelogin/sso-csdp-onelogin.png" 
-  url="/images/administration/sso/onelogin/sso-csdp-onelogin.png"
+  file="/images/sso/onelogin/sso-codefresh-settings.png" 
+  url="/images/sso/onelogin/sso-codefresh-settings.png"
   alt="SSO settings for OneLogin in Codefresh"
   caption="SSO settings for OneLogin in Codefresh"
   max-width="50%"
@@ -100,8 +100,8 @@ Configure the application in the OneLogin dashboard.
   
    {% include image.html 
   lightbox="true" 
-  file="/images/administration/sso/onelogin/step7.png" 
-  url="/images/administration/sso/onelogin/step7.png"
+  file="/images/sso/onelogin/step7.png" 
+  url="/images/sso/onelogin/step7.png"
   alt="Getting the auto-generated Client Name"
   caption="Getting the auto-generated Client Name"
   max-width="100%"
@@ -122,8 +122,8 @@ Use the Client Name from the previous section to generate the Login URL and Redi
 
 {% include image.html 
 lightbox="true" 
-file="/images/administration/sso/onelogin/step8.png" 
-url="/images/administration/sso/onelogin/step8.png"
+file="/images/sso/onelogin/step8.png" 
+url="/images/sso/onelogin/step8.png"
 alt="Login and Redirect URI"
 caption="Login and Redirect URI"
 max-width="50%"

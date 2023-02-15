@@ -167,12 +167,12 @@ max-width="70%"
 
 **How to**  
 
-1. In the Codefresh UI, from the toolbar click the **Settings** icon.
+1. In the Codefresh UI, from the toolbar, click the **Settings** icon.
 1. In the sidebar, from Access & Collaboration, select [Single Sign-On](https://g.codefresh.io/2.0/account-settings/single-sign-on){:target="\_blank"}.
-1. Click **Add Single Sign-On**, and select **Azure AD**.
+1. Click **Add Single Sign-On**, and select **Azure**, and click **Next**.
 1. Enter the following:  
   * **Client Name**: For auto-generation, leave empty. Codefresh generates the client name once you save the settings.
-  * **Display Name**: Meaningful name for the SSO provider - Shown as display name in Azure (see below)
+  * **Display Name**: Meaningful name for the SSO provider. This is the name shown in Azure.
   * **Access token** and **Application ID**: The Application ID from your Enterprise Application Properties in Azure AD.
   * **Client Secret**: The key value you copied when you created the client secret in Azure.
   * **Tenant**: `mycompany.onmicrosoft.com` or the ID of `0example1-0000-0aa0-a00a-1example0`
@@ -184,13 +184,14 @@ lightbox="true"
 file="/images/sso/azure/sso-codefresh-settings.png"
 url="/images/sso/azure/sso-codefresh-settings.png"
 alt="SSO settings for Azure in Codefresh"
-caption="SSO settings for Azure in Codefres"
+caption="SSO settings for Azure in Codefresh"
 max-width="70%"
 %}
 
 {:start="4"}
 1. Click **Save**.  
-   If you left the Client Name empty, Codefresh generates one (as in the example below). Codefresh uses this name to identify the SSO configuration.
+   If you left the Client Name empty, Codefresh generates one (as in the example below). Codefresh uses this name to identify the SSO configuration.  
+   You will need this value as the Reply URL setting in the Azure portal.
 
 {% include image.html
 lightbox="true"
@@ -201,7 +202,7 @@ caption="Example of Codefresh-generated Client Name for Azure"
 max-width="50%"
 %}
 
-  We will need this value in the reply URL setting (back in the Azure portal UI).
+
 1. Continue with [Step 5: Configure redirect URIs in Azure](#step-5-configure-redirect-uris-in-azure).
 
 
