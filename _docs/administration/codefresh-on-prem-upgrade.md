@@ -514,7 +514,7 @@ kubectl port-forward --namespace codefresh svc/cf-postgresql 5432:5432
 Restore the contents of the backup into the new release using the *pg_restore* tool. If this tool is not available on your system, mount the directory containing the backup files as a volume in Bitnami's PostgreSQL Docker container and use the *pg_restore* client tool in the container image to import the backup into the new cluster, as shown below:
 ```shell
 cd psqlbackup
-docker run --rm --name postgresql-backup -e PGPASSWORD=$PGPASSWORD -v $(pwd):/app --net="host" bitnami/postgresql:13 pg_restore --Fc --create --dbname postgres -h host.docker.internal -p 5432 /app/audit.dump
+docker run --rm --name postgresql-backup -e PGPASSWORD=$PGPASSWORD -v $(pwd):/app --net="host" bitnami/postgresql:13 pg_restore -Fc --create --dbname postgres -h host.docker.internal -p 5432 /app/audit.dump
 ```
 
 ##### Backup and restore via Helm hooks
