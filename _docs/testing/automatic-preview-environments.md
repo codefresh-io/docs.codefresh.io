@@ -1,95 +1,69 @@
 ---
-title: "Automatic preview environments"
-excerpt: ""
-description: ""
-excerpt: ""
+title: "Dynamic preview environments"
+description: "Preview test environments"
 group: testing
 redirect_from:
+  - /docs/testing/automatic-preview-environments/
   - /docs/launch-composition/
   - /docs/on-demand-test-environment/launch-composition-at-the-end-of-the-build/
 toc: true
-old_url: /docs/launch-composition
 ---
-If your service is one of many micro-services, after all your automatic tests on your service you would probably want to check the new service with your whole system. In this case you can launch the composition of your system as part of your build. At the end of this build you would be able to open the composition.
+If your service is one of many microservices, after running automated tests on your service, you would probably want to check the new service with your whole system. In this case, you can launch the composition of your system as part of your build, and at the end of the build, open the composition.
 
-## Pre-Requisites
+## Prerequisites
 
-You should already have done the tutorials for [the basic pipeline]({{site.baseurl}}/docs/getting-started/create-a-basic-pipeline/) and [temporary environments]({{site.baseurl}}/docs/getting-started/on-demand-environments/).
+Complete the tutorials for:  
+* [Creating a basic pipeline]({{site.baseurl}}/docs/quick-start/ci-quick-start/create-ci-pipeline/)
+* [Creating temporary environments]({{site.baseurl}}/docs/quick-start/ci-quick-start/on-demand-environments/)
 
-## Launching The Composition
+## Launch the composition
 
 {:start="1"}
 1. Open your `codefresh.yml` file and add a new step:
-
-  `YAML`
-{% highlight yaml %}
-{% raw %}
+```yaml
 launch_composition_step:
     title: "Launch full composition with latest images"
     type: launch-composition
     composition: your-composition-name
     fail_fast: false
-{% endraw %}
-{% endhighlight %}
+```
+1. Commit and push the changes to Git repository.
+1. Build your service with Codefresh.
+1. In the Codefresh UI, from the Artifacts section on the sidebar, select **Compositions**, and then select the **Running Compositions** tab.  
+   The new preview environment is displayed in the list of Running Compositions.
 
-{:start="2"}
-2. Commit and push the changes to git repository
+## Launch an environment on single branch
 
-{:start="3"}
-3. Build your service with Codefresh
+There is a limit to the number of environments you can run concurrently. That's why it's a good practice to launch the composition only on a certain condition. Usually the most relevant condition is the branch, since you probably want your environment to be updated on the main branch.
 
-{:start="4"}
-4. Click on *Compositions* on the left sidebar and then choose the *Running Compositions* tab.
-
-
-{:start="5"}
-5. You will see the new preview environment on this page
-
-## Launching an environment only on one branch
-
-There is a limit to the number environments you can run concurrently. That's why it's a good practice to launch the the composition only on certain condition. Usually the most relevant condition is the branch, since you probably want your environment to be updated by you main branch.
-
-The following instructions would explain how to launch the environment for only the `master` branch: 
+The following instructions describe how to launch the environment for only the `master` branch: 
 
 {:start="1"}
-1. Open your `codefresh.yml` file and add to the 'launch_composition_step` the following:
-
-  `YAML`
-{% highlight yaml %}
-{% raw %}
+1. Open your `codefresh.yml` file and add to the `launch_composition_step` the following:
+```yaml
 when:
     branch:
       only:
         - master
-{% endraw %}
-{% endhighlight %}
-
-{:start="2"}
-2. Commit and push changes to your git repository `master` branch.
-
-{:start="3"}
-3. Build your service with codefresh on branch `master`
-
-{:start="4"}
-4. Create a new branch and push it to your git repository under a new branch
-
-{:start="5"}
-5. Build your service with codefresh on the new branch
-
-{:start="6"}
-6. When the build would finish, open the its log. You should see something like:
+```
+1. Commit and push changes to your Git repository's `master` branch.
+1. Build your service with Codefresh on branch `master`.
+1. Create a new branch and push it to your Git repository under a new branch.
+1. Build your service with Codefresh on the new branch.
+1. When the build completes execution, open its log.  
+   You should see something similar to the example below.
 
 {% include image.html 
 lightbox="true" 
-file="/images/df14346-Screen_Shot_2017-01-19_at_10.29.16.png" 
-url="/images/df14346-Screen_Shot_2017-01-19_at_10.29.16.png"
-alt="Screen Shot 2017-01-19 at 10.29.16.png"
-max-width="40%" 
+file="/images/testing/dynamic-preview-environment.png" 
+url="/images/testing/dynamic-preview-environment.png"
+alt="Launch environment on single branch"
+caption="Launch environment on single branch"
+max-width="70%" 
 %}
 
-## What to read next
-
-* [Codefresh yaml]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
-* [Creating compositions]({{site.baseurl}}/docs/testing/create-composition/)
-* [Integration tests]({{site.baseurl}}/docs/testing/integration-tests/)
-* [Service containers]({{site.baseurl}}/docs/codefresh-yaml/service-containers/)
+## Related articles
+[Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Creating compositions]({{site.baseurl}}/docs/testing/create-composition/)  
+[Integration tests]({{site.baseurl}}/docs/testing/integration-tests/)  
+[Service containers]({{site.baseurl}}/docs/pipelines/service-containers/)

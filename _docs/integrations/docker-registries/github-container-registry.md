@@ -1,44 +1,45 @@
 ---
 title: "GitHub Container Registry"
-description: "Learn how to push Docker images to your GitHub Container Registry"
+description: "Push Docker images to GitHub Container Registry with pipeline integrations"
 group: integrations
 sub_group: docker-registries
 redirect_from:
+  - /docs/integrations/docker-registries/github-container-registry/
   - /docs/integrations/docker-registries/github-packages/
 toc: true
 ---
 
-You can use [GitHub Container Registry](https://docs.github.com/en/free-pro-team@latest/packages/getting-started-with-github-container-registry) as your Docker Registry in your Codefresh pipeline. 
+Configure [GitHub Container Registry](https://docs.github.com/en/free-pro-team@latest/packages/getting-started-with-github-container-registry){:target="\_blank"} as your Docker Registry, and use it in your Codefresh pipeline. 
 
-## Overview: GitHub Container Registry
 
-The GitHub Container Registry allows you to host and manage your Docker container images in your personal or organisation account on GitHub. One of the benefits is that permissions can be defined for the Docker image independent from any repository. Thus, your repository could be private and your Docker image public. More [information on permissions](https://docs.github.com/en/free-pro-team@latest/packages/managing-container-images-with-github-container-registry/configuring-access-control-and-visibility-for-container-images) are on the GitHub documentation.
+The GitHub Container Registry allows you to host and manage Docker container images in your personal or organisation account on GitHub. One of the benefits is that permissions can be defined for the Docker image, independent of any repository. Thus, your repository could be private and your Docker image public.  
+See GitHub documentation for more [information on permissions](https://docs.github.com/en/free-pro-team@latest/packages/managing-container-images-with-github-container-registry/configuring-access-control-and-visibility-for-container-images){:target="\_blank"}.
 
-The next sections will look at
-* How to use The GitHub Container Registry manually
-* Automating the process by connecting the Registry to your Codefresh Pipeline
+You can use the GitHub Container Registry manually or automate the process by connecting the registry to your Codefresh pipeline.
 
-## Using The GitHub Container Registry
+
+## Using the GitHub Container Registry
 
 You will need the following
-* A GitHub account (your GitHub username)
+* A GitHub account with your GitHub username
 * A personal access token
-* The Docker image that you want to push (or use in your Codefresh Pipeline).
+* The Docker image you want to push or use in your Codefresh pipeline
 
-## Creating a personal token
+### Create a personal token
 
-The username to the registry is the same as your GitHub username. For the password you need to [create a GitHub personal token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token).
+The username to the registry is the same as your GitHub username. 
+For the password you need to [create a GitHub personal token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token){:target="\_blank"}.
 
 When creating the personal token, you need to select at least the following scopes:
 
 * `write:packages` 
 * `read:packages`
 * `delete:packages` 
-* `repo` (if your repository is private; do not select if it is public)
+* `repo` if your repository is private; if public, do not select
 
 Once you create the token, note it down.
 
-You can make sure that your token is valid by using it as password on your local workstation with the docker command:
+You can make sure that your token is valid by using it as a password on your local workstation with the Docker command:
 
 ```
 docker login ghcr.io --username github-account
@@ -47,17 +48,17 @@ docker login ghcr.io --username github-account
 
 **Important** Make sure that the URL is correct, otherwise, you will receive login errors later on. The github-account is your GitHub username.
 
-## Tag and push your Docker image
+### Tag and push your Docker image
 
-After you are logged in, you can now tag and push your Docker image to the GitHub Container Registry. We will show you two ways to do so. The first one is the manual set-up with the Docker CLI, the second one uses Codefresh to automate the process.
+After you are logged in, you can now tag and push your Docker image to the GitHub Container Registry. The first method is the manual setup with the Docker CLI, and the second one uses Codefresh to automate the process.
 
-Use the following command to tag your Docker image
+Use the following command to tag your Docker image:
 
 ```
 docker tag image-id ghcr.io/github-account/image-name:image-version
 ```
 
-For example
+For example:
 
 ```
 docker tag 5e369524eecb ghcr.io/anais-codefresh/react-example:1.0
@@ -87,32 +88,36 @@ LABEL org.opencontainers.image.source https://github.com/OWNER/REPO
 
 Now that you have verified your token, we can connect the registry to Codefresh.
 
-## Connecting the GitHub registry to Codefresh
+## Set up GitHub Container Registry integration
 
-Go the [Registry integration screen]({{site.baseurl}}/docs/integrations/docker-registries/) at [https://g.codefresh.io/account-admin/account-conf/integration/registryNew](https://g.codefresh.io/account-admin/account-conf/integration/registryNew) and add a new Registry by choosing [other Registries]({{site.baseurl}}/docs/integrations/docker-registries/other-registries/).
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipeline Integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
+1. Select **Docker Registries** and then click **Configure**.
+1. From the **Add Registry Provider** dropdown, select **Other Registries**.
+1. Define the following:  
+  * **Registry name**: A unique name for this configuration.
+  * **Username**: Your GitHub username.
+  * **Password**: Your GitHub personal token.
+  * **Domain**: `ghcr.io`.
+  * Expand **Advanced Options** and define the [**Repository Prefix**]({{site.baseurl}}/docs/integrations/docker-registries/#using-an-optional-repository-prefix) as your GitHub username.
 
 {% include image.html 
 	lightbox="true" 
 	file="/images/integrations/docker-registries/github/github-registry-codefresh.png" 
 	url="/images/integrations/docker-registries/github/github-registry-codefresh.png" 
-	alt="Entering GitHub Registry details"
-	caption="Entering GitHub Registry details" 
-	max-width="100%" 
+	alt="GitHub Container Registry settings"
+	caption="GitHub Container Registry settings" 
+	max-width="70%" 
 %}
 
-Enter your details:
+{:start="5"}
+1. To verify the connection details, click **Test Connection**.
+1. To apply the changes, click **Save**.
 
-* Registry Name - a unique name for this configuration (arbitrary name)
-* Username - your GitHub username
-* Password - your GitHub personal token
-* Domain - `ghcr.io`
-* [Repository Prefix]({{site.baseurl}}/docs/integrations/docker-registries/#using-an-optional-repository-prefix) - your GitHub username (after expanding the *Advanced Options* sections)
 
-Click the *Test Connection* button and apply your changes if you get a success message.
 
 ## Pushing Docker image to registry
 
-With the registry integration in place, you can now push a Docker image in any Codefresh pipeline, simply by mentioning the registry by name (`github-container-registry` in my example).
+With the registry integration in place, you can now push a Docker image in any Codefresh pipeline, simply by mentioning the registry by name (`github-container-registry` in the example).
 
 {% include image.html 
 	lightbox="true" 
@@ -175,8 +180,8 @@ After the pipeline has finished the Docker tags can also be seen in the GitHub p
 You can now treat this registry like any other Codefresh registry.
 
 
-## What to read next
-
-* [Working with Docker Registries]({{site.baseurl}}/docs/ci-cd-guides/working-with-docker-registries/)
-* [Push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/)
-* [Building and pushing an image]({{site.baseurl}}/docs/yaml-examples/examples/build-and-push-an-image/)
+## Related articles
+[Docker registries for pipeline integrations]({{site.baseurl}}/docs/integrations/docker-registries)  
+[Working with Docker Registries]({{site.baseurl}}/docs/ci-cd-guides/working-with-docker-registries/)  
+[Push step]({{site.baseurl}}/docs/pipelines/steps/push/)  
+[Building and pushing an image]({{site.baseurl}}/docs/example-catalog/ci-examples/build-and-push-an-image/)  

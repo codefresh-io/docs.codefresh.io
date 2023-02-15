@@ -1,14 +1,14 @@
 ---
-title: "Test reports"
-description: "How to create and view Test reports in Codefresh"
+title: "Creating test reports"
+description: "Create and view test reports in Codefresh"
 group: testing
 redirect_from:
+  - /docs/testing/test-reports/
   - /docs/configure-ci-cd-pipeline/test-reports/
 toc: true
 ---
 
-Codefresh offers the capability to store your test results for every build and view them
-at any point in time.
+Codefresh offers the capability to store test results for every build and view them at any point in time.
 
 Currently Codefresh supports the storage of test reports in:  
 * [Google buckets](https://cloud.google.com/storage/docs/key-terms#buckets)
@@ -18,14 +18,12 @@ Currently Codefresh supports the storage of test reports in:
 
 ## Test report modes
 
-There are two modes for processing test reports in Codefresh:
+There are two modes for processing test reports in Codefresh, built-in and custom test reporting
 
-1. Built-in test reporting based in [Allure framework](http://allure.qatools.ru/) 
-1. Custom reporting for any static website content (i.e. HTML).
+1. Built-in test reporting based on the [Allure framework](https://qameta.io/allure-report/){:target="\_blank"}  
+   Allure is an open-source test framework that can produce HTML reports like the following:
 
-Allure is an open source test framework that can produce HTML reports like the following:
-
-{% include 
+  {% include 
 image.html 
 lightbox="true" 
 file="/images/pipeline/test-reports/sample-test-report.png" 
@@ -35,25 +33,26 @@ caption="Sample Allure test report"
 max-width="70%"
 %}
 
-You can find more details in the [official Allure documentation](https://docs.qameta.io/allure/). Several popular test frameworks are supported such as:
+  For more details, see the [official Allure documentation](https://docs.qameta.io/allure/){:target="\_blank"}.  
+  Allure supports popular testing frameworks such as:
+  * Java/JUnit/TestNG/Cucumber
+  * Python/pytest
+  * JavaScript/Jasmine/Mocha
+  * Ruby/Rspec
+  * Groovy/Spock
+  * .NET/Nunit/mstest
+  * Scala/Scalatest
+  * PHP/PhpUnit
 
-* Java/JUnit/TestNG/Cucumber
-* Python/pytest
-* JavaScript/Jasmine/Mocha
-* Ruby/Rspec
-* Groovy/Spock
-* .NET/Nunit/mstest
-* Scala/Scalatest
-* PHP/PhpUnit
-
-If you use the custom reporting mode, you can select any kind of tool that you want (as long as it produces a static website in the end). You can also use the custom reporting mode for things that are not test reports (such as security reports or quality reports).
+{:start="2"}
+1. Custom reporting for any static website (HTML) content    
+  If you use the custom reporting mode, you can select any kind of tool that you want, as long as it produces a static website in the end. You can also use the custom reporting mode for reports that are not test reports, such as security reports or quality reports.
 
 ## Connecting your storage account
 
 As a first step you need a cloud bucket to store your test results. You can use
 Google, AWS, Azure or MinIO for this purpose. Codefresh will create subfolders in the bucket with names from every build id. It will then upload the reports for that build to the respective folder. Multiple pipelines can use the same bucket.
 
-First go to your Account Configuration, by clicking on *Account Settings* on the left sidebar. On the first section called *Integrations* scroll down to *Cloud Storage*:
 
 {% include 
 image.html 
@@ -65,16 +64,14 @@ caption="Cloud storage Integrations"
 max-width="80%"
 %}
 
-Click the *configure* button and in the following screen enter your cloud settings according to your cloud provider.
+1. Click **Add Cloud Storage**, and select your cloud provider.
+1. Continue to define cloud settings according to your cloud provider, as described in the sections that follow.
 
 ### Connecting a Google bucket
 
-You can create a bucket either from the Google cloud console or the `gsutil` command line tool. See the [official documentation](https://cloud.google.com/storage/docs/creating-buckets#storage-create-bucket-console) for the exact details.
-
-Once the bucket is created, return to your Codefresh account and choose
-*Google Cloud Storage* from the drop-down menu.
-
-The easiest way is to select the *OAuth2* connection method. Enter an arbitrary name for your integration and check the box for read/write access (as Codefresh needs to both write and read from the bucket). 
+1. Create a bucket either from the Google cloud console or the `gsutil` command line tool.  
+  See the [official documentation](https://cloud.google.com/storage/docs/creating-buckets#storage-create-bucket-console){:target="\_blank"} for the exact details.
+1. [Connect your storage account](#connecting-your-storage-account) for **Google Cloud Storage**.
 
 {% include 
 image.html 
@@ -86,13 +83,19 @@ caption="Google cloud storage"
 max-width="80%"
 %}
 
+{:start="3"}
+1. Define the settings: 
+   * Select **OAuth2** as the connection method, which is the easiest way. 
+   * Enter an arbitrary name for your integration.
+   * Select **Allow access to read and write into storage** as Codefresh needs to both write to and read from the bucket. 
+1. Click **Save**. 
+1. When Codefresh asks for extra permissions from your Google account, accept the permissions. 
 
-Then click Save and Codefresh will ask extra permissions from your Google account. Accept the permissions and the integration is ready. You will use the name of the integration as an 
-environment variable in your Codefresh pipeline.
+The integration is ready. You will use the name of the integration as an environment variable in your Codefresh pipeline.
 
-An alternative way of authentication is to use a [Google service account key](https://console.cloud.google.com/apis/credentials/serviceaccountkey). In that case download the JSON file locally that represent the key and paste its contents in the *JSON config* field.
-
-For more information see the [official documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys). 
+> An alternative authentication method is to use **JSON Config** with a [Google service account key](https://console.cloud.google.com/apis/credentials/serviceaccountkey){:target="\_blank"}.  
+  In that case, download the JSON file locally and paste its contents in the **JSON config** field.
+  For more information, see the [official documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys){:target="\_blank"}. 
 
 ### Connecting an S3 bucket
 
@@ -109,19 +112,23 @@ caption="S3 cloud storage"
 max-width="80%"
 %}
 
-Then click *Save* to apply settings. You will use the name of the integration as an 
-environment variable in your Codefresh pipeline as explained in the next sections.
-
-You can also
-use any [external secrets that you have defined]({{site.baseurl}}/docs/integrations/secret-storage/) (such as Kubernetes secrets) as values by clicking on the lock icon that appears next to field.
+You will use the name of the integration as an environment variable in your Codefresh pipeline.
 
 If you have already specified the resource field during secret definition, just enter on the text field the name of the secret directly, i.e. `my-secret-key`.
 If you didn't include a resource name during secret creation then enter the full name in the field like `my-secret-resource@my-secret-key`.
 
 ### Connecting Azure storage
 
-For Azure, create a storage account as explained in the [documentation](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create) and find one of the [two access keys](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-keys-manage) already created. Then once you have the storage account name and account key,
-enter an arbitrary name for your integration and fill in the name and key in the respective fields:
+1. For Azure, create a storage account.  
+  See the [official documentation](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create){:target="\_blank"}.
+1. Find one of the [two access keys](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-keys-manage){:target="\_blank"} already created.
+1. Note down the **Account Name** and **Access key for the account**. 
+1. [Connect your storage account](#connecting-your-storage-account) for **Azure File/Blob Storage**.
+1. Define the settings: 
+   * Enter an arbitrary name for your integration.
+   * Paste the **Azure Account Name** and **Azure Account Key**. 
+1. Click **Save**. 
+
 
 {% include
 image.html
@@ -133,13 +140,53 @@ caption="Azure cloud storage"
 max-width="60%"
 %}
 
-Then click *Save* to apply settings. You will use the name of the integration as an
-environment variable in your Codefresh pipeline as explained in the next sections.
+You will use the name of the integration as an environment variable in your Codefresh pipeline.
+
+You can also use any [external secrets that you have defined]({{site.baseurl}}/docs/integrations/secret-storage/) (such as Kubernetes secrets), as values, by clicking on the lock icon that appears next to field:  
+* If you have already specified the resource field during secret definition, just enter the name of the secret directly in the text field, for example, `my-secret-key`.
+* If you didn't include a resource name during secret creation, enter the full name in the field, for example, `my-secret-resource@my-secret-key`.
+
+### Connecting MinIO storage
 
 You can also use any [external secrets that you have defined]({{site.baseurl}}/docs/integrations/secret-storage/) (such as Kubernetes secrets) as values by clicking on the lock icon that appears next to field.
 
-If you have already specified the resource field during secret definition the just enter on the text field the name of the secret directly, i.e. `my-secret-key`.
-If you didn't include a resource name during secret creation then enter the full name in the field like `my-secret-resource@my-secret-key`.
+   {% include
+image.html
+lightbox="true"
+file="/images/pipeline/test-reports/cloud-storage-minio.png"
+url="/images/pipeline/test-reports/cloud-storage-minio.png"
+alt="MinIO cloud storage"
+caption="MinIO cloud storage"
+max-width="60%"
+%} 
+
+### Integration example in Codefresh pipeline
+See an example of the integration in a pipeline:  
+```yaml
+version: "1.0"
+stages:
+  - "clone"
+  - "test"
+
+steps:
+  clone:
+    title: "Cloning repository"
+    type: "git-clone"
+    repo: "https://github.com/vadim-kharin-codefresh/test/"
+    revision: "master"
+    stage: "clone"
+  unit_test_reporting_step:
+    title: Upload Mocha test reports
+    image: codefresh/cf-docker-test-reporting
+    working_directory: "${{clone}}"
+    stage: "test"
+    environment:
+        - REPORT_DIR=mochawesome-report
+        - REPORT_INDEX_FILE=mochawesome.html
+        - BUCKET_NAME=codefresh-test-reporting
+        - CF_STORAGE_INTEGRATION=minio
+        - CF_BRANCH_TAG_NORMALIZED=test
+```
 
 ### Connecting MinIO storage
 Before connecting to MinIO cloud storage, configure the MinIO server as described in the [official documentation](https://docs.min.io/docs/minio-quickstart-guide.html).  
@@ -195,26 +242,28 @@ steps:
 
 ## Producing Allure test reports from Codefresh pipelines
 
-In order to obtain test reports using the first mode (with Allure) the general process of a pipeline is the following:
+In order to obtain test reports with Allure, the general process of a pipeline is the following:
 
 1. Generate test results using Allure and store them in a folder named `allure-results` (which is the default name).
-1. Copy this folder to the [Codefresh volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) so that it is available to the next pipeline step.
-1. Use the special `cf-docker-test-reporting` pipeline step with a working directory the folder that contains the `allure-results` subfolder.
+1. Copy this folder to the [Codefresh volume]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) to make it available to the next pipeline step.
+1. Use the special `cf-docker-test-reporting` pipeline step with a working directory for the folder that contains the `allure-results` subfolder.
 
 Let's see these requirements in order:
 
 ### Collecting the Allure test results
+ 
+The first step is to run your unit/integration tests using Allure to gather the results.  
+The process is different for every programming language. Follow the [official Allure documentation](https://docs.qameta.io/allure/){:target="\_blank"}. You can also take a look at any of the [examples](https://github.com/allure-examples){:target="\_blank"}. 
 
-The first step is to run your unit/integration tests and use Allure to gather the test results. The process is different for every programming language. Follow the [official Allure documentation](https://docs.qameta.io/allure/). 
-You can also take a look at any of the [examples](https://github.com/allure-examples). 
+By default, Allure creates a folder named `allure-results` containing all the tests. The Codefresh reporting step looks for that folder to upload it to the cloud storage. If you change the default name, then you also need to add an extra parameter in the Codefresh reporting step.
 
-By default, Allure creates a folder named `allure-results` with all the tests. The Codefresh reporting step will look for that folder in order to upload it to the cloud storage. If you change the default name, then you also need to add an extra parameter in the Codefresh reporting step.
+To pass the reports to the next step, you need to place them anywhere in the [Codefresh volume]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) that is automatically shared between all Codefresh steps.
 
-To pass the reports to the next step you need to place them anywhere in the [Codefresh volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) that is automatically shared between all Codefresh steps.
+>You can also leave the test results in the project folder that was checked out from Git, as this folder is already inside the shared Codefresh volume.
 
->It is also possible to leave the test results in the project folder that was checkout from GIT (as this folder is already inside the shared Codefresh volume)
+Therefore, once you create the reports with your testing framework, make sure to copy them to `{% raw %}${{CF_VOLUME_PATH}}{% endraw %}` which is the [Codefresh variable]({{site.baseurl}}/docs/pipelines/variables/) that points to the shared volume.  
 
-Therefore once you create the reports with your testing framework make sure that you copy them to `{% raw %}${{CF_VOLUME_PATH}}{% endraw %}` which is the [Codefresh variable]({{site.baseurl}}/docs/codefresh-yaml/variables/) that points to the shared volume. An example for Node tests would be the following:
+An example for Node tests would be the following:
 
 {% highlight yaml %}
 {% raw %}
@@ -233,7 +282,7 @@ Here the tests are executed and then they are copied to `/codefresh/volume/allur
 ### Creating the Allure test reports
 
 
-Once the test results are collected the next step is the same regardless of your programming language and test framework.
+Once the test results are collected, the next step is the same, regardless of your programming language and test framework.
 
 {% highlight yaml %}
 {% raw %}
@@ -247,13 +296,13 @@ Once the test results are collected the next step is the same regardless of your
 {% endraw %}
 {% endhighlight %}
 
-Here we execute the special `cf-docker-test-reporting` image as a [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/). The important point is that this image will search for `allure-results` on its working directory. This is why we pass `/codefresh/volume/` as the working directory as this is the parent folder of the test results.
+Here, we execute the special `cf-docker-test-reporting` image as a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/). The important point is that this image searches for `allure-results` in its working directory. This is why we pass `/codefresh/volume/` as the working directory as this is the parent folder of the test results.
 
 The required environment variables are:
- * `BUCKET_NAME` the name of the bucket that you created in your cloud provider. Multiple pipelines can use the same bucket.
- * `CF_STORAGE_INTEGRATION` the name of the cloud integration as was entered in the Codefresh UI in the cloud storage integration page.
+ * `BUCKET_NAME`, the name of the bucket that you created in your cloud provider. Multiple pipelines can use the same bucket.
+ * `CF_STORAGE_INTEGRATION`, the name of the cloud integration you created in the Codefresh UI.
 
-If you used another directory name, you can configure the test reporting step like this:
+If you used another directory name, you can configure the test reporting step to include `ALLURE_DIR`, as in the example below:
 
 {% highlight yaml %}
 {% raw %}
@@ -269,8 +318,8 @@ If you used another directory name, you can configure the test reporting step li
 {% endhighlight %}
 
 
-Once that is done, the results will be uploaded to Codefresh infrastructure. You can access
-the report for any build by clicking at the respective button found on the right of each build.
+Once that is done, the results are uploaded to Codefresh infrastructure. You can access
+the report for any build by clicking **Test Report** to the right of each build.
 
 
 {% include 
@@ -283,13 +332,13 @@ caption="Test report button"
 max-width="80%"
 %}
 
-Note that behind the scenes Codefresh automatically handles Allure history for you. At each test run, Codefresh will find the history results from previous runs and recreate them. All folders inside the storage bucket are handled by Codefresh and you should not tamper with them. Make sure also that the account/role you are using for the bucket has delete privileges.
+Note that behind the scenes, Codefresh automatically handles Allure history for you. For each test run, Codefresh finds the historical results from previous runs, and recreates them. Codefresh handles all folders inside the storage bucket, so make sure not to tamper with them. Make sure also that the account/role you are using for the bucket has delete privileges.
 
 ## Using the custom mode for generic reporting
 
-If you don't want to use Allure or wish to create some other kind of report, you can use the alternative mode of the Codefresh reporting step.
+If you don't want to use Allure or wish to create some other kind of report, you can use the alternative mode for the Codefresh reporting step.
 
-Here is an example for a custom reporting via [Mocha](https://mochajs.org/). The reports are placed in the folder `/codefresh/volume/demochat/mochawesome-report`.
+Here is an example for a custom reporting step via [Mocha](https://mochajs.org/){:target="\_blank"}. The reports are placed in the folder `/codefresh/volume/demochat/mochawesome-report`.
 
 
 {% highlight yaml %}
@@ -307,14 +356,15 @@ Here is an example for a custom reporting via [Mocha](https://mochajs.org/). The
 {% endhighlight %}
 
 The environment variables are:
- * `BUCKET_NAME` is the name of the bucket that you created in your cloud provider.
- * `CF_STORAGE_INTEGRATION` is the name of the cloud integration as was entered in the Codefresh UI in the cloud storage integration page.
- * `REPORT_PATH` is the subfolder name in the bucket for each test report.
-   * Data is saved to the bucket in following path: {bucketName}/{pipelineId}/{REPORT_PATH}/{branchName}/{buildId}/
- * `REPORT_DIR` is the name of the folder that will be uploaded.
- * `REPORT_INDEX_FILE` is the name of file that will serve as index file.
+ * `BUCKET_NAME`, the name of the bucket that you created in your cloud provider.
+ * `CF_STORAGE_INTEGRATION`, the name of the cloud integration you created in the Codefresh UI.
+ * `REPORT_PATH`, the subfolder name in the bucket for each test report.
+   * Data is saved to the bucket in following path: `{bucketName}/{pipelineId}/{REPORT_PATH}/{branchName}/{buildId}/`
+ * `REPORT_DIR`, the name of the folder to be uploaded.
+ * `REPORT_INDEX_FILE`, the name of file to serve as the index file.
 
-In the example above we define a non-allure report directory and also which file will serve as the index file. Here is the result:
+In the above example, we define a non-Allure report directory and the file that serves as the index file.  
+Here is the result:
 
 {% include 
 image.html 
@@ -326,9 +376,9 @@ caption="Custom reporting"
 max-width="70%"
 %}
 
-In a similar manner you can upload reports from any other custom tool you have in your pipeline.
+In a similar manner, you can upload reports from any other custom tool you have in your pipeline.
 
-If your report is only one file, simply use the `REPORT_INDEX_FILE` environment variable on its own like below:
+If your report is only one file, simply use the `REPORT_INDEX_FILE` environment variable on its own, as below:
 
 {% highlight yaml %}
 {% raw %}
@@ -347,11 +397,11 @@ If your report is only one file, simply use the `REPORT_INDEX_FILE` environment 
 
 ### Cleaning the reports from the previous run 
 
-In the most usual case, the tests will run, the results will be collected, they will be saved into a folder and then a report will be created by Codefresh.
+In the typical scenario, the tests are run, the results are collected and saved in a folder, and then Codefresh creates the report.
 
-If however something goes wrong with the actual tests, once the Codefresh reporting step runs it will actually pick the old reports (from the previous build). Remember that everything that is placed in the Codefresh volume not only is shared between build steps, but also persists between different builds of the same pipeline (for cache reasons).
+If something goes wrong with the actual tests, once the Codefresh reporting step runs, it actually picks the old reports from the previous build. Remember that everything that is placed in the Codefresh volume is not only shared between build steps, but also persists between different builds of the same pipeline for caching purposes.
 
-If that is a problem for you, pass the extra `CLEAR_TEST_REPORT` environment variable to the reporting step. This deletes the previous test results once they are uploaded so they will not be available in the subsequent build.
+If that is a problem for you, pass the extra `CLEAR_TEST_REPORT` environment variable to the reporting step. This deletes the previous test results once uploaded, so are not available to the subsequent build.  
 
 Here is an example:
 
@@ -370,14 +420,14 @@ Here is an example:
 {% endraw %}
 {% endhighlight %}
 
->Notice that in the Allure reporting mode, the test results are automatically cleared by Codefresh. There is no need to define the `CLEAR_TEST_REPORT` variable by yourself.
+>In the Allure reporting mode, the test results are automatically cleared by Codefresh. There is no need to manually define the `CLEAR_TEST_REPORT` variable.
 
 ## Creating multiple reports
 
-It is also possible to create multiple reports from a single pipeline. As an example, you can create
-a single pipeline that creates two reports, one for code coverage and another one for security vulnerabilities.
+You can create multiple reports from a single pipeline. As an example, you can create
+a single pipeline that creates two reports, one for code coverage, and the other one for security vulnerabilities.
 
-To achieve this, you only need to repeat the variables mentioned in this page with an index number that matches them to the report, `REPORT_DIR.0`, `REPORT_DIR.1`, `REPORT_DIR.2` and so on.
+To achieve this, you only need to repeat the variables mentioned in this article with an index number that matches them to the report, `REPORT_DIR.0`, `REPORT_DIR.1`, `REPORT_DIR.2` and so on.
 
 The following variables can be indexed:
  * `REPORT_DIR`
@@ -386,7 +436,7 @@ The following variables can be indexed:
  * `CLEAR_TEST_REPORT`
  * `REPORT_TYPE` (explained later on)
 
-Here is an example of a pipeline that has two reports. One is for code coverage and one for unit tests. Notice the index number (`.0` and `.1`) used in the variables.
+Here is an example of a pipeline that creates two reports, one for code coverage, and one for unit tests. Notice the index number (`.0` and `.1`) used in the variables.
  
 
 {% highlight yaml %}
@@ -425,8 +475,10 @@ If you don't provide a `REPORT_TYPE`, a default icon will be used.
 
 ## Getting results from tests that fail
 
-By default, it unit tests fail the whole pipeline will stop. If you want the pipeline to keep running even if the tests fail
-you need to add the [fail_fast property]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/#execution-flow) in the pipeline and set it to false. Here is an example
+By default, if unit tests fail, the pipeline stops execution. If you want the pipeline to keep running even if the tests fail,
+add the [fail_fast property]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#execution-flow) to the pipeline and set it to `false`.  
+
+Here is an example:
 
 {% highlight yaml %}
 {% raw %}
@@ -439,17 +491,15 @@ you need to add the [fail_fast property]({{site.baseurl}}/docs/codefresh-yaml/wh
 {% endraw %}
 {% endhighlight %}
 
-This will allow the pipeline to continue running. Therefore any steps you have later that collect reports
-will run normally and have access to test results.
+The pipeline continue its run, and any steps later in the pipeline that collect reports, also run as usual, with access to test results.
 
 ## Marking the whole pipeline as failed if tests failed
 
-If you have used the `fail_fast:false` property in your pipeline as explained in the previous section you will notice
-that the pipeline "succeeds" even if the tests fail (because by using that property their result is essentially ignored).
+When you use the `fail_fast:false` property in your pipeline, the pipeline "succeeds" even if the tests fail, because test results are essentially ignored.
 
-If you don't like this behavior you can still mark the whole pipeline as failed by using [pipeline conditionals]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/).
+To fail the pipeline when tests fail, use [conditional execution]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/).
 
-Add as a last step in your pipeline the following step:
+As the last step in your pipeline, add the following step:
 
 {% highlight yaml %}
 {% raw %}
@@ -466,7 +516,7 @@ Add as a last step in your pipeline the following step:
 {% endraw %}
 {% endhighlight %}
 
-This step checks the result of your unit tests and stops the whole pipeline by exiting with an error.
+This step checks the result of your unit tests, and stops the whole pipeline by exiting with an error, if the tests fail.
 Replace `RunMyUnitTests` with the name of your step that runs unit tests. 
 
 Here is a full pipeline example:
@@ -500,7 +550,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-If you run this pipeline you will see 
+If you run this pipeline, you will see:
 
 1. The `RunMyUnitTests` will fail but the pipeline will continue
 1. The `CollectingMyTestresults` step will always run even if tests fail
@@ -508,10 +558,10 @@ If you run this pipeline you will see
 
 ## Running the test reporting step in parallel mode
 
-Test reporting goes really well with the [parallel pipeline mode]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/) where each step
-is evaluated any time there is a workflow change. 
+Test reporting works well with the [parallel pipeline mode]({{site.baseurl}}/docs/pipelines/advanced-workflows/), where each step
+is evaluated any time there is a change in the workflow. 
 
-Here is how you can define the test reporting step to run regardless of pipeline result.
+Here is how you can define the test reporting step to run regardless of pipeline result:
 
 {% highlight yaml %}
 {% raw %}
@@ -525,14 +575,12 @@ Here is how you can define the test reporting step to run regardless of pipeline
 {% endraw %}
 {% endhighlight %}
 
-See [handling errors in a pipeline]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/#handling-error-conditions-in-a-pipeline) for more details.
+See [handling errors in a pipeline]({{site.baseurl}}/docs/pipelines/advanced-workflows/#handling-error-conditions-in-a-pipeline) for more details.
 
 
 
-## What to read next
-
-
-* [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
-* [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
-* [Parallel workflows]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/)
+## Related articles
+[Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
+[Parallel workflows in pipelines]({{site.baseurl}}/docs/pipelines/advanced-workflows/)  
 

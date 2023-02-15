@@ -1,41 +1,43 @@
 ---
-title: "Google Cloud Builder"
-description: "Using the Google Cloud builder to create Docker images"
+title: "Google Cloud Builder pipeline integration"
+description: "Use the Google Cloud builder to create Docker images in Codefresh pipelines"
 group: integrations
-
+redirect_from:
+  - /docs/integrations/gcloud-builder/
 toc: true
 ---
 
 Google Cloud builder is an online service that allows you to build Docker images using the Google infrastructure and also push them to the Google Cloud registry.
 
-You can also use Cloud builder in a Codefresh pipeline in place of the [normal build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/). This way you can take advantage of the Cloud builder in your Codefresh pipelines, but still push to other registries that are connected to Codefresh (and not just GCR).
+You can also use Cloud builder in a Codefresh pipeline in place of the  standard [build step]({{site.baseurl}}/docs/pipelines/steps/build/). This way you can take advantage of the Cloud builder in your Codefresh pipelines, but still push to other registries that are connected to Codefresh (and not just GCR).
 
 
 ## Prerequisites
 
-In order to use the Cloud builder service in your Codefresh pipeline you need
+To use the Cloud builder service in your Codefresh pipeline you need:
 
-1. A free Dockerhub account and [Dockerhub connected to Codefresh]({{site.baseurl}}/docs/docker-registries/external-docker-registries/docker-hub/).
-1. A Google Cloud subscription and a [service account for the Cloud builder service](https://cloud.google.com/cloud-build/docs/securing-builds/set-service-account-permissions).
+1. A free Docker Hub account and [Docker Hub connected to Codefresh]({{site.baseurl}}/docs/integrations/docker-registries/docker-hub/).
+1. A Google Cloud subscription and a [service account for the Cloud builder service](https://cloud.google.com/cloud-build/docs/securing-builds/set-service-account-permissions){:target="\_blank"}.
 
-Save your service account as a JSON file and make sure you select at least the [following roles](https://cloud.google.com/container-registry/docs/access-control):
+Save your service account as a JSON file, and make sure you select at least the [following roles](https://cloud.google.com/container-registry/docs/access-control){:target="\_blank"}:
 
 * Cloud storage Admin
 * Storage Admin
 * Storage Object Viewer
 * Storage Object Creator
 
-You will use this JSON file either in the usual way of integration a [Google Docker registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/google-container-registry/) in Codefresh or directly in a pipeline as we will see later.
+You will use this JSON file either by integrating a [Google Docker registry]({{site.baseurl}}/docs/integrations/docker-registries/google-container-registry/) in Codefresh, or directly in a pipeline as we will see later.
 
 ## How it works
 
 The Google Cloud builder integration/authentication can be used in the following ways:
 
-1. Authentication will be retrieved from the GCR integration in your Codefresh account, and the resulting Docker image will also be pushed to GCR
-1. Authentication will be retrieved from the GCR integration in your Codefresh account but the resulting Docker image will be pushed to any other [external registry connected to Codefresh]({{site.baseurl}}/docs/docker-registries/external-docker-registries/)
-1. Authentication will be defined in the pipeline itself, and the resulting image can be pushed to any registry connected to Codefresh
+1. Authentication is retrieved from the GCR integration in your Codefresh account, and the resulting Docker image:
+  * Is also be pushed to GCR.
+  * Is pushed to any other [external registry connected to Codefresh]({{site.baseurl}}/docs/integrations/docker-registries/).
+1. Authentication is defined in the pipeline itself, and the resulting image can be pushed to any registry connected to Codefresh
 
-In the first two cases, you will enter your service account file centrally in the GCR integration screen and then any pipeline can authenticate to Google Cloud builder without any further configuration.
+In the first case, you will define the service account file centrally in the GCR integration screen, and then any pipeline can authenticate to Google Cloud builder without any further configuration.
 
 {% 
 	include image.html 
@@ -51,7 +53,7 @@ In the first two cases, you will enter your service account file centrally in th
 
 ## Using Google Cloud builder in a Codefresh pipeline
 
-In the most straightforward scenario you want to create a Docker image with Google Cloud builder and also push to GCR.
+In the most straightforward scenario, you want to create a Docker image with Google Cloud builder and also push to GCR.
 
 {% include image.html 
 lightbox="true" 
@@ -93,9 +95,9 @@ steps:
 {% endhighlight %}
 
 
-In the build step of the pipeline there is an extra property `provider` that specifies we want to use Cloud builder instead of the Codefresh native build step.
+The `build` step of the pipeline has an extra property, `provider`, that specifies we want to use Cloud builder instead of the Codefresh native build step.
 
-The only required argument is the repository that will be used for [Kaniko caching](https://cloud.google.com/cloud-build/docs/kaniko-cache) to speed up subsequent builds. 
+The only required argument is the repository to be used for [Kaniko caching](https://cloud.google.com/cloud-build/docs/kaniko-cache){:target="\_blank"} and speed up subsequent builds. 
 
 >Note that the Kaniko repo should NOT be the same as the repository used for the image itself.
 
@@ -108,14 +110,16 @@ caption="Inspecting an image from Google Cloud build"
 alt="Inspecting an image from Google Cloud build"
 %}
 
-After you run the pipeline you will see your Docker image in the [Image dashboard]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/)
+After runing the pipeline, you will see your Docker image in the [Image dashboard]({{site.baseurl}}/docs/ci-cd-guides/working-with-docker-registries/).
 
-The docker image will also be visible in the Google Cloud Console view of your registry.
+The Docker image is also visible in the Google Cloud Console view of your registry.
 
 ### Pushing to a different registry
 
 Even though the Cloud builder pipeline step authentication is fetched from the GCR configuration, you don't have to push to GCR.
-Simply change the `registry` property in the build step to push the Docker image to another connected registry:
+To push the Docker image to another connected registry, simply change the `registry` property in the build step.  
+
+The pipeline in the example below pushes the Docker image created to another registry that is identified by [Azure]({{site.baseurl}}/docs/integrations/docker-registries/azure-docker-registry/).
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -145,7 +149,7 @@ steps:
 {% endraw %}            
 {% endhighlight %}
 
-This pipeline will push the Docker image created to another registry that is identified by [azure]({{site.baseurl}}/docs/docker-registries/external-docker-registries/azure-docker-registry/).
+
 
 ###  Authenticating to Cloud Builder in the pipeline
 
@@ -184,7 +188,7 @@ steps:
 
 Here the pipeline will try to authenticate to Google Cloud builder using the contents of the `google_app_creds` property.
 
-The value of this property can be a pipeline variable, or project variable or any other standard Codefresh method such as [shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/).
+The value of this property can be a pipeline variable, or project variable or any other standard Codefresh method such as [shared configuration]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/).
 
 You need to escape the contents of the service account before you use in the pipeline with either of these commands on your local workstation:
 
@@ -234,26 +238,26 @@ step_name:
 The extra fields are:
 
 {: .table .table-bordered .table-hover}
-| Field                                      | Description                                                                                                                                                                                                                          | Required/Optional/Default |
-| ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------- |
-| `type`                                    | defines, which provider to use (currently `gcb` and `cf` types are available). It uses `cf` provider by default and the whole provider section can be omitted for a regular build step.                                                                                                                                                                                             | Required                  |
+| Field                                      | Description                                            | Required/Optional/Default |
+| ------------------------------------------ | ------------------------------------------------------ | ------------------------- |
+| `type`                                    | Defines which provider to use (currently `gcb` and `cf` types are available). It uses `cf` provider by default and the whole provider section can be omitted for a regular build step.   | Required                  |
 | `arguments`                  | Parameters  for Google Cloud builder                                  | Required                  |
-| `google_app_creds`           | base64 encoded string of the [Google app credentials JSON](https://cloud.google.com/docs/authentication/production). By default It will be taken from the existing GCR integration.                                  | Optional                  | 
+| `google_app_creds`           | base64 encoded string of the [Google app credentials JSON](https://cloud.google.com/docs/authentication/production){:target="\_blank"}. By default, taken from the existing GCR integration.   | Optional                  | 
 | `cache`                  | The list of Kaniko cache parameters                             | Required                  |
 | `repo`    | Docker repository path for the Kaniko cache                                  | Required                  |
 | `ttl`    | Kaniko cache retention. Default value is `336h`                                  | Optional                 |
-| `timeout`    | This field is directly translated into the corresponding field of the [GCB manifest file](https://cloud.google.com/cloud-build/docs/build-config#structure_of_a_build_config_file). Default is `10m`                                  | Optional                  |
-| `machineType`    | This field is directly translated into the corresponding field of the [GCB manifest file](https://cloud.google.com/cloud-build/docs/build-config#structure_of_a_build_config_file)                                 | Optional                  |
-| `diskSizeGb`    | This field is directly translated into the corresponding field of the [GCB manifest file](https://cloud.google.com/cloud-build/docs/build-config#structure_of_a_build_config_file)                                  | Optional                  |
-| `logsBucket`     | This field is directly translated into the corresponding field of the [GCB manifest file](https://cloud.google.com/cloud-build/docs/build-config#structure_of_a_build_config_file)           | Optional                  |
+| `timeout`    | This field is directly translated into the corresponding field of the [GCB manifest file](https://cloud.google.com/cloud-build/docs/build-config#structure_of_a_build_config_file){:target="\_blank"}. Default is `10m`                                  | Optional                  |
+| `machineType`    | This field is directly translated into the corresponding field of the [GCB manifest file](https://cloud.google.com/cloud-build/docs/build-config#structure_of_a_build_config_file){:target="\_blank"}.                                 | Optional                  |
+| `diskSizeGb`    | This field is directly translated into the corresponding field of the [GCB manifest file](https://cloud.google.com/cloud-build/docs/build-config#structure_of_a_build_config_file){:target="\_blank"} .                               | Optional                  |
+| `logsBucket`     | This field is directly translated into the corresponding field of the [GCB manifest file](https://cloud.google.com/cloud-build/docs/build-config#structure_of_a_build_config_file){:target="\_blank"}.           | Optional                  |
 
 
 
 
-The step also accepts all the field of the [standard build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) but notice that the following fields are not supported in the current implementation and simply ignored by the GCB step logic:
+The step also accepts all the fields of the standard [build step]({{site.baseurl}}/docs/pipelines/steps/build/), but notice that the following fields are not supported in the current implementation and simply ignored by the GCB step logic:
 
 * `no_cache`
-* All the [buildkit]({{site.baseurl}}/docs/codefresh-yaml/steps/build/#buildkit-support)  related fields
+* All the [buildkit]({{site.baseurl}}/docs/pipelines/steps/build/#buildkit-support)  related fields
 
 Here is an example that uses all possible fields:
 
@@ -301,13 +305,11 @@ GCBuild:
 
 
 
-## What to read next
-
-- [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/) 
-- [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/) 
-- [Google Registry integration]({{site.baseurl}}/docs/docker-registries/external-docker-registries/google-container-registry/)
-- [Push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/)
-- [Build and push an image]({{site.baseurl}}/docs/yaml-examples/examples/build-and-push-an-image/)
+## Related articles
+[Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
+[Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
+[Google Container Registry integration]({{site.baseurl}}/docs/integrations/docker-registries/google-container-registry/)  
+[Build and push an image example]({{site.baseurl}}/docs/example-catalog/ci-examples/build-and-push-an-image/)
 
 
 

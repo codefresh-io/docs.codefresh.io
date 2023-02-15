@@ -4,21 +4,19 @@
 
 .bd-footer {
   font-size: 85%;
-  text-align: center;
-  background-color: $cf-dark;
+  text-align: center !important;
+  background-color: #2a2b3d !important;
 
   a {
-    color: $bd-topaz-main;
-    background-color: rgba($bd-topaz-main, .1);
+    color: #8c91c0;
     border-bottom: 1px solid  rgba($cf-dark-alt, .2);
     transition: background .2s ease, border-color, .2s ease;
 
     &:hover,
     &:focus {
-      color: $bd-topaz-main;
+      color: #8c91c0;
       text-decoration: none;
-      background-color: rgba($bd-topaz-main, .16);
-      border-bottom-color: rgba($bd-topaz-main, .9);
+      border-bottom-color: #8c91c0;
     }
   }
 

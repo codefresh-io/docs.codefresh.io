@@ -5,10 +5,19 @@ group: troubleshooting
 sub_group: common-issues
 permalink: /:collection/troubleshooting/common-issues/handling-commit-messages-with-quotes/
 redirect_from:
+  - /docs/troubleshooting/common-issues/handling-commit-messages-with-a-quote-character/
   - /docs/handling-commit-messages-with-quotes/
 toc: true
 ---
-Sometimes it is necessary to use commit messages to decide the logical flow of a pipeline. One such example is skipping continuous integration if the commit message contains "--skip-ci".
+## Issue
+
+Error on commit:  
+`Error parsing YAML file: can not read a block mapping entry; a multiline key may not be an implicit key at line 13, column 30`
+
+## Possible cause
+
+Commit message that determines the logical flow of a pipeline includes quotes as part of the message.  
+One example of using a commit message to decide the flow of a pipeline, is to skip continuous integration if the commit message contains `"--skip-ci"`. Since the commit message contains a quote character, it can result in the error.
 
 Example:
 
@@ -27,12 +36,12 @@ Example:
 {% endraw %}
 {% endhighlight %}
 
-However, doing this might cause the following error if the commit message contains a quote character:
+This is a string quotes issue. The commit message uses a ' symbol, as does the YAML file itself to denote string. This breaks the YAML file. 
 
-      Error parsing YAML file: can not read a block mapping entry; a multiline key may not be an implicit key at line 13, column 30
 
-As explained, this is a string quoting issue. The commit message uses a ' symbol, as does the YAML file itself to denote string. This breaks the YAML file. 
-The solution is to use a multi-line string.
+## Solution
+
+Use a multiline string.
 
   `YAML`
 {% highlight yaml %}
@@ -50,3 +59,5 @@ The solution is to use a multi-line string.
 {% endraw %}
 {% endhighlight %}
  
+## Related articles
+[Troubleshooting common issues]({{site.baseurl}}/docs/troubleshooting/common-issues)

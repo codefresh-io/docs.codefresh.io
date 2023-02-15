@@ -3,6 +3,7 @@ title: ""
 description: ""
 group: terms-and-privacy-policy
 redirect_from:
+  - /docs/terms-and-privacy-policy/terms-of-service/
   - /docs/terms-of-service/
   - /docs/terms-and-privacy-policy/
 toc: true

@@ -9,9 +9,8 @@
   <div class="container-fluid navbar navbar-dark navbar-expand flex-column flex-md-row py-0">
     <a class="navbar-brand mx-0 mx-md-2" href="{{ site.baseurl }}/" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Home');" aria-label="Codefresh">
       {%- include icons/codefresh-icon.svg width="50" height="auto" class="align-middle" -%}
-      <span class="badge cf-badge cf-badge-doc align-middle ml-1">Docs</span>
+      <span class="badge cf-badge cf-badge-doc align-middle ml-1">Codefresh Documentation</span>
     </a>
-
     {% if page.layout != "home" %}
     <form class="bd-search {% if page.layout == "docs" %}bd-search-docs {% endif %}d-flex mt-1 mb-1 mt-md-0 order-2 order-md-2 align-items-center">
       <input type="search" class="form-control form-control-dark mr-sm-2 doc-search-input" id="navbar-search-input" placeholder="{{ site.data.translations[site.locale].search_placeholder_text }}" aria-label="{{ site.data.translations[site.locale].search_placeholder_text }}" autocomplete="off">
@@ -23,6 +22,8 @@
       {% endif %}
     </form>
     {% endif %}
+    <div class="navbar-nav-scroll order-1 order-md-1 mx-md-auto">
+      <ul class="navbar-nav flex-row mx-md-auto">
 
     <div class="navbar-nav-scroll order-1 order-md-1 mx-md-auto">
     <ul class="navbar-nav flex-row mx-md-auto">
@@ -52,34 +53,34 @@
         <a class="nav-link" href="{{ site.baseurl }}/docs/whats-new/whats-new/" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Open Changelog');" >Changelog</a>
       </li>
 
-      {% comment %}
-      <li class="nav-item">
-        <a class="nav-link" href="{{ site.features }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Features');" target="_blank" rel="noopener">Features</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{ site.enterprise }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Enterprise');" target="_blank" rel="noopener">Enterprise</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{ site.pricing }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Pricing');" target="_blank" rel="noopener">Pricing</a>
-      </li>
-      <li class="nav-item bulb bulb-red" data-bulb-text="LIVE">
-        <a class="nav-link" href="{{ site.schedule_demo }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Schedule Demo');" target="_blank" rel="noopener">Schedule demo</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{ site.codefresh_login }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Login');" target="_blank" rel="noopener">Login</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{ site.codefresh_signup }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'SignUp');" target="_blank" rel="noopener">SignUp</a>
-      </li>
-      <!--
-      <li class="nav-item dropdown">
-        <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-versions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          v1.2
-        </a>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="bd-versions">
-          <a class="dropdown-item active" href="{{ site.baseurl }}/docs/">Latest</a>
-        </div>
-      </li>
+        {% comment %}
+        <li class="nav-item">
+          <a class="nav-link" href="{{ site.features }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Features');" target="_blank" rel="noopener">Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ site.enterprise }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Enterprise');" target="_blank" rel="noopener">Enterprise</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ site.pricing }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Pricing');" target="_blank" rel="noopener">Pricing</a>
+        </li>
+        <li class="nav-item bulb bulb-red" data-bulb-text="LIVE">
+          <a class="nav-link" href="{{ site.schedule_demo }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Schedule Demo');" target="_blank" rel="noopener">Schedule demo</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ site.codefresh_login }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Login');" target="_blank" rel="noopener">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ site.codefresh_signup }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'SignUp');" target="_blank" rel="noopener">SignUp</a>
+        </li>
+        <!--
+        <li class="nav-item dropdown">
+          <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-versions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            v1.2
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="bd-versions">
+            <a class="dropdown-item active" href="{{ site.baseurl }}/docs/">Latest</a>
+          </div>
+        </li>
 
       <li class="nav-item">
         <a class="nav-link p-2" href="{{ site.repo }}" target="_blank" rel="noopener" aria-label="GitHub">

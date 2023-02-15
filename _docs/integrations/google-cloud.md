@@ -1,25 +1,26 @@
 ---
-title: "Google Cloud"
-description: "How to use Codefresh with Google Cloud"
+title: "Google Cloud pipeline integration"
+description: "Use Google Cloud with Codefresh pipelines"
 group: integrations
 redirect_from:
+  - /docs/integrations/google-cloud/
   - /docs/deploy-your-containers/kubernetes/
 toc: true
 ---
 
 Codefresh has native support for Google Cloud in the following areas:
 
-- [Connecting to Google registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/google-container-registry/)
-- [Deploying to GKE]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/#adding-gke-cluster)
+- [Connecting to Google registries]({{site.baseurl}}/docs/integrations/docker-registries/google-container-registry/)
+- [Deploying to GKE]({{site.baseurl}}/docs/integrations/kubernetes/#adding-gke-cluster)
 - [Using Google Storage for Test reports]({{site.baseurl}}/docs/testing/test-reports/#connecting-a-google-bucket)
-- [Using Google Storage for Helm charts]({{site.baseurl}}/docs/new-helm/add-helm-repository/#private-repository---gcs)
+- [Using Google Storage for Helm charts]({{site.baseurl}}/docs/deployments/helm/helm-charts-and-repositories/)
 - [Using Cloud Build]({{site.baseurl}}/docs/integrations/gcloud-builder/)
-- [Installing the runner via the marketplace]({{site.baseurl}}/docs/integrations/google-marketplace/)
+- [Installing the Runner via the Marketplace]({{site.baseurl}}/docs/integrations/google-marketplace/)
 
 
 ## Using Google Container Registries
 
-Google Container registries are fully compliant with the Docker registry API that Codefresh follows. You can connect GCR like any [other Docker registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/google-container-registry/).
+Google Container registries are fully compliant with the Docker registry API that Codefresh follows. You can connect GCR like any [other Docker registry]({{site.baseurl}}/docs/integrations/docker-registries/google-container-registry/).
 
 {% 
 	include image.html 
@@ -31,11 +32,11 @@ caption="Connecting to GCR"
 max-width="70%" 
 %}
 
-Once the registry is added you can the [standard push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/) step in pipelines. See also the documentation page for [working with Docker registries]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/).
+Once the registry is added, you can the [standard push step]({{site.baseurl}}/docs/pipelines/steps/push/) in pipelines. See also the documentation page for [working with Docker registries]({{site.baseurl}}/docs/integrations/docker-registries/).
 
 ## Deploying to Google Kubernetes Engine
 
-Codefresh has native support for connecting a GKE cluster in the [cluster configuration screen]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/).
+Codefresh has native support for connecting a GKE cluster in the [cluster configuration screen]({{site.baseurl}}/docs/integrations/kubernetes/#connect-a-kubernetes-cluster).
 
 {% 
 	include image.html 
@@ -47,7 +48,8 @@ caption="Connecting a GKE cluster"
 max-width="40%" 
 %}
 
-Once the cluster is connected you can use any of the [available deployment options]({{site.baseurl}}/docs/deploy-to-kubernetes/deployment-options-to-kubernetes/) for Kubernetes clusters. You also get access to all other Kubernetes dashboards such as the [cluster dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/)  or the [environment dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/environment-dashboard/) .
+Once the cluster is connected, you can use any of the [available deployment options]({{site.baseurl}}/docs/deployments/kubernetes/deployment-options-to-kubernetes/) for Kubernetes clusters.  
+You also get access to all other Kubernetes dashboards such as the [cluster dashboard]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/)  or the [environment dashboard]({{site.baseurl}}/docs/deployments/kubernetes/environment-dashboard/).
 
 ## Storing test reports in Google Cloud storage
 
@@ -60,14 +62,14 @@ file="/images/integrations/google-cloud/google-cloud-storage.png"
 url="/images/integrations/google-cloud/google-cloud-storage.png"
 alt="Google cloud storage"
 caption="Google cloud storage"
-max-width="80%"
+max-width="50%"
 %}
 
 See the full documentation for [test reports]({{site.baseurl}}/docs/testing/test-reports/).
 
 ## Using Google Storage for storing Helm charts
 
-You can connect Google storage as a Helm repository in the [integrations screen]({{site.baseurl}}/docs/new-helm/add-helm-repository/).
+You can connect Google storage as a Helm repository by setting up a [Helm integration]({{site.baseurl}}/docs/integrations/helm/#add-helm-repository/) in Codefresh.
 
 {% include
 image.html
@@ -79,20 +81,20 @@ caption="Using Google Cloud for Helm charts"
 max-width="60%"
 %}
 
-Once you connect your Helm repository you can use it any [Codefresh pipeline with the Helm step]({{site.baseurl}}/docs/new-helm/using-helm-in-codefresh-pipeline/). 
+Once you connect your Helm repository you can use it any [Codefresh pipeline with the Helm step]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/). 
 
 ## Using Google Cloud build
 
-Codefresh has a [native Docker build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) for creating Docker images. As an alternative method of building Docker images you can also use [Google Cloud Build]({{site.baseurl}}/docs/integrations/gcloud-builder/) in a Codefresh pipeline.
+Codefresh has a [native Docker build step]({{site.baseurl}}/docs/pipelines/steps/build/) for creating Docker images. As an alternative method of building Docker images, you can also use [Google Cloud Build]({{site.baseurl}}/docs/integrations/gcloud-builder/) in a Codefresh pipeline.
 
 ## Installing the Codefresh runner from the Google Marketplace
 
-The [Codefresh runner]({{site.baseurl}}/docs/administration/codefresh-runner/) is a Kubernetes native application that allows you to run pipelines on your own Kubernetes cluster (even behind the firewall). Specifically for Google Cloud, the runner is also available via the [marketplace]({{site.baseurl}}/docs/integrations/google-marketplace/).
+The [Codefresh Runner]({{site.baseurl}}/docs/installation/codefresh-runner/) is a Kubernetes native application that allows you to run pipelines on your own Kubernetes cluster (even behind the firewall). Specifically for Google Cloud, the runner is also available via the [marketplace]({{site.baseurl}}/docs/integrations/google-marketplace/).
 
 
 ## Traditional Google Cloud deployments
 
-For any other Google Cloud deployment you can use the [Google Cloud CLI from a Docker image](https://hub.docker.com/r/google/cloud-sdk/) in a [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/)
+For any other Google Cloud deployment you can use the [Google Cloud CLI from a Docker image](https://hub.docker.com/r/google/cloud-sdk/){:target="\_blank"} in a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/).
 
 `YAML`
 {% highlight yaml %}
@@ -108,14 +110,14 @@ For any other Google Cloud deployment you can use the [Google Cloud CLI from a D
 {% endraw %}
 {% endhighlight %}
 
-See the example of [uploading to a Google Bucket]({{site.baseurl}}/docs/yaml-examples/examples/uploading-or-downloading-from-gs/) or [creating a VM]({{site.baseurl}}/docs/yaml-examples/examples/packer-gcloud/) for more details.
+See the example of [uploading to a Google Bucket]({{site.baseurl}}/docs/example-catalog/ci-examples/uploading-or-downloading-from-gs/) or [creating a VM]({{site.baseurl}}/docs/example-catalog/cd-examples/packer-gcloud/) for more details.
 
 
  
 
 
-## What to read next
+## Related articles
+[Add your cluster]({{site.baseurl}}/docs/integrations/kubernetes/#connect-a-kubernetes-cluster)  
+[Manage your Kubernetes cluster]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/)  
+[Cloning Git repositories]({{site.baseurl}}/docs/example-catalog/ci-examples/git-checkout/)  
 
-- [Add your cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/)
-- [Manage your Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/)
-- [Cloning Git repositories]({{site.baseurl}}/docs/yaml-examples/examples/git-checkout/)

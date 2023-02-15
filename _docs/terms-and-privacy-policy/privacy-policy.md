@@ -4,6 +4,7 @@ description: ""
 group: terms-and-privacy-policy
 redirect_from:
   - /docs/privacy-policy/
+  - /docs/terms-and-privacy-policy/privacy-policy/
 toc: true
 ---
 **CODEFRESH PRIVACY POLICY (&quot;PRIVACY POLICY&quot;)**

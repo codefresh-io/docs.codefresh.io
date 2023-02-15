@@ -1,8 +1,9 @@
 ---
-title: "Common Issues"
+title: "Common issues"
 description: ""
 group: troubleshooting
 redirect_from:
+  - /docs/troubleshooting/common-issues/
   - /docs/common-issues/
   - /docs/troubleshooting/
 toc: true

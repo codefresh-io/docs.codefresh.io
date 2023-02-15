@@ -1,8 +1,9 @@
 ---
-title: "Microsoft Azure"
-description: "How to use Codefresh with Azure"
+title: "Microsoft Azure pipeline integration"
+description: "How to use Codefresh pipelines with Azure"
 group: integrations
 redirect_from:
+  - /docs/integrations/microsoft-azure/
   - /docs/microsoft-azure/
   - /docs/deploy-your-containers/microsoft-azure/
 toc: true
@@ -11,15 +12,15 @@ toc: true
 Codefresh has native support for Azure in the following areas:
 
 - [Integration with Azure Git]({{site.baseurl}}/docs/integrations/git-providers/#azure-devops)
-- [Connecting to Azure registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/azure-docker-registry/)
-- [Deploying to AKS]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/#adding-aks-cluster)
+- [Connecting to Azure registries]({{site.baseurl}}/docs/integrations/docker-registries/azure-docker-registry/)
+- [Deploying to AKS]({{site.baseurl}}/docs/deployments/kubernetes/#adding-an-aks-cluster)  
 - [Using Azure Storage for Test reports]({{site.baseurl}}/docs/testing/test-reports/#connecting-azure-storage)
-- [Using Azure Storage for Helm charts]({{site.baseurl}}/docs/new-helm/add-helm-repository/#private-repository---azure)
-- [Azure SSO]({{site.baseurl}}/docs/enterprise/single-sign-on/sso-azure/)
+- [Using Azure Storage for Helm charts]({{site.baseurl}}/docs/deployments/helm/helm-charts-and-repositories/)  
+- [Azure SSO]({{site.baseurl}}/docs/single-sign-on/sso-azure/)
 
 ## Using Azure Git repositories
 
-Codefresh can easily checkout code from Azure Git repositories:
+Codefresh can easily check out code from Azure Git repositories:
 
 {% include 
 image.html 
@@ -31,11 +32,11 @@ caption="Azure Git integration"
 max-width="70%"
 %}
 
-For more details see the [documentation page]({{site.baseurl}}/docs/integrations/git-providers/#azure-devops). Once your repository is connected you can use the [native clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) as well as [Git triggers]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/) like all other git providers.
+For more details see the [documentation page]({{site.baseurl}}/docs/integrations/git-providers/#azure-devops). Once your repository is connected, you can use the [native clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/) as well as [Git triggers]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/) like all other git providers.
 
 ## Using Azure Docker registries
 
-Azure Docker registries are fully compliant with the Docker registry API that Codefresh follows. You can connect an Azure Registry like any [other Docker registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/).
+Azure Docker registries are fully compliant with the Docker registry API that Codefresh follows. You can connect an Azure Registry like any [other Docker registry]({{site.baseurl}}/docs/integrations/docker-registries/).
 
 {% 
 	include image.html 
@@ -47,11 +48,11 @@ caption="Adding the Azure Docker registry"
 max-width="70%" 
 %}
 
-Once the registry is added you can the [standard push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/) step in pipelines. See also the documentation page for [working with Docker registries]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/).
+Once the registry is added you can the [standard push step]({{site.baseurl}}/docs/pipelines/steps/push/) step in pipelines. 
 
 ## Deploying to Azure Kubernetes
 
-Codefresh has native support for connecting an Azure cluster in the [cluster configuration screen]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/).
+Codefresh has native support for connecting an Azure cluster in the [cluster configuration screen]({{site.baseurl}}/docs/integrations/kubernetes/#connect-a-kubernetes-cluster).
 
 {% 
 	include image.html 
@@ -63,7 +64,7 @@ caption="Connecting an Azure cluster"
 max-width="40%" 
 %}
 
-Once the cluster is connected you can use any of the [available deployment options]({{site.baseurl}}/docs/deploy-to-kubernetes/deployment-options-to-kubernetes/) for Kubernetes clusters. You also get access to all other Kubernetes dashboards such as the [cluster dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/)  or the [environment dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/environment-dashboard/) .
+Once the cluster is connected you can use any of the [available deployment options]({{site.baseurl}}/docs/deployments/kubernetes/deployment-options-to-kubernetes/) for Kubernetes clusters. You also get access to all other Kubernetes dashboards such as the [cluster dashboard]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/)  or the [environment dashboard]({{site.baseurl}}/docs/deployments/kubernetes/environment-dashboard/) .
 
 ## Storing test reports in Azure storage
 
@@ -76,14 +77,14 @@ file="/images/integrations/azure/azure-storage.png"
 url="/images/integrations/azure/azure-storage.png"
 alt="Azure cloud storage"
 caption="Azure cloud storage"
-max-width="60%"
+max-width="50%"
 %}
 
 See the full documentation for [test reports]({{site.baseurl}}/docs/testing/test-reports/).
 
 ## Using Azure storage for storing Helm charts
 
-You can connect Azure Storage as a Helm repository in the [integrations screen]({{site.baseurl}}/docs/new-helm/add-helm-repository/).
+You can connect Azure Storage as a Helm repository in the [integrations screen]({{site.baseurl}}/docs/deployments/helm/helm-charts-and-repositories/).
 
 {% include
 image.html
@@ -95,11 +96,11 @@ caption="Using Azure for Helm charts"
 max-width="80%"
 %}
 
-Once you connect your Helm repository you can use it any [Codefresh pipeline with the Helm step]({{site.baseurl}}/docs/new-helm/using-helm-in-codefresh-pipeline/). 
+Once you connect your Helm repository you can use it any [Codefresh pipeline with the Helm step]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/). 
 
 ## Azure Single Sign-on
 
-You can use Azure Active Directory as an [SSO mechanism]({{site.baseurl}}/docs/enterprise/single-sign-on/) in Codefresh.
+You can use Azure Active Directory as an [SSO mechanism]({{site.baseurl}}/docs/single-sign-on/) in Codefresh.
 
 {% include 
 image.html 
@@ -115,7 +116,7 @@ Once configuration is complete all Codefresh users can login using their Azure c
 
 ## Traditional Azure deployments
 
-For any other Azure deployment you can use the [Azure CLI from a Docker image](https://hub.docker.com/_/microsoft-azure-cli) in a [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/)
+For any other Azure deployment you can use the [Azure CLI from a Docker image](https://hub.docker.com/_/microsoft-azure-cli){:target="\_blank"} in a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/).
 
 `YAML`
 {% highlight yaml %}
@@ -128,13 +129,8 @@ For any other Azure deployment you can use the [Azure CLI from a Docker image](h
 {% endraw %}
 {% endhighlight %}
 
-For authentication see the [Microsoft documentation page](https://docs.microsoft.com/en-us/cli/azure/authenticate-azure-cli?view=azure-cli-latest)
+For authentication see the [Microsoft documentation page](https://docs.microsoft.com/en-us/cli/azure/authenticate-azure-cli?view=azure-cli-latest){:target="\_blank"}.
 
- 
-
-
-## What to read next
-
-- [Add your cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/)
-- [Manage your Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/)
-- [Cloning Git repositories]({{site.baseurl}}/docs/yaml-examples/examples/git-checkout/)
+## Related articles
+[Manage your Kubernetes cluster]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/)  
+[Cloning Git repositories]({{site.baseurl}}/docs/example-catalog/ci-examples/git-checkout/)  
