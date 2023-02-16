@@ -63,7 +63,7 @@ Compared to unit tests that run on the source code, integration tests run on the
 In Codefresh, you can launch these sidecar containers within the pipeline through compositions and service containers.
 
 
-See [Run integration tests example]({{site.baseurl}}/docs/example-catalog/ci-examples/run-integrations-tests/).
+See [Run integration tests example]({{site.baseurl}}/docs/example-catalog/ci-examples/run-integration-tests/).
 
 ## Code quality/coverage
 Good quality code is central to any CI platform or tool. Codefresh integrates with the top code quality platforms/tools in the market to track code coverage, inspect code quality, and generate code-coverage analysis reports. 

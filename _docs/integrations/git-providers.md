@@ -91,7 +91,7 @@ For more information on generating SSH keys and adding your public key to your V
 ## GitHub
 
 For the **OAuth2 method** you only need to decide on public/private repository access, enter a name for your connection and click *Save*. Then accept the permissions dialog. This is the easiest and recommended way to integrate GitHub. Notice that if
-you used GitHub when you [created your Codefresh account]({{site.baseurl}}/docs/administration/account-user-management/create-a-codefresh-account/), this integration is already setup for you.
+you used GitHub when you [created your Codefresh account]({{site.baseurl}}/docs/administration/account-user-management/create-codefresh-account/), this integration is already setup for you.
 
 For the **Access Token** method you need
 
@@ -197,7 +197,7 @@ An alternative way to authenticate with Github is via the App mechanism.
 
 For the **OAuth2 method**:  
 You only need to enable private repository access, enter a name for your connection and click *Save*. Then accept the permissions dialog. This is the easiest and recommended way to integrate GitLab. Notice that if
-you used GitLab when you [created your Codefresh account]({{site.baseurl}}/docs/administration/account-user-management/create-a-codefresh-account/), this integration is already setup for you.
+you used GitLab when you [created your Codefresh account]({{site.baseurl}}/docs/administration/account-user-management/create-codefresh-account/), this integration is already setup for you.
 
 For the **Access Key** method you need:
 
@@ -225,7 +225,7 @@ For example if you already have a `token` on a resource call `git-credentials` y
 ## Bitbucket
 
 For the **OAuth2 method** you only need to enter a name for your connection and click *Save*. Then accept the permissions dialog. This is the easiest and recommended way to integrate Bitbucket. Notice that if
-you used Bitbucket when you [created your Codefresh account]({{site.baseurl}}/docs/administration/account-user-management/create-a-codefresh-account/), this integration is already setup for you.
+you used Bitbucket when you [created your Codefresh account]({{site.baseurl}}/docs/administration/account-user-management/create-codefresh-account/), this integration is already setup for you.
 
 For the **Application Password** method you need:
 
@@ -302,7 +302,7 @@ caption="Codefresh integration with Azure Devops"
 alt="Codefresh integration with Azure Devops"
 %}
 
-Click on *Test connection* to verify your settings and finally click save. Now you can [create pipelines]({{site.baseurl}}/docs/pipeline /pipelines/)
+Click on *Test connection* to verify your settings and finally click save. Now you can [create pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)
 that use Azure DevOps Git repos.
 
 {% include image.html

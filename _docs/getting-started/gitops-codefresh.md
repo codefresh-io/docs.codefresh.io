@@ -1,5 +1,5 @@
 ---
-title: "WIP: Codefresh for GitOps"
+title: "Codefresh for GitOps"
 description: "GitOps and Argo CD with Codefresh"
 group: getting-started
 toc: true

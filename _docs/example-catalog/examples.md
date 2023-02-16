@@ -116,8 +116,7 @@ Codefresh can deploy to any platform such as VMs, FTP/SSH/S3 sites, app servers,
 
 - [Deploy to a VM with packer]({{site.baseurl}}/docs/example-catalog/cd-examples/packer-gcloud/) 
 - [Deploy to a VM with FTP]({{site.baseurl}}/docs/example-catalog/cd-examples/transferring-php-ftp)
-- [Deploy to Tomcat using SCP]({{site.baseurl}}/docs/example-catalog/cd-examples/deploy-to-tomcat-via-scp)
-- [Deploy Demochat to a Kubernetes cluster]({{site.baseurl}}/docs/cd-examples/deploy-to-kubernetes/codefresh-kubernetes-integration-demochat-example/) 
+- [Deploy to Tomcat using SCP]({{site.baseurl}}/docs/example-catalog/cd-examples/deploy-to-tomcat-via-scp) 
 - [Use kubectl as part of freestyle step]({{site.baseurl}}/docs/example-catalog/cd-examples/use-kubectl-as-part-of-freestyle-step) 
 - [Deploy with Kustomize]({{site.baseurl}}/docs/example-catalog/cd-examples/deploy-with-kustomize)
 - [Deploy with Helm]({{site.baseurl}}/docs/example-catalog/cd-examples/helm) 
