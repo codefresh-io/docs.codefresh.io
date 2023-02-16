@@ -80,7 +80,7 @@ From the same screen you can also revoke keys if you don't need them anymore.
 The following resources can be targeted with the API:
 
 * *Agent* - Used for [Codefresh Runner installation]({{site.baseurl}}/docs/installation/behind-the-firewall/)
-* *Audit* - Read [Audit logs]({{site.baseurl}}/docs/administration/account-user-management/audit-logs/)
+* *Audit* - Read [Audit logs]({{site.baseurl}}/docs/administration/account-user-management/audit/)
 * *Build* - Get/change [build status]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/)
 * *Cluster* - [Access control]({{site.baseurl}}/docs/administration/account-user-management/access-control/) for [Kubernetes clusters]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/)
 * *Environments-v2* - Read/Write [Environment Dashboard]({{site.baseurl}}/docs/deployments/kubernetes/environment-dashboard/) information

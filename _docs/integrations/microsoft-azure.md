@@ -15,7 +15,7 @@ Codefresh has native support for Azure in the following areas:
 - [Deploying to AKS]({{site.baseurl}}/docs/deployments/kubernetes/#adding-an-aks-cluster)  
 - [Using Azure Storage for Test reports]({{site.baseurl}}/docs/testing/test-reports/#connecting-azure-storage)
 - [Using Azure Storage for Helm charts]({{site.baseurl}}/docs/deployments/helm/helm-charts-and-repositories/)  
-- [Azure SSO]({{site.baseurl}}/docs/single-sign-on/sso-azure/)
+- [Azure SSO]({{site.baseurl}}/docs/single-sign-on/oidc/oidc-azure/)
 
 ## Using Azure Git repositories
 

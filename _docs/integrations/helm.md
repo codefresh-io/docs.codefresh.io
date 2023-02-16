@@ -10,7 +10,7 @@ In addition to the [built-in Helm repository]({{site.baseurl}}/docs/deployments/
 
 Native support for Helm in Codefresh includes:  
  * A pipeline [step for deploying Helm applications]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/)
- * A dashboard for your [Helm charts]({{site.baseurl}}/docs/helm/helm-charts-and-repositories/)
+ * A dashboard for your [Helm charts]({{site.baseurl}}/docs/deployments/helm/helm-charts-and-repositories/)
  * A dashboard for your [Helm releases]({{site.baseurl}}/docs/deployments/helm/helm-releases-management/)
  * A dashboard for [promoting Helm releases]({{site.baseurl}}/docs/deployments/helm/helm-environment-promotion/) between different environments
  * A dashboard for [Helm environments]({{site.baseurl}}/docs/deployments/kubernetes/environment-dashboard/)

@@ -1,6 +1,6 @@
 ---
 title: "Auditing actions in Codefresh"
-description: "Getlogs of all actions in Codefresh"
+description: "Get logs of all actions in Codefresh"
 group: administration
 sub_group: account-user-management
 redirect_from:

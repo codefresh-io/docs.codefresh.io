@@ -702,7 +702,7 @@ caption="Deploying with the quick UI dialog"
 max-width="80%" 
 %}
 
-You can also [create a pull Secret]({{site.baseurl}}/docs/deployments/kubernetes/access-docker-registry-from-kubernetes/) from the GUI.
+You can also [create a pull Secret]({{site.baseurl}}/docs/ci-cd-guides/access-docker-registry-from-kubernetes/) from the GUI.
 
 
 ## Automated deployments with Codefresh pipelines

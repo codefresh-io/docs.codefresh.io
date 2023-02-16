@@ -117,7 +117,7 @@ you have in your pipelines. In case of similar values the shared configuration w
 
 To use a shared YAML snippet for Helm values you can install a new Helm chart either from:
 
-* The [Helm chart list]({{site.baseurl}}/docs/new-helm/add-helm-repository/#install-chart-from-your-helm-repository)
+* The [Helm chart list]({{site.baseurl}}/docs/deployments/helm/helm-charts-and-repositories/)
 * The [Helm environment board]({{site.baseurl}}/docs/new-helm/helm-environment-promotion/#moving-releases-between-environments).
 
 In both cases, when you see the Helm installation dialog you can import any of your YAML snippets
