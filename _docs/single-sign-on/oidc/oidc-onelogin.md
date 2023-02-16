@@ -86,16 +86,17 @@ Configure the application in the OneLogin dashboard.
   max-width="50%"
   %}
 
-{:start="2"}
+{:start="4"}
 1. Enter the following:
   * **Client Name**: For auto-generation, leave empty. Codefresh generates the client name once you save the settings.
   * **Display Name**: Friendly SSO name (arbitrary).  
   * **Client ID**: The Client ID you copied from OneLogin.
   * **Client Secret**: The Client Secret you copied from OneLogin.
   * **Domain**: Optional. The domain to be used for authentication, only for users who must connect via a custom domain.
-  * **API CLIENT ID** and **API CLIENT SECRET**: Used for [team sync]({{site.baseurl}}/docs/single-sign-on/sso-setup-oauth2/#syncing-of-teams-after-initial-sso-setup) only. For details, see the [official documentation](https://developers.onelogin.com/api-docs/1/getting-started/working-with-api-credentials){:target="\_blank"}.
+  * **API CLIENT ID** and **API CLIENT SECRET**: Relevant only if **Auto Sync users and teams to Codefresh** is selected. For details, see the [official documentation](https://developers.onelogin.com/api-docs/1/getting-started/working-with-api-credentials){:target="\_blank"}.
+  * **Auto Sync users and teams to Codefresh**: Select to automatically sync user accounts in Azure AD to your Codefresh account. Optionally, define the time interval, in hours, at which to sync, from 1 to 24. If you don’t specify an interval, the sync is every 12 hours.
 
-{:start="3"}
+{:start="5"}
 1. Select **+ Add**. Codefresh generates the client name.  Note this down.
   
    {% include image.html 
@@ -107,7 +108,7 @@ Configure the application in the OneLogin dashboard.
   max-width="100%"
   %}
 
-{:start="4"}
+{:start="6"}
 1. Continue with [Step 3: Set up login and redirect URIs in OneLogin](#step-3-set-up-login-and-redirect-uris-in-onelogin).
 
 ## Step 3: Set up login and redirect URIs in OneLogin

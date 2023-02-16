@@ -148,7 +148,7 @@ max-width="30%"
   * **Client Secret**: The OKTA application client secret you copied from OKta (see above).
   * **Client Host**: The OKTA organization URL, for example, `https://<company>.okta.com`.   
     Do not copy the URL from the admin view (e.g. `https://<company>-admin.okta.com`), as it will not work.
-  * **Access Token**: Optional. The OKTA API token that you generated in Okta, used to sync groups and their users from OKTA to Codefresh. 
+  <!--- * **Access Token**: Optional. The OKTA API token that you generated in Okta, used to sync groups and their users from OKTA to Codefresh.  -->
   * **Application ID**: The Codefresh application ID in your OKTA organization, that will be used to sync groups and user from OKTA to Codefresh. 
 1. Optional. To automatically sync teams or groups in Okta to Codefresh, select **Auto group sync**.  
   This action syncs groups every 12 hours. 
