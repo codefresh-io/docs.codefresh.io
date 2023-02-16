@@ -29,7 +29,7 @@ Everything in Codefresh CI/CD starts and ends with pipelines.
 
 A Codefresh pipeline has two distinct aspects, the specification that defines the pipeline, and steps that are essentially a collection of Docker images that define the jobs and CI and CD processes to implement.
   
-To see how pipelines work, start with [Introduction to Codefresh pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/), or jump to [pipeline creation]({{site.baseurl}}/docs/pipelinse/pipelines/).
+To see how pipelines work, start with [Introduction to Codefresh pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/), or jump to [pipeline creation]({{site.baseurl}}/docs/pipelines/pipelines/).
 
 For ready-to-use collections of pipeline steps, check out our [built-in steps]({{site.baseurl}}/docs/pipelines/steps/), or jump to [pipeline creation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/) and our [Plugin marketplace](https://codefresh.io/steps/){:target="\_blank"}.
 
