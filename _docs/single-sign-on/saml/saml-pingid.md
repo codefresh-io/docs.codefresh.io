@@ -32,7 +32,7 @@ Configure SSO for PingID via SAML in Codefresh. The Assertion URL is automatical
   * **Display Name**: Any arbitrary name for this integration.
   * **IDP Entry**: Type in any character. You will enter the correct value from PingID in the final step.
   * **Application Certificate**: Type in any character. You will enter the correct value from PingID in the final step.
-  * **Auto Sync users and teams to Codefresh**: Supported for Google/GSuite SAML integration. Select to automatically sync user accounts in to your Codefresh account. Optionally, define the time interval at which to sync, in hours, from 1 to 24. If you don't specify an interval, the sync interval is every 12 hours.
+  * **Provider**: Leave empty. 
 1. Click **Add**.
   The SAML integration for PingID is added and appears in the list of SSOs. 
 1. In the Single Sign-On page, click the **Edit** icon for the PingID SAML integration you created.

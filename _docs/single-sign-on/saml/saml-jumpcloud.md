@@ -25,14 +25,9 @@ Set up SAML SSO for JumpCloud by:
 1. Click **Add single-sign-on**, select **SAML**, and then click **Next**.
 1. Enter the connection details: 
   * **Display Name**: Any arbitrary name for this integration.
-  * **IDP Entry**: Type in any character. You will enter the correct value from JumpCloud in the final step.
+  * **IDP Entry**: Type in any character for now. You will enter the correct value from JumpCloud in the final step.
   * **Application Certificate**: You will enter the correct value from JumpCloud in the final step.
-1. If GSuite is your provider, select it as the **Provider**, and define the settings below. Otherwise leave the field empty.  
-  * **Admin Email**: The email of the user with access to `admin.google.com`.
-  * **Auto Sync users and teams to Codefresh**: Supported for Google/GSuite SAML integration. Select to automatically sync user accounts in to your Codefresh account. Optionally, define the time interval at which to sync, in hours, from 1 to 24. If you don't specify an interval, the sync interval is every 12 hours.
-  * **Sync interval**: Optional. The time interval at which to sync.
-  * **Sync Field**: Optional. <!--TBD -->
-  * **JSON Keyfile**: <!--TBD -->
+  * **Provider**: Leave empty. 
 1. Click **Add**.
   The SAML integration for JumpCloud is added and appears in the list of SSOs. 
 1. In the Single Sign-On page, click the **Edit** icon for the JumpCloud SAML integration you created.
@@ -65,7 +60,7 @@ Set up SAML SSO for JumpCloud by:
 As the final step in configuring SSO for JumpCloud, add the IDP Entry and Certificate values from JumpCloud.
  
 1. **IDP Entry**: The IDP URL from the SSO tab in Jump Cloud.
-1. **Application Certificate**: Copy and paste the content between `-----BEGIN CERTIFICATE-----` and `-----END CERTIFICATE-----` from the certificate you downloaded into the field. You can also include the BEGIN and END lines. 
+1. **Application Certificate**: Copy and paste the content between the `-----BEGIN CERTIFICATE-----` and  `-----END CERTIFICATE-----` lines, from the certificate you downloaded into the field. 
     - **Note**: You will get a warning when editing the Certificate section.
 1. Click **Save**.
 

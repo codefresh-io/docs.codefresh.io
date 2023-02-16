@@ -28,6 +28,8 @@ Create a SAML account for Okta in Codefresh  to create an integration for Codefr
   * **Display Name**: Any name you want for the integration.
   * **IDP Entry**: Type in any character. You will enter the correct value from Okta in the final step.
   * **Application Certificate**: You will enter the correct value from Okta in the final step.
+  * **Provider**: Leave empty. 
+
 1. Click **Add**.
   The SAML integration for Okta is added and appears in the list of SSOs. 
 1. In the Single Sign-On page, click the **Edit** icon for the Okta SAML integration you created.
