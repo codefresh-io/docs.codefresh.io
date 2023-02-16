@@ -3,7 +3,6 @@ title: "Jenkins pipeline integration/migration"
 description: "Migration from Jenkins to Codefresh pipelines"
 group: integrations
 redirect_from:
-  - /docs/integrations/jenkins-integration/
   - /docs/jenkins-integration/
 toc: true
 ---

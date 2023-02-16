@@ -2,8 +2,6 @@
 title: "HashiCorp Vault pipeline integration"
 description: "Use secrets from Vault in Codefresh pipelines"
 group: integrations
-redirect_from:
-  - /docs/integrations/hashicorp-vault/
 toc: true
 ---
 

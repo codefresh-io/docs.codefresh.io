@@ -3,7 +3,6 @@ title: "Docker registries for pipeline integrations"
 description: "Connect your Docker Registry to Codefresh CI pipelines"
 group: integrations
 redirect_from:
-  - /docs/integrations/docker-registries/
   - /docs/docker-registry/
   - /docs/docker-registries/external-docker-registries/
   - /docs/docker-registries/

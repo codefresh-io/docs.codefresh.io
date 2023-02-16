@@ -4,7 +4,6 @@ description: "Use DockerHub for pipeline integration"
 group: integrations
 sub_group: docker-registries
 redirect_from:
-  - /docs/integrations/docker-registries/docker-hub/
   - /docs/dockerhub/
   - /docs/docker-registries/external-docker-registries/docker-hub/
 toc: true

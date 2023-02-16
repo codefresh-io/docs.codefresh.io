@@ -4,7 +4,6 @@ description: "Use Quay registries with pipeline integration"
 group: integrations
 sub_group: docker-registries
 redirect_from:
-  - /docs/integrations/docker-registries/quay-io/
   - /docs/quayio/
   - /docs/docker-registries/external-docker-registries/quay-io/
 toc: true

@@ -3,7 +3,6 @@ title: "Google Cloud pipeline integration"
 description: "Use Google Cloud with Codefresh pipelines"
 group: integrations
 redirect_from:
-  - /docs/integrations/google-cloud/
   - /docs/deploy-your-containers/kubernetes/
 toc: true
 ---
