@@ -3,7 +3,6 @@ title: "Unit testing"
 description: "Run unit tests in Codefresh pipelines"
 group: testing
 redirect_from:
-  - /docs/testing/unit-tests/
   - /docs/unit-tests/
 toc: true
 ---

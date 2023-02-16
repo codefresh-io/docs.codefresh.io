@@ -7,7 +7,7 @@ toc: true
 
 Codefresh is a Continuous Integration/Delivery solution. This article reviews main concepts around CI, and how Codefresh supports and implements them.  
 
-For a review of CD concepts, see [Codefresh for CD]({{site.baseurl}}docs/getting-started/cd-codefresh/).
+For a review of CD concepts, see [Codefresh for CD]({{site.baseurl}}/docs/getting-started/cd-codefresh/).
 
 
 
