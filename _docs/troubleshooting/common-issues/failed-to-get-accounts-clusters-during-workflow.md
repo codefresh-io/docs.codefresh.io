@@ -3,7 +3,6 @@ title: "Failed to get account clusters during workflow"
 description: ""
 group: troubleshooting
 sub_group: common-issues
-permalink: /:collection/troubleshooting/common-issues/failed-to-get-accounts-clusters-during-workflow/
 redirect_from:
   - /docs/troubleshooting/common-issues/failed-to-get-accounts-clusters-during-workflow/
   - /docs/failed-to-get-accounts-clusters-during-workflow/

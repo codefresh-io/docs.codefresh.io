@@ -3,7 +3,6 @@ title: "Build step: No such file or directory"
 description: ""
 group: troubleshooting
 sub_group: common-issues
-permalink: /:collection/troubleshooting/common-issues/build-step-no-such-file-or-directory/
 redirect_from:
   - /docs/troubleshooting/common-issues/build-step-no-such-file-or-directory/
   - /docs/build-step-no-such-file-or-directory/

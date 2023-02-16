@@ -3,7 +3,6 @@ title: "Workflow process terminated by the system"
 description: ""
 group: troubleshooting
 sub_group: common-issues
-permalink: /:collection/troubleshooting/common-issues/workflow-terminated-by-system/
 redirect_from:
   - /docs/troubleshooting/common-issues/workflow-terminated-by-system/
   - /docs/workflow-terminated-by-system/

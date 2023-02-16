@@ -3,7 +3,6 @@ title: "Slack"
 description: "Get Slack notifications with pipeline integrations"
 group: integrations
 sub_group: notifications
-permalink: /:collection/integrations/notifications/slack-integration/
 toc: true
 ---
 

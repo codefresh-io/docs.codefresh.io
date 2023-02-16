@@ -3,7 +3,6 @@ title: "Clone step failed: Command [git checkout $REVISION] exited with code [1]
 description: ""
 group: troubleshooting
 sub_group: common-issues
-permalink: /:collection/troubleshooting/common-issues/git-clone-step-issue/
 redirect_from:
   - /docs/troubleshooting/common-issues/git-clone-step-issue/
   - /docs/build-step-no-such-file-or-directory/
