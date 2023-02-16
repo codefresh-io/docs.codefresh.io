@@ -2,8 +2,6 @@
 title: "Building Docker images"
 description: "Create Docker images from Dockerfiles"
 group: ci-cd-guides
-redirect_from:
-  - /docs/ci-cd-guides/building-docker-images/
 toc: true
 ---
 

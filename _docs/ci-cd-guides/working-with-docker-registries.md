@@ -3,7 +3,6 @@ title: "Working with Docker registries"
 description: "Push, pull, and tag Docker images in Codefresh pipelines"
 group: ci-cd-guides
 redirect_from:
-  - /docs/ci-cd-guides/working-with-docker-registries/
   - /docs/build-specific-revision-image/
   - /docs/image-management/build-specific-revision-image/
   - /docs/docker-registries/working-with-docker-registries/

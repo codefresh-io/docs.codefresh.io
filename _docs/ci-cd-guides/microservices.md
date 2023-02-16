@@ -2,8 +2,6 @@
 title: "Building microservices"
 description: "Create pipelines specifically for microservice applications"
 group: ci-cd-guides
-redirect_from:
-  - /docs/ci-cd-guides/microservices/
 toc: true
 ---
 

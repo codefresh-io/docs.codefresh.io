@@ -2,8 +2,6 @@
 title: "Pull requests and branches"
 description: "Handle builds for pull requests or other branches"
 group: ci-cd-guides
-redirect_from:
-  - /docs/ci-cd-guides/pull-request-branches/
 toc: true
 ---
 
