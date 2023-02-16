@@ -2,8 +2,6 @@
 title: "Setting up OIDC Federated SSO"
 description: "OpenID Connect (OIDC) Single Sign-On (SSO) setup"
 group: single-sign-on
-redirect_from:
-  - /docs/single-sign-on/oidc/
 toc: true
 ---
 

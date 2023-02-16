@@ -3,8 +3,6 @@ title: Okta SSO via SAML
 description: Setting up Okta via SAML
 group: single-sign-on
 sub_group: saml
-redirect_from:
-  - /docs/single-sign-on/saml/saml-okta/
 toc: true
 ---
 

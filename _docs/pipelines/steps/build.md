@@ -4,7 +4,6 @@ description: "Building Docker images in Codefresh pipelines"
 group: pipelines
 sub_group: steps
 redirect_from:
-  - /docs/pipelines/steps/build/
   - /docs/build-1/
   - /docs/codefresh-yaml/steps/build-1/
 toc: true

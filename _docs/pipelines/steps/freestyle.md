@@ -4,7 +4,6 @@ description: "Run commands inside a Docker container"
 group: pipelines
 sub_group: steps
 redirect_from:
-  - /docs/pipelines/steps/freestyle/
   - /docs/freestyle/
 toc: true
 ---
