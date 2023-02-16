@@ -256,8 +256,8 @@ max-width="50%"
 
 
 #### Working with resources in Tree view
-The Tree view is designed to impart key information at a glance. Review the sections that follow for pointers to quickly get to what you need in the Tree view.
-<!--- 
+The Tree view is designed to impart key information at a glance. Review the sections that follow for pointers to quickly get to what you need in the Tree view.  
+
 **Context menu**  
 Every resource has a context menu that opens on clicking the three dots on the right of the node. The options available differ according to the type of resource.
 
@@ -269,7 +269,7 @@ url="/images/applications/current-state-resource-context-menu.png"
 alt="Current State Tree view: Resource context menu"
 caption="Current State Tree view: Resource context menu"
 max-width="50%"
-%}  -->
+%}  
 
 **Resource info**  
 Mouse over a node to see a tooltip for that resource. For detailed information, select the resource.

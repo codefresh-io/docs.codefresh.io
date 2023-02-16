@@ -52,7 +52,7 @@ General configuration settings define the source, destination, and sync policies
 
 ### Source 
 The Git repository to be tracked for changes to the application's source code.  
-{::nomarkdown}<ul> <li><b>ArgoCD Project</b>: The project group to which the application belongs. A project is useful to enforce restrictions on permitted sources and targets for applications, and roles. If not defined, the application is automatically assigned to the <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">default</span> project, which is created automatically by Argo CD and has no restrictions. </br>For more information, see Argo CD's documentation on <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/projects/#projects" target="\_blank">Projects</a>.</li> <li><b>Repository URL</b>: The Git repo or the Helm package repo with the application source code, to be tracked for changes. If the Argo CD project is not the <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">default</span> project, make sure that the repo has the correct access roles for your application.<ul><li><b>Revision and Path</b>: Applies to Git repositories. </li><li><b>Chart</b>: Applies to Helm repositories. The name of the Helm package with all the resource definitions for the application, and the version. </li></ul>For more information, see <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/" target="\_blank">Tracking and Deployment Strategies</a>.</li></ul> {:/}   
+{::nomarkdown}<ul> <li><b>Repository URL</b>: The Git repo or the Helm package repo with the application source code, to be tracked for changes. If the Argo CD project is not the <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">default</span> project, make sure that the repo has the correct access roles for your application.<ul><li><b>Revision and Path</b>: Applies to Git repositories. </li><li><b>Chart</b>: Applies to Helm repositories. The name of the Helm package with all the resource definitions for the application, and the version. </li></ul>For more information, see <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/" target="\_blank">Tracking and Deployment Strategies</a>.</li></ul> {:/}   
 
 {::nomarkdown}
 <br>
@@ -111,6 +111,19 @@ Advanced settings define the tool used to create the application, and related to
    max-width="70%" 
    %} 
 
+### ArgoCD Project
+The project group to which the application belongs. A project is useful to enforce restrictions on permitted sources and targets for applications, and roles. If not defined, the application is automatically assigned to the `default` project, which is created automatically by Argo CD and has no restrictions.  
+For more information, see Argo CD's documentation on [Projects](https://argo-cd.readthedocs.io/en/stable/user-guide/projects/#projects){:target="\_blank"}.
+
+### Propagation policy for application deletion
+Defines how resources are pruned, applying Kubernetes cascading deletion prune policies when you delete the application. 
+For more information, see [Argo CD's app deletion](https://argo-cd.readthedocs.io/en/stable/user-guide/app_deletion/){:target="_blank"}.<!---(https://kubernetes.io/docs/concepts/architecture/garbage-collection/#cascading-deletion)-->.
+* **Foreground**
+  The default prune propagation policy used by Argo CD. With this policy, Kubernetes changes the state of the owner resource to `deletion in progress`, until the controller deletes the dependent resources and finally the owner resource itself. 
+* **Background**
+   When selected, Kubernetes deletes the owner resource immediately, and then deletes the dependent resources in the background.
+* **Non-cascading**
+  When selected, Kubernetes deletes only the application and not its resources.  
 
 ### Type of Application
 The tool used to create the application's manifests.  Codefresh supports defining application manifests as a directory, Helm charts, or Kustomize. If you are using other tools to define application manifests, use the Plugin type. For more information, see the Argo CD's documentation on [Tools](https://argo-cd.readthedocs.io/en/stable/user-guide/application_sources/){:target="_blank"}.

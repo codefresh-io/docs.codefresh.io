@@ -6,53 +6,6 @@ sub_group: gitops
 toc: true
 ---
 
-Building Docker images is one of the most basic requirements of Codefresh pipelines and Argo Workflows. 
-Once you create an image, push the image to a registry, and report it to Codefresh, image information is continually updated in the Images page. 
-
-By default each container registry has very basic information for a Docker image (timestamp, hash, size etc.)
-
-With Codefresh you can enrich the basic information reported with the image with issue-tracking metadata and annotations.
-For example you can mark images with information such as 
-
-* which Pull Request created this image
-* what tests and code coverage this image has
-* what security scans have run on it (and their results)
-
-## Image reporting and enrichment flow 
-
-Complete these steps to see images in the Images dashboard.  
-
-1. (Mandatory) Build and push the Docker image  
-    * Codefresh pipelines
-      Use the `build` step to build a Docker image declaratively in simple or multi-stage Dockerfiles. See [Build step in pipelines]({{site.baseurl}}/docs/pipelines/steps/build/).  
-      The pipeline pushes the image to the default Docker registry.
-      You can also push the image to any external Docker registry that you integrate with Codefresh. See [Docker Registries for pipeline integrations]({{site.baseurl}}/docs/integrations/docker-registries/).  
-
-      Review different scenarios for building and pushing Docker images in  our [Build/push examples]({{site.baseurl}}/docs/example-catalog/examples/#buildpush-examples).
- 
-
-{:start="2"}   
-1. (Mandatory) GitOps: Connect to Docker registries  
-  Connect Docker registries to Codefresh to store Docker images.  
-  See [GitOps container registry integrations]({{site.baseurl}}/docs/gitops-integrations/container-registries).
-
-{:start="3"}
-1. (Mandatory) GitOps: Report image information to Codefresh  
-  This is the equivalent to pushing the image in Codefresh pipelines.  
-
-    Use the [report-image-info](https://github.com/codefresh-io/argo-hub/blob/main/workflows/codefresh-csdp/versions/0.0.6/docs/report-image-info.md){:target="\_blank"} DAG template to report image information to Codefresh. 
-  
-    > If you are using an external platform or tool for your CI pipelines such as GitHub Actions or Jenkins, or even Codefresh pipelines, we have a new template that combines image reporting and enrichment. See [GitOps CI integrations]({{site.baseurl}}/docs/gitops-integrations/ci-integrations) for details.
-
-{:start="4"}
-1. (Optional) Enrich image with annotations and metadata  
-  Image enrichment exposes metadata such as feature requests, pull requests, and logs as part of the application’s deployment, for visibility into all aspects of the deployment, making it easier to track actions and identify root cause of failures.  
-    * Codefresh pipelines  
-      See [Docker image metadata]({{site.baseurl}}/docs/pipelines/docker-image-metadata/)  
-    * GitOps  
-      See [GitOps issue tracking integrations]({{site.baseurl}}/docs/gitops-integrations/issue-tracking) and [Jira]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/jira) integration.  
-
-
 
 ## Images dashboard 
 

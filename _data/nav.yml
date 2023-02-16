@@ -56,6 +56,8 @@
       url: "/home-dashboard"
     - title: DORA metrics
       url: "/dora-metrics"
+    - title: Images 
+      url: "/images"
     
     
 
@@ -84,6 +86,8 @@
       url: "/helm-best-practices" 
     - title: Kubernetes templating
       url: "/kubernetes-templating" 
+    - title: Image enrichment
+      url: "/image-enrichment" 
 
 
  
@@ -344,8 +348,7 @@
           url: "/manage-application"
         - title: Progressive delivery with GitOps
           url: "/install-argo-rollouts"
-        - title: Images for GitOps
-          url: "/images"
+
 
 
 - title: Pipelines

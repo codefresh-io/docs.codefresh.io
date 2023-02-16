@@ -94,6 +94,8 @@
       localurl: /docs/dashboards/home-dashboard/
     - title: DORA metrics
       localurl: /docs/dashboards/dora-metrics/
+    - title: Images
+      localurl: /docs/dashboards/images/
     
 
   
@@ -123,7 +125,9 @@
     - title: Helm best practices
       localurl: /docs/ci-cd-guides/helm-best-practices/  
     - title: Templating for Kubernetes
-      localurl: /docs/ci-cd-guides/kubernetes-templating/     
+      localurl: /docs/ci-cd-guides/kubernetes-templating/ 
+    - title: Image enrichment
+      localurl: /docs/ci-cd-guides/image-enrichment/    
 
     
 
