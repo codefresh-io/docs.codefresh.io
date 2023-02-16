@@ -100,7 +100,7 @@ Codefresh brings the power of the Argo project to your Kubernetes deployments:
 * Argo Workflows as the workflow engine
 * Argo Events for event-driven workflow automation framework
 
-Codefresh unified all 4 projects of the Argo familiy into a single *Runtime*, providing an enterprise-supported version of all projects enhanced with unique functionality.
+Codefresh unified all 4 projects of the Argo family into a single *Runtime*, providing an enterprise-supported version of all projects enhanced with unique functionality.
 
 >Our users rely on the Codefresh platform to deliver software, reliably and predictably, without disruptions.
 To maintain that high standard, we add several weeks of testing and bug fixes to new versions of Argo before making them available within Codefresh. Typically, new versions of Argo are available in the Codefresh Runtime within 30 days of their release.

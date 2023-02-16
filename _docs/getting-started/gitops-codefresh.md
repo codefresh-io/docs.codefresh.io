@@ -9,16 +9,19 @@ This article reviews the concepts of GitOps and Argo CD, and how Codefresh integ
 
 
 ## GitOps
-Weaveworks, who introduced the concept of GitOps, describes it as "a way of implementing Continuous Deployment for cloud native applications. It focuses on a developer-centric experience when operating infrastructure, by using tools developers are already familiar with, including Git and Continuous Deployment tools."
 
-At the root of the GitOps paradigm is having "Git as the single source of truth". Git repositories are the source-control systems that declaratively describe applications and infrastructure using code. The continuous integration and continuous delivery processes synchronize these changes with live environments, making sure that the production state always matches the desired state in Git.
-The entire application lifecyle 
+GitOps is a set of best practices for application/infrastructure deployment centered around the concept of using Git as the single source of truth.
+
+You can read more about GitOps at [OpenGitOps.dev](https://opengitops.dev/).
+
+ Git repositories are the source-control systems that declaratively describe applications and infrastructure using code. The continuous integration and continuous delivery processes synchronize these changes with live environments, making sure that the production state always matches the desired state in Git.
+
+The entire application lifecycle is managed by Git.
 
 The key difference is that while the traditional workflow is based on “pushing” new code changes through the pipeline to production, a GitOps workflow is a “pull” process in which new changes are submitted, and the GitOps agent detects and synchronizes them with the production environment.
 
 Read more in our blog, [What is a GitOps workflow](https://codefresh.io/learn/gitops/gitops-workflow-vs-traditional-workflow-what-is-the-difference/){:target="\_blank"}.  
 
-See also [Codefresh for GitOps & Argo CD]
 
 
 ## Argo CD
@@ -54,6 +57,7 @@ For installation, see [Hosted GitOps setup]({{site.baseurl}}/docs/installation/g
 ## Argo CD applications
 
 Codefresh supports the complete lifecycle to create and deploy Argo CD applications.  
+
 You can create full-featured Argo CD applications in Form or YAML modes. Built-in validations make it easy to identify and fix errors before commit.   
 
 The application is also completely GitOps-compliant. The application manifest is generated, committed to Git, and synced to your cluster.   
@@ -69,8 +73,8 @@ See:
 [Monitoring applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/)  
 
 ## Codefresh & the Argo Project 
-Codefresh brings the power of Argo project to your Kubernetes deployments.  
-Codefresh creates a conformed fork of the Argo project, providing an enterprise-supported version of the same, enhanced with unique functionality.
+
+Codefresh unified all 4 projects of the Argo family into a single *Runtime*, providing an enterprise-supported version of all projects enhanced with unique functionality.
 
 >Our users rely on the Codefresh platform to deliver software, reliably and predictably, without disruptions. To maintain that high standard, we add several weeks of testing and bug fixes to new versions of Argo before making them available within Codefresh. Typically, new versions of Argo are available within 30 days of their release.
 
