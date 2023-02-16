@@ -72,6 +72,6 @@ View:
 
 
 ## Related articles
-[Images]({{site.baseurl}}/docs/deployment/images/)  
+[Images]({{site.baseurl}}/docs/deployments/gitops/images/)  
 [Applications dashboard]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/)
 

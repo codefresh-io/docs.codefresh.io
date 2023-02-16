@@ -470,5 +470,5 @@ See the [build badges page]({{site.baseurl}}/docs/pipelines/configuration/build-
 ## Related articles
 [Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
-[Test reports]({{site.baseurl}}/docs/pipelines/test-reports/)  
+[Test reports]({{site.baseurl}}/docs/testing/test-reports/)  
 [Status badges]({{site.baseurl}}/docs/pipelines/configuration/build-status/)

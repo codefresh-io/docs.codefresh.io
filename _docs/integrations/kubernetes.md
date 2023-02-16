@@ -2,8 +2,6 @@
 title: "Kubernetes pipeline integration"
 description: "How Codefresh supports Kubernetes clusters"
 group: integrations
-redirect_from:
-  - /docs/integrations/kubernetes/
 toc: true
 ---
 

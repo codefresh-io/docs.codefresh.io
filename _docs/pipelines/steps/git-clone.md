@@ -4,7 +4,6 @@ description: "Checkout code in your pipelines"
 group: pipelines
 sub_group: steps
 redirect_from:
-  - /docs/pipelines/steps/git-clone/
   - /docs/git-clone/
 toc: true
 ---

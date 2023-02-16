@@ -3,7 +3,6 @@ title: "Codefresh API pipeline integration"
 description: "Integrate Codefresh CI pipelines with other systems"
 group: integrations
 redirect_from:
-  - /docs/integrations/codefresh-api/
   - /docs/codefresh-api/
 toc: true
 ---

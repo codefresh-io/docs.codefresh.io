@@ -3,8 +3,6 @@ title: "Approval step"
 description: "How to pause pipelines for manual approval"
 group: pipelines
 sub_group: steps
-redirect_from:
-  - /docs/pipelines/steps/approval/
 toc: true
 ---
 

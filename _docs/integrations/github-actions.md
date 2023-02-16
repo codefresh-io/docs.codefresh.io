@@ -2,8 +2,6 @@
 title: "GitHub Actions pipeline integration"
 description: "Using the GitHub action converter in Codefresh pipelines"
 group: integrations
-redirect_from:
-  - /docs/integrations/github-actions/
 toc: true
 ---
 

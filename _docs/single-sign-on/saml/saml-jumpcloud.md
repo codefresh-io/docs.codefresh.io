@@ -3,8 +3,6 @@ title: JumpCloud SSO via SAML
 description: Set up JumpCloud via SAML
 group: single-sign-on
 sub_group: saml
-redirect_from:
-  - /docs/single-sign-on/saml/saml-jumpcloud/
 toc: true
 ---
 

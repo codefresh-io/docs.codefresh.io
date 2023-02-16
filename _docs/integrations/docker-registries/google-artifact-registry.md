@@ -3,8 +3,6 @@ title: "Google Artifact Registry (GCAR)"
 description: "Use Google Artifact Registry with pipeline integrations"
 group: integrations
 sub_group: docker-registries
-redirect_from:
-  - /docs/integrations/docker-registries/google-artifact-registry/
 toc: true
 ---
 

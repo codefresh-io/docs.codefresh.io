@@ -3,7 +3,6 @@ title: "LDAP Single Sign-On (SSO)"
 description: " "
 group: single-sign-on
 redirect_from:
-  - /docs/single-sign-on/ldap/
   - /docs/enterprise/single-sign-on/sso-ldap/
 toc: true
 ---

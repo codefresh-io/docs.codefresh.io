@@ -3,7 +3,6 @@ title: "Integration testing"
 description: "Launch additional services in Codefresh pipelines"
 group: testing
 redirect_from:
-  - /docs/testing/integration-tests/
   - /docs/integration-tests/
   - /docs/integration-test-script/
   - /docs/testing/run-unit-test-with-db-composition/

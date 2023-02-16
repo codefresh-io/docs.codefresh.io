@@ -2,8 +2,6 @@
 title: "Helm pipeline integration"
 description: "Manage Helm releases and repositories with Codefresh pipelines"
 group: integrations
-redirect_from:
-  - /docs/integrations/helm/
 toc: true
 ---
 

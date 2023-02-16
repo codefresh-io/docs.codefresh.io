@@ -3,7 +3,6 @@ title: "Dynamic preview environments"
 description: "Preview test environments"
 group: testing
 redirect_from:
-  - /docs/testing/automatic-preview-environments/
   - /docs/launch-composition/
   - /docs/on-demand-test-environment/launch-composition-at-the-end-of-the-build/
 toc: true

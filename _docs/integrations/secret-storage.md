@@ -2,8 +2,6 @@
 title: "Secret Storage integrations"
 description: "Manage Kubernetes secrets with Codefresh"
 group: integrations
-redirect_from:
-  - /docs/integrations/secret-storage/
 toc: true
 ---
 

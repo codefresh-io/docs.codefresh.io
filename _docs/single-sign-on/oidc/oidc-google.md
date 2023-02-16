@@ -4,7 +4,6 @@ description: "Set up Google SSO for OIDC"
 group: single-sign-on
 sub_group: oidc
 redirect_from:
-  - /docs/single-sign-on/oidc/oidc-google/
   - /docs/enterprise/sso-google/
   - /docs/enterprise/single-sign-on/sso-google/
   - /docs/administration/single-sign-on/sso-google/

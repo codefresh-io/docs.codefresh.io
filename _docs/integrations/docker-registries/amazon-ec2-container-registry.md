@@ -4,7 +4,6 @@ description: "Use the Amazon Docker Registry for pipeline integrations"
 group: integrations
 sub_group: docker-registries
 redirect_from:
-  - /docs/integrations/docker-registries/amazon-ec2-container-registry/
   - /docs/aws/
   - /docs/docker-registries/external-docker-registries/amazon-ec2-container-registry/
 toc: true

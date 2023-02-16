@@ -2,8 +2,6 @@
 title: "Google Marketplace pipeline integration"
 description: "Learn how to run Codefresh pipelines inside your GKE cluster"
 group: integrations
-redirect_from:
-  - /docs/integrations/google-marketplace/
 toc: true
 ---
 

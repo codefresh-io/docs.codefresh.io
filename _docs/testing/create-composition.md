@@ -3,7 +3,6 @@ title: "Creating compositions"
 description: "Create environment configurations in Codefresh"
 group: testing 
 redirect_from:
-  - /docs/testing/create-composition/
   - /docs/on-demand-test-environment/
   - /docs/create-composition/
   - /docs/on-demand-test-environment/create-composition/

@@ -6,6 +6,7 @@ toc: true
 ---
 
 Codefresh is a Continuous Integration/Delivery (CI/CD) solution. This article reviews main concepts around CD, and how Codefresh supports and implements them.  
+
 For a review of CI concepts, see [Codefresh for CI]({{site.baseurl}}docs/getting-started/ci-codefresh/).
 
 
@@ -44,6 +45,7 @@ See [Deployment options for Kubernetes]({{site.baseurl}}/docs/deployments/kubern
 
 ## kubectl
 `kubectl` is the command line interface for managing Kubernetes clusters. Running custom `kubectl` commands in a freestyle step gives maximum flexibility with cluster deployments.
+
 Codefresh automatically sets up your config context with your connected clusters. The config context is the value of the `$CF_KUBECONFIG_PATH` variable, which expands to `/codefresh/volume/sensitive/.kube/config` within the shared step volume.
 
 Codefresh has a public Docker image for kubectl at [Docker Hub](https://hub.docker.com/r/codefresh/kubectl/tags){:target="\_blank"} that you can use.
@@ -63,6 +65,7 @@ Install Helm charts from Helm repositories, or build a new one.
 
 
 As with steps for Kubernetes deployments, Codefresh has a dedicated step for Helm deployments. The Helm step easily integrates Helm in Codefresh pipelines, and can authenticate, configure, and execute Helm commands.
+
 The Helm step can operate in one of three modes covering most scenarios:  
 * Install the chart into a Kubernetes cluster. This is the default mode if not explicitly set.
 * Package the chart and push it to the defined repository.
@@ -74,13 +77,16 @@ Deploy the Helm chart to a Kubernetes cluster, Helm repo, or both.
 See [Using Helm in Codefresh pipelines]({{site.baseurl}}/docs/deployments/helm//using-helm-in-codefresh-pipeline/), [Using managed Helm repos]({{site.baseurl}}/docs/deployments/helm//managed-helm-repository/), and Helm [charts and repositories]({{site.baseurl}}/docs/deployments/helm/helm-charts-and-repositories/).
 
 ## Dashboards
-Dashboards are key to providing the right information at the right time. Codefresh makes it easy to both access and visualize critical information for any resource, at any stage and level, and for anyone, from managers to DevOps engineers. Our operational dashboards expose the most critical application and environmental information to developers for troubleshooting without needing assistance from the DevOps teams. Our analytics dashboards expose key statistics and metrics around builds and deployments for product owners and management alike.  
+Dashboards are key to providing the right information at the right time. Codefresh makes it easy to both access and visualize critical information for any resource, at any stage and level, and for anyone, from managers to DevOps engineers. 
+
+Our operational dashboards expose the most critical application and environmental information to developers for troubleshooting without needing assistance from the DevOps teams. Our analytics dashboards expose key statistics and metrics around builds and deployments for product owners and management alike.  
 
 
 You can customize all dashboards to display just the information most relevant to your business issues.
 
 **Kubernetes**  
 The Kubernetes (Kubernetes Services) dashboard displays the clusters in your environments, their state, and actions if you have the required access privileges.  
+
 This dashboard is a centralized location from which to view, add, modify, and remove Kubernetes services. You can deploy services with images from the Codefresh registry or from external Docker registries.  
 See [Accessing the Kubernetes dashboard]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/#accessing-the-kubernetes-dashboard).
 

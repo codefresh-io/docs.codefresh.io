@@ -2,8 +2,6 @@
 title: "Google Cloud Builder pipeline integration"
 description: "Use the Google Cloud builder to create Docker images in Codefresh pipelines"
 group: integrations
-redirect_from:
-  - /docs/integrations/gcloud-builder/
 toc: true
 ---
 
