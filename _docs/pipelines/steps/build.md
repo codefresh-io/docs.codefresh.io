@@ -6,6 +6,7 @@ sub_group: steps
 redirect_from:
   - /docs/build-1/
   - /docs/codefresh-yaml/steps/build-1/
+  - /docs/codefresh-yaml/steps/build/  
 toc: true
 ---
 Use Docker to build an image and store it in Codefresh.

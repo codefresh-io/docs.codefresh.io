@@ -193,7 +193,7 @@ toc: true
 - Define Access for non-admins in Helm Repositories and Shared Config - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/#level-of-access)
 - Okta Auto-Sync of Teams - [documentation]({{site.baseurl}}/docs/administration/single-sign-on/sso-okta/#syncing-of-teams-after-initial-sso-setup)
 - Global Pipeline Settings Screen - [documentation]({{site.baseurl}}/docs/administration/pipeline-settings)
-- Helm 2 Support - [documentation]({{site.baseurl}}/docs/new-helm/helm2-support)
+- Helm 2 Support discontinued 
 
 ### January 2021
 

@@ -5,6 +5,7 @@ group: pipelines
 sub_group: steps
 redirect_from:
   - /docs/freestyle/
+  - /docs/codefresh-yaml/steps/freestyle/  
 toc: true
 ---
 The Freestyle step is designed so you can execute a series of commands in a container. Freestyle steps

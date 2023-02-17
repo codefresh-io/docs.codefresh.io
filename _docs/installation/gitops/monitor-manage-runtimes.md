@@ -580,7 +580,7 @@ All you need to do is to configure the browser to trust the URL and receive cont
 
 The Activity Log is a quick way to monitor notifications for Runtime events such as upgrades. A pull-down panel in the Codefresh toolbar, the Activity Log shows ongoing, success, and error notifications, sorted by date, starting with today's date.
 
-1. In the Codefresh UI, on the top-right of the toolbar, select ![](/images/pipeline/monitoring/pipeline-activity-log-toolbar.png?display=inline-block) **Activity Log**.
+1. In the Codefresh UI, on the top-right of the toolbar, select  **Activity Log**.
 1. To see notifications for provisioned Runtimes, filter by **Runtime**.
 
 

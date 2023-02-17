@@ -5,6 +5,7 @@ group: pipelines
 sub_group: steps
 redirect_from:
   - /docs/git-clone/
+  - /docs/codefresh-yaml/steps/git-clone/  
 toc: true
 ---
 Clones a Git repository to the filesystem.
