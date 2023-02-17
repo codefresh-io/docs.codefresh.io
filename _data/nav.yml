@@ -523,15 +523,14 @@
           url: "/pipeline-execution-context" 
         - title: Auditing actions in Codefresh
           url: "/audit"
-        - title: Codefresh IP addresses
-          url: "/platform-ip-addresses"
     - title: User self-management
       sub-pages:  
         - title: Managing personal settings
           url: "/user-settings"
         - title: Managing Git PATs
           url: "/manage-pats"
- 
+    - title: Codefresh IP addresses
+      url: "/platform-ip-addresses" 
 
 - title: Single Sign-On
   url: /single-sign-on

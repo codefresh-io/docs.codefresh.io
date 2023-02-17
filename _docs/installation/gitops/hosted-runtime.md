@@ -142,7 +142,7 @@ max-width="70%"
 ## Step 2: Connect Git provider
 Connect your Hosted GitOps Runtime to a Git provider for Codefresh to create the required Git repos.  First authorize access to your Git provider through an OAuth token, and then select the Git organizations or accounts in which to create the required Git repos.  
 
->Only authorized organizations are displayed in the list. To authorize organizations for the Codefresh application in GitHub, see [Authorize organizations/projects]({{site.baseurl}}/docs/administration/hosted-authorize-orgs/).
+>Only authorized organizations are displayed in the list. To authorize organizations for the Codefresh application in GitHub, see [Authorize organizations/projects]({{site.baseurl}}/docs/administration/account-user-management/hosted-authorize-orgs/).
 
 
 {% include
@@ -165,7 +165,7 @@ Once you authorize access, Codefresh creates two Git repositories, one to store 
 * Git Source application repo  
 
   Codefresh creates a Git Source application repo for every Hosted GitOps Runtime.  
-  Read about [Git sources]({{site.baseurl}}/docs/runtime/git-sources/).
+  Read about [Git sources]({{site.baseurl}}/docs/installation/gitops/git-sources/).
 
 
 >Hosted runtimes support only OAuth authentication. 
@@ -186,7 +186,7 @@ max-width="40%"
 
 {:start="3"}
 1. Select the **Git Organization for which to create the repos**.
-  >If the organization does not appear in the list, you need to authorize access to it. See [Authorize organizations/projects]({{site.baseurl}}/docs/administration/hosted-authorize-orgs/).
+  >If the organization does not appear in the list, you need to authorize access to it. See [Authorize organizations/projects]({{site.baseurl}}/docs/administration/account-user-management/hosted-authorize-orgs/).
 1. Click **Create**.
   Codefresh creates the two Git repositories in the paths shown.
 
@@ -310,12 +310,12 @@ Optional. Create an application in Codefresh, deploy it to the cluster, and trac
 {:start="2"}
 2. In the Codefresh UI, view your application in the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard){:target="\_blank"}.
 
-## (Optional) Connect CI 
+### (Optional) Connect CI 
 Optional. Integrate Codefresh with the third-party tools you use for CI to enrich image information in deployments.  
 
 [Image enrichment with integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/) 
 
-### Related articles
+## Related articles
 [Monitoring & managing GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/)  
 [Add Git Sources to runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
 [Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration)  

@@ -1538,8 +1538,8 @@ kubectl edit cm codefresh-dind-config -n codefresh
 
  {% include image.html
   lightbox="true"
-  file="/images/administration/runner/rancher-mtu.png"
-  url="/images/administration/runner/rancher-mtu.png"
+  file="/images/runtime/runner/rancher-mtu.png"
+  url="/images/runtime/runner/rancher-mtu.png"
   alt="Update the runner's Docker MTU"
   caption="Update the runner's Docker MTU"
   max-width="100%"

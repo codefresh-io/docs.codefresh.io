@@ -245,13 +245,13 @@
     localurl: /docs/administration/account-user-management/access-control/
   - title: Audit
     localurl: /docs/administration/account-user-management/audit/
-  - title: Codefresh IP addresses
-    localurl: /docs/administration/account-user-management/platform-ip-addresses/
   - title: User settings
     localurl: /docs/administration/user-self-management/user-settings/
   - title: Manage Git PATs
     localurl: /docs/administration/user-self-management/manage-pats/
-
+  - title: Codefresh IP addresses
+    localurl: /docs/administration/platform-ip-addresses/
+    
 - title: Single Sign-On
   icon: images/home-icons/administration.svg
   url: '' 

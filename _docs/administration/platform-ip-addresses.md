@@ -1,9 +1,7 @@
 ---
 title: "Codefresh IP addresses"
-description: " "
+description: "How to allowlist the IP addresses of the Codefresh platform"
 group: administration
-sub_group: account-user-management
-  - /docs/administration/platform-ip-addresses/
 toc: true
 
 ---
