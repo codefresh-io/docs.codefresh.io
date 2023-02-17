@@ -41,7 +41,7 @@ The Sealed Secret controller is fully managed by the Codefresh runtime, and secr
 The applications you deploy with Codefresh should also have no knowledge of the controller. All secrets that you need in your own applications should be accessed using the standard Kubernetes methods.
 
 ## Related articles 
-[Set up a hosted (Hosted GitOps environment]({{site.baseurl}}/_docs/installation/gitops/hosted-runtime/)  
+[Set up a hosted (Hosted GitOps environment)]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/)  
 [Install hybrid runtimes]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/)  
 [Image enrichment with integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview)  
 

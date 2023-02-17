@@ -58,8 +58,8 @@ max-width="80%"
 {% include 
 image.html 
 lightbox="true" 
-file="/images/getting-started/quick-start-test-pr/launch-url.png" 
-url="/images/getting-started/quick-start-test-pr/launch-url.png" 
+file="/images/quick-start/quick-start-test-pr/launch-url.png" 
+url="/images/quick-start/quick-start-test-pr/launch-url.png" 
 alt="Start logs" 
 caption="Start logs (click image to enlarge)" 
 max-width="60%" 

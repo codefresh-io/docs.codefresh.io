@@ -48,10 +48,10 @@ The table below lists the functionality available for role-based access.
 |Inspect text reports    | `User` and `Admin`|
 |[Git Integrations]({{site.baseurl}}/docs/integrations/git-providers/)      | `Admin`|
 |[External Docker registry settings]({{site.baseurl}}/docs/integrations/docker-registries/)      | `Admin`|
-|[External Helm repositories]({{site.baseurl}}/docs/deployments/helm/add-helm-repository/)      | `Admin`|
+|[External Helm repositories]({{site.baseurl}}/docs/deployments/helm/helm-charts-and-repositories/)      | `Admin`|
 |[Cloud provider settings]({{site.baseurl}}/docs//integrations/kubernetes/#connect-a-kubernetes-cluster)      | `Admin`|
 |[Cloud storage settings]({{site.baseurl}}/docs/testing/test-reports/#connecting-your-storage-account)      | `Admin`|
-|[Shared configuration]({{site.baseurl}}/docs/pipelines/shared-configuration/)      | `Admin`|
+|[Shared configuration]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/)      | `Admin`|
 |[API token generation]({{site.baseurl}}/docs/integrations/codefresh-api/#authentication-instructions)      | `Admin`|
 |[SSO Settings]({{site.baseurl}}/docs/single-sign-on/)      | `Admin`|
 |[Runtime environment selection]({{site.baseurl}}/docs/pipelines/pipelines/#pipeline-settings)      | `Admin`|

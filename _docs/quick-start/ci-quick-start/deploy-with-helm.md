@@ -266,7 +266,7 @@ For the quick start, we will import the shared configuration.
 image.html 
 lightbox="true" 
 file="/images/quick-start/quick-start-helm/helm-select-shared-configuration.png" 
-url="/images/getting-started/quick-start-helm/helm-select-shared-configuration.png" 
+url="/images/quick-start/quick-start-helm/helm-select-shared-configuration.png" 
 alt="Add Shared Configuration option" 
 caption="Add Shared Configuration option" 
 max-width="70%" 

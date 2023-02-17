@@ -52,8 +52,8 @@ Once you run this pipeline Codefresh will create a Docker image for the Golang a
 
 {% include image.html 
 lightbox="true" 
-file="/images/learn-by-example/golang/golang-simple-pipeline.png" 
-url="/images/learn-by-example/golang/golang-simple-pipeline.png" 
+file="/images/examples/golang/golang-simple-pipeline.png" 
+url="/images/examples/golang/golang-simple-pipeline.png" 
 alt="Simple pipeline for Golang" 
 caption="Simple pipeline for Golang" 
 max-width="80%" 
@@ -132,8 +132,8 @@ If the unit tests fail, then the docker image will never be created (Codefresh a
 
 {% include image.html 
 lightbox="true" 
-file="/images/learn-by-example/golang/golang-ci-pipeline.png" 
-url="/images/learn-by-example/golang/golang-ci-pipeline.png" 
+file="/images/examples/golang/golang-ci-pipeline.png" 
+url="/images/examples/golang/golang-ci-pipeline.png" 
 alt="Golang pipeline with unit tests" 
 caption="Golang pipeline with unit tests" 
 max-width="80%" 
@@ -253,8 +253,8 @@ If you look at your [Docker registry dashboard]({{site.baseurl}}/docs/docker-reg
 
 {% include image.html 
 lightbox="true" 
-file="/images/learn-by-example/golang/golang-image-size.png" 
-url="/images/learn-by-example/golang/golang-image-size.png" 
+file="/images/examples/golang/golang-image-size.png" 
+url="/images/examples/golang/golang-image-size.png" 
 alt="Creating different Docker images" 
 caption="Creating different Docker images" 
 max-width="80%" 
