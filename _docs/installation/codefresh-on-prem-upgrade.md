@@ -1,19 +1,18 @@
 ---
 title: "Codefresh On-Premises Upgrade"
-description: "Use the Kubernetes Codefresh Installer to upgrade your Codefresh On-Premises platform "
+description: "Use the Kubernetes Codefresh Installer to upgrade the Codefresh On-Premises platform "
 group: installation
 redirect_from:
-  - /docs/administration/codefresh-on-prem-upgrade/
   - /docs/enterprise/codefresh-on-prem-upgrade/
 toc: true
 ---
-Upgrade the Codefresh On-premises platform to the latest version:
+Upgrade the Codefresh on-premises platform to the latest version:
 * Prepare for the upgrade: _Before_ the upgrade, based on the version you are upgrading to, complete the required tasks
-* Upgrade On-premises
+* Upgrade the platform
 * Complete post-upgrade configuration: If needed, also based on the version you are upgrading to, complete the required tasks
 
 
-##  Upgrade to 1.1.1
+## Upgrade to 1.1.1
 Prepare for the upgrade to v1.1.1 by performing the tasks listed below.
 
 ### Maintain backward compatibility for infrastructure services
@@ -427,8 +426,6 @@ From version **1.3.0 and higher**, we have deprecated Codefresh-managed `nats` c
 > Because `cf-nats` is a StatefulSet and  has some immutable fields in its spec, both the old and new charts have the same names, preventing a direct upgrade.
   Direct upgrade will most likely fail with:
   `helm.go:84: [debug] cannot patch "cf-nats" with kind StatefulSet: StatefulSet.apps "cf-nats" is invalid: spec: Forbidden: updates to statefulset spec for fields other than 'replicas', 'template', 'updateStrategy' and 'minReadySeconds' are forbidden`
-  After backing up existing data, you must delete the old StatefulSet.
-
 
 * **Delete the old** `cf-nats` stateful set.
 
@@ -459,6 +456,185 @@ builder:
   - "myregistrydomain.com:5000"
 ```
 
+## Upgrade to 1.4.0 and higher
+
+> Update `kcfi` tool to the latest [0.5.18](https://github.com/codefresh-io/kcfi/releases/tag/0.5.18){:target="\_blank"} version
+
+This major release **deprecates** the following Codefresh managed charts and replaces them with Bitnami charts:
+* [Postgresql](#update-configuration-for-postgresql-chart)
+* [Mongodb](#update-configuration-for-mongodb-chart)
+
+>Read instructions _before_ the upgrade.
+
+### Update configuration for Postgresql chart
+From version **1.4.0 and higher**, we have deprecated support for the `Codefresh-managed Postgresql` chart. It has been replaced with Bitnami public chart `bitnami/postgresql`.  
+For more information, see [bitnami/postgresql](https://github.com/bitnami/charts/tree/master/bitnami/postgresql){:target="\_blank"}.
+
+> If in `config.yaml`, `postgresql.enabled=false` indicating that you are running and [**external** Postgresql service]({{site.baseurl}}/docs/installation/codefresh-on-prem/#configuring-an-external-postgres-database), you can ignore the configuration instructions.
+
+#### Manual backup and restore
+
+**Before the upgrade:**
+
+1.Obtain the PostgresSQL administrator password:
+```shell
+export PGPASSWORD=$(kubectl get secret --namespace codefresh cf-postgresql -o jsonpath="{.data.postgres-password}" | base64 --decode)
+```
+1.Forward the PostgreSQL service port and place the process in the background:
+```shell
+kubectl port-forward --namespace codefresh svc/cf-postgresql 5432:5432 &
+```
+1.Create a directory for the backup files and make it the current working directory:
+```shell
+mkdir psqlbackup
+chmod o+w psqlbackup
+cd psqlbackup
+```
+1. Back up the contents of audit database to the current directory using the *pg_dump* tool.  
+  If this tool is not installed on your system, use [Bitnami's PostgreSQL Docker image](https://github.com/bitnami/containers/tree/main/bitnami/postgresql){:target="\_blank"} to perform the backup, as shown below:
+```shell
+docker run --rm --name postgresql-backup -e PGPASSWORD=$PGPASSWORD -v $(pwd):/app --net="host" bitnami/postgresql:13 pg_dump -Fc --dbname audit -h host.docker.internal -p 5432 -f /app/audit.dump
+```
+
+Here:  
+* The *--net* parameter lets the Docker container use the host's network stack and thereby gain access to the forwarded port.
+* The *pg_dump* command connects to the PostgreSQL service and creates backup files in the */app* directory, which is mapped to the current directory (*psqlbackup/*) on the Docker host with the *-v* parameter. 
+* The *--rm* parameter deletes the container after the *pg_dump* command completes execution.
+
+**After the upgrade:**
+
+Create an environment variable with the password for the new stateful set:
+```shell
+export PGPASSWORD=$(kubectl get secret --namespace codefresh cf-postgresql -o jsonpath="{.data.postgres-password}" | base64 --decode)
+```
+
+Forward the PostgreSQL service port for the new stateful set and place the process in the background:
+```shell
+kubectl port-forward --namespace codefresh svc/cf-postgresql 5432:5432
+```
+
+Restore the contents of the backup into the new release using the *pg_restore* tool. If this tool is not available on your system, mount the directory containing the backup files as a volume in Bitnami's PostgreSQL Docker container and use the *pg_restore* client tool in the container image to import the backup into the new cluster, as shown below:
+```shell
+cd psqlbackup
+docker run --rm --name postgresql-backup -e PGPASSWORD=$PGPASSWORD -v $(pwd):/app --net="host" bitnami/postgresql:13 pg_restore --Fc --create --dbname postgres -h host.docker.internal -p 5432 /app/audit.dump
+```
+
+#### Backup and restore via Helm hooks
+
+You can also run Postgresql database migration with `pre-upgrade` and `post-upgrade` helm hooks. 
+> It's strongly recommended to create a **MANUAL** backup prior to the upgrade!
+
+
+**To enable backup and restore via Helm hooks:**  
+* Set `postgresql.migration.enabled=true` (specify additional parameters if necessary).
+  It will create a k8s Job with PVC, and run `pg_dump` and `pg_restore` during the upgrade.
+
+```yaml
+postgresql:
+  migration:
+    ## enable the migration Job (pre-upgrade and post-upgrade hooks)
+    enabled: true
+    ## specify Storage Class for PVC which will store the backup (by default will use the default SC on your k8s cluster)
+    # storageClass: standard
+    ## specify PVC size (default size is 8Gi, make sure to adjust the size to the current config `postgresql.persistence.size` value)
+    # pvcSize: 8Gi
+    ## set Job to use an existing PVC
+    existingClaim: ""
+    ## set nodeSelector/tolerations/resources for the Job
+    nodeSelector: {}
+    tolerations: []
+    resources: {}
+```
+
+
+### Update configuration for Mongodb chart
+
+From version **1.4.0 and higher**, we have deprecated support for the `Codefresh-managed MongoDB` chart. It has been replaced with Bitnami public chart `bitnami/mongodb`.  
+For more information, see [bitnami/mongodb](https://github.com/bitnami/charts/tree/master/bitnami/mongodb){:target="\_blank"}.
+
+> If in `config.yaml`, `mongo.enabled=false`, indicating that you are running an [**external** MongoDB service]({{site.baseurl}}/docs/installation/codefresh-on-prem/#configuring-an-external-mongodb), you can ignore the configuration updates.
+
+#### Manual backup and restore
+
+**Before the upgrade:**
+
+1. Obtain the MongoDB administrator password:
+```shell
+export MONGODB_ROOT_PASSWORD=$(kubectl get secret --namespace codefresh cf-mongodb -o jsonpath="{.data.mongodb-root-password}" | base64 --decode)
+```
+1. Forward the MongoDB service port and place the process in the background:
+```shell
+kubectl port-forward --namespace codefresh svc/mongodb 27017:27017 &
+```
+1. Create a directory for the backup files and make it the current working directory:
+```shell
+mkdir mongobackup
+chmod o+w mongobackup
+cd mongobackup
+```
+1. Back up the contents of all the databases to the current directory using the `monogodump` tool.  
+  If this tool is not installed on your system, use [Bitnami's MongoDB Docker image](https://github.com/bitnami/containers/tree/main/bitnami/mongodb){:target="\_blank"} to perform the backup, as shown below:
+```shell
+docker run --rm --name mongodb-backup -v $(pwd):/app --net="host" bitnami/mongodb:4.2 mongodump --host="host.docker.internal:27017" -u root -p $MONGODB_ROOT_PASSWORD -o /app
+```
+
+Here:  
+* The *--net* parameter lets the Docker container use the host's network stack and thereby gain access to the forwarded port. 
+* The *mongodump* command connects to the MongoDB service and creates backup files in the */app* directory, which is mapped to the current directory (*mongobackup/*) on the Docker host with the *-v* parameter. 
+* The *--rm* parameter deletes the container after the *mongodump* command completes execution.
+
+**After the upgrade:**
+
+1. Create an environment variable with the password for the new stateful set:
+```shell
+export MONGODB_ROOT_PASSWORD=$(kubectl get secret --namespace codefresh cf-mongodb -o jsonpath="{.data.mongodb-root-password}" | base64 --decode)
+```
+1. Forward the MongoDB service port for the new stateful set and place the process in the background:
+(**Note!** Default service address was changed)
+```shell
+kubectl port-forward --namespace codefresh svc/cf-mongodb 27017:27017 &
+```
+1. Restore the contents of the backup into the new release using the `mongorestore` tool.  
+  If this tool is not available on your system, mount the directory containing the backup files as a volume in Bitnami's MongoDB Docker container and use the `mongorestore` client tool in the container image to import the backup into the new cluster, as shown below:
+```shell
+cd mondgobackup
+docker run --rm --name mongodb-backup -v $(pwd):/app --net="host" bitnami/mongodb:4.2 mongorestore --host="host.docker.internal:27017" -u root -p $MONGODB_ROOT_PASSWORD /app
+```
+1. Stop the service port forwarding by terminating the background process.
+1. Connect to the new stateful set and confirm that your data has been successfully restored:
+```shell
+kubectl run --namespace codefresh mongodb-new-client --rm --tty -i --restart='Never' --image docker.io/bitnami/mongodb:4.2 --command -- mongo codefresh --host cf-mongodb --authenticationDatabase admin -u root -p $MONGODB_ROOT_PASSWORD --eval "db.accounts.find()"
+```
+
+#### Backup and restore via Helm hooks
+
+You can also run MongoDB database migration with `pre-upgrade` and `post-upgrade` helm hooks. 
+
+> It's strongly recommended to create a **MANUAL** backup prior to the upgrade!
+
+
+**To enable backup and restore via Helm hooks:**  
+* Set `mongodb.migration.enabled=true` (specify additional parameters if necessary).  
+  It will create a k8s Job with PVC and run `mongodump` and `mongorestore` during the upgrade.
+
+```yaml
+mongodb:
+  migration:
+    ## enable the migration Job (pre-upgrade and post-upgrade hooks)
+    enabled: true
+    ## specify Storage Class for PVC which will store the backup (by default will use the default SC on your k8s cluster)
+    # storageClass: standard
+    ## specify PVC size (default size is 8Gi, make sure to adjust the size to the current config `mongodb.persistence.size` value)
+    # pvcSize: 8Gi
+    ## set Job to use an existing PVC
+    existingClaim: ""
+    ## set nodeSelector/tolerations/resources for the Job
+    nodeSelector: {}
+    tolerations: []
+    resources: {}
+```
+
+
 ## Upgrade the Codefresh Platform with [kcfi](https://github.com/codefresh-io/kcfi)
 
 1. Locate the `config.yaml` file you used in the initial installation.
@@ -484,7 +660,7 @@ builder:
 
 ## Codefresh with Private Registry
 
-If you install/upgrade Codefresh on the air-gapped environment (without access to public registries or Codefresh Enterprise registry) you will have to copy the images to your organization container registry.
+If you install/upgrade Codefresh on an air-gapped environment (without access to public registries or Codefresh Enterprise registry), you will have to copy the images to your organization's container registry.
 
 **Obtain [image list](https://github.com/codefresh-io/onprem-images/tree/master/releases) for specific release**
 
@@ -544,7 +720,7 @@ localhost:5000/codefresh/pipeline-manager:3.121.7
 
 `./push-to-registry.sh localhost:5000 v1.2.14`
 
-#### Install/Upgrade Codefresh with private docker registry config**
+**Install/Upgrade Codefresh with private docker registry config**
 
 Set `usePrivateRegistry: true`, and set privateRegistry address, username and password in `config.yaml`.
 
@@ -572,5 +748,3 @@ images:
     username:
     password:
 ```
-<!---## Related articles
-TBD-->
