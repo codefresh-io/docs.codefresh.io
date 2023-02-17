@@ -3,7 +3,6 @@ title: "Steps in pipelines"
 description: "Types of steps in Codefresh pipelines"
 group: pipelines
 redirect_from:
-  - /docs/pipelines/steps/
   - /docs/steps/
 toc: true
 ---
