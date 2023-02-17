@@ -243,7 +243,7 @@ OR
 
 
 ## Read more on Kubernetes deployments & pipelines
-[Deployment options for Kubernetes]({{site.baseurl}}/docs/deployments/kubernetes/deployment-options-to-kubernetes/)  
+[Deployment options for Kubernetes]({{site.baseurl}}/docs/deployments/kubernetes/)  
 [Introduction to Codefresh pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)  
 [Codefresh pipeline definitions YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 

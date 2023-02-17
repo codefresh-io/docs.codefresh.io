@@ -3,6 +3,8 @@ title: "How to deploy to Kubernetes"
 description: "Learn the different Kubernetes deployment options"
 group: deployments
 toc: true
+redirect_from:
+ - /docs/deployments/kubernetes/deployment-options-to-kubernetes/
 ---
 
 Codefresh offers several options when it comes to Kubernetes deployments:
@@ -21,7 +23,7 @@ Codefresh offers several options when it comes to Kubernetes deployments:
 
 ## Prerequisites for all options
 
-* A K8s cluster in Codefresh (see [Connecting a Kubernetes cluster]({{site.baseurl}}/docs/integrations/kubernetes/#connect-a-kubernetes-cluster) 
+* A K8s cluster in Codefresh (see [Connecting a Kubernetes cluster]({{site.baseurl}}/docs/integrations/kubernetes/#connect-a-kubernetes-cluster) )
 * Familiarity with the [Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/), basic [pipeline steps]({{site.baseurl}}/docs/pipelines/steps/), and how to describe them
 * [Docker registry integration]({{site.baseurl}}/docs/integrations/docker-registries/) in Codefresh
   

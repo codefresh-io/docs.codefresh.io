@@ -691,7 +691,7 @@ This dashboard shows a live view of a Kubernetes application along with the stat
 
 ## Ad-hoc deployments with the Codefresh UI
 
-One of the [easiest ways to deploy to Kubernetes]({{site.baseurl}}/docs/deployments/kubernetes/deployment-options-to-kubernetes/) is to use the Codefresh UI and [manually deploy a docker image]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/#deploying-a-new-service):
+One of the [easiest ways to deploy to Kubernetes]({{site.baseurl}}/docs/deployments/kubernetes/) is to use the Codefresh UI and [manually deploy a docker image]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/#deploying-a-new-service):
 
 {% include image.html 
 lightbox="true" 
@@ -707,7 +707,7 @@ You can also [create a pull Secret]({{site.baseurl}}/docs/ci-cd-guides/access-do
 
 ## Automated deployments with Codefresh pipelines
 
-You can also deploy to a cluster in a pipeline. Codefresh offers [several ways for Kubernetes deployments]({{site.baseurl}}/docs/deployments/kubernetes/deployment-options-to-kubernetes/). The important point here is that all connected clusters are automatically available to all pipelines with their unique name as a `kubectl` context.
+You can also deploy to a cluster in a pipeline. Codefresh offers [several ways for Kubernetes deployments]({{site.baseurl}}/docs/deployments/kubernetes/). The important point here is that all connected clusters are automatically available to all pipelines with their unique name as a `kubectl` context.
 
  {% include 
 image.html 

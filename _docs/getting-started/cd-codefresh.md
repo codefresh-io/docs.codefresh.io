@@ -41,7 +41,7 @@ Codefresh pipelines also support Kustomize and Helm for deployments through `fre
 
 Finally, if you are familiar with and still want to work with `kubectl`, run your own custom `kubectl` commands in a freestyle step. Read more in [kubectl](#kubectl).
 
-See [Deployment options for Kubernetes]({{site.baseurl}}/docs/deployments/kubernetes/deployment-options-to-kubernetes/).
+See [Deployment options for Kubernetes]({{site.baseurl}}/docs/deployments/kubernetes/).
 
 ## kubectl
 `kubectl` is the command line interface for managing Kubernetes clusters. Running custom `kubectl` commands in a freestyle step gives maximum flexibility with cluster deployments.

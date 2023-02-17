@@ -24,7 +24,7 @@ Codefresh offers several levels of visibility into your deployments :
 
 See:  
 Quick starts for [Kubernetes]({{site.baseurl}}/docs/quick-start/ci-quick-start/deploy-to-kubernetes/) and [Helm]({{site.baseurl}}/docs/quick-start/ci-quick-start/deploy-with-helm/) deployments  
-[Deployment options for Kubernetes]({{site.baseurl}}/docs/deployments/kubernetes/deployment-options-to-kubernetes/)  
+[Deployment options for Kubernetes]({{site.baseurl}}/docs/deployments/kubernetes/)  
 [Using Helm in Codefresh pipelines]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/)  
 
 

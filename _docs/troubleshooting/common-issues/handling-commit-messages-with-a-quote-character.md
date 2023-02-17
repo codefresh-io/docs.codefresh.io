@@ -4,7 +4,6 @@ description: ""
 group: troubleshooting
 sub_group: common-issues
 redirect_from:
-  - /docs/troubleshooting/common-issues/handling-commit-messages-with-a-quote-character/
   - /docs/handling-commit-messages-with-quotes/
 toc: true
 ---

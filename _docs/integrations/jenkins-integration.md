@@ -191,7 +191,7 @@ It is important to understand that when you are switching to Codefresh you get a
 * Jenkins pipelines are connected to a single git repository. Codefresh pipelines can be connected to multiple [Git triggers]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/) which
 themselves are connected to git repositories. Therefore a Codefresh pipeline can be reused for multiple projects.
 * Specifically for building Docker images, Codefresh can automatically  connect to any [external Docker registry]({{site.baseurl}}/docs/integrations/docker-registries/).
-* Specifically for Kubernetes deployments, Codefresh automatically sets up `kubectl` access in pipelines [from connected clusters]({{site.baseurl}}/docs/integrations/kubernetes/#add-kubernetes-cluster/). There is no configuration needed to achieve this behavior. Codefresh also has several [built-in ways for Kubernetes deployments]({{site.baseurl}}/docs/deployments/kubernetes/deployment-options-to-kubernetes/) and a [dedicated dashboard]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/#accessing-the-kubernetes-dashboard/) to see what your cluster is doing.
+* Specifically for Kubernetes deployments, Codefresh automatically sets up `kubectl` access in pipelines [from connected clusters]({{site.baseurl}}/docs/integrations/kubernetes/#add-kubernetes-cluster/). There is no configuration needed to achieve this behavior. Codefresh also has several [built-in ways for Kubernetes deployments]({{site.baseurl}}/docs/deployments/kubernetes/) and a [dedicated dashboard]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/#accessing-the-kubernetes-dashboard/) to see what your cluster is doing.
 * Specifically for Helm deployments, Codefresh includes a private Helm repository and several [Helm dashboards]({{site.baseurl}}/docs/example-catalog/cd-examples/helm/).
 
 
@@ -825,9 +825,9 @@ is followed with Kubernetes deployments as we will see in the next section.
 
 ### Migration of Jenkins pipelines that deploy to Kubernetes
 
-Codefresh has first-class support for Kubernetes deployments. Codefresh can deploy on its own [using different options]({{site.baseurl}}/docs/deployments/kubernetes/deployment-options-to-kubernetes/) and no external tools (i.e. Ansible or `kubectl`) are needed.
+Codefresh has first-class support for Kubernetes deployments. Codefresh can deploy on its own [using different options]({{site.baseurl}}/docs/deployments/kubernetes/) and no external tools (i.e. Ansible or `kubectl`) are needed.
 
-Specifically for [Kubernetes]({{site.baseurl}}/docs/deployments/kubernetes/deployment-options-to-kubernetes/) and [Helm]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/), Codefresh has declarative pipeline steps:
+Specifically for [Kubernetes]({{site.baseurl}}/docs/deployments/kubernetes/) and [Helm]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/), Codefresh has declarative pipeline steps:
 
 `codefresh.yml`
 {% highlight yaml %}

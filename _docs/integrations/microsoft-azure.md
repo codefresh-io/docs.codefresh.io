@@ -63,7 +63,7 @@ caption="Connecting an Azure cluster"
 max-width="40%" 
 %}
 
-Once the cluster is connected you can use any of the [available deployment options]({{site.baseurl}}/docs/deployments/kubernetes/deployment-options-to-kubernetes/) for Kubernetes clusters. You also get access to all other Kubernetes dashboards such as the [cluster dashboard]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/)  or the [environment dashboard]({{site.baseurl}}/docs/deployments/kubernetes/environment-dashboard/) .
+Once the cluster is connected you can use any of the [available deployment options]({{site.baseurl}}/docs/deployments/kubernetes/) for Kubernetes clusters. You also get access to all other Kubernetes dashboards such as the [cluster dashboard]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/)  or the [environment dashboard]({{site.baseurl}}/docs/deployments/kubernetes/environment-dashboard/) .
 
 ## Storing test reports in Azure storage
 

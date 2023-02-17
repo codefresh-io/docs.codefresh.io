@@ -159,7 +159,7 @@ Some of the possible options are:
 1. The dedicated [deploy step]({{site.baseurl}}/docs/pipelines/steps/deploy/) in a pipeline. 
 1. The [cf-deploy-kubernetes step]({{site.baseurl}}/docs/ci-cd-guides/kubernetes-templating/) in a pipeline. This can also perform simple templating on Kubernetes manifests.
 
-Read more [Deployment options for Kubernetes]({{site.baseurl}}/docs/deployments/kubernetes/deployment-options-to-kubernetes/).
+Read more [Deployment options for Kubernetes]({{site.baseurl}}/docs/deployments/kubernetes/).
 <!-- will need to change xrefs after porting content -->
 ## Related articles
 [Environment dashboard]({{site.baseurl}}/docs/deployments/kubernetes/environment-dashboard/)  

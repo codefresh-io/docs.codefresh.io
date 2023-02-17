@@ -8,7 +8,7 @@ redirect_from:
 toc: true
 ---
 
-As described in [Deployment options for Kubernetes]({{site.baseurl}}/docs/deployments/kubernetes/deployment-options-to-kubernetes/), Codefresh has built-in functionality for deploying to Kubernetes clusters.
+As described in [Deployment options for Kubernetes]({{site.baseurl}}/docs/deployments/kubernetes/), Codefresh has built-in functionality for deploying to Kubernetes clusters.
 
 For maximum flexibility with cluster deployments, you can run your own custom `kubectl` commands in a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/).  
 [Kubectl](https://kubernetes.io/docs/reference/kubectl/overview/){:target="\_blank"} is the command line interface for managing kubernetes clusters.

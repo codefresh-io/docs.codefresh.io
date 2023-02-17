@@ -104,5 +104,5 @@ Selecting **more details** for an image tag.
 ## Related articles
 [Creating GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application)  
 [Managing GitOps applications]({{site.baseurl}}/docs/deployments/gitops/manage-application)  
-[Image enrichment for GitOps with integrations]({{site.baseurl}}/integrations/image-enrichment-overview)  
-[GitOps Overview dashboard]({{site.baseurl}}/docs/dashboard/home-dashboard)  
+[Image enrichment for GitOps with integrations]({{site.baseurl}}/docs/ci-cd-guides/image-enrichment/)  
+[GitOps Overview dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/)  
