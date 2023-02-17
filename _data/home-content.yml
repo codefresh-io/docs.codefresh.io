@@ -136,9 +136,10 @@
   icon: images/home-icons/tutorial.svg
   url: ''
   links:
-    - title: CI/CD examples
-      localurl: /docs/example-catalog/examples/
-
+    - title: CI examples
+      localurl: /docs/example-catalog/ci-examples/
+    - title: CD examples
+      localurl: /docs/example-catalog/cd-examples/
 
 - title: Pipelines
   icon: images/home-icons/pipeline.svg

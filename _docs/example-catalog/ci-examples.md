@@ -1,6 +1,6 @@
 ---
-title: "CI/CD examples"
-description: "A collection of examples for Codefresh pipelines"
+title: "CI Example catalog"
+description: "A collection of CI examples for Codefresh pipelines"
 group: example-catalog
 redirect_from:
   - /docs/yaml-examples/examples/
@@ -20,8 +20,6 @@ redirect_from:
 toc: true
 ---
 Codefresh enables you to define the steps of your pipeline in a [YAML file]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/). By default, the file is named `codefresh.yml`, and is located in the root directory of the repository.
-
-## CI examples
 
 ### Programming-language specific examples
 
@@ -63,7 +61,6 @@ You can also compile traditional applications that are not Dockerized yet.
 - [Get Short SHA ID and use it in a CI process]({{site.baseurl}}/docs/example-catalog/ci-examples/get-short-sha-id-and-use-it-in-a-ci-process)
 - [Call a CD pipeline from a CI pipeline]({{site.baseurl}}/docs/example-catalog/ci-examples/call-child-pipelines)
 
-<!--ask Kostis about these -->
 ### Unit and integration test examples
 
 Codefresh has support for both [unit]({{site.baseurl}}/docs/testing/unit-tests/) and [integration]({{site.baseurl}}/docs/testing/integration-tests/) tests, as well as [test reporting]({{site.baseurl}}/docs/testing/test-reports/).
@@ -100,36 +97,3 @@ Codefresh can automatically export secret key-value pairs using the Vault plugin
 - [Send notification to Jira]({{site.baseurl}}/docs/example-catalog/ci-examples/sending-the-notification-to-jira)
 
 
-## CD examples
-
-### Preview environment examples
-
-Codefresh can automatically launch environments (powered by Docker swarm) to [preview a Pull Request or feature]({{site.baseurl}}/docs/quick-start/ci-quick-start/on-demand-environments/). The definition of the environment can come from an [existing composition]({{site.baseurl}}/docs/testing/create-composition/), a docker-compose file or an inline YAML. Preview environments can be launched manually or [automatically from pipelines]({{site.baseurl}}/docs/pipelines/steps/launch-composition/).
-
-- [NGINX Basic Auth]({{site.baseurl}}/docs/example-catalog/cd-examples/secure-a-docker-container-using-http-basic-auth/)
-- [Spring Boot + Kafka + Zookeeper]({{site.baseurl}}/docs/example-catalog/cd-examples/spring-boot-kafka-zookeeper/)
-- [Web terminal]({{site.baseurl}}/docs/example-catalog/cd-examples/web-terminal/)
-
-### Deployment examples
-
-Codefresh can deploy to any platform such as VMs, FTP/SSH/S3 sites, app servers, but of course it has great support for [Kubernetes clusters]({{site.baseurl}}/docs/deployments/kubernetes/deployment-options-to-kubernetes/) and [Helm releases]({{site.baseurl}}/docs/deployments/helm/helm-releases-management/):
-
-- [Deploy to a VM with packer]({{site.baseurl}}/docs/example-catalog/cd-examples/packer-gcloud/) 
-- [Deploy to a VM with FTP]({{site.baseurl}}/docs/example-catalog/cd-examples/transferring-php-ftp)
-- [Deploy to Tomcat using SCP]({{site.baseurl}}/docs/example-catalog/cd-examples/deploy-to-tomcat-via-scp) 
-- [Use kubectl as part of freestyle step]({{site.baseurl}}/docs/example-catalog/cd-examples/use-kubectl-as-part-of-freestyle-step) 
-- [Deploy with Kustomize]({{site.baseurl}}/docs/example-catalog/cd-examples/deploy-with-kustomize)
-- [Deploy with Helm]({{site.baseurl}}/docs/example-catalog/cd-examples/helm) 
-- [Deploy with Terraform]({{site.baseurl}}/docs/example-catalog/cd-examples/terraform) 
-- [Deploy with Pulumi]({{site.baseurl}}/docs/example-catalog/cd-examples/pulumi) 
-- [Deploy to Nomad]({{site.baseurl}}/docs/example-catalog/cd-examples/nomad)
-- [Deploy to Heroku]({{site.baseurl}}/docs/example-catalog/cd-examples/deploy-to-heroku/)
-- [Deploy to Docker swarm]({{site.baseurl}}/docs/example-catalog/cd-examples/docker-swarm/)
-- [Deploy to Elastic Beanstalk]({{site.baseurl}}/docs/example-catalog/cd-examples/elastic-beanstalk/)
-- [Deploy to Amazon ECS/Fargate]({{site.baseurl}}/docs/example-catalog/cd-examples/amazon-ecs/)
-
-
-### Secrets examples
-
-Codefresh can automatically export secret key-value pairs using the Vault plugin from the [Step Marketplace](https://codefresh.io/steps/step/vault){:target="\_blank"}.
-- [GitOps with Bitnami sealed secrets]({{site.baseurl}}/docs/example-catalog/cd-examples/gitops-secrets)
