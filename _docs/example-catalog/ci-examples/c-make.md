@@ -26,8 +26,8 @@ Creating a CI/CD pipeline for C is very easy, because Codefresh can run any [gcc
 
 {% include image.html 
 lightbox="true" 
-file="/images/learn-by-example/cc/c-make-pipeline.png" 
-url="/images/learn-by-example/cc/c-make-pipeline.png" 
+file="/images/examples/cc/c-make-pipeline.png" 
+url="/images/examples/cc/c-make-pipeline.png" 
 alt="Compiling a C application in a pipeline"
 caption="Compiling a C application in a pipeline"
 max-width="80%" 

@@ -25,8 +25,8 @@ Creating a CI/CD pipeline for Rust is very easy, because Codefresh can run any [
 
 {% include image.html 
 lightbox="true" 
-file="/images/learn-by-example/rust/rust-pipeline.png" 
-url="/images/learn-by-example/rust/rust-pipeline.png" 
+file="/images/examples/rust/rust-pipeline.png" 
+url="/images/examples/rust/rust-pipeline.png" 
 alt="Compiling a Rust application in a pipeline"
 caption="Compiling a Rust application in a pipeline"
 max-width="80%" 

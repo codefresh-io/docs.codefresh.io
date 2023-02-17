@@ -53,8 +53,8 @@ We can now use the custom Docker image in order to compile/test the C++ applicat
 
 {% include image.html 
 lightbox="true" 
-file="/images/learn-by-example/cc/cpp-cmake-pipeline.png" 
-url="/images/learn-by-example/cc/cpp-cmake-pipeline.png" 
+file="/images/examples/cc/cpp-cmake-pipeline.png" 
+url="/images/examples/cc/cpp-cmake-pipeline.png" 
 alt="Compiling a C++ application in a pipeline"
 caption="Compiling a C++ application in a pipeline"
 max-width="80%" 
@@ -122,6 +122,6 @@ change the version of Gcc/g++ by starting from a different public or private Doc
 ## Related articles
 [C example]({{site.baseurl}}/docs/example-catalog/ci-examples/c-make/)  
 [Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
-[Steps in pipelines]({{site.baseurl}}/docs/pipelinessteps/)  
+[Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
 [How Codefresh pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)  
