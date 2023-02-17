@@ -108,8 +108,8 @@ You can see all your latest [Docker artifacts]({{site.baseurl}}/docs/docker-regi
 
 {% include image.html 
 lightbox="true" 
-file="/images/learn-by-example/ruby/images.png" 
-url="/images/learn-by-example/ruby/images.png" 
+file="/images/examples/ruby/images.png" 
+url="/images/examples/ruby/images.png" 
 alt="Codefresh built-in Registry" 
 caption="Codefresh built-in Registry" 
 max-width="80%" 
@@ -119,8 +119,8 @@ You can click on the image and get extra details. One of the tabs contains a vis
 
 {% include image.html 
 lightbox="true" 
-file="/images/learn-by-example/ruby/layers.png" 
-url="/images/learn-by-example/ruby/layers.png" 
+file="/images/examples/ruby/layers.png" 
+url="/images/examples/ruby/layers.png" 
 alt="Ruby On Rails image filesystem layers" 
 caption="Ruby On Rails Image filesystem layers" 
 max-width="70%" 
@@ -139,8 +139,8 @@ Launch the environment by clicking at the rocket icon in the images view.
 
 {% include image.html 
 lightbox="true" 
-file="/images/learn-by-example/ruby/launch.png" 
-url="/images/learn-by-example/ruby/launch.png" 
+file="/images/examples/ruby/launch.png" 
+url="/images/examples/ruby/launch.png" 
 alt="Launching a demo environment" 
 caption="Launching a demo environment" 
 max-width="50%" 
@@ -150,8 +150,8 @@ A new build will start. Once it is complete your new environment will be created
 
 {% include image.html 
 lightbox="true" 
-file="/images/learn-by-example/ruby/environment.png" 
-url="/images/learn-by-example/ruby/environment.png" 
+file="/images/examples/ruby/environment.png" 
+url="/images/examples/ruby/environment.png" 
 alt="Inspecting a demo environment" 
 caption="Inspecting a demo environment" 
 max-width="70%" 
@@ -161,8 +161,8 @@ Click the *Open App* icon on the right and your browser will open a new tab with
 
 {% include image.html 
 lightbox="true" 
-file="/images/learn-by-example/ruby/preview.png" 
-url="/images/learn-by-example/ruby/preview.png" 
+file="/images/examples/ruby/preview.png" 
+url="/images/examples/ruby/preview.png" 
 alt="Previewing a demo environment" 
 caption="Previewing a demo environment" 
 max-width="50%" 
