@@ -124,9 +124,9 @@ Codefresh GitOps also supports SaaS and hybrid installation options:
 ### Hosted GitOps
 The SaaS version of GitOps, Hosted GitOps has Argo CD installed in the Codefresh cluster.
 Hosted GitOps Runtime is installed and provisioned in a Codefresh cluster, and managed by Codefresh.  
-Hosted enviroments are full-cloud environments, where all updates and improvements are managed by Codefresh, with zero-maintenance overhead for you as the customer.  
+Hosted environments are full-cloud environments, where all updates and improvements are managed by Codefresh, with zero-maintenance overhead for you as the customer.  
 Currently, you can add one Hosted GitOps Runtime per account.
-For the architecture, see [Hosted GitOps Runtime architecture]({{site.baseurl}}/docs/installation/architecture/#hosted-gitops-runtime-architecture).
+For the architecture, see [Hosted GitOps Runtime architecture]({{site.baseurl}}/docs/installation/runtime-architecture/).
 
   
 {% include

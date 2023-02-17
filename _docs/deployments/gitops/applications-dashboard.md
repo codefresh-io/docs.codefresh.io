@@ -163,7 +163,7 @@ max-width="80%"
 image.html
 lightbox="true"
 file="/images/applications/app-header-view-details.png"
-url="/images/applicationsapp-header-view-details.png"
+url="/images/applications/app-header-view-details.png"
 alt="View app details from the application header context menu"
 caption="View app details from the application header context menu"
 max-width="80%"

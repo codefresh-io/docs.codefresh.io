@@ -1396,11 +1396,12 @@ You have completed installing the Codefresh Runner on an EKS cluster. You can tr
 ### Install Codefresh Runner on Rancher RKE 2.X
 
 Installing Codefresh Runner on Rancher RKE 2.X includes these steps:  
-[Step 1: Configure kubelet for Runner StorageClass](#step-1-configure-kubelet-for-runner-storageclass)  
-[Step 2: Set kubeconfig user permissions](#step-2-set-kubeconfig-user-permissions)
-[Step 3: Install the Runner](#step-3-install-the-runner)  
-[Step 4: Update Runner Docker MTU](#step-4-update-runner-docker-mtu)  
-[Step 5: Create the cluster integration](#step-5-create-the-cluster-integration)
+
+* [Step 1: Configure kubelet for Runner StorageClass](#step-1-configure-kubelet-for-runner-storageclass)  
+* [Step 2: Set kubeconfig user permissions](#step-2-set-kubeconfig-user-permissions)
+* [Step 3: Install the Runner](#step-3-install-the-runner)  
+* [Step 4: Update Runner Docker MTU](#step-4-update-runner-docker-mtu)  
+* [Step 5: Create the cluster integration](#step-5-create-the-cluster-integration)
 
 #### Step 1: Configure kubelet for Runner StorageClass
 

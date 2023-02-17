@@ -45,8 +45,8 @@ You can also switch to a Grid view if you prefer that over the default List view
 
 {% include image.html
 lightbox="true"
-file="/images/kubernetes/grid-view.png"
-url="/images/kubernetes/grid-view.png"
+file="/images/deployments/kubernetes/grid-view.png"
+url="/images/deployments/kubernetes/grid-view.png"
 alt="Kubernetes Dashboard grid view"
 caption="Kubernetes Dashboard grid view"
 max-width="80%"

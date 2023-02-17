@@ -273,7 +273,7 @@ my_custom_helm_command:
 |custom_values|optional|values to provide to Helm as --set.|
 |helm_repository_context | optional |The name of the Helm repository integration configured in Codefresh.|
 |helm_version|optional|version of [cfstep-helm image](https://hub.docker.com/r/codefresh/cfstep-helm/tags).|
-|kube_context|required for install|Kubernetes context to use. The name of the cluster as [configured in Codefresh]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/).|
+|kube_context|required for install|Kubernetes context to use. The name of the cluster as [configured in Codefresh]({{site.baseurl}}/docs/integrations/kubernetes/#connect-a-kubernetes-cluster).|
 |namespace|optional|Target Kubernetes namespace to deploy to.|
 |primary_helm_context |optional |Required for `install` and `push` actions when the pipeline has multiple Helm contexts. The Helm context to use for the Helm command. When omitted, the repo most recently added to the pipeline is used.|
 |release_name|used for `install`|The Helm release name. If the release exists, it is upgraded.|

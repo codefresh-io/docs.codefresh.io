@@ -15,7 +15,7 @@ You can create your own pipelines by writing a [codefresh.yml]({{site.baseurl}}/
 image.html 
 lightbox="true" 
 file="/images/pipeline/codefresh-yaml/stages/complex-pipeline.png" 
-url="/images/pipeline/codefresh-yamlstages/complex-pipeline.png"
+url="/images/pipeline/codefresh-yaml/stages/complex-pipeline.png"
 alt="Pipeline steps" 
 caption="Pipeline steps"
 max-width="80%"

@@ -138,7 +138,7 @@ Not only it will be used for this Helm chart, but it will be added in your globa
 
 ## Using values from the Shared Configuration in your Helm step
 
-Additionally, you can define shared variables in your account settings and reuse those across your Helm steps, and specifically, in your [custom Helm values]({{site.baseurl}}/docs/docs/new-helm/using-helm-in-codefresh-pipeline/#helm-values).
+Additionally, you can define shared variables in your account settings and reuse those across your Helm steps, and specifically, in your [custom Helm values]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/).
 
 Under *Account Setting* > *Shared Configuration*, add the variable to your shared configuration. 
 

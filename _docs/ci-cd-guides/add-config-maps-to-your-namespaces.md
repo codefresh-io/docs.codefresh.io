@@ -96,7 +96,7 @@ If you already have configuration variables in a `*.property` file, you can easi
 {% include image.html
 lightbox="true"
 file="/images/guides/config-maps/import-variables-from-text.png"
-url="/images/guides/config-maps/import-variables-from-text.png."
+url="/images/guides/config-maps/import-variables-from-text.png"
 alt="Add multiple variables from text or file to config map" 
 caption="Add multiple variables from text or file to config map" 
 max-width="40%"
