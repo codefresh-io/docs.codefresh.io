@@ -478,11 +478,12 @@ For more information, see [bitnami/postgresql](https://github.com/bitnami/charts
 
 1.Obtain the PostgresSQL administrator password:
 ```shell
-export PGPASSWORD=$(kubectl get secret --namespace codefresh cf-postgresql -o jsonpath="{.data.postgres-password}" | base64 --decode)
+NAMESPACE=codefresh
+export PGPASSWORD=$(kubectl get secret --namespace $NAMESPACE cf-postgresql -o jsonpath="{.data.postgres-password}" | base64 --decode)
 ```
 1.Forward the PostgreSQL service port and place the process in the background:
 ```shell
-kubectl port-forward --namespace codefresh svc/cf-postgresql 5432:5432 &
+kubectl port-forward --namespace $NAMESPACE svc/cf-postgresql 5432:5432 &
 ```
 1.Create a directory for the backup files and make it the current working directory:
 ```shell
@@ -500,32 +501,32 @@ docker run --rm --name postgresql-backup -e PGPASSWORD=$PGPASSWORD -v $(pwd):/ap
 
 Here:  
 * The *--net* parameter lets the Docker container use the host's network stack and thereby gain access to the forwarded port.
-* The *pg_dump* command connects to the PostgreSQL service and creates backup files in the */app* directory, which is mapped to the current directory (*psqlbackup/*) on the Docker host with the *-v* parameter. 
+* The *pg_dump* command connects to the PostgreSQL service and creates backup files in the */app* directory, which is mapped to the current directory (*psqlbackup/*) on the Docker host with the *-v* parameter.
 * The *--rm* parameter deletes the container after the *pg_dump* command completes execution.
 
 **After the upgrade:**
 
 Create an environment variable with the password for the new stateful set:
 ```shell
-export PGPASSWORD=$(kubectl get secret --namespace codefresh cf-postgresql -o jsonpath="{.data.postgres-password}" | base64 --decode)
+export PGPASSWORD=$(kubectl get secret --namespace $NAMESPACE cf-postgresql -o jsonpath="{.data.postgres-password}" | base64 --decode)
 ```
 
 Forward the PostgreSQL service port for the new stateful set and place the process in the background:
 ```shell
-kubectl port-forward --namespace codefresh svc/cf-postgresql 5432:5432
+kubectl port-forward --namespace $NAMESPACE svc/cf-postgresql 5432:5432
 ```
 
 Restore the contents of the backup into the new release using the *pg_restore* tool. If this tool is not available on your system, mount the directory containing the backup files as a volume in Bitnami's PostgreSQL Docker container and use the *pg_restore* client tool in the container image to import the backup into the new cluster, as shown below:
 ```shell
 cd psqlbackup
-docker run --rm --name postgresql-backup -e PGPASSWORD=$PGPASSWORD -v $(pwd):/app --net="host" bitnami/postgresql:13 pg_restore --Fc --create --dbname postgres -h host.docker.internal -p 5432 /app/audit.dump
+docker run --rm --name postgresql-backup -e PGPASSWORD=$PGPASSWORD -v $(pwd):/app --net="host" bitnami/postgresql:13 pg_restore -Fc --create --dbname postgres -h host.docker.internal -p 5432 /app/audit.dump
 ```
 
 > The above command is true for Windows and macOS, for Linux users `host.docker.internal` has to be replaced with `127.0.0.1`
 
 #### Backup and restore via Helm hooks
 
-You can also run Postgresql database migration with `pre-upgrade` and `post-upgrade` helm hooks. 
+You can also run Postgresql database migration with `pre-upgrade` and `post-upgrade` helm hooks.
 > It's strongly recommended to create a **MANUAL** backup prior to the upgrade!
 
 
@@ -564,11 +565,12 @@ For more information, see [bitnami/mongodb](https://github.com/bitnami/charts/tr
 
 1. Obtain the MongoDB administrator password:
 ```shell
-export MONGODB_ROOT_PASSWORD=$(kubectl get secret --namespace codefresh cf-mongodb -o jsonpath="{.data.mongodb-root-password}" | base64 --decode)
+NAMESPACE=codefresh
+export MONGODB_ROOT_PASSWORD=$(kubectl get secret --namespace $NAMESPACE cf-mongodb -o jsonpath="{.data.mongodb-root-password}" | base64 --decode)
 ```
 1. Forward the MongoDB service port and place the process in the background:
 ```shell
-kubectl port-forward --namespace codefresh svc/mongodb 27017:27017 &
+kubectl port-forward --namespace $NAMESPACE svc/mongodb 27017:27017 &
 ```
 1. Create a directory for the backup files and make it the current working directory:
 ```shell
@@ -585,20 +587,20 @@ docker run --rm --name mongodb-backup -v $(pwd):/app --net="host" bitnami/mongod
 > The above command is true for Windows and macOS, for Linux users `host.docker.internal` has to be replaced with `127.0.0.1`
 
 Here:  
-* The *--net* parameter lets the Docker container use the host's network stack and thereby gain access to the forwarded port. 
-* The *mongodump* command connects to the MongoDB service and creates backup files in the */app* directory, which is mapped to the current directory (*mongobackup/*) on the Docker host with the *-v* parameter. 
+* The *--net* parameter lets the Docker container use the host's network stack and thereby gain access to the forwarded port.
+* The *mongodump* command connects to the MongoDB service and creates backup files in the */app* directory, which is mapped to the current directory (*mongobackup/*) on the Docker host with the *-v* parameter.
 * The *--rm* parameter deletes the container after the *mongodump* command completes execution.
 
 **After the upgrade:**
 
 1. Create an environment variable with the password for the new stateful set:
 ```shell
-export MONGODB_ROOT_PASSWORD=$(kubectl get secret --namespace codefresh cf-mongodb -o jsonpath="{.data.mongodb-root-password}" | base64 --decode)
+export MONGODB_ROOT_PASSWORD=$(kubectl get secret --namespace $NAMESPACE cf-mongodb -o jsonpath="{.data.mongodb-root-password}" | base64 --decode)
 ```
 1. Forward the MongoDB service port for the new stateful set and place the process in the background:
 (**Note!** Default service address was changed)
 ```shell
-kubectl port-forward --namespace codefresh svc/cf-mongodb 27017:27017 &
+kubectl port-forward --namespace $NAMESPACE svc/cf-mongodb 27017:27017 &
 ```
 1. Restore the contents of the backup into the new release using the `mongorestore` tool.  
   If this tool is not available on your system, mount the directory containing the backup files as a volume in Bitnami's MongoDB Docker container and use the `mongorestore` client tool in the container image to import the backup into the new cluster, as shown below:
@@ -612,12 +614,12 @@ docker run --rm --name mongodb-backup -v $(pwd):/app --net="host" bitnami/mongod
 1. Stop the service port forwarding by terminating the background process.
 1. Connect to the new stateful set and confirm that your data has been successfully restored:
 ```shell
-kubectl run --namespace codefresh mongodb-new-client --rm --tty -i --restart='Never' --image docker.io/bitnami/mongodb:4.2 --command -- mongo codefresh --host cf-mongodb --authenticationDatabase admin -u root -p $MONGODB_ROOT_PASSWORD --eval "db.accounts.find()"
+kubectl run --namespace $NAMESPACE mongodb-new-client --rm --tty -i --restart='Never' --image docker.io/bitnami/mongodb:4.2 --command -- mongo codefresh --host cf-mongodb --authenticationDatabase admin -u root -p $MONGODB_ROOT_PASSWORD --eval "db.accounts.find()"
 ```
 
 #### Backup and restore via Helm hooks
 
-You can also run MongoDB database migration with `pre-upgrade` and `post-upgrade` helm hooks. 
+You can also run MongoDB database migration with `pre-upgrade` and `post-upgrade` helm hooks.
 
 > It's strongly recommended to create a **MANUAL** backup prior to the upgrade!
 
