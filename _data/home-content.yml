@@ -175,7 +175,7 @@
   url: ''
   links:
     - title: Deployment options for Kubernetes
-      localurl: /docs/deployments/kubernetes/deployment-options-to-kubernetes/
+      localurl: /docs/deployments/kubernetes/
     - title: Managing Kubernetes clusters
       localurl: /docs/deployments/kubernetes/manage-kubernetes/
     - title: Using Helm in Codefresh pipelines

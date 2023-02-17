@@ -312,8 +312,10 @@
     - title: Kubernetes
       url: "/kubernetes"
       sub-pages:  
-        - title: Deployment options for Kubernetes
-          url: "/deployment-options-to-kubernetes"
+        - title: Manual Deployments
+          url: "/manual-deployment"
+        - title: Automated Deployments
+          url: "/automated-deployment"
         - title: Environment dashboard
           url: "/environment-dashboard"
         - title: Managing Kubernetes clusters
