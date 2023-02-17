@@ -26,8 +26,8 @@ Creating a CI/CD pipeline for C# is very easy, because Codefresh can run any SDK
 
 {% include image.html 
 lightbox="true" 
-file="/images/learn-by-example/dotnet/dotnetcore-pipeline.png" 
-url="/images/learn-by-example/dotnet/dotnetcore-pipeline.png" 
+file="/images/examples/dotnet/dotnetcore-pipeline.png" 
+url="/images/examples/dotnet/dotnetcore-pipeline.png" 
 alt="Compiling a C# application in a pipeline"
 caption="Compiling a C# application in a pipeline"
 max-width="80%" 
@@ -89,17 +89,17 @@ This pipeline:
 1. Uses the official `mcr.microsoft.com/dotnet/core/sdk:3.0` image to run unit/integration/functional tests in 3 different folders
 1. Builds the application docker image using the root folder as Docker context but with the Dockerfile located at `./src/Web`
 
-<!--You can see the resulting image in the [image dashboard]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/#viewing-docker-images):
+You can see the resulting image in the [image dashboard]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/#viewing-docker-images):
 
 {% include image.html 
 lightbox="true" 
-file="/images/learn-by-example/dotnet/dotnetcore-image.png" 
-url="/images/learn-by-example/dotnet/dotnetcore-image.png" 
+file="/images/examples/dotnet/dotnetcore-image.png" 
+url="/images/examples/dotnet/dotnetcore-image.png" 
 alt="Building a .NET core docker image"
 caption="Building a .NET core docker image"
 max-width="80%" 
 %}
--->
+
 
 
 

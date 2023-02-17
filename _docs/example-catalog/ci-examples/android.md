@@ -27,8 +27,8 @@ In most cases you would create a similar pipeline to a Gradle project.
 
 {% include image.html 
 lightbox="true" 
-file="/images/learn-by-example/mobile/android-ci-pipeline.png" 
-url="/images/learn-by-example/mobile/android-ci-pipeline.png" 
+file="/images/examples/mobile/android-ci-pipeline.png" 
+url="/images/examples/mobile/android-ci-pipeline.png" 
 alt="Building and Testing an Android app"
 caption="Building and Testing an Android app"
 max-width="80%" 
