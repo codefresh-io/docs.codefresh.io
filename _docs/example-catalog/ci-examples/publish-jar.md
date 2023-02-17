@@ -25,8 +25,8 @@ We use Nexus for this example. To upload the Jar manually first edit the `pom.xm
 
 {% include image.html 
 lightbox="true" 
-file="/images/learn-by-example/java/nexus-browser.png" 
-url="/images/learn-by-example/java/nexus-browser.png" 
+file="/images/examples/java/nexus-browser.png" 
+url="/images/examples/java/nexus-browser.png" 
 alt="The Nexus package manager"
 caption="The Nexus package manager"
 max-width="80%" 
@@ -46,8 +46,8 @@ If you then visit Nexus you should see your JAR file in the snapshots repository
 
 {% include image.html 
 lightbox="true" 
-file="/images/learn-by-example/java/nexus-credentials.png" 
-url="/images/learn-by-example/java/nexus-credentials.png" 
+file="/images/examples/java/nexus-credentials.png" 
+url="/images/examples/java/nexus-credentials.png" 
 alt="Parameters for Nexus"
 caption="Parameters for Nexus"
 max-width="50%" 
@@ -82,8 +82,8 @@ You can define the version of Maven/JDK you want to use by picking the appropria
 Note the use of the two user-defined environment variables passed to `server.password` and `server.username`.  You will need to define those yourself.  See the documentation on [User Procided Variables]({{site.baseurl}}/docs/pipelines/variables/#user-provided-variables).
 {% include image.html 
 lightbox="true" 
-file="/images/learn-by-example/java/publish-jar-pipeline.png" 
-url="/images/learn-by-example/java/publish-jar-pipeline.png" 
+file="/images/examples/java/publish-jar-pipeline.png" 
+url="/images/examples/java/publish-jar-pipeline.png" 
 alt="Publish JAR pipeline"
 caption="Publish JAR pipeline"
 max-width="100%" 
@@ -93,8 +93,8 @@ Once the pipeline has finished you should see the JAR file in the Nexus browser 
 
 {% include image.html 
 lightbox="true" 
-file="/images/learn-by-example/java/nexus-upload.png" 
-url="/images/learn-by-example/java/nexus-upload.png" 
+file="/images/examples/java/nexus-upload.png" 
+url="/images/examples/java/nexus-upload.png" 
 alt="Upload finished"
 caption="Upload finished"
 max-width="70%" 

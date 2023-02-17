@@ -63,8 +63,8 @@ Creating a CI/CD pipeline for React is very easy, because Codefresh can run any 
 
 {% include image.html 
 lightbox="true" 
-file="/images/learn-by-example/nodejs/react-pipeline-docker.png" 
-url="/images/learn-by-example/nodejs/react-pipeline-docker.png" 
+file="/images/examples/nodejs/react-pipeline-docker.png" 
+url="/images/examples/nodejs/react-pipeline-docker.png" 
 alt="Creating a Docker image for react.js"
 caption="Creating a Docker image for react.js"
 max-width="80%" 
@@ -120,8 +120,8 @@ If your application is not dockerized yet, you can still create a pipeline that 
 
 {% include image.html 
 lightbox="true" 
-file="/images/learn-by-example/nodejs/react-pipeline-build.png" 
-url="/images/learn-by-example/nodejs/react-pipeline-build.png" 
+file="/images/examples/nodejs/react-pipeline-build.png" 
+url="/images/examples/nodejs/react-pipeline-build.png" 
 alt="Building a Reach.js application"
 caption="Building a Reach.js application"
 max-width="80%" 

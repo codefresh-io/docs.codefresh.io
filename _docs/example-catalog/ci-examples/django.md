@@ -68,8 +68,8 @@ Creating a CI/CD pipeline for Django is very easy if you already have the Docker
 
 {% include image.html 
 lightbox="true" 
-file="/images/learn-by-example/python/python-build-test.png" 
-url="/images/learn-by-example/python/python-build-test.png" 
+file="/images/examples/python/python-build-test.png" 
+url="/images/examples/python/python-build-test.png" 
 alt="Creating a Docker image for Python"
 caption="Creating a Docker image for Python"
 max-width="80%" 
@@ -122,8 +122,8 @@ Sometimes if you have a complex application you might want to run integration te
 
 {% include image.html 
 lightbox="true" 
-file="/images/learn-by-example/python/python-test-build.png" 
-url="/images/learn-by-example/python/python-test-build.png" 
+file="/images/examples/python/python-test-build.png" 
+url="/images/examples/python/python-test-build.png" 
 alt="Building the image after tests have run"
 caption="Building the image after tests have run"
 max-width="80%" 

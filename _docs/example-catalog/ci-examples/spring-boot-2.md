@@ -112,8 +112,8 @@ step that uses [service containers]({{site.baseurl}}/docs/pipelines/service-cont
 
 {% include image.html 
 lightbox="true" 
-file="/images/learn-by-example/java/spring-boot-steps.png" 
-url="/images/learn-by-example/java/spring-boot-steps.png" 
+file="/images/examples/java/spring-boot-steps.png" 
+url="/images/examples/java/spring-boot-steps.png" 
 alt="Spring boot pipeline"
 caption="Spring boot pipeline"
 max-width="80%" 
@@ -129,8 +129,8 @@ The next step is a Docker build. We name our image **spring-boot-2-sample-app** 
 
 {% include image.html 
 lightbox="true" 
-file="/images/learn-by-example/java/spring-boot-docker-image.png" 
-url="/images/learn-by-example/java/spring-boot-docker-image.png" 
+file="/images/examples/java/spring-boot-docker-image.png" 
+url="/images/examples/java/spring-boot-docker-image.png" 
 alt="Spring Boot Docker image" 
 caption="Spring Boot Docker image"
 max-width="80%" 

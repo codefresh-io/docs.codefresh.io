@@ -96,8 +96,8 @@ This will compile/test/package the Gradle application and create a Docker image.
 
 {% include image.html 
 lightbox="true" 
-file="/images/learn-by-example/java/gradle-multistage.png" 
-url="/images/learn-by-example/java/gradle-multistage.png" 
+file="/images/examples/java/gradle-multistage.png" 
+url="/images/examples/java/gradle-multistage.png" 
 alt="Gradle Multi-stage Docker build"
 caption="Gradle Multi-stage Docker build"
 max-width="80%" 
@@ -182,8 +182,8 @@ The pipeline starts by checking out the code using a [git clone step]({{site.bas
 
 {% include image.html 
 lightbox="true" 
-file="/images/learn-by-example/java/gradle-ci-pipeline.png" 
-url="/images/learn-by-example/java/gradle-ci-pipeline.png" 
+file="/images/examples/java/gradle-ci-pipeline.png" 
+url="/images/examples/java/gradle-ci-pipeline.png" 
 alt="Gradle pipeline"
 caption="Gradle pipeline"
 max-width="80%" 

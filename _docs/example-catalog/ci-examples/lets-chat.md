@@ -23,8 +23,8 @@ Creating a CI/CD pipeline for NodeJS is very easy, because Codefresh has built-i
 
 {% include image.html 
 lightbox="true" 
-file="/images/learn-by-example/nodejs/nodejs-pipeline.png" 
-url="/images/learn-by-example/nodejs/nodejs-pipeline.png" 
+file="/images/examples/nodejs/nodejs-pipeline.png" 
+url="/images/examples/nodejs/nodejs-pipeline.png" 
 alt="Building and testing a Node.js application"
 caption="Building and testing a Node.js application"
 max-width="100%" 

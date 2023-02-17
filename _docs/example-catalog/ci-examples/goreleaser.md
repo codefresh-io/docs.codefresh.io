@@ -91,8 +91,8 @@ It also possible to pass a GITHUB_TOKEN directly in the pipeline, if you don't w
 
 {% include image.html 
 lightbox="true" 
-file="/images/learn-by-example/golang/github-token.png" 
-url="/images/learn-by-example/golang/github-token.png" 
+file="/images/examples/golang/github-token.png" 
+url="/images/examples/golang/github-token.png" 
 alt="Passing a specific github token in the pipeline" 
 caption="Passing a specific github token in the pipeline" 
 max-width="70%" 
@@ -104,8 +104,8 @@ Regardless of the way you choose to pass the GitHub token, the final step is to 
 
 {% include image.html 
 lightbox="true" 
-file="/images/learn-by-example/golang/tags-only-trigger.png" 
-url="/images/learn-by-example/golang/tags-only-trigger.png" 
+file="/images/examples/golang/tags-only-trigger.png" 
+url="/images/examples/golang/tags-only-trigger.png" 
 alt="Run pipeline only on tag creation" 
 caption="Run pipeline only on tag creation" 
 max-width="80%" 

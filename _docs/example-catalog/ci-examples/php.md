@@ -75,8 +75,8 @@ Once you run this pipeline Codefresh will create a Docker image for the Php appl
 
 {% include image.html 
 lightbox="true" 
-file="/images/learn-by-example/php/php-cicd-pipeline.png" 
-url="/images/learn-by-example/php/php-cicd-pipeline.png" 
+file="/images/examples/php/php-cicd-pipeline.png" 
+url="/images/examples/php/php-cicd-pipeline.png" 
 alt="Creating a docker image for php" 
 caption="Creating a docker image for php" 
 max-width="80%" 
@@ -95,8 +95,8 @@ First find your images in the [Docker image dashboard]({{site.baseurl}}/docs/doc
 
 {% include image.html 
 lightbox="true" 
-file="/images/learn-by-example/php/launch-docker-image.png" 
-url="/images/learn-by-example/php/launch-docker-image.png" 
+file="/images/examples/php/launch-docker-image.png" 
+url="/images/examples/php/launch-docker-image.png" 
 alt="Launching a Docker image" 
 caption="Launching a Docker image" 
 max-width="80%" 
@@ -106,8 +106,8 @@ Click on the launch button and a new pipeline will run for deployment:
 
 {% include image.html 
 lightbox="true" 
-file="/images/learn-by-example/php/test-environment-url.png" 
-url="/images/learn-by-example/php/test-environment-url.png" 
+file="/images/examples/php/test-environment-url.png" 
+url="/images/examples/php/test-environment-url.png" 
 alt="Getting the environment url" 
 caption="Getting the environment url" 
 max-width="80%" 
@@ -118,8 +118,8 @@ and you will see the result.
 
 {% include image.html 
 lightbox="true" 
-file="/images/learn-by-example/php/test-environment.png" 
-url="/images/learn-by-example/php/test-environment.png" 
+file="/images/examples/php/test-environment.png" 
+url="/images/examples/php/test-environment.png" 
 alt="Application preview" 
 caption="Application preview" 
 max-width="80%" 
