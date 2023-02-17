@@ -496,6 +496,8 @@ cd psqlbackup
 docker run --rm --name postgresql-backup -e PGPASSWORD=$PGPASSWORD -v $(pwd):/app --net="host" bitnami/postgresql:13 pg_dump -Fc --dbname audit -h host.docker.internal -p 5432 -f /app/audit.dump
 ```
 
+> The above command is true for Windows and macOS, for Linux users `host.docker.internal` has to be replaced with `127.0.0.1`
+
 Here:  
 * The *--net* parameter lets the Docker container use the host's network stack and thereby gain access to the forwarded port.
 * The *pg_dump* command connects to the PostgreSQL service and creates backup files in the */app* directory, which is mapped to the current directory (*psqlbackup/*) on the Docker host with the *-v* parameter. 
@@ -518,6 +520,8 @@ Restore the contents of the backup into the new release using the *pg_restore* t
 cd psqlbackup
 docker run --rm --name postgresql-backup -e PGPASSWORD=$PGPASSWORD -v $(pwd):/app --net="host" bitnami/postgresql:13 pg_restore --Fc --create --dbname postgres -h host.docker.internal -p 5432 /app/audit.dump
 ```
+
+> The above command is true for Windows and macOS, for Linux users `host.docker.internal` has to be replaced with `127.0.0.1`
 
 #### Backup and restore via Helm hooks
 
@@ -578,6 +582,8 @@ cd mongobackup
 docker run --rm --name mongodb-backup -v $(pwd):/app --net="host" bitnami/mongodb:4.2 mongodump --host="host.docker.internal:27017" -u root -p $MONGODB_ROOT_PASSWORD -o /app
 ```
 
+> The above command is true for Windows and macOS, for Linux users `host.docker.internal` has to be replaced with `127.0.0.1`
+
 Here:  
 * The *--net* parameter lets the Docker container use the host's network stack and thereby gain access to the forwarded port. 
 * The *mongodump* command connects to the MongoDB service and creates backup files in the */app* directory, which is mapped to the current directory (*mongobackup/*) on the Docker host with the *-v* parameter. 
@@ -600,6 +606,9 @@ kubectl port-forward --namespace codefresh svc/cf-mongodb 27017:27017 &
 cd mondgobackup
 docker run --rm --name mongodb-backup -v $(pwd):/app --net="host" bitnami/mongodb:4.2 mongorestore --host="host.docker.internal:27017" -u root -p $MONGODB_ROOT_PASSWORD /app
 ```
+
+> The above command is true for Windows and macOS, for Linux users `host.docker.internal` has to be replaced with `127.0.0.1`
+
 1. Stop the service port forwarding by terminating the background process.
 1. Connect to the new stateful set and confirm that your data has been successfully restored:
 ```shell
