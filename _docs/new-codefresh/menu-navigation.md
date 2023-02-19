@@ -21,7 +21,7 @@ With the Settings icon always available, you have _single-click access_ to accou
   url="/images/getting-started/settings-icon.png" 
   alt="To be changed Settings icon in toolbar" 
   caption="To be changed Settings icon in toolbar"
-    max-width="70%" 
+    max-width="80%" 
 %}
 
 
@@ -209,20 +209,8 @@ tr {
     <tr>
         <td></td>
         <td></td>
-        <td><b>GitOps Controller</b></td>
-        <td>??</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
         <td><b>Shared Configuration</b></td>
         <td>No change</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
-        <td><b>Nodes</b></td>
-        <td>??</td>
     </tr>
     <tr>
         <td><b>SECURITY</b></td>
@@ -491,14 +479,12 @@ tr {
         <td></td>
         <td></td>
         <td><b>Billing</b></td>
-        <td> </td>
         <td>Moved to Settings icon in toolbar</td>
     </tr>
     <tr>
         <td></td>
         <td></td>
         <td><b>User Settings</b></td>
-        <td></td>
         <td>No change</td>
     </tr>
     <tr>
@@ -506,7 +492,6 @@ tr {
         <td></td>
         <td><b>Git Personal Access Token</b></td>
         <td>New item</td>
-        <td></td>
     </tr>
 </table>
 
@@ -571,7 +556,6 @@ tr {
         <td></td>
         <td><b>Users</b></td>
         <td>Moved to ACCESS & COLLABORATION<br>Renamed as Users & Teams</td>
-        <td></td>
     </tr>
     <tr>
         <td></td>
