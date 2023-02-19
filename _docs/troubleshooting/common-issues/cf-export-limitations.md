@@ -1,20 +1,16 @@
 ---
-title: "Multiline variable gets truncated with cf_export"
-description: "Exporting multiline variables to subsequent pipeline steps"
+title: "Multi-line variable gets truncated with cf_export"
+description: "Exporting multi line variables to subsequent pipeline steps"
 group: troubleshooting
 sub_group: common-issues
-redirect_from:
-  - /docs/troubleshooting/common-issues/cf-export-limitations/
 toc: true
 ---
 
+Every Codefresh pipeline has access to the [cf_export utility]({{site.baseurl}}/docs/codefresh-yaml/variables/#using-cf_export-command) that allows you to pass [environment variables]({{site.baseurl}}/docs/codefresh-yaml/variables/) from [one step to the next]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#using-docker-containers-as-build-tooling).
 
+## Problem description
 
-
-## Issue 
-Exporting a multi-line variable with `cf_export` within a pipeline truncates the variable.  
-
-Running the pipeline in the example below, in the step `test` the value of the variable is truncated and only `line1` will appear.
+You have a pipeline that is trying to export a multi-line variable with `cf_export`
 
 {% highlight yaml %}
 {% raw %}
@@ -33,11 +29,11 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-Every Codefresh pipeline has access to the  that allows you to pass [environment variables]({{site.baseurl}}/docs/pipelines/variables/) from [one step to the next].
+If you run this pipeline then in the step `test` the value of the variable is truncated and only `line1` will appear.
 
-## Solution
+## The solution
 
-Encode the variable with `base64` to handle all special characters in the exported variable.
+You can use a workaround by encoding the variable with `base64` first. This will handle all strange characters in the exported variable.
 
 {% highlight yaml %}
 {% raw %}
@@ -62,10 +58,7 @@ If you run this pipeline, the `test` step will correctly print `line1 line2 line
 
 
 
-## Related articles
-[cf_export utility in pipelines]({{site.baseurl}}/docs/pipelines/variables/#using-cf_export-command)  
-[Passing variables between steps]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#using-docker-containers-as-build-tooling)  
-[Troubleshooting common issues]({{site.baseurl}}/docs/troubleshooting/common-issues)
+
 
 
 

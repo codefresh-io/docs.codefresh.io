@@ -1,52 +1,36 @@
 ---
-title: "Hangs on restoring data from pre-existing image"
+title: "Restoring data from pre-existing image hangs on"
 description: ""
 group: troubleshooting
 sub_group: common-issues
 redirect_from:
-  - /docs/troubleshooting/common-issues/restoring-data-from-pre-existing-image-hangs-on/
   - /docs/restoring-data-from-pre-existing-image-hangs-on/
 toc: true
 ---
+One of the best strengths of Codefresh is the ability to work on a single file system between different builds. In order to provide this capability, Codefresh will make sure to provision a volume per pipeline and to restore it upon starting a new build. 
 
-## Issue
-
-Restoring data from pre-existing image step seems to hang when starting new build for pipeline.
-
-## Possible cause
-
-This issue might occur when your volume size is large.
-
-Codefresh has the unique capability of working on a single file system between different builds, by provisioning a volume per pipeline and restoring it upon starting a new build. 
-
-If the first step seems to hang for a significant amount of time when restoring the data, this might suggest that your volume size is very big. 
+In case the first step seems to hang for a significant amount of time when restoring the data, this might suggest that your volume size is very big. Sometimes the only solution would be to delete that volume and start from scratch.
 
 {% include 
 image.html 
 lightbox="true" 
-file="/images/troubleshooting/restore-data-hangs-example.png" 
-url="/images/troubleshooting/restore-data-hangs-example.png"
-alt="First build step hangs when starting new build - example" 
-caption="First build step hangs when starting new build - example" 
-max-width="60%"
+file="/images/365bcdb-example.png" 
+url="/images/365bcdb-example.png"
+alt="example.png" 
+max-width="40%"
 %}
 
-## Solution
-Delete that volume and start from scratch.
-* In the build wizard pop-up, from **Advanced Options**, select **Reset pipeline volume**.
+In order to do that, you can choose the option to reset your pipeline volume when the build wizard pops up, under the advanced section.
 
 {% include 
 image.html 
 lightbox="true" 
-file="/images/troubleshooting/reset-volume-for-hanging-step.png" 
-url="/images/troubleshooting/reset-volume-for-hanging-step.png"
-alt="Reset volume for pipeline build" 
-caption="Reset volume for pipeline build" 
-max-width="60%"
+file="/images/02384f5-reset_volume.png" 
+url="/images/02384f5-reset_volume.png"
+alt="reset volume.png" 
+max-width="40%"
 %}
 
->Reseting the pipeline volume may cause your build to take longer than usual.
-
-
-## Related articles
-[Troubleshooting common issues]({{site.baseurl}}/docs/troubleshooting/common-issues)
+{{site.data.callout.callout_info}}
+Reseting the pipeline volume may cause your build to take longer than usual.
+{{site.data.callout.end}}

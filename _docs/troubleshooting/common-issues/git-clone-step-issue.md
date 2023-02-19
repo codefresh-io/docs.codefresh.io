@@ -3,19 +3,12 @@ title: "Clone step failed: Command [git checkout $REVISION] exited with code [1]
 description: ""
 group: troubleshooting
 sub_group: common-issues
+permalink: /:collection/troubleshooting/common-issues/git-clone-step-issue/
 redirect_from:
-  - /docs/troubleshooting/common-issues/git-clone-step-issue/
   - /docs/build-step-no-such-file-or-directory/
 toc: true
 ---
-
-## Issue
-
-Error message:
-
-`Clone step failed: Command [git checkout $REVISION] exited with code [1]`
-
-## Possible cause
+  
 The GIT clone step may fail in case you have CRLF (**Windows**) end of line characters instead of LF (**Unix**).
 
   `Text`
@@ -29,7 +22,5 @@ Command [git checkout $REVISION] exited with code [1]
 
 ## Solution
 
-Create a .gitattributes file in your repository (for all branches) that will enforce Git to commit files with LF.
+Create a .gitattributes file in your repository (for all branches) that will enforce git to commit files with LF.
   
-## Related articles
-[Troubleshooting common issues]({{site.baseurl}}/docs/troubleshooting/common-issues)

@@ -19,17 +19,17 @@
     return docType === 'Classic'
   }
 
-  function isRedirectedFromClassicDocs(docTypeCookie) {
+  function isRedirectedFromCsdpDocs(docTypeCookie) {
     var redirectFromUrl = localStorage.getItem('redirectFrom')
 
-    return isLastlyVisitedCsdp(docTypeCookie) && redirectFromUrl && redirectFromUrl.startsWith(window.location.origin)
+    return isLastlyVisitedClassic(docTypeCookie) && redirectFromUrl && redirectFromUrl.startsWith(location.origin)
   }
 
   function setDocumentationCookie() {
-    document.cookie = 'doctype=Classic; SameSite=Lax; Secure; Domain=.codefresh.io; Max-age=2592000; Path=/'
+    document.cookie = 'doctype=ArgoPlatform; SameSite=Lax; Secure; Domain=.codefresh.io; Max-age=2592000; Path=/'
   }
 
-  function handleNavigateBackToClassic() {
+  function handleNavigateBackToCsdp() {
     setDocumentationCookie()
     $('#redirectModal').modal('hide')
   }
@@ -39,12 +39,12 @@
       return
     }
 
-    $('a[href*="codefresh.io/docs').each(function () {
-      $(this).on('click', function () {
+    $('a[href*="codefresh.io/csdp-docs"]').each(function () {
+      $(this).on('click', function (event) {
         setDocumentationCookie()
         localStorage.removeItem('redirectFrom')
         if (typeof window.ga === 'function') {
-          window.ga('send', 'event', 'Navbar', 'Docs links', 'Open CF Classic Docs')
+          window.ga('send', 'event', 'Navbar', 'Docs links', 'Open CSDP Docs')
         }
       })
     })
@@ -52,10 +52,10 @@
     try {
       var docTypeCookie = getDocTypeCookie()
       if (docTypeCookie) {
-        if (isLastlyVisitedClassic(docTypeCookie)) {
+        if (isLastlyVisitedCsdp(docTypeCookie)) {
           localStorage.setItem('redirectFrom', window.location.href)
-          window.location.href = 'https://codefresh.io/docs/'
-        } else if (isRedirectedFromClassicDocs(docTypeCookie)) {
+          window.location.href = 'https://codefresh.io/csdp-docs/'
+        } else if (isRedirectedFromCsdpDocs(docTypeCookie)) {
           $('#redirectModal').modal({
             backdrop: false,
             show: true
@@ -65,7 +65,7 @@
           })
           var redirectFromUrl = localStorage.getItem('redirectFrom')
           $('#redirectModal .redirect-popup__footer-link').attr('href', redirectFromUrl)
-          $('#redirectModal .redirect-popup__footer-link').on('click', handleNavigateBackToClassic)
+          $('#redirectModal .redirect-popup__footer-link').on('click', handleNavigateBackToCsdp)
         }
       }
     } catch (error) {

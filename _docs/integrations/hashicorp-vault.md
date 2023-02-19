@@ -1,41 +1,34 @@
 ---
-title: "HashiCorp Vault pipeline integration"
-description: "Use secrets from Vault in Codefresh pipelines"
+title: "HashiCorp Vault"
+description: "How to use secrets from Vault in your Codefresh pipelines"
 group: integrations
 toc: true
 ---
 
 Codefresh can use secrets from your HashiCorp Vault installation. This way you have full control over secret storage and rotation.
 
->This feature is for Enterprise accounts only.
+>Note: This feature is for Enterprise accounts only.
 
-## Prerequisites
+### Prerequisites
 
-* Up and running Vault instance  
-  Codefresh supports HashiCorp Cloud Platform (HCP) Vault and self-managed Vault instances that run on the cloud, as well as behind the firewall (albeit with some differences in the authentication methods).
+You need to have a vault instance up and running. Codefresh supports HashiCorp Cloud Platform (HCP) Vault and self managed Vault instances that run on the cloud, as well as behind the firewall (albeit with some differences in the authentication methods).
 
-* [Authentication method](https://www.vaultproject.io/docs/auth){:target="\_blank"} to use.  
-  Codefresh supports the following methods:
+You also need to decide what [authentication method](https://www.vaultproject.io/docs/auth) Codefresh will use. The following methods are supported:
 
 {: .table .table-bordered .table-hover}
 | Method         | Notes |
 |---|--- |
-| [Username/Password](https://www.vaultproject.io/docs/auth/userpass){:target="\_blank"}|Available for SaaS and Hybrid versions |
-| [Access Token](https://www.vaultproject.io/docs/auth/token){:target="\_blank"}|Available for SaaS and Hybrid versions |
-| [Kubernetes](https://www.vaultproject.io/docs/auth/kubernetes){:target="\_blank"}|Only available with [Codefresh Runner installation]({{site.baseurl}}/docs/installation/behind-the-firewall/) |
-| [Google Cloud Engine](https://www.vaultproject.io/docs/auth/gcp){:target="\_blank"}|Only available with [Codefresh Runner installation]({{site.baseurl}}/docs/installation/behind-the-firewall/) |
-| [App Role](https://www.vaultproject.io/docs/auth/approle){:target="\_blank"}|Available for SaaS and hybrid version with Runner |
+| [Username/Password](https://www.vaultproject.io/docs/auth/userpass)|Available in SaaS and Hybrid customers |
+| [Access Token](https://www.vaultproject.io/docs/auth/token)|Available in SaaS and Hybrid customers |
+| [Kubernetes](https://www.vaultproject.io/docs/auth/kubernetes)|Only available in [Hybrid installation]({{site.baseurl}}/docs/administration/behind-the-firewall/) |
+| [Google Cloud Engine](https://www.vaultproject.io/docs/auth/gcp)|Only available in [Hybrid installation]({{site.baseurl}}/docs/administration/behind-the-firewall/) |
+| [App Role](https://www.vaultproject.io/docs/auth/approle)|Available in SaaS and Hybrid customers |
 
-## Set up HashiCorp Vault integration in the Codefresh UI
+### Using the Codefresh UI
 
-1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipeline Integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
-1. Select **Secret Store** and then click **Configure**.
-1. From the **Add Provider** dropdown, select **Hashicorp vault**.
-1. Do the following:  
-  * **Name**: A unique name for the integration which is referenced in `codefresh.yaml`.
-  * If your Vault instance is behind a firewall, toggle **Vault is behind a firewall** to ON.  
-  * To allow only Codefresh admins to change the Vault configuration, toggle **Allow access to all users** to OFF.
-  > The other settings are specific to your [Vault authentication](https://www.vaultproject.io/docs/auth){:target="\_blank"} method. Refer to the  Vault documentation on how to get the required values.
+On the left-hand panel, navigate to **Account Settings** > **Integrations** > **Secret Store** and select **Configure**. 
+
+Click on **Add Provider** and select **Hashicorp vault**. Toggle the “allow access to all users” button to the off position as you normally want only Codefresh admins to change vault configuration.
 
 {% include image.html
 lightbox="true"
@@ -46,31 +39,19 @@ caption="HashiCorp-vault Secret"
 max-width="80%"
   %}
 
-{:start="5"}
-1. To apply the changes, click **Save**.
+Enter a name for your integration (you can have multiple vault integrations) unique to this configuration. Then choose if your vault instance is behind a firewall or not.
+
+The rest of the options are specific to your [Vault authentication](https://www.vaultproject.io/docs/auth) method and you should consult the Vault documentation on how to obtain them.
+
+### Using the Codefresh CLI
+
+You can also create Vault integrations with the [CLI](https://codefresh-io.github.io/cli/) and more specifically with the [create context command](https://codefresh-io.github.io/cli/contexts/create-context/create-secret-store-context/hashicorp-vault/).
+
+The available options are the same ones as found in the UI. For example, to create an integration with user/pass authentication the respective command is:
+
+`codefresh create context secret-store hashicorp-vault my-integration --sharing-policy AccountAdmins -app-url http://vault.example.com --username my-user --password my-password`
 
 
-### Set up HashiCorp Vault integration via Codefresh CLI
+### Using the Secrets
 
-You can also create Vault integrations with the Codefresh CLI through   the [create context command](https://codefresh-io.github.io/cli/contexts/create-context/create-secret-store-context/hashicorp-vault/){:target="\_blank"}.
-
-The options available are identical to the UI settings.  
-For example, to create an integration with user/password authentication, you would run this command:
-
-`codefresh create context secret-store hashicorp-vault <my-integration> --sharing-policy AccountAdmins -app-url <http://vault.example.com> --username <my-user> --password <my-password>`  
-<!--- where:
-* <my-integration> is the name of the integration which is referenced in `codefresh.yaml`.
-* <my-integration> is the name of the integration which is referenced in `codefresh.yaml`.
--->
-
-
-### Using the HashiCorp Vault secret
-
-To use the Vault secrets in pipelines, see our [secrets for pipelines]({{site.baseurl}}/docs/pipelines/configuration/secrets-store/).  
-Because a secret in Vault can contain multiple key-value pairs, you will need to put in the key name as well, according to the syntax `{secrets.vault-store-name.path/to/secret@key}`.
-
-## Related articles
-[Shared Configuration]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/)  
-[Git integration for pipelines]({{site.baseurl}}/docs/integrations/git-providers/)    
-[Kubernetes integration for pipelines]({{site.baseurl}}/docs/integrations/kubernetes/)  
-[Container registry integration for pipelines]({{site.baseurl}}/docs/integrations/docker-registries/)  
+To use the vault secrets in pipelines see our [secrets guide]({{site.baseurl}}/docs/configure-ci-cd-pipeline/secrets-store/). Note that because in Vault, a secret can contain multiple key-value pairs you will need to put in the key name as well. So the syntax will be `{secrets.vault-store-name.path/to/secret@key}`

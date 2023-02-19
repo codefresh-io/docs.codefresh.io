@@ -306,8 +306,7 @@
 
 .bd-title {
   margin-top: 1rem;
-  margin-bottom: .5rem;
-  font-family: $headings-font-family;
+  margin-bottom: 1rem;
   font-size: 2rem;
   font-weight: 700;
   line-height: 1.1;
@@ -352,4 +351,4 @@
 .bd-text-purple-bright { color: $bd-purple-bright; }
 
 .bd-text-topaz-main { color: $bd-topaz-main; }
-.bd-text-white { color: #5fffbf; }
+.bd-text-white { color: $bd-white; }

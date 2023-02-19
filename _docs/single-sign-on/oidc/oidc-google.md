@@ -1,108 +1,151 @@
 ---
-title: "Google SSO via OIDC"
-description: "Set up Google SSO for OIDC"
+title: "Google (OIDC)"
+description: "Setting Up Google Single Sign-On (SSO)"
 group: single-sign-on
 sub_group: oidc
 redirect_from:
   - /docs/enterprise/sso-google/
   - /docs/enterprise/single-sign-on/sso-google/
   - /docs/administration/single-sign-on/sso-google/
-
 toc: true
 ---
 
-Set up SSO for Google using OIDC.
-For a general overview on OIDC, see [Setting up OIDC Federated SSO]({{site.baseurl}}/docs/single-sign-on/oidc).
+In this page we will see the process of setting up Google IDP with Codefresh. For the general instructions of SSO setup
+see the [overview page]({{site.baseurl}}/docs/single-sign-on/oidc/).
 
-Set up OIDC SSO for Google in Codefresh by:
-1. Creating the client secret in Google
-1. Configuring team synchronization settings in Google
-1. Configuring SSO settings for Google in Codefresh
-1. Setting up the redirect URI in Google
+## Create Client Secret
 
+Log in [https://console.developers.google.com/](https://console.developers.google.com/) and select *Credentials* on the left sidebar. Click the *Create Credentials* button and choose *OAuth client ID* from the drop down menu.
 
-## Step 1: Create Client Secret in Google
+In the next screen select *Web application* as the *Application type*. Enter a name for your integration (user-defined). Add as URI `https://g.codefresh.io` in the *Authorized JavaScript origins* section.
 
-1. Log in to [https://console.developers.google.com/](https://console.developers.google.com/){:target="\_blank"}.
-1. From the sidebar, select **Credentials**.
-1. Select **Create Credentials**, and from the drop-down, select **OAuth client ID**.
-1. Do the following:
-    * From the **Application type** drop-down, select **Web application**. 
-    * Enter a **Name** for your integration (user-defined).  
-    * For **Authorized JavaScript origins**, **URIs**, enter, `https://g.codefresh.io`.   
-    
-    {% include image.html 
-       lightbox="true" 
-       file="/images/sso/google/googleSSO.png" 
-       url="/images/sso/google/googleSSO.png"
-       alt="Creating an OAuth client"
-       caption="Creating an OAuth client"
-       max-width="70%"
-       %}
-    
-    * Select **Create**. 
-    * From the OAUth client created dialog, note down **Your Client ID** and **Your Client Secret**. 
+{% include image.html
+lightbox="true"
+file="/images/administration/sso/google/googleSSO.png"
+url="/images/administration/sso/google/googleSSO.png"
+alt="Creating an OAuth client"
+caption="Creating an OAuth client"
+max-width="80%"
+%}
 
-   {% include image.html 
-       lightbox="true" 
-       file="/images/sso/google/googleSSO2.png" 
-       url="/images/sso/google/googleSSO2.png"
-       alt="Getting the Client ID and secret"
-       caption="Getting the Client ID and secret"
-       max-width="70%"
-       %}
+Click the *Create* button. You will see a dialog with the client Id and secret values. Note down both of these values.
 
-  You will need the Client ID and secret to configure SSO for Google in Codefresh.
+{% include image.html
+lightbox="true"
+file="/images/administration/sso/google/googleSSO2.png"
+url="/images/administration/sso/google/googleSSO2.png"
+alt="Getting the Client ID and secret"
+caption="Getting the Client ID and secret"
+max-width="80%"
+%}
 
-{:start="5"}
-1. Continue with [Step 2: Configure team synchronization settings in Google](#step-2-configure-team-synchronization-settings-in-google).
+You will need the Client ID and secret in the Codefresh configuration screen.
 
-## Step 2: Configure team synchronization settings in Google
-When you configure SSO settings for Google OIDC in Codefresh, you can sync teams through a:  
-* Service account
-OR  
-* Custom schema  
-For both sync methods, you must configure settings in Google.
+## Enter details on the Codefresh side
 
-### Create service account in Google Console to synchronize teams
+Go back into Codefresh and choose Google at the [SSO Settings](https://g.codefresh.io/account-admin/sso)
 
-To synchronize users and teams through a service account, create a service account in Google, and [delegate user and group permissions](https://developers.google.com/admin-sdk/directory/v1/guides/delegation){:target="\_blank"} for it.
+{% include image.html
+lightbox="true"
+file="/images/administration/sso/google/google-idp-integration.png"
+url="/images/administration/sso/google/google-idp-integration.png"
+alt="Choosing Google for Auth"
+caption="Choosing Google for Auth"
+max-width="20%"
+%}
 
+In the configuration screen fill in the following:
 
+* `DISPLAY NAME` - Friendly SSO name (arbitrary)
+* `CLIENT ID` - Use the value you got from the previous section
+* `CLIENT SECRET` - Use the value you got from the previous section
 
-1. Create a service account in Google Console:
+{% include image.html
+lightbox="true"
+file="/images/administration/sso/google/codefresh-settings.png"
+url="/images/administration/sso/google/codefresh-settings.png"
+alt="Entering Codefresh Settings"
+caption="Entering Codefresh Settings"
+max-width="90%"
+%}
 
- {% include image.html 
-  lightbox="true" 
-  file="/images/sso/google/serviceAccount2.png" 
-  url="/images/sso/google/serviceAccount2.png"
-  alt="Creating a service account in Google"
-  caption="Creating a service account in Google"
-  max-width="30%"
-  %}
+After clicking SAVE you’ll see the generated Client Name:
 
-{:start=2"}
-1. Delegate from the Google admin console the following permissions:
-  * `https://www.googleapis.com/auth/admin.directory.user.readonly`
-  * `https://www.googleapis.com/auth/admin.directory.group.readonly`
+{% include image.html
+lightbox="true"
+file="/images/administration/sso/google/autogenerated-name.png"
+url="/images/administration/sso/google/autogenerated-name.png"
+alt="Getting the auto-generated Client Name"
+caption="Getting the auto-generated Client Name"
+max-width="90%"
+%}
 
-{:start="3"}
-1. For that service account, create a private key in JSON format.
-    
-  {% include image.html 
-     lightbox="true" 
-     file="/images/sso/google/serviceAccount3.png" 
-     url="/images/sso/google/serviceAccount3.png"
-     alt="Creating a JSON key"
-     caption="Creating a JSON key"
-    max-width="30%"
-  %}
+Note this down as you will use it in the Google Console.
 
-{:start="4"}
-1. Save the JSON file locally. You will need the JSON key file when you configure SSO settings for Google OIDC in Codefresh. 
-1. Continue with [Step 3: Configure SSO settings for Google in Codefresh](#step-3-configure-sso-settings-for-google-in-codefresh).
+## Setup Redirect URI
 
-### Create custom schema 
+Go back to the Google Console Developer dashboard and click the edit button on the OAuth 2.0 Client IDs that you created before.
+
+Use the Client Name from the previous section to generate the *Authorized Redirect URIs*
+
+* Example Client Name: `t0nlUJoqQlDv`
+* Example Redirect URI: `https://g.codefresh.io/api/auth/t0nlUJoqQlDv/callback`
+
+{% include image.html
+lightbox="true"
+file="/images/administration/sso/google/googleSSO3.png"
+url="/images/administration/sso/google/googleSSO3.png"
+alt="Redirect URI"
+caption="Redirect URI"
+max-width="90%"
+%}
+
+This concludes the basic SSO setup for Google. For team/group synchronization you also need a service account.
+
+## Synchronize teams with the Codefresh CLI
+
+In the Codefresh configuration screen there are some optional fields that you can fill, to configure team synchronization via the Codefresh CLI.  
+
+You can do one of the following:  
+
+* Sync *all users and groups*, by creating a service account and [delegating user and group permissions](https://developers.google.com/admin-sdk/directory/v1/guides/delegation) to it.
+* Sync *only users who have been assigned the custom schema*, by creating a custom schema for user accounts, and creating and assigning the user role.
+
+### Sync all users with service account from Google Console
+
+Use this method to sync all users.
+
+{% include image.html
+lightbox="true"
+file="/images/administration/sso/google/serviceAccount2.png"
+url="/images/administration/sso/google/serviceAccount2.png"
+alt="Creating a service account"
+caption="Creating a service account"
+max-width="90%"
+%}
+
+Delegate from the Google admin console the following permissions:
+
+* `https://www.googleapis.com/auth/admin.directory.user.readonly`
+* `https://www.googleapis.com/auth/admin.directory.group.readonly`
+
+For that service account you should also create a private key in JSON format.
+
+{% include image.html
+lightbox="true"
+file="/images/administration/sso/google/serviceAccount3.png"
+url="/images/administration/sso/google/serviceAccount3.png"
+alt="Creating a JSON key"
+caption="Creating a JSON key"
+max-width="90%"
+%}
+
+Save the file locally. Go back to the Codefresh settings and fill in the fields
+
+* `JSON Keyfile` - enter contents of the JSON file
+* `Admin email` -  The user that has access to `admin.google.com`
+
+### Sync users by assigning custom schema to user accounts
 
 Use this method to sync only those users who have been assigned the user role with the custom schema.
 
@@ -126,15 +169,15 @@ Use this method to sync only those users who have been assigned the user role wi
     ```
 
 {:start="3"}
-1. In the GSuite Admin panel, go to **Apps > SAML**.
+1. In the GSuite Admin panel, go to `Apps > SAML`.
 
     {% include image.html
     lightbox="true"
-    file="/images/sso/google/google-gsuite-admin.png"
-    url="/images/sso/google/google-gsuite-admin.png"
+    file="/images/administration/sso/google/google-gsuite-admin.png"
+    url="/images/administration/sso/google/google-gsuite-admin.png"
     alt="SAML apps in GSuite Admin panel"
     caption="SAML apps in GSuite Admin panel"
-    max-width="60%"
+    max-width="40%"
     %}
 
 {:start="4"}
@@ -142,8 +185,8 @@ Use this method to sync only those users who have been assigned the user role wi
 
   {% include image.html
 lightbox="true"
-file="/images/sso/google/map-attributes.png"
-url="/images/sso/google/map-attributes.png"
+file="/images/administration/sso/google/map-attributes.png"
+url="/images/administration/sso/google/map-attributes.png"
 alt="Attribute Mappings screen in GSuite"
 caption="Attribute Mappings screen in GSuite"
 max-width="40%"
@@ -154,97 +197,31 @@ max-width="40%"
 
   {% include image.html
 lightbox="true"
-file="/images/sso/google/google-gusite-user-info.png"
-url="/images/sso/google/google-gusite-user-info.png"
+file="/images/administration/sso/google/google-gusite-user-info.png"
+url="/images/administration/sso/google/google-gusite-user-info.png"
 alt="User Information screen in GSuite"
 caption="User Information screen in GSuite"
 max-width="40%"
 %}
 
-{:start="6"}
-1. Continue with [Step 3: Configure SSO settings for Google in Codefresh](#step-3-configure-sso-settings-for-google-in-codefresh).
+### Configure sync setting in Codefresh SAML
 
-## Step 3: Configure SSO settings for Google in Codefresh
+This is required only if you are syncing users via a custom schema.
 
+1. In the Codefresh UI, open the SAML configuration screen.
+1. In the `Sync` field, set the value to the custom schemaName.
 
+{% include image.html
+lightbox="true"
+file="/images/administration/sso/google/google-cf-saml-setting.png"
+url="/images/administration/sso/google/google-cf-saml-setting.png"
+alt="SAML Sync Setting in Codefresh for Google GSuite"
+caption="SAML Sync Setting in Codefresh for Google GSuite"
+max-width="40%"
+%}
 
+Now you can [synchronize teams with the Codefresh CLI]({{site.baseurl}}/docs/single-sign-on/oidc/#syncing-of-teams-after-initial-sso-setup) .
 
-**Before you begin**  
-* Make sure you have:
-  * The **Client ID** and **Client Secret** from Google in Step 1
-  * Created the service account or the custom schema in Google for user synchronization
+## What to read next
 
-**How to**  
-
-1. In the Codefresh UI, from the toolbar click the **Settings** icon.
-1. In the sidebar, from Access & Collaboration, select [Single Sign-On](https://g.codefresh.io/2.0/account-settings/single-sign-on){:target="\_blank"}.
-1. Select **+ Add Single Sign-On**, **Google**, and then **Next**.
-
-
- {% include image.html 
- lightbox="true" 
- file="/images/sso/google/sso-codefresh-settings.png" 
-  url="/images/sso/google/sso-codefresh-settings.png"
-  alt="SSO settings for Google in Codefresh"
-  caption="SSO settings for Google in Codefresh"
-  max-width="30%"
-  %}
-
-{:start="4"}
-1. Enter the following: 
-  * **Client Name**: For auto-generation, leave empty. Codefresh generates the client name once you save the settings.  
-  * **Display Name**: Meaningful name that identifies the SSO provider.
-  * **Client ID**: The Client ID generated by Google.  
-  * **Client Secret**: The Client Secret also generated by Google. 
-  * **JSON Keyfile**: Relevant for service-account synchronization only. Paste the content of the JSON file you saved locally.
-  * **Admin email**: Relevant for service-account synchronization only. Enter the email of the user `admin.google.com`.
-  * **Sync field**: Relevant for custom schema-based synchronization only. Enter the value set for `schemaName`.
-
-{:start="5"}
-1. Select **Save**. Codefresh generates the Client Name. 
-
-  {% include image.html 
-  lightbox="true" 
-  file="/images/sso/google/autogenerated-name.png" 
-  url="/images/sso/google/autogenerated-name.png"
-  alt="Getting the auto-generated Client Name"
-  caption="Getting the auto-generated Client Name"
-  max-width="90%"
-  %}
-
-{:start="5"}
-1. Note down the Client Name, as you need it to set the redirect URI in Google.
-1. Continue with [Step 4: Set up Redirect URI in Google](#step-4-set-up-redirect-uri-in-google).
-
-### Step 4: Set up Redirect URI in Google
-1. Go back to the Google Console Developer dashboard, and click the edit button on the OAuth 2.0 Client IDs that you created before.
-1. For **Authorized Redirect URIs**, in the **URIs** field, enter the Client Name you noted down to generate the **Authorized Redirect URIs**:
-  * Example Client Name: `t0nlUJoqQlDv`
-  * Example Redirect URI: `https://g.codefresh.io/api/auth/t0nlUJoqQlDv/callback`
-  
-   {% include image.html 
-  lightbox="true" 
-  file="/images/sso/google/googleSSO3.png" 
-  url="/images/sso/google/googleSSO3.png"
-  alt="Redirect URI"
-  caption="Redirect URI"
-  max-width="30%"
-  %}
-
-You have now completed SSO setup for Google via OIDC.
-
-
-
-## Test SSO Connection
-
-Now test the SSO with a test user in a different browser or private/incognito browser to make sure the integration works as it should.
-
-1. In the Codefresh UI, on the toolbar, click the **Settings** icon and then select **Account Settings**.
-1. From the sidebar, below Access & Collaboration, select [**Users & Teams**](https://g.codefresh.io/2.0/account-settings/single-sign-on){:target="\_blank"}.   
-1. Locate a test user, and from the SSO list, select the integration name to enable SSO for that user.
-1. In a different browser or private/incognito browser window use the Corporate option to log in.
-
-## Related articles
-[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/single-sign-on/)  
-[Setting up OIDC Federated SSO]({{site.baseurl}}/docs/single-sign-on/oidc)  
-[Common configuration for SSO providers]({{site.baseurl}}/docs/single-sign-on/team-sync)  
+See the [overview page]({{site.baseurl}}/docs/single-sign-on/oidc/#testing-your-identity-provider) on how to test the integration, activate SSO for collaborators and create sync jobs.

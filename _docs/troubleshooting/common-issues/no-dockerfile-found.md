@@ -4,22 +4,15 @@ description: "Failed to fetch the Dockerfile from path"
 group: troubleshooting
 sub_group: common-issues
 redirect_from:
-  - /docs/troubleshooting/common-issues/no-dockerfile-found/
   - /docs/no-dockerfile-found/
 toc: true
 ---
 
-## Issue
-[Build step]({{site.baseurl}}/docs/pipelines/steps/build/) in your pipeline fails with the  error message:  
+You have a [build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) in your pipeline that fails with the  error message: "Repository does not contain a Dockerfile. Please check the pipeline configuration" or "Failed to fetch the Dockerfile from path"
 
-"Repository does not contain a Dockerfile. Please check the pipeline configuration" 
-OR  
-"Failed to fetch the Dockerfile from path"
+## Problem description
 
-## Possible cause
-
-This issue occurs when you are trying to build a Docker image and the pipeline step cannot find a Dockerfile.  
-It might be helpful to include a dummy step in your pipeline that prints all files in the workspace. This way you can verify what files are available to the pipeline.
+This error happens when you are trying to build a Docker image and the pipeline step cannot find a Dockerfile. It might be helpful to include a dummy step in your pipeline that prints all files in the workspace. This way you can verify what files are available to the pipeline.
 
 `pipeline step`
 {% highlight yaml %}
@@ -32,13 +25,11 @@ print_pwd_files:
 {% endraw %}
 {% endhighlight %}
 
-## Solution
+## The solution
 
 There are two ways to address this error:
 
-### Include clone step with name  `main_clone`  
-First, make sure that you have at least one [clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/) in your pipeline, `main_clone` as the name.  
-This way the current folder is automatically set up in the project folder of the Git repository.
+First make sure that you have at least one [clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) in your pipeline and that its name is `main_clone`. This way the current folder will automatically be setup in the project folder of the git repository.
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -60,8 +51,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-### Verify target directory of build step 
-Secondly, if you check out multiple Git repositories or use a different name in your Git clone step, make sure that the build step looks at the correct directory:
+Secondly, if you checkout multiple git repositories or use another name in your git clone step, make sure that the build step looks at the correct directory:
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -84,7 +74,6 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-Notice that the `working_directory` property of the build step, searches for the Dockefile in the folder named `trivial-go-web` instead of the root folder of the pipeline workspace.
+Notice the `working_directory` property of the build step that searches for the Dockefile in the folder named `trivial-go-web` instead of the root folder of the pipeline workspace.
 
-## Related articles
-[Troubleshooting common issues]({{site.baseurl}}/docs/troubleshooting/common-issues)  
+
