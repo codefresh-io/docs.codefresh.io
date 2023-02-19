@@ -111,9 +111,18 @@ Advanced settings define the tool used to create the application, and related to
    max-width="70%" 
    %} 
 
+{::nomarkdown}
+</br>
+{:/}
+
 ### ArgoCD Project
 The project group to which the application belongs. A project is useful to enforce restrictions on permitted sources and targets for applications, and roles. If not defined, the application is automatically assigned to the `default` project, which is created automatically by Argo CD and has no restrictions.  
 For more information, see Argo CD's documentation on [Projects](https://argo-cd.readthedocs.io/en/stable/user-guide/projects/#projects){:target="\_blank"}.
+
+
+{::nomarkdown}
+</br>
+{:/}
 
 ### Propagation policy for application deletion
 Defines how resources are pruned, applying Kubernetes cascading deletion prune policies when you delete the application. 
@@ -124,6 +133,10 @@ For more information, see [Argo CD's app deletion](https://argo-cd.readthedocs.i
    When selected, Kubernetes deletes the owner resource immediately, and then deletes the dependent resources in the background.
 * **Non-cascading**
   When selected, Kubernetes deletes only the application and not its resources.  
+
+{::nomarkdown}
+</br>
+{:/}
 
 ### Type of Application
 The tool used to create the application's manifests.  Codefresh supports defining application manifests as a directory, Helm charts, or Kustomize. If you are using other tools to define application manifests, use the Plugin type. For more information, see the Argo CD's documentation on [Tools](https://argo-cd.readthedocs.io/en/stable/user-guide/application_sources/){:target="_blank"}.
@@ -192,10 +205,11 @@ Review:
    lightbox="true" 
    file="/images/applications/add-app-general-settings.png" 
    url="/images/applications/add-app-general-settings.png" 
-   alt="Add Application: General settings" 
-   caption="Add Application: General settings"
+   alt="Add Application: Advanced settings" 
+   caption="Add Application: Advanced settings"
    max-width="70%" 
    %} 
+
 
 {:start="6"}
 1. Define the **Advanced** settings for the application. 
@@ -203,8 +217,8 @@ Review:
 {% include 
    image.html 
    lightbox="true" 
-   file="/images/applications/add-app-general-settings.png" 
-   url="/images/applications/add-app-general-settings.png" 
+   file="/images/applications/add-app-advanced-settings.png" 
+   url="/images/applications/add-app-advanced-settings.png" 
    alt="Add Application: Advanced settings" 
    caption="Add Application: Advanced settings"
    max-width="70%" 

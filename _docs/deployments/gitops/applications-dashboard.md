@@ -488,7 +488,7 @@ max-width="30%"
 
 You can:  
 * [Monitor CI details by deployments](#monitor-ci-details-by-deployment) 
-* [Monitor updated resources by deployment](#monitor-updated-resources-by-deployment)
+<!--* [Monitor updated resources by deployment](#monitor-updated-resources-by-deployment)  -->
 * [Monitor rollouts by deployment](#monitor-rollouts-by-deployment)
 
 
@@ -518,7 +518,8 @@ Each deployment record displays the complete CI history for that deployment.
 * The **Committer** who made the changes.
 
 
-### Monitor updated applications by deployment
+<!--- 
+### Monitor updated resources by deployment
 Each deployment record also identifies the applications that were changed (created, updated, or removed) as part of that deployment in **Updated Applications**. You can trace the history, from the original to their final versions. For each version, you can see the actual change or changes through the Diff view. The Full View shows the complete resource manifest, with the diff view of the changes, while the Compact View shows only those lines with the changes. 
 
 > For detailed information on the current state of a resource, switch to the Current State tab and click the resource node. See [Monitoring application resources](#monitor-resources-for-selected-application).
@@ -561,7 +562,7 @@ alt="Full View of changes for updated resource"
 caption="Full View of changes for updated resource"
 max-width="70%"
 %}
-
+-->
 
 
 
