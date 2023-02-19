@@ -222,26 +222,31 @@ tr {
         <td></td>
         <td></td>
         <td><b>Single Sign-On</b></td>
-        <td></td>
+        <td>Now in ACCESS & COLLABORATION</td>
      </tr>
     <tr>
         <td></td>
         <td></td>
         <td><b>Permissions</b></td>
-        <td></td>
+        <td>Now in ACCESS & COLLABORATION</td>
      </tr>
      <tr>
         <td></td>
         <td></td>
         <td><b>Audit</b></td>
-        <td></td>
+        <td>Now in ACCESS & COLLABORATION</td>
      </tr>
      <tr>
         <td><b>RUNTIMES</b></td>
         <td>></td>
         <td></td>
         <td>New category</td>
-     </tr>
+    </tr>
+    <tr>
+        <td></td>
+        <td>></td>
+        <td><b>Pipeline Runtimes</b></td>
+        <td>Runtime Environments renamed</td>
      <tr>
         <td></td>
         <td>></td>

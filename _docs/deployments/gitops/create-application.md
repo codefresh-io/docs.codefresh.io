@@ -251,7 +251,7 @@ Monitor the application.
 {:/}
 
 
-### Related articles
+## Related articles
 [Monitoring GitOps applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard)  
 [Managing GitOps applications]({{site.baseurl}}/docs/deployments/gitops/manage-application)  
 [GitOps Overview dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard)  

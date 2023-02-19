@@ -127,5 +127,4 @@ Once you create and commit the `rollout` and `service` resources, return to the 
    %}
 
 ### What to do next
-<!---[Create Jira and Docker Hub integrations ]({{site.baseurl}}/docs/getting-started/quick-start/create-app-ui)--->
 [(Optional) Update image tag for application]({{site.baseurl}}/docs/getting-started/quick-start/create-rollout)

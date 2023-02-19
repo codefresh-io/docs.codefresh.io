@@ -60,7 +60,7 @@ Finally, add the enrichment step to your CI pipeline with the API token and inte
 ### 4. View enriched image information
 Once deployed, view enriched information in the Codefresh UI:  
 * Go to [Images](https://g.codefresh.io/2.0/images){:target="\_blank"}
-* Go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard){:target="\_blank"}  
+* Go to the [Applications dashboard]((https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}  
 
 
 View:  

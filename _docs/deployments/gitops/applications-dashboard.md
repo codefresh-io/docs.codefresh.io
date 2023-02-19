@@ -8,7 +8,7 @@ toc: true
 
 Monitor applications across clusters, and the deployments, resources, and services for an application in the GitOps Apps dashboard. As a one-stop shop for Argo Rollouts and Argo CD, the GitOps Apps dashboard in Codefresh delivers on the challenge of keeping track of your applications and their deployments, whatever the frequency and scale, across all clusters in your enterprise. A wide range of filters, progressive delivery views, and enriched CI and CD information, provide full traceability and visibility to your deployments.  
 
-Select the view format for the GitOps Apps dashboard, as either [List or Card views](#select-view-mode-for-the-applications-dashboard). The default view displays all applications deployed within the last 30 days. Customize the scope through filters to display the [information](#applications-dashboard-information) you need.
+Select the view format for the GitOps Apps dashboard, as either [List or Card views](#select-view-mode-for-the-gitops-apps-dashboard). The default view displays all applications deployed within the last 30 days. Customize the scope through filters to display the [information](#/#gitops-apps-dashboard-information) you need.
 
 {% include
 image.html
@@ -220,7 +220,6 @@ You can view application resources in [List or Tree views](#view-modes-for-appli
 * [Events](#events-for-application-resources)
 
 
-> To quickly see which resources have been added, modified, or removed for the current or for a specific deployment, switch to the Timeline tab and expand the deployment record to show Updated Resources. See [Monitor resource updates for deployments](#monitor-resource-updates-for-deployments).
 
 ### View modes for application resources
 

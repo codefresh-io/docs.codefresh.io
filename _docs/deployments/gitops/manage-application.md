@@ -99,7 +99,7 @@ The sync options, grouped into Revision and Additional Settings, are identical t
 * Review:  
   [Revision settings for application sync](#revision-settings-for-application-sync)  
   [Additional Options for application sync](#additional-options-for-application-sync)  
-  [Synchronize resources](#synchronize-resources)  
+  [Synchronize resources](#synchronize-resources-in-the-application)  
 
 **How to**  
 1. In the Codefresh UI, from Ops in the sidebar, select [GitOps Apps](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
