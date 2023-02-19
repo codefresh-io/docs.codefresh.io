@@ -23,7 +23,8 @@ max-width="80%"
 
 ## Built-in steps
 
-The steps offered by Codefresh are:
+Built-in steps are predefined steps provided by Codefresh. 
+They include: 
 
 * [Git clone]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)
 * [Freestyle]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/)
@@ -53,9 +54,11 @@ Freestyle steps are a secure replacement for `docker run` commands.
 
 >Note that Codefresh also supports [parallel workflows]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/) as well as running pipelines [locally on your workstation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/running-pipelines-locally/).
 
+
+
 ## Step directory
 
-In the case of freestyle steps we also offer a [plugin marketplace](https://codefresh.io/steps/) with several existing plugins for popular integrations.
+In the case of freestyle steps, we also offer a [plugin marketplace](https://codefresh.io/steps/) with several existing plugins for popular integrations.
 
 {% include 
 image.html 
@@ -73,8 +76,11 @@ Codefresh steps can be:
 * Official (supported by the Codefresh team) or community based
 * Ready for production or still incubating.
 
-You can use any your pipelines any of the public steps already in the marketplace, any steps created by your team and any steps that you create for yourself.
+You can use  any of the public steps already in the marketplace, any steps created by your team and any steps that you create for yourself.
 
+## Registry for Marketplace steps
+As part of the pipeline's Advanced settings at the account-level, you can specify a different registry for all the Marketplace steps. This registry is ignored for all built-in steps.   
+To use the same registry for the built-in steps, you 
 ## Using custom pipeline steps
 
 When you create a pipeline, you will have access to two categories of steps:
@@ -104,7 +110,7 @@ For all steps you can define:
 
 The rest of the fields are specific to each step. See the documentation of each step in order to understand what each field should contain. There are fields for each step that are marked as required and are essential for the step to work. These are marked with an asterisk.
 
-Once a step is added to the pipeline, you are fee to change the resulting yaml even further by just typing in the pipeline editor.
+Once a step is added to the pipeline, you are free to change the resulting YAML even further by just typing in the pipeline editor.
 
 ## Creating your own step
 

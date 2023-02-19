@@ -1,5 +1,5 @@
 ---
-title: "Amazon Web Services"
+title: "Amazon Web Services (AWS) pipeline integration"
 description: "How to use Codefresh with AWS"
 group: integrations
 toc: true
@@ -7,21 +7,21 @@ toc: true
 
 Codefresh has native support for AWS in the following areas:
 
-- [Connecting to Amazon registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/amazon-ec2-container-registry/)
-- [Deploying to Amazon EKS]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/#adding-eks-cluster)
+- [Connecting to Amazon registries]({{site.baseurl}}/docs/integrations/docker-registries/amazon-ec2-container-registry/)
+- [Deploying to Amazon EKS]({{site.baseurl}}/docs/integrations/kubernetes/#adding-eks-cluster)
 - [Using Amazon S3 for Test reports]({{site.baseurl}}/docs/testing/test-reports/#connecting-an-s3-bucket)
-- [Using Amazon S3 for Helm charts]({{site.baseurl}}/docs/new-helm/add-helm-repository/#private-repository---s3)
+- [Using Amazon S3 for Helm charts]({{site.baseurl}}/docs/deployments/helm/helm-charts-and-repositories/)
 
 
 ## Using Amazon ECR
 
-Amazon Container Registries are fully compliant with the Docker registry API that Codefresh follows. Follow the instruction under [Amazon EC2 Container Registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/amazon-ec2-container-registry/) to connect.
+Amazon Container Registries are fully compliant with the Docker registry API that Codefresh follows. Follow the instruction under [Amazon EC2 Container Registry]({{site.baseurl}}/docs/integrations/docker-registries/amazon-ec2-container-registry/) to connect.
 
-Once the registry is added, you can use the [standard push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/) in your pipelines. See [working with Docker registries]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/) for more information.
+Once the registry is added, you can use the [standard push step]({{site.baseurl}}/docs/pipelines/steps/push/) in your pipelines. See [working with Docker registries]({{site.baseurl}}/docs/ci-cd-guides/working-with-docker-registries/) for more information.
 
 ## Deploying to Amazon Kubernetes
 
-Codefresh has native support for connecting a EKS cluster in the [cluster configuration screen]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/).
+Codefresh has native support for connecting an EKS cluster in the [cluster configuration screen]({{site.baseurl}}/docs/integrations/kubernetes/#connect-a-kubernetes-cluster).
 
 {% 
 	include image.html 
@@ -33,7 +33,7 @@ caption="Connecting a Amazon cluster"
 max-width="40%" 
 %}
 
-Once the cluster is connected you can use any of the [available deployment options]({{site.baseurl}}/docs/deploy-to-kubernetes/deployment-options-to-kubernetes/) for Kubernetes clusters. You also get access to all other Kubernetes dashboards such as the [cluster dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/)  or the [environment dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/environment-dashboard/) .
+Once the cluster is connected, you can use any of the [available deployment options]({{site.baseurl}}/docs/deployments/kubernetes/) for Kubernetes clusters. You also get access to all other Kubernetes dashboards such as the [cluster dashboard]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/) and the [environment dashboard]({{site.baseurl}}/docs/deployments/kubernetes/environment-dashboard/).
 
 ## Storing test reports in Amazon S3 bucket
 
@@ -53,7 +53,7 @@ See the full documentation for [test reports]({{site.baseurl}}/docs/testing/test
 
 ## Using Amazon S3 for storing Helm charts
 
-You can connect an Amazon S3 bucket as a Helm repository in the [integrations screen]({{site.baseurl}}/docs/new-helm/add-helm-repository/).
+You can connect an Amazon S3 bucket as a Helm repository in the [integrations screen]({{site.baseurl}}/docs/deployments/helm/helm-charts-and-repositories/).
 
 {% include
 image.html
@@ -65,12 +65,12 @@ caption="Using Amazon for Helm charts"
 max-width="80%"
 %}
 
-Once you connect your Helm repository you can use it any [Codefresh pipeline with the Helm step]({{site.baseurl}}/docs/new-helm/using-helm-in-codefresh-pipeline/). 
+Once you connect your Helm repository you can use it any [Codefresh pipeline with the Helm step]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/). 
 
 
 ## Traditional Amazon deployments
 
-For any other Amazon deployment you can use the [Amazon CLI from a Docker image](https://hub.docker.com/r/amazon/aws-cli) in a [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/)
+For any other Amazon deployment you can use the [Amazon CLI from a Docker image](https://hub.docker.com/r/amazon/aws-cli){:target="\_blank"} in a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/).
 
 `YAML`
 {% highlight yaml %}
@@ -86,8 +86,8 @@ For any other Amazon deployment you can use the [Amazon CLI from a Docker image]
 {% endhighlight %}
 
 
-## What to read next
+## Related articles
+[Add your cluster]({{site.baseurl}}/docs/integrations/kubernetes/#connect-a-kubernetes-cluster)  
+[Manage your Kubernetes cluster]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/)  
+[Cloning Git repositories]({{site.baseurl}}/docs/example-catalog/ci-examples/git-checkout/)  
 
-- [Add your cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/)
-- [Manage your Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/)
-- [Cloning Git repositories]({{site.baseurl}}/docs/yaml-examples/examples/git-checkout/)

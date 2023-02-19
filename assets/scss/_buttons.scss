@@ -13,8 +13,11 @@
 
 .btn-bd-primary {
   font-weight: 500;
-  color: $bd-purple-bright;
-  border-color: $bd-purple-bright;
+  color: #fff;
+  background-color: #35384b;
+  border-color: none;
+  border-radius: 4px;
+
 
   &:hover,
   &:active {

@@ -1,6 +1,6 @@
 ---
-title: "Auth0 (OIDC)"
-description: "Setting Up Auth0 Single Sign-On (SSO)"
+title: "Auth0 SSO via OIDC"
+description: "Set up Auth0 SSO for OIDC"
 group: single-sign-on
 sub_group: oidc
 redirect_from:
@@ -10,9 +10,15 @@ redirect_from:
 toc: true
 ---
 
-Create an SSO account for Auth0 in Codefresh. Start by creating an Auth0 application, then create the SSO account in Codefresh, and finally define the SSO settings for the application in Auth0.
+Set up SSO for Auth0 using OIDC.
+For a general overview on OIDC, see [Setting up OIDC Federated SSO]({{site.baseurl}}/docs/single-sign-on/oidc).  
 
-## 1. Create an Auth0 application
+Set up OIDC SSO for Auth0 in Codefresh by:
+1. Creating an Auth0 application in Auth0
+1. Creating the SSO account for Auth0 in Codefresh
+1. Definng the SSO settings for the application you created in Auth0
+
+## Step 1: Create an Auth0 application
 First create a new application in Auth0.
 
 1. Log in to Auth0.
@@ -24,39 +30,41 @@ First create a new application in Auth0.
 
 {% include image.html 
 lightbox="true"
-file="/images/administration/sso/auth0/create-auth0-app.png" 
-url="/images/administration/sso/auth0/create-auth0-app.png"
+file="/images/sso/auth0/create-auth0-app.png" 
+url="/images/sso/auth0/create-auth0-app.png"
 alt="Create Auth0 application"
 caption="Create Auth0 application"
 max-width="40%"
 %}
 
 {:start="4"}
-1. In the Auth0 SSO settings, note down the following as you will need them when you create the SSO account for Auth0 in Codefresh:
+1. In the Auth0 SSO settings, note down the following as you will need them to add the SSO account for Auth0 in Codefresh:
   * **Client ID**
   * **Client secret**
   * **Domain**
 
 {% include image.html 
 lightbox="true"
-file="/images/administration/sso/auth0/auth0-app-settings.png" 
-url="/images/administration/sso/auth0/auth0-app-settings.png"
+file="/images/sso/auth0/auth0-app-settings.png" 
+url="/images/sso/auth0/auth0-app-settings.png"
 alt="Auth0 application settings"
 caption="Auth0 application settings"
 max-width="40%"
 %}
 
 {:start="5"}
-1. Continue with _Create SSO account for Auth0 in Codefresh_.
+1. Continue with [Step 2: Create SSO account for Auth0 in Codefresh](#step-2-create-sso-account-for-auth0-in-codefresh).
 
-## 2. Create SSO account for Auth0 in Codefresh
-After creating an Auth0 application, create an SSO account for Auth0 in Codefresh. 
+## Step 2: Create SSO account for Auth0 in Codefresh
+After creating an Auth0 application, create an SSO account for OAuth0 in Codefresh. 
 
-1. In the Codefresh UI, go to [Single Sign On](https://g.codefresh.io/account-admin/sso).
-1. Click **Add Single Sign-On**, and then select **Auth0** from the list.
-1. Enter the following:
-  * **Client Name**: For auto-generation, leave empty. Codefresh generates the client name once you save the settings.  
-  * **Display Name**: Meaningful name that identifies this SSO integration.
+1. In the Codefresh UI, from the toolbar click the **Settings** icon.
+1. In the sidebar, from Access & Collaboration, select [Single Sign-On](https://g.codefresh.io/2.0/account-settings/single-sign-on){:target="\_blank"}.
+1. Click **Add Single Sign-On**. 
+1. For the Single Sign-On Service, select **Auth0**, and click **Next**.
+1. Define the connection details:
+  * **Client Name**: For auto-generation, leave empty. Codefresh generates the client name once you save the account settings.  
+  * **Display Name**: Meaningful name that identifies the SSO integration for this provider.
   * **Access Token**: Leave empty. Access tokens are used for team sync which is currently not supported for Auth0.  
   * **Client ID**: The Client ID generated for your Auth0 application.  
   * **Client secret**: The Client Secret also generated for your Auth0 application. 
@@ -64,35 +72,35 @@ After creating an Auth0 application, create an SSO account for Auth0 in Codefres
 
 {% include image.html 
 lightbox="true"
-file="/images/administration/sso/auth0/auth0-settings-codefresh.png" 
-url="/images/administration/sso/auth0/auth0-settings-codefresh.png"
+file="/images/sso/auth0/auth0-oidc-sso-settings.png"
+url="/images/sso/auth0/auth0-oidc-sso-settings.png"
 alt="SSO account settings for Auth0 in Codefresh"
 caption="SSO account settings for Auth0 in Codefresh"
-max-width="70%"
+max-width="40%"
 %}
 
-{:start="4"}
-1. Click **Save**.
+{:start="6"}
+1. Click **Add**.
 1. Copy the Client Name that is assigned to identify this SSO account. You will have to add it to the Auth0 application.
-1. Continue with _Define SSO settings in Auth0_.
+1. Continue with [Step 3: Define SSO settings in Auth0 application](#step-3-define-sso-settings-in-auth0-application).
 
 
-## 3. Define SSO settings in Auth0
-As the final step in Auth0 SSO setup, return to Auth0, and then define the Login URI and Callback URL for the Auth0 application. 
+## Step 3: Define SSO settings in Auth0 application
+As the final step in Auth0 SSO setup, return to Auth0, and then define the Login URI and Callback URL for the Auth0 application you created in  Step 1. 
 
 1. From the sidebar, select **Applications > Applications**.
 1. In the **Application Login URL** field, enter `https://g.codefresh.io/login`.
 1. In the **Allowed Callback URLs** field, enter `https://g.codefresh.io/api/auth/<codefresh_client_name>/callback`  
   where:  
-  `<codefresh_client_name>` is the client name you copied after creating an SSO account in Codefresh. 
+  `<codefresh_client_name>` is the client name you copied after creating the Auth0 SSO account in Codefresh. 
 
 {% include image.html 
 lightbox="true"
-file="/images/administration/sso/auth0/sso-settings-in-auth0.png" 
-url="/images/administration/sso/auth0/sso-settings-in-auth0.png"
+file="/images/sso/auth0/sso-settings-in-auth0.png" 
+url="/images/sso/auth0/sso-settings-in-auth0.png"
 alt="SSO settings for application in Auth0"
 caption="SSO settings for application in Auth0"
-max-width="60%"
+max-width="50%"
 %}
 
 {:start="4"}
@@ -100,7 +108,10 @@ max-width="60%"
 
 You have completed SSO setup for Auth0 in Codefresh.
 
-## What to read next
+## Related articles
+[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/single-sign-on/)  
+[Common configuration for SSO providers]({{site.baseurl}}/docs/single-sign-on/team-sync)  
 
-See the [overview page]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/#testing-your-identity-provider) on how to test the integration, activate SSO for collaborators and create sync jobs.
+
+
 

@@ -1,22 +1,22 @@
 ---
-title: "Azure (OIDC)"
-description: "Setting Up Azure Single Sign-On (SSO)"
+title: "Azure SSO via OIDC"
+description: "Set up Azure SSO for OIDC"
 group: single-sign-on
 sub_group: oidc
 redirect_from:
-  - /docs/enterprise/sso-azure/
   - /docs/enterprise/single-sign-on/sso-azure/
-  - /docs/administration/single-sign-on/sso-azure/
 toc: true
 ---
 
-In this page we will see the process of setting up Azure SSO for Codefresh. Setting up SSO for Azure requires configuration both in Azure and in Codefresh.  
-For general instructions on SSO setup, see the [overview page]({{site.baseurl}}/docs/single-sign-on/oidc/).
+Set up SSO for Azure using OIDC.
+For a general overview on OIDC, see [Setting up OIDC Federated SSO]({{site.baseurl}}/docs/single-sign-on/oidc).  
 
-<!---
-(#step-1-register-the-codefresh-application-in-azure)
-(#step-2-configure-permissions-for-the-application-in-azure)
-(#step-3-create-client-secret-in-azure)-->
+Set up OIDC SSO for Azure in Codefresh by:
+1. Registering the Codefresh application in Azure
+1. Configuring permissions for the Codefresh application in Azure
+1. Creating the Client secret in Azure
+1. Completing SSO configuration for Azure in Codefresh 
+1. Configuring redirect URIs in Azure
 
 
 ## Prerequisites
@@ -26,7 +26,7 @@ Make sure that your user in Azure who creates the application is assigned either
 OR  
 **Global Administrator**  
 
-If the user who creates the Azure application is not assigned to either of these roles, you will not be able to [sync teams from Azure to Codefresh]({{site.baseurl}}/docs/single-sign-on/oidc//#syncing-of-teams-after-initial-sso-setup) after the SSO integration is complete.
+If the user who creates the Azure application is not assigned to either of these roles, you will be unable to sync teams from Azure to Codefresh.
 
 
 ## Step 1: Register the Codefresh application in Azure
@@ -37,8 +37,8 @@ To setup Azure Active Directory for SSO, first register a new application in Azu
 
 {% include image.html
 lightbox="true"
-file="/images/administration/sso/azure/register-app-select-azure-ad.png"
-url="/images/administration/sso/azure/register-app-select-azure-ad.png"
+file="/images/sso/azure/register-app-select-azure-ad.png"
+url="/images/sso/azure/register-app-select-azure-ad.png"
 alt="Azure Active Directory"
 caption="Azure Active Directory"
 max-width="70%"
@@ -50,8 +50,8 @@ max-width="70%"
 
 {% include image.html
 lightbox="true"
-file="/images/administration/sso/azure/register-app-name.png"
-url="/images/administration/sso/azure/register-app-name.png"
+file="/images/sso/azure/register-app-name.png"
+url="/images/sso/azure/register-app-name.png"
 alt="Enter name and register application"
 caption="Enter name and register application"
 max-width="70%"
@@ -59,6 +59,7 @@ max-width="70%"
 
 {:start="4"}
 1. To apply your changes, click **Register**. The application is created and registered in Azure AD.
+1. Continue with [Step 2: Configure permissions for the application in Azure](#step-2-configure-permissions-for-the-application-in-azure).
 
 
 ## Step 2: Configure permissions for the application in Azure
@@ -72,8 +73,8 @@ Once the application has been created and registered, configure the required per
 
 {% include image.html
 lightbox="true"
-file="/images/administration/sso/azure/config-app-permissions-microsoft-graph.png"
-url="/images/administration/sso/azure/config-app-permissions-microsoft-graph.png"
+file="/images/sso/azure/config-app-permissions-microsoft-graph.png"
+url="/images/sso/azure/config-app-permissions-microsoft-graph.png"
 alt="Select Microsoft Graph"
 caption="Select Microsoft Graph"
 max-width="70%"
@@ -86,8 +87,8 @@ max-width="70%"
 
 {% include image.html
 lightbox="true"
-file="/images/administration/sso/azure/config-app-permissions-selected.png"
-url="/images/administration/sso/azure/config-app-permissions-selected.png"
+file="/images/sso/azure/config-app-permissions-selected.png"
+url="/images/sso/azure/config-app-permissions-selected.png"
 alt="`Group > Read.All` permissions for Microsoft Graph"
 caption="`Group > Read.All` permissions for Microsoft Graph"
 max-width="70%"
@@ -99,12 +100,16 @@ max-width="70%"
 
 {% include image.html
 lightbox="true"
-file="/images/administration/sso/azure/config-app-permissions-added.png"
-url="/images/administration/sso/azure/config-app-permissions-added.png"
+file="/images/sso/azure/config-app-permissions-added.png"
+url="/images/sso/azure/config-app-permissions-added.png"
 alt="Grant admin consent for Default Directory"
 caption="Grant admin consent for Default Directory"
 max-width="70%"
 %}
+
+{:start="6"}
+1. Continue with [Step 3: Create client secret in Azure](#step-3-create-client-secret-in-azure).
+
 
 ## Step 3: Create client secret in Azure
 
@@ -114,8 +119,8 @@ Create a client secret for the application. You will need to provide it when you
 
 {% include image.html
 lightbox="true"
-file="/images/administration/sso/azure/client-secret-select-option.png"
-url="/images/administration/sso/azure/client-secret-select-option.png"
+file="/images/sso/azure/client-secret-select-option.png"
+url="/images/sso/azure/client-secret-select-option.png"
 alt="Create client secret"
 caption="Create client secret"
 max-width="70%"
@@ -126,8 +131,8 @@ max-width="70%"
 
 {% include image.html
 lightbox="true"
-file="/images/administration/sso/azure/client-secret-add-description.png"
-url="/images/administration/sso/azure/client-secret-add-description.png"
+file="/images/sso/azure/client-secret-add-description.png"
+url="/images/sso/azure/client-secret-add-description.png"
 alt="Description for client secret"
 caption="Description for client secret"
 max-width="70%"
@@ -138,8 +143,9 @@ max-width="70%"
 {:start="3"}
 1. Click **Add**.  
    **Copy the secret key**, as you will need to provide it on setting up Azure SSO in Codefresh.
+1. Continue with [Step 4: Configure SSO settings for Azure in Codefresh](#step-4-configure-sso-settings-for-azure-in-codefresh).
 
-## Step 4: Configure SSO for Azure in Codefresh
+## Step 4: Configure SSO settings for Azure in Codefresh
 
 Configure SSO for Azure in the Codefresh UI.
 
@@ -150,8 +156,8 @@ Configure SSO for Azure in the Codefresh UI.
   
    {% include image.html
 lightbox="true"
-file="/images/administration/sso/azure/azure-properties-object-app-ids.png"
-url="/images/administration/sso/azure/azure-properties-object-app-ids.png"
+file="/images/sso/azure/azure-properties-object-app-ids.png"
+url="/images/sso/azure/azure-properties-object-app-ids.png"
 alt="Application and Object IDs in Azure"
 caption="Application and Object IDs in Azure"
 max-width="70%"
@@ -160,12 +166,13 @@ max-width="70%"
 
 **How to**  
 
-1. In the Codefresh UI, select **Account Settings**, and then from the sidebar, select **Single Sign On**. 
-1. Click **Add Single Sign-On**, and select **Azure AD**.
+1. In the Codefresh UI, from the toolbar, click the **Settings** icon.
+1. In the sidebar, from Access & Collaboration, select [Single Sign-On](https://g.codefresh.io/2.0/account-settings/single-sign-on){:target="\_blank"}.
+1. Click **Add Single Sign-On**, and select **Azure**, and click **Next**.
 1. Enter the following:  
   * **Client Name**: For auto-generation, leave empty. Codefresh generates the client name once you save the settings.
-  * **Display Name**: Meaningful name for the SSO provider - Shown as display name in Azure (see below)
-  * **Access token** and **Application ID**: The Application ID from your Enterprise Application Properties in Azure AD.
+  * **Display Name**: Meaningful name for the SSO provider. This is the name shown in Azure.
+  * **Application ID**: The Application ID from your Enterprise Application Properties in Azure AD.
   * **Client Secret**: The key value you copied when you created the client secret in Azure.
   * **Tenant**: `mycompany.onmicrosoft.com` or the ID of `0example1-0000-0aa0-a00a-1example0`
   * **Object ID**: The Object ID from your Enterprise Application Properties in Azure AD.
@@ -173,27 +180,30 @@ max-width="70%"
 
   {% include image.html
 lightbox="true"
-file="/images/administration/sso/azure/sso-codefresh-settings.png"
-url="/images/administration/sso/azure/sso-codefresh-settings.png"
+file="/images/sso/azure/sso-codefresh-settings.png"
+url="/images/sso/azure/sso-codefresh-settings.png"
 alt="SSO settings for Azure in Codefresh"
-caption="SSO settings for Azure in Codefres"
+caption="SSO settings for Azure in Codefresh"
 max-width="70%"
 %}
 
-{:start="4"}
+{:start="5"}
 1. Click **Save**.  
-   If you left the Client Name empty, Codefresh generates one (as in the example below). Codefresh uses this name to identify the SSO configuration.
+   If you left the Client Name empty, Codefresh generates one (see example below). Codefresh uses this name to identify the SSO configuration.  
+   You will need this value as the Reply URL setting in the Azure portal.
 
 {% include image.html
 lightbox="true"
-file="/images/administration/sso/azure/sso-codefresh-generated-client-id.png"
-url="/images/administration/sso/azure/sso-codefresh-generated-client-id.png"
+file="/images/sso/azure/sso-codefresh-generated-client-id.png"
+url="/images/sso/azure/sso-codefresh-generated-client-id.png"
 alt="Example of Codefresh-generated Client Name for Azure"
 caption="Example of Codefresh-generated Client Name for Azure"
 max-width="50%"
 %}
 
-We will need this value in the reply URL setting (back in the Azure portal UI).
+
+1. Continue with [Step 5: Configure redirect URIs in Azure](#step-5-configure-redirect-uris-in-azure).
+
 
 ## Step 5: Configure redirect URIs in Azure
 
@@ -211,8 +221,8 @@ As the final step, add the Codefresh callback URL to the allowed reply URLs for 
 
 {% include image.html
 lightbox="true"
-file="/images/administration/sso/azure/redirect-uri-web-configure.png"
-url="/images/administration/sso/azure/redirect-uri-web-configure.png"
+file="/images/sso/azure/redirect-uri-web-configure.png"
+url="/images/sso/azure/redirect-uri-web-configure.png"
 alt="Select Web configuration settings"
 caption="Select Web configuration settings"
 max-width="70%"
@@ -228,15 +238,17 @@ max-width="70%"
 
 {% include image.html
 lightbox="true"
-file="/images/administration/sso/azure/redirect-rui-define-select-id-tokens.png"
-url="/images/administration/sso/azure/redirect-rui-define-select-id-tokens.png"
+file="/images/sso/azure/redirect-rui-define-select-id-tokens.png"
+url="/images/sso/azure/redirect-rui-define-select-id-tokens.png"
 alt="Web configuration settings"
 caption="Web configuration settings"
 max-width="70%"
 %}
 
-You have now completed the SSO setup for Azure.
+You have now completed the SSO setup for Azure using OIDC.
 
-## What to read next
 
-See the [overview page]({{site.baseurl}}/docs/single-sign-on/oidc/#testing-your-identity-provider) on how to test the integration, activate SSO for collaborators and create sync jobs.
+
+## Related articles
+[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/single-sign-on/)  
+[Common configuration for SSO providers]({{site.baseurl}}/docs/single-sign-on/team-sync)  

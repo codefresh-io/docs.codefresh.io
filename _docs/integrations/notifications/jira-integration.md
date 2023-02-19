@@ -1,33 +1,33 @@
 ---
-title: "Jira Integration"
+title: "Jira notification integrations for piplines"
 description: ""
 group: integrations
-redirect_from:
-  - /docs/jira-integration-1/
-  - /docs/integrations/jira-integration-1/
+sub_group: notifications
 toc: true
 ---
-Codefresh integrates with Jira in a variety of ways:
-* Through the [Jira Integration]({{site.baseurl}}/docs/integrations/jira/) for the highest observability of your GitOps deployments
-* Through a [custom step]({{site.baseurl}}/docs/integrations/notifications/jira-integration/#use-jira-within-your-codefresh-pipeline) from our step marketplace so that you can connect your pipelines with Jira
-* Alternatively, through using your own [jira-cli]({{site.baseurl}}/docs/integrations/notifications/jira-integration/#using-your-own-jira-cli)
+Codefresh integrates with Jira in several ways:
+* Through the [Jira integration]({{site.baseurl}}/docs/integrations/jira/) for the highest visibility into your GitOps deployments
+* Through a [custom step](#use-jira-in-your-codefresh-pipeline) from our step marketplace so that you can connect your pipelines with Jira
+* Alternatively, through using your own [jira-cli](#using-your-own-jira-cli)
 
-**Prerequisites needed**:
-* [Codefresh Account](https://codefresh.io/docs/docs/getting-started/create-a-codefresh-account/)
-* [Jira Account](https://www.atlassian.com/software/jira)
 
-## Use Jira Within Your Codefresh Pipeline
+## Prerequisites
+* [Codefresh Account]({{site.baseurl}}/docs/administration/account-user-management/create-a-codefresh-account/)
+* [Jira Account](https://www.atlassian.com/software/jira){:target="\_blank"}
+
+## Use Jira in your Codefresh pipeline
 
 The step marketplace offers several freestyle steps that can be used in your Codefresh pipeline through steps.
 
-One of those steps is the [Jira Issue Manager](https://codefresh.io/steps/step/jira-issue-manager). It can be used to:
+One of those steps is the [Jira Issue Manager](https://codefresh.io/steps/step/jira-issue-manager){:target="\_blank"}.  
+It can be used to:
 * Create a Jira issue
 * Comment on existing Jira issues
-* Change the status of an issue e.g. once the build is successful
+* Change the status of an issue, for example, once the build is successful
 * Add a description to your issue
 * And more
 
-More information is provided [directly in the example]({{site.baseurl}}/docs/yaml-examples/examples/sending-the-notification-to-jira/).
+More information is provided [Send notification to Jira example]({{site.baseurl}}/docs/example-catalog/ci-examples/sending-the-notification-to-jira/).
 
 ## Using your own jira-cli
 
@@ -40,8 +40,6 @@ RUN apk add -U gcc musl-dev linux-headers openssl-dev libffi-dev && pip install 
 
 And then running the Dockerfile.
 
-## What to read next
-
-* [Example for sending notifications to Jira]({{site.baseurl}}/docs/yaml-examples/examples/sending-the-notification-to-jira/)
-* Have a look at other things that you can do with your Codefresh Pipeline in the [example section]({{site.baseurl}}/docs/yaml-examples/examples/)
-* [Create a pipeline]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
+## Related articles
+[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/)  
+[Create pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
