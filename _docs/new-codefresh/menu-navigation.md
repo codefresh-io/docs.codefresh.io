@@ -17,8 +17,8 @@ With the Settings icon always available, you have _single-click access_ to accou
 {% include 
   image.html 
   lightbox="true" 
-  file="/images/getting-started/settings-icon.png" 
-  url="/images/getting-started/settings-icon.png" 
+  file="/images/getting-started/new-settings-icon.png" 
+  url="/images/getting-started/-new-settings-icon.png" 
   alt="Settings icon in toolbar" 
   caption="Settings icon in toolbar"
     max-width="80%" 
