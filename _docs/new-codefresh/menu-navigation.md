@@ -19,8 +19,8 @@ With the Settings icon always available, you have _single-click access_ to accou
   lightbox="true" 
   file="/images/getting-started/settings-icon.png" 
   url="/images/getting-started/settings-icon.png" 
-  alt="To be changed Settings icon in toolbar" 
-  caption="To be changed Settings icon in toolbar"
+  alt="Settings icon in toolbar" 
+  caption="Settings icon in toolbar"
     max-width="80%" 
 %}
 
