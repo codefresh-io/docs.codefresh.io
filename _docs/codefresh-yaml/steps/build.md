@@ -45,6 +45,9 @@ step_name:
   tag: develop
   build_arguments:
     - key=value
+  cache_from:
+    - owner/image-name:${{CF_BRANCH}}
+    - owner/image-name:main
   target: stage1
   no_cache: false
   no_cf_cache: false
@@ -70,31 +73,32 @@ step_name:
 ## Fields
 
 {: .table .table-bordered .table-hover}
-| Field                                      | Description                                                                                                                                                                                                                          | Required/Optional/Default |
-| ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------- |
-| `title`                                    | The free-text display name of the step.                                                                                                                                                                                              | Optional                  |
-| `description`                              | A basic, free-text description of the step.                                                                                                                                                                                          | Optional                  |
-| `stage`                              | Parent group of this step. See [using stages]({{site.baseurl}}/docs/codefresh-yaml/stages/) for more information.                                                                                                                                                                                          | Optional                  |
-| `working_directory`                        | The directory in which the build command is executed. It can be an explicit path in the container's file system, or a variable that references another step. <br>The default is {% raw %} `${{main_clone}}` {% endraw %}. This only changes the Docker build context and is unrelated to the `WORKDIR` inside the Dockerile           | Default                   |
-| `dockerfile`                               | The path to the `Dockerfile` from which the image is built. The default is `Dockerfile`.                                                                                                                                             | Default                   |
-| `image_name`                               | The name for the image you build.                                                                                                                                                                                                    | Required                  |
-| `region`                               | Relevant only for [Amazon ECR]({{site.baseurl}}/docs/integrations/docker-registries/amazon-ec2-container-registry/) integrations using either service accounts or explicit credentials. The names of the regions for which to perform cross-region replication. The names of the source region and the destination region name must be defined in separate steps.                                                                                                                                                                               | Optional                  |
-| `tag`                                      | The tag that is assigned to the image you build. <br>The default is the name of the branch or revision that is built.                                                                                                                | Default                   |
-| `tags`                                     | Multiple tags under which to push the image. Use either this or `tag`. This is an array, so should be of the following style: <br> {::nomarkdown}<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="na">tags</span><span class="pi">:</span><br><span class="pi">-</span> <span class="s">tag1</span><br><span class="pi">-</span> <span class="s">tag2</span><br><span class="pi">-</span> <span class="s">{% raw %}${{CF_BRANCH_TAG_NORMALIZED}}{% endraw %}</span><br><span class="pi">-</span> <span class="s">tag4</span></code></pre></figure>{:/}or<br>{::nomarkdown}<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="na">tags</span><span class="pi">:</span> <span class="pi">[</span> <span class="s1">'</span><span class="s">tag1'</span><span class="pi">,</span> <span class="s1">'</span><span class="s">tag2'</span><span class="pi">,</span> <span class="s1">'</span><span class="s">{% raw %}${{CF_BRANCH_TAG_NORMALIZED}}{% endraw %}'</span><span class="pi">,</span> <span class="s1">'</span><span class="s">tag4'</span> <span class="pi">]</span></code></pre></figure>{:/}                                            | Optional                   |
-| `registry`                                 | The registry logical name of one of the inserted registries from the integration view. <br>The default value will be your default registry [if you have more than one]({{site.baseurl}}/docs/docker-registries/external-docker-registries/).                                     | Optional                   |
-| `registry_contexts`                                 | Advanced property for resolving Docker images when [working with multiple registries with the same domain]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/#working-with-multiple-registries-with-the-same-domain)                            | Optional                  |
-|`disable_push`                                 | Do not push to any registry automatically.                                     | Optional                   | 
-|`tag_policy`                                 | Push the tag name without change or lowercase it automatically. By default `tag: MixedCase` will be pushed as `image_name:mixedcase`. Possible options are `original` and `lowercase`. Default is `lowercase`                                    | Default                   | 
-| `no_cache`                                 | Disable Docker engine cache for the build [more info](https://codefresh.io/docs/docs/troubleshooting/common-issues/disabling-codefresh-caching-mechanisms/)                                                                                                                                                                                             | Optional                  |
-| `no_cf_cache`                                 | Disable Codefresh build optimization for the build [more info](https://codefresh.io/docs/docs/troubleshooting/common-issues/disabling-codefresh-caching-mechanisms/) 
-| `build_arguments`                          | A set of [Docker build arguments](https://docs.docker.com/engine/reference/commandline/build/#set-build-time-variables-build-arg) to pass to the build process.                                                                      | Optional                  |
-| `target`                          | target stage in a multistage build (build will run until this stage)                                                                      | Optional                  |
-| `fail_fast`                                | If a step fails, and the process is halted. The default value is `true`.                                                                                                                                                             | Default                   |
-| `when`                                     | Define a set of conditions that need to be satisfied in order to execute this step.<br>You can find more information in the [Conditional Execution of Steps]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/) article.                           | Optional                  |
-| `metadata`                                 | Annotate the built image with [key-value metadata]({{site.baseurl}}/docs/docker-registries/metadata-annotations/).                                                                                                                             | Optional                  |
-| `on_success`, `on_fail` and `on_finish`    | Define operations to perform upon step completion using a set of predefined [Post-Step Operations]({{site.baseurl}}/docs/codefresh-yaml/post-step-operations/).                                                                                                      | Optional                  |
-| `retry`   | Define retry behavior as described in [Retrying a step]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/#retrying-a-step).                                                                               | Optional                  |
-| `buildkit`                                 | Set to `true` to enable [Buildkit]({{site.baseurl}}/docs/codefresh-yaml/steps/build/#buildkit-support) and all of its enhancements                                                                                                    | Optional                 | 
+| Field       | Description                                                                                         | Required/Optional/Default |
+| ----------- | ---------------------------------------------------------                                           | ------------------------- |
+| `title`     | The free-text display name of the step.                                                             | Optional                  |
+| `description` | A basic, free-text description of the step.                                                       | Optional                  |
+| `stage`     | Parent group of this step. See [using stages]({{site.baseurl}}/docs/codefresh-yaml/stages/) for more information.                                                                                                         | Optional                  |
+| `working_directory`  | The directory in which the build command is executed. It can be an explicit path in the container's file system, or a variable that references another step. <br>The default is {% raw %} `${{main_clone}}` {% endraw %}. Note that the wo`working_directory` when defined changes only the Docker build context. It is unrelated to the `WORKDIR` in the Dockerile. | Default                   |
+| `dockerfile`    | The path to the `Dockerfile` from which the image is built. The default is `Dockerfile`.          | Default                   |
+| `image_name` | The name of the image that is built.                                                                 | Required                  |
+| `region`     | Relevant only for [Amazon ECR]({{site.baseurl}}/docs/integrations/docker-registries/amazon-ec2-container-registry/) integrations using either service accounts or explicit credentials. The names of the regions for which to perform cross-region replication. The names of the source region and the destination region name must be defined in separate steps.                                                          | Optional                  |
+| `tag`       | The single tag to assign to the built image. To assign multiple tags, use `tags` (see below). <br>The default tag is the name of the branch or revision that is built. | Default     |
+| `tags`      | Multiple tags to assign to the built image. To assign a single tag, use `tag`. This is an array, and should conform to the following syntax: <br> {::nomarkdown}<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="na">tags</span><span class="pi">:</span><br><span class="pi">-</span> <span class="s">tag1</span><br><span class="pi">-</span> <span class="s">tag2</span><br><span class="pi">-</span> <span class="s">{% raw %}${{CF_BRANCH_TAG_NORMALIZED}}{% endraw %}</span><br><span class="pi">-</span> <span class="s">tag4</span></code></pre></figure>{:/}or<br>{::nomarkdown}<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="na">tags</span><span class="pi">:</span> <span class="pi">[</span> <span class="s1">'</span><span class="s">tag1'</span><span class="pi">,</span> <span class="s1">'</span><span class="s">tag2'</span><span class="pi">,</span> <span class="s1">'</span><span class="s">{% raw %}${{CF_BRANCH_TAG_NORMALIZED}}{% endraw %}'</span><span class="pi">,</span> <span class="s1">'</span><span class="s">tag4'</span> <span class="pi">]</span></code></pre></figure>{:/}                                            | Optional                   |
+| `cache_from`   | The list of cache sources to use as Docker cache when building the image.  If there is more than one cache source, every source is passed as an argument to the `docker_build` command. See [more info](https://docs.docker.com/engine/reference/commandline/buildx_build/#cache-from){:target="\_build"}.                     | Optional                   |
+| `registry`   | The name of the registry to which to push the built image. You can define any registry that has integrated with Codefresh. <br>When not defined, and you have multiple registry contexts, Codefresh uses the one set as the [default registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/).                     | Optional                   |
+| `registry_contexts`   | Advanced property for resolving Docker images when [working with multiple registries with the same domain]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/#working-with-multiple-registries-with-the-same-domain).             | Optional                  |
+|`disable_push`   | Determines if to push built image to the registry or not. When set to `false`, the default, the image is automatically pushed to the registry.                                     | Optional                   | 
+|`tag_policy`     | The case transformation policy for the tag name. `original`pushes the tag name as is, without changing it. `lowercase`, the default, automatically converts the tag name to lowercase. If the tag is `MixedCase` is pushed as `image_name:mixedcase`.    | Default                   | 
+| `no_cache`      | When set to `true`, disabled Docker engine cache for the build. See [more info](https://codefresh.io/docs/docs/troubleshooting/common-issues/disabling-codefresh-caching-mechanisms/.        | Optional                  |
+| `no_cf_cache`   | Disable Codefresh build optimization for the build [more info](https://codefresh.io/docs/docs/troubleshooting/common-issues/disabling-codefresh-caching-mechanisms/) |                                                                          |
+| `build_arguments`   | A set of [Docker build arguments](https://docs.docker.com/engine/reference/commandline/build/#set-build-time-variables-build-arg) to pass to the build process.   | Optional                  |
+| `target`  | The target stage in a multistage build (build will run until this stage)                                | Optional                  |
+| `fail_fast`  | If a step fails, and the process is halted. The default value is `true`.                             | Default                   |
+| `when`       | Define a set of conditions that need to be satisfied in order to execute this step.<br>You can find more information in the [Conditional Execution of Steps]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/) article.                           | Optional                  |
+| `metadata`   | Annotate the built image with [key-value metadata]({{site.baseurl}}/docs/docker-registries/metadata-annotations/)  | Optional   |
+| `on_success`, `on_fail` and `on_finish`    | Define operations to perform upon step completion using a set of predefined [Post-Step Operations]({{site.baseurl}}/docs/codefresh-yaml/post-step-operations/).      | Optional                  |
+| `retry`   | Define retry behavior as described in [Retrying a step]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/#retrying-a-step).  | Optional                  |
+| `buildkit`  | When set to `true`, enables [Buildkit]({{site.baseurl}}/docs/codefresh-yaml/steps/build/#buildkit-support) and all of its enhancements. When using `buildkit` with `cache_from`, to allow the built image to be used as cache for future images, you must  specify `BUILDKIT_INLINE_CACHE=1` in the build_arguments. See [more info](https://docs.docker.com/engine/reference/commandline/buildx_build/#cache-to){:target="\_blank"}| Optional   | 
 
 **Exported resources:**
 - Working Directory
@@ -186,7 +190,30 @@ steps:
 {% endraw %}         
 {% endhighlight %}
 
-It also possible to build Docker images in [parallel]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/) for faster builds.
+
+Build an image using `cache_from` with `buildkit`:
+
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+steps:
+  BuildMyImage:
+    title: Building My Docker image
+    type: build
+    image_name: my-app-image
+    dockerfile: my-custom.Dockerfile
+    tag: 1.0.1
+    buildkit: true
+    build_arguments:
+    - BUILDKIT_INLINE_CACHE=1
+    cache_from:
+    - my-registry/my-app-image:${{CF_BRANCH}}
+    - my-registry/my-app-image:master
+{% endraw %}         
+{% endhighlight %}
+
+For faster builds, you can also build Docker images in [parallel]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/).
 
 ### Inline Dockerfile
 
