@@ -395,7 +395,7 @@ These providers are not displayed as options during sign-up/sign-in.
 
 ### (Optional) Set up Git integration
 
-Codefresh supports out-of-the-box Git logins using your local username and password, or logins using your Git provider, as described below.You can also configure login to supported SSO providers after installation, as described in [Setting up OpenID Connect (OIDC) Federated Single Sign-On (SSO)]({{site.baseurl}}/docs/administration/single-sign-on/oidc).
+Codefresh supports out-of-the-box Git logins using your local username and password, or logins using your Git provider, as described below.You can also configure login to supported SSO providers after installation, as described in [Setting up OpenID Connect (OIDC) Federated Single Sign-On (SSO)]({{site.baseurl}}/docs/single-sign-on/oidc/).
 
 If you’d like to set up a login to Codefresh using your Git provider, first login using the default credentials (username: `AdminCF`, password: `AdminCF` and add your Git provider OAuth integration details in our admin console:
 

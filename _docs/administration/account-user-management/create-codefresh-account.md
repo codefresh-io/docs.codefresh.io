@@ -212,7 +212,7 @@ We can establish a VPN / tunnel to your network or discuss options for an on-pre
 [Adding users and teams]({{site.baseurl}}/docs/administration/account-user-management/add-users/)  
 [Configuring access control]({{site.baseurl}}/docs/administration/account-user-management/access-control/)  
 [Codefresh IP addresses]({{site.baseurl}}/docs/administration/account-user-management/platform-ip-addresses/)  
-[CI pipeline quick start]({{site.baseurl}}/docs/quick-start/ci-quick-start/create-a-basic-pipeline/)  
+[CI pipeline quick start]({{site.baseurl}}/docs/quick-start/ci-quick-start/create-ci-pipeline/)  
 [Kubernetes deployment quick start]({{site.baseurl}}/docs/quick-start/ci-quick-start/deploy-to-kubernetes)  
 [Pipeline examples]({{site.baseurl}}/docs/example-catalog/ci-examples/)  
 

@@ -27,7 +27,7 @@ in your cluster. To activate this dashboard, you need to connect your cluster to
 ### Prerequisites
 
 Codefresh SaaS needs network connectivity to connect to your cluster.  
-If your cluster is behind a firewall, make sure that you allow access to the [required IPs]({{site.baseurl}}/docs/administration/account-user-management/platform-ip-addresses/).  
+If your cluster is behind a firewall, make sure that you allow access to the [required IPs]({{site.baseurl}}/docs/administration/platform-ip-addresses/).  
 
 
 For on-premises and [hybrid installations with Runner]({{site.baseurl}}/docs/installation/behind-the-firewall/), there is no need to tweak your firewall.

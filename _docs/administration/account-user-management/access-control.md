@@ -23,7 +23,7 @@ Codefresh provides several complementary ways for access control within an organ
 
 ## Role-based access for users and administrators
 
-Role-based access, as either a user or an administrator, is usually defined when you [add users to Codefresh accounts]({{site.baseurl}}/docs/administration/add-users/#users-in-codefresh).
+Role-based access, as either a user or an administrator, is usually defined when you [add users to Codefresh accounts]({{site.baseurl}}/docs/administration/account-user-management/add-users/#users-in-codefresh).
 
 > To add users and assign or change user roles, you must be an administrator yourself.
 

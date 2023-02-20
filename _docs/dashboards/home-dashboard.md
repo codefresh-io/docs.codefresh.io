@@ -113,6 +113,6 @@ Displays up to five of the most active applications and their current deployment
 ### Related articles
 [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)  
 [Monitoring applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/)  
-[Images in Codefresh]({{site.baseurl}}/docs/deployments/gitops/images/)  
+[Images in Codefresh]({{site.baseurl}}/docs/dashboards/images/)  
 
 
