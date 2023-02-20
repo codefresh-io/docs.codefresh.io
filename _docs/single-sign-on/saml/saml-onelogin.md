@@ -3,11 +3,13 @@ title: OneLogin SSO via SAML
 description: Setting Up OneLogin via SAML
 group: single-sign-on
 sub_group: saml
+redirect_from:
+  - /docs/single-sign-on/saml/saml-onelogin/
 toc: true
 ---
 
 Set up SSO for OneLogin using SAML in Codefresh.
-For a general overview on SAML, see [Setting up SAML2 Federated SSO]({site.baseurl}}/docs/single-sign-on/saml).
+For a general overview on SAML, see [Setting up SAML2 Federated SSO]({{site.baseurl}}/docs/single-sign-on/saml).
 
 >If you do not see SAML in the SSO list, please create a support ticket to enable SAML for your account.
 
@@ -39,7 +41,6 @@ Setting up SAML SSO for OneLogin includes:
     * Paste the content into the Application Certificate.
     * Remove the lines, `-----BEGIN CERTIFICATE-----` and `-----END CERTIFICATE-----`.
   * **Provider**: Leave empty. 
-
 1. Click **Add**.
   The SAML integration for OneLogin is added and appears in the list of SSOs. 
 1. In the Single Sign-On page, click the **Edit** icon for the OneLogin SAML integration you created.

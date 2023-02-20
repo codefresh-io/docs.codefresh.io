@@ -242,5 +242,5 @@ The cluster where the runner works on should have network connectivity with the 
 Once your cluster is connected you can use any of the familiar deployment methods such as the [dedicated deploy step]({{site.baseurl}}/docs/deployments/kubernetes/) or [custom kubectl commands]({{site.baseurl}}/docs/deployments/kubernetes/custom-kubectl-commands/).
 
 ## Related articles
-[Google marketplace integration]({{site.baseurl}}/docs/integrations/ci-integrations/google-marketplace/)  
+[Google marketplace integration]({{site.baseurl}}/docs/integrations/google-marketplace/)  
 [Managing your Kubernetes cluster]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/)  

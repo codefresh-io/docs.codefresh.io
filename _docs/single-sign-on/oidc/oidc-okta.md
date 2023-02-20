@@ -178,7 +178,7 @@ max-width="30%"
 You have now completed SSO setup for Okta. 
 
 ## How Okta syncing works
-[Syncing with Okta]({{site.baseurl}}/docs/single-sign-on/sso-setup-oauth2/#syncing-of-teams-after-initial-sso-setup)
+[Syncing with Okta]({{site.baseurl}}/docs/single-sign-on/team-sync/)
 only affects teams/groups, and not individual users.
 
 
