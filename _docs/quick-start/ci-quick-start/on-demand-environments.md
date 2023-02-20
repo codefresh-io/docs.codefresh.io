@@ -107,7 +107,7 @@ max-width="70%"
 
 
 ## Read more
-[Kubernetes deployment quick start]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/)  
+[Kubernetes deployment quick start]({{site.baseurl}}/docs/quick-start/ci-quick-start/deploy-to-kubernetes/)  
 [Introduction to Codefresh pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)
 
 

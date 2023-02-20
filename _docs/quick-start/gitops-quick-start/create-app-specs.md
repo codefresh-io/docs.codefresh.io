@@ -13,8 +13,8 @@ You will create and commit the following resources:
 1. `Service` resource to expose the application to external traffic
 
 ### Before you begin
-* [Create an application]({{site.baseurl}}/docs/getting-started/quick-start/create-app-ui)  
-* Make sure [Argo Rollouts is installed]({{site.baseurl}}/docs/deployment/install-argo-rollouts) on the target cluster
+* [Create an application]({{site.baseurl}}/docs/quick-start/gitops-quick-start/create-app-ui/)  
+* Make sure [Argo Rollouts is installed]({{site.baseurl}}/docs/deployments/gitops/install-argo-rollouts/) on the target cluster
 
 ### Create folder in Git for application resources
 Create a folder in the Git repo in which to save all the resources for the `codefresh-guestbook` application. 
@@ -127,4 +127,4 @@ Once you create and commit the `rollout` and `service` resources, return to the 
    %}
 
 ### What to do next
-[(Optional) Update image tag for application]({{site.baseurl}}/docs/getting-started/quick-start/create-rollout)
+[(Optional) Update image tag for application]({{site.baseurl}}/docs/quick-start/gitops-quick-start/create-rollout/)
