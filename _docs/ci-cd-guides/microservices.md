@@ -1,15 +1,15 @@
 ---
-title: "Building Microservices"
-description: "Learn how to create pipelines specifically for microservice applications"
+title: "Building microservices"
+description: "Create pipelines specifically for microservice applications"
 group: ci-cd-guides
 toc: true
 ---
 
-Now that you know how to [build your app]({{site.baseurl}}/docs/ci-cd-guides/packaging-compilation/) and [create Docker images]({{site.baseurl}}/docs/ci-cd-guides/building-docker-images/), we can see how Codefresh works with Microservice applications.
+Now that you know how to [build your app]({{site.baseurl}}/docs/ci-cd-guides/packaging-compilation/) and [create Docker images]({{site.baseurl}}/docs/ci-cd-guides/building-docker-images/), we can see how Codefresh works with microservice applications.
 
 ## Organizing pipelines for monolithic applications
 
-In the past, pipelines for monolithic applications tended to share the same characteristics of the application they were building. Each project had a single pipeline which was fairly complex and different projects had completely different pipelines. Each pipeline was almost always connected to a single GIT repository.
+In the past, pipelines for monolithic applications tended to share the same characteristics of the application they were building. Each project had a single pipeline which was fairly complex, and different projects had completely different pipelines. Each pipeline was almost always connected to a single Git repository.
 
 {% include image.html 
 lightbox="true" 
@@ -20,11 +20,11 @@ caption="Monolithic pipelines"
 max-width="80%" 
 %}
 
-The complexity of each pipeline was detrimental to easy maintenance. Pipelines were typically controlled by a small team of gurus who are familiar with both the internals of the application as well as the deployment environment.
+The complexity of each pipeline was detrimental to easy maintenance. Pipelines were typically controlled by a small team of gurus, familiar with both the internals of the application as well as the deployment environment.
 
-For each software project, operators are taking care of the pipeline structure while the developers are only working with the source code (going against the DevOps paradigm where all teams should share responsibility for common infrastructure and collaborate on shared problems).
+For each software project, operators handle the pipeline structure, while developers only work with the source code (going against the DevOps paradigm where all teams should share responsibility for common infrastructure and collaborate on shared problems).
 
-Pipeline size and complexity is often a huge pain point. Even though several tools exist for the continuous integration part of a monolithic application, continuous deployment is a different matter completely which forced a lot of companies to create their own custom in-house scripts for taking care of deployment.
+Pipeline size and complexity is often a huge pain point. Even though several tools exist for the continuous integration part of a monolithic application, continuous deployment being a different matter completely, forced a lot of companies to create their own custom in-house scripts to take care of deployment.
 
 ## Scalability issues with microservice pipelines
 
@@ -43,7 +43,7 @@ caption="Number of pipelines is exploding"
 max-width="80%" 
 %}
 
-This sudden explosion in numbers prohibits working manually with pipelines anymore. Several CI solutions are not even prepared to work with such a high number of pipelines.
+This sudden explosion in numbers prohibits working manually with pipelines anymore. Several CI solutions do not have the capacity to work with such a high number of pipelines.
 
 **Here is where we reach the biggest pitfall regarding pipeline management in the era of microservices**. Several companies tried to solve the problem of microservice pipelines using shared pipeline segments.
 
@@ -58,14 +58,14 @@ max-width="80%"
 
 In theory, this sounds like a good idea:
 
-1. Operators are locating the common parts of pipelines with applications
-1. A shared pipeline segment registry is created that holds all those common parts
+1. Operators locate the common parts of pipelines with applications
+1. A shared pipeline segment registry is created to hold all those common parts
 1. Pipelines in existing projects are re-engineered to depend on the common segments
 1. New projects must first examine the library of common pipeline segments and choose what is already there
 
-The final result is that a single pipeline is actually composed of two types of steps, those common to other pipelines and those that are specific to that project only.
+The final result is that a single pipeline is actually composed of two types of steps, those common to other pipelines, and those that are specific to that project only.
 
-This has lead to the development of several solutions which attempt to centralized common pipeline parts and re-use them in the form of “libraries” within software projects. The issue here is that this approach requires a very large time investment as well as a disciplined team that can communicate and cooperates on the following factors:
+This has lead to the development of several solutions which attempt to centralize common pipeline parts and re-use them in the form of “libraries” within software projects. The issue here is that this approach requires a very large time investment as well as a disciplined team that can communicate and cooperates on the following factors:
 
 1. Detecting which pipeline segments are indeed common,
 1. Keeping the library of common pipeline segments up-to-date,
@@ -75,11 +75,11 @@ This has lead to the development of several solutions which attempt to centraliz
 
 Unfortunately, in practice, as the number of microservice applications grows, teams find it very hard to keep all these principles in mind when creating new projects.
 
-## Reusing pipelines for Microservice applications
+## Reusing pipelines for microservice applications
 
 Codefresh is the first CI/CD solution for microservices and containers. Because we are not burdened with any legacy decisions, we are free to define a new model for Codefresh pipelines which is focused on microservices.
 
-The basic idea is that all microservices of a single application have almost always the same life- cycle. They are compiled, packaged and deployed in a similar manner. Once this realization is in place we can see that instead of having multiple pipelines for each microservice (where each one is tied to a GIT repository), we have instead a single pipeline shared by all microservices.
+The basic idea is that all microservices of a single application have almost always the same lifecycle. They are compiled, packaged, and deployed in a similar manner. Once this realization is in place, we can see that instead of having multiple pipelines for each microservice, where each one is tied to a Git repository, we have instead a single pipeline shared by all microservices.
 
 {% include image.html 
 lightbox="true" 
@@ -94,7 +94,7 @@ The impact of this design cannot be understated. First of all, it should be clea
 
 This makes pipeline construction very simple.
 
-The biggest advantage, however, is the way new projects are created. When a new microservice is added in an application, the pipeline is already there and only a new trigger is added for that microservice. Notice that the pipeline is not connected to any specific git repository anymore. All information for a repository is coming from the git trigger that started this pipeline.
+The biggest advantage, however, is the way new projects are created. When a new microservice is added in an application, the pipeline is already there and only a new trigger is added for that microservice. Notice that the pipeline is not connected to any specific Git repository anymore. All information for a repository is coming from the git trigger that started this pipeline.
 
 As an operator you can bootstrap a new project by quickly adding a new trigger on an existing pipeline:
 
@@ -111,14 +111,14 @@ This is the fastest way possible to bootstrap a new project. As the number of mi
 
 ## Creating reusable pipelines
 
-When working with microservices you need to remember that
+When working with microservices you need to remember that:
 
-1. In Codefresh a pipeline can stand on its own. It is **not** connected by default to any git repository.
+1. In Codefresh a pipeline can stand on its own. It is **not** connected by default to any Git repository.
 1. You can write Codefresh pipelines in a generic manner so that they can work with multiple applications.
-1. If you connect multiple triggers to a single pipeline, all microservices will share that pipeline
+1. If you connect multiple triggers to a single pipeline, all microservices will share that pipeline.
 1. You can create multiple pipelines for each project if you have microservices with slightly different architecture.
 
-To create a reusable pipeline use the [generic form of the clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/):
+To create a reusable pipeline use the [generic form of the clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/):
 
  `codefresh.yml`
 {% highlight yaml %}
@@ -140,7 +140,7 @@ steps:
 {% endraw %}
 {% endhighlight %}  
 
-This pipeline is using variables in the clone step. These variables will automatically be filled by the [respective trigger]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/). So you can connect this pipeline to any number of Java repositories and it will work on all of them (assuming they use Maven.)
+This pipeline uses variables in the clone step. These variables are automatically populated by the [respective trigger]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/). So you can connect this pipeline to any number of Java repositories and it will work on all of them (assuming they use Maven).
 
 {% include image.html 
 lightbox="true" 
@@ -168,9 +168,9 @@ You can follow the same pattern for any other kind of application (NodeJS, Pytho
 
 ## Adding a new microservice to an existing application
 
-As an example, let's say that you have an application with 5 microservices. Two of them use Java and 3 use NodeJs. You can easily create 2 pipelines for the whole application (one for each programming language).
+As an example, let's say that you have an application with five microservices. Two of them use Java and three use NodeJs. You can easily create two pipelines for the whole application, one for each programming language.
 
-However, if you take advantage of [multi-stage Docker builds]({{site.baseurl}}/docs/ci-cd-guides/building-docker-images/#production-ready-docker-images-with-multi-stage-builds) you could even have a single pipeline for all 5 services:
+However, if you take advantage of [multistage Docker builds]({{site.baseurl}}/docs/ci-cd-guides/building-docker-images/#production-ready-docker-images-with-multi-stage-builds), you could even have a single pipeline for all five services:
 
  `codefresh.yml`
 {% highlight yaml %}
@@ -202,14 +202,14 @@ steps:
 {% endraw %}
 {% endhighlight %}  
 
-This pipeline 
+This pipeline: 
 
 1. Checks out source code from any connected trigger
-1. Creates a Docker image (assumes a multi-stage Dockerfile)
+1. Creates a Docker image (assumes a multistage Dockerfile)
 1. Deploys the image to a Kubernetes cluster
 
 
-Now, if you add another microservice to the application you can simply add a new trigger making the addition as easy as possible:
+Now, if you add another microservice to the application, you can simply add a new trigger making the addition as easy as possible:
 
 {% include image.html 
 lightbox="true" 
@@ -223,12 +223,11 @@ max-width="80%"
 This is just an example pipeline. You might have another generic pipeline for Helm deployments, FTP uploads, VM images and so on.
 
 
-## What to read next
-
-* [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
-* [Git triggers]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/)
-* [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
-* [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
+## Related articles
+[Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
+[Git triggers in pipelines]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/)  
+[Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
 
 
 

@@ -3,42 +3,38 @@
 .bd-masthead {
   position: relative;
   padding: 1rem ($grid-gutter-width / 2);
-  background: $cf-dark;
+  background: #2a2b3d;
 
   h1 {
     line-height: 1;
   }
 
   .cf-badge-doc {
-    color: $cf-dark-alt;
-    background: $cf-light;
+    color: #5fffbf;
+    text-transform: none !important;
+    vertical-align: middle;
   }
 
   .btn {
-    padding: .75rem 1.5rem;
+    padding: .5rem 1rem;
     font-size: .875rem;
     font-weight: 700;
     line-height: 1;
     text-align: center;
-    border-radius: .25rem;
-    box-shadow: 0 3px 12px rgba(#000, .3);
-    transition: .2s ease;
-
-    &:hover {
-      box-shadow: 0 3px 12px rgba($bd-topaz-main, .4);
-    }
+    border-radius: 4px;
   }
+
 
   .btn-primary {
     color: $white;
-    background-color: $bd-topaz-main;
-    border-color: $bd-topaz-main;
+    background-color: #35384b;
+    border-color: #35384b;
   }
 
   .btn-secondary {
-    color: $bd-topaz-main;
-    background-color: $white;
-    border-color: $white;
+    color: #5fffbf;
+    background-color: #2a2b3d;
+    border: 1px solid #5fffbf;
   }
 
   .carbonad {

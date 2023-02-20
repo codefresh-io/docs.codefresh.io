@@ -3,10 +3,12 @@ title: "Using multi-git triggers"
 description: "Pinning codefresh.yml to a specific branch"
 group: troubleshooting
 sub_group: common-issues
+redirect_from:
+  - /docs/troubleshooting/common-issues/multi-git-triggers/
 toc: true
 ---
 
-Codefresh has the capability to store the [pipeline definition]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#using-a-codefreshyml-for-the-source-code-repository) in the same git repository as the source code.
+Codefresh has the capability to store the [pipeline definition]({{site.baseurl}}/docs/pipelines/pipelines/#loading-codefreshyml-from-version-control) in the same Git repository as the source code.
 
 
 {% include 
@@ -30,13 +32,13 @@ Sometimes however, you want a pipeline to be triggered by another git repository
 1. Repository A contains a deployment pipeline with associated `codefresh.yml`.
 1. Repository B is creating binary artifacts that are deployed by pipeline A.
 
-In those cases, Codefresh supports adding [multiple git triggers]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/) on the same pipeline. This way pipeline A will be triggered by commits to both repository A and repository B. Notice however that the `codefresh.yml` file used will still be fetched as mentioned in the webhook.
+In those cases, Codefresh supports adding [multiple git triggers]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/) on the same pipeline. This way pipeline A will be triggered by commits to both repository A and repository B. Notice however that the `codefresh.yml` file used will still be fetched as mentioned in the webhook.
 
 This creates issues with pipeline definitions because repository B might not have a `codefresh.yml` at all, or it might have the wrong one in the branch that actually created the webhook. Another bad scenario is when the branch mentioned in the webhook from repository B does not even exist in repository A.
 
 To solve this issue, you can pin down the branch that will be used for the source of `codefresh.yml`. In the example above, you can specify that no matter the branch of repository B that triggered the commit, the pipeline should only use the `master` branch of pipeline A regardless of what is mentioned in the webhook.
 
-To perform this pinning you need to use the [Codefresh CLI](https://codefresh-io.github.io/cli/installation/) and [setup authentication](https://codefresh-io.github.io/cli/getting-started/) with your Codefresh account.
+To perform this pinning you need to use the [Codefresh CLI](https://codefresh-io.github.io/cli/installation/){:target="\_blank"} and [set up authentication](https://codefresh-io.github.io/cli/getting-started/){:target="\_blank"} with your Codefresh account.
 
 Once this is done check that your account is locally accessible by running
 
@@ -90,7 +92,7 @@ You should get a message that your pipeline is updated. This concludes the setup
 All pipelines in Codefresh that are connected to a git repository have an automatic git clone step defined for them. 
 This clone step will also fetch the code from the branch mentioned in the webhook.
 
-To override this default behavior as well and force a specific branch, you can use a [custom clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) like this:
+To override this default behavior as well and force a specific branch, you can use a [custom clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/) like this:
 
 
 {% highlight yaml %}
@@ -106,11 +108,10 @@ main_clone:
 
 In the example above we have forced the git checkout to happen out of the master branch, regardless of the branch mentioned in the webhook.
 
-## What to read next
-
-* [Git triggers]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/)
-* [Git clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)
-* [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
+## Related articles
+[Troubleshooting common issues]({{site.baseurl}}/docs/troubleshooting/common-issues)  
+[Git triggers]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/)  
+[Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 
 
 

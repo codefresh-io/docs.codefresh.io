@@ -1,16 +1,16 @@
 ---
-title: "Security Scanning"
-description: "How to scan for vulnerabilities with Codefresh pipelines"
+title: "Security scanning"
+description: "Scan for vulnerabilities with Codefresh pipelines"
 group: testing
 toc: true
 ---
 
 Codefresh can integrate with any security scanning platform that scans source code or Docker images for vulnerabilities.
 
-The integration can happen via a [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) as long as the scanning solution offers any of :
+The integration can happen via a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/) as long as the scanning solution offers any of the following:
 
 * A Docker image with the scanner
-* A CLI (that can be packaged in a Docker image)
+* A CLI that can be packaged in a Docker image
 * An API
 
 Since all security solutions offer an API, Codefresh can essentially use any scanning solution via that interface.
@@ -20,25 +20,28 @@ Since all security solutions offer an API, Codefresh can essentially use any sca
 
 Codefresh already offers Docker images for the following security platforms:
 
-1. [Anchore](https://codefresh.io/steps/step/anchore)
-1. [Aqua Security](https://codefresh.io/steps/step/aqua)
-1. [Clair](https://codefresh.io/steps/step/paclair)
-1. [Twistlock](https://codefresh.io/steps/step/twistlock)
-1. [WhiteSource](https://codefresh.io/steps/step/whitesource)
+* [Anchore](https://codefresh.io/steps/step/anchore){:target="\_blank"}
+* [Aqua Security](https://codefresh.io/steps/step/aqua){:target="\_blank"}
+* [Clair](https://codefresh.io/steps/step/paclair){:target="\_blank"}
+* [Twistlock](https://codefresh.io/steps/step/twistlock){:target="\_blank"}
+* [WhiteSource](https://codefresh.io/steps/step/whitesource){:target="\_blank"}
 
-You can find more integrations as they are being added in the [plugin directory](https://codefresh.io/steps/).
+You can find more integrations as they are added in the [plugin directory](https://codefresh.io/steps/){:target="\_blank"}.
 
 
 ## Security scanning strategies
 
-Because you can insert a scanning step anywhere in your pipeline, you have great flexibility on when a security scan is happening. Common strategies are:
-
-1. Scanning the source code before being packaged in a Container
-1. Scanning a container before it is being stored to a registry
+Because you can insert a scanning step anywhere in your pipeline, you have great flexibility on when to start a security scan.  
+Common strategies are:
+1. Scanning the source code before being packaged in a container
+1. Scanning a container before being stored in a registry
 1. Scanning a container before being deployed to production
-1. A Combination of the above
+1. A combination of the above
 
-Here is an example pipeline that scans a Docker image with [Aqua](https://www.aquasec.com/) after being pushed to the [default Docker registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/#the-default-registry) but before being promoted to the [external Azure Registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/azure-docker-registry/).
+
+Here is an example pipeline that scans a Docker image:  
+* With [Aqua](https://www.aquasec.com/){:target="\_blank"} after being pushed to the [default Docker registry]({{site.baseurl}}/docs/integrations/docker-registries/#default-registry).
+* Before it is promoted to the [external Azure Registry]({{site.baseurl}}/docs/docker-registries/azure-docker-registry/).
 
 {% include image.html 
 lightbox="true" 
@@ -50,7 +53,7 @@ max-width="100%"
 %}
 
 
-This is the full pipeline definition:
+Here's the full pipeline definition:
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -122,12 +125,12 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-The security scanning step is inserted after building the Docker image but before promoting the image to the Azure Docker registry.
+The security scanning step is inserted after building the Docker image, but before promoting the image to the Azure Docker registry.
 
 
-## Viewing Security reports
+## Viewing security reports
 
-The easiest way to view security reports is to visit the portal/dashboard of the security platform that you are using
+The easiest way to view security reports is to visit the portal/dashboard of the security platform that you are using.
 
 {% include image.html 
 lightbox="true" 
@@ -138,7 +141,7 @@ caption="Snyk Security Analysis"
 max-width="60%" 
 %}
 
-It is also possible however to attach Analysis Reports on Codefresh builds by using the [test reporting feature]({{site.baseurl}}/docs/testing/test-reports/).
+You can also attach Analysis Reports to Codefresh builds using the [test reporting feature]({{site.baseurl}}/docs/testing/test-reports/).
 
 {% highlight yaml %}
 {% raw %}
@@ -151,8 +154,7 @@ It is also possible however to attach Analysis Reports on Codefresh builds by us
 {% endraw %}
 {% endhighlight %}
 
-Here we attach the Clair Scan report to the build that created. 
-
+In this example, we attach the Clair Scan report to the build created:
 
 {% include image.html 
 lightbox="true" 
@@ -163,7 +165,7 @@ caption="Attaching scanning results to a build"
 max-width="100%" 
 %}
 
-You can then click on the *Test Report* button and view the full report:
+To view the full report, click **Test Report**:
 
 {% include image.html 
 lightbox="true" 
@@ -177,7 +179,7 @@ max-width="60%"
 
 ## Security annotations
 
-Security scan results are also a perfect candidate for adding [extra metadata]({{site.baseurl}}/docs/docker-registries/metadata-annotations/) to your Docker images.
+Security scan results are also a perfect candidate for [extra metadata]({{site.baseurl}}/docs/pipelines/docker-image-metadata/) to add to your Docker images.
 
 {% include image.html 
 lightbox="true" 
@@ -188,11 +190,10 @@ caption="Security annotations"
 max-width="80%" 
 %}
 
-You can add any metadata such as the number of issues for each category or even the URL the full report. This allows you easily correlate docker images in Codefresh and security results of your scanning platform.
+You can add any metadata such as the number of issues for each category or even the URL the full report. This allows you to easily correlate docker images in Codefresh and security results of your scanning platform.
 
-## What to read next
-
-* [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
-* [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
-* [Test reporting]({{site.baseurl}}/docs/testing/test-reports/)
-* [Advanced workflows]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/)
+## Related articles
+[Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
+[Creating test reports]({{site.baseurl}}/docs/testing/test-reports/)  
+[Advanced workflows in pipelines]({{site.baseurl}}/docs/pipelines/advanced-workflows/)  

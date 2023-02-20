@@ -1,6 +1,6 @@
 ---
-title: "Datadog integration"
-description: "Integrate Codefresh with Datadog for monitoring and analysis"
+title: "Datadog pipeline integration"
+description: "Integrate Codefresh pipelines with Datadog for monitoring and analysis"
 group: integrations
 toc: true
 ---
@@ -33,13 +33,13 @@ alt="Getting an API Key from your Datadog account"
 {:start="3"}
 1. Copy the API key to use with your Codefresh integration.
 
-## Configure integration settings for Datadog in Codefresh
+## Set up Datadog integration in Codefresh
 
 Configure the integration settings for Datadog within Codefresh.
 
-1. In the Codefresh UI, go to [Integrations](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipeline Integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
 1. Select **Datadog**, and then **Configure**.
-1. Mouse over **datadog** and select **Edit**.
+1. Click **Add Integration**.
   
   {% include image.html 
 lightbox="true" 
@@ -51,19 +51,20 @@ alt="Datadog configuration settings"
 %}
 
 {:start="4"}
-1. Configure the following:
+1. Define the following:
   * **Datadog site**: Select the site with your data. If you are not sure which Datadog site to select, select the _View documentation_ link below the field, and read Datadog's official documentation. 
   * **Token**: The API token you copied from your Datadog account. 
-1. Select **Save**.
+1. To verify the connection details, click **Test Connection**.
+1. To apply the changes, click **Save**.
 
 
 ## Pipeline data from Codefresh in Datadog
 See pipeline data in Datadog's CI Visibility interface.  
 
-We have highlighted the main  in Datadog for Codefresh pipelines. For detailed descriptions and options, see [Datadog documentation on Exploring Pipelines](https://docs.datadoghq.com/continuous_integration/explore_pipelines/){:target="\_blank"}.  
+We have highlighted the main features in Datadog for Codefresh pipelines. For detailed descriptions and options, see [Datadog documentation on Exploring Pipelines](https://docs.datadoghq.com/continuous_integration/explore_pipelines/){:target="\_blank"}.  
 
 
-**Pipelines page in Datadog**  
+### Pipelines page in Datadog 
 
 The Pipelines page shows aggregated data for each pipeline, for the selected time range.  You can see the failure rate and average build duration against the total number of executions of a pipeline, alongside the metrics from the most recent build of the same pipeline.  
 
@@ -78,7 +79,7 @@ caption="Pipelines page in Datadog with Codefresh pipelines"
 alt="Pipelines page in Datadog with Codefresh pipelines"
 %}
 
-**Pipeline Details page in Datadog**  
+### Pipeline Details page in Datadog
 
 Selecting a pipeline takes you to the Pipeline Details page in Datadog which provides in-depth data for the pipeline. 
 Here you can see the failure rate and average build duration for the selected pipeline, and data on its branches, and jobs (referred to as steps in Codefresh). 
@@ -96,7 +97,7 @@ caption="Drilldown view for selected pipeline in Datadog Pipeline Details page"
 alt="Drilldown view for selected pipeline in Datadog Pipeline Details page"
 %}
 
-**Pipeline Executions page in Datadog**  
+### Pipeline Executions page in Datadog 
 
 The Pipeline Executions page shows day-by-day execution data for the selected pipeline or pipelines.  
 
@@ -112,7 +113,7 @@ caption="Execution timeline view in Datadog Pipeline Executions page"
 alt="Execution timeline view in Datadog Pipeline Executions page"
 %}
 
-**Pipeline Dashboards page in Datadog**  
+### Pipeline Dashboards page in Datadog 
 
 Pipeline Dashboards is your go-to location for a quick look at performance and step metrics across pipelines. You can customize the widgets in the dashboard to display the data that is of interest to you.
 
@@ -127,3 +128,6 @@ max-width="30%"
 caption="Pipelines Dashboards page in Datadog"
 alt="Pipelines Dashboards in Datadog"
 %}
+
+## Related articles
+[Integration Tests]({{site.baseurl}}/docs/testing/integration-tests/)  
