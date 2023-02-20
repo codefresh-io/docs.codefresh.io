@@ -304,18 +304,18 @@
   }
 }
 
-.bd-title {
-  margin-top: 1rem;
-  margin-bottom: .5rem;
-  font-family: $headings-font-family;
-  font-size: 2rem;
-  font-weight: 700;
-  line-height: 1.1;
-
-  @include media-breakpoint-up(lg) {
-    font-size: 3rem;
-  }
-}
+//.bd-title {
+//  margin-top: 1rem;
+//  margin-bottom: .5rem;
+//  font-family: $headings-font-family;
+//  font-size: 2rem;
+//  font-weight: 700;
+//  line-height: 1.1;
+//
+//  @include media-breakpoint-up(lg) {
+//    font-size: 3rem;
+//  }
+//}
 
 .bd-lead {
   font-size: 1.125rem;
