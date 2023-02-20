@@ -37,7 +37,6 @@ All the IPs are NAT gateways, and need to enable specific IPs instead of ranges.
 - 44.228.66.171
 - 44.238.167.159
 - 44.237.63.217
-- 44.237.63.217
 - 52.6.148.44
 - 52.73.90.9
 - 52.72.0.154
