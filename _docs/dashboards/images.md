@@ -6,19 +6,23 @@ sub_group: gitops
 toc: true
 ---
 
+Images from connected registries are displayed in a 
 
-## Images dashboard 
+
+## Access the Images dashboard 
+
+There are several ways to get to the 
 
 * In the Codefresh UI, from Artifacts in the sidebar, select [Images](https://g.codefresh.io/2.0/images){:target="\_blank"}.
 
-Image views are layered to show three levels of data: 
+Image views to show three levels of data: 
 
 1. Repository and application deployment
 1. Tags
 1. Summary with metadata and binary information 
 
-### Filters for Image views
-As with any resource in Codefresh, the Image dashboard  support filters that allow you focus on the data that's important to you.
+## Filters for Image views
+As with any resource in Codefresh, the Images dashboard supports filters that allow you focus on the data that's important to you.
 Most image filters support multi-selection.  Unless otherwise indicated, the filters are common to all view levels.
 
 {: .table .table-bordered .table-hover}
@@ -34,27 +38,29 @@ Most image filters support multi-selection.  Unless otherwise indicated, the fil
 
 
 
-### Image repository and deployment view
-The default view for image resources shows repository and deployment information.
+## Image main view: deployment and repo information
+The main view of the Images dashboard display high-level deployment, repository, and registry information. 
+
 
 {% include 
    image.html 
    lightbox="true" 
    file="/images/image/application-level.png" 
    url="/images/image/application-level.png" 
-   alt="Repository & deployment info for Images in Codefresh" 
-   caption="Repository & deployment info for Images in Codefresh"
-   max-width="30%" 
+   alt="Main view for Images in Codefresh" 
+   caption="Main view for Images in Codefresh"
+   max-width="60%" 
    %}
 
-{: .table .table-bordered .table-hover}
-|  Legend          |  Description|  
-| --------------   | --------------           |  
-| **1**            | The name of the image.   |                            
-| **2**            | The applications in which the image is currently deployed. Select the application to go to the GitOps Apps dashboard.|  
-| **3**            | The details on the most recent commit associated with the image. Select the commit to view the changes in the Git repository.|
-| **4**            | Binary information on the image.|
-| **5**            | The registry to which the image is pushed, and from which it is distributed.|
+ 
+For each image, you can see:
+* The name of the image. Clicking the image name 
+* The application or list of applications in which the image is currently deployed. Clicking an application takes you to the GitOps Apps dashboard with detailed information on the application.| 
+* Binary information from Git, including the most recent commit, creation date, size, and tag. 
+* The registry to which the image is pushed, and from which it is distributed.
+
+The Currently Deployed stamp on the right shows the number of applications in which the image is deployed.
+
                      
 ## Image tag view
 Drilldown on the repository shows tag information for the image.
@@ -78,9 +84,10 @@ Drilldown on the repository shows tag information for the image.
 | **5**                | The OS and architecture in which the image was created. The date and time of the most recent update is in the local time zone|       
 | **6**                | Additional information on the image. To view the Summary, select **more details**.|
 
-##  Image summary view
-The Summary view shows metadata for the image. 
-Selecting **more details** for an image tag.
+##  Image Summary 
+The Summary view summarizes the metadata for the image. 
+
+
 
 {% include 
    image.html 
@@ -92,14 +99,16 @@ Selecting **more details** for an image tag.
    max-width="30%" 
    %}
 
-{: .table .table-bordered .table-hover}
-|  Legend          |  Description|  
-| --------------   | --------------           |  
-| **1**            | The bugs or fix requests opened and being worked on for this image tag. |                            
-| **2**            | The pull request or requests pending commit.|  
-| **3**            | The Git details for this image tag, such as the Git hash, the Jira issue number, Git Pull Request, commit information, the name of the user who performed the commit. |       
-| **4**            | The workflow for the image step. Select to go to the Workflow.| 
-| **5**             | The log information for the build image step in the relevant workflow. Select to view Logs panel. |
+
+* **Image info**:  The image name, registry, OS architecture, and last update.                          
+* **Applications** : |  
+* **Build Info**: The size of the image, and the Argo Workflow for the image step. Click the link to go to the Argo Workflow.
+**Issues**: The Jira issue number and the committer, enriched with the commit message and its status.
+**Git**: The Git details for this image tag, such as repo, branch, commit message, committer(s) and Pull Request information.
+**Annotations**: Annotations if any assigned to the image.
+
+##  Image Dockerfile 
+The Dockerfiles  view summarizes the metadata for the image. 
 
 ## Related articles
 [Creating GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application)  
