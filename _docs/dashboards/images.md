@@ -11,15 +11,18 @@ Images from connected registries are displayed in a
 
 ## Access the Images dashboard 
 
-There are several ways to get to the 
 
 * In the Codefresh UI, from Artifacts in the sidebar, select [Images](https://g.codefresh.io/2.0/images){:target="\_blank"}.
 
-Image views to show three levels of data: 
+
+
+Image views to show multiple levels of data: 
 
 1. Repository and application deployment
 1. Tags
 1. Summary with metadata and binary information 
+1. Dockerfile info
+1. Layers
 
 ## Filters for Image views
 As with any resource in Codefresh, the Images dashboard supports filters that allow you focus on the data that's important to you.
@@ -30,25 +33,26 @@ Most image filters support multi-selection.  Unless otherwise indicated, the fil
 | --------------   | --------------           |  
 | **Repository Names** | The Git repository or repositories that contain the image.  |                            
 | **Tag**              | The tag by which to filter. |  
-| **Registry Types**   | The registry which stores your image. To filter by registries that are not listed, select **Other types**.|
-| **Git branch**       | The Git branch to which the image is pushed.|
-| **Git repositories** | The Git provider you use.|      
+| **Registry Types**   | The registry which stores your image. To filter by registries that are not listed, select **Other types**.|   
 | **Deployed in application**| The application or applications in which the image is currently deployed.|
+| **Currently Deployed**| When enabled, displays only images that are currently deployed in applications. |
 | **Sorted by** | List images by **Name**, or by the most recent update, **Last update**.
+| **Git branch**       | Available in **More filters**. The Git branch to which the image is pushed.|
+| **Git repositories** | Available in **More filters**. The Git provider you use.|   
 
-
+Currently Deployed
 
 ## Image main view: deployment and repo information
-The main view of the Images dashboard display high-level deployment, repository, and registry information. 
+The main view of the Images dashboard displays high-level deployment, repository, and registry information. 
 
 
 {% include 
    image.html 
    lightbox="true" 
-   file="/images/image/application-level.png" 
-   url="/images/image/application-level.png" 
-   alt="Main view for Images in Codefresh" 
-   caption="Main view for Images in Codefresh"
+   file="/images/image/images-main-view.png" 
+   url="/images/image/images-main-view.png" 
+   alt="Images in Codefresh" 
+   caption="Images in Codefresh"
    max-width="60%" 
    %}
 
@@ -63,26 +67,27 @@ The Currently Deployed stamp on the right shows the number of applications in wh
 
                      
 ## Image tag view
-Drilldown on the repository shows tag information for the image.
+Drilldown on the repository shows all the tags created for the image.
 {% include 
    image.html 
    lightbox="true" 
-   file="/images/image/tag-view.png" 
-   url="/images/image/tag-view.png" 
-   alt="Tag info for Images in Codefresh" 
-   caption="Tag info for Images in Codefresh"
-   max-width="30%" 
+   file="/images/image/image-drill-down-view.png" 
+   url="/images/image/image-drill-down-view.png" 
+   alt="Image tag info" 
+   caption="Image tag info"
+   max-width="60%" 
    %}
 
-{: .table .table-bordered .table-hover}
-|  Legend          |  Description|  
-| --------------   | --------------           |  
-| **1**                | The image tag.   |                            
-| **2**                | The comment describing the commit or change, with the name of the Git provider and the corresponding PR. To view details of the commit changes in the Git repository, select the commit text.|  
-| **3**                | The hash of the Docker image, generated as sha256. A change in the digest indicates that something has changed in the image.|
-| **4**                | The registry to which the image is pushed (stored), and from which it is distributed.|
-| **5**                | The OS and architecture in which the image was created. The date and time of the most recent update is in the local time zone|       
-| **6**                | Additional information on the image. To view the Summary, select **more details**.|
+Each row displays information on the tag:
+                            
+* The comment describing the commit or change, with the name of the Git provider and the corresponding PR. To view details of the commit changes in the Git repository, select the commit text.|  
+* The hash of the Docker image, generated as sha256. A change in the digest indicates that something has changed in the image.|
+* The registry to which the image is pushed, and from which it is distributed.|
+* The OS and architecture in which the image was created. The date and time of the most recent update is in the local time zone|       
+* The date and time of the most recent update.
+* The size of the tag.
+
+> For Summary, Dockerfile, and Layer information on a tag, click **more details**.
 
 ##  Image Summary 
 The Summary view summarizes the metadata for the image. 
@@ -92,26 +97,47 @@ The Summary view summarizes the metadata for the image.
 {% include 
    image.html 
    lightbox="true" 
-   file="/images/image/summary-view.png" 
-   url="/images/image/summary-view.png" 
-   alt="Summary info for Images in Codefresh" 
-   caption="Summary info for Images in Codefresh"
-   max-width="30%" 
+   file="/images/image/images-summary-tab.png" 
+   url="/images/image/images-summary-tab.png" 
+   alt="Image Summary tab" 
+   caption="Image Summary tab"
+   max-width="60%" 
    %}
 
 
 * **Image info**:  The image name, registry, OS architecture, and last update.                          
-* **Applications** : |  
+* **Applications** : The application or applications in which the image is deployed. 
 * **Build Info**: The size of the image, and the Argo Workflow for the image step. Click the link to go to the Argo Workflow.
-**Issues**: The Jira issue number and the committer, enriched with the commit message and its status.
-**Git**: The Git details for this image tag, such as repo, branch, commit message, committer(s) and Pull Request information.
-**Annotations**: Annotations if any assigned to the image.
+* **Issues**: The Jira issue number and the committer, enriched with the commit message and its status.
+* **Git**: The Git details for this image tag, such as repo, branch, commit message, committer(s) and Pull Request information.
+* **Annotations**: Annotations if any assigned to the image.
 
 ##  Image Dockerfile 
-The Dockerfiles  view summarizes the metadata for the image. 
 
-## Related articles
-[Creating GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application)  
-[Managing GitOps applications]({{site.baseurl}}/docs/deployments/gitops/manage-application)  
+
+{% include 
+   image.html 
+   lightbox="true" 
+   file="/images/image/images-dockerfile-tab.png" 
+   url="/images/image/images-dockerfile-tab.png" 
+   alt="Image Dockerfile tab" 
+   caption="Image Dockerfile tab"
+   max-width="60%" 
+   %}
+ 
+##  Image Layers
+
+
+{% include 
+   image.html 
+   lightbox="true" 
+   file="/images/image/images-layers-tab.png" 
+   url="/images/image/images-layers-tab.png" 
+   alt="Image Layers tab" 
+   caption="Image Layers tab"
+   max-width="60%" 
+   %}
+
+## Related articles 
 [Image enrichment for GitOps with integrations]({{site.baseurl}}/docs/ci-cd-guides/image-enrichment/)  
 [GitOps Overview dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/)  
