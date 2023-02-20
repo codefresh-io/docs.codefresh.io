@@ -15,33 +15,34 @@ h1, h2, h3, h4, h5, h6,
 h1,
 .h1 {
   font-size: $h1-font-size;
+  font-weight: $font-weight-bold;
   line-height: $h1-line-height;
 }
 
 h2,
 .h2 {
   font-size: $h2-font-size;
+  font-weight: $font-weight-medium;
   line-height: $h2-line-height;
-
-  //@include media-breakpoint-up(lg) {
-  //  font-size: 2rem;
-  //}
 }
 
 h3,
 .h3 {
   font-size: $h3-font-size;
+  font-weight: $font-weight-normal;
   line-height: $h3-line-height;
 }
 
 h4,
 .h4 {
   font-size: $h4-font-size;
+  font-weight: $font-weight-bold;
   line-height: $h4-line-height;
 }
 
 h5,
 .h5 {
   font-size: $h5-font-size;
+  font-weight: $font-weight-medium;
   line-height: $h5-line-height;
 }
