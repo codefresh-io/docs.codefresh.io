@@ -29,7 +29,7 @@ Codefresh supports OAuth2 or personal access tokens (PATs) for authentication:
   To use a custom Oauth2 Application for Codefresh, first create the application in your Git provider account, then create a secret on your K8s cluster, and finally configure OAuth2 access for the custom application in Authentication > Settings. See [Create a custom OAuth2 Application for Git provider](#create-a-custom-oauth2-application-for-git-provider) in this article.
 
 * Token-based authentication using PAT  
-  With token-based authentication, users must generate personal access tokens from their Git providers with the required scopes and enter their personal access tokens when prompted to authorize access. See [Authorize Git access in Codefresh]({{site.baseurl}}/docs/administration/user-self-management/user-settings/#authorize-git-access-in-codefresh).
+  With token-based authentication, users must generate personal access tokens from their Git providers with the required scopes and enter their personal access tokens when prompted to authorize access. See [Authorize Git access in Codefresh]({{site.baseurl}}/docs/administration/user-self-management/user-settings/#git-provider-private-access).
 
 
 
