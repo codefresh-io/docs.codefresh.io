@@ -160,7 +160,7 @@
     - title: Shared configuration
       localurl: /docs/pipelines/configuration/shared-configuration/
     - title: Using secrets
-      localurl: /docs/pipelines//configuration/secrets-store/
+      localurl: /docs/pipelines/configuration/secrets-store/
     - title: Caching in pipelines
       localurl: /docs/pipelines/pipeline-caching/
     - title: Running pipelines locally
