@@ -482,18 +482,19 @@ global:
 
 #### Manual backup and restore
 
+
 **Before the upgrade:**
 
-1.Obtain the PostgresSQL administrator password:
+1. Obtain the PostgresSQL administrator password:
 ```shell
 NAMESPACE=codefresh
 export PGPASSWORD=$(kubectl get secret --namespace $NAMESPACE cf-postgresql -o jsonpath="{.data.postgres-password}" | base64 --decode)
 ```
-1.Forward the PostgreSQL service port and place the process in the background:
+1. Forward the PostgreSQL service port and place the process in the background:
 ```shell
 kubectl port-forward --namespace $NAMESPACE svc/cf-postgresql 5432:5432 &
 ```
-1.Create a directory for the backup files and make it the current working directory:
+1. Create a directory for the backup files and make it the current working directory:
 ```shell
 mkdir psqlbackup
 chmod o+w psqlbackup
