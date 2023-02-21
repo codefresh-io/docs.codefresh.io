@@ -471,6 +471,12 @@ From version **1.4.0 and higher**, we have deprecated support for the `Codefresh
 
 > If you run [**external** Postgresql service]({{site.baseurl}}/docs/administration/codefresh-on-prem/#configuring-an-external-postgres-database) (i.e. `postgresql.enabled=false` is specified in `config.yaml`), you can skip the following instruction.
 
+> **Important!** Run the upgrade with `global.seedJobs=true` flag:
+```yaml
+global:
+  seedJobs: true
+```
+
 ##### Manual backup and restore
 
 **Before the upgrade:**
@@ -546,6 +552,12 @@ postgresql:
 From version **1.4.0 and higher**, we have deprecated support for the `Codefresh-managed MongoDB` chart. Bitnami public `bitnami/mongodb` chart has replaced the `Codefresh-managed MongoDB`. For more information, see [bitnami/mongodb](https://github.com/bitnami/charts/tree/master/bitnami/mongodb).
 
 > If you run [**external** MongoDB service]({{site.baseurl}}/docs/administration/codefresh-on-prem/#configuring-an-external-mongodb) (i.e. `mongo.enabled=false` is specified in `config.yaml`), you can skip the following instruction.
+
+> **Important!** Run the upgrade with `global.seedJobs=true` flag:
+```yaml
+global:
+  seedJobs: true
+```
 
 ##### Manual backup and restore
 
