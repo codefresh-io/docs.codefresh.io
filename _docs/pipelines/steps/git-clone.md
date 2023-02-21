@@ -6,6 +6,7 @@ sub_group: steps
 redirect_from:
   - /docs/git-clone/
   - /docs/codefresh-yaml/steps/git-clone/  
+  - /docs/troubleshooting/git-step-migration/
 toc: true
 ---
 Clones a Git repository to the filesystem.
