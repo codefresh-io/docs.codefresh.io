@@ -103,7 +103,7 @@ The first step is a [build step]({{site.baseurl}}/docs/pipelines/steps/build/) n
 
 ## Inspecting your Docker image
 
-You can see all your latest [Docker artifacts]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/#viewing-docker-images) by selecting *Images* from the left sidebar.
+You can see all your latest [Docker artifacts]({{site.baseurl}}/docs/ci-cd-guides/working-with-docker-registries/#viewing-docker-images) by selecting *Images* from the left sidebar.
 
 
 {% include image.html 

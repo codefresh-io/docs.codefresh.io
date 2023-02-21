@@ -572,7 +572,7 @@ toc: true
   - can visually see differences between releases
 - Misc:
   - UI and bug fixes.
-  - reorganized Helm docs, including samples on how package charts and push to registry: [Create Helm artifacts using Codefresh pipeline]({{site.baseurl}}/docs/new-helm/create-helm-artifacts-using-codefresh-pipeline/)
+  - reorganized Helm docs, including samples on how package charts and push to registry: [Create Helm artifacts using Codefresh pipeline]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/)
   - Pre-release of our brand new CLI at [https://github.com/codefresh-io/cli](https://github.com/codefresh-io/cli)
   - Using our new cli, you can now execute many pipelines in parallel with different configurations for each.
 
