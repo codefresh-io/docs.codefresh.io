@@ -473,6 +473,13 @@ For more information, see [bitnami/postgresql](https://github.com/bitnami/charts
 
 > If in `config.yaml`, `postgresql.enabled=false` indicating that you are running and [**external** Postgresql service]({{site.baseurl}}/docs/installation/codefresh-on-prem/#configuring-an-external-postgres-database), you can ignore the configuration instructions.
 
+> **Important!** Run the upgrade with `global.seedJobs=true` flag:
+
+```yaml
+global:
+  seedJobs: true
+```
+
 #### Manual backup and restore
 
 **Before the upgrade:**
@@ -560,9 +567,16 @@ For more information, see [bitnami/mongodb](https://github.com/bitnami/charts/tr
 
 > If in `config.yaml`, `mongo.enabled=false`, indicating that you are running an [**external** MongoDB service]({{site.baseurl}}/docs/installation/codefresh-on-prem/#configuring-an-external-mongodb), you can ignore the configuration updates.
 
+> **Important!** Run the upgrade with `global.seedJobs=true` flag:
+
+```yaml
+global:
+  seedJobs: true
+```
+
 #### Manual backup and restore
 
-**Before the upgrade:**
+**Before the upgrade:**  
 
 1. Obtain the MongoDB administrator password:
 ```shell
