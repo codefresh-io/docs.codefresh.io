@@ -4,6 +4,7 @@ description: "Types of steps in Codefresh pipelines"
 group: pipelines
 redirect_from:
   - /docs/steps/
+  - /docs/codefresh-yaml/steps/
 toc: true
 ---
 
