@@ -47,7 +47,7 @@ Freestyle steps are a secure replacement for `docker run` commands.
   **Launch test environment** steps behave similar to compositions, but they persist after the pipeline ends. This is a great way to create preview environment from your pull requests and send to colleagues.
 
 * [Deploy]({{site.baseurl}}/docs/pipelines/steps/deploy/)  
-  **Deploy steps** allow you to [perform Kubernetes deployments]({{site.baseurl}}/docs/deploy-to-kubernetes/) in a declarative manner. They embody the Continuous Deployment aspect of Codefresh.
+  **Deploy steps** allow you to [perform Kubernetes deployments]({{site.baseurl}}/docs/quick-start/ci-quick-start/deploy-to-kubernetes/) in a declarative manner. They embody the Continuous Deployment aspect of Codefresh.
 
 * [Approval]({{site.baseurl}}/docs/pipelines/steps/approval/)  
   **Approval steps** allow you to pause pipelines and wait for human intervention before resuming. They allow you to embrace the concepts of Continuous Delivery.

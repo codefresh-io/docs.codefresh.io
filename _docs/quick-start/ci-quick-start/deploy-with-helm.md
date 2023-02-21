@@ -47,11 +47,11 @@ For reasons of simplicity, we will use the [default Docker registry]({{site.base
 
 
 ## Prerequisites
-* A [Kubernetes cluster]({{site.baseurl}}/docs/integrations/kubernetes/add-kubernetes-cluster/) in Codefresh
+* A [Kubernetes cluster]({{site.baseurl}}/docs/integrations/kubernetes/#connect-a-kubernetes-cluster/) in Codefresh
 * The Docker registry you connected to your Codefresh account in the CI pipeline quick start 
 * An application that has a Dockerfile and a [Helm chart]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/#helm-setup) 
 * Cluster with pull access to your default Docker registry
-  If you are not familiar, read [Manually deploy Docker image to Kubernetes]({{site.baseurl}}/docs/quick-start/ci-quick-start/deploy-to-kubernetes/#manually-deploy-docker-image-to-kubernetes), or read about [secrets]({{site.baseurl}}/docs/deployments/kubernetes/deploy-to-kubernetes/create-image-pull-secret/) <!--- ask Kostis -->
+  If you are not familiar, read [Manually deploy Docker image to Kubernetes]({{site.baseurl}}/docs/quick-start/ci-quick-start/deploy-to-kubernetes/#manually-deploy-docker-image-to-kubernetes), or read about [secrets]({{site.baseurl}}/docs/ci-cd-guides/access-docker-registry-from-kubernetes/) <!--- ask Kostis -->
 
 If you want to follow along, feel free to fork this [repository](https://github.com/codefresh-contrib/python-flask-sample-app){:target="\_blank"} in your Git account and look at the [with-helm](https://github.com/codefresh-contrib/python-flask-sample-app/tree/with-helm){:target="\_blank"} branch.
 

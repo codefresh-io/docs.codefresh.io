@@ -41,7 +41,7 @@ Common strategies are:
 
 Here is an example pipeline that scans a Docker image:  
 * With [Aqua](https://www.aquasec.com/){:target="\_blank"} after being pushed to the [default Docker registry]({{site.baseurl}}/docs/integrations/docker-registries/#default-registry).
-* Before it is promoted to the [external Azure Registry]({{site.baseurl}}/docs/docker-registries/azure-docker-registry/).
+* Before it is promoted to the [external Azure Registry]({{site.baseurl}}/docs/integrations/docker-registries/azure-docker-registry/).
 
 {% include image.html 
 lightbox="true" 

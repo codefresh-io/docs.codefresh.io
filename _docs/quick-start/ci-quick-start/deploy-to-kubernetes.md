@@ -12,7 +12,7 @@ toc: true
 
 This quick start will guide you through deploying the Docker image you created to a Kubernetes cluster, both manually through the Codefresh UI, and automatically through a pipeline. Deploying the image through a pipeline, redeploys the image automatically when there are changes in the source code.
 
-For the quick start, we will use the Codefresh UI to create both the Kubernetes service inside the cluster and the CI/CD pipeline that keeps it up to date. <!--- In a real-world scenario, it is best if you use  [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/) which is much more powerful and flexible.  Do we need this? -->
+For the quick start, we will use the Codefresh UI to create both the Kubernetes service inside the cluster and the CI/CD pipeline that keeps it up to date. In a real-world scenario, it is best if you use  [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/) which is much more powerful and flexible.  
 
 
 At the end of Kubernetes deployment quick start, we will have a pipeline that: 
@@ -209,7 +209,7 @@ caption="Commit change to Git"
 max-width="70%" 
 %}
 
-  Codefresh automatically identifies the change and [triggers]({{site.baseurl}}/docs/pipeline/triggers/) a new build that deploys the new version:
+  Codefresh automatically identifies the change and [triggers]({{site.baseurl}}/docs/pipelines/triggers/) a new build that deploys the new version:
 
 {% include 
 image.html 

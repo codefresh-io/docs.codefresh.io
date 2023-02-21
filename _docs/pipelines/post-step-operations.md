@@ -49,7 +49,7 @@ step_name:
 
 ## Available Post-Step Operations
 
-- [Image Metadata]({{site.baseurl}}/docs/pipelines/metadata-annotations/)
+- [Image Metadata]({{site.baseurl}}/docs/pipelines/docker-image-metadata/)  
 - [Custom annotations]({{site.baseurl}}/docs/pipelines/annotations/)
 - [Hooks in pipelines]({{site.baseurl}}/docs/pipelines/hooks/)
 

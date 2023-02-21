@@ -881,7 +881,7 @@ The cluster defined as the default for `kubectl`. If you have more than one Kube
 **Access mode**  
 The access mode for the runtime, which can be one of the following:
 * [Tunnel-based]({{site.baseurl}}/docs/installation/runtime-architecture/#tunnel-based-hybrid-gitops-runtime-architecture), for runtimes without ingress controllers. This is the default.
-* [Ingress-based]({{site.baseurl}}/docs/getting-started/architecture/#ingress-based-hybrid-gitops-runtime-architecture) for runtimes with ingress contollers. 
+* [Ingress-based]({{site.baseurl}}/docs/installation/runtime-architecture/#ingress-based-hybrid-gitops-runtime-architecture) for runtimes with ingress contollers. 
 
 
 * CLI wizard: Select the access mode from the list displayed.
@@ -1285,8 +1285,8 @@ data:
   
 
 ## Related articles
-[Add external clusters to Hybrid and Hosted Runtimes]({{site.baseurl}}/docs/installation/managed-cluster/)  
-[Monitoring & managing GitOps Runtimes]({{site.baseurl}}/docs/installation/monitor-manage-runtimes/)  
-[Add Git Sources to runtimes]({{site.baseurl}}/docs/installation/git-sources/)  
+[Add external clusters to Hybrid and Hosted Runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster/)  
+[Monitoring & managing GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/)  
+[Add Git Sources to runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
 [Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration)  
-[Troubleshoot Hybrid Runtime installation]({{site.baseurl}}/installation/troubleshooting/runtime-issues/)
+[Troubleshoot Hybrid Runtime installation]({{site.baseurl}}/docs/troubleshooting/runtime-issues/)
