@@ -79,7 +79,7 @@ This pipeline references some predefined environment variables such as `GOOGLE_B
 For this example, we created a service account with appropriate permissions in Google Cloud, and saved the credentials into `GOOGLE_CREDENTIALS` as a Codefresh Secret. <br>
 For more information, see:
 [Authenticating with Google services](https://cloud.google.com/storage/docs/authentication#service_accounts){:target="_blank"} 
-[Codefresh pipeline configuration and secrets]({{site.baseurl}}/pipelines/variables/#user-provided-variables)
+[Codefresh pipeline configuration and secrets]({{site.baseurl}}/pipelines/variables/#user-defined-variables)
 
 ## Example 2: Push the chart to Chart Museum
 Chart Museum is a Helm repository *server* that has an HTTP API, pluggable backends, authentication, and more. 

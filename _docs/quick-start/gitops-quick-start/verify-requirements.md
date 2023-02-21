@@ -8,7 +8,7 @@ toc: true
 
 
 **New installation**  
-If this is your first time installing GitOps in Codefresh, review and confirm that your deployment environment conforms to the minimum requirements for hybrid runtime installation. Check the [system requirements]({{site.baseurl}}/docs/installation/requirements).  
+If this is your first time installing GitOps in Codefresh, review and confirm that your deployment environment conforms to the minimum requirements for hybrid runtime installation. Check the [system requirements]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/#minimum-system-requirements).  
 
 
 **Existing installation**  
@@ -29,4 +29,4 @@ If you already have a hybrid runtime installation on your cluster, you have two 
   * Try deleting the namespace again.
 
 ### What to do next
-[Install a hybrid runtime]({{site.baseurl}}/docs/getting-started/quick-start/runtime)
+[Install a hybrid runtime]({{site.baseurl}}/docs/quick-start/gitops-quick-start/runtime/)

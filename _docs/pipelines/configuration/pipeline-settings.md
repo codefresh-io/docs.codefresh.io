@@ -57,7 +57,7 @@ Selectively restricting access to clusters for a pipeline:
 
 {% include image.html
 lightbox="true"
-file="images/pipeline/pipeline-settings/pipeline-inject-cluster-accnt-setting.png"
+file="/images/pipeline/pipeline-settings/pipeline-inject-cluster-accnt-setting.png"
 url="/images/pipeline/pipeline-settings/pipeline-inject-cluster-accnt-setting.png"
 alt="Enabling cluster contexts for injection into pipelines"
 caption="Enabling cluster contexts for injection into pipelines"

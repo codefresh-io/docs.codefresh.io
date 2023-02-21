@@ -13,7 +13,7 @@ You may have a project where the Dockerfile is **not** in the root folder of the
 
 >The source code of the repository is at [https://github.com/codefreshdemo/cf-example-dockerfile-other-location](https://github.com/codefreshdemo/cf-example-dockerfile-other-location){:target="\_blank"}. Feel free to fork it if you want to follow along.
 
-If you don't have a Codefresh account already, you can easily create a free one from the [sign-up page]({{site.baseurl}}/docs/administration/account-user-management/create-a-codefresh-account/).
+If you don't have a Codefresh account already, you can easily create a free one from the [sign-up page]({{site.baseurl}}/docs/administration/account-user-management/create-codefresh-account/).
 
 
 ## Building a Dockerfile from a different folder
@@ -68,7 +68,7 @@ You could also change the Docker build context by editing the `working_directory
 
 ## Related articles
 [CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)  
-[Build an Image with the Dockerfile in root directory]({{site.baseurl}}/docs/example-catalog/ci-examples/build-an-image-dockerfile-in-root-directory/)  
+[Build an Image with the Dockerfile in root directory]({{site.baseurl}}/docs/example-catalog/ci-examples/build-an-image-with-the-dockerfile-in-root-directory/)  
 [Build an Image from a different Git repository]({{site.baseurl}}/docs/example-catalog/ci-examples/build-an-image-from-a-different-git-repository)  
 [Build and push an Image]({{site.baseurl}}/docs/example-catalog/ci-examples/build-and-push-an-image)  
 [Build an Image With build arguments]({{site.baseurl}}/docs/example-catalog/ci-examples/build-an-image-with-build-arguments)  

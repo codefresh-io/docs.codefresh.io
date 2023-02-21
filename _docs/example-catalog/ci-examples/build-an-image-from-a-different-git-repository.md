@@ -92,5 +92,5 @@ Notice that there are no explicit push steps in the pipeline, as all successful 
 [Git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/)  
 [Build an Image with the Dockerfile in root directory]({{site.baseurl}}/docs/example-catalog/ci-examples/build-an-image-with-the-dockerfile-in-root-directory/)  
 [Build step in pipelines in pipelines]({{site.baseurl}}/docs/pipelines/steps/build/)  
-[Build and push an image]({{site.baseurl}}/docs/pipelines/example-catalog/ci-examples/build-and-push-an-image/)  
+[Build and push an image]({{site.baseurl}}/docs/example-catalog/ci-examples/build-and-push-an-image/)  
 [Parallel pipelines]({{site.baseurl}}/docs/pipelines/advanced-workflows/)  

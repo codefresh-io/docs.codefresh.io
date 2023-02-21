@@ -2,6 +2,8 @@
 title: "Setting up OIDC Federated SSO"
 description: "OpenID Connect (OIDC) Single Sign-On (SSO) setup"
 group: single-sign-on
+redirect_from:
+  - /docs/single-sign-on/oidc/
 toc: true
 ---
 
@@ -52,7 +54,7 @@ Here's what you need to do to configure SSO via OIDC in Codefresh:
     max-width="50%"
     %}
 
-{:start="3ß"}
+{:start="3"}
 1. (Optional) [Set a default SSO provider for account]({{site.baseurl}}/docs/single-sign-on/team-sync/#set-a-default-sso-provider-for-account)   
   You can select an IdP as the default SSO provider for a Codefresh account. This means that all the new users added to that account will automatically use the selected IdP for signin.
 1. (Optional) [Select SSO method for individual users]({{site.baseurl}}/docs/single-sign-on/team-sync/#select-sso-method-for-individual-users)   

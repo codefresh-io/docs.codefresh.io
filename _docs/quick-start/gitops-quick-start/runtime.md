@@ -114,6 +114,5 @@ The **Runtimes** dashboard shows the hybrid runtime you just installed. You can 
    %} 
 
 ### What to do next
-[Create resources for codefresh-guestbook application]({{site.baseurl}}/docs/getting-started/quick-start/create-app-specs)  
-OR  
-[Trigger the Hello World example pipeline]({{site.baseurl}}/docs/getting-started/quick-start/hello-world)
+[Create resources for codefresh-guestbook application]({{site.baseurl}}/docs/quick-start/gitops-quick-start/create-app-specs/)  
+
