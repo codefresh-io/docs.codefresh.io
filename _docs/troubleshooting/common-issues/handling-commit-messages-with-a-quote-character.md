@@ -5,6 +5,7 @@ group: troubleshooting
 sub_group: common-issues
 redirect_from:
   - /docs/handling-commit-messages-with-quotes/
+  - /docs/troubleshooting/common-issues/handling-commit-messages-with-quotes/
 toc: true
 ---
 ## Issue

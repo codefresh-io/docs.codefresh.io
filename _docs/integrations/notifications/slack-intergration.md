@@ -5,6 +5,7 @@ group: integrations
 sub_group: notifications
 redirect_from:
  - /docs/integrations/notifications/slack-intergration/
+ - /docs/integrations/notifications/slack-integration/
 toc: true
 ---
 

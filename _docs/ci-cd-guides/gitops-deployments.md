@@ -2,8 +2,6 @@
 title: "GitOps deployments"
 description: "Deploy with Codefresh and ArgoCD"
 group: ci-cd-guides
-redirect_from:
-  - /docs/ci-cd-guides/gitops-deployments/
 toc: true
 ---
 

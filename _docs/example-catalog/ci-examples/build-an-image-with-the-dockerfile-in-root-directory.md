@@ -7,6 +7,7 @@ redirect_from:
   - /docs/yaml-examples/examples/build-an-image-with-the-dockerfile-in-root-directory/
   - /docs/build-an-image-dockerfile-in-root-directory/
   - /docs/deploy-to-kubernetes/get-ready-to-deploy/build-an-image/
+  - /docs/yaml-examples/examples/build-an-image-dockerfile-in-root-directory/
 toc: true
 ---
 Building a Docker image is one of the basic operations in Codefresh pipelines.
