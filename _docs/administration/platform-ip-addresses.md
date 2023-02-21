@@ -45,6 +45,8 @@ All the IPs are NAT gateways, and need to enable specific IPs instead of ranges.
 - 44.205.132.73
 - 34.235.30.144
 - 54.160.88.80  
+
+> We have a [plain text version of the IP addresses]({{site.baseurl}}/docs/administration/cf-ip4.txt). Recommended for monitoring changes.
  
 ## Codefresh IPs for Hosted GitOps Runtimes
 
