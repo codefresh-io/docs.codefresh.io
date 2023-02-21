@@ -9,6 +9,7 @@ redirect_from:
   - /docs/what-is-the-codefresh-yaml/
   - /docs/codefresh-yaml/working-directories/
   - /docs/working-directories/  
+  - /docs/codefresh-yaml/what-is-the-codefresh-yaml/
 toc: true
 ---
 

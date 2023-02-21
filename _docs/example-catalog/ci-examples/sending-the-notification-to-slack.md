@@ -11,7 +11,7 @@ toc: true
 
 There are many ways to integrate Slack with Codefresh:
 
-1. Use the [global slack integration]({{site.baseurl}}/docs/integrations/notifications/slack-integration/)
+1. Use the [global slack integration]({{site.baseurl}}/docs/integrations/notifications/slack-intergration/)
 1. Use individual pipeline plugins such [slack-message-sender](https://codefresh.io/steps/step/slack-message-sender){:target="\_blank"} and [slack-notifier](https://codefresh.io/steps/step/slack-notifier){:target="\_blank"}
 1. Use simple POST requests with Curl, as explained in this article
 

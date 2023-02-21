@@ -5,6 +5,7 @@ group: pipelines
 redirect_from:
   - /docs/pipelines/variables/
   - /docs/variables/
+  - /docs/codefresh-yaml/variables/
 toc: true
 ---
 Codefresh provides a set of predefined variables automatically in each build, that you can use to parameterize the way your pipeline works. You can also define your own variables. Some common examples of predefined variables include:

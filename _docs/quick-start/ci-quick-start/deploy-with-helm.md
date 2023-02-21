@@ -5,6 +5,7 @@ group: quick-start
 sub_group: ci-quick-start
 redirect_from:
   - /docs/getting-started/helm-quick-start-guide/
+  - /docs/new-helm/add-helm-repository/
 toc: true
 ---
 
@@ -16,23 +17,23 @@ The Helm quick start guides you through using [Helm](https://helm.sh/){:target="
 
 
 
-<!--- Helm offers several extra features on top of vanilla Kubernetes deployments, some of which are: 
+ Helm offers several extra features on top of vanilla Kubernetes deployments, some of which are: 
 
 * The ability to group multiple Kubernetes manifests together and treat them as a single entity (for deployments, rollbacks, and storage). Groups of Manifests are called [Helm Charts](https://helm.sh/docs/topics/charts/).
 * Built-in templating for Kubernetes manifests, putting an end to custom template systems that you might use for replacing things such as the Docker tag inside a manifest.
 * The ability to create Charts of Charts which contain the templates as well as default values. This means
 that you can describe the dependencies of an application in the service level and deploy everything at the same time.
-* The ability to create catalogs of applications (Helm repositories) that function similar to traditional package repositories (think npm registry, cpan, maven central, ruby gems etc).  -->
+* The ability to create catalogs of applications (Helm repositories) that function similar to traditional package repositories (think npm registry, cpan, maven central, ruby gems etc). 
 
 
-<!---   and has native support for Helm in a number of ways:
+Codefresh has native support for Helm in a number of ways:
 
 1. Easily deploy existing Helm packages to your Kubernetes cluster overriding the default values.
 1. Easily create new Helm packages and push them to a Helm repository.
 1. View Helm releases and even [perform rollbacks]({{site.baseurl}}/docs/deployments/helm/helm-releases-management/) from the Helm Dashboard.
-1. You can [browse Helm packages]({{site.baseurl}}/docs/new-helm/add-helm-repository/)  both from public repositories and your internal Helm repository.
-1. You can see Helm releases in the [Environment dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/environment-dashboard/)
-1. You can promote Helm releases with the [Promotion dashboard]({{site.baseurl}}/docs/new-helm/helm-environment-promotion/)  -->
+1. You can [browse Helm packages]({{site.baseurl}}/docs/integrations/helm/)  both from public repositories and your internal Helm repository.
+1. You can see Helm releases in the [Environment dashboard]({{site.baseurl}}/docs/deployments/kubernetes/environment-dashboard/)
+1. You can promote Helm releases with the [Promotion dashboard]({{site.baseurl}}/docs/deployments/helm/helm-environment-promotion/) 
 
 
 This quick start will show you how to:

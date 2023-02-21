@@ -4,6 +4,7 @@ description: "Group steps in pipelines for better visualization"
 group: pipelines
 redirect_from:
   - /docs/pipelines/stages/
+  - /docs/codefresh-yaml/stages/
 toc: true
 ---
 

@@ -6,6 +6,7 @@ sub_group: ci-examples
 redirect_from:
   - /docs/learn-by-example/nodejs/lets-chat/
   - /docs/lets-chat/
+  - /docs/deploy-to-kubernetes/codefresh-kubernetes-integration-demochat-example/
 toc: true
 ---
 

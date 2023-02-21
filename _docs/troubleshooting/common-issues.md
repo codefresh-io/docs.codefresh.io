@@ -15,7 +15,7 @@ In this section, we offer helpful information about issues you may encounter and
 - [Can't find your organization repositories]({{site.baseurl}}/docs/troubleshooting/common-issues/cant-find-your-organization-repositories/)
 - [Can't find your private repositories]({{site.baseurl}}/docs/troubleshooting/common-issues/cant-find-your-private-repositories/)
 - [Clone step failed]({{site.baseurl}}/docs/troubleshooting/common-issues/git-clone-step-issue/)
-- [Handling commit messages with quotes]({{site.baseurl}}/docs/troubleshooting/common-issues/handling-commit-messages-with-quotes/)
+- [Handling commit messages with quotes]({{site.baseurl}}/docs/troubleshooting/common-issues/handling-commit-messages-with-a-quote-character/)
 
 ## Docker issues
 

@@ -210,7 +210,7 @@ toc: true
 - cf_export limitations - [documentation]({{site.baseurl}}/docs/troubleshooting/common-issues/cf-export-limitations/)
 - Default SSO provider - [documentation]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/#setting-a-default-provider)
 - Codefresh runner now has a dry run option - [documentation]({{site.baseurl}}/docs/administration/codefresh-runner/#inspecting-the-manifests-before-they-are-installed)
-- Connect to Azure Kubernetes with a service principal - [documentation]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/#adding-an-aks-cluster-with-a-service-principal)
+- Connect to Azure Kubernetes with a service principal - [documentation]({{site.baseurl}}//#adding-an-aks-cluster-with-a-service-principal)
 - Connect to an Azure Helm repository with a service principal - [documentation]({{site.baseurl}}/docs/integrations/helm/#private-helm-repository---azure-with-service-principal)
 
 ## 2020
@@ -281,7 +281,7 @@ toc: true
 ### May 2020
 
 - Masking encrypted variables in logs - [documentation]({{site.baseurl}}/docs/pipelines/variables/#masking-variables-in-logs)
-- Restrict Codefresh to specific namespace - [documentation]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/#restrict-codefresh-access-to-a-specific-namespace)
+- Restrict Codefresh to specific namespace - [documentation]({{site.baseurl}}/docs/integrations/kubernetes/#restrict-codefresh-access-to-a-specific-namespace)
 - Deploy with Kustomize - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/deploy-with-kustomize)
 - Installing the Codefresh Runner on a multi AZ GKE cluster - [documentation]({{site.baseurl}}/docs/enterprise/codefresh-runner/#using-multiple-availability-zones)
 - Masking encrypted variables in logs - [documentation]({{site.baseurl}}/docs/pipelines/variables/#masking-variables-in-logs)
@@ -338,7 +338,7 @@ toc: true
   - New in-app notifications for subscription payment issues
 - New UX flow for the signup process
 - Updated OneLogin SSO support - [documentation]({{site.baseurl}}/docs/enterprise/single-sign-on/sso-onelogin/)
-- Published Codefresh Platform IPs - [documentation]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/#prerequisites)
+- Published Codefresh Platform IPs - [documentation]({{site.baseurl}}/docs/integrations/kubernetes/#prerequisites)
 - Installing the Codefresh Runner in AWS - [documentation]({{site.baseurl}}/docs/enterprise/codefresh-runner/#installing-on-aws)
 - Amazon ECS/Fargate deployment example - [documentation]({{site.baseurl}}/docs/deploy-your-containers/amazon-ecs/)
 
@@ -361,7 +361,7 @@ toc: true
 
 ### November 2019
 
-- Digital Ocean cluster integration - [documentation]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/#adding-a-digital-ocean-cluster)
+- Digital Ocean cluster integration - [documentation]({{site.baseurl}}/docs/integrations/kubernetes/#adding-a-digital-ocean-cluster)
 - Build caching guide - [documentation]({{site.baseurl}}/docs/pipelines/pipeline-caching/)
 - Versioning for plugins - [documentation]({{site.baseurl}}/docs/pipelines/steps/#versioning-of-typed-steps)
 - Step example with input parameters - [documentation]({{site.baseurl}}/docs/pipelines/steps/#example-with-input-parameters)
@@ -504,7 +504,7 @@ toc: true
 
 ### August 2018
 
-- Native Integration with Azure Kubernetes Service - [documentation]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/#adding-aks-cluster)
+- Native Integration with Azure Kubernetes Service - [documentation]({{site.baseurl}}/docs/integrations/kubernetes/#adding-an-aks-cluster)
 - Ability to configure SSO both in the customer and the account level (Enterprise)
 - Azure SSO integration (Enterprise) - [documentation]({{site.baseurl}}/docs/enterprise/single-sign-on/sso-setup-oauth2/)
 - OKTA SSO integration (Enterprise)

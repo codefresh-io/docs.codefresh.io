@@ -309,7 +309,7 @@ There isn't a correct or wrong way to set this option. It depends on your organi
 
 ## Slack integration
 
-If you also enable [Slack integration]({{site.baseurl}}/docs/integrations/notifications/slack-integration/) in Codefresh you will have the choice of approving/rejecting a pipeline
+If you also enable [Slack integration]({{site.baseurl}}/docs/integrations/notifications/slack-intergration/) in Codefresh you will have the choice of approving/rejecting a pipeline
 via a Slack channel
 
 {% include 
