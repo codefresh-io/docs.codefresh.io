@@ -4,6 +4,12 @@
 // Headings
 //
 
+@mixin heading($fontSize, $fontWeight, $lineHeight) {
+  font-size: $fontSize;
+  font-weight: $fontWeight;
+  line-height: $lineHeight;
+}
+
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   margin-bottom: .5rem;
@@ -14,35 +20,25 @@ h1, h2, h3, h4, h5, h6,
 
 h1,
 .h1 {
-  font-size: $h1-font-size;
-  font-weight: $font-weight-bold;
-  line-height: $h1-line-height;
+  @include heading($h1-font-size, $font-weight-bold, $h1-line-height);
 }
 
 h2,
 .h2 {
-  font-size: $h2-font-size;
-  font-weight: $font-weight-medium;
-  line-height: $h2-line-height;
+  @include heading($h2-font-size, $font-weight-medium, $h2-line-height);
 }
 
 h3,
 .h3 {
-  font-size: $h3-font-size;
-  font-weight: $font-weight-normal;
-  line-height: $h3-line-height;
+  @include heading($h3-font-size, $font-weight-normal, $h3-line-height);
 }
 
 h4,
 .h4 {
-  font-size: $h4-font-size;
-  font-weight: $font-weight-bold;
-  line-height: $h4-line-height;
+  @include heading($h4-font-size, $font-weight-bold, $h4-line-height);
 }
 
 h5,
 .h5 {
-  font-size: $h5-font-size;
-  font-weight: $font-weight-medium;
-  line-height: $h5-line-height;
+  @include heading($h5-font-size, $font-weight-medium, $h5-line-height);
 }
