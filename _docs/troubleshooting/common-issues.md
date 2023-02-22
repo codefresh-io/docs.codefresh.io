@@ -1,5 +1,5 @@
 ---
-title: "Common Issues"
+title: "Common issues"
 description: ""
 group: troubleshooting
 redirect_from:
@@ -15,7 +15,7 @@ In this section, we offer helpful information about issues you may encounter and
 - [Can't find your organization repositories]({{site.baseurl}}/docs/troubleshooting/common-issues/cant-find-your-organization-repositories/)
 - [Can't find your private repositories]({{site.baseurl}}/docs/troubleshooting/common-issues/cant-find-your-private-repositories/)
 - [Clone step failed]({{site.baseurl}}/docs/troubleshooting/common-issues/git-clone-step-issue/)
-- [Handling commit messages with quotes]({{site.baseurl}}/docs/troubleshooting/common-issues/handling-commit-messages-with-quotes/)
+- [Handling commit messages with quotes]({{site.baseurl}}/docs/troubleshooting/common-issues/handling-commit-messages-with-a-quote-character/)
 
 ## Docker issues
 
@@ -33,7 +33,6 @@ In this section, we offer helpful information about issues you may encounter and
 - [Pinning codefresh.yml for multi-git triggers]({{site.baseurl}}/docs/troubleshooting/common-issues/multi-git-triggers/)
 - [Workflow process terminated by the system]({{site.baseurl}}/docs/troubleshooting/common-issues/workflow-terminated-by-system/)
 - [Multi-line variable gets truncated with cf_export](cf-export-limitations)
-- [Failed to create container of image]({{site.baseurl}}/docs/troubleshooting/common-issues/create-container-failure)
 
 ## Dynamic environment issues
 

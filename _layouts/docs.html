@@ -9,10 +9,12 @@ layout: compress
   </head>
   <body data-spy="scroll" data-target=".bd-toc" data-offset="100">
 
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WV3QT3W"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
+  <!-- Google Tag Manager (noscript) -->
+  <noscript>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WV3QT3W"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript>
+  <!-- End Google Tag Manager (noscript) -->
 
     <a id="skippy" class="sr-only sr-only-focusable" href="#content">
       <div class="container">
@@ -46,7 +48,7 @@ layout: compress
             <div class="bd-improve-link">
               {% if page.url contains '/docs/' %}
                 {% assign url_size = page.url | size | minus: 1 %}
-                {% capture edit_url %}https://github.com/codefresh-io/docs.codefresh.io/edit/master/_docs/{{ page.url | slice: 0, url_size | replace: '/docs/', ''  }}.md{% endcapture %}
+                {% capture edit_url %}https://github.com/codefresh-io/cap-docs.codefresh.io/edit/master/_docs/{{ page.url | slice: 0, url_size | replace: '/docs/', ''  }}.md{% endcapture %}
                 <a href="{{ edit_url }}" target="_blank"><i class="fas fa-edit fa-sm"></i> Improve this page on GitHub</a>
               {% endif %}
             </div>

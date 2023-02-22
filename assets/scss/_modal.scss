@@ -44,9 +44,14 @@ body {
 
   @media (min-width: 768px) {
     .modal-dialog {
-      max-width: 510px;
       margin-right: 1.75rem;
       margin-left: auto;
+    }
+  }
+
+  @media (min-width: 576px) {
+    .modal-dialog {
+      max-width: 526px;
     }
   }
 }

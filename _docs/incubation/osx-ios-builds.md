@@ -2,16 +2,18 @@
 title: "macOS and iOS builds"
 description: "Using Codefresh for Mac/iPhone applications"
 group: incubation
+redirect_from:
+  - /docs/incubation/osx-ios-builds/
 toc: true
 ---
   
-Codefresh is offering alpha support for macOS and/or iOS as a CI/CD environment. Access to the build environment is possible after invite only. To run macOS/iOS pipelines in Codefresh, [open a free account]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/) and then [contact sales](https://codefresh.io/contact-us/) in order to enable this build environment type.
+Codefresh offers alpha support for macOS and/or iOS as a CI/CD environment. Access to the build environment is possible by invitation only. To run macOS/iOS pipelines in Codefresh, [open a free account]({{site.baseurl}}/docs/administration/account-user-management/create-codefresh-account/) and then [contact sales](https://codefresh.io/contact-us/){:target="\_blank"} in order to enable this build environment type.
 
 > macOS/iOS builds are only available for the SaaS platform. They are not available for the Hybrid platform at this time.
 
 ## Enabling macOS/iOS support
 
-Once approved, you will get access to a special runtime environment environment that will run your macOS/iOS builds. To use this environment [create a new pipeline]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/) and select it in the pipeline settings screen.
+Once approved, you will get access to a special runtime environment that will run your macOS/iOS builds. To use this environment [create a new pipeline]({{site.baseurl}}/docs/pipelines/pipelines/) and select it in the pipeline settings screen.
 
 {% include 
 image.html 
@@ -27,7 +29,7 @@ The macOS runtime environment has Xcode already installed for your iOS and/or ma
 
 ## Building macOS/iOS applications with Codefresh
 
-Once you assign the special macOS runtime to your pipeline, you can write your [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) as usual, keeping in mind the following points
+Once you assign the special macOS runtime to your pipeline, you can write your [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/) as usual, keeping in mind the following points
 
 * The git-clone step is available
 * Freestyle steps must use the `freestyle-ssh` type
@@ -40,7 +42,7 @@ As part of the alpha version the nodes that run your macOS builds are actual nod
 
 ## macOS build pipeline example
 
-You can find a full Codefresh example at [https://github.com/alex-codefresh/osx-demo-webserver](https://github.com/alex-codefresh/osx-demo-webserver).
+You can find a full Codefresh example at [https://github.com/alex-codefresh/osx-demo-webserver](https://github.com/alex-codefresh/osx-demo-webserver){:target="\_blank"}.
 
 Create a pipeline for it with the following YAML content:
 
@@ -103,7 +105,7 @@ steps:
 This pipeline clones the sample application, builds it with Xcode and then runs it. Notice that the run step
 cleans up on its own (because macOS builds are not docker based so nothing is cleaned up automatically when the pipeline has finished).
 
-Notice also that `freestyle-ssh` steps do not define a docker image (unlike normal [freestyle steps]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/)).
+Notice also that `freestyle-ssh` steps do not define a docker image (unlike normal [freestyle steps]({{site.baseurl}}/docs/pipelines/steps/freestyle/)).
 
 The logs will show all build information:
 
@@ -117,5 +119,5 @@ caption="macOS build log"
 max-width="90%"
 %}
 
-Currently, we are working on offering configurable versions of Xcode, Swift, and macOS so that pipelines can define exactly what development environment they need. We also plan [fastlane](https://fastlane.tools/) integration.
+Currently, we are working on offering configurable versions of Xcode, Swift, and macOS so that pipelines can define exactly what development environment they need. We also plan [fastlane](https://fastlane.tools/){:target="\_blank"} integration.
 

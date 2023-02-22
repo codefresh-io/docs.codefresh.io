@@ -1,101 +1,49 @@
 ---
-title: "OpenID Connect"
-description: "Setting Up OpenID Connect Federated Single Sign-On (SSO)"
+title: "Setting up OIDC Federated SSO"
+description: "OpenID Connect (OIDC) Single Sign-On (SSO) setup"
 group: single-sign-on
+redirect_from:
+  - /docs/single-sign-on/oidc/
 toc: true
 ---
 
-Codefresh natively supports login using GitHub, Bitbucket and GitLab using the OpenID Connect (OAUTH 2.0) protocol. This guide will review how to add  SSO integrations based on OAUTH 2.0 as part of Codefresh Enterprise plan.
+Codefresh natively supports login with GitHub, Bitbucket and GitLab, using the OpenID Connect (OAuth2) protocol. 
+  
 
 ## Prerequisites
 
-In order to add successfully an identity Provider in Codefresh you need to do some preparatory work with both Codefresh and the provider.
+To successfully add an identity provider (IdP) in Codefresh, you need to do some preparatory work with both Codefresh and the provider:
 
-1. You need to inform your Identify provider that it will provide SSO services to Codefresh
-1. You need to set up Codefresh and point it to your Identity Provider.
+1. Inform your IdP that it will provide SSO services to Codefresh
+1. Set up Codefresh and point it to your IdP.
 
-The first procedure differs according to you Identity Provider, but the second one is common for all providers.
+The first procedure differs according to your IdP, but the second one is common to all providers.
 
-Note that SSO is only available to Enterprise customers. Please [contact sales](https://codefresh.io/contact-sales/) in order to enable it for your Codefresh account.
+>SSO is only available to Enterprise customers. Please [contact sales](https://codefresh.io/contact-sales/){:target="\_blank"} in order to enable it for your Codefresh account.
 
-## Identity Provider options
+## OIDC SSO configuration in Codefresh 
 
-Codefresh currently supports
+Here's what you need to do to configure SSO via OIDC in Codefresh:
 
-* Auth0
-* Azure
-* Google
-* Okta
-* OneLogin
+1. Configure SSO settings for the IdP:  
+  This generally includes defining settings both in Codefresh and in the IdP.  
+  Codefresh supports OIDC SSO for the following:
+  * [Auth0]({{site.baseurl}}/docs/single-sign-on/oidc/oidc-auth0/)
+  * [Azure]({{site.baseurl}}/docs/single-sign-on/oidc/oidc-azure/)
+  * [Google]({{site.baseurl}}/docs/single-sign-on/oidc/oidc-google/)
+  * [Okta]({{site.baseurl}}/docs/single-sign-on/oidc/oidc-okta/)
+  * [OneLogin]({{site.baseurl}}/docs/single-sign-on/oidc/oidc-onelogin/)
 
-To access the SSO configuration at the account level.
+1. Test integration with the IdP: 
+    
+    >Before enabling SSO for users in Codefresh, you **MUST** make sure that it is working for the test user.  
+    When SSO is enabled for a user, Codefresh allows login only through the SSO and blocks logins through other IdPs. If the selected SSO method does not work for some reason, the user is locked out of Codefresh.
 
-1. Click on your avatar at the top right of the GUI and select *Account settings*.
-1. In the new screen, select *Single Sign-on* from the left sidebar.
-
-{% include image.html
-lightbox="true"
-file="/images/administration/sso/add-sso-dropdown.png"
-url="/images/administration/sso/add-sso-dropdown.png"
-alt="SSO provider settings"
-caption="SSO provider settings"
-max-width="70%"
-%}
-
-{:start="3"}
-1. To connect an Identity Provider, click the *add single-sign-on* button and select your provider from the drop-down menu.
-
-## Codefresh SSO setup
-
-Regardless of the Identity Provider that you have chosen, the setup in Codefresh is similar for all of them. You need to provide several fields to Codefresh to activate SSO. The common ones are:
-
-* *Display Name* - A name for your Identity Provider
-* *Client ID* - An ID that will be used for the connection
-* *Client Secret* - A secret associated with the ID
-
-Some providers also need additional fields which are specific to that provider.
-
-The process to obtain the values for these fields depends on the individual Identity Provider. In the following
-sections we will outline the details for each one.
-
-### Setting Auth0 as an Identity provider
-
-See the [Auth0 instructions]({{site.baseurl}}/docs/single-sign-on/oidc/oidc-auth0/).
-
-### Setting Azure as an Identity provider
-
-See the [Azure instructions]({{site.baseurl}}/docs/single-sign-on/oidc/oidc-azure/).
-
-### Setting Google as an Identity provider
-
-See the [Google instructions]({{site.baseurl}}/docs/single-sign-on/oidc/oidc-google/).
-
-### Setting Okta as an Identity Provider
-
-See the [Okta instructions]({{site.baseurl}}/docs/single-sign-on/oidc/oidc-okta/).
-
-### Setting OneLogin as an Identity Provider
-
-See the [OneLogin instructions]({{site.baseurl}}/docs/single-sign-on/oidc/oidc-onelogin/).
-
-## Testing your Identity provider
-
-Once you set up the Identity Provider, do the following
-
-1. Go to the collaborators screen by clicking on *People* on the left sidebar (under User Management).
-1. Add an active user that will be used for testing. We recommend you use your own user.
-1. Change Login method by selecting your Auth provider from the SSO drop-down.
-
-    {% include image.html
-    lightbox="true"
-    file="/images/administration/sso/collaborators.png"
-    url="/images/administration/sso/collaborators.png"
-    alt="Adding collaborators"
-    caption="Adding collaborators"
-    max-width="70%"
-    %}
-
-1. Keep the current browser session open, and log in via Corporate SSO in an incognito tab (or another browser).
+    1. In the Codefresh UI, on the toolbar, from your avatar dropdown, select **Account Settings**.
+    1. In the sidebar, from Access & Collaboration, select [**Users & Teams**](https://g.codefresh.io/2.0/account-settings/single-sign-on){:target="\_blank"}.   
+    1. Add an active user to be used for testing. We recommend you use your own user.
+    1. From the **SSO** dropdown, select the provider you want to test.
+    1. Keep the current browser session open, and log in via Corporate SSO in an incognito tab (or another browser).
 
     {% include image.html
     lightbox="true"
@@ -106,95 +54,15 @@ Once you set up the Identity Provider, do the following
     max-width="50%"
     %}
 
-1. If everything works, add more users.
+{:start="3"}
+1. (Optional) [Set a default SSO provider for account]({{site.baseurl}}/docs/single-sign-on/team-sync/#set-a-default-sso-provider-for-account)   
+  You can select an IdP as the default SSO provider for a Codefresh account. This means that all the new users added to that account will automatically use the selected IdP for signin.
+1. (Optional) [Select SSO method for individual users]({{site.baseurl}}/docs/single-sign-on/team-sync/#select-sso-method-for-individual-users)   
+  You can also select if needed, a different SSO provider for specific users.
 
-> Before enabling SSO for all users, you **MUST** make sure that it is working for the test user, because if SSO is enabled for a user, Codefresh blocks logins through other IDPs for this user and only the enabled SSO is allowed. If the selected SSO method does not work for some reason, users will be locked out of Codefresh.
+> Codefresh has an internal cache for SSO configuration, and it can take up to five minutes for your changes to take effect.
 
-## Selecting SSO method for collaborators
+## Related articles
+[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/single-sign-on)   
+[Setting up SAML2 Federated SSO]({{site.baseurl}}/docs/single-sign-on/saml)  
 
-To add users and select their SSO method, go to *Collaborators* from the left sidebar. Then add the email or Codefresh username of a user.
-
-In addition to their role you can now select the SSO method they will use
-
-{% include image.html
-lightbox="true"
-file="/images/administration/sso/select-user-sso.png"
-url="/images/administration/sso/select-user-sso.png"
-alt="Selecting SSO method"
-caption="Selecting SSO method"
-max-width="50%"
-%}
-
-**SSO login for new and existing users**  
-If you have multiple SSO providers configured, you can select a different provider for each user if so required.  
-
-* New users   
-  If you have an SSO provider selected as the default, that provider is automatically assigned to new users, added either manually or via team synchronization.  
-
-* Existing users  
-  SSO login is not configured by default for existing users. You must _explicitly select_ the SSO provider for existing users.  
-  If SSO login is already configured for an existing user, and you add a new identity provider, to change the SSO login to the new provider, you must _select_ the new provider for the user. 
-
-
-## Setting a default provider
-
-If you have multiple SSO providers set you can hover your mouse on the top right of the SSO screen
-and setup one of them as the default provider.
-
-{% include image.html
-lightbox="true"
-file="/images/administration/sso/default-sso.png"
-url="/images/administration/sso/default-sso.png"
-alt="Default SSO provider"
-caption="Default SSO provider"
-max-width="90%"
-%}
-
-If a default sso provider is set then:
-
-1. This SSO method will be automatically assigned to all new invited users
-1. All new users will receive an email with an invite link that points them directly to the login page of that SSO provider
-
-## Syncing of teams after initial SSO setup
-
-Once the initial setup is done, you can also sync your teams between Codefresh and the Identity provider.
-You can do this via the [Codefresh Cli](https://codefresh-io.github.io/cli/) and specifically the [sync command](https://codefresh-io.github.io/cli/teams/synchronize-teams/).
-
-For example, to sync you azure teams you can execute
-
-```bash
-codefresh synchronize teams my-client-name -t azure
-```
-
-You can find the client-name from the SSO UI.
-
-{% include image.html
-lightbox="true"
-file="/images/administration/sso/azure/client-name.png"
-url="/images/administration/sso/azure/client-name.png"
-alt="SSO Client Name"
-caption="SSO Client Name"
-max-width="40%"
-%}
-
-Even though you can run this command manually it makes more sense to run it periodically as a job. And the obvious
-way to perform this, is with a Codefresh pipeline. The CLI can be used as a [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/).
-
-You can create a git repository with a [codefresh.yml]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) file with the following contents:
-
-`YAML`
-{% highlight yaml %}
-{% raw %}
-version: '1.0'
-steps:
-  syncMyTeams:
-    title: syncTeams
-    image: codefresh/cli
-    commands:
-      - 'codefresh synchronize teams my-client-name -t azure'
-{% endraw %}
-{% endhighlight %}
-
-To fully automate this pipeline you should set a [cron trigger]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/cron-triggers/) for this pipeline. The cron-trigger will be responsible for running this pipeline (and therefore synchronizing the teams) in a fully automated manner.
-
-This way you can synchronize your teams every day/week/hour depending on you cron trigger setup.

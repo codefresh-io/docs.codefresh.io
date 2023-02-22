@@ -4,6 +4,7 @@ description: ""
 group: troubleshooting
 sub_group: common-issues
 redirect_from:
+  - /docs/troubleshooting/common-issues/disabling-codefresh-caching-mechanisms/
   - /docs/disabling-codefresh-caching-mechanisms/
 toc: true
 ---
@@ -36,3 +37,6 @@ Any subsequent/automated builds will still use the default caching behavior.
 ### Disabling consistently at the build definition
 
 In the build step YAML, set `no_cache: true` to disable docker local cache, and `no_cf_cache: true` to disable codefresh's additional optimizations such as `--cache-from`.
+
+## Related articles
+[Troubleshooting common issues]({{site.baseurl}}/docs/troubleshooting/common-issues)

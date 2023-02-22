@@ -1,17 +1,24 @@
 ---
-title: "Codefresh Platform IP addresses"
+title: "Codefresh IP addresses"
 description: "How to allowlist the IP addresses of the Codefresh platform"
 group: administration
+redirect_from:
+  - /docs/administration/platform-ip-addresses/
 toc: true
 
 ---
+Access to Kubernetes clusters behind strict firewalls not accessible from the public internet is governed through authorized IP addresses. 
+Codefresh provides a list of IP addresses to be configured on clusters to allow access to them. 
 
-If you want to use Codefresh for [a Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/) that has a strict firewall, you can only allow access to specific IP addresses
-that the Codefresh platform is using. This will allow you to deploy to your cluster even when it is not accessible from the public internet
+You can register multiple external clusters to the Codefresh Runner and GitOps Runtimes. All Runtimes require Codefresh platform IPs to be configured on the clusters.  
+In addition, managed clusters registered to Hosted GitOps Runtimes must be configured with a set of specific IP addresses to authorize access.
 
->Note that this is for paying customers and needed only for customers that use the [SAAS version of Codefresh]({{site.baseurl}}/docs/administration/installation-security/). If you use the [Codefresh runner]({{site.baseurl}}/docs/administration/codefresh-runner/), there is no need to open any IPs and ports in your firewall.
 
-## Current IPs used by the Codefresh platform (updated January 2023)
+## Codefresh platform IPs (updated January 2023)
+
+All the IPs are NAT gateways, and need to enable specific IPs instead of ranges.
+
+>If you do use these IPs, we **strongly recommend** that you monitor this page on a regular basis.
 
 - 107.21.238.215
 - 18.209.185.91
@@ -39,30 +46,28 @@ that the Codefresh platform is using. This will allow you to deploy to your clus
 - 3.228.62.77
 - 44.205.132.73
 - 34.235.30.144
-- 54.160.88.80
+- 54.160.88.80  
 
-All the IPs are NAT gateways, and therefore you only need to enable specific IPs instead of ranges.
+> We have a [plain text version of the IP addresses]({{site.baseurl}}/docs/administration/cf-ip4.txt). Recommended for monitoring changes.
+ 
+## Codefresh IPs for Hosted GitOps Runtimes
 
-> We have a plain text version of the IP Addresses located [here]({{site.baseurl}}/docs/administration/cf-ip4.txt). Recomended if you need it for monitoring changes.
+- 34.207.5.18
+- 34.232.79.230
+- 44.193.43.5
 
-## Old Codefresh IPs
+## API access to IPs for clusters
+Clusters must be configured with API access to the authorized Codefresh IPs.  
+If you haven't configured your clusters with the required IPs, use the links below to complete the configuration for the clusters listed:
 
-These IP addresses have been removed, please replace these with the IP addresses above.
+[AKS (Azure Kubernetes Service)](https://docs.microsoft.com/en-us/azure/aks/api-server-authorized-ip-ranges){:target="\_blank"}  
 
-- 104.154.63.253
-- 104.197.160.122
-- 18.213.176.41
-- 13.59.201.170
-- 104.155.130.126
-- 147.234.23.250
-- 34.233.31.180
-- 104.154.99.188
-- 146.148.100.14
-- 34.237.229.16
+[EKS (Amazon Elastic Container Service)](https://aws.amazon.com/premiumsupport/knowledge-center/eks-lock-api-access-IP-addresses/){:target="\_blank"}  
 
-## What to read next
+[GKE (Google Kubernetes Engine)](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters){:target="\_blank"}  
 
-- [Codefresh installation options]({{site.baseurl}}/docs/administration/installation-security/)
-- [Codefresh runner]({{site.baseurl}}/docs/administration/codefresh-runner/)
-- [Codefresh behind the firewall]({{site.baseurl}}/docs/administration/behind-the-firewall/)
-- [Managing your Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/)
+## Related articles
+[Codefresh Runner installation]({{site.baseurl}}/docs/installation/codefresh-runner/) 
+[Set up a Hosted GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/)  
+[Install Hybrid GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/)  
+<!---[Codefresh architecture]({{site.baseurl}}/docs/getting-started/architecture/)-->

@@ -1,6 +1,6 @@
 ---
 title: "Amazon EC2 Container Registry"
-description: "Learn how to use the Amazon Docker Registry in Codefresh"
+description: "Use the Amazon Docker Registry for pipeline integrations"
 group: integrations
 sub_group: docker-registries
 redirect_from:
@@ -9,61 +9,54 @@ redirect_from:
 toc: true
 ---
 
-## Setting Up ECR Integration - IAM User
+## Set up ECR integration for IAM user
 
-Go to your Account Configuration, by clicking on *Account Settings* on the left sidebar. On the first section called *Integrations* click the *Configure* button next to *Docker Registry*.
-
-To configure ECR first select **Amazon ECR** from the new registry drop down
-and then provided the following:
-
-* Registry Name -  unique name for this configuration.
-* Access Key ID - AWS accessKeyId.
-* Secret Access Key - AWS accessKeyId.
-* Region - AWS region.
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipeline Integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
+1. Select **Docker Registries** and then click **Configure**.
+1. From the **Add Registry Provider** dropdown, select **Amazon ECR**.
+1. Define the following:  
+  * **Registry name**: A unique name for this configuration.
+  * **Region**: AWS region. 
+  * **Access Key ID**: Your AWS accessKeyId.
+  * **Secret Access Key**: Your AWS accessKeyId.
 
 {% include image.html 
 	lightbox="true" 
 	file="/images/integrations/docker-registries/add-amazon-ecr-registry.png" 
 	url="/images/integrations/docker-registries/add-amazon-ecr-registry.png" 
-	alt="Add Amazon EC2 Container Registry" 
+	alt="Amazon EC2 Container Registry settings" 
+  caption="Amazon EC2 Container Registry settings" 
 	max-width="60%" %}
+
+{:start="5"}
+1. To verify the connection details, click **Test Connection**.
+1. To apply the changes, click **Save**.
 
 Codefresh makes sure to automatically refresh the AWS token for you.
 
-For more information on how to obtain the needed tokens read the [AWS documentation](http://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys){:target="_blank"}.
+For more information on how to obtain the needed tokens, read the [AWS documentation](http://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys){:target="_blank"}.
 
-{{site.data.callout.callout_info}}
-##### Note
-
-You need to have an active registry all set up in AWS.<br /><br />
-Amazon ECR Push/Pull operations can be provide by two permission options: user-based and resource-based.
+> Note:
+  You must have an active registry set up in AWS.<br /><br />
+  Amazon ECR push/pull operations are supported with two permission options: user-based and resource-based.
 
 
-1. User-based permissions: User account need to apply AmazonEC2ContainerRegistryPowerUser policy (or custom based on that policy).
-More information and examples can be found [here](http://docs.aws.amazon.com/AmazonECR/latest/userguide/ecr_managed_policies.html)
-1. For resource-based users require permissions to call ecr:GetAuthorizationToken before they can authenticate to a registry and push or pull any images from any Amazon ECR repository, than you need provide push/pull permissions to specific registry. More information and examples can be found [here](http://docs.aws.amazon.com/AmazonECR/latest/userguide/RepositoryPolicies.html){:target="_blank"}.
-{{site.data.callout.end}}
+  * User-based permissions: User account must apply `AmazonEC2ContainerRegistryPowerUser` policy (or custom based on that policy).  
+    For more information and examples, click [here](http://docs.aws.amazon.com/AmazonECR/latest/userguide/ecr_managed_policies.html){:target="_blank"}.
+  * Resource-based permissions: Users with resource-based permissions must be allowed to call `ecr:GetAuthorizationToken` before they can authenticate to a registry, and push or pull any images from any Amazon ECR repository, than you need provide push/pull permissions to specific registry.  
+  For more information and examples, click [here](http://docs.aws.amazon.com/AmazonECR/latest/userguide/RepositoryPolicies.html){:target="_blank"}.
 
-## Setting Up ECR Integration - Service Account
 
-Go to your Account Configuration by clicking on *Account Settings* on the left sidebar. On the first section called *Integrations* click the *Configure* button next to *Docker Registry*.
+## Set up ECR integration for service account
 
-To configure ECR, first select **Amazon ECR** from the new registry drop down
-and then provided the following:
+Setting up ECR integration for a service account applies to accounts with the Codefresh Runner installation. 
 
-* Registry Name -  unique name for this configuration.
-* Region - AWS region.
-* Check the Box *Resolve credentials from service account*
+### Kubernetes service account setup
+To use an IAM role, you must set up a Kubernetes service account, as described in the [AWS Documentation](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html){:target="\_blank"}.  
+You can define the service account at four different levels, based on the required priority. The levels are listed below in ascending order of priority:
 
-{{site.data.callout.callout_info}}
-##### Note
-
-This option is for hybrid customers who use the Codefresh Runner on their accounts. You will also need to make sure you have set up a Kubernetes service account to use an IAM role. You can follow the [AWS Documentation](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html)
-{{site.data.callout.end}}
-
-There are four different levels to define the service account; Runtime, Account, Pipeline, Trigger. 
-
-The Runtime level is the lowest in the priority.  You can define it in the Runtime Specification under runtimeScheduler > Cluster (same level as namespace) and specify the service account. The key for this will be `serviceAccount`.  You can use the default and make sure you have the correct annotation added to the Service Account. Another option is to create a new service account with the proper permissions and annotations.
+* Runtime  
+  The runtime level has the lowest priority.  Define it in the Runtime Specification under `runtimeScheduler > Cluster` (same level as `namespace`), and specify the service account. The key is `serviceAccount`. Use the default, and make sure you have the correct annotation added to the service account. Another option is to create a new service account with the proper permissions and annotations.
 
 ```yaml
 runtimeScheduler:
@@ -73,74 +66,114 @@ runtimeScheduler:
       accountId: 5c1658d1736122ee1114c842
       selector: docker-desktop
     serviceAccount: codefresh-engine
+
 ```
 
-The Account level is the next priority.  To define the service account, you will go to Account Settings > Pipeline Settings > Advanced Options.  Here there will be an option called *Authenticate to ECR using this service account*. Here you will type in the Kubernetes service account.
+* Account  
+  The Account-level service account has higher priority than the runtime-level service account.  To define the service account at the account level, turn on the setting as part of the integration as described below.
 
-Following the Account level is the Pipeline level.  You will go to the pipeline you want > Settings > Runtime, then define the Service Account.
+* Pipeline  
+  The Pipeline-level service account has higher priority than the account-level service account. Define the service account as part of the pipeline's runtime settings (Pipeline > Settings > Runtime).
 
-The last and highest priority is the Trigger.  You will go to the pipeline you want > Workflow > Triggers (modify or add) > Advanced Options, and you can define the Service Account.
+* Trigger  
+  The Trigger-level service account has the highest priority. Define the service account as part of the trigger settings for the specific pipeline (Workflow > Triggers (modify or add) > Advanced Options).
+
+
+### How to
+
+**Before you begin**  
+* Define a Kubernetes  service account for the runtime, account, pipeline, or pipeline-trigger
+
+**How to**  
+
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipeline Integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
+1. Select **Docker Registries** and then click **Configure**.
+1. From the **Add Registry Provider** dropdown, select **Amazon ECR**.
+1. Do the following:  
+  * **Registry name**: Enter a unique name for this configuration.
+  * **Region**: Select the AWS region. 
+  * Select **Resolve credentials from servce account**.
+
+  The Access Key ID and Secret Access Key fields are disabled.
+
+{% include image.html 
+	lightbox="true" 
+	file="/images/integrations/docker-registries/add-amazon-ecr-registry.png" 
+	url="/images/integrations/docker-registries/add-amazon-ecr-registry.png" 
+	alt="Amazon EC2 Container Registry settings" 
+  caption="Amazon EC2 Container Registry settings" 
+	max-width="60%" %}
+
+{:start="5"}
+1. To verify the connection details, click **Test Connection**.
+1. To apply the changes, click **Save**.
+
+
 
 ## Pushing Docker images to Amazon ECR
 
-There are 2 ways to push images 
+There are two ways to push images:
 
-1. Using the YAML [push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/) (recommended)
-1. Promoting manually an image (shown below)
+1. (Recommended) Using the YAML [push step]({{site.baseurl}}/docs/pipelines/steps/push/).  
+1. Manually promoting manually an image  (described below)
 
-For more details on how to push a Docker image in a pipeline see the [build and push example]({{site.baseurl}}/docs/yaml-examples/examples/build-and-push-an-image/).
+For more details on how to push a Docker image in a pipeline see the [build and push example]({{site.baseurl}}/docs/example-catalog/ci-examples/build-and-push-an-image/).
 
 
 
-## Manually promoting an image
+### Manually promoting an image
+
+<!-- may need to rewrite this -->
 
 The **Images** view has an option to manually push images to a registry.
-
-{:start="1"}
-1. Click on the **Promote** button
+You need to specify the repository name as the name of your repository as set in ECR, as in the example below.
 
 {% include image.html 
 lightbox="true" 
-file="/images/15695ce-promote.png" 
-url="/images/15695ce-promote.png"
-alt="promote.png"
+file="/images/integrations/docker-registries/ecr/ecr-manual-promote-repo-name.png" 
+url="/images/integrations/docker-registries/ecr/ecr-manual-promote-repo-name.png"
+alt="Repository name in ECR"
+caption ="Repository name in ECR"
 max-width="40%"
 %}
 
-{:start="2"}
-2. On the promotion dialog set
-   - Repository Name - name of your repository as it set in ECR
+1. In the Codefresh UI, from Artifacts in the sidebar, select [**Images**](https://g.codefresh.io/2.0/images){:target="\_blank"}. 
+1. Click **Promote**.
 
-{% include image.html 
+ {% include image.html 
 lightbox="true" 
-file="/images/7b7c876-ecr2.png" 
-url="/images/7b7c876-ecr2.png"
-alt="ecr2.png"
+file="/images/integrations/docker-registries/ecr/ecr-manual-promote-button.png" 
+url="/images/integrations/docker-registries/ecr/ecr-manual-promote-button.png"
+alt="Promote image icon"
+caption="Promote image icon"
 max-width="40%"
 %}
-   
-   - Tag - select a tag (the tag will appear after the `:` e.g. `repository-name:tag`)
-   - Registry - your ECR configuration
+
+{:start="3"}
+1. Do the following:
+  * Enter the **Repository Name**.
+  * Enter the **Tag**. Copy and paste the text after the  `:` in the Repository Name. For example, `repository-name:tag`.
+  * From the **Registry** dropdown, select your ECR configuration.
 
 {% include image.html 
 lightbox="true" 
-file="/images/f2b0ec5-ecr3.png" 
-url="/images/f2b0ec5-ecr3.png"
-alt="ecr3.png"
+file="/images/integrations/docker-registries/ecr/ecr-manual-promote-settings.png" 
+url="/images/integrations/docker-registries/ecr/ecr-manual-promote-settings.png"
+alt="Image promotion settings"
+caption="Image promotion settings"
 max-width="40%"
 %}   
 
-{:start="3"}
-3. Click the **Promote** button
+{:start="4"}
+3. Click **Promote**.
 
 
->It is possible to change the image name if you want, but make sure that the new name exist as a repository in ECR
+>It is possible to change the image name if you want, but make sure that the new name exists as a repository in ECR.
 
 
+## Related articles
+[Docker registries for pipeline integrations]({{site.baseurl}}/docs/integrations/docker-registries)  
+[Working with Docker Registries]({{site.baseurl}}/docs/ci-cd-guides/working-with-docker-registries/)  
+[Push step]({{site.baseurl}}/docs/pipelines/steps/push/)  
+[Building and pushing an image]({{site.baseurl}}/docs/example-catalog/ci-examples/build-and-push-an-image/)  
 
-
-## What to read next
-
-* [Working with Docker Registries]({{site.baseurl}}/docs/ci-cd-guides/working-with-docker-registries/)
-* [Push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/)
-* [Building and pushing an image]({{site.baseurl}}/docs/yaml-examples/examples/build-and-push-an-image/)
