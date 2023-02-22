@@ -2,8 +2,6 @@
 title: "Codefresh IP addresses"
 description: "How to allowlist the IP addresses of the Codefresh platform"
 group: administration
-redirect_from:
-  - /docs/administration/platform-ip-addresses/
 toc: true
 
 ---

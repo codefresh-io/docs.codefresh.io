@@ -10,7 +10,7 @@ You will now make a change in the application manifest, and update the image tag
 
 ### Before you begin
 
-* [Create resources for application]({{site.baseurl}}/docs/getting-started/quick-start/create-app-specs/)
+* [Create resources for application]({{site.baseurl}}/docs/quick-start/gitops-quick-start/create-app-specs/)
 
 
 ### Update image tag in rollout.yaml
