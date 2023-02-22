@@ -99,7 +99,7 @@ The table describes _all_ the arguments required for CI integrations in general.
 
 ## Related articles
 [Container registry GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/container-registries/)  
-[Issue tracking GitOps intergrations]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/)  
+[Issue tracking GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/)  
 
 
 

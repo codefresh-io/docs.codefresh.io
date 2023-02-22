@@ -300,7 +300,7 @@ metadata:
 | `externalResources `       |  `spec` | array | Optional external files available to this pipeline |
 | `triggers`       |  `spec` | array | a list of [Git triggers]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/) that affect this pipeline |
 | `options`       |  `spec` | object | Extra options for the pipeline |
-| `enableNotifications`       |  `options` | boolean | if false the pipeline will not send notifications to [Slack]({{site.baseurl}}/docs/integrations/notifications/slack-intergration/) and status updates back to the Git provider |
+| `enableNotifications`       |  `options` | boolean | if false the pipeline will not send notifications to [Slack]({{site.baseurl}}/docs/integrations/notifications/slack-integration/) and status updates back to the Git provider |
 
 ### Pipeline variables
 
