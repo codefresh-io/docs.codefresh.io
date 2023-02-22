@@ -3,7 +3,6 @@ title: "Variables in pipelines"
 description: ""
 group: pipelines
 redirect_from:
-  - /docs/pipelines/variables/
   - /docs/variables/
   - /docs/codefresh-yaml/variables/
 toc: true
