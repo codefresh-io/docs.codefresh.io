@@ -459,6 +459,9 @@ builder:
 
 ## Upgrade to 1.4.0 and higher
 
+Affected values:
+- `HorizontalPodAutoscaler` is renamed to `hpa`
+
 > Update `kcfi` tool to the latest [0.5.18](https://github.com/codefresh-io/kcfi/releases/tag/0.5.18){:target="\_blank"} version
 
 This major release **deprecates** the following Codefresh managed charts and replaces them with Bitnami charts:
