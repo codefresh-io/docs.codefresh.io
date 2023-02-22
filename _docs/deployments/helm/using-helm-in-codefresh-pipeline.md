@@ -7,6 +7,8 @@ redirect_from:
   - /docs/new-helm/using-helm-in-codefresh-pipeline/
   - /docs/deployments/helm/create-helm-artifacts-using-codefresh-pipeline/
   - /docs/install-helm-chart-using-codefresh-pipeline/  
+  - /docs/new-helm/helm2-support/
+  - /docs/new-helm/integration-tests-with-helm/
 toc: true
 ---
 

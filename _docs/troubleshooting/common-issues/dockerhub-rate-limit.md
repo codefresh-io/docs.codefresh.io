@@ -41,7 +41,7 @@ If you don't have a Docker Hub integration in Codefresh, all your Docker images 
 
 ## Solution
 
-* Add at least one Docker Hub integration in Codefresh, as described in [Docker Hub integrations]({{site.baseurl}}/docs/integrations/ci-integrations/docker-registries/docker-hub/).
+* Add at least one Docker Hub integration in Codefresh, as described in [Docker Hub integrations]({{site.baseurl}}/docs/integrations/docker-registries/docker-hub/).
 
 {% include image.html 
 	lightbox="true" 

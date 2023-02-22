@@ -4,6 +4,7 @@ description: "Use the Kubernetes Codefresh Installer to upgrade the Codefresh On
 group: installation
 redirect_from:
   - /docs/enterprise/codefresh-on-prem-upgrade/
+  - /docs/administration/codefresh-on-prem-upgrade/
 toc: true
 ---
 Upgrade the Codefresh on-premises platform to the latest version:
@@ -458,6 +459,9 @@ builder:
 
 ## Upgrade to 1.4.0 and higher
 
+Affected values:
+- `HorizontalPodAutoscaler` is renamed to `hpa`
+
 > Update `kcfi` tool to the latest [0.5.18](https://github.com/codefresh-io/kcfi/releases/tag/0.5.18){:target="\_blank"} version
 
 This major release **deprecates** the following Codefresh managed charts and replaces them with Bitnami charts:
@@ -472,20 +476,28 @@ For more information, see [bitnami/postgresql](https://github.com/bitnami/charts
 
 > If in `config.yaml`, `postgresql.enabled=false` indicating that you are running and [**external** Postgresql service]({{site.baseurl}}/docs/installation/codefresh-on-prem/#configuring-an-external-postgres-database), you can ignore the configuration instructions.
 
+> **Important!** Run the upgrade with `global.seedJobs=true` flag:
+
+```yaml
+global:
+  seedJobs: true
+```
+
 #### Manual backup and restore
+
 
 **Before the upgrade:**
 
-1.Obtain the PostgresSQL administrator password:
+1. Obtain the PostgresSQL administrator password:
 ```shell
 NAMESPACE=codefresh
 export PGPASSWORD=$(kubectl get secret --namespace $NAMESPACE cf-postgresql -o jsonpath="{.data.postgres-password}" | base64 --decode)
 ```
-1.Forward the PostgreSQL service port and place the process in the background:
+1. Forward the PostgreSQL service port and place the process in the background:
 ```shell
 kubectl port-forward --namespace $NAMESPACE svc/cf-postgresql 5432:5432 &
 ```
-1.Create a directory for the backup files and make it the current working directory:
+1. Create a directory for the backup files and make it the current working directory:
 ```shell
 mkdir psqlbackup
 chmod o+w psqlbackup
@@ -559,9 +571,16 @@ For more information, see [bitnami/mongodb](https://github.com/bitnami/charts/tr
 
 > If in `config.yaml`, `mongo.enabled=false`, indicating that you are running an [**external** MongoDB service]({{site.baseurl}}/docs/installation/codefresh-on-prem/#configuring-an-external-mongodb), you can ignore the configuration updates.
 
+> **Important!** Run the upgrade with `global.seedJobs=true` flag:
+
+```yaml
+global:
+  seedJobs: true
+```
+
 #### Manual backup and restore
 
-**Before the upgrade:**
+**Before the upgrade:**  
 
 1. Obtain the MongoDB administrator password:
 ```shell

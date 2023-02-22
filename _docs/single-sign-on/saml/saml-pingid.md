@@ -3,6 +3,8 @@ title: PingID SSO via SAML
 description: Setting up PingID SSO via SAML
 group: single-sign-on
 sub_group: saml
+redirect_from:
+ - /docs/single-sign-on/saml/saml-pingidsso/
 toc: true
 ---
 

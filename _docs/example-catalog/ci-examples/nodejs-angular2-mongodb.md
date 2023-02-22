@@ -6,7 +6,8 @@ sub_group: ci-examples
 redirect_from:
   - /docs/yaml-examples/examples/nodejs-angular2-mongodb/
   - /docs/nodejs-angular2-mongodb/
-  - /docs/on-demand-test-environment/example-compositions/nodejs-angular2-mongodb/  
+  - /docs/on-demand-test-environment/example-compositions/nodejs-angular2-mongodb/
+  - /docs/learn-by-example/python/voting-app/  
 toc: true
 ---
 This tutorial will walk you through the process of adding the following:

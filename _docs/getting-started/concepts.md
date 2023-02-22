@@ -2,6 +2,8 @@
 title: "Concepts in Codefresh"
 description: "Understand terminology and nuances in Codefresh"
 group: getting-started
+redirect_from:
+  - /docs/getting-started/faq/
 toc: true
 ---
 <!--- remove WIP from header once complete -->

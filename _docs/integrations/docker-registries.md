@@ -8,6 +8,7 @@ redirect_from:
   - /docs/docker-registries/
   - /docs/codefresh-registry/  
   - /docs/docker-registries/codefresh-registry/
+  - /docs/docker-registries/cfcr-deprecation/
 toc: true
 ---
 Codefresh enables you to integrate with several Docker container registries, including (but not limited to):

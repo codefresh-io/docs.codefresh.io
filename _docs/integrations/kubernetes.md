@@ -2,6 +2,9 @@
 title: "Kubernetes pipeline integration"
 description: "How Codefresh supports Kubernetes clusters"
 group: integrations
+redirect_from:
+ - /docs/deploy-to-kubernetes/add-kubernetes-cluster/
+ - /docs/deploy-to-kubernetes/deployment-options-to-kubernetes/
 toc: true
 ---
 
@@ -627,7 +630,7 @@ Please make sure the certs are in order Root -> Intermediate -> Server.
 
 <!--- ## Connecting a Kubernetes cluster to Codefresh
 
-Like all other Codefresh integrations, Kubernetes clusters are [connected once]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/) on an Account level. You can add a cluster from a specific cloud provider
+Like all other Codefresh integrations, Kubernetes clusters are [connected once]({{site.baseurl}}) on an Account level. You can add a cluster from a specific cloud provider
 or a "generic" cluster for any compliant cluster:
 
 {% 

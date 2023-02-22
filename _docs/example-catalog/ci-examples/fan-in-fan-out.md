@@ -29,7 +29,7 @@ You can achieve parallelism in your Codefresh pipelines by using the following:
 
 ## Prerequisites
 
-- A [Codefresh account]({{site.baseurl}}/_docs/administration/account-user-management/create-codefresh-account/)
+- A [Codefresh account]({{site.baseurl}}/docs/administration/account-user-management/create-codefresh-account/)
 
 ## Example project
 

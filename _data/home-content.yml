@@ -160,7 +160,7 @@
     - title: Shared configuration
       localurl: /docs/pipelines/configuration/shared-configuration/
     - title: Using secrets
-      localurl: /docs/pipelines//configuration/secrets-store/
+      localurl: /docs/pipelines/configuration/secrets-store/
     - title: Caching in pipelines
       localurl: /docs/pipelines/pipeline-caching/
     - title: Running pipelines locally
@@ -277,7 +277,16 @@
       localurl: /docs/reference/shared-configuration/
 
 
-
+- title: "Incubation"
+  icon: images/home-icons/plugins.svg
+  url: ''
+  links:
+  - title: Windows Containers Support
+    localurl: /docs/incubation/windows
+  - title: Mac OSX and iOS builds
+    localurl: /docs/incubation/osx-ios-builds
+  - title: ARM architecture Support
+    localurl: /docs/incubation/arm-support
 
 
 

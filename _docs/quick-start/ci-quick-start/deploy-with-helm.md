@@ -5,6 +5,7 @@ group: quick-start
 sub_group: ci-quick-start
 redirect_from:
   - /docs/getting-started/helm-quick-start-guide/
+  - /docs/new-helm/add-helm-repository/
 toc: true
 ---
 
@@ -16,23 +17,23 @@ The Helm quick start guides you through using [Helm](https://helm.sh/){:target="
 
 
 
-<!--- Helm offers several extra features on top of vanilla Kubernetes deployments, some of which are: 
+ Helm offers several extra features on top of vanilla Kubernetes deployments, some of which are: 
 
 * The ability to group multiple Kubernetes manifests together and treat them as a single entity (for deployments, rollbacks, and storage). Groups of Manifests are called [Helm Charts](https://helm.sh/docs/topics/charts/).
 * Built-in templating for Kubernetes manifests, putting an end to custom template systems that you might use for replacing things such as the Docker tag inside a manifest.
 * The ability to create Charts of Charts which contain the templates as well as default values. This means
 that you can describe the dependencies of an application in the service level and deploy everything at the same time.
-* The ability to create catalogs of applications (Helm repositories) that function similar to traditional package repositories (think npm registry, cpan, maven central, ruby gems etc).  -->
+* The ability to create catalogs of applications (Helm repositories) that function similar to traditional package repositories (think npm registry, cpan, maven central, ruby gems etc). 
 
 
-<!---   and has native support for Helm in a number of ways:
+Codefresh has native support for Helm in a number of ways:
 
 1. Easily deploy existing Helm packages to your Kubernetes cluster overriding the default values.
 1. Easily create new Helm packages and push them to a Helm repository.
 1. View Helm releases and even [perform rollbacks]({{site.baseurl}}/docs/deployments/helm/helm-releases-management/) from the Helm Dashboard.
-1. You can [browse Helm packages]({{site.baseurl}}/docs/new-helm/add-helm-repository/)  both from public repositories and your internal Helm repository.
-1. You can see Helm releases in the [Environment dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/environment-dashboard/)
-1. You can promote Helm releases with the [Promotion dashboard]({{site.baseurl}}/docs/new-helm/helm-environment-promotion/)  -->
+1. You can [browse Helm packages]({{site.baseurl}}/docs/integrations/helm/)  both from public repositories and your internal Helm repository.
+1. You can see Helm releases in the [Environment dashboard]({{site.baseurl}}/docs/deployments/kubernetes/environment-dashboard/)
+1. You can promote Helm releases with the [Promotion dashboard]({{site.baseurl}}/docs/deployments/helm/helm-environment-promotion/) 
 
 
 This quick start will show you how to:
@@ -47,11 +48,11 @@ For reasons of simplicity, we will use the [default Docker registry]({{site.base
 
 
 ## Prerequisites
-* A [Kubernetes cluster]({{site.baseurl}}/docs/integrations/kubernetes/add-kubernetes-cluster/) in Codefresh
+* A [Kubernetes cluster]({{site.baseurl}}/docs/integrations/kubernetes/#connect-a-kubernetes-cluster/) in Codefresh
 * The Docker registry you connected to your Codefresh account in the CI pipeline quick start 
 * An application that has a Dockerfile and a [Helm chart]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/#helm-setup) 
 * Cluster with pull access to your default Docker registry
-  If you are not familiar, read [Manually deploy Docker image to Kubernetes]({{site.baseurl}}/docs/quick-start/ci-quick-start/deploy-to-kubernetes/#manually-deploy-docker-image-to-kubernetes), or read about [secrets]({{site.baseurl}}/docs/deployments/kubernetes/deploy-to-kubernetes/create-image-pull-secret/) <!--- ask Kostis -->
+  If you are not familiar, read [Manually deploy Docker image to Kubernetes]({{site.baseurl}}/docs/quick-start/ci-quick-start/deploy-to-kubernetes/#manually-deploy-docker-image-to-kubernetes), or read about [secrets]({{site.baseurl}}/docs/ci-cd-guides/access-docker-registry-from-kubernetes/) <!--- ask Kostis -->
 
 If you want to follow along, feel free to fork this [repository](https://github.com/codefresh-contrib/python-flask-sample-app){:target="\_blank"} in your Git account and look at the [with-helm](https://github.com/codefresh-contrib/python-flask-sample-app/tree/with-helm){:target="\_blank"} branch.
 

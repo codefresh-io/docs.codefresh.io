@@ -2,6 +2,8 @@
 title: "Codefresh IP addresses"
 description: "How to allowlist the IP addresses of the Codefresh platform"
 group: administration
+redirect_from:
+  - /docs/administration/platform-ip-addresses/
 toc: true
 
 ---
@@ -37,7 +39,6 @@ All the IPs are NAT gateways, and need to enable specific IPs instead of ranges.
 - 44.228.66.171
 - 44.238.167.159
 - 44.237.63.217
-- 44.237.63.217
 - 52.6.148.44
 - 52.73.90.9
 - 52.72.0.154
@@ -46,6 +47,8 @@ All the IPs are NAT gateways, and need to enable specific IPs instead of ranges.
 - 44.205.132.73
 - 34.235.30.144
 - 54.160.88.80  
+
+> We have a [plain text version of the IP addresses]({{site.baseurl}}/docs/administration/cf-ip4.txt). Recommended for monitoring changes.
  
 ## Codefresh IPs for Hosted GitOps Runtimes
 

@@ -158,13 +158,13 @@ max-width="40%"
 {% include image.html 
 lightbox="true" 
 file="/images/integrations/docker-registries/ecr/ecr-manual-promote-settings.png" 
-url="/images/f2b0ec5-ecr3.png"
+url="/images/integrations/docker-registries/ecr/ecr-manual-promote-settings.png"
 alt="Image promotion settings"
 caption="Image promotion settings"
 max-width="40%"
 %}   
 
-{:start="3"}
+{:start="4"}
 3. Click **Promote**.
 
 

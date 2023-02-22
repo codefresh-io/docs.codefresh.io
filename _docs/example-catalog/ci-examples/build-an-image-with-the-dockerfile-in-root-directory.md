@@ -7,13 +7,14 @@ redirect_from:
   - /docs/yaml-examples/examples/build-an-image-with-the-dockerfile-in-root-directory/
   - /docs/build-an-image-dockerfile-in-root-directory/
   - /docs/deploy-to-kubernetes/get-ready-to-deploy/build-an-image/
+  - /docs/yaml-examples/examples/build-an-image-dockerfile-in-root-directory/
 toc: true
 ---
 Building a Docker image is one of the basic operations in Codefresh pipelines.
 
 >The source code of the repository is at [https://github.com/codefreshdemo/cf-yml-example-build-dockerfile-inroot](https://github.com/codefreshdemo/cf-yml-example-build-dockerfile-inroot){:target="\_blank"}. Feel free to fork it if you want to follow along.
 
-If you don't have a Codefresh account already, you can easily create a free one from the [sign-up page]({{site.baseurl}}/docs/administration/account-user-management/create-a-codefresh-account/).
+If you don't have a Codefresh account already, you can easily create a free one from the [sign-up page]({{site.baseurl}}/docs/administration/account-user-management/create-codefresh-account/).
 
 
 ## Building a Dockerfile from the root folder

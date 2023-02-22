@@ -449,7 +449,7 @@ by simply telling the load balancer to move 100% of traffic back to the previous
 {% include image.html 
 lightbox="true" 
 file="/images/guides/progressive-delivery/04_canary_finished.png" 
-url="/images/guides/progressive-delivery/04_canary_finished" 
+url="/images/guides/progressive-delivery/04_canary_finished.png" 
 alt="Old application version is discarded. Only new version remains." 
 caption="Old application version is discarded. Only new version remains."
 max-width="90%" 

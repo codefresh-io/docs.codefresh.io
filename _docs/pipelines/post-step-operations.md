@@ -6,6 +6,7 @@ sub_group: steps
 redirect_from:
   - /docs/pipelines/post-step-operations/
   - /docs/post-step-operations/
+  - /docs/codefresh-yaml/post-step-operations/
 toc: true
 ---
 Post-step operations are a set of optional predefined processes that can be configured on any step. These operations will be executed once the step has completed. The post-step operations allow you to annotate your builds, images, and pipelines with extra metadata or run other steps.
@@ -49,7 +50,7 @@ step_name:
 
 ## Available Post-Step Operations
 
-- [Image Metadata]({{site.baseurl}}/docs/pipelines/metadata-annotations/)
+- [Image Metadata]({{site.baseurl}}/docs/pipelines/docker-image-metadata/)  
 - [Custom annotations]({{site.baseurl}}/docs/pipelines/annotations/)
 - [Hooks in pipelines]({{site.baseurl}}/docs/pipelines/hooks/)
 

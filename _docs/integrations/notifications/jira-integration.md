@@ -3,6 +3,8 @@ title: "Jira notification integrations for piplines"
 description: ""
 group: integrations
 sub_group: notifications
+redirect_from:
+ - /docs/integrations/notifications/jira-integration/
 toc: true
 ---
 Codefresh integrates with Jira in several ways:

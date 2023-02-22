@@ -2,6 +2,8 @@
 title: "Pipeline execution context"
 description: "A managed entity to make API calls on your behalf during pipeline execution"
 group: administration
+redirect_from:
+ - /docs/administration/pipeline-execution-context/
 toc: true
 ---
 

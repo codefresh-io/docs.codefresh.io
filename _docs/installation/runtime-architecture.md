@@ -15,7 +15,7 @@ The most important components are the following:
 
 **Pipeline execution environment**:  The Codefresh engine component is responsible for taking pipeline definitions and running them in managed Kubernetes clusters by automatically launching the Docker containers that each pipeline needs for its steps.
 
-**External actors**. Codefresh offers a [public API]({{site.baseurl}}/docs/integrations/ci-integrations/codefresh-api/) that is consumed both by the Web user interface and the <!--should i differentiate between the CI Cli and GitOps CLI -->[Codefresh CLI](https://codefresh-io.github.io/cli/){:target="\_blank"}. The API is also available for any custom integration with external tools or services.
+**External actors**. Codefresh offers a [public API]({{site.baseurl}}/docs/integrations/codefresh-api/) that is consumed both by the Web user interface and the <!--should i differentiate between the CI Cli and GitOps CLI -->[Codefresh CLI](https://codefresh-io.github.io/cli/){:target="\_blank"}. The API is also available for any custom integration with external tools or services.
 
 ### Runner topology
 

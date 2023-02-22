@@ -6,6 +6,7 @@ sub_group: steps
 redirect_from:
   - /docs/git-clone/
   - /docs/codefresh-yaml/steps/git-clone/  
+  - /docs/troubleshooting/git-step-migration/
 toc: true
 ---
 Clones a Git repository to the filesystem.
@@ -68,7 +69,7 @@ step_name:
 -  Working Directory
 
 {{site.data.callout.callout_info}}
-If you want to extend the git-clone step you can use the freestyle step. Example how to do it you can find [here]({{site.baseurl}}/docs/example-catalog/git-clone-private-repository-using-freestyle-step/).
+If you want to extend the git-clone step you can use the freestyle step. Example how to do it you can find [here]({{site.baseurl}}/docs/example-catalog/ci-examples/git-clone-private-repository-using-freestyle-step/).
 {{site.data.callout.end}}
 
 ## Basic clone step (project-based pipeline)
@@ -429,7 +430,7 @@ For more details, see the [behind the firewall page]({{site.baseurl}}/docs/insta
 ## Related articles
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)   
 [YAML steps]({{site.baseurl}}/docs/pipelines/steps/)   
-[Custom Git Commands]({{site.baseurl}}/docs/example-catalog/git-checkout-custom/)  
+[Custom Git Commands]({{site.baseurl}}/docs/example-catalog/ci-examples/git-checkout-custom/)  
 
 
 

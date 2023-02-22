@@ -5,6 +5,8 @@ group: pipelines
 redirect_from:
   - /docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/
   - /docs/configure-ci-cd-pipeline/
+  - /docs/how-to-guides/migrating-from-drone-io/
+  - /docs/how-to-guides/migrating-from-travis-ci/
 toc: true
 ---
 

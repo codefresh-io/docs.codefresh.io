@@ -6,6 +6,7 @@ sub_group: ci-examples
 redirect_from:
   - /docs/yaml-examples/examples/run-integration-tests/
   - /docs/run-integration-tests/
+  - /docs/learn-by-example/general/selenium-test/
 toc: true
 ---
 In this example, we will see a Java/Tomcat project using JUnit for unit tests and Spock for integration tests. For the integration test phase, we will launch both the application and the tests in order to run the integration tests against a real web instance (without mocking).
