@@ -5,6 +5,7 @@ group: single-sign-on
 sub_group: oidc
 redirect_from:
   - /docs/enterprise/single-sign-on/sso-okta/
+  - /docs/administration/single-sign-on/sso-okta/  
 toc: true
 ---
 Set up SSO for Okta using OIDC.  
@@ -186,7 +187,7 @@ only affects teams/groups, and not individual users.
 ### Sync teams after initial SSO setup
 There are two ways to set up automatic syncing of teams:
 
-* Pipeline running a CLI command: Create a Codefresh pipeline the runs the CLI command `codefresh synchronize teams my-okta-client-name -t okta` as explained in the [pipeline sync page]({{site.baseurl}}/docs/single-sign-on/sso-setup-oauth2/#syncing-of-teams-after-initial-sso-setup).
+* Pipeline running a CLI command: Create a Codefresh pipeline the runs the CLI command `codefresh synchronize teams my-okta-client-name -t okta` as explained in the [pipeline sync page]({{site.baseurl}}/docs/single-sign-on/team-sync).
 * Turn on the auto-sync toggle as part of the SSO configuration settings.:
    {% include image.html 
   lightbox="true" 

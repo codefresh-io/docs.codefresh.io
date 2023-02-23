@@ -7,7 +7,7 @@ toc: true
 ---
 
 Set up SSO for OKta using SAML.
-For a general overview on SAML, see [Setting up SAML2 Federated SSO]({site.baseurl}}/docs/single-sign-on/saml).
+For a general overview on SAML, see [Setting up SAML2 Federated SSO]({{site.baseurl}}/docs/single-sign-on/saml/).
 
 >If you do not see SAML in the SSO list, please create a support ticket to enable SAML for your account.
 
