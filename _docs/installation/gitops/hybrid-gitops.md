@@ -800,9 +800,9 @@ If you are not sure which OS to select for `curl`, simply select one, and Codefr
 ## Install Hybrid GitOps Runtime  
 
 ### Before you begin
-* Make sure you meet the [minimum requirements]({{site.baseurl}}/docs/runtime/requirements/#minimum-system-requirements) for installation
+* Make sure you meet the [minimum requirements](#minimum-system-requirements) for installation
 * Make sure you have [Runtime token with the required scopes from your Git provider]({{site.baseurl}}/docs/reference/git-tokens)
-* [Download or upgrade to the latest version of the CLI]({{site.baseurl}}/docs/installation/cli/upgrade-gitops-cli)
+* [Download or upgrade to the latest version of the CLI]({{site.baseurl}}/docs/installation/gitops/upgrade-gitops-cli/)
 * Review [Hybrid Runtime installation flags](#hybrid-runtime-installation-flags)
 * For ingress-based runtimes, make sure your ingress controller is configured correctly:
   * [Ambasador ingress configuration]({{site.baseurl}}/docs/runtime/requirements/#ambassador-ingress-configuration)

@@ -15,7 +15,7 @@ In this example we will use a demo Node.js application that will be packaged in 
 
 The source code of the repository is at [https://github.com/codefreshdemo/cf-example-build-and-push](https://github.com/codefreshdemo/cf-example-build-and-push){:target="\_blank"}. Feel free to fork it if you want to follow along.
 
-If you don't have a Codefresh account already, you can easily create a free one from the [sign-up page]({{site.baseurl}}/docs/administration/account-user-management/create-a-codefresh-account/).
+If you don't have a Codefresh account already, you can easily create a free one from the [sign-up page]({{site.baseurl}}/docs/administration/account-user-management/create-codefresh-account/).
 
 
 ## Building and push Docker image to default registry

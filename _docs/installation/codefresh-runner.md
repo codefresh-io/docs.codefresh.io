@@ -1479,7 +1479,7 @@ There are two options to create a user:
 
 1. Do one of the following:
   * To create a Codefresh user with `ClusterAdmin` rights in the Rancher, start from _step 2_.
-  * To use your personal user account with `ClusterAdmin` privileges for the installation, continue from [Step 3: Install the Runner](step-3-install-the-runner).
+  * To use your personal user account with `ClusterAdmin` privileges for the installation, continue from [Step 3: Install the Runner](#step-3-install-the-runner).
   
 1. In the Rancher UI do the following:
   * Click **Security** at the top, and then select **Users**.

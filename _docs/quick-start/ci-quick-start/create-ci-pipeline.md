@@ -155,7 +155,7 @@ You can define any name for the  project, the most common example being the name
 
 #### Before you begin
 
-* [Connect a Docker registry to Codefresh]((#connect-a-docker-registry-to-codefresh))
+* [Connect a Docker registry to Codefresh](#connect-a-docker-registry-to-codefresh)
 
 #### How to
 1. In the Codefresh UI, expand Pipelines in the sidebar, and select **Projects**.
