@@ -6,7 +6,7 @@ toc: true
 ---
 
 Apart from traditional push-based Helm deployments, you can use Codefresh for [GitOps deployments](https://codefresh.io/gitops/){:target="\_blank"} powered by Argo CD.  
-For an overview on GitOps, Argo CD, and how Codefresh implements both, see [Codefresh and GitOps]({{site.baseurl}}docs/getting-started/gitops-codefresh/).
+For an overview on GitOps, Argo CD, and how Codefresh implements both, see [Codefresh and GitOps]({{site.baseurl}}/docs/getting-started/gitops-codefresh/).
 
 
 Even though GitOps is not specific to Kubernetes, current GitOps tools work great with Kubernetes in the form of cluster controllers. The GitOps controller monitors the state of the Git repository, and when there is a commit, instructs the cluster to match the same state.
@@ -17,8 +17,8 @@ Codefresh has native support for GitOps, from creating GitOps applications, depl
 
 {% include image.html
   lightbox="true"
-  file="/images/guides/gitops/app-dashboard.png"
-  url="/images/guides/gitops/app-dashboard.png"
+  file="/images/applications/app-dashboard-main-view.png"
+  url="/images/applications/app-dashboard-main-view.png"
   alt="GitOps Apps dashboard"
   caption="GitOps Apps dashboard"  
   max-width="60%"
@@ -195,20 +195,11 @@ For this guide, we'll connect Docker Hub to Codefresh as the container registry 
 1. For Docker Hub:
     * Complete the [prerequisites]({{site.baseurl}}/docs/gitops-integrations/container-registries/dockerhub/#prerequisites)  
     * Filter by **Container Registry**, select **Docker Hub**, and click **Configure**.
-    * Define the [integration settings for Docker Hub]({{site.baseurl}}/docs/docs/gitops-integrations/container-registries/dockerhub/#docker-hub-gitops-integration-settings-in-codefresh).
+    * Define the [integration settings for Docker Hub]({{site.baseurl}}/docs/gitops-integrations/container-registries/dockerhub/#docker-hub-gitops-integration-settings-in-codefresh).
 
 
 Don't forget to click **Commit**. It may take a few moments for the new integration to be synced to the cluster before it appears in the list of **Active** integrations.
 
-
- {% include image.html
-  lightbox="true"
-  file="/images/guides/gitops/gitops-deploy-active-integrations.png"
-  url="/images/guides/gitops/gitops-deploy-active-integrations.png"
-  alt="Active Jira and DockerHub integrations for GitOps"
-  caption="Active Jira and DockerHub integrations for GitOps"  
-  max-width="60%"
- %}
 
 ### Set up Codefresh pipeline integration for GitOps
 After completing the Jira and Docker Hub integrations, we can set up the pipeline integration for GitOps. 
@@ -220,7 +211,7 @@ Read more in [GitOps CI integrations]({{site.baseurl}}/docs/gitops-integrations/
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
 1. From Configuration in the sidebar, select **GitOps Integrations**.
 1. Filter by **CI tools**, select **Codefresh** and click **Add**.
-1. Define the i[ntegration settings for Codefresh pipelines]({{site.baseurl}}/docs/docs/gitops-integrations/codefresh-classic/#ci-pipeline-gitops-integration-settings).  
+1. Define the [integration settings for Codefresh pipelines]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/codefresh-classic/).  
 
 
 
@@ -334,8 +325,8 @@ After you create an ArgoCD application in Codefresh, you can track and monitor t
 
 {% include image.html
   lightbox="true"
-  file="/images/guides/gitops/app-dashboard.png"
-  url="/images/guides/gitops/app-dashboard.png"
+  file="/images/applications/app-dashboard-main-view.png"
+  url="/images/applications/app-dashboard-main-view.png"
   alt="GitOps Apps dashboard"
   caption="GitOps Apps dashboard"  
   max-width="80%"
@@ -359,8 +350,8 @@ When you select an application, the application header displayed at the top prov
 
 {% include image.html
   lightbox="true"
-  file="/images/guides/gitops/application-header.png"
-  url="/images/guides/gitops/application-header.png"
+  file="/images/applications/application-header.png"
+  url="/images/applications/application-header.png"
   alt="GitOps Apps: Application header"
   caption="GitOps Apps: Application header"  
   max-width="100%"
@@ -381,8 +372,8 @@ This is the tab displayed when you select the application from the GitOps Apps d
 {% include
 image.html
 lightbox="true"
-file="/images/guides/gitops/app-current-state.png"
-url="/images/guides/gitops/app-current-state.png"
+file="/images/quick-start/cdops-app-current-state.png"
+url="/images/quick-start/cdops-app-current-state.png"
 alt="Application resources in Current State tab"
 caption="Application resources in Current State tab"
 max-width="50%"
@@ -408,8 +399,8 @@ To view day-to-day deployment information for the selected time period, mouse ov
 {% include
 image.html
 lightbox="true"
-file="/images/guides/gitops/app-timeline.png"
-url="/images/guides/gitops/app-timeline.png"
+file="/images/applications/app-dashboard-timeline.png"
+url="/images/applications/app-dashboard-timeline.png"
 alt="Application deployments in Timeline tab"
 caption="Application deployments in Timeline tab"
 max-width="50%"
@@ -440,8 +431,8 @@ For information on the GitOps Overview dashboard, see [GitOps Overview dashboard
 {% include
 image.html
 lightbox="true"
-file="/images/guides/gitops/gitops-overview-dashboard.png"
-url="/images/guides/gitops/gitops-overview-dashboard.png"
+file="/images/reporting/gitops-overview-dashboard.png"
+url="/images/reporting/gitops/gitops-overview-dashboard.png"
 alt="GitOps Overview dashboard"
 caption="GitOps Overview dashboard"
 max-width="50%"
@@ -454,8 +445,8 @@ For more information, see [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-m
 {% include
 image.html
 lightbox="true"
-file="/images/guides/gitops/dora-metrics.png"
-url="/images/guides/gitops/dora-metrics.png"
+file="/images/reporting/dora-metrics.png"
+url="/images/reporting/dora-metrics.png"
 alt="DORA metrics dashboard"
 caption="DORA metrics dashboard"
 max-width="50%"
