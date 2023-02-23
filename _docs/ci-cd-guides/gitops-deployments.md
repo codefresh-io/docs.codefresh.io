@@ -432,7 +432,7 @@ For information on the GitOps Overview dashboard, see [GitOps Overview dashboard
 image.html
 lightbox="true"
 file="/images/reporting/gitops-overview-dashboard.png"
-url="/images/reporting/gitops/gitops-overview-dashboard.png"
+url="/images/reporting/gitops-overview-dashboard.png"
 alt="GitOps Overview dashboard"
 caption="GitOps Overview dashboard"
 max-width="50%"
