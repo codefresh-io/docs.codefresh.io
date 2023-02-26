@@ -143,7 +143,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: lognext
 patches:
-- path: ingress-patch.json
+- path: route-patch.json
   target:
     group: apps
     kind: Deployment
@@ -151,7 +151,6 @@ patches:
     version: v1
 resources:
   - ../../base
-  - ingress.yaml       # created after the installation
   - rbac.yaml         # created earlier as part of this process
   - artifact-repo.yaml # created earlier as part of this process
 patchesStrategicMerge:
