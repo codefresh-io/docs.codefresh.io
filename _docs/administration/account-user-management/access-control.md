@@ -267,7 +267,7 @@ Permissions
 * **Read**: View unencrypted or encrypted Shared Configuration, Shared Secret, Shared YAML, Shared Secret YAML.
 * **Update**: View and edit unencrypted or encrypted Shared Configuration, Shared Secret, Shared YAML, Shared Secret YAML.
 
-### Example: Permissions for pipelines based on projects and project tags
+<!--- ### Example 1: Permissions for pipelines based on projects and project tags
 
 This example illustrates how to define rules to enforce access control for pipelines by projects.  
 
@@ -322,7 +322,8 @@ Rule 2: For Frontend team: Access to pipelines in projects with only the `fronte
   max-width="60%"
   %}
 
-Users in Team Backend can view any pipeline in any project with either tag `backend` or `frontend`, while users in Team Frontend can view  pipelines in projects with tag `frontend`.
+Users in Team Backend can view any pipeline in any project with either tag `backend` or `frontend`, while users in Team Frontend can view  pipelines in projects with tag `frontend`. 
+-->
 
 ## Git-repository access restrictions 
 
