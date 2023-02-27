@@ -69,18 +69,7 @@ max-width="80%"
   * Select **Hosted Runtime** and click **Add**.
   >An account can be provisioned with a single Hosted GitOps Runtime. If you have already provisioned a Hosted GitOps Runtime for your account, the Hosted GitOps Runtime option is disabled.
   * Continue from _step 3_. 
-<!---
-{% include
-image.html
-lightbox="true"
-file="/images/runtime/hosted-install-later.png"
-url="/images/runtime/hosted-install-later.png"
-alt="Install Hosted GitOps Runtime"
-caption="Install Hosted GitOps Runtime"
-max-width="40%"
-%}
 
--->
 {:start="3"}
 1. When complete, to view the components for the Hosted GitOps Runtime, click **View Runtime**.
   You are directed to the Runtime Components tab.  
@@ -158,17 +147,17 @@ max-width="80%"
 
 Once you authorize access, Codefresh creates two Git repositories, one to store the runtime configuration settings, and the other to store the runtime's application settings:
 * Shared runtime configuration repo  
-
   The shared runtime configuration repo is a centralized Git repository that stores configuration settings for the Hosted GitOps Runtime. Additional runtimes provisioned for the account can point to this repo to retrieve and reuse the configuration.  
   Read about [Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration/).
 
 * Git Source application repo  
-
   Codefresh creates a Git Source application repo for every Hosted GitOps Runtime.  
   Read about [Git sources]({{site.baseurl}}/docs/installation/gitops/git-sources/).
 
 
 >Hosted runtimes support only OAuth authentication. 
+
+**How to**  
 
 1. Click **Connect**.
 1. Click **Authorize Access**, and enter your OAuth token.
@@ -244,7 +233,7 @@ max-width="80%"
 %}
 
 
-## 3. Connect a Kubernetes cluster
+## Step 3: Connect a Kubernetes cluster
 
 Connect a destination cluster to the Hosted GitOps Runtime and register it as a managed cluster. Deploy applications and configuration to the cluster.
 For managed cluster information and installing Argo Rollouts, see [Add and manage external clusters]({{site.baseurl}}/docs/installation/gitops/managed-cluster/).
@@ -300,7 +289,7 @@ If you could not connect a cluster, you may not have the latest version of the C
 
 You have completed setting up your Hosted GitOps Runtime. You are ready to create applications, and connect third-party CI tools for image enrichment.
 
-### (Optional) Create application
+## (Optional) Create application
 Optional. Create an application in Codefresh, deploy it to the cluster, and track deployment and performance in the Applications dashboard.  
 
 1. Follow our quick-start to create and deploy the `codefresh-guestbook` application. Start with [Create application resources]({{site.baseurl}}/docs/quick-start/gitops-quick-start/create-app-specs/).  
@@ -308,12 +297,12 @@ Optional. Create an application in Codefresh, deploy it to the cluster, and trac
   Create your own application. See [Create an application]({{site.baseurl}}/docs/deployments/gitops/create-application/)   
 
 {:start="2"}
-2. In the Codefresh UI, view your application in the [Applications dashboard]((https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
+2. In the Codefresh UI, view your application in the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
 
-### (Optional) Connect CI 
+## (Optional) Connect CI 
 Optional. Integrate Codefresh with the third-party tools you use for CI to enrich image information in deployments.  
 
-[Image enrichment with integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/) 
+See [Image enrichment with integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/) 
 
 ## Related articles
 [Monitoring & managing GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/)  

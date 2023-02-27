@@ -19,7 +19,7 @@ If Bitbucker Server is your Git provider, you must also select the specific serv
 >To change the Git provider for your Codefresh account after installation, contact Codefresh support.
 
 
-**Codefresh and Argo CD s**  
+**Codefresh and Argo CD**  
  The Hybrid GitOps Runtime comprises Argo CD components and Codefresh-specific components. 
  
 Codefresh users rely on our platform to deliver software reliably, and predictably without interruption.  
