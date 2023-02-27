@@ -114,7 +114,7 @@ Every user can configure email notifications for pipeline builds, successful or 
 Codefresh offers different levels of notifications for Slack. At the global level, Slack notifications are sent for all pipelines launched automatically through Git triggers. 
 Our plugins enable granular notifications for specific pipelines.  
 
-See [Slack notifications in Codefresh]({{site.baseurl}}/docs/integrations/notifications/slack-intergration/), and [examples for Slack notification]({{site.baseurl}}/docs/example-catalog/ci-examples/sending-the-notification-to-slack/).
+See [Slack notifications in Codefresh]({{site.baseurl}}/docs/integrations/notifications/slack-integration/), and [examples for Slack notification]({{site.baseurl}}/docs/example-catalog/ci-examples/sending-the-notification-to-slack/).
 
 **Jira notifications**  
 Codefresh integrates with Jira in several ways:

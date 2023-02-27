@@ -108,7 +108,7 @@ toc: true
 ### March 2022
 - Support for Kubernetes 1.21 - [documentation]({{site.baseurl}}/docs/administration/codefresh-on-prem/#prerequisites)
 - Environment definition enhancements - [documentation]({{site.baseurl}}/docs/deploy-to-kubernetes/environment-dashboard/#creating-an-environment)
-- RBAC support for shared configuration - [documentation]({{site.baseurl}}/docs/pipelines/shared-configuration/#creating-shared-configuration)
+- RBAC support for shared configuration - [documentation]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/)
 - Cross-account push for Amazon ECR - [documentation]({{site.baseurl}}/docs/pipelines/steps/push/#fields)
 - (On-premises only) Retention policy for Codefresh builds - [documentation]({{site.baseurl}}/docs/administration/codefresh-on-prem/#retention-policy-for-codefresh-builds)
 - Automated termination for 'Delayed' builds - [documentation]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#applying-filters-on-the-build-view)
@@ -197,7 +197,7 @@ toc: true
 
 ### January 2021
 
-- Using external secrets in Codefresh GUI - [documentation]({{site.baseurl}}/docs/pipelines/secrets-store/#using-secrets-in-the-codefresh-gui)
+- Using external secrets in Codefresh GUI - [documentation]({{site.baseurl}}/docs/pipelines/configuration/secrets-store//#using-secrets-in-the-codefresh-gui)
 - Using external secrets in Github, Gitlab and Bitbucket server integration - [documentation]({{site.baseurl}}/docs/integrations/git-providers/#using-external-secrets-for-the-token)
 - Using external secrets in shared configuration - [documentation]({{site.baseurl}}/docs/pipelines/shared-configuration/#using-external-secrets-as-values)
 - Using external secrets in cloud storage integration - [documentation]({{site.baseurl}}/docs/testing/test-reports/#connecting-an-s3-bucket)
@@ -506,7 +506,7 @@ toc: true
 
 - Native Integration with Azure Kubernetes Service - [documentation]({{site.baseurl}}/docs/integrations/kubernetes/#adding-an-aks-cluster)
 - Ability to configure SSO both in the customer and the account level (Enterprise)
-- Azure SSO integration (Enterprise) - [documentation]({{site.baseurl}}/docs/enterprise/single-sign-on/sso-setup-oauth2/)
+- Azure SSO integration (Enterprise) - [documentation]({{site.baseurl}}/docs/docs/single-sign-on/oidc/oidc-azure/)
 - OKTA SSO integration (Enterprise)
 - Added Azure and Google as login/sign-up options
 - You can now invite a collaborator who had signed up with a different GIT provider than yours

@@ -99,7 +99,7 @@ Create and register an OAuth App under your organization to authorize Codefresh.
       where:  
       `<ingressHost>` is the IP address or URL of the ingress host in the runtime cluster.
     
-    > OAuth2 is not supported for hybrid runtimes with Bitbucket Cloud as the Git provider. Users can authorize access with their [Git personal access tokens](({{site.baseurl}}/docs/administration/user-self-management/user-settings/#authorize-git-access-in-codefresh)) in such cases.
+    > OAuth2 is not supported for hybrid runtimes with Bitbucket Cloud as the Git provider. Users can authorize access with their [Git personal access tokens]({{site.baseurl}}/docs/administration/user-self-management/user-settings/#authorize-git-access-in-codefresh) in such cases.
 
 
 {:start="2"}

@@ -10,7 +10,7 @@ Let's start by creating a simple application, the `codefresh-guestbook` applicat
 We'll create the application without resources and then define/add resources in the next step.  
 
 
-For detailed information, see [Create an application]({{site.baseurl}}/docs/deployment/create-application).
+For detailed information, see [Create an application]({{site.baseurl}}/docs/deployments/gitops/create-application/).
 
 
 **How to**  

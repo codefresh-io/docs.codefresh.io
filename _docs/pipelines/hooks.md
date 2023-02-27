@@ -607,7 +607,8 @@ You can use a type step / plugins in hooks.  With this you will need to change `
 
 Below is an example pipeline hook using the `slack-notifier` step/plugin for when the pipeline starts.
 
-```yaml
+{% highlight yaml %}
+{% raw %}
 hooks:
   on_elected:
     steps:
@@ -615,9 +616,10 @@ hooks:
         slack_pending:
           type: slack-notifier
           arguments:
-            SLACK_HOOK_URL: {% raw %}'${{SLACK_WEBHOOK_URL}}'{% endraw %}
-            SLACK_TEXT: '*Build Started* :crossed_fingers:'
-```
+            SLACK_HOOK_URL: '${{SLACK_WEBHOOK_URL}}'
+            SLACK_TEXT: '*Build Started* now'
+{% endraw %}
+{% endhighlight %}
 
 ## Limitations of pipeline/step hooks
 

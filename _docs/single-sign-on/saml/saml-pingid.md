@@ -11,7 +11,7 @@ toc: true
 Set up SSO for PingID using SAML in Codefresh.
 > The configuration described here is for PingID SSO and not PingID Federate. The steps can be used as a general guide for Ping Federate. 
 
-For a general overview on SAML, see [Setting up SAML2 Federated SSO]({site.baseurl}}/docs/single-sign-on/saml).
+For a general overview on SAML, see [Setting up SAML2 Federated SSO]({{site.baseurl}}/docs/single-sign-on/saml/).
 
 >If you do not see SAML in the SSO list, please create a support ticket to enable SAML for your account.
 
