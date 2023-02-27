@@ -1,7 +1,9 @@
 <header class="bd-navbar py-2 py-md-0">
   <div class="container-fluid navbar navbar-dark navbar-expand flex-column flex-md-row py-0">
-    <a class="navbar-brand mx-0 mx-md-2" href="{{ site.baseurl }}/" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Home');" aria-label="Codefresh">
-      {%- include icons/codefresh-icon.svg width="50" height="auto" class="align-middle" -%}
+    <a class="navbar-brand mx-0 mx-md-2 d-flex align-items-center" href="{{ site.baseurl }}/" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Home');" aria-label="Codefresh">
+      <div>
+        {%- include icons/codefresh-icon.svg width="50" height="auto" class="align-middle" -%}
+      </div>
       <span class="badge cf-badge cf-badge-doc align-middle ml-1">Codefresh Documentation</span>
     </a>
     {% if page.layout != "home" %}
@@ -19,7 +21,7 @@
       <ul class="navbar-nav flex-row mx-md-auto">
 
         <!--- <li class="nav-item">
-          <a class="nav-link" href="{{ site.link_main }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', '         ');">Product</a>  
+          <a class="nav-link" href="{{ site.link_main }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', '         ');">Product</a>
         </li>  -->
         <li class="nav-item">
           <a class="nav-link {% if page.layout == "docs" %}active{% endif %}" href="{{ site.baseurl }}/docs/getting-started/intro-to-codefresh/" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Docs');">Docs</a>
