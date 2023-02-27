@@ -14,11 +14,14 @@ toc: true
 <!-- needs fine tuning for GitOps as well; all x-refs have to be updated-->
 Codefresh provides several menchanisms to enforce access control within an organization:
 
-* **Role-based access**: [Role-based access]({{site.baseurl}}/docs/administration/account-user-management/add-users/#users-in-codefresh), restricts access to parts of the Codefresh UI to account administrators. For example, only an account administrator should be able to modify integrations with [Git providers]({{site.baseurl}}/docs/integrations/git-providers/) and [cloud services]({{site.baseurl}}/docs/integrations/kubernetes/#connect-a-kubernetes-cluster). 
+* **Role-based access**  
+  [Role-based access]({{site.baseurl}}/docs/administration/account-user-management/add-users/#users-in-codefresh), restricts access to parts of the Codefresh UI to account administrators. For example, only an account administrator should be able to modify integrations with [Git providers]({{site.baseurl}}/docs/integrations/git-providers/) and [cloud services]({{site.baseurl}}/docs/integrations/kubernetes/#connect-a-kubernetes-cluster). 
 
-* **Attribute-based access control (ABAC)**: Policy-based access control via attributes (ABAC), restricts access to Kubernetes clusters, Codefresh pipelines, projects, and other entities. ABAC allows account administrators to define access to entities based on the who (which team), what  which teams have access to which clusters and pipelines. For example, you can grant access to production clusters only to a subset of trusted developers/operators. On the other hand, access to a QA/staging cluster can be less strict.
+* **Attribute-based access control (ABAC)**  
+  Policy-based access control via attributes (ABAC), restricts access to Kubernetes clusters, Codefresh pipelines, projects, and other entities. ABAC allows account administrators to define access to entities based on the who (which team), what  which teams have access to which clusters and pipelines. For example, you can grant access to production clusters only to a subset of trusted developers/operators. On the other hand, access to a QA/staging cluster can be less strict.
 
-* **Git-repository access**: Restrict the Git repositories used to load [pipeline definitions](#enable-disable-access-to-pipeline-yamls-by-source).
+* **Git-repository access**
+  Restrict the Git repositories used to load [pipeline definitions](#enable-disable-access-to-pipeline-yamls-by-source).
 
 
 ## Role-based access for users and administrators
@@ -35,7 +38,7 @@ Role-based access is usually defined when you [add users to Codefresh accounts](
   url="/images/administration/users/invite-users.png" 
   alt="User roles for access control" 
   caption="User roles for access control"
-    max-width="90%" 
+    max-width="60%" 
 %}
 
 The table below lists the functionality available for role-based access.
@@ -204,21 +207,24 @@ For each rule to define, select:
 
 ### CRUD privileges for entities/resources
 
-CRUD privileges define Create/Read/Update/Delete permissions for the entity.  For specific entities, there are 
+CRUD privileges define Create/Read/Update/Delete permissions for the entity.  Specific entities can have additional or different permissions.
+
+> CRUD privileges when granted enable access to entities that are explicitly shared with all users.  
+  `Any` indicates that none of the privileges are granted.
 
 #### Cluster permissions
 
-* **Create**: Allows users in the team to cluster creation requires someone to be account administrator anyway so currently this permission isn’t really necessary .
-* **Read**: View existing allowed clusters.
+* **Create**: Granted to account administrators only.
+* **Read**: View cluster integrations.
 * **Update**: View and edit existing allowed cluster resources, including [installing, removing, and rollback Helm charts]({{site.baseurl}}/docs/ci-cd-guides/helm-best-practices/). Tags are managed from account settings, so this permission doesn’t apply to it currently.
-* **Delete**: Remove clusterluster removal requires someone to be account administrator anyway so currently this permission isn’t really necessary.
+* **Delete**: Granted to account administrators only.
 
 #### Project permissions
 
 * **Create**: Create new projects and add tags to the projects.
 * **Read**: View projects only.
 * **Update**: View and edit projects, including editing the tags assigned to them.
-* **Delete**: Delete allowed projects.
+* **Delete**: Delete projects.
 
 
 #### Pipeline permissions
@@ -246,13 +252,13 @@ There are two levels of permissions for pipelines:
 #### Git contexts
 Git contexts refer to the permissions to create and manage integrations with Git providers and use them in pipelines. Tags are used to control access to teams and execution contexts.   
 
-* **Create**: Add integrations to B ???.
-* **Update**: View and edit projects, including editing the tags assigned to them.
-* **Delete**: Delete allowed projects.
+* **Create**: Add integrations to Git providers.
+* **Update**: View and edit Git provider integrations, including editing the tags assigned to them.
+* **Delete**: Delete Git provider integrations.
 * **Use**: 
-    * Create triggers for pipelines
+    * Create triggers in pipelines for Git provider
     * Retrieve YAML definitions from a repository
-    * Use a Git context (integration) in pipelines (`git-clone` step for example.) via Execution Context. 
+    * Use a Git integration in pipelines, in the `git-clone` step for example, via Execution Context. 
 
 
 #### Shared configs, secrets, YAMLs
@@ -272,8 +278,7 @@ Permissions
 This example illustrates how to define rules to enforce access control for pipelines by projects.  
 
 Adding tags to projects provides greater flexibility in managing access to pipelines and organizing them by teams. 
-By defining CRUD rules based on project tags, you can control which teams have permissions to perform specific actions for pipelines across, while also enforcing strict access restrictions between projects owned by different teams. Each team can only access the pipelines  that are relevant to their work.
-
+By defining CRUD rules based on project tags, you can control which teams have permissions to perform specific actions for pipelines across projects. While enforcing access restrictions between projects owned by different teams. 
 
 
 **Scenario**:  
