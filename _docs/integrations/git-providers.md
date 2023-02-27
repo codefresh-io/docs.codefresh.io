@@ -376,12 +376,14 @@ The Using means the following use cases:
 
 You will get an error of Permission Denied or Forbidden to a Git Context that you do not have the correct permissions for that action.
 
-### Tagging the Git Context
+### Assigning tags to Git Contexts
 
-1. Navigate to Account Settings > Integrations > Configure for Git.
-1. Hovering over the integration name (Git Context), you will see "Edit Tags" just before the edit symbol.
-1. Select "Edit Tags," and you can add and remove tags.
-1. Click Save when done.
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from Configuration in the sidebar, select [**Pipeline Integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
+1. Click Configure for Git to see the list of Git provider integrations (Git contexts).
+1. Select the row with the integration for which to add tags.
+1. On the right, click **Edit Tags**. 
+1. Type in the tag or tags.
+1. Click **Save**.
 
 ### Setting the Permissions
 
