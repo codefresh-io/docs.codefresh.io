@@ -2,7 +2,7 @@
 title: "Hybrid GitOps Runtime installation"
 description: "Provision Hybrid GitOps Runtimes"
 group: installation
-toc: true
+toc: false
 ---
 
 Install the Hybrid Runtime for GitOps through a Helm chart.
