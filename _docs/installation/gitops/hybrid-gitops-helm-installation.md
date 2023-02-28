@@ -7,7 +7,7 @@ toc: false
 
 Install the Hybrid Runtime for GitOps through a Helm chart.
 
-
+> Helm installation for Hybrid GitOps is currently in Alpha. 
 
 ## Installation notes
 
