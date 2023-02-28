@@ -491,6 +491,8 @@
       sub-pages:
         - title: Hosted GitOps Runtime
           url: "/hosted-runtime" 
+        - title: Hybrid GitOps Runtime with Helm
+          url: "/hybrid-gitops-helm-installation"  
         - title: Hybrid GitOps Runtime
           url: "/hybrid-gitops"  
         - title: Monitoring & managing GitOps Runtimes
