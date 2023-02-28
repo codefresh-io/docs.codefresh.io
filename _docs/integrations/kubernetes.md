@@ -589,7 +589,7 @@ In case you're using an external reverse proxy to manage inbound traffic to your
 Ideally your Kubernetes cluster will have a single certificate which is used directly on the API endpoint. Some organizations
 place clusters behind a load balancer or other proxy mechanism that uses a chain or certificates.
 
-When that happens and you have more than one [CA](https://en.wikipedia.org/wiki/Certificate_authority){:target="\_blank"} in your certification chain, you need to provide Codefresh with a [Certificate bundle](https://en.wikipedia.org/wiki/Chain_of_trust){:target="\_blank"} (a file that containers the intermediate CAs as well).
+When that happens and you have more than one [CA](https://en.wikipedia.org/wiki/Certificate_authority){:target="\_blank"} in your certification chain, you need to provide Codefresh with a [Certificate bundle](https://en.wikipedia.org/wiki/Chain_of_trust){:target="\_blank"} (a file that contains the intermediate CAs as well).
 
 You will know when this is the case as this error will appear when you try to connect your cluster:
 

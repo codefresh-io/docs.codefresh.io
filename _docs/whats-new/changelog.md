@@ -190,7 +190,7 @@ toc: true
 - SLA Details - [documentation]({{site.baseurl}}/docs/terms-and-privacy-policy/sla/)
 - Autoscaling Recommendations for Codefresh On-prem - [documentation]({{site.baseurl}}/docs/administration/codefresh-on-prem/#app-cluster-autoscaling)
 - Hide Inaccessible Clusters in the Kubernetes Dashboard - [documentation]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/#accessing-the-kubernetes-dashboard)
-- Define Access for non-admins in Helm Repositories and Shared Config - [documentation]({{site.baseurl}}/docs/pipelines/shared-configuration/#level-of-access)
+- Define Access for non-admins in Helm Repositories and Shared Config - [documentation]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/#level-of-access)
 - Okta Auto-Sync of Teams - [documentation]({{site.baseurl}}/docs/administration/single-sign-on/sso-okta/#syncing-of-teams-after-initial-sso-setup)
 - Global Pipeline Settings Screen - [documentation]({{site.baseurl}}/docs/administration/pipeline-settings)
 - Helm 2 Support discontinued 
@@ -208,7 +208,7 @@ toc: true
 - New paging mechanism for builds/images that might break custom integrations - [documentation]({{site.baseurl}}/docs/troubleshooting/common-issues/paging-issues-builds-images/)
 - Note for Okta sync - [documentation]({{site.baseurl}}/docs/administration/single-sign-on/sso-okta/#how-okta-syncing-works)
 - cf_export limitations - [documentation]({{site.baseurl}}/docs/troubleshooting/common-issues/cf-export-limitations/)
-- Default SSO provider - [documentation]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/#setting-a-default-provider)
+- Default SSO provider - [documentation]({{site.baseurl}}/docs/single-sign-on/team-sync/#set-a-default-sso-provider-for-account)
 - Codefresh runner now has a dry run option - [documentation]({{site.baseurl}}/docs/administration/codefresh-runner/#inspecting-the-manifests-before-they-are-installed)
 - Connect to Azure Kubernetes with a service principal - [documentation]({{site.baseurl}}//#adding-an-aks-cluster-with-a-service-principal)
 - Connect to an Azure Helm repository with a service principal - [documentation]({{site.baseurl}}/docs/integrations/helm/#private-helm-repository---azure-with-service-principal)
@@ -223,7 +223,7 @@ toc: true
 - Helm promotion pipelines can be overridden in the GUI  - [documentation]({{site.baseurl}}/docs/new-helm/helm-environment-promotion/#creating-your-own-helm-board)
 - Internal Registry mirror for the Codefresh runner - [documentation]({{site.baseurl}}/docs/administration/codefresh-runner/#internal-registry-mirror)
 - Production and staging deployments guide - [documentation]({{site.baseurl}}/docs/ci-cd-guides/environment-deployments/)
-- Escaping YAML in pipelines - [documentation]({{site.baseurl}}/docs/pipelines/what-is-the-pipelines/#escaping-strings)
+- Escaping YAML in pipelines - [documentation]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#escaping-strings)
 - GitOps dashboard now shows affected services for each release - [documentation]({{site.baseurl}}/docs/ci-cd-guides/gitops-deployments/#working-with-the-gitops-dashboard)
 - Time based filters in build view - [documentation]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#applying-filters-on-the-build-view)
 
@@ -298,7 +298,7 @@ toc: true
 - Use GitHub Actions no longer requires a registry - [documentation]({{site.baseurl}}/docs/integrations/github-actions/#how-it-works)
 - Alternative debugging console - [documentation]({{site.baseurl}}/docs/pipelines/debugging-pipelines/#using-the-alternative-debug-window)
 - User variable priority rules - [documentation]({{site.baseurl}}/docs/pipelines/variables/#user-provided-variables)
-- Secret Storage - [documentation]({{site.baseurl}}/docs/pipelines/secrets-store/)
+- Secret Storage - [documentation]({{site.baseurl}}docs/pipelines/configuration/secrets-store/)
 - Run multiple kinds of unit tests using fan-in-fan-out parallel pipeline - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/fan-in-fan-out)
 
 ### March 2020
@@ -321,7 +321,6 @@ toc: true
 
 ### February 2020
 
-- Beta Support for Helm 3 - [documentation]({{site.baseurl}}/docs/new-helm/helm3/)
 - Use GitHub Actions as Codefresh pipeline steps - [documentation]({{site.baseurl}}/docs/integrations/github-actions/)
 - Publish a JAR to Artifactory/Nexus - [documentation]({{site.baseurl}}/docs/learn-by-example/java/publish-jar/)
 - New [dashboard](https://g.codefresh.io/builds) for builds - [documentation]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/)
@@ -461,7 +460,7 @@ toc: true
 - Manual approval step - [documentation]({{site.baseurl}}/docs/pipelines/steps/approval/)
 - Shared configuration - [documentation]({{site.baseurl}}/docs/pipelines/shared-configuration/)
 - Running pipelines locally - [documentation]({{site.baseurl}}/docs/pipelines/running-pipelines-locally/)
-- Installation options (Enterprise) - [documentation]({{site.baseurl}}/docs/enterprise/installation-security)
+- Installation options (Enterprise) - [documentation]({{site.baseurl}}/docs/installation/installation-options/)
 - Custom volumes for freestyle steps - [documentation]({{site.baseurl}}/docs/pipelines/steps/freestyle/#custom-volumes)
 - Helm Environment Promotion boards (Enterprise) - [documentation]({{site.baseurl}}/docs/new-helm/helm-environment-promotion)
 - Pipeline resource metrics - [documentation]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#viewing-pipeline-metrics)
@@ -492,7 +491,7 @@ toc: true
 - New integration for Azure Helm repositories - [documentation]({{site.baseurl}}/docs/new-helm/add-helm-repository/#private-repository---azure)
 - Trigger integration with Quay Events - [documentation]({{site.baseurl}}/docs/pipelines/triggers/quay-triggers/)
 - Trigger integration with Artifactory Events - [documentation]({{site.baseurl}}/docs/pipelines/triggers/jfrog-triggers/)
-- Public build logs for open source projects - [documentation]({{site.baseurl}}/docs/pipelines/build-status/#public-build-logs)
+- Public build logs for open source projects - [documentation]({{site.baseurl}}/docs/pipelines/configuration/build-status/#public-build-logs)
 
 ### September 2018
 
@@ -506,7 +505,7 @@ toc: true
 
 - Native Integration with Azure Kubernetes Service - [documentation]({{site.baseurl}}/docs/integrations/kubernetes/#adding-an-aks-cluster)
 - Ability to configure SSO both in the customer and the account level (Enterprise)
-- Azure SSO integration (Enterprise) - [documentation]({{site.baseurl}}/docs/docs/single-sign-on/oidc/oidc-azure/)
+- Azure SSO integration (Enterprise) - [documentation]({{site.baseurl}}/docs/single-sign-on/oidc/oidc-azure/)
 - OKTA SSO integration (Enterprise)
 - Added Azure and Google as login/sign-up options
 - You can now invite a collaborator who had signed up with a different GIT provider than yours

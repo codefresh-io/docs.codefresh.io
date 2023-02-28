@@ -805,12 +805,12 @@ If you are not sure which OS to select for `curl`, simply select one, and Codefr
 * [Download or upgrade to the latest version of the CLI]({{site.baseurl}}/docs/installation/gitops/upgrade-gitops-cli/)
 * Review [Hybrid Runtime installation flags](#hybrid-runtime-installation-flags)
 * For ingress-based runtimes, make sure your ingress controller is configured correctly:
-  * [Ambasador ingress configuration]({{site.baseurl}}/docs/runtime/requirements/#ambassador-ingress-configuration)
-  * [AWS ALB ingress configuration]({{site.baseurl}}/docs/runtime/requirements/#alb-aws-ingress-configuration)
-  * [Istio ingress configuration]({{site.baseurl}}/docs/runtime/requirements/#istio-ingress-configuration)
-  * [NGINX Enterprise ingress configuration]({{site.baseurl}}/docs/runtime/requirements/#nginx-enterprise-ingress-configuration)
-  * [NGINX Community ingress configuration]({{site.baseurl}}/docs/runtime/requirements/#nginx-community-version-ingress-configuration)
-  * [Traefik ingress configuration]({{site.baseurl}}/docs/runtime/requirements/#traefik-ingress-configuration)
+  * [Ambasador ingress configuration](#ambassador-ingress-configurationn)
+  * [AWS ALB ingress configuration](#alb-aws-ingress-configuration)
+  * [Istio ingress configuration](#istio-ingress-configuration)
+  * [NGINX Enterprise ingress configuration](#nginx-enterprise-ingress-configuration)
+  * [NGINX Community ingress configuration](#nginx-community-version-ingress-configuration)
+  * [Traefik ingress configuration](#traefik-ingress-configuration)
 
 
 {::nomarkdown}

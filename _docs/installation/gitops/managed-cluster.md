@@ -33,7 +33,7 @@ Optionally, to first generate the YAML manifests, and then manually apply them, 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
 1. From Runtimes in the sidebar, select [**GitOps Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
 1. From either the **Topology** or **List** views, select the Runtime to which to add the cluster. 
-1. Topology View: Select {::nomarkdown}<img src="../../../images/icons/add-cluster.png" display=inline-block/>{:/}.  
+1. Topology View: Select {::nomarkdown}<img src="../../../../images/icons/add-cluster.png" display=inline-block/>{:/}.  
   List View: Select the **Managed Clusters** tab, and then select **+ Add Cluster**.  
 1. In the Add Managed Cluster panel, copy and run the command:  
   `cf cluster add [runtime-name] [--labels label-key=label-value] [--annotations annotation-key=annotation-value][--dry-run]`  

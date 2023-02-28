@@ -18,7 +18,7 @@ You add a container registry integration in Codefresh by:
 
 You can add more than one integration for the same registry. Once added, Codefresh displays the list of existing integrations with their sync status. You can edit or delete any registry integration. 
 
-<!--- > To see all images from all your container registries integrated with Codefresh in the Codefresh UI, go to [Images](https://g.codefresh.io/2.0/images){:target="\_blank"}. For documentation details, see [Images in Codefresh]({{site.baseurl}}/docs/deployment/images/)--->
+<!--- To see all images from all your container registries integrated with Codefresh in the Codefresh UI, go to [Images](https://g.codefresh.io/2.0/images){:target="\_blank"}. For documentation details, see [Images in Codefresh]({{site.baseurl}}/docs/dashboards/images/)--->
 
 
 ## Configure container registry integrations for GitOps in Codefresh
