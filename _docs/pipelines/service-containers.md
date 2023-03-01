@@ -50,7 +50,7 @@ The service containers have their own output tab in Codefresh UI.
 {% include image.html
   lightbox="true"
   file="/images/pipeline/codefresh-yaml/services/services-tab.png"
-  url="/images//pipeline/codefresh-yaml/services/services-tab.png"
+  url="/images/pipeline/codefresh-yaml/services/services-tab.png"
   alt="Output tab from extra services"
   caption="Output tab from extra services"
   max-width="100%"

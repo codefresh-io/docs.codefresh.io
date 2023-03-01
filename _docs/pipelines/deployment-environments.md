@@ -257,6 +257,6 @@ Every time that you run another build of the pipeline the environment status wil
 ## Related articles
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
 [Managing Kubernetes clusters]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/)  
-[Connecting a Kubernetes cluster]({{site.baseurl}}/docs//integrations/kubernetes/#connect-a-kubernetes-cluster)  
+[Connecting a Kubernetes cluster]({{site.baseurl}}/docs/integrations/kubernetes/#connect-a-kubernetes-cluster)  
 [Promoting Helm Environments]({{site.baseurl}}/docs/deployments/helm/helm-environment-promotion/)  
 

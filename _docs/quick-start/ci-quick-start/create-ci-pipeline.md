@@ -204,7 +204,7 @@ The pipeline includes two steps:
 {% include image.html 
 	lightbox="true" 
 	file="/images/quick-start/quick-start-ci/create-pipeline.png" 
-	url="//images/quick-start/quick-start-ci/create-pipeline.png" 
+	url="/images/quick-start/quick-start-ci/create-pipeline.png" 
 	alt="Define pipeline settings"
 	caption="Define pipeline settings" 
 	max-width="70%" 

@@ -43,11 +43,11 @@ on clusters, docker registries, git integrations, shared configurations etc.
 ### Manage users in a Codefresh account
 
 Once you add a user to your Codefresh account, you can do the following to manage that user:  
-* Resend invitations that are pending acceptance: Select ![](/images/administration/users/icon-Send.png?display=inline-block) **Resend**.  
-* Edit the user's email address: Select ![](/images/administration/users/icon-Edit.png?display=inline-block) **Edit**.  
+* Resend invitations that are pending acceptance: Select **Resend**.  
+* Edit the user's email address: Select **Edit**.  
 * Change the role: From the **Role** dropdown, select the new role.
 * Change SSO provider: From the **SSO** dropdown, select the new SSO provider.
-* Remove the user account: Select ![](/images/administration/users/icon-Delete.png?display=inline-block) **Delete**.
+* Remove the user account: Select **Delete**.
 
 
 

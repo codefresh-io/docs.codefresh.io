@@ -88,7 +88,7 @@ Install a chart from a Helm repository to your cluster.
 <br />
 
 **Before you begin**
-* Make sure that you have a Kubernetes integration with the cluster and namespace, as described [here]({{site.baseurl}}/docs//integrations/kubernetes/#connect-a-kubernetes-cluster)
+* Make sure that you have a Kubernetes integration with the cluster and namespace, as described [here]({{site.baseurl}}/docs/integrations/kubernetes/#connect-a-kubernetes-cluster)
 
 **How to** 
 1. In the Codefresh UI, from Artifacts in the sidebar, select [**Helm Charts**](https://g.codefresh.io/helm/releases/releasesNew/){:target="\_blank"}. 
