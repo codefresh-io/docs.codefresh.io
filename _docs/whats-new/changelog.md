@@ -199,7 +199,7 @@ toc: true
 
 - Using external secrets in Codefresh GUI - [documentation]({{site.baseurl}}/docs/pipelines/configuration/secrets-store//#using-secrets-in-the-codefresh-gui)
 - Using external secrets in Github, Gitlab and Bitbucket server integration - [documentation]({{site.baseurl}}/docs/integrations/git-providers/#using-external-secrets-for-the-token)
-- Using external secrets in shared configuration - [documentation]({{site.baseurl}}/docs/pipelines/shared-configuration/#using-external-secrets-as-values)
+- Using external secrets in shared configuration - [documentation]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/#using-external-secrets-as-values)
 - Using external secrets in cloud storage integration - [documentation]({{site.baseurl}}/docs/testing/test-reports/#connecting-an-s3-bucket)
 - Get Code Coverage Reports with Codacy - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/codacy-testing)
 - Git clone now supports a proxy connection - [documentation]({{site.baseurl}}/docs/pipelines/steps/git-clone/#using-git-behind-a-proxy)
@@ -411,7 +411,7 @@ toc: true
 - Added `CI=true` environment variable - [documentation]({{site.baseurl}}/docs/pipelines/variables/#system-provided-variables)
 - Buildkit support - [documentation]({{site.baseurl}}/docs/pipelines/steps/build/#buildkit-support)
 - Security scanning - [documentation]({{site.baseurl}}/docs/testing/security-scanning/)
-- Root pipeline anchors - [documentation]({{site.baseurl}}/docs/pipelines/what-is-the-pipelines/#using-yaml-anchors-to-avoid-repetition)
+- Root pipeline anchors - [documentation]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#using-yaml-anchors-to-avoid-repetition)
 - Building Android Apps - [documentation]({{site.baseurl}}/docs/learn-by-example/mobile/android/)
 - Deployment to Nomad clusters - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/nomad/)
 - Editing of annotations - [documentation]({{site.baseurl}}/docs/pipelines/annotations/#viewingediting-annotations)
@@ -475,7 +475,7 @@ toc: true
 - Run builds from external forks - [documentation]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/#support-for-building-pull-requests-from-forks)
 - Google Marketplace Integration - [documentation]({{site.baseurl}}/docs/integrations/google-marketplace/)
 - Added OneLogin SSO support - [documentation]({{site.baseurl}}/docs/enterprise/single-sign-on/sso-onelogin/)
-- Multiple test reports from a single pipeline - [documentation]({{site.baseurl}}/docs/pipelines/test-reports/#creating-multiple-reports)
+- Multiple test reports from a single pipeline - [documentation]({{site.baseurl}}/docs/testing/test-reports/#creating-multiple-reports)
 - Historical data in Allure test reports are now available
 - Inline YAML editor can now expand/collapse code blocks - [documentation]({{site.baseurl}}/docs/pipelines/pipelines/#writing-codefresh-yml-in-the-gui)
 

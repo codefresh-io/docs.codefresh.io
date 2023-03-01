@@ -56,7 +56,7 @@ In the Delivery Pipeline wizard, we have our starter Workflow Template to use as
    
 
 
-> To share artifacts between steps in workflows, and to view archived logs for completed workflows, you must [configure an artifact repository in Codefresh]({{site.baseurl}}/docs/workflows/configure-artifact-repository).
+> To share artifacts between steps in workflows, and to view archived logs for completed workflows, you must [configure an artifact repository in Codefresh]({{site.baseurl}}/docs/workflows/configure-artifact-repository/).
  
 
 
@@ -281,4 +281,4 @@ Codefresh commits the pipeline to the Git repository, and then syncs it to the c
 ## Related articles
 [Selectors for concurrency synchronization]({{site.baseurl}}/docs/workflows/concurrency-limit)  
 [Nested workflows]({{site.baseurl}}/docs/workflows/nested-workflows)  
-[Configure artifact repository]({{site.baseurl}}/docs/workflows/configure-artifact-repository)  
+[Configure artifact repository]({{site.baseurl}}/docs/workflows/configure-artifact-repository/)  
