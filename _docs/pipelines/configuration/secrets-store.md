@@ -94,5 +94,5 @@ If you didn't include a resource name during secret creation then enter the full
 ## Related articles
 [Git triggers]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/)  
 [Running pipelines locally]({{site.baseurl}}/docs/pipelines/running-pipelines-locally/)  
-[Debugging pipelines]({{site.baseurl}}/docs//example-catalog/cd-examples/trigger-a-k8s-deployment-from-docker-registry/)  
+[Debugging pipelines]({{site.baseurl}}/docs/example-catalog/cd-examples/trigger-a-k8s-deployment-from-docker-registry/)  
 

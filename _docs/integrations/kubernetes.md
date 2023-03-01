@@ -79,7 +79,7 @@ cluster name that you wish to use.
 {% include image.html
 lightbox="true"
 file="/images/integrations/kubernetes/add-cluster/select-aks-cluster.png"
-url="/images//integrations/kubernetes/add-cluster/select-aks-cluster.png"
+url="/images/integrations/kubernetes/add-cluster/select-aks-cluster.png"
 alt="Selecting the Azure cluster"
 caption="Selecting the Azure cluster"
 max-width="60%"
