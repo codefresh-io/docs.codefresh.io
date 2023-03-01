@@ -805,8 +805,8 @@ If you are not sure which OS to select for `curl`, simply select one, and Codefr
 * [Download or upgrade to the latest version of the CLI]({{site.baseurl}}/docs/installation/gitops/upgrade-gitops-cli/)
 * Review [Hybrid Runtime installation flags](#hybrid-runtime-installation-flags)
 * For ingress-based runtimes, make sure your ingress controller is configured correctly:
-  * [Ambasador ingress configuration](#ambassador-ingress-configurationn)
-  * [AWS ALB ingress configuration](#alb-aws-ingress-configuration)
+  * [Ambasador ingress configuration](#ambassador-ingress-configuration)
+  * [AWS ALB ingress configuration](#aws-alb-ingress-configuration)
   * [Istio ingress configuration](#istio-ingress-configuration)
   * [NGINX Enterprise ingress configuration](#nginx-enterprise-ingress-configuration)
   * [NGINX Community ingress configuration](#nginx-community-version-ingress-configuration)
