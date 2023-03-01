@@ -144,7 +144,7 @@
           url: "/integration-tests-with-redis"
         - title: Populate a database with existing data
           url: "/populate-a-database-with-existing-data"  
-        - title: Scala: Hello world
+        - title: Scala Hello world
           url: "/scala-hello-world"   
         - title: Share volumes in composition steps
           url: "/shared-volumes-of-service-from-composition-step-for-other-yml-steps"          
