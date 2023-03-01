@@ -25,7 +25,7 @@ Adding a user to an account requires assigning a role to define access to accoun
 on clusters, docker registries, git integrations, shared configurations etc.
   * **Administrator**: With this role, users have full access to accounts, and can change all settings, so make sure that they are trusted colleagues.
   For guidelines on access control, see [Access control]({{site.baseurl}}/docs/administration/account-user-management/access-control/).  
-* **SSO**: By default, SSO is not enabled for users. If required, explicitly select the SSO provider. For an overview of SSO, see [Single Sign on]({{site.baseurl}}/docs/single-sign-on/).
+* **SSO**: By default, SSO is not enabled for users. If required, explicitly select the SSO provider. For an overview of SSO, see [Single Sign on]({{site.baseurl}}/docs/single-sign-on/single-sign-on/).
 
 
 ###  Add a user to a Codefresh account 
