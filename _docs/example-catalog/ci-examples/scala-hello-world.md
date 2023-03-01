@@ -16,7 +16,7 @@ We’ll help you get up to speed with basic functionality such as: compiling, bu
 
 ## Prerequisites
 
-- A [free Codefresh account](https://codefresh.io/docs/docs/getting-started/create-a-codefresh-account/)
+- A [free Codefresh account](https://codefresh.io/docs/docs/getting-started/create-codefresh-account/)
 
 ## The Example Scala Application
 

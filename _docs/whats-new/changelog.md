@@ -482,7 +482,7 @@ toc: true
 ### November 2018
 
 - Integrated test reports - [documentation]({{site.baseurl}}/docs/testing/test-reports/)
-- Retry individual pipeline steps - [documentation]({{site.baseurl}}/docs/pipelines/what-is-the-pipelines/#retrying-a-step)
+- Retry individual pipeline steps - [documentation]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#retrying-a-step)
 - Trigger integration with Azure Events - [documentation]({{site.baseurl}}/docs/pipelines/triggers/azure-triggers/)
 
 ### October 2018

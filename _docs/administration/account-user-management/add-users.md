@@ -114,6 +114,6 @@ As an administrator, you can optionally define session timeouts to automatically
 
 ## Related articles
 [Access control]({{site.baseurl}}/docs/administration/account-user-management/access-control/)  
-[Single Sign on]({{site.baseurl}}/docs/single-sign-on/)  
+[Single Sign on]({{site.baseurl}}/docs/single-sign-on/single-sign-on/)  
 [Setting up OAuth authentication for Git providers]({{site.baseurl}}/docs/administration/account-user-management/oauth-setup)  
 
