@@ -5,7 +5,7 @@ group: pipelines
 redirect_from:
   - /docs/pipelines/what-is-the-codefresh-yaml/
   - /docs/codefresh-yaml/
-  - /docs/what-is-the-codefresh-yaml
+  - /docs/what-is-the-codefresh-yaml/
   - /docs/what-is-the-codefresh-yaml/
   - /docs/codefresh-yaml/working-directories/
   - /docs/working-directories/  
