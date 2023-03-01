@@ -458,7 +458,7 @@ toc: true
 ### January 2019
 
 - Manual approval step - [documentation]({{site.baseurl}}/docs/pipelines/steps/approval/)
-- Shared configuration - [documentation]({{site.baseurl}}/docs/pipelines/shared-configuration/)
+- Shared configuration - [documentation]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/)
 - Running pipelines locally - [documentation]({{site.baseurl}}/docs/pipelines/running-pipelines-locally/)
 - Installation options (Enterprise) - [documentation]({{site.baseurl}}/docs/installation/installation-options/)
 - Custom volumes for freestyle steps - [documentation]({{site.baseurl}}/docs/pipelines/steps/freestyle/#custom-volumes)
@@ -471,7 +471,7 @@ toc: true
 
 - Restart pipeline from failed steps - [documentation]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#restarting-the-pipeline)
 - New variable for labels of a pull request - [documentation]({{site.baseurl}}/docs/pipelines/variables/#system-provided-variables)
-- YAML validation without the GUI - [documentation]({{site.baseurl}}/docs/pipelines/what-is-the-pipelines/#yaml-validation)
+- YAML validation without the GUI - [documentation]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#yaml-validation)
 - Run builds from external forks - [documentation]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/#support-for-building-pull-requests-from-forks)
 - Google Marketplace Integration - [documentation]({{site.baseurl}}/docs/integrations/google-marketplace/)
 - Added OneLogin SSO support - [documentation]({{site.baseurl}}/docs/enterprise/single-sign-on/sso-onelogin/)
@@ -481,7 +481,7 @@ toc: true
 
 ### November 2018
 
-- Integrated test reports - [documentation]({{site.baseurl}}/docs/pipelines/test-reports/)
+- Integrated test reports - [documentation]({{site.baseurl}}/docs/testing/test-reports/)
 - Retry individual pipeline steps - [documentation]({{site.baseurl}}/docs/pipelines/what-is-the-pipelines/#retrying-a-step)
 - Trigger integration with Azure Events - [documentation]({{site.baseurl}}/docs/pipelines/triggers/azure-triggers/)
 

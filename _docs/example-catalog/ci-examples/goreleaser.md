@@ -98,7 +98,7 @@ caption="Passing a specific github token in the pipeline"
 max-width="70%" 
 %}
 
-You could also store the token in [shared configuration]({{site.baseurl}}/docs/pipelines/shared-configuration/).
+You could also store the token in [shared configuration]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/).
 Regardless of the way you choose to pass the GitHub token, the final step is to make sure that your pipeline is only executed for tag events.
 
 

@@ -30,7 +30,7 @@ You can play with it locally after installing the `terraform` executable.
 
 ## Prerequisites
 
-You need to [create a Codefresh account]({{site.baseurl}}/docs/administration/account-user-management/create-a-codefresh-account/) and a Google account first. Then you need to create a [Service account Key](https://cloud.google.com/iam/docs/creating-managing-service-account-keys){:target="\_blank"} which will allow terraform to communicate with Google cloud.
+You need to [create a Codefresh account]({{site.baseurl}}/docs/administration/account-user-management/create-codefresh-account/) and a Google account first. Then you need to create a [Service account Key](https://cloud.google.com/iam/docs/creating-managing-service-account-keys){:target="\_blank"} which will allow terraform to communicate with Google cloud.
 
 
 Add your service account json as a pipeline variable called `ACCOUNT_JSON_CONTENT`. The content of this variable will be used
