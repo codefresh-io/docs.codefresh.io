@@ -32,7 +32,7 @@ The Codefresh platform supports three different installation options, all compli
 
 The Codefresh CI/CD Cloud version is the easiest way to start using Codefresh as it is fully managed and runs 100% on the cloud. Codefresh DevOps handles the maintenance and updates.
 
-You can also create a [free account]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/) on the SAAS version right away. The account is forever free with some limitations
+You can also create a [free account]({{site.baseurl}}/docs/administration/account-user-management/create-codefresh-account/) on the SAAS version right away. The account is forever free with some limitations
 on number of builds.
 
 The cloud version runs on multiple clouds:
