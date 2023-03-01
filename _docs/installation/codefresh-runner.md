@@ -576,6 +576,7 @@ dockerDaemonScheduler:
   annotations: {}
   labels:
     my-custom-DIND-label: "true"
+
 ... 
 ```
 1. Patch the runtime environment:
