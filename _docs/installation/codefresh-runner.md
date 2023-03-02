@@ -615,7 +615,7 @@ If you have multiple runtime environments, select the one to use as the default 
 
 
 ###  Override default runtime environment for a pipeline
-Override the default runtime environment for a specific pipeline through the pipeline's [settings]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/).  
+Override the default runtime environment for a specific pipeline through the pipeline's [Build Runtime settings]({{site.baseurl}}/docs/pipelines/pipelines/#runtime). 
 
 
 {% include image.html

@@ -313,14 +313,65 @@ Currently Codefresh supports the automatic fetching of files or folders from ano
 Once the pipeline starts, all files will be available to all freestyle steps in the paths mentioned in the target folder field.
 You can define multiple external resources in a single pipeline.
 
-### Runtime
+### Build Runtime
 
-- **Runtime Environment**: (by default this is set to SaaS)
-- **Runtime OS**: (by default this is set to Linux)
+Build Runtime settings allow you to:
+Select the runtime environment for the pipeline
+Select the OS and resource sizes for build
+Set the minimum disk space for the pipeline build
+
+- **Runtime Environment**: The runtime environment for the pipeline. If your account admin has selected a default runtime environment for the account, it is automatically selected. You can override the default runtime environment, and select a different one for the pipeline.    
+> You need at least [one runtime environment to run the pipeline](#runtime-environments-for-pipeline).  
+
+
+- **Runtime OS**: Set to Linux by default
 - **Resources Size**: 
   - Small (recommended for 1-2 concurrent steps)
   - Medium (recommended 3-4 steps)
   - Large (recommended 5-6 steps)
+
+#### Runtime environments for pipeline
+You need at least one runtime environment configured for your account to run a pipeline.  
+Runtime environments are available on installing the Codefresh Runner. 
+
+**User request for runtime environment**
+If, as a user, you do not have a runtime environment, send a request to your account admin. 
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/pipeline-settings/cloud-builds-user-request-admin.png" 
+url="/images/pipeline/pipeline-settings/cloud-builds-user-request-admin.png"
+alt="Request account admin to configure runtime environment" 
+caption="Request account admin to configure runtime environment"
+max-width="60%"
+%}
+
+**Configure runtime environment**
+As an account admin, if the account is not configured with a runtime environment, Codefresh displays the steps to [install the Runner]({{site.baseurl}}/docs/installation/codefresh-runner/).
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/pipeline-settings/cloud-builds-admin-enable-request.png" 
+url="/images/pipeline/pipeline-settings/cloud-builds-admin-enable-request.png"
+alt="Build Runtime settings for pipeline without runtime environment" 
+caption="Build Runtime settings for pipeline without runtime environment"
+max-width="60%"
+%}
+
+As the account admin, you can also request a Cloud Build (SaaS runtime environment) to be enabled for the pipeline, which is not available by default. If approved, you should receive an email informing you of the same, and see the **SaaS runtime** in the list of Runtime Environments. 
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/pipeline-settings/cloud-builds-saas-re.png" 
+url="/images/pipeline/pipeline-settings/cloud-builds-saas-re.png"
+alt="SaaS runtime environment for pipeline" 
+caption="SaaS runtime environment for pipeline"
+max-width="60%"
+%}
+
 
 #### Set minimum disk space for a pipeline build
 To speed up builds and improve performance, Codefresh caches different types of data during pipeline execution for reuse across builds. Image-caching is one example of cached data, where Codefresh pulls the required images during the first build and caches them for reuse in future builds. For more info, see [Pipeline caching]({{site.baseurl}}/docs/pipelines/pipeline-caching/).   
