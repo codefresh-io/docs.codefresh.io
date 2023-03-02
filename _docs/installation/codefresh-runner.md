@@ -561,23 +561,28 @@ Add custom labels to your Engine and Dind pods in Runtime Environment (RE) by pa
   `$RUNTIME_ENVIRONMENT` must be replaced with the name of your RE.
 1. Edit the `dockerDaemonScheduler.labels` or `runtimeScheduler.labels` property of `runtime.yaml` to include the label, as in the example below.  
   If the `dockerDaemonScheduler.labels` are not included in the RE configuration by default, add them.  
-```yaml
+
+{% highlight yaml %}
+{% raw %}
 version: 1
 metadata:
-  [...]
+  ...
 runtimeScheduler:
   labels:
     my-custom-ENGINE-label: "true"
   cluster:
-    [...]
+    ...
 dockerDaemonScheduler:
   cluster:
-    [...]
+    ...
   annotations: {}
   labels:
     my-custom-DIND-label: "true"
-[...]
-```
+... 
+{% endraw %}
+{% endhighlight %}
+
+{:start="3"}
 1. Patch the runtime environment:
   `codefresh patch re $RUNTIME_ENVIRONMENT -f runtime.yaml`  
   where:  
