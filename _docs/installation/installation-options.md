@@ -40,8 +40,10 @@ The Codefresh platform supports three different installation options, all compli
 
 ## Cloud Builds for Codefresh pipelines
 
+
 Cloud Builds for Codefresh pipelines are disabled for all accounts by default. 
 Account admins must request Codefresh to enable Cloud Builds for an account. They can grant access to users or have the users explicitly request access to run pipelines. 
+
 
 If you [create a free account]({{site.baseurl}}/docs/quick-start/create-codefresh-account/), to run pipelines, you need to configure Build Runtime settings with a Hybrid Runner runtime environment. 
 

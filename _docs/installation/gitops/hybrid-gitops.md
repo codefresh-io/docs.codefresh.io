@@ -10,7 +10,7 @@ Provision one or more Hybrid GitOps Runtimes in your Codefresh account.
 Start by reviewing [system requirements](#minimum-system-requirements) for Hybrid GitOps.  
 If you are installing with ingress-controllers, you must configure them as required _before_ starting the installation. 
 
-> To provision a Hosted GitOps Runtime, see [Provision a hosted runtime]({{site.baseurl}}/docs/installation/gitops/hosted-runtime//#1-provision-hosted-runtime) in [Set up a hosted (Hosted GitOps) environment]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/).
+> To provision a Hosted GitOps Runtime, see [Provision a hosted runtime]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/#1-provision-hosted-runtime) in [Set up a hosted (Hosted GitOps) environment]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/).
 
 **Git providers and Hybrid Runtimes**  
 Your Codefresh account is always linked to a specific Git provider. This is the Git provider you select on installing the first GitOps Runtime, either Hybrid or Hosted, in your Codefresh account. All the Hybrid GitOps Runtimes you install in the same account use the same Git provider.  

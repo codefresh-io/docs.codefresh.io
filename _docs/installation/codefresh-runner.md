@@ -591,7 +591,7 @@ Once you have applied the patch, future builds will include the label preventing
 Once installed, the Runner polls Codefresh every three seconds by default to automatically create all resources needed for running pipelines.  
 To see the cluster with the Runner:
 * In the Codefresh UI, click the **Settings** icon on the toolbar.
-* From the sidebar, select **Pipeline Runtimes**, and then click the **Codefresh Runners**(https://g.codefresh.io/account-admin/codefresh-runners){:target="\_blank"} tab. 
+* From the sidebar, select **Pipeline Runtimes**, and then click the [**Codefresh Runners**](https://g.codefresh.io/account-admin/pipeline-runtimes){:target="\_blank"} tab. 
 
 
 
@@ -610,12 +610,14 @@ If you have multiple runtime environments, select the one to use as the default 
 
 * In the Codefresh UI, click the **Settings** icon on the toolbar.
 * From the sidebar, select [**Pipeline Runtimes**](https://g.codefresh.io/account-admin/pipeline-runtimes){:target="\_blank"}. 
-* From the list of Pipeline Runtimes, click the context menu of the runtime to set as the default.
-* Select **Set as Default**. 
+* From the list of Pipeline Runtimes, select the row with the runtime to set as the default.
+* Click the context menu on the right, and select **Set as Default**. 
 
 
 ###  Override default runtime environment for a pipeline
-Override the default runtime environment for a specific pipeline through the pipeline's [Build Runtime settings]({{site.baseurl}}/docs/pipelines/pipelines/#runtime). 
+
+Override the default runtime environment for a specific pipeline through the pipeline's [Build Runtime settings]({{site.baseurl}}/docs/pipelines/pipelines/#runtime).  
+
 
 
 {% include image.html
