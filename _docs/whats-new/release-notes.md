@@ -12,26 +12,71 @@ Welcome to Codefresh Release Notes for February, which is our first edition of r
 
 ## Features & Enhancements
 
-### Codefresh pipelines usability enhancements
-A tiny enhancement goes a long way for usability! Have a look at what we implemented
+### CI/CD: Slack integration notification for builds terminated by system
+Notifications for failed builds is generally, as, if not more, important than those for successful builds. Getting notifications for system-terminated builds is crucial, as it indicates that the build was stopped because of pipeline policy and may require immediate attention. By receiving notifications for system-terminated builds, you can quickly investigate the issue and take corrective action if necessary.
 
-* **Prompt to automatically switch accounts**  
-  To avoid confusion, we alert you when you are signed into more than one Codefresh account. You are prompted to either switch to the active account or return to the previous one. 
+
+We added a new option to our Slack integration to notify you whenever builds are terminated by the system. 
 
 {% include
  image.html
  lightbox="true"
- file="/images/whats-new/rel-notes-feb23-switch-accnt-prompt.png"
- url="/images/whats-new/rel-notes-feb23-switch-accnt-prompt.png"
- alt="Switch active account prompt"
- caption="Switch active account prompt"
+ file="/images/whats-new/rel-notes-feb23-slack-failed-notification.png"
+ url="/images/whats-new/rel-notes-feb23-slack-failed-notification.png"
+ alt="Slack notification option for system-terminated builds"
+ caption="Slack notification option for system-terminated builds"
  max-width="50%"
 %}
 
-* **User-configurable memory usage limit for warning**  
-  Remember the banner that alerted you whenever the memory usage for a pipeline build exceeded 90%? 
-  Instead of a fixed usage limit for banner display, you now have the power to decide when to display the warning to make it as non-intrusive as possible.
-  As part of the pipeline account-level configuration settings (**Pipeline Settings**), you can decide to display the banner when memory usage exceeds 70% (new option), 90% (as before), or the actual limit of 100% (also, a new option). 
+Here's an example of the notification you would receive in Slack.
+
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-feb23-terminate-build-slack-example.png"
+ url="/images/whats-new/rel-notes-feb23-terminate-build-slack-example.png"
+ alt="Example Slack notification for system-terminated builds"
+ caption="Slack notification for system-terminated builds"
+ max-width="50%"
+%}
+
+
+### CI/CD: Multiple Helm contexts for pipelines
+With support for multiple Helm registry contexts in the same pipeline, dependencies in any of the imported Helm registry contexts in the Helm chart are automatically authenticated and added.
+For the Helm `install` and `push` actions, you can select the primary Helm registry context for the command.
+For details, see [Import Helm configurations into your pipeline definition]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/#step-4-optional-import-helm-configurations-into-your-pipeline-definition) and [Action modes]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/#helm-step-action-modes).
+
+### CI/CD: Multiple cache sources for pipeline builds
+
+Docker has support for specifying external cache source for builds. We added the `cache-from` argument to our `build` step allowing you to specify additional cache sources and speed up the build process. Multiple cache sources are useful when your primary cache source is unavailable or slow.
+
+Here's an example of `cache-from` with `buildkit`:
+
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+steps:
+  BuildMyImage:
+    title: Building My Docker image
+    type: build
+    image_name: my-app-image
+    dockerfile: my-custom.Dockerfile
+    tag: 1.0.1
+    buildkit: true
+    build_arguments:
+    - BUILDKIT_INLINE_CACHE=1
+    cache_from:
+    - my-registry/my-app-image:${{CF_BRANCH}}
+    - my-registry/my-app-image:master
+{% endraw %}         
+{% endhighlight %}
+
+For details, see [`cache_from` in `build` step fields]({{site.baseurl}}/docs/pipelines/steps/build/#fields).
+
+### User-defined threshold for memory usage limit warning
+Remember the banner that alerted you whenever the memory usage for a pipeline build exceeded 90%? 
+Instead of a fixed usage limit for banner display, you can decide when to display the warning to make it as non-intrusive as possible.
+As part of the pipeline account-level configuration settings (**Toolbar Settings > Pipeline Settings**), you can decide to display the banner when memory usage exceeds 70% (new option), 90% (as before), or the actual limit of 100% (also, a new option). 
 
 
 {% include
@@ -44,46 +89,56 @@ A tiny enhancement goes a long way for usability! Have a look at what we impleme
  max-width="50%"
 %}
 
-* Case-insensitive search for Pipelines and Pipeline List view
+
+
+### Usability enhancements
+Saves time and ease of use in  your =interactions in Codefresh.  
+
+* **CI/CD: Prompt to switch accounts**  
+  To avoid confusion, we alert you when you are signed into more than one Codefresh account. You are prompted to either switch to the active account or return to the previous one. 
+
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-feb23-switch-accnt-prompt.png"
+ url="/images/whats-new/rel-notes-feb23-switch-accnt-prompt.png"
+ alt="Switch active account prompt"
+ caption="Switch active account prompt"
+ max-width="50%"
+%}
+
+* **CI/CD: Case-insensitive search for Pipelines and Pipeline List view**
   Search is now easier as queries are case-sensitive. 
 
+* **GitOps: Terminate Sync now in Application Header**
+We moved the **Terminate Sync** button from the Sync details drawer to the Application Header making it easy to terminate problematic sync operations if you need to. 
 
 
-### CI/CD: Cloud Builds for pipeline creation
-We have streamlined the pipeline creation flow for Codefresh pipelines  or more precisely the pipeline run requirements 
-To run a pipeline you need at least one runtime environment from a hybedi Runner installation.
-Cloud Builds for pipelines are no longer available by default as a COdfresh account admin, you can request one for your accounbt and we will anser you in up to 24 hours.
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-feb23-terminate-sync-app-header.png"
+ url="/images/whats-new/rel-notes-feb23-terminate-sync-app-header.png"
+ alt="Terminate sync option in Application Header"
+ caption="Terminate sync option in Application Header"
+ max-width="50%"
+%}
 
-Non-admin users can send a request for the admin.
+### CI/CD: New flow for Cloud Builds for pipelines
+In previous versions, you could run pipelines in the SaaS runtime environment that was available by default for all Codefresh accounts. 
+From this version, you need to install the Codefresh Runner to create a runtime environment. 
+Cloud Builds can be enabled on request by account administrators.  will anser you in up to 24 hours.
 
 
-### CI/CD: Slack integration notification for builds terminated by system
-Notification on failed builds are of course more important than successful ones. Slack integrations in Codefresh include a new option to notify you whenever builds are terminated by the system.
 
-### CI/CD: Multiple Helm contexts for pipelines
-With support for multiple Helm registry contexts in the same pipeline, dependencies in any of the imported Helm registry contexts in the Helm chart are automatically authenticated and added.
-For the Helm `install` and `push` actions, you can select the primary Helm registry context for the command.
-For details, see [Import Helm configurations into your pipeline definition] and [Action modes].
 
-### CI/CD: Multiple cache sources for pipeline builds
 
-We added the `cache-from` argument to our `build` step. `cache-from` allows you to specify additional cache sources to speed up the build process. Multiple cache sources are useful when your primary cache source is unavailable or slow.
 
-Supported cache sources for cache-from in version 2.0 include:
-
-Docker registries (e.g. Docker Hub, Google Container Registry)
-HTTP/HTTPS URLs (e.g. a caching proxy server)
-To use cache-from, simply include the --cache-from option in your build command and specify the cache source(s) you want to use.
-
-Note that cache-from is currently only supported for Docker-based builds.
-
-### GitOps: Terminate Sync now in Application Header
-We moved the Terminate Sync button from the Sync details drawer to the Application header, as in, right next to the Current Sync details.
-Instead of having to go to the Sync details to This enhancement improves the visibility and makes this option easy to access and act upon.
 
 
 ### GitOps: Upgrade to Argo CD 2.6
-We have upgraded the Argo CD version in Codefresh to v2.6. 
+We have upgraded the Argo CD version for our GitOps module to v2.6. 
+For details, see [Argo CD Releases](https://github.com/argoproj/argo-cd/releases){:target="\_build"}.
 
 
 
@@ -96,27 +151,29 @@ We have upgraded the Argo CD version in Codefresh to v2.6.
 ## Bug fixes
 
 ### CI/CD
+- After terminating build and killing engine, `dind` pods remain alive for 30+ before SIGTERM.
+- Large number of logs affect Build performance - Roi CR-17088
+- Codefresh Runner engine unable to communicate with dind container. CR-14602
+- `CF_HELM_SET` variable  printed as [object Object]: CR-4232
+- " Doumentation on time zones removed from [CRON Expression Format](https://github.com/codefresh-io/cronus/blob/master/docs/expression.md/){:target="\_blank"}
+
+- Variables added via pipeline hooks not rendered for build annotations.
+- Build does not fail on error for `when` condition (CR-16925)
+- Clicking a badge in Pipeline > General Settings results in error.
+- When cloning pipelines, **Copy YAML from** drop-down does not display all pipelines in project, if project has more than 100 pipelines.
+- Lack of Codefresh context prevents Classic CLI to set a new one (CR-15884)
+- Running pipeline locally results in error: " checkAvailabilityWithRetry error: ..., connect EACCES /var/run/docker.sock .. " (CR-13455)
+- Hover over Usage Report columns does not display tooltips.(CR-17181)
+- Codefresh run --local leaves behind engine containers after each run (CR-16913)
+- (On-premises only) Liveness probe failures on cf-api pods
 - (On-premises only) Tooltip on hover over build/project names in the Builds page, shows _topbar.title_ instead of the build/project name.
-- Clicking native Argo Workflows link displays empty screen. 
+
+
 - Regression: Unable to edit email invitation for user who does not have an actiuve account
-Security: CVEs in codefresh/agent and codefresh/venona
-- Codefresh pipelinesAfter terminating build and killing engine, `dind` pods remain alive for 30+ before SIGTERM.
 - Internal: Codefresh pipelines: Argocd-server unable to send events when golang channel is flooded
 - Internal: failed to render logs
-- Codefresh pipelines: Large number of logs affect Build performance - Roi CR-17088
-- " : Codefresh Runner engine unable to communicate with dind container. CR-14602
-- ": `CF_HELM_SET` variable  printed as [object Object]: CR-4232
-- " Doumentation on time zones removed from [CRON Expression Format](https://github.com/codefresh-io/cronus/blob/master/docs/expression.md/){:target="\_blank"}
-- Onpremises pipelines: Liveness probe failures on cf-api pods
-- " Variables not rendered for build annotations added via pipeline hooks.
-- ": Build does not fail on error for `when` condition (CR-16925)
-- ": Click badge in Pipeline > General Settings results in error.
-- ": Copy YAML from drop-down does not display all pipelines in in project with more than 100 pipelines when cloning piplines
-- " Lack of Codefresh context prevents Classic CLI to set a new one (CR-15884)
--': Running pipeline locally results in " checkAvailabilityWithRetry error: ..., connect EACCES /var/run/docker.sock .. error " (CR-13455)
-- ": Tooltips not displayed on Hover over Useage Report columns (CR-17181)
-- ": Codefresh run --local leaves behind engine containers after each run (CR-16913)
 
-
-- GitOps:  "invalid memory address or nil pointer dereference" error when user is trying to recover runtime
-- ": rollout rollback not working in 2.5 if rollout located in ns that is different from app ns (CR-17317)
+### GitOps
+- Trying to recover runtime results in "invalid memory address or nil pointer dereference" error.
+- Rollout rollback failure when rollout namespace is different from application namespace. (CR-17317)
+- Clicking native Argo Workflows link displays empty screen. 
