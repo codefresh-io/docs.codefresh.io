@@ -64,16 +64,22 @@ This article describes Helm installation via the Codefresh UI:
 1. Define your Git provider:  
   `cf integration git add default --runtime <runtime-name> --api-url <api-url> --provider <provider>`  
   where:  
-  * `<runtime-name>` is the name of the runtime, either `codefresh`, or the custom name you defined. 
-  * `<api-url>` is the URL of the Git provider, and can be one of the following:
-      * GitHub Cloud: `https://api.github.com` 
-      * GitHub Enterprise: `https://<server-url>/api/v3`
-      * GitLab Cloud: `https://gitlab.com/api/v4`
-      * GitLab Server: `<server-url>/api/v4`
-      * Bitbucket Cloud: `https://api.bitbucket.org/2.0`
-      * Bitbucket Server: `<server-url>/rest/api/1.0`
+      * `<runtime-name>` is the name of the runtime, either `codefresh`, or the custom name you defined. 
+      * `<api-url>` is the URL of the Git provider, and can be one of the following:
+          * GitHub Cloud: `https://api.github.com` 
+          * GitHub Enterprise: `https://<server-url>/api/v3`
+          * GitLab Cloud: `https://gitlab.com/api/v4`
+          * GitLab Server: `<server-url>/api/v4`
+          * Bitbucket Cloud: `https://api.bitbucket.org/2.0`
+          * Bitbucket Server: `<server-url>/rest/api/1.0`
   * <provider> is the Git provider for the runtime. The same provider is used to install additional runtimes in the same account. Can be one of the following:
-    * GitHub and GitHub Enterprise: `github`  
+
+   {::nomarkdown}
+   <ul>
+    <li>GitHub and GitHub Enterprise: <span class="highlighter-rouge"github</span></li> 
+  </ul>
+   {:/}
+
     * GitLab Cloud and GitLab Server: `gitlab`
     * Bitbucket Cloud: `bitbucket`
     * Bitbucket Server: `bitbucket-server`  
