@@ -66,12 +66,12 @@ This article describes Helm installation via the Codefresh UI:
   where:  
   * `<runtime-name>` is the name of the runtime, either `codefresh`, or the custom name you defined. 
   * `<api-url>` is the URL of the Git provider, and can be one of the following:
-    * GitHub Cloud `https://api.github.com` 
-    * GitHub Enterprise: `https://<server-url>/api/v3`
-    * GitLab Cloud: `https://gitlab.com/api/v4`
-    * GitLab Server: `<server-url>/api/v4`
-    * Bitbucket Cloud: `https://api.bitbucket.org/2.0`
-    * Bitbucket Server: `<server-url>/rest/api/1.0`
+      * GitHub Cloud: `https://api.github.com` 
+      * GitHub Enterprise: `https://<server-url>/api/v3`
+      * GitLab Cloud: `https://gitlab.com/api/v4`
+      * GitLab Server: `<server-url>/api/v4`
+      * Bitbucket Cloud: `https://api.bitbucket.org/2.0`
+      * Bitbucket Server: `<server-url>/rest/api/1.0`
   * <provider> is the Git provider for the runtime. The same provider is used to install additional runtimes in the same account. Can be one of the following:
     * GitHub and GitHub Enterprise: `github`  
     * GitLab Cloud and GitLab Server: `gitlab`
@@ -136,18 +136,19 @@ This article describes Helm installation via the Codefresh UI:
   `cf integration git add default --runtime <runtime-name> --api-url <api-url> --provider <provider>`  
   where:  
   * `<runtime-name>` is the name of the runtime, either `codefresh`, or the custom name you defined. 
-  * `<api-url>` is the URL of the Git provider, and can be one of the following:
-    * GitHub Cloud `https://api.github.com` 
-    * GitHub Enterprise: `https://<server-url>/api/v3`
-    * GitLab Cloud: `https://gitlab.com/api/v4`
-    * GitLab Server: `<server-url>/api/v4`
-    * Bitbucket Cloud: `https://api.bitbucket.org/2.0`
-    * Bitbucket Server: `<server-url>/rest/api/1.0`
+  * `<api-url>` is the URL of the Git provider, and can be one of the following:  
+      - GitHub Cloud `https://api.github.com` 
+      * GitHub Enterprise: `https://<server-url>/api/v3`
+      * GitLab Cloud: `https://gitlab.com/api/v4`
+      * GitLab Server: `<server-url>/api/v4`
+      * Bitbucket Cloud: `https://api.bitbucket.org/2.0`
+      * Bitbucket Server: `<server-url>/rest/api/1.0`  
+    
   * `<provider>` is the Git provider for the runtime. The same provider is used for to install all subsequent runtimes in the same account. Can be one of the following:  
-    * GitHub and GitHub Enterprise: `github`  
-    * GitLab Cloud and GitLab Server: `gitlab`
-    * Bitbucket Cloud: `bitbucket`
-    * Bitbucket Server: `bitbucket-server`  
+      * GitHub and GitHub Enterprise: `github`  
+      * GitLab Cloud and GitLab Server: `gitlab`
+      * Bitbucket Cloud: `bitbucket`
+      * Bitbucket Server: `bitbucket-server`  
 1. When the installation is complete, go to the **List View**, and select the new runtime.
 1. From the context menu on the right, select **Update Git Runtime Credentials**.  
 
