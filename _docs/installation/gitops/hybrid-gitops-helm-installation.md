@@ -17,7 +17,7 @@ This article describes Helm installation via the Codefresh UI:
 * [For tunnel-based Hybrid GitOps](#helm-install-for-tunnel-based-hybrid-gitops)
 * [For ingress-based Hybrid GitOps](#helm-install-for-ingress-based-hybrid-gitops)
 
-> To define a custom values file, review the Codefresh `values.yaml` located [here](https://github.com/codefresh-sandbox/gitops-runtime-charts){:target="\_blank"}.
+> To define a custom values file, review the Codefresh `values.yaml` located [here](https://github.com/codefresh-io/gitops-runtime-helm/tree/main/charts/gitops-runtime){:target="\_blank"}.
 
 
 
@@ -26,6 +26,7 @@ This article describes Helm installation via the Codefresh UI:
 * [Minimum requirements]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/#minimum-system-requirements) for installation
 * Git provider requirements:
     * [Runtime token with the required scopes]({{site.baseurl}}/docs/reference/git-tokens/#git-runtime-token-scopes). You will need it after installation to update runtime credentials
+    * [Personal Access Token (PAT)]({{site.baseurl}}/docs/reference/git-tokens/#git-personal-tokens) for Git-based actions
     * Server URLs for on-premises Git providers
 * (Optional, for ingress-based runtimes only) configuration for ingress controllers:
   * [Ambasador ingress configuration]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/#ambassador-ingress-configuration)
@@ -47,9 +48,9 @@ This article describes Helm installation via the Codefresh UI:
 1. If needed, select **Customize runtime values**, and define the **Runtime Name** and **Namespace**.
    > The Namespace must be identical to the Runtime Name. The default names are `codefresh` for both.
 1. Copy and run the command to the add the repository for the Helm chart:  
-   `helm repo add <helm-repo-name> https://chartmuseum.codefresh.io/gitops-runtime` 
+   `helm repo add <helm-repo-name> https://chartmuseum.codefresh.io/gitops-runtime`  
    where:  
-   <helm-repo-name> is the name of the repository to which to add the runtime Helm chart. For example, `cf-gitops-runtime`.
+   `<helm-repo-name>` is the name of the repository to which to add the runtime Helm chart. For example, `cf-gitops-runtime`.
 1. Copy and run the command to install the runtime Helm chart:  
     `helm upgrade --install <helm-repo-name> --create-namespace --namespace <namespace> --set global.codefresh.accountId=<codefresh-account-id> --set global.codefresh.userToken.token=<codefresh-api-key> --set global.runtime.name=<runtime-name> <helm-repo-name>/gitops-runtime`  
      >All values are automatically populated by Codefresh. The placeholders in the command are for informative purposes.
@@ -60,7 +61,8 @@ This article describes Helm installation via the Codefresh UI:
     * `<codefresh-account-id>` is your Codefresh account ID.
     * `<codefresh-api-key>` is the generated API key.
     * `<runtime-name>` is the name of the runtime, either `codefresh`, or the custom name you defined. 
-    * `<helm-repo-name>/<chart-name>` is the predefined name of the runtime Helm chart and cannot be changed.
+    * `gitops-runtime` is the chart name defined by Codefresh.
+1. Verify that the deployment is up and running (approximately a couple of minutes or less).
 1. Define your Git provider:  
   `cf integration git add default --runtime <runtime-name> --api-url <api-url> --provider <provider>`  
   where:  
@@ -72,8 +74,8 @@ This article describes Helm installation via the Codefresh UI:
           * GitLab Server: `<server-url>/api/v4`
           * Bitbucket Cloud: `https://api.bitbucket.org/2.0`
           * Bitbucket Server: `<server-url>/rest/api/1.0`
-      * <provider> is the Git provider for the runtime. The same provider is used to install additional runtimes in the same account. Can be one of the following:
-          * GitHub and GitHub Enterprise: <span class="highlighter-rouge"github</span></li> 
+      * `<provider>` is the Git provider for the runtime. The same provider is used to install additional runtimes in the same account. Can be one of the following:
+          * GitHub and GitHub Enterprise: `github`
           * GitLab Cloud and GitLab Server: `gitlab`
           * Bitbucket Cloud: `bitbucket`
           * Bitbucket Server: `bitbucket-server`  
@@ -92,9 +94,12 @@ This article describes Helm installation via the Codefresh UI:
 
 {:start="10"}
 1. Paste the token you created and click **Update Credentials**. 
+1. Now add your personal access token for your Git provider:
+    * Click your avatar, select [**Git Personal Access Token**](https://g.codefresh.io/2.0/git-personal-access-token){:target="\_blank"}, and then click **Add Token**.
+    * Paste the personal access token from your Git provider, and click **Add Token** to add the token. 
 1. If you don't have the shared configuration repository for GitOps runtimes, run this command to create it:  
    `TBD`  
-  (NIMA: we don't have a create command-needs to be added )
+  <!--- (NIMA: we don't have a create command-needs to be added )  -->
 1. Optional. [Create a Git Source]({{site.baseurl}}/docs/installation/gitops/git-sources/#create-a-git-source) for the runtime.
 
 
@@ -120,7 +125,7 @@ The ingress class is the ingress class of the ingress controller, for example, `
    where:  
    `<helm-repo-name>` is the name of the repository to which to add the runtime Helm chart. For example, `cf-gitops-runtime`.
 1. Copy and run the command to install the runtime Helm chart:  
-    `helm upgrade --install <helm-repo-name> --create-namespace --namespace <namespace> --set global.codefresh.accountId=<codefresh-account-id> --set global.codefresh.userToken.token=<codefresh-api-key> --set global.runtime.name=<runtime-name> <helm-repo-name>/gitops-runtime` 
+    `helm upgrade --install <helm-repo-name> --create-namespace --namespace <namespace> --set global.codefresh.accountId=<codefresh-account-id> --set global.codefresh.userToken.token=<codefresh-api-key> --set global.runtime.name=<runtime-name> <helm-repo-name>/gitops-runtime --set global.runtime.ingress.enabled=true --set global.runtime.ingress.hosts[0]=<ingress-host> --set global.runtime.ingress.className=<ingress-class>` 
      >Unless otherwise stated, values are automatically populated by Codefresh. 
     where:  
     * `<helm-repo-name>` is the name of the Helm repository you added in the previous step.  
@@ -132,6 +137,7 @@ The ingress class is the ingress class of the ingress controller, for example, `
     * `global.runtime.ingress.enabled=true` indicates that the runtime is ingress-based, and is mandatory.
     * `<ingress-host>` is the IP address or host name of the ingress controller component, and is mandatory. 
     * `<ingress-class>` is the ingress class of the ingress controller, and is mandatory. For example, `nginx` for the NGINX ingress controller.
+1. Verify that the deployment is up and running (approximately a couple of minutes or less).
 1. Define your Git provider:  
   `cf integration git add default --runtime <runtime-name> --api-url <api-url> --provider <provider>`  
   where:  
@@ -147,7 +153,7 @@ The ingress class is the ingress class of the ingress controller, for example, `
           * GitHub and GitHub Enterprise: `github`  
           * GitLab Cloud and GitLab Server: `gitlab`
           * Bitbucket Cloud: `bitbucket`
-         * Bitbucket Server: `bitbucket-server`  
+          * Bitbucket Server: `bitbucket-server`  
 1. When the installation is complete, go to the **List View**, and select the new runtime.
 1. From the context menu on the right, select **Update Git Runtime Credentials**.  
 
@@ -163,6 +169,9 @@ The ingress class is the ingress class of the ingress controller, for example, `
 
 {:start="10"}
 1. Paste the token you created and click **Update Credentials**. 
+1. Now add your personal access token for your Git provider:
+    * Click your avatar, select [**Git Personal Access Token**](https://g.codefresh.io/2.0/git-personal-access-token){:target="\_blank"}, and then click **Add Token**.
+    * Paste the personal access token from your Git provider, and click **Add Token** to add the token.  
 1. If you don't have the shared configuration repository for GitOps runtimes, run this command to create it:  
    `TBD`  
   (NIMA: we don't have a create command-needs to be added )
