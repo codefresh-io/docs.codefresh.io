@@ -409,13 +409,13 @@ rules:
   - apiGroups: [ "*"]
     resources: ["*"]
     verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
-...
+---
 apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: codefresh-user
   namespace: kube-system
-...
+--- 
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
@@ -424,11 +424,11 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
   name: codefresh-role
-  subjects:
-    - kind: ServiceAccount
-      name: codefresh-user
-      namespace: kube-system
-...
+subjects:
+- kind: ServiceAccount
+  name: codefresh-user
+  namespace: kube-system
+---
 apiVersion: v1
 kind: Secret
 type: kubernetes.io/service-account-token
