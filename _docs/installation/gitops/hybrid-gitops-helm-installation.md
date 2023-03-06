@@ -8,7 +8,7 @@ toc: false
 Install the Hybrid Runtime for GitOps through a Helm chart.
 > Helm installation for Hybrid GitOps is currently in Alpha. 
 
-* Access mode for runtime 
+* Access mode for runtime  
   Helm install supports both tunnel-based and ingress-based access modes. The tunnel-based access mode is the default access mode. <br>
   Ingress-based access modes require an ingress controller to be configured before the installation, and additional flags such as the ingress host and class to be supplied as part of the install command. 
 
