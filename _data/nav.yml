@@ -581,6 +581,8 @@
 - title: What's new
   url: "/whats-new"
   pages:
+    - title: Release notes
+      url: "/release-notes/"
     - title: Changelog
       url: "/changelog"
     - title: GitOps what's new
