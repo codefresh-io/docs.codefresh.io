@@ -347,6 +347,23 @@ max-width="60%"
 
 > Track the actual disk usage in Builds > Metrics.
 
+#### Set memory-usage threshold for pipeline build
+If needed, select a memory-usage threshold for the pipeline build to override that set at the account level. Codefresh displays a banner when memory usage has exceeded the selected threshold. 
+
+The global memory-usage threshold is set in **Pipeline Settings**, for all pipelines in the account. 
+You can override the memory-usage threshold for individual pipelines, depending on the resources needed for pipeline execution. For example, if the account-level memory usage is set at 90%, and the specific pipeline is resource-intensive, you want to be warned when the usage exceeds 70%, instead of 90%.  
+Conversely, if the account-level memory usage is set to 70%, and the specific pipeline is likely to use between 80% and 90% for example, you can safely set the memory-usage threshold to 100% to avoid unnecessary usage warnings.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/create/memory-usage-threshold.png" 
+url="/images/pipeline/create/memory-usage-threshold.png"
+alt="Memory-usage thresholds for pipeline" 
+caption="Memory-usage thresholds for pipeline"
+max-width="60%"
+%}
+
 
 ## Using Pipeline Templates
 
@@ -427,6 +444,7 @@ Pipelines that belong to a project will mention it below their name so it is ver
 
 
 ## Related articles
+[Global pipeline settings]({{site.baseurl}}//docs/pipelines/configuration/pipeline-settings/)
 [Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
 [Docker registry integrations]({{site.baseurl}}/docs/integrations/docker-registries/)  
