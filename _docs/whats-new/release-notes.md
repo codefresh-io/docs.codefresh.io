@@ -139,7 +139,7 @@ See [Application header]({{site.baseurl}}/docs/deployments/gitops/applications-d
 ## Bug fixes
 
 ### CI/CD
-- Large number of logs affect Build performance - Roi CR-17088
+- Logs not generated and slow build execution.
 - `CF_HELM_SET` variable  printed as [object Object].
 - Variables added via pipeline hooks not rendered for build annotations.
 - Build does not fail on error for `when` condition.
