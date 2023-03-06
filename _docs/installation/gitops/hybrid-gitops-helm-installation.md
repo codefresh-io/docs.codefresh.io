@@ -48,15 +48,16 @@ This article describes Helm installation via the Codefresh UI:
 1. If needed, select **Customize runtime values**, and define the **Runtime Name** and **Namespace**.
    > The Namespace must be identical to the Runtime Name. The default names are `codefresh` for both.
 1. Copy and run the command to the add the repository for the Helm chart:  
-   `helm repo add <helm-repo-name> https://chartmuseum.codefresh.io/gitops-runtime`  
+   `helm repo add <helm-repo-name> https://chartmuseum.codefresh.io/gitops-runtime` <br>
+   `helm repo update`
    where:  
    `<helm-repo-name>` is the name of the repository to which to add the runtime Helm chart. For example, `cf-gitops-runtime`.
 1. Copy and run the command to install the runtime Helm chart:  
-    `helm upgrade --install <helm-repo-name> --create-namespace --namespace <namespace> --set global.codefresh.accountId=<codefresh-account-id> --set global.codefresh.userToken.token=<codefresh-api-key> --set global.runtime.name=<runtime-name> <helm-repo-name>/gitops-runtime`  
+    `helm upgrade --install <helm-release-name> --create-namespace --namespace <namespace> --set global.codefresh.accountId=<codefresh-account-id> --set global.codefresh.userToken.token=<codefresh-api-key> --set global.runtime.name=<runtime-name> <helm-repo-name>/gitops-runtime --devel`  
      >All values are automatically populated by Codefresh. The placeholders in the command are for informative purposes.
     
     where:  
-    * `<helm-repo-name>` is the name of the Helm repository you added in the previous step.  
+    * `<helm-release-name>` is the name of the Helm release.  
     * `<namespace>` is the namespace in which to install the Hybrid GitOps runtime, either `codefresh`, or the custom name you defined.  
     * `<codefresh-account-id>` is your Codefresh account ID.
     * `<codefresh-api-key>` is the generated API key.
@@ -94,9 +95,9 @@ This article describes Helm installation via the Codefresh UI:
 
 {:start="10"}
 1. Paste the token you created and click **Update Credentials**. 
-1. Now add your personal access token for your Git provider:
-    * Click your avatar, select [**Git Personal Access Token**](https://g.codefresh.io/2.0/git-personal-access-token){:target="\_blank"}, and then click **Add Token**.
-    * Paste the personal access token from your Git provider, and click **Add Token** to add the token. 
+1. Now add your personal access token, or if your admin has set up OAuth2, authorize access.
+    * Click your avatar, select [**Git Personal Access Token**](https://g.codefresh.io/2.0/git-personal-access-token){:target="\_blank"}.
+    * Proceed as needed. See [Authorize Git access in Codefresh]({{site.baseurl}}/docs/administration/user-self-management/manage-pats/#authorize-git-access-in-codefresh).
 1. If you don't have the shared configuration repository for GitOps runtimes, run this command to create it:  
    `TBD`  
   <!--- (NIMA: we don't have a create command-needs to be added )  -->
@@ -121,14 +122,15 @@ The ingress class is the ingress class of the ingress controller, for example, `
 1. If needed, select **Customize runtime values**, and define the **Runtime Name** and **Namespace**.
    > The Namespace must be identical to the Runtime Name. The default names are `codefresh` for both.
 1. Copy and run the command to the add the repository for the Helm chart:
-   `helm repo add <helm-repo-name> https://chartmuseum.codefresh.io/gitops-runtime` 
+   `helm repo add <helm-repo-name> https://chartmuseum.codefresh.io/gitops-runtime` <br>
+   `helm repo update`
    where:  
    `<helm-repo-name>` is the name of the repository to which to add the runtime Helm chart. For example, `cf-gitops-runtime`.
 1. Copy and run the command to install the runtime Helm chart:  
-    `helm upgrade --install <helm-repo-name> --create-namespace --namespace <namespace> --set global.codefresh.accountId=<codefresh-account-id> --set global.codefresh.userToken.token=<codefresh-api-key> --set global.runtime.name=<runtime-name> <helm-repo-name>/gitops-runtime --set global.runtime.ingress.enabled=true --set global.runtime.ingress.hosts[0]=<ingress-host> --set global.runtime.ingress.className=<ingress-class>` 
+    `helm upgrade --install <helm-release-name> --create-namespace --namespace <namespace> --set global.codefresh.accountId=<codefresh-account-id> --set global.codefresh.userToken.token=<codefresh-api-key> --set global.runtime.name=<runtime-name> <helm-repo-name>/gitops-runtime --set global.runtime.ingress.enabled=true --set global.runtime.ingress.hosts[0]=<ingress-host> --set global.runtime.ingress.className=<ingress-class --devel>` 
      >Unless otherwise stated, values are automatically populated by Codefresh. 
     where:  
-    * `<helm-repo-name>` is the name of the Helm repository you added in the previous step.  
+    * `<helm-release-name>` is the name of the Helm release.  
     * `<namespace>` is the namespace in which to install the Hybrid GitOps runtime, either `codefresh`, or the custom name you defined.  
     * `<codefresh-account-id>` is your Codefresh account ID.
     * `<codefresh-api-key>` is the generated API key.
@@ -169,9 +171,9 @@ The ingress class is the ingress class of the ingress controller, for example, `
 
 {:start="10"}
 1. Paste the token you created and click **Update Credentials**. 
-1. Now add your personal access token for your Git provider:
-    * Click your avatar, select [**Git Personal Access Token**](https://g.codefresh.io/2.0/git-personal-access-token){:target="\_blank"}, and then click **Add Token**.
-    * Paste the personal access token from your Git provider, and click **Add Token** to add the token.  
+1. Now add your personal access token, or if your admin has set up OAuth2, authorize access.
+    * Click your avatar, select [**Git Personal Access Token**](https://g.codefresh.io/2.0/git-personal-access-token){:target="\_blank"}.
+    * Proceed as needed. See [Authorize Git access in Codefresh]({{site.baseurl}}/docs/administration/user-self-management/manage-pats/#authorize-git-access-in-codefresh).  
 1. If you don't have the shared configuration repository for GitOps runtimes, run this command to create it:  
    `TBD`  
   (NIMA: we don't have a create command-needs to be added )
