@@ -8,6 +8,7 @@ redirect_from:
   - /docs/amazon-ecs/
   - /docs/deploy-your-containers/
   - /docs/deploy-your-containers/amazon-ecs/
+  - /v1.0/docs/amazon-ecs/
 toc: true
 ---
 Codefresh can deploy to any ECS or Fargate cluster created in Amazon.

@@ -8,6 +8,7 @@ redirect_from:
   - /docs/docker-swarm/
   - /docs/deploy-to-docker-swarm/
   - /docs/deploy-your-containers/docker-swarm/
+  - /v1.0/docs/docker-swarm/
 toc: true
 ---
 

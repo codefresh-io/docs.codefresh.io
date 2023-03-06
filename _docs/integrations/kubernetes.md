@@ -5,6 +5,8 @@ group: integrations
 redirect_from:
  - /docs/deploy-to-kubernetes/add-kubernetes-cluster/
  - /docs/deploy-to-kubernetes/deployment-options-to-kubernetes/
+ - /v1.0/docs/adding-non-gke-kubernetes-cluster/
+ - /v1.0/docs/codefresh-kubernetes-integration-beta/
 toc: true
 ---
 

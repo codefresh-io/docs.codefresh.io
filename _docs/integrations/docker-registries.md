@@ -7,6 +7,7 @@ redirect_from:
   - /docs/docker-registries/external-docker-registries/
   - /docs/docker-registries/
   - /docs/codefresh-registry/  
+  - /v1.0/docs/codefresh-registry/
   - /docs/docker-registries/codefresh-registry/
   - /docs/docker-registries/cfcr-deprecation/
 toc: true
