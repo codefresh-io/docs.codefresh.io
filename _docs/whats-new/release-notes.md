@@ -8,12 +8,10 @@ toc: true
 Welcome to Codefresh Release Notes for February, which is our first edition of release notes including Codefresh pipelines and Codefresh GitOps!
 
 
-
-
 ## Features & Enhancements
 
 ### CI/CD: Slack integration notification for builds terminated by system
-Notifications for failed builds is generally, as, if not more, important than those for successful builds. Getting notifications for system-terminated builds is crucial, as it indicates that the build was stopped because of pipeline policy and may require immediate attention. By receiving notifications for system-terminated builds, you can quickly investigate the issue and take corrective action if necessary.
+Notifications for failed builds are equally, if not more important, than those for successful builds. Getting notifications for system-terminated builds is crucial, as it indicates that the build was stopped because of pipeline policy and may require immediate attention. You can quickly investigate the issue and take corrective action if necessary.
 
 
 We added a new option to our Slack integration to notify you whenever builds are terminated by the system. 
@@ -48,7 +46,7 @@ For details, see [Import Helm configurations into your pipeline definition]({{si
 
 ### CI/CD: Multiple cache sources for pipeline builds
 
-Docker has support for specifying external cache source for builds. We added the `cache-from` argument to our `build` step allowing you to specify additional cache sources and speed up the build process. Multiple cache sources are useful when your primary cache source is unavailable or slow.
+Docker has support for specifying external cache sources for builds. We added the `cache-from` argument to our `build` step allowing you to specify additional cache sources and speed up the build process. Multiple cache sources are useful when your primary cache source is unavailable or slow.
 
 Here's an example of `cache-from` with `buildkit`:
 
@@ -73,10 +71,11 @@ steps:
 
 For details, see [`cache_from` in `build` step fields]({{site.baseurl}}/docs/pipelines/steps/build/#fields).
 
-### User-defined threshold for memory usage limit warning
-Remember the banner that alerted you whenever the memory usage for a pipeline build exceeded 90%? 
-Instead of a fixed usage limit for banner display, you can decide when to display the warning to make it as non-intrusive as possible.
-As part of the pipeline account-level configuration settings (**Toolbar Settings > Pipeline Settings**), you can decide to display the banner when memory usage exceeds 70% (new option), 90% (as before), or the actual limit of 100% (also, a new option). 
+### Control thresholds for memory usage warning banner
+Remember the banner that alerted you whenever the memory usage for a pipeline build exceeded 70 or 90%?
+You can now decide the usage threshold at which to display the banner. Increasing the threshold helps avoid premature warnings for pipelines that do not consume a lot of memory, while decreasing it for resource-intensive pipelines helps avoid build failures. 
+
+As part of the account-level configuration settings for pipelines (**Toolbar Settings > Pipeline Settings**), you can decide to display the banner when memory usage exceeds 70%, 90% (as before), or the actual limit of 100% (new option). 
 
 
 {% include
@@ -89,13 +88,22 @@ As part of the pipeline account-level configuration settings (**Toolbar Settings
  max-width="50%"
 %}
 
+Users can then override the memory-usage threshold for individual pipelines.
+See [Memory usage warning for pipeline builds]({{site.baseurl}}/docs/pipelines/configuration/pipeline-settings/#memory-usage-warning-for-pipeline-builds).
 
+### CI/CD: New flow for Cloud Builds for pipelines
+Previously, all Codefresh accounts had access to a SaaS runtime environment to run pipelines. However, this is no longer the case. Account administrators can request SaaS runtime environments by clicking **Enable Cloud Builds** in Codefresh. This action triggers an email request to Codefresh, and you should receive a response within 24 hours.
+
+
+### GitOps: Upgrade to Argo CD 2.6
+We have upgraded the Argo CD version for our GitOps module to v2.6. 
+For details, see [Argo CD Releases](https://github.com/argoproj/argo-cd/releases){:target="\_build"}.
 
 ### Usability enhancements
 Saves time and ease of use in  your =interactions in Codefresh.  
 
 * **CI/CD: Prompt to switch accounts**  
-  To avoid confusion, we alert you when you are signed into more than one Codefresh account. You are prompted to either switch to the active account or return to the previous one. 
+  To avoid confusion, when you are signed into more than one Codefresh account, you are prompted to either switch to the active account or return to the previous one. 
 
 {% include
  image.html
@@ -108,10 +116,10 @@ Saves time and ease of use in  your =interactions in Codefresh.
 %}
 
 * **CI/CD: Case-insensitive search for Pipelines and Pipeline List view**
-  Search is now easier as queries are case-sensitive. 
+  Search is now easier as queries are case-insensitive. 
 
-* **GitOps: Terminate Sync now in Application Header**
-We moved the **Terminate Sync** button from the Sync details drawer to the Application Header making it easy to terminate problematic sync operations if you need to. 
+* **GitOps: Terminate Sync now in application header**
+We moved the **Terminate Sync** button from the Sync details drawer to the application header making it easy to terminate problematic sync operations if you need to. 
 
 
 {% include
@@ -124,56 +132,28 @@ We moved the **Terminate Sync** button from the Sync details drawer to the Appli
  max-width="50%"
 %}
 
-### CI/CD: New flow for Cloud Builds for pipelines
-In previous versions, you could run pipelines in the SaaS runtime environment that was available by default for all Codefresh accounts. 
-From this version, you need to install the Codefresh Runner to create a runtime environment. 
-Cloud Builds can be enabled on request by account administrators.  will anser you in up to 24 hours.
-
-
-
-
-
-
-
-
-### GitOps: Upgrade to Argo CD 2.6
-We have upgraded the Argo CD version for our GitOps module to v2.6. 
-For details, see [Argo CD Releases](https://github.com/argoproj/argo-cd/releases){:target="\_build"}.
-
-
-
-
-### [Epic OnPrem] FR: Add search to Chart Version drop box of Install Helm Chart modal window
-#### Use helm-diff plugin in cfstep-helm image
+See [Application header]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/#get-status-from-application-header) in [Monitoring GitOps applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/).
 
 
 
 ## Bug fixes
 
 ### CI/CD
-- After terminating build and killing engine, `dind` pods remain alive for 30+ before SIGTERM.
 - Large number of logs affect Build performance - Roi CR-17088
-- Codefresh Runner engine unable to communicate with dind container. CR-14602
-- `CF_HELM_SET` variable  printed as [object Object]: CR-4232
+- `CF_HELM_SET` variable  printed as [object Object].
 - " Doumentation on time zones removed from [CRON Expression Format](https://github.com/codefresh-io/cronus/blob/master/docs/expression.md/){:target="\_blank"}
-
 - Variables added via pipeline hooks not rendered for build annotations.
-- Build does not fail on error for `when` condition (CR-16925)
-- Clicking a badge in Pipeline > General Settings results in error.
-- When cloning pipelines, **Copy YAML from** drop-down does not display all pipelines in project, if project has more than 100 pipelines.
-- Lack of Codefresh context prevents Classic CLI to set a new one (CR-15884)
-- Running pipeline locally results in error: " checkAvailabilityWithRetry error: ..., connect EACCES /var/run/docker.sock .. " (CR-13455)
-- Hover over Usage Report columns does not display tooltips.(CR-17181)
-- Codefresh run --local leaves behind engine containers after each run (CR-16913)
+- Build does not fail on error for `when` condition.
+- Clicking a badge in Pipeline > General Settings results in an error.
+- When cloning pipelines, **Copy YAML from** drop-down does not display all pipelines in project, if project has more than 100 pipelines.  
+- Running pipeline locally results in error: " checkAvailabilityWithRetry error: ..., connect EACCES /var/run/docker.sock .. " 
+- Tooltips not displayed on hover over Usage Report columns.
+- Codefresh run --local leaves behind engine containers after each run.
 - (On-premises only) Liveness probe failures on cf-api pods
 - (On-premises only) Tooltip on hover over build/project names in the Builds page, shows _topbar.title_ instead of the build/project name.
 
 
-- Regression: Unable to edit email invitation for user who does not have an actiuve account
-- Internal: Codefresh pipelines: Argocd-server unable to send events when golang channel is flooded
-- Internal: failed to render logs
-
 ### GitOps
-- Trying to recover runtime results in "invalid memory address or nil pointer dereference" error.
-- Rollout rollback failure when rollout namespace is different from application namespace. (CR-17317)
+- Trying to recover runtime results in "invalid memory address or nil pointer reference" error.
+- Rollout rollback failure when rollout namespace is different from application namespace.
 - Clicking native Argo Workflows link displays empty screen. 
