@@ -63,8 +63,8 @@ The ingress class is the ingress class of the ingress controller, for example, `
   **Tunnel-based install chart command:**<br>
     `helm upgrade --install <helm-release-name> --create-namespace --namespace <namespace> --set global.codefresh.accountId=<codefresh-account-id> --set global.codefresh.userToken.token=<codefresh-api-key> --set global.runtime.name=<runtime-name> <helm-repo-name>/gitops-runtime --devel`  
 
-  **Ingress-based install chart command:**<br>
-      `helm upgrade --install <helm-release-name> --create-namespace --namespace <namespace> --set global.codefresh.accountId=<codefresh-account-id> --set global.codefresh.userToken.token=<codefresh-api-key> --set global.runtime.name=<runtime-name> <helm-repo-name>/gitops-runtime  --devel`   
+    **Ingress-based install chart command:**<br>
+      `helm upgrade --install <helm-release-name> --create-namespace --namespace <namespace> --set global.codefresh.accountId=<codefresh-account-id> --set global.codefresh.userToken.token=<codefresh-api-key> --set global.runtime.name=<runtime-name> <helm-repo-name>/gitops-runtime  --set global.runtime.ingress.enabled=true --set global.runtime.ingress.hosts[0]=<ingress-host> --set global.runtime.ingress.className=<ingress-class> --devel`  
      
     >Unless otherwise indicated, values are automatically populated by Codefresh. 
     
@@ -75,7 +75,6 @@ The ingress class is the ingress class of the ingress controller, for example, `
     * `<codefresh-api-key>` is the generated API key.
     * `<runtime-name>` is the name of the runtime, either `codefresh`, or the custom name you defined. 
     * `gitops-runtime` is the chart name defined by Codefresh.
-    These flags are required only if the runtime is ingress-based:
     * `global.runtime.ingress.enabled=true` is mandatory for _ingress-based runtimes_, and indicates that the runtime is ingress-based.
     * `<ingress-host>` is mandatory for _ingress-based runtimes_, and is the IP address or host name of the ingress controller component. 
     * `<ingress-class>` is mandatory for _ingress-based runtimes_, and is the ingress class of the ingress controller. For example, `nginx` for the NGINX ingress controller.
