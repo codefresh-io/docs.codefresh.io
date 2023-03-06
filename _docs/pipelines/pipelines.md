@@ -348,11 +348,11 @@ max-width="60%"
 > Track the actual disk usage in Builds > Metrics.
 
 #### Set memory-usage threshold for pipeline build
-Selecting a memory-usage threshold for pipeline builds warns you in real-time of bottlenecks, preventing build failures. 
-Codefresh displays a banner alerting you that the memory usage has exceeded the selected threshold. You can then increase resources as needed.
+If needed, select a memory-usage threshold for the pipeline build to override that set at the account level. Codefresh displays a banner when memory usage has exceeded the selected threshold. 
 
 The global memory-usage threshold is set in **Pipeline Settings**, for all pipelines in the account. 
-You can override the memory-usage threshold for a specific pipeline. For example, if the account-level memory usage is set at 90%, and you have a resource-intensive pipeline, you want to be warned when the usage exceeds 70%, instead of 90%.
+You can override the memory-usage threshold for individual pipelines, depending on the resources needed for pipeline execution. For example, if the account-level memory usage is set at 90%, and the specific pipeline is resource-intensive, you want to be warned when the usage exceeds 70%, instead of 90%.  
+Conversely, if the account-level memory usage is set to 70%, and the specific pipeline is likely to use between 80% and 90% for example, you can safely set the memory-usage threshold to 100% to avoid unnecessary usage warnings.
 
 {% include 
 image.html 
