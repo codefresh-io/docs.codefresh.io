@@ -87,11 +87,14 @@ Here you can restrict the sources of pipeline YAML that users can select. The op
 You need to allow at least one of these options so that users can create new pipelines. We suggest leaving the first option enabled when users are still learning about Codefresh and want to experiment. 
 
 ## Memory usage warning for pipeline builds
-Select the memory-usage threshold for pipeline builds at which to display alerts. 
-Memory-usage thresholds for pipeline builds are useful to both avoid premature and unnecessary warnings, and get timely warnings to avoid build failures.
-Accounts with pipelines that do not consume a lot of memory can have higher thresholds, or even the maximum, as they are unikely to reach the threshold. Resource-intensive pipelines require lower thresholds, 90% is recommended, to avoid build failures.
+Select the memory-usage threshold for pipeline builds at which to display alerts. <br>
+Memory-usage thresholds for pipeline builds are useful to both avoid premature and unnecessary warnings, and get timely warnings to avoid build failures, as needed.
 
-> Since Codefresh displays the  banner alert when the build memory _exceeds_ the selected threshold, setting the threshold at 100% means that the pipeline has already failed when you see the alert banner.
+
+Accounts with pipelines that do not consume a lot of memory can have higher thresholds, or even the maximum threshold, as they are unikely to hit available memory limits.  
+Resource-intensive pipelines on the contrary require lower thresholds for timely warnings to prevent build failures. 90% is recommended for such pipelines.
+
+> Since Codefresh displays the banner alert when the build memory _exceeds_ the selected threshold, setting the threshold at 100%, means that the pipeline has already failed when you see the alert banner.
 
 {% include image.html
 lightbox="true"
