@@ -6,6 +6,8 @@ redirect_from:
   - /docs/codefresh-yaml/docker-image-metadata/
   - /docs/metadata-annotations/
   - /docs/docker-registries/metadata-annotations/
+  - /v1.0/docs/metadata-annotations/
+
 toc: true
 ---
 Images built by Codefresh can be annotated with customized metadata.
