@@ -120,7 +120,7 @@ Applications with `rollout` resources need Argo Rollouts on the target cluster, 
 * Drill down into the application to investigate the issue and make changes.
 
 ## Get status from application header
-When you select an application from the GitOps Apps dashboard, the application header is displayed at the top of the page with critical information  on the application. 
+When you select an application from the GitOps Apps dashboard, the application header, at the top of the page, displays critical information on the application. 
 Once you select an application, the quickest option to monitor statuses is through the application header which is always displayed, no matter what tab you navigate to.  
 
 Information and actions in the application header:  
