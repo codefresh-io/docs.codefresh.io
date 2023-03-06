@@ -120,10 +120,8 @@ The ingress class is the ingress class of the ingress controller, for example, `
 1. Optional. [Create a Git Source]({{site.baseurl}}/docs/installation/gitops/git-sources/#create-a-git-source) for the runtime.
 
 
-
-
-
 ## Related articles
 [Shared configuration repo for GitOps Runtimes]({{site.baseurl}}/docs/reference/shared-configuration/)  
 [Add Git Sources to GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
+[GitOps Runtime architecture]({{site.baseurl}}/docs/installation/runtime-architecture/#gitops-runtime-architecture)  
 
