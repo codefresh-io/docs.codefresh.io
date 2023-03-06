@@ -141,15 +141,14 @@ See [Application header]({{site.baseurl}}/docs/deployments/gitops/applications-d
 ### CI/CD
 - Large number of logs affect Build performance - Roi CR-17088
 - `CF_HELM_SET` variable  printed as [object Object].
-- " Doumentation on time zones removed from [CRON Expression Format](https://github.com/codefresh-io/cronus/blob/master/docs/expression.md/){:target="\_blank"}
 - Variables added via pipeline hooks not rendered for build annotations.
 - Build does not fail on error for `when` condition.
 - Clicking a badge in Pipeline > General Settings results in an error.
 - When cloning pipelines, **Copy YAML from** drop-down does not display all pipelines in project, if project has more than 100 pipelines.  
 - Running pipeline locally results in error: " checkAvailabilityWithRetry error: ..., connect EACCES /var/run/docker.sock .. " 
 - Tooltips not displayed on hover over Usage Report columns.
-- Codefresh run --local leaves behind engine containers after each run.
-- (On-premises only) Liveness probe failures on cf-api pods
+- Engine containers left in Docker after `codefresh run --local`.
+- (On-premises only) Liveness probe failures on `cf-api` pods.
 - (On-premises only) Tooltip on hover over build/project names in the Builds page, shows _topbar.title_ instead of the build/project name.
 
 
