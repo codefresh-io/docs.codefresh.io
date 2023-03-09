@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 
-gem 'jekyll-admin', group: :jekyll_plugins
+gem 'jekyll-admin', '>= 0.11.1', group: :jekyll_plugins
 
 group :development, :test do
   gem 'jekyll', '~> 3.8.4'
