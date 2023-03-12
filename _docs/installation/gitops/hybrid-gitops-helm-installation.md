@@ -64,7 +64,7 @@ The ingress class is the ingress class of the ingress controller, for example, `
     `helm upgrade --install <helm-release-name> --create-namespace --namespace <namespace> --set global.codefresh.accountId=<codefresh-account-id> --set global.codefresh.userToken.token=<codefresh-api-key> --set global.runtime.name=<runtime-name> <helm-repo-name>/gitops-runtime --devel`  
 
     **Ingress-based install chart command:**<br>
-      `helm upgrade --install <helm-release-name> --create-namespace --namespace <namespace> --set global.codefresh.accountId=<codefresh-account-id> --set global.codefresh.userToken.token=<codefresh-api-key> --set global.runtime.name=<runtime-name> <helm-repo-name>/gitops-runtime  --set global.runtime.ingress.enabled=true --set global.runtime.ingress.hosts[0]=<ingress-host> --set global.runtime.ingress.className=<ingress-class> --devel`  
+      `helm upgrade --install <helm-release-name> --create-namespace --namespace <namespace> --set global.codefresh.accountId=<codefresh-account-id> --set global.codefresh.userToken.token=<codefresh-api-key> --set global.runtime.name=<runtime-name> <helm-repo-name>/gitops-runtime  --set global.runtime.ingress.enabled=true --set "global.runtime.ingress.hosts[0]"=<ingress-host> --set global.runtime.ingress.className=<ingress-class> --devel`  
      
     >Unless otherwise indicated, values are automatically populated by Codefresh. 
     
@@ -117,6 +117,13 @@ The ingress class is the ingress class of the ingress controller, for example, `
 1. If you don't have the shared configuration repository for GitOps runtimes, contact support. 
   > For the Alpha, we assume that you already have a shared configuration repository for your account.
 1. Optional. [Create a Git Source]({{site.baseurl}}/docs/installation/gitops/git-sources/#create-a-git-source) for the runtime.
+1. Optional. Required for ingress-based only. If relevant, complete the configuration for these ingress controllers:
+  * [ALB AWS: Alias DNS record in route53 to load balancer]({{site.baseurl}}/docs/runtime/requirements/#alias-dns-record-in-route53-to-load-balancer)
+  * [Istio: Configure cluster routing service]({{site.baseurl}}/docs/runtime/requirements/#cluster-routing-service)
+  * [NGINX Enterprise ingress controller: Patch certificate secret]({{site.baseurl}}/docs/runtime/requirements/#patch-certificate-secret)  
+1. Optional. Required for ingress-based only. Create and register Git integrations using these commands:  
+  `cf integration git add default --runtime <RUNTIME-NAME> --api-url <API-URL>`  
+  `cf integration git register default --runtime <RUNTIME-NAME> --token <RUNTIME-AUTHENTICATION-TOKEN>`  
 
 
 ## Related articles
