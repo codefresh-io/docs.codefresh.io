@@ -360,7 +360,7 @@ caption="Build Runtime settings for pipeline without runtime environment"
 max-width="60%"
 %}
 
-As the account admin, you can also request a Cloud Build (SaaS runtime environment) to be enabled for the pipeline, which is not available by default. If approved, you should receive an email informing you of the same, and see the **SaaS runtime** in the list of Runtime Environments. 
+As the account admin, you can also request a Cloud Build (SaaS runtime environment) to be enabled for the pipeline, which is not available by default. Clicking the Enable Cloud Builds button sends an automated email request, with a response timeframe of 24 hours. If approved, you should see the **SaaS runtime** in the list of Runtime Environments. 
 
 {% include 
 image.html 

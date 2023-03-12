@@ -38,12 +38,22 @@ The Codefresh platform supports three different installation options, all compli
   See [GitOps](#gitops).
 
 
-## Cloud Builds for Codefresh pipelines
+## Note on Cloud Builds for Codefresh pipelines
 
 
 Cloud Builds for Codefresh pipelines are disabled for all accounts by default. 
-Account admins must request Codefresh to enable Cloud Builds for an account. They can grant access to users or have the users explicitly request access to run pipelines. 
+Account admins can request Codefresh to enable Cloud Builds for an account. There is no manual action required except to click on the Enable Cloud Builds button as shown below. The timeframe for the response is up to 24 hours.<br>
 
+{% include image.html
+  lightbox="true"
+  file="/images/installation/enable-cloud-builds-request.png"
+  url="/images/installation/enable-cloud-builds-request.png"
+  caption="Enable Cloud Builds for pipelines"
+  alt="Enable Cloud Builds for pipelines"
+  max-width="70%"
+    %} 
+
+As an account admin, you can then grant access to users or have the users explicitly request access to a runtime environment to run pipelines. 
 
 If you [create a free account]({{site.baseurl}}/docs/quick-start/create-codefresh-account/), to run pipelines, you need to configure Build Runtime settings with a Hybrid Runner runtime environment. 
 
@@ -59,7 +69,8 @@ The UI runs on Codefresh infrastructure, while the builds happen in a Kubernetes
   lightbox="true"
   file="/images/installation/hybrid-installation.png"
   url="/images/installation/hybrid-installation.png"
-  alt="sso-diagram.png"
+  caption="Hybrid installation.png"
+  alt="Hybrid installation.png"
   max-width="70%"
     %}    
 
