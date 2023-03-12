@@ -223,6 +223,9 @@ Once you create your pipeline you can also click on the top tab called *Settings
   - Builds in pending approval will **be** counted when determining the concurrency limit for a pipeline
   - Honor the option defined globally in your Codefresh account  
 
+- **Restart pipeline**  
+  **Permit restart pipeline from failed step**: When enabled (the default), allows users to restart the pipeline directly from the failed step. Otherwise, users can only restart the pipeline from the beginning.
+
 #### Select Kubernetes cluster contexts
 By default, all clusters integrated with Codefresh are automatically available for all pipelines in the account. 
 The inject cluster option when enabled for the account allows you to selectively restrict the clusters which can be accessed from pipelines created for the user account. 

@@ -8,9 +8,9 @@ toc: true
 ---
 
 
-All pipeline activity in Codefresh can be viewed in the *Builds* tab. 
-* The global build view shows builds for all projects  across your organization
-* The project-based view from the settings inside an individual project shows the builds for the selected project
+View activity for Codefresh pipelines in in the **Builds** tab. 
+* Global build view: The default view, displays builds for all pipelines for all projects across your organization.
+* Project build view: Selecting a project displays the builds for the pipelines in the project.
 
 Both views have the same controls and filters.
 
@@ -368,39 +368,50 @@ max-width="70%"
 
 ### Restarting the pipeline 
 
-You can choose to restart any pipeline by clicking the button at the top right corner.
+You can restart a failed pipeline either from the beginning or from the step that failed.
+
+* Restart from beginning  
+  Restarts the pipeline with the **same** state that it had in its original execution, including the original Git commit. 
+  >To restart the pipeline with a new state instead, use the **Run** button in the [pipeline editor]({{site.baseurl}}/docs/pipelines/pipelines/#using-the-inline-pipeline-editor), and select any of the available [triggers]({{site.baseurl}}/docs/pipelines/triggers/).
+
+* Restart from failed step  
+  This option restarts the pipeline from the step that failed in the previous execution. Similar to restarting from the beginning, restarting from a failed step also restarts the pipeline with the same state at that point in time, including the original Git commit.  
+  
+  The option to restart from a failed step is available only when **Permit restart pipeline from failed step** is enabled in the pipeline's settings.  
+  You can restart from the Builds page or directly from the specific step that failed.
+
+>If your pipeline has some flaky steps, you can also use the [retry syntax]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#retrying-a-step) in your YAML instead of restarting them manually each time they fail.
+
+**Restart pipeline from Builds view**
+
+* In the row with the pipeline to restart, click **Restart**, and then select the required option.
+  >Disabled **From Failed Steps** indicates that the option is not enabled for the pipeline.
+
 
 {% include 
 image.html 
 lightbox="true" 
 file="/images/pipeline/monitoring/restart-pipeline.png" 
 url="/images/pipeline/monitoring/restart-pipeline.png"
-alt="Restart a pipeline" 
+alt="Builds view: Restart a pipeline" 
 caption="Restart a pipeline"
 max-width="70%"
 %}
 
->It is important to note that "Restart from beginning" will restart a pipeline with the **same** state that it had in its original execution (including the original git commit). If you want to execute a pipeline again with a new state instead, you need to use the *Run* button in the [pipeline editor]({{site.baseurl}}/docs/pipelines/pipelines/#using-the-inline-pipeline-editor) and selecting any of the available [triggers]({{site.baseurl}}/docs/pipelines/triggers/).
-
-
-
-If the pipeline has failed, you can choose to restart it only from the failed step and onwards.
-
-You can also restart from a failed step right from the graphical view:
+**Restart from step view**
+* Click the pipeline to view its steps. 
+* Go to the failed step, right-click and then select **Restart from this step**.
 
 {% include 
 image.html 
 lightbox="true" 
 file="/images/pipeline/monitoring/restart-failed.png" 
 url="/images/pipeline/monitoring/restart-failed.png"
-alt="Restart from a failed step" 
-caption="Restart from a failed step"
+alt="Step view: Restart from failed step" 
+caption="Step view: Restart from failed step"
 max-width="70%"
 %}
 
->Notice again that restarting a pipeline from a failed step means restarting the pipeline with the **same** state that it had at the point in time (including the original git commit).
-
-If your pipeline has some flaky steps, you can also use the [retry syntax]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#retrying-a-step) in your yaml instead of restarting them manually each time they fail.
 
 
 ## Monitoring pipelines outside the Codefresh UI
