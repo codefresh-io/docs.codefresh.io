@@ -13,7 +13,7 @@ Install the Codefresh Runner on your Kubernetes cluster to run pipelines and acc
 
 As the Codefresh Runner is **not** dependent on any special dockershim features, any compliant container runtime is acceptable. The docker socket/daemon used by Codefresh pipelines is **NOT** the one on the host node (as it might not exist at all in the case of containerd or cri-o), but instead an internal docker daemon created/managed by the pipeline itself.
 
->**IMPORTANT**: 
+>**IMPORTANT**:<br>
   Using spot instances can cause failures in Codefresh builds, as they can be taken down without notice. If you require 100% availability, we recommend to not use spot instances.
 
 
