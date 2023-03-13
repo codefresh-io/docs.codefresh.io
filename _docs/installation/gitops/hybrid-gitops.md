@@ -18,6 +18,8 @@ If Bitbucker Server is your Git provider, you must also select the specific serv
 
 >To change the Git provider for your Codefresh account after installation, contact Codefresh support.
 
+> If you [skip validating the scopes for the provided token](#skip-token-scope-validation), you must create the repositories for the runtime and for the Git Source before starting the installation.
+
 
 **Codefresh and Argo CD**  
  The Hybrid GitOps Runtime comprises Argo CD components and Codefresh-specific components. 
@@ -847,7 +849,7 @@ If you are not sure which OS to select for `curl`, simply select one, and Codefr
 ## Hybrid GitOps Runtime installation flags
 This section describes the required and optional flags to install a Hybrid GitOps Runtime.
 For documentation purposes, the flags are grouped into:
-* Runtime flags, relating to Runtime, cluster, and namespace requirements
+* Runtime flags, relating to runtime, cluster, and namespace requirements
 * Ingress-less flags, for tunnel-based installation
 * Ingress-controller flags, for ingress-based installation
 * Git provider and repo flags
@@ -980,7 +982,15 @@ You can define any of the following Git providers:
 </br>
 {:/}
 
+#### Skip token scope validation
+Optional.  
+This flag can be used for any Git provider.  
+When defined, Codefresh:  
+*  _Does not validate the scopes in the token provided_
+* Assumes that you have already created the repository for the runtime and for the Git Source
 
+To define, add `--skip-permission-validation true`.
+The flag can be useful if you are using GitHub with fine-grained tokens which is currently in Beta and does not have validation and permission checks.
 
 #### GitHub
 GitHub is the default Git provider for Hybrid Runtimes. Being the default provider, for both the CLI wizard and Silent install, you need to provide only the repository URL and the Git runtime token.
@@ -1165,6 +1175,8 @@ where:
 {::nomarkdown}
 </br></br>
 {:/}
+
+
 
 ### Codefresh resource flags
 **Codefresh demo resources**  

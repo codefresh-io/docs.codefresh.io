@@ -36,13 +36,25 @@ The Git runtime token is mandatory for runtime installation.
 {:/}
 
 #### GitHub and GitHub Enterprise runtime token scopes
+GitHub and GitHub Enterprise offer regular tokens, and fine-grained tokens, currently in Beta.
 
-* `repo`
-* `admin:repo_hook`
+* **Regular** runtime token scopes
+    * `repo`
+    * `admin:repo_hook`
 
 {::nomarkdown}
 </br>
 {:/}
+
+**Fine-grained** runtime token scopes
+
+* **Repository access**: `All repositories`
+* **Repository permissions**:
+    * **Administration**: `Read and write` 
+    * **Contents**: `Read and write` 
+    * **Metadata**: `Read-only`
+    * **Webhook**: `Read and write`
+
 
 #### GitLab Cloud and GitLab Server runtime token scopes
 
@@ -75,7 +87,12 @@ The Git personal token is a user-specific personal access token per provisioned 
 {:/}
 
 #### GitHub and GitHub Enterprise personal user token scopes
-* `repo`
+
+GitHub and GitHub Enterprise offer regular tokens, and fine-grained tokens, currently in Beta.
+
+* **Regular** personal user token scopes
+  * `repo`
+
 
 <!---{% include 
    image.html 
@@ -86,6 +103,11 @@ The Git personal token is a user-specific personal access token per provisioned 
    caption="Permissions for Git personal token"
    max-width="60%" 
    %}-->
+
+* **Fine-grained** personal user token scopes 
+    * **Contents**: `Read and write` 
+    * **Metadata**: `Read-only`
+
 {::nomarkdown}
 </br>
 {:/}
