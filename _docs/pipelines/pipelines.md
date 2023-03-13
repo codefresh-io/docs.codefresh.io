@@ -315,10 +315,10 @@ You can define multiple external resources in a single pipeline.
 
 ### Build Runtime
 
-Build Runtime settings allow you to:
-Select the runtime environment for the pipeline
-Select the OS and resource sizes for build
-Set the minimum disk space for the pipeline build
+Build Runtime settings allow you to:  
+* Select the runtime environment for the pipeline
+* Select the OS and resource sizes for the pipeline
+* Set the minimum disk space for the pipeline build
 
 - **Runtime Environment**: The runtime environment for the pipeline. If your account admin has selected a default runtime environment for the account, it is automatically selected. You can override the default runtime environment, and select a different one for the pipeline.    
 > You need at least [one runtime environment to run the pipeline](#runtime-environments-for-pipeline).  
