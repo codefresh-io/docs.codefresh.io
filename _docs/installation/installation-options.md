@@ -55,7 +55,7 @@ Account admins can request Codefresh to enable Cloud Builds for an account. Ther
 
 As an account admin, you can then grant access to users or have the users explicitly request access to a runtime environment to run pipelines. 
 
-If you [create a free account]({{site.baseurl}}/docs/quick-start/create-codefresh-account/), to run pipelines, you need to configure Build Runtime settings with a Hybrid Runner runtime environment. 
+If you [create a free account]({{site.baseurl}}/docs/quick-start/create-codefresh-account/), to run pipelines, you need to configure [Build Runtime settings]({{site.baseurl}}/docs/pipelines/pipelines/#build-runtime) with a Hybrid Runner runtime environment.  
 
 
 
