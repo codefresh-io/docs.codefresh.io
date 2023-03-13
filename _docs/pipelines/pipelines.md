@@ -330,11 +330,11 @@ Build Runtime settings allow you to:
   - Medium (recommended 3-4 steps)
   - Large (recommended 5-6 steps)
 
-#### Runtime environments for pipeline
+#### Runtime environments for pipelines
 You need at least one runtime environment configured for your account to run a pipeline.  
 Runtime environments are available on installing the Codefresh Runner. 
 
-**User request for runtime environment**
+**User request for runtime environment**<br>
 If, as a user, you do not have a runtime environment, send a request to your account admin. 
 
 {% include 
