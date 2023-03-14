@@ -16,6 +16,7 @@ You can also look at our example on [how to set up a custom webhook notification
 Enable notifications for builds based on their status:  
 * Successful
 * Failed
+* Pending manual approval to continue
 * Terminated by system  
   When selected, you receive notifications based on the build termination policies configured for the pipeline. These can be whenever:   
     * Previous builds from the same or a specific branch are terminated once a build is created for that branch
@@ -33,8 +34,6 @@ Enable notifications for builds based on their status:
     max-width="60%" 
 %}
 
-    
-* Pending manual approval to continue
 
 For detailed information, see [Policy settings for pipelines]({{site.baseurl}}/docs/pipelines/pipelines/#policies).
 
