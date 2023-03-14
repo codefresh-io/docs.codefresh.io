@@ -1,5 +1,5 @@
 ---
-title: "Create a Docker image for Php"
+title: "Create a Docker image for PHP"
 description: "Using Codefresh pipelines"
 group: example-catalog
 sub_group: ci-examples
@@ -8,11 +8,11 @@ redirect_from:
 toc: true
 ---
 
-Codefresh can work with Php projects using any of the popular frameworks (Laravel, Symphony, CakePHp etc.)
+Codefresh can work with PHP projects using any of the popular frameworks (Laravel, Symphony, CakePHp etc.)
 
-## The example php project
+## The example PHP project
 
-You can see the example project at [https://github.com/codefresh-contrib/php-composer-sample-app](https://github.com/codefresh-contrib/php-composer-sample-app){:target="\_blank"}. The repository contains a simple Php project that uses [composer](https://getcomposer.org/) as a package manager.
+You can see the example project at [https://github.com/codefresh-contrib/php-composer-sample-app](https://github.com/codefresh-contrib/php-composer-sample-app){:target="\_blank"}. The repository contains a simple PHP project that uses [composer](https://getcomposer.org/) as a package manager.
 
 The dockerfile uses [multi-stage builds](https://docs.docker.com/develop/develop-images/multistage-build/){:target="\_blank"} to minimize the size of the docker image.
 
@@ -42,7 +42,7 @@ COPY --from=vendor /tmp/vendor/ /var/www/html/vendor/
 {% endhighlight %}
 
 
-## Create a Docker image for Php project
+## Create a Docker image for PHP project
 
 An [example pipeline](https://github.com/codefresh-contrib/php-composer-sample-app/blob/master/codefresh.yml){:target="\_blank"} is also offered in the git repository.
 It contains just two [steps]({{site.baseurl}}/docs/pipelines/steps/):  

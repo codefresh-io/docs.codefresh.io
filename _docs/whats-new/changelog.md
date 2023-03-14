@@ -298,7 +298,7 @@ toc: true
 - Use GitHub Actions no longer requires a registry - [documentation]({{site.baseurl}}/docs/integrations/github-actions/#how-it-works)
 - Alternative debugging console - [documentation]({{site.baseurl}}/docs/pipelines/debugging-pipelines/#using-the-alternative-debug-window)
 - User variable priority rules - [documentation]({{site.baseurl}}/docs/pipelines/variables/#user-provided-variables)
-- Secret Storage - [documentation]({{site.baseurl}}docs/pipelines/configuration/secrets-store/)
+- Secret Storage - [documentation]({{site.baseurl}}/docs/pipelines/configuration/secrets-store/)
 - Run multiple kinds of unit tests using fan-in-fan-out parallel pipeline - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/fan-in-fan-out)
 
 ### March 2020
