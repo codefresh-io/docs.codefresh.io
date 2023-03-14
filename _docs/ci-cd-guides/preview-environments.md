@@ -2,6 +2,8 @@
 title: "Previewing dynamic environments"
 description: "Deploy pull requests to cluster namespaces"
 group: ci-cd-guides
+redirect_from:
+  - /v1.0/docs/use-snyk-cli-for-your-nodejs-project/
 toc: true
 ---
 
