@@ -22,9 +22,10 @@ In this section, we offer helpful information about issues you may encounter and
 - [The docker image does not exist or no pull access]({{site.baseurl}}/docs/troubleshooting/common-issues/the-docker-image-does-not-exist-or-no-pull-access/)
 - [Build step: No such file or directory]({{site.baseurl}}/docs/troubleshooting/common-issues/build-step-no-such-file-or-directory/)
 - [No Dockerfile found]({{site.baseurl}}/docs/troubleshooting/common-issues/no-dockerfile-found/)
-- [Could not tag image](could-not-tag-image)
-- [Failed to build image: non-zero code 137](error-code-137/)
-- [Error pulling image configuration: toomanyrequests](dockerhub-rate-limit/)
+- [Could not tag image]({{site.baseurl}}/docs/troubleshooting/common-issues/could-not-tag-image/)
+- [Failed to build image: non-zero code 137]({{site.baseurl}}/docs/troubleshooting//common-issues/error-code-137/)
+- [Error pulling image configuration: toomanyrequests]({{site.baseurl}}/docs/troubleshooting//common-issues/dockerhub-rate-limit/)
+- [Failed to create container of image]({{site.baseurl}}/docs/troubleshooting//common-issues/create-container-failure/)
 
 ## Build/pipeline issues
 
@@ -32,7 +33,7 @@ In this section, we offer helpful information about issues you may encounter and
 - [Disabling codefresh caching mechanisms]({{site.baseurl}}/docs/troubleshooting/common-issues/disabling-codefresh-caching-mechanisms/)
 - [Pinning codefresh.yml for multi-git triggers]({{site.baseurl}}/docs/troubleshooting/common-issues/multi-git-triggers/)
 - [Workflow process terminated by the system]({{site.baseurl}}/docs/troubleshooting/common-issues/workflow-terminated-by-system/)
-- [Multi-line variable gets truncated with cf_export](cf-export-limitations)
+- [Multi-line variable gets truncated with cf_export]({{site.baseurl}}/docs/troubleshooting/common-issues/cf-export-limitations/)
 
 ## Dynamic environment issues
 

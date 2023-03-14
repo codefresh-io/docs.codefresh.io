@@ -313,14 +313,76 @@ Currently Codefresh supports the automatic fetching of files or folders from ano
 Once the pipeline starts, all files will be available to all freestyle steps in the paths mentioned in the target folder field.
 You can define multiple external resources in a single pipeline.
 
-### Runtime
+### Build Runtime
 
-- **Runtime Environment**: (by default this is set to SaaS)
-- **Runtime OS**: (by default this is set to Linux)
+Build Runtime settings allow you to:  
+* Select the runtime environment, runtime OS and resource sizes for the pipeline
+* Set the minimum disk space for the pipeline build 
+* Set the memory-usage threshold for the pipeline, overriding the account-level threshold
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/create/build-runtime-settings.png" 
+url="/images/pipeline/create/build-runtime-settings.png"
+alt="Build Runtime settings for pipeline" 
+caption="Build Runtime settings for pipeline"
+max-width="60%"
+%}
+
+- **Runtime Environment**: The runtime environment for the pipeline. If your account admin has selected a default runtime environment for the account, it is automatically selected. You can override the default runtime environment, and select a different one for the pipeline.    
+> You need at least [one runtime environment to run the pipeline](#runtime-environments-for-pipeline).  
+
+
+- **Runtime OS**: Set to Linux by default
 - **Resources Size**: 
   - Small (recommended for 1-2 concurrent steps)
   - Medium (recommended 3-4 steps)
   - Large (recommended 5-6 steps)
+
+#### Runtime environments for pipelines
+
+You need at least one runtime environment configured for your account to run a pipeline.  
+Runtime environments are available on installing the Codefresh Runner. 
+
+**User request for runtime environment**<br>
+If, as a user, you do not have a runtime environment, send a request to your account admin. 
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/pipeline-settings/cloud-builds-user-request-admin.png" 
+url="/images/pipeline/pipeline-settings/cloud-builds-user-request-admin.png"
+alt="Request account admin to configure runtime environment" 
+caption="Request account admin to configure runtime environment"
+max-width="50%"
+%}
+
+**Configure runtime environment**<br>
+As an account admin, if the account is not configured with a runtime environment, Codefresh displays the steps to [install the Runner]({{site.baseurl}}/docs/installation/codefresh-runner/).
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/pipeline-settings/cloud-builds-admin-enable-request.png" 
+url="/images/pipeline/pipeline-settings/cloud-builds-admin-enable-request.png"
+alt="Build Runtime settings for pipeline without runtime environment" 
+caption="Build Runtime settings for pipeline without runtime environment"
+max-width="60%"
+%}
+
+As the account admin, you can also request a Cloud Build (SaaS runtime environment) to be enabled for the pipeline, which is not available by default. Clicking the Enable Cloud Builds button sends an automated email request, with a response timeframe of 24 hours. If approved, you should see the **SaaS runtime** in the list of Runtime Environments. 
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/pipeline-settings/cloud-builds-saas-re.png" 
+url="/images/pipeline/pipeline-settings/cloud-builds-saas-re.png"
+alt="SaaS runtime environment for pipeline" 
+caption="SaaS runtime environment for pipeline"
+max-width="60%"
+%}
+
 
 #### Set minimum disk space for a pipeline build
 To speed up builds and improve performance, Codefresh caches different types of data during pipeline execution for reuse across builds. Image-caching is one example of cached data, where Codefresh pulls the required images during the first build and caches them for reuse in future builds. For more info, see [Pipeline caching]({{site.baseurl}}/docs/pipelines/pipeline-caching/).   
@@ -346,6 +408,23 @@ max-width="60%"
 %}
 
 > Track the actual disk usage in Builds > Metrics.
+
+#### Set memory-usage threshold for pipeline build
+If needed, select a memory-usage threshold for the pipeline build to override that set at the account level. Codefresh displays a banner when memory usage has exceeded the selected threshold. 
+
+The global memory-usage threshold is set in **Pipeline Settings**, for all pipelines in the account. 
+You can override the memory-usage threshold for individual pipelines, depending on the resources needed for pipeline execution. For example, if the account-level memory usage is set at 90%, and the specific pipeline is resource-intensive, you want to be warned when the usage exceeds 70%, instead of 90%.  
+Conversely, if the account-level memory usage is set to 70%, and the specific pipeline is likely to use between 80% and 90% for example, you can safely set the memory-usage threshold to 100% to avoid unnecessary usage warnings.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/create/memory-usage-threshold.png" 
+url="/images/pipeline/create/memory-usage-threshold.png"
+alt="Memory-usage thresholds for pipeline" 
+caption="Memory-usage thresholds for pipeline"
+max-width="60%"
+%}
 
 
 ## Using Pipeline Templates
@@ -427,6 +506,7 @@ Pipelines that belong to a project will mention it below their name so it is ver
 
 
 ## Related articles
+[Global pipeline settings]({{site.baseurl}}/docs/pipelines/configuration/pipeline-settings/)
 [Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
 [Docker registry integrations]({{site.baseurl}}/docs/integrations/docker-registries/)  

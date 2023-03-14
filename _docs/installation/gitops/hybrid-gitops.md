@@ -10,7 +10,7 @@ Provision one or more Hybrid GitOps Runtimes in your Codefresh account.
 Start by reviewing [system requirements](#minimum-system-requirements) for Hybrid GitOps.  
 If you are installing with ingress-controllers, you must configure them as required _before_ starting the installation. 
 
-> To provision a Hosted GitOps Runtime, see [Provision a hosted runtime]({{site.baseurl}}/docs/installation/gitops/hosted-runtime//#1-provision-hosted-runtime) in [Set up a hosted (Hosted GitOps) environment]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/).
+> To provision a Hosted GitOps Runtime, see [Provision a hosted runtime]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/#1-provision-hosted-runtime) in [Set up a hosted (Hosted GitOps) environment]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/).
 
 **Git providers and Hybrid Runtimes**  
 Your Codefresh account is always linked to a specific Git provider. This is the Git provider you select on installing the first GitOps Runtime, either Hybrid or Hosted, in your Codefresh account. All the Hybrid GitOps Runtimes you install in the same account use the same Git provider.  
@@ -19,7 +19,7 @@ If Bitbucker Server is your Git provider, you must also select the specific serv
 >To change the Git provider for your Codefresh account after installation, contact Codefresh support.
 
 
-**Codefresh and Argo CD s**  
+**Codefresh and Argo CD**  
  The Hybrid GitOps Runtime comprises Argo CD components and Codefresh-specific components. 
  
 Codefresh users rely on our platform to deliver software reliably, and predictably without interruption.  
@@ -805,12 +805,12 @@ If you are not sure which OS to select for `curl`, simply select one, and Codefr
 * [Download or upgrade to the latest version of the CLI]({{site.baseurl}}/docs/installation/gitops/upgrade-gitops-cli/)
 * Review [Hybrid Runtime installation flags](#hybrid-runtime-installation-flags)
 * For ingress-based runtimes, make sure your ingress controller is configured correctly:
-  * [Ambasador ingress configuration]({{site.baseurl}}/docs/runtime/requirements/#ambassador-ingress-configuration)
-  * [AWS ALB ingress configuration]({{site.baseurl}}/docs/runtime/requirements/#alb-aws-ingress-configuration)
-  * [Istio ingress configuration]({{site.baseurl}}/docs/runtime/requirements/#istio-ingress-configuration)
-  * [NGINX Enterprise ingress configuration]({{site.baseurl}}/docs/runtime/requirements/#nginx-enterprise-ingress-configuration)
-  * [NGINX Community ingress configuration]({{site.baseurl}}/docs/runtime/requirements/#nginx-community-version-ingress-configuration)
-  * [Traefik ingress configuration]({{site.baseurl}}/docs/runtime/requirements/#traefik-ingress-configuration)
+  * [Ambasador ingress configuration](#ambassador-ingress-configuration)
+  * [AWS ALB ingress configuration](#aws-alb-ingress-configuration)
+  * [Istio ingress configuration](#istio-ingress-configuration)
+  * [NGINX Enterprise ingress configuration](#nginx-enterprise-ingress-configuration)
+  * [NGINX Community ingress configuration](#nginx-community-version-ingress-configuration)
+  * [Traefik ingress configuration](#traefik-ingress-configuration)
 
 
 {::nomarkdown}
@@ -830,9 +830,9 @@ If you are not sure which OS to select for `curl`, simply select one, and Codefr
     `cf runtime install <runtime-name> --repo <git-repo> --git-token <git-token> --silent`  
   For the list of flags, see [Hybrid runtime installation flags](#hybrid-runtime-installation-flags).
 1. If relevant, complete the configuration for these ingress controllers:
-  * [ALB AWS: Alias DNS record in route53 to load balancer]({{site.baseurl}}/docs/runtime/requirements/#alias-dns-record-in-route53-to-load-balancer)
-  * [Istio: Configure cluster routing service]({{site.baseurl}}/docs/runtime/requirements/#cluster-routing-service)
-  * [NGINX Enterprise ingress controller: Patch certificate secret]({{site.baseurl}}/docs/runtime/requirements/#patch-certificate-secret)  
+  * [ALB AWS: Alias DNS record in route53 to load balancer](#alias-dns-record-in-route53-to-load-balancer)
+  * [Istio: Configure cluster routing service](#cluster-routing-service)
+  * [NGINX Enterprise ingress controller: Patch certificate secret](#patch-certificate-secret)  
 1. If you bypassed installing ingress resources with the `--skip-ingress` flag for ingress controllers not in the supported list, create and register Git integrations using these commands:  
   `cf integration git add default --runtime <RUNTIME-NAME> --api-url <API-URL>`  
   `cf integration git register default --runtime <RUNTIME-NAME> --token <RUNTIME-AUTHENTICATION-TOKEN>`  

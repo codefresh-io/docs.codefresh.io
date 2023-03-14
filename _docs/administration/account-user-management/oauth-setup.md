@@ -224,5 +224,5 @@ For a Git provider and a runtime account, select the authentication mechanism: C
 ## Related articles
 [Adding users and teams]({{site.baseurl}}/docs/administration/account-user-management/add-users/)  
 [Configuring access control]({{site.baseurl}}/docs/administration/account-user-management/access-control/)  
-[Codefresh IP addresses]({{site.baseurl}}/docs/administration/account-user-management/platform-ip-addresses/)  
+[Codefresh IP addresses]({{site.baseurl}}/docs/administration/platform-ip-addresses/)  
  

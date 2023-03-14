@@ -35,7 +35,7 @@ All [pipeline steps]({{site.baseurl}}/docs/pipelines/steps/) in Codefresh are in
 
 ## Choosing programming tools as Docker images
 
-In practice, this means that if you have a Node application, you need to use a [Node image]({{site.baseurl}}/docs/example-catalog/#ci-examples) to package your application, a [Maven image]({{site.baseurl}}/docs/example-catalog/ci-examples/spring-boot-2/) if you are working with Java, a [Python]({{site.baseurl}}/docs/example-catalog/ci-examples/python/) image for Python applications, and so on.  
+In practice, this means that if you have a Node application, you need to use a [Node image]({{site.baseurl}}/docs/example-catalog/ci-examples) to package your application, a [Maven image]({{site.baseurl}}/docs/example-catalog/ci-examples/spring-boot-2/) if you are working with Java, a [Python]({{site.baseurl}}/docs/example-catalog/ci-examples/python/) image for Python applications, and so on.  
 
 You launch the image using the Codefresh freestyle step. Here is an example for Node:
 

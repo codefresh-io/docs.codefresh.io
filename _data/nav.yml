@@ -116,10 +116,18 @@
           url: "/build-and-push-an-image"
         - title: Build an Image with build arguments
           url: "/build-an-image-with-build-arguments"
+        - title: Create a Docker image for PHP
+          url: "/php"        
         - title: Share data between steps
           url: "/shared-volumes-between-builds"
         - title: Upload/download from Google Storage buckets
           url: "/uploading-or-downloading-from-gs"
+        - title: Compile and test a C application
+          url: "/c-make"
+        - title: Compile and test a C++ application
+          url: "/cpp-cmake"
+        - title: Compile and release a Go application
+          url: "/goreleaser"
         - title: Call other pipelines
           url: "/call-child-pipelines"
         - title: Run unit tests
@@ -143,7 +151,9 @@
         - title: Run integration tests with Redis
           url: "/integration-tests-with-redis"
         - title: Populate a database with existing data
-          url: "/populate-a-database-with-existing-data"
+          url: "/populate-a-database-with-existing-data"  
+        - title: Scala Hello world
+          url: "/scala-hello-world"   
         - title: Share volumes in composition steps
           url: "/shared-volumes-of-service-from-composition-step-for-other-yml-steps"          
         - title: Import data to MongoDB
@@ -579,6 +589,8 @@
 - title: What's new
   url: "/whats-new"
   pages:
+    - title: Release notes
+      url: "/release-notes/"
     - title: Changelog
       url: "/changelog"
     - title: GitOps what's new
@@ -622,6 +634,8 @@
           url: "/build-step-no-such-file-or-directory"
         - title: No Dockerfile found
           url: "/no-dockerfile-found"
+        - title: Failed to create container of image
+          url: "/create-container-failure"
         - title: Failed to tag image
           url: "/could-not-tag-image"
         - title: Error Code 137
