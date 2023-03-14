@@ -13,6 +13,8 @@ Install the Codefresh Runner on your Kubernetes cluster to run pipelines and acc
 
 As the Codefresh Runner is **not** dependent on any special dockershim features, any compliant container runtime is acceptable. The docker socket/daemon used by Codefresh pipelines is **NOT** the one on the host node (as it might not exist at all in the case of containerd or cri-o), but instead an internal docker daemon created/managed by the pipeline itself.
 
+>**IMPORTANT**:<br>
+  Using spot instances can cause failures in Codefresh builds, as they can be taken down without notice. If you require 100% availability, we recommend to not use spot instances.
 
 
 ## System requirements
@@ -43,9 +45,8 @@ Use any of the following options to install the Codefresh Runner:
 
 If the Kubernetes cluster with the Codefresh Runner is behind a proxy server, [complete Runner installation](#complete-codefresh-runner-installation).
 
-<!--- ### Prerequisites 
-* [Codefresh CLI](https://codefresh-io.github.io/cli/installation/){:target="\_blank"}
-* CLI authenticated with the API token  -->
+
+
 
 ### Install Runner with CLI Wizard
 
@@ -561,28 +562,23 @@ Add custom labels to your Engine and Dind pods in Runtime Environment (RE) by pa
   `$RUNTIME_ENVIRONMENT` must be replaced with the name of your RE.
 1. Edit the `dockerDaemonScheduler.labels` or `runtimeScheduler.labels` property of `runtime.yaml` to include the label, as in the example below.  
   If the `dockerDaemonScheduler.labels` are not included in the RE configuration by default, add them.  
-
-{% highlight yaml %}
-{% raw %}
+```yaml
 version: 1
 metadata:
-  ...
+  [...]
 runtimeScheduler:
   labels:
     my-custom-ENGINE-label: "true"
   cluster:
-    ...
+    [...]
 dockerDaemonScheduler:
   cluster:
-    ...
+    [...]
   annotations: {}
   labels:
     my-custom-DIND-label: "true"
-... 
-{% endraw %}
-{% endhighlight %}
-
-{:start="3"}
+[...]
+```
 1. Patch the runtime environment:
   `codefresh patch re $RUNTIME_ENVIRONMENT -f runtime.yaml`  
   where:  
@@ -620,7 +616,9 @@ If you have multiple runtime environments, select the one to use as the default 
 
 
 ###  Override default runtime environment for a pipeline
+
 Override the default runtime environment for a specific pipeline through the pipeline's [Build Runtime settings]({{site.baseurl}}/docs/pipelines/pipelines/#runtime).  
+
 
 
 {% include image.html
@@ -1859,7 +1857,7 @@ accountId: 5f048d85eb107d52b16c53ea
 | `envVars`       | object | Override or add environment variables passed into the engine pod |
 | `userEnvVars`       | object | Add external env var(s) to the pipeline. See [Custom Global Environment Variables](#custom-global-environment-variables)  |
 | `cluster`       | object | k8s related information (`namespace`, `serviceAccount`, `nodeSelector`) |
-| `resources`       | object | Specify non-default `requests` and `limits` for engine pod. Units notice: only `Mi` allowed for memory; only `m` allowed for CPU. |
+| `resources`       | object | Specify non-default `requests` and `limits` for engine pod |
 | `tolerations`       | array | Add tolerations to engine pod |
 | `annotations`       | object | Add custom annotations to engine pod (empty by default `{}`) |
 | `labels`       | object | Add custom labels to engine pod (empty by default `{}`) |
@@ -1916,7 +1914,7 @@ runtimeScheduler:
 | `envVars`       | object | Override or add environment variables passed into the dind pod. See [IN-DIND cleaner](https://github.com/codefresh-io/dind/tree/master/cleaner){:target="\_blank"}  |
 | `userVolumeMounts` with `userVolumes`       | object | Add volume mounts to the pipeline See [Custom Volume Mounts](#custom-volume-mounts) |
 | `cluster`       | object | k8s related information (`namespace`, `serviceAccount`, `nodeSelector`) |
-| `defaultDindResources`       | object | Override `requests` and `limits` for dind pod (defaults are `cpu: 400m` and `memory:800Mi` ). Units notice: only `Mi` allowed for memory; only `m` allowed for CPU. |
+| `defaultDindResources`       | object | Override `requests` and `limits` for dind pod (defaults are `cpu: 400m` and `memory:800Mi` ) |
 | `tolerations`       | array | Add tolerations to dind pod |
 | `annotations`       | object | Add custom annotations to dind pod (empty by default `{}`) |
 | `labels`       | object | Add custom labels to dind pod (empty by default `{}`) |
@@ -2228,3 +2226,4 @@ For troubleshooting refer to the [Knowledge Base](https://support.codefresh.io/h
 [Codefresh installation options]({{site.baseurl}}/docs/installation/installation-options/)  
 [Codefresh On-Premises installation]({{site.baseurl}}/docs/installation/codefresh-on-prem/)  
 [Codefresh API]({{site.baseurl}}/docs/integrations/codefresh-api/)  
+
