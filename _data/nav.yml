@@ -116,10 +116,18 @@
           url: "/build-and-push-an-image"
         - title: Build an Image with build arguments
           url: "/build-an-image-with-build-arguments"
+        - title: Create a Docker image for PHP
+          url: "/php"        
         - title: Share data between steps
           url: "/shared-volumes-between-builds"
         - title: Upload/download from Google Storage buckets
           url: "/uploading-or-downloading-from-gs"
+        - title: Compile and test a C application
+          url: "/c-make"
+        - title: Compile and test a C++ application
+          url: "/cpp-cmake"
+        - title: Compile and release a Go application
+          url: "/goreleaser"
         - title: Call other pipelines
           url: "/call-child-pipelines"
         - title: Run unit tests

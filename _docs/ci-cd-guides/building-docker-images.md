@@ -3,7 +3,7 @@ title: "Building Docker images"
 description: "Create Docker images from Dockerfiles"
 redirect_from:
   - /docs/administration/access-control/
-  - /docs/docs/build-your-first-docker-image-new/
+  - /docs/build-your-first-docker-image-new/
 group: ci-cd-guides
 toc: true
 ---

@@ -506,7 +506,7 @@ Pipelines that belong to a project will mention it below their name so it is ver
 
 
 ## Related articles
-[Global pipeline settings]({{site.baseurl}}//docs/pipelines/configuration/pipeline-settings/)
+[Global pipeline settings]({{site.baseurl}}/docs/pipelines/configuration/pipeline-settings/)
 [Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
 [Docker registry integrations]({{site.baseurl}}/docs/integrations/docker-registries/)  
