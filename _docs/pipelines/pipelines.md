@@ -316,21 +316,22 @@ You can define multiple external resources in a single pipeline.
 ### Build Runtime
 
 Build Runtime settings allow you to:  
-* Select the runtime environment for the pipeline
-* Select the OS and resource sizes for the pipeline
-* Set the minimum disk space for the pipeline build
+* Select the runtime environment, runtime OS and resource sizes for the pipeline
+* Set the minimum disk space for the pipeline build 
+* Set the memory-usage threshold for the pipeline, overriding the account-level threshold
 
-- **Runtime Environment**: The runtime environment for the pipeline. If your account admin has selected a default runtime environment for the account, it is automatically selected. You can override the default runtime environment, and select a different one for the pipeline.    
+**Runtime Environment**: The runtime environment for the pipeline. If your account admin has selected a default runtime environment for the account, it is automatically selected. You can override the default runtime environment, and select a different one for the pipeline.    
 > You need at least [one runtime environment to run the pipeline](#runtime-environments-for-pipeline).  
 
 
-- **Runtime OS**: Set to Linux by default
+**Runtime OS**: Set to Linux by default
 - **Resources Size**: 
   - Small (recommended for 1-2 concurrent steps)
   - Medium (recommended 3-4 steps)
   - Large (recommended 5-6 steps)
 
 #### Runtime environments for pipelines
+
 You need at least one runtime environment configured for your account to run a pipeline.  
 Runtime environments are available on installing the Codefresh Runner. 
 
@@ -347,7 +348,7 @@ caption="Request account admin to configure runtime environment"
 max-width="60%"
 %}
 
-**Configure runtime environment**
+**Configure runtime environment**<br>
 As an account admin, if the account is not configured with a runtime environment, Codefresh displays the steps to [install the Runner]({{site.baseurl}}/docs/installation/codefresh-runner/).
 
 {% include 
