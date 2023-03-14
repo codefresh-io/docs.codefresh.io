@@ -320,11 +320,21 @@ Build Runtime settings allow you to:
 * Set the minimum disk space for the pipeline build 
 * Set the memory-usage threshold for the pipeline, overriding the account-level threshold
 
-**Runtime Environment**: The runtime environment for the pipeline. If your account admin has selected a default runtime environment for the account, it is automatically selected. You can override the default runtime environment, and select a different one for the pipeline.    
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/create/build-runtime-settings.png" 
+url="/images/pipeline/create/build-runtime-settings.png"
+alt="Build Runtime settings for pipeline" 
+caption="Build Runtime settings for pipeline"
+max-width="60%"
+%}
+
+- **Runtime Environment**: The runtime environment for the pipeline. If your account admin has selected a default runtime environment for the account, it is automatically selected. You can override the default runtime environment, and select a different one for the pipeline.    
 > You need at least [one runtime environment to run the pipeline](#runtime-environments-for-pipeline).  
 
 
-**Runtime OS**: Set to Linux by default
+- **Runtime OS**: Set to Linux by default
 - **Resources Size**: 
   - Small (recommended for 1-2 concurrent steps)
   - Medium (recommended 3-4 steps)
@@ -345,7 +355,7 @@ file="/images/pipeline/pipeline-settings/cloud-builds-user-request-admin.png"
 url="/images/pipeline/pipeline-settings/cloud-builds-user-request-admin.png"
 alt="Request account admin to configure runtime environment" 
 caption="Request account admin to configure runtime environment"
-max-width="60%"
+max-width="50%"
 %}
 
 **Configure runtime environment**<br>
