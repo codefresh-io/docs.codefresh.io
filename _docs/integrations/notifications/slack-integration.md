@@ -7,7 +7,7 @@ toc: true
 ---
 
 You can integrate Slack globally, or for specific pipelines and builds. Codefresh can post notifications to Slack, for example, for successful and failed builds, and direct messages received within the Codefresh app.
-To integrate through a custom webhook, see the [Slack documentation for sending messages using incoming webhooks](https://api.slack.com/messaging/webhooks){:target="\_blank"}.  
+To integrate through a custom webhook, see the [Slack documentation](https://api.slack.com/messaging/webhooks){:target="\_blank"}.  
 You can also look at our example on [how to set up a custom webhook notification to Slack]({{site.baseurl}}/docs/example-catalog/ci-examples/sending-the-notification-to-slack/#custom-webhook-to-slack).
 
 
