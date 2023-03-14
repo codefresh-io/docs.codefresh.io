@@ -7,45 +7,7 @@ redirect_from:
 toc: true
 ---
 
-The Codefresh platform supports three different installation options, all compliant with Soc2.
-
-* Hybrid Runner  
-  The Runner installation is the hybrid installation mode for Codefresh pipelines. The Codefresh UI runs in the Codefresh cloud, and the builds run on customer premises. The Runner combines flexibility with security, and is optimal for Enterprise customers looking for a "behind-the-firewall" solution.  
-  See [Hybrid Runner](#hybrid-runner).
-  
-
-* On-premises  
-  On-premises installation is for customers who want full control over their environments. Both the UI and builds run on the Kubernetes cluster in an environment fully managed by you as our customer.  
-
-  While Codefresh can still help with maintenance of the on-premises platform, we would recommend the Hybrid Runner as it combines both flexibility and high security.
-
-
-
-* GitOps  
-  GitOps installation is a full-featured solution for application deployments and releases. Powered by the Argo Project, Codefresh uses Argo CD, Argo Workflows, Argo Events, and Argo Rollouts, extended with unique functionality and features essential for enterprise deployments.
-
-  GitOps installations support Hosted and Hybrid options.  
-  See [GitOps](#gitops).
-
-
-<!--- ### Codefresh Cloud CI/CD - likely to be removed
-
-The Codefresh CI/CD Cloud version is the easiest way to start using Codefresh as it is fully managed and runs 100% on the cloud. Codefresh DevOps handles the maintenance and updates.
-
-You can also create a [free account]({{site.baseurl}}/docs/administration/account-user-management/create-codefresh-account/) on the SAAS version right away. The account is forever free with some limitations
-on number of builds.
-
-The cloud version runs on multiple clouds:
-
-{% include image.html
-  lightbox="true"
-  file="/images/installation/codefresh-saas.png"
-  url="/images/installation/codefresh-saas.png"
-  alt="sso-diagram.png"
-  max-width="60%"
-    %}
-
-Codefresh Cloud is also compliant with [SOC2 - Type2](https://www.aicpa.org/SOC) showing our commitment to security and availability.
+The Codefresh platform supports three different installation options, all compliant with [SOC2 - Type2](https://www.aicpa.org/SOC){:target="\_blank"}.
 
 {% include image.html
   lightbox="true"
@@ -53,9 +15,49 @@ Codefresh Cloud is also compliant with [SOC2 - Type2](https://www.aicpa.org/SOC)
   url="/images/installation/soc2-type2-certified.png"
   alt="sso-diagram.png"
   max-width="40%"
-    %}    
+    %} 
 
-The Cloud version has multi-account support with most git providers (GitLab, GitHub, Bitbucket) as well as Azure and Google. -->
+
+
+* **Hybrid Runner**  
+  The Runner installation is the hybrid installation mode for Codefresh pipelines. The Codefresh UI runs in the Codefresh cloud, and the builds run on customer premises. The Runner combines flexibility with security, and is optimal for Enterprise customers looking for a "behind-the-firewall" solution.  
+  See [Hybrid Runner](#hybrid-runner).
+  
+
+* **On-premises**  
+  On-premises installation is for customers who want full control over their environments. Both the UI and the builds run on the Kubernetes cluster in an environment fully managed by you as our customer.  
+
+  While Codefresh can still help with maintenance of the on-premises platform, we would recommend the Hybrid Runner as it combines flexibility without compromising on security.  
+  See [On-premises](#on-premises).
+
+
+* **GitOps**  
+  GitOps installation is a full-featured solution for application deployments and releases powered by the Argo Project. Codefresh uses Argo CD, Argo Workflows, Argo Events, and Argo Rollouts, extended with unique functionality and features essential for enterprise deployments.
+
+  GitOps installations support Hosted and Hybrid options.  
+  See [GitOps](#gitops).
+
+
+## Note on Cloud Builds for Codefresh pipelines
+
+
+Cloud Builds for Codefresh pipelines are disabled for all accounts by default. 
+Account admins can request Codefresh to enable Cloud Builds for an account. There is no manual action required except to click on the Enable Cloud Builds button as shown below. The timeframe for the response is up to 24 hours.<br>
+
+{% include image.html
+  lightbox="true"
+  file="/images/installation/enable-cloud-builds-request.png"
+  url="/images/installation/enable-cloud-builds-request.png"
+  caption="Enable Cloud Builds for pipelines"
+  alt="Enable Cloud Builds for pipelines"
+  max-width="70%"
+    %} 
+
+As an account admin, you can then grant access to users or have the users explicitly request access to a runtime environment to run pipelines. 
+
+If you [create a free account]({{site.baseurl}}/docs/quick-start/create-codefresh-account/), to run pipelines, you need to configure [Build Runtime settings]({{site.baseurl}}/docs/pipelines/pipelines/#build-runtime) with a Hybrid Runner runtime environment.  
+
+
 
 
 ## Hybrid Runner
@@ -67,7 +69,8 @@ The UI runs on Codefresh infrastructure, while the builds happen in a Kubernetes
   lightbox="true"
   file="/images/installation/hybrid-installation.png"
   url="/images/installation/hybrid-installation.png"
-  alt="sso-diagram.png"
+  caption="Hybrid installation.png"
+  alt="Hybrid installation.png"
   max-width="70%"
     %}    
 
