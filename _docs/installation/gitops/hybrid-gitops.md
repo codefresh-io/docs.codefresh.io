@@ -18,7 +18,7 @@ If Bitbucker Server is your Git provider, you must also select the specific serv
 
 >To change the Git provider for your Codefresh account after installation, contact Codefresh support.
 
-> If you [skip validating the scopes for the provided token](#skip-token-scope-validation), you must create the repositories for the runtime and for the Git Source before starting the installation.
+> If you want to [skip validating the scopes for the provided token](#skip-token-scope-validation), you _must create the repositories for the runtime and for the Git Source before starting the installation_.
 
 
 **Codefresh and Argo CD**  
@@ -982,15 +982,14 @@ You can define any of the following Git providers:
 </br>
 {:/}
 
-#### Skip token scope validation
+#### Skip token scopes validation
 Optional.  
-This flag can be used for any Git provider.  
-When defined, Codefresh:  
-*  _Does not validate the scopes in the token provided_
-* Assumes that you have already created the repository for the runtime and for the Git Source
+Use this flag to skip validating scopes in the token provided for any Git provider. The flag can be useful if you are using GitHub with fine-grained tokens, which is currently in Beta and does not have validation and permission checks.<br>
 
 To define, add `--skip-permission-validation true`.
-The flag can be useful if you are using GitHub with fine-grained tokens which is currently in Beta and does not have validation and permission checks.
+
+> When defined, Codefresh assumes that you have already created the repositories for the runtime installation and for the Git Source. If these repos have not been created, runtime installation will fail.
+
 
 #### GitHub
 GitHub is the default Git provider for Hybrid Runtimes. Being the default provider, for both the CLI wizard and Silent install, you need to provide only the repository URL and the Git runtime token.
