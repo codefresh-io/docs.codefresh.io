@@ -7,7 +7,7 @@ redirect_from:
   - /docs/configure-ci-cd-pipeline/
   - /docs/how-to-guides/migrating-from-drone-io/
   - /docs/how-to-guides/migrating-from-travis-ci/
-  - /docs/introduction-to-codefresh-pipelines
+  - /docs/docs/pipelines/introduction-to-codefresh-pipelines
 toc: true
 ---
 
