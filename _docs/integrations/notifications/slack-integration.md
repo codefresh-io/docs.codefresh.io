@@ -6,7 +6,9 @@ sub_group: notifications
 toc: true
 ---
 
-You can integrate Slack globally, or for specific pipelines and builds. Codefresh can post notifications to Slack, for example, notifications of successful and failed builds, and direct messages received within the Codefresh app.
+You can integrate Slack globally, or for specific pipelines and builds. Codefresh can post notifications to Slack, for example, for successful and failed builds, and direct messages received within the Codefresh app.
+To integrate through a custom webhook, see the [Slack documentation for sending messages using incoming webhooks](https://api.slack.com/messaging/webhooks){:target="\_blank"}.  
+You can also look at our example on [how to set up a custom webhook notification to Slack]({{site.baseurl}}/docs/example-catalog/ci-examples/sending-the-notification-to-slack/#custom-webhook-to-slack).
 
 
 ## Notification options for Slack 
@@ -15,8 +17,8 @@ Enable notifications for builds based on their status:
 * Successful
 * Failed
 * Terminated by system  
-  When selected, you receive notifications based on the build termination policies configured for the pipeline. These can be whenever:  
-    * Previous builds from the same or specific branch are terminated once a build is created for that branch
+  When selected, you receive notifications based on the build termination policies configured for the pipeline. These can be whenever:   
+    * Previous builds from the same or a specific branch are terminated once a build is created for that branch
     * Running builds are terminated once a build is created
     * Child builds are terminated when the parent build is terminated
 
@@ -40,14 +42,15 @@ For detailed information, see [Policy settings for pipelines]({{site.baseurl}}/d
 
 
 ## Set up global Slack integration in Codefresh
-<!--- what about webhooks?  -->
+
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipeline Integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
 1. Select **Slack** and then click **Configure**.
 1. To enable notifications for Slack, select **Enable this to activate Slack integration**.
-1. Select **Quick Setup**.
-1. Click **Add to Slack**.<br> You are redirected to the Slack sign-in page.
-1. If required log in with your Slack credentials, and then select the destination channels for the notifications.
-1. Select the types of notifications you want to receive on Slack.
+1. Select **Quick Setup**, do the following:
+      1. Click **Add to Slack**.<br> You are redirected to the Slack sign-in page.
+      1. If required log in with your Slack credentials, and then select the destination channels for the notifications.
+1. For **Custom Webhooks**, paste the URL of your Slack application. 
+1. Select the types of notifications to receive on Slack.
 1. Click **Save**.
 
 {% include image.html 
