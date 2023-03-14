@@ -35,7 +35,7 @@ Make sure you have:
 
 
 **How to**
-1. In the Codefresh UI, on the toolbar, click the **Settings** icon and then select **Git Personal Access Token** (TBD(https://g.codefresh.io/account-admin/collaborators/users){:target="\_blank"}).
+1. In the Codefresh UI, on the toolbar, click your avatar, and then select [**Git Personal Access Token**](https://g.codefresh.io/2.0/git-personal-access-token){:target="\_blank"}.
 1. Select the runtime, and then do one of the following:
   * To add a token, select **Add Token**.
   * To update an existing token by replacing it with a new token, select **Update Token**.
