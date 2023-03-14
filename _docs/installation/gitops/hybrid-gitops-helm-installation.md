@@ -109,7 +109,7 @@ The ingress class is the ingress class of the ingress controller, for example, `
   max-width="80%" 
 %}
 
-{:start="10"}
+{:start="11"}
 1. Paste the token you created and click **Update Credentials**. 
 1. Now add your personal access token, or if your admin has set up OAuth2, authorize access.
     * Click your avatar, select [**Git Personal Access Token**](https://g.codefresh.io/2.0/git-personal-access-token){:target="\_blank"}.
