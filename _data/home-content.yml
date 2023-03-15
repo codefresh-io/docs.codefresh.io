@@ -126,6 +126,8 @@
       localurl: /docs/ci-cd-guides/helm-best-practices/  
     - title: Templating for Kubernetes
       localurl: /docs/ci-cd-guides/kubernetes-templating/ 
+    - title: GitOps deployments
+      localurl: /docs/ci-cd-guides/gitops-deployments/
     - title: Image enrichment
       localurl: /docs/ci-cd-guides/image-enrichment/    
 

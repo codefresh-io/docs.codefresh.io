@@ -86,6 +86,8 @@
       url: "/helm-best-practices" 
     - title: Kubernetes templating
       url: "/kubernetes-templating" 
+    - title: GitOps deployments
+      url: "/gitops-deployments"       
     - title: Image enrichment
       url: "/image-enrichment" 
 
