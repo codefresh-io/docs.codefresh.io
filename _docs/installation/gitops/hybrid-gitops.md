@@ -884,10 +884,10 @@ The access mode for the runtime, which can be one of the following:
 * [Ingress-based]({{site.baseurl}}/docs/installation/runtime-architecture/#ingress-based-hybrid-gitops-runtime-architecture) for runtimes with ingress contollers. 
 
 
-* CLI wizard: Select the `tunnel-based` or `ingress-based` access mode from the list displayed. `Tunnel-based` mode is selected by default.  
+* CLI wizard: Select the `Codefresh tunnel-based` or `Ingress-based` access mode from the list displayed. `Tunnel-based` mode is selected by default.  
 * Silent install:  
   * For tunnel-based, you can omit the flag, as this is the default access mode, and then add the [Tunnel-based runtime flags](#tunnel-based-runtime-flags), as needed.
-  * For ingress-based, add the `--access-mode ingress-based`flag, and then add the [Ingress controller flags](#ingress-controller-flags), as needed.
+  * For ingress-based, add the `--access-mode ingress` flag, and then add the [Ingress controller flags](#ingress-controller-flags), as needed.
 
 
 **Shared configuration repository**  
