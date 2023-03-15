@@ -881,15 +881,14 @@ The cluster defined as the default for `kubectl`. If you have more than one Kube
 **Access mode**  
 The access mode for the runtime, which can be one of the following:
 * [Tunnel-based]({{site.baseurl}}/docs/installation/runtime-architecture/#tunnel-based-hybrid-gitops-runtime-architecture), for runtimes without ingress controllers. This is the default.
-* [Ingress-based]({{site.baseurl}}/docs/installation/runtime-architecture/#ingress-based-hybrid-gitops-runtime-architecture) for runtimes with ingress contollers. 
+* [Ingress-based]({{site.baseurl}}/docs/installation/runtime-architecture/#ingress-based-hybrid-gitops-runtime-architecture), for runtimes with ingress controllers. 
 
 
-* CLI wizard: Select the access mode from the list displayed.
+* CLI wizard: Select the `Codefresh tunnel-based` or `Ingress-based` access mode from the list displayed. `Tunnel-based` mode is selected by default.  
 * Silent install:  
-  * For tunnel-based, see [Tunnel-based runtime flags](#tunnel-based-runtime-flags)
-  * For ingress-based, add the [Ingress controller flags](#ingress-controller-flags)
+  * For tunnel-based, you can omit the flag as this is the default access mode, and then add the [Tunnel-based runtime flags](#tunnel-based-runtime-flags), as needed.
+  * For ingress-based, add the `--access-mode ingress` flag, and then add the [Ingress controller flags](#ingress-controller-flags), as needed.
 
-  >If you don't specify any flags, tunnel-based access is automatically selected. 
 
 **Shared configuration repository**  
 The Git repository per Runtime account with shared configuration manifests.  
