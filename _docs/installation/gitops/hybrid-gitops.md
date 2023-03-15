@@ -984,11 +984,11 @@ You can define any of the following Git providers:
 
 #### Skip token scopes validation
 Optional.  
-Use this flag to skip validating scopes in the token provided for any Git provider. The flag can be useful if you are using GitHub with fine-grained tokens, which is currently in Beta and does not have validation and permission checks.<br>
+Skip validating scopes for the token provided (for any Git provider). This flag can be useful for GitHub with fine-grained tokens, which is currently in Beta, and does not yet have validation and permission checks.<br>
 
 To define, add `--skip-permission-validation true`.
 
-> When defined, Codefresh assumes that you have already created the repositories for the runtime installation and for the Git Source. If these repos have not been created, runtime installation will fail.
+> When defined, Codefresh assumes that you have _already created the repositories for the runtime installation and for the Git Source_. Otherwise, runtime installation will fail.
 
 
 #### GitHub

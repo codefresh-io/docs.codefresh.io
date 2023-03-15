@@ -36,25 +36,19 @@ The Git runtime token is mandatory for runtime installation.
 {:/}
 
 #### GitHub and GitHub Enterprise runtime token scopes
-GitHub and GitHub Enterprise offer regular tokens, and fine-grained tokens, currently in Beta.
+GitHub and GitHub Enterprise offer regular tokens, and fine-grained tokens (currently in Beta).
 
-* **Regular** runtime token scopes
-    * `repo`
-    * `admin:repo_hook`
+
+{: .table .table-bordered .table-hover}
+| Regular runtime token scopes         | | Fine-grained runtime token scopes            |  
+| --------------         | |--------------           |  
+| {::nomarkdown}<ul><li><code class="highlighter-rouge">repo</code></li><li><code class="highlighter-rouge">admin:repo_hook</code></li></ul>{:/}| | {::nomarkdown}<ul><li><b>Repository access</b>: <code class="highlighter-rouge">All repositories</code></li><li><b>Repository permissions</b>: <ul><li><b>Administration</b>: <code class="highlighter-rouge">Read and write</code></li><li><b>Contents</b>: <code class="highlighter-rouge">Read and write</code></li><li><b>Metadata</b>: <code class="highlighter-rouge">Read-only</code></li></li><li><b>Webhook</b>: <code class="highlighter-rouge">Read and write</code></li></ul></ul>{:/}|
+
+
 
 {::nomarkdown}
 </br>
 {:/}
-
-**Fine-grained** runtime token scopes
-
-* **Repository access**: `All repositories`
-* **Repository permissions**:
-    * **Administration**: `Read and write` 
-    * **Contents**: `Read and write` 
-    * **Metadata**: `Read-only`
-    * **Webhook**: `Read and write`
-
 
 #### GitLab Cloud and GitLab Server runtime token scopes
 
@@ -90,23 +84,12 @@ The Git personal token is a user-specific personal access token per provisioned 
 
 GitHub and GitHub Enterprise offer regular tokens, and fine-grained tokens, currently in Beta.
 
-* **Regular** personal user token scopes
-  * `repo`
+{: .table .table-bordered .table-hover}
+| Regular user token scopes         | | Fine-grained user token scopes            |  
+| --------------         | |--------------           |  
+| {::nomarkdown}<ul><li><code class="highlighter-rouge">repo</code></li></ul>{:/}| | {::nomarkdown}<li><b>Repository permissions</b>: <ul><li><b>Contents</b>: <code class="highlighter-rouge">Read and write</code></li><li><b>Metadata</b>: <code class="highlighter-rouge">Read-only</code></li></li></ul></ul>{:/}|
 
 
-<!---{% include 
-   image.html 
-   lightbox="true" 
-   file="/images/getting-started/github-pat.png" 
-   url="/images/getting-started/github-pat.png" 
-   alt="Permissions for Git personal token" 
-   caption="Permissions for Git personal token"
-   max-width="60%" 
-   %}-->
-
-* **Fine-grained** personal user token scopes 
-    * **Contents**: `Read and write` 
-    * **Metadata**: `Read-only`
 
 {::nomarkdown}
 </br>

@@ -5,10 +5,10 @@ group: installation
 toc: true
 ---
 
-Codefresh has several modes for working with GitOps applications
+Codefresh supports several modes for working with GitOps applications.
 
 * The easiest way to get started is to use [a hosted GitOps runtime]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/)
-* You can install [your own GitOps runtime]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/). in your own cluster
-* You can add [external clusters]({{site.baseurl}}/docs/installation/gitops/managed-cluster/) to any runtime (hosted or private)
+* Alternatively, you can install [a hybrid GitOps runtime]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/) in your own cluster
 
-.
+You can then add [external clusters]({{site.baseurl}}/docs/installation/gitops/managed-cluster/) to any runtime (hosted or private).
+
