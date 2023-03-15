@@ -518,5 +518,5 @@ Clicking on the parent application takes you to the Current State tab with the c
 
 
 
-## Related articles
-[Progressive delivery with Argo Rollouts]({{site.baseurl}}/docs/ci-cd-guides/progressive-delivery/)
+<!---## Related articles
+[Progressive delivery with Argo Rollouts]({{site.baseurl}}/docs/ci-cd-guides/progressive-delivery/)  -->
