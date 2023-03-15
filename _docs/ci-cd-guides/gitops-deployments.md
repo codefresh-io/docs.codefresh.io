@@ -191,7 +191,7 @@ For this guide, we'll connect Docker Hub to Codefresh as the container registry 
     * Define the [integration settings for Docker Hub]({{site.baseurl}}/docs/docs/gitops-integrations/container-registries/dockerhub/#docker-hub-gitops-integration-settings-in-codefresh).
 
 
-Don't forget to click **Commit**. It may take a few moments for the new integrations to be synced to the cluster before it appears in the list of **Active** integrations.
+Don't forget to click **Commit**. It may take a few moments for the new integrations to be synced to the cluster before they appear in the list of **Active** integrations.
 
 
  {% include image.html
@@ -258,6 +258,8 @@ For detailed information on the settings and options, see [Creating GitOps appli
    caption="Example of General Settings for Argo CD Application"
    max-width="60%" 
    %} 
+
+{:start="5"}  
 1. Retain the Advanced settings.
 1. Click **Commit**.
    Codefresh validates the settings, and alerts you to empty or invalid fields.  
