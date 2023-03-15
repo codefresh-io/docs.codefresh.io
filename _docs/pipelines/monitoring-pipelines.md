@@ -368,19 +368,17 @@ max-width="70%"
 
 ### Restarting the pipeline 
 
-You can restart a failed pipeline either from the beginning or from the step that failed.
+You can restart a failed pipeline either from the beginning or from a failed step.
 
 * Restart from beginning  
-  Restarts the pipeline with the **same** state that it had in its original execution, including the original Git commit. 
-  >To restart the pipeline with a new state instead, use the **Run** button in the [pipeline editor]({{site.baseurl}}/docs/pipelines/pipelines/#using-the-inline-pipeline-editor), and select any of the available [triggers]({{site.baseurl}}/docs/pipelines/triggers/).
+  Restarts the pipeline with the **same** state as in its original execution, including the original Git commit. 
+  >To restart the pipeline with a _new_ state, use the **Run** button in the [pipeline editor]({{site.baseurl}}/docs/pipelines/pipelines/#using-the-inline-pipeline-editor), and select any of the available [triggers]({{site.baseurl}}/docs/pipelines/triggers/).
 
 * Restart from failed step  
-  This option restarts the pipeline from the step that failed in the previous execution. Similar to restarting from the beginning, restarting from a failed step also restarts the pipeline with the same state at that point in time, including the original Git commit.  
+  Restarts the pipeline from the step that failed in the previous execution. Similar to restarting from the beginning, restarting from a failed step also restarts the pipeline with the same state at that point in time, including the original Git commit. You can restart from the Builds page or directly from the specific step that failed.
   
-  The option to restart from a failed step is available only when **Permit restart pipeline from failed step** is enabled in the pipeline's settings.  
-  You can restart from the Builds page or directly from the specific step that failed.
-
->If your pipeline has some flaky steps, you can also use the [retry syntax]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#retrying-a-step) in your YAML instead of restarting them manually each time they fail.
+    >The option to restart from a failed step is available only when **Permit restart pipeline from failed step** is enabled in the pipeline's settings.<br>  
+       If your pipeline has some flaky steps, you can also use the [retry syntax]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#retrying-a-step) in your YAML instead of restarting them manually each time they fail.
 
 **Restart pipeline from Builds view**
 
@@ -435,8 +433,8 @@ caption="Pull Request Status"
 max-width="50%" 
 %}
 
-If you have setup a [Git trigger]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/) in Codefresh then by default this happens automatically without any other configuration
-for all automated commits (that are coming from webhooks).
+If you have set up a [Git trigger]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/) in Codefresh, then by default this happens automatically without any other configuration
+for all automated commits from webhooks.
 
 If you start a build manually then by default the git status will **not** be updated (i.e. the result of the pipeline
 will not affect the status of Pull request)

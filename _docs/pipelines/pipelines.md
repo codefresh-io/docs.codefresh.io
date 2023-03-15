@@ -226,6 +226,8 @@ Once you create your pipeline you can also click on the top tab called *Settings
 - **Restart pipeline**  
   **Permit restart pipeline from failed step**: When enabled (the default), allows users to restart the pipeline directly from the failed step. Otherwise, users can only restart the pipeline from the beginning.
 
+  As this option restarts the failed step with the same state, you may find it useful to disable this option based on the usage. For example, restarting a custom Helm promotion step that failed, restarts the step with the same revision and does not promote the newest images as it should.
+
 #### Select Kubernetes cluster contexts
 By default, all clusters integrated with Codefresh are automatically available for all pipelines in the account. 
 The inject cluster option when enabled for the account allows you to selectively restrict the clusters which can be accessed from pipelines created for the user account. 
