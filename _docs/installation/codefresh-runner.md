@@ -13,6 +13,8 @@ Install the Codefresh Runner on your Kubernetes cluster to run pipelines and acc
 
 As the Codefresh Runner is **not** dependent on any special dockershim features, any compliant container runtime is acceptable. The docker socket/daemon used by Codefresh pipelines is **NOT** the one on the host node (as it might not exist at all in the case of containerd or cri-o), but instead an internal docker daemon created/managed by the pipeline itself.
 
+>**IMPORTANT**:<br>
+  Using spot instances can cause failures in Codefresh builds, as they can be taken down without notice. If you require 100% availability, we recommend to not use spot instances.
 
 
 ## System requirements
@@ -43,9 +45,8 @@ Use any of the following options to install the Codefresh Runner:
 
 If the Kubernetes cluster with the Codefresh Runner is behind a proxy server, [complete Runner installation](#complete-codefresh-runner-installation).
 
-<!--- ### Prerequisites 
-* [Codefresh CLI](https://codefresh-io.github.io/cli/installation/){:target="\_blank"}
-* CLI authenticated with the API token  -->
+
+
 
 ### Install Runner with CLI Wizard
 
@@ -591,7 +592,7 @@ Once you have applied the patch, future builds will include the label preventing
 Once installed, the Runner polls Codefresh every three seconds by default to automatically create all resources needed for running pipelines.  
 To see the cluster with the Runner:
 * In the Codefresh UI, click the **Settings** icon on the toolbar.
-* From the sidebar, select **Pipeline Runtimes**, and then click the **Codefresh Runners**(https://g.codefresh.io/account-admin/codefresh-runners){:target="\_blank"} tab. 
+* From the sidebar, select **Pipeline Runtimes**, and then click the [**Codefresh Runners**](https://g.codefresh.io/account-admin/pipeline-runtimes){:target="\_blank"} tab. 
 
 
 
@@ -610,12 +611,15 @@ If you have multiple runtime environments, select the one to use as the default 
 
 * In the Codefresh UI, click the **Settings** icon on the toolbar.
 * From the sidebar, select [**Pipeline Runtimes**](https://g.codefresh.io/account-admin/pipeline-runtimes){:target="\_blank"}. 
-* From the list of Pipeline Runtimes, click the context menu of the runtime to set as the default.
-* Select **Set as Default**. 
+* From the list of Pipeline Runtimes, select the row with the runtime to set as the default.
+* Click the context menu on the right, and select **Set as Default**. 
 
 
 ###  Override default runtime environment for a pipeline
-Override the default runtime environment for a specific pipeline through the pipeline's [settings]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/).  
+
+Override the default runtime environment for a specific pipeline through the pipeline's [Build Runtime settings]({{site.baseurl}}/docs/pipelines/pipelines/#build-runtime).  
+
+
 
 
 {% include image.html

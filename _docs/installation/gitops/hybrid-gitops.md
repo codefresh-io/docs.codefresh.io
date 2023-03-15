@@ -10,13 +10,15 @@ Provision one or more Hybrid GitOps Runtimes in your Codefresh account.
 Start by reviewing [system requirements](#minimum-system-requirements) for Hybrid GitOps.  
 If you are installing with ingress-controllers, you must configure them as required _before_ starting the installation. 
 
-> To provision a Hosted GitOps Runtime, see [Provision a hosted runtime]({{site.baseurl}}/docs/installation/gitops/hosted-runtime//#1-provision-hosted-runtime) in [Set up a hosted (Hosted GitOps) environment]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/).
+> To provision a Hosted GitOps Runtime, see [Provision a hosted runtime]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/#1-provision-hosted-runtime) in [Set up a hosted (Hosted GitOps) environment]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/).
 
 **Git providers and Hybrid Runtimes**  
 Your Codefresh account is always linked to a specific Git provider. This is the Git provider you select on installing the first GitOps Runtime, either Hybrid or Hosted, in your Codefresh account. All the Hybrid GitOps Runtimes you install in the same account use the same Git provider.  
 If Bitbucker Server is your Git provider, you must also select the specific server instance to associate with the runtime. 
 
 >To change the Git provider for your Codefresh account after installation, contact Codefresh support.
+
+> If you want to [skip validating the scopes for the provided token](#skip-token-scope-validation), you _must create the repositories for the runtime and for the Git Source before starting the installation_.
 
 
 **Codefresh and Argo CD**  
@@ -805,8 +807,8 @@ If you are not sure which OS to select for `curl`, simply select one, and Codefr
 * [Download or upgrade to the latest version of the CLI]({{site.baseurl}}/docs/installation/gitops/upgrade-gitops-cli/)
 * Review [Hybrid Runtime installation flags](#hybrid-runtime-installation-flags)
 * For ingress-based runtimes, make sure your ingress controller is configured correctly:
-  * [Ambasador ingress configuration](#ambassador-ingress-configurationn)
-  * [AWS ALB ingress configuration](#alb-aws-ingress-configuration)
+  * [Ambasador ingress configuration](#ambassador-ingress-configuration)
+  * [AWS ALB ingress configuration](#aws-alb-ingress-configuration)
   * [Istio ingress configuration](#istio-ingress-configuration)
   * [NGINX Enterprise ingress configuration](#nginx-enterprise-ingress-configuration)
   * [NGINX Community ingress configuration](#nginx-community-version-ingress-configuration)
@@ -830,9 +832,9 @@ If you are not sure which OS to select for `curl`, simply select one, and Codefr
     `cf runtime install <runtime-name> --repo <git-repo> --git-token <git-token> --silent`  
   For the list of flags, see [Hybrid runtime installation flags](#hybrid-runtime-installation-flags).
 1. If relevant, complete the configuration for these ingress controllers:
-  * [ALB AWS: Alias DNS record in route53 to load balancer]({{site.baseurl}}/docs/runtime/requirements/#alias-dns-record-in-route53-to-load-balancer)
-  * [Istio: Configure cluster routing service]({{site.baseurl}}/docs/runtime/requirements/#cluster-routing-service)
-  * [NGINX Enterprise ingress controller: Patch certificate secret]({{site.baseurl}}/docs/runtime/requirements/#patch-certificate-secret)  
+  * [ALB AWS: Alias DNS record in route53 to load balancer](#alias-dns-record-in-route53-to-load-balancer)
+  * [Istio: Configure cluster routing service](#cluster-routing-service)
+  * [NGINX Enterprise ingress controller: Patch certificate secret](#patch-certificate-secret)  
 1. If you bypassed installing ingress resources with the `--skip-ingress` flag for ingress controllers not in the supported list, create and register Git integrations using these commands:  
   `cf integration git add default --runtime <RUNTIME-NAME> --api-url <API-URL>`  
   `cf integration git register default --runtime <RUNTIME-NAME> --token <RUNTIME-AUTHENTICATION-TOKEN>`  
@@ -847,7 +849,7 @@ If you are not sure which OS to select for `curl`, simply select one, and Codefr
 ## Hybrid GitOps Runtime installation flags
 This section describes the required and optional flags to install a Hybrid GitOps Runtime.
 For documentation purposes, the flags are grouped into:
-* Runtime flags, relating to Runtime, cluster, and namespace requirements
+* Runtime flags, relating to runtime, cluster, and namespace requirements
 * Ingress-less flags, for tunnel-based installation
 * Ingress-controller flags, for ingress-based installation
 * Git provider and repo flags
@@ -881,15 +883,14 @@ The cluster defined as the default for `kubectl`. If you have more than one Kube
 **Access mode**  
 The access mode for the runtime, which can be one of the following:
 * [Tunnel-based]({{site.baseurl}}/docs/installation/runtime-architecture/#tunnel-based-hybrid-gitops-runtime-architecture), for runtimes without ingress controllers. This is the default.
-* [Ingress-based]({{site.baseurl}}/docs/installation/runtime-architecture/#ingress-based-hybrid-gitops-runtime-architecture) for runtimes with ingress contollers. 
+* [Ingress-based]({{site.baseurl}}/docs/installation/runtime-architecture/#ingress-based-hybrid-gitops-runtime-architecture), for runtimes with ingress controllers. 
 
 
-* CLI wizard: Select the access mode from the list displayed.
+* CLI wizard: Select the `Codefresh tunnel-based` or `Ingress-based` access mode from the list displayed. `Tunnel-based` mode is selected by default.  
 * Silent install:  
-  * For tunnel-based, see [Tunnel-based runtime flags](#tunnel-based-runtime-flags)
-  * For ingress-based, add the [Ingress controller flags](#ingress-controller-flags)
+  * For tunnel-based, you can omit the flag as this is the default access mode, and then add the [Tunnel-based runtime flags](#tunnel-based-runtime-flags), as needed.
+  * For ingress-based, add the `--access-mode ingress` flag, and then add the [Ingress controller flags](#ingress-controller-flags), as needed.
 
-  >If you don't specify any flags, tunnel-based access is automatically selected. 
 
 **Shared configuration repository**  
 The Git repository per Runtime account with shared configuration manifests.  
@@ -980,6 +981,16 @@ You can define any of the following Git providers:
 </br>
 {:/}
 
+#### Skip token scopes validation
+Optional.  
+Skip validating scopes for the token provided (for any Git provider). This flag can be useful for GitHub with fine-grained tokens, as these are currently (March 23) still in Beta according to GitHub, and therefore not offically supported by Codefresh. The tokens should work if they have the correct scopes.<br>
+
+To skip token validation, add `--skip-permission-validation true`.
+
+  > IMPORTANT:  
+    Before using this flag, [review the required scopes for runtime tokens]({{site.baseurl}}/docs/reference//git-tokens/#git-runtime-token-scopes). <br><br>
+    When defined, Codefresh does not validate the scopes assigned to the token provided. If the token does not include the scopes required for Codefresh to automatically create the repositories for the runtime and Git Source during installation, the installation will fail.  
+    The alternative is to create both repos before the installation.
 
 
 #### GitHub
@@ -1165,6 +1176,8 @@ where:
 {::nomarkdown}
 </br></br>
 {:/}
+
+
 
 ### Codefresh resource flags
 **Codefresh demo resources**  

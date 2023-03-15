@@ -10,6 +10,7 @@ redirect_from:
   - /docs/build-status/
   - /docs/build-badges-1
   - /docs/build-badges-1/
+  - /v1.0/docs/build-status/
 ---
 
 

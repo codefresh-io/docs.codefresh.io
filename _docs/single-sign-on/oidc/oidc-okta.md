@@ -199,6 +199,6 @@ There are two ways to set up automatic syncing of teams:
   %}
 
 ## Related articles
-[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/single-sign-on/)  
+[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/single-sign-on/single-sign-on/)  
 [Common configuration for SSO providers]({{site.baseurl}}/docs/single-sign-on/team-sync)  
 

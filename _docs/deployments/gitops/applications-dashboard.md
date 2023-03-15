@@ -120,9 +120,16 @@ Applications with `rollout` resources need Argo Rollouts on the target cluster, 
 * Drill down into the application to investigate the issue and make changes.
 
 ## Get status from application header
-When you select an application from the GitOps Apps dashboard, the application header is displayed at the top of the page with important information on the application. 
-Once you select an application, the quickest option to monitor statuses is through the application header which is always displayed, no matter what tab you navigate to.    
-For example, it displays the health, current and previous sync operation results, and indicates if auto-sync is enabled or disabled for the application. Sync statuses also have **More** links that display details such as the date, tags, and message. 
+When you select an application from the GitOps Apps dashboard, the application header, at the top of the page, displays critical information on the application. 
+Once you select an application, the quickest option to monitor statuses is through the application header which is always displayed, no matter what tab you navigate to.  
+
+Information and actions in the application header:  
+* Displays health and status, and results of current and previous sync operation
+* Auto-sync enabled/disabled indication
+* **More** links for sync statuses for details on the date, tags, and message
+* **Terminate Sync** option for active sync operations to stop the sync if needed
+
+
 
 {% include
 image.html

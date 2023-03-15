@@ -22,6 +22,9 @@ caption="Running Terraform inside Codefresh"
 max-width="80%" 
 %}
 
+
+> Note that this page explains how to run Terraform inside a Codefresh pipeline. If you want to use Terraform to manage Codefresh itself see the [Terraform provider](https://registry.terraform.io/providers/codefresh-io/codefresh/latest).
+
 ## The example Terraform project
 
 You can see the example project at [https://github.com/codefresh-contrib/terraform-sample-app](https://github.com/codefresh-contrib/terraform-sample-app){:target="\_blank"}. The repository contains a simple Terraform definition that creates a VM on Google cloud.
@@ -30,7 +33,7 @@ You can play with it locally after installing the `terraform` executable.
 
 ## Prerequisites
 
-You need to [create a Codefresh account]({{site.baseurl}}/docs/administration/account-user-management/create-a-codefresh-account/) and a Google account first. Then you need to create a [Service account Key](https://cloud.google.com/iam/docs/creating-managing-service-account-keys){:target="\_blank"} which will allow terraform to communicate with Google cloud.
+You need to [create a Codefresh account]({{site.baseurl}}/docs/administration/account-user-management/create-codefresh-account/) and a Google account first. Then you need to create a [Service account Key](https://cloud.google.com/iam/docs/creating-managing-service-account-keys){:target="\_blank"} which will allow terraform to communicate with Google cloud.
 
 
 Add your service account json as a pipeline variable called `ACCOUNT_JSON_CONTENT`. The content of this variable will be used

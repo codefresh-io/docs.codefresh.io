@@ -101,7 +101,7 @@ Correlate the Docker images in Codefresh with the results of the security scanni
 See:  
 [Security scanning tests]({{site.baseurl}}/docs/testing/security-scanning/)  
 [Test reporting modes]({{site.baseurl}}/docs/testing/test-reports/)  
-[Metadata in Docker images]({{site.baseurl}}/docs/pipelines//docker-image-metadata/) 
+[Metadata in Docker images]({{site.baseurl}}/docs/pipelines/docker-image-metadata/) 
 
 
 ## Notifications

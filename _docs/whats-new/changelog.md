@@ -26,7 +26,7 @@ toc: true
 ### November 2022
 
 #### Features and enhancements
-- Set disk space for a pipeline build volume - [documentation]({{site.baseurl}}/docs/pipelines/pipelines/#runtime)
+- Set disk space for a pipeline build volume - [documentation]({{site.baseurl}}/docs/pipelines/pipelines/#build-runtime)
 - Support for latest Kubernetes cluster version 1.24 - [documentation]({{site.baseurl}}/docs/administration/codefresh-runner/#prerequisites)
 
 
@@ -197,9 +197,9 @@ toc: true
 
 ### January 2021
 
-- Using external secrets in Codefresh GUI - [documentation]({{site.baseurl}}/docs/pipelines/configuration/secrets-store//#using-secrets-in-the-codefresh-gui)
+- Using external secrets in Codefresh GUI - [documentation]({{site.baseurl}}/docs/pipelines/configuration/secrets-store/#using-secrets-in-the-codefresh-gui)
 - Using external secrets in Github, Gitlab and Bitbucket server integration - [documentation]({{site.baseurl}}/docs/integrations/git-providers/#using-external-secrets-for-the-token)
-- Using external secrets in shared configuration - [documentation]({{site.baseurl}}/docs/pipelines/shared-configuration/#using-external-secrets-as-values)
+- Using external secrets in shared configuration - [documentation]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/#using-external-secrets-as-values)
 - Using external secrets in cloud storage integration - [documentation]({{site.baseurl}}/docs/testing/test-reports/#connecting-an-s3-bucket)
 - Get Code Coverage Reports with Codacy - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/codacy-testing)
 - Git clone now supports a proxy connection - [documentation]({{site.baseurl}}/docs/pipelines/steps/git-clone/#using-git-behind-a-proxy)
@@ -298,7 +298,7 @@ toc: true
 - Use GitHub Actions no longer requires a registry - [documentation]({{site.baseurl}}/docs/integrations/github-actions/#how-it-works)
 - Alternative debugging console - [documentation]({{site.baseurl}}/docs/pipelines/debugging-pipelines/#using-the-alternative-debug-window)
 - User variable priority rules - [documentation]({{site.baseurl}}/docs/pipelines/variables/#user-provided-variables)
-- Secret Storage - [documentation]({{site.baseurl}}docs/pipelines/configuration/secrets-store/)
+- Secret Storage - [documentation]({{site.baseurl}}/docs/pipelines/configuration/secrets-store/)
 - Run multiple kinds of unit tests using fan-in-fan-out parallel pipeline - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/fan-in-fan-out)
 
 ### March 2020
@@ -411,7 +411,7 @@ toc: true
 - Added `CI=true` environment variable - [documentation]({{site.baseurl}}/docs/pipelines/variables/#system-provided-variables)
 - Buildkit support - [documentation]({{site.baseurl}}/docs/pipelines/steps/build/#buildkit-support)
 - Security scanning - [documentation]({{site.baseurl}}/docs/testing/security-scanning/)
-- Root pipeline anchors - [documentation]({{site.baseurl}}/docs/pipelines/what-is-the-pipelines/#using-yaml-anchors-to-avoid-repetition)
+- Root pipeline anchors - [documentation]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#using-yaml-anchors-to-avoid-repetition)
 - Building Android Apps - [documentation]({{site.baseurl}}/docs/learn-by-example/mobile/android/)
 - Deployment to Nomad clusters - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/nomad/)
 - Editing of annotations - [documentation]({{site.baseurl}}/docs/pipelines/annotations/#viewingediting-annotations)
@@ -458,7 +458,7 @@ toc: true
 ### January 2019
 
 - Manual approval step - [documentation]({{site.baseurl}}/docs/pipelines/steps/approval/)
-- Shared configuration - [documentation]({{site.baseurl}}/docs/pipelines/shared-configuration/)
+- Shared configuration - [documentation]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/)
 - Running pipelines locally - [documentation]({{site.baseurl}}/docs/pipelines/running-pipelines-locally/)
 - Installation options (Enterprise) - [documentation]({{site.baseurl}}/docs/installation/installation-options/)
 - Custom volumes for freestyle steps - [documentation]({{site.baseurl}}/docs/pipelines/steps/freestyle/#custom-volumes)
@@ -471,18 +471,18 @@ toc: true
 
 - Restart pipeline from failed steps - [documentation]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#restarting-the-pipeline)
 - New variable for labels of a pull request - [documentation]({{site.baseurl}}/docs/pipelines/variables/#system-provided-variables)
-- YAML validation without the GUI - [documentation]({{site.baseurl}}/docs/pipelines/what-is-the-pipelines/#yaml-validation)
+- YAML validation without the GUI - [documentation]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#yaml-validation)
 - Run builds from external forks - [documentation]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/#support-for-building-pull-requests-from-forks)
 - Google Marketplace Integration - [documentation]({{site.baseurl}}/docs/integrations/google-marketplace/)
 - Added OneLogin SSO support - [documentation]({{site.baseurl}}/docs/enterprise/single-sign-on/sso-onelogin/)
-- Multiple test reports from a single pipeline - [documentation]({{site.baseurl}}/docs/pipelines/test-reports/#creating-multiple-reports)
+- Multiple test reports from a single pipeline - [documentation]({{site.baseurl}}/docs/testing/test-reports/#creating-multiple-reports)
 - Historical data in Allure test reports are now available
 - Inline YAML editor can now expand/collapse code blocks - [documentation]({{site.baseurl}}/docs/pipelines/pipelines/#writing-codefresh-yml-in-the-gui)
 
 ### November 2018
 
-- Integrated test reports - [documentation]({{site.baseurl}}/docs/pipelines/test-reports/)
-- Retry individual pipeline steps - [documentation]({{site.baseurl}}/docs/pipelines/what-is-the-pipelines/#retrying-a-step)
+- Integrated test reports - [documentation]({{site.baseurl}}/docs/testing/test-reports/)
+- Retry individual pipeline steps - [documentation]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#retrying-a-step)
 - Trigger integration with Azure Events - [documentation]({{site.baseurl}}/docs/pipelines/triggers/azure-triggers/)
 
 ### October 2018

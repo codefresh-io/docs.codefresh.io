@@ -22,7 +22,7 @@ To start the integration, you need the following:
 
 1. A [Google Cloud account](https://cloud.google.com/){:target="\_blank"} with billing enabled
 1. A [GKE cluster](https://cloud.google.com/kubernetes-engine/docs/quickstart){:target="\_blank"} that will run all builds and pipelines
-1. A [Codefresh account]({{site.baseurl}}/docs/administration/account-user-management/create-a-codefresh-account/) (creating an account is free, you pay only for builds)
+1. A [Codefresh account]({{site.baseurl}}/docs/administration/account-user-management/create-codefresh-account/) (creating an account is free, you pay only for builds)
 
 Then visit the Codefresh GKE page at [https://console.cloud.google.com/marketplace/product/codefresh-gke/codefresh-saas](https://console.cloud.google.com/marketplace/product/codefresh-gke/codefresh-saas){:target="\_blank"}.
 

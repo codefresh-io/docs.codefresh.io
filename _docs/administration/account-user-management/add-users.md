@@ -25,7 +25,7 @@ Adding a user to an account requires assigning a role to define access to accoun
 on clusters, docker registries, git integrations, shared configurations etc.
   * **Administrator**: With this role, users have full access to accounts, and can change all settings, so make sure that they are trusted colleagues.
   For guidelines on access control, see [Access control]({{site.baseurl}}/docs/administration/account-user-management/access-control/).  
-* **SSO**: By default, SSO is not enabled for users. If required, explicitly select the SSO provider. For an overview of SSO, see [Single Sign on]({{site.baseurl}}/docs/single-sign-on/).
+* **SSO**: By default, SSO is not enabled for users. If required, explicitly select the SSO provider. For an overview of SSO, see [Single Sign on]({{site.baseurl}}/docs/single-sign-on/single-sign-on/).
 
 
 ###  Add a user to a Codefresh account 
@@ -43,11 +43,11 @@ on clusters, docker registries, git integrations, shared configurations etc.
 ### Manage users in a Codefresh account
 
 Once you add a user to your Codefresh account, you can do the following to manage that user:  
-* Resend invitations that are pending acceptance: Select ![](/images/administration/users/icon-Send.png?display=inline-block) **Resend**.  
-* Edit the user's email address: Select ![](/images/administration/users/icon-Edit.png?display=inline-block) **Edit**.  
+* Resend invitations that are pending acceptance: Select **Resend**.  
+* Edit the user's email address: Select **Edit**.  
 * Change the role: From the **Role** dropdown, select the new role.
 * Change SSO provider: From the **SSO** dropdown, select the new SSO provider.
-* Remove the user account: Select ![](/images/administration/users/icon-Delete.png?display=inline-block) **Delete**.
+* Remove the user account: Select **Delete**.
 
 
 
@@ -114,6 +114,6 @@ As an administrator, you can optionally define session timeouts to automatically
 
 ## Related articles
 [Access control]({{site.baseurl}}/docs/administration/account-user-management/access-control/)  
-[Single Sign on]({{site.baseurl}}/docs/single-sign-on/)  
+[Single Sign on]({{site.baseurl}}/docs/single-sign-on/single-sign-on/)  
 [Setting up OAuth authentication for Git providers]({{site.baseurl}}/docs/administration/account-user-management/oauth-setup)  
 
