@@ -884,12 +884,11 @@ The access mode for the runtime, which can be one of the following:
 * [Ingress-based]({{site.baseurl}}/docs/installation/runtime-architecture/#ingress-based-hybrid-gitops-runtime-architecture) for runtimes with ingress contollers. 
 
 
-* CLI wizard: Select the access mode from the list displayed.
+* CLI wizard: Select the `tunnel-based` or `ingress-based` access mode from the list displayed. `Tunnel-based` mode is selected by default.  
 * Silent install:  
-  * For tunnel-based, see [Tunnel-based runtime flags](#tunnel-based-runtime-flags)
-  * For ingress-based, add the [Ingress controller flags](#ingress-controller-flags)
+  * For tunnel-based, you can omit the flag, as this is the default access mode, and then add the [Tunnel-based runtime flags](#tunnel-based-runtime-flags), as needed.
+  * For ingress-based, add the `--access-mode ingress-based`flag, and then add the [Ingress controller flags](#ingress-controller-flags), as needed.
 
-  >If you don't specify any flags, tunnel-based access is automatically selected. 
 
 **Shared configuration repository**  
 The Git repository per Runtime account with shared configuration manifests.  
