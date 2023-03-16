@@ -16,6 +16,17 @@ Install the Hybrid Runtime for GitOps through a Helm chart.
   The Alpha version assumes that you already have a shared configuration repository for your account.
   If this is not the case, contact support to help you set one up.
 
+* Argo Project CRDs
+  The installation requires a namespace without Argo Project CRDs. If you already have CRDs in the installation namespace, you can either remove them manually, or have Codefresh manage them by running the script before installation:
+
+```
+#!/bin/sh
+RELEASE=<helm-release-name>
+NAMESPACE=<target-namespace>
+kubectl label --overwrite crds $(kubectl get crd | grep argoproj.io | awk '{print $1}' | xargs) app.kubernetes.io/managed-by=Helm
+kubectl annotate --overwrite crds $(kubectl get crd | grep argoproj.io | awk '{print $1}' | xargs) meta.helm.sh/release-name=$RELEASE
+kubectl annotate --overwrite crds $(kubectl get crd | grep argoproj.io | awk '{print $1}' | xargs) meta.helm.sh/release-namespace=$NAMESPACE
+```
 
 
 ## Prerequisites
@@ -25,6 +36,7 @@ Install the Hybrid Runtime for GitOps through a Helm chart.
     * [Runtime token with the required scopes]({{site.baseurl}}/docs/reference/git-tokens/#git-runtime-token-scopes). You will need it after installation to update runtime credentials
     * [Personal Access Token (PAT)]({{site.baseurl}}/docs/reference/git-tokens/#git-personal-tokens) for Git-based actions
     * Server URLs for on-premises Git providers
+* Verify there are Argo CRDs in the target namespace
 * (Optional, for ingress-based runtimes only) configuration for ingress controllers:
   * [Ambasador ingress configuration]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/#ambassador-ingress-configuration)
   * [AWS ALB ingress configuration]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/#alb-aws-ingress-configuration)
@@ -61,10 +73,10 @@ The ingress class is the ingress class of the ingress controller, for example, `
 1. Copy and run the command to install the runtime Helm chart:  
   The commands differ depending on the access mode. An ingress-based runtime requires additional flags.<br>
   **Tunnel-based install chart command:**<br>
-    `helm upgrade --install <helm-release-name> --create-namespace --namespace <namespace> --set global.codefresh.accountId=<codefresh-account-id> --set global.codefresh.userToken.token=<codefresh-api-key> --set global.runtime.name=<runtime-name> <helm-repo-name>/gitops-runtime --devel`  
+    `helm upgrade --install <helm-release-name> --create-namespace --namespace <namespace> --set global.codefresh.accountId=<codefresh-account-id> --set global.codefresh.userToken.token=<codefresh-api-key> --set global.runtime.name=<runtime-name> <helm-repo-name>/gitops-runtime --devel --wait`  
 
     **Ingress-based install chart command:**<br>
-      `helm upgrade --install <helm-release-name> --create-namespace --namespace <namespace> --set global.codefresh.accountId=<codefresh-account-id> --set global.codefresh.userToken.token=<codefresh-api-key> --set global.runtime.name=<runtime-name> <helm-repo-name>/gitops-runtime  --set global.runtime.ingress.enabled=true --set "global.runtime.ingress.hosts[0]"=<ingress-host> --set global.runtime.ingress.className=<ingress-class> --devel`  
+      `helm upgrade --install <helm-release-name> --create-namespace --namespace <namespace> --set global.codefresh.accountId=<codefresh-account-id> --set global.codefresh.userToken.token=<codefresh-api-key> --set global.runtime.name=<runtime-name> <helm-repo-name>/gitops-runtime  --set global.runtime.ingress.enabled=true --set "global.runtime.ingress.hosts[0]"=<ingress-host> --set global.runtime.ingress.className=<ingress-class> --devel --wait`  
      
     >Unless otherwise indicated, values are automatically populated by Codefresh. 
     
@@ -78,10 +90,11 @@ The ingress class is the ingress class of the ingress controller, for example, `
     * `global.runtime.ingress.enabled=true` is mandatory for _ingress-based runtimes_, and indicates that the runtime is ingress-based.
     * `<ingress-host>` is mandatory for _ingress-based runtimes_, and is the IP address or host name of the ingress controller component. 
     * `<ingress-class>` is mandatory for _ingress-based runtimes_, and is the ingress class of the ingress controller. For example, `nginx` for the NGINX ingress controller.
-
-1. Verify that the deployment is up and running after a couple of minutes.
-1. Define your Git provider:  
+    * `--wait` waits until all the pods are up and running for the deployment.
+1. Define your Git provider and register the Git integration:  
   `cf integration git add default --runtime <runtime-name> --api-url <api-url> --provider <provider>`  
+  `cf integration git register default --runtime <RUNTIME-NAME> --token <RUNTIME-AUTHENTICATION-TOKEN>`  
+
   where:  
       * `<runtime-name>` is the name of the runtime, either `codefresh`, or the custom name you defined. 
       * `<api-url>` is the URL of the Git provider, and can be one of the following:
@@ -117,13 +130,12 @@ The ingress class is the ingress class of the ingress controller, for example, `
 1. If you don't have the shared configuration repository for GitOps runtimes, contact support. 
   > For the Alpha, we assume that you already have a shared configuration repository for your account.
 1. Optional. [Create a Git Source]({{site.baseurl}}/docs/installation/gitops/git-sources/#create-a-git-source) for the runtime.
-1. Optional. Required for ingress-based only. If relevant, complete the configuration for these ingress controllers:
+1. Required for ALB AWS, Istio, or NGINX Enterprise ingress-controllers only.<br>
+   Complete the configuration for these ingress controllers:
   * [ALB AWS: Alias DNS record in route53 to load balancer]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/#create-an-alias-to-load-balancer-in-route53)
   * [Istio: Configure cluster routing service]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/#cluster-routing-service)
   * [NGINX Enterprise ingress controller: Patch certificate secret]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/#patch-certificate-secret)  
-1. Optional. Required for ingress-based only. Create and register Git integrations using these commands:  
-  `cf integration git add default --runtime <RUNTIME-NAME> --api-url <API-URL>`  
-  `cf integration git register default --runtime <RUNTIME-NAME> --token <RUNTIME-AUTHENTICATION-TOKEN>`  
+
 
 
 ## Related articles
