@@ -26,7 +26,7 @@ toc: true
 ### November 2022
 
 #### Features and enhancements
-- Set disk space for a pipeline build volume - [documentation]({{site.baseurl}}/docs/pipelines/pipelines/#runtime)
+- Set disk space for a pipeline build volume - [documentation]({{site.baseurl}}/docs/pipelines/pipelines/#build-runtime)
 - Support for latest Kubernetes cluster version 1.24 - [documentation]({{site.baseurl}}/docs/administration/codefresh-runner/#prerequisites)
 
 
@@ -190,16 +190,16 @@ toc: true
 - SLA Details - [documentation]({{site.baseurl}}/docs/terms-and-privacy-policy/sla/)
 - Autoscaling Recommendations for Codefresh On-prem - [documentation]({{site.baseurl}}/docs/administration/codefresh-on-prem/#app-cluster-autoscaling)
 - Hide Inaccessible Clusters in the Kubernetes Dashboard - [documentation]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/#accessing-the-kubernetes-dashboard)
-- Define Access for non-admins in Helm Repositories and Shared Config - [documentation]({{site.baseurl}}/docs/pipelines/shared-configuration/#level-of-access)
+- Define Access for non-admins in Helm Repositories and Shared Config - [documentation]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/#level-of-access)
 - Okta Auto-Sync of Teams - [documentation]({{site.baseurl}}/docs/administration/single-sign-on/sso-okta/#syncing-of-teams-after-initial-sso-setup)
 - Global Pipeline Settings Screen - [documentation]({{site.baseurl}}/docs/administration/pipeline-settings)
 - Helm 2 Support discontinued 
 
 ### January 2021
 
-- Using external secrets in Codefresh GUI - [documentation]({{site.baseurl}}/docs/pipelines/configuration/secrets-store//#using-secrets-in-the-codefresh-gui)
+- Using external secrets in Codefresh GUI - [documentation]({{site.baseurl}}/docs/pipelines/configuration/secrets-store/#using-secrets-in-the-codefresh-gui)
 - Using external secrets in Github, Gitlab and Bitbucket server integration - [documentation]({{site.baseurl}}/docs/integrations/git-providers/#using-external-secrets-for-the-token)
-- Using external secrets in shared configuration - [documentation]({{site.baseurl}}/docs/pipelines/shared-configuration/#using-external-secrets-as-values)
+- Using external secrets in shared configuration - [documentation]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/#using-external-secrets-as-values)
 - Using external secrets in cloud storage integration - [documentation]({{site.baseurl}}/docs/testing/test-reports/#connecting-an-s3-bucket)
 - Get Code Coverage Reports with Codacy - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/codacy-testing)
 - Git clone now supports a proxy connection - [documentation]({{site.baseurl}}/docs/pipelines/steps/git-clone/#using-git-behind-a-proxy)
@@ -208,7 +208,7 @@ toc: true
 - New paging mechanism for builds/images that might break custom integrations - [documentation]({{site.baseurl}}/docs/troubleshooting/common-issues/paging-issues-builds-images/)
 - Note for Okta sync - [documentation]({{site.baseurl}}/docs/administration/single-sign-on/sso-okta/#how-okta-syncing-works)
 - cf_export limitations - [documentation]({{site.baseurl}}/docs/troubleshooting/common-issues/cf-export-limitations/)
-- Default SSO provider - [documentation]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/#setting-a-default-provider)
+- Default SSO provider - [documentation]({{site.baseurl}}/docs/single-sign-on/team-sync/#set-a-default-sso-provider-for-account)
 - Codefresh runner now has a dry run option - [documentation]({{site.baseurl}}/docs/administration/codefresh-runner/#inspecting-the-manifests-before-they-are-installed)
 - Connect to Azure Kubernetes with a service principal - [documentation]({{site.baseurl}}//#adding-an-aks-cluster-with-a-service-principal)
 - Connect to an Azure Helm repository with a service principal - [documentation]({{site.baseurl}}/docs/integrations/helm/#private-helm-repository---azure-with-service-principal)
@@ -223,7 +223,7 @@ toc: true
 - Helm promotion pipelines can be overridden in the GUI  - [documentation]({{site.baseurl}}/docs/new-helm/helm-environment-promotion/#creating-your-own-helm-board)
 - Internal Registry mirror for the Codefresh runner - [documentation]({{site.baseurl}}/docs/administration/codefresh-runner/#internal-registry-mirror)
 - Production and staging deployments guide - [documentation]({{site.baseurl}}/docs/ci-cd-guides/environment-deployments/)
-- Escaping YAML in pipelines - [documentation]({{site.baseurl}}/docs/pipelines/what-is-the-pipelines/#escaping-strings)
+- Escaping YAML in pipelines - [documentation]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#escaping-strings)
 - GitOps dashboard now shows affected services for each release - [documentation]({{site.baseurl}}/docs/ci-cd-guides/gitops-deployments/#working-with-the-gitops-dashboard)
 - Time based filters in build view - [documentation]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#applying-filters-on-the-build-view)
 
@@ -298,7 +298,7 @@ toc: true
 - Use GitHub Actions no longer requires a registry - [documentation]({{site.baseurl}}/docs/integrations/github-actions/#how-it-works)
 - Alternative debugging console - [documentation]({{site.baseurl}}/docs/pipelines/debugging-pipelines/#using-the-alternative-debug-window)
 - User variable priority rules - [documentation]({{site.baseurl}}/docs/pipelines/variables/#user-provided-variables)
-- Secret Storage - [documentation]({{site.baseurl}}/docs/pipelines/secrets-store/)
+- Secret Storage - [documentation]({{site.baseurl}}/docs/pipelines/configuration/secrets-store/)
 - Run multiple kinds of unit tests using fan-in-fan-out parallel pipeline - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/fan-in-fan-out)
 
 ### March 2020
@@ -321,7 +321,6 @@ toc: true
 
 ### February 2020
 
-- Beta Support for Helm 3 - [documentation]({{site.baseurl}}/docs/new-helm/helm3/)
 - Use GitHub Actions as Codefresh pipeline steps - [documentation]({{site.baseurl}}/docs/integrations/github-actions/)
 - Publish a JAR to Artifactory/Nexus - [documentation]({{site.baseurl}}/docs/learn-by-example/java/publish-jar/)
 - New [dashboard](https://g.codefresh.io/builds) for builds - [documentation]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/)
@@ -412,7 +411,7 @@ toc: true
 - Added `CI=true` environment variable - [documentation]({{site.baseurl}}/docs/pipelines/variables/#system-provided-variables)
 - Buildkit support - [documentation]({{site.baseurl}}/docs/pipelines/steps/build/#buildkit-support)
 - Security scanning - [documentation]({{site.baseurl}}/docs/testing/security-scanning/)
-- Root pipeline anchors - [documentation]({{site.baseurl}}/docs/pipelines/what-is-the-pipelines/#using-yaml-anchors-to-avoid-repetition)
+- Root pipeline anchors - [documentation]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#using-yaml-anchors-to-avoid-repetition)
 - Building Android Apps - [documentation]({{site.baseurl}}/docs/learn-by-example/mobile/android/)
 - Deployment to Nomad clusters - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/nomad/)
 - Editing of annotations - [documentation]({{site.baseurl}}/docs/pipelines/annotations/#viewingediting-annotations)
@@ -459,9 +458,9 @@ toc: true
 ### January 2019
 
 - Manual approval step - [documentation]({{site.baseurl}}/docs/pipelines/steps/approval/)
-- Shared configuration - [documentation]({{site.baseurl}}/docs/pipelines/shared-configuration/)
+- Shared configuration - [documentation]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/)
 - Running pipelines locally - [documentation]({{site.baseurl}}/docs/pipelines/running-pipelines-locally/)
-- Installation options (Enterprise) - [documentation]({{site.baseurl}}/docs/enterprise/installation-security)
+- Installation options (Enterprise) - [documentation]({{site.baseurl}}/docs/installation/installation-options/)
 - Custom volumes for freestyle steps - [documentation]({{site.baseurl}}/docs/pipelines/steps/freestyle/#custom-volumes)
 - Helm Environment Promotion boards (Enterprise) - [documentation]({{site.baseurl}}/docs/new-helm/helm-environment-promotion)
 - Pipeline resource metrics - [documentation]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#viewing-pipeline-metrics)
@@ -472,18 +471,18 @@ toc: true
 
 - Restart pipeline from failed steps - [documentation]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#restarting-the-pipeline)
 - New variable for labels of a pull request - [documentation]({{site.baseurl}}/docs/pipelines/variables/#system-provided-variables)
-- YAML validation without the GUI - [documentation]({{site.baseurl}}/docs/pipelines/what-is-the-pipelines/#yaml-validation)
+- YAML validation without the GUI - [documentation]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#yaml-validation)
 - Run builds from external forks - [documentation]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/#support-for-building-pull-requests-from-forks)
 - Google Marketplace Integration - [documentation]({{site.baseurl}}/docs/integrations/google-marketplace/)
 - Added OneLogin SSO support - [documentation]({{site.baseurl}}/docs/enterprise/single-sign-on/sso-onelogin/)
-- Multiple test reports from a single pipeline - [documentation]({{site.baseurl}}/docs/pipelines/test-reports/#creating-multiple-reports)
+- Multiple test reports from a single pipeline - [documentation]({{site.baseurl}}/docs/testing/test-reports/#creating-multiple-reports)
 - Historical data in Allure test reports are now available
 - Inline YAML editor can now expand/collapse code blocks - [documentation]({{site.baseurl}}/docs/pipelines/pipelines/#writing-codefresh-yml-in-the-gui)
 
 ### November 2018
 
-- Integrated test reports - [documentation]({{site.baseurl}}/docs/pipelines/test-reports/)
-- Retry individual pipeline steps - [documentation]({{site.baseurl}}/docs/pipelines/what-is-the-pipelines/#retrying-a-step)
+- Integrated test reports - [documentation]({{site.baseurl}}/docs/testing/test-reports/)
+- Retry individual pipeline steps - [documentation]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#retrying-a-step)
 - Trigger integration with Azure Events - [documentation]({{site.baseurl}}/docs/pipelines/triggers/azure-triggers/)
 
 ### October 2018
@@ -492,7 +491,7 @@ toc: true
 - New integration for Azure Helm repositories - [documentation]({{site.baseurl}}/docs/new-helm/add-helm-repository/#private-repository---azure)
 - Trigger integration with Quay Events - [documentation]({{site.baseurl}}/docs/pipelines/triggers/quay-triggers/)
 - Trigger integration with Artifactory Events - [documentation]({{site.baseurl}}/docs/pipelines/triggers/jfrog-triggers/)
-- Public build logs for open source projects - [documentation]({{site.baseurl}}/docs/pipelines/build-status/#public-build-logs)
+- Public build logs for open source projects - [documentation]({{site.baseurl}}/docs/pipelines/configuration/build-status/#public-build-logs)
 
 ### September 2018
 
@@ -506,7 +505,7 @@ toc: true
 
 - Native Integration with Azure Kubernetes Service - [documentation]({{site.baseurl}}/docs/integrations/kubernetes/#adding-an-aks-cluster)
 - Ability to configure SSO both in the customer and the account level (Enterprise)
-- Azure SSO integration (Enterprise) - [documentation]({{site.baseurl}}/docs/docs/single-sign-on/oidc/oidc-azure/)
+- Azure SSO integration (Enterprise) - [documentation]({{site.baseurl}}/docs/single-sign-on/oidc/oidc-azure/)
 - OKTA SSO integration (Enterprise)
 - Added Azure and Google as login/sign-up options
 - You can now invite a collaborator who had signed up with a different GIT provider than yours

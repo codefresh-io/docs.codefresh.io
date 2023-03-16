@@ -5,6 +5,8 @@ group: integrations
 redirect_from:
  - /docs/deploy-to-kubernetes/add-kubernetes-cluster/
  - /docs/deploy-to-kubernetes/deployment-options-to-kubernetes/
+ - /v1.0/docs/adding-non-gke-kubernetes-cluster/
+ - /v1.0/docs/codefresh-kubernetes-integration-beta/
 toc: true
 ---
 
@@ -79,7 +81,7 @@ cluster name that you wish to use.
 {% include image.html
 lightbox="true"
 file="/images/integrations/kubernetes/add-cluster/select-aks-cluster.png"
-url="/images//integrations/kubernetes/add-cluster/select-aks-cluster.png"
+url="/images/integrations/kubernetes/add-cluster/select-aks-cluster.png"
 alt="Selecting the Azure cluster"
 caption="Selecting the Azure cluster"
 max-width="60%"
@@ -409,13 +411,13 @@ rules:
   - apiGroups: [ "*"]
     resources: ["*"]
     verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
-—--
+---
 apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: codefresh-user
   namespace: kube-system
-—--
+--- 
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
@@ -428,7 +430,7 @@ subjects:
 - kind: ServiceAccount
   name: codefresh-user
   namespace: kube-system
-—--
+---
 apiVersion: v1
 kind: Secret
 type: kubernetes.io/service-account-token
@@ -437,7 +439,6 @@ metadata:
   namespace: kube-system
   annotations:
     kubernetes.io/service-account.name: "codefresh-user"
-    
 {% endraw %}
 {% endhighlight %}
 
@@ -451,7 +452,7 @@ kubectl config use-context <my-cluster-name>
 {% endraw %}
 {% endhighlight %}
 
-{start="2"}
+{:start="2"}
 1. Create the Codefresh user/role:  
 `Apply Codefresh access rules`
 {% highlight shell %}
@@ -460,7 +461,7 @@ kubectl apply -f codefresh-role-sa-bind.yml
 {% endraw %}
 {% endhighlight %}
 
-{start="2"}
+{:start="3"}
 1. Finally run the following commands, and copy-paste the results to the respective Codefresh field in the UI:  
 `Host IP`
 {% highlight shell %}
@@ -589,7 +590,7 @@ In case you're using an external reverse proxy to manage inbound traffic to your
 Ideally your Kubernetes cluster will have a single certificate which is used directly on the API endpoint. Some organizations
 place clusters behind a load balancer or other proxy mechanism that uses a chain or certificates.
 
-When that happens and you have more than one [CA](https://en.wikipedia.org/wiki/Certificate_authority){:target="\_blank"} in your certification chain, you need to provide Codefresh with a [Certificate bundle](https://en.wikipedia.org/wiki/Chain_of_trust){:target="\_blank"} (a file that containers the intermediate CAs as well).
+When that happens and you have more than one [CA](https://en.wikipedia.org/wiki/Certificate_authority){:target="\_blank"} in your certification chain, you need to provide Codefresh with a [Certificate bundle](https://en.wikipedia.org/wiki/Chain_of_trust){:target="\_blank"} (a file that contains the intermediate CAs as well).
 
 You will know when this is the case as this error will appear when you try to connect your cluster:
 

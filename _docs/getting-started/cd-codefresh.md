@@ -10,16 +10,6 @@ Codefresh is a Continuous Integration/Delivery (CI/CD) solution. This article re
 For a review of CI concepts, see [Codefresh for CI]({{site.baseurl}}/docs/getting-started/ci-codefresh/).
 
 
-<!--Focus on
-
-Connecting K8s cluster
-Deploying K8s
-Running kubectl
-Connecting to Helm registries
-Building Helm charts
-Pushing Helm charts
-Deploying Helm charts
-Dashboards -->
 
 
 ## Connecting to Kubernetes 
@@ -74,7 +64,7 @@ The Helm step can operate in one of three modes covering most scenarios:
 **Deploy Helm charts**  
 Deploy the Helm chart to a Kubernetes cluster, Helm repo, or both.  
 
-See [Using Helm in Codefresh pipelines]({{site.baseurl}}/docs/deployments/helm//using-helm-in-codefresh-pipeline/), [Using managed Helm repos]({{site.baseurl}}/docs/deployments/helm//managed-helm-repository/), and Helm [charts and repositories]({{site.baseurl}}/docs/deployments/helm/helm-charts-and-repositories/).
+See [Using Helm in Codefresh pipelines]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/), [Using managed Helm repos]({{site.baseurl}}/docs/deployments/helm/managed-helm-repository/), and Helm [charts and repositories]({{site.baseurl}}/docs/deployments/helm/helm-charts-and-repositories/).
 
 ## Dashboards
 Dashboards are key to providing the right information at the right time. Codefresh makes it easy to both access and visualize critical information for any resource, at any stage and level, and for anyone, from managers to DevOps engineers. 

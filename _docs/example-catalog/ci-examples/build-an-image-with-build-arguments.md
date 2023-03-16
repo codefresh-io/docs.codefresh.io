@@ -13,7 +13,7 @@ Building a Docker image that requires build arguments is very easy with Codefres
 
 The source code of the repository is at [https://github.com/codefreshdemo/cf-example-build-arguments](https://github.com/codefreshdemo/cf-example-build-arguments){:target="\_blank"}. Feel free to fork it if you want to follow along.
 
-If you don't have a Codefresh account already, you can easily create a free one from the [sign-up page]({{site.baseurl}}/docs/administration/account-user-management/create-a-codefresh-account/).
+If you don't have a Codefresh account already, you can easily create a free one from the [sign-up page]({{site.baseurl}}/docs/administration/account-user-management/create-codefresh-account/).
 
 ## Using Docker build arguments
 

@@ -14,7 +14,7 @@ Codefresh integrates with Jira in several ways:
 
 
 ## Prerequisites
-* [Codefresh Account]({{site.baseurl}}/docs/administration/account-user-management/create-a-codefresh-account/)
+* [Codefresh Account]({{site.baseurl}}/docs/administration/account-user-management/create-codefresh-account/)
 * [Jira Account](https://www.atlassian.com/software/jira){:target="\_blank"}
 
 ## Use Jira in your Codefresh pipeline

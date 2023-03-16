@@ -48,8 +48,8 @@ When the image tag is updated, the auto-sync initiates the rollout.
     {% include 
    image.html 
    lightbox="true" 
-   file="/images/getting-started/quick-start/cdops-app-rollout-in-dashboard.png" 
-   url="/images/getting-started/quick-start/cdops-app-rollout-in-dashboard.png" 
+   file="/images/quick-start/cdops-app-rollout-in-dashboard.png" 
+   url="/images/quick-start/cdops-app-rollout-in-dashboard.png" 
    alt="Application dashboard with rollout in progress" 
    caption="Application dashboard with rollout in progress"
    max-width="60%" 
@@ -61,8 +61,8 @@ When the image tag is updated, the auto-sync initiates the rollout.
     {% include 
    image.html 
    lightbox="true" 
-   file="/images/getting-started/quick-start/cdops-app-rollout-panel.png" 
-   url="/images/getting-started/quick-start/cdops-app-rollout-panel.png" 
+   file="/images/quick-start/cdops-app-rollout-panel.png" 
+   url="/images/quick-start/cdops-app-rollout-panel.png" 
    alt="Rollout analysis in progress" 
    caption="Rollout analysis in progress"
    max-width="60%" 

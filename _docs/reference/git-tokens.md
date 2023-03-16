@@ -10,7 +10,7 @@ toc: true
 
 
 Codefresh requires two types of Git tokens for authentication:
-* Git runtime token for runtime installation
+* Git runtime token for runtime installation<br>
   Used by:
   * Argo CD clone repositories and pull changes to sync the desired state in Git to the live state on the cluster. 
   * Argo Events to create webhooks in Git repositories for Event Sources in Delivery Pipelines
@@ -36,9 +36,15 @@ The Git runtime token is mandatory for runtime installation.
 {:/}
 
 #### GitHub and GitHub Enterprise runtime token scopes
+GitHub and GitHub Enterprise offer classic tokens, and fine-grained tokens (currently in Beta in GitHub).
 
-* `repo`
-* `admin:repo_hook`
+
+{: .table .table-bordered .table-hover}
+| Classic runtime token scopes         | | Fine-grained runtime token scopes            |  
+| --------------         | |--------------           |  
+| {::nomarkdown}<ul><li><code class="highlighter-rouge">repo</code></li><li><code class="highlighter-rouge">admin:repo_hook</code></li></ul>{:/}| | {::nomarkdown}<ul><li><b>Repository access</b>: <code class="highlighter-rouge">All repositories</code> or <code class="highlighter-rouge">Only select repositories</code></li><li><b>Repository permissions</b>: <ul><li><b>Administration</b>: <code class="highlighter-rouge">Read and write</code></li><li><b>Contents</b>: <code class="highlighter-rouge">Read and write</code></li><li><b>Metadata</b>: <code class="highlighter-rouge">Read-only</code></li></li><li><b>Webhook</b>: <code class="highlighter-rouge">Read and write</code></li></ul></ul>{:/}|
+
+
 
 {::nomarkdown}
 </br>
@@ -75,17 +81,16 @@ The Git personal token is a user-specific personal access token per provisioned 
 {:/}
 
 #### GitHub and GitHub Enterprise personal user token scopes
-* `repo`
 
-<!---{% include 
-   image.html 
-   lightbox="true" 
-   file="/images/getting-started/github-pat.png" 
-   url="/images/getting-started/github-pat.png" 
-   alt="Permissions for Git personal token" 
-   caption="Permissions for Git personal token"
-   max-width="60%" 
-   %}-->
+GitHub and GitHub Enterprise offer classic tokens, and fine-grained tokens (currently in Beta in GitHub).
+
+{: .table .table-bordered .table-hover}
+| Classic user token scopes         | | Fine-grained user token scopes            |  
+| --------------         | |--------------           |  
+| {::nomarkdown}<ul><li><code class="highlighter-rouge">repo</code></li></ul>{:/}| | {::nomarkdown}<ul><li><b>Repository access</b>: <code class="highlighter-rouge">All repositories</code> or <code class="highlighter-rouge">Only select repositories</code></li><li><b>Repository permissions</b>: <ul><li><b>Contents</b>: <code class="highlighter-rouge">Read and write</code></li><li><b>Metadata</b>: <code class="highlighter-rouge">Read-only</code></li></li></ul></ul>{:/}|
+
+
+
 {::nomarkdown}
 </br>
 {:/}

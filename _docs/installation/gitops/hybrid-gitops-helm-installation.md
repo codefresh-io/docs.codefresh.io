@@ -45,6 +45,7 @@ kubectl annotate --overwrite crds $(kubectl get crd | grep argoproj.io | awk '{p
 ```
 
 
+
 ## Prerequisites
 
 * [Minimum requirements]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/#minimum-system-requirements) for installation
@@ -89,11 +90,12 @@ The ingress class is the ingress class of the ingress controller, for example, `
 1. Copy and run the command to install the runtime Helm chart:  
   The commands differ depending on the access mode. An ingress-based runtime requires additional flags.<br>
   **Tunnel-based install chart command:**<br>
+ gitops-helm-install
     `helm upgrade --install <helm-release-name> --create-namespace --namespace <namespace> --set global.codefresh.accountId=<codefresh-account-id> --set global.codefresh.userToken.token=<codefresh-api-key> --set global.runtime.name=<runtime-name> <helm-repo-name>/gitops-runtime --devel --wait`  
 
     **Ingress-based install chart command:**<br>
       `helm upgrade --install <helm-release-name> --create-namespace --namespace <namespace> --set global.codefresh.accountId=<codefresh-account-id> --set global.codefresh.userToken.token=<codefresh-api-key> --set global.runtime.name=<runtime-name> <helm-repo-name>/gitops-runtime  --set global.runtime.ingress.enabled=true --set "global.runtime.ingress.hosts[0]"=<ingress-host> --set global.runtime.ingress.className=<ingress-class> --devel --wait`  
-     
+
     >Unless otherwise indicated, values are automatically populated by Codefresh. 
     
     where:  
@@ -106,11 +108,12 @@ The ingress class is the ingress class of the ingress controller, for example, `
     * `global.runtime.ingress.enabled=true` is mandatory for _ingress-based runtimes_, and indicates that the runtime is ingress-based.
     * `<ingress-host>` is mandatory for _ingress-based runtimes_, and is the IP address or host name of the ingress controller component. 
     * `<ingress-class>` is mandatory for _ingress-based runtimes_, and is the ingress class of the ingress controller. For example, `nginx` for the NGINX ingress controller.
+
     * `--wait` waits until all the pods are up and running for the deployment.
 1. Define your Git provider and register the Git integration:  
   `cf integration git add default --runtime <runtime-name> --api-url <api-url> --provider <provider>`  
-  `cf integration git register default --runtime <RUNTIME-NAME> --token <RUNTIME-AUTHENTICATION-TOKEN>`  
-
+  `cf integration git register default --runtime <RUNTIME-NAME> --token <RUNTIME-AUTHENTICATION-TOKEN>`   
+  `cf integration git add default --runtime <runtime-name> --api-url <api-url> --provider <provider>`  
   where:  
       * `<runtime-name>` is the name of the runtime, either `codefresh`, or the custom name you defined. 
       * `<api-url>` is the URL of the Git provider, and can be one of the following:
@@ -151,7 +154,6 @@ The ingress class is the ingress class of the ingress controller, for example, `
   * [ALB AWS: Alias DNS record in route53 to load balancer]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/#create-an-alias-to-load-balancer-in-route53)
   * [Istio: Configure cluster routing service]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/#cluster-routing-service)
   * [NGINX Enterprise ingress controller: Patch certificate secret]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/#patch-certificate-secret)  
-
 
 
 ## Related articles

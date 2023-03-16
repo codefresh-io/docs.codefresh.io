@@ -109,7 +109,6 @@ max-width="80%"
 
 ## Related articles
 
-<!--why do we need this? this is for admins; also SSO[Add users]({{site.baseurl}}/docs/administration/invite-your-team-member/)  -->
-[Single Sign on]({{site.baseurl}}/docs/single-sign-on/)  
+[Single Sign on]({{site.baseurl}}/docs/single-sign-on/single-sign-on/)  
 
 
