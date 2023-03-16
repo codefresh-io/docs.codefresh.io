@@ -13,11 +13,27 @@ Install the Hybrid Runtime for GitOps through a Helm chart.
   Ingress-based access modes require an ingress controller to be configured before the installation, and additional flags such as the ingress host and class to be supplied as part of the install command. 
 
 * Shared configuration repository  
-  The Alpha version assumes that you already have a shared configuration repository for your account.
+  The Alpha version assumes that you already have a [shared configuration repository]({{site.baseurl}}/docs/reference/shared-configuration/) for your account.
   If this is not the case, contact support to help you set one up.
 
-* Argo Project CRDs
-  The installation requires a namespace without Argo Project CRDs. If you already have CRDs in the installation namespace, you can either remove them manually, or have Codefresh manage them by running the script before installation:
+* Argo project CRDs  
+  The installation requires a cluster without Argo project CRDs.
+  You can handle Argo project CRDs outside the chart, or as recommended, adopt the CRDs to be managed by the GitOps runtime Helm release.
+  For details, see [Argo project CRDs](#argo-project-crds).
+  
+  
+## Argo project CRDs
+If you already have Argo project CRDs on your cluster, do one of the following:
+* Handle Argo projects CRDs outside of the chart (see [Argo's readme on Helm charts](https://github.com/argoproj/argo-helm/blob/main/README.md){:target="\_blank"})  
+  Disable CRD installation under the relevant section for each of the Argo projects in the Helm chart:<br>
+  `--set <argo-project>.crds.install=false`<br>
+  where:<br>
+  `<argo-project>` is the argo project component: `argo-cd`, `argo-workflows`, `argo-rollouts` and `argo-events`.
+
+* Adopt the CRDs<br>
+  Adopting the CRDs allows them to be managed by the `gitops-runtime helm release`. Doing so ensures that a runtime upgrade also automatically upgrades the CRDs.
+
+  Run this script _before_ installation:
 
 ```
 #!/bin/sh
@@ -36,8 +52,8 @@ kubectl annotate --overwrite crds $(kubectl get crd | grep argoproj.io | awk '{p
     * [Runtime token with the required scopes]({{site.baseurl}}/docs/reference/git-tokens/#git-runtime-token-scopes). You will need it after installation to update runtime credentials
     * [Personal Access Token (PAT)]({{site.baseurl}}/docs/reference/git-tokens/#git-personal-tokens) for Git-based actions
     * Server URLs for on-premises Git providers
-* Verify there are Argo CRDs in the target namespace
-* (Optional, for ingress-based runtimes only) configuration for ingress controllers:
+* Verify there are no Argo project CRDs in the target namespace or that you have adopted the CRDs (see [Argo project CRDs](#argo-project-crds))
+* For ingress-based runtimes only, verify that these ingress controllers are configured correctly:
   * [Ambasador ingress configuration]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/#ambassador-ingress-configuration)
   * [AWS ALB ingress configuration]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/#alb-aws-ingress-configuration)
   * [Istio ingress configuration]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/#istio-ingress-configuration)
