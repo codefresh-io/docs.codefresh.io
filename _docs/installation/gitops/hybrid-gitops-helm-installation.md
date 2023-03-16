@@ -83,8 +83,8 @@ The ingress class is the ingress class of the ingress controller, for example, `
    > The Namespace must be identical to the Runtime Name. The default names are `codefresh` for both.
 1. Copy and run the command to the add the repository for the Helm chart:  
    `helm repo add <helm-repo-name> https://chartmuseum.codefresh.io/gitops-runtime` <br>
-   `helm repo update`
-   where:  
+   `helm repo update`<br>
+   where: <br> 
    `<helm-repo-name>` is the name of the repository to which to add the runtime Helm chart. For example, `cf-gitops-runtime`.
 1. Copy and run the command to install the runtime Helm chart:  
   The commands differ depending on the access mode. An ingress-based runtime requires additional flags.<br>
@@ -138,7 +138,7 @@ The ingress class is the ingress class of the ingress controller, for example, `
   max-width="80%" 
 %}
 
-{:start="11"}
+{:start="10"}
 1. Paste the token you created and click **Update Credentials**. 
 1. Now add your personal access token, or if your admin has set up OAuth2, authorize access.
     * Click your avatar, select [**Git Personal Access Token**](https://g.codefresh.io/2.0/git-personal-access-token){:target="\_blank"}.
@@ -146,7 +146,7 @@ The ingress class is the ingress class of the ingress controller, for example, `
 1. If you don't have the shared configuration repository for GitOps runtimes, contact support. 
   > For the Alpha, we assume that you already have a shared configuration repository for your account.
 1. Optional. [Create a Git Source]({{site.baseurl}}/docs/installation/gitops/git-sources/#create-a-git-source) for the runtime.
-1. Required for ALB AWS, Istio, or NGINX Enterprise ingress-controllers only.<br>
+1. Required only for ALB AWS, Istio, or NGINX Enterprise ingress-controllers.<br>
    Complete the configuration for these ingress controllers:
   * [ALB AWS: Alias DNS record in route53 to load balancer]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/#create-an-alias-to-load-balancer-in-route53)
   * [Istio: Configure cluster routing service]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/#cluster-routing-service)
