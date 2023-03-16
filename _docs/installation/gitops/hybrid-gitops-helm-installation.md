@@ -89,6 +89,7 @@ The ingress class is the ingress class of the ingress controller, for example, `
    `<helm-repo-name>` is the name of the repository to which to add the runtime Helm chart. For example, `cf-gitops-runtime`.
 1. Copy and run the command to install the runtime Helm chart:  
   The commands differ depending on the access mode. An ingress-based runtime requires additional flags.<br>
+  
   **Tunnel-based install chart command:**<br>
  gitops-helm-install
     `helm upgrade --install <helm-release-name> --create-namespace --namespace <namespace> --set global.codefresh.accountId=<codefresh-account-id> --set global.codefresh.userToken.token=<codefresh-api-key> --set global.runtime.name=<runtime-name> <helm-repo-name>/gitops-runtime --devel --wait`  
@@ -113,7 +114,6 @@ The ingress class is the ingress class of the ingress controller, for example, `
 1. Define your Git provider and register the Git integration:  
   `cf integration git add default --runtime <runtime-name> --api-url <api-url> --provider <provider>`  
   `cf integration git register default --runtime <RUNTIME-NAME> --token <RUNTIME-AUTHENTICATION-TOKEN>`   
-  `cf integration git add default --runtime <runtime-name> --api-url <api-url> --provider <provider>`  
   where:  
       * `<runtime-name>` is the name of the runtime, either `codefresh`, or the custom name you defined. 
       * `<api-url>` is the URL of the Git provider, and can be one of the following:
