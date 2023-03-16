@@ -65,10 +65,14 @@ layout: home
     <div class="row">
       {% for homeContent in site.data.home-content %}
       <div class="col-12 col-md-3 p-4 p-md-4 followup-card-item border border-white">
-        <img src="{{ homeContent.icon }}" alt="{{ homeContent.title }}" class="mb-1" />
-        <h4 {% unless homeContent.new== nil or homeContent.new== false %} class="bulb bulb-red bulb-above-left bulb-pos-after" data-bulb-text="NEW" {% endunless %}>
-          {{ homeContent.title }}
-        </h4>
+        <div class="d-flex align-items-center mb-3">
+          <img src="{{ homeContent.icon }}" alt="{{ homeContent.title }}" class="mr-2"/>
+          <h4 {% unless homeContent.new== nil or homeContent.new== false %}
+              class="bulb bulb-red bulb-above-left bulb-pos-after mb-0" data-bulb-text="NEW" {% endunless %} class="mb-0">
+            {{ homeContent.title }}
+          </h4>
+        </div>
+
         <ul class="list-unstyled">
           {% for homeContentLink in homeContent.links %}
           {% if homeContentLink.localurl %}

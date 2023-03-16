@@ -130,7 +130,7 @@ Here's what you need to do to configure SSO via SAML in Codefresh:
 > Codefresh has an internal cache for SSO configuration, and it can take up to five minutes for your changes to take effect.
 
 ## Related articles
-[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/single-sign-on)  
+[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/single-sign-on/single-sign-on/)  
 [Setting up OIDC Federated SSO]({{site.baseurl}}/docs/single-sign-on/oidc)
 
 

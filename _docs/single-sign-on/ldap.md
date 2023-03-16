@@ -66,6 +66,6 @@ Synchronize teams in Codefresh with LDAP using the Codefresh CLI.
 
 
 ## Related articles
-[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/single-sign-on)  
+[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/single-sign-on/single-sign-on/)  
 [Setting up OIDC Federated SSO]({{site.baseurl}}/docs/single-sign-on/oidc)   
 [Setting up SAML2 Federated SSO]({{site.baseurl}}/docs/single-sign-on/saml)  

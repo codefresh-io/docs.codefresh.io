@@ -25,6 +25,7 @@ You can use the API in various ways:
 * From another HTTP-enabled tool such as Jenkins. For example, you can trigger [Codefresh pipelines from Jenkins jobs]({{site.baseurl}}/docs/integrations/jenkins-integration/#calling-codefresh-pipelines-from-jenkins-jobs).
 * Through the [Codefresh command line interface](https://codefresh-io.github.io/cli/){:target="\_blank"} which itself uses the API.
 * Calling it programmatically from any other system. You can use your favorite programming language to make HTTP calls to Codefresh.
+* Via the [Terraform provider](https://registry.terraform.io/providers/codefresh-io/codefresh/latest)
 
 
 The Codefresh API is updated when new features are added in the Codefresh platform so you can expect any new functionality

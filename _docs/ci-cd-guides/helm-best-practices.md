@@ -315,7 +315,7 @@ Then you view and manage releases from the [Helm environments dashboard]({{site.
 image.html 
 lightbox="true" 
 file="/images/guides/helm-best-practices/board.png" 
-url="//images/guides/helm-best-practices/board.png"
+url="/images/guides/helm-best-practices/board.png"
 alt="Helm Environment Dashboard" 
 caption="Helm Environment Dashboard" 
 max-width="80%"

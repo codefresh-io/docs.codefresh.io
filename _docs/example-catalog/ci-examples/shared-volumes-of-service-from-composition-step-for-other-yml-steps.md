@@ -43,4 +43,4 @@ The way the volume is shared between builds is that upon build completion we cre
 
 
 ## Related articles
-[CI pipeline examples]({{site.baseurl}}/docs/example-catalog/#ci-examples)  
+[CI pipeline examples]({{site.baseurl}}/docs/example-catalog/ci-examples/)  

@@ -42,7 +42,7 @@ If you then visit Nexus you should see your JAR file in the snapshots repository
 
 ## Create a CI pipeline for publishing a JAR file
 
-[Create a new pipeline]({{site.baseurl}}/docs/pipelines/pipelines/) in Codefresh and define as parameters your Nexus credentials. You could also use [shared configuration]({{site.baseurl}}/docs/pipelines/shared-configuration/) or any other credential mechanism you already use in your other pipelines.
+[Create a new pipeline]({{site.baseurl}}/docs/pipelines/pipelines/) in Codefresh and define as parameters your Nexus credentials. You could also use [shared configuration]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/) or any other credential mechanism you already use in your other pipelines.
 
 {% include image.html 
 lightbox="true" 
@@ -105,7 +105,7 @@ You can use the same pipeline for Artifactory or any other compliant Java packag
 
 ## Related articles
 [Gradle example]({{site.baseurl}}/docs/example-catalog/ci-examples/gradle/)  
-[Spring boot example]({{site.baseurl}}/docs//example-catalog/ci-examples/spring-boot-2/)  
+[Spring boot example]({{site.baseurl}}/docs/example-catalog/ci-examples/spring-boot-2/)  
 [Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  

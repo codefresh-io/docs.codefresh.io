@@ -107,4 +107,4 @@ by clicking the same switch.
 ## Related articles
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
 [Running pipelines locally]({{site.baseurl}}/docs/pipelines/running-pipelines-locally/)  
-[Trigger a Kubernetes deployment from a Docker Hub push event]({{site.baseurl}}/docs//example-catalog/cd-examples/trigger-a-k8s-deployment-from-docker-registry/)
+[Trigger a Kubernetes deployment from a Docker Hub push event]({{site.baseurl}}/docs/example-catalog/cd-examples/trigger-a-k8s-deployment-from-docker-registry/)
