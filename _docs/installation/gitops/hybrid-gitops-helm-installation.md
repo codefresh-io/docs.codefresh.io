@@ -113,7 +113,7 @@ The ingress class is the ingress class of the ingress controller, for example, `
 
 1. Define your Git provider and register the Git integration:  
   `cf integration git add default --runtime <runtime-name> --api-url <api-url> --provider <provider>`  
-  `cf integration git register default --runtime <runtime-name> --token <runtime-authentication-token>`   
+  `cf integration git register default --runtime <runtime-name> --token <git-runtime-token>`   
   where:  
       * `<runtime-name>` is the name of the runtime, either `codefresh`, or the custom name you defined. 
       * `<api-url>` is the URL of the Git provider, and can be one of the following:
@@ -128,6 +128,7 @@ The ingress class is the ingress class of the ingress controller, for example, `
           * GitLab Cloud and GitLab Server: `gitlab`
           * Bitbucket Cloud: `bitbucket`
           * Bitbucket Server: `bitbucket-server`  
+      * <git-runtime-token> is the token you generated with the required scopes for runtime. 
 1. When the installation is complete, go to the **List View**, and select the new runtime.
 1. From the context menu on the right, select **Update Git Runtime Credentials**.  
 
