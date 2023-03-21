@@ -548,8 +548,13 @@ steps:
 {% endraw %}      
 {% endhighlight %}
 
-Note: we do recommend you only use this option as a last resort. You should not hardcode "localhost" as a requirement in your services as
-it adds extra constraints with integration tests (and especially with dynamic test environments).
+>NOTE:  
+  We recommend that you only use this option as a last resort. Hard coding "localhost" as a requirement in your services adds extra constraints to integration tests, especially in dynamic test environments.
+
+
+> WARNING:  
+  If `shared_host_network: true`, services will no longer be available by name.<br><br>
+  This means that within the same service group, you cannot mix access by `name` and `localhost`. Instead, you need to choose a single mode of access, and use `shared_host_network` attribute accordingly.
 
 
 ## Limitations 
