@@ -9,14 +9,13 @@ redirect_from:
   - /docs/codefresh-yaml/steps/build/  
 toc: true
 ---
-Use Docker to build an image and store it in Codefresh.
+Use Docker to build an image and store it in Codefresh or push it to an external registry.  Create multi-platform images with BuildX and QEMU (Quick EMUlator).  
+In Codefresh, Docker containers are first-class citizens, and we offer special typed steps for the most frequently used Docker commands through our `build` step. 
 
 
 ## Purpose of build steps
+Build steps are a secure replacement for `docker build` commands.  
 
-In Codefresh, Docker containers are first-class citizens,
-and we offer special typed steps for the most frequently used Docker commands. Build steps are a secure replacement for `docker build` commands.
-Our `build` step supports mult-platform images.
 
 Therefore, this command on your local workstation:
 
@@ -105,8 +104,8 @@ step_name:
 | `retry`   | Define retry behavior for the build step, as described in [Retrying a step]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#retrying-a-step).  | Optional                  |
 | `buildkit`  | When set to `true`, enables [Buildkit](#buildkit-support) and all of its enhancements. When using `buildkit` with `cache_from`, to allow the built image to be used as cache for future images, you must  specify `BUILDKIT_INLINE_CACHE=1` in the build_arguments. See [more info](https://docs.docker.com/engine/reference/commandline/buildx_build/#cache-to){:target="\_blank"}| Optional   | 
 | `platform`  | The target platform or platforms to which to push the image, in `<platform/arch>` format. For example, `linux/amd64`. <br>NOTE: To use this property, you must set `buildx` to `true`. <br>To target multiple platforms, separate them with commas, as in `linux/amd64,linux/arm64`.| Optional   | 
-| `buildx`  | Supports multi-platform images with the default or a custom configuration. By default, disabled, set to `false`. <br>To enable with default configuration, set to `true`. You do not have to add any other parameters.<br>To enable with custom configuration, set to `object`. With custom configuration, you can use `qemu`(Quick EMUlator) or `builder`. <br><br>IMPORTANT: Both `buildx` and `disable_push` cannot be enabled at the same time. | Optional   | 
-|    |{::nomarkdown}<ul><li><code class="highlighter-rouge">qemu</code><ul><li><code class="highlighter-rouge">image</code>: The Docker image with the statically compiled QEMU binaries to use. If not specified, <code class="highlighter-rouge">tonistiigi/binfmt:latest</code> is used.</li><li><code class="highlighter-rouge">platforms</code>: The platforms to which to install the image. All <a href="https://github.com/docker-library/official-images#architectures-other-than-amd64" target="_blank">Docker-supported platforms</a> are supported. </br>When not specified, the image is installed on <code class="highlighter-rouge">all</code> platforms.</li></ul>{:/}| Default| 
+| `buildx`  | Supports multi-platform images with the default or a custom configuration. By default, disabled and set to `false`. <br>- To enable with default configuration, set to `true`. You do not have to add any other parameters.<br>- To enable with custom configuration, set to `object`. With custom configuration, you can use `qemu` (Quick EMUlator) or `builder`. <br><br>IMPORTANT: Both `buildx` and `disable_push` cannot be enabled at the same time. | Optional   | 
+|    |{::nomarkdown}<ul><li><code class="highlighter-rouge">qemu</code><ul><li><code class="highlighter-rouge">image</code>: The Docker image with the statically compiled QEMU binaries to use. If not specified, uses <code class="highlighter-rouge">tonistiigi/binfmt:latest</code>.</li><li><code class="highlighter-rouge">platforms</code>: The platforms to which to install the image. All <a href="https://github.com/docker-library/official-images#architectures-other-than-amd64" target="_blank">Docker-supported platforms</a> are supported. </br>If not specified, installs the image on <code class="highlighter-rouge">all</code> platforms.</li></ul>{:/}| Default| 
 |       |{::nomarkdown}<ul><li><code class="highlighter-rouge">builder</code>: <ul><li><code class="highlighter-rouge">driver</code>The builder driver to use for the image. If not specified, <code class="highlighter-rouge">docker-container</code> is used.</li><li><code class="highlighter-rouge">driver-opts</code>: The driver-specific configuration settings to customize the build process. For example, <code class="highlighter-rouge">image=moby/buildkit:master</code> for <code class="highlighter-rouge">docker-container</code>.</li></ul></ul>{:/}|Default |
 
 ### Exported resources
