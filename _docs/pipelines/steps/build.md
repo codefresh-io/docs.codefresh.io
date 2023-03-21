@@ -16,6 +16,7 @@ Use Docker to build an image and store it in Codefresh.
 
 In Codefresh, Docker containers are first-class citizens,
 and we offer special typed steps for the most frequently used Docker commands. Build steps are a secure replacement for `docker build` commands.
+Our `build` step supports mult-platform images.
 
 Therefore, this command on your local workstation:
 
@@ -45,6 +46,8 @@ step_name:
   dockerfile: path/to/Dockerfile
   image_name: owner/new-image-name
   tag: develop
+  platform: 'linux/arm64'
+    buildx: true
   build_arguments:
     - key=value
   cache_from:
@@ -88,8 +91,8 @@ step_name:
 | `tags`      | Multiple tags to assign to the built image. {::nomarkdown} <br>To assign a single tag, use <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">tag</span> (see above). <br> This is an array, and should conform to the following syntax: <br><span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">tags:<br>- tag1<br>- tag2<br>- {% raw %}${{CF_BRANCH_TAG_NORMALIZED}}{% endraw %}<br>- tag4</span><br><br>OR<br><span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">tags: [ 'tag1', 'tag2', '{% raw %}${{CF_BRANCH_TAG_NORMALIZED}}'{% endraw %}, 'tag4' ]</span>{:/} |Optional|
 | `cache_from`   | The list of cache sources to use as Docker cache when building the image.  Every source in the list is passed to the build command using the `--cache-from` flag. See [Docker documentation](https://docs.docker.com/engine/reference/commandline/buildx_build/#cache-from){:target="\_blank"} for more info.                     | Optional                   |
 | `registry`   | The name of the registry to which to push the built image. You can define any registry that is integrated with Codefresh. <br>When not defined, and you have multiple registry contexts, Codefresh uses the one set as the [default registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/).                     | Optional                   |
-| `registry_contexts`   | Advanced property for resolving Docker images when [working with multiple registries with the same domain]({{site.baseurl}}/docs/ci-cd-guides/working-with-docker-registries/#working-with-multiple-registries-with-the-same-domain). When defined, pulls the image from the specified context. If there are multiple contexts,               | Optional                  |
-|`disable_push`   | Defines if to automatically push the built image to the registry or not. When set to `false`, the default, the image is automatically pushed to the registry.  <br>NOTE: When `buildx` is enabled, this property must always be set to `false`.                                   | Optional                   | 
+| `registry_contexts`   | Advanced property for resolving Docker images when [working with multiple registries with the same domain]({{site.baseurl}}/docs/ci-cd-guides/working-with-docker-registries/#working-with-multiple-registries-with-the-same-domain). When defined, pulls the image from the specified context. <br> NOTE: When using `buildx`, because Docker does not support being logged in to multiple Docker registries that share the same domain at the same time, the `registry_contexts` property cannot have the different registry from the same domain.  | Optional                  |
+|`disable_push`   | Defines if to automatically push the built image to the registry or not. When set to `false`, the default, the image is automatically pushed to the registry.  <br>NOTE: When `buildx` is enabled, this property must always be set to `false`. This is because of the [Docker limitation on loading multi-platform images](https://github.com/docker/buildx/issues/59){:target="\_blank"} to the local Docker instance.                                  | Optional                   | 
 |`tag_policy`     | The case-transformation policy for the tag name. `original`pushes the tag name as is, without changing it. `lowercase`, the default, automatically converts the tag name to lowercase. Tags in mixed case is pushed as `image_name:<tagname>` when set to the default value.    | Default                   | 
 | `no_cache`      | Defines if to enable or disable Docker engine cache for the build.  When set to `false`, the default, enables Docker engine cache. To disable, set to `true`. See [more info]({{site.baseurl}}/docs/troubleshooting/common-issues/disabling-codefresh-caching-mechanisms/).        | Optional                  |
 | `no_cf_cache`   | Defines if to enable or disable Codefresh build optimization for the build. When set to `false`, the default, enables Codefresh build optimization. See [more info]({{site.baseurl}}/docs/troubleshooting/common-issues/disabling-codefresh-caching-mechanisms/). |                                                                          |
@@ -102,11 +105,13 @@ step_name:
 | `retry`   | Define retry behavior for the build step, as described in [Retrying a step]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#retrying-a-step).  | Optional                  |
 | `buildkit`  | When set to `true`, enables [Buildkit](#buildkit-support) and all of its enhancements. When using `buildkit` with `cache_from`, to allow the built image to be used as cache for future images, you must  specify `BUILDKIT_INLINE_CACHE=1` in the build_arguments. See [more info](https://docs.docker.com/engine/reference/commandline/buildx_build/#cache-to){:target="\_blank"}| Optional   | 
 | `platform`  | The target platform or platforms to which to push the image, in `<platform/arch>` format. For example, `linux/amd64`. <br>NOTE: To use this property, you must set `buildx` to `true`. <br>To target multiple platforms, separate them with commas, as in `linux/amd64,linux/arm64`.| Optional   | 
-| `buildx`  | Supports multi-platform images with the default or custom configuration. By default, disabled, set to `false`. <br>To enable with default configuration, set to  `true`. You do not have to add any other parameters.<br>To enable with custom configuration, set to `object`.  supports building multi-platform images with custom configuration, for example, QEMU (Quick EMUlator).<br>IMPORTANT: When enabled, `disable-push` must always be set to `false`. | Optional   | 
+| `buildx`  | Supports multi-platform images with the default or a custom configuration. By default, disabled, set to `false`. <br>To enable with default configuration, set to `true`. You do not have to add any other parameters.<br>To enable with custom configuration, set to `object`. With custom configuration, you can use `qemu`(Quick EMUlator) or `builder`. <br><br>IMPORTANT: Both `buildx` and `disable_push` cannot be enabled at the same time. | Optional   | 
+|    |{::nomarkdown}<ul><li><code class="highlighter-rouge">qemu</code><ul><li><code class="highlighter-rouge">image</code>: The Docker image with the statically compiled QEMU binaries to use. If not specified, <code class="highlighter-rouge">tonistiigi/binfmt:latest</code> is used.</li><li><code class="highlighter-rouge">platforms</code>: The platforms to which to install the image. All <a href="https://github.com/docker-library/official-images#architectures-other-than-amd64" target="_blank">Docker-supported platforms</a> are supported. </br>When not specified, the image is installed on <code class="highlighter-rouge">all</code> platforms.</li></ul>{:/}| Default| 
+|       |{::nomarkdown}<ul><li><code class="highlighter-rouge">builder</code>: <ul><li><code class="highlighter-rouge">driver</code>The builder driver to use for the image. If not specified, <code class="highlighter-rouge">docker-container</code> is used.</li><li><code class="highlighter-rouge">driver-opts</code>: The driver-specific configuration settings to customize the build process. For example, <code class="highlighter-rouge">image=moby/buildkit:master</code> for <code class="highlighter-rouge">docker-container</code>.</li></ul></ul>{:/}|Default |
 
-**Exported resources:**
-- Working Directory
-- Image ID
+### Exported resources
+- [Working Directory]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#working-directories)
+- Image ID, which you can use to [annotate images]({{site.baseurl}}/docs/pipelines/docker-image-metadata/)
 
 ## Build image step examples
 
@@ -221,23 +226,19 @@ steps:
 {% endraw %}         
 {% endhighlight %}
 
-### Multi-platform images with `platform` and `buildx` 
-Docker images support multiple platforms and architectures, meaning that you can create an image once, and reuse it on multiple platforms and architectures.  
-When an image is multi-platform, Docker automatically selects one that matches the target OS and architecture. 
+### Multi-platform images with `platfrom` and `buildx` 
+Docker images support multiple platforms and architectures, meaning that you can create an image once, and reuse the same image on different platforms and architectures.  
+Docker automatically selects the image that matches the target OS and architecture.  
+
 For more on the architectures supported, see the [Docker Official images readme](https://github.com/docker-library/official-images#architectures-other-than-amd64){:target="\_blank"}. For more on multi-platform images in Docker, see the official [documentation](https://docs.docker.com/build/building/multi-platform/){:target="\_blank"}.  
 
-
-The `platform` and `buildx` arguments. 
-
-Because Docker does not support loading multi-platform images to the local Docker instance, images built with `buildx` are automatically pushed to the remote registry.  
-
-
-`buildx` is enabled, disable_push property cannot be set to true due to Docker’s limitation (not Codefresh limitation) of not allowing to load  (it seams like there is no official note about that limitation in Docker’s docs but this is the source I relied on which is an issue in the official Docker github repo). This means that in order to use the built image, it must be pushed to a remote registry using the --push flag which is what we do implicitly behind the scenes (the user doesn’t need to pass --push flag). So essentially, each image built with buildx enabled will be pushed automatically to the specified remote registry.
-due to the last limitation that forces us to push the image to a remote registry during the process of building the image, it means that we must login to the target registry in the build step. Therefore, it is not possible to pass a different registry from the same domain as the target registry in the registry_contexts property because of another Docker limitation (not Codefresh limitation) of not allowing to be logged in to multiple registries at the same time if they share the same domain (we actually explain that last Docker login limitation pretty well in our docs)
+QEMU with BuildX is useful for:  
+* Multi-architecture builds: Build applications for multiple architectures at the same time, useful for building container images that need to support multiple architectures.
+* Cross-platform testing: Test applications on different platforms, such as ARM, AMD, without having to own the physical hardware to save time and resources.
+* Container image testing: Test container images for compatibility with different architectures and platforms, to ensure that the container image works when deployed to different environments.
 
 
-
-#### Single platform with BuildX
+#### Single platform with `buildx`
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -255,7 +256,7 @@ steps:
 {% endraw %}         
 {% endhighlight %}
 
-#### Multiple platforms with BuildX
+#### Multiple platforms with `buildx`
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -273,7 +274,7 @@ steps:
 {% endraw %}         
 {% endhighlight %}
 
-#### Multiple platforms with custom BuildX
+#### Multiple platforms with custom `buildx`
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -336,7 +337,7 @@ Use this technique only as a last resort. It is better if the Dockerfile exists 
 
 ## Automatic pushing
 
-All images built successfully with the build step are by default automatically pushed to the default Docker registry defined for your account. This behavior is completely automatic and happens without any extra configuration on your part. To disable this, add the `disable_push` property set to `true` to your build step.
+All images built successfully with the build step are automatically pushed to the default Docker registry defined for your account. This behavior is completely automatic and happens without any extra configuration on your part. To disable this, add the `disable_push` property set to `true` to your build step. Remember that if you are using `buildx`, you cannot set the `disable_push` property to `true`. 
 
 >The [push step]({{site.baseurl}}/docs/pipelines/steps/push/) in Codefresh is optional, and is only needed if you want to push to [external Docker registries]({{site.baseurl}}/docs/integrations/docker-registries/). 
 
