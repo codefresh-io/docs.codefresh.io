@@ -96,7 +96,7 @@ Without terminating the runtime install, do the following:
   * Free up memory with `docker system prune -a --volumes`.
   * Increase the resources allocated to your cluster.
 
-## Unable to communicate with <runtime>/two or more runtimes
+## Unable to communicate with `<runtime-name`> or two or more runtimes
 
 
 ### Possible cause
