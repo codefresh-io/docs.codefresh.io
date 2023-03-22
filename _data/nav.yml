@@ -666,8 +666,9 @@
           url: "/paging-issues-builds-images"
     - title: Deprecating personal Git integrations
       url: "/personal-git-deprecation"
-    - title: GitOPs runtimes
+    - title: GitOps runtimes
       url: "/runtime-issues"
+
 
 
 - title: Terms and Privacy Policy
