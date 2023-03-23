@@ -46,7 +46,7 @@ Here you can define global template behavior. The options are:
 Note that templates are simply pipelines “marked” as templates. There is no technical difference between templates and actual pipelines.
 
 ## Auto-create projects for teams
-Enabled by default, auto-create projects for teams, automatically creates projects whenever you create teams in your account. 
+Enabled by default, auto-create projects for teams, automatically creates projects whenever you create teams in your account. It also creates access-control rules for the same team to projects and pipeline, simplifying setup and saving time.
 
   {% include image.html
 lightbox="true"
@@ -59,7 +59,7 @@ max-width="60%"
 
 ### What does auto-create project do?
 When you create a team, the auto-create project option:
-* Creates a _project_ with the same name as the team, and a tag also identical to the team name
+* Creates a _project_ with the same name as the team, and tags it with the team name
   
   {% include image.html
 lightbox="true"
@@ -70,7 +70,7 @@ caption="Auto-created project with same name and tag as the team"
 max-width="60%"
 %}
 
-* Creates a _Project rule_ with Read access to this project and projects tagged with the team name
+* Creates a _Project rule_ for the team with Read access to this project, and other projects tagged with the team name
 
 {% include image.html
 lightbox="true"
@@ -81,7 +81,7 @@ caption="Auto-created rule for Project entity"
 max-width="60%"
 %}
 
-* Creates a _Pipeline rule_ with all privileges, excluding Debug, for the newly created team.
+* Creates a _Pipeline rule_ for the team, with all privileges, excluding Debug
 
 {% include image.html
 lightbox="true"
@@ -95,11 +95,12 @@ max-width="60%"
 > Once created, projects are not synchronized with the team it was created for. Modifying or deleting the team has no impact on the project and its tags.
 
 **What are the benefits?**  
-Simplifies setup for projects, pipelines, and permissions:
+As you can see, this option simplifies access-control setup and strengthens it:
 
-Use the Project rule automatically created for the team to grant access to additional projects simply by assigning the same tag to the required projects.
+* Use the Project rule automatically created for the team to grant access to additional projects simply by assigning the same tag to the other projects.
+* Avoids the need to create rules per pipeline for the same project. The Pipeline rule automatically created for the team, automatically grants the same permissions to all pipelines in the same project. New pipelines in the project automatically inherit these permissions.
+* Easily grant the same permissions to other teams for the same pipelines by creating Pipeline rules for the teams with the same project tags.
 
-Avoids the need to create rules per pipeline for the same project. The Pipeline rule automatically created for the team, automatically grants the same permissions to all pipelines in the same project. New pipelines in the project automatically inherit these permissions.
 
 
 
