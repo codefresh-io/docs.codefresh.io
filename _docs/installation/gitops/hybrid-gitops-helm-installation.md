@@ -128,7 +128,7 @@ The ingress class is the ingress class of the ingress controller, for example, `
           * GitLab Cloud and GitLab Server: `gitlab`
           * Bitbucket Cloud: `bitbucket`
           * Bitbucket Server: `bitbucket-server`  
-      * <git-personal-access-token> is the token you generated with the required scopes. 
+      * `<git-personal-access-token>` is the token you generated with the required scopes. 
 1. When the installation is complete, go to the **List View**, and select the new runtime.
 1. From the context menu on the right, select **Update Git Runtime Credentials**.  
 
@@ -144,11 +144,6 @@ The ingress class is the ingress class of the ingress controller, for example, `
 
 {:start="10"}
 1. Paste the Git runtime token you created, and click **Update Credentials**. 
-<!---1. Now add your personal access token, or if your admin has set up OAuth2, authorize access.
-1. Paste the token you created and click **Update Credentials**. 
-1. Now add your personal access token, or if your admin has set up OAuth2, authorize access.
-    * Click your avatar, select [**Git Personal Access Token**](https://g.codefresh.io/2.0/git-personal-access-token){:target="\_blank"}.
-    * Proceed as needed. For details, see [Authorize Git access in Codefresh]({{site.baseurl}}/docs/administration/user-self-management/manage-pats/#authorize-git-access-in-codefresh).  -->
 1. If you don't have the shared configuration repository for GitOps runtimes, contact support. 
   > For the Alpha, we assume that you already have a shared configuration repository for your account.
 1. Optional. [Create a Git Source]({{site.baseurl}}/docs/installation/gitops/git-sources/#create-a-git-source) for the runtime.
