@@ -52,12 +52,17 @@ Once you add a user to your Codefresh account, you can do the following to manag
 
 
 ## Teams in Codefresh
-Teams are users who share the same permissions, roles, or requirements defined according to company processes. Teams allow you to enforce access control through ABAC (Attribute Based Access Control).  
+Teams are users who share the same permissions, roles, or requirements defined according to company processes. Teams allow you to enforce access control through ABAC (Attribute Based Access Control).
+
 By default, there are two teams:
 * Users
 * Admins with users [invited as collaborators](#assign-a-user-to-a-team)  
 
 > Only Enterprise customers can add new teams. Other Codefresh plans can only use the predefined *Users* and *Admin* teams. [Contact us](https://codefresh.io/contact-us/){:target="\_blank"} to upgrade to an Enterprise plan.
+
+### Automatically creating projects for teams
+
+As part of the global pipeline settings for an account, when **auto-create projects for teams** is enabled, which is the default, then creating a team automatically creates a project and a project tag with the same name as that of the team. This setting simplifies permissions setup for pipelines and projects. See [Auto-create projects for teams]({{site.baseurl}}/docs/pipelines/configuration/pipeline-settings/#auto-create-projects-for-teams).
 
 ### Create a team in Codefresh
 

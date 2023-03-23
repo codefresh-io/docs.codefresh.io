@@ -9,17 +9,10 @@ toc: true
 ---
 
 
-You can define global parameters for all the pipelines in the account. Users can still override some of these options for individual pipelines.
+You can define global settings for all the pipelines in the account. Users can still override some settings for individual pipelines.
 
-{% include image.html
-lightbox="true"
-file="/images/pipeline/pipeline-settings/pipeline-settings-ui.png"
-url="/images/pipeline/pipeline-settings/pipeline-settings-ui.png"
-alt="Pipeline settings"
-caption="Pipeline settings"
-max-width="80%"
-%}
 
+## Access pipeline settings
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
 1. From Configuration in the sidebar, select [**Pipeline Settings**](https://g.codefresh.io/account-admin/account-conf/pipeline-settings){:target="\_blank"}. 
 
@@ -40,8 +33,76 @@ file="/images/pipeline/pipeline-settings/pause-pipeline-enabled.png"
 url="/images/pipeline/pipeline-settings/pause-pipeline-enabled.png"
 alt="Pause Build Execution pipeline setting enabled"
 caption="Pause Build Execution pipeline setting enabled"
-max-width="80%"
+max-width="60%"
 %}
+
+## New pipeline as templates
+
+Here you can define global template behavior. The options are:
+
+* Enable [pipeline templates]({{site.baseurl}}/docs/pipelines/pipelines/#using-pipeline-templates) for users. If this is enabled some pipelines can be marked as templates and users can still select them when creating a new pipeline. 
+* Decide if users can clone an existing pipeline (along with its triggers and associated parameters) when [creating a new pipeline]({{site.baseurl}}/docs/pipelines/pipelines/#creating-a-pipeline).
+
+Note that templates are simply pipelines “marked” as templates. There is no technical difference between templates and actual pipelines.
+
+## Auto-create projects for teams
+Enabled by default, auto-create projects for teams, automatically creates projects whenever you create teams in your account. 
+
+  {% include image.html
+lightbox="true"
+file="/images/pipeline/pipeline-settings/auto-create-projects-setting.png"
+url="/images/pipeline/pipeline-settings/auto-create-projects-setting.png"
+alt="Auto-create projects for teams"
+caption="Auto-create projects for teams"
+max-width="60%"
+%}
+
+### What does auto-create project do?
+When you create a team, the auto-create project option:
+* Creates a _project_ with the same name as the team, and a tag also identical to the team name
+  
+  {% include image.html
+lightbox="true"
+file="/images/pipeline/pipeline-settings/auto-create-project-results.png"
+url="/images/pipeline/pipeline-settings/auto-create-project-results.png"
+alt="Auto-created project with same name and tag as the team"
+caption="Auto-created project with same name and tag as the team"
+max-width="60%"
+%}
+
+* Creates a _Project rule_ with Read access to this project and projects tagged with the team name
+
+{% include image.html
+lightbox="true"
+file="/images/pipeline/pipeline-settings/auto-create-project-rule.png"
+url="/images/pipeline/pipeline-settings/auto-create-project-rule.png"
+alt="Auto-created rule for Project entity"
+caption="Auto-created rule for Project entity"
+max-width="60%"
+%}
+
+* Creates a _Pipeline rule_ with all privileges, excluding Debug, for the newly created team.
+
+{% include image.html
+lightbox="true"
+file="/images/pipeline/pipeline-settings/auto-create-project-pipeline-rule.png"
+url="/images/pipeline/pipeline-settings/auto-create-project-pipeline-rule.png"
+alt="Auto-created rule for Pipeline entity"
+caption="Auto-created rule for Pipeline entity"
+max-width="60%"
+%}
+
+> Once created, projects are not synchronized with the team it was created for. Modifying or deleting the team has no impact on the project and its tags.
+
+**What are the benefits?**  
+Simplifies setup for projects, pipelines, and permissions:
+
+Use the Project rule automatically created for the team to grant access to additional projects simply by assigning the same tag to the required projects.
+
+Avoids the need to create rules per pipeline for the same project. The Pipeline rule automatically created for the team, automatically grants the same permissions to all pipelines in the same project. New pipelines in the project automatically inherit these permissions.
+
+
+
 
 ## Enabling cluster-contexts for pipelines
 By default, all pipelines in the account can access all clusters integrated with Codefresh. Restrict pipeline access to clusters by enabling cluster-injection for individual pipelines in the account.
@@ -67,14 +128,7 @@ max-width="60%"
 You can then select specific clusters for individual pipelines, through the **Kubernetes cluster** option in the [Pipeline's Policies section]({{site.baseurl}}/docs/pipelines/pipelines/#policies).
 
 
-## Template section
 
-Here you can define global template behavior. The options are:
-
-* Enable [pipeline templates]({{site.baseurl}}/docs/pipelines/pipelines/#using-pipeline-templates) for users. If this is enabled some pipelines can be marked as templates and users can still select them when creating a new pipeline. 
-* Decide if users can clone an existing pipeline (along with its triggers and associated parameters) when [creating a new pipeline]({{site.baseurl}}/docs/pipelines/pipelines/#creating-a-pipeline).
-
-Note that templates are simply normal pipelines “marked” as a template. There is no technical difference between templates and actual pipelines.
 
 ## Pipeline YAML section
 
@@ -122,7 +176,7 @@ Here you can set the defaults for advanced pipeline behavior. The options are:
 
 Note that the first option affects pipeline resources and/or billing in the case of SaaS pricing. It will also affect users of existing pipelines that depend on this behavior. It is best to enable/disable this option only once at the beginning.
 
-## Default Behavior for Build Step
+## Default behavior for build step
 
 Here you can decide if the build step will push images or not according to your organization’s needs. The options are:
 
