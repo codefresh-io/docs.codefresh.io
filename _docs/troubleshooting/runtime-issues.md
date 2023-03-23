@@ -96,22 +96,22 @@ Without terminating the runtime install, do the following:
   * Free up memory with `docker system prune -a --volumes`.
   * Increase the resources allocated to your cluster.
 
-## Unable to communicate with `<runtime-name`> or two or more runtimes
+## Unable to communicate with `<runtime-name>` or two or more runtimes
 
 
 ### Possible cause
 This error points to an issue with your browser or with your runtime configuration, and can be due to any of the following:
 
 >TIP:  
-Verify that you have a stable internet connection which is not offline.
+Verify that your internet connection is stable.
 
 
-1. [Browser issues](#browser-issues)
+1. [Browser issues](#browser-issues)  
    Can occur because of Cross-Origin Request blocked errors. 
-1. [Missing SSL certificate](#missing-ssl-certificate)
-   Can occur if you installed an ingress-based runtime, without an SSL certificate for the ingress controller.
-1. [Insecure protocol prefix](#insecure-protocol-prefix)
-   Can occur if you are using HTTP instead of HTTPS for `g.codefresh.io`.
+1. [Missing SSL certificate](#missing-ssl-certificate)  
+   Can occur if your runtime is ingress-based, without an SSL certificate for the ingress controller.
+1. [Insecure protocol prefix](#insecure-protocol-prefix)  
+   Can occur if your runtime is ingress-based, and using HTTP for the `ingress-host` value instead of HTTPS.
 
 
 
@@ -122,21 +122,22 @@ Follow the steps for the actions listed below in the order in which they are lis
 <br>
 
 #### Browser issues
-Try to identify the issue that is preventing communication by accessing your browser's Developer Tools and viewing the Console or Network tabs.
-Read [MDN web docs](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors){:target="\_blank"} for help on identifying the specific error and the corrective action to take for it. 
+Try to identify the issue that is preventing communication by accessing your browser's Developer Tools and viewing the Console or Network tabs.  
+
+For help on identifying the specific error and the corrective action to take for it, read [MDN web docs](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors){:target="\_blank"}. 
 
 <br>
 
 #### Missing SSL certificate 
 
-Install the SSL certificate from a Certifcate Authority.<br><br>
+Install the SSL certificate from a Certificate Authority.<br><br>
 OR
 <br><br>
 Configure the browser to trust the runtime's URL and receive content:
 
 1. If you are not in the **GitOps Runtimes** page, from the toolbar, click the **Settings** icon. 
 1. From Configuration in the sidebar, select **GitOps Runtimes**.
-1. Based on your browser, do as required:
+1. Select the runtime, and based on your browser, do as required:
   * Chrome: Click **Advanced** and then **Proceed to site**.
   * Firefox: Click **Advanced** and then **Accept the risk and continue**.
   * Safari: Click **Show Certificate**, and then select **Always allow content from site**.
@@ -146,28 +147,43 @@ Configure the browser to trust the runtime's URL and receive content:
 
 #### Insecure protocol prefix
 
-To continue using HTTP instead of HTTPS, configure your browser to always allow access `g.codefresh.io`.  
+To continue using the HTTP protocol for your `ingress-host` instead of HTTPS, configure your browser to allow _mixed content_ for `g.codefresh.io`.  
 The exact steps differ based on your browser.
 
 >**WARNING**:  
- HTTP connections are unencrypted and not secure, and data can be intercepted.  
+ HTTP connections are unencrypted and less secure.  
  Be aware that you are using this at your own risk.
 
 
 
 **Chrome**
 1. To the left of the URL, click the Lock icon, and then select **Site settings**.
-1. On the right scroll down to **Insecure content** and then select **Allow** as the default for `g.codefresh.io`. 
- 
+1. On the right, scroll down to **Insecure content** and then select **Allow** as the default for `g.codefresh.io`. 
+1. Click **Save**.
+1. Reload the page.
+
+<br>
+
 **Firefox**  
-1. Go to Click **Advanced** and then **Accept the risk and continue**.
+1. To the left of the URL, click the Lock icon.
+1. Click the arrow next to **Connection Secure**, and then click **More Information**.
+1. In the Page Info window that appears, click the **Security** tab.
+1. Under Connection, do one of the following:
+  * If available, select **Enable HTTP2**. 
+  * If not available, select **Disable Protection on This Site**, and then click **OK**.
+1. Reload the page.
+
+<br>
 
 **Safari**
 1. Go to **Preferences > Advanced**.
 1. Select **Show Develop menu in menu bar**, and close the Preferences window.
 1. From the menu bar, select **Develop**, and then select **Disable Cross-Origin Restrictions**.
-1. Refresh.
+1. Reload the page.
+<br>
 
 **Edge**
 1. To the left of the URL, click the Lock icon, and then select **Site permissions**.
 1. Scroll down to **Location**, and then select **Allow** as the default for `g.codefresh.io`.
+1. Click **Save**.
+1. Reload the page.
