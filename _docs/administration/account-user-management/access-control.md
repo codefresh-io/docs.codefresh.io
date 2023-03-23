@@ -289,27 +289,57 @@ CRUD privileges define Create/Read/Update/Delete permissions for the entity.  Sp
 | Git contexts          |  Git contexts refer to the permissions to create and manage integrations with Git providers and use them in pipelines. Tags are used to control access to teams and execution contexts. <br><br>**Create**: Add integrations to Git providers.<br>**Update**: View and edit Git provider integrations, including editing the tags assigned to them.<br>**Delete**: Delete Git provider integrations.<br>**Use**:<br>Create triggers in pipelines for Git provider<br>Retrieve YAML definitions from a repository<br>Use a Git integration in pipelines, in the `git-clone` step for example, via Execution Context. | 
 | Shared configs<br>Secrets<br>YAMLs          |  Shared configuration permissions relate to managing: <br>{::nomarkdown}<ul><li>Environment variables, unencrypted (<b>Shared Configuration</b>), and encrypted for sensitive data such as access tokens (<b>Shared Secret</b>).</li><li>Helm values or other generic information, unencrypted (<b>Shared YAML</b>), and encrypted (<b>Shared Secret YAML</b>).</li></ul>{:/}<br>**Create**: Create unencrypted or encrypted Shared Configuration, Shared Secret, Shared YAML, Shared Secret YAML.<br>**Read**: View unencrypted or encrypted Shared Configuration, Shared Secret, Shared YAML, Shared Secret YAML.<br>**Update**: View and edit unencrypted or encrypted Shared Configuration, Shared Secret, Shared YAML, Shared Secret YAML.<br>**Delete**: Delete unencrypted or encrypted Shared Configuration, Shared Secret, Shared YAML, Shared Secret YAML. | 
 
-### Example 1: Create rule to define access for teams by projects
+### Example 1: Create rule to define access to projects by teams
 
 This example illustrates how to create a rule that restricts access to projects, and by extension to the pipelines and builds in the same projects, to specific teams. 
 
+**Scenario**:  
+We have two teams: DevOps and Users.  
+We want:
+* Teams DevOps to have full permissions for projects tagged with `DevOps`
+* Team User to have Read permissions for projects tagged with `shared`
+
+**Step 1: Enable Auto-create projects for teams**:
+This option, available as an account-level pipeline setting, avoids the need to set up a project for the same team.
+It automatically creates the project: 
+* With the same name as the team
+* Adds a tag identical to the team name
+
+1. Go to [Pipeline Settings](https://g.codefresh.io/account-admin/account-conf/pipeline-settings), and make sure that Auto-create projects is enabled.
+
+**Step 2: Create the DevOps and Users teams**:
+Now we'll create the two teams, DevOps and Users. See [Teams in Codefresh]({{site.baseurl}}/docs/administration/account-user-management/add-users/#teams-in-codefresh).
+ 
+1. Go to [Projects](https://g.codefresh.io/projects/).
+  You'll see that we already have a project DevOps, with a tag, also DevOps.  
+
+   {% include image.html
+  lightbox="true"
+  file="/images/administration/access-control/example1-auto-created-project.png"
+  url="/images/administration/access-control/example1-auto-created-project.png"
+  alt="Example: Auto-created project and tag"
+  caption="Example: Auto-created project and tag"
+  max-width="60%"
+  %} 
+1. Add a new tag to 
+**Step 3: Define the rules**  
+Finally, we'll define the rules for DevOps and Users team.
+
+* For team DevOps: 
+    1. Rule 1: Create projects with `frontend`, `backend`, or `shared` tags.
+    1. Rule 2: All other permissions for pipelines in projects with `frontend`, `backend`, or `shared` tags.
 
 
-You do this by assiging tags to the projects, and then creating a rule for each team with the required permissions.  prevents users from viewing projects and builds from other teams. 
-
-This update with the addition of the ability to add permissions on projects allows you to easily create a dedicated space for each team.
-
-### Example 2: Create rule to define access to pipelines based on projects and project tags
+### Example 2: Create rule to define access across teams to pipelines by projects and project tags
 
 This example illustrates how to define rules to enforce access control for pipelines by projects and project tags. We will assign tags to the different projects that house different pipelines. 
 Instead of adding tags to each pipeline, which means that you need to add the same tags every time you create a new pipeline in the project, we will add tags to the projects that house the pipelines. As these tags are inherited by all pipelines assigned to the projects, the CRUD privileges are inherited as well. 
 
 
-
 **Scenario**:  
 We have three teams: DevOps, Marvel, and Users.  
 We want:
-* Teams DevOps and Marvel to be able to create and modify their own pipelines, and view and run all pipelines.  
+* Teams DevOps and Marvel to be able to create and modify their own pipelines, and view and run all pipelines 
 * Team User to view and run only specific pipelines
 
 
@@ -317,10 +347,8 @@ We want:
 The first step is to create the teams, and add the users you want to each team.  
 See [Teams in Codefresh]({{site.baseurl}}/docs/administration/account-user-management/add-users/#teams-in-codefresh).
 
-We'll set up three teams:
-1. DevOps: 
-1. Marvel
-1. Users
+If you have already created the DevOps and Users teams, you'll need to create the Marvel team.
+
 
 **Step 2: Create the projects and assign tags**  
 Now we'll create three projects, with different tags. See [Create project for pipelines]({{site.baseurl}}/docs/quick-start/ci-quick-start/create-ci-pipeline/#create-a-project-for-pipeline).
@@ -368,7 +396,8 @@ We need to define a Create rule each for teams DevOps and Marvel, and then diffe
   max-width="60%"
   %}
 
-* For team Users: View and run for pipelines in projects with `shared` tags.
+* For team Users: 
+   * Rule: View and run for pipelines in projects with `shared` tags.
 
  {% include image.html
   lightbox="true"
@@ -378,10 +407,6 @@ We need to define a Create rule each for teams DevOps and Marvel, and then diffe
   caption="Example: Restricting team permissions for pipelines by project tag"
   max-width="60%"
   %}
-
-
-
-
 
 
 
