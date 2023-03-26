@@ -5,13 +5,16 @@ toc: true
 ---
 
 
-Enterprise view of pipeline performance
+View and analyze pipeline performance, identify bottlenecks, and trends for your CI pipelines in the Pipelines dashboard.
 
-Clear breakdown of duration by 
+While you can monitor individual pipelines from the Builds page, the Pipelines dashboard gives a quick overview of and visibility into cross-project pipeline performance for developers and other stakeholders.
 
-KPIs for trends 
+Apart from the performance metrics such as success rate, duration, number of executions, visibility into the duration of each phase of the workflow build is an added help in identifying bottlenecks.
 
- Analytics are derived by comparing the selected time range to the corresponding reference period. If your time range is the last seven days, the reference period is the seven days that precede the time range.
+
+SCREENSHOT
+
+
 
 ## Filters for pipeline analytics
 Filters narrow the scope of aggregated data, allowing you to focus on the information you want to see. Unless otherwise indicated, all filters support multi-selection.
@@ -19,26 +22,36 @@ Filters narrow the scope of aggregated data, allowing you to focus on the inform
 {: .table .table-bordered .table-hover}
 |  Filter          |  Description|  
 | --------------   | --------------|  
-| **Date Range** | The time frame for which to view data. The date range filter affects the other filters. In addition to the predefined date ranges, you can select a custom date range up to the last six months. |
-| **Project**           | The project to which the pipeline belongs. |                            
+| **Date Range** | The time frame for which to view data. The date range affects the other filters. In addition to the predefined date ranges, you can select a custom date range up to the last six months. |
+| **Project**           | The project or projects to which the pipeline belongs. |                            
 | **Pipeline**           | The pipeline or pipelines to filter by. |                            
-| **Status**           | {::nomarkdown}<ul>li><b>Error</b>: Pipelines with builds that failed due to errors. </li><li><b>Succeeded</b>: Pipelines with builds that completed successfully.</li> <li><b>Terminated</b>: Pipelines with builds terminated by the system according to the policy defined in the pipeline's settings. These can be any or all of these: <ul><li>Recent build from the same branch terminating all previous pipeline builds </li><li>Recent build from the specified branch terminating all previous builds from that branch</li><li>Running build terminating all running builds</li><li>Child builds terminated when the parent build is terminated.</li> </ul></li></ul>For details, see  {:/}|                            
+| **Status**           | {::nomarkdown}<ul>li><b>Error</b>: Pipelines with builds that failed due to errors. </li><li><b>Succeeded</b>: Pipelines with builds that completed successfully.</li> <li><b>Terminated</b>: Pipelines with builds terminated by the system according to the policy defined in the pipeline's settings. These can be any of these: <ul><li>Recent build from the same branch terminating all previous pipeline builds </li><li>Recent build from the specified branch terminating all previous builds from that branch</li><li>Running build terminating all running builds</li><li>Child builds terminated when the parent build is terminated.</li> </ul></li></ul>For details, see  {:/}|                            
 | **Tags**             |The tag or tags assigned to the pipelines. |      
 
 
 
 ## Success rate
-The pipelines that completed execution successfully from the total number of pipelines executed within the selected date range, percentage. 
+The pipelines that completed execution successfully from the total number of pipelines executed within the selected date range, as percentage. 
 
 ## Pipeline duration
-The average/50th-percentile /90th-percentile duration of a pipeline workflow, calculated from the total number of pipelines executed within the selected date range, unless additional filters are applied. The breakdown into phases helps identify causes or bottlenecks for longer than usual durations.  
+The time it takes for a pipeline workflow to complete the build, in mm:ss. It is calculated from the total number of pipelines executed within the selected date range, unless you apply additional filters. 
 
-The reference for comparison is the date range corresponding to the one selected. <br>
+By giving you different perspectives of duration measures, and  present the duration is the average vs. percentile, and the breakdown into phases. 
+
+**Duration as average or percentile**
+The average duration calculation shows the duration across all the pipelines within the selected date range. This is accurate enough if the duration is more or less uniform across all the pipelines. 
+
+For a more contextual interpretation, switch to duration by percentiles. The median and the 90th percentiles give you an accurate baseline benchmark. 
+
+The comparison percentage is derived from the preceding date range corresponding to the one selected. <br>
+
+**Pipeline duration breakdown:**
+Every pipeline workflow can be divided into phases, some of which apply to all pipelines, while others depend on the settings of each pipeline. The initialization phase is common to all pipelines. Other phases such as pending approval to continue execution, and pending execution due to concurrency limits depends on the settings.
 
 >TIP:  
  Each phase is color-coded for easy visualization. To show/hide phases in the chart, click the name of the phase in the legend. 
-  
-**Pipeline duration breakdown:**
+ 
+SCREENSHOT
 
 * **Pending approval**  
   The average duration of pipelines pending manual approval to continue workflow execution.  
@@ -60,38 +73,33 @@ The reference for comparison is the date range corresponding to the one selected
 
 
 ## Pipeline performance metrics
-From at-a-glance views of the success rate and duration, performance metrics provides more insghits drill down into performance by projects, number of executions and duration for the provides insights into trends for pipelines. 
+Performance metrics provide more insights and identify trends for pipelines. 
 
-You have the list view alongside the cloud view for the selected date range and other filters if applied. 
-The list view shows up to five pipelines, headed by the pipeline with the longest duration. 
-The cloud view shows all pipelines with each dot representing a pipeline. Useful to identify outliers in terms of duration and executions. 
+You have the list view alongside the cloud map with pipelines for the selected date range and other filters if applied. 
+* The list view shows up to five pipelines, sorted by the pipeline with the longest duration. 
+* The cloud map shows all the pipelines, charted by number of executions (X-axis) versus duration (Y-axis). Every represents a pipeline. 
+Identify at a glance outliers in terms of executions and duration, and correlate with the list view. 
 
-For example, the a pipeline with more than 174 executions with a more than 2 minute duration can be a cause for concern. Clicking the dot that represents it changes the list view to show that pipeline and others with similar duration and execution metrics. 
-You can then filter by the pipeline to see the duration breakdown and 
+SCREENSHOT
 
+For example, a pipeline with more than 174 executions exceeding 2 minutes in duration can indicate cause for concern. Clicking the dot that represents it changes the list view to show that pipeline and others with similar numbers of executions and duration. 
 
-
-
-
-
+You can then filter by the specific pipeline to view its success rate, overall, and phase-level duration.    
 
  
 
-#### Metrics in global pipeline view
-
-Pipeline metrics (KPIs), are displayed as line charts and in list formats. 
-* Line charts
-  Quick views of KPIs for the selected time frame. To see detailed day-to-day values, select a line chart.
-* List formats
-  Display the average values for the same KPIs, sorted by activity and duration. The different perspectives illustrate both the fluctuations in the KPIs compared to the reference time range, and trending pipelines. The reference time range is the period of time that corresponds to and precedes the selected time range. 
-
- > In the list view, pipelines prefixed with an icon indicates a deleted pipeline.
-
-In addition to the pipeline name, the list view shows the following information.
+The list view shows the following information.
 
 {: .table .table-bordered .table-hover}
 |  Metric               |  Description|  
 | --------------        | --------------|  
+| **Pipeline Name**      | A pipeline name prefixed with this {::nomarkdown}<img src="../../../../images/icons/error.png" display=inline-block">{:/} indicates that it has been deleted. |    
 | **Project Name**      | The project to which the pipeline belongs. |                            
 | **Executions**  | The number of times that pipeline was triggered within the selected date range, with the comparison to the preceding date range in percentage.  |          
-| **Avg/P-50/P-90 duration**        | The length of time for the pipeline to complete execution in mm:ss, with the comparison to the preceding date range in percentage.  The duration is in the context of the average or percentile. |    
+| **Avg/P-50/P-90 duration**        | The length of time for the pipeline to complete execution in mm:ss according to the duration measure selected in the Duration chart. The comparison percentage is to the preceding date range. |    
+
+
+## Related articles
+[Pipeline settings]({{site.baseurl}}/docs/pipelines/pipelines/#pipeline-settings) 
+[Global settings for pipelines]({{site.baseurl}}/docs/pipelines/configuration/pipeline-settings/)  
+[Monitoring pipelines]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/)
