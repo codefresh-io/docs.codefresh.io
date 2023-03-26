@@ -70,7 +70,7 @@ caption="Auto-created project with same name and tag as the team"
 max-width="60%"
 %}
 
-* Creates a _Project rule_ for the team with Read access to this project, and other projects tagged with the team name
+* Creates a _Project rule_ for the team with Read access to this project, and other projects tagged with the same name
 
 {% include image.html
 lightbox="true"
