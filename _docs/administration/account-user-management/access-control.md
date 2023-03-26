@@ -23,7 +23,7 @@ You can then create rules that combine roles, attributes, and CRUD (Create/Read/
   For example, add tags to projects, and then enforce access control for pipelines through project tags, instead of relying on pipeline-level tags. So you can add tags to projects with pipelines that all teams can view and run (Read), but only the platform can Create/Edit/Delete.
 
 * **Git-repository access**
-  Git-repository access is a specialized from of access control that controls the Git repositories from which users can load [pipeline definitions](#enable-disable-access-to-pipeline-yamls-by-source).
+  Git-repository access is a specialized form of access control that controls the Git repositories from which users can load [pipeline definitions](#enable-disable-access-to-pipeline-yamls-by-source).
 
 Let's review the different access mechanisms and then m
   
@@ -69,7 +69,7 @@ The table below lists the functionality available for role-based access.
 
 
 
-## ABAC access control for entities
+## ABAC for entities
 
 ABAC (Attribute-Based Access Control), allows fine-grained access to all entities, Kubernetes clusters, Codefresh pipelines, projects, and additional resources through the use of tags.  
 For more information on ABAC, see [ABAC on Wikipedia](https://en.wikipedia.org/wiki/Attribute-based_access_control){:target="\_blank"}. 
@@ -126,7 +126,16 @@ After integrating Kubernetes clusters/Git providers in Codefresh, you can add on
 Add tags to projects for filtering and defining permissions. 
 
 >TIP:
- If **Auto-create projects for teams** is enabled for your account, then creating the team also creates the project with the same name and tag as the team name.
+ If **Auto-create projects for teams** is enabled in global pipeline settings for your account, then creating the team also creates a project with the same name and tag as the team name.
+
+  {% include image.html
+lightbox="true"
+file="/images/pipeline/pipeline-settings/auto-create-projects-setting.png"
+url="/images/pipeline/pipeline-settings/auto-create-projects-setting.png"
+alt="Auto-create projects for teams"
+caption="Auto-create projects for teams"
+max-width="60%"
+%}
  
 
 1. In the Codefresh UI, on the toolbar, from Pipelines in the sidebar, select [**Projects**](https://g.codefresh.io/projects/){:target="\_blank"}. 
@@ -148,8 +157,8 @@ Add tags to projects for filtering and defining permissions.
 
 Similar to other entities, you can also add tags to Codefresh pipelines. 
 
-1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from Configuration in the sidebar, select [**Shared Configuration**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
-1. Select the row with the shared configuration for which to add tags, and then click the Tags icon on the right.
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from Pipelines in the sidebar, select [**Pipelines**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
+1. Select the row with the pipeline for which to add tags, and then from the context menu on the right, select **Edit Tags**.
 1. When finished, click **Save**.  
 
 
@@ -238,13 +247,16 @@ For each rule, select:
   * For almost all entities, the Create privilege requires a separate rule. 
   * The other privileges can be defined in the same rule.
 1. The tags that control access to the entity/resource
-  * All tags
+  * All tags, including No tags)
   * No tags
   * Explicitly named tags
 
 
+The examples in this section illustrate how to control access to pipelines through project tags:
+* [Example 1: Create rule to define access to projects by teams](#example-1-create-rule-to-define-access-to-projects-by-teams)  
+* [Example 2: Create rule to define access across teams to pipelines by projects and project tags](#example-2-create-rule-to-define-access-across-teams-to-pipelines-by-projects-and-project-tags)
 
-The examples in this section illustrate how to control access to pipelines through project tags.
+### Define rules for entities/resources 
 
 **Before you begin**  
 Make sure you have:
@@ -260,7 +272,7 @@ Make sure you have:
       >You cannot select the **Create** privilege together with the other privileges. The **Create** privilege requires a separate rule.  
        **Any** indicates no privileges are selected.
     1. To assign tags, select one of the following:
-        *  **All tags**: Allows access only to entities with tags, regardless of the actual tag names.
+        *  **All tags**: Allows access only to entities with or without tags, regardless of the actual tag names.
         *  **Without tags**: Allows access only to entities that do not have tags assigned to them.
         * **Named tags**: Allows access only to those entities with the same tag names.
 
