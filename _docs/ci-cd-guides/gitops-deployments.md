@@ -439,7 +439,7 @@ You can see the:
 1. The Kubernetes services added or modified during the deployment
 
 
-<!--- ### Rollouts and rollback  -->
+
 
 
 
