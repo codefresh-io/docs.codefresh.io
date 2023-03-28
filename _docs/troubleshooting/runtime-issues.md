@@ -130,7 +130,7 @@ For help on identifying the specific error and the corrective action to take for
 
 #### Missing SSL certificate 
 
-Install the SSL certificate from a Certificate Authority.<br><br>
+If you need an SSL certifcate, install the root CA certificate to the trusted root certificate store on your machine.<br><br>
 OR
 <br><br>
 Configure the browser to trust the runtime's URL and receive content:
@@ -166,7 +166,7 @@ The exact steps differ based on your browser.
 
 **Firefox**  
 1. To the left of the URL, click the Lock icon.
-1. Click the arrow next to **Connection Secure**, and then click **More Information**.
+1. Expand **Connection Secure**, and then click **More Information**.
 1. In the Page Info window that appears, click the **Security** tab.
 1. Under Connection, do one of the following:
   * If available, select **Enable HTTP2**. 
@@ -180,10 +180,11 @@ The exact steps differ based on your browser.
 1. Select **Show Develop menu in menu bar**, and close the Preferences window.
 1. From the menu bar, select **Develop**, and then select **Disable Cross-Origin Restrictions**.
 1. Reload the page.
+
 <br>
 
 **Edge**
-1. To the left of the URL, click the Lock icon, and then select **Site permissions**.
+1. To the left of the URL, click the Lock icon, and then select **Permissions for this site**.
 1. Scroll down to **Location**, and then select **Allow** as the default for `g.codefresh.io`.
 1. Click **Save**.
 1. Reload the page.
