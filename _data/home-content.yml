@@ -155,6 +155,8 @@
       localurl: /docs/pipelines/steps/      
     - title: Triggers in pipelines
       localurl: /docs/pipelines/triggers/
+    - title: Annotations in pipelines
+      localurl: /docs/pipelines/annotations/
     - title: Monitoring pipelines
       localurl: /docs/pipelines/monitoring-pipelines/
     - title: Advanced workflows for pipelines
