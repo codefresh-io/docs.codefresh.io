@@ -92,6 +92,8 @@
   links:
     - title: GitOps Overview dashboard
       localurl: /docs/dashboards/home-dashboard/
+    - title: Pipeline Analytics dashboard
+      localurl: /docs/dashboards/pipeline-analytics/    
     - title: DORA metrics
       localurl: /docs/dashboards/dora-metrics/
     - title: Images

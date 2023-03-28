@@ -54,6 +54,8 @@
   pages:
     - title: GitOps Overview dashboard
       url: "/home-dashboard"
+    - title: Pipeline Analytics dashboard
+      url: "/pipeline-analytics"
     - title: DORA metrics
       url: "/dora-metrics"
     - title: Images 
