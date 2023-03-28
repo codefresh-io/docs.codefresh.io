@@ -152,7 +152,9 @@
     - title: Creating pipelines
       localurl: /docs/pipelines/pipelines/  
     - title: Steps in pipelines
-      localurl: /docs/pipelines/steps/      
+      localurl: /docs/pipelines/steps/ 
+    - title: Variables in pipelines
+      localurl: /docs/pipelines/variables/         
     - title: Triggers in pipelines
       localurl: /docs/pipelines/triggers/
     - title: Annotations in pipelines
