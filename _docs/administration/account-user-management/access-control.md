@@ -25,7 +25,7 @@ You can then create rules that combine roles, attributes, and CRUD (Create/Read/
 * **Git-repository access**
   Git-repository access is a specialized form of access control that controls the Git repositories from which users can load [pipeline definitions](#enable-disable-access-to-pipeline-yamls-by-source).
 
-Let's review the different access mechanisms and then m
+Let's review the different access mechanisms in more detail, including privileges available for each entity and examples of rule definitions.
   
 ## Role-based access for users and administrators
 
@@ -243,13 +243,13 @@ Define rules using the *who, what, where* pattern to control access to entities 
 
 For each rule, select:
 1. The team the rule applies to 
-1. The CRUD (*Create/delete/read/update*) privileges the team has to the entity/resource 
+1. The CRUD (*Create/Delete/Read/Update*) privileges the team has to the entity/resource 
   * For almost all entities, the Create privilege requires a separate rule. 
   * The other privileges can be defined in the same rule.
 1. The tags that control access to the entity/resource
-  * All tags, including No tags)
+  * All tags, (implicitly includes No tags)
   * No tags
-  * Explicitly named tags
+  * Named tags
 
 
 The examples in this section illustrate how to control access to pipelines through project tags:
@@ -314,25 +314,30 @@ Users without access to a pipeline cannot view or run its builds.
 
 ### Example 1: Create rule to define access to projects by teams
 
-This example illustrates how to create a rule that restricts access to projects, and by extension to the pipelines and builds in the same projects, to specific teams. 
+This example illustrates how to create rules for projects and restrict access by teams. 
 
 **Scenario**:  
-We have two teams: DevOps and Users.  
+We have two projects and we want to restrict access to them based on the tags assigned to the projects.
+ 
 We want:
-* Teams DevOps to have full permissions for projects tagged with `DevOps`
-* Team User to have Read permissions for projects tagged with `shared`
+* All teams to have Read permissions to projects with tag `shared` 
+* DevOps team to have full permissions to projects tagged with `DevOps` 
 
 **Step 1: Enable Auto-create projects for teams**:
 This option, available as an account-level pipeline setting, avoids the need to create a project for the same team.
 It automatically creates the project: 
 * With the same name as the team
 * Adds a tag identical to the team name
+* Creates a project rule and a pipeline rule 
+
+See 
 
 1. Go to [Pipeline Settings](https://g.codefresh.io/account-admin/account-conf/pipeline-settings), and make sure that **Auto-create projects...** is enabled.
 
-**Step 2: Create the DevOps and Users teams**:
-Now we'll create the two teams, DevOps and Users. See [Teams in Codefresh]({{site.baseurl}}/docs/administration/account-user-management/add-users/#teams-in-codefresh).
- 
+**Step 2: Create the DevOps team**:
+Now we'll create the two teams, DevOps and Users. 
+
+1. Create the DevOps team. See [Teams in Codefresh]({{site.baseurl}}/docs/administration/account-user-management/add-users/#teams-in-codefresh).
 1. Go to [Projects](https://g.codefresh.io/projects/).
   You'll see that we already have a project DevOps, with a tag, also DevOps.  
 
@@ -346,13 +351,19 @@ Now we'll create the two teams, DevOps and Users. See [Teams in Codefresh]({{sit
   %} 
 1. Create a new team, Users.
 
-TBD**Step 3: Define the rules**  
-Finally, we'll define the rules for DevOps and Users team.
+**Step 3: Create the projects**
+We will need to create only one project, as the DevOps project has already been created with the `DevOps` tag. 
+* Create a project: `Sandbox` and assign tag `shared`. See [Create project for pipelines]({{site.baseurl}}/docs/quick-start/ci-quick-start/create-ci-pipeline/#create-a-project-for-pipeline).
 
-* For team DevOps: 
-    1. You already have a Project rule that allows them to RRule 1: Create projects with `frontend`, `backend`, or `shared` tags.
-    1. Rule 2: All other permissions for pipelines in projects with `frontend`, `backend`, or `shared` tags.
 
+**Step 4: Define the project rules**  
+Finally, we'll define the rules for the `DevOps` and '`Sandbox` projects.
+
+1. For team DevOps: 
+      1. Modify the existing Project rule with Read access to also allow Delete and Update access to projects with the `DevOps` tag, and `All tags`.
+      1. Rule 2: Create a Project rule with Create access to projects with `All tags`. Note that this tag includes those projects `without tags` as well. 
+1. For team Users:
+      1. Create a Project rule with Read access to all projects with `shared` tags.
 
 ### Example 2: Create rule to define access across teams to pipelines by projects and project tags
 
