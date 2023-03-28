@@ -6,11 +6,11 @@ toc: true
 
 
 View and analyze pipeline performance, identify bottlenecks, and trends for your CI pipelines in the Pipelines dashboard.  
-Developers and other stakeholders can get quick visibility into cross-project pipeline performance.
+The dashboard displays aggregated pipeline data, updated at 30-minute intervals. Developers and other stakeholders can get quick visibility into cross-project pipeline performance.
 
 Two key features help to quickly identify bottlenecks and then optimize pipelines: 
 * Visibility into the duration of each phase of the workflow build, by averages or percentiles
-* Scatter chart of all the pipelines immediately showing up the outliers in terms of duration versus executions
+* Scatter chart of all the pipelines immediately showing up the outliers in terms of duration and executions
 
 
 SCREENSHOT
