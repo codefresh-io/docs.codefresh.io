@@ -5,7 +5,7 @@ group: whats-new
 toc: true
 ---
 
-Welcome to Codefresh Release Notes for February, which is our first edition of release notes including Codefresh pipelines and Codefresh GitOps!
+Welcome to our unified Release Notes, including Codefresh pipelines and Codefresh GitOps!
 
 ## March 2023
 
@@ -23,13 +23,16 @@ We added the **Restart from a failed step** as an option to the pipeline's Polic
  max-width="50%"
 %}
 
-Previously, this option was available for all pipelines in the Builds page. Now, you can make it available according to the requirements of the specific pipeline. When disabled in the pipeline's setting, it is also disabled for that pipeline in the Builds page.
+Previously, this option was available for all pipelines in the Builds page. Now, you can make it available according to the requirements of the specific pipeline. When disabled in the pipeline's settings, it is also disabled for that pipeline in the Builds page.
 
 Why did we make this selective per pipeline?  
 Because restarting from a failed step is not always the answer to the problem, especially as the pipelines restarts with the same state as before. 
 
 If you have a failed Helm promotion step, and you updated the image, you would want the pipeline to use the new image. With the Restart option, the pipeline continues from the same state as at the point of failure, never uses the updated image, and continues to fail.  
 
+For details, see [Policy settings for pipelines]({{site.baseurl}}/docs/pipelines/pipelines/#policies) and [Restarting pipelines]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#restarting-the-pipeline).
+
+<br>
 
 #### CI/CD: Datadog integration enhancements
 We enhanced our integration with Datadog to report additional information from Codefresh pipelines in Datadog. 
@@ -44,12 +47,16 @@ The new information should make it even easier to monitor and analyze Codefresh 
 {% include
  image.html
  lightbox="true"
- file="/images/rel-notes-mar23-classic-gitops-runtime-env.png"
- url="/images/rel-notes-mar23-classic-gitops-runtime-env.png"
- alt="Selecting runtime environment for GitOps pipeline integration"
- caption="Selecting runtime environment for GitOps pipeline integration"
+ file="/images/rel-notes-mar23-datadog.png"
+ url="/images/rel-notes-mar23-datadog.png"
+ alt="Codefresh pipeline parameters in Datadog"
+ caption="Codefresh pipeline parameters in Datadog"
  max-width="50%"
 %}
+
+For details, see [Datadog pipeline integration]({{site.baseurl}}/docs/integrations/datadog/).
+
+<br>
 
 #### CI/CD: Runtime environment for GitOps pipeline integrations
 You can now select a runtime environment different from that used when creating a pipeline integration for GitOps in Codefresh. 
@@ -65,44 +72,38 @@ After creating a GitOps integration, you can edit the integration settings and s
  max-width="50%"
 %}
 
-#### GitOps: Runtime name and namespace decoupled
+
+<br>
 
 #### GitOps: Deep links to applications
 Codefresh supports adding Deep Links to third-party applications/platforms. Deep Links is an Argo CD feature that allows you to configure deep links to any third-party application/platform such as Splunk for example, to quickly redirect users to these applications/platforms. 
 
 When configured, the Current State Tree view displays the linked-to applications in the resource's context menu.
 
- image.html
- lightbox="true"
- file="/images/rel-notes-mar23-classic-gitops-runtime-env.png"
- url="/images/rel-notes-mar23-classic-gitops-runtime-env.png"
- alt="Selecting runtime environment for GitOps pipeline integration"
- caption="Selecting runtime environment for GitOps pipeline integration"
- max-width="50%"
-%}
+SCREENSHOT TBD
 
 
-For details, see 
+For details, see TBD
+
+<br>
+
+#### GitOps: Runtime name and namespace decoupled
+We removed the dependency between the runtime name and namespace for Hybrid GitOps runtimes.
+From CLI version v0.1.41, and runtime version: v0.1.27, you can have different names for runtimes and namespaces. 
+
+<br>
 
 #### GitOps Apps dashboard usability enhancements
 
-* **New icons for health status**
+* **New icons for health status**  
   The color-coded borders around application resources that indicated their health status were not the most intuitive and easy to identify.  
-  We listened to your feedback and replaced them with a set of icons affixed to the resource type.
-  Have a look at our new health status icons:  
-
-  {::nomarkdown}
-  <img src="../../../../images/icons/current-state-healthy.png" display=inline-block"> Healthy <br>
-  <img src="../../../../images/icons/current-state-progressing.png" display=inline-block"> Progressing<br>
-  <img src="../../../../images/icons/current-state-suspended.png" display=inline-block"> Suspended<br>
-  <img src="../../../../images/icons/current-state-missing.png" display=inline-block"> Missing<br>                       
-  <img src="../../../../images/icons/current-state-degraded.png" display=inline-block/> Degraded<br>
-  <img src="../../../../images/icons/current-state-unknown.png" display=inline-block/> Unknown
+  We listened to your feedback, and replaced them with a set of icons affixed to the resource type:<br>
+  {::nomarkdown}<img src="../../../../images/icons/current-state-healthy.png" display=inline-block"> Healthy, <img src="../../../../images/icons/current-state-progressing.png" display=inline-block"> Progressing, <img src="../../../../images/icons/current-state-suspended.png" display=inline-block"> Suspended, <img src="../../../../images/icons/current-state-missing.png" display=inline-block"> Missing, <img src="../../../../images/icons/current-state-degraded.png" display=inline-block/> Degraded, and <img src="../../../../images/icons/current-state-unknown.png" display=inline-block/> Unknown.
   {:/}     
 
 
 * **Filter by K8s labels**  
-  Now you can filter applications by Kubernetes labels.  
+  Also in the GitOps Apps dashboard, you can filter applications by Kubernetes labels.  
 
 {% include
  image.html
@@ -111,9 +112,12 @@ For details, see
  url="/images/rel-notes-mar23-label-filters-apps.png"
  alt="Filter applications by Kubernetes labels"
  caption="Filter applications by Kubernetes labels"
- max-width="50%"
+ max-width="40%"
 %}
 
+See [Monitoring GitOps applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/).  
+
+<br>
 
 ### Bug fixes
 
@@ -179,11 +183,15 @@ Here's an example of the notification you would receive in Slack.
  max-width="50%"
 %}
 
+<br>
 
 #### CI/CD: Multiple Helm contexts for pipelines
 With support for multiple Helm registry contexts in the same pipeline, dependencies in any of the imported Helm registry contexts in the Helm chart are automatically authenticated and added.
 For the Helm `install` and `push` actions, you can select the primary Helm registry context for the command.
 For details, see [Import Helm configurations into your pipeline definition]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/#step-4-optional-import-helm-configurations-into-your-pipeline-definition) and [Action modes]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/#helm-step-action-modes).
+
+
+<br>
 
 #### CI/CD: Multiple cache sources for pipeline builds
 
@@ -212,6 +220,8 @@ steps:
 
 For details, see [`cache_from` in `build` step fields]({{site.baseurl}}/docs/pipelines/steps/build/#fields).
 
+<br>
+
 #### CI/CD: Control thresholds for memory usage warning banner
 Remember the banner that alerted you whenever the memory usage for a pipeline build exceeded 70 or 90%?
 You can now decide the usage threshold at which to display the banner. Increasing the threshold helps avoid premature warnings for pipelines that do not consume a lot of memory, while decreasing it for resource-intensive pipelines helps avoid build failures. 
@@ -232,13 +242,21 @@ As part of the account-level configuration settings for pipelines (**Toolbar Set
 Users can then override the memory-usage threshold for individual pipelines.
 See [Memory usage warning for pipeline builds]({{site.baseurl}}/docs/pipelines/configuration/pipeline-settings/#memory-usage-warning-for-pipeline-builds).
 
+
+<br>
+
 #### CI/CD: New flow for Cloud Builds for pipelines
 Previously, all Codefresh accounts had access to a SaaS runtime environment to run pipelines. However, this is no longer the case. Account administrators can request SaaS runtime environments by clicking **Enable Cloud Builds** in Codefresh. This action triggers an email request to Codefresh, and you should receive a response within 24 hours.
 
 
+<br>
+
 #### GitOps: Upgrade to Argo CD 2.6
 We have upgraded the Argo CD version for our GitOps module to v2.6. 
 For details, see [Argo CD Releases](https://github.com/argoproj/argo-cd/releases){:target="\_build"}.
+
+
+<br>
 
 #### Usability enhancements
 Saves time and ease of use in interactions with Codefresh.  
@@ -277,6 +295,8 @@ See [Application header]({{site.baseurl}}/docs/deployments/gitops/applications-d
 
 
 
+<br>
+
 ### Bug fixes
 
 #### CI/CD
@@ -292,6 +312,8 @@ See [Application header]({{site.baseurl}}/docs/deployments/gitops/applications-d
 - (On-premises only) Liveness probe failures on `cf-api` pods.
 - (On-premises only) Tooltip on hover over build/project names in the Builds page, shows _topbar.title_ instead of the build/project name.
 
+
+<br>
 
 #### GitOps
 - Trying to recover runtime results in "invalid memory address or nil pointer reference" error.
