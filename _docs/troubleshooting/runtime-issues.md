@@ -130,7 +130,7 @@ For help on identifying the specific error and the corrective action to take for
 
 #### Missing SSL certificate 
 
-If you need an SSL certifcate, install the root CA certificate to the trusted root certificate store on your machine.<br><br>
+If you need an SSL certificate, copy and install the root CA certificate to the trusted root certificate store on your machine.<br><br>
 OR
 <br><br>
 Configure the browser to trust the runtime's URL and receive content:
