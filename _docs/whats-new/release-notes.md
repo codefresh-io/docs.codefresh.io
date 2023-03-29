@@ -16,8 +16,8 @@ We added the **Restart from a failed step** as an option to the pipeline's Polic
 {% include
  image.html
  lightbox="true"
- file="/images/rel-notes-mar23-restart-failed.png"
- url="/images/rel-notes-mar23-restart-failed.png"
+ file="/images/whats-new/rel-notes-mar23-restart-failed.png"
+ url="/images/whats-new/rel-notes-mar23-restart-failed.png"
  alt="Restart from failed step option in Pipeline settings"
  caption="Restart from failed step option in Pipeline settings"
  max-width="50%"
@@ -47,14 +47,14 @@ The new information should make it even easier to monitor and analyze Codefresh 
 {% include
  image.html
  lightbox="true"
- file="/images/rel-notes-mar23-datadog.png"
- url="/images/rel-notes-mar23-datadog.png"
+ file="/images/whats-new/rel-notes-mar23-datadog.png"
+ url="/images/whats-new/rel-notes-mar23-datadog.png"
  alt="Codefresh pipeline parameters in Datadog"
  caption="Codefresh pipeline parameters in Datadog"
  max-width="50%"
 %}
 
-For details, see [Datadog pipeline integration]({{site.baseurl}}/docs/integrations/datadog/).
+See [Datadog pipeline integration]({{site.baseurl}}/docs/integrations/datadog/).
 
 <br>
 
@@ -65,8 +65,8 @@ After creating a GitOps integration, you can edit the integration settings and s
 {% include
  image.html
  lightbox="true"
- file="/images/rel-notes-mar23-classic-gitops-runtime-env.png"
- url="/images/rel-notes-mar23-classic-gitops-runtime-env.png"
+ file="/images/whats-new/rel-notes-mar23-classic-gitops-runtime-env.png"
+ url="/images/whats-new/rel-notes-mar23-classic-gitops-runtime-env.png"
  alt="Selecting runtime environment for GitOps pipeline integration"
  caption="Selecting runtime environment for GitOps pipeline integration"
  max-width="50%"
@@ -80,7 +80,15 @@ Codefresh supports adding Deep Links to third-party applications/platforms. Deep
 
 When configured, the Current State Tree view displays the linked-to applications in the resource's context menu.
 
-SCREENSHOT TBD
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-mar23-deep-links.png"
+ url="/images/whats-new/rel-notes-mar23-deep-links.png"
+ alt="Deep Links in application resource's context menu"
+ caption="Deep Links in application resource's context menu"
+ max-width="50%"
+%}
 
 
 For details, see TBD
@@ -108,8 +116,8 @@ From CLI version v0.1.41, and runtime version: v0.1.27, you can have different n
 {% include
  image.html
  lightbox="true"
- file="/images/rel-notes-mar23-label-filters-apps.png"
- url="/images/rel-notes-mar23-label-filters-apps.png"
+ file="/images/whats-new/rel-notes-mar23-label-filters-apps.png"
+ url="/images/whats-new/rel-notes-mar23-label-filters-apps.png"
  alt="Filter applications by Kubernetes labels"
  caption="Filter applications by Kubernetes labels"
  max-width="40%"
