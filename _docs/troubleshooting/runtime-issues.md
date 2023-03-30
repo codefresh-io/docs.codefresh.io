@@ -109,7 +109,7 @@ Verify that your internet connection is stable.
 1. [Browser issues](#browser-issues)  
    Can occur because of Cross-Origin Request blocked errors. 
 1. [Missing SSL certificate](#missing-ssl-certificate)  
-   Can occur if your runtime is ingress-based, without an SSL certificate for the ingress controller.
+   Can occur if your runtime is ingress-based, and without an SSL certificate for the ingress controller.
 1. [Insecure protocol prefix](#insecure-protocol-prefix)  
    Can occur if your runtime is ingress-based, and using HTTP for the `ingress-host` value instead of HTTPS.
 
