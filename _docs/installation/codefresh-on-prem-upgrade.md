@@ -474,8 +474,8 @@ This major release **deprecates** the following Codefresh managed charts and rep
 There is a known issue with releases **1.4.0-1.4.6**, where ABAC feature for git contexts doesn't work as expected and has to be disabled.
 Two options to mitigate the issue is to install patch release **1.4.7** or higher, where the issue is fixed or to apply a manual workaround:  
 To do that, sign in with a platform admin user and proceed to  
-`https://<YOUR_ONPREM_URL>/admin/features-management?filter=search:abacGitContext` page
-On the page enable **System Features** switch (confirm in the pop up window)
+`https://<YOUR_ONPREM_URL>/admin/features-management?filter=search:abacGitContext` page  
+On the page enable **System Features** switch (confirm in the pop up window)  
 After that, **abacGitContext** feature appears on the screen, toggle it's switch **ON** and then back to **OFF** state.
 
 ### Update configuration for Postgresql chart
