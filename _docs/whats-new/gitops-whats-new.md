@@ -5,6 +5,8 @@ group: whats-new
 toc: true
 ---
 
+>From February 2023 we have unified Release Notes for Codefresh Pipelines and Codefresh GitOps. [Check it out]({{site.baseurl}}/docs/whats-new/release-notes/). 
+
 Built on Argo, the world’s most popular and fastest-growing open source software delivery, Codefresh unlocks the full enterprise potential of Argo Workflows, Argo CD, Argo Events, and Argo Rollouts, providing a control-plane for managing them at scale.  
 
 ## January 2023

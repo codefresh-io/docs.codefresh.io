@@ -6,6 +6,9 @@ redirect_from:
   - /docs/whats-new/
 toc: true
 ---
+
+>From February 2023 we have unified Release Notes for Codefresh Pipelines and Codefresh GitOps. [Check it out]({{site.baseurl}}/docs/whats-new/release-notes/). 
+
 ### January 2023
 
 #### Features and enhancements
