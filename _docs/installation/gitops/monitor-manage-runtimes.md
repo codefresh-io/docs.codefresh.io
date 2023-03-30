@@ -27,10 +27,11 @@ View Runtime components and information in List or Topology view formats to mana
 Manage provisioned GitOps Runtimes: 
 * [Add managed clusters to GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster/)
 * [Add and manage Git Sources for GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)
-* [Upgrade GitOps CLI]({{site.baseurl}}/docs/installation/gitops/upgrade-gitops-cli/)
-* Upgrade Hybrid GitOps Runtimes
-* Uninstall GitOps Runtimes
-<!---* [Migrate ingress-less hybrid runtimes](#hybrid-migrate-ingress-less-runtimes)--> 
+* [(Hybrid GitOps) Configure Deep Links to applications/resources](#hybrid-gitops-configure-deep-links-to-applicationsresources)
+* [Reset shared configuration repository for GitOps Runtimes](#reset-shared-configuration-repository-for-gitops-runtimes)
+* [(Hybrid GitOps) Upgrade provisioned Runtimes](#hybrid-gitops-upgrade-provisioned-runtimes)
+* [Uninstall provisioned GitOps Runtimes](#uninstall-provisioned-gitops-runtimes)
+* [Update Git tokens for Runtimes](#update-git-tokens-for-runtimes)
 
 
 Monitor provisioned GitOps Runtimes for security, health, and sync errors:
@@ -105,10 +106,54 @@ Here is a description of the information in the Topology view.
 |**Search and View options** | {::nomarkdown}<ul><li>Find a Runtime or its clusters by typing part of the Runtime/cluster name, and then navigate to the entries found. </li> <li>Topology view options: Resize to window, zoom in, zoom out, full screen view.</li></ul> {:/}|
 
 ## Managing provisioned GitOps Runtimes
+* [(Hybrid GitOps) Configure Deep Links to applications/resources](#hybrid-gitops-configure-deep-links-to-applicationsresources)
 * [Reset shared configuration repository for GitOps Runtimes](#reset-shared-configuration-repository-for-gitops-runtimes)
 * [(Hybrid GitOps) Upgrade provisioned Runtimes](#hybrid-gitops-upgrade-provisioned-runtimes)
 * [Uninstall provisioned GitOps Runtimes](#uninstall-provisioned-gitops-runtimes)
 * [Update Git tokens for Runtimes](#update-git-tokens-for-runtimes)
+
+## (Hybrid GitOps) Configure Deep Links to applications/resources
+
+Deep Links is an Argo CD feature that redirects users to third-party applications/platforms by surfacing links to the same in Argo CD projects, applications, and resources. Read all about it in [Argo CD Deep Links](https://argo-cd.readthedocs.io/en/stable/operator-manual/deep_links/){:target="\_blank"}.
+
+In Codefresh, you can configure deep links to third-party applications/platforms in the `argocd-cm` ConfigMap, located in the repo to which you installed the Hybrid GitOps runtime. 
+
+When configured, deep links are displayed in the application's Current State tab, in Tree view. See [Working with resources in Tree View]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/#working-with-resources-in-tree-view).
+
+
+
+1. Go to the `<hybrid-gitops-installation-repo>/bootstrap/argo-cd/kustomization.yaml`.
+1. Configure deep links as in the example below. 
+
+```yaml
+...
+configMapGenerator:
+- name: argocd-cm
+  behavior: merge
+  literals:
+  - |
+    resource.links:=- url: https://<mycompany>.splunk.com
+        title: Splunk
+        description: jf
+        icon.class: "fa-book"
+  - |
+    application.links=- url: https://<mycompany>.splunk.com
+        title: Splunk
+        description: jf
+        icon.class: "fa-book"
+```
+
+where:  
+
+* `<location>:=- url:` defines where the link is displayed and the target URL to link to:  
+      * `location` can be `application.links` (Application) or `resource.links` (Resource). Codefresh does not show Argo CD projects. 
+      * `url` is the target URL in the format `https://<url>.com`, for example, `https://codefresh.io.splunk.com`.
+* `title`is the display name for the link, as will appear in the UI. For example, `Splunk`.
+* `description`is optional, and presents additional info on the link.
+* `icon-class` is optional, and is the font-awesome icon class displayed to the left of the `title`.
+
+Argo CD also supports `if` conditional statements to control when the deep links are displayed. When omitted, configured deep links are always displayed.<br>
+For more details, read [Configuring Deep Links in Argo CD](https://argo-cd.readthedocs.io/en/stable/operator-manual/deep_links/#configuring-deep-links){:target="\_blank"}.
 
 ### Reset shared configuration repository for GitOps Runtimes
 Codefresh creates the [shared configuration repository]({{site.baseurl}}/docs/reference/shared-configuration) when you install the first hybrid or hosted GitOps runtime for your account, and uses it for all runtimes you add to the same account.
