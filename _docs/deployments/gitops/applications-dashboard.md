@@ -266,17 +266,28 @@ The Tree view is designed to impart key information at a glance. Review the sect
 
 **Context menu**  
 Every resource has a context menu that opens on clicking the three dots on the right of the resource. The options available differ according to the type of resource.
-> If you have deep links configured for applications or resources, these are also displayed in the context menu. 
+> If you have deep links configured for applications/resources for Hybrid GitOps Runtimes, these are also displayed in the context menu. To configure deep links in Codefresh, see [(Hybrid GitOps) Configure Deep Links to applications]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes#configure-deep-links-to-applicationsresources).
+
 
 {% include
 image.html
 lightbox="true"
 file="/images/applications/current-state-resource-context-menu.png"
 url="/images/applications/current-state-resource-context-menu.png"
-alt="Current State Tree view: Resource context menu"
-caption="Current State Tree view: Resource context menu"
+alt="Current State Tree view: Example of context menu for resource"
+caption="Current State Tree view: Example of context menu for resource"
 max-width="50%"
 %}  
+
+{% include
+image.html
+lightbox="true"
+file="/images/applications/current-state-deep-links-context-menu.png"
+url="/images/applications/current-state-deep-links-context-menu.png"
+alt="Current State Tree view: Example of context menu with deep link"
+caption="Current State Tree view: Example of context menu with deep link"
+max-width="50%"
+%}
 
 **Resource info**  
 Mouse over a node to see a tooltip for that resource. For detailed information, select the resource.
