@@ -89,6 +89,49 @@ Update General or Advanced configuration settings for a deployed application thr
 <br><br>
 {:/}
 
+## Configure Deep Links in applications/resources
+Deep Links are an Argo CD feature that redirects users to third-party applications/platforms by surfacing links to the same in Argo CD projects, applications, and resources. 
+
+In Codefresh, you can configure Deep Links to third-party applications/platforms through the `configMapGenerator`. When configured, they are displayed in the application's Current State, Tree view.
+
+Read all about it in [Argo CD](https://argo-cd.readthedocs.io/en/stable/operator-manual/deep_links/){:target="\_blank"}.
+
+
+1. Go to the repo where you installed your Hybrid GitOps Runtime. 
+1. Go to bootstrap > argo-cd'
+1. Create a `Kustomization.yaml` file with the `configMapGenerator`, or add it to an existing file, as in the example below. 
+
+```yaml
+...
+configMapGenerator:
+- name: argocd-cm
+  behavior: merge
+  literals:
+  - |
+    resource.links:=- url: https://<mycompany>.splunk.com
+        title: Splunk
+        description: jf
+        icon.class: "fa-book"
+  - |
+    application.links=- url: https://<mycompany>.splunk.com
+        title: Splunk
+        description: jf
+        icon.class: "fa-book"
+```
+
+where:  
+
+* `<location>:=- url:` defines where the link is displayed and the target URL to link to:  
+      * `location` can be `project.links` (Project), `application.links` (Application), or `resource.links` (Resource)
+      * `url` is the target URL in the format `https://mycompany.<name>.com`, for example, `https://codefresh.io.splunk.com`
+* `title`is the display name for the link, as will appear in the UI. For example, `Splunk`
+* `description`is optional, and presents additional info on the link.
+* `icon-class` is optional, and is the font-awesome icon class displayed to the left of the `title`.
+
+Argo CD also supports `if` conditional statements to control when the Deep Links are displayed. When omitted, the Deep Links are always displayed.<br>
+For more details, read [Configuring Deep Links in Argo CD](https://argo-cd.readthedocs.io/en/stable/operator-manual/deep_links/#configuring-deep-links){:target="\_blank"}.
+
+
 ## Manually synchronize an application
 Manually synchronize an application to expedite Git-to-cluster sync.  The sync options selected for manual sync override the sync options defined for the application.  
 The sync options, grouped into Revision and Additional Settings, are identical to the Sync options in the General settings when you created the application. 
@@ -120,9 +163,10 @@ The sync options, grouped into Revision and Additional Settings, are identical t
   * **All**: Sync all resources regardless of their sync state.
   * **Out of sync**: Sync _only_ resources that are `Out of sync`.  
 
-{::nomarkdown}
-<br>
-{:/}
+
+<br><br>
+
+
 
 ### Revision settings for application sync
 Revision settings determine the behavior for the branch you select.  
