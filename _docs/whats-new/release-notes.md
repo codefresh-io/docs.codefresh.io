@@ -28,7 +28,7 @@ Previously, this option was available for all pipelines in the Builds page. Now,
 Why did we make this selective per pipeline?  
 Because restarting from a failed step is not always the answer to the problem, especially as the pipelines restarts with the same state as before. 
 
-If you have a failed Helm promotion step, and you updated the image, you would want the pipeline to use the new image. With the Restart option, the pipeline continues from the same state as at the point of failure, never uses the updated image, and continues to fail.  
+If you have a failed Helm promotion step, and you updated the image, you would want the pipeline to use the new image. With the Restart option, the pipeline resumes execution at the same state as at the point of failure, never uses the updated image, and continues to fail.  
 
 For details, see [Policy settings for pipelines]({{site.baseurl}}/docs/pipelines/pipelines/#policies) and [Restarting pipelines]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#restarting-the-pipeline).
 
@@ -58,9 +58,10 @@ See [Datadog pipeline integration]({{site.baseurl}}/docs/integrations/datadog/).
 
 <br>
 
+<!---
 #### CI/CD: Runtime environment for GitOps pipeline integrations
-You can now select a runtime environment different from that used when creating a pipeline integration for GitOps in Codefresh. 
-After creating a GitOps integration, you can edit the integration settings and select the runtime environment from the list.
+By default, the GitOps pipeline integration has the same runtime environment as that used when you created the GitOps integration in Codefresh. 
+After creating a GitOps integration, you can now edit the integration settings, and if needed, select a different runtime environment from the list.
 
 {% include
  image.html
@@ -74,6 +75,7 @@ After creating a GitOps integration, you can edit the integration settings and s
 
 
 <br>
+-->
 
 #### GitOps: Deep links to applications
 Codefresh supports adding Deep Links to third-party applications/platforms. Deep Links is an Argo CD feature that allows you to configure deep links to any third-party application/platform such as Splunk for example, to quickly redirect users to these applications/platforms. 
@@ -91,7 +93,7 @@ When configured, the Current State Tree view displays the linked-to applications
 %}
 
 
-For details, see [Configuring Deep Links to applications/resoruces for Hybrid GitOps]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#hybrid-gitops-configure-deep-links-to-applicationsresources).
+For details, see [Configuring Deep Links to applications/resoruces for Hybrid GitOps]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#hybrid-gitops-configure-deep-links-to-applications--resources).
 
 <br>
 
