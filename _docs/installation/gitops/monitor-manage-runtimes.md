@@ -1,5 +1,5 @@
 ---
-title: "Monitoring & managing GitOps Runtimes"
+title: "Managing & monitoring GitOps Runtimes"
 description: "Optimize GitOps Runtimes"
 group: runtime
 sub_group: gitops
@@ -108,7 +108,7 @@ Here is a description of the information in the Topology view.
 * [Reset shared configuration repository for GitOps Runtimes](#reset-shared-configuration-repository-for-gitops-runtimes)
 * [(Hybrid GitOps) Upgrade provisioned Runtimes](#hybrid-gitops-upgrade-provisioned-runtimes)
 * [Uninstall provisioned GitOps Runtimes](#uninstall-provisioned-gitops-runtimes)
-* [Update Git tokens for Runtimes](#update-git-tokens-for-runtimes)
+* [Update Git tokens for GitOps Runtimes](#update-git-tokens-for-runtimes)
 
 ### Reset shared configuration repository for GitOps Runtimes
 Codefresh creates the [shared configuration repository]({{site.baseurl}}/docs/reference/shared-configuration) when you install the first hybrid or hosted GitOps runtime for your account, and uses it for all runtimes you add to the same account.
@@ -349,7 +349,7 @@ The methods for updating any Git token are the same regardless of the reason for
 ## Monitoring GitOps Runtimes
 * [View/download logs to troubleshoot Runtimes](#viewdownload-logs-to-troubleshoot-runtimes)
 * [(Hybrid GitOps) Restoring provisioned Runtimes](#hybrid-gitops-restoring-provisioned-runtimes)
-* [(Hybrid GitOps) Configure browser to allow insecure Runtimes](#hybrid-gitops-configure-browser-to-allow-insecure-runtimes)
+* [(Hybrid GitOps) Troubleshoot communication problems](#hybrid-gitops-troubleshoot-communication-problems)
 * [(Hybrid GitOps) View notifications in Activity Log](#hybrid-gitops-view-notifications-in-activity-log)
 * [(Hybrid GitOps) Troubleshoot health and sync errors for Runtimes](#hybrid-gitops-troubleshoot-health-and-sync-errors-for-runtimes)
 
@@ -541,40 +541,12 @@ status:
 ```
 
 
-### (Hybrid GitOps) Configure browser to allow insecure Runtimes
+### (Hybrid GitOps) Troubleshoot communication problems
 
-If at least one of your Hybrid Runtimes was installed in insecure mode (without an SSL certificate for the ingress controller from a CA), the UI alerts you that _At least one runtime was installed in insecure mode_.
-{% include
- image.html
- lightbox="true"
- file="/images/runtime/runtime-insecure-alert.png"
- url="/images/runtime/runtime-insecure-alert.png"
- alt="Insecure runtime installation alert"
- caption="Insecure runtime installation alert"
-  max-width="100%"
-%}
+A notification _Unable to communicate with a <runtime_name>_ or _Unable to communicate with two or more runtimes_ indicates a communication problem.
 
-All you need to do is to configure the browser to trust the URL and receive content.
+Refer to our [troubleshooting section]({{site.baseurl}}/docs/troubleshooting/runtime-issues/#unable-to-communicate-with-runtime-name-or-two-or-more-runtimes) for a list of possible causes and the corresponding corrective actions. 
 
-1. Select **View Runtimes** to the right of the alert.  
-  You are taken to the Runtimes page, where you can see insecure Runtimes tagged as **Allow Insecure**.
-  <!--- ask dev for help -->
-  {% include
- image.html
- lightbox="true"
- file="/images/runtime/runtime-insecure-steps.png"
- url="/images/runtime/runtime-insecure-steps.png"
- alt="Insecure runtimes in Runtime page"
- caption="Insecure runtimes in Runtime page"
-  max-width="40%"
-%}
-{:start="2"}
-1. For _every_ insecure Runtime, select **Allow Insecure**, and when the browser prompts you to allow access, do as relevant:
-
-* Chrome: Click **Advanced** and then **Proceed to site**.
-* Firefox: Click **Advanced** and then **Accept the risk and continue**.
-* Safari: Click **Show Certificate**, and then select **Always allow content from site**.
-* Edge: Click **Advanced**, and then select **Continue to site(unsafe)**.
 
 ### (Hybrid GitOps) View notifications in Activity Log
 
