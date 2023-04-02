@@ -106,13 +106,13 @@ Here is a description of the information in the Topology view.
 |**Search and View options** | {::nomarkdown}<ul><li>Find a Runtime or its clusters by typing part of the Runtime/cluster name, and then navigate to the entries found. </li> <li>Topology view options: Resize to window, zoom in, zoom out, full screen view.</li></ul> {:/}|
 
 ## Managing provisioned GitOps Runtimes
-* [(Hybrid GitOps) Configure Deep Links to applications/resources](#hybrid-gitops-configure-deep-links-to-applicationsresources)
+* [(Hybrid GitOps) Configure Deep Links to applications & resources](#hybrid-gitops-configure-deep-links-to-applications--resources)
 * [Reset shared configuration repository for GitOps Runtimes](#reset-shared-configuration-repository-for-gitops-runtimes)
 * [(Hybrid GitOps) Upgrade provisioned Runtimes](#hybrid-gitops-upgrade-provisioned-runtimes)
 * [Uninstall provisioned GitOps Runtimes](#uninstall-provisioned-gitops-runtimes)
 * [Update Git tokens for Runtimes](#update-git-tokens-for-runtimes)
 
-### (Hybrid GitOps) Configure Deep Links to applications/resources
+### (Hybrid GitOps) Configure Deep Links to applications & resources
 
 Deep Links is an Argo CD feature that redirects users to third-party applications/platforms by surfacing links to the same in Argo CD projects, applications, and resources. Read all about it in [Argo CD Deep Links](https://argo-cd.readthedocs.io/en/stable/operator-manual/deep_links/){:target="\_blank"}.
 
