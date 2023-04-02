@@ -91,7 +91,7 @@ When configured, the Current State Tree view displays the linked-to applications
 %}
 
 
-For details, see TBD
+For details, see [Configuring Deep Links to applications/resoruces for Hybrid GitOps]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#hybrid-gitops-configure-deep-links-to-applicationsresources).
 
 <br>
 
@@ -141,7 +141,7 @@ See [Monitoring GitOps applications]({{site.baseurl}}/docs/deployments/gitops/ap
 * Parallel steps with kubectl-related operations result in `error: open /codefresh/volume/sensitive/.kube/config.lock: file exists`.
 * Step member variables not supported in parallel steps. 
 * Runtime monitor start failure after upgrading to EKS 1.21.
-* [Playtech 17/6]Build fails when trigger includes deleted branches for Bitbucker Server CR-17003 Yarik
+* For Bitbucker Server, Commit trigger that deleted branches results in failed builds.
 * `image-enricher` step breaks with error `Failed to assign pull request 9531 to your image ... reason Cannot read property 'map' of undefined`.
 * (On-premises only) Enabling `forbidDecrypt` Feature Flag breaks `github-release` step.
 * (On-premises only) UI logs not available with on-premises release version 1.3.9.
