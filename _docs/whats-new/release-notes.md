@@ -93,7 +93,7 @@ When configured, the Current State Tree view displays the linked-to applications
 %}
 
 
-For details, see [Configuring Deep Links to applications/resoruces for Hybrid GitOps]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#hybrid-gitops-configure-deep-links-to-applications--resources).
+For details, see [Configuring Deep Links to applications/resources for Hybrid GitOps]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#hybrid-gitops-configure-deep-links-to-applications--resources).
 
 <br>
 
