@@ -735,12 +735,15 @@ Configure the ingress controller to handle TCP requests.
 </br>
 {:/}
  
-#### Enable report status to cluster 
-By default, the Traefik ingress controller is not configured to report its status to the cluster.  If not configured,  Argo’s health check reports the health status as “progressing”, resulting in a timeout error during installation.  
+#### Enable report health status to cluster 
+By default, the Traefik ingress controller is not configured to report its health status to the cluster or ingress resource.  Argo CD is therefore unable to assess its health status as the `status.loadBalancer.ingress` list does not have a value for `hostname` or `IP`. During installation, ArgoCD reports the health status of the ingress controller  as `progressing`, resulting in a timeout error.
 
-To enable reporting its status, add `publishedService` to `providers.kubernetesIngress.ingressEndpoint`.  
+To prevent the timeout error, add  `publishedService` to your ingress resource configuration . This parameter populates the health status of the ingress resource, enabling Argo CD to report the correct health status during installation.  For details, see [ Traefik Kubernetes Ingress Documentation](https://doc.traefik.io/traefik/providers/kubernetes-ingress/#publishedservice){:target=\_block"}.
+
+Based on your Traefik ingress controller installation, update your ingress resource by adding `publishedService` to `providers.kubernetesIngress.ingressEndpoint`.  
   
-The value must be in the format `"<namespace>/<service-name>"`, where:  
+The value must be in the format  `"<namespace>/<service-name>"`<br>
+where:<br>
   `<service-name>` is the Traefik service from which to copy the status
 
 ```yaml

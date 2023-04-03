@@ -505,7 +505,7 @@
           url: "/hosted-runtime" 
         - title: Hybrid GitOps Runtime
           url: "/hybrid-gitops"  
-        - title: Monitoring & managing GitOps Runtimes
+        - title: Managing & monitoring GitOps Runtimes
           url: "/monitor-manage-runtimes"
         - title: Add external clusters to GitOps Runtimes
           url: "/managed-cluster" 
@@ -666,8 +666,9 @@
           url: "/paging-issues-builds-images"
     - title: Deprecating personal Git integrations
       url: "/personal-git-deprecation"
-    - title: GitOPs runtimes
+    - title: GitOps runtimes
       url: "/runtime-issues"
+
 
 
 - title: Terms and Privacy Policy

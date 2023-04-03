@@ -59,9 +59,12 @@ See [Datadog pipeline integration]({{site.baseurl}}/docs/integrations/datadog/).
 <br>
 
 
+
 #### CI/CD: Override runtime environment for GitOps pipeline integrations
 A GitOps pipeline integration uses the default runtime environment. After creating a GitOps pipeline integration, you can now override its runtime environment.
 Codefresh uses the runtime environment for system actions such as Rollback.
+
+
 
 {% include
  image.html
@@ -73,6 +76,9 @@ Codefresh uses the runtime environment for system actions such as Rollback.
  max-width="50%"
 %}
 
+
+
+<br>
 
 
 #### GitOps: Deep links to applications
