@@ -58,10 +58,13 @@ See [Datadog pipeline integration]({{site.baseurl}}/docs/integrations/datadog/).
 
 <br>
 
-<!---
-#### CI/CD: Runtime environment for GitOps pipeline integrations
-By default, the GitOps pipeline integration has the same runtime environment as that used when you created the GitOps integration in Codefresh. 
-After creating a GitOps integration, you can now edit the integration settings, and if needed, select a different runtime environment from the list.
+
+
+#### CI/CD: Override runtime environment for GitOps pipeline integrations
+A GitOps pipeline integration uses the default runtime environment. After creating a GitOps pipeline integration, you can now override its runtime environment.
+Codefresh uses the runtime environment for system actions such as Rollback.
+
+
 
 {% include
  image.html
@@ -74,8 +77,9 @@ After creating a GitOps integration, you can now edit the integration settings, 
 %}
 
 
+
 <br>
--->
+
 
 #### GitOps: Deep links to applications
 Codefresh supports adding Deep Links to third-party applications/platforms. Deep Links is an Argo CD feature that allows you to configure deep links to any third-party application/platform such as Splunk for example, to quickly redirect users to these applications/platforms. 
