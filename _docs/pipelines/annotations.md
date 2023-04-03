@@ -8,12 +8,15 @@ toc: true
 ---
 
 Codefresh supports adding custom annotations to several entities, such as projects, pipelines, builds, and Docker images.
-Use custom annotations to store any optional information you wish to keep associated with an entity. Examples would be storing the test coverage for a particular build, a special settings file for a pipeline, identifying the environments for builds.
+Custom annotations can store any optional information you wish to keep associated with an entity. Examples would be storing the test coverage for a particular build, a special settings file for a pipeline, identifying environments for builds.
 
-You can add, view, and manage annotations in the Codefresh UI or through the [Codefresh CLI](https://codefresh-io.github.io/cli/annotations/){:target="\_blank"}.
+You can add, view, and manage annotations:
+* In the Codefresh UI
+* Through the [Codefresh CLI](https://codefresh-io.github.io/cli/annotations/){:target="\_blank"}
+* Directly in Codefresh steps 
 
 
->The syntax shown in this page is deprecated but still supported. For the new syntax,
+>The syntax shown for the step examples in this article is deprecated but still supported. For the new syntax,
 see [hooks in pipelines]({{site.baseurl}}/docs/pipelines/hooks/).
 
 
@@ -27,7 +30,10 @@ Every annotation has a name, type, and value.
 
 ### Add annotations in the Codefresh UI
 
-1. In the Codefresh UI, from the sidebar, select the entity for which to add annotations: [**Projects*](https://g.codefresh.io/projects/){target="\_blank"}, [**Pipelines**](https://g.codefresh.io/pipelines/all/){target="\_blank"}, or [**Builds**](https://g.codefresh.io/builds2){target="\_blank"}.
+1. In the Codefresh UI, from the sidebar, select the entity for which to add annotations:  
+  * [**Projects*](https://g.codefresh.io/projects/){target="\_blank"}
+  * [**Pipelines**](https://g.codefresh.io/pipelines/all/){target="\_blank"}
+  * [**Builds**](https://g.codefresh.io/builds2){target="\_blank"}
 1. From the Projects/Pipelines/Builds page, select the specific project/pipeline/build.
 1. Click the context menu on the right, and select **Annotations**.
 
@@ -38,7 +44,7 @@ file="/images/pipeline/codefresh-yaml/annotations/annotation-menu.png"
 url="/images/pipeline/codefresh-yaml/annotations/annotation-menu.png"
 alt="Add annotation in Codefresh UI" 
 caption="Add annotation in Codefresh UI"
-max-width="60%"
+max-width="70%"
 %}
 
 {:start="4"}
@@ -53,7 +59,7 @@ max-width="60%"
 
 In the most basic scenario, use the [post-step operations]({{site.baseurl}}/docs/pipelines/post-step-operations/) of any Codefresh [step]({{site.baseurl}}/docs/pipelines/steps/) to add annotations.
 
-You can add annotations for any entity, not just the current pipeline. You can add annotations to a project,  a different pipeline and build, as shown in the examples below.
+You can add annotations for any entity, not just the current pipeline. You can add annotations to a project, a different pipeline and build, as shown in the examples below.
 
 #### Example 1: Annotation for project
 
@@ -94,7 +100,8 @@ If you don't define them, then by default the current build is used with these v
 * `entity_type` is `build`
 
 #### Example 2: Add annotation for a different pipeline and build
-Here is another example where we add annotations to another pipeline as well as another build (instead of the current one).
+Here is another example where we add annotations to a different pipeline and a different build (instead of the current one).  
+You can store annotations for any Codefresh entity, and not just the ones that are connected to the build where you are defining the annotation.
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -123,7 +130,7 @@ steps:
 {% endraw %}            
 {% endhighlight %}
 
-It is therefore possible to store annotations on any Codefresh entity (and not just the ones that are connected to the build that is adding annotations).
+
 
 ## Add annotations to the current build/image
 
@@ -171,11 +178,12 @@ You can also define `entity_type` as `image` and don't enter any `entity_id`. In
 
 ## Managing annotations
 
-Once you add an annotation to an entity, you can do the following:
-[Filter builds by annotations]
-Display annotation for a build
-View annotations for an entity via the UI or via the CLI
-Edit/delete annotations
+Once you add an annotation to an entity, you can do the following:  
+* [Filter builds by annotations](/#filter-builds-by-annotations)  
+* [Configure annotation to display for build](#configure-annotation-to-display-for-build) 
+* [View annotations](/#view-annotations) for an entity via the UI or via the CLI
+* [Edit/delete annotations](#editdelete-annotations)
+* [Delete annotations in pipeline YAML](#delete-annotations-in-pipeline-yaml)
 
 ### Filter builds by annotations
 Filter the Builds list by build annotations to view builds that share the same annotations. This includes both the build display annotation, and other build annotations.  
@@ -336,9 +344,9 @@ You can also use both `unset` and `set` block in a single `annotations` block. A
 
 ## Complex annotation values
 
-Apart from scalar values, you can also store more complex expressions in annotations, using [Codefresh variables]({{site.baseurl}}/docs/pipelines/variables/), text files from the build, and even evaluations from the [conditional expressions]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/#condition-expression-syntax).
+Apart from scalar values, you can also store more complex expressions in annotations, using [Codefresh variables]({{site.baseurl}}/docs/pipelines/variables/), text files from the build, and even evaluations from  [conditional expressions]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/#condition-expression-syntax).
 
->This pipeline uses dynamic Git repository variables. For it to work, it must be linked to least one [Git trigger]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/).
+>The pipeline in this example uses dynamic Git repository variables. For the pipeline to work, it must be linked to least one [Git trigger]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/).
 
 `codefresh.yml`
 {% highlight yaml %}

@@ -62,10 +62,10 @@ max-width="50%"
 The available filters are:
 
 * **Pipeline**: Any of the pipelines available.
-* **BoardId**: 
+<!---* **BoardId**: -->
 * **Provider** : The [Git provider]({{site.baseurl}}/docs/integrations/git-providers/).
-* **Repository**: Git repository from the attached [trigger]({{site.baseurl}}/docs/pipelines/triggers/).
-* **Type**: Build, [launch a test environment]({{site.baseurl}}/docs/quick-start/ci-quick-start/on-demand-environments/#launch-a-docker-image-using-codefresh).
+* **Repository**: Git repository with the [trigger]({{site.baseurl}}/docs/pipelines/triggers/).
+* **Type**: Build (user-initiated), or system (auto-initiated), see [launch a test environment]({{site.baseurl}}/docs/quick-start/ci-quick-start/on-demand-environments/#launch-a-docker-image-using-codefresh).
 * **Branch**: Any of the available branches from the attached Git trigger.
 * **Committer**: The user who made the commit that triggered the build.
 * **Environment**: The [environment]({{site.baseurl}}/docs/deployments/kubernetes/environment-dashboard/) affected by the build.
@@ -73,7 +73,7 @@ The available filters are:
 * **Trigger type**: The type of trigger that caused the build to run.
 * **Git event**: For [Git triggers]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/), the exact event that triggered the build.
 * **Trigger-name**: The name of the trigger that triggered the build.
-* **Annotations**: The [annotation]({{site.baseurl}}/docs/pipelines/annotations/) assigned to the build defined as a key=value(s) pair. For the same annotation, you can filter by multiple values.
+* **Annotations**: The [display annotation]({{site.baseurl}}/docs/pipelines/annotations/) assigned to the build, defined as a key=value pair. For the same annotation, you can filter by multiple values.
 
 
 Notice that all filters are multiple-choice so you can select multiple values for each filter category.
