@@ -31,9 +31,9 @@ Every annotation has a name, type, and value.
 ### Add annotations in the Codefresh UI
 
 1. In the Codefresh UI, from the sidebar, select the entity for which to add annotations:  
-  * [**Projects*](https://g.codefresh.io/projects/){target="\_blank"}
-  * [**Pipelines**](https://g.codefresh.io/pipelines/all/){target="\_blank"}
-  * [**Builds**](https://g.codefresh.io/builds2){target="\_blank"}
+  * [**Projects**](https://g.codefresh.io/projects/){:target="\_blank"}
+  * [**Pipelines**](https://g.codefresh.io/pipelines/all/){:target="\_blank"}
+  * [**Builds**](https://g.codefresh.io/builds2){:target="\_blank"}
 1. From the Projects/Pipelines/Builds page, select the specific project/pipeline/build.
 1. Click the context menu on the right, and select **Annotations**.
 
@@ -189,8 +189,8 @@ Once you add an annotation to an entity, you can do the following:
 Filter the Builds list by build annotations to view builds that share the same annotations. This includes both the build display annotation, and other build annotations.  
 Combine this with the [other filters available for builds]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#applying-filters-on-the-build-view) to create a customized view of the Builds page. 
 
-1. In the Codefresh UI, from the sidebar, select [**Builds**](https://g.codefresh.io/builds2){target="\_blank"}.
-1. From the list of filters, select `annotations`, and enter the `Key=Value` pair to filter by. You can filter by multiple values for the same Key.
+1. In the Codefresh UI, from the sidebar, select [**Builds**](https://g.codefresh.io/builds2){:target="\_blank"}.
+1. From the list of filters, select `annotations`, and enter the `Key=Value` pair to filter by. For the same Key (name), you can filter by multiple values.
 
 {% include 
 image.html 
@@ -199,19 +199,20 @@ file="/images/pipeline/codefresh-yaml/annotations/filter-by-build-annotation.png
 url="/images/pipeline/codefresh-yaml/annotations/filter-by-build-annotation.png"
 alt="Filter builds by annotations" 
 caption="Filter builds by annotations"
-max-width="50%"
+max-width="70%"
 %}
 
 
 ### Configure annotation to display for build
-Configure an annotation as the display annotation for a build by adding the `display` attribute to the pipeline workflow. When you have large numbers of builds per pipeline, display annotations help group builds by shared annotations for easy viewing and filtering.  
+Configure an annotation as the display annotation for a build by adding the `display` attribute to the pipeline workflow. When you have large numbers of builds per pipeline, display annotations help group related builds for easy viewing and filtering.  
 
-For example, annotate builds by environments by configuring the `display` attribute set to `ENV`. Now all builds for that pipeline display the `ENV` annotation set to whatever environment the build ran on. You can filter the Builds list to view builds by various environments.  
+For example, annotate builds by environments by configuring the `display` attribute set to `ENV`. All builds for that pipeline display the `ENV` annotation set to whatever environment the build ran on. You can filter the Builds list to view builds by various environments.  
 
 **Before you begin**  
 * Add at least one annotation to the pipeline
 
-1. In the Codefresh UI, from the sidebar, select [**Pipeline**](https://g.codefresh.io/builds2){target="\_blank"}.
+**How to**  
+1. In the Codefresh UI, from the sidebar, select [**Pipeline**](https://g.codefresh.io/builds2){:target="\_blank"}.
 1. Select the pipeline for which to configure the build display annotation.
 1. In the **Workflow** tab, scroll down to the list of annotations in the YAML.
 1. At the end of the annotation list, add `display`, and set it one of the annotations defined, for example, `ENV`.
@@ -223,7 +224,7 @@ file="/images/pipeline/codefresh-yaml/annotations/display-build-annotation.png"
 url="/images/pipeline/codefresh-yaml/annotations/display-build-annotation.png"
 alt="Configuring display annotation for pipeline builds" 
 caption="Configuring display annotation for pipeline builds"
-max-width="50%"
+max-width="70%"
 %}
 
 {:start="5"}
@@ -235,11 +236,11 @@ max-width="50%"
 {% include 
 image.html 
 lightbox="true" 
-file="/images/pipeline/codefresh-yaml/annotations/display-build-annotation.png" 
-url="/images/pipeline/codefresh-yaml/annotations/display-build-annotation.png"
+file="/images/pipeline/codefresh-yaml/annotations/builds-list-with-display-annotation.png" 
+url="/images/pipeline/codefresh-yaml/annotations/builds-list-with-display-annotation.png"
 alt="Pipeline builds with display annotations" 
 caption="Pipeline builds with display annotations"
-max-width="50%"
+max-width="70%"
 %}
   
 {:start="7"}
@@ -249,8 +250,8 @@ max-width="50%"
 {% include 
 image.html 
 lightbox="true" 
-file="/images/pipeline/codefresh-yaml/annotations/display-build-annotation.png" 
-url="/images/pipeline/codefresh-yaml/annotations/display-build-annotation.png"
+file="/images/pipeline/codefresh-yaml/annotations/view-annotation-list.png" 
+url="/images/pipeline/codefresh-yaml/annotations/view-annotation-list.png"
 alt="Available annotations for build" 
 caption="Available annotations for build"
 max-width="50%"
@@ -258,9 +259,7 @@ max-width="50%"
 
 
 
-### View annotations
-
-#### View annotations via CLI
+### View annotations via CLI
 
 ```shell
 codefresh get annotation <entity> annotate-examples
@@ -268,9 +267,12 @@ codefresh get annotation <entity> annotate-examples
 where, `<entity>` can be `project`, `pipeline`, or `build`.
 
 
-#### View annotations via UI
+### View annotations via UI 
 
-1. In the Codefresh UI, from the sidebar, select the entity for which to view annotations: [**Projects*](https://g.codefresh.io/projects/){target="\_blank"}, [**Pipelines**](https://g.codefresh.io/pipelines/all/){target="\_blank"}, or [**Builds**](https://g.codefresh.io/builds2){target="\_blank"}.
+1. In the Codefresh UI, from the sidebar, select the entity for which to view annotations: 
+  * [**Projects**](https://g.codefresh.io/projects/){:target="\_blank"}
+  * [**Pipelines**](https://g.codefresh.io/pipelines/all/){:target="\_blank"}
+  * [**Builds**](https://g.codefresh.io/builds2){:target="\_blank"}
 1. From the Projects/Pipelines/Builds page, select the specific project/pipeline/build.
 1. From the context menu, select **Annotations**.
 
