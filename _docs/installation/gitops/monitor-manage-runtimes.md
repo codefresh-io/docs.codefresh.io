@@ -35,11 +35,11 @@ Manage provisioned GitOps Runtimes:
 
 
 Monitor provisioned GitOps Runtimes for security, health, and sync errors:
-
-* (Hybrid and Hosted) View/download logs for Runtimes and for Runtime components
-* (Hybrid) Restore provisioned Runtimes
-* (Hybrid) Configure browsers to allow access to insecure Runtimes
-* (Hybrid) Monitor notifications in the Activity Log
+* [View/download logs to troubleshoot Runtimes](#viewdownload-logs-to-troubleshoot-runtimes)
+* [(Hybrid GitOps) Restoring provisioned Runtimes](#hybrid-gitops-restoring-provisioned-runtimes)
+* [(Hybrid GitOps) Troubleshoot communication problems](#hybrid-gitops-troubleshoot-communication-problems)
+* [(Hybrid GitOps) View notifications in Activity Log](#hybrid-gitops-view-notifications-in-activity-log)
+* [(Hybrid GitOps) Troubleshoot health and sync errors for Runtimes](#hybrid-gitops-troubleshoot-health-and-sync-errors-for-runtimes)
 
 
 > Unless specified otherwise, all options are common to both types of GitOps Runtimes. If an option is valid only for Hybrid GitOps, it is indicated as such.
@@ -106,11 +106,59 @@ Here is a description of the information in the Topology view.
 |**Search and View options** | {::nomarkdown}<ul><li>Find a Runtime or its clusters by typing part of the Runtime/cluster name, and then navigate to the entries found. </li> <li>Topology view options: Resize to window, zoom in, zoom out, full screen view.</li></ul> {:/}|
 
 ## Managing provisioned GitOps Runtimes
+* [Configure SSH for runtimes](#configure-ssh-for-runtimes)
 * [(Hybrid GitOps) Configure Deep Links to applications & resources](#hybrid-gitops-configure-deep-links-to-applications--resources)
 * [Reset shared configuration repository for GitOps Runtimes](#reset-shared-configuration-repository-for-gitops-runtimes)
 * [(Hybrid GitOps) Upgrade provisioned Runtimes](#hybrid-gitops-upgrade-provisioned-runtimes)
 * [Uninstall provisioned GitOps Runtimes](#uninstall-provisioned-gitops-runtimes)
 * [Update Git tokens for GitOps Runtimes](#update-git-tokens-for-runtimes)
+
+### Configure SSH for runtimes
+By default, Git repositories use the HTTPS protocol. You can also use SSH to connect Git repositories by entering the SSH private key.
+
+>When SSH is configured for a runtime, when creating/editing Git-Source applications, you can select HTTPS OR SSH as the protocol to connect to the Git repository. See [Repository URL in Application Source definitions]({{site.baseurl}}/docs/deployment/create-application/#source).
+
+**SSH keys**  
+For more information on generating SSH private keys, see the official documentation:
+* [GitHub](https://help.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent){:target="\_blank"}
+* [GitLab](https://docs.gitlab.com/ee/ssh/#generating-a-new-ssh-key-pair){:target="\_blank"}
+* [Bitbucket](https://confluence.atlassian.com/bitbucket/set-up-an-ssh-key-728138079.html){:target="\_blank"}
+* [Azure](https://docs.microsoft.com/en-us/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops&tabs=current-page){:target="\_blank"}
+
+**Before you begin**  
+Copy the SSH private key for your Git provider  
+
+
+**How to**  
+1. In the Codefresh UI, make sure you are in [GitOps Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
+1. From the **List View**, select the runtime for which to configure SSH.
+1. From the context menu with the additional actions at the top-right, select **Update Git Runtime Credentials**. 
+
+  {% include
+ image.html
+ lightbox="true"
+ file="/images/runtime/update-git-runtime-token.png"
+ url="/images/runtime/update-git-runtime-token.png"
+ alt="Update Git runtime credentials"
+ caption="Update Git runtime credentials"
+  max-width="60%"
+%}
+
+{:start="4"}
+1. Expand **Connect Repo using SSH**, and then paste the raw SSH private key into the field.
+
+{% include
+ image.html
+ lightbox="true"
+ file="/images/runtime/configure-ssh-for-runtimes.png"
+ url="/images/runtime/configure-ssh-for-runtimes.png"
+ alt="Update Git runtime credentials"
+ caption="Update Git runtime credentials"
+  max-width="40%"
+%}
+
+{:start="5"}
+1. Click **Update Credentials**.
 
 ### (Hybrid GitOps) Configure Deep Links to applications & resources
 
