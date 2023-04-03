@@ -62,7 +62,7 @@ max-width="50%"
 The available filters are:
 
 * **Pipeline**: Any of the pipelines available.
-<!---* **BoardId**: -->
+* **BoardId**: The name of the Helm board
 * **Provider** : The [Git provider]({{site.baseurl}}/docs/integrations/git-providers/).
 * **Repository**: Git repository with the [trigger]({{site.baseurl}}/docs/pipelines/triggers/).
 * **Type**: Build (user-initiated), or system (auto-initiated), see [launch a test environment]({{site.baseurl}}/docs/quick-start/ci-quick-start/on-demand-environments/#launch-a-docker-image-using-codefresh).
