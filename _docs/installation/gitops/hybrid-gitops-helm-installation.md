@@ -6,19 +6,20 @@ toc: true
 ---
 
 Install the Hybrid Runtime for GitOps through a Helm chart.
-> Helm installation for Hybrid GitOps is currently in Alpha. 
+> Helm installation for Hybrid GitOps is currently in Beta. 
 
 
 
 * Access mode   
   Codefresh supports both tunnel-based and ingress-based access modes. The tunnel-based access mode is the default access mode. <br>
-  Ingress-based access mode requires you to configure an [ingress controller before the installation](#ingress-controller-configuration), and pass additional flags such as the ingress host and class in the Helm install command. 
+  Ingress-based access mode requires you to configure an [ingress controller](#ingress-controller-configuration) before the installation, and pass additional flags such as the ingress host and class in the Helm install command. 
   See also [GitOps Runtime architecture]({{site.baseurl}}/docs/installation/runtime-architecture/#gitops-runtime-architecture).
 
 * Shared configuration repository    
   For each account, you can create a shared configuration repository, which is a Git repository with configuration manifests, shared between all the GitOps Runtimes in the same account. Read more on the [shared configuration repository]({{site.baseurl}}/docs/reference/shared-configuration).
   * If this is the first Hybrid GitOps Runtime in your account, then you will define the shared config repo during the installation. 
-  * If you already have a Hosted GitOps Runtime, Coderesh would have automatically configured the shared repo. 
+  * If you already have a Hosted or Hybrid GitOps Runtime, you already have a shared repo, and don't need to create one. 
+  See also 
 
 * Argo project CRDs  
   Hybrid GitOps installation requires a cluster without Argo project CRDs.  
