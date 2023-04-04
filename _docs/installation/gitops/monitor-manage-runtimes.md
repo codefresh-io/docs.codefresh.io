@@ -126,19 +126,19 @@ Uninstall all the existing runtimes in your account, and then run the reset comm
 
 ### (Hybrid GitOps) Upgrade provisioned Runtimes
 
-Upgrade provisioned Hybrid Runtimes to install critical security updates or the latest versions of all components. Upgrade a provisioned Hybrid Runtime by running a silent upgrade or through the GitOps CLI wizard.  
+Upgrade provisioned Hybrid Runtimes to install critical security updates, get new functionality, and the latest versions of all components. Upgrade a provisioned Hybrid Runtime by running a silent upgrade or through the GitOps CLI wizard.  
 If you have managed clusters for Hybrid GitOps, upgrading the Runtime automatically updates runtime components within the managed cluster as well.
 
 > When there are security updates, the UI displays the alert, _At least one runtime requires a security update_. The Version column displays an _Update Required!_ notification.  
 
-> If you have older Hybrid Runtime versions, upgrade to manually define or create the shared configuration repo for your account. See [Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration/).
+> If you have older Hybrid GitOps Runtime versions, you need to upgrade to manually define or create the shared configuration repo for your account. See [Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration/).
 
 
 **Before you begin**  
 For both silent or CLI-wizard based upgrades, make sure you have:  
 
 * The latest version of the Codefresh CLI   
-* A valid Git token with [the required scopes]({{site.baseurl}}/docs/reference/git-tokens) 
+* A valid Git runtime token with [the required scopes]({{site.baseurl}}/docs/reference/git-tokens) 
 
 **Silent upgrade**  
 
@@ -181,7 +181,8 @@ For both silent or CLI-wizard based upgrades, make sure you have:
 
 {:start="4"}
 
-1. If you have already installed the GitOps CLI, in the Install Upgrades panel, copy the upgrade command.
+1. If you have already installed the GitOps CLI, in the Install Upgrades panel, first select the new version to install.
+
 
   {% include
  image.html
@@ -193,11 +194,15 @@ For both silent or CLI-wizard based upgrades, make sure you have:
   max-width="30%"
 %}  
 
+
 {:start="5"}
-1. In your terminal, paste the command, and do the following:
-  * Update the Git token value.
-  * To manually define the shared configuration repo, add the `--shared-config-repo` flag with the path to the repo.
-1. Confirm to start the upgrade.
+1. Copy and run the upgrade command:
+  `cf runtime upgrade helm-codefresh --version <runtime-version> --git-token <token>`  
+  where:  
+  * `<runtime-version>` is the selected version to upgrade to.
+  * <token> is the Git runtime token with the required scopes.
+1. Wait for a few minutes until the new runtime is synced with the cluster.
+1. Click **Close** to exit the upgrade panel.
 
 
 
