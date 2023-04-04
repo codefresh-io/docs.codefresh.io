@@ -181,7 +181,7 @@ You can also define `entity_type` as `image` and don't enter any `entity_id`. In
 Once you add an annotation to an entity, you can do the following:  
 * [Filter builds by annotations](#filter-builds-by-annotations)  
 * [Configure annotation to display for build](#configure-annotation-to-display-for-build) 
-* [View annotations](/#view-annotations) for an entity via the UI or via the CLI
+* [View annotations](#view-annotations) for an entity via the UI or via the CLI
 * [Edit/delete annotations](#editdelete-annotations)
 * [Delete annotations in pipeline YAML](#delete-annotations-in-pipeline-yaml)
 
