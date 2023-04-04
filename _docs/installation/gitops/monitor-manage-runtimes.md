@@ -132,7 +132,7 @@ Copy the SSH private key for your Git provider
 **How to**  
 1. In the Codefresh UI, make sure you are in [GitOps Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
 1. From the **List View**, select the runtime for which to configure SSH.
-1. From the context menu with the additional actions at the top-right, select **Update Git Runtime Credentials**. 
+1. From the context menu with the additional actions on the right, select **Update Git Runtime Credentials**. 
 
   {% include
  image.html
@@ -167,6 +167,8 @@ Deep Links is an Argo CD feature that redirects users to third-party application
 In Codefresh, you can configure deep links to third-party applications/platforms in the `argocd-cm` ConfigMap, located in the repo to which you installed the Hybrid GitOps runtime. 
 
 When configured, deep links are displayed in the application's Current State tab, in Tree view. See [Working with resources in Tree View]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/#working-with-resources-in-tree-view).
+
+>Deep link configuration in Codefresh requires runtime v0.1.27 or higher.
 
 
 
