@@ -179,30 +179,11 @@ You can also define `entity_type` as `image` and don't enter any `entity_id`. In
 ## Managing annotations
 
 Once you add an annotation to an entity, you can do the following:  
-* [Filter builds by annotations](#filter-builds-by-annotations)  
 * [Configure annotation to display for build](#configure-annotation-to-display-for-build) 
-* [View annotations](#view-annotations) for an entity via the UI or via the CLI
-* [Edit/delete annotations](#editdelete-annotations)
+* [Filter builds by display annotations](#filter-builds-by-display-annotations)  
+* View annotations for an entity via the [UI](#view-annotations-via-ui) or via the [CLI](#view-annotations-via-cli)
+* [Edit/delete annotations via UI](#editdelete-annotations-via-ui)
 * [Delete annotations in pipeline YAML](#delete-annotations-in-pipeline-yaml)
-
-### Filter builds by annotations
-Filter the Builds list by build annotations to view builds that share the same annotations. This includes both the build display annotation, and other build annotations.  
-Combine this with the [other filters available for builds]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#applying-filters-on-the-build-view) to create a customized view of the Builds page. 
-
-1. In the Codefresh UI, from the sidebar, select [**Builds**](https://g.codefresh.io/builds2){:target="\_blank"}.
-1. From the list of filters, select `annotations`, and select the annotation to filter by from the list.  
-  You can filter by multiple values for the same annotation.
-
-{% include 
-image.html 
-lightbox="true" 
-file="/images/pipeline/codefresh-yaml/annotations/filter-by-build-annotation.png" 
-url="/images/pipeline/codefresh-yaml/annotations/filter-by-build-annotation.png"
-alt="Filter builds by annotations" 
-caption="Filter builds by annotations"
-max-width="70%"
-%}
-
 
 ### Configure annotation to display for build
 Configure an annotation as the display annotation for a build by adding the `display` attribute to the pipeline workflow. When you have large numbers of builds per pipeline, display annotations help group related builds for easy viewing and filtering.  
@@ -269,14 +250,23 @@ caption="Available annotations for build"
 max-width="50%"
 %}
 
+### Filter builds by display annotations
+Filter the Builds list by build annotations to view builds that share the same annotations. This includes both the build display annotation, and other build annotations.  
+Combine this with the [other filters available for builds]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#applying-filters-on-the-build-view) to create a customized view of the Builds page. 
 
+1. In the Codefresh UI, from the sidebar, select [**Builds**](https://g.codefresh.io/builds2){:target="\_blank"}.
+1. From the list of filters, select `annotations`, and select the annotation to filter by from the list.  
+  You can filter by multiple values for the same annotation.
 
-### View annotations via CLI
-
-```shell
-codefresh get annotation <entity> annotate-examples
-```
-where, `<entity>` can be `project`, `pipeline`, or `build`.
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/codefresh-yaml/annotations/filter-by-build-annotation.png" 
+url="/images/pipeline/codefresh-yaml/annotations/filter-by-build-annotation.png"
+alt="Filter builds by annotations" 
+caption="Filter builds by annotations"
+max-width="70%"
+%}
 
 
 ### View annotations via UI 
@@ -289,7 +279,19 @@ where, `<entity>` can be `project`, `pipeline`, or `build`.
 1. From the context menu, select **Annotations**.
 
 
-### Edit/delete annotations
+
+### View annotations via CLI
+
+```shell
+codefresh get annotation <entity> annotate-examples
+```
+where, `<entity>` can be `project`, `pipeline`, or `build`.
+
+
+
+
+
+### Edit/delete annotations via UI
 
 1. From the Projects/Pipelines/Builds page, select the specific project/pipeline/build.
 1. From the context menu, select **Annotations**.
