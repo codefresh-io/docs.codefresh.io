@@ -106,14 +106,14 @@ Here is a description of the information in the Topology view.
 |**Search and View options** | {::nomarkdown}<ul><li>Find a Runtime or its clusters by typing part of the Runtime/cluster name, and then navigate to the entries found. </li> <li>Topology view options: Resize to window, zoom in, zoom out, full screen view.</li></ul> {:/}|
 
 ## Managing provisioned GitOps Runtimes
-* [Configure SSH for runtimes](#configure-ssh-for-runtimes)
+* [Configure SSH for GitOps runtimes](#configure-ssh-for-gitops-runtimes)
 * [(Hybrid GitOps) Configure Deep Links to applications & resources](#hybrid-gitops-configure-deep-links-to-applications--resources)
 * [Reset shared configuration repository for GitOps Runtimes](#reset-shared-configuration-repository-for-gitops-runtimes)
 * [(Hybrid GitOps) Upgrade provisioned Runtimes](#hybrid-gitops-upgrade-provisioned-runtimes)
 * [Uninstall provisioned GitOps Runtimes](#uninstall-provisioned-gitops-runtimes)
 * [Update Git tokens for GitOps Runtimes](#update-git-tokens-for-runtimes)
 
-### Configure SSH for runtimes
+### Configure SSH for GitOps Runtimes
 By default, Git repositories use the HTTPS protocol. You can also use SSH to connect Git repositories by entering the SSH private key.
 
 >When SSH is configured for a runtime, when creating/editing Git-Source applications, you can select HTTPS OR SSH as the protocol to connect to the Git repository. See [Repository URL in Application Source definitions]({{site.baseurl}}/docs/deployment/create-application/#source).
