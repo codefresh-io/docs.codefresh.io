@@ -132,7 +132,7 @@ Copy the SSH private key for your Git provider
 **How to**  
 1. In the Codefresh UI, make sure you are in [GitOps Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
 1. From the **List View**, select the runtime for which to configure SSH.
-1. From the context menu with the additional actions on the right, select **Update Git Runtime Credentials**. 
+1. From the context menu with the additional actions on the top-right, select **Update Git Runtime Credentials**. 
 
   {% include
  image.html
