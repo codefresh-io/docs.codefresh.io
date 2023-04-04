@@ -5,7 +5,7 @@ group: whats-new
 toc: true
 ---
 
-Starting February 2023, we have the [unified release notes]({{site.baseurl}}/docs/whats-new/release-notes/) for Codefresh pipelines and GitOps.  
+Starting February 2023, we have [unified release notes]({{site.baseurl}}/docs/whats-new/release-notes/) for Codefresh pipelines and Codefresh GitOps.  
 
 
 

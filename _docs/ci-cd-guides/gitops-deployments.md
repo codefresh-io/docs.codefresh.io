@@ -188,7 +188,7 @@ For this guide, we'll connect Docker Hub to Codefresh as the container registry 
 1. For Docker Hub:
     * Complete the [prerequisites]({{site.baseurl}}/docs/gitops-integrations/container-registries/dockerhub/#prerequisites)  
     * Filter by **Container Registry**, select **Docker Hub**, and click **Configure**.
-    * Define the [integration settings for Docker Hub]({{site.baseurl}}/docs/docs/gitops-integrations/container-registries/dockerhub/#docker-hub-gitops-integration-settings-in-codefresh).
+    * Define the [integration settings for Docker Hub]({{site.baseurl}}/docs/gitops-integrations/container-registries/dockerhub/#docker-hub-gitops-integration-settings-in-codefresh).
 
 
 
@@ -439,7 +439,7 @@ You can see the:
 1. The Kubernetes services added or modified during the deployment
 
 
-<!--- ### Rollouts and rollback  -->
+
 
 
 
@@ -489,7 +489,7 @@ install them as a set in your cluster, you can group them in a single Applicatio
 
 As an example, you might find that you always install in your cluster Linkerd, Prometheus and Ambassador. You can group all of them in a single Application and deploy them all at once.
 
-You can find an existing example of app-of-apps at [https://github.com/argoproj/argocd-example-apps/tree/master/apps](https://github.com/argoproj/argocd-example-apps/tree/master/apps){:target="\_blank"}. It uses [Helm]({{site.baseurl}}/docs/example-catlog/cd-examples/helm/), but you can use any other Kubernetes templating mechanism such as [Kustomize]({{site.baseurl}}/docs/example-catalog/cd-examples/deploy-with-kustomize/), or even plain manifests.
+You can find an existing example of app-of-apps at [https://github.com/argoproj/argocd-example-apps/tree/master/apps](https://github.com/argoproj/argocd-example-apps/tree/master/apps){:target="\_blank"}. It uses [Helm]({{site.baseurl}}/docs/example-catalog/cd-examples/helm/), but you can use any other Kubernetes templating mechanism such as [Kustomize]({{site.baseurl}}/docs/example-catalog/cd-examples/deploy-with-kustomize/), or even plain manifests.
 
 Once you deploy the application with Codefresh, the parent app is displayed in the GitOps Overview dashboard with an arrow.
 Clicking the arrow expand and displays the child applications.
