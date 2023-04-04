@@ -179,7 +179,7 @@ You can also define `entity_type` as `image` and don't enter any `entity_id`. In
 ## Managing annotations
 
 Once you add an annotation to an entity, you can do the following:  
-* [Filter builds by annotations](/#filter-builds-by-annotations)  
+* [Filter builds by annotations](#filter-builds-by-annotations)  
 * [Configure annotation to display for build](#configure-annotation-to-display-for-build) 
 * [View annotations](/#view-annotations) for an entity via the UI or via the CLI
 * [Edit/delete annotations](#editdelete-annotations)
@@ -190,7 +190,8 @@ Filter the Builds list by build annotations to view builds that share the same a
 Combine this with the [other filters available for builds]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#applying-filters-on-the-build-view) to create a customized view of the Builds page. 
 
 1. In the Codefresh UI, from the sidebar, select [**Builds**](https://g.codefresh.io/builds2){:target="\_blank"}.
-1. From the list of filters, select `annotations`, and enter the `Key=Value` pair to filter by. For the same Key (name), you can filter by multiple values.
+1. From the list of filters, select `annotations`, and select the annotation to filter by from the list.  
+  You can filter by multiple values for the same annotation.
 
 {% include 
 image.html 
@@ -206,7 +207,7 @@ max-width="70%"
 ### Configure annotation to display for build
 Configure an annotation as the display annotation for a build by adding the `display` attribute to the pipeline workflow. When you have large numbers of builds per pipeline, display annotations help group related builds for easy viewing and filtering.  
 
-For example, annotate builds by environments by configuring the `display` attribute set to `ENV`. All builds for that pipeline display the `ENV` annotation set to whatever environment the build ran on. You can filter the Builds list to view builds by various environments.  
+For example, annotate builds by environments by configuring the `display` attribute set to `ENV`. You can filter the Builds list by `annotations` and `ENV` values to view builds by their environments.  
 
 **Before you begin**  
 * Add at least one annotation to the pipeline
@@ -217,16 +218,27 @@ For example, annotate builds by environments by configuring the `display` attrib
 1. In the **Workflow** tab, scroll down to the list of annotations in the YAML.
 1. At the end of the annotation list, add `display`, and set it one of the annotations defined, for example, `ENV`.
 
-{% include 
-image.html 
-lightbox="true" 
-file="/images/pipeline/codefresh-yaml/annotations/display-build-annotation.png" 
-url="/images/pipeline/codefresh-yaml/annotations/display-build-annotation.png"
-alt="Configuring display annotation for pipeline builds" 
-caption="Configuring display annotation for pipeline builds"
-max-width="70%"
-%}
-
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+steps:
+  test:
+    title: Test
+    image: ubuntu:latest
+    commands:
+     - echo "Tests"
+    on_success:
+      annotations:
+        set:
+          - annotations:
+            - success: true
+            - ENV: 'sec'
+            - user: 'kim'
+            - NUM: 1
+            display: ENV
+{% endraw %}
+{% endhighlight yaml %}
 {:start="5"}
 1. Click **Save** and **Run**.
 1. Switch to the Builds page. 
@@ -244,7 +256,7 @@ max-width="70%"
 %}
   
 {:start="7"}
-1. To display all annotations available for the build, click the number.
+1. To view all annotations available for the build, click the number.
 
 
 {% include 
