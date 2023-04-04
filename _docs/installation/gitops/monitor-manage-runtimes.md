@@ -28,7 +28,7 @@ Manage provisioned GitOps Runtimes:
 * [Add managed clusters to GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster/)
 * [Add and manage Git Sources for GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)
 * [Configure SSH for GitOps runtimes](#configure-ssh-for-gitops-runtimes)
-* [(Hybrid GitOps) Configure Deep Links to applications/resources](#hybrid-gitops-configure-deep-links-to-applicationsresources)
+* [(Hybrid GitOps) Configure Deep Links to applications/resources](#hybrid-gitops-configure-deep-links-to-applications--resources)
 * [Reset shared configuration repository for GitOps Runtimes](#reset-shared-configuration-repository-for-gitops-runtimes)
 * [(Hybrid GitOps) Upgrade provisioned Runtimes](#hybrid-gitops-upgrade-provisioned-runtimes)
 * [Uninstall provisioned GitOps Runtimes](#uninstall-provisioned-gitops-runtimes)
@@ -165,8 +165,7 @@ Copy the SSH private key for your Git provider
 
 Deep Links is an Argo CD feature that redirects users to third-party applications/platforms by surfacing links to the same in Argo CD projects, applications, and resources. Read all about it in [Argo CD Deep Links](https://argo-cd.readthedocs.io/en/stable/operator-manual/deep_links/){:target="\_blank"}.
 
-In Codefresh, you can configure deep links to third-party applications/platforms in the `argocd-cm` ConfigMap, located in the repo to which you installed the Hybrid GitOps runtime. 
-
+In Codefresh, you can configure deep links to third-party applications/platforms in the `argocd-cm` ConfigMap, located in the repo to which you installed the Hybrid GitOps runtime.  
 When configured, deep links are displayed in the application's Current State tab, in Tree view. See [Working with resources in Tree View]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/#working-with-resources-in-tree-view).
 
 >Deep link configuration in Codefresh requires runtime v0.1.27 or higher.
