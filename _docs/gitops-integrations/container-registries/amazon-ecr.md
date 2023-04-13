@@ -19,8 +19,8 @@ You can set up the integration with Amazon ECR in one of two modes:
   Access keys consist of an access key ID and a secret access key, used to authenticate and authorize API requests to AWS services for a specific user.
   Unlike IAM roles, access keys are long-term credentials, without a default expiration date.
 
->Amazon ECR integration with IAM Role is supported only for Hybrid GitOps.  
-  Access Key integration is supported for both Hosted and Hybrid GitOps.
+>Amazon ECR integration with IAM Role is supported only for Hybrid GitOps.
+  Access Key integration is supported for both Hosted and Hybrid GitOps. Access Key integration requires runtime version 0.1.27 or higher. 
 
 
 Both IAM and access key modes use AWS Identity and Access Management (IAM) to create the integration with Amazon ECR.  
