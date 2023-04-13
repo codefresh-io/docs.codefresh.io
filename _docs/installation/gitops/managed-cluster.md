@@ -182,6 +182,7 @@ spec:
 The new cluster is registered to the GitOps Runtime as a managed cluster.  
 
 ## Add a managed cluster with Kustomize
+
 Create a `kustomization.yaml` file with the information shown in the example below, and run `kustomize build` on it.  
 
 ```yaml
@@ -222,6 +223,9 @@ secretGenerator:
 resources:
   - https://github.com/codefresh-io/csdp-official/add-cluster/kustomize?ref=<runtimeVersion>
 ```
+
+You can get the `ingressUrl` value of your runtime by running `cf runtime list` in your terminal
+after authenticating to the [Codefresh GitOps CLI]({{site.baseurl}}/docs/installation/cli/). 
 
 ## Work with managed clusters 
 Work with managed clusters in either the Topology or List Runtime views. For information on Runtime views, see [Runtime views]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#gitops-runtime-views).  
