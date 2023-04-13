@@ -82,7 +82,7 @@ use it.
    max-width="50%" 
    %}
 
-### Related articles
+## Related articles
 [CI GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/)  
 [Issue-tracking GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/)  
 [Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration/)  
