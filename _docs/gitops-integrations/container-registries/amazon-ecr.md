@@ -87,7 +87,7 @@ The table describes the arguments required for GitOps integrations with Amazon E
    file="/images/integrations/aws/ecr-role-access-key-int-settings.png" 
    url="/images/integrations/aws/ecr-role-access-key-int-settings.png" 
    alt="Amazon ECR for image enrichment" 
-   caption="Amazon ECR for image enrichment"
+   caption="Amazon ECR integration for image enrichment"
    max-width="50%" 
    %}
    
