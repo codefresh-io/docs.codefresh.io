@@ -220,9 +220,8 @@ secretGenerator:
   namespace: kube-system
  
 resources:
-  - https://github.com/codefresh-io/cli-v2/manifests/add-cluster/kustomize?ref=<runtimeVersion>
+  - https://github.com/codefresh-io/csdp-official/add-cluster/kustomize?ref=<runtimeVersion>
 ```
-
 
 ## Work with managed clusters 
 Work with managed clusters in either the Topology or List Runtime views. For information on Runtime views, see [Runtime views]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#gitops-runtime-views).  
