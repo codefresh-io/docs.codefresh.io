@@ -1,0 +1,43 @@
+# How-to: Adding a new AWS EKS cluster to Codefresh programmatically
+
+#
+
+## Overview
+
+As part of your pipeline, you create a new cluster and want to add it to
+Codefresh
+
+## Details
+
+  1. Note the name of the cluster in a variable, such as `$K8S_NAME`.
+  2. After the cluster is created, run the following API call, replacing all with your values or variables:
+
+    
+    
+    add_new_cluster:
+        image: <your-image>
+        commands:
+            - curl -s --fail \
+                -H "Authorization: <CF_API_KEY>" \
+                -H "content-type: application/json;charset=UTF-8" \
+                -d \
+                "{
+                    \"type\": \"sat\",
+                    \"selector\": \"<K8S_NAME>\",
+                    \"host\": \"<K8S_HOST>\",
+                    \"clientCa\": \"<K8S_CA>\",
+                    \"serviceAccountToken\": \<$K8S_TOKEN\>,
+                    \"provider\": \"local\",
+                    \"providerAgent\": \"eks\"
+                }" \
+                "$CF_API_HOST/api/clusters/local/cluster"
+    
+
+_**Note** :_ A more detailed [EKS workflow can be found
+here](https://github.com/codefresh-io/eks-installer).
+
+## Related Items
+
+[EKS Installer](https://github.com/codefresh-io/eks-installer) [API
+documentation - clusters](https://g.codefresh.io/api/#tag/Clusters)
+
