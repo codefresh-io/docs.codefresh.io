@@ -216,7 +216,7 @@ Uninstall all the existing runtimes in your account, and then run the reset comm
 
 **How to**  
 * Run:  
-  `cf config --reset-shared-config-repo`
+  `cf config reset-shared-config-repo`
 
 
 ### (Hybrid GitOps) Upgrade provisioned Runtimes
