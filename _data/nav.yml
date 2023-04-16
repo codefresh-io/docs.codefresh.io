@@ -86,6 +86,8 @@
       url: "/helm-best-practices" 
     - title: Kubernetes templating
       url: "/kubernetes-templating" 
+    - title: GitOps deployments
+      url: "/gitops-deployments"       
     - title: Image enrichment
       url: "/image-enrichment" 
 
@@ -116,10 +118,18 @@
           url: "/build-and-push-an-image"
         - title: Build an Image with build arguments
           url: "/build-an-image-with-build-arguments"
+        - title: Create a Docker image for PHP
+          url: "/php"        
         - title: Share data between steps
           url: "/shared-volumes-between-builds"
         - title: Upload/download from Google Storage buckets
           url: "/uploading-or-downloading-from-gs"
+        - title: Compile and test a C application
+          url: "/c-make"
+        - title: Compile and test a C++ application
+          url: "/cpp-cmake"
+        - title: Compile and release a Go application
+          url: "/goreleaser"
         - title: Call other pipelines
           url: "/call-child-pipelines"
         - title: Run unit tests
@@ -495,7 +505,7 @@
           url: "/hosted-runtime" 
         - title: Hybrid GitOps Runtime
           url: "/hybrid-gitops"  
-        - title: Monitoring & managing GitOps Runtimes
+        - title: Managing & monitoring GitOps Runtimes
           url: "/monitor-manage-runtimes"
         - title: Add external clusters to GitOps Runtimes
           url: "/managed-cluster" 
@@ -626,6 +636,8 @@
           url: "/build-step-no-such-file-or-directory"
         - title: No Dockerfile found
           url: "/no-dockerfile-found"
+        - title: Failed to create container of image
+          url: "/create-container-failure"
         - title: Failed to tag image
           url: "/could-not-tag-image"
         - title: Error Code 137
@@ -654,8 +666,9 @@
           url: "/paging-issues-builds-images"
     - title: Deprecating personal Git integrations
       url: "/personal-git-deprecation"
-    - title: GitOPs runtimes
+    - title: GitOps runtimes
       url: "/runtime-issues"
+
 
 
 - title: Terms and Privacy Policy

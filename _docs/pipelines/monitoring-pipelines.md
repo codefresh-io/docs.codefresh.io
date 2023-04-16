@@ -8,9 +8,9 @@ toc: true
 ---
 
 
-All pipeline activity in Codefresh can be viewed in the *Builds* tab. 
-* The global build view shows builds for all projects  across your organization
-* The project-based view from the settings inside an individual project shows the builds for the selected project
+View activity for Codefresh pipelines in in the **Builds** tab. 
+* Global build view: The default view, displays builds for all pipelines for all projects across your organization.
+* Project build view: Selecting a project displays the builds for the pipelines in the project.
 
 Both views have the same controls and filters.
 
@@ -61,16 +61,20 @@ max-width="50%"
 
 The available filters are:
 
-* *Pipeline* - any of the pipelines available.
-* *Provider* - type of [Git provider]({{site.baseurl}}/docs/integrations/git-providers/).
-* *Repository* - Git repository from the attached [trigger]({{site.baseurl}}/docs/pipelines/triggers/).
-* *Type* - build, [launch a test environment]({{site.baseurl}}/docs/quick-start/ci-quick-start/on-demand-environments/#launch-a-docker-image-using-codefresh).
-* *Branch* - any of the available branches from the attached Git trigger.
-* *Committer* - person that made the commit that triggered the build.
-* *Environment* - which [environment]({{site.baseurl}}/docs/deployments/kubernetes/environment-dashboard/) was affected.
-* *Status* - success, error, in-progress, pending, terminated etc. A Pending status can also indicate that [pipeline build execution has been paused]({{site.baseurl}}/docs/pipelines/configuration/pipeline-settings/#pause-pipeline-executions) for the account.
-* *Trigger type* - what type of trigger was responsible for this build
-* *Git event* - in the case of [Git triggers]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/) the exact event
+* **Pipeline**: Any of the pipelines available.
+* **BoardId**: The name of the Helm board
+* **Provider** : The [Git provider]({{site.baseurl}}/docs/integrations/git-providers/).
+* **Repository**: Git repository with the [trigger]({{site.baseurl}}/docs/pipelines/triggers/).
+* **Type**: Build (user-initiated), or system (auto-initiated), see [launch a test environment]({{site.baseurl}}/docs/quick-start/ci-quick-start/on-demand-environments/#launch-a-docker-image-using-codefresh).
+* **Branch**: Any of the available branches from the attached Git trigger.
+* **Committer**: The user who made the commit that triggered the build.
+* **Environment**: The [environment]({{site.baseurl}}/docs/deployments/kubernetes/environment-dashboard/) affected by the build.
+* **Status**: Success, error, in-progress, pending, terminated etc. A Pending status can also indicate that [pipeline build execution has been paused]({{site.baseurl}}/docs/pipelines/configuration/pipeline-settings/#pause-pipeline-executions) for the account.
+* **Trigger type**: The type of trigger that caused the build to run.
+* **Git event**: For [Git triggers]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/), the exact event that triggered the build.
+* **Trigger-name**: The name of the trigger that triggered the build.
+* **Annotations**: The [display annotation]({{site.baseurl}}/docs/pipelines/annotations/#configure-annotation-to-display-for-build) assigned to the build, defined as a key=value pair. For the same annotation, you can filter by multiple values.
+
 
 Notice that all filters are multiple-choice so you can select multiple values for each filter category.
 At any given point you can see all the active filters on top of the screen.
@@ -87,7 +91,7 @@ max-width="50%"
 
 You can easily remove active filters, by clicking on them and adding/removing values.
 
-On the right hand side you can also find a filtering toolbar with time options:
+To the right, you have the date range options:
 
 {% include 
 image.html 
@@ -337,7 +341,7 @@ max-width="70%"
   * Memory usage: View memory usage (Y-axis) by time (X-axis) for the duration of the build. 
   * Disk usage: View disk usage (Y-axis) by time (X-axis) for the duration of the build. The red line is set at 90% of the maximum disk space.   
     To see the precise usage at different points in time, mouse over the dots.   
-    Viewing the actual disk usage for a build during its run allows you to better gauge and define the [minimum disk space required for the build volume]({{site.baseurl}}/docs/pipelines/pipelines/#runtime).
+    Viewing the actual disk usage for a build during its run allows you to better gauge and define the [minimum disk space required for the build volume]({{site.baseurl}}/docs/pipelines/pipelines/#build-runtime).
 
 {% include 
 image.html 
@@ -368,39 +372,50 @@ max-width="70%"
 
 ### Restarting the pipeline 
 
-You can choose to restart any pipeline by clicking the button at the top right corner.
+You can restart a failed pipeline either from the beginning or from a failed step.
+
+* Restart from beginning  
+  Restarts the pipeline with the **same** state as in its original execution, including the original Git commit. 
+  >To restart the pipeline with a _new_ state, use the **Run** button in the [pipeline editor]({{site.baseurl}}/docs/pipelines/pipelines/#using-the-inline-pipeline-editor), and select any of the available [triggers]({{site.baseurl}}/docs/pipelines/triggers/).
+
+* Restart from failed step  
+  Restarts the pipeline from the step that failed in the previous execution. Similar to restarting from the beginning, restarting from a failed step also restarts the pipeline with the same state at that point in time, including the original Git commit. You can restart from the Builds page or directly from the specific step that failed.
+
+
+  
+    >The option to restart from a failed step is available only when **Permit restart pipeline from failed step** is enabled in the pipeline's settings. See [Restart pipeline option in Policies]({{site.baseurl}}/docs/pipelines/pipelines/#policies).<br>  
+       If your pipeline has some flaky steps, you can also use the [retry syntax]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#retrying-a-step) in your YAML instead of restarting them manually each time they fail.
+
+**Restart pipeline from Builds view**
+
+* In the row with the pipeline to restart, click **Restart**, and then select the required option.
+  >Disabled **From Failed Steps** indicates that the option is not enabled for the pipeline.
+
 
 {% include 
 image.html 
 lightbox="true" 
 file="/images/pipeline/monitoring/restart-pipeline.png" 
 url="/images/pipeline/monitoring/restart-pipeline.png"
-alt="Restart a pipeline" 
+alt="Builds view: Restart a pipeline" 
 caption="Restart a pipeline"
 max-width="70%"
 %}
 
->It is important to note that "Restart from beginning" will restart a pipeline with the **same** state that it had in its original execution (including the original git commit). If you want to execute a pipeline again with a new state instead, you need to use the *Run* button in the [pipeline editor]({{site.baseurl}}/docs/pipelines/pipelines/#using-the-inline-pipeline-editor) and selecting any of the available [triggers]({{site.baseurl}}/docs/pipelines/triggers/).
-
-
-
-If the pipeline has failed, you can choose to restart it only from the failed step and onwards.
-
-You can also restart from a failed step right from the graphical view:
+**Restart from step view**
+* Click the pipeline to view its steps. 
+* Go to the failed step, right-click and then select **Restart from this step**.
 
 {% include 
 image.html 
 lightbox="true" 
 file="/images/pipeline/monitoring/restart-failed.png" 
 url="/images/pipeline/monitoring/restart-failed.png"
-alt="Restart from a failed step" 
-caption="Restart from a failed step"
+alt="Step view: Restart from failed step" 
+caption="Step view: Restart from failed step"
 max-width="70%"
 %}
 
->Notice again that restarting a pipeline from a failed step means restarting the pipeline with the **same** state that it had at the point in time (including the original git commit).
-
-If your pipeline has some flaky steps, you can also use the [retry syntax]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#retrying-a-step) in your yaml instead of restarting them manually each time they fail.
 
 
 ## Monitoring pipelines outside the Codefresh UI
@@ -424,8 +439,8 @@ caption="Pull Request Status"
 max-width="50%" 
 %}
 
-If you have setup a [Git trigger]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/) in Codefresh then by default this happens automatically without any other configuration
-for all automated commits (that are coming from webhooks).
+If you have set up a [Git trigger]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/) in Codefresh, then by default this happens automatically without any other configuration
+for all automated commits from webhooks.
 
 If you start a build manually then by default the git status will **not** be updated (i.e. the result of the pipeline
 will not affect the status of Pull request)

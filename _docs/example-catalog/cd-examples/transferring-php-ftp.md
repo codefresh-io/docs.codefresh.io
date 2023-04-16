@@ -77,8 +77,7 @@ steps:
       commands:
         - "composer install --ignore-platform-reqs --no-interaction --no-plugins --no-scripts --prefer-dist"
     stage: "install"
-  steps:
-    ftp_transfer:
+  ftp_transfer:
     title: "Transferring application to VM via ftp..."
     type: "freestyle" 
     working_directory: "./ftp-php-app"

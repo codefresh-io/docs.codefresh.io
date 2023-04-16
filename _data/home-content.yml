@@ -126,6 +126,8 @@
       localurl: /docs/ci-cd-guides/helm-best-practices/  
     - title: Templating for Kubernetes
       localurl: /docs/ci-cd-guides/kubernetes-templating/ 
+    - title: GitOps deployments
+      localurl: /docs/ci-cd-guides/gitops-deployments/
     - title: Image enrichment
       localurl: /docs/ci-cd-guides/image-enrichment/    
 
@@ -150,9 +152,13 @@
     - title: Creating pipelines
       localurl: /docs/pipelines/pipelines/  
     - title: Steps in pipelines
-      localurl: /docs/pipelines/steps/      
+      localurl: /docs/pipelines/steps/ 
+    - title: Variables in pipelines
+      localurl: /docs/pipelines/variables/         
     - title: Triggers in pipelines
       localurl: /docs/pipelines/triggers/
+    - title: Annotations in pipelines
+      localurl: /docs/pipelines/annotations/
     - title: Monitoring pipelines
       localurl: /docs/pipelines/monitoring-pipelines/
     - title: Advanced workflows for pipelines

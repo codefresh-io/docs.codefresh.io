@@ -491,9 +491,18 @@ Notice that in that case the sequence of events is the following
 
 Ideally, your application should be able to access other services by other DNS names that are fully configurable (this is a very good practice for [integration tests]({{site.baseurl}}/docs/testing/integration-tests/) as well).
 
-Sometimes, however, and especially in legacy applications, your application might be hardcoded to look at other services at `localhost`.
-In that case, you can use the attribute `shared_host_network: true` on the services definition. Now all linked containers can access each other's services via localhost. 
+Sometimes however, and especially in legacy applications, your application might be hardcoded to look at other services at `localhost`.
+In that case, you can use the attribute `shared_host_network: true` on the services definition. Now all linked containers can access each other's services via `localhost`. 
 When `composition: ./docker-compose.yml` is used, this parameter is supported only in on-premises and hybrid environments. In cloud environments, for security reasons, this parameter is ignored.
+
+>NOTE:  
+  We recommend that you only use this option as a last resort. Hard coding `localhost` as a requirement in your services adds extra constraints to integration tests, especially in dynamic test environments.
+
+
+> WARNING:  
+  The value of `shared_host_network` affects how you access service containers:  
+  * To access all containers on `localhost`, set `shared_host_network` to `true`.
+  * To access all containers by `name`, set `shared_host_network` to `false`.
 
 Here is an example:
 
@@ -548,8 +557,7 @@ steps:
 {% endraw %}      
 {% endhighlight %}
 
-Note: we do recommend you only use this option as a last resort. You should not hardcode "localhost" as a requirement in your services as
-it adds extra constraints with integration tests (and especially with dynamic test environments).
+
 
 
 ## Limitations 

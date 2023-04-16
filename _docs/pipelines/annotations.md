@@ -7,24 +7,61 @@ redirect_from:
 toc: true
 ---
 
-Codefresh supports the annotations of several entities with custom annotations. You can use these annotations to store any optional information that you wish to keep associated with each entity. Examples would be storing the test coverage for a particular build, or a special settings file for a pipeline.
+Codefresh supports adding custom annotations to several entities, such as projects, pipelines, builds, and Docker images.
+Custom annotations can store any optional information you wish to keep associated with an entity. Examples would be storing the test coverage for a particular build, a special settings file for a pipeline, identifying environments for builds.
 
-Currently Codefresh supports extra annotations for:
+You can add, view, and manage annotations:
+* In the Codefresh UI
+* Through the [Codefresh CLI](https://codefresh-io.github.io/cli/annotations/){:target="\_blank"}
+* Directly in Codefresh steps 
 
-* Projects
-* Pipelines
-* Builds 
-* Docker images
 
-You can view/edit annotations using the [Codefresh CLI](https://codefresh-io.github.io/cli/annotations/){:target="\_blank"} or directly in the Codefresh Web UI.
-
->Notice that the syntax shown in this page is deprecated but still supported. For the new syntax,
+>The syntax shown for the step examples in this article is deprecated but still supported. For the new syntax,
 see [hooks in pipelines]({{site.baseurl}}/docs/pipelines/hooks/).
 
 
 ## Adding annotations 
 
-In the most basic scenario, you can use the [post-step operations]({{site.baseurl}}/docs/pipelines/post-step-operations/) of any Codefresh [step]({{site.baseurl}}/docs/pipelines/steps/) to add annotations:
+You can add annotations to projects, pipelines, builds, and Docker images. The method is identical for all entities. 
+Every annotation has a name, type, and value.
+
+> Annotation names must start with a letter, can be alphanumeric, and include the underscore character. 
+
+
+### Add annotations in the Codefresh UI
+
+1. In the Codefresh UI, from the sidebar, select the entity for which to add annotations:  
+  * [**Projects**](https://g.codefresh.io/projects/){:target="\_blank"}
+  * [**Pipelines**](https://g.codefresh.io/pipelines/all/){:target="\_blank"}
+  * [**Builds**](https://g.codefresh.io/builds2){:target="\_blank"}
+1. From the Projects/Pipelines/Builds page, select the specific project/pipeline/build.
+1. Click the context menu on the right, and select **Annotations**.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/codefresh-yaml/annotations/annotation-menu.png" 
+url="/images/pipeline/codefresh-yaml/annotations/annotation-menu.png"
+alt="Add annotation in Codefresh UI" 
+caption="Add annotation in Codefresh UI"
+max-width="70%"
+%}
+
+{:start="4"}
+1. Do the following:
+    1. Click **Add Annotation**.
+    1. In the **Annotation Key** field, type the name of the annotation. 
+    1. Select the annotation type from the **Annotation Type** dropdown.
+    1. Enter the value of the annotation.
+1. To confirm, click **Save**.
+
+### Add annotations to a Codefresh step
+
+In the most basic scenario, use the [post-step operations]({{site.baseurl}}/docs/pipelines/post-step-operations/) of any Codefresh [step]({{site.baseurl}}/docs/pipelines/steps/) to add annotations.
+
+You can add annotations for any entity, not just the current pipeline. You can add annotations to a project, a different pipeline and build, as shown in the examples below.
+
+#### Example 1: Annotation for project
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -49,21 +86,22 @@ steps:
 {% endhighlight %}
 
 
-This pipeline adds three annotations to a project called `annotate-examples`. The name of each annotation can only contain letters (upper and lowercase), numbers and the underscore character. The name of each annotation must start with a letter.
+This pipeline adds three annotations to a project called `annotate-examples`. 
 
-
-For the `entity_id` value you can also use an actual ID instead of a name. The `entity_id` and `entity_type` are define which entity will hold the annotations. The possible entity types are:
+For the `entity_id` value you can also use an actual ID instead of a name. The `entity_id` and `entity_type` define  which entity will hold the annotations. The possible entity types are:
 
 * `project` (for a project, even a different one)
 * `pipeline` (for a pipeline, even a different one)
 * `build` (for a build, even a different one)
 * `image` (for a docker image)
 
-If you don't define them, then by default the current build will be used with these values:
+If you don't define them, then by default the current build is used with these values:
 * `entity_id` is `{% raw %}${{CF_BUILD_ID}}{% endraw %}` (i.e. the current build)
 * `entity_type` is `build`
 
-Here is another example where we add annotations to another pipeline as well as another build (instead of the current one)
+#### Example 2: Add annotation for a different pipeline and build
+Here is another example where we add annotations to a different pipeline and a different build (instead of the current one).  
+You can store annotations for any Codefresh entity, and not just the ones that are connected to the build where you are defining the annotation.
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -92,78 +130,14 @@ steps:
 {% endraw %}            
 {% endhighlight %}
 
-It is therefore possible to store annotations on any Codefresh entity (and not just the ones that are connected to the build that is adding annotations).
-
-## Viewing/editing annotations
-
-You can view the annotations using the Codefresh CLI
-
-```shell
-codefresh get annotation project annotate-examples
-```
-
-You can also view annotations within the Codefresh UI.
-
-For build annotations click the *Annotations* on the build details:
-
-{% include 
-image.html 
-lightbox="true" 
-file="/images/pipeline/codefresh-yaml/annotations/view-build-annotations.png" 
-url="/images/pipeline/codefresh-yaml/annotations/view-build-annotations.png"
-alt="Viewing Build annotations" 
-caption="Viewing Build annotations"
-max-width="80%"
-%}
-
-For pipeline annotations click the *Annotations* button in the pipeline list view:
-
-{% include 
-image.html 
-lightbox="true" 
-file="/images/pipeline/codefresh-yaml/annotations/view-pipeline-annotations.png" 
-url="/images/pipeline/codefresh-yaml/annotations/view-pipeline-annotations.png"
-alt="Viewing Pipeline annotations" 
-caption="Viewing Pipeline annotations"
-max-width="80%"
-%}
-
-For project annotations click the *Annotations* button in the project list view:
-
-{% include 
-image.html 
-lightbox="true" 
-file="/images/pipeline/codefresh-yaml/annotations/view-project-annotations.png" 
-url="/images/pipeline/codefresh-yaml/annotations/view-build-annotations.png"
-alt="Viewing project annotations" 
-caption="Viewing project annotations"
-max-width="80%"
-%}
-
-In all cases you will see a dialog with all existing annotations. 
 
 
-{% include 
-image.html 
-lightbox="true" 
-file="/images/pipeline/codefresh-yaml/annotations/edit-project-annotations.png" 
-url="/images/pipeline/codefresh-yaml/annotations/edit-project-annotations.png"
-alt="Editing annotations" 
-caption="Editing annotations"
-max-width="50%"
-%}
+## Add annotations to the current build/image
 
-You can add additional annotations manually by clicking the *Add annotation* button and entering:
+Define annotations at the root level of the `build` step to add an annotation to the current build or image without defining the entity type and ID.
 
-* The name of the annotation
-* The type of the annotation (text, number, percentage, link, boolean)
-* The desired value
+This method provides a way to add annotations without the entity type and ID, compared to post-step operations where you explicitly deifne the target type and ID.
 
-Click *Save* to apply your changes.
-
-## Complex annotation values
-
-Apart from scalar values, you can also store more complex expressions in annotations. You have access to all [Codefresh variables]({{site.baseurl}}/docs/pipelines/variables/), text files from the build and even evaluations from the [expression syntax]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/#condition-expression-syntax).
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -174,36 +148,172 @@ steps:
     title: Cloning main repository...
     type: git-clone
     repo: 'kostis-codefresh/nestjs-example'
-    revision: '${{CF_REVISION}}'
-  my_custom_step:
-    title: Complex annotations
-    image: alpine:3.9
-    commands:
-     - echo "Hello"
-     - echo "Sample content" > /tmp/my-file.txt
-    on_finish: 
-      annotations:
-        set:
-          - entity_id: annotate-examples/simple
-            entity_type: pipeline
-            annotations:
-              - qa: pending
-              - commit_message: ${{CF_COMMIT_MESSAGE}}
-              - is_main_branch: 
-                  evaluate: "'${{CF_BRANCH}}' == 'main'"
-              - my_json_file: "file:/tmp/my-file.txt"  
-              - my_docker_file: "file:Dockerfile" 
+    revision: 'master'
+  MyAppDockerImage:
+    title: Building Docker Image
+    type: build
+    image_name: my-app-image
+    working_directory: ./
+    tag: 'sample'
+    dockerfile: Dockerfile
+    annotations:
+      set:
+        - annotations:
+          - my_number_annotation: 9999
+          - my_empty_annotation
+          - my_docker_file: "file:Dockerfile"
+          - my_text_annotation: simple_text
 {% endraw %}            
 {% endhighlight %}
 
->Notice that this pipeline is using dynamic git repository variables, so it must be linked to a least one [Git trigger]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/) in order to work.
+After running this pipeline at least once, you can retrieve the annotations from any previous build by using the respective ID:
 
-The last two annotations add the text of a file as a value. You can define an absolute or relative path. No processing is done on the file before being stored. If a file is not found, the annotation will still be added verbatim.
-We suggest you only store small text files in this manner as annotations values.
+```shell
+codefresh get annotation build 5ce26f5ff2ed0edd561fa2fc
+```
 
-## Removing annotations
+You can also define `entity_type` as `image` and don't enter any `entity_id`. In this case the image created from the build step will be annotated.
 
-You can also remove annotations by mentioning their name:
+
+
+## Managing annotations
+
+Once you add an annotation to an entity, you can do the following:  
+* [Configure annotation to display for build](#configure-annotation-to-display-for-build) 
+* [Filter builds by display annotations](#filter-builds-by-display-annotations)  
+* View annotations for an entity via the [UI](#view-annotations-via-ui) or via the [CLI](#view-annotations-via-cli)
+* [Edit/delete annotations via UI](#editdelete-annotations-via-ui)
+* [Delete annotations in pipeline YAML](#delete-annotations-in-pipeline-yaml)
+
+### Configure annotation to display for build
+Configure an annotation as the display annotation for a build by adding the `display` attribute to the pipeline workflow. When you have large numbers of builds per pipeline, display annotations help group related builds for easy viewing and filtering.  
+
+For example, annotate builds by environments by configuring the `display` attribute set to `ENV`. You can filter the Builds list by `annotations` and `ENV` values to view builds by their environments.  
+
+**Before you begin**  
+* Add at least one annotation to the pipeline
+
+**How to**  
+1. In the Codefresh UI, from the sidebar, select [**Pipeline**](https://g.codefresh.io/builds2){:target="\_blank"}.
+1. Select the pipeline for which to configure the build display annotation.
+1. In the **Workflow** tab, scroll down to the list of annotations in the YAML.
+1. At the end of the annotation list, add `display`, and set it one of the annotations defined, for example, `ENV`.
+
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+steps:
+  test:
+    title: Test
+    image: ubuntu:latest
+    commands:
+     - echo "Tests"
+    on_success:
+      annotations:
+        set:
+          - annotations:
+            - success: true
+            - ENV: 'sec'
+            - user: 'kim'
+            - NUM: 1
+            display: ENV
+{% endraw %}
+{% endhighlight yaml %}
+{:start="5"}
+1. Click **Save** and **Run**.
+1. Switch to the Builds page. 
+  The display annotation is shown for the build. 
+  The number to the right indicates that the build has additional annotations. 
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/codefresh-yaml/annotations/builds-list-with-display-annotation.png" 
+url="/images/pipeline/codefresh-yaml/annotations/builds-list-with-display-annotation.png"
+alt="Pipeline builds with display annotations" 
+caption="Pipeline builds with display annotations"
+max-width="70%"
+%}
+  
+{:start="7"}
+1. To view all annotations available for the build, click the number.
+
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/codefresh-yaml/annotations/view-annotation-list.png" 
+url="/images/pipeline/codefresh-yaml/annotations/view-annotation-list.png"
+alt="Available annotations for build" 
+caption="Available annotations for build"
+max-width="50%"
+%}
+
+### Filter builds by display annotations
+Filter the Builds list by build annotations to view builds that share the same annotations. This includes both the build display annotation, and other build annotations.  
+Combine this with the [other filters available for builds]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#applying-filters-on-the-build-view) to create a customized view of the Builds page. 
+
+1. In the Codefresh UI, from the sidebar, select [**Builds**](https://g.codefresh.io/builds2){:target="\_blank"}.
+1. From the list of filters, select `annotations`, and select the annotation to filter by from the list.  
+  You can filter by multiple values for the same annotation.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/codefresh-yaml/annotations/filter-by-build-annotation.png" 
+url="/images/pipeline/codefresh-yaml/annotations/filter-by-build-annotation.png"
+alt="Filter builds by annotations" 
+caption="Filter builds by annotations"
+max-width="70%"
+%}
+
+
+### View annotations via UI 
+
+1. In the Codefresh UI, from the sidebar, select the entity for which to view annotations: 
+  * [**Projects**](https://g.codefresh.io/projects/){:target="\_blank"}
+  * [**Pipelines**](https://g.codefresh.io/pipelines/all/){:target="\_blank"}
+  * [**Builds**](https://g.codefresh.io/builds2){:target="\_blank"}
+1. From the Projects/Pipelines/Builds page, select the specific project/pipeline/build.
+1. From the context menu, select **Annotations**.
+
+
+
+### View annotations via CLI
+
+```shell
+codefresh get annotation <entity> annotate-examples
+```
+where, `<entity>` can be `project`, `pipeline`, or `build`.
+
+
+
+
+
+### Edit/delete annotations via UI
+
+1. From the Projects/Pipelines/Builds page, select the specific project/pipeline/build.
+1. From the context menu, select **Annotations**.
+1. From the list of annotations, click the context menu of the annotation to edit or delete.
+1. Select **Edit** or **Delete**, and modify or delete the annotation.
+
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/codefresh-yaml/annotations/edit-delete-annotation.png" 
+url="/images/pipeline/codefresh-yaml/annotations/edit-delete-annotation.png"
+alt="Edit/delete annotations" 
+caption="Edit/delete annotations"
+max-width="50%"
+%}
+
+### Delete annotations in pipeline YAML
+
+Delete annotations by defining them by name in the YAML with `unset`. 
+
+>Use `unset` annotation with all post-step operations, `on_success`, `on_fail`, `on_finish`.
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -245,18 +355,14 @@ steps:
 
 You can also use both `unset` and `set` block in a single `annotations` block. And of course, you can remove annotations from multiple entities.
 
-The `unset` annotation can be used with all post-step operations (`on_success`, `on_fail`, `on_finish`).
 
 
-## Adding annotations to the current build/image
 
-As a convenience feature:
+## Complex annotation values
 
-1. If your pipeline has a build step
-1. If you want to add annotations to the present build or image
+Apart from scalar values, you can also store more complex expressions in annotations, using [Codefresh variables]({{site.baseurl}}/docs/pipelines/variables/), text files from the build, and even evaluations from  [conditional expressions]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/#condition-expression-syntax).
 
-you can also define annotations in the root level of the build step and not mention the entity id and type. Annotations will then be added in the present build.
-
+>The pipeline in this example uses dynamic Git repository variables. For the pipeline to work, it must be linked to least one [Git trigger]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/).
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -267,34 +373,37 @@ steps:
     title: Cloning main repository...
     type: git-clone
     repo: 'kostis-codefresh/nestjs-example'
-    revision: 'master'
-  MyAppDockerImage:
-    title: Building Docker Image
-    type: build
-    image_name: my-app-image
-    working_directory: ./
-    tag: 'sample'
-    dockerfile: Dockerfile
-    annotations:
-      set:
-        - annotations:
-          - my_number_annotation: 9999
-          - my_empty_annotation
-          - my_docker_file: "file:Dockerfile"
-          - my_text_annotation: simple_text
+    revision: '${{CF_REVISION}}'
+  my_custom_step:
+    title: Complex annotations
+    image: alpine:3.9
+    commands:
+     - echo "Hello"
+     - echo "Sample content" > /tmp/my-file.txt
+    on_finish: 
+      annotations:
+        set:
+          - entity_id: annotate-examples/simple
+            entity_type: pipeline
+            annotations:
+              - qa: pending
+              - commit_message: ${{CF_COMMIT_MESSAGE}}
+              - is_main_branch: 
+                  evaluate: "'${{CF_BRANCH}}' == 'main'"
+              - my_json_file: "file:/tmp/my-file.txt"  
+              - my_docker_file: "file:Dockerfile" 
 {% endraw %}            
 {% endhighlight %}
 
-After running this pipeline at least once, you can retrieve the annotations from any previous build by using the respective id:
 
-```shell
-codefresh get annotation build 5ce26f5ff2ed0edd561fa2fc
-```
+The last two annotations add the text of a file as a value:
+* You can define an absolute or relative path. 
+* No processing is done on the file before being stored.
+* If a file is not found, the annotation will still be added verbatim.
 
-You can also define `entity_type` as `image` and don't enter any `entity_id`. In this case the image created from the build step will be annotated.
+We suggest you only store small text files in this manner as annotations values.
 
 
-Note that this syntax is optional. You can still define annotations for a build/image or any other entity using the post operations of any step by mentioning explicitly the target id and type.
 
 ## Related articles
 [Image annotations]({{site.baseurl}}/docs/pipelines/docker-image-metadata/)   

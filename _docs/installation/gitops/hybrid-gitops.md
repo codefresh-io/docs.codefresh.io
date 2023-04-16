@@ -18,6 +18,8 @@ If Bitbucker Server is your Git provider, you must also select the specific serv
 
 >To change the Git provider for your Codefresh account after installation, contact Codefresh support.
 
+> If you want to [skip validating the scopes for the provided token](#skip-token-scope-validation), you _must create the repositories for the runtime and for the Git Source before starting the installation_.
+
 
 **Codefresh and Argo CD**  
  The Hybrid GitOps Runtime comprises Argo CD components and Codefresh-specific components. 
@@ -733,12 +735,15 @@ Configure the ingress controller to handle TCP requests.
 </br>
 {:/}
  
-#### Enable report status to cluster 
-By default, the Traefik ingress controller is not configured to report its status to the cluster.  If not configured,  Argo’s health check reports the health status as “progressing”, resulting in a timeout error during installation.  
+#### Enable report health status to cluster 
+By default, the Traefik ingress controller is not configured to report its health status to the cluster or ingress resource.  Argo CD is therefore unable to assess its health status as the `status.loadBalancer.ingress` list does not have a value for `hostname` or `IP`. During installation, ArgoCD reports the health status of the ingress controller  as `progressing`, resulting in a timeout error.
 
-To enable reporting its status, add `publishedService` to `providers.kubernetesIngress.ingressEndpoint`.  
+To prevent the timeout error, add  `publishedService` to your ingress resource configuration . This parameter populates the health status of the ingress resource, enabling Argo CD to report the correct health status during installation.  For details, see [ Traefik Kubernetes Ingress Documentation](https://doc.traefik.io/traefik/providers/kubernetes-ingress/#publishedservice){:target=\_block"}.
+
+Based on your Traefik ingress controller installation, update your ingress resource by adding `publishedService` to `providers.kubernetesIngress.ingressEndpoint`.  
   
-The value must be in the format `"<namespace>/<service-name>"`, where:  
+The value must be in the format  `"<namespace>/<service-name>"`<br>
+where:<br>
   `<service-name>` is the Traefik service from which to copy the status
 
 ```yaml
@@ -847,7 +852,7 @@ If you are not sure which OS to select for `curl`, simply select one, and Codefr
 ## Hybrid GitOps Runtime installation flags
 This section describes the required and optional flags to install a Hybrid GitOps Runtime.
 For documentation purposes, the flags are grouped into:
-* Runtime flags, relating to Runtime, cluster, and namespace requirements
+* Runtime flags, relating to runtime, cluster, and namespace requirements
 * Ingress-less flags, for tunnel-based installation
 * Ingress-controller flags, for ingress-based installation
 * Git provider and repo flags
@@ -881,15 +886,14 @@ The cluster defined as the default for `kubectl`. If you have more than one Kube
 **Access mode**  
 The access mode for the runtime, which can be one of the following:
 * [Tunnel-based]({{site.baseurl}}/docs/installation/runtime-architecture/#tunnel-based-hybrid-gitops-runtime-architecture), for runtimes without ingress controllers. This is the default.
-* [Ingress-based]({{site.baseurl}}/docs/installation/runtime-architecture/#ingress-based-hybrid-gitops-runtime-architecture) for runtimes with ingress contollers. 
+* [Ingress-based]({{site.baseurl}}/docs/installation/runtime-architecture/#ingress-based-hybrid-gitops-runtime-architecture), for runtimes with ingress controllers. 
 
 
-* CLI wizard: Select the access mode from the list displayed.
+* CLI wizard: Select the `Codefresh tunnel-based` or `Ingress-based` access mode from the list displayed. `Tunnel-based` mode is selected by default.  
 * Silent install:  
-  * For tunnel-based, see [Tunnel-based runtime flags](#tunnel-based-runtime-flags)
-  * For ingress-based, add the [Ingress controller flags](#ingress-controller-flags)
+  * For tunnel-based, you can omit the flag as this is the default access mode, and then add the [Tunnel-based runtime flags](#tunnel-based-runtime-flags), as needed.
+  * For ingress-based, add the `--access-mode ingress` flag, and then add the [Ingress controller flags](#ingress-controller-flags), as needed.
 
-  >If you don't specify any flags, tunnel-based access is automatically selected. 
 
 **Shared configuration repository**  
 The Git repository per Runtime account with shared configuration manifests.  
@@ -980,6 +984,16 @@ You can define any of the following Git providers:
 </br>
 {:/}
 
+#### Skip token scopes validation
+Optional.  
+Skip validating scopes for the token provided (for any Git provider). This flag can be useful for GitHub with fine-grained tokens, as these are currently (March 23) still in Beta according to GitHub, and therefore not offically supported by Codefresh. The tokens should work if they have the correct scopes.<br>
+
+To skip token validation, add `--skip-permission-validation true`.
+
+  > IMPORTANT:  
+    Before using this flag, [review the required scopes for runtime tokens]({{site.baseurl}}/docs/reference//git-tokens/#git-runtime-token-scopes). <br><br>
+    When defined, Codefresh does not validate the scopes assigned to the token provided. If the token does not include the scopes required for Codefresh to automatically create the repositories for the runtime and Git Source during installation, the installation will fail.  
+    The alternative is to create both repos before the installation.
 
 
 #### GitHub
@@ -1165,6 +1179,8 @@ where:
 {::nomarkdown}
 </br></br>
 {:/}
+
+
 
 ### Codefresh resource flags
 **Codefresh demo resources**  

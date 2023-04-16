@@ -470,6 +470,14 @@ This major release **deprecates** the following Codefresh managed charts and rep
 
 >Read instructions _before_ the upgrade.
 
+> **Important!**  
+There is a known issue with releases **1.4.0-1.4.6**, where ABAC feature for git contexts doesn't work as expected and has to be disabled.
+Two options to mitigate the issue is to install patch release **1.4.7** or higher, where the issue is fixed or to apply a manual workaround:  
+To do that, sign in with a platform admin user and proceed to  
+`https://<YOUR_ONPREM_URL>/admin/features-management?filter=search:abacGitContext` page  
+On the page enable **System Features** switch (confirm in the pop up window)  
+After that, **abacGitContext** feature appears on the screen, toggle it's switch **ON** and then back to **OFF** state.
+
 ### Update configuration for Postgresql chart
 From version **1.4.0 and higher**, we have deprecated support for the `Codefresh-managed Postgresql` chart. It has been replaced with Bitnami public chart `bitnami/postgresql`.  
 For more information, see [bitnami/postgresql](https://github.com/bitnami/charts/tree/master/bitnami/postgresql){:target="\_blank"}.

@@ -70,7 +70,7 @@ You must define a step type for each step, unless you are using a `freestyle` st
 
 The step names should be unique within the same pipeline. This mainly affects the visualization of the pipeline when it runs.
 
-Each step produces a resource, which you can [reference](https://github.com/codefresh-contrib/python-flask-sample-app/blob/master/codefresh.yml#L23){:target="\_blank"} in other steps, and are executed in real-time. For example, a `freestyle` step can reference an image that was produced by a `build`({{site.baseurl}}/docs/pipelines/steps/build/) step. This allows you to chain steps together and create highly-customized builds.
+Each step produces a resource, which you can [reference](https://github.com/codefresh-contrib/python-flask-sample-app/blob/master/codefresh.yml#L23){:target="\_blank"} in other steps, and are executed in real-time. For example, a `freestyle` step can reference an image that was produced by a [`build`]({{site.baseurl}}/docs/pipelines/steps/build/) step. This allows you to chain steps together and create highly-customized builds.
 
 
 ##### Variables

@@ -89,6 +89,9 @@ Update General or Advanced configuration settings for a deployed application thr
 <br><br>
 {:/}
 
+
+
+
 ## Manually synchronize an application
 Manually synchronize an application to expedite Git-to-cluster sync.  The sync options selected for manual sync override the sync options defined for the application.  
 The sync options, grouped into Revision and Additional Settings, are identical to the Sync options in the General settings when you created the application. 
@@ -120,9 +123,10 @@ The sync options, grouped into Revision and Additional Settings, are identical t
   * **All**: Sync all resources regardless of their sync state.
   * **Out of sync**: Sync _only_ resources that are `Out of sync`.  
 
-{::nomarkdown}
-<br>
-{:/}
+
+<br><br>
+
+
 
 ### Revision settings for application sync
 Revision settings determine the behavior for the branch you select.  

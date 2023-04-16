@@ -6,6 +6,9 @@ redirect_from:
   - /docs/whats-new/
 toc: true
 ---
+
+>From February 2023 we have unified Release Notes for Codefresh Pipelines and Codefresh GitOps. [Check it out]({{site.baseurl}}/docs/whats-new/release-notes/). 
+
 ### January 2023
 
 #### Features and enhancements
@@ -26,7 +29,7 @@ toc: true
 ### November 2022
 
 #### Features and enhancements
-- Set disk space for a pipeline build volume - [documentation]({{site.baseurl}}/docs/pipelines/pipelines/#runtime)
+- Set disk space for a pipeline build volume - [documentation]({{site.baseurl}}/docs/pipelines/pipelines/#build-runtime)
 - Support for latest Kubernetes cluster version 1.24 - [documentation]({{site.baseurl}}/docs/administration/codefresh-runner/#prerequisites)
 
 
@@ -298,7 +301,7 @@ toc: true
 - Use GitHub Actions no longer requires a registry - [documentation]({{site.baseurl}}/docs/integrations/github-actions/#how-it-works)
 - Alternative debugging console - [documentation]({{site.baseurl}}/docs/pipelines/debugging-pipelines/#using-the-alternative-debug-window)
 - User variable priority rules - [documentation]({{site.baseurl}}/docs/pipelines/variables/#user-provided-variables)
-- Secret Storage - [documentation]({{site.baseurl}}docs/pipelines/configuration/secrets-store/)
+- Secret Storage - [documentation]({{site.baseurl}}/docs/pipelines/configuration/secrets-store/)
 - Run multiple kinds of unit tests using fan-in-fan-out parallel pipeline - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/fan-in-fan-out)
 
 ### March 2020

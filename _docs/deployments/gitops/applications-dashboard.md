@@ -265,17 +265,28 @@ max-width="50%"
 The Tree view is designed to impart key information at a glance. Review the sections that follow for pointers to quickly get to what you need in the Tree view.  
 
 **Context menu**  
-Every resource has a context menu that opens on clicking the three dots on the right of the node. The options available differ according to the type of resource.
+Every resource has a context menu that opens on clicking the three dots on the right of the resource. The options available differ according to the type of resource.
+> If you have deep links configured for applications/resources for Hybrid GitOps Runtimes, these are also displayed in the context menu. To configure deep links in Codefresh, see [(Hybrid GitOps) Configure Deep Links to applications & resources]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#hybrid-gitops-configure-deep-links-to-applications--resources).
 
 {% include
 image.html
 lightbox="true"
 file="/images/applications/current-state-resource-context-menu.png"
 url="/images/applications/current-state-resource-context-menu.png"
-alt="Current State Tree view: Resource context menu"
-caption="Current State Tree view: Resource context menu"
+alt="Current State Tree view: Example of context menu for resource"
+caption="Current State Tree view: Example of context menu for resource"
 max-width="50%"
 %}  
+
+{% include
+image.html
+lightbox="true"
+file="/images/applications/current-state-deep-links-context-menu.png"
+url="/images/applications/current-state-deep-links-context-menu.png"
+alt="Current State Tree view: Example of context menu with deep link"
+caption="Current State Tree view: Example of context menu with deep link"
+max-width="50%"
+%}
 
 **Resource info**  
 Mouse over a node to see a tooltip for that resource. For detailed information, select the resource.
@@ -320,8 +331,8 @@ image.html
 lightbox="true"
 file="/images/applications/current-state-tree-resource-filtered.png"
 url="/images/applications/current-state-tree-resource-filtered.png"
-alt="Current State Tree view: Resource inventory filtered by Rollouts"
-caption="Current State Tree view: Resource inventory filtered by Rollouts"
+alt="Current State Tree view: Resource inventory filtered by Secrets"
+caption="Current State Tree view: Resource inventory filtered by Secrets"
 max-width="50%"
 %}
 
@@ -363,18 +374,19 @@ max-width="50%"
 
 ### Health status for application resources
 View and monitor health status of the selected application's resources in the Current State tab, in Tree or List views.  
-Identify the health of an application resource through the color-coded border and the resource-type icon (Tree view), or the textual labels at the right of the resource (List view).  
+Identify the health of an application resource through the icon, as described in the table (Tree view), or the textual labels at the right of the resource (List view).  
 
+The table describes the possible health statuses for an application resource in the Tree view. 
 
 {: .table .table-bordered .table-hover}
-| Health status   | Description | Display in Tree view  | 
+|  Health icon    | Health status | Description  | 
 | --------------  | ------------| ------------------|  
-| **Healthy**     | Resource is functioning as required. | {::nomarkdown}<img src="../../../../images/icons/current-state-healthy.png" display=inline-block">{:/} | 
-| **Progressing** | Resource is not healthy but can become healthy before the timeout occurs.| {::nomarkdown}<img src="../../../../images/icons/current-state-progressing.png" display=inline-block">{:/} | 
-| **Suspended**   | Resource is not functioning, and is either suspended or paused. For example, Cron job or a canary rollout.| {::nomarkdown}<img src="../../../../images/icons/current-state-suspended.png" display=inline-block">{:/} | 
-| **Missing**     | Resource is not present on the cluster. |{::nomarkdown}<img src="../../../../images/icons/current-state-missing.png" display=inline-block">{:/} |                        
-| **Degraded**    | Resource is not healthy, or a timeout occurred before it could reach a healthy status.| {::nomarkdown}<img src="../../../../images/icons/current-state-degraded.png" display=inline-block/>{:/} |
-| **Unknown**   | Resource does not have a health status, or the health status is not tracked in Argo CD. For example,`ConfigMaps` resource types.   | {::nomarkdown}<img src="../../../../images/icons/current-state-unknown.png" display=inline-block">{:/} | 
+| {::nomarkdown}<img src="../../../../images/icons/current-state-healthy.png" display=inline-block">{:/}       | **Healthy**     | Resource is functioning as required.  | 
+| {::nomarkdown}<img src="../../../../images/icons/current-state-progressing.png" display=inline-block">{:/}   | **Progressing** | Resource is not healthy but can become healthy before the timeout occurs. | 
+| {::nomarkdown}<img src="../../../../images/icons/current-state-suspended.png" display=inline-block">{:/}     |  **Suspended**   | Resource is not functioning, and is either suspended or paused. For example, Cron job or a canary rollout.|
+|{::nomarkdown}<img src="../../../../images/icons/current-state-missing.png" display=inline-block">{:/}        | **Missing**     | Resource is not present on the cluster.  |                        
+| {::nomarkdown}<img src="../../../../images/icons/current-state-degraded.png" display=inline-block/>{:/}      | **Degraded**    | Resource is not healthy, or a timeout occurred before it could reach a healthy status. |
+| {::nomarkdown}<img src="../../../../images/icons/current-state-unknown.png" display=inline-block/>{:/}      | **Unknown**   | Resource does not have a health status, or the health status is not tracked in Argo CD. For example, `ConfigMaps` resource types.   |
 
 
 See also [Argo CD's set of health checks](https://argo-cd.readthedocs.io/en/stable/operator-manual/health/){:target="\_blank"}.
@@ -384,17 +396,17 @@ See also [Argo CD's set of health checks](https://argo-cd.readthedocs.io/en/stab
 ### Sync status for application resources
 
 Similar to the health status, the Current State also tracks the sync status of all application resources. The sync status identifies if the live state of the application resource on the cluster is synced with its desired state in Git.   
-Identify the sync status through the icon on the left of the resource name and the color of the resource name (Tree view), or the textual labels at the right of the resource (List view). 
+Identify the sync status through the icon on the left of the resource name (Tree view), or the textual labels at the right of the resource (List view). 
 
-The table describes the possible sync statuses for an application resource, and its representation in the Tree view. 
+The table describes the possible sync states for an application resource in the Tree view. 
 
 {: .table .table-bordered .table-hover}
-| Sync state     | Description |Display in Tree view  |  
+| Sync icon      | Sync state   |Description  |  
 | -------------- | ----------    | ----------     |  
-| **Synced**       | The live state of the resource on the cluster is identical to the desired state in Git.| {::nomarkdown}<img src="../../../../images/icons/current-state-synced.png" display=inline-block">{:/} |                            
-| **Syncing**      | The live state of the resource was not identical to the desired state, and is currently being synced.| {::nomarkdown}<img src="../../../../images/icons/current-state-syncing.png" display=inline-block/>{:/} |  
-| **Out-of-Sync**  | {::nomarkdown}The live state is not identical to the desired state.<br>To sync a resource, select the <b>Sync</b> option from the resource's context menu in Tree view. {:/}| {::nomarkdown}<img src="../../../../images/icons/current-state-out-of-sync.png" display=inline-block">{:/} |  
-| **Unknown**      | The sync status could not be determined. | {::nomarkdown}<img src="../../../../images/icons/current-state-sync-unknown.png" display=inline-block">{:/} |  
+| {::nomarkdown}<img src="../../../../images/icons/current-state-synced.png" display=inline-block">{:/} | **Synced**  | The live state of the resource on the cluster is identical to the desired state in Git.|                            
+| {::nomarkdown}<img src="../../../../images/icons/current-state-syncing.png" display=inline-block/>{:/}| **Syncing**  | The live state of the resource was not identical to the desired state, and is currently being synced. |  
+| {::nomarkdown}<img src="../../../../images/icons/current-state-out-of-sync.png" display=inline-block">{:/}| **Out-of-Sync**  | The live state is not identical to the desired state.<br>To sync a resource, select the **Sync** option from the resource's context menu in Tree view.  |  
+| No icon | **Unknown**      | The sync status could not be determined.  |  
 
 
 > The application header displays the statuses of the current and previous sync operations. Clicking **More** opens the Sync panels with Sync Info, Sync Result and Commit Info.
@@ -510,7 +522,7 @@ file="/images/applications/apps-historical-deployment.png"
 url="/images/applications/apps-historical-deployment.png"
 alt="GitOps Apps dashboard: Deployment chart"
 caption="GitOps Apps dashboard: Deployment chart"
-max-width="30%"
+max-width="60%"
 %}
 
 ### Monitor CI details by deployment
@@ -629,12 +641,12 @@ max-width="50%"
 The table lists the controls in the Rollout Player to manage an ongoing rollout.
 
 {: .table .table-bordered .table-hover}
-| Rollback player option   | Description |  
+|Rollback player icon | Option   | Description |  
 | --------------  | ------------| 
-| **Rollback**      | Not available currently.  | 
-| **Resume** {::nomarkdown}<img src="../../../../images/icons/rollout-resume.png" display=inline-block"> {:/}| Resume a step that has been paused indefinitely. | 
-| **Skip step** {::nomarkdown}<img src="../../../../images/icons/rollout-skip-step.png" display=inline-block"> {:/}  | Skip execution of current step. Such steps are marked as Skipped in the rollout visualization. | 
-| **Promote full rollout** {::nomarkdown}<img src="../../../../images/icons/rollout-promote-full.png" display=inline-block"> {:/}   | Skip remaining pause, traffic routing, and analysis steps, and deploy the current release. |                        
+| {::nomarkdown}<img src="../../../../images/icons/rollout-rollback.png" display=inline-block"> {:/}  | **Rollback**  | Rollback rollout to the selec.  | 
+| {::nomarkdown}<img src="../../../../images/icons/rollout-resume.png" display=inline-block"> {:/}    |**Resume**     | Resume a step that has been paused indefinitely. | 
+| {::nomarkdown}<img src="../../../../images/icons/rollout-skip-step.png" display=inline-block"> {:/} | **Skip step** | Skip execution of current step. Such steps are marked as Skipped in the rollout visualization. | 
+| {::nomarkdown}<img src="../../../../images/icons/rollout-promote-full.png" display=inline-block"> {:/}| **Promote full rollout**    | Skip remaining pause, traffic routing, and analysis steps, and deploy the current release. |                        
 
 
  
