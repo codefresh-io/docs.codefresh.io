@@ -82,6 +82,7 @@ Then run
 
 ```shell
 helm repo add csdp-add-cluster https://chartmuseum.codefresh.io/csdp-add-cluster
+helm repo update
 helm search repo csdp-add-cluster
 helm install csdp-add-cluster/csdp-add-cluster -f values.yaml --generate-name
 ``` 
