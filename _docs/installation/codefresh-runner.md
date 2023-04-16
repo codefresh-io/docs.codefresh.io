@@ -1858,7 +1858,7 @@ accountId: 5f048d85eb107d52b16c53ea
 | `envVars`       | object | Override or add environment variables passed into the engine pod |
 | `userEnvVars`       | object | Add external env var(s) to the pipeline. See [Custom Global Environment Variables](#custom-global-environment-variables)  |
 | `cluster`       | object | k8s related information (`namespace`, `serviceAccount`, `nodeSelector`) |
-| `resources`       | object | Specify non-default `requests` and `limits` for engine pod. Units notice: only `Mi` allowed for memory; only `m` allowed for CPU |
+| `resources`       | object | Specify non-default `requests` and `limits` for engine pod. For memory, use `Mi` (mebibytes); for CPU, use `m` (millicpu) |
 | `tolerations`       | array | Add tolerations to engine pod |
 | `annotations`       | object | Add custom annotations to engine pod (empty by default `{}`) |
 | `labels`       | object | Add custom labels to engine pod (empty by default `{}`) |
@@ -1915,7 +1915,7 @@ runtimeScheduler:
 | `envVars`       | object | Override or add environment variables passed into the dind pod. See [IN-DIND cleaner](https://github.com/codefresh-io/dind/tree/master/cleaner){:target="\_blank"}  |
 | `userVolumeMounts` with `userVolumes`       | object | Add volume mounts to the pipeline See [Custom Volume Mounts](#custom-volume-mounts) |
 | `cluster`       | object | k8s related information (`namespace`, `serviceAccount`, `nodeSelector`) |
-| `defaultDindResources`       | object | Override `requests` and `limits` for dind pod (defaults are `cpu: 400m` and `memory:800Mi`). Units notice: only `Mi` allowed for memory; only `m` allowed for CPU |
+| `defaultDindResources`       | object | Override `requests` and `limits` for dind pod (defaults are `cpu: 400m` and `memory:800Mi`). For memory, use `Mi` (mebibytes); for CPU, use `m` (millicpu) |
 | `tolerations`       | array | Add tolerations to dind pod |
 | `annotations`       | object | Add custom annotations to dind pod (empty by default `{}`) |
 | `labels`       | object | Add custom labels to dind pod (empty by default `{}`) |
