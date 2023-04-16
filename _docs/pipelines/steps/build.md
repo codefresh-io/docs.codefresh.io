@@ -104,7 +104,7 @@ step_name:
 | `retry`   | Define retry behavior for the build step, as described in [Retrying a step]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#retrying-a-step).  | Optional                  |
 | `buildkit`  | When set to `true`, enables [Buildkit](#buildkit-support) and all of its enhancements. When using `buildkit` with `cache_from`, to allow the built image to be used as cache for future images, you must  specify `BUILDKIT_INLINE_CACHE=1` in the build_arguments. See [more info](https://docs.docker.com/engine/reference/commandline/buildx_build/#cache-to){:target="\_blank"}| Optional   | 
 | `platform`  | The target platform or platforms to which to push the image, in `<platform/arch>` format. For example, `linux/amd64`. <br>NOTE: To use this property, you must set `buildx` to `true`. <br>To target multiple platforms, separate them with commas, as in `linux/amd64,linux/arm64`.| Optional   | 
-| `buildx`  |Build and push Docker images, including multi-platform images, with <a href="https://github.com/docker/buildx" target="_blank">Buildx</a>. Disabled by default. {::nomarkdown}<ul><li>To enable with default configuration, set to <code class="highlighter-rouge">true</code>. You do not have to add any other parameters.</li><li>To enable with custom configuration, set to an <code class="highlighter-rouge">object with custom configuration</code>. With custom configuration, you can use <code class="highlighter-rouge">qemu</code> or <code class="highlighter-rouge">builder</code>.<ul><li><code class="highlighter-rouge">qemu</code><ul><li><code class="highlighter-rouge">image</code>: The <a href="https://github.com/qemu/qemu" target="_blank">QEMU</a> static binaries to be installed. By default, installs the binaries from the <code class="highlighter-rouge">tonistiigi/binfmt:latest</code> Docker image.</li><li><code class="highlighter-rouge">platforms</code>: The platforms to which to install the image. All <a href="https://github.com/docker-library/official-images#architectures-other-than-amd64" target="_blank">Docker-supported platforms</a> are supported. </br>By default, installs the image on <code class="highlighter-rouge">all</code> platforms.</li></ul><li><code class="highlighter-rouge">builder</code>: <ul><li><code class="highlighter-rouge">driver</code>: The builder driver to use. By default, uses <code class="highlighter-rouge">docker-container</code> <a href="https://docs.docker.com/build/building/drivers/docker-container" target="_blank">driver</a> to build multi-platform images and export cache using a <a href="https://github.com/moby/buildkitBuildKit" target="_blank">BuildKit</a> container.<li><code class="highlighter-rouge">driver-opts</code>: Additional driver-specific configuration options to use to customize the build process. For example, <code class="highlighter-rouge">image=moby/buildkit:master</code>.</li></ul></li></ul>{:/} | Optional   | 
+| `buildx`  |Build and push Docker images, including multi-platform images, with <a href="https://github.com/docker/buildx" target="_blank">Buildx</a>. Disabled by default. {::nomarkdown}<ul><li>To enable with default configuration, set to <code class="highlighter-rouge">true</code>. You do not have to add any other parameters.</li><li>To enable with custom configuration, set to an object with custom configuration. With custom configuration, you can use <code class="highlighter-rouge">qemu</code> or <code class="highlighter-rouge">builder</code>.<ul><li><code class="highlighter-rouge">qemu</code><ul><li><code class="highlighter-rouge">image</code>: The <a href="https://github.com/qemu/qemu" target="_blank">QEMU</a> static binaries to be installed. By default, installs the binaries from the <code class="highlighter-rouge">tonistiigi/binfmt:latest</code> Docker image.</li><li><code class="highlighter-rouge">platforms</code>: The platforms to which to install the image. All <a href="https://github.com/docker-library/official-images#architectures-other-than-amd64" target="_blank">Docker-supported platforms</a> are supported. </br>By default, installs the image on <code class="highlighter-rouge">all</code> platforms.</li></ul><li><code class="highlighter-rouge">builder</code>: <ul><li><code class="highlighter-rouge">driver</code>: The builder driver to use. By default, uses <code class="highlighter-rouge">docker-container</code> <a href="https://docs.docker.com/build/building/drivers/docker-container" target="_blank">driver</a> to build multi-platform images and export cache using a <a href="https://github.com/moby/buildkitBuildKit" target="_blank">BuildKit</a> container.<li><code class="highlighter-rouge">driver-opts</code>: Additional driver-specific configuration options to use to customize the build process. For example, <code class="highlighter-rouge">image=moby/buildkit:master</code>.</li></ul></li></ul>{:/} | Optional   | 
 
 
 ### Exported resources
@@ -246,7 +246,7 @@ steps:
     title: Building My Docker image
     type: build
     working_directory: '${{clone}}'
-    image_name: my-app-image/smoke-tests
+    image_name: my-app-image
     tag: latest
     platform: 'linux/arm64'
     buildx: true
@@ -264,7 +264,7 @@ steps:
     title: Building My Docker image
     type: build
     working_directory: '${{clone}}'
-    image_name: my-app-image/smoke-tests
+    image_name: my-app-image
     tag: latest
     platform: 'linux/amd64,linux/arm64'
     buildx: true
@@ -282,7 +282,7 @@ steps:
     title: Building My Docker image
     type: build
     working_directory: '${{clone}}'
-    image_name: my-app-image/smoke-tests
+    image_name: my-app-image
     tag: latest
     platform: 'linux/amd64,linux/arm64'
     buildx:
