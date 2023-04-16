@@ -1,32 +1,34 @@
 ---
 title: "Add external clusters to GitOps Runtimes"
-description: "Manage multiple remote clusters with single GitOps Runtime"
+description: "Manage multiple remote clusters with a  GitOps Runtime"
 group: installation
 sub_group: gitops
 toc: true
 ---
 
-Register external clusters to provisioned Hybrid or Hosted GitOps Runtimes in Codefresh. Once you add an external cluster, you can deploy applications to that cluster without having to install Argo CD on the clusters in order to do so. Manage multiple external clusters through a single Runtime.  
+Once you have an Argo CD installation as part of a [hybrid]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/) or [hosted runtime]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/) you
+can add external deployment clusters to them.
+
+Once you add an external cluster, you can deploy applications to that cluster without having to install Argo CD on the clusters in order to do so. 
 
 When you add an external cluster to a provisioned GitOps Runtime, the cluster is registered as a managed cluster. A managed cluster is treated as any other managed K8s resource, meaning that you can monitor its health and sync status, deploy applications to it, view information in the Applications dashboard, and remove the cluster from the Runtime's managed list.  
-
-Add managed clusters through:
-* GitOps CLI
-* Kustomize
 
 Adding a managed cluster via Codefresh ensures that Codefresh applies the required RBAC resources (`ServiceAccount`, `ClusterRole` and `ClusterRoleBinding`) to the target cluster, creates a `Job` that updates the selected Runtime with the information, registers the cluster in Argo CD as a managed cluster, and updates the platform with the new cluster information.
  
 
-## Add a managed cluster with GitOps CLI
-Add an external cluster to a provisioned GitOps Runtime through the GitOps CLI. When adding the cluster, you can also add labels and annotations to the cluster, which are added to the cluster secret created by Argo CD.
-Optionally, to first generate the YAML manifests, and then manually apply them, use the `dry-run` flag in the CLI. 
 
-**Before you begin**  
+
+## Prerequisites 
 
 * For _Hosted GitOps_ Runtimes: [Configure access to these IP addresses]({{site.baseurl}}/docs/administration/platform-ip-addresses/)
-* Verify that:
-  * Your Git personal access token is valid and has the [required scopes]({{site.baseurl}}/docs/reference/git-tokens) 
-  * You have the [latest version of the Codefresh CLI]({{site.baseurl}}/docs/installation/gitops/upgrade-gitops-cli/)
+* Your Git personal access token is valid and has the [required scopes]({{site.baseurl}}/docs/reference/git-tokens) 
+* You have the [latest version of the Codefresh CLI]({{site.baseurl}}/docs/installation/gitops/upgrade-gitops-cli/)
+* You have created a Codefresh token in user settings
+* You know the ingress host of your runtime using `cf runtime list`
+
+### Add a managed cluster with GitOps CLI
+Add an external cluster to a provisioned GitOps Runtime through the GitOps CLI. When adding the cluster, you can also add labels and annotations to the cluster, which are added to the cluster secret created by Argo CD.
+Optionally, to first generate the YAML manifests, and then manually apply them, use the `dry-run` flag in the CLI. 
 
 **How to**  
 
@@ -59,173 +61,52 @@ Optionally, to first generate the YAML manifests, and then manually apply them, 
   Here is an example of the YAML manifest generated with the `--dry-run` flag. Note that the example has placeholders, which are replaced with the actual values during the `--dry-run`.  
   
 
-```yaml
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: argocd-manager
-  namespace: kube-system
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
-metadata:
-  name: argocd-manager-role
-rules:
-- apiGroups:
-  - '*'
-  resources:
-  - '*'
-  verbs:
-  - '*'
-- nonResourceURLs:
-  - '*'
-  verbs:
-  - '*'
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
-metadata:
-  name: argocd-manager-role-binding
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: argocd-manager-role
-subjects:
-- kind: ServiceAccount
-  name: argocd-manager
-  namespace: kube-system
----
-apiVersion: v1
-data:
-  contextName: <context-name>
-  ingressUrl: <ingressUrl>
-  server: <server>
-kind: ConfigMap
-metadata:
-  name: csdp-add-cluster-cm
-  namespace: kube-system
----
-apiVersion: v1
-data:
-  annotations: |
-    <annotation-key1>:<annotation-value1>
-    <annotation-key2>:<annotation-value2>
-  contextName: <context-name>
-  ingressUrl: ingressurl.com
-  labels: |
-    <label-key1>:<label-value1>
-    <label-key2>:<label-value2>
-  server: https://<hash>.gr7.us-east-1.eks.amazonaws.com/
-  csdpToken: <csdpToken>
-kind: Secret
-metadata:
-  name: csdp-add-cluster-secret
-  namespace: kube-system
-type: Opaque
----
-apiVersion: batch/v1
-kind: Job
-metadata:
-  name: csdp-add-cluster-job
-  namespace: kube-system
-spec:
-  template:
-    metadata:
-      name: csdp-add-cluster-pod
-    spec:
-      containers:
-      - args:
-        - ./add-cluster.sh
-        command:
-        - bash
-        env:
-        - name: SERVICE_ACCOUNT_NAME
-          valueFrom:
-            fieldRef:
-              fieldPath: spec.serviceAccountName
-        - name: INGRESS_URL
-          valueFrom:
-            configMapKeyRef:
-              key: ingressUrl
-              name: csdp-add-cluster-cm
-        - name: CSDP_TOKEN
-          valueFrom:
-            secretKeyRef:
-              key: csdpToken
-              name: csdp-add-cluster-secret
-        - name: CONTEXT_NAME
-          valueFrom:
-            configMapKeyRef:
-              key: contextName
-              name: csdp-add-cluster-cm
-        - name: SERVER
-          valueFrom:
-            configMapKeyRef:
-              key: server
-              name: csdp-add-cluster-cm
-        image: quay.io/codefresh/csdp-add-cluster:0.1.0
-        imagePullPolicy: Always
-        name: main
-        resources:
-          limits:
-            cpu: "1"
-            memory: 512Mi
-          requests:
-            cpu: "0.2"
-            memory: 256Mi
-      restartPolicy: Never
-      serviceAccount: argocd-manager
-  ttlSecondsAfterFinished: 600
-
-```
-
 The new cluster is registered to the GitOps Runtime as a managed cluster.  
 
-## Add a managed cluster with Kustomize
+### Add a managed cluster with Kustomize
 
-Create a `kustomization.yaml` file with the information shown in the example below, and run `kustomize build` on it.  
-
-```yaml
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
-namespace: kube-system
-
-configMapGenerator:
-  - name: csdp-add-cluster-cm
-    namespace: kube-system
-    behavior: merge
-    literals:
-        # contextName is the name of the kube context (in the local kubeconfig file) that connects to the target cluster
-      - "contextName=<contextName>"
-        # ingressUrl is the url used to access the Codefresh runtime
-        # example https://some.domain.name
-      - "ingressUrl=<ingressUrl>"
-        # server is the k8s cluster API endpoint url
-        # can be obtained by
-        #   CONTEXT_NAME=<TARGET_CONTEXT_NAME>
-        #   CLUSTER_NAME=$(kubectl config view --raw --flatten -o jsonpath='{.contexts[?(@.name == "'"${CONTEXT_NAME}"'")].context.cluster}')
-        #   kubectl config view --raw --flatten -o jsonpath='{.clusters[?(@.name == "'"${CLUSTER_NAME}"'")].cluster.server}'
-      - "server=https://<hash>.gr7.us-east-1.eks.amazonaws.com/"
-      - |
-        annotations=<key1: value1>
-        <key2.with.dots/and-backslash: value2 with: as:pace>
-      - |
-        labels=<and.another-one/field: value>
-        <label.key.with.long.name/field: some_long_value>
-
-secretGenerator:
-- behavior: merge
-  literals:
-  - csdpToken=<your-personal-token>
-  name: csdp-add-cluster-secret
-  namespace: kube-system
- 
-resources:
-  - https://github.com/codefresh-io/csdp-official/add-cluster/kustomize?ref=<runtimeVersion>
-```
+1. Clone locally [https://github.com/codefresh-io/csdp-official/tree/main/add-cluster/kustomize](https://github.com/codefresh-io/csdp-official/tree/main/add-cluster/kustomize).
+1. Update confimap.yml and secret.yml with the require values
+1. Run `kustomize build` or `kubectl -k` to apply the final result to the cluster
 
 You can get the `ingressUrl` value of your runtime by running `cf runtime list` in your terminal
 after authenticating to the [Codefresh GitOps CLI]({{site.baseurl}}/docs/installation/cli/). 
+
+### Add a managed cluster with Helm
+
+A Helm chart is published at https://chartmuseum.codefresh.io/csdp-add-cluster. You can see the source templates at [https://github.com/codefresh-io/csdp-official/tree/main/add-cluster/helm](https://github.com/codefresh-io/csdp-official/tree/main/add-cluster/helm).
+
+To deploy the chart copy locally [https://github.com/codefresh-io/csdp-official/blob/main/add-cluster/helm/values.yaml](https://github.com/codefresh-io/csdp-official/blob/main/add-cluster/helm/values.yaml) and fill in the required values.
+
+Then run
+
+```shell
+helm repo add csdp-add-cluster https://chartmuseum.codefresh.io/csdp-add-cluster
+helm search repo csdp-add-cluster
+helm install csdp-add-cluster/csdp-add-cluster -f values.yaml --generate-name
+``` 
+
+
+You can get the `ingressUrl` value of your runtime by running `cf runtime list` in your terminal
+after authenticating to the [Codefresh GitOps CLI]({{site.baseurl}}/docs/installation/cli/). 
+
+### Add a manage cluster with Terraform
+
+Use the [Helm provider](https://registry.terraform.io/providers/hashicorp/helm/latest/docs) as any other Helm chart.
+
+```hcl
+resource "helm_release" "my-managed-cluster" {
+  name = "my-managed-cluster"
+
+  repository = "https://chartmuseum.codefresh.io/csdp-add-cluster"
+  chart      = "csdp-add-cluster"
+  values = [
+    "${file("values.yaml")}"
+  ]
+}
+```
+
+And then apply the file using Terraform or your favorite workflow tool.
 
 ## Work with managed clusters 
 Work with managed clusters in either the Topology or List Runtime views. For information on Runtime views, see [Runtime views]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#gitops-runtime-views).  
@@ -253,6 +134,12 @@ Install Argo Rollouts with a single click to execute rollout instructions, deplo
 	caption="Install Argo Rollouts"
   max-width="40%" 
 %}
+
+## Remove a managed cluster
+
+When you want to remove a cluster as a deployment target you can unlink it from the runtime that manages it.
+
+Note that this only removes the management link between your runtime and your cluster. It doesn't do anything with the applications that are already running on the cluster.
 
 
 ### Remove a managed cluster from the Codefresh UI 
@@ -287,6 +174,22 @@ Remove a  cluster from the list managed by the GitOps Runtime, through the GitOp
   `<runtime-name>` is the name of the runtime that the managed cluster is registered to.  
   `<server-url>` is the URL of the server on which the managed cluster is installed. 
 
+
+
+
+### Remove with Kustomize
+
+Run `kubectl delete -f <your_yaml>` with the result of the `kustomize build` command
+that you run during installation
+
+### Remove with Helm
+
+Run `helm delete <release_name>` with the name of the release that was created
+during installation.
+
+### Remove with terraform 
+
+Use the `terraform destroy` command.
 
 ## Related articles
 [Add Git Sources to GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
