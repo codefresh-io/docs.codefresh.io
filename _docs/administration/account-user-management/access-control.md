@@ -16,10 +16,10 @@ Codefresh provides several mechanisms to enforce access control within your orga
 You can then create rules that combine roles, attributes, and CRUD (Create/Read/Update/Delete) privileges to create permissions. 
 
 * **Role-based access**  
-  Role-based access restricts access based on the _who (the kind of user)_. Access is granted based on the user's job responsibilities or position within an organization. Codefresh administrators can access UI functionality that you would deny to other users. For example, only account administrators can create and modify integrations with Git providers and cloud services, while other users can create, run, and modify pipelines. 
+  [Role-based access](#role-based-access-for-users-and-administrators) restricts access based on the _who (the kind of user)_. Access is granted based on the user's job responsibilities or position within an organization. Codefresh administrators can access UI functionality that you would deny to other users. For example, only account administrators can create and modify integrations with Git providers and cloud services, while other users can create, run, and modify pipelines. 
 
 * **Attribute-based access control (ABAC)**  
-  Access control via attributes, restricts access to entities based on the _what (the type of access)_. Assigning attributes, or tags as in Codefresh to entities makes it easy to enforce a more flexible and secure form of access control.  
+  Access control via [attributes](#abac-for-entities), restricts access to entities based on the _what (the type of access)_. Assigning attributes, or tags as in Codefresh to entities makes it easy to enforce a more flexible and secure form of access control.  
   For example, add tags to projects, and then enforce access control for pipelines through project tags, instead of relying on pipeline-level tags. So you can add tags to projects with pipelines that all teams can view and run (Read), but only the platform can Create/Edit/Delete.
 
 * **Git-repository access**
@@ -44,7 +44,7 @@ Role-based access is usually defined when you [add teams]({{site.baseurl}}/docs/
     max-width="60%" 
 %}
 
-The table below lists the functionality available for role-based access.
+The table below lists the functionality available for the `Admin` and `User` roles.
 
 {: .table .table-bordered .table-hover}
 | Functionality          | Available for Role               |  
@@ -74,17 +74,12 @@ The table below lists the functionality available for role-based access.
 ABAC (Attribute-Based Access Control), allows fine-grained access to all entities, Kubernetes clusters, Codefresh pipelines, projects, and additional resources through the use of tags.  
 For more information on ABAC, see [ABAC on Wikipedia](https://en.wikipedia.org/wiki/Attribute-based_access_control){:target="\_blank"}. 
 
-Using tags you can allocate entities and resources to teams. Define which team has access to which entities and resources, and also the type of access. 
-   
-
-### Define tags for entities 
-
-Codefresh allows you to define tags for Kubernetes entities and Codefresh resources such as pipelines and projects. 
+Using tags, you can allocate entities and resources to teams. Define which team has access to which entities and resources, and also the type of access.  
 Tag names are arbitrary, and can be anything you choose that matches your company process. Tags can be product names, software lifecycle phases, department names, or names that help define security policies.  
 
+You can then define rules combining teams, privileges, and tags and for fine-grained access control.
 
-
-#### Assign tags to Kubernetes clusters and Git contexts
+### Assign tags to Kubernetes clusters and Git contexts
 
 After integrating Kubernetes clusters/Git providers in Codefresh, you can add one or more tags to each cluster/Git provider. Adding tags makes it easy to define multiple policies for the same cluster, and Git provider, also referred to as Git Contexts. For example, you can define access by project and by team.
 
@@ -126,17 +121,8 @@ After integrating Kubernetes clusters/Git providers in Codefresh, you can add on
 Add tags to projects for filtering and defining permissions. 
 
 >TIP:
- If **Auto-create projects for teams** is enabled in global pipeline settings for your account, then creating the team also creates a project with the same name and tag as the team name.
+ If [**Auto-create projects for teams**]({{site.baseurl}}/docs/pipelines/configuration/pipeline-settings/#auto-create-projects-for-teams) is enabled in global pipeline settings for your account, then creating the team also creates a project with the same name and tag as the team name.
 
-  {% include image.html
-lightbox="true"
-file="/images/pipeline/pipeline-settings/auto-create-projects-setting.png"
-url="/images/pipeline/pipeline-settings/auto-create-projects-setting.png"
-alt="Auto-create projects for teams"
-caption="Auto-create projects for teams"
-max-width="60%"
-%}
- 
 
 1. In the Codefresh UI, on the toolbar, from Pipelines in the sidebar, select [**Projects**](https://g.codefresh.io/projects/){:target="\_blank"}. 
 1. Select the project for which to add tags, and then click the **Settings** icon on the right.
@@ -153,7 +139,7 @@ max-width="60%"
   max-width="80%"
     %}
 
-#### Assign tags to pipelines 
+### Assign tags to pipelines 
 
 Similar to other entities, you can also add tags to Codefresh pipelines. 
 
@@ -171,7 +157,7 @@ Similar to other entities, you can also add tags to Codefresh pipelines.
   max-width="80%"
     %}
 
-#### Assign tags to Shared Configuration 
+### Assign tags to Shared Configurations
 Shared configuration can be environment variables, Helm values, encrypted secrets for access tokens and YAMLs.
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from Configuration in the sidebar, select [**Shared Configuration**](hhttps://g.codefresh.io/account-admin/account-conf/shared-config){:target="\_blank"}. 
@@ -212,7 +198,9 @@ These settings are effective for all pipelines in an account. When selected, the
 
 
 ### Define access to Git repositories for pipeline YAMLs
-If access to pipeline definitions are enabled for Git repositories, you can configure fine-grained restrictions through the integration settings for your [Git provider]({{site.baseurl}}/docs/integrations/git-providers/).
+If access to pipeline definitions are enabled for Git repositories, you can configure fine-grained restrictions through the integration settings for your [Git provider]({{site.baseurl}}/docs/integrations/git-providers/). 
+
+By default, when a user [creates a pipeline]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/), the pipeline's definition can be loaded from the inline editor or from any private or public Git repository. You can restrict this behavior to allow access to selected repos, to folders within repos, or to selected branches, or even completely disable loading pipeline definitions from Git repositories.
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
 1. From Configuration on the sidebar, select [**Pipeline Integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}.
@@ -235,7 +223,7 @@ If access to pipeline definitions are enabled for Git repositories, you can conf
   * **Allow only the following paths**: Select Git repositories by folders within the repo that match the glob pattern).
   
 
-By default, when a user [creates a pipeline]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/), the definition can be loaded from the inline editor or any private or public Git repository. You can restrict this behavior and allow only specific Git sources or even disable completely the loading of pipeline definitions from Git repositories.
+
 
 
 ## Rules for access control 
@@ -252,7 +240,7 @@ For each rule, select:
   * Named tags
 
 
-The examples in this section illustrate how to control access to pipelines through project tags:
+The examples in this section illustrate how to control access to projects and to pipelines through project tags:
 * [Example 1: Create rule to define access to projects by teams](#example-1-create-rule-to-define-access-to-projects-by-teams)  
 * [Example 2: Create rule to define access across teams to pipelines by projects and project tags](#example-2-create-rule-to-define-access-across-teams-to-pipelines-by-projects-and-project-tags)
 
@@ -297,7 +285,7 @@ CRUD privileges define Create/Read/Update/Delete permissions for the entity.  Sp
 | --------------  | --------------                      | 
 | Cluster          |  **Create**: Granted to account administrators only.<br>**Read**: View cluster integrations.<br>**Update**: View and edit existing allowed cluster resources, including [installing, removing, and rollback Helm charts]({{site.baseurl}}/docs/ci-cd-guides/helm-best-practices/). Tags are managed from account settings, so this permission doesn’t apply to it currently.<br> **Delete**: Granted to account administrators only.            | 
 | Project          |  **Create**: Create projects, and add tags to the projects.<br>**Read**: View projects.<br>**Update**: View and edit projects, including the tags assigned to them.<br> **Delete**: Delete projects.| 
-| Pipeline          | {::nomarkdown}There are two levels of permissions for pipelines:</br></br><ul><li><b>Access to pipelines by tags</b></br> <b>Create</b>: Create new pipelines and add tags to the pipelines when creating them.  only create new pipelines, not see, edit (which includes tagging them) or delete them. This permission should also go hand in hand with additional permissions like read/edit untagged pipelines.</br><b>Read</b>: View allowed pipelines only.</br><b>Update</b>: View and edit allowed pipelines, including editing the tags assigned to them.</br><b>Delete</b>: Delete allowed pipelines only.</br><b>Run</b>: Run allowed pipelines only.</br><b>Approve</b>: Resume pipelines pending manual <a href="https://codefresh.io/docs/docs/pipelines/steps/approval">approval</a>.</br><b>Debug</b>: Use <a href="https://codefresh.io/docs/docs/pipelines/debugging-pipelines/">pipeline debugger</a>.</li></br><li><b>Access to pipelines by projects and tags in projects</b></br> All or any of the above permissions for pipelines based on projects with/without/specified tags.{:/}| 
+| Pipeline          | {::nomarkdown}There are two levels of permissions for pipelines:</br></br><ul><li><b>Access to pipelines by tags</b></br> <b>Create</b>: Create new pipelines and add tags to the pipelines when creating them. This permission does not include view and edit (which includes tagging them) or delete them. This permission should also go hand in hand with additional permissions like read/edit untagged pipelines.</br><b>Read</b>: View allowed pipelines only.</br><b>Update</b>: View and edit allowed pipelines, including editing the tags assigned to them.</br><b>Delete</b>: Delete allowed pipelines only.</br><b>Run</b>: Run allowed pipelines only.</br><b>Approve</b>: Resume pipelines pending manual <a href="https://codefresh.io/docs/docs/pipelines/steps/approval">approval</a>.</br><b>Debug</b>: Use <a href="https://codefresh.io/docs/docs/pipelines/debugging-pipelines/">pipeline debugger</a>.</li></br><li><b>Access to pipelines by projects and tags in projects</b></br> All or any of the above permissions for pipelines based on projects with/without/specified tags.{:/}| 
 | Chart          |  **Read**: View Helm charts| 
 | Git contexts          |  Git contexts refer to the permissions to create and manage integrations with Git providers and use them in pipelines. Tags are used to control access to teams and execution contexts. <br><br>**Create**: Add integrations to Git providers.<br>**Update**: View and edit Git provider integrations, including editing the tags assigned to them.<br>**Delete**: Delete Git provider integrations.<br>**Use**:<br>Create triggers in pipelines for Git provider<br>Retrieve YAML definitions from a repository<br>Use a Git integration in pipelines, in the `git-clone` step for example, via Execution Context. | 
 | Shared configs<br>Secrets<br>YAMLs          |  Shared configuration permissions relate to managing: <br>{::nomarkdown}<ul><li>Environment variables, unencrypted (<b>Shared Configuration</b>), and encrypted for sensitive data such as access tokens (<b>Shared Secret</b>).</li><li>Helm values or other generic information, unencrypted (<b>Shared YAML</b>), and encrypted (<b>Shared Secret YAML</b>).</li></ul>{:/}<br>**Create**: Create unencrypted or encrypted Shared Configuration, Shared Secret, Shared YAML, Shared Secret YAML.<br>**Read**: View unencrypted or encrypted Shared Configuration, Shared Secret, Shared YAML, Shared Secret YAML.<br>**Update**: View and edit unencrypted or encrypted Shared Configuration, Shared Secret, Shared YAML, Shared Secret YAML.<br>**Delete**: Delete unencrypted or encrypted Shared Configuration, Shared Secret, Shared YAML, Shared Secret YAML. | 
@@ -324,7 +312,7 @@ We want:
 * DevOps team to have full permissions to projects tagged with `DevOps` 
 
 **Step 1: Enable Auto-create projects for teams**:
-This option, available as an account-level pipeline setting, avoids the need to create a project for the same team.
+This option, available as an account-level pipeline setting, avoids the need to create a project after creating the team.
 It automatically creates the project: 
 * With the same name as the team
 * Adds a tag identical to the team name
@@ -334,7 +322,7 @@ See
 
 1. Go to [Pipeline Settings](https://g.codefresh.io/account-admin/account-conf/pipeline-settings), and make sure that **Auto-create projects...** is enabled.
 
-**Step 2: Create the DevOps team**:
+**Step 2: Create the DevOps team**  
 Now we'll create the two teams, DevOps and Users. 
 
 1. Create the DevOps team. See [Teams in Codefresh]({{site.baseurl}}/docs/administration/account-user-management/add-users/#teams-in-codefresh).
@@ -361,7 +349,7 @@ Finally, we'll define the rules for the `DevOps` and '`Sandbox` projects.
 
 1. For team DevOps: 
       1. Modify the existing Project rule with Read access to also allow Delete and Update access to projects with the `DevOps` tag, and `All tags`.
-      1. Rule 2: Create a Project rule with Create access to projects with `All tags`. Note that this tag includes those projects `without tags` as well. 
+      1. Create a Project rule with Create access to projects with `All tags`. Note that this tag includes those projects `without tags` as well. 
 1. For team Users:
       1. Create a Project rule with Read access to all projects with `shared` tags.
 
