@@ -12,7 +12,7 @@ toc: true
 
 The **Runtimes** page displays the provisioned GitOps Runtimes in your account, both Hybrid, and the Hosted Runtime if you have one.  
 
-View Runtime components and information in List or Topology view formats to manage and monitor them.   
+View Runtime components and information in [List or Topology view formats](/#gitops-runtime-views) to manage and monitor them.   
 
 {% include
    image.html
