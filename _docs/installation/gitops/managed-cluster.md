@@ -97,7 +97,7 @@ helm install csdp-add-cluster/csdp-add-cluster -f values.yaml --generate-name
 
 ### Add a manage cluster with Terraform
 
-1. Use the [Helm provider](https://registry.terraform.io/providers/hashicorp/helm/latest/docs) as any other Helm chart.
+* Use the [Helm provider](https://registry.terraform.io/providers/hashicorp/helm/latest/docs) as any other Helm chart.
 
 ```hcl
 resource "helm_release" "my-managed-cluster" {
@@ -111,7 +111,7 @@ resource "helm_release" "my-managed-cluster" {
 }
 ```
 {:start="2"}
-1. Apply the file using Terraform or your favorite workflow tool.
+* Apply the file using Terraform or your favorite workflow tool.
 
 ## View managed clusters 
 View managed clusters in either the Topology or List Runtime views. For information on Runtime views, see [Runtime views]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#gitops-runtime-views).  
@@ -151,7 +151,7 @@ Remove a managed cluster in any of the following ways:
 * [GitOps CLI](#remove-a-managed-cluster-through-the-gitops-cli)
 * [Kustomize](#remove-a-managed-cluster-with-kustomize)
 * [Helm](#remove-a-managed-cluster-with-helm)
-* [Terraform](#remove-a-manage-cluster-with-terraform)
+* [Terraform](#remove-a-managed-cluster-with-terraform)
 
 
 ### Remove a managed cluster from the Codefresh UI 
