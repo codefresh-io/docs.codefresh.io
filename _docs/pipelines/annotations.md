@@ -250,7 +250,7 @@ caption="Available annotations for build"
 max-width="50%"
 %}
 
-### Filter builds by display annotations
+### Filter builds by annotations
 Filter the Builds list by build annotations to view builds that share the same annotations. This includes both the build display annotation, and other build annotations.  
 Combine this with the [other filters available for builds]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#applying-filters-on-the-build-view) to create a customized view of the Builds page. 
 
