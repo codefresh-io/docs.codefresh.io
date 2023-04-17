@@ -23,8 +23,8 @@ You can then create rules that combine roles, attributes, and CRUD (Create/Read/
   For example, add tags to projects, and then enforce access control for pipelines through project tags, instead of relying on pipeline-level tags. So you can add tags to projects with pipelines that all teams can view and run (Read), but only the platform team can Create/Edit/Delete.  
   See [ABAC for entities with tags and rules](#abac-for-entities-with-tags-and-rules).
 
-* **Git-repository access**
-  Git-repository access is a specialized form of access control that controls the Git repositories from which users can load [pipeline definitions](#enabledisable-access-to-pipeline-yamls-by-source).
+* **YAML source and Git-repository access**
+  YAML source and Git-repository access is a specialized form of access control that controls the Git repositories from which users can load pipeline definitions. See [Git-repository access for pipeline definitions](#git-repository-access-for-pipeline-definitions).
 
 Let's review the different access mechanisms in more detail, including privileges available for each entity and examples of rule definitions.
   
