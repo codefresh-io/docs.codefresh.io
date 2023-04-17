@@ -6,10 +6,7 @@ sub_group: gitops
 toc: true
 ---
 
-Once you have an Argo CD installation as part of a [hybrid]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/) or [hosted runtime]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/) you
-can add external deployment clusters to them.
-
-Once you add an external cluster, you can deploy applications to that cluster without having to install Argo CD on the clusters in order to do so. 
+Once you have an Argo CD installation as part of a [Hybrid]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/) or [Hosted]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/) GitOps Runtime, you can add external clusters to them. You can then deploy applications to  those clusters without having to install Argo CD on the clusters in order to do so. 
 
 When you add an external cluster to a provisioned GitOps Runtime, the cluster is registered as a managed cluster. A managed cluster is treated as any other managed K8s resource, meaning that you can monitor its health and sync status, deploy applications to it, view information in the Applications dashboard, and remove the cluster from the Runtime's managed list.  
 
@@ -21,13 +18,20 @@ Adding a managed cluster via Codefresh ensures that Codefresh applies the requir
 ## Prerequisites 
 
 * For _Hosted GitOps_ Runtimes: [Configure access to these IP addresses]({{site.baseurl}}/docs/administration/platform-ip-addresses/)
-* Your Git personal access token is valid and has the [required scopes]({{site.baseurl}}/docs/reference/git-tokens) 
-* You have the [latest version of the Codefresh CLI]({{site.baseurl}}/docs/installation/gitops/upgrade-gitops-cli/)
-* You have created a Codefresh token in user settings
-* You know the ingress host of your runtime using `cf runtime list`
+* Valid Git personal access token with the [required scopes]({{site.baseurl}}/docs/reference/git-tokens) 
+* [Latest version of the Codefresh CLI]({{site.baseurl}}/docs/installation/gitops/upgrade-gitops-cli/)
+* Codefresh token in user settings
+* For ingress-based GitOps Runtimes, the ingress host of the Runtime (use `cf runtime list` to get this)
 
-### Add a managed cluster with GitOps CLI
-Add an external cluster to a provisioned GitOps Runtime through the GitOps CLI. When adding the cluster, you can also add labels and annotations to the cluster, which are added to the cluster secret created by Argo CD.
+## Adding managed clusters
+Add a managed cluster in any of the following ways:
+* [Codefresh UI](/#add-a-managed-cluster-in-codefresh)
+* [Kustomize](/#add-a-managed-cluster-with-kustomize)
+* [Helm](/#add-a-managed-cluster-with-helm)
+* [Terraform](#add-a-manage-cluster-with-terraform)
+
+### Add a managed cluster in Codefresh
+Add an external cluster to a provisioned GitOps Runtime in the Codefresh UI. When adding the cluster, you can also add labels and annotations to the cluster, which are added to the cluster secret created by Argo CD.
 Optionally, to first generate the YAML manifests, and then manually apply them, use the `dry-run` flag in the CLI. 
 
 **How to**  
@@ -37,7 +41,8 @@ Optionally, to first generate the YAML manifests, and then manually apply them, 
 1. From either the **Topology** or **List** views, select the Runtime to which to add the cluster. 
 1. Topology View: Select {::nomarkdown}<img src="../../../../images/icons/add-cluster.png" display=inline-block/>{:/}.  
   List View: Select the **Managed Clusters** tab, and then select **+ Add Cluster**.  
-1. In the Add Managed Cluster panel, copy and run the command:  
+1. In the Add Managed Cluster panel, if needed install the Codefresh GitOps CLI.
+1. Copy and run the command:  
   `cf cluster add [runtime-name] [--labels label-key=label-value] [--annotations annotation-key=annotation-value][--dry-run]`  
   where:   
   * `runtime-name` is the name of the Runtime to which to add the cluster.
@@ -53,7 +58,7 @@ Optionally, to first generate the YAML manifests, and then manually apply them, 
 	url="/images/runtime/managed-cluster-add-panel.png" 
 	alt="Add Managed Cluster panel" 
 	caption="Add Managed Cluster panel"
-  max-width="40%" 
+  max-width="60%" 
 %}
 
 {:start="5"}
@@ -65,21 +70,21 @@ The new cluster is registered to the GitOps Runtime as a managed cluster.
 
 ### Add a managed cluster with Kustomize
 
-1. Clone locally [https://github.com/codefresh-io/csdp-official/tree/main/add-cluster/kustomize](https://github.com/codefresh-io/csdp-official/tree/main/add-cluster/kustomize).
-1. Update confimap.yml and secret.yml with the require values
-1. Run `kustomize build` or `kubectl -k` to apply the final result to the cluster
+1. Locally clone [https://github.com/codefresh-io/csdp-official/tree/main/add-cluster/kustomize](https://github.com/codefresh-io/csdp-official/tree/main/add-cluster/kustomize){:target="\_blank"}.
+1. Update `configmap.yml` and `secret.yml` with the requires values.
+1. Run `kustomize build` or `kubectl -k` to apply the final result to the cluster.
 
-You can get the `ingressUrl` value of your runtime by running `cf runtime list` in your terminal
-after authenticating to the [Codefresh GitOps CLI]({{site.baseurl}}/docs/installation/cli/). 
+> For ingress-based GitOps Runtimes, to get the `ingressUrl` for your, first authenticate to the [Codefresh GitOps CLI]({{site.baseurl}}/docs/installation/cli/), and then run `cf runtime list` in your terminal.
+
 
 ### Add a managed cluster with Helm
 
-A Helm chart is published at https://chartmuseum.codefresh.io/csdp-add-cluster. You can see the source templates at [https://github.com/codefresh-io/csdp-official/tree/main/add-cluster/helm](https://github.com/codefresh-io/csdp-official/tree/main/add-cluster/helm).
+The Helm chart is published at https://chartmuseum.codefresh.io/csdp-add-cluster. You can see the source templates at [https://github.com/codefresh-io/csdp-official/tree/main/add-cluster/helm](https://github.com/codefresh-io/csdp-official/tree/main/add-cluster/helm){:target="\_blank"}.
 
-To deploy the chart copy locally [https://github.com/codefresh-io/csdp-official/blob/main/add-cluster/helm/values.yaml](https://github.com/codefresh-io/csdp-official/blob/main/add-cluster/helm/values.yaml) and fill in the required values.
-
-Then run
-
+To deploy the chart:
+1. Copy [https://github.com/codefresh-io/csdp-official/blob/main/add-cluster/helm/values.yaml](https://github.com/codefresh-io/csdp-official/blob/main/add-cluster/helm/values.yaml){:target="\_blank"} locally.
+1. Fill in the required values.
+1. Run:
 ```shell
 helm repo add csdp-add-cluster https://chartmuseum.codefresh.io/csdp-add-cluster
 helm repo update
@@ -87,13 +92,12 @@ helm search repo csdp-add-cluster
 helm install csdp-add-cluster/csdp-add-cluster -f values.yaml --generate-name
 ``` 
 
-
-You can get the `ingressUrl` value of your runtime by running `cf runtime list` in your terminal
-after authenticating to the [Codefresh GitOps CLI]({{site.baseurl}}/docs/installation/cli/). 
+> For ingress-based GitOps Runtimes, to get the `ingressUrl` for your, first authenticate to the [Codefresh GitOps CLI]({{site.baseurl}}/docs/installation/cli/), and then run `cf runtime list` in your terminal.
+ 
 
 ### Add a manage cluster with Terraform
 
-Use the [Helm provider](https://registry.terraform.io/providers/hashicorp/helm/latest/docs) as any other Helm chart.
+1. Use the [Helm provider](https://registry.terraform.io/providers/hashicorp/helm/latest/docs) as any other Helm chart.
 
 ```hcl
 resource "helm_release" "my-managed-cluster" {
@@ -106,23 +110,22 @@ resource "helm_release" "my-managed-cluster" {
   ]
 }
 ```
+1. Apply the file using Terraform or your favorite workflow tool.
 
-And then apply the file using Terraform or your favorite workflow tool.
-
-## Work with managed clusters 
-Work with managed clusters in either the Topology or List Runtime views. For information on Runtime views, see [Runtime views]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#gitops-runtime-views).  
+## View managed clusters 
+View managed clusters in either the Topology or List Runtime views. For information on Runtime views, see [Runtime views]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#gitops-runtime-views).  
 As the cluster is managed through the Runtime, updates to the Runtime automatically updates the components on all the managed clusters that include it. 
      
 View connection status for the managed cluster, and health and sync errors. Health and sync errors are flagged by the error notification in the toolbar, and visually flagged in the List and Topology views.  
   
-### Install Argo Rollouts 
+## Install Argo Rollouts 
 Applications with `rollout` resources need Argo Rollouts on the target cluster, both to visualize rollouts in the Applications dashboard and control rollout steps with the Rollout Player.  
-If Argo Rollouts has not been installed on the target cluster, it displays **Install Argo Rollouts** button.  
+If Argo Rollouts has not been installed on the target cluster, the **Install Argo Rollouts** button displayed.  
 
 Install Argo Rollouts with a single click to execute rollout instructions, deploy the application, and visualize rollout progress in the [Applications dashboard]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/). 
  
 
-1. In the Codefresh UI, on the toolbar, click the **Settings** icon, expand Runtimes in the sidebar, and select [**GitOps Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and from Runtimes in the sidebar, select [**GitOps Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
 1. Select **Topology View**.
 1. Select the target cluster, and then select **+ Install Argo Rollouts**.
  
@@ -136,15 +139,22 @@ Install Argo Rollouts with a single click to execute rollout instructions, deplo
   max-width="40%" 
 %}
 
-## Remove a managed cluster
+## Removing managed clusters
 
-When you want to remove a cluster as a deployment target you can unlink it from the runtime that manages it.
+Removing a cluster as a deployment target means removing it from the GitOps Runtime that manages it.
 
-Note that this only removes the management link between your runtime and your cluster. It doesn't do anything with the applications that are already running on the cluster.
+> This action only removes the management link between your GitOps Runtime and your cluster. Applications that are already running on the cluster are not affected.
+
+Remove a managed cluster in any of the following ways:
+* [Codefresh UI](/#remove-a-managed-cluster-from-the-codefresh-ui)
+* [GitOps CLI](#remove-a-managed-cluster-through-the-gitops-cli)
+* [Kustomize](/#remove-a-managed-cluster-with-kustomize)
+* [Helm](/#remove-a-managed-cluster-with-helm)
+* [Terraform](#remove-a-manage-cluster-with-terraform)
 
 
 ### Remove a managed cluster from the Codefresh UI 
-Remove a cluster from the Runtime's list of managed clusters from the Codefresh UI.
+Remove a cluster from the list managed by the GitOps Runtime in the Codefresh UI.
 
 > You can also remove it through the CLI.
 
@@ -167,28 +177,26 @@ In the Codefresh UI, on the toolbar, click the **Settings** icon, expand Runtime
 
 
 ### Remove a managed cluster through the GitOps CLI 
-Remove a  cluster from the list managed by the GitOps Runtime, through the GitOps CLI.  
+Remove a managed cluster from the list managed by the GitOps Runtime through the GitOps CLI.  
 
 * Run:  
   `cf cluster remove <runtime-name> --server-url <server-url>`  
   where:  
-  `<runtime-name>` is the name of the runtime that the managed cluster is registered to.  
+  `<runtime-name>` is the name of the GitOps Runtime that the managed cluster is registered to.  
   `<server-url>` is the URL of the server on which the managed cluster is installed. 
 
 
 
 
-### Remove with Kustomize
+### Remove a managed cluster with Kustomize
 
-Run `kubectl delete -f <your_yaml>` with the result of the `kustomize build` command
-that you run during installation
+Run `kubectl delete -f <your_yaml>` with the result of the `kustomize build` command that you run during installation
 
-### Remove with Helm
+### Remove a managed cluster with Helm
 
-Run `helm delete <release_name>` with the name of the release that was created
-during installation.
+Run `helm delete <release_name>` with the name of the release that was created during installation.
 
-### Remove with terraform 
+### Remove a managed cluster with terraform 
 
 Use the `terraform destroy` command.
 
