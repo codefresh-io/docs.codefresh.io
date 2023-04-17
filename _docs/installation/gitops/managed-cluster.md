@@ -25,9 +25,9 @@ Adding a managed cluster via Codefresh ensures that Codefresh applies the requir
 
 ## Adding managed clusters
 Add a managed cluster in any of the following ways:
-* [Codefresh UI](/#add-a-managed-cluster-in-codefresh)
-* [Kustomize](/#add-a-managed-cluster-with-kustomize)
-* [Helm](/#add-a-managed-cluster-with-helm)
+* [Codefresh UI](#add-a-managed-cluster-in-codefresh)
+* [Kustomize](#add-a-managed-cluster-with-kustomize)
+* [Helm](#add-a-managed-cluster-with-helm)
 * [Terraform](#add-a-manage-cluster-with-terraform)
 
 ### Add a managed cluster in Codefresh
@@ -58,10 +58,10 @@ Optionally, to first generate the YAML manifests, and then manually apply them, 
 	url="/images/runtime/managed-cluster-add-panel.png" 
 	alt="Add Managed Cluster panel" 
 	caption="Add Managed Cluster panel"
-  max-width="60%" 
+  max-width="40%" 
 %}
 
-{:start="5"}
+{:start="7"}
 1. If you used `dry-run`, apply the generated manifests to the same target cluster on which you ran the command.  
   Here is an example of the YAML manifest generated with the `--dry-run` flag. Note that the example has placeholders, which are replaced with the actual values during the `--dry-run`.  
   
@@ -110,6 +110,7 @@ resource "helm_release" "my-managed-cluster" {
   ]
 }
 ```
+{:start="2"}
 1. Apply the file using Terraform or your favorite workflow tool.
 
 ## View managed clusters 
@@ -146,10 +147,10 @@ Removing a cluster as a deployment target means removing it from the GitOps Runt
 > This action only removes the management link between your GitOps Runtime and your cluster. Applications that are already running on the cluster are not affected.
 
 Remove a managed cluster in any of the following ways:
-* [Codefresh UI](/#remove-a-managed-cluster-from-the-codefresh-ui)
+* [Codefresh UI](#remove-a-managed-cluster-from-the-codefresh-ui)
 * [GitOps CLI](#remove-a-managed-cluster-through-the-gitops-cli)
-* [Kustomize](/#remove-a-managed-cluster-with-kustomize)
-* [Helm](/#remove-a-managed-cluster-with-helm)
+* [Kustomize](#remove-a-managed-cluster-with-kustomize)
+* [Helm](#remove-a-managed-cluster-with-helm)
 * [Terraform](#remove-a-manage-cluster-with-terraform)
 
 
@@ -196,7 +197,7 @@ Run `kubectl delete -f <your_yaml>` with the result of the `kustomize build` com
 
 Run `helm delete <release_name>` with the name of the release that was created during installation.
 
-### Remove a managed cluster with terraform 
+### Remove a managed cluster with Terraform 
 
 Use the `terraform destroy` command.
 
