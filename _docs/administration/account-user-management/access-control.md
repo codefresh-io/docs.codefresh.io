@@ -19,8 +19,9 @@ You can then create rules that combine roles, attributes, and CRUD (Create/Read/
   [Role-based access](#role-based-access-for-users-and-administrators) restricts access based on the _who (the kind of user)_. Access is granted based on the user's job responsibilities or position within an organization. Codefresh administrators can access UI functionality that you would deny to other users. For example, only account administrators can create and modify integrations with Git providers and cloud services, while other users can create, run, and modify pipelines. 
 
 * **Attribute-based access control (ABAC)**  
-  Access control via [attributes](#abac-for-entities), restricts access to entities based on the _what (the type of access)_. Assigning attributes, or tags as in Codefresh to entities makes it easy to enforce a more flexible and secure form of access control.  
-  For example, add tags to projects, and then enforce access control for pipelines through project tags, instead of relying on pipeline-level tags. So you can add tags to projects with pipelines that all teams can view and run (Read), but only the platform can Create/Edit/Delete.
+  Access control via attributes, restricts access to entities based on the _what (the type of access)_. Assigning attributes, or tags as in Codefresh to entities makes it easy to enforce a more flexible and secure form of access control.  
+  For example, add tags to projects, and then enforce access control for pipelines through project tags, instead of relying on pipeline-level tags. So you can add tags to projects with pipelines that all teams can view and run (Read), but only the platform team can Create/Edit/Delete.  
+  See [ABAC for entities with tags and rules](#abac-for-entities-with-tags-and-rules).
 
 * **Git-repository access**
   Git-repository access is a specialized form of access control that controls the Git repositories from which users can load [pipeline definitions](#enable-disable-access-to-pipeline-yamls-by-source).
@@ -69,17 +70,19 @@ The table below lists the functionality available for the `Admin` and `User` rol
 
 
 
-## ABAC for entities
+## ABAC for entities with tags and rules
 
 ABAC (Attribute-Based Access Control), allows fine-grained access to all entities, Kubernetes clusters, Codefresh pipelines, projects, and additional resources through the use of tags.  
 For more information on ABAC, see [ABAC on Wikipedia](https://en.wikipedia.org/wiki/Attribute-based_access_control){:target="\_blank"}. 
 
+### Define tags for entities
 Using tags, you can allocate entities and resources to teams. Define which team has access to which entities and resources, and also the type of access.  
 Tag names are arbitrary, and can be anything you choose that matches your company process. Tags can be product names, software lifecycle phases, department names, or names that help define security policies.  
 
 You can then define rules combining teams, privileges, and tags and for fine-grained access control.
 
-### Assign tags to Kubernetes clusters and Git contexts
+
+#### Assign tags to Kubernetes clusters and Git contexts
 
 After integrating Kubernetes clusters/Git providers in Codefresh, you can add one or more tags to each cluster/Git provider. Adding tags makes it easy to define multiple policies for the same cluster, and Git provider, also referred to as Git Contexts. For example, you can define access by project and by team.
 
@@ -116,7 +119,7 @@ After integrating Kubernetes clusters/Git providers in Codefresh, you can add on
 
 >By default, all clusters/Git integrations are displayed and can be modified by all users (but not deleted). As soon as you add at least one tag to a cluster/Git integration, it is only accessible to users with the required policy rules.
 
-### Assign tags to projects 
+#### Assign tags to projects 
 
 Add tags to projects for filtering and defining permissions. 
 
@@ -139,7 +142,7 @@ Add tags to projects for filtering and defining permissions.
   max-width="80%"
     %}
 
-### Assign tags to pipelines 
+#### Assign tags to pipelines 
 
 Similar to other entities, you can also add tags to Codefresh pipelines. 
 
@@ -157,7 +160,7 @@ Similar to other entities, you can also add tags to Codefresh pipelines.
   max-width="80%"
     %}
 
-### Assign tags to Shared Configurations
+#### Assign tags to Shared Configurations
 Shared configuration can be environment variables, Helm values, encrypted secrets for access tokens and YAMLs.
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from Configuration in the sidebar, select [**Shared Configuration**](hhttps://g.codefresh.io/account-admin/account-conf/shared-config){:target="\_blank"}. 
@@ -165,68 +168,7 @@ Shared configuration can be environment variables, Helm values, encrypted secret
 1. Type in the tag, press Enter, and continue to add the tags you need.
 1. When finished, click **Save**.  
 
-## Git-repository access for pipeline definitions 
-
-When [creating a pipeline]({{site.baseurl}}/docs/pipelines/pipelines/), users can by default use/load pipeline definitions from any of the following:
-* Inline YAML: Disabling the inline editor, disables modifying existing pipelines, and creating new pipelines through the Codefresh inline YAML editor. The Run button is also disabled for all such pipelines. 
-* YAML from repository: Any Git repository connected to Codefresh
-* YAML from URL: Any public URL
-
-You can change the default behavior to restrict loading pipeline definitions from _specific_ Git repositories, or completely disable loading definitions from _all_ Git repositories.
-
-### Enable/disable access to pipeline YAMLs by source
-Enable or disable access to pipeline definition YAMLs based on the source of the YAMLs.  
-These settings are effective for all pipelines in an account. When selected, the setting enables or disables that method of pipeline creation from the Codefresh UI, and running exist
-
-
-**How to**  
-
-1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
-1. From Configuration in the sidebar, select [**Pipeline Settings**](https://g.codefresh.io/account-admin/account-conf/pipeline-settings){:target="\_blank"}.
-
- {% include image.html
-  lightbox="true"
-  file="/images/administration/access-control/pipeline-restrictions.png"
-  url="/images/administration/access-control/pipeline-restrictions.png"
-  alt="Global pipeline restrictions"
-  caption="Global pipeline restrictions"
-  max-width="60%"
-  %}
-
-{:start="3"}
-1. Turn on or off the options as needed. 
-
-
-### Define access to Git repositories for pipeline YAMLs
-If access to pipeline definitions are enabled for Git repositories, you can configure fine-grained restrictions through the integration settings for your [Git provider]({{site.baseurl}}/docs/integrations/git-providers/). 
-
-By default, when a user [creates a pipeline]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/), the pipeline's definition can be loaded from the inline editor or from any private or public Git repository. You can restrict this behavior to allow access to selected repos, to folders within repos, or to selected branches, or even completely disable loading pipeline definitions from Git repositories.
-
-1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
-1. From Configuration on the sidebar, select [**Pipeline Integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}.
-1. Select the Git provider integration, click **Edit**.
-1. Scroll down and expand **YAML Options**.
-
- {% include image.html
-  lightbox="true"
-  file="/images/administration/access-control/pipeline-git-restrictions.png"
-  url="/images/administration/access-control/pipeline-git-restrictions.png"
-  alt="Pipeline restrictions per Git provider"
-  caption="Pipeline restrictions per Git provider"
-  max-width="80%"
-    %}    
-
-{:start="5"}
-1. Configure restrictions for Git repositories that can be used for pipeline definitions:
-  * **Allow only the following repositories**: Toggle **Manual selection** to on, and then select the Git repos, or define a regex according to which to select repos. 
-  * **Allow only the following branches**: Select Git repositories by the branches that match the regex. For example, this regex `/^((pipeline-definition)$).*/g`, allows users to load pipeline YAMLs only from a branch named `pipeline-definition` in a Git repository.
-  * **Allow only the following paths**: Select Git repositories by folders within the repo that match the glob pattern).
-  
-
-
-
-
-## Rules for access control 
+### Rules for access control 
 Define rules using the *who, what, where* pattern to control access to entities and resources. 
 
 For each rule, select:
@@ -244,7 +186,7 @@ The examples in this section illustrate how to control access to projects and to
 * [Example 1: Create rule to define access to projects by teams](#example-1-create-rule-to-define-access-to-projects-by-teams)  
 * [Example 2: Create rule to define access across teams to pipelines by projects and project tags](#example-2-create-rule-to-define-access-across-teams-to-pipelines-by-projects-and-project-tags)
 
-### Define rules for entities/resources 
+#### Define rules for entities/resources 
 
 **Before you begin**  
 Make sure you have:
@@ -273,7 +215,7 @@ Make sure you have:
   max-width="80%"
     %}
 
-### CRUD privileges for entities/resources
+#### CRUD privileges for entities/resources
 
 CRUD privileges define Create/Read/Update/Delete permissions for the entity.  Specific entities can have additional or different permissions.
 
@@ -290,7 +232,7 @@ CRUD privileges define Create/Read/Update/Delete permissions for the entity.  Sp
 | Git contexts          |  Git contexts refer to the permissions to create and manage integrations with Git providers and use them in pipelines. Tags are used to control access to teams and execution contexts. <br><br>**Create**: Add integrations to Git providers.<br>**Update**: View and edit Git provider integrations, including editing the tags assigned to them.<br>**Delete**: Delete Git provider integrations.<br>**Use**:<br>Create triggers in pipelines for Git provider<br>Retrieve YAML definitions from a repository<br>Use a Git integration in pipelines, in the `git-clone` step for example, via Execution Context. | 
 | Shared configs<br>Secrets<br>YAMLs          |  Shared configuration permissions relate to managing: <br>{::nomarkdown}<ul><li>Environment variables, unencrypted (<b>Shared Configuration</b>), and encrypted for sensitive data such as access tokens (<b>Shared Secret</b>).</li><li>Helm values or other generic information, unencrypted (<b>Shared YAML</b>), and encrypted (<b>Shared Secret YAML</b>).</li></ul>{:/}<br>**Create**: Create unencrypted or encrypted Shared Configuration, Shared Secret, Shared YAML, Shared Secret YAML.<br>**Read**: View unencrypted or encrypted Shared Configuration, Shared Secret, Shared YAML, Shared Secret YAML.<br>**Update**: View and edit unencrypted or encrypted Shared Configuration, Shared Secret, Shared YAML, Shared Secret YAML.<br>**Delete**: Delete unencrypted or encrypted Shared Configuration, Shared Secret, Shared YAML, Shared Secret YAML. | 
 
-### About pipeline permissions by project tags
+#### About pipeline permissions by project tags
 
 Create rules for pipeline entities by project tags instead of pipeline tags. 
 
@@ -300,7 +242,7 @@ It also reduces the effort and time to create and maintain permissions for teams
 Users without access to a pipeline cannot view or run its builds. 
 
 
-### Example 1: Create rule to define access to projects by teams
+#### Example 1: Create rule to define access to projects by teams
 
 This example illustrates how to create rules for projects and restrict access by teams. 
 
@@ -339,12 +281,13 @@ Now we'll create the two teams, DevOps and Users.
   %} 
 1. Create a new team, Users.
 
-**Step 3: Create the projects**
+**Step 3: Create the projects**  
+
 We will need to create only one project, as the DevOps project has already been created with the `DevOps` tag. 
 * Create a project: `Sandbox` and assign tag `shared`. See [Create project for pipelines]({{site.baseurl}}/docs/quick-start/ci-quick-start/create-ci-pipeline/#create-a-project-for-pipeline).
 
 
-**Step 4: Define the project rules**  
+**Step 4: Define the project rules**   
 Finally, we'll define the rules for the `DevOps` and '`Sandbox` projects.
 
 1. For team DevOps: 
@@ -353,13 +296,13 @@ Finally, we'll define the rules for the `DevOps` and '`Sandbox` projects.
 1. For team Users:
       1. Create a Project rule with Read access to all projects with `shared` tags.
 
-### Example 2: Create rule to define access across teams to pipelines by projects and project tags
+#### Example 2: Create rule to define access across teams to pipelines by projects and project tags
 
 This example illustrates how to define rules to enforce access control for pipelines by projects and project tags. We will assign tags to the different projects that house different pipelines. 
 Instead of adding tags to each pipeline, which means that you need to add the same tags every time you create a new pipeline in the project, we will add tags to the projects that house the pipelines. As these tags are inherited by all pipelines assigned to the projects, the CRUD privileges are inherited as well. 
 
 
-**Scenario**:  
+**Scenario**    
 We have three teams: DevOps, Marvel, and Users.  
 We want:
 * Teams DevOps and Marvel to be able to create and modify their own pipelines, and view and run all pipelines 
@@ -430,6 +373,69 @@ We need to define a Create rule each for teams DevOps and Marvel, and then diffe
   caption="Example: Restricting team permissions for pipelines by project tag"
   max-width="60%"
   %}
+
+## Git-repository access for pipeline definitions 
+
+When [creating a pipeline]({{site.baseurl}}/docs/pipelines/pipelines/), users can by default use/load pipeline definitions from any of the following:
+* Inline YAML: Disabling the inline editor, disables modifying existing pipelines, and creating new pipelines through the Codefresh inline YAML editor. The Run button is also disabled for all such pipelines. 
+* YAML from repository: Any Git repository connected to Codefresh
+* YAML from URL: Any public URL
+
+You can change the default behavior to restrict loading pipeline definitions from _specific_ Git repositories, or completely disable loading definitions from _all_ Git repositories.
+
+### Enable/disable access to pipeline YAMLs by source
+Enable or disable access to pipeline definition YAMLs based on the source of the YAMLs.  
+These settings are effective for all pipelines in an account. When selected, you cannot create pipelines setting enables or disables that method of pipeline creation from the Codefresh UI for new, and running existing pipeline
+
+
+**How to**  
+
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
+1. From Configuration in the sidebar, select [**Pipeline Settings**](https://g.codefresh.io/account-admin/account-conf/pipeline-settings){:target="\_blank"}.
+
+ {% include image.html
+  lightbox="true"
+  file="/images/administration/access-control/pipeline-restrictions.png"
+  url="/images/administration/access-control/pipeline-restrictions.png"
+  alt="Global pipeline restrictions"
+  caption="Global pipeline restrictions"
+  max-width="60%"
+  %}
+
+{:start="3"}
+1. Turn on or off the options as needed. 
+
+
+### Define access to Git repositories for pipeline YAMLs
+If access to pipeline definitions are enabled for Git repositories, you can configure fine-grained restrictions through the integration settings for your [Git provider]({{site.baseurl}}/docs/integrations/git-providers/). 
+
+By default, when a user [creates a pipeline]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/), the pipeline's definition can be loaded from the inline editor or from any private or public Git repository. You can restrict this behavior to allow access to selected repos, to folders within repos, or to selected branches, or even completely disable loading pipeline definitions from Git repositories.
+
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
+1. From Configuration on the sidebar, select [**Pipeline Integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}.
+1. Select the Git provider integration, click **Edit**.
+1. Scroll down and expand **YAML Options**.
+
+ {% include image.html
+  lightbox="true"
+  file="/images/administration/access-control/pipeline-git-restrictions.png"
+  url="/images/administration/access-control/pipeline-git-restrictions.png"
+  alt="Pipeline restrictions per Git provider"
+  caption="Pipeline restrictions per Git provider"
+  max-width="80%"
+    %}    
+
+{:start="5"}
+1. Configure restrictions for Git repositories that can be used for pipeline definitions:
+  * **Allow only the following repositories**: Toggle **Manual selection** to on, and then select the Git repos, or define a regex according to which to select repos. 
+  * **Allow only the following branches**: Select Git repositories by the branches that match the regex. For example, this regex `/^((pipeline-definition)$).*/g`, allows users to load pipeline YAMLs only from a branch named `pipeline-definition` in a Git repository.
+  * **Allow only the following paths**: Select Git repositories by folders within the repo that match the glob pattern).
+  
+
+
+
+
+
 
 
 
