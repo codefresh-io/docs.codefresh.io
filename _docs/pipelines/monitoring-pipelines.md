@@ -73,7 +73,7 @@ The available filters are:
 * **Trigger type**: The type of trigger that caused the build to run.
 * **Git event**: For [Git triggers]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/), the exact event that triggered the build.
 * **Trigger-name**: The name of the trigger that triggered the build.
-* **Annotations**: The build annotations to filter by, defined as key=value pairs. For the same annotation, you can filter by multiple values. See [Annotations in pipelines]({{site.baseurl}}/docs/pipelines/annotations/#filter-builds-by-annotations).
+* **Annotations**: The build [annotations]({{site.baseurl}}/docs/pipelines/annotations/) to filter by, defined as key=value pairs. You can filter the same annotation by multiple values. 
 
 
 Notice that all filters are multiple-choice so you can select multiple values for each filter category.
