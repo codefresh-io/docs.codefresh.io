@@ -3,6 +3,8 @@ title: "GitOps Docker Hub integration"
 description: ""
 group: gitops-integrations
 sub_group: container-registries
+redirect_from:
+  - /csdp-docs/docs/integrations/container-registries/dockerhub/
 toc: true
 ---
 

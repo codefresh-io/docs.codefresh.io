@@ -6,6 +6,7 @@ sub_group: account-user-management
 redirect_from:
   - /docs/administration/audit-logs/
   - /docs/enterprise/audit-logs/
+  - /csdp-docs/docs/administration/audit/
 toc: true
 ---
 
