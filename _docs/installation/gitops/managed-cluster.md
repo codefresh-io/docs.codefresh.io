@@ -28,7 +28,7 @@ Add a managed cluster in any of the following ways:
 * [Codefresh UI](#add-a-managed-cluster-in-codefresh)
 * [Kustomize](#add-a-managed-cluster-with-kustomize)
 * [Helm](#add-a-managed-cluster-with-helm)
-* [Terraform](#add-a-manage-cluster-with-terraform)
+* [Terraform](#add-a-managed-cluster-with-terraform)
 
 ### Add a managed cluster in Codefresh
 Add an external cluster to a provisioned GitOps Runtime in the Codefresh UI. When adding the cluster, you can also add labels and annotations to the cluster, which are added to the cluster secret created by Argo CD.
@@ -95,7 +95,7 @@ helm install csdp-add-cluster/csdp-add-cluster -f values.yaml --generate-name
 > For ingress-based GitOps Runtimes, to get the `ingressUrl` for your, first authenticate to the [Codefresh GitOps CLI]({{site.baseurl}}/docs/installation/cli/), and then run `cf runtime list` in your terminal.
  
 
-### Add a manage cluster with Terraform
+### Add a managed cluster with Terraform
 
 * Use the [Helm provider](https://registry.terraform.io/providers/hashicorp/helm/latest/docs) as any other Helm chart.
 
