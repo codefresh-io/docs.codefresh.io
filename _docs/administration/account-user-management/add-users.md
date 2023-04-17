@@ -62,9 +62,7 @@ By default, there are two teams:
 
 ### Automatically creating projects for teams
 
-As part of the global pipeline settings for an account, on creating a team, you can also automatically create a project and a project tag with the same name as that of the team, by enabling **auto-create projects for teams** (disabled by default).  
-
-Enabling it simplifies permissions setup for pipelines and projects, as it also creates a Read rule for the project with full privileges for all pipelines in the same project. See [Auto-create projects for teams]({{site.baseurl}}/docs/pipelines/configuration/pipeline-settings/#auto-create-projects-for-teams).
+As part of the global pipeline settings for an account, when creating a team, you can also automatically create a project and a project tag with the same name as that of the team. Enabling **auto-create projects for teams** (disabled by default), simplifies permissions setup for pipelines and projects, as it also creates a Read rule for the project. See [Auto-create projects for teams]({{site.baseurl}}/docs/pipelines/configuration/pipeline-settings/#auto-create-projects-for-teams).
 
 ### Create a team in Codefresh
 

@@ -59,7 +59,7 @@ max-width="60%"
 
 ### What does auto-create project do?
 When you create a team, the auto-create project option:
-* Creates a _project_ with the same name as the team, and tags it with the team name
+* Creates a _project_ with the same name as the team, and a _tag_ for the project, also with the team name
   
   {% include image.html
 lightbox="true"
@@ -70,7 +70,7 @@ caption="Auto-created project with same name and tag as the team"
 max-width="60%"
 %}
 
-* Creates a _Project rule_ for the team with Read access to this project, and other projects tagged with the same name
+* Creates a _Project rule_ for the team with Read access to this project, and other projects with the same project tag 
 
 {% include image.html
 lightbox="true"
@@ -92,17 +92,14 @@ caption="Auto-created rule for Pipeline entity"
 max-width="60%"
 %}
 
-> Once created, projects are not synchronized with the team it was created for. Modifying or deleting the team has no impact on the project and its tags.
+> Once created, there is no synchronization between the project and the team. Modifying or deleting the team has no impact on the project and its tags.
 
 **What are the benefits?**  
-As you can see, this option simplifies access-control setup and strengthens it:
+As you can see, this option both simplifies and strengthens access-control:
 
 * Use the Project rule automatically created for the team to grant access to additional projects simply by assigning the same tag to the other projects.
 * Avoids the need to create rules per pipeline for the same project. The Pipeline rule automatically created for the team, automatically grants the same permissions to all pipelines in the same project. New pipelines in the project automatically inherit these permissions.
 * Easily grant the same permissions to other teams for the same pipelines by creating Pipeline rules for the teams with the same project tags.
-
-
-
 
 
 ## Enabling cluster-contexts for pipelines
