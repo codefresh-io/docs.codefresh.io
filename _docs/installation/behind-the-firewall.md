@@ -125,7 +125,7 @@ steps:
 
 Once you trigger the pipeline, the Codefresh Build Runtimes communicates with your private Git instance and checks out code.
 
->Note that currently there is a limitation on the location of the `codefresh.yml` file. Only the [inline mode]({{site.baseurl}}/docs/pipelines/pipelines/#writing-codefresh-yml-in-the-gui) is supported. Soon we will allow the loading of the pipeline from the Git repository itself.
+>Note that currently there is a limitation on the location of the `codefresh.yml` file. Only the [inline mode]({{site.baseurl}}/docs/pipelines/pipelines/#writing-codefresh-yml-in-the-gui) is supported by default. You will need to install the [App-Proxy]({{site.baseurl}}/docs/installation/codefresh-runner/#app-proxy-installation) to be able to use the YAML from Repository.
 
 You can also use a [network proxy]({{site.baseurl}}/docs/pipelines/steps/git-clone/#using-git-behind-a-proxy) for the Git clone step.
 
