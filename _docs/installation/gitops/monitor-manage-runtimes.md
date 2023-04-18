@@ -76,14 +76,14 @@ Here is a description of the information in the List View.
 |**Managed Cluster**| The number of managed clusters, if any, registered with the GitOps Runtime. To view list of managed clusters, click the runtime name, and then the **Managed Clusters** tab.  To work with managed clusters, see [Adding external clusters to runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster/).|
 |**Version**| The version of the runtime currently installed. **Update Available!** indicates there are newer versions of the runtime. To see all the commits to the runtime, mouse over **Update Available!**, and select **View Complete Change Log**.
 |**Last Updated**| The most recent update information from the runtime to the Codefresh platform. Updates are sent to the platform typically every few minutes. Longer update intervals may indicate networking issues.|
-|**Sync Status**| The sync status of the GitOps Runtime. The sync status is displayed only when the GitOps Runtime is configured as an Argo Application.    {::nomarkdown}<ul><li> <img src="../../../../images/icons/runtime-synced.png"  display=inline-block> <b>Synced</b></li> <li><img src="../../../../images/icons/runtime-syncing.png"  display=inline-block> <b>Syncing</b>.</li><li><img src="../../../../images/icons/runtime-out-of-sync.png"  display=inline-block> <b>Out-of-sync</b>.</li><li><b>N/A</b>: Codefresh could not get the sync status. This could be because the Helm Runtime is not configured as an Argo application.</li><li><b>Complete Installation</b>: Git credentials are not configured for the Helm Runtime. Click the three-dot context menu and select <b>Update Git Runtime Credentials</b>. See ????</li>  </ul> {:/} |
-|**Actions** | The possible actions to manage the selected runtime.{::nomarkdown}<ul><li> <b>Upgrade</b>: Upgrade to the latest version. </li> <li><b>Download All Logs</b>: Download logs for all.</li><li><b>Update Git Runtime Credentials</b>.</li><li><b>Delete Runtime</b>: Available only when the runtime is Offline. <br>Remove the runtime from Codefresh. The runtime remains on the cluster, and all clusters ???  </li><li><b>Uninstall Runtime</b>: Uninstall the runtime from the cluster on which it is provisioned. Apps? Clusters?? </li>  </ul> {:/}
+|**Sync Status**| The sync status of the GitOps Runtime. The sync status is displayed only when you have completed installation and configured the GitOps Runtime as an Argo Application. {::nomarkdown}<ul><li> <img src="../../../../images/icons/runtime-synced.png"  display=inline-block> <b>Synced</b></li> <li><img src="../../../../images/icons/runtime-syncing.png"  display=inline-block> <b>Syncing</b>.</li><li><img src="../../../../images/icons/runtime-out-of-sync.png"  display=inline-block> <b>Out-of-sync</b>.</li><li><b>N/A</b>: Codefresh could not get the sync status. This could be because the Runtime is not configured as an Argo application.</li><li><b>Complete Installation</b>: Git credentials are not configured for the Runtime. Click the three-dot context menu and select <b>Update Git Runtime Credentials</b>. See ????</li>  </ul> {:/} |
+|**Actions** | The possible actions to manage the selected runtime.{::nomarkdown}<ul><li> <b>Upgrade</b>: Upgrade to the latest version. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#upgrade-gitops-runtimes">Upgrade GitOps Runtimes</a></li> <!---<li><b>Download All Logs</b>: Download logs for the Runtime or for its components. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#viewdownload-logs-to-troubleshoot-gitops-runtimes">View/download logs for GitOps Runtimes</a>--></li><li><b>Update Git Runtime Credentials</b>: Update Git token for Runtime. See </li><li><b>Remove Runtime</b>: Available only when the runtime is Offline. <br>Remove the runtime from Codefresh. The runtime remains on the cluster. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#remove-gitops-runtimes">Remove GitOps Runtimes</a>. </li><li><b>Uninstall Runtime</b>: Uninstall the runtime from the cluster on which it is provisioned. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#uninstall-gitops-runtimes">Uninstall GitOps Runtimes</a></li> </ul> {:/}
 
 
 ### Topology view
 
-A hierachical visualization of the provisioned Runtimes. The Topology view makes it easy to identify key information such as versions, health and sync status, for both the provisioned Runtime and the clusters managed by it.  
-Here is an example of the Topology view for Runtimes.
+A hierachical visualization of the provisioned GitOps Runtimes. The Topology view makes it easy to identify key information such as versions, health and sync status, for both the provisioned Runtime and the clusters managed by it.  
+Here is an example of the Topology view for GitOps Runtimes.
   {% include
  image.html
  lightbox="true"
@@ -227,7 +227,7 @@ Verify that you have [authorized access to the Codefresh app's organizations]({{
 SCREENSHOT
 
 
-## (Hybrid GitOps) Upgrade provisioned GitOps Runtimes
+## (Hybrid GitOps) Upgrade GitOps Runtimes
 
 Upgrade provisioned Hybrid GitOps Runtimes to install critical security updates, get new functionality, and the latest versions of all components. Upgrade a provisioned Hybrid Runtime by running a silent upgrade or through the GitOps CLI wizard.  
 If you have managed clusters for Hybrid GitOps Runtimes, upgrading the Runtime automatically updates runtime components within the managed cluster as well.
@@ -275,7 +275,7 @@ If you have managed clusters for Hybrid GitOps Runtimes, upgrading the Runtime a
   `RELEASE_NAME=$(helm ls -n codefresh-gitops-runtime -q) && helm upgrade ${RELEASE_NAME} -n codefresh-gitops-runtime --devel`  
 1. Click **Close** to exit the upgrade panel.
 
-## Remove provisioned GitOps Runtimes
+## Remove GitOps Runtimes
 Remove GitOps Runtimes that are offline from Codefresh. Removing a GitOps Runtime removes it only from the Codefresh UI. The Runtime still remains on the cluster.
 
 >The Remove options is available in List View, and is only enabled only when a Runtime is offline. 
@@ -315,7 +315,7 @@ Remove GitOps Runtimes that are offline from Codefresh. Removing a GitOps Runtim
 
 1. Click **Remove** to confirm.
 
-## Uninstall provisioned GitOps Runtimes
+## Uninstall GitOps Runtimes
 
 Uninstall provisioned GitOps Runtimes that are not in use.  
 
@@ -433,7 +433,8 @@ The methods for updating any Git token are the same regardless of the reason for
 1. Click **Update Credentials**.
 
 
-## View/download logs to troubleshoot GitOps Runtimes
+<!--- does not work for Helm runtimes; hidden until further notice
+## View/download logs for GitOps Runtimes
 Logs are available for completed Runtimes, both for the runtime and for individual runtime components. Download log files for offline viewing and analysis, or view online logs for a Runtime component, and download if needed for offline analysis. Online logs support free-text search, search-result navigation, and line-wrap for enhanced readability.  
 
 Log files include events from the date of the application launch, with the newest events listed first. 
@@ -521,6 +522,10 @@ Online logs show up to 1000 of the most recent events (lines), updated in real t
 {:start="5"}
 1. To download the log, click **Download**.  
   The file is downloaded as `<component-name>.log`.
+
+-->
+
+<!--- needs to be modified for Helm; hidden until further notice
 
 ## (Hybrid GitOps) Restoring provisioned GitOps Runtimes
 
@@ -619,7 +624,7 @@ spec:
 status:
   loadBalancer: {}
 ```
-
+-->
 
 ## (Hybrid GitOps) Troubleshoot communication problems
 
