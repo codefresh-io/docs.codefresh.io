@@ -314,7 +314,7 @@ Remove GitOps Runtimes that are offline from Codefresh. Removing a GitOps Runtim
 
 1. Click **Remove** to confirm.
 
-### Uninstall provisioned GitOps Runtimes
+## Uninstall provisioned GitOps Runtimes
 
 Uninstall provisioned GitOps Runtimes that are not in use.  
 
@@ -369,7 +369,7 @@ Applications??
 
 
 
-### Update Git credentials for Runtimes
+## Update Git credentials for GitOps Runtimes
 
 Provisioned GitOps Runtimes require valid Git tokens at all times to authenticate Git actions by you as a user.  
 >These tokens are specific to the user, and the same token can be used for multiple runtimes.
