@@ -61,16 +61,20 @@ max-width="50%"
 
 The available filters are:
 
-* *Pipeline* - any of the pipelines available.
-* *Provider* - type of [Git provider]({{site.baseurl}}/docs/integrations/git-providers/).
-* *Repository* - Git repository from the attached [trigger]({{site.baseurl}}/docs/pipelines/triggers/).
-* *Type* - build, [launch a test environment]({{site.baseurl}}/docs/quick-start/ci-quick-start/on-demand-environments/#launch-a-docker-image-using-codefresh).
-* *Branch* - any of the available branches from the attached Git trigger.
-* *Committer* - person that made the commit that triggered the build.
-* *Environment* - which [environment]({{site.baseurl}}/docs/deployments/kubernetes/environment-dashboard/) was affected.
-* *Status* - success, error, in-progress, pending, terminated etc. A Pending status can also indicate that [pipeline build execution has been paused]({{site.baseurl}}/docs/pipelines/configuration/pipeline-settings/#pause-pipeline-executions) for the account.
-* *Trigger type* - what type of trigger was responsible for this build
-* *Git event* - in the case of [Git triggers]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/) the exact event
+* **Pipeline**: Any of the pipelines available.
+* **BoardId**: The name of the Helm board
+* **Provider** : The [Git provider]({{site.baseurl}}/docs/integrations/git-providers/).
+* **Repository**: Git repository with the [trigger]({{site.baseurl}}/docs/pipelines/triggers/).
+* **Type**: Build (user-initiated), or system (auto-initiated), see [launch a test environment]({{site.baseurl}}/docs/quick-start/ci-quick-start/on-demand-environments/#launch-a-docker-image-using-codefresh).
+* **Branch**: Any of the available branches from the attached Git trigger.
+* **Committer**: The user who made the commit that triggered the build.
+* **Environment**: The [environment]({{site.baseurl}}/docs/deployments/kubernetes/environment-dashboard/) affected by the build.
+* **Status**: Success, error, in-progress, pending, terminated etc. A Pending status can also indicate that [pipeline build execution has been paused]({{site.baseurl}}/docs/pipelines/configuration/pipeline-settings/#pause-pipeline-executions) for the account.
+* **Trigger type**: The type of trigger that caused the build to run.
+* **Git event**: For [Git triggers]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/), the exact event that triggered the build.
+* **Trigger-name**: The name of the trigger that triggered the build.
+* **Annotations**: The build [annotations]({{site.baseurl}}/docs/pipelines/annotations/) to filter by, defined as key=value pairs. You can filter the same annotation by multiple values. 
+
 
 Notice that all filters are multiple-choice so you can select multiple values for each filter category.
 At any given point you can see all the active filters on top of the screen.
@@ -87,7 +91,7 @@ max-width="50%"
 
 You can easily remove active filters, by clicking on them and adding/removing values.
 
-On the right hand side you can also find a filtering toolbar with time options:
+To the right, you have the date range options:
 
 {% include 
 image.html 

@@ -212,6 +212,7 @@ Codefresh flags this through this notification:
 
 SCREENSHOT
 
+
 > To change a valid Shared Configuration Repository, you must contact Codefresh Support. 
 
 **Before you begin**  
