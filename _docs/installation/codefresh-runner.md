@@ -52,14 +52,14 @@ If the Kubernetes cluster with the Codefresh Runner is behind a proxy server, [c
 
 During installation, you can see which API token will be used by the Runner (if you don't provide one). The printed token includes the permissions used by the Runner to communicate with the Codefresh platform and run pipelines. If you save the token, even if or when you delete the deployment, you can use the same token to restore the Runner's permissions without having to re-install the Codefresh Runner.
 
->Generate your API Key from your [user settings page].
+>Only a Codefresh account administrator can install the Codefresh Runner. 
 
 
 
 **Before you begin**  
 Make sure you have a:  
 * Codefresh account
-* API token to authenticate the CLI
+* [API token to authenticate the CLI]({{site.baseurl}}/docs/administration/user-self-management/user-settings/#create-and-manage-api-keys)
 * [Codefresh CLI token with *all scopes*]({{site.baseurl}}/docs/integrations/codefresh-api/#authentication-instructions)
 
 **How to**
@@ -1858,7 +1858,7 @@ accountId: 5f048d85eb107d52b16c53ea
 | `envVars`       | object | Override or add environment variables passed into the engine pod |
 | `userEnvVars`       | object | Add external env var(s) to the pipeline. See [Custom Global Environment Variables](#custom-global-environment-variables)  |
 | `cluster`       | object | k8s related information (`namespace`, `serviceAccount`, `nodeSelector`) |
-| `resources`       | object | Specify non-default `requests` and `limits` for engine pod |
+| `resources`       | object | Specify non-default `requests` and `limits` for engine pod. For memory, use `Mi` (mebibytes); for CPU, use `m` (millicpu) |
 | `tolerations`       | array | Add tolerations to engine pod |
 | `annotations`       | object | Add custom annotations to engine pod (empty by default `{}`) |
 | `labels`       | object | Add custom labels to engine pod (empty by default `{}`) |
@@ -1915,7 +1915,7 @@ runtimeScheduler:
 | `envVars`       | object | Override or add environment variables passed into the dind pod. See [IN-DIND cleaner](https://github.com/codefresh-io/dind/tree/master/cleaner){:target="\_blank"}  |
 | `userVolumeMounts` with `userVolumes`       | object | Add volume mounts to the pipeline See [Custom Volume Mounts](#custom-volume-mounts) |
 | `cluster`       | object | k8s related information (`namespace`, `serviceAccount`, `nodeSelector`) |
-| `defaultDindResources`       | object | Override `requests` and `limits` for dind pod (defaults are `cpu: 400m` and `memory:800Mi` ) |
+| `defaultDindResources`       | object | Override `requests` and `limits` for dind pod (defaults are `cpu: 400m` and `memory:800Mi`). For memory, use `Mi` (mebibytes); for CPU, use `m` (millicpu) |
 | `tolerations`       | array | Add tolerations to dind pod |
 | `annotations`       | object | Add custom annotations to dind pod (empty by default `{}`) |
 | `labels`       | object | Add custom labels to dind pod (empty by default `{}`) |
@@ -2227,4 +2227,3 @@ For troubleshooting refer to the [Knowledge Base](https://support.codefresh.io/h
 [Codefresh installation options]({{site.baseurl}}/docs/installation/installation-options/)  
 [Codefresh On-Premises installation]({{site.baseurl}}/docs/installation/codefresh-on-prem/)  
 [Codefresh API]({{site.baseurl}}/docs/integrations/codefresh-api/)  
-
