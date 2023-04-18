@@ -1,6 +1,13 @@
-# 403 Forbidden Error On Codefresh CLI Commands Within Build
-
-#
+---
+title: 403 Forbidden Error On Codefresh CLI Commands Within Build
+description: 
+group: troubleshooting
+sub-group: kb-articles
+toc: true
+kb: true
+categories: [CLI, Pipelines]
+support-reviewed: 2023-04-18 LG
+---
 
 ## Overview
 
@@ -20,4 +27,3 @@ user who started the build does not have the permissions to run this command.
 
 [Codefresh Access
 Control](https://codefresh.io/docs/docs/administration/access-control/)
-

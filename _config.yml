@@ -144,3 +144,5 @@ compress_html:
   startings: [head, body]
   ignore:
     envs: development
+
+kb-cat: [Pipelines, Workflows, Ops, Artifacts & Insights, Settings, Runtimes, On-Prem, API, CLI]

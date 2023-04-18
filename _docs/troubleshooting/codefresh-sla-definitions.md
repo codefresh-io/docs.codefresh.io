@@ -1,4 +1,4 @@
-# Codefresh SLA definitions
+# Codefresh SLA Definitions
 
 #
 
