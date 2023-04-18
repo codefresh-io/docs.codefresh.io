@@ -882,7 +882,7 @@ The Codefresh `values.yaml` is located [here](https://github.com/codefresh-io/gi
 1. Continue with [Step 2: Set up GitOps Git account](#step-2-set-up-gitops-git-account).
 
 ### Step 2: Set up GitOps Git account
-As the first step in installing the Hybrid GitOps Runtime, define details for your Git provider and account.
+Define details for your Git provider and account.
 
 1. Select the **Git provider** from the list.
 1. Define the **API URL** for the Git provider you selected, as one of the following:
@@ -994,7 +994,7 @@ For more information on generating SSH private keys, see the official documentat
 1. For Git token authentication, in the **Git Runtime Token** field, paste the Git runtime token you generated.
 1. Optional. To configure SSH access to Git, expand **Connect Repo using SSH**, and then paste the raw SSH private key into the field. 
 
-SCREENSHOT
+<!---SCREENSHOT-->
 
 {:start="5"}
 1. Click **Configure**.
@@ -1004,8 +1004,9 @@ SCREENSHOT
 ### Step 5: (Optional) Configure Hybrid GitOps Runtime as Argo Application
 
 The final step, also optional, is to configure the Hybrid GitOps Runtime as an Argo Application. By doing so, you can easily monitor its health and sync statuses, and ensure that GitOps is the single source of truth for the runtime.  
+Configuring the Runtime as an Argo Application displays the runtime components and 
 
-To configure it, you simply need to click the button, and Codefresh takes care of the configuration for you.
+* Click **Configure as Argo Application**, and Codefresh takes care of the configuration for you.
 
 
 >If you don't configure it as an Argo Application, the Sync Status column will show "N/A" and remind you to configure it.
@@ -1029,7 +1030,7 @@ Required only for ALB AWS, Istio, or NGINX Enterprise ingress-controllers.<br>
   * [Istio: Configure cluster routing service]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/#cluster-routing-service)
   * [NGINX Enterprise ingress controller: Patch certificate secret]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/#patch-certificate-secret)  
 
-That's it! You have successfully completed installing a Hybrid GitOps Runtime.
+That's it! You have successfully completed installing a Hybrid GitOps Runtime. See the GitOps Runtime in the [Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#gitops-runtime-views) page.
 
 You can now add [external clusters to the runtime]({{site.baseurl}}/docs/installation/gitops/managed-cluster/), and [create and deploy GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application/).
 
