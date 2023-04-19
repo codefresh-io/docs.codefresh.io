@@ -169,7 +169,7 @@ Similar to other entities, you can also add tags to Codefresh pipelines.
 #### Assign tags to Shared Configurations
 Shared configuration can be environment variables, Helm values, encrypted secrets for access tokens and YAMLs.
 
-1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from Configuration in the sidebar, select [**Shared Configuration**](hhttps://g.codefresh.io/account-admin/account-conf/shared-config){:target="\_blank"}. 
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from Configuration in the sidebar, select [**Shared Configuration**](https://g.codefresh.io/account-admin/account-conf/shared-config){:target="\_blank"}. 
 1. In the row with the configuration for which to add tags, click the tag icon on the right.  
 1. Type in the tag, press Enter, and continue to add the tags you need.
 1. When finished, click **Save**.  
