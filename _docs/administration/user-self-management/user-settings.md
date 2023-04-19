@@ -11,7 +11,7 @@ toc: true
 As a Codefresh user, you can manage several settings in your personal account, including:
 
 * Email notifications for builds and build usage
-* Set the date format (currently applies to CI pipeline modules)
+* Select date and time formats for pipeline modules
 * Get updates on weekly usage
 * Grant account access to Codefresh support
 * Grant access to private Git repositories
@@ -47,7 +47,7 @@ max-width="50%"
 
 Select your preferred formats for date (US or international) and time (24 or 12 hours) display in the Codefresh UI.
 
->Currently only applies to CI pipeline modules. 
+>Currently applies only to pipeline modules. 
 
 
 
