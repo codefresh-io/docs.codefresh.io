@@ -1,22 +1,28 @@
 ---
 title: Knowledge Base
-description: ""
+description: 
 group: troubleshooting
 toc: true
+kb: false
+common: false
+categories: []
+support-reviewed: 2023-04-18 LG
 ---
+
+
 In this section, we offer helpful information about issues you may encounter and questions you might have.
 
 {% for cat in site.kb-cat %}
 ### {{ cat }}
 <ul>
-  {% for page in site.docs %}
-    {% if page.kb == true %}
-      {% for pc in page.categories %}
-        {% if pc == cat %}
-          <li><a href="{{ page.url }}">{{ page.title }}</a></li>
-        {% endif %}   <!-- cat-match-p -->
-      {% endfor %}  <!-- page-category -->
-    {% endif %}   <!-- resource-p -->
-  {% endfor %}  <!-- page -->
+    {% for page in site.docs %}
+        {% if page.kb == true %}
+                {% for pc in page.categories %}
+                    {% if pc == cat %}
+                        <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+                    {% endif %}   <!-- cat-match-p -->
+                {% endfor %}  <!-- page-category -->
+        {% endif %}   <!-- resource-p -->
+    {% endfor %}  <!-- page -->
 </ul>
 {% endfor %}  <!-- cat -->

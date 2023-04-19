@@ -2,10 +2,14 @@
 title: "Deprecation of personal Git integrations"
 description: "Moving Git integrations to accounts instead of individual users"
 group: troubleshooting
-redirect_from:
-  - /docs/troubleshooting/personal-git-deprecation/
+sub-group: kb-articles
 toc: true
+kb: true
+common: false
+categories: []
+support-reviewed: 2023-04-18 LG
 ---
+
 
 
 Codefresh supports all major Git providers, GitHub, GitLab, Bitbucket. Through [Git integrations]({{site.baseurl}}/docs/integrations/git-providers/) you can connect to the respective Git provider. Signing up with Codefresh typically requires you to use a Git provider for your basic information (and in the past, an automatic integration was created with the Git provider that you used during initial sign-up).

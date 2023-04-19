@@ -2,11 +2,12 @@
 title: "Can't find your organization repositories"
 description: "Issues with adding Git triggers"
 group: troubleshooting
-sub_group: common-issues
-redirect_from:
-  - /docs/troubleshooting/common-issues/cant-find-your-organization-repositories/
-  - /docs/cant-find-your-organization-repos/
+sub-group: kb-articles
 toc: true
+kb: true
+common: true
+categories: []
+support-reviewed: 2023-04-18 LG
 ---
 ## Issue
 

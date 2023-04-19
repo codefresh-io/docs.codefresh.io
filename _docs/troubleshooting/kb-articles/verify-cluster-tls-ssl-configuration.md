@@ -2,12 +2,12 @@
 title: "Verify cluster TLS/SSL configuration"
 description: "Connecting Codefresh to an on-premises Kubernetes cluster"
 group: troubleshooting
-sub_group: common-issues
-redirect_from:
-  - /docs/verify-cluster-tlsssl-configuration/
-  - /docs/verify-cluster-tls-ssl-configuration/
-  - /docs/deploy-to-kubernetes/verify-cluster-tls-ssl-configuration/
+sub-group: kb-articles
 toc: true
+kb: true
+common: true
+categories: []
+support-reviewed: 2023-04-18 LG
 ---
 
 Read this page if you are adding in Codefresh a custom (e.g. on-premises) cluster.

@@ -2,8 +2,12 @@
 title: "Failed to create container of image"
 description: "Failure creating container"
 group: troubleshooting
-sub_group: common-issues
+sub-group: kb-articles
 toc: true
+kb: true
+common: true
+categories: []
+support-reviewed: 2023-04-18 LG
 ---
 
 ## Issue

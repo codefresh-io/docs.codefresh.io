@@ -2,11 +2,12 @@
 title: "Disabling codefresh caching mechanisms"
 description: ""
 group: troubleshooting
-sub_group: common-issues
-redirect_from:
-  - /docs/troubleshooting/common-issues/disabling-codefresh-caching-mechanisms/
-  - /docs/disabling-codefresh-caching-mechanisms/
+sub-group: kb-articles
 toc: true
+kb: true
+common: true
+categories: []
+support-reviewed: 2023-04-18 LG
 ---
 
 Docker builds can be optimized by caching images and layers used during the build. Codefresh facilitates two kinds of caches:

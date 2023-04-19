@@ -2,11 +2,12 @@
 title: "Can't find private repositories"
 description: ""
 group: troubleshooting
-sub_group: common-issues
-redirect_from:
-  - /docs/troubleshooting/common-issues/cant-find-your-private-repositories/
-  - /docs/cant-find-your-private-repositories/
+sub-group: kb-articles
 toc: true
+kb: true
+common: true
+categories: []
+support-reviewed: 2023-04-18 LG
 ---
 ## Issue
 I want to add a private repository to Codefresh but can't find it in the repository list.

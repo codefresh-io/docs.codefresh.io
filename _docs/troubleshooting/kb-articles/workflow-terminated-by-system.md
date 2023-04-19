@@ -2,11 +2,12 @@
 title: "Workflow process terminated by the system"
 description: ""
 group: troubleshooting
-sub_group: common-issues
-redirect_from:
-  - /docs/troubleshooting/common-issues/workflow-terminated-by-system/
-  - /docs/workflow-terminated-by-system/
+sub-group: kb-articles
 toc: true
+kb: true
+common: true
+categories: []
+support-reviewed: 2023-04-18 LG
 ---
 
 ## Issue

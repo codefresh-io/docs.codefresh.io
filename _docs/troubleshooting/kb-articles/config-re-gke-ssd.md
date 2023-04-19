@@ -1,3 +1,15 @@
+---
+title: 
+description: 
+group: troubleshooting
+sub-group: kb-articles
+toc: true
+kb: true
+common: false
+categories: []
+support-reviewed: 2023-04-18 LG
+---
+
 # How-to: Configuring an existing Runtime Environment with Local SSDs (GKE
 only)
 

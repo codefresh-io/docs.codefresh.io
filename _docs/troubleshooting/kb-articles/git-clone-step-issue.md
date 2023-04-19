@@ -2,11 +2,12 @@
 title: "Clone step failed: Command [git checkout $REVISION] exited with code [1]"
 description: ""
 group: troubleshooting
-sub_group: common-issues
-redirect_from:
-  - /docs/troubleshooting/common-issues/git-clone-step-issue/
-  - /docs/build-step-no-such-file-or-directory/
+sub-group: kb-articles
 toc: true
+kb: true
+common: true
+categories: []
+support-reviewed: 2023-04-18 LG
 ---
 
 ## Issue

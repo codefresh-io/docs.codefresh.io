@@ -2,11 +2,12 @@
 title: "Failed to get account clusters during workflow"
 description: ""
 group: troubleshooting
-sub_group: common-issues
-redirect_from:
-  - /docs/troubleshooting/common-issues/failed-to-get-accounts-clusters-during-workflow/
-  - /docs/failed-to-get-accounts-clusters-during-workflow/
+sub-group: kb-articles
 toc: true
+kb: true
+common: true
+categories: []
+support-reviewed: 2023-04-18 LG
 ---
 
 When a pipeline is running, Codefresh automatically sets up several [environment variables]({{site.baseurl}}/docs/pipelines/variables/) that are available to all pipeline steps.

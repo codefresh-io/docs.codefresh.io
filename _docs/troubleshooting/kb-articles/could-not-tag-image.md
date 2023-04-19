@@ -2,10 +2,12 @@
 title: "Failed to tag image"
 description: "Failed to update your image with promote event, could not tag image"
 group: troubleshooting
-sub_group: common-issues
-redirect_from:
-  - /docs/troubleshooting/common-issues/could-not-tag-image/
+sub-group: kb-articles
 toc: true
+kb: true
+common: true
+categories: []
+support-reviewed: 2023-04-18 LG
 ---
 
 ## Issue

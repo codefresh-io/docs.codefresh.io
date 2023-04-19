@@ -1,9 +1,16 @@
 ---
 title: "GitOps runtime issues"
 description: "Troubleshoot installation/communication issues"
-
+group: troubleshooting
+sub-group: kb-articles
 toc: true
+kb: true
+common: false
+categories: []
+support-reviewed: 2023-04-18 LG
 ---
+
+
 
 
 ## Pre-installation checks or runtime collision check failed

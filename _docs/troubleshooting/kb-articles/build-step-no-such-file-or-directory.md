@@ -2,11 +2,12 @@
 title: "Build step: No such file or directory"
 description: ""
 group: troubleshooting
-sub_group: common-issues
-redirect_from:
-  - /docs/troubleshooting/common-issues/build-step-no-such-file-or-directory/
-  - /docs/build-step-no-such-file-or-directory/
+sub-group: kb-articles
 toc: true
+kb: true
+common: true
+categories: []
+support-reviewed: 2023-04-18 LG
 ---
 
 ## Issue

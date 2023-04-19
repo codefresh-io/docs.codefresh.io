@@ -1,3 +1,15 @@
+---
+title: 
+description: 
+group: troubleshooting
+sub-group: kb-articles
+toc: true
+kb: true
+common: false
+categories: []
+support-reviewed: 2023-04-18 LG
+---
+
 # How To: Acquire webhook information after a git trigger has been created
 
 #

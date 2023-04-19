@@ -145,4 +145,4 @@ compress_html:
   ignore:
     envs: development
 
-kb-cat: [Pipelines, Workflows, Ops, Artifacts & Insights, Settings, Runtimes, On-Prem, API, CLI]
+kb-cat: [Pipelines, Workflows, Ops, Artifacts & Insights, Settings, Runtimes, On-Prem, API, CLI, General]

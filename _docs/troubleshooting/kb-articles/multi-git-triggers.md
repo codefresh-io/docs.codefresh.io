@@ -2,10 +2,12 @@
 title: "Using multi-git triggers"
 description: "Pinning codefresh.yml to a specific branch"
 group: troubleshooting
-sub_group: common-issues
-redirect_from:
-  - /docs/troubleshooting/common-issues/multi-git-triggers/
+sub-group: kb-articles
 toc: true
+kb: true
+common: true
+categories: []
+support-reviewed: 2023-04-18 LG
 ---
 
 Codefresh has the capability to store the [pipeline definition]({{site.baseurl}}/docs/pipelines/pipelines/#loading-codefreshyml-from-version-control) in the same Git repository as the source code.

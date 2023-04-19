@@ -1,3 +1,15 @@
+---
+title: 
+description: 
+group: troubleshooting
+sub-group: kb-articles
+toc: true
+kb: true
+common: false
+categories: []
+support-reviewed: 2023-04-18 LG
+---
+
 # How-to: Stop a freestyle step from failing on a first command with non-zero
 exitcode
 

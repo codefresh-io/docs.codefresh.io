@@ -1,3 +1,15 @@
+---
+title: 
+description: 
+group: troubleshooting
+sub-group: kb-articles
+toc: true
+kb: true
+common: false
+categories: []
+support-reviewed: 2023-04-18 LG
+---
+
 # CLI: How to list all pipelines that use a specific shared configuration
 
 #

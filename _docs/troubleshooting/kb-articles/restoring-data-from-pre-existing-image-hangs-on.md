@@ -2,11 +2,12 @@
 title: "Hangs on restoring data from pre-existing image"
 description: ""
 group: troubleshooting
-sub_group: common-issues
-redirect_from:
-  - /docs/troubleshooting/common-issues/restoring-data-from-pre-existing-image-hangs-on/
-  - /docs/restoring-data-from-pre-existing-image-hangs-on/
+sub-group: kb-articles
 toc: true
+kb: true
+common: true
+categories: []
+support-reviewed: 2023-04-18 LG
 ---
 
 ## Issue

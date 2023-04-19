@@ -2,11 +2,12 @@
 title: "Handling commit messages with a quote character"
 description: ""
 group: troubleshooting
-sub_group: common-issues
-redirect_from:
-  - /docs/handling-commit-messages-with-quotes/
-  - /docs/troubleshooting/common-issues/handling-commit-messages-with-quotes/
+sub-group: kb-articles
 toc: true
+kb: true
+common: true
+categories: []
+support-reviewed: 2023-04-18 LG
 ---
 ## Issue
 

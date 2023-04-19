@@ -2,10 +2,12 @@
 title: "Paging issues  for builds and images"
 description: "API and CLI operations for paging results do not work"
 group: troubleshooting
-sub_group: common-issues
-redirect_from:
-  - /docs/troubleshooting/common-issues/paging-issues-builds-images/
+sub-group: kb-articles
 toc: true
+kb: true
+common: true
+categories: []
+support-reviewed: 2023-04-18 LG
 ---
 
 On January 9th 2021 the API used for retrieving builds and images in Codefresh will be revamped with a new implementation

@@ -2,10 +2,12 @@
 title: "How to use SSH keys in freestyle steps"
 description: "Running commands remotely from Codefresh Pipeline"
 group: troubleshooting
-sub_group: common-issues
-redirect_from:
-  - /docs/troubleshooting/common-issues/using-ssh-keys/
+sub-group: kb-articles
 toc: true
+kb: true
+common: true
+categories: []
+support-reviewed: 2023-04-18 LG
 ---
 
 You can easily connect to external servers in Codefresh pipelines and run commands with them via SSH.

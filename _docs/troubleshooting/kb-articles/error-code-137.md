@@ -2,10 +2,12 @@
 title: "Building image failed with exit code: 137"
 description: "The command returned a non-zero code: 137"
 group: troubleshooting
-sub_group: common-issues
-redirect_from:
-  - /docs/troubleshooting/common-issues/error-code-137/
+sub-group: kb-articles
 toc: true
+kb: true
+common: true
+categories: []
+support-reviewed: 2023-04-18 LG
 ---
 
 ## Issue
