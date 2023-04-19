@@ -731,7 +731,7 @@ Define the volume or volumes with the K8s secret objects, and then the volume mo
 >Requires on-premises version 1.4.6 or higher.
 
 **Before you begin**  
-Secret with CA to 
+Make you have a K8s secret containing the CA
 
 **How to**  
 
@@ -740,20 +740,20 @@ Secret with CA to
 ```yaml
 global:
   env:
-    NODE_EXTRA_CA_CERTS: /etc/ssl/custom/ca.crt  #replace with path to your custom root CA cert
+    NODE_EXTRA_CA_CERTS: /etc/ssl/custom/ca.crt  
 
   volumes:
-    my-custom-ca-cert: #replace with the name of the volume with the secret 
+    custom-ca: 
       enabled: true
       type: secret
-      existingName: my-custom-ca-cert #replace with the name of K8s secret object with the CA to inject
+      existingName: my-custom-ca-cert #replace with the name of K8s secret object with the CA cert
       optional: true
 
   container:
     volumeMounts:
-      my-custom-ca-cert: #replace with the name of the volume with the secret 
+      custom-ca: 
         path:
-        - mountPath: /etc/ssl/custom/ca.crt #replace with path to your custom root CA cert
+        - mountPath: /etc/ssl/custom/ca.crt 
           subPath: ca.crt
 ```
 
