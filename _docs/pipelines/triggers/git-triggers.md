@@ -182,8 +182,7 @@ The *modified files* field is a very powerful Codefresh feature that allows you 
 files affected by a commit are in a specific folder (or match a specific naming pattern). This means that
 you can have a big GIT repository with multiple projects and build only the parts that actually change.
 
->Currently the field *modified files* is available only for GitHub, GitLab, Azure DevOps and [Bitbucket Server and Data Center](https://confluence.atlassian.com/bitbucketserver/manage-webhooks-938025878.html){:target="\_blank"} repositories, since they are the only GIT providers
-that send this information in the webhook. We will support other GIT providers as soon as they add the respective feature. 
+>Currently the field *modified files* is available only for GitHub, GitLab, Azure DevOps, Bitbucket Server and Bitbucket (Cloud) repositories. We will support other Git providers as soon as they add the respective feature. 
 
 ### Using the Modified files field to constrain triggers to specific folder/files
 
