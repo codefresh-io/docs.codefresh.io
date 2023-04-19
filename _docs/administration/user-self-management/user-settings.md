@@ -45,7 +45,7 @@ max-width="50%"
 
 ## Customize date and time formats
 
-Select the formats in which to display the date (US or EU) and time (24 or 12 hours )in the Codefresh UI.
+Select the formats in which to display the date (US or international) and time (24 or 12 hours)in the Codefresh UI.
 
 
 
