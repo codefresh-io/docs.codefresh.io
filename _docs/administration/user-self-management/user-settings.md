@@ -11,6 +11,8 @@ toc: true
 As a Codefresh user, you can manage several settings in your personal account, including:
 
 * Email notifications for builds and build usage
+* Set the date format (currently applies only for CI/CD pipeline modules)
+* Get updates on weekly usage
 * Grant account access to Codefresh support
 * Grant access to private Git repositories
 * Create and manage API keys
@@ -20,7 +22,7 @@ As a Codefresh user, you can manage several settings in your personal account, i
 ## Access user settings
 * In the Codefresh UI, on the toolbar, click the **Settings** icon and then select [**User Settings**](https://g.codefresh.io/user/settings){:target="\_blank"}.
 
-## Email notifications for pipeline builds 
+## Enable email notifications for pipeline builds 
 
 Configure the email notifications you want to receive for builds based on the build status: only successful, only failed, or for both successful and failed builds.  
 
@@ -41,9 +43,13 @@ caption="Email notifications for pipeline builds"
 max-width="50%"
 %}
 
+## Customize date and time formats
+
+Select the formats in which to display the date (US or EU) and time (24 or 12 hours )in the Codefresh UI.
 
 
-## Weekly updates of build usage
+
+## Receive weekly updates of build usage
 
 Select to receive weekly summaries of builds across your pipelines along with other statistical data. This information can be useful if you want to understand your overall project build health and capacity usage.
 
@@ -72,13 +78,6 @@ max-width="100%"
 
 
 
-## Git provider private access
-
-When you connect your [Git provider]({{site.baseurl}}/docs/integrations/git-providers/) during sign-up, you may choose to let Codefresh access only your public Git repositories.
-
-To allow Codefresh to also add [Git triggers]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/) on private repositories you need to explicitly enable it in this section. 
-
-Note that options available highly depend on what Git provider you are using with Codefresh. 
 
 ## Create and manage API keys
 
@@ -108,7 +107,7 @@ max-width="80%"
 
 
 ## Related articles
+[Managing Git PATs]({{site.baseurl}}/docs/administration/user-self-management/manage-pats/)  
 
-[Single Sign on]({{site.baseurl}}/docs/single-sign-on/single-sign-on/)  
 
 
