@@ -1,19 +1,14 @@
 ---
-title: 
+title: 'Postgres: Role "rolename" does not exist after setting POSTGRES_DB to rolename'
 description: 
 group: troubleshooting
 sub-group: kb-articles
 toc: true
 kb: true
 common: false
-categories: []
+categories: [Pipelines]
 support-reviewed: 2023-04-18 LG
 ---
-
-# Postgres: Role "rolename" does not exist after setting POSTGRES_DB to
-rolename
-
-#
 
 ## Overview
 

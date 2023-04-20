@@ -1,18 +1,14 @@
 ---
-title: 
+title: "How-to: Update runner runtime environment memory and CPU settings"
 description: 
 group: troubleshooting
 sub-group: kb-articles
 toc: true
 kb: true
 common: false
-categories: []
+categories: [Runtimes, CLI]
 support-reviewed: 2023-04-18 LG
 ---
-
-# How-to: Update runner runtime environment memory and CPU settings
-
-#
 
 ## Overview
 

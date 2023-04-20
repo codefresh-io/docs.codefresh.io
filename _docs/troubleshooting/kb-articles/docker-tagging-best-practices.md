@@ -1,18 +1,14 @@
 ---
-title: 
+title: "How-to: Docker tagging best practices"
 description: 
 group: troubleshooting
 sub-group: kb-articles
 toc: true
 kb: true
 common: false
-categories: []
+categories: [Pipelines, General]
 support-reviewed: 2023-04-18 LG
 ---
-
-# How-to: Docker tagging best practices
-
-#
 
 ## Overview
 

@@ -6,7 +6,7 @@ sub-group: kb-articles
 toc: true
 kb: true
 common: false
-categories: []
+categories: [Pipelines, Settings, General]
 support-reviewed: 2023-04-18 LG
 ---
 

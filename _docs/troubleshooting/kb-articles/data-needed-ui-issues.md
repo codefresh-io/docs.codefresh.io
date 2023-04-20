@@ -1,18 +1,14 @@
 ---
-title: 
+title: "Required Data: UI Slowness and other UI Issues"
 description: 
 group: troubleshooting
 sub-group: kb-articles
 toc: true
 kb: true
 common: false
-categories: []
+categories: [General]
 support-reviewed: 2023-04-18 LG
 ---
-
-# Required Data: UI Slowness and other UI Issues
-
-#
 
 ## Overview
 

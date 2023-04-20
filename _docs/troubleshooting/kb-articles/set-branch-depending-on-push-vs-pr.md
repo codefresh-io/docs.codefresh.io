@@ -1,18 +1,14 @@
 ---
-title: 
+title: "How-to: Set branch for build depending on whether it's a push or PR event"
 description: 
 group: troubleshooting
 sub-group: kb-articles
 toc: true
 kb: true
 common: false
-categories: []
+categories: [Pipelines]
 support-reviewed: 2023-04-18 LG
 ---
-
-# How-to: Set branch for build depending on whether it's a push or PR event
-
-#
 
 ## Overview
 
@@ -34,8 +30,7 @@ For example, this step will overwrite the value of `CF_BRANCH` with that of
 be the case for a PR event). Then you should be able to just continue using
 `CF_BRANCH` in the rest of your build.
 
-    
-    
+{% raw %}
     steps:
       set_branch:
         title: "Set branch variable"
@@ -46,14 +41,13 @@ be the case for a PR event). Then you should be able to just continue using
           condition:
             all:
               whenPR: 'includes("${{CF_PULL_REQUEST_TARGET}}", "{{CF_PULL_REQUEST_TARGET}}") == false'
-    
+{% endraw %}
 
 You could also do something in a similar vein to export to a third variable
 instead. This example exports the branch name to a custom variable
 `BUILD_BRANCH` depending on whether the current build is a PR build.
 
-    
-    
+{% raw %}
     steps:
       set_push_branch:
         title: "Set branch variable for push"
@@ -73,10 +67,10 @@ instead. This example exports the branch name to a custom variable
           condition:
             all:
               whenPR: 'includes("${{CF_PULL_REQUEST_TARGET}}", "{{CF_PULL_REQUEST_TARGET}}") == false'
-    
+{% endraw %}
 
 _Notes_ This condition works because if a variable is not set, it is simply
-replaced with the literal `${{}}` variable reference string, so we are
+replaced with the literal `{% raw %}${{}}{% endraw %}` variable reference string, so we are
 checking whether the reference is getting us the literal string or some other
 actual value.
 
@@ -88,4 +82,3 @@ to-Check-environment-variable-value-or-existence-in-conditionals)
 [Documentation for cf_export
 command](https://codefresh.io/docs/docs/codefresh-yaml/variables/#using-
 cf_export-command)
-

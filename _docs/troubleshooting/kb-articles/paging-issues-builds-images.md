@@ -1,12 +1,12 @@
 ---
-title: "Paging issues  for builds and images"
+title: "Paging issues for builds and images"
 description: "API and CLI operations for paging results do not work"
 group: troubleshooting
 sub-group: kb-articles
 toc: true
 kb: true
 common: true
-categories: []
+categories: [Pipelines, API, CLI, General]
 support-reviewed: 2023-04-18 LG
 ---
 

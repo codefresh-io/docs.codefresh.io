@@ -1,18 +1,14 @@
 ---
-title: 
+title: "How-to: Disable status updates to GitHub"
 description: 
 group: troubleshooting
 sub-group: kb-articles
 toc: true
 kb: true
 common: false
-categories: []
+categories: [Pipelines, CLI, Settings]
 support-reviewed: 2023-04-18 LG
 ---
-
-# How-to: Disable status updates to GitHub
-
-#
 
 ## Overview
 

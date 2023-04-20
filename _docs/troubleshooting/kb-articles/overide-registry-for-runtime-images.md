@@ -1,21 +1,16 @@
 ---
-title: 
+title: "How-to: Override registry for Codefresh-related images in your runtime environment"
 description: 
 group: troubleshooting
 sub-group: kb-articles
 toc: true
 kb: true
 common: false
-categories: []
+categories: [Runtimes, CLI]
 support-reviewed: 2023-04-18 LG
 ---
 
-# How-to: Override registry for Codefresh-related images in your runtime
-environment
-
-#
-
-Overview:
+## Overview:
 
 All the Codefresh-related images are pulled from quay.io by default, this
 includes images that are needed for the build itself (engine, dind, etc) and
@@ -25,7 +20,7 @@ If you want to make your Hybrid Runner pull these images, for example, from
 your internal registry mirror, you can do this by modifying the Runtime
 Environment.
 
-Details:
+## Details:
 
 To make the changes to your Runtime Environment, you will need to use the
 [Codefresh CLI.](https://codefresh-io.github.io/cli/installation/)
@@ -63,7 +58,7 @@ file with the registry you want to use:
 3\. Save the file and then patch your RE using the following CLI command:  
 `codefresh patch re -f spec.yaml`
 
-Related Items:
+## Related Items:
 
 [Public Marketplace
 Registry](https://codefresh.io/docs/docs/administration/pipeline-

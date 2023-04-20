@@ -1,18 +1,14 @@
 ---
-title: 
+title: "How-to: Clone or backup Pipelines or Projects"
 description: 
 group: troubleshooting
 sub-group: kb-articles
 toc: true
 kb: true
 common: false
-categories: []
+categories: [Pipelines, CLI]
 support-reviewed: 2023-04-18 LG
 ---
-
-# How-to: Clone or backup Pipelines or Projects
-
-#
 
 ## Overview
 

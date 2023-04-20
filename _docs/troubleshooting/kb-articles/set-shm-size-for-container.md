@@ -1,18 +1,14 @@
 ---
-title: 
+title: "How-to: Set shm-size for container"
 description: 
 group: troubleshooting
 sub-group: kb-articles
 toc: true
 kb: true
 common: false
-categories: []
+categories: [Pipelines, Runtimes]
 support-reviewed: 2023-04-18 LG
 ---
-
-# How-to: Set shm-size for container
-
-#
 
 ## Overview
 

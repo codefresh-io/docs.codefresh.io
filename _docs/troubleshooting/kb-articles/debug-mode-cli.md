@@ -1,18 +1,14 @@
 ---
-title: 
+title: "How-to: Enable debug mode when using Codefresh CLI"
 description: 
 group: troubleshooting
 sub-group: kb-articles
 toc: true
 kb: true
 common: false
-categories: []
+categories: [Pipelines, CLI]
 support-reviewed: 2023-04-18 LG
 ---
-
-# How-to: Enable debug mode when using Codefresh CLI
-
-#
 
 ## Overview
 

@@ -1,18 +1,14 @@
 ---
-title: 
+title: "How-to: Run docker containers as non root user"
 description: 
 group: troubleshooting
 sub-group: kb-articles
 toc: true
 kb: true
 common: false
-categories: []
+categories: [Pipelines]
 support-reviewed: 2023-04-18 LG
 ---
-
-# How-to: Run docker containers as non root user
-
-#
 
 ## Overview
 

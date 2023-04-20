@@ -1,19 +1,14 @@
 ---
-title: 
+title: "How To: Mount volumes in a composition step where source is inside the Codefresh Volume"
 description: 
 group: troubleshooting
 sub-group: kb-articles
 toc: true
 kb: true
 common: false
-categories: []
+categories: [Pipelines]
 support-reviewed: 2023-04-18 LG
 ---
-
-# How To: Mount volumes in a composition step where source is inside the
-Codefresh Volume
-
-#
 
 ## Overview
 

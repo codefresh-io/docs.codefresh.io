@@ -1,18 +1,14 @@
 ---
-title: 
+title: "How-to: Create cron trigger using CLI or API"
 description: 
 group: troubleshooting
 sub-group: kb-articles
 toc: true
 kb: true
 common: false
-categories: []
+categories: [Pipelines, CLI, API]
 support-reviewed: 2023-04-18 LG
 ---
-
-# How-to: Create cron trigger using CLI or API
-
-#
 
 ## Overview
 

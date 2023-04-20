@@ -1,18 +1,14 @@
 ---
-title: 
+title: Account invitation not permitting login
 description: 
 group: troubleshooting
 sub-group: kb-articles
 toc: true
 kb: true
 common: false
-categories: []
+categories: [Settings, General]
 support-reviewed: 2023-04-18 LG
 ---
-
-# Account invitation not permitting login
-
-#
 
 ## Overview
 
@@ -30,4 +26,3 @@ The account is not correctly linked.
 _Notes_ In the event that this issue persists, please [contact our support
 team](https://support.codefresh.io/hc/en-us/requests/new) with as many details
 as you have.
-

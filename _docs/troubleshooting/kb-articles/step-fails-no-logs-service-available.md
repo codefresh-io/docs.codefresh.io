@@ -1,18 +1,14 @@
 ---
-title: 
+title: Step fails with no logs when services are present
 description: 
 group: troubleshooting
 sub-group: kb-articles
 toc: true
 kb: true
 common: false
-categories: []
+categories: [Pipelines]
 support-reviewed: 2023-04-18 LG
 ---
-
-# Step fails with no logs when services are present
-
-#
 
 ## Overview
 

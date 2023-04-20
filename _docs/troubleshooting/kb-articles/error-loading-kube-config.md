@@ -1,18 +1,14 @@
 ---
-title: 
+title: "Error loading config file .kube/config"
 description: 
 group: troubleshooting
 sub-group: kb-articles
 toc: true
 kb: true
 common: false
-categories: []
+categories: [Pipelines, Settings]
 support-reviewed: 2023-04-18 LG
 ---
-
-# Error loading config file .kube/config
-
-#
 
 ## Overview
 

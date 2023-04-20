@@ -1,18 +1,14 @@
 ---
-title: 
+title: No response from GCP cluster
 description: 
 group: troubleshooting
 sub-group: kb-articles
 toc: true
 kb: true
 common: false
-categories: []
+categories: [Artifacts & Insights, Settings, Pipelines]
 support-reviewed: 2023-04-18 LG
 ---
-
-# No response from GCP cluster
-
-#
 
 ## Overview
 

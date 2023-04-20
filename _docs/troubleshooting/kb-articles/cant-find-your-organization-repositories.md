@@ -6,9 +6,10 @@ sub-group: kb-articles
 toc: true
 kb: true
 common: true
-categories: []
+categories: [Pipelines]
 support-reviewed: 2023-04-18 LG
 ---
+
 ## Issue
 
 Unable to find the GitHub organization to with the repository to which to add a [git trigger]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/).

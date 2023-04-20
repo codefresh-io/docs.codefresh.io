@@ -1,18 +1,14 @@
 ---
-title: 
+title: "How-To: Know which builder pod was used for running a build"
 description: 
 group: troubleshooting
 sub-group: kb-articles
 toc: true
 kb: true
 common: false
-categories: []
+categories: [Pipelines]
 support-reviewed: 2023-04-18 LG
 ---
-
-# How-To: Know which builder pod was used for running a build
-
-#
 
 ## Overview
 

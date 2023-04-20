@@ -1,18 +1,14 @@
 ---
-title: 
+title: Builds are stuck in pending
 description: 
 group: troubleshooting
 sub-group: kb-articles
 toc: true
 kb: true
 common: false
-categories: []
+categories: [Pipelines, Settings]
 support-reviewed: 2023-04-18 LG
 ---
-
-# Builds are stuck in pending
-
-#
 
 ## Overview
 

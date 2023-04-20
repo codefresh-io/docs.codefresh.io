@@ -1,25 +1,21 @@
 ---
-title: 
+title: "How To: Find Pipelines Using a Specific Git Integration"
 description: 
 group: troubleshooting
 sub-group: kb-articles
 toc: true
 kb: true
 common: false
-categories: []
+categories: [CLI, Pipelines]
 support-reviewed: 2023-04-18 LG
 ---
-
-# How To: Find Pipelines Using a Specific Git Integration
-
-#
 
 ## Overview
 
 You have an old git context and are unable to delete the integration. Or you
 want to migrate to a new Git Integration.
 
-## Details:
+## Details
 
 Run the following CLI command to get the names of pipelines that reference the
 Git Integration for a Trigger, using to get YAML from Repository, or specified

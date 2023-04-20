@@ -1,18 +1,15 @@
 ---
-title: 
+title: "Codefresh runner: Enabling engine pod metrics"
 description: 
 group: troubleshooting
 sub-group: kb-articles
 toc: true
 kb: true
 common: false
-categories: []
+categories: [Runtimes, CLI]
 support-reviewed: 2023-04-18 LG
 ---
 
-# Codefresh runner: Enabling engine pod metrics
-
-#
 
 ## Overview
 

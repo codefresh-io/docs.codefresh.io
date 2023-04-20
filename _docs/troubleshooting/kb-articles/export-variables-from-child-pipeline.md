@@ -1,18 +1,14 @@
 ---
-title: 
+title: 'How To: "Export" Variables From Child Pipeline'
 description: 
 group: troubleshooting
 sub-group: kb-articles
 toc: true
 kb: true
 common: false
-categories: []
+categories: [Pipelines, CLI]
 support-reviewed: 2023-04-18 LG
 ---
-
-# How To: "Export" Variables From Child Pipeline
-
-#
 
 ## Overview
 

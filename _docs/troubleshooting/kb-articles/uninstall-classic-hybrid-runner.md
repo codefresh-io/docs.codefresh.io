@@ -1,18 +1,14 @@
 ---
-title: 
+title: "How To: Uninstall the Codefresh Runner"
 description: 
 group: troubleshooting
 sub-group: kb-articles
 toc: true
 kb: true
 common: false
-categories: []
+categories: [Runtimes]
 support-reviewed: 2023-04-18 LG
 ---
-
-# How To: Uninstall the Codefresh Runner
-
-#
 
 ## Overview
 

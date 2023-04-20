@@ -1,18 +1,14 @@
 ---
-title: 
+title: "Failure to perform actions on your selected Kubernetes context"
 description: 
 group: troubleshooting
 sub-group: kb-articles
 toc: true
 kb: true
 common: false
-categories: []
+categories: [CLI]
 support-reviewed: 2023-04-18 LG
 ---
-
-# Failure to perform actions on your selected Kubernetes context
-
-#
 
 ## Overview
 

@@ -6,11 +6,9 @@ sub-group: kb-articles
 toc: true
 kb: true
 common: false
-categories: []
+categories: [Runtimes]
 support-reviewed: 2023-04-18 LG
 ---
-
-
 
 
 ## Pre-installation checks or runtime collision check failed

@@ -1,19 +1,14 @@
 ---
-title: 
+title: 'Troubleshooting: Receiving "401 Unauthorized" when using the Helm step (1.1.8)'
 description: 
 group: troubleshooting
 sub-group: kb-articles
 toc: true
 kb: true
 common: false
-categories: []
+categories: [Pipelines, Artifacts & Insights]
 support-reviewed: 2023-04-18 LG
 ---
-
-# Troubleshooting: Receiving "401 Unauthorized" when using the Helm step
-(1.1.8)
-
-#
 
 ## Overview
 

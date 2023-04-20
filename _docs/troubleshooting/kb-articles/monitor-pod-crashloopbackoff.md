@@ -1,18 +1,14 @@
 ---
-title: 
+title: Monitor pod in CrashLoopBackOff state. "UNAUTHORIZED_ERROR" messages in logs
 description: 
 group: troubleshooting
 sub-group: kb-articles
 toc: true
 kb: true
 common: false
-categories: []
+categories: [Runtimes]
 support-reviewed: 2023-04-18 LG
 ---
-
-# Monitor pod in CrashLoopBackOff state. "UNAUTHORIZED_ERROR" messages in logs
-
-#
 
 ## Overview
 

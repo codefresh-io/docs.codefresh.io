@@ -1,18 +1,15 @@
 ---
-title: 
+title: "How-to: CLI Codefresh Run Pipeline and when to use the -t (trigger) option"
 description: 
 group: troubleshooting
 sub-group: kb-articles
 toc: true
 kb: true
 common: false
-categories: []
+categories: [CLI]
 support-reviewed: 2023-04-18 LG
 ---
 
-# How-to: CLI Codefresh Run Pipeline and when to use the -t (trigger) option
-
-#
 
 ## Overview
 

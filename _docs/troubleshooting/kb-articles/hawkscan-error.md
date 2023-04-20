@@ -1,18 +1,14 @@
 ---
-title: 
+title: Error when running Hawkscan freestyle step
 description: 
 group: troubleshooting
 sub-group: kb-articles
 toc: true
 kb: true
 common: false
-categories: []
+categories: [Pipelines]
 support-reviewed: 2023-04-18 LG
 ---
-
-# Error when running Hawkscan freestyle step
-
-#
 
 ## Overview
 

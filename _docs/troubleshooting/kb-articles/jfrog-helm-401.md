@@ -1,18 +1,14 @@
 ---
-title: 
+title: Helm error 401 Unauthorized when using Jfrog/Artifactory
 description: 
 group: troubleshooting
 sub-group: kb-articles
 toc: true
 kb: true
 common: false
-categories: []
+categories: [Pipelines]
 support-reviewed: 2023-04-18 LG
 ---
-
-# Helm error 401 Unauthorized when using Jfrog/Artifactory
-
-#
 
 ## Overview
 

@@ -10,12 +10,15 @@ support-reviewed: 2023-04-18 LG
 ---
 
 
-In this section, we offer helpful information about issues you may encounter and questions you might have.
+Here, we offer helpful information about issues you may encounter and questions you might have.
 
 {% for cat in site.kb-cat %}
+
 ### {{ cat }}
+
 <ul>
-    {% for page in site.docs %}
+    {% assign pages = site.docs | sort: 'title' %}
+    {% for page in pages %}
         {% if page.kb == true %}
                 {% for pc in page.categories %}
                     {% if pc == cat %}
@@ -25,4 +28,5 @@ In this section, we offer helpful information about issues you may encounter and
         {% endif %}   <!-- resource-p -->
     {% endfor %}  <!-- page -->
 </ul>
+
 {% endfor %}  <!-- cat -->

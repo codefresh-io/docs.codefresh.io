@@ -1,18 +1,14 @@
 ---
-title: 
+title: "CLI: How to delete pipelines based on specific repo in git triggers"
 description: 
 group: troubleshooting
 sub-group: kb-articles
 toc: true
 kb: true
 common: false
-categories: []
+categories: [CLI, Pipelines]
 support-reviewed: 2023-04-18 LG
 ---
-
-# CLI: How to delete pipelines based on specific repo in git triggers
-
-#
 
 ## Overview
 

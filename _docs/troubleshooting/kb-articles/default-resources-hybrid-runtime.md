@@ -1,18 +1,14 @@
 ---
-title: 
+title: "How-to: Setting up default resources for your Runner Runtime Environment"
 description: 
 group: troubleshooting
 sub-group: kb-articles
 toc: true
 kb: true
 common: false
-categories: []
+categories: [Runtimes, CLI]
 support-reviewed: 2023-04-18 LG
 ---
-
-# How-to: Setting up default resources for your Runner Runtime Environment
-
-#
 
 ## Overview
 

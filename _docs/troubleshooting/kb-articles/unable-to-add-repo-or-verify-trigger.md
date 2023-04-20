@@ -1,18 +1,14 @@
 ---
-title: 
+title: Unable to add a repository to or verify trigger
 description: 
 group: troubleshooting
 sub-group: kb-articles
 toc: true
 kb: true
 common: false
-categories: []
+categories: [Pipelines, Settings]
 support-reviewed: 2023-04-18 LG
 ---
-
-# Unable to add a repository to or verify trigger
-
-#
 
 ## Overview
 

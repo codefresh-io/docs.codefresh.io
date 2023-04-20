@@ -1,18 +1,14 @@
 ---
-title: 
+title: "How-to: Trigger Codefresh pipeline from Datadog webhook"
 description: 
 group: troubleshooting
 sub-group: kb-articles
 toc: true
 kb: true
 common: false
-categories: []
+categories: [API, Pipelines]
 support-reviewed: 2023-04-18 LG
 ---
-
-# How-to: Trigger Codefresh pipeline from Datadog webhook
-
-#
 
 ## Overview
 

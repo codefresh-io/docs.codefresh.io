@@ -1,18 +1,14 @@
 ---
-title: 
+title: "Google SSO: Troubleshooting"
 description: 
 group: troubleshooting
 sub-group: kb-articles
 toc: true
 kb: true
 common: false
-categories: []
+categories: [Settings]
 support-reviewed: 2023-04-18 LG
 ---
-
-# Google SSO: Troubleshooting
-
-#
 
 ## Overview
 

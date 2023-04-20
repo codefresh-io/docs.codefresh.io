@@ -1,18 +1,14 @@
 ---
-title: 
+title: Denied access to Clusters or Pipelines
 description: 
 group: troubleshooting
 sub-group: kb-articles
 toc: true
 kb: true
 common: false
-categories: []
+categories: [Settings, Pipelines]
 support-reviewed: 2023-04-18 LG
 ---
-
-# Denied access to Clusters or Pipelines
-
-#
 
 ## Overview
 

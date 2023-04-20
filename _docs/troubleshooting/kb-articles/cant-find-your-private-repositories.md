@@ -6,9 +6,10 @@ sub-group: kb-articles
 toc: true
 kb: true
 common: true
-categories: []
+categories: [Pieplines, Settings]
 support-reviewed: 2023-04-18 LG
 ---
+
 ## Issue
 I want to add a private repository to Codefresh but can't find it in the repository list.
 

@@ -1,18 +1,14 @@
 ---
-title: 
+title: "CLI: How to list all pipelines that use a specific shared configuration"
 description: 
 group: troubleshooting
 sub-group: kb-articles
 toc: true
 kb: true
 common: false
-categories: []
+categories: [Pipelines, CLI]
 support-reviewed: 2023-04-18 LG
 ---
-
-# CLI: How to list all pipelines that use a specific shared configuration
-
-#
 
 ## Overview
 

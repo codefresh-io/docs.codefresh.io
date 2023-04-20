@@ -26,5 +26,4 @@ user who started the build does not have the permissions to run this command.
 
 ## Related Items
 
-[Codefresh Access
-Control](https://codefresh.io/docs/docs/administration/access-control/)
+[Configuring Access Control]({% link _docs/administration/account-user-management/access-control.md %})

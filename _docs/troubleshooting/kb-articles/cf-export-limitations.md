@@ -6,14 +6,12 @@ sub-group: kb-articles
 toc: true
 kb: true
 common: true
-categories: []
+categories: [Pipelines]
 support-reviewed: 2023-04-18 LG
 ---
 
-
-
-
 ## Issue 
+
 Exporting a multi-line variable with `cf_export` within a pipeline truncates the variable.  
 
 Running the pipeline in the example below, in the step `test` the value of the variable is truncated and only `line1` will appear.

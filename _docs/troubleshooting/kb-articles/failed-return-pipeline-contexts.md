@@ -1,18 +1,14 @@
 ---
-title: 
+title: Failed to return attached pipeline contexts
 description: 
 group: troubleshooting
 sub-group: kb-articles
 toc: true
 kb: true
 common: false
-categories: []
+categories: [Pipelines, Settings]
 support-reviewed: 2023-04-18 LG
 ---
-
-# Failed to return attached pipeline contexts
-
-#
 
 ## Overview
 

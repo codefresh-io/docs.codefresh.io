@@ -1,18 +1,14 @@
 ---
-title: 
+title: "How-to: Add Public ECR registry integration"
 description: 
 group: troubleshooting
 sub-group: kb-articles
 toc: true
 kb: true
 common: false
-categories: []
+categories: [Settings]
 support-reviewed: 2023-04-18 LG
 ---
-
-# How-to: Add Public ECR registry integration
-
-#
 
 ## Overview
 

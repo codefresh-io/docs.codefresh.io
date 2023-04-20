@@ -1,18 +1,14 @@
 ---
-title: 
+title: "How-to: Run a step depending on if the build is webhook triggered"
 description: 
 group: troubleshooting
 sub-group: kb-articles
 toc: true
 kb: true
 common: false
-categories: []
+categories: [Pipelines]
 support-reviewed: 2023-04-18 LG
 ---
-
-# How-to: Run a step depending on if the build is webhook triggered
-
-#
 
 ## Overview
 
@@ -71,4 +67,3 @@ the child build to override the default value.
           VARIABLE:
             - CF_BUILD_TRIGGER=${{CF_BUILD_TRIGGER}}
     
-

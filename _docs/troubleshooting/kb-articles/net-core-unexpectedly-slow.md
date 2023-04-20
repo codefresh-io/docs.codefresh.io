@@ -1,18 +1,14 @@
 ---
-title: 
+title: .Net Core is unexpectedly slow
 description: 
 group: troubleshooting
 sub-group: kb-articles
 toc: true
 kb: true
 common: false
-categories: []
+categories: [Pipelines]
 support-reviewed: 2023-04-18 LG
 ---
-
-# .Net Core is unexpectedly slow
-
-#
 
 ## Overview
 

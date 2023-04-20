@@ -1,18 +1,14 @@
 ---
-title: 
+title: "How-to: Access the Docker Daemon in a Codefresh build"
 description: 
 group: troubleshooting
 sub-group: kb-articles
 toc: true
 kb: true
 common: false
-categories: []
+categories: [Pipelines]
 support-reviewed: 2023-04-18 LG
 ---
-
-# How-to: Access the Docker Daemon in a Codefresh build
-
-#
 
 ## Overview
 

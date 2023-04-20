@@ -1,18 +1,14 @@
 ---
-title: 
+title: "How To: Send emails to specific user about builds"
 description: 
 group: troubleshooting
 sub-group: kb-articles
 toc: true
 kb: true
 common: false
-categories: []
+categories: [Pipelines]
 support-reviewed: 2023-04-18 LG
 ---
-
-# How To: Send emails to specific user about builds
-
-#
 
 ## Overview
 

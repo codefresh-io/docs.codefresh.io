@@ -1,18 +1,14 @@
 ---
-title: 
+title: "How-to: Adding a new AWS EKS cluster to Codefresh programmatically"
 description: 
 group: troubleshooting
 sub-group: kb-articles
 toc: true
 kb: true
 common: false
-categories: []
+categories: [Pipelines, API]
 support-reviewed: 2023-04-18 LG
 ---
-
-# How-to: Adding a new AWS EKS cluster to Codefresh programmatically
-
-#
 
 ## Overview
 

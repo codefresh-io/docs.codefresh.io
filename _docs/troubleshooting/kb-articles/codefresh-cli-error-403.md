@@ -1,18 +1,14 @@
 ---
-title: 
+title: "Codefresh CLI returns error 403: Permission Denied"
 description: 
 group: troubleshooting
 sub-group: kb-articles
 toc: true
 kb: true
 common: false
-categories: []
+categories: [CLI]
 support-reviewed: 2023-04-18 LG
 ---
-
-# Codefresh CLI returns error 403: Permission Denied
-
-#
 
 ## Overview
 

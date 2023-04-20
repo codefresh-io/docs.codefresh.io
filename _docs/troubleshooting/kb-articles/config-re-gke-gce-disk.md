@@ -1,18 +1,14 @@
 ---
-title: 
+title: "How-to: Configuring an existing Runtime Environment with GCE disks"
 description: 
 group: troubleshooting
 sub-group: kb-articles
 toc: true
 kb: true
 common: false
-categories: []
+categories: [Runtimes, Settings]
 support-reviewed: 2023-04-18 LG
 ---
-
-# How-to: Configuring an existing Runtime Environment with GCE disks
-
-#
 
 ## Overview
 

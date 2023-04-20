@@ -1,19 +1,14 @@
 ---
-title: 
+title: Engine pod is unable to communicate with the dind pod. EHOSTUNREACH error in logs
 description: 
 group: troubleshooting
 sub-group: kb-articles
 toc: true
 kb: true
 common: false
-categories: []
+categories: [Runtimes, CLI]
 support-reviewed: 2023-04-18 LG
 ---
-
-# Engine pod is unable to communicate with the dind pod. EHOSTUNREACH error in
-logs
-
-#
 
 ## Overview
 

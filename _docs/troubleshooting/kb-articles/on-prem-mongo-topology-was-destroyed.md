@@ -1,18 +1,14 @@
 ---
-title: 
+title: "Codefresh On-Prem: Mongo Topology was destroyed error"
 description: 
 group: troubleshooting
 sub-group: kb-articles
 toc: true
 kb: true
 common: false
-categories: []
+categories: [On-Prem]
 support-reviewed: 2023-04-18 LG
 ---
-
-# Codefresh On-Prem: Mongo Topology was destroyed error
-
-#
 
 ## Overview
 

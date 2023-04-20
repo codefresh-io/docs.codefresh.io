@@ -1,18 +1,14 @@
 ---
-title: 
+title: Debugger fails with node incompatible module error
 description: 
 group: troubleshooting
 sub-group: kb-articles
 toc: true
 kb: true
 common: false
-categories: []
+categories: [Pipeline]
 support-reviewed: 2023-04-18 LG
 ---
-
-# Debugger fails with node incompatible module error
-
-#
 
 ## Overview
 

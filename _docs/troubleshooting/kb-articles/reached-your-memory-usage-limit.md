@@ -1,18 +1,14 @@
 ---
-title: 
+title: You have reached your memory usage limit
 description: 
 group: troubleshooting
 sub-group: kb-articles
 toc: true
 kb: true
 common: false
-categories: []
+categories: [Pipelines, Settings]
 support-reviewed: 2023-04-18 LG
 ---
-
-# You have reached your memory usage limit
-
-#
 
 ## Overview
 

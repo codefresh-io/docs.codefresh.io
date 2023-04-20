@@ -1,18 +1,14 @@
 ---
-title: 
+title: "Safari: Login Loop"
 description: 
 group: troubleshooting
 sub-group: kb-articles
 toc: true
 kb: true
 common: false
-categories: []
+categories: [General]
 support-reviewed: 2023-04-18 LG
 ---
-
-# Safari: Login Loop
-
-#
 
 ## Overview
 

@@ -1,18 +1,14 @@
 ---
-title: 
+title: "CLI: list all pipelines that are associated with a Runtime Environment"
 description: 
 group: troubleshooting
 sub-group: kb-articles
 toc: true
 kb: true
 common: false
-categories: []
+categories: [Pipelines, CLI]
 support-reviewed: 2023-04-18 LG
 ---
-
-# CLI: list all pipelines that are associated with a Runtime Environment
-
-#
 
 ## Overview
 

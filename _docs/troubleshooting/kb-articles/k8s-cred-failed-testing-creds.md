@@ -1,19 +1,14 @@
 ---
-title: 
+title: An error occurred while trying to test your credentials while adding Kubernetes Integration
 description: 
 group: troubleshooting
 sub-group: kb-articles
 toc: true
 kb: true
 common: false
-categories: []
+categories: [Settings]
 support-reviewed: 2023-04-18 LG
 ---
-
-# An error occurred while trying to test your credentials while adding
-Kubernetes Integration
-
-#
 
 ## Overview
 
