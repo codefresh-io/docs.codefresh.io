@@ -296,5 +296,14 @@
 
 
 
-  
+- title: "Troubleshooting"
+  icon: images/home-icons/troubleshooting.svg
+  url: ''
+  links:
+  - title: Common Issues
+    localurl: /docs/troubleshooting/common-issues
+  - title: Knowledge Base
+    localurl: /docs/troubleshooting/kb-articles
+  - title: Codefresh SLA Definitions
+    localurl: /docs/troubleshooting/codefresh-sla-definitions
 
