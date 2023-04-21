@@ -21,24 +21,27 @@ lstat output: no such file or directory
 {% endhighlight %}
 
 ## Possible cause
+
 This issue generally occurs if you use an incorrect path to the Dockerfile or to the Build context.
 
 ## Solution
+
 Recheck, and use the correct path to Dockerfile and Build context
 
 {:start="1"}
+
 1. The path to Dockerfile.
 
 {:start="2"}
-2. The path to Build context. 
+2. The path to Build context.
 **Build context** is where we can find your Dockerfile as well as running commands. Your Dockerfile must be relative to this directory.
 
-{% include 
-image.html 
-lightbox="true" 
-file="/images/troubleshooting/no_such_file_directory.png" 
+{% include
+image.html
+lightbox="true"
+file="/images/troubleshooting/no_such_file_directory.png"
 url="/images/troubleshooting/no_such_file_directory.png"
-alt="codefresh_no_such_file_directory.png" 
+alt="codefresh_no_such_file_directory.png"
 max-width="40%"
 %}
 
@@ -59,4 +62,5 @@ step_name:
 {% endhighlight %}
 
 ## Related articles
+
 [Troubleshooting common issues]({{site.baseurl}}/docs/troubleshooting/common-issues)

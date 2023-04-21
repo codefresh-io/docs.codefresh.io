@@ -44,8 +44,7 @@ started manually (through UI, CLI, or API).
         condition:
           all:
             webhookTriggered: '"${{CF_BUILD_TRIGGER}}" == "webhook"'
-    
-
+            
 Similarly, you can match for the value `build` if you want to execute a step
 only if the build is manually initiated.
 

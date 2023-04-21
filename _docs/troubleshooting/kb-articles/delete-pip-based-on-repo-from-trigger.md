@@ -18,15 +18,13 @@ Using the CLI to delete a pipeline based on a specific repo in the trigger.
 
 Use the query below:
 
-    
-    
-    #get list of pipelines that configured with git trigger pointing to specific repository
-    PIPELINES=$(codefresh get pip --limit 1000  -o json | jq '.[] | select(contains({"spec":{"triggers":[{"type":"git", "repo":"<ACCOUNT_NAME>/<REPO_NAME>"}]}}) ) | {PipelineName:.metadata.name}' | jq -r '.[]')
-    
-    #delete pipelines
-    for item in $PIPELINES
-      do
-        codefresh delete pipeline $item
-      done 
-    
+```shell
+#get list of pipelines that configured with git trigger pointing to specific repository
+PIPELINES=$(codefresh get pip --limit 1000  -o json | jq '.[] | select(contains({"spec":{"triggers":[{"type":"git", "repo":"<ACCOUNT_NAME>/<REPO_NAME>"}]}}) ) | {PipelineName:.metadata.name}' | jq -r '.[]')
 
+#delete pipelines
+for item in $PIPELINES
+  do
+    codefresh delete pipeline $item
+  done 
+```

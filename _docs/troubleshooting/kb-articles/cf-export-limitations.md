@@ -10,7 +10,7 @@ categories: [Pipelines]
 support-reviewed: 2023-04-18 LG
 ---
 
-## Issue 
+## Issue
 
 Exporting a multi-line variable with `cf_export` within a pipeline truncates the variable.  
 
@@ -60,14 +60,8 @@ steps:
 
 If you run this pipeline, the `test` step will correctly print `line1 line2 line3`
 
-
-
 ## Related articles
+
 [cf_export utility in pipelines]({{site.baseurl}}/docs/pipelines/variables/#using-cf_export-command)  
 [Passing variables between steps]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#using-docker-containers-as-build-tooling)  
 [Troubleshooting common issues]({{site.baseurl}}/docs/troubleshooting/common-issues)
-
-
-
-
-

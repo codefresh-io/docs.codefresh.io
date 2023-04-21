@@ -19,19 +19,13 @@ Access is denied when using a clone step
 Insufficient access in the Git integration, or incorrect Git integration
 used.:
 
-  * Ensure that the account used in Integrations has the appropriate access.
-  * Ensure that in your clone step, you are using the right name for the git provider.
-  * If the account used to set up integration is no longer active, you will need to remove the current integration and replace it. 
-    1. Go to your [Account Settings -> Integrations -> Git](https://g.codefresh.io/account-admin/account-conf/integration/git).  
+* Ensure that the account used in Integrations has the appropriate access.
+* Ensure that in your clone step, you are using the right name for the git provider.
+* If the account used to set up integration is no longer active, you will need to remove the current integration and replace it.
 
-      * If you do not have access, please contact one of your team's admins
-    2. Update the previous integration with a new token, or delete the previous integration
-    3. Create a new integration
+1. Go to your [Account Settings -> Integrations -> Git](https://g.codefresh.io/account-admin/account-conf/integration/git).  
+    * If you do not have access, please contact one of your team's admins
+2. Update the previous integration with a new token, or delete the previous integration
+3. Create a new integration
 
-_Notes_
-
-When deleting a git integration, you may get an error saying the integration
-cannot be deleted while other objects are using it. This means an existing
-pipeline is referencing the integration. Please refer to [How-to: Update
-Trigger Git Context](https://support.codefresh.io/hc/en-
-us/articles/360020967860) on how to find and modify these existing references.
+> Note: When deleting a git integration, you may get an error saying the integration cannot be deleted while other objects are using it. This means an existing pipeline is referencing the integration. Please refer to [How-to: Update Trigger Git Context]({{site.baseurl}}/docs/troubleshooting/kb-articles/update-trigger-git-context) on how to find and modify these existing references.

@@ -12,39 +12,45 @@ support-reviewed: 2023-04-18 LG
 
 ## Overview
 
-When attempting to start a build, you receive the error `TypeError: Cannot
-read property 'x' of null`, where `x` is usually `title`, `stage`, or
-`commands`. The YAML editor shows no errors.
+When attempting to start a build, you receive the error `TypeError: Cannot read property 'x' of null`, where `x` is usually `title`, `stage`, or `commands`. The YAML editor shows no errors.
 
 ## Details
 
 There is missing indentation on one of your steps in the YAML file.
 
-  1. Search through your YAML file and locate all steps.
-  2. Ensure that all properties are indented by the appropriate amount of spaces. This has to be consistent across your YAML.
+1. Search through your YAML file and locate all steps.
+2. Ensure that all properties are indented by the appropriate amount of spaces. This has to be consistent across your YAML.
 
-  * Incorrect YAML:
-    
-        example-step:
-    title: step-title
-    stage: production
-    image: alpine
-    commands:
-        - ls
-    
+* Incorrect YAML:
 
-  * Corrected YAML:
-    
-        example-step:
+    {% raw %}
+
+    ```yaml
+            example-step:
         title: step-title
         stage: production
         image: alpine
         commands:
             - ls
-    
+    ```
 
-_**Note** :_
+    {% endraw %}
 
-The reason the YAML editor does not catch this at this time is because it is
-technically a valid YAML file.
+* Corrected YAML:
 
+    {% raw %}
+
+    ```yaml
+            example-step:
+            title: step-title
+            stage: production
+            image: alpine
+            commands:
+                - ls
+    ```
+
+    {% endraw %}
+
+>_**Note**:_
+>
+>The reason the YAML editor does not catch this at this time is because it istechnically a valid YAML file.

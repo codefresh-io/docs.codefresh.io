@@ -12,31 +12,38 @@ support-reviewed: 2023-04-18 LG
 
 ## Overview
 
-You are trying to run a specific step only if a variable is set. You are
-trying to have branching logic in one pipeline.
+You are trying to run a specific step only if a variable is set. You are trying to have branching logic in one pipeline.
 
 ## Details
 
-  1. Using the following syntax, you can check whether a variable exists for the current build:
-    
-          when:
-        condition:
-          all:
-            whenVarIsMissing: 'includes("${{MyVar}}", "{{MyVar}}") == true'
-    
+1. Using the following syntax, you can check whether a variable exists for the current build:
 
-  2. The following syntax can be used to check for a specific value:
-    
-          when:
-        condition:
-          all:
-            whenVarValue: '"${{MyVar}}" == "myValue"'
-    
+   {% raw %}
 
-  3. If desired, you can combine multiple checks.
+    ```yaml
+    when:
+      condition:
+        all:
+          whenVarIsMissing: 'includes("${{MyVar}}", "{{MyVar}}") == true'
+    ```
+
+    {% endraw %}
+
+2. The following syntax can be used to check for a specific value:
+
+   {% raw %}
+
+    ```yaml
+    when:
+      condition:
+        all:
+          whenVarValue: '"${{MyVar}}" == "myValue"'
+    ```
+
+    {% endraw %}
+
+3. If desired, you can combine multiple checks.
 
 ## Related Items
 
-[Conditional Execution of Steps](https://codefresh.io/docs/docs/codefresh-
-yaml/conditional-execution-of-steps/)
-
+[Conditional Execution of Steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/)
