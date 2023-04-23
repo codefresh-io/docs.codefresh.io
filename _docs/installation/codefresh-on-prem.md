@@ -723,6 +723,39 @@ cfapi:
 
 For detailed information, see the [Securing your webhooks](https://docs.github.com/en/developers/webhooks-and-events/webhooks/securing-your-webhooks) and [Webhooks](https://docs.github.com/en/github-ae@latest/rest/webhooks).
 
+### Configure custom Root CA for volumes and containers
+Reference the K8s secret containing the root CA in `config.yaml`.
+Define the volume or volumes with the K8s secret objects, and then the volume mounts for the container.
+
+ 
+>Requires on-premises version 1.4.6 or higher.
+
+**Before you begin**  
+Make you have a K8s secret containing the CA
+
+**How to**  
+
+1. Add the following to the `global` section:
+
+```yaml
+global:
+  env:
+    NODE_EXTRA_CA_CERTS: /etc/ssl/custom/ca.crt  
+
+  volumes:
+    custom-ca: 
+      enabled: true
+      type: secret
+      existingName: my-custom-ca-cert #replace with the name of K8s secret object with the CA cert
+      optional: true
+
+  container:
+    volumeMounts:
+      custom-ca: 
+        path:
+        - mountPath: /etc/ssl/custom/ca.crt 
+          subPath: ca.crt
+```
 
 ## Using existing external services for data storage/messaging
 
