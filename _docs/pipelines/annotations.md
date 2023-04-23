@@ -136,7 +136,7 @@ steps:
 
 Define annotations at the root level of the `build` step to add an annotation to the current build or image without defining the entity type and ID.
 
-This method provides a way to add annotations without the entity type and ID, compared to post-step operations where you explicitly deifne the target type and ID.
+This method provides a way to add annotations without the entity type and ID, compared to post-step operations where you explicitly define the target type and ID.
 
 
 `codefresh.yml`
