@@ -494,7 +494,7 @@
       url: "/behind-the-firewall"
     - title: Runner
       url: "/codefresh-runner"
-    - title: On-Premises
+    - title: On-Premises installation & configuration
       url: "/codefresh-on-prem"
     - title: On-Premises upgrade
       url: "/codefresh-on-prem-upgrade"
