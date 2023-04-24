@@ -21,7 +21,7 @@ View Runtime components and information in [List or Topology view formats](/#git
  url="/images/runtime/runtime-list-view.png"
   alt="Runtime List View"
   caption="Runtime List View"
-  max-width="70%"
+  max-width="80%"
 %}
 
 Manage and monitor provisioned GitOps Runtimes: 
@@ -30,16 +30,18 @@ Manage and monitor provisioned GitOps Runtimes:
 * [Configure SSH for GitOps runtimes](#configure-ssh-for-gitops-runtimes)
 * [(Hybrid GitOps) Configure Deep Links to applications/resources](#hybrid-gitops-configure-deep-links-to-applications--resources)
 * [Reset shared configuration repository for GitOps Runtimes](#reset-shared-configuration-repository-for-gitops-runtimes)
-* [(Hybrid GitOps) Upgrade provisioned Runtimes](#hybrid-gitops-upgrade-provisioned-runtimes)
-* [Uninstall provisioned GitOps Runtimes](#uninstall-provisioned-gitops-runtimes)
-* [Update Git tokens for Runtimes](#update-git-tokens-for-runtimes)
-* [View/download logs to troubleshoot Runtimes](#viewdownload-logs-to-troubleshoot-runtimes)
-* [(Hybrid GitOps) Restoring provisioned Runtimes](#hybrid-gitops-restoring-provisioned-runtimes)
+* [(Hybrid GitOps) Upgrade GitOps Runtimes](#hybrid-gitops-upgrade-gitops-runtimes)
+* [Remove GitOps Runtimes](#hybrid-gitops-remove-gitops-runtimes)
+* [Uninstall GitOps Runtimes](#uninstall-gitops-runtimes)
+* [Update Git credentials for GitOps Runtimes](#update-git-credentials-for-gitops-runtimes)
+<!---* [View/download logs to troubleshoot Runtimes](#viewdownload-logs-to-troubleshoot-runtimes)
+* [(Hybrid GitOps) Restoring provisioned Runtimes](#hybrid-gitops-restoring-provisioned-runtimes)-->
 * [(Hybrid GitOps) Troubleshoot communication problems](#hybrid-gitops-troubleshoot-communication-problems)
 * [(Hybrid GitOps) View notifications in Activity Log](#hybrid-gitops-view-notifications-in-activity-log)
 
 
-> Unless specified otherwise, all options are common to both types of GitOps Runtimes. If an option is valid only for Hybrid GitOps, it is indicated as such.
+> TIP:  
+>Unless specified otherwise, all options are common to both types of GitOps Runtimes. If an option is valid only for Hybrid GitOps, it is indicated as such.
 
 
 ## GitOps Runtime views
@@ -76,7 +78,7 @@ Here is a description of the information in the List View.
 |**Managed Cluster**| The number of managed clusters, if any, registered with the GitOps Runtime. To view list of managed clusters, click the runtime name, and then the **Managed Clusters** tab.  To work with managed clusters, see [Adding external clusters to runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster/).|
 |**Version**| The version of the runtime currently installed. **Update Available!** indicates there are newer versions of the runtime. To see all the commits to the runtime, mouse over **Update Available!**, and select **View Complete Change Log**.
 |**Last Updated**| The most recent update information from the runtime to the Codefresh platform. Updates are sent to the platform typically every few minutes. Longer update intervals may indicate networking issues.|
-|**Sync Status**| The sync status of the GitOps Runtime. The sync status is displayed only when you have completed installation and configured the GitOps Runtime as an Argo Application. {::nomarkdown}<ul><li> <img src="../../../../images/icons/runtime-synced.png"  display=inline-block> <b>Synced</b></li> <li><img src="../../../../images/icons/runtime-syncing.png"  display=inline-block> <b>Syncing</b>.</li><li><img src="../../../../images/icons/runtime-out-of-sync.png"  display=inline-block> <b>Out-of-sync</b>.</li><li><b>N/A</b>: Codefresh could not get the sync status. This could be because the Runtime is not configured as an Argo application.</li><li><b>Complete Installation</b>: Git credentials are not configured for the Runtime. Click the three-dot context menu and select <b>Update Git Runtime Credentials</b>. See ????</li>  </ul> {:/} |
+|**Sync Status**| The sync status of the GitOps Runtime. The sync status is displayed only when you have completed installation and configured the GitOps Runtime as an Argo Application. {::nomarkdown}<ul><li> <img src="../../../../images/icons/runtime-synced.png"  display=inline-block> <b>Synced</b></li> <li><img src="../../../../images/icons/runtime-syncing.png"  display=inline-block> <b>Syncing</b>.</li><li><img src="../../../../images/icons/runtime-out-of-sync.png"  display=inline-block> <b>Out-of-sync</b>.</li><li><b>N/A</b>: Codefresh could not get the sync status. This could be because the Runtime is not configured as an Argo application.</li><li><b>Complete Installation</b>: Git credentials are not configured for the Runtime. Click the three-dot context menu and select <b>Update Git Runtime Credentials</b>. See [Update Git credentials for GitOps Runtimes](#update-git-credentials-for-gitops-runtimes).</li>  </ul> {:/} |
 |**Actions** | The possible actions to manage the selected runtime.{::nomarkdown}<ul><li> <b>Upgrade</b>: Upgrade to the latest version. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#upgrade-gitops-runtimes">Upgrade GitOps Runtimes</a></li> <!---<li><b>Download All Logs</b>: Download logs for the Runtime or for its components. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#viewdownload-logs-to-troubleshoot-gitops-runtimes">View/download logs for GitOps Runtimes</a>--></li><li><b>Update Git Runtime Credentials</b>: Update Git token for Runtime. See </li><li><b>Remove Runtime</b>: Available only when the runtime is Offline. <br>Remove the runtime from Codefresh. The runtime remains on the cluster. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#remove-gitops-runtimes">Remove GitOps Runtimes</a>. </li><li><b>Uninstall Runtime</b>: Uninstall the runtime from the cluster on which it is provisioned. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#uninstall-gitops-runtimes">Uninstall GitOps Runtimes</a></li> </ul> {:/}
 
 
@@ -197,34 +199,7 @@ where:
 Argo CD also supports `if` conditional statements to control when the deep links are displayed. When omitted, configured deep links are always displayed.<br>
 For more details, read [Configuring Deep Links in Argo CD](https://argo-cd.readthedocs.io/en/stable/operator-manual/deep_links/#configuring-deep-links){:target="\_blank"}.
 
-## Reset Shared Configuration Repository for GitOps Runtimes
-Codefresh creates and validates the [Shared Configuration Repository]({{site.baseurl}}/docs/reference/shared-configuration) when you install the first Hybrid or Hosted GitOps Runtime for your account, and uses it for all GitOps Runtimes you add to the same account.
 
-You need to reset the Shared Configuration repo if the URL is either incorrect or missing.
-
-There are two reasons for this:
-1. Incorrect URL for Shared Configuration Repository 
-  The Shared Config repo details entered during installation in Account Setup are incorrect. 
-1. Undefined Shared Configuration Repository 
-  You installed the GitOps Runtime through a script or any other automated mechanism, and didn't provide the URL to the Shared Configuration Repository.
-
-Codefresh flags this through this notification:
-
-SCREENSHOT
-
-
-> To change a valid Shared Configuration Repository, you must contact Codefresh Support. 
-
-**Before you begin**  
-Verify that you have [authorized access to the Codefresh app's organizations]({{site.baseurl}}/docs/administration/account-user-management/hosted-authorize-orgs/)
-
-**How to**  
-
-1. Click **Update**.
-1. In A**dd Shared Configuration Repo**, enter your Git username and the URL at which to create the repo.
-1. From the list of **Git Organizations**, select the Git organization for the Codefresh application.
-
-SCREENSHOT
 
 
 ## (Hybrid GitOps) Upgrade GitOps Runtimes
@@ -319,7 +294,7 @@ Remove GitOps Runtimes that are offline from Codefresh. Removing a GitOps Runtim
 
 Uninstall provisioned GitOps Runtimes that are not in use.  
 
-Uninstalling a GitOps Runtime permanently:
+Uninstalling a GitOps Runtime permanently removes:
 * The Runtime from the cluster it is provisioned on
 * The Git Sources and managed clusters associated with it
 
@@ -363,26 +338,69 @@ Applications??
 
   `RELEASE_NAME=$(helm ls -n codefresh-gitops-runtime -q) && helm uninstall ${RELEASE_NAME} -n codefresh-gitops-runtime`
 
-{:start="5"}
+{:start="6"}
 
 1. Click **Close** to exit the upgrade panel.
 
+## Reset Shared Configuration Repository for GitOps Runtimes
+Codefresh creates and validates the [Shared Configuration Repository]({{site.baseurl}}/docs/reference/shared-configuration) when you install the first Hybrid or Hosted GitOps Runtime for your account, and uses it for all GitOps Runtimes you add to the same account.
 
+You can and need to reset the Shared Configuration repo if the URL is either incorrect or missing.
+
+>NOTE:
+>If Codefresh has validated the existing Shared Configuration Repository, meaning that at least one Runtime successfully connected to it, you cannot change the Shared repo. To do so, you must contact Codefresh Support. 
+
+1. Incorrect URL for Shared Configuration Repository 
+  The Shared Config repo details entered during installation in Account Setup are incorrect. Codefresh could not connect to the Shared repo with the details provided.  
+1. Undefined Shared Configuration Repository 
+  You installed the GitOps Runtime through a script or any other automated mechanism, and didn't provide the URL to the Shared Configuration Repository.
+
+Codefresh displays this notification:
+
+SCREENSHOT
+
+
+
+
+**Before you begin**  
+
+Verify that you have [authorized access to the Codefresh app's organizations]({{site.baseurl}}/docs/administration/account-user-management/hosted-authorize-orgs/)
+
+**How to**  
+
+1. Click **Update**.
+1. In **Add Shared Configuration Repo**, enter your Git username and the URL at which to create the repo.
+1. From the list of **Git Organizations**, select the Git organization for the Codefresh application.
+
+SCREENSHOT
+
+**CLI**
 
 
 ## Update Git credentials for GitOps Runtimes
 
 Provisioned GitOps Runtimes require valid Git tokens at all times to authenticate Git actions by you as a user.  
->These tokens are specific to the user, and the same token can be used for multiple runtimes.
+>These tokens are personal access tokens, specific to each user. As such, the user can use the same personal access token for multiple runtimes.
 
-There are different situations when you need to update Git tokens:  
-* **Complete Installation** status in Sync column: You have installed the Runtime but need to update the Git credentials to complete the installation. 
-* Invalid, revoked, or expired tokens: Codefresh automatically flags Runtimes with such tokens. It is mandatory to update the Git tokens to continue working with the platform. 
-* Valid tokens: Optional. You may want to update Git tokens, even valid ones, by deleting the existing token and replacing it with a new token.
+>TIP:  
+Git credentials are synced to the Shared Configuration Repository defined during installation. If you change your Git credentials, they must match that of the Shared repo. For example, if the Shared repo is defined as `http://github.com/my-org/isc.git` and the Git provider is defined  `bitbucket`, the update will fail.
 
+**When to update**  
+If your Git token is valid, you can update it at any time by deleting the existing token and replacing it with a new token. 
+
+Otherwise, you have to update Git tokens in the following situations:  
+* **Complete Installation** status in Sync column for Runtime  
+  You have installed the Runtime but need to update the Git credentials to complete the installation. 
+* Invalid, revoked, or expired tokens  
+  Codefresh automatically flags Runtimes with such tokens. It is mandatory to update the Git tokens to continue working with the platform. 
+
+**How to update**  
 The methods for updating any Git token are the same regardless of the reason for the update:  
-* OAuth2 authorization, if your admin has registered an OAuth Application for Codefresh
-* Git access token authentication, by generating a personal access token in your Git provider account with the correct scopes
+* OAuth2 authorization, if your admin has registered an OAuth Application for Codefresh.
+* Git access token authentication, by generating a personal access token in your Git provider account with the correct scopes.
+  You can update your personal access token in the UI or through the CLI.
+
+### Update Git credentials in Codefresh UI 
 
 **Before you begin**  
 * To authenticate through a Git access token, make sure your token is valid and has [the required scopes]({{site.baseurl}}/docs/reference/git-tokens/#git-personal-tokens) 
@@ -390,32 +408,33 @@ The methods for updating any Git token are the same regardless of the reason for
 **How to**
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
 1. From Runtimes in the sidebar, select [**GitOps Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
-1. Switch to either the **List View** or to the **Topology View**.
-1. **List view**:  
-    * Do one of the following:
-      * To the right of the row with the Runtime to update, click the context menu and select **Update Git Runtime Credentials**.
-      * Click the Runtime name, click the context-menu on the top-right, and then select **Update Git Runtime Credentials**.
+1. Switch to either the **List View**.
+1. Do one of the following:
+  * To the right of the row with the Runtime to update, click the context menu and select **Update Git Runtime Credentials**.
+  * Click the Runtime name, click the context-menu on the top-right, and then select **Update Git Runtime Credentials**.
 
   {% include
  image.html
  lightbox="true"
  file="/images/runtime/update-git-runtime-token.png"
  url="/images/runtime/update-git-runtime-token.png"
- alt="Update Git runtime token option"
- caption="Update Git runtime token option"
-  max-width="40%"
+ alt="Update Git Runtime credentials"
+ caption="Update Git Runtime credentials"
+  max-width="60%"
 %}
 
-{:start="4"}
+{:start="5"}
 1. Do one of the following: 
-  * If your admin has set up OAuth access, click **Authorize Access to Git Provider**. Go to _step 5_.
-  * Alternatively, authenticate with an access token from your Git provider. Go to _step 6_.
+  * If your admin has set up OAuth access, click **Authorize Access to Git Provider**. Go to _step 6_.
+  * Alternatively, authenticate with an access token from your Git provider. Go to _step 7_.
 
-{:start="5"}  
+{:start="6"}  
 1. For OAuth2 authorization:
-  > If the application is not registered, you get an error. Contact your admin for help.  
-  * Enter your credentials, and select **Sign In**.
-  * If required, as for example if two-factor authentication is configured, complete the verification. 
+  >NOTE:  
+  >If the application is not registered, you get an error. Contact your admin for help.  
+
+      * Enter your credentials, and select **Sign In**.
+      * If required, as for example if two-factor authentication is configured, complete the verification. 
 
     {% include 
       image.html 
@@ -427,10 +446,25 @@ The methods for updating any Git token are the same regardless of the reason for
       max-width="30%" 
    %}
 
-{:start="6"} 
+{:start="7"} 
 1. For Git token authentication, paste the generated token in the **Git runtime token** field.
-
 1. Click **Update Credentials**.
+
+### Update Git personal access token through CLI
+If you are using Git personal access tokens for authentication, you can also update them through the Codefresh CLI.
+
+* Run:  
+  ```yaml
+  cf config update-gitops-settings --shared-config-repo <repo_url> [--gitProvider <git-provider>] [--git-api-url <git-api-url>]
+```
+  where:  
+  * `<repo_url>` is required, and is the URL of the Shared Configuration Repository, and must match the Git provider.
+  * `--gitProvider` is optional for cloud providers as Codefresh identifies them through the Shared repo URL, and is required for on-premises providers.
+      * GitHub and GitHub Enterprise: `github`
+      * GitLab Cloud and GitLab Server: `gitlab`
+      * Bitbucket Cloud: `bitbucket`
+      * Bitbucket Server: `bitbucket-server`   
+  * `--git-api-url` is optional for all Git providers, including on-premises repo clones.
 
 
 <!--- does not work for Helm runtimes; hidden until further notice
