@@ -279,8 +279,7 @@ See [Auto-create projects for teams]({{site.baseurl}}/docs/pipelines/configurati
 
 1. Go to [Pipeline Settings](https://g.codefresh.io/account-admin/account-conf/pipeline-settings), and make sure that **Auto-create projects...** is enabled.
 
-<
-br>
+<br>
 
 **Step 2: Create the DevOps team**  
 Now we'll create the two teams, DevOps and Users. 
