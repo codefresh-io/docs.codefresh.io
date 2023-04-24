@@ -18,21 +18,16 @@ You want to get the image Jira and PR annotations programmatically.
 
 To get the issues annotations on the image, you can use this CLI command:  
   
+```shell
+codefresh get annotation image-issues <image_id> -o json
+```
 
-    
-    
-    codefresh get annotation image-issues <image_id> -o json
-
-  
 To get the PR information:  
-  
 
-    
-    
-    codefresh get annotation image-prs <image_id> -o json
+```shell
+codefresh get annotation image-prs <image_id> -o json
+```
 
 ## Related Items
 
-[CLI documentation for annotations](https://codefresh-
-io.github.io/cli/annotations/get/)
-
+[CLI documentation for annotations](https://codefresh-io.github.io/cli/annotations/get/)

@@ -24,7 +24,9 @@ If your Kubernetes cluster appears in the Codefresh Dashboard (`Integrations` &#
 * The cluster has been deleted externally.
 
 ## Solution
+
 Contact us via the Intercom window on the bottom right of the Codefresh interface for additional assistance.
 
 ## Related articles
+
 [Troubleshooting common issues]({{site.baseurl}}/docs/troubleshooting/common-issues)
