@@ -14,7 +14,6 @@ support-reviewed: 2023-04-18 LG
 
 Codefresh supports all major Git providers, GitHub, GitLab, Bitbucket. Through [Git integrations]({{site.baseurl}}/docs/integrations/git-providers/) you can connect to the respective Git provider. Signing up with Codefresh typically requires you to use a Git provider for your basic information (and in the past, an automatic integration was created with the Git provider that you used during initial sign-up).
 
-
 At Codefresh, a single user can belong to multiple *Accounts* (think GitHub organizations). Typically, a Codefresh user represents a single person, while an *Account* represents a company or team.
 
 Until July 2019, Codefresh allowed you to create a Git integration either at the account level or at the user level. This has been problematic with several customer scenarios.
@@ -23,13 +22,12 @@ Until July 2019, Codefresh allowed you to create a Git integration either at the
 
 While on paper the flexibility of adding Git integrations in different levels (account or user) looks good, in practice it has been very confusing for users/customers
 
- * Codefresh introduced login with providers which aren’t Git based - Google, [LDAP]({{site.baseurl}}/docs/single-sign-on/ldap/), [SAML]({{site.baseurl}}/docs/single-sign-on/saml/). This was causing problems for accounts which started creating pipelines leveraging the personal git context of each user and having new users signing up  without a Git provider
- * Codefresh required Git permissions from each user that signed up  instead of allowing to create a dedicated integration to your git provider of choice, allowing a company to better manage codefresh access control to their Git organization
+* Codefresh introduced login with providers which aren’t Git based - Google, [LDAP]({{site.baseurl}}/docs/single-sign-on/ldap/), [SAML]({{site.baseurl}}/docs/single-sign-on/saml/). This was causing problems for accounts which started creating pipelines leveraging the personal git context of each user and having new users signing up  without a Git provider
+* Codefresh required Git permissions from each user that signed up  instead of allowing to create a dedicated integration to your git provider of choice, allowing a company to better manage codefresh access control to their Git organization
 
 <!--- These problems were exacerbated with the introduction of [explicit clone steps]({{site.baseurl}}/docs/troubleshooting/git-step-migration/). -->
 
 To this end, personal Git providers (i.e. Git integration tied to a person instead of an *account*/company) were deprecated in July 2019. This change makes Git integrations much more consistent, especially for people that work within a company organization.
-
 
 ## How to migrate your Git integration and move away from a personal Git provider
 
@@ -44,6 +42,3 @@ Then, for all existing [pipelines]({{site.baseurl}}/docs/pipelines/introduction-
 * The `git` provider has an actual value and **not** `CF-default`. This value used to represent the personal git provider of a user and is now deprecated. Use the name of an actual git integration as is defined in the [providers page]({{site.baseurl}}/docs/integrations/git-providers/)
 
 Once that is done, contact Codefresh via [http://support.codefresh.io](http://support.codefresh.io){:target="\_blank"} or email, and we can take care of automatic migration of all your existing [triggers]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/) that exist in pipelines that are still using a personal Git provider.
-
-
-

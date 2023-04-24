@@ -18,8 +18,6 @@ Using the CLI to get all Pipelines that is using a shared configuration
 
 Use the query below:
 
-    
-    
-    codefresh get pip --limit 1000  -o json | jq '.[] | select(contains({"spec":{"contexts":["<CONTEXT_NAME>"]}}) )  | {PipelineName:.metadata.name}' | jq -r '.[]'
-    
-
+```shell
+codefresh get pip --limit 1000  -o json | jq '.[] | select(contains({"spec":{"contexts":["<CONTEXT_NAME>"]}}) )  | {PipelineName:.metadata.name}' | jq -r '.[]'
+```

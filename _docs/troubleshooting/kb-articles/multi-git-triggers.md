@@ -12,18 +12,15 @@ support-reviewed: 2023-04-18 LG
 
 Codefresh has the capability to store the [pipeline definition]({{site.baseurl}}/docs/pipelines/pipelines/#loading-codefreshyml-from-version-control) in the same Git repository as the source code.
 
-
-{% include 
-image.html 
-lightbox="true" 
-file="/images/troubleshooting/from-repo.png" 
+{% include
+image.html
+lightbox="true"
+file="/images/troubleshooting/from-repo.png"
 url="/images/troubleshooting/from-repo.png"
-alt="Storing the pipeline in the repository" 
+alt="Storing the pipeline in the repository"
 caption="Storing the pipeline in the repository"
 max-width="50%"
 %}
-
-
 
 By default, when a git trigger is happening, Codefresh will fetch the `codefresh.yml` file from the branch that is mentioned in the webhook. This is the behavior you expect most of the times as it allows you to version your pipelines and have different versions for different branches.
 
@@ -44,7 +41,7 @@ To perform this pinning you need to use the [Codefresh CLI](https://codefresh-io
 
 Once this is done check that your account is locally accessible by running
 
-```
+```shell
 codefresh get pipelines
 ```
 
@@ -52,12 +49,11 @@ You should see a long list with your pipelines on the terminal output.
 
 Export you pipeline that needs to have the `codefresh.yml` pinned (pipeline A in the example above)
 
-```
+```shell
 codefresh get pipelines kostis-codefresh/trivial-go-web/from-repo --output=yaml > custom-spec.yaml
 ```
 
 Open the `custom-spec.yaml` file with a text editor and locate the `specTemplate` block. Then add there a new `revision` property with the branch that contains the `codefresh.yml` that you want to always be used (repository A in our example above).
-
 
 {% highlight yaml %}
 {% raw %}
@@ -81,7 +77,7 @@ In the example above we specified the `master` branch. Now even if the webhook f
 
 To apply your changes, replace the pipeline in Codefresh from your local copy
 
-```
+```shell
 codefresh replace pipelines kostis-codefresh/trivial-go-web/from-repo -f custom-spec.yaml
 ```
 
@@ -91,11 +87,10 @@ You should get a message that your pipeline is updated. This concludes the setup
 
 *Deprecated*: The information below is only relevant if you are using our old Personal Git Provider system, and not our current one. Therefore, you should only use this for reference when working on old pipelines.
 
-All pipelines in Codefresh that are connected to a git repository have an automatic git clone step defined for them. 
+All pipelines in Codefresh that are connected to a git repository have an automatic git clone step defined for them.
 This clone step will also fetch the code from the branch mentioned in the webhook.
 
 To override this default behavior as well and force a specific branch, you can use a [custom clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/) like this:
-
 
 {% highlight yaml %}
 {% raw %}
@@ -111,10 +106,7 @@ main_clone:
 In the example above we have forced the git checkout to happen out of the master branch, regardless of the branch mentioned in the webhook.
 
 ## Related articles
+
 [Troubleshooting common issues]({{site.baseurl}}/docs/troubleshooting/common-issues)  
 [Git triggers]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/)  
 [Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
-
-
-
-

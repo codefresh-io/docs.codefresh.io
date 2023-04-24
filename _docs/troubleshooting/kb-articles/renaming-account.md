@@ -12,16 +12,12 @@ support-reviewed: 2023-04-18 LG
 
 ## Overview
 
-You want to rename your existing account, either due to a sign up error or
-change of business name.
+You want to rename your existing account, either due to a sign up error or change of business name.
 
 ## Details
 
-At this time, account names can only be changed by our support team. Please
-[submit a support ticket](https://support.codefresh.io/hc/en-us/requests/new)
-with the following details:
+At this time, account names can only be changed by our support team. Please [submit a support ticket](https://support.codefresh.io/hc/en-us/requests/new) with the following details:
 
-  1. The current account name
-  2. The new account name
-  3. In the event that the new account name is taken due to a sign up error, please include this information
-
+1. The current account name
+2. The new account name
+3. In the event that the new account name is taken due to a sign up error, please include this information

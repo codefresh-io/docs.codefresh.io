@@ -10,30 +10,21 @@ categories: [Runtimes, CLI]
 support-reviewed: 2023-04-18 LG
 ---
 
-## Overview:
+## Overview
 
-All the Codefresh-related images are pulled from quay.io by default, this
-includes images that are needed for the build itself (engine, dind, etc) and
-images for [built-in Codefresh
-steps](https://codefresh.io/docs/docs/codefresh-yaml/steps/#built-in-steps).
-If you want to make your Hybrid Runner pull these images, for example, from
-your internal registry mirror, you can do this by modifying the Runtime
-Environment.
+All the Codefresh-related images are pulled from quay.io by default, this includes images that are needed for the build itself (engine, dind, etc) and images for [built-in Codefresh steps]({{site.baseurl}}/docs/pipelines/steps/#built-in-steps). If you want to make your Hybrid Runner pull these images, for example, from your internal registry mirror, you can do this by modifying the Runtime Environment.
 
-## Details:
+## Details
 
-To make the changes to your Runtime Environment, you will need to use the
-[Codefresh CLI.](https://codefresh-io.github.io/cli/installation/)
+To make the changes to your Runtime Environment, you will need to use the [Codefresh CLI.](https://codefresh-io.github.io/cli/installation/)
 
-1\. Get your Runtime Environment spec:
+1. Get your Runtime Environment spec:
 
-`codefresh get re <name> -o yaml > spec.yaml`
+    `codefresh get re <name> -o yaml > spec.yaml`
 
-2\. Modify\add the `envVar` section in `runtimeScheduler` in the downloaded
-file with the registry you want to use:
+2. Modify\add the `envVar` section in `runtimeScheduler` in the downloaded file with the registry you want to use:
 
-    
-    
+    ```yaml
     runtimeScheduler:
       image: 'quay.io/codefresh/engine:1.158.0'  
       [....]
@@ -54,13 +45,12 @@ file with the registry you want to use:
     dockerDaemonScheduler:
       [....]
       dindImage: 'quay.io/codefresh/dind:20.10.18-1.25.4' 
+    ```
 
-3\. Save the file and then patch your RE using the following CLI command:  
-`codefresh patch re -f spec.yaml`
+3. Save the file and then patch your RE using the following CLI command:  
 
-## Related Items:
+    `codefresh patch re -f spec.yaml`
 
-[Public Marketplace
-Registry](https://codefresh.io/docs/docs/administration/pipeline-
-settings/#advanced-pipeline-options)
+## Related Items
 
+[Public Marketplace Registry]({{site.baseurl}}/docs/pipelines/configuration/pipeline-settings/#advanced-pipeline-options)
