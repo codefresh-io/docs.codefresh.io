@@ -16,9 +16,9 @@ First, you need to create or find a Docker image with the SSH client. A good cho
 
 Then create a freestyle step in your pipeline like this:
 
-
-{% highlight yaml %}
 {% raw %}
+
+```yaml
  ssh:
    title: "Executing command over SSH"
    type: "freestyle"
@@ -31,21 +31,20 @@ Then create a freestyle step in your pipeline like this:
      - ssh-add ~/.ssh/id_rsa
      - ssh -o "StrictHostKeyChecking no"  ${{MY_USER}}@${{MY_HOST}}
      - ssh ${{MY_USER}}@${{MY_HOST}} 'uptime'
-{% endraw %}
-{% endhighlight %}
+```
 
+{% endraw %}
 
 The pipeline expects some [variables]({{site.baseurl}}/docs/pipelines/variables/) called `SSH_KEY, MY_USER, MY_HOST` that you can enter directly in the pipeline or fetch from [shared configuration]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/).  
 
 Replace `uptime`, with your own command that you want executed on the remote host.
 
 ## Related articles
-[Troubleshooting common issues]({{site.baseurl}}/docs/troubleshooting/common-issues)  
-[How to use SSH keys with GIT]({{site.baseurl}}/docs/integrations/git-providers/#ssh-keys)  
-[How to deploy with SCP]({{site.baseurl}}/docs/example-catalog/cd-examples/deploy-to-tomcat-via-scp/)  
+
+[Troubleshooting common issues]({{site.baseurl}}/docs/troubleshooting/common-issues)
+
+[How to use SSH keys with GIT]({{site.baseurl}}/docs/integrations/git-providers/#ssh-keys)
+
+[How to deploy with SCP]({{site.baseurl}}/docs/example-catalog/cd-examples/deploy-to-tomcat-via-scp/)
+
 [How to deploy with FTP]({{site.baseurl}}/docs/example-catalog/cd-examples/transferring-php-ftp/)  
-
-
-
-
-

@@ -18,6 +18,4 @@ The Timezone used for Cron Triggers
 
 All cron jobs use UTC time.
 
-[Read our docs here:](https://codefresh.io/docs/docs/configure-ci-cd-
-pipeline/triggers/cron-triggers/)
-
+[Read our docs here:]({{site.baseurl}}/docs/pipelines/triggers/cron-triggers/)

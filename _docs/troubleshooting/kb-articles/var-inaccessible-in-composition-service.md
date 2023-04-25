@@ -20,21 +20,22 @@ A variable has to be added to your Composition's Environment.
 
 In your Environments settings, you will need to call the Codefresh variable.
 
-    
-    
-    services:
-      name: yourservice
-      composition:
-        yourservicename:
-          image: yourserviceimage
-          ports:
-            - 5432
-      composition_variables:
-         - 'CFVARIABLENAME=${{CFVARIABLENAME}}'
-    
+{% raw %}
 
-_Notes_
+```yaml
+services:
+  name: yourservice
+  composition:
+    yourservicename:
+      image: yourserviceimage
+      ports:
+        - 5432
+  composition_variables:
+      - 'CFVARIABLENAME=${{CFVARIABLENAME}}'
+```
 
-In both setup and readiness Service steps, Codefresh exported variables are
-accessible by default.
+{% endraw %}
 
+>_Notes_
+>
+>In both setup and readiness Service steps, Codefresh exported variables areaccessible by default.
