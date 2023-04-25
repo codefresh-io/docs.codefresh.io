@@ -79,7 +79,7 @@ Here is a description of the information in the List View.
 |**Version**| The version of the runtime currently installed. **Update Available!** indicates there are newer versions of the runtime. To see all the commits to the runtime, mouse over **Update Available!**, and select **View Complete Change Log**.
 |**Last Updated**| The most recent update information from the runtime to the Codefresh platform. Updates are sent to the platform typically every few minutes. Longer update intervals may indicate networking issues.|
 |**Sync Status**| The sync status of the GitOps Runtime. The sync status is displayed only when you have completed installation and configured the GitOps Runtime as an Argo Application. {::nomarkdown}<ul><li> <img src="../../../../images/icons/runtime-synced.png"  display=inline-block> <b>Synced</b></li> <li><img src="../../../../images/icons/runtime-syncing.png"  display=inline-block> <b>Syncing</b>.</li><li><img src="../../../../images/icons/runtime-out-of-sync.png"  display=inline-block> <b>Out-of-sync</b>.</li><li><b>N/A</b>: Codefresh could not get the sync status. This could be because the Runtime is not configured as an Argo application.</li><li><b>Complete Installation</b>: Git credentials are not configured for the Runtime. Click the three-dot context menu and select <b>Update Git Runtime Credentials</b>. See [Update Git credentials for GitOps Runtimes](#update-git-credentials-for-gitops-runtimes).</li>  </ul> {:/} |
-|**Actions** | The possible actions to manage the selected runtime.{::nomarkdown}<ul><li> <b>Upgrade</b>: Upgrade to the latest version. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#upgrade-gitops-runtimes">Upgrade GitOps Runtimes</a></li> <!---<li><b>Download All Logs</b>: Download logs for the Runtime or for its components. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#viewdownload-logs-to-troubleshoot-gitops-runtimes">View/download logs for GitOps Runtimes</a>--></li><li><b>Update Git Runtime Credentials</b>: Update Git token for Runtime. See </li><li><b>Remove Runtime</b>: Available only when the runtime is Offline. <br>Remove the runtime from Codefresh. The runtime remains on the cluster. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#remove-gitops-runtimes">Remove GitOps Runtimes</a>. </li><li><b>Uninstall Runtime</b>: Uninstall the runtime from the cluster on which it is provisioned. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#uninstall-gitops-runtimes">Uninstall GitOps Runtimes</a></li> </ul> {:/}
+|**Actions** | The possible actions to manage the selected runtime.{::nomarkdown}<ul><li> <b>Upgrade</b>: Upgrade to the latest version. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#upgrade-gitops-runtimes">Upgrade GitOps Runtimes</a></li> <!--- <li><b>Download All Logs</b>: Download logs for the Runtime or for its components. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#viewdownload-logs-to-troubleshoot-gitops-runtimes">View/download logs for GitOps Runtimes</a> --></li><li><b>Update Git Runtime Credentials</b>: Update Git token for Runtime. See </li><li><b>Remove Runtime</b>: Available only when the runtime is Offline. <br>Remove the runtime from Codefresh. The runtime remains on the cluster. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#remove-gitops-runtimes">Remove GitOps Runtimes</a>. </li><li><b>Uninstall Runtime</b>: Uninstall the runtime from the cluster on which it is provisioned. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#uninstall-gitops-runtimes">Uninstall GitOps Runtimes</a></li> </ul> {:/}
 
 
 ### Topology view
@@ -344,7 +344,18 @@ Uninstalling a GitOps Runtime permanently removes:
 ## Reset Shared Configuration Repository for GitOps Runtimes
 Codefresh creates and validates the [Shared Configuration Repository]({{site.baseurl}}/docs/reference/shared-configuration) when you install the first Hybrid or Hosted GitOps Runtime for your account, and uses it for all GitOps Runtimes you add to the same account.
 
-You can and need to reset the Shared Configuration repo if the URL is either incorrect or missing.
+You can and need to reset the Shared Configuration repo if the URL is either incorrect or missing.  
+Codefresh displays this notification:
+
+  {% include
+ image.html
+ lightbox="true"
+ file="/images/runtime/shared-config-repo-missing.png"
+ url="/images/runtime/shared-config-repo-missing.png"
+ alt="Notification for missing/incorrect Shared Configuration Repository"
+ caption="Notification for missing/incorrect Shared Configuration Repository"
+  max-width="100%"
+%}
 
 >NOTE:  
 >If Codefresh has validated the existing Shared Configuration Repository, meaning that at least one Runtime successfully connected to it, you cannot change the Shared repo. To do so, you must contact Codefresh Support. 
@@ -354,7 +365,7 @@ You can and need to reset the Shared Configuration repo if the URL is either inc
 1. Undefined Shared Configuration Repository   
   You installed the GitOps Runtime through a script or any other automated mechanism, and didn't provide the URL to the Shared Configuration Repository.
 
-Codefresh displays a notification that the `Shared Configuration Repository is missing...`.
+
 
 
 
