@@ -298,7 +298,6 @@ Uninstalling a GitOps Runtime permanently removes:
 * The Runtime from the cluster it is provisioned on
 * The Git Sources and managed clusters associated with it
 
-Applications??
  
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
@@ -306,7 +305,7 @@ Applications??
 1. Switch to either the **List View** or to the **Topology View**.
 1. **List view**:  
     * Do one of the following:
-      * To the right of the row with the Runtime to upgrade, click the context menu and select **Upgrade**.
+      * To the right of the row with the Runtime to upgrade, click the context menu and select **Uninstall**.
       * Click the Runtime name, click the context-menu on the top-right, and then select **Uninstall**.
 
   {% include
