@@ -792,87 +792,7 @@ The Codefresh `values.yaml` is located [here](https://github.com/codefresh-io/gi
 <br><br>
 
 
-<!---
-1. Do one of the following:  
-  * If this is your first Hybrid GitOps installation, in the Welcome page, select **+ Install Runtime**.
-  * If you have already provisioned a Hybrid GitOps Runtime, to provision additional runtimes, in the Codefresh UI:  
-    On the toolbar, click the **Settings** icon, and from Runtimes in the sidebar, select [**GitOps Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
-1. Click **+ Add Runtimes**, and then select **Hybrid Runtimes**.
-1. Click **Generate** to generate your API key. 
-1. If needed, select **Customize runtime values**, and define the **Runtime Name** and **Namespace**.
-   > The Namespace must be identical to the Runtime Name. The default names are `codefresh` for both.
-1. Copy and run the command to the add the repository for the Helm chart:  
-   `helm repo add <helm-repo-name> https://chartmuseum.codefresh.io/gitops-runtime` <br>
-   `helm repo update`<br>
-   where: <br> 
-   `<helm-repo-name>` is the name of the repository to which to add the runtime Helm chart. For example, `cf-gitops-runtime`.
-1. Copy and run the command to install the runtime Helm chart:  
-  The commands differ depending on the access mode. An ingress-based runtime requires additional flags.<br>
 
-    **Tunnel-based install chart command:**<br>
-    `helm upgrade --install <helm-release-name> --create-namespace --namespace <namespace> --set global.codefresh.accountId=<codefresh-account-id> --set global.codefresh.userToken.token=<codefresh-api-key> --set global.runtime.name=<runtime-name> <helm-repo-name>/gitops-runtime --devel --wait`  
-
-
-    **Ingress-based install chart command:**  
-      `helm upgrade --install <helm-release-name> --create-namespace --namespace <namespace> --set global.codefresh.accountId=<codefresh-account-id> --set global.codefresh.userToken.token=<codefresh-api-key> --set global.runtime.name=<runtime-name> <helm-repo-name>/gitops-runtime  --set global.runtime.ingress.enabled=true --set "global.runtime.ingress.hosts[0]"=<ingress-host> --set global.runtime.ingress.className=<ingress-class> --devel --wait`  
-    
-    >Unless otherwise indicated, values are automatically populated by Codefresh.
-
-    where:  
-    * `<helm-release-name>` is the name of the Helm release.  
-    * `<namespace>` is the namespace in which to install the Hybrid GitOps runtime, either `codefresh`, or the custom name you defined.  
-    * `<codefresh-account-id>` is your Codefresh account ID.
-    * `<codefresh-api-key>` is the generated API key.
-    * `<runtime-name>` is the name of the runtime, either `codefresh`, or the custom name you defined. 
-    * `gitops-runtime` is the chart name defined by Codefresh.
-    * `global.runtime.ingress.enabled=true` is mandatory for _ingress-based runtimes_, and indicates that the runtime is ingress-based.
-    * `<ingress-host>` is mandatory for _ingress-based runtimes_, and is the IP address or host name of the ingress controller component. 
-    * `<ingress-class>` is mandatory for _ingress-based runtimes_, and is the ingress class of the ingress controller. For example, `nginx` for the NGINX ingress controller.
-    * `--wait` waits until all the pods are up and running for the deployment.
-
-1. Define your Git provider and register the Git integration:  
-  `cf integration git add default --runtime <runtime-name> --api-url <api-url> --provider <provider>`  
-  `cf integration git register default --runtime <runtime-name> --token <git-personal-access-token>`   
-  where:  
-      * `<runtime-name>` is the name of the runtime, either `codefresh`, or the custom name you defined. 
-      * `<api-url>` is the URL of the Git provider, and can be one of the following:
-          * GitHub Cloud: `https://api.github.com` 
-          * GitHub Enterprise: `https://<server-url>/api/v3`
-          * GitLab Cloud: `https://gitlab.com/api/v4`
-          * GitLab Server: `<server-url>/api/v4`
-          * Bitbucket Cloud: `https://api.bitbucket.org/2.0`
-          * Bitbucket Server: `<server-url>/rest/api/1.0`
-      * `<provider>` is the Git provider for the runtime. The same provider is used to install additional runtimes in the same account. Can be one of the following:
-          * GitHub and GitHub Enterprise: `github`
-          * GitLab Cloud and GitLab Server: `gitlab`
-          * Bitbucket Cloud: `bitbucket`
-          * Bitbucket Server: `bitbucket-server`  
-      * `<git-personal-access-token>` is the token you generated with the required scopes. 
-1. When the installation is complete, go to the **List View**, and select the new runtime.
-1. From the context menu on the right, select **Update Git Runtime Credentials**.  
-
-{% include 
-	image.html 
-	lightbox="true" 
-	file="/images/runtime/gitops-hybrid-helm-update-token.png" 
-	url="/images/runtime/gitops-hybrid-helm-update-token.png" 
-	alt="Update Git Runtime Credentials after installation" 
-	caption="Update Git Runtime Credentials after installation"
-  max-width="80%" 
-%}
-
-{:start="10"}
-1. Paste the Git runtime token you created, and click **Update Credentials**. 
-1. If you don't have the shared configuration repository for GitOps runtimes, contact support. 
-  > For the Alpha, we assume that you already have a shared configuration repository for your account.
-1. Optional. [Create a Git Source]({{site.baseurl}}/docs/installation/gitops/git-sources/#create-a-git-source) for the runtime.
-1. Required only for ALB AWS, Istio, or NGINX Enterprise ingress-controllers.<br>
-   Complete the configuration for these ingress controllers:
-  * [ALB AWS: Alias DNS record in route53 to load balancer]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/#create-an-alias-to-load-balancer-in-route53)
-  * [Istio: Configure cluster routing service]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/#cluster-routing-service)
-  * [NGINX Enterprise ingress controller: Patch certificate secret]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/#patch-certificate-secret)  
-
--->
 
 ### Step 1: (Optional) Validate Helm values file
 Before starting Helm installation for a Hybrid GitOps runtime, validate the `values.yaml` file to verify that the settings are correct.  
@@ -882,24 +802,22 @@ The table below lists the settings validated in the `values` file.
 {: .table .table-bordered .table-hover}
 | Setting                   |  Validation            |  
 | --------------            | --------------           |  
-|**`userToken`**            | If explicitly defined or defined as a `secretKeyRef` which exists in the current k8s context, and the defined namespace.|
+|**`userToken`**            | If explicitly defined, or defined as a `secretKeyRef` which exists in the current k8s context and the defined namespace.|
 |**Account permissions**    | If the user has admin permissions for the account in which they are installing the runtime.|
 |**Runtime name**           | If defined, and is unique to the account.|
-|**Access mode**            | {::nomarkdown}<ul><li>For tunnel-based, the default, if `accountId` is defined, and matches the account of the `userToken` defined in the file.</li>.<li>For ingress-based, if the `hosts` array contains at least one entry that is a valid URL (successful HTTP GET).</li></ul>{:/} |
-|**`gitCredentials`**      | {::nomarkdown}<ul><li>When defined, includes a Git password either explicitly, or as a `secretKeyRef`, similar to `userToken`.</li>.<li>The password or token has the required permissions in the Git provider.</li></ul>{:/} |  *  
+|**Access mode**            | {::nomarkdown}<ul><li>For tunnel-based, the default, if <code class="highlighter-rouge">accountId</code> is defined, and matches the account of the <code class="highlighter-rouge">userToken</code> defined in the file.</li><li>For ingress-based, if the <code class="highlighter-rouge">hosts</code> array contains at least one entry that is a valid URL (successful HTTP GET).</li></ul>{:/} |
+|**`gitCredentials`**      | {::nomarkdown}<ul><li>When defined, includes a Git password either explicitly, or as a <code class="highlighter-rouge">secretKeyRef</code>, similar to <code class="highlighter-rouge">userToken</code>.</li><li>The password or token has the required permissions in the Git provider.</li></ul>{:/} |    
 
 
 
 **How to**
 
 1. Run:  
-  `cf config validate --values <values_file> --namespace <namespace> --version <version>`
-  where:  
-    * `<values_file>` is the name of the values.yaml used by the Helm installation.  
-    * `<namespace>` is the namespace in which to install the Hybrid GitOps runtime, either the default `codefresh`, or the custom name you intend to use for the installation.  
-    >NOTE:  
-    >The Namespace must conform to the naming conventions for Kubernetes objects. 
-    * `<version>` is the version of the runtime to install.
+  `cf config validate --values <values_file> --namespace <namespace> --version <version>`  
+    where:  
+      * `<values_file>` is the name of the values.yaml used by the Helm installation.  
+      * `<namespace>` is the namespace in which to install the Hybrid GitOps runtime, either the default `codefresh`, or the custom name you intend to use for the installation. The Namespace must conform to the naming conventions for Kubernetes objects. 
+      * `<version>` is the version of the runtime to install.
 1. Continue with [Step 2: Select Hybrid Runtime install option](#step-2-select-hybrid-runtime-install-option).
 
 ### Step 2: Select Hybrid Runtime install option
@@ -937,10 +855,10 @@ Install the Hybrid GitOps Runtime through the Helm chart. The Codefresh `values.
 **Runtime Name**  
 If you define a custom name for the Hybrid GitOps Runtime, it must start with a lower-case character, and can include up to 62 lower-case characters and numbers.
 
-**Namespace**
+**Namespace**  
 The Namespace must conform to the naming conventions for Kubernetes objects.
 >NOTE:  
-  >If you have already validated your `values.yaml` file in [Step 1: Validate Helm values file](#step-1-validate-helm-values-file), the Namespace must be identical to the one you defined in the `cf config validate` command.
+  >If you have already validated your `values.yaml` file in [Step 1: Validate Helm values file](#step-1-validate-helm-values-file), verify that the Namespace is identical to the one defined in the `cf config validate` command.
 
 1. To generate your Codefresh API key, click **Generate**. 
 1. If needed, select **Customize runtime values**, and define the **Runtime Name** and **Namespace**.
@@ -980,7 +898,7 @@ The Namespace must conform to the naming conventions for Kubernetes objects.
 
 
 ### Step 5: Configure Git credentials for Hybrid GitOps Runtime
-After installing the Hybrid GitOps Runtime, you need to complete the installation by defining Git credentials for the runtime. Git credentials are essential for the proper functioning of the runtime.
+Configure Git credentials to authorize access to and ensure proper functioning of the GitOps Runtime.  
 
 Git credentials include authorizing access to Git through OAuth2 or a personal access token, and optionally configuring SSH access to Git.
 
@@ -1012,8 +930,9 @@ For more information on generating SSH private keys, see the official documentat
   * Alternatively, authenticate with an access token from your Git provider. Go to _step 3_.
 1. For OAuth2 authorization:
   > If the application is not registered, you get an error. Contact your admin for help.  
-  * Enter your credentials, and select **Sign In**.
-  * If required, as for example with two-factor authentication, complete the verification. 
+      * Enter your credentials, and select **Sign In**.
+      * If required, as for example with two-factor authentication, complete the verification. 
+    
     {% include 
       image.html 
       lightbox="true" 
@@ -1037,23 +956,20 @@ For more information on generating SSH private keys, see the official documentat
 
 ### Step 6: (Optional) Configure Hybrid GitOps Runtime as Argo Application
 
-The final step, also optional, is to configure the Hybrid GitOps Runtime as an Argo Application. By doing so, you can easily monitor its health and sync statuses, and ensure that GitOps is the single source of truth for the runtime.  
-Configuring the Runtime as an Argo Application displays the runtime components and 
+Configure the Hybrid GitOps Runtime as an Argo Application as the final step in the installation process.  
+By doing so, you can view the Runtime components, easily monitor health and sync statuses, and ensure that GitOps is the single source of truth for the Runtime.   
 
-* Click **Configure as Argo Application**, and Codefresh takes care of the configuration for you.
+1. Click **Configure as Argo Application**. Codefresh takes care of the configuration for you.
+1. Continue with [Step 7: (Optional) Create a Git Source](#step-7-optional-create-a-git-source).
 
 
 >If you don't configure it as an Argo Application, the Sync Status column will show "N/A" and remind you to configure it.
 
 
-
-1. Click **Configure as Argo Application**. 
-1. Continue with [Step 7: (Optional) Create a Git Source](#step-7-optional-create-a-git-source).
-
 ### Step 7: (Optional) Create a Git Source
+Create a [Git Source]({{site.baseurl}}/docs/installation/gitops/git-sources/#create-a-git-source) for the Runtime. 
 
-
-1. Optional. [Create a Git Source]({{site.baseurl}}/docs/installation/gitops/git-sources/#create-a-git-source) for the runtime.
+1. Optional. Create a Git Source.
 1. Continue with [Step 8: (Optional) Configure ingress-controllers](#step-8-optional-configure-ingress-controllers).
 
 ### Step 8: (Optional) Configure ingress-controllers
@@ -1064,9 +980,9 @@ Required only for ALB AWS, Istio, or NGINX Enterprise ingress-controllers.<br>
   * [Istio: Configure cluster routing service]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/#cluster-routing-service)
   * [NGINX Enterprise ingress controller: Patch certificate secret]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/#patch-certificate-secret)  
 
-That's it! You have successfully completed installing a Hybrid GitOps Runtime. See the GitOps Runtime in the [Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#gitops-runtime-views) page.
+That's it! You have successfully completed installing a Hybrid GitOps Runtime with Helm. See the Runtime in the [Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#gitops-runtime-views) page.
 
-You can now add [external clusters to the runtime]({{site.baseurl}}/docs/installation/gitops/managed-cluster/), and [create and deploy GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application/).
+You can now add [external clusters to the Runtime]({{site.baseurl}}/docs/installation/gitops/managed-cluster/), and [create and deploy GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application/).
 
 ## Related articles
 [Managing and monitoring GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/)  
