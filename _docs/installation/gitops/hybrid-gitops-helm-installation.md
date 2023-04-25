@@ -878,6 +878,7 @@ The Codefresh `values.yaml` is located [here](https://github.com/codefresh-io/gi
 Before starting Helm installation for a Hybrid GitOps runtime, validate the `values.yaml` file to verify that the settings are correct.  
 
 The table below lists the settings validated in the `values` file.  
+
 {: .table .table-bordered .table-hover}
 | Setting                   |  Validation            |  
 | --------------            | --------------           |  
