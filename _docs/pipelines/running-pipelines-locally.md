@@ -5,8 +5,6 @@ group: pipelines
 toc: true
 redirect_from:
   - /docs/configure-ci-cd-pipeline/running-pipelines-locally/
-  - /docs/troubleshooting/common-issues/debugging-codefresh-builds-locally/
-  - /docs/troubleshooting/common-issues/access-and-debug-the-pipeline-volume-image/
 ---
   
 Codefresh can run your pipelines locally. This is very handy when you need to debug a pipeline, or when you want to do quick changes to the [codefresh.yml file]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/) with the fastest turn-around time possible.

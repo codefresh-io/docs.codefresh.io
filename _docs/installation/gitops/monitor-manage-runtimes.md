@@ -640,7 +640,7 @@ status:
 
 A notification _Unable to communicate with a <runtime_name>_ or _Unable to communicate with two or more runtimes_ indicates a communication problem.
 
-Refer to our [troubleshooting section]({{site.baseurl}}/docs/troubleshooting/runtime-issues/#unable-to-communicate-with-runtime-name-or-two-or-more-runtimes) for a list of possible causes and the corresponding corrective actions. 
+Refer to our [troubleshooting section]({{site.baseurl}}/docs/troubleshooting/kb-articles/runtime-issues/#unable-to-communicate-with-runtime-name-or-two-or-more-runtimes) for a list of possible causes and the corresponding corrective actions. 
 
 
 ### (Hybrid GitOps) View notifications in Activity Log

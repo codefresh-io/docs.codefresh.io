@@ -267,7 +267,7 @@ cf_export MY_VAR='example' # Will also make MY_VAR available to all steps after 
 
 There is nothing really magic about `cf_export`. It is a normal script. You can see its contents on your own by entering the command `cat /codefresh/volume/cf_export` on any [Codefresh freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/) inside a pipeline. 
 
-For more information on its limitations see the [troubleshooting page]({{site.baseurl}}/docs/troubleshooting/common-issues/cf-export-limitations/).
+For more information on its limitations see the [troubleshooting page]({{site.baseurl}}/docs/troubleshooting/kb-articles/cf-export-limitations/).
 
 
  
