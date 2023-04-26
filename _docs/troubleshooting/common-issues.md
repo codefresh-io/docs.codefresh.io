@@ -25,7 +25,7 @@ These Knowledge Base Articles are common issues you may encounter and questions 
             {% if page.common == true %}
                 {% for pc in page.categories %}
                     {% if pc == cat %}
-                    <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+                    <li><a href="{{site.baseurl}}{{page.url}}">{{ page.title }}</a></li>
                     {% endif %}   <!-- match category -->
                 {% endfor %}  <!-- page-categories -->
             {% endif %}   <!-- common -->
