@@ -148,7 +148,7 @@ For details, see [GitOps Amazon ECR integration]({{site.baseurl}}/docs/gitops-in
 
 ### Features & Enhancements
 
-#### CI/CD: Selective restart for failed build steps
+#### Pipelines: Selective restart for failed build steps
 We added the **Restart from a failed step** as an option to the pipeline's Policy settings, which you can enable/disable per pipeline. 
 {% include
  image.html
@@ -171,7 +171,7 @@ For details, see [Policy settings for pipelines]({{site.baseurl}}/docs/pipelines
 
 <br>
 
-#### CI/CD: Datadog integration enhancements
+#### Pipelines: Datadog integration enhancements
 We enhanced our integration with Datadog to report additional information from Codefresh pipelines in Datadog. 
 <br> 
 The new information should make it even easier to monitor and analyze Codefresh pipelines in Datadog: 
@@ -197,7 +197,7 @@ See [Datadog pipeline integration]({{site.baseurl}}/docs/integrations/datadog/).
 
 
 
-#### CI/CD: Override runtime environment for GitOps pipeline integrations
+#### Pipelines: Override runtime environment for GitOps pipeline integrations
 A GitOps pipeline integration uses the default runtime environment. After creating a GitOps pipeline integration, you can now override its runtime environment.
 Codefresh uses the runtime environment for system actions such as Rollback.
 
@@ -272,7 +272,7 @@ See [Monitoring GitOps applications]({{site.baseurl}}/docs/deployments/gitops/ap
 
 ### Bug fixes
 
-#### CI/CD  
+#### Pipelines  
 * Triggers for inactive webhooks return 200.
 * In full-screen view mode, the pipeline list panel on the left overlaps the pipeline YAML.
 * Unable to override image used for `cf-runtime-lv-monitor Daemonset` in the Runner Helm chart. 
@@ -306,7 +306,7 @@ See [Monitoring GitOps applications]({{site.baseurl}}/docs/deployments/gitops/ap
 
 ### Features & Enhancements
 
-#### CI/CD: Slack integration notification for builds terminated by system
+#### Pipelines: Slack integration notification for builds terminated by system
 Notifications for failed builds are equally, if not more important, than those for successful builds. Getting notifications for system-terminated builds is crucial, as it indicates that the build was stopped because of pipeline policy and may require immediate attention. You can quickly investigate the issue and take corrective action if necessary.
 
 
@@ -336,7 +336,7 @@ Here's an example of the notification you would receive in Slack.
 
 <br>
 
-#### CI/CD: Multiple Helm contexts for pipelines
+#### Pipelines: Multiple Helm contexts for pipelines
 With support for multiple Helm registry contexts in the same pipeline, dependencies in any of the imported Helm registry contexts in the Helm chart are automatically authenticated and added.
 For the Helm `install` and `push` actions, you can select the primary Helm registry context for the command.
 For details, see [Import Helm configurations into your pipeline definition]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/#step-4-optional-import-helm-configurations-into-your-pipeline-definition) and [Action modes]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/#helm-step-action-modes).
@@ -344,7 +344,7 @@ For details, see [Import Helm configurations into your pipeline definition]({{si
 
 <br>
 
-#### CI/CD: Multiple cache sources for pipeline builds
+#### Pipelines: Multiple cache sources for pipeline builds
 
 Docker has support for specifying external cache sources for builds. We added the `cache-from` argument to our `build` step allowing you to specify additional cache sources and speed up the build process. Multiple cache sources are useful when your primary cache source is unavailable or slow.
 
@@ -373,7 +373,7 @@ For details, see [`cache_from` in `build` step fields]({{site.baseurl}}/docs/pip
 
 <br>
 
-#### CI/CD: Control thresholds for memory usage warning banner
+#### Pipelines: Control thresholds for memory usage warning banner
 Remember the banner that alerted you whenever the memory usage for a pipeline build exceeded 70 or 90%?
 You can now decide the usage threshold at which to display the banner. Increasing the threshold helps avoid premature warnings for pipelines that do not consume a lot of memory, while decreasing it for resource-intensive pipelines helps avoid build failures. 
 
@@ -396,7 +396,7 @@ See [Memory usage warning for pipeline builds]({{site.baseurl}}/docs/pipelines/c
 
 <br>
 
-#### CI/CD: New flow for Cloud Builds for pipelines
+#### Pipelines: New flow for Cloud Builds for pipelines
 Previously, all Codefresh accounts had access to a SaaS runtime environment to run pipelines. However, this is no longer the case. Account administrators can request SaaS runtime environments by clicking **Enable Cloud Builds** in Codefresh. This action triggers an email request to Codefresh, and you should receive a response within 24 hours.
 
 
@@ -412,7 +412,7 @@ For details, see [Argo CD Releases](https://github.com/argoproj/argo-cd/releases
 #### Usability enhancements
 Saves time and ease of use in interactions with Codefresh.  
 
-* **CI/CD: Prompt to switch accounts**  
+* **Pipelines: Prompt to switch accounts**  
   To avoid confusion, when you are signed into more than one Codefresh account, you are prompted to either switch to the active account or return to the previous one. 
 
 {% include
@@ -425,7 +425,7 @@ Saves time and ease of use in interactions with Codefresh.
  max-width="50%"
 %}
 
-* **CI/CD: Case-insensitive search for Pipelines and Pipeline List view**
+* **Pipelines: Case-insensitive search for Pipelines and Pipeline List view**
   Search is now easier as queries are case-insensitive. 
 
 * **GitOps: Terminate Sync now in application header**
@@ -450,7 +450,7 @@ See [Application header]({{site.baseurl}}/docs/deployments/gitops/applications-d
 
 ### Bug fixes
 
-#### CI/CD
+#### Pipelines
 - Logs not generated and slow build execution.
 - `CF_HELM_SET` variable  printed as [object Object].
 - Variables added via pipeline hooks not rendered for build annotations.
