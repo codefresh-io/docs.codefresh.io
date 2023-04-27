@@ -12,9 +12,17 @@ support-reviewed: 2023-04-18 LG
 
 ## Issue
 
-[Build step]({{site.baseurl}}/docs/pipelines/steps/build/) in your pipeline fails with the  error message:  
+[Build step]({{site.baseurl}}/docs/pipelines/steps/build/) in your pipeline fails with the error message:  
 
-"Repository does not contain a Dockerfile. Please check the pipeline configuration" OR "Failed to fetch the Dockerfile from path"
+```shell
+Repository does not contain a Dockerfile. Please check the pipeline configuration
+```
+
+OR
+
+```shell
+Failed to fetch the Dockerfile from path
+```
 
 ## Possible cause
 

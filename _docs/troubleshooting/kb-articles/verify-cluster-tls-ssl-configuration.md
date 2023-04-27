@@ -21,7 +21,6 @@ Codefresh connects to your cluster via secure TLS channel, therefore make sure y
 >1. The Load Balancer certificate *Common Name corresponds* to the Load Balancer hostname/IP address
 >2. When adding the cluster to Codefresh, we provide it with the base64 encoded *CA issuer certificate*, not the Load Balancer server certificate, unless it is a self-signed one
 >3. If there is *more than one CA* in the certificate chain, you need to provide the *whole CA bundle file* to Codefresh, not a single CA certificate
-{{site.data.callout.end}}
 
 ## The exact steps
 
