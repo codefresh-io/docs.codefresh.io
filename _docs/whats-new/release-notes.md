@@ -107,11 +107,39 @@ For details, see [Configure custom Root CA for volumes and containers]({{site.ba
 
 
 
-#### GitOps: Rollback for applications
+#### GitOps: Rollback GitOps applications
+We now have the Rollback feature for GitOps applications! With just a click of a button, you can rollback any new or active version of an application directly from the GitOps Apps dashboard in Codefresh. 
 
+Codefresh allows you to rollback to any of the ten previous deployment versions, just like Argo CD. 
 
-#### GitOps: Static integration for ECR
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-apr23-app-rollback.png"
+ url="/images/whats-new/rel-notes-apr23-app-rollback.png"
+ alt="Rollback for GitOps applications"
+ caption="Rollback for GitOps applications"
+ max-width="50%"
+%}
 
+For details, see [Rollback GitOps applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/#rollback-applications).
+
+#### GitOps: Static integration option for Amazon ECR
+We extended the integration options for Amazon Elastic Container Registry (ECR) in GitOps to include static integrations with Access keys. 
+
+You can now set up the integration with Amazon ECR using an access key and secret (static integration). Unlike IAM roles, access keys are long-term credentials, without a default expiration date.
+
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-ecr-access-key-int.png"
+ url="/images/whats-new/rel-notes-ecr-access-key-int.png"
+ alt="Access Key (static) integration for GitOps Amazon ECR"
+ caption="Access Key (static) integration for GitOps Amazon ECR"
+ max-width="50%"
+%}
+
+For details, see [GitOps Amazon ECR integration]({{site.baseurl}}/docs/gitops-integrations/container-registries/amazon-ecr).
 
 ### Bug fixes
 
