@@ -13,7 +13,7 @@ support-reviewed: 2023-04-18 LG
 ## Overview
 
 * “Runtime was not active for more than an hour”
-    ![runTimeInactive.png](/images/troubleshooting/runTimeInactive.png)
+    ![runTimeInactive.png]({{site.baseurl}}/images/troubleshooting/runTimeInactive.png)
 * Upgrade of a runtime still shows the old version in the UI
 
 ## Details

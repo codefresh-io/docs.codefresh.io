@@ -38,7 +38,7 @@ By enabling the `debug` mode when using the Codefresh CLI, you will get more ver
 
 3. You will get an output similar to this:
 
-    ![Codefresh CLI debug output](/images/troubleshooting/cli-debug-mode.png)
+    ![Codefresh CLI debug output]({{site.baseurl}}/images/troubleshooting/cli-debug-mode.png)
 
 >**_Note:_**
 >

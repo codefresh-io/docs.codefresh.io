@@ -14,7 +14,7 @@ support-reviewed: 2023-04-18 LG
 
 Unexpected lack of access to public and/or private repositories where it was present before. An example follows:
 
-![Missing repositories](/images/troubleshooting/repos-missing.png)
+![Missing repositories]({{site.baseurl}}/images/troubleshooting/repos-missing.png)
 
 ## Details
 

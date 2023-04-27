@@ -20,7 +20,7 @@ There may be multiple Codefresh webhooks set up on the same repository.
 
 1. Open your Git provider. In this example, we will use GitHub.
 2. Open your repository and click settings.
-3. Confirm that there should only be one webhook per trigger. If there are multiples, delete them. ![Web hook example](/images/troubleshooting/webhook.png)
+3. Confirm that there should only be one webhook per trigger. If there are multiples, delete them. ![Web hook example]({{site.baseurl}}/images/troubleshooting/webhook.png)
 
 > _Notes_
 >

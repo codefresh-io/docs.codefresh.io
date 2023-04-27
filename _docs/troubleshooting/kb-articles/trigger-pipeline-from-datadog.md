@@ -18,7 +18,7 @@ You want to trigger the Codefresh pipeline from a Datadog alert.
 
 1. Open the [Webhook integration management](https://app.datadoghq.com/account/settings#integrations/webhooks) page in Datadog:
 
-    ![mceclip1.png](/images/troubleshooting/datadog.png)
+    ![datadog]({{site.baseurl}}/images/troubleshooting/datadog.png)
 
     From here you will first need to add a variable with your Codefresh user API key ( you can generate one here: [User settings](https://g.codefresh.io/user/settings))
 2. Next, click the 'New' button in the Webhook section and fill in the required fields:

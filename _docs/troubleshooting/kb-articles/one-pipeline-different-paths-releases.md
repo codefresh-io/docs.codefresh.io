@@ -28,7 +28,7 @@ There are a number of different paths to solving this. Two potential solutions:
   4. Create a new trigger that acts only on pull requests.
   5. Under "Advanced Options", find "Build Variables" and add a variable. Name it `GIT_EVENT` and set its value to `pull`.
 
-![Setting a variable](/images/troubleshooting/set-variable.png)
+![Setting a variable]({{site.baseurl}}/images/troubleshooting/set-variable.png)
 
 With this done, you are now able to make use of conditionals in your steps to control which steps are run. You can also use scripts with `if` statements inside your freestyle steps to.
 

@@ -22,7 +22,7 @@ You will need to pass username and password to create the integration. You can g
 
 * Navigate to "Amazon ECR/Repositories/Public/<repo>" and click the "View push commands" button at the upper right, in the next window note the first command that will print out the password.
 
-![excerpt from aws](/images/troubleshooting/ecrrepo.png)
+![excerpt from aws]({{site.baseurl}}/images/troubleshooting/ecrrepo.png)
 
 In the Codefresh [integration page](https://g.codefresh.io/account-admin/account-conf/integration/registryNew) select 'Add Registry Provider > Other Registries', enter any Registry name, put "AWS" in the Username field, then run the following command
 
@@ -30,6 +30,6 @@ In the Codefresh [integration page](https://g.codefresh.io/account-admin/account
 
 and put the output in the Password field, fill in the prefix field in advanced  options too.
 
-![ECR integration in Codefresh](/images/troubleshooting/ecrrepo2.png)
+![ECR integration in Codefresh]({{site.baseurl}}/images/troubleshooting/ecrrepo2.png)
 
 Test the connection if needed and save the changes.

@@ -26,7 +26,7 @@ We will cover the third solution here. For our example, we're defining a
 different path for push and pull requests.
 
 1. Create a trigger that acts only on push requests.
-2. Under "Advanced Options", find "Build Variables" and add a variable. Name it `GIT_EVENT` and set its value to `push`. ![Setting a variable](/images/troubleshooting/set-variable.png)
+2. Under "Advanced Options", find "Build Variables" and add a variable. Name it `GIT_EVENT` and set its value to `push`. ![Setting a variable]({{site.baseurl}}/images/troubleshooting/set-variable.png)
 3. Save this trigger.
 4. Create a new trigger that acts only on pull requests.
 5. Under "Advanced Options", find "Build Variables" and add a variable. Name it `GIT_EVENT` and set its value to `pull`.

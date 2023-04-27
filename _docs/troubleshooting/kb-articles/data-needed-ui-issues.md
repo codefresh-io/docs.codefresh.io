@@ -37,16 +37,16 @@ Here are instructions on how to capture a HAR file for various browsers:
 #### Chromium-based
 
 1. Open Chrome, in the top right, select the **vertical "Meatball" menu** -> **More tools** -> **Developer tools**
-    ![chromium image 0](/images/troubleshooting/data-needed-00.png)
+    ![chromium image 0]({{site.baseurl}}/images/troubleshooting/data-needed-00.png)
 2. Click the **Network** tab
-    ![chromium image 1](/images/troubleshooting/data-needed-01.png)
+    ![chromium image 1]({{site.baseurl}}/images/troubleshooting/data-needed-01.png)
 3. If the " **Record** " button is not red, go ahead and click this button.
-    ![chromium image 2](/images/troubleshooting/data-needed-02.png)
+    ![chromium image 2]({{site.baseurl}}/images/troubleshooting/data-needed-02.png)
 4. You are now ready to begin capture. Please navigate to the URL where you are facing the issue and attempt to reproduce the issue. You should now see network requests being populated in your developer tools. Here is an example:
-    ![chromium image 3](/images/troubleshooting/data-needed-03.png)
+    ![chromium image 3]({{site.baseurl}}/images/troubleshooting/data-needed-03.png)
 5. Once you have reproduced the issue, you can stop the capture by pressing the "Record" button again.
 6. Click the "Export HAR..." button, then download the HAR file.
-    ![chromium image 4](/images/troubleshooting/data-needed-04.png)
+    ![chromium image 4]({{site.baseurl}}/images/troubleshooting/data-needed-04.png)
    * Tip: A suggested naming scheme is to use: _< ZD-Case-ID>_< YYYY-MM-DD>_< HH-mm-ss>_
 7. Upload the HAR file to your support case.
    * Make sure to read the [important notes](#important) mentioned above.
@@ -54,13 +54,13 @@ Here are instructions on how to capture a HAR file for various browsers:
 #### Safari
 
 1. Open Safari, in the **Menu Bar,** go to **Develop** -> **Show Web Inspector.**
-    ![safari image 1](/images/troubleshooting/data-needed-05.png)
+    ![safari image 1]({{site.baseurl}}/images/troubleshooting/data-needed-05.png)
 2. Navigate to the **Network** tab.
-    ![safari image 2](/images/troubleshooting/data-needed-06.png)
+    ![safari image 2]({{site.baseurl}}/images/troubleshooting/data-needed-06.png)
 3. You are now ready to begin capture. Please navigate to the URL where you are facing the issue and attempt to reproduce the issue. You should now see network requests being populated in your developer tools. Here is an example:
-    ![safari image 3](/images/troubleshooting/data-needed-07.png)
+    ![safari image 3]({{site.baseurl}}/images/troubleshooting/data-needed-07.png)
 4. Once you have finished reproducing the issue, click the "Export" button to download the HAR file.
-    ![safari image 4](/images/troubleshooting/data-needed-08.png)
+    ![safari image 4]({{site.baseurl}}/images/troubleshooting/data-needed-08.png)
    * Tip: A suggested naming scheme is to use: _< ZD-Case-ID>_< YYYY-MM-DD>_< HH-mm-ss>_
 5. Upload the HAR file to your support case.
    * Make sure to read the [important notes](#important) mentioned above.
@@ -68,14 +68,14 @@ Here are instructions on how to capture a HAR file for various browsers:
 #### Firefox
 
 1. Open Firefox, in the top right, select the **vertical "Meatball" menu** -> **More tools** -> **Web Developer Tools**.
-    ![firefox image 1](/images/troubleshooting/data-needed-09.png)
-    ![firefox image 2](/images/troubleshooting/data-needed-10.png)
+    ![firefox image 1]({{site.baseurl}}/images/troubleshooting/data-needed-09.png)
+    ![firefox image 2]({{site.baseurl}}/images/troubleshooting/data-needed-10.png)
 2. Click on the **Network** tab.
-    ![firefox image 3](/images/troubleshooting/data-needed-11.png)
+    ![firefox image 3]({{site.baseurl}}/images/troubleshooting/data-needed-11.png)
 3. You are now ready to begin capture. Please navigate to the URL where you are facing the issue and attempt to reproduce the issue. You should now see network requests being populated in your developer tools. Here is an example:
-    ![firefox image 4](/images/troubleshooting/data-needed-12.png)
+    ![firefox image 4]({{site.baseurl}}/images/troubleshooting/data-needed-12.png)
 4. Click the " **Cog Wheel** " located in the top-right of the Web Developer Tools window -> **Save All as HAR!**
-    ![firefox image 5](/images/troubleshooting/data-needed-13.png)
+    ![firefox image 5]({{site.baseurl}}/images/troubleshooting/data-needed-13.png)
     * Tip: A suggested naming scheme is to use: _< ZD-Case-ID>_< YYYY-MM-DD>_< HH-mm-ss>_
 5. Upload the HAR file to your support case.
     * Make sure to read the [important notes](#important) mentioned above.

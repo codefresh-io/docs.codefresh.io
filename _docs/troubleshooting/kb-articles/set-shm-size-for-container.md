@@ -69,7 +69,7 @@ steps:
 
 You can exec into dind pod to verify changes
 
-![shm-size in freestyle step](/images/troubleshooting/shm-size-freestyle.png)
+![shm-size in freestyle step]({{site.baseurl}}/images/troubleshooting/shm-size-freestyle.png)
 
 #### **Service Containers**
 
@@ -93,4 +93,4 @@ steps:
 
 You can exec into dind pod to verify changes
 
-![shm-size in service container](/images/troubleshooting/shm-size-service-container.png)
+![shm-size in service container]({{site.baseurl}}/images/troubleshooting/shm-size-service-container.png)

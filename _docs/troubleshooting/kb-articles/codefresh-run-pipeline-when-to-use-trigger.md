@@ -19,7 +19,7 @@ Determining which options and flags to use when using the Codefresh Run Pipeline
 
 When your workflow is configured like this:
 
-![CLI Configuration Example](/images/troubleshooting/cli-codefresh-run-when-to-use-t_image-01.png)
+![CLI Configuration Example]({{site.baseurl}}/images/troubleshooting/cli-codefresh-run-when-to-use-t_image-01.png)
 
 You want to run this pipeline from CLI, you have to provide both the branch name (-b) as well as the trigger name (-t). Without a trigger specified, Codefresh does not know from which branch it should start the build.
 
