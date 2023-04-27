@@ -14,7 +14,7 @@ Application creation and deployment is one part of the continuous deployment/del
 * [Synchronize applications](#manually-synchronize-an-application)   
   Sync applications on-demand by manually applying sync options or selecting the resources to sync.
 
-* [Rollback applications](#rollback-gitops-applications) 
+* [Rollback applications](#rollback-gitops-applications)   
   Rollback an application to a previous deployment version.
 
 
@@ -305,7 +305,6 @@ max-width="70%"
 %}
 
 Once completed, the application's statuses are updated.  
-The Last Sync Result is `out-of-sync` as the sync is not to the most recent Git revision.
 
   {% include
 image.html
