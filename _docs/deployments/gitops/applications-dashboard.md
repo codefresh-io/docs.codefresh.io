@@ -281,7 +281,8 @@ caption="Rollback progressing in deployment record"
 max-width="70%"
 %}
 
-Once completed, the application's statuses are updated.
+Once completed, the application's statuses are updated.  
+The Last Sync Result is `out-of-sync` as the sync is not to the most recent Git revision.
 
   {% include
 image.html
