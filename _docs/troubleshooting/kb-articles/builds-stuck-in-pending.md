@@ -24,10 +24,10 @@ One or a number of builds are stuck in pending state.
 * You can find this under `Account Settings` -> `Billing`.
   * If you have enough, ensure that you have set the appropriate runtime size for your pipeline to match your plan. These can be found under your Pipeline settings.
     * `Pipeline -> Settings -> Runtime`
-      ![Pipeline size](/images/troubleshooting/pipeline-size.png)
+      ![Pipeline size]({{site.baseurl}}/images/troubleshooting/pipeline-size.png)
 * Ensure you do not have a limit on concurrent trigger/pipeline builds.
   * You can find this under `Pipeline -> Settings -> Policies`
-    ![Pipeline Concurrencies](/images/troubleshooting/policies-concurrencies.png)
+    ![Pipeline Concurrencies]({{site.baseurl}}/images/troubleshooting/policies-concurrencies.png)
 * Finally, check the earliest build stuck in pending.
 * If it is terminated or stopped, attempt to restart it.
 * If it is stuck in pending, or otherwise cannot be restarted, please reach out to our support team with details.
