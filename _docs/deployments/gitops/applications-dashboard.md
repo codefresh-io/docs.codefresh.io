@@ -506,6 +506,7 @@ max-width="30%"
 %}
 
 You can:  
+* [Rollback applications to previous deployments](#rollback-gitops-applications)
 * [Monitor CI details by deployments](#monitor-ci-details-by-deployment) 
 <!--* [Monitor updated resources by deployment](#monitor-updated-resources-by-deployment)  -->
 * [Monitor rollouts by deployment](#monitor-rollouts-by-deployment)
@@ -572,7 +573,6 @@ max-width="80%"
 1. Select the application to rollback and then click the **Timeline** tab.
 1. In the Application Header, verify that Auto-sync is `OFF` for the application.
 1. Mouse over the deployment version to rollback to. The Rollback option is enabled. 
-1. To start, click **Rollback**.
 
   {% include
 image.html
@@ -584,9 +584,33 @@ caption="Rollback application in Timeline tab"
 max-width="70%"
 %}
 
-  The application's sync status changes to `out-of-sync`
+{:start="5"}
+1. To start, click **Rollback** and confirm.
+  * The 'Rollout process started' notification is displayed.
+  * The application's Health status changes to `Progressing` and the Sync status changes to `out-of-sync`.
+  *  A deployment record is created for the rollout with `Progressing`.
 
+  {% include
+image.html
+lightbox="true"
+file="/images/applications/app-rollback-progressing.png"
+url="/images/applications/app-rollback-progressing.png"
+alt="Rollback progressing in deployment record"
+caption="Rollback progressing in deployment record"
+max-width="70%"
+%}
 
+Once completed, the application's statuses are updated.
+
+  {% include
+image.html
+lightbox="true"
+file="/images/applications/app-rollback-completed.png"
+url="/images/applications/app-rollback-completed.png"
+alt="Rollback completed for application"
+caption="Rollback completed for application"
+max-width="70%"
+%}
 
 ### Monitor CI details by deployment
 
