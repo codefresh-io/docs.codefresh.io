@@ -223,7 +223,7 @@ For example, if you made changes to `api` resources or `audit` resources, type `
 {:/}
 
 ## Rollback GitOps applications
-Rollback to a previously deployed version of active GitOps applications. You may want to rollback a newly deployed version due to errors, or applications that are out-of-sync.  
+Rollback to a previously deployed version of active GitOps applications. You may want to rollback a newly deployed version due to errors in your code or misconfigurations, etc.  
 
 ### Prerequisites for rollback
 
@@ -247,6 +247,12 @@ caption="Auto-sync status in Application Header"
 max-width="80%"
 %}
 
+* **Deployment version for rollback older than history limit**  
+  By default, you can rollback to any the previous ten deployments (same as Argo CD). 
+  If you try to rollback to a deployment older than ten of the most recent deployments, the Rollback option is disabled with a tooltip, that the 'Release is not in history'.
+
+  >TIP:  
+  >To configure a different number, edit the application manifest and add `RevisionHistoryLimit` set to the number of previous deployments you need in the `spec` section.
  
 
 * **Deleted version of application**  
@@ -263,12 +269,7 @@ caption="Rollback disabled for deleted version of application"
 max-width="80%"
 %}
 
-* **Deployment version older than history limit**  
-  By default, you can rollback to any the previous ten deployments (same as Argo CD). 
-  If you try to rollback to a deployment older than ten of the most recent deployments, the Rollback option is disabled with a tooltip, that the 'Release is not in history'.
 
-  >TIP:  
-  >To configure a different number, edit the application manifest and add `RevisionHistoryLimit` set to the number of previous deployments you need in the `spec` section.
 
 
 ### How to rollback an application 
