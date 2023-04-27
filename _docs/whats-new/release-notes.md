@@ -5,13 +5,172 @@ group: whats-new
 toc: true
 ---
 
-Welcome to our unified Release Notes, including Codefresh pipelines and Codefresh GitOps!
+Welcome to our unified Release Notes, including Codefresh pipelines and Codefresh GitOps! If you missed online announcements, this is where you can find the new features, enhancements, and bug fixes.
+
+## April 2023
+
+### Features & Enhancements
+
+#### Pipelines: Annotations for builds
+We are happy to introduce two cool features to annotations for pipeline builds! It’s now easier than ever to find the builds you’re looking for, and customize your build views.
+
+First, you can configure an annotation as the build's _display_ annotation, from among the available annotations. Why would you do this? When configured, the annotation is displayed for the build in the Builds page, making it easy to see which builds share common properties like target environments.  
+
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-apr23-builds-list-with-display-annotation.png"
+ url="/images/whats-new/rel-notes-apr23-builds-list-with-display-annotation.png"
+ alt="Builds page with `display` annotations"
+ caption="Builds page with `display` annotations"
+ max-width="50%"
+%}
+
+For details, see [Configure display annotation for builds]({{site.baseurl}}/docs/pipelines/annotations/#configure-annotation-to-display-for-build).
+
+Second, as an obvious extension, you can filter builds by annotations. Filter builds by any annotation added for the build, whether it’s a display annotation or any other annotation with the Annotation filter in the Builds page.   
+For details, see [Applying filters to build views]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#applying-filters-on-the-build-view).
+
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-apr23-builds-annotation-filter.png"
+ url="/images/whats-new/rel-notes-apr23-builds-annotation-filter.png"
+ alt="Annotation filter for builds"
+ caption="Annotation filter for builds"
+ max-width="50%"
+%}
+ 
+Here's an example of builds filtered by `display` annotations.
+
+
+
+#### Pipelines: Project-based RBAC
+
+We are excited to announce project-level Attribute-Based Access Control (ABAC) in this month's release. ABAC for projects saves a lot of effort without compromising security as now you can control access to the project entity and to pipeline entities based on project tags.
+
+How can you do this?
+First by creating projects and by assigning tags to projects and then creating rules 
+
+* Project access to teams with project-tags
+  Now you can decide which teams have access to which projects, and at which level. By adding tags to projects, you can define rules for different teams that can create, update, delete, and view projects. For example, you may decide that the DevOps team has full access to all projects with all tags, but the Users team has view-only access to projects with `Shared` tag.
+  Also read the next feature description, [Pipelines: Auto-create projects for teams](#pipelines-auto-create-projects-for-teams).
+
+* Pipeline access to teams with project-tags
+  Create rules for pipeline entities by project tags instead of pipeline tags. Define access to pipelines on the basis of the projects that house the pipelines. Instead of tagging each pipeline, you add tags to the project, and define rules that determine the teams who can access the pipelines which share the project tags. 
+
+  Builds now honor the permissions of the pipelines. If you don't have access to the pipeline, you will not have access to its builds.
+  This also means fewer email notifications, as these are only sent for builds you have access to. 
+
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-apr23-project-tags-devops.png"
+ url="/images/whats-new/rel-notes-apr23-project-tags-devops.png"
+ alt="Example of rules for pipelines with project tags"
+ caption="Example of rules for pipelines with project tags "
+ max-width="50%"
+%}
+
+For details, see [ABAC for entities with tags and rules]({{site.baseurl}}/docs/administration/account-user-management/access-control/#abac-for-entities-with-tags-and-rules).
+
+
+#### Pipelines: Auto-create projects for teams
+Simplify access control and setup with `Auto-create projects for teams`. Enabled by default, this global pipeline setting, automatically creates projects whenever you create teams in your account. 
+
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-apr23-auto-create-projects-setting.png"
+ url="/images/whats-new/rel-notes-apr23-auto-create-projects-setting.png"
+ alt="Auto-create projects for teams in Pipeline settings"
+ caption="Auto-create projects for teams in Pipeline settings"
+ max-width="50%"
+%}
+
+In addition to automatically creating a project for the team, it also automatically creates a Project rule, and a Pipeline rule for the same team, with basic permissions.
+For details, see [Auto-create projects for teams]({{site.baseurl}/docs/pipelines/configuration/pipeline-settings/#auto-create-projects-for-teams).
+
+#### Pipelines: Multi-platform builds in Codefresh
+Build and push Docker images, including multi-platform images in Codefresh with BuildX. 
+
+We have extended the capabilities of our `build` step with the new `buildx` field. Leverage Docker’s support for multi-architecture/multi-platform support right here in Codefresh. Build an image once and reuse it on multiple architectures/platforms.
+We also support custom `buildx` configurations with QEMU and Builder, giving you all the options you may need.  
+
+For details, see [Build step field descriptions]({{site.baseurl}}/docs/pipelines/steps/build/#fields). 
+
+#### Pipelines: (On-premises) Custom root CA for services
+On-premises installations can now configure custom Root CA for volumes and containers.  
+Reference the K8s secret containing the root CA in `config.yaml`. Define the volume or volumes with the K8s secret objects, and then the volume mounts for the container.  
+
+For details, see [Configure custom Root CA for volumes and containers]({{site.baseurl}}/docs/installation/codefresh-on-prem/#configure-custom-root-ca-for-volumes-and-containers).
+
+
+
+#### GitOps: Rollback GitOps applications
+We now have the Rollback feature for GitOps applications! With just a click of a button, you can rollback any new or active version of an application directly from the GitOps Apps dashboard in Codefresh. 
+
+Codefresh allows you to rollback to any of the ten previous deployment versions, just like Argo CD. 
+
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-apr23-app-rollback.png"
+ url="/images/whats-new/rel-notes-apr23-app-rollback.png"
+ alt="Rollback for GitOps applications"
+ caption="Rollback for GitOps applications"
+ max-width="50%"
+%}
+
+For details, see [Rollback GitOps applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/#rollback-applications).
+
+#### GitOps: Static integration option for Amazon ECR
+We extended the integration options for Amazon Elastic Container Registry (ECR) in GitOps to include static integrations with Access keys. 
+
+You can now set up the integration with Amazon ECR using an access key and secret (static integration). Unlike IAM roles, access keys are long-term credentials, without a default expiration date.
+
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-apr23-ecr-access-key-int.png"
+ url="/images/whats-new/rel-notes-apr23-ecr-access-key-int.png"
+ alt="Access Key (static) integration for GitOps Amazon ECR"
+ caption="Access Key (static) integration for GitOps Amazon ECR"
+ max-width="50%"
+%}
+
+For details, see [GitOps Amazon ECR integration]({{site.baseurl}}/docs/gitops-integrations/container-registries/amazon-ecr).
+
+### Bug fixes
+
+* Hosted Runtime missing in Codefresh UI.
+
+**Pipelines**
+* Clicking Add Shared Configuration for Variables from the Workflows tab does not open panel.
+* Memory usage banner warning not synced with actual usage of build.
+* Undefined module causes broken `cfstep-helmfile:2.17.0-0.135.0`. 
+* Generating an API token from  Pipeline > Settings > Build Runtime results  `Failed to create api token` error.
+* (On-premises only) Modified files option for Git triggers not available for Bitbucket Cloud.
+* Encrypted variable converted to decrypted version when modifying for a manual trigger. 
+* (On-premises only) Incorrect start time for builds in offline logs.??
+* Build fails with validation errors when creating pipeline with step dependencies using Terraform.
+* `Error: failed to register layer: file exists on Init stage` in pipeline initialization phase.
+
+**GitOps**
+* Sync issues for Hosted Runtime with CSDP-APP_PROXY.
+* Pipeline builds frozen in initialization phase.
+* "Invalid Git runtime token" notification reappears even when Runtime has a valid token.
+* Incorrect `Insecure mode` warning when a node is down.
+* New rollout not reflected in Codefresh UI when the same manifest has two (new and old) rollout occurrences.
+* Inconsistent formats for date and time displays in Codefresh UI.
+**
+* Setting up API permissions for Azure SSO shows `...Misconfigured application...` error.
 
 ## March 2023
 
 ### Features & Enhancements
 
-#### CI/CD: Selective restart for failed build steps
+#### Pipelines: Selective restart for failed build steps
 We added the **Restart from a failed step** as an option to the pipeline's Policy settings, which you can enable/disable per pipeline. 
 {% include
  image.html
@@ -34,7 +193,7 @@ For details, see [Policy settings for pipelines]({{site.baseurl}}/docs/pipelines
 
 <br>
 
-#### CI/CD: Datadog integration enhancements
+#### Pipelines: Datadog integration enhancements
 We enhanced our integration with Datadog to report additional information from Codefresh pipelines in Datadog. 
 <br> 
 The new information should make it even easier to monitor and analyze Codefresh pipelines in Datadog: 
@@ -60,7 +219,7 @@ See [Datadog pipeline integration]({{site.baseurl}}/docs/integrations/datadog/).
 
 
 
-#### CI/CD: Override runtime environment for GitOps pipeline integrations
+#### Pipelines: Override runtime environment for GitOps pipeline integrations
 A GitOps pipeline integration uses the default runtime environment. After creating a GitOps pipeline integration, you can now override its runtime environment.
 Codefresh uses the runtime environment for system actions such as Rollback.
 
@@ -135,7 +294,7 @@ See [Monitoring GitOps applications]({{site.baseurl}}/docs/deployments/gitops/ap
 
 ### Bug fixes
 
-#### CI/CD  
+#### Pipelines  
 * Triggers for inactive webhooks return 200.
 * In full-screen view mode, the pipeline list panel on the left overlaps the pipeline YAML.
 * Unable to override image used for `cf-runtime-lv-monitor Daemonset` in the Runner Helm chart. 
@@ -169,7 +328,7 @@ See [Monitoring GitOps applications]({{site.baseurl}}/docs/deployments/gitops/ap
 
 ### Features & Enhancements
 
-#### CI/CD: Slack integration notification for builds terminated by system
+#### Pipelines: Slack integration notification for builds terminated by system
 Notifications for failed builds are equally, if not more important, than those for successful builds. Getting notifications for system-terminated builds is crucial, as it indicates that the build was stopped because of pipeline policy and may require immediate attention. You can quickly investigate the issue and take corrective action if necessary.
 
 
@@ -199,7 +358,7 @@ Here's an example of the notification you would receive in Slack.
 
 <br>
 
-#### CI/CD: Multiple Helm contexts for pipelines
+#### Pipelines: Multiple Helm contexts for pipelines
 With support for multiple Helm registry contexts in the same pipeline, dependencies in any of the imported Helm registry contexts in the Helm chart are automatically authenticated and added.
 For the Helm `install` and `push` actions, you can select the primary Helm registry context for the command.
 For details, see [Import Helm configurations into your pipeline definition]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/#step-4-optional-import-helm-configurations-into-your-pipeline-definition) and [Action modes]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/#helm-step-action-modes).
@@ -207,7 +366,7 @@ For details, see [Import Helm configurations into your pipeline definition]({{si
 
 <br>
 
-#### CI/CD: Multiple cache sources for pipeline builds
+#### Pipelines: Multiple cache sources for pipeline builds
 
 Docker has support for specifying external cache sources for builds. We added the `cache-from` argument to our `build` step allowing you to specify additional cache sources and speed up the build process. Multiple cache sources are useful when your primary cache source is unavailable or slow.
 
@@ -236,7 +395,7 @@ For details, see [`cache_from` in `build` step fields]({{site.baseurl}}/docs/pip
 
 <br>
 
-#### CI/CD: Control thresholds for memory usage warning banner
+#### Pipelines: Control thresholds for memory usage warning banner
 Remember the banner that alerted you whenever the memory usage for a pipeline build exceeded 70 or 90%?
 You can now decide the usage threshold at which to display the banner. Increasing the threshold helps avoid premature warnings for pipelines that do not consume a lot of memory, while decreasing it for resource-intensive pipelines helps avoid build failures. 
 
@@ -259,7 +418,7 @@ See [Memory usage warning for pipeline builds]({{site.baseurl}}/docs/pipelines/c
 
 <br>
 
-#### CI/CD: New flow for Cloud Builds for pipelines
+#### Pipelines: New flow for Cloud Builds for pipelines
 Previously, all Codefresh accounts had access to a SaaS runtime environment to run pipelines. However, this is no longer the case. Account administrators can request SaaS runtime environments by clicking **Enable Cloud Builds** in Codefresh. This action triggers an email request to Codefresh, and you should receive a response within 24 hours.
 
 
@@ -275,7 +434,7 @@ For details, see [Argo CD Releases](https://github.com/argoproj/argo-cd/releases
 #### Usability enhancements
 Saves time and ease of use in interactions with Codefresh.  
 
-* **CI/CD: Prompt to switch accounts**  
+* **Pipelines: Prompt to switch accounts**  
   To avoid confusion, when you are signed into more than one Codefresh account, you are prompted to either switch to the active account or return to the previous one. 
 
 {% include
@@ -288,7 +447,7 @@ Saves time and ease of use in interactions with Codefresh.
  max-width="50%"
 %}
 
-* **CI/CD: Case-insensitive search for Pipelines and Pipeline List view**
+* **Pipelines: Case-insensitive search for Pipelines and Pipeline List view**
   Search is now easier as queries are case-insensitive. 
 
 * **GitOps: Terminate Sync now in application header**
@@ -313,7 +472,7 @@ See [Application header]({{site.baseurl}}/docs/deployments/gitops/applications-d
 
 ### Bug fixes
 
-#### CI/CD
+#### Pipelines
 - Logs not generated and slow build execution.
 - `CF_HELM_SET` variable  printed as [object Object].
 - Variables added via pipeline hooks not rendered for build annotations.
