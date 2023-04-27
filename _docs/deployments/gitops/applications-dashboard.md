@@ -24,7 +24,7 @@ max-width="60%"
 Identify applications with [health and sync errors](#identify-applications-with-warningserrors), and then select an application to drill down into its resources, deployments, and services:  
 * [Get status from application header](#get-status-from-application-header)
 * [View deployment and configuration info for selected application](#view-deployment-and-configuration-info-for-selected-application)
-* 
+* [Rollback applications to previous deployments](#rollback-gitops-applications)
 * [Monitor resources for selected application](#monitor-resources-for-selected-application)
 * [Monitor deployments for selected application](#monitor-deployments-for-selected-application)
 * [Monitor services for selected application](#monitor-services-for-selected-application)
@@ -200,6 +200,98 @@ The Quick View includes the following tabs:
 
 
 
+## Rollback GitOps applications
+Rollback to a previously deployed version of active GitOps applications. You may want to rollback a newly deployed version due to errors, or applications that are out-of-sync.  
+
+### Prerequisites for rollback
+
+Rollback can be disabled for the following reasons:
+
+* **Auto-sync ON for applications**  
+  If auto-sync is `ON`, the default behavior for GitOps is to sync the cluster with the desired state in Git. The Rollback button is disabled with a tooltip.
+
+
+  For application rollback, auto-sync must be `OFF`. The quickest and easiest way to identify auto-sync status is through the Application Header.  
+  To change the setting, [edit]({{site.baseurl}}/docs/deployments/gitops/manage-application/#edit-application-definitions) the application's [General configuration settings]({{site.baseurl}}/docs/deployments/gitops/create-application/#application-general-configuration-settings).
+
+
+  {% include
+image.html
+lightbox="true"
+file="/images/applications/app-rollback-autosync-app-header.png"
+url="/images/applications/app-rollback-autosync-app-header.png"
+alt="Auto-sync status in Application Header"
+caption="Auto-sync status in Application Header"
+max-width="80%"
+%}
+
+ 
+
+* **Deleted version of application**  
+  You can activate rollback only for _new_ and currently active application versions that are deployed.  
+  If you deleted an application and then recreated it with the same name, you cannot rollback to the deleted version or to any version prior to the deletion. The Rollback button is disabled with a tooltip.
+  
+  {% include
+image.html
+lightbox="true"
+file="/images/applications/app-rollback-disabled.png"
+url="/images/applications/app-rollback-disabled.png"
+alt="Rollback disabled for deleted version of application"
+caption="Rollback disabled for deleted version of application"
+max-width="80%"
+%}
+
+* **Deployment version older than history limit**  
+  By default, you can rollback to any the previous ten deployments (same as Argo CD). 
+  If you try to rollback to a deployment older than ten of the most recent deployments, the Rollback option is disabled with a tooltip, that the 'Release is not in history'.
+
+  >TIP:  
+  >To configure a different number, edit the application manifest and add `RevisionHistoryLimit` set to the number of previous deployments you need in the `spec` section.
+
+
+### How to rollback an application 
+1. In the Codefresh UI, from Ops in the sidebar, select **GitOps Apps**. 
+1. Select the application to rollback and then click the **Timeline** tab.
+1. In the Application Header, verify that Auto-sync is `OFF` for the application.
+1. Mouse over the deployment version to rollback to view the Rollback option. 
+
+  {% include
+image.html
+lightbox="true"
+file="/images/applications/app-rollback-enabled.png"
+url="/images/applications/app-rollback-enabled.png"
+alt="Rollback application in Timeline tab"
+caption="Rollback application in Timeline tab"
+max-width="70%"
+%}
+
+{:start="5"}
+1. To start, click **Rollback** and confirm.
+  * The 'Rollout process started' notification is displayed.
+  * The application's Health status changes to `Progressing` and the Sync status changes to `out-of-sync`.
+  *  A deployment record is created for the rollout with `Progressing`.
+
+  {% include
+image.html
+lightbox="true"
+file="/images/applications/app-rollback-progressing.png"
+url="/images/applications/app-rollback-progressing.png"
+alt="Rollback progressing in deployment record"
+caption="Rollback progressing in deployment record"
+max-width="70%"
+%}
+
+Once completed, the application's statuses are updated.
+
+  {% include
+image.html
+lightbox="true"
+file="/images/applications/app-rollback-completed.png"
+url="/images/applications/app-rollback-completed.png"
+alt="Rollback completed for application"
+caption="Rollback completed for application"
+max-width="70%"
+%}
 
 
 ## Monitor resources for selected application
@@ -506,7 +598,6 @@ max-width="30%"
 %}
 
 You can:  
-* [Rollback applications to previous deployments](#rollback-gitops-applications)
 * [Monitor CI details by deployments](#monitor-ci-details-by-deployment) 
 <!--* [Monitor updated resources by deployment](#monitor-updated-resources-by-deployment)  -->
 * [Monitor rollouts by deployment](#monitor-rollouts-by-deployment)
@@ -527,90 +618,6 @@ caption="GitOps Apps dashboard: Deployment chart"
 max-width="60%"
 %}
 
-### Rollback GitOps applications
-Rollback to a previously deployed version of active GitOps applications. You may want to rollback a newly deployed version due to errors, or out-of-sync applications.  
-
-You can rollback to up to the previous ten releases (same as Argo CD).
-
-
-
-**Prerequisites**  
-
-* New versions of applications  
-  You can activate rollback only for _new_ and currently active application versions that are deployed.  
-  If you deleted an application and then recreated it with the same name, you cannot rollback to the deleted version or to a version prior to the deletion. The Rollback option is disabled with a tooltip.
-  
-  {% include
-image.html
-lightbox="true"
-file="/images/applications/app-rollback-disabled.png"
-url="/images/applications/app-rollback-disabled.png"
-alt="Rollback disabled for deleted version of application"
-caption="Rollback disabled for deleted version of application"
-max-width="80%"
-%}
-
-
-* Auto-sync for applications  
-  If auto-sync is `ON`, the default behavior for GitOps is to sync the cluster with the desired state in Git. 
-  For application rollback, auto-sync must be `OFF`. The quickest and easiest way to identify auto-sync status is through the Application Header. 
-
-
-  {% include
-image.html
-lightbox="true"
-file="/images/applications/app-rollback-autosync-app-header.png"
-url="/images/applications/app-rollback-autosync-app-header.png"
-alt="Auto-sync status in Application Header"
-caption="Auto-sync status in Application Header"
-max-width="80%"
-%}
-
-  To change the setting, [edit]({{site.baseurl}}/docs/deployments/gitops/manage-application/#edit-application-definitions) the application's [General configuration settings]({{site.baseurl}}/docs/deployments/gitops/create-application/#application-general-configuration-settings).
-
-**How to**  
-1. In the Codefresh UI, from Ops in the sidebar, select **GitOps Apps**. 
-1. Select the application to rollback and then click the **Timeline** tab.
-1. In the Application Header, verify that Auto-sync is `OFF` for the application.
-1. Mouse over the deployment version to rollback to. The Rollback option is enabled. 
-
-  {% include
-image.html
-lightbox="true"
-file="/images/applications/app-rollback-enabled.png"
-url="/images/applications/app-rollback-enabled.png"
-alt="Rollback application in Timeline tab"
-caption="Rollback application in Timeline tab"
-max-width="70%"
-%}
-
-{:start="5"}
-1. To start, click **Rollback** and confirm.
-  * The 'Rollout process started' notification is displayed.
-  * The application's Health status changes to `Progressing` and the Sync status changes to `out-of-sync`.
-  *  A deployment record is created for the rollout with `Progressing`.
-
-  {% include
-image.html
-lightbox="true"
-file="/images/applications/app-rollback-progressing.png"
-url="/images/applications/app-rollback-progressing.png"
-alt="Rollback progressing in deployment record"
-caption="Rollback progressing in deployment record"
-max-width="70%"
-%}
-
-Once completed, the application's statuses are updated.
-
-  {% include
-image.html
-lightbox="true"
-file="/images/applications/app-rollback-completed.png"
-url="/images/applications/app-rollback-completed.png"
-alt="Rollback completed for application"
-caption="Rollback completed for application"
-max-width="70%"
-%}
 
 ### Monitor CI details by deployment
 
