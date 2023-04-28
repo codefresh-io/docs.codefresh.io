@@ -14,7 +14,6 @@ support-reviewed: 2023-04-18 LG
 
 Following error in the logs of the build step:
 
-  `Text`
 {% highlight text %}
 Step 3/6 : COPY /output /app
 lstat output: no such file or directory
@@ -42,7 +41,7 @@ lightbox="true"
 file="/images/troubleshooting/no_such_file_directory.png"
 url="/images/troubleshooting/no_such_file_directory.png"
 alt="codefresh_no_such_file_directory.png"
-max-width="40%"
+max-width="70%"
 %}
 
 {{site.data.callout.callout_info}}
