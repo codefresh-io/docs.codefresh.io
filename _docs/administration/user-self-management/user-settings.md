@@ -27,7 +27,7 @@ As a Codefresh user, you can manage several settings in your personal account, i
 Configure the email notifications you want to receive for builds based on the build status: only successful, only failed, or for both successful and failed builds.  
 
 > By default, email notifications for builds are disabled for _all users_.  
-  When you enable notifications, remember that you will receive notifications only for the builds that you have permissions to access. If you don’t have access to the pipeline, you will not have access to its builds.
+  When you enable notifications, remember that you will receive notifications only for the builds that you have permissions to access. If you don’t have access to a pipeline, you will not have access also to its builds.
 
 
 * In **Notifications**, define the email address and select the notifications:    
