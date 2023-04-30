@@ -14,12 +14,15 @@ Application creation and deployment is one part of the continuous deployment/del
 * [Synchronize applications](#manually-synchronize-an-application)   
   Sync applications on-demand by manually applying sync options or selecting the resources to sync.
 
-* [Delete applications](#delete-an-application)  
-  Delete unused or legacy applications to avoid clutter and remove unnecessary resources.
+* [Rollback applications](#rollback-gitops-applications)   
+  Rollback an application to a previous deployment version.
 
 
 * [Manage rollouts for deployments](#manage-rollouts-for-deployments)  
   Control ongoing rollouts by resuming indefinitely paused steps, promoting rollouts, aborting, restarting and retrying rollouts.  
+
+* [Delete applications](#delete-an-application)  
+  Delete unused or legacy applications to avoid clutter and remove unnecessary resources.
 
 
 
@@ -219,41 +222,99 @@ For example, if you made changes to `api` resources or `audit` resources, type `
 <br><br>
 {:/}
 
-## Delete an application
-Delete an application from Codefresh. Deleting an application deletes the manifest from the Git repository, and then from the cluster where it is deployed. When deleted from the cluster, the application is removed from the GitOps Apps dashboard in Codefresh.
+## Rollback GitOps applications
+Rollback to a previously deployed version of active GitOps applications. You may want to rollback a newly deployed version due to errors in your code or misconfigurations, etc.  
+
+### Prerequisites for rollback
+
+Rollback can be disabled for the following reasons:
+
+* **Auto-sync ON for applications**  
+  If auto-sync is `ON`, the default behavior for GitOps is to sync the cluster with the desired state in Git. The Rollback button is disabled with a tooltip.
+
+
+  For application rollback, auto-sync must be `OFF`. The quickest and easiest way to identify auto-sync status is through the Application Header.  
+  To change the setting, [edit]({{site.baseurl}}/docs/deployments/gitops/manage-application/#edit-application-definitions) the application's [General configuration settings]({{site.baseurl}}/docs/deployments/gitops/create-application/#application-general-configuration-settings).
+
+
+  {% include
+image.html
+lightbox="true"
+file="/images/applications/app-rollback-autosync-app-header.png"
+url="/images/applications/app-rollback-autosync-app-header.png"
+alt="Auto-sync status in Application Header"
+caption="Auto-sync status in Application Header"
+max-width="80%"
+%}
+
+* **Deployment version for rollback older than history limit**  
+  By default, you can rollback to any the previous ten deployments (same as Argo CD). 
+  If you try to rollback to a deployment older than ten of the most recent deployments, the Rollback option is disabled with a tooltip, that the 'Release is not in history'.
+
+  >TIP:  
+  >To configure a different number, edit the application manifest and add `RevisionHistoryLimit` set to the number of previous deployments you need in the `spec` section.
  
->**Prune resources** in the application's General settings determines the scope of the delete action.  
-When selected, both the application and its resources are deleted. When cleared, only the application is deleted. For more information, review [Sync settings]({{site.baseurl}}/docs/deployments/gitops/create-application/#sync-settings).  
-Codefresh warns you of the implication of deleting the selected application in the Delete form. 
 
-1. In the Codefresh UI, from Ops in the sidebar, select [GitOps Apps](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
-1. Select the application to delete.
-1. Click the three dots for additional actions, and select **Delete**.
+* **Deleted version of application**  
+  You can activate rollback only for _new_ and currently active application versions that are deployed.  
+  If you deleted an application and then recreated it with the same name, you cannot rollback to the deleted version or to any version prior to the deletion. The Rollback button is disabled with a tooltip.
   
-  {% include 
-   image.html 
-   lightbox="true" 
-   file="/images/applications/app-delete-option.png" 
-   url="/images/applications/app-delete-option.png" 
-   alt="Delete application" 
-   caption="Delete application"
-   max-width="80%" 
-   %} 
+  {% include
+image.html
+lightbox="true"
+file="/images/applications/app-rollback-disabled.png"
+url="/images/applications/app-rollback-disabled.png"
+alt="Rollback disabled for deleted version of application"
+caption="Rollback disabled for deleted version of application"
+max-width="80%"
+%}
 
-  Pay attention to the _impact of the delete action_ for the selected application that Codefresh displays.
 
-   {% include 
-   image.html 
-   lightbox="true" 
-   file="/images/applications/delete-app-prune-affects.png" 
-   url="/images/applications/delete-app-prune-affects.png" 
-   alt="Prune setting impact on deleting application" 
-   caption="Prune setting impact on deleting application"
-   max-width="70%" 
-   %} 
 
-{:start="4"}
-1. To confirm, click **Commit & Delete**.
+
+### How to rollback an application 
+1. In the Codefresh UI, from Ops in the sidebar, select **GitOps Apps**. 
+1. Select the application to rollback and then click the **Timeline** tab.
+1. In the Application Header, verify that Auto-sync is `OFF` for the application.
+1. Mouse over the deployment version to rollback to view the Rollback option. 
+
+  {% include
+image.html
+lightbox="true"
+file="/images/applications/app-rollback-enabled.png"
+url="/images/applications/app-rollback-enabled.png"
+alt="Rollback application in Timeline tab"
+caption="Rollback application in Timeline tab"
+max-width="70%"
+%}
+
+{:start="5"}
+1. To start, click **Rollback** and confirm.
+  * The 'Rollout process started' notification is displayed.
+  * The application's Health status changes to `Progressing` and the Sync status changes to `out-of-sync`.
+  *  A deployment record is created for the rollout with `Progressing`.
+
+  {% include
+image.html
+lightbox="true"
+file="/images/applications/app-rollback-progressing.png"
+url="/images/applications/app-rollback-progressing.png"
+alt="Rollback progressing in deployment record"
+caption="Rollback progressing in deployment record"
+max-width="70%"
+%}
+
+Once completed, the application's statuses are updated.  
+
+  {% include
+image.html
+lightbox="true"
+file="/images/applications/app-rollback-completed.png"
+url="/images/applications/app-rollback-completed.png"
+alt="Rollback completed for application"
+caption="Rollback completed for application"
+max-width="70%"
+%}
 
 ## Manage rollouts for deployments
 Control ongoing rollouts by resuming indefinitely paused steps, promoting rollouts, aborting, restarting and retrying rollouts.  
@@ -364,6 +425,44 @@ The table describes the options for the `Rollout` resource.
 |**Resume**             | Resume a rollout that has been paused. | 
 |**Retry**              | Retry a rollout that has been aborted. Available only when a rollout has been aborted. | 
 |**Skip-current-step**  | Skip executing the current step, and continue with the next step. | 
+
+## Delete an application
+Delete an application from Codefresh. Deleting an application deletes the manifest from the Git repository, and then from the cluster where it is deployed. When deleted from the cluster, the application is removed from the GitOps Apps dashboard in Codefresh.
+ 
+>**Prune resources** in the application's General settings determines the scope of the delete action.  
+When selected, both the application and its resources are deleted. When cleared, only the application is deleted. For more information, review [Sync settings]({{site.baseurl}}/docs/deployments/gitops/create-application/#sync-settings).  
+Codefresh warns you of the implication of deleting the selected application in the Delete form. 
+
+1. In the Codefresh UI, from Ops in the sidebar, select [GitOps Apps](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
+1. Select the application to delete.
+1. Click the three dots for additional actions, and select **Delete**.
+  
+  {% include 
+   image.html 
+   lightbox="true" 
+   file="/images/applications/app-delete-option.png" 
+   url="/images/applications/app-delete-option.png" 
+   alt="Delete application" 
+   caption="Delete application"
+   max-width="80%" 
+   %} 
+
+  Pay attention to the _impact of the delete action_ for the selected application that Codefresh displays.
+
+   {% include 
+   image.html 
+   lightbox="true" 
+   file="/images/applications/delete-app-prune-affects.png" 
+   url="/images/applications/delete-app-prune-affects.png" 
+   alt="Prune setting impact on deleting application" 
+   caption="Prune setting impact on deleting application"
+   max-width="70%" 
+   %} 
+
+{:start="4"}
+1. To confirm, click **Commit & Delete**.
+
+
 
 
 
