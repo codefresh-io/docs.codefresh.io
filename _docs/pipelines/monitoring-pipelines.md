@@ -11,13 +11,14 @@ toc: true
 View activity for Codefresh pipelines in in the **Builds** tab. 
 * Global build view: The default view, displays builds for all pipelines for all projects across your organization.
 * Project build view: Selecting a project displays the builds for the pipelines in the project.
-
-Both views have the same controls and filters.
+ 
+As a user, you can see builds from all pipelines you have access to. If your permissions do not include access to specific pipelines, you will not see builds from those pipelines.  
 
 ## Viewing pipeline status
 
 Each screen contains all builds sorted from the most recent to the oldest. The first time you visit
-the screen there are no filters defined.
+the screen there are no filters defined. To narrow the list, use the filters on the top
+of the screen.
 
 {% include 
 image.html 
@@ -29,8 +30,7 @@ caption="Pipeline activity"
 max-width="80%"
 %}
 
-By default, it shows all builds that is happening in Codefresh. To narrow the list you can use the filters on the top
-of the screen.
+
 
 ### Applying filters on the build view
 

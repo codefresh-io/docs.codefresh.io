@@ -46,7 +46,7 @@ step_name:
   image_name: owner/new-image-name
   tag: develop
   platform: 'linux/arm64'
-    buildx: true
+  buildx: true
   build_arguments:
     - key=value
   cache_from:

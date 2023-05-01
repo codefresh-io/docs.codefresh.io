@@ -5,6 +5,7 @@ group: whats-new
 toc: true
 ---
 
+
 Welcome to our unified Release Notes, including Codefresh pipelines and Codefresh GitOps!  
 If you missed any of our online announcements, you can find the latest features, enhancements, and bug fixes, here in the cumulative Release Notes! 
 
@@ -173,6 +174,7 @@ For details, see [GitOps Amazon ECR integration]({{site.baseurl}}/docs/gitops-in
 * New rollout not reflected in Codefresh UI when the same manifest has two (new and old) rollout occurrences.
 * Inconsistent formats for date and time displays in Codefresh UI.
 * Setting up API permissions for Azure SSO shows `...Misconfigured application...` error.
+
 
 
 
