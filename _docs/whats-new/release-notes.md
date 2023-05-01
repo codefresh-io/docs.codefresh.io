@@ -91,7 +91,7 @@ Simplify access control and setup with `Auto-create projects for teams`. Enabled
 %}
 
 In addition to automatically creating a project for the team, it also automatically creates a Project rule, and a Pipeline rule for the same team, with basic permissions.
-For details, see [Auto-create projects for teams]({{site.baseurl}/docs/pipelines/configuration/pipeline-settings/#auto-create-projects-for-teams).
+For details, see [Auto-create projects for teams]({{site.baseurl}}/docs/pipelines/configuration/pipeline-settings/#auto-create-projects-for-teams).
 
 <br>
 
