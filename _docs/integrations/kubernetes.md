@@ -583,7 +583,7 @@ kubectl create clusterrolebinding default-admin --clusterrole cluster-admin --se
 
 ### Kubernetes cluster - using an external reverse proxy (edge case)
 
-In case you're using an external reverse proxy to manage inbound traffic to your Kubernetes API, please read [this article]({{site.baseurl}}/docs/troubleshooting/kb-articles/verify-cluster-tls-ssl-configuration/) to make sure your certificate setup are managed correctly in order to add your cluster successfully to Codefresh.
+If you are using an external reverse proxy to manage inbound traffic to your Kubernetes API, for correct certificate setup, see [this article]({{site.baseurl}}/docs/troubleshooting/kb-articles/verify-cluster-tls-ssl-configuration/).
 
 ### Multiple CAs in certificate chain
 
