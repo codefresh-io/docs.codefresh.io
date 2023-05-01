@@ -5,7 +5,8 @@ group: whats-new
 toc: true
 ---
 
-Welcome to our unified Release Notes, including Codefresh pipelines and Codefresh GitOps! If you missed online announcements, this is where you can find the new features, enhancements, and bug fixes.
+Welcome to our unified Release Notes, including Codefresh pipelines and Codefresh GitOps!  
+If you missed any of our online announcements, you can find the latest features, enhancements, and bug fixes, here in the cumulative Release Notes! 
 
 ## April 2023
 
