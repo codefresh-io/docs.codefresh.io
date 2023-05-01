@@ -90,7 +90,7 @@
   icon: images/home-icons/guides.png
   url: ''
   links:
-    - title: GitOps Overview dashboard
+    - title: Home dashboard
       localurl: /docs/dashboards/home-dashboard/
     - title: Pipeline Analytics dashboard
       localurl: /docs/dashboards/pipeline-analytics/    

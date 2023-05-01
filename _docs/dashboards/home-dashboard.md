@@ -6,27 +6,25 @@ toc: true
 ---
 
 Get a global picture of performance for GitOps entities, Argo Workflow entites, and pipelines in the Home dashboard. The Home dashboard is displayed when you log in to Codefresh, providing system-wide visualization in real-time or near real-time for all stakeholders. 
+ 
 
-The date range filter which is the   
-
-
-The Home Dashboard  three different dashboards:
+The Home Dashboard includes three different dashboards:
 
 * **GitOps Dashboard**  
-  Get a global overview of GitOps Runtimes, clusters managed by the Runtimes, deployments and applications in the GitOps dashboard. 
+  Displays a global overview of GitOps Runtimes, clusters managed by the Runtimes, deployment history, and most active applications. 
 
 * **Argo Workflows Dashboard**  
-  Get aggregated metrics on Argo Workflows and Delivery Pipelines, and identify trends.
+  Displays aggregated metrics on Argo Workflows and Delivery Pipelines for trend identify trends.
  
  >**TIP**  
   The Argo Workflows dashboard is displayed only if you have enabled pipelines with Argo Workflows for the account. 
   See 
 
 * **Pipelines Dashboard**  
-  View and analyze pipeline performance, identify bottlenecks, and trends for your CI pipelines in the Pipelines dashboard.   
-  The Pipelines dashboard displays aggregated pipeline data, updated at 30-minute intervals. All stakeholders can get quick visibility into cross-project pipeline metrics.
+  Displays aggregated pipeline data for performance analysis, identification of bottlenecks, and trends.  
 
-Set the date range as a global filter to define the scope of the data in the Home dashboard. 
+
+
  
 
   {% include 
@@ -40,7 +38,8 @@ Set the date range as a global filter to define the scope of the data in the Hom
    %}
 
 ## Global date range filter
-Filter the view in the Home dashboard by the date range.
+Filter the view in the Home dashboard by the date range.  
+The date range is a global filter that affects define the scope of the data in the Home dashboard. 
 
 {% include 
    image.html 
@@ -49,22 +48,22 @@ Filter the view in the Home dashboard by the date range.
    url="/images/reporting/global-filters.png" 
    alt="Home dashboard: Global filters" 
    caption="Home dashboard: Global filters"
-   max-width="60%" 
+   max-width="80%" 
    %}
 
 ## GitOps Dashboard
 Use the GitOps dashboard to:
 1. Identify status of GitOps Runtimes and the clusters managed by the Runtimes
-1. View history of successful and failed deployments, and rollbacks to previous deployments
-1. View the most active applications, filter by cluster to which they are deployed
-1. Go to the GitOps Apps dashboard to further analyze the different applications 
+1. View deployment history for the date range
+1. View the most active applications, and filter by cluster to which they are deployed
+1. Go to the GitOps Apps dashboard to further analyze specific applications 
 
 
 ###  GitOps Runtimes and Managed Clusters
 
 Identify the health of the GitOps Runtimes and managed clusters in your enterprise.    
 * Health status is displayed for both Hosted and Hybrid GitOps untimes.  
-* Managed clusters are external clusters registered to GitOps Runtimes to which you deploy applications and -managed resources.
+* Managed clusters are external clusters registered to GitOps Runtimes to which you deploy applications and managed resources.
 
  {% include 
    image.html 
@@ -79,13 +78,14 @@ Identify the health of the GitOps Runtimes and managed clusters in your enterpri
 {: .table .table-bordered .table-hover}
 | Item                    | Description   |
 | ------------------------| ---------------- |
-|**Runtimes**             | {::nomarkdown} <ul><li><b>Healthy vs Error</b>: The number of GitOps Runtimes that are currently healthy/failed, including Hosted, CLI Hybrid (legacy), and Helm Hybrid Runtimes.  </li><li><b>View</b>: Click to go to the Runtimes page, List View. </li> </ul> {:/}|
+|**Runtimes**             | {::nomarkdown} <ul><li><b>Healthy/Error</b>: The number of GitOps Runtimes, including Hosted, CLI Hybrid (legacy), and Helm Hybrid Runtimes. that are currently healthy and failed.  </li><li><b>View</b>: Click to go to the Runtimes page, List View. </li> </ul> {:/}|
 |**Managed Clusters**    |{::nomarkdown} <ul><li><b>Status</b>: One of the following: <ul><li><b>Connected</b>: Argo CD can connect to and successfully deploy resources on the cluster.</li><li><b>Failed</b>: Argo CD cannot connect to the cluster because of authentication, networking, or other issues. </li> <li> <b>Unknown</b>: Argo CD has no information on the cluster as there are no resources deployed on the managed cluster.</li></ul><li><b>View</b>: Takes you to the List View of the Runtimes page with the list of runtime components. <br>To see the runtime's managed clusters, select the runtime.</li> </ul> {:/}|
 
 
 ### Deployments
 
-View the deployment history for the selected date range, and the average number of successful, failed, rollback deployments for the selected granularity. Identify trends compared to the background period.   
+View the deployment history for the selected date range, and the average number of successful, failed, rollback deployments for the selected granularity. 
+Compare with the background period to identify trends.   
 
 <!--- ask if to add here that only those changes that resulted in deployments are shown -->
 
@@ -135,16 +135,17 @@ Displays up to five of the most active applications and their current deployment
 
 
 ## Argo Workflows Dashboard
-Displays all active Delivery Pipelines for the selected date range, providing insights into trends for these Delivery Pipelines.  Active Delivery Pipelines are those with at least one active or completed Argo Workflow. 
+Displays aggregated chart views for the selected date range, and insights into active Delivery Pipelines triggered from Workflows. An active Delivery Pipeline is one with at least one active or completed Argo Workflow. 
 
->If you can't see this dashboard, go to the Pipeline Settings and enable.
+>If you can't see this dashboard, go to the [Pipeline Settings](https://g.codefresh.io/account-admin/account-conf/pipeline-settings){:target="\_blank"}, and toggle **Enable pipelines with Argo Workflows** to ON.
 
 Use the Argo Workflows dashboard to:  
 
-1. Identify performance issues in Delivery Pipelines, both in terms of number of executions and execution duration
-1. Drill down on a specific Delivery Pipeline 
-1. Validate improvements by comparing current metrics to those in the reference time period
-1. Ensure that you are meeting defined SLAs
+1. Compare aggregrated data for the date range with the same data for the reference period to validate improvements and identify trends
+1. Identify performance issues in specific Delivery Pipelines, both in terms of number of executions and execution duration
+1. Drill down on a specific Delivery Pipeline for additional analysis 
+
+
 
 
 > Delivery Pipeline data is shown for Hybrid GitOps Runtimes.
@@ -154,41 +155,46 @@ Use the Argo Workflows dashboard to:
 {% include 
    image.html 
    lightbox="true" 
-   file="/images/reporting/delivery-pipeline-widget.png" 
-   url="/images/reporting/delivery-pipeline-widget.png" 
-   alt="Delivery Pipelines in the Argo Work dashboard" 
-   caption="Delivery Pipelines in the Home dashboard"
+   file="/images/reporting/home-dashboard-argo-workflows.png" 
+   url="/images/reporting/home-dashboard-argo-workflows.png" 
+   alt="Argo Workflows dashboard with Delivery Pipelines" 
+   caption="Argo Workflows dashboard with Delivery Pipelines"
    max-width="80%" 
    %}
 
 
 ### Filters for Delivery Pipelines
-Filters narrow the scope of aggregated data, allowing you to focus on the information you want to see. Unless otherwise indicated, all filters support multi-selection.
+Filters narrow the scope of data, allowing you to focus on the information you want to see. Unless otherwise indicated, all filters support multi-selection.
 
 
-The filters available to focus on the pipelines of interest:<li><b>Repository</b>: The Git repository or repositories tracked, with the events that triggered or ran the pipelines.</li><li><b>Event Type</b>: The Git or Calendar event or events by which to view pipelines. If you select Git push, only those pipelines configured to be run on Git push are displayed.</li> <li><b>Initiator</b>: The user who made the commit that triggered the event and caused the pipeline to run.</li></ul>{:/} 
 {: .table .table-bordered .table-hover}
 |  Filter          |  Description|  
 | --------------   | --------------|  
-| **Status** | {::nomarkdown}<ul><li><b>Status</b>:<ul><li>Succeeded: Delivery Pipelines with workflows completed successfully.</li><li>Failed: Delivery Pipelines with workflows that failed.</li><li>Error: Delivery Pipelines with workflows that resulted in errors.</li></ul>|
+| **Status**               | {::nomarkdown}<ul><li><b>Succeeded</b>: Delivery Pipelines with workflows completed successfully.</li><li><b>Failed</b>: Delivery Pipelines with workflows that failed.</li><li><b>Error</b>: Delivery Pipelines with workflows that resulted in errors.</li></ul>{:/}|
 | **Repository**           | The Git repository or repositories tracked, with the events that triggered or ran the pipelines. |                            
-| **Branch**           | The pipeline or pipelines to filter by. |                            
+| **Branch**               | The pipeline or pipelines to filter by. |                            
 | **Event Type**           |  The Git or Calendar event or events by which to view pipelines. If you select Git push, only those pipelines configured to be run on Git push are displayed.|                            
-| **Initiator**             |The user who made the commit that triggered the event and caused the Delivery Pipeline to run.|
-{: .table .table-bordered .table-hover}
+| **Initiator**            |The user who made the commit that triggered the event and caused the Delivery Pipeline to run.|
+
 
 ### Delivery Pipeline Metrics
 
-KPIs for Delivery Pipelines are displayed in line charts and in tables. 
+KPI metrics for active Delivery Pipelines such as number of executions, duration, and success rates, are displayed as aggregated averages, day-by-day averages, and individual averages. 
 
-For line charts, to see detailed day-to-day values, select a line chart.  
+**Delivery Pipeline metric displays**
 
-In the tables, Delivery Pipelines are organized by the **Most Active** (number of executions), and by the **Longest** running (average duration) KPIs. Each table shows up to ten Delivery Pipelines.
+* Aggregated averages
+  These are the average percentages compared to the reference period, and indicate general trends. 
+* Day-by-day averages
+  Selecting an aggregated metric, displays the daily breakdown percentage in the line chart.
+* Delivery Pipeline list
+  The tables display granular metrics for individual Delivery Pipelines, organized by ten of the **Most Active** (number of executions), and ten of the **Longest** running (average duration) ones. 
+  You can drill down on any Delivery Pipeline to go to the pipeline's dashboard with Step Analaytis, and details on the Workflows, Configuration, Manifests, and Update History.
 
-They include:  
+**Delivery Pipeline metrics**
 
 * **Success Rate**  
-  The average number of successful executions, in percentage.
+  The average number of Delivery Pipelines that completed execution successfully, in percentage.
 
 * **Average Duration**
   The average length of time to complete execution of a Delivery Pipeline in mm:ss.
@@ -201,6 +207,9 @@ They include:
 
 
 ## Pipelines Dashboard
+
+View and analyze pipeline performance, identify bottlenecks, and trends for your CI pipelines in the Pipelines dashboard.  
+The dashboard displays aggregated data for pipelines, updated at 30-minute intervals. All stakeholders can get quick visibility into cross-project pipeline metrics.
 
 Use the Pipelines dashboard to:
 1. Identify performance issues in pipelines, both in terms of number of executions and execution duration
@@ -299,10 +308,11 @@ The list view shows the following information.
 | --------------        | --------------|  
 | **Pipeline Name**      | A pipeline name prefixed with this {::nomarkdown}<img src="../../../../images/icons/error.png" display=inline-block">{:/} icon indicates that it has been deleted. |    
 | **Project Name**      | The project to which the pipeline belongs. |                            
-| **Executions**  | The number of times that pipeline was triggered within the selected date range, with the comparison to the preceding date range in percentage.  |          
-| **Duration (Avg/P-50/P-90)**        | The length of time for the pipeline to complete execution according to the duration measure selected in the Duration chart. The comparison percentage is to the preceding date range. |  
+| **Executions**  | The number of times that pipeline was triggered within the selected date range, with the comparison to the preceding (reference) date range in percentage.  |          
+| **Duration (Avg/P-50/P-90)**        | The length of time for the pipeline to complete execution according to the duration measure selected in the Duration chart. The comparison percentage is to the preceding (reference) date range. |  
 
 
+<br>
 
 **Correlate scatter chart with list view**  
 
