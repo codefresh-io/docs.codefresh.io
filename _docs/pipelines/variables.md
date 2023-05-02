@@ -344,7 +344,7 @@ Use this technique if you have complex expressions that have issues with the `cf
 
 ## Masking variables in logs
 
-Codefresh has the built-in capabililty to automatically mask variables in logs if they are encrypted. The values of encrypted variables will be replaced with asterisks in build logs.
+Codefresh has the built-in capability to automatically mask variables in logs if they are encrypted. The values of encrypted variables will be replaced with asterisks in build logs.
 
 {% include
 image.html
@@ -371,9 +371,30 @@ max-width="60%"
 >Notice that this feature is currently available only in Enterprise accounts.
 
 
+## Encrypt variables for pipeline build runs
 
+When you run a pipeline manually, you can either add variables on the fly or change the value of existing variables for the build.
+You can also encrypt the build variables, new and existing, at the same time. 
 
-## Escape characters
+1. Do one of the following:
+  * From the Pipelines page, select the pipeline and click **Run** on the right.
+  * From the Builds page, select the pipeline to run manually, and then click **Run**.
+1. Expand Build Variables.
+1. To add a variable, click **Add Variable**.
+    1. Enter the **Key** and **Value** for the new variable.
+    1. To encrypt, click {::nomarkdown}<img src="../../../../images/icons/encrypt.png"  display=inline-block> <b>Encrypt</b>{:/}, and confirm. 
+
+{% include
+image.html
+lightbox="true"
+file="/images/pipeline/variables/encrypt-build-variable.png"
+url="/images/pipeline/variables/encrypt-build-variable.png"
+alt="Encrypt variable for build run"
+caption="Encrypt variable for build run"
+max-width="50%"
+%}
+
+## Escape special characters in variables
 When passing special characters through environmental variables, use `\` as an escape character.  
 For example, to pass a cassandra connection string, you might do something like `Points\=hostname\;Port\=16376\;Username\=user\;Password\=password`. 
 
