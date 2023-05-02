@@ -17,12 +17,15 @@ Codefresh provides a set of predefined variables automatically in each build, th
 
 There are two ways to use a Codefresh variable in your pipelines:
 
-1. By default all variables will be exposed as UNIX environment variables in all freestyle steps as `$MY_VARIABLE_EXAMPLE`.
-1. Variables can be used in YAML properties with the syntax {% raw %}`${{MY_VARIABLE_EXAMPLE}}`{% endraw %}.
+1. Expose as UNIX environment variables
+   This is the default method, where all variables in all freestyle steps are exposed as UNIX environment variables: `$MY_VARIABLE_EXAMPLE`.
+1. Directly in YAML properties
+   Use variables can be used in YAML properties with the syntax {% raw %}`${{MY_VARIABLE_EXAMPLE}}`{% endraw %}.
 
 > If you are unsure about which form you need to use, feel free to use {% raw %}`${{MY_VARIABLE_EXAMPLE}}`{% endraw %} everywhere. This is the Codefresh specific form and should function in all sections of `codefresh.yml`. 
 
-For example, you can print out the branch as an environment variable like this:
+**Example: Print out the branch as an environment variable**  
+In this example, we use simple `echo` commands, but any program or script that reads environment variables can also read them in the same manner.
 
 `YAML`
 {% highlight yaml %}
@@ -36,9 +39,8 @@ MyOwnStep:
 {% endraw %}
 {% endhighlight %}
 
-In the example above we are using simple `echo` commands, but any program or script that reads environment variables could also read them in the same manner.
 
-Using variables directly in yaml properties can be done like this:
+**Example: Use directly in YAML properties**  
 
 `YAML`
 {% highlight yaml %}
@@ -51,7 +53,8 @@ MyAppDockerImage:
 {% endraw %}
 {% endhighlight %}
 
-You can also concatenate variables:
+
+**Example: Concatenating variables**
 
 `YAML`
 {% highlight yaml %}
@@ -64,7 +67,7 @@ MyAppDockerImage:
 {% endraw %}
 {% endhighlight %}
 
-This will create docker images with tags such as:
+The concatenation above creates Docker images with tags such as:
 
 ```
 master-df6a04c
@@ -72,10 +75,8 @@ develop-ba1cd68
 feature-vb145dh
 ```
 
-
-
-
-Notice that this syntax is specific to Codefresh and is **only** available within the Codefresh YAML file itself. If you want to write scripts or programs that use the Codefresh variables, you need to make them aware of the environment variable form.
+>NOTE:  
+ > This syntax is specific to Codefresh, and is **only** available within the Codefresh YAML file itself. If you want to write scripts or programs that use the Codefresh variables, you need to make them aware of the environment variable form.
 
 
 ## System variables
@@ -215,12 +216,16 @@ For example if a pipeline variable is defined both in project level and as an ex
 
 ## Exporting environment variables from a freestyle step
 
-Steps defined inside steps are scoped to the step they were created in (even if you used the `export` command). In order to allow using variables across steps, we provide a shared file that facilitates variables importing and exporting. There are two ways to add variables to this file:
+Steps defined within steps are scoped to the step they were created in (even if you used the `export` command). To use variables across steps, we provide a shared file through which you can import and export variables. 
+There are two ways to add variables to the shared file:
 
-### Using cf_export command
-Within every freestyle step, the `cf_export` command allows you to export variables across steps (by writing to the shared variables file).  
+* Using the `cf_export` command
+* Writing directly to the file
 
-> The variables exported with cf_export overrides those at the pipeline-level.
+### Exporting variables with `cf_export` 
+Within every freestyle step, the `cf_export` command allows you to export variables across steps by writing to the shared variables file.  
+
+> The variables exported through `cf_export` overrides those at the pipeline-level.
 
 You can either:
 - Explicitly state a VAR=VAL pair  
@@ -251,29 +256,71 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-Notice that `cf_export` has the same syntax structure as the [bash export command](https://www.gnu.org/software/bash/manual/html_node/Environment.html){:target="\_blank"}. This means that when you use it you **don't** need any dollar signs for the variable created/assigned.
+<br>
+
+#### `cf_export` syntax 
+
+`cf_export` has the same syntax as the [bash export command](https://www.gnu.org/software/bash/manual/html_node/Environment.html){:target="\_blank"}.   
+This means that when you use it you **don't** need any dollar signs for the variable that is created/assigned.
 
 ```
 cf_export $MY_VAR # Don't do this
 cf_export MY_VAR # Correct syntax
 ```
 
-Also notice that `cf_export` works on *subsequent* steps only. If you want to export a variable right away in the present step and all the rest of the steps you need to do the following:
+<br>
+
+#### Encrypting variables within `cf_export`
+
+Encrypt variables within `cf_export` by defining the `--mask` flag.  
+Values of encrypted variables in `cf_export` commands are replaced with asterisks in the Build variable list.  
+
+Here is an example with standard and encrypted versions of the same variable in `cf_export` commands.
+
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+steps:
+  description: Freestyle step
+  type: freestyle
+  title: Running tests
+  image: 'ubuntu:latest'
+  commands:
+    - export sec=blat
+    - ls
+    - echo test
+    - ls /
+    - 'cf_export TOKEN=${{steps.test.type}} sec'
+    - 'cf_export MASKED_TOKEN=${{steps.test.type}} sec --mask'
+  stage: test
+...
+{% endraw %}      
+{% endhighlight %}
+
+<br>
+
+#### Export variables to all steps with `cf_export`
+
+By default, `cf_export` works only on *subsequent* steps.  
+To export a variable both in the current and to all the remaining steps, do the following:
 
 ```
-export MY_VAR='example' # Will make MY_VAR available in this step only
-cf_export MY_VAR='example' # Will also make MY_VAR available to all steps after this one
+export MY_VAR='example' # Makes MY_VAR available in this step only
+cf_export MY_VAR='example' # Makes MY_VAR available also to all steps after this one
 ```
 
-There is nothing really magic about `cf_export`. It is a normal script. You can see its contents on your own by entering the command `cat /codefresh/volume/cf_export` on any [Codefresh freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/) inside a pipeline. 
 
-For more information on its limitations see the [troubleshooting page]({{site.baseurl}}/docs/troubleshooting/common-issues/cf-export-limitations/).
+There is nothing really magical about `cf_export`. It is a normal script. You can see its contents on your own by entering the command `cat /codefresh/volume/cf_export` on any [Codefresh freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/) inside a pipeline. 
+
+For more information on its limitations, see the [troubleshooting page]({{site.baseurl}}/docs/troubleshooting/common-issues/cf-export-limitations/).
 
 
  
 ### Directly writing to the file
 
-For more advanced use cases, you can write directly to the shared variable file that Codefresh reads to understand which variables need to be available to all steps. This file has a simple format where each line is a variable and its value in the form of `VARIABLE=VALUE`. The `cf_export` command mentioned in the previous section is just a shorthand for writing on this file.
+For more advanced use cases, you can write directly to the shared variable file that Codefresh reads to understand which variables need to be available to all steps.
+
+This file has a simple format where each line is a variable and its value in the form of `VARIABLE=VALUE`. The `cf_export` command mentioned in the previous section is just a shorthand for writing on this file.
 
 The variables file is available inside freestyle steps in the following path: **`{% raw %}${{CF_VOLUME_PATH}}{% endraw %}/env_vars_to_export`** 
 
@@ -329,8 +376,11 @@ max-width="60%"
 >Notice that this feature is currently available only in Enterprise accounts.
 
 
+
+
 ## Escape characters
-When passing special characters through environmental variables `\` can be used as an escape character. For example if you were passing a cassandra connection string you might do something like `Points\=hostname\;Port\=16376\;Username\=user\;Password\=password`
+When passing special characters through environmental variables, use `\` as an escape character.  
+For example, to pass a cassandra connection string, you might do something like `Points\=hostname\;Port\=16376\;Username\=user\;Password\=password`. 
 
 This will safely escape `;` and `=`.
 
