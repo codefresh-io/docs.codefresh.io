@@ -81,33 +81,26 @@ max-width="70%"
 %}
 
 {:start="3"}
-1. Click **Application permissions** on the left, and select `Group > Read.All`.
+1. Click **Application permissions** on the left.
+   * Add `Group > Read.All`
+   * Add `User > Read.All`
+1. Next add **Delegated permissions** on the right
+   * Add `User > Read.All`
 
-> The `User.Read.All (Delegated)` permission is added by default.
+> The `User.Read (Delegated)` permission is added by default.
 
 {% include image.html
 lightbox="true"
 file="/images/sso/azure/config-app-permissions-selected.png"
 url="/images/sso/azure/config-app-permissions-selected.png"
-alt="`Group > Read.All` permissions for Microsoft Graph"
-caption="`Group > Read.All` permissions for Microsoft Graph"
+alt="Full permissions for Microsoft Graph."
+caption="Full permissions for Microsoft Graph"
 max-width="70%"
 %}
 
-{:start="4"}
+{:start="5"}
 1. Click **Add Permissions**.
 1. Click **Grant admin consent for Default Directory** on the bar.
-
-{% include image.html
-lightbox="true"
-file="/images/sso/azure/config-app-permissions-added.png"
-url="/images/sso/azure/config-app-permissions-added.png"
-alt="Grant admin consent for Default Directory"
-caption="Grant admin consent for Default Directory"
-max-width="70%"
-%}
-
-{:start="6"}
 1. Continue with [Step 3: Create client secret in Azure](#step-3-create-client-secret-in-azure).
 
 
