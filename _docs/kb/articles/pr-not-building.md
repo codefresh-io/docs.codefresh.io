@@ -30,6 +30,6 @@ If you have confirmed all the above and it is still not triggering, please inclu
 
 ## Related Items
 
-[Clone target instead of source branch on pull request]({{site.baseurl}}/docs/troubleshooting/kb-articles/clone-target-instead-of-branch-on-pr/)
+[Clone target instead of source branch on pull request]({{site.baseurl}}/docs/kb/articles/clone-target-instead-of-branch-on-pr/)
 
-[Pull Request Comments are not triggering a build]({{site.baseurl}}/docs/troubleshooting/kb-articles/pr-comments-not-triggering-builds/)
+[Pull Request Comments are not triggering a build]({{site.baseurl}}/docs/kb/articles/pr-comments-not-triggering-builds/)

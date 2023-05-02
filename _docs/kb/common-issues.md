@@ -12,7 +12,7 @@ categories: []
 support-reviewed: 2023-04-18 LG
 ---
 
-These Knowledge Base Articles are common issues you may encounter and questions you might have.
+These articles are common issues you may encounter and questions you might have.
 
 {% for cat in site.kb-cat %}
 

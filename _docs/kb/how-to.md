@@ -10,7 +10,7 @@ categories: []
 support-reviewed: 2023-04-18 LG
 ---
 
-These Knowledge Base Articles are how-to's you may encounter.
+These articles are how-to guides for tasks you may encounter.
 
 {% for cat in site.kb-cat %}
 

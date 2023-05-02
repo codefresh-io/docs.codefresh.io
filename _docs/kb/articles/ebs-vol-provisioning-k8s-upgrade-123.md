@@ -34,4 +34,4 @@ The Amazon EBS CSI driver isn't installed when you first create or update the cl
 
 ## Related Items
 
-[Failure to perform actions on your selected Kubernetes context]({{site.baseurl}}/docs/troubleshooting/kb-articles/failure-to-perform-action-k8s-context)
+[Failure to perform actions on your selected Kubernetes context]({{site.baseurl}}/docs/kb/articles/failure-to-perform-action-k8s-context)

@@ -19,7 +19,7 @@ When attempting to start a build manually, an error appears: **Error building se
 
 A connection to the appropriate repository or YAML file cannot be made, or there is an error in the YAML syntax.
 
-* If you are [using a legacy pipeline that references a Personal Git Provider]({{site.baseurl}}/docs/troubleshooting/kb-articles/personal-git-deprecation), this is prone to happen.
+* If you are [using a legacy pipeline that references a Personal Git Provider]({{site.baseurl}}/docs/kb/articles/personal-git-deprecation), this is prone to happen.
   * This requires actions from Codefresh support to resolve. Please contact us by opening a support ticket and providing a link to the affected pipelines.
 * If using pipeline YAML from repository with an "Auto-Select Branch":
   * If build is triggered manually, ensure you select a trigger that is associated to the Git repo containing this pipeline YAML.

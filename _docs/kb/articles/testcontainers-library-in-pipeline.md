@@ -18,7 +18,7 @@ Besides the ability to run a Gradle/Maven process in your pipeline, to effective
 
 ## Details
 
-As mentioned above, the main prerequisite to fulfill is access to the Docker Daemon. To know how to do that in Codefresh, please take a look at this article: [How-to: Access the Docker Daemon in a Codefresh build]({{site.baseurl}}/docs/troubleshooting/kb-articles/docker-daemon-access/).
+As mentioned above, the main prerequisite to fulfill is access to the Docker Daemon. To know how to do that in Codefresh, please take a look at this article: [How-to: Access the Docker Daemon in a Codefresh build]({{site.baseurl}}/docs/kb/articles/docker-daemon-access/).
 
 Once you have cleared that pre-requisite, the next step is to simply run that Gradle /Maven build, that will use Testcontainers as part of its tasks.
 
@@ -152,6 +152,6 @@ Also, this approach addresses one of the limitations of Option 1: it can deal wi
 
 ## Related Items
 
-* [How-to: Access the Docker Daemon in a Codefresh build]({{site.baseurl}}/docs/troubleshooting/kb-articles/docker-daemon-access/)
+* [How-to: Access the Docker Daemon in a Codefresh build]({{site.baseurl}}/docs/kb/articles/docker-daemon-access/)
 * [Testcontainers.org](https://www.testcontainers.org/)
 * [Using Private Images in Testcontainers](https://www.testcontainers.org/modules/docker_compose/#using-private-repositories-in-docker-compose)

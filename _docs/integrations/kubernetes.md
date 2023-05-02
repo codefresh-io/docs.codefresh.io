@@ -583,7 +583,7 @@ kubectl create clusterrolebinding default-admin --clusterrole cluster-admin --se
 
 ### Kubernetes cluster - using an external reverse proxy (edge case)
 
-If you are using an external reverse proxy to manage inbound traffic to your Kubernetes API, for correct certificate setup, see [this article]({{site.baseurl}}/docs/troubleshooting/kb-articles/verify-cluster-tls-ssl-configuration/).
+If you are using an external reverse proxy to manage inbound traffic to your Kubernetes API, for correct certificate setup, see [this article]({{site.baseurl}}/docs/kb/articles/verify-cluster-tls-ssl-configuration/).
 
 ### Multiple CAs in certificate chain
 

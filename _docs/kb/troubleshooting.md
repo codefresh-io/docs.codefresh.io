@@ -1,5 +1,5 @@
 ---
-title: Knowledge Base
+title: Troubleshooting
 description: 
 group: kb
 redirect_from:
@@ -11,7 +11,6 @@ common: false
 categories: []
 support-reviewed: 2023-04-18 LG
 ---
-
 
 Here, we offer helpful information about issues you may encounter and questions you might have.
 

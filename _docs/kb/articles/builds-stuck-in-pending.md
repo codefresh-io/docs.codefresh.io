@@ -35,4 +35,4 @@ One or a number of builds are stuck in pending state.
 
 ## Related Items
 
-[Builds are not starting on Hybrid/Venona/Runner]({{site.baseurl}}/docs/troubleshooting/kb-articles/builds-not-starting-on-hybrid-runtime/)
+[Builds are not starting on Hybrid/Venona/Runner]({{site.baseurl}}/docs/kb/articles/builds-not-starting-on-hybrid-runtime/)

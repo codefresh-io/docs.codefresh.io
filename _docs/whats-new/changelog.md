@@ -208,9 +208,9 @@ toc: true
 - Git clone now supports a proxy connection - [documentation]({{site.baseurl}}/docs/pipelines/steps/git-clone/#using-git-behind-a-proxy)
 - Support for other container runtimes (containerd, cri-o) in the Runner - [documentation]({{site.baseurl}}/docs/administration/codefresh-runner/#prerequisites)
 - Giving visibility of your account to Codefresh support personnel is now explicit - [documentation]({{site.baseurl}}/docs/administration/user-settings/#enable-access-for-support-personnel)
-- New paging mechanism for builds/images that might break custom integrations - [documentation]({{site.baseurl}}/docs/troubleshooting/kb-articles/paging-issues-builds-images/)
+- New paging mechanism for builds/images that might break custom integrations - [documentation]({{site.baseurl}}/docs/kb/articles/paging-issues-builds-images/)
 - Note for Okta sync - [documentation]({{site.baseurl}}/docs/administration/single-sign-on/sso-okta/#how-okta-syncing-works)
-- cf_export limitations - [documentation]({{site.baseurl}}/docs/troubleshooting/kb-articles/cf-export-limitations/)
+- cf_export limitations - [documentation]({{site.baseurl}}/docs/kb/articles/cf-export-limitations/)
 - Default SSO provider - [documentation]({{site.baseurl}}/docs/single-sign-on/team-sync/#set-a-default-sso-provider-for-account)
 - Codefresh runner now has a dry run option - [documentation]({{site.baseurl}}/docs/administration/codefresh-runner/#inspecting-the-manifests-before-they-are-installed)
 - Connect to Azure Kubernetes with a service principal - [documentation]({{site.baseurl}}//#adding-an-aks-cluster-with-a-service-principal)
@@ -252,7 +252,7 @@ toc: true
 
 - Security timeout - [documentation]({{site.baseurl}}/docs/administration/access-control/#security-timeout)
 - Preserve pipeline volume after approval - [documentation]({{site.baseurl}}/docs/pipelines/steps/approval/#keeping-the-shared-volume-after-an-approval)
-- DockerHub rate limit issue - [documentation]({{site.baseurl}}/docs/troubleshooting/kb-articles/dockerhub-rate-limit/)
+- DockerHub rate limit issue - [documentation]({{site.baseurl}}/docs/kb/articles/dockerhub-rate-limit/)
 
 ### August 2020
 
@@ -390,13 +390,13 @@ toc: true
 - MySQL Integration test example - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mysql/)
 - PostgreSQL Integration test example - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-postgres/)
 - Explicit External Resources - [documentation]({{site.baseurl}}/docs/pipelines/pipelines/#external-resources)
-- Kubernetes connection issues - [documentation]({{site.baseurl}}/docs/troubleshooting/kb-articles/forbidden-cluster-resources/)
+- Kubernetes connection issues - [documentation]({{site.baseurl}}/docs/kb/articles/forbidden-cluster-resources/)
 - Codefresh F.A.Q. - [documentation]({{site.baseurl}}/docs/getting-started/faq/)
 
 ### August 2019
 
 - Sidecar services in pipelines - [documentation]({{site.baseurl}}/docs/pipelines/service-containers/)
-- Personal Git providers are deprecated - [documentation]({{site.baseurl}}/docs/troubleshooting/kb-articles/personal-git-deprecation/)
+- Personal Git providers are deprecated - [documentation]({{site.baseurl}}/docs/kb/articles/personal-git-deprecation/)
 - Migrate from Jenkins to Codefresh - [documentation]({{site.baseurl}}/docs/integrations/jenkins-integration/#migrating-from-jenkins-to-codefresh)
 - macOS and iOS builds closed Alpha - [documentation]({{site.baseurl}}/docs/incubation/osx-ios-builds/)
 

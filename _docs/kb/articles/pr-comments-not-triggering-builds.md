@@ -22,4 +22,4 @@ Only comments made by a repository owner or collaborators are accepted. Other us
 
 [Support for building pull requests from forks]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/#support-for-building-pull-requests-from-forks)
 
-[Pull request not building]({{site.baseurl}}/docs/troubleshooting/kb-articles/pr-not-building/)
+[Pull request not building]({{site.baseurl}}/docs/kb/articles/pr-not-building/)

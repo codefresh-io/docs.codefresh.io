@@ -263,9 +263,9 @@ max-width="60%"
 * *Commit Status Title* - the commit status title pushed to the GIT version control system.  By default, is the pipeline name, but you can override the name on GIT trigger.
 * *Build Variables* - import a [shared configuration]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/) or manually add variables
 * *More Options* 
-  * *Ignore Docker engine cache for build* - selecting this option may slow down your build.  See #1 [here]({{site.baseurl}}/docs/troubleshooting/kb-articles/disabling-codefresh-caching-mechanisms/)
-  * *Ignore Codefresh cache optimizations for build* - selecting this option may slow down your build.  See #2 [here]({{site.baseurl}}/docs/troubleshooting/kb-articles/disabling-codefresh-caching-mechanisms/)
-  * *Reset pipeline volume* - useful for troubleshooting a build that hangs on the first step.  See [here]({{site.baseurl}}/docs/troubleshooting/kb-articles/restoring-data-from-pre-existing-image-hangs-on/)
+  * *Ignore Docker engine cache for build* - selecting this option may slow down your build.  See #1 [here]({{site.baseurl}}/docs/kb/articles/disabling-codefresh-caching-mechanisms/)
+  * *Ignore Codefresh cache optimizations for build* - selecting this option may slow down your build.  See #2 [here]({{site.baseurl}}/docs/kb/articles/disabling-codefresh-caching-mechanisms/)
+  * *Reset pipeline volume* - useful for troubleshooting a build that hangs on the first step.  See [here]({{site.baseurl}}/docs/kb/articles/restoring-data-from-pre-existing-image-hangs-on/)
   * *Report notification on pipeline execution* - Decide if [Slack notifications]({{site.baseurl}}/docs/integrations/notifications/slack-integration/) will be sent (as well as status updates back to your Git provider)
 * *Runtime Environment* - choose to use pipeline [settings]({{site.baseurl}}/docs/pipelines/pipelines/#pipeline-settings) or override them
 
@@ -381,4 +381,4 @@ The build step calls the second pipeline. The end result is that pipeline B runs
 [Triggers in pipelines]({{site.baseurl}}/docs/pipelines/triggers)  
 [Cron triggers]({{site.baseurl}}/docs/pipelines/triggers/cron-triggers/)  
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
-[Using multi-git triggers]({{site.baseurl}}/docs/troubleshooting/kb-articles/multi-git-triggers/)
+[Using multi-git triggers]({{site.baseurl}}/docs/kb/articles/multi-git-triggers/)

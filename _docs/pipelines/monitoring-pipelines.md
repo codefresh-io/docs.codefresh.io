@@ -162,7 +162,7 @@ There are also extra options if you click the small "3-dot" menu button on the r
 - View the images produced (and consequently launch an on-demand [test environment]({{site.baseurl}}/docs/quick-start/ci-quick-start/on-demand-environments/#launch-a-docker-image-using-codefresh)
 
 Notice that if you restart a pipeline it will trigger with the exact settings it *originally* had. So 
-if this was a manual trigger where you [disabled caching]({{site.baseurl}}/docs/troubleshooting/kb-articles/disabling-codefresh-caching-mechanisms/) or changed the [notification options](#monitoring-pipelines-that-check-pull-requests), the new
+if this was a manual trigger where you [disabled caching]({{site.baseurl}}/docs/kb/articles/disabling-codefresh-caching-mechanisms/) or changed the [notification options](#monitoring-pipelines-that-check-pull-requests), the new
 execution will still honor those settings (even if you have changed them for later builds).
 
 An extra button for test reports will be visible if you are using the [test report feature]({{site.baseurl}}/docs/testing/test-reports/) of Codefresh.

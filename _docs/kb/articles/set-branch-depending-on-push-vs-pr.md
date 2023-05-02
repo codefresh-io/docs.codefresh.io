@@ -70,6 +70,6 @@ actual value.
 
 ## Related Items
 
-[How-to: Check environment variable value or existence in conditionals]({{site.baseurl}}/docs/troubleshooting/kb-articles/check-env-vars-in-conditionals/)
+[How-to: Check environment variable value or existence in conditionals]({{site.baseurl}}/docs/kb/articles/check-env-vars-in-conditionals/)
 
 [Documentation for cf_exportc command]({{site.baseurl}}/docs/pipelines/variables/#using-cf_export-command)

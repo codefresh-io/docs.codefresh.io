@@ -29,4 +29,4 @@ used.:
 2. Update the previous integration with a new token, or delete the previous integration
 3. Create a new integration
 
-> Note: When deleting a git integration, you may get an error saying the integration cannot be deleted while other objects are using it. This means an existing pipeline is referencing the integration. Please refer to [How-to: Update Trigger Git Context]({{site.baseurl}}/docs/troubleshooting/kb-articles/update-trigger-git-context) on how to find and modify these existing references.
+> Note: When deleting a git integration, you may get an error saying the integration cannot be deleted while other objects are using it. This means an existing pipeline is referencing the integration. Please refer to [How-to: Update Trigger Git Context]({{site.baseurl}}/docs/kb/articles/update-trigger-git-context) on how to find and modify these existing references.

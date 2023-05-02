@@ -31,6 +31,6 @@ Different builds may have different caches. Initial builds may not have images o
 
 [Pipeline Caching]({{site.baseurl}}/docs/pipelines/pipeline-caching/)
 
-[Disabling caching mechanisms]({{site.baseurl}}/docs/troubleshooting/kb-articles/disabling-codefresh-caching-mechanisms/)
+[Disabling caching mechanisms]({{site.baseurl}}/docs/kb/articles/disabling-codefresh-caching-mechanisms/)
 
-[About reuseVolumeSelector options]({{site.baseurl}}/docs/troubleshooting/kb-articles/about-reusevolumeselector-options/)
+[About reuseVolumeSelector options]({{site.baseurl}}/docs/kb/articles/about-reusevolumeselector-options/)
