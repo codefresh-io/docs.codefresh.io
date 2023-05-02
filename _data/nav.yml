@@ -560,6 +560,8 @@
           url: /oidc-azure
         - title: Google
           url: /oidc-google
+        - title: Keycloak
+          url: /oidc-keycloak
         - title: Okta
           url: /oidc-okta
         - title: OneLogin

@@ -18,8 +18,6 @@ You can sync teams:
 * Automatically, in the Codefresh UI when you set up the SSO account for the IdP, through the **Auto-sync team** option. For details, see the SSO setup for your IdP.
 * Manually, through the Codefresh CLI's [synchronize teams command](https://codefresh-io.github.io/cli/teams/synchronize-teams/){:target="\_blank"}. 
 
-> Team-sync is supported for OIDC providers.  
-  For SAML, team-sync is supported only for Google.
 
 ## CLI synchronize teams
 
