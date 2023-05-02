@@ -14,7 +14,7 @@ Set up OIDC SSO for Keycloak in Codefresh by:
 
 >**IMPORTANT**:  
  >KeycloakServer changed `/auth` endpoint from version 17.0.0. Currently Codefresh does not support Keycloak version 17.0.0 or higher.  
- >As a workaround, start KeycloakServer with this parameter:  `--http-<relative-path>=/auth/`.
+ >As a workaround, start KeycloakServer with this parameter:  `--http-relative-path=/auth/`.
 
 
 ## Step 1: Create Client in Keycloak
