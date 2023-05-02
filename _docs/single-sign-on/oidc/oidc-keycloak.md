@@ -12,7 +12,7 @@ Set up OIDC SSO for Keycloak in Codefresh by:
 1. Configuring SSO settings for Keycloak in Codefresh
 1. Configuring redirect URIs in Keycloak
 
->**IMPORTANT**:
+>**IMPORTANT**:  
  >KeycloakServer changed `/auth` endpoint from version 17.0.0. Currently Codefresh does not support Keycloak version 17.0.0 or higher.  
  >As a workaround, start KeycloakServer with this parameter:  `--http-<relative-path>=/auth/`.
 
@@ -63,6 +63,7 @@ Create a Keycloak client for Codefresh.
 1. Continue with [Step 2: Configure SSO settings for Keycloak in Codefresh](#step-2-configure-sso-settings-for-keycloak-in-codefresh).
 
 ## Step 2: Configure SSO settings for Keycloak in Codefresh
+<br>
 
 **Before you begin**  
 * Make sure you have:
@@ -102,7 +103,7 @@ Create a Keycloak client for Codefresh.
   max-width="90%"
   %}
 
-{:start="5"}
+{:start="6"}
 1. Note down the Client Name, as you need it to set the redirect URI in Keycloak.
 1. Continue with [Step 3: Set up Redirect URI in Keycloak](#step-3-set-up-redirect-uri-in-keycloak).
 
@@ -118,3 +119,8 @@ Create a Keycloak client for Codefresh.
   
 
 You have now completed SSO setup for Keycloak via OIDC.
+
+## Related articles
+[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/single-sign-on/single-sign-on/)  
+[Setting up OIDC Federated SSO]({{site.baseurl}}/docs/single-sign-on/oidc)  
+[Common configuration for SSO providers]({{site.baseurl}}/docs/single-sign-on/team-sync)  
