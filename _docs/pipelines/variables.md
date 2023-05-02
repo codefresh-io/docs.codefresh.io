@@ -267,7 +267,7 @@ This means that when you use it you **don't** need any dollar signs for the vari
 cf_export $MY_VAR # Don't do this
 cf_export MY_VAR # Correct syntax
 ```
-
+<!--->
 <br>
 
 #### Encrypting variables within `cf_export`
@@ -291,6 +291,8 @@ steps:
       - cf_export VAR1=alpine:latest VAR2=VALUE2 EXISTING_VAR --mask
 {% endraw %}      
 {% endhighlight %}
+
+-->
 
 <br>
 
@@ -373,8 +375,8 @@ max-width="60%"
 
 ## Encrypt variables for pipeline build runs
 
-When you run a pipeline manually, you can either add variables on the fly or change the value of existing variables for the build.
-You can also encrypt the build variables, new and existing, at the same time. 
+When you run a pipeline manually, you can either add variables on the fly or change the value of existing variables for the specific run of the build.
+You can also encrypt the build-specific variables, new or existing, at the same time. 
 
 1. Do one of the following:
   * From the Pipelines page, select the pipeline and click **Run** on the right.
