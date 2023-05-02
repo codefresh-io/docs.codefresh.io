@@ -1,12 +1,12 @@
 ---
 title: Common issues
 description: ""
-group: troubleshooting
+group: kb
 redirect_from:
   - /docs/common-issues/
-  - /docs/troubleshooting/
 toc: true
 kb: false
+ht: false
 common: false
 categories: []
 support-reviewed: 2023-04-18 LG

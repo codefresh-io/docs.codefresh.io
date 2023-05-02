@@ -618,13 +618,15 @@
     - title: ARM architecture support
       url: "/arm-support"
   
-- title: Troubleshooting
-  url: "/troubleshooting"
+- title: Knowledge Base
+  url: "/kb"
   pages:
     - title: Common Issues
       url: "/common-issues"
-    - title: Knowledge Base
-      url: "/kb-articles"
+    - title: How To's
+      url: "/how-to"
+    - title: Troubleshooting
+      url: "/troubleshooting"
     - title: Codefresh SLA Definitions
       url: "/codefresh-sla-definitions"
 
