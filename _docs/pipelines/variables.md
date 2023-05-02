@@ -267,7 +267,7 @@ This means that when you use it you **don't** need any dollar signs for the vari
 cf_export $MY_VAR # Don't do this
 cf_export MY_VAR # Correct syntax
 ```
-<!--->
+<!---
 <br>
 
 #### Encrypting variables within `cf_export`
@@ -384,7 +384,7 @@ You can also encrypt the build-specific variables, new or existing, at the same 
 1. Expand Build Variables.
 1. To add a variable, click **Add Variable**.
     1. Enter the **Key** and **Value** for the new variable.
-    1. To encrypt, click {::nomarkdown}<img src="../../../../images/icons/encrypt.png"  display=inline-block> <b>Encrypt</b>{:/}, and confirm. 
+    1. To encrypt, click {::nomarkdown}<img src="../../../images/icons/encrypt.png"  display=inline-block> <b>Encrypt</b>{:/}, and confirm. 
 
 {% include
 image.html
