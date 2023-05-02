@@ -1,10 +1,11 @@
 ---
-title: "How-to: Deleting my Account (Classic)"
+title: "How To: Deleting my Account (Classic)"
 description: 
-group: troubleshooting
-sub-group: kb-articles
+group: kb
+sub-group: articles
 toc: true
-kb: true
+kb: false
+ht: true
 common: false
 categories: [Settings, General]
 support-reviewed: 2023-04-18 LG

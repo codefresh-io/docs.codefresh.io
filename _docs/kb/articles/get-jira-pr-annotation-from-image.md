@@ -1,10 +1,11 @@
 ---
-title: "How-to: Get the Jira and PR annotations from an image using CLI"
+title: "How To: Get the Jira and PR annotations from an image using CLI"
 description: 
-group: troubleshooting
-sub-group: kb-articles
+group: kb
+sub-group: articles
 toc: true
-kb: true
+kb: false
+ht: true
 common: false
 categories: []
 support-reviewed: 2023-04-18 LG

@@ -1,10 +1,11 @@
 ---
 title: "Failed to tag image"
 description: "Failed to update your image with promote event, could not tag image"
-group: troubleshooting
-sub-group: kb-articles
+group: kb
+sub-group: articles
 toc: true
 kb: true
+ht: false
 common: true
 categories: [Pipelines]
 support-reviewed: 2023-04-18 LG

@@ -1,10 +1,11 @@
 ---
 title: Is Codefresh down?
 description: 
-group: troubleshooting
-sub-group: kb-articles
+group: kb
+sub-group: articles
 toc: true
 kb: true
+ht: false
 common: false
 categories: [General]
 support-reviewed: 2023-04-18 LG

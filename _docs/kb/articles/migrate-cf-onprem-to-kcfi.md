@@ -1,10 +1,11 @@
 ---
-title: "How-to: migrate from cf-onprem script to kcfi installer for Codefresh On-Prem"
+title: "How To: migrate from cf-onprem script to kcfi installer for Codefresh On-Prem"
 description: 
-group: troubleshooting
-sub-group: kb-articles
+group: kb
+sub-group: articles
 toc: true
-kb: true
+kb: false
+ht: true
 common: false
 categories: [On-Prem]
 support-reviewed: 2023-04-18 LG

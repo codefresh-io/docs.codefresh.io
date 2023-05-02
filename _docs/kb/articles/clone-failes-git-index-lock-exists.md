@@ -1,10 +1,11 @@
 ---
 title: "Clone error: Unable to create '/codefresh/volume/reponame/.git/index.lock': File exists"
 description: 
-group: troubleshooting
-sub-group: kb-articles
+group: kb
+sub-group: articles
 toc: true
 kb: true
+ht: false
 common: false
 categories: [Pipelines]
 support-reviewed: 2023-04-18 LG

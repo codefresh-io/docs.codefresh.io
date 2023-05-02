@@ -1,10 +1,11 @@
 ---
 title: "Hangs on restoring data from pre-existing image"
 description: ""
-group: troubleshooting
-sub-group: kb-articles
+group: kb
+sub-group: articles
 toc: true
 kb: true
+ht: false
 common: true
 categories: [Pipeline]
 support-reviewed: 2023-04-18 LG

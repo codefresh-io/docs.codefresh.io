@@ -1,10 +1,11 @@
 ---
-title: "How-to: CLI Codefresh Run Pipeline and when to use the -t (trigger) option"
+title: "How To: CLI Codefresh Run Pipeline and when to use the -t (trigger) option"
 description: 
-group: troubleshooting
-sub-group: kb-articles
+group: kb
+sub-group: articles
 toc: true
-kb: true
+kb: false
+ht: true
 common: false
 categories: [CLI]
 support-reviewed: 2023-04-18 LG

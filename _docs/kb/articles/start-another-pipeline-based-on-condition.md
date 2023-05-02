@@ -1,10 +1,11 @@
 ---
-title: "How-to: Start another pipeline based on condition"
+title: "How To: Start another pipeline based on condition"
 description: 
-group: troubleshooting
-sub-group: kb-articles
+group: kb
+sub-group: articles
 toc: true
-kb: true
+kb: false
+ht: true
 common: false
 categories: [Pipelines]
 support-reviewed: 2023-04-18 LG

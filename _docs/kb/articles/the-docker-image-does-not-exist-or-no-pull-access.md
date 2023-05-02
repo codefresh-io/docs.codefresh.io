@@ -1,10 +1,11 @@
 ---
 title: "Docker image does not exist or no pull access"
 description: ""
-group: troubleshooting
-sub-group: kb-articles
+group: kb
+sub-group: articles
 toc: true
 kb: true
+ht: false
 common: true
 categories: [Pipelines, Settings]
 support-reviewed: 2023-04-18 LG

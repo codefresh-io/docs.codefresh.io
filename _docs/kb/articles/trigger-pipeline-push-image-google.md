@@ -1,10 +1,11 @@
 ---
-title: "How-to: Trigger a Codefresh pipeline from an image push to Google Container Registry (GCR) or Google Artifact Registry (GAR)"
+title: "How To: Trigger a Codefresh pipeline from an image push to Google Container Registry (GCR) or Google Artifact Registry (GAR)"
 description: 
-group: troubleshooting
-sub-group: kb-articles
+group: kb
+sub-group: articles
 toc: true
-kb: true
+kb: false
+ht: true
 common: false
 categories: [Pipelines]
 support-reviewed: 2023-04-18 LG

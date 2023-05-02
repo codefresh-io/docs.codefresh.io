@@ -1,8 +1,8 @@
 ---
 title: Attempting to clone from a repo but access is denied
 description: 
-group: troubleshooting
-sub-group: kb-articles
+group: kb
+sub-group: articles
 toc: true
 kb: true
 ht: false

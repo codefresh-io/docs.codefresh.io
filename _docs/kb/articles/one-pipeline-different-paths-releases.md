@@ -1,10 +1,11 @@
 ---
-title: "How-to: Using one pipeline with different paths for releases"
+title: "How To: Using one pipeline with different paths for releases"
 description: 
-group: troubleshooting
-sub-group: kb-articles
+group: kb
+sub-group: articles
 toc: true
-kb: true
+kb: false
+ht: true
 common: false
 categories: [Pipelines]
 support-reviewed: 2023-04-18 LG

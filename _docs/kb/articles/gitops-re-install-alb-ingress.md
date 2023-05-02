@@ -1,10 +1,11 @@
 ---
 title: GitOps Hybrid Runtime - Installation with ALB Ingress Controller
 description: 
-group: troubleshooting
-sub-group: kb-articles
+group: kb
+sub-group: articles
 toc: true
-kb: true
+kb: false
+ht: true
 common: false
 categories: [CLI, Ops, Runtimes]
 support-reviewed: 2023-04-18 LG

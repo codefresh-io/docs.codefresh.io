@@ -1,10 +1,11 @@
 ---
 title: "Verify cluster TLS/SSL configuration"
 description: "Connecting Codefresh to an on-premises Kubernetes cluster"
-group: troubleshooting
-sub-group: kb-articles
+group: kb
+sub-group: articles
 toc: true
 kb: true
+ht: false
 common: true
 categories: [Settings]
 support-reviewed: 2023-04-18 LG

@@ -1,10 +1,11 @@
 ---
-title: "How-to: Add a direct link to the Parent build from a Child build"
+title: "How To: Add a direct link to the Parent build from a Child build"
 description: 
-group: troubleshooting
-sub-group: kb-articles
+group: kb
+sub-group: articles
 toc: true
-kb: true
+kb: false
+ht: true
 common: false
 categories: [Pipelines]
 support-reviewed: 2023-04-18 LG

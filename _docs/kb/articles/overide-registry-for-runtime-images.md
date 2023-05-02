@@ -1,10 +1,11 @@
 ---
-title: "How-to: Override registry for Codefresh-related images in your runtime environment"
+title: "How To: Override registry for Codefresh-related images in your runtime environment"
 description: 
-group: troubleshooting
-sub-group: kb-articles
+group: kb
+sub-group: articles
 toc: true
-kb: true
+kb: false
+ht: true
 common: false
 categories: [Runtimes, CLI]
 support-reviewed: 2023-04-18 LG

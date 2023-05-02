@@ -1,8 +1,8 @@
 ---
 title: 403 Forbidden Error On Codefresh CLI Commands Within Build
 description: 
-group: troubleshooting
-sub-group: kb-articles
+group: kb
+sub-group: articles
 toc: true
 kb: true
 ht: false

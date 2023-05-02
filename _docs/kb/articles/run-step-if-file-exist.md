@@ -1,10 +1,11 @@
 ---
-title: "How-to: Run a step only if a file exists"
+title: "How To: Run a step only if a file exists"
 description: 
-group: troubleshooting
-sub-group: kb-articles
+group: kb
+sub-group: articles
 toc: true
-kb: true
+kb: false
+ht: true
 common: false
 categories: [Pipelines]
 support-reviewed: 2023-04-18 LG

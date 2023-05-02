@@ -1,10 +1,11 @@
 ---
 title: "Clone step failed: Command [git checkout $REVISION] exited with code [1]"
 description: ""
-group: troubleshooting
-sub-group: kb-articles
+group: kb
+sub-group: articles
 toc: true
 kb: true
+ht: false
 common: true
 categories: [Pipelines]
 support-reviewed: 2023-04-18 LG

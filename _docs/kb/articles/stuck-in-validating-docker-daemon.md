@@ -1,10 +1,11 @@
 ---
 title: Stuck on Validating connection to Docker daemon
 description: 
-group: troubleshooting
-sub-group: kb-articles
+group: kb
+sub-group: articles
 toc: true
 kb: true
+ht: false
 common: false
 categories: [Pipelines, Runtimes, On-Prem]
 support-reviewed: 2023-04-18 LG

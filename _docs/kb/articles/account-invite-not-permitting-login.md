@@ -1,8 +1,8 @@
 ---
 title: Account invitation not permitting login
 description: 
-group: troubleshooting
-sub-group: kb-articles
+group: kb
+sub-group: articles
 toc: true
 kb: true
 ht: false

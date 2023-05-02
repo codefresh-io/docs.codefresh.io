@@ -1,10 +1,11 @@
 ---
 title: "Using multi-git triggers"
 description: "Pinning codefresh.yml to a specific branch"
-group: troubleshooting
-sub-group: kb-articles
+group: kb
+sub-group: articles
 toc: true
 kb: true
+ht: false
 common: true
 categories: [Pipelines]
 support-reviewed: 2023-04-18 LG

@@ -1,10 +1,11 @@
 ---
-title: "How-to: Rename my account"
+title: "How To: Rename my account"
 description: 
-group: troubleshooting
-sub-group: kb-articles
+group: kb
+sub-group: articles
 toc: true
-kb: true
+kb: false
+ht: true
 common: false
 categories: [Settings, General]
 support-reviewed: 2023-04-18 LG

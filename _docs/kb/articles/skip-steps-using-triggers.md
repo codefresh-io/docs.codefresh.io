@@ -1,10 +1,11 @@
 ---
-title: "How-to: Skip steps in your pipeline using Triggers"
+title: "How To: Skip steps in your pipeline using Triggers"
 description: 
-group: troubleshooting
-sub-group: kb-articles
+group: kb
+sub-group: articles
 toc: true
-kb: true
+kb: false
+ht: true
 common: false
 categories: [Pipelines]
 support-reviewed: 2023-04-18 LG

@@ -1,10 +1,11 @@
 ---
-title: "How to: get the external IP of a Codefresh SAAS build"
+title: "How To: get the external IP of a Codefresh SAAS build"
 description: 
-group: troubleshooting
-sub-group: kb-articles
+group: kb
+sub-group: articles
 toc: true
-kb: true
+kb: false
+ht: true
 common: false
 categories: [Pipelines]
 support-reviewed: 2023-04-18 LG

@@ -1,10 +1,11 @@
 ---
 title: "Can't find your organization repositories"
 description: "Issues with adding Git triggers"
-group: troubleshooting
-sub-group: kb-articles
+group: kb
+sub-group: articles
 toc: true
 kb: true
+ht: false
 common: true
 categories: [Pipelines]
 support-reviewed: 2023-04-18 LG

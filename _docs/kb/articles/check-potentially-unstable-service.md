@@ -1,10 +1,11 @@
 ---
-title: "How-to: Check against potentially unstable service"
+title: "How To: Check against potentially unstable service"
 description: 
-group: troubleshooting
-sub-group: kb-articles
+group: kb
+sub-group: articles
 toc: true
-kb: true
+kb: false
+ht: true
 common: false
 categories: [Pipelines]
 support-reviewed: 2023-04-18 LG

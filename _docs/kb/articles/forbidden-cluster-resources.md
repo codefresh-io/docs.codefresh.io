@@ -1,10 +1,11 @@
 ---
 title: "Forbidden Kubernetes resources"
 description: "Cannot list namespaces or nodes in the Kubernetes dashboard"
-group: troubleshooting
-sub-group: kb-articles
+group: kb
+sub-group: articles
 toc: true
 kb: true
+ht: false
 common: true
 categories: [Settings, Artifacts & Insights]
 support-reviewed: 2023-04-18 LG

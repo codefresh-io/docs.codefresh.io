@@ -20,13 +20,11 @@ These articles are how-to guides for tasks you may encounter.
     {% assign pages = site.docs | sort: 'title' %}
     {% for page in pages %}
         {% if page.ht == true %}
-            {% if page.common == true %}
-                {% for pc in page.categories %}
-                    {% if pc == cat %}
-                    <li><a href="{{site.baseurl}}{{page.url}}">{{ page.title }}</a></li>
-                    {% endif %}   <!-- match category -->
-                {% endfor %}  <!-- page-categories -->
-            {% endif %}   <!-- common -->
+            {% for pc in page.categories %}
+                {% if pc == cat %}
+                <li><a href="{{site.baseurl}}{{page.url}}">{{ page.title }}</a></li>
+                {% endif %}   <!-- match category -->
+            {% endfor %}  <!-- page-categories -->
         {% endif %}   <!-- kb -->
     {% endfor %}  <!-- page -->
 </ul>

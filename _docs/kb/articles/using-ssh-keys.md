@@ -1,10 +1,11 @@
 ---
-title: "How to use SSH keys in freestyle steps"
+title: "How To: use SSH keys in freestyle steps"
 description: "Running commands remotely from Codefresh Pipeline"
-group: troubleshooting
-sub-group: kb-articles
+group: kb
+sub-group: articles
 toc: true
-kb: true
+kb: false
+ht: true
 common: true
 categories: [Pipelines, Settings]
 support-reviewed: 2023-04-18 LG

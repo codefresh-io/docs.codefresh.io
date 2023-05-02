@@ -21,15 +21,13 @@ These articles are common issues you may encounter and questions you might have.
 <ul>
     {% assign pages = site.docs | sort: 'title' %}
     {% for page in pages %}
-        {% if page.kb == true %}
-            {% if page.common == true %}
-                {% for pc in page.categories %}
-                    {% if pc == cat %}
-                    <li><a href="{{site.baseurl}}{{page.url}}">{{ page.title }}</a></li>
-                    {% endif %}   <!-- match category -->
-                {% endfor %}  <!-- page-categories -->
-            {% endif %}   <!-- common -->
-        {% endif %}   <!-- kb -->
+        {% if page.common == true %}
+            {% for pc in page.categories %}
+                {% if pc == cat %}
+                <li><a href="{{site.baseurl}}{{page.url}}">{{ page.title }}</a></li>
+                {% endif %}   <!-- match category -->
+            {% endfor %}  <!-- page-categories -->
+        {% endif %}   <!-- common -->
     {% endfor %}  <!-- page -->
 </ul>
 {% endfor %}  <!-- cat -->

@@ -1,10 +1,11 @@
 ---
-title: "How-to: Set branch for build depending on whether it's a push or PR event"
+title: "How To: Set branch for build depending on whether it's a push or PR event"
 description: 
-group: troubleshooting
-sub-group: kb-articles
+group: kb
+sub-group: articles
 toc: true
-kb: true
+kb: false
+ht: true
 common: false
 categories: [Pipelines]
 support-reviewed: 2023-04-18 LG

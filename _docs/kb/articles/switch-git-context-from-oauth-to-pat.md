@@ -1,10 +1,11 @@
 ---
 title: "How To: Switch Git Context from OAuth to PAT"
 description: 
-group: troubleshooting
-sub-group: kb-articles
+group: kb
+sub-group: articles
 toc: true
-kb: true
+kb: false
+ht: true
 common: false
 categories: [Settings, CLI]
 support-reviewed: 2023-04-18 LG

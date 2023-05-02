@@ -1,10 +1,11 @@
 ---
-title: "How-to: Clone target instead of source branch on pull request"
+title: "How To: Clone target instead of source branch on pull request"
 description: 
-group: troubleshooting
-sub-group: kb-articles
+group: kb
+sub-group: articles
 toc: true
-kb: true
+kb: false
+ht: true
 common: false
 categories: [Pieplines]
 support-reviewed: 2023-04-18 LG

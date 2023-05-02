@@ -1,10 +1,11 @@
 ---
-title: "How-to: Deleting my Account (GitOps)"
+title: "How To: Deleting my Account (GitOps)"
 description: 
-group: troubleshooting
-sub-group: kb-articles
+group: kb
+sub-group: articles
 toc: true
-kb: true
+kb: false
+ht: true
 common: false
 categories: [Settings, General]
 support-reviewed: 2023-04-18 LG

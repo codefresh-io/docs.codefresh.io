@@ -1,10 +1,11 @@
 ---
 title: "Building image failed with exit code: 137"
 description: "The command returned a non-zero code: 137"
-group: troubleshooting
-sub-group: kb-articles
+group: kb
+sub-group: articles
 toc: true
 kb: true
+ht: false
 common: true
 categories: [Pipelines]
 support-reviewed: 2023-04-18 LG

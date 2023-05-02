@@ -1,10 +1,11 @@
 ---
-title: "How-to: Using one pipeline with different paths for push/pull requests/release"
+title: "How To: Using one pipeline with different paths for push/pull requests/release"
 description: 
-group: troubleshooting
-sub-group: kb-articles
+group: kb
+sub-group: articles
 toc: true
-kb: true
+kb: false
+ht: true
 common: false
 categories: [Pipeline]
 support-reviewed: 2023-04-18 LG

@@ -1,10 +1,11 @@
 ---
 title: "How To: Acquire webhook information after a git trigger has been created"
 description: 
-group: troubleshooting
-sub-group: kb-articles
+group: kb
+sub-group: articles
 toc: true
-kb: true
+kb: false
+ht: true
 common: false
 categories: [Pipelines, CLI]
 support-reviewed: 2023-04-18 LG
