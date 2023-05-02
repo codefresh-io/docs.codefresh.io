@@ -281,19 +281,14 @@ Here is an example with standard and encrypted versions of the same variable in 
 {% raw %}
 version: '1.0'
 steps:
-  description: Freestyle step
-  type: freestyle
-  title: Running tests
-  image: 'ubuntu:latest'
-  commands:
-    - export sec=blat
-    - ls
-    - echo test
-    - ls /
-    - 'cf_export TOKEN=${{steps.test.type}} sec'
-    - 'cf_export MASKED_TOKEN=${{steps.test.type}} sec --mask'
-  stage: test
-...
+  freestyle-step:
+    description: Freestyle step..
+    title: Free styling
+    image: alpine:latest
+    commands:
+      - export EXISTING_VAR=some-value
+
+      - cf_export VAR1=alpine:latest VAR2=VALUE2 EXISTING_VAR --mask
 {% endraw %}      
 {% endhighlight %}
 
