@@ -201,6 +201,7 @@ The Quick View includes the following tabs:
 
 
 
+
 ## Monitor resources for selected application
 
 Monitor the resources deployed in the current version of the selected application in the Current State tab.  
@@ -524,6 +525,7 @@ alt="GitOps Apps dashboard: Deployment chart"
 caption="GitOps Apps dashboard: Deployment chart"
 max-width="60%"
 %}
+
 
 ### Monitor CI details by deployment
 
