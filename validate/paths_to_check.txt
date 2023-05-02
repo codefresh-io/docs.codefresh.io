@@ -176,9 +176,10 @@
 /docs/testing/sonarqube-integration/
 /docs/testing/test-reports/
 /docs/testing/unit-tests/
-/docs/troubleshooting/codefresh-sla-definitions/
-/docs/troubleshooting/common-issues/
-/docs/troubleshooting/kb-articles/
+/docs/kb/codefresh-sla-definitions/
+/docs/kb/common-issues/
+/docs/kb/troubleshooting/
+/docs/kb/how-to/
 /docs/whats-new/whats-new/
 /docs/yaml-examples/examples/
 /docs/yaml-examples/examples/amazon-ecs/
