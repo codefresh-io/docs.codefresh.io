@@ -21,7 +21,7 @@ Set up OIDC SSO for Keycloak in Codefresh by:
 
 Create a Keycloak client for Codefresh.
 
-1. Log in to Keycloak(???){:target="\_blank"}.
+1. Log in to Keycloak.
 1. Select the Realm, and from the sidebar, select **Clients**.
 1. Click **Create Client**, and the **Clients list** tab.
 1. Define the General Settings: 
@@ -67,7 +67,7 @@ Create a Keycloak client for Codefresh.
 
 **Before you begin**  
 * Make sure you have:
-  * The **Client ID**, **Client Secret**, and **Realm ID**, from Keycloak in Step 1
+  * The **Client ID**, **Client Secret**, and **Realm ID** from Keycloak in Step 1
 
 **How to**  
 
