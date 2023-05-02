@@ -121,7 +121,7 @@ Create a Keycloak client for Codefresh.
 You have now completed SSO setup for Keycloak via OIDC.
 
 ## Sync teams via CLI
-Sync users and teams through the [CLI]({{site.baseurl}}.docs/single-sign-on/team-sync/#cli-synchronize-teams).
+Sync users and teams through the [CLI]({{site.baseurl}}/docs/single-sign-on/team-sync/#cli-synchronize-teams).
 
 ## Related articles
 [Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/single-sign-on/single-sign-on/)  
