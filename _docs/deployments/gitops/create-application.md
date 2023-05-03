@@ -254,5 +254,5 @@ Monitor the application.
 ## Related articles
 [Monitoring GitOps applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard)  
 [Managing GitOps applications]({{site.baseurl}}/docs/deployments/gitops/manage-application)  
-[GitOps Overview dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard)  
+[Home Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard)  
 [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)  

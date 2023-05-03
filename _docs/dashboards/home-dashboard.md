@@ -5,7 +5,7 @@ group: dashboards
 toc: true
 ---
 
-Get a global picture of performance for GitOps entities, Argo Workflow entites, and pipelines in the Home dashboard. The Home dashboard is displayed when you log in to Codefresh, providing system-wide visualization in real-time or near real-time for all stakeholders. 
+Get a global picture of performance for GitOps entities, Argo Workflow entites, and pipelines in the Home dashboard. The Home dashboard is displayed when you log in to Codefresh, providing system-wide visualization for all stakeholders. 
  
 
 The Home Dashboard includes three different dashboards:
@@ -17,8 +17,8 @@ The Home Dashboard includes three different dashboards:
   Displays aggregated metrics on Argo Workflows and Delivery Pipelines for trend identify trends.
  
  >**TIP**  
-  The Argo Workflows dashboard is displayed only if you have enabled pipelines with Argo Workflows for the account. 
-  See 
+  The Argo Workflows dashboard is displayed only when pipelines with Argo Workflows are enabled for the account. 
+  Go to [Pipeline Settings](https://g.codefresh.io/account-admin/account-conf/pipeline-settings){:target="\_blank"}.  
 
 * **Pipelines Dashboard**  
   Displays aggregated pipeline data for performance analysis, identification of bottlenecks, and trends.  
@@ -30,26 +30,15 @@ The Home Dashboard includes three different dashboards:
   {% include 
    image.html 
    lightbox="true" 
-   file="/images/reporting/gitops-overview-dashboard.png" 
-   url="/images/reporting/gitops-overview-dashboard.png" 
+   file="/images/reporting/home-dashboard-all.png" 
+   url="/images/reporting/home-dashboard-all.png" 
    alt="Home dashboard: Global enterprise analytics" 
    caption="Home dashboard: Global enterprise analytics"
    max-width="70%" 
    %}
+   
 
-## Global date range filter
-Filter the view in the Home dashboard by the date range.  
-The date range is a global filter that affects define the scope of the data in the Home dashboard. 
 
-{% include 
-   image.html 
-   lightbox="true" 
-   file="/images/reporting/global-filters.png" 
-   url="/images/reporting/global-filters.png" 
-   alt="Home dashboard: Global filters" 
-   caption="Home dashboard: Global filters"
-   max-width="80%" 
-   %}
 
 ## GitOps Dashboard
 Use the GitOps dashboard to:
@@ -58,6 +47,22 @@ Use the GitOps dashboard to:
 1. View the most active applications, and filter by cluster to which they are deployed
 1. Go to the GitOps Apps dashboard to further analyze specific applications 
 
+### Filters for GitOps Dashboard 
+
+* **Time**  
+  The date range filter is always active, and by default, shows data for the last seven days.   
+* **Runtimes**  
+  Select one or more GitOps Runtimes to focus on data by specific GitOps Runtimes.  
+
+{% include 
+   image.html 
+   lightbox="true" 
+   file="/images/reporting/home-dashboard-gitops-filters.png" 
+   url="/images/reporting/home-dashboard-gitops-filters.png" 
+   alt="GitOps dashboard filters" 
+   caption="Home dashboard filters"
+   max-width="80%" 
+   %}
 
 ###  GitOps Runtimes and Managed Clusters
 
@@ -119,8 +124,8 @@ Displays up to five of the most active applications and their current deployment
    lightbox="true" 
    file="/images/reporting/applications-widget.png" 
    url="/images/reporting/applications-widget.png" 
-   alt="Applications in the GitOps Overview dashboard" 
-   caption="Applications in the GitOps Overview dashboard"
+   alt="Applications in the GitOps Dashboard" 
+   caption="Applications in the GitOps Dashboard"
    max-width="70%" 
    %}
 
@@ -162,6 +167,22 @@ Use the Argo Workflows dashboard to:
    max-width="80%" 
    %}
 
+### Global filters for Argo Workflows Dashboard 
+
+* **Time**  
+  The date range filter is always active, and by default, shows data for the last seven days.   
+* **Runtimes**  
+  Select one or more GitOps Runtimes to focus on data by specific GitOps Runtimes.  
+
+{% include 
+   image.html 
+   lightbox="true" 
+   file="/images/reporting/home-dashboard-gitops-filters.png" 
+   url="/images/reporting/home-dashboard-gitops-filters.png" 
+   alt="GitOps dashboard filters" 
+   caption="Home dashboard filters"
+   max-width="80%" 
+   %}
 
 ### Filters for Delivery Pipelines
 Filters narrow the scope of data, allowing you to focus on the information you want to see. Unless otherwise indicated, all filters support multi-selection.

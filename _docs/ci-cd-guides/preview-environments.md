@@ -332,7 +332,7 @@ You can combine the pipeline above with any Codefresh UI dashboard if you want t
 For more information, see:  
 * [Environment dashboard]({{site.baseurl}}/docs/deployments/kubernetes/environment-dashboard/)
 * [Helm promotion dashboard]({{site.baseurl}}/docs/deployments/helm/helm-environment-promotion/)
-* [GitOps dashboard]({{site.baseurl}}/docs/ci-cd-guides/gitops-deployments/#working-with-the-gitops-dashboard)
+* [GitOps deployments]({{site.baseurl}}/docs/ci-cd-guides/gitops-deployments/#working-with-the-gitops-dashboard)
 
 
 

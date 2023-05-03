@@ -103,14 +103,17 @@ To bridge this gap, Codefresh also offers an Environment dashboard that combines
 
 See [Environment dashboard]({{site.baseurl}}/docs/deployments/kubernetes/environment-dashboard/). 
 
-**GitOps Overview dashboard**  
-The GitOps Overview dashboard presents system-wide highlights in real-time for GitOps deployments, making it an ideal tool for management.
-Get insights into important KPIs for entities across runtimes and clusters, in the same location. View status of runtimes and managed clusters, deployments, failed deployments with rollbacks, most active applications, and Delivery Pipelines.
-See [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/).
+**Home Dashboard**  
+The Home Dashboard presents system-wide highlights in real-time for GitOps deployments,  Argo CD Workflows, and pipelines, making it an ideal tool for management.
+* GitOps Dashboard: Get insights into important KPIs for entities across runtimes and clusters, in the same location. View status of runtimes and managed clusters, deployment history, and most active applications.
+* Argo Workflows Dashboard: Get insights into Argo Workflows and Delivery Pipelines.
+* Pipelines Dashboard: Get insights into pipeline activity.
+
+See [Home Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/).
 
 **DORA metrics**  
 The DORA (DevOps Research and Assessment) metrics dashboard pulls out critical metrics for our GitOps deployments. The metrics include deployment frequency, lead time for changes, mean time to recovery, and change failure rate. The metric graphs show performance by default for the last 90 days, with the option to select daily/weekly/monthly granularity views.   
-See [DORA metrics]({{site.baseurl}}/docs/dashboards/home-dashboard/).
+See [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/).
 
 
 ## Related articles

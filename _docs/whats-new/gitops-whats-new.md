@@ -884,7 +884,7 @@ Hosted GitOps supports hosted runtimes. The runtime is hosted on a Codefresh clu
 
 **Dashboards for visibility and traceability**  
 Here's a recap of Codefresh dashboards, including a brand new dashboard dedicated to DORA metrics:
-* GitOps Overview dashboard: For global analytics and system-wide deployment highlights, start with the GitOps Overview dashboard.  
+* Home: GitOps Dashboard: For global analytics and system-wide deployment highlights, start with the GitOps Dashboard.  
 * DORA metrics: A _new_ dashboard for DORA metrics and DevOps quantification. Read more in [DORA metrics](#dora-metrics).  
 * Applications dashboard: Easily track deployments and visualize rollouts across clusters and runtimes in the Applications dashboard.  
  
@@ -1092,7 +1092,7 @@ When viewing logs for applications and workflows, you can now select the contain
 
 * Unable to view, access, and add SSO integrations.
 * Failure on sealing key management check.
-* GitOps Overview dashboard: Most active pipelines and Delivery Pipelines displayed not aligned with the Time filter.
+* Argo Workflows Dashboard: Most active pipelines and Delivery Pipelines displayed not aligned with the Time filter.
 * Incorrect sorting for workflow and pipeline lists.	
 
 
