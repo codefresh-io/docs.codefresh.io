@@ -19,9 +19,6 @@ Setting up SAML SSO for Okta includes:
 ## Step 1: Configure SSO settings for Okta via SAML in Codefresh
 Create a SAML account for Okta in Codefresh  to create an integration for Codefresh in Okta.
 
-SAML SSO settings for Okta include auto-syncing teams and groups in OKta with Codefresh, and automatically activating new users synced to Codefresh.
-
-
 1. In the Codefresh UI, from the toolbar click the **Settings** icon.
 1. In the sidebar, from Access & Collaboration, select [Single Sign-On](https://g.codefresh.io/2.0/account-settings/single-sign-on){:target="\_blank"}.   
 1. Click **Add single-sign-on**, select **SAML**, and then click **Next**.
