@@ -65,6 +65,6 @@ Now you're able to use Terraform modules from private git repositories.
 
 ## Related Items
 
-* [Deploy with Terraform | Codefresh Docs]({{site.baseurl}}/docs/example-catalog/cd-examples/terraform)
-* [Exporting environment variables from a freestyle step | Codefresh Docs]({{site.baseurl}}/docs/pipelines/variables/#exporting-environment-variables-from-a-freestyle-step)
-* [Reuse a Git token from Codefresh integrations | Codefresh Docs]({{site.baseurl}}/docs/pipelines/steps/git-clone/#reuse-a-git-token-from-codefresh-integrations)
+* [Deploy with Terraform]({{site.baseurl}}/docs/example-catalog/cd-examples/terraform)
+* [Exporting environment variables from a freestyle step]({{site.baseurl}}/docs/pipelines/variables/#exporting-environment-variables-from-a-freestyle-step)
+* [Reuse a Git token from Codefresh integrations]({{site.baseurl}}/docs/pipelines/steps/git-clone/#reuse-a-git-token-from-codefresh-integrations)

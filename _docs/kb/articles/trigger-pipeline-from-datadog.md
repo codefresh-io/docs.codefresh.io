@@ -54,7 +54,7 @@ You want to trigger the Codefresh pipeline from a Datadog alert.
 
 3. Click **Save** to create a Webhook.
 
-Now you can refer to this Webhook by its name (@webhook-<WEBHOOK_NAME>) on Monitor\Alert creation page in **Notify your Team** section, for example here: <https://app.datadoghq.com/monitors/create/metric>
+Now you can refer to this Webhook by its name (`@webhook-<WEBHOOK_NAME>`) on Monitor\Alert creation page in **Notify your Team** section, for example here: <https://app.datadoghq.com/monitors/create/metric>
 
 ## Related Items
 

@@ -21,7 +21,7 @@ Incorrect working directory set.
 
 1. Determine the name of your clone step. For most cases, it is `clone`
    * A note: If you are seeing a message in your pipeline editor stating that you have a default clone step, this hidden step is called `main_clone`.
-1. Add the `working_dir: ${{clone}}` attribute to your other steps (if your clone step name is not `clone`, replace it with your actual step name).
+1. Add the {% raw %}`working_dir: ${{clone}}`{% endraw %} attribute to your other steps (if your clone step name is not `clone`, replace it with your actual step name).
 
 >_Notes_ This will ensure all steps are being run from the clone directory. You can change the value of `working_dir` as needed for your pipeline.
 >

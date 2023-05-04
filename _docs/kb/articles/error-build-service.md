@@ -28,6 +28,6 @@ A connection to the appropriate repository or YAML file cannot be made, or there
   * Ensure that the branch you are using has the associated YAML.
 * If using in-line YAML:
   * Fix any errors indicated in the YAML editor.
-  * If no errors appear, ensure that any steps referenced exist. For example, if you have `working_dir` set to `${{colne}}` instead of `${{clone}}`, this error can appear.
+  * If no errors appear, ensure that any steps referenced exist. For example, if you have `working_dir` set to {% raw %}`${{colne}}`{% endraw %} instead of {% raw %}`${{clone}}`{% endraw %}, this error can appear.
 
 >_Notes_ If this still does not work, please open a ticket and include a link to the pipeline(s).

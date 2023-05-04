@@ -19,7 +19,7 @@ You want to run npm install from a directory that is not the root directory.
 
 ### Option 1: Set the working directory
 
-In your step, change the `working_directory` setting from `${{clone_step}}` to `${{clone_step}}/subdir`
+In your step, change the `working_directory` setting from {% raw %}`${{clone_step}}`{% endraw %} to {% raw %}`${{clone_step}}/subdir`{% endraw %}.
 
 ### Option 2: Change directory in step
 
