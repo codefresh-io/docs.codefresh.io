@@ -33,7 +33,15 @@ alt="Adding new Trigger dialog"
 max-width="60%"
 %}
 
-## General trigger Settings
+## Trigger Settings
+
+Trigger settings can be grouped into:
+
+General settings
+
+Filter settings
+Advanced settings
+
 
 {% include image.html
 lightbox="true"
@@ -43,7 +51,9 @@ alt="Adding GIT Trigger"
 max-width="50%"
 %}
 
-The Git trigger is comprised of the following settings:
+### General settings for triggers
+
+The Git trigger comprises the following settings:
 
 * *Trigger Name* - a freetext trigger name (required).
 * *Description* - a freetext description (optional).
@@ -53,6 +63,116 @@ The Git trigger is comprised of the following settings:
     The *PR* options mean that this pipeline will run only on the respective events that happen on a Pull Request. You can select multiple options to further fine-tune the exact event. If you are interested in all events, select *Any Pull Request event*.
 
     >The individual Pull request checkboxes are available only for GitHub repositories.
+
+{: .table .table-bordered .table-hover}
+| Git Triggers: General Settings       | Description            |  
+| --------------        | --------------         |  
+| **Trigger Name**      | Required. A freetext name for the Git trigger. |
+|**Description**       | Optional. A freetext description. |
+|**Repository**        | The repository in the Git provider account to track for the trigger event. You can select any repository, even one different from that used for the code checkout.|
+|**Trigger By**        | The event or events for which to trigger the pipeline. Trigger events are either common to all Git providers or vary according to the Git provider selected. Most trigger events are common to all Git providers, while others are Git-provider specific. {::nomarkdown}<ul><li><b>Azure DevOps</b><li><b>Gerritt</b>: The custom Gerrit trigger events, **Push heads** and **Push tags**, are mapped to the **Push commits** and **Push tags** events in Codefresh.
+Also see [Gerrit documentation](https://gerrit-review.googlesource.com/Documentation/cmd-stream-events.html#events){:target="\_blank"} for the list of events.</li>|
+
+## Filter settings for triggers
+{: .table .table-bordered .table-hover}
+| Git Triggers: Filter Settings       | Description            |  
+| --------------        | --------------         |  
+| **Support pull request events from forks**      | Default is OFF.<br>When ON, creates a trigger for the selected PR event or events based on a fork of the repo selected in **Repository**. Useful for open source projects. |
+|**Branch (Regex Expression)**       | Optional. Triggers an event only if the branch matches the Regex expression. |
+|**PR Comment (Regex Expression)**        | Optional. Triggers an event only for the PR comment for the Pull request comment added, restricted or otherwise, if the comment  matches the Regex expression.|
+|**Pull Request Target Branch (Regex Expression)**        | Triggers an event when a PR is created for any branch that matches the Regex expression.|
+|**Modified Files**        | When empty, triggers the build on commits to any file. <br>Otherwise, triggers the build only if the files modified by the commits match [glob expression](https://en.wikipedia.org/wiki/Glob_(programming)){:target="\_blank"}.|
+
+## Advanced settings for triggers
+
+{: .table .table-bordered .table-hover}
+| Git Triggers: Advanced Settings       | Description            |  
+| --------------        | --------------         |  
+|**Commit Status Title**      | The commit status title pushed to the Git version control system. By default, this is the pipeline name. You can override the name on GIT trigger.|
+|**Build variables**       | The variables to use for this build. Either import the variables from a [shared configuration file]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/), or manually add one or more new variables. To encrypt a variable, select **Encrypt**.  |
+|**Override default behavior for current build**        | Select the options to override the global build behavior set for all the pipelines in the account. <br>{::nomarkdown}<ul><li><b>Ignore Docker engine cache for build</b>: When selected, ignores the local Docker engine cache. Selecting this option may slow down your build. See <a href="https://g.codefresh.io/docs/docs/troubleshooting/common-issues/disabling-codefresh-caching-mechanisms">Docker engine cache</a></li><li><b>Ignore Codefresh cache optimizations for build</b>: When selected, ignores the last build's cache. Selecting this option may slow down your build. See <a href="a href="https://g.codefresh.io/docs/docs/troubleshooting/common-issues/disabling-codefresh-caching-mechanisms">Last build cache</a>.</li><li><b>Reset pipeline volume</b>:</li>Useful for troubleshooting a build that hangs on the first step.  See [here]({{site.baseurl}}/docs/troubleshooting/common-issues/restoring-data-from-pre-existing-image-hangs-on/).</li><li>Report notification on pipeline execution</b>: When selected, sends [Slack notifications]({{site.baseurl}}/docs/integrations/notifications/slack-integration/), in addition to status updates to your Git provider</li></ul>{:/}|
+|**Runtime Environment**        | {::nomarkdown}<ul><li><b>Use pipeline settings</b>: Use the [settings]({{site.baseurl}}/docs/pipelines/pipelines/#pipeline-settings) defined at the pipeline level.</li><li>Override pipeline settings</b>:Override the settings for this build, and select the Runtime Environment and OS, the CPI and Memory resource allocation, and the Minimum disk space required for the build.</li></ul>{:/} |
+|**Service Account**        | Valid only for Amazon ECR. The name of the service account to use for authentication when enabled in Amazon ECR. |
+
+  {::nomarkdown}<br>
+ 
+
+## Git trigger events
+
+Trigger events are common to all Git providers, and provider-specific ones.
+
+### Common trigger events
+
+| Trigger Event:                 | Description            |  
+| --------------                 | --------------         |  
+|**Push commits**                |Push heads for Geritt|
+|**Push tags**                   | ???|
+|**Any Pull Request event**      | ???|
+|**Pull Request opened**         | ???|
+|**Pull Request closed**          | ???|
+|**Pull Request merged**          | ???|
+|**Pull Request closed (not merged)**      | ???|
+|**Pull Request reopened**        | ???|
+|**Pull Request edited**          | ???|
+|**Pull Request assigned**        | ???|
+|**Pull Request unassigned**      | ???|
+|**Pull Request review requested**| ???|
+|**Pull Request review request removed** | ???|
+|**Pull Request labeled**         | ???|
+|**Pull Request comment added (restricted)**      | ???|
+|**Pull Request comment added**      | ???|
+|**Release**      | ???|
+
+
+Azure DevOps
+
+| Trigger Event:                 | Description            |  
+| --------------                 | --------------         |  
+|**Pull Request opened**                | ???|
+                        'pullrequest.created', // Azure devops
+                        'pullrequest.merged', // Azure devops, git closed with merge flag
+                        'pullrequest.unmerged-closed', // git closed without merge flag
+                        'pullrequest.updated', // Azure devops
+                        'release',
+                        
+Bitbucket Cloud and Bitbucket Server
+
+| Trigger Event:                 | Description            |  
+| --------------                 | --------------         |  
+|**Pull Request created**        | ???| 
+|**Pull Request updated**        | ???| 
+|**Pull Request approved**       | ???|   
+|**Pull Request unapproved**     | ???| 
+|**Pull Request fulfilled**      | ???| 
+|**Pull Request rejected**       | ???|   
+|**Pull Request comment created**| ???|                            
+|**Pull Request comment updated**| ???|                            
+|**Pull Request comment deleted**| ???|                            
+
+|**Pull Request deleted**        | ???| 
+|**Pull Request declined**        | ???| 
+|**Pull Request needs work**        | ???| 
+
+Gerritt trigger events
+
+The custom Gerrit trigger events, **Push heads** and **Push tags**,  are mapped to the **Push commits** and **Push tags** events in Codefresh.
+Also see [Gerrit documentation](https://gerrit-review.googlesource.com/Documentation/cmd-stream-events.html#events){:target="\_blank"} for the list of events.
+
+| Trigger Event:                 | Description            |  
+| --------------                 | --------------         |  
+|**Change abandoned**            | Change was  
+|**Change deleted**              | ???| 
+|**Change merged**               | ???| 
+|**Change restored**        | ???| 
+|**Comment added**        | ???| 
+|**Hashtags changed**        | ???| 
+|**Patchset created**        | ???| 
+|**Ref updated**        | ???| 
+|**Reviewer added**        | Trigger when a reviewer is added to a change 
+|**Reviewer deleted**        | ???| 
+|**Topic changed**        | ???| 
+|**WIP state changed**        | ???| 
+|**Vote deleted**        | ???| 
 
 ## Skip triggering pipeline on commit
 The default behavior triggers the pipeline on a commit action.  

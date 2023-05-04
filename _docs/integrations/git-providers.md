@@ -32,7 +32,7 @@ Atlassian Stash/Bitbucket server, as well as the on-premises version of GitLab a
 
 ## Adding more Git providers to your Codefresh Account
 
-By default, you have direct access to Git repositories that exist in the Git provider that you used while signing up for Codefresh. You can easily create Codefresh projects that checkout code from that Git provider without any extra configurations.
+By default, you have direct access to Git repositories that exist in the Git provider you used while signing up for Codefresh. You can easily create Codefresh projects that check out code from that Git provider without any extra configurations.
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
 1. From Configuration in the sidebar, select [**Pipeline Integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
@@ -340,6 +340,18 @@ use any [external secrets that you have defined]({{site.baseurl}}/docs/integrati
 with the same syntax [shown in pipelines]({{site.baseurl}}/docs/pipelines/configuration/secrets-store/).
 
 For example if you already have a `token` on a resource call `git-credentials` you can put in the token field the expression {% raw %}`${{secrets.git-credentials@token}}`{% endraw %}.
+
+## Gerrit
+Codefresh supporrts integration with Gerrit, the open-source web-based code review tool for Git repositories. 
+By integrating Gerrit in Codefresh, y
+
+* **Name**: The name for your Gerrit integration. This is the name that will be used in pipelines to reference the Gerrit integration.
+* **Host URL**: The URL of your application's website, for example, `g.codefresh.io`.
+* **Username**: The username of your Gerrit account.
+* **HTTP Password**: The password of your Gerrit account.
+
+You can then create pipelines with triggers to Git repos 
+
 
 ## Using your Git provider
 
