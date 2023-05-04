@@ -27,4 +27,4 @@ when:
       - master
 ```
 
->_Notes_ More advanced options and custom logic expressions are available for step conditions. Please refer to this documentation page for details: [Conditional Execution of Steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/)
+>_Note_: More advanced options and custom logic expressions are available for step conditions. Please refer to this documentation page for details: [Conditional Execution of Steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/)

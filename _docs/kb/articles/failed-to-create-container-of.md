@@ -24,7 +24,7 @@ You have a freestyle step that is failing with the following error message:
 
 ## Details
 
-You're duplicating a mount point (`${{CF_VOLUME_PATH}} = /codefresh/volume`).
+You're duplicating a mount point ({% raw %}`${{CF_VOLUME_PATH}} = /codefresh/volume`{% endraw %}).
 For example:
 
 {% raw %}

@@ -29,7 +29,7 @@ The pipeline is restarted upon using an approval step. The clone step is run onc
 * For artifacts, consider using an external store as a temporary holding location.
 * As an advanced option, consider running a secondary pipeline:
   1. Create a second pipeline which only includes an approval step
-  2. In your primary pipeline, [use the `codefresh-run` step](https://g.codefresh.io/steps/codefresh-run) to run the approval pipeline.
+  2. In your primary pipeline, [use the codefresh-run step](https://g.codefresh.io/steps/codefresh-run) to run the approval pipeline.
   3. To avoid timeouts, include a looping print statement.
   4. If the secondary pipeline is approved, the primary pipeline will continue.
 

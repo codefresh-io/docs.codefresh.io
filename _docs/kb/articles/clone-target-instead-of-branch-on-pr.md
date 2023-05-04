@@ -7,7 +7,7 @@ toc: true
 kb: false
 ht: true
 common: false
-categories: [Pieplines]
+categories: [Pipelines]
 support-reviewed: 2023-04-18 LG
 ---
 
@@ -22,7 +22,7 @@ build.
 
 ## Details
 
-* Create a separate pipeline that uses `${{CF_PULL_REQUEST_TARGET}}` instead of the standard `${{CF_BRANCH}}` or
+* Create a separate pipeline that uses {% raw %}`${{CF_PULL_REQUEST_TARGET}}`{% endraw %} instead of the standard {% raw %}`${{CF_BRANCH}}`{% endraw %} or
 * Add the following step before your clone step to check if `CF_PULL_REQUEST_TARGET` exists, and if it does assign its value to `CF_BRANCH`:
 
     {% raw %}

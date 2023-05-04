@@ -23,12 +23,16 @@ You have certain steps you want to skip over in certain circumstances. You are u
 4. Set a Variable with an appropriate name and value. For example, `SkipTest` set to `true`
 5. Add a condition to your step. In this case, we will only run this step if the variable `SkipTest` is true.
 
+{% raw %}
+
 ```yaml
 when:
   condition:
     all:
       skipdeploy: '${{SkipTest}} == "true"'
 ```
+
+{% endraw %}
 
 >_Notes_ Other options for skipping steps are available.
 

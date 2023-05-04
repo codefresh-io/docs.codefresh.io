@@ -29,8 +29,8 @@ This error can mean multiple things, but the most common reason is that the buil
 
 1. Check the size (Small, Medium, Large, etc.) of the build to see the memory limit for the build.
 2. Choose one of the options:
-   * Upgrade Jest to v29.0 or later and use [`workerIdleMemoryLimit` option](https://jestjs.io/docs/configuration#workeridlememorylimit-numberstring) which was created as a workaround for aforementioned issue. Adjust this option according to the amount of memory available for your build.
-   * Use [`--max-old-space-size` V8 flag](https://nodejs.org/api/cli.html#--max-old-space-sizesize-in-megabytes) to set the max memory size of V8's old memory section:  
+   * Upgrade Jest to v29.0 or later and use [workerIdleMemoryLimit option](https://jestjs.io/docs/configuration#workeridlememorylimit-numberstring) which was created as a workaround for aforementioned issue. Adjust this option according to the amount of memory available for your build.
+   * Use [--max-old-space-size V8 flag](https://nodejs.org/api/cli.html#--max-old-space-sizesize-in-megabytes) to set the max memory size of V8's old memory section:  
 
       Example: change your test command from `jest` to `node --max-old-space-size=<SIZE> node_modules/.bin/jest <JEST_ARGS>`, where `--max-old-space-size` value is smaller than the memory limit for the build size in MB.
 

@@ -43,9 +43,9 @@ By default, Jest waits for any operations to be finished before exiting, which c
 
 #### Quick workaround
 
-A quick workaround (which is not recommended for daily usage) would be to run tests with [`--forceExit` flag](https://jestjs.io/docs/cli#--forceexit), which says to Jest to ignore open handles and exit process as soon as tests are
+A quick workaround (which is not recommended for daily usage) would be to run tests with [--forceExit flag](https://jestjs.io/docs/cli#--forceexit), which says to Jest to ignore open handles and exit process as soon as tests are
 finished.
 
 #### Solution
 
-Please debug and fix the app locally with [`--detectOpenHandles` flag](https://jestjs.io/docs/cli#--detectopenhandles) to find out which operations keeps Jest from exiting.
+Please debug and fix the app locally with [--detectOpenHandles flag](https://jestjs.io/docs/cli#--detectopenhandles) to find out which operations keeps Jest from exiting.
