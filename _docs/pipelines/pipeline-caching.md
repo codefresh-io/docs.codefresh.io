@@ -23,7 +23,7 @@ Here is a quick overview of all types of caching used in a Codefresh pipeline:
 | Docker registry caching  | Automatic |  Pipeline build steps | Works for all [connected Docker registries]({{site.baseurl}}/docs/integrations/docker-registries/)|
 | Traditional build caching  | Automatic/manual |  Pipeline [freestyle steps]({{site.baseurl}}/docs/pipelines/steps/freestyle/) | See notes for [parallel builds]({{site.baseurl}}/docs/pipelines/advanced-workflows/)|
 
-All these caching mechanisms are enabled by default and you can [freely disable them]({{site.baseurl}}/docs/troubleshooting/common-issues/disabling-codefresh-caching-mechanisms/) if you encounter any issues with caching.
+All these caching mechanisms are enabled by default and you can [freely disable them]({{site.baseurl}}/docs/kb/articles/disabling-codefresh-caching-mechanisms/) if you encounter any issues with caching.
 
 Let's see these caches in order and how to use them effectively.
 
