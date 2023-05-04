@@ -7,8 +7,7 @@ toc: true
 kb: false
 ht: true
 common: false
-categories: 
-kb-cat: [Pipelines]
+categories: [Pipelines]
 support-reviewed: 2023-05-04 LG
 ---
 
