@@ -32,12 +32,14 @@ SAML SSO settings for Okta include auto-syncing teams and groups in OKta with Co
   * **IDP Entry**: Type in any character. You will enter the correct value from Okta in the final step.
   * **Application Certificate**: You will enter the correct value from Okta in the final step.
   * **Provider**: Leave empty. 
-  <!--- * **Auto-sync users and teams to Codefresh**: Optional. When selected, automatically syncs teams or groups in Okta to Codefresh, every 12 hours by default. You can define a different sync interval in **Sync interval**.
+  <!--- 
+  * **Auto-sync users and teams to Codefresh**: Optional. When selected, automatically syncs teams or groups in Okta to Codefresh, every 12 hours by default. You can define a different sync interval in **Sync interval**.
       > **NOTE**:  
         >Though you can assign an Okta application to both groups and individual users, Codefresh _only syncs users who are part of teams_.  
          New users in Okta, _not_ assigned to a team, are **NOT** synced with Codefresh. You should first assign the user to a team for the sync to work.
   * **Activate user after sync**: Optional. When selected, Codefresh automatically invites and activates new users added during the automated sync, without waiting for the users to accept the invitations.
-  * **Access Token**: Optional. The OKTA API token that you generated in Okta, used to sync groups and their users from OKTA to Codefresh.  -->
+  * **Access Token**: Optional. The OKTA API token that you generated in Okta, used to sync groups and their users from OKTA to Codefresh.  
+-->
   * **Client Host**: The OKTA organization URL, for example, `https://<company>.okta.com`.   
 1. Click **Add**.
   The SAML integration for Okta is added and appears in the list of SSOs. 
