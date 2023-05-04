@@ -296,5 +296,16 @@
 
 
 
-  
+- title: "Knowledge Base"
+  icon: images/home-icons/troubleshooting.svg
+  url: ''
+  links:
+  - title: Common Issues
+    localurl: /docs/kb/common-issues
+  - title: How To's
+    localurl: /docs/kb/how-to
+  - title: Troubleshooting
+    localurl: /docs/kb/troubleshooting
+  - title: Codefresh SLA Definitions
+    localurl: /docs/kb/codefresh-sla-definitions
 
