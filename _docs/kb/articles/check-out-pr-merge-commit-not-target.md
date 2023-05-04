@@ -27,5 +27,7 @@ You can set up your pipeline to test and see if this variable exists [2], and de
 ## Related Items
 
 [1] <https://codefresh.io/docs/docs/pipelines/variables/#github-pull-request-variables>
+
 [2] <https://codefresh.io/docs/docs/kb/articles/check-env-vars-in-conditionals/>
+
 [3] <https://codefresh.io/docs/docs/pipelines/steps/git-clone/#fields>

@@ -36,4 +36,5 @@ cleaner_always_executed:
 ## Related Items
 
 [1] <https://codefresh.io/docs/docs/pipelines/hooks/>
+
 [2] <https://codefresh.io/docs/docs/pipelines/advanced-workflows/#parallel-pipeline-mode>
