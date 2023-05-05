@@ -168,7 +168,6 @@
 /docs/terms-and-privacy-policy/privacy-policy/
 /docs/terms-and-privacy-policy/sla/
 /docs/terms-and-privacy-policy/terms-of-service/
-/docs/terms-and-privacy-policy/codefresh-sla-definitions/
 /docs/testing/automatic-preview-environments/
 /docs/testing/composition-service-discovery/
 /docs/testing/create-composition/
@@ -177,6 +176,7 @@
 /docs/testing/sonarqube-integration/
 /docs/testing/test-reports/
 /docs/testing/unit-tests/
+/docs/kb/codefresh-sla-definitions/
 /docs/kb/common-issues/
 /docs/kb/troubleshooting/
 /docs/kb/how-to/
