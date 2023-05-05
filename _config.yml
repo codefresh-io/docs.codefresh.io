@@ -113,7 +113,6 @@ defaults:
 #RSS Feed Location
 feed:
   path: /changelog/feed.atom
-  excerpt_only: true
 
 # Custom variables
 repo:                 "https://github.com/codefresh-io/docs.codefresh.io"
