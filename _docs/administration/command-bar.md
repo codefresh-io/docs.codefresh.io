@@ -1,4 +1,9 @@
-
+---
+title: "Navigation and actions with Quick Search "
+description: "How to find features, settings, and perform actions with Quick Search"
+group: administration
+toc: true
+---
 
 
 
