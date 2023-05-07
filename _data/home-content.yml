@@ -13,7 +13,8 @@
       localurl: /docs/getting-started/gitops-codefresh/
     - title: Concepts in Codefresh
       localurl: /docs/getting-started/concepts/
-
+    - title: Quick search in Codefresh
+      localurl: /docs/getting-started/command-bar/
 
 - title: Quick starts
   icon: images/home-icons/tutorial.svg

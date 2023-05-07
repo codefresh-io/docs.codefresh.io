@@ -12,6 +12,8 @@
       url: "/gitops-codefresh"
     - title: Concepts in Codefresh
       url: "/concepts"
+    - title: Quick Search
+      url: "/command-bar"  
    
 
 - title: Quick starts
@@ -518,9 +520,7 @@
 
 - title: Administration
   url: "/administration"
-  pages:
-    - title: Quick Search
-      url: "/command-bar"      
+  pages:    
     - title: Account & user management
       sub-pages:  
         - title: Create a Codefresh account

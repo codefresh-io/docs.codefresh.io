@@ -1,7 +1,7 @@
 ---
-title: "Navigation and actions with Quick Search "
-description: "How to find features, settings, and perform actions with Quick Search"
-group: administration
+title: "Quick search in Codefresh"
+description: "How to perform actions, find features, settings, and more with Quick Search"
+group: getting-started
 toc: true
 ---
 
@@ -9,7 +9,7 @@ toc: true
 
 For seamless navigation without extra clicks, access tasks and features with Codefresh's Quick Search. 
 
-## About the Quick Search
+## About Quick Search
 
 **Where**: Toolbar, top-left.  
 **How**: Start typing in the first letters of what you're looking for, and then select the option or use the shortcut keys.
