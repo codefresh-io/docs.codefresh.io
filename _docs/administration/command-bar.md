@@ -55,3 +55,6 @@ alt="Switch accounts with Quick Search"
 caption="Switch accounts with Quick Search" 
 max-width="60%" 
 %}
+
+## Related articles
+[Account and user settings]({{site.baseurl}}/docs/administration/account-user-management)
