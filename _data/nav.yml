@@ -519,6 +519,8 @@
 - title: Administration
   url: "/administration"
   pages:
+    - title: Quick Search
+      url: "/command-bar"      
     - title: Account & user management
       sub-pages:  
         - title: Create a Codefresh account
