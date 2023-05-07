@@ -167,7 +167,7 @@ Use the Argo Workflows dashboard to:
    max-width="80%" 
    %}
 
-### Global filters for Argo Workflows Dashboard 
+### Filters for Argo Workflows Dashboard 
 
 * **Time**  
   The date range filter is always active, and by default, shows data for the last seven days.   
