@@ -355,7 +355,8 @@ You can then filter by the specific pipeline or pipelines and analyze success ra
 
 ## Related articles
 [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)  
-[Monitoring applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/)  
+[Monitoring applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/)
+[Monitoring pipelines]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/)  
 [Images in Codefresh]({{site.baseurl}}/docs/dashboards/images/)  
 
 
