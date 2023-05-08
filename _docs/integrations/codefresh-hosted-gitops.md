@@ -24,8 +24,8 @@ After the three-step process of provisioning your hosted runtime, Codefresh hand
 {% include 
 image.html 
 lightbox="true" 
-file="/images/integrations/codefresh-hosted-gitops/hosted-runtime.png" 
-url="/images/integrations/codefresh-hosted-gitops/hosted-runtime.png"
+file="/images/runtime/hosted-gitops-initial-view.png" 
+url="/images/runtime/hosted-gitops-initial-view.png"
 caption="Provisioning a Hosted GitOps runtime" 
 alt="Provisioning a Hosted GitOps runtime" 
 max-width="70%" 
@@ -33,31 +33,31 @@ max-width="70%"
 
 ### Dashboards for visibility and traceability
 
-A set of dashboards provides visibility into all aspects of deployment:  
+A set of dashboards provide visibility into all aspects of deployment:  
 
-* The GitOps Overview dashboard presents enterprise-wide deployment highlights across runtimes and clusters.  
+* The GitOps Dashboard in the Home Dashboard presents enterprise-wide deployment highlights across runtimes and clusters.  
   Get insights into important KPIs and deployments, all in the same location. View status of runtimes and managed clusters, deployments, failed deployments with rollbacks, most active applications.  Use filters to narrow the scope to focus on anything specific.  
 
   {% include 
 image.html 
 lightbox="true" 
-file="/images/integrations/codefresh-hosted-gitops/hosted-home-dashboard.png" 
-url="/images/integrations/codefresh-hosted-gitops/hosted-home-dashboard.png"
-caption="GitOps Overview dashboard in Hosted GitOps"
-alt="GitOps Overview dashboard in Hosted GitOps" 
+file="/images/reporting/home-dashboard-gitops.png" 
+url="/images/reporting/home-dashboard-gitops.png"
+caption="GitOps Dashboard"
+alt="GitOps Dashboard" 
 max-width="70%" 
 %}
 
-* The Applications dashboard displays applications, also across runtimes and clusters, from which you can select individual applications for further analysis.  
+* The GitOps Apps dashboard displays applications, also across runtimes and clusters, from which you can select individual applications for further analysis.  
   Individual application information is grouped by current and historical deployments, enriched with Argo, Jira, and Git details, including rollout visualizations for ongoing deployments, and an interactive tree view of application resources.
 
 {% include 
 image.html 
 lightbox="true" 
-file="/images/integrations/codefresh-hosted-gitops/hosted-app-dashboard.png" 
-url="/images/integrations/codefresh-hosted-gitops/hosted-app-dashboard.png"
-caption="Applications dashboard in Hosted GitOps" 
-alt="Applications dashboard in Hosted GitOps" 
+file="/images/applications/app-dashboard-main-view.png" 
+url="/images/applications/app-dashboard-main-view.png"
+caption="GitOps Apps dashboard" 
+alt="GitOps Apps dashboard" 
 max-width="70%" 
 %}
 
@@ -67,10 +67,10 @@ max-width="70%"
 {% include 
 image.html 
 lightbox="true" 
-file="/images/integrations/codefresh-hosted-gitops/hosted-dora-metrics.png" 
-url="/images/integrations/codefresh-hosted-gitops/hosted-dora-metrics.png"
-caption="DORA metrics in Hosted GitOps" 
-alt="DORA metrics in Hosted GitOps" 
+file="/images/reporting/dora-metrics.png" 
+url="/images/reporting/dora-metrics.png"
+caption="DORA Metrics dashboard" 
+alt="DORA Metrics dashboard" 
 max-width="60%" 
 %}
 

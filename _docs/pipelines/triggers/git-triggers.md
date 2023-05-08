@@ -524,4 +524,4 @@ The build step calls the second pipeline. The end result is that pipeline B runs
 [Triggers in pipelines]({{site.baseurl}}/docs/pipelines/triggers)  
 [Cron triggers]({{site.baseurl}}/docs/pipelines/triggers/cron-triggers/)  
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
-[Using multi-git triggers]({{site.baseurl}}/docs/troubleshooting/common-issues/multi-git-triggers/)
+[Using multi-git triggers]({{site.baseurl}}/docs/kb/articles/multi-git-triggers/)

@@ -92,6 +92,6 @@ In addition, you can select the granularity for each graph:
   The X-axis charts the time based on the granularity, and the Y-axis charts the time in hours. The number shown on the top right is the average number of hours between the previous deployment and rollback for the same application.
 
 ## Related articles    
-[GitOps Overview dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard)  
+[Home Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard)  
 [Monitoring applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/)  
 
