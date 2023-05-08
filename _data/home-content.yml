@@ -90,8 +90,8 @@
   icon: images/home-icons/guides.png
   url: ''
   links:
-    - title: GitOps Overview dashboard
-      localurl: /docs/dashboards/home-dashboard/
+    - title: Home dashboard
+      localurl: /docs/dashboards/home-dashboard/   
     - title: DORA metrics
       localurl: /docs/dashboards/dora-metrics/
     - title: Images
