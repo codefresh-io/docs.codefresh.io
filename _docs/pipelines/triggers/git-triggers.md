@@ -12,18 +12,28 @@ Git triggers are the most basic of the trigger types for performing [Continuous 
 
 At the trigger level, you can select:
 
-* Which code repository will be used as a trigger
-* Which branches will be affected by a pipeline
-* If a trigger will apply to a Pull Request (PR) or not
+* The code repository to be used as a trigger
+* The branches affected by a pipeline
+* If a trigger applies to a Pull Request (PR) or not
 
 > You can select a repository other than the one the project itself belongs to. It is possible
  to trigger a build on project A even though a commit happened on project B.
 
 You can also use [conditional expressions]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/) at the pipeline level to further fine-tune the way specific steps (or other transitive pipelines) are executed.
 
-## Manage Git triggers with Codefresh UI
+## Add Git triggers in Codefresh
 
-To add a new GIT trigger, navigate to the Codefresh Pipeline *Configuration* view and expand the *Triggers* section on the right side. Press the *Add Trigger* button and select a *GIT* trigger type to add.
+**Before you begin**  
+Review:
+* [Git trigger settings](#git-trigger-settings) 
+* [Working with Git triggers](#working-with-git-triggers)
+
+**How to**  
+
+1. In the Codefresh UI, from the sidebar,select **Pipelines**.
+1. Select the pipeline to which to add the trigger, and then click the **Workflow** tab.
+1. On the right, click **Triggers**, and then click **Add Trigger**.
+1. Click **Git**, click **next** and then configure the trigger settings.
 
 {% include image.html
 lightbox="true"
@@ -33,14 +43,13 @@ alt="Adding new Trigger dialog"
 max-width="60%"
 %}
 
-## Trigger Settings
+## Git trigger settings
 
 Trigger settings can be grouped into:
 
-General settings
-
-Filter settings
-Advanced settings
+* [General settings](#general-settings-for-git-triggers)
+* [Filter settings](#filter-settings-for-git-triggers)
+* [Advanced settings](#advanced-settings-for-git-triggers)
 
 
 {% include image.html
@@ -51,55 +60,44 @@ alt="Adding GIT Trigger"
 max-width="50%"
 %}
 
-### General settings for triggers
-
-The Git trigger comprises the following settings:
-
-* *Trigger Name* - a freetext trigger name (required).
-* *Description* - a freetext description (optional).
-* *Repository* - you can select any repository even something different than the one that is used for the code checkout.
-* *Trigger by* - Options for commits and PRs. 
-    The *Push Commit* option, enabled by default, means that this pipeline will run for *any* commit as long as its source branch matches the naming scheme. This includes commits on pull requests.  
-    The *PR* options mean that this pipeline will run only on the respective events that happen on a Pull Request. You can select multiple options to further fine-tune the exact event. If you are interested in all events, select *Any Pull Request event*.
-
-    >The individual Pull request checkboxes are available only for GitHub repositories.
+### General settings for Git triggers
 
 {: .table .table-bordered .table-hover}
-| Git Triggers: General Settings       | Description            |  
+| Git Triggers:<br>General Settings       | Description            |  
 | --------------        | --------------         |  
 | **Trigger Name**      | Required. A freetext name for the Git trigger. |
 |**Description**       | Optional. A freetext description. |
 |**Repository**        | The repository in the Git provider account to track for the trigger event. You can select any repository, even one different from that used for the code checkout.|
-|**Trigger By**        | The event or events for which to trigger the pipeline. Trigger events are either common to all Git providers or vary according to the Git provider selected. Most trigger events are common to all Git providers, while others are Git-provider specific. {::nomarkdown}<ul><li><b>Azure DevOps</b><li><b>Gerritt</b>: The custom Gerrit trigger events, **Push heads** and **Push tags**, are mapped to the **Push commits** and **Push tags** events in Codefresh.
-Also see [Gerrit documentation](https://gerrit-review.googlesource.com/Documentation/cmd-stream-events.html#events){:target="\_blank"} for the list of events.</li>|
+|**Trigger By**        | The event or events for which to trigger the pipeline. Trigger events are either common to all Git providers or vary according to the Git provider selected. Most trigger events are common to all Git providers, while others are Git-provider specific. <br>The **Push Commit** option, enabled by default, means that this pipeline will run for *any* commit as long as its source branch matches the naming scheme. This includes commits on pull requests.  <br>The **PR** options mean that this pipeline will run only on the respective events that happen on a Pull Request. You can select multiple options to further fine-tune the exact event. If you are interested in all events, select **Any Pull Request event**.<br> The individual Pull request checkboxes are available only for GitHub repositories.{::nomarkdown}<ul><li><b>Azure DevOps</b>: See <a href="https://learn.microsoft.com/en-us/azure/devops/pipelines/build/triggers?view=azure-devops/" target="_blank">Azure DevOps documentation</a>.</li><li><b>Bitbucket and Bitbucket Server</b>: See <a href="https://support.atlassian.com/jira-cloud-administration/docs/understand-workflow-triggers" target="_blank">Atlassian Support documentation</a>.</li><li><b>Gerrit</b>: The custom Gerrit trigger events, <b>Push heads</b> and <b>Push tags</b>, are mapped to the <b>Push commits</b> and <b>Push tags</b> events in Codefresh. For the list of trigger events and their descriptions, see <a href="https://gerrit-review.googlesource.com/Documentation/cmd-stream-events.html#events" target="_blank">Gerrit documentation</a>.</li></ul>{:/}|
 
-## Filter settings for triggers
+### Filter settings for Git triggers
+
+| Git Triggers: <br>Filter Settings           |Description  |
+| ----------------------------------------------| -----      |
+| **Support pull request events from forks**    | Default is OFF.<br>When ON, creates a trigger for the selected PR event or events based on a fork of the repo selected in **Repository**. Useful for open source projects. See [Build pull requests from forks](#build-pull-requests-from-forks) in this article. |
+| **Branch (Regex Expression)**                 | Optional. Triggers an event only if the branch matches the Regex expression. See [Pull Request Target Branch and Branch](#pull-request-target-branch-and-branch) in this article.  |
+| **PR Comment (Regex Expression)**             | Optional. Triggers an event only for the PR comment for the **Pull request comment added**, **restricted** or otherwise, if the comment matches the Regex expression. See [Pull Request from comments](#pull-requests-from-comments) in this article. |
+| **Pull Request Target Branch (Regex Expression)** | Triggers an event when a PR is created for any branch that matches the Regex expression. See [Pull Request Target Branch and Branch](#pull-request-target-branch-and-branch) in this article. |
+| **Modified Files**                            | When empty, triggers the build on commits to any file. <br>Otherwise, triggers the build only if the files modified by the commits match [glob expression](https://en.wikipedia.org/wiki/Glob_(programming)){:target="\_blank"}.  |
+
+
+### Advanced settings for Git triggers
+
 {: .table .table-bordered .table-hover}
-| Git Triggers: Filter Settings       | Description            |  
-| --------------        | --------------         |  
-| **Support pull request events from forks**      | Default is OFF.<br>When ON, creates a trigger for the selected PR event or events based on a fork of the repo selected in **Repository**. Useful for open source projects. |
-|**Branch (Regex Expression)**       | Optional. Triggers an event only if the branch matches the Regex expression. |
-|**PR Comment (Regex Expression)**        | Optional. Triggers an event only for the PR comment for the Pull request comment added, restricted or otherwise, if the comment  matches the Regex expression.|
-|**Pull Request Target Branch (Regex Expression)**        | Triggers an event when a PR is created for any branch that matches the Regex expression.|
-|**Modified Files**        | When empty, triggers the build on commits to any file. <br>Otherwise, triggers the build only if the files modified by the commits match [glob expression](https://en.wikipedia.org/wiki/Glob_(programming)){:target="\_blank"}.|
-
-## Advanced settings for triggers
-
-{: .table .table-bordered .table-hover}
-| Git Triggers: Advanced Settings       | Description            |  
+| Git Triggers:<br>Advanced Settings       | Description            |  
 | --------------        | --------------         |  
 |**Commit Status Title**      | The commit status title pushed to the Git version control system. By default, this is the pipeline name. You can override the name on GIT trigger.|
 |**Build variables**       | The variables to use for this build. Either import the variables from a [shared configuration file]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/), or manually add one or more new variables. To encrypt a variable, select **Encrypt**.  |
-|**Override default behavior for current build**        | Select the options to override the global build behavior set for all the pipelines in the account. <br>{::nomarkdown}<ul><li><b>Ignore Docker engine cache for build</b>: When selected, ignores the local Docker engine cache. Selecting this option may slow down your build. See <a href="https://g.codefresh.io/docs/docs/troubleshooting/common-issues/disabling-codefresh-caching-mechanisms">Docker engine cache</a></li><li><b>Ignore Codefresh cache optimizations for build</b>: When selected, ignores the last build's cache. Selecting this option may slow down your build. See <a href="a href="https://g.codefresh.io/docs/docs/troubleshooting/common-issues/disabling-codefresh-caching-mechanisms">Last build cache</a>.</li><li><b>Reset pipeline volume</b>:</li>Useful for troubleshooting a build that hangs on the first step.  See [here]({{site.baseurl}}/docs/troubleshooting/common-issues/restoring-data-from-pre-existing-image-hangs-on/).</li><li>Report notification on pipeline execution</b>: When selected, sends [Slack notifications]({{site.baseurl}}/docs/integrations/notifications/slack-integration/), in addition to status updates to your Git provider</li></ul>{:/}|
-|**Runtime Environment**        | {::nomarkdown}<ul><li><b>Use pipeline settings</b>: Use the [settings]({{site.baseurl}}/docs/pipelines/pipelines/#pipeline-settings) defined at the pipeline level.</li><li>Override pipeline settings</b>:Override the settings for this build, and select the Runtime Environment and OS, the CPI and Memory resource allocation, and the Minimum disk space required for the build.</li></ul>{:/} |
+|**Override default behavior for current build**        | Select the options to override the global build behavior set for all the pipelines in the account. <br>{::nomarkdown}<ul><li><b>Ignore Docker engine cache for build</b>: When selected, ignores the local Docker engine cache. Selecting this option may slow down your build. See <a href="https://codefresh.io/docs/docs/kb/articles/disabling-codefresh-caching-mechanisms">Docker engine cache</a></li><li><b>Ignore Codefresh cache optimizations for build</b>: When selected, ignores the last build's cache. Selecting this option may slow down your build. See <a href="https://codefresh.io/docs/docs/kb/articles/disabling-codefresh-caching-mechanisms">Last build cache</a>.</li><li><b>Reset pipeline volume</b>:</li>Useful for troubleshooting a build that hangs on the first step.  See <a href="https://codefresh.io/docs/docs/kb/articles/restoring-data-from-pre-existing-image-hangs-on/" target="_blank">Hangs on restoring data from pre-existing image</a>.</li><li><b>Report notification on pipeline execution</b>: When selected, sends <a href="https://codefresh.io/docs/docs/integrations/notifications/slack-integration/" target="_blank">Slack notifications</a>, in addition to status updates to your Git provider</li></ul>{:/}|
+|**Runtime Environment**        | {::nomarkdown}<ul><li><b>Use pipeline settings</b>: Use the <a href="https://codefresh.io/docs/docs/pipelines/pipelines/#pipeline-settings">settings</a> defined at the pipeline level.</li><li>Override pipeline settings</b>:Override the settings for this build, and select the Runtime Environment and OS, the CPI and Memory resource allocation, and the Minimum disk space required for the build. See <a href="https://codefresh.io/docs/docs/pipelines/triggers/git-triggers/#set-minimum-disk-space-for-build-volume-by-trigger">Set minimum disk space for build volume by trigger<a/>.</li></ul>{:/} |
 |**Service Account**        | Valid only for Amazon ECR. The name of the service account to use for authentication when enabled in Amazon ECR. |
 
-  {::nomarkdown}<br>
- 
 
+ 
+<!---
 ## Git trigger events
 
-Trigger events are common to all Git providers, and provider-specific ones.
+Trigger events are either common to all Git providers, and provider-specific ones.
 
 ### Common trigger events
 
@@ -174,19 +172,11 @@ Also see [Gerrit documentation](https://gerrit-review.googlesource.com/Documenta
 |**WIP state changed**        | ???| 
 |**Vote deleted**        | ???| 
 
-## Skip triggering pipeline on commit
-The default behavior triggers the pipeline on a commit action.  
-Override the default behavior by adding any one of the predefined strings anywhere in the commit message.
+-->
 
->Remember to include the opening and closing parentheses when adding the strings. 
 
-* `[skip ci]`
-* `[ci skip]`
-* `[no ci]`
-* `[skip codefresh]`
-* `[codefresh skip]`
 
-## Configure Filter Settings
+## Working with Git triggers
 
 {% include image.html
 lightbox="true"
@@ -196,38 +186,49 @@ alt="Configure Filter Settings"
 max-width="50%"
 %}
 
-* *Support pull request events from forks* - toggle that is useful for open source projects.
-* *Branch Field* - this is a regular expression and will only trigger for branches that match this naming pattern.
-* *PR Comment (restricted) and PR Comment Fields* - useful for open source projects.
-* *Pull Request Target* branch - this is a regular expression and will trigger only when a Pull request is created against any branch that matches it.
-* *Modified Files* - allows you to constrain the build and trigger it only if the modified files from the commit match this [glob expression](https://en.wikipedia.org/wiki/Glob_(programming)){:target="\_blank"}.
+### Skip triggering pipeline on commit
+The default behavior triggers the pipeline on a commit action.  
+Override the default behavior by adding any one of the predefined strings anywhere in the commit message.
+
+>**NOTE**: Remember to include the opening and closing parentheses when adding the strings. 
+
+* `[skip ci]`
+* `[ci skip]`
+* `[no ci]`
+* `[skip codefresh]`
+* `[codefresh skip]`
+
+
 
 ### Pull Request Target Branch and Branch 
 
-The Pull Request Target Branch field allows you to trigger this pipeline only when the target of a Pull Request (i.e. where the pr is going to be merged at) matches the
-branch name regular expression. Common examples for branch names would be `master` or `production`.
+The **Pull Request Target Branch** option allows you to trigger the pipeline only when the target of a Pull Request (PR), that is, where the PR will be merged to, matches the
+branch name in the regular expression. Common examples for branch names would be `master` or `production`.
 
-This field has only meaning when a commit happens in the context of a pull request and in that case:
+>**NOTE**:  
+  >The **Pull Request Target Branch** option is available for all Git providers, except Atlassian Stash.
+  >
+  >When using Terraform, please use the [Go regex syntax](https://github.com/google/re2/wiki/Syntax){:target="\_blank"} as some Perl regex syntax is not compatible.
 
-1. The Branch field will look at the branch that the commit is happening on 
+This option has meaning when a commit happens in the context of a PR, and in that case:
+
+1. The Branch field looks at the branch that the commit is happening on 
 1. The PR Target Branch field will look at the branch the PR is happening against
 
-For example, if you create a commit on a branch that is named `my-feature` which is currently part of PR against branch `staging` (i.e. somebody wants to merge `my-feature` **TO** `staging`) then:
+For example, if you create a commit on a branch named `my-feature`, which is currently part of PR against branch `staging` (i.e. somebody wants to merge `my-feature` **TO** `staging`) then:
 
 1. The `BRANCH` field value will try to match against `my-feature`
 1. the `PULL REQUEST TARGET BRANCH` will try to match against `staging`
 
 Here are some more syntax examples:
 
-* `/^((qa-release)$).*/g` - only run if branch is named `qa-release`.
-* `/^((production)$).*/g` - only run if branch is named `production`.
-* `/release/g` - only run if branch name contains `release` as substring.
-* `/feature-/gi` - only run if branch is `feature-foo`, `feature-bar`, `my-feature-123` etc.
-* `/^((?!^feature).)*$/gi` - only run if branch name does **not** start with `feature`.
+* `/^((qa-release)$).*/g`: Only run if `branch` is named `qa-release`.
+* `/^((production)$).*/g`: Only run if `branch` is named `production`.
+* `/release/g`: Only run if `branch` name contains `release` as substring.
+* `/feature-/gi`; Only run if `branch` is `feature-foo`, `feature-bar`, `my-feature-123` etc.
+* `/^((?!^feature).)*$/gi`: Only run if `branch` name does **not** start with `feature`.
 
->The field *Pull Request Target* is available for all Git providers apart from Atlassian stash.
->
->When using the Terraform Provider, please use the [Go regex syntax](https://github.com/google/re2/wiki/Syntax){:target="\_blank"} as some perl regex syntax is not compatible.
+
 
 The concept behind these checkboxes and branch name fields is to allow you to define which pipelines run for various workflows in your organization.
 
@@ -250,7 +251,7 @@ There are two options:
   This option triggers an event when PR comments are made by any user, regardless of their permissions.  
   Because it is not restricted to owners and collaborators, this option is useful in GitHub, to enable triggers for PR comments made by users in GitHub teams.
 
-  > We strongly recommend selecting this option only for _private repositories_.  
+     > We strongly recommend selecting this option only for _private repositories_.  
 
 
 {% include image.html
@@ -263,7 +264,7 @@ max-width="50%"
 %}
 
 
-### Support for building pull requests from forks
+### Build pull requests from forks
 
 By default, the Git trigger works for events coming from your personal repository. You can also use triggers from events that are coming from forks. This is a very useful feature for open source projects, as it allows you to run your own unit tests and other checks against a new feature *before* actually merging it in your repo.
 
@@ -298,17 +299,17 @@ Access cannot be "inherited" by the GitHub team. Currently, only comments from A
 
 ### Monorepo support (Modified files)
 
-The *modified files* field is a very powerful Codefresh feature that allows you to trigger a build only if the
-files affected by a commit are in a specific folder (or match a specific naming pattern). This means that
-you can have a big GIT repository with multiple projects and build only the parts that actually change.
+The **Modified files** option is a very powerful Codefresh option that allows you to trigger a build only if the
+files affected by a commit are in a specific folder or match a specific naming pattern. This means that
+you can have a big Git repository with multiple projects, and build only the parts that actually change.
 
 
->Currently, the field *modified files* is available only for GitHub, GitLab, Azure DevOps, [Bitbucket Server](https://confluence.atlassian.com/bitbucketserver/manage-webhooks-938025878.html){:target="\_blank"}, and Bitbucket (Cloud) repositories. We will support other Git providers as soon as they add the respective feature. 
+>Currently, the option is available only for GitHub, GitLab, Azure DevOps, [Bitbucket Server](https://confluence.atlassian.com/bitbucketserver/manage-webhooks-938025878.html){:target="\_blank"}, and Bitbucket (Cloud) repositories. We will support other Git providers as soon as they add the respective feature. 
 
 
-### Using the Modified files field to constrain triggers to specific folder/files
+### Using the Modified files option to constrain triggers to specific folder/files
 
-The *modified files* field accepts glob expressions. The paths are relative to the root folder of the project (where the git repository was checked out). Some possible examples are:
+The **Modified files** option accepts glob expressions. The paths are relative to the root folder of the project (where the Git repository was checked out). Some possible examples are:
 
 ```
 **/package.json
@@ -330,7 +331,7 @@ You can also define [multiple expressions](http://tldp.org/LDP/GNU-Linux-Tools-S
 !{deployment/**,**/version.cfg}
 ```
 
-Once a commit happens to a code repository, Codefresh will see which files are changed from the git provider and trigger the build **only** if the changed files match the glob expression. If there is no match no build will be triggered.
+Once a commit happens to a code repository, Codefresh will see which files are changed from the Git provider and trigger the build **only** if the changed files match the glob expression. If there is no match no build will be triggered.
 
 > Notice that the `{}` characters are only needed if you have more than one expression. Do not use them if you have a single glob expression in the field.
 
@@ -360,9 +361,9 @@ And then in the Git trigger for each one we set the modified files field to the 
 * For the *build-java-only* pipeline *MODIFIED FILES* has `my-java-project/**`.
 * For the *build-rails-only* pipeline *MODIFIED FILES* has `my-rails-project/**`.
 
-This way as multiple developers work on the git repository only the affected projects will actually build. A change to the NestJS project will *not* build the Rails project as well. Also, if somebody changes *only* the README file and nothing else, no build will be triggered at all (which is a good thing as the source code is exactly the same).
+This way as multiple developers work on the Git repository only the affected projects will actually build. A change to the NestJS project will *not* build the Rails project as well. Also, if somebody changes *only* the README file and nothing else, no build will be triggered at all (which is a good thing as the source code is exactly the same).
 
-You can also use Glob expressions for files. For example:
+You can also use glob expressions for files. For example:
 
 * An expression such as `my-subproject/sub-subproject/package.json` will trigger a build **only** if the dependencies of this specific project are changed
 * A pipeline with the expression `my-subproject/**/pom.xml` will trigger only if the Java dependencies for any project that belongs to `my-subproject` actually change
@@ -370,6 +371,15 @@ You can also use Glob expressions for files. For example:
 
 Glob expressions have many more options not shown here. Visit the [official documentation](https://en.wikipedia.org/wiki/Glob_(programming)){:target="\_blank"} to learn more. You can also use the [Glob Tester web application](https://www.digitalocean.com/community/tools/glob){:target="\_blank"} to test your glob expressions beforehand so that you are certain they match the files you expect them to match.
 
+### Set minimum disk space for build volume by trigger
+Set the disk space you need for the build volume in the context of the selected trigger. Setting the disk space for the trigger overrides that set for the pipeline.  
+
+1. In **Workflow > Triggers**, expand **Advanced Options**.
+1. From the Runtime Environment list, select **Override pipeline settings**, and then select the runtime for which to override the pipeline setting. 
+1. If required, change the resource size.
+1. Enable **Set minimum disk space**, and then change as required. 
+
+<!--- 
 ## Advanced Options
 
 {% include image.html
@@ -389,13 +399,8 @@ max-width="60%"
   * *Report notification on pipeline execution* - Decide if [Slack notifications]({{site.baseurl}}/docs/integrations/notifications/slack-integration/) will be sent (as well as status updates back to your Git provider)
 * *Runtime Environment* - choose to use pipeline [settings]({{site.baseurl}}/docs/pipelines/pipelines/#pipeline-settings) or override them
 
-### Set minimum disk space for build volume by trigger
-Set the disk space you need for the build volume in the context of the selected trigger. Setting the disk space for the trigger overrides that set for the pipeline.  
+-->
 
-1. In **Workflow > Triggers**, expand **Advanced Options**.
-1. From the Runtime Environment list, select **Override pipeline settings**, and then select the runtime for which to override the pipeline setting. 
-1. If required, change the resource size.
-1. Enable **Set minimum disk space**, and then change as required. 
 
 ## Manually adding the trigger to GitHub
 
@@ -406,7 +411,7 @@ This error means that Codefresh could not create the webhook and verify that it 
 - **Endpoint**: This will be the Webhook URL for the created Trigger
 - **Secret**: Token to add to Github for verification.
 
-### Adding Webhook to Github
+### Adding a webhook to GitHub
 
 1. When you receive the `Failed to add Trigger`, log into GitHub.
    - Make sure this user can access the repository settings and create Webhooks
@@ -425,7 +430,7 @@ This error means that Codefresh could not create the webhook and verify that it 
 1. Click "Done" in the Add Trigger form.
 1. Test your webhook by making an event in the repository that will cause the Trigger to start the build.
 
-> **Note**:
+> **NOTE**:
   * You will be responsible for syncing the Trigger By to the Events sent to us for the webhook. You can select "Send me everything" if you do not want to manually match the Trigger By in the Trigger with the Webhook Events in GitHub.
   * The Trigger will remain "Unverified" until the integration has the correct permissions to the repository.
 
@@ -450,7 +455,7 @@ steps:
 
 Notice however that this file is only available when the pipeline was triggered from a GitHub event. If you manually run the pipeline, the file is not present. 
 
-## Using YAML and the Codefresh CLI to filter specific Webhook events
+## Using YAML and the Codefresh CLI to filter specific webhook events
 
 The default GUI options exposed by Codefresh are just a starting point for GIT triggers and pull requests. Using 
 [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/) and the [Codefresh CLI plugin](https://codefresh-io.github.io/cli/){:target="\_blank"} you can further create two-phase pipelines where the first one decides

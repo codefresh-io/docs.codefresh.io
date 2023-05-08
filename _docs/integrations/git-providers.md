@@ -342,15 +342,15 @@ with the same syntax [shown in pipelines]({{site.baseurl}}/docs/pipelines/config
 For example if you already have a `token` on a resource call `git-credentials` you can put in the token field the expression {% raw %}`${{secrets.git-credentials@token}}`{% endraw %}.
 
 ## Gerrit
-Codefresh supporrts integration with Gerrit, the open-source web-based code review tool for Git repositories. 
-By integrating Gerrit in Codefresh, y
+Codefresh supports integration with Gerrit, the open-source web-based code review tool for Git repositories. 
+By integrating Gerrit in Codefresh, you can create pipelines to trigger builds and tests whenever a new change is pushed to Git repos hosted in Gerrit, and see the status of builds and tests within Gerrit.
 
 * **Name**: The name for your Gerrit integration. This is the name that will be used in pipelines to reference the Gerrit integration.
 * **Host URL**: The URL of your application's website, for example, `g.codefresh.io`.
 * **Username**: The username of your Gerrit account.
 * **HTTP Password**: The password of your Gerrit account.
 
-You can then create pipelines with triggers to Git repos 
+
 
 
 ## Using your Git provider
