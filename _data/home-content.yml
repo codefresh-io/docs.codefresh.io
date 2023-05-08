@@ -91,9 +91,7 @@
   url: ''
   links:
     - title: Home dashboard
-      localurl: /docs/dashboards/home-dashboard/
-    - title: Pipeline Analytics dashboard
-      localurl: /docs/dashboards/pipeline-analytics/    
+      localurl: /docs/dashboards/home-dashboard/   
     - title: DORA metrics
       localurl: /docs/dashboards/dora-metrics/
     - title: Images
