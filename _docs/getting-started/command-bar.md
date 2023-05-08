@@ -1,18 +1,22 @@
 ---
 title: "Quick search in Codefresh"
-description: "How to perform actions, find features, settings, and more with Quick Search"
+description: "How to perform actions, search for entities, find features, and more with Quick Search"
 group: getting-started
 toc: true
 ---
 
 
 
-For seamless navigation without extra clicks, access tasks and features with Codefresh's Quick Search. 
+Stay where you are in Codefresh to get to what you want! Be it navigation without extra clicks, actions such as switching accounts, finding entities such as pipelines or builds, Codefresh Quick Search is your answer. 
 
 ## About Quick Search
 
-**Where**: Toolbar, top-left.  
-**How**: Start typing in the first letters of what you're looking for, and then select the option or use the shortcut keys.
+The Quick Search is always displayed in the toolbar, top-left.  
+Start typing in the first letters of what you're looking for, and then select the option or use the shortcut keys.
+
+> TIP:   
+The results are synced to your permissions and account settings. 
+
 
  {% include 
 image.html 
@@ -27,9 +31,9 @@ max-width="60%"
 
 We are always adding more options, so stay tuned to our online announcements.
 
-## Find features/settings
-Whether it is a task, feature, a specific pipeline or build, find what you're looking for with Quick Search.
-The results are synced to your permissions and account settings. 
+## Search for entities/features/settings
+Whether it is a task, a feature, a specific entity such as a pipeline or build, find what you're looking for with Quick Search.
+
 
  {% include 
 image.html 
@@ -40,9 +44,6 @@ alt="Quick Search results for builds"
 caption="Quick Search results for builds" 
 max-width="60%" 
 %}
-
-
-
 
 ## Switch accounts
 Use Quick Search to switch between Codefresh accounts. 
