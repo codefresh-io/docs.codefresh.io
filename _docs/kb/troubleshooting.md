@@ -5,6 +5,7 @@ group: kb
 redirect_from:
   - /docs/troubleshooting/
   - /docs/kb/
+  - /kb/
 toc: true
 kb: false
 ht: false

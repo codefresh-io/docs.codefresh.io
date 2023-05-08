@@ -1,12 +1,8 @@
 ---
 title: Codefresh SLA Definitions
 description: 
-group: troubleshooting
+group: terms-and-privacy-policy
 toc: true
-kb: false
-common: false
-categories: []
-support-reviewed: 2023-04-18 LG
 ---
 
 ## Critical impact → Urgent Priority ticket
