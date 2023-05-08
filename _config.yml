@@ -110,9 +110,9 @@ defaults:
       toc: true
       wide: true
 
-#RSS Feed Location
+# #RSS Feed Location
 feed:
-  path: /changelog/feed.atom
+  path: /changelog/feed.xml
 
 # Custom variables
 repo:                 "https://github.com/codefresh-io/docs.codefresh.io"
