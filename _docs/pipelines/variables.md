@@ -267,7 +267,7 @@ This means that when you use it you **don't** need any dollar signs for the vari
 cf_export $MY_VAR # Don't do this
 cf_export MY_VAR # Correct syntax
 ```
-<!---
+
 <br>
 
 #### Encrypting variables within `cf_export`
@@ -292,7 +292,7 @@ steps:
 {% endraw %}      
 {% endhighlight %}
 
--->
+
 
 <br>
 
