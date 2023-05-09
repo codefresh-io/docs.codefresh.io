@@ -346,7 +346,7 @@ Codefresh supports integration with Gerrit, the open-source web-based code revie
 By integrating Gerrit in Codefresh, you can create pipelines to trigger builds and tests whenever a new change is pushed to Git repos hosted in Gerrit, and see the status of builds and tests within Gerrit.
 
 * **Name**: The name for your Gerrit integration. This is the name that will be used in pipelines to reference the Gerrit integration.
-* **Host URL**: The URL of your application's website, for example, `g.codefresh.io`.
+* **Host URL**: The URL of your website with the Gerrit instance, for example, `https://git.company-name.io`.
 * **Username**: The username of your Gerrit account.
 * **HTTP Password**: The password of your Gerrit account.
 

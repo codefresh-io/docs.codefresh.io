@@ -23,17 +23,18 @@ You can also use [conditional expressions]({{site.baseurl}}/docs/pipelines/condi
 
 ## Add Git triggers in Codefresh
 
-Before you begin  
-Review:
+**Before you begin**  
+
+Review:  
 * [Git trigger settings](#git-trigger-settings) 
 * [Working with Git triggers](#working-with-git-triggers)
 
-How to  
+**How to**  
 
-1. In the Codefresh UI, from the sidebar,select Pipelines.
-1. Select the pipeline to which to add the trigger, and then click the Workflow tab.
-1. On the right, click Triggers, and then click Add Trigger.
-1. Click Git, click next and then configure the trigger settings.
+1. In the Codefresh UI, from the sidebar, select **Pipelines**.
+1. Select the pipeline to which to add the trigger, and then click the **Workflow** tab.
+1. On the right, click **Triggers**, and then click **Add Trigger**.
+1. Click **Git**, click **Next** and then configure the trigger settings.
 
 {% include image.html
 lightbox="true"
@@ -68,7 +69,92 @@ max-width="50%"
 | **Trigger Name**      | Required. A freetext name for the Git trigger. |
 |**Description**       | Optional. A freetext description. |
 |**Repository**        | The repository in the Git provider account to track for the trigger event. You can select any repository, even one different from that used for the code checkout.|
-|**Trigger By**        | The event or events for which to trigger the pipeline. Trigger events vary according to the Git provider selected. See [Git trigger events](#git-trigger-events) in this article. <br>The Push Commit option, enabled by default, means that this pipeline will run for *any* commit as long as its source branch matches the naming scheme. This includes commits on pull requests.  <br>The PR options mean that this pipeline will run only on the respective events that happen on a Pull Request. You can select multiple options to further fine-tune the exact event. If you are interested in all events, select Any Pull Request event.|
+|**Trigger By**        | The event or events for which to trigger the pipeline. Trigger events vary according to the Git provider selected. <br>The Push Commit option, enabled by default, means that this pipeline will run for *any* commit as long as its source branch matches the naming scheme. This includes commits on pull requests.  <br>The PR options mean that this pipeline will run only on the respective events that happen on a Pull Request. You can select multiple options to further fine-tune the exact event. If you are interested in all events, select Any Pull Request event. <br><br>See: <br>[GitHub trigger events](#github-trigger-events)<br>[Azure DevOps trigger events](#azure-devops-trigger-events)<br>[Bitbucket trigger events](#bitbucket-trigger-events)<br>[GitLab trigger events](#gitlab-trigger-events)<br>[Gerrit trigger events](#gerrit-trigger-events) |
+
+
+
+
+#### GitHub trigger events
+
+For a description of the events, see [GitHub documentation](https://docs.github.com/en/webhooks-and-events/webhooks/webhook-events-and-payloads){:target="\_blank"}.
+
+* Push commits
+* Push tags
+* Any Pull Request event
+* Pull Request opened
+* Pull Request closed
+* Pull Request merged
+* Pull Request closed (not merged)
+* Pull Request reopened
+* Pull Request edited
+* Pull Request assigned
+* Pull Request unassigned
+* Pull Request review requested
+* Pull Request review request removed
+* Pull Request labeled
+* Pull Request comment added (restricted)
+* Pull Request comment added
+* Release
+
+
+#### Azure DevOps trigger events
+
+For a description of the events, see [Azure DevOps documentation](https://learn.microsoft.com/en-us/azure/devops/pipelines/build/triggers?view=azure-devops/){:target="\_blank"}.
+
+* Push commits
+* Any pull request event
+* Pull request created
+* Pull request merged
+* Pull request updated
+
+                        
+#### Bitbucket trigger events
+
+For a description of the events, see [Bitbucket documentation](https://support.atlassian.com/jira-cloud-administration/docs/understand-workflow-triggers/){:target="\_blank"} and also [Event payloads](https://support.atlassian.com/bitbucket-cloud/docs/event-payloads/){:target="\_blank"}.
+
+* Push new branch             
+* Pull Request approved        
+* Pull Request approval removed  
+* Pull Request declined       
+* Pull Request comment created                         
+* Pull Request comment updated                         
+* Pull Request comment deleted                           
+
+
+#### GitLab trigger events
+
+For a description of the events, see [GitLab documentation](https://docs.gitlab.com/ee/user/project/integrations/webhook_events.html){:target="\_blank"}.
+
+* Commit
+* Any Pull Request event
+* Pull Request opened
+* Pull Request edited
+* Pull Request closed
+* Pull Request merged
+* Pull Request push commit
+
+
+#### Gerrit trigger events
+
+A few custom trigger events in Gerrit are mapped to Codefresh trigger events:
+* `Push heads` to `Push commits`
+* `Ref updated` to `Push commits` or `Push tags`
+For a description of the events, see [Gerrit documentation](https://gerrit-review.googlesource.com/Documentation/cmd-stream-events.html#events){:target="\_blank"}.
+
+* Push commits (Push heads and Ref updated in Gerrit)
+* Push tags (Push tags and Ref updated in Gerrit)
+* Change abandoned              
+* Change deleted              
+* Change merged               
+* Change restored        
+* Comment added        
+* Hashtags changed        
+* Patchset created        
+* Reviewer added      
+* Reviewer deleted        
+* Topic changed        
+* WIP state changed        
+* Vote deleted     
 
 ### Filter settings for Git triggers
 
@@ -94,126 +180,6 @@ max-width="50%"
 
 
  
-
-## Git trigger events
-
-Git trigger events that Codefresh supports differ for the different Git providers.
-
-* [GitHub trigger events](#github-trigger-events)
-* [Azure DevOps trigger events](#azure-devops-trigger-events)
-* [Bitbucket trigger events](#bitbucket-trigger-events)
-* [GitLab trigger events](#gitlab-trigger-events)
-* [Gerrit trigger events](#gerrit-trigger-events)
-
-<!---
-### Common trigger events
-
-
-| Trigger Event:                 | Description            |  
-| --------------                 | --------------         |  
-*Push commits                |Gerrit Push heads; Bitbucket Gitlab - commit? Gitlab - pull request push commit?|
-*Push tags                   | GitHub Bitbucket
-*Any Pull Request event      | Azure GitHub BitBucket Gitlab
-*Pull Request opened         | GitHub & Gitlab; Azure & Bitbucket: Pull request created?
-*Pull Request closed          | ???|
-*Pull Request merged          | All Gerrit?
-*Pull Request closed (not merged)      | GitHub, gitlab, 
-*Pull Request reopened        | ???|
-*Pull Request edited          | GitHub and Gitlab; ?Azure & Bitbucket Pull request updated|
-*Pull Request assigned        | ???|
-*Pull Request unassigned      | ???|
-*Pull Request review requested| ???|
-*Pull Request review request removed | ???|
-*Pull Request labeled         | ???|
-*Pull Request comment added (restricted)      | ???|
-*Pull Request comment added      | ???|
-*Release      |GitHub|
-
--->
-
-### GitHub trigger events
-
-For a description of the events, see [GitHub documentation](https://docs.github.com/en/webhooks-and-events/webhooks/webhook-events-and-payloads){:target="\_blank"}.
-
-* Push commits
-* Push tags
-* Any Pull Request event
-* Pull Request opened
-* Pull Request closed
-* Pull Request merged
-* Pull Request closed (not merged)
-* Pull Request reopened
-* Pull Request edited
-* Pull Request assigned
-* Pull Request unassigned
-* Pull Request review requested
-* Pull Request review request removed
-* Pull Request labeled
-* Pull Request comment added (restricted)
-* Pull Request comment added
-* Release
-
-
-### Azure DevOps trigger events
-
-For a description of the events, see [Azure DevOps documentation](https://learn.microsoft.com/en-us/azure/devops/pipelines/build/triggers?view=azure-devops/){:target="\_blank"}.
-
-* Push commits
-* Any pull request event
-* Pull request created
-* Pull request merged
-* Pull request updated
-
-                        
-### Bitbucket trigger events
-
-For a description of the events, see [Bitbucket documentation](https://support.atlassian.com/jira-cloud-administration/docs/understand-workflow-triggers/){:target="\_blank"} and also [Event payloads](https://support.atlassian.com/bitbucket-cloud/docs/event-payloads/){:target="\_blank"}.
-
-* Push new branch             
-* Pull Request approved        
-* Pull Request approval removed  
-* Pull Request declined       
-* Pull Request comment created                         
-* Pull Request comment updated                         
-* Pull Request comment deleted                           
-
-
-### GitLab trigger events
-
-For a description of the events, see [GitLab documentation](https://docs.gitlab.com/ee/user/project/integrations/webhook_events.html){:target="\_blank"}.
-
-* Commit
-* Any Pull Request event
-* Pull Request opened
-* Pull Request edited
-* Pull Request closed
-* Pull Request merged
-* Pull Request push commit
-
-
-### Gerrit trigger events
-
-The custom Gerrit trigger events, Push heads and Push tags, are mapped to the Push commits and Push tags events in Codefresh.
-For a description of the events, see [Gerrit documentation](https://gerrit-review.googlesource.com/Documentation/cmd-stream-events.html#events){:target="\_blank"}.
-
-* Push commits (Push heads)
-* Push tags
-* Change abandoned              
-* Change deleted              
-* Change merged               
-* Change restored        
-* Comment added        
-* Hashtags changed        
-* Patchset created        
-* Ref updated        
-* Reviewer added      
-* Reviewer deleted        
-* Topic changed        
-* WIP state changed        
-* Vote deleted        
-
-
-
 
 
 ## Working with Git triggers
@@ -343,7 +309,7 @@ files affected by a commit are in a specific folder or match a specific naming p
 you can have a big Git repository with multiple projects, and build only the parts that actually change.
 
 
->Currently, the option is available only for GitHub, GitLab, Azure DevOps, [Bitbucket Server](https://confluence.atlassian.com/bitbucketserver/manage-webhooks-938025878.html){:target="\_blank"}, and Bitbucket (Cloud) repositories. We will support other Git providers as soon as they add the respective feature. 
+>Currently, the option is supported only for GitHub, GitLab, Azure DevOps, [Bitbucket Server](https://confluence.atlassian.com/bitbucketserver/manage-webhooks-938025878.html){:target="\_blank"}, Bitbucket (Cloud), and Gerrit. We will support other Git providers as soon as they add the respective feature. 
 
 
 ### Using the Modified files option to constrain triggers to specific folder/files
