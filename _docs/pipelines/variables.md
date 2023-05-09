@@ -270,12 +270,12 @@ cf_export MY_VAR # Correct syntax
 
 <br>
 
-#### Encrypting variables within `cf_export`
+#### Masking variables within `cf_export`
 
-Encrypt variables within `cf_export` by defining the `--mask` flag.  
-Values of encrypted variables in `cf_export` commands are replaced with asterisks in the Build variable list.  
+Mask variables within `cf_export` by defining the `--mask` flag.  
+Values of masked variables in `cf_export` commands are replaced with asterisks in the Build variable list.  
 
-Here is an example with standard and encrypted versions of the same variable in `cf_export` commands.
+Here is an example with standard and masked versions of the same variable in `cf_export` commands.
 
 {% highlight yaml %}
 {% raw %}
