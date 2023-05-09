@@ -267,15 +267,16 @@ This means that when you use it you **don't** need any dollar signs for the vari
 cf_export $MY_VAR # Don't do this
 cf_export MY_VAR # Correct syntax
 ```
-<!---
+
+
 <br>
 
-#### Encrypting variables within `cf_export`
+#### Masking variables within `cf_export`
 
-Encrypt variables within `cf_export` by defining the `--mask` flag.  
-Values of encrypted variables in `cf_export` commands are replaced with asterisks in the Build variable list.  
+Mask variables within `cf_export` by defining the `--mask` flag.  
+Values of masked variables in `cf_export` commands are replaced with asterisks in the Build variable list. This helps to ensure that sensitive information is not exposed also in the variables list, in addition to the logs. 
 
-Here is an example with standard and encrypted versions of the same variable in `cf_export` commands.
+Here is an example with standard and masked versions of the same variable in `cf_export` commands.
 
 {% highlight yaml %}
 {% raw %}
@@ -292,9 +293,10 @@ steps:
 {% endraw %}      
 {% endhighlight %}
 
--->
+
 
 <br>
+
 
 #### Export variables to all steps with `cf_export`
 
