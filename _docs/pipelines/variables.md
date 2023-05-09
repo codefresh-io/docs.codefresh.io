@@ -268,33 +268,7 @@ cf_export $MY_VAR # Don't do this
 cf_export MY_VAR # Correct syntax
 ```
 
-<br>
 
-#### Encrypting variables within `cf_export`
-
-Encrypt variables within `cf_export` by defining the `--mask` flag.  
-Values of encrypted variables in `cf_export` commands are replaced with asterisks in the Build variable list.  
-
-Here is an example with standard and encrypted versions of the same variable in `cf_export` commands.
-
-{% highlight yaml %}
-{% raw %}
-version: '1.0'
-steps:
-  freestyle-step:
-    description: Freestyle step..
-    title: Free styling
-    image: alpine:latest
-    commands:
-      - export EXISTING_VAR=some-value
-
-      - cf_export VAR1=alpine:latest VAR2=VALUE2 EXISTING_VAR --mask
-{% endraw %}      
-{% endhighlight %}
-
-
-
-<br>
 
 #### Export variables to all steps with `cf_export`
 
