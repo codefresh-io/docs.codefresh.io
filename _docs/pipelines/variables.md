@@ -268,7 +268,6 @@ cf_export $MY_VAR # Don't do this
 cf_export MY_VAR # Correct syntax
 ```
 
-<br>
 
 <br>
 
