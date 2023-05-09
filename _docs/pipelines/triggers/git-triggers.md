@@ -138,8 +138,12 @@ For a description of the events, see [GitLab documentation](https://docs.gitlab.
 
 A few custom trigger events in Gerrit are mapped to Codefresh trigger events:
 * `Push heads` to `Push commits`
-* `Ref updated` to `Push commits` or `Push tags`
+* `Ref updated` to `Push commits` or `Push tags`  
+
+
 For a description of the events, see [Gerrit documentation](https://gerrit-review.googlesource.com/Documentation/cmd-stream-events.html#events){:target="\_blank"}.
+
+<br>
 
 * Push commits (Push heads and Ref updated in Gerrit)
 * Push tags (Push tags and Ref updated in Gerrit)
