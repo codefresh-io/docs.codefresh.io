@@ -223,7 +223,7 @@ NO_PROXY: localhost, 127.0.0.1, <local_ip_of_machine>
 ```
 * Add `.firebaseio.com` to the allowed-sites of the proxy server.
 * Exec into the `dind` pod, and run `ifconfig`.  
-* If the MTU value for `docker0` is _higher_ than the MTU value of `eth0` (sometimes the `docker0` MTU is 1500, while `eth0` MTU is 1440), change the `docker0` MTU value to be lower than the `eth0` MTU.  
+* If the MTU value for `docker0` is _greater than or equal to_ the MTU value of `eth0` (sometimes the `docker0` MTU is 1500, while `eth0` MTU is 1440), change the `docker0` MTU value to be lower than the `eth0` MTU.  
     * To change the `docker0` MTU value, edit the `configmap` in the `codefresh-runtime` namespace:
 ```shell
 kubectl edit cm codefresh-dind-config -n codefresh-runtime
