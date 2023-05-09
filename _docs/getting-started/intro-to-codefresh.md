@@ -130,8 +130,8 @@ Dashboards are key to providing the right information at the right time. Similar
 
 **Operational GitOps dashboard** 
 
-The GitOps Overview dashboard displays the most commonly needed application and environmental information to developers so that they can troubleshoot without needing assistance from the DevOps teams, even in production.  
-See [GitOps Overview dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/).  
+The GitOps and the Argo Workflows Dashboards in the Home Dashboard display the most commonly needed application and environmental information to developers so that they can troubleshoot without needing assistance from the DevOps teams, even in production.  
+See [Home Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/).  
 
 
 **DORA metrics** 

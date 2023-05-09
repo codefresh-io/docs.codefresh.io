@@ -1305,4 +1305,4 @@ data:
 [Monitoring & managing GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/)  
 [Add Git Sources to runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
 [Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration)  
-[Troubleshoot Hybrid Runtime installation]({{site.baseurl}}/docs/troubleshooting/runtime-issues/)
+[Troubleshoot Hybrid Runtime installation]({{site.baseurl}}/docs/kb/articles/runtime-issues/)

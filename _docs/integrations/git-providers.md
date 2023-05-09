@@ -21,11 +21,12 @@ Currently Codefresh supports:
 * GitHub Cloud
 * GitHub On-premises
 * Bitbucket
+* Bitbucket Server (new version of Stash)
 * GitLab Cloud
 * GitLab On-premises
 * Azure DevOps Git
 * Atlassian Stash (old version of Bibucket Server)
-* Bitbucket Server (new version of Stash)
+
 
 Atlassian Stash/Bitbucket server, as well as the on-premises version of GitLab and GitHub, are only available to Codefresh enterprise customers.
 
@@ -328,10 +329,9 @@ to Bitbucket server.
 
 ## Bitbucket Server
 
-Bitbucket server is the new and current name of Atlassian Stash. Again, it is only available for an on-premises
-installation.
+Bitbucket Server is the new and current name of Atlassian Stash. Bitbucket Server is supported in both on-premises and Runner installations.
 
-Codefresh supports Bitbucket server versions 5.4.0+ since those expose the API used by the integration.
+Codefresh supports Bitbucket Server versions 5.4.0+ since those expose the API used by the integration.
 
 ### Using External Secrets for BitBucket Token
 

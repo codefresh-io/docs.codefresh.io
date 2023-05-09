@@ -666,7 +666,7 @@ tr {
         <td><b>Home</b></td>
         <td>></td>
         <td></td>
-        <td>Moved to OPS<br>Renamed as GitOps Overview</td>
+        <td>Moved from OPS<br>Renamed as Home</td>
     </tr>
     <tr>
         <td><b>INSIGHTS</b></td>
