@@ -18,8 +18,17 @@ You can sync teams:
 * Automatically, in the Codefresh UI when you set up the SSO account for the IdP, through the **Auto-sync team** option. For details, see the SSO setup for your IdP.
 * Manually, through the Codefresh CLI's [synchronize teams command](https://codefresh-io.github.io/cli/teams/synchronize-teams/){:target="\_blank"}. 
 
-> Team-sync is supported for OIDC providers.  
-  For SAML, team-sync is supported only for Google.
+## Team Sync and Invite Workflow
+
+This is the general workflow when users are synced to Codefresh and users get invited to the account.
+
+1. Users get added to the group / given permission to access the SSO Integration on the IDP side.
+1. Codefresh will Auto Sync with your SSO (if enabled) or you can manually sync.
+1. Users will get added to Codefresh as an invited user.
+1. Users will need to wait for the invite email to be received to prevent the creation of a personal account.
+   * You can verify that they are invited under Users & Teams with the status of "pending".
+   * When signing in before the invite, users must follow the personal account creation workflow before getting access to the invited account.
+1. Once the email is received, they can log in using the link in the email or use the Corporate SSO option on the login page.
 
 ## CLI synchronize teams
 

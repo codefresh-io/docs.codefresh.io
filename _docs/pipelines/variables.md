@@ -270,10 +270,12 @@ cf_export MY_VAR # Correct syntax
 
 <br>
 
+
 #### Encrypting variables within `cf_export`
 
 Encrypt variables within `cf_export` by defining the `--mask` flag.  
 Values of encrypted variables in `cf_export` commands are replaced with asterisks in the Build variable list.  
+
 
 Here is an example with standard and encrypted versions of the same variable in `cf_export` commands.
 
@@ -293,6 +295,7 @@ steps:
 {% endhighlight %}
 
 
+
 <br>
 
 #### Export variables to all steps with `cf_export`
@@ -306,10 +309,11 @@ cf_export MY_VAR='example' # Makes MY_VAR available also to all steps after this
 ```
 
 
+
 There is nothing really magical about `cf_export`. It is a normal script. You can see its contents on your own by entering the command `cat /codefresh/volume/cf_export` on any [Codefresh freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/) inside a pipeline. 
 
-For more information on its limitations, see the [troubleshooting page]({{site.baseurl}}/docs/troubleshooting/common-issues/cf-export-limitations/).
 
+For more information on its limitations, see the [troubleshooting page]({{site.baseurl}}/docs/kb/articles/cf-export-limitations/).
 
  
 ### Directly writing to the file

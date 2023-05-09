@@ -47,7 +47,7 @@ Here's an example of builds filtered by `display` annotations.
 
 <br>
 
-#### Pipelines: Project-based RBAC
+#### Pipelines: Project-based ABAC
 
 We are excited to announce project-level Attribute-Based Access Control (ABAC) in this month's release. ABAC for projects saves a lot of effort without compromising security, as now you can control access to the project entity and to pipeline entities based on project tags.
 

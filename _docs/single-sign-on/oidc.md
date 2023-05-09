@@ -29,6 +29,7 @@ Here's what you need to do to configure SSO via OIDC in Codefresh:
   * [Auth0]({{site.baseurl}}/docs/single-sign-on/oidc/oidc-auth0/)
   * [Azure]({{site.baseurl}}/docs/single-sign-on/oidc/oidc-azure/)
   * [Google]({{site.baseurl}}/docs/single-sign-on/oidc/oidc-google/)
+  * [Keycloak]({{site.baseurl}}/docs/single-sign-on/oidc/oidc-keycloak/)
   * [Okta]({{site.baseurl}}/docs/single-sign-on/oidc/oidc-okta/)
   * [OneLogin]({{site.baseurl}}/docs/single-sign-on/oidc/oidc-onelogin/)
 
