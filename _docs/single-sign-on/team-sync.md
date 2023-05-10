@@ -18,7 +18,7 @@ If automatic team sync is enabled for the IdP in Codefresh, you can sync teams:
 * Automatically, in the Codefresh UI when you set up the SSO account for the IdP, through the **Auto-sync team** option, if available. 
 * Manually, through the Codefresh CLI's [synchronize teams command](https://codefresh-io.github.io/cli/teams/synchronize-teams/){:target="\_blank"}. 
 
-### Team-sync support for IdPs
+### Team-sync support in Codefresh for IdPs
 The table lists the IdPs for which Codefresh supports automated/manual team sync.
 
 {: .table .table-bordered .table-hover}
