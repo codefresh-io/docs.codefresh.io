@@ -373,6 +373,18 @@ These services are not considered critical as they are part of build-handling. I
 
 After you install Codefresh, these are post-installation operations that you should follow.
 
+### Disable user and team management via Codefresh UI
+
+If you use an external provider for user and team provisioning, such as Terraform or a different IdP (Identity Provider), you can disable user/team operations in the Codefresh UI.
+
+* Enable `disableUserManagement` in Feature management.
+
+When enabled, you are blocked from these operations in Codefresh:
+* Adding/updating/deleting users
+* Adding/updating/deleting teams
+* Defining/updating roles for users
+* Defining/updating SSO provider for users  
+
 ### Selectively enable SSO provider for account
 As a Codefresh administrator, you can select the providers you want to enable for SSO in your organization, for both new and existing accounts.
 You can always renable a provider when needed.
@@ -756,6 +768,23 @@ global:
         - mountPath: /etc/ssl/custom/ca.crt 
           subPath: ca.crt
 ```
+
+## Feature management 
+
+{: .table .table-bordered .table-hover}
+| Feature                     | Description            |  Notes |
+| --------------              | --------------           |  
+|`allowUserUpdateBoards`| When enabled, allows users without admin (NIMA: is it permissions or roles?) permissions to update Helm boards.QUESTIONS: Which Helm board: Helm Releases or Helm Environments? 2. Permissions or Roles? 3. What can they do: Create board, update board, install releases, move releases? Is it UI only? 4. Are there any caveats |
+|`dindPodRequestsEqualLimits`   | No proper descriptoin|
+|`disableWelcomeScreen` | Determines if to display the Codefresh Welcome page in Classic UI and disables user from entering credentials after sign up. Required mostly for on-premises, especially LDAP which has all login info already configured.  |
+|`disableRolloutActionsWithoutRBAC` |When enabled, ??|
+|`forbidDecrypt` |Default FALSE Prevents users from decrypting secrets. QUESTION: 1. What does this mean? Decrypting in the UI?  |
+|`gitopsArgoCdRollback` |When enabled, ??|
+|`gitopsImageReporting` |When enabled, ??|
+|`injectClusterListFromPipelineSettings` |QUESTIONS: 1. Is it the account-level setting that this enables? 2. If enabled, users can select the clusters that the pipeline can access or are available to a specific pipeline? 3. Any notes or limitations? 4. Is this available only for Enterprise accounts? 5. Default is False or True? Default`; ??.<br>When enabled, allows users to select single or multiple clusters available to the  the 
+|`parallelKubectlOperations` |When enabled, ??|
+|`logMasking` |Default: False<br>When enabled, secrets in build logs are masked and replaced by asterisks. QUESTIONS: 1. Is this for online and offline logs? 2. Is this only for Enterprise customers? 3. Any limitations or notes to be aware of?|
+|`useLogsTimestamps` |Default: False<br>When enabled, prepends the date and time to every line in the log. |When enabled, and you have build automation, you may need to adjust the regex for search as the line does not start with the log text|
 
 ## Using existing external services for data storage/messaging
 
