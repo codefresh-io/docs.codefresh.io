@@ -6,31 +6,54 @@ toc: true
 ---
 
 Once you create an SSO provider account in Codefresh, you can:
-* Automatically or manually sync between the teams created in Codefresh and your Identity Provider (IdP)
+* Automatically or manually sync the teams created in your Identity Provider (IdP) with Codefresh
 * Set a default SSO provider for your account
 * Override the account-level SSO provider for specific users
 
 
-## Syncing teams with IdPs
-Team sync synchronizes all users of the team with the IdP. 
+## Syncing teams in IdPs with Codefresh
+Team sync synchronizes all users and teams provisioned in the IdP with Codefresh. 
 
-You can sync teams:
-* Automatically, in the Codefresh UI when you set up the SSO account for the IdP, through the **Auto-sync team** option. For details, see the SSO setup for your IdP.
+If automatic team sync is enabled for the IdP in Codefresh, you can sync teams:
+* Automatically, in the Codefresh UI when you set up the SSO account for the IdP, through the **Auto-sync team** option, if available. 
 * Manually, through the Codefresh CLI's [synchronize teams command](https://codefresh-io.github.io/cli/teams/synchronize-teams/){:target="\_blank"}. 
 
-## Team Sync and Invite Workflow
+### Team-sync support for IdPs
+The table lists the IdPs for which Codefresh supports automated/manual team sync.
 
-This is the general workflow when users are synced to Codefresh and users get invited to the account.
+{: .table .table-bordered .table-hover}
+| Protocol   | IdP     | Team sync    |  
+| ---------- | --------------   |--------------|  
+|**OIDC**    | Auth0            | -            |
+|            | Azure            | ✅            |
+|            | Google           | -             |
+|            | Keycloak         | -             |
+|            | Okta             |✅             |
+|            | OneLogin         | -             |
+|**LDAP**    |                  | -             |
+|**SAML**    | GSuite           | ✅            |    
+|            | JumpCloud        | -             |
+|            | Okta             |✅             |
+|            | OneLogin         | -             |
+|            | PingID           | -             |
 
-1. Users get added to the group / given permission to access the SSO Integration on the IDP side.
-1. Codefresh will Auto Sync with your SSO (if enabled) or you can manually sync.
-1. Users will get added to Codefresh as an invited user.
-1. Users will need to wait for the invite email to be received to prevent the creation of a personal account.
-   * You can verify that they are invited under Users & Teams with the status of "pending".
-   * When signing in before the invite, users must follow the personal account creation workflow before getting access to the invited account.
-1. Once the email is received, they can log in using the link in the email or use the Corporate SSO option on the login page.
 
-## CLI synchronize teams
+
+### Automated team-sync
+
+This is the general workflow when team sync is activated in Codefresh for SSO, and users are invited to the account.
+
+1. Your IdP adds users to groups, or grants permissions to access the SSO integration.
+1. If available for the IdP (SSO) provider in Codefresh, you can either automatically sync via the UI, or manually via the CLI.  
+1. Depending on the provider, user accounts are either automatically created or on responding to the email invitations. 
+   * If the activate user option is available for the provider, the user account is automatically created and activated. Invitations are not sent or needed.
+   * Otherwise, users are sent email invitation. 
+     The Users & Teams page display the Pending status for such users. 
+     Users can log in using the link in the email or use the Corporate SSO option in the login page.
+
+### Manual team-sync via CLI 
+
+Manually synchronize users and teams provisioned in your IdP through the Codefresh CLI with the `synchronize teams` command.
 
 As an example, you can sync your Azure teams with the CLI: 
 
@@ -50,9 +73,13 @@ caption="SSO Client Name"
 max-width="40%"
 %}
 
+### Team-sync with Codefresh pipelines
 
-Though you can run this command manually it makes more sense to run it periodically as a job. And the obvious
-way to perform this is with a Codefresh pipeline. The CLI can be used as a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/).
+Both automated and manual team-syncs are possible only if the option is support for your IdP in Codefresh. 
+
+To implement team-sync also for providers without this option, you can use Codefresh pipelines. 
+
+A pipeline makes it possible to run team-sync periodically as a job. Use the CLI as a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/), as in the example below.
 
 You can create a Git repository with a [codefresh.yml]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/) file with the following content:
 
@@ -68,8 +95,9 @@ steps:
 
 To fully automate this pipeline, you should set a [cron trigger]({{site.baseurl}}/docs/pipelines/triggers/cron-triggers/) for it. Depending on how you set up your Cron trigger, you can synchronize your teams every day/week/hour. 
 
-### CLI sync and email domain restrictions
-If the `Restrict inviting additional users by email address domain` is enabled for your account, running the `synchronize teams` command via the CLI, _does not invite new users_ to Codefresh.  
+
+### Team-sync and email domain restrictions
+If the `Restrict inviting additional users by email address domain` is enabled for your account, manual sync via the CLI or sync via a pipeline, _does not invite new users_ to Codefresh.  
 The output of the command will be similar to the following:
 
 ```json
@@ -108,7 +136,7 @@ The output of the command will be similar to the following:
 1. Click **Save**.
 1. Rerun the CLI sync command.
 
-### Sync GitHub Organization Teams to Codefresh
+### Sync GitHub organization teams to Codefresh
 
 As an admin, you may want to sync your GitHub Organization Teams with your Codefresh account. At the same time, you do not want to set up an SSO provider and have the users use any login provider they choose.
 
@@ -131,22 +159,31 @@ Setting a default provider assigns the selected SSO automatically to all new use
 1. In the Codefresh UI, go to [Single Sign-On](https://g.codefresh.io/2.0/account-settings/single-sign-on).
 1. From the list, select the SSO account to set as default and click the **Edit** icon on the right.
 1. Scroll down and select **Set as default**. 
-<!---change screenshot
+
 {% include image.html
 lightbox="true"
 file="/images/administration/sso/default-sso.png"
 url="/images/administration/sso/default-sso.png"
-alt="Default SSO provider"
-caption="Default SSO provider"
-max-width="90%"
-%} -->
+alt="Set default SSO provider for account"
+caption="Set default SSO provider for account"
+max-width="50%"}
 
+  The Single Sign-on page shows the SSO provider tagged as the default.
+
+{% include image.html
+lightbox="true"
+file="/images/administration/sso/sso-list-with-default-.png"
+url="/images/administration/sso/sso-list-with-default-.png"
+alt="Single Sign-on list showing the default SSO provider"
+caption="Single Sign-on list showing the default SSO provider"
+max-width="60%"}
 
 ## Select SSO provider for individual users
 
 You can override the default SSO provider if set for your account, with a different SSO provider for specific users if so required.  
 * New users   
-  If you have an SSO provider selected as the default, that provider is automatically assigned to new users, added either manually or via team synchronization.  
+  If you have an SSO provider selected as the default, that provider is automatically assigned to new users, added either manually or via team synchronization. 
+  You can change the SSO provider later. 
 
 * Existing users  
   SSO login is not configured by default for existing users. You must _explicitly select_ the SSO provider for existing users.  
@@ -160,8 +197,8 @@ You can override the default SSO provider if set for your account, with a differ
 lightbox="true"
 file="/images/administration/sso/select-user-sso.png"
 url="/images/administration/sso/select-user-sso.png"
-alt="Selecting SSO method"
-caption="Selecting SSO method"
+alt="Selecting a different SSO provider for specific user"
+caption="Selecting a different SSO provider for specific user"
 max-width="50%"
 %}
 
