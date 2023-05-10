@@ -41,7 +41,7 @@ The table lists the IdPs for which Codefresh supports automated/manual team sync
 
 ### Automated team-sync
 
-This is the general workflow when team sync is activated in Codefresh for SSO, and users are invited to the account.
+This is the general workflow for automated team-sync in Codefresh users:
 
 1. Your IdP adds users to groups, or grants permissions to access the SSO integration.
 1. If available for the IdP (SSO) provider in Codefresh, you can either automatically sync via the UI, or manually via the CLI.  
