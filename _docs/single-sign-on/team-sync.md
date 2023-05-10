@@ -130,7 +130,7 @@ The output of the command will be similar to the following:
 
 **Turn off the domain restriction**:
 
-1. In the Codefresh UI, from your avatar dropdown, click **Account Settings**.
+1. In the Codefresh UI, click **Settings**.
 1. In the sidebar, from Access & Collaboration, select **User & Teams**, and then click the **Security** tab.
 1. Turn off **Restrict inviting additional users by email address domain**.
 1. Click **Save**.
