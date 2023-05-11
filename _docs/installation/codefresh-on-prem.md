@@ -375,19 +375,22 @@ After you install Codefresh, these are post-installation operations that you sho
 
 ### Disable user and team management via Codefresh UI
 
-If you use an external provider for user and team provisioning, such as Terraform or a different IdP (Identity Provider), you can disable user/team operations in the Codefresh UI.
+If you use an external provider, such as Terraform or an IdP (Identity Provider), to provision users and teams, you can disable user/team operations in the Codefresh UI. Blocking user- and team-related operations in the UI means that admins cannot make changes locally that may conflict with or override those via the external provider.
 
-* Enable `disableUserManagement` in Feature management.
-
-When enabled, you are blocked from these operations in Codefresh:
+These are the operations blocked in the Codefresh UI:
 * Adding/updating/deleting users
 * Adding/updating/deleting teams
 * Defining/updating roles for users
 * Defining/updating SSO provider for users  
 
+**How to**  
+* Enable `disableUserManagement` in Feature management.
+
+
+
 ### Selectively enable SSO provider for account
 As a Codefresh administrator, you can select the providers you want to enable for SSO in your organization, for both new and existing accounts.
-You can always renable a provider when needed.
+If you disable a provider, you can always renable the same provider when needed.
 
 
 1. Sign in as Codefresh admin.
@@ -769,6 +772,8 @@ global:
           subPath: ca.crt
 ```
 
+<!---
+
 ## Feature management 
 
 {: .table .table-bordered .table-hover}
@@ -785,6 +790,8 @@ global:
 |`parallelKubectlOperations` |When enabled, ??|
 |`logMasking` |Default: False<br>When enabled, secrets in build logs are masked and replaced by asterisks. QUESTIONS: 1. Is this for online and offline logs? 2. Is this only for Enterprise customers? 3. Any limitations or notes to be aware of?|
 |`useLogsTimestamps` |Default: False<br>When enabled, prepends the date and time to every line in the log. |When enabled, and you have build automation, you may need to adjust the regex for search as the line does not start with the log text|
+
+-->
 
 ## Using existing external services for data storage/messaging
 
