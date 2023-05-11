@@ -1,6 +1,6 @@
 ---
 title: Common configuration for SSO providers
-description: "Team sync, default SSO provider for accounts"
+description: "Set up team sync, default SSO provider for accounts"
 group: single-sign-on
 toc: true
 ---
@@ -21,6 +21,7 @@ If automatic team sync is enabled for the IdP in Codefresh, you can sync teams:
 ### Team-sync support in Codefresh for IdPs
 The table lists the IdPs for which Codefresh supports automated/manual team sync.
 
+<!---
 {: .table .table-bordered .table-hover}
 | Protocol   | IdP     | Team sync    |  
 | ---------- | --------------   |--------------|  
@@ -37,7 +38,7 @@ The table lists the IdPs for which Codefresh supports automated/manual team sync
 |            | OneLogin         | -             |
 |            | PingID           | -             |
 
-
+-->
 
 ### Automated team-sync
 
@@ -72,6 +73,8 @@ alt="SSO Client Name"
 caption="SSO Client Name"
 max-width="40%"
 %}
+
+
 
 ### Team-sync with Codefresh pipelines
 
