@@ -50,7 +50,7 @@ You'll need to simply add this step to the Child-build. For example, at the begi
 
 {% endraw %}
 
-![Link to Parent-build]({{site.baseurl}}/images/troubleshooting//how-to-navigate-to-parent-build-from-child-build.png)
+![Link to Parent-build]({{site.baseurl}}/images/troubleshooting/how-to-navigate-to-parent-build-from-child-build.png)
 
 > Note:
 >

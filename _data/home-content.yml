@@ -90,8 +90,8 @@
   icon: images/home-icons/guides.png
   url: ''
   links:
-    - title: GitOps Overview dashboard
-      localurl: /docs/dashboards/home-dashboard/
+    - title: Home dashboard
+      localurl: /docs/dashboards/home-dashboard/   
     - title: DORA metrics
       localurl: /docs/dashboards/dora-metrics/
     - title: Images
@@ -295,17 +295,14 @@
     localurl: /docs/incubation/arm-support
 
 
-
 - title: "Knowledge Base"
   icon: images/home-icons/troubleshooting.svg
   url: ''
   links:
   - title: Common Issues
     localurl: /docs/kb/common-issues
-  - title: How To's
+  - title: How Tos
     localurl: /docs/kb/how-to
   - title: Troubleshooting
     localurl: /docs/kb/troubleshooting
-  - title: Codefresh SLA Definitions
-    localurl: /docs/kb/codefresh-sla-definitions
 

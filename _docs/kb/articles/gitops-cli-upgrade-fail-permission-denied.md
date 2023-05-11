@@ -4,8 +4,8 @@ description:
 group: kb
 sub-group: articles
 toc: true
-kb: false
-ht: true
+kb: true
+ht: false
 common: false
 categories: [CLI, Ops, Runtimes]
 support-reviewed: 2023-04-18 LG

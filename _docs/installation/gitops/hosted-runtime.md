@@ -21,11 +21,11 @@ Set up your environment with the Hosted GitOps Runtime to leverage Codefresh Git
 
 
 ## Where to start with Hosted GitOps Runtimes
-If you have not provisioned a Hosted GitOps Runtime, Codefresh presents you with the setup instructions in the **GitOps Overview** dashboard.   
+If you have not provisioned a Hosted GitOps Runtime, Codefresh presents you with the setup instructions in the **Home** dashboard.   
 
   
 
-* In the Codefresh UI, from OPS in the sidebar, select [GitOps Overview](https://g.codefresh.io/2.0/?time=LAST_7_DAYS){:target="\_blank"}.
+* In the Codefresh UI, from OPS in the sidebar, select [Home](https://g.codefresh.io/2.0/?time=LAST_7_DAYS){:target="\_blank"}.
   Codefresh guides you through the three-step setup, as described below.
 
 {% include
@@ -308,6 +308,6 @@ See [Image enrichment with integrations]({{site.baseurl}}/docs/gitops-integratio
 [Monitoring & managing GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/)  
 [Add Git Sources to runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
 [Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration)  
-[GitOps Overview dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/)   
+[Home Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/)   
 [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)
 

@@ -13,7 +13,7 @@ support-reviewed: 2023-04-18 LG
 
 ## Overview
 
-Compositions steps can only mount `${{CF_VOLUME_NAME}}:${{CF_VOLUME_PATH}}`, but you need to mount `/codefresh/volume/<REPO>/<DIR>/` to `/<DIR>` . This is a limitation of docker where you cannot specify a directory inside a named docker volume [1].
+Compositions steps can only mount {% raw %}`${{CF_VOLUME_NAME}}:${{CF_VOLUME_PATH}}`{% endraw %}, but you need to mount `/codefresh/volume/<REPO>/<DIR>/` to `/<DIR>` . This is a limitation of docker where you cannot specify a directory inside a named docker volume [1].
 
 **Note** : this is for using a `docker-compose.yml` file in the composition step.
 
@@ -83,7 +83,7 @@ steps:
 
 {% endraw %}
 
-In the conform step, we are replacing the volumes mount to be `${{CF_VOLUME_NAME}}:${{CF_VOLUME_PATH}}`. Then add a command of `bash -c "ln -s ${{CF_VOLUME_PATH}}/${{CF_REPO_NAME}}/<DIR>/ /database && ./start.sh"` to symlink the directory in my repo to the `/database` directory and then execute my script that's already in the container. Once this is done, my composition steps will run and have the correct mounts and directories where it is needed.
+In the conform step, we are replacing the volumes mount to be {% raw %}`${{CF_VOLUME_NAME}}:${{CF_VOLUME_PATH}}`{% endraw %}. Then add a command of {% raw %}`bash -c "ln -s ${{CF_VOLUME_PATH}}/${{CF_REPO_NAME}}/<DIR>/ /database && ./start.sh"`{% endraw %} to symlink the directory in my repo to the `/database` directory and then execute my script that's already in the container. Once this is done, my composition steps will run and have the correct mounts and directories where it is needed.
 
 ## Related Items
 

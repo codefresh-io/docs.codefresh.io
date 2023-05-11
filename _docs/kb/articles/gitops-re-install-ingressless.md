@@ -25,7 +25,7 @@ ENV Variables to set on local machine
 
 Run the following command to start the install.
 
-```chell
+```shell
 cf runtime install RUNTIME_NAME \
 --access-mode tunnel \
 --silent

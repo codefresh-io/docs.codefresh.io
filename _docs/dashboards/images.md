@@ -140,4 +140,4 @@ The Summary view summarizes the metadata for the image.
 
 ## Related articles 
 [Image enrichment for GitOps with integrations]({{site.baseurl}}/docs/ci-cd-guides/image-enrichment/)  
-[GitOps Overview dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/)  
+[Home Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/)  

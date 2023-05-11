@@ -49,6 +49,6 @@ In this article, we will provide an example of using conditionals for the purpos
 
 >_Notes_
 >
->You can also make use of a single freestyle step to perform this. We would suggest using a shell script to compare `${{CF_BRANCH}}` according to your use case.
+>You can also make use of a single freestyle step to perform this. We would suggest using a shell script to compare {% raw %}`${{CF_BRANCH}}`{% endraw %} according to your use case.
 >
 >We suggest looking into Branch Protection from your Git provider if this is being done for access control.

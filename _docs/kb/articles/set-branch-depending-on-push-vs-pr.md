@@ -69,6 +69,8 @@ steps:
 >_Notes_ This condition works because if a variable is not set, it is simply replaced with the literal {% raw %}`${{}}`{% endraw %} variable reference string, so we are checking whether the reference is getting us the literal string or some other
 actual value.
 
+>💡 The ability to override predefined variables such as `CF_BRANCH` was added recently and may be disabled for your account. If the approach described in this article does not work in your account, please [contact support](https://support.codefresh.io/hc/en-us/requests/new).
+
 ## Related Items
 
 [How-to: Check environment variable value or existence in conditionals]({{site.baseurl}}/docs/kb/articles/check-env-vars-in-conditionals/)

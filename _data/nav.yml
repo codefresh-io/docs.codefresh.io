@@ -52,7 +52,7 @@
 - title: Dashboards & insights
   url: "/dashboards"
   pages:
-    - title: GitOps Overview dashboard
+    - title: Home dashboard
       url: "/home-dashboard"
     - title: DORA metrics
       url: "/dora-metrics"
@@ -627,9 +627,6 @@
       url: "/how-to"
     - title: Troubleshooting
       url: "/troubleshooting"
-    - title: Codefresh SLA Definitions
-      url: "/codefresh-sla-definitions"
-
 
 - title: Terms and Privacy Policy
   url: "/terms-and-privacy-policy"
@@ -640,5 +637,7 @@
       url: "/privacy-policy"
     - title: Service Commitment
       url: "/sla"
+    - title: Codefresh SLA Definitions
+      url: "/codefresh-sla-definitions"
 
 

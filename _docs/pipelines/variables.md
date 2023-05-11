@@ -270,6 +270,31 @@ cf_export MY_VAR # Correct syntax
 
 
 
+#### Masking variables within `cf_export`
+
+Mask variables within `cf_export` by defining the `--mask` flag.  
+Values of masked variables in `cf_export` commands are replaced with asterisks in the build logs. This helps to ensure that sensitive information is not exposed also in the variables list, in addition to the logs. 
+
+Here is an example with standard and masked versions of the same variable in `cf_export` commands.
+
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+steps:
+  freestyle-step:
+    description: Freestyle step..
+    title: Free styling
+    image: alpine:latest
+    commands:
+      - export EXISTING_VAR=some-value
+
+      - cf_export VAR1=alpine:latest VAR2=VALUE2 EXISTING_VAR --mask
+{% endraw %}      
+{% endhighlight %}
+
+
+
+
 #### Export variables to all steps with `cf_export`
 
 By default, `cf_export` works only on *subsequent* steps.  

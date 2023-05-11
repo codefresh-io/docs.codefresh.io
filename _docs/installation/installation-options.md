@@ -198,7 +198,7 @@ The table below highlights the main differences between Hosted and Hybrid GitOps
 |                         |Image enrichment    | Supported                  | Supported  |
 |                         | Rollouts           | Supported                  |  Supported  |
 |Integrations             |                    | Supported                  | Supported  |
-|Dashboards               |GitOps Overview      | Hosted runtime and deployments|Runtimes, deployments, Delivery Pipelines |
+|Dashboards               |Home                | Hosted runtime and deployments|Runtimes, deployments, Delivery Pipelines |
 |                         |DORA metrics        | Supported                 |Supported        |
 |                         |Applications        | Supported                 |Supported        |
 
