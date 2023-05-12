@@ -8,6 +8,7 @@ redirect_from:
   - /docs/accounts/
   - /docs/accounts/invite-your-team-member/
   - /docs/administration/invite-your-team-member/
+  - /csdp-docs/docs/administration/add-users/
 toc: true
 ---
 

@@ -12,4 +12,3 @@ Codefresh has comprehensive support for teams and users for handling scenarios f
 * Get [audit logs]({{site.baseurl}}/docs/administration/account-user-management/audit/) to any runtime (hosted or private)
 * Learn [which IP addresses]({{site.baseurl}}/docs/administration/platform-ip-addresses/) are used for the SAAS runtime.
 
-.

@@ -2,6 +2,8 @@
 title: "GitOps CI integrations"
 description: ""
 group: gitops-integrations
+redirect_from:
+  - /csdp-docs/docs/integrations/ci-integrations/
 toc: true
 ---
 

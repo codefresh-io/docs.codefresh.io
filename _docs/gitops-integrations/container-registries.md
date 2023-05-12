@@ -2,6 +2,8 @@
 title: "GitOps container registry integrations"
 description: ""
 group: gitops-integrations
+redirect_from:
+  - /csdp-docs/docs/integrations/container-registries/
 toc: true
 ---
 

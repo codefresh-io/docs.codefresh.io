@@ -9,6 +9,7 @@ redirect_from:
   - /docs/enterprise-account-mng/ent-account-mng/
   - /docs/enterprise/ent-account-mng/
   - /docs/administration/ent-account-mng/  
+  - /csdp-docs/docs/administration/access-control/
 toc: true
 ---
 

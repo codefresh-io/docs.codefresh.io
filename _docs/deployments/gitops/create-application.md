@@ -3,6 +3,8 @@ title: "Creating GitOps applications"
 description: ""
 group: deployments
 sub_group: gitops
+redirect_from:
+  - /csdp-docs/docs/deployment/create-application/
 toc: true
 ---
 

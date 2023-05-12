@@ -2,6 +2,8 @@
 title: "Nested workflows"
 description: ""
 group: workflows
+redirect_from:
+  - /csdp-docs/docs/pipelines/nested-workflows/
 toc: true
 ---
 

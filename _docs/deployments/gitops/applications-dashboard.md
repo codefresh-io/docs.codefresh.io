@@ -3,6 +3,8 @@ title: "Monitoring GitOps applications"
 description: ""
 group: deployments
 sub_group: gitops
+redirect_from:
+  - /csdp-docs/docs/deployment/applications-dashboard/
 toc: true
 ---
 
