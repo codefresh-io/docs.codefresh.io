@@ -35,7 +35,7 @@ View Runtime components and information in [List or Topology view formats](/#git
 * [Uninstall GitOps Runtimes](#uninstall-gitops-runtimes)
 * [Update Git credentials for GitOps Runtimes](#update-git-credentials-for-gitops-runtimes)
 * [View/download logs to troubleshoot Runtimes](#viewdownload-logs-to-troubleshoot-runtimes)
-* [(Hybrid GitOps) Restoring provisioned Runtimes](#hybrid-gitops-restoring-provisioned-runtimes)
+* [(Hybrid GitOps - Legacy only) Restoring provisioned Runtimes](#hybrid-gitops-restoring-provisioned-runtimes)
 * [(Hybrid GitOps) Troubleshoot communication problems](#hybrid-gitops-troubleshoot-communication-problems)
 * [(Hybrid GitOps) View notifications in Activity Log](#hybrid-gitops-view-notifications-in-activity-log) -->
 
@@ -79,7 +79,7 @@ Here is a description of the information in the List View.
 |**Version**| The version of the Runtime currently installed (CLI installations), including the version of the Helm chart (Helm installations) . **Update Available!** indicates there are newer versions of the Runtime or Helm chart. To see all the commits, mouse over **Update Available!**, and select **View Complete Change Log**.
 |**Last Updated**| The most recent update information from the runtime to the Codefresh platform. Updates are sent to the platform typically every few minutes. Longer update intervals may indicate networking issues.|
 |**Sync Status**| The sync status of the GitOps Runtime. The sync status is displayed only when you have completed installation and configured the GitOps Runtime as an Argo Application. {::nomarkdown}<ul><li> <img src="../../../../images/icons/runtime-synced.png"  display=inline-block> <b>Synced</b></li> <li><img src="../../../../images/icons/runtime-syncing.png"  display=inline-block> <b>Syncing</b>.</li><li><img src="../../../../images/icons/runtime-out-of-sync.png"  display=inline-block> <b>Out-of-sync</b>.</li><li><b>N/A</b>: Codefresh could not get the sync status. This could be because the Runtime is not configured as an Argo application.</li><li><b>Complete Installation</b>: Git credentials are not configured for the Runtime. Click the three-dot context menu and select <b>Update Git Runtime Credentials</b>. See [Update Git credentials for GitOps Runtimes](#update-git-credentials-for-gitops-runtimes).</li>  </ul> {:/} |
-|**Actions** | The possible actions to manage the selected runtime.{::nomarkdown}<ul><li> <b>Upgrade</b>: Upgrade to the latest version. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#upgrade-gitops-runtimes">Upgrade GitOps Runtimes</a></li> <!--- <li><b>Download All Logs</b>: Download logs for the Runtime or for its components. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#viewdownload-logs-to-troubleshoot-gitops-runtimes">View/download logs for GitOps Runtimes</a> --></li><li><b>Update Git Runtime Credentials</b>: Update Git token for Runtime. See </li><li><b>Remove Runtime</b>: Available only when the runtime is Offline. <br>Remove the runtime from Codefresh. The runtime remains on the cluster. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#remove-gitops-runtimes">Remove GitOps Runtimes</a>. </li><li><b>Uninstall Runtime</b>: Uninstall the runtime from the cluster on which it is provisioned. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#uninstall-gitops-runtimes">Uninstall GitOps Runtimes</a></li> </ul> {:/}
+|**Actions** | The possible actions to manage the selected runtime.{::nomarkdown}<ul><li> <b>Upgrade</b>: Upgrade to the latest version. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#upgrade-gitops-runtimes">Upgrade GitOps Runtimes</a></li> <li><b>Download All Logs</b>: Valid only for _legacy_ Hybrid GitOps Runtimes.<br>Download logs for the Runtime or for its components. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#viewdownload-logs-to-troubleshoot-gitops-runtimes">View/download logs for GitOps Runtimes</a></li><li><b>Update Git Runtime Credentials</b>: Update Git token for Runtime. See </li><li><b>Remove Runtime</b>: Available only when the runtime is Offline. <br>Remove the runtime from Codefresh. The runtime remains on the cluster. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#remove-gitops-runtimes">Remove GitOps Runtimes</a>. </li><li><b>Uninstall Runtime</b>: Uninstall the runtime from the cluster on which it is provisioned. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#uninstall-gitops-runtimes">Uninstall GitOps Runtimes</a></li> </ul> {:/}
 
 
 ### Topology view
@@ -207,7 +207,7 @@ For more details, read [Configuring Deep Links in Argo CD](https://argo-cd.readt
 Upgrade provisioned Hybrid GitOps Runtimes to install critical security updates, get new functionality, and the latest versions of all components. Upgrade a provisioned Hybrid Runtime by running a silent upgrade or through the GitOps CLI wizard.  
 If you have managed clusters for Hybrid GitOps Runtimes, upgrading the Runtime automatically updates runtime components within the managed cluster as well.
 
->The Update Available! Notification in the List View's Version column indicates that a newer version of the Runtime is available.
+>The `Update Available! Notification` in the List View's Version column indicates that a newer version of the Runtime, Helm chart, or both are available.
 
 
 <!--- When there are security updates, the UI displays the alert, _At least one runtime requires a security update_. The Version column displays an _Update Required!_ notification.  
@@ -366,9 +366,6 @@ Codefresh displays this notification:
   You installed the GitOps Runtime through a script or any other automated mechanism, and didn't provide the URL to the Shared Configuration Repository.
 
 
-
-
-
 **Before you begin**  
 
 Verify that you have [authorized access to the Codefresh app's organizations]({{site.baseurl}}/docs/administration/account-user-management/hosted-authorize-orgs/)
@@ -457,9 +454,8 @@ The methods for updating any Git token are the same regardless of the reason for
 If you are using Git personal access tokens for authentication, you can also update them through the Codefresh CLI.
 
 * Run:  
-  ```yaml
-  cf config update-gitops-settings --shared-config-repo <repo_url> [--gitProvider <git-provider>] [--git-api-url <git-api-url>]
-```
+  `cf config update-gitops-settings --shared-config-repo <repo_url> [--gitProvider <git-provider>] [--git-api-url <git-api-url>]`
+
   where:  
   * `<repo_url>` is required, and is the URL of the Shared Configuration Repository, and must match the Git provider.
   * `--gitProvider` is optional for cloud providers as Codefresh identifies them through the Shared repo URL, and is required for on-premises providers.
@@ -470,16 +466,12 @@ If you are using Git personal access tokens for authentication, you can also upd
   * `--git-api-url` is optional for all Git providers, including on-premises repo clones.
 
 
-<!--- does not work for Helm runtimes; hidden until further notice
-
-## View/download logs for GitOps Runtimes
+## (Legacy Hybrid GitOps install) View/download logs for GitOps Runtimes
 Logs are available for completed Runtimes, both for the runtime and for individual runtime components. Download log files for offline viewing and analysis, or view online logs for a Runtime component, and download if needed for offline analysis. Online logs support free-text search, search-result navigation, and line-wrap for enhanced readability.  
 
 Log files include events from the date of the application launch, with the newest events listed first. 
 
-{::nomarkdown}
-<br><br>
-{:/}
+<br>
 
 ### Download logs for GitOps Runtimes
 Download the log file for a Runtime. The Runtime log is downloaded as a `.tar.gz` file, which contains the individual log files for each runtime component. 
@@ -561,11 +553,11 @@ Online logs show up to 1000 of the most recent events (lines), updated in real t
 1. To download the log, click **Download**.  
   The file is downloaded as `<component-name>.log`.
 
--->
 
-<!--- needs to be modified for Helm; hidden until further notice
 
-## (Hybrid GitOps) Restoring provisioned GitOps Runtimes
+
+
+## (Legacy Hybrid GitOps only) Restoring provisioned GitOps Runtimes
 
 In case of cluster failure, restore the provisioned Hybrid GitOps Runtime from the existing runtime installation repository.  
 For partial or complete cluster failures, you can restore the Runtime to either the failed cluster or to a different cluster.  
@@ -662,7 +654,6 @@ spec:
 status:
   loadBalancer: {}
 ```
--->
 
 ## (Hybrid GitOps) Troubleshoot communication problems
 

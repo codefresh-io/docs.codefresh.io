@@ -1,10 +1,12 @@
 ---
-title: "Hybrid GitOps Runtime installation"
+title: "(Legacy) Hybrid GitOps Runtime installation"
 description: "Provision Hybrid GitOps Runtimes"
 group: installation
 sub_group: gitops
 toc: true
 ---
+
+
 
 Provision one or more Hybrid GitOps Runtimes in your Codefresh account.  
 Start by reviewing [system requirements](#minimum-system-requirements) for Hybrid GitOps.  
