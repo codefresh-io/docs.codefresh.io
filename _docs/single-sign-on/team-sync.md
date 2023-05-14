@@ -4,6 +4,7 @@ description: "Set up team sync, default SSO provider for accounts"
 group: single-sign-on
 toc: true
 ---
+
 Once you create an SSO provider account in Codefresh, you can:
 * Automatically or manually sync the teams created in your Identity Provider (IdP) with Codefresh
 * Set a default SSO provider for your account
@@ -16,6 +17,39 @@ Team sync synchronizes all users and teams provisioned in the IdP with Codefresh
 If automatic team sync is enabled for the IdP in Codefresh, you can sync teams:
 * Automatically, in the Codefresh UI when you set up the SSO account for the IdP, through the **Auto-sync team** option, if available. 
 * Manually, through the Codefresh CLI's [synchronize teams command](https://codefresh-io.github.io/cli/teams/synchronize-teams/){:target="\_blank"}. 
+
+### Team-sync support in Codefresh for IdPs
+The table lists the IdPs for which Codefresh supports automated/manual team sync.
+
+{: .table .table-bordered .table-hover}
+| Protocol   | IdP     | Team sync    |  
+| ---------- | --------------   |--------------|  
+|**OIDC**    | Auth0            | -            |
+|            | Azure            |            |
+|            | Google           | -             |
+|            | Keycloak         | -             |
+|            | Okta             |            |
+|            | OneLogin         | -             |
+|**LDAP**    |                  | -             |
+|**SAML**    | GSuite           |            |    
+|            | JumpCloud        | -             |
+|            | Okta             |           |
+|            | OneLogin         | -             |
+|            | PingID           | -             |
+
+
+
+### Automated team-sync
+
+This is the general workflow for automated team-sync in Codefresh:
+
+1. Your IdP adds users to groups, or grants permissions to access the SSO integration.
+1. If available for the IdP (SSO) provider in Codefresh, you can either automatically sync via the UI, or manually via the CLI.  
+1. Depending on the provider, user accounts are either automatically created or on responding to the email invitations. 
+    * If the activate user option is available for the provider, the user account is automatically created and activated. Invitations are not sent or needed.
+    * Otherwise, users are sent email invitation. 
+      The Users & Teams page display the Pending status for such users. 
+      Users can log in using the link in the email or use the Corporate SSO option in the login page.
 
 ### Manual team-sync via CLI 
 
@@ -173,3 +207,6 @@ max-width="50%"
 ## Related articles
 [Setting up OIDC Federated SSO]({{site.baseurl}}/docs/single-sign-on/oidc)  
 [Setting up SAML2 Federated SSO]({{site.baseurl}}/docs/single-sign-on/saml)  
+
+
+
