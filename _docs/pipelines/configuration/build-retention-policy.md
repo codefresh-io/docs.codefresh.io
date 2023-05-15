@@ -6,17 +6,15 @@ sub_group: configuration
 toc: true
 ---
 
-QUESTIONS:
-Is it per pipeline or per account?
-What do you mean by existing vs new environments?
-Does it also delete the build logs?
+Define the retention policy for pipeline builds in your environments. 
 
+Save storage space for existing environments by deleting older builds. As the number of builds accumulate over time, they can take up a significant amount of storage space which you can free up by removing older builds. Fewer pipeline builds to manage, make it easy to navigate to and find relevant builds for monitoring and troubleshooting. 
 
-Define the retention policy for pipeline builds for existing and new environments. 
-
-For existing environments, deleting older builds saves storage space, making it easier to manage them. As the number of builds accumulate over time, they can take up a significant amount of storage space which you can free up by removing older builds. Fewer pipeline builds to manage, make it easy to navigate to and find relevant builds for monitoring and troubleshooting. 
 For new environments, defining a retention policy ensures that your build environments are always controlled,  and storage and disk space are always optimized. 
-Retention settings are controlled through environment variables in `cf-api`. By default, when enabled, Codefresh implements a Cron job that deletes builds older than 30 days. The job removes data from collections such as `workflowproccesses`. Build logs are _not_deleted.
+Retention settings are controlled through environment variables in `cf-api`. By default, when enabled, Codefresh implements a Cron job that deletes builds older than 30 days. The job removes data from collections such as `workflowproccesses`. 
+
+>**NOTE**:  
+>Build logs are _not_deleted.
 
 
 ## Pipeline build retention settings
@@ -34,7 +32,7 @@ The retention mechanism is implemented as a Cron job, and deletes data from the 
   >For existing environments, for the retention mechanism to work, you must first drop the index in MongoDB.
 
 1. Optional. For existing environments: 
-    1. In MongoDB, drop the index on `created` field in `workflowprocesses` collection.
+    1. In MongoDB, drop the index for `created` field in `workflowprocesses` collection.
     1. Restart `cf-api`.
 1. In `cf-api`, add `ttlDataRetentionPolicy`, and add the `TTL_RETENTION_POLICY_IS_ENABLED` and `TTL_RETENTION_POLICY_IN_DAYS` parameters with the required values.
    
