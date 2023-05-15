@@ -163,7 +163,8 @@ Setting a default provider assigns the selected SSO automatically to all new use
 1. From the list, select the SSO account to set as default and click the **Edit** icon on the right.
 1. Scroll down and select **Set as default**. 
 
-{% include image.html
+{% include 
+image.html
 lightbox="true"
 file="/images/administration/sso/default-sso.png"
 url="/images/administration/sso/default-sso.png"
@@ -173,13 +174,15 @@ max-width="50%"}
 
   The Single Sign-on page shows the SSO provider tagged as the default.
 
-{% include image.html
+{% include 
+image.html
 lightbox="true"
 file="/images/administration/sso/sso-list-with-default.png"
 url="/images/administration/sso/sso-list-with-default.png"
 alt="Single Sign-on list showing the default SSO provider"
 caption="Single Sign-on list showing the default SSO provider"
 max-width="60%"}
+
 
 ## Select SSO provider for individual users
 
