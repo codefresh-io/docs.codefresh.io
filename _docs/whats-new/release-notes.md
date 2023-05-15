@@ -2,8 +2,6 @@
 title: "Release Notes"
 description: "New features, enhancements, and bug fixes"
 group: whats-new
-redirect_from:
-  - /csdp-docs/docs/whats-new/whats-new/
 toc: true
 ---
 

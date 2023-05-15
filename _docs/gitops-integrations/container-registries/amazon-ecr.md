@@ -3,8 +3,6 @@ title: "GitOps Amazon ECR integration"
 description: ""
 group: gitops-integrations
 sub_group: container-registries
-redirect_from:
-  - /csdp-docs/docs/integrations/container-registries/amazon-ecr/
 toc: true
 ---
 

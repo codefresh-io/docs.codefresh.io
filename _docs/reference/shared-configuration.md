@@ -2,8 +2,6 @@
 title: "Shared configuration repo"
 description: ""
 group: reference
-redirect_from:
-  - /csdp-docs/docs/reference/shared-configuration/
 toc: true
 ---
 

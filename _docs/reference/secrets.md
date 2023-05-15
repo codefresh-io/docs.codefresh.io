@@ -2,8 +2,6 @@
 title: "Secrets"
 description: "Learn how Codefresh stores secrets"
 group: reference
-redirect_from:
-  - /csdp-docs/docs/reference/secrets/
 toc: true
 ---
 
