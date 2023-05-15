@@ -373,19 +373,6 @@ These services are not considered critical as they are part of build-handling. I
 
 After you install Codefresh, these are post-installation operations that you should follow.
 
-### Disable user and team management via Codefresh UI
-
-If you use an external provider, such as Terraform, to provision users and teams, you can disable user/team operations in the Codefresh UI. Blocking user- and team-related operations in the UI means that admins cannot make changes locally that may conflict with or override those via the external provider.
-
-These are the operations blocked in the Codefresh UI:
-* Adding/updating/deleting users
-* Adding/updating/deleting teams
-* Defining/updating roles for users
-* Defining/updating SSO provider for users  
-
-**How to**  
-* Enable `disableUserManagement` in Feature Management.
-
 
 
 ### Selectively enable SSO provider for account
