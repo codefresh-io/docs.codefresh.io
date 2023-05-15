@@ -170,9 +170,10 @@ file="/images/administration/sso/default-sso.png"
 url="/images/administration/sso/default-sso.png"
 alt="Set default SSO provider for account"
 caption="Set default SSO provider for account"
-max-width="50%"}
+max-width="50%"
+%}
 
-  The Single Sign-on page shows the SSO provider tagged as the default.
+    The Single Sign-on page shows the SSO provider tagged as the default.
 
 {% include 
 image.html
@@ -181,7 +182,8 @@ file="/images/administration/sso/sso-list-with-default.png"
 url="/images/administration/sso/sso-list-with-default.png"
 alt="Single Sign-on list showing the default SSO provider"
 caption="Single Sign-on list showing the default SSO provider"
-max-width="60%"}
+max-width="60%"
+%}
 
 
 ## Select SSO provider for individual users
