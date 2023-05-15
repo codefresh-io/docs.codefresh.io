@@ -373,9 +373,24 @@ These services are not considered critical as they are part of build-handling. I
 
 After you install Codefresh, these are post-installation operations that you should follow.
 
+### Disable user and team management via Codefresh UI
+
+If you use an external provider, such as Terraform, to provision users and teams, you can disable user/team operations in the Codefresh UI. Blocking user- and team-related operations in the UI means that admins cannot make changes locally that may conflict with or override those via the external provider.
+
+These are the operations blocked in the Codefresh UI:
+* Adding/updating/deleting users
+* Adding/updating/deleting teams
+* Defining/updating roles for users
+* Defining/updating SSO provider for users  
+
+**How to**  
+* Enable `disableUserManagement` in Feature Management.
+
+
+
 ### Selectively enable SSO provider for account
 As a Codefresh administrator, you can select the providers you want to enable for SSO in your organization, for both new and existing accounts.
-You can always renable a provider when needed.
+If you disable a provider, you can always renable the same provider when needed.
 
 
 1. Sign in as Codefresh admin.
@@ -723,7 +738,12 @@ cfapi:
 
 For detailed information, see the [Securing your webhooks](https://docs.github.com/en/developers/webhooks-and-events/webhooks/securing-your-webhooks) and [Webhooks](https://docs.github.com/en/github-ae@latest/rest/webhooks).
 
-### Configure custom Root CA for volumes and containers
+### Configure custom root CA/certificates
+
+Codefresh allows you to configure custom CAs or self-signed server certificates to ensure secure communication for Pipelines and GitOps modules.
+
+
+#### Pipelines: Configure custom root CA for volumes and containers
 Reference the K8s secret containing the root CA in `config.yaml`.
 Define the volume or volumes with the K8s secret objects, and then the volume mounts for the container.
 
@@ -756,6 +776,68 @@ global:
         - mountPath: /etc/ssl/custom/ca.crt 
           subPath: ca.crt
 ```
+#### GitOps: Configure custom certificates
+For on-premises GitOps, you need platform and repository certificates.  
+
+Platform certificates are required for the Runtimes to communicate with the Codefresh platform. 
+Repository certificates are required for Runtimes and Argo CD to communicate with your Git/Helm repositories.
+
+**Add platform certificates**  
+To add platform certificates, you can include them in the `values` file's `global` section. This can be done by referencing an existing secret or creating a new secret directly within the file.
+
+```yaml
+global:
+  codefresh:
+    tls:
+      caCerts:
+        # optional - use an existing secret that contains the cert
+        # secretKeyRef:
+        #   name: my-certificate-secret
+        #   key: ca-bundle.crt
+
+        # or create "codefresh-tls-certs" secret
+        secret:
+          create: true
+          content: |
+            -----BEGIN CERTIFICATE-----
+            ...
+            -----END CERTIFICATE-----
+
+```
+**Add repository certificates**  
+To add credentials for Argo CD to communicate with the Git/Helm repositories, the simplest way is to add them to the `argo-cd` `[values]'(https://github.com/argoproj/argo-helm/blob/main/charts/argo-cd/values.yaml#LL334C21-L334C21){:target="\_blank"} file.
+
+```yaml
+argo-cd:
+  configs:
+    tls:
+      certificates:
+        server.example.com: |
+          -----BEGIN CERTIFICATE-----
+          ...
+          -----END CERTIFICATE-----
+```
+
+<!---
+
+## Feature management 
+
+{: .table .table-bordered .table-hover}
+| Feature                     | Description            |  Notes |
+| --------------              | --------------           |  
+|`allowUserUpdateBoards`| When enabled, allows users without admin (NIMA: is it permissions or roles?) permissions to update Helm boards.QUESTIONS: Which Helm board: Helm Releases or Helm Environments? 2. Permissions or Roles? 3. What can they do: Create board, update board, install releases, move releases? Is it UI only? 4. Are there any caveats |
+|`dindPodRequestsEqualLimits`   | No proper descriptoin|
+|`disableWelcomeScreen` | Determines if to display the Codefresh Welcome page in Classic UI and disables user from entering credentials after sign up. Required mostly for on-premises, especially LDAP which has all login info already configured.  |
+|`disableRolloutActionsWithoutRBAC` |When enabled, ??|
+|`forbidDecrypt` |Default FALSE Prevents users from decrypting secrets. QUESTION: 1. What does this mean? Decrypting in the UI?  |
+|`gitopsArgoCdRollback` |When enabled, ??|
+|`gitopsImageReporting` |When enabled, ??|
+|`injectClusterListFromPipelineSettings` |QUESTIONS: 1. Is it the account-level setting that this enables? 2. If enabled, users can select the clusters that the pipeline can access or are available to a specific pipeline? 3. Any notes or limitations? 4. Is this available only for Enterprise accounts? 5. Default is False or True? Default`; ??.<br>When enabled, allows users to select single or multiple clusters available to the  the 
+|`parallelKubectlOperations` |When enabled, ??|
+|`logMasking` |Default: False<br>When enabled, secrets in build logs are masked and replaced by asterisks. QUESTIONS: 1. Is this for online and offline logs? 2. Is this only for Enterprise customers? 3. Any limitations or notes to be aware of?|
+|`useLogsTimestamps` |Default: False<br>When enabled, prepends the date and time to every line in the log. |When enabled, and you have build automation, you may need to adjust the regex for search as the line does not start with the log text|
+
+-->
 
 ## Using existing external services for data storage/messaging
 
