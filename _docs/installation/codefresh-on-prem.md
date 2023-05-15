@@ -738,9 +738,9 @@ cfapi:
 
 For detailed information, see the [Securing your webhooks](https://docs.github.com/en/developers/webhooks-and-events/webhooks/securing-your-webhooks) and [Webhooks](https://docs.github.com/en/github-ae@latest/rest/webhooks).
 
-### Configure custom root CA/certificates
+### Configure custom TLS certificates
 
-Codefresh allows you to configure custom CAs or self-signed server certificates to ensure secure communication for Pipelines and GitOps modules.
+Codefresh allows you to configure custom CA certificates or self-signed server certificates for secure communication for pipeline or GitOps components.
 
 
 #### Pipelines: Configure custom root CA for volumes and containers
@@ -776,14 +776,18 @@ global:
         - mountPath: /etc/ssl/custom/ca.crt 
           subPath: ca.crt
 ```
+<br>
+
 #### GitOps: Configure custom certificates
 For on-premises GitOps, you need platform and repository certificates.  
 
-Platform certificates are required for the Runtimes to communicate with the Codefresh platform. 
-Repository certificates are required for Runtimes and Argo CD to communicate with your Git/Helm repositories.
+* **Platform** certificates are required for the Runtimes to communicate with the Codefresh platform. 
+* **Repository** certificates are required for Runtimes and Argo CD to communicate with your Git/Helm repositories.
+
+<br>
 
 **Add platform certificates**  
-To add platform certificates, you can include them in the `values` file's `global` section. This can be done by referencing an existing secret or creating a new secret directly within the file.
+To add platform certificates, include them in `.values.global`. This can be done by referencing an existing secret or creating a new secret directly within the file.
 
 ```yaml
 global:
@@ -804,8 +808,10 @@ global:
             -----END CERTIFICATE-----
 
 ```
+<br>
+
 **Add repository certificates**  
-To add credentials for Argo CD to communicate with the Git/Helm repositories, the simplest way is to add them to the `argo-cd` `[values]'(https://github.com/argoproj/argo-helm/blob/main/charts/argo-cd/values.yaml#LL334C21-L334C21){:target="\_blank"} file.
+To add credentials for Argo CD to communicate with the Git/Helm repositories, the simplest way is to add them to Argo CD's  [`values`]((https://github.com/argoproj/argo-helm/blob/main/charts/argo-cd/values.yaml#LL334C21-L334C21){:target="\_blank"}) file.
 
 ```yaml
 argo-cd:
