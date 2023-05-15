@@ -14,46 +14,51 @@ Once you create an SSO provider account in Codefresh, you can:
 ## Syncing teams in IdPs with Codefresh
 Team sync synchronizes all users and teams provisioned in the IdP with Codefresh. 
 
-If automatic team sync is enabled for the IdP in Codefresh, you can sync teams:
-* Automatically, in the Codefresh UI when you set up the SSO account for the IdP, through the **Auto-sync team** option, if available. 
-* Manually, through the Codefresh CLI's [synchronize teams command](https://codefresh-io.github.io/cli/teams/synchronize-teams/){:target="\_blank"}. 
+In Codefresh you can sync users and teams either automatically or manually:
+* Automatically in the Codefresh UI, through the **Auto-sync team** option, if available. 
+* Manually, through either the Codefresh CLI's [synchronize teams command](https://codefresh-io.github.io/cli/teams/synchronize-teams/){:target="\_blank"} or through a Codefresh pipeline. 
 
 ### Team-sync support in Codefresh for IdPs
-The table lists the IdPs for which Codefresh supports automated/manual team sync.
+The table lists the IdPs with automated/manual team-sync support in Codefresh.
 
 {: .table .table-bordered .table-hover}
-| Protocol   | IdP     | Team sync    |  
-| ---------- | --------------   |--------------|  
-|**OIDC**    | Auth0            | -            |
-|            | Azure            | ✅          |
-|            | Google           | -             |
-|            | Keycloak         | -             |
-|            | Okta             | ✅           |
-|            | OneLogin         | -             |
-|**LDAP**    |                  | -             |
-|**SAML**    | GSuite           | ✅          |    
-|            | JumpCloud        | -             |
-|            | Okta             | ✅          |
-|            | OneLogin         | -             |
-|            | PingID           | -             |
+| Protocol   | IdP              | Team-sync    | |  
+|            |                  | Automated    | Manual|  
+| ---------- | --------------   |--------------|-------|
+|**OIDC**    | Auth0            | -             | -    |
+|            | Azure            | ✅            | ✅    |
+|            | Google           | -             | ✅    |
+|            | Keycloak         | -             | ✅   |
+|            | Okta             | ✅            | ✅  |
+|            | OneLogin         | -             | ✅    |
+|**LDAP**    |                  | -             | ✅ |
+|**SAML**    | GSuite           | ✅            | ✅ |  
+|            | JumpCloud        | -             |- |
+|            | Okta             | ✅            |  ✅ |
+|            | OneLogin         | -             |- |
+|            | PingID           | -             |- |
 
 
 
 ### Automated team-sync
 
+The automated team-sync option is only available in the Codefresh UI.  
 This is the general workflow for automated team-sync in Codefresh:
 
 1. Your IdP adds users to groups, or grants permissions to access the SSO integration.
 1. If available for the IdP (SSO) provider in Codefresh, you can either automatically sync via the UI, or manually via the CLI.  
 1. Depending on the provider, user accounts are either automatically created or on responding to the email invitations. 
-    * If the activate user option is available for the provider, the user account is automatically created and activated. Invitations are not sent or needed.
-    * Otherwise, users are sent email invitation. 
+    * If the **Activate user** option is available for the provider, the user account is automatically created and activated. Invitations are not sent or needed.
+    * Otherwise, users are sent email invitations. 
       The Users & Teams page display the Pending status for such users. 
       Users can log in using the link in the email or use the Corporate SSO option in the login page.
 
 ### Manual team-sync via CLI 
 
 Manually synchronize users and teams provisioned in your IdP through the Codefresh CLI with the `synchronize teams` command.
+
+>**NOTE**:  
+ >Make sure that there are no [domain restrictions on the email address](#manual-team-sync-and-email-domain-restrictions).
 
 As an example, you can sync your Azure teams with the CLI: 
 
@@ -76,14 +81,14 @@ max-width="40%"
 
 
 
-### Team-sync with Codefresh pipelines
+### Manual team-sync with Codefresh pipelines
 
-Both automated and manual team-syncs are possible only if the option is support for your IdP in Codefresh. 
+As an alternative to manually syncing teams on demand via the Codefresh CLI, you can manually sync teams using Codefresh pipelines. 
 
-To implement team-sync also for providers without this option, you can use Codefresh pipelines. 
+>**NOTE**:  
+ >Make sure that there are no [domain restrictions on the email address](#manual-team-sync-and-email-domain-restrictions).
 
-A pipeline makes it possible to run team-sync periodically as a job. Use the CLI as a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/), as in the example below.
-
+A pipeline makes it possible to run team-sync periodically as a job. You can use the CLI as a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/), as in the example below.
 You can create a Git repository with a [codefresh.yml]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/) file with the following content:
 
 ```yaml
@@ -96,11 +101,11 @@ steps:
       - 'codefresh synchronize teams my-client-name -t azure'
 ```
 
-To fully automate this pipeline, you should set a [cron trigger]({{site.baseurl}}/docs/pipelines/triggers/cron-triggers/) for it. Depending on how you set up your Cron trigger, you can synchronize your teams every day/week/hour. 
+To fully automate the pipeline, you can set a [cron trigger]({{site.baseurl}}/docs/pipelines/triggers/cron-triggers/) for it. Depending on how you set up your Cron trigger, you can synchronize your teams every day/week/hour. 
 
 
-### Team-sync and email domain restrictions
-If the `Restrict inviting additional users by email address domain` is enabled for your account, manual sync via the CLI or sync via a pipeline, _does not invite new users_ to Codefresh.  
+### Manual team-sync and email domain restrictions
+If the `Restrict inviting additional users by email address domain` is enabled for your account, manual sync via the CLI or via a pipeline, _does not invite new users_ to Codefresh.  
 The output of the command will be similar to the following:
 
 ```json
