@@ -199,7 +199,8 @@ You can override the default SSO provider if set for your account, with a differ
 1. In the sidebar, from Access & Collaboration, select [**Users & Teams**](https://g.codefresh.io/account-admin/collaborators/users){:target="\_blank"}.   
 1. For the user, select the SSO provider from the SSO list.
 
-{% include image.html
+{% include 
+image.html
 lightbox="true"
 file="/images/administration/sso/select-user-sso.png"
 url="/images/administration/sso/select-user-sso.png"
