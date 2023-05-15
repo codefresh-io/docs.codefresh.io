@@ -25,15 +25,15 @@ The table lists the IdPs for which Codefresh supports automated/manual team sync
 | Protocol   | IdP     | Team sync    |  
 | ---------- | --------------   |--------------|  
 |**OIDC**    | Auth0            | -            |
-|            | Azure            |            |
+|            | Azure            | ✅          |
 |            | Google           | -             |
 |            | Keycloak         | -             |
-|            | Okta             |            |
+|            | Okta             | ✅           |
 |            | OneLogin         | -             |
 |**LDAP**    |                  | -             |
-|**SAML**    | GSuite           |            |    
+|**SAML**    | GSuite           | ✅          |    
 |            | JumpCloud        | -             |
-|            | Okta             |           |
+|            | Okta             | ✅          |
 |            | OneLogin         | -             |
 |            | PingID           | -             |
 
