@@ -549,7 +549,7 @@ The TTL-based retention mechanism is implemented as a Cron job, and deletes data
 
 >**IMPORTANT**:  
   >For existing environments, for the retention mechanism to work, you must first drop the index in MongoDB.
-  >This requires a maintenance window depending on the number of builds to be deleted.
+  >This requires a maintenance window that depends on the number of builds to be deleted, approximately three hours per node.
 
 {: .table .table-bordered .table-hover}
 | Env Variable   | Description             | Default                |
@@ -558,7 +558,7 @@ The TTL-based retention mechanism is implemented as a Cron job, and deletes data
 |`TTL_RETENTION_POLICY_IN_DAYS`    | The number of days for which to retain builds, and can be between `30`(minimum) and `365` (maximum). Builds older than the defined retention period are deleted.  | `365`              |
 
 
-1. For existing environments: 
+1. (Optional) For existing environments: 
     1. In MongoDB, drop the index on `created` field in `workflowprocesses` collection.
     1. Restart `cf-api`.
 1. In `cf-api`, add to `env`:

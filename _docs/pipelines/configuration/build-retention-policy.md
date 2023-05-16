@@ -8,7 +8,7 @@ toc: true
 
 Define the retention policy for pipeline builds in your environments. 
 
-Save storage space for existing environments by deleting older builds. Fewer pipeline builds to manage, make it easy to navigate to and find relevant builds for monitoring and troubleshooting. 
+For existing environments, save storage space by deleting older builds. Fewer pipeline builds to manage, make it easy to navigate to and find relevant builds for monitoring and troubleshooting. 
 For new environments, defining a retention policy to better control build environments and optimize storage space. 
 
 Retention settings are controlled through environment variables in `cf-api`. By default, when enabled, Codefresh implements a Cron job that deletes removes data from the `workflowproccesses` collection. 
@@ -20,24 +20,22 @@ Retention settings are controlled through environment variables in `cf-api`. By 
 ## Pipeline build retention settings
 
 
-
 {: .table .table-bordered .table-hover}
 | Env Variable   | Description             | Default                |
 |---------------|--------------------------- |----------------------  |
 |`TTL_RETENTION_POLICY_IS_ENABLED` | Determines if automatic build deletion through the Cron job is enabled.         | `false`                 |
 |`TTL_RETENTION_POLICY_IN_DAYS`    | The number of days for which to retain builds, and can be between `30`(minimum) and `365` (maximum). Builds older than the defined retention period are deleted.  | `365`              |
 
-## Configure the build retention policy
 
 
-### (Optional) Drop MongoDB index for existing environments
+## (Optional) Drop MongoDB index for existing environments
 
-For existing environments, make sure you define a maintenance wirnfor the retention mechanism to work, you must first drop the index in MongoDB.
+For existing environments, for the retention mechanism to work, you must first drop the existing index in MongoDB. This action requires a maintenance window that depends on the number of workflows to delete, approximately three hours per node. 
 
 1. In MongoDB, drop the index for `created` field in `workflowprocesses` collection.
 1. Restart `cf-api`.
 
-### Enable build retention policy
+## Configure build retention policy
 1. In `cf-api`, add `env.TTL_RETENTION_POLICY_IS_ENABLED`, and set it to `true`.
 1. Add `TTL_RETENTION_POLICY_IN_DAYS` and set to the required value. If not set, uses the default of `365` days.
    
