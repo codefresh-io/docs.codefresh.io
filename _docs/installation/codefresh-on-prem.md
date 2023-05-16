@@ -768,8 +768,8 @@ global:
 #### GitOps: Configure custom certificates
 For on-premises GitOps, you need platform and repository certificates.  
 
-* **Platform** certificates are required for the Runtimes to communicate with the Codefresh platform. 
-* **Repository** certificates are required for Runtimes and Argo CD to communicate with your Git/Helm repositories.
+* **Platform** certificates are required for Runtimes to communicate with the Codefresh platform. 
+* **Repository** certificates are required to authenticate users to on-premises Git servers. 
 
 <br>
 
@@ -798,7 +798,8 @@ global:
 <br>
 
 **Add repository certificates**  
-To add credentials for Argo CD to communicate with the Git/Helm repositories, the simplest way is to add them to Argo CD's  [`values`]((https://github.com/argoproj/argo-helm/blob/main/charts/argo-cd/values.yaml#LL334C21-L334C21){:target="\_blank"}) file.
+Add repository certificates to your Codefresh `values` file, in `.values.argo-cd`. These values are used by the argo-cd Codefresh deploys. 
+For details on adding repository certificates, see this [section](https://github.com/argoproj/argo-helm/blob/main/charts/argo-cd/values.yaml#LL334C21-L334C21){:target="\_blank"}).
 
 ```yaml
 argo-cd:
