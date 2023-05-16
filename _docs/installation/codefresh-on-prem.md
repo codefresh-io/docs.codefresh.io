@@ -545,22 +545,26 @@ The retention mechanism, implemented as a Cron Job, removes data from collection
 
 #### Configure TTL for retention policy
 
-The TTL-based retention mechanism is implemented as a Cron job, and deletes data from the `workflowprocesses` collection.
+The TTL-based retention mechanism is implemented as a Cron job, and deletes data from the `workflowprocesses` collection. Build logs are not deleted.
 
 >**IMPORTANT**:  
   >For existing environments, for the retention mechanism to work, you must first drop the index in MongoDB.
+  >This requires a maintenance window depending on the number of builds to be deleted.
 
 {: .table .table-bordered .table-hover}
 | Env Variable   | Description             | Default                |
 |---------------|--------------------------- |----------------------  |
-|`TTL_RETENTION_POLICY_IS_ENABLED` | Determines if automatic build deletion through the Cron job is enabled.         | `true`                 |
-|`TTL_RETENTION_POLICY_IN_DAYS`    | The number of days for which to retain builds, and can be between `30`(minimum) and `365` (maximum). Builds older than the defined retention period are deleted.  | `30`              |
+|`TTL_RETENTION_POLICY_IS_ENABLED` | Determines if automatic build deletion through the Cron job is enabled.         | `false`                 |
+|`TTL_RETENTION_POLICY_IN_DAYS`    | The number of days for which to retain builds, and can be between `30`(minimum) and `365` (maximum). Builds older than the defined retention period are deleted.  | `365`              |
 
 
 1. For existing environments: 
     1. In MongoDB, drop the index on `created` field in `workflowprocesses` collection.
     1. Restart `cf-api`.
-1. In `cf-api`, add `ttlDataRetentionPolicy`, and add the `TTL_RETENTION_POLICY_IS_ENABLED` and `TTL_RETENTION_POLICY_IN_DAYS` parameters with the required values.
+1. In `cf-api`, add to `env`:
+    1. `TTL_RETENTION_POLICY_IS_ENABLED` set to `true`.
+    1. `TTL_RETENTION_POLICY_IN_DAYS`.
+
 
 ### Managing Codefresh backups
 
