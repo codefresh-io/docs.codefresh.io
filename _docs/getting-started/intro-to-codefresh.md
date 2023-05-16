@@ -2,6 +2,8 @@
 title: "What is Codefresh?"
 description: "Understand the features and benefits of Codefresh"
 group: getting-started
+redirect-from: 
+  - https://codefresh.io/csdp-docs/docs/getting-started/csdp-introduction/
 toc: true
 ---
 
