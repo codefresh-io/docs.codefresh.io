@@ -12,17 +12,19 @@ Once you create an SSO provider account in Codefresh, you can:
 
 
 ## Syncing teams in IdPs with Codefresh
-Team sync synchronizes all users and teams provisioned in the IdP with Codefresh. 
+Team sync synchronizes all users and teams provisioned in the SSO provider with Codefresh. 
 
 In Codefresh you can sync users and teams either automatically or manually:
-* Automatically in the Codefresh UI, through the **Auto-sync team** option, if available. 
-* Manually, through either the Codefresh CLI's [synchronize teams command](https://codefresh-io.github.io/cli/teams/synchronize-teams/){:target="\_blank"} or through a Codefresh pipeline. 
+* Automatically, in the Codefresh UI if the option is supported for your SSO provider 
+* Manually, either on-demand through the Codefresh CLI, or through a Codefresh pipeline
 
-### Team-sync support in Codefresh for IdPs
-The table lists the IdPs with automated/manual team-sync support in Codefresh.
+
+
+### Team-sync support in Codefresh for SSO providers
+The table lists the SSO providers supported in Codefresh and the team-sync option available for them.
 
 {: .table .table-bordered .table-hover}
-| Protocol   | IdP              | Team-sync    | |  
+| Protocol   | SSO provider              | Team-sync    | |  
 |            |                  | Automated    | Manual|  
 | ---------- | --------------   |--------------|-------|
 |**OIDC**    | Auth0            | -             | -    |
@@ -46,16 +48,16 @@ The automated team-sync option is only available in the Codefresh UI.
 This is the general workflow for automated team-sync in Codefresh:
 
 1. Your IdP adds users to groups, or grants permissions to access the SSO integration.
-1. If available for the IdP (SSO) provider in Codefresh, you can either automatically sync via the UI, or manually via the CLI.  
-1. Depending on the provider, user accounts are either automatically created or on responding to the email invitations. 
-    * If the **Activate user** option is available for the provider, the user account is automatically created and activated. Invitations are not sent or needed.
-    * Otherwise, users are sent email invitations. 
-      The Users & Teams page display the Pending status for such users. 
-      Users can log in using the link in the email or use the Corporate SSO option in the login page.
+1. You set up the SSO provider in Codefresh, and select one or both options for automated team-sync:
+    * If only the **Auto-sync** option is selected, the user account is created. On first-time sign-in, the user will need to enter additional information such as First Name, Last Name, Country.
+    * If the **Activate user** option is also selected (when available), the user account is both automatically created and activated. On first-time sign-in, the user is automatically authenticated without having to enter additional information in the Welcome page.  
+
+
 
 ### Manual team-sync via CLI 
 
-Manually synchronize users and teams provisioned in your IdP through the Codefresh CLI with the `synchronize teams` command.
+Manually synchronize users and teams provisioned in your SSO provider account, on-demand, through the Codefresh CLI with the [`synchronize teams`](https://codefresh-io.github.io/cli/teams/synchronize-teams/){:target="\_blank"} command.
+
 
 >**NOTE**:  
  >Make sure that there are no [domain restrictions on the email address](#manual-team-sync-and-email-domain-restrictions).
