@@ -30,14 +30,19 @@ Retention settings are controlled through environment variables in `cf-api`. By 
 
 ## (Optional) Drop MongoDB index for existing environments
 
-For existing environments, for the retention mechanism to work, you must first drop the existing index in MongoDB. This action requires a maintenance window that depends on the number of workflows to delete, approximately three hours per node. 
+For existing environments, for the retention mechanism to work, you must first drop the existing index in MongoDB.  
+This action requires a maintenance window that depends on the number of workflows to delete, approximately three hours per MongoDB node. 
 
 1. In MongoDB, drop the index for `created` field in `workflowprocesses` collection.
-1. Restart `cf-api`.
+1. Continue with _Configure build retention policy_.
 
 ## Configure build retention policy
+If you have more than one `cf-api`, you must configure _all_ of them.
+
 1. In `cf-api`, add `env.TTL_RETENTION_POLICY_IS_ENABLED`, and set it to `true`.
 1. Add `TTL_RETENTION_POLICY_IN_DAYS` and set to the required value. If not set, uses the default of `365` days.
+1. Verify that the `created` field in the `workflowprocesses` collection has a new index.   
+1. Restart `cf-api`.
    
 ## Related articles
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
