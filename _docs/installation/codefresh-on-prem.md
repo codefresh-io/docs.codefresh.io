@@ -548,8 +548,8 @@ The retention mechanism, implemented as a Cron Job, removes data from collection
 The TTL-based retention mechanism is implemented as a Cron job, and deletes data from the `workflowprocesses` collection. Build logs are not deleted.
 
 >**IMPORTANT**:  
-  > * For existing environments, for the retention mechanism to work, you must first drop the index in MongoDB. This requires a maintenance window that depends on the number of builds to be deleted, approximately three hours per node.
-  * If you have more than one `cf-api`, you must update the configuration for all of them.
+  > * For existing environments, for the retention mechanism to work, you must first drop the index in MongoDB. This requires a maintenance window that depends on the number of builds to be deleted, approximately three hours per MongoDB node.
+  >* If you have more than one `cf-api`, you must update the configuration for all of them.
 
 {: .table .table-bordered .table-hover}
 | Env Variable   | Description             | Default                |
