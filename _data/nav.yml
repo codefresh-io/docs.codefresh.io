@@ -370,6 +370,19 @@
       url: "/introduction-to-codefresh-pipelines"
     - title: Creating pipelines
       url: "/pipelines"
+    - title: Configuration for pipelines
+      url: "/configuration"
+      sub-pages:
+        - title: Global pipeline settings
+          url: "/pipeline-settings"          
+        - title: Shared configuration
+          url: "/shared-configuration"
+        - title: Secrets for pipelines
+          url: "/secrets-store"  
+        - title: Public logs and status badges
+          url: "/build-status"
+        - title: Build retention policy
+          url: "/build-retention-policy"   
     - title: Steps in pipelines
       url: "/steps"
       sub-pages:
@@ -430,17 +443,6 @@
       url: "/deployment-environments"
     - title: Running pipelines locally
       url: "/running-pipelines-locally"
-    - title: Configuration for pipelines
-      url: "/configuration"
-      sub-pages:
-        - title: Global pipeline settings
-          url: "/pipeline-settings"          
-        - title: Shared configuration
-          url: "/shared-configuration"
-        - title: Secrets for pipelines
-          url: "/secrets-store"  
-        - title: Public logs and status badges
-          url: "/build-status"
     - title: Service containers
       url: "/service-containers"
     - title: Docker image metadata
