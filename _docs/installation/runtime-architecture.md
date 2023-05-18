@@ -20,20 +20,6 @@ caption="Codefresh On-premises platform architecture"
 max-width="100%"
 %}
 
-NGINX Ingress controller
-Codefresh CLI: This is a command-line interface that allows developers to interact with Codefresh and execute pipeline workflows.
-
-Codefresh API Server: This component handles all the requests and responses from the Codefresh CLI and the Codefresh UI.
-
-Codefresh Database: This component stores all the pipeline, workflow, and configuration data required by the Codefresh platform.
-
-Codefresh Runner: This component is responsible for executing pipeline workflows in a secure, isolated environment.
-
-Codefresh UI: This is a web-based user interface that provides users with a visual representation of their pipeline workflows.
-
-Codefresh Helm Chart: This component is responsible for deploying and managing the Codefresh application on Kubernetes.
-
-
 
 
 ### Interfaces 
@@ -63,26 +49,23 @@ Requests from the Codefresh Runner and clients are forwarded to the Codefresh AP
 
 
 * Broadcaster
-???
+  ?? Forwards requests from the Codefresh Runner and client to the Codefresh API.
+
 * Runtime Manager 
   Manages the runtime environments for the Codefresh Runner in the Codefresh on-premises platform.
 
 * Context Manager 
-  Stores information on the Pipeline Integrations created in Codefresh.
+  Stores information on Pipeline Integrations created in Codefresh.
 
 * Pipeline Manager 
-  Stores information on projects 
-Create update delete, pipeline
-Run pipeline builds
-Shared configuration pipeline buildstores settings for projects and pipleines
-Crea
+  Stores and manages projects and pipeline entities. 
 
 * Helm Manager 
-  Creates, updates and deleted managed repo db records: https://github.com/codefresh-io/helm-repo-manager
+   Provides an interface for Helm integrations in Codefresh Pipelines. It handles the management and interaction with Helm charts, repositories, and releases.
 
-
-
-GitOps Manager Deprecated. Builds and stores information 
+* GitOps Manager 
+  Deprecated. Stored information for populating the GitOps Dashboard in Codefresh Pipelines. 
+  The dashboard is now populated by Codefresh GitOps. 
 
 
 
@@ -103,7 +86,7 @@ The GitOps module comprises the microservices for Codefresh and Argo users to co
   The Audit Manager reports and stores audit logs of API calls to Codefresh GitOps.
 
 * Analytics Reporter
-  Reports necessary information to the analytics solution.
+  Reports analytics information to populate deployment, runtime, and cluster data for GitOps in the different dashboards and widgets.
 
 * Argo Hub
   Interfaces with the Argo Hub platform for working with pre-built Argo Workflow templates. Visit ​​https://codefresh.io/argohub/ for more details.
