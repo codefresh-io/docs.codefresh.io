@@ -269,12 +269,11 @@ cf_export MY_VAR # Correct syntax
 ```
 
 
-<br>
 
 #### Masking variables within `cf_export`
 
 Mask variables within `cf_export` by defining the `--mask` flag.  
-Values of masked variables in `cf_export` commands are replaced with asterisks in the Build variable list. This helps to ensure that sensitive information is not exposed also in the variables list, in addition to the logs. 
+Values of masked variables in `cf_export` commands are replaced with asterisks in the build logs. This helps to ensure that sensitive information is not exposed also in the variables list, in addition to the logs. 
 
 Here is an example with standard and masked versions of the same variable in `cf_export` commands.
 
@@ -294,8 +293,6 @@ steps:
 {% endhighlight %}
 
 
-
-<br>
 
 
 #### Export variables to all steps with `cf_export`
