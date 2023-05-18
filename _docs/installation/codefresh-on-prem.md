@@ -555,7 +555,7 @@ The TTL-based retention mechanism is implemented as a Cron job, and deletes data
 | Env Variable   | Description             | Default                |
 |---------------|--------------------------- |----------------------  |
 |`TTL_RETENTION_POLICY_IS_ENABLED` | Determines if automatic build deletion through the Cron job is enabled.         | `false`                 |
-|`TTL_RETENTION_POLICY_IN_DAYS`    | The number of days for which to retain builds, and can be between `30`(minimum) and `365` (maximum). Builds older than the defined retention period are deleted.  | `365`              |
+|`TTL_RETENTION_POLICY_IN_DAYS`    | The number of days for which to retain builds, and can be between `30` (minimum) and `365` (maximum). Builds older than the defined retention period are deleted.  | `365`              |
 
 
 1. (Optional) For existing environments: 
