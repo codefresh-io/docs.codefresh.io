@@ -817,19 +817,19 @@ argo-cd:
 ## Feature management 
 
 {: .table .table-bordered .table-hover}
-| Feature                     | Description            |  Notes |
-| --------------              | --------------           |  
+| Feature                     | Description            |  Notes | Reference
+| --------------              | --------------           | ________ | _____|
 |`allowUserUpdateBoards`| When enabled, allows users without admin (NIMA: is it permissions or roles?) permissions to update Helm boards.QUESTIONS: Which Helm board: Helm Releases or Helm Environments? 2. Permissions or Roles? 3. What can they do: Create board, update board, install releases, move releases? Is it UI only? 4. Are there any caveats |
 |`dindPodRequestsEqualLimits`   | No proper descriptoin|
-|`disableWelcomeScreen` | Determines if to display the Codefresh Welcome page in Classic UI and disables user from entering credentials after sign up. Required mostly for on-premises, especially LDAP which has all login info already configured.  |
+|`disableWelcomeScreen` | Default: FALSE<br>When enabled, bypasses the Codefresh Welcome screen requirein the user to enter additional infromation on first sign-in. |Required mostly in on-premises environments, especially for LDAP, which has all login info already configured.  |
 |`disableRolloutActionsWithoutRBAC` |When enabled, ??|
 |`forbidDecrypt` |Default FALSE Prevents users from decrypting secrets. QUESTION: 1. What does this mean? Decrypting in the UI?  |
 |`gitopsArgoCdRollback` |When enabled, ??|
 |`gitopsImageReporting` |When enabled, ??|
-|`injectClusterListFromPipelineSettings` |QUESTIONS: 1. Is it the account-level setting that this enables? 2. If enabled, users can select the clusters that the pipeline can access or are available to a specific pipeline? 3. Any notes or limitations? 4. Is this available only for Enterprise accounts? 5. Default is False or True? Default`; ??.<br>When enabled, allows users to select single or multiple clusters available to the  the 
-|`parallelKubectlOperations` |When enabled, ??|
+|`injectClusterListFromPipelineSettings` |Default FALSE.<br>When enabled, turns on the pipeline setting **Kubernetes cluster context pipeline injection** for the account. Individual users can then selectively inject clusters for pipelines from those to which they they access. | This Feature Flag requires the users to have the Update Cluster permission. If not granted, then this  FF has no impact when enabled. |
+|`parallelKubectlOperations` |Default: FALSE<br>When enabled, allows running parallel steps including `kubectl`, especially parallel Helm install and `deploy` steps that deploy to multiple clusters with kubectl. |
 |`logMasking` |Default: False<br>When enabled, secrets in build logs are masked and replaced by asterisks. QUESTIONS: 1. Is this for online and offline logs? 2. Is this only for Enterprise customers? 3. Any limitations or notes to be aware of?|
-|`useLogsTimestamps` |Default: False<br>When enabled, prepends the date and time to every line in the log. |When enabled, and you have build automation, you may need to adjust the regex for search as the line does not start with the log text|
+|`useLogsTimestamps` |Default: False<br>When enabled, prepends the date and time to every line in the log. |When enabled, and you have build automation, you may need to adjust the regex for search as the line does not start with the log text.|
 
 -->
 
