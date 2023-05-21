@@ -8,7 +8,7 @@ toc: true
 If you have familiarized yourself with the different installation options, here's a deep dive into the architecture and components of the different options.
 
 ## Codefresh On-premises platform architecture 
-The diagram shows a high-level view of the Codefresh On-premises environment, and the core components, the Codefresh Control Plane, the Codefresh Runtime, and the Codefresh Clients. 
+The diagram shows a high-level view of the Codefresh On-premises environment, and its core components. 
 
 {% include
 image.html
@@ -24,9 +24,9 @@ max-width="100%"
 
 ### Interfaces 
 
-#### Codefresh API
+#### Pipelines API
 
-The Codefresh API serves as the primary gateway toor the Codefresh Pipelines module in the On-premises platform. It handles a wide range of system functionalities, including authentication, authorization, audit logging, user management, and pipeline builds, among others. The Codefresh API, also referred to as `cf-api` utilizes a REST API interface with OpenAPI (Swagger v3) specifications.  
+The Pipelines API serves as the primary gateway for the Codefresh Pipelines module in the On-premises platform. It handles a wide range of system functionalities, including authentication, authorization, audit logging, user management, and pipeline builds, among others. The Pipelines API utilizes a REST API interface with OpenAPI (Swagger v3) specifications.  
 
 #### Pipelines UI
 The Pipelines UI acts as a static file server that hosts and delivers all the user interface pages for Codefresh Pipelines. It provides visualization of pipelines, builds, third-party integrations and more.
@@ -34,22 +34,22 @@ The Pipelines UI acts as a static file server that hosts and delivers all the us
 
 
 #### GitOps API
-The GitOps API serves as the primary gateway for the Codefresh GitOps module in the On-premises platform. It interfaces between   Codefresh GitOps, Git, and Argo CD, to sync 
+The GitOps API serves as the primary gateway for the Codefresh GitOps module in the On-premises platform. It interfaces between Codefresh GitOps, Git, and Argo CD, to sync 
 It utilizes a GraphQL interface to provide a user interface
 
 #### GitOps UI
-The GitOps UI API provides a unified, enterprise-wide view of deployments, primary gateway for the Codefresh GitOps module in the On-premises platform. It interfaces between   Codefresh GitOps, Git, and Argo CD, to sync 
+The GitOps UI API provides a unified, enterprise-wide view of deployments, 
 The UI p (runtimes, clusters, and applications), and CI/CD operations (Delivery Pipelines, workflows, and deployments) in the same location.  
 The Codefresh CLI includes commands to install hybrid runtimes, add external clusters, and manage runtimes and clusters.
 
 ### Codefresh Pipelines
 
-The Pipeline module comprises a set of microservices to manage Codefresh pipelines.
-Requests from the Codefresh Runner and clients are forwarded to the Codefresh API which in turn forwards them to the different Pipeline microservices communicate with the Codefresh API and the Pipelines UI to serve requests
+The Pipelines module comprises a set of microservices for managing Codefresh pipelines.
+The Codefresh Runner and clients forward incoming requests to the Codefresh API, which in turn forwards them to the different Pipeline microservices.
 
 
 * Broadcaster
-  ?? Forwards requests from the Codefresh Runner and client to the Codefresh API.
+  Forwards requests from the Codefresh Runner and client to the Codefresh API when Firebase is not used.
 
 * Runtime Manager 
   Manages the runtime environments for the Codefresh Runner in the Codefresh on-premises platform.
@@ -61,26 +61,25 @@ Requests from the Codefresh Runner and clients are forwarded to the Codefresh AP
   Stores and manages projects and pipeline entities. 
 
 * Helm Manager 
-   Provides an interface for Helm integrations in Codefresh Pipelines. It handles the management and interaction with Helm charts, repositories, and releases.
+   Provides an interface for aggregated views of Helm integrations in Codefresh Pipelines. 
 
 * GitOps Manager 
-  Deprecated. Stored information for populating the GitOps Dashboard in Codefresh Pipelines. 
-  The dashboard is now populated by Codefresh GitOps. 
+  Deprecated. Stored information for populating the GitOps Dashboard in Codefresh Pipelines. The dashboard is now populated by Codefresh GitOps. 
 
 
 
 ### Codefresh GitOps
 
-The GitOps module comprises the microservices for Codefresh and Argo users to consume and share Workflow templates.
+The GitOps module comprises the microservices for Codefresh and Argo users to consume and share Argo Workflow templates.
 
 * Cron executer
    The Cron Executor performs periodic internal tasks required for platform functionality.
 
 * API Events
-  Receives events from GitOps Runtimes and publishes them to Event Bus.
+  Receives events from GitOps Runtimes and publishes them to the Event Bus.
 
 * Event Handler
-  The Event Handler subscribes to events orginating from the API Events received via the Event Bus, processes and updates them.
+  The Event Handler subscribes to events originating from the API Events received via the Event Bus, processes, and updates them.
 
 * Audit Manager
   The Audit Manager reports and stores audit logs of API calls to Codefresh GitOps.
@@ -91,21 +90,20 @@ The GitOps module comprises the microservices for Codefresh and Argo users to co
 * Argo Hub
   Interfaces with the Argo Hub platform for working with pre-built Argo Workflow templates. Visit ​​https://codefresh.io/argohub/ for more details.
 
-### Codefresh Storage 
-Codefresh stores entity, configuration, integration data for Codefresh Pipelines and Codefresh GitOps in different databases.
+### On-premises infrastructure
+Codefresh stores entity, configuration, and integration data for Codefresh Pipelines and Codefresh GitOps in different databases.
 Each microservice within the Codefresh Pipeline and GitOps modules has its own dedicated database, which is independent from the databases used by other microservices. Communication between each microservice and its respective database is exclusive.
 
 
 * mongoDB
-  The main database for entity storage, used by all Pipeline and GitOps microservices. 
+  The main database for entity storage for Pipeline and GitOps microservices. 
 
 * Redis
-  The Redis database:
     * Optimizes caching for faster response times to requests and reduce load on the database
-    * Interacts with the Broadcaster service to serve build logs to the client??
+    * When Firebase is not used, interacts with the Broadcaster microservice to serve pipeline build logs to the client
 
 * RabbitMQ
-  The RabbitMQ database serves as a message bus to move tasks and information between microservices in the Pipeline and GitOps modules.
+  RabbitMQ serves as a message bus to move tasks and information between microservices in the Pipeline and GitOps modules.
 
 * PostgreSQL
   The PostgreSQL database stores:
@@ -121,7 +119,7 @@ Each microservice within the Codefresh Pipeline and GitOps modules has its own d
 
 ### Ingress Controller
 
-The Codefresh On-premises platform utilizes an ingress controller to handle incoming traffic. The NGINX Ingress Controller is deployed within the cluster hosting the Codefresh platform. The ingress controller serves as the entry point for requests originating from Codefresh Runners, GitOps Runtimes, and Clients, and routes them to the appropriate destinations, namely the Codefresh API/UI or GitOps API/UI.
+The Codefresh On-premises platform utilizes an ingress controller to handle incoming traffic. The NGINX Ingress Controller is deployed within the cluster hosting the Codefresh platform. The ingress controller serves as the entry point for requests originating from Codefresh Runners, GitOps Runtimes, and Clients, and routes them to the appropriate destinations, namely the Pipelines API/UI and the GitOps API/UI.
 
 
 ## Codefresh GitOps platform architecture
