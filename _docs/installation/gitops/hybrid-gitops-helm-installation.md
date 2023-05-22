@@ -17,15 +17,15 @@ Install the Hybrid Runtime for GitOps through a Helm chart.
   Ingress-based access mode requires you to configure an [ingress controller](#ingress-controller-configuration) before the installation, and pass additional flags such as the ingress host and class in the Helm install command. 
   See also [GitOps Runtime architecture]({{site.baseurl}}/docs/installation/runtime-architecture/#gitops-runtime-architecture).
 
-* Shared configuration repository    
-  For each account, you can create a shared configuration repository, which is a Git repository with configuration manifests, shared between all the GitOps Runtimes in the same account. Read more on the [shared configuration repository]({{site.baseurl}}/docs/reference/shared-configuration).
-  * If this is the first Hybrid GitOps Runtime in your account, then you will define the shared config repo during the installation. 
-  * If you already have a Hosted or Hybrid GitOps Runtime, you already have a shared repo, and don't need to create one. 
-  See also 
+* Shared Configuration Repository    
+  For each account, you can create a Shared Configuration Repository, which is a Git repository with configuration manifests, shared with all the GitOps Runtimes in the same account. Read more on the [Shared Configuration Repository]({{site.baseurl}}/docs/reference/shared-configuration).
+  * If this is the first Hybrid GitOps Runtime in your account, then you will define the Shared Config Repo during the installation. 
+  * If you already have a Hosted or a legacy Hybrid GitOps Runtime, you already have a Shared Config Repo, and don't need to create one. 
+  See also [Reset Shared Configuration Repository for GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#reset-shared-configuration-repository-for-gitops-runtimes).
 
 * Argo project CRDs  
   Hybrid GitOps installation requires a cluster without Argo project CRDs.  
-  You can handle Argo project CRDs outside the chart, or as recommended, adopt the CRDs to be managed by the GitOps Runtime Helm release. See [Argo porject CRDs](/#argo-project-crds).
+  You can handle Argo project CRDs outside the chart, or as recommended, adopt the CRDs to be managed by the GitOps Runtime Helm release. See [Argo project CRDs](/#argo-project-crds).
 
 
 ## Minimum system requirements
