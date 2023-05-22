@@ -823,13 +823,13 @@ argo-cd:
 |`dindPodRequestsEqualLimits`   | No proper descriptoin|
 |`disableWelcomeScreen` | Default: FALSE<br>When enabled, bypasses the Codefresh Welcome screen requirein the user to enter additional infromation on first sign-in. |Required mostly in on-premises environments, especially for LDAP, which has all login info already configured.  |
 |`disableRolloutActionsWithoutRBAC` |When enabled, ??|
-|`forbidDecrypt` |Default FALSE Prevents users from decrypting secrets. QUESTION: 1. What does this mean? Decrypting in the UI?  |
+|`forbidDecrypt` |Default: FALSE <br> When enabled, prevents users from decrypting secrets when running the `codefresh get context --decrypt` command.   |Users can bypass this by running `--decrypt` with the built-in `CF_API_KEY` command that is injected into every build.|
 |`gitopsArgoCdRollback` |When enabled, ??|
 |`gitopsImageReporting` |When enabled, ??|
-|`injectClusterListFromPipelineSettings` |Default FALSE.<br>When enabled, turns on the pipeline setting **Kubernetes cluster context pipeline injection** for the account. Individual users can then selectively inject clusters for pipelines from those to which they they access. | This Feature Flag requires the users to have the Update Cluster permission. If not granted, then this  FF has no impact when enabled. |
+|`injectClusterListFromPipelineSettings` |Default FALSE.<br>When enabled, turns on the pipeline setting **Kubernetes cluster context pipeline injection** for the account. Individual users can then selectively inject clusters for pipelines from those to which they they access. | This feature requires the users to have the Update Cluster permission. If not granted, then this feature has no impact when enabled. |
 |`parallelKubectlOperations` |Default: FALSE<br>When enabled, allows running parallel steps including `kubectl`, especially parallel Helm install and `deploy` steps that deploy to multiple clusters with kubectl. |
-|`logMasking` |Default: False<br>When enabled, secrets in build logs are masked and replaced by asterisks. QUESTIONS: 1. Is this for online and offline logs? 2. Is this only for Enterprise customers? 3. Any limitations or notes to be aware of?|
-|`useLogsTimestamps` |Default: False<br>When enabled, prepends the date and time to every line in the log. |When enabled, and you have build automation, you may need to adjust the regex for search as the line does not start with the log text.|
+|`logMasking` |Default: FALSE<br>When enabled, secrets in build logs, both online and offline logs, are masked and replaced by asterisks. | This feature is currently available only for Enterprise customers|
+|`useLogsTimestamps` |Default: FALSE<br>When enabled, prepends the date and time to every line in the log. |When enabled, and you have build automation, you may need to adjust the regex for search as the line does not start with the log text.|
 
 -->
 
