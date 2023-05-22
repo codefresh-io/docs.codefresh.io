@@ -21,6 +21,9 @@ Install the Hybrid Runtime for GitOps through a Helm chart.
   You can handle Argo project CRDs outside the chart, or as recommended, adopt the CRDs to be managed by the GitOps runtime Helm release.
   For details, see [Argo project CRDs](#argo-project-crds).
   
+* Custom certificates for on-premises installations
+  If the Codefresh platform is installed on-premises, you need to configure platform and repository certificates to ensure continued and secure communication.
+  For details, see [Configure custom certificates for on-premises installations](#configure-custom-certificates-for-on-premises-installations).   
   
 ## Argo project CRDs
 If you already have Argo project CRDs on your cluster, do one of the following:
@@ -153,7 +156,49 @@ The ingress class is the ingress class of the ingress controller, for example, `
   * [Istio: Configure cluster routing service]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/#cluster-routing-service)
   * [NGINX Enterprise ingress controller: Patch certificate secret]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/#patch-certificate-secret)  
 
+## Custom certificates for on-premises installations
+For on-premises installations, configure platform and repository certificates:  
+* **Platform** certificates are required for GitOps Runtimes to communicate with the Codefresh platform. 
+* **Repository** certificates are required to authenticate users to on-premises Git servers. 
 
+
+### Add platform certificates
+Add platform certificates by including them in `.values.global`. You can either reference an existing secret or create a new secret directly within the file.
+
+```yaml
+global:
+  codefresh:
+    tls:
+      caCerts:
+        # optional - use an existing secret that contains the cert
+        # secretKeyRef:
+        #   name: my-certificate-secret
+        #   key: ca-bundle.crt
+
+        # or create "codefresh-tls-certs" secret
+        secret:
+          create: true
+          content: |
+            -----BEGIN CERTIFICATE-----
+            ...
+            -----END CERTIFICATE-----
+
+```
+
+### Add repository certificates 
+Add repository certificates to your Codefresh `values` file, in `.values.argo-cd`. These values are used by the argo-cd Codefresh deploys. 
+For details on adding repository certificates, see this [section](https://github.com/argoproj/argo-helm/blob/main/charts/argo-cd/values.yaml#LL334C21-L334C21){:target="\_blank"}.
+
+```yaml
+argo-cd:
+  configs:
+    tls:
+      certificates:
+        server.example.com: |
+          -----BEGIN CERTIFICATE-----
+          ...
+          -----END CERTIFICATE-----
+```
 ## Related articles
 [Shared configuration repo for GitOps Runtimes]({{site.baseurl}}/docs/reference/shared-configuration/)  
 [Add Git Sources to GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)  

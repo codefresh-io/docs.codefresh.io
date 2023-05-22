@@ -725,12 +725,9 @@ cfapi:
 
 For detailed information, see the [Securing your webhooks](https://docs.github.com/en/developers/webhooks-and-events/webhooks/securing-your-webhooks) and [Webhooks](https://docs.github.com/en/github-ae@latest/rest/webhooks).
 
-### Configure custom TLS certificates
-
-Codefresh allows you to configure custom CA certificates or self-signed server certificates for secure communication for pipeline or GitOps components.
 
 
-#### Pipelines: Configure custom root CA for volumes and containers
+### Configure custom root CA for volumes and containers
 Reference the K8s secret containing the root CA in `config.yaml`.
 Define the volume or volumes with the K8s secret objects, and then the volume mounts for the container.
 
@@ -763,54 +760,8 @@ global:
         - mountPath: /etc/ssl/custom/ca.crt 
           subPath: ca.crt
 ```
-<br>
 
-#### GitOps: Configure custom certificates
-For on-premises GitOps, you need platform and repository certificates.  
 
-* **Platform** certificates are required for Runtimes to communicate with the Codefresh platform. 
-* **Repository** certificates are required to authenticate users to on-premises Git servers. 
-
-<br>
-
-**Add platform certificates**  
-To add platform certificates, include them in `.values.global`. This can be done by referencing an existing secret or creating a new secret directly within the file.
-
-```yaml
-global:
-  codefresh:
-    tls:
-      caCerts:
-        # optional - use an existing secret that contains the cert
-        # secretKeyRef:
-        #   name: my-certificate-secret
-        #   key: ca-bundle.crt
-
-        # or create "codefresh-tls-certs" secret
-        secret:
-          create: true
-          content: |
-            -----BEGIN CERTIFICATE-----
-            ...
-            -----END CERTIFICATE-----
-
-```
-<br>
-
-**Add repository certificates**  
-Add repository certificates to your Codefresh `values` file, in `.values.argo-cd`. These values are used by the argo-cd Codefresh deploys. 
-For details on adding repository certificates, see this [section](https://github.com/argoproj/argo-helm/blob/main/charts/argo-cd/values.yaml#LL334C21-L334C21){:target="\_blank"}).
-
-```yaml
-argo-cd:
-  configs:
-    tls:
-      certificates:
-        server.example.com: |
-          -----BEGIN CERTIFICATE-----
-          ...
-          -----END CERTIFICATE-----
-```
 
 <!---
 
