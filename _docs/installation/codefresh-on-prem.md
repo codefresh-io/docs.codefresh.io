@@ -788,6 +788,27 @@ global:
           subPath: ca.crt
 ```
 
+
+## Feature management 
+
+{: .table .table-bordered .table-hover}
+| Feature                     | Description            |  Notes | Reference
+| --------------              | --------------           | ________ | _____|
+|`allowUserUpdateBoards`| When enabled, allows users without admin (NIMA: is it permissions or roles?) permissions to update Helm boards.QUESTIONS: Which Helm board: Helm Releases or Helm Environments? 2. Permissions or Roles? 3. What can they do: Create board, update board, install releases, move releases? Is it UI only? 4. Are there any caveats |
+|`dindPodRequestsEqualLimits`   | No proper descriptoin|
+|`disableWelcomeScreen` | Default: FALSE<br>When enabled, bypasses the Codefresh Welcome screen requirein the user to enter additional infromation on first sign-in. |Required mostly in on-premises environments, especially for LDAP, which has all login info already configured.  |
+|`disableRolloutActionsWithoutRBAC` |Default: FALSE<br>Relevant to GitOps application deployments. <br>  
+When enabled, disables rollback and rollout controls in the Timeline's tab's Rollout Player for the application. {::nomarkdown}<ul><li>Rollback for the selected Rollout. The <b>Choose version to Rollback</b> dropdown is disabled. </li><li>The <b>Pause</b>, <b>Resume</b>, <b>Skip Step</b> and <b>Promote Full</b> controls in the Rollout Player are also disabled.</li></ul>{:/}|
+|`forbidDecrypt` |Default: FALSE <br> When enabled, prevents users from decrypting secrets when running the `codefresh get context --decrypt` command.   |Users can bypass this by running `--decrypt` with the built-in `CF_API_KEY` command that is injected into every build.|
+|`gitopsArgoCdRollback` |When enabled, ??|
+|`gitopsImageReporting` |Default: FALSE <br>When enabled, reports Codefresh Pipeline images to the Images dashboard. |
+|`injectClusterListFromPipelineSettings` |Default FALSE.<br>When enabled, turns on the pipeline setting **Kubernetes cluster context pipeline injection** for the account. Individual users can then selectively inject clusters for pipelines from those to which they they access. | This feature requires the users to have the Update Cluster permission. If not granted, then this feature has no impact when enabled. |
+|`parallelKubectlOperations` |Default: FALSE<br>When enabled, allows running parallel steps including `kubectl`, especially parallel Helm install and `deploy` steps that deploy to multiple clusters with `kubectl`. |
+|`logMasking` |Default: FALSE<br>When enabled, secrets in build logs, both online and offline logs, are masked and replaced by asterisks. | This feature is currently available only for Enterprise customers|
+|`useLogsTimestamps` |Default: FALSE<br>When enabled, prepends the date and time to every line in the log. |When enabled, and you have build automation, you may need to adjust the regex for search as the line does not start with the log text.|
+
+
+
 ## Using existing external services for data storage/messaging
 
 Normally the Codefresh installer, is taking care of all needed dependencies internally by deploying the respective services (mongo, redis etc) on its own.
