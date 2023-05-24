@@ -793,7 +793,7 @@ global:
 
 {: .table .table-bordered .table-hover}
 | Feature                     | Description            |  Notes | 
-| --------------              | --------------         | ________ | 
+| --------------              | --------------         | ------- | 
 |`allowUserUpdateBoards`| Default: FALSE<br>When enabled, allows users without admin roles to update Helm boards. Users can install, promote, create, and update sections.<br>See [Promoting Helm environments]({{site.baseurl}}/docs/deployments/helm/helm-environment-promotion/). | |
 |`dindPodRequestsEqualLimits`   | TBD| |
 |`disableWelcomeScreen` | Default: FALSE<br>When enabled, bypasses the Codefresh Welcome screen that requires the user to enter additional information on first sign-in. |Required mostly in on-premises environments, especially for LDAP, which has all login info already configured.  |
