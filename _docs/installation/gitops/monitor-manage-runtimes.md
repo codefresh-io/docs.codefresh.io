@@ -202,17 +202,13 @@ For more details, read [Configuring Deep Links in Argo CD](https://argo-cd.readt
 
 
 
-## (Hybrid GitOps) Upgrade GitOps Runtimes
+## (Helm install Hybrid GitOps) Upgrade GitOps Runtimes
 
 Upgrade provisioned Hybrid GitOps Runtimes to install critical security updates, get new functionality, and the latest versions of all components. Upgrade a provisioned Hybrid Runtime by running a silent upgrade or through the GitOps CLI wizard.  
 If you have managed clusters for Hybrid GitOps Runtimes, upgrading the Runtime automatically updates runtime components within the managed cluster as well.
 
 >The `Update Available! Notification` in the List View's Version column indicates that a newer version of the Runtime, Helm chart, or both are available.
 
-
-<!--- When there are security updates, the UI displays the alert, _At least one runtime requires a security update_. The Version column displays an _Update Required!_ notification.  
-
-> If you have older Hybrid GitOps Runtime versions, you need to upgrade to manually define or create the shared configuration repo for your account. See [Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration/).-->
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
 1. From Runtimes in the sidebar, select [**GitOps Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
@@ -246,9 +242,31 @@ If you have managed clusters for Hybrid GitOps Runtimes, upgrading the Runtime a
 %}
 
 {:start="5"}
-1. Copy and run the upgrade command:
-  `RELEASE_NAME=$(helm ls -n codefresh-gitops-runtime -q) && helm upgrade ${RELEASE_NAME} -n codefresh-gitops-runtime --devel`  
-1. Click **Close** to exit the upgrade panel.
+1. Do one of the following depending on whether you have configured the Runtime as a Argo CD Application or not:
+  * GitOps Runtimes Continue from step _6_.
+  * Non-GitOps Runtimes: Continue from step _7_. 
+1. For GitOps Runtimes, do the following: 
+    1. In your Shared Configuration Repository, go to `resources/<runtime_name>/chart`  
+       where, `<runtime_name>` is the name of the Hybrid GitOps Runtime to upgrade.
+    1. In the `chart.yaml`, change the version number in both `.version` and `.dependencies.version`.
+    1. Commit the change, and push to your Git server.
+```yaml
+apiVersion: v2
+appVersion: 1.0.0
+description: Codefresh gitops runtime umbrella chart
+name: codefresh-gitops-runtime
+version: <version>
+dependencies:
+  - name: gitops-runtime
+    repository: https://chartmuseum.codefresh.io/gitops-runtime
+    version: <version>
+``` 
+1. For non-GitOps Runtimes, do the following:
+    1. Copy and run the upgrade command:  
+        `RELEASE_NAME=$(helm ls -n codefresh-gitops-runtime -q) && helm upgrade ${RELEASE_NAME} -n codefresh-gitops-runtime --devel`  
+    1. To exit the upgrade panel, click **Close**.
+
+
 
 ## (Helm install only) Remove GitOps Runtimes
 Remove Helm GitOps Runtimes that are offline from the Codefresh UI. The Runtime is not removed from the cluster.
