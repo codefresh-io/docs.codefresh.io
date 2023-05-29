@@ -1,6 +1,6 @@
 ---
-title: "Codefresh On-Premises Upgrade"
-description: "Use the Kubernetes Codefresh Installer to upgrade the Codefresh On-Premises platform "
+title: "Codefresh on-premises upgrade"
+description: "Upgrade the Codefresh On-Premises platform"
 group: installation
 redirect_from:
   - /docs/enterprise/codefresh-on-prem-upgrade/
@@ -623,37 +623,14 @@ mongodb:
 ```
 
 ## Upgrade to 2.0.0
-Version 2.0.0 is a major version and chart change, including breaking changes that need manual actions for compatibility.
+Version 2.0.0 incorporates a major version and chart change, including breaking changes that need you to take actions manually for compatibility.
 
 >**WARNING**:
 > The `kcfi`installer has been deprecated from Version 2.0.0 and higher.  
->Helm is the recommended way to install Codefresh On-Premises. The `kcfi config.yaml` is NOT compatible for Helm-based installation. To reuse the same `config.yaml` for the Helm chart, you need to remove deprecated sections, and update other sections. 
+>Helm is the recommended way to install Codefresh On-Premises. The `kcfi config.yaml` is NOT compatible with Helm-based installation. To reuse the same `config.yaml` for the Helm chart, you need to remove deprecated sections, and update configuration for other sections. 
 
 Follow the instructions in [Upgrading to 2.0.0](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh/2.0.0-alpha.13#upgrading){:target="\_blank"}.
 
-<!--
-## Upgrade the Codefresh Platform with [kcfi](https://github.com/codefresh-io/kcfi)
 
-1. Locate the `config.yaml` file you used in the initial installation.
-1. Change the release number inside it.
-    ```yaml
-    metadata:
-      kind: codefresh
-      installer:
-        type: helm
-        helm:
-          chart: codefresh
-          repoUrl: https://chartmuseum.codefresh.io/codefresh
-          version: 1.2.14
-    ```
-1. Perform a dry run and verify that there are no errors:
-  `kcfi deploy --dry-run --debug -c codefresh/config.yaml`
-1. Run the actual upgrade:
-  `kcfi deploy --debug -c codefresh/config.yaml`
-1. Verify that all the pods are are in running state:
-  `kubectl -n codefresh get pods --watch`
-1. Log in to the Codefresh UI, and check the new version.
-1. If needed, enable/disable new feature flags.
 
--->
 

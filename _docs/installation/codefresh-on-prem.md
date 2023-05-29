@@ -27,9 +27,9 @@ The installation [ReadMe](https://artifacthub.io/packages/helm/codefresh-onprem/
 | --------------         | --------------           |  
 |Kubernetes cluster      | Server versions v1.22+. |
 |Helm                    | Versions 3.8.0+. |
-|Operating systems|{::nomarkdown}<ul><li>Windows 10/7</li><li>Linux</li><li>OSX</li>{:/}|
+<!--|Operating systems|{::nomarkdown}<ul><li>Windows 10/7</li><li>Linux</li><li>OSX</li>{:/}|
 |Git providers    |{::nomarkdown}<ul><li>GitHub: SaaS and on-premises versions</li><li>Bitbucket: SaaS and Bitbucket server (on-premises) 5.4.0 version and above</li><li>GitLab: SaaS and on-premise versions (API v4 only)</li></ul>{:/}|
-|Minimum node sizes |{::nomarkdown}<ul><li>Single node: 8 CPU core and 16GB RAM</li><li>Multi node: master(s) + 3 nodes with 4 CPU core and 8GB RAM (24 GB in total)</li>{:/}|
+|Minimum node sizes |{::nomarkdown}<ul><li>Single node: 8 CPU core and 16GB RAM</li><li>Multi node: master(s) + 3 nodes with 4 CPU core and 8GB RAM (24 GB in total)</li>{:/}|-->
 
 
 
@@ -41,7 +41,7 @@ The installation [ReadMe](https://artifacthub.io/packages/helm/codefresh-onprem/
   The file, `sa.json` is provided by Codefresh.  Get the file _before_ installation from `support@codefresh.io` 
 * Firebase URL and secret
 * Valid TLS certificates for ingress
-* For external PostgreSQL, enabled `pg_cron` and `pg_partman` extensions must be enabled for pipeline analytics  
+* For external PostgreSQL,  enabled `pg_cron` and `pg_partman` extensions for pipeline analytics  
 
 
 
@@ -50,8 +50,8 @@ The installation [ReadMe](https://artifacthub.io/packages/helm/codefresh-onprem/
 
 ### Before you begin
 Verify that you have:
-* Met system requirements
-* Completed the prerequisites
+* Meet system requirements
+* Complete the prerequisites
 
 ### Step1 : Get repo info and pull chart
 Download the binary for `kcfi`. It is a single binary without dependencies.
@@ -61,10 +61,12 @@ Download the binary for `kcfi`. It is a single binary without dependencies.
 
 ### Step 2: Install chart
 
-Install the chart by editing either the default `values.yaml`, or by creating an empty `cf-values.yaml` file.
+Install the chart by either editing the default `values.yaml`, or by creating an empty `cf-values.yaml` file.
 
-1. Pass `sa.json` as a single line to `.Values.imageCredentials.password`:
-```yaml
+1. Pass `sa.json` as a single line to `.Values.imageCredentials.password`:  
+
+{% highlight yaml %}
+{% raw %}
 global:
   # -- Application root url. Will be used in Ingress as hostname
   appUrl: onprem.mydomain.com
@@ -73,9 +75,14 @@ global:
   firebaseUrl: <>
   # -- Firebase Secret.
   firebaseSecret: <>
-```
+{% endraw %}
+{% endhighlight %}
+
+{:start="2"}
 1. Specify `.Values.ingress.tls.cert` and `.Values.ingress.tls.key`, OR `.Values.ingress.tls.existingSecret`:
-```yaml
+
+{% highlight yaml %}
+{% raw %}
 ingress:
   # -- Enable the Ingress
   enabled: true
@@ -93,11 +100,16 @@ ingress:
     key: ""
     # -- Existing `kubernetes.io/tls` type secret with TLS certificates (keys: `tls.crt`, `tls.key`)
     existingSecret: ""
-```
+{% endraw %}
+{% endhighlight %}
+
+{:start="3"}
 1. Install the chart.
    >**IMPORTANT**:  
     > Make sure to use `cf` as the Release Name.
-```yaml
+
+{% highlight yaml %}
+{% raw %}
 helm upgrade --install cf codefresh/codefresh \
     -f cf-values.yaml \
     --namespace codefresh \
@@ -105,12 +117,13 @@ helm upgrade --install cf codefresh/codefresh \
     --debug \
     --wait \
     --timeout 15m
-```
+{% endraw %}
+{% endhighlight %}
 
 
-## Additional post-installation configuration
+## Post-installation Helm chart configuration
 
-After you install the Codefresh platform on-premises, you can configure the Helm chart, and configure other aspects that do not impact the Helm chart.
+After you install the on-premises version of the Codefresh platform, you can configure the Helm chart, and also configure other aspects of the platform that do not impact the Helm chart.
 
 Chart configuration is covered in the [ReadMe in ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh/2.0.0-alpha.13){:target="\_blank"}: 
 * [Configure external services](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh/2.0.0-alpha.13#configuring-external-services){:target="\_blank"}
@@ -121,7 +134,8 @@ Chart configuration is covered in the [ReadMe in ArtifactHub](https://artifacthu
 * [Configure high-availability (HA)](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh/2.0.0-alpha.13#high-availability){:target="\_blank"}
 
 
-Generic configuration options that do not impact the chart are described below.
+## Post-installation generic platform configurationm
+Generic configuration options that do not impact the Helm chart are described below.
 
 
 ### Selectively enable SSO provider for account
@@ -151,10 +165,11 @@ These providers are not displayed as options during sign-up/sign-in.
 ### Retention policy for Codefresh builds
 Define a retention policy to manage Codefresh builds. The retention settings are controlled through `cf-api` deployment environment variables, all of which have default settings which you can retain or customize. 
 
-There are two mechanisms to define the retention policy. Both mechanisms are implemented as Cron jobs.
+There are two mechanisms to define the retention policy, both of which are implemented as Cron jobs.
 1. Legacy retention mechanism: Allows you to delete builds in chunks, and also, optionally, delete offline logs from the database. 
-1. New retention mechanism: Allows you delete builds by days, and does not delete offline logs.
+1. New retention mechanism: Allows you delete builds by days, without deleting offline logs.
 
+<br>
 
 #### Configure retention policy for builds and logs
 With this method, Codefresh by default deletes builds older than six months, including offline logs for these builds.
@@ -171,6 +186,8 @@ The retention mechanism, implemented as a Cron Job, removes data from collection
 |`RETENTION_POLICY_BUILDS_TO_DELETE`| The maximum number of builds to delete by a single Cron job. To avoid database issues, especially when there are large numbers of old builds, we recommend deleting them in small chunks. You can gradually increase the number after verifying that performance is not affected.  | `50`                  |
 |`RETENTION_POLICY_DAYS`         | The number of days for which to retain builds. Builds older than the defined retention period are deleted.                                  | `180`              |
 |`RUNTIME_MONGO_URI`             | Optional. The URI of the Mongo database from which to remove MongoDB logs (in addition to the builds). |              |
+
+<br>
 
 #### Configure TTL-based retention policy for builds
 
@@ -195,70 +212,6 @@ The TTL-based retention mechanism is implemented as a Cron job, and deletes data
     1. `TTL_RETENTION_POLICY_IN_DAYS`.
 1. Verify that the `created` field in the `workflowprocesses` collection has a new index.   
 1. Restart `cf-api`.
-
-
-
-
-## Cluster & external storage reference
-
-Codefresh uses both cluster storage (volumes) and external storage.
-
-### Databases
-
-The following table displays the list of databases created as part of the on-premises installation:
-
-| Database | Purpose | Latest supported version |
-|----------|---------| ---------------|
-| `mongoDB` | Stores all account data (account settings, users, projects, pipelines, builds etc.) | 4.2.x |
-| `postgresql` | Stores data about events for the account (pipeline updates, deletes, etc.). The audit log uses the data from this database. | 13.x |
-| `redis` | Used for caching, and as a key-value store for trigger manager. | 6.0.x |
-
-### Volumes
-
-These are the volumes required for Codefresh on-premises:
-
-
-{: .table .table-bordered .table-hover}
-| Name           | Purpose                | Minimum Capacity | Can run on netfs (nfs, cifs) |
-|----------------|------------------------|------------------|------------------------------|
-| cf-mongodb*    | Main database - Mongo  | 8GB              | Yes**                        |
-| cf-postgresql* | Events databases - Postgres | 8GB         | Yes**                        |
-| cf-rabbitmq*   | Message broker         | 8GB              | No**                         |
-| cf-redis*      | Cache                  | 8GB              | No**                         |
-| cf-store       | Trigger Redis data     | 8GB              | No**                         |
-| cf-cronus      | Trigger crontab data   | 1GB              | Yes                          |
-| datadir-cf-consul-0 | Consul datadir    | 1GB              | Yes                          |
-| cf-chartmuseum | chartmuseum            | 10GB             | Yes                          |
-| cf-builder-0   | /var/lib/docker for builder | 100GB       | No***                        |
-| cf-runner-0    | /var/lib/docker for composition runner | 100GB | No***                   |
-
-{% raw %}
-
- (*) Possibility to use external service
-
- (**) Running on netfs (nfs, cifs) is not recommended by product admin guide
-
- (***) Docker daemon can be run on block device only
-
-{% endraw %}
-
-StatefulSets (`cf-builder` and `cf-runner`) process their data on separate physical volumes (PVs) and can be claimed using Persistent Volume Claims (PVCs) with default initial sizes of 100Gi. Also, those StatefulSets have the ability to connect to existing pre-defined PVCs.
-
-The default initial volume size (100 Gi) can be overridden in the custom `config.yaml` file. Values descriptions are in the `config.yaml` file.
-The registry’s initial volume size is 100Gi. It also can be overridden in a custom `config.yaml` file. There is a possibility to use a customer-defined registry configuration file (`config.yaml`) that allows using different registry storage back-ends (S3, Azure Blob, GCS, etc.) and other parameters. More details can be found in the [Docker documentation](https://docs.docker.com/registry/configuration/).
-
-Depending on the your Kubernetes version, we can assist with PV resizing. Details are can be found in this [Kubernetes blog post](https://kubernetes.io/blog/2018/07/12/resizing-persistent-volumes-using-kubernetes/).
-
-### Automatic Volume Provisioning
-
-Codefresh installation supports automatic storage provisioning based on the standard Kubernetes dynamic provisioner Storage Classes and Persistent Volume Claims. All required installation volumes will be provisioned automatically using the default Storage Class or custom Storage Class that can be specified as a parameter in `config.yaml` under `storageClass: my-storage-class`.
-
-
-
-
-
-
-
 
 ### Configure CSP (Content Security Policy)
 Add CSP environment variables to `config.yaml`, and define the values to be returned in the CSP HTTP headers.
@@ -321,8 +274,59 @@ global:
 ```
 
 
+## Cluster & external storage reference
+
+Codefresh uses both cluster storage (volumes) and external storage.
+
+### Databases
+
+The following table displays the list of databases created as part of the on-premises installation:
+
+| Database | Purpose | Latest supported version |
+|----------|---------| ---------------|
+| `mongoDB` | Stores all account data (account settings, users, projects, pipelines, builds etc.) | 4.2.x |
+| `postgresql` | Stores data about events for the account (pipeline updates, deletes, etc.). The audit log uses the data from this database. | 13.x |
+| `redis` | Used for caching, and as a key-value store for trigger manager. | 6.0.x |
+
+### Volumes
+
+The table lists the volumes required for Codefresh on-premises:
 
 
+{: .table .table-bordered .table-hover}
+| Name           | Purpose                | Minimum Capacity | Can run on netfs (nfs, cifs) |
+|----------------|------------------------|------------------|------------------------------|
+| `cf-mongodb`*    | Main database - Mongo  | 8GB              | Yes**                        |
+| `cf-postgresql`* | Events databases - Postgres | 8GB         | Yes**                        |
+| `cf-rabbitmq`*   | Message broker         | 8GB              | No**                         |
+| `cf-redis`*      | Cache                  | 8GB              | No**                         |
+| `cf-store`       | Trigger Redis data     | 8GB              | No**                         |
+| `cf-cronus`      | Trigger crontab data   | 1GB              | Yes                          |
+| `datadir-cf-consul-0` | Consul datadir    | 1GB              | Yes                          |
+| `cf-chartmuseum` | chartmuseum            | 10GB             | Yes                          |
+| `cf-builder-0`   | /var/lib/docker for builder | 100GB       | No***                        |
+| `cf-runner-0`    | /var/lib/docker for composition runner | 100GB | No***                   |
+
+{% raw %}
+
+ (*) Possibility to use external service
+
+ (**) Running on netfs (nfs, cifs) is not recommended by product admin guide
+
+ (***) Docker daemon can be run on block device only
+
+{% endraw %}
+
+StatefulSets (`cf-builder` and `cf-runner`) process their data on separate physical volumes (PVs) and can be claimed using Persistent Volume Claims (PVCs) with default initial sizes of 100Gi. Also, those StatefulSets have the ability to connect to existing pre-defined PVCs.
+
+The default initial volume size (100 Gi) can be overridden in the custom `config.yaml` file. Values descriptions are in the `config.yaml` file.
+The registry’s initial volume size is 100Gi. It also can be overridden in a custom `config.yaml` file. There is a possibility to use a customer-defined registry configuration file (`config.yaml`) that allows using different registry storage back-ends (S3, Azure Blob, GCS, etc.) and other parameters. More details can be found in the [Docker documentation](https://docs.docker.com/registry/configuration/).
+
+Depending on the your Kubernetes version, we can assist with PV resizing. Details are can be found in this [Kubernetes blog post](https://kubernetes.io/blog/2018/07/12/resizing-persistent-volumes-using-kubernetes/).
+
+### Automatic Volume Provisioning
+
+Codefresh installation supports automatic storage provisioning based on the standard Kubernetes dynamic provisioner Storage Classes and Persistent Volume Claims (PVCs). All required installation volumes will be provisioned automatically using the default Storage Class or custom Storage Class that can be specified as a parameter in `config.yaml` under `storageClass: my-storage-class`.
 
 
 
@@ -333,7 +337,7 @@ Autoscaling in Kubernetes is implemented as an interaction between Cluster Autos
 {: .table .table-bordered .table-hover}
 |             | Scaling Target| Trigger | Controller | How it Works |
 | ----------- | ------------- | ------- | ---------  | --------- |
-| [Cluster Autoscaler](https://github.com/kubernetes/autoscaler/tree/master/cluster-autoscaler)| Nodes | **Up:** Pending pod <br/> **Down:** Node resource allocations is low | On GKE we can turn on/off autoscaler and configure min/max per node group can be also installed separately | Listens on pending pods for scale up and node allocations for scaledown. Should have permissions to call cloud api. Considers pod affinity, pdb, storage, special annotations |
+| [Cluster Autoscaler](https://github.com/kubernetes/autoscaler/tree/master/cluster-autoscaler)| Nodes | **Up:** Pending pod <br/> **Down:** Node resource allocations is low | On GKE we can turn on/off autoscaler and configure min/max per node group. Can also be installed separately | Listens on pending pods for scale up and node allocations for scaledown. Should have permissions to call cloud api. Considers pod affinity, pdb, storage, special annotations |
 | [Horizontal Pod Autoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) | replicas on deployments or StatefulSets | metrics value thresholds defined in HPA object | part of Kubernetes controller | Controller gets metrics from "metrics.k8s.io/v1beta1" , "custom.metrics.k8s.io/v1beta1", "external.metrics.k8s.io/v1beta1" requires [metrics-server](https://github.com/kubernetes-sigs/metrics-server) and custom metrics adapters ([prometheus-adapter](https://github.com/kubernetes-sigs/prometheus-adapter), [stackdriver-adapter](https://github.com/GoogleCloudPlatform/k8s-stackdriver/tree/master/custom-metrics-stackdriver-adapter)) to listen on this API (see note (1) below) and adjusts deployment or sts replicas according to definitions in  HorizontalPodAutocaler <br/> There are v1 and beta api versions for HorizontalPodAutocaler: <br/> [v1](https://github.com/kubernetes/api/blob/master/autoscaling/v1/types.go) - supports  for resource metrics (cpu, memory) - `kubect get hpa` <br/> [v2beta2](https://github.com/kubernetes/api/blob/master/autoscaling/v2beta2/types.go)  and [v2beta1](https://github.com/kubernetes/api/blob/master/autoscaling/v2beta1/types.go) - supports for both resource and custom metrics - `kubectl get hpa.v2beta2.autoscaling` **The metric value should decrease on adding new pods.** <br/> *Wrong metrics Example:* request rate <br/> *Right metrics Example:* average request rate per pod |
 
 Note (1)
