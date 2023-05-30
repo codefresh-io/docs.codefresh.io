@@ -1,6 +1,6 @@
 ---
-title: "January 2022 - Classic"
-description: "Changelog and Release Notes For Classic"
+title: "Pipelines Changelog: January 2022"
+description: "Changelog and Release Notes for Pipelines"
 ---
 
 - Store test results using MinIO objects - [documentation]({{site.baseurl}}/docs/testing/test-reports/#connecting-minio-storage)

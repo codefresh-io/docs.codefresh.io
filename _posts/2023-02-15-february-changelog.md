@@ -1,6 +1,6 @@
 ---
-title: "February 2023"
-description: "Changelog and Release Notes"
+title: "Release Notes: February 2023"
+description: "Changelog and Release Notes for Codefresh Pipelines and GitOps"
 ---
 
 ## Features & Enhancements

@@ -1,6 +1,6 @@
 ---
 title: "GitOps Release Notes: January 2023"
-description: "Changelog and Release Notes For GitOps"
+description: "Changelog and Release Notes for GitOps"
 ---
 
 ## Features & enhancements

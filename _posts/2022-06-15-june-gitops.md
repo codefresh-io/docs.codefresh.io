@@ -1,6 +1,6 @@
 ---
-title: "June 2022 - GitOps"
-description: "Changelog and Release Notes For GitOps"
+title: "GitOps Release Notes: June 2022"
+description: "Changelog and Release Notes for GitOps"
 ---
 
 ## Features & enhancements

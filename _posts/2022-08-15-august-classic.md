@@ -1,6 +1,6 @@
 ---
-title: "August 2022 - Classic"
-description: "Changelog and Release Notes For Classic"
+title: "Pipelines Changelog: August 2022"
+description: "Changelog and Release Notes for Classic"
 ---
 
 ## Features and enhancements

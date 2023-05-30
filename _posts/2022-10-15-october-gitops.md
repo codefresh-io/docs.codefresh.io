@@ -1,6 +1,6 @@
 ---
 title: "GitOps Release Notes: October 2022"
-description: "Changelog and Release Notes For GitOps"
+description: "Changelog and Release Notes for GitOps"
 ---
 
 ## Features & enhancements

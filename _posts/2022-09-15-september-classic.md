@@ -1,6 +1,6 @@
 ---
-title: "September 2022 - Classic"
-description: "Changelog and Release Notes For Classic"
+title: "Pipelines Changelog: September 2022"
+description: "Changelog and Release Notes for Pipelines"
 ---
 
 ## Features and enhancements
