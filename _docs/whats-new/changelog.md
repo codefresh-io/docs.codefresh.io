@@ -1,5 +1,5 @@
 ---
-title: "Codefresh Change Log"
+title: "Codefresh Changelogs and Release Notes"
 description: "New features, enhancements, and bug fixes"
 redirect_from:
   - /changelog/
@@ -8,9 +8,9 @@ redirect_from:
   - /docs/whats-new/release-notes/
 ---
 
-Welcome to our unified Release Notes, including Codefresh pipelines and Codefresh GitOps!
+This page gives you the complete list of changelogs and release notes up to the previous month of the calendar year.
 
-If you missed any of our online announcements, you can find the latest features, enhancements, and bug fixes, here in the cumulative Release Notes!
+If you missed any of our previous online announcements, you can find the latest features, enhancements, and bug fixes, right here.
 
 <ul>
   {% for post in site.posts %}
