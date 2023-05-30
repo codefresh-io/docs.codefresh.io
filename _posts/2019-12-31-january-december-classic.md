@@ -1,5 +1,5 @@
 ---
-title: "Pipelines Changelog: January -December 2019"
+title: "Pipelines Changelog: January to December 2019"
 description: "Changelog for Pipelines 2019 (Classic)"
 ---
 
