@@ -1,5 +1,5 @@
 ---
-title: "November 2022 - GitOps"
+title: "GitOps Release Notes: November 2022"
 description: "Changelog and Release Notes For GitOps"
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "January 2023 - GitOps"
+title: "GitOps Release Notes: January 2023"
 description: "Changelog and Release Notes For GitOps"
 ---
 
