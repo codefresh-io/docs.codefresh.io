@@ -6,3 +6,5 @@ description: "Changelog and Release Notes for Codefresh Pipelines and GitOps"
 TBD
 
 Find all changelogs and release notes, [here]({{site.baseurl}}/docs/whats-new/changelog/).
+
+_posts/2023-05-29-may-release-notes.md
