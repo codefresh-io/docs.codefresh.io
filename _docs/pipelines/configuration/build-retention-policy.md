@@ -14,8 +14,7 @@ For new environments, defining a retention policy to better control build enviro
 Retention settings are controlled through environment variables in `cf-api`. By default, when enabled, Codefresh implements a Cron job that deletes removes data from the `workflowproccesses` collection. 
 
 >**NOTE**:  
-
->Build logs are _not_ deleted.
+  Build logs are _not_ deleted.
 
 
 

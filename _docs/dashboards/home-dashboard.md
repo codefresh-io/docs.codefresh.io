@@ -14,7 +14,7 @@ The Home Dashboard includes three different dashboards:
   Displays a global overview of GitOps Runtimes, clusters managed by the Runtimes, deployment history, and most active applications. 
 
 * **Argo Workflows Dashboard**  
-  Displays aggregated metrics on Argo Workflows and Delivery Pipelines for trend identify trends.
+  Displays aggregated metrics on Argo Workflows and Delivery Pipelines to identify trends.
  
  >**TIP**  
   The Argo Workflows dashboard is displayed only when pipelines with Argo Workflows are enabled for the account. 
