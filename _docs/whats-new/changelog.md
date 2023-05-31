@@ -8,7 +8,7 @@ redirect_from:
   - /docs/whats-new/release-notes/
 ---
 
-This page gives you the complete list of changelogs and release notes up to the previous month of the calendar year.
+This page gives you the complete list of changelogs and release notes.
 
 If you missed any of our previous online announcements, you can find the latest features, enhancements, and bug fixes, right here.
 
