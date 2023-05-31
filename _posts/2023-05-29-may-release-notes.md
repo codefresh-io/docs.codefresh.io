@@ -23,12 +23,10 @@ The Home Dashboard includes:
 
 * GitOps Dashboard  
   Formerly known as the GitOps Overview dashboard, it has been renamed and integrated into the Home Dashboard.
-
-* Argo Workflows Dashboard  
   The Argo Workflows dashboard provides insights and metrics related to Argo Workflows.
 
 * Pipelines Dashboard   
-  If you have both GitOps and Pipelines, the Pipelines Dashboard is displayed after the GitOps and Argo Workflows dashboards.  
+  If you have both GitOps and Pipelines, the Pipelines Dashboard is displayed below the GitOps and Argo Workflows dashboards.  
   
   Use the Pipelines dashboard to:
   * Identify pipelines with low performance, both in terms of number of executions and execution duration
@@ -36,7 +34,7 @@ The Home Dashboard includes:
   * Compare KPIs (key performance indicators) to previous time periods for progress tracking
   * Ensure you are meeting your SLA with your customers
 
- {% include 
+{% include 
 image.html 
 lightbox="true" 
 file="/images/whats-new/may23/rel-notes-may23-home-dashboard-pipelines.png" 
@@ -54,7 +52,7 @@ For details, see [Home Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboar
 * **On-demand encryption for build run variables**    
   Manual build runs allow you to create new and modify existing variables. You can now encrypt sensitive variables  on-demand, adding an extra layer of security. 
 
-   {% include 
+{% include 
 image.html 
 lightbox="true" 
 file="/images/whats-new/may23/rel-notes-may23-encrypt-build-variable.png" 
@@ -88,13 +86,13 @@ For details, see [Configure build retention policy for pipelines]({{site.baseurl
 US and international users can select their preferred format for date and time in the Codefresh UI. With this latest enhancement, you can now choose between US and international date formats, as well as 24 or 12-hour time formats, to best suit your needs. 
 Simply navigate to **User Settings** and select your preferred format. 
 
-   {% include 
+{% include 
 image.html 
 lightbox="true" 
 file="/images/whats-new/may23/rel-notes-may23-date-time-format.png" 
 url="/images/whats-new/may23/rel-notes-may23-date-time-format.png" 
 alt="Date and time formats" 
-caption="Date and time formats"" 
+caption="Date and time formats"
 max-width="60%" 
 %}
 
