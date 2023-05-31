@@ -3,11 +3,14 @@ title: "Release Notes: May 2023"
 description: "Release Notes for Codefresh Pipelines and GitOps"
 ---
 
-## Home Dashboard
+
+## Features & enhancements
+
+### Home Dashboard
 
 We are excited to introduce the new Home Dashboard, which provides a unified and comprehensive view of critical dashboards across the enterprise. When logging in to Codefresh, you will now see the Home Dashboard located at the top of the sidebar.
 
-The Home Dashboard combines familiar GitOps and Argo Workflow dashboards with the much-awaited Pipelines dashboard. This new dashboard, designed for pipeline visibility and monitoring, offers an enhanced experience for tracking pipeline performance.
+The Home Dashboard includes the familiar GitOps and Argo Workflow dashboards, and a brand-new Pipelines dashboard. This new dashboard, designed for pipeline visibility and monitoring, offers an enhanced experience for tracking pipeline performance.
 
  {% include 
 image.html 
@@ -21,9 +24,11 @@ max-width="80%"
 
 The Home Dashboard includes:
 
-* GitOps Dashboard  
+* GitOps & Argo Workflows dashboards 
   Formerly known as the GitOps Overview dashboard, it has been renamed and integrated into the Home Dashboard.
-  The Argo Workflows dashboard provides insights and metrics related to Argo Workflows.
+  Displays a global overview of GitOps Runtimes, clusters managed by the Runtimes, deployment history, and most active applications. 
+
+   The Argo Workflows dashboard displays aggregated metrics on Argo Workflows and Delivery Pipelines to identify trends.
 
 * Pipelines Dashboard   
   If you have both GitOps and Pipelines, the Pipelines Dashboard is displayed below the GitOps and Argo Workflows dashboards.  
@@ -47,7 +52,7 @@ max-width="60%"
 
 For details, see [Home Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/).
 
-## Pipelines: Variable encryption and masking for increased security
+### Pipelines: Variable encryption and masking for increased security
 
 * **On-demand encryption for build run variables**    
   Manual build runs allow you to create new and modify existing variables. You can now encrypt sensitive variables  on-demand, adding an extra layer of security. 
@@ -71,10 +76,10 @@ max-width="60%"
   For details, see [Masking variables within cf_export]({{site.baseurl}}/docs/pipelines/variables/#masking-variables-within-cf_export).
 
 
-## Pipelines: New layout for Helm Boards
+### Pipelines: New layout for Helm Boards
 Helm Boards now display information in a horizontal layout. The new layout prevents fields with long names from overlapping with each other.
 
-## Pipelines: Automated build deletion
+### Pipelines: Automated build deletion
 Set the desired time-to-live (TTL) for your builds to automatically remove older builds and free up valuable storage resources in your build environments. Fewer builds also make it easy to navigate to and find relevant builds for monitoring and troubleshooting.
 
 Take advantage of the `TTL_RETENTION_POLICY_IS_ENABLED` and `TTL_RETENTION_POLICY_IN_DAYS` environment variables in `cf-api` to effortlessly configure automated build deletion. 
@@ -82,7 +87,7 @@ Take advantage of the `TTL_RETENTION_POLICY_IS_ENABLED` and `TTL_RETENTION_POLIC
 For details, see [Configure build retention policy for pipelines]({{site.baseurl}}/docs/pipelines/configuration/build-retention-policy/).
 
 
-## Preferred date and time format selection
+### Preferred date and time format selection
 US and international users can select their preferred format for date and time in the Codefresh UI. With this latest enhancement, you can now choose between US and international date formats, as well as 24 or 12-hour time formats, to best suit your needs. 
 Simply navigate to **User Settings** and select your preferred format. 
 
@@ -98,7 +103,7 @@ max-width="60%"
 
 For details, see [Customize date and time formats]({{site.baseurl}}/docs/administration/user-self-management/user-settings/#customize-date-and-time-formats).
 
-## SAML SSO Okta: auto-sync teams and auto-activate users 
+### SAML SSO Okta: auto-sync teams and auto-activate users 
 Just-in-time (JIT) user provisioning is becoming increasingly important for IT administrators. The **auto-sync** and **activate-user** options when setting up SAML SSO settings for Okta are designed to achieve this without any manual intervention.
 * **Auto-Sync** allows you to automatically sync users and teams provisioned in Okta with Codefresh at intervals you define. 
 * **Auto-Activate** creates and activates personal accounts for synced users in Codefresh, without the need to send an email invite and have the user click on the link.
@@ -119,5 +124,25 @@ For details, see [Step 1: Configure SSO settings for Okta via SAML in Codefresh]
  
 
 
+## Bug fixes
 
+**General**
+* When syncing teams with Azure, invited users do not receive invite emails while they are added to Codefresh.
 
+**Pipelines**  
+* Build logs are delayed or are missing.
+* Builds remain in status `Pending`.
+* Build failure when passing base64 encoded values in `codefresh/cli:latest` image. 
+* Build failure for child pipelines with Codefresh CLI version 0.83.1.
+* Broken Docker image for `codefresh/kubectl:latest` (version 1.27.1).
+* Missing data for selected time frame when filtering Pipelines Dashboard by specific pipelines.
+* Codefresh UI not loaded when null namespaces are present.
+* Error on filtering builds by Annotations containing percentage values in the Builds page.
+* Overrides for pipeline-level variables during manual build run not displayed correctly in Build Variable list.
+* `jq: error (at <stdin>:1): Cannot iterate over null (null)` error for `trivy-scan` step when Common Vulnerabilities and Exposures (CVE) is empty. 
+* (On-premises only) Offline logs missing for freestyle step in version 1.4.4
+
+**GitOps**  
+* Empty Dockerfile tab when enriching image for GitLab CI.
+* Commiting edits to annotations for applications in Codefresh UI removes the annotations.
+* Existing Git Source for Hosted GitOps Runtime is removed on adding a new Git Source. 
