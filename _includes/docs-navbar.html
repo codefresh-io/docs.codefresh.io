@@ -7,7 +7,8 @@
       <span class="badge cf-badge cf-badge-doc align-middle ml-1">Codefresh Documentation</span>
     </a>
     {% if page.layout != "home" %}
-    <form class="bd-search {% if page.layout == "docs" %}bd-search-docs {% endif %}d-flex mt-1 mb-1 mt-md-0 order-2 order-md-2 align-items-center">
+    <div id="searchbar" class="order-2 order-md-2 align-items-center"></div>
+    <!-- <form class="bd-search {% if page.layout == "docs" %}bd-search-docs {% endif %}d-flex mt-1 mb-1 mt-md-0 order-2 order-md-2 align-items-center">
       <input type="search" class="form-control form-control-dark mr-sm-2 doc-search-input" id="navbar-search-input" placeholder="{{ site.data.translations[site.locale].search_placeholder_text }}" aria-label="{{ site.data.translations[site.locale].search_placeholder_text }}" autocomplete="off">
       <i class="fa fa-search"></i>
       {% if page.layout == "docs" %}
@@ -15,7 +16,7 @@
         {%- include icons/menu.svg width="30" height="30" -%}
       </button>
       {% endif %}
-    </form>
+    </form> -->
     {% endif %}
     <div class="navbar-nav-scroll order-1 order-md-1 mx-md-auto">
       <ul class="navbar-nav flex-row mx-md-auto">
@@ -90,7 +91,8 @@
         -->
         {% endcomment %}
       </ul>
-  <!--- </div>
-    <a class="btn btn-primary order-2 order-md-2" href="https://codefresh.io/docs/" style="background-color: #212437; border-color: #212437; color: #5FFFBF; font-weight: 500">View Codefresh Docs</a>
+    </div>
+  - <!-- </div>
+    <a class="btn btn-primary order-2 order-md-2" href="https://codefresh.io/docs/" style="background-color: #212437; border-color: #212437; color: #5FFFBF; font-weight: 500">View Codefresh Docs</a> 
   </div> -->
 </header>
