@@ -8,9 +8,9 @@ description: "Release Notes for Codefresh Pipelines and GitOps"
 
 ### Home Dashboard
 
-We are excited to introduce the new Home Dashboard, which provides a unified and comprehensive view of critical dashboards across the enterprise. When logging in to Codefresh, you will now see the Home Dashboard located at the top of the sidebar.
+We are excited to introduce the new Home Dashboard, providind a unified and comprehensive view of critical dashboards across the enterprise. When logging in to Codefresh, you will now see the Home Dashboard at the top of the sidebar.
 
-The Home Dashboard includes the familiar GitOps and Argo Workflow dashboards, and a brand-new Pipelines dashboard. This new dashboard, designed for pipeline visibility and monitoring, offers an enhanced experience for tracking pipeline performance.
+The Home Dashboard includes the familiar GitOps and Argo Workflow dashboards, and a           brand-new Pipelines dashboard. This new dashboard, designed for pipeline visibility and monitoring, offers an enhanced experience for tracking pipeline performance.
 
  {% include 
 image.html 
@@ -24,7 +24,8 @@ max-width="80%"
 
 The Home Dashboard includes:
 
-* GitOps & Argo Workflows dashboards 
+* GitOps & Argo Workflows Dashboards  
+
   Formerly known as the GitOps Overview dashboard, it has been renamed and integrated into the Home Dashboard.
   Displays a global overview of GitOps Runtimes, clusters managed by the Runtimes, deployment history, and most active applications. 
 
@@ -54,6 +55,8 @@ For details, see [Home Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboar
 
 ### Pipelines: Variable encryption and masking for increased security
 
+Increase security with these enhancements to variables in pipelines.
+
 * **On-demand encryption for build run variables**    
   Manual build runs allow you to create new and modify existing variables. You can now encrypt sensitive variables  on-demand, adding an extra layer of security. 
 
@@ -80,7 +83,7 @@ max-width="60%"
 Helm Boards now display information in a horizontal layout. The new layout prevents fields with long names from overlapping with each other.
 
 ### Pipelines: Automated build deletion
-Set the desired time-to-live (TTL) for your builds to automatically remove older builds and free up valuable storage resources in your build environments. Fewer builds also make it easy to navigate to and find relevant builds for monitoring and troubleshooting.
+Set the desired time-to-live (TTL) for your builds to automatically remove older builds and free up valuable storage resources in your build environments. Fewer builds also make it easier to navigate to and find relevant builds for monitoring and troubleshooting.
 
 Take advantage of the `TTL_RETENTION_POLICY_IS_ENABLED` and `TTL_RETENTION_POLICY_IN_DAYS` environment variables in `cf-api` to effortlessly configure automated build deletion. 
 
@@ -98,7 +101,7 @@ file="/images/whats-new/may23/rel-notes-may23-date-time-format.png"
 url="/images/whats-new/may23/rel-notes-may23-date-time-format.png" 
 alt="Date and time formats" 
 caption="Date and time formats"
-max-width="60%" 
+max-width="70%" 
 %}
 
 For details, see [Customize date and time formats]({{site.baseurl}}/docs/administration/user-self-management/user-settings/#customize-date-and-time-formats).
