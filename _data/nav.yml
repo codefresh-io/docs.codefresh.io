@@ -592,16 +592,6 @@
     - title: Shared configuration repo
       url: "/shared-configuration"
 
-- title: What's new
-  url: "/whats-new"
-  pages:
-    - title: Release notes
-      url: "/release-notes/"
-    - title: Changelog
-      url: "/changelog"
-    - title: GitOps what's new
-      url: "/gitops-whats-new"
-
 - title: New Codefresh
   url: "/new-codefresh"
   pages:
