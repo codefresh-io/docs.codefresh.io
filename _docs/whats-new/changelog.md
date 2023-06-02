@@ -12,7 +12,9 @@ This page gives you the complete list of changelogs and release notes.
 
 If you missed any of our previous online announcements, you can find the latest features, enhancements, and bug fixes, right here.
 
-[Subscribe to RSS feed](https://codefresh.io/docs/changelog/feed.xml)
+
+> To subscribe to an RSS/Atom feed please [click here]({{ site.baseurl }}/changelog/feed.xml).
+
 
 <ul>
   {% for post in site.posts %}
@@ -20,4 +22,6 @@ If you missed any of our previous online announcements, you can find the latest 
       <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
     </li>
   {% endfor %}
+
 </ul>
+

@@ -520,12 +520,20 @@ Codefresh installation supports automatic storage provisioning based on the stan
 
 
 ### Retention policy for Codefresh builds
-Define a retention policy to manage Codefresh builds. The retention settings are controlled through `cf-api` deployment environment variables, all of which have default settings which you can retain or customize. By default, Codefresh deletes builds older than six months, including offline logs.
+Define a retention policy to manage Codefresh builds. The retention settings are controlled through `cf-api` deployment environment variables, all of which have default settings which you can retain or customize. 
+
+There are two mechanisms to define the retention policy. Both mechanisms are implemented as Cron jobs.
+1. Legacy retention mechanism: Allows you to delete builds in chunks, and also, optionally, delete offline logs from the database. 
+1. New retention mechanism: Allows you delete builds by days, and does not delete offline logs.
+
+
+#### Configure retention policy for builds and logs
+With this method, Codefresh by default deletes builds older than six months, including offline logs for these builds.
 
 The retention mechanism, implemented as a Cron Job, removes data from collections such as:
-* workflowproccesses
-* workflowrequests
-* workflowrevisions
+* `workflowproccesses`
+* `workflowrequests`
+* `workflowrevisions`
 
 {: .table .table-bordered .table-hover}
 | Env Variable   | Description             | Default                |
@@ -535,6 +543,29 @@ The retention mechanism, implemented as a Cron Job, removes data from collection
 |`RETENTION_POLICY_DAYS`         | The number of days for which to retain builds. Builds older than the defined retention period are deleted.                                  | `180`              |
 |`RUNTIME_MONGO_URI`             | Optional. The URI of the Mongo database from which to remove MongoDB logs (in addition to the builds). |              |
 
+#### Configure TTL-based retention policy
+
+The TTL-based retention mechanism is implemented as a Cron job, and deletes data from the `workflowprocesses` collection. Build logs are not deleted.
+
+>**IMPORTANT**:  
+  > * For existing environments, for the retention mechanism to work, you must first drop the index in MongoDB. This requires a maintenance window that depends on the number of builds to be deleted, approximately three hours per MongoDB node.
+  >* If you have more than one `cf-api`, you must update the configuration for all of them.
+
+{: .table .table-bordered .table-hover}
+| Env Variable   | Description             | Default                |
+|---------------|--------------------------- |----------------------  |
+|`TTL_RETENTION_POLICY_IS_ENABLED` | Determines if automatic build deletion through the Cron job is enabled.         | `false`                 |
+|`TTL_RETENTION_POLICY_IN_DAYS`    | The number of days for which to retain builds, and can be between `30` (minimum) and `365` (maximum). Builds older than the defined retention period are deleted.  | `365`              |
+
+
+
+1. (Optional) For existing environments: 
+    1. In MongoDB, drop the index on `created` field in `workflowprocesses` collection.
+1. In `cf-api`, add to `env`:
+    1. `TTL_RETENTION_POLICY_IS_ENABLED` set to `true`.
+    1. `TTL_RETENTION_POLICY_IN_DAYS`.
+1. Verify that the `created` field in the `workflowprocesses` collection has a new index.   
+1. Restart `cf-api`.
 
 ### Managing Codefresh backups
 

@@ -3,7 +3,6 @@ title: "Release Notes: May 2023"
 description: "Release Notes for Codefresh Pipelines and GitOps"
 ---
 
-[Subscribe to RSS feed](https://codefresh.io/docs/changelog/feed.xml)
 
 ## Features & enhancements
 
