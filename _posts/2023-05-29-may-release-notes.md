@@ -8,9 +8,9 @@ description: "Release Notes for Codefresh Pipelines and GitOps"
 
 ### Home Dashboard
 
-We are excited to introduce the new Home Dashboard, providind a unified and comprehensive view of critical dashboards across the enterprise. When logging in to Codefresh, you will now see the Home Dashboard at the top of the sidebar.
+We are excited to introduce the new Home Dashboard, providing a unified and comprehensive view of critical dashboards across the enterprise. When logging in to Codefresh, you will now see the Home Dashboard at the top of the sidebar.
 
-The Home Dashboard includes the familiar GitOps and Argo Workflow dashboards, and a           brand-new Pipelines dashboard. This new dashboard, designed for pipeline visibility and monitoring, offers an enhanced experience for tracking pipeline performance.
+The Home Dashboard includes the familiar GitOps and Argo Workflow dashboards, and a brand-new Pipelines dashboard. This new dashboard, designed for pipeline visibility and monitoring, offers an enhanced experience for tracking pipeline performance.
 
  {% include 
 image.html 
