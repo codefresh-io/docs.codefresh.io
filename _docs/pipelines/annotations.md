@@ -252,6 +252,11 @@ max-width="50%"
 
 ### Filter builds by annotations
 Filter the Builds list by build annotations to view builds that share the same annotations. This includes both the build display annotation, and other build annotations.  
+
+>NOTE:
+>Annotation filters apply only to builds created after upgrade to v2.0
+
+
 Combine this with the [other filters available for builds]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#applying-filters-on-the-build-view) to create a customized view of the Builds page. 
 
 1. In the Codefresh UI, from the sidebar, select [**Builds**](https://g.codefresh.io/builds2){:target="\_blank"}.
