@@ -8,7 +8,6 @@ toc: true
 ---
 
 Install the Hybrid Runtime for GitOps through a Helm chart.
-> Helm installation for Hybrid GitOps is currently in Beta. 
 
 
 
@@ -18,14 +17,20 @@ Install the Hybrid Runtime for GitOps through a Helm chart.
   See also [GitOps Runtime architecture]({{site.baseurl}}/docs/installation/runtime-architecture/#gitops-runtime-architecture).
 
 * Shared Configuration Repository    
-  For each account, you can create a Shared Configuration Repository, which is a Git repository with configuration manifests, shared with all the GitOps Runtimes in the same account. Read more on the [Shared Configuration Repository]({{site.baseurl}}/docs/reference/shared-configuration).
+  For each account, you can create a Shared Configuration Repository, which is a Git repository with configuration manifests that is shared with all the GitOps Runtimes in the same account. Read more on the [Shared Configuration Repository]({{site.baseurl}}/docs/reference/shared-configuration).
   * If this is the first Hybrid GitOps Runtime in your account, then you will define the Shared Config Repo during the installation. 
-  * If you already have a Hosted or a legacy Hybrid GitOps Runtime, you already have a Shared Config Repo, and don't need to create one. 
-  See also [Reset Shared Configuration Repository for GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#reset-shared-configuration-repository-for-gitops-runtimes).
+  * If you already have a Hosted or a legacy Hybrid GitOps Runtime, you already have a Shared Config Repo, and don't need to create one. You can reset the Shared Configuration Repo under specific conditions. See [Reset Shared Configuration Repository for GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#reset-shared-configuration-repository-for-gitops-runtimes).
 
 * Argo project CRDs  
   Hybrid GitOps installation requires a cluster without Argo project CRDs.  
   You can handle Argo project CRDs outside the chart, or as recommended, adopt the CRDs to be managed by the GitOps Runtime Helm release. See [Argo project CRDs](/#argo-project-crds).
+
+* Image overrides for registries
+  If you use private registries, you need to override specific image values for the different subcharts and container images.  
+  We developed a utility to help override image values for GitOps Runtimes. The utility creates `values` files that match the structure of the subcharts, allowing you to easily replace image registries. During chart installation, you can provide these `values` files to override the images, as needed.  
+  For more details, see the [README](https://github.com/codefresh-io/gitops-runtime-helm/blob/airgapped-scripts-and-rootless/charts/gitops-runtime/README/){:target="\_blank"}.
+
+
 
 
 ## Minimum system requirements
@@ -763,12 +768,6 @@ kubectl label --overwrite crds $(kubectl get crd | grep argoproj.io | awk '{prin
 kubectl annotate --overwrite crds $(kubectl get crd | grep argoproj.io | awk '{print $1}' | xargs) meta.helm.sh/release-name=$RELEASE
 kubectl annotate --overwrite crds $(kubectl get crd | grep argoproj.io | awk '{print $1}' | xargs) meta.helm.sh/release-namespace=$NAMESPACE
 ```
-
-
-
-
-
-
 
 
 ## Install Hybrid GitOps Runtime with Helm

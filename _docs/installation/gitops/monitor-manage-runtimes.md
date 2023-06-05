@@ -202,9 +202,13 @@ For more details, read [Configuring Deep Links in Argo CD](https://argo-cd.readt
 
 
 
-## (Helm install Hybrid GitOps) Upgrade GitOps Runtimes
+## (Helm Hybrid GitOps) Upgrade GitOps Runtimes
 
-Upgrade provisioned Hybrid GitOps Runtimes to install critical security updates, get new functionality, and the latest versions of all components. Upgrade a provisioned Hybrid Runtime by running a silent upgrade or through the GitOps CLI wizard.  
+Upgrade provisioned Hybrid GitOps Runtimes to install critical security updates, get new functionality, and the latest versions of all components. 
+The upgrade procedure differs depending on whether the GitOps Runtime has been configured as an Argo CD application or not:
+* Argo CD GitOps Runtimes: Runtimes configured as Argo CD applications need to be u, yo need to manually update the version in the Helm chart located in the Shared Configuration Repository.
+* Non-Argo CD GitOps Runtimes: If the Run
+  have been configured  
 If you have managed clusters for Hybrid GitOps Runtimes, upgrading the Runtime automatically updates runtime components within the managed cluster as well.
 
 >The `Update Available! Notification` in the List View's Version column indicates that a newer version of the Runtime, Helm chart, or both are available.
@@ -243,8 +247,8 @@ If you have managed clusters for Hybrid GitOps Runtimes, upgrading the Runtime a
 
 {:start="5"}
 1. Do one of the following depending on whether you have configured the Runtime as a Argo CD Application or not:
-  * GitOps Runtimes Continue from step _6_.
-  * Non-GitOps Runtimes: Continue from step _7_. 
+  * Argo CDGitOps Runtimes:Continue from step _6_.
+  * Non-Argo CD GitOps Runtimes: Continue from step _7_. 
 1. For GitOps Runtimes, do the following: 
     1. In your Shared Configuration Repository, go to `resources/<runtime_name>/chart`  
        where, `<runtime_name>` is the name of the Hybrid GitOps Runtime to upgrade.
@@ -316,7 +320,9 @@ Uninstalling a GitOps Runtime permanently removes:
 * The Runtime from the cluster it is provisioned on
 * The Git Sources and managed clusters associated with it
 
- 
+<br> 
+
+**How to**  
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
 1. From Runtimes in the sidebar, select [**GitOps Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
@@ -336,8 +342,8 @@ Uninstalling a GitOps Runtime permanently removes:
   max-width="80%"
 %}
 
-**Topology view**:  
-  Click the Runtime cluster, and from the panel, click the context menu, and then select **Uninstall**.
+  **Topology view**:  
+  * Click the Runtime cluster, and from the panel, click the context menu, and then select **Uninstall**.
   
   {% include
  image.html
@@ -362,9 +368,22 @@ Uninstalling a GitOps Runtime permanently removes:
 ## Reset Shared Configuration Repository for GitOps Runtimes
 Codefresh creates and validates the [Shared Configuration Repository]({{site.baseurl}}/docs/reference/shared-configuration) when you install the first Hybrid or Hosted GitOps Runtime for your account, and uses it for all GitOps Runtimes you add to the same account.
 
-You must reset the Shared Configuration Repo if the URL is either incorrect or missing, which is flagged through this notification in the UI:
+Once created, you can reset the Shared Configuration Repo defined for your account under the following conditions:
+* Optional. There are no active Runtimes in your account 
+  
+* Manadtory. The URL is incorrect or missing 
+  Codefresh notifies you through the UI if the Shared Configuration Repo URL is either incorrect or missing.  
 
-  {% include
+    * Incorrect URL  
+      The Shared Config Repo details provided during installation in Account Setup are incorrect. Codefresh could not connect to the Shared Repo with the details provided.  
+    * Undefined URL 
+      You installed the GitOps Runtime through a script or another automated mechanism without providing the URL to the Shared Configuration Repository.
+
+  >**NOTE**:  
+  >If Codefresh has already validated the existing Shared Configuration Repository, meaning that at least one GitOps Runtime successfully connected to it, you _cannot change_ the Configuration Repository. To do so, you must contact Codefresh Support. 
+  >Otherwise, you must uninstall all the GitOps Runtimes in your account.
+
+    {% include
  image.html
  lightbox="true"
  file="/images/runtime/shared-config-repo-missing.png"
@@ -374,27 +393,30 @@ You must reset the Shared Configuration Repo if the URL is either incorrect or m
   max-width="100%"
 %}
 
-
-Missing Shared Configuration Repository notifications can occur if the repo:
-1. Has incorrect URL
-  The Shared Config Repo details entered during installation in Account Setup are incorrect. Codefresh could not connect to the Shared Repo with the details provided.  
-1. Is undefined 
-  You installed the GitOps Runtime through a script or another automated mechanism, and didn't provide the URL to the Shared Configuration Repository.
-
->NOTE:  
->If Codefresh has already validated the existing Shared Configuration Repository, meaning that at least one GitOps Runtime successfully connected to it, you _cannot change_ the Configuration Repository. To do so, you must contact Codefresh Support. 
+### Reset Shared Config Repo via UI
+You can reset the Shared Config Repo via the Codefresh UI when you see the notification that the URL is either incorrect or missing.
 
 **Before you begin**  
 
 Verify that you have [authorized access to the Codefresh app's organizations]({{site.baseurl}}/docs/administration/account-user-management/hosted-authorize-orgs/)
-
-**How to reset via UI**  
+ 
 
 1. Click **Update**.
 1. In **Add Shared Configuration Repo**, enter your Git username and the URL at which to create the repo.
 1. From the list of **Git Organizations**, select the Git organization for the Codefresh application.
 
-**How to reset via CLI** 
+### Reset Shared Config Repo via CLI
+You can reset the Shared Configuration Repo via the CLI when:
+* You receive the notification that the URL is incorrect or missing  
+* There are no active GitOps Runtimes in your account. 
+   To reset the URL for an account with existing GitOps Runtimes, you must [uninstall](#uninstall-gitops-runtimes) all the Runtimes.
+
+
+**Before you begin**  
+* If you have GitOps Runtimes, uninstall all the Runtimes
+
+**How to**  
+
 * Run `cf config update-gitops-settings --shared-config-repo <shared_repo_url>`  
   where:  
   `<shared_repo_url>` is the new URL for the Shared Configuration Repository.
