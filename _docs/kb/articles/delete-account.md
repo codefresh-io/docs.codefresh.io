@@ -17,7 +17,7 @@ You want to delete your Codefresh account and all associated data.
 
 ## Details
 
-❕This article is about Codefresh Classic. Information on how to delete an account in Codefresh GitOps [can be foundhere]({{site.baseurl}}/docs/troubleshooting/deleting-account/).
+❕This article is about Codefresh Classic. Information on how to delete an account in Codefresh GitOps [can be foundhere]({{site.baseurl}}/docs/kb/articles/deleting-account/).
 
 1. Ensure you have the correct account selected, if you have multiple.  
    * _💡 You can change your selected account by clicking on your username in the upper right corner._

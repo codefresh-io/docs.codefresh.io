@@ -389,7 +389,7 @@ You will get an error of Permission Denied or Forbidden to a Git Context that yo
 
 1. Navigate to Account Settings > Permissions > Teams or Execution Context.
 1. Scroll to Git Contexts.
-1. Here, you can set [permissions]({{site.baseurl}}/docs/administration/access-control/#creating-a-security-policy) similar to other ABAC rules for Teams or Execution Context to Create or Use, Update, and Delete actions.
+1. Here, you can set [permissions]({{site.baseurl}}/docs/administration/account-user-management/access-control/) similar to other ABAC rules for Teams or Execution Context to Create or Use, Update, and Delete actions.
 1. Click Add Rule when done.
 
 ## Related articles
