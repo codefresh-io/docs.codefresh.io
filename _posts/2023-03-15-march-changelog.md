@@ -95,7 +95,7 @@ From CLI version v0.1.41, and runtime version: v0.1.27, you can have different n
   The color-coded borders around application resources that indicated their health status were not the most intuitive and easy to identify.  
   We listened to your feedback, and replaced them with a set of icons affixed to the resource type:
 
-  {::nomarkdown}<img src="../../../images/icons/current-state-healthy.png" display=inline-block"> Healthy, <img src="../../../images/icons/current-state-progressing.png" display=inline-block"> Progressing, <img src="../../../images/icons/current-state-suspended.png" display=inline-block"> Suspended, <img src="../../../images/icons/current-state-missing.png" display=inline-block"> Missing, <img src="../../../images/icons/current-state-degraded.png" display=inline-block/> Degraded, and <img src="../../../images/icons/current-state-unknown.png" display=inline-block/> Unknown.
+  {::nomarkdown}<img src="../../../../../images/icons/current-state-healthy.pngimages/icons/current-state-healthy.png" display=inline-block"> Healthy, <img src="../../../../../images/icons/current-state-progressing.png" display=inline-block"> Progressing, <img src="../../../../../images/icons/current-state-suspended.png" display=inline-block"> Suspended, <img src="../../../../../images/icons/current-state-missing.png" display=inline-block"> Missing, <img src="../../../../images/icons/current-state-degraded.png" display=inline-block/> Degraded, and <img src="../../../../../images/icons/current-state-unknown.png" display=inline-block/> Unknown.
   {:/}
 
 * **Filter by K8s labels**  

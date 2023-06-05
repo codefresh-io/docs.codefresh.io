@@ -1,5 +1,5 @@
 ---
-title: "Pipelines Changelog: January - December 2020"
+title: "Pipelines Changelog: January to December 2020"
 description: "Changelog for Pipelines 2020 (Classic)"
 ---
 
@@ -81,7 +81,7 @@ description: "Changelog for Pipelines 2020 (Classic)"
 - Run multiple kinds of unit tests using fan-in-fan-out parallel pipeline - [documentation]({{site.baseurl}}/docs/example-catalog/ci-examples/fan-in-fan-out/)
 
 ## March 2020
-- Removal of the Codefresh registry - [documentation]({{site.baseurl}}/docs/integrations/docker-registries/cfcr-deprecation/)
+- Removal of the Codefresh registry 
 - Helm quick start guide for Helm 3  - [documentation]({{site.baseurl}}/docs/getting-started/helm-quick-start-guide/)
 - Deployment example for Helm 3  - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/helm/)
 - Helm 3 release dashboard - [documentation]({{site.baseurl}}/docs/new-helm/helm-releases-management/#choosing-between-helm-2-and-helm-3-releases)

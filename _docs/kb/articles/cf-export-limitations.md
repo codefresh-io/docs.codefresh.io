@@ -65,4 +65,4 @@ If you run this pipeline, the `test` step will correctly print `line1 line2 line
 
 [cf_export utility in pipelines]({{site.baseurl}}/docs/pipelines/variables/#using-cf_export-command)  
 [Passing variables between steps]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#using-docker-containers-as-build-tooling)  
-[Troubleshooting common issues]({{site.baseurl}}/docs/troubleshooting/common-issues)
+[Troubleshooting common issues]({{site.baseurl}}/docs/kb/common-issues/)
