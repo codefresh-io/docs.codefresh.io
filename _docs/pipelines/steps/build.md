@@ -9,7 +9,8 @@ redirect_from:
   - /docs/codefresh-yaml/steps/build/  
 toc: true
 ---
-Use Docker to build an image and store it in Codefresh or push it to an external registry.  Create multi-platform images with BuildX and QEMU (Quick EMUlator).  
+Use Docker to build an image and store it in Codefresh or push it to an external registry.  Create multi-platform images with BuildX and QEMU (Quick EMUlator). 
+
 In Codefresh, Docker containers are first-class citizens, and we offer special typed steps for the most frequently used Docker commands through our `build` step. 
 
 
@@ -23,7 +24,7 @@ Therefore, this command on your local workstation:
 docker build . -t my-app-image:1.0.1
 ```
 
-is converted in Codefresh into the following build step:
+is converted in Codefresh into the following `build` step:
 
 ```yaml
 BuildMyImage:
@@ -104,7 +105,7 @@ step_name:
 | `retry`   | Define retry behavior for the build step, as described in [Retrying a step]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#retrying-a-step).  | Optional                  |
 | `buildkit`  | When set to `true`, enables [Buildkit](#buildkit-support) and all of its enhancements. When using `buildkit` with `cache_from`, to allow the built image to be used as cache for future images, you must  specify `BUILDKIT_INLINE_CACHE=1` in the build_arguments. See [more info](https://docs.docker.com/engine/reference/commandline/buildx_build/#cache-to){:target="\_blank"}| Optional   | 
 | `platform`  | The [target platform or platforms](https://docs.docker.com/build/building/multi-platform/){:target="\_blank"} to which to push the image. For example, `linux/amd64`. To target multiple platforms, separate them with commas, as in `linux/amd64,linux/arm64`. <br>NOTE: To use this property, you must enable `buildx`. | Optional   | 
-| `buildx`  |Build and push Docker images, including multi-platform images, with <a href="https://github.com/docker/buildx" target="_blank">Buildx</a>. Disabled by default. {::nomarkdown}<ul><li>To enable with default configuration, set to <code class="highlighter-rouge">true</code>. You do not have to add any other parameters.</li><li>To enable with custom configuration, set to an object with custom configuration. With custom configuration, you can configure settings for <code class="highlighter-rouge">qemu</code> and <code class="highlighter-rouge">builder</code>.<ul><li><code class="highlighter-rouge">qemu</code><ul><li><code class="highlighter-rouge">image</code>: The Docker image to use to install the <a href="https://github.com/qemu/qemu" target="_blank">QEMU</a> static binaries. Currently, Codefresh supports the <code class="highlighter-rouge">tonistiigi/binfmt</code> Docker image. <br>By default, installs the binaries from the <code class="highlighter-rouge">tonistiigi/binfmt:latest</code> Docker image. </li><li><code class="highlighter-rouge">platforms</code>: The binaries of platform emulators to install with the Docker image defined for <code class="highlighter-rouge">image</code>. The default value is <code class="highlighter-rouge">all</code>.</li></ul><li><code class="highlighter-rouge">builder</code>: <ul><li><code class="highlighter-rouge">driver</code>: The builder driver to use. By default, uses <code class="highlighter-rouge">docker-container</code>  <a href="https://docs.docker.com/build/building/drivers/docker-container" target="_blank">driver</a> to build multi-platform images and export cache using a <a href="https://github.com/moby/buildkitBuildKit" target="_blank">BuildKit</a> container.<li><code class="highlighter-rouge">driver_opts</code>: Additional driver-specific configuration options to customize the driver. For example, <code class="highlighter-rouge">image=moby/buildkit:master</code>.</li></ul></li></ul>{:/} | Optional   | 
+| `buildx`  |Build and push Docker images, including multi-platform images, with <a href="https://github.com/docker/buildx" target="_blank">Buildx</a>. Disabled by default. {::nomarkdown}<ul><li>To enable with default configuration, set to <code class="highlighter-rouge">true</code><br>When set to <code class="highlighter-rouge">true</code>, reflects the memory consumed by the Docker build process itself. You do not have to add any other parameters.</li><li>To enable with custom configuration, set to an object with custom configuration. With custom configuration, you can configure settings for <code class="highlighter-rouge">qemu</code> and <code class="highlighter-rouge">builder</code>.<ul><li><code class="highlighter-rouge">qemu</code><ul><li><code class="highlighter-rouge">image</code>: The Docker image to use to install the <a href="https://github.com/qemu/qemu" target="_blank">QEMU</a> static binaries. Currently, Codefresh supports the <code class="highlighter-rouge">tonistiigi/binfmt</code> Docker image. <br>By default, installs the binaries from the <code class="highlighter-rouge">tonistiigi/binfmt:latest</code> Docker image. </li><li><code class="highlighter-rouge">platforms</code>: The binaries of platform emulators to install with the Docker image defined for <code class="highlighter-rouge">image</code>. The default value is <code class="highlighter-rouge">all</code>.</li></ul><li><code class="highlighter-rouge">builder</code>: <ul><li><code class="highlighter-rouge">driver</code>: The builder driver to use. By default, uses <code class="highlighter-rouge">docker-container</code>  <a href="https://docs.docker.com/build/building/drivers/docker-container" target="_blank">driver</a> to build multi-platform images and export cache using a <a href="https://github.com/moby/buildkitBuildKit" target="_blank">BuildKit</a> container.<li><code class="highlighter-rouge">driver_opts</code>: Additional driver-specific configuration options to customize the driver. For example, <code class="highlighter-rouge">image=moby/buildkit:master</code>.</li></ul></li></ul>{:/} | Optional   | 
 
 
 ### Exported resources
@@ -225,15 +226,22 @@ steps:
 {% endhighlight %}
 
 ### Multi-platform images with `platform` and `buildx` 
+
+**Multi-platform images**  
 Docker images can support multiple platforms and architectures, meaning that you can create an image once, and reuse the same image on different platforms. Docker automatically selects the image that matches the target OS and architecture.  
 
 For more on the architectures supported, see the [Docker Official Images README](https://github.com/docker-library/official-images#architectures-other-than-amd64){:target="\_blank"}. For more on multi-platform images in Docker, see the official [documentation](https://docs.docker.com/build/building/multi-platform/){:target="\_blank"}.  
+
+**Memory usage reporting with `buildx`**  
+By default, Docker does not include the memory usage of the build process when reporting overall memory statistics.  
+To include the memory consumption of the build process, simply enable `buildx` with the default configuration. 
 
 <!--QEMU with BuildX is useful for:  
 * Multi-architecture builds: Build applications for multiple architectures at the same time, useful for building container images that need to support multiple architectures.
 * Cross-platform testing: Test applications on different platforms, such as ARM, AMD, without having to own the physical hardware to save time and resources.
 * Container image testing: Test container images for compatibility with different architectures and platforms, to ensure that the container image works when deployed to different environments. -->
 
+<br>
 
 #### Build image for ARM
 
@@ -253,6 +261,8 @@ steps:
 {% endraw %}         
 {% endhighlight %}
 
+<br>
+
 #### Build image for multiple platforms
 
 `codefresh.yml`
@@ -271,6 +281,8 @@ steps:
 {% endraw %}         
 {% endhighlight %}
 
+<br>
+
 #### Build image for multiple platforms with custom `buildx` configuration
 
 `codefresh.yml`
@@ -285,17 +297,28 @@ steps:
     image_name: my-app-image
     tag: latest
     platform: 'linux/amd64,linux/arm64'
-    buildx:
-      qemu:
-        # image used for installing QEMU static binaries to provide cross-platform emulator support
-        image: 'tonistiigi/binfmt:latest' # default
-      builder:
-        # driver to use to create the builder instance 
-        driver: 'docker-container' # default
+    buildx: true
 {% endraw %}         
 {% endhighlight %}
 
 For faster builds, you can also build Docker images in [parallel]({{site.baseurl}}/docs/pipelines/advanced-workflows/).
+
+#### Report memory usage by build process with default `buildx` configuration
+
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+steps:
+  BuildMyImage:
+    title: Building My Docker image
+    type: build
+    working_directory: '${{clone}}'
+    image_name: my-app-image
+    tag: latest
+    buildx: true # Enable memory consumption information
+{% endraw %}         
+{% endhighlight %}
 
 ### Inline Dockerfile
 
