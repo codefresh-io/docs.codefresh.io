@@ -82,6 +82,7 @@ max-width="60%"
 ### Pipelines: New layout for Helm Boards
 Helm Boards now display information in a horizontal layout. The new layout prevents fields with long names from overlapping with each other.
 
+<!-- 
 ### Pipelines: Automated build deletion
 Set the desired time-to-live (TTL) for your builds to automatically remove older builds and free up valuable storage resources in your build environments. Fewer builds also make it easier to navigate to and find relevant builds for monitoring and troubleshooting.
 
@@ -89,6 +90,7 @@ Take advantage of the `TTL_RETENTION_POLICY_IS_ENABLED` and `TTL_RETENTION_POLIC
 
 For details, see [Configure build retention policy for pipelines]({{site.baseurl}}/docs/pipelines/configuration/build-retention-policy/).
 
+-->
 
 ### Preferred date and time format selection
 US and international users can select their preferred format for date and time in the Codefresh UI. With this latest enhancement, you can now choose between US and international date formats, as well as 24 or 12-hour time formats, to best suit your needs. 
