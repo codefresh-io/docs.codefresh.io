@@ -380,9 +380,7 @@
         - title: Secrets for pipelines
           url: "/secrets-store"  
         - title: Public logs and status badges
-          url: "/build-status"
-        - title: Build retention policy
-          url: "/build-retention-policy"   
+          url: "/build-status"  
     - title: Steps in pipelines
       url: "/steps"
       sub-pages:
