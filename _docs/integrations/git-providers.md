@@ -192,7 +192,7 @@ An alternative way to authenticate with Github is via the App mechanism.
 1. From the **Add Git Provider** dropdown, select **Github App**.  
   For the required fields use: 
   * **App ID**, which you noted down in _step 4.1_.
-  * **Private key**, which is the content of the file your created in _step 4.2_, converted to base64.
+  * **Private key**, which is the content of the file you created in _step 4.2_, converted to base64.
   * **Installation ID** which you noted down in _step 6_.
 1. To verify your integration, click **Test connection**.
 1. To apply your changes, click **Save**.  
