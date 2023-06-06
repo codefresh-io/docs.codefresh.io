@@ -25,9 +25,9 @@ Install the Hybrid Runtime for GitOps through a Helm chart.
   Hybrid GitOps installation requires a cluster without Argo project CRDs.  
   You can handle Argo project CRDs outside the chart, or as recommended, adopt the CRDs to be managed by the GitOps Runtime Helm release. See [Argo project CRDs](/#argo-project-crds).
 
-* Image overrides for registries
+* Image overrides for private registries
   If you use private registries, you need to override specific image values for the different subcharts and container images.  
-  We developed a utility to help override image values for GitOps Runtimes. The utility creates `values` files that match the structure of the subcharts, allowing you to easily replace image registries. During chart installation, you can provide these `values` files to override the images, as needed.  
+  We have a utility to help override image values for GitOps Runtimes. The utility creates `values` files that match the structure of the subcharts, allowing you to easily replace image registries. During chart installation, you can provide these `values` files to override the images, as needed.  
   For more details, see the [README](https://github.com/codefresh-io/gitops-runtime-helm/blob/airgapped-scripts-and-rootless/charts/gitops-runtime/README/){:target="\_blank"}.
 
 
@@ -794,9 +794,11 @@ The Codefresh `values.yaml` is located [here](https://github.com/codefresh-io/gi
 
 
 ### Step 1: (Optional) Validate Helm values file
-Before starting Helm installation for a Hybrid GitOps runtime, validate the `values.yaml` file to verify that the settings are correct.  
+Codefresh automatically validates the `values.yaml` file before starting the installation to verify that the settings are correct. 
 
-The table below lists the settings validated in the `values` file.  
+If you prefer, you can also manually validate the `values.yaml` file  
+
+The table below lists the settings that are validated in the `values` file.  
 
 {: .table .table-bordered .table-hover}
 | Setting                   |  Validation            |  
