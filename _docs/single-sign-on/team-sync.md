@@ -106,47 +106,6 @@ steps:
 
 To fully automate the pipeline, you can set a [cron trigger]({{site.baseurl}}/docs/pipelines/triggers/cron-triggers/) for it. Depending on how you set up your Cron trigger, you can synchronize your teams every day/week/hour. 
 
-
-### Manual team-sync and email domain restrictions
-If the `Restrict inviting additional users by email address domain` is enabled for your account, manual sync via the CLI or via a pipeline, _does not invite new users_ to Codefresh.  
-The output of the command will be similar to the following:
-
-```json
-[
-  {
-    "action": "update",
-    "teams": [
-      {
-        "team": "developers",
-        "members": [
-          {
-            "members": [],
-            "action": "create"
-          }
-        ]
-      },
-      {
-        "team": "DevOps",
-        "members": [
-          {
-            "members": [],
-            "action": "create"
-          }
-        ]
-      }
-    ]
-  }
-]
-```
-
-**Turn off the domain restriction**:
-
-1. In the Codefresh UI, click **Settings**.
-1. In the sidebar, from Access & Collaboration, select **User & Teams**, and then click the **Security** tab.
-1. Turn off **Restrict inviting additional users by email address domain**.
-1. Click **Save**.
-1. Rerun the CLI sync command.
-
 ### Sync GitHub organization teams to Codefresh
 
 As an admin, you may want to sync your GitHub Organization Teams with your Codefresh account. At the same time, you do not want to set up an SSO provider and have the users use any login provider they choose.
