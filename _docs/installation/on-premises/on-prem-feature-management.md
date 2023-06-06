@@ -7,13 +7,24 @@ toc: true
 
 Codefresh platform/system administrators can toggle specific features of the Codefresh platform in on-premises environments. Feature management helps you to easily implement and manage functionality on an as- and when-needed basis. 
 
-## Access on-premises feature management
+## Manage features in on-premises platforms
+Enable a feature for all accounts, or override the default setting and enable/disable the feature selectively for specific accounts. The overrides are retained when you change the default setting for the feature. 
+Review the [feature list](#on-premises-feature-list) to understand the implications of enabling a feature.
 
 1. Sign in to Codefresh.
 1. On the top-right, click your avatar and then select **Admin Panel**.
-1. From the sidebar, click **Feature Management**.
-1. Toggle required features to ON. 
+1. From the sidebar, click **Feature Management**. 
+1. To enable a feature for all accounts under **Enable**, toggle the required feature to **ON**. 
+1. To enable or disable the feature for specific accounts, click the **Edit** icon, and then select the accounts from the **Enable feature for** and **Disable feature for** lists, as required.
 
+{% include image.html
+  lightbox="true"
+  file="/images/installation/on-prem-feature-management.png"
+  url="/images/installation/on-prem-feature-management.png"
+  alt="Enabling/disabling features for accounts"
+  caption="Enabling/disabling features for accounts"
+  max-width="60%"
+    %}  
 
 
 ## On-premises feature list 
@@ -33,3 +44,7 @@ Codefresh platform/system administrators can toggle specific features of the Cod
 |`parallelKubectlOperations` |When enabled, allows running parallel steps that includes `kubectl`. Especially Helm `install` and `deploy` steps that deploy to multiple clusters with `kubectl` in parallel. |FALSE|
 |`logMasking` |When enabled, secrets in build logs, both online and offline logs, are masked and replaced by asterisks. <br><br>This feature is currently available only for Enterprise customers. |FALSE|
 |`useLogsTimestamps` |When enabled, prepends the date and time to every line in the log. <br><br>When enabled, and you have build automation, you may need to adjust the regex for search as the line does not start with the log text.| FALSE| 
+
+
+## Related articles
+[Codefresh on-premises]({{site.baseurl}}/docs/installation/on-prem/)  
