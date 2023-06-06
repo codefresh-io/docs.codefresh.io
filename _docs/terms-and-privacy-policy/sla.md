@@ -72,7 +72,7 @@ issue as defined below and will use commercially reasonable efforts to respond a
 | Normal        | Errors that cause previously-working non-critical features to malfunction. |
 | Low | General questions, How-To’s, best practices questions, and feature requests.|
 
-[Severity Examples](https://support.codefresh.io/hc/en-us/articles/360018951039-Codefresh-SLA-definitions)
+[Severity Examples]({{site.baseurl}}/docs/terms-and-privacy-policy/codefresh-sla-definitions)
 
 **3.3. Support Channels**. 
 
@@ -96,4 +96,3 @@ issue as defined below and will use commercially reasonable efforts to respond a
 |2.0             | General updates               | April 20, 2022 |
 |1.1             | Added support information     | April 7, 2021 |
 |1.0             | Initial version               | January 17, 2021 |
-
