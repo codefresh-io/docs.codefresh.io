@@ -188,11 +188,11 @@ An alternative way to authenticate with Github is via the App mechanism.
   From the URL of the browser, note the ending number which is your installation ID.  
   For example if the URL is `https://github.com/settings/installations/10042353`, then your installation number is `10042353`.
 1. In the Codefresh UI, in the toolbar, click the **Settings** icon.
-1. From the sidebar, select [**Pipeline Integrations** > Git**](https://g.codefresh.io/account-admin/account-conf/integration/git){:target="\_blank"}, and then click **Configure**. 
+1. From the sidebar, select **Pipeline Integrations > Git**, and then click **Configure**. 
 1. From the **Add Git Provider** dropdown, select **Github App**.  
   For the required fields use: 
   * **App ID**, which you noted down in _step 4.1_.
-  * **Private key**, which is the content of the file your created in _step 4.1_, converted to base64.
+  * **Private key**, which is the content of the file your created in _step 4.2_, converted to base64.
   * **Installation ID** which you noted down in _step 6_.
 1. To verify your integration, click **Test connection**.
 1. To apply your changes, click **Save**.  
