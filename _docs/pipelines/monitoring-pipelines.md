@@ -28,11 +28,11 @@ max-width="80%"
 
 ## Viewing status for pipeline builds
 
-Each build's status is immediately shown beneath the build entry, identifiable by a distinct icon. Refer to the table below for a description of the various statuses associated with pipeline builds.
+Each build's status is displayed beneath the build details, identifiable by a distinct icon. Refer to the table below for a description of the various statuses associated with pipeline builds.
 
 
 {: .table .table-bordered .table-hover}
-| Build Status Icon      | Description   |
+| Pipeline Build Status Icon &nbsp; &nbsp; &nbsp;   | Description   |
 | ------------------------| ---------------- |
 |{::nomarkdown}<img src="../../../images/icons/pipeline-build-running.png" display=inline-block/> {:/}| Pipeline build is currently running. |
 |{::nomarkdown}<img src="../../../images/icons/pipeline-build-successful.png" display=inline-block/> {:/}| Pipeline build completed successfully.  |
@@ -43,7 +43,7 @@ Each build's status is immediately shown beneath the build entry, identifiable b
 |{::nomarkdown}<img src="../../../images/icons/pipeline-build-failed-error.png" display=inline-block/> {:/}| Pipeline build execution has failed because of errors. |
 
 
-## Applying filters on the build view
+### Applying filters on the build view
 
 The **Add Filters** option allows you to filter the list of builds by additional criteria, including build status.
 
