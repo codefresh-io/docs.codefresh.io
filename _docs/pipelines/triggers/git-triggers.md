@@ -136,15 +136,13 @@ For a description of the events, see [GitLab documentation](https://docs.gitlab.
 
 #### Gerrit trigger events
 
-A `Ref updated` trigger event in Gerrit is mapped to to `Push commits` or `Push tags` trigger events in Codefresh.
-
-
 For a description of the events, see [Gerrit documentation](https://gerrit-review.googlesource.com/Documentation/cmd-stream-events.html#events){:target="\_blank"}.
 
-<br>
+A `Ref updated` trigger event in Gerrit is mapped in Codefresh to `Push commits` or `Push tags` trigger events.
 
-* Push commits (Ref updated in Gerrit)
-* Push tags (Push tags and Ref updated in Gerrit)
+
+* Push commits (`Ref updated` in Gerrit)
+* Push tags (`Push tags` and `Ref updated` in Gerrit)
 * Change abandoned              
 * Change deleted              
 * Change merged               
@@ -157,6 +155,10 @@ For a description of the events, see [Gerrit documentation](https://gerrit-revie
 * Topic changed        
 * WIP state changed        
 * Vote deleted     
+
+>**WARNING**
+>Selecting both `Push commits` and `Change merged` as trigger events will result in the pipeline being _triggered twice_, as Gerrit sends the `Change merged` event followed by the `Push commits` event.  
+To avoid duplicate pipelines, select any one of these triggers. 
 
 ### Filter settings for Git triggers
 

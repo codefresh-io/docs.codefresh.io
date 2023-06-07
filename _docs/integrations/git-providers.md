@@ -183,9 +183,9 @@ An alternative way to authenticate with Github is via the App mechanism.
 1. Accept the permissions, and in the next screen, define the repositories that you need Codefresh to access.  
   From the URL of the browser, note the ending number which is your installation ID.  
   For example if the URL is `https://github.com/settings/installations/10042353` then your installation number is `10042353`.
-1. In the Codefresh UI, go to  [Pipeline Integrations > Git](https://g.codefresh.io/account-admin/account-conf/integration/git){:target="\_blank"}. 
+1. In the Codefresh UI, follow the steps to [add a new Git provider](#adding-more-git-providers-to-your-codefresh-account). 
 1. From the **Add Git Provider** dropdown, select **Github App**.  
-  For the required fields use: 
+1. Define the settings:
   * **Installation ID** which you noted down in _step 5_.
   * **App ID**, which you noted down in _step 4_.
   * **Private key**, which is the content of the file your created in step 4, converted to base64.
@@ -343,13 +343,37 @@ For example if you already have a `token` on a resource call `git-credentials` y
 
 ## Gerrit
 Codefresh supports integration with Gerrit, the open-source web-based code review tool for Git repositories. 
-By integrating Gerrit in Codefresh, you can create pipelines to trigger builds and tests whenever a new change is pushed to Git repos hosted in Gerrit, and see the status of builds and tests within Gerrit.
+By integrating Gerrit in Codefresh, you can create pipelines to [trigger]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/#gerrit-trigger-events) builds and tests whenever a new change is pushed to Git repos hosted in Gerrit, and see the status of builds and tests within Gerrit.
 
-* **Name**: The name for your Gerrit integration. This is the name that will be used in pipelines to reference the Gerrit integration.
-* **Host URL**: The URL of your website with the Gerrit instance, for example, `https://git.company-name.io`.
-* **Username**: The username of your Gerrit account.
-* **HTTP Password**: The password of your Gerrit account.
+Gerrit has no explicit concept of "pull requests" as in other version control systems to map trigger event payloads to builds. Gerrit uses `Change Message` that are similar in functionality and purpose to pull requests. Our `CF_PULL_REQUEST` group of environment variables achieve the same functionality. For the exact variables you can map to Gerrit `Change Messages`, see [System variables]({{site.baseurl}}/docs/pipelines/variables/#system-variables).
 
+### Set up access permmissions for Codefresh user in Gerrit
+
+Gerrit has a special **Service Users** access-group for CI systems and other bots. We recommend adding your Codefresh user in Gerrit to this group.
+
+1. Create a profile in Gerrit's web interface for your Codefresh user.
+1. Add the user to the predefined Service Users access group:
+  1. Navigate to **Browse > Groups**, and select **Service Users**.
+  1. Click the **Members** tab, and click **Add Members**.
+  1. Type the email address of the Codefresh user, and select the user from the search results.
+  1. Click **Add**.
+1. Browse to **Repositories** and select the repository for which to set permissions.
+1. Select **Access > Edit**, and set the following permissions:
+  * **Reference**: Set to **refs/*** to grant permissions to all references in the selected repository.
+      * **Read**: **ALLOW** for Service Users
+      * **Owner**: **ALLOW** for Service Users as `webhooks.config` in `refs/meta/config` requires [owner-level permissions](https://gerrit-review.googlesource.com/Documentation/access-control.html#category_submit){:target="\_blank"}.
+  * **Label Verified**: **-1**, **+1** for Service Users. Gives permission to apply the `Verified` label with either a `-1` or `+1` value.
+
+### Define integration settings for Gerrit in Codefresh
+
+1. In the Codefresh UI, follow the steps to [add a new Git provider](#adding-more-git-providers-to-your-codefresh-account). 
+1. From the **Add Git Provider** dropdown, select **Github App**.  
+1. Define the settings:
+  * **Name**: The name for your Gerrit integration. This is the name that will be used in pipelines to reference the Gerrit integration.
+  * **Host URL**: The URL of your website with the Gerrit instance, for example, `https://git.company-name.io`.
+  * **Username**: The username of your Gerrit account.
+  * **HTTP Password**: The password of your Gerrit account.
+1. Click **Save**.
 
 
 
