@@ -7,8 +7,41 @@ toc: true
 
 If you have familiarized yourself with the different installation options, here's a deep dive into the architecture and components of the different options.
 
-## Codefresh On-Premises platform architecture 
-The diagram shows a high-level view of the Codefresh On-Premises environment, and its core components. 
+
+### Codefresh SaaS platform architecture
+
+The diagram shows a high-level view of the SaaS version of the Codefresh platform and its core components. 
+
+{% include
+image.html
+lightbox="true"
+file="/images/runtime/architecture/arch-saas.png"
+url="/images/runtime/architecture/arch-saas.png"
+alt="Codefresh GitOps platform architecture"
+caption="Codefresh GitOps platform architecture"
+max-width="100%"
+%}
+
+### GitOps Control Plane
+The Codefresh Control Plane is the SaaS component in the platform. External to the enterprise firewall, it does not have direct communication with the Codefresh Runtime, Codefresh Clients, or the customer's organizational systems. The Codefresh Runtime and the Codefresh Clients communicate with the Codefresh Control Plane to retrieve the required information.  
+
+
+
+### GitOps Runtime
+The GitOps Runtime is installed on a Kubernetes cluster, and houses the enterprise distribution of the Codefresh Application Proxy and the Argo Project.  
+Depending on the type of GitOps installation, the GitOps Runtime is installed either in the Codefresh platform (Hosted GitOps), or in the customer environment (Hybrid GitOps). Read more in [GitOps Runtime architecture](#gitops-runtime-architecture).
+
+
+
+### GitOps Clients
+
+GitOps Clients include the  UI and the GitOps CLI.   
+The UI provides a unified, enterprise-wide view of deployments (runtimes, clusters, and applications), and CI/CD operations (Delivery Pipelines, workflows, and deployments) in the same location.  
+The Codefresh CLI includes commands to install hybrid runtimes, add external clusters, and manage runtimes and clusters.
+
+## Codefresh on-premises platform architecture
+
+The diagram shows a high-level view of the on-premises version of the Codefresh platform, and its core components. 
 
 {% include
 image.html
@@ -159,38 +192,11 @@ Each microservice within the Codefresh Pipeline and GitOps modules has its own d
   Stores data for legacy builder and windows nodes.
 
 
-## Codefresh SaaS platform architecture
-
-The diagram shows a high-level view of the Codefresh SaaS platform and its core components. 
-
-{% include
-image.html
-lightbox="true"
-file="/images/runtime/architecture/arch-saas.png"
-url="/images/runtime/architecture/arch-saas.png"
-alt="Codefresh GitOps platform architecture"
-caption="Codefresh GitOps platform architecture"
-max-width="100%"
-%}
 
 
 
-### GitOps Control Plane
-The Codefresh Control Plane is the SaaS component in the platform. External to the enterprise firewall, it does not have direct communication with the Codefresh Runtime, Codefresh Clients, or the customer's organizational systems. The Codefresh Runtime and the Codefresh Clients communicate with the Codefresh Control Plane to retrieve the required information.  
 
 
-
-### GitOps Runtime
-The GitOps Runtime is installed on a Kubernetes cluster, and houses the enterprise distribution of the Codefresh Application Proxy and the Argo Project.  
-Depending on the type of GitOps installation, the GitOps Runtime is installed either in the Codefresh platform (Hosted GitOps), or in the customer environment (Hybrid GitOps). Read more in [GitOps Runtime architecture](#gitops-runtime-architecture).
-
-
-
-### GitOps Clients
-
-GitOps Clients include the  UI and the GitOps CLI.   
-The UI provides a unified, enterprise-wide view of deployments (runtimes, clusters, and applications), and CI/CD operations (Delivery Pipelines, workflows, and deployments) in the same location.  
-The Codefresh CLI includes commands to install hybrid runtimes, add external clusters, and manage runtimes and clusters.
 
 
 
