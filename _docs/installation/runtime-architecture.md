@@ -1,13 +1,200 @@
 ---
 title: "Architecture"
-description: ""
+description: "Codefresh platform and runtime architecture"
 group: installation
 toc: true
 ---
 
 If you have familiarized yourself with the different installation options, here's a deep dive into the architecture and components of the different options.
 
-## Runner architecture
+
+
+## Codefresh SaaS platform architecture
+
+The diagram shows a high-level view of the SaaS version of the Codefresh platform and its core components. 
+
+
+{% include
+image.html
+lightbox="true"
+file="/images/runtime/architecture/arch-saas.png"
+url="/images/runtime/architecture/arch-saas.png"
+alt="Codefresh SaaS platform architecture"
+caption="Codefresh SaaS platform architecture"
+max-width="100%"
+%}
+
+### GitOps Control Plane
+The Codefresh Control Plane is the SaaS component in the platform. External to the enterprise firewall, it does not have direct communication with the Codefresh Runtime, Codefresh Clients, or the customer's organizational systems. The Codefresh Runtime and the Codefresh Clients communicate with the Codefresh Control Plane to retrieve the required information.  
+
+
+
+### GitOps Runtime
+The GitOps Runtime is installed on a Kubernetes cluster, and houses the enterprise distribution of the Codefresh Application Proxy and the Argo Project.  
+Depending on the type of GitOps installation, the GitOps Runtime is installed either in the Codefresh platform (Hosted GitOps), or in the customer environment (Hybrid GitOps). Read more in [GitOps Runtime architecture](#gitops-runtime-architecture).
+
+
+
+### GitOps Clients
+
+GitOps Clients include the  UI and the GitOps CLI.   
+The UI provides a unified, enterprise-wide view of deployments (runtimes, clusters, and applications), and CI/CD operations (Delivery Pipelines, workflows, and deployments) in the same location.  
+The Codefresh CLI includes commands to install hybrid runtimes, add external clusters, and manage runtimes and clusters.
+
+## Codefresh on-premises platform architecture
+
+The diagram shows a high-level view of the on-premises version of the Codefresh platform, and its core components. 
+
+{% include
+image.html
+lightbox="true"
+file="/images/runtime/architecture/arch-on-premises.png"
+url="/images/runtime/architecture/arch-on-premises.png"
+alt="Codefresh On-Premises platform architecture"
+caption="Codefresh On-Premises platform architecture"
+max-width="100%"
+%}
+
+
+
+### External Components
+
+
+<br>
+
+#### Codefresh Runner
+The Codefresh Runner can be installed on the same cluster as the On-Premises platform or on a remote cluster.  It provides a way to run builds, tests, and deployments within your private network or on-premises environment by making API calls to the Codefresh platform.
+
+Read more about how it works in [Runner installation behind firewalls]({{site.baseurl}}/docs/installation/behind-the-firewall/).
+
+<br>
+
+#### GitOps Runtime
+The GitOps Runtime, similar to the Codefresh Runner can be installed on the same cluster as the On-Premises platform on a remote cluster. It includes Codefresh-signed versions of the Argo Project components, Argo CD, Argo Workflows, Argo Rollouts, and Argo Events.
+The GitOps Runtime reports events in clusters and GitOps repositories through API calls to the Codefresh platform. 
+
+Read more in [GitOps Runtime architecture]({{site.baseurl}}/docs/installation/runtime-architecture/#gitops-runtime-architecture).
+
+<br>
+
+#### Codefresh UI & CLI
+Codefresh provides a web-based UI and CLI to work with the Codefresh On-Premises platform through API calls. 
+
+The UI allows users to visually manage and control CI/CD pipelines, GitOps applications and deployments, and more.
+The CLI provides a flexible option for developers to interact with the On-Premises platform.
+
+
+### On-Premises Platform Components
+
+<br>
+
+#### Ingress Controller
+
+The Codefresh On-Premises platform uses an ingress controller to handle incoming traffic. The NGINX Ingress Controller is deployed within the cluster hosting the Codefresh platform. The ingress controller serves as the entry point for requests originating from Codefresh Runners, GitOps Runtimes, and Clients, and routes them to the appropriate destinations, namely the Pipelines API/UI and the GitOps API/UI.
+
+<br>
+
+#### Pipelines API
+
+The Pipelines API serves as the primary gateway for the Codefresh Pipelines module in the On-Premises platform. It handles a wide range of system functionalities, including authentication, authorization, audit logging, user management, and pipeline builds, among others. The Pipelines API utilizes a REST API interface with OpenAPI (Swagger v3) specifications.  
+
+<br>
+
+#### Pipelines UI
+The Pipelines UI acts as a static file server that hosts and delivers all the user interface pages for Codefresh Pipelines. It provides visualization of pipelines, builds, third-party integrations and more.
+
+<br>
+
+#### GitOps API
+The GitOps API serves as the primary gateway for the Codefresh GitOps module in the On-Premises platform. It interfaces between Codefresh GitOps, Git, and Argo CD, to sync 
+It utilizes a GraphQL interface to provide a user interface
+
+<br>
+
+#### GitOps UI
+The GitOps UI provides a unified, enterprise-wide view of deployments, Runtimes, clusters, and applications in the same location.  
+
+<br>
+
+#### Pipelines
+
+The Pipelines module comprises a set of microservices for managing Codefresh pipelines in the On-Premises platform.
+The Codefresh Runner and clients (UI/CLI) forward incoming requests to the Pipelines API, which in turn forwards them to the different Pipeline microservices.
+
+
+* Broadcaster
+  Forwards requests from the Codefresh Runner and client to the Codefresh API when Firebase is not used.
+
+* Runtime Manager 
+  Manages the runtime environments for the Codefresh Runner in the Codefresh On-Premises platform.
+
+* Context Manager 
+  Stores information on Pipeline Integrations created in Codefresh.
+
+* Pipeline Manager 
+  Stores and manages projects and pipeline entities. 
+
+* Helm Manager 
+   Provides an interface for aggregated views of Helm integrations in Codefresh Pipelines. 
+
+* GitOps Manager 
+  Deprecated. Stored information for populating the GitOps Dashboard in Codefresh Pipelines. The dashboard is now populated by Codefresh GitOps. 
+
+<br>
+
+#### GitOps
+
+The GitOps module comprises the microservices for Codefresh and Argo users to consume and share Argo Workflow templates.
+
+* Cron executer
+   The Cron Executor performs periodic internal tasks required for platform functionality.
+
+* API Events
+  Receives events from GitOps Runtimes and publishes them to the Event Bus.
+
+* Event Handler
+  The Event Handler subscribes to events originating from the API Events received via the Event Bus, processes, and updates them.
+
+* Audit Manager
+  The Audit Manager reports and stores audit logs of API calls to Codefresh GitOps.
+
+* Analytics Reporter
+  Reports analytics information to populate deployment, runtime, and cluster data for GitOps in the different dashboards and widgets.
+
+* Argo Hub
+  Interfaces with the Argo Hub platform for working with pre-built Argo Workflow templates. Visit ​​https://codefresh.io/argohub/ for more details.
+
+<br>
+
+#### Infrastructure
+Codefresh stores entity, configuration, and integration data for Codefresh Pipelines and Codefresh GitOps in different databases.
+Each microservice within the Codefresh Pipeline and GitOps modules has its own dedicated database, which is independent from the databases used by other microservices. Communication between each microservice and its respective database is exclusive.
+
+
+* mongoDB
+  The main database for entity storage for Pipeline and GitOps microservices. 
+
+* Redis
+    * Optimizes caching for faster response times to requests and reduce load on the database
+    * When Firebase is not used, interacts with the Broadcaster microservice to serve pipeline build logs to the client
+
+* RabbitMQ
+  RabbitMQ serves as a message bus to move tasks and information between microservices in the Pipeline and GitOps modules.
+
+* PostgreSQL
+  The PostgreSQL database stores:
+    * Audit logs of API calls from the Codefresh and GitOps APIs
+    * Analytics information (OF WHAT WOULD BE HELPFUL)
+
+
+* NATS
+  Legacy message bus.
+
+* Consul
+  Stores data for legacy builder and windows nodes.
+
+
+## Codefresh Runner
 
 The most important components are the following:
 
@@ -20,38 +207,7 @@ The most important components are the following:
 See [Runner installation behind firewalls]({{site.baseurl}}/docs/installation/behind-the-firewall/).
 
 
-## GitOps architecture
-
-The diagram shows a high-level view of the GitOps environment, and its core components, the Codefresh Control Plane, the Codefresh Runtime, and the Codefresh Clients. 
-
-{% include
-image.html
-lightbox="true"
-file="/images/runtime/architecture/arch-codefresh-simple.png"
-url="/images/runtime/architecture/arch-codefresh-simple.png"
-alt="Codefresh GitOps platform architecture"
-caption="Codefresh GitOps platform architecture"
-max-width="100%"
-%}
-
-
-
-### GitOps Control Plane
-The Codefresh Control Plane is the SaaS component in the platform. External to the enterprise firewall, it does not have direct communication with the Codefresh Runtime, Codefresh Clients, or the customer's organizational systems. The Codefresh Runtime and the Codefresh Clients communicate with the Codefresh Control Plane to retrieve the required information.  
-
-
-
-### GitOps Runtime
-The GitOps Runtime is installed on a Kubernetes cluster, and houses the enterprise distribution of the Codefresh Application Proxy and the Argo Project.  
-Depending on the type of GitOps installation, the GitOps Runtime is installed either in the Codefresh platform (Hosted GitOps), or in the customer environment (Hybrid GitOps). Read more in [Codefresh GitOps Runtime architecture](#codefresh-gitops-runtime-architecture).
-
-
-
-### GitOps Clients
-
-GitOps Clients include the  UI and the GitOps CLI.   
-The UI provides a unified, enterprise-wide view of deployments (runtimes and clusters), and CI/CD operations (Delivery Pipelines, workflows, and deployments) in the same location.  
-The Codefresh CLI includes commands to install hybrid runtimes, add external clusters, and manage runtimes and clusters.
+ 
 
 ## GitOps Runtime architecture
 The sections that follow show detailed views of the GitOps Runtime architecture for the different installation options, and descriptions of the GitOps Runtime components.

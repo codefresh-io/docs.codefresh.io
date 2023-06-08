@@ -24,10 +24,10 @@ The Codefresh platform supports three different installation options, all compli
   See [Hybrid Runner](#hybrid-runner).
   
 
-* **On-premises**  
-  On-premises installation is for customers who want full control over their environments. Both the UI and the builds run on the Kubernetes cluster in an environment fully managed by you as our customer.  
+* **On-Premises**  
+  On-Premises installation is for customers who want full control over their environments. Both the UI and the builds run on the Kubernetes cluster in an environment fully managed by you as our customer.  
 
-  While Codefresh can still help with maintenance of the on-premises platform, we would recommend the Hybrid Runner as it combines flexibility without compromising on security.  
+  While Codefresh can still help with maintenance of the On-Premises platform, we would recommend the Hybrid Runner as it combines flexibility without compromising on security.  
   See [On-premises](#on-premises).
 
 
