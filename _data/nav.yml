@@ -511,7 +511,9 @@
         - title: Hosted GitOps Runtime
           url: "/hosted-runtime" 
         - title: Hybrid GitOps Runtime
-          url: "/hybrid-gitops"  
+          url: "/hybrid-gitops" 
+        - title: On-premises GitOps Runtime
+          url: "/on-prem-gitops-runtime-install"  
         - title: Managing & monitoring GitOps Runtimes
           url: "/monitor-manage-runtimes"
         - title: Add external clusters to GitOps Runtimes
