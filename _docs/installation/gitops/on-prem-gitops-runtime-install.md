@@ -10,6 +10,7 @@ Install the GitOps Runtime in your on-premises environments with Helm to create 
 
 ## Install GitOps Runtime on-premises
 
+
 * Run: 
 {% highlight yaml %}
 helm upgrade --install cf-gitops-runtime \
@@ -25,12 +26,12 @@ helm upgrade --install cf-gitops-runtime \
 {% endhighlight %}
  
   where:  
-  * `<namespace>` is the namespace in which to install the Hybrid GitOps Runtime on-premises, either `codefresh`, or any custom name.  
-  * `<codefresh-token>` is the API token you have generated in Codefresh. You can use existing token, or [generate a new API token]({{site.baseurl}}/docs/administration/user-self-management/user-settings/#create-and-manage-api-keys).
-  * `<runtime-name>` is the name of the runtime, either `codefresh`, or any custom name. 
-  * `<on-prem-url>` is the URL of your platform, for example, `https://hermes-onprem-test.cf-op.com`.
-  * `<ingress-host>` is the host name of the ingress controller component, _without `https://`_.  Make sure the `"global.runtime.ingress.hosts[0]"` is within double quotes.
-  * `global.runtime.ingress.enabled="true"` value must be _within double quotes_.
+  * `<namespace>` (required) is the namespace in which to install the Hybrid GitOps Runtime on-premises, either `codefresh`, or any custom name.  
+  * `<codefresh-token>` (required) is the API token you have generated in Codefresh. You can use existing token, or [generate a new API token]({{site.baseurl}}/docs/administration/user-self-management/user-settings/#create-and-manage-api-keys).
+  * `<runtime-name>` (required) is the name of the runtime, either `codefresh`, or any custom name. 
+  * `<on-prem-url>`(required) is the URL of your platform, for example, `https://codefresh-onprem.com`.
+  * `<ingress-host>` (required) is the hostname used to access the runtime _without `https://`_.  Make sure the `"global.runtime.ingress.hosts[0]"` is within double quotes.
+  * `global.runtime.ingress.enabled="true"` (required) value must be _within double quotes_.
   
 
 ## Values file for on-prem GitOps Runtime
@@ -40,11 +41,11 @@ Here's an example of the `values.yaml` for installing the GitOps Runtime on-prem
 ```yaml
 global:
   codefresh:
-    url: https://codefresh-onprem.com 
+    url: https://codefresh-onprem.com  ## required, replace with your platform URL
     
 
     userToken:
-      token: 16363747847837838757885898
+      token: 16363747847837838757885898 ## required, use an existing Codefresh API token or generate a new one
 
   runtime:
     name: noamg-runtime
@@ -52,11 +53,11 @@ global:
     ingress:                                   # on-prem supports only ingress-based
       enabled: true
       hosts:
-      - codefresh.ingress-host.com
+      - codefresh.ingress-host.com   ## required, should be identical to codefresh.url
 
 app-proxy:
   config:
-    cors: https://codefresh-onprem.com
+    cors: https://codefresh-onprem.com  ## required, replace with host used to access runtime
 ```
 
 ## Image overrides for private registries
@@ -91,14 +92,22 @@ kubectl annotate --overwrite crds $(kubectl get crd | grep argoproj.io | awk '{p
 Ingress-based on-premises GitOps Runtimes require an ingress controller to be configured before the installation. For details, see [Ingress controller configuration]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/#ingress-controller-configuration).
 Depending on the ingress controller used, you may need post-installation configuration as well.
 
-## Custom certificates for on-premises installations
-For on-premises installations, configure platform and repository certificates:  
-* **Platform** certificates are required for GitOps Runtimes to communicate with the Codefresh platform. 
-* **Repository** certificates are required to authenticate users to on-premises Git servers. 
+## Platform certificates for on-premises installations
+Configure platform certificates, required for GitOps Runtimes to communicate with the Codefresh on-premises platform. 
 
+1. Get your certificate:
 
-### Add platform certificates
-Add platform certificates by including them in `.values.global`. You can either reference an existing secret or create a new secret directly within the file.
+```yaml
+HOST=codefresh-onprem.com # put in the hostname of your on-prem platform, without a schema
+openssl s_client \
+  -showcerts \
+  -connect ${HOST}:443 \
+  -servername ${HOST} \
+  </dev/null 2>/dev/null \
+  | awk '/^-----BEGIN CERTIFICATE-----$/,/^-----END CERTIFICATE-----$/ { print }'
+```
+1. Include them in `.values.global`. You can either reference an existing secret or create a new secret directly within the file.  
+All certificates must be below `content: |`.
 
 ```yaml
 global:
@@ -118,16 +127,3 @@ global:
             -----END CERTIFICATE-----
 ```
 
-### Add repository certificates 
-Add repository certificates to your Codefresh `values` file, in `.values.argo-cd`. These values are used by the argo-cd Codefresh deploys. 
-For details on adding repository certificates, see this [section](https://github.com/argoproj/argo-helm/blob/main/charts/argo-cd/values.yaml#LL334C21-L334C21){:target="\_blank"}.
-
-```yaml
-argo-cd:
-  configs:
-    tls:
-      certificates:
-        server.example.com: |
-          -----BEGIN CERTIFICATE-----
-          ...
-          -----END CERTIFICATE-----
