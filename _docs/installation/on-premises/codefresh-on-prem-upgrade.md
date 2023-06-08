@@ -1,10 +1,11 @@
 ---
-title: "Codefresh On-Premises Upgrade"
-description: "Use the Kubernetes Codefresh Installer to upgrade the Codefresh On-Premises platform "
+title: "Codefresh on-premises upgrade"
+description: "Upgrade the Codefresh On-Premises platform"
 group: installation
 redirect_from:
   - /docs/enterprise/codefresh-on-prem-upgrade/
   - /docs/administration/codefresh-on-prem-upgrade/
+  - /docs/installation/codefresh-on-prem-upgrade/
 toc: true
 ---
 Upgrade the Codefresh on-premises platform to the latest version:
@@ -13,57 +14,7 @@ Upgrade the Codefresh on-premises platform to the latest version:
 * Complete post-upgrade configuration: If needed, also based on the version you are upgrading to, complete the required tasks
 
 
-## Upgrade to 1.1.1
-Prepare for the upgrade to v1.1.1 by performing the tasks listed below.
 
-### Maintain backward compatibility for infrastructure services
-If you have Codefresh version 1.0.202 or lower installed, and are upgrading to v1.1.1, to retain the existing images for the services listed below, update the `config.yaml` for `kcfi`.
-
-* `cf-mongodb`
-* `cf-redis`
-* `cf-rabbitmq`
-* `cf-postgresql`
-* `cf-nats`
-* `cf-consul`
-
-> In the `config.yaml`, as in the example below, if needed, replace the `bitnami` prefix with that of your private repo.
-
-```yaml
-...
-
-global:
-  ### Codefresh App domain name. appUrl is manadatory parameter
-  appUrl: onprem.mydomain.com
-  appProtocol: https
-
-  mongodbImage: bitnami/mongodb:3.6.13-r0 # (default `mongodbImage: bitnami/mongodb:4.2`)
-
-mongodb:
-  image: bitnami/mongodb:3.6.13-r0 # (default `image: bitnami/mongodb:4.2`)
-  podSecurityContext:
-    enabled: true
-    runAsUser: 0
-    fsGroup: 0
-  containerSecurityContext:
-    enabled: false
-
-redis:
-  image: bitnami/redis:3.2.9-r2 # (default `image: bitnami/redis:6.0.16`)
-  podSecurityContext:
-    enabled: false
-  containerSecurityContext:
-    enabled: false
-
-postgresql:
-  imageTag: 9.6.2 # (default `imageTag:13`)
-
-nats:
-  imageTag: 0.9.4  # (default `imageTag:2.7`)
-
-consul:
-  ImageTag: 1.0.0 # (default `imageTag:1.11`)
-...
-```
 ## Upgrade to 1.2.0 and higher
 This major release **deprecates** the following Codefresh managed charts:
 * Ingress
@@ -572,7 +523,7 @@ postgresql:
 ```
 
 
-### Update configuration for Mongodb chart
+### Update configuration for MongoDB chart
 
 From version **1.4.0 and higher**, we have deprecated support for the `Codefresh-managed MongoDB` chart. It has been replaced with Bitnami public chart `bitnami/mongodb`.  
 For more information, see [bitnami/mongodb](https://github.com/bitnami/charts/tree/master/bitnami/mongodb){:target="\_blank"}.
@@ -672,117 +623,15 @@ mongodb:
     resources: {}
 ```
 
+## Upgrade to 2.0.0
+Version 2.0.0 incorporates a major version and chart change, including breaking changes that need you to take actions manually for compatibility.
 
-## Upgrade the Codefresh Platform with [kcfi](https://github.com/codefresh-io/kcfi)
+>**WARNING**:
+> The `kcfi`installer has been deprecated from Version 2.0.0 and higher.  
+>Helm is the recommended way to install Codefresh On-Premises. The `kcfi config.yaml` is NOT compatible with Helm-based installation. To reuse the same `config.yaml` for the Helm chart, you need to remove deprecated sections, and update configuration for other sections. 
 
-1. Locate the `config.yaml` file you used in the initial installation.
-1. Change the release number inside it.
-    ```yaml
-    metadata:
-      kind: codefresh
-      installer:
-        type: helm
-        helm:
-          chart: codefresh
-          repoUrl: https://chartmuseum.codefresh.io/codefresh
-          version: 1.2.14
-    ```
-1. Perform a dry run and verify that there are no errors:
-  `kcfi deploy --dry-run --debug -c codefresh/config.yaml`
-1. Run the actual upgrade:
-  `kcfi deploy --debug -c codefresh/config.yaml`
-1. Verify that all the pods are are in running state:
-  `kubectl -n codefresh get pods --watch`
-1. Log in to the Codefresh UI, and check the new version.
-1. If needed, enable/disable new feature flags.
-
-## Codefresh with Private Registry
-
-If you install/upgrade Codefresh on an air-gapped environment (without access to public registries or Codefresh Enterprise registry), you will have to copy the images to your organization's container registry.
-
-**Obtain [image list](https://github.com/codefresh-io/onprem-images/tree/master/releases) for specific release**
-
-**Push images to private docker registry**
-
-There are 3 types of images:
-
-> localhost:5000 is your <private-registy-addr:[port]>
-
-- non-Codefresh like:
-```
-bitnami/mongo:4.2
-k8s.gcr.io/ingress-nginx/controller:v1.2.0
-postgres:13
-```
-convert to:
-```
-localhost:5000/bitnami/mongodb:4.2
-localhost:5000/ingress-nginx/controller:v1.2.0
-localhost:5000/postgres:13
-```
-- Codefresh public images like:
-```
-quay.io/codefresh/dind:20.10.13-1.25.2
-quay.io/codefresh/engine:1.147.8
-quay.io/codefresh/cf-docker-builder:1.1.14
-```
-convert to:
-```
-localhost:5000/codefresh/dind:20.10.13-1.25.2
-localhost:5000/codefresh/engine:1.147.8
-localhost:5000/codefresh/cf-docker-builder:1.1.14
-```
-- Codefresh private images like:
-```
-gcr.io/codefresh-enterprise/codefresh/cf-api:21.153.6
-gcr.io/codefresh-enterprise/codefresh/cf-ui:14.69.38
-gcr.io/codefresh-enterprise/codefresh/pipeline-manager:3.121.7
-```
-convert to:
-```
-localhost:5000/codefresh/cf-api:21.153.6
-localhost:5000/codefresh/cf-ui:14.69.38
-localhost:5000/codefresh/pipeline-manager:3.121.7
-```
-> DELIMITERS are codefresh OR codefresh-io
-
-- To push images via [kcfi](https://github.com/codefresh-io/kcfi) (ver. **0.5.15** is required) use:
-
-`kcfi images push --help`
-
-> Prerequisites: sa.json to access Codefresh Enterprise GCR
-
-`kcfi images push --codefresh-registry-secret sa.json --images-list images-list-v1.2.14 --registry localhost:5000 --user "root" --password "root"`
-
-- To push images via [push-to-registry.sh](https://github.com/codefresh-io/onprem-images/blob/master/push-to-registry.sh) script use (see [prerequisites](https://github.com/codefresh-io/onprem-images#prerequesites)):
-
-`./push-to-registry.sh localhost:5000 v1.2.14`
-
-**Install/Upgrade Codefresh with private docker registry config**
-
-Set `usePrivateRegistry: true`, and set privateRegistry address, username and password in `config.yaml`.
-
-For Bitnami helm charts ([consul](https://github.com/bitnami/charts/blob/main/bitnami/consul/values.yaml), [nats](https://github.com/bitnami/charts/blob/main/bitnami/nats/values.yaml), [redis](https://github.com/bitnami/charts/blob/main/bitnami/redis/values.yaml), [rabbitmq](https://github.com/bitnami/charts/blob/main/bitnami/rabbimq/values.yaml)) define `global.imageRegistry`.
-
-For [ingress-nginx](https://github.com/kubernetes/ingress-nginx/blob/main/charts/ingress-nginx/values.yaml) chart define `ingress-nginx.controller.image.registry`.
+Follow the instructions in [Upgrading to 2.0.0](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh/2.0.0-alpha.13#upgrading){:target="\_blank"}.
 
 
-`config.yaml`
 
-```yaml
-global:
-  imageRegistry: myregistry.domain.com
 
-ingress-nginx:
-  controller:
-    image:
-      registry: myregistry.domain.com
-
-images:
-  codefreshRegistrySa: sa.json
-  usePrivateRegistry: true
-  privateRegistry:
-    address: myregistry.domain.com
-    username:
-    password:
-```

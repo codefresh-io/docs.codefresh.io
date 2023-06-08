@@ -494,17 +494,24 @@
       url: "/behind-the-firewall"
     - title: Runner
       url: "/codefresh-runner"
-    - title: On-Premises installation & configuration
-      url: "/codefresh-on-prem"
-    - title: On-Premises upgrade
-      url: "/codefresh-on-prem-upgrade"
+    - title: On-premises
+      url: 
+      sub-pages:    
+        - title: Platform installation & configuration
+          url: "/codefresh-on-prem"
+        - title: Platform upgrade
+          url: "/codefresh-on-prem-upgrade"
+        - title: Feature management
+          url: "/on-prem-feature-management"  
     - title: GitOps
       url: 
       sub-pages:
         - title: Hosted GitOps Runtime
-          url: "/hosted-runtime"  
-        - title: Hybrid GitOps Helm Runtime
-          url: "/hybrid-gitops-helm-installation"            
+          url: "/hosted-runtime" 
+        - title: Hybrid GitOps Runtime
+          url: "/hybrid-gitops-helm-installation" 
+        - title: On-premises GitOps Runtime
+          url: "/on-prem-gitops-runtime-install"  
         - title: Managing & monitoring GitOps Runtimes
           url: "/monitor-manage-runtimes"
         - title: Add external clusters to GitOps Runtimes
