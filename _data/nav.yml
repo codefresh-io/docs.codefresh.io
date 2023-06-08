@@ -502,9 +502,9 @@
       url: 
       sub-pages:
         - title: Hosted GitOps Runtime
-          url: "/hosted-runtime" 
-        - title: Hybrid GitOps Runtime
-          url: "/hybrid-gitops"  
+          url: "/hosted-runtime"  
+        - title: Hybrid GitOps Helm Runtime
+          url: "/hybrid-gitops-helm-installation"            
         - title: Managing & monitoring GitOps Runtimes
           url: "/monitor-manage-runtimes"
         - title: Add external clusters to GitOps Runtimes
