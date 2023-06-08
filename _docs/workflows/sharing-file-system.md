@@ -2,8 +2,6 @@
 title: "Sharing file systems"
 description: ""
 group: workflows
-redirect_from:
-  - /csdp-docs/docs/pipelines/sharing-file-system/
 toc: true
 ---
 

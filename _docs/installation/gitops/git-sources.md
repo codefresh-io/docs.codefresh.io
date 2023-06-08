@@ -2,8 +2,6 @@
 title: "Add Git Sources to GitOps Runtimes"
 description: "Manage Git Sources storing resources"
 group: installation
-redirect_from:
-  - /csdp-docs/docs/runtime/git-sources/
 toc: true
 ---
 

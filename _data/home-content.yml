@@ -226,14 +226,16 @@
       localurl: /docs/installation/installation-options/
     - title: Codefresh Runner installation
       localurl: /docs/installation/codefresh-runner/ 
-    - title: On-Premises installation
-      localurl: /docs/installation/codefresh-on-prem/
-    - title: On-Premises upgrade
-      localurl: /docs/installation/codefresh-on-prem-upgrade/
-    - title: Hosted GitOps installation
+    - title: On-Premises platform installation
+      localurl: /docs/installation/on-premises/codefresh-on-prem/
+    - title: On-Premises platform upgrade
+      localurl: /docs/installation/on-premises/codefresh-on-prem-upgrade/
+    - title: Hosted GitOps Runtime installation
       localurl: /docs/installation/gitops/hosted-runtime/  
-    - title: Hybrid GitOps installation
-      localurl: /docs/installation/gitops/hybrid-gitops/  
+    - title: Hybrid GitOps Runtime installation
+      localurl: /docs/installation/gitops/hybrid-gitops-helm-installation/
+    - title: On-premises GitOps Runtime installation
+      localurl: /docs/installation/gitops/on-prem-gitops-runtime-install/        
 
 
 

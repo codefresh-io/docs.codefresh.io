@@ -180,7 +180,7 @@
 /docs/kb/common-issues/
 /docs/kb/troubleshooting/
 /docs/kb/how-to/
-/docs/whats-new/whats-new/
+/docs/whats-new/changelog/
 /docs/yaml-examples/examples/
 /docs/yaml-examples/examples/amazon-ecs/
 /docs/yaml-examples/examples/build-an-image-from-a-different-git-repository/

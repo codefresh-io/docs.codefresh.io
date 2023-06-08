@@ -93,4 +93,4 @@ max-width="60%"
 %}
 
 ## Related articles
-[CI integrations with GitOps]({{site.baseurl}}/docs/gitops-integrations/ci-integrations)  
+[CI integrations with GitOps]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/)  
