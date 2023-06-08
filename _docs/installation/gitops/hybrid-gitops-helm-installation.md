@@ -91,7 +91,7 @@ The Codefresh `values.yaml` is located [here](https://github.com/codefresh-io/gi
 
 ### Step 1: (Optional) Validate Helm values file
 Codefresh automatically validates the `values.yaml` file before starting the installation to verify that the settings are correct.  
-If you prefer, you can also manually validate the file  
+If you prefer, you can also manually validate the file.  
 
 The table below lists the settings that are validated in the `values` file.  
 
