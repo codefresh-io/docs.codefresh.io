@@ -9,7 +9,9 @@ toc: true
 
 Install the Hybrid Runtime for GitOps through a Helm chart.
 
-If you already have a Codefresh acccount with a Git provider, go for the [quick install](#quick-helm-install-for-hybrid-gitops-runtime). For step-by-step installation from the Codefresh UI, see [Step-by-step Hybrid GitOps Runtime installation walkthrough](/#step-by-step-hybrid-gitops-runtime-installation-walkthrough). 
+If you already have a Codefresh acccount, go for the [quick install](#quick-helm-install-for-hybrid-gitops-runtime). For step-by-step installation from the Codefresh UI, see [Step-by-step Hybrid GitOps Runtime installation walkthrough](/#step-by-step-hybrid-gitops-runtime-installation-walkthrough). 
+
+>Hybrid GitOps installation with Helm is currently in Beta.
 
 ## Quick Helm install for Hybrid GitOps Runtime
 
@@ -19,8 +21,8 @@ The Codefresh `values.yaml` is located [here](https://github.com/codefresh-io/gi
 
 > **NOTE**:  
   Quick Helm install assumes:  
-  * You have set up a Git provider and the Shared Configuration Repository for your account
-  * Your cluster does not have [Argo project CRDs](#argo-project-crds)
+  * You have set up a Git provider and the Shared Configuration Repository for your account. If these are not defined, you can define them after installation from the Codefresh UI, when prompted to do so.
+  * Your cluster does not have [Argo project CRDs](#argo-project-crds).
 
 
 
