@@ -508,7 +508,7 @@
       sub-pages:
         - title: Hosted GitOps Runtime
           url: "/hosted-runtime" 
-        - title: Hybrid GitOps Helm Runtime
+        - title: Hybrid GitOps Runtime
           url: "/hybrid-gitops-helm-installation" 
         - title: On-premises GitOps Runtime
           url: "/on-prem-gitops-runtime-install"  
