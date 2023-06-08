@@ -47,4 +47,4 @@ Review the [feature list](#on-premises-feature-list) to understand the implicati
 
 
 ## Related articles
-[Codefresh on-premises]({{site.baseurl}}/docs/installation/on-prem/)  
+[Codefresh on-premises]({{site.baseurl}}/docs/installation/on-premises/)  

@@ -233,7 +233,7 @@
     - title: Hosted GitOps Runtime installation
       localurl: /docs/installation/gitops/hosted-runtime/  
     - title: Hybrid GitOps Runtime installation
-      localurl: /docs/installation/gitops/hybrid-gitops/
+      localurl: /docs/installation/gitops/hybrid-gitops-helm-installation/
     - title: On-premises GitOps Runtime installation
       localurl: /docs/installation/gitops/on-prem-gitops-runtime-install/        
 

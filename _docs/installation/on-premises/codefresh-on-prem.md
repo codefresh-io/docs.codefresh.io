@@ -138,6 +138,18 @@ Chart configuration is covered in the [ReadMe in ArtifactHub](https://artifacthu
 ## Post-installation generic platform configuration
 Generic configuration options that do not impact the Helm chart are described below.
 
+### Disable user and team management via Codefresh UI
+
+If you use an external provider, such as Terraform or an IdP (Identity Provider), to provision users and teams, you can disable user/team operations in the Codefresh UI. Blocking user- and team-related operations in the UI means that admins cannot make changes locally that may conflict with or override those via the external provider.
+
+These are the operations blocked in the Codefresh UI:
+* Adding/updating/deleting users
+* Adding/updating/deleting teams
+* Defining/updating roles for users
+* Defining/updating SSO provider for users  
+
+**How to**  
+* Enable `disableUserManagement` in Feature management.
 
 ### Selectively enable SSO provider for account
 Codefresh supports out-of-the-box Git logins with your local username and password, your Git provider, or your SSO provider if SSO is configured.
@@ -240,7 +252,7 @@ cfapi:
 
 For detailed information, see the [Securing your webhooks](https://docs.github.com/en/developers/webhooks-and-events/webhooks/securing-your-webhooks) and [Webhooks](https://docs.github.com/en/github-ae@latest/rest/webhooks).
 
-### Configure custom Root CA for volumes and containers
+### Configure custom certs for volumes and containers
 Reference the K8s secret containing the root CA in `config.yaml`.
 Define the volume or volumes with the K8s secret objects, and then the volume mounts for the container.
 
