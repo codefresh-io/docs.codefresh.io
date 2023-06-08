@@ -17,8 +17,8 @@ image.html
 lightbox="true"
 file="/images/runtime/architecture/arch-saas.png"
 url="/images/runtime/architecture/arch-saas.png"
-alt="Codefresh GitOps platform architecture"
-caption="Codefresh GitOps platform architecture"
+alt="Codefresh SaaS platform architecture"
+caption="Codefresh SaaS platform architecture"
 max-width="100%"
 %}
 
