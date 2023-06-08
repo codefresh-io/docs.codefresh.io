@@ -1,10 +1,11 @@
 ---
-title: "Codefresh On-Prem Installation & Configuration"
-description: "Use Helm to install the Codefresh On-Premises platform "
+title: "Codefresh on-premises installation & Configuration"
+description: "Install the Codefresh On-Premises platform using Helm "
 group: installation
 redirect_from:
   - /docs/administration/codefresh-on-prem/
   - /docs/enterprise/codefresh-on-prem/
+  - /docs/installation/codefresh-on-prem/
 toc: true
 ---
 
@@ -134,7 +135,7 @@ Chart configuration is covered in the [ReadMe in ArtifactHub](https://artifacthu
 * [Configure high-availability (HA)](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh/2.0.0-alpha.13#high-availability){:target="\_blank"}
 
 
-## Post-installation generic platform configurationm
+## Post-installation generic platform configuration
 Generic configuration options that do not impact the Helm chart are described below.
 
 

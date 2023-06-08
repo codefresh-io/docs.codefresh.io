@@ -1,6 +1,6 @@
 ---
-title: "Codefresh On-Prem feature management"
-description: "Enable/disable features"
+title: "Codefresh on-premises feature management"
+description: "Enable/disable features in the Codefresh platform"
 group: installation
 toc: true
 ---
