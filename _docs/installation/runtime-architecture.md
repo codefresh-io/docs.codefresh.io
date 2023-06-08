@@ -11,45 +11,13 @@ If you have familiarized yourself with the different installation options, here'
 
 The most important components are the following:
 
-**Codefresh VPC:** All internal Codefresh services run in the VPC (analyzed in the next section). Codefresh uses Mongo and PostgreSQL to store user and authentication information.
+**Codefresh VPC:** All internal Codefresh services run in the VPC. Codefresh uses Mongo and PostgreSQL to store user and authentication information.
 
 **Pipeline execution environment**:  The Codefresh engine component is responsible for taking pipeline definitions and running them in managed Kubernetes clusters by automatically launching the Docker containers that each pipeline needs for its steps.
 
 **External actors**. Codefresh offers a [public API]({{site.baseurl}}/docs/integrations/codefresh-api/) that is consumed both by the Web user interface and the <!--should i differentiate between the CI Cli and GitOps CLI -->[Codefresh CLI](https://codefresh-io.github.io/cli/){:target="\_blank"}. The API is also available for any custom integration with external tools or services.
 
-### Runner topology
-
-If we zoom into Hybrid Runner services, we will see the following:
-
-{% include image.html
-  lightbox="true"
-  file="/images/installation/topology-new.png"
-  url="/images/installation/topology-new.png"
-  alt="Topology diagram"
-  caption="Topology diagram"
-  max-width="100%"
-    %}  
-
-### Runner core components
-
-{: .table .table-bordered .table-hover}
-|Category | Component | Function      | 
-| -------------- | ----------| ----------|  
-| Core  | **pipeline-manager**| Manages all CRUD operations for CI pipelines.| 
-|  | **cfsign**  | Signs server TLS certificates for docker daemons, and generates client TLS certificates for hybrid pipelines. | 
-|  | **cf-api** | Central back-end component that functions as an API gateway for other services, and handles authentication/authorization. | 
-|  | **context-manager**| Manages the authentications/configurations used by Codefresh CI/CD and by the Codefresh engine. |  
-|  | **runtime-environment-manager**| Manages the different runtime environments for CI pipelines. The runtime environment for CI/CD SaaS is fully managed by Codefresh. For CI/CD Hybrid, customers can add their own runtime environments using private Kubernetes clusters. | 
-| Trigger  | **hermes**| Controls CI pipeline trigger management. See [triggers]({{site.baseurl}}/docs/pipelines/triggers/). |  
-|   | **nomios**| Enables triggers from Docker Hub when a new image/tag is pushed.See [Triggers from Docker Hub]({{site.baseurl}}/docs/pipelines/triggers/dockerhub-triggers/). |  
-|   | **cronus**| Enables defining Cron triggers for CI pipelines. See [Cron triggers]({{site.baseurl}}/docs/pipelines/triggers/cron-triggers/).|   
-| Log  | **cf-broadcaster**| Stores build logs from CI pipelines.  The UI and CLI stream logs by accessing the **cf-broadcaster** through a web socket. | 
-| Kubernetes  | **cluster-providers** | Provides an interface to define cluster contexts to connect Kubernetes clusters in CI/CD installation environments. |  
-|   | **helm-repo-manager** | Manages the Helm charts for CI/CD installation environments through the Helm repository admin API and ChartMuseum proxy. See [Helm charts in Codefresh]({{site.baseurl}}/docs/deployments/helm/managed-helm-repository/). | 
-|   | **k8s-monitor** | The agent installed on every Kubernetes cluster, providing information for the Kubernetes dashboards.  See [Kubernetes dashboards]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/). |     
-|   |**charts-manager** | Models the Helm chart view in Codefresh.  See [Helm chart view]({{site.baseurl}}/docs/deployments/helm/helm-releases-management/). |   
-|   | **kube-integration** | Provides an interface to retrieve required information from a Kubernetes cluster, can be run either as an http server or an NPM module. |   
-|   | **tasker-kubernetes** | Provides cache storage for Kubernetes dashboards.  See [Kubernetes dashboards]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/). |   
+See [Runner installation behind firewalls]({{site.baseurl}}/docs/installation/behind-the-firewall/).
 
 
 ## GitOps architecture
