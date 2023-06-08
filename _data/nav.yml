@@ -380,9 +380,7 @@
         - title: Secrets for pipelines
           url: "/secrets-store"  
         - title: Public logs and status badges
-          url: "/build-status"
-        - title: Build retention policy
-          url: "/build-retention-policy"   
+          url: "/build-status"  
     - title: Steps in pipelines
       url: "/steps"
       sub-pages:
@@ -510,8 +508,8 @@
       sub-pages:
         - title: Hosted GitOps Runtime
           url: "/hosted-runtime" 
-        - title: Hybrid GitOps Runtime
-          url: "/hybrid-gitops" 
+        - title: Hybrid GitOps Helm Runtime
+          url: "/hybrid-gitops-helm-installation" 
         - title: On-premises GitOps Runtime
           url: "/on-prem-gitops-runtime-install"  
         - title: Managing & monitoring GitOps Runtimes
@@ -598,16 +596,6 @@
       url: "/secrets"   
     - title: Shared configuration repo
       url: "/shared-configuration"
-
-- title: What's new
-  url: "/whats-new"
-  pages:
-    - title: Release notes
-      url: "/release-notes/"
-    - title: Changelog
-      url: "/changelog"
-    - title: GitOps what's new
-      url: "/gitops-whats-new"
 
 - title: New Codefresh
   url: "/new-codefresh"

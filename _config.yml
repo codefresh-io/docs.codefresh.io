@@ -67,6 +67,7 @@ exclude:
 plugins:
   - jekyll-redirect-from
   - jekyll-sitemap
+  - jekyll-feed
   - jekyll-github-metadata
   - jemoji
 
@@ -91,7 +92,9 @@ defaults:
       path: "_posts"
       type: posts
     values:
-      layout: simple
+      layout: docs
+      toc: true
+      wide: true
   # _pages
   - scope:
       path: "_pages"
@@ -106,6 +109,10 @@ defaults:
       layout: docs
       toc: true
       wide: true
+
+# #RSS Feed Location
+feed:
+  path: /changelog/feed.xml
 
 # Custom variables
 repo:                 "https://github.com/codefresh-io/docs.codefresh.io"
