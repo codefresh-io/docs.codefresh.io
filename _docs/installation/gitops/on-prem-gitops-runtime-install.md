@@ -106,6 +106,7 @@ openssl s_client \
   </dev/null 2>/dev/null \
   | awk '/^-----BEGIN CERTIFICATE-----$/,/^-----END CERTIFICATE-----$/ { print }'
 ```
+{:start="2"}
 1. Include them in `.values.global`. You can either reference an existing secret or create a new secret directly within the file.  
 All certificates must be below `content: |`.
 
