@@ -8,7 +8,7 @@ toc: true
 If you have familiarized yourself with the different installation options, here's a deep dive into the architecture and components of the different options.
 
 
-### Codefresh SaaS platform architecture
+## Codefresh SaaS platform architecture
 
 The diagram shows a high-level view of the SaaS version of the Codefresh platform and its core components. 
 
@@ -192,12 +192,17 @@ Each microservice within the Codefresh Pipeline and GitOps modules has its own d
   Stores data for legacy builder and windows nodes.
 
 
+## Codefresh Runner
 
+The most important components are the following:
 
+**Codefresh VPC:** All internal Codefresh services run in the VPC. Codefresh uses Mongo and PostgreSQL to store user and authentication information.
 
+**Pipeline execution environment**:  The Codefresh engine component is responsible for taking pipeline definitions and running them in managed Kubernetes clusters by automatically launching the Docker containers that each pipeline needs for its steps.
 
+**External actors**. Codefresh offers a [public API]({{site.baseurl}}/docs/integrations/codefresh-api/) that is consumed both by the Web user interface and the <!--should i differentiate between the CI Cli and GitOps CLI -->[Codefresh CLI](https://codefresh-io.github.io/cli/){:target="\_blank"}. The API is also available for any custom integration with external tools or services.
 
-
+See [Runner installation behind firewalls]({{site.baseurl}}/docs/installation/behind-the-firewall/).
 
 
  
