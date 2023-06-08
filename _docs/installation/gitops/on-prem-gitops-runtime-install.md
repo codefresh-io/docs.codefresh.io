@@ -89,5 +89,45 @@ kubectl annotate --overwrite crds $(kubectl get crd | grep argoproj.io | awk '{p
 
 ## Ingress controller configuration 
 Ingress-based on-premises GitOps Runtimes require an ingress controller to be configured before the installation. For details, see [Ingress controller configuration]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/#ingress-controller-configuration).
-Depending on the ingress controller used
+Depending on the ingress controller used, you may need post-installation configuration as well.
 
+## Custom certificates for on-premises installations
+For on-premises installations, configure platform and repository certificates:  
+* **Platform** certificates are required for GitOps Runtimes to communicate with the Codefresh platform. 
+* **Repository** certificates are required to authenticate users to on-premises Git servers. 
+
+
+### Add platform certificates
+Add platform certificates by including them in `.values.global`. You can either reference an existing secret or create a new secret directly within the file.
+
+```yaml
+global:
+  codefresh:
+    tls:
+      caCerts:
+        # optional - use an existing secret that contains the cert
+        # secretKeyRef:
+        #   name: my-certificate-secret
+        #   key: ca-bundle.crt
+        # or create "codefresh-tls-certs" secret
+        secret:
+          create: true
+          content: |
+            -----BEGIN CERTIFICATE-----
+            ...
+            -----END CERTIFICATE-----
+```
+
+### Add repository certificates 
+Add repository certificates to your Codefresh `values` file, in `.values.argo-cd`. These values are used by the argo-cd Codefresh deploys. 
+For details on adding repository certificates, see this [section](https://github.com/argoproj/argo-helm/blob/main/charts/argo-cd/values.yaml#LL334C21-L334C21){:target="\_blank"}.
+
+```yaml
+argo-cd:
+  configs:
+    tls:
+      certificates:
+        server.example.com: |
+          -----BEGIN CERTIFICATE-----
+          ...
+          -----END CERTIFICATE-----
