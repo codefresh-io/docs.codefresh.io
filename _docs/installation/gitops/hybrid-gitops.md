@@ -9,6 +9,13 @@ redirect_from:
 toc: true
 ---
 
+>ATTENTION:  
+  >We have transitioned to a Helm-based installation for Hybrid GitOps Runtimes, for improved experience and performance.  
+
+  >The CLI-based installation for Hybrid GitOps is now considered legacy. We will deprecate this installation mode permanently on 18 June 2023.
+  >To migrate your Hybrid GitOps Runtimes from CLI to Helm, please contact us, and we'll migrate them for you.
+   
+
 Provision one or more Hybrid GitOps Runtimes in your Codefresh account.  
 Start by reviewing [system requirements](#minimum-system-requirements) for Hybrid GitOps.  
 If you are installing with ingress-controllers, you must configure them as required _before_ starting the installation. 

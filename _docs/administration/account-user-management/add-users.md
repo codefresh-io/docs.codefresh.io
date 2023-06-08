@@ -8,7 +8,6 @@ redirect_from:
   - /docs/accounts/
   - /docs/accounts/invite-your-team-member/
   - /docs/administration/invite-your-team-member/
-  - /csdp-docs/docs/administration/add-users/
 toc: true
 ---
 
@@ -114,12 +113,10 @@ As an administrator, you can optionally define session timeouts to automatically
 
 ## Troubleshoot add users
 
-* [User is prompted to enter an organization name](https://support.codefresh.io/hc/en-us/articles/360020177959-User-is-prompted-to-enter-an-organization-name){:target="\_blank"}
-* [Account invitation not permitting login](https://support.codefresh.io/hc/en-us/articles/360015251000-Account-invitation-not-permitting-login){:target="\_blank"}
+* [Account invitation not permitting login]({{site.baseurl}}/docs/kb/articles/account-invite-not-permitting-login){:target="\_blank"}
 <!--this is already mentioned as inline refs; add other topics-->
 
 ## Related articles
 [Access control]({{site.baseurl}}/docs/administration/account-user-management/access-control/)  
 [Single Sign on]({{site.baseurl}}/docs/single-sign-on/single-sign-on/)  
 [Setting up OAuth authentication for Git providers]({{site.baseurl}}/docs/administration/account-user-management/oauth-setup)  
-

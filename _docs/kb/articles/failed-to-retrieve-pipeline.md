@@ -19,6 +19,6 @@ After a pipeline is triggered, it immediately fails with the error `Error: Faile
 
 After the trigger, Codefresh was unable to fetch the YAML. This is usually caused by auto-selection being selected for Branch, but no Branch is specified.
 
-* If you are triggering this pipeline through a cron job, please [see this article]({{site.baseurl}}/docs/kb/articles/selecting-branch-for-cron-activation.md).
+* If you are triggering this pipeline through a cron job, please [see this article]({{site.baseurl}}/docs/kb/articles/selecting-branch-for-cron-activation/).
 * Ensure that the Git Integration has access to reading the Repository. If access has changed recently, it may no longer have access to the YAML.
 * Ensure that you are able to connect to the Git repository. If there is a connectivity issue, Codefresh will be unable to fetch the YAML.

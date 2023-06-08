@@ -8,9 +8,11 @@ toc: true
 If you have familiarized yourself with the different installation options, here's a deep dive into the architecture and components of the different options.
 
 
+
 ## Codefresh SaaS platform architecture
 
 The diagram shows a high-level view of the SaaS version of the Codefresh platform and its core components. 
+
 
 {% include
 image.html
