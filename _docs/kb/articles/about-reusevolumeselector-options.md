@@ -54,7 +54,7 @@ below we change it to per-pipeline mode:
     pvcs:  
         dind:  
             ...  
-            reuseVolumeSelector: 'codefresh-app,io.codefresh.accountName, **pipeline_id** '  
+            reuseVolumeSelector: 'codefresh-app,io.codefresh.accountName, pipeline_id'  
             ...
     ```
 
