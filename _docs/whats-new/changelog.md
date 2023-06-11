@@ -10,15 +10,12 @@ toc: true
 ---
 
 This page gives you the complete list of release notes for our SaaS releases.
-
 If you missed any of our previous online announcements, you can find the latest features, enhancements, and bug fixes, right here.
-
-
-> To subscribe to an RSS / Atom feed for our SaaS release notes, please [click here]({{ site.baseurl }}/changelog/feed.xml).
-
 
 To stay up-to-date with our on-premises enhancements and features, see our [dedicated on-premises release notes]({{site.baseurl}}/docs/whats-new/on-prem-release-notes/).
 
+
+> To subscribe to an RSS / Atom feed for our SaaS release notes, please [click here]({{ site.baseurl }}/changelog/feed.xml).
 
 
 
