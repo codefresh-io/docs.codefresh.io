@@ -597,14 +597,19 @@
     - title: Shared configuration repo
       url: "/shared-configuration"
 
+- title: What's new
+  url: "/whats-new"
+  pages:
+    - title: SaaS
+      url: "/changelog"
+    - title: On-premises
+      url: "/on-prem-release-notes"
+
 - title: New Codefresh
   url: "/new-codefresh"
   pages:
     - title: Navigation quick reference
-      url: "/menu-navigation"
-    - title: Documentation changes
-      url: "/doc-changes"
-
+    
 - title: Incubation
   url: "/incubation"
   pages:
