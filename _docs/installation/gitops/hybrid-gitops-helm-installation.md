@@ -1009,6 +1009,5 @@ providers:
 
 ## Related articles
 [Managing and monitoring GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/)  
-[Troubleshooting Hybrid GitOps Runtimes]({{site.baseurl}}/docs/troubleshooting/runtime-issues/)  
 [GitOps architecture]({{site.baseurl}}/docs/installation/runtime-architecture/#gitops-architecture)  
 
