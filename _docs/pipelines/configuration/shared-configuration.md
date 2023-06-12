@@ -266,13 +266,34 @@ I love eating pizza
 
 ## Manipulating shared configuration programmatically
 
-You can also create/update/delete shared configuration via the [Codefresh CLI](https://codefresh-io.github.io/cli/) or [API]({{site.baseurl}}/docs/integrations/codefresh-api/).
-See the [context section](https://codefresh-io.github.io/cli/contexts/create-context/) in the CLI documentation.
+You can also create/update/delete shared configurations programmatically via the [Codefresh CLI](https://codefresh-io.github.io/cli/){target="\_blank"} and the [Codefresh API]({{site.baseurl}}/docs/integrations/codefresh-api/).
+
+For example, you can reference one or more shared configuration contexts directly in the YAML using `spec.contexts` as described below.
+
+If you have a shared configuration named `test-hello` that includes the variable `test=hello`, you can add `spec.contexts.test-hello` to the pipeline YAML, and then reference this variable in the pipeline as you would any other variable.
+
+{% highlight shell %}
+{% raw %}
+version: "1.0"
+kind: pipeline
+metadata:
+  name: default/test-shared-config-from-pipe-spec
+spec:
+  contexts:
+    - test-hello
+  steps:
+    test:
+      image: alpine
+      commands:
+        - echo ${{test}} # should output "hello"
+{% endraw %}
+{% endhighlight %}
 
 
->**TIP**:  
-Instead of importing shared configuration contexts through the UI options, you can reference shared configuration contexts directly in the pipeline's YAML programmatically. See [Example: Referencing shared configuration contexts]({{site.baseurl}}/docs/integrations/codefresh-api/#example-referencing-shared-configuration-contexts). 
 
+For detailed information on how to manage shared configuration contexts via the CLI, see [Contexts](https://codefresh-io.github.io/cli/contexts/){target="\_blank"}.
+
+For information on all the options available in the _full Codefresh YAML_, see [Full pipeline specifications](/docs/integrations/codefresh-api/#full-pipeline-specification).
 
 
 
