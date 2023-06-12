@@ -20,6 +20,7 @@ You can share:
 * Any kind of YAML data (advanced)
 
 
+
 ## Creating shared configuration contexts
 
 Create one or more shared configuration contexts at the account-level to use in pipelines.
@@ -28,7 +29,7 @@ Create one or more shared configuration contexts at the account-level to use in 
 1. From the sidebar, select [**Shared Configuration**](https://g.codefresh.io/account-admin/account-conf/shared-config){:target="\_blank"}.
 1. Click **Add Configuration Context** and select the type of shared configuration context to add.
 1. Enter a name for the shared configuration context and click **Save**.
-1. Add one more variables in Key = Value format.
+1. Add one or more variables in Key = Value format.
 1. To allow access to all users, toggle **Allow access to all users** ON.
 1. Click **Save**.
 
@@ -122,28 +123,7 @@ max-width="50%"
 Once you click *Add* the values from the shared configuration will be appended to the ones
 you have in your pipelines. In case of similar values the shared configuration will follow the [precedence rules]({{site.baseurl}}/docs/pipelines/variables/#user-provided-variables).
 
-## Referencing shared configuration contexts in pipeline YAMLs
-Instead of manually importing the shared configuration contexts with the variables to use into the pipeline, you can reference the shared configuration to use in the pipeline's YAML. 
-Just add the `spec.contexts` field followed by the name or names of the shared configuration context or contexts to use. 
 
-If you have a shared configuration named `test-hello` that includes the variable `test=hello`, you can add `spec.contexts.test-hello` to the pipeline YAML, and then reference this variable in the pipeline as you would any other variable.
-
-{% highlight shell %}
-{% raw %}
-version: "1.0"
-kind: pipeline
-metadata:
-  name: default/test-shared-config-from-pipe-spec
-spec:
-  contexts:
-    - test-hello
-  steps:
-    test:
-      image: alpine
-      commands:
-        - echo ${{test}} # should output "hello"
-{% endraw %}
-{% endhighlight %}
 
 ## Using shared Helm values
 
@@ -287,8 +267,12 @@ I love eating pizza
 ## Manipulating shared configuration programmatically
 
 You can also create/update/delete shared configuration via the [Codefresh CLI](https://codefresh-io.github.io/cli/) or [API]({{site.baseurl}}/docs/integrations/codefresh-api/).
-
 See the [context section](https://codefresh-io.github.io/cli/contexts/create-context/) in the CLI documentation.
+
+
+>**TIP**:  
+Instead of importing shared configuration contexts through the UI options, you can reference shared configuration contexts directly in the pipeline's YAML programmatically. See [Example: Referencing shared configuration contexts]({{site.baseurl}}/docs/integrations/codefresh-api/#example-referencing-shared-configuration-contexts). 
+
 
 
 
