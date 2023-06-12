@@ -160,6 +160,8 @@ A `Ref updated` trigger event in Gerrit is mapped in Codefresh to `Push commits`
 >Selecting both `Push commits` and `Change merged` as trigger events will result in the pipeline being _triggered twice_, as Gerrit sends the `Change merged` event followed by the `Push commits` event.  
 To avoid duplicate pipelines, select any one of these triggers. 
 
+
+
 ### Filter settings for Git triggers
 
 | Git Triggers: <br>Filter Settings           |Description  |
