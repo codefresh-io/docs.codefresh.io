@@ -370,6 +370,17 @@
       url: "/introduction-to-codefresh-pipelines"
     - title: Creating pipelines
       url: "/pipelines"
+    - title: Configuration for pipelines
+      url: "/configuration"
+      sub-pages:
+        - title: Global pipeline settings
+          url: "/pipeline-settings"          
+        - title: Shared configuration
+          url: "/shared-configuration"
+        - title: Secrets for pipelines
+          url: "/secrets-store"  
+        - title: Public logs and status badges
+          url: "/build-status"  
     - title: Steps in pipelines
       url: "/steps"
       sub-pages:
@@ -430,17 +441,6 @@
       url: "/deployment-environments"
     - title: Running pipelines locally
       url: "/running-pipelines-locally"
-    - title: Configuration for pipelines
-      url: "/configuration"
-      sub-pages:
-        - title: Global pipeline settings
-          url: "/pipeline-settings"          
-        - title: Shared configuration
-          url: "/shared-configuration"
-        - title: Secrets for pipelines
-          url: "/secrets-store"  
-        - title: Public logs and status badges
-          url: "/build-status"
     - title: Service containers
       url: "/service-containers"
     - title: Docker image metadata
@@ -494,17 +494,24 @@
       url: "/behind-the-firewall"
     - title: Runner
       url: "/codefresh-runner"
-    - title: On-Premises installation & configuration
-      url: "/codefresh-on-prem"
-    - title: On-Premises upgrade
-      url: "/codefresh-on-prem-upgrade"
+    - title: On-premises
+      url: 
+      sub-pages:    
+        - title: Platform installation & configuration
+          url: "/codefresh-on-prem"
+        - title: Platform upgrade
+          url: "/codefresh-on-prem-upgrade"
+        - title: Feature management
+          url: "/on-prem-feature-management"  
     - title: GitOps
       url: 
       sub-pages:
         - title: Hosted GitOps Runtime
           url: "/hosted-runtime" 
         - title: Hybrid GitOps Runtime
-          url: "/hybrid-gitops"  
+          url: "/hybrid-gitops-helm-installation" 
+        - title: On-premises GitOps Runtime
+          url: "/on-prem-gitops-runtime-install"  
         - title: Managing & monitoring GitOps Runtimes
           url: "/monitor-manage-runtimes"
         - title: Add external clusters to GitOps Runtimes
@@ -593,21 +600,16 @@
 - title: What's new
   url: "/whats-new"
   pages:
-    - title: Release notes
-      url: "/release-notes/"
-    - title: Changelog
+    - title: SaaS
       url: "/changelog"
-    - title: GitOps what's new
-      url: "/gitops-whats-new"
+    - title: On-premises
+      url: "/on-prem-release-notes"
 
 - title: New Codefresh
   url: "/new-codefresh"
   pages:
     - title: Navigation quick reference
-      url: "/menu-navigation"
-    - title: Documentation changes
-      url: "/doc-changes"
-
+    
 - title: Incubation
   url: "/incubation"
   pages:
@@ -627,9 +629,6 @@
       url: "/how-to"
     - title: Troubleshooting
       url: "/troubleshooting"
-    - title: Codefresh SLA Definitions
-      url: "/codefresh-sla-definitions"
-
 
 - title: Terms and Privacy Policy
   url: "/terms-and-privacy-policy"
@@ -640,5 +639,7 @@
       url: "/privacy-policy"
     - title: Service Commitment
       url: "/sla"
+    - title: Codefresh SLA Definitions
+      url: "/codefresh-sla-definitions"
 
 

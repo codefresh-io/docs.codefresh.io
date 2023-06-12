@@ -19,12 +19,13 @@ layout: home
             Instantly build, test, and deploy Docker images.<br>
             Realize your true DevOps potential with the premier enterprise Argo software delivery solution.
           </p>
-          <div>
+          <div id="searchbar"></div>
+          <!-- <div>
             <form class="bd-search bd-search--home d-flex mt-1 mb-3 mt-md-0 order-2 order-md-2 align-items-center">
               <input type="search" class="form-control form-control-dark mr-sm-2 doc-search-input" id="navbar-search-input" placeholder="{{ site.data.translations[site.locale].search_placeholder_text }}" aria-label="{{ site.data.translations[site.locale].search_placeholder_text }}" autocomplete="off">
               <i class="fa fa-search"></i>
             </form>
-          </div>
+          </div> -->
           <div class="d-flex flex-column flex-md-row justify-content-center lead mb-3">
             <a href="{{ site.baseurl }}/docs/quick-start/ci-quick-start/"
                class="btn btn-primary mb-3 mb-md-0 mr-md-3"
@@ -35,6 +36,11 @@ layout: home
             class="btn btn-primary mb-3 mb-md-0 mr-md-3"
             onclick="ga('send', 'event', 'Jumbotron actions', 'Get started', 'Get started');">
            Get started with GitOps
+           </a>
+           <a href="{{ site.baseurl }}/docs/kb/"
+            class="btn btn-primary mb-3 mb-md-0 mr-md-3"
+            onclick="ga('send', 'event', 'Jumbotron actions', 'Knowledge Base', 'Knowledge Base');">
+           Knowledge Base
            </a>
             <a href="{{ site.codefresh_signup }}"
                class="btn btn-primary mb-3 mb-md-0 mr-md-3"

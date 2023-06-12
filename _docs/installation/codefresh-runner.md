@@ -223,7 +223,7 @@ NO_PROXY: localhost, 127.0.0.1, <local_ip_of_machine>
 ```
 * Add `.firebaseio.com` to the allowed-sites of the proxy server.
 * Exec into the `dind` pod, and run `ifconfig`.  
-* If the MTU value for `docker0` is _higher_ than the MTU value of `eth0` (sometimes the `docker0` MTU is 1500, while `eth0` MTU is 1440), change the `docker0` MTU value to be lower than the `eth0` MTU.  
+* If the MTU value for `docker0` is _greater than or equal to_ the MTU value of `eth0` (sometimes the `docker0` MTU is 1500, while `eth0` MTU is 1440), change the `docker0` MTU value to be lower than the `eth0` MTU.  
     * To change the `docker0` MTU value, edit the `configmap` in the `codefresh-runtime` namespace:
 ```shell
 kubectl edit cm codefresh-dind-config -n codefresh-runtime
@@ -451,7 +451,7 @@ GKE volume configuration includes:
 
 Configure the Codefresh Runner to use local SSDs for your pipeline volumes:
 
-[How-to: Configuring an existing Runtime Environment with Local SSDs (GKE only)](https://support.codefresh.io/hc/en-us/articles/360016652920-How-to-Configuring-an-existing-Runtime-Environment-with-Local-SSDs-GKE-only-){:target="\_blank"}
+[How-to: Configuring an existing Runtime Environment with Local SSDs (GKE only)]({{site.baseurl}}/docs/kb/articles/config-re-gke-ssd){:target="\_blank"}
 
 <br />
 
@@ -469,7 +469,7 @@ There are three options to provide cloud credentials:
 Notice that builds run in a single Availability Zone (AZ), so you must specify Availability Zone parameters.
 
 **Configuration**  
-[How-to: Configuring an existing Runtime Environment with GCE disks](https://support.codefresh.io/hc/en-us/articles/360016652900-How-to-Configuring-an-existing-Runtime-Environment-with-GCE-disks){:target="\_blank"}
+[How-to: Configuring an existing Runtime Environment with GCE disks]({{site.baseurl}}/docs/kb/articles/config-re-gke-gce-disk){:target="\_blank"}
 
 <br />
 
@@ -2221,7 +2221,7 @@ codefresh runner delete --help
 
 ## Troubleshooting
 
-For troubleshooting refer to the [Knowledge Base](https://support.codefresh.io/hc/en-us/sections/4416999487762-Hybrid-Runner){:target="\_blank"}
+For troubleshooting refer to the [Knowledge Base]({{site.baseurl}}/docs/kb/troubleshooting/#runtimes){:target="\_blank"}
 
 ## Related articles
 [Codefresh installation options]({{site.baseurl}}/docs/installation/installation-options/)  

@@ -40,4 +40,4 @@ In the build step YAML, set `no_cache: true` to disable docker local cache, and 
 
 ## Related articles
 
-[Troubleshooting common issues]({{site.baseurl}}/docs/troubleshooting/common-issues)
+[Troubleshooting common issues]({{site.baseurl}}/docs/kb/common-issues/)

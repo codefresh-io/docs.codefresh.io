@@ -47,3 +47,5 @@ build.
 >_Note:_
 >
 >`CF_BRANCH` is the source branch in a PR-initiated build. By updating its value to the value of `CF_PULL_REQUEST_TARGET` the target will be pulled instead. This variable only exists for PR triggered builds, and if not present the build will clone the source branch instead.
+
+>💡 The ability to override predefined variables such as `CF_BRANCH` was added recently and may be disabled for your account. If the approach described in this article does not work in your account, please [contact support](https://support.codefresh.io/hc/en-us/requests/new).

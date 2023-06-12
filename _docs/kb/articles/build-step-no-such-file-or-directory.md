@@ -63,4 +63,4 @@ step_name:
 
 ## Related articles
 
-[Troubleshooting common issues]({{site.baseurl}}/docs/troubleshooting/common-issues)
+[Troubleshooting common issues]({{site.baseurl}}/docs/kb/common-issues/)
