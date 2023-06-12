@@ -148,11 +148,7 @@ An alternative way to authenticate with Github is via the App mechanism.
 
 ### Codefresh Github App
 
-> The Codefresh App has:  
-> * READ permissions to issues, metadata, and pull requests 
-> * READ and WRITE permissions to code, commit statuses, and repository hooks
-
-> If you need additional permission for your integration, use the Manual Creation steps.
+> The Codefresh App has READ permissions to issues, metadata, and pull requests, and READ and WRITE permissions to code, commit statuses, and repository hooks. If you need additional permission for your integration, use the Manual Creation steps.
 
 1. In the Codefresh UI, follow the steps to [add a new Git provider](#adding-more-git-providers-to-your-codefresh-account). 
 1. From the list of Git providers, select **Codefresh Github App**.
@@ -164,40 +160,39 @@ An alternative way to authenticate with Github is via the App mechanism.
 
 ### Manual creation
 
-1. Log in to your GitHub account and visit [https://github.com/settings/apps](https://github.com/settings/apps){:target="\_blank"}. 
+1. Log in your GitHub account and visit [https://github.com/settings/apps](https://github.com/settings/apps){:target="\_blank"}. 
 1. Click **New GitHub App**.
 1. Do the following in the New GitHub App screen:
-    1. Enter an arbitrary name for your app in **GitHub App name**. For example, `codefresh-integration`.
-    1. In the **Homepage URL**, enter `http://www.codefresh.io`.
-    1. In the Webhook section, clear the **Active** checkbox.
-    1. In the **Repository Permissions** section, assign the following permissions:  
-        * **Contents**: Read
-        * **Issues**: Read
-        * **Metadata**: Read
-        * **Pull requests**: Read
-        * **Webhooks**: Read, write
-        * **Commit statuses**: Read, write
-    1. In the **Account Permissions** section, assign the Read permission to **Email addresses**.
-    1. Click the **Create GitHub app**.
+     1. Give an arbitrary name to your app (e.g. codefresh-integration)
+     1. Fill *Homepage URL* with `http://www.codefresh.io`
+     1. Uncheck the *Active* checkbox under the Webhook section
+     1. In the *Repository permissions* section give the minimum of
+       * **Contents** - read
+       * **Issues** - read
+       * **Metadata** - read
+       * **Pull requests** - read
+       * **Webhooks** - read, write
+       * **Commit statuses** - read, write
+       * **Email addresses** - read 
+     1. Click the *Create GitHub app* button.
 
 1. In the next screen, do the following:
      1. Note down the **App ID** number under the About section.
-     1. Click **Generate a private key**, and save the file locally.
-1. From the sidebar, click **Install App**, and then click **Install** next to your Codefresh app.
+     1. Click **Generate a private key**,  and save the file locally.
+1. Click the **Install App** item from the left sidebar menu, and then click **Install** next to your codefresh app.
 1. Accept the permissions, and in the next screen, define the repositories that you need Codefresh to access.  
   From the URL of the browser, note the ending number which is your installation ID.  
-  For example if the URL is `https://github.com/settings/installations/10042353`, then your installation number is `10042353`.
-1. In the Codefresh UI, in the toolbar, click the **Settings** icon.
-1. From the sidebar, select **Pipeline Integrations > Git**, and then click **Configure**. 
+  For example if the URL is `https://github.com/settings/installations/10042353` then your installation number is `10042353`.
+1. In the Codefresh UI, follow the steps to [add a new Git provider](#adding-more-git-providers-to-your-codefresh-account). 
 1. From the **Add Git Provider** dropdown, select **Github App**.  
-  For the required fields use: 
-  * **App ID**, which you noted down in _step 4.1_.
-  * **Private key**, which is the content of the file you created in _step 4.2_, converted to base64.
-  * **Installation ID** which you noted down in _step 6_.
+1. Define the settings:
+  * **Installation ID** which you noted down in _step 5_.
+  * **App ID**, which you noted down in _step 4_.
+  * **Private key**, which is the content of the file your created in step 4, converted to base64.
 1. To verify your integration, click **Test connection**.
 1. To apply your changes, click **Save**.  
 
->If enabled in your account you can set up [Pipeline definition restrictions]({{site.baseurl}}/docs/administration/account-user-management/access-control/#pipeline-definition-restrictions) by expanding the *YAML Options* segment.
+>If enabled in your account you can setup [Pipeline definition restrictions]({{site.baseurl}}/docs/administration/account-user-management/access-control/#pipeline-definition-restrictions) by expanding the *YAML Options* segment.
 
 ## GitLab
 
@@ -352,7 +347,7 @@ By integrating Gerrit in Codefresh, you can create pipelines to [trigger]({{site
 
 Gerrit has no explicit concept of "pull requests" as in other version control systems to map trigger event payloads to builds. Gerrit uses `Change Message` that are similar in functionality and purpose to pull requests. Our `CF_PULL_REQUEST` group of environment variables achieve the same functionality. For the exact variables you can map to Gerrit `Change Messages`, see [System variables]({{site.baseurl}}/docs/pipelines/variables/#system-variables).
 
-### Set up access permmissions for Codefresh user in Gerrit
+### Step 1: Set up access permmissions for Codefresh user in Gerrit
 
 Gerrit has a special **Service Users** access-group for CI systems and other bots. We recommend adding your Codefresh user in Gerrit to this group.
 
@@ -368,16 +363,27 @@ Gerrit has a special **Service Users** access-group for CI systems and other bot
       * **Read**: **ALLOW** for Service Users
       * **Owner**: **ALLOW** for Service Users as `webhooks.config` in `refs/meta/config` requires [owner-level permissions](https://gerrit-review.googlesource.com/Documentation/access-control.html#category_submit){:target="\_blank"}.
   * **Label Verified**: **-1**, **+1** for Service Users. Gives permission to apply the `Verified` label with either a `-1` or `+1` value.
+1. Continue with [Step 2: Generate access token for user in Gerrit](#step-2-generate-access-token-for-user-in-gerrit).
 
-### Define integration settings for Gerrit in Codefresh
+### Step 2: Generate password for user in Gerrit
+Generate an access token in Gerrit to authenticate or authorize HTTP requests. 
+The access token is the HTTP Password, and is different from the login password.
+1. Log in to Gerrit with the Codefresh user you created in _Step 1_.
+1. In the toolbar, click the **Settings** icon.
+1. From the sidebar, select **HTTP Credentials**, and under HTTP Credentials on the right, click **Generate New Password**.
+1. Copy the generated password to a secure location as you will need it to set up the Gerrit integration in Codefresh.
+1. Continue with [Step 3: Define pipeline integration settings for Gerrit in Codefresh](#step-3-define-pipeline-integration-settings-for-gerrit-in-codefresh).
+
+### Step 3: Define pipeline integration settings for Gerrit in Codefresh
+As the final step to use Gerrit as your Git provider, define integration settings for Gerrit in Codefresh.
 
 1. In the Codefresh UI, follow the steps to [add a new Git provider](#adding-more-git-providers-to-your-codefresh-account). 
-1. From the **Add Git Provider** dropdown, select **Github App**.  
+1. From the **Add Git Provider** dropdown, select **Gerrit**.  
 1. Define the settings:
   * **Name**: The name for your Gerrit integration. This is the name that will be used in pipelines to reference the Gerrit integration.
   * **Host URL**: The URL of your website with the Gerrit instance, for example, `https://git.company-name.io`.
   * **Username**: The username of your Gerrit account.
-  * **HTTP Password**: The password of your Gerrit account.
+  * **Password**: The password you generated to use as the access token to authenticate HTTP requests to Gerrit.
 1. Click **Save**.
 
 
@@ -430,7 +436,7 @@ You will get an error of Permission Denied or Forbidden to a Git Context that yo
 
 1. Navigate to Account Settings > Permissions > Teams or Execution Context.
 1. Scroll to Git Contexts.
-1. Here, you can set [permissions]({{site.baseurl}}/docs/administration/account-user-management/access-control/) similar to other ABAC rules for Teams or Execution Context to Create or Use, Update, and Delete actions.
+1. Here, you can set [permissions]({{site.baseurl}}/docs/administration/access-control/#creating-a-security-policy) similar to other ABAC rules for Teams or Execution Context to Create or Use, Update, and Delete actions.
 1. Click Add Rule when done.
 
 ## Related articles
