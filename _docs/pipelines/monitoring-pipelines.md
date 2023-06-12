@@ -8,7 +8,7 @@ toc: true
 ---
 
 
-View activity for Codefresh pipelines in in the **Builds** tab. 
+View activity for Codefresh pipelines in the **Builds** tab. 
 * Global build view: The default view, displays builds for all pipelines for all projects across your organization.
 * Project build view: Selecting a project displays the builds for the pipelines in the project.
  
@@ -25,6 +25,18 @@ alt="Pipeline Activity in Codefresh"
 caption="Pipeline activity"
 max-width="80%"
 %}
+
+In addition, the [Pipelines Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/#pipelines-dashboard) serves as a centralized location to track pipelines performance by KPIs. 
+
+## Starring projects and pipelines as favorites
+
+Star frequently used or high-priority projects or specific pipelines as favorites in the Projects and Pipeline pages. 
+Doing so: 
+* Gives you easy and quick access to important projects or pipelines
+* Enables you to track and analyze their performance in the Pipelines Dashboard
+
+Whenever you star a project or pipeline as a favorite, the Favorite filter in the Pipelines Dashboard changes from {::nomarkdown}<img src="../../../../images/icons/icon-mark-favorite.png?display=inline-block">{:/} to {::nomarkdown}<img src="../../../../images/icons/icon-fav-starred.png?display=inline-block">.{:/}. Click to filter by favorite projects and pipelines.  
+See [Filters for pipelines]({{site.baseurl}}/docs/dashboards/home-dashboard/#filters-for-pipelines).
 
 ## Viewing status for pipeline builds
 
