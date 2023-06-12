@@ -233,11 +233,13 @@ Notice that you must prefix the name of the pipeline with your username and repo
 visible in the GUI under the correct project.
 
 ## Example: Referencing shared configuration contexts 
-Use shared configuration contexts in your pipelines by referencing it in the pipeline's YAML. This method is an alternative to importing the shared configuration contexts with the variables to use from the UI. 
+Use shared configuration contexts in your pipelines by referencing it in the pipeline's YAML. This method is an alternative to importing the shared configuration contexts with the variables to use from the UI.  
+
 Add the `spec.contexts` field followed by the name or names of the shared configuration context or contexts to use. 
 
->**IMPORTANT**:
-Referencing shared configuration contexts with `spec.contexts`works ONLY with the API. The UI-based YAML options (**inline YAML**, **Use YAML from Repository/URL** do not support this.  
+>**IMPORTANT**:  
+Referencing shared configuration contexts with `spec.contexts` only works programmatically via the CLI/API.  
+The UI-based YAML options (**inline YAML**, **Use YAML from Repository/URL**) do not support this.  
 
 
 If you have a shared configuration named `test-hello` that includes the variable `test=hello`, you can add `spec.contexts.test-hello` to the pipeline YAML, and then reference this variable in the pipeline as you would any other variable.

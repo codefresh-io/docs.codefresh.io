@@ -266,7 +266,7 @@ I love eating pizza
 
 ## Manipulating shared configuration programmatically
 
-You can also create/update/delete shared configurations programmatically via the [Codefresh CLI](https://codefresh-io.github.io/cli/){target="\_blank"} and the [Codefresh API]({{site.baseurl}}/docs/integrations/codefresh-api/).
+You can also create/update/delete shared configurations programmatically via the [Codefresh CLI](https://codefresh-io.github.io/cli/){:target="\_blank"} and the [Codefresh API]({{site.baseurl}}/docs/integrations/codefresh-api/).
 
 For example, you can reference one or more shared configuration contexts directly in the YAML using `spec.contexts` as described below.
 
@@ -291,7 +291,7 @@ spec:
 
 
 
-For detailed information on how to manage shared configuration contexts via the CLI, see [Contexts](https://codefresh-io.github.io/cli/contexts/){target="\_blank"}.
+For detailed information on how to manage shared configuration contexts via the CLI, see [Contexts](https://codefresh-io.github.io/cli/contexts/){:target="\_blank"}.
 
 For information on all the options available in the _full Codefresh YAML_, see [Full pipeline specifications](/docs/integrations/codefresh-api/#full-pipeline-specification).
 
