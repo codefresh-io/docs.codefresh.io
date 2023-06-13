@@ -30,13 +30,10 @@ In addition, the [Pipelines Dashboard]({{site.baseurl}}/docs/dashboards/home-das
 
 ## Starring projects and pipelines as favorites
 
-Star frequently used or high-priority projects or specific pipelines as favorites in the Projects and Pipeline pages. 
-Doing so: 
-* Gives you easy and quick access to important projects or pipelines
-* Enables you to track and analyze their performance in the Pipelines Dashboard
+Mark frequently used or high-priority pipelines as favorites in the Projects and Pipelines pages. This allows for easy and quick access to important projects or pipelines.  
 
-Whenever you star a project or pipeline as a favorite, the Favorite filter in the Pipelines Dashboard changes from {::nomarkdown}<img src="../../../../images/icons/icon-mark-favorite.png?display=inline-block">{:/} to {::nomarkdown}<img src="../../../../images/icons/icon-fav-starred.png?display=inline-block">.{:/}. Click to filter by favorite projects and pipelines.  
-See [Filters for pipelines]({{site.baseurl}}/docs/dashboards/home-dashboard/#filters-for-pipelines).
+Favorites serve as predefined filters in the Pipelines Dashboard, enabling you to track and analyze their performance.  
+When you star a project or pipeline as a favorite, the Favorite filter in the Pipelines Dashboard icon changes from {::nomarkdown}<img src="../../../../images/icons/icon-mark-favorite.png?display=inline-block">{:/} to {::nomarkdown}<img src="../../../../images/icons/icon-fav-starred.png?display=inline-block">.{:/} Click on it to filter by favorite projects and pipelines. 
 
 ## Viewing status for pipeline builds
 
