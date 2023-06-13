@@ -252,16 +252,22 @@ Use the Pipelines dashboard to:
 
 
 ### Filters for pipelines
-Filters narrow the scope of aggregated data, allowing you to focus on the information you want to see. Unless otherwise indicated, all filters support multi-selection.
+Filters narrow the scope of aggregated data, allowing you to focus on the information you want to see.  
+Unless otherwise indicated, all filters support multi-selection.
+
+>**TIP**:
+Different filter types have an AND relationship.
+
 
 {: .table .table-bordered .table-hover}
 |  Filter          |  Description|  
 | --------------   | --------------|  
 | **Date Range** | The time frame for which to view data. The date range affects the other filters. In addition to the predefined date ranges, you can select a custom date range up to the last six months. <br>If you select Today, then the Success Rate and Duration charts reflect hourly granularity.<br><br>Every date range you select has a reference period corresponding to the same period of time preceding the selected date range. The reference period is used to derive comparisons for trends.|
-| **Project**           | The project or projects to which the pipeline belongs. Selecting a project allows you to focus on performance of pipelines assigned to it.|                            
-| **Pipeline**           | The pipeline or pipelines to filter by. |                            
+| **Project**           | The project or projects to which the pipeline belongs. Selecting a project allows you to focus on performance of pipelines assigned to it. If you starred one or more projects as favorites, clicking {::nomarkdown}<img src="../../../images/icons/icon-fav-starred.png?display=inline-block">{:/}, filters pipelines by the selected projects.|                            
+| **Pipeline**           | The pipeline or pipelines to filter by. <br>If you starred one or more pipelines as favorites, clicking {::nomarkdown}<img src="../../../images/icons/icon-fav-starred.png?display=inline-block">{:/}, filters by those pipelines. |                            
 | **Status**           | {::nomarkdown}<ul><li><b>Error</b>: Pipelines with builds that failed due to errors in the pipeline specifications or steps that failed. </li><li><b>Succeeded</b>: Pipelines with builds that completed successfully.</li> <li><b>Terminated</b>: Pipelines with builds terminated by the system according to the policy defined in the pipeline's settings. These can be any of these: <ul><li>Recent build from the same branch terminating all previous pipeline builds </li><li>Recent build from the specified branch terminating all previous builds from that branch</li><li>Running build terminating all running builds</li><li>Child builds terminated when the parent build is terminated.</li> </ul></li>For details, see <a href ="https://codefresh.io/docs/docs/pipelines/pipelines/#policies">Build Termination in Pipeline Policies</a>. </ul>{:/}|                            
-| **Tags**             |The tag or tags assigned to the pipelines. |      
+| **Tags**             |The tag or tags assigned to the pipelines. | 
+|{::nomarkdown}<img src="../../../images/icons/icon-mark-favorite.png?display=inline-block">{:/}| Filter to view only projects or pipelines that have been starred as favorites in the [Projects/Pipeline pages]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#starring-projects-and-pipelines-as-favorites).<br><br>When you have starred projects or pipelines, the icon changes to {::nomarkdown}<img src="../../../images/icons/icon-fav-starred.png?display=inline-block">.<br>Clicking it filters by favorite projects and pipelines. {:/} |   
 
 
 

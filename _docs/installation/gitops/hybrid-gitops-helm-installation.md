@@ -107,7 +107,9 @@ The Codefresh `values.yaml` is located [here](https://github.com/codefresh-io/gi
 Codefresh automatically validates the `values.yaml` file before initiating the installation to verify that the supplied values are correct.  
 You also have the option to manually run the validation if desired.
 
+
 **Validation failure**  
+
 If there is a validation failure, Codefresh will terminate the Helm installation and display the error message: `Job has reached the specified backoff limit`.  
 
 To get more detailed and meaningful information on the reason for the validation failure, run:  
@@ -135,7 +137,9 @@ installer:
 {% endraw %}
 {% endhighlight %}
 
+
 **Validated settings** 
+
 
 The table below lists the settings validated in the `values` file.  
 
