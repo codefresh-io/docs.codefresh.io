@@ -293,7 +293,7 @@ spec:
 
 For detailed information on how to create/update/delete shared configuration contexts via the CLI, see [Contexts](https://codefresh-io.github.io/cli/contexts/){:target="\_blank"}.
 
-For information on all the options available in the _full Codefresh YAML_, see [Full pipeline specifications](/docs/integrations/codefresh-api/#full-pipeline-specification).
+For information on all the options available in the _full Codefresh YAML_, see [Full pipeline specifications]({{site.baseurl}}/docs/integrations/codefresh-api/#full-pipeline-specification).
 
 
 
