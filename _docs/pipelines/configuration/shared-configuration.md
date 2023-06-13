@@ -266,7 +266,7 @@ I love eating pizza
 
 ## Manipulating shared configuration programmatically
 
-You can also manipulate shared configurations programmatically via the [Codefresh CLI](https://codefresh-io.github.io/cli/){:target="\_blank"} and the [Codefresh API]({{site.baseurl}}/docs/integrations/codefresh-api/).
+You can also manipulate shared configurations programmatically via the [Codefresh CLI](https://codefresh-io.github.io/cli/){:target="\_blank"} and the [Codefresh API](https://g.codefresh.io/api/){:target="\_blank"}.
 
 For example, you can reference one or more shared configuration contexts directly in the YAML using `spec.contexts` as described below.
 
