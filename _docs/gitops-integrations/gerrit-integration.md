@@ -1,4 +1,9 @@
-
+---
+title: "Gerrit Git provider integration"
+description: ""
+group: gitops-integrations
+toc: true
+---
 
 
 
@@ -8,19 +13,20 @@ Codefresh supports integration with Gerrit, the open-source web-based code revie
 Currently, Gerrit is supported as a Git provider for only Hosted GitOps Runtimes.
 
 
-By integrating Gerrit with Codefresh GitOps, you can select Gerrit as your Git provider for your hosted runtime environment. 
-You can then:
-connect a managed cluster to the Runtime, create Git Sources, and Argo Applications.
+By integrating Gerrit with Codefresh GitOps, you can select Gerrit as your Git provider for your [Hosted GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/), and connect external clusters and create Git Sources for the Runtime.  
+You can then [create]({{site.baseurl}}/docs/deployments/gitops/create-application/) and manage GitOps applications in the Gerrit Git repo.
 
-To set up an integration with Gerrit for GitOps, you need to:
-* [Set up access permmissions for a Codefresh user in Gerrit](#set-up-access-permmissions-for-codefresh-user-in-gerrit)
-* [Define Gerrit-GitOps integration settings in Codefresh](#gerrit-gitops-integration-settings-in-codefresh)
+
+
 
 ## Set up GitOps Git integration for Gerrit
+To set up an integration with Gerrit for GitOps, you need to:
+1. [Create Codefresh GitOps user with repo access permissions in Gerrit](#step-1-gerrit-gitops-create-codefresh-gitops-user-with-repo-access-permissions-in-gerrit)
+1. [Generate HTTP password for Codefresh GitOps user in Gerrit](#step-2-gerrit-gitops-generate-http-password-for-codefresh-gitops-user-in-gerrit)
 
-### Gerrit GitOps integration:  Step 1 - Create Codefresh GitOps user with repo access permmissions in Gerrit
+### Step 1 Gerrit GitOps: Create Codefresh GitOps user with repo access permissions in Gerrit
 
-Gerrit has a special **Service Users** access-group. We recommend adding your Codefresh user in Gerrit to this group.
+Gerrit has a special **Service Users** access-group for CI systems and other bots. We recommend adding your Codefresh user in Gerrit to this group, and setting the required access permissions required for the target repository.
 
 1. Create a profile in Gerrit's web interface for your Codefresh user.
 1. Add the user to the predefined Service Users access group:
@@ -30,15 +36,15 @@ Gerrit has a special **Service Users** access-group. We recommend adding your Co
   1. Click **Add**.
 1. Browse to **Repositories** and select the repository for which to set permissions.
 1. Select **Access > Edit**, and set the following permissions:
-  * **Reference**: Set to **refs/*** to grant permissions to all references in the selected repository.
+    * **Reference**: Set to **refs/*** to grant permissions to all references in the selected repository.
       * **Read**: **ALLOW** for Service Users
       * **Owner**: **ALLOW** for Service Users as `webhooks.config` in `refs/meta/config` requires [owner-level permissions](https://gerrit-review.googlesource.com/Documentation/access-control.html#category_submit){:target="\_blank"}.
-  * **Label Verified**: **-1**, **+1** for Service Users. Gives permission to apply the `Verified` label with either a `-1` or `+1` value.
+      * **Label Verified**: **-1**, **+1** for Service Users. Gives permission to apply the `Verified` label with either a `-1` or `+1` value.
 1. Continue with [Step 2: Generate access token for user in Gerrit](#step-2-generate-access-token-for-user-in-gerrit).
 
-### Gerrit GitOps integration:  Step 2 - Generate HTTP password  for Codefresh GitOps user in Gerrit
-Generate an access token in Gerrit to authenticate or authorize HTTP requests. 
-The access token is the HTTP Password, and is different from the login password.
+### Step 2 Gerrit GitOps: Generate HTTP password for Codefresh GitOps user in Gerrit
+Generate the HTTP Password in Gerrit as an access token to authenticate HTTP requests. 
+
 
 >**NOTE**:  
 Regenerating the HTTP Password automatically revokes the current password. 

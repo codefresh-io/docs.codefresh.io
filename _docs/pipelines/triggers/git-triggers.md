@@ -142,7 +142,7 @@ A `Ref updated` trigger event in Gerrit is mapped in Codefresh to `Push commits`
 
 
 * Push commits (`Ref updated` in Gerrit)
-* Push tags (`Push tags` and `Ref updated` in Gerrit)
+* Push tags (`Ref updated` in Gerrit)
 * Change abandoned              
 * Change deleted              
 * Change merged               
@@ -156,8 +156,8 @@ A `Ref updated` trigger event in Gerrit is mapped in Codefresh to `Push commits`
 * WIP state changed        
 * Vote deleted     
 
->**WARNING**
->Selecting both `Push commits` and `Change merged` as trigger events will result in the pipeline being _triggered twice_, as Gerrit sends the `Change merged` event followed by the `Push commits` event.  
+>**WARNING**:  
+Selecting both `Push commits` and `Change merged` as trigger events will result in the pipeline being _triggered twice_, as Gerrit sends the `Change merged` event followed by the `Push commits` event.  
 To avoid duplicate pipelines, select any one of these triggers. 
 
 
@@ -202,7 +202,8 @@ max-width="50%"
 The default behavior triggers the pipeline on a commit action.  
 Override the default behavior by adding any one of the predefined strings anywhere in the commit message.
 
->NOTE: Remember to include the opening and closing parentheses when adding the strings. 
+>**NOTE**:  
+Remember to include the opening and closing parentheses when adding the strings. 
 
 * `[skip ci]`
 * `[ci skip]`
@@ -220,7 +221,8 @@ There are two options:
   This option triggers an event when PR comments are made by any user, regardless of their permissions.  
   Because it is not restricted to owners and collaborators, this option is useful in GitHub, to enable triggers for PR comments made by users in GitHub teams.
 
-     > We strongly recommend selecting this option only for _private repositories_.  
+     > **NOTE**:  
+     We strongly recommend selecting this option only for _private repositories_.  
 
 
 {% include image.html
@@ -237,7 +239,7 @@ max-width="50%"
 The Pull Request Target Branch option allows you to trigger the pipeline only when the target of a Pull Request (PR), that is, where the PR will be merged to, matches the
 branch name in the regular expression. Common examples for branch names would be `master` or `production`.
 
->NOTE:  
+>**NOTE**:  
   >The Pull Request Target Branch option is available for all Git providers, except Atlassian Stash.
   >
   >When using Terraform, please use the [Go regex syntax](https://github.com/google/re2/wiki/Syntax){:target="\_blank"} as some Perl regex syntax is not compatible.
