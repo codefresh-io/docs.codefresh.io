@@ -597,7 +597,7 @@
     - title: Shared configuration repo
       url: "/shared-configuration"
 
-- title: What's new
+- title: 'What's new'
   url: "/whats-new"
   pages:
     - title: SaaS
