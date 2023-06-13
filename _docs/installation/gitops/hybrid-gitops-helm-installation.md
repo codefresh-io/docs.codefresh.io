@@ -107,7 +107,7 @@ The Codefresh `values.yaml` is located [here](https://github.com/codefresh-io/gi
 Codefresh automatically validates the `values.yaml` file before initiating the installation to verify that the supplied values are correct.  
 You also have the option to manually run the validation if desired.
 
-<!--- **Validation failure**  
+**Validation failure**  
 If there is a validation failure, Codefresh will terminate the Helm installation and display the error message: `Job has reached the specified backoff limit`.  
 
 To get more detailed and meaningful information on the reason for the validation failure, run:  
@@ -135,7 +135,7 @@ installer:
 {% endraw %}
 {% endhighlight %}
 
-**Validated settings**  -->
+**Validated settings** 
 
 The table below lists the settings validated in the `values` file.  
 
@@ -158,7 +158,7 @@ The table below lists the settings validated in the `values` file.
       * `<values_file>` is the name of the values.yaml used by the Helm installation.  
       * `<namespace>` is the namespace in which to install the Hybrid GitOps runtime, either the default `codefresh`, or the custom name you intend to use for the installation. The Namespace must conform to the naming conventions for Kubernetes objects. 
       * `<version>` is the version of the runtime to install.
-<!---1. If there is a validation failure, to see more details on the reasons for the failure, run:  
+1. If there is a validation failure, to see more details on the reasons for the failure, run:  
   `kubectl logs jobs/validate-values -n ${NAMESPACE}`  
   where:  
   * `{NAMESPACE}` must be replaced with the namespace of the Hybrid GitOps Runtime. -->
