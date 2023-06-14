@@ -28,7 +28,7 @@ A GitOps integration with Gerrit requires:
 1. [Correct access permissions](#step-1-gerrit-gitops-create-codefresh-gitops-user-with-required-permissions-in-gerrit)
 1. [HTTP password for authentication](#step-2-gerrit-gitops-generate-http-password-for-codefresh-gitops-user-in-gerrit)
 
-### Access permissions in Gerrit
+### Required permissions in Gerrit
 
 Permissions are required for creating projects and managing repositories.  
 
@@ -97,7 +97,7 @@ During the setup of your Hosted GitOps Runtime, choose Gerrit as the Git provide
 See [Connect in Git provider]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/#step-2-connect-git-provider) for Hosted Runtime.
 
 
-### Enrich images with Gerrit information
+### Enrich image information
 To enrich images with relevant information from Gerrit, incorporate Codefresh's image reporting step into your pipelines/workflows,  providing relevant Gerrit arguments.
 See [CI integration argument reference]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/#ci-integration-argument-reference).  
   
