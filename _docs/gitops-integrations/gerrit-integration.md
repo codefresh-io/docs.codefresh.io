@@ -83,8 +83,8 @@ Regenerating the HTTP Password automatically revokes the current password.
 1. Click **Close**.
 
 You can now connect to Gerrit as your Git provider for the Hosted GitOps Runtime. 
- 
-
-
+  
 ## Related articles
-[Hosted GitOps Runtime setup]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/)  
+[Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration/)  
+[Image enrichment with GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/)  
+[CI GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/) 
