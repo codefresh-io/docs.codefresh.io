@@ -151,7 +151,7 @@ global:
 
 ### Repository certificates 
 Add repository certificates to your Codefresh `values` file, in `.values.argo-cd`. These values are used by the argo-cd Codefresh deploys. 
-For details on adding repository certificates, see this [section](https://github.com/argoproj/argo-helm/blob/main/charts/argo-cd/values.yaml#LL334C21-L334C21){:target="\_blank"}.
+For details on adding repository certificates, see this [section](https://github.com/codefresh-io/argo-helm/blob/argo-cd-5.29.2-cap-CR-18430/charts/argo-cd/values.yaml#LL336C7-L336C7){:target="\_blank"}.
 
 
 ```yaml
@@ -170,4 +170,6 @@ Ingress-based on-premises GitOps Runtimes require an ingress controller to be co
 Depending on the ingress controller used, you may need post-installation configuration as well.
 
 
-
+## Related articles
+[Managing and monitoring GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/)  
+[On-premises platform architecture]({{site.baseurl}}/docs/installation/runtime-architecture/#gitops-architecture)  
