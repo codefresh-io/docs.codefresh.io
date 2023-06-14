@@ -27,12 +27,15 @@ The Codefresh `values.yaml` is located [here](https://github.com/codefresh-io/gi
 
 
 * Run:  
-  `helm upgrade --install <helm-release-name> --create-namespace --namespace <namespace> --set global.codefresh.accountId=<codefresh-account-id> --set global.codefresh.userToken.token=<codefresh-api-key> --set global.runtime.name=<runtime-name> <helm-repo-name>/gitops-runtime --set --devel --wait`  
+  `helm upgrade --install <helm-release-name> --create-namespace --namespace <namespace> --set global.codefresh.userToken.token=<codefresh-api-key> --set global.runtime.name=<runtime-name> <helm-repo-name>/gitops-runtime --set --devel --wait`  
   
+  >**NOTE**:  
+  Unless otherwise indicated, values are automatically populated by Codefresh.  
+  If you're using a terminal, remember to copy the values from the UI beforehand.<br>
+
   where:  
   * `<helm-release-name>` is the name of the Helm release.  
   * `<namespace>` is the namespace in which to install the Hybrid GitOps runtime, either `codefresh`, or the custom name you defined.  
-  * `<codefresh-account-id>` is your Codefresh account ID.
   * `<codefresh-api-key>` is the generated API key.
   * `<runtime-name>` is the name of the runtime, either `codefresh`, or the custom name you defined. 
   * `gitops-runtime` is the chart name defined by Codefresh.
@@ -107,7 +110,9 @@ The Codefresh `values.yaml` is located [here](https://github.com/codefresh-io/gi
 Codefresh automatically validates the `values.yaml` file before initiating the installation to verify that the supplied values are correct.  
 You also have the option to manually run the validation if desired.
 
-<!--- **Validation failure**  
+
+**Validation failure**  
+
 If there is a validation failure, Codefresh will terminate the Helm installation and display the error message: `Job has reached the specified backoff limit`.  
 
 To get more detailed and meaningful information on the reason for the validation failure, run:  
@@ -135,7 +140,8 @@ installer:
 {% endraw %}
 {% endhighlight %}
 
-**Validated settings**  -->
+
+**Validated settings** 
 
 The table below lists the settings validated in the `values` file.  
 
@@ -157,11 +163,7 @@ The table below lists the settings validated in the `values` file.
     where:  
       * `<values_file>` is the name of the values.yaml used by the Helm installation.  
       * `<namespace>` is the namespace in which to install the Hybrid GitOps runtime, either the default `codefresh`, or the custom name you intend to use for the installation. The Namespace must conform to the naming conventions for Kubernetes objects. 
-      * `<version>` is the version of the runtime to install.
-<!---1. If there is a validation failure, to see more details on the reasons for the failure, run:  
-  `kubectl logs jobs/validate-values -n ${NAMESPACE}`  
-  where:  
-  * `{NAMESPACE}` must be replaced with the namespace of the Hybrid GitOps Runtime. -->
+      * `<version>` is the version of the runtime to install. To target the latest pre-release version, use `--devel` instead of `--version <version>`.
 1. Continue with [Step 2: Select Hybrid Runtime install option](#step-2-select-hybrid-runtime-install-option).
 
 ### Step 2: Select Hybrid Runtime install option
@@ -216,27 +218,57 @@ The Namespace must conform to the naming conventions for Kubernetes objects.
    `<helm-repo-name>` is the name of the repository to which to add the Hybrid GitOps Runtime Helm chart. For example, `cf-gitops-runtime`.
 1. Copy and run the command to install the runtime Helm chart:  
   The commands differ depending on the access mode. An ingress-based Hybrid GitOps Runtime requires additional flags.<br>
+  
+  >**NOTE**:  
+  Unless otherwise indicated, values are automatically populated by Codefresh.  
+  If you're using a terminal, remember to copy the values from the UI beforehand.<br>
 
-    **Tunnel-based install chart command:**<br>
-    `helm upgrade --install <helm-release-name> --create-namespace --namespace <namespace> --set global.codefresh.accountId=<codefresh-account-id> --set global.codefresh.userToken.token=<codefresh-api-key> --set global.runtime.name=<runtime-name> <helm-repo-name>/gitops-runtime --devel --wait`  
-
-
-    **Ingress-based install chart command:**  
-      `helm upgrade --install <helm-release-name> --create-namespace --namespace <namespace> --set global.codefresh.accountId=<codefresh-account-id> --set global.codefresh.userToken.token=<codefresh-api-key> --set global.runtime.name=<runtime-name> <helm-repo-name>/gitops-runtime  --set global.runtime.ingress.enabled=true --set "global.runtime.ingress.hosts[0]"=<ingress-host> --set global.runtime.ingress.className=<ingress-class> --devel --wait`  
+  **Tunnel-based install chart command:**<br>
+{% highlight yaml %} 
+helm upgrade --install <helm-release-name> \
+  --create-namespace \
+  --namespace <namespace> \
+  --set global.codefresh.accountId=<codefresh-account-id> \
+  --set global.codefresh.userToken.token=<codefresh-api-key> \
+  --set global.runtime.name=<runtime-name> \
+  <helm-repo-name>/gitops-runtime \
+  --devel \
+  --wait
+{% endhighlight %}    
     
-    >Unless otherwise indicated, values are automatically populated by Codefresh.
+<br>
 
-    where:  
-    * `<helm-release-name>` is the name of the Helm release.  
-    * `<namespace>` is the namespace in which to install the Hybrid GitOps runtime, either `codefresh`, or the custom name you defined.  
-    * `<codefresh-account-id>` is your Codefresh account ID.
-    * `<codefresh-api-key>` is the generated API key.
-    * `<runtime-name>` is the name of the runtime, either `codefresh`, or the custom name you defined. 
-    * `gitops-runtime` is the chart name defined by Codefresh.
-    * `global.runtime.ingress.enabled=true` is mandatory for _ingress-based Hybrid GitOps Runtimes_, and indicates that the runtime is ingress-based.
-    * `<ingress-host>` is mandatory for _ingress-based Hybrid GitOps Runtimes_, and is the IP address or host name of the ingress controller component. 
-    * `<ingress-class>` is mandatory for _ingress-based Hybrid GitOps Runtimes_, and is the ingress class of the ingress controller. For example, `nginx` for the NGINX ingress controller.
-    * `--wait` waits until all the pods are up and running for the deployment. 
+  **Ingress-based install chart command:**  
+
+{% highlight yaml %}
+helm upgrade --install <helm-release-name> \
+  --create-namespace \
+  --namespace <namespace> \
+  --set global.codefresh.userToken.token=<codefresh-api-key> \
+  --set global.runtime.name=<runtime-name> \
+  --set global.runtime.ingress.enabled=true \
+  --set "global.runtime.ingress.hosts[0]"=<ingress-host> \
+  --set global.runtime.ingress.className=<ingress-class> \
+  <helm-repo-name>/gitops-runtime \
+  --devel \
+  --wait  
+{% endhighlight %}
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;where: 
+  * 
+      * `<helm-release-name>` is the name of the Helm release.  
+      * `<namespace>` is the namespace in which to install the Hybrid GitOps runtime, either `codefresh`, or the custom name you defined.  
+      * `<codefresh-account-id>` is mandatory only for _tunnel-based Hybrid GitOps Runtimes_.
+      * `<codefresh-api-key>` is the generated API key.
+      * `<runtime-name>` is the name of the runtime, either `codefresh`, or the custom name you defined. 
+      * `gitops-runtime` is the chart name defined by Codefresh.
+      * `global.runtime.ingress.enabled=true` is mandatory for _ingress-based Hybrid GitOps Runtimes_, and indicates that the runtime is ingress-based.
+      * `<ingress-host>` is mandatory for _ingress-based Hybrid GitOps Runtimes_, and is the IP address or host name of the ingress controller component. 
+      * `<ingress-class>` is mandatory for _ingress-based Hybrid GitOps Runtimes_, and is the ingress class of the ingress controller.   For example, `nginx` for the NGINX ingress controller.
+      * `--wait` waits until all the pods are up and running for the deployment. 
+
+{:start="5"}
 1. Wait for a few minutes, and then click **Close**.
    You are taken to the List View for GitOps Runtimes where you can see the Hybrid GitOps Runtime you added prefixed with a red dot.
 1. Continue with [Step 5: Configure Git credentials for runtime](#step-5-configure-git-credentials-for-hybrid-gitops-runtime).
