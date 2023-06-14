@@ -162,15 +162,22 @@ Once you authorize access, Codefresh creates two Git repositories, one to store 
   Codefresh creates a Git Source application repo for every Hosted GitOps Runtime.  
   Read about [Git sources]({{site.baseurl}}/docs/installation/gitops/git-sources/).
 
+### Before you begin
+Make sure you have the credentials for the Git provider handy
 
-**How to**  
+
+### How to 
 
 1. From the list, select the Git provider.
-1. Click **Authorize Access** and do one of the following:
-  * To authorize access for GitHub and Bitbucket through OAuth, click **Connect** and enter your OAuth token.
-  * To authorize access through passwords/access tokens:
-      * For GitHub and Bitbucket, see the instructions on how to generate one in [How to update a Git token]({{site.baseurl}}/docs/administration/user-settings/#how-to-update-a-git-personal-token). 
-      * For Gerrit, paste the **HTTP Password** you generated and copied into the field.
+1. Enter the credentials for the selected Git provider:  
+    * **Gerrit**:  
+      1. **Username**: The username of your Codefresh user account in Gerrit. 
+      1. **Password**: Paste the **HTTP Password** you generated and copied into the field.
+      1. **Host URL**: The URL of your website with the Gerrit instance, for example, `https://git.company-name.io`. 
+1. Click **Authorize Access**. 
+1. Optional. To authorize access for GitHub and Bitbucket through OAuth, click **Connect** and enter your OAuth token.
+
+
 
 {% include
 image.html

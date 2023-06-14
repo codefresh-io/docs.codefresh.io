@@ -15,8 +15,8 @@ Currently, Gerrit is supported as a Git provider for only Hosted GitOps Runtimes
 
 By integrating Gerrit with Codefresh GitOps, when you set up your [Hosted GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/), you can:
 * Select Gerrit as your Git provider
-* Connect an external clusters
-* Create Git Sources   
+* Connect an external cluster to the Runtime
+* Create Git Sources for the Runtime  
 
 You can then [create]({{site.baseurl}}/docs/deployments/gitops/create-application/) and manage GitOps applications in the Gerrit Git repo.
 
@@ -79,13 +79,12 @@ Regenerating the HTTP Password automatically revokes the current password.
 1. Log in to Gerrit with the Codefresh user you created in _Step 1_.
 1. In the toolbar, click the **Settings** icon.
 1. From the sidebar, select **HTTP Credentials**, and below **HTTP Credentials** on the right, click **Generate New Password**.
-1. Copy the generated password to a secure location as you will need it to set up the Gerrit Git account in Codefresh.
+1. Copy the generated password to a secure location as you will need it to set up the Gerrit Git account for the Hosted Runtime in Codefresh.
 1. Click **Close**.
 
 You can now connect to Gerrit as your Git provider for the Hosted GitOps Runtime. 
  
-## Gerrit arguments in CI pipelines/workflows
-TBD
+
 
 ## Related articles
 [Hosted GitOps Runtime setup]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/)  
