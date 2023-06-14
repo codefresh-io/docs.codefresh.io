@@ -9,18 +9,15 @@ toc: true
 
 Codefresh supports integration with Gerrit, the open-source web-based code review tool for Git repositories. Configure Gerrit as the primary Git provider for Codefresh GitOps. Codefresh can fetch the approved changes from Gerrit and build, test, and deploy the application based on your predefined workflows.
 
->**NOTE**:
+>**NOTE**:  
 Currently, Gerrit is supported as a Git provider for only Hosted GitOps Runtimes.
 
 
-By integrating Gerrit with Codefresh GitOps, when you set up your [Hosted GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/), you can:
-* Select Gerrit as your Git provider
-* Connect an external cluster to the Runtime
-* Create Git Sources for the Runtime  
+By integrating Gerrit with Codefresh GitOps, when you set up your [Hosted GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/), you can select Gerrit as your Git provider.
 
 You can then [create]({{site.baseurl}}/docs/deployments/gitops/create-application/) and manage GitOps applications in the Gerrit Git repo.
 
-If you have third-party CI tools/platforms such as Codefresh pipelines, GitHub Actions, or Jenkins for example, you can use Gerrit-specific arguments in your pipelines/workflows for image enrichment and reporting. See [CI integration flow for image enrichment]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/#ci-integration-flow-for-image-enrichment).   
+If you have third-party CI tools/platforms such as Codefresh pipelines, GitHub Actions, or Jenkins for example, you can add Gerrit-specific arguments in your pipelines/workflows for image enrichment and reporting. See [CI integration flow for image enrichment]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/#ci-integration-flow-for-image-enrichment).   
 
 
 
@@ -87,17 +84,22 @@ Regenerating the HTTP Password automatically revokes the current password.
 1. In the toolbar, click the **Settings** icon.
 1. From the sidebar, select **HTTP Credentials**, and below **HTTP Credentials** on the right, click **Generate New Password**.
 1. Copy the generated password to a secure location as you will need it to set up the Gerrit Git account for the Hosted Runtime in Codefresh.
-1. Click **Close**.-->
+1. Click **Close**.
+-->
 
 
 
 ## Gerrit-Codefresh GitOps integration in Codefresh
-Once you have a user with the required permissions, you are all set to use Gerrit as your Git provider.
+Once you have a user with the required permissions, you are all set to use Gerrit as your Git provider in Codefresh:
 
-### Gerrit credentials to connect as Git provider
-When 
+### Connect to Gerrit as Git provider
+During the setup of your Hosted GitOps Runtime, choose Gerrit as the Git provider and provide the required credentials.  
+See [Connect in Git provider]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/#step-2-connect-git-provider) for Hosted Runtime.
 
-### Enrich images with Codefresh report
+
+### Enrich images with Gerrit information
+To enrich images with relevant information from Gerrit, incorporate Codefresh's image reporting step into your pipelines/workflows,  providing relevant Gerrit arguments.
+See [CI integration argument reference]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/#ci-integration-argument-reference).  
   
 ## Related articles
 [Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration/)  
