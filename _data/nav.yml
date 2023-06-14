@@ -317,6 +317,8 @@
           url: "/jfrog" 
         - title: Quay Registry
           url: "/quay"
+    - title: Gerrit Git provider integration
+      url: "/gerrit-integration"
 
 - title: Deployments
   url: "/deployments"
