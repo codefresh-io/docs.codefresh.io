@@ -345,11 +345,14 @@ For example if you already have a `token` on a resource call `git-credentials` y
 Codefresh supports integration with Gerrit, the open-source web-based code review tool for Git repositories. 
 By integrating Gerrit in Codefresh, you can create pipelines to [trigger]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/#gerrit-trigger-events) builds and tests whenever a new change is pushed to Git repos hosted in Gerrit, and see the status of builds and tests within Gerrit.
 
-Gerrit has no explicit concept of pull requests, as in other version control systems, to map trigger event payloads to builds. Instead, Gerrit uses `Changes` which serves a similar purpose and functionality as pull requests. You can achieve the same functionality in Codefresh with our `CF_PULL_REQUEST` group of environment variables. For the exact variables you can map to Gerrit `Changes`, see [System variables]({{site.baseurl}}/docs/pipelines/variables/#system-variables).
+Gerrit has no explicit concept of pull requests, as in other version control systems, to map trigger event payloads to builds.  
+Instead, Gerrit uses `Changes` which serves a similar purpose and functionality as pull requests.
 
-### Step 1: Set up access permissions for Codefresh user in Gerrit
+You can achieve the same functionality in Codefresh with our `CF_PULL_REQUEST` group of environment variables. For the exact variables you can map to Gerrit `Changes`, see [System variables]({{site.baseurl}}/docs/pipelines/variables/#system-variables) and also [Gerrit changeId & change message variables]({{site.baseurl}}/docs/pipelines/variables/#gerrit-changeid--change-message-variables).
 
-Gerrit has a special **Service Users** access-group for CI systems and other bots. We recommend adding your Codefresh user in Gerrit to this group, and setting the required access permissions required for the target repository.
+### Step 1: Set up permissions for Codefresh user in Gerrit
+
+Gerrit has a special **Service Users** access-group for CI systems and other bots. We recommend adding your Codefresh user in Gerrit to this group, and setting the required permissions.
 
 1. Create a profile in Gerrit's web interface for your Codefresh user.
 1. Add the user to the predefined Service Users access group:
@@ -359,14 +362,14 @@ Gerrit has a special **Service Users** access-group for CI systems and other bot
   1. Click **Add**.
 1. Browse to **Repositories** and select the repository for which to set permissions.
 1. Select **Access > Edit**, and set the following permissions:
-    * **Reference**: Set to **refs/*** to grant permissions to all references in the selected repository.
+    * **Reference**: Set to **refs/***
       * **Read**: **ALLOW** for Service Users
       * **Owner**: **ALLOW** for Service Users as `webhooks.config` in `refs/meta/config` requires [owner-level permissions](https://gerrit-review.googlesource.com/Documentation/access-control.html#category_submit){:target="\_blank"}.
       * **Label Verified**: **-1**, **+1** for Service Users. Gives permission to apply the `Verified` label with either a `-1` or `+1` value.
 1. Continue with [Step 2: Generate password for user in Gerrit](#step-2-generate-password-for-user-in-gerrit).
 
 ### Step 2: Generate password for user in Gerrit
-Generate the HTTP Password in Gerrit as an access token to authenticate HTTP requests. 
+Generate an HTTP Password in Gerrit as an access token to authenticate HTTP requests. 
 
 >**NOTE**:  
 Regenerating the HTTP Password automatically revokes the current password. 

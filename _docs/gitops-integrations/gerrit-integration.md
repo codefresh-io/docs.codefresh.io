@@ -25,8 +25,8 @@ If you have third-party CI tools/platforms such as Codefresh pipelines, GitHub A
 ## Gerrit-Codefresh GitOps integration in Gerrit
 
 A GitOps integration with Gerrit requires:
-1. [Correct access permissions](#step-1-gerrit-gitops-create-codefresh-gitops-user-with-required-permissions-in-gerrit)
-1. [HTTP password for authentication](#step-2-gerrit-gitops-generate-http-password-for-codefresh-gitops-user-in-gerrit)
+1. [Correct permissions](#required-permissions-in-gerrit)
+1. [HTTP password for authentication](#http-password-for-authentication)
 
 ### Required permissions in Gerrit
 
@@ -94,14 +94,14 @@ Once you have a user with the required permissions, you are all set to use Gerri
 
 ### Connect to Gerrit as Git provider
 During the setup of your Hosted GitOps Runtime, choose Gerrit as the Git provider and provide the required credentials.  
-See [Connect in Git provider]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/#step-2-connect-git-provider) for Hosted Runtime.
+See [Connect to Git provider]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/#step-2-connect-git-provider) for Hosted Runtime.
 
 
 ### Enrich image information
 To enrich images with relevant information from Gerrit, incorporate Codefresh's image reporting step into your pipelines/workflows,  providing relevant Gerrit arguments.
-See [CI integration argument reference]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/#ci-integration-argument-reference).  
+Look for `CF_GERRIT_` in [CI integration argument reference]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/#ci-integration-argument-reference).  
   
 ## Related articles
-[Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration/)  
+[Shared Configuration Repo]({{site.baseurl}}/docs/reference/shared-configuration/)  
 [Image enrichment with GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/)  
 [CI GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/) 
