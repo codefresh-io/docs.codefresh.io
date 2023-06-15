@@ -517,7 +517,7 @@
         - title: Managing & monitoring GitOps Runtimes
           url: "/monitor-manage-runtimes"
         - title: Shared Configuration Repository
-          url: "/shared-configuration/
+          url: "/shared-configuration"
         - title: Add external clusters to GitOps Runtimes
           url: "/managed-cluster" 
         - title: Add Git Sources to to GitOps Runtimes
