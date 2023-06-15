@@ -69,7 +69,7 @@ use it.
    %}
 
 ### Related articles
-[Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration/)  
+[Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/)  
 [CI GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/)  
 [Container registry GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/container-registries/)  
 

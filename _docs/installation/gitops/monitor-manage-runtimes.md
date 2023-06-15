@@ -366,7 +366,7 @@ Uninstalling a GitOps Runtime permanently removes:
 1. Click **Close** to exit the upgrade panel.
 
 ## Reset Shared Configuration Repository for GitOps Runtimes
-Codefresh creates and validates the [Shared Configuration Repository]({{site.baseurl}}/docs/reference/shared-configuration) when you install the first Hybrid or Hosted GitOps Runtime for your account, and uses it for all GitOps Runtimes you add to the same account.
+Codefresh creates and validates the [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration) when you install the first Hybrid or Hosted GitOps Runtime for your account, and uses it for all GitOps Runtimes you add to the same account.
 
 Once created, you can reset the Shared Configuration Repo defined for your account under the following conditions:
 
@@ -738,6 +738,6 @@ The Activity Log is a quick way to monitor notifications for Runtime events such
 ## Related articles
 [Add Git Sources to GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
 [Add external clusters to GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster/)  
-[Shared configuration repo for GitOps Runtimes]({{site.baseurl}}/docs/reference/shared-configuration)  
+[Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration)  
 
 
