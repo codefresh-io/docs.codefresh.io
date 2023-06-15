@@ -177,7 +177,7 @@ The table below lists the settings validated in the `values` file.
 
 ### Step 3: Set up GitOps Git provider
 Select the Git provider, define the provider's API URL, and the Shared Configuration Repository for your account.
-The [Shared Configuration Repository]({{site.baseurl}}/docs/reference/shared-configuration/) is a Git repository with configuration manifests shared between all the Hybrid GitOps Runtimes within the same account.
+The [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) is a Git repository with configuration manifests shared between all the Hybrid GitOps Runtimes within the same account.
 
 >**NOTE**:
  This is a one-time action, required once per account. 

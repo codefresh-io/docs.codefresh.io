@@ -85,7 +85,7 @@ use it.
 ## Related articles
 [CI GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/)  
 [Issue-tracking GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/)  
-[Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration/)  
+[Shared configuration repo]({{site.baseurl}}/docs/installation/gitops/shared-configuration//)  
 [Images]({{site.baseurl}}/docs/dashboards/images/)  
 [Monitoring applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/)    
  

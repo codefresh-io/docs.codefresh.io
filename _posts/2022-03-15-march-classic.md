@@ -1,6 +1,6 @@
 ---
 title: "Pipelines Changelog: March 2022"
-description: "Changelog and Release Notes for Pipelines (Classic)"
+description: "Changelog and Release Notes for Pipelines"
 ---
 
 - Support for Kubernetes 1.21 - [documentation]({{site.baseurl}}/docs/administration/codefresh-on-prem/#prerequisites)

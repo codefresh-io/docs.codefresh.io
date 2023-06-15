@@ -96,6 +96,6 @@ Edit an existing Git Source by changing the source and destination definitions, 
 
 ## Related articles
 [Monitoring & managing GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/)  
-[Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration)  
+[Shared configuration repo]({{site.baseurl}}/docs/installation/gitops/shared-configuration)  
 
 

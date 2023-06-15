@@ -281,8 +281,7 @@
       localurl: /docs/reference/git-tokens/ 
     - title: Secrets for GitOps
       localurl: /docs/reference/secrets   
-    - title: Shared configuration repo
-      localurl: /docs/reference/shared-configuration/
+
 
 
 - title: "Incubation"
