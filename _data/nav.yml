@@ -598,8 +598,6 @@
       url: "/git-tokens"
     - title: Secrets
       url: "/secrets"   
-    - title: Shared configuration repo
-      url: "/shared-configuration"
 
 - title: What's new
   url: "/whats-new"
