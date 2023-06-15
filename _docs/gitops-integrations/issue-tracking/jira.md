@@ -51,7 +51,7 @@ For pipelines based on GitHub Actions, configure the Jira integration in Codefre
 Codefresh uses the Secret Key stored in the runtime cluster to securely access Jira and retrieve the information. 
 
 ## Related articles
-[Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration/)  
+[Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/)  
 [Image enrichment with GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/)  
 [CI integrations]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/)  
 [Container registry integrations]({{site.baseurl}}/docs/gitops-integrations/container-registries/)  
