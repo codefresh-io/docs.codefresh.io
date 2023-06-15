@@ -60,8 +60,8 @@ app-proxy:
     cors: https://codefresh-onprem.com  ## required, must be identical to platform URL
 ```
 
-## Mirroring Helm chart in on-prem/air-gapped environments
-In on-premises or air-gapped environments, it is necessary to mirror the Helm chart to a repository that can be accessed by `app-proxy`.
+## Mirroring Helm chart in on-premises/air-gapped environments
+In on-premises or air-gapped environments, _after installing the GitOps On-premises Runtime_, to complete the installation and ensure that the Runtime is managed as an Argo Application, you need to mirror the Helm chart to a repository that can be accessed by `app-proxy`.
 
 Additionally, you need to set an environment variable in the `values` file in `.values.app-proxy` to reference the mirrored Helm repository, as shown in the example below.
 
