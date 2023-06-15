@@ -16,7 +16,7 @@ Installing a hybrid runtime includes installing the:
   Every hybrid runtime installation makes commits to three Git repos: 
    * Runtime installation repo: The installation repo that manages the runtime itself with Argo CD. If the repo URL you provide does not exist, the runtime creates it automatically.   
    * Git Source repo: Created automatically during runtime installation. The repo with the demo resources required for the sample `Hello World` pipelines we provide. 
-   * Shared configuration repo: A repository that stores configuration manifests shared across runtimes.
+   * Shared Configuration Repository: A repository that stores configuration manifests shared across runtimes.
  
 ### Before you begin
 

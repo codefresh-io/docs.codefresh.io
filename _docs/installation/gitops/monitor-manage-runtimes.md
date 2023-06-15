@@ -738,6 +738,6 @@ The Activity Log is a quick way to monitor notifications for Runtime events such
 ## Related articles
 [Add Git Sources to GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
 [Add external clusters to GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster/)  
-[Shared configuration repo for GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/shared-configuration)  
+[Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration)  
 
 
