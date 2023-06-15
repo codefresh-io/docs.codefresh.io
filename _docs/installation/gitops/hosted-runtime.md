@@ -215,8 +215,8 @@ image.html
 lightbox="true"
 file="/images/runtime/hosted-git-shared-repo.png"
 url="/images/runtime/hosted-git-shared-repo.png"
-alt="Shared configuration repo in Git"
-caption="Shared configuration repo in Git"
+alt="Shared Configuration Repository in Git"
+caption="Shared Configuration Repository in Git"
 max-width="70%"
 %}
 
@@ -227,8 +227,8 @@ image.html
 lightbox="true"
 file="/images/runtime/hosted-git-shared-repo.png"
 url="/images/runtime/hosted-git-shared-repo.png"
-alt="Shared configuration repo in Git"
-caption="Shared configuration repo in Git"
+alt="Shared Configuration Repository in Git"
+caption="Shared Configuration Repository in Git"
 max-width="70%"
 %}
 
@@ -323,7 +323,7 @@ See [Image enrichment with integrations]({{site.baseurl}}/docs/gitops-integratio
 ## Related articles
 [Monitoring & managing GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/)  
 [Add Git Sources to runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
-[Shared configuration repo]({{site.baseurl}}/docs/installation/gitops/shared-configuration)  
+[Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration)  
 [Home Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/)   
 [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)
 
