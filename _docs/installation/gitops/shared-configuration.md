@@ -3,7 +3,7 @@ title: "Shared Configuration Repository"
 description: "Share configuration settings across GitOps Runtimes"
 group: installation
 redirect_from:
-  - /reference/shared-configuration/
+  - /docs/reference/shared-configuration/
 toc: true
 ---
 

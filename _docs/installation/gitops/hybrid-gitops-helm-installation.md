@@ -282,7 +282,6 @@ helm upgrade --install <helm-release-name> \
 <br>
 
   **Ingress-based install chart command:**  
-
 {% highlight yaml %}
 helm upgrade --install <helm-release-name> \
   --create-namespace \
@@ -298,13 +297,13 @@ helm upgrade --install <helm-release-name> \
 {% endhighlight %}
 <br>
 
-&nbsp;&nbsp;&nbsp;&nbsp;where: 
-  * 
+&nbsp;&nbsp;&nbsp;&nbsp;where:  
+  *    
       * `<helm-release-name>` is the name of the Helm release.  
-      * `<namespace>` is the namespace in which to install the Hybrid GitOps runtime, either `codefresh`, or the custom name you defined.  
+      * `<namespace>` is the namespace in which to install the Hybrid GitOps runtime, and is either `codefresh` which is the default, or the custom name you define.  
       * `<codefresh-account-id>` is mandatory only for _tunnel-based Hybrid GitOps Runtimes_ which is the default access mode. Automatically populated by Codefresh in the installation command.
-      * `<codefresh-api-key>` is an exisiting or generated API key. If generated, Codefresh 
-      * `<runtime-name>` is the name of the runtime, either `codefresh`, or the custom name you defined. 
+      * `<codefresh-api-key>` is the API key, either an existing one or a new API key you generated. When generated, it is automatically populated in the command.
+      * `<runtime-name>` is the name of the runtime, either `codefresh` which is the default, or a custom name that you define. 
       * `<helm-repo-name>` is the name of the repo in which to add the Helm chart, and is either `cf-gitops-runtime` which is the default, or any custom name you define. 
       * `gitops-runtime` is the chart name defined by Codefresh.
       * `global.runtime.ingress.enabled=true` is mandatory for _ingress-based Hybrid GitOps Runtimes_, and indicates that the runtime is ingress-based.
