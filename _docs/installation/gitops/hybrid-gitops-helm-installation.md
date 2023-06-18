@@ -32,12 +32,14 @@ Quick installation assumes that:
 
 **Automated validation**  
 Codefresh automatically validates the `values` file before initiating the installation. If there is a validation failure, Codefresh terminates the installation.  
-To get more details on the reasons for the failure, run:  
-  `kubectl logs jobs/validate-values -n ${NAMESPACE}`  
-  where:  
-  * `{NAMESPACE}` must be replaced with the namespace of the Hybrid GitOps Runtime. 
 
-To disable automated validation, add `--set installer.skipValidation=true` to the install command.
+* Validation failures  
+  To get more details on the reasons for the failure, run:  
+    `kubectl logs jobs/validate-values -n ${NAMESPACE}`  
+    where:  
+      * `{NAMESPACE}` must be replaced with the namespace of the Hybrid GitOps Runtime. 
+
+* To disable automated validation, add `--set installer.skipValidation=true` to the install command.
 
 For more details, see [Step 1: (Optional) Validate Helm values file](#step-1-optional-validate-helm-values-file) in this article. 
 
@@ -61,7 +63,7 @@ where:
   * `<helm-release-name>` is the name of the Helm release that you define.  
   * `<namespace>` is the namespace in which to install the Hybrid GitOps runtime, and is either `codefresh` which is the default, or any custom name that you define.
   *  `<codefresh-account-id>` is mandatory only for _tunnel-based Hybrid GitOps Runtimes_ which is also the default access mode. Automatically populated by Codefresh in the command. 
-  * `<codefresh-api-key>` is an existing or generated API key. If generated, it is automatically populated in the command.
+  * `<codefresh-token>` is the API key, either an existing one or the new API key you generated. When generated, it is automatically populated in the command.
   * `<runtime-name>` is the name of the runtime, either `codefresh` which is the default, or a custom name that you define. 
   * `<helm-repo-name>` is the name of the repo in which to add the Helm chart, and is either `cf-gitops-runtime` which is the default, or any custom name you define. 
   * `--wait` waits until all the pods are up and running for the deployment.  
