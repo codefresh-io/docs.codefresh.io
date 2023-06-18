@@ -47,7 +47,7 @@ There are two parts to installing a Hybrid GitOps Runtime:
   Every Hybrid GitOps Runtime installation makes commits to three Git repos:
   * Runtime install repo: The installation repo that manages the Hybrid Runtime itself with Argo CD. If the repo URL does not exist, it is automatically created during installation.
   * Git Source repo: Created automatically during Runtime installation. The repo where you store manifests for pipelines and applications. See [Git Sources]({{site.baseurl}}/docs/installation/gitops/git-sources).
-  * Shared configuration repo: Created for the first GitOps Runtime installed in your account. The repo stores configuration manifests for account-level resources and is shared with other GitOps Runtimes in the same account. See [Shared configuration repository]({{site.baseurl}}/docs/reference/shared-configuration).
+  * Shared configuration repo: Created for the first GitOps Runtime installed in your account. The repo stores configuration manifests for account-level resources and is shared with other GitOps Runtimes in the same account. See [Shared configuration repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration).
 
 
 
@@ -977,7 +977,7 @@ For both CLI wizard and Silent install:
 ### Git provider and repo flags
 The Git provider defined for the Runtime. 
 
->Because Codefresh creates a [shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration) for the Runtimes in your account, the Git provider defined for the first Runtime you install in your account is used for all the other Runtimes in the same account.  
+>Because Codefresh creates a [shared configuration repo]({{site.baseurl}}/docs/installation/gitops/shared-configuration) for the Runtimes in your account, the Git provider defined for the first Runtime you install in your account is used for all the other Runtimes in the same account.  
 
 You can define any of the following Git providers:
 * GitHub:
@@ -1215,7 +1215,7 @@ For _on-premises installations_, if the Ingress controller does not have a valid
 * Runtime install repository: The installation repo contains three folders: apps, bootstrap and projects, to manage the runtime itself with Argo CD.  
 * Git source repository: Created with the name `[repo_name]_git-source`. This repo stores manifests for pipelines with sources, events, workflow templates. See [Add Git Sources to runtimes]({{site.baseurl}}/docs/runtime/git-sources/).
 
-* Shared configuration repository: Stores configuration and resource manifests that can be shared across runtimes, such as integration resources. See [Shared configuration repository]({{site.baseurl}}/docs/reference/shared-configuration/)
+* Shared configuration repository: Stores configuration and resource manifests that can be shared across runtimes, such as integration resources. See [Shared configuration repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/)
 
 **Argo CD components**  
 * Project, comprising an Argo CD AppProject and an ApplicationSet
@@ -1314,5 +1314,5 @@ data:
 [Add external clusters to Hybrid and Hosted Runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster/)  
 [Monitoring & managing GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/)  
 [Add Git Sources to runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
-[Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration)  
+[Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration)  
 [Troubleshoot Hybrid Runtime installation]({{site.baseurl}}/docs/kb/articles/runtime-issues/)

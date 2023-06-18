@@ -317,6 +317,8 @@
           url: "/jfrog" 
         - title: Quay Registry
           url: "/quay"
+    - title: Gerrit Git provider integration
+      url: "/gerrit-integration"
 
 - title: Deployments
   url: "/deployments"
@@ -514,6 +516,8 @@
           url: "/on-prem-gitops-runtime-install"  
         - title: Managing & monitoring GitOps Runtimes
           url: "/monitor-manage-runtimes"
+        - title: Shared Configuration Repository
+          url: "/shared-configuration"
         - title: Add external clusters to GitOps Runtimes
           url: "/managed-cluster" 
         - title: Add Git Sources to to GitOps Runtimes
@@ -594,8 +598,6 @@
       url: "/git-tokens"
     - title: Secrets
       url: "/secrets"   
-    - title: Shared configuration repo
-      url: "/shared-configuration"
 
 - title: What's new
   url: "/whats-new"

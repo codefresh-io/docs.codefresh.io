@@ -38,7 +38,7 @@ For how-to instructions, see [Configure container registry integrations for GitO
 
 
 ## Related articles
-[Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration/)  
+[Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/)  
 [Image enrichment with GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/)  
 [GitOps CI integrations]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/)  
 [GitOps issue-tracking integrations]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/)  

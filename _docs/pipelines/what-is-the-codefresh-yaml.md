@@ -91,7 +91,7 @@ Steps chaining and referencing is possible due to implementation of variables in
 | [Approval]({{site.baseurl}}/docs/pipelines/steps/approval/)  | Pauses a pipeline and waits for human intervention.          |
 
 
-For more information on creating your own step, see the [Steps in piplines]({{site.baseurl}}/docs/pipelines/steps/).
+For more information on creating your own step, see the [Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/).
 
 You can also see the [complete YAML specification]({{site.baseurl}}/docs/integrations/codefresh-api/#full-pipeline-specification) supported for pipelines. Note however that several fields are only accessible by using the [Codefresh API]({{site.baseurl}}/docs/integrations/codefresh-api) or [CLI](https://codefresh-io.github.io/cli/){:target="\_blank"} .
 
@@ -113,7 +113,7 @@ max-width="50%"
 
 You can also validate the pipeline yaml outside of the UI by using the Codefresh CLI. The CLI has a [validate parameter](https://codefresh-io.github.io/cli/validation/){:target="\_blank"}  that can check one or more files for syntax errors.
 
-{% highlight shell %}
+{% highlight yaml %}
 {% raw %}
 $ codefresh validate codefresh.yml
 Yaml not valid:
@@ -127,7 +127,7 @@ For more information on where the YAML file can be stored, see [creating pipelin
 
 ## Execution flow
 
-By default, Codefresh will execute all steps in the yaml file and instantly fail the build, if any step
+By default, Codefresh will execute all steps in the YAML file and instantly fail the build, if any step
 presents an error. To change this behavior add the `fail_fast:false` property in any step that you wish to be ignored
 in case of errors. 
 

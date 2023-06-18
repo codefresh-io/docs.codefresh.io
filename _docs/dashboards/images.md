@@ -6,7 +6,7 @@ sub_group: gitops
 toc: true
 ---
 
-Images from connected registries are displayed in a 
+
 
 
 ## Access the Images dashboard 
@@ -40,7 +40,7 @@ Most image filters support multi-selection.  Unless otherwise indicated, the fil
 | **Git branch**       | Available in **More filters**. The Git branch to which the image is pushed.|
 | **Git repositories** | Available in **More filters**. The Git provider you use.|   
 
-Currently Deployed
+
 
 ## Image main view: deployment and repo information
 The main view of the Images dashboard displays high-level deployment, repository, and registry information. 
