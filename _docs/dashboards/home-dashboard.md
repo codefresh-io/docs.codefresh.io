@@ -246,22 +246,29 @@ Use the Pipelines dashboard to:
   url="/images/pipeline/dashboard/pipeline-dashboard.png"
   alt="Pipelines dashboard"
   caption="Pipelines dashboard"
-  max-width="60%"
+  max-width="70%"
     %} 
 
 
 
 ### Filters for pipelines
-Filters narrow the scope of aggregated data, allowing you to focus on the information you want to see. Unless otherwise indicated, all filters support multi-selection.
+Filters narrow the scope of aggregated data, allowing you to focus on the information you want to see.  
+Unless otherwise indicated, all filters support multi-selection.
+
+>**TIP**:
+Different filter types have an AND relationship.
+
 
 {: .table .table-bordered .table-hover}
 |  Filter          |  Description|  
 | --------------   | --------------|  
-| **Date Range** | The time frame for which to view data. The date range affects the other filters. In addition to the predefined date ranges, you can select a custom date range up to the last six months. <br>If you select Today, then the Success Rate and Duration charts reflect hourly granularity.<br><br>Every date range you select has a reference period corresponding to the same period of time preceding the selected date range. The reference period is used to derive comparisons for trends.|
-| **Project**           | The project or projects to which the pipeline belongs. Selecting a project allows you to focus on performance of pipelines assigned to it.|                            
-| **Pipeline**           | The pipeline or pipelines to filter by. |                            
+| **Date Range** | The time frame for which to view data. The date range affects the other filters, including the granularity for the Success Rate and Pipeline Duration charts. <br>In addition to the predefined date ranges, you can select a custom date range of up to the last six months. <br>If you select Today, then the Success Rate and Duration charts reflect hourly granularity.<br><br>Every date range you select has a reference period corresponding to the same period of time preceding the selected date range. The reference period is used to derive comparisons and identify trends.  |
+| **Hourly/Daily** |Based on the date range selected, choose the granularity for viewing Success Rate and Pipeline Duration. {::nomarkdown}<ul><li>A date range between 1 and 4 days allows viewing metrics either by hour or by day.</li><li>A date range longer than four days allows viewing metrics only by day. The Hourly option is disabled in this case.</li></ul> {:/}
+| **Project**           | The project or projects to which the pipeline belongs. Selecting a project allows you to focus on performance of pipelines assigned to it. If you starred one or more projects as favorites, clicking {::nomarkdown}<img src="../../../images/icons/icon-fav-starred.png?display=inline-block">{:/}, filters pipelines by the selected projects.|                            
+| **Pipeline**           | The pipeline or pipelines to filter by. <br>If you starred one or more pipelines as favorites, clicking {::nomarkdown}<img src="../../../images/icons/icon-fav-starred.png?display=inline-block">{:/}, filters by those pipelines. |                            
 | **Status**           | {::nomarkdown}<ul><li><b>Error</b>: Pipelines with builds that failed due to errors in the pipeline specifications or steps that failed. </li><li><b>Succeeded</b>: Pipelines with builds that completed successfully.</li> <li><b>Terminated</b>: Pipelines with builds terminated by the system according to the policy defined in the pipeline's settings. These can be any of these: <ul><li>Recent build from the same branch terminating all previous pipeline builds </li><li>Recent build from the specified branch terminating all previous builds from that branch</li><li>Running build terminating all running builds</li><li>Child builds terminated when the parent build is terminated.</li> </ul></li>For details, see <a href ="https://codefresh.io/docs/docs/pipelines/pipelines/#policies">Build Termination in Pipeline Policies</a>. </ul>{:/}|                            
-| **Tags**             |The tag or tags assigned to the pipelines. |      
+| **Tags**             |The tag or tags assigned to the pipelines. | 
+|{::nomarkdown}<img src="../../../images/icons/icon-mark-favorite.png?display=inline-block">{:/}| Filter to view only projects or pipelines that have been starred as favorites in the [Projects/Pipeline pages]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#starring-projects-and-pipelines-as-favorites).<br><br>When you have starred projects or pipelines, the icon changes to {::nomarkdown}<img src="../../../images/icons/icon-fav-starred.png?display=inline-block">.<br>Clicking it filters by favorite projects and pipelines. {:/} |   
 
 
 
@@ -355,8 +362,8 @@ You can then filter by the specific pipeline or pipelines and analyze success ra
 
 ## Related articles
 [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)  
-[Monitoring applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/)
-[Monitoring pipelines]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/)  
+[Monitoring applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/)  
+[Monitoring pipelines]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/)   
 [Images in Codefresh]({{site.baseurl}}/docs/dashboards/images/)  
 
 

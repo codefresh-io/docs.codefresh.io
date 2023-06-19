@@ -13,7 +13,7 @@ After defining the repository in which to store configuration settings, you can 
 
 Older versions of hybrid runtimes without the shared repository must be upgraded to the latest version  to  leverage the  shared configuration, specifically for integrations with CI platforms and tools.  
 
-For details, see [Shared runtime configuration repo]({{site.baseurl}}/docs/reference/shared-configuration/).
+For details, see [Shared runtime configuration repo]({{site.baseurl}}/docs/installation/gitops/shared-configuration/).
 
 ### Logs for runtime components
 

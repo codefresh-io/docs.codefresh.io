@@ -102,6 +102,6 @@ To enrich images with relevant information from Gerrit, incorporate Codefresh's 
 Look for `CF_GERRIT_` in [CI integration argument reference]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/#ci-integration-argument-reference).  
   
 ## Related articles
-[Shared Configuration Repo]({{site.baseurl}}/docs/reference/shared-configuration/)  
+[Shared Configuration Repo]({{site.baseurl}}/docs/installation/gitops/shared-configuration/)  
 [Image enrichment with GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/)  
 [CI GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/) 

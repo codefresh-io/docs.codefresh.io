@@ -47,4 +47,4 @@ The error usually happens when Docker does not have enough memory, but it can al
 
 ## Related articles
 
-[Troubleshooting common issues]({{site.baseurl}}/docs/troubleshooting/common-issues)
+[Troubleshooting common issues]({{site.baseurl}}/docs/kb/common-issues/)

@@ -207,7 +207,9 @@ When a pull request is closed in GitHub, the following variables are also availa
 
 ## Gerrit changeId & change message variables
 
-Gerrit has no explicit concept of 'pull requests' as in other version control systems to map trigger event payloads to builds. Gerrit uses `Changes` that are similar in functionality and purpose to pull requests. Our `CF_PULL_REQUEST` group of environment variables achieve the same functionality. 
+
+Gerrit has no explicit concept of pull requests, as in other version control systems, to map trigger event payloads to builds. Instead, Gerrit uses `Changes` which serves a similar purpose and functionality as pull requests. You can achieve the same functionality in Codefresh with our `CF_PULL_REQUEST` group of environment variables. 
+
 
 {: .table .table-bordered .table-hover}
 | Variable        | Description                                            |
