@@ -1,5 +1,5 @@
 ---
-title: "Quick search in Codefresh"
+title: "Universal Search & Navigation"
 description: "How to perform actions, search for entities, find features, and more with Quick Search"
 group: getting-started
 toc: true
