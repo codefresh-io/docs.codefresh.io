@@ -602,9 +602,11 @@
     - title: GitOps what's new
       url: "/gitops-whats-new"
 
-- title: New Codefresh
+- title: Codefresh New Experience
   url: "/new-codefresh"
   pages:
+    - title: The Codefresh New Experience
+      url: "/enable-new-experience" 
     - title: Navigation quick reference
       url: "/menu-navigation"
     - title: Documentation changes
