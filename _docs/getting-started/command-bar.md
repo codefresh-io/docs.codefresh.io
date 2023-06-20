@@ -61,7 +61,7 @@ We are always adding more options, so stay tuned to our online announcements.
 Here are a few keyboard shortcuts to work with Global Search & Navigation.
 
 {: .table .table-bordered .table-hover}
-| Navigate to              | Shortcut Keys               |
+| Navigate to              | Keyboard Shortcuts               |
 | ----------          |  -------------------------- |
 | Global Search       | **⌘+ K**   |
 | Projects            | **P** then **R** |
