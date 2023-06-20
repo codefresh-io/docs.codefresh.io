@@ -11,14 +11,13 @@ Stay where you are in Codefresh and get to what you want without extra clicks! B
 
 
 
-
-
 ## About Global Search & Navigation
 
 Global Search & Navigation is always available in the toolbar, displayed on the top-left. 
 
 > **TIP**:  
-If you don't see it, you may have to [enable the Codefresh New Experience]({{site.baseurl}}/docs/new-codefresh/enable-new-experience/#enable-the-codefresh-new-experience).
+If you don't see the Global Search field in the toolbar, you may have to [enable the Codefresh New Experience]({{site.baseurl}}/docs/new-codefresh/enable-new-experience/#enable-the-codefresh-new-experience).
+
 
 When you click the Global Search field, you can see the predefined categories to jump-start your search for **Pipelines** **Projects**, or **Documentation**. 
 
