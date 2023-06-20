@@ -10,7 +10,7 @@ Unveiling the Codefresh New Experience, bringing you new navigation, features, a
 Here are a few highlights:  
 * [Pipelines Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/#pipelines-dashboard): Our new Home dashboard includes a dedicated Pipelines Dashboard. Easily monitor pipeline metrics and performance to gain insights and optimize pipeline definitions. 
 * [Images Dashboard]({{site.baseurl}}/docs/dashboards/images/): We have redesigned the Images dashboard with a new layout, grouping images by repository. 
-* [Global Search & Navigation](#about-global-universal-search--navigation): Quickly locate specific features or functionalities while staying where you are.
+* [Global Search & Navigation]({{site.baseurl}}/docs/getting-started/command-bar/): Quickly locate specific features or functionalities while staying where you are.
 * [Enhanced navigation]({{site.baseurl}}/docs/new-codefresh/menu-navigation/): Navigation options are categorized by user options (accessed by clicking your Avatar in the toolbar), account-level administration and configuration, and features and functionality.
 
 

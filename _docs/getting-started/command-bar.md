@@ -69,8 +69,8 @@ In addition to quickly navigating to specific entities such as Builds and Pipeli
 {% include 
 image.html 
 lightbox="true" 
-file="/images/administration/command-bar/quick-search-builds.png" 
-url="/images/administration/command-bar/quick-search-builds.png" 
+file="/images/administration/command-bar/quick-search-single-sign-on.png" 
+url="/images/administration/command-bar/quick-search-single-sign-on.png" 
 alt="Example: Finding Single Sign-On with Global Navigation & Search" 
 caption="Example: Finding Single Sign-On with Global Navigation & Search" 
 max-width="60%" 
