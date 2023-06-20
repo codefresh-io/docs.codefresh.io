@@ -1,5 +1,5 @@
 ---
-title: "Gerrit Git provider integration"
+title: "GitOps Gerrit Git provider integration"
 description: ""
 group: gitops-integrations
 toc: true
