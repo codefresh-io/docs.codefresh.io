@@ -92,6 +92,7 @@ For more information on generating SSH keys and adding your public key to your V
 * [Azure documentation](https://docs.microsoft.com/en-us/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops&tabs=current-page){:target="\_blank"}
 * [Gerrit documentation](http://ec2-52-87-125-161.compute-1.amazonaws.com:8080/Documentation/user-upload.html#ssh){:target="\_blank"}
 
+
 ## GitHub
 
 For the **OAuth2 method** you only need to decide on public/private repository access, enter a name for your connection and click *Save*. Then accept the permissions dialog. This is the easiest and recommended way to integrate GitHub. Notice that if

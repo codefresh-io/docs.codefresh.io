@@ -12,6 +12,8 @@
       url: "/gitops-codefresh"
     - title: Concepts in Codefresh
       url: "/concepts"
+    - title: Global Search & Navigation
+      url: "/command-bar"  
    
 
 - title: Quick starts
@@ -529,7 +531,7 @@
 
 - title: Administration
   url: "/administration"
-  pages:
+  pages:    
     - title: Account & user management
       sub-pages:  
         - title: Create a Codefresh account
@@ -607,9 +609,11 @@
     - title: On-premises
       url: "/on-prem-release-notes"
 
-- title: New Codefresh
+- title: Codefresh New Experience
   url: "/new-codefresh"
   pages:
+    - title: The Codefresh New Experience
+      url: "/enable-new-experience" 
     - title: Navigation quick reference
       url: "/menu-navigation"
     - title: Documentation changes

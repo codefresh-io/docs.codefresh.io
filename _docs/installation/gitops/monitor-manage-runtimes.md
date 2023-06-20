@@ -122,6 +122,7 @@ For more information on generating SSH private keys, see the official documentat
 * [Azure](https://docs.microsoft.com/en-us/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops&tabs=current-page){:target="\_blank"}
 * [Gerrit](http://ec2-52-87-125-161.compute-1.amazonaws.com:8080/Documentation/user-upload.html#ssh){:target="\_blank"}
 
+
 **Before you begin**  
 Copy the SSH private key for your Git provider  
 
