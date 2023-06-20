@@ -32,7 +32,7 @@ Starting with pointers on setting up Git repos, this guide takes you through the
 * Creating a CI pipeline for GitOps
 * Creating an Argo CD application for GitOps
 * Deploying the application
-* Working with the GitOps Apps dashboard, and a look at the insights from the GitOps Overview and DORA dashboards
+* Working with the GitOps Apps dashboard, and a look at the insights from the GitOps Dashboard (Home) and DORA dashboards
 
 
 
@@ -448,22 +448,22 @@ The Configuration tab displays the definitions for the application. Apart from t
 
 For more information on application definitions, see [Creating GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application).
 
-## GitOps Overview and DORA dashboards
+## GitOps Dashboard and DORA dashboards
 
-If you have several applications and deployments, the GitOps Overview and the DORA metrics dashboards are the go-to dashboards for managers and developers alike.
+If you have several applications and deployments, the GitOps Dashboard  and the DORA metrics dashboards are the go-to dashboards for managers and developers alike.
 
-The **GitOps Overview** dashboard offers a global view of runtimes, managed clusters, and deployments. For system-wide visualization in real-time, this is your dashboard of choice in Codefresh.  
-* Go to [GitOps Overview](https://g.codefresh.io/2.0/?time=LAST_7_DAYS){:target="\_blank"}.  
+The **GitOps Dashboard**, part of the Home dashboard, offers a global view of runtimes, managed clusters, deployments, and applications. For system-wide visualization in real-time, this is your dashboard of choice in Codefresh.  
+* Go to [GitOps Dashboard](https://g.codefresh.io/2.0/?startDateFrom=2023-04-26&startDateTo=2023-05-03&time=LAST_7_DAYS){:target="\_blank"}.  
 
-For information on the GitOps Overview dashboard, see [GitOps Overview dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard). 
+For detailed information, see [GitOps Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/#gitops-dashboard). 
 
 {% include 
 image.html 
 lightbox="true" 
-file="/images/reporting/gitops-overview-dashboard.png" 
-url="/images/reporting/gitops-overview-dashboard.png" 
-alt="GitOps Overview dashboard"
-caption="GitOps Overview dashboard"
+file="/images/reporting/home-dashboard-gitops.png" 
+url="/images/reporting/home-dashboard-gitops.png" 
+alt="Home Dashboard: GitOps"
+caption="Home Dashboard: GitOps"
 max-width="50%"
 %} 
 
@@ -484,14 +484,14 @@ max-width="80%"
 
 ## Using the App-of-Apps pattern
 
-The GitOps Overview dashboard displays applications created using the [app-of-apps pattern](https://argo-cd.readthedocs.io/en/stable/operator-manual/cluster-bootstrapping/){:target="\_blank"}. If you have a number of applications that are related, and you always
+The GitOps Apps dashboard displays applications created using the [app-of-apps pattern](https://argo-cd.readthedocs.io/en/stable/operator-manual/cluster-bootstrapping/){:target="\_blank"}. If you have a number of applications that are related, and you always
 install them as a set in your cluster, you can group them in a single Application. The parent application can be defined using [declarative Argo Resources](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/){:target="\_blank"}.
 
 As an example, you might find that you always install in your cluster Linkerd, Prometheus and Ambassador. You can group all of them in a single Application and deploy them all at once.
 
 You can find an existing example of app-of-apps at [https://github.com/argoproj/argocd-example-apps/tree/master/apps](https://github.com/argoproj/argocd-example-apps/tree/master/apps){:target="\_blank"}. It uses [Helm]({{site.baseurl}}/docs/example-catalog/cd-examples/helm/), but you can use any other Kubernetes templating mechanism such as [Kustomize]({{site.baseurl}}/docs/example-catalog/cd-examples/deploy-with-kustomize/), or even plain manifests.
 
-Once you deploy the application with Codefresh, the parent app is displayed in the GitOps Overview dashboard with an arrow.
+Once you deploy the application with Codefresh, the parent app is displayed in the GitOps Apps dashboard with an arrow.
 Clicking the arrow expand and displays the child applications.
 
 {% include image.html

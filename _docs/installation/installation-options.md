@@ -24,10 +24,10 @@ The Codefresh platform supports three different installation options, all compli
   See [Hybrid Runner](#hybrid-runner).
   
 
-* **On-premises**  
-  On-premises installation is for customers who want full control over their environments. Both the UI and the builds run on the Kubernetes cluster in an environment fully managed by you as our customer.  
+* **On-Premises**  
+  On-Premises installation is for customers who want full control over their environments. Both the UI and the builds run on the Kubernetes cluster in an environment fully managed by you as our customer.  
 
-  While Codefresh can still help with maintenance of the on-premises platform, we would recommend the Hybrid Runner as it combines flexibility without compromising on security.  
+  While Codefresh can still help with maintenance of the On-Premises platform, we would recommend the Hybrid Runner as it combines flexibility without compromising on security.  
   See [On-premises](#on-premises).
 
 
@@ -198,7 +198,7 @@ The table below highlights the main differences between Hosted and Hybrid GitOps
 |                         |Image enrichment    | Supported                  | Supported  |
 |                         | Rollouts           | Supported                  |  Supported  |
 |Integrations             |                    | Supported                  | Supported  |
-|Dashboards               |GitOps Overview      | Hosted runtime and deployments|Runtimes, deployments, Delivery Pipelines |
+|Dashboards               |Home                | Hosted runtime and deployments|Runtimes, deployments, Delivery Pipelines |
 |                         |DORA metrics        | Supported                 |Supported        |
 |                         |Applications        | Supported                 |Supported        |
 
@@ -221,5 +221,5 @@ Codefresh Runner and GitOps environments can co-exist giving you the best of bot
 ## Related articles
 [Architecture]({{site.baseurl}}/docs/installation/runtime-architecture/)  
 [Add Git Sources to GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)   
-[Shared configuration repository]({{site.baseurl}}/docs/reference/shared-configuration)  
+[Shared Configuration Repositorysitory]({{site.baseurl}}/docs/installation/gitops/shared-configuration)  
 

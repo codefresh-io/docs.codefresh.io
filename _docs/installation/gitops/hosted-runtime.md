@@ -17,15 +17,15 @@ Set up your environment with the Hosted GitOps Runtime to leverage Codefresh Git
 | Item                     | Requirement            |  
 | --------------         | --------------           |  
 |Kubernetes cluster      | Server version 1.18 and higher to which to deploy applications|
-|Git provider      | {::nomarkdown}<ul><li>GitHub</li><!---<li>GitLab Cloud</li>--><li>Bitbucket Cloud</li></ul>{:/}|
+|Git provider      | {::nomarkdown}<ul><li>GitHub</li><!---<li>GitLab Cloud</li>--><li>Bitbucket Cloud</li><li>Gerrit</li></ul>{:/}|
 
 
 ## Where to start with Hosted GitOps Runtimes
-If you have not provisioned a Hosted GitOps Runtime, Codefresh presents you with the setup instructions in the **GitOps Overview** dashboard.   
+If you have not provisioned a Hosted GitOps Runtime, Codefresh presents you with the setup instructions in the **Home** dashboard.   
 
   
 
-* In the Codefresh UI, from OPS in the sidebar, select [GitOps Overview](https://g.codefresh.io/2.0/?time=LAST_7_DAYS){:target="\_blank"}.
+* In the Codefresh UI, from OPS in the sidebar, select [Home](https://g.codefresh.io/2.0/?time=LAST_7_DAYS){:target="\_blank"}.
   Codefresh guides you through the three-step setup, as described below.
 
 {% include
@@ -40,7 +40,11 @@ max-width="80%"
 
   >You can provision a single Hosted GitOps Runtime per Codefresh account.
 
-
+## Before you begin
+* Set up integrations with the Git provider for the Hosted GitOps Runtime
+  * GitHub
+  * Bitbucket Cloud
+  * Gerrit
 
 ## Step 1: Install Hosted GitOps Runtime
 Start installing the Hosted GitOps Runtime with a single-click. Codefresh completes the installation without any further intervention on your part. 
@@ -129,9 +133,13 @@ max-width="70%"
 
 -->
 ## Step 2: Connect Git provider
-Connect your Hosted GitOps Runtime to a Git provider for Codefresh to create the required Git repos.  First authorize access to your Git provider through an OAuth token, and then select the Git organizations or accounts in which to create the required Git repos.  
+Connect your Hosted GitOps Runtime to a Git provider for Codefresh to create the required Git repos.  
 
->Only authorized organizations are displayed in the list. To authorize organizations for the Codefresh application in GitHub, see [Authorize organizations/projects]({{site.baseurl}}/docs/administration/account-user-management/hosted-authorize-orgs/).
+**Authorize access**  
+  Based on the Git provider you select, you need to authorize access through OAuth or access token, and then select the Git organizations or accounts in which to create the required Git repos. 
+
+**Git organizations/accounts**  
+  Only authorized organizations are displayed in the list. To authorize organizations for the Codefresh application in GitHub, see [Authorize organizations/projects]({{site.baseurl}}/docs/administration/account-user-management/hosted-authorize-orgs/).
 
 
 {% include
@@ -145,23 +153,32 @@ max-width="80%"
 %}
 
 
-Once you authorize access, Codefresh creates two Git repositories, one to store the runtime configuration settings, and the other to store the runtime's application settings:
-* Shared runtime configuration repo  
-  The shared runtime configuration repo is a centralized Git repository that stores configuration settings for the Hosted GitOps Runtime. Additional runtimes provisioned for the account can point to this repo to retrieve and reuse the configuration.  
-  Read about [Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration/).
+Once you authorize access, Codefresh creates two Git repositories, one to store the configuration settings for GitOps Runtimes, and the other to store the Runtime's application settings:
+* Shared Configuration Repository  
+  The Shared Configuration Repository is a centralized Git repository that stores configuration settings for the Hosted GitOps Runtime. Additional Hybrid runtimes provisioned for the account can point to this repo to retrieve and reuse the configuration.  
+  Read about [Shared Configuration Repositories]({{site.baseurl}}/docs/installation/gitops/shared-configuration/).
+
 
 * Git Source application repo  
   Codefresh creates a Git Source application repo for every Hosted GitOps Runtime.  
   Read about [Git sources]({{site.baseurl}}/docs/installation/gitops/git-sources/).
 
+### Before you begin
+Make sure you have the credentials for the Git provider handy
 
->Hosted runtimes support only OAuth authentication. 
 
-**How to**  
+### How to 
 
-1. Click **Connect**.
-1. Click **Authorize Access**, and enter your OAuth token.
-  If you don't have an OAuth token, see the instructions on how to generate one in [How to update a Git token]({{site.baseurl}}/docs/administration/user-settings/#how-to-update-a-git-personal-token). 
+1. From the list, select the Git provider.
+1. Enter the credentials for the selected Git provider:  
+    * **Gerrit**:  
+      1. **Username**: The username of your Codefresh user account in Gerrit. 
+      1. **Password**: Paste the **HTTP Password** you generated and copied into the field.
+      1. **Host URL**: The URL of your website with the Gerrit instance, for example, `https://git.company-name.io`. 
+1. Click **Authorize Access**. 
+1. Optional. To authorize access for GitHub and Bitbucket through OAuth, click **Connect** and enter your OAuth token.
+
+
 
 {% include
 image.html
@@ -174,7 +191,7 @@ max-width="40%"
 %}
 
 {:start="3"}
-1. Select the **Git Organization for which to create the repos**.
+1. Optional. If required for your Git provider, select the **Git Organization for which to create the repos**.
   >If the organization does not appear in the list, you need to authorize access to it. See [Authorize organizations/projects]({{site.baseurl}}/docs/administration/account-user-management/hosted-authorize-orgs/).
 1. Click **Create**.
   Codefresh creates the two Git repositories in the paths shown.
@@ -192,15 +209,15 @@ max-width="50%"
 {:start="5"}
 1. Verify that both repositories have been created in your Git account.  
 
-  Shared runtime configuration repo
+  Shared Configuration Repo
   
   {% include
 image.html
 lightbox="true"
 file="/images/runtime/hosted-git-shared-repo.png"
 url="/images/runtime/hosted-git-shared-repo.png"
-alt="Shared configuration repo in Git"
-caption="Shared configuration repo in Git"
+alt="Shared Configuration Repository in Git"
+caption="Shared Configuration Repository in Git"
 max-width="70%"
 %}
 
@@ -211,8 +228,8 @@ image.html
 lightbox="true"
 file="/images/runtime/hosted-git-shared-repo.png"
 url="/images/runtime/hosted-git-shared-repo.png"
-alt="Shared configuration repo in Git"
-caption="Shared configuration repo in Git"
+alt="Shared Configuration Repository in Git"
+caption="Shared Configuration Repository in Git"
 max-width="70%"
 %}
 
@@ -236,7 +253,7 @@ max-width="80%"
 ## Step 3: Connect a Kubernetes cluster
 
 Connect a destination cluster to the Hosted GitOps Runtime and register it as a managed cluster. Deploy applications and configuration to the cluster.
-For managed cluster information and installing Argo Rollouts, see [Add and manage external clusters]({{site.baseurl}}/docs/installation/gitops/managed-cluster/).
+For information on managed clusters and installing Argo Rollouts, see [Add and manage external clusters]({{site.baseurl}}/docs/installation/gitops/managed-cluster/).
 
 
  {% include 
@@ -307,7 +324,7 @@ See [Image enrichment with integrations]({{site.baseurl}}/docs/gitops-integratio
 ## Related articles
 [Monitoring & managing GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/)  
 [Add Git Sources to runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
-[Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration)  
-[GitOps Overview dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/)   
+[Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration)  
+[Home Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/)   
 [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)
 

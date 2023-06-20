@@ -22,7 +22,8 @@ There are two ways to use a Codefresh variable in your pipelines:
 1. Directly in YAML properties
    Use variables can be used in YAML properties with the syntax {% raw %}`${{MY_VARIABLE_EXAMPLE}}`{% endraw %}.
 
-> If you are unsure about which form you need to use, feel free to use {% raw %}`${{MY_VARIABLE_EXAMPLE}}`{% endraw %} everywhere. This is the Codefresh specific form and should function in all sections of `codefresh.yml`. 
+> **TIP**:  
+If you are unsure about which form you need to use, feel free to use {% raw %}`${{MY_VARIABLE_EXAMPLE}}`{% endraw %} everywhere. This is the Codefresh specific form and should function in all sections of `codefresh.yml`. 
 
 **Example: Print out the branch as an environment variable**  
 In this example, we use simple `echo` commands, but any program or script that reads environment variables can also read them in the same manner.
@@ -75,7 +76,7 @@ develop-ba1cd68
 feature-vb145dh
 ```
 
->NOTE:  
+>**NOTE**:  
  > This syntax is specific to Codefresh, and is **only** available within the Codefresh YAML file itself. If you want to write scripts or programs that use the Codefresh variables, you need to make them aware of the environment variable form.
 
 
@@ -83,7 +84,10 @@ feature-vb145dh
 
 System variables are automatically injected to any freestyle step as environment variables.
 
-> It is important to understand that all Git related variables such `CF_BRANCH`, `CF_COMMIT_MESSAGE`, `CF_REVISION` etc. are coming directly from the Git provider you use and have the same limitations of that provider. For example GitLab is sending less information in pull request events than normal pushes, and Bitbucket sends only the short hash of a commit in pull request events. We suggest you read the documentation of your Git provider first to understand what information is available for every Git event
+> **NOTE**:  
+It is important to understand that all Git-related variables such `CF_BRANCH`, `CF_COMMIT_MESSAGE`, `CF_REVISION` etc. come directly from the Git provider you use, and therefore have the same limitations of that provider. <br><br>
+For example, GitLab sends less information in pull request events than normal pushes, and Bitbucket sends only the short hash of a commit in pull request events. We suggest you read the documentation of your Git provider first to understand what information is available for every Git event. <br><br>
+Gerrit has `change-Id` and `Changes` that you can map to `CF_PULL_REQUEST` variables, such as `CF_PULL_REQUEST_ID` and more. 
 
 {: .table .table-bordered .table-hover}
 | Variable                                          | Description |
@@ -93,10 +97,12 @@ System variables are automatically injected to any freestyle step as environment
 | {% raw %}`${{CF_BRANCH}}`{% endraw %}             | Branch name (or Tag depending on the payload json) of the Git repository of the main pipeline, at the time of execution. <br/>You can also use {% raw %}`${{CF_BRANCH_TAG_NORMALIZED}}`{% endraw %} to get the branch name normalized. It will be without any chars that are illegal in case the branch name were to be used as the Docker image tag name. You can also use {% raw %}`${{CF_BRANCH_TAG_NORMALIZED_LOWER_CASE}}`{% endraw %} to force lowercase. |
 | {% raw %}`${{CF_BASE_BRANCH}}`{% endraw %}      | The base branch used during creation of Tag |
 | {% raw %}`${{CF_PULL_REQUEST_ACTION}}`{% endraw %}      | The pull request action. Values are those defined by your Git provider such as [GitHub](https://developer.github.com/webhooks/){:target="\_blank"}, [GitLab](https://docs.gitlab.com/ee/user/project/integrations/webhooks.html), [Bitbucket](https://confluence.atlassian.com/bitbucket/manage-webhooks-735643732.html){:target="\_blank"} etc. |
-| {% raw %}`${{CF_PULL_REQUEST_TARGET}}`{% endraw %}      | The pull request target branch |
+| {% raw %}`${{CF_PULL_REQUEST_ID}}`{% endraw %}      | The ID of the pull request.<br>For Gerrit, use this in place of `changeId`.   |
+| {% raw %}`${{CF_PULL_REQUEST_TARGET}}`{% endraw %}      | The target branch of the pull request. <br>For Gerrit, use this in place of `Change target branch name`. |
 | {% raw %}`${{CF_PULL_REQUEST_NUMBER}}`{% endraw %}      | The pull request number |
-| {% raw %}`${{CF_PULL_REQUEST_ID}}`{% endraw %}      | The pull request id |
 | {% raw %}`${{CF_PULL_REQUEST_LABELS}}`{% endraw %}      | The labels of pull request (GitHub and GitLab only) |
+| {% raw %}`${{CF_PULL_REQUEST_COMMENT}}`{% endraw %}      | The comment added to the pull request.<br>For Gerrit, use this in place of `Change message`.  |
+| {% raw %}`${{CF_PULL_REQUEST_COMMENT_AUTHOR}}`{% endraw %}      | The user who added the comment to the pull request.<br>For Gerrit, use this in place of `Change author`.  |
 | {% raw %}`${{CF_COMMIT_AUTHOR}}`{% endraw %}      | Commit author.                                                                                              |
 | {% raw %}`${{CF_BUILD_INITIATOR}}`{% endraw %}      | The person (username) that started the build. If the build was started by a Git webhook (e.g. from a Pull request) it will hold the webhook user. Notice that if a build is restarted manually it will always hold the username of the person that restarted it.  |
 | {% raw %}`${{CF_ACCOUNT}}`{% endraw %}         | Codefresh account for this build |
@@ -199,6 +205,21 @@ When a pull request is closed in GitHub, the following variables are also availa
 | {% raw %}`${{CF_PULL_REQUEST_MERGED_COMMIT_SHA}}`{% endraw %}       | the commit SHA on the base branch after the pull request was merged (in most cases it will be master)   |
 | {% raw %}`${{CF_PULL_REQUEST_HEAD_COMMIT_SHA}}`{% endraw %}  | the commit SHA on the head branch (the branch that we want to push)  |
 
+## Gerrit changeId & change message variables
+
+
+Gerrit has no explicit concept of pull requests, as in other version control systems, to map trigger event payloads to builds. Instead, Gerrit uses `Changes` which serves a similar purpose and functionality as pull requests. You can achieve the same functionality in Codefresh with our `CF_PULL_REQUEST` group of environment variables. 
+
+
+{: .table .table-bordered .table-hover}
+| Variable        | Description                                            |
+| --------------- | ------------------------------------------------------ |
+| {% raw %}`${{CF_PULL_REQUEST_ID}}`{% endraw %}             | The change identified by the `change-Id`.   |
+| {% raw %}`${{CF_PULL_REQUEST_TARGET}}`{% endraw %}         | The target branch of the pull request. <br>For Gerrit, use this in place of `Change target branch name`. |
+| {% raw %}`${{CF_PULL_REQUEST_COMMENT}}`{% endraw %}        | The comment added to the pull request.<br>For Gerrit, use this in place of `Change message`.  |
+| {% raw %}`${{CF_PULL_REQUEST_COMMENT_AUTHOR}}`{% endraw %} | The user who added the comment to the pull request.<br>For Gerrit, use this in place of `Change author`.  |
+
+
 ## User-defined variables
 
 User variables can be defined at 6 levels:
@@ -267,15 +288,15 @@ This means that when you use it you **don't** need any dollar signs for the vari
 cf_export $MY_VAR # Don't do this
 cf_export MY_VAR # Correct syntax
 ```
-<!---
-<br>
 
-#### Encrypting variables within `cf_export`
 
-Encrypt variables within `cf_export` by defining the `--mask` flag.  
-Values of encrypted variables in `cf_export` commands are replaced with asterisks in the Build variable list.  
 
-Here is an example with standard and encrypted versions of the same variable in `cf_export` commands.
+#### Masking variables within `cf_export`
+
+Mask variables within `cf_export` by defining the `--mask` flag.  
+Values of masked variables in `cf_export` commands are replaced with asterisks in the build logs. This helps to ensure that sensitive information is not exposed also in the variables list, in addition to the logs. 
+
+Here is an example with standard and masked versions of the same variable in `cf_export` commands.
 
 {% highlight yaml %}
 {% raw %}
@@ -292,9 +313,8 @@ steps:
 {% endraw %}      
 {% endhighlight %}
 
--->
 
-<br>
+
 
 #### Export variables to all steps with `cf_export`
 
@@ -306,11 +326,9 @@ export MY_VAR='example' # Makes MY_VAR available in this step only
 cf_export MY_VAR='example' # Makes MY_VAR available also to all steps after this one
 ```
 
+There is nothing really magic about `cf_export`. It is a normal script. You can see its contents on your own by entering the command `cat /codefresh/volume/cf_export` on any [Codefresh freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/) inside a pipeline.
 
-There is nothing really magical about `cf_export`. It is a normal script. You can see its contents on your own by entering the command `cat /codefresh/volume/cf_export` on any [Codefresh freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/) inside a pipeline. 
-
-For more information on its limitations, see the [troubleshooting page]({{site.baseurl}}/docs/troubleshooting/common-issues/cf-export-limitations/).
-
+For more information on its limitations, see the [troubleshooting page]({{site.baseurl}}/docs/kb/articles/cf-export-limitations/).
 
  
 ### Directly writing to the file

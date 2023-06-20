@@ -54,7 +54,7 @@
 - title: Dashboards & insights
   url: "/dashboards"
   pages:
-    - title: GitOps Overview dashboard
+    - title: Home dashboard
       url: "/home-dashboard"
     - title: DORA metrics
       url: "/dora-metrics"
@@ -319,6 +319,8 @@
           url: "/jfrog" 
         - title: Quay Registry
           url: "/quay"
+    - title: Gerrit Git provider integration
+      url: "/gerrit-integration"
 
 - title: Deployments
   url: "/deployments"
@@ -372,6 +374,17 @@
       url: "/introduction-to-codefresh-pipelines"
     - title: Creating pipelines
       url: "/pipelines"
+    - title: Configuration for pipelines
+      url: "/configuration"
+      sub-pages:
+        - title: Global pipeline settings
+          url: "/pipeline-settings"          
+        - title: Shared configuration
+          url: "/shared-configuration"
+        - title: Secrets for pipelines
+          url: "/secrets-store"  
+        - title: Public logs and status badges
+          url: "/build-status"  
     - title: Steps in pipelines
       url: "/steps"
       sub-pages:
@@ -432,17 +445,6 @@
       url: "/deployment-environments"
     - title: Running pipelines locally
       url: "/running-pipelines-locally"
-    - title: Configuration for pipelines
-      url: "/configuration"
-      sub-pages:
-        - title: Global pipeline settings
-          url: "/pipeline-settings"          
-        - title: Shared configuration
-          url: "/shared-configuration"
-        - title: Secrets for pipelines
-          url: "/secrets-store"  
-        - title: Public logs and status badges
-          url: "/build-status"
     - title: Service containers
       url: "/service-containers"
     - title: Docker image metadata
@@ -496,19 +498,28 @@
       url: "/behind-the-firewall"
     - title: Runner
       url: "/codefresh-runner"
-    - title: On-Premises installation & configuration
-      url: "/codefresh-on-prem"
-    - title: On-Premises upgrade
-      url: "/codefresh-on-prem-upgrade"
+    - title: On-premises
+      url: 
+      sub-pages:    
+        - title: Platform installation & configuration
+          url: "/codefresh-on-prem"
+        - title: Platform upgrade
+          url: "/codefresh-on-prem-upgrade"
+        - title: Feature management
+          url: "/on-prem-feature-management"  
     - title: GitOps
       url: 
       sub-pages:
         - title: Hosted GitOps Runtime
           url: "/hosted-runtime" 
         - title: Hybrid GitOps Runtime
-          url: "/hybrid-gitops"  
+          url: "/hybrid-gitops-helm-installation" 
+        - title: On-premises GitOps Runtime
+          url: "/on-prem-gitops-runtime-install"  
         - title: Managing & monitoring GitOps Runtimes
           url: "/monitor-manage-runtimes"
+        - title: Shared Configuration Repository
+          url: "/shared-configuration"
         - title: Add external clusters to GitOps Runtimes
           url: "/managed-cluster" 
         - title: Add Git Sources to to GitOps Runtimes
@@ -589,18 +600,14 @@
       url: "/git-tokens"
     - title: Secrets
       url: "/secrets"   
-    - title: Shared configuration repo
-      url: "/shared-configuration"
 
 - title: What's new
   url: "/whats-new"
   pages:
-    - title: Release notes
-      url: "/release-notes/"
-    - title: Changelog
+    - title: SaaS
       url: "/changelog"
-    - title: GitOps what's new
-      url: "/gitops-whats-new"
+    - title: On-premises
+      url: "/on-prem-release-notes"
 
 - title: Codefresh New Experience
   url: "/new-codefresh"
@@ -610,7 +617,8 @@
     - title: Navigation quick reference
       url: "/menu-navigation"
     - title: Documentation changes
-      url: "/doc-changes"
+      url: "/doc-changes"       
+
 
 - title: Incubation
   url: "/incubation"
@@ -622,60 +630,15 @@
     - title: ARM architecture support
       url: "/arm-support"
   
-- title: Troubleshooting
-  url: "/troubleshooting"
+- title: Knowledge Base
+  url: "/kb"
   pages:
     - title: Common Issues
       url: "/common-issues"
-      sub-pages:
-        - title: Can't find your organization repositories
-          url: "/cant-find-your-organization-repositories"
-        - title: Can’t find your private repositories
-          url: "/cant-find-your-private-repositories"
-        - title: 'Clone step failed: Command [git checkout $REVISION] exited with code [1]'
-          url: "/git-clone-step-issue"
-        - title: Handling commit messages with a quote character
-          url: "/handling-commit-messages-with-quotes"
-        - title: Docker image does not exist or no pull access
-          url: "/the-docker-image-does-not-exist-or-no-pull-access"
-        - title: 'Build step: No such file or directory'
-          url: "/build-step-no-such-file-or-directory"
-        - title: No Dockerfile found
-          url: "/no-dockerfile-found"
-        - title: Failed to create container of image
-          url: "/create-container-failure"
-        - title: Failed to tag image
-          url: "/could-not-tag-image"
-        - title: Error Code 137
-          url: "/error-code-137"
-        - title: Too many requests
-          url: "/dockerhub-rate-limit"
-        - title: Restoring data from pre-existing image hangs on
-          url: "/restoring-data-from-pre-existing-image-hangs-on"
-        - title: Disabling codefresh caching mechanisms
-          url: "/disabling-codefresh-caching-mechanisms"
-        - title: Pinning codefresh.yml for multi-git triggers
-          url: "/multi-git-triggers"
-        - title: Workflow terminated by the system
-          url: "/workflow-terminated-by-system"
-        - title: cf_export limitations
-          url: "/cf-export-limitations"
-        - title: Validation port warnings
-          url: "/validation-port-warnings"
-        - title: Forbidden Kubernetes resources
-          url: "/forbidden-cluster-resources"
-        - title: How to use SSH keys in freestyle steps
-          url: "using-ssh-keys"
-        - title: Failed to get accounts clusters during workflow
-          url: "/failed-to-get-accounts-clusters-during-workflow"
-        - title: Paging issues for builds and images
-          url: "/paging-issues-builds-images"
-    - title: Deprecating personal Git integrations
-      url: "/personal-git-deprecation"
-    - title: GitOps runtimes
-      url: "/runtime-issues"
-
-
+    - title: How Tos
+      url: "/how-to"
+    - title: Troubleshooting
+      url: "/troubleshooting"
 
 - title: Terms and Privacy Policy
   url: "/terms-and-privacy-policy"
@@ -686,5 +649,7 @@
       url: "/privacy-policy"
     - title: Service Commitment
       url: "/sla"
+    - title: Codefresh SLA Definitions
+      url: "/codefresh-sla-definitions"
 
 

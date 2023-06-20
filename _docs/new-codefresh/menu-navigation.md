@@ -367,12 +367,6 @@ tr {
     <tr>
         <td></td>
         <td></td>
-        <td><b>Kubernetes > Monitor</b></td>
-        <td>??</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
         <td><b>Helm Releases</b></td>
         <td>No change</td>
     </tr>
@@ -666,7 +660,7 @@ tr {
         <td><b>Home</b></td>
         <td>></td>
         <td></td>
-        <td>Moved to OPS<br>Renamed as GitOps Overview</td>
+        <td>Moved from OPS<br>Renamed as Home</td>
     </tr>
     <tr>
         <td><b>INSIGHTS</b></td>

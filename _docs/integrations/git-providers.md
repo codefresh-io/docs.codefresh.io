@@ -26,13 +26,15 @@ Currently Codefresh supports:
 * GitLab On-premises
 * Azure DevOps Git
 * Atlassian Stash (old version of Bibucket Server)
+* Gerrit
+
 
 
 Atlassian Stash/Bitbucket server, as well as the on-premises version of GitLab and GitHub, are only available to Codefresh enterprise customers.
 
 ## Adding more Git providers to your Codefresh Account
 
-By default, you have direct access to Git repositories that exist in the Git provider that you used while signing up for Codefresh. You can easily create Codefresh projects that checkout code from that Git provider without any extra configurations.
+By default, you have direct access to Git repositories that exist in the Git provider you used while signing up for Codefresh. You can easily create Codefresh projects that check out code from that Git provider without any extra configurations.
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
 1. From Configuration in the sidebar, select [**Pipeline Integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
@@ -88,6 +90,7 @@ For more information on generating SSH keys and adding your public key to your V
 * [GitLab documentation](https://docs.gitlab.com/ee/ssh/#generating-a-new-ssh-key-pair){:target="\_blank"}
 * [Bitbucket documentation](https://confluence.atlassian.com/bitbucket/set-up-an-ssh-key-728138079.html){:target="\_blank"}
 * [Azure documentation](https://docs.microsoft.com/en-us/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops&tabs=current-page){:target="\_blank"}
+* [Gerrit documentation](http://ec2-52-87-125-161.compute-1.amazonaws.com:8080/Documentation/user-upload.html#configure_ssh_public_keys){:target="\_blank"}
 
 ## GitHub
 
@@ -183,9 +186,9 @@ An alternative way to authenticate with Github is via the App mechanism.
 1. Accept the permissions, and in the next screen, define the repositories that you need Codefresh to access.  
   From the URL of the browser, note the ending number which is your installation ID.  
   For example if the URL is `https://github.com/settings/installations/10042353` then your installation number is `10042353`.
-1. In the Codefresh UI, go to  [Pipeline Integrations > Git](https://g.codefresh.io/account-admin/account-conf/integration/git){:target="\_blank"}. 
+1. In the Codefresh UI, follow the steps to [add a new Git provider](#adding-more-git-providers-to-your-codefresh-account). 
 1. From the **Add Git Provider** dropdown, select **Github App**.  
-  For the required fields use: 
+1. Define the settings:
   * **Installation ID** which you noted down in _step 5_.
   * **App ID**, which you noted down in _step 4_.
   * **Private key**, which is the content of the file your created in step 4, converted to base64.
@@ -340,6 +343,67 @@ use any [external secrets that you have defined]({{site.baseurl}}/docs/integrati
 with the same syntax [shown in pipelines]({{site.baseurl}}/docs/pipelines/configuration/secrets-store/).
 
 For example if you already have a `token` on a resource call `git-credentials` you can put in the token field the expression {% raw %}`${{secrets.git-credentials@token}}`{% endraw %}.
+
+## Gerrit
+Codefresh supports integration with Gerrit, the open-source web-based code review tool for Git repositories. 
+By integrating Gerrit in Codefresh, you can create pipelines to [trigger]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/#gerrit-trigger-events) builds and tests whenever a new change is pushed to Git repos hosted in Gerrit, and see the status of builds and tests within Gerrit.
+
+Gerrit has no explicit concept of pull requests, as in other version control systems, to map trigger event payloads to builds.  
+Instead, Gerrit uses `Changes` which serves a similar purpose and functionality as pull requests.
+
+You can achieve the same functionality in Codefresh with our `CF_PULL_REQUEST` group of environment variables. For the exact variables you can map to Gerrit `Changes`, see [System variables]({{site.baseurl}}/docs/pipelines/variables/#system-variables) and also [Gerrit changeId & change message variables]({{site.baseurl}}/docs/pipelines/variables/#gerrit-changeid--change-message-variables).
+
+### Step 1: Set up permissions for Codefresh user in Gerrit
+
+Gerrit has a special **Service Users** access-group for CI systems and other bots. We recommend adding your Codefresh user in Gerrit to this group, and setting the required permissions.
+
+1. Create a profile in Gerrit's web interface for your Codefresh user.
+1. Add the user to the predefined Service Users access group:
+  1. Navigate to **Browse > Groups**, and select **Service Users**.
+  1. Click the **Members** tab, and click **Add Members**.
+  1. Type the email address of the Codefresh user, and select the user from the search results.
+  1. Click **Add**.
+1. Browse to **Repositories** and select the repository for which to set permissions, and do the following:
+1. Select **Access > Edit**, and set the following permissions:
+    * **Reference**: Set to **refs/***
+        * **Read**: **ALLOW** for Service Users to read branches.  
+          Note that you can also set this permission at the level of **All projects**.
+
+        * **Owner**: **ALLOW** for Service Users to create webhooks for pipeline triggers.   
+          `webhooks.config` in `refs/meta/config` requires [owner-level permissions](https://gerrit-review.googlesource.com/Documentation/access-control.html#category_submit){:target="\_blank"}.  
+          Note that this permission must be set only at the _repository-level_.  
+
+        * **Label Verified**: **-1**, **+1** for Service Users.  
+          Gives permission to apply the `Verified` label, which is the typical label for CI, with either a `-1` or `+1` value.  
+          Note that you can also set this permission at the level of **All projects**.
+
+1. Continue with [Step 2: Generate password for user in Gerrit](#step-2-generate-password-for-user-in-gerrit).
+
+### Step 2: Generate password for user in Gerrit
+Generate an HTTP Password in Gerrit as an access token to authenticate HTTP requests. 
+
+>**NOTE**:  
+Regenerating the HTTP Password automatically revokes the current password. 
+
+1. Log in to Gerrit with the Codefresh user you created in _Step 1_.
+1. In the toolbar, click the **Settings** icon.
+1. From the sidebar, select **HTTP Credentials**, and under HTTP Credentials on the right, click **Generate New Password**.
+1. Copy the generated password to a secure location as you will need it to set up the Gerrit integration in Codefresh.
+1. Continue with [Step 3: Define pipeline integration settings for Gerrit in Codefresh](#step-3-define-pipeline-integration-settings-for-gerrit-in-codefresh).
+
+### Step 3: Define pipeline integration settings for Gerrit in Codefresh
+As the final step to use Gerrit as your Git provider, define integration settings for Gerrit in Codefresh.
+
+1. In the Codefresh UI, follow the steps to [add a new Git provider](#adding-more-git-providers-to-your-codefresh-account). 
+1. From the **Add Git Provider** dropdown, select **Gerrit**.  
+1. Define the settings:
+  * **Name**: The name for your Gerrit integration. This is the name that will be used in pipelines to reference the Gerrit integration.
+  * **Host URL**: The URL of your website with the Gerrit instance, for example, `https://git.company-name.io`.
+  * **Username**: The username of your Gerrit account.
+  * **Password**: The password you generated to use as the access token to authenticate HTTP requests to Gerrit.
+1. Click **Save**.
+
+
 
 ## Using your Git provider
 

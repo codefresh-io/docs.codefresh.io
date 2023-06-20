@@ -8,17 +8,13 @@ toc: true
 ---
 
 
-View activity for Codefresh pipelines in in the **Builds** tab. 
+View activity for Codefresh pipelines in the **Builds** tab. 
 * Global build view: The default view, displays builds for all pipelines for all projects across your organization.
 * Project build view: Selecting a project displays the builds for the pipelines in the project.
  
-As a user, you can see builds from all pipelines you have access to. If your permissions do not include access to specific pipelines, you will not see builds from those pipelines.  
+As a user, you can see builds from all pipelines you have access to. If your permissions do not include access to specific pipelines, you will not see builds from those pipelines. 
 
-## Viewing pipeline status
-
-Each screen contains all builds sorted from the most recent to the oldest. The first time you visit
-the screen there are no filters defined. To narrow the list, use the filters on the top
-of the screen.
+The Builds page for a pipeline displays by default all builds sorted from the most recent to the oldest. To narrow the list, you can use the date range filter, and additional filters at the top of the page.
 
 {% include 
 image.html 
@@ -30,22 +26,39 @@ caption="Pipeline activity"
 max-width="80%"
 %}
 
+In addition, the [Pipelines Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/#pipelines-dashboard) serves as a centralized location to track pipelines performance by KPIs. 
+
+## Starring projects and pipelines as favorites
+
+Mark frequently used or high-priority pipelines as favorites in the Projects and Pipelines pages. This allows for easy and quick access to important projects or pipelines.  
+
+Favorites serve as predefined filters in the Pipelines Dashboard, enabling you to track and analyze their performance.  
+When you star a project or pipeline as a favorite, the Favorite filter in the Pipelines Dashboard icon changes from {::nomarkdown}<img src="../../../images/icons/icon-mark-favorite.png?display=inline-block">{:/} to {::nomarkdown}<img src="../../../images/icons/icon-fav-starred.png?display=inline-block">.{:/} Click on it to filter by favorite projects and pipelines. 
+
+## Viewing status for pipeline builds
+
+Each build's status is displayed beneath the build details, identifiable by a distinct icon. Refer to the table below for a description of the various statuses associated with pipeline builds.
+
+
+{: .table .table-bordered .table-hover}
+| Pipeline Build Status Icon &nbsp; &nbsp; &nbsp;   | Description   |
+| ------------------------| ---------------- |
+|{::nomarkdown}<img src="../../../images/icons/pipeline-build-running.png" display=inline-block/> {:/}| Pipeline build is currently running. |
+|{::nomarkdown}<img src="../../../images/icons/pipeline-build-successful.png" display=inline-block/> {:/}| Pipeline build completed successfully.  |
+|{::nomarkdown}<img src="../../../images/icons/pipeline-build-delayed.png" display=inline-block/> {:/}| Pipeline build run has been delayed as there are no free builders. <br>A build can be delayed for a maximum of seven days. Each account can have up to a 1000 delayed builds at any time. <br>{::nomarkdown}<b>NOTE</b>: <ul><li>Builds that are delayed for more than seven days are terminated with a _Delay time limit exceeded_ reason. </li><li>If the total number of delayed builds for an account exceed 1000, older builds are terminated with a <i>Maximum delayed workflows exceeded</i> reason.</li></ul>{:/}|
+|{::nomarkdown}<img src="../../../images/icons/pipeline-build-pending-approval.png" display=inline-block/> {:/}| Pipeline build is pending approval. |
+|{::nomarkdown}<img src="../../../images/icons/pipeline-build-denied.png" display=inline-block/> {:/}| Pipeline build pending approval has been denied approval. |
+|{::nomarkdown}<img src="../../../images/icons/pipeline-build-terminating.png" display=inline-block/> {:/}| Pipeline build is gracefully terminating execution.|
+|{::nomarkdown}<img src="../../../images/icons/pipeline-build-terminated.png" display=inline-block/> {:/}| Pipeline build execution has been manually or automatically terminated. |
+|{::nomarkdown}<img src="../../../images/icons/pipeline-build-failed-error.png" display=inline-block/> {:/}| Pipeline build execution has failed because of errors. |
 
 
 ### Applying filters on the build view
 
-Directly above the list you can find several filters.
+The **Add Filters** option allows you to filter the list of builds by additional criteria, including build status.
 
-At the most basic level you can choose between
+At the most basic level, you can filter by status, choosing between Running/Pending/Delayed builds.  
 
- * *Running* builds that are currently executing
- * *Pending* builds which are queued and waiting to start
- * *Delayed* builds which cannot run yet, because there are no free pipeline builders.  
-   A build can be delayed for a maximum of seven days, and each account can have up to 1000 delayed builds at any time.    
-    * Builds that are delayed for more than seven days are terminated with a _Delay time limit exceeded_ reason.  
-    * If the total number of delayed builds exceed 1000, older builds are terminated with a _Maximum delayed workflows exceeded_ reason.
-
- * *All* builds regardless of running stage (this is the default)
 
 You can further filter the builds by choosing the various filter types that specify the build job.
 
@@ -77,7 +90,7 @@ The available filters are:
 
 
 Notice that all filters are multiple-choice so you can select multiple values for each filter category.
-At any given point you can see all the active filters on top of the screen.
+At any given point you can see all the active filters at the top of the page the screen.
 
 {% include 
 image.html 
@@ -162,7 +175,7 @@ There are also extra options if you click the small "3-dot" menu button on the r
 - View the images produced (and consequently launch an on-demand [test environment]({{site.baseurl}}/docs/quick-start/ci-quick-start/on-demand-environments/#launch-a-docker-image-using-codefresh)
 
 Notice that if you restart a pipeline it will trigger with the exact settings it *originally* had. So 
-if this was a manual trigger where you [disabled caching]({{site.baseurl}}/docs/troubleshooting/common-issues/disabling-codefresh-caching-mechanisms/) or changed the [notification options](#monitoring-pipelines-that-check-pull-requests), the new
+if this was a manual trigger where you [disabled caching]({{site.baseurl}}/docs/kb/articles/disabling-codefresh-caching-mechanisms/) or changed the [notification options](#monitoring-pipelines-that-check-pull-requests), the new
 execution will still honor those settings (even if you have changed them for later builds).
 
 An extra button for test reports will be visible if you are using the [test report feature]({{site.baseurl}}/docs/testing/test-reports/) of Codefresh.
@@ -286,7 +299,7 @@ A variable with a strikethrough indicates an override by the same variable in a 
 
   
 
-### Reviewing the yaml for the pipeline
+### Reviewing the YAML for the pipeline
 
 From the step details you can also click on the yaml tab to see the yaml segment for that individual step:
 
