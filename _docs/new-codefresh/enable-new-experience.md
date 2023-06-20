@@ -24,7 +24,7 @@ As a Codefresh admin, you can enable the Codefresh New Experience for a specific
 **To restore the previous version:**  
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon and then select **Account Settings**.
 1. From General in the sidebar, select **Organization Information**. 
-1. Scroll down to Switch to Classic Codefresh, and click **Return to previous version**.
+1. Scroll down to **Switch to Classic Codefresh**, and click **Return to previous version**.
 
 ## Related articles
 [Codefresh for CI]({{site.baseurl}}/docs/getting-started/ci-codefresh/)  
