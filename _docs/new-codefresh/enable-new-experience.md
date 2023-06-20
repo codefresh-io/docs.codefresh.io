@@ -1,5 +1,5 @@
 ---
-title: "Codefresh New Experience"
+title: "The Codefresh New Experience"
 description: "Enable the Codefresh New Experience"
 toc: true
 ---
@@ -15,10 +15,16 @@ Here are a few highlights:
 
 
 ## Enable the Codefresh New Experience
-As a Codefresh admin, you can enable the Codefresh New Experience for an account by selecting **ProjectPne**.
+As a Codefresh admin, you can enable the Codefresh New Experience for a specific account. You also flexibility to switch back to the previous version of Codefresh at any time. 
 
-1. From your avatar drop-down at the top right, select **Admin Panel**.
-1. In the sidebar, select **Accounts**, and from the **System Type** column, select **ProjectOne**.
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon and then select **Account Settings**.
+1. From General in the sidebar, select **Account Information**. 
+1. Click **Enable the New Experience**.
+
+**To restore the previous version:**  
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon and then select **Account Settings**.
+1. From General in the sidebar, select **Organization Information**. 
+1. Scroll down to Switch to Classic Codefresh, and click **Return to previous version**.
 
 ## Related articles
 [Codefresh for CI]({{site.baseurl}}/docs/getting-started/ci-codefresh/)  
