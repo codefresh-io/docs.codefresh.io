@@ -26,6 +26,8 @@ Currently Codefresh supports:
 * GitLab On-premises
 * Azure DevOps Git
 * Atlassian Stash (old version of Bibucket Server)
+* Gerrit
+
 
 
 Atlassian Stash/Bitbucket server, as well as the on-premises version of GitLab and GitHub, are only available to Codefresh enterprise customers.
@@ -88,6 +90,7 @@ For more information on generating SSH keys and adding your public key to your V
 * [GitLab documentation](https://docs.gitlab.com/ee/ssh/#generating-a-new-ssh-key-pair){:target="\_blank"}
 * [Bitbucket documentation](https://confluence.atlassian.com/bitbucket/set-up-an-ssh-key-728138079.html){:target="\_blank"}
 * [Azure documentation](https://docs.microsoft.com/en-us/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops&tabs=current-page){:target="\_blank"}
+* [Gerrit documentation](http://ec2-52-87-125-161.compute-1.amazonaws.com:8080/Documentation/user-upload.html#configure_ssh_public_keys){:target="\_blank"}
 
 ## GitHub
 
@@ -360,12 +363,20 @@ Gerrit has a special **Service Users** access-group for CI systems and other bot
   1. Click the **Members** tab, and click **Add Members**.
   1. Type the email address of the Codefresh user, and select the user from the search results.
   1. Click **Add**.
-1. Browse to **Repositories** and select the repository for which to set permissions.
+1. Browse to **Repositories** and select the repository for which to set permissions, and do the following:
 1. Select **Access > Edit**, and set the following permissions:
     * **Reference**: Set to **refs/***
-      * **Read**: **ALLOW** for Service Users
-      * **Owner**: **ALLOW** for Service Users as `webhooks.config` in `refs/meta/config` requires [owner-level permissions](https://gerrit-review.googlesource.com/Documentation/access-control.html#category_submit){:target="\_blank"}.
-      * **Label Verified**: **-1**, **+1** for Service Users. Gives permission to apply the `Verified` label with either a `-1` or `+1` value.
+        * **Read**: **ALLOW** for Service Users to read branches.  
+          Note that you can also set this permission at the level of **All projects**.
+
+        * **Owner**: **ALLOW** for Service Users to create webhooks for pipeline triggers.   
+          `webhooks.config` in `refs/meta/config` requires [owner-level permissions](https://gerrit-review.googlesource.com/Documentation/access-control.html#category_submit){:target="\_blank"}.  
+          Note that this permission must be set only at the _repository-level_.  
+
+        * **Label Verified**: **-1**, **+1** for Service Users.  
+          Gives permission to apply the `Verified` label, which is the typical label for CI, with either a `-1` or `+1` value.  
+          Note that you can also set this permission at the level of **All projects**.
+
 1. Continue with [Step 2: Generate password for user in Gerrit](#step-2-generate-password-for-user-in-gerrit).
 
 ### Step 2: Generate password for user in Gerrit
