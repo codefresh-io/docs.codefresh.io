@@ -26,6 +26,7 @@ Currently Codefresh supports:
 * GitLab On-premises
 * Azure DevOps Git
 * Atlassian Stash (old version of Bibucket Server)
+* Gerrit
 
 
 Atlassian Stash/Bitbucket server, as well as the on-premises version of GitLab and GitHub, are only available to Codefresh enterprise customers.
@@ -88,6 +89,7 @@ For more information on generating SSH keys and adding your public key to your V
 * [GitLab documentation](https://docs.gitlab.com/ee/ssh/#generating-a-new-ssh-key-pair){:target="\_blank"}
 * [Bitbucket documentation](https://confluence.atlassian.com/bitbucket/set-up-an-ssh-key-728138079.html){:target="\_blank"}
 * [Azure documentation](https://docs.microsoft.com/en-us/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops&tabs=current-page){:target="\_blank"}
+* [Gerrit documentation](http://ec2-52-87-125-161.compute-1.amazonaws.com:8080/Documentation/user-upload.html#configure_ssh_public_keys){:target="\_blank"}
 
 ## GitHub
 
@@ -367,8 +369,7 @@ Gerrit has a special **Service Users** access-group for CI systems and other bot
           Note that you can also set this permission at the level of **All projects**.
 
         * **Owner**: **ALLOW** for Service Users to create webhooks for pipeline triggers.   
-          `webhooks.config` in `refs/meta/config` requires [owner-level permissions](https://gerrit-review.googlesource.com/Documentation/access-control.html#category_submit){:target="\_blank"}.
-          
+          `webhooks.config` in `refs/meta/config` requires [owner-level permissions](https://gerrit-review.googlesource.com/Documentation/access-control.html#category_submit){:target="\_blank"}.  
           Note that this permission must be set only at the _repository-level_.  
 
         * **Label Verified**: **-1**, **+1** for Service Users.  
