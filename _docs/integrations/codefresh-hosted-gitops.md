@@ -92,7 +92,7 @@ alt="Integrations in Hosted GitOps"
 max-width="60%" 
 %}
 
-### Hosted vs. hybrid environments
+## Hosted vs. hybrid environments
 
 The table below highlights the main differences between hosted and hybrid environments.
 
