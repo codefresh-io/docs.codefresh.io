@@ -92,5 +92,30 @@ alt="Integrations in Hosted GitOps"
 max-width="60%" 
 %}
 
+### Hosted vs. hybrid environments
+
+The table below highlights the main differences between hosted and hybrid environments.
+
+{: .table .table-bordered .table-hover}
+| Functionality           |Feature        |  Hosted                | Hybrid |
+| --------------          | --------------|--------------- | --------------- |
+| Runtime                 | Installation       | Provisioned by Codefresh   | Provisioned by customer       |
+|                         | Runtime cluster   |Managed by Codefresh       | Managed by customer       |
+|                         | Number per account | Only one runtime           | Multiple runtimes            |
+|                         | Upgrade            | Managed by Codefresh     | Managed by customer |
+|                         | External cluster   | Managed by customer        | Managed by customer         |
+|                         | Uninstall          | Managed by customer        | Managed by customer |
+| Argo CD                 |                    | Codefresh cluster          | Customer cluster  |
+| CI Ops                  | Delivery Pipelines |Not supported               | Supported  |
+|                         |Workflows           | Not supported              | Supported  |
+|                         |Workflow Templates  | Not supported              | Supported  |
+| CD  Ops                 |Applications        | Supported                  | Supported |
+|                         |Image enrichment    | Supported                  | Supported  |
+|                         | Rollouts           | Supported                  |  Supported  |
+|Integrations             |                    | Supported                  | Supported  |
+|Dashboards               |Home Analytics       | Hosted runtime and deployments|Runtimes, deployments, Delivery Pipelines |
+|                         |DORA metrics         | Supported                 |Supported        |
+|                         |Applications         | Supported                 |Supported        |
+
 ## Related articles
 [CI integrations with GitOps]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/)  
