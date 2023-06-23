@@ -95,6 +95,45 @@ kubectl annotate --overwrite crds $(kubectl get crd | grep argoproj.io | awk '{p
 kubectl annotate --overwrite crds $(kubectl get crd | grep argoproj.io | awk '{print $1}' | xargs) meta.helm.sh/release-namespace=$NAMESPACE
 ```
 
+## Using Terraform for installation
+
+You can also use Terraform to install a Codefresh runtime with the [Helm provider](https://registry.terraform.io/providers/hashicorp/helm/latest/docs).
+
+Here is an example
+
+```hcl
+resource "helm_release" "my_gitops_runtime" {
+  name = "my-codefresh-runtime"
+
+  repository       = "https://chartmuseum.codefresh.io/gitops-runtime"
+  chart            = "gitops-runtime"
+  namespace        = "my-codefresh-runtime"
+  version          = "0.2.13-alpha.1"
+  create_namespace = true
+  devel = true
+  set {
+    name  = "global.codefresh.accountId"
+    value = var.cf_account_id
+  }
+  set {
+    name  = "global.codefresh.userToken.token"
+    value = var.cf_token
+  }
+  set {
+    name  = "global.runtime.name"
+    value = "from-terraform"
+  }
+}
+```
+
+Feel free to user a different chart version and your own runtime name. You can get both values for Codefresh token and account ID from the Codefresh UI as explained in the previous section.
+
+By default the Codefresh runtime can deploy to the cluster it is installed on.
+You can also [use Terraform to connect additional]({{site.baseurl}}/docs/installation/gitops/managed-cluster/#add-a-managed-cluster-with-terraform) external clusters to your runtime.
+
+
+
+
 ## Image overrides for private registries
 If you use private registries, you need to override specific image values for the different subcharts and container images.
 We have a utility to help override image values for GitOps Runtimes. The utility creates values files that match the structure of the subcharts, allowing you to easily replace image registries. During chart installation, you can provide these values files to override the images, as needed.
