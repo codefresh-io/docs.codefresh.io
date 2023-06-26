@@ -53,14 +53,14 @@ Connect a CI platform/tool to Codefresh GitOps with an API token for the runtime
 
 Finally, add the enrichment step to your CI pipeline with the API token and integration information. Codefresh uses the integration name to get the corresponding Sealed Secret to securely access and retrieve the information for image enrichment.  
 
- [GitHub Action Codefresh report image](https://github.com/marketplace/actions/codefresh-report-image){:target="\_blank"} 
+ [GitHub Action Codefresh report image](https://github.com/marketplace/actions/codefresh-report-image){:target="\_blank"}  
  [Codefresh pipeline Codefresh report image](https://codefresh.io/steps/step/codefresh-report-image){:target="\_blank"}
 
 
 ### 4. View enriched image information
 Once deployed, view enriched information in the Codefresh UI:  
 * Go to [Images](https://g.codefresh.io/2.0/images){:target="\_blank"}
-* Go to the [Applications dashboard]((https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}  
+* Go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}  
 
 
 View:  
