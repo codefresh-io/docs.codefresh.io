@@ -38,7 +38,7 @@ Application definitions include the name, runtime, and the name of the YAML mani
 
 ## Application: General configuration settings
 
-General configuration settings define the source, destination, and sync policies for the application. 
+General configuration settings define the group to which the application belongs, source, destination, and sync policies for the application. 
 
 {% include 
    image.html 
@@ -49,6 +49,13 @@ General configuration settings define the source, destination, and sync policies
    caption="General configuration settings"
    max-width="70%" 
    %} 
+
+### Groups
+Optional. The group or groups to which to add the application.  
+Application Groups is a new view for applications. It allows you to collate multiple applications based on criteria meaningful to your organization, such as environment, or any other relevant attribute, and get a comprehensive and aggregated overview of their timelines.
+
+Select an existing group, or create a new application group by typing a name and pressing Enters.
+
 
 ### Source 
 The Git repository to be tracked for changes to the application's source code.  

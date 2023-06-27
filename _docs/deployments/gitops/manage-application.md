@@ -11,6 +11,9 @@ Application creation and deployment is one part of the continuous deployment/del
 * [Edit applications](#edit-application-definitions)  
   Optimize deployed applications by changing application definitions when needed.
 
+* View application groups
+
+
 * [Synchronize applications](#manually-synchronize-an-application)   
   Sync applications on-demand by manually applying sync options or selecting the resources to sync.
 
@@ -20,6 +23,7 @@ Application creation and deployment is one part of the continuous deployment/del
 
 * [Manage rollouts for deployments](#manage-rollouts-for-deployments)  
   Control ongoing rollouts by resuming indefinitely paused steps, promoting rollouts, aborting, restarting and retrying rollouts.  
+
 
 * [Delete applications](#delete-an-application)  
   Delete unused or legacy applications to avoid clutter and remove unnecessary resources.
@@ -92,6 +96,21 @@ Update General or Advanced configuration settings for a deployed application thr
 <br><br>
 {:/}
 
+
+## Manage application groups
+
+Clicking on an application group navigates to the timeline view specific to the group. 
+You can see the collective timeline of all applications within the group, instead of the individual source, health, or target information for each application.
+
+Once you assign an application to a group, you can:
+Add the application to other groups
+Remove the application from 
+Sync all applications within the group at once
+Ref
+
+
+Visibility across similar applications
+Application groups provide aggregated views of multiple applications at once. This streamlined representation saves time and effort by eliminating the need to navigate through individual application timelines separately.
 
 
 
