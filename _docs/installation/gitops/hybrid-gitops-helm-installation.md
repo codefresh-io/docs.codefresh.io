@@ -26,7 +26,7 @@ The Codefresh `values.yaml` is located [here](https://github.com/codefresh-io/gi
 **Notes & assumptions**  
 Quick installation assumes that:
 * You have set up a Git provider and the Shared Configuration Repository for your account. If these are not defined, you can define them _after_ installation from the Codefresh UI, when prompted to do so.  
-  See [Update Git credentials for GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#update-git-credentials-for-gitops-runtimes) and [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration-repo/)
+  See [Update Git credentials for GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#update-git-credentials-for-gitops-runtimes) and [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/)
 * Your cluster does not have [Argo project CRDs](#argo-project-crds).
 
 
