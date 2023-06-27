@@ -160,7 +160,7 @@ The Hybrid GitOps Runtime is optimal for organizations with security constraints
   max-width="70%"
 %}
 
-  For more information on Hybrid GitOps, see [Hybrid GitOps runtime requirements]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/#minimum-system-requirements) and [Installling Hybrid GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/).  
+  For more information on Hybrid GitOps, see [Hybrid GitOps Runtime requirements]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/#minimum-system-requirements) and  [Hybrid GitOps Runtime Runtime installation]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/).  
 
 
 
