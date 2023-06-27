@@ -9,7 +9,7 @@ redirect_from:
 toc: true
 ---
 
->ATTENTION:  
+>**ATTENTION**:  
   >We have transitioned to a [Helm-based installation for Hybrid GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/), for improved experience and performance.  
 
   >The CLI-based installation for Hybrid GitOps is now considered legacy. We will deprecate this installation mode permanently on August 1, 2023.
