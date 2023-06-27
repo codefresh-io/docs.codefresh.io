@@ -100,7 +100,7 @@ metadata:
 spec:
   project: default
   source: 
-    repoURL: <account's-isc-repository>
+    repoURL: <account's-shared-config-repository>
     path: resources # or shared-config/resources
     directory:
       include: '{all-runtimes-all-clusters/*.yaml,all-runtimes-all-clusters/**/*.yaml,runtimes/<runtime_name>/*.yaml,runtimes/<runtime_name>/**/*.yaml,control-planes/*.yaml,control-planes/**/*.yaml}'
