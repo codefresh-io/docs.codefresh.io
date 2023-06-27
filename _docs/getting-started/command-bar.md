@@ -63,7 +63,7 @@ Here are a few keyboard shortcuts to work with Global Search & Navigation.
  
 
 ## Find actions & configuration settings
-In addition to quickly navigating to specific entities such as Builds and Pipelines, administrators can navigate to configuration settings such as Single Sign-On, and installation actions.
+In addition to quickly navigating to specific entities such as Projects and Pipelines, administrators can navigate to configuration settings for Single Sign-On, and installation actions.
 
 {% include 
 image.html 
