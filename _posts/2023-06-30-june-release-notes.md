@@ -5,17 +5,6 @@ description: "Release Notes for Codefresh Pipelines and GitOps"
 
 ## Features & enhancements
 
-### Codefresh New Experience
-Unveiling the Codefresh New Experience, bringing you new navigation, features, and functionality, with seamless access to both Codefresh Pipelines and Codefresh GitOps.  
-As a Codefresh admin, you can enable the Codefresh New Experience for a specific account. You also have the flexibility to switch back to the previous version of Codefresh at any time.
-
-Here are a few highlights:
-* Pipelines Dashboard: Our Home dashboard includes a dedicated Pipelines Dashboard to easily monitor pipeline metrics and performance to gain insights and optimize pipeline definitions. Read [more]({{site.baseurl}}/docs/dashboards/home-dashboard/#pipelines-dashboard). 
-* Images Dashboard: We have redesigned the Images dashboard with a new layout, grouping images by repository.
-* Global Search & Navigation: Quickly locate specific features or functionalities in Codefresh while staying where you are. Read [more](#global-search--navigation) below.
-* Enhanced navigation: Navigation options are categorized by user options (accessed by clicking your Avatar in the toolbar), account-level administration and configuration, and features and functionality.
-
-For details, see [The Codefresh New Experience]({{site.baseurl}}/docs/new-codefresh/enable-new-experience/).
 
 ### Global Search & Navigation
 Boost your Codefresh experience with our latest feature, Global Search & Navigation! Be it navigation, actions such as switching accounts, or finding entities such as pipelines or builds, Global Search & Navigation lets you get to what and where you need without extra clicks.
@@ -31,7 +20,8 @@ max-width="60%"
 %}
 
 **Search & find**  
-With Global Search & Navigation, you can easily monitor and find resources in your projects, pipelines, and builds, with frequently used entities organized into categories for quick search. Easily find a specific project, pipeline, or build, or browse them all.
+With Global Search & Navigation, you can easily monitor and find resources in your projects and pipelines, with frequently used entities organized into categories for quick search. Easily find a specific project, or pipeline, or browse them all.
+Coming soon: we'll be adding applications to 
 
 In addition, Global Search & Navigation pulls up links to relevant information from our documentation that may be useful within your current context, making it even easier to find what you need.
 
@@ -78,9 +68,7 @@ For details, see [Viewing status for pipeline builds]({{site.baseurl}}/docs/pipe
 ### GitOps: Helm-based Hybrid & On-premises Runtimes
 As part of our ongoing commitment to improving efficiency and simplifying installations, we have transitioned from the previous Kustomize-based installation method to a native Kubernetes installation using Helm charts. This change simplifies the installation process and aligns with industry-standard practices for Kubernetes deployments. 
 
-
-
-* CLI deprecation for Hybrid GitOps  
+* Helm installation for Hybrid GitOps  
   Moving forward, we are deprecating the CLI-based installation method for Hybrid GitOps Runtimes. Helm provides better control and ensures compatibility, enabling you to seamlessly manage GitOps Runtimes deployments across various clusters.  
   For details, see [Hybrid GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/).
 
@@ -90,33 +78,32 @@ As part of our ongoing commitment to improving efficiency and simplifying instal
   For details, see [On-premises GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/on-prem-gitops-runtime-install/).
 
 
-
 ## Bug fixes
 **General**  
-On-premises ony Codefresh Runner installation fails with Component existed with status code 1 error. (Mikhail)
-Unable to add users to Codefresh via team sync for Okta.
+* On-premises ony Codefresh Runner installation fails with Component existed with status code 1 error. (Mikhail)
+* Unable to add users to Codefresh via team sync for Okta.
 
 
 **Pipelines**  
 * Log in to Codefresh results in error: `Failed to authenticate the user. Please try again in a few minutes` OR `token is not valid because it was revoked`.
 * Git operations in pipeline build fails on authentication leading to build failures (Pipeline build fails due to  uilds Git operations in JSON web token decode failure results Git operations failure in builds).
 * ??Security vulnerability with private key of Codefresh GitHub App.
-* Pipeline builds terminate with error message: `Pipeline could be executed because retry attempts limit has been exceeded...`. (Soifer)
+* Pipeline builds terminate with error message: `Pipeline could not be executed because retry attempts limit has been exceeded...`.
 * Discrepancy in list of builds returned when running `GET {{baseUrl/workflow?pipeline=[pipeline-id]}}` query. 
-* Shallow clone for a specific branch with `depth` argument results in error: `pathspec 'test' did not match any file(s) known to git`. (Eti)
+* Shallow clone for a specific revision with `depth` argument results in error: `pathspec 'test' did not match any file(s) known to git`.
 * Composition stops randomly with error:`Could not get status for container <container-name>`.
-* Cross-account ECR pull in `freestyle` step fails with `(HTTP code 500) server error...`. (Maizel)
+* Cross-account ECR pull in `freestyle` step fails with `(HTTP code 500) server error...`. 
 * 404 errors on clicking documentation links in Build > Triggers.
-* In the Builds page, Output tab for a step displays `loading` instead of the step logs. (Sasha)
+* In the Builds page, Output tab for a step displays `loading` instead of the step logs.
 * Creating a Git trigger for a repo name containing spaces fails with error: `Failed to create trigger...fails to match the required pattern...`.
-* Unable to set `requiredAvailableStorage` programmatically for Hybrid Pipeline Runtimes. (Yoni Koren)
+* Unable to set `requiredAvailableStorage` programmatically for Hybrid Pipeline Runtimes. 
 
 
 **GitOps**  
 * Failure to clone large repo.
-* Health status for Hosted GitOps Runtime is DEGRADED, while applications for the same Runtime are Healthy.
+* ???Health status for Hosted GitOps Runtime is DEGRADED, while applications for the same Runtime are Healthy.
 * (On premises) Rollouts Reporter for managed cluster uses SaaS instead of on-premises URL.
-* Inconsistent status for same application in the Home > GitOps Dashboard and in the GitOps Apps dashboard.
+* Different statuses for same application in the **Home > GitOps Dashboard** and in the **GitOps Apps** dashboard.
 * Images not displayed in Images dashboard for GitLab Git provider (Denis)
 
 
