@@ -8,7 +8,27 @@ toc: true
 ---
 
 
-A Codefresh account with a Hosted or a Hybrid GitOps runtime can store configuration manifests for account-level resources in a Git repository. This repository can be shared with other runtimes in the same account, avoiding the need to create and maintain different configuration manifests for every GitOps Runtime.
+A Codefresh account with a Hosted or a Hybrid GitOps runtime can store configuration manifests for account-level resources in a Git repository. This repository, the Shared Configuration Repository can be shared with other GitOps Runtimes in the same account, avoiding the need to create and maintain different configuration manifests for every GitOps Runtime. At the same time, you also have the flexibility to store resources unique to specific Runtimes without affecting other Runtimes. 
+
+GitOps integration 
+Users can define application manifests that reference the shared configuration files and specify the clusters to which the resources should be deployed. The Git Source application per runtime creates application manifests for each managed cluster, and the include field in these manifests determines which subdirectories in the resources directory should be synchronized with the target clusters. This simplifies the process of deploying and managing resources across multiple clusters and runtimes.
+
+Centralized configuration management
+With the Shared Configuration Repository, you can store configuration manifests for account-level resources in a centralized location. This allows for easier management and version control of configuration files, as they are stored in a Git repository accessible to all GitOps Runtimes within the same Codefresh account.
+
+Consistent configuration across multiple GitOps Runtimes
+By utilizing the Shared Configuration Repository, you can define configuration manifests in the `resources` directory that are automatically applied to all GitOps Runtimes and clusters within the account. This ensures that account-level resources are consistently deployed and managed across all environments.
+
+Runtime-specific configuration
+With the Shared Configuration Repository, you can create runtime-specific subdirectories and place configuration manifests that are only applied to that specific GitOps Runtime. This allows for fine-grained control over the configuration of individual Runtimes without affecting others.
+
+Control Plane configuration
+The Shared Configuration Repository also supports a control-planes directory, which is applicable only to Hosted GitOps Runtimes. Users can place resource manifests in this directory to define configuration specific to the control plane of each Hosted GitOps runtime. This enables the customization and management of control plane resources separately from other account-level or runtime-specific resources.
+
+
+
+
+## GitOps Runtimes & Shared Configuration Repos
 
 * Hosted GitOps Runtimes  
   As part of the setup for a Hosted GitOps runtime, Codefresh creates the Shared Configuration Repository in the selected organization, together with the default Git Source repo. See [Connect Git provider]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/#2-connect-git-provider) in Hosted GitOps setup.  
@@ -18,7 +38,7 @@ A Codefresh account with a Hosted or a Hybrid GitOps runtime can store configura
 
 
 > Currently, Codefresh supports a single Shared Configuration Repo per account.
-  You may need to reset the Shared Configuration Repo after creating it. See [Reset shared configuration repository for GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#reset-shared-configuration-repository-for-gitops-runtimes).
+  You may need to reset the Shared Configuration Repo after creating it. See [Reset Shared Configuration Repository for GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#reset-shared-configuration-repository-for-gitops-runtimes).
 
 
 ## Shared Configuration Repo structure
@@ -41,11 +61,11 @@ See a [sample repo](https://github.dev/noam-codefresh/shared-gs){:target="\_blan
 │   │       └── manifest5.yaml    │
 │   └── manifest6.yaml            │
 └── runtimes                      │
-    ├── production                │ # referenced by <install_repo_1>/apps/runtime1/config_dir.json
-    │   ├── in-cluster.yaml      ─┤ #     manage `include` field to decide which dirs/files to sync to cluster
+    ├── production                │ # referenced by "production-isc" argo-cd application, applied to the cluster by "cap-app-proxy"
+    │   ├── in-cluster.yaml      ─┤ #     manage `include` field determines which dirs/files to sync to cluster
     │   └── remote-cluster.yaml  ─┤ #     manage `include` field to decide which dirs/files to sync to cluster
-    └── staging                   │ # referenced by <install_repo_2>/apps/runtime2/config_dir.json
-        └── in-cluster.yaml      ─┘ #     manage `include` field to decide which dirs/files to sync to cluster
+    └── staging                   │ # referenced by "staging-isc" argo-cd application, applied to the cluster by "cap-app-proxy
+        └── in-cluster.yaml      ─┘ #     manage `include` field determines which dirs/files to sync to cluster
 ```
 {::nomarkdown}
 <br>
@@ -57,14 +77,15 @@ The `resources` directory holds the resources shared by all clusters managed by 
 
   * `all-runtimes-all-clusters`: Every resource manifest in this directory is applied to all the GitOps Runtimes in the account, and to all the clusters managed by those Runtimes.  
   * `control-planes`: Optional. Valid for Hosted GitOps Runtimes only. When defined, every resource manifest in this directory is applied to each Hosted Runtime’s `in-cluster`.
-  * `runtimes/<runtime_name>`: Optional. Runtime-specific subdirectory. Every resource manifest in a runtime-specific subdirectory is applied to only that GitOps Runtime. `manifest4.yaml` in the above example is applied only to `runtime1`. 
+  * `runtimes/<runtime_name>`: Optional. Runtime-specific subdirectory. Every resource manifest in a runtime-specific subdirectory is applied to only that GitOps Runtime. 
+    In the above example, `manifest4.yaml` is applied only to `runtime1`, and  `manifest5.yaml` is applied only to `runtime2`. 
 
 {::nomarkdown}
 <br>
 {:/}
 
 ### `runtimes` directory 
-Includes subdirectories specific to each GitOps Runtime installed in the cluster, always with `in-cluster.yaml`, and optionally, application manifests for other clusters. 
+The `runtimes` directory includes subdirectories specific to each GitOps Runtime installed in the cluster, always with `in-cluster.yaml`, and optionally, application manifests for other clusters. 
 
 **Example application manifest for in-cluster.yaml**
 
@@ -98,17 +119,51 @@ spec:
 
 
 ## Git Source application per Runtime
-In addition to the application manifests for GitOps Runtimes in the shared configuration repository, every GitOps Runtime has a Git Source application that references `runtimes/<runtime-name>`.  
+In addition to the application manifests for GitOps Runtimes in the Shared Configuration Repository, every GitOps Runtime has a Git Source application that references `runtimes/<runtime-name>`.  
 
 This Git Source application creates an application manifest with the `<cluster-name>` for every cluster managed by the GitOps Runtime. The `include` field in the `<cluster-name>` application manifest determines which subdirectories in the `resources` directory are synced to the target cluster.
 
 
-## Adding resources
-When creating a new resource, such as a new integration for example in the Codefresh UI, you can define the GitOps Runtimes and clusters to which to apply that resource. The app-proxy saves the resource in the correct location and updates the relevant Argo CD Applications to include it. 
+## Use case: Adding integration resources
+When creating a new GitOps Integration resource, such as a container regsitry integration for example in the Codefresh UI, you can define the GitOps Runtimes and clusters to which to apply that resource. The `app-proxy` saves the resource in the correct location in the Shared Configuration Repo, and updates the relevant Argo CD Applications to include it. 
+
+## Use case: Create application for distribution across all GitOps Runtimes
+In this scenario, you want to distribute an application configuration to all GitOps Runtimes within your Codefresh account. Instead of manually copying the manifest to each Runtime or creating the application in the UI for each Runtime, you can create the manifest once and deploy it consistently across all environments. 
+
+Here's how to do this with the Shared Configuration Repo:
+
+1. Create or update the application manifest in the `resources/all-runtimes-all-clusters` directory of the Shared Configuration Repository.  
+1. Specify the desired configuration settings and resources required for the application in the manifest file.
+1. Save and commit the changes to the Git repository.
+
+The GitOps Runtimes will automatically detect the changes in the Shared Configuration Repository and apply the application configuration to all the GitOps Runtimes in the account and to all the clusters managed by those Runtimes.
+
+You can then monitor these applications in the GitOps Overview Dashboard, and drill down to each application in the GitOps Apps dashboard. 
+
+## Use case: Create application for distribution across specific clusters managed by a Runtime
+In this scenario, you want to distribute an application configuration to specific clusters managed by a GitOps Runtime. Instead of manually copying the manifest to each Runtime or creating the application in the UI for each Runtime, you can create the manifest once and deploy it consistently across all environments. 
+
+In this scenario, the user wants to distribute an application configuration  They want to customize the application configuration for different environments or target specific clusters. Here's how they can achieve this:
+
+1. Create or update the application manifest in the `resources/runtimes/<runtime_name>` directory of the Shared Configuration Repository.
+1. Replace `<runtime_name>` with the name of the targeted GitOps Runtime to which the application configuration should be applied.
+1. Customize the application configuration as needed for the specific cluster(s):
+   
+```
+include: '{runtimes/<runtime_name>/*.yaml,runtimes/<runtime_name>/**/*.yaml,clusters/<cluster-name1>/*.yaml,clusters/<cluster-name2>/*.yaml}'
+```
+whre
+1. Save and commit the changes to the Git repository.
+The GitOps Runtime associated with the specific clusters will detect the changes in the Shared Configuration Repository and apply the application configuration only to the targeted clusters.
+
+
+You can then monitor these applications in the GitOps Overview Dashboard, and drill down to each application in the GitOps Apps dashboard. 
+
 
 ## Related articles
 [Hosted GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/)  
 [Hybrid GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/)  
+
  
 
 
