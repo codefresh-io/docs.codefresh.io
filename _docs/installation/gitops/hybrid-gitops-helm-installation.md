@@ -9,9 +9,15 @@ toc: true
 
 Install the Hybrid Runtime for GitOps through a Helm chart.
 
-If you already have a Codefresh acccount, go for the [quick install](#quick-helm-install-for-hybrid-gitops-runtime).  
+>**ATTENTION**:  
+We have transitioned to a Helm-based installation for Hybrid GitOps Runtimes for improved experience and performance.   
+The [CLI-based installation for Hybrid GitOps]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/) is now considered legacy. We will deprecate this installation mode permanently on August 1, 2023.
+To migrate your Hybrid GitOps Runtimes from CLI to Helm, please contact us, and we'll migrate them for you.
 
-For step-by-step installation from the Codefresh UI, see [Step-by-step Hybrid GitOps Runtime installation walkthrough](#step-by-step-hybrid-gitops-runtime-installation-walkthrough). 
+
+If you already have a Codefresh acccount, go for the [quick Helm install](#quick-helm-install-for-hybrid-gitops-runtime).  
+
+For step-by-step installation from the Codefresh UI, see [Step-by-step Hybrid GitOps Runtime installation](#step-by-step-hybrid-gitops-runtime-installation). 
 
 >Hybrid GitOps installation with Helm is currently in Beta.
 
@@ -164,7 +170,7 @@ global:
 {% endhighlight yaml %}
 
 
-## Step-by-step Hybrid GitOps Runtime installation walkthrough
+## Step-by-step Hybrid GitOps Runtime installation
 Install the Hybrid GitOps Runtime via Helm from the Codefresh UI.
 
 The Codefresh `values.yaml` is located [here](https://github.com/codefresh-io/gitops-runtime-helm/tree/main/charts/gitops-runtime){:target="\_blank"}.
