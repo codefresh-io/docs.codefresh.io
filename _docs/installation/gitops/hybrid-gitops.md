@@ -10,10 +10,9 @@ toc: true
 ---
 
 >**ATTENTION**:  
-  >We have transitioned to a [Helm-based installation for Hybrid GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/), for improved experience and performance.  
-
-  >The CLI-based installation for Hybrid GitOps is now considered legacy. We will deprecate this installation mode permanently on August 1, 2023.
-  >To migrate your Hybrid GitOps Runtimes from CLI to Helm, please contact us, and we'll migrate them for you.
+We have transitioned to a [Helm-based installation for Hybrid GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/), for improved experience and performance.   
+The CLI-based installation for Hybrid GitOps is now considered legacy. We will deprecate this installation mode permanently on August 1, 2023.
+To migrate your Hybrid GitOps Runtimes from CLI to Helm, please contact us, and we'll migrate them for you.
    
 
 Provision one or more Hybrid GitOps Runtimes in your Codefresh account.  
