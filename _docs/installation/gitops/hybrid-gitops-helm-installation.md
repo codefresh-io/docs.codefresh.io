@@ -184,7 +184,7 @@ The Codefresh `values.yaml` is located [here](https://github.com/codefresh-io/gi
     * [Runtime token with the required scopes]({{site.baseurl}}/docs/reference/git-tokens/#git-runtime-token-scopes). You need to supply as part of the Helm install command.
     * [Personal Access Token (PAT)]({{site.baseurl}}/docs/reference/git-tokens/#git-personal-tokens) with the required scopes for Git-based actions. 
     * Server URLs for on-premises Git providers
-* Verify there are no Argo project components and CRDs in the target namespace or that you have adopted the CRDs (see [Argo project CRDs](#argo-project-components--crds))
+* Verify there are no Argo project components and CRDs in the target namespace or that you have adopted the CRDs (see [Argo project components & CRDs](#argo-project-components--crds))
 * For ingress-based runtimes only, verify that these ingress controllers are configured correctly:
   * [Ambassador ingress configuration](#ambassador-ingress-configuration)
   * [AWS ALB ingress configuration](#aws-alb-ingress-configuration)
