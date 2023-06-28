@@ -25,7 +25,7 @@ For step-by-step installation from the Codefresh UI, see [Step-by-step Hybrid Gi
 
 Install the Hybrid GitOps Runtime via Helm with the default tunnel-based access mode. You will copy the Helm install command from the UI to get the values that Codefresh automatically retrieves for you such as your account ID and other values.
 
-The Codefresh `values.yaml` is located [here](https://github.com/codefresh-io/gitops-runtime-helm/blob/main/charts/gitops-runtime/){:target="\_blank"}.
+The Codefresh `values.yaml` is located [here](https://github.com/codefresh-io/gitops-runtime-helm/blob/main/charts/gitops-runtime/){:target="\_blank"}. It contains all the arguments that can be configured, including optional ones.
 
 ### Before running quick install
 
@@ -76,8 +76,11 @@ where:
 
 
 
-## Argo project CRDs
-Hybrid GitOps installation requires a cluster without Argo project CRDs.    
+## Argo project components & CRDs
+Hybrid GitOps installation requires a cluster without Argo project components and CRDs. 
+
+Argo project components include Argo Rollouts, Argo CD, Argo Events, and Argo Workflows.  
+
 You can handle Argo project CRDs outside the chart, or as recommended, adopt the CRDs to be managed by the GitOps Runtime Helm release. 
 
 If you already have Argo project CRDs on your cluster, do one of the following:
@@ -173,7 +176,7 @@ global:
 ## Step-by-step Hybrid GitOps Runtime installation
 Install the Hybrid GitOps Runtime via Helm from the Codefresh UI.
 
-The Codefresh `values.yaml` is located [here](https://github.com/codefresh-io/gitops-runtime-helm/tree/main/charts/gitops-runtime){:target="\_blank"}.
+The Codefresh `values.yaml` is located [here](https://github.com/codefresh-io/gitops-runtime-helm/blob/main/charts/gitops-runtime/){:target="\_blank"}. It contains all the arguments that can be configured, including optional ones.
 
 ### Before you begin
 * Make sure you meet the [minimum requirements](#minimum-system-requirements) for installation
@@ -463,7 +466,7 @@ You can now add [external clusters to the Runtime]({{site.baseurl}}/docs/install
 {: .table .table-bordered .table-hover}
 | Item                     | Requirement            |  
 | --------------         | --------------           |  
-|Kubernetes cluster      | Server version 1.18 and higher, without Argo Project components. {::nomarkdown}<br><b>Tip</b>:  To check the server version, run:<br> <code class="highlighter-rouge">kubectl version --short</code>.{:/}|
+|Kubernetes cluster      | Server version 1.18 and higher, _without_ Argo Project components. {::nomarkdown}<br><b>Tip</b>:  To check the server version, run:<br> <code class="highlighter-rouge">kubectl version --short</code>.{:/}|
 |Node requirements| {::nomarkdown}<ul><li>Memory: 5000 MB</li><li>CPU: 2</li></ul>{:/}|
 |Cluster permissions | Cluster admin permissions |
 |Git providers    |{::nomarkdown}<ul><li>GitHub</li><li>GitHub Enterprise</li><li>GitLab Cloud</li><li>GitLab Server</li><li>Bitbucket Cloud</li><li>Bitbucket Server</li></ul>{:/}|
