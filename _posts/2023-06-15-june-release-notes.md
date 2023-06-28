@@ -100,14 +100,13 @@ As part of our ongoing commitment to improving efficiency and simplifying instal
 
 ## Bug fixes
 **General**  
-* On-premises ony Codefresh Runner installation fails with Component existed with status code 1 error. (Mikhail)
+* (On-premises) Codefresh Runner installation fails with Component existed with status code 1 error. (Mikhail)
 * Unable to add users to Codefresh via team sync for Okta.
 
 
 **Pipelines**  
 * Log in to Codefresh results in error: `Failed to authenticate the user. Please try again in a few minutes` OR `token is not valid because it was revoked`.
 * Git operations in pipeline build fails on authentication leading to build failures (Pipeline build fails due to  uilds Git operations in JSON web token decode failure results Git operations failure in builds).
-* ??Security vulnerability with private key of Codefresh GitHub App.
 * Pipeline builds terminate with error message: `Pipeline could not be executed because retry attempts limit has been exceeded...`.
 * Discrepancy in list of builds returned when running `GET {{baseUrl/workflow?pipeline=[pipeline-id]}}` query. 
 * Shallow clone for a specific revision with `depth` argument results in error: `pathspec 'test' did not match any file(s) known to git`.
