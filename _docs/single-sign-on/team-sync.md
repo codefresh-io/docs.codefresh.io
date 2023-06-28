@@ -18,8 +18,16 @@ In Codefresh you can sync users and teams either automatically or manually:
 * Automatically, in the Codefresh UI if the option is supported for your SSO provider 
 * Manually, either on-demand through the Codefresh CLI, or through a Codefresh pipeline
 
+<!---
+### Multi-account team-sync in Codefresh for SSO providers
+SSO providers can sync users from multiple accounts, in addition to the primary account associated with the specific SSO integration.
+This functionality benfits enterprises that manage multiple accounts for a single customer, as it streamlines the sync process through a single operation. 
+If a customer has dev and prod accounts in Codefresh, they can set up an SSO integration for one of the accounts, and then specificy the ID of the second account to sync.
+
+Codefresh validates if the user has access to the accounts specified, and during team-sync retrieives the accounts with the IDs and invites users and teams for those accounts.
 
 
+-->
 ### Team-sync support in Codefresh for SSO providers
 The table lists the SSO providers supported in Codefresh and the team-sync option available for them.
 
