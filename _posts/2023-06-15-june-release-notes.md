@@ -36,7 +36,7 @@ For details, see [Global Search & Navigation]({{site.baseurl}}/docs/getting-star
 
 
 ### Gerrit as Git provider for Pipelines and GitOps
-We are excited to announce the integration of Gerrit, the popular open-source web-based code review tool for Git repositories, with Codefresh. This integration brings powerful code review capabilities, access controls, and automation to both Codefresh Pipelines and Codefresh GitOps.
+We are excited to announce the integration of Gerrit, the open-source web-based code review tool for Git repositories, with Codefresh. 
 
 **Gerrit and Codefresh Pipelines**  
 By integrating Gerrit as a Git provider for Codefresh Pipelines, you can leverage its capabilities to trigger builds and tests automatically whenever a new change is pushed to Git repositories hosted in Gerrit. The integration allows you to closely monitor the status of builds and tests within the Gerrit environment itself, providing you with a comprehensive view of your development process.
@@ -45,7 +45,8 @@ With Codefresh’s `CF_PULL_REQUEST` group of environment variables, you can ach
 For details, see [Pipeline integrations - Git providers]({{site.baseurl}}/docs/integrations/git-providers/#gerrit).
 
 **Gerrit and Codefresh GitOps**   
-By configuring Gerrit as the primary Git provider for your Hosted GitOps Runtime, you can integrate Gerrit information into your third-party CI tools or platforms for image enrichment and reporting in Codefresh.
+By configuring Gerrit as the primary Git provider for your Hosted GitOps Runtime, you can integrate Gerrit information into your third-party CI tools or platforms for image enrichment and reporting in Codefresh.  
+If you are interested in using Gerrit for Hybrid GitOps Runtimes, please contact us.
 
 For details, see [GitOps Gerrit Git provider integration]({{site.baseurl}}/docs/gitops-integrations/gerrit-integration/).
 
@@ -93,19 +94,17 @@ As part of our ongoing commitment to improving efficiency and simplifying instal
   For details, see [Hybrid GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/).
 
 * On-Premises version of Codefresh GitOps Runtime  
-  We are also introducing an on-premises version of the GitOps Runtime, allowing you to deploy and manage your Codefresh infrastructure within your private network.  
+  We also introduced an on-premises version of the GitOps Runtime, allowing you to deploy and manage your Codefresh infrastructure within your private network.  
   The on-premises version gives you greater control over your environment, ensuring data security and compliance while leveraging the powerful features and integrations of Codefresh GitOps and Argo CD.  
   For details, see [On-premises GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/on-prem-gitops-runtime-install/).
 
 
 ## Bug fixes
 **General**  
-* (On-premises) Codefresh Runner installation fails with Component existed with status code 1 error. (Mikhail)
 * Unable to add users to Codefresh via team sync for Okta.
 
 
 **Pipelines**  
-* Log in to Codefresh results in error: `Failed to authenticate the user. Please try again in a few minutes` OR `token is not valid because it was revoked`.
 * Git operations in pipeline build fails on authentication leading to build failures (Pipeline build fails due to  uilds Git operations in JSON web token decode failure results Git operations failure in builds).
 * Pipeline builds terminate with error message: `Pipeline could not be executed because retry attempts limit has been exceeded...`.
 * Discrepancy in list of builds returned when running `GET {{baseUrl/workflow?pipeline=[pipeline-id]}}` query. 
@@ -115,13 +114,14 @@ As part of our ongoing commitment to improving efficiency and simplifying instal
 * In the Builds page, Output tab for a step displays `loading` instead of the step logs.
 * Creating a Git trigger for a repo name containing spaces fails with error: `Failed to create trigger...fails to match the required pattern...`.
 * Unable to set `requiredAvailableStorage` programmatically for Hybrid Pipeline Runtimes. 
+* (On-premises) Codefresh Runner installation fails with Component existed with status code 1 error. (Mikhail)
 * 404 errors on clicking documentation links in Build > Triggers.
 
 **GitOps**  
-* Failure to clone large repo.
-* (On premises) Rollouts Reporter for managed cluster uses SaaS instead of on-premises URL.
+* Unable to delete Argo CD application from Git Source.
 * Different statuses for same application in the **Home > GitOps Dashboard** and in the **GitOps Apps** dashboard.
 * Images not displayed in Images dashboard for GitLab Git provider (Denis)
+* (On premises) Rollouts Reporter for managed cluster uses SaaS instead of on-premises URL.
 
 
 
