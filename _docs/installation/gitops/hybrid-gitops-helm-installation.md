@@ -33,7 +33,7 @@ The Codefresh `values.yaml` is located [here](https://github.com/codefresh-io/gi
 Quick installation assumes that:
 * You have set up a Git provider and the Shared Configuration Repository for your account. If these are not defined, you can define them _after_ installation from the Codefresh UI, when prompted to do so.  
   See [Update Git credentials for GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#update-git-credentials-for-gitops-runtimes) and [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/)
-* Your cluster does not have [Argo project CRDs](#argo-project-crds).
+* Your cluster does not have [Argo project components & CRDs](#argo-project-components--crds).
 
 
 **Automated validation**  
@@ -184,7 +184,7 @@ The Codefresh `values.yaml` is located [here](https://github.com/codefresh-io/gi
     * [Runtime token with the required scopes]({{site.baseurl}}/docs/reference/git-tokens/#git-runtime-token-scopes). You need to supply as part of the Helm install command.
     * [Personal Access Token (PAT)]({{site.baseurl}}/docs/reference/git-tokens/#git-personal-tokens) with the required scopes for Git-based actions. 
     * Server URLs for on-premises Git providers
-* Verify there are no Argo project CRDs in the target namespace or that you have adopted the CRDs (see [Argo project CRDs](#argo-project-crds))
+* Verify there are no Argo project components and CRDs in the target namespace or that you have adopted the CRDs (see [Argo project CRDs](#argo-project-components--crds))
 * For ingress-based runtimes only, verify that these ingress controllers are configured correctly:
   * [Ambassador ingress configuration](#ambassador-ingress-configuration)
   * [AWS ALB ingress configuration](#aws-alb-ingress-configuration)
