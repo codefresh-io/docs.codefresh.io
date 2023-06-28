@@ -86,18 +86,19 @@ Here are the icons and the build statuses they represent:
 
 For details, see [Viewing status for pipeline builds]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#viewing-status-for-pipeline-builds).
 
-### GitOps: Helm-based Hybrid & On-premises Runtimes
+### GitOps: Helm-based Hybrid Runtimes
 As part of our ongoing commitment to improving efficiency and simplifying installations, we have transitioned from the previous CLI-based installation method to native Kubernetes installation using Helm charts. This change simplifies the installation process and aligns with industry-standard practices for Kubernetes deployments. 
 
-* Helm installation for Hybrid GitOps  
+**Helm installation for Hybrid GitOps**  
   Moving forward, we are deprecating the CLI-based installation method for Hybrid GitOps Runtimes. Helm provides better control and ensures compatibility, enabling you to seamlessly manage GitOps Runtimes deployments across various clusters.  
   For details, see [Hybrid GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/).
 
+<!--- 
 * On-Premises version of Codefresh GitOps Runtime  
   We also introduced an on-premises version of the GitOps Runtime, allowing you to deploy and manage your Codefresh infrastructure within your private network.  
   The on-premises version gives you greater control over your environment, ensuring data security and compliance while leveraging the powerful features and integrations of Codefresh GitOps and Argo CD.  
   For details, see [On-premises GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/on-prem-gitops-runtime-install/).
-
+-->
 
 ## Bug fixes
 **General**  
