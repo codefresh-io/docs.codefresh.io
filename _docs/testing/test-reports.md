@@ -19,20 +19,10 @@ Currently, Codefresh supports storing test reports in:
 
 There are two modes for processing test reports in Codefresh, built-in and custom test reporting
 
-1. Built-in test reporting based on the [Allure framework](https://qameta.io/allure-report/){:target="\_blank"}  
-   Allure is an open-source test framework that can produce HTML reports like the following:
-
-  {% include 
-image.html 
-lightbox="true" 
-file="/images/pipeline/test-reports/sample-test-report.png" 
-url="/images/pipeline/test-reports/sample-test-report.png"
-alt="Sample Allure test report" 
-caption="Sample Allure test report"
-max-width="70%"
-%}
-
-  For more details, see the [official Allure documentation](https://docs.qameta.io/allure/){:target="\_blank"}.  
+1. **Built-in test reporting** based on the [Allure framework](https://qameta.io/allure-report/){:target="\_blank"}  
+  Allure is an open-source test framework that can produce HTML reports, as in the example below.  
+  For more details, see the [official Allure documentation](https://docs.qameta.io/allure/){:target="\_blank"}.   
+  
   Allure supports popular testing frameworks such as:
   * Java/JUnit/TestNG/Cucumber
   * Python/pytest
@@ -42,9 +32,19 @@ max-width="70%"
   * .NET/Nunit/mstest
   * Scala/Scalatest
   * PHP/PhpUnit
+  
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/test-reports/sample-test-report.png" 
+url="/images/pipeline/test-reports/sample-test-report.png"
+alt="Sample Allure test report" 
+caption="Sample Allure test report"
+max-width="70%"
+%}
 
 {:start="2"}
-1. Custom reporting for any static website (HTML) content    
+1. **Custom reporting** for any static website (HTML) content    
   If you use the custom reporting mode, you can select any kind of tool that you want, as long as it produces a static website in the end. You can also use the custom reporting mode for reports that are not test reports, such as security reports or quality reports.
 
 ## Connecting your storage account
@@ -66,7 +66,8 @@ caption="Cloud storage Integrations"
 max-width="80%"
 %}
 
-1. Click **Add Cloud Storage**, and select your cloud provider.
+{:start="3"}
+1. Click **Add Cloud Storage**, and select your cloud provider for test report storage.
 1. Continue to define cloud settings according to your cloud provider, as described in the sections that follow.
 
 ### Connecting a Google bucket
@@ -99,12 +100,44 @@ The integration is ready. You will use the name of the integration as an environ
   In that case, download the JSON file locally and paste its contents in the **JSON config** field.
   For more information, see the [official documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys){:target="\_blank"}. 
 
-### Connecting an S3 bucket
+### Connecting an Amazon S3 bucket
 
+**Create an S3 bucket with the required permissions**  
 1. For AWS (Amazon Web Services), create an S3 bucket.  
   See the [official documentation](https://docs.aws.amazon.com/quickstarts/latest/s3backup/step-1-create-bucket.html){:target="\_blank"} or the [CLI](https://docs.aws.amazon.com/cli/latest/reference/s3api/create-bucket.html){:target="\_blank"}. 
-  
+1. Define the IAM policy settings, as in this example:
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:ListBucket"
+            ],
+            "Resource": [
+                "arn:aws:s3:::cf-backup*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:PutObject",
+                "s3:GetObject",
+                "s3:DeleteObject"
+            ],
+            "Resource": [
+                "arn:aws:s3:::cf-backup*/*"
+            ]
+        }
+    ]
+}
+```
+
 1. Note down the **Access** and **Secret** keys. 
+
+
+
 1. [Connect your storage account](#connecting-your-storage-account) for **Amazon Cloud Storage**.
 1. Define the settings: 
    * Enter an arbitrary name for your integration.

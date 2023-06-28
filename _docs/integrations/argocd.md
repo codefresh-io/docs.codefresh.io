@@ -5,7 +5,7 @@ group: integrations
 toc: true
 ---
 
-> Important:  
+> **IMPORTANT**:  
   We are planning to deprecate the ArgoCD agent for Codefresh pipelines. It has now been replaced with the GitOps runtime, that offers a superset of the functionality of the agent, and is also better integrated
   with the Codefresh dashboards.  
 

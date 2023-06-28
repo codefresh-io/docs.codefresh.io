@@ -7,22 +7,29 @@ toc: true
 
 Codefresh has native support for AWS in the following areas:
 
-- [Connecting to Amazon registries]({{site.baseurl}}/docs/integrations/docker-registries/amazon-ec2-container-registry/)
-- [Deploying to Amazon EKS]({{site.baseurl}}/docs/integrations/kubernetes/#adding-eks-cluster)
-- [Using Amazon S3 for Test reports]({{site.baseurl}}/docs/testing/test-reports/#connecting-an-s3-bucket)
-- [Using Amazon S3 for Helm charts]({{site.baseurl}}/docs/deployments/helm/helm-charts-and-repositories/)
+- [Amazon container registries: ECR](#amazon-container-registries)
+- [Amazon Kubernetes clusters: EKS](amazon-kubernetes-clusters)
+- Amazon S3 buckets:
+  - [For Test reports](#amazon-s3-bucket-for-test-reports)
+  - [For Helm charts](#amazon-s3-bucket-for-helm-charts)
 
+See also [other Amazon deployments](#other-amazon-deployments).
 
-## Using Amazon ECR
+## Amazon Container Registries
 
-Amazon Container Registries are fully compliant with the Docker registry API that Codefresh follows. Follow the instruction under [Amazon EC2 Container Registry]({{site.baseurl}}/docs/integrations/docker-registries/amazon-ec2-container-registry/) to connect.
+Amazon Container Registries are fully compliant with the Docker registry API that Codefresh follows. 
+
+Codefresh supports integration with Amazon ECR.  
+To connect, follow the instructions described in [Amazon EC2 Container Registry]({{site.baseurl}}/docs/integrations/docker-registries/amazon-ec2-container-registry/).
 
 Once the registry is added, you can use the [standard push step]({{site.baseurl}}/docs/pipelines/steps/push/) in your pipelines. See [working with Docker registries]({{site.baseurl}}/docs/ci-cd-guides/working-with-docker-registries/) for more information.
 
-## Deploying to Amazon Kubernetes
+## Amazon Kubernetes clusters
 
-Codefresh has native support for connecting an EKS cluster in the [cluster configuration screen]({{site.baseurl}}/docs/integrations/kubernetes/#connect-a-kubernetes-cluster).
+Codefresh has native support for connecting an EKS cluster through the integration options for Kubernetes in Pipeline Integrations.
+See [Adding an EKS cluster]({{site.baseurl}}/docs/integrations/kubernetes/#adding-eks-cluster) in [Kubernetes pipeline integrations]({{site.baseurl}}/docs/integrations/kubernetes/).
 
+<!-- ask Kostis which is correct? 
 {% 
 	include image.html 
 	lightbox="true" 
@@ -32,12 +39,24 @@ alt="Connecting an Amazon cluster"
 caption="Connecting a Amazon cluster" 
 max-width="40%" 
 %}
-
+-->
+{% 
+	include image.html 
+	lightbox="true" 
+file="/images/integrations/kubernetes/eks-cluster-option.png" 
+url="/images/integrations/kubernetes/eks-cluster-option.png" 
+alt="Connecting an Amazon EKS cluster" 
+caption="Connecting a Amazon EKS cluster" 
+max-width="40%" 
+%}
 Once the cluster is connected, you can use any of the [available deployment options]({{site.baseurl}}/docs/deployments/kubernetes/) for Kubernetes clusters. You also get access to all other Kubernetes dashboards such as the [cluster dashboard]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/) and the [environment dashboard]({{site.baseurl}}/docs/deployments/kubernetes/environment-dashboard/).
 
-## Storing test reports in Amazon S3 bucket
+## Amazon S3 bucket for test reports
 
-Codefresh has native support for test reports. You can store the reports on Amazon S3.
+Codefresh has native support for storing test reports in different storage buckets, including Amazon's S3 storage bucket.
+You can connect an Amazon S3 bucket for test reports in Codefresh through the Cloud Storage options in Pipeline Integrations.  
+
+For detailed instructions, see [Creating test reports]({{site.baseurl}}/docs/testing/test-reports/). 
 
 {% include
 image.html
@@ -49,11 +68,15 @@ caption="Amazon cloud storage"
 max-width="60%"
 %}
 
-See the full documentation for [test reports]({{site.baseurl}}/docs/testing/test-reports/).
 
-## Using Amazon S3 for storing Helm charts
 
-You can connect an Amazon S3 bucket as a Helm repository in the [integrations screen]({{site.baseurl}}/docs/deployments/helm/helm-charts-and-repositories/).
+## Amazon S3 bucket for Helm charts
+
+You can also connect an Amazon S3 bucket as a Helm repository through the Helm Repository integration options in Pipeline Integrations. 
+
+For detailed instructions, see [Helm charts and repositories]({{site.baseurl}}/docs/deployments/helm/helm-charts-and-repositories/).
+Once you connect your Helm repository, you can use it any [Codefresh pipeline with the Helm step]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/). 
+
 
 {% include
 image.html
@@ -65,12 +88,11 @@ caption="Using Amazon for Helm charts"
 max-width="80%"
 %}
 
-Once you connect your Helm repository you can use it any [Codefresh pipeline with the Helm step]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/). 
 
 
-## Traditional Amazon deployments
+## Other Amazon deployments
 
-For any other Amazon deployment you can use the [Amazon CLI from a Docker image](https://hub.docker.com/r/amazon/aws-cli){:target="\_blank"} in a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/).
+For any other Amazon deployment, you can use the [Amazon CLI from a Docker image](https://hub.docker.com/r/amazon/aws-cli){:target="\_blank"} in a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/).
 
 `YAML`
 {% highlight yaml %}
