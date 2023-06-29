@@ -106,16 +106,15 @@ As part of our ongoing commitment to improving efficiency and simplifying instal
 
 
 **Pipelines**  
-* Git operations in pipeline build fails on authentication leading to build failures (Pipeline build fails due to  uilds Git operations in JSON web token decode failure results Git operations failure in builds).
+* Git operations in pipeline build fails on authentication leading to build failures.
 * Pipeline builds terminate with error message: `Pipeline could not be executed because retry attempts limit has been exceeded...`.
 * Discrepancy in list of builds returned when running `GET {{baseUrl/workflow?pipeline=[pipeline-id]}}` query. 
 * Shallow clone for a specific revision with `depth` argument results in error: `pathspec 'test' did not match any file(s) known to git`.
 * Composition stops randomly with error:`Could not get status for container <container-name>`.
 * Cross-account ECR pull in `freestyle` step fails with `(HTTP code 500) server error...`. 
-* In the Builds page, Output tab for a step displays `loading` instead of the step logs.
+* In the Builds page, steps are grayed out, and Output tab for a step displays `loading` instead of the step logs.
 * Creating a Git trigger for a repo name containing spaces fails with error: `Failed to create trigger...fails to match the required pattern...`.
 * Unable to set `requiredAvailableStorage` programmatically for Hybrid Pipeline Runtimes. 
-* (On-premises) Codefresh Runner installation fails with Component existed with status code 1 error. (Mikhail)
 * 404 errors on clicking documentation links in Build > Triggers.
 
 **GitOps**  
