@@ -51,7 +51,7 @@ If you are interested in using Gerrit for Hybrid GitOps Runtimes, please contact
 For details, see [GitOps Gerrit Git provider integration]({{site.baseurl}}/docs/gitops-integrations/gerrit-integration/).
 
 ### Pipelines: Pipeline Dashboard enhancements
-The Pipelines Dashboard has two enhancements.
+Review the latest enhancements in the Pipelines Dashboard.
 
  {% include 
 image.html 
@@ -68,6 +68,10 @@ The Pipelines Dashboard now has a Favorites filter. If you starred any projects 
 
 **Recent update indication**  
 The Last Update timestamp on the top right of the Pipelines Dashboard, refreshes automatically to show you the exact time the data was retrieved.
+
+**Full path display for pipelines in filter**
+Previously, in the Pipelines filter, it was challenging to identify the correct pipeline, when multiple pipelines shared the same name across different projects. 
+Now, when you mouse over a pipeline name in the list, the tooltip displays the full path, including the name of the project to which the pipeline belongs, followed by the name of the pipeline. With this update, you can easily identify and select the correct pipeline in the Pipelines filter, even when multiple pipelines share the same name across different projects.
 
 For details, see [Pipelines Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/#pipelines-dashboard).
 
@@ -111,6 +115,7 @@ As part of our ongoing commitment to improving efficiency and simplifying instal
 * Discrepancy in list of builds returned when running `GET {{baseUrl/workflow?pipeline=[pipeline-id]}}` query. 
 * Shallow clone for a specific revision with `depth` argument results in error: `pathspec 'test' did not match any file(s) known to git`.
 * Composition stops randomly with error:`Could not get status for container <container-name>`.
+* Unable to define CRON triggers for pipelines.
 * Cross-account ECR pull in `freestyle` step fails with `(HTTP code 500) server error...`. 
 * In the Builds page, steps are grayed out, and Output tab for a step displays `loading` instead of the step logs.
 * Creating a Git trigger for a repo name containing spaces fails with error: `Failed to create trigger...fails to match the required pattern...`.
@@ -119,7 +124,7 @@ As part of our ongoing commitment to improving efficiency and simplifying instal
 
 **GitOps**  
 * Unable to delete Argo CD application from Git Source.
-* Different statuses for same application in the **Home > GitOps Dashboard** and in the **GitOps Apps** dashboard.
+* Same application shows different statuses in the **Home > GitOps Dashboard** and in the **GitOps Apps** dashboard.
 * Images not displayed in Images dashboard for GitLab Git provider (Denis)
 * (On premises) Rollouts Reporter for managed cluster uses SaaS instead of on-premises URL.
 
