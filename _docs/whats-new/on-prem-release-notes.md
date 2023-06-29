@@ -71,7 +71,7 @@ We are always adding more options, so stay tuned for announcements.
 #### Pipelines Dashboard
 This release introduces the much-awaited Pipelines Dashboard!  The dashboard, dedicated to pipelines and pipeline metrics, is a new experience of pipeline visibility and monitoring.
 Clicking Home Dashboard located at the top of the sidebar displays the Pipelines Dashboard.
-If you're currently using both GitOps and Pipelines, the Pipelines Dashboard is displayed  after the GitOps and Argo Workflow dashboards..
+If you're currently using both GitOps and Pipelines, the Pipelines Dashboard is displayed below the GitOps and Argo Workflow dashboards.
 
 Use the Pipelines dashboard to:
 * Identify pipelines with low performance, both in terms of number of executions and execution duration
