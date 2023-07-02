@@ -128,7 +128,7 @@ This Git Source application creates an application manifest with the `<cluster-n
 When creating a new GitOps Integration resource, such as a container regsitry integration for example in the Codefresh UI, you can define the GitOps Runtimes and clusters to which to apply that resource. The `app-proxy` saves the resource in the correct location in the Shared Configuration Repo, and updates the relevant Argo CD Applications to include it. 
 
 ## Use case: Create application for distribution across all GitOps Runtimes
-In this scenario, you want to distribute an application configuration to all GitOps Runtimes within your Codefresh account. Instead of manually copying the manifest to each Runtime or creating the application in the UI for each Runtime, you can create the manifest once and deploy it consistently across all environments. 
+In this scenario, you want to distribute an application configuration to all GitOps Runtimes within your Codefresh account. Instead of manually copying the manifest to each Runtime or creating the application in the UI for each Runtime, you can create the manifest, store it in the correct location in the shared repository, and deploy it consistently across all environments. 
 
 Here's how to do this with the Shared Configuration Repo:
 
@@ -141,25 +141,24 @@ The GitOps Runtimes will automatically detect the changes in the Shared Configur
 You can then monitor these applications in the GitOps Overview Dashboard, and drill down to each application in the GitOps Apps dashboard. 
 
 ## Use case: Create application for distribution across specific clusters managed by a Runtime
-In this scenario, you want to distribute an application configuration to specific clusters managed by a GitOps Runtime. Instead of manually copying the manifest to each cluster, you can add the application manifest to the specific GitOps Runtime, and define the target clusters in the `include` statement.
+In this scenario, you want to distribute an application configuration to specific clusters managed by a GitOps Runtime. Instead of manually copying the manifest to each cluster, you can add the application manifest to the specific GitOps Runtime, and define the target clusters in the `include` statement in the application manifest.
 
 Here's how to do this with the Shared Configuration Repo:
 
 1. Create or update the application manifest in the `resources/runtimes/<runtime_name>` directory of the Shared Configuration Repository.
-1. Replace `<runtime_name>` with the name of the GitOps Runtime where you want to application manifest.
-1. In the application manifest, add an `include` statement that deifnes the clusters to which to distribute/sync the application:
+1. Replace `<runtime_name>` with the name of the GitOps Runtime to which to apply the application manifest.
+1. In the application manifest, add an `include` statement defining the clusters to which to distribute/sync the application:
    
 ```
 include: '{runtimes/<runtime_name>/*.yaml,runtimes/<runtime_name>/**/*.yaml,clusters/<cluster-name1>/*.yaml,clusters/<cluster-name2>/*.yaml}'
 ```
-where:  
-* `runtimes/<runtime_name>/*.yaml` includes all YAML files directly in the directory specified by the <runtime_name>. For example, files in `runtimes/production/*.yaml` are specific to Runtime `production`.
-* `runtimes/<runtime_name>/**/*.yaml` includes all YAML files in any subdirectories within the <runtime_name> directory. For example, files in `runtimes/production/**/*.yaml` are also specific to Runtime `production`.
-* `clusters/<cluster-name1>/*.yaml` includes all YAML files directly under the ClusterA directory in the clusters directory. These files are specific to Cluster A.
-clusters/ClusterB/*.yaml includes all YAML files directly under the ClusterB directory in the clusters directory. These files are specific to Cluster B.
+  where:  
+  * `runtimes/<runtime_name>/*.yaml` includes all YAML files directly in the directory specified by the <runtime_name>. For example, files in `runtimes/production/*.yaml` are specific to Runtime `production`.
+  * `runtimes/<runtime_name>/**/*.yaml` includes all YAML files in any subdirectories within the <runtime_name> directory. For example, files in `runtimes/production/**/*.yaml` are also specific to Runtime `production`.
+  * `clusters/<cluster-name1>/*.yaml` includes all YAML files directly under the ClusterA directory in the `clusters` directory. These files are specific to Cluster A.
+  * `clusters/ClusterB/*.yaml` includes all YAML files directly under the ClusterB directory in the `clusters` directory. These files are specific to Cluster B.
 1. Save and commit the changes to the Git repository.
 The GitOps Runtime associated with the specific clusters will detect the changes in the Shared Configuration Repository and apply the application configuration only to the targeted clusters.
-
 
 You can then monitor these applications in the GitOps Overview Dashboard, and drill down to each application in the GitOps Apps dashboard. 
 
