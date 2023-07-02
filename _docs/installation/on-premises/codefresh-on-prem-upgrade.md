@@ -1,5 +1,5 @@
 ---
-title: "Codefresh on-premises upgrade"
+title: "Codefresh on-premises platform upgrade"
 description: "Upgrade the Codefresh On-Premises platform"
 group: installation
 redirect_from:
@@ -8,6 +8,7 @@ redirect_from:
   - /docs/installation/codefresh-on-prem-upgrade/
 toc: true
 ---
+
 Upgrade the Codefresh on-premises platform to the latest version:
 * Prepare for the upgrade: _Before_ the upgrade, based on the version you are upgrading to, complete the required tasks
 * Upgrade the platform
@@ -433,7 +434,7 @@ After that, **abacGitContext** feature appears on the screen, toggle it's switch
 From version **1.4.0 and higher**, we have deprecated support for the `Codefresh-managed Postgresql` chart. It has been replaced with Bitnami public chart `bitnami/postgresql`.  
 For more information, see [bitnami/postgresql](https://github.com/bitnami/charts/tree/master/bitnami/postgresql){:target="\_blank"}.
 
-> If in `config.yaml`, `postgresql.enabled=false` indicating that you are running and [**external** Postgresql service]({{site.baseurl}}/docs/installation/codefresh-on-prem/#configuring-an-external-postgres-database), you can ignore the configuration instructions.
+> If in `config.yaml`, `postgresql.enabled=false` indicating that you are running an **external** Postgresql service, you can ignore the configuration instructions.
 
 > **Important!** Run the upgrade with `global.seedJobs=true` flag:
 
@@ -632,6 +633,7 @@ Version 2.0.0 incorporates a major version and chart change, including breaking 
 
 Follow the instructions in [Upgrading to 2.0.0](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh/2.0.0-alpha.13#upgrading){:target="\_blank"}.
 
-
-
+## Related articles
+[Codefresh on-premises platform configuration]({{site.baseurl}}/_docs/installation/on-premises/codefresh-on-prem/)   
+[Codefresh on-premises feature management]({{site.baseurl}}/docs/installation/on-premises/on-prem-feature-management/)
 

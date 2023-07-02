@@ -1,5 +1,5 @@
 ---
-title: "Codefresh on-premises platform installation & configuration"
+title: "Codefresh on-premises platform configuration"
 description: "Configure the Codefresh platform after on-premises installation"
 group: installation
 redirect_from:
@@ -11,16 +11,12 @@ toc: true
 
 On-premises installation information is detailed in the [ReadMe](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh/2.0.0-alpha.13){:target="\_blank"}, available in ArtifactHub.
 
-After you install the on-premises version of the Codefresh platform, review platform configuration options.
-
+After you install the on-premises version of the Codefresh platform, review platform configuration options:
 * [Disable user and team management via Codefresh UI](#disable-user-and-team-management-via-codefresh-ui)
 * [Selectively enable SSO provider for account](#selectively-enable-sso-provider-for-account)
 * [Retention policy for Codefresh builds](#retention-policy-for-codefresh-builds)
 
  
-
-
-
 
 ## Disable user and team management via Codefresh UI
 

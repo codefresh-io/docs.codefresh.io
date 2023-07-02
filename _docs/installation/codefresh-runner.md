@@ -2225,5 +2225,5 @@ For troubleshooting refer to the [Knowledge Base]({{site.baseurl}}/docs/kb/troub
 
 ## Related articles
 [Codefresh installation options]({{site.baseurl}}/docs/installation/installation-options/)  
-[Codefresh On-Premises installation]({{site.baseurl}}/docs/installation/codefresh-on-prem/)  
+[Codefresh On-Premises installation & configuration]({{site.baseurl}}/docs/installation/codefresh-on-prem/)  
 [Codefresh API]({{site.baseurl}}/docs/integrations/codefresh-api/)  
