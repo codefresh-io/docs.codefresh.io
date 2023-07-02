@@ -8,22 +8,19 @@ toc: true
 ---
 
 
-A Codefresh account with a Hosted or a Hybrid GitOps runtime can store configuration manifests for account-level resources in a Git repository. This repository, the Shared Configuration Repository can be shared with other GitOps Runtimes in the same account, avoiding the need to create and maintain different configuration manifests for every GitOps Runtime. At the same time, you also have the flexibility to store resources unique to specific Runtimes without affecting other Runtimes. 
+A Codefresh account with a Hosted or a Hybrid GitOps runtime can store configuration manifests for account-level resources in a Git repository. This repository, the Shared Configuration Repository, can be shared with other GitOps Runtimes in the same account, avoiding the need to create and maintain different configuration manifests for every GitOps Runtime. At the same time, you also have the flexibility to store resources unique to specific Runtimes without affecting other Runtimes. 
 
-GitOps integration 
-Users can define application manifests that reference the shared configuration files and specify the clusters to which the resources should be deployed. The Git Source application per runtime creates application manifests for each managed cluster, and the include field in these manifests determines which subdirectories in the resources directory should be synchronized with the target clusters. This simplifies the process of deploying and managing resources across multiple clusters and runtimes.
+* **GitOps paradigm**  
+  The Git Source application created for each GitOps Runtime creates application manifests for every cluster managed by the Runtime. These manifests determine which resources are synchronized with which cluster, ma
 
-Centralized configuration management
-With the Shared Configuration Repository, you can store configuration manifests for account-level resources in a centralized location. This allows for easier management and version control of configuration files, as they are stored in a Git repository accessible to all GitOps Runtimes within the same Codefresh account.
+* **Centralized cross-Runtime configuration management**
+  With the Shared Configuration Repository, you can store configuration manifests for account-level resources in a centralized location. The Git repository is accessible to all GitOps Runtimes within the same Codefresh account, ensuring that account-level resources are consistently deployed and managed across all environments.
 
-Consistent configuration across multiple GitOps Runtimes
-By utilizing the Shared Configuration Repository, you can define configuration manifests in the `resources` directory that are automatically applied to all GitOps Runtimes and clusters within the account. This ensures that account-level resources are consistently deployed and managed across all environments.
+* **Runtime-specific configuration**
+   With the Shared Configuration Repository, you can create subdirectories for different GitOps Runtimes, and place configuration manifests that are only applied to specific GitOps Runtimes. You have fine-grained control over the configuration of individual Runtimes without affecting others.
 
-Runtime-specific configuration
-With the Shared Configuration Repository, you can create runtime-specific subdirectories and place configuration manifests that are only applied to that specific GitOps Runtime. This allows for fine-grained control over the configuration of individual Runtimes without affecting others.
-
-Control Plane configuration
-The Shared Configuration Repository also supports a control-planes directory, which is applicable only to Hosted GitOps Runtimes. Users can place resource manifests in this directory to define configuration specific to the control plane of each Hosted GitOps runtime. This enables the customization and management of control plane resources separately from other account-level or runtime-specific resources.
+* **Control Plane configuration**
+  The Shared Configuration Repository also supports a control-planes directory, which is applicable only to Hosted GitOps Runtimes. You can place resource manifests in this directory to define configuration specific to the control plane of the Hosted GitOps runtime. You can customize and manage control plane resources separately from other account-level or runtime-specific resources.
 
 
 
@@ -73,12 +70,12 @@ See a [sample repo](https://github.dev/noam-codefresh/shared-gs){:target="\_blan
 
 ### `resources` directory 
 
-The `resources` directory holds the resources shared by all clusters managed by the GitOps Runtime:
+The `resources` directory holds the resources shared by _all_ clusters managed by the GitOps Runtime:
 
-  * `all-runtimes-all-clusters`: Every resource manifest in this directory is applied to all the GitOps Runtimes in the account, and to all the clusters managed by those Runtimes.  
-  * `control-planes`: Optional. Valid for Hosted GitOps Runtimes only. When defined, every resource manifest in this directory is applied to each Hosted Runtime’s `in-cluster`.
-  * `runtimes/<runtime_name>`: Optional. Runtime-specific subdirectory. Every resource manifest in a runtime-specific subdirectory is applied to only that GitOps Runtime. 
-    In the above example, `manifest4.yaml` is applied only to `runtime1`, and  `manifest5.yaml` is applied only to `runtime2`. 
+  * `all-runtimes-all-clusters`: Every resource manifest in this subdirectory is applied to all the GitOps Runtimes in the account, and to all the clusters managed by those Runtimes. In the above example, `manifest2.yaml` is applied to both `runtime1` and `runtime2`
+  * `control-planes`: Optional. Valid for Hosted GitOps Runtimes only. When defined, every resource manifest in this subdirectory is applied to each Hosted Runtime’s `in-cluster`.
+  * `runtimes/<runtime_name>`: Optional. Runtime-specific subdirectory. Every resource manifest in a runtime-specific subdirectory is applied to only the GitOps Runtime defined by `<runtime_name>`. 
+    In the above example, `manifest4.yaml` is applied only to `runtime1`, and `manifest5.yaml` is applied only to `runtime2`. 
 
 {::nomarkdown}
 <br>
