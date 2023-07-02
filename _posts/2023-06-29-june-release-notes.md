@@ -70,7 +70,8 @@ The Pipelines Dashboard now has a Favorites filter. If you starred any projects 
 The Last Update timestamp on the top right of the Pipelines Dashboard, refreshes automatically to show you the exact time the data was retrieved.
 
 **Full path display for pipelines in filter**  
-Now, on mouse over a pipeline name in the Pipelines filter list, the tooltip displays the name of the project to which the pipeline belongs and the name of the pipeline. Previously, it was challenging to identify the correct pipeline, when multiple pipelines shared the same name across different projects. 
+Now, on mouse over a pipeline name in the Pipelines filter list, the tooltip displays the name of the project to which the pipeline belongs, in addition to the name of the pipeline. 
+Previously, it was challenging to identify the correct pipeline, when multiple pipelines shared the same name across different projects. 
 
 For details, see [Pipelines Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/#pipelines-dashboard).
 
