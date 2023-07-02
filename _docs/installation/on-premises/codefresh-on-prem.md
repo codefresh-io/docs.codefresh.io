@@ -109,59 +109,7 @@ The TTL-based retention mechanism is implemented as a Cron job, and deletes data
 
 
 
-## Cluster & external storage reference
 
-Codefresh uses both cluster storage (volumes) and external storage.
-
-### Databases
-
-The following table displays the list of databases created as part of the on-premises installation:
-
-| Database | Purpose | Latest supported version |
-|----------|---------| ---------------|
-| `mongoDB` | Stores all account data (account settings, users, projects, pipelines, builds etc.) | 4.2.x |
-| `postgresql` | Stores data about events for the account (pipeline updates, deletes, etc.). The audit log uses the data from this database. | 13.x |
-| `redis` | Used for caching, and as a key-value store for trigger manager. | 6.0.x |
-
-### Volumes
-
-The table lists the volumes required for Codefresh on-premises:
-
-
-{: .table .table-bordered .table-hover}
-| Name           | Purpose                | Minimum Capacity | Can run on netfs (nfs, cifs) |
-|----------------|------------------------|------------------|------------------------------|
-| `cf-mongodb`*    | Main database - Mongo  | 8GB              | Yes**                        |
-| `cf-postgresql`* | Events databases - Postgres | 8GB         | Yes**                        |
-| `cf-rabbitmq`*   | Message broker         | 8GB              | No**                         |
-| `cf-redis`*      | Cache                  | 8GB              | No**                         |
-| `cf-store`       | Trigger Redis data     | 8GB              | No**                         |
-| `cf-cronus`      | Trigger crontab data   | 1GB              | Yes                          |
-| `datadir-cf-consul-0` | Consul datadir    | 1GB              | Yes                          |
-| `cf-chartmuseum` | chartmuseum            | 10GB             | Yes                          |
-| `cf-builder-0`   | /var/lib/docker for builder | 100GB       | No***                        |
-| `cf-runner-0`    | /var/lib/docker for composition runner | 100GB | No***                   |
-
-{% raw %}
-
- (*) Possibility to use external service
-
- (**) Running on netfs (nfs, cifs) is not recommended by product admin guide
-
- (***) Docker daemon can be run on block device only
-
-{% endraw %}
-
-StatefulSets (`cf-builder` and `cf-runner`) process their data on separate physical volumes (PVs) and can be claimed using Persistent Volume Claims (PVCs) with default initial sizes of 100Gi. Also, those StatefulSets have the ability to connect to existing pre-defined PVCs.
-
-The default initial volume size (100 Gi) can be overridden in the custom `config.yaml` file. Values descriptions are in the `config.yaml` file.
-The registry’s initial volume size is 100Gi. It also can be overridden in a custom `config.yaml` file. There is a possibility to use a customer-defined registry configuration file (`config.yaml`) that allows using different registry storage back-ends (S3, Azure Blob, GCS, etc.) and other parameters. More details can be found in the [Docker documentation](https://docs.docker.com/registry/configuration/).
-
-Depending on the your Kubernetes version, we can assist with PV resizing. Details are can be found in this [Kubernetes blog post](https://kubernetes.io/blog/2018/07/12/resizing-persistent-volumes-using-kubernetes/).
-
-### Automatic Volume Provisioning
-
-Codefresh installation supports automatic storage provisioning based on the standard Kubernetes dynamic provisioner Storage Classes and Persistent Volume Claims (PVCs). All required installation volumes will be provisioned automatically using the default Storage Class or custom Storage Class that can be specified as a parameter in `config.yaml` under `storageClass: my-storage-class`.
 
 
 ## Related articles
