@@ -54,9 +54,9 @@ Once the cluster is connected, you can use any of the [available deployment opti
 ## Amazon S3 bucket for test reports
 
 Codefresh has native support for storing test reports in different storage buckets, including Amazon's S3 storage bucket.
-You can connect an Amazon S3 bucket for test reports in Codefresh through the Cloud Storage options in Pipeline Integrations.  
+You can connect an Amazon S3 bucket storage account to Codefresh through the Cloud Storage options in Pipeline Integrations.  
 
-For detailed instructions, see [Creating test reports]({{site.baseurl}}/docs/testing/test-reports/). 
+
 
 {% include
 image.html
@@ -68,7 +68,7 @@ caption="Amazon cloud storage"
 max-width="60%"
 %}
 
-
+For detailed instructions, to set up an integration with your S3 storage account in Amazon in Codefresh, see [Cloud storage integrations for pipelines]({{site.baseurl}}/docs/integrations/cloud-storage/), and to create and store test reports through Codefresh pipelines, see [Creating test reports]({{site.baseurl}}/docs/testing/test-reports/). 
 
 ## Amazon S3 bucket for Helm charts
 
