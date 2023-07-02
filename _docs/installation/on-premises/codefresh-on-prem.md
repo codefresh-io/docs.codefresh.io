@@ -28,9 +28,7 @@ The installation [ReadMe](https://artifacthub.io/packages/helm/codefresh-onprem/
 | --------------         | --------------           |  
 |Kubernetes cluster      | Server versions v1.22+. |
 |Helm                    | Versions 3.8.0+. |
-<!--|Operating systems|{::nomarkdown}<ul><li>Windows 10/7</li><li>Linux</li><li>OSX</li>{:/}|
-|Git providers    |{::nomarkdown}<ul><li>GitHub: SaaS and on-premises versions</li><li>Bitbucket: SaaS and Bitbucket server (on-premises) 5.4.0 version and above</li><li>GitLab: SaaS and on-premise versions (API v4 only)</li></ul>{:/}|
-|Minimum node sizes |{::nomarkdown}<ul><li>Single node: 8 CPU core and 16GB RAM</li><li>Multi node: master(s) + 3 nodes with 4 CPU core and 8GB RAM (24 GB in total)</li>{:/}|-->
+
 
 
 

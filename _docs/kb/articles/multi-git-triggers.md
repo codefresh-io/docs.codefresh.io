@@ -108,6 +108,6 @@ In the example above we have forced the git checkout to happen out of the master
 
 ## Related articles
 
-[Troubleshooting common issues]({{site.baseurl}}/docs/troubleshooting/common-issues)  
+[Troubleshooting common issues]({{site.baseurl}}/docs/kb/common-issues/)  
 [Git triggers]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/)  
 [Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  

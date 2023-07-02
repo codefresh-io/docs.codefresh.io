@@ -30,4 +30,4 @@ Contact us via the Intercom window on the bottom right of the Codefresh interfac
 
 ## Related articles
 
-[Troubleshooting common issues]({{site.baseurl}}/docs/troubleshooting/common-issues)
+[Troubleshooting common issues]({{site.baseurl}}/docs/kb/common-issues/)

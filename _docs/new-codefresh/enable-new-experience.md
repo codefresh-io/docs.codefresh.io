@@ -15,7 +15,7 @@ Here are a few highlights:
 
 
 ## Enable the Codefresh New Experience
-As a Codefresh admin, you can enable the Codefresh New Experience for a specific account. You also flexibility to switch back to the previous version of Codefresh at any time. 
+As a Codefresh admin, you can enable the Codefresh New Experience for a specific account. You also have the flexibility to switch back to the previous version of Codefresh at any time. 
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon and then select **Account Settings**.
 1. From General in the sidebar, select **Account Information**. 
