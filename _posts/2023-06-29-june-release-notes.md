@@ -70,8 +70,10 @@ The Pipelines Dashboard now has a Favorites filter. If you starred any projects 
 The Last Update timestamp on the top right of the Pipelines Dashboard, refreshes automatically to show you the exact time the data was retrieved.
 
 **Full path display for pipelines in filter**  
+
 Previously, in the Pipelines filter, it was challenging to identify the correct pipeline, when multiple pipelines shared the same name across different projects. 
-Now, when you mouse over a pipeline name in the list, the tooltip displays the full path, including the name of the project to which the pipeline belongs, followed by the name of the pipeline. With this update, you can easily identify and select the correct pipeline in the Pipelines filter, even when multiple pipelines share the same name across different projects.
+Now, when you mouse over a pipeline name in the list, the tooltip displays the full path, including the name of the project to which the pipeline belongs, 
+followed by the name of the pipeline. 
 
 For details, see [Pipelines Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/#pipelines-dashboard).
 
@@ -114,7 +116,6 @@ As part of our ongoing commitment to improving efficiency and simplifying instal
 * Discrepancy in list of builds returned when running `GET {{baseUrl/workflow?pipeline=[pipeline-id]}}` query. 
 * Shallow clone for a specific revision with `depth` argument results in error: `pathspec 'test' did not match any file(s) known to git`.
 * Composition stops randomly with error: `Could not get status for container <container-name>`.
-* Unable to define CRON triggers for pipelines.
 * Cross-account ECR pull in `freestyle` step fails with `(HTTP code 500) server error...`. 
 * In the Builds page, steps are grayed out, and the Output tab for a step displays `loading` instead of the step logs.
 * Creating a Git trigger for a repo name containing spaces fails with error: `Failed to create trigger...fails to match the required pattern...`.
