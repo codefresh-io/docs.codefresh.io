@@ -49,7 +49,7 @@ The pipeline is the central component in Codefresh that implements CI/CD process
 Codefresh pipelines can do only CI, only CD, both CI and CD, or run any custom action, such as unit and integration tests.
 A CI pipeline can compile and package code, build and push Docker images. A CD pipeline can deploy applications/artifacts to VMs, Kubernetes clusters, FTP sites, S3 buckets, and more. And a CI/CD pipeline can combine code compilation, integration, and deployment for full CI/CD. 
 
-Codefresh offers a rich set of capabilities to easily create and maintain pipelines such as ready-to-use steps for common tasks, system and user-defined variables, shared configurations for resuse, and more.
+Codefresh offers a rich set of capabilities to easily create and maintain pipelines such as ready-to-use steps for common tasks, system and user-defined variables, shared configurations for reuse, and more.
 
 See:  
 [Introduction to Codefresh pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)  

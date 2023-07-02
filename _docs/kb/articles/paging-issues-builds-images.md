@@ -90,4 +90,4 @@ The method will work in both the Codefresh API and the CLI.
 
 ## Related articles
 
-[Troubleshooting common issues]({{site.baseurl}}/docs/troubleshooting/common-issues)
+[Troubleshooting common issues]({{site.baseurl}}/docs/kb/common-issues/)

@@ -17,9 +17,6 @@ After you install the on-premises version of the Codefresh platform, review plat
 * [Selectively enable SSO provider for account](#selectively-enable-sso-provider-for-account)
 * [Retention policy for Codefresh builds](#retention-policy-for-codefresh-builds)
 
- 
-
-
 
 
 ## Disable user and team management via Codefresh UI
