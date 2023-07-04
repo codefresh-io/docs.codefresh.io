@@ -41,7 +41,6 @@ SAML SSO settings for Okta include auto-syncing teams and groups in OKta with Co
   * **Access Token**: Optional. The OKTA API token that you generated in Okta, used to sync groups and their users from OKTA to Codefresh. 
   * **Client Host**: The OKTA organization URL, for example, `https://<company>.okta.com`.   
   * **Application ID**: The Codefresh application ID in your OKTA organization, that will be used to sync groups and user from OKTA to Codefresh. 
-  
 1. Click **Add**.
   The SAML integration for Okta is added and appears in the list of SSOs. 
 1. In the Single Sign-On page, click the **Edit** icon for the Okta SAML integration you created.
