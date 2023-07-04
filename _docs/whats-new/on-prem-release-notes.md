@@ -4,10 +4,10 @@ description: "New features, bug fixes, feature flags for on-premises releases"
 toc: true
 ---
 
-Welcome to the release notes for our on-premises release versions, starting with our latest release, version 2.0.3.
+Welcome to the release notes for our on-premises release versions, starting with our latest release, version 2.0.
 
 
-## On-premises version 2.0.3 
+## On-premises version 2.0.x
 Welcome to our newest On-Premises release, version 2.0.3!  This major release is finally here, and it’s packed with an array of exciting usability enhancements, new features, and improvements. We listened carefully to your feedback, and worked to incorporate your suggestions into this release. 
 
 On-premises v2.0.3 comes with the exciting addition of Codefresh GitOps! Set up and deploy applications/infrastructure using Git as the single source of truth. Read the details later in this document.
@@ -17,7 +17,7 @@ On-premises v2.0.3 comes with the exciting addition of Codefresh GitOps! Set up 
 
 <br>
 
-#### Upgrading to v2.0.3
+#### Upgrading to v2.0.x
 In this major release, we have deprecated the `kcfi` installer.  Codefresh on-premises is now installed with Helm. 
 The `config.yaml` is not compatible for Helm-based installation. To use `config.yaml` in the Helm chart, you need to remove some sections and update others.  
 
