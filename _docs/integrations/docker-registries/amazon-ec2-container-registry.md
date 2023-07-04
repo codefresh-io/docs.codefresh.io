@@ -1,5 +1,5 @@
 ---
-title: "Amazon EC2 Container Registry"
+title: "Amazon ECR Container Registry"
 description: "Use the Amazon Docker Registry for pipeline integrations"
 group: integrations
 sub_group: docker-registries
@@ -36,15 +36,17 @@ Codefresh makes sure to automatically refresh the AWS token for you.
 
 For more information on how to obtain the needed tokens, read the [AWS documentation](http://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys){:target="_blank"}.
 
-> Note:
+> **NOTE**:
   You must have an active registry set up in AWS.<br /><br />
   Amazon ECR push/pull operations are supported with two permission options: user-based and resource-based.
 
 
-  * User-based permissions: User account must apply `AmazonEC2ContainerRegistryPowerUser` policy (or custom based on that policy).  
+  * Identity-based policies  
+    User account must apply `AmazonEC2ContainerRegistryPowerUser` policy (or custom based on that policy).  
     For more information and examples, click [here](http://docs.aws.amazon.com/AmazonECR/latest/userguide/ecr_managed_policies.html){:target="_blank"}.
-  * Resource-based permissions: Users with resource-based permissions must be allowed to call `ecr:GetAuthorizationToken` before they can authenticate to a registry, and push or pull any images from any Amazon ECR repository, than you need provide push/pull permissions to specific registry.  
-  For more information and examples, click [here](http://docs.aws.amazon.com/AmazonECR/latest/userguide/RepositoryPolicies.html){:target="_blank"}.
+  * Resource-based policy
+    Users with resource-based policies must be allowed to call `ecr:GetAuthorizationToken` before they can authenticate to a registry, and push or pull any images from any Amazon ECR repository, than you need provide push/pull permissions to specific registry.  
+    For more information and examples, click [here](http://docs.aws.amazon.com/AmazonECR/latest/userguide/RepositoryPolicies.html){:target="_blank"}.
 
 
 ## Set up ECR integration for service account
@@ -168,7 +170,8 @@ max-width="40%"
 3. Click **Promote**.
 
 
->It is possible to change the image name if you want, but make sure that the new name exists as a repository in ECR.
+>**NOTE**:  
+It is possible to change the image name if you want, but make sure that the new name exists as a repository in ECR.
 
 
 ## Related articles

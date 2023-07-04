@@ -67,7 +67,8 @@ Once the cluster is connected you can use any of the [available deployment optio
 
 ## Storing test reports in Azure storage
 
-Codefres has native support for test reports. You can store the reports on Azure storage.
+Codefresh has native support for storing test reports in different storage buckets, including Azure Blob/File storage.
+You can connect your Azure storage account to Codefresh through the Cloud Storage options in Pipeline Integrations.  
 
 {% include
 image.html
@@ -79,7 +80,7 @@ caption="Azure cloud storage"
 max-width="50%"
 %}
 
-See the full documentation for [test reports]({{site.baseurl}}/docs/testing/test-reports/).
+For detailed instructions, to set up an integration with your S3 storage account in Amazon in Codefresh, see [Cloud storage integrations for pipelines]({{site.baseurl}}/docs/integrations/cloud-storage/), and to create and store test reports through Codefresh pipelines, see [Creating test reports]({{site.baseurl}}/docs/testing/test-reports/). 
 
 ## Using Azure storage for storing Helm charts
 

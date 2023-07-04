@@ -254,6 +254,8 @@
           url: "/digital-ocean-container-registry"
         - title: Other Registries
           url: "/other-registries"  
+    - title: Cloud Storage
+      url: "/cloud-storage"    
     - title: Secret Storage
       url: "/secret-storage"
     - title: Hashicorp Vault

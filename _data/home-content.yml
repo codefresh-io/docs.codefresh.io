@@ -46,7 +46,9 @@
     - title: Docker Registries
       localurl: /docs/integrations/docker-registries/  
     - title: Secret Storage
-      localurl: /docs/integrations/secret-storage/     
+      localurl: /docs/integrations/secret-storage/  
+    - title: Cloud Storage
+      localurl: /docs/integrations/cloud-storage/          
     - title: Helm
       localurl: /docs/integrations/helm/ 
     - title: Argo CD

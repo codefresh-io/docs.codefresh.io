@@ -1,38 +1,46 @@
 ---
 title: "Creating test reports"
-description: "Create and view test reports in Codefresh"
+description: "Create and view test reports in Codefresh with cloud storage integrations"
 group: testing
 redirect_from:
   - /docs/configure-ci-cd-pipeline/test-reports/
 toc: true
 ---
 
-Codefresh offers the capability to store test results for every build and view them at any point in time.
+Codefresh can integrate with cloud storage providers giving you the capability to store test results for pipeline builds. You can then harness Codefresh pipelines to generate comprehensive test reports, providing valuable insights into your testing processes.
 
-Currently, Codefresh supports storing test reports in:  
-* [Google buckets](https://cloud.google.com/storage/docs/key-terms#buckets){:target="\_blank"}
-* [S3 buckets](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html){:target="\_blank"}
-* [Azure Storage](https://docs.microsoft.com/en-us/azure/storage/){:target="\_blank"}
-* [MinIO objects](https://min.io/){:target="\_blank"}
+Currently, Codefresh supports storing test reports for the following providers:  
+* Google buckets  
+  [Product overview of Cloud Storage](https://cloud.google.com/storage/docs/key-terms#buckets){:target="\_blank"}
+* S3 buckets  
+  [Buckets overview](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html){:target="\_blank"}
+* Azure Storage  
+  [Azure Storage documentation](https://docs.microsoft.com/en-us/azure/storage/){:target="\_blank"}
+* MinIO objects  
+  [MinIO Object Storage for Kubernetes](https://min.io/docs/minio/kubernetes/upstream/){:target="\_blank"}
+
+## Set up cloud storage for test reports
+
+Before creating test reports, there are two steps to follow:
+1. Create a storage bucket with your preferred cloud storage provider to store test reports.
+1. Connect the [cloud storage provider to Codefresh]({{site.baseurl}}/docs/integrations/cloud-storage/#connecting-your-storage-account-to-codefresh) to provide an integration you can reference in Codefresh pipelines:
+  * [Google bucket]({{site.baseurl}}/docs/integrations/cloud-storage/#connecting-a-google-bucket)
+  * [Amazon S3 bucket]({{site.baseurl}}/docs/integrations/cloud-storage/#connecting-an-amazon-s3-bucket)
+  * [Azure Blob/File storage]({{site.baseurl}}/docs/integrations/cloud-storage/#connecting-azure-blobfile-storage)
+  * [MinIO storage]({{site.baseurl}}/docs/integrations/cloud-storage/#connecting-minio-storage)
+
+
+Codefresh creates subfolders for every build in the bucket with the build IDs as the names of the subfolders. Test reports generated for a build are uploaded to the respective folder. The same bucket can store test reports from multiple pipeline builds.
+
 
 ## Test report modes
 
-There are two modes for processing test reports in Codefresh, built-in and custom test reporting
+There are two modes for processing test reports in Codefresh, built-in and custom test reporting:
 
-1. Built-in test reporting based on the [Allure framework](https://qameta.io/allure-report/){:target="\_blank"}  
-   Allure is an open-source test framework that can produce HTML reports like the following:
-
-  {% include 
-image.html 
-lightbox="true" 
-file="/images/pipeline/test-reports/sample-test-report.png" 
-url="/images/pipeline/test-reports/sample-test-report.png"
-alt="Sample Allure test report" 
-caption="Sample Allure test report"
-max-width="70%"
-%}
-
-  For more details, see the [official Allure documentation](https://docs.qameta.io/allure/){:target="\_blank"}.  
+1. **Built-in test reporting** based on the [Allure framework](https://qameta.io/allure-report/){:target="\_blank"}  
+  Allure is an open-source test framework that can produce HTML reports, as in the example below.  
+  For more details, see the [official Allure documentation](https://docs.qameta.io/allure/){:target="\_blank"}.   
+  
   Allure supports popular testing frameworks such as:
   * Java/JUnit/TestNG/Cucumber
   * Python/pytest
@@ -42,11 +50,22 @@ max-width="70%"
   * .NET/Nunit/mstest
   * Scala/Scalatest
   * PHP/PhpUnit
+  
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/test-reports/sample-test-report.png" 
+url="/images/pipeline/test-reports/sample-test-report.png"
+alt="Sample Allure test report" 
+caption="Sample Allure test report"
+max-width="70%"
+%}
 
 {:start="2"}
-1. Custom reporting for any static website (HTML) content    
+1. **Custom reporting** for any static website (HTML) content    
   If you use the custom reporting mode, you can select any kind of tool that you want, as long as it produces a static website in the end. You can also use the custom reporting mode for reports that are not test reports, such as security reports or quality reports.
 
+<!---
 ## Connecting your storage account
 
 As a first step, you need a cloud bucket to store your test results. You can use Google, AWS, Azure or MinIO for this purpose.  
@@ -66,7 +85,8 @@ caption="Cloud storage Integrations"
 max-width="80%"
 %}
 
-1. Click **Add Cloud Storage**, and select your cloud provider.
+{:start="3"}
+1. Click **Add Cloud Storage**, and select your cloud provider for test report storage.
 1. Continue to define cloud settings according to your cloud provider, as described in the sections that follow.
 
 ### Connecting a Google bucket
@@ -99,12 +119,47 @@ The integration is ready. You will use the name of the integration as an environ
   In that case, download the JSON file locally and paste its contents in the **JSON config** field.
   For more information, see the [official documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys){:target="\_blank"}. 
 
-### Connecting an S3 bucket
+### Connecting an Amazon S3 bucket
 
-1. For AWS (Amazon Web Services), create an S3 bucket.  
-  See the [official documentation](https://docs.aws.amazon.com/quickstarts/latest/s3backup/step-1-create-bucket.html){:target="\_blank"} or the [CLI](https://docs.aws.amazon.com/cli/latest/reference/s3api/create-bucket.html){:target="\_blank"}. 
-  
-1. Note down the **Access** and **Secret** keys. 
+**Create an S3 bucket in AWS (Amazon Web Services)**  
+
+1. Create an S3 bucket in AWS.  
+  See the [official documentation](https://docs.aws.amazon.com/quickstarts/latest/s3backup/step-1-create-bucket.html){:target="\_blank"}, or use the [AWS CLI](https://docs.aws.amazon.com/cli/latest/reference/s3api/create-bucket.html){:target="\_blank"}. 
+1. Define the necessary IAM (Identity and Access Management) policy settings.  
+  Here's an example IAM policy that you can use as a reference:
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:ListBucket"
+            ],
+            "Resource": [
+                "arn:aws:s3:::cf-backup*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:PutObject",
+                "s3:GetObject",
+                "s3:DeleteObject"
+            ],
+            "Resource": [
+                "arn:aws:s3:::cf-backup*/*"
+            ]
+        }
+    ]
+}
+```
+
+1. Note down the **Access** and **Secret** keys generated during the S3 bucket creation process. 
+
+**Define S3 settings in Codefresh**  
+Add **Amazon Cloud Storage** as the Cloud Storage provider defining the settings for the S3 bucket.
+
 1. [Connect your storage account](#connecting-your-storage-account) for **Amazon Cloud Storage**.
 1. Define the settings: 
    * Enter an arbitrary name for your integration.
@@ -181,8 +236,9 @@ caption="MinIO cloud storage"
 max-width="60%"
 %} 
 
-### Integration example in Codefresh pipeline
-See an example of the integration in a pipeline:  
+-->
+## Integration example in Codefresh pipeline
+See an example of cloud storage provider integration in a pipeline:  
 ```yaml
 version: "1.0"
 stages:
@@ -212,15 +268,15 @@ steps:
 
 ## Producing Allure test reports from Codefresh pipelines
 
-In order to obtain test reports with Allure, the general process of a pipeline is the following:
+To obtain test reports with Allure through a pipeline, the general process is the following:
 
-1. Generate test results using Allure and store them in a folder named `allure-results` (which is the default name).
+1. Generate test results using Allure and store them in a folder named `allure-results`, which is the default folder created by Allure.
 1. Copy this folder to the [Codefresh volume]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) to make it available to the next pipeline step.
 1. Use the special `cf-docker-test-reporting` pipeline step with a working directory for the folder that contains the `allure-results` subfolder.
 
 Let's see these requirements in order:
 
-### Collecting the Allure test results
+### Collecting Allure test results
  
 The first step is to run your unit/integration tests using Allure to gather the results.  
 The process is different for every programming language. Follow the [official Allure documentation](https://docs.qameta.io/allure/){:target="\_blank"}. You can also take a look at any of the [examples](https://github.com/allure-examples){:target="\_blank"}. 
@@ -229,7 +285,8 @@ By default, Allure creates a folder named `allure-results` containing all the te
 
 To pass the reports to the next step, you need to place them anywhere in the [Codefresh volume]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) that is automatically shared between all Codefresh steps.
 
->You can also leave the test results in the project folder that was checked out from Git, as this folder is already inside the shared Codefresh volume.
+>**TIP**:  
+  You can also leave the test results in the project folder that was checked out from Git, as this folder is already inside the shared Codefresh volume.
 
 Therefore, once you create the reports with your testing framework, make sure to copy them to `{% raw %}${{CF_VOLUME_PATH}}{% endraw %}` which is the [Codefresh variable]({{site.baseurl}}/docs/pipelines/variables/) that points to the shared volume.  
 
@@ -246,13 +303,13 @@ running_tests:
 {% endraw %}
 {% endhighlight %}
 
-Here the tests are executed and then they are copied to `/codefresh/volume/allure-results`
+Here the tests are executed and then copied to `/codefresh/volume/allure-results`
 
 
 ### Creating the Allure test reports
 
 
-Once the test results are collected, the next step is the same, regardless of your programming language and test framework.
+Once the test results are collected, the next step is the same, regardless of your programming language and testing framework.
 
 {% highlight yaml %}
 {% raw %}
@@ -306,9 +363,9 @@ Note that behind the scenes, Codefresh automatically handles Allure history for 
 
 ## Using the custom mode for generic reporting
 
-If you don't want to use Allure or wish to create some other kind of report, you can use the alternative mode for the Codefresh reporting step.
+If you don't want to use Allure or wish to create some other kind of report, you can use the alternative **Custom reporting** mode for the Codefresh reporting step.
 
-Here is an example for a custom reporting step via [Mocha](https://mochajs.org/){:target="\_blank"}. The reports are placed in the folder `/codefresh/volume/demochat/mochawesome-report`.
+Here is an example of a custom reporting step via [Mocha](https://mochajs.org/){:target="\_blank"}. The reports are placed in the folder `/codefresh/volume/demochat/mochawesome-report`.
 
 
 {% highlight yaml %}
@@ -365,13 +422,13 @@ If your report is only one file, simply use the `REPORT_INDEX_FILE` environment 
 
 
 
-### Cleaning the reports from the previous run 
+## Cleaning the reports from the previous run 
 
-In the typical scenario, the tests are run, the results are collected and saved in a folder, and then Codefresh creates the report.
+In a typical scenario, the tests are run, the results are collected and saved in a folder, and then Codefresh creates the report.
 
 If something goes wrong with the actual tests, once the Codefresh reporting step runs, it actually picks the old reports from the previous build. Remember that everything that is placed in the Codefresh volume is not only shared between build steps, but also persists between different builds of the same pipeline for caching purposes.
 
-If that is a problem for you, pass the extra `CLEAR_TEST_REPORT` environment variable to the reporting step. This deletes the previous test results once uploaded, so are not available to the subsequent build.  
+If that is a problem for you, pass the additional `CLEAR_TEST_REPORT` environment variable to the reporting step. This deletes the previous test results once uploaded, so are not available to the subsequent build.  
 
 Here is an example:
 
@@ -390,7 +447,8 @@ Here is an example:
 {% endraw %}
 {% endhighlight %}
 
->In the Allure reporting mode, the test results are automatically cleared by Codefresh. There is no need to manually define the `CLEAR_TEST_REPORT` variable.
+>**NOTE**:
+ In the **Built-in test (Allure) reporting mode**, Codefresh automatically clears the test results. There is no need to manually define the `CLEAR_TEST_REPORT` variable.
 
 ## Creating multiple reports
 
@@ -486,7 +544,7 @@ As the last step in your pipeline, add the following step:
 {% endraw %}
 {% endhighlight %}
 
-This step checks the result of your unit tests, and stops the whole pipeline by exiting with an error, if the tests fail.
+This step verifies the outcome of your unit tests. If the tests fail, it halts the entire pipeline by exiting with an error.  
 Replace `RunMyUnitTests` with the name of your step that runs unit tests. 
 
 Here is a full pipeline example:
