@@ -24,7 +24,7 @@ SSO providers can sync users from multiple accounts, in addition to the primary 
 This functionality benfits enterprises that manage multiple accounts for a single customer, as it streamlines the sync process through a single operation. 
 If a customer has dev and prod accounts in Codefresh, they can set up an SSO integration for one of the accounts, and then specificy the ID of the second account to sync.
 
-Codefresh validates if the user has access to the accounts specified, and during team-sync retrieives the accounts with the IDs and invites users and teams for those accounts.
+Codefresh validates if the user has access to the accounts specified, and during team-sync retrieives the accounts and invites users in teams/groups for those accounts.
 
 
 -->
