@@ -501,7 +501,7 @@
     - title: On-premises
       url: 
       sub-pages:    
-        - title: Platform configuration
+        - title: Platform installation & configuration
           url: "/codefresh-on-prem"
         - title: Platform upgrade
           url: "/codefresh-on-prem-upgrade"

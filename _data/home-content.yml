@@ -227,7 +227,7 @@
       localurl: /docs/installation/installation-options/
     - title: Codefresh Runner installation
       localurl: /docs/installation/codefresh-runner/ 
-    - title: On-Premises platform configuration
+    - title: On-Premises platform installation & configuration
       localurl: /docs/installation/on-premises/codefresh-on-prem/
     - title: On-Premises platform upgrade
       localurl: /docs/installation/on-premises/codefresh-on-prem-upgrade/
