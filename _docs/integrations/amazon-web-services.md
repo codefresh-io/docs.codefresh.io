@@ -8,7 +8,7 @@ toc: true
 Codefresh has native support for AWS in the following areas:
 
 - [Amazon container registries: ECR](#amazon-container-registries)
-- [Amazon Kubernetes clusters: EKS](amazon-kubernetes-clusters)
+- [Amazon Kubernetes clusters: EKS](#amazon-kubernetes-clusters)
 - Amazon S3 buckets:
   - [For Test reports](#amazon-s3-bucket-for-test-reports)
   - [For Helm charts](#amazon-s3-bucket-for-helm-charts)
