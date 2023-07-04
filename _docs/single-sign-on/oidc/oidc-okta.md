@@ -158,10 +158,10 @@ max-width="30%"
   * **Client Host**: The OKTA organization URL, for example, `https://<company>.okta.com`.   
     Do not copy the URL from the admin view (e.g. `https://<company>-admin.okta.com`), as it will not work.
   * **Application ID**: The Codefresh application ID in your OKTA organization, that will be used to sync groups and user from OKTA to Codefresh. 
-  * **Additional accounts to sync**: Optional. The names of the additional accounts to be synced from Okta. 
+  * **Additional accounts to sync**: Optional. The names of the additional Codefresh accounts to be synced from Okta. 
     Codefresh validates if the user has both access to and administrator privileges for the selected accounts.  
     See [How Okta syncing works](#how-okta-syncing-works) for team/group sync options with Okta.
-1. Optional. To automatically sync teams or groups in Okta to Codefresh via the UI, including additional accounts selected if any, select **Auto-group sync**.  
+1. Optional. To automatically sync teams or groups in Okta to Codefresh via the UI, including additional Codefresh accounts selected if any, select **Auto-group sync**.  
   This action syncs groups every 12 hours. 
   > Though you can assign an Okta application to both groups and individual users, Codefresh _only syncs users who are part of teams_.   
   New users in Okta, _not_ assigned to a team, are **NOT** synced with Codefresh. You should first assign the user to a team for the sync to work.
@@ -195,12 +195,12 @@ Syncing with Okta _only affects teams/groups_, and not individual users.
 After initial SSO setup, you can activate automatic syncing of teams for the integration account or for both the integration and additional accounts via the CLI and the UI.
 
 * CLI  
-  You can select multiple accounts to sync to Codefresh through the **Additional accounts to sync** option in the UI, and then either create a Codefresh pipeline with the CLI command or run the CLI command when required.  
+  You can select multiple Codefresh accounts to sync through the **Additional accounts to sync** option in the UI, and then either create a Codefresh pipeline with the CLI command or run the CLI command when required.  
   The pipeline should run the CLI command `codefresh synchronize teams my-okta-client-name -t okta`.  
   See [Syncing teams in IdPs with Codefresh]({{site.baseurl}}//docs/single-sign-on/team-sync/#syncing-teams-in-idps-with-codefresh).
 
 * UI  
-  Select the accounts to sync to Codefresh through the **Additional accounts to sync** option in the UI, and turn on **Auto-group sync** in the SSO configuration settings. 
+  Select the Codefresh accounts to sync to through the **Additional accounts to sync** option in the UI, and turn on **Auto-group sync** in the SSO configuration settings. 
 
  
  
