@@ -113,7 +113,7 @@ description: "Changelog for Pipelines 2020 (Classic)"
   - New in-app notifications for plan upgrades and downgrades
   - New in-app notifications for subscription payment issues
 - New UX flow for the signup process
-- Updated OneLogin SSO support - [documentation]({{site.baseurl}}/docs/single-sign-on/saml/saml-onelogin/)
+- Updated OneLogin SSO support - [documentation]({{site.baseurl}}/docs/administration/single-sign-on/saml/saml-onelogin/)
 - Published Codefresh Platform IPs - [documentation]({{site.baseurl}}/docs/integrations/kubernetes/#prerequisites)
 - Installing the Codefresh Runner in AWS - [documentation]({{site.baseurl}}/docs/installation/codefresh-runner/#installing-on-aws)
 - Amazon ECS/Fargate deployment example - [documentation]({{site.baseurl}}/docs/integrations/amazon-web-services/)
@@ -123,5 +123,5 @@ description: "Changelog for Pipelines 2020 (Classic)"
 - Support for Azure Storage in test reports - [documentation]({{site.baseurl}}/docs/testing/test-reports/#connecting-azure-storage)
 - Promoting Docker images - [documentation]({{site.baseurl}}/docs/ci-cd-guides/working-with-docker-registries/#promoting-docker-images)
 - Using Dockerhub personal access tokens - [documentation]({{site.baseurl}}/docs/integrations/docker-registries/docker-hub/)
-- Updated Azure SSO instructions - [documentation]({{site.baseurl}}/docs/single-sign-on/oidc/oidc-azure/)
+- Updated Azure SSO instructions - [documentation]({{site.baseurl}}/docs/administration/single-sign-on/oidc/oidc-azure/)
 - Codefresh Runner requirements - [documentation]({{site.baseurl}}/docs/installation/codefresh-runner/)

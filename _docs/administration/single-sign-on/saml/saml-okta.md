@@ -1,13 +1,13 @@
 ---
 title: Okta SSO via SAML
 description: Setting up Okta via SAML
-group: single-sign-on
-sub_group: saml
+redirect_from:
+  - /docs/single-sign-on/saml/saml-okta/
 toc: true
 ---
 
 Set up SSO for OKta using SAML.
-For a general overview on SAML, see [Setting up SAML2 Federated SSO]({{site.baseurl}}/docs/single-sign-on/saml/).
+For a general overview on SAML, see [Setting up SAML2 Federated SSO]({{site.baseurl}}/docs/administration/single-sign-on/saml/).
 
 >If you do not see SAML in the SSO list, please create a support ticket to enable SAML for your account.
 
@@ -45,7 +45,7 @@ SAML SSO settings for Okta include auto-syncing teams and groups in OKta with Co
   The SAML integration for Okta is added and appears in the list of SSOs. 
 1. In the Single Sign-On page, click the **Edit** icon for the Okta SAML integration you created.
 1. Copy the **Assertion URL** (client ID) that was automatically generated when you added the integration. 
-1. Continue with [Step 2: Configure SSO settings for Codefresh in Okta](#configure-sso-settings-for-codefresh-in-okta).
+1. Continue with [Step 2: Configure SSO settings for Codefresh in Okta](#step-2-configure-sso-settings-for-codefresh-in-okta).
 
 ## Step 2: Configure SSO settings for Codefresh in Okta
 
@@ -71,7 +71,7 @@ SAML SSO settings for Okta include auto-syncing teams and groups in OKta with Co
 1. Sign On Tab:
     - Select **View SAML Setup Instructions** on the right.
     - Keep the page open as you will need it to complete the setup for Okta in Codefresh.
-1. Continue with [Step 3: Configure SSO settings for Codefresh in Okta](#configure-sso-settings-for-codefresh-in-okta).
+1. Continue with [Step 3: Configure SSO settings for Codefresh in Okta](#step-3-complete-sso-configuration-for-okta-in-codefresh).
 
 
 ## Step 3: Complete SSO configuration for Okta in Codefresh
@@ -94,6 +94,6 @@ Now test the SSO with a test user in a different browser or private/incognito br
 1. In a different browser or private/incognito browser window use the Corporate option to log in.
 
 ## Related articles
-[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/single-sign-on/single-sign-on/)  
-[Setting up SAML2 Federated SSO]({{site.baseurl}}/docs/single-sign-on/saml/)  
-[Common configuration for SSO providers]({{site.baseurl}}/docs/single-sign-on/team-sync)  
+[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/administration/single-sign-on/)  
+[Setting up SAML2 Federated SSO]({{site.baseurl}}/docs/administration/single-sign-on/saml/)  
+[Common configuration for SSO providers]({{site.baseurl}}/docs/administration/single-sign-on/team-sync)  

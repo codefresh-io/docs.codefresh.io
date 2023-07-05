@@ -83,7 +83,7 @@ description: "Changelog and Release Notes for Pipelines (Classic)"
 - New paging mechanism for builds/images that might break custom integrations - [documentation]({{site.baseurl}}/docs/kb/articles/paging-issues-builds-images/)
 - Note for Okta sync - [documentation]({{site.baseurl}}/docs/administration/single-sign-on/sso-okta/#how-okta-syncing-works)
 - cf_export limitations - [documentation]({{site.baseurl}}/docs/kb/articles/cf-export-limitations/)
-- Default SSO provider - [documentation]({{site.baseurl}}/docs/single-sign-on/team-sync/#set-a-default-sso-provider-for-account)
+- Default SSO provider - [documentation]({{site.baseurl}}/docs/administration/single-sign-on/team-sync/#set-a-default-sso-provider-for-account)
 - Codefresh runner now has a dry run option - [documentation]({{site.baseurl}}/docs/administration/codefresh-runner/#inspecting-the-manifests-before-they-are-installed)
 - Connect to Azure Kubernetes with a service principal - [documentation]({{site.baseurl}}//#adding-an-aks-cluster-with-a-service-principal)
 - Connect to an Azure Helm repository with a service principal - [documentation]({{site.baseurl}}/docs/integrations/helm/#private-helm-repository---azure-with-service-principal)

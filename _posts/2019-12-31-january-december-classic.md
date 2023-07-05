@@ -66,7 +66,7 @@ description: "Changelog for Pipelines 2019 (Classic)"
 - New GitHub PR variables - [documentation]({{site.baseurl}}/docs/pipelines/variables/#github-pull-request-variables)
 - Inline Dockerfiles in build steps - [documentation]({{site.baseurl}}/docs/pipelines/steps/build/#inline-dockerfile)
 - LDAP SSO support (Enterprise) - [documentation]({{site.baseurl}}/docs/single-sign-on/ldap/)
-- SAML SSO support (Enterprise) - [documentation]({{site.baseurl}}/docs/single-sign-on/saml/)
+- SAML SSO support (Enterprise) - [documentation]({{site.baseurl}}/docs/administration/single-sign-on/saml/)
 - Audit logs (Enterprise) - [documentation]({{site.baseurl}}/docs/administration/account-user-management/audit/)
 - Checking out code with Subversion, HG, Perforce etc. - [documentation]({{site.baseurl}}/docs/example-catalog/ci-examples/non-git-checkout/)
 - Migrating to explicit git clone steps - [documentation]({{site.baseurl}}docs/pipelines/steps/git-clone/)
