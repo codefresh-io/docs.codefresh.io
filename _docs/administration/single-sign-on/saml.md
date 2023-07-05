@@ -77,20 +77,15 @@ Here's what you need to do to configure SSO via SAML in Codefresh:
   * [OneLogin]({{site.baseurl}}/docs/administration/single-sign-on/saml/saml-onelogin)
   * [PingID]({{site.baseurl}}/docs/administration/single-sign-on/saml/saml-pingid)
 
-  Notes for SSO via SAML:  
-  <br />
-  **SSO settings**  
-
-    * Assertion URL  
-      The Assertion URL which is the Service Provider SSO endpoint, also referred to as the Callback URL or Client ID, is generated _after_ you create the integration in Codefresh.
-
-    * Provider  
-      Currently, we support GSuite for SAML. If you are using a different provider, leave this field empty.  
-      For GSuite, you can define the sync settings, Admin Email and the JSON Keyfile.
-      <!--- For instructions, see [Google SSO]({{site.baseurl}}/docs/administration/single-sign-on/team-sync/#cli-synchronize-teams).-->
+      * Assertion URL  
+        The Assertion URL which is the Service Provider SSO endpoint, also referred to as the Callback URL or Client ID, is generated _after_ you create the integration in Codefresh.
+      * Provider  
+        Currently, we support GSuite and Okta for SAML. If you are using a different provider, leave this field empty. 
+   <!---For GSuite, you can define the sync settings, Admin Email and the JSON Keyfile.
+          For instructions, see [Google SSO]({{site.baseurl}}/docs/administration/single-sign-on/team-sync/#cli-synchronize-teams).-->
 
     > **NOTE**:  
-      These settings are for the SaaS version of Codefresh. For an on-premises setup, use the URLs that match your installation.
+    These settings are for the SaaS version of Codefresh. For an on-premises setup, use the URLs that match your installation.
 
 {:start="2"}
 1. Test integration with the IdP: 
