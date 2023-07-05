@@ -163,7 +163,7 @@
 /docs/administration/single-sign-on/saml/saml-okta/
 /docs/administration/single-sign-on/saml/saml-onelogin/
 /docs/administration/single-sign-on/saml/saml-pingidsso/
-/docs/administration/single-sign-on/sso-overview/
+/docs/administration/single-sign-on/
 /docs/administration/single-sign-on/team-sync/
 /docs/terms-and-privacy-policy/privacy-policy/
 /docs/terms-and-privacy-policy/sla/
