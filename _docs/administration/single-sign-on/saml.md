@@ -73,9 +73,9 @@ Here's what you need to do to configure SSO via SAML in Codefresh:
   This generally includes defining settings both in Codefresh and in the IdP.  
   Codefresh supports SAML SSO for the following:
   * [JumpCloud]({{site.baseurl}}/docs/single-sign-on/saml/saml-jumpcloud)
-  * [Okta]({{site.baseurl}}/docs/single-sign-on/saml/saml-okta)
-  * [OneLogin]({{site.baseurl}}/docs/single-sign-on/saml/saml-onelogin)
-  * [PingID]({{site.baseurl}}/docs/single-sign-on/saml/saml-pingid)
+  * [Okta]({{site.baseurl}}/docs/administration/single-sign-on/saml/saml-okta)
+  * [OneLogin]({{site.baseurl}}/docs/administration/single-sign-on/saml/saml-onelogin)
+  * [PingID]({{site.baseurl}}/docs/administration/single-sign-on/saml/saml-pingid)
 
   Notes for SSO via SAML:  
   <br />
@@ -87,7 +87,7 @@ Here's what you need to do to configure SSO via SAML in Codefresh:
   * Provider  
     Currently, we support GSuite for SAML. If you are using a different provider, leave this field empty.  
     For GSuite, you can define the sync settings, Admin Email and the JSON Keyfile.
-    For instructions, see [Google SSO]({{site.baseurl}}/docs/single-sign-on/team-sync/#cli-synchronize-teams).
+    For instructions, see [Google SSO]({{site.baseurl}}/docs/administration/single-sign-on/team-sync/#cli-synchronize-teams).
 
   > These settings are for the SaaS version of Codefresh. For an on-premises setup, use the URLs that match your installation.
 
@@ -122,16 +122,16 @@ Here's what you need to do to configure SSO via SAML in Codefresh:
     max-width="50%"
     %}
 
-1. (Optional) [Set a default SSO provider for account]({{site.baseurl}}/docs/single-sign-on/team-sync/#set-a-default-sso-provider-for-account)
+1. (Optional) [Set a default SSO provider for account]({{site.baseurl}}/docs/administration/single-sign-on/team-sync/#set-a-default-sso-provider-for-account)
   You can select an IdP as the default SSO provider for a Codefresh account. This means that all the new users added to that account will automatically use the selected IdP for signin.
-1. (Optional) [Select SSO method for individual users]({{site.baseurl}}/docs/single-sign-on/team-sync/#select-sso-method-for-individual-users)
+1. (Optional) [Select SSO method for individual users]({{site.baseurl}}/docs/administration/single-sign-on/team-sync/#select-sso-method-for-individual-users)
   You can also select if needed, a different SSO provider for every user or for specific users.
 
 > Codefresh has an internal cache for SSO configuration, and it can take up to five minutes for your changes to take effect.
 
 ## Related articles
-[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/single-sign-on/single-sign-on/)  
-[Setting up OIDC Federated SSO]({{site.baseurl}}/docs/single-sign-on/oidc)
+[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/administration/single-sign-on/)  
+[Setting up OIDC Federated SSO]({{site.baseurl}}/docs/administration/single-sign-on/oidc)
 
 
 

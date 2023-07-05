@@ -6,7 +6,7 @@ redirect_from:
 toc: true
 ---
 Set up SSO for Keycloak using OIDC.
-For a general overview on OIDC, see [Setting up OIDC Federated SSO]({{site.baseurl}}/docs/single-sign-on/oidc).  
+For a general overview on OIDC, see [Setting up OIDC Federated SSO]({{site.baseurl}}/docs/administration/single-sign-on/oidc).  
 
 Set up OIDC SSO for Keycloak in Codefresh by:
 1. Creating a client in Keycloak
@@ -122,9 +122,9 @@ Create a Keycloak client for Codefresh.
 You have now completed SSO setup for Keycloak via OIDC.
 
 ## Sync teams via CLI
-Sync users and teams through the [CLI]({{site.baseurl}}/docs/single-sign-on/team-sync/#cli-synchronize-teams).
+Sync users and teams through the [CLI]({{site.baseurl}}/docs/administration/single-sign-on/team-sync/#cli-synchronize-teams).
 
 ## Related articles
-[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/single-sign-on/single-sign-on/)  
-[Setting up OIDC Federated SSO]({{site.baseurl}}/docs/single-sign-on/oidc)  
-[Common configuration for SSO providers]({{site.baseurl}}/docs/single-sign-on/team-sync)  
+[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/administration/single-sign-on/)  
+[Setting up OIDC Federated SSO]({{site.baseurl}}/docs/administration/single-sign-on/oidc)  
+[Common configuration for SSO providers]({{site.baseurl}}/docs/administration/single-sign-on/team-sync)  

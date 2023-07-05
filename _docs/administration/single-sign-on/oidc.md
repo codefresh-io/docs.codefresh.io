@@ -27,12 +27,12 @@ Here's what you need to do to configure SSO via OIDC in Codefresh:
 1. Configure SSO settings for the IdP:  
   This generally includes defining settings both in Codefresh and in the IdP.  
   Codefresh supports OIDC SSO for the following:
-  * [Auth0]({{site.baseurl}}/docs/single-sign-on/oidc/oidc-auth0/)
-  * [Azure]({{site.baseurl}}/docs/single-sign-on/oidc/oidc-azure/)
-  * [Google]({{site.baseurl}}/docs/single-sign-on/oidc/oidc-google/)
-  * [Keycloak]({{site.baseurl}}/docs/single-sign-on/oidc/oidc-keycloak/)
-  * [Okta]({{site.baseurl}}/docs/single-sign-on/oidc/oidc-okta/)
-  * [OneLogin]({{site.baseurl}}/docs/single-sign-on/oidc/oidc-onelogin/)
+  * [Auth0]({{site.baseurl}}/docs/administration/single-sign-on/oidc/oidc-auth0/)
+  * [Azure]({{site.baseurl}}/docs/administration/single-sign-on/oidc/oidc-azure/)
+  * [Google]({{site.baseurl}}/docs/administration/single-sign-on/oidc/oidc-google/)
+  * [Keycloak]({{site.baseurl}}/docs/administration/single-sign-on/oidc/oidc-keycloak/)
+  * [Okta]({{site.baseurl}}/docs/administration/single-sign-on/oidc/oidc-okta/)
+  * [OneLogin]({{site.baseurl}}/docs/administration/single-sign-on/oidc/oidc-onelogin/)
 
 1. Test integration with the IdP: 
     
@@ -55,14 +55,14 @@ Here's what you need to do to configure SSO via OIDC in Codefresh:
     %}
 
 {:start="3"}
-1. (Optional) [Set a default SSO provider for account]({{site.baseurl}}/docs/single-sign-on/team-sync/#set-a-default-sso-provider-for-account)   
+1. (Optional) [Set a default SSO provider for account]({{site.baseurl}}/docs/administration/single-sign-on/team-sync/#set-a-default-sso-provider-for-account)   
   You can select an IdP as the default SSO provider for a Codefresh account. This means that all the new users added to that account will automatically use the selected IdP for signin.
-1. (Optional) [Select SSO method for individual users]({{site.baseurl}}/docs/single-sign-on/team-sync/#select-sso-method-for-individual-users)   
+1. (Optional) [Select SSO method for individual users]({{site.baseurl}}/docs/administration/single-sign-on/team-sync/#select-sso-method-for-individual-users)   
   You can also select if needed, a different SSO provider for specific users.
 
 > Codefresh has an internal cache for SSO configuration, and it can take up to five minutes for your changes to take effect.
 
 ## Related articles
-[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/single-sign-on/single-sign-on/)   
-[Setting up SAML2 Federated SSO]({{site.baseurl}}/docs/single-sign-on/saml)  
+[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/administration/single-sign-on/)   
+[Setting up SAML2 Federated SSO]({{site.baseurl}}/docs/administration/single-sign-on/saml)  
 

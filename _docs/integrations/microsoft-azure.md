@@ -100,7 +100,7 @@ Once you connect your Helm repository you can use it any [Codefresh pipeline wit
 
 ## Azure Single Sign-on
 
-You can use Azure Active Directory as an [SSO mechanism]({{site.baseurl}}/docs/single-sign-on/single-sign-on/) in Codefresh.
+You can use Azure Active Directory as an [SSO mechanism]({{site.baseurl}}/docs/administration/single-sign-on/) in Codefresh.
 
 {% include 
 image.html 

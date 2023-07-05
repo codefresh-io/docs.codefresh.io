@@ -10,7 +10,7 @@ toc: true
 ---
 
 Set up SSO for Google using OIDC.
-For a general overview on OIDC, see [Setting up OIDC Federated SSO]({{site.baseurl}}/docs/single-sign-on/oidc).
+For a general overview on OIDC, see [Setting up OIDC Federated SSO]({{site.baseurl}}/docs/administration/single-sign-on/oidc).
 
 Set up OIDC SSO for Google in Codefresh by:
 1. Creating the client secret in Google
@@ -243,6 +243,6 @@ Now test the SSO with a test user in a different browser or private/incognito br
 1. In a different browser or private/incognito browser window use the Corporate option to log in.
 
 ## Related articles
-[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/single-sign-on/single-sign-on/)  
-[Setting up OIDC Federated SSO]({{site.baseurl}}/docs/single-sign-on/oidc)  
-[Common configuration for SSO providers]({{site.baseurl}}/docs/single-sign-on/team-sync)  
+[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/administration/single-sign-on/)  
+[Setting up OIDC Federated SSO]({{site.baseurl}}/docs/administration/single-sign-on/oidc)  
+[Common configuration for SSO providers]({{site.baseurl}}/docs/administration/single-sign-on/team-sync)  

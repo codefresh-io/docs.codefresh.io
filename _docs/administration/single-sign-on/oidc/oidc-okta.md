@@ -9,7 +9,7 @@ redirect_from:
 toc: true
 ---
 Set up SSO for Okta using OIDC.  
-For a general overview on OIDC, see [Setting up OIDC Federated SSO]({{site.baseurl}}/docs/single-sign-on/oidc).  
+For a general overview on OIDC, see [Setting up OIDC Federated SSO]({{site.baseurl}}/docs/administration/single-sign-on/oidc).  
 
 
 Set up OIDC SSO for Okta in Codefresh by:
@@ -197,7 +197,7 @@ After initial SSO setup, you can activate automatic syncing of teams for the int
 * CLI  
   You can select multiple Codefresh accounts to sync through the **Additional accounts to sync** option in the UI, and then either create a Codefresh pipeline with the CLI command or run the CLI command when required.  
   The pipeline should run the CLI command `codefresh synchronize teams my-okta-client-name -t okta`.  
-  See [Syncing teams in IdPs with Codefresh]({{site.baseurl}}//docs/single-sign-on/team-sync/#syncing-teams-in-idps-with-codefresh).
+  See [Syncing teams in IdPs with Codefresh]({{site.baseurl}}//docs/administration/single-sign-on/team-sync/#syncing-teams-in-idps-with-codefresh).
 
 * UI  
   Select the Codefresh accounts to sync to through the **Additional accounts to sync** option in the UI, and turn on **Auto-group sync** in the SSO configuration settings. 
@@ -205,6 +205,6 @@ After initial SSO setup, you can activate automatic syncing of teams for the int
  
  
 ## Related articles
-[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/single-sign-on/single-sign-on/)  
-[Common configuration for SSO providers]({{site.baseurl}}/docs/single-sign-on/team-sync)  
+[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/administration/single-sign-on/)  
+[Common configuration for SSO providers]({{site.baseurl}}/docs/administration/single-sign-on/team-sync)  
 
