@@ -82,24 +82,27 @@ Here's what you need to do to configure SSO via SAML in Codefresh:
   **SSO settings**  
 
     * Assertion URL  
-      The Assertion URL which is the Service Provider SSO endpoint, also referred to as the Callback URL or Client ID, is generated _after_ you create the integration.
+      The Assertion URL which is the Service Provider SSO endpoint, also referred to as the Callback URL or Client ID, is generated _after_ you create the integration in Codefresh.
 
     * Provider  
       Currently, we support GSuite for SAML. If you are using a different provider, leave this field empty.  
       For GSuite, you can define the sync settings, Admin Email and the JSON Keyfile.
-      For instructions, see [Google SSO]({{site.baseurl}}/docs/administration/single-sign-on/team-sync/#cli-synchronize-teams).
+      <!--- For instructions, see [Google SSO]({{site.baseurl}}/docs/administration/single-sign-on/team-sync/#cli-synchronize-teams).-->
 
-    > These settings are for the SaaS version of Codefresh. For an on-premises setup, use the URLs that match your installation.
+    > **NOTE**:  
+      These settings are for the SaaS version of Codefresh. For an on-premises setup, use the URLs that match your installation.
 
 {:start="2"}
 1. Test integration with the IdP: 
     
-    >Before enabling SSO for users, you **MUST** make sure that it is working for the test user. If SSO is enabled for a user, Codefresh blocks logins through other IDPs for this user and only the enabled SSO is allowed. If the selected SSO method does not work for some reason, the user will be locked out of Codefresh.
+    >**NOTE**:  
+    Before enabling SSO for users, you **MUST** make sure that it is working for the test user. If SSO is enabled for a user, Codefresh blocks logins through other IDPs for this user and only the enabled SSO is allowed. If the selected SSO method does not work for some reason, the user will be locked out of Codefresh.
 
     1. In the Codefresh UI, on the toolbar, click the **Settings** icon and then select **Account Settings**.
     1. From the sidebar, below Access & Collaboration, select [**Users & Teams**](https://g.codefresh.io/2.0/account-settings/single-sign-on){:target="\_blank"}.   
     1. Add an active user to be used for testing. We recommend you use your own user.
     1. Change Login method by selecting your Auth provider from the SSO drop-down.
+    1. Keep the current browser session open, and log in via Corporate SSO in an incognito tab (or another browser).
 
     {% include image.html
     lightbox="true"
@@ -110,7 +113,6 @@ Here's what you need to do to configure SSO via SAML in Codefresh:
     max-width="70%"
     %}
 
-    1. Keep the current browser session open, and log in via Corporate SSO in an incognito tab (or another browser).
 
     {% include image.html
     lightbox="true"
@@ -121,13 +123,14 @@ Here's what you need to do to configure SSO via SAML in Codefresh:
     max-width="50%"
     %}
 
-{:start="2"}
+{:start="3"}
 1. (Optional) [Set a default SSO provider for account]({{site.baseurl}}/docs/administration/single-sign-on/team-sync/#set-a-default-sso-provider-for-account)  
   You can select an IdP as the default SSO provider for a Codefresh account. This means that all the new users added to that account will automatically use the selected IdP for signin.  
 1. (Optional) [Select SSO method for individual users]({{site.baseurl}}/docs/administration/single-sign-on/team-sync/#select-sso-method-for-individual-users)  
   You can also select if needed, a different SSO provider for every user or for specific users.
 
-> Codefresh has an internal cache for SSO configuration, and it can take up to five minutes for your changes to take effect.
+> **NOTE**:  
+  Codefresh has an internal cache for SSO configuration, and it can take up to five minutes for your changes to take effect.
 
 ## Related articles
 [Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/administration/single-sign-on/)  
