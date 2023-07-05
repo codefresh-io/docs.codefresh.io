@@ -45,7 +45,7 @@ SAML SSO settings for Okta include auto-syncing teams and groups in OKta with Co
   The SAML integration for Okta is added and appears in the list of SSOs. 
 1. In the Single Sign-On page, click the **Edit** icon for the Okta SAML integration you created.
 1. Copy the **Assertion URL** (client ID) that was automatically generated when you added the integration. 
-1. Continue with [Step 2: Configure SSO settings for Codefresh in Okta](#configure-sso-settings-for-codefresh-in-okta).
+1. Continue with [Step 2: Configure SSO settings for Codefresh in Okta](#step-2-configure-sso-settings-for-codefresh-in-okta).
 
 ## Step 2: Configure SSO settings for Codefresh in Okta
 
@@ -71,7 +71,7 @@ SAML SSO settings for Okta include auto-syncing teams and groups in OKta with Co
 1. Sign On Tab:
     - Select **View SAML Setup Instructions** on the right.
     - Keep the page open as you will need it to complete the setup for Okta in Codefresh.
-1. Continue with [Step 3: Configure SSO settings for Codefresh in Okta](#configure-sso-settings-for-codefresh-in-okta).
+1. Continue with [Step 3: Configure SSO settings for Codefresh in Okta](#step-3-complete-sso-configuration-for-okta-in-codefresh).
 
 
 ## Step 3: Complete SSO configuration for Okta in Codefresh

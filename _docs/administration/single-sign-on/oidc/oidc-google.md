@@ -28,6 +28,10 @@ Set up OIDC SSO for Google in Codefresh by:
     * From the **Application type** drop-down, select **Web application**. 
     * Enter a **Name** for your integration (user-defined).  
     * For **Authorized JavaScript origins**, **URIs**, enter, `https://g.codefresh.io`.   
+    * Select **Create**. 
+    * From the OAUth client created dialog, note down **Your Client ID** and **Your Client Secret**.  
+      You will need the Client ID and secret to configure SSO for Google in Codefresh.
+ 
     
     {% include image.html 
        lightbox="true" 
@@ -38,8 +42,7 @@ Set up OIDC SSO for Google in Codefresh by:
        max-width="70%"
        %}
     
-    * Select **Create**. 
-    * From the OAUth client created dialog, note down **Your Client ID** and **Your Client Secret**. 
+
 
    {% include image.html 
        lightbox="true" 
@@ -50,16 +53,15 @@ Set up OIDC SSO for Google in Codefresh by:
        max-width="70%"
        %}
 
-  You will need the Client ID and secret to configure SSO for Google in Codefresh.
-
 {:start="5"}
 1. Continue with [Step 2: Configure team synchronization settings in Google](#step-2-configure-team-synchronization-settings-in-google).
 
 ## Step 2: Configure team synchronization settings in Google
 When you configure SSO settings for Google OIDC in Codefresh, you can sync teams through a:  
-* Service account
+* Service account  
 OR  
-* Custom schema  
+* Custom schema    
+
 For both sync methods, you must configure settings in Google.
 
 ### Create service account in Google Console to synchronize teams
@@ -76,7 +78,7 @@ To synchronize users and teams through a service account, create a service accou
   url="/images/sso/google/serviceAccount2.png"
   alt="Creating a service account in Google"
   caption="Creating a service account in Google"
-  max-width="30%"
+  max-width="60%"
   %}
 
 {:start=2"}
@@ -93,7 +95,7 @@ To synchronize users and teams through a service account, create a service accou
      url="/images/sso/google/serviceAccount3.png"
      alt="Creating a JSON key"
      caption="Creating a JSON key"
-    max-width="30%"
+    max-width="60%"
   %}
 
 {:start="4"}
@@ -144,7 +146,7 @@ file="/images/sso/google/map-attributes.png"
 url="/images/sso/google/map-attributes.png"
 alt="Attribute Mappings screen in GSuite"
 caption="Attribute Mappings screen in GSuite"
-max-width="40%"
+max-width="60%"
 %}
 
 {:start="5"}
@@ -156,7 +158,7 @@ file="/images/sso/google/google-gusite-user-info.png"
 url="/images/sso/google/google-gusite-user-info.png"
 alt="User Information screen in GSuite"
 caption="User Information screen in GSuite"
-max-width="40%"
+max-width="60%"
 %}
 
 {:start="6"}
@@ -185,7 +187,7 @@ max-width="40%"
   url="/images/sso/google/sso-codefresh-settings.png"
   alt="SSO settings for Google in Codefresh"
   caption="SSO settings for Google in Codefresh"
-  max-width="30%"
+  max-width="60%"
   %}
 
 {:start="4"}
@@ -226,7 +228,7 @@ max-width="40%"
   url="/images/sso/google/googleSSO3.png"
   alt="Redirect URI"
   caption="Redirect URI"
-  max-width="30%"
+  max-width="60%"
   %}
 
 You have now completed SSO setup for Google via OIDC.

@@ -23,7 +23,7 @@ Setting up SAML SSO for OneLogin includes:
 1. Add a **Display Name**. Leave the other settings which are optional. 
 1. Click **Save**.
 1. From the sidebar, select **SSO** and keep the tab open.
-1. Continue with [Step 2: Configure SSO settings for OneLogin via SAML in Codefresh](#configure-sso-settings-for-onelogin-via-saml-in-codefresh).
+1. Continue with [Step 2: Configure SSO settings for OneLogin via SAML in Codefresh](#step-2-configure-sso-settings-for-onelogin-via-saml-in-codefresh).
 
 ## Step 2: Configure SSO settings for OneLogin via SAML in Codefresh
 
@@ -43,7 +43,7 @@ Setting up SAML SSO for OneLogin includes:
   The SAML integration for OneLogin is added and appears in the list of SSOs. 
 1. In the Single Sign-On page, click the **Edit** icon for the OneLogin SAML integration you created.
 1. Copy the **Assertion URL** (client ID) that was automatically generated when you added the integration. 
-1. Continue with [Step 3: Configure SSO settings for Codefresh in OneLogin](#configure-sso-settings-for-codefresh-in-onelogin).
+1. Continue with [Step 3: Configure SSO settings for Codefresh in OneLogin](#step-3-configure-sso-settings-for-codefresh-in-onelogin).
 
 ## Step 3: Configure SSO settings for Codefresh in OneLogin
 

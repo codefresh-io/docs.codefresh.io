@@ -4,8 +4,7 @@ description: Setting up PingID SSO via SAML
 group: single-sign-on
 sub_group: saml
 redirect_from:
- - /docs/single-sign-on/saml/saml-pingidsso/
-  - /docs/single-sign-on/saml/saml-pingid/
+ - /docs/single-sign-on/saml/saml-pingid/
 toc: true
 ---
 
@@ -38,7 +37,7 @@ Configure SSO for PingID via SAML in Codefresh. The Assertion URL is automatical
   The SAML integration for PingID is added and appears in the list of SSOs. 
 1. In the Single Sign-On page, click the **Edit** icon for the PingID SAML integration you created.
 1. Copy the **Assertion URL** (client ID) that was automatically generated when you added the integration. 
-1. Continue with [Step 2: Configure SSO settings for Codefresh in PingID](#configure-sso-settings-for-codefresh-in-pingid).
+1. Continue with [Step 2: Configure SSO settings for Codefresh in PingID](#step-2-configure-sso-settings-for-codefresh-in-pingid).
 
 
 ## Step 2: Configure SSO settings for Codefresh in PingID
@@ -63,7 +62,7 @@ Configure SSO for PingID via SAML in Codefresh. The Assertion URL is automatical
     > For PingID Federate, you must add the follwing mapping: NameID <- Email Address
 
 1. Toggle the **Enable** option to on to make the application available.
-1. Continue with [Step 3: Complete SSO configuration for PingID in Codefresh](#complete-sso-configuration-for-pingid-in-codefresh).
+1. Continue with [Step 3: Complete SSO configuration for PingID in Codefresh](#step-3-complete-sso-configuration-for-pingid-in-codefresh).
 
 
 ## Step 3: Complete SSO configuration for PingID in Codefresh
