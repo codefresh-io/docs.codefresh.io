@@ -1,10 +1,9 @@
 ---
 title: "OneLogin SSO via OIDC"
 description: "Set up OneLogin SSO for OIDC "
-group: single-sign-on
-sub_group: oidc
 redirect_from:
   - /docs/enterprise/single-sign-on/sso-onelogin/
+  - /docs/single-sign-on/oidc/oidc-onelogin/
 toc: true
 ---
 

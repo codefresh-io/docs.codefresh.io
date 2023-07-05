@@ -1,7 +1,8 @@
 ---
 title: "Keycloak SSO via OIDC"
 description: "Set up Keycloak SSO for OIDC"
-group: single-sign-on
+redirect_from:
+  - /docs/single-sign-on/oidc/oidc-keycloak/
 toc: true
 ---
 Set up SSO for Keycloak using OIDC.

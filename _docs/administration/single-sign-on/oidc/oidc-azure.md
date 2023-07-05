@@ -1,10 +1,9 @@
 ---
 title: "Azure SSO via OIDC"
 description: "Set up Azure SSO for OIDC"
-group: single-sign-on
-sub_group: oidc
 redirect_from:
   - /docs/enterprise/single-sign-on/sso-azure/
+  - /docs/single-sign-on/oidc/oidc-azure/
 toc: true
 ---
 

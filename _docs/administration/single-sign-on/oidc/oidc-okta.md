@@ -1,11 +1,11 @@
 ---
 title: "Okta SSO via OIDC"
 description: "Set up Okta SSO for OIDC"
-group: single-sign-on
-sub_group: oidc
 redirect_from:
   - /docs/enterprise/single-sign-on/sso-okta/
   - /docs/administration/single-sign-on/sso-okta/  
+  - /docs/single-sign-on/oidc/oidc-okta/
+
 toc: true
 ---
 Set up SSO for Okta using OIDC.  

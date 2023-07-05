@@ -1,12 +1,11 @@
 ---
 title: "Auth0 SSO via OIDC"
 description: "Set up Auth0 SSO for OIDC"
-group: single-sign-on
-sub_group: oidc
 redirect_from:
   - /docs/enterprise/sso-auth0/
   - /docs/enterprise/single-sign-on/sso-auth0/
   - /docs/administration/single-sign-on/sso-auth0/
+  - /docs/single-sign-on/oidc/oidc-auth0/
 toc: true
 ---
 
