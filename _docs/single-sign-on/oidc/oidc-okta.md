@@ -159,7 +159,7 @@ max-width="30%"
     Do not copy the URL from the admin view (e.g. `https://<company>-admin.okta.com`), as it will not work.
   * **Application ID**: The Codefresh application ID in your OKTA organization, that will be used to sync groups and user from OKTA to Codefresh. 
   * **Additional accounts to sync**: Optional. The names of the additional Codefresh accounts to be synced from Okta. 
-    Codefresh validates if the user has both access to and administrator privileges for the selected accounts.  
+    Codefresh validates if the user has both access to and administrator privileges for the selected accounts. Only those accounts with admin privileges are displayed.  
     See [How Okta syncing works](#how-okta-syncing-works) for team/group sync options with Okta.
 1. Optional. To automatically sync teams or groups in Okta to Codefresh via the UI, including additional Codefresh accounts selected if any, select **Auto-group sync**.  
   This action syncs groups every 12 hours. 
