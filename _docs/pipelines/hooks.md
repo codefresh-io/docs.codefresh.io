@@ -450,7 +450,7 @@ steps:
 You can use multiple steps in a hook in both the pipeline and the step level. 
 
 ### Referencing the 'working_directory' in step hooks
-To access the working directory of a regular step through a hook, use the prefix `parentSteps.` For example, to access the `working_directory` of the `clone` step, use {% raw %} `${{parentSteps.clone}}` {% endraw %}.  
+To access the [`working_directory`](({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#working-directories)) of a regular step through a hook, use the prefix `parentSteps.` For example, to access the `working_directory` of the `clone` step, use {% raw %} `${{parentSteps.clone}}` {% endraw %}.  
 
 
 
