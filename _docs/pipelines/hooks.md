@@ -533,9 +533,10 @@ The pipeline is not correct, because the first segment of annotations is directl
 
 ## Syntactic sugar syntax
 
-To simplify the syntax for hooks, the following simplifications are also offered:
+We offer the following options to simplify the syntax for hooks.
 
-If you do not want to use metadata or annotations in your hook the keyword `exec` can be omitted:
+**Not using metadata or annotations in your hook**  
+Omit the keyword `exec`:
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -560,6 +561,7 @@ steps:
 {% endhighlight %}
 
 
+**Not specify teh Docker image**  
 If you do not want to specify the Docker image you can simply omit it. Codefresh will use the `alpine` image in that case to run the hook:
 
 
@@ -589,25 +591,7 @@ steps:
 {% endhighlight %}
 
 
- If you don't use metadata or annotations, you can also completely remove the `exec` keyword and just mention the commands you want to run (`alpine` image will be used by default):
 
- `codefresh.yml`
-{% highlight yaml %}
-{% raw %}
-version: "1.0"
-hooks:
- on_elected:  # no exec/image keyword - alpine image will be used
-   - echo "Pipeline starting"
-steps:
- build:
-   type: build
-   image_name: my_image
-   tag: master
-   hooks:
-     on_success: # no exec/image keyword - alpine image will be used
-       - echo "Docker image was built successfully"
-{% endraw %}
-{% endhighlight %}
 
 ## Using Type Steps / Plugins in hooks
 
@@ -633,14 +617,15 @@ hooks:
 
 With the current implementation of hooks, the following limitations are present:
 
-* The [debugger]({{site.baseurl}}/docs/pipelines/debugging-pipelines/) cannot inspect commands inside hook segments
-* Hooks are not supported for [parallel steps]({{site.baseurl}}/docs/pipelines/advanced-workflows/)
-* Storage integrations don't resolve in hooks (for example, [test reports]({{site.baseurl}}/docs/testing/test-reports/#producing-allure-test-reports-from-codefresh-pipelines))
+* The [debugger]({{site.baseurl}}/docs/pipelines/debugging-pipelines/) cannot inspect commands inside hook segments.
+* Hooks are not supported for [parallel steps]({{site.baseurl}}/docs/pipelines/advanced-workflows/).
+* Storage integrations don't resolve in hooks (for example, [test reports]({{site.baseurl}}/docs/testing/test-reports/#producing-allure-test-reports-from-codefresh-pipelines)).
 <!--- * Step hook does not support the working_directory field aka `working_directory: ${{clone}}`-->
 
 ## Related articles
 [Conditional execution of steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/)  
-[Working directories]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#working-directories)   
+[Working directories]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#working-directories)  
+[Build step in pipelines]({{site.baseurl}}/docs/pipelines/steps/build/)  
 [Annotations in pipelines]({{site.baseurl}}/docs/pipelines/annotations/)  
 
 
