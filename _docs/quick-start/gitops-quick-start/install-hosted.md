@@ -1,6 +1,6 @@
 ---
 title: "Provision a Hosted GitOps Runtime"
-description: ""
+description: "Install the GitOps Runtime hosted by Codefresh"
 group: getting-started
 sub-group: gitops-quick-start
 toc: true

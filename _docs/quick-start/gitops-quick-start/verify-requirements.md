@@ -1,5 +1,5 @@
 ---
-title: "Prepare for hybrid runtime installation"
+title: "Prepare for Hybrid GitOps Runtime installation"
 description: ""
 group: getting-started
 sub-group: quick-start
@@ -15,11 +15,12 @@ If this is your first time installing GitOps in Codefresh, review and confirm th
 
 ## Existing CLI-based Hybrid GitOps installation  
 If you already have a CLI-based Hybrid GitOps Runtime installed on your cluster, you have two options:
-1. To install on the same cluster, first uninstall the Hybrid GitOps Runtime. Currently, you can install a single hybrid runtime per cluster.
+1. To install on the same cluster, first uninstall the existing CLI-based Hybrid GitOps Runtime. Currently, you can install a single hybrid runtime per cluster.  
+  This is the recommended option.
 1. Install on a different cluster, verifying that you meet the minimum requirements.  
 
-## Uninstallation tips for existing Hybrid GitOps Runtimes
-* Before you run uninstall an existing Hybrid GitOps Runtime from the Codefresh UI, or run `cf runtime <name> uninstall` from the CLI, _delete_ all Codefresh-related namespaces.
+## Uninstallation tips for existing CLI-based Hybrid GitOps Runtimes
+* Before you run uninstall an existing CLI-based Hybrid GitOps Runtime from the Codefresh UI, or run `cf runtime <name> uninstall` from the CLI, _delete_ all Codefresh-related namespaces.
 * If a namespace is frozen in the `Terminating` status, it could be because the namespace has resources with `finalizers` that are preventing deletion.
   Here's how you can remove `finalizers` using `k9s`:
   * In the `applications` view, do the following for each application:
