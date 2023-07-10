@@ -73,7 +73,7 @@ See a [sample repo](https://github.dev/noam-codefresh/shared-gs){:target="\_blan
 The `resources` directory holds the resources shared by _all_ clusters managed by the GitOps Runtime:
 
   * `all-runtimes-all-clusters`: Every resource manifest in this subdirectory is applied to all the GitOps Runtimes in the account, and to all the clusters managed by those Runtimes. In the above example, `manifest2.yaml` is applied to both `runtime1` and `runtime2`
-  * `control-planes`: Optional. Valid for Hosted GitOps Runtimes only. When defined, every resource manifest in this subdirectory is applied to each Hosted Runtime’s `in-cluster`.
+  * `control-planes`: Optional. When defined, every resource manifest in this subdirectory is applied to each Runtime’s `in-cluster`. Config maps containing sealing keys are stored in this subdirectory.
   * `runtimes/<runtime_name>`: Optional. Runtime-specific subdirectory. Every resource manifest in a runtime-specific subdirectory is applied to only the GitOps Runtime defined by `<runtime_name>`. 
     In the above example, `manifest4.yaml` is applied only to `runtime1`, and `manifest5.yaml` is applied only to `runtime2`. 
 
@@ -121,11 +121,11 @@ In addition to the application manifests for GitOps Runtimes in the Shared Confi
 This Git Source application creates an application manifest with the `<cluster-name>` for every cluster managed by the GitOps Runtime. The `include` field in the `<cluster-name>` application manifest determines which subdirectories in the `resources` directory are synced to the target cluster.
 
 
-## Use case: Adding integration resources
-When creating a new GitOps Integration resource, such as a container regsitry integration for example in the Codefresh UI, you can define the GitOps Runtimes and clusters to which to apply that resource. The `app-proxy` saves the resource in the correct location in the Shared Configuration Repo, and updates the relevant Argo CD Applications to include it. 
+## Use case: Integration resources for Runtimes
+When creating a new GitOps Integration resource, such as a container registry integration for example in the Codefresh UI, you can define the GitOps Runtimes to which to apply that resource. The `app-proxy` saves the resource in the correct location in the Shared Configuration Repo, and updates the relevant Argo CD Applications to include it. 
 
 ## Use case: Create application for distribution across all GitOps Runtimes
-In this scenario, you want to distribute an application configuration to all GitOps Runtimes within your Codefresh account. Instead of manually copying the manifest to each Runtime or creating the application in the UI for each Runtime, you can create the manifest, store it in the correct location in the shared repository, and deploy it consistently across all environments. 
+In this scenario, you want to distribute an application configuration to all GitOps Runtimes within your Codefresh account. Storing the application manifest in the `resources/all-runtimes-all-clusters` directory of the Shared Configuration Repository makes it automatically accessible to all the GitOps Runtimes in the account and to all the clusters managed by those Runtimes. 
 
 Here's how to do this with the Shared Configuration Repo:
 
@@ -133,12 +133,11 @@ Here's how to do this with the Shared Configuration Repo:
 1. Specify the desired configuration settings and resources required for the application in the manifest file.
 1. Save and commit the changes to the Git repository.
 
-The GitOps Runtimes will automatically detect the changes in the Shared Configuration Repository and apply the application configuration to all the GitOps Runtimes in the account and to all the clusters managed by those Runtimes.
-
+>TIP: 
 You can then monitor these applications in the GitOps Overview Dashboard, and drill down to each application in the GitOps Apps dashboard. 
 
 ## Use case: Create application for distribution across specific clusters managed by a Runtime
-In this scenario, you want to distribute an application configuration to specific clusters managed by a GitOps Runtime. Instead of manually copying the manifest to each cluster, you can add the application manifest to the specific GitOps Runtime, and define the target clusters in the `include` statement in the application manifest.
+In this scenario, you want to distribute an application configuration to specific clusters managed by a GitOps Runtime. You can add the application manifest to the specific GitOps Runtimes, and define the target clusters in the `include` statement in each application manifest.
 
 Here's how to do this with the Shared Configuration Repo:
 
