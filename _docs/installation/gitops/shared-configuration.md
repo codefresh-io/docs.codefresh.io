@@ -147,10 +147,10 @@ Here's how to do this with the Shared Configuration Repo:
 include: '{runtimes/<runtime_name>/*.yaml,runtimes/<runtime_name>/**/*.yaml,clusters/<cluster-name1>/*.yaml,clusters/<cluster-name2>/*.yaml}'
 ```
   where:  
-      * `runtimes/<runtime_name>/*.yaml` includes all YAML files directly in the directory specified by the <runtime_name>. For example, files in `runtimes/production/*.yaml` are specific to Runtime `production`.
-      * `runtimes/<runtime_name>/**/*.yaml` includes all YAML files in any subdirectories within the <runtime_name> directory. For example, files in `runtimes/production/**/*.yaml` are also specific to Runtime `production`.
-      * `clusters/<cluster-name1>/*.yaml` includes all YAML files directly under the ClusterA directory in the `clusters` directory. These files are specific to Cluster A.
-      * `clusters/ClusterB/*.yaml` includes all YAML files directly under the ClusterB directory in the `clusters` directory. These files are specific to Cluster B.
+  * `runtimes/<runtime_name>/*.yaml` includes all YAML files directly in the directory specified by the <runtime_name>. For example, files in `runtimes/production/*.yaml` are specific to Runtime `production`.
+  * `runtimes/<runtime_name>/**/*.yaml` includes all YAML files in any subdirectories within the <runtime_name> directory. For example, files in `runtimes/production/**/*.yaml` are also specific to Runtime `production`.
+  * `clusters/<cluster-name1>/*.yaml` includes all YAML files directly under the ClusterA directory in the `clusters` directory. These files are specific to Cluster A.
+  * `clusters/ClusterB/*.yaml` includes all YAML files directly under the ClusterB directory in the `clusters` directory. These files are specific to Cluster B.
 
 {:start="4"}
 1. Save and commit the changes to the Git repository.  
