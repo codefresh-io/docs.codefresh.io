@@ -99,18 +99,18 @@ Update General or Advanced configuration settings for a deployed application thr
 
 ## Manage application groups
 
-Clicking on an application group navigates to the timeline view specific to the group. 
+Clicking on an application group in the Group view, navigates to the list of applications in the Group.
 You can see the collective timeline of all applications within the group, instead of the individual source, health, or target information for each application.
 
-Once you assign an application to a group, you can:
-Add the application to other groups
-Remove the application from 
-Sync all applications within the group at once
-Ref
+Once you assign an application to a group, you can add it to or remove it from different Application Groups through the application's Configuration settings.
 
 
-Visibility across similar applications
-Application groups provide aggregated views of multiple applications at once. This streamlined representation saves time and effort by eliminating the need to navigate through individual application timelines separately.
+1. In the Codefresh UI, from Ops in the sidebar, select [GitOps Apps](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
+1. Select the application and then click the **Configuration** tab.
+1. From **Groups**, do one of the following:
+  * To add the application to one or more groups, select the group or groups.
+  * To remove the application from a group, click the remove button for the group.
+
 
 
 

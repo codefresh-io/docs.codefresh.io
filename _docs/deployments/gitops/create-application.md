@@ -52,9 +52,9 @@ General configuration settings define the group to which the application belongs
 
 ### Groups
 Optional. The group or groups to which to add the application.  
-Application Groups is a new view for applications. It allows you to collate multiple applications based on criteria meaningful to your organization, such as environment, or any other relevant attribute, and get a comprehensive and aggregated overview of their timelines.
+You can group applications based on criteria meaningful to your organization, such as environment, or any other relevant attribute. You can then view deployment information for these applications  arAdding applications to an application allows Once you have an application group with more than one applicationApplication Groups is a new view for applications. It allows you to collate multiple applications  and get a comprehensive and aggregated overview of their timelines.
 
-Select an existing group, or create a new application group by typing a name and pressing Enters.
+Select an existing group, or create a new application group by typing a name and pressing Enter.
 
 
 ### Source 
