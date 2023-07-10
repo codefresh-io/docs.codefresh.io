@@ -74,7 +74,7 @@ max-width="70%"
 
 1. The first step runs under the context of a Node image that prepares the application and runs unit tests.
 1. The second step uses an image with s3 command line tools and uploads the test results to a bucket that holds test reports.
-1. The helm step creates a Helm chart and pushes it to a Helm repository.
+1. The third step creates a Helm chart and pushes it to a Helm repository.
 
 You don't need to contact Codefresh and ask them to add the S3 executable on the build runners. You just use a prebuilt Docker image that contains it. The version used for Node is defined by you and if you wish to upgrade to another version
 you simply change the definition of the pipeline.
@@ -102,7 +102,7 @@ or your own) to use a build context in your step. This makes Codefresh a future-
 that exist now and all of them that will appear in the future. As long as there is a Docker image for a tool, Codefresh
 can use it in a pipeline without any extra configuration.
 
-Codefresh also offers a [marketplace](https://codefresh.io/steps/){:target="\_blank"} with several existing plugins.
+Codefresh also offers a [marketplace](https://codefresh.io/steps/){:target="\_blank"} with dozens of existing plugins.
 
 {% include 
 image.html 
