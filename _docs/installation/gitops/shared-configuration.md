@@ -11,13 +11,13 @@ toc: true
 A Codefresh account with a Hosted or a Hybrid GitOps runtime can store configuration manifests for account-level resources in a Git repository. This repository, the Shared Configuration Repository, can be shared with other GitOps Runtimes in the same account, avoiding the need to create and maintain different configuration manifests for every GitOps Runtime. At the same time, you also have the flexibility to store resources unique to specific Runtimes without affecting other Runtimes. 
 
 
-* **Centralized cross-Runtime configuration management**
+* **Centralized cross-Runtime configuration management**  
   With the Shared Configuration Repository, you can store configuration manifests for account-level resources in a centralized location. The Git repository is accessible to all GitOps Runtimes within the same Codefresh account, ensuring that account-level resources are consistently deployed and managed across all environments.
 
-* **Runtime-specific configuration**
+* **Runtime-specific configuration**  
    With the Shared Configuration Repository, you can create subdirectories for different GitOps Runtimes, and place configuration manifests that are only applied to specific GitOps Runtimes. You have fine-grained control over the configuration of individual Runtimes without affecting others.
 
-* **Control Plane configuration**
+* **Control Plane configuration**  
   The Shared Configuration Repository also supports a control-planes directory, which is applicable only to Hosted GitOps Runtimes. You can place resource manifests in this directory to define configuration specific to the control plane of the Hosted GitOps runtime. You can customize and manage control plane resources separately from other account-level or runtime-specific resources.
 
 
@@ -147,12 +147,12 @@ Here's how to do this with the Shared Configuration Repo:
 include: '{runtimes/<runtime_name>/*.yaml,runtimes/<runtime_name>/**/*.yaml,clusters/<cluster-name1>/*.yaml,clusters/<cluster-name2>/*.yaml}'
 ```
   where:  
-  * `runtimes/<runtime_name>/*.yaml` includes all YAML files directly in the directory specified by the <runtime_name>. For example, files in `runtimes/production/*.yaml` are specific to Runtime `production`.
-  * `runtimes/<runtime_name>/**/*.yaml` includes all YAML files in any subdirectories within the <runtime_name> directory. For example, files in `runtimes/production/**/*.yaml` are also specific to Runtime `production`.
-  * `clusters/<cluster-name1>/*.yaml` includes all YAML files directly under the ClusterA directory in the `clusters` directory. These files are specific to Cluster A.
-  * `clusters/ClusterB/*.yaml` includes all YAML files directly under the ClusterB directory in the `clusters` directory. These files are specific to Cluster B.
+      * `runtimes/<runtime_name>/*.yaml` includes all YAML files directly in the directory specified by the <runtime_name>. For example, files in `runtimes/production/*.yaml` are specific to Runtime `production`.
+      * `runtimes/<runtime_name>/**/*.yaml` includes all YAML files in any subdirectories within the <runtime_name> directory. For example, files in `runtimes/production/**/*.yaml` are also specific to Runtime `production`.
+      * `clusters/<cluster-name1>/*.yaml` includes all YAML files directly under the ClusterA directory in the `clusters` directory. These files are specific to Cluster A.
+      * `clusters/ClusterB/*.yaml` includes all YAML files directly under the ClusterB directory in the `clusters` directory. These files are specific to Cluster B.
 
-{:start="4}
+{:start="4"}
 1. Save and commit the changes to the Git repository.  
 The GitOps Runtime associated with the specific clusters will detect the changes in the Shared Configuration Repository and apply the application configuration only to the targeted clusters.
 
