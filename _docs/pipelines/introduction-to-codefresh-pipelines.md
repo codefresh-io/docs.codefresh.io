@@ -172,7 +172,7 @@ caption="Re-using Test reports"
 max-width="90%" 
 %}
 
-1. The first step runs `mvn test` and produces some test reports in `target/surefire-reports` into the shared Codefresh volume.
+1. The first step runs `mvn test` and produces some test reports in `target/surefire_reports` into the shared Codefresh volume.
 1. The next step uploads these reports using FTP to an external site.
 
 
