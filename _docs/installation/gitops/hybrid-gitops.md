@@ -10,8 +10,8 @@ toc: true
 ---
 
 >**ATTENTION**:  
-We have transitioned to a Helm-based installation for Hybrid GitOps Runtimes for improved experience and performance.    
-The [CLI-based installation for Hybrid GitOps]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/) is now considered legacy.  
+We have transitioned to a [Helm-based installation for Hybrid GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/) for improved experience and performance.    
+The CLI-based installation for Hybrid GitOps is now considered legacy.  
 We will deprecate this installation mode permanently in the coming months. Please stay tuned for further updates and instructions, including the migration process.
    
 
