@@ -450,7 +450,7 @@ steps:
 You can use multiple steps in a hook in both the pipeline and the step level. 
 
 ### Referencing the 'working_directory' in step hooks
-To access the [`working_directory`](({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#working-directories)) of a regular step through a hook, use the prefix `parentSteps.` For example, to access the `working_directory` of the `clone` step, use {% raw %} `${{parentSteps.clone}}` {% endraw %}.  
+To access the [`working_directory`]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#working-directories) of a regular step through a hook, use the prefix `parentSteps.<step-name>` For example, to access the `working_directory` of the `clone` step, use {% raw %} `${{parentSteps.clone}}` {% endraw %}.  
 
 
 
@@ -620,7 +620,6 @@ With the current implementation of hooks, the following limitations are present:
 * The [debugger]({{site.baseurl}}/docs/pipelines/debugging-pipelines/) cannot inspect commands inside hook segments.
 * Hooks are not supported for [parallel steps]({{site.baseurl}}/docs/pipelines/advanced-workflows/).
 * Storage integrations don't resolve in hooks (for example, [test reports]({{site.baseurl}}/docs/testing/test-reports/#producing-allure-test-reports-from-codefresh-pipelines)).
-<!--- * Step hook does not support the working_directory field aka `working_directory: ${{clone}}`-->
 
 ## Related articles
 [Conditional execution of steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/)  
