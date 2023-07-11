@@ -32,13 +32,14 @@ A Codefresh account with a Hosted or a Hybrid GitOps runtime can store configura
   When you install the first Hybrid GitOps runtime for an account, you are required to define the Shared Configuration Repo as part of setting up your Git account.  See [Installing Hybrid GitOps Helm Runtime installation]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/#step-3-set-up-gitops-git-account).  
 
 
-> Currently, Codefresh supports a single Shared Configuration Repo per account.
+> **NOTE**:
+  Currently, Codefresh supports a single Shared Configuration Repo per account.
   You may need to reset the Shared Configuration Repo after creating it. See [Reset Shared Configuration Repository for GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#reset-shared-configuration-repository-for-gitops-runtimes).
 
 
 ## Shared Configuration Repo structure
 Below is a representation of the structure of the repository with the shared configuration. 
-See a [sample repo](https://github.dev/noam-codefresh/shared-gs){:target="\_blank"}.
+<!--- See a [sample repo](https://github.dev/noam-codefresh/shared-gs){:target="\_blank"}.-->
 
 ```
 .
@@ -71,7 +72,8 @@ See a [sample repo](https://github.dev/noam-codefresh/shared-gs){:target="\_blan
 The `resources` directory holds the resources shared by _all_ clusters managed by the GitOps Runtime:
 
   * `all-runtimes-all-clusters`: Every resource manifest in this subdirectory is applied to all the GitOps Runtimes in the account, and to all the clusters managed by those Runtimes. In the above example, `manifest2.yaml` is applied to both `runtime1` and `runtime2`
-  * `control-planes`: Optional. When defined, every resource manifest in this subdirectory is applied to each Runtime’s `in-cluster`. Config maps containing sealing keys are stored in this subdirectory.
+  * `control-planes`: Optional. When defined, every resource manifest in this subdirectory is applied to each Runtime’s `in-cluster`.  
+    Config map resources for example, when committed to this subdirectory are deployed to each Runtime’s `in-cluster`.
   * `runtimes/<runtime_name>`: Optional. Runtime-specific subdirectory. Every resource manifest in a runtime-specific subdirectory is applied to only the GitOps Runtime defined by `<runtime_name>`. 
     In the above example, `manifest4.yaml` is applied only to `runtime1`, and `manifest5.yaml` is applied only to `runtime2`. 
 
@@ -134,29 +136,6 @@ Here's how to do this with the Shared Configuration Repo:
 >**TIP**:  
 You can then monitor these applications in the GitOps Overview Dashboard, and drill down to each application in the GitOps Apps dashboard. 
 
-## Use case: Create application for distribution across specific clusters managed by a Runtime
-In this scenario, you want to distribute an application configuration to specific clusters managed by a GitOps Runtime. You can add the application manifest to the specific GitOps Runtimes, and define the target clusters in the `include` statement in each application manifest.
-
-Here's how to do this with the Shared Configuration Repo:
-
-1. Create or update the application manifest in the `resources/runtimes/<runtime_name>` directory of the Shared Configuration Repository.
-1. Replace `<runtime_name>` with the name of the GitOps Runtime to which to apply the application manifest.
-1. In the application manifest, add an `include` statement defining the clusters to which to distribute/sync the application:
-   
-```
-include: '{runtimes/<runtime_name>/*.yaml,runtimes/<runtime_name>/**/*.yaml,clusters/<cluster-name1>/*.yaml,clusters/<cluster-name2>/*.yaml}'
-```
-  where:  
-  * `runtimes/<runtime_name>/*.yaml` includes all YAML files directly in the directory specified by the <runtime_name>. For example, files in `runtimes/production/*.yaml` are specific to Runtime `production`.
-  * `runtimes/<runtime_name>/**/*.yaml` includes all YAML files in any subdirectories within the <runtime_name> directory. For example, files in `runtimes/production/**/*.yaml` are also specific to Runtime `production`.
-  * `clusters/<cluster-name1>/*.yaml` includes all YAML files directly under the ClusterA directory in the `clusters` directory. These files are specific to Cluster A.
-  * `clusters/ClusterB/*.yaml` includes all YAML files directly under the ClusterB directory in the `clusters` directory. These files are specific to Cluster B.
-
-{:start="4"}
-1. Save and commit the changes to the Git repository.  
-The GitOps Runtime associated with the specific clusters will detect the changes in the Shared Configuration Repository and apply the application configuration only to the targeted clusters.
-
-You can then monitor these applications in the GitOps Overview Dashboard, and drill down to each application in the GitOps Apps dashboard. 
 
 
 ## Related articles
