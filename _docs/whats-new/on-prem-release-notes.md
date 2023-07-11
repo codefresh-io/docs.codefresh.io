@@ -104,12 +104,12 @@ ABAC for projects saves a lot of effort without compromising security as now you
   Now you can decide which teams have access to which projects, and at which level. By adding tags to projects, you can define rules for different teams that can create, update, delete, and view projects.  
   Also, read the next feature description, _Auto-create projects for teams_.
 
-* Pipeline access to teams with project-tags  
-  You can define access to pipelines on the basis of the projects that house the pipelines. Instead of tagging each pipeline,  you can add tags to the project, and define rules that determine the teams who can access the pipelines which share the project tags. 
-  Builds now honor the permissions of the pipelines. Users without  access to the pipeline, will also not have access to its builds. This also means fewer email notifications, as these are only sent for builds that users have access to.
+  **Migrating existing accounts**   
+   If you have existing accounts with team-based access control for projects, you can either migrate all accounts or a specific account, as described in [Project ABAC migration](https://github.com/codefresh-io/project-abac-migration){:target="\_blank"}.
 
-**Migrating existing accounts**  
-If you have existing accounts with permissions, you can either migrate all accounts or a specific account, as described in [Project ABAC migration](https://github.com/codefresh-io/project-abac-migration){:target="\_blank"}.
+* Pipeline access to teams with project-tags  
+  You can define access to pipelines on the basis of the projects that house the pipelines. Instead of tagging each pipeline, you can add tags to the project, and define rules that determine which teams can access the pipelines which share the project tags. 
+  Builds now honor the permissions of the pipelines. Users without access to the pipeline, will also not have access to its builds. This also means fewer email notifications, as these are only sent for builds that users have access to.
 
 For details, see [ABAC for entities with tags and rules]({{site.baseurl}}/docs/administration/account-user-management/access-control/#abac-for-entities-with-tags-and-rules).
 
@@ -258,16 +258,10 @@ The table below describes the Feature Flags in the Codefresh On-Premises release
 | `gitopsArgoCdRollback`       | When enabled, allows users to rollback to a previously deployed version of an active GitOps application.                                                                                            | FALSE         |
 | `commandbar`                 | When enabled, activates Codefresh Universal Search & Navigation. Displayed in the top-left of the toolbar, allows users to find and navigate to project/pipeline/build entities, switch accounts, and more. See [Global Search & Navigation](#global-search--navigation) in this article. | FALSE         |
 | `gerritIntegration`          | When enabled, allows configuring Git integrations with Gerrit for Codefresh pipelines.                                                                                                                | FALSE         |
-| `abacProject`     | When enabled, users without access to the projects will not be able to access the pipelines in the corresponding projects.<br>**IMPORTANT**: Before enabling this feature flag, make sure to read [Project ABAC migration](https://github.com/codefresh-io/project-abac-migration){:target="\_blank"}.<br>See [Project-based ABAC](#project-based-abac) in this article. | FALSE         |
+| `abacProject`     | When enabled, allows admins to define rule-based access to projects for teams by project tags.<br>**IMPORTANT**: Before enabling this feature flag, make sure to read [Project ABAC migration](https://github.com/codefresh-io/project-abac-migration){:target="\_blank"}.<br>See [Project-based ABAC](#project-based-abac) in this article. | FALSE         |
+| `abacRuleRelatedResource`     | When enabled, allows admins to define rule-based access to pipelines in projects for teams by project tags.<br>See [Project-based ABAC](#project-based-abac) in this article. | FALSE         |
 | `workflowAbacByPipeline`     | When enabled, builds will not be visible to users who don’t have access to the corresponding pipelines.<br>See [Project-based ABAC](#project-based-abac) in this article. | FALSE         |
 |`filterMailsByAbac` |When enabled, together with `workflowAbacByPipeline`, email notifications are not sent for users without access to the builds. <br>See [Project-based ABAC](#project-based-abac) in this article. |FALSE
-
-
-
-
-
-
-
 
 
 
