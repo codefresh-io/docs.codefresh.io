@@ -540,7 +540,7 @@
           url: "/add-users"
         - title: Configuring access control
           url: "/access-control"
-        - title: Setting up OAuth2 for Git providers
+        - title: Setting up OAuth2 for GitOps
           url: "/oauth-setup"
         - title: Authorize access to organizations/projects
           url: "/hosted-authorize-orgs" 
