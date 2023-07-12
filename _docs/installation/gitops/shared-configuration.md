@@ -10,6 +10,9 @@ toc: true
 
 A Codefresh account with a Hosted or a Hybrid GitOps runtime can store configuration manifests for account-level resources in a Git repository. This repository, the Shared Configuration Repository, can be shared with other GitOps Runtimes in the same account, avoiding the need to create and maintain different configuration manifests for every GitOps Runtime. At the same time, you also have the flexibility to store resources unique to specific Runtimes without affecting other Runtimes. 
 
+>**NOTE**:  
+Only Codefresh account administrators have access to the Shared Configuration Repository, and it's content is automatically generated. While it is useful to understand its structure and content, we recommend against changing the content and using it only for reference purposes. 
+
 
 * **Centralized cross-Runtime configuration management**  
   With the Shared Configuration Repository, you can store configuration manifests for account-level resources in a centralized location. The Git repository is accessible to all GitOps Runtimes within the same Codefresh account, ensuring that account-level resources are consistently deployed and managed across all environments.
@@ -17,11 +20,13 @@ A Codefresh account with a Hosted or a Hybrid GitOps runtime can store configura
 * **Runtime-specific configuration**  
    With the Shared Configuration Repository, you can create subdirectories for different GitOps Runtimes, and place configuration manifests that are only applied to specific GitOps Runtimes. You have fine-grained control over the configuration of individual Runtimes without affecting others.
 
-* **Control Plane configuration**  
-  The Shared Configuration Repository also supports a control-planes directory, which is applicable only to Hosted GitOps Runtimes. You can place resource manifests in this directory to define configuration specific to the control plane of the Hosted GitOps runtime. You can customize and manage control plane resources separately from other account-level or runtime-specific resources.
+## Examples of configuration definitions in Shared Repo
 
-
-
+Here are a few types of configuration definitions stored in the Shared Configuration Repository: 
+* In-cluster and [managed clusters]({{site.baseurl}}/docs/installation/gitops/managed-cluster/)
+* [Git Sources]({{site.baseurl}}/docs/installation/gitops/git-sources/)
+* [Integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/) between Codefresh and third-parties for GitOps
+* [OAuth2]({{site.baseurl}}/docs/administration/account-user-management/oauth-setup/) authentication applications
 
 ## GitOps Runtimes & Shared Configuration Repos
 
@@ -39,10 +44,10 @@ A Codefresh account with a Hosted or a Hybrid GitOps runtime can store configura
 
 ## Shared Configuration Repo structure
 Below is a representation of the structure of the repository with the shared configuration. 
-<!--- See a [sample repo](https://github.dev/noam-codefresh/shared-gs){:target="\_blank"}.-->
+See a [sample repo](https://github.com/codefresh-contrib/example-shared-config-repo){:target="\_blank"}.
 
 ```
-.
+
 ├── resources <───────────────────┐
 │   ├── all-runtimes-all-clusters │
 │   │   ├── cm-all.yaml           │
@@ -57,10 +62,10 @@ Below is a representation of the structure of the repository with the shared con
 │   │       └── manifest5.yaml    │
 │   └── manifest6.yaml            │
 └── runtimes                      │
-    ├── production                │ # referenced by "production-isc" argo-cd application, applied to the cluster by "cap-app-proxy"
+    ├── runtime1                  │ # referenced by "production-isc" argo-cd application, applied to the cluster by "cap-app-proxy"
     │   ├── in-cluster.yaml      ─┤ #     manage `include` field determines which dirs/files to sync to cluster
     │   └── remote-cluster.yaml  ─┤ #     manage `include` field to decide which dirs/files to sync to cluster
-    └── staging                   │ # referenced by "staging-isc" argo-cd application, applied to the cluster by "cap-app-proxy
+    └── runtime2                  │ # referenced by "staging-isc" argo-cd application, applied to the cluster by "cap-app-proxy
         └── in-cluster.yaml      ─┘ #     manage `include` field determines which dirs/files to sync to cluster
 ```
 {::nomarkdown}
@@ -69,12 +74,12 @@ Below is a representation of the structure of the repository with the shared con
 
 ### `resources` directory 
 
-The `resources` directory holds the resources shared by _all_ clusters managed by the GitOps Runtime:
+The `resources` directory holds the resources shared by _all_ clusters managed by the GitOps Runtimes:
 
-  * `all-runtimes-all-clusters`: Every resource manifest in this subdirectory is applied to all the GitOps Runtimes in the account, and to all the clusters managed by those Runtimes. In the above example, `manifest2.yaml` is applied to both `runtime1` and `runtime2`
-  * `control-planes`: Optional. When defined, every resource manifest in this subdirectory is applied to each Runtime’s `in-cluster`.  
-    Config map resources for example, when committed to this subdirectory are deployed to each Runtime’s `in-cluster`.
-  * `runtimes/<runtime_name>`: Optional. Runtime-specific subdirectory. Every resource manifest in a runtime-specific subdirectory is applied to only the GitOps Runtime defined by `<runtime_name>`. 
+  * `resources/all-runtimes-all-clusters`: Every resource manifest in this subdirectory is applied to all the GitOps Runtimes in the account, and to all the clusters managed by those Runtimes. In the above example, `manifest2.yaml` is applied to both `runtime1` and `runtime2`.
+  * `resources/control-planes`: Optional. When defined, every resource manifest in this subdirectory is applied to each Runtime’s `in-cluster`.  
+    Config map resources for example, when committed to this subdirectory, are deployed to each Runtime’s `in-cluster`.
+  * `resources/runtimes/<runtime_name>`: Optional. Runtime-specific subdirectory. Every resource manifest in a runtime-specific subdirectory is applied to only the GitOps Runtime defined by `<runtime_name>`. 
     In the above example, `manifest4.yaml` is applied only to `runtime1`, and `manifest5.yaml` is applied only to `runtime2`. 
 
 {::nomarkdown}
@@ -82,7 +87,8 @@ The `resources` directory holds the resources shared by _all_ clusters managed b
 {:/}
 
 ### `runtimes` directory 
-The `runtimes` directory includes subdirectories specific to each GitOps Runtime installed in the cluster, always with `in-cluster.yaml`, and optionally, application manifests for other clusters. 
+The `runtimes` directory includes subdirectories specific to each GitOps Runtime installed in the cluster. Every subdirectory always has an `in-cluster.yaml`, and optionally, application manifest YAMLs for other clusters. 
+The `runtimes/<runtime1>` subdirectory for example, includes the `in-cluster.yaml`, and a `remote-cluster.yaml` for the remote cluster also managed by the same Runtime.
 
 **Example application manifest for in-cluster.yaml**
 
