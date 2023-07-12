@@ -15,7 +15,7 @@ Only Codefresh account administrators should have access to the Shared Configura
 While it is useful to understand its structure, we recommend using it for reference only, and NOT making commits or manual changes. 
 
 
-* **Centralized cross-Runtime configuration management**  
+* **Centralized Runtime configuration management**  
   With the Shared Configuration Repository, you can store configuration manifests for account-level resources in a centralized location. The Git repository is accessible to all GitOps Runtimes within the same Codefresh account, ensuring that account-level resources are consistently deployed and managed across all environments.
 
 * **Runtime-specific configuration**  
