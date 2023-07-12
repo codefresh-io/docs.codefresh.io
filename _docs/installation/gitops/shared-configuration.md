@@ -10,8 +10,9 @@ toc: true
 
 A Codefresh account with a Hosted or a Hybrid GitOps runtime can store configuration manifests for account-level resources in a Git repository. This repository, the Shared Configuration Repository, can be shared with other GitOps Runtimes in the same account, avoiding the need to create and maintain different configuration manifests for every GitOps Runtime. At the same time, you also have the flexibility to store resources unique to specific Runtimes without affecting other Runtimes. 
 
->**NOTE**:  
-Only Codefresh account administrators have access to the Shared Configuration Repository, and it's content is automatically generated. While it is useful to understand its structure and content, we recommend against changing the content and using it only for reference purposes. 
+>**IMPORTANT**:  
+Only Codefresh account administrators should have access to the Shared Configuration Repository. Its content is automatically generated and maintained by Codefresh.  
+While it is useful to understand its structure, we recommend using it for reference only, and NOT making commits or manual changes. 
 
 
 * **Centralized cross-Runtime configuration management**  
