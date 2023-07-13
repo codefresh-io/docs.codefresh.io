@@ -69,7 +69,7 @@ description: "Changelog for Pipelines 2019 (Classic)"
 - SAML SSO support (Enterprise) - [documentation]({{site.baseurl}}/docs/administration/single-sign-on/saml/)
 - Audit logs (Enterprise) - [documentation]({{site.baseurl}}/docs/administration/account-user-management/audit/)
 - Checking out code with Subversion, HG, Perforce etc. - [documentation]({{site.baseurl}}/docs/example-catalog/ci-examples/non-git-checkout/)
-- Migrating to explicit git clone steps - [documentation]({{site.baseurl}}docs/pipelines/steps/git-clone/)
+- Migrating to explicit git clone steps - [documentation]({{site.baseurl}}/docs/pipelines/steps/git-clone/)
 - Custom annotations on projects, pipelines, builds - [documentation]({{site.baseurl}}/docs/pipelines/annotations/)
 - Deployments with Pulumi - [documentation]({{site.baseurl}}/docs/example-catalog/cd-examples/pulumi/)
 - Deployments with Terraform - [documentation]({{site.baseurl}}/docs/example-catalog/cd-examples/terraform/)
