@@ -242,6 +242,10 @@ Try running the pipeline above and see how it behaves when a variable called `MY
 
 >Notice that if you use this pattern a lot it means that you are trying to create a complex pipeline that is very smart. We suggest you create instead multiple [simple pipelines for the same project]({{site.baseurl}}/docs/ci-cd-guides/pull-request-branches/#trunk-based-development).
 
+
+## Single step dependencies
+When [parallel execution]({{site.baseurl}}/docs/docs/pipelines/advanced-workflows/#parallel-pipeline-execution) is enabled, the `when:` conditional can be used to set up step dependencies using the `steps:` and `on:` keywords. For more information, [check the parallel pipeline execution page]({{site.baseurl}}/docs/docs/pipelines/advanced-workflows/#parallel-pipeline-execution). 
+
 ## Related articles
 [Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)   
 [Variables in pipelines]({{site.baseurl}}/docs/pipelines/variables/)  
