@@ -1000,7 +1000,7 @@ Skip validating scopes for the token provided (for any Git provider). This flag 
 To skip token validation, add `--skip-permission-validation true`.
 
   > IMPORTANT:  
-    Before using this flag, [review the required scopes for runtime tokens]({{site.baseurl}}/docs/reference//git-tokens/#git-runtime-token-scopes). <br><br>
+    Before using this flag, [review the required scopes for runtime tokens]({{site.baseurl}}/docs/reference/git-tokens/#git-runtime-token-scopes). <br><br>
     When defined, Codefresh does not validate the scopes assigned to the token provided. If the token does not include the scopes required for Codefresh to automatically create the repositories for the runtime and Git Source during installation, the installation will fail.  
     The alternative is to create both repos before the installation.
 
