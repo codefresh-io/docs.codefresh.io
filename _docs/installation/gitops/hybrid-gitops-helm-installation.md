@@ -21,6 +21,12 @@ For step-by-step installation from the Codefresh UI, see [Step-by-step Hybrid Gi
 
 >Hybrid GitOps installation with Helm is currently in Beta.
 
+## ArgoCD password
+
+>**WARNING**:  
+Do not change the ArgoCD password by logging into the ArgoCD UI with the `argocd-initial-admin-secret`.   
+Changing the ArgoCD password can result in system instability, and disrupt the proper functioning of the Codefresh platform.
+
 ## Quick Helm install for Hybrid GitOps Runtime
 
 Install the Hybrid GitOps Runtime via Helm with the default tunnel-based access mode. You will copy the Helm install command from the UI to get the values that Codefresh automatically retrieves for you such as your account ID and other values.

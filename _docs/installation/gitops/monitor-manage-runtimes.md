@@ -24,6 +24,8 @@ View Runtime components and information in [List or Topology view formats](/#git
   max-width="80%"
 %}
 
+
+
 <!--- Manage and monitor provisioned GitOps Runtimes: 
 * [Add managed clusters to GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster/)
 * [Add and manage Git Sources for GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)
@@ -40,9 +42,14 @@ View Runtime components and information in [List or Topology view formats](/#git
 * [(Hybrid GitOps) View notifications in Activity Log](#hybrid-gitops-view-notifications-in-activity-log) -->
 
 
-> TIP:  
+> **TIP**:  
 >Unless specified otherwise, all options are common to both types of GitOps Runtimes. If an option is valid only for Hybrid GitOps, it is indicated as such.
 
+## ArgoCD password
+
+>**WARNING**:  
+Do not change the ArgoCD password by logging into the ArgoCD UI with the `argocd-initial-admin-secret`.   
+Changing the ArgoCD password can result in system instability, and disrupt the proper functioning of the Codefresh platform.
 
 ## GitOps Runtime views
 
