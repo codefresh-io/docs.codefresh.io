@@ -250,7 +250,7 @@
     localurl: /docs/administration/account-user-management/create-codefresh-account/
   - title: Adding users and teams  
     localurl: /docs/administration/account-user-management/add-users/
-  - title: Set up OAuth2 for Git providers
+  - title: Set up OAuth2 for GitOps
     localurl: /docs/administration/account-user-management/oauth-setup/  
   - title: Access control
     localurl: /docs/administration/account-user-management/access-control/
