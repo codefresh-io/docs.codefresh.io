@@ -12,7 +12,7 @@ A Codefresh account with a Hosted or a Hybrid GitOps runtime can store configura
 
 >**IMPORTANT**:  
 Only Codefresh account administrators should have access to the Shared Configuration Repository. Its content is automatically generated and maintained by Codefresh.  
-While it is useful to understand its structure, we recommend using it for reference only, and NOT making commits or manual changes. 
+While it is useful to understand its structure, we recommend using it for reference only, and NOT for making commits or manual changes. 
 
 
 * **Centralized Runtime configuration management**  
