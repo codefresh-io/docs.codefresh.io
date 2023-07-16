@@ -244,7 +244,7 @@ Try running the pipeline above and see how it behaves when a variable called `MY
 
 
 ## Single step dependencies
-When [parallel execution]({{site.baseurl}}/docs/docs/pipelines/advanced-workflows/#parallel-pipeline-execution) is enabled, the `when:` conditional can be used to set up step dependencies using the `steps:` and `on:` keywords. For more information, [check the parallel pipeline execution page]({{site.baseurl}}/docs/docs/pipelines/advanced-workflows/#parallel-pipeline-execution). 
+When parallel execution is enabled, use the `when:` condition to set up step dependencies through the keywords, `steps:` and `on:`. For more information, see [parallel pipeline execution]({{site.baseurl}}/docs/pipelines/advanced-workflows/#parallel-pipeline-execution). 
 
 ## Related articles
 [Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)   
