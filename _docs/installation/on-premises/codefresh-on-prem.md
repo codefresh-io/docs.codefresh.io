@@ -14,7 +14,7 @@ To install the on-premises version of the Codefresh platform, look at the [ReadM
 After you install Codefresh on-premises, review platform configuration options:
 * [Disable user and team management via Codefresh UI](#disable-user-and-team-management-via-codefresh-ui)
 * [Selectively enable SSO provider for account](#selectively-enable-sso-provider-for-account)
-* [Retention policy for Codefresh builds](#retention-policy-for-codefresh-builds)
+<!--- * [Retention policy for Codefresh builds](#retention-policy-for-codefresh-builds)-->
 
  
 
@@ -54,6 +54,7 @@ These providers are not displayed as options during sign-up/sign-in.
   max-width="60%"
 %}
 
+<!---
 
 ## Retention policy for Codefresh builds
 Define a retention policy to manage Codefresh builds. The retention settings are controlled through `cf-api` deployment environment variables, all of which have default settings which you can retain or customize. 
@@ -63,6 +64,7 @@ There are two mechanisms to define the retention policy, both of which are imple
 1. New retention mechanism: Allows you delete builds by days, without deleting offline logs.
 
 <br>
+
 
 ### Configure retention policy for builds and logs
 With this method, Codefresh by default deletes builds older than six months, including offline logs for these builds.
@@ -106,7 +108,7 @@ The TTL-based retention mechanism is implemented as a Cron job, and deletes data
 1. Verify that the `created` field in the `workflowprocesses` collection has a new index.   
 1. Restart `cf-api`.
 
-
+-->
 
 
 
