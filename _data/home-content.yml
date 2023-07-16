@@ -252,8 +252,10 @@
     localurl: /docs/administration/account-user-management/add-users/
   - title: Set up OAuth2 for Git providers
     localurl: /docs/administration/account-user-management/oauth-setup/  
-  - title: Access control
+  - title: Access control for pipelines
     localurl: /docs/administration/account-user-management/access-control/
+  - title: Access control for GitOps
+    localurl: /docs/administration/account-user-management/gitops-abac/
   - title: Audit
     localurl: /docs/administration/account-user-management/audit/
   - title: User settings
