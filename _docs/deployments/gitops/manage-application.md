@@ -14,6 +14,10 @@ Application creation and deployment is one part of the continuous deployment/del
 * [Synchronize applications](#manually-synchronize-an-application)   
   Sync applications on-demand by manually applying sync options or selecting the resources to sync.
 
+* Terminate an on-going sync
+
+* 
+
 * [Rollback applications](#rollback-gitops-applications)   
   Rollback an application to a previous deployment version.
 
@@ -109,12 +113,10 @@ The sync options, grouped into Revision and Additional Settings, are identical t
 
 **How to**  
 1. In the Codefresh UI, from Ops in the sidebar, select [GitOps Apps](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
-1. Sync an application:  
-  * Select the application to sync, and do one of the following: 
+1. To sync an application, select the application to sync, and do one of the following: 
   * From the context menu on the right, select **Synchronize**. 
   * On the top-right, click **Synchronize**.  
-
-  Sync a resource:  
+1. To sync a resource:
   * Click the application with the resource to sync.
   * In the **Current State** tab, open the context menu of the resource, and then select **Sync**. 
 
@@ -221,6 +223,42 @@ For example, if you made changes to `api` resources or `audit` resources, type `
 {::nomarkdown}
 <br><br>
 {:/}
+
+## Terminate on-going application sync
+
+1. In the Codefresh UI, from Ops in the sidebar, select [GitOps Apps](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
+1. If needed, filter by **Status** **Syncing** to view applications with active sync operations.
+1. Select the application and then from the application header, click **Terminate Sync**.
+
+   {% include 
+   image.html 
+   lightbox="true" 
+   file="/images/applications/app-terminate-sync.png" 
+   url="/images/applications/app-terminate-sync.png" 
+   alt="Manually terminate on-going sync" 
+   caption="Manually terminate on-going sync"
+   max-width="50%" 
+   %} 
+
+
+## Refresh/hard refresh applications
+
+As an alternative to manually syncing an application, either refresh or hard refresh the application. Both options are always available in the application toolbar.
+
+1. In the Codefresh UI, from Ops in the sidebar, select [GitOps Apps](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
+1. Select the application, and then from the top-right, select the required action:  
+  * **Refresh**: Retrieve desired (Git) state, compare with the live (cluster) state, and refresh the application to sync with the desired state.
+  * **Hard Refresh**: Refresh the application to sync with the Git state, while removing the cache.
+
+   {% include 
+   image.html 
+   lightbox="true" 
+   file="/images/applications/app-refresh-hard-refresh.png" 
+   url="/images/applications/app-refresh-hard-refresh.png" 
+   alt="Refresh/Hard Refresh for applications" 
+   caption="Refresh/Hard Refresh for applications"
+   max-width="50%" 
+   %} 
 
 ## Rollback GitOps applications
 Rollback to a previously deployed version of active GitOps applications. You may want to rollback a newly deployed version due to errors in your code or misconfigurations, etc.  
