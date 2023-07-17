@@ -22,8 +22,8 @@ In the GitOps Apps dashboard, when viewing the Timeline tab for the selected app
 %}
 
 ### Possible Cause
-This issue can occur when Istio service mesh is used as an ingress controller in Codefresh, and Argo Rollouts for the application is not properly configured to work with Argo Rollouts and Istio.  
-Find more information, see [Argo Rollouts with Istio](https://argoproj.github.io/argo-rollouts/features/traffic-management/istio/#istio){:target="\_blank"}.
+This issue can occur when Istio VirtualService and Argo Rollouts are used in your application in Codefresh.  
+For more information, see [Argo Rollouts with Istio](https://argoproj.github.io/argo-rollouts/features/traffic-management/istio/#istio){:target="\_blank"}.
 
 The default behavior of VirtualService weights in Argo Rollouts can lead to synchronization issues with Git as the Rollout progresses.
 
