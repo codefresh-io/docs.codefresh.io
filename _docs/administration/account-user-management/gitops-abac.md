@@ -18,15 +18,12 @@ Rules define the *who*, *what*, and *where*  control access to GitOps applicatio
 * Attributes  
   Attributes control the _where_ part of the rule.  
   Attributes are a combination of standard Kubernetes and Codefresh-specific attributes. You have Kubernetes attributes such as clusters, namespaces, and labels, and attributes unique to Codefresh such as Runtimes and Git Sources.
-  
-  Attribute-based access is hierarchical, ranging from the highest-level cluster attribute with the broadest scope to the lowest-level label metadata attribute with the narrowest scope. Combining different hierarchies enables you to provide just the control you need.
-
 
 
 ## Creating a rule
-For each rule, you must select or define at least one element:
-* The team or teams the rule applies to 
-* The action or actions permitted for the entity
+For each rule, you must select or define:
+* The team or teams the rule applies to, with at least one team being mandatory 
+* The action or actions permitted for the entity, with at least one action being mandatory
 * The attribute or attributes determining where access is permitted
 
 **How to**
@@ -45,7 +42,7 @@ The rule you added for the entity is displayed in the GitOps Permissions page. E
 | --------------         | --------------           |  
 |Teams                   | The team or teams to which to give access to the Application Entity.|
 |Actions                 | The actions permitted for the application entity, and can be any or all of the following: {::nomarkdown} <ul><li><b>Refresh</b>: Allow users to manually regular refresh or hard refresh. The Refresh action is automatically disabled on selecting the Sync action which takes precedence. See <a href="https://codefresh.io/docs/docs/deployments/gitops/manage-application/#refreshhard-refresh-applications">Refresh/Hard Refresh applications</a>.</li><li><b>Sync</b>: Allow users to manually sync an application on-demand, and define the options for manual sync.<br>Selecting Sync automatically disables the Refresh action as Sync takes precedence over it. <br> See <a href="https://codefresh.io/docs/docs/deployments/gitops/manage-application/#manually-synchronize-an-application">Manually synchronize an application</a>.</li><li><b>Terminate Sync</b>: Allow users to manually stop an ongoing sync for an application. See <a href="https://codefresh.io/docs/docs/deployments/gitops/manage-application/#terminate-on-going-application-sync">Terminate on-going application sync</a></li><li><b>View pod logs</b>: Not implemented yet</li><li><b>Delete</b>: Allow users to delete an application from Codefresh. See <a href="https://codefresh.io/docs/docs/deployments/gitops/manage-application/#delete-an-application">Delete an application</a>.</li></ul>{:/} |
-|Attributes |Attributes have a hierarchical relationship between them: Cluster > Namespace > Runtime > Git Source > Label.{::nomarkdown} <ul><li><b>Cluster</b>: Allow access to all application entities in the cluster, overriding the Namespace, Runtime, and Git Sources of specific applications.</li><li><b>Namespace</b>: Allow access to application entities only within the namespace. If users have multiple accounts on different clusters with the same namespace, they can access applications in all those namespaces.</li><li><b>Runtime</b>: Allow access to application entities associated with the defined Runtime.</li><li><b>Git Source</b>: Allow access to application entities only in the defined Git Source. A Git Source is always associated with a Runtime.</li><li><b>Label</b>: The lowest level of access, allows access only to application entities that share the same label.</li></ul>{:/} |
+|Attributes |Attributes, either individually or in combination, allow more fine-grained access control to enforce the _where_ policies for teams and actions. <br>Single attributes are useful to grant or deny access based on a specific property. For example, allow access to application entities on a cluster or within a namespace. <br>Enforce more complex access control through combinations of attributes. For example, require both A Runtime and a Label attribute to grant access to an application entity.<br>You can also add multiple instances of the same attribute with different values. For example, the team can sync application entities with different labels.{::nomarkdown} <ul><li><b>Cluster</b>: Allow access to all application entities in the cluster, overriding the namespace, Runtime, and Git Sources of specific applications.</li><li><b>Namespace</b>: Allow access to application entities only within the namespace. If users have multiple accounts on different clusters with the same namespace, they can access applications in all those namespaces.</li><li><b>Runtime</b>: Allow access to application entities associated with the defined Runtime.</li><li><b>Git Source</b>: Allow access to application entities only in the defined Git Source. A Git Source is always associated with a Runtime.</li><li><b>Label</b>: Allow access only to application entities that share the same label.</li></ul>{:/} |
 
 
 
@@ -54,7 +51,7 @@ The rule you added for the entity is displayed in the GitOps Permissions page. E
 ## Examples of rules for application entities
 
 ### Rule: Cluster-based access to all actions
-This rule grants the DevOps team permission to perform all actions for application entities on the production cluster, regardless of namespaces, runtimes, Git Sources and labels.
+This rule grants the DevOps team permission to perform all actions for application entities on the production cluster, regardless of namespaces, Runtimes, Git Sources and labels.
 
 **Rule elements**
 * Team: `DevOps`
