@@ -13,13 +13,13 @@ Rules define the *who*, *what*, and *where*  control access to GitOps applicatio
   Teams control the _who_ part of the rule. 
 
 * Actions  
-  Actions control the  _what_ part of the rule. You can multi-select actions. 
+  Actions control the  _what_ part of the rule. You need to select at least one action. 
 
 * Attributes  
   Attributes control the _where_ part of the rule.  
   Attributes are a combination of standard Kubernetes and Codefresh-specific attributes. You have Kubernetes attributes such as clusters, namespaces, and labels, and attributes unique to Codefresh such as Runtimes and Git Sources.
   
-  Attribute-based access is hierarhcical, ranging from the highest-level with the broadest scope to the lowest-level with the narrowest scope. Combining different hierarchies enables you to provide just the control you need.
+  Attribute-based access is hierarchical, ranging from the highest-level cluster attribute with the broadest scope to the lowest-level label metadata attribute with the narrowest scope. Combining different hierarchies enables you to provide just the control you need.
 
 
 
