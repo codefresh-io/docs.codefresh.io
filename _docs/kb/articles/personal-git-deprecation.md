@@ -23,7 +23,7 @@ Until July 2019, Codefresh allowed you to create a Git integration either at the
 
 While on paper the flexibility of adding Git integrations in different levels (account or user) looks good, in practice it has been very confusing for users/customers
 
-* Codefresh introduced login with providers which aren’t Git based - Google, [LDAP]({{site.baseurl}}/docs/single-sign-on/ldap/), [SAML]({{site.baseurl}}/docs/single-sign-on/saml/). This was causing problems for accounts which started creating pipelines leveraging the personal git context of each user and having new users signing up  without a Git provider
+* Codefresh introduced login with providers which aren’t Git based - Google, [LDAP]({{site.baseurl}}/docs/administration/single-sign-on/ldap/), [SAML]({{site.baseurl}}/docs/administration/single-sign-on/saml/). This was causing problems for accounts which started creating pipelines leveraging the personal git context of each user and having new users signing up  without a Git provider
 * Codefresh required Git permissions from each user that signed up  instead of allowing to create a dedicated integration to your git provider of choice, allowing a company to better manage codefresh access control to their Git organization
 
 <!--- These problems were exacerbated with the introduction of [explicit clone steps]({{site.baseurl}}/docs/troubleshooting/git-step-migration/). -->

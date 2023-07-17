@@ -542,7 +542,7 @@
           url: "/add-users"
         - title: Configuring access control
           url: "/access-control"
-        - title: Setting up OAuth2 for Git providers
+        - title: Setting up OAuth2 for GitOps
           url: "/oauth-setup"
         - title: Authorize access to organizations/projects
           url: "/hosted-authorize-orgs" 
@@ -550,50 +550,46 @@
           url: "/pipeline-execution-context" 
         - title: Auditing actions in Codefresh
           url: "/audit"
+    - title: Single Sign-On 
+      sub-pages:
+        - title: Common configuration
+          url: "/team-sync"
+        - title: OpenID Connect
+          url: "/oidc"
+          sub-pages:
+            - title: Auth0
+              url: "/oidc-auth0"
+            - title: Azure
+              url: "/oidc-azure"
+            - title: Google
+              url: "/oidc-google"
+            - title: Keycloak
+              url: "/oidc-keycloak"
+            - title: Okta
+              url: "/oidc-okta"
+            - title: OneLogin
+              url: "/oidc-onelogin"
+        - title: SAML
+          url: "/saml"
+          sub-pages:
+            - title: JumpCloud
+              url: "/saml-jumpcloud"
+            - title: Okta
+              url: "/saml-okta"
+            - title: OneLogin
+              url: "/saml-onelogin"
+            - title: PingID SSO
+              url: "/saml-pingid"
+        - title: LDAP
+          url: "/ldap"
+    - title: Codefresh IP addresses
+      url: "/platform-ip-addresses" 
     - title: User self-management
       sub-pages:  
         - title: Managing personal settings
           url: "/user-settings"
         - title: Managing Git PATs
-          url: "/manage-pats"
-    - title: Codefresh IP addresses
-      url: "/platform-ip-addresses" 
-
-- title: Single Sign-On
-  url: /single-sign-on
-  pages:
-    - title: Single sign-on overview
-      url: /single-sign-on
-    - title: Common configuration
-      url: /team-sync
-    - title: OpenID Connect
-      url: /oidc
-      sub-pages:
-        - title: Auth0
-          url: /oidc-auth0
-        - title: Azure
-          url: /oidc-azure
-        - title: Google
-          url: /oidc-google
-        - title: Keycloak
-          url: /oidc-keycloak
-        - title: Okta
-          url: /oidc-okta
-        - title: OneLogin
-          url: /oidc-onelogin
-    - title: SAML
-      url: /saml
-      sub-pages:
-        - title: JumpCloud
-          url: /saml-jumpcloud
-        - title: Okta
-          url: /saml-okta
-        - title: OneLogin
-          url: /saml-onelogin
-        - title: PingID SSO
-          url: /saml-pingid
-    - title: LDAP
-      url: /ldap
+          url: "/manage-pats"    
 
 - title: Reference
   url: "/reference"
