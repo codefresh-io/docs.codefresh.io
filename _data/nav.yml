@@ -366,6 +366,8 @@
           url: "/manage-application"
         - title: Progressive delivery with GitOps
           url: "/install-argo-rollouts"
+        - title: Troubleshooting GitOps applications
+          url: "/troubleshooting-gitops-apps"          
 
 
 
