@@ -67,7 +67,7 @@ You need to create an account once, generate the Git Runtime token, and use this
 1. Create a service/robot account in Codefresh with the Administrator Role.
 1. Log in to your Git provider account, and generate a Git Runtime token with the required scopes.
 1. Log back in to Codefresh, this time, to the service/robot account you created.
-1. Install the GitOps Runtime with 
+1. Install the GitOps Runtime. 
 
 
 
