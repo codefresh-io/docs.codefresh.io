@@ -14,10 +14,10 @@ In the GitOps Apps dashboard, when viewing the Timeline tab for the selected app
 {% include 
 	image.html 
 	lightbox="true" 
-	file="/images/runtime/cluster-install-rollout.png" 
-	url="/images/runtime/cluster-install-rollout.png" 
-	alt="Install Argo Rollouts" 
-	caption="Install Argo Rollouts"
+	file="/images/troubleshooting/gitops-apps/timeline-current-version-progressing.png" 
+	url="/images/troubleshooting/gitops-apps/timeline-current-version-progressing.png" 
+	alt="Current version stuck in Progressing" 
+	caption="Current version stuck in Progressing"
   max-width="60%" 
 %}
 
