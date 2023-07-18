@@ -6,19 +6,18 @@ sub_group: user-self-management
 toc: true
 ---
 
-As a user in Codefresh, you must authorize access to your Git provider accounts, and authenticate Git-based actions from Codefresh clients, per provisioned runtime. This is done through the Git user token, which is a personal access token, unique to each user. For more details, including required scopes and how the Git user token differs from the Git Runtime token, see [Git tokens in Codefresh]({{site.baseurl}}/docs/reference/git-tokens/).
+As a user in Codefresh, you must authorize access to your Git provider accounts, and authenticate Git-based actions from Codefresh clients, per provisioned GitOps Runtime. This is done through the Git user token, which is an access token unique to each user. For more details, including required scopes and how the Git user token differs from the Git Runtime token, see [Git tokens in Codefresh]({{site.baseurl}}/docs/reference/git-tokens/).
 
 The authorization mode depends on the authorization method set up by your account admin: 
 * OAuth2  
   If your admin has set up authentication with OAuth2, you can authorize access using OAuth2.  
-* Git user personal access token  
-  You can always generate a Git user token, a personal access token, from your Git provider and then add the same to Codefresh to authorize access. 
+* Git user access token  
+  You can always generate a Git user token from your Git provider and then add the same to the GitOps Runtime in Codefresh to authorize access. 
 
 
 
 ## Authorize Git access to GitOps Runtimes
-Authorize Git access to GitOps Runtimes with OAuth2 if your account admin has set up Codefresh as an OAuth application, or alternatively through personal access tokens from your Git provider.  
-Authorizing Git access to GitOps Runtimes is required for  
+Authorize Git access to GitOps Runtimes with OAuth2 if your account admin has set up Codefresh as an OAuth application, or alternatively through Git user access tokens from your Git provider.  
 
 If you have access to more than one GitOps Runtime in the same or in different accounts, you can use the same Git user token for all the Runtimes you have access to. _You must however authorize access for each GitOps Runtime individually_.  
 
@@ -42,7 +41,7 @@ Make sure you have:
         1. Click **Authorize Access to GitHub**.
         1. Enter your credentials, and select **Sign In**.
         1. Complete the verification if required, as when two-factor authentication is configured, for example.
-      * For **Git personal access tokens**:  
+      * For **Git user access tokens**:  
         1. Expand **Advanced authorization options**. 
         1. For Bitbucket, enter your **Bitbucket username**. 
         1. In the **Personal Access Token** field, paste the token you generated.
@@ -52,11 +51,10 @@ image.html
 lightbox="true" 
 file="/images/runtime/gitops-user-authorize-runtime-access.png" 
 url="/images/runtime/gitops-user-authorize-runtime-access.png"
-alt="Authorize OAuth/Git personal user token access to GitOps Runtime" 
+alt="Authorize access to GitOps Runtime with OAuth/Git personal user token" 
 caption="Authorize access to GitOps Runtime with OAuth/Git personal user token" 
 max-width="50%" 
 %}
-
 
 {:start="4"}
 1. Click **Add Token**.  
@@ -65,8 +63,8 @@ max-width="50%"
 ## Manage Git user tokens for GitOps Runtimes
 Once you authorize access to one or more GitOps Runtimes through OAuth or Git user tokens, the GitOps Runtimes and their associated tokens are listed in the Git Personal Access Tokens page. 
 
-**Manage Git user personal access tokens**  
-You can manage Git user tokens for any GitOps Runtime, without affecting the GitOps Runtime at the account-level. For example, you can replace an existing token even when it's valid, or delete a token. Deleting a token will deny _you_ access to the Git repositories, Git Sources and other resources associated with that Runtime, while the Runtime itself is not affected. 
+**Manage Git user access tokens**  
+You can manage Git user tokens for any GitOps Runtime, without affecting the GitOps Runtime at the account-level. Deleting the Git user token for a GitOps Runtime will deny _you_ access to the Git repositories, Git Sources and other resources associated with that Runtime, while the Runtime itself is not affected. 
 
 **Notifications for GitOps Runtimes**  
 If you have turned on notifications for GitOps Runtimes, Codefresh alerts you to GitOps Runtimes with invalid or expired Git personal access tokens.  

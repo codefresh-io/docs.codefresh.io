@@ -9,10 +9,10 @@ toc: true
 
 
 
-Codefresh requires two types of Git tokens for authentication in GitOps, a Git Runtime token, and a Git user token. Both the Runtime and user tokens are Git personal access tokens, used for different purposes in Codefresh. 
+Codefresh requires two types of Git tokens for authentication in GitOps, a Git Runtime token, and a Git user token. Both the Runtime and user tokens are Git access tokens, used for different purposes in Codefresh. 
 
-* The Git Runtime token is mandatory when installing GitOps Runtimes, and must be provided during the installation.
-* The Git user token is a personal access token that is unique to every user in the Codefresh platform. It is required after installation for every Runtime that the user has access to. 
+* The Git Runtime token is unique to and mandatory for every GitOps Runtime. It must be provided during the Runtime installation.
+* The Git user token is an access token that is unique to every user in the Codefresh platform. It is required after installation for every Runtime which the user has access to. 
 
 
 
@@ -26,8 +26,6 @@ The table below summarizes the main differences between the Git Runtime and user
 | Created                    | Before Runtime installation; see [required scopes for Git Runtime tokens](#git-runtime-token-scopes).   | After Runtime installation; see [required scopes for Git user (Personal Access) tokens](#git-user-personal-access-token-scopes).
 | Managed by                    | Admin at account-level                    | User for personal account  |
 | Associated Account Type    | (Recommended) [Service account or robot account](#use-a-servicerobot-account-for-gitops-runtimes) | User account    |
-| Security                   | Shared among Runtimes in same account | Individual access to each Runtime |
-| Authentication             | Automated processes   | Individual users   |
 
 
 ## Git Runtime token scopes
@@ -42,14 +40,16 @@ The table below lists the scopes required for Git Runtime tokens for the differe
 
 
 
-## Git user (personal access) token scopes
-The table below lists the scopes required for Git user personal access tokens for the different Git providers.
+## Git user access) token scopes
+The table below lists the scopes required for Git user access tokens for the different Git providers.
 
 
-> **TIP**:  
-  If a user has access to multiple GitOps Runtimes in the same or in different accounts in Codefresh, they can use the same Git user (personal access) token to authenticate and authorize all the Runtimes to which they have access.     
+<!--- > **TIP**:  
+  If a user has access to multiple GitOps Runtimes in the same or in different accounts in Codefresh, they can use the same Git user access token to authenticate and authorize all the Runtimes to which they have access.     
   The user must configure the Git user token for each Runtime separately.   
-  User can manage their personal user tokens, as described in [Managing Git PATS]({{site.baseurl}}/docs/administration/user-self-management/manage-pats/).
+  User can manage their Git user tokens for Runtimes, as described in [Managing Git PATS]({{site.baseurl}}/docs/administration/user-self-management/manage-pats/).
+
+-->
 
 | Git provider                  | Required scopes for Git user token          | 
 | ---------------------------- | ------------------------------ | 
@@ -61,15 +61,7 @@ The table below lists the scopes required for Git user personal access tokens fo
 For GitOps Runtime installation, we recommend using an account not related to any specific user in your organization. 
 Service/robot accounts are ideal for this purpose, as they provide secure authentication, restricted permissions, and centralized management. 
 
-You need to create an account once, generate the Git Runtime token, and use this account exclusively to install GitOps Runtimes.
-
-
-1. Create a service/robot account in Codefresh with the Administrator Role.
-1. Log in to your Git provider account, and generate a Git Runtime token with the required scopes.
-1. Log back in to Codefresh, this time, to the service/robot account you created.
-1. Install the GitOps Runtime. 
-
-
+You need to create a service or robot account with your Git provider, generate the Git Runtime token, and use this account exclusively to install GitOps Runtimes.
 
 ## Related articles  
 [Managing Git PATs]({{site.baseurl}}/docs/administration/user-self-management/manage-pats/)  
