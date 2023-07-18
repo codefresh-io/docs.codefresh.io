@@ -22,9 +22,9 @@ The table below summarizes the main differences between the Git Runtime and user
 {: .table .table-bordered .table-hover}
 |                            | Git Runtime token                  | Git user token         |
 | -------------------------- | ---------------------          | ------------------ |
-| Usage                      | {::nomarkdown}<ul><li>During installation, to create the Git repository and install the GitOps Runtime.</li><li>After installation, used by:<ul><li>Argo CD to clone the Git repos, pull changes, and sync to the K8s cluster.</li><li> Argo Events to create web hooks in Git repositories.</li><li>`cap-app-proxy` to clone the Shared Configuration Repository</li></ul> {:/} | Authenticate and authorize user actions in Codefresh UI and CLI to Git repositories for every provisioned GitOps Runtime. Users can view and manage the personal access tokens assigned to the Runtimes in the [Git Personal Access Token](https://g.codefresh.io/2.0/user-settings){:target="\_blank"} page.  |
+| Usage                      | {::nomarkdown}<ul><li>During installation, to create the Git repository and install the GitOps Runtime.</li><li>After installation, used by:<ul><li>Argo CD to clone the Git repos, pull changes, and sync to the K8s cluster.</li><li> Argo Events to create web hooks in Git repositories.</li><li>`cap-app-proxy` to clone the Shared Configuration Repository</li></ul> {:/} | Authenticate and authorize user actions in Codefresh UI and CLI to Git repositories for every provisioned GitOps Runtime. Users can view and manage the Git user tokens assigned to the Runtimes in the [Git Personal Access Token](https://g.codefresh.io/2.0/user-settings){:target="\_blank"} page.  |
 | Created                    | Before Runtime installation; see [required scopes for Git Runtime tokens](#git-runtime-token-scopes).   | After Runtime installation; see [required scopes for Git user (Personal Access) tokens](#git-user-personal-access-token-scopes).
-| Managed by                    | Admin at account-level                    | User for personal account  |
+| Managed by                    | Admin at account-level                    | User   |
 | Associated Account Type    | (Recommended) [Service account or robot account](#use-a-servicerobot-account-for-gitops-runtimes) | User account    |
 
 
