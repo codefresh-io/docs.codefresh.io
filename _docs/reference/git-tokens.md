@@ -24,11 +24,10 @@ The table below summarizes the main differences between the Git Runtime and user
 | -------------------------- | ---------------------          | ------------------ |
 | Usage                      | {::nomarkdown}<ul><li>During installation, to create the Git repository and install the GitOps Runtime.</li><li>After installation, used by:<ul><li>Argo CD to clone the Git repos, pull changes, and sync to the K8s cluster.</li><li> Argo Events to create web hooks in Git repositories.</li><li>`cap-app-proxy` to clone the Shared Configuration Repository</li></ul> {:/} | Authenticate and authorize user actions in Codefresh UI and CLI to Git repositories for every provisioned GitOps Runtime. Users can view and manage the personal access tokens assigned to the Runtimes in the [Git Personal Access Token](https://g.codefresh.io/2.0/user-settings){:target="\_blank"} page.  |
 | Created                    | Before Runtime installation; see [required scopes for Git Runtime tokens](#git-runtime-token-scopes).   | After Runtime installation; see [required scopes for Git user (Personal Access) tokens](#git-user-personal-access-token-scopes).
-| Managed                    | By admin                      | By user  |
+| Managed by                    | Admin at account-level                    | User for personal account  |
 | Associated Account Type    | (Recommended) [Service account or robot account](#use-a-servicerobot-account-for-gitops-runtimes) | User account    |
-| Security                   | Shared among Runtimes in same or different accounts | Individual access to each Runtime |
+| Security                   | Shared among Runtimes in same account | Individual access to each Runtime |
 | Authentication             | Automated processes   | Individual users   |
-| Auditing and Accountability| Process-level tracking| User-level tracking|
 
 
 ## Git Runtime token scopes
@@ -48,8 +47,9 @@ The table below lists the scopes required for Git user personal access tokens fo
 
 
 > **TIP**:  
-  If you have access to multiple GitOps Runtimes in the same or in different accounts in Codefresh, you can use the same Git user (personal access) token to authenticate and authorize all the Runtimes to which you have access.     
-  You must configure the Git user token for each Runtime separately.
+  If a user has access to multiple GitOps Runtimes in the same or in different accounts in Codefresh, they can use the same Git user (personal access) token to authenticate and authorize all the Runtimes to which they have access.     
+  The user must configure the Git user token for each Runtime separately.   
+  User can manage their personal user tokens, as described in [Managing Git PATS]({{site.baseurl}}/docs/administration/user-self-management/manage-pats/).
 
 | Git provider                  | Required scopes for Git user token          | 
 | ---------------------------- | ------------------------------ | 
