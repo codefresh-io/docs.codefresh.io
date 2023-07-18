@@ -23,9 +23,8 @@ In the GitOps Apps dashboard, when viewing the Timeline tab for the selected app
 
 ### Possible Cause
 This issue can occur when Istio VirtualService and Argo Rollouts are used in your application in Codefresh.  
+The default behavior of VirtualService weights in Argo Rollouts can lead to synchronization issues with Git as the Rollout progresses.  
 For more information, see [Argo Rollouts with Istio](https://argoproj.github.io/argo-rollouts/features/traffic-management/istio/#istio){:target="\_blank"}.
-
-The default behavior of VirtualService weights in Argo Rollouts can lead to synchronization issues with Git as the Rollout progresses.
 
 In Codefresh, this issue leads to a loop with the following behavior:
 * Current release remains as **Progressing** in the Timeline tab.
