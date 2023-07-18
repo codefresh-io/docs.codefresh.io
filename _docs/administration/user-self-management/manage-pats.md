@@ -28,10 +28,10 @@ If you have access to more than one GitOps Runtime in the same or in different a
 
 Make sure you have:  
 * For Bitbucket only, your Bitbucket account username
-* If needed, a _personal access token_ from your Git provider with the required scopes
-  * [GitHub](#generate-github-personal-access-tokens)
-  * [GitLab](#generate-gitlab-personal-access-tokens)
-  * [Bitbucket](#generate-bitbucket-personal-access-tokens)
+* If needed, a _user access token_ from your Git provider with the required scopes
+  * [GitHub](#generate-github-user-access-tokens)
+  * [GitLab](#generate-gitlab-user-access-tokens)
+  * [Bitbucket](#generate-bitbucket-user-access-tokens)
 
 **How to**  
 1. In the Codefresh UI, on the toolbar, click your avatar, and then select [**Git Personal Access Token**](https://g.codefresh.io/2.0/git-personal-access-token){:target="\_blank"}.
@@ -51,8 +51,8 @@ image.html
 lightbox="true" 
 file="/images/runtime/gitops-user-authorize-runtime-access.png" 
 url="/images/runtime/gitops-user-authorize-runtime-access.png"
-alt="Authorize access to GitOps Runtime with OAuth/Git personal user token" 
-caption="Authorize access to GitOps Runtime with OAuth/Git personal user token" 
+alt="Authorize access to GitOps Runtime with OAuth/Git user token" 
+caption="Authorize access to GitOps Runtime with OAuth/Git user token" 
 max-width="50%" 
 %}
 
@@ -102,7 +102,7 @@ max-width="70%"
 
 
 
-## Generate GitHub personal access tokens 
+## Generate GitHub user access tokens 
 
 1. Log in to your GitHub or GitHub Enterprise account.
 1. Select **Settings > Developer Settings > Personal Access Tokens > Tokens (classic)**.
@@ -116,19 +116,19 @@ max-width="70%"
    lightbox="true" 
    file="/images/administration/manage-pats/github-pat-scopes.png" 
    url="/images/administration/manage-pats/github-pat-scopes.png" 
-   alt="GitHub personal access token scopes" 
-   caption="GitHub personal access token scopes"
+   alt="GitHub user access token scopes" 
+   caption="GitHub user access token scopes"
    max-width="50%" 
   %}
 
 {:start="4"}  
-1. Copy the personal access token generated as you will need it to authorize access.
+1. Copy the user access token generated as you will need it to authorize access.
 
 {::nomarkdown}
 </br>
 {:/}
 
-## Generate GitLab personal access tokens
+## Generate GitLab user access tokens
 
 1. Log in to your GitLab Cloud or Server account.
 1. Select **User settings > Access tokens**.
@@ -142,15 +142,15 @@ max-width="70%"
    lightbox="true" 
    file="/images/administration/manage-pats/gitlab-pat-scopes.png" 
    url="/images/administration/manage-pats/gitlab-pat-scopes.png" 
-   alt="GitLab personal access token scopes" 
-   caption="GitLab personal access token scopes"
+   alt="GitLab user access token scopes" 
+   caption="GitLab user access token scopes"
    max-width="50%" 
   %}
 
 {:start="4"}  
-1. Copy the personal access token generated as you will need it to authorize access.
+1. Copy the user access token generated as you will need it to authorize access.
 
-## Generate Bitbucket personal access tokens
+## Generate Bitbucket user access tokens
 
 
 1. Log in to your Bitbucket Cloud or Server account.
@@ -166,13 +166,13 @@ max-width="70%"
    lightbox="true" 
    file="/images/administration/manage-pats/bitbucket-pat-scopes.png" 
    url="/images/administration/manage-pats/bitbucket-pat-scopes.png" 
-   alt="Bitbucket personal access token scopes" 
-   caption="Bitbucket personal access token scopes"
+   alt="Bitbucket user access token scopes" 
+   caption="Bitbucket user access token scopes"
    max-width="50%" 
   %}
 
 {:start="4"}
-1. Copy the personal access token generated as you will need it to authorize access.
+1. Copy the user access token generated as you will need it to authorize access.
 
 
 ## Related articles  
