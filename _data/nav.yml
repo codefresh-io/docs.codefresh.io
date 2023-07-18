@@ -540,9 +540,11 @@
           url: "/create-codefresh-account"
         - title: Adding users and teams
           url: "/add-users"
-        - title: Configuring access control
+        - title: Configuring access control for pipelines
           url: "/access-control"
-        - title: Setting up OAuth2 for Git providers
+        - title: Configuring access control for GitOps
+          url: "/gitops-abac"
+        - title: Setting up OAuth2 for GitOps
           url: "/oauth-setup"
         - title: Authorize access to organizations/projects
           url: "/hosted-authorize-orgs" 

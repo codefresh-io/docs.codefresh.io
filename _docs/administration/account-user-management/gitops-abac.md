@@ -13,7 +13,7 @@ Rules define the *who*, *what*, and *where*  control access to GitOps applicatio
   Teams control the _who_ part of the rule. 
 
 * Actions  
-  Actions control the  _what_ part of the rule. You need to select at least one action. 
+  Actions control the _what_ part of the rule. You need to select at least one action. 
 
 * Attributes  
   Attributes control the _where_ part of the rule.  
@@ -60,25 +60,26 @@ This rule grants the DevOps team permission to perform all actions for applicati
 
 
 
-### Rule: Namespace-based access to all actions
-This rule grants two different teams permissions to perform all actions for application entities deployed in two different namespaces.
+### Rule: Cluster- and namespace-based access to all actions
+This rule grants two different teams permissions to perform all actions for application entities deployed on a specific cluster but within a specific namespace.
 
 **Rule elements**
-* Teams: `QA`
+* Teams: `Product`, `Docs`
 * Actions: `All`
-* Attributes: `Namespace: test-namespace`
-
-This rule gives the QA team full access (sync, refresh, terminate sync) to application entities within the test-namespace only.
-
-### Rule: Namespace and label access to specific actions 
-This rule grants the Support team permission to manually sync application entities or terminate on-going syncs for application entities  deployed in the `Namespace`= `poc` with the `Label` = `production`. 
-This ensures that the team can only manually sync or manually terminate sync for application entities with a specific label within a specific namespace. 
+* Attributes: 
+  * `Cluster: development`
+  * `Namespace: product-sandbox`
 
 
-**Rule elements**
+### Rule: Namespace-based and label access to specific actions 
+This rule grants the Support team permission to manually sync application entities or manually terminate on-going syncs for application entities deployed in a specific namespace, but only for those entities that share the same label. 
+
+**Rule elements**  
 * Team: `Customer Support`
 * Actions: `Sync`, `Terminate Sync`
-* Attributes: `Namespace: poc` and `Label: AcmePoc`
+* Attributes: 
+  * `Namespace: poc`
+  * `Label: customer=AcmePoc`
 
 
 
