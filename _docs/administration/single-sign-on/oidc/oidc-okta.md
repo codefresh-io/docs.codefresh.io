@@ -165,6 +165,9 @@ max-width="30%"
   This action syncs groups every 12 hours. 
   > Though you can assign an Okta application to both groups and individual users, Codefresh _only syncs users who are part of teams_.   
   New users in Okta, _not_ assigned to a team, are **NOT** synced with Codefresh. You should first assign the user to a team for the sync to work.
+1. Optional. To also remove individual users who have been deactivated in Okta from their Codefresh accounts during sync, select **Remove deactivated users during sync**.  
+  When selected, deactivated users are removed from the current account, _and_ from all the accounts defined in **Additional accounts to sync**, if any. Their names are removed from both the Users list and from the Teams to which they belong (see [Users and Teams](https://g.codefresh.io/account-admin/collaborators/users){:target="\_blank"}).
+  If not selected, the deactivated users are automatically removed from the Team or Teams to which they belong, but still displayed in the Users list.
 1. Select **+Add**.  
   Codefresh automatically generates the **Client Name** to which to identify the SSO configuration.
   Note it down. 
