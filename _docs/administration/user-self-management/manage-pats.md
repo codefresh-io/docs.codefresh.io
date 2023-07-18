@@ -53,8 +53,8 @@ lightbox="true"
 file="/images/runtime/gitops-user-authorize-runtime-access.png" 
 url="/images/runtime/gitops-user-authorize-runtime-access.png"
 alt="Authorize OAuth/Git personal user token access to GitOps Runtime" 
-caption="Authorize OAuth/Git personal user token access to GitOps Runtime" 
-max-width="60%" 
+caption="Authorize access to GitOps Runtime with OAuth/Git personal user token" 
+max-width="50%" 
 %}
 
 
@@ -65,21 +65,21 @@ max-width="60%"
 ## Manage Git user tokens for GitOps Runtimes
 Once you authorize access to one or more GitOps Runtimes through OAuth or Git user tokens, the GitOps Runtimes and their associated tokens are listed in the Git Personal Access Tokens page. 
 
-**Manage Git user tokens**
-You can manage Git user tokens for any GitOps Runtime, without affecting the GitOps Runtime at the account-level. For example, you can replace an existing token even when it's valid, or delete a token. Deleting a token will deny _you_ access to the Git repositories, Git Sources and other resources associated with that Runtime. 
+**Manage Git user personal access tokens**  
+You can manage Git user tokens for any GitOps Runtime, without affecting the GitOps Runtime at the account-level. For example, you can replace an existing token even when it's valid, or delete a token. Deleting a token will deny _you_ access to the Git repositories, Git Sources and other resources associated with that Runtime, while the Runtime itself is not affected. 
 
 **Notifications for GitOps Runtimes**  
 If you have turned on notifications for GitOps Runtimes, Codefresh alerts you to GitOps Runtimes with invalid or expired Git personal access tokens.  
-You can turn off these notifications selectively for those Runtimes for which these alerts are less critical.
+You can turn off these notifications for selectively for Runtimes for which these alerts are less critical.
 
 **Before you begin**  
-If needed, generate another Git user token with the valid scopes
+Heve your Git user token handy
 
 **How to**  
 1. In the Codefresh UI, on the toolbar, click your avatar, and then select [**Git Personal Access Token**](https://g.codefresh.io/2.0/git-personal-access-token){:target="\_blank"}.
 1. To replace/delete the Git user token for a Runtime, do one of the following:
-  * To replace, click **Add Token**, and then either click **Authorize Access to Git provider** for OAuth2 access or paste the token into the **Git Personal Access Token** field. 
-  * To delete, click **Delete Token**. The token is deleted and the **Add Token** button is displayed. 
+  * To replace, click **Add Token**, and then either click **Authorize Access to Git provider** for OAuth2, or paste your Git user token into the **Git Personal Access Token** field. 
+  * To delete, click **Delete Token**. The token is deleted and the **Add Token** button is displayed next to the Runtime. 
 1. To turn off notifications, click the context menu at the right of the row with the Runtime and enable **Hide notifications**.
 
 {% include 
@@ -89,7 +89,7 @@ file="/images/runtime/gitops-user-disable-runtime-notifications.png"
 url="/images/runtime/gitops-user-disable-runtime-notifications.png"
 alt="Disable notifications option for GitOps Runtimes" 
 caption="Disable notifications option for GitOps Runtimes"
-max-width="60%" 
+max-width="70%" 
 %}
 
 {% include 
@@ -99,7 +99,7 @@ file="/images/runtime/gitops-indication-notification-disabled.png"
 url="/images/runtime/gitops-indication-notification-disabled.png"
 alt="GitOps Runtime with notifications disabled" 
 caption="GitOps Runtime with notifications disabled"
-max-width="60%" 
+max-width="70%" 
 %}
 
 
