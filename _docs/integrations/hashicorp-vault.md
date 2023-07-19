@@ -50,7 +50,7 @@ max-width="80%"
 1. To apply the changes, click **Save**.
 
 
-### Set up HashiCorp Vault integration via Codefresh CLI
+## Set up HashiCorp Vault integration via Codefresh CLI
 
 You can also create Vault integrations with the Codefresh CLI through   the [create context command](https://codefresh-io.github.io/cli/contexts/create-context/create-secret-store-context/hashicorp-vault/){:target="\_blank"}.
 
@@ -64,9 +64,9 @@ For example, to create an integration with user/password authentication, you wou
 -->
 
 
-### Using the HashiCorp Vault secret
+## Using the HashiCorp Vault secret
 
-To use the Vault secrets in pipelines, see our [secrets for pipelines]({{site.baseurl}}/docs/pipelines/configuration/secrets-store/).  
+To use the Vault secrets in pipelines, see [secrets for pipelines]({{site.baseurl}}/docs/pipelines/configuration/secrets-store/).  
 Because a secret in Vault can contain multiple key-value pairs, you will need to put in the key name as well, according to the syntax `{secrets.vault-store-name.path/to/secret@key}`.
 
 ## Related articles

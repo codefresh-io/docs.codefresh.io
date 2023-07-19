@@ -4,6 +4,7 @@ description: " "
 group: single-sign-on
 redirect_from:
   - /docs/enterprise/single-sign-on/sso-ldap/
+  - /docs/single-sign-on/ldap/
 toc: true
 ---
 
@@ -66,6 +67,6 @@ Synchronize teams in Codefresh with LDAP using the Codefresh CLI.
 
 
 ## Related articles
-[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/single-sign-on/single-sign-on/)  
-[Setting up OIDC Federated SSO]({{site.baseurl}}/docs/single-sign-on/oidc)   
-[Setting up SAML2 Federated SSO]({{site.baseurl}}/docs/single-sign-on/saml)  
+[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/administration/single-sign-on/)  
+[Setting up OIDC Federated SSO]({{site.baseurl}}/docs/administration/single-sign-on/oidc)   
+[Setting up SAML2 Federated SSO]({{site.baseurl}}/docs/administration/single-sign-on/saml)  

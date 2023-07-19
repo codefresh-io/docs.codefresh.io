@@ -943,7 +943,7 @@ Codefresh supports the following GKE configurations:
 * [Install Codefresh Runner on GKE with GCE disks and Google SA JSON key](#install-codefresh-runner-on-gke-with-gce-disks-and-google-sa-json-key)
 * [Install Codefresh Runner on GKE with GCE disks with Workload Identity and IAM role](#install-codefresh-runner-on-gke-with-gce-disks-with-workload-identity-and-iam-role)
 
-#### Common prerequsites
+#### Common prerequisites
 
 Before you start the installation, verify the following:  
 * Make sure your user has `Kubernetes Engine Cluster Admin` role in Google console  

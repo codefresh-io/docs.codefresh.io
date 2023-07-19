@@ -162,7 +162,7 @@
 /docs/single-sign-on/saml/saml-jumpcloud/
 /docs/single-sign-on/saml/saml-okta/
 /docs/single-sign-on/saml/saml-onelogin/
-/docs/single-sign-on/saml/saml-pingidsso/
+/docs/single-sign-on/saml/saml-pingid/
 /docs/single-sign-on/sso-overview/
 /docs/single-sign-on/team-sync/
 /docs/terms-and-privacy-policy/privacy-policy/
