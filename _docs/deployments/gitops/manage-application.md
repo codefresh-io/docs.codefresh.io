@@ -8,18 +8,24 @@ toc: true
 
 Application creation and deployment is one part of the continuous deployment/delivery process. An equally important part is optimizing deployed applications when needed. 
 
+>**NOTE**:
+The actions you can perform depend on the permissions assigned to you. 
+
+
 * [Edit applications](#edit-application-definitions)  
   Optimize deployed applications by changing application definitions when needed.
 
 * [Synchronize applications](#manually-synchronize-an-application)   
-  Sync applications on-demand by manually applying sync options or selecting the resources to sync.
+  Sync applications on-demand by manually applying sync options or by manually selecting the resources to sync.
 
-* Terminate an on-going sync
+* [Terminate sync for applications](#terminate-on-going-application-sync)
+  With a single-click, terminate on-going sync processes when needed.
 
-* 
-
+* [Refresh applications](#refreshhard-refresh-applications)  
+  Manually refresh applications with a single-click, as an alternative to manually synchronizing them.
+  
 * [Rollback applications](#rollback-gitops-applications)   
-  Rollback an application to a previous deployment version.
+  Rollback applications to previous deployment versions.
 
 
 * [Manage rollouts for deployments](#manage-rollouts-for-deployments)  
@@ -27,9 +33,7 @@ Application creation and deployment is one part of the continuous deployment/del
 
 * [Delete applications](#delete-an-application)  
   Delete unused or legacy applications to avoid clutter and remove unnecessary resources.
-
-
-
+  To delete specific resources within an application, see ??.
 
 
 ## Edit application definitions 
@@ -225,6 +229,8 @@ For example, if you made changes to `api` resources or `audit` resources, type `
 {:/}
 
 ## Terminate on-going application sync
+Manually terminate an on-going synchronization process for the application. You may need to terminate an on-going sync that remains indefinitely as Syncing, or because you have detected problems in the current deployment 
+Terminating a sync operation reverts the deployment to the previously deployed version or image.  
 
 1. In the Codefresh UI, from Ops in the sidebar, select [GitOps Apps](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
 1. If needed, filter by **Status** **Syncing** to view applications with active sync operations.

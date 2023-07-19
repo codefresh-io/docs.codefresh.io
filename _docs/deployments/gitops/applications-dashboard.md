@@ -220,12 +220,16 @@ max-width="60%"
 
 The icon for a resource node identifies the type of Kubernetes resource it represents. For general information on K8s resources, see [Working with Kubernetes objects](https://kubernetes.io/docs/concepts/overview/working-with-objects/){:target="\_blank"}. 
 
-You can view application resources in [List or Tree views](#view-modes-for-application-resources), [set filters](#filters-for-application-resources), and monitor:
-* [Health status](#health-status-for-application-resources)
-* [Sync status](#sync-status-for-application-resources)
-* [Manifests](#manifests-for-application-resources)
-* [Logs](#logs-for-application-resources)
-* [Events](#events-for-application-resources)
+What can you do with application resources?
+* View application resources in [List or Tree views](#view-modes-for-application-resources)
+* [Filter resources](#filters-for-application-resources) to focus on what's important
+* Delete resources
+* Monitor resources:
+  * [Health status](#health-status-for-application-resources)
+  * [Sync status](#sync-status-for-application-resources)
+  * [Manifests](#manifests-for-application-resources)
+  * [Logs](#logs-for-application-resources)
+  * [Events](#events-for-application-resources)
 
 
 
@@ -267,7 +271,9 @@ The Tree view is designed to impart key information at a glance. Review the sect
 
 **Context menu**  
 Every resource has a context menu that opens on clicking the three dots on the right of the resource. The options available differ according to the type of resource.
-> If you have deep links configured for applications/resources for Hybrid GitOps Runtimes, these are also displayed in the context menu. To configure deep links in Codefresh, see [(Hybrid GitOps) Configure Deep Links to applications & resources]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#hybrid-gitops-configure-deep-links-to-applications--resources).
+
+> **TIP**:
+If you have deep links configured for applications/resources for Hybrid GitOps Runtimes, these are also displayed in the context menu. To configure deep links in Codefresh, see [(Hybrid GitOps) Configure Deep Links to applications & resources]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#hybrid-gitops-configure-deep-links-to-applications--resources).
 
 {% include
 image.html
@@ -372,6 +378,22 @@ caption="Current State filtered by IgnoreExtraneous resources"
 max-width="50%"
 %}
 
+### Delete resources
+Delete specific resources in an application directly from the Codefresh UI. 
+
+1. In the Codefresh UI, from the sidebar, under OPS, select **GitOps Apps**.
+1. From the Application dashboard, select the application with the resource to delete.
+1. From the context menu of the resource, select **Delete**.
+
+{% include
+image.html
+lightbox="true"
+file="/images/applications/current-state-delete-resource.png"
+url="/images/applications/current-state-delete-resource.png"
+alt="Current State: Delete an application resource"
+caption="Current State: Delete an application resource"
+max-width="50%"
+%}
 
 ### Health status for application resources
 View and monitor health status of the selected application's resources in the Current State tab, in Tree or List views.  
