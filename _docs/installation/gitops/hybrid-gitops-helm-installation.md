@@ -400,10 +400,10 @@ helm upgrade --install <helm-release-name> \
 
 {:start="5"}
 1. Wait for a few minutes, and then click **Close**.  
-  You are taken to the List View for GitOps Runtimes where you can see:
-  * The Hybrid GitOps Runtime you added prefixed with a green dot indicating that it is online
-  * Type column showing **Helm**
-  * **Complete Installation** in the Sync Status column 
+  You are taken to the List View for GitOps Runtimes where:
+  * The Hybrid GitOps Runtime you added is prefixed with a green dot indicating that it is online
+  * The Type column for the Runtime displays **Helm**
+  * The Sync Status column displays **Complete Installation**, indicating that there are pending tasks to complete the installation.
 1. Continue with [Step 5: Configure Git credentials for runtime](#step-5-configure-git-credentials-for-hybrid-gitops-runtime).
 
 
