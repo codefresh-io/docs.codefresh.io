@@ -9,106 +9,60 @@ toc: true
 
 
 
-Codefresh requires two types of Git tokens for authentication:
-* Git runtime token for runtime installation<br>
-  Used by:
-  * Argo CD clone repositories and pull changes to sync the desired state in Git to the live state on the cluster. 
-  * Argo Events to create webhooks in Git repositories for Event Sources in Delivery Pipelines
-  
-  The Git runtime token is runtime-specific but not user-specific.
-  
+Codefresh requires two types of Git tokens for authentication in GitOps, a Git Runtime token, and a Git user token. Both the Runtime and user tokens are Git access tokens, used for different purposes in Codefresh. 
 
-* Git user token, a user-specific personal access token for each runtime, unique to every user  
-  Unique to every user, the Git user token is used to authenticate the user for client-based actions, such as Git clone and push operations on specific repositories.
-  Git user token requirements translate to permission scopes which differ for the different Git providers.  
-
-  After installation, you need to authorize Git access for every provisioned runtime either through OAuth2 or through a personal access token from your Git provider.  
-  Every user can view the list of runtimes and tokens assigned to each runtime in [User Settings](https://g.codefresh.io/2.0/user-settings){:target="\_blank"}. Codefresh flags and notifies you of invalid, revoked, or expired tokens. 
+* The Git Runtime token is unique to and mandatory for every GitOps Runtime. It must be provided during the Runtime installation.
+* The Git user token is an access token that is unique to every user in the Codefresh platform. It is required after installation for every Runtime which the user has access to. 
 
 
 
-
-### Git runtime token scopes
-The Git runtime token is mandatory for runtime installation.
-
-{::nomarkdown}
-</br>
-{:/}
-
-#### GitHub and GitHub Enterprise runtime token scopes
-GitHub and GitHub Enterprise offer classic tokens, and fine-grained tokens (currently in Beta in GitHub).
-
+## Git Runtime tokens versus Git user tokens in Codefresh
+The table below summarizes the main differences between the Git Runtime and user tokens in Codefresh.
 
 {: .table .table-bordered .table-hover}
-| Classic runtime token scopes         | | Fine-grained runtime token scopes            |  
-| --------------         | |--------------           |  
-| {::nomarkdown}<ul><li><code class="highlighter-rouge">repo</code></li><li><code class="highlighter-rouge">admin:repo_hook</code></li></ul>{:/}| | {::nomarkdown}<ul><li><b>Repository access</b>: <code class="highlighter-rouge">All repositories</code> or <code class="highlighter-rouge">Only select repositories</code></li><li><b>Repository permissions</b>: <ul><li><b>Administration</b>: <code class="highlighter-rouge">Read and write</code></li><li><b>Contents</b>: <code class="highlighter-rouge">Read and write</code></li><li><b>Metadata</b>: <code class="highlighter-rouge">Read-only</code></li></li><li><b>Webhook</b>: <code class="highlighter-rouge">Read and write</code></li></ul></ul>{:/}|
+|                            | Git Runtime token                  | Git user token         |
+| -------------------------- | ---------------------          | ------------------ |
+| Usage                      | {::nomarkdown}<ul><li>During installation, to create the Git repository and install the GitOps Runtime.</li><li>After installation, used by:<ul><li>Argo CD to clone the Git repos, pull changes, and sync to the K8s cluster.</li><li> Argo Events to create web hooks in Git repositories.</li><li><code class="highlighter-rouge">cap-app-proxy</code> to clone the Shared Configuration Repository</li></ul> {:/} | Authenticate and authorize user actions in Codefresh UI and CLI to Git repositories for every provisioned GitOps Runtime. Users can view and manage the Git user tokens assigned to the Runtimes in the [Git Personal Access Token](https://g.codefresh.io/2.0/user-settings){:target="\_blank"} page.  |
+| Created                    | Before Runtime installation; see [required scopes for Git Runtime tokens](#git-runtime-token-scopes).   | After Runtime installation; see [required scopes for Git user tokens](#git-user-access-token-scopes).
+| Managed by                    | Admin at account-level                    | User   |
+| Associated Account Type    | (Recommended) [Service account or robot account](#use-a-servicerobot-account-for-gitops-runtimes) | User account    |
+
+
+## Git Runtime token scopes
+The table below lists the scopes required for Git Runtime tokens for the different Git providers.
+
+
+| Git provider                  | Required scopes for Git Runtime token           | 
+| ---------------------------- | ------------------------------ | 
+| GitHub and GitHub Enterprise |{::nomarkdown}<ul><li>Classic:<ul><li><code class="highlighter-rouge">repo</code></li><li><code class="highlighter-rouge">admin:repo_hook</code></li></ul><li>Fine-grained:<ul><li>Repository access: <code class="highlighter-rouge">All repositories</code> or <code class="highlighter-rouge">Only select repositories</code></li><li>Repository permissions:<ul><li>Administration: <code class="highlighter-rouge">Read and write</code></li><li>Contents: <code class="highlighter-rouge">Read and write</code></li><li>Metadata: <code class="highlighter-rouge">Read-only</code></li><li>Webhook: <code class="highlighter-rouge">Read and write</code></li></ul></li></ul></li></ul>{:/}|
+| GitLab Cloud and GitLab Server       |{::nomarkdown}<ul><li><code class="highlighter-rouge">api</code></li><li><code class="highlighter-rouge">read_repository</code></li></ul> {:/}         |             
+| Bitbucket Cloud and Bitbucket Server | {::nomarkdown} <ul><li>Account: <code class="highlighter-rouge">Read</code></li><li>Workspace membership: <code class="highlighter-rouge">Read</code></li><li>Webhooks: <code class="highlighter-rouge">Read and write</code></li><li>Repositories: <code class="highlighter-rouge">Write, Admin </code></li></ul>{:/}|
 
 
 
-{::nomarkdown}
-</br>
-{:/}
-
-#### GitLab Cloud and GitLab Server runtime token scopes
-
-* `api`
-* `read_repository` 
-
-{::nomarkdown}
-</br>
-{:/}
-
-#### Bitbucket Cloud and Bitbucket Server runtime token scopes
-
-* **Account**: `Read`
-* **Workspace membership**: `Read`
-* **Webhooks**: `Read and write`
-* **Repositories**: `Write`, `Admin`
-
-{::nomarkdown}
-</br></br>
-{:/}
-
-### Git personal tokens
-The Git personal token is a user-specific personal access token per provisioned runtime. Unique to each user, it may be required after to authenticate Git-based actions per runtime in Codefresh, based on how your admin has set up authentication for Git providers. 
-
-> If you have access to multiple runtimes, you can use the same personal access token for all the runtimes.   
-  You must configure the token for each runtime.
-
-{::nomarkdown}
-</br>
-{:/}
-
-#### GitHub and GitHub Enterprise personal user token scopes
-
-GitHub and GitHub Enterprise offer classic tokens, and fine-grained tokens (currently in Beta in GitHub).
-
-{: .table .table-bordered .table-hover}
-| Classic user token scopes         | | Fine-grained user token scopes            |  
-| --------------         | |--------------           |  
-| {::nomarkdown}<ul><li><code class="highlighter-rouge">repo</code></li></ul>{:/}| | {::nomarkdown}<ul><li><b>Repository access</b>: <code class="highlighter-rouge">All repositories</code> or <code class="highlighter-rouge">Only select repositories</code></li><li><b>Repository permissions</b>: <ul><li><b>Contents</b>: <code class="highlighter-rouge">Read and write</code></li><li><b>Metadata</b>: <code class="highlighter-rouge">Read-only</code></li></li></ul></ul>{:/}|
+## Git user access token scopes
+The table below lists the scopes required for Git user access tokens for the different Git providers.
 
 
+<!--- > **TIP**:  
+  If a user has access to multiple GitOps Runtimes in the same or in different accounts in Codefresh, they can use the same Git user access token to authenticate and authorize all the Runtimes to which they have access.     
+  The user must configure the Git user token for each Runtime separately.   
+  User can manage their Git user tokens for Runtimes, as described in [Managing Git PATS]({{site.baseurl}}/docs/administration/user-self-management/manage-pats/).
 
-{::nomarkdown}
-</br>
-{:/}
+-->
 
-#### GitLab Cloud and GitLab Server personal user token scopes
+| Git provider                  | Required scopes for Git user token          | 
+| ---------------------------- | ------------------------------ | 
+| GitHub and GitHub Enterprise |{::nomarkdown}<ul><li>Classic:<ul><li><code class="highlighter-rouge">repo</code></li></ul><li>Fine-grained:<ul><li>Repository access: <code class="highlighter-rouge">All repositories</code> or <code class="highlighter-rouge">Only select repositories</code></li><li>Repository permissions:<ul><li>Contents: <code class="highlighter-rouge">Read and write</code></li><li>Metadata: <code class="highlighter-rouge">Read-only</code></li></ul></li></ul></li></ul>{:/}|
+| GitLab Cloud and GitLab Server       |{::nomarkdown}<ul><li><code class="highlighter-rouge">write_repository</code> (includes <code class="highlighter-rouge">read_repository</code>) </li><li><code class="highlighter-rouge">api_read</code></li></ul> {:/}  |
+| Bitbucket Cloud and Bitbucket Server | {::nomarkdown} <ul><li>Account: <code class="highlighter-rouge">Read</code></li><li>Workspace membership: <code class="highlighter-rouge">Read</code></li><li>Webhooks: <code class="highlighter-rouge">Read and write</code></li><li>Repositories: <code class="highlighter-rouge">Write, Admin </code></li></ul>{:/}|
 
-* `write_repository` (includes `read-repository`)
-* `api-read`
+## Use a service/robot account for GitOps Runtimes
+For GitOps Runtime installation, we recommend using an account not related to any specific user in your organization. 
+Service/robot accounts are ideal for this purpose, as they provide secure authentication, restricted permissions, and centralized management. 
 
-{::nomarkdown}
-</br>
-{:/}
+You need to create a service or robot account with your Git provider, generate the Git Runtime token, and use this account exclusively to install GitOps Runtimes.
 
-#### Bitbucket Cloud and Server personal user token scopes
-
-* **Account**: `Read`
-* **Workspace membership**: `Read`
-* **Repositories**: `Write`, `Admin`
-
-### Related articles  
+## Related articles  
+[Managing Git PATs]({{site.baseurl}}/docs/administration/user-self-management/manage-pats/)  
 [User settings]({{site.baseurl}}/docs/administration/user-self-management/user-settings/)
