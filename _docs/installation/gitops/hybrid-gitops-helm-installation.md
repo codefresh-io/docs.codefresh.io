@@ -178,13 +178,6 @@ global:
             -----END CERTIFICATE-----
 {% endhighlight yaml %}
 
-## Access modes for Runtimes
-Codefresh supports three different access modes for GitOps Runtimes:
-* Tunnel-based, the default mode, automatically enabled when ingress-based access is not defined in the installation command.
-* Ingress-based, uses an ingress controller, which, depending on the type of ingress controller, may need to be configured both before and after installation.
-* Service-mesh-based, which may also need to be configured before and after installation. This mode requires explicitly disabling the tunnel- and ingress-based modes in the installation command.
-
-See [Ingress controller configuration](/#ingress-controller-configuration) in this article.
 
 ## Step-by-step Hybrid GitOps Runtime installation
 Install the Hybrid GitOps Runtime via Helm from the Codefresh UI.
@@ -310,8 +303,19 @@ Install the Hybrid GitOps Runtime through the Helm chart. The Codefresh `values.
 If you define a custom name for the Hybrid GitOps Runtime, it must start with a lower-case character, and can include up to 62 lower-case characters and numbers.
 
 **Namespace**  
-The Namespace must conform to the naming conventions for Kubernetes objects.
+The Namespace must conform to the naming conventions for Kubernetes objects.  
 
+**Access modes**  
+You can define three different access modes:
+* Tunnel-based, the default mode, automatically enabled when ingress-based access is not defined in the installation command.
+* Ingress-based, uses an ingress controller, which, depending on the type of ingress controller, may need to be configured both before and after installation.
+* Service-mesh-based, which may also need to be configured before and after installation. This mode requires explicitly disabling the tunnel- and ingress-based modes in the installation command.
+
+See [Ingress controller configuration](/#ingress-controller-configuration) in this article.  
+
+<br>
+
+**How to**  
 1. To generate your Codefresh API key, click **Generate**. 
 1. If needed, select **Customize runtime values**, and define the **Runtime Name** and **Namespace**.
    The default names are `codefresh` for both.
@@ -360,7 +364,7 @@ helm upgrade --install <helm-release-name> \
 {% endhighlight %}
 <br>
 
-  **Service meshes (without ingress and tunnel)**  
+  **Service-mesh-based (without ingress and tunnel)**  
   {% highlight yaml %}
 helm upgrade --install <helm-release-name> \
   --create-namespace \
