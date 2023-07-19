@@ -29,7 +29,7 @@ Changing the ArgoCD password can result in system instability, and disrupt the p
 
 ## Quick Helm install for Hybrid GitOps Runtime
 
-Install the Hybrid GitOps Runtime via Helm with the default tunnel-based access mode. You will copy the Helm install command from the UI to get the values that Codefresh automatically retrieves for you such as your account ID and other values.
+Install the Hybrid GitOps Runtime via Helm with the default tunnel-based access mode. You will copy the Helm install command from the UI to get the values that Codefresh automatically retrieves for you such as your account ID, and then run the command.
 
 The Codefresh `values.yaml` is located [here](https://github.com/codefresh-io/gitops-runtime-helm/blob/main/charts/gitops-runtime/){:target="\_blank"}. It contains all the arguments that can be configured, including optional ones.
 
@@ -178,6 +178,13 @@ global:
             -----END CERTIFICATE-----
 {% endhighlight yaml %}
 
+## Access modes for Runtimes
+Codefresh supports three different access modes for GitOps Runtimes:
+* Tunnel-based, the default mode, automatically enabled when ingress-based access is not defined in the installation command.
+* Ingress-based, uses an ingress controller, which, depending on the type of ingress controller, may need to be configured both before and after installation.
+* Service-mesh-based, which may also need to be configured before and after installation. This mode requires explicitly disabling the tunnel- and ingress-based modes in the installation command.
+
+See [Ingress controller configuration](/#ingress-controller-configuration) in this article.
 
 ## Step-by-step Hybrid GitOps Runtime installation
 Install the Hybrid GitOps Runtime via Helm from the Codefresh UI.
@@ -320,6 +327,8 @@ The Namespace must conform to the naming conventions for Kubernetes objects.
   Unless otherwise indicated, values are automatically populated by Codefresh.  
   If you're using a terminal, remember to copy the values from the UI beforehand.<br>
 
+
+
   **Tunnel-based install chart command:**<br>
 {% highlight yaml %} 
 helm upgrade --install <helm-release-name> \
@@ -351,6 +360,21 @@ helm upgrade --install <helm-release-name> \
 {% endhighlight %}
 <br>
 
+  **Service meshes (without ingress and tunnel)**  
+  {% highlight yaml %}
+helm upgrade --install <helm-release-name> \
+  --create-namespace \
+  --namespace <namespace> \
+  --set global.codefresh.userToken.token=<codefresh-api-key> \
+  --set global.runtime.name=<runtime-name> \
+  --set global.runtime.ingressUrl=<ingress-url> \
+  --set global.runtime.ingress.enabled=false \
+  --set tunnel-client.enabled=false \
+  <helm-repo-name>/gitops-runtime \
+  --devel \
+  --wait  
+{% endhighlight %}
+
 &nbsp;&nbsp;&nbsp;&nbsp;where:  
   *    
       * `<helm-release-name>` is the name of the Helm release, and is either `cf-gitops-runtime` which is the default, or the release name you define.  
@@ -360,9 +384,14 @@ helm upgrade --install <helm-release-name> \
       * `<runtime-name>` is the name of the GitOps Runtime, and is either `codefresh` which is the default, or the custom name you define. 
       * `<helm-repo-name>` is the name of the repo in which to store the Helm chart, and must be identical to the `<hem-repo-name>` you defined in _step 3_, either `cf-gitops-runtime` which is the default, or any custom name you define. 
       * `gitops-runtime` is the chart name defined by Codefresh, and cannot be changed.
-      * `global.runtime.ingress.enabled=true` is mandatory for _ingress-based Hybrid GitOps Runtimes_, and indicates that the runtime is ingress-based.
-      * `<ingress-host>` is mandatory for _ingress-based Hybrid GitOps Runtimes_, and is the IP address or host name of the ingress controller component. 
-      * `<ingress-class>` is mandatory for _ingress-based Hybrid GitOps Runtimes_, and is the ingress class of the ingress controller. For example, `nginx` for the NGINX ingress controller.
+      * Ingress-based Runtimes:  
+          * `global.runtime.ingress.enabled=true` is mandatory for _ingress-based Hybrid GitOps Runtimes_, and indicates that the runtime is ingress-based.
+          * `<ingress-host>` is mandatory for _ingress-based Hybrid GitOps Runtimes_, and is the IP address or host name of the ingress controller component. 
+          * `<ingress-class>` is mandatory for _ingress-based Hybrid GitOps Runtimes_, and is the ingress class of the ingress controller. For example, `nginx` for the NGINX ingress controller.
+      * Service mesh-based Runtimes:
+          * `global.runtime.ingressUrl=<ingress-url>` is the ingress URL that is the entry point to the cluster.
+          * `global.runtime.ingress.enabled=false` disables the ingress-based access mode.
+          * `tunnel-client.enabled=false` disables the tunnel-based access mode.
       * `--wait` is optional, and when defined, waits until all the pods are up and running for the deployment. 
 
 {:start="5"}
