@@ -364,7 +364,7 @@ helm upgrade --install <helm-release-name> \
 {% endhighlight %}
 <br>
 
-  **Service-mesh-based (without ingress and tunnel)**  
+  **Service-mesh-based install command (without ingress and tunnel):**  
   {% highlight yaml %}
 helm upgrade --install <helm-release-name> \
   --create-namespace \
@@ -392,7 +392,7 @@ helm upgrade --install <helm-release-name> \
           * `global.runtime.ingress.enabled=true` is mandatory for _ingress-based Hybrid GitOps Runtimes_, and indicates that the runtime is ingress-based.
           * `<ingress-host>` is mandatory for _ingress-based Hybrid GitOps Runtimes_, and is the IP address or host name of the ingress controller component. 
           * `<ingress-class>` is mandatory for _ingress-based Hybrid GitOps Runtimes_, and is the ingress class of the ingress controller. For example, `nginx` for the NGINX ingress controller.
-      * Service mesh-based Runtimes:
+      * Service-mesh-based Runtimes:
           * `global.runtime.ingressUrl=<ingress-url>` is the ingress URL that is the entry point to the cluster.
           * `global.runtime.ingress.enabled=false` disables the ingress-based access mode.
           * `tunnel-client.enabled=false` disables the tunnel-based access mode.
