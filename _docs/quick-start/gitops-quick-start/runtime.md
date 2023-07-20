@@ -13,16 +13,46 @@ The Runtime is installed through a Helm chart. The Codefresh `values.yaml` is lo
  
 ## Quick start assumptions
 
+The quick start assumes that you are installing the first Hybrid GitOps Runtime in your Codefresh account. 
+
+## Argo project components & CRDs
+Hybrid GitOps installation requires a cluster without Argo project components and CRDs. 
+
+Argo project components include Argo Rollouts, Argo CD, Argo Events, and Argo Workflows.  
+
+You can handle Argo project CRDs outside the chart, or as recommended, adopt the CRDs to be managed by the GitOps Runtime Helm release. 
+
+If you already have Argo project CRDs on your cluster, do one of the following:
+* Handle Argo projects CRDs outside of the chart (see [Argo's readme on Helm charts](https://github.com/argoproj/argo-helm/blob/main/README.md){:target="\_blank"}) 
+  Disable CRD installation under the relevant section for each of the Argo projects in the Helm chart:<br>
+  `--set <argo-project>.crds.install=false`<br>
+  where:<br>
+  `<argo-project>` is the argo project component: `argo-cd`, `argo-workflows`, `argo-rollouts` and `argo-events`.
+
+* Adopt the CRDs<br>
+  Adopting the CRDs allows them to be managed by the `gitops-runtime helm release`. Doing so ensures when you upgrade the Hybrid GitOps Runtime, the CRDs are also automatically upgraded.
+
+  Run this script _before_ installation:
+
+```
+#!/bin/sh
+RELEASE=<helm-release-name>
+NAMESPACE=<target-namespace>
+kubectl label --overwrite crds $(kubectl get crd | grep argoproj.io | awk '{print $1}' | xargs) app.kubernetes.io/managed-by=Helm
+kubectl annotate --overwrite crds $(kubectl get crd | grep argoproj.io | awk '{print $1}' | xargs) meta.helm.sh/release-name=$RELEASE
+kubectl annotate --overwrite crds $(kubectl get crd | grep argoproj.io | awk '{print $1}' | xargs) meta.helm.sh/release-namespace=$NAMESPACE
+```
+
 ### Tunnel-based runtime
-Hybrid GitOps Runtimes supports tunnel-based and ingress-based access modes.  
-For the quick start, we'll use the tunnel-based mode which is the default access mode which does not require an ingress controller.  
-For details, review [GitOps Runtime architecture]({{site.baseurl}}/docs/installation/runtime-architecture/#gitops-runtime-architecture).
+Hybrid GitOps Runtimes supports tunnel-based, ingress-based access modes.  
+For the quick start, we'll use the tunnel-based mode which is the default access mode, not requiring an ingress controller.  
+For details on these access modes, review [GitOps Runtime architecture]({{site.baseurl}}/docs/installation/runtime-architecture/#gitops-runtime-architecture).
 
 ### GitHub as Git provider  
-Hybrid GitOps Runtimes require Git tokens for authentication to the Git installation repository based on your Git provider.  
+Hybrid GitOps Runtimes require a Git Runtime token for authentication to the Git installation repository based on your Git provider, and a Git user token to authenticate Git-based actions for the Runtime.  
 The quick start uses GitHub as the Git provider. For other Git providers and token requirements, see ????[Git provider and repo flags]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/#git-provider-and-repo-flags).  
 
-Have your GitHub Personal Authentication Token (PAT) ready for Runtime installation with a valid expiration date and access permissions:
+Have your GitHub Runtime token ready for Runtime installation with a valid expiration date and access permissions:
   * Expiration: Either the default of 30 days or any duration you consider logical.
   * Access scopes: Set to `repo` and `admin-repo.hook`
 
@@ -48,31 +78,7 @@ Read up on the [Shared Configuration Repository]({{site.baseurl}}/docs/installat
 **Before you begin** 
 * Make sure your cluster does not have [Argo project components & CRDs](#argo-project-components--crds)
 
-
-<!--- 
-1. In the Welcome page, select **+ Install Runtime**.
-1. From Runtimes in the sidebar, select **GitOps Runtimes**.
-1. Set up your Git provider account:
-    1. If not GitHub, select the Git provider.  
-    1. Define the provider's API URL.
-    1. Define the URL of the **Shared Configuration Repository**.
-    1. Click **Next**.
-    * For OAuth: 
-      * Click **Authorize Access to Git Provider**.
-      * Enter your credentials, and select **Sign In**.
-      * If required, as for example with two-factor authentication, complete the verification. 
-    * For Git token authentication, in the **Git Runtime Token** field, paste the Git runtime token you generated.
-1. Optional. To configure SSH access to Git, expand **Connect Repo using SSH**, and then paste the raw SSH private key into the field. 
-  For more information on generating SSH private keys, see the official documentation:
-  * [GitHub](https://help.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent){:target="\_blank"}
-  * [GitLab](https://docs.gitlab.com/ee/ssh/#generating-a-new-ssh-key-pair){:target="\_blank"}
-  * [Bitbucket](https://confluence.atlassian.com/bitbucket/set-up-an-ssh-key-728138079.html){:target="\_blank"}
-  * [Azure](https://docs.microsoft.com/en-us/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops&tabs=current-page){:target="\_blank"}
-Click **Configure**. 
-  
--->
-
-
+**How to**  
 
 1. In the Welcome page, select **+ Install Runtime**.
 1. From Runtimes in the sidebar, select **GitOps Runtimes**.
@@ -109,7 +115,9 @@ max-width="60%"
    You are taken to the List View for GitOps Runtimes where you can see the Hybrid GitOps Runtime you added prefixed with a red dot.
 1. Optional. Complete the installation by clicking **Configure as Argo Application**.  
   There is no need for any action from you, as Codefresh takes care of the configuration.
-  By configuring the Hybrid GitOps Runtime as an Argo Application, you can ensure that GitOps is the single source of truth for the Runtime and view the Runtime components and monitor . 
+  By configuring the Hybrid GitOps Runtime as an Argo Application, you can ensure that GitOps is the single source of truth for the Runtime and view the Runtime components and monitor. 
+
+You are now ready to create and deploy a GitOps application in Codefresh.
 
 
 ## What to do next
