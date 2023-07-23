@@ -80,7 +80,19 @@ The table describes _all_ the arguments required for CI integrations in general.
 | `CF_RUNTIME_NAME`       | The runtime to use for the integration. If you have more than one runtime, select the runtime from the list. | Required  |
 | `CF_PLATFORM_URL`       | The root URL of the Codefresh application. The default value is `https://g.codefresh.io`.  | Optional  |
 | `CF_API_KEY`            | The API key for authentication. Generate the key for the integration.  | Required  |
-| `CF_CONTAINER_REGISTRY_INTEGRATION` | The name of the container registry integration created in Codefresh where the image is stored. See [Container registry integrations]({{site.baseurl}}/docs/gitops-integrations/container-registries/). | Optional  |
+
+| `CF_CONTAINER_REGISTRY_INTEGRATION` | The name of the container registry integration created in Codefresh where the image is stored. See [Container registry integrations]({{site.baseurl}}/docs/gitops-integrations/container-registries/).?? | Optional  |
+| `CF_DOCKERHUB_USERNAME` | Relevant only when using DockerHub as the container registry for image reporting. <br>
+The username for DockerHub, if DockerHub is the container registry where the image is stored.<br>To use a registry integration created in Codefresh, use `CF_CONTAINER_REGISTRY_INTEGRATION` instead. | Optional  |
+| `CF_DOCKERHUB_PASSWORD` | The password for DockerHub, if DockerHub is the container registry where the image is stored. <br>To use a registry integration created in Codefresh, use `CF_CONTAINER_REGISTRY_INTEGRATION` instead.| Optional  |
+| `CF_REGISTRY_USERNAME` | Relevant only when the container registry is not DockerHub or a registry integration created in Codefresh. <br>The generic username for the container registry where the image is stored. <br>If using  a registry integration created in Codefresh, use `CF_CONTAINER_REGISTRY_INTEGRATION` instead. <br>If using DockerHub, set `CF_DOCKERHUB_USERNAME`.| Optional  |
+| `CF_REGISTRY_PASSWORD` | Relevant only when the container registry is not DockerHub or a registry integration created in Codefresh.<br> The generic password for the container registry where the image is stored.  <br>If using  a registry integration created in Codefresh, use `CF_CONTAINER_REGISTRY_INTEGRATION` instead. <br>If using DockerHub, set `CF_DOCKERHUB_PASSWORD`. | Optional  |
+| `CF_REGISTRY_DOMAIN` | Relevant only when the container registry is not DockerHub or a registry integration created in Codefresh.<br> The generic domain for the container registry where the image is stored.  | Optional  |
+| `CF_GOOGLE_JSON_KEY` | Relevant only when the container registry is not DockerHub or a registry integration created in Codefresh.<br> The key to the Google Cloud Platform Service Account in JSON format.  | Optional  |
+| `CF_GOOGLE_REGISTRY_HOST` | Relevant only when the container registry is not DockerHub or a registry integration created in Codefresh.<br>The host or server address of the Google Artifact Registry (GAR) or Google Container Registry (GCR). <br>For example, `us-central1-docker.pkg.dev` or `gcr.io`.| Optional  |
+
+
+
 | `CF_JIRA_INTEGRATION`               | _Deprecated from version 0.0.565 and higher._ Replaced by `CF_ISSUE_TRACKING_INTEGRATION`. |  _Deprecated_
 | `CF_ISSUE_TRACKING_INTEGRATION` | The name of the issue tracking integration created in Codefresh to use for image enrichment. Relevant only if Jira enrichment is required for the image. If you don't have a Jira integration, click **Create Atlassian Jira Integration** and configure settings. See [Jira integration]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/jira/).  | Optional  |
 | `CF_IMAGE`                    | The image to be enriched and reported in Codefresh. Pass the `[account-name]/[image-name]:[tag]` built in your CI. | Required  |
