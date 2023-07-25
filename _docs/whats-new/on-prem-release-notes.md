@@ -6,6 +6,79 @@ toc: true
 
 Welcome to the release notes for our on-premises release versions, starting with our latest release, version 2.0.3.
 
+## On-premises version 2.1
+
+### Features & enhancements
+
+#### Upgrading to v2.1
+
+#### Gerrit as Git provider for Pipelines and GitOps
+We are excited to announce the integration of Gerrit, the open-source web-based code review tool for Git repositories, with Codefresh. 
+
+**Gerrit and Codefresh Pipelines**  
+By integrating Gerrit as a Git provider for Codefresh Pipelines, you can leverage its capabilities to trigger builds and tests automatically whenever a new change is pushed to Git repositories hosted in Gerrit. The integration allows you to closely monitor the status of builds and tests within the Gerrit environment itself, providing you with a comprehensive view of your development process.
+With Codefresh’s `CF_PULL_REQUEST` group of environment variables, you can achieve similar functionality to Gerrit’s `Changes` directly within Codefresh.
+
+For details, see [Pipeline integrations - Git providers]({{site.baseurl}}/docs/integrations/git-providers/#gerrit).
+
+**Gerrit and Codefresh GitOps**   
+By configuring Gerrit as the primary Git provider for your Hosted GitOps Runtime, you can integrate Gerrit information into your third-party CI tools or platforms for image enrichment and reporting in Codefresh.  
+If you are interested in using Gerrit for Hybrid GitOps Runtimes, please contact us.
+
+For details, see [GitOps Gerrit Git provider integration]({{site.baseurl}}/docs/gitops-integrations/gerrit-integration/).
+
+#### Multi-account sync & u for Okta OIDC
+Take from July release notes
+
+#### OpenShift ???
+
+
+#### Pipelines: Pipeline Dashboard enhancements
+Review the latest enhancements in the Pipelines Dashboard.
+
+ {% include 
+image.html 
+lightbox="true" 
+file="/images/whats-new/june23/rel-notes-june23-pipeline-dashboard-updates.png" 
+url="/images/whats-new/june23/rel-notes-june23-pipeline-dashboard-updates.png" 
+alt="Favorites filter and Last Update in Pipelines Dashboard" 
+caption="Favorites filter and Last Update in Pipelines Dashboard" 
+max-width="60%" 
+%}
+
+**Filter by favorite pipelines**  
+The Pipelines Dashboard now has a Favorites filter. If you starred any projects or pipelines as favorites, you can easily view your favorite pipelines, both by projects or individual pipelines.
+
+**Recent update indication**  
+The Last Update timestamp on the top right of the Pipelines Dashboard, refreshes automatically to show you the exact time the data was retrieved.
+
+**Full path display for pipelines in filter**  
+
+Previously, in the Pipelines filter, it was challenging to identify the correct pipeline, when multiple pipelines shared the same name across different projects. 
+Now, when you mouse over a pipeline name in the list, the tooltip displays the full path, including the name of the project to which the pipeline belongs, 
+followed by the name of the pipeline. 
+
+For details, see [Pipelines Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/#pipelines-dashboard).
+
+#### Pipelines: New icons for pipeline build statuses
+Pipeline builds have new status icons. With distinct icons for each status, you can easily differentiate between builds, bringing clarity and saving time. Previously, both terminated and failed builds had the same icon for example, causing confusion.
+
+Here are the icons and the build statuses they represent:  
+* **Running**: {::nomarkdown}<img src="../../../../../images/whats-new/june23/pipeline-build-running.png" display=inline-block/> {:/}
+* **Completed**: {::nomarkdown}<img src="../../../../../images/whats-new/june23/pipeline-build-successful.png" display=inline-block/> {:/}
+* **Delayed**: {::nomarkdown}<img src="../../../../../images/whats-new/june23/pipeline-build-delayed.png" display=inline-block/> {:/}
+* **Pending approval**: {::nomarkdown}<img src="../../../../../images/whats-new/june23/pipeline-build-pending-approval.png" display=inline-block/> {:/}
+* **Denied approval**: {::nomarkdown}<img src="../../../../../images/whats-new/june23/pipeline-build-denied.png" display=inline-block/> {:/}
+* **Terminating**: {::nomarkdown}<img src="../../../../../images/whats-new/june23/pipeline-build-terminating.png" display=inline-block/> {:/}
+* **Terminated**: {::nomarkdown}<img src="../../../../../images/whats-new/june23/pipeline-build-terminated.png" display=inline-block/> {:/}
+* **Failed**: {::nomarkdown}<img src="../../../../../images/whats-new/june23/pipeline-build-failed-error.png" display=inline-block/> {:/}
+
+For details, see [Viewing status for pipeline builds]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#viewing-status-for-pipeline-builds).
+
+### Bug fixes
+
+### Feature Flags
+
 
 ## On-premises version 2.0.3 
 Welcome to our newest On-Premises release, version 2.0.3!  This major release is finally here, and it’s packed with an array of exciting usability enhancements, new features, and improvements. We listened carefully to your feedback, and worked to incorporate your suggestions into this release. 
