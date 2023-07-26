@@ -256,7 +256,7 @@ If you have managed clusters for Hybrid GitOps Runtimes, upgrading the Runtime a
 %}
 
 {:start="5"}
-1. Do one of the following depending on whether you have configured the Runtime as a Argo CD Application or not:
+1. Do one of the following depending on whether you have configured the Runtime as an Argo CD Application or not:
   * Argo CDGitOps Runtimes:Continue from step _6_.
   * Non-Argo CD GitOps Runtimes: Continue from step _7_.
 1. For GitOps Runtimes, do the following:
@@ -514,7 +514,7 @@ If you are using Git personal access tokens for authentication, you can also upd
 
   where:
   * `<repo_url>` is required, and is the URL of the Shared Configuration Repository, and must match the Git provider.
-  * `--git-provider` is optional for cloud providers as Codefresh identifies them through the Shared repo URL, and is required for on-premises providers.
+  * `--git-provider` is optional for cloud providers as Codefresh identifies the provider through the Shared repo URL. Required for on-premises providers, and can be one of the following:
       * GitHub and GitHub Enterprise: `github`
       * GitLab Cloud and GitLab Server: `gitlab`
       * Bitbucket Cloud: `bitbucket`
