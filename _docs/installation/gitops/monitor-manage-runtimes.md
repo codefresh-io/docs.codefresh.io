@@ -217,7 +217,8 @@ For more details, read [Configuring Deep Links in Argo CD](https://argo-cd.readt
 Upgrade provisioned Hybrid GitOps Runtimes to install critical security updates, get new functionality, and the latest versions of all components.
 The upgrade procedure differs depending on whether the GitOps Runtime has been configured as an Argo CD application or not:
 * Argo CD GitOps Runtimes: For Runtimes configured as Argo CD applications, you need to manually update the version in the Helm chart located in the Shared Configuration Repository.
-* Non-Argo CD GitOps Runtimes: Run the upgrade command.
+* Non-Argo CD GitOps Runtimes: Run the upgrade command.  
+
 If you have managed clusters for Hybrid GitOps Runtimes, upgrading the Runtime automatically updates runtime components within the managed cluster as well.
 
 >The `Update Available! Notification` in the List View's Version column indicates that a newer version of the Runtime, Helm chart, or both are available.
