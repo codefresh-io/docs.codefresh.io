@@ -436,9 +436,9 @@ You can reset the Shared Configuration Repo via the CLI when:
 ## Update Git credentials for GitOps Runtimes
 
 Provisioned GitOps Runtimes require valid Git tokens at all times to authenticate Git actions by you as a user.
->These tokens are personal access tokens, specific to each user. As such, the user can use the same personal access token for multiple runtimes.
+These Git tokens are personal access tokens, specific to each user. As such, you can use the same Git user token for multiple Runtimes.
 
->TIP:
+>**TIP**:
 Git credentials are synced to the Shared Configuration Repository defined during installation. If you change your Git credentials, the Git account must match that of the Shared repo. For example, if the Shared repo is defined as `http://github.com/my-org/isc.git` and the Git provider is defined  as `bitbucket`, the update will fail.
 
 **When to update**
@@ -453,13 +453,13 @@ Otherwise, you have to update Git tokens in the following situations:
 **Update methods**
 The methods for updating any Git token are the same regardless of the reason for the update:
 * OAuth2 authorization, if your admin has registered an OAuth Application for Codefresh.
-* Git access token authentication, by generating a personal access token in your Git provider account with the correct scopes.
-  You can update your personal access token in the UI or through the CLI.
+* Git access token authentication, by generating a Git user token in your Git provider account with the correct scopes.
+  You can update your Git user token in the UI or through the CLI.
 
 ### Update Git credentials in Codefresh UI
 
 **Before you begin**
-* To authenticate through a Git access token, make sure your token is valid and has [the required scopes]({{site.baseurl}}/docs/reference/git-tokens/#git-personal-tokens)
+* To authenticate through a Git user token, make sure your token is valid and has [the required scopes]({{site.baseurl}}/docs/reference/git-tokens/#git-user-access-token-scopes)
 
 **How to**
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
@@ -486,7 +486,7 @@ The methods for updating any Git token are the same regardless of the reason for
 
 {:start="6"}
 1. For OAuth2 authorization:
-  >NOTE:
+  >**NOTE**:
   >If the application is not registered, you get an error. Contact your admin for help.
 
       * Enter your credentials, and select **Sign In**.
@@ -506,8 +506,8 @@ The methods for updating any Git token are the same regardless of the reason for
 1. For Git token authentication, paste the generated token in the **Git runtime token** field.
 1. Click **Update Credentials**.
 
-### Update Git personal access token through CLI
-If you are using Git personal access tokens for authentication, you can also update them through the Codefresh CLI.
+### Update Git user token through CLI
+If you are using Git user tokens for authentication, you can also update them through the Codefresh CLI.
 
 * Run:
   `cf config update-gitops-settings --shared-config-repo <repo_url> [--git-provider <git-provider>] [--git-api-url <git-api-url>]`
