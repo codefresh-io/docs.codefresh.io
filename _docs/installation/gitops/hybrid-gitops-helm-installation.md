@@ -123,9 +123,8 @@ resource "helm_release" "my_gitops_runtime" {
   repository       = "https://chartmuseum.codefresh.io/gitops-runtime"
   chart            = "gitops-runtime"
   namespace        = "my-codefresh-runtime"
-  version          = "0.2.13-alpha.1"
+  version          = "0.2.14"
   create_namespace = true
-  devel = true
   set {
     name  = "global.codefresh.accountId"
     value = var.cf_account_id
