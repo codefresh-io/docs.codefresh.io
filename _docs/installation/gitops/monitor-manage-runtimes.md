@@ -277,7 +277,7 @@ dependencies:
 ```
 1. For non-GitOps Runtimes, do the following:
     1. Copy and run the upgrade command:
-        `RELEASE_NAME=$(helm ls -n codefresh-gitops-runtime -q) && helm upgrade ${RELEASE_NAME} -n codefresh-gitops-runtime --devel`
+        `RELEASE_NAME=$(helm ls -n codefresh-gitops-runtime -q) && helm upgrade ${RELEASE_NAME} -n codefresh-gitops-runtime`
     1. To exit the upgrade panel, click **Close**.
 
 
