@@ -10,7 +10,7 @@ toc: true
 Install the Hybrid Runtime for GitOps through a Helm chart.
 
 >**ATTENTION**:  
-We have transitioned to a Helm-based installation for Hybrid GitOps Runtimes for improved experience and performance.   
+We have transitioned to a Helm-based installation for Hybrid GitOps Runtimes for improved experience and performance, and is now the default Runtime for GitOps.   
 The [CLI-based installation for Hybrid GitOps]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/) is now considered legacy.  
 We will deprecate this installation mode permanently in the coming months. Please stay tuned for further updates and instructions, including the migration process.
 
@@ -259,7 +259,7 @@ The table below lists the settings validated in the `values` file.
     where:  
       * `<values_file>` is the name of the values.yaml used by the Helm installation.  
       * `<namespace>` is the namespace in which to install the Hybrid GitOps runtime, either the default `codefresh`, or the custom name you intend to use for the installation. The Namespace must conform to the naming conventions for Kubernetes objects. 
-      * `<version>` is the version of the runtime to install. To target the latest pre-release version, use `--devel` instead of `--version <version>`.
+      * `<version>` is the version of the runtime to install. 
 1. Continue with [Step 2: Select Hybrid Runtime install option](#step-2-select-hybrid-runtime-install-option).
 
 ### Step 2: Select Hybrid Runtime install option
@@ -341,7 +341,6 @@ helm upgrade --install <helm-release-name> \
   --set global.codefresh.userToken.token=<codefresh-api-key> \
   --set global.runtime.name=<runtime-name> \
   <helm-repo-name>/gitops-runtime \
-  --devel \
   --wait
 {% endhighlight %}    
     
@@ -358,7 +357,6 @@ helm upgrade --install <helm-release-name> \
   --set "global.runtime.ingress.hosts[0]"=<ingress-host> \
   --set global.runtime.ingress.className=<ingress-class> \
   <helm-repo-name>/gitops-runtime \
-  --devel \
   --wait  
 {% endhighlight %}
 <br>
@@ -374,7 +372,6 @@ helm upgrade --install <helm-release-name> \
   --set global.runtime.ingress.enabled=false \
   --set tunnel-client.enabled=false \
   <helm-repo-name>/gitops-runtime \
-  --devel \
   --wait  
 {% endhighlight %}
 
