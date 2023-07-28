@@ -1,15 +1,14 @@
 ---
 title: "Azure SSO via OIDC"
 description: "Set up Azure SSO for OIDC"
-group: single-sign-on
-sub_group: oidc
 redirect_from:
   - /docs/enterprise/single-sign-on/sso-azure/
+  - /docs/single-sign-on/oidc/oidc-azure/
 toc: true
 ---
 
 Set up SSO for Azure using OIDC.
-For a general overview on OIDC, see [Setting up OIDC Federated SSO]({{site.baseurl}}/docs/single-sign-on/oidc).  
+For a general overview on OIDC, see [Setting up OIDC Federated SSO]({{site.baseurl}}/docs/administration/single-sign-on/oidc).  
 
 Set up OIDC SSO for Azure in Codefresh by:
 1. Registering the Codefresh application in Azure
@@ -244,5 +243,5 @@ You have now completed the SSO setup for Azure using OIDC.
 
 
 ## Related articles
-[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/single-sign-on/single-sign-on/)  
-[Common configuration for SSO providers]({{site.baseurl}}/docs/single-sign-on/team-sync)  
+[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/administration/single-sign-on/)  
+[Common configuration for SSO providers]({{site.baseurl}}/docs/administration/single-sign-on/team-sync)  

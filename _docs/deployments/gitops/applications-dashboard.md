@@ -198,10 +198,6 @@ The Quick View includes the following tabs:
 * Events: Displays status and sync events for the application.
 
 
-
-
-
-
 ## Monitor resources for selected application
 
 Monitor the resources deployed in the current version of the selected application in the Current State tab.  
@@ -510,6 +506,7 @@ You can:
 <!--* [Monitor updated resources by deployment](#monitor-updated-resources-by-deployment)  -->
 * [Monitor rollouts by deployment](#monitor-rollouts-by-deployment)
 
+See also [Troubleshooting GitOps applications]({{site.baseurl}}/docs/deployments/gitops/troubleshooting-gitops-apps/).
 
 **How to monitor deployments**
 1. If required, set filters to narrow the number of deployments for the selected application.
@@ -681,6 +678,7 @@ max-width="50%"
 %}
 
 
+
 ## Monitor services for selected application
 The Services tab shows the K8s services for each deployment of the application. 
 Each service shows the number of replicas, the endpoint IP, the labels that reference the application, and the health status.  
@@ -699,7 +697,8 @@ max-width="50%"
 
 ## Related articles
 [Creating GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application)  
-[Managing GitOps applications]({{site.baseurl}}/docs/deployments/gitops/manage-application)  
+[Managing GitOps applications]({{site.baseurl}}/docs/deployments/gitops/manage-application) 
+[Troubleshooting GitOps applications]({{site.baseurl}}/docs/deployments/gitops/troubleshooting-gitops-apps)  
 [Home Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard)  
 [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)  
 

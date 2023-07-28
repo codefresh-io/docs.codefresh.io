@@ -22,7 +22,7 @@ helm upgrade --install cf-gitops-runtime \
   --set app-proxy.config.cors=<on-prem-url> \
   --set global.runtime.ingress.enabled="true" \
   --set "global.runtime.ingress.hosts[0]"=<ingress-host> \
-  cf-gitops-runtime/gitops-runtime --devel
+  cf-gitops-runtime/gitops-runtime 
 {% endhighlight %}
  
   where:  

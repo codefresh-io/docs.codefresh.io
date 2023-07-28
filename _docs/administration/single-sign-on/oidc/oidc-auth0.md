@@ -1,17 +1,16 @@
 ---
 title: "Auth0 SSO via OIDC"
 description: "Set up Auth0 SSO for OIDC"
-group: single-sign-on
-sub_group: oidc
 redirect_from:
   - /docs/enterprise/sso-auth0/
   - /docs/enterprise/single-sign-on/sso-auth0/
   - /docs/administration/single-sign-on/sso-auth0/
+  - /docs/single-sign-on/oidc/oidc-auth0/
 toc: true
 ---
 
 Set up SSO for Auth0 using OIDC.
-For a general overview on OIDC, see [Setting up OIDC Federated SSO]({{site.baseurl}}/docs/single-sign-on/oidc).  
+For a general overview on OIDC, see [Setting up OIDC Federated SSO]({{site.baseurl}}/docs/administration/single-sign-on/oidc).  
 
 Set up OIDC SSO for Auth0 in Codefresh by:
 1. Creating an Auth0 application in Auth0
@@ -109,8 +108,8 @@ max-width="50%"
 You have completed SSO setup for Auth0 in Codefresh.
 
 ## Related articles
-[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/single-sign-on/single-sign-on/)   
-[Common configuration for SSO providers]({{site.baseurl}}/docs/single-sign-on/team-sync)  
+[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/administration/single-sign-on/)   
+[Common configuration for SSO providers]({{site.baseurl}}/docs/administration/single-sign-on/team-sync)  
 
 
 
