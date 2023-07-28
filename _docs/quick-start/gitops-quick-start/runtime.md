@@ -99,7 +99,6 @@ Read up on the [Shared Configuration Repository]({{site.baseurl}}/docs/installat
         * `<codefresh-token>` is the API key you generated, and is automatically populated in the command.
         * `codefresh` is the default name of the runtime. 
         * `<cf-gitops-runtime/gitops-runtime>` is the name of the repo and must be identical to the one specified in _Step 3_, and is by default, `cf-gitops-runtime`. `gitops-runtime` is the name of the Helm chart and is predefined by Codefresh and cannot be changed.
-        * `--devel` automatically targets the latest pre-release version.
 
 {% include
 image.html
@@ -115,7 +114,7 @@ max-width="60%"
    You are taken to the List View for GitOps Runtimes where you can see the Hybrid GitOps Runtime you added prefixed with a red dot.
 1. Optional. Complete the installation by clicking **Configure as Argo Application**.  
   There is no need for any action from you, as Codefresh takes care of the configuration.
-  By configuring the Hybrid GitOps Runtime as an Argo Application, you can ensure that GitOps is the single source of truth for the Runtime and view the Runtime components and monitor. 
+  By configuring the Hybrid GitOps Runtime as an Argo Application, you can ensure that GitOps is the single source of truth for the Runtime and view and monitor Runtime components. 
 
 You are now ready to create and deploy a GitOps application in Codefresh.
 
