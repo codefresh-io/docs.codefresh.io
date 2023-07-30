@@ -526,7 +526,7 @@
           url: "/shared-configuration"
         - title: Add external clusters to GitOps Runtimes
           url: "/managed-cluster" 
-        - title: Add Git Sources to to GitOps Runtimes
+        - title: Add Git Sources to GitOps Runtimes
           url: "/git-sources"
         - title: Download/upgrade GitOps CLI
           url: "/upgrade-gitops-cli"
