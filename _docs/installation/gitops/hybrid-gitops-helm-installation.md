@@ -19,7 +19,6 @@ If you already have a Codefresh acccount, go for the [quick Helm install](#quick
 
 For step-by-step installation from the Codefresh UI, see [Step-by-step Hybrid GitOps Runtime installation](#step-by-step-hybrid-gitops-runtime-installation). 
 
->Hybrid GitOps installation with Helm is currently in Beta.
 
 ## ArgoCD password
 
