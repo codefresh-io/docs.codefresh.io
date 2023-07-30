@@ -5,24 +5,34 @@ description: "Release Notes for Codefresh Pipelines and GitOps"
 
 ## Features & enhancements
 
+### GitOps: Helm installation for Hybrid GitOps
+We are happy to announce the completion of our transition to Helm for GitOps Runtimes. Helm is now the default installation method.
 
-### Okta with OIDC
+The legacy CLI-based installation for Hybrid GitOps will be permanently deprecated in the coming month.
+
+For customers with existing CLI-based Runtimes, we are preparing migration instructions to seamlessly switch to the new Helm setup. 
+
+And, we have a much-requested installation enhancement on the horizon: Side-by-Side installation featuring Native Argo CD & GitOps. 
+Stay tuned for updates!
+
+To recap, see [Hybrid GitOps Helm installation]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/).
+
+### Multi-account sync for Okta with OIDC
 
 **Multi-account sync**
 
-Following the successful implementation of just-in-time provisioning support for Okta, we are taking it a step further by introducing multi-account sync for OIDC-Okta. This exciting feature enables you to synchronize multiple Codefresh accounts in Okta simultaneously in Codefresh, ensuring a seamless SSO setup for enterprise customers.
+Following the successful implementation of just-in-time provisioning support for Okta, we are taking it a step further by introducing multi-account sync for OIDC-Okta. This feature enables you to synchronize multiple Codefresh accounts in Okta simultaneously in Codefresh, ensuring a seamless SSO setup for enterprise customers.
 
 With multi-account sync, you can easily select additional Codefresh accounts to sync with your Okta OIDC account in Codefresh. Codefresh validates admin privileges and access for each of the selected accounts, guaranteeing secure and reliable authentication. 
 
-You have the flexibility to sync users in multiple ways: through the UI's `Auto-group sync`, perform on-demand synchronization through the CLI, or integrate it into a Codefresh pipeline using the CLI synchronize command.
+You have the flexibility to sync users in multiple ways: through the UI's `Auto-group sync`, performing on-demand synchronization through the CLI, or integrating sync into a Codefresh pipeline using the CLI synchronize command.
 
 
 
 **Delete users removed during sync**
 
-We added an option to further streamline Okta SSO account and user management in Codefresh. Now, you can easily remove individual users who are deactivated in Okta, not only from the current account but from additional accounts you have defined in your current account. 
-
-The Users list is updated, keeping both the Teams and Users lists always organized .
+We added an option to further streamline Okta SSO account and user management in Codefresh. You can now can easily remove individual users who are deactivated in Okta, not only from the current account but from additional accounts you have defined in your current account.  
+The Users list is updated, keeping both the Teams and Users lists always organized.
 
  {% include 
 image.html 
@@ -34,33 +44,14 @@ caption="Multi-account sync and remove deactivated users for Okta OIDC"
 max-width="60%" 
 %}
 
-For details, see [Configure OIDC SSO settings for Okta in Codefresh](https://codefresh.io/docs/docs/administration/single-sign-on/oidc/oidc-okta/#how-to). 
+For details, see [Configure OIDC SSO settings for Okta in Codefresh]({{site.baseurl}}/docs/administration/single-sign-on/oidc/oidc-okta/#how-to). 
 
 
-### `hastags` mapping for Gerrit
+### Pipelines: `hastags` mapping for Gerrit
 Continuing to extend our support for Gerrit with our latest update. In place of `change hashtags` in Gerrit, you can use Codefresh's `CF_PULL_REQUEST_LABELS` system variable.
 
-For details, see [System variables in pipelines](https://codefresh.io/docs/docs/pipelines/variables/#system-variables).
+For details, see [System variables in pipelines]({{site.baseurl}}/docs/pipelines/variables/#system-variables).
 
-<!---
-### Share URL with account info
-Introducing the Copy URL Link button: The Copy URL Link button is our latest addition to the Codefresh UI’s toolbar to ensure seamless collaboration.
-
-The URL link includes your account ID, making it easy to share with others in your organization, and practical for recipients to use it.
-
-It's always available whenever you need it in  the Codefresh toolbar. Recipients can choose between switching to your account or staying in their current account.
-
- {% include 
-image.html 
-lightbox="true" 
-file="/images/whats-new/july23/rel-notes-july-23-copy-url-link.png" 
-url="/images/whats-new/july23/rel-notes-july-23-copy-url-link.png" 
-alt="Copy URL option in Codefresh toolbar" 
-caption="Copy URL option in Codefresh toolbar" 
-max-width="60%" 
-%}
-
--->
 
 ### Global Search & Navigation for GitOps applications
 As part of our commitment to constantly empower our users through Global Search & Navigation, here's our latest enhancement: Search GitOps Applications.  
@@ -77,8 +68,6 @@ max-width="60%"
 %}
 
 Stay tuned for more exciting updates!
-
-
 
 
 ### GitOps on-premises: MTLS for MongoDB and Redis
