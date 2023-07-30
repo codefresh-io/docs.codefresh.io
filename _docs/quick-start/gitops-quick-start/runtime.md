@@ -16,14 +16,14 @@ The Runtime is installed through a Helm chart. The Codefresh `values.yaml` is lo
 The quick start assumes that you are installing the first Hybrid GitOps Runtime in your Codefresh account. 
 
 ## Argo project components & CRDs
-Hybrid GitOps installation requires a cluster without Argo project components and CRDs. 
+Hybrid GitOps installation requires a cluster without Argo project components and CRDs (Custom Resource Definitions). 
 
 Argo project components include Argo Rollouts, Argo CD, Argo Events, and Argo Workflows.  
 
 You can handle Argo project CRDs outside the chart, or as recommended, adopt the CRDs to be managed by the GitOps Runtime Helm release. 
 
 If you already have Argo project CRDs on your cluster, do one of the following:
-* Handle Argo projects CRDs outside of the chart (see [Argo's readme on Helm charts](https://github.com/argoproj/argo-helm/blob/main/README.md){:target="\_blank"}) 
+* Handle Argo projects CRDs outside of the chart (see [Argo's readme on Helm charts](https://github.com/argoproj/argo-helm/blob/main/README.md){:target="\_blank"})  
   Disable CRD installation under the relevant section for each of the Argo projects in the Helm chart:<br>
   `--set <argo-project>.crds.install=false`<br>
   where:<br>
@@ -44,13 +44,13 @@ kubectl annotate --overwrite crds $(kubectl get crd | grep argoproj.io | awk '{p
 ```
 
 ### Tunnel-based runtime
-Hybrid GitOps Runtimes supports tunnel-based, ingress-based access modes.  
+Hybrid GitOps Runtimes supports tunnel-based, ingress-based, and service-mesh-based access modes.  
 For the quick start, we'll use the tunnel-based mode which is the default access mode, not requiring an ingress controller.  
 For details on these access modes, review [GitOps Runtime architecture]({{site.baseurl}}/docs/installation/runtime-architecture/#gitops-runtime-architecture).
 
 ### GitHub as Git provider  
 Hybrid GitOps Runtimes require a Git Runtime token for authentication to the Git installation repository based on your Git provider, and a Git user token to authenticate Git-based actions for the Runtime.  
-The quick start uses GitHub as the Git provider. For other Git providers and token requirements, see ????[Git provider and repo flags]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/#git-provider-and-repo-flags).  
+The quick start uses GitHub as the Git provider. For other Git providers and token requirements, see [Git providers and Git runtime tokens]({{site.baseurl}}/docs/reference/git-tokens/#git-runtime-token-scopes).  
 
 Have your GitHub Runtime token ready for Runtime installation with a valid expiration date and access permissions:
   * Expiration: Either the default of 30 days or any duration you consider logical.
@@ -98,7 +98,7 @@ Read up on the [Shared Configuration Repository]({{site.baseurl}}/docs/installat
         * `<codefresh-account-id>` is mandatory for _tunnel-based Hybrid GitOps Runtimes_, and is automatically populated by Codefresh in the command. 
         * `<codefresh-token>` is the API key you generated, and is automatically populated in the command.
         * `codefresh` is the default name of the runtime. 
-        * `<cf-gitops-runtime/gitops-runtime>` is the name of the repo and must be identical to the one specified in _Step 3_, and is by default, `cf-gitops-runtime`. `gitops-runtime` is the name of the Helm chart and is predefined by Codefresh and cannot be changed.
+        * `<cf-gitops-runtime/gitops-runtime>` is the name of the repo and must be identical to the one specified in _Step 3_, and is by default, `cf-gitops-runtime`. `gitops-runtime` is the name of the Helm chart predefined by Codefresh, and cannot be changed.
 
 {% include
 image.html
@@ -110,8 +110,9 @@ caption="Quick Start: Install Hybrid GitOps Runtime"
 max-width="60%"
 %}
 
+{:start="5"}
 1. Wait for a few minutes, and then click **Close**.
-   You are taken to the List View for GitOps Runtimes where you can see the Hybrid GitOps Runtime you added prefixed with a red dot.
+   You are taken to the List View for GitOps Runtimes where you can see the Hybrid GitOps Runtime you added with a green dot indicating that it is online, and the Type column for the Runtime displaying Helm.
 1. Optional. Complete the installation by clicking **Configure as Argo Application**.  
   There is no need for any action from you, as Codefresh takes care of the configuration.
   By configuring the Hybrid GitOps Runtime as an Argo Application, you can ensure that GitOps is the single source of truth for the Runtime and view and monitor Runtime components. 

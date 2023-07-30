@@ -15,7 +15,7 @@ If this is your first time installing GitOps in Codefresh, review and confirm th
 
 ## Existing CLI-based Hybrid GitOps installation  
 If you already have a CLI-based Hybrid GitOps Runtime installed on your cluster, you have two options:
-1. To install on the same cluster, first uninstall the existing CLI-based Hybrid GitOps Runtime. Currently, you can install a single hybrid runtime per cluster.  
+1. To install on the same cluster, first uninstall the existing CLI-based Hybrid GitOps Runtime. 
   This is the recommended option.
 1. Install on a different cluster, verifying that you meet the minimum requirements.  
 

@@ -35,11 +35,11 @@
     - title: GitOps quick starts
       url: "/gitops-quick-start"
       sub-pages:
-        - title: Provision a hosted runtime
+        - title: Provision a Hosted GitOps Runtime
           url:  "/install-hosted"
-        - title: Prepare for hybrid runtime installation
+        - title: Prepare for Hybrid GitOps Runtime installation
           url:  "/verify-requirements"
-        - title: Install a hybrid runtime
+        - title: Install a Hybrid GitOps Runtime
           url: "/runtime"
         - title: Create an application
           url: "/create-app-ui"     
