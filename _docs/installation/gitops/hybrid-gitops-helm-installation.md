@@ -405,7 +405,7 @@ helm upgrade --install <helm-release-name> \
 
 
 ### Step 5: Configure Git credentials for Hybrid GitOps Runtime
-Configure Git credentials to authorize access to and ensure proper functioning of the GitOps Runtime.  
+Configure Git credentials to authorize access to and ensure proper functioning of the GitOps Runtime. This is one of the two steps to complete installing Hybrid GitOps Runtimes, the other being to configure the Runtime as an Argo Application, described in the next step.
 
 Git credentials include authorizing access to Git through OAuth2 or a personal access token, and optionally configuring SSH access to Git.
 
@@ -489,7 +489,7 @@ Required only for ALB AWS, Istio, or NGINX Enterprise ingress-controllers.<br>
   * [Istio: Configure cluster routing service](#cluster-routing-service)
   * [NGINX Enterprise ingress controller: Patch certificate secret](#patch-certificate-secret)  
 
-That's it! You have successfully completed installing a Hybrid GitOps Runtime with Helm. See the Runtime in the [Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#gitops-runtime-views) page.
+That's it! You have successfully completed installing a Hybrid GitOps Runtime with Helm. View the Runtime in the [Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#gitops-runtime-views) page.
 
 You can now add [external clusters to the Runtime]({{site.baseurl}}/docs/installation/gitops/managed-cluster/), and [create and deploy GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application/).
 
