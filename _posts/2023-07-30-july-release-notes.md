@@ -86,14 +86,14 @@ For details, see [External MongoDB with MTLS](https://artifacthub.io/packages/he
 
 
 ### Pipelines
-* `codefresh-run` step results in failed pipelines. (CR-19586)
+* `codefresh-run` step results in failed pipeline builds. (CR-19586)
 * Invalid chart error on trying to access Codefresh Helm repository.
-* Running an OSX (Mac OS X) build causes pipeline to remain in initialization phase. (CR-19332)
 * Clicking Save in Shared Configuration Settings does not work. (CR-19546 - need to verify if this is customer facing? shows regression)???
-* DIND  with service containers ignore IRSA account (IAM Roles for Service Accounts) set for hybrid runtime.
+* Builds terminate unexpectedly without clear errors or from prolonged inactivity.
+* DIND with service containers ignore IRSA account (IAM Roles for Service Accounts) set for hybrid runtime.
 * Commit message passed through the system variable `CF_COMMIT_MESSAGE` is truncated and does not include the full content.
 * Delay in start times for child pipelines triggered by parent pipeline that includes a large set of `codefresh-run` steps set to run in parallel.
-* Service 
+ 
 * In Pipelines page, the context-menu for the last pipeline in the list does not display all available actions.
 * Builds terminated because of pipeline policy leave running `dind` pods on runtime cluster. (CR-11485)
 * In Pipelines Dashboard, for a renamed pipeline, the Pipeline filter displays the original name instead of the new name. (CR-18929)
