@@ -81,26 +81,29 @@ For details, see [External MongoDB with MTLS](https://artifacthub.io/packages/he
 ## Bug fixes
 
 ### General
+* Auto-sync option not available for Azure SSO (CR-18200)
+* For an ECR integration, clicking **Test Connection** or **Commit** results in progress animations persisting instead of creating the integration. (CR-19124)
+
 
 ### Pipelines
-* `codefresh-run` step results in failed pipelines
-* Running an OSX (Mac OS X) build in pipeline remains in initialization phase.
+* `codefresh-run` step results in failed pipelines. (CR-19586)
+* Invalid chart error on trying to access Codefresh Helm repository.
+*  (CR-19332)
 Clicking Save in Shared Configuration Settings does not work. (CR-19546 - need to verify if this is customer facing? shows regression)???
 * Commit message passed through the system variable `CF_COMMIT_MESSAGE` is truncated and does not include the full content.
-* Delay in start times for child pipelines triggered by parent pipeline including a large set of `codefresh-run` steps set to run in parallel.
-Unable to save new integration account for Okta (CR-19667 - this is for Classic so should it be documented for projectone?)??
+* Delay in start times for child pipelines triggered by parent pipeline that includes a large set of `codefresh-run` steps set to run in parallel.
+* Unable to save new integration account for Okta (CR-19667 - this is for Classic so should it be documented for projectone?)??
 * In Pipelines page, the context-menu for the last pipeline in the list does not display all available actions.
-* Builds terminated by pipeline policy leave running `dind` pods on runtime cluster. (CR-11485)
+* Builds terminated because of pipeline policy leave running `dind` pods on runtime cluster. (CR-11485)
+* In Pipelines Dashboard, for a renamed pipeline, the Pipeline filter displays the original name instead of the new name. 
+
 
 ### GitOps
-
 * **Save** button remains disabled when modifying fields for an existing Git Source.
 * Applications show **Unknown** status in Codefresh, while they are **Healthy** in the Argo CD UI. (CR-19442)
-* New release triggered for an application with an on-going rollout, terminates previous release, while  and changes the new release  Progressing. terminated by new releasen. On-going Rollout for Current Version is temterminated due to a new commit in another application, and shows an inconsistent state (CR-19416 - Olek)
-* Current release of application remains stuck indefinitely at **Progressing**. (olek)
-* Rollouts in Progressing  do not have links to Rollout Analysis and Rollout Player in the Timeline tab.  (CR-19405)
-* For an ECR integration, progress animations persist when clicking **Test Connection** or **Commit**. (CR-19124)
-* In Pipelines Dashboard, the Pipeline filter displays the original name instead of the new name for the renamed pipeline. (CR-18929)
-* (On-premises) Unable to create Git Sources both from the Codefesh CLI and UI with BitBucket Server.
+* Committing to an application in the same repository as another application, terminates the on-going rollout for the first application. 
+* (On-premises) Unable to create Git Sources both from the Codefesh CLI and UI with Bitbucket Server.
 * (On-premises) For Azure, auto-sync operations removes groups that were previously synced.
-Auto-sync option not available for Azure SSO (CR-18200)???
+
+
+
