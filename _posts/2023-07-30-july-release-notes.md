@@ -84,7 +84,6 @@ For details, see [External MongoDB with MTLS](https://artifacthub.io/packages/he
 
 
 ### Pipelines
-* `codefresh-run` step results in failed pipeline builds. (CR-19586)
 * Invalid chart error on trying to access Codefresh Helm repository.
 * Clicking Save in Shared Configuration Settings does not work. (CR-19546 - need to verify if this is customer facing? shows regression)???
 * Builds terminate unexpectedly without clear errors or from prolonged inactivity.
