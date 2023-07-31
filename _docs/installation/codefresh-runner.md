@@ -172,7 +172,7 @@ Installing the Codefresh Runner with Helm requires you to first create a `genera
 1. Optional. If the Kubernetes cluster with the Codefresh Runner is behind a proxy, continue with [Complete Codefresh Runner installation](#complete-codefresh-runner-installation).  
 
 <!--- what is this -->
-For reference, have a look at the repository with the chart: [https://github.com/codefresh-io/venona/tree/release-1.0/.deploy/cf-runtime](https://github.com/codefresh-io/venona/tree/release-1.0/.deploy/cf-runtime){:target="\_blank"}.
+For reference, have a look at the repository with the chart: [https://github.com/codefresh-io/venona/tree/release-1.0/charts/cf-runtime](https://github.com/codefresh-io/venona/tree/release-1.0/charts/cf-runtime){:target="\_blank"}.
 
 
 ```shell
