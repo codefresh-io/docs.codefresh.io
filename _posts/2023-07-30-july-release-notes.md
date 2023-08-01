@@ -6,19 +6,15 @@ description: "Release Notes for Codefresh Pipelines and GitOps"
 ## Features & enhancements
 
 ### GitOps: Helm installation for Hybrid GitOps
-We are happy to announce the completion of our transition to Helm for GitOps Runtimes. Helm is now the default installation method.  
-The legacy CLI-based installation for Hybrid GitOps will be permanently deprecated in the coming month.
+We are happy to announce that Helm-based installation for GitOps Runtimes is in GA (General Availability), and is now the default installation method for GitOps Runtimes.  
 
-For customers with existing CLI-based Runtimes, we are preparing migration instructions to seamlessly switch to the new Helm setup. 
-
-And, we have a much-requested installation enhancement on the horizon: _Side-by-Side installation featuring Native Argo CD & GitOps_.  
-Stay tuned for updates!
+For customers with existing CLI-based Runtimes, we are preparing migration instructions to seamlessly switch to the new Helm setup. The legacy CLI-based installation for Hybrid GitOps Runtimes will be deprecated in the coming months.
 
 For details, see [Hybrid GitOps Helm installation]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/).
 
 ### Multi-account sync for Okta with OIDC
 
-Check out the latest enhancements to Okta with OIDC!
+Check out the latest enhancements to the integration settings for Okta with OIDC.
 
 **Multi-account sync**
 Following the successful implementation of just-in-time provisioning support for Okta, we are taking it a step further by introducing multi-account sync for OIDC-Okta. This feature enables you to synchronize multiple Codefresh accounts in Okta simultaneously in Codefresh, ensuring a seamless SSO setup for enterprise customers.
@@ -28,8 +24,8 @@ With multi-account sync, you can easily select additional Codefresh accounts to 
 You have the flexibility to sync users in multiple ways: through the UI's `Auto-group sync`, performing on-demand synchronization through the CLI, or integrating sync into a Codefresh pipeline using the CLI synchronize command.
 
 **Delete users removed during sync**
-We added an option to further streamline Okta SSO account and user management in Codefresh. You can now can easily remove individual users who are deactivated in Okta, not only from the current account but from additional accounts you have defined in your current account.  
-The Users list is updated, keeping both the Teams and Users lists always organized.
+We added an option to further streamline Okta SSO account and user management in Codefresh. You can now easily remove individual users who are deactivated in Okta from both the current account in Codefresh and any additional accounts defined in your current account.  
+The Users list is updated accordingly, ensuring that both the Teams and Users lists are always organized.
 
 
  {% include 
@@ -45,7 +41,7 @@ max-width="60%"
 For details, see [Configure OIDC SSO settings for Okta in Codefresh]({{site.baseurl}}/docs/administration/single-sign-on/oidc/oidc-okta/#how-to). 
 
 
-### Pipelines: `hastags` mapping for Gerrit
+### Pipelines: `hashtags` mapping for Gerrit
 Continuing to extend our support for Gerrit with our latest update. In place of `change hashtags` in Gerrit, you can use Codefresh's `CF_PULL_REQUEST_LABELS` system variable.
 
 For details, see [System variables in pipelines]({{site.baseurl}}/docs/pipelines/variables/#system-variables).
@@ -70,7 +66,7 @@ Stay tuned for more exciting updates!
 
 ### GitOps on-premises: MTLS for MongoDB and Redis
 
-On-premises for GitOps supports MTLS (Mutual TLS) for Redis and MongoDB. This enhancement provides enhanced security and encryption capabilities for Redis data communication with Codefresh in on-premises environments. Administrators can customize the level of security according to their requirements. 
+On-premises for GitOps supports MTLS (Mutual TLS) for MongoDB and Redis. This enhancement provides enhanced security and encryption capabilities for communication with Codefresh in on-premises environments. Administrators can customize the level of security according to their requirements. 
 
 For details, see [External MongoDB with MTLS](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#external-mongodb-with-mtls){:target="\_blank"} and [External Redis with MTLS](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#external-redis-with-mtls){:target="\_blank"}.
 
