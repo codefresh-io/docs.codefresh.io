@@ -16,14 +16,14 @@ For details, see [Hybrid GitOps Helm installation]({{site.baseurl}}/docs/install
 
 Check out the latest enhancements to the integration settings for Okta with OIDC.
 
-**Multi-account sync**
+**Multi-account sync**  
 Following the successful implementation of just-in-time provisioning support for Okta, we are taking it a step further by introducing multi-account sync for OIDC-Okta. This feature enables you to synchronize multiple Codefresh accounts in Okta simultaneously in Codefresh, ensuring a seamless SSO setup for enterprise customers.
 
 With multi-account sync, you can easily select additional Codefresh accounts to sync with your Okta OIDC account in Codefresh. Codefresh validates admin privileges and access for each of the selected accounts, guaranteeing secure and reliable authentication. 
 
 You have the flexibility to sync users in multiple ways: through the UI's `Auto-group sync`, performing on-demand synchronization through the CLI, or integrating sync into a Codefresh pipeline using the CLI synchronize command.
 
-**Delete users removed during sync**
+**Delete users removed during sync**  
 We added an option to further streamline Okta SSO account and user management in Codefresh. You can now easily remove individual users who are deactivated in Okta from both the current account in Codefresh and any additional accounts defined in your current account.  
 The Users list is updated accordingly, ensuring that both the Teams and Users lists are always organized.
 
@@ -35,7 +35,7 @@ file="/images/whats-new/july23/rel-notes-july23-okta-new-settings.png"
 url="/images/whats-new/july23/rel-notes-july23-okta-new-settings.png" 
 alt="Multi-account sync and remove deactivated users for Okta OIDC" 
 caption="Multi-account sync and remove deactivated users for Okta OIDC" 
-max-width="60%" 
+max-width="50%" 
 %}
 
 For details, see [Configure OIDC SSO settings for Okta in Codefresh]({{site.baseurl}}/docs/administration/single-sign-on/oidc/oidc-okta/#how-to). 
