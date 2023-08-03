@@ -415,7 +415,7 @@ max-width="60%"
 > Track the actual disk usage in Builds > Metrics.
 
 #### Set memory-usage threshold for pipeline build
-If needed, select a memory-usage threshold for the pipeline build to override that set at the account level. Codefresh displays a banner when memory usage has exceeded the selected threshold. 
+If needed, select a memory-usage threshold for the pipeline build to override the account-level setting for the same. Codefresh displays a banner when memory usage has exceeded the selected threshold. 
 
 The global memory-usage threshold is set in **Pipeline Settings**, for all pipelines in the account. 
 You can override the memory-usage threshold for individual pipelines, depending on the resources needed for pipeline execution. For example, if the account-level memory usage is set at 90%, and the specific pipeline is resource-intensive, you want to be warned when the usage exceeds 70%, instead of 90%.  
@@ -431,13 +431,29 @@ caption="Memory-usage thresholds for pipeline"
 max-width="60%"
 %}
 
+### Scopes
+If needed, Codefresh account administrators can override the scopes set at the account-level with custom scopes for ehe dividual pipeline. All the pipeline's builds inherit the custom scopes. 
 
-## Using Pipeline Templates
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/create/pipeline-create-scopes.png" 
+url="/images/pipeline/create/pipeline-create-scopes.png"
+alt="Custom scopes for pipeline" 
+caption="Custom scopes for pipeline"
+max-width="60%"
+%}
 
-Codefresh also supports the creation of pipeline "templates", which are blueprints for creating new pipelines.  
-To enable the creation of pipelines from templates, first view global pipeline configuration in the [Codefresh UI](https://g.codefresh.io/account-admin/account-conf/pipeline-settings){:target="\_blank"} and toggle the *Enable Pipeline Templates* button.
+## Using pipeline templates
 
-The easiest way to create a new template is by clicking the "3 dots menu" on the pipeline name:
+When enabled for the account, you can create a new pipeline from existing pipelines tagged as _Templates_.  
+
+### Create a pipeline template
+Convert an existing pipeline into a pipeline template, by tagging it as such. 
+
+1. In the Codefresh UI, from the sidebar, select **Pipelines** to view all your pipelines.
+1. Select the pipeline to convert to a template.
+1. From the sidebar, mouse over the pipeline name, and from the context menu, select **Create Template**.
 
 {% include 
 image.html 
@@ -449,7 +465,11 @@ caption="Create template from pipeline"
 max-width="30%"
 %}
 
-From the dialog you can select if you want to copy this pipeline as a brand new template, or simply convert the pipeline itself to a template:
+{:start="4"}
+1. Do one of the following:
+  * To convert the pipeline to a pipeline template, select **Convert the pipeline itself to a template**.  
+  * To create a copy of the pipeline and convert the copy into a pipeline template, select **Copy this pipeline to a pipeline template**.  
+    Define the template name, project and tags.
 
 {% include 
 image.html 
@@ -458,10 +478,10 @@ file="/images/pipeline/create/template-dialog.png"
 url="/images/pipeline/create/template-dialog.png"
 alt="Template options" 
 caption="Template options"
-max-width="80%"
+max-width="60%"
 %}
 
-Once the template is created, you can edit it like any other pipeline. Pipeline templates are marked with the `template` tag and also have a special mark in the pipeline menu:
+In the Pipelines page, pipeline templates are marked **TEMPLATES**. On selecting a pipeline, pipeline templates in the sidebar are prefixed with a dot.  
 
 {% include 
 image.html 
@@ -473,21 +493,29 @@ caption="Identify pipelines used as templates"
 max-width="90%"
 %}
 
+
+
+
+### Create a pipeline from a pipeline template
 Now when you create a new pipeline, you can also select which pipeline template will be used as an initial pipeline definition:
+
+>**NOTE**:  
+ Selecting a pipeline template applies the template's setting when the pipeline is created. Subsequent changes to the pipeline template _do not_ effect pipelines already created from that template.
 
 {% include 
 image.html 
 lightbox="true" 
 file="/images/pipeline/create/use-template.png" 
 url="/images/pipeline/create/use-template.png"
-alt="Using a template" 
-caption="Using a template"
+alt="Create pipeline from a pipeline template" 
+caption="Create pipeline from a pipeline template"
 max-width="70%"
 %}
 
->Notice that templates only take effect during pipeline creation. Changing a template afterwards, has no effect on pipelines that are already created from it.
+>**TIP**: 
+You can also quickly convert a pipeline to a template, in the General tab of the pipeline's settings. 
 
-You can also quickly convert a pipeline to a template, by visiting the pipeline settings and clicking the *template* button under the *General* tab.
+
 
   
 ## Pipelines that do not belong to any project
