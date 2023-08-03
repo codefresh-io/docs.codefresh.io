@@ -447,6 +447,7 @@ max-width="60%"
 ## Using pipeline templates
 
 When enabled for the account, you can create a new pipeline from existing pipelines tagged as _Templates_.  
+To do so, you need to first convert existing pipelines to pipeline templates.
 
 ### Create a pipeline template
 Convert an existing pipeline into a pipeline template, by tagging it as such. 
@@ -500,7 +501,7 @@ max-width="90%"
 Now when you create a new pipeline, you can also select which pipeline template will be used as an initial pipeline definition:
 
 >**NOTE**:  
- Selecting a pipeline template applies the template's setting when the pipeline is created. Subsequent changes to the pipeline template _do not_ effect pipelines already created from that template.
+ Selecting a pipeline template, applies the template's settings when the pipeline is created. Subsequent changes to the pipeline template _do not_ impact pipelines already created from that template.
 
 {% include 
 image.html 
@@ -539,8 +540,8 @@ Pipelines that belong to a project will mention it below their name so it is ver
 
 
 ## Related articles
-[Global pipeline settings]({{site.baseurl}}/docs/pipelines/configuration/pipeline-settings/)
-[Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Global pipeline settings]({{site.baseurl}}/docs/pipelines/configuration/pipeline-settings/)  
+[Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)   
 [Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
 [Docker registry integrations]({{site.baseurl}}/docs/integrations/docker-registries/)  
 [Example catalog]({{site.baseurl}}/docs/example-catalog/examples/)
