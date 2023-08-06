@@ -6,10 +6,19 @@ sub_group: gitops
 toc: true
 ---
 
-Monitor individiual applications or groups of applications in the GitOps Apps dashboard.
+Monitor individual or groups of applications in the GitOps Apps dashboard.
 
-Applications
-For individual applications, monitor the deployments, resources, and services for an application. As a one-stop shop for Argo Rollouts and Argo CD, the Applications tab in the GitOps Apps dashboard delivers on the challenge of keeping track of your applications and their deployments, whatever the frequency and scale, across all clusters in your enterprise. A wide range of filters, progressive delivery views, and enriched CI and CD information, provide full traceability and visibility to your deployments.  
+* **Application Groups**  
+  Monitor the collective deployments of a group of applications in parallel. Instead of having to switch between applications, see the deployment history, compare and analyze build, PR (Pull Request), and issue tracking information across similar applications to gain insights on   .
+
+  See [Application Group information](#application-group-information).
+
+<!--- screenshot -->
+
+* **Applications**  
+  For individual applications, monitor its deployments, resources, and services.
+  
+  As a one-stop shop for Argo Rollouts and Argo CD, the Applications tab in the GitOps Apps dashboard delivers on the challenge of keeping track of your applications and their deployments, whatever the frequency and scale, across all clusters in your enterprise. A wide range of filters, progressive delivery views, and enriched CI and CD information, provide full traceability and visibility to your deployments.  
 
 {% include
 image.html
@@ -21,18 +30,7 @@ caption="GitOps Apps dashboard: List view"
 max-width="60%"
 %}
 
-
-
-
-Application Groups
-For groups of applications, monitor the timelines of applications specific to the group in parallel, instead of having to switch between each application. Instead of individual source, health, or target information for each application within the group, get the  Instead, the focus will be on the collective timeline of all applications.
-
-<!--- screenshot -->
-
-
-
-Select the view format for Applications or Gorups in the GitOps Apps dashboard, as either [List or Card views](#select-view-mode-for-the-gitops-apps-dashboard). The default view displays all applications deployed within the last 30 days. Customize the scope through filters to display the [information](#/#gitops-apps-dashboard-information) you need.
-
+Select the view format for Applications in the GitOps Apps dashboard, as either [List or Card views](#select-view-mode-for-the-gitops-apps-dashboard). The default view displays all applications deployed within the last 30 days. Customize the scope through filters to display the [information](#/#gitops-apps-dashboard-information) you need.
     
 Identify applications with [health and sync errors](#identify-applications-with-warningserrors), and then select an application to drill down into its resources, deployments, and services:  
 * [Get status from application header](#get-status-from-application-header)
@@ -41,7 +39,38 @@ Identify applications with [health and sync errors](#identify-applications-with-
 * [Monitor deployments for selected application](#monitor-deployments-for-selected-application)
 * [Monitor services for selected application](#monitor-services-for-selected-application)
 
->For information on creating and managing applications and application resources, see [Creating GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application/) and [Managing GitOps applications]({{site.baseurl}}/docs/deployments/gitops/manage-application/).
+
+
+
+>**NOTE**:  
+For information on creating and managing application groups, applications, and application resources, see [Creating GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application/) and [Managing GitOps applications]({{site.baseurl}}/docs/deployments/gitops/manage-application/).
+
+
+## Application Group information
+Here's a description of the information you can see for application groups in the Groups tab of the GitOps Apps dashboard.
+
+{: .table .table-bordered .table-hover}
+| Item                     | Description            |  
+| --------------         | --------------           |  
+|Applications            | The application by which to filter the application groups. Selecting an application filters the list of groups to show the group or groups to which the application belongs.|
+|{::nomarkdown}<img src="../../../../images/icons/icon-mark-favorite.png?display=inline-block">{:/}| Star one or more application groups as favorites and view only the starred groups.{::nomarkdown}<br>Select the <img src="../../../../images/icons/icon-mark-favorite.png?display=inline-block"> to star an application group as a favorite.<br><br>To filter by favorite Groups, select <img src="../../../../images/icons/icon-fav-starred.png?display=inline-block">. <!--- ask if it affects any other views>  |
+| Sorting | Sort the Groups list either by group name or by the groups most recently updated.|
+| Group name | The name of the application group with the number of applications it includes. <br>Selecting an application group, switches to Timeline tab with deployment information. See <!--- add here what happens on clicking an app group -->|
+
+### Monitor deployments by Application Group
+In the Timeline view, monitor ongoing and review historical deployments of related applications in parallel to better understand the development status and relationships between them.  
+Track build statuses, code changes across applications, and issues to identi and ensure smooth coordination between frontend and backend development efforts.
+
+CI build insights: Navigate to CI builds of the different applications They can quickly identify which applications have successful builds and which ones have failed builds. By having this information at their fingertips, users can promptly respond to any build failures and ensure a smooth continuous integration process for all applications in the group.
+PR insights: Correlate the PRs between the applications to understand the cause and results of the 
+Issue tracking insights
+Updated services and apps: 
+
+
+
+### Monitor applications in group
+
+From the Application Group view, selecting an application switches to the Current State view for the application. You can analyze and manage the application 
 
 ## Select view mode for the GitOps Apps dashboard 
 View deployed applications in either List (the default) or Card views. Both views are sorted by the most recent deployments. 
@@ -87,16 +116,7 @@ Here's a description of the information and actions you can see for individual a
 |{::nomarkdown}<img src="../../../../images/icons/icon-mark-favorite.png?display=inline-block">{:/}| Star applications as favorites and view only the starred applications.{::nomarkdown}<br>Select the <img src="../../../../images/icons/icon-mark-favorite.png?display=inline-block"> to star the application as a favorite.<br><br>To filter by favorite applications, on the filters bar, select <img src="../../../../images/icons/icon-fav-starred.png?display=inline-block">.<br>{:/} TIP: If you star applications as favorites in the GitOps Apps dashboard, you can filter by the same applications in the [DORA metrics dashboard]({{site.baseurl}}/docs/dashboards/dora-metrics/#metrics-for-favorite-applications).  |
 |Application actions| Options to monitor/manage applications through the application's context menu. {::nomarkdown}<ul><li>Quick view<br>A comprehensive read-only view of the deployment and definition information for the application.</li>{:/}See [Application Quick View](#view-deployment-and-configuration-info-for-selected-application) in this article.{::nomarkdown}<li>Synchronize/Sync<br>Manually synchronize the application.</li>{:/}See [Manually sync applications]({{site.baseurl}}/docs/deployments/gitops/manage-application/#manually-synchronize-an-application).{::nomarkdown}<li>Edit<br>Modify application definitions.</li>{:/}See [Edit application definitions]({{site.baseurl}}/docs/deployments/gitops/manage-application/#edit-application-definitions).{::nomarkdown}<li>Refresh and Hard Refresh: Available in Card view only. In List view, you must first select the application. <ul><li>Refresh: Retrieve desired (Git) state, compare with the live (cluster) state, and refresh the application to sync with the desired state.</li><li>Hard Refresh: Refresh the application to sync with the Git state, while removing the cache.</li></ul>{:/} |
 
-## Application Group information
-Here's a description of the information you can see for application groups in the Groups tab of the GitOps Apps dashboard.
 
-{: .table .table-bordered .table-hover}
-| Item                     | Description            |  
-| --------------         | --------------           |  
-|Applications            | The application by which to filter the application groups. Selecting an application filters the list of groups to show the group or groups to which the application belongs.|
-|{::nomarkdown}<img src="../../../../images/icons/icon-mark-favorite.png?display=inline-block">{:/}| Star an application group or groups as favorites and view only the starred groups.{::nomarkdown}<br>Select the <img src="../../../../images/icons/icon-mark-favorite.png?display=inline-block"> to star an application group as a favorite.<br><br>To filter by favorite Groups, select <img src="../../../../images/icons/icon-fav-starred.png?display=inline-block">. <!--- ask if it affects any other views>  |
-| Sorting | Sort the Groups list either by group name or by the groups most recently updated.|
-| Group name | The name of the application group with the number of applications it contains. <br>Clicking an application group, switches to Card view displaying all the applications in the group (Applications tab) and deployment information for each application (Timeline tab). See <!--- add here what happens on clicking an app group -->|
 
 ## Identify applications with warnings/errors 
 Errors are flagged in the **Warnings/Errors** button, displayed at the top right of the Applications tab in the GitOps Apps dashboard. Clicking the button shows the list of applications with the warnings/errors and the possible reasons for these.
@@ -220,8 +240,6 @@ The Quick View includes the following tabs:
 * Sync Options: Displays the sync options enabled for the application.
 * Manifest: Displays the YAML version of the application manifest.
 * Events: Displays status and sync events for the application.
-
-
 
 
 
