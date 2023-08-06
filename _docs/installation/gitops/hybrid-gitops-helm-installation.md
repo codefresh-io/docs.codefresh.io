@@ -9,18 +9,22 @@ toc: true
 
 >**ATTENTION**:  
 We have transitioned to a Helm-based installation for Hybrid GitOps Runtimes for improved experience and performance, which is now the default Runtime for GitOps.   
-The [CLI-based installation for Hybrid GitOps]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/) is now considered legacy.  
-We will deprecate this installation mode permanently in the coming months. Please stay tuned for further updates and instructions, including the migration process.
+The [CLI-based installation for Hybrid GitOps]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/) is considered legacy.  
+We will deprecate this installation mode permanently in the coming months. Please stay tuned for further updates and instructions, including guidelines on the migration process.
 
 
 Install Hybrid Runtimes for GitOps in Codefresh accounts through Helm charts. 
 
+You can install a single GitOps Runtime per cluster. 
+Multiple Runtimes per account on different clusters.
+Every Runtime in your account must be unique
+
 
 * **First-time GitOps Runtime installation**  
- If you are installing the first GitOps Runtime in a Codefresh account, make sure you the complete the [pre-requisites](#prepare-for-gitops-runtime-installation) and meet [system requirements](#minimum-system-requirements), before starting the installation. Then follow our [step-by-step guide](#install-first-gitops-runtime-in-account) to complete the installation through the Codefresh UI.
+ If you are installing the first GitOps Runtime in your Codefresh account, before starting the installation, complete the [pre-requisites](#prepare-for-gitops-runtime-installation) and make sure you meet the [system requirements](#minimum-system-requirements). Then install the Hybrid GitOps Runtime from the Codefresh UI following our [step-by-step guide](#install-first-gitops-runtime-in-account).
 
-* **Installing additional Runtimes in account**  
-  If you have already installed a GitOps Runtime in your account, as you have already set up the Git provider and Shared Configuration Repository for your accounts, you can go to our [quick install](#install-additional-gitops-runtimes-in-account) section.
+* **Installing additional Runtimes in accounts**  
+  If you have already installed a GitOps Runtime in your account, and want to install additional Runtimes in the same account on different clusters, you can follow the [quick install](#install-additional-gitops-runtimes-in-account, as already set up the Git provider and Shared Configuration Repository for your account.
   
 
 
@@ -62,16 +66,10 @@ Changing the Argo CD password can result in system instability, and disrupt the 
 
 
 
-
-
-
-
-
-
 ## Install first GitOps Runtime in account 
-To install the first GitOps Runtime in your Codefresh account, If this is the first Helm Runtime install in your Codefresh account, install the Runtime from the Codefresh UI, following our step-by-step Hybrid GitOps Runtime installation procedure
+If this is the first Helm Runtime install in your Codefresh account, install the Runtime from the Codefresh UI, following the step-by-step Hybrid GitOps Runtime installation procedure.
 
-The Codefresh `values.yaml` located [here](https://github.com/codefresh-io/gitops-runtime-helm/blob/main/charts/gitops-runtime/){:target="\_blank"}contains all the arguments you can configure, including optional ones.
+The Codefresh `values.yaml` located [here](https://github.com/codefresh-io/gitops-runtime-helm/blob/main/charts/gitops-runtime/){:target="\_blank"}, contains all the arguments you can configure, including optional ones.
 
 ### Before you begin
 * Make sure you meet the [minimum requirements](#minimum-system-requirements) for installation
@@ -382,37 +380,42 @@ You can now add [external clusters to the Runtime]({{site.baseurl}}/docs/install
 
 
 ## Install additional GitOps Runtimes in account
-Install additional GitOps Runtimes via Helm in the same account
+As long as the account is on different clusters, you can install additional GitOps Runtimes via Helm in the same account.  
 
-Install the Hybrid GitOps Runtime via Helm with the default tunnel-based access mode. You will copy the Helm install command from the UI to get the values that Codefresh automatically retrieves for you such as your account ID, and then run the command.
+Copy the Helm install command from the UI to get the values that Codefresh automatically retrieves for you such as your account ID, and then run the command.
 
-The Codefresh `values.yaml` is located [here](https://github.com/codefresh-io/gitops-runtime-helm/blob/main/charts/gitops-runtime/){:target="\_blank"}. It contains all the arguments that can be configured, including optional ones.
+>**NOTE**: 
+Every Runtime must have a unique name in the same account.  
 
-### Before running quick install
-
-**Notes & assumptions**  
-Quick installation assumes that:
-* You have set up a Git provider and the Shared Configuration Repository for your account. If these are not defined, you can define them _after_ installation from the Codefresh UI, when prompted to do so.  
-  See [Update Git credentials for GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#update-git-credentials-for-gitops-runtimes) and [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/).
-* Your cluster does not have [Argo project components & CRDs](#argo-project-components--crds).
+The Codefresh `values.yaml` located [here](https://github.com/codefresh-io/gitops-runtime-helm/blob/main/charts/gitops-runtime/){:target="\_blank"}, contains all the arguments you can configure, including optional ones.
 
 
-**Automated validation**  
-Codefresh automatically validates the `values` file before initiating the installation. If there is a validation failure, Codefresh terminates the installation.  
+1. In the Codefresh UI, go to [Install Hybrid GitOps Runtime](https://g.codefresh.io/2.0/account-settings/runtimes/info/list?drawer=install-codefresh-runtime){:target="\_blank"}.
+1. Copy the command in _Step 4_ and define the values that are not automatically populated.
 
-* Validation failures  
-  To get more details on the reasons for the failure, run:  
-    `kubectl logs jobs/validate-values -n ${NAMESPACE}`  
-    where:  
-      * `{NAMESPACE}` must be replaced with the namespace of the Hybrid GitOps Runtime. 
+{% include
+image.html
+lightbox="true"
+file="/images/runtime/hybrid-helm-quick-install-copy-values.png"
+url="/images/runtime/hybrid-helm-quick-install-copy-values.png"
+alt="Copy command with automatically populated values from UI"
+caption="Copy command with automatically populated values from UI"
+max-width="40%"
+%}
 
-* To disable automated validation, add `--set installer.skipValidation=true` to the install command.
 
-For more details, see [Step 1: (Optional) Validate Helm values file](#step-1-optional-validate-helm-values-file) in this article. 
+where:   
+  * `<helm-release-name>` is the name of the Helm release, and you can eiterh retain the default `cf-gitops-runtime`, or define a custom release name.  
+  * `<namespace>` is the namespace in which to install the Hybrid GitOps runtime, and is either `codefresh` which is the default, or any custom name that you define.
+  * `<codefresh-account-id>` is mandatory only for _tunnel-based Hybrid GitOps Runtimes_ which is also the default access mode. Automatically populated by Codefresh in the command. 
+  * `<codefresh-token>` is the API key, either an existing one or the new API key you generated. When generated, it is automatically populated in the command.
+  * `<runtime-name>` is the name of the runtime, and must be unique in your account. 
+  * `<helm-repo-chart-name>` is the name of the repo in which to add the Helm chart, and is either `cf-gitops-runtime` which is the default, or any custom name you define. 
+  * `--wait` waits until all the pods are up and running for the deployment. 
 
 ## Install GitOps Runtime via Terraform
 
-You can also use Terraform to install a Codefresh runtime with the [Helm provider](https://registry.terraform.io/providers/hashicorp/helm/latest/docs){:target="\_blank"}.
+You can also use Terraform to install a GitOps Runtime with the [Helm provider](https://registry.terraform.io/providers/hashicorp/helm/latest/docs){:target="\_blank"}.
 
 Here is an example
 
@@ -440,37 +443,14 @@ resource "helm_release" "my_gitops_runtime" {
 }
 ```
 
-Feel free to user a different chart version and your own runtime name. You can get both values for Codefresh token and account ID from the Codefresh UI as explained in the previous section.
+Feel free to user a different chart version and a unique name for the Runtime. You can get both values for Codefresh token and account ID from the Codefresh UI as explained in the previous section.
 
-By default the Codefresh runtime can deploy to the cluster it is installed on.
+By default the Codefresh Runtime can deploy to the cluster it is installed on.
 You can also [use Terraform to connect additional]({{site.baseurl}}/docs/installation/gitops/managed-cluster/#add-a-managed-cluster-with-terraform) external clusters to your runtime.
 
-### Copy & run Helm installation command
-
-1. In the Codefresh UI, go to [Install Hybrid GitOps Runtime](https://g.codefresh.io/2.0/account-settings/runtimes/info/list?drawer=install-codefresh-runtime){:target="\_blank"}.
-1. Copy the command in _Step 4_ and define the values that are not automatically populated.
-
-{% include
-image.html
-lightbox="true"
-file="/images/runtime/hybrid-helm-quick-install-copy-values.png"
-url="/images/runtime/hybrid-helm-quick-install-copy-values.png"
-alt="Copy command with automatically populated values from UI"
-caption="Copy command with automatically populated values from UI"
-max-width="40%"
-%}
 
 
-where:   
-  * `<helm-release-name>` is the name of the Helm release, and is either the default `cf-gitops-runtime`, or any custom release name that you define.  
-  * `<namespace>` is the namespace in which to install the Hybrid GitOps runtime, and is either `codefresh` which is the default, or any custom name that you define.
-  * `<codefresh-account-id>` is mandatory only for _tunnel-based Hybrid GitOps Runtimes_ which is also the default access mode. Automatically populated by Codefresh in the command. 
-  * `<codefresh-token>` is the API key, either an existing one or the new API key you generated. When generated, it is automatically populated in the command.
-  * `<runtime-name>` is the name of the runtime, either `codefresh` which is the default, or a custom name that you define. 
-  * `<helm-repo-chart-name>` is the name of the repo in which to add the Helm chart, and is either `cf-gitops-runtime` which is the default, or any custom name you define. 
-  * `--wait` waits until all the pods are up and running for the deployment. 
-
-## Post-installation GitOps Runtime configuration
+## Optional GitOps Runtime configuration
 
 ### Image overrides for private registries
 If you use private registries, you need to override specific image values for the different subcharts and container images.
@@ -481,7 +461,7 @@ For more details, see [ArtifactHub](https://artifacthub.io/packages/helm/codefre
 
 Repository certificates are required to authenticate users to on-premises Git servers.  
 
-If your Git servers are on-premises, add the repository certificates to your Codefresh `values` file, in `.values.argo-cd`. These values are used by the argo-cd Codefresh deploys. For details on adding repository certificates, see this [section](https://github.com/codefresh-io/argo-helm/blob/argo-cd-5.29.2-cap-CR-18430/charts/argo-cd/values.yaml#LL336C7-L336C7){:target="\_blank"}.
+If your Git servers are on-premises, add the repository certificates to your Codefresh `values` file, in `.values.argo-cd`. These values are used by the Argo CD that Codefresh deploys. For details on adding repository certificates, see this [section](https://github.com/codefresh-io/argo-helm/blob/argo-cd-5.29.2-cap-CR-18430/charts/argo-cd/values.yaml#LL336C7-L336C7){:target="\_blank"}.
 
 {% highlight yaml %} 
 global:
@@ -511,7 +491,7 @@ global:
 |Cluster permissions | Cluster admin permissions |
 |Git providers    |{::nomarkdown}<ul><li>GitHub</li><li>GitHub Enterprise</li><li>GitLab Cloud</li><li>GitLab Server</li><li>Bitbucket Cloud</li><li>Bitbucket Server</li></ul>{:/}|
 |Git access tokens    | {::nomarkdown}Git runtime token:<ul><li>Valid expiration date</li><li>Scopes:<ul><li><a href="https://codefresh.io/docs/docs/reference/git-tokens/#github-and-github-enterprise-runtime-token-scopes">GitHub and GitHub Enterprise</a></li><li><a href="https://codefresh.io/docs/docs/reference/git-tokens/#gitlab-cloud-and-gitlab-server-runtime-token-scopes">GitLab Cloud and GitLab Server</a></li><li><a href="https://codefresh.io/docs/docs/reference/git-tokens/#bitbucket-cloud-and-bitbucket-server-runtime-token-scopes">Bitbucket Cloud and Server</a> </li></ul></ul>{:/}|
-| |Git personal token:{::nomarkdown}<ul><li>Valid expiration date</li><li>Scopes: <ul><li><a href="https://codefresh.io/docs/docs/reference/git-tokens/#github-and-github-enterprise-personal-user-token-scopes">GitHub and GitHub Enterprise</a></li><li><a href="https://codefresh.io/docs/docs/reference/git-tokens/#gitlab-cloud-and-gitlab-server-personal-user-token-scopes">GitLab Cloud and GitLab Server</a></li><li><a href="https://codefresh.io/docs/docs/reference/git-tokens/#bitbucket-cloud-and-server-personal-user-token-scopes">Bitbucket Cloud and Server</a> </li></ul>{:/}|
+| |Git user token:{::nomarkdown}<ul><li>Valid expiration date</li><li>Scopes: <ul><li><a href="https://codefresh.io/docs/docs/reference/git-tokens/#github-and-github-enterprise-personal-user-token-scopes">GitHub and GitHub Enterprise</a></li><li><a href="https://codefresh.io/docs/docs/reference/git-tokens/#gitlab-cloud-and-gitlab-server-personal-user-token-scopes">GitLab Cloud and GitLab Server</a></li><li><a href="https://codefresh.io/docs/docs/reference/git-tokens/#bitbucket-cloud-and-server-personal-user-token-scopes">Bitbucket Cloud and Server</a> </li></ul>{:/}|
 
 ## Ingress controller configuration
   

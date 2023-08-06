@@ -186,7 +186,7 @@ The table below highlights the main differences between Hosted and Hybrid GitOps
 | --------------          | --------------     |---------------             | --------------- |
 | Runtime                 | Installation       | Provisioned by Codefresh   | Provisioned by customer       |
 |                         | Runtime cluster    | Managed by Codefresh       | Managed by customer       |
-|                         | Number per account | One runtime                | Multiple runtimes            |
+|                         | Number per account | One runtime                | Multiple runtimes, one per cluster            |
 |                         | External cluster   | Managed by customer        | Managed by customer         |
 |                         | Upgrade            | Managed by Codefresh       | Managed by customer |
 |                         | Uninstall          | Managed by customer        | Managed by customer |
