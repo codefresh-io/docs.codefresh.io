@@ -12,7 +12,7 @@ toc: true
 
 The **Runtimes** page displays the provisioned GitOps Runtimes in your account, both Hybrid, and the Hosted Runtime if you have one.
 
-View Runtime components and information in [List or Topology view formats](/#gitops-runtime-views) to manage and monitor them.
+View Runtime components and information in [List or Topology view formats](/#gitops-runtime-views), to manage and monitor them.
 
 {% include
    image.html
@@ -45,11 +45,12 @@ View Runtime components and information in [List or Topology view formats](/#git
 > **TIP**:
 >Unless specified otherwise, all options are common to both types of GitOps Runtimes. If an option is valid only for Hybrid GitOps, it is indicated as such.
 
-## ArgoCD password
-
 >**WARNING**:
 Do not change the ArgoCD password by logging into the ArgoCD UI with the `argocd-initial-admin-secret`.
 Changing the ArgoCD password can result in system instability, and disrupt the proper functioning of the Codefresh platform.
+
+
+
 
 ## GitOps Runtime views
 
@@ -113,7 +114,115 @@ Here is a description of the information in the Topology view.
 |**Health/Sync status** |The health and sync status of the Runtime or cluster. {::nomarkdown}<ul><li><img src="../../../../images/icons/error.png" display="inline-block"> indicates health or sync errors in the Runtime, or a managed cluster if one was added to the runtime.</br> The runtime or cluster node is bordered in red and the name is colored red.</li> <li><img src="../../../../images/icons/cf-sync-status.png" display=inline-block/> indicates that the Runtime is being synced to the cluster on which it is provisioned.</li></ul> {:/} |
 |**Search and View options** | {::nomarkdown}<ul><li>Find a Runtime or its clusters by typing part of the Runtime/cluster name, and then navigate to the entries found. </li> <li>Topology view options: Resize to window, zoom in, zoom out, full screen view.</li></ul> {:/}|
 
+## (Helm Hybrid GitOps) Upgrade GitOps Runtimes
 
+Upgrade provisioned Hybrid GitOps Runtimes to install critical security updates, get new functionality, and the latest versions of all components.
+The upgrade procedure differs depending on whether the GitOps Runtime has been configured as an Argo CD application or not:
+* Argo CD GitOps Runtimes: For Runtimes configured as Argo CD applications, you need to manually update the version in the Helm chart located in the Shared Configuration Repository.
+* Non-Argo CD GitOps Runtimes: Run the upgrade command.  
+
+If you have managed clusters for Hybrid GitOps Runtimes, upgrading the Runtime automatically updates runtime components within the managed cluster as well.
+
+>The `Update Available! Notification` in the List View's Version column indicates that a newer version of the Runtime, Helm chart, or both are available.
+
+
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
+1. From Runtimes in the sidebar, select [**GitOps Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
+1. Switch to either the **List View** or to the **Topology View**.
+1. **List view**:
+    1. To see all the commits to the Runtime, in the Version column, mouse over **Update Available!**, and select **View Complete Change Log**.
+    1. Do one of the following:
+        * To the right of the row with the Runtime to upgrade, click the context menu and select **Upgrade**.
+        * Click the Runtime name, and then click **Upgrade** on the top-right.
+
+  {% include
+    image.html
+  lightbox="true"
+  file="/images/runtime/runtime-list-view-upgrade.png"
+  url="/images/runtime/runtime-list-view-upgrade.png"
+  alt="List View: Upgrade runtime option"
+  caption="List View: Upgrade runtime option"
+  max-width="80%"
+  %}
+
+  **Topology view**:
+  Click the Runtime cluster, and from the panel, click the context menu, and then select **Upgrade Runtime**.
+  {% include
+ image.html
+ lightbox="true"
+ file="/images/runtime/runtiime-topology-upgrade.png"
+ url="/images/runtime/runtiime-topology-upgrade.png"
+ alt="Topology View: Upgrade runtime option"
+ caption="Topology View: Upgrade runtime option"
+  max-width="50%"
+%}
+
+{:start="5"}
+1. Do one of the following depending on whether you have configured the Runtime as an Argo CD Application or not:
+  * Argo CDGitOps Runtimes:Continue from step _6_.
+  * Non-Argo CD GitOps Runtimes: Continue from step _7_.
+1. For GitOps Runtimes, do the following:
+    1. In your Shared Configuration Repository, go to `resources/<runtime_name>/chart`
+       where, `<runtime_name>` is the name of the Hybrid GitOps Runtime to upgrade.
+    1. In the `chart.yaml`, change the version number in both `.version` and `.dependencies.version`.
+    1. Commit the change, and push to your Git server.
+```yaml
+apiVersion: v2
+appVersion: 1.0.0
+description: Codefresh gitops runtime umbrella chart
+name: codefresh-gitops-runtime
+version: <version>
+dependencies:
+  - name: gitops-runtime
+    repository: https://chartmuseum.codefresh.io/gitops-runtime
+    version: <version>
+```
+1. For non-GitOps Runtimes, do the following:
+    1. Copy and run the upgrade command:
+        `RELEASE_NAME=$(helm ls -n codefresh-gitops-runtime -q) && helm upgrade ${RELEASE_NAME} -n codefresh-gitops-runtime`
+    1. To exit the upgrade panel, click **Close**.
+
+
+
+## (Helm Hybrid GitOps) Remove GitOps Runtimes
+Remove Helm GitOps Runtimes that are offline from the Codefresh UI. The Runtime is not removed from the cluster.
+
+>The Remove option is available in List View, and is enabled only when a Helm Runtime is offline.
+
+
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
+1. From Runtimes in the sidebar, select [**GitOps Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
+1. Switch to either the **List View** or to the **Topology View**.
+1. Do one of the following:
+      * To the right of the row with the Runtime to remove, click the context menu and select **Remove**.
+      * Click the Runtime name, click the context-menu on the top-right, and then select **Remove**.
+
+<!--- {% include
+ image.html
+ lightbox="true"
+ file="/images/runtime/uninstall-location.png"
+ url="/images/runtime/uninstall-location.png"
+ alt="List View: Uninstall runtime option"
+ caption="List View: Uninstall runtime option"
+  max-width="30%"
+%}
+
+**Topology view**:
+  Click the Runtime cluster, and from the panel, click the context menu, and then select **Remove**.
+
+  {% include
+ image.html
+ lightbox="true"
+ file="/images/runtime/runtime-topology-uninstall.png"
+ url="/images/runtime/runtime-topology-uninstall.png"
+ alt="Topology View: Uninstall runtime option"
+ caption="Topology View: Uninstall runtime option"
+  max-width="30%"
+%} -->
+
+{:start="5"}
+
+1. Click **Remove** to confirm.
 
 ## Configure SSH for GitOps Runtimes
 By default, Git repositories use the HTTPS protocol. You can also use SSH to connect Git repositories by entering the SSH private key.
@@ -212,115 +321,7 @@ For more details, read [Configuring Deep Links in Argo CD](https://argo-cd.readt
 
 
 
-## (Helm Hybrid GitOps) Upgrade GitOps Runtimes
 
-Upgrade provisioned Hybrid GitOps Runtimes to install critical security updates, get new functionality, and the latest versions of all components.
-The upgrade procedure differs depending on whether the GitOps Runtime has been configured as an Argo CD application or not:
-* Argo CD GitOps Runtimes: For Runtimes configured as Argo CD applications, you need to manually update the version in the Helm chart located in the Shared Configuration Repository.
-* Non-Argo CD GitOps Runtimes: Run the upgrade command.  
-
-If you have managed clusters for Hybrid GitOps Runtimes, upgrading the Runtime automatically updates runtime components within the managed cluster as well.
-
->The `Update Available! Notification` in the List View's Version column indicates that a newer version of the Runtime, Helm chart, or both are available.
-
-
-1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
-1. From Runtimes in the sidebar, select [**GitOps Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
-1. Switch to either the **List View** or to the **Topology View**.
-1. **List view**:
-    1. To see all the commits to the Runtime, in the Version column, mouse over **Update Available!**, and select **View Complete Change Log**.
-    1. Do one of the following:
-        * To the right of the row with the Runtime to upgrade, click the context menu and select **Upgrade**.
-        * Click the Runtime name, and then click **Upgrade** on the top-right.
-
-  {% include
-    image.html
-  lightbox="true"
-  file="/images/runtime/runtime-list-view-upgrade.png"
-  url="/images/runtime/runtime-list-view-upgrade.png"
-  alt="List View: Upgrade runtime option"
-  caption="List View: Upgrade runtime option"
-  max-width="80%"
-  %}
-
-  **Topology view**:
-  Click the Runtime cluster, and from the panel, click the context menu, and then select **Upgrade Runtime**.
-  {% include
- image.html
- lightbox="true"
- file="/images/runtime/runtiime-topology-upgrade.png"
- url="/images/runtime/runtiime-topology-upgrade.png"
- alt="Topology View: Upgrade runtime option"
- caption="Topology View: Upgrade runtime option"
-  max-width="50%"
-%}
-
-{:start="5"}
-1. Do one of the following depending on whether you have configured the Runtime as an Argo CD Application or not:
-  * Argo CDGitOps Runtimes:Continue from step _6_.
-  * Non-Argo CD GitOps Runtimes: Continue from step _7_.
-1. For GitOps Runtimes, do the following:
-    1. In your Shared Configuration Repository, go to `resources/<runtime_name>/chart`
-       where, `<runtime_name>` is the name of the Hybrid GitOps Runtime to upgrade.
-    1. In the `chart.yaml`, change the version number in both `.version` and `.dependencies.version`.
-    1. Commit the change, and push to your Git server.
-```yaml
-apiVersion: v2
-appVersion: 1.0.0
-description: Codefresh gitops runtime umbrella chart
-name: codefresh-gitops-runtime
-version: <version>
-dependencies:
-  - name: gitops-runtime
-    repository: https://chartmuseum.codefresh.io/gitops-runtime
-    version: <version>
-```
-1. For non-GitOps Runtimes, do the following:
-    1. Copy and run the upgrade command:
-        `RELEASE_NAME=$(helm ls -n codefresh-gitops-runtime -q) && helm upgrade ${RELEASE_NAME} -n codefresh-gitops-runtime`
-    1. To exit the upgrade panel, click **Close**.
-
-
-
-## (Helm install only) Remove GitOps Runtimes
-Remove Helm GitOps Runtimes that are offline from the Codefresh UI. The Runtime is not removed from the cluster.
-
->The Remove option is available in List View, and is enabled only when a Helm Runtime is offline.
-
-
-1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
-1. From Runtimes in the sidebar, select [**GitOps Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
-1. Switch to either the **List View** or to the **Topology View**.
-1. Do one of the following:
-      * To the right of the row with the Runtime to remove, click the context menu and select **Remove**.
-      * Click the Runtime name, click the context-menu on the top-right, and then select **Remove**.
-
-<!--- {% include
- image.html
- lightbox="true"
- file="/images/runtime/uninstall-location.png"
- url="/images/runtime/uninstall-location.png"
- alt="List View: Uninstall runtime option"
- caption="List View: Uninstall runtime option"
-  max-width="30%"
-%}
-
-**Topology view**:
-  Click the Runtime cluster, and from the panel, click the context menu, and then select **Remove**.
-
-  {% include
- image.html
- lightbox="true"
- file="/images/runtime/runtime-topology-uninstall.png"
- url="/images/runtime/runtime-topology-uninstall.png"
- alt="Topology View: Uninstall runtime option"
- caption="Topology View: Uninstall runtime option"
-  max-width="30%"
-%} -->
-
-{:start="5"}
-
-1. Click **Remove** to confirm.
 
 ## Uninstall GitOps Runtimes
 
@@ -522,7 +523,7 @@ If you are using Git user tokens for authentication, you can also update them th
   * `--git-api-url` is optional for all Git providers, including on-premises repo clones.
 
 
-## (Legacy Hybrid GitOps install) View/download logs for GitOps Runtimes
+## (Legacy CLI Hybrid GitOps) View/download logs for GitOps Runtimes
 Logs are available for completed Runtimes, both for the runtime and for individual runtime components. Download log files for offline viewing and analysis, or view online logs for a Runtime component, and download if needed for offline analysis. Online logs support free-text search, search-result navigation, and line-wrap for enhanced readability.
 
 Log files include events from the date of the application launch, with the newest events listed first.
@@ -613,7 +614,7 @@ Online logs show up to 1000 of the most recent events (lines), updated in real t
 
 
 
-## (Legacy Hybrid GitOps only) Restoring provisioned GitOps Runtimes
+## (Legacy CLI Hybrid GitOps) Restoring provisioned GitOps Runtimes
 
 In case of cluster failure, restore the provisioned Hybrid GitOps Runtime from the existing runtime installation repository.
 For partial or complete cluster failures, you can restore the Runtime to either the failed cluster or to a different cluster.
@@ -746,8 +747,8 @@ The Activity Log is a quick way to monitor notifications for Runtime events such
 
 
 ## Related articles
-[Add Git Sources to GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)
-[Add external clusters to GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster/)
+[Add Git Sources to GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
+[Add external clusters to GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster/)  
 [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration)
 
 

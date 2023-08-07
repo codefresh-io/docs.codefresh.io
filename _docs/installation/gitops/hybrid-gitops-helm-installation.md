@@ -13,7 +13,7 @@ The [CLI-based installation for Hybrid GitOps]({{site.baseurl}}/docs/installatio
 We will deprecate this installation mode permanently in the coming months. Please stay tuned for further updates and instructions, including guidelines on the migration process.
 
 
-This article walks you through the process of installing Hybrid GitOps Runtimes in your Codefresh accounts using Helm charts. Please note that you can have only one GitOps Runtime per cluster, but multiple GitOps Runtimes can be installed in the same account across different clusters. Each Runtime within your account must have a unique name.
+This article walks you through the process of installing Hybrid GitOps Runtimes in your Codefresh accounts using Helm charts. Note that you can have only one GitOps Runtime per cluster, but multiple GitOps Runtimes can be installed in the same account across different clusters. Each Runtime within your account must have a unique name.
 
 * **First-time GitOps Runtime installation**   
   If this is your first time installing a GitOps Runtime in your Codefresh account, follow these steps:
@@ -23,11 +23,9 @@ This article walks you through the process of installing Hybrid GitOps Runtimes 
   * [Step-by-step installation](#install-first-gitops-runtime-in-account): Follow our step-by-step guide to install the Hybrid GitOps Runtime from the Codefresh UI.
 
 
-
-
 * **Installing additional GitOps Runtimes in accounts**  
-  If you have already installed a GitOps Runtime in your account, and want to install additional Runtimes on different clusters on different clusters within the same account, continue with a simplified installation.  
-  Since you have already set up the Git provider and Shared Configuration Repository for your account during the initial installation, go for the [shorter install](#install-additional-gitops-runtimes-in-account).
+  If you have already installed a GitOps Runtime in your account, and want to install additional Runtimes on different clusters within the same account, continue with a [simplified installation](#install-additional-gitops-runtimes-in-account) from the Codefresh UI, or use [Terraform](/install-gitops-runtime-via-terraform).  
+  Git provider and Shared Configuration Repository for example are not required for the additional Runtimes, as they are already set up for your account.
   
 
 
@@ -35,22 +33,24 @@ This article walks you through the process of installing Hybrid GitOps Runtimes 
 
 
 ### Argo project components & CRDs
-Hybrid GitOps installation requires a cluster without Argo project components and CRDs. 
+Hybrid GitOps installation requires a cluster without Argo project components (Argo Rollouts, Argo CD, Argo Events, and Argo Workflows), and CRDs. 
 
-* Argo project components include Argo Rollouts, Argo CD, Argo Events, and Argo Workflows.  
+If you already have Argo project CRDs on your cluster, you can handle Argo project CRDs outside the chart, or as recommended, adopt the CRDs to be managed by the GitOps Runtime Helm release. Allowing the Runtime to manage the CRDs also ensures that the CRDs are automatically upgraded whenever the Runtime is upgraded.
 
-* You can handle Argo project CRDs outside the chart, or as recommended, adopt the CRDs to be managed by the GitOps Runtime Helm release. 
-  If you already have Argo project CRDs on your cluster, do one of the following:
-  * Handle Argo projects CRDs outside of the chart (see [Argo's readme on Helm charts](https://github.com/argoproj/argo-helm/blob/main/README.md){:target="\_blank"}) 
-    Disable CRD installation under the relevant section for each of the Argo projects in the Helm chart:<br>
-    `--set <argo-project>.crds.install=false`<br>
-    where:<br>
-    `<argo-project>` is the argo project component: `argo-cd`, `argo-workflows`, `argo-rollouts` and `argo-events`.
 
-  * Adopt the CRDs<br>
-    Adopting the CRDs allows them to be managed by the `gitops-runtime helm release`. Doing so ensures when you upgrade the Hybrid GitOps Runtime, the CRDs are also automatically upgraded.
+#### Handle Argo project CRDs outside of the chart 
+Disable CRD installation under the relevant section for each of the Argo projects in the Helm chart:<br>
+  `--set <argo-project>.crds.install=false`<br>
+  where:<br>
+  `<argo-project>` is the argo project component: `argo-cd`, `argo-workflows`, `argo-rollouts` and `argo-events`.
+ 
+See [Argo's readme on Helm charts](https://github.com/argoproj/argo-helm/blob/main/README.md){:target="\_blank"}.  
 
-  Run this script _before_ installation:
+#### Adopt the Argo project CRDs (recommended)
+
+Adopting the CRDs, switches ownership to the Hybrid GitOps Runtime, allowing them to be managed by the GitOps Runtime chart. 
+
+Run this script _before_ installation:
 
 ```
 #!/bin/sh
@@ -70,7 +70,7 @@ Changing the Argo CD password can result in system instability, and disrupt the 
 
 
 ## Install first GitOps Runtime in account 
-If this is the first Helm Runtime install in your Codefresh account, install the Runtime from the Codefresh UI, following the step-by-step Hybrid GitOps Runtime installation procedure.
+If this is the first GitOps Runtime installation in your Codefresh account, install the Runtime from the Codefresh UI, following the step-by-step installation procedure.
 
 The Codefresh `values.yaml` located [here](https://github.com/codefresh-io/gitops-runtime-helm/blob/main/charts/gitops-runtime/){:target="\_blank"}, contains all the arguments you can configure, including optional ones.
 
@@ -383,14 +383,15 @@ You can now add [external clusters to the Runtime]({{site.baseurl}}/docs/install
 
 
 ## Install additional GitOps Runtimes in account
-After installing the first RUntime Install one or more GitOps Runtimes on different clusters within the same account.  
+Install additional Hybrid GitOps Runtimes on different clusters within the same account.  
 The Codefresh `values.yaml` located [here](https://github.com/codefresh-io/gitops-runtime-helm/blob/main/charts/gitops-runtime/){:target="\_blank"}, contains all the arguments you can configure, including optional ones.
 
+
 **Git provider and Shared Configuration Repository**  
-The Git provider and Shared Configuration Repository is configured once per account. As you have already completed this setup in your initial installation, additional installations do not require this.
+The Git provider and Shared Configuration Repository, configured once per account, is already available this setup in your initial installation, additional installations do not require this.
 
 **Access mode**  
-You can define the tunnel/ingres/service-mesh-based access mode for the additional Rntimes. The command below is valid for the tunnel-based access mode. For ingress-based or service-mesh-based access modes, add the required arguments and values, as described in Step ??
+You can define the tunnel/ingress/service-mesh-based access mode for the additional GitOps Runtimes. The command in the How To below is valid for the tunnel-based access mode. For ingress-based or service-mesh-based access modes, add the required arguments and values, as described in the step-by-step section, [Step 4: Install Hybrid GitOps Runtime](/#step-4-install-hybrid-gitops-runtime).
 
 **Runtime name**  
 The new Runtime must have a unique name in the same account.  
@@ -421,9 +422,20 @@ where:
   * `<helm-repo-chart-name>` is the name of the repo in which to add the Helm chart, and is either `cf-gitops-runtime` which is the default, or any custom name you define. 
   * `--wait` waits until all the pods are up and running for the deployment. 
 
+
+**Post-installation configuration**  
+
+Depending on your configuration, if you have private registries, you need to override specific image values, and if your Git servers are on-premises, you need to add custom repository certificates. See [Optional GitOps Runtime configuration](#optional-gitops-runtime-configuration) in this article. 
+
+You can now add [Git Sources]({{site.baseurl}}/installation/gitops/git-sources/), [external clusters]({{site.baseurl}}/docs/installation/gitops/managed-cluster/), [create and deploy GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application/).
+
+ 
+
+
 ## Install GitOps Runtime via Terraform
 
 You can also use Terraform to install a GitOps Runtime with the [Helm provider](https://registry.terraform.io/providers/hashicorp/helm/latest/docs){:target="\_blank"}.
+
 
 Here is an example:
 
@@ -451,9 +463,13 @@ resource "helm_release" "my_gitops_runtime" {
 }
 ```
 
-Feel free to user a different chart version and a unique name for the Runtime. You can get the values for both the Codefresh API token and account ID from the Codefresh UI as explained in the previous section.
+Feel free to user a different chart version and a unique name for the Runtime. You can get the values for both the Codefresh API token and account ID from the Codefresh UI as explained in the previous section.  
 
-By default the Codefresh Runtime can deploy to the cluster it is installed on.
+The example is valid for the tunnel-based access mode. For ingress-based or service-mesh-based access modes, add the required arguments and values, as described in the step-by-step section, [Step 4: Install Hybrid GitOps Runtime](/#step-4-install-hybrid-gitops-runtime).
+
+Depending on your configuration, if you have private registries, you need to override specific image values, and if your Git servers are on-premises, you need to add custom repository certificates. See [Optional GitOps Runtime configuration](#optional-gitops-runtime-configuration) in this article. 
+
+By default, the Codefresh Runtime can deploy to the cluster it is installed on.
 You can also [use Terraform to connect additional]({{site.baseurl}}/docs/installation/gitops/managed-cluster/#add-a-managed-cluster-with-terraform) external clusters to your runtime.
 
 
@@ -1202,5 +1218,7 @@ providers:
 
 ## Related articles
 [Managing and monitoring GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/)  
+[Add Git Sources to GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
+[Add external clusters to GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster/)  
 [GitOps architecture]({{site.baseurl}}/docs/installation/runtime-architecture/#gitops-architecture)  
 
