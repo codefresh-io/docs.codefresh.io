@@ -304,7 +304,8 @@ You cannot configure the Runtime as an Argo Application if you have not configur
 
 
 ### Step 6: (Optional) Create a Git Source
-Create a Git Source for the Runtime. A Git Source is a Git repository with an opionionated folder structure, managed by Codefresh. You can create Git Sources at any time through the Codefresh UI.
+Create a Git Source for the Runtime. A Git Source is a Git repository with an opinionated folder structure, managed by Codefresh.  
+You can always create Git Sources after installation whenever you need to from the Codefresh UI.
 
 1. Optional. Create a [Git Source]({{site.baseurl}}/docs/installation/gitops/git-sources/#create-a-git-source).
 1. Continue with [Step 7: (Optional) Configure ingress-controllers](#step-7-optional-configure-ingress-controllers).
@@ -457,7 +458,7 @@ global:
 |Node requirements| {::nomarkdown}<ul><li>Memory: 5000 MB</li><li>CPU: 2</li></ul>{:/}|
 |Cluster permissions | Cluster admin permissions |
 |Git providers    |{::nomarkdown}<ul><li>GitHub</li><li>GitHub Enterprise</li><li>GitLab Cloud</li><li>GitLab Server</li><li>Bitbucket Cloud</li><li>Bitbucket Server</li></ul>{:/}|
-|Git access tokens    | {::nomarkdown}Git runtime token:<ul><li>Valid expiration date</li><li><a href="https://codefresh.io/docs/docs/reference/git-tokens/#git-runtime-token-scopes">Scopes:</a> </li></ul></ul>{:/}|
+|Git access tokens    | {::nomarkdown}Git runtime token:<ul><li>Valid expiration date</li><li><a href="https://codefresh.io/docs/docs/reference/git-tokens/#git-runtime-token-scopes">Scopes</a> </li></ul></ul>{:/}|
 | |Git user token:{::nomarkdown}<ul><li>Valid expiration date</li><li><a href="https://codefresh.io/docs/docs/reference/git-tokens/#git-user-access-token-scopes">Scopes</a> </li></ul>{:/}|
 
 ## Ingress controller configuration
