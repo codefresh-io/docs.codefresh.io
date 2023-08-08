@@ -18,7 +18,7 @@ This article walks you through the process of installing Hybrid GitOps Runtimes 
 * **First-time GitOps Runtime installation**   
   If this is your first time installing a GitOps Runtime in your Codefresh account, follow these steps:
 
-  * [Complete pre-requisites]((#prepare-for-gitops-runtime-installation)): Before starting the installation, complete pre-requisites, as described in Prepare for GitOps Runtime Installation.
+  * [Complete pre-requisites](#prepare-for-gitops-runtime-installation): Before starting the installation, complete pre-requisites, as described in Prepare for GitOps Runtime Installation.
   * [System requirements](#minimum-system-requirements): Check the minimum system requirements to ensure smooth installation.
   * [Step-by-step installation](#install-first-gitops-runtime-in-account): Follow our step-by-step guide to install the Hybrid GitOps Runtime from the Codefresh UI.
 
