@@ -6,10 +6,11 @@ sub_group: gitops
 toc: true
 ---
 
-Monitor applications across clusters, and the deployments, resources, and services for an application in the GitOps Apps dashboard. As a one-stop shop for Argo Rollouts and Argo CD, the GitOps Apps dashboard in Codefresh delivers on the challenge of keeping track of your applications and their deployments, whatever the frequency and scale, across all clusters in your enterprise. A wide range of filters, progressive delivery views, and enriched CI and CD information, provide full traceability and visibility to your deployments.  
 
-Select the view format for the GitOps Apps dashboard, as either [List or Card views](#select-view-mode-for-the-gitops-apps-dashboard). The default view displays all applications deployed within the last 30 days. Customize the scope through filters to display the [information](#/#gitops-apps-dashboard-information) you need.
+Monitor applications across clusters, and the deployments, resources, and services for an application in the GitOps Apps dashboard. As a one-stop shop for Argo Rollouts and Argo CD, the GitOps Apps dashboard in Codefresh delivers on the challenge of keeping track of your applications and their deployments, whatever the frequency and scale, across all clusters in your enterprise. A wide range of filters, progressive delivery views, and enriched CI and CD information, provide full traceability and visibility to your deployments.
 
+Select the view format for Applications in the GitOps Apps dashboard, as either [List or Card views](#select-view-mode-for-the-gitops-apps-dashboard). The default view displays all applications deployed within the last 30 days. Customize the scope through filters to display the [information](#gitops-apps-dashboard-application-information) you need.
+  
 {% include
 image.html
 lightbox="true"
@@ -20,15 +21,22 @@ caption="GitOps Apps dashboard: List view"
 max-width="60%"
 %}
 
-    
-Identify applications with [health and sync errors](#identify-applications-with-warningserrors), and then select an application to drill down into its resources, deployments, and services:  
-* [Get status from application header](#get-status-from-application-header)
-* [View deployment and configuration info for selected application](#view-deployment-and-configuration-info-for-selected-application)
-* [Monitor resources for selected application](#monitor-resources-for-selected-application)
-* [Monitor deployments for selected application](#monitor-deployments-for-selected-application)
-* [Monitor services for selected application](#monitor-services-for-selected-application)
+Identify applications with [health and sync errors](#identify-gitops-applications-with-warningserrors), and then select an application to drill down into its resources, deployments, and services:  
+* [Get status from application header](#monitor-gitops-application-status-in-application-header)
+* [View deployment and configuration info for selected application](#view-deployment-configuration-info-for-selected-gitops-application)
+* [Monitor resources for selected GitOps application](#monitor-resources-for-selected-gitops-application)
+* [Monitor deployments for selected GitOps application](#monitor-deployments-for-selected-gitops-application)
+* [Monitor services for selected GitOps application](#monitor-services-for-selected-gitops-application)
 
->For information on creating and managing applications and application resources, see [Creating GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application/) and [Managing GitOps applications]({{site.baseurl}}/docs/deployments/gitops/manage-application/).
+
+
+
+>**NOTE**:  
+For information on creating and managing <!--- application groups, -->applications and application resources, see [Creating GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application/) and [Managing GitOps applications]({{site.baseurl}}/docs/deployments/gitops/manage-application/).
+
+
+
+
 
 ## Select view mode for the GitOps Apps dashboard 
 View deployed applications in either List (the default) or Card views. Both views are sorted by the most recent deployments. 
@@ -63,19 +71,21 @@ caption="GitOps Apps dashboard: Card view"
 max-width="60%"
 %}
 
-## GitOps Apps dashboard information 
-Here's a description of the information and actions in the GitOps Apps dashboard.
+
+## GitOps Apps dashboard application information 
+Here's a description of the information and actions you can see for individual applications in the Applications tab of the GitOps Apps dashboard.
 
 {: .table .table-bordered .table-hover}
 | Item                     | Description            |  
 | --------------         | --------------           |  
-|Application filters       | Filter by a range of attributes to customize the information in the dashboard to bring you what you need. {::nomarkdown}  <ul><li>Application state<br>A snapshot that displays a breakdown of the deployed applications by their health status.<br>Click a status to filter by applications that match it.<br>Codefresh tracks Argo CD's set of health statuses. See the official documentation on <a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/health" target=”_blank”>Health sets</a>.</li><li>Application attributes<br>Attribute filters support multi-selection, and results are based on an OR relationship within the same filter with multiple options, and an AND relationship between filters.<br>Clicking <b>More Filters</b> gives you options to filter by Health status, Cluster names, Namespace, and Type. <br><ul><li>Application Type: Can be any of the following<ul><li>Applications: Standalone applications. See the official documentation on <a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications" target=”_blank”>Applications</a>.</li><li>ApplicationSet: Applications created using the ApplicationSet Custom Resource (CR) template. An ApplicationSet can generate single or multiple applications. See the official documentation on <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/application-set" target=”_blank”>Generating Applications with ApplicationSet</a>.</li><li>Git Source: Applications created by Codefresh that includes other applications and CI resources. See <a href="https://codefresh.io/csdp-docs/docs/runtime/git-sources">Git Sources</a>.</li></ul></li></li><li>Labels:The K8s labels defined for the applications. The list displays labels of <i>all</i> the applications, even if you have applied filters.<br>To see the available labels, select <b>Add</b>, and then select the required label and one or more values. <br>To filter by the labels, select <b>Add</b> and then <b>Apply</b>.<br> See the official documentation on <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels" target=”_blank”>Labels and selectors</a>.</li></ul></ul>{:/}|
+|Application filters       | Filter by a range of attributes to customize the information in the dashboard to bring you what you need. {::nomarkdown}  <ul><li>Application state<br>A snapshot that displays a breakdown of the deployed applications by their health status.<br>Click a status to filter by applications that match it.<br>Codefresh tracks Argo CD's set of health statuses. See the official documentation on <a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/health" target=”_blank”>Health sets</a>.</li><li>Application attributes<br>Attribute filters support multi-selection, and results are based on an OR relationship within the same filter with multiple options, and an AND relationship between filters.<br>Clicking <b>More Filters</b> gives you options to filter by Health status, Cluster names, Namespace, and Type. <br><ul><li>Application Type: Can be any of the following<ul><li>Applications: Standalone applications. See the official documentation on <a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications" target=”_blank”>Applications</a>.</li><li>ApplicationSet: Applications created using the ApplicationSet Custom Resource (CR) template. An ApplicationSet can generate single or multiple applications. See the official documentation on <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/application-set" target=”_blank”>Generating Applications with ApplicationSet</a>.</li><li>Git Source: Applications created by Codefresh that includes other applications and CI resources. See <a href="https://codefresh.io/docs/docs/installation/gitops/git-sources/">Git Sources</a>.</li></ul></li></li><li>Labels:The K8s labels defined for the applications. The list displays labels of <i>all</i> the applications, even if you have applied filters.<br>To see the available labels, select <b>Add</b>, and then select the required label and one or more values. <br>To filter by the labels, select <b>Add</b> and then <b>Apply</b>.<br> See the official documentation on <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels" target=”_blank”>Labels and selectors</a>.</li></ul></ul>{:/}|
 |{::nomarkdown}<img src="../../../../images/icons/icon-mark-favorite.png?display=inline-block">{:/}| Star applications as favorites and view only the starred applications.{::nomarkdown}<br>Select the <img src="../../../../images/icons/icon-mark-favorite.png?display=inline-block"> to star the application as a favorite.<br><br>To filter by favorite applications, on the filters bar, select <img src="../../../../images/icons/icon-fav-starred.png?display=inline-block">.<br>{:/} TIP: If you star applications as favorites in the GitOps Apps dashboard, you can filter by the same applications in the [DORA metrics dashboard]({{site.baseurl}}/docs/dashboards/dora-metrics/#metrics-for-favorite-applications).  |
-|Application actions| Options to monitor/manage applications through the application's context menu. {::nomarkdown}<ul><li>Quick view<br>A comprehensive read-only view of the deployment and definition information for the application.</li>{:/}See [Application Quick View](#view-deployment-and-configuration-info-for-selected-application) in this article.{::nomarkdown}<li>Synchronize/Sync<br>Manually synchronize the application.</li>{:/}See [Manually sync applications]({{site.baseurl}}/docs/deployments/gitops/manage-application/#manually-synchronize-an-application).{::nomarkdown}<li>Edit<br>Modify application definitions.</li>{:/}See [Edit application definitions]({{site.baseurl}}/docs/deployments/gitops/manage-application/#edit-application-definitions).{::nomarkdown}<li>Refresh and Hard Refresh: Available in Card view only. In List view, you must first select the application. <ul><li>Refresh: Retrieve desired (Git) state, compare with the live (cluster) state, and refresh the application to sync with the desired state.</li><li>Hard Refresh: Refresh the application to sync with the Git state, while removing the cache.</li></ul>{:/} |
+|Application actions| Options to monitor/manage applications through the application's context menu. {::nomarkdown}<ul><li>Quick view<br>A comprehensive read-only view of the deployment and definition information for the application.</li>{:/}See [Application Quick View](#view-deployment-configuration-info-for-selected-gitops-application) in this article.{::nomarkdown}<li>Synchronize/Sync<br>Manually synchronize the application.</li>{:/}See [Manually sync applications]({{site.baseurl}}/docs/deployments/gitops/manage-application/#manually-synchronize-an-application).{::nomarkdown}<li>Edit<br>Modify application definitions.</li>{:/}See [Edit application definitions]({{site.baseurl}}/docs/deployments/gitops/manage-application/#edit-application-definitions).{::nomarkdown}<li>Refresh and Hard Refresh: Always available in the application's toolbar. <ul><li>Refresh: Retrieve desired (Git) state, compare with the live (cluster) state, and refresh the application to sync with the desired state.</li><li>Hard Refresh: Refresh the application to sync with the Git state, while removing the cache.</li></ul>See [Refresh/hard refresh GitOps applications]({{site.baseurl}}/docs/deployments/gitops/manage-application/#refreshhard-refresh-gitops-applications).{:/} |
 
 
-## Identify applications with warnings/errors 
-Errors are flagged in the **Warnings/Errors** button, displayed at the top right of the GitOps Apps dashboard. Clicking the button shows the list of applications with the warnings/errors and the possible reasons for these.
+
+## Identify GitOps applications with warnings/errors 
+Errors are flagged in the **Warnings/Errors** button, displayed at the top right of the Applications tab in the GitOps Apps dashboard. Clicking the button shows the list of applications with the warnings/errors and the possible reasons for these.
 
 {% include
 image.html
@@ -94,9 +104,9 @@ Every notification identifies:
 
 All errors are Argo CD-generated errors. Codefresh generates custom warnings for the following:
 
-{::nomarkdown}
+
 <br>
-{:/}
+
 
 ### Warning: Missing Rollouts reporter in cluster
 
@@ -119,8 +129,8 @@ Applications with `rollout` resources need Argo Rollouts on the target cluster, 
 * To stop the sync operation, click **Terminate**. 
 * Drill down into the application to investigate the issue and make changes.
 
-## Get status from application header
-When you select an application from the GitOps Apps dashboard, the application header, at the top of the page, displays critical information on the application. 
+## Monitor GitOps application status in application header
+When you select an application from the Applications tab in the GitOps Apps dashboard, the application header, at the top of the page, displays critical information on the application, including health and sync statuses. 
 Once you select an application, the quickest option to monitor statuses is through the application header which is always displayed, no matter what tab you navigate to.  
 
 Information and actions in the application header:  
@@ -141,10 +151,10 @@ caption="Application header for selected application"
 max-width="80%"
 %}
 
->Tip:  
+>**TIP**:  
   You can also view the current health and sync status for the application as a resource in the Current State tab. 
 
-## View deployment and configuration info for selected application
+## View deployment configuration info for selected GitOps application
 
 View deployment, definition, and event information for the selected application in a centralized location through the Quick View.  
 A read-only view, the Quick View displays information on the application state and location, labels and annotations, parameters, sync options, manifest, status and sync events.
@@ -191,14 +201,19 @@ max-width="60%"
 The Quick View includes the following tabs:  
 * Summary: Displays health, sync status, and source and destination definitions.
 * Metadata: Displays labels and annotations for the application.
-* Parameters:  Displays parameters configured for the application, based on the tool used to create the application's manifests.   
+* Parameters: Displays parameters configured for the application, based on the tool used to create the application's manifests.   
   The parameters displayed differ according to the tool: `directory`, `Helm` charts, or `Kustomize` manifests, or the specific plugin.  
 * Sync Options: Displays the sync options enabled for the application.
 * Manifest: Displays the YAML version of the application manifest.
 * Events: Displays status and sync events for the application.
 
 
-## Monitor resources for selected application
+
+
+
+## Monitor resources for selected GitOps application
+
+
 
 Monitor the resources deployed in the current version of the selected application in the Current State tab.  
 Selecting an application from the GitOps Apps dashboard takes you to the Current State tab, which as its title indicates, displays the   
@@ -216,13 +231,16 @@ max-width="60%"
 
 The icon for a resource node identifies the type of Kubernetes resource it represents. For general information on K8s resources, see [Working with Kubernetes objects](https://kubernetes.io/docs/concepts/overview/working-with-objects/){:target="\_blank"}. 
 
-You can view application resources in [List or Tree views](#view-modes-for-application-resources), [set filters](#filters-for-application-resources), and monitor:
-* [Health status](#health-status-for-application-resources)
-* [Sync status](#sync-status-for-application-resources)
-* [Manifests](#manifests-for-application-resources)
-* [Logs](#logs-for-application-resources)
-* [Events](#events-for-application-resources)
-
+What can you do with application resources?
+* View application resources in [List or Tree views](#view-modes-for-application-resources)
+* [Filter resources](#filters-for-application-resources) to focus on what's important
+* Delete resources
+* Monitor resources:
+  * [Health status](#health-status-for-application-resources)
+  * [Sync status](#sync-status-for-application-resources)
+  * [Manifests](#manifests-for-application-resources)
+  * [Logs](#logs-for-application-resources)
+  * [Events](#events-for-application-resources)
 
 
 ### View modes for application resources
@@ -263,7 +281,9 @@ The Tree view is designed to impart key information at a glance. Review the sect
 
 **Context menu**  
 Every resource has a context menu that opens on clicking the three dots on the right of the resource. The options available differ according to the type of resource.
-> If you have deep links configured for applications/resources for Hybrid GitOps Runtimes, these are also displayed in the context menu. To configure deep links in Codefresh, see [(Hybrid GitOps) Configure Deep Links to applications & resources]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#hybrid-gitops-configure-deep-links-to-applications--resources).
+
+> **TIP**: 
+If you have deep links configured for applications/resources for Hybrid GitOps Runtimes, these are also displayed in the context menu. To configure deep links in Codefresh, see [(Hybrid GitOps) Configure Deep Links to applications & resources]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#hybrid-gitops-configure-deep-links-to-applications--resources).
 
 {% include
 image.html
@@ -368,6 +388,22 @@ caption="Current State filtered by IgnoreExtraneous resources"
 max-width="50%"
 %}
 
+### Delete application resources
+Delete specific resources in an application directly from the Codefresh UI. 
+
+1. In the Codefresh UI, from the sidebar, under OPS, select **GitOps Apps**.
+1. From the Application dashboard, select the application with the resource to delete.
+1. From the context menu of the resource, select **Delete**.
+
+{% include
+image.html
+lightbox="true"
+file="/images/applications/current-state-delete-resource.png"
+url="/images/applications/current-state-delete-resource.png"
+alt="Current State: Delete an application resource"
+caption="Current State: Delete an application resource"
+max-width="50%"
+%}
 
 ### Health status for application resources
 View and monitor health status of the selected application's resources in the Current State tab, in Tree or List views.  
@@ -414,7 +450,7 @@ The table describes the possible sync states for an application resource in the 
 In either Tree or List views, double-click an application resource to see its manifests. The manifests are displayed in the Summary tab. 
 > Based on the selected resource type, you can also view logs, and events. Endpoints for example show only manifests, while pods show manifests, logs, and events.  
 
-> To view information for the application resource, select the application node in Tree View. See [Application information](#view-deployment-and-configuration-info-for-selected-application).
+> To view information for the application resource, select the application node in Tree View. See [Application information](#view-deployment-configuration-info-for-selected-gitops-application).
 
  
 {% include
@@ -485,7 +521,7 @@ max-width="50%"
 
 
 
-## Monitor deployments for selected application  
+## Monitor deployments for selected GitOps application  
 Monitor an ongoing deployment for the selected application, and review its historical deployments. 
 The Timeline tab displays the history of deployments for the selected application, sorted by the most recent deployment (default), labeled **Current Version** at the top. 
 
@@ -503,8 +539,7 @@ max-width="30%"
 
 You can:  
 * [Monitor CI details by deployments](#monitor-ci-details-by-deployment) 
-<!--* [Monitor updated resources by deployment](#monitor-updated-resources-by-deployment)  -->
-* [Monitor rollouts by deployment](#monitor-rollouts-by-deployment)
+* [Monitor rollouts by deployment](#monitor-rollouts-by-deployment)  
 
 See also [Troubleshooting GitOps applications]({{site.baseurl}}/docs/deployments/gitops/troubleshooting-gitops-apps/).
 
@@ -533,54 +568,6 @@ Each deployment record displays the complete CI history for that deployment.
 * The **Pull Request (PRs)** used for the commit.
 * The Jira **Issues** the PR aims to resolve or has resolved, with the current status.
 * The **Committer** who made the changes.
-
-
-<!--- 
-### Monitor updated resources by deployment
-Each deployment record also identifies the applications that were changed (created, updated, or removed) as part of that deployment in **Updated Applications**. You can trace the history, from the original to their final versions. For each version, you can see the actual change or changes through the Diff view. The Full View shows the complete resource manifest, with the diff view of the changes, while the Compact View shows only those lines with the changes. 
-
-> For detailed information on the current state of a resource, switch to the Current State tab and click the resource node. See [Monitoring application resources](#monitor-resources-for-selected-application).
-
-1. Select a deployment record, and expand **Updated Resources**.
-
-{% include
-image.html
-lightbox="true"
-file="/images/applications/timeline-resources-updated.png"
-url="/images/applications/timeline-resources-updated.png"
-alt="Timeline tab: Updated Resources for deployment"
-caption="Timeline tab: Updated Resources for deployment"
-max-width="70%"
-%}
-
-{:start="2"}
-1. To see the changes for a resource, click the resource name.
-  The Full View of the resource manifest is displayed with the diff view of the changes. 
-
-{% include
-image.html
-lightbox="true"
-file="/images/applications/timeline-resources-full-view.png"
-url="/images/applications/timeline-resources-full-view.png"
-alt="Full View of changes for updated resource"
-caption="Full View of changes for updated resource"
-max-width="70%"
-%}
-
-{:start="3"}
-1. To view only the changes, click **Compact View**.
-
-{% include
-image.html
-lightbox="true"
-file="/images/applications/timeline-resources-compact-view.png"
-url="/images/applications/timeline-resources-compact-view.png"
-alt="Full View of changes for updated resource"
-caption="Full View of changes for updated resource"
-max-width="70%"
-%}
--->
-
 
 
 
@@ -679,7 +666,10 @@ max-width="50%"
 
 
 
-## Monitor services for selected application
+## Monitor services for selected GitOps application
+
+
+
 The Services tab shows the K8s services for each deployment of the application. 
 Each service shows the number of replicas, the endpoint IP, the labels that reference the application, and the health status.  
 
@@ -695,9 +685,11 @@ caption="GitOps Apps dashboard: Services tab"
 max-width="50%"
 %}
 
+
+
 ## Related articles
 [Creating GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application)  
-[Managing GitOps applications]({{site.baseurl}}/docs/deployments/gitops/manage-application) 
+[Managing GitOps applications]({{site.baseurl}}/docs/deployments/gitops/manage-application)  
 [Troubleshooting GitOps applications]({{site.baseurl}}/docs/deployments/gitops/troubleshooting-gitops-apps)  
 [Home Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard)  
 [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)  

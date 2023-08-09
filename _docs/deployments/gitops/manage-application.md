@@ -11,18 +11,27 @@ Application creation and deployment is one part of the continuous deployment/del
 * [Edit applications](#edit-application-definitions)  
   Optimize deployed applications by changing application definitions when needed.
 
+
 * [Synchronize applications](#manually-synchronize-an-application)   
-  Sync applications on-demand by manually applying sync options or selecting the resources to sync.
+  Sync applications on-demand by manually applying sync options or by manually selecting the resources to sync.
+
+* [Terminate sync for applications](#terminate-on-going-sync-for-gitops-applications)  
+  With a single-click, terminate on-going sync processes when needed.
+
+* [Refresh applications](#refreshhard-refresh-gitops-applications)  
+  Manually refresh applications with a single-click, as an alternative to manually synchronizing them.
 
 * [Rollback applications](#rollback-gitops-applications)   
-  Rollback an application to a previous deployment version.
+  Rollback applications to previous deployment versions.
 
-
-* [Manage rollouts for deployments](#manage-rollouts-for-deployments)  
+* [Manage rollouts for deployments](#manage-rollouts-for-gitops-application-deployments)  
   Control ongoing rollouts by resuming indefinitely paused steps, promoting rollouts, aborting, restarting and retrying rollouts.  
 
-* [Delete applications](#delete-an-application)  
+
+* [Delete applications](#delete-gitops-applications)  
   Delete unused or legacy applications to avoid clutter and remove unnecessary resources.
+
+  To delete specific resources within an application, see [Delete application resources]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/#delete-application-resources).
 
 
 
@@ -95,11 +104,13 @@ Update General or Advanced configuration settings for a deployed application thr
 
 
 
+
 ## Manually synchronize an application
 Manually synchronize an application to expedite Git-to-cluster sync.  The sync options selected for manual sync override the sync options defined for the application.  
 The sync options, grouped into Revision and Additional Settings, are identical to the Sync options in the General settings when you created the application. 
 
->You can also synchronize application resources with sync statuses,  such as `Service`, `AnalysisTemplate`, and `Rollouts` resources for example, in the Current State tab. The context menu of the resource shows the Sync option. 
+>**TIP**:  
+You can also synchronize _application resources_ with sync statuses such as `Service`, `AnalysisTemplate`, and `Rollouts` resources for example, in the Current State tab. Select the Sync option from resource's context menu. 
 
 **Before you begin**  
 * Review:  
@@ -222,6 +233,45 @@ For example, if you made changes to `api` resources or `audit` resources, type `
 <br><br>
 {:/}
 
+
+## Terminate on-going sync for GitOps applications
+Manually terminate an on-going synchronization process for the application. You may need to terminate an on-going sync that remains indefinitely as Syncing, or because you have detected problems in the current deployment 
+Terminating a sync operation reverts the deployment to the previously deployed version or image.  
+
+1. In the Codefresh UI, from Ops in the sidebar, select [GitOps Apps](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
+1. If needed, filter by **Status** **Syncing** to view applications with active sync operations.
+1. Select the application and then from the application header, click **Terminate Sync**.
+
+   {% include 
+   image.html 
+   lightbox="true" 
+   file="/images/applications/app-terminate-sync.png" 
+   url="/images/applications/app-terminate-sync.png" 
+   alt="Manually terminate on-going sync" 
+   caption="Manually terminate on-going sync"
+   max-width="50%" 
+   %} 
+
+
+## Refresh/hard refresh GitOps applications
+
+As an alternative to manually syncing an application, either refresh or hard refresh the application. Both options are always available in the application toolbar.
+
+1. In the Codefresh UI, from Ops in the sidebar, select [GitOps Apps](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
+1. Select the application, and then from the top-right, select the required action:  
+  * **Refresh**: Retrieve desired (Git) state, compare with the live (cluster) state, and refresh the application to sync with the desired state.
+  * **Hard Refresh**: Refresh the application to sync with the Git state, while removing the cache.
+
+   {% include 
+   image.html 
+   lightbox="true" 
+   file="/images/applications/app-refresh-hard-refresh.png" 
+   url="/images/applications/app-refresh-hard-refresh.png" 
+   alt="Refresh/Hard Refresh for applications" 
+   caption="Refresh/Hard Refresh for applications"
+   max-width="50%" 
+   %} 
+
 ## Rollback GitOps applications
 Rollback to a previously deployed version of active GitOps applications. You may want to rollback a newly deployed version due to errors in your code or misconfigurations, etc.  
 
@@ -316,7 +366,7 @@ caption="Rollback completed for application"
 max-width="70%"
 %}
 
-## Manage rollouts for deployments
+## Manage rollouts for GitOps application deployments
 Control ongoing rollouts by resuming indefinitely paused steps, promoting rollouts, aborting, restarting and retrying rollouts.  
 
 {::nomarkdown}
@@ -426,7 +476,7 @@ The table describes the options for the `Rollout` resource.
 |**Retry**              | Retry a rollout that has been aborted. Available only when a rollout has been aborted. | 
 |**Skip-current-step**  | Skip executing the current step, and continue with the next step. | 
 
-## Delete an application
+## Delete GitOps applications
 Delete an application from Codefresh. Deleting an application deletes the manifest from the Git repository, and then from the cluster where it is deployed. When deleted from the cluster, the application is removed from the GitOps Apps dashboard in Codefresh.
  
 >**Prune resources** in the application's General settings determines the scope of the delete action.  
