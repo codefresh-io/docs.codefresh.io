@@ -40,9 +40,9 @@ max-width="60%"
 Identify applications with [health and sync errors](#identify-gitops-applications-with-warningserrors), and then select an application to drill down into its resources, deployments, and services:  
 * [Get status from application header](#monitor-gitops-application-status-in-application-header)
 * [View deployment and configuration info for selected application](#view-deployment-configuration-info-for-selected-gitops-application)
-* [Monitor resources for selected application](#monitor-resources-for-selected-application)
-* [Monitor deployments for selected application](#monitor-deployments-for-selected-application)
-* [Monitor services for selected application](#monitor-services-for-selected-gitops-application)
+* [Monitor resources for selected GitOps application](#monitor-resources-for-selected-gitops-application)
+* [Monitor deployments for selected GitOps application](#monitor-deployments-for-selected-gitops-application)
+* [Monitor services for selected GitOps application](#monitor-services-for-selected-gitops-application)
 
 
 
@@ -257,7 +257,7 @@ max-width="60%"
 The Quick View includes the following tabs:  
 * Summary: Displays health, sync status, and source and destination definitions.
 * Metadata: Displays labels and annotations for the application.
-* Parameters:  Displays parameters configured for the application, based on the tool used to create the application's manifests.   
+* Parameters: Displays parameters configured for the application, based on the tool used to create the application's manifests.   
   The parameters displayed differ according to the tool: `directory`, `Helm` charts, or `Kustomize` manifests, or the specific plugin.  
 * Sync Options: Displays the sync options enabled for the application.
 * Manifest: Displays the YAML version of the application manifest.
@@ -266,7 +266,7 @@ The Quick View includes the following tabs:
 
 
 
-### Monitor resources for selected application
+## Monitor resources for selected GitOps application
 
 Monitor the resources deployed in the current version of the selected application in the Current State tab.  
 Selecting an application from the GitOps Apps dashboard takes you to the Current State tab, which as its title indicates, displays the   
@@ -441,7 +441,7 @@ caption="Current State filtered by IgnoreExtraneous resources"
 max-width="50%"
 %}
 
-### Delete resources
+### Delete application resources
 Delete specific resources in an application directly from the Codefresh UI. 
 
 1. In the Codefresh UI, from the sidebar, under OPS, select **GitOps Apps**.
@@ -574,7 +574,7 @@ max-width="50%"
 
 
 
-### Monitor deployments for selected application  
+### Monitor deployments for selected GitOps application  
 Monitor an ongoing deployment for the selected application, and review its historical deployments. 
 The Timeline tab displays the history of deployments for the selected application, sorted by the most recent deployment (default), labeled **Current Version** at the top. 
 
