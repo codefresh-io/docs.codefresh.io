@@ -7,7 +7,7 @@ redirect_from:
 toc: true
 ---
 
-The Codefresh platform supports three different installation options, all compliant with [SOC2 - Type2](https://www.aicpa.org/SOC){:target="\_blank"}.
+The Codefresh platform supports three different installation options, all compliant with [SOC2 - Type2](https://us.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report){:target="\_blank"}.
 
 {% include image.html
   lightbox="true"
