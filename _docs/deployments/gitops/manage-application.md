@@ -11,7 +11,6 @@ Application creation and deployment is one part of the continuous deployment/del
 * [Edit applications](#edit-application-definitions)  
   Optimize deployed applications by changing application definitions when needed.
 
-
 * [Synchronize applications](#manually-synchronize-an-application)   
   Sync applications on-demand by manually applying sync options or by manually selecting the resources to sync.
 
@@ -26,7 +25,6 @@ Application creation and deployment is one part of the continuous deployment/del
 
 * [Manage rollouts for deployments](#manage-rollouts-for-gitops-application-deployments)  
   Control ongoing rollouts by resuming indefinitely paused steps, promoting rollouts, aborting, restarting and retrying rollouts.  
-
 
 * [Delete applications](#delete-gitops-applications)  
   Delete unused or legacy applications to avoid clutter and remove unnecessary resources.
