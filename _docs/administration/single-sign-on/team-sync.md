@@ -1,7 +1,8 @@
 ---
 title: Common configuration for SSO providers
 description: "Set up team sync, default SSO provider for accounts"
-group: single-sign-on
+redirect_from:
+  - /docs/single-sign-on/team-sync/
 toc: true
 ---
 
@@ -18,8 +19,16 @@ In Codefresh you can sync users and teams either automatically or manually:
 * Automatically, in the Codefresh UI if the option is supported for your SSO provider 
 * Manually, either on-demand through the Codefresh CLI, or through a Codefresh pipeline
 
+<!---
+### Multi-account team-sync in Codefresh for SSO providers
+SSO providers can sync users from multiple accounts, in addition to the primary account associated with the specific SSO integration.
+This functionality benfits enterprises that manage multiple accounts for a single customer, as it streamlines the sync process through a single operation. 
+If a customer has dev and prod accounts in Codefresh, they can set up an SSO integration for one of the accounts, and then specificy the ID of the second account to sync.
+
+Codefresh validates if the user has access to the accounts specified, and during team-sync retrieives the accounts and invites users in teams/groups for those accounts.
 
 
+-->
 ### Team-sync support in Codefresh for SSO providers
 The table lists the SSO providers supported in Codefresh and the team-sync option available for them.
 
@@ -61,7 +70,7 @@ Manually synchronize users and teams provisioned in your SSO provider account, o
 
 
 >**NOTE**:  
- >Make sure that there are no [domain restrictions on the email address](#manual-team-sync-and-email-domain-restrictions).
+ >Make sure that there are no [domain restrictions on the email address]({{site.baseurl}}/docs/administration/account-user-management/add-users/#define-session-timeouts-and-domain-restrictions-for-user-accounts).
 
 As an example, you can sync your Azure teams with the CLI: 
 
@@ -89,7 +98,7 @@ max-width="40%"
 As an alternative to manually syncing teams on demand via the Codefresh CLI, you can manually sync teams using Codefresh pipelines. 
 
 >**NOTE**:  
- >Make sure that there are no [domain restrictions on the email address](#manual-team-sync-and-email-domain-restrictions).
+ >Make sure that there are no [domain restrictions on the email address]({{site.baseurl}}/docs/administration/account-user-management/add-users/#define-session-timeouts-and-domain-restrictions-for-user-accounts).
 
 A pipeline makes it possible to run team-sync periodically as a job. You can use the CLI as a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/), as in the example below.
 You can create a Git repository with a [codefresh.yml]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/) file with the following content:
@@ -104,7 +113,7 @@ steps:
       - 'codefresh synchronize teams my-client-name -t azure'
 ```
 
-To fully automate the pipeline, you can set a [cron trigger]({{site.baseurl}}/docs/pipelines/triggers/cron-triggers/) for it. Depending on how you set up your Cron trigger, you can synchronize your teams every day/week/hour. 
+To fully automate the pipeline, you can set a [Csron trigger]({{site.baseurl}}/docs/pipelines/triggers/cron-triggers/) for it. Depending on how you set up your Cron trigger, you can synchronize your teams every day/week/hour. 
 
 ### Sync GitHub organization teams to Codefresh
 
@@ -149,7 +158,7 @@ file="/images/administration/sso/sso-list-with-default.png"
 url="/images/administration/sso/sso-list-with-default.png"
 alt="Single Sign-on list showing the default SSO provider"
 caption="Single Sign-on list showing the default SSO provider"
-max-width="60%"
+max-width="80%"
 %}
 
 
@@ -175,12 +184,13 @@ file="/images/administration/sso/select-user-sso.png"
 url="/images/administration/sso/select-user-sso.png"
 alt="Selecting a different SSO provider for specific user"
 caption="Selecting a different SSO provider for specific user"
-max-width="50%"
+max-width="70%"
 %}
 
 ## Related articles
-[Setting up OIDC Federated SSO]({{site.baseurl}}/docs/single-sign-on/oidc)  
-[Setting up SAML2 Federated SSO]({{site.baseurl}}/docs/single-sign-on/saml)  
+[Setting up OIDC Federated SSO]({{site.baseurl}}/docs/administration/single-sign-on/oidc)  
+[Setting up SAML2 Federated SSO]({{site.baseurl}}/docs/administration/single-sign-on/saml)  
+[LDAP Single Sign-On (SSO)]({{site.baseurl}}/docs/administration/single-sign-on/ldap/)  
 
 
 

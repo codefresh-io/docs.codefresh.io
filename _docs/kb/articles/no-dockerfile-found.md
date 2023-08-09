@@ -97,4 +97,4 @@ Notice that the `working_directory` property of the build step, searches for the
 
 ## Related articles
 
-[Troubleshooting common issues]({{site.baseurl}}/docs/troubleshooting/common-issues)  
+[Troubleshooting common issues]({{site.baseurl}}/docs/kb/common-issues/)  

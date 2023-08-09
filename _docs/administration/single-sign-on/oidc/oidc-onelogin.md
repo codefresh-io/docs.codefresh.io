@@ -1,20 +1,19 @@
 ---
 title: "OneLogin SSO via OIDC"
 description: "Set up OneLogin SSO for OIDC "
-group: single-sign-on
-sub_group: oidc
 redirect_from:
   - /docs/enterprise/single-sign-on/sso-onelogin/
+  - /docs/single-sign-on/oidc/oidc-onelogin/
 toc: true
 ---
 
 Set up SSO for OneLogin using OIDC.  
-For a general overview on OIDC, see [Setting up OIDC Federated SSO]({{site.baseurl}}/docs/single-sign-on/oidc).  
+For a general overview on OIDC, see [Setting up OIDC Federated SSO]({{site.baseurl}}/docs/administration/single-sign-on/oidc).  
 
 Set up OIDC SSO for OneLogin in Codefresh by:
 1. Setting up OneLogin as an IdP 
 1. Configuring SSO settings for OneLogin in Codefresh
-1. Configuring URIs in Okta
+1. Configuring URIs in OneLogin
 
 ## Step 1: Set up OneLogin as an identity provider for Codefresh
 Configure the application in the OneLogin dashboard.
@@ -132,5 +131,5 @@ max-width="50%"
 You have now completed SSO setup for OneLogin via OIDC. 
 
 ## Related articles
-[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/single-sign-on/single-sign-on/)  
-[Common configuration for SSO providers]({{site.baseurl}}/docs/single-sign-on/team-sync)  
+[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/administration/single-sign-on/)  
+[Common configuration for SSO providers]({{site.baseurl}}/docs/administration/single-sign-on/team-sync)  

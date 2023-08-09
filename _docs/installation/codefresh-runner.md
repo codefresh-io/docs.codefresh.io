@@ -172,7 +172,7 @@ Installing the Codefresh Runner with Helm requires you to first create a `genera
 1. Optional. If the Kubernetes cluster with the Codefresh Runner is behind a proxy, continue with [Complete Codefresh Runner installation](#complete-codefresh-runner-installation).  
 
 <!--- what is this -->
-For reference, have a look at the repository with the chart: [https://github.com/codefresh-io/venona/tree/release-1.0/.deploy/cf-runtime](https://github.com/codefresh-io/venona/tree/release-1.0/.deploy/cf-runtime){:target="\_blank"}.
+For reference, have a look at the repository with the chart: [https://github.com/codefresh-io/venona/tree/release-1.0/charts/cf-runtime](https://github.com/codefresh-io/venona/tree/release-1.0/charts/cf-runtime){:target="\_blank"}.
 
 
 ```shell
@@ -943,7 +943,7 @@ Codefresh supports the following GKE configurations:
 * [Install Codefresh Runner on GKE with GCE disks and Google SA JSON key](#install-codefresh-runner-on-gke-with-gce-disks-and-google-sa-json-key)
 * [Install Codefresh Runner on GKE with GCE disks with Workload Identity and IAM role](#install-codefresh-runner-on-gke-with-gce-disks-with-workload-identity-and-iam-role)
 
-#### Common prerequsites
+#### Common prerequisites
 
 Before you start the installation, verify the following:  
 * Make sure your user has `Kubernetes Engine Cluster Admin` role in Google console  

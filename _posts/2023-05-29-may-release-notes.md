@@ -125,7 +125,7 @@ caption="Sync settings in Codefresh for SAML Okta"
 max-width="60%" 
 %}
 
-For details, see [Step 1: Configure SSO settings for Okta via SAML in Codefresh]({{site.baseurl}}/docs/single-sign-on/saml/saml-okta/#step-2-configure-sso-settings-for-codefresh-in-okta).
+For details, see [Step 1: Configure SSO settings for Okta via SAML in Codefresh]({{site.baseurl}}/docs/administration/single-sign-on/saml/saml-okta/#step-2-configure-sso-settings-for-codefresh-in-okta).
  
 
 

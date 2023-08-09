@@ -45,5 +45,5 @@ Using federated SSO significantly simplifies cross-domain user management as fol
 
 
 ## Related articles
-[Setting Up SAML2 Federated Single Sign-On (SSO)]({{site.baseurl}}/docs/single-sign-on/saml)  
-[Setting Up OpenID Connect Federated Single Sign-On]({{site.baseurl}}/docs/single-sign-on/oidc)    
+[Setting Up SAML2 Federated Single Sign-On (SSO)]({{site.baseurl}}/docs/administration/single-sign-on/saml)  
+[Setting Up OpenID Connect Federated Single Sign-On]({{site.baseurl}}/docs/administration/single-sign-on/oidc)    

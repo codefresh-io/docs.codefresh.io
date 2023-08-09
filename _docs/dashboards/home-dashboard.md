@@ -134,7 +134,7 @@ Displays up to five of the most active applications and their current deployment
 | Item                    | Description   |
 | ------------------------| ---------------- |
 |**Filter**                | Filter applications by the clusters on which they are deployed, either by Cluster Name or by Cluster.    |
-|**View**                  | Click to go to the GitOps Apps dashboard. See [Monitoring GitOps applications]({{site.baseurl}}}}docs/deployments/gitops/applications-dashboard)  |
+|**View**                  | Click to go to the GitOps Apps dashboard. See [Monitoring GitOps applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard)  |
 |**Application Name**     | The name of the application, and the names of the GitOps Runtime and the cluster on which it is deployed. Click the name to drill down into the application in the GitOps Apps dashboard. |
 |**Health status**         | The health status of the application, and can be either:{::nomarkdown}<ul><li>Healthy (green): The application is running on the cluster.</li><li>Degraded (red): The application failed to run.</li> <li>Rollback (yellow): There was a rollback to the previously deployed version.</li></ul> To see the breakdown by health status, mouse over the chart. <br> The number at the end of the bar is the total number of deployments for the application, and the percentage indicates the overall decrease or increase compared to the reference period. {:/}  |
 
@@ -255,7 +255,7 @@ Use the Pipelines dashboard to:
 Filters narrow the scope of aggregated data, allowing you to focus on the information you want to see.  
 Unless otherwise indicated, all filters support multi-selection.
 
->**TIP**:
+>**TIP**:  
 Different filter types have an AND relationship.
 
 
@@ -264,9 +264,9 @@ Different filter types have an AND relationship.
 | --------------   | --------------|  
 | **Date Range** | The time frame for which to view data. The date range affects the other filters, including the granularity for the Success Rate and Pipeline Duration charts. <br>In addition to the predefined date ranges, you can select a custom date range of up to the last six months. <br>If you select Today, then the Success Rate and Duration charts reflect hourly granularity.<br><br>Every date range you select has a reference period corresponding to the same period of time preceding the selected date range. The reference period is used to derive comparisons and identify trends.  |
 | **Hourly/Daily** |Based on the date range selected, choose the granularity for viewing Success Rate and Pipeline Duration. {::nomarkdown}<ul><li>A date range between 1 and 4 days allows viewing metrics either by hour or by day.</li><li>A date range longer than four days allows viewing metrics only by day. The Hourly option is disabled in this case.</li></ul> {:/}
-| **Project**           | The project or projects to which the pipeline belongs. Selecting a project allows you to focus on performance of pipelines assigned to it. If you starred one or more projects as favorites, clicking {::nomarkdown}<img src="../../../images/icons/icon-fav-starred.png?display=inline-block">{:/}, filters pipelines by the selected projects.|                            
-| **Pipeline**           | The pipeline or pipelines to filter by. <br>If you starred one or more pipelines as favorites, clicking {::nomarkdown}<img src="../../../images/icons/icon-fav-starred.png?display=inline-block">{:/}, filters by those pipelines. |                            
-| **Status**           | {::nomarkdown}<ul><li><b>Error</b>: Pipelines with builds that failed due to errors in the pipeline specifications or steps that failed. </li><li><b>Succeeded</b>: Pipelines with builds that completed successfully.</li> <li><b>Terminated</b>: Pipelines with builds terminated by the system according to the policy defined in the pipeline's settings. These can be any of these: <ul><li>Recent build from the same branch terminating all previous pipeline builds </li><li>Recent build from the specified branch terminating all previous builds from that branch</li><li>Running build terminating all running builds</li><li>Child builds terminated when the parent build is terminated.</li> </ul></li>For details, see <a href ="https://codefresh.io/docs/docs/pipelines/pipelines/#policies">Build Termination in Pipeline Policies</a>. </ul>{:/}|                            
+| **Project**           | The project or projects to which the pipeline belongs.<br>Selecting a project allows you to focus on the performance of pipelines assigned to it. If you starred one or more projects as favorites, and selected Projects, clicking {::nomarkdown}<img src="../../../images/icons/icon-fav-starred.png?display=inline-block">{:/}, filters pipelines by the selected projects.|                            
+| **Pipeline**           | The pipeline or pipelines to filter by. <br>Mouse over a pipeline name in the list displays a tooltip including the name of the project to which the pipeline belongs, followed by the name of the pipeline, to easily identify and select the correct pipeline.<br>If you starred one or more pipelines as favorites, clicking {::nomarkdown}<img src="../../../images/icons/icon-fav-starred.png?display=inline-block">{:/}, filters by those pipelines. |                            
+| **Status**           | {::nomarkdown}<ul><li><b>Error</b>: Pipelines with builds that failed due to errors in the pipeline specifications or steps that failed. </li><li><b>Succeeded</b>: Pipelines with builds that completed successfully.</li> <li><b>Terminated</b>: Pipelines with builds terminated by the system according to the policy defined in the pipeline's settings. These can be any of the following: <ul><li>Recent build from the same branch terminating all previous pipeline builds </li><li>Recent build from the specified branch terminating all previous builds from that branch</li><li>Running build terminating all running builds</li><li>Child builds terminated when the parent build is terminated.</li> </ul></li>For details, see <a href ="https://codefresh.io/docs/docs/pipelines/pipelines/#policies">Build Termination in Pipeline Policies</a>. </ul>{:/}|                            
 | **Tags**             |The tag or tags assigned to the pipelines. | 
 |{::nomarkdown}<img src="../../../images/icons/icon-mark-favorite.png?display=inline-block">{:/}| Filter to view only projects or pipelines that have been starred as favorites in the [Projects/Pipeline pages]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#starring-projects-and-pipelines-as-favorites).<br><br>When you have starred projects or pipelines, the icon changes to {::nomarkdown}<img src="../../../images/icons/icon-fav-starred.png?display=inline-block">.<br>Clicking it filters by favorite projects and pipelines. {:/} |   
 
@@ -274,7 +274,7 @@ Different filter types have an AND relationship.
 
 ### Pipeline success rate
 The pipelines that completed execution successfully, from the total number of pipelines executed within the selected date range, as percentage. 
-> TIP:  
+> **TIP**:  
   Pipelines in Pending status are excluded from the Success Rate calculations.
 
 
@@ -287,12 +287,12 @@ You can switch between average (the default), and percentile views.
 The average duration calculation shows the duration across all the pipelines within the selected date range. 
 To better understand the performance over time, switch to duration by the median (P-50) or the 90th (P-90) percentiles. 
 
-The comparison percentage is derived from the reference time period. The reference period corresponds to the same length of time that  preceding the date range selected. <br>
+The comparison percentage is derived from the reference time period. The reference period corresponds to the same length of time that precedes selected the date range. <br>
 
 **Pipeline duration breakdown**  
-Every pipeline workflow can be divided into phases, some of which apply to all pipelines, while others depend on the settings configured for each pipeline. The initialization phase is common to all pipelines. Other phases such as pending approval to continue execution, and pending execution due to concurrency limits depends on the settings.
+The workflow of every pipeline can be divided into phases, some of which apply to all pipelines, while others depend on the settings configured for each pipeline. The initialization phase in the workflow is common to all pipelines. Other phases such as pending approval to continue execution, and pending execution due to concurrency limits, depend on the settings configured for each pipeline.
 
->TIP:  
+>**TIP**:  
  Each phase is color-coded for easy visualization. To show/hide phases in the chart, click the name of the phase in the legend. 
  
 {% include image.html
@@ -315,7 +315,9 @@ Every pipeline workflow can be divided into phases, some of which apply to all p
 
 *  **Pending concurrency policy**  
   The average duration of pipeline workflows pending execution due to the concurrency limits configured for the pipelines. Workflows with pipeline, trigger, and branch concurrency limits are included in the calculation.
-  >Pipeline workflows pending execution due to concurrency policies are affected by the global account or pipeline's settings for Pending approval.
+  
+  >**TIP**:
+   Pipeline workflows pending execution due to concurrency policies are affected by the global account settings or the pipeline's settings for Pending approval.
                          
 *  **Delayed due to license limit**  
   The pipeline workflows pending execution due to the license limits configured for your account.  

@@ -65,4 +65,4 @@ We also advise to you add multiple Docker Hub integrations if it makes sense for
 
 ## Related articles
 
-[Troubleshooting common issues]({{site.baseurl}}/docs/troubleshooting/common-issues)
+[Troubleshooting common issues]({{site.baseurl}}/docs/kb/common-issues/)

@@ -42,7 +42,7 @@ Replace `uptime`, with your own command that you want executed on the remote hos
 
 ## Related articles
 
-[Troubleshooting common issues]({{site.baseurl}}/docs/troubleshooting/common-issues)
+[Troubleshooting common issues]({{site.baseurl}}/docs/kb/common-issues/)
 
 [How to use SSH keys with GIT]({{site.baseurl}}/docs/integrations/git-providers/#ssh-keys)
 

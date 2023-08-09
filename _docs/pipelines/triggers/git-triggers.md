@@ -92,6 +92,8 @@ For a description of the events, see [GitHub documentation](https://docs.github.
 * Pull Request review requested
 * Pull Request review request removed
 * Pull Request labeled
+* Pull Request unlabeled
+* Pull Request synchronized
 * Pull Request comment added (restricted)
 * Pull Request comment added
 * Release
@@ -108,17 +110,46 @@ For a description of the events, see [Azure DevOps documentation](https://learn.
 * Pull request updated
 
                         
-#### Bitbucket trigger events
+#### Bitbucket Cloud trigger events
 
-For a description of the events, see [Bitbucket documentation](https://support.atlassian.com/jira-cloud-administration/docs/understand-workflow-triggers/){:target="\_blank"} and also [Event payloads](https://support.atlassian.com/bitbucket-cloud/docs/event-payloads/){:target="\_blank"}.
+For a description of the events and their payload, see [Bitbucket Cloud documentation](https://support.atlassian.com/bitbucket-cloud/docs/event-payloads/){:target="\_blank"}.
 
-* Push new branch             
-* Pull Request approved        
-* Pull Request approval removed  
-* Pull Request declined       
-* Pull Request comment created                         
-* Pull Request comment updated                         
-* Pull Request comment deleted                           
+* Commit
+* Push tags
+* Push new branch
+* Any Pull Request event
+* Pull request created
+* Pull request updated
+* Pull request approved
+* Pull request approval
+* Pull request merged
+* Pull request declined
+* Pull request comment created
+* Pull request comment updated
+* Pull request comment deleted
+
+                        
+#### Bitbucket Server trigger events
+
+For a description of the events and their payload, see [Bitbucket Server documentation]https://confluence.atlassian.com/bitbucketserver/event-payload-938025882.html){:target="\_blank"}.
+
+* Commit
+* Push commits
+* Push new branch
+* Delete branch
+* Any Pull request event
+* Pull request created
+* Pull request updated
+* Pull request merged
+* Pull request deleted
+* Pull request declined
+* Pull request approved
+* Pull request approval
+* Pull request needs work
+* Pull request comment deleted
+* Pull request comment created
+* Pull request comment updated
+                          
 
 
 #### GitLab trigger events
