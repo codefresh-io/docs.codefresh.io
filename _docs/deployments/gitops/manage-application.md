@@ -11,9 +11,6 @@ Application creation and deployment is one part of the continuous deployment/del
 * [Edit applications](#edit-application-definitions)  
   Optimize deployed applications by changing application definitions when needed.
 
-* View application groups
-
-
 * [Synchronize applications](#manually-synchronize-an-application)   
   Sync applications on-demand by manually applying sync options or by manually selecting the resources to sync.
 
