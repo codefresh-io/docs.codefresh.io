@@ -11,26 +11,24 @@ Application creation and deployment is one part of the continuous deployment/del
 * [Edit applications](#edit-application-definitions)  
   Optimize deployed applications by changing application definitions when needed.
 
-* View application groups
-
 
 * [Synchronize applications](#manually-synchronize-an-application)   
   Sync applications on-demand by manually applying sync options or by manually selecting the resources to sync.
 
-* [Terminate sync for applications](#terminate-on-going-application-sync)
+* [Terminate sync for applications](#terminate-on-going-sync-for-gitops-applications)  
   With a single-click, terminate on-going sync processes when needed.
 
-* [Refresh applications](#refreshhard-refresh-applications)  
+* [Refresh applications](#refreshhard-refresh-gitops-applications)  
   Manually refresh applications with a single-click, as an alternative to manually synchronizing them.
 
 * [Rollback applications](#rollback-gitops-applications)   
   Rollback applications to previous deployment versions.
 
-* [Manage rollouts for deployments](#manage-rollouts-for-deployments)  
+* [Manage rollouts for deployments](#manage-rollouts-for-gitops-application-deployments)  
   Control ongoing rollouts by resuming indefinitely paused steps, promoting rollouts, aborting, restarting and retrying rollouts.  
 
 
-* [Delete applications](#delete-an-application)  
+* [Delete applications](#delete-gitops-applications)  
   Delete unused or legacy applications to avoid clutter and remove unnecessary resources.
 
   To delete specific resources within an application, see [Delete application resources]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/#delete-application-resources).
@@ -104,6 +102,7 @@ Update General or Advanced configuration settings for a deployed application thr
 {:/}
 
 
+<!---
 ## Manage application groups
 
 Clicking on an application group in the Group tab navigates to the list of applications in the Group.
@@ -118,7 +117,7 @@ Once you assign an application to a group, you can add it to or remove it from d
   * To add the application to one or more groups, select the group or groups.
   * To remove the application from a group, click the remove button for the group.
 
-
+-->
 
 
 ## Manually synchronize an application
