@@ -269,6 +269,8 @@ The Quick View includes the following tabs:
 
 ## Monitor resources for selected GitOps application
 
+
+
 Monitor the resources deployed in the current version of the selected application in the Current State tab.  
 Selecting an application from the GitOps Apps dashboard takes you to the Current State tab, which as its title indicates, displays the   
 live state of the application's resources (Kubernetes objects) on the cluster, including health, sync state, manifests, and logs. 
@@ -593,8 +595,7 @@ max-width="30%"
 
 You can:  
 * [Monitor CI details by deployments](#monitor-ci-details-by-deployment) 
-<!--* [Monitor updated resources by deployment](#monitor-updated-resources-by-deployment)  -->
-* [Monitor rollouts by deployment](#monitor-rollouts-by-deployment)
+* [Monitor rollouts by deployment](#monitor-rollouts-by-deployment)  
 
 See also [Troubleshooting GitOps applications]({{site.baseurl}}/docs/deployments/gitops/troubleshooting-gitops-apps/).
 
