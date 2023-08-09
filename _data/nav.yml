@@ -35,11 +35,11 @@
     - title: GitOps quick starts
       url: "/gitops-quick-start"
       sub-pages:
-        - title: Provision a hosted runtime
+        - title: Provision a Hosted GitOps Runtime
           url:  "/install-hosted"
-        - title: Prepare for hybrid runtime installation
+        - title: Prepare for Hybrid GitOps Runtime installation
           url:  "/verify-requirements"
-        - title: Install a hybrid runtime
+        - title: Install a Hybrid GitOps Runtime
           url: "/runtime"
         - title: Create an application
           url: "/create-app-ui"     
@@ -254,6 +254,8 @@
           url: "/digital-ocean-container-registry"
         - title: Other Registries
           url: "/other-registries"  
+    - title: Cloud Storage
+      url: "/cloud-storage"    
     - title: Secret Storage
       url: "/secret-storage"
     - title: Hashicorp Vault
@@ -364,6 +366,8 @@
           url: "/manage-application"
         - title: Progressive delivery with GitOps
           url: "/install-argo-rollouts"
+        - title: Troubleshooting GitOps applications
+          url: "/troubleshooting-gitops-apps"          
 
 
 
@@ -522,7 +526,7 @@
           url: "/shared-configuration"
         - title: Add external clusters to GitOps Runtimes
           url: "/managed-cluster" 
-        - title: Add Git Sources to to GitOps Runtimes
+        - title: Add Git Sources to GitOps Runtimes
           url: "/git-sources"
         - title: Download/upgrade GitOps CLI
           url: "/upgrade-gitops-cli"
@@ -540,7 +544,7 @@
           url: "/add-users"
         - title: Configuring access control
           url: "/access-control"
-        - title: Setting up OAuth2 for Git providers
+        - title: Setting up OAuth2 for GitOps
           url: "/oauth-setup"
         - title: Authorize access to organizations/projects
           url: "/hosted-authorize-orgs" 
@@ -548,50 +552,46 @@
           url: "/pipeline-execution-context" 
         - title: Auditing actions in Codefresh
           url: "/audit"
+    - title: Single Sign-On 
+      sub-pages:
+        - title: Common configuration
+          url: "/team-sync"
+        - title: OpenID Connect
+          url: "/oidc"
+          sub-pages:
+            - title: Auth0
+              url: "/oidc-auth0"
+            - title: Azure
+              url: "/oidc-azure"
+            - title: Google
+              url: "/oidc-google"
+            - title: Keycloak
+              url: "/oidc-keycloak"
+            - title: Okta
+              url: "/oidc-okta"
+            - title: OneLogin
+              url: "/oidc-onelogin"
+        - title: SAML
+          url: "/saml"
+          sub-pages:
+            - title: JumpCloud
+              url: "/saml-jumpcloud"
+            - title: Okta
+              url: "/saml-okta"
+            - title: OneLogin
+              url: "/saml-onelogin"
+            - title: PingID SSO
+              url: "/saml-pingid"
+        - title: LDAP
+          url: "/ldap"
+    - title: Codefresh IP addresses
+      url: "/platform-ip-addresses" 
     - title: User self-management
       sub-pages:  
         - title: Managing personal settings
           url: "/user-settings"
         - title: Managing Git PATs
-          url: "/manage-pats"
-    - title: Codefresh IP addresses
-      url: "/platform-ip-addresses" 
-
-- title: Single Sign-On
-  url: /single-sign-on
-  pages:
-    - title: Single sign-on overview
-      url: /single-sign-on
-    - title: Common configuration
-      url: /team-sync
-    - title: OpenID Connect
-      url: /oidc
-      sub-pages:
-        - title: Auth0
-          url: /oidc-auth0
-        - title: Azure
-          url: /oidc-azure
-        - title: Google
-          url: /oidc-google
-        - title: Keycloak
-          url: /oidc-keycloak
-        - title: Okta
-          url: /oidc-okta
-        - title: OneLogin
-          url: /oidc-onelogin
-    - title: SAML
-      url: /saml
-      sub-pages:
-        - title: JumpCloud
-          url: /saml-jumpcloud
-        - title: Okta
-          url: /saml-okta
-        - title: OneLogin
-          url: /saml-onelogin
-        - title: PingID SSO
-          url: /saml-pingid
-    - title: LDAP
-      url: /ldap
+          url: "/manage-pats"    
 
 - title: Reference
   url: "/reference"

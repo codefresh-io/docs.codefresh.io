@@ -8,31 +8,31 @@ toc: true
 Check out our GitOps quick starts to get up and running with GitOps in Codefresh.  
 
 The quick start guides you through:
-* Provisioning runtimes
+* Provisioning GitOps Runtimes
 * Creating and deploying an application
 
 
-## Provision runtimes
-Based on your deployment model, start by provisioning the hosted or hybrid runtime. Hosted and hybrid runtimes can co-exist with each other.
+## Provision GitOps Runtimes
+Based on your deployment model, start by provisioning the Hosted or Hybrid GitOps Runtime. Hosted and Hybrid GitOps Runtimes can co-exist with each other.
 
 
 ### Hosted 
-Hosted runtimes are hosted on a Codefresh cluster and managed by Codefresh. You need to provision your hosted runtime once for your account.  
+Hosted GitOps Runtimes are hosted on a Codefresh cluster and managed by Codefresh. You need to provision your Hosted Runtime once for your account.  
 
-1. [Provision a hosted runtime]({{site.baseurl}}/docs/quick-start/gitops-quick-start/install-hosted)  
-  Provision the hosted runtime with a single click, and complete the setup for your hosted environment.  
+1. [Provision a Hosted GitOps Runtime]({{site.baseurl}}/docs/quick-start/gitops-quick-start/install-hosted)  
+  Provision the Hosted GitOps Runtime with a single click, and complete the setup for your hosted environment.  
 
 {::nomarkdown}
 <br>
 {:/}
 
 ### Hybrid
-Hybrid runtimes are hosted on a customer cluster and managed by the customer. You can provision multiple hybrid runtimes in the same account.  
+Hybrid GitOps Runtimes are hosted on a customer cluster and managed by the customer. You can provision multiple Hybrid GitOps Runtimes in the same account.  
 
-1. [Prepare for hybrid runtime installation]({{site.baseurl}}/docs/quick-start/gitops-quick-start/verify-requirements)  
-  Verify your environment matches the requirements for installing Codefresh runtime.
-1. [Install hybrid runtime]({{site.baseurl}}/docs/quick-start/gitops-quick-start/runtime)  
-  Install the Codefresh runtime by downloading the CLI, installing the runtime, and validate successful installation in the UI
+1. [Prepare for Hybrid GitOps Runtime installation]({{site.baseurl}}/docs/quick-start/gitops-quick-start/verify-requirements)  
+  Verify your environment matches the requirements for installing a Hybrid GitOps Runtime.
+1. [Install the Hybrid GitOps Runtime]({{site.baseurl}}/docs/quick-start/gitops-quick-start/runtime)  
+  Install the Hybrid GitOps Runtime through Helm.
 
 ## Create a Codefresh account
 [Create an account in Codefresh]({{site.baseurl}}/docs/quick-start/create-codefresh-account/) in which to create pipelines.

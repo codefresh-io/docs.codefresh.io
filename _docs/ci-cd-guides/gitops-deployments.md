@@ -8,7 +8,7 @@ toc: true
 ---
 
 Apart from traditional push-based Helm deployments, you can use Codefresh for [GitOps deployments](https://codefresh.io/gitops/){:target="\_blank"} powered by Argo CD.  
-For an overview on GitOps, Argo CD, and how Codefresh implements both, see [Codefresh and GitOps]({{site.baseurl}}docs/getting-started/gitops-codefresh/).
+For an overview on GitOps, Argo CD, and how Codefresh implements both, see [Codefresh and GitOps]({{site.baseurl}}/docs/getting-started/gitops-codefresh/).
 
 
 Even though GitOps is not specific to Kubernetes, current GitOps tools work great with Kubernetes in the form of cluster controllers. The GitOps controller monitors the state of the Git repository, and when there is a commit, instructs the cluster to match the same state.

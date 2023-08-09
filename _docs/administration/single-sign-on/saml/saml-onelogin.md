@@ -1,15 +1,13 @@
 ---
 title: OneLogin SSO via SAML
 description: Setting Up OneLogin via SAML
-group: single-sign-on
-sub_group: saml
 redirect_from:
   - /docs/single-sign-on/saml/saml-onelogin/
 toc: true
 ---
 
 Set up SSO for OneLogin using SAML in Codefresh.
-For a general overview on SAML, see [Setting up SAML2 Federated SSO]({{site.baseurl}}/docs/single-sign-on/saml).
+For a general overview on SAML, see [Setting up SAML2 Federated SSO]({{site.baseurl}}/docs/administration/single-sign-on/saml).
 
 >If you do not see SAML in the SSO list, please create a support ticket to enable SAML for your account.
 
@@ -25,7 +23,7 @@ Setting up SAML SSO for OneLogin includes:
 1. Add a **Display Name**. Leave the other settings which are optional. 
 1. Click **Save**.
 1. From the sidebar, select **SSO** and keep the tab open.
-1. Continue with [Step 2: Configure SSO settings for OneLogin via SAML in Codefresh](#configure-sso-settings-for-onelogin-via-saml-in-codefresh).
+1. Continue with [Step 2: Configure SSO settings for OneLogin via SAML in Codefresh](#step-2-configure-sso-settings-for-onelogin-via-saml-in-codefresh).
 
 ## Step 2: Configure SSO settings for OneLogin via SAML in Codefresh
 
@@ -45,7 +43,7 @@ Setting up SAML SSO for OneLogin includes:
   The SAML integration for OneLogin is added and appears in the list of SSOs. 
 1. In the Single Sign-On page, click the **Edit** icon for the OneLogin SAML integration you created.
 1. Copy the **Assertion URL** (client ID) that was automatically generated when you added the integration. 
-1. Continue with [Step 3: Configure SSO settings for Codefresh in OneLogin](#configure-sso-settings-for-codefresh-in-onelogin).
+1. Continue with [Step 3: Configure SSO settings for Codefresh in OneLogin](#step-3-configure-sso-settings-for-codefresh-in-onelogin).
 
 ## Step 3: Configure SSO settings for Codefresh in OneLogin
 
@@ -80,6 +78,6 @@ Now test the SSO with a test user in a different browser or private/incognito br
 1. In a different browser or private/incognito browser window use the Corporate option to log in.
 
 ## Related articles
-[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/single-sign-on/single-sign-on/)  
-[Setting up SAML2 Federated SSO]({{site.baseurl}}/docs/single-sign-on/saml)  
-[Common configuration for SSO providers]({{site.baseurl}}/docs/single-sign-on/team-sync)  
+[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/administration/single-sign-on/)  
+[Setting up SAML2 Federated SSO]({{site.baseurl}}/docs/administration/single-sign-on/saml)  
+[Common configuration for SSO providers]({{site.baseurl}}/docs/administration/single-sign-on/team-sync)  

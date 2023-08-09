@@ -8,7 +8,7 @@ redirect_from:
   - /docs/new-helm/helm-environment-promotion/
 toc: true
 ---
-Apart from the [Helm Releases]({{site.baseurl}}/docs/deployments/helm/helm-releases-management) dashbaord that shows your Kubernetes clusters at the application level, Codefresh also comes with a special environment board that allows you to track one or more applications as they move within your infrastructure (example, Dev, QA, Prod). 
+Apart from the [Helm Releases]({{site.baseurl}}/docs/deployments/helm/helm-releases-management) dashboard that shows your Kubernetes clusters at the application level, Codefresh also comes with a special environment board that allows you to track one or more applications as they move within your infrastructure (example, Dev, QA, Prod). 
 
 The environment board can function both as an overview of the whole lifecycle of the application, as well as a tool to shift-left/right Helm releases between environments.
 

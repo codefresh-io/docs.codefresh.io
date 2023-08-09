@@ -161,9 +161,9 @@ It is possible to define all possible hooks (`on_elected`, `on_finish`, `on_succ
 
 ## Step hooks
 
-Hooks can also be defined for individual steps inside a pipeline. This capability allows for more granular control on defining prepare/cleanup phases for specific steps. 
+You can also define hooks for individual steps inside a pipeline. This capability allows you to enforce more granular control on defining prepare/cleanup phases for specific steps. 
 
-The syntax for step hooks is the same as pipeline hooks (`on_elected`, `on_finish`, `on_success`, `on_fail`), you just need to put the respective segment under a step instead of the root of the pipeline.
+The syntax for step hooks is the same as pipeline hooks:  `on_elected`, `on_finish`, `on_success`, `on_fail`. The only difference is that you need to add the respective segment within a step instead of the at the root of the pipeline.
 
 For example, this pipeline will always run a cleanup step after integration tests (even if the tests themselves fail).
 
@@ -200,7 +200,7 @@ steps:
 {% endhighlight %}
 
 
-Logs for steps hooks are shown in the log window of the step itself.
+Logs for steps hooks are displayed in the log window of the step itself.
 
  {% include 
 image.html 
@@ -212,7 +212,7 @@ caption="Hooks before a pipeline"
 max-width="80%" 
 %}
 
-As with pipeline hooks, it is possible to define multiple hook conditions for each step.
+As with pipeline hooks, you can also define multiple hook conditions for each step.
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -254,17 +254,17 @@ steps:
 The order of events in the example above is the following:
 
 1. The `on_elected` segment executes first (authentication)
-1. The step itself executes (the security scan)
-1. The `on_fail` segment executes (only if the step throws an error code)
+1. The `Security Scanning` step itself executes the security scan
+1. The `on_fail` segment executes only if the step throws an error code
 1. The `on_finish` segment always executes at the end
 
 
-## Running steps/plugins in hooks
+### Running steps/plugins in hooks
 
-Hooks can use [steps/plugins](https://steps.codefresh.io){:target="\_blank"}. With plugins you have to specify:
-
-- The type field for the step/plugin.
-- The arguments needed for the step/plugin.
+Hooks can use [steps/plugins](https://steps.codefresh.io){:target="\_blank"}.  
+With plugins you have to specify:
+- The type field for the step/plugin
+- The arguments needed for the step/plugin
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -298,13 +298,16 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-## Controlling errors inside pipeline/step hooks
+### Controlling errors inside pipeline/step hooks
 
-By default if a step fails within a pipeline, the whole pipeline will stop and be marked as failed.  
-This is also true for `on_elected` segments as well. If they fail, then the whole pipeline will fail (regardless of the position of the segment in a pipeline or step). However, this only applies to `on_elected` segments.  
-`on_success`, `on_fail` and `on_finish` segments do not affect the pipeline outcome at all, and a pipeline will continue even if one of these segments fails.
+By default, if a step fails within a pipeline, pipeline execution is terminated and the pipeline is marked as failed.  
+* `on_elected` segments  
+  If `on_elected` segments fail, regardless of the position of the segment in a pipeline or step, the whole pipeline will fail. 
+* `on_success`, `on_fail` and `on_finish` segments  
+  `on_success`, `on_fail` and `on_finish` segments do not affect the pipeline outcome. A pipeline will continue execution even if one of these segments fails.
 
-For example the following pipeline will fail right away, because the pipeline hook fails at the beginning.
+**Pipeline execution example with `on_elected` segment**  
+The following pipeline will fail right away, because the pipeline hook fails at the beginning.
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -351,6 +354,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
+
 This pipeline will now execute successfully and `step1` will still run as normal, because we have used the `fail_fast` property. You can also use the `fail_fast` property on step hooks as well:
 
 `codefresh.yml`
@@ -379,7 +383,7 @@ steps:
 >Notice that the `fail_fast` property is only available for `on_elected` hooks. The other types of hooks (`on_finish`, `on_success`, `on_fail`) do not affect the outcome of the pipeline in any way. Even if they fail, the pipeline will continue running to completion. This behavior is not configurable.
 
 
-## Using multiple steps for hooks
+### Using multiple steps for hooks
 
 In all the previous examples, each hook was a single step running on a single Docker image. You can also define multiple steps for each hook. This is possible by inserting an extra `steps` keyword inside the hook and listing multiple Docker images under it:
 
@@ -444,6 +448,10 @@ steps:
 {% endhighlight %}
 
 You can use multiple steps in a hook in both the pipeline and the step level. 
+
+### Referencing the 'working_directory' in step hooks
+To access the [`working_directory`]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#working-directories) of a regular step through a hook, use the prefix `parentSteps.<step-name>` For example, to access the `working_directory` of the `clone` step, use {% raw %} `${{parentSteps.clone}}` {% endraw %}.  
+
 
 
 ## Using annotations and labels in hooks
@@ -525,9 +533,10 @@ The pipeline is not correct, because the first segment of annotations is directl
 
 ## Syntactic sugar syntax
 
-To simplify the syntax for hooks, the following simplifications are also offered:
+We offer the following options to simplify the syntax for hooks.
 
-If you do not want to use metadata or annotations in your hook the keyword `exec` can be omitted:
+**Not using metadata or annotations in your hook**  
+Omit the keyword `exec`:
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -552,6 +561,7 @@ steps:
 {% endhighlight %}
 
 
+**Not specify teh Docker image**  
 If you do not want to specify the Docker image you can simply omit it. Codefresh will use the `alpine` image in that case to run the hook:
 
 
@@ -581,25 +591,7 @@ steps:
 {% endhighlight %}
 
 
- If you don't use metadata or annotations, you can also completely remove the `exec` keyword and just mention the commands you want to run (`alpine` image will be used by default):
 
- `codefresh.yml`
-{% highlight yaml %}
-{% raw %}
-version: "1.0"
-hooks:
- on_elected:  # no exec/image keyword - alpine image will be used
-   - echo "Pipeline starting"
-steps:
- build:
-   type: build
-   image_name: my_image
-   tag: master
-   hooks:
-     on_success: # no exec/image keyword - alpine image will be used
-       - echo "Docker image was built successfully"
-{% endraw %}
-{% endhighlight %}
 
 ## Using Type Steps / Plugins in hooks
 
@@ -625,14 +617,14 @@ hooks:
 
 With the current implementation of hooks, the following limitations are present:
 
-* The [debugger]({{site.baseurl}}/docs/pipelines/debugging-pipelines/) cannot inspect commands inside hook segments
-* Hooks are not supported for [parallel steps]({{site.baseurl}}/docs/pipelines/advanced-workflows/)
-* Storage integrations don't resolve in hooks (for example, [test reports]({{site.baseurl}}/docs/testing/test-reports/#producing-allure-test-reports-from-codefresh-pipelines))
-* Step hook does not support the working_directory field aka `working_directory: ${{clone}}`
+* The [debugger]({{site.baseurl}}/docs/pipelines/debugging-pipelines/) cannot inspect commands inside hook segments.
+* Hooks are not supported for [parallel steps]({{site.baseurl}}/docs/pipelines/advanced-workflows/).
+* Storage integrations don't resolve in hooks (for example, [test reports]({{site.baseurl}}/docs/testing/test-reports/#producing-allure-test-reports-from-codefresh-pipelines)).
 
 ## Related articles
 [Conditional execution of steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/)  
-[Working directories]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#working-directories)   
+[Working directories]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#working-directories)  
+[Build step in pipelines]({{site.baseurl}}/docs/pipelines/steps/build/)  
 [Annotations in pipelines]({{site.baseurl}}/docs/pipelines/annotations/)  
 
 

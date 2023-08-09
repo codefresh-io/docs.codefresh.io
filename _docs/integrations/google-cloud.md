@@ -52,7 +52,9 @@ You also get access to all other Kubernetes dashboards such as the [cluster dash
 
 ## Storing test reports in Google Cloud storage
 
-Codefresh has native support for test reports. You can store the reports on Google Cloud storage.
+Codefresh has native support for storing test reports in different storage buckets, including Google Cloud storage.
+You can connect your Google Cloud storage account to Codefresh through the Cloud Storage options in Pipeline Integrations.  
+
 
 {% include
 image.html
@@ -64,7 +66,8 @@ caption="Google cloud storage"
 max-width="50%"
 %}
 
-See the full documentation for [test reports]({{site.baseurl}}/docs/testing/test-reports/).
+For detailed instructions, to set up an integration with your Google Cloud storage account in Codefresh, see [Cloud storage integrations for pipelines]({{site.baseurl}}/docs/integrations/cloud-storage/), and to create and store test reports through Codefresh pipelines, see [Creating test reports]({{site.baseurl}}/docs/testing/test-reports/). 
+
 
 ## Using Google Storage for storing Helm charts
 

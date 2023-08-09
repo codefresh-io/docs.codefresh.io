@@ -8,16 +8,15 @@ redirect_from:
 toc: true
 ---
 
-As a Codefresh user, you can manage several settings in your personal account, including:
+As a Codefresh user, you can manage several settings and resources through your personal account, including:
 
 * Email notifications for builds and build usage
-* Select date and time formats for pipeline modules
-* Get updates on weekly usage
-* Grant account access to Codefresh support
-* Grant access to private Git repositories
-* Create and manage API keys
+* Date and time formats for pipeline modules
+* Updates on weekly usage
+* Account access to Codefresh support
+* API keys
 
-> To manage Git personal access tokens for GitOps, see [Managing PATs]({{site.baseurl}}/docs/administration/user-self-management/manage-pats).
+> To manage Git user personal access tokens for GitOps, see [Managing Git PATs]({{site.baseurl}}/docs/administration/user-self-management/manage-pats).
 
 ## Access user settings
 * In the Codefresh UI, on the toolbar, click the **Settings** icon and then select [**User Settings**](https://g.codefresh.io/user/settings){:target="\_blank"}.

@@ -1,5 +1,5 @@
 ---
-title: "Setting up OAuth2 for Git providers"
+title: "Setting up OAuth2 for GitOps"
 description: ""
 group: administration
 sub_group: account-user-management

@@ -4,14 +4,14 @@ description: Setting up PingID SSO via SAML
 group: single-sign-on
 sub_group: saml
 redirect_from:
- - /docs/single-sign-on/saml/saml-pingidsso/
+ - /docs/single-sign-on/saml/saml-pingid/
 toc: true
 ---
 
 Set up SSO for PingID using SAML in Codefresh.
 > The configuration described here is for PingID SSO and not PingID Federate. The steps can be used as a general guide for Ping Federate. 
 
-For a general overview on SAML, see [Setting up SAML2 Federated SSO]({{site.baseurl}}/docs/single-sign-on/saml/).
+For a general overview on SAML, see [Setting up SAML2 Federated SSO]({{site.baseurl}}/docs/administration/single-sign-on/saml/).
 
 >If you do not see SAML in the SSO list, please create a support ticket to enable SAML for your account.
 
@@ -37,7 +37,7 @@ Configure SSO for PingID via SAML in Codefresh. The Assertion URL is automatical
   The SAML integration for PingID is added and appears in the list of SSOs. 
 1. In the Single Sign-On page, click the **Edit** icon for the PingID SAML integration you created.
 1. Copy the **Assertion URL** (client ID) that was automatically generated when you added the integration. 
-1. Continue with [Step 2: Configure SSO settings for Codefresh in PingID](#configure-sso-settings-for-codefresh-in-pingid).
+1. Continue with [Step 2: Configure SSO settings for Codefresh in PingID](#step-2-configure-sso-settings-for-codefresh-in-pingid).
 
 
 ## Step 2: Configure SSO settings for Codefresh in PingID
@@ -62,7 +62,7 @@ Configure SSO for PingID via SAML in Codefresh. The Assertion URL is automatical
     > For PingID Federate, you must add the follwing mapping: NameID <- Email Address
 
 1. Toggle the **Enable** option to on to make the application available.
-1. Continue with [Step 3: Complete SSO configuration for PingID in Codefresh](#complete-sso-configuration-for-pingid-in-codefresh).
+1. Continue with [Step 3: Complete SSO configuration for PingID in Codefresh](#step-3-complete-sso-configuration-for-pingid-in-codefresh).
 
 
 ## Step 3: Complete SSO configuration for PingID in Codefresh
@@ -86,6 +86,6 @@ Now test the SSO with a test user in a different browser or private/incognito br
 1. In a different browser or private/incognito browser window use the Corporate option to log in.
 
 ## Related articles
-[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/single-sign-on/single-sign-on/)  
-[Setting up SAML2 Federated SSO]({{site.baseurl}}/docs/single-sign-on/saml)  
-[Common configuration for SSO providers]({{site.baseurl}}/docs/single-sign-on/team-sync)  
+[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/administration/single-sign-on/)  
+[Setting up SAML2 Federated SSO]({{site.baseurl}}/docs/administration/single-sign-on/saml)  
+[Common configuration for SSO providers]({{site.baseurl}}/docs/administration/single-sign-on/team-sync)  
