@@ -6,47 +6,72 @@ sub_group: gitops
 toc: true
 ---
 
+The Group view for GitOps applications is a simple and efficient way to focus on deployments of the specific apps you're interested in, amidst the potentially numerous apps within your enterprise.  
+The Group view consolidates deployment information for all applications within the group, <!--- significantly improves the user experience by -->eliminating the need to navigate to and switch between the different applications for information. 
 
-The GitOps Apps dashboard is your one-stop shop for monitoring and managing GitOps applications across clusters in the enterprise. Even with its sophisticated viewing and filtering capabilities, focusing on a specific set  of applications among  a multitude of applications.
-
-The Group view, is a simple and efficient way to focus on deployments of the specific apps you're interested in, amidst potentially numerous apps within your enterprise.  The Group view consolidates deployment information for all applications within a group, <!--- significantly improves the user experience by -->eliminating the need to navigate to and switch between different applications to get the information. 
-
-As it is part of the GitOps Apps dashboard, not only does is the navigation seamless the Group view ensures seamless navigation between the Groups and Applications tabs, and the information is .
+Being an integral part of the GitOps Apps dashboard means that you can easily navigate between the Groups and Applications tabs. 
 
 
-  See [Application Group information](#application-group-information).
-screenshot 
 
 ## Assign applications to Groups
-You can either assign a new application to a Group when you create the applicationWhen you create a new application, you can either assign it to one or more existing groups, or create a new Group and assign it to that Group.
 
-For exising applciationd a yet unassigned to a Group, you can edit the application definitions in the Configuration tab,and select the Gorups.
-See
+You need to first to assign applications to a Group. 
 
-Once you assign an application to a group, you can add it to or remove it from different Application Groups through the application's Configuration settings.
-## Go to the Gorup  Application Groups
+Grouping by region: 
+
+For instance, you consider an E-Commerce product with front-end and back-end applications. The front-end application id deployned globally to different regions. Grouping these applications shows their deployment history in the same view and helps track their CI builds, PR, issue to better understand the relationship between  the impact of the changes 
+
+Grouping by environment:
+
+
+G
+* New applications  
+  When creating the application, assign it to one or more existing Groups, or create a new Group for the application. See [Group settings]({{site.baseurl}}/docs/deployments/gitops/create-application/#groups).
+
+* Existing applications  
+  Edit the application definitions in the Configuration tab and select the groups.
+
+You have the flexibility to assign applications to multiple groups based on your requirements, and manage these assignments at any through the application's Configuration settings. Any changes to the Group has no impact on its applications. 
+
+
+
+
+
+## Navigate to the Group view
+The Group is another tab in the GitOps Apps dashboard. 
+
 1. In the Codefresh UI, from Ops in the sidebar, select [GitOps Apps](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
 1. Click the **Groups** tab.
 
+What can you do in the Groups tab?
 
-### Application Group information
+*  Filter by one or more applications to find the Groups they belong to.
+* Star one or more application Groups as favorites for single-click access to them.{::nomarkdown}<br>Select the <img src="../../../../images/icons/icon-mark-favorite.png?display=inline-block"> to star a Group, and click <img src="../../../../images/icons/icon-fav-starred.png?display=inline-block"> to filter by them.{:}.
+* Monitor the Timelines of the applications in a Group. 
+* Navigate to the Card view of the applications by clicking Applications,
 
+Find the Group you want
+ to quickly access the starred Groups.<br><br>To filter by favorite Groups, select . <!--- ask if it affects any other views> 
+   
+   Selecting an application filters the list of groups to show the group or groups to which the application belongs.
 
-Here's a description of the information you can see for Application Groups in the Groups tab of the GitOps Apps dashboard.
+Here's a description of the information you can see in the Groups tab of the GitOps Apps dashboard.
 
 {: .table .table-bordered .table-hover}
 | Item                     | Description            |  
 | --------------         | --------------           |  
-|Applications            | The application by which to filter the application groups. Selecting an application filters the list of groups to show the group or groups to which the application belongs.|
-|{::nomarkdown}<img src="../../../../images/icons/icon-mark-favorite.png?display=inline-block">{:/}| Star one or more application groups as favorites and view only the starred groups.{::nomarkdown}<br>Select the <img src="../../../../images/icons/icon-mark-favorite.png?display=inline-block"> to star an application group as a favorite.<br><br>To filter by favorite Groups, select <img src="../../../../images/icons/icon-fav-starred.png?display=inline-block">. <!--- ask if it affects any other views>  |
+|Applications            | The application by which to filter the application groups. |
+ |
 | Sorting | Sort the Groups list either by group name or by the groups most recently updated.|
 | Group name | The name of the application group with the number of applications it includes. <br>Selecting an application group, switches to Timeline tab with deployment information for every application in the Group. See  add here what happens on clicking an app group |
 
-## Monitor deployments by Application Group
+## Monitor deployments by application Groups
 Monitor ongoing and historical deployments for an Application Group in the Timeline view specific to the group. 
 
 The collective Timeline view eliminates the need to navigate through the Timelines of individual applications separately. The high-level perspective of multiple deployments of similar applications in the same view, together with the context for the deployments, makes it easier to identify trends or patterns across these applications.
 
+The Timeline view for application Groups is similair to that of an individual application, except it shows the collective deployments for each of teh applications.
+You can filter by PR, Isueuns filters 
 The deployment chart displays the day-to-day deployments for the selected time period, for all the applications in the Group. Similar to the Timeline for an individual applicatoins, the  over the dot on the deployment chart for information on historical deployments.   
 The deployments are sorted by date, with the most recent deployment of each application labeled **Current Version**. Every deployment record shows the related Build, PR, and Jira information. 
 
