@@ -23,7 +23,7 @@ As the Codefresh Runner is **not** dependent on any special dockershim features,
 {: .table .table-bordered .table-hover}
 | Item                     | Requirement            |  
 | --------------         | --------------           |  
-|Kubernetes cluster      | Server version 1.10 to 1.24. {::nomarkdown}<br><b>Tip</b>:  To check the server version, run:<br> <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">kubectl version --short</span>.{:/}|
+|Kubernetes cluster      | Server version 1.21 to 1.27. {::nomarkdown}<br><b>Tip</b>:  To check the server version, run:<br> <code class="highlighter-rouge">kubectl version --short</code>.{:/}|
 |Node requirements| Disk space: 50 GB per node|
 |Container runtime | Any compliant container runtime, as the runner is **not** dependent on any special dockershim features. {::nomarkdown}<br>Examples: <ul><li><a href="https://kubernetes.io/blog/2020/12/02/dockershim-faq" target="blank">Docker</a></li><li><a href="https://containerd.io/" target="blank">containerd</a></li><li><a href="https://cri-o.io/" target="blank">cri-o</a></li></ul> {:/} |
 |CLI token | [Codefresh CLI token]({{site.baseurl}}/docs/integrations/codefresh-api/#authentication-instructions)|
@@ -172,7 +172,7 @@ Installing the Codefresh Runner with Helm requires you to first create a `genera
 1. Optional. If the Kubernetes cluster with the Codefresh Runner is behind a proxy, continue with [Complete Codefresh Runner installation](#complete-codefresh-runner-installation).  
 
 <!--- what is this -->
-For reference, have a look at the repository with the chart: [https://github.com/codefresh-io/venona/tree/release-1.0/.deploy/cf-runtime](https://github.com/codefresh-io/venona/tree/release-1.0/.deploy/cf-runtime){:target="\_blank"}.
+For reference, have a look at the repository with the chart: [https://github.com/codefresh-io/venona/tree/release-1.0/charts/cf-runtime](https://github.com/codefresh-io/venona/tree/release-1.0/charts/cf-runtime){:target="\_blank"}.
 
 
 ```shell

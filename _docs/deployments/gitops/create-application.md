@@ -38,7 +38,7 @@ Application definitions include the name, runtime, and the name of the YAML mani
 
 ## Application: General configuration settings
 
-General configuration settings define the source, destination, and sync policies for the application. 
+General configuration settings define the group to which the application belongs, source, destination, and sync policies for the application. 
 
 {% include 
    image.html 
@@ -49,6 +49,14 @@ General configuration settings define the source, destination, and sync policies
    caption="General configuration settings"
    max-width="70%" 
    %} 
+
+<!--- ### Groups
+Optional. The group or groups to which to add the application.  
+You can group applications based on criteria meaningful to your organization, such as environment, region, or any other relevant attribute. You can then view deployments for these applications in the same location in the Groups tab of the GitOps Apps dashboard. A new view for GitOps Application, App Groups allow you to collate multiple applications view their timelines.
+
+Select an existing group, or create a new application group by typing a name and pressing Enter.
+
+-->
 
 ### Source 
 The Git repository to be tracked for changes to the application's source code.  

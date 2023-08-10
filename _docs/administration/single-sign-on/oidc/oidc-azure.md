@@ -144,7 +144,7 @@ Configure SSO for Azure in the Codefresh UI.
 **Before you begin**  
 * From Azure AD:
   * Have your client secret handy
-  * Go to the application you created, and note down these **Properties: Application ID and Object ID**
+  * Go to t**Azure Active Directory > Enterprise Applications** and select the app you created, and note down these **Properties: Application ID and Object ID**
   
    {% include image.html
 lightbox="true"
@@ -238,9 +238,27 @@ caption="Web configuration settings"
 max-width="70%"
 %}
 
+## Step 6: (Optional) Configure for Azure Initiated Login.
+
+1. Go to **Azure Active Directory > Apps registrations**, and select the application you registered for SSO.
+1. From the sidebar, select **Branding & properties**
+1. In the **Home page URL** field, insert the following `https://g.codefresh.io/api/auth/<your_codefresh_sso_client_name>`
+
+{% include image.html
+lightbox="true"
+file="/images/sso/azure/homePageURL.png"
+url="/images/sso/azure/homePageURL.png"
+alt="Web configuration settings"
+caption="Web configuration settings"
+max-width="70%"
+%}
+
+{:start="4"}
+1. Go to **Azure Active Directory > Enterprise Applications**, and select the application you registered for SSO.
+1. Under Properties, toggle **Visible to users** to yes.
+1. Now the app can be added to a Collection for My Apps page for Azure Initiated Login.
+
 You have now completed the SSO setup for Azure using OIDC.
-
-
 
 ## Related articles
 [Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/administration/single-sign-on/)  

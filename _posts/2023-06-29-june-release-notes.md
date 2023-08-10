@@ -125,7 +125,7 @@ As part of our ongoing commitment to improving efficiency and simplifying instal
 **GitOps**  
 * Unable to delete Argo CD application from Git Source.
 * Same application shows different statuses in the **Home > GitOps Dashboard** and in the **GitOps Apps** dashboard.
-* Images not displayed in Images dashboard for GitLab Git provider (Denis)
+* Images not displayed in Images dashboard for GitLab Git provider 
 * (On premises) Rollouts Reporter for managed cluster uses SaaS instead of on-premises URL.
 
 
