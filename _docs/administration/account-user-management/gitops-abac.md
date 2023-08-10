@@ -4,12 +4,14 @@ description: "Restrict access to GitOps entities through ABAC"
 toc: true
 ---
 
+>This feature is currently in Beta.
+
 Control access to entities in GitOps through ABAC (Attribute-Based Access Control). ABAC allows fine-grained access to application entities through the use of rules.  
 For GitOps, you can currently define ABAC for application entities in the Codefresh UI or programmatically via Terraform.
 For more information on ABAC, see [ABAC on Wikipedia](https://en.wikipedia.org/wiki/Attribute-based_access_control){:target="\_blank"}. 
 
 
-Rules define the *who*, *what*, and *where*  control access to GitOps applications, through the following elements. 
+Rules define the *who*, *what*, and *where*  control access to GitOps applications, through the following elements:
 * Teams  
   Teams control the _who_ part of the rule. 
 
@@ -33,6 +35,16 @@ For each rule, you must select or define:
 1. On the sidebar, from Access & Collaboration, select [**GitOps Permissions**](https://g.codefresh.io/account-admin/permissions/teams){:target="\_blank"}.
 1. To create a rule, click **Add** and define the **Teams**, **Actions**, and **Attributes** for the rule.
 1. To confirm, click **Add** once again. 
+
+  {% include 
+   image.html 
+   lightbox="true" 
+   file="/images/administration/access-control/gitops/gitops-add-rule.png" 
+   url="/images/administration/access-control/gitops/gitops-add-rule.png" 
+   alt="Add rule for GitOps applications" 
+   caption="Add rule for GitOps applications"
+   max-width="50%" 
+  %}
 
 The rule you added for the entity is displayed in the GitOps Permissions page. Edit or delete the rule by clicking the respective icons.
 
