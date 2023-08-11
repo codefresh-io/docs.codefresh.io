@@ -55,15 +55,15 @@ The following template is for Feature Requests
 
 #### Details
 
-Describe the feature requests you have.
+Describe the feature request you have.
 
 #### Current Workflow
 
-What are your current process / work arounds in place as this feature not implemented.
+What is the current process / work around you have in place due to this feature not being implemented yet.
 
 #### Impact
 
-Describe the impact this feature request will have when completed.
+Describe why this feature is needed and the impact this feature request will have when completed.
 
 ---
 
