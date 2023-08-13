@@ -1,6 +1,6 @@
 ---
-title: "How To: Support Ticket Templates"
-description: 
+title: "How To: Create a Support Ticket"
+description: Create support tickets for bugs, feature requests using our templates"
 group: kb
 sub-group: articles
 toc: true
@@ -13,76 +13,75 @@ support-reviewed: 2023-08-11 LG
 
 ## Overview
 
-Below are example templates that can be used to create support tickets for bugs/issues, feature requests, or general questions.
+Use the example templates below to create support tickets for bugs/issues, feature requests, or general questions you might have.
 
-## Details
+## Support Template: Issues/bugs
 
-### Issues / Bugs
 
-The following template is for Bugs/Issues
+Use the following template to create a support ticket for bugs/issues.
 
 ---
 
-#### What Currently Is Happening
+### What is currently happening?
 
-A sentence or two that describes whats happening.
+A sentence or two that describes what's happening now.
 
-#### What is the Expected Results
+### What are the expected results?
 
-A sentence or two that describes what is expected.
+A sentence or two that describes what you expected to happen.
 
-#### Details
+### Details
 
-Describe this issue in detail.
+A detailed description of this issue.
 
 If the issue is related to the Pipeline Hybrid Runtime, please gather the [Support Package](https://github.com/codefresh-support/hybrid-runner-support) and attach it to the ticket.
 
-#### How to Reproduce
+### How to reproduce
 
-A step by step guide on how to reproduce this issue.
+A step-by-step guide on how to reproduce this issue.
 
-#### Impact
+### Impact
 
-Details about the business impact.
-
----
-
-### Feature Requests
-
-The following template is for Feature Requests
+Describe the business impact of this issue.
 
 ---
 
-#### Details
+## Support Template: Feature requests
 
-Describe the feature request you have.
-
-#### Current Workflow
-
-What is the current process / work around you have in place due to this feature not being implemented yet.
-
-#### Impact
-
-Describe why this feature is needed and the impact this feature request will have when completed.
+The following template is for feature requests.
 
 ---
 
-### Questions
+### Details
 
-This template is for general questions you have and not related to an issue or feature requests.
+Describe your feature request.
 
----
+### Current Workflow
 
-#### Question
+Describe the current process/ workaround you have in place due to this feature not being implemented yet.
 
-What is the question you have?
+### Impact
 
-#### Context
-
-Background information for the question. Also any links or details that will help understanding the question above.
+Describe why you need this feature and the impact of this feature request when implemented.
 
 ---
 
-## Related Items
+## Support Template: General
+
+Use this template for general questions you have, not related to an issue or feature request.
+
+---
+
+### Question
+
+Add your question here.
+
+### Context
+
+Add background information on your question. Add links or any detail that will help in understanding the question above.
+
+---
+
+## Related articles
 
 [Common Issues]({{site.baseurl}}/docs/kb/common-issues/)
