@@ -243,6 +243,8 @@ In the hosted environment, the Codefresh Runtime is installed on a K8s cluster m
 ### Tunnel-based Hybrid GitOps runtime architecture
 Tunnel-based Hybrid GitOps runtimes use tunneling instead of ingress controllers to control communication between the GitOps Runtime in the customer cluster and the Codefresh GitOps Platform. Tunnel-based runtimes are optimal when the cluster with the GitOps Runtime is not exposed to the internet. 
 
+Note: Tunnel-based architecture is not supported for on-prem instances.
+
 {% include
    image.html
    lightbox="true"
