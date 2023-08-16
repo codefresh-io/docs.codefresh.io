@@ -1,6 +1,6 @@
 ---
 title: "Architecture"
-description: "Codefresh platform and runtime architecture"
+description: "Codefresh platform and Runtime architecture"
 group: installation
 toc: true
 ---
@@ -38,8 +38,8 @@ Depending on the type of GitOps installation, the GitOps Runtime is installed ei
 ### GitOps Clients
 
 GitOps Clients include the  UI and the GitOps CLI.   
-The UI provides a unified, enterprise-wide view of deployments (runtimes, clusters, and applications), and CI/CD operations (Delivery Pipelines, workflows, and deployments) in the same location.  
-The Codefresh CLI includes commands to install hybrid runtimes, add external clusters, and manage runtimes and clusters.
+The UI provides a unified, enterprise-wide view of deployments (Runtimes, clusters, and applications), and CI/CD operations (Delivery Pipelines, workflows, and deployments) in the same location.  
+The Codefresh CLI includes commands to install Hybrid GitOps Runtimes, add external clusters, and manage Runtimes and clusters.
 
 ## Codefresh on-premises platform architecture
 
@@ -212,9 +212,9 @@ See [Runner installation behind firewalls]({{site.baseurl}}/docs/installation/be
 ## GitOps Runtime architecture
 The sections that follow show detailed views of the GitOps Runtime architecture for the different installation options, and descriptions of the GitOps Runtime components.
 
-* [Hosted GitOps runtime architecture](#hosted-gitops-runtime-architecture)
+* [Hosted GitOps Runtime architecture](#hosted-gitops-runtime-architecture)
   For Hosted GitOps, the GitOps Runtime is installed on a _Codefresh-managed cluster_ in the Codefresh platform.  
-* Hybrid GitOps runtime architecture:
+* Hybrid GitOps Runtime architecture:
   For Hybrid GitOps, the GitOps Runtime is installed on a _customer-managed cluster_ in the customer environment. The Hybrid GitOps Runtime can be tunnel- or ingress-based:  
   * [Tunnel-based](#tunnel-based-hybrid-gitops-runtime-architecture)  
   * [Ingress-based](#ingress-based-hybrid-gitops-runtime-architecture)  
@@ -227,7 +227,7 @@ The sections that follow show detailed views of the GitOps Runtime architecture 
 
 <br>
 
-### Hosted GitOps runtime architecture
+### Hosted GitOps Runtime architecture
 In the hosted environment, the Codefresh Runtime is installed on a K8s cluster managed by Codefresh. 
 
 {% include
@@ -240,8 +240,11 @@ In the hosted environment, the Codefresh Runtime is installed on a K8s cluster m
   max-width="100%"
 %}
 
-### Tunnel-based Hybrid GitOps runtime architecture
-Tunnel-based Hybrid GitOps runtimes use tunneling instead of ingress controllers to control communication between the GitOps Runtime in the customer cluster and the Codefresh GitOps Platform. Tunnel-based runtimes are optimal when the cluster with the GitOps Runtime is not exposed to the internet. 
+### Tunnel-based Hybrid GitOps Runtime architecture
+Tunnel-based Hybrid GitOps Runtimes use tunneling instead of ingress controllers to control communication between the GitOps Runtime in the customer cluster and the Codefresh GitOps Platform. Tunnel-based runtimes are optimal when the cluster with the GitOps Runtime is not exposed to the internet. 
+
+>**NOTE**:  
+Tunnel-based access mode is not supported for GitOps on-premises installations.
 
 Note: Tunnel-based architecture is not supported for on-prem instances.
 
@@ -256,8 +259,8 @@ Note: Tunnel-based architecture is not supported for on-prem instances.
 %}
 
 
-### Ingress-based Hybrid GitOps runtime architecture
-Ingress-based runtimes use ingress controllers to control communication between the GitOps Runtime in the customer cluster and the Codefresh GitOps Platform. Ingress-based runtimes are optimal when the cluster with the GitOps Runtime is exposed to the internet.  
+### Ingress-based Hybrid GitOps Runtime architecture
+Ingress-based Runtimes use ingress controllers to control communication between the GitOps Runtime in the customer cluster and the Codefresh GitOps Platform. Ingress-based Runtimes are optimal when the cluster with the GitOps Runtime is exposed to the internet.  
 
 
 
@@ -266,8 +269,8 @@ Ingress-based runtimes use ingress controllers to control communication between 
    lightbox="true"
    file="/images/runtime/architecture/arch-hybrid-ingress.png"
  url="/images/runtime/architecture/arch-hybrid-ingress.png"
-  alt="Ingress-based Hybrid GitOps runtime architecture"
-  caption="Ingress-based Hybrid GitOps runtime architecture"
+  alt="Ingress-based Hybrid GitOps Runtime architecture"
+  caption="Ingress-based Hybrid GitOps Runtime architecture"
   max-width="100%"
 %}
 
@@ -307,8 +310,8 @@ The Request Routing Service is installed on the same cluster as the GitOps Runti
 It receives requests from the the Tunnel Client (tunnel-based) or the ingress controller (ingress-based), and forwards the request URLs to the Application Proxy, and webhooks directly to the Event Sources.  
 
 >Important:  
-  The Request Routing Service is available from runtime version 0.0.543 and higher.   
-  Older runtime versions are not affected as there is complete backward compatibility, and the ingress controller continues to route incoming requests.
+  The Request Routing Service is available from Runtime version 0.0.543 and higher.   
+  Older Runtime versions are not affected as there is complete backward compatibility, and the ingress controller continues to route incoming requests.
 
 ### Tunnel Server
 Applies only to _tunnel-based_ Hybrid GitOps Runtimes.  
@@ -335,14 +338,14 @@ The Tunnel Client:
 
 ### Customer environment
 The customer environment that communicates with the GitOps Runtime and Codefresh, generally includes:
-* Ingress controller for ingress-based Hybrid runtimes  
+* Ingress controller for ingress-based Hybrid GitOps Runtimes  
   The ingress controller is configured on the same Kubernetes cluster as the GitOps Runtime, and implements the ingress traffic rules for the GitOps Runtime. 
   See [Ingress controller requirements]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#ingress-controller).
 * Managed clusters  
-  Managed clusters are external clusters registered to provisioned Hosted or Hybrid GitOps runtimes for application deployment.  
+  Managed clusters are external clusters registered to provisioned Hosted or Hybrid GitOps Runtimes for application deployment.  
   Hosted GitOps requires you to connect at least one external K8s cluster as part of setting up the Hosted GitOps environment.  
-  Hybrid GitOps allow you to add external clusters after provisioning the runtimes.  
-  See [Add external clusters to runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster/).
+  Hybrid GitOps allow you to add external clusters after provisioning the Runtimes.  
+  See [Add external clusters to Runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster/).
 * Organizational systems  
   Organizational Systems include the customer's tracking, monitoring, notification, container registries, Git providers, and other systems. They can be entirely on-premises or in the public cloud.   
   Either the ingress controller (ingress hybrid environments), or the Tunnel Client (tunnel-based hybrid environments), forwards incoming events to the GitOps Application Proxy. 
