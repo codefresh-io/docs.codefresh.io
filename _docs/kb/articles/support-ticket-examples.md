@@ -1,6 +1,6 @@
 ---
 title: "How To: Create a Support Ticket"
-description: Create support tickets for bugs, feature requests using our templates"
+description: "Easily create support tickets for bugs & feature requests using our templates"
 group: kb
 sub-group: articles
 toc: true
@@ -48,7 +48,7 @@ Describe the business impact of this issue.
 
 ## Support Template: Feature requests
 
-The following template is for feature requests.
+Use the following template to submit feature requests.
 
 ---
 
@@ -78,7 +78,7 @@ Add your question here.
 
 ### Context
 
-Add background information on your question. Add links or any detail that will help in understanding the question above.
+Add background information on your question. Add links or any details that will help in understanding the question above.
 
 ---
 
