@@ -35,11 +35,11 @@
     - title: GitOps quick starts
       url: "/gitops-quick-start"
       sub-pages:
-        - title: Provision a hosted runtime
+        - title: Provision a Hosted GitOps Runtime
           url:  "/install-hosted"
-        - title: Prepare for hybrid runtime installation
+        - title: Prepare for Hybrid GitOps Runtime installation
           url:  "/verify-requirements"
-        - title: Install a hybrid runtime
+        - title: Install a Hybrid GitOps Runtime
           url: "/runtime"
         - title: Create an application
           url: "/create-app-ui"     
@@ -528,7 +528,7 @@
           url: "/shared-configuration"
         - title: Add external clusters to GitOps Runtimes
           url: "/managed-cluster" 
-        - title: Add Git Sources to to GitOps Runtimes
+        - title: Add Git Sources to GitOps Runtimes
           url: "/git-sources"
         - title: Download/upgrade GitOps CLI
           url: "/upgrade-gitops-cli"
@@ -544,8 +544,10 @@
           url: "/create-codefresh-account"
         - title: Adding users and teams
           url: "/add-users"
-        - title: Configuring access control
+        - title: Configuring access control for pipelines
           url: "/access-control"
+        - title: Configuring access control for GitOps
+          url: "/gitops-abac"
         - title: Setting up OAuth2 for GitOps
           url: "/oauth-setup"
         - title: Authorize access to organizations/projects
