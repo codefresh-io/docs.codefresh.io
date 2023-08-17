@@ -518,6 +518,8 @@
           url: "/hosted-runtime" 
         - title: Hybrid GitOps Runtime
           url: "/hybrid-gitops-helm-installation" 
+        - title: Hybrid GitOps Runtime with existing Argo CD
+          url: "/argo-with-gitops-side-by-side"         
         - title: On-premises GitOps Runtime
           url: "/on-prem-gitops-runtime-install"  
         - title: Managing & monitoring GitOps Runtimes
