@@ -98,7 +98,7 @@ NAMESPACE=<runtime-namespace>
 kubectl label --overwrite crds $(kubectl get crd | grep argoproj.io | awk '{print $1}' | xargs) app.kubernetes.io/managed-by=Helm
 kubectl annotate --overwrite crds $(kubectl get crd | grep argoproj.io | awk '{print $1}' | xargs) meta.helm.sh/release-name=$RELEASE
 kubectl annotate --overwrite crds $(kubectl get crd | grep argoproj.io | awk '{print $1}' | xargs) meta.helm.sh/release-namespace=$NAMESPACE
-
+```
 
 #### Handle Argo project CRDs outside of the chart 
 Disable CRD installation under the relevant section for each of the Argo projects in the Helm chart:<br>
