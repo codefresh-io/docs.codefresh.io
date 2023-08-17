@@ -517,6 +517,25 @@ triggers:
 {% endraw %}
 {% endhighlight %}  
 
+### Cron triggers
+
+The `crontriggers` field is an array of objects that hold [Cron trigger information]({{site.baseurl}}/docs/pipelines/triggers/cron-triggers/) with the following fields.
+
+{: .table .table-bordered .table-hover}
+| Field name          | Parent field                 | Type                  | Value |
+| -------------- | ---------------------------- |-------------------------| -------------------------|
+| `event`         |  `cronTriggers` | array | The Cron trigger event |
+| `name`          |  `cronTriggers` | string | The user-defined name for the Cron trigger. |
+| `message`       |  `cronTriggers` | string |The free-text message to be sent as an additional event payload every time the Cron job is executed. For example, `Successful ingress-less` |
+| `expression`    |  `cronTriggers` | string |The Cron expression that defines the time and frequency of the Cron job. For example, `0 3 * * 1-5` triggers the pipeline at `3:00 AM every weekday (Monday to Friday)`. |
+| `disabled `     |  `cronTriggers` | boolean | Determines if the Cron trigger is activated. When set to `true`, trigger is not activated. What is the default?  |
+| `gitTriggerId`  |  `cronTriggers` | string | The ID of the Git trigger to activate. From where do they git the trigger Id? |
+| `branch`        |  `cronTriggers` | string | The branch of the repo for which to simulate the Git trigger. For?? |
+| `variables`     |  `cronTriggers` | array | The environment variables to populate for the pipeline??? |
+| `options`       |  `cronTriggers` | string | ??? | 
+
+example
+
 
 ## Using Codefresh from within Codefresh
 
