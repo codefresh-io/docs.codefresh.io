@@ -36,16 +36,17 @@ max-width="60%"
 %}
 
 
-Legacy Cron triggers in the UI are marked as ???. You can edit the trigger and update it 
 
 ## Cron triggers in Codefresh UI
 
-Create and manage Cron triggers for pipelines in the Codefresh UI. 
-There are two parts to creating a Cron trigger:
+Create and manage Cron triggers for pipelines in the Codefresh UI.
+
+There are two parts to creating a Cron trigger in the UI:
 1. Defining the schedule for the trigger
   To learn about supported `cron` expression formats and aliases, visit [this page](https://github.com/codefresh-io/cronus/blob/master/docs/expression.md){:target="\_blank"}.
-1. Optional; defining the Git trigger event to simulate when the Cron trigger timer is activated.
-  The Git trigger works the same way it does for the 
+1. (Optional) selecting the Git trigger event to simulate when the Cron trigger timer is activated.
+  Simulating a Git trigger has the same impact 
+
 
 
 ### Create a Cron trigger in UI
@@ -91,7 +92,6 @@ max-width="60%"
     1. From the **Simulate Trigger From** drop-down list, select the type of Git trigger to simulate.  
       The list displays all the Git triggers defined for the pipeline. 
     1. From the **Select Branch** drop-down list, select the branch of the repository for this build.
-      The branches corresponding to the repo for the selected Git trigger are displayed.
     1. Expand **Variables**, and add or modify [environment variables]({{site.baseurl}}/docs/pipelines/variables/) for this build.
     1. Expand **Advanced Options** and select the overrides for this build. See [Advanced options]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/#advanced-settings-for-git-triggers).
 
@@ -115,7 +115,7 @@ max-width="60%"
 Now you can Recurring pipeline executions are triggered according to the defined settings.
 
 * If you defined only the Timer settings, the build is triggered according to the Cron expression.
-* If you defined both the Timer and Git Settings, the build is triggered according to the Cron expression when the Git event is triggered at the repo branch. 
+* If you defined both the Timer and Git Settings, the build is triggered according to the Cron expression and populated with the information from the Git repo such as the Git repo URL, branch name, latest commit information, including the date and author of the commit.
 
 ### Edit a Cron trigger in Codefresh UI
 
@@ -123,14 +123,14 @@ Now you can Recurring pipeline executions are triggered according to the defined
 
 ## Manage Cron triggers with Codefresh CLI
 
-You can also create Cron triggers for pipelines via the [Codefresh CLI](https://cli.codefresh.io/){:target="\_blank"}.
+You can also create and manage Cron triggers for pipelines via the [Codefresh CLI](https://cli.codefresh.io/){:target="\_blank"}.
 
 You first create the Cron trigger and then set up a 
 
 
 ### Create Cron trigger event via CLI
 
-Create a new `cron` trigger through a Cron expression and message.  
+Create a new `cron` trigger by defining a Cron expression and message.  
 To learn about supported `cron` expression formats and aliases, visit [this page](https://github.com/codefresh-io/cronus/blob/master/docs/expression.md){:target="\_blank"}.  
 The text message is passed to linked pipelines, whenever the specified `cron` timer is triggered.
 
