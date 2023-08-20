@@ -423,7 +423,7 @@
           url: "/helm-triggers"
         - title: Artifactory triggers
           url: "/jfrog-triggers"
-        - title: Timer (Cron) triggers
+        - title: Cron (timer) triggers
           url: "/cron-triggers"
     - title: Variables in pipelines
       url: "/variables" 
