@@ -45,7 +45,7 @@ max-width="60%"
 Create and manage Cron triggers for pipelines in the Codefresh UI.
 
 There are two parts to creating a Cron trigger in the UI:
-1. Defining the schedule for the trigger
+1. Defining the schedule for the trigger  
   To learn about supported `cron` expression formats and aliases, visit [this page](https://github.com/codefresh-io/cronus/blob/master/docs/expression.md){:target="\_blank"}.
 1. (Optional) Selecting additional options:  
   * Git trigger event to simulate when the Cron trigger timer is activated. The pipeline is populated with the information from the Git repo such as the repo URL, branch name, latest commit information, including the date and author of the commit.
