@@ -103,10 +103,10 @@ max-width="60%"
 
 {% include image.html
 lightbox="true"
-file="/images/pipeline/triggers/cron/cron-timer-tab.png"
-url="/images/pipeline/triggers/cron/cron-timer-tab.png"
-caption="Cron trigger: Git trigger settings"
-alt="Cron trigger: Git trigger settings"
+file="/images/pipeline/triggers/cron/cron-settings-tab.png"
+url="/images/pipeline/triggers/cron/cron-settings-tab.png"
+caption="Cron trigger: Additional settings for Git event, variables, and build behavior"
+alt="Cron trigger: Cron trigger: Additional settings for Git event, variables, and build behavior"
 max-width="60%"
 %}
 
