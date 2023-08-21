@@ -102,7 +102,7 @@ You can:
 
 
 
-### Timelines by Group
+### Monitor Timelines by Group
 When you select an application Group, you are taken to the Timeline tab. The data in the Timeline tab is similar to that of an individual application, except it shows the collective deployments of all the applications in the Group. 
 
 
@@ -125,7 +125,7 @@ The deployment records are sorted to show the current versions for each applicat
 
 
 
-### Applications by Group 
+### Monitor applications by Group 
 
 To get information on the health and sync statuses of individual applications in the Group, click the Applications tab next to the Timeline tab.
 Here you can see a Card view of each application with key information for each.
