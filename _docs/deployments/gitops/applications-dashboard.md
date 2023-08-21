@@ -6,27 +6,12 @@ sub_group: gitops
 toc: true
 ---
 
-<!--- Monitor individual applications or groups of applications in the GitOps Apps dashboard.
-
-* **Application Groups**  
-  Monitor the deployments of a group of applications in parallel. Instead of having to switch between applications, see the deployment history, compare and analyze build, PR (Pull Request), and issue tracking information across similar applications to gain insights.
-
-  See [Application Group information](#application-group-information).
-
-screenshot 
+Monitor individual applications or groups of GitOps applications in the GitOps Apps dashboard. This article focuses on individual GitOps applications.
 
 * **Applications**  
-  Monitor deployments, resources, and services of individual applications.
-  
+  Monitor deployments, resources, and services of individual applications.  
   As a one-stop shop for Argo Rollouts and Argo CD, the Applications tab in the GitOps Apps dashboard delivers on the challenge of keeping track of your applications and their deployments, whatever the frequency and scale, across all clusters in your enterprise. A wide range of filters, progressive delivery views, and enriched CI and CD information, provide full traceability and visibility to your deployments.  
 
-
--->
-
-Monitor applications across clusters, and the deployments, resources, and services for an application in the GitOps Apps dashboard. As a one-stop shop for Argo Rollouts and Argo CD, the GitOps Apps dashboard in Codefresh delivers on the challenge of keeping track of your applications and their deployments, whatever the frequency and scale, across all clusters in your enterprise. A wide range of filters, progressive delivery views, and enriched CI and CD information, provide full traceability and visibility to your deployments.
-
-Select the view format for Applications in the GitOps Apps dashboard, as either [List or Card views](#select-view-mode-for-the-gitops-apps-dashboard). The default view displays all applications deployed within the last 30 days. Customize the scope through filters to display the [information](#gitops-apps-dashboard-application-information) you need.
-  
 {% include
 image.html
 lightbox="true"
@@ -37,62 +22,28 @@ caption="GitOps Apps dashboard: List view"
 max-width="60%"
 %}
 
-Identify applications with [health and sync errors](#identify-gitops-applications-with-warningserrors), and then select an application to drill down into its resources, deployments, and services:  
-* [Get status from application header](#monitor-gitops-application-status-in-application-header)
-* [View deployment and configuration info for selected application](#view-deployment-configuration-info-for-selected-gitops-application)
-* [Monitor resources for selected GitOps application](#monitor-resources-for-selected-gitops-application)
-* [Monitor deployments for selected GitOps application](#monitor-deployments-for-selected-gitops-application)
-* [Monitor services for selected GitOps application](#monitor-services-for-selected-gitops-application)
+  Select the view format for Applications in the GitOps Apps dashboard, as either [List or Card views](#select-view-mode-for-the-gitops-apps-dashboard). The default view displays all applications deployed within the last 30 days. Customize the scope through filters to display the [information](#gitops-apps-dashboard-application-information) you need.
+  
+  Identify applications with [health and sync errors](#identify-gitops-applications-with-warningserrors), and then select an application to drill down into its resources, deployments, and services:  
+  * [Get status from application header](#monitor-gitops-application-status-in-application-header)
+  * [View deployment and configuration info for selected application](#view-deployment-configuration-info-for-selected-gitops-application)
+  * [Monitor resources for selected GitOps application](#monitor-resources-for-selected-gitops-application)
+  * [Monitor deployments for selected GitOps application](#monitor-deployments-for-selected-gitops-application)
+  * [Monitor services for selected GitOps application](#monitor-services-for-selected-gitops-application)
 
 
+
+
+* **Application Groups**  
+  Monitor the deployments of a group of applications in parallel. Instead of having to switch between applications, see the deployment history, compare and analyze build, PR (Pull Request), and issue tracking information across similar applications to gain insights.
+
+  See [Application Group information](#application-group-information).
 
 
 >**NOTE**:  
-For information on creating and managing <!--- application groups, -->applications and application resources, see [Creating GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application/) and [Managing GitOps applications]({{site.baseurl}}/docs/deployments/gitops/manage-application/).
+For information on creating and managing Application Groups, applications and application resources for GitOps, see [Creating GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application/) and [Managing GitOps applications]({{site.baseurl}}/docs/deployments/gitops/manage-application/).
 
-
-<!--- ## Application Group information
-Here's a description of the information you can see for application groups in the Groups tab of the GitOps Apps dashboard.
-
-{: .table .table-bordered .table-hover}
-| Item                     | Description            |  
-| --------------         | --------------           |  
-|Applications            | The application by which to filter the application groups. Selecting an application filters the list of groups to show the group or groups to which the application belongs.|
-|{::nomarkdown}<img src="../../../../images/icons/icon-mark-favorite.png?display=inline-block">{:/}| Star one or more application groups as favorites and view only the starred groups.{::nomarkdown}<br>Select the <img src="../../../../images/icons/icon-mark-favorite.png?display=inline-block"> to star an application group as a favorite.<br><br>To filter by favorite Groups, select <img src="../../../../images/icons/icon-fav-starred.png?display=inline-block">. <!--- ask if it affects any other views>  |
-| Sorting | Sort the Groups list either by group name or by the groups most recently updated.|
-| Group name | The name of the application group with the number of applications it includes. <br>Selecting an application group, switches to Timeline tab with deployment information. See  add here what happens on clicking an app group |
-
-### Monitor deployments by Application Group
-In the Timeline view, monitor ongoing and review historical deployments of related applications in parallel to better understand the relationships between them.  
-Track build statuses, code changes across applications, and issues to identi and ensure smooth coordination between frontend and backend development efforts.
-
-CI build insights: Navigate to CI builds of the different applications They can quickly identify which applications have successful builds and which ones have failed builds. By having this information at their fingertips, users can promptly respond to any build failures and ensure a smooth continuous integration process for all applications in the group.
-PR insights: Correlate the PRs between the applications to understand the cause and results of the 
-Issue tracking insights
-Updated services and apps: 
-
-
-
-### Monitor applications in group
-
-From the Application Group view, selecting an application switches to the Current State view for the application. You can analyze and manage the application 
-## Monitor collective deployments for application groups
-Monitor ongoing and historical deployments for an Application Group in the Timeline view specific to the group. 
-
-The aggregated timeline view eliminates the need to navigate through individual application timelines separately. And the high-level perspective of multiple deployments of similar applications in the same view, together with the context for the deployments, makes it easier to identify trends or patterns across these applications.
-
-The deployment chart displays the day-to-day deployments for the selected time period. Mouse over the dot on the deployment chart for information on historical deployments.   
-The deployments are sorted by date, with the most recent deployment of each application labeled **Current Version**. Every deployment record shows the related Build, PR, and Jira information. 
-
-1. In the Codefresh UI, from Ops in the sidebar, select [GitOps Apps](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
-1. Switch to **Card** view and then click the **Groups** tab.  
-  You are taken to the list of Application Groups.
-1. Select the application group to monitor and then click the **Timeline** tab.
-  Here you can see the aggregated timeline for the deployments in the group.
-
-SCREENSHOT
--->
-
+  
 
 ## Select view mode for the GitOps Apps dashboard 
 View deployed applications in either List (the default) or Card views. Both views are sorted by the most recent deployments. 
