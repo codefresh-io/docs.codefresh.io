@@ -1,13 +1,18 @@
 ---
 title:  "Application Groups for GitOps applications"
-description: "View deployments of GitOps applications through Application Groups"
+description: "View deployment info for GitOps applications through Application Groups"
 group: deployments
 sub_group: gitops
 toc: true
 ---
 
 The Group view for GitOps applications is a simple and efficient way to focus on deployments of the specific apps you're interested in, amidst the potentially numerous apps within your enterprise.  
-The Group view consolidates deployment information for all applications within the group, <!--- significantly improves the user experience by -->eliminating the need to navigate to and switch between the different applications for information on them. 
+The Group view consolidates deployment information for all applications within the group, eliminating the need to navigate to and switch between the different applications for information on them. 
+It gives the flexibility to tailor groupings according to the unique requirements of your organization and applications.
+
+
+Application Groups are an integral part of the [GitOps Apps dashboard]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/), making it easy to navigate between views of application groups and individual applications. 
+
 
 {% include image.html 
 lightbox="true" 
@@ -18,36 +23,44 @@ caption="Example of the Timeline view for an Application Group"
 max-width="60%" 
 %}
 
-Assign applications to one or more Groups on creating new applications, or through the Configuration settings for existing applications. Changes to the Group have no impact on its applications.  
+Assign an application to one or more Groups when you create the application, or through the Configuration settings for existing applications. Changes to the Group have no impact on its applications.  
 
-Application Groups is an integral part of the [GitOps Apps dashboard]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/), which makes it easy to navigate between group views and individual applications. 
 
-{% include image.html 
-lightbox="true" 
-file="/images/applications/app-groups/app-group-timeline.png" 
-url="/images/applications/app-groups/app-group-timeline.png" 
-alt="Example of the Timeline view for an Application Group"
-caption="Example of the Timeline view for an Application Group"
-max-width="60%" 
-%}
 
 
 ## Working with Application Groups
 
-How would you work with an Application Group?
+How do you work with an Application Group?
 
-1. You need to first assign applications to one or more Groups.
-   Assign applications to multiple groups based on your requirements and organizational structure. Manage these assignments at any through the application's Configuration settings. Changes to the Group have no impact on its applications.  
+### Assign applications to Application Groups
 
-   <!--- TBD examples of app groups  -->
+You need to first assign applications to one or more Groups.  
+
+Assign applications to multiple groups based on your requirements and organizational structure. Manage these assignments at any through the application's Configuration settings. Changes to the Group have no impact on its applications.  
+
+<!-- Here are some examples of app groups  -->
+
+* Geographic regions group
+  Applications: North America app, Asia app, and Europe app. 
+  Purpose: Monitor deployments in parallel with related issue-tracking and Git information to correlate between deployments . 
+
+* Product-specific group
 
 
 
-  * **New applications**  
+
+
+* **New applications**  
     When creating the application, assign it to one or more existing Groups, or create a new Group for the application. See [Group settings]({{site.baseurl}}/docs/deployments/gitops/create-application/#groups).
 
-    In this example, we will create the Group when we create the application.
-
+         {% include image.html 
+lightbox="true" 
+file="/images/applications/app-groups/assigning-new-app.png" 
+url="/images/applications/app-groups/assigning-new-app.png" 
+alt="Assigning a new application to a Group"
+caption="Assigning a new application to a Group"
+max-width="60%" 
+%}
 
 
 
@@ -66,7 +79,7 @@ max-width="60%"
 
 
 
-## Navigate to the Group view
+### Navigate to the Group view
 After assigning applications to Groups, navigate to the Groups tab in the GitOps Apps dashboard. 
 
 1. In the Codefresh UI, from Ops in the sidebar, select [GitOps Apps](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
@@ -85,11 +98,11 @@ You can:
 * Filter by one or more applications to find the Groups they belong to.
 * Star one or more Application Groups as favorites for single-click access to them.{::nomarkdown}<br>Click <img src="../../../../images/icons/icon-mark-favorite.png?display=inline-block"> to star a Group, and click <img src="../../../../images/icons/icon-fav-starred.png?display=inline-block"> to view starred Groups.{:}.
 * Select a Group to view the Timelines of the applications in it. 
-* Navigate to the Card view of its applications by clicking Applications. 
+* Navigate to the Card views of its applications by clicking Applications. 
 
 
 
-## Timelines by Group
+### Timelines by Group
 When you select an application Group, you are taken to the Timeline tab. The data in the Timeline tab is similar to that of an individual application, except it shows the collective deployments of all the applications in the Group. 
 
 
@@ -112,7 +125,7 @@ The deployment records are sorted to show the current versions for each applicat
 
 
 
-## Applications by Group 
+### Applications by Group 
 
 To get information on the health and sync statuses of individual applications in the Group, click the Applications tab next to the Timeline tab.
 Here you can see a Card view of each application with key information for each.
@@ -129,7 +142,7 @@ max-width="60%"
 
 
 ## Update application assignments to Groups
-At any time, add or remove an application from the Group or Groups it belongs to. Changes 
+At any time, add or remove an application from the Group or Groups it belongs to. Changes to Application Groups do not affect the applications which are part of the Groups.
 
 1. In the Codefresh UI, from Ops in the sidebar, select [GitOps Apps](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
 1. Select the application and then click the **Configuration** tab.
