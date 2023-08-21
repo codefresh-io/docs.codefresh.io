@@ -7,8 +7,8 @@ toc: true
 ---
 
 The Group view for GitOps applications is a simple and efficient way to focus on deployments of the specific apps you're interested in, amidst the potentially numerous apps within your enterprise.  
-The Group view consolidates deployment information for all applications within the group, eliminating the need to navigate to and switch between the different applications for information on them. 
-It gives the flexibility to tailor groupings according to the unique requirements of your organization and applications.
+A Codefresh feature, the Group view consolidates deployment information for all applications within the group, eliminating the need to navigate to and switch between the different applications for information on them. 
+It gives the flexibility to tailor groupings according to the unique requirements of your organization and applications. The Group name is added as an annotation to the app manifest and works like any other tag in the application.
 
 
 Application Groups are an integral part of the [GitOps Apps dashboard]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/), making it easy to navigate between views of application groups and individual applications. 
@@ -36,18 +36,7 @@ How do you work with an Application Group?
 
 You need to first assign applications to one or more Groups.  
 
-Assign applications to multiple groups based on your requirements and organizational structure. Manage these assignments at any through the application's Configuration settings. Changes to the Group have no impact on its applications.  
-
-<!-- Here are some examples of app groups  -->
-
-* Geographic regions group
-  Applications: North America app, Asia app, and Europe app. 
-  Purpose: Monitor deployments in parallel with related issue-tracking and Git information to correlate between deployments . 
-
-* Product-specific group
-
-
-
+Assign applications to multiple groups based on your requirements and organizational structure. Manage these assignments at any time through the application's Configuration settings. Changes to the Group have no impact on its applications.  
 
 
 * **New applications**  
@@ -77,6 +66,18 @@ max-width="60%"
 %}
 
 
+Once assigned, Codefresh adds the Group name as an annotation to the application manifest, as in this example.
+
+```yaml
+name: example-usa
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io/foreground
+  annotations:
+    codefresh.io/app-group: three-regions
+spec:
+  project: default
+  source:
+```
 
 
 ### Navigate to the Group view
