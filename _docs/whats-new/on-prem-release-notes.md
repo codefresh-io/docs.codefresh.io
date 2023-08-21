@@ -27,10 +27,44 @@ If you are interested in using Gerrit for Hybrid GitOps Runtimes, please contact
 
 For details, see [GitOps Gerrit Git provider integration]({{site.baseurl}}/docs/gitops-integrations/gerrit-integration/).
 
-#### Multi-account sync & u for Okta OIDC
-Take from July release notes
+#### Multi-account sync for Okta with OIDC
+
+Check out the latest enhancements to the integration settings for Okta with OIDC.
+
+**Multi-account sync**  
+Following the successful implementation of just-in-time provisioning support for Okta, we are taking it a step further by introducing multi-account sync for OIDC-Okta. This feature enables you to synchronize multiple Codefresh accounts in Okta simultaneously in Codefresh, ensuring a seamless SSO setup for enterprise customers.
+
+With multi-account sync, you can easily select additional Codefresh accounts to sync with your Okta OIDC account in Codefresh. Codefresh validates admin privileges and access for each of the selected accounts, guaranteeing secure and reliable authentication. 
+
+You have the flexibility to sync users in multiple ways: through the UI's `Auto-group sync`, performing on-demand synchronization through the CLI, or integrating sync into a Codefresh pipeline using the CLI synchronize command.
+
+**Delete users removed during sync**  
+We added an option to further streamline Okta SSO account and user management in Codefresh. You can now easily remove individual users who are deactivated in Okta from both the current account in Codefresh and any additional accounts defined in your current account.  
+The Users list is updated accordingly, ensuring that both the Teams and Users lists are always organized.
+
+
+ {% include 
+image.html 
+lightbox="true" 
+file="/images/whats-new/july23/rel-notes-july23-okta-new-settings.png" 
+url="/images/whats-new/july23/rel-notes-july23-okta-new-settings.png" 
+alt="Multi-account sync and remove deactivated users for Okta OIDC" 
+caption="Multi-account sync and remove deactivated users for Okta OIDC" 
+max-width="50%" 
+%}
+
+For details, see [Configure OIDC SSO settings for Okta in Codefresh]({{site.baseurl}}/docs/administration/single-sign-on/oidc/oidc-okta/#how-to). 
 
 #### OpenShift ???
+
+#### Pipelines: Enforce scope
+Codefresh admins can now define the endpoint scopes for pipelines, further simplifying setup while strengthening security. Scopes are defined at the account level and inherited by all pipelines. If needed, you can ovveride for an individual pipeline.
+
+PIC
+
+When users generate API tokens for pipelines, they will be able to select only those scopes allowed for that account. 
+
+For details, see 
 
 
 #### Pipelines: Pipeline Dashboard enhancements
@@ -74,6 +108,19 @@ Here are the icons and the build statuses they represent:
 * **Failed**: {::nomarkdown}<img src="../../../../../images/whats-new/june23/pipeline-build-failed-error.png" display=inline-block/> {:/}
 
 For details, see [Viewing status for pipeline builds]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#viewing-status-for-pipeline-builds).
+
+#### ??? ABAC for GitOps
+In this release, we bring the power of ABAC for access control to GitOps for the first time as a Beta version.   You can define fine-grained access to GitOps application entities. Similar to the ABAC for pipelines, access is controlled through the use of rules, defined using teams, actions, and attributes.
+
+For details, see ????
+
+
+
+
+
+
+
+
 
 ### Bug fixes
 
