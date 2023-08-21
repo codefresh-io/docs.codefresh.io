@@ -51,7 +51,7 @@ Assign applications to multiple groups based on your requirements and organizati
 
 
 * **New applications**  
-    When creating the application, assign it to one or more existing Groups, or create a new Group for the application. See [Group settings]({{site.baseurl}}/docs/deployments/gitops/create-application/#groups).
+  When creating the application, assign it to one or more existing Groups, or create a new Group for the application. See [Group settings]({{site.baseurl}}/docs/deployments/gitops/create-application/#groups).
 
          {% include image.html 
 lightbox="true" 
@@ -64,8 +64,8 @@ max-width="60%"
 
 
 
-  * **Existing applications**  
-    Edit the application definitions in the [Configuration]({{site.baseurl}}/docs/deployments/gitops/manage-application/#edit-application-definitions) tab and select the groups.
+* **Existing applications**  
+  Edit the application definitions in the [Configuration]({{site.baseurl}}/docs/deployments/gitops/manage-application/#edit-application-definitions) tab and select the groups.
 
      {% include image.html 
 lightbox="true" 
