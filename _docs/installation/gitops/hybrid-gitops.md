@@ -9,11 +9,10 @@ redirect_from:
 toc: true
 ---
 
->ATTENTION:  
-  >We have transitioned to a Helm-based installation for Hybrid GitOps Runtimes, for improved experience and performance.  
-
-  >The CLI-based installation for Hybrid GitOps is now considered legacy. We will deprecate this installation mode permanently on 18 June 2023.
-  >To migrate your Hybrid GitOps Runtimes from CLI to Helm, please contact us, and we'll migrate them for you.
+>**ATTENTION**:  
+We have transitioned to a [Helm-based installation for Hybrid GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/) for improved experience and performance, which is now the default for GitOps Runtimes.    
+The CLI-based installation for Hybrid GitOps is now considered legacy.  
+We will deprecate this installation mode permanently in the coming months. Please stay tuned for further updates and instructions, including the migration process.
    
 
 Provision one or more Hybrid GitOps Runtimes in your Codefresh account.  
@@ -1001,7 +1000,7 @@ Skip validating scopes for the token provided (for any Git provider). This flag 
 To skip token validation, add `--skip-permission-validation true`.
 
   > IMPORTANT:  
-    Before using this flag, [review the required scopes for runtime tokens]({{site.baseurl}}/docs/reference//git-tokens/#git-runtime-token-scopes). <br><br>
+    Before using this flag, [review the required scopes for runtime tokens]({{site.baseurl}}/docs/reference/git-tokens/#git-runtime-token-scopes). <br><br>
     When defined, Codefresh does not validate the scopes assigned to the token provided. If the token does not include the scopes required for Codefresh to automatically create the repositories for the runtime and Git Source during installation, the installation will fail.  
     The alternative is to create both repos before the installation.
 

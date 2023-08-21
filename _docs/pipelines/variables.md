@@ -100,7 +100,7 @@ Gerrit has `change-Id` and `Changes` that you can map to `CF_PULL_REQUEST` varia
 | {% raw %}`${{CF_PULL_REQUEST_ID}}`{% endraw %}      | The ID of the pull request.<br>For Gerrit, use this in place of `changeId`.   |
 | {% raw %}`${{CF_PULL_REQUEST_TARGET}}`{% endraw %}      | The target branch of the pull request. <br>For Gerrit, use this in place of `Change target branch name`. |
 | {% raw %}`${{CF_PULL_REQUEST_NUMBER}}`{% endraw %}      | The pull request number |
-| {% raw %}`${{CF_PULL_REQUEST_LABELS}}`{% endraw %}      | The labels of pull request (GitHub and GitLab only) |
+| {% raw %}`${{CF_PULL_REQUEST_LABELS}}`{% endraw %}      | For GitHub and GitLab, the labels assigned to the pull requests.<br>For Gerrit, the `change hashtags`. |
 | {% raw %}`${{CF_PULL_REQUEST_COMMENT}}`{% endraw %}      | The comment added to the pull request.<br>For Gerrit, use this in place of `Change message`.  |
 | {% raw %}`${{CF_PULL_REQUEST_COMMENT_AUTHOR}}`{% endraw %}      | The user who added the comment to the pull request.<br>For Gerrit, use this in place of `Change author`.  |
 | {% raw %}`${{CF_COMMIT_AUTHOR}}`{% endraw %}      | Commit author.                                                                                              |

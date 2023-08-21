@@ -55,15 +55,15 @@ We added a new **Settings** icon to the toolbar to simplify account-level manage
 
 <br>
 
-#### Universal Search & Navigation
-Boost your Codefresh experience with our latest feature, Universal Search & Navigation! Always available in the toolbar ,  Universal Search & Navigation lets you get to what and where you need to in Codefresh while staying where you are.
+#### Global Search & Navigation
+Boost your Codefresh experience with our latest feature, Global Search & Navigation! Always available in the toolbar, Global Search & Navigation lets you get to what and where you need to in Codefresh while staying where you are.
 
 **Search & find**  
-With Universal Search & Navigation, you can easily monitor and find resources in your projects, pipelines, and builds, with frequently used entities organized into categories for quick search. Easily find a  specific project, pipeline, or build, or browse them all.
-In addition, Universal Search & Navigation pulls up links to relevant information from our documentation that may be useful within your current context, making it even easier to find what you need.
+With Global Search & Navigation, you can easily monitor and find resources in your projects, pipelines, and builds, with frequently used entities organized into categories for quick search. Easily find a specific project, pipeline, or build, or browse them all.
+In addition, Global Search & Navigation pulls up links to relevant information from our documentation that may be useful within your current context, making it even easier to find what you need.
 
 **Switch accounts**  
-You can also switch accounts in Codefresh with Universal Search & Navigation, without needing to navigate to your avatar drop-down menu. Simply search for the account, select the Switch Account action, and then choose the account you wish to switch to.
+You can also switch accounts in Codefresh with Global Search & Navigation, without needing to navigate to your avatar drop-down menu. Simply search for the account, select the Switch Account action, and then choose the account you wish to switch to.
 We are always adding more options, so stay tuned for announcements.
 
 <br>
@@ -71,7 +71,7 @@ We are always adding more options, so stay tuned for announcements.
 #### Pipelines Dashboard
 This release introduces the much-awaited Pipelines Dashboard!  The dashboard, dedicated to pipelines and pipeline metrics, is a new experience of pipeline visibility and monitoring.
 Clicking Home Dashboard located at the top of the sidebar displays the Pipelines Dashboard.
-If you're currently using both GitOps and Pipelines, the Pipelines Dashboard is displayed  after the GitOps and Argo Workflow dashboards..
+If you're currently using both GitOps and Pipelines, the Pipelines Dashboard is displayed below the GitOps and Argo Workflow dashboards.
 
 Use the Pipelines dashboard to:
 * Identify pipelines with low performance, both in terms of number of executions and execution duration
@@ -98,15 +98,20 @@ For details, see [Applying filters to build views]({{site.baseurl}}/docs/pipelin
 #### Project-based ABAC
 We are excited to announce project-level Attribute-Based Access Control (ABAC) in this release. 
 ABAC for projects saves a lot of effort without compromising security as now you can control access to both project and to pipeline entities based on project tags.
-* Project access to teams with project-tags
+
+
+* Project access to teams with project-tags  
   Now you can decide which teams have access to which projects, and at which level. By adding tags to projects, you can define rules for different teams that can create, update, delete, and view projects.  
   Also, read the next feature description, _Auto-create projects for teams_.
 
-* Pipeline access to teams with project-tags
-  You can define access to pipelines on the basis of the projects that house the pipelines. Instead of tagging each pipeline,  you can add tags to the project, and define rules that determine the teams who can access the pipelines which share the project tags. 
-  Builds now honor the permissions of the pipelines. Users without  access to the pipeline, will also not have access to its builds. This also means fewer email notifications, as these are only sent for builds that users have access to.
+  **Migrating existing accounts**   
+   If you have existing accounts with team-based access control for projects, you can either migrate all accounts or a specific account, as described in [Project ABAC migration](https://github.com/codefresh-io/project-abac-migration){:target="\_blank"}.
 
-  For details, see [ABAC for entities with tags and rules]({{site.baseurl}}/docs/administration/account-user-management/access-control/#abac-for-entities-with-tags-and-rules).
+* Pipeline access to teams with project-tags  
+  You can define access to pipelines on the basis of the projects that house the pipelines. Instead of tagging each pipeline, you can add tags to the project, and define rules that determine which teams can access the pipelines which share the project tags. 
+  Builds now honor the permissions of the pipelines. Users without access to the pipeline, will also not have access to its builds. This also means fewer email notifications, as these are only sent for builds that users have access to.
+
+For details, see [ABAC for entities with tags and rules]({{site.baseurl}}/docs/administration/account-user-management/access-control/#abac-for-entities-with-tags-and-rules).
 
 <br>
 
@@ -251,17 +256,12 @@ The table below describes the Feature Flags in the Codefresh On-Premises release
 | `filterMailsByAbac `         | When enabled and ABAC permissions are defined for projects, sends email notifications on builds only for those pipelines to which the user has access. <br>See [Project-based ABAC](#project-based-abac) in this article.    | FALSE         |
 | `syncClassicAnnotationsToGitOps` | When enabled, displays annotations assigned to entities in the Annotations area of the Images dashboard. The following annotation types are displayed: {::nomarkdown}<ul><li>String</li><li>Boolean</li><li>Link</li><li>Percentage</li><li>Number</li></ul>. {:/} **NOTE**: This feature flag does not impact Issue and Git (PR)-based annotations. These are displayed in the Issue and Git areas .     | FALSE         |
 | `gitopsArgoCdRollback`       | When enabled, allows users to rollback to a previously deployed version of an active GitOps application.                                                                                            | FALSE         |
-| `commandbar`                 | When enabled, activates Codefresh Universal Search & Navigation. Displayed in the top-left of the toolbar, allows users to find and navigate to project/pipeline/build entities, switch accounts, and more. See [Universal Search & Navigation](#universal-search--navigation) in this article. | FALSE         |
+| `commandbar`                 | When enabled, activates Codefresh Universal Search & Navigation. Displayed in the top-left of the toolbar, allows users to find and navigate to project/pipeline/build entities, switch accounts, and more. See [Global Search & Navigation](#global-search--navigation) in this article. | FALSE         |
 | `gerritIntegration`          | When enabled, allows configuring Git integrations with Gerrit for Codefresh pipelines.                                                                                                                | FALSE         |
-| `workflowAbacByPipeline`     | When enabled, builds will not be visible to users who don’t have access to the corresponding pipelines. <br>IMPORTANT: Before enabling this feature flag, make sure to read [this](https://github.com/codefresh-io/project-abac-migration){:target="\_blank"}.<br>See [Project-based ABAC](#project-based-abac) in this article. | FALSE         |
-|`filterMailsByAbac` |When enabled, together with `workflowAbacByPipeline`, email notifications are not send for users without access to the builds. <br>See [Project-based ABAC](#project-based-abac) in this article. |FALSE
-
-
-
-
-
-
-
+| `abacProject`     | When enabled, allows admins to define rule-based access to projects for teams by project tags.<br>**IMPORTANT**: Before enabling this feature flag, make sure to read [Project ABAC migration](https://github.com/codefresh-io/project-abac-migration){:target="\_blank"}.<br>See [Project-based ABAC](#project-based-abac) in this article. | FALSE         |
+| `abacRuleRelatedResource`     | When enabled, allows admins to define rule-based access to pipelines for teams by project tags.<br>See [Project-based ABAC](#project-based-abac) in this article. | FALSE         |
+| `workflowAbacByPipeline`     | When enabled, builds will not be visible to users who don’t have access to the corresponding pipelines.<br>See [Project-based ABAC](#project-based-abac) in this article. | FALSE         |
+|`filterMailsByAbac` |When enabled, together with `workflowAbacByPipeline`, email notifications are not sent for users without access to the builds. <br>See [Project-based ABAC](#project-based-abac) in this article. |FALSE
 
 
 

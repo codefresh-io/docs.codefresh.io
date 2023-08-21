@@ -1,6 +1,6 @@
 ---
-title: "Configuring access control"
-description: "Restrict resources in a company environment"
+title: "Configuring access control for pipelines"
+description: "Restrict resources to pipelines in a company environment"
 group: administration
 sub_group: account-user-management
 redirect_from:
@@ -60,7 +60,7 @@ The table below lists the functionality available for the `Admin` and `User` rol
 |[Cloud storage settings]({{site.baseurl}}/docs/testing/test-reports/#connecting-your-storage-account)      | `Admin`|
 |[Shared configuration]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/)      | `Admin`|
 |[API token generation]({{site.baseurl}}/docs/integrations/codefresh-api/#authentication-instructions)      | `Admin`|
-|[SSO Settings]({{site.baseurl}}/docs/single-sign-on/single-sign-on/)      | `Admin`|
+|[SSO Settings]({{site.baseurl}}/docs/administration/single-sign-on/)      | `Admin`|
 |[Runtime environment selection]({{site.baseurl}}/docs/pipelines/pipelines/#pipeline-settings)      | `Admin`|
 |[Slack settings]({{site.baseurl}}/docs/integrations/notifications/slack-integration/)      | `Admin`|
 |[Audit logs]({{site.baseurl}}/docs/administration/audit-logs/)      | `Admin`|
@@ -458,5 +458,7 @@ By default, if configured for the account, users can also load pipeline definiti
   
 
 ## Related articles
+[Codefresh Provider for Terraform](https://registry.terraform.io/providers/codefresh-io/codefresh/latest/docs){:target="\_blank"}   
 [Codefresh installation options]({{site.baseurl}}/docs/installation/installation-options/)  
 [Managing your Kubernetes cluster]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/)  
+

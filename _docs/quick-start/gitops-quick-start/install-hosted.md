@@ -1,6 +1,6 @@
 ---
-title: "Provision a hosted runtime"
-description: ""
+title: "Provision a Hosted GitOps Runtime"
+description: "Install the GitOps Runtime hosted by Codefresh"
 group: getting-started
 sub-group: gitops-quick-start
 toc: true
@@ -8,15 +8,15 @@ toc: true
 
 If you have Hosted GitOps, set up your hosted runtime environment:   
 
-1. Provision the hosted runtime with a single click
+1. Provision the Hosted GitOps Runtime with a single click
 1. Authorize access through your OAuth token to the organization where Codefresh creates the Git runtime repo and the shared configuration repo
 1. Connect to an external K8s cluster with access to the internet, to which you can deploy applications 
 1. Install Argo Rollouts on the cluster   
 
 Read our [blog on Hosted GitOps](https://codefresh.io/blog/codefresh-upends-continuous-delivery-with-hosted-gitops-platform-featuring-dora-dashboards-and-first-class-integrations-for-ci/).  
-For detailed information on each of the steps below, see [Set up a hosted runtime environment]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/).  
+For detailed information on each of the steps below, see [Set up a Hosted GitOps Runtime environment]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/).  
 
-**Before you begin**  
+## Before you begin
 
 Verify the following:  
 * If you have hybrid runtimes installed, make sure you have latest version of the CLI
@@ -27,8 +27,8 @@ Verify the following:
 * Kubernetes cluster with access to the internet
 * OAuth token 
 
-**How to**
-1. In the Codefresh UI, go to Codefresh [Home](https://g.codefresh.io/2.0/?time=LAST_7_DAYS){:target="\_blank"}.
+## How to
+1. In the Codefresh UI, go to Codefresh [Home Dashboard](https://g.codefresh.io/2.0/?time=LAST_7_DAYS){:target="\_blank"}.
 
 {% include
 image.html
@@ -41,8 +41,8 @@ max-width="80%"
 %}
 
 {:start="2"}
-1. Provision the hosted runtime:
-  * Click **Install**, and wait for Codefresh to complete provisioning your hosted runtime (may take up to ten minutes).
+1. Provision the Hosted GitOps Runtime:
+  * Click **Install**, and wait for Codefresh to complete provisioning your Hosted GitOps Runtime (may take up to ten minutes).
 
 {% include
 image.html
@@ -105,6 +105,6 @@ max-width="70%"
    max-width="50%" 
    %}
 
-### What to do next
+## What to do next
 [Create resources for codefresh-guestbook application]({{site.baseurl}}/docs/quick-start/gitops-quick-start/create-app-specs/) 
 

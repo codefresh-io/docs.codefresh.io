@@ -7,7 +7,7 @@ redirect_from:
 toc: true
 ---
 
-The Codefresh platform supports three different installation options, all compliant with [SOC2 - Type2](https://www.aicpa.org/SOC){:target="\_blank"}.
+The Codefresh platform supports three different installation options, all compliant with [SOC2 - Type2](https://us.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report){:target="\_blank"}.
 
 {% include image.html
   lightbox="true"
@@ -160,7 +160,7 @@ The Hybrid GitOps Runtime is optimal for organizations with security constraints
   max-width="70%"
 %}
 
-  For more information on Hybrid GitOps, see [Hybrid GitOps runtime requirements]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/#minimum-system-requirements) and [Installling Hybrid GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/).  
+  For more information on Hybrid GitOps, see [Hybrid GitOps Runtime requirements]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/#minimum-system-requirements) and  [Hybrid GitOps Runtime Runtime installation]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/).  
 
 
 
@@ -186,7 +186,7 @@ The table below highlights the main differences between Hosted and Hybrid GitOps
 | --------------          | --------------     |---------------             | --------------- |
 | Runtime                 | Installation       | Provisioned by Codefresh   | Provisioned by customer       |
 |                         | Runtime cluster    | Managed by Codefresh       | Managed by customer       |
-|                         | Number per account | One runtime                | Multiple runtimes            |
+|                         | Number per account | One runtime                | Multiple runtimes, one per cluster            |
 |                         | External cluster   | Managed by customer        | Managed by customer         |
 |                         | Upgrade            | Managed by Codefresh       | Managed by customer |
 |                         | Uninstall          | Managed by customer        | Managed by customer |

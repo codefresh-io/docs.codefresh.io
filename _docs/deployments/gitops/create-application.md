@@ -50,11 +50,14 @@ General configuration settings define the group to which the application belongs
    max-width="70%" 
    %} 
 
+
 ### Groups
 Optional. The group or groups to which to add the application.  
 You can group applications based on criteria meaningful to your organization, such as environment, region, or any other relevant attribute. You can then view deployments for these applications in the same location in the Groups tab of the GitOps Apps dashboard. A new view for GitOps applications, Groups allow you to collate multiple applications view their timelines.
 
 Select an existing group or groups, or create a new application group by typing a name and pressing Enter.
+
+ 
 
 
 ### Source 

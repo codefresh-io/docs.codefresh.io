@@ -1,11 +1,14 @@
 ---
-title: "Install GitOps Runtime on-premises"
+title: "On-premises GitOps Runtime installation"
 description: "Install GitOps Runtime in on-premises environments using Helm"
 group: installation
 toc: true
 ---
 
 Install the GitOps Runtime in your on-premises environments with Helm to create and manage Argo CD applications and deployments.
+
+>**NOTE**:  
+Tunnel-based access mode is not supported for GitOps on-premises installations.
 
 
 ## Install GitOps Runtime on-premises
@@ -22,7 +25,7 @@ helm upgrade --install cf-gitops-runtime \
   --set app-proxy.config.cors=<on-prem-url> \
   --set global.runtime.ingress.enabled="true" \
   --set "global.runtime.ingress.hosts[0]"=<ingress-host> \
-  cf-gitops-runtime/gitops-runtime --devel
+  cf-gitops-runtime/gitops-runtime 
 {% endhighlight %}
  
   where:  
