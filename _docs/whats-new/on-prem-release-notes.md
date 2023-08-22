@@ -29,7 +29,7 @@ For details, see [GitOps Gerrit Git provider integration]({{site.baseurl}}/docs/
 
 #### Multi-account sync for Okta with OIDC
 
-Check out the latest enhancements to the integration settings for Okta with OIDC.
+Check out the latest enhancements to the integration settings for Okta with OIDC: Multi-account sync and automatic deletion of users removed during sync from Codefresh.
 
 **Multi-account sync**  
 Following the successful implementation of just-in-time provisioning support for Okta, we are taking it a step further by introducing multi-account sync for OIDC-Okta. This feature enables you to synchronize multiple Codefresh accounts in Okta simultaneously in Codefresh, ensuring a seamless SSO setup for enterprise customers.
@@ -57,14 +57,35 @@ For details, see [Configure OIDC SSO settings for Okta in Codefresh]({{site.base
 
 #### OpenShift ???
 
-#### Pipelines: Enforce scope
-Codefresh admins can now define the endpoint scopes for pipelines, further simplifying setup while strengthening security. Scopes are defined at the account level and inherited by all pipelines. If needed, you can ovveride for an individual pipeline.
+#### Pipelines: Endpoint access control
+With this feature, Codefresh admins gain enhanced control over the security of their pipelines by being able to restrict access to specific endpoint scopes.
+Scopes are defined at the account level, ensuring a consistent security baseline for all pipelines. These predefined scopes are inherited by every pipeline, which Codefresh admins can override for individual pipelines when necessary.
 
-PIC
+ {% include 
+image.html 
+lightbox="true" 
+file="/images/whats-new/aug23/rel-notes-aug23-pipeline-scopes-setting.png" 
+url="/images/whats-new/aug23/rel-notes-aug23-pipeline-scopes-setting.png" 
+alt="Configure scopes for pipeline" 
+caption="Configure scopes for pipeline" 
+max-width="60%" 
+%}
 
-When users generate API tokens for pipelines, they will be able to select only those scopes allowed for that account. 
+For details, see [Configure scopes for pipelines]({{site.baseurl}}/docs/pipelines/configuration/pipeline-settings/#configure-pipeline-scopes).
 
-For details, see 
+#### Pipelines: Enhanced version of Cron triggers 
+
+In this release, we have extended the capabilities of Cron triggers within Codefresh pipelines. 
+
+
+By integrating additional functionality into the Cron trigger, we have a more powerful implementation.
+Cron triggers can simulate Git events, enriching pipelines with repository details, include environment variables, and specialized build configuration settings for caching, volume reuse, and notifications.  
+These additional settings are completely optional, so you can continue to use just the timer component of the Cron trigger.
+
+Legacy versions of Cron triggers are flagged in the Codefresh UI and include an option to migrate them to the new version.
+
+
+
 
 
 #### Pipelines: Pipeline Dashboard enhancements
