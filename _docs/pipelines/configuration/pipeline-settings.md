@@ -25,7 +25,9 @@ As a Codefresh account administrator, you can define global settings for all the
 |[Default behavior for build step](#default-behavior-for-build-step)| Configure push image options for build steps.  |
 
 
-## Access pipeline settings
+## Access global pipeline settings
+Global settings for pipelines are set for the account and inherited by all pipelines in the account. 
+
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
 1. From Configuration in the sidebar, select [**Pipeline Settings**](https://g.codefresh.io/account-admin/account-conf/pipeline-settings){:target="\_blank"}. 
 
@@ -65,11 +67,17 @@ Here you can define if users can [create pipelines]({{site.baseurl}}/docs/pipeli
 ## Configure pipeline scopes
 Define the account-level scopes for resources, inherited by all pipelines in the account, through full access, read/write access, or CRUD permissions. <!--- For a description of the available scopes, see [API scopes]({{site.baseurl}}/docs/administration/user-self-management/user-settings/#api-scopes). --> 
 
+  {% include image.html
+lightbox="true"
+file="/images/pipeline/pipeline-settings/pipeline-scopes-setting.png"
+url="/images/pipeline/pipeline-settings/pipeline-scopes-setting.png"
+alt="Scopes for pipelines"
+caption="Scopes for pipelines"
+max-width="60%"
+%}
+
 >**TIP**:
- As a Codefresh administrator, you can override the account-level scopes for a specific pipeline by configuring custom scopes. The custom scopes are inherited by all the builds for that pipeline. 
-
-
-
+ As a Codefresh administrator, you can override the account-level scopes for a specific pipeline by [configuring custom scopes]({{site.baseurl}}/docs/pipelines/pipelines/#scopes). The custom scopes are inherited by all the builds for that pipeline. 
 
 
 
