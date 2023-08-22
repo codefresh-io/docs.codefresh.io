@@ -124,6 +124,36 @@ For details, see ????
 
 ### Bug fixes
 
+
+**General**
+* Unable to add users to Codefresh via team sync for Okta.
+Auto-sync option not available for Azure SSO. yes
+404 errors on clicking documentation links in Build > Triggers.
+
+
+**Pipelines**  
+* Pipeline builds terminate with error message: `Pipeline could not be executed because retry attempts limit has been exceeded...`.
+* Shallow clone for a specific revision with `depth` argument results in error: `pathspec 'test' did not match any file(s) known to git`.
+* Cross-account ECR pull in `freestyle` step fails with `(HTTP code 500) server error...`.
+* Pipeline resuming execution after approval shows previously executed steps as skipped in Codefresh UI.
+* Creating a Git trigger for a repo name containing spaces fails with error: `Failed to create trigger...fails to match the required pattern...`.
+Discrepancy in list of builds returned when running `GET {{baseUrl/workflow?pipeline=[pipeline-id]}}` query.???
+Composition stops randomly with error: `Could not get status for container <container-name>`. ???
+* In Pipelines dashboard (Home Dashboard), for a renamed pipeline, the Pipeline filter displays the original name instead of the new name. 
+* In the Pipelines page, the context-menu for the last pipeline in the list does not display all available actions.
+* **Save** button remains disabled when modifying an External Resource in Pipeline > Settings. 
+* Unable to add Hybrid Runner and run builds in Version 2.0.1. 
+
+https://codefresh-io.atlassian.net/browse/CR-18462???
+
+
+**GitOps** 
+* **Save** button remains disabled when modifying fields for an existing Git Source.
+* Unable to create Git Sources both from the Codefesh CLI and UI with Bitbucket Server.
+* For Azure, auto-sync operations removes groups that were previously synced.
+* Rollouts Reporter for managed cluster uses SaaS instead of on-premises URL.
+
+
 ### Feature Flags
 
 
