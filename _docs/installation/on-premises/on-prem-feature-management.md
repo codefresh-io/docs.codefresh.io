@@ -5,10 +5,12 @@ group: installation
 toc: true
 ---
 
-Codefresh platform/system administrators can toggle specific features of the Codefresh platform in on-premises environments. Feature management helps you to easily implement and manage functionality on an as- and when-needed basis. 
+Codefresh platform/system administrators can toggle specific features of the Codefresh platform on/off in on-premises environments. Feature management helps you to easily implement and manage functionality on an as- and when-needed basis. 
+
+
 
 ## Manage features in on-premises platforms
-Enable a feature for all accounts, or override the default setting and enable/disable the feature selectively for specific accounts. The overrides are retained when you change the default setting for the feature. 
+Enable a feature for all accounts, or override the default setting and enable/disable the feature selectively for specific accounts. Account-level feature overrides are retained when you change the default setting for the feature. 
 Review the [feature list](#on-premises-feature-list) to understand the implications of enabling a feature.
 
 1. Sign in to Codefresh.
