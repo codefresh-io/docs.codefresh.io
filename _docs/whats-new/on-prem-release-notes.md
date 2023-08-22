@@ -73,7 +73,7 @@ max-width="60%"
 
 For details, see [Configure scopes for pipelines]({{site.baseurl}}/docs/pipelines/configuration/pipeline-settings/#configure-pipeline-scopes).
 
-#### Pipelines: Enhanced version of Cron triggers 
+#### ???Pipelines: Enhanced version of Cron triggers 
 
 In this release, we have extended the capabilities of Cron triggers within Codefresh pipelines. 
 
@@ -159,11 +159,14 @@ Auto-sync option not available for Azure SSO. yes
 * Pipeline resuming execution after approval shows previously executed steps as skipped in Codefresh UI.
 * Creating a Git trigger for a repo name containing spaces fails with error: `Failed to create trigger...fails to match the required pattern...`.
 Discrepancy in list of builds returned when running `GET {{baseUrl/workflow?pipeline=[pipeline-id]}}` query.???
-Composition stops randomly with error: `Could not get status for container <container-name>`. ???
+* Composition stops randomly with error: `Could not get status for container <container-name>`. ???
 * In Pipelines dashboard (Home Dashboard), for a renamed pipeline, the Pipeline filter displays the original name instead of the new name. 
 * In the Pipelines page, the context-menu for the last pipeline in the list does not display all available actions.
 * **Save** button remains disabled when modifying an External Resource in Pipeline > Settings. 
+* Unable to set `requiredAvailableStorage` programmatically for Hybrid Pipeline Runtimes.
 * Unable to add Hybrid Runner and run builds in Version 2.0.1. 
+* Commit message passed through the system variable `CF_COMMIT_MESSAGE` is truncated and does not include the full content.
+* Unable to override the Public Marketplace Registry with Google Container Registry (GCR)for typed-step plug-ins. 
 
 https://codefresh-io.atlassian.net/browse/CR-18462???
 
