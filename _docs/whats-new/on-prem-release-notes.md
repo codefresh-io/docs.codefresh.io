@@ -166,8 +166,8 @@ Discrepancy in list of builds returned when running `GET {{baseUrl/workflow?pipe
 * Unable to set `requiredAvailableStorage` programmatically for Hybrid Pipeline Runtimes.
 * Unable to add Hybrid Runner and run builds in Version 2.0.1. 
 * Commit message passed through the system variable `CF_COMMIT_MESSAGE` is truncated and does not include the full content.
-* Unable to override the Public Marketplace Registry with Google Container Registry (GCR)for typed-step plug-ins. 
-
+* Prefix for Docker registries omitted when using a custom Docker registry as a Public Marketplace Registry. 
+* Invited users prompted for phone number during sign-up.
 https://codefresh-io.atlassian.net/browse/CR-18462???
 
 
