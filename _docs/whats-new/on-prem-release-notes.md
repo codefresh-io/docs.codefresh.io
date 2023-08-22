@@ -55,6 +55,15 @@ max-width="50%"
 
 For details, see [Configure OIDC SSO settings for Okta in Codefresh]({{site.baseurl}}/docs/administration/single-sign-on/oidc/oidc-okta/#how-to). 
 
+#### Account ID in URL 
+
+Our latest usability enhancement is tiny in terms of but big in terms of value. URLs in the Codefresh platform include your account ID, making it  easy for you to share it with others in your organization, and practical for recipients. 
+
+Recipients can choose between switching to your account or staying in their current account.
+
+
+Try it out! 
+
 #### OpenShift ???
 
 #### Pipelines: Endpoint access control
@@ -79,13 +88,14 @@ In this release, we have extended the capabilities of Cron triggers within Codef
 
 
 By integrating additional functionality into the Cron trigger, we have a more powerful implementation.
-Cron triggers can simulate Git events, enriching pipelines with repository details, include environment variables, and specialized build configuration settings for caching, volume reuse, and notifications.  
+Cron triggers can simulate Git events to enrich pipelines with repository details, include environment variables, and custom settings for caching, volume reuse, and notifications.  
 These additional settings are completely optional, so you can continue to use just the timer component of the Cron trigger.
+
 
 Legacy versions of Cron triggers are flagged in the Codefresh UI and include an option to migrate them to the new version.
 
 
-
+For details, see 
 
 
 #### Pipelines: Pipeline Dashboard enhancements
