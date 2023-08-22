@@ -281,6 +281,8 @@
     - title: Notifications
       url: "/notifications"
       sub-pages:
+        - title: Email
+          url: "/email-integration"
         - title: Slack
           url: "/slack-integration"
         - title: Jira
