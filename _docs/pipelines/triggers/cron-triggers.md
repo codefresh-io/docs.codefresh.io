@@ -18,8 +18,10 @@ By integrating these additional options, Cron triggers can initiate pipeline exe
 
 
 You can create and manage Cron triggers for pipelines through the:  
-* [Codefresh UI](#cron-triggers-in-codefresh-ui)
-* Programmatically, through the Codefresh [CLI](#cron-triggers-in-codefresh-cli) or [API]({{site.baseurl}}/docs/integrations/codefresh-api/#cron-triggers)
+* [Codefresh UI](#cron-triggers-in-codefresh-ui), as desribed in this article
+* Programmatically, through the Codefresh [API]({{site.baseurl}}/docs/integrations/codefresh-api/#cron-triggers)
+
+
 
 
 >**NOTE**:  
@@ -50,11 +52,11 @@ There are two parts to creating a Cron trigger in the UI:
 1. (Optional) Selecting additional options:  
   * Git trigger event to simulate when the Cron trigger timer is activated. The pipeline is populated with the information from the Git repo such as the repo URL, branch name, latest commit information, including the date and author of the commit.
   * Variables to populate for the build
-  * Build behavior to override for the build  
+  * Caching, volume resuse and notification behavior to override for the build  
 
 
 
-### Create a Cron trigger in UI
+## How to: Create a Cron trigger in UI
 **Before you begin**  
 
 Review:  
@@ -111,22 +113,19 @@ max-width="60%"
 %}
 
 {:start="7"}
-1. To confirm click **Done**.
+1. To confirm click **Done**. 
+  * If you defined only the Timer settings, the build is triggered according to the Cron expression.
+  * If you defined both the Timer and additional Settings, the build is triggered according to the Cron expression, and depending on the settings, the pipeline is populated with the information from the Git repo, additional variables, and notifications when configured.
 
 
-Now recurring pipeline executions are triggered according to the defined Cron trigger settings:  
-* If you defined only the Timer settings, the build is triggered according to the Cron expression.
-* If you defined both the Timer and additional Settings, the build is triggered according to the Cron expression, and depending on the settings, the pipeline is populated with the information from the Git repo, additional variables, and notifications when configured.
+>**TIP**:  
+To edit a Cron trigger after creating it, click the Edit icon.
 
-### Edit a Cron trigger in Codefresh UI
 
-???
-
-## Cron triggers with Codefresh CLI
+## Legacy Cron triggers with Codefresh CLI
 
 You can also create and manage Cron triggers for pipelines via the [Codefresh CLI](https://cli.codefresh.io/){:target="\_blank"}.
 
-You first create the Cron trigger and then set up a 
 
 
 ### Create Cron trigger event via CLI
