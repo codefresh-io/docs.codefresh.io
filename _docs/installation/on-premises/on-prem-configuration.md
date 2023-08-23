@@ -52,7 +52,7 @@ Users can actually sign in to Codefresh
 Until the suer sign in to Codefresh is 
 
 1. From the sidebar, select **Users**.  
-  The Users page displays two default users, the `codefresh-system` user and the `AdminCF` user you used to sign in. 
+  The Users page displays the `codefresh-system` user and the `AdminCF` user. 
 1. From the account's context menu, select **Invite user into account**.
 1. Enter the user's email address and click **Add**.
   The Users list displays the user you invited.
