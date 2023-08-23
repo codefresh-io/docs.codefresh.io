@@ -186,6 +186,7 @@ https://codefresh-io.atlassian.net/browse/CR-18462???
 * Unable to create Git Sources both from the Codefesh CLI and UI with Bitbucket Server.
 * For Azure, auto-sync operations removes groups that were previously synced.
 * Rollouts Reporter for managed cluster uses SaaS instead of on-premises URL.
+Commits to a second application in the same repository as another application, marks the Rollout for the first application as terminated when it actually continues .
 
 
 ### Feature Flags
