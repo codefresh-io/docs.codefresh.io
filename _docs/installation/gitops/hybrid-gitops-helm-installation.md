@@ -659,11 +659,8 @@ Once you commit the manifest to the Git Source, it becomes a GitOps application.
 1. Go to the Git repo where you created the Git Source.
 1. Add and commit the Argo CD Application manifest.
 
-Here is an example:
+<!--- Here is an example:  -->
 
-```hcl
-
-```
 
 
 
