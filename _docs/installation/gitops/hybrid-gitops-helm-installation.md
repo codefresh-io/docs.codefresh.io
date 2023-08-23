@@ -434,9 +434,11 @@ You can now add [external clusters]({{site.baseurl}}/docs/installation/gitops/ma
 
 
 ## Install additional GitOps Runtimes in account
-Install additional Hybrid GitOps Runtimes on different clusters within the same account.  
+Install additional Hybrid GitOps Runtimes on different clusters within the same account. Copy and run the Helm install command either from the UI or a terminal, and complete the installation following the prompts in the UI. Codefresh validates each Runtime installation and guides you through the tasks to complete the installation for a fully functional GitOps Runtime.
+
 The Codefresh `values.yaml` located [here](https://github.com/codefresh-io/gitops-runtime-helm/blob/main/charts/gitops-runtime/){:target="\_blank"}, contains all the arguments you can configure, including optional ones.
 
+## Step1: Copy & run Helm install command
 
 **Git provider and Shared Configuration Repository**  
 The Git provider and Shared Configuration Repository is configured once per account, and are not required for additional installations for the same account.
@@ -450,7 +452,6 @@ The name of the Runtime must be unique in the same account.
 
 **How to**
 
-<!--- 1. In the Codefresh UI, go to [Install Hybrid GitOps Runtime](https://g.codefresh.io/2.0/account-settings/runtimes/info/list?drawer=install-codefresh-runtime){:target="\_blank"}.-->
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and from Runtimes in the sidebar, select [**GitOps Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
 1. Click **+ Add Runtimes**, and then select **Hybrid Runtimes**.
 1. Copy the command in _Step 4_ and define the values that are not automatically populated.
@@ -474,9 +475,27 @@ max-width="40%"
   * `<helm-repo-chart-name>` is the name of the repo in which to add the Helm chart, and is either `cf-gitops-runtime` which is the default, or any custom name you define. 
   * `--wait` waits until all the pods are up and running for the deployment. 
 
-{:start="4"} 
-1. Configure Git credentials to authorize access to and ensure proper functioning of the GitOps Runtime:
-    1. In the Sync Status column for the Runtime you just installed, click **Complete Installation**.
+
+### Step 2: Complete GitOps Runtime installation
+Complete Runtime installation by configure Git credentials to authorize access to and ensure proper functioning of the GitOps Runtime, and to authorize actions on your Git repositories. The final step is to configure the Runtime as an Argo Application.
+
+**Git Runtime token**
+You can use the same token you used for the first Runtime. 
+
+**Git user token**  
+The Git user token is a personal access token unique to every user. The permissions for the Git user token are different from those of the Git Runtime token.
+Verify that you have an access token from your Git provider with the correct scopes.
+
+**Configure as Argo CD application**  
+Configuring the Runtime an an Argo CD application to view the Runtime components, monitor health and sync statuses, and ensure that GitOps is the single source of truth for the Runtime.   
+
+
+1. In the Codefresh UI, go to the [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes/info/list){:target="\_blank"} page.
+  * The name of the Hybrid GitOps Runtime you added is prefixed with a red dot indicating that it is offline
+  * The Sync Status column displays **Complete Installation**, indicating that there are pending steps to complete the installation.
+1. Click the Runtime name or click **Complete Installation**.
+  Codefresh displays the steps needed to complete the installation.
+1. Click **Git Runtime token** to configure Git credentials for the GitOps Runtime:
     1. For OAuth authorization:
       * Click **Authorize Access to Git Provider**.
       * Enter your credentials, and select **Sign In**.
@@ -493,14 +512,17 @@ max-width="40%"
       caption="Authorizing access with OAuth2"
       max-width="30%" 
    %}
-1. Go back to the List view and click **Configure as Argo Application**. Codefresh takes care of the configuration for you.
+1. Click **Git user token** to add your personal access token to authorize actions to Git repositories:
+   ???
+1. In **Configure as Argo Application**, click **Configure**. Codefresh takes care of the configuration for you.
 1. For GitOps with Argo CD, after confirming successful installation, remove the duplicate Argo Rollouts controller `deployment` to avoid having two controllers in the cluster.   
+  
   >**IMPORTANT**:  
   Make sure to remove only the `deployment` and not the CRDs. Removing the CRDs also removes Rollout objects resulting in downtime for workloads.  
     `kubectl delete deployment <argo-rollouts-controller-name> -n <argo-rollouts-controller-namespace>`
 
 
-**What to do next**  
+### What to do next  
 Depending on your configuration, if you have private registries, you need to override specific image values, and if your Git servers are on-premises, you need to add custom repository certificates. See [Optional GitOps Runtime configuration](#optional-gitops-runtime-configuration) in this article. 
 
 You can now add [Git Sources]({{site.baseurl}}/docs/installation/gitops/git-sources), [external clusters]({{site.baseurl}}/docs/installation/gitops/managed-cluster/), [create and deploy GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application/).
@@ -540,7 +562,7 @@ resource "helm_release" "my_gitops_runtime" {
 
 Feel free to user a different chart version and a unique name for the Runtime. You can get the values for both the Codefresh API token and account ID from the Codefresh UI as explained in the previous section.  
 
-The example is valid for the tunnel-based access mode. For ingress-based or service-mesh-based access modes, add the required arguments and values, as described in the step-by-step section, [Step 3: Install Hybrid GitOps Runtime](#step-3-install-hybrid-gitops-runtime).
+The example is valid for the tunnel-based access mode. For ingress-based or service-mesh-based access modes, add the required arguments and values, as described in [Step 3: Install Hybrid GitOps Runtime](#step-3-install-hybrid-gitops-runtime).
 
 Depending on your configuration, if you have private registries, you need to override specific image values, and if your Git servers are on-premises, you need to add custom repository certificates. See [Optional GitOps Runtime configuration](#optional-gitops-runtime-configuration) in this article. 
 
@@ -587,6 +609,10 @@ Because this allows you to completely and seamlessly manage the applications in 
 
 
 The process to migrate an Argo CD Application is simple:
+1. Add a Git Source to the Runtime to which store application manifests
+1. Make the needed configuration changes in the Argo CD Application
+1. Commit the application to the Git Source for viewing and management in Codefresh
+
 
 ### Step 1: Add a Git Source to GitOps Runtime
 
@@ -600,9 +626,12 @@ Read about [Git Sources]({{site.baseurl}}/docs/installation/gitops/git-sources/)
 
 ### Step 2: Modify Argo CD Application
 
-In this step, you'll modify the Argo CD Application's manifest to remove `finalizers`, if any, and also remove the Application from the `argocd` `namespace` it is assigned to by default.
+Modify the Argo CD Application's manifest to remove `finalizers`, if any, and also remove the Application from the `argocd` `namespace` it is assigned to by default.
 
-Here's an example of a manifest for an Argo CD Application with `finalizers`.
+* Remove `metadata.namespace: argocd`.
+* Remove `metadata.finalizers`.
+
+Below is an example of a manifest for an Argo CD Application with `finalizers`.
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -622,14 +651,10 @@ spec:
   project: default  # Replace 'default' with the name of the Argo CD project you want to use
 ```
 
-* Remove `metadata.namespace: argocd`.
-* Remove `metadata.finalizers`.
-
-
 
 ### Step 3: Commit the application to the Git Source
-As the final step in migrating your Argo CD Application to a Codefresh GitOps one, you'll manually commit the updated Application manifest to the Git Source you created in Step 1.
-Once you commit the manifest to the Git Source, it becomes a GitOps application. You can view it in the Codefresh UI, modify definitions, track it through our different dashboards - in short, manage it as would any GitOps resource in Codefresh. 
+As the final step in migrating your Argo CD Application to a Codefresh GitOps one, manually commit the updated Application manifest to the Git Source you created in Step 1.
+Once you commit the manifest to the Git Source, it becomes a GitOps application. You can view it in the Codefresh UI, modify definitions, track it through our different dashboards, and in short, manage it as you  would any GitOps resource in Codefresh. 
 
 1. Go to the Git repo where you created the Git Source.
 1. Add and commit the Argo CD Application manifest.
@@ -637,62 +662,14 @@ Once you commit the manifest to the Git Source, it becomes a GitOps application.
 Here is an example:
 
 ```hcl
-resource "helm_release" "my_gitops_runtime" {
-  name = "my-codefresh-runtime"
 
-  repository       = "https://chartmuseum.codefresh.io/gitops-runtime"
-  chart            = "gitops-runtime"
-  namespace        = "my-codefresh-runtime"
-  version          = "0.2.14"
-  create_namespace = true
-  set {
-    name  = "global.codefresh.accountId"
-    value = var.cf_account_id
-  }
-  set {
-    name  = "global.codefresh.userToken.token"
-    value = var.cf_token
-  }
-  set {
-    name  = "global.runtime.name"
-    value = "from-terraform"
-  }
-}
 ```
 
 
 
 
-## Optional GitOps Runtime configuration
 
-### Image overrides for private registries
-If you use private registries, you must override specific image values for the different subcharts and container images.
-Our utility helps override image values for GitOps Runtimes by creating `values` files that match the structure of the subcharts, allowing you to easily replace image registries. During chart installation, you can provide these `values` files to override the images, as needed.
-For more details, see [ArtifactHub](https://artifacthub.io/packages/helm/codefresh-gitops-runtime/gitops-runtime#using-with-private-registries---helper-utility){:target="\_blank"}.
 
-### Custom repository certificates
-
-Repository certificates are required to authenticate users to on-premises Git servers.  
-
-If your Git servers are on-premises, add the repository certificates to your Codefresh `values` file, in `.values.argo-cd`. These values are used by the Argo CD that Codefresh deploys. For details on adding repository certificates, see this [section](https://github.com/codefresh-io/argo-helm/blob/argo-cd-5.29.2-cap-CR-18430/charts/argo-cd/values.yaml#LL336C7-L336C7){:target="\_blank"}.
-
-{% highlight yaml %} 
-global:
-  codefresh:
-    tls:
-      caCerts:
-        # optional - use an existing secret that contains the cert
-        # secretKeyRef:
-        #   name: my-certificate-secret
-        #   key: ca-bundle.crt
-        # or create "codefresh-tls-certs" secret
-        secret:
-          create: true
-          content: |
-            -----BEGIN CERTIFICATE-----
-            ...
-            -----END CERTIFICATE-----
-{% endhighlight yaml %}
 
 ## Minimum system requirements
 
