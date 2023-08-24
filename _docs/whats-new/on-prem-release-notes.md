@@ -141,7 +141,7 @@ Here are the icons and the build statuses they represent:
 For details, see [Viewing status for pipeline builds]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#viewing-status-for-pipeline-builds).
 
 #### ??? ABAC for GitOps
-In this release, we bring the power of ABAC for access control to GitOps for the first time as a Beta version.   You can define fine-grained access to GitOps application entities. Similar to the ABAC for pipelines, access is controlled through the use of rules, defined using teams, actions, and attributes.
+In this release, we bring the power of ABAC for access control to GitOps for the first time as a Beta version.   You can define fine-grained access to GitOps application entities. Similar to ABAC for pipelines, access is controlled through the use of rules, defined using teams, actions, and attributes.
 
 For details, see ????
 
@@ -158,8 +158,10 @@ For details, see ????
 
 **General**
 * Unable to add users to Codefresh via team sync for Okta.
-Auto-sync option not available for Azure SSO. yes
-404 errors on clicking documentation links in Build > Triggers.
+* Auto-sync option not available for Azure SSO. yes
+* 404 errors on clicking documentation links in Build > Triggers.
+* For Azure, auto-sync operations removes groups that were previously synced.
+
 
 
 **Pipelines**  
@@ -168,7 +170,7 @@ Auto-sync option not available for Azure SSO. yes
 * Cross-account ECR pull in `freestyle` step fails with `(HTTP code 500) server error...`.
 * Pipeline resuming execution after approval shows previously executed steps as skipped in Codefresh UI.
 * Creating a Git trigger for a repo name containing spaces fails with error: `Failed to create trigger...fails to match the required pattern...`.
-Discrepancy in list of builds returned when running `GET {{baseUrl/workflow?pipeline=[pipeline-id]}}` query.???
+* Discrepancy in list of builds returned when running `GET {{baseUrl/workflow?pipeline=[pipeline-id]}}` query.
 * Composition stops randomly with error: `Could not get status for container <container-name>`. ???
 * In Pipelines dashboard (Home Dashboard), for a renamed pipeline, the Pipeline filter displays the original name instead of the new name. 
 * In the Pipelines page, the context-menu for the last pipeline in the list does not display all available actions.
@@ -178,15 +180,15 @@ Discrepancy in list of builds returned when running `GET {{baseUrl/workflow?pipe
 * Commit message passed through the system variable `CF_COMMIT_MESSAGE` is truncated and does not include the full content.
 * Prefix for Docker registries omitted when using a custom Docker registry as a Public Marketplace Registry. 
 * Invited users prompted for phone number during sign-up.
-https://codefresh-io.atlassian.net/browse/CR-18462???
+??BitBucket server pipeline trigger not firing on commit
+
 
 
 **GitOps** 
 * **Save** button remains disabled when modifying fields for an existing Git Source.
 * Unable to create Git Sources both from the Codefesh CLI and UI with Bitbucket Server.
-* For Azure, auto-sync operations removes groups that were previously synced.
 * Rollouts Reporter for managed cluster uses SaaS instead of on-premises URL.
-Commits to a second application in the same repository as another application, marks the Rollout for the first application as terminated when it actually continues .
+* Commits to a second application in the same repository as another application, marks the Rollout for the first application as terminated when it actually continues .
 
 
 ### Feature Flags
