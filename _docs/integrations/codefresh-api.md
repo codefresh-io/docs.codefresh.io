@@ -540,9 +540,9 @@ The `cronTriggers` field is an array of objects that hold [Cron trigger informat
 {% raw %}
 ...
 cronTriggers: 
-    - name: 
+    - name: SSO sync
       type: cron,
-      message: "Successfull ingress tests"
+      message: "Sync successfull"
       expression: "0 0/1 * 1/1 * *"
       gitTriggerId: 64905de8589da959de81d31d
       branch: main

@@ -17,9 +17,8 @@ Integrate additional settings in the Cron trigger such as simulating a Git event
 By integrating these additional options, Cron triggers can initiate pipeline executions at the predefined time intervals and at the same time populate the pipeline with repo and branch information from the Git trigger, required environment variables, and specialized behavior, for the build. 
 
 
-You can create and manage Cron triggers for pipelines through the:  
-* [Codefresh UI](#cron-triggers-in-codefresh-ui), as desribed in this article
-* Programmatically, through the Codefresh [API]({{site.baseurl}}/docs/integrations/codefresh-api/#cron-triggers)
+Create and manage Cron triggers for pipelines through [Codefresh UI](#cron-triggers-in-codefresh-ui), as described in this article
+<!--- * Programmatically, through the Codefresh [API]({{site.baseurl}}/docs/integrations/codefresh-api/#cron-triggers)  -->
 
 
 
@@ -40,6 +39,29 @@ alt="Legacy Cron trigger in Codefresh UI"
 max-width="60%"
 %}
 
+**Migrate legacy trigger**  
+* Click the **Edit** icon to view the trigger.
+* To migrate, click **Convert**. 
+
+{% include image.html
+lightbox="true"
+file="/images/pipeline/triggers/cron/legacy-cron-convert.png"
+url="/images/pipeline/triggers/cron/legacy-cron-convert.png"
+caption="Migrate legacy Cron trigger in Codefresh UI"
+alt="Migrate legacy Cron trigger in Codefresh UI"
+max-width="60%"
+%}
+  Codefresh migrates the legacy Cron trigger and displays a Trigger updated successfully message.
+* Open the trigger displays the Settings tab with additional options.
+
+  {% include image.html
+lightbox="true"
+file="/images/pipeline/triggers/cron/legacy-cron-trigger-tag.png"
+url="/images/pipeline/triggers/cron/legacy-cron-trigger-tag.png"
+caption="Cron trigger after migration with Settings tab"
+alt="Cron trigger after migration with Settings tab"
+max-width="60%"
+%}
 
 
 ## Cron triggers in Codefresh UI
@@ -122,7 +144,10 @@ max-width="60%"
 To edit a Cron trigger after creating it, click the Edit icon.
 
 
-## Legacy Cron triggers with Codefresh CLI
+## Cron triggers with Codefresh CLI
+
+>**NOTE**:  
+This section is relevant only for legacy Cron triggers and will be deprecated. 
 
 You can also create and manage Cron triggers for pipelines via the [Codefresh CLI](https://cli.codefresh.io/){:target="\_blank"}.
 
@@ -138,7 +163,7 @@ The text message is passed to linked pipelines, whenever the specified `cron` ti
 
 {% highlight yaml %}
 {% raw %}
-# create DockerHub recurring event 'once in 20 minutes'
+# create recurring event 'once in 20 minutes'
 codefresh create trigger-event --type cron --kind codefresh --value expression="0 */20 * * * *" --value message="hello-once-in-20-min"
 
 # on success trigger-event UID will be printed out
@@ -165,9 +190,9 @@ codefresh create trigger "cron:codefresh:codefresh:0 */20 * * * *:hello-once-in-
 
 From now on, Codefresh will trigger a pipeline execution for two pipelines linked to the previously specified `cron` `trigger-event`, every 20 minutes (`once in 20 minutes`).
 
-### Cron event payload
+## Cron event payload
 
-The following variables are available to any Codefresh pipeline linked to a Cron trigger-event:
+The following variables are available to any Codefresh pipeline linked to a Cron trigger event:
 
 - `EVENT_MESSAGE`: Free-text message (specified during creation)
 - `EVENT_TIMESTAMP`: Event timestamp in RFC 3339 format
