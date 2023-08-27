@@ -20,10 +20,10 @@ See [Enable email notifications for pipeline builds]({{site.baseurl}}/docs/admin
     
     {% include image.html 
     lightbox="true" 
-    file="/images/integrations//system-terminate-build-slack-example.png" 
-    url="/images/integrations/slack/system-terminate-build-slack-example.png" 
-    caption="Example of Slack notification for system-terminated build"
-    alt="Example of Slack notification for system-terminated build" 
+    file="/images/integrations/email/failed-build-notification.png" 
+    url="/images/integrations/email/failed-build-notification.png" 
+    caption="Example of email notification for failed build"
+    alt="Example of email notification for failed build" 
     max-width="60%" 
 %}
 -->
