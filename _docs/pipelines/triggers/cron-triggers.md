@@ -17,8 +17,8 @@ Integrate additional settings in the Cron trigger such as simulating a Git event
 By integrating these additional options, Cron triggers can initiate pipeline executions at the predefined time intervals and at the same time populate the pipeline with repo and branch information from the Git trigger, required environment variables, and specialized behavior, for the build. 
 
 
-Create and manage Cron triggers for pipelines through [Codefresh UI](#cron-triggers-in-codefresh-ui), as described in this article
-<!--- * Programmatically, through the Codefresh [API]({{site.baseurl}}/docs/integrations/codefresh-api/#cron-triggers)  -->
+Create and manage Cron triggers for pipelines through [Codefresh UI](#cron-triggers-in-codefresh-ui), as described in this article.  
+For the specifications, see [Cron trigger specifications in pipelines]({{site.baseurl}}/docs/integrations/codefresh-api/#cron-triggers).
 
 
 
@@ -56,8 +56,8 @@ max-width="60%"
 
   {% include image.html
 lightbox="true"
-file="/images/pipeline/triggers/cron/legacy-cron-trigger-tag.png"
-url="/images/pipeline/triggers/cron/legacy-cron-trigger-tag.png"
+file="/images/pipeline/triggers/cron/legacy-cron-after-convert.png"
+url="/images/pipeline/triggers/cron/legacy-cron-after-convert.png"
 caption="Cron trigger after migration with Settings tab"
 alt="Cron trigger after migration with Settings tab"
 max-width="60%"
