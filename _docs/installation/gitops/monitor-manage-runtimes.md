@@ -325,15 +325,15 @@ Copy the SSH private key for your Git provider
 ## Reset Shared Configuration Repository for GitOps Runtimes
 Codefresh creates and validates the [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration) when you install the first Hybrid or Hosted GitOps Runtime for your account, and uses it for all GitOps Runtimes you add to the same account.
 
-Once created, you can reset the Shared Configuration Repo defined for your account under the following conditions:
+The Shared Configuration Repo is created in your Git provider account. You can reset the repo defined for your account under the following conditions:
 
 * **Incorrect/missing URL**  
-  Mandatory when Codefresh notifies you through the UI if the Shared Configuration Repo URL is either incorrect or missing.
+  Mandatory when Codefresh notifies you through the UI that the Shared Configuration Repo URL is either incorrect or missing.
 
     * Incorrect URL  
       The Shared Config Repo details provided during installation in Account Setup are incorrect. Codefresh could not connect to the Shared Repo with the details provided.
     * Undefined URL<br>
-      You installed the GitOps Runtime through a script or another automated mechanism without providing the URL to the Shared Configuration Repository.
+      You installed the GitOps Runtime through a script or an automated mechanism without providing the URL to the Shared Configuration Repository.
 
 
     {% include
@@ -352,7 +352,7 @@ Once created, you can reset the Shared Configuration Repo defined for your accou
 
   Otherwise, you can reset the Shared Config Repo URL only _after uninstalling all the GitOps Runtimes in your account_. This option is useful when moving from a temporary account, for example, a POV account, to your organization's official account. Codefresh allows you to reset the URL.
 
-### Reset Shared Config Repo via UI
+<!--- ### Reset Shared Config Repo via UI
 You can reset the Shared Config Repo via the Codefresh UI when you see the notification that the URL is either incorrect or missing.
 
 **Before you begin**
@@ -364,21 +364,25 @@ Verify that you have [authorized access to the Codefresh app's organizations]({{
 1. In **Add Shared Configuration Repo**, enter your Git username and the URL at which to create the repo.
 1. From the list of **Git Organizations**, select the Git organization for the Codefresh application.
 
-### Reset Shared Config Repo via CLI
+### Reset Shared Config Repo via CLI 
 You can reset the Shared Configuration Repo via the CLI when:
 * You receive the notification that the URL is incorrect or missing
 * There are no active GitOps Runtimes in your account.
    To reset the URL for an account with existing GitOps Runtimes, you must [uninstall](#uninstall-gitops-runtimes) all the Runtimes.
 
+-->
 
 **Before you begin**
 * Make sure you have no active Runtimes in your account
 
 **How to**
 
-* Run `cf config update-gitops-settings --shared-config-repo <shared_repo_url>`
+
+1. Run `cf config update-gitops-settings --shared-config-repo <shared_repo_url>`
   where:
   `<shared_repo_url>` is the new URL for the Shared Configuration Repository.
+1. When prompted, select the Git provider.
+1. Confirm to create the Shared Configuration Repo. 
 
 ## (Hybrid GitOps) Configure Deep Links to applications & resources
 
