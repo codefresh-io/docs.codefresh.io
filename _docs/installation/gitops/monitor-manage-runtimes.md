@@ -521,10 +521,25 @@ Uninstalling a GitOps Runtime permanently removes:
 
 
 
+## (Helm GitOps) Download logs for GitOps Runtimes
 
+Download the logs for a completed GitOps Runtime installation.<br>
+The Runtime log is downloaded as a `.tar.gz` file, which contains the individual log files for each runtime component.
 
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon, expand Runtimes in the sidebar, and select [**GitOps Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
+1. If needed, switch to **List View**, and then select the runtime for which to download logs.
+1. From the context menu, select **Download All Logs**.
+  The log file is downloaded to the Downloads folder or the folder designated for downloads, with the filename, `<runtime-name>.tar.gz`. For example, `codefreshv2-production2.tar.gz`.
 
-
+  {% include
+	image.html
+	lightbox="true"
+	file="/images/runtime/helm-download-all-logs.png"
+	url="/images/runtime/helm-download-all-logs.png"
+	alt="Download all logs for installed GitOps Runtime"
+	caption="Download all logs for installed GitOps Runtime"
+    max-width="60%"
+%}
 
 ## (Legacy CLI Hybrid GitOps) View/download logs for GitOps Runtimes
 Logs are available for completed Runtimes, both for the runtime and for individual runtime components. Download log files for offline viewing and analysis, or view online logs for a Runtime component, and download if needed for offline analysis. Online logs support free-text search, search-result navigation, and line-wrap for enhanced readability.
