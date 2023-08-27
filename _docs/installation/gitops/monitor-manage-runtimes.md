@@ -256,7 +256,7 @@ The methods for updating any Git token are the same regardless of the reason for
 1. Click **Update Credentials**.
 
 ### Update Git Runtime token through CLI
-If you are using Git user tokens for authentication, you can also update them through the Codefresh CLI.
+If you are using Git Runtime tokens for authentication, you can also update them through the Codefresh CLI.
 
 * Run:
   `cf config update-gitops-settings --shared-config-repo <repo_url> [--git-provider <git-provider>] [--git-api-url <git-api-url>]`
