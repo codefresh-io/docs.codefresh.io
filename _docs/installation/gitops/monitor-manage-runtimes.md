@@ -184,31 +184,31 @@ dependencies:
 
 ## Update Git credentials for GitOps Runtimes
 
-Provisioned GitOps Runtimes require valid Git tokens at all times to authenticate Git actions by you as a user.
-These Git tokens are personal access tokens, specific to each user. As such, you can use the same Git user token for multiple Runtimes.
+Provisioned GitOps Runtimes require valid Git Runtime tokens at all times to authenticate and authorize the Runtime.
+The Git Runtime token differs from the Git user token which is a personal access token unique to each user. As such, you can use the same Git Runtime token for multiple Runtimes.
 
 >**TIP**:
 Git credentials are synced to the Shared Configuration Repository defined during installation. If you change your Git credentials, the Git account must match that of the Shared repo. For example, if the Shared repo is defined as `http://github.com/my-org/isc.git` and the Git provider is defined  as `bitbucket`, the update will fail.
 
 **When to update**
-If your Git token is valid, you can update it at any time by deleting the existing token and replacing it with a new token.
+If your Git Runtime token is valid, you can update it at any time by deleting the existing token and replacing it with a new token.
 
 Otherwise, you have to update Git tokens in the following situations:
-* **Complete Installation** status displayed in Sync column for Runtime
+* **Complete Installation** status displayed in Sync column for Runtime<br>
   You have installed the Runtime but need to update the Git credentials to complete the installation.
-* Invalid, revoked, or expired tokens
+* Invalid, revoked, or expired tokens<br>
   Codefresh automatically flags Runtimes with such tokens. It is mandatory to update the Git tokens to continue working with the platform.
 
-**Update methods**
+**Update methods**<br>
 The methods for updating any Git token are the same regardless of the reason for the update:
 * OAuth2 authorization, if your admin has registered an OAuth Application for Codefresh.
-* Git access token authentication, by generating a Git user token in your Git provider account with the correct scopes.
-  You can update your Git user token in the UI or through the CLI.
+* Git access token authentication, by generating a Git Runtime token in your Git provider account with the correct scopes.
+  You can update your Git Runtime token in the UI or through the CLI.
 
-### Update Git credentials in Codefresh UI
+### Update Git Runtime credentials in Codefresh UI
 
 **Before you begin**
-* To authenticate through a Git user token, make sure your token is valid and has [the required scopes]({{site.baseurl}}/docs/reference/git-tokens/#git-user-access-token-scopes)
+* To authenticate through a Git Runtime token, make sure your token is valid and has [the required scopes]({{site.baseurl}}//docs/reference/git-tokens/#git-runtime-token-scopes)
 
 **How to**
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
@@ -255,7 +255,7 @@ The methods for updating any Git token are the same regardless of the reason for
 1. For Git token authentication, paste the generated token in the **Git runtime token** field.
 1. Click **Update Credentials**.
 
-### Update Git user token through CLI
+### Update Git Runtime token through CLI
 If you are using Git user tokens for authentication, you can also update them through the Codefresh CLI.
 
 * Run:
@@ -327,12 +327,12 @@ Codefresh creates and validates the [Shared Configuration Repository]({{site.bas
 
 Once created, you can reset the Shared Configuration Repo defined for your account under the following conditions:
 
-* **Incorrect/missing URL**
+* **Incorrect/missing URL**  
   Mandatory when Codefresh notifies you through the UI if the Shared Configuration Repo URL is either incorrect or missing.
 
-    * Incorrect URL
+    * Incorrect URL  
       The Shared Config Repo details provided during installation in Account Setup are incorrect. Codefresh could not connect to the Shared Repo with the details provided.
-    * Undefined URL
+    * Undefined URL<br>
       You installed the GitOps Runtime through a script or another automated mechanism without providing the URL to the Shared Configuration Repository.
 
 
@@ -346,7 +346,7 @@ Once created, you can reset the Shared Configuration Repo defined for your accou
   max-width="100%"
 %}
 
-* **No active Runtimes**
+* **No active Runtimes**  
   If Codefresh has already validated the existing Shared Configuration Repository, meaning that at least one GitOps Runtime successfully connected to it, you _cannot change_ the Shared Configuration Repo URL.
   To do so, you must contact Codefresh Support.
 
@@ -372,7 +372,7 @@ You can reset the Shared Configuration Repo via the CLI when:
 
 
 **Before you begin**
-* Make sure you have have no active Runtimes in your account
+* Make sure you have no active Runtimes in your account
 
 **How to**
 
