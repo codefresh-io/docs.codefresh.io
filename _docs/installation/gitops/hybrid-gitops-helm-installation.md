@@ -382,7 +382,9 @@ For more information on generating SSH private keys, see the official documentat
 * To use SSH, copy the SSH private key for your Git provider 
 
 **How to**
-1. In the Sync Status column for the Runtime you just installed, click **Complete Installation**.   
+1. In the Sync Status column for the Runtime you just installed, click **Complete Installation**. 
+
+
 1. Do one of the following: 
   * If your admin has set up OAuth access, click **Authorize Access to Git Provider**. Go to _step 3_.
   * Alternatively, authenticate with an access token from your Git provider. Go to _step 4_.
@@ -542,7 +544,10 @@ max-width="40%"
 
 
 ### Step 2: Complete GitOps Runtime installation
-Complete Runtime installation by completing the required steps: Git credentials to authorize access to and ensure proper functioning of the GitOps Runtime, Git credentials to authorize actions on your Git repositories, and configure the Runtime as an Argo Application.  
+Complete Runtime installation by completing the required steps:  
+* Git credentials to authorize access to and ensure proper functioning of the GitOps Runtime
+* Git credentials to authorize actions on your Git repositories
+* Configuring the Runtime as an Argo Application
 
 
 **Git Runtime token**
@@ -559,10 +564,21 @@ Configuring the Runtime an an Argo CD application to view the Runtime components
 **How to**  
 
 1. In the Codefresh UI, go to the [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes/info/list){:target="\_blank"} page.
-  * Mouse over the name of the Hybrid GitOps Runtime displays a tooltip indicating that you need to **Complete Installation**.
-  * The Sync Status column displays **Complete Installation**, indicating that there are pending steps to complete the installation.
-1. Click **Complete Installation**.
-  Codefresh displays the steps needed to complete the installation.
+  Codefresh displays the steps needed to complete the installation.  
+  You may see a message that the Runtime is missing a Git user token. You can ignore this message and continue to complete the installation.
+
+    {% include
+   image.html
+   lightbox="true"
+   file="/images/runtime/helm/helm-complete-install-widgets.png"
+   url="/images/runtime/helm/helm-complete-install-widgets.png"
+  alt="Steps to complete installing Hybrid GitOps Runtime"
+  caption="Steps to complete installing Hybrid GitOps Runtime"
+  max-width="60%"
+%}
+
+
+{:start="2"}
 1. Click **Git Runtime token** to configure Git credentials for the GitOps Runtime:
     1. For OAuth authorization:
       * Click **Authorize Access to Git Provider**.
@@ -580,8 +596,24 @@ Configuring the Runtime an an Argo CD application to view the Runtime components
       caption="Authorizing access with OAuth2"
       max-width="30%" 
    %}
-1. Click **Git user token** to add your personal access token to authorize actions to Git repositories:
+
+{:start="3"}
+1. Click **Git user token** to add your personal access token to authorize actions to Git repositories. 
 1. In **Configure as Argo Application**, click **Configure**. Codefresh takes care of the configuration for you.
+1. Once complete, drill down into the Runtime and click the **Runtime Components** tab.  
+  The tab is populated with the list of components including their Health status. 
+
+  {% include 
+      image.html 
+      lightbox="true" 
+      file="/images/runtime/helm/helm-runtime-components.png" 
+      url="/images/runtime/helm/helm-runtime-components.png" 
+      alt="Runtime Components after configuring GitOps Runtime as Argo Application" 
+      caption="Runtime Components after configuring GitOps Runtime as Argo Application"
+      max-width="30%" 
+   %}
+
+{:start="6"}
 1. For GitOps with Argo CD, after confirming successful installation, remove the duplicate Argo Rollouts controller `deployment` to avoid having two controllers in the cluster.   
   
   >**IMPORTANT**:  
