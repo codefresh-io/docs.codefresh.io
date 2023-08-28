@@ -20,7 +20,7 @@ The glob expression that is set up for a trigger is not working correctly.
 **Cause** | **Solution**  
 ---|---  
 You are using a single expression, but are encasing them in curly brackets `{folderName/**}` | Do not encase them in in curly brackets. Instead use `folderName/**`<br><br>Curly brackets are only used for multiple expressions.  
-Incorrect syntax for negation expressions | Proper syntax: `!folderName/**` for a single path, `!{folderName/**,folder2Name/**}` for multiple expressions  
+Incorrect syntax for negation expressions | Proper syntax: `!folderName/**` for a single path, `!{folderName/**,folder2Name/**}` for multiple expressions. To match all files in a directory except for a specific pattern, use syntax `folderName/!(fileToIgnore)**`.  
 Changed files are in hidden directories | Glob expressions will not match for hidden directories unless the directory pattern explicitly starts with `.`.<br><br>For example, to match for all files in all hidden subdirectories immediately under `folderName`, use `folderName/.*/**`.<br><br>Note that you will need an additional expression if you want to also match normal subdirectories under `folderName`.  
 List of actual changed files is different than expected | Review the full webhook event payload either in [Codefresh trigger audit logs](https://g.codefresh.io/account-admin/audit/audit-triggers), or in your git provider's webhook event history. The payload will contain the full list of modified files for the specific event, exactly as given by your git provider.  
 Incorrect glob expression | You can [check your glob expressions with a tool](https://www.digitalocean.com/community/tools/glob) to ensure the syntax matches the correct files.  

@@ -1,6 +1,6 @@
 ---
-title: "Configuring access control"
-description: "Restrict resources in a company environment"
+title: "Configuring access control for pipelines"
+description: "Restrict resources to pipelines in a company environment"
 group: administration
 sub_group: account-user-management
 redirect_from:
@@ -458,5 +458,7 @@ By default, if configured for the account, users can also load pipeline definiti
   
 
 ## Related articles
+[Codefresh Provider for Terraform](https://registry.terraform.io/providers/codefresh-io/codefresh/latest/docs){:target="\_blank"}   
 [Codefresh installation options]({{site.baseurl}}/docs/installation/installation-options/)  
 [Managing your Kubernetes cluster]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/)  
+
