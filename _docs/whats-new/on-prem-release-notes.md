@@ -12,6 +12,7 @@ Welcome to the release notes for our on-premises release versions, starting with
 
 #### Upgrading to v2.1
 
+
 #### Gerrit as Git provider for Pipelines and GitOps
 We are excited to announce the integration of Gerrit, the open-source web-based code review tool for Git repositories, with Codefresh. 
 
@@ -55,18 +56,11 @@ max-width="50%"
 
 For details, see [Configure OIDC SSO settings for Okta in Codefresh]({{site.baseurl}}/docs/administration/single-sign-on/oidc/oidc-okta/#how-to). 
 
-#### Account ID in URL 
 
-Our latest usability enhancement is tiny in terms of but big in terms of value. URLs in the Codefresh platform include your account ID, making it  easy for you to share it with others in your organization, and practical for recipients. 
-
-Recipients can choose between switching to your account or staying in their current account.
-
-
-Try it out! 
 
 #### OpenShift ???
 
-#### Pipelines: Endpoint access control
+#### Pipelines: Access control for endpoints 
 With this feature, Codefresh admins gain enhanced control over the security of their pipelines by being able to restrict access to specific endpoint scopes.
 Scopes are defined at the account level, ensuring a consistent security baseline for all pipelines. These predefined scopes are inherited by every pipeline, which Codefresh admins can override for individual pipelines when necessary.
 
@@ -82,14 +76,14 @@ max-width="60%"
 
 For details, see [Configure scopes for pipelines]({{site.baseurl}}/docs/pipelines/configuration/pipeline-settings/#configure-pipeline-scopes).
 
-#### ???Pipelines: Enhanced version of Cron triggers 
+#### Pipelines: Enhanced version of Cron triggers
 
-In this release, we have extended the capabilities of Cron triggers within Codefresh pipelines. 
+We have extended the capabilities of Cron triggers within Codefresh pipelines, available as a Beta version. The additional functionality we have a more powerful implementation.
+Cron triggers can simulate Git events to enrich pipelines with repository details, include environment variables, and custom settings for caching, volume reuse, and notifications. These settings are also supported in the pipeline specifications.
 
 
-By integrating additional functionality into the Cron trigger, we have a more powerful implementation.
-Cron triggers can simulate Git events to enrich pipelines with repository details, include environment variables, and custom settings for caching, volume reuse, and notifications.  
-These additional settings are completely optional, so you can continue to use just the timer component of the Cron trigger.
+
+These additional settings are optional, so you can continue to use just the timer component of the Cron trigger.
 
 
 Legacy versions of Cron triggers are flagged in the Codefresh UI and include an option to migrate them to the new version.
@@ -140,12 +134,14 @@ Here are the icons and the build statuses they represent:
 
 For details, see [Viewing status for pipeline builds]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#viewing-status-for-pipeline-builds).
 
-#### ??? ABAC for GitOps
-In this release, we bring the power of ABAC for access control to GitOps for the first time as a Beta version.   You can define fine-grained access to GitOps application entities. Similar to ABAC for pipelines, access is controlled through the use of rules, defined using teams, actions, and attributes.
+#### Pipelines: New environment variables
+
+#### GitOps: ABAC for GitOps applications
+In this release, we bring the power of ABAC for access control to GitOps for the first time as a Beta version. You can define fine-grained access to GitOps application entities. Similar to ABAC for pipelines, access is controlled through the use of rules, created by defining teams, actions, and attributes.
 
 For details, see ????
 
-
+#### GitOps: Application Groups in GitOps Apps dashboard
 
 
 
@@ -192,6 +188,20 @@ For details, see ????
 
 
 ### Feature Flags
+
+The table below describes the new Feature Flags in the Codefresh On-Premises release v 2.1.
+
+{: .table .table-bordered .table-hover}
+| Feature Flag       | Description                                               | Default Value |
+| -----------        | --------------------------------------------------------- | ------------------------- |
+| `accountInfoCopyButton`  | When enabled (the default), the account ID is added to the URL. When sharing the URL with the account information, recipients can switch accounts instead of getting broken links                                                     | TRUE         |
+| `pipelineScopes`      | When enabled, enables Codefresh administrators to configure the API scopes for the account. All pipelines in the account inherit these scopes. Codefresh administrators can also override these scopes for individual pipelines.<br>See ??? in this article.                                | FALSE         |
+| `disableInviteWelcomeMail`     | When enabled, does not send the Welcome email to users invited to an account.                                          | FALSE         |
+| `abacHermesTriggers`       | ???| FALSE         |
+| `cronTriggersInPipelineSpec`         | When enabled, allows users to define Cron triggers in the pipeline YAMLs as a `spec.cronTriggers` array, instead of using a separate API.<br>See ??? in this article  | FALSE         |
+| `accessibilityContrast` | When enabled, ????    | FALSE         |
+| `gitopsAppGroups`       | When enabled, allows users to group GitOps applications by annotations, and view these applications in the Groups tab of the GitOps Apps dashboard. <br>See ??? in this article | FALSE   |
+
 
 
 ## On-premises version 2.0.3 
