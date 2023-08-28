@@ -741,30 +741,82 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
+  project: default
+  source:
+    path: guestbooks/apps
+    repoURL: https://github.com/codefresh-codefresh/argocd-example-apps
+    targetRevision: personal-eks
   destination:
     namespace: my-app
     server: https://kubernetes.default.svc
-  source:
-    repoURL: https://github.com/companyhall/sample-apps.git
-    targetRevision: main  
-  project: default  # Replace 'default' with the name of the Argo CD project you want to use
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: false
+      allowEmpty: false
+    syncOptions:
+      - PrunePropagationPolicy=foreground
+      - Replace=false
+      - PruneLast=false
+      - Validate=true
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=false
+      - ServerSideApply=false
+      - RespectIgnoreDifferences=false
 ```
+
+
 
 
 ### Step 3: Commit the application to the Git Source
 As the final step in migrating your Argo CD Application to a Codefresh GitOps one, manually commit the updated Application manifest to the Git Source you created in Step 1.
-Once you commit the manifest to the Git Source, it becomes a GitOps application. You can view it in the Codefresh UI, modify definitions, track it through our different dashboards, and in short, manage it as you  would any GitOps resource in Codefresh. 
+Once you commit the manifest to the Git Source, it is converted into a GitOps application. You can view it in the Codefresh UI, modify definitions, track it through our different dashboards, and in short, manage it as you  would any GitOps resource in Codefresh. 
 
 1. Go to the Git repo where you created the Git Source.
-1. Add and commit the Argo CD Application manifest.
+1. Add and commit the Argo CD Application manifest to the Git Source.
+   Here's an example of the `my-sample-app` above committed to a Git Source without `metadata.namespace: argocd` and `metadata.finalizers`.
 
-<!--- Here is an example:  -->
+  {% include 
+      image.html 
+      lightbox="true" 
+      file="/images/runtime/helm/migrate-app-sample-in-git-source.png" 
+      url="/images/runtime/helm/migrate-app-sample-in-git-source.png" 
+      alt="Argo CD Application committed to GitOps Git Source" 
+      caption="Argo CD Application committed to GitOps Git Source"
+      max-width="50%" 
+   %}
+
+{:start="3"}
+1. In the Codefresh UI, from the sidebar, below Ops, select [**GitOps Apps**](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
+  The Applications Dashboard displays the new Git Source application.
+  
+  {% include 
+      image.html 
+      lightbox="true" 
+      file="/images/runtime/helm/migrate-app-apps-dashboard.png" 
+      url="/images/runtime/helm/migrate-app-apps-dashboard.png" 
+      alt="GitOps Apps dashboard with Git Source and migrated Application" 
+      caption="GitOps Apps dashboard with Git Source and migrated Application"
+      max-width="50%" 
+   %}
+
+{:start="4"}
+1. Click the application to drill down to the different tabs. The Configuration tab displays the application's settings which you can modify and update.
+  Here's an example of the Current State tab for `my-sample-app`.
+
+  {% include 
+      image.html 
+      lightbox="true" 
+      file="/images/runtime/helm/migrate-app-current-state.png" 
+      url="/images/runtime/helm/migrate-app-current-state.png" 
+      alt="Current State tab for migrated " 
+      caption="GitOps Apps dashboard with Git Source and GitOps Application"
+      max-width="50%" 
+   %}
 
 
 
-
-
-
+You can [monitor]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard) and [manage]({{site.baseurl}}/docs/deployments/gitops/manage-application) the application you migrated as any other GitOps application in Codefresh.
 
 
 ## Minimum system requirements
