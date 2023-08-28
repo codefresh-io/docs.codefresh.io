@@ -1,4 +1,3 @@
-
 - title: Introduction
   url: "/getting-started"
   pages:
@@ -8,48 +7,44 @@
       url: "/ci-codefresh"
     - title: Codefresh for CD
       url: "/cd-codefresh"
-    - title: Codefresh for GitOps 
+    - title: Codefresh for GitOps
       url: "/gitops-codefresh"
     - title: Concepts in Codefresh
       url: "/concepts"
     - title: Global Search & Navigation
-      url: "/command-bar"  
-   
+      url: "/command-bar"
 
 - title: Quick starts
   url: "/quick-start"
   pages:
     - title: Create Codefresh account
-      url: "/create-codefresh-account"  
+      url: "/create-codefresh-account"
     - title: CI/CD quick starts
       url: "/ci-quick-start"
       sub-pages:
-      - title: Pipeline quick start
-        url: "/create-ci-pipeline"
-      - title: Kubernetes deployment quick start  
-        url: "/deploy-to-kubernetes"
-      - title: Helm quick start  
-        url: "/deploy-with-helm"
-      - title: On-demand environment quick start  
-        url: "/on-demand-environments"
+        - title: Pipeline quick start
+          url: "/create-ci-pipeline"
+        - title: Kubernetes deployment quick start
+          url: "/deploy-to-kubernetes"
+        - title: Helm quick start
+          url: "/deploy-with-helm"
+        - title: On-demand environment quick start
+          url: "/on-demand-environments"
     - title: GitOps quick starts
       url: "/gitops-quick-start"
       sub-pages:
         - title: Provision a Hosted GitOps Runtime
-          url:  "/install-hosted"
+          url: "/install-hosted"
         - title: Prepare for Hybrid GitOps Runtime installation
-          url:  "/verify-requirements"
+          url: "/verify-requirements"
         - title: Install a Hybrid GitOps Runtime
           url: "/runtime"
         - title: Create an application
-          url: "/create-app-ui"     
+          url: "/create-app-ui"
         - title: Create and commit resources for application
           url: "/create-app-specs"
         - title: Update the image tag for application
           url: "/create-rollout"
-
-
-
 
 - title: Dashboards & insights
   url: "/dashboards"
@@ -58,44 +53,39 @@
       url: "/home-dashboard"
     - title: DORA metrics
       url: "/dora-metrics"
-    - title: Images 
+    - title: Images
       url: "/images"
-    
-    
 
 - title: CI/CD guides
   url: "/ci-cd-guides"
   pages:
     - title: Building your app
-      url: "/packaging-compilation"  
+      url: "/packaging-compilation"
     - title: Building Docker images
       url: "/building-docker-images"
     - title: Accessing Docker registries from Kubernetes cluster
-      url: "/access-docker-registry-from-kubernetes"  
+      url: "/access-docker-registry-from-kubernetes"
     - title: Working with Docker registries
-      url: "/working-with-docker-registries"   
+      url: "/working-with-docker-registries"
     - title: Adding config maps to namespaces
-      url: "/add-config-maps-to-your-namespaces"     
+      url: "/add-config-maps-to-your-namespaces"
     - title: Pull Requests and branches
       url: "/pull-request-branches"
     - title: Building microservices
       url: "/microservices"
     - title: Deploying to predefined environments
-      url: "/environment-deployments"   
+      url: "/environment-deployments"
     - title: Previewing dynamic environments
-      url: "/preview-environments"                 
+      url: "/preview-environments"
     - title: Helm best practices
-      url: "/helm-best-practices" 
+      url: "/helm-best-practices"
     - title: Kubernetes templating
-      url: "/kubernetes-templating" 
+      url: "/kubernetes-templating"
     - title: GitOps deployments
-      url: "/gitops-deployments"       
+      url: "/gitops-deployments"
     - title: Image enrichment
-      url: "/image-enrichment" 
+      url: "/image-enrichment"
 
-
- 
-    
 - title: Example catalog
   url: "/example-catalog"
   pages:
@@ -121,7 +111,7 @@
         - title: Build an Image with build arguments
           url: "/build-an-image-with-build-arguments"
         - title: Create a Docker image for PHP
-          url: "/php"        
+          url: "/php"
         - title: Share data between steps
           url: "/shared-volumes-between-builds"
         - title: Upload/download from Google Storage buckets
@@ -155,11 +145,11 @@
         - title: Run integration tests with Redis
           url: "/integration-tests-with-redis"
         - title: Populate a database with existing data
-          url: "/populate-a-database-with-existing-data"  
+          url: "/populate-a-database-with-existing-data"
         - title: Scala Hello world
-          url: "/scala-hello-world"   
+          url: "/scala-hello-world"
         - title: Share volumes in composition steps
-          url: "/shared-volumes-of-service-from-composition-step-for-other-yml-steps"          
+          url: "/shared-volumes-of-service-from-composition-step-for-other-yml-steps"
         - title: Import data to MongoDB
           url: "/import-data-to-mongodb"
         - title: NodeJS + Angular2 + MongoDB
@@ -208,29 +198,29 @@
         - title: Deploy with Kustomize
           url: "/deploy-with-kustomize"
         - title: Deploy to Docker Swarm
-          url: "/docker-swarm"  
+          url: "/docker-swarm"
         - title: GitOps secrets
-          url: "/gitops-secrets" 
+          url: "/gitops-secrets"
         - title: Amazon ECS/Fargate
           url: "/amazon-ecs"
         - title: Elastic Beanstalk
-          url: "/elastic-beanstalk" 
+          url: "/elastic-beanstalk"
 
 - title: Pipeline integrations
   url: "/integrations"
-  pages: 
+  pages:
     - title: Hosted GitOps
-      url: "/codefresh-hosted-gitops" 
+      url: "/codefresh-hosted-gitops"
     - title: Git Providers
       url: "/git-providers"
     - title: Kubernetes
       url: "/kubernetes"
     - title: Amazon Web Services
-      url: "/amazon-web-services" 
+      url: "/amazon-web-services"
     - title: Microsoft Azure
-      url: "/microsoft-azure"            
+      url: "/microsoft-azure"
     - title: Google Cloud
-      url: "/google-cloud"   
+      url: "/google-cloud"
     - title: Docker registries
       url: "/docker-registries"
       sub-pages:
@@ -253,41 +243,42 @@
         - title: DigitalOcean Container Registry
           url: "/digital-ocean-container-registry"
         - title: Other Registries
-          url: "/other-registries"  
+          url: "/other-registries"
     - title: Cloud Storage
-      url: "/cloud-storage"    
+      url: "/cloud-storage"
     - title: Secret Storage
       url: "/secret-storage"
     - title: Hashicorp Vault
-      url: "/hashicorp-vault"              
+      url: "/hashicorp-vault"
     - title: Helm Integration
-      url: "/helm" 
+      url: "/helm"
     - title: ArgoCD Integration
-      url: "/argocd" 
+      url: "/argocd"
     - title: Datadog Integration
-      url: "/datadog"         
+      url: "/datadog"
     - title: Jira Integration
-      url: "/jira"       
+      url: "/jira"
     - title: Jenkins Integration
       url: "/jenkins-integration"
     - title: Codecov Integration
-      url: "/codecov-integration"                
+      url: "/codecov-integration"
     - title: Google Cloud builder
       url: "/gcloud-builder"
     - title: Google Marketplace Installation
       url: "/google-marketplace"
     - title: GitHub Actions
-      url: "/github-actions"  
+      url: "/github-actions"
     - title: Notifications
       url: "/notifications"
       sub-pages:
+        - title: Email
+          url: "/email-integration"
         - title: Slack
           url: "/slack-integration"
         - title: Jira
-          url: "/jira-integration"          
+          url: "/jira-integration"
     - title: Codefresh API
       url: "/codefresh-api"
-
 
 - title: GitOps integrations
   url: "/gitops-integrations"
@@ -302,23 +293,23 @@
         - title: GitHub Actions
           url: "/github-actions"
         - title: Jenkins
-          url: "/jenkins"   
+          url: "/jenkins"
     - title: GitOps issue tracking integrations
       url: "/issue-tracking"
-      sub-pages:  
-        - title: Jira 
+      sub-pages:
+        - title: Jira
           url: "/jira"
     - title: GitOps container registry integrations
       url: "/container-registries"
-      sub-pages:  
+      sub-pages:
         - title: Amazon ECR
-          url: "/amazon-ecr"      
+          url: "/amazon-ecr"
         - title: Docker Hub Registry
           url: "/dockerhub"
         - title: GitHub Container Registry
           url: "/github-cr"
         - title: JFrog Artifactory
-          url: "/jfrog" 
+          url: "/jfrog"
         - title: Quay Registry
           url: "/quay"
     - title: Gerrit Git provider integration
@@ -329,7 +320,7 @@
   pages:
     - title: Kubernetes
       url: "/kubernetes"
-      sub-pages:  
+      sub-pages:
         - title: Manual Deployments
           url: "/manual-deployment"
         - title: Automated Deployments
@@ -358,7 +349,7 @@
     - title: GitOps
       url: "/gitops"
       sub-pages:
-        - title: Creating GitOps applications 
+        - title: Creating GitOps applications
           url: "/create-application"
         - title: Monitoring GitOps applications
           url: "/applications-dashboard"
@@ -367,9 +358,7 @@
         - title: Progressive delivery with GitOps
           url: "/install-argo-rollouts"
         - title: Troubleshooting GitOps applications
-          url: "/troubleshooting-gitops-apps"          
-
-
+          url: "/troubleshooting-gitops-apps"
 
 - title: Pipelines
   url: "/pipelines"
@@ -382,13 +371,13 @@
       url: "/configuration"
       sub-pages:
         - title: Global pipeline settings
-          url: "/pipeline-settings"          
+          url: "/pipeline-settings"
         - title: Shared configuration
           url: "/shared-configuration"
         - title: Secrets for pipelines
-          url: "/secrets-store"  
+          url: "/secrets-store"
         - title: Public logs and status badges
-          url: "/build-status"  
+          url: "/build-status"
     - title: Steps in pipelines
       url: "/steps"
       sub-pages:
@@ -426,19 +415,19 @@
         - title: Timer (Cron) triggers
           url: "/cron-triggers"
     - title: Variables in pipelines
-      url: "/variables" 
+      url: "/variables"
     - title: Hooks in pipelines
       url: "/hooks"
     - title: Annotations in pipelines
-      url: "/annotations" 
+      url: "/annotations"
     - title: Conditional execution of steps
       url: "/conditional-execution-of-steps"
     - title: Post-step operations
-      url: "/post-step-operations" 
+      url: "/post-step-operations"
     - title: Grouping steps into stages
       url: "/stages"
     - title: Caching in pipelines
-      url: "/pipeline-caching"    
+      url: "/pipeline-caching"
     - title: Debugging pipelines
       url: "/debugging-pipelines"
     - title: Monitoring pipelines
@@ -452,10 +441,9 @@
     - title: Service containers
       url: "/service-containers"
     - title: Docker image metadata
-      url: "/docker-image-metadata"  
+      url: "/docker-image-metadata"
     - title: Pipeline definitions YAML
-      url: "/what-is-the-codefresh-yaml"    
-
+      url: "/what-is-the-codefresh-yaml"
 
 - title: Argo Workflows
   url: "/workflows"
@@ -489,8 +477,6 @@
     - title: SonarQube scanning
       url: "/sonarqube-integration"
 
-
-
 - title: Installation
   url: "/installation"
   pages:
@@ -503,31 +489,31 @@
     - title: Runner
       url: "/codefresh-runner"
     - title: On-premises
-      url: 
-      sub-pages:    
+      url:
+      sub-pages:
         - title: Platform installation & configuration
           url: "/codefresh-on-prem"
         - title: Platform upgrade
           url: "/codefresh-on-prem-upgrade"
         - title: Feature management
-          url: "/on-prem-feature-management"  
+          url: "/on-prem-feature-management"
     - title: GitOps
-      url: 
+      url:
       sub-pages:
         - title: Hosted GitOps Runtime
-          url: "/hosted-runtime" 
+          url: "/hosted-runtime"
         - title: Hybrid GitOps Runtime
           url: "/hybrid-gitops-helm-installation" 
         - title: Hybrid GitOps Runtime with existing Argo CD
           url: "/argo-with-gitops-side-by-side"         
         - title: On-premises GitOps Runtime
-          url: "/on-prem-gitops-runtime-install"  
+          url: "/on-prem-gitops-runtime-install"
         - title: Managing & monitoring GitOps Runtimes
           url: "/monitor-manage-runtimes"
         - title: Shared Configuration Repository
           url: "/shared-configuration"
         - title: Add external clusters to GitOps Runtimes
-          url: "/managed-cluster" 
+          url: "/managed-cluster"
         - title: Add Git Sources to GitOps Runtimes
           url: "/git-sources"
         - title: Download/upgrade GitOps CLI
@@ -537,9 +523,9 @@
 
 - title: Administration
   url: "/administration"
-  pages:    
+  pages:
     - title: Account & user management
-      sub-pages:  
+      sub-pages:
         - title: Create a Codefresh account
           url: "/create-codefresh-account"
         - title: Adding users and teams
@@ -551,12 +537,12 @@
         - title: Setting up OAuth2 for GitOps
           url: "/oauth-setup"
         - title: Authorize access to organizations/projects
-          url: "/hosted-authorize-orgs" 
+          url: "/hosted-authorize-orgs"
         - title: Pipeline execution context
-          url: "/pipeline-execution-context" 
+          url: "/pipeline-execution-context"
         - title: Auditing actions in Codefresh
           url: "/audit"
-    - title: Single Sign-On 
+    - title: Single Sign-On
       sub-pages:
         - title: Common configuration
           url: "/team-sync"
@@ -589,13 +575,13 @@
         - title: LDAP
           url: "/ldap"
     - title: Codefresh IP addresses
-      url: "/platform-ip-addresses" 
+      url: "/platform-ip-addresses"
     - title: User self-management
-      sub-pages:  
+      sub-pages:
         - title: Managing personal settings
           url: "/user-settings"
         - title: Managing Git PATs
-          url: "/manage-pats"    
+          url: "/manage-pats"
 
 - title: Reference
   url: "/reference"
@@ -603,7 +589,7 @@
     - title: Git tokens
       url: "/git-tokens"
     - title: Secrets
-      url: "/secrets"   
+      url: "/secrets"
 
 - title: What's new
   url: "/whats-new"
@@ -617,12 +603,11 @@
   url: "/new-codefresh"
   pages:
     - title: The Codefresh New Experience
-      url: "/enable-new-experience" 
+      url: "/enable-new-experience"
     - title: Navigation quick reference
       url: "/menu-navigation"
     - title: Documentation changes
-      url: "/doc-changes"       
-
+      url: "/doc-changes"
 
 - title: Incubation
   url: "/incubation"
@@ -633,7 +618,7 @@
       url: "/osx-ios-builds"
     - title: ARM architecture support
       url: "/arm-support"
-  
+
 - title: Knowledge Base
   url: "/kb"
   pages:
@@ -643,6 +628,8 @@
       url: "/how-to"
     - title: Troubleshooting
       url: "/troubleshooting"
+    - title: Support Ticket Examples
+      url: "/support-ticket-examples"
 
 - title: Terms and Privacy Policy
   url: "/terms-and-privacy-policy"
@@ -655,5 +642,3 @@
       url: "/sla"
     - title: Codefresh SLA Definitions
       url: "/codefresh-sla-definitions"
-
-
