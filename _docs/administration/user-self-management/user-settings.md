@@ -25,14 +25,17 @@ As a Codefresh user, you can manage several settings and resources through your 
 
 Configure the email notifications you want to receive for builds based on the build status: only successful, only failed, or for both successful and failed builds.  
 
-> By default, email notifications for builds are disabled for _all users_.  
-  When you enable notifications, remember that you will receive notifications only for the builds that you have permissions to access. If you don’t have access to a pipeline, you will not have access also to its builds.
+>**NOTES**:  
+By default, email notifications for builds are disabled for _all users_.<br><br> 
+When you enable notifications, remember that you will receive notifications only for those builds:<br>
+>- That you have permissions to access. If you don’t have access to a pipeline, you will not have access also to its builds.
+>- Launched automatically by Git/Cron triggers. To enable email notifications also for builds launched manually, select the **Report notification on pipeline execution** option in the Git/Cron Settings for the specific pipeline. See [Git](({{site.baseurl}}/docs/pipelines/triggers/git-triggers/) and [Cron]({{site.baseurl}}/docs/pipelines/triggers/cron-triggers/) triggers.
 
+<br><br>
 
 * In **Notifications**, define the email address and select the notifications:    
   * Email address for the notifications. By default, it's the same address you used to [sign up]({{site.baseurl}}/docs/administration/account-user-management/create-codefresh-account/).
 * Select the build statuses for which to receive notifications.
-
 
 
 {% include image.html
@@ -110,7 +113,8 @@ max-width="80%"
 
 
 ## Related articles
-[Managing Git PATs]({{site.baseurl}}/docs/administration/user-self-management/manage-pats/)  
+[Managing Git PATs]({{site.baseurl}}/docs/administration/user-self-management/manage-pats/) 
+
 
 
 
