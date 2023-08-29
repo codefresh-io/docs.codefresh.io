@@ -6,6 +6,9 @@ sub_group: gitops
 toc: true
 ---
 
+>**NOTE**: This feature is currently in Beta.
+
+
 The Group view for GitOps applications is a simple and efficient way to focus on deployments of the specific apps you're interested in, amidst the potentially numerous apps within your enterprise.  
 A Codefresh feature, the Group view consolidates deployment information for all applications within the group, eliminating the need to navigate to and switch between the different applications for information on them. 
 It gives the flexibility to tailor groupings according to the unique requirements of your organization and applications. The Group name is added as an annotation to the app manifest and works like any other tag in the application.
