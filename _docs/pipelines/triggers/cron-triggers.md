@@ -10,18 +10,16 @@ redirect_from:
 toc: true
 ---
 
+
+
 Cron triggers offer a way to run Codefresh pipelines based on a specific time schedule. Cron triggers are particularly useful for tasks like regular maintenance, periodic checks, or any repetitive workflows.  
 
 Integrate additional settings in the Cron trigger such as simulating a Git event to enrich pipelines with repository details, adding/customizing environment variables, and caching, volume reuse, and notification configurations for the build.
 
 By integrating these additional options, Cron triggers can initiate pipeline executions at the predefined time intervals and at the same time populate the pipeline with repo and branch information from the Git trigger, required environment variables, and specialized behavior, for the build. 
 
-
 Create and manage Cron triggers for pipelines through [Codefresh UI](#cron-triggers-in-codefresh-ui), as described in this article.  
 For the specifications, see [Cron trigger specifications in pipelines]({{site.baseurl}}/docs/integrations/codefresh-api/#cron-triggers).
-
-
-
 
 >**NOTE**:  
 Cron triggers are created in the UTC timezone.
@@ -76,6 +74,7 @@ There are two parts to creating a Cron trigger in the UI:
   * Variables to populate for the build
   * Caching, volume resuse and notification behavior to override for the build  
 
+  >**NOTE**: Settings for Cron triggers is currently in Beta.
 
 
 ## How to: Create a Cron trigger in UI
@@ -199,6 +198,7 @@ The following variables are available to any Codefresh pipeline linked to a Cron
 
 ## Related articles
 [Triggers in pipelines]({{site.baseurl}}/docs/pipelines/triggers)  
+[Cron trigger specifications]({{site.baseurl}}/docs/integrations/codefresh-api/#cron-triggers)  
 [Variables in pipelines]({{site.baseurl}}/docs/pipelines/variables)  
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
 
