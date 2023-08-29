@@ -81,8 +81,8 @@ There are two parts to creating a Cron trigger in the UI:
 **Before you begin**  
 
 Review:  
-* [Git trigger settings](#git-trigger-settings) 
-* [Working with Git triggers](#working-with-git-triggers)
+* [Git trigger settings]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/#git-trigger-settings) 
+* [Working with Git triggers]{{site.baseurl}}/docs/pipelines/triggers/git-triggers/#working-with-git-triggers)
 
 **How to**  
 
