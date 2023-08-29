@@ -24,6 +24,8 @@ The actions you can perform depend on the permissions assigned to you.
 * [Refresh applications](#refreshhard-refresh-gitops-applications)  
   Manually refresh applications with a single-click, as an alternative to manually synchronizing them.
 
+* [Rollback applications](#rollback-gitops-applications)   
+  Rollback applications to previous deployment versions.
 
 * [Rollback applications](#rollback-gitops-applications)   
   Rollback applications to previous deployment versions.
@@ -35,6 +37,7 @@ The actions you can perform depend on the permissions assigned to you.
   Delete unused or legacy applications to avoid clutter and remove unnecessary resources.
 
   To delete specific resources within an application, see [Delete application resources]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/#delete-application-resources).
+
 
 
 
@@ -102,6 +105,21 @@ Update General or Advanced configuration settings for a deployed application thr
 {::nomarkdown}
 <br><br>
 {:/}
+
+
+## Manage application groups
+
+Clicking on an application group in the Group tab navigates to the list of applications in the Group.
+You can see the collective timelines for all applications within the group, instead of the individual source, health, or target information for each application.
+
+Once you assign an application to a group, you can add it to or remove it from different Application Groups through the application's Configuration settings.
+
+
+1. In the Codefresh UI, from Ops in the sidebar, select [GitOps Apps](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
+1. Select the application and then click the **Configuration** tab.
+1. From **Groups**, do one of the following:
+  * To add the application to one or more groups, select the group or groups.
+  * To remove the application from a group, click the remove button for the group.
 
 
 
@@ -255,8 +273,8 @@ Terminating a sync operation reverts the deployment to the previously deployed v
 
 
 
-## Refresh/hard refresh GitOps applications
 
+## Refresh/hard refresh GitOps applications
 
 As an alternative to manually syncing an application, either refresh or hard refresh the application. Both options are always available in the application toolbar.
 
