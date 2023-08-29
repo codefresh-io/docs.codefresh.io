@@ -9,10 +9,13 @@ Welcome to the release notes for our on-premises release versions, starting with
 ## On-premises version 2.1
 
 ### Features & enhancements
+<br><br>
 
 #### Upgrading to v2.1
 This major release includes new services and changes to existing services.  
 Before running the upgrade, read the details [here](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#to-2-1-0){:target="\_blank"}.
+
+<br><br>
 
 #### Gerrit as Git provider for Pipelines and GitOps
 We are excited to announce the integration of Gerrit, the open-source web-based code review tool for Git repositories, with Codefresh. 
@@ -28,6 +31,8 @@ By configuring Gerrit as the primary Git provider for your Hosted GitOps Runtime
 If you are interested in using Gerrit for Hybrid GitOps Runtimes, please contact us.
 
 For details, see [GitOps Gerrit Git provider integration]({{site.baseurl}}/docs/gitops-integrations/gerrit-integration/).
+
+<br><br>
 
 #### Multi-account sync for Okta with OIDC
 
@@ -57,16 +62,18 @@ max-width="50%"
 
 For details, see [Configure OIDC SSO settings for Okta in Codefresh]({{site.baseurl}}/docs/administration/single-sign-on/oidc/oidc-okta/#how-to). 
 
-
+<br><br>
 
 #### Codefresh & OpenShift 
 
 For details, see Deploying [Codefresh with OpenShift](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#installing-on-openshift){:target="\_blank"}.
 
+<br><br>
 
 #### Pipelines: Access control for endpoints 
 With this feature, Codefresh admins gain enhanced control over the security of their pipelines by being able to restrict access to specific endpoint scopes.
-Scopes are defined at the account level, ensuring a consistent security baseline for all pipelines. These predefined scopes are inherited by every pipeline, which Codefresh admins can override for individual pipelines when necessary.
+Scopes are defined at the account level, ensuring a consistent security baseline for all pipelines. These predefined scopes are inherited by every pipeline, which Codefresh admins can override for individual pipelines when necessary.  
+To enable this, you need to turn on the `pipelineScopes` feature flag. 
 
  {% include 
 image.html 
@@ -80,13 +87,25 @@ max-width="60%"
 
 For details, see [Configure scopes for pipelines]({{site.baseurl}}/docs/pipelines/configuration/pipeline-settings/#configure-pipeline-scopes).
 
+<br><br>
+
 #### Pipelines: Enhanced version of Cron triggers
 
 We have extended the capabilities of Cron triggers within Codefresh pipelines for a more powerful implementation. The new functionality is available as a Beta version. 
 
 Cron triggers can now simulate Git events to enrich pipelines with repository details, include environment variables, and custom settings for caching, volume reuse, and notifications. The new settings are supported in the Codefresh UI and in the pipeline specifications.
+To enable this, you need to turn on the `cronTriggersInPipelineSpec` feature flag. 
 
 
+{% include 
+image.html 
+lightbox="true" 
+file="/images/whats-new/aug23/rel-notes-aug23-cron-settings-tab.png" 
+url="/images/whats-new/aug23/rel-notes-aug23-cron-settings-tab.png" 
+alt="Extended settings for Cron triggers" 
+caption="Extended settings for Cron triggers" 
+max-width="60%" 
+%}
 
 These additional settings are optional, so you can continue to use just the timer component of the Cron trigger.
 
@@ -94,6 +113,7 @@ Legacy versions of Cron triggers are flagged in the Codefresh UI and include an 
 
 For details, see [Cron (timer)triggers]({{site.baseurl}}/docs/pipelines/triggers/cron-triggers/) and [Cron trigger specifications]({{site.baseurl}}/docs/integrations/codefresh-api/#cron-triggers).
 
+<br><br>
 
 #### Pipelines: Pipeline Dashboard enhancements
 Review the latest enhancements in the Pipelines Dashboard.
@@ -122,6 +142,8 @@ followed by the name of the pipeline.
 
 For details, see [Pipelines Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/#pipelines-dashboard).
 
+<br><br>
+
 #### Pipelines: New icons for pipeline build statuses
 Pipeline builds have new status icons. With distinct icons for each status, you can easily differentiate between builds, bringing clarity and saving time. Previously, both terminated and failed builds had the same icon for example, causing confusion.
 
@@ -137,29 +159,62 @@ Here are the icons and the build statuses they represent:
 
 For details, see [Viewing status for pipeline builds]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#viewing-status-for-pipeline-builds).
 
-#### Pipelines: New environment variables
-This release supports two new environment variables for Codefresh pipelines.
-* **Configure limit for pipelines in project**: The `PROJECT_PIPELINES_LIMIT` variable allows to you set a limit for the number of pipelines in a project. Capping the number of pipelines in a project prevents projects from becoming unwieldy and cluttered, and makes it easier to view the pipelines belonging to a project. 
-  For details, see [Pipeline limit in projects](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#projects-pipelines-limit){:target="\_blank"}.
-* **Customize session cookie**: When disabling concurrent sessions through `DISABLE_CONCURRENT_SESSIONS` = `true`, the `CF_UUID_COOKIE_DOMAIN` environment variable allows you to tailor the domain for the session cookie. For example, `.mydomain.com`.  
-For details, see [Customize session cookie](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#enable-session-cookie){:target="\_blank"}.
+<br><br>
+
+#### Pipelines: Configure limit for project's pipelines
+The `PROJECT_PIPELINES_LIMIT` variable allows to you set a limit for the number of pipelines in a project.  
+Capping the number of pipelines in a project prevents projects from becoming unwieldy and cluttered, and makes it easier to view the pipelines belonging to a project. 
+  
+For details, see [Pipeline limit in projects](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#projects-pipelines-limit){:target="\_blank"}.
 
 
+<br><br>
 
 #### GitOps: ABAC for GitOps applications
-In this release, we bring the power of ABAC for access control to GitOps for the first time as a Beta version. You can define fine-grained access to GitOps application entities. Similar to ABAC for pipelines, access is controlled through the use of rules, created by defining teams, actions, and attributes.
+In this release, we bring the power of ABAC for access control to GitOps for the first time as a Beta version. You can define fine-grained access to GitOps application entities. Similar to ABAC for pipelines, access is controlled through the use of rules, created by defining teams, actions, and attributes.  
+To enable this, you need to turn on the `abacHermesTriggers` feature flag. 
 
+ {% include 
+image.html 
+lightbox="true" 
+file="/images/whats-new/aug23/rel-notes-aug23-gitops-add-rule.png" 
+url="/images/whats-new/aug23/rel-notes-aug23-gitops-add-rule.png" 
+alt="Access control for GitOps application entities" 
+caption="Access control for GitOps application entities" 
+max-width="60%" 
+%}
 
+For details, see [Access control for GitOps]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/).
 
-For details, see ????
+<br><br>
 
 #### GitOps: Application Groups in GitOps Apps dashboard
 
+Introducing a new view in the GitOps Apps dashboard, the Group view!  
+The Group view for GitOps applications is a simple and efficient way to streamline application deployment monitoring within your enterprise.    
+To enable this, you need to turn on the `gitopsAppGroups` feature flag. 
 
+ {% include 
+image.html 
+lightbox="true" 
+file="/images/whats-new/aug23/rel-notes-aug23-app-group-page.png" 
+url="/images/whats-new/aug23/rel-notes-aug23-app-group-page.png" 
+alt="Application Groups in GitOps Apps dashboard" 
+caption="Application Groups in GitOps Apps dashboard" 
+max-width="60%" 
+%}
 
+With App Groups, you can effortlessly focus on specific app deployments, as it consolidates deployment information for all applications within the group in the same view. This feature eliminates the need to navigate between the different applications for information on them.
+Tailor groupings according to the unique requirements of your organization and applications. 
 
+Codefresh also adds the Group name as an annotation to the application manifest for easy organization and management. 
 
+For details, see [Application Groups for GitOps applications]({{site.baseurl}}/docs/deployments/gitops/gitops-app-groups/).
 
+#### GitOps: Customize session cookie
+For GitOps app-proxy, when disabling concurrent sessions for cf-api through `DISABLE_CONCURRENT_SESSIONS` = `true`, the `CF_UUID_COOKIE_DOMAIN` environment variable allows you to tailor the domain for the session cookie. For example, `.mydomain.com`. 
+ 
+For details, see [Customize session cookie](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#enable-session-cookie){:target="\_blank"}.
 
 ### Bug fixes
 
@@ -175,25 +230,28 @@ For details, see ????
 **Pipelines**  
 * Pipeline builds terminate with error message: `Pipeline could not be executed because retry attempts limit has been exceeded...`.
 * Shallow clone for a specific revision with `depth` argument results in error: `pathspec 'test' did not match any file(s) known to git`.
-* Cross-account ECR pull in `freestyle` step fails with `(HTTP code 500) server error...`.
 * Pipeline resuming execution after approval shows previously executed steps as skipped in Codefresh UI.
+* Cross-account ECR pull in `freestyle` step fails with `(HTTP code 500) server error...`.
+* Unable to add Hybrid Runner and run builds in Version 2.0.1. 
+* Pipeline trigger for BitBucket server does not fire on commit.
 * Creating a Git trigger for a repo name containing spaces fails with error: `Failed to create trigger...fails to match the required pattern...`.
 * Discrepancy in list of builds returned when running `GET {{baseUrl/workflow?pipeline=[pipeline-id]}}` query.
 * Composition stops randomly with error: `Could not get status for container <container-name>`. 
+* Image enrichment with GitHub Actions fails with message: `EventSourceError: Request-URI Too Large`.
 * In Pipelines dashboard (Home Dashboard), for a renamed pipeline, the Pipeline filter displays the original name instead of the new name. 
 * In the Pipelines page, the context-menu for the last pipeline in the list does not display all available actions.
 * **Save** button remains disabled when modifying an External Resource in Pipeline > Settings. 
 * Unable to set `requiredAvailableStorage` programmatically for Hybrid Pipeline Runtimes.
-* Unable to add Hybrid Runner and run builds in Version 2.0.1. 
 * Commit message passed through the system variable `CF_COMMIT_MESSAGE` is truncated and does not include the full content.
 * Prefix for Docker registries omitted when using a custom Docker registry as a Public Marketplace Registry. 
 * Invited users prompted for phone number during sign-up.
-??BitBucket server pipeline trigger not firing on commit
+
 
  
 
 **GitOps** 
 * **Save** button remains disabled when modifying fields for an existing Git Source.
+* `UNAUTHORIZED_ERROR token is not valid` error for graphql API call. 
 * Unable to create Git Sources both from the Codefesh CLI and UI with Bitbucket Server.
 * Rollouts Reporter for managed cluster uses SaaS instead of on-premises URL.
 * Commits to a second application in the same repository as another application, marks the Rollout for the first application as terminated in the UI when it actually continues execution.
@@ -201,18 +259,18 @@ For details, see ????
 
 ### Feature Flags
 
-The table below describes the new Feature Flags in the Codefresh On-Premises release v 2.1.
+The table below describes the new Feature Flags in the Codefresh On-Premises release v2.1.
 
 {: .table .table-bordered .table-hover}
 | Feature Flag       | Description                                               | Default Value |
 | -----------        | --------------------------------------------------------- | ------------------------- |
-| `accountInfoCopyButton`  | When enabled (the default), the account ID is added to the URL. When sharing the URL with the account information, recipients can switch accounts instead of getting broken links                                                     | TRUE         |
-| `pipelineScopes`      | When enabled, enables Codefresh administrators to configure the API scopes for the account. All pipelines in the account inherit these scopes. Codefresh administrators can also override these scopes for individual pipelines.<br>See ??? in this article.                                | FALSE         |
+| `accountInfoCopyButton`  | When enabled (the default), the account ID is added to the URL. When sharing the URL with the account information, recipients can seamlessly switch accounts.                                                     | TRUE         |
+| `pipelineScopes`      | When enabled, enables Codefresh administrators to configure the API scopes for pipelines at account level. All pipelines in the account inherit these scopes. Codefresh administrators can also override these scopes for individual pipelines.<br>See [Pipelines: Access control for endpoints](#pipelines-access-control-for-endpoints) in this article.                                | FALSE         |
 | `disableInviteWelcomeMail`     | When enabled, does not send the Welcome email to users invited to an account.                                          | FALSE         |
-| `abacHermesTriggers`       | ???| FALSE         |
-| `cronTriggersInPipelineSpec`         | When enabled, allows users to define Cron triggers in the pipeline YAMLs as a `spec.cronTriggers` array, instead of using a separate API.<br>See ??? in this article  | FALSE         |
-| `accessibilityContrast` | When enabled, ????    | FALSE         |
-| `gitopsAppGroups`       | When enabled, allows users to group GitOps applications by annotations, and view these applications in the Groups tab of the GitOps Apps dashboard. <br>See ??? in this article | FALSE   |
+| `abacHermesTriggers`       | When enabled, restricts access to the legacy version of Cron triggers for users without permissions to edit pipelines.| FALSE  |
+| `cronTriggersInPipelineSpec`         | When enabled, allows users to define Cron triggers in the pipeline YAMLs as a `spec.cronTriggers` array, instead of using a separate API.<br>See [Pipelines: Enhanced version of Cron triggers](#pipelines-enhanced-version-of-cron-triggers) in this article.  | FALSE         |
+| `accessibilityContrast` | When enabled, displays a widget in ?? to control the contrast.    | FALSE         |
+| `gitopsAppGroups`       | When enabled, allows users to group GitOps applications by annotations, and view these applications in the Groups tab of the GitOps Apps dashboard. <br>See [GitOps: Application Groups in GitOps Apps dashboard](#gitops-application-groups-in-gitops-apps-dashboard) in this article. | FALSE   |
 
 
 
