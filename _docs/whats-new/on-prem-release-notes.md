@@ -11,7 +11,8 @@ Welcome to the release notes for our on-premises release versions, starting with
 ### Features & enhancements
 
 #### Upgrading to v2.1
-
+This major release includes new services and changes to existing services.  
+Before running the upgrade, read the details [here](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#to-2-1-0){:target="\_blank"}.
 
 #### Gerrit as Git provider for Pipelines and GitOps
 We are excited to announce the integration of Gerrit, the open-source web-based code review tool for Git repositories, with Codefresh. 
@@ -58,7 +59,10 @@ For details, see [Configure OIDC SSO settings for Okta in Codefresh]({{site.base
 
 
 
-#### OpenShift ???
+#### Codefresh & OpenShift 
+
+For details, see Deploying [Codefresh with OpenShift](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#installing-on-openshift){:target="\_blank"}.
+
 
 #### Pipelines: Access control for endpoints 
 With this feature, Codefresh admins gain enhanced control over the security of their pipelines by being able to restrict access to specific endpoint scopes.
@@ -78,18 +82,17 @@ For details, see [Configure scopes for pipelines]({{site.baseurl}}/docs/pipeline
 
 #### Pipelines: Enhanced version of Cron triggers
 
-We have extended the capabilities of Cron triggers within Codefresh pipelines, available as a Beta version. The additional functionality we have a more powerful implementation.
-Cron triggers can simulate Git events to enrich pipelines with repository details, include environment variables, and custom settings for caching, volume reuse, and notifications. These settings are also supported in the pipeline specifications.
+We have extended the capabilities of Cron triggers within Codefresh pipelines for a more powerful implementation. The new functionality is available as a Beta version. 
+
+Cron triggers can now simulate Git events to enrich pipelines with repository details, include environment variables, and custom settings for caching, volume reuse, and notifications. The new settings are supported in the Codefresh UI and in the pipeline specifications.
 
 
 
 These additional settings are optional, so you can continue to use just the timer component of the Cron trigger.
 
-
 Legacy versions of Cron triggers are flagged in the Codefresh UI and include an option to migrate them to the new version.
 
-
-For details, see 
+For details, see [Cron (timer)triggers]({{site.baseurl}}/docs/pipelines/triggers/cron-triggers/) and [Cron trigger specifications]({{site.baseurl}}/docs/integrations/codefresh-api/#cron-triggers).
 
 
 #### Pipelines: Pipeline Dashboard enhancements
@@ -135,9 +138,18 @@ Here are the icons and the build statuses they represent:
 For details, see [Viewing status for pipeline builds]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#viewing-status-for-pipeline-builds).
 
 #### Pipelines: New environment variables
+This release supports two new environment variables for Codefresh pipelines.
+* **Configure limit for pipelines in project**: The `PROJECT_PIPELINES_LIMIT` variable allows to you set a limit for the number of pipelines in a project. Capping the number of pipelines in a project prevents projects from becoming unwieldy and cluttered, and makes it easier to view the pipelines belonging to a project. 
+  For details, see [Pipeline limit in projects](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#projects-pipelines-limit){:target="\_blank"}.
+* **Customize session cookie**: When disabling concurrent sessions through `DISABLE_CONCURRENT_SESSIONS` = `true`, the `CF_UUID_COOKIE_DOMAIN` environment variable allows you to tailor the domain for the session cookie. For example, `.mydomain.com`.  
+For details, see [Customize session cookie](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#enable-session-cookie){:target="\_blank"}.
+
+
 
 #### GitOps: ABAC for GitOps applications
 In this release, we bring the power of ABAC for access control to GitOps for the first time as a Beta version. You can define fine-grained access to GitOps application entities. Similar to ABAC for pipelines, access is controlled through the use of rules, created by defining teams, actions, and attributes.
+
+
 
 For details, see ????
 
@@ -167,7 +179,7 @@ For details, see ????
 * Pipeline resuming execution after approval shows previously executed steps as skipped in Codefresh UI.
 * Creating a Git trigger for a repo name containing spaces fails with error: `Failed to create trigger...fails to match the required pattern...`.
 * Discrepancy in list of builds returned when running `GET {{baseUrl/workflow?pipeline=[pipeline-id]}}` query.
-* Composition stops randomly with error: `Could not get status for container <container-name>`. ???
+* Composition stops randomly with error: `Could not get status for container <container-name>`. 
 * In Pipelines dashboard (Home Dashboard), for a renamed pipeline, the Pipeline filter displays the original name instead of the new name. 
 * In the Pipelines page, the context-menu for the last pipeline in the list does not display all available actions.
 * **Save** button remains disabled when modifying an External Resource in Pipeline > Settings. 
@@ -178,13 +190,13 @@ For details, see ????
 * Invited users prompted for phone number during sign-up.
 ??BitBucket server pipeline trigger not firing on commit
 
-
+ 
 
 **GitOps** 
 * **Save** button remains disabled when modifying fields for an existing Git Source.
 * Unable to create Git Sources both from the Codefesh CLI and UI with Bitbucket Server.
 * Rollouts Reporter for managed cluster uses SaaS instead of on-premises URL.
-* Commits to a second application in the same repository as another application, marks the Rollout for the first application as terminated when it actually continues .
+* Commits to a second application in the same repository as another application, marks the Rollout for the first application as terminated in the UI when it actually continues execution.
 
 
 ### Feature Flags
