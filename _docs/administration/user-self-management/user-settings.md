@@ -90,9 +90,10 @@ max-width="100%"
 Generate new API keys to access Codefresh functionality from your scripts or applications, outside the Codefresh UI. Edit scopes for existing keys, or revoke them when needed.  
 For details, see [Codefresh API]({{site.baseurl}}/docs/integrations/codefresh-api/#authentication-instructions).
 
->Tokens are visible only during creation. You cannot "view" an existing token. To re-enable API access for an existing application, you must delete the old token and create a new one.  
+>**IMPORTANT**:  
+Tokens are visible only during creation. You cannot "view" an existing token. To re-enable API access for an existing application, you must delete the old token and create a new one.  
 
-  The UI shows the first few characters in the second part of the key, after the `.`, and not the characters at the beginning of the key.
+The UI shows the first few characters in the second part of the key, after the `.`, and not the characters at the beginning of the key.
 
 
 
@@ -110,7 +111,35 @@ caption="Generating a key for the API"
 max-width="80%"
 %}
 
-
+<!---
+### API scopes
+{: .table .table-bordered .table-hover}
+| Pipeline scope  | Description   |
+| ------------------------| ---------------- |
+| **General**    | Row 1    |
+| **Agent**/**Agents**   | Row 2    |
+| **Analytics**    | Row 3    |
+| **API**    | Row 4    |
+| **API keys**     | Row 5    |
+| **Audit**    | Row 6    |
+| **Board**   | Row 7    |
+| **Build**    | Row 8    |
+| **Chart**    | Row 9    |
+| **Cluster**/**Clusters**   | Row 10   |
+| **Environments-V2**   | Control access to the Environment Dashboard with Kubernetes and Helm releases: <br>Read - View only access<br>Write - access .  |
+| **Gen-AI**   | Row 12   |
+| **GitHub Actions**   | Row 13   |
+| **GitOps**   | Row 14   |
+| **Helm**   | Row 15   |
+| **Kubernetes**   | Row 16   |
+| **Pipeline**   | Row 17   |
+| **Project**   | Row 18   |
+| **Repos**   | Row 19   |
+| **Runner installation**   | Row 20   |
+| **Step-Tyep**/**Step-Types**   | Row 21   |
+| **Verification**   | Row 22   |
+| **View**   | Row 23   |
+-->
 
 ## Related articles
 [Managing Git PATs]({{site.baseurl}}/docs/administration/user-self-management/manage-pats/) 
