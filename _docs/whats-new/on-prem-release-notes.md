@@ -221,7 +221,7 @@ For details, see [Customize session cookie](https://artifacthub.io/packages/helm
 
 **General**
 * Unable to add users to Codefresh via team sync for Okta.
-* Auto-sync option not available for Azure SSO. yes
+* Auto-sync option not available for Azure SSO. 
 * 404 errors on clicking documentation links in Build > Triggers.
 * For Azure, auto-sync operations removes groups that were previously synced.
 
@@ -251,7 +251,7 @@ For details, see [Customize session cookie](https://artifacthub.io/packages/helm
 
 **GitOps** 
 * **Save** button remains disabled when modifying fields for an existing Git Source.
-* `UNAUTHORIZED_ERROR token is not valid` error for graphql API call. 
+* `DISABLED_CONCURRENT_SESSIONS` set to `true` results in `UNAUTHORIZED_ERROR token is not valid` error for graphql API call. 
 * Unable to create Git Sources both from the Codefesh CLI and UI with Bitbucket Server.
 * Rollouts Reporter for managed cluster uses SaaS instead of on-premises URL.
 * Commits to a second application in the same repository as another application, marks the Rollout for the first application as terminated in the UI when it actually continues execution.
@@ -269,7 +269,7 @@ The table below describes the new Feature Flags in the Codefresh On-Premises rel
 | `disableInviteWelcomeMail`     | When enabled, does not send the Welcome email to users invited to an account.                                          | FALSE         |
 | `abacHermesTriggers`       | When enabled, restricts access to the legacy version of Cron triggers for users without permissions to edit pipelines.| FALSE  |
 | `cronTriggersInPipelineSpec`         | When enabled, allows users to define Cron triggers in the pipeline YAMLs as a `spec.cronTriggers` array, instead of using a separate API.<br>See [Pipelines: Enhanced version of Cron triggers](#pipelines-enhanced-version-of-cron-triggers) in this article.  | FALSE         |
-| `accessibilityContrast` | When enabled, displays a widget in ?? to control the contrast.    | FALSE         |
+| `accessibilityContrast` | When enabled, displays an icon in the Codefresh toolbar allowing you to control the contrast by selecting the option that best suits the logged in user:{::nomarkdown}<ul><li><b>Invert colors</b> and <b>Bold colors (saturate)</b>: Optimized for visually impaired users.</li><li><b>Smart Contrast</b>: Increases the contrast between the text and the background to the maximum possible.</li></ul>{:/}.| FALSE         |
 | `gitopsAppGroups`       | When enabled, allows users to group GitOps applications by annotations, and view these applications in the Groups tab of the GitOps Apps dashboard. <br>See [GitOps: Application Groups in GitOps Apps dashboard](#gitops-application-groups-in-gitops-apps-dashboard) in this article. | FALSE   |
 
 
