@@ -212,7 +212,7 @@ Codefresh also adds the Group name as an annotation to the application manifest 
 For details, see [Application Groups for GitOps applications]({{site.baseurl}}/docs/deployments/gitops/gitops-app-groups/).
 
 #### GitOps: Customize session cookie
-For GitOps app-proxy, when disabling concurrent sessions for cf-api through `DISABLE_CONCURRENT_SESSIONS` = `true`, the `CF_UUID_COOKIE_DOMAIN` environment variable allows you to tailor the domain for the session cookie. For example, `.mydomain.com`. 
+For GitOps app-proxy, when disabling concurrent sessions for `cf-api` through `DISABLE_CONCURRENT_SESSIONS`=`true`, the `CF_UUID_COOKIE_DOMAIN` environment variable allows you to customize the domain for the session cookie. For example, `.mydomain.com`. 
  
 For details, see [Customize session cookie](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#enable-session-cookie){:target="\_blank"}.
 
