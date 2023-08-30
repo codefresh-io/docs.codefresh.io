@@ -64,27 +64,28 @@ We have upgraded our version of Argo Events to v1.7.3. Read about the changes in
 ## Bug fixes
 
 ### General
-* Auto-sync option not available for Azure SSO.
-* For an ECR integration, clicking **Test Connection** or **Commit** results in progress animations persisting instead of creating the integration. 
+* Unable to sign in with SSO (Single Sign-On). 
+
+### Pipelines 
 
 
-### Pipelines
-* Invalid chart error on trying to access Codefresh Helm repository.
-* Builds terminate unexpectedly without clear errors or from prolonged inactivity.
-* DIND with service containers ignore IRSA account (IAM Roles for Service Accounts) set for hybrid runtime.
-* Commit message passed through the system variable `CF_COMMIT_MESSAGE` is truncated and does not include the full content.
-* Delay in start times for child pipelines triggered by parent pipeline including a large set of `codefresh-run` steps set to run in parallel.
-* In Pipelines page, the context-menu for the last pipeline in the list does not display all available actions.
-* Builds terminated because of pipeline policy leave running `dind` pods on runtime cluster. 
-* In Pipelines dashboard (Home Dashboard), for a renamed pipeline, the Pipeline filter displays the original name instead of the new name. 
+
+* Prefix for Docker registries omitted when using a custom Docker registry as a Public Marketplace Registry. 
+* Pipeline trigger for BitBucket server does not fire on commit.
+* Pipeline resuming execution after approval shows previously executed steps as skipped in Codefresh UI.
+* Delay in start times for child pipelines triggered by parent pipeline including a large set of codefresh-run steps set to run in parallel.
+* Retrying a workflow displays duplicate metrics in Datadog.
+ 
+
+### GitOps 
+* Out of memory for Hosted GitOps Runtimes.
+* Clicking the **Current State** or the **Timeline** tab of an application opens the Home dashboard instead of the tabs.
+* Unable to connect to a Git provider when installing Hosted GitOps Runtimes.
+* Deleted GitOps applications continue to be displayed in the GitOps Apps dashboard.
+* (On-premises only)
 
 
-### GitOps
-* **Save** button remains disabled when modifying fields for an existing Git Source.
-* Applications show **Unknown** status in Codefresh, while they are **Healthy** in the Argo CD UI. 
-* Commits to a second application in the same repository as another application, terminates the on-going rollout for the first application. 
-* (On-premises) Unable to create Git Sources both from the Codefesh CLI and UI with Bitbucket Server.
-* (On-premises) For Azure, auto-sync operations removes groups that were previously synced.
+
 
 
 
