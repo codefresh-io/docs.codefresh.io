@@ -26,15 +26,38 @@ For details, see [Configure scopes for pipelines]({{site.baseurl}}/docs/pipeline
 
 ### Pipelines: Initialization metric in Datadog
 
-### GitOps: Argo Events upgrade
+
+<br><br>
+
 
 ### GitOps: Application Groups in GitOps Apps dashboard
 
+Introducing a new view in the GitOps Apps dashboard, the Group view!  
+The Group view for GitOps applications is a simple and efficient way to streamline application deployment monitoring within your enterprise. 
 
+With App Groups, you can effortlessly focus on specific app deployments, as it consolidates deployment information for all applications within the group in the same view. This feature eliminates the need to navigate between the different applications for information on them.
+Tailor groupings according to the unique requirements of your organization and applications. 
 
+To enable this, you need to turn on the `gitopsAppGroups` feature flag. 
 
+ {% include 
+image.html 
+lightbox="true" 
+file="/images/whats-new/aug23/rel-notes-aug23-app-group-page.png" 
+url="/images/whats-new/aug23/rel-notes-aug23-app-group-page.png" 
+alt="Application Groups in GitOps Apps dashboard" 
+caption="Application Groups in GitOps Apps dashboard" 
+max-width="60%" 
+%}
 
+Codefresh also adds the Group name as an annotation to the application manifest for easy organization and management. 
 
+For details, see [Application Groups for GitOps applications]({{site.baseurl}}/docs/deployments/gitops/gitops-app-groups/).
+
+<br><br>
+
+### GitOps: Argo Events upgrade
+We have upgraded our version of Argo Events to v1.7.3. Read about the changes in this [version](https://github.com/argoproj/argo-events/releases/tag/v1.7.3){:target="\_blank"}.
 
 
 
