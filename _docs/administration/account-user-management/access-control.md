@@ -75,12 +75,15 @@ The table below lists the functionality available for the `Admin` and `User` rol
 ABAC (Attribute-Based Access Control), allows fine-grained access to all entities, Kubernetes clusters, Codefresh pipelines, projects, and additional resources through the use of tags and rules.  
 For more information on ABAC, see [ABAC on Wikipedia](https://en.wikipedia.org/wiki/Attribute-based_access_control){:target="\_blank"}. 
 
-Using tags, you can allocate entities and resources to teams. Define which team has access to which entities and resources, and also the type of access.  
-Tag names are arbitrary, and can be anything you choose that matches your company process. Tags can be product names, software lifecycle phases, department names, or names that help define security policies.  
+**Tags**  
+Using tags, you have the flexibility to assign entities and resources to specific teams while determining the type of access each team has. Tags serve as labels that help organize and control access to these entities and resources.
 
-You can then define rules combining teams, privileges, and tags and for fine-grained access control.
+Tag names are entirely customizable and can align with your company's processes and requirements. They can encompass a wide range of categories, including product names, software lifecycle phases, departmental designations, or labels designed to enforce security policies. 
 
-### Define tags for entities
+**Rules**  
+Rules combine teams (who), privileges (what), and tags (where) to create fine-grained access control policies.  
+Codefresh supports ABAC with the flexibility to use both OR and AND operations for tags.
+### Tags for entities
 
 #### Assign tags to Kubernetes clusters and Git contexts
 
@@ -177,17 +180,18 @@ Shared configuration can be environment variables, Helm values, encrypted secret
 <br><br>
 
 ### Rules for access control 
-Define rules using the *who, what, where* pattern to control access to entities and resources. 
+Define rules using the *who, what, where* pattern to control access to entities and resources. Rules can be based on OR or AND principles
 
 For each rule, select:
 1. The team the rule applies to 
 1. The CRUD (*Create/Delete/Read/Update*) privileges the team has to the entity/resource 
   * For almost all entities, the Create privilege requires a separate rule. 
   * The other privileges can be defined in the same rule.
-1. The tags that control access to the entity/resource
-  * All tags, (implicitly includes No tags)
-  * No tags
-  * Named tags
+1. The tags that control access to the entity/resource:
+  * Any tags (`any`): Grants access to entity as long as it has a tag. The tag name is not relevant.
+  * All named tags (`all of these`): **AND** relationship between list of defined tags. Grants access only to the entities with _all_ the tags defined in the list.
+  * Any named tag (`any of these`): **OR** relationship between list of defined tags. Grants access to the entity with _at least one_ of the tags defined.
+  * No tags (`no`): Grants access to the entity _without_ any tags.  
 
 
 The examples in this section illustrate how to control access to projects and to pipelines through project tags:
@@ -212,9 +216,10 @@ Make sure you have:
       >You cannot select the **Create** privilege together with the other privileges. The **Create** privilege requires a separate rule.  
        **Any** indicates no privileges are selected.
     1. To assign tags, select one of the following:
-        *  **All tags**: Allows access only to entities with or without tags, regardless of the actual tag names.
-        *  **Without tags**: Allows access only to entities that do not have tags assigned to them.
-        * **Named tags**: Allows access only to those entities with the same tag names.
+        * **Any**: Allows access to entities _with_ any tag, regardless of the actual tag names.
+        * **All of these tags**: Allows access only to those entities _with all_ the tags defined in the list (_AND_ relationship between the tags). Access is denied if the entity does not all the tag names.
+        * **Any of these tags**: Allows access only to those entities _with any_ of the tags defined in the list. Access is allowed if the entity has at one of the tag names.
+        * **No tags**: Allows access only to entities that do not have tags assigned to them.
 
  {% include image.html
   lightbox="true"
