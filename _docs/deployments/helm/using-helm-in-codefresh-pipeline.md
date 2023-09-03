@@ -265,8 +265,8 @@ my_custom_helm_command:
 {: .table .table-bordered .table-hover}
 |Name|Description|Required|
 |---|---|---|
-|`action`|The operation performed by the Helm step, and can be of the following: {::nomarkdown} <ul><li><code class="highlighter-rouge">install</code>: The default, installs the Helm chart into a Kubernetes cluster.</li><li><code class="highlighter-rouge">push</code>: Packages the Helm chart and pushes it to the repository.</li><li><code class="highlighter-rouge">auth</code>: Sets up authentication, and adds one or more Helm repos. This mode is useful to write your own Helm commands using the freestyle step's <code class="highlighter-rouge">commands</code> property, but still allow the step to handle authentication.</li></ul>{:/}| `install`/`push`/`auth`|
-|`chart_name`| The chart to use for the `install` and `push` actions. <br>The chart name can be either: <ul><li>The name of a packaged Helm chart, for example, <code class="highlighter-rouge">myapp-1.0.0.tgz</code>.</li><li>The local directory path to the folder in which the Helm chart is stored, for example, <code class="highlighter-rouge">/home/user/charts/</code>. Helm will identify the chart name from the <code class="highlighter-rouge">chart.yaml</code> file in the folder. <br>When referencing a chart in a repository, `/reponame` prefix is not needed, as it is identified automatically.</li></ul>{:/}`CHART_NAME` should not be used anymore. | Required |
+|`action`|The operation performed by the Helm step, and can be of the following: {::nomarkdown} <ul><li><code class="highlighter-rouge">install</code>: The default, installs the Helm chart into a Kubernetes cluster.</li><li><code class="highlighter-rouge">push</code>: Packages the Helm chart and pushes it to the repository.</li><li><code class="highlighter-rouge">auth</code>: Sets up authentication, and adds one or more Helm repos. This mode is useful to write your own Helm commands using the freestyle step's <code class="highlighter-rouge">commands</code> property, but still allow the step to handle authentication.</li></ul>{:/}| Required|
+|`chart_name`| The chart to use for the `install` and `push` actions. <br>The chart name can be either:{::nomarkdown} <ul><li>The name of a packaged Helm chart, for example, <code class="highlighter-rouge">myapp-1.0.0.tgz</code>.</li><li>The local directory path to the folder in which the Helm chart is stored, for example, <code class="highlighter-rouge">/home/user/charts/</code>. Helm will identify the chart name from the <code class="highlighter-rouge">chart.yaml</code> file in the folder. <br>When referencing a chart in a repository, `/reponame` prefix is not needed, as it is identified automatically.</li></ul>{:/}`CHART_NAME` should not be used anymore. | Required |
 |`chart_repo_url`|Helm chart repository URL. If a [Helm repository configuration](#step-4-optional---import-the-helm-configuration-in-your-pipeline-definition) is attached to the pipeline, this setting is ignored.| Optional|
 |`chart_subdir` | The subfolder where the chart is located in the JFrog Artifactory Helm repository.| Optional |
 |`chart_version`|The version identifier  used to track and communicate the version of the Helm chart itself, instead of the version of the application or service that the chart deploys. When not specified, uses the version in the `chart.yaml` file of the chart. |Optional |
@@ -284,11 +284,11 @@ my_custom_helm_command:
 |`repos`|Array of custom repositories.|Optional|
 |`set_file` | The values to set from the respective files specified by the command line in `key=value` format. To specify multiple key-value pairs, separate them with commas. | Optional |
 |`skip_cf_stable_helm_repo` | When set to `true`, the default, does not add  a stable repository.| Optional|
-<!--- `tiller_namespace`|VersionKubernetes namespace where Tiller is installed . |-->
 |`timeout` | The maximum time, in seconds, to wait for Kubernetes commands to complete.|Optional |
 |`use_debian_image`  | Use Debian-based `cfstep-helm` image.|Optional |
 |`use_repos_for_auth_action`  | Uses repos from attached contexts, and is required when the Helm step `action` is set to `auth` action. When required, set value to `true`.|Optional |
 `wait` | When specified, waits until all pods are in state `ready` to mark the release as successful. Otherwise, release is marked as successful when the minimum number of pods are `ready` and the Services have IP addresses. |Optional |
+|`tiller_namespace`|Deprecated. Kubernetes namespace where Tiller is installed . | Optional |
 
 
 
