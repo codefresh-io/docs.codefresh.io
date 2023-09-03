@@ -57,7 +57,7 @@ file="/images/whats-new/july23/rel-notes-july23-okta-new-settings.png"
 url="/images/whats-new/july23/rel-notes-july23-okta-new-settings.png" 
 alt="Multi-account sync and remove deactivated users for Okta OIDC" 
 caption="Multi-account sync and remove deactivated users for Okta OIDC" 
-max-width="50%" 
+max-width="40%" 
 %}
 
 For details, see [Configure OIDC SSO settings for Okta in Codefresh]({{site.baseurl}}/docs/administration/single-sign-on/oidc/oidc-okta/#how-to). 
@@ -83,7 +83,7 @@ file="/images/whats-new/aug23/rel-notes-aug23-pipeline-scopes-setting.png"
 url="/images/whats-new/aug23/rel-notes-aug23-pipeline-scopes-setting.png" 
 alt="Configure scopes for pipeline" 
 caption="Configure scopes for pipeline" 
-max-width="60%" 
+max-width="50%" 
 %}
 
 For details, see [Configure scopes for pipelines]({{site.baseurl}}/docs/pipelines/configuration/pipeline-settings/#configure-pipeline-scopes).
@@ -105,7 +105,7 @@ file="/images/whats-new/aug23/rel-notes-aug23-cron-settings-tab.png"
 url="/images/whats-new/aug23/rel-notes-aug23-cron-settings-tab.png" 
 alt="Extended settings for Cron triggers" 
 caption="Extended settings for Cron triggers" 
-max-width="60%" 
+max-width="40%" 
 %}
 
 These additional settings are optional, so you can continue to use just the timer component of the Cron trigger.
@@ -182,7 +182,7 @@ file="/images/whats-new/aug23/rel-notes-aug23-gitops-add-rule.png"
 url="/images/whats-new/aug23/rel-notes-aug23-gitops-add-rule.png" 
 alt="Access control for GitOps application entities" 
 caption="Access control for GitOps application entities" 
-max-width="60%" 
+max-width="40%" 
 %}
 
 For details, see [Access control for GitOps]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/).
@@ -202,7 +202,7 @@ file="/images/whats-new/aug23/rel-notes-aug23-app-group-page.png"
 url="/images/whats-new/aug23/rel-notes-aug23-app-group-page.png" 
 alt="Application Groups in GitOps Apps dashboard" 
 caption="Application Groups in GitOps Apps dashboard" 
-max-width="60%" 
+max-width="40%" 
 %}
 
 With App Groups, you can effortlessly focus on specific app deployments, as it consolidates deployment information for all applications within the group in the same view. This feature eliminates the need to navigate between the different applications for information on them.
