@@ -509,7 +509,7 @@
           url: "/codefresh-on-prem"
         - title: Platform upgrade
           url: "/codefresh-on-prem-upgrade"
-        - title: On-premises setup
+        - title: Account and user setup
           url: "/on-prem-configuration"            
         - title: Feature management
           url: "/on-prem-feature-management"  
