@@ -8,7 +8,6 @@ description: "Release Notes for Codefresh Pipelines and GitOps"
 ### Pipelines: Enforce access to scopes for account
 With this feature, Codefresh admins gain enhanced control over the security of their pipelines by being able to restrict access to specific endpoint scopes.
 Scopes are defined at the account level, ensuring a consistent security baseline for all pipelines. These predefined scopes are inherited by every pipeline, which Codefresh admins can override for individual pipelines when necessary.  
-To enable this, you need to turn on the `pipelineScopes` feature flag. 
 
  {% include 
 image.html 
@@ -38,7 +37,6 @@ The Group view for GitOps applications is a simple and efficient way to streamli
 With App Groups, you can effortlessly focus on specific app deployments, as it consolidates deployment information for all applications within the group in the same view. This feature eliminates the need to navigate between the different applications for information on them.
 Tailor groupings according to the unique requirements of your organization and applications. 
 
-To enable this, you need to turn on the `gitopsAppGroups` feature flag. 
 
  {% include 
 image.html 
