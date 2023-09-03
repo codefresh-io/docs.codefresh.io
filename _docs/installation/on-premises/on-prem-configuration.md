@@ -161,6 +161,7 @@ You can either enable features for a single account at a time, selectively for m
 
 {:start="4"}
 1. To enable a feature for the account, below **Enable**, toggle the required feature to **ON**. 
+1. Continue with [Step 5: (Optional) Set login options for account](#step-5-optional-set-login-options-for-account).
 
 **Enable/disable features for all accounts**  
 If you have created more than one Codefresh account for your organization, you can enable features for all the accounts.
@@ -168,6 +169,7 @@ If you have created more than one Codefresh account for your organization, you c
 1. Make sure you are in **Admin Management**.
 1. From the sidebar, click **Feature Management**. 
 1. To enable a feature for all the accounts, under **Enable**, toggle the required feature to **ON**. 
+1. Continue with [Step 5: (Optional) Set login options for account](#step-5-optional-set-login-options-for-account).
 
 **Enable System Features**    
 System Features are generally for internal use. 
@@ -187,12 +189,15 @@ If you need to turn on a feature, we recommend contacting Codefresh support.
 
  {% include image.html
   lightbox="true"
-  file="/images/installation/on-prem-setup/enable-features-for-account-accounts.png"
-  url="/images/installation/on-prem-setup/enable-features-for-account-accounts.png"
-  alt="Enable features for a specific Codefresh account"
-  caption="Enable features for a specific Codefresh account"
+  file="/images/installation/on-prem-setup/enable-system-features.png"
+  url="/images/installation/on-prem-setup/enable-system-features.png"
+  alt="Enable system features for a Codefresh account"
+  caption="Enable system features for a Codefresh account"
   max-width="60%"
     %}
+
+{:start="5"}
+1. Continue with [Step 5: (Optional) Set login options for account](#step-5-optional-set-login-options-for-account).
 
     
 ### Step 5: (Optional) Set login options for account
@@ -205,14 +210,14 @@ By default, all login mechanisms are enabled, and users will see all the options
   url="/images/installation/on-prem-setup/default-sign-in-accnt-user.png"
   alt="Default Sign-In page with all login options"
   caption="Default Sign-In page with all login options"
-  max-width="60%"
+  max-width="50%"
     %}
 
 >**NOTES**:  
-To login via SSO or LDAP, you must first set up an integration with an [] or LDAP.
-To use Codefresh login, User/Pass must be enabled for the account. 
+To login via SSO or LDAP, you must first set up an integration with an [SSO provider]({{site.baseurl}}/docs/administration/single-sign-on/) or [LDAP]({{site.baseurl}}/docs/administration/single-sign-on/ldap/).  
+To use Codefresh login, User/Pass must be enabled for the account, as described in [Quick reference: Account settings](#quick-reference-account-settings) in this article. 
 
-1. From your avatar dropdown, select **Admin Management**.
+1. Make sure you are in **Admin Management**.
 1. From the sidebar, select **Login Options**.
 1. If needed, disable one or more login options for the account.
 
@@ -225,11 +230,15 @@ To use Codefresh login, User/Pass must be enabled for the account.
   max-width="60%"
     %} 
 
+{:start="4"}
+1. Continue with [Step 6: Set the System Type for Codefresh account](#step-6-set-the-system-type-for-codefresh-account).
+
 ### Step 6: Set the System Type for Codefresh account
-Select the System Type to activate for accounts. The System Type is the Codefresh module that is activated for users in the account. By default, the System Type  is set to Classic, which activates the Codefresh pipelines module. 
-See the description for System Type in [Quick reference: Account settings]().
+Select the Codefresh module to activate for users in the account. By default, the System Type is set to Classic, which activates the Codefresh pipelines module. 
+For more information on System Types, see [Quick reference: Account settings](#quick-reference-account-settings) in this article.
 
 
+1. Make sure you are in **Admin Management**.
 1. From the sidebar, select **Accounts**. 
 1. Select the row with the account for which to change the system type, and click the **System Type** column.
 
@@ -238,14 +247,25 @@ See the description for System Type in [Quick reference: Account settings]().
   file="/images/installation/on-prem-setup/select-system-type.png"
   url="/images/installation/on-prem-setup/select-system-type.png"
   alt="System Types for Codefresh accounts"
-  caption="Login options for account"
-  max-width="60%"
+  caption="System Types for Codefresh accounts"
+  max-width="50%"
     %} 
 
-1. Select the System Type you need.  
+{:start="4"}
+1. Select the System Type to activate:  
+  * **Classic**: Codefresh pipelines only.
+  * **GitOps**: GitOps applications integrated with ArgoCD.
+  * **Project One**: The New Codefresh Experience with Classic Pipelines and GitOps as a single module with a unified sidebar menu and shared administration and configuration. 
+  * **GitOps + Classic**: Available as two different modules, with one of them active at any one time. You can toggle between the modules.
    
 ### What to do next
-You are now ready to  
+Depending on the System Type activated, you are now ready to create:
+* Projects
+* Pipelines
+* Integrations for pipelines, GitOps
+* Applications
+
+See our [CI/CD]({{site.baseurl}}/docs/quick-start/ci-quick-start/) and [GitOps]({{site.baseurl}}/docs/quick-start/gitops-quick-start/) quick starts.
 
 ## Quick reference: Codefresh Admin Management settings
 
@@ -271,7 +291,7 @@ The table describes the settings for available Codefresh accounts. Several setti
 | --------------              | --------------         | 
 |**Activated/Suspended/Increased attention**     | Automatically set and managed by Codefresh.  |  
 |**Account name**     | The name of the account.<br>To change, click the **Edit** icon. |  
-|**System type**     | The Codefresh module to activate for this account. Selecting a System Type switches the account to one of the following:<br>{:nomarkdown}<ul><li>**Classic**: Codefresh pipelines only.</li><li>**GitOps**: GitOps applications integrated with ArgoCD.</li><li>**Project One**: The New Codefresh Experience with Classic Pipelines and GitOps as a single module with a unified sidebar menu and shared administration and configuration. <br>See [The New Codefresh Experience]({{site.baseurl}}/docs/new-codefresh/enable-new-experience/) and [Menu Navigation]({{site.baseurl}}/docs/new-codefresh/menu-navigation/).</li><li>**GitOps + Classic**: Available as two different modules, with one of them active at any one time. You can toggle between the modules.<br>See [Codefresh for CI]({{site.baseurl}}/docs/getting-started/ci-codefresh/) and [Codefresh for CD]({{site.baseurl}}/docs/getting-started/cd-codefresh/).</li></ul>{:/}   | 
+|**System type**     | The Codefresh module to activate for this account. Selecting a System Type switches the account to one of the following:<br>{:nomarkdown}<ul><li><b>Classic</b>: Codefresh pipelines only.</li><li><b>GitOps</b>: GitOps applications integrated with ArgoCD.</li><li><b>Project One</b>: The New Codefresh Experience with Classic Pipelines and GitOps as a single module with a unified sidebar menu and shared administration and configuration. <br>See [The New Codefresh Experience]({{site.baseurl}}/docs/new-codefresh/enable-new-experience/) and [Menu Navigation]({{site.baseurl}}/docs/new-codefresh/menu-navigation/).</li><li><b>GitOps + Classic</b>: Available as two different modules, with one of them active at any one time. You can toggle between the modules.<br>See [Codefresh for CI]({{site.baseurl}}/docs/getting-started/ci-codefresh/) and [Codefresh for CD]({{site.baseurl}}/docs/getting-started/cd-codefresh/).</li></ul>{:/}   | 
 |**Creation date**     | The date the account was created. |  
 |**Amount of admins**    | The number of users with administrator roles for this account. |  
 |**Support plan**    | Leave as is. Managed by Codefresh.  |  
@@ -280,14 +300,14 @@ The table describes the settings for available Codefresh accounts. Several setti
 |**Limit of environments**    | The number of Runtime Environments for this account. |  
 |**Parallel builds**    | The number of concurrent builds permitted according to the CPU/Memory resource allocation. what is 1/1/1 Every size shows the licensed number of concurrent builds and the number actually running. with the Runtime Environment for the account ?? :{:nomarkdown}<ul><li>Small: Codefresh pipelines only</li> <br>You can also set this as part of account-level settings for pipelines. See   |  | 
 |**Nodes**    | Relevant for when Codefresh on-premises is installed on Windows. The   |  | 
-|**User/pass enabled**    | Enable username-password combination as a login mechanism for users in this account. When enabled, the Sign-In screen displays **Codefresh** as a login option, and users can supply the username and password as login credentials. | 
+|**User/pass enabled**    | Enable username-password combination as a login mechanism for users in this account. <br>When enabled, the Sign-In screen displays **Codefresh** as a login option, and users can supply the username and password as login credentials. | 
 |**Disable personal account**    | When enabled (recommended), prevents users from logging in with their personal accounts, and allows login only with the company/organization account. | 
 |**Launch cluster**    | ??? |   
-|**Data retention**    | The length of time in weeks for which to retain builds and logs for Codefresh pipelines. The retention period can be set through the slider, or through environment variables. See [Retention policy for builds and logs in ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#retention-policy-for-builds-and-logs){:target="\_blank"} and select the one according to the on-premises version installed.   |  
+|**Data retention**    | The length of time in weeks for which to retain builds and logs for Codefresh pipelines. <br>The retention period can be set through the slider, or through environment variables. See [Retention policy for builds and logs in ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#retention-policy-for-builds-and-logs){:target="\_blank"} and select the one according to the on-premises version installed.   |  
 |**Collaborators**    | The number of users permitted for this account. If you keep the count as one, Codefresh displays an error that you have reached the user limit and prevents you from inviting additional users.  | 
 |**Runtime environments**    | Leave as is. Managed by Codefresh. |  
 |**Codefresh environments**    | The environment to select for the Windows nodes. |  
-|**Actions**    | The actions available for the account, displayed by clicking the context menu to the right of the account:{:nomarkdown}<ul><li>**Audit by account**: Takes you to the Audit page.<br>See ??? </li><li>**Invite user to account**: Opens the popup where you can specify the email of the user to invite to the account. To add the admin role for this user, select **Set the user as admin to this account**.</li><li>**Assign new feature**: Displays the list of features where you can enable/disable specific features for this account. <br>See [Quick reference: On-premises feature list](#quick-reference-on-premises-feature-list) in this article. </li><li>**Show account domains**: Restrict user invitations to specific email domains. Clicking **Add Domain** lets you add the email domains to allow.<br>See also [Define session timeouts and domain restrictions for user accounts]({{site.baseurl}}/docs/administration/account-user-management/add-users/#define-session-timeouts-and-domain-restrictions-for-user-accounts).</li>| 
+|**Actions**    | The actions available for the account, displayed by clicking the context menu to the right of the account:{:nomarkdown}<ul><li><b>Audit by account</b>: Takes you to the Audit page.<br>See ??? </li><li><b>Invite user to account</b>: Opens the popup where you can specify the email of the user to invite to the account. To add the admin role for this user, select <b>Set the user as admin to this account</b>.</li><li><b>Assign new feature</b>: Displays the list of features where you can enable/disable specific features for this account. <br>See [Quick reference: On-premises feature list](#quick-reference-on-premises-feature-list) in this article. </li><li>**Show account domains**: Restrict user invitations to specific email domains. Clicking <b>Add Domain</b> lets you add the email domains to allow.<br>See also [Define session timeouts and domain restrictions for user accounts]({{site.baseurl}}/docs/administration/account-user-management/add-users/#define-session-timeouts-and-domain-restrictions-for-user-accounts).</li>| 
 
 
 
@@ -310,7 +330,7 @@ The table describes the features you can open for Codefresh accounts, in alphabe
 | Feature                     | Description            |  Default | 
 | --------------              | --------------         | ------- | 
 |`abacHermesTriggers`| When enabled, restricts access to the legacy version of Cron triggers types for users without permissions to edit pipelines. |FALSE |
-|`accessibilityContrast` |	When enabled, displays an icon in the Codefresh toolbar allowing users to control the contrast by selecting the option that best suits the user:{::nomarkdown}<ul><li><b>Invert colors</b> and <b>Bold colors (saturate)</b>: Optimized for visually impaired users.</li><li><b>Smart Contrast</b>: Increases the contrast between the text and the background to the maximum possible.</li></ul>{:/}.|FALSE |
+|`accessibilityContrast` |	When enabled, displays an icon in the Codefresh toolbar allowing users to control the contrast by selecting the option that best suits the user:{::nomarkdown}<ul><li><b>Invert colors</b> and <b>Bold colors (saturate)</b>: Optimized for visually impaired users.</li><li><b>Smart Contrast</b>: Increases the contrast between the text and the background to the maximum possible.</li></ul>{:/}|FALSE |
 |`accountInfoCopyButton`| When enabled (the default), allows users to copy the URL including the account ID to share with other users . |TRUE |
 |`allowUserUpdateBoards`| When enabled, allows users without admin roles to update Helm boards. Users can install, promote, create, and update sections.<br>See [Promoting Helm environments]({{site.baseurl}}/docs/deployments/helm/helm-environment-promotion/). |FALSE |
 |`cronTriggersInPipelineSpec`   | When enabled, allows users to define Cron triggers in the pipeline YAMLs as a spec.cronTriggers array, instead of using a separate API. <br>See [Cron (timer) triggers]({{site.baseurl}}/docs/pipelines/triggers/cron-triggers/). |FALSE |
@@ -326,3 +346,6 @@ The table describes the features you can open for Codefresh accounts, in alphabe
 |`logMasking` |When enabled, secrets in build logs, both online and offline logs, are masked and replaced by asterisks. <br><br>This feature is currently available only for Enterprise customers. |FALSE|
 |`pipelineScopes` |When enabled, allows Codefresh administrators to define the scopes that pipelines can access at the account-level.<br>See [Configure pipeline scopes]({{site.baseurl}}/docs/pipelines/configuration/pipeline-settings/#configure-pipeline-scopes). |FALSE|
 |`useLogsTimestamps` |When enabled, prepends the date and time to every line in the log. <br><br>When enabled, and you have build automation, you may need to adjust the regex for search as the line does not start with the log text.| FALSE| 
+
+## Related articles
+[On-premises installation]({{site.baseurl}}docs/installation/on-premises/)  
