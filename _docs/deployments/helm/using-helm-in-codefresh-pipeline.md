@@ -14,10 +14,11 @@ toc: true
 
 We created a [special Helm step](https://codefresh.io/steps/step/helm){:target="\_blank"} for easy integration of Helm in Codefresh pipelines. The Helm step facilitates authentication, configuration, and execution of Helm commands.
 
-> If you have a special use case that is not covered by the Codefresh Helm step, you can always use the regular `helm` cli in a freestyle step.  
-  In this case, you can use the simpler container `codefresh/kube-helm` which includes only Kubectl and helm tools. `kube-helm` is available on DockerHub: [https://hub.docker.com/r/codefresh/kube-helm/](https://hub.docker.com/r/codefresh/kube-helm/){:target="\_blank"}.
+>**NOTE:**  
+If you have a special use case that is not covered by the Codefresh Helm step, you can always use the regular `helm` CLI command in a `freestyle` step.  
+In this case, you can use the simpler container `codefresh/kube-helm` which includes only Kubectl and helm tools. `kube-helm` is available on DockerHub: [https://hub.docker.com/r/codefresh/kube-helm/](https://hub.docker.com/r/codefresh/kube-helm/){:target="\_blank"}.
 
-If you are just starting with Helm, refer to our [Helm quick start guide]({{site.baseurl}}/docs/quick-start/ci-quick-start/deploy-with-helm/) . And, if you prefer to work directly with code, see our [full Helm example]({{site.baseurl}}/docs/example-catalog/cd-examples/helm/).
+If you are just starting with Helm, refer to our [Helm quick start guide]({{site.baseurl}}/docs/quick-start/ci-quick-start/deploy-with-helm/). If you prefer to work directly with code, see our [full Helm example]({{site.baseurl}}/docs/example-catalog/cd-examples/helm/).
 
 ## Helm setup
 
@@ -71,9 +72,8 @@ max-width="70%"
 
 ### Step 3: Define a Helm repository
 
-To push your chart to a Helm repository, configure the target repository to work with. 
-Always a good practice to save Helm charts in Helm repositories, Codefresh supports a variety of private, authenticated Helm repositories
-in addition to public HTTP repositories. Codefresh also provides a free, managed Helm repository for every account.
+To push your chart to a Helm repository, configure the target repository to work with. It is always a good practice to save Helm charts in Helm repositories.  
+Codefresh supports a variety of private, authenticated Helm repositories, in addition to public HTTP repositories. Codefresh also provides a free, managed Helm repository for every account.
 
 * Either [connect your repository with Codefresh]({{site.baseurl}}/docs/deployments/helm/helm-charts-and-repositories/)  
 OR  
@@ -107,8 +107,9 @@ This concludes the Helm setup for Codefresh. Now you can use the Helm freestyle 
 
 You can now use the Helm freestyle step in the `codefresh.yml` file. This step is only needed in pipelines that actually upload/fetch Helm charts to/from Helm repositories. If your pipeline directly installs a Helm chart from the Git filesystem, there is no need to import a Helm configuration.
 
->Currently, you can use only one Helm configuration in the same pipeline. We are aware
-of this limitation and will soon improve the way Codefresh works with multiple Helm configurations.
+>**NOTE:**  
+Currently, you can use only one Helm configuration in the same pipeline. We are aware
+of this limitation, and will soon improve the way Codefresh works with multiple Helm configurations.
 
 
 
@@ -135,7 +136,7 @@ deploy:
 
 #### Helm step action modes
 
-The Helm step can operate in one of three modes, as defined by the `action` field, which can be one of the following:  
+The Helm step can operate in one of three modes, as defined by the `action` argument, which can be one of the following:  
 
 1. `install`: Installs the Helm chart into a Kubernetes cluster. This is the default mode if one is not explicitly set.
 2. `push`: Packages the Helm chart and pushes it to the repository.
@@ -153,7 +154,7 @@ For a description of these and other arguments, see [Helm step configuration fie
 
 #### Helm values
 
-* To supply a value file, add to the Helm step, `custom_values_file`, with the value pointing to an existing values file.  
+* To supply a `values` file, add to the Helm step, `custom_values_file`, with the value pointing to an existing values file.  
 * To override specific values, add to the Helm step, `custom_values` followed by the path to the value to set. For example, `myservice_imageTag`. Note that `.` (dot) should be replaced with `_` (underscore). The value of the variable is used to override or set the templated property.
 
 Examples:
@@ -175,7 +176,8 @@ results in:
 results in:
 `--values values-prod.yaml`
 
-If a variable already contains a `_` (underscore) in its name, replace it with `__` (double underscore).
+If a variable already contains an underscore (`_`) in its name, replace it with a  double underscore (`__`).
+).
 
 ## Helm usage examples
 
@@ -195,7 +197,7 @@ deploy:
   type: helm
   arguments:
     action: install
-    chart_name: path/to/charts
+    chart_name: /home/user/charts/mywebapp
     release_name: first
     helm_version: 3.0.3
     kube_context: my-kubernetes-context
@@ -214,7 +216,7 @@ deploy:
     chart_repo_url: 'cm://h.cfcr.io/useraccount/default'
 ```
 
-> **Notes**:  
+> **NOTES**:  
   - Assumes that a Git repository with the Helm chart files was cloned as a part of the pipeline.
   - The Git repository contains the chart files in the `chart` directory.
   - `chart_repo_url` is optional. If a [Helm repository configuration](#step-4-optional-import-the-helm-configuration-into-your-pipeline-definition) is attached to the pipeline, this setting is ignored.
@@ -255,38 +257,38 @@ my_custom_helm_command:
 {% endraw %}
 {% endhighlight %}
 
-> Notes:
-- The directory that contains a chart MUST have the same name as the chart. Thus, a chart named `my-chart` MUST be created in a directory called `my-chart/`. This is a requirement of the [Helm Chart format](https://helm.sh/docs/chart_template_guide/){:target="\_blank"}.
+> **NOTES**: 
+  The directory that contains a chart MUST have the same name as the chart. Thus, a chart named `my-chart` MUST be created in a directory called `my-chart/`. This is a requirement of the [Helm Chart format](https://helm.sh/docs/chart_template_guide/){:target="\_blank"}.
 
 ## Helm step configuration fields
 
 {: .table .table-bordered .table-hover}
-|Name|Required|Description|
+|Name|Description|Required|
 |---|---|---|
-|action|defaults to `install`| Operation mode: `install`/`push`/`auth`|
-|chart_name|required for install/push|Chart reference to use, adhering to Helm's lookup rules (path to chart folder, or name of packaged chart). There's no need to prefix with `/reponame` if referencing a chart in a repository, this is handled automatically. a.k.a `CHART_NAME` but `CHART_NAME` shouldn't be used anymore. |
-|chart_repo_url|optional|Helm chart repository URL. If a [Helm repository configuration](#step-4-optional---import-the-helm-configuration-in-your-pipeline-definition) is attached to the pipeline, this setting is ignored.|
-|chart_subdir |optional | The subfolder where the chart is located in the JFrog Artifactory Helm repository.|
-|chart_version|optional|Override or set the chart version.|
-|cmd_ps|optional|Command Postscript - this will be appended as is to the generated helm command string. Can be used to set additional parameters supported by the command but not exposed as configuration options.|
-|commands|optional|commands to execute in plugin after auth action.|
-|credentials_in_arguments | optional | The username and password credentials to add to the Helm command as arguments. If not added to the Helm command, the credentials are passed in the URL `http(s)://username:password@url`. Should be enabled for JFrog Artifactory Helm repositories.|
-|custom_value_files|optional|values file to provide to Helm as --values or -f.|
-|custom_values|optional|values to provide to Helm as --set.|
-|helm_repository_context | optional |The name of the Helm repository integration configured in Codefresh.|
-|helm_version|optional|version of [cfstep-helm image](https://hub.docker.com/r/codefresh/cfstep-helm/tags).|
-|kube_context|required for install|Kubernetes context to use. The name of the cluster as [configured in Codefresh]({{site.baseurl}}/docs/integrations/kubernetes/#connect-a-kubernetes-cluster).|
-|namespace|optional|Target Kubernetes namespace to deploy to.|
-|primary_helm_context |optional |Required for `install` and `push` actions when the pipeline has multiple Helm contexts. The Helm context to use for the Helm command. When omitted, the repo most recently added to the pipeline is used.|
-|release_name|used for `install`|The Helm release name. If the release exists, it is upgraded.|
-|repos|optional|array of custom repositories.|
-|set_file | optional | Set values from the respective files specified by the command line in `key=value` format. To specify multiple key-value pairs, separate them with commas. |
-|skip_cf_stable_helm_repo | optional | Don't add stable repository.|
-|tiller_namespace|optional|Kubernetes namespace where Tiller is installed .|
-|timeout | optional | The maximum time, in seconds, to wait for Kubernetes commands to complete.|
-|use_debian_image | optional | Use Debian-based `cfstep-helm` image.|
-|use_repos_for_auth_action |optional  | Required for the `auth` action to use repos from attached contexts. When required, set value to `true`.|
-wait |optional | When specified, waits until all pods are in state `ready` to mark the release as successful. Otherwise, release is marked as successful when the minimum number of pods are `ready` and the Services have IP addresses. |
+|`action`|The operation performed by the Helm step, and can be of the following: {::nomarkdown} <ul><li><code class="highlighter-rouge">install</code>: The default, installs the Helm chart into a Kubernetes cluster.</li><li><code class="highlighter-rouge">push</code>: Packages the Helm chart and pushes it to the repository.</li><li><code class="highlighter-rouge">auth</code>: Sets up authentication, and adds one or more Helm repos. This mode is useful to write your own Helm commands using the freestyle step's <code class="highlighter-rouge">commands</code> property, but still allow the step to handle authentication.</li></ul>{:/}| `install`/`push`/`auth`|
+|`chart_name`| The chart to use for the `install` and `push` actions. <br>The chart name can be either: <ul><li>The name of a packaged Helm chart, for example, <code class="highlighter-rouge">myapp-1.0.0.tgz</code>.</li><li>The local directory path to the folder in which the Helm chart is stored, for example, <code class="highlighter-rouge">/home/user/charts/</code>. Helm will identify the chart name from the <code class="highlighter-rouge">chart.yaml</code> file in the folder. <br>When referencing a chart in a repository, `/reponame` prefix is not needed, as it is identified automatically.</li></ul>{:/}`CHART_NAME` should not be used anymore. | Required |
+|`chart_repo_url`|Helm chart repository URL. If a [Helm repository configuration](#step-4-optional---import-the-helm-configuration-in-your-pipeline-definition) is attached to the pipeline, this setting is ignored.| Optional|
+|`chart_subdir` | The subfolder where the chart is located in the JFrog Artifactory Helm repository.| Optional |
+|`chart_version`|The version identifier  used to track and communicate the version of the Helm chart itself, instead of the version of the application or service that the chart deploys. When not specified, uses the version in the `chart.yaml` file of the chart. |Optional |
+|`cmd_ps`| The Postscript command to be appended as is to the generated Helm command string.<br>Use to set additional parameters supported by the command but not exposed as configuration options.|Optional |
+|`commands`|Commands to execute in plugin after auth action.|Optional |
+|`credentials_in_arguments` | The username and password credentials to add to the Helm command as arguments. If not added to the Helm command, the credentials are passed in the URL `http(s)://username:password@url`. <br>Should be enabled for JFrog Artifactory Helm repositories.| Optional|
+|`custom_value_files`|The `values` file to provide to Helm as `--values` or `-f`.|Optional |
+|`custom_values`|The values to provide to Helm as `--set`.|Optional |
+|`helm_repository_context`  |The name of the Helm repository integration configured in Codefresh.| Optional |
+|`helm_version`|The version of the [cfstep-helm image](https://hub.docker.com/r/codefresh/cfstep-helm/tags).|Optional |
+|`kube_context`|The Kubernetes context to use when the `action` for the Helm step is set to `install`. The name of the cluster as [configured in Codefresh]({{site.baseurl}}/docs/integrations/kubernetes/#connect-a-kubernetes-cluster).| Optional |
+|`namespace`|The target Kubernetes namespace to deploy to.| Optional |
+|`primary_helm_context`  |The Helm context to use for the Helm command, when the Helm `action` is either `install` or `push`, and the pipeline has multiple Helm contexts.  When omitted, uses the repo most recently added to the pipeline.| Optional |
+|`release_name`|The Helm release name to use when the Helm `action` is set to `install`. If the release exists, it is upgraded.|Optional |
+|`repos`|Array of custom repositories.|Optional|
+|`set_file` | The values to set from the respective files specified by the command line in `key=value` format. To specify multiple key-value pairs, separate them with commas. | Optional |
+|`skip_cf_stable_helm_repo` | When set to `true`, the default, does not add  a stable repository.| Optional|
+<!--- `tiller_namespace`|VersionKubernetes namespace where Tiller is installed . |-->
+|`timeout` | The maximum time, in seconds, to wait for Kubernetes commands to complete.|Optional |
+|`use_debian_image`  | Use Debian-based `cfstep-helm` image.|Optional |
+|`use_repos_for_auth_action`  | Uses repos from attached contexts, and is required when the Helm step `action` is set to `auth` action. When required, set value to `true`.|Optional |
+`wait` | When specified, waits until all pods are in state `ready` to mark the release as successful. Otherwise, release is marked as successful when the minimum number of pods are `ready` and the Services have IP addresses. |Optional |
 
 
 
