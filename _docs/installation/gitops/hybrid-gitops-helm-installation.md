@@ -181,23 +181,40 @@ The Codefresh `values.yaml` located [here](https://github.com/codefresh-io/gitop
 1. Continue with [Step 2: Set up GitOps Git provider](#step-2-set-up-gitops-git-provider).
 
 ### Step 2: Set up GitOps Git provider
-As a one-time action, select the Git provider and the Shared Configuration Repository to associate with your account.  
+As a one-time action, define the Shared Configuration Repository and the Git provider to associate with your account.  
+The Git provider you select for the first GitOps Runtime in your account is used for all the other Runtimes installed in the same account. 
 
-The Git provider you select for the first GitOps Runtime in your account is used for all the other Runtimes installed in the same account.
 
-The [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) is a Git repository with configuration manifests shared between all the Hybrid GitOps Runtimes within the same account. 
 
-<br><br>
+**Shared Configuration Repository**  
+The [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) is a Git repository with configuration manifests shared between all the Hybrid GitOps Runtimes within the same account. Codefresh identifies the Git provider from the URL of the Shared Configuration Repo, and for cloud providers, automatically populates the Git Provider and the API URL fields. 
 
-1. Select the **Git provider** from the list.
-1. Define the **API URL** for the Git provider you selected, as one of the following:
-  * GitHub Cloud: `https://api.github.com` 
+**Git provider**
+On-premises Git providers require you to define the API URL: 
   * GitHub Enterprise: `https://<server-url>/api/v3`
-  * GitLab Cloud: `https://gitlab.com/api/v4`
   * GitLab Server: `<server-url>/api/v4`
-  * Bitbucket Cloud: `https://api.bitbucket.org/2.0`
   * Bitbucket Server: `<server-url>/rest/api/1.0`
+
+
+
+<br>
+
+**How to**  
 1. Define the URL of the **Shared Configuration Repository**.   
+1. If required, select the **Git provider** from the list.
+1. If required, define the **API URL** for the Git provider you selected.
+
+{% include
+   image.html
+   lightbox="true"
+   file="/images/runtime/helm/helm-install-hybrid-runtime.png"
+ url="/images/runtime/helm/helm-install-hybrid-runtime.png"
+  alt="Install Hybrid GitOps Runtime"
+  caption="Install Hybrid GitOps Runtime"
+  max-width="40%"
+%}
+
+{:start="4"}
 1. Click **Next**.
 1. Continue with [Step 3: Install Hybrid Runtime](#step-3-install-hybrid-gitops-runtime).
 
@@ -363,7 +380,7 @@ helm upgrade --install <helm-release-name> \
 
 
 ### Step 4: Configure Git credentials for Hybrid GitOps Runtime
-Configure Git credentials to authorize access to and ensure proper functioning of the GitOps Runtime. This is one of the two steps to complete installing Hybrid GitOps Runtimes, the other being to configure the Runtime as an Argo Application, described in the next step.
+Configure Git credentials to authorize access to and ensure proper functioning of the GitOps Runtime. This is the first of the three steps needed to complete installing Hybrid GitOps Runtimes, the others being to add a Git user token and configure the Runtime as an Argo Application, described in the next steps.
 
 Git credentials include authorizing access to Git through OAuth2 or a Git Runtime token, and optionally configuring SSH access to the Git installation repo for the Runtime.
 
@@ -388,9 +405,21 @@ For more information on generating SSH private keys, see the official documentat
 * To use SSH, copy the SSH private key for your Git provider 
 
 **How to**
-1. In the Sync Status column for the Runtime you just installed, click **Complete Installation**. 
+1. In the Sync Status column for the Runtime you just installed, click **Complete Installation**.  
+  Codefresh displays the steps needed to complete the installation.  
+  You may see a message that the Runtime is missing a Git user token. You can ignore this message and continue to complete the installation.
 
+    {% include
+   image.html
+   lightbox="true"
+   file="/images/runtime/helm/helm-complete-install-widgets.png"
+   url="/images/runtime/helm/helm-complete-install-widgets.png"
+  alt="Steps to complete installing Hybrid GitOps Runtime"
+  caption="Steps to complete installing Hybrid GitOps Runtime"
+  max-width="60%"
+%}
 
+{:start="2"} 
 1. Do one of the following: 
   * If your admin has set up OAuth access, click **Authorize Access to Git Provider**. Go to _step 3_.
   * Alternatively, authenticate with an access token from your Git provider. Go to _step 4_.
@@ -431,10 +460,21 @@ For more information on generating SSH private keys, see the official documentat
 {:start="6"}
 1. Click **Update Credentials**.
   Codefresh displays a message that the Git Runtime credentials have been updated.
-1. Continue with [Step 5: (Optional) Configure Hybrid GitOps Runtime as Argo Application](#step-5-optional-configure-hybrid-gitops-runtime-as-argo-application).
+1. Continue with [Step 5: Add Git user token](#step-5-add-git-user-token).
+
+### Step 5: Add Git user token
+Add a Git user token, as a personal access token unique to every user. The permissions for the Git user token are different from those of the Git Runtime token.
+Verify that you have an [access token from your Git provider with the correct scopes]({{site.baseurl}}/docs/reference/git-tokens/#git-user-access-token-scopes).
+
+>**TIP**:  
+If you already have a Git user token defined, you can skip this step.  
+
+1. Click **Git user token** to add your personal access token to authorize actions to Git repositories. 
+1. Continue with [Step 6: (Optional) Configure Hybrid GitOps Runtime as Argo Application](#step-6-optional-configure-hybrid-gitops-runtime-as-argo-application).
 
 
-### Step 5: (Optional) Configure Hybrid GitOps Runtime as Argo Application
+
+### Step 6: (Optional) Configure Hybrid GitOps Runtime as Argo Application
 
 Configure the Hybrid GitOps Runtime as an Argo Application as the final step in the installation process.  
 By doing so, you can view the Runtime components, monitor health and sync statuses, and ensure that GitOps is the single source of truth for the Runtime.   
@@ -458,9 +498,9 @@ You cannot configure the Runtime as an Argo Application if you have not configur
    %}
 
 {:start="3"}  
-1. Continue with [Step 6: GitOps with Argo CD: Remove Rollouts controller deployment](#step-6-gitops-with-argo-cd-remove-rollouts-controller-deployment).
+1. Continue with [Step 7: GitOps with Argo CD: Remove Rollouts controller deployment](#step-7-gitops-with-argo-cd-remove-rollouts-controller-deployment).
 
-### Step 6: GitOps with Argo CD: Remove Rollouts controller deployment
+### Step 7: GitOps with Argo CD: Remove Rollouts controller deployment
 For GitOps with Argo CD, after confirming successful installation, remove the duplicate Argo Rollouts controller deployment to avoid having two controllers in the cluster. 
 
 >**IMPORTANT**:  
@@ -468,18 +508,18 @@ For GitOps with Argo CD, after confirming successful installation, remove the du
 
 1. Remove the duplicate Argo Rollouts controller:  
   `kubectl delete deployment <argo-rollouts-controller-name> -n <argo-rollouts-controller-namespace>`
-1. Continue with [Step 7: (Optional) Create a Git Source](#step-7-optional-create-a-git-source).
+1. Continue with [Step 8: (Optional) Create a Git Source](#step-8-optional-create-a-git-source).
 
 
-### Step 7: (Optional) Create a Git Source
+### Step 8: (Optional) Create a Git Source
 
 Create a Git Source for the Runtime. A Git Source is a Git repository with an opinionated folder structure, managed by Codefresh.  
 You can always create Git Sources after installation whenever you need to from the Codefresh UI.
 
 1. Optional. Create a [Git Source]({{site.baseurl}}/docs/installation/gitops/git-sources/#create-a-git-source).
-1. Continue with [Step 8: (Optional) Configure ingress-controllers](#step-8-optional-configure-ingress-controllers).
+1. Continue with [Step 9: (Optional) Configure ingress-controllers](#step-9-optional-configure-ingress-controllers).
 
-### Step 8: (Optional) Configure ingress-controllers
+### Step 9: (Optional) Configure ingress-controllers
 Required only for ALB AWS and NGINX Enterprise ingress-controllers, and Istio service meshes.<br>
 
 * Complete configuring these ingress controllers:
