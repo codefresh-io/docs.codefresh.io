@@ -54,8 +54,7 @@ For details, see [Application Groups for GitOps applications]({{site.baseurl}}/d
 
 <br><br>
 
-### GitOps: Argo Events upgrade
-We have upgraded our version of Argo Events to v1.7.3. Read about the changes in this [version](https://github.com/argoproj/argo-events/releases/tag/v1.7.3){:target="\_blank"}.
+
 
 
 
