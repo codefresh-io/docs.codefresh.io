@@ -33,7 +33,7 @@ Choose the installation option that best aligns with your specific requirements 
 * **First-time GitOps Runtime installation**   
   If this is your first time installing a GitOps Runtime in your Codefresh account, follow these steps:
 
-  * [Complete pre-requisites]((#prepare-for-gitops-runtime-installation)): Before starting the installation, complete pre-requisites, as described in Prepare for GitOps Runtime Installation.
+  * [Complete pre-requisites](#prepare-for-gitops-runtime-installation): Before starting the installation, complete pre-requisites, as described in Prepare for GitOps Runtime Installation.
   * [System requirements](#minimum-system-requirements): Check the minimum system requirements to ensure smooth installation.
   * [Step-by-step installation](#install-first-gitops-runtime-in-account): Follow our step-by-step guide to install the Hybrid GitOps Runtime from the Codefresh UI.
 
@@ -112,17 +112,43 @@ See [Argo's readme on Helm charts](https://github.com/argoproj/argo-helm/blob/ma
 ### GitOps with Argo CD: Synchronize Argo CD chart's minor versions 
 To avoid potentially incompatible changes or mismatches, ensure that the native Argo CD instance uses the same upstream version of Argo CD as that used by Codefresh.   
 
-1. Go to `https://github.com/codefresh-io/argo-helm/<upstream-chart-version>-<codefresh-version id>/charts/argo-cd/Chart.yaml`.  
-  For example, `https://github.com/codefresh-io/argo-helm/blob/argo-cd-5.38.1-1-cap-CR-18361/charts/argo-cd/Chart.yaml`.
-1. Find the Argo CD version in `app.version`, as in this example: 
+1. Get the Argo CD chart version used by Codefresh from the DEPENDENCIES either in ArtifactHub or from the gitops-runtime's `Chart.yaml` in Git: 
+  * [ArtifactHub](https://artifacthub.io/packages/helm/codefresh-gitops-runtime/gitops-runtime){:target="\_blank"}: 
+    {% include
+   image.html
+   lightbox="true"
+   file="/images/runtime/helm/helm-side-by-side-argocd-version-dependencies.png"
+ url="/images/runtime/helm/helm-side-by-side-argocd-version-dependencies.png"
+  alt="Getting the Codefresh chart version of Argo CD from Dependencies in ArtifactHub"
+  caption="Getting the Codefresh chart version of Argo CD from Dependencies in ArtifactHub"
+  max-width="60%"
+%}
+
+  * [`Chart.yaml`](https://github.com/codefresh-io/gitops-runtime-helm/blob/main/charts/gitops-runtime/Chart.yaml):
+
+    {% include
+   image.html
+   lightbox="true"
+   file="/images/runtime/helm/helm-side-by-side-argocd-version-dependencies.png"
+ url="/images/runtime/helm/helm-side-by-side-argocd-version-dependencies.png"
+  alt="Getting the Codefresh chart version of Argo CD from Dependencies in Chart.yaml"
+  caption="Getting the Codefresh chart version of Argo CD from Dependencies in Chart.yaml"
+  max-width="60%"
+%}
+
+1. Go to `https://github.com/codefresh-io/argo-helm/blob/argo-cd-<dependency-chart-version>/charts/argo-cd/Chart.yaml`  
+  where:
+  <dependency-chart-version> is the Codefresh Argo CD chart version you retrieved in step 1, for example, `5.38.1-1-cap-CR-18361`.
+
+1. Check the `appVersion` as in the example below.
 
 {% include
    image.html
    lightbox="true"
    file="/images/runtime/helm/helm-side-by-side-argocd-version.png"
  url="/images/runtime/helm/helm-side-by-side-argocd-version.png"
-  alt="Getting the Codefresh upstream chart version of Argo CD"
-  caption="Getting the Codefresh upstream chart version of Argo CD"
+  alt="Check versions"
+  caption="Check versions"
   max-width="60%"
 %}
 
@@ -244,7 +270,7 @@ You can define one of three different access modes:
 **GitOps with Argo CD**
 * `fullnameOverride` configuration for resource conflicts  
   Installing GitOps Runtime on the same cluster as Argo CD can cause conflicts when resources in both native and Codefresh's Argo CD instances have the same name or attempt to control the same objects.
-  Customizing `fullnameOverride` values for Argo CD and Argo Rollouts in the GitOps Runtime's `values` file prevents these conflicts.
+  Customizing `fullnameOverride` values for Argo CD and Argo Rollouts if installed in the GitOps Runtime's `values` file prevents these conflicts.
 
 * Resource tracking with `annotation`  
   Installing GitOps Runtime on the same cluster as Argo CD require that each Argo CD instance uses different methods to track resources. Using the same tracking method can result in conflicts when both instances have applications with the same names or when tracking the same resource. Setting the GitOps Runtime's Argo CD resource tracking to `annotation` prevents such conflicts. 
