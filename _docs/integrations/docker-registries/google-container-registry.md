@@ -22,7 +22,7 @@ Configure GCR (Google Container Registry) as your Docker registry provider.
 1. From the **Add Registry Provider** dropdown, select **Google Container Registry**.
 1. Define the following:  
   * **Registry name**: A unique name for this configuration.
-  * **Domain**: Select the domain.
+  * **Domain**: Select the domain, for example, `us.gcr.io`. Make sure the _domain does not include suffixes such as the URL path_. Configuring the domain as `us.gcr.io/my_org` is incorrect and will cause builds to fail. 
   * **JSON Keyfile**: The content of the generated JSON key file. 
 
 

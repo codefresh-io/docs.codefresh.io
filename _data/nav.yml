@@ -353,6 +353,8 @@
           url: "/create-application"
         - title: Monitoring GitOps applications
           url: "/applications-dashboard"
+        - title: Application Groups for GitOps applications
+          url: "/gitops-app-groups"
         - title: Managing GitOps applications
           url: "/manage-application"
         - title: Progressive delivery with GitOps
@@ -412,7 +414,7 @@
           url: "/helm-triggers"
         - title: Artifactory triggers
           url: "/jfrog-triggers"
-        - title: Timer (Cron) triggers
+        - title: Cron (timer) triggers
           url: "/cron-triggers"
     - title: Variables in pipelines
       url: "/variables"

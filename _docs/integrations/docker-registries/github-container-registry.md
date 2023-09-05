@@ -96,7 +96,7 @@ Now that you have verified your token, we can connect the registry to Codefresh.
   * **Registry name**: A unique name for this configuration.
   * **Username**: Your GitHub username.
   * **Password**: Your GitHub personal token.
-  * **Domain**: `ghcr.io`.
+  * **Domain**: `ghcr.io`. 
   * Expand **Advanced Options** and define the [**Repository Prefix**]({{site.baseurl}}/docs/integrations/docker-registries/#using-an-optional-repository-prefix) as your GitHub username.
 
 {% include image.html 
