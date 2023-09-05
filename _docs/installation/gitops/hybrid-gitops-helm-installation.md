@@ -114,11 +114,12 @@ To avoid potentially incompatible changes or mismatches, ensure that the native 
 
 1. Get the Argo CD chart version used by Codefresh from the DEPENDENCIES either in ArtifactHub or from the gitops-runtime's `Chart.yaml` in Git: 
   * [ArtifactHub](https://artifacthub.io/packages/helm/codefresh-gitops-runtime/gitops-runtime){:target="\_blank"}: 
-    {% include
+  
+  {% include
    image.html
    lightbox="true"
-   file="/images/runtime/helm/helm-side-by-side-argocd-version-dependencies.png"
- url="/images/runtime/helm/helm-side-by-side-argocd-version-dependencies.png"
+   file="/images/runtime/helm/argo-cd-chart-version-artifacthub.png"
+   url="/images/runtime/helm/argo-cd-chart-version-artifacthub.png"
   alt="Getting the Codefresh chart version of Argo CD from Dependencies in ArtifactHub"
   caption="Getting the Codefresh chart version of Argo CD from Dependencies in ArtifactHub"
   max-width="60%"
@@ -129,17 +130,17 @@ To avoid potentially incompatible changes or mismatches, ensure that the native 
     {% include
    image.html
    lightbox="true"
-   file="/images/runtime/helm/helm-side-by-side-argocd-version-dependencies.png"
- url="/images/runtime/helm/helm-side-by-side-argocd-version-dependencies.png"
+   file="/images/runtime/helm/argo-cd-chart-version-git.png"
+   url="/images/runtime/helm/argo-cd-chart-version-git.png"
   alt="Getting the Codefresh chart version of Argo CD from Dependencies in Chart.yaml"
   caption="Getting the Codefresh chart version of Argo CD from Dependencies in Chart.yaml"
   max-width="60%"
 %}
 
+{:start="2"}
 1. Go to `https://github.com/codefresh-io/argo-helm/blob/argo-cd-<dependency-chart-version>/charts/argo-cd/Chart.yaml`  
-  where:
-  <dependency-chart-version> is the Codefresh Argo CD chart version you retrieved in step 1, for example, `5.38.1-1-cap-CR-18361`.
-
+  where:  
+  `<dependency-chart-version>` is the Codefresh Argo CD chart version you retrieved in step 1, for example, `5.38.1-1-cap-CR-18361`.
 1. Check the `appVersion` as in the example below.
 
 {% include
