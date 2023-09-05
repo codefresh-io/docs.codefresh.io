@@ -20,7 +20,7 @@ This article walks you through the process of installing Hybrid GitOps Runtimes 
 There are two options for Hybrid GitOps Runtime installation via Helm, each catering to specific use cases:
 * **Clean cluster installation with only GitOps**  
   The _clean cluster_ installation option is suitable for environments where you want to deploy the GitOps Runtime on a cluster without Argo CD.
-  The installation cluster should be free of Argo project components. GitOps Runtime installation on a clean cluster also installs Argo project components as part of the installation process, 
+  The installation cluster should be free of Argo Project components. GitOps Runtime installation on a clean cluster also installs Argo Project components as part of the installation process, 
 
 * **Cluster with existing Argo CD**  
   If you have a cluster with Argo CD already installed, you can extend it with Codefresh's GitOps capabilities.
@@ -61,9 +61,10 @@ Whether you are installing GitOps on a clean cluster without Argo CD or on a clu
 
 | Prerequisite                                                            |  GitOps only    | GitOps with Argo CD | 
 |-------------------------------------                                   |:------------:   |:-------------:      |
-| [Argo project components](#gitops-only-argo-project-components)        |    ✅            |     N/A                |
-| [Argo project CRDs(Custom Resource Definitions)](#gitops-onlygitops-with-argo-cd-argo-project-crds)  |     ✅            | ✅                  |
-| [Synchronize Argo CD chart's minor versions](#gitops-onlygitops-with-argo-cd-argo-project-crds) |     N/A           | ✅        |
+| [Argo Project components](#gitops-only-argo-project-components)        |    ✅            |     N/A                |
+| [Argo Project CRDs(Custom Resource Definitions)](#gitops-onlygitops-with-argo-cd-argo-project-crds)  |     ✅            | ✅                  |
+| [Argo Rollout CRDs(Custom Resource Definitions)](#gitops-onlygitops-with-argo-cd-argo-rollout-crds)  |     ✅            | ✅                  |
+| [Synchronize Argo CD chart's minor versions](#gitops-with-argo-cd-synchronize-argo-cd-charts-minor-versions) |     N/A           | ✅        |
 | [Set native Argo CD resource tracking to `label](#gitops-with-argo-cd-set-native-argo-cd-resource-tracking-to-label) |     N/A   |        ✅     |
 
 ### GitOps only: Argo Project components
@@ -81,11 +82,11 @@ Run this script _before_ installation:
 ```
 curl https://raw.githubusercontent.com/codefresh-io/gitops-runtime-helm/main/scripts/adopt-crds.sh | bash -s <runtime-helm-release name> <runtime-namespace>
 ```
-#### Handle Argo project CRDs outside of the chart 
-Disable CRD installation under the relevant section for each of the Argo projects in the Helm chart:<br>
+#### Handle Argo Project CRDs outside of the chart 
+Disable CRD installation under the relevant section for each of the Argo Projects in the Helm chart:<br>
   `--set <argo-project>.crds.install=false`<br>
   where:<br>
-  `<argo-project>` is the argo project component: `argo-cd`, `argo-workflows`, `argo-rollouts` and `argo-events`.
+  `<argo-project>` is the Argo Project component: `argo-cd`, `argo-workflows`, `argo-rollouts` and `argo-events`.
 
 See [Argo's readme on Helm charts](https://github.com/argoproj/argo-helm/blob/main/README.md){:target="\_blank"}.  
 
@@ -112,7 +113,7 @@ kubectl annotate --overwrite crds $(kubectl get crd | grep argoproj.io | awk '{p
 ### GitOps with Argo CD: Synchronize Argo CD chart's minor versions 
 To avoid potentially incompatible changes or mismatches, ensure that the native Argo CD instance uses the same upstream version of Argo CD as that used by Codefresh.   
 
-1. Get the Argo CD chart version used by Codefresh from the DEPENDENCIES either in ArtifactHub or from the gitops-runtime's `Chart.yaml` in Git: 
+1. Get the Argo CD chart version used by Codefresh from the Dependencies either in ArtifactHub or from the GitOps Runtime's `Chart.yaml` in Git: 
   * [ArtifactHub](https://artifacthub.io/packages/helm/codefresh-gitops-runtime/gitops-runtime){:target="\_blank"}: 
   
   {% include
@@ -125,7 +126,7 @@ To avoid potentially incompatible changes or mismatches, ensure that the native 
   max-width="60%"
 %}
 
-  * [`Chart.yaml`](https://github.com/codefresh-io/gitops-runtime-helm/blob/main/charts/gitops-runtime/Chart.yaml):
+  * [Chart.yaml](https://github.com/codefresh-io/gitops-runtime-helm/blob/main/charts/gitops-runtime/Chart.yaml){:target="\_blank"}:
 
     {% include
    image.html
@@ -178,7 +179,7 @@ The Codefresh `values.yaml` located [here](https://github.com/codefresh-io/gitop
 * For GitOps installation with Argo CD, verify the following: 
   * [Minor version of Argo CD's Helm chart](#side-by-side-gitops-minor-versions) is identical to the version used by Codefresh
   * [Native Argo CD's resource tracking is set to `label`](#side-by-side-gitops-set-native-argo-cd-resource-tracking-to-label)
-* Verify there are no Argo Project CRDs in the target namespace or that you have adopted the CRDs (see [Argo project components & CRDs](#argo-project-components--crds))
+* Verify there are no Argo Project CRDs in the target namespace or that you have adopted the CRDs (see [Argo Project components & CRDs](#argo-project-components--crds))
 * For ingress-based runtimes only, verify that these ingress controllers are configured correctly:
   * [Ambassador ingress configuration](#ambassador-ingress-configuration)
   * [AWS ALB ingress configuration](#aws-alb-ingress-configuration)
@@ -216,7 +217,7 @@ The Git provider you select for the first GitOps Runtime in your account is used
 **Shared Configuration Repository**  
 The [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) is a Git repository with configuration manifests shared between all the Hybrid GitOps Runtimes within the same account. Codefresh identifies the Git provider from the URL of the Shared Configuration Repo, and for cloud providers, automatically populates the Git Provider and the API URL fields. 
 
-**Git provider**
+**Git provider**  
 On-premises Git providers require you to define the API URL: 
   * GitHub Enterprise: `https://<server-url>/api/v3`
   * GitLab Server: `<server-url>/api/v4`
@@ -234,10 +235,10 @@ On-premises Git providers require you to define the API URL:
 {% include
    image.html
    lightbox="true"
-   file="/images/runtime/helm/helm-install-hybrid-runtime.png"
- url="/images/runtime/helm/helm-install-hybrid-runtime.png"
-  alt="Install Hybrid GitOps Runtime"
-  caption="Install Hybrid GitOps Runtime"
+   file="/images/runtime/helm/helm-define-isc-git-provider.png"
+   url="/images/runtime/helm/helm-define-isc-git-provider.png"
+  alt="Define Shared Configuration Repo and Git provider"
+  caption="Define Shared Configuration Repo and Git provider"
   max-width="40%"
 %}
 
@@ -252,8 +253,9 @@ Install the Hybrid GitOps Runtime through the Helm chart. The Codefresh `values.
 >**TIP**:  
   Before initiating the installation, Codefresh automatically validates the `values.yaml` file to verify that the supplied values are correct.<br> 
   If the Helm installation is terminated with the error message: `Job has reached the specified backoff limit`, get more detailed information on the reason for the validation failure with:  
-
   `kubectl logs jobs/validate-values -n ${NAMESPACE}`, replacing `{NAMESPACE}` with the namespace of the Hybrid GitOps Runtime. 
+
+<br><br>
 
 **Runtime Name**  
 If you define a custom name for the Hybrid GitOps Runtime, it must start with a lower-case character, and can include up to 62 lower-case characters and numbers.
@@ -271,7 +273,7 @@ You can define one of three different access modes:
 **GitOps with Argo CD and Argo Rollouts**
 * `fullnameOverride` configuration for resource conflicts  
   Installing GitOps Runtime on the same cluster as Argo CD can cause conflicts when resources in both native and Codefresh's Argo CD instances have the same name or attempt to control the same objects.
-  Customizing `fullnameOverride` values for Argo CD and Argo Rollouts if installed in the GitOps Runtime's `values` file prevents these conflicts.
+  Customizing `fullnameOverride` values for Argo CD, and if installed, Argo Rollouts, in the GitOps Runtime's `values` file prevents these conflicts.
 
 * Resource tracking with `annotation`  
   Installing GitOps Runtime on the same cluster as Argo CD require that each Argo CD instance uses different methods to track resources. Using the same tracking method can result in conflicts when both instances have applications with the same names or when tracking the same resource. Setting the GitOps Runtime's Argo CD resource tracking to `annotation` prevents such conflicts. 
