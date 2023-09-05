@@ -3,6 +3,7 @@ title: "Runner installation behind firewalls"
 description: "Run Codefresh pipelines in your own secure infrastructure"
 group: installation
 redirect_from:
+  - /docs/administration/behind-the-firewall/
   - /docs/enterprise/behind-the-firewall/
 toc: true
 ---
