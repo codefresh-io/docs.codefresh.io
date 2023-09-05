@@ -74,19 +74,28 @@ If you already have Argo Project CRDs on your cluster, Codefresh recommends adop
 Allowing the GitOps Runtime to manage the CRDs also ensures that the CRDs are automatically upgraded whenever the Runtime is upgraded. 
 
 
-#### (Recommended) Adopt the Argo Project CRDs
-You can either adopt all CRDs which is the recommended option, or only Argo Rollout CRDs.
-
-**Option 1: Adopt All CRDs (Recommended)**  
+#### (Recommended) Adopt all Argo Project CRDs
 Adopting _all CRDs_ switches ownership to the Hybrid GitOps Runtime, allowing them to be managed by the GitOps Runtime chart. 
  
 Run this script _before_ installation:
 ```
 curl https://raw.githubusercontent.com/codefresh-io/gitops-runtime-helm/main/scripts/adopt-crds.sh | bash -s <runtime-helm-release name> <runtime-namespace>
 ```
+#### Handle Argo project CRDs outside of the chart 
+Disable CRD installation under the relevant section for each of the Argo projects in the Helm chart:<br>
+  `--set <argo-project>.crds.install=false`<br>
+  where:<br>
+  `<argo-project>` is the argo project component: `argo-cd`, `argo-workflows`, `argo-rollouts` and `argo-events`.
 
-**Option 2: Adopt only Argo Rollout CRDs**  
+See [Argo's readme on Helm charts](https://github.com/argoproj/argo-helm/blob/main/README.md){:target="\_blank"}.  
+
+
+### GitOps only/GitOps with Argo CD: Argo Rollout CRDs
+
 You can also adopt only those CRDs that apply to Argo Rollouts. Adopting Argo Rollouts CRDs also switches ownership of the Rollout CRDs to the GitOps Runtime, and ensures that there is only one active Argo Rollouts controller active on the Runtime cluster. 
+
+>**NOTE**:  
+If you already adopted all Argo Project CRDs, you can skip this part.
 
 
 Run this script _before_ installation:
@@ -98,15 +107,6 @@ kubectl label --overwrite crds $(kubectl get crd | grep argoproj.io | awk '{prin
 kubectl annotate --overwrite crds $(kubectl get crd | grep argoproj.io | awk '{print $1}' | xargs) meta.helm.sh/release-name=$RELEASE
 kubectl annotate --overwrite crds $(kubectl get crd | grep argoproj.io | awk '{print $1}' | xargs) meta.helm.sh/release-namespace=$NAMESPACE
 ```
-
-#### Handle Argo project CRDs outside of the chart 
-Disable CRD installation under the relevant section for each of the Argo projects in the Helm chart:<br>
-  `--set <argo-project>.crds.install=false`<br>
-  where:<br>
-  `<argo-project>` is the argo project component: `argo-cd`, `argo-workflows`, `argo-rollouts` and `argo-events`.
-
-See [Argo's readme on Helm charts](https://github.com/argoproj/argo-helm/blob/main/README.md){:target="\_blank"}.  
-
 
 
 ### GitOps with Argo CD: Synchronize Argo CD chart's minor versions 
@@ -267,7 +267,7 @@ You can define one of three different access modes:
 * Service-mesh-based, which requires explicitly disabling the tunnel- and ingress-based modes in the installation command. The service mesh may also need to be configured before and after installation. See [Ingress controller configuration](#ingress-controller-configuration) in this article.
 
 
-**GitOps with Argo CD**
+**GitOps with Argo CD and Argo Rollouts**
 * `fullnameOverride` configuration for resource conflicts  
   Installing GitOps Runtime on the same cluster as Argo CD can cause conflicts when resources in both native and Codefresh's Argo CD instances have the same name or attempt to control the same objects.
   Customizing `fullnameOverride` values for Argo CD and Argo Rollouts if installed in the GitOps Runtime's `values` file prevents these conflicts.
@@ -368,7 +368,7 @@ helm upgrade --install <helm-release-name> \
       * `gitops-runtime` is the chart name defined by Codefresh, and cannot be changed.
       * GitOps with Argo CD installation:
         * `argo-cd.fullnameOverride=codefresh-argo-cd` is mandatory when _installing GitOps with Argo CD_ to avoid conflicts at the cluster-level for resources in both the native Argo CD and GitOps Runtime's Argo CD.
-        * `argo-rollouts.fullnameOverride=codefresh-argo-rollouts` is mandatory _installing GitOps with Argo CD_ to avoid conflicts if you have Argo Rollouts in your cluster.
+        * `argo-rollouts.fullnameOverride=codefresh-argo-rollouts` is mandatory when _installing GitOps with Argo CD_  and you have Argo Rollouts in your cluster to avoid conflicts.
         * `argo-cd.configs.cm.application.resourceTrackingMethod=annotation` is mandatory _installing GitOps with Argo CD_ to avoid conflicts when tracking resources with the same application names or when tracking the same resource in both the native Argo CD and GitOps Runtime's Argo CD.
       * Ingress-based Runtimes:  
           * `global.runtime.ingress.enabled=true` is mandatory for _ingress-based Hybrid GitOps Runtimes_, and indicates that the runtime is ingress-based.
@@ -524,10 +524,10 @@ You cannot configure the Runtime as an Argo Application if you have not configur
    %}
 
 {:start="3"}  
-1. Continue with [Step 7: GitOps with Argo CD: Remove Rollouts controller deployment](#step-7-gitops-with-argo-cd-remove-rollouts-controller-deployment).
+1. Continue with [Step 7: (Optional) GitOps with Argo CD: Remove Rollouts controller deployment](#step-7-optional-gitops-with-argo-cd-remove-rollouts-controller-deployment).
 
-### Step 7: GitOps with Argo CD: Remove Rollouts controller deployment
-For GitOps with Argo CD, after confirming successful installation, remove the duplicate Argo Rollouts controller deployment to avoid having two controllers in the cluster. 
+### Step 7: (Optional) GitOps with Argo CD: Remove Rollouts controller deployment
+For GitOps with Argo CD, if you have Argo Rollouts also installed, after confirming successful installation, remove the duplicate Argo Rollouts controller deployment to avoid having two controllers in the cluster. 
 
 >**IMPORTANT**:  
   Make sure to remove only the `deployment` and not the CRDs. Removing the CRDs also removes Rollout objects resulting in downtime for workloads. 
@@ -573,7 +573,7 @@ Install additional Hybrid GitOps Runtimes on different clusters within the same 
 
 The Codefresh `values.yaml` located [here](https://github.com/codefresh-io/gitops-runtime-helm/blob/main/charts/gitops-runtime/){:target="\_blank"}, contains all the arguments you can configure, including optional ones.
 
-## Step1: Copy & run Helm install command
+### Step 1: Copy & run Helm install command
 
 **Git provider and Shared Configuration Repository**  
 The Git provider and Shared Configuration Repository is configured once per account, and are not required for additional installations in the same account.  
