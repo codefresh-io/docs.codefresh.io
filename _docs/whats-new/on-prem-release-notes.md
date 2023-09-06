@@ -217,6 +217,9 @@ For GitOps app-proxy, when disabling concurrent sessions for `cf-api` through `D
  
 For details, see [Customize session cookie](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#enable-session-cookie){:target="\_blank"}.
 
+#### Frame options for Codefresh pages
+We've introduced a new environment variable, `FRAME_OPTIONS`, which is now available for the `cf-api` and `cf-ui` services. This variable allows you to define the frame rendering behavior for Codefresh pages to enhance security and customization. You can control if the Codefresh page is rendered within frames of the same origin as the page or not. 
+
 ### Bug fixes
 
 
