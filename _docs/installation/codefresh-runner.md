@@ -2019,133 +2019,21 @@ With the Codefresh Runner, you can run native ARM64v8 builds.
 >**Note:**
   You cannot run *both* amd64 and arm64 images within the same pipeline. As we do not support multi-architecture builds, and one pipeline can map only to one runtime, you can run either amd64 or arm64 within the same pipeline.
 
-The following scenario is an example of how to set up ARM Runner on existing EKS cluster:
+> *Example for Codefresh Runner installed via Helm chart*
 
-**Step 1: Preparing nodes**
+Provide `nodeSelector` and(or) `tolerations` for dind pods in [venona/charts/cf-runtime/values.yaml](https://github.com/codefresh-io/venona/blob/release-1.0/charts/cf-runtime/values.yaml)
 
-
-* Create new ARM nodegroup:
-
-```shell
-eksctl utils update-coredns --cluster <cluster-name>
-eksctl utils update-kube-proxy --cluster <cluster-name> --approve
-eksctl utils update-aws-node --cluster <cluster-name> --approve
-
-eksctl create nodegroup \
---cluster <cluster-name> \
---region <region> \
---name <arm-ng> \
---node-type <a1.2xlarge> \
---nodes <3>\
---nodes-min <2>\
---nodes-max <4>\
---managed
-```
-* Check nodes status:
-
-```shell
-kubectl get nodes -l kubernetes.io/arch=arm64
-```
-* Also it's recommeded to label and taint the required ARM nodes:
-
-```shell
-kubectl taint nodes <node> arch=aarch64:NoSchedule
-kubectl label nodes <node> arch=arm
-```
-
-**Step 2: Runner installation**
-
-* Use [values.yaml](https://github.com/codefresh-io/venona/blob/release-1.0/venonactl/example/values-example.yaml){:target="\_blank"} to inject `tolerations`, `kube-node-selector`, `build-node-selector` into the Runtime Environment spec.
-
-`values-arm.yaml`
-
+`values.yaml`
 ```yaml
-...
-Namespace: codefresh
-
-### NodeSelector --kube-node-selector: controls runner and dind-volume-provisioner pods
-NodeSelector: arch=arm
-
-### Tolerations --tolerations: controls runner, dind-volume-provisioner and dind-lv-monitor
-Tolerations:
-- key: arch
-  operator: Equal
-  value: aarch64
-  effect: NoSchedule
-...
-########################################################
-###                Codefresh Runtime                 ###
-###                                                  ###
-###         configure engine and dind pods           ###
-########################################################
-Runtime:
-### NodeSelector --build-node-selector: controls engine and dind pods
-  NodeSelector:
-    arch: arm
-### Tolerations for engine and dind pods
-  tolerations:
-  - key: arch
-    operator: Equal
-    value: aarch64
-    effect: NoSchedule
-...
-```
-
-* Install the Runner:
-```shell
-codefresh runner init --values values-arm.yaml --exec-demo-pipeline false --skip-cluster-integration true
-```
-
-**Step 3: Post-installation fixes**
-
-* Change `engine` image version in Runtime Environment specification:
-
-```shell
-# get the latest engine ARM64 tag
-curl -X GET "https://quay.io/api/v1/repository/codefresh/engine/tag/?limit=100" --silent | jq -r '.tags[].name' | grep "^1.*arm64$"
-1.136.1-arm64
-```
-```shell
-# get runtime spec
-codefresh get re $RUNTIME_NAME -o yaml > runtime.yaml
-```
-* Under `runtimeScheduler.image` change image tag:
-
-```yaml
-runtimeScheduler:
-  image: 'quay.io/codefresh/engine:1.136.1-arm64'
-```
-```shell
-# patch runtime spec
-codefresh patch re -f runtime.yaml
-```
-* For `local` storage patch `dind-lv-monitor-runner` DaemonSet and add `nodeSelector`:
-
-```shell
-kubectl edit ds dind-lv-monitor-runner
-```
-
-```yaml
-    spec:
-      nodeSelector:
-        arch: arm
-```
-
-**Step 4: Run Demo pipeline**
-
-Run a modified version of the *CF_Runner_Demo* pipeline:
-
-```yaml
-version: '1.0'
-stages:
-  - test
-steps:
-  test:
-    stage: test
-    title: test
-    image: 'arm64v8/alpine'
-    commands:
-      - echo hello Codefresh Runner!
+runtime:
+  dind:
+    nodeSelector:
+      arch: arm64
+    tolerations:
+    - key: arch
+      operator: Equal
+      value: arm64
+      effect: NoSchedule
 ```
 
 ## Uninstall Codefresh Runner
