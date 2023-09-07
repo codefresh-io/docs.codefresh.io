@@ -4,9 +4,12 @@ description: "Set up accounts and users in Codefresh after installing the on-pre
 group: installation
 toc: true
 ---
-After installing Codefresh on-premises successfully, before users can create projects and pipelines, you need to complete setup tasks, as described in this article.
+After installing Codefresh on-premises successfully, before users can work magic with Codefresh pipelines, as the Codefresh account administraor you need to complete setup tasks, as described in this article.
 
-The Codefresh Admin Management panel provides all the options you need for setup. Review the [options available in Admin Management](#quick-reference-codefresh-admin-management-settings), or continue with the steps below to complete the setup for Codefresh on-premises for your organization:
+The Codefresh Admin Management panel provides all the options you need for setup.
+
+
+Review the [options available in Admin Management](#quick-reference-codefresh-admin-management-settings), or continue with the steps below to complete the setup for Codefresh on-premises for your organization:
 1. Sign in to Codefresh
 1. Add a Codefresh account 
 1. Invite a user to the Codefresh account
@@ -19,10 +22,10 @@ The Codefresh Admin Management panel provides all the options you need for setup
 
 
 
-## On-premises account and user setup
+## On-premises account setup
 
 ### Step 1: Sign in to Codefresh
-Sign in to Codefresh for the first time after on-premises platform installation. You will sign in with the default username and password.
+Sign in to Codefresh for the first time after on-premises platform installation with the default username and password.
 
 1. In the **Sign In** page, click **Codefresh**.
 1. Enter the default **Username** `AdminCF` and **Password**, also `AdminCF`. 
@@ -45,7 +48,7 @@ Sign in to Codefresh for the first time after on-premises platform installation.
 Before creating projects and pipelines, set up Codefresh accounts for your organization.  
 
 Only those settings required for initial set up are described here.  
-For a description of all options for Accounts, see [Quick reference: Account settings](#quick-reference-account-settings) in this article.
+For a description of all options available for Accounts, see [Quick reference: Account settings](#quick-reference-account-settings) in this article.
 
 1. From your avatar dropdown, select **Admin Management**.
 
@@ -177,7 +180,7 @@ For convenience and ease of set up, _turn on ONLY the System Features listed in 
 
 >**IMPORTANT:**  
 Codefresh strongly recommends against enabling the System Features not explicitly mentioned here, unless you are familiar with the implications of turning on each of the features.  
-If you need to turn on a feature, we recommend contacting Codefresh support. 
+If you need to turn on a feature, we recommend to first contact Codefresh support. 
 
 1. Make sure you are in **Admin Management**.
 1. From the sidebar, click **Feature Management**. 
@@ -262,12 +265,44 @@ For more information on System Types, see [Quick reference: Account settings](#q
 Depending on the System Type activated, you are now ready to create:
 * Projects
 * Pipelines
-* Integrations for pipelines, GitOps
+* Integrations for 
+  * Pipelines
+  * GitOps
 * Applications
 
 See our [CI/CD]({{site.baseurl}}/docs/quick-start/ci-quick-start/) and [GitOps]({{site.baseurl}}/docs/quick-start/gitops-quick-start/) quick starts.
 
-## Quick reference: Codefresh Admin Management settings
+## 
+
+## Quick reference: Admin Management settings
+The Admin Management panel is your one-stop location to set up Codefresh to your requirements. 
+
+{% include image.html
+  lightbox="true"
+  file="/images/installation/on-prem-setup/admin-accounts-page.png"
+  url="/images/installation/on-prem-setup/admin-accounts-page.png"
+  alt="Codefresh account settings"
+  caption="Codefresh account settings"
+  max-width="60%"
+    %}
+
+The table describes the options in Admin Management relevant for Codefresh account administrators.  
+
+{: .table .table-bordered .table-hover}
+| Account Setting                     | Description            | 
+| --------------              | --------------         | 
+|**Users**     | The list of users added to the account. In addition to the personal and login information, you can see the roles assigned to the user, the accounts they belong to, their current status and most recent login. |  
+|**Accounts**     | The configuration settings defined for the account.<br> See [Quick reference: Account settings](#quick-reference-account-settings).  | 
+|**Customers**     | ??.  | 
+|**Nodes**     | Applicable only to Windows on-premises environments. The Docker nodes created for the account.  | 
+|**IDPs**     | The SSO integrations set up in Codefresh.  | 
+|**Runtime Environments**     | The predefined and user-defined Runtime Environments. {:nomarkdown}<ul><li><b>System</b>: The global Runtime Environments defined by Codefresh, available to your organization. When defining the account settings, you can select one of the predefined Runtime Environments for the account. </li><li><b>Account</b>: The Runtime Environments defined for the account.</li></ul>{::/}| 
+|**Audit**     | The actions audited by Codefresh across all accounts in your organization, based on the API calls made to Codefresh. You can filter by Account, the type of Entity or Action, and Status. | 
+|**Approvals**     | The Codefresh accounts deleted after approval of the delete request.<br>You can restore a deleted account through the **Restore Account** option.   | 
+|**Features Management**     | The features to enable/disable for all or specific accounts in your organization. <br>See [Quick reference: On-premises feature list](on-prem-configuration/#quick-reference-on-premises-feature-list).  | 
+|**Restore Account**     | The list of deleted accounts for your organization, and the option to restore them by clicking **Restore Account** in the Actions column.  | 
+
+
 
 ## Quick reference: Account settings
 
@@ -297,16 +332,16 @@ The table describes the settings for available Codefresh accounts. Several setti
 |**Support plan**    | Leave as is. Managed by Codefresh.  |  
 |**Wire transfer**    | Leave as is. Managed by Codefresh.  |  
 |**Segment**    | Leave as is. Managed by Codefresh. | 
-|**Limit of environments**    | The number of Runtime Environments for this account. |  
-|**Parallel builds**    | The number of concurrent builds permitted according to the CPU/Memory resource allocation. what is 1/1/1 Every size shows the licensed number of concurrent builds and the number actually running. with the Runtime Environment for the account ?? :{:nomarkdown}<ul><li>Small: Codefresh pipelines only</li> <br>You can also set this as part of account-level settings for pipelines. See   |  | 
-|**Nodes**    | Relevant for when Codefresh on-premises is installed on Windows. The   |  | 
+|**Limit of environments**    | Leave as is.  |  
+|**Parallel builds**    | The number of parallel Runner builds for pipelines. Generally unlimited for on-premises. |  
+|**Nodes**    | Relevant for when Codefresh on-premises is installed on Windows. The number of console nodes you can connect to.   |  
 |**User/pass enabled**    | Enable username-password combination as a login mechanism for users in this account. <br>When enabled, the Sign-In screen displays **Codefresh** as a login option, and users can supply the username and password as login credentials. | 
 |**Disable personal account**    | When enabled (recommended), prevents users from logging in with their personal accounts, and allows login only with the company/organization account. | 
-|**Launch cluster**    | ??? |   
-|**Data retention**    | The length of time in weeks for which to retain builds and logs for Codefresh pipelines. <br>The retention period can be set through the slider, or through environment variables. See [Retention policy for builds and logs in ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#retention-policy-for-builds-and-logs){:target="\_blank"} and select the one according to the on-premises version installed.   |  
+|**Launch cluster**    | Leave as is. Not used |   
+|**Data retention**    | The length of time in weeks for which to retain builds and logs for Codefresh pipelines. <!--- <br>The retention period can be set through the slider, or through environment variables. See [Retention policy for builds and logs in ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#retention-policy-for-builds-and-logs){:target="\_blank"} and select the one according to the on-premises version installed. -->  |  
 |**Collaborators**    | The number of users permitted for this account. If you keep the count as one, Codefresh displays an error that you have reached the user limit and prevents you from inviting additional users.  | 
-|**Runtime environments**    | Leave as is. Managed by Codefresh. |  
-|**Codefresh environments**    | The environment to select for the Windows nodes. |  
+|**Runtime environments**    | Optional. The System Runtime Environments to select for this account. The System Runtime Environments are global Runtime Environments predefined by Codefresh. |  
+|**Codefresh environments**    | The Codefresh environment to select for the Windows nodes. |  
 |**Actions**    | The actions available for the account, displayed by clicking the context menu to the right of the account:{:nomarkdown}<ul><li><b>Audit by account</b>: Takes you to the Audit page.<br>See ??? </li><li><b>Invite user to account</b>: Opens the popup where you can specify the email of the user to invite to the account. To add the admin role for this user, select <b>Set the user as admin to this account</b>.</li><li><b>Assign new feature</b>: Displays the list of features where you can enable/disable specific features for this account. <br>See [Quick reference: On-premises feature list](#quick-reference-on-premises-feature-list) in this article. </li><li>**Show account domains**: Restrict user invitations to specific email domains. Clicking <b>Add Domain</b> lets you add the email domains to allow.<br>See also [Define session timeouts and domain restrictions for user accounts]({{site.baseurl}}/docs/administration/account-user-management/add-users/#define-session-timeouts-and-domain-restrictions-for-user-accounts).</li>| 
 
 
