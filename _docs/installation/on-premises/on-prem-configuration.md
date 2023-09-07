@@ -270,9 +270,9 @@ Depending on the System Type activated, you are now ready to create:
   * GitOps
 * Applications
 
-See our [CI/CD]({{site.baseurl}}/docs/quick-start/ci-quick-start/) and [GitOps]({{site.baseurl}}/docs/quick-start/gitops-quick-start/) quick starts.
+See our quick starts for [CI/CD]({{site.baseurl}}/docs/quick-start/ci-quick-start/) and [GitOps]({{site.baseurl}}/docs/quick-start/gitops-quick-start/).
 
-## 
+
 
 ## Quick reference: Admin Management settings
 The Admin Management panel is your one-stop location to set up Codefresh to your requirements. 
@@ -293,7 +293,6 @@ The table describes the options in Admin Management relevant for Codefresh accou
 | --------------              | --------------         | 
 |**Users**     | The list of users added to the account. In addition to the personal and login information, you can see the roles assigned to the user, the accounts they belong to, their current status and most recent login. |  
 |**Accounts**     | The configuration settings defined for the account.<br> See [Quick reference: Account settings](#quick-reference-account-settings).  | 
-|**Customers**     | ??.  | 
 |**Nodes**     | Applicable only to Windows on-premises environments. The Docker nodes created for the account.  | 
 |**IDPs**     | The SSO integrations set up in Codefresh.  | 
 |**Runtime Environments**     | The predefined and user-defined Runtime Environments. {:nomarkdown}<ul><li><b>System</b>: The global Runtime Environments defined by Codefresh, available to your organization. When defining the account settings, you can select one of the predefined Runtime Environments for the account. </li><li><b>Account</b>: The Runtime Environments defined for the account.</li></ul>{::/}| 
@@ -341,7 +340,7 @@ The table describes the settings for available Codefresh accounts. Several setti
 |**Data retention**    | The length of time in weeks for which to retain builds and logs for Codefresh pipelines. <!--- <br>The retention period can be set through the slider, or through environment variables. See [Retention policy for builds and logs in ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#retention-policy-for-builds-and-logs){:target="\_blank"} and select the one according to the on-premises version installed. -->  |  
 |**Collaborators**    | The number of users permitted for this account. If you keep the count as one, Codefresh displays an error that you have reached the user limit and prevents you from inviting additional users.  | 
 |**Runtime environments**    | Optional. The System Runtime Environments to select for this account. The System Runtime Environments are global Runtime Environments predefined by Codefresh. |  
-|**Codefresh environments**    | The Codefresh environment to select for the Windows nodes. |  
+|**Codefresh environments**    |Optional. For Windows environments, the Codefresh environment to select for the Windows nodes. |  
 |**Actions**    | The actions available for the account, displayed by clicking the context menu to the right of the account:{:nomarkdown}<ul><li><b>Audit by account</b>: Takes you to the Audit page.<br>See ??? </li><li><b>Invite user to account</b>: Opens the popup where you can specify the email of the user to invite to the account. To add the admin role for this user, select <b>Set the user as admin to this account</b>.</li><li><b>Assign new feature</b>: Displays the list of features where you can enable/disable specific features for this account. <br>See [Quick reference: On-premises feature list](#quick-reference-on-premises-feature-list) in this article. </li><li>**Show account domains**: Restrict user invitations to specific email domains. Clicking <b>Add Domain</b> lets you add the email domains to allow.<br>See also [Define session timeouts and domain restrictions for user accounts]({{site.baseurl}}/docs/administration/account-user-management/add-users/#define-session-timeouts-and-domain-restrictions-for-user-accounts).</li>| 
 
 
