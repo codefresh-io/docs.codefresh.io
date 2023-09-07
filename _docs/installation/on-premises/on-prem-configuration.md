@@ -136,9 +136,9 @@ Once users are invited, their statuses remain as Pending until they accept the i
 
 {:start="3"}
 1. Optional. To enable username-password login for the user, complete these additional steps:
-  1. Click the icon to the left of the username, and select **Show Invite Link**.
-  1. Copy the link from the popup that appears and click **OK**.
-  1. Send the link to the user, requesting the user to sign in with the link for the first time.
+    1. Click the icon to the left of the username, and select **Show Invite Link**.
+    1. Copy the link from the popup that appears and click **OK**.
+    1. Send the link to the user, requesting the user to sign in to Codefresh with the link for the first time.
 1. Continue with [Step 4: Enable features for the account](#step-4-enable-features-for-the-account).
 
 
@@ -263,15 +263,13 @@ For more information on System Types, see [Quick reference: Account settings](#q
    
 ### What to do next
 Depending on the System Type activated, you are now ready to create:
-* Projects
-* Pipelines
+* [Projects and pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
 * Integrations for 
-  * Pipelines
-  * GitOps
-* Applications
+  * Pipeline integrations for [Git providers]({{site.baseurl}}/docs/integrations/git-providers/), [Docker registries]({{site.baseurl}}/docs/integrations/docker-registries/) and more
+  * [GitOps]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/)
+* [Applications]({{site.baseurl}}/docs/deployments/gitops/create-application)
 
 See our quick starts for [CI/CD]({{site.baseurl}}/docs/quick-start/ci-quick-start/) and [GitOps]({{site.baseurl}}/docs/quick-start/gitops-quick-start/).
-
 
 
 ## Quick reference: Admin Management settings
@@ -279,10 +277,10 @@ The Admin Management panel is your one-stop location to set up Codefresh to your
 
 {% include image.html
   lightbox="true"
-  file="/images/installation/on-prem-setup/admin-accounts-page.png"
-  url="/images/installation/on-prem-setup/admin-accounts-page.png"
-  alt="Codefresh account settings"
-  caption="Codefresh account settings"
+  file="/images/installation/on-prem-setup/admin-management-panel.png"
+  url="/images/installation/on-prem-setup/admin-management-panel.png"
+  alt="Admin Management options for Codefresh on-premises"
+  caption="Admin Management options for Codefresh on-premises"
   max-width="60%"
     %}
 
@@ -311,13 +309,13 @@ Here's an example of the Account settings page in Admin Management.
   lightbox="true"
   file="/images/installation/on-prem-setup/admin-accounts-page.png"
   url="/images/installation/on-prem-setup/admin-accounts-page.png"
-  alt="Codefresh account settings"
-  caption="Codefresh account settings"
+  alt="Settings for Codefresh accounts"
+  caption="Settings for Codefresh accounts"
   max-width="60%"
     %}
 
 
-The table describes the settings for available Codefresh accounts. Several settings are intended for internal use only and indicated as such. 
+The table describes the settings for available Codefresh accounts. Settings intended for internal use by Codefresh are indicated as such. 
 
 
 {: .table .table-bordered .table-hover}
@@ -382,4 +380,4 @@ The table describes the features you can open for Codefresh accounts, in alphabe
 |`useLogsTimestamps` |When enabled, prepends the date and time to every line in the log. <br><br>When enabled, and you have build automation, you may need to adjust the regex for search as the line does not start with the log text.| FALSE| 
 
 ## Related articles
-[On-premises installation]({{site.baseurl}}docs/installation/on-premises/)  
+[Codefresh on-premises upgrade]({{site.baseurl}}/docs/installation/on-premises/codefresh-on-prem-upgrade/)
