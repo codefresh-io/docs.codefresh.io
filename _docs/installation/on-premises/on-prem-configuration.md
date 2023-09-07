@@ -4,7 +4,7 @@ description: "Set up accounts and users in Codefresh after installing the on-pre
 group: installation
 toc: true
 ---
-After installing Codefresh on-premises successfully, before users can work magic with Codefresh pipelines, as the Codefresh account administraor you need to complete setup tasks, as described in this article.
+After installing Codefresh on-premises successfully, before users can work magic with Codefresh pipelines, as the Codefresh account administrator you need to complete setup tasks, as described in this article.
 
 The Codefresh Admin Management panel provides all the options you need for setup.
 
