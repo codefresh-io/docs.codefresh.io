@@ -11,17 +11,22 @@ toc: true
 
 Install the Codefresh Runner on your Kubernetes cluster to run pipelines and access secure internal services without compromising on-premises security requirements. These pipelines run on your infrastructure, even behind the firewall, and keep code on your Kubernetes cluster secure.
 
-We have transitioned to a new Helm-based installation for the Codefresh Runner. All new Runner installations must be installed with Helm. For existing installations, we encourage you to transition to the new Helm installation.
-The CLI-based installation is considered legacy and will be deprecated in the coming months. 
+The Codefresh Runner does not rely on specific dockershim features. It can work with any container runtime that adheres to the standards. In Codefresh pipelines, the docker socket/daemon is an internal docker daemon created and managed by the pipeline itself. It is also distinct from the docker daemon on the host node, which may not even exist in cases where containerd or cri-o is used.
+Review [Runner architecture]({{site.baseurl}}/docs/installation/runtime-architecture/#codefresh-runner-architecture) and how the [Runner works Runner behind firewalls]({{site.baseurl}}/docs/installation/behind-the-firewall/).
 
+>**IMPORTANT**:
+We have transitioned to a new Helm-based installation for the Codefresh Runner, which is now the default for all Runner installations.  
+Existing installations, both CLI-based, and older Helm-based ones, we encourage you to transition to the new Helm installation.
+The [CLI-based installation and configuration](#cli-based-codefresh-runner-installation) is considered legacy and will be deprecated in the coming months. 
 
-
-As the Codefresh Runner is **not** dependent on any special dockershim features, any compliant container runtime is acceptable. The docker socket/daemon used by Codefresh pipelines is an internal docker daemon created/managed by the pipeline itself, and **NOT** the one on the host node (as it might not exist at all in the case of containerd or cri-o).
-
->**IMPORTANT**:<br>
+>**Codefresh Runner with sport instances**:<br>
   Using spot instances can cause failures in Codefresh builds as they can be taken down without notice. If you require 100% availability, we do not recommend using spot instances.
 
-
+After installing the Codefresh Runner, you can:
+* View the Runner Agent and its Runtime Environments
+* Runner components and 
+* Configure different aspects of the Runner
+*  
 ## System requirements
 
 
@@ -40,63 +45,8 @@ As the Codefresh Runner is **not** dependent on any special dockershim features,
 To install the Codefresh Runner, follow the [chart installation instructions](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#install-chart) in ArtifactHub.
 
 **Existing installations**  
-For existing Runner installations, based on either older Helm installations or CLI-based installations:  
+For existing Runner installations, either older Helm installations or CLI-based installations:  
 Delete the existing `values` file and reinstall the Codefresh Runner with the new `values` file.
-
-
-
-## Codefresh Runner Agents and Runtime Environments
-
-View Codefresh Runners installed for your account and their status.  The Runner polls the Codefresh platform every three seconds by default to automatically create all resources needed for running pipelines. 
-
-### View Codefresh Runners
-The Codefresh Runners tab in Pipeline Runtimes displays the list of Agents for the account. Every Agent is attached to one or more Runtime Environments. The API token is the one provided during Runner installation.  
-
-
-1. In the Codefresh UI, click the **Settings** icon on the toolbar.
-1. From the sidebar, select **Pipeline Runtimes**, and then click [**Codefresh Runners**](https://g.codefresh.io/account-admin/pipeline-runtimes){:target="\_blank"}. 
-
-
-
-{% include image.html
-  lightbox="true"
-  file="/images/runtime/runner/runtime-environments.png"
-  url="/images/runtime/runner/runtime-environments.png"
-  alt="Available runtime environments"
-  caption="Available runtime environments"
-  max-width="60%"
-    %}
-1. To add an Agent, click **New Agent**, and do the following:
-  1. In the **Agent Name** field, enter the name of the Agent.
-  1. From the list of **Runtime Environments**, select one or more Runtime Environments to attach to the Agent. 
-  1. Click **Save**.
-
-The Agent is displayed i
- 
-### Select a default Runtime Environment  
-
-If you have multiple Runtime Environments for an Agent, select the one to use as the default environment for all the pipelines in the account. 
-You can always override the default Runtime Environment if needed for a specific pipeline.
-
-1. In the Codefresh UI, click the **Settings** icon on the toolbar.
-1. From the sidebar, select [**Pipeline Runtimes**](https://g.codefresh.io/account-admin/pipeline-runtimes){:target="\_blank"}. 
-1. From the list of Pipeline Runtimes, select the row with the runtime to set as the default.
-1. Click the context menu on the right, and select **Set as Default**.  
-  The selected Runtime Environment is outlined to indicate that it is the default.
-
-
-###  Override default Runtime Environment for a pipeline
-
-Override the default Runtime Environment for a specific pipeline through the pipeline's [Build Runtime settings]({{site.baseurl}}/docs/pipelines/pipelines/#build-runtime).  
-
-{% include image.html
-  lightbox="true"
-  file="/images/runtime/runner/environment-per-pipeline.png"
-  url="/images/runtime/runner/environment-per-pipeline.png"
-  alt="Overriding the default Runtime Environment for a pipeline"
-  caption="Overriding the default Runtime Environment for a pipeline"
-  max-width="60%"
-    %}
 
 ## Runner components and resources: To be updated - task for Mikhail
 
@@ -169,6 +119,57 @@ For the storage options needed by the `dind` pod, we suggest:
 
 All CNI providers/plugins are compatible with the runner components.
 
+## Codefresh Runner Agents and Runtime Environments
+
+View Codefresh Runners installed for your account and their status.  The Runner polls the Codefresh platform every three seconds by default to automatically create all resources needed for running pipelines. 
+
+The Codefresh Runners tab in Pipeline Runtimes displays the list of Agents for the account. Every Agent is attached to one or more Runtime Environments. The API token is the one provided during Runner installation.  
+
+
+1. In the Codefresh UI, click the **Settings** icon on the toolbar.
+1. From the sidebar, select **Pipeline Runtimes**, and then click [**Codefresh Runners**](https://g.codefresh.io/account-admin/pipeline-runtimes){:target="\_blank"}. 
+
+{% include image.html
+  lightbox="true"
+  file="/images/runtime/runner/runtime-environments.png"
+  url="/images/runtime/runner/runtime-environments.png"
+  alt="Available runtime environments"
+  caption="Available runtime environments"
+  max-width="60%"
+    %}
+1. To add an Agent, click **New Agent**, and do the following:
+  1. In the **Agent Name** field, enter the name of the Agent.
+  1. From the list of **Runtime Environments**, select one or more Runtime Environments to attach to the Agent. 
+  1. Click **Save**.
+
+ 
+### Select a default Runtime Environment  
+
+If you have multiple Runtime Environments for an Agent, select the one to use as the default environment for all the pipelines in the account. 
+You can always override the default Runtime Environment if needed for a specific pipeline.
+
+1. In the Codefresh UI, click the **Settings** icon on the toolbar.
+1. From the sidebar, select [**Pipeline Runtimes**](https://g.codefresh.io/account-admin/pipeline-runtimes){:target="\_blank"}. 
+1. From the list of Pipeline Runtimes, select the row with the runtime to set as the default.
+1. Click the context menu on the right, and select **Set as Default**.  
+  The selected Runtime Environment is outlined to indicate that it is the default.
+
+
+###  Override default Runtime Environment for a pipeline
+
+Override the default Runtime Environment for a specific pipeline through the pipeline's [Build Runtime settings]({{site.baseurl}}/docs/pipelines/pipelines/#build-runtime).  
+
+{% include image.html
+  lightbox="true"
+  file="/images/runtime/runner/environment-per-pipeline.png"
+  url="/images/runtime/runner/environment-per-pipeline.png"
+  alt="Overriding the default Runtime Environment for a pipeline"
+  caption="Overriding the default Runtime Environment for a pipeline"
+  max-width="60%"
+    %}
+
+
+
 ## Codefresh Runner configuration
 After you install the Codefresh Runner, review the [configuration](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#configuration){:target="\_blank"} options described in ArtifactHub:
 * [EBS backend volume](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#ebs-backend-volume-configuration){:target="\_blank"}
@@ -182,12 +183,12 @@ After you install the Codefresh Runner, review the [configuration](https://artif
 
 ## Runtime Environment specifications
 
-The following section describes the specifications for the Runtime Environment.  
+The section describes the specifications for the Runtime Environment.  
 
-Notice that there are additional and hidden fields that are autogenerated by Codefresh that complete a full runtime spec. You can view and edit these fields only for [Codefresh On-Premises Installation]({{site.baseurl}}/docs/installation/codefresh-on-prem/).
+There are additional and hidden fields autogenerated by Codefresh that complete a full runtime spec. You can view and edit these fields only for [Codefresh On-Premises Installation]({{site.baseurl}}/docs/installation/codefresh-on-prem/).
 
 
-
+### Example: Default Runtime Environment specifications
 Below is an example of the default and basic runtime spec after you've installed the Codefresh Runner: 
 
 {% highlight yaml %}
@@ -363,7 +364,7 @@ dockerDaemonScheduler:
 ## CLI-based Codefresh Runner installation
 
 >**LEGACY CONTENT**  
-Please be aware that the content in this section and subsections is _no longer actively updated_.  
+Please be aware that the content in this section, including installation and configuration, is _no longer actively updated_.  
 We have transitioned to a [new Helm-based installation](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime){:target="\_blank"} for the Codefresh Runner. As a result, this content will be deprecated in the coming months. 
 
 Access to the Codefresh CLI is only needed when installing the Codefresh Runner. After installation, the Runner authenticates on its own using the details provided. You don't need to install the Codefresh CLI on the cluster running Codefresh pipelines.
@@ -942,25 +943,7 @@ To use the CLI, run:  (`--help` to see the available options):
 codefresh runner delete --help
 ```
 
-## Codefresh Runner architecture
 
-{% include image.html
-  lightbox="true"
-  file="/images/runtime/runner/codefresh_runner.png"
-  url="/images/runtime/runner/codefresh_runner.png"
-  alt="Codefresh Runner architecture overview"
-  caption="Codefresh Runner architecture overview"
-  max-width="100%"
-    %}
-
-
-1. [Runtime-Environment specification](#runtime-environment-specification) defines engine and dind pods spec and PVC parameters.
-2. Runner pod (Agent) pulls tasks (Builds) from Codefresh API every 3 seconds.
-3. Once the agent receives build task (either Manual run build or Webhook triggered build) it calls k8s API to create engine/dind pods and PVC object.
-4. Volume Provisioner listens for PVC events (create) and based on StorageClass definition it creates PV object with the corresponding underlying volume backend (ebs/gcedisk/local).
-5. During the build, each step (clone/build/push/freestyle/composition) is represented as docker container inside dind (docker-in-docker) pod. Shared Volume (`/codefresh/volume`) is represented as docker volume and mounted to every step (docker containers). PV mount point inside dind pod is `/var/lib/docker`.
-6. Engine pod controls dind pod. It deserializes pipeline yaml to docker API calls, terminates dind after build has been finished or per user request (sigterm).
-7. `dind-lv-monitor` DaemonSet OR `dind-volume-cleanup` CronJob are part of [runtime cleaners](#types-of-runtime-cleaners), `app-proxy` Deployment and Ingress are described in the [App-Proxy installation](#app-proxy-installation), `monitor` Deployment is for [Kubernetes Dashboard]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/).
 
 ## Customized Codefresh Runner installations 
 
@@ -1031,8 +1014,8 @@ The App-Proxy has to work over HTTPS, and by default it uses the ingress control
 ### Install multiple runtimes with a single Runner (Agent)
 
 >**DEPRECATED CONTENT**  
-Please be aware that the content in this section is _no longer receiving active updates_.  
-We have transitioned to a [Helm-based installation](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime){:target="\_blank"} for the Codefresh Runner. As a result, this content will be deprecated in the coming months. 
+Please be aware that the content in this section is _no longer actively updated_.  
+We have transitioned to a [new Helm-based installation](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime){:target="\_blank"} for the Codefresh Runner. As a result, this content will be deprecated in the coming months. 
 
 Advanced users can install a single Codefresh Runner (agent) to manage multiple runtime environments.
 

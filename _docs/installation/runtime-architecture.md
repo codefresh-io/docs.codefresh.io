@@ -5,7 +5,7 @@ group: installation
 toc: true
 ---
 
-If you have familiarized yourself with the different installation options, here's a deep dive into the architecture and components of the different options.
+If you have familiarized yourself with the different installation options, here's a deep dive into the architecture of the SaaS and on-premises platforms, and components.
 
 
 
@@ -198,7 +198,7 @@ Each microservice within the Codefresh Pipeline and GitOps modules has its own d
 ## Codefresh Runner architecture
 This section shows a detailed view of the Codefresh Runner architecture, and a description of the components. See [Runner installation behind firewalls]({{site.baseurl}}/docs/installation/behind-the-firewall/).
 
-???
+DIAGRAM TO BE INSERTED
 
 
 The Codefresh Runner includes two main components:
@@ -238,9 +238,9 @@ Optional. When installed, provides visibility on cluster resources in Codefresh,
 Another optional component, the App-Proxy serves as an extension to the Codefresh platform. Its purpose is to enable remote operations, such as displaying Git repositories for Git providers behind firewalls and creating webhooks, while maintaining security.
 
 
-### Clients
-* API
-Codefresh offers a [public API]({{site.baseurl}}/docs/integrations/codefresh-api/) that is consumed both by the Web user interface and the [Codefresh CLI](https://codefresh-io.github.io/cli/){:target="\_blank"}. The API is also available for any custom integration with external tools or services.
+### Codefresh Platform
+
+Codefresh offers a [public API]({{site.baseurl}}/docs/integrations/codefresh-api/), consumed both by the Web user interface and the [Codefresh CLI](https://codefresh-io.github.io/cli/){:target="\_blank"}. The API is also available for any custom integration with external tools or services.
 
 
 
