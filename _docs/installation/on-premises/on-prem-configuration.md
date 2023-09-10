@@ -9,7 +9,7 @@ After installing Codefresh on-premises successfully, before users can work magic
 The Codefresh Admin Management panel provides all the options you need for setup.
 
 
-Review the [options available in Admin Management](#quick-reference-codefresh-admin-management-settings), or continue with the steps below to complete the setup for Codefresh on-premises for your organization:
+Review the options available in [Admin Management](#quick-reference-admin-management-settings) and [Account management](#quick-reference-account-settings), or continue with the steps below to complete the setup for Codefresh on-premises for your organization:
 1. Sign in to Codefresh
 1. Add a Codefresh account 
 1. Invite a user to the Codefresh account
@@ -28,7 +28,7 @@ Review the [options available in Admin Management](#quick-reference-codefresh-ad
 Sign in to Codefresh for the first time after on-premises platform installation with the default username and password.
 
 1. In the **Sign In** page, click **Codefresh**.
-1. Enter the default **Username** `AdminCF` and **Password**, also `AdminCF`. 
+1. Enter the default **Username** and **Password**. 
 1. Click **Sign In**.
 
 {% include image.html
@@ -78,14 +78,13 @@ For a description of all options available for Accounts, see [Quick reference: A
 1. In the toolbar on the right, click the **+** icon.
 1. In **Create New Account**, enter the account name and click **Create**.  
   The new account is displayed in the list of Accounts.
-1. Click the **System Type** column, select the System Type you need, and then click **Save**.
 1. Set the number of **Runtime Environments** for this account.
 1. Set the number of **Parallel Builds**.
 1. In the **Collaborators** column, click the **Edit** icon and increase the count to equal the number of users you plan on inviting to the account, and then click the **Save** icon. 
   You can always change this later.
 1. If you have a Windows environment, set the number of **Nodes**.
 1. To enable username-password login for the users in this account, set **User/Pass Enabled** to **ON**.
-1. To disable users in this account from using their personal accounts to sign in to Codefresh, set **Disable Personal Account** to **ON**.
+1. To disable users in this account from creating personal after first signing in to Codefresh, set **Disable Personal Account** to **ON**.
 1. For Windows environments, set the **Codefresh Env** to use.
 1. Continue with [Step 3: Invite a user to a Codefresh account](#step-3-invite-a-user-to-a-codefresh-account).
 
@@ -293,7 +292,7 @@ The table describes the options in Admin Management relevant for Codefresh accou
 |**Accounts**     | The configuration settings defined for the account.<br> See [Quick reference: Account settings](#quick-reference-account-settings).  | 
 |**Nodes**     | Applicable only to Windows on-premises environments. The Docker nodes created for the account.  | 
 |**IDPs**     | The SSO integrations set up in Codefresh.  | 
-|**Runtime Environments**     | The predefined and user-defined Runtime Environments. {:nomarkdown}<ul><li><b>System</b>: The global Runtime Environments defined by Codefresh, available to your organization. When defining the account settings, you can select one of the predefined Runtime Environments for the account. </li><li><b>Account</b>: The Runtime Environments defined for the account.</li></ul>{::/}| 
+|**Runtime Environments**     | The predefined and user-defined Runtime Environments. {:nomarkdown}<ul><li><b>System</b>: The global Runtime Environments defined by Codefresh, available to your organization. When defining the account settings, you can select one of the predefined Runtime Environments for the account. </li><li><b>Account</b>: The Runtime Environments defined for the account.</li></ul>{:/}| 
 |**Audit**     | The actions audited by Codefresh across all accounts in your organization, based on the API calls made to Codefresh. You can filter by Account, the type of Entity or Action, and Status. | 
 |**Approvals**     | The Codefresh accounts deleted after approval of the delete request.<br>You can restore a deleted account through the **Restore Account** option.   | 
 |**Features Management**     | The features to enable/disable for all or specific accounts in your organization. <br>See [Quick reference: On-premises feature list](on-prem-configuration/#quick-reference-on-premises-feature-list).  | 
@@ -323,7 +322,7 @@ The table describes the settings for available Codefresh accounts. Settings inte
 | --------------              | --------------         | 
 |**Activated/Suspended/Increased attention**     | Automatically set and managed by Codefresh.  |  
 |**Account name**     | The name of the account.<br>To change, click the **Edit** icon. |  
-|**System type**     | The Codefresh module to activate for this account. Selecting a System Type switches the account to one of the following:<br>{:nomarkdown}<ul><li><b>Classic</b>: Codefresh pipelines only.</li><li><b>GitOps</b>: GitOps applications integrated with ArgoCD.</li><li><b>Project One</b>: The New Codefresh Experience with Classic Pipelines and GitOps as a single module with a unified sidebar menu and shared administration and configuration. <br>See [The New Codefresh Experience]({{site.baseurl}}/docs/new-codefresh/enable-new-experience/) and [Menu Navigation]({{site.baseurl}}/docs/new-codefresh/menu-navigation/).</li><li><b>GitOps + Classic</b>: Available as two different modules, with one of them active at any one time. You can toggle between the modules.<br>See [Codefresh for CI]({{site.baseurl}}/docs/getting-started/ci-codefresh/) and [Codefresh for CD]({{site.baseurl}}/docs/getting-started/cd-codefresh/).</li></ul>{:/}   | 
+|**System type**     | The Codefresh module to activate for this account. Selecting a System Type switches the account to one of the following:<br>{:nomarkdown}<ul><li><b>Classic</b>: Codefresh pipelines only.</li><li><b>GitOps</b>: GitOps applications integrated with ArgoCD.</li><li><b>Project One</b>: The New Codefresh Experience with Classic Pipelines and GitOps as a single module with a unified sidebar menu and shared administration and configuration. <br>See <a href="https://codefresh.io/docs/docs/new-codefresh/enable-new-experience/">The New Codefresh Experience</a> and <a href="https://codefresh.io/docs/docs/new-codefresh/menu-navigation/">Menu Navigation</a>.</li><li><b>GitOps + Classic</b>: Available as two different modules, with one of them active at any one time. You can toggle between the modules.<br>See <a href="https://codefresh.io/docs/docs/getting-started/ci-codefresh/">Codefresh for CI</a> and <a href="https://codefresh.io/docs/docs/getting-started/cd-codefresh/">Codefresh for CD</a>.</li></ul>{:/}   | 
 |**Creation date**     | The date the account was created. |  
 |**Amount of admins**    | The number of users with administrator roles for this account. |  
 |**Support plan**    | Leave as is. Managed by Codefresh.  |  
@@ -333,13 +332,13 @@ The table describes the settings for available Codefresh accounts. Settings inte
 |**Parallel builds**    | The number of parallel Runner builds for pipelines. Generally unlimited for on-premises. |  
 |**Nodes**    | Relevant for when Codefresh on-premises is installed on Windows. The number of console nodes you can connect to.   |  
 |**User/pass enabled**    | Enable username-password combination as a login mechanism for users in this account. <br>When enabled, the Sign-In screen displays **Codefresh** as a login option, and users can supply the username and password as login credentials. | 
-|**Disable personal account**    | When enabled (recommended), prevents users from logging in with their personal accounts, and allows login only with the company/organization account. | 
+|**Disable personal account**    | When enabled (recommended), prevents users from creating personal accounts after signing in to Codefresh for the first time on receiving invitations. | 
 |**Launch cluster**    | Leave as is. Not used |   
 |**Data retention**    | The length of time in weeks for which to retain builds and logs for Codefresh pipelines. <!--- <br>The retention period can be set through the slider, or through environment variables. See [Retention policy for builds and logs in ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#retention-policy-for-builds-and-logs){:target="\_blank"} and select the one according to the on-premises version installed. -->  |  
 |**Collaborators**    | The number of users permitted for this account. If you keep the count as one, Codefresh displays an error that you have reached the user limit and prevents you from inviting additional users.  | 
 |**Runtime environments**    | Optional. The System Runtime Environments to select for this account. The System Runtime Environments are global Runtime Environments predefined by Codefresh. |  
 |**Codefresh environments**    |Optional. For Windows environments, the Codefresh environment to select for the Windows nodes. |  
-|**Actions**    | The actions available for the account, displayed by clicking the context menu to the right of the account:{:nomarkdown}<ul><li><b>Audit by account</b>: Takes you to the Audit page.<br>See ??? </li><li><b>Invite user to account</b>: Opens the popup where you can specify the email of the user to invite to the account. To add the admin role for this user, select <b>Set the user as admin to this account</b>.</li><li><b>Assign new feature</b>: Displays the list of features where you can enable/disable specific features for this account. <br>See [Quick reference: On-premises feature list](#quick-reference-on-premises-feature-list) in this article. </li><li>**Show account domains**: Restrict user invitations to specific email domains. Clicking <b>Add Domain</b> lets you add the email domains to allow.<br>See also [Define session timeouts and domain restrictions for user accounts]({{site.baseurl}}/docs/administration/account-user-management/add-users/#define-session-timeouts-and-domain-restrictions-for-user-accounts).</li>| 
+|**Actions**    | The actions available for the account, displayed by clicking the context menu to the right of the account:{:nomarkdown}<ul><li><b>Audit by account</b>: Takes you to the Audit page.<br>See <a href="https://codefresh.io/docs/docs/administration/account-user-management/audit/">Auditing actions in Codefresh</a>. </li><li><b>Invite user to account</b>: Opens the popup where you can specify the email of the user to invite to the account. To add the admin role for this user, select <b>Set the user as admin to this account</b>.</li><li><b>Assign new feature</b>: Displays the list of features where you can enable/disable specific features for this account. <br>See <a href="https://codefresh.io/docs/docs/installation/on-premises/on-prem-configuration/#quick-reference-on-premises-feature-list">Quick reference: On-premises feature list</a> in this article. </li><li>**Show account domains**: Restrict user invitations to specific email domains. Clicking <b>Add Domain</b> lets you add the email domains to allow.<br>See also <a href="https://codefresh.io/docs/docs/administration/account-user-management/add-users/#define-session-timeouts-and-domain-restrictions-for-user-accounts">Define session timeouts and domain restrictions for user accounts</a>.</li>| 
 
 
 
