@@ -131,7 +131,7 @@ For a description of the events and their payload, see [Bitbucket Cloud document
                         
 #### Bitbucket Server trigger events
 
-For a description of the events and their payload, see [Bitbucket Server documentation]https://confluence.atlassian.com/bitbucketserver/event-payload-938025882.html){:target="\_blank"}.
+For a description of the events and their payload, see [Bitbucket Server documentation](https://confluence.atlassian.com/bitbucketserver/event-payload-938025882.html){:target="\_blank"}.
 
 * Commit
 * Push commits
