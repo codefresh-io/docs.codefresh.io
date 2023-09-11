@@ -153,21 +153,21 @@ The table below describes the fields you can define in a Cron expression.
 
 {: .table .table-bordered .table-hover}
 Field    | Mandatory | Allowed values  | Allowed special characters
-----------   | ---------- | --------------  | --------------------------
-Seconds      | No         | 0-59            | * / , -
-Minutes      | Yes        | 0-59            | * / , -
-Hours        | Yes        | 0-23            | * / , -
-Day of month | Yes        | 1-31            | * / , - ?
-Month        | Yes        | 1-12 or JAN-DEC | * / , -
-Day of week  | Yes        | 0-6 or SUN-SAT  | * / , - ?
+|----------   | ---------- | --------------  | --------------------------|
+Seconds      | No         | 0-59            | * / , -|
+Minutes      | Yes        | 0-59            | * / , -|
+Hours        | Yes        | 0-23            | * / , -|
+Day of month | Yes        | 1-31            | * / , - ?|
+Month        | Yes        | 1-12 or JAN-DEC | * / , -|
+Day of week  | Yes        | 0-6 or SUN-SAT  | * / , - ?|
 
 
 ### Special characters in Cron expressions
 The table below describes the purpose of the special characters in a Cron expression.
 
 {: .table .table-bordered .table-hover}
-Special Character    | Description | 
-----------   | ---------- | 
+|Special Character | Description | 
+|----------   | ---------- | 
 |**Asterisk** (`*`) | Indicates that the Cron expression will match for all values of the field.<br>Using an asterisk in the 5th field (month), would indicate every month.|
 |**Slash** (`/`) | Slashes are used to describe increments of ranges. <br>For example `3-59/15` in the 1st field (minutes) would indicate the 3rd minute of the hour and every 15 minutes thereafter. <br>The form `*\/...` is equivalent to the form `first-last/...`, that is, an increment over the largest possible range of the field. <br>The form `N/...` is accepted as meaning `N-MAX/...`, that is, starting at `N`, use the increment until the end of that specific range. It does not wrap around.|
 |**Comma** (`,`) | Commas are used to separate items of a list. For example, using `MON,WED,FRI` in the 5th field (day of week) would mean Mondays, Wednesdays and Fridays.|
@@ -181,13 +181,13 @@ You can use one of several predefined schedules instead of a Cron expression.
 The table below describes the predefined schedules supported.
 
 {: .table .table-bordered .table-hover}
-Predefined schedule                  | Description                                | Equivalent to
------                  | -----------                                | -------------
-@yearly (or @annually) | Run once a year, midnight, Jan. 1st        | 0 0 0 1 1 *
-@monthly               | Run once a month, midnight, first of month | 0 0 0 1 * *
-@weekly                | Run once a week, midnight on Sunday        | 0 0 0 * * 0
-@daily (or @midnight)  | Run once a day, midnight                   | 0 0 0 * * *
-@hourly                | Run once an hour, beginning of hour        | 0 0 * * * *
+|Predefined schedule                  | Description                                | Equivalent to|
+|-----                  | -----------                                | -------------|
+|@yearly (or @annually) | Run once a year, midnight, Jan. 1st        | 0 0 0 1 1 *|
+|@monthly               | Run once a month, midnight, first of month | 0 0 0 1 * *|
+|@weekly                | Run once a week, midnight on Sunday        | 0 0 0 * * 0|
+|@daily (or @midnight)  | Run once a day, midnight                   | 0 0 0 * * *|
+|@hourly                | Run once an hour, beginning of hour        | 0 0 * * * *|
 
 
 ### Fixed interval scheduling for Cron jobs
