@@ -5,35 +5,41 @@ group: pipelines
 toc: true
 ---
 
-Codefresh pipelines often use different cloud providers to access their services and perform actions. Access to the cloud provider is controlled through credentials generally stored as secrets.
+Codefresh pipelines often access di different cloud providers to access their services and perform actions. Access to the cloud provider is controlled through credentials generally stored as secrets.
 
-As an alternative to creating, storing, and using secrets, Codefresh pipelines support OIDC where access is governed through short-leved access token instead of long-lived secrets. These short-lived access or ID token remain alive and valid for the duration of the session or workflow, and automatically expires on completion. Bot SaaS and on-premises customers can get the access token from the cloud provider.
-They can use them in Codefresh pipelines for authenication and authorization to perform the actions you need.
+As an alternative to creating, storing, and using secrets, Codefresh pipelines support OIDC (OpenID Connect) where access is governed through short-lived access tokens instead of long-lived secrets. These short-lived access or ID token remain alive and valid for the duration of the session or workflow, and automatically expires on completion. 
+
+Both SaaS and on-premises customers can get the access token from the cloud provider, and use them in Codefresh pipelines for authenication and authorization to perform the actions you need.
 
 Codefresh is cloud-provider agnostic, with the only requirement being that the cloud provider supports OIDC. 
 
-Theare are  steps to use
+These are 
 
 1. Set up Codefresh as an OIDC provider in the cloud provider platform.
 1. Create the trust relationship between Codefresh OIDC and the cloud provider.
-1. Use the dedicated Marketplace Codefresh step  to obtain the ID token from Codefresh OIDC
+1. Use the dedicated Marketplace Codefresh step to obtain the ID token from Codefresh OIDC
 1. Perform actions on the cloud provider using the ID token for authentication and authorization.
 
 
 
-## Set up OIDC and use it in for Codefresh pipelines
+## OIDC setup for  Codefresh pipelines
 
+Setting up an OIDC (OpenID Connect) provider for a cloud provider involves configuring the identity provider to establish trust and enable secure authentication for the Codefresh application.  
+The specific steps may vary depending on the cloud provider. Please refer to the cloud provider-specific documentation for detailed instructions.
 
 
 
 ### Step 1: Add Codefresh as OIDC identity provider
 
-OIDC settings:
-1. Provider type: OIDC
-1. Provider name: A meaningful name to identify this OIDC provider.
-1. Provider URL: The URL of the OIDC provider's authorization server, where the identity provider issues ID tokens and handles user authentication. `https//oidc.codefresh.io
-1.  Client ID: The Client ID for the Codefresh OIDC provider which is always, `https://g.codefresh.io`.  
-    For on-premises, this is the URL of their codefresh instance, for example, ???
+The first step is to integrate Codefresh as an OIDC identity provider in the cloud provider platform. 
+
+Make sure you define the following settings:
+
+1. **Provider type**: OIDC
+1. **Provider name**: A meaningful name to identify this OIDC provider.
+1. **Provider URL**: The URL of the OIDC provider's authorization server, which is the Codefresh OIDC domain, `https//oidc.codefresh.io`. You can configure one provider URL
+1.  **Client ID**: The URL of the Codefresh platform. For SaaS, `https://g.codefresh.io`.  
+    For on-premises, this is the URL of your Codefresh instance, for example, `https://my.company.com/codefresh.io`.
 
 
 
@@ -41,10 +47,13 @@ OIDC settings:
 
 ### Step 2: Establish trust and configure subject claims Codefresh OIDC identity provider
 
-Once you've configured the OIDC settings, you need to establish trust between your cloud provider and the OIDC provider, in this case Codefresh OIDC. 
+Once you've added Codefresh as an OIDC provider, you need to establish trust between your cloud provider and the OIDC provider, in this case Codefresh OIDC. 
 
-This typically involves assigning a role to Codefresh OIDC provider and defining the conditions for the audience (`aud`) and subject (`sub`) claims. 
-Before grating the ID token, the cloud provider verifies that the audience and subject claims match those in the request bearer token.
+This typically involves assigning a role to Codefresh OIDC provider, and defining the conditions for the claims supported by the OIDC protocol. A claim is a piece of information included in the ID token providing details about the identity, attributes, and other information for the cloud provider to authenticate the access request.
+Here is a full list of [standard Claims](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims){:target="\_blank"}. 
+
+We will focus on two of the standard claims, the audience (`aud`) and the subject (`sub`) claims. 
+* audience (`aud`)Before grating the ID token, the cloud provider verifies that the audience and subject claims match those in the request bearer token.
 
 The steps to establish the trust and the syntax for the subject claims vary depending on the cloud provider. 
 
