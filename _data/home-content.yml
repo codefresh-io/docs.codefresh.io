@@ -151,7 +151,7 @@
     - title: Annotations in pipelines
       localurl: /docs/pipelines/annotations/
     - title: OIDC for pipelines
-      localurl: /docs/pipelines/configuration/oidc-pipelines/
+      localurl: /docs/pipelines/steps/oidc-pipelines/
     - title: Monitoring pipelines
       localurl: /docs/pipelines/monitoring-pipelines/
     - title: Advanced workflows for pipelines
