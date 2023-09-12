@@ -149,14 +149,14 @@ For details, see [Pipelines Dashboard]({{site.baseurl}}/docs/dashboards/home-das
 Pipeline builds have new status icons. With distinct icons for each status, you can easily differentiate between builds, bringing clarity and saving time. Previously, both terminated and failed builds had the same icon for example, causing confusion.
 
 Here are the icons and the build statuses they represent:  
-* **Running**: {::nomarkdown}<img src="../../../../../images/whats-new/june23/pipeline-build-running.png" display=inline-block/> {:/}
-* **Completed**: {::nomarkdown}<img src="../../../../../images/whats-new/june23/pipeline-build-successful.png" display=inline-block/> {:/}
-* **Delayed**: {::nomarkdown}<img src="../../../../../images/whats-new/june23/pipeline-build-delayed.png" display=inline-block/> {:/}
-* **Pending approval**: {::nomarkdown}<img src="../../../../../images/whats-new/june23/pipeline-build-pending-approval.png" display=inline-block/> {:/}
-* **Denied approval**: {::nomarkdown}<img src="../../../../../images/whats-new/june23/pipeline-build-denied.png" display=inline-block/> {:/}
-* **Terminating**: {::nomarkdown}<img src="../../../../../images/whats-new/june23/pipeline-build-terminating.png" display=inline-block/> {:/}
-* **Terminated**: {::nomarkdown}<img src="../../../../../images/whats-new/june23/pipeline-build-terminated.png" display=inline-block/> {:/}
-* **Failed**: {::nomarkdown}<img src="../../../../../images/whats-new/june23/pipeline-build-failed-error.png" display=inline-block/> {:/}
+* **Running**: {::nomarkdown}<img src="../../../images/whats-new/june23/pipeline-build-running.png" display=inline-block/> {:/}
+* **Completed**: {::nomarkdown}<img src="../../../images/whats-new/june23/pipeline-build-successful.png" display=inline-block/> {:/}
+* **Delayed**: {::nomarkdown}<img src="../../../images/whats-new/june23/pipeline-build-delayed.png" display=inline-block/> {:/}
+* **Pending approval**: {::nomarkdown}<img src="../../../images/whats-new/june23/pipeline-build-pending-approval.png" display=inline-block/> {:/}
+* **Denied approval**: {::nomarkdown}<img src="../../../images/whats-new/june23/pipeline-build-denied.png" display=inline-block/> {:/}
+* **Terminating**: {::nomarkdown}<img src="../../../images/whats-new/june23/pipeline-build-terminating.png" display=inline-block/> {:/}
+* **Terminated**: {::nomarkdown}<img src="../../../images/whats-new/june23/pipeline-build-terminated.png" display=inline-block/> {:/}
+* **Failed**: {::nomarkdown}<img src="../../../images/whats-new/june23/pipeline-build-failed-error.png" display=inline-block/> {:/}
 
 For details, see [Viewing status for pipeline builds]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#viewing-status-for-pipeline-builds).
 
@@ -273,6 +273,8 @@ The table below describes the new Feature Flags in the Codefresh On-Premises rel
 | `accessibilityContrast` | When enabled, displays an icon in the Codefresh toolbar allowing you to control the contrast by selecting the option that best suits the logged in user:{::nomarkdown}<ul><li><b>Invert colors</b> and <b>Bold colors (saturate)</b>: Optimized for visually impaired users.</li><li><b>Smart Contrast</b>: Increases the contrast between the text and the background to the maximum possible.</li></ul>{:/}.| FALSE         |
 | `cronTriggersInPipelineSpec`         | When enabled, allows users to define Cron triggers in the pipeline YAMLs as a `spec.cronTriggers` array, instead of using a separate API.<br>See [Pipelines: Enhanced version of Cron triggers](#pipelines-enhanced-version-of-cron-triggers) in this article.  | FALSE         |
 | `disableInviteWelcomeMail`     | When enabled, does not send the Welcome email to users invited to an account.      | FALSE         |
+|`gerritIntegration`      | When enabled, enables Gerrit integration in Account settings. <br>See [Gerrit as Git provider for Pipelines and GitOps](#gerrit-as-git-provider-for-pipelines-and-gitops) in this article.    | FALSE         |
+|`supportGerrit`      | When enabled, adds the capability to connect to Gerrit as a Git provider. <br>See [Gerrit as Git provider for Pipelines and GitOps](#gerrit-as-git-provider-for-pipelines-and-gitops) in this article.    | FALSE         |
 | `pipelineScopes`      | When enabled, enables Codefresh administrators to configure the API scopes for pipelines at account level. All pipelines in the account inherit these scopes. Codefresh administrators can also override these scopes for individual pipelines.<br>See [Pipelines: Access control for endpoints](#pipelines-access-control-for-endpoints) in this article.    | FALSE         |
 | `gitopsAppGroups`       | When enabled, allows users to group GitOps applications by annotations, and view these applications in the Groups tab of the GitOps Apps dashboard. <br>See [GitOps: Application Groups in GitOps Apps dashboard](#gitops-application-groups-in-gitops-apps-dashboard) in this article. | FALSE   |
 
