@@ -399,6 +399,8 @@
           url: "/deploy"
         - title: Approval
           url: "/approval"
+        - title: OIDC token
+          url: "/oidc-pipelines"    
     - title: Triggers in pipelines
       url: "/triggers"
       sub-pages:
