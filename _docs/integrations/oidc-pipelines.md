@@ -29,7 +29,7 @@ Review the [generic setup for OIDC](#oidc-setup-for-codefresh-pipelines), or fol
 
 ## More on the OIDC ID token
 
-The ID token is a JSON Web Token (JWT) that contains claims on the authentication and authorization of the user or resource, including attributes .
+The ID token is a JSON Web Token (JWT) which contains claims on the authentication and authorization of the user or resource, including attributes .
 The claim is a piece of information included in the ID token providing details about the identity, attributes, and other information for the cloud provider to authorize the access request.
 
 ### Claims & conditions
@@ -44,22 +44,27 @@ To enforce secure access, _you must configure at least one condition through a c
 ### Standard OIDC claims
 
 OIDC provides a list of common claims, as described in [standard Claims](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims){:target="\_blank"}. 
-
-Generally, conditions are configured with both the audience (`aud`) and the subject (`sub`) claims to authorize access.
+Codefresh supports a subset of standard claims listed below. Generally both the audience (`aud`) and the subject (`sub`) claims are used to authorize access.
 
 
 * **audience (`aud`) claim**    
   The `aud` claim is the Client ID, which is the URL of the Codefresh platform instance.  
 * **subject (`sub`) claim**   
   The `sub` claim is a string value concatenated from the different claims representing the precise authentication and authorization required for access. 
+* **issuer (`iss`) claim**
+  The OIDC provider that issued the token, and is always `https://oidc.codefresh.io`.
+* **issued at (`iat`) claim**   
+  The time when the ID token was issued.
+* **exp (`iat`) claim**   
+  The time when the ID token is set to expire.
 
 The cloud provider verifies that the claims in the request token matches the claims defined in `aud` and the `sub` claims before issuing the ID token.
   
 
 ### Custom Codefresh claims
-Codefresh provides custom claims as listed in the table below. Use these claims to create conditions, as simple or as complex as you need to for granular access control.  
+Codefresh provides custom claims as listed in the table below. The specific claims you would use are determined by the pipeline's trigger type, and change according to the workflow.  
+Git triggers include several Source Code Management (SCM) claims to filter by repository, branch, and more. The custom claoUse these claims to create conditions, as simple or as complex as you need to for granular access control.  
 
-The specific claims you would use are determined by the pipeline's trigger type. Git triggers include several Source Code Management (SCM) claims to filter by repository, branch, and more. 
 
 | Custom Codefresh Claim   | Description                                                       |
 | ----------------- | ----------------------------------------------------------------  |
@@ -74,13 +79,13 @@ The specific claims you would use are determined by the pipeline's trigger type.
 | `scm_ref`  | Applies to Git push, PR, and manual trigger types. <br>The SCM name of the branch or tag within the Git repository for which the workflow should execute. For example, `main` or `v1.0.0`. |
 | `scm_pull_request_target_branch` | Applies to Git PR trigger types. <br>The SCM target branch the pull request should merge into. For example, `production`.        |
 | `sid` | A unique session identifier.         |
-| `auth_time` | ??         |
-| `iss` | The URL of the OIDC provider that issued the token, and is always `https://oidc.codefresh.io`.        |
 
 
 
-### Sample ID token
-Here is a sample ID token issued by Codefresh as the OIDC provider.  
+### Examples of ID token payload
+Here is an example of the payload of an ID token issued by Codefresh as the OIDC provider with a combination of standard and custom claims.  
+ 
+
 As you can see, the `sub` claim concatenates several of the custom claims for the Git trigger in this example. For examples of sample claims based on trigger types, see ???
 
 ```json
@@ -100,8 +105,26 @@ As you can see, the `sub` claim concatenates several of the custom claims for th
   "iss": "https://oidc.codefresh.io"
 }
 ```
+The standard claims include: 
 
-
+```json
+  "sub": "account:5f30ebd30312313ae7008:pipeline:64f0c40800aafd1455566:scm_repo_url:https://github.com/codefresh-user/oidc-test:scm_user_name:codefresh-user:scm_ref:codefresh-patch-3",
+  "aud": "https://g.codefresh.io",
+  "exp": 1693731108,
+  "iat": 1693730808,
+  "iss": "https://oidc.codefresh.io"
+```
+The custom claims include:  
+```json
+  "account_id": "5f30ebd30312313ae7008",
+  "account_name": "codefresh-user",
+  "pipeline_id": "64f0c40800aafd1455566",
+  "pipeline_name": "oidc/git-run",
+  "workflow_id": "64f447c02199f903000gh20",
+  "scm_user_name": "codefresh-user",
+  "scm_repo_url": "https://github.com/codefresh-user/oidc-test",
+  "scm_ref": "codefresh-patch-3",
+```
 ## OIDC setup for Codefresh pipelines
 
 Here are the steps required for OIDC ID token usage in Codefresh pipelines:
