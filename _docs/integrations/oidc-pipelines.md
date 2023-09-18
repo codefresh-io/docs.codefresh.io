@@ -194,7 +194,7 @@ The step:
   
 1. Gets the ID token in the `ID_TOKEN` environment variable.
 
->**TIP:Use API call in freestyle step**  
+>**TIP: Use API call in freestyle step**  
 Instead of the predefined Marketplace step to obtain the OIDC ID token, you can insert the `curl` command in a freestyle step to get the same result.
 
 <br><br>
@@ -414,7 +414,6 @@ The step obtains the ID token from Codefresh OIDC provider. Codefresh makes this
 1. Go to the pipeline with the workflow.
 1. Add the step to your Codefresh pipeline's workflow.   
   The step makes an API call to the Codefresh OIDC provider and gets an ID token from the same. The token is passed in the `ID_TOKEN` environment variable. 
-
 ```yaml
 version: '1.0'
 steps:
@@ -442,8 +441,8 @@ Add two steps to the pipeline:
 
 <br><br>
 
+**How to**  
 1. Paste the following into the pipeline editor, below the `obtain_id_token` step.
-
 ```yaml
 assume_role:
     title: Assume Role
