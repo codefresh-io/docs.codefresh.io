@@ -206,7 +206,8 @@ Once you create your pipeline you can also click on the top tab called *Settings
 
 
 - **Pipeline Concurrency**: The maximum number of concurrent builds (0-14 or unlimited). Set the concurrency when your pipeline has only one trigger.  
-  > A Pipeline Concurrency of **0** freezes execution of the pipeline, switching it to maintenance mode. Use this concurrency setting to modify existing pipelines and freeze execution until you complete the changes. 
+  > **TIP**:  
+  A Pipeline Concurrency of **0** freezes execution of the pipeline, switching it to maintenance mode. Use this concurrency setting to modify existing pipelines and freeze execution until you complete the changes. 
 - **Trigger Concurrency**: The maximum number of concurrent builds per trigger (1-15 or unlimited). Define the trigger concurrency when your pipeline has multiple triggers.
 - **Branch Concurrency**: The maximum number of concurrent builds per branch (1-15 or unlimited). Define this when your pipeline can build different branches.
 - **Build Termination**: Options that determine when a build from the pipeline should terminate:
@@ -275,12 +276,23 @@ max-width="60%"
 
 The **Pipeline and Trigger Concurrency** limits are very important as they allow you to define how many instances of a pipeline can run in parallel when multiple commits or multiple pull requests take place. 
 
-> Notice that these limits are *unrelated* to [parallelism within a single pipeline]({{site.baseurl}}/docs/pipelines/advanced-workflows/). 
+ 
+**Balancing concurrency and performance**  
+While a single Runtime Environment technically supports concurrent build executions in the hundreds, it is essential to be aware of the actual number of concurrent builds that are initiated at the same point in time. To prevent potential slowdowns due to extremely large build-bursts, we recommend capping the number of concurrent builds initiated for a Runtime Environment to a maximum of 500.
+
+> **NOTE**:  
+Pipeline and trigger concurrency limits are *unrelated* to [parallelism within a single pipeline]({{site.baseurl}}/docs/pipelines/advanced-workflows/). 
 
 Some common scenarios are:
 
 * a pipeline that uses a shared resource such as a database or queue and you want to limit how many pipelines can access it 
-* a pipeline that deploys to a single production environment (in most cases you only want one active pipeline touching production
+* a pipeline that deploys to a single production environment (in most cases you only want one active pipeline touching production)  
+
+**Concurrency recommendation per Runtime Environment**
+
+Concurrency limits control the number of simultaneous builds for Codefresh pipelines. Concurrency limits are set at both the account and specific pipeline levels. 
+
+
 
 #### Build termination
 The **Build Termination** settings are useful for pipelines where you commit too fast (i.e. faster then the actual runtime of the pipeline).
