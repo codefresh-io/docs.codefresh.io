@@ -71,6 +71,22 @@ For details, see [Deploying Codefresh with OpenShift](https://artifacthub.io/pac
 
 <br><br>
 
+#### Pipelines: OpenID Connect (OIDC) integration
+Introducing OIDC (OpenID Connect) for Codefresh pipelines! Boost pipeline security and streamline access control with OIDC. Instead of referencing static credentials stored in Codefresh for the cloud provider, allow pipelines to authenticate and authorize actions through short-lived ID tokens. 
+
+Configure Codefresh as an OIDC provider with your preferred cloud provider, and let Codefresh handle ID token acquisition.
+
+Key benefits:
+* Enhanced security  
+  You no longer need to define, store, and manage cloud-provider credentials in Codefresh. 
+  Obtain ID tokens from the cloud provider when needed. The ID tokens remain valid only for the duration of the workflow build and automatically expire upon completion.
+
+* Ease of use  
+  Once the OIDC provider configuration is completed, obtaining the ID token is seamless.  
+  We have introduced a dedicated Marketplace step to obtain the ID token. The `obtain-oidc-id-token` step when added to the pipeline, gets the ID token, without additional configuration or parameters on your part.
+
+For details, see [OpenID Connect for Codefresh pipelines]({{site.baseurl}}/docs/integrations/oidc-pipelines).
+
 #### Pipelines: Access control for endpoints 
 With this feature, Codefresh admins gain enhanced control over the security of their pipelines by being able to restrict access to specific endpoint scopes.
 Scopes are defined at the account level, ensuring a consistent security baseline for all pipelines. These predefined scopes are inherited by every pipeline, which Codefresh admins can override for individual pipelines when necessary.  
