@@ -265,9 +265,15 @@ We've introduced a new environment variable, `FRAME_OPTIONS`, which is now avail
 * Commit message passed through the system variable `CF_COMMIT_MESSAGE` is truncated and does not include the full content.
 * Prefix for Docker registries omitted when using a custom Docker registry as a Public Marketplace Registry. 
 * Invited users prompted for phone number during sign-up.
-
-
- 
+<!---
+* Slow scroll speed for build logs in online terminal view.
+* DinD pod does not use Service Account (SA) defined in Runner.
+* After upgrade to v2.0.9, Test reports screen does not display all elements.
+* Page keeps on loading indefinitely when switching  active account from a ProjectOne account to a Classic one.
+* “Internal server error” displayed when creating a pipeline with project-level permissions though pipeline is created.
+* Builds fail intermittently with `ESOCKETTIMEDOUT` error when pulling image for caching.
+* Build step fails with "Failed to update your new image" error.
+-->
 
 **GitOps** 
 * **Save** button remains disabled when modifying fields for an existing Git Source.
@@ -290,7 +296,8 @@ The table below describes the new Feature Flags in the Codefresh On-Premises rel
 | `cronTriggersInPipelineSpec`         | When enabled, allows users to define Cron triggers in the pipeline YAMLs as a `spec.cronTriggers` array, instead of using a separate API.<br>See [Pipelines: Enhanced version of Cron triggers](#pipelines-enhanced-version-of-cron-triggers) in this article.  | FALSE         |
 | `disableInviteWelcomeMail`     | When enabled, does not send the Welcome email to users invited to an account.      | FALSE         |
 |`gerritIntegration`      | When enabled, enables Gerrit integration in Account settings. <br>See [Gerrit as Git provider for Pipelines and GitOps](#gerrit-as-git-provider-for-pipelines-and-gitops) in this article.    | FALSE         |
-|`supportGerrit`      | When enabled, adds the capability to connect to Gerrit as a Git provider. <br>See [Gerrit as Git provider for Pipelines and GitOps](#gerrit-as-git-provider-for-pipelines-and-gitops) in this article.    | FALSE         |
+|`supportOpenIdConnectInBuilds`| When enabled (the default), supports OIDC in pipeline builds, including obtaining and using ID tokens to authenticate and authorize pipeline actions on cloud providers.<br>See [Pipelines: OPenID Connect (OIDC) integration](#pipelines-openid-connect-oidc-integration) in this article. |TRUE|
+`supportGerrit`      | When enabled, adds the capability to connect to Gerrit as a Git provider. <br>See [Gerrit as Git provider for Pipelines and GitOps](#gerrit-as-git-provider-for-pipelines-and-gitops) in this article.    | FALSE         |
 | `pipelineScopes`      | When enabled, enables Codefresh administrators to configure the API scopes for pipelines at account level. All pipelines in the account inherit these scopes. Codefresh administrators can also override these scopes for individual pipelines.<br>See [Pipelines: Access control for endpoints](#pipelines-access-control-for-endpoints) in this article.    | FALSE         |
 | `gitopsAppGroups`       | When enabled, allows users to group GitOps applications by annotations, and view these applications in the Groups tab of the GitOps Apps dashboard. <br>See [GitOps: Application Groups in GitOps Apps dashboard](#gitops-application-groups-in-gitops-apps-dashboard) in this article. | FALSE   |
 
